@@ -9,11 +9,10 @@
 	</metadata>
 	<dataset source="techdemo/datasets/tiles/test.xml" type="XML"></dataset>
 	<dataset source="techdemo/datasets/objects/test.xml" type="XML"></dataset>
-	<dataset source="techdemo/datasets/agents/humans/gunner.xml" type="XML"></dataset>
 	<elevation id="TechdemoMapElevation">
 		<metadata>
 		</metadata>
-		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="TechdemoMapTileLayer" scaling="0.1" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" scaling="0.1" grid_type="square" id="TechdemoMapTileLayer">
 			<metadata>
 			</metadata>
 			<instances>
@@ -103,7 +102,7 @@
 				<i x="11" o="21001" y="5"></i>
 			</instances>
 		</layer>
-		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="TechdemoMapObjectLayer" scaling="0.1" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" scaling="0.1" grid_type="square" id="TechdemoMapObjectLayer">
 			<metadata>
 			</metadata>
 			<instances>
@@ -112,11 +111,10 @@
 				<i x="3" o="char_40height" y="3"></i>
 			</instances>
 		</layer>
-		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="TechdemoAgentLayer" scaling="0.1" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" scaling="0.1" grid_type="square" id="TechdemoAgentLayer">
 			<metadata>
 			</metadata>
 			<instances>
-				<i x="1" o="PC" y="1"></i>
 			</instances>
 		</layer>
 	</elevation>
