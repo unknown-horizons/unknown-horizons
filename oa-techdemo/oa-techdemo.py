@@ -22,7 +22,6 @@ Welcome to the OpenAnno techdemo, release Alpha\n\nKeybindings:
 - DOWN = Move camera down
 - F10 = Toggle console on / off
 - ESC = Quit techdemo
-- LMB = Move agent around
 
 
 Have fun,
@@ -261,9 +260,6 @@ class World(object):
 		self.target = fife.Location()
 		self.target.setLayer(self.agent_layer)
 
-		self.agent = self.agent_layer.getInstancesByString('id', 'PC')[0]
-		self.agent.addListener(self.reactor)
-	
 	def save_world(self, path):
 		saveMapFile(path, self.engine, self.map)
 		
@@ -294,20 +290,8 @@ class World(object):
 		evtlistener = MyEventListener(self)
 		self.engine.initializePumping()
 		
-		# no movement at start
-		self.target.setLayerCoordinates(fife.ModelCoordinate(5,1))
-		self.agent.act_here('walk', self.target, True)
-
-		
 		while True:
 			self.engine.pump()
-			
-			# agent movement
-			if (evtlistener.newTarget):
-				ec = self.camera.toElevationCoordinates(evtlistener.newTarget)
-				self.target.setElevationCoordinates(ec)
-				self.agent.act('walk', self.target, 0.5)
-				evtlistener.newTarget = None
 			
 			if (evtlistener.quitRequested):
 				break
@@ -338,4 +322,3 @@ if __name__ == '__main__':
 	w.create_background_music()
 	w.run()
 	w.save_world("techdemo/maps/savefile.xml")
-

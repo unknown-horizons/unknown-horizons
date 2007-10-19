@@ -20,7 +20,7 @@
 	<!-- Map specific object -->
 
 	<!-- Load agent datasets -->
-	<dataset type="XML" source="techdemo/datasets/agents/humans/gunner.xml" />
+	<!--<dataset type="XML" source="techdemo/datasets/agents/humans/gunner.xml" /> -->
 
 	<elevation id="TechdemoMapElevation">
 
@@ -76,7 +76,6 @@
 			</metadata>	
 			
 			<instances>
-				<i o="PC" x="0" y="0"/>
 			</instances>	
 		</layer>
 	</elevation>
