@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ascii"?>
+<map id="TechdemoMap" format="1.0">
+	<metadata>
+		<param name="Author" type="text">chewie</param>
+		<param name="Comment" type="text">Official FIFE 2007.2 techdemo map. Some demonstration and some fun for modders, not more, not less :-)</param>
+		<param name="Name" type="text">openanno-test-map.xml</param>
+		<param name="Version" type="id">1</param>
+		<param name="_START_ELEVATION" type="id">1</param>
+	</metadata>
+	<dataset source="techdemo/datasets/tiles/test.xml" type="XML"></dataset>
+	<dataset source="techdemo/datasets/objects/test.xml" type="XML"></dataset>
+	<dataset source="techdemo/datasets/agents/humans/gunner.xml" type="XML"></dataset>
+	<elevation id="TechdemoMapElevation">
+		<metadata>
+		</metadata>
+		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="TechdemoMapTileLayer" scaling="0.1" rotation="0.0">
+			<metadata>
+			</metadata>
+			<instances>
+				<i x="0" o="21001" y="-1"></i>
+				<i x="1" o="21001" y="-1"></i>
+				<i x="2" o="21001" y="-1"></i>
+				<i x="3" o="21001" y="-1"></i>
+				<i x="4" o="21001" y="-1"></i>
+				<i x="5" o="21001" y="-1"></i>
+				<i x="6" o="21001" y="-1"></i>
+				<i x="7" o="21001" y="-1"></i>
+				<i x="8" o="21001" y="-1"></i>
+				<i x="9" o="21001" y="-1"></i>
+				<i x="10" o="21001" y="-1"></i>
+				<i x="11" o="21001" y="-1"></i>
+				<i x="0" o="21001" y="0"></i>
+				<i x="1" o="21001" y="0"></i>
+				<i x="2" o="21001" y="0"></i>
+				<i x="3" o="21001" y="0"></i>
+				<i x="4" o="21001" y="0"></i>
+				<i x="5" o="21001" y="0"></i>
+				<i x="6" o="21001" y="0"></i>
+				<i x="7" o="21001" y="0"></i>
+				<i x="8" o="21001" y="0"></i>
+				<i x="9" o="21001" y="0"></i>
+				<i x="10" o="21001" y="0"></i>
+				<i x="11" o="21001" y="0"></i>
+				<i x="0" o="21001" y="1"></i>
+				<i x="1" o="21001" y="1"></i>
+				<i x="2" o="21001" y="1"></i>
+				<i x="3" o="21001" y="1"></i>
+				<i x="4" o="21001" y="1"></i>
+				<i x="5" o="21001" y="1"></i>
+				<i x="6" o="21001" y="1"></i>
+				<i x="7" o="21001" y="1"></i>
+				<i x="8" o="21001" y="1"></i>
+				<i x="9" o="21001" y="1"></i>
+				<i x="10" o="21001" y="1"></i>
+				<i x="11" o="21001" y="1"></i>
+				<i x="0" o="21002" y="2"></i>
+				<i x="1" o="21002" y="2"></i>
+				<i x="2" o="21002" y="2"></i>
+				<i x="3" o="21002" y="2"></i>
+				<i x="4" o="21002" y="2"></i>
+				<i x="5" o="21001" y="2"></i>
+				<i x="6" o="21001" y="2"></i>
+				<i x="7" o="21001" y="2"></i>
+				<i x="8" o="21001" y="2"></i>
+				<i x="9" o="21001" y="2"></i>
+				<i x="10" o="21001" y="2"></i>
+				<i x="11" o="21001" y="2"></i>
+				<i x="0" o="21001" y="3"></i>
+				<i x="1" o="21001" y="3"></i>
+				<i x="2" o="21001" y="3"></i>
+				<i x="3" o="21001" y="3"></i>
+				<i x="4" o="21001" y="3"></i>
+				<i x="5" o="21001" y="3"></i>
+				<i x="6" o="21001" y="3"></i>
+				<i x="7" o="21001" y="3"></i>
+				<i x="8" o="21001" y="3"></i>
+				<i x="9" o="21001" y="3"></i>
+				<i x="10" o="21001" y="3"></i>
+				<i x="11" o="21001" y="3"></i>
+				<i x="0" o="21001" y="4"></i>
+				<i x="1" o="21001" y="4"></i>
+				<i x="2" o="21001" y="4"></i>
+				<i x="3" o="21001" y="4"></i>
+				<i x="4" o="21001" y="4"></i>
+				<i x="5" o="21001" y="4"></i>
+				<i x="6" o="21001" y="4"></i>
+				<i x="7" o="21001" y="4"></i>
+				<i x="8" o="21001" y="4"></i>
+				<i x="9" o="21001" y="4"></i>
+				<i x="10" o="21001" y="4"></i>
+				<i x="11" o="21001" y="4"></i>
+				<i x="0" o="21001" y="5"></i>
+				<i x="1" o="21001" y="5"></i>
+				<i x="2" o="21001" y="5"></i>
+				<i x="3" o="21001" y="5"></i>
+				<i x="4" o="21001" y="5"></i>
+				<i x="5" o="21001" y="5"></i>
+				<i x="6" o="21001" y="5"></i>
+				<i x="7" o="21001" y="5"></i>
+				<i x="8" o="21001" y="5"></i>
+				<i x="9" o="21001" y="5"></i>
+				<i x="10" o="21001" y="5"></i>
+				<i x="11" o="21001" y="5"></i>
+			</instances>
+		</layer>
+		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="TechdemoMapObjectLayer" scaling="0.1" rotation="0.0">
+			<metadata>
+			</metadata>
+			<instances>
+				<i x="1" o="Tent" y="0"></i>
+				<i x="4" o="Tent" y="0"></i>
+				<i x="3" o="char_40height" y="3"></i>
+			</instances>
+		</layer>
+		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="TechdemoAgentLayer" scaling="0.1" rotation="0.0">
+			<metadata>
+			</metadata>
+			<instances>
+				<i x="1" o="PC" y="1"></i>
+			</instances>
+		</layer>
+	</elevation>
+</map>

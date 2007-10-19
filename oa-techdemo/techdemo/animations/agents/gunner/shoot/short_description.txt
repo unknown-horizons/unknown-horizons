@@ -1,0 +1,13 @@
+Hello fellow game creator!
+
+Here's a short description for the animation.
+
+Frame 1 of each direction is the standing frame.
+If you create a running animation you don't need frame 4 and 7. 
+Blender calculated them but they are not really essential. 
+
+Its possible to create a burst shot animation if the frames 6,8,9,10 are recurred. 
+
+I hope it helps you a little bit.
+
+Shadowrunner

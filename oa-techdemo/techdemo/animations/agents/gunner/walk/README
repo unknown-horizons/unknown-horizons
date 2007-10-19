@@ -1,0 +1,34 @@
+[EN]
+
+Short description of the new agent
+
+* 28 Frames
+* Frame #01 is idle frame
+* Frames #01-04 contain the initial animations for starting a movement
+* Frames #05-28 are the basic walkcycle (which can be looped)
+
+ANGLES
+
+0 (degrees) = west to east
+60 (degrees) = southwest to northeast
+120 (degrees) = southeast to northwest
+180 (degrees) = east to west
+240 (degrees) = northeast to southwest
+300 (degrees) = northwest to southeast
+
+[DE]
+
+Kurzanleitung der Walkcycle:
+
+Die Walkcycle bestehen aus 28 Frames.
+
+Frame 01 ist der Standframe.
+Die Frames 01-04 sind die Anfangsbewegung aus dem Stand heraus
+Frame 05-24 sind der eigentliche Walkcycle und dadurch unendlich aneinander reihbar
+
+Die bezeichnung der Ordner ist noch an das Fallout-Hex-System angelehnt, lässt sich 
+jedoch auch fast zu 100% auf den geä#nderten Winkel übertragen. 
+Dabei kommen die englischen bezeichnungen für die Himmelsrichtung zum einsatz.
+Walkcycle-AK47-E-W = Char Walkcycle mit AK47 von Osten nach Westen.
+
+

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<map id="TechdemoMap" format="1.0">
+
+	<metadata>
+		<param type="text" name="Name">openanno-test-map.xml</param>
+		<param type="id" name="Version">1</param>
+		<param type="text" name="Comment">Official FIFE 2007.2 techdemo map. Some demonstration and some fun for modders, not more, not less :-)</param>
+		<param type="text" name="Author">chewie</param>
+		<param type="id" name="_START_ELEVATION">1</param>
+	</metadata>
+
+	<!-- Load tile object datasets -->
+	<!-- street & city underground -->
+	<dataset type="XML" source="techdemo/datasets/tiles/test.xml" />
+
+	<!-- Load object datasets -->
+	<!-- test.xml -->
+	<dataset type="XML" source="techdemo/datasets/objects/test.xml" />
+	
+	<!-- Map specific object -->
+
+	<!-- Load agent datasets -->
+	<dataset type="XML" source="techdemo/datasets/agents/humans/gunner.xml" />
+
+	<elevation id="TechdemoMapElevation">
+
+		<metadata>
+			<param name="_START_POSITION" type="Point"><x>0</x><y>0</y></param>
+		</metadata>
+
+		<!-- TILE LAYER -->
+		<layer id="TechdemoMapTileLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+				<!-- tile layer has x=11 and y=15 tiles -->
+				<i o="21001" x="0" y="-1" />
+					<i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+				<i o="21001" x="0" y="0" />
+					<i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+				<i o="21001" x="0" y="1" />
+					<i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+				<i o="21002" x="0" y="2" />
+					<i o="21002" /><i o="21002" /><i o="21002" /><i o="21002" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+				<i o="21001" x="0" y="3" />
+					<i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+				<i o="21001" x="0" y="4" />
+					<i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+				<i o="21001" x="0" y="5" />
+					<i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" /><i o="21001" />
+			</instances>		
+		</layer>
+
+		<!-- OBJECT LAYER -->
+		<layer id="TechdemoMapObjectLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+				<i o="Tent" x="1" y="0" />
+				<i o="Tent" x="4" y="0" />
+				<i o="char_40height" x="3" y="3" />
+				</instances>
+		</layer>
+		
+		<!-- Agentlayer (to fake z-pos)-->
+		<layer id="TechdemoAgentLayer" grid_type="square" scaling="0.1">
+		
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>	
+			
+			<instances>
+				<i o="PC" x="0" y="0"/>
+			</instances>	
+		</layer>
+	</elevation>
+</map>

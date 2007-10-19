@@ -1,0 +1,26 @@
+<animation delay="50" id="2001">
+	<frame source="techdemo/animations/agents/gunner/walk/300/005.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/006.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/007.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/008.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/009.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/010.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/011.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/012.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/013.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/014.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/015.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/016.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/017.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/018.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/019.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/020.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/021.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/022.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/023.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/024.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/025.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/026.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/027.png" />
+	<frame source="techdemo/animations/agents/gunner/walk/300/028.png" />
+</animation>

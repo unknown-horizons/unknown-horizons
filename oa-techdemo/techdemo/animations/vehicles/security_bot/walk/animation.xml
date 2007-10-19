@@ -1,0 +1,26 @@
+<animation delay="50" id="2001">
+<!--	<frame source="techdemo/animations/vehicles/security_bot/walk/001.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/002.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/003.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/004.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/005.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/006.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/007.png" /> -->
+	<frame source="techdemo/animations/vehicles/security_bot/walk/008.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/009.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/010.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/011.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/012.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/013.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/014.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/015.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/016.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/017.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/018.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/019.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/020.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/021.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/022.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/023.png" />
+	<frame source="techdemo/animations/vehicles/security_bot/walk/024.png" />	
+</animation>
