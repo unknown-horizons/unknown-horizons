@@ -284,7 +284,7 @@ class World(object):
 		self.audiomanager = self.engine.getAudioManager()
 
 		# play track as background music
-		self.audiomanager.setAmbientSound('techdemo/audio/music/lagerhalle5.ogg')
+		self.audiomanager.setAmbientSound('techdemo/audio/music/music2.ogg')
 			
 	def run(self):
 		evtlistener = MyEventListener(self)
