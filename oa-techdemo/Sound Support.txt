@@ -1,1 +1,5 @@
-to have sound you must install openal :)
+To have sound you must install openal :)
+
+Download Link
+
+http://www.openal.org/downloads.html
