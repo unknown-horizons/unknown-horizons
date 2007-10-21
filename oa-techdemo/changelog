@@ -1,0 +1,55 @@
+Change Log:
+
+2007.10.21 Rev. 12 by LinuxDonald
+	*/trunk/oa-techdemo/changelog: added changelog
+
+2007.10.21 Rev. 11 by LinuxDonald
+	*/trunk/oa-techdemo/oa-techdemo.py: sync to fife updates
+
+2007.10.20 Rev. 10 by LinuxDonald
+	*/trunk/musik/musik/Creative Commons Attribution-NonCommercial-NoDerivs 2.0 License.txt: added Licens
+	*/trunk/musik/music.ogg, /trunk/musik/music2.ogg, /trunk/musik/Newfrontier.ogg, /trunk/musik/Nightdream.ogg, 
+	/trunk/musik/seafight.ogg, /trunk/musik/Waves.ogg: added openanno musik
+
+2007.10.20 Rev. 9 by LinuxDonald
+	*/trunk/musik: added openanno musik folder
+
+2007.10.20 Rev. 8 by LinuxDonald
+	*/trunk/oa-techdemo/oalinst.exe: delete the .exe
+	*/trunk/oa-techdemo/Sound Support.txt: added download link for openal
+	
+2007.10.19 Rev. 7 LinuxDonald
+	*/trunk/oa-techdemo/oalinst.exe, /trunk/oa-techdemo/Sound Support.txt:
+	added openal
+
+2007.10.19 Rev. 6 by phiker
+	Changed music track
+	*/trunk/oa-techdemo/techdemo/datasets/agents/humans/gunner.xml, /trunk/oa-techdemo/techdemo/audio/music/LICENSE, 
+	/trunk/oa-techdemo/oa-techdemo.py, /trunk/oa-techdemo/techdemo/maps/oa-test-map.xml, /trunk/oa-techdemo/techdemo/datasets/tiles/test.xml, 		/trunk/	oa-techdemo/techdemo/fonts/LICENSE, /trunk/oa-techdemo/techdemo/maps/savefile.xml, /trunk/oa-techdemo/techdemo/datasets/objects/test.xml:
+	Set svn:eol-style native
+
+2007.10.19 Rev. 5 by LinuxDonald
+	*/trunk/oa-techdemo/techdemo/audio/music/lagerhalle5.ogg: delete old music
+	*/trunk/oa-techdemo/techdemo/audio/music/music2.ogg: changed musik to openanno musik
+	*/trunk/oa-techdemo/oa-techdemo.py: changed the music file
+
+2007.10.19 Rev. 4 by LinuxDonald
+	*/trunk/oa-techdemo/techdemo/animations/agents/*.*, /trunk/oa-techdemo/techdemo/animations/vehicles/*.*, 
+	/trunk/oa-techdemo/techdemo/maps/openanno-test-maü.xml; /trunk/oa-techdemo/oa-techdemo.py:
+	*deleted the agent
+
+2007.10.19 Rev. 3 by LinuxDonald
+	
+	*/trunk/oa-techdemo/techdemo: *Added first openanno techdemo.
+	ToDo:
+	 -Delete the Agent
+	 -Rename?
+	 -Making an better Map :)
+
+2007.10.19 Rev. 2 by phiker
+	
+	*/, /trunk, branches, tag:
+	*Added base directory structure and moved FIFE external to trunk
+
+2007.10.19 Rev. 1:
+
