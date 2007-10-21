@@ -233,7 +233,7 @@ class World(object):
 		self.reactor = InstanceReactor()
 		logman = self.engine.getLogManager()
 		self.log = fifelog.LogManager(self.engine, promptlog=True, filelog=False)
-		#self.log.setVisibleModules('hexgrid')
+		#self.log.setVisibleModules('instance', 'view', 'pool', 'View::View')
 
 		self.eventmanager = self.engine.getEventManager()
 		self.model = self.engine.getModel()
@@ -253,7 +253,7 @@ class World(object):
 		# little workaround to show the agent above mapobjects
 		self.agent_layer = self.elevation.getLayersByString("id", "TechdemoAgentLayer")[0]
 		
-		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().getStaticImageIndexByAngle(0))
+		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
 		self.screen_cell_h = img.getHeight()
 		
