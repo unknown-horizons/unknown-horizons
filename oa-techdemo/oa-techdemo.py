@@ -33,7 +33,7 @@ The FIFE OpenAnno teams
 
 class InstanceReactor(fife.InstanceListener):
 	def OnActionFinished(self, instance, action):
-		pass
+		instance.act_here('idle', instance.getFacingLocation(), True)
 
 SCROLL_MODIFIER = 0.1
 class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListener, 
@@ -247,11 +247,11 @@ class World(object):
 	def create_world(self, path):
 		self.map = loadMapFile(path, self.engine)
 	
-		self.elevation = self.map.getElevationsByString("id", "TechdemoMapElevation")[0]
-		self.layer = self.elevation.getLayersByString("id", "TechdemoMapTileLayer")[0]
+		self.elevation = self.map.getElevations("id", "TechdemoMapElevation")[0]
+		self.layer = self.elevation.getLayers("id", "TechdemoMapTileLayer")[0]
 		
 		# little workaround to show the agent above mapobjects
-		self.agent_layer = self.elevation.getLayersByString("id", "TechdemoAgentLayer")[0]
+		self.agent_layer = self.elevation.getLayers("id", "TechdemoAgentLayer")[0]
 		
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
