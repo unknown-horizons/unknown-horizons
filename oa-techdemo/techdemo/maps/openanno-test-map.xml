@@ -62,10 +62,8 @@
 			</metadata>
 
 			<instances>
-				<i o="Tent" x="1" y="0" />
-				<i o="Tent" x="4" y="0" />
 				<i o="char_40height" x="3" y="3" />
-				</instances>
+			</instances>
 		</layer>
 		
 		<!-- Agentlayer (to fake z-pos)-->
@@ -76,6 +74,8 @@
 			</metadata>	
 			
 			<instances>
+				<i o="Tent" x="1" y="0" />
+				<i o="Tent" x="4" y="0" />
 			</instances>	
 		</layer>
 	</elevation>
