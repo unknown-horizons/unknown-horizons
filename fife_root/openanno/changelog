@@ -1,5 +1,9 @@
 Change Log:
 
+2007.10.24 Rev. 16 by LinuxDonald
+	*/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/datasets/maps/openanno-test-map-savefile.xml:
+	Added seaLayer, resourceLayer, terrainLayer but it is coment out
+	
 2007.10.24 Rev. 15 by LinuxDonald
 	Rewritet (changed from techdemo to pre-alpha)
 

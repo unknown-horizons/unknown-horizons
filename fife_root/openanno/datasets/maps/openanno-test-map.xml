@@ -32,6 +32,18 @@
 			<param name="_START_POSITION" type="Point"><x>0</x><y>0</y></param>
 		</metadata>
 
+		<!-- seaLayer - open water tiles -->
+		<!--<layer id="seaLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+			
+			</instances>
+		</layer> -->
+		
 		<!-- landLayer - ground tiles for islands -->
 		<layer id="landLayer" grid_type="square" scaling="0.1">
 
@@ -57,6 +69,30 @@
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 			</instances>		
 		</layer>
+
+		<!-- resourceLayer - abstract layer to define resource deposits -->
+		<!--<layer id="resourceLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+			
+			</instances>
+		</layer> -->
+
+		<!-- terrainLayer - tile gfx for rocks, mountains, resource deposits and so on -->
+		<!--<layer id="terrainLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+			
+			</instances>
+		</layer> -->
 
 		<!-- buildLayer - gfx for everything that can be build, like companies, streets, fields, TREES! etc -->
 		<layer id="buildLayer" grid_type="square" scaling="0.1">
