@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<map id="TechdemoMap" format="1.0">
+
+	<metadata>
+		<param type="text" name="Name">openanno-test-map.xml</param>
+		<param type="id" name="Version">1</param>
+		<param type="text" name="Comment">OpenAnno first Pre-Alpha Map/Version</param>
+		<param type="text" name="Author">OpenAnno Team</param>
+		<param type="id" name="_START_ELEVATION">1</param>
+	</metadata>
+
+	<!-- Load tile object datasets -->
+	<!-- lands.xml -->
+	<dataset type="XML" source="openanno/datasets/base/land/gorund.xml" />
+
+	<!-- Load buildings/residents datasets -->
+	<!-- residents.xml -->
+	<dataset type="XML" source="openanno/datasets/buildings/residents/residents.xml" />
+
+	<!-- Load object datasets -->
+	<!-- streets.xml -->
+	<dataset type="XML" source="openanno/datasets/buildings/streets/streets.xml" />
+	
+	<!-- Map specific object -->
+
+	<!-- Load agent ( the agent is in fife an char) datasets -->
+	<dataset type="XML" source="openanno/datasets/sprites/chars/char.xml" />
+
+	<elevation id="OpenAnnoMapElevation">
+
+		<metadata>
+			<param name="_START_POSITION" type="Point"><x>0</x><y>0</y></param>
+		</metadata>
+
+		<!-- landLayer - ground tiles for islands -->
+		<layer id="landLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+				<!-- tile layer has x=11 and y=15 tiles -->
+				<i o="1" x="0" y="-1" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="1" x="0" y="0" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="1" x="0" y="1" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="1" x="0" y="2" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="1" x="0" y="3" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="1" x="0" y="4" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="1" x="0" y="5" />
+					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+			</instances>		
+		</layer>
+
+		<!-- buildLayer - gfx for everything that can be build, like companies, streets, fields, TREES! etc -->
+		<layer id="buildLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+				<i o="tent" x="1" y="0" />
+				<i o="tent" x="4" y="0" />
+				<i o="path_combined_64" x="0" y="2" />
+				<i o="path_combined_64" x="1" y="2" />
+				<i o="path_combined_64" x="2" y="2" />
+				
+			</instances>
+		</layer>
+		
+		<!-- spriteLayer - gfx for char animations including units-->
+		<layer id="spriteLayer" grid_type="square" scaling="0.1">
+		
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>	
+			
+			<instances>
+			<i o="char_40height" x="3" y="3" />
+			</instances>	
+		</layer>
+	</elevation>
+</map>

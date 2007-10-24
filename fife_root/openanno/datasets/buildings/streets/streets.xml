@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<dataset id="streettiles" type="Embedded" format="1.0">
+	<metadata>
+		<param type="text" name="Name">street.xml</param>
+		<param type="id" name="Version">1</param>
+	</metadata>
+
+	<!-- Ground tiles -->
+	<object id="path_combined_64">
+		<image source="openanno/gfx/buildings/streets/path_combined_64.png" direction="0" />
+	</object>
+
+</dataset>

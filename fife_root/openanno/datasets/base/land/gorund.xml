@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<dataset id="groundtiles" type="Embedded" format="1.0">
+	<metadata>
+		<param type="text" name="Name">ground.xml</param>
+		<param type="id" name="Version">1</param>
+	</metadata>
+
+	<!-- Ground tiles -->
+	<object id="1">
+		<image source="openanno/gfx/base/land/groundtile_64.png" direction="0" />
+	</object>
+
+</dataset>
