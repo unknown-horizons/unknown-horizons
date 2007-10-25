@@ -1,4 +1,8 @@
 Change Log:
+2007.10.26 Rev. 19 by LinuxDonald
+	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno/datasets/map/openanno-test-map.xml,
+	/trunk/fife_root/openanno/sprites/chars/animations/animations.xml: activeted controling the char
+	
 2007.10.25 Rev. 18 by LinuxDonald
 	*/trunk/fife_root/openanno.py: sync with fife svn
 

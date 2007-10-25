@@ -299,6 +299,14 @@ class World(object):
 		camloc = fife.Location()
 		evtlistener = MyEventListener(self)
 		self.engine.initializePumping()
+		# no movement at start
+		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
+		
+		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
+		#self.agent.addListener(self.reactor)
+		self.agent.act_here('walk', self.target, True)
+		#for g in self.agent_layer.getInstances('id', 'char_ani'):
+			#g.act_here('walk', self.target, True)
 
 		showTileOutline = False
 		smallcamx = self.cameras['small'].getLocation().getExactLayerCoordinates().x
@@ -308,11 +316,11 @@ class World(object):
 			self.engine.pump()
 			
 			# agent movement
-			#if (evtlistener.newTarget):
-			#	ec = self.cameras['main'].toElevationCoordinates(evtlistener.newTarget)
-			#	self.target.setElevationCoordinates(ec)
-			#	self.agent.act('walk', self.target, 0.5)
-			#	evtlistener.newTarget = None
+			if (evtlistener.newTarget):
+				ec = self.cameras['main'].toElevationCoordinates(evtlistener.newTarget)
+				self.target.setElevationCoordinates(ec)
+				self.agent.act('walk', self.target, 0.5)
+				evtlistener.newTarget = None
 			
 			if (evtlistener.quitRequested):
 				break
