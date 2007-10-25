@@ -1,0 +1,12 @@
+<dataset id="char_ani" type="Embedded" format="1.0">
+	<object id="char_ani" blocking="1">
+		<action id="walk">
+		<animation source="openanno/datasets/sprites/chars/animations/char/char.xml" direction='0' />
+			<animation source="openanno/datasets/sprites/chars/animations/char/char.xml" direction='60' />
+			<animation source="openanno/datasets/sprites/chars/animations/char/char.xml" direction='120' />
+			<animation source="openanno/datasets/sprites/chars/animations/char/char.xml" direction='180' />
+			<animation source="openanno/datasets/sprites/chars/animations/char/char.xml" direction='240' />
+			<animation source="openanno/datasets/sprites/chars/animations/char/char.xml" direction='300' />
+		</action>
+	</object>
+</dataset>

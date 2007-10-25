@@ -1,4 +1,9 @@
 Change Log:
+2007.10.25 Rev. 17 by LinuxDonald
+	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno/datasets/map/openanno-test-map.xml, 
+	/trunk/fife_root/openanno/sprites/chars/animations/animations.xml, /trunk/fife_root/openanno/sprites/chars/animations/char/char.xml,
+	/trunk/fife_root/openanno/gfx/sprites/chars/animations/char/char.png: 
+	added first by pc controling unit they goes from x to y but at the momnet it`s coment out and not tested
 
 2007.10.24 Rev. 16 by LinuxDonald
 	*/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/datasets/maps/openanno-test-map-savefile.xml:

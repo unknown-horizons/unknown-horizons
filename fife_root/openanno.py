@@ -295,6 +295,13 @@ class World(object):
 		while True:
 			self.engine.pump()
 			
+			# agent movement
+			#if (evtlistener.newTarget):
+			#	ec = self.camera.toElevationCoordinates(evtlistener.newTarget)
+			#	self.target.setElevationCoordinates(ec)
+			#	self.agent.act('walk', self.target, 0.5)
+			#	evtlistener.newTarget = None
+			
 			if (evtlistener.quitRequested):
 				break
 
