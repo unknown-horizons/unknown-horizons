@@ -1,0 +1,7 @@
+<dataset id="water_ani" type="Embedded" format="1.0">
+	<object id="water_ani" blocking="0">
+		<action id="walk">
+			<animation source="openanno/datasets/base/water/animations/water.xml" direction='0' />
+		</action>
+	</object>
+</dataset>

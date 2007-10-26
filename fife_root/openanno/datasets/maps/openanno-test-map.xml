@@ -13,6 +13,11 @@
 	<!-- lands.xml -->
 	<dataset type="XML" source="openanno/datasets/base/land/gorund.xml" />
 
+	<!-- Load tile object datasets -->
+	<!-- water.xml -->
+	<dataset type="XML" source="openanno/datasets/base/water/animations/water_ani.xml" />
+	<dataset type="XML" source="openanno/datasets/base/water/water.xml" />
+	
 	<!-- Load buildings/residents datasets -->
 	<!-- residents.xml -->
 	<dataset type="XML" source="openanno/datasets/buildings/residents/residents.xml" />
@@ -35,18 +40,6 @@
 			<param name="_START_POSITION" type="Point"><x>0</x><y>0</y></param>
 		</metadata>
 
-		<!-- seaLayer - open water tiles -->
-		<!--<layer id="seaLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-
-			<instances>
-			
-			</instances>
-		</layer> -->
-		
 		<!-- landLayer - ground tiles for islands -->
 		<layer id="landLayer" grid_type="square" scaling="0.1">
 
@@ -94,6 +87,18 @@
 			</instances>		
 		</layer>
 
+		<!-- seaLayer - open water tiles -->
+		<layer id="seaLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+
+			<instances>
+				<i o="water" x="5" y="0" />
+			</instances>
+		</layer>
+		
 		<!-- resourceLayer - abstract layer to define resource deposits -->
 		<!--<layer id="resourceLayer" grid_type="square" scaling="0.1">
 
@@ -131,7 +136,6 @@
 				<i o="path_combined_64" x="0" y="2" />
 				<i o="path_combined_64" x="1" y="2" />
 				<i o="path_combined_64" x="2" y="2" />
-				
 			</instances>
 		</layer>
 		
