@@ -234,9 +234,6 @@ class World(object):
 		self.engine = engine
 		self.renderbackend = self.engine.getRenderBackend()
 		self.reactor = InstanceReactor()
-		logman = self.engine.getLogManager()
-		self.log = fifelog.LogManager(self.engine, promptlog=True, filelog=False)
-		#self.log.setVisibleModules('instance', 'view', 'pool', 'View::View')
 
 		self.eventmanager = self.engine.getEventManager()
 		self.model = self.engine.getModel()
@@ -359,6 +356,9 @@ class World(object):
 
 if __name__ == '__main__':
 	engine = fife.Engine()
+	log = fifelog.LogManager(engine, promptlog=True, filelog=False)
+	#log.setVisibleModules('all')
+	
 	gui = Gui(engine)
 	w = World(engine, gui)
 
