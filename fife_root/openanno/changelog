@@ -1,13 +1,16 @@
 Change Log:
 
+2007.10.27 Rev. 27 by LinuxDonald
+	*/trunk/fife_root/openanno.py: sync with fife
+
 2007.10.27 Rev. 26 by LinuxDonald
 	/trunk/fife_root/openanno/gfx/base/land/ice/*.*: rezized
 	
 2007.10.27 Rev. 26 by LinuxDonald
-	Test
+	Fix Test Ice Tiles
 	
 2007.10.27 Rev. 26 by LinuxDonald
-	Test
+	Test Ice Tiles
 	
 2007.10.27 Rev. 26 by LinuxDonald
 	*/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/gfx/base/land/ice/*.*, 
