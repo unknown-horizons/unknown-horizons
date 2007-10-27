@@ -10,10 +10,11 @@
 	</metadata>
 
 	<!-- Load tile object datasets -->
-	<!-- lands.xml -->
+	<!-- lands.xml , beach.xml and ice.xml-->
 	<dataset type="XML" source="openanno/datasets/base/land/gorund.xml" />
 	<dataset type="XML" source="openanno/datasets/base/land/beach.xml" />
-
+	<dataset type="XML" source="openanno/datasets/base/land/ice.xml" />
+	
 	<!-- Load tile object datasets -->
 	<!-- water.xml -->
 	<dataset type="XML" source="openanno/datasets/base/water/animations/water_ani.xml" />
@@ -49,6 +50,12 @@
 			</metadata>
 
 			<instances>
+				<i o="beach_w-n" x="-3" y="-2" />
+				<i o="beach_west" x="-3" y="-1" />
+					<i o="beach_west" x="-3" y="0" /><i o="beach_west" x="-3" y="1" /><i o="beach_west" x="-3" y="2" /><i o="beach_west" x="-3" y="3" /><i o="beach_west" x="-3" y="4" /><i o="beach_west" x="-3" y="5" />
+				<i o="beach_s-w" x="-3" y="6" />
+				<i o="beach_north" x="-2" y="-2" />
+					<i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" />
 				<i o="1" x="-2" y="-1" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="0" />
@@ -63,6 +70,8 @@
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="5" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
+				<i o="beach_south" x="-2" y="6" />
+					<i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" />
 				<i o="1" x="-2" y="8" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="9" />
@@ -79,7 +88,10 @@
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="15" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				
+				<i o="beach_n-e" x="12" y="-2" />
+				<i o="beach_east" x="12" y="-1" />
+					<i o="beach_east" x="12" y="0" /><i o="beach_east" x="12" y="1" /><i o="beach_east" x="12" y="2" /><i o="beach_east" x="12" y="3" /><i o="beach_east" x="12" y="4" /><i o="beach_east" x="12" y="5" />
+				<i o="beach_e-s" x="12" y="6" />
 			</instances>		
 		</layer>
 
@@ -115,29 +127,6 @@
 				<i o="water" x="-4" y="16" /><i o="water" x="13" y="16" />
 				<i o="water" x="-4" y="17" />
 					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
-			</instances>
-		</layer>
-		
-		<!-- beachLayer - open water tiles -->
-		<layer id="beachLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-			
-			<instances>
-				<i o="beach_north" x="-2" y="-2" />
-					<i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" />
-				<i o="beach_n-e" x="12" y="-2" />
-				<i o="beach_east" x="12" y="-1" />
-					<i o="beach_east" x="12" y="0" /><i o="beach_east" x="12" y="1" /><i o="beach_east" x="12" y="2" /><i o="beach_east" x="12" y="3" /><i o="beach_east" x="12" y="4" /><i o="beach_east" x="12" y="5" />
-				<i o="beach_e-s" x="12" y="6" />
-				<i o="beach_south" x="-2" y="6" />
-					<i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" />
-				<i o="beach_s-w" x="-3" y="6" />
-				<i o="beach_west" x="-3" y="-1" />
-					<i o="beach_west" x="-3" y="0" /><i o="beach_west" x="-3" y="1" /><i o="beach_west" x="-3" y="2" /><i o="beach_west" x="-3" y="3" /><i o="beach_west" x="-3" y="4" /><i o="beach_west" x="-3" y="5" />
-				<i o="beach_w-n" x="-3" y="-2" />
 			</instances>
 		</layer>
 		
