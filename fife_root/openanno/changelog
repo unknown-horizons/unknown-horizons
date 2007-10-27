@@ -1,5 +1,14 @@
 Change Log:
 
+2007.10.27 Rev. 25 by LinuxDonald
+	Updatet the Changelog
+
+2007.10.27 Rev. 24 by LinuxDonald
+	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno_settings.py: sync with fife engine
+	*/trunk/fife_root/openanno/datasets/base/land/beach.xml, /trunk/fife_root/openanno/datasets/maps/openanno-test-map-savefile.xml,
+	/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/gfx/base/land/beach/*.*:
+	Added beach and updatet the Map
+
 2007.10.27 Rev. 23 by LinuxDonald
 	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno_settings.py: sync with fife engine
 
