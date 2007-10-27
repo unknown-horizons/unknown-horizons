@@ -1,6 +1,9 @@
 Change Log:
 
-2007.10.28 Rev. 32 by LinuxDonald
+2007.10.28 Rev. 33 by LinuxDonald
+	*/trunk/fife_root/openanno/gfx/base/land/ice/*.*, corrected alpha channel
+
+2007.10.27 Rev. 32 by LinuxDonald
 	fixed the Changelog
 
 2007.10.27 Rev. 31 by LinuxDonald
