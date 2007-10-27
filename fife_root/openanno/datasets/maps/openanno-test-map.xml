@@ -12,6 +12,7 @@
 	<!-- Load tile object datasets -->
 	<!-- lands.xml -->
 	<dataset type="XML" source="openanno/datasets/base/land/gorund.xml" />
+	<dataset type="XML" source="openanno/datasets/base/land/beach.xml" />
 
 	<!-- Load tile object datasets -->
 	<!-- water.xml -->
@@ -48,7 +49,6 @@
 			</metadata>
 
 			<instances>
-				<!-- tile layer has x=11 and y=15 tiles -->
 				<i o="1" x="-2" y="-1" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="0" />
@@ -62,10 +62,6 @@
 				<i o="1" x="-2" y="4" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="5" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="6" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="7" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="8" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
@@ -83,7 +79,7 @@
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="15" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-					
+				
 			</instances>		
 		</layer>
 
@@ -95,7 +91,53 @@
 			</metadata>
 
 			<instances>
-				<i o="water" x="5" y="0" />
+				<i o="water" x="-4" y="-3" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				<i o="water" x="-4" y="-2" /><i o="water" x="13" y="-2" />
+				<i o="water" x="-4" y="-1" /><i o="water" x="13" y="-1" />
+				<i o="water" x="-4" y="0" /><i o="water" x="13" y="0" />
+				<i o="water" x="-4" y="1" /><i o="water" x="13" y="1" />
+				<i o="water" x="-4" y="2" /><i o="water" x="13" y="2" />
+				<i o="water" x="-4" y="3" /><i o="water" x="13" y="3" />
+				<i o="water" x="-4" y="4" /><i o="water" x="13" y="4" />
+				<i o="water" x="-4" y="5" /><i o="water" x="13" y="5" />
+				<i o="water" x="-4" y="6" /><i o="water" x="13" y="6" />
+				<i o="water" x="-4" y="7" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				<i o="water" x="-4" y="8" /><i o="water" x="13" y="8" />
+				<i o="water" x="-4" y="9" /><i o="water" x="13" y="9" />
+				<i o="water" x="-4" y="10" /><i o="water" x="13" y="10" />
+				<i o="water" x="-4" y="11" /><i o="water" x="13" y="11" />
+				<i o="water" x="-4" y="12" /><i o="water" x="13" y="12" />
+				<i o="water" x="-4" y="13" /><i o="water" x="13" y="13" />
+				<i o="water" x="-4" y="14" /><i o="water" x="13" y="14" />
+				<i o="water" x="-4" y="15" /><i o="water" x="13" y="15" />
+				<i o="water" x="-4" y="16" /><i o="water" x="13" y="16" />
+				<i o="water" x="-4" y="17" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+			</instances>
+		</layer>
+		
+		<!-- beachLayer - open water tiles -->
+		<layer id="beachLayer" grid_type="square" scaling="0.1">
+
+			<metadata>
+				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
+			</metadata>
+			
+			<instances>
+				<i o="beach_north" x="-2" y="-2" />
+					<i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" />
+				<i o="beach_n-e" x="12" y="-2" />
+				<i o="beach_east" x="12" y="-1" />
+					<i o="beach_east" x="12" y="0" /><i o="beach_east" x="12" y="1" /><i o="beach_east" x="12" y="2" /><i o="beach_east" x="12" y="3" /><i o="beach_east" x="12" y="4" /><i o="beach_east" x="12" y="5" />
+				<i o="beach_e-s" x="12" y="6" />
+				<i o="beach_south" x="-2" y="6" />
+					<i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" />
+				<i o="beach_s-w" x="-3" y="6" />
+				<i o="beach_west" x="-3" y="-1" />
+					<i o="beach_west" x="-3" y="0" /><i o="beach_west" x="-3" y="1" /><i o="beach_west" x="-3" y="2" /><i o="beach_west" x="-3" y="3" /><i o="beach_west" x="-3" y="4" /><i o="beach_west" x="-3" y="5" />
+				<i o="beach_w-n" x="-3" y="-2" />
 			</instances>
 		</layer>
 		
