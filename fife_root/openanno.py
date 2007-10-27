@@ -69,6 +69,8 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		self.quitRequested = False
 		self.newTarget = None
 		self.showTileOutline = False
+		self.showCoordinates = False
+		self.showSecondCamera = False
 				
 		# scroll support
 		self.horizscroll = 0
@@ -116,6 +118,10 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 			self.engine.getRenderBackend().captureScreen('techdemo.bmp')
 		elif (keystr == 't'):
 			self.showTileOutline = not self.showTileOutline
+		elif (keystr == 'c'):
+			self.showCoordinates = not self.showCoordinates
+		elif (keystr == 's'):
+			self.showSecondCamera = not self.showSecondCamera
 	
 	def keyReleased(self, evt):
 		pass
@@ -304,10 +310,15 @@ class World(object):
 		#for g in self.agent_layer.getInstances('id', 'char_ani'):
 			#g.act_here('walk', self.target, True)
 
-		showTileOutline = False
+		showTileOutline = evtlistener.showTileOutline
+		showCoordinates = evtlistener.showCoordinates
+		showSecondCamera = evtlistener.showSecondCamera
+		
 		smallcamx = self.cameras['small'].getLocation().getExactLayerCoordinates().x
 		initial_camx = smallcamx
 		cam_to_right = True
+		self.cameras['small'].setEnabled(showSecondCamera)
+				
 		while True:
 			self.engine.pump()
 			
@@ -333,22 +344,32 @@ class World(object):
 
 			smallcam_loc = self.cameras['small'].getLocation()
 			c = smallcam_loc.getExactLayerCoordinates()
-			if cam_to_right:
-				smallcamx = c.x = c.x+0.01
-				if smallcamx > initial_camx+2:
-					cam_to_right = False
-			else:
-				smallcamx = c.x = c.x-0.01
-				if smallcamx < initial_camx-2:
-					cam_to_right = True
-			smallcam_loc.setExactLayerCoordinates(c)
-			self.cameras['small'].setLocation(smallcam_loc)
+			if showSecondCamera:
+				if cam_to_right:
+					smallcamx = c.x = c.x+0.01
+					if smallcamx > initial_camx+2:
+						cam_to_right = False
+				else:
+					smallcamx = c.x = c.x-0.01
+					if smallcamx < initial_camx-2:
+						cam_to_right = True
+				smallcam_loc.setExactLayerCoordinates(c)
+				self.cameras['small'].setLocation(smallcam_loc)
 
 			self.gui.show_info(evtlistener.showInfo)
 			
 			if showTileOutline != evtlistener.showTileOutline:
 				self.view.getRenderer('GridRenderer').setEnabled(evtlistener.showTileOutline)
 				showTileOutline = evtlistener.showTileOutline
+				
+			if showCoordinates != evtlistener.showCoordinates:
+				renderer = self.view.getRenderer('CoordinateRenderer')
+				showCoordinates = evtlistener.showCoordinates
+				renderer.setEnabled(showCoordinates)
+				
+			if showSecondCamera != evtlistener.showSecondCamera:
+				showSecondCamera = evtlistener.showSecondCamera
+				self.cameras['small'].setEnabled(showSecondCamera)
 				
 		self.engine.finalizePumping()
 
@@ -384,3 +405,4 @@ if __name__ == '__main__':
 		w.create_background_music()
 	w.run()
 	w.save_world("openanno/datasets/maps/openanno-test-map-savefile.xml")
+

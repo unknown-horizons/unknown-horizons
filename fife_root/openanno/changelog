@@ -1,11 +1,14 @@
 Change Log:
 
-2007.10.26 Rev.22 by LinuxDonald
+2007.10.27 Rev. 23 by LinuxDonald
+	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno_settings.py: sync with fife engine
+
+2007.10.26 Rev. 22 by LinuxDonald
 	*/trunk/fife_root/openanno/gfx/base/land/ground.xml, /trunk/fife_root/openanno/sprites/chars/animations/animations.xml: removed lines
 	*/trunk/fife_root/openanno/gfx/base/water/animations/*.*, /trunk/fife_root/openanno/gfx/base/water/water.xml,
 	/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml: added water tile and water animation but water animation don´t work
 	
-2007.10.26 Rev.21 by LinuxDonald
+2007.10.26 Rev. 21 by LinuxDonald
 	*/trunk/fife_root/openanno/gfx/base/land/ice/*.*: sync with old-openanno grafiks
 
 2007.10.26 Rev. 21 by LinuxDonald
