@@ -76,6 +76,7 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		self.showTileOutline = TDS.TestCameraPlacement or TDS.TestCameraPlacementRotation
 		self.showCoordinates = TDS.TestCameraPlacement or TDS.TestCameraPlacementRotation
 		self.showSecondCamera = False
+		self.reloadRequested = False
 				
 		# scroll support
 		self.horizscroll = 0
@@ -127,6 +128,8 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 			self.showCoordinates = not self.showCoordinates
 		elif (keystr == 's'):
 			self.showSecondCamera = not self.showSecondCamera
+		elif (keystr == 'r'):
+			self.reloadRequested = True
 	
 	def keyReleased(self, evt):
 		pass
@@ -279,11 +282,18 @@ class World(object):
 		camloc = fife.Location()
 		camloc.setLayer(self.layer)
 		camloc.setLayerCoordinates(fife.ModelCoordinate(*coordinate))
-		camera.setLocation(camloc)
-		
 		camera.setViewPort(fife.Rect(*[int(c) for c in viewport]))
+		camera.setLocation(camloc)		
 		self.cameras[name] = camera
 		
+		# no movement at start
+		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
+		
+		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
+		#self.agent.addListener(self.reactor)
+		self.agent.act_here('walk', self.target, True)
+		#for g in self.agent_layer.getInstances('id', 'char_ani'):
+			#g.act_here('walk', self.target, True)		
 	
 	def adjust_views(self):
 		W = self.renderbackend.getScreenWidth()
@@ -308,15 +318,6 @@ class World(object):
 		evtlistener = MyEventListener(self)
 		self.engine.initializePumping()
 		
-		# no movement at start
-		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
-		
-		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
-		#self.agent.addListener(self.reactor)
-		self.agent.act_here('walk', self.target, True)
-		#for g in self.agent_layer.getInstances('id', 'char_ani'):
-			#g.act_here('walk', self.target, True)
-
 		showTileOutline = not evtlistener.showTileOutline
 		showCoordinates = not evtlistener.showCoordinates
 		showSecondCamera = not evtlistener.showSecondCamera
@@ -345,14 +346,27 @@ class World(object):
 			self.engine.pump()
 			
 			# agent movement
-			if (evtlistener.newTarget):
+			if evtlistener.newTarget:
 				ec = self.cameras['main'].toElevationCoordinates(evtlistener.newTarget)
 				self.target.setElevationCoordinates(ec)
 				self.agent.act('walk', self.target, 1.5)
 				evtlistener.newTarget = None
 			
-			if (evtlistener.quitRequested):
+			if evtlistener.quitRequested:
 				break
+			
+			if evtlistener.reloadRequested:
+				camcoords = self.cameras['main'].getLocation().getExactLayerCoordinates()
+				evtlistener.reloadRequested = False
+				self.model.clearMaps()
+				self.metamodel.clearDatasets()
+				self.create_world("techdemo/maps/city_new.xml")
+				self.view.clearCameras()
+				self.adjust_views()
+				self.cameras['small'].setEnabled(showSecondCamera)
+				camloc = self.cameras['main'].getLocation()
+				camloc.setExactLayerCoordinates(camcoords)
+				self.cameras['main'].setLocation(camloc)
 
 			# scroll the map with cursor keys
 			if (evtlistener.horizscroll or evtlistener.vertscroll):

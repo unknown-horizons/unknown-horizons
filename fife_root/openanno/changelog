@@ -1,5 +1,8 @@
 Change Log:
 
+2007.10.28 Rev. 35 by LinuxDonald
+	*/trunk/fife_root/openanno.py: sync with fife
+
 2007.10.28 Rev. 34 by LinuxDonald
 	*/trunk/fife_root/openanno.py: sync with fife
 	*/trunk/fife_root/openanno/datasets/buildings/street/streets.xml: added path_64 tile
