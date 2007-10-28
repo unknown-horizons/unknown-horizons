@@ -9,5 +9,9 @@
 	<object id="path_combined_64">
 		<image source="openanno/gfx/buildings/streets/path_combined_64.png" direction="0" />
 	</object>
+	
+	<object id="path_64">
+		<image source="openanno/gfx/buildings/streets/path_64.png" direction="0" />
+	</object>
 
 </dataset>

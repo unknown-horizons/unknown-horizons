@@ -30,9 +30,10 @@ Welcome to the OpenAnno techdemo, release Pre-Alpha\n\nKeybindings:
 
 
 Have fun,
-The FIFE OpenAnno teams
-        http://www.openanno.org
-	http://www.fifengine.de
+The FIFE and OpenAnno teams
+
+http://www.openanno.org
+http://www.fifengine.de
 '''
 
 

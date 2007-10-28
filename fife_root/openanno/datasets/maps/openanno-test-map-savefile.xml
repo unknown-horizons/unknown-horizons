@@ -9,6 +9,7 @@
 	</metadata>
 	<dataset source="openanno/datasets/base/land/gorund.xml" type="XML"></dataset>
 	<dataset source="openanno/datasets/base/land/beach.xml" type="XML"></dataset>
+	<dataset source="openanno/datasets/base/land/ice.xml" type="XML"></dataset>
 	<dataset source="openanno/datasets/base/water/animations/water_ani.xml" type="XML"></dataset>
 	<dataset source="openanno/datasets/base/water/water.xml" type="XML"></dataset>
 	<dataset source="openanno/datasets/buildings/residents/residents.xml" type="XML"></dataset>
@@ -24,6 +25,52 @@
 				<param name="_OVERLAY_IMAGE_OFFSET">00</param>
 			</metadata>
 			<instances>
+				<i x="-2" o="beach_north" y="-2"></i>
+				<i x="-1" o="beach_north" y="-2"></i>
+				<i x="0" o="beach_north" y="-2"></i>
+				<i x="1" o="beach_north" y="-2"></i>
+				<i x="2" o="beach_north" y="-2"></i>
+				<i x="3" o="beach_north" y="-2"></i>
+				<i x="4" o="beach_north" y="-2"></i>
+				<i x="5" o="beach_north" y="-2"></i>
+				<i x="6" o="beach_north" y="-2"></i>
+				<i x="7" o="beach_north" y="-2"></i>
+				<i x="8" o="beach_north" y="-2"></i>
+				<i x="9" o="beach_north" y="-2"></i>
+				<i x="10" o="beach_north" y="-2"></i>
+				<i x="11" o="beach_north" y="-2"></i>
+				<i x="12" o="beach_n-e" y="-2"></i>
+				<i x="12" o="beach_east" y="-1"></i>
+				<i x="12" o="beach_east" y="0"></i>
+				<i x="12" o="beach_east" y="1"></i>
+				<i x="12" o="beach_east" y="2"></i>
+				<i x="12" o="beach_east" y="3"></i>
+				<i x="12" o="beach_east" y="4"></i>
+				<i x="12" o="beach_east" y="5"></i>
+				<i x="12" o="beach_e-s" y="6"></i>
+				<i x="-2" o="beach_south" y="6"></i>
+				<i x="-1" o="beach_south" y="6"></i>
+				<i x="0" o="beach_south" y="6"></i>
+				<i x="1" o="beach_south" y="6"></i>
+				<i x="2" o="beach_south" y="6"></i>
+				<i x="3" o="beach_south" y="6"></i>
+				<i x="4" o="beach_south" y="6"></i>
+				<i x="5" o="beach_south" y="6"></i>
+				<i x="6" o="beach_south" y="6"></i>
+				<i x="7" o="beach_south" y="6"></i>
+				<i x="8" o="beach_south" y="6"></i>
+				<i x="9" o="beach_south" y="6"></i>
+				<i x="10" o="beach_south" y="6"></i>
+				<i x="11" o="beach_south" y="6"></i>
+				<i x="-3" o="beach_s-w" y="6"></i>
+				<i x="-3" o="beach_west" y="-1"></i>
+				<i x="-3" o="beach_west" y="0"></i>
+				<i x="-3" o="beach_west" y="1"></i>
+				<i x="-3" o="beach_west" y="2"></i>
+				<i x="-3" o="beach_west" y="3"></i>
+				<i x="-3" o="beach_west" y="4"></i>
+				<i x="-3" o="beach_west" y="5"></i>
+				<i x="-3" o="beach_w-n" y="-2"></i>
 				<i x="-2" o="1" y="-1"></i>
 				<i x="-1" o="1" y="-1"></i>
 				<i x="0" o="1" y="-1"></i>
@@ -122,118 +169,150 @@
 				<i x="9" o="1" y="5"></i>
 				<i x="10" o="1" y="5"></i>
 				<i x="11" o="1" y="5"></i>
-				<i x="-2" o="1" y="8"></i>
-				<i x="-1" o="1" y="8"></i>
-				<i x="0" o="1" y="8"></i>
-				<i x="1" o="1" y="8"></i>
-				<i x="2" o="1" y="8"></i>
-				<i x="3" o="1" y="8"></i>
-				<i x="4" o="1" y="8"></i>
-				<i x="5" o="1" y="8"></i>
-				<i x="6" o="1" y="8"></i>
-				<i x="7" o="1" y="8"></i>
-				<i x="8" o="1" y="8"></i>
-				<i x="9" o="1" y="8"></i>
-				<i x="10" o="1" y="8"></i>
-				<i x="11" o="1" y="8"></i>
-				<i x="-2" o="1" y="9"></i>
-				<i x="-1" o="1" y="9"></i>
-				<i x="0" o="1" y="9"></i>
-				<i x="1" o="1" y="9"></i>
-				<i x="2" o="1" y="9"></i>
-				<i x="3" o="1" y="9"></i>
-				<i x="4" o="1" y="9"></i>
-				<i x="5" o="1" y="9"></i>
-				<i x="6" o="1" y="9"></i>
-				<i x="7" o="1" y="9"></i>
-				<i x="8" o="1" y="9"></i>
-				<i x="9" o="1" y="9"></i>
-				<i x="10" o="1" y="9"></i>
-				<i x="11" o="1" y="9"></i>
-				<i x="-2" o="1" y="10"></i>
-				<i x="-1" o="1" y="10"></i>
-				<i x="0" o="1" y="10"></i>
-				<i x="1" o="1" y="10"></i>
-				<i x="2" o="1" y="10"></i>
-				<i x="3" o="1" y="10"></i>
-				<i x="4" o="1" y="10"></i>
-				<i x="5" o="1" y="10"></i>
-				<i x="6" o="1" y="10"></i>
-				<i x="7" o="1" y="10"></i>
-				<i x="8" o="1" y="10"></i>
-				<i x="9" o="1" y="10"></i>
-				<i x="10" o="1" y="10"></i>
-				<i x="11" o="1" y="10"></i>
-				<i x="-2" o="1" y="11"></i>
-				<i x="-1" o="1" y="11"></i>
-				<i x="0" o="1" y="11"></i>
-				<i x="1" o="1" y="11"></i>
-				<i x="2" o="1" y="11"></i>
-				<i x="3" o="1" y="11"></i>
-				<i x="4" o="1" y="11"></i>
-				<i x="5" o="1" y="11"></i>
-				<i x="6" o="1" y="11"></i>
-				<i x="7" o="1" y="11"></i>
-				<i x="8" o="1" y="11"></i>
-				<i x="9" o="1" y="11"></i>
-				<i x="10" o="1" y="11"></i>
-				<i x="11" o="1" y="11"></i>
-				<i x="-2" o="1" y="12"></i>
-				<i x="-1" o="1" y="12"></i>
-				<i x="0" o="1" y="12"></i>
-				<i x="1" o="1" y="12"></i>
-				<i x="2" o="1" y="12"></i>
-				<i x="3" o="1" y="12"></i>
-				<i x="4" o="1" y="12"></i>
-				<i x="5" o="1" y="12"></i>
-				<i x="6" o="1" y="12"></i>
-				<i x="7" o="1" y="12"></i>
-				<i x="8" o="1" y="12"></i>
-				<i x="9" o="1" y="12"></i>
-				<i x="10" o="1" y="12"></i>
-				<i x="11" o="1" y="12"></i>
-				<i x="-2" o="1" y="13"></i>
-				<i x="-1" o="1" y="13"></i>
-				<i x="0" o="1" y="13"></i>
-				<i x="1" o="1" y="13"></i>
-				<i x="2" o="1" y="13"></i>
-				<i x="3" o="1" y="13"></i>
-				<i x="4" o="1" y="13"></i>
-				<i x="5" o="1" y="13"></i>
-				<i x="6" o="1" y="13"></i>
-				<i x="7" o="1" y="13"></i>
-				<i x="8" o="1" y="13"></i>
-				<i x="9" o="1" y="13"></i>
-				<i x="10" o="1" y="13"></i>
-				<i x="11" o="1" y="13"></i>
-				<i x="-2" o="1" y="14"></i>
-				<i x="-1" o="1" y="14"></i>
-				<i x="0" o="1" y="14"></i>
-				<i x="1" o="1" y="14"></i>
-				<i x="2" o="1" y="14"></i>
-				<i x="3" o="1" y="14"></i>
-				<i x="4" o="1" y="14"></i>
-				<i x="5" o="1" y="14"></i>
-				<i x="6" o="1" y="14"></i>
-				<i x="7" o="1" y="14"></i>
-				<i x="8" o="1" y="14"></i>
-				<i x="9" o="1" y="14"></i>
-				<i x="10" o="1" y="14"></i>
-				<i x="11" o="1" y="14"></i>
-				<i x="-2" o="1" y="15"></i>
-				<i x="-1" o="1" y="15"></i>
-				<i x="0" o="1" y="15"></i>
-				<i x="1" o="1" y="15"></i>
-				<i x="2" o="1" y="15"></i>
-				<i x="3" o="1" y="15"></i>
-				<i x="4" o="1" y="15"></i>
-				<i x="5" o="1" y="15"></i>
-				<i x="6" o="1" y="15"></i>
-				<i x="7" o="1" y="15"></i>
-				<i x="8" o="1" y="15"></i>
-				<i x="9" o="1" y="15"></i>
-				<i x="10" o="1" y="15"></i>
-				<i x="11" o="1" y="15"></i>
+				<i x="-2" o="ice_north" y="9"></i>
+				<i x="-1" o="ice_north" y="9"></i>
+				<i x="0" o="ice_north" y="9"></i>
+				<i x="1" o="ice_north" y="9"></i>
+				<i x="2" o="ice_north" y="9"></i>
+				<i x="3" o="ice_north" y="9"></i>
+				<i x="4" o="ice_north" y="9"></i>
+				<i x="5" o="ice_north" y="9"></i>
+				<i x="6" o="ice_north" y="9"></i>
+				<i x="7" o="ice_north" y="9"></i>
+				<i x="8" o="ice_north" y="9"></i>
+				<i x="9" o="ice_north" y="9"></i>
+				<i x="10" o="ice_north" y="9"></i>
+				<i x="11" o="ice_north" y="9"></i>
+				<i x="-2" o="ice" y="10"></i>
+				<i x="-1" o="ice" y="10"></i>
+				<i x="0" o="ice" y="10"></i>
+				<i x="1" o="ice" y="10"></i>
+				<i x="2" o="ice" y="10"></i>
+				<i x="3" o="ice" y="10"></i>
+				<i x="4" o="ice" y="10"></i>
+				<i x="5" o="ice" y="10"></i>
+				<i x="6" o="ice" y="10"></i>
+				<i x="7" o="ice" y="10"></i>
+				<i x="8" o="ice" y="10"></i>
+				<i x="9" o="ice" y="10"></i>
+				<i x="10" o="ice" y="10"></i>
+				<i x="11" o="ice" y="10"></i>
+				<i x="-2" o="ice" y="11"></i>
+				<i x="-1" o="ice" y="11"></i>
+				<i x="0" o="ice" y="11"></i>
+				<i x="1" o="ice" y="11"></i>
+				<i x="2" o="ice" y="11"></i>
+				<i x="3" o="ice" y="11"></i>
+				<i x="4" o="ice" y="11"></i>
+				<i x="5" o="ice" y="11"></i>
+				<i x="6" o="ice" y="11"></i>
+				<i x="7" o="ice" y="11"></i>
+				<i x="8" o="ice" y="11"></i>
+				<i x="9" o="ice" y="11"></i>
+				<i x="10" o="ice" y="11"></i>
+				<i x="11" o="ice" y="11"></i>
+				<i x="-2" o="ice" y="12"></i>
+				<i x="-1" o="ice" y="12"></i>
+				<i x="0" o="ice" y="12"></i>
+				<i x="1" o="ice" y="12"></i>
+				<i x="2" o="ice" y="12"></i>
+				<i x="3" o="ice" y="12"></i>
+				<i x="4" o="ice" y="12"></i>
+				<i x="5" o="ice" y="12"></i>
+				<i x="6" o="ice" y="12"></i>
+				<i x="7" o="ice" y="12"></i>
+				<i x="8" o="ice" y="12"></i>
+				<i x="9" o="ice" y="12"></i>
+				<i x="10" o="ice" y="12"></i>
+				<i x="11" o="ice" y="12"></i>
+				<i x="-2" o="ice" y="13"></i>
+				<i x="-1" o="ice" y="13"></i>
+				<i x="0" o="ice" y="13"></i>
+				<i x="1" o="ice" y="13"></i>
+				<i x="2" o="ice" y="13"></i>
+				<i x="3" o="ice" y="13"></i>
+				<i x="4" o="ice" y="13"></i>
+				<i x="5" o="ice" y="13"></i>
+				<i x="6" o="ice" y="13"></i>
+				<i x="7" o="ice" y="13"></i>
+				<i x="8" o="ice" y="13"></i>
+				<i x="9" o="ice" y="13"></i>
+				<i x="10" o="ice" y="13"></i>
+				<i x="11" o="ice" y="13"></i>
+				<i x="-2" o="ice" y="14"></i>
+				<i x="-1" o="ice" y="14"></i>
+				<i x="0" o="ice" y="14"></i>
+				<i x="1" o="ice" y="14"></i>
+				<i x="2" o="ice" y="14"></i>
+				<i x="3" o="ice" y="14"></i>
+				<i x="4" o="ice" y="14"></i>
+				<i x="5" o="ice" y="14"></i>
+				<i x="6" o="ice" y="14"></i>
+				<i x="7" o="ice" y="14"></i>
+				<i x="8" o="ice" y="14"></i>
+				<i x="9" o="ice" y="14"></i>
+				<i x="10" o="ice" y="14"></i>
+				<i x="11" o="ice" y="14"></i>
+				<i x="-2" o="ice" y="15"></i>
+				<i x="-1" o="ice" y="15"></i>
+				<i x="0" o="ice" y="15"></i>
+				<i x="1" o="ice" y="15"></i>
+				<i x="2" o="ice" y="15"></i>
+				<i x="3" o="ice" y="15"></i>
+				<i x="4" o="ice" y="15"></i>
+				<i x="5" o="ice" y="15"></i>
+				<i x="6" o="ice" y="15"></i>
+				<i x="7" o="ice" y="15"></i>
+				<i x="8" o="ice" y="15"></i>
+				<i x="9" o="ice" y="15"></i>
+				<i x="10" o="ice" y="15"></i>
+				<i x="11" o="ice" y="15"></i>
+				<i x="-2" o="ice" y="16"></i>
+				<i x="-1" o="ice" y="16"></i>
+				<i x="0" o="ice" y="16"></i>
+				<i x="1" o="ice" y="16"></i>
+				<i x="2" o="ice" y="16"></i>
+				<i x="3" o="ice" y="16"></i>
+				<i x="4" o="ice" y="16"></i>
+				<i x="5" o="ice" y="16"></i>
+				<i x="6" o="ice" y="16"></i>
+				<i x="7" o="ice" y="16"></i>
+				<i x="8" o="ice" y="16"></i>
+				<i x="9" o="ice" y="16"></i>
+				<i x="10" o="ice" y="16"></i>
+				<i x="11" o="ice" y="16"></i>
+				<i x="12" o="ice_n-e" y="9"></i>
+				<i x="12" o="ice_east" y="16"></i>
+				<i x="12" o="ice_east" y="15"></i>
+				<i x="12" o="ice_east" y="14"></i>
+				<i x="12" o="ice_east" y="13"></i>
+				<i x="12" o="ice_east" y="12"></i>
+				<i x="12" o="ice_east" y="11"></i>
+				<i x="12" o="ice_east" y="10"></i>
+				<i x="12" o="ice_e-s" y="17"></i>
+				<i x="-2" o="ice_south" y="17"></i>
+				<i x="-1" o="ice_south" y="17"></i>
+				<i x="0" o="ice_south" y="17"></i>
+				<i x="1" o="ice_south" y="17"></i>
+				<i x="2" o="ice_south" y="17"></i>
+				<i x="3" o="ice_south" y="17"></i>
+				<i x="4" o="ice_south" y="17"></i>
+				<i x="5" o="ice_south" y="17"></i>
+				<i x="6" o="ice_south" y="17"></i>
+				<i x="7" o="ice_south" y="17"></i>
+				<i x="8" o="ice_south" y="17"></i>
+				<i x="9" o="ice_south" y="17"></i>
+				<i x="10" o="ice_south" y="17"></i>
+				<i x="11" o="ice_south" y="17"></i>
+				<i x="-3" o="ice_s-w" y="17"></i>
+				<i x="-3" o="ice_west" y="10"></i>
+				<i x="-3" o="ice_west" y="11"></i>
+				<i x="-3" o="ice_west" y="12"></i>
+				<i x="-3" o="ice_west" y="13"></i>
+				<i x="-3" o="ice_west" y="14"></i>
+				<i x="-3" o="ice_west" y="15"></i>
+				<i x="-3" o="ice_west" y="16"></i>
+				<i x="-3" o="ice_w-n" y="9"></i>
 			</instances>
 		</layer>
 		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="seaLayer" scaling="0.1" rotation="0.0">
@@ -241,6 +320,27 @@
 				<param name="_OVERLAY_IMAGE_OFFSET">00</param>
 			</metadata>
 			<instances>
+				<i x="-5" o="water" y="-4"></i>
+				<i x="-4" o="water" y="-4"></i>
+				<i x="-3" o="water" y="-4"></i>
+				<i x="-2" o="water" y="-4"></i>
+				<i x="-1" o="water" y="-4"></i>
+				<i x="0" o="water" y="-4"></i>
+				<i x="1" o="water" y="-4"></i>
+				<i x="2" o="water" y="-4"></i>
+				<i x="3" o="water" y="-4"></i>
+				<i x="4" o="water" y="-4"></i>
+				<i x="5" o="water" y="-4"></i>
+				<i x="6" o="water" y="-4"></i>
+				<i x="7" o="water" y="-4"></i>
+				<i x="8" o="water" y="-4"></i>
+				<i x="9" o="water" y="-4"></i>
+				<i x="10" o="water" y="-4"></i>
+				<i x="11" o="water" y="-4"></i>
+				<i x="12" o="water" y="-4"></i>
+				<i x="13" o="water" y="-4"></i>
+				<i x="14" o="water" y="-4"></i>
+				<i x="-5" o="water" y="-3"></i>
 				<i x="-4" o="water" y="-3"></i>
 				<i x="-3" o="water" y="-3"></i>
 				<i x="-2" o="water" y="-3"></i>
@@ -259,24 +359,44 @@
 				<i x="11" o="water" y="-3"></i>
 				<i x="12" o="water" y="-3"></i>
 				<i x="13" o="water" y="-3"></i>
+				<i x="14" o="water" y="-3"></i>
+				<i x="-5" o="water" y="-2"></i>
 				<i x="-4" o="water" y="-2"></i>
 				<i x="13" o="water" y="-2"></i>
+				<i x="14" o="water" y="-2"></i>
+				<i x="-5" o="water" y="-1"></i>
 				<i x="-4" o="water" y="-1"></i>
 				<i x="13" o="water" y="-1"></i>
+				<i x="14" o="water" y="-1"></i>
+				<i x="-5" o="water" y="0"></i>
 				<i x="-4" o="water" y="0"></i>
 				<i x="13" o="water" y="0"></i>
+				<i x="14" o="water" y="0"></i>
+				<i x="-5" o="water" y="1"></i>
 				<i x="-4" o="water" y="1"></i>
 				<i x="13" o="water" y="1"></i>
+				<i x="14" o="water" y="1"></i>
+				<i x="-5" o="water" y="2"></i>
 				<i x="-4" o="water" y="2"></i>
 				<i x="13" o="water" y="2"></i>
+				<i x="14" o="water" y="2"></i>
+				<i x="-5" o="water" y="3"></i>
 				<i x="-4" o="water" y="3"></i>
 				<i x="13" o="water" y="3"></i>
+				<i x="14" o="water" y="3"></i>
+				<i x="-5" o="water" y="4"></i>
 				<i x="-4" o="water" y="4"></i>
 				<i x="13" o="water" y="4"></i>
+				<i x="14" o="water" y="4"></i>
+				<i x="-5" o="water" y="5"></i>
 				<i x="-4" o="water" y="5"></i>
 				<i x="13" o="water" y="5"></i>
+				<i x="14" o="water" y="5"></i>
+				<i x="-5" o="water" y="6"></i>
 				<i x="-4" o="water" y="6"></i>
 				<i x="13" o="water" y="6"></i>
+				<i x="14" o="water" y="6"></i>
+				<i x="-5" o="water" y="7"></i>
 				<i x="-4" o="water" y="7"></i>
 				<i x="-3" o="water" y="7"></i>
 				<i x="-2" o="water" y="7"></i>
@@ -295,95 +415,83 @@
 				<i x="11" o="water" y="7"></i>
 				<i x="12" o="water" y="7"></i>
 				<i x="13" o="water" y="7"></i>
-				<i x="-4" o="water" y="8"></i>
-				<i x="13" o="water" y="8"></i>
+				<i x="14" o="water" y="7"></i>
+				<i x="-5" o="water" y="9"></i>
 				<i x="-4" o="water" y="9"></i>
 				<i x="13" o="water" y="9"></i>
+				<i x="14" o="water" y="9"></i>
+				<i x="-5" o="water" y="10"></i>
 				<i x="-4" o="water" y="10"></i>
 				<i x="13" o="water" y="10"></i>
+				<i x="14" o="water" y="10"></i>
+				<i x="-5" o="water" y="11"></i>
 				<i x="-4" o="water" y="11"></i>
 				<i x="13" o="water" y="11"></i>
+				<i x="14" o="water" y="11"></i>
+				<i x="-5" o="water" y="12"></i>
 				<i x="-4" o="water" y="12"></i>
 				<i x="13" o="water" y="12"></i>
+				<i x="14" o="water" y="12"></i>
+				<i x="-5" o="water" y="13"></i>
 				<i x="-4" o="water" y="13"></i>
 				<i x="13" o="water" y="13"></i>
+				<i x="14" o="water" y="13"></i>
+				<i x="-5" o="water" y="14"></i>
 				<i x="-4" o="water" y="14"></i>
 				<i x="13" o="water" y="14"></i>
+				<i x="14" o="water" y="14"></i>
+				<i x="-5" o="water" y="15"></i>
 				<i x="-4" o="water" y="15"></i>
 				<i x="13" o="water" y="15"></i>
+				<i x="14" o="water" y="15"></i>
+				<i x="-5" o="water" y="16"></i>
 				<i x="-4" o="water" y="16"></i>
 				<i x="13" o="water" y="16"></i>
+				<i x="14" o="water" y="16"></i>
+				<i x="-5" o="water" y="17"></i>
 				<i x="-4" o="water" y="17"></i>
-				<i x="-3" o="water" y="17"></i>
-				<i x="-2" o="water" y="17"></i>
-				<i x="-1" o="water" y="17"></i>
-				<i x="0" o="water" y="17"></i>
-				<i x="1" o="water" y="17"></i>
-				<i x="2" o="water" y="17"></i>
-				<i x="3" o="water" y="17"></i>
-				<i x="4" o="water" y="17"></i>
-				<i x="5" o="water" y="17"></i>
-				<i x="6" o="water" y="17"></i>
-				<i x="7" o="water" y="17"></i>
-				<i x="8" o="water" y="17"></i>
-				<i x="9" o="water" y="17"></i>
-				<i x="10" o="water" y="17"></i>
-				<i x="11" o="water" y="17"></i>
-				<i x="12" o="water" y="17"></i>
 				<i x="13" o="water" y="17"></i>
-			</instances>
-		</layer>
-		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="beachLayer" scaling="0.1" rotation="0.0">
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET">00</param>
-			</metadata>
-			<instances>
-				<i x="-2" o="beach_north" y="-2"></i>
-				<i x="-1" o="beach_north" y="-2"></i>
-				<i x="0" o="beach_north" y="-2"></i>
-				<i x="1" o="beach_north" y="-2"></i>
-				<i x="2" o="beach_north" y="-2"></i>
-				<i x="3" o="beach_north" y="-2"></i>
-				<i x="4" o="beach_north" y="-2"></i>
-				<i x="5" o="beach_north" y="-2"></i>
-				<i x="6" o="beach_north" y="-2"></i>
-				<i x="7" o="beach_north" y="-2"></i>
-				<i x="8" o="beach_north" y="-2"></i>
-				<i x="9" o="beach_north" y="-2"></i>
-				<i x="10" o="beach_north" y="-2"></i>
-				<i x="11" o="beach_north" y="-2"></i>
-				<i x="12" o="beach_n-e" y="-2"></i>
-				<i x="12" o="beach_east" y="-1"></i>
-				<i x="12" o="beach_east" y="0"></i>
-				<i x="12" o="beach_east" y="1"></i>
-				<i x="12" o="beach_east" y="2"></i>
-				<i x="12" o="beach_east" y="3"></i>
-				<i x="12" o="beach_east" y="4"></i>
-				<i x="12" o="beach_east" y="5"></i>
-				<i x="12" o="beach_e-s" y="6"></i>
-				<i x="-2" o="beach_south" y="6"></i>
-				<i x="-1" o="beach_south" y="6"></i>
-				<i x="0" o="beach_south" y="6"></i>
-				<i x="1" o="beach_south" y="6"></i>
-				<i x="2" o="beach_south" y="6"></i>
-				<i x="3" o="beach_south" y="6"></i>
-				<i x="4" o="beach_south" y="6"></i>
-				<i x="5" o="beach_south" y="6"></i>
-				<i x="6" o="beach_south" y="6"></i>
-				<i x="7" o="beach_south" y="6"></i>
-				<i x="8" o="beach_south" y="6"></i>
-				<i x="9" o="beach_south" y="6"></i>
-				<i x="10" o="beach_south" y="6"></i>
-				<i x="11" o="beach_south" y="6"></i>
-				<i x="-3" o="beach_s-w" y="6"></i>
-				<i x="-3" o="beach_west" y="-1"></i>
-				<i x="-3" o="beach_west" y="0"></i>
-				<i x="-3" o="beach_west" y="1"></i>
-				<i x="-3" o="beach_west" y="2"></i>
-				<i x="-3" o="beach_west" y="3"></i>
-				<i x="-3" o="beach_west" y="4"></i>
-				<i x="-3" o="beach_west" y="5"></i>
-				<i x="-3" o="beach_w-n" y="-2"></i>
+				<i x="14" o="water" y="17"></i>
+				<i x="-5" o="water" y="18"></i>
+				<i x="-4" o="water" y="18"></i>
+				<i x="-3" o="water" y="18"></i>
+				<i x="-2" o="water" y="18"></i>
+				<i x="-1" o="water" y="18"></i>
+				<i x="0" o="water" y="18"></i>
+				<i x="1" o="water" y="18"></i>
+				<i x="2" o="water" y="18"></i>
+				<i x="3" o="water" y="18"></i>
+				<i x="4" o="water" y="18"></i>
+				<i x="5" o="water" y="18"></i>
+				<i x="6" o="water" y="18"></i>
+				<i x="7" o="water" y="18"></i>
+				<i x="8" o="water" y="18"></i>
+				<i x="9" o="water" y="18"></i>
+				<i x="10" o="water" y="18"></i>
+				<i x="11" o="water" y="18"></i>
+				<i x="12" o="water" y="18"></i>
+				<i x="13" o="water" y="18"></i>
+				<i x="14" o="water" y="18"></i>
+				<i x="-5" o="water" y="19"></i>
+				<i x="-4" o="water" y="19"></i>
+				<i x="-3" o="water" y="19"></i>
+				<i x="-2" o="water" y="19"></i>
+				<i x="-1" o="water" y="19"></i>
+				<i x="0" o="water" y="19"></i>
+				<i x="1" o="water" y="19"></i>
+				<i x="2" o="water" y="19"></i>
+				<i x="3" o="water" y="19"></i>
+				<i x="4" o="water" y="19"></i>
+				<i x="5" o="water" y="19"></i>
+				<i x="6" o="water" y="19"></i>
+				<i x="7" o="water" y="19"></i>
+				<i x="8" o="water" y="19"></i>
+				<i x="9" o="water" y="19"></i>
+				<i x="10" o="water" y="19"></i>
+				<i x="11" o="water" y="19"></i>
+				<i x="12" o="water" y="19"></i>
+				<i x="13" o="water" y="19"></i>
+				<i x="14" o="water" y="19"></i>
 			</instances>
 		</layer>
 		<layer x_offset="0.0" y_offset="0.0" grid_type="square" id="buildLayer" scaling="0.1" rotation="0.0">

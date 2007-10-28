@@ -50,12 +50,21 @@
 			</metadata>
 
 			<instances>
-				<i o="beach_w-n" x="-3" y="-2" />
-				<i o="beach_west" x="-3" y="-1" />
-					<i o="beach_west" x="-3" y="0" /><i o="beach_west" x="-3" y="1" /><i o="beach_west" x="-3" y="2" /><i o="beach_west" x="-3" y="3" /><i o="beach_west" x="-3" y="4" /><i o="beach_west" x="-3" y="5" />
-				<i o="beach_s-w" x="-3" y="6" />
+				<!-- beach tiles -->
 				<i o="beach_north" x="-2" y="-2" />
 					<i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" /><i o="beach_north" />
+				<i o="beach_n-e" x="12" y="-2" />
+				<i o="beach_east" x="12" y="-1" />
+					<i o="beach_east" x="12" y="0" /><i o="beach_east" x="12" y="1" /><i o="beach_east" x="12" y="2" /><i o="beach_east" x="12" y="3" /><i o="beach_east" x="12" y="4" /><i o="beach_east" x="12" y="5" />
+				<i o="beach_e-s" x="12" y="6" />
+				<i o="beach_south" x="-2" y="6" />
+					<i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" />
+				<i o="beach_s-w" x="-3" y="6" />
+				<i o="beach_west" x="-3" y="-1" />
+					<i o="beach_west" x="-3" y="0" /><i o="beach_west" x="-3" y="1" /><i o="beach_west" x="-3" y="2" /><i o="beach_west" x="-3" y="3" /><i o="beach_west" x="-3" y="4" /><i o="beach_west" x="-3" y="5" />
+				<i o="beach_w-n" x="-3" y="-2" />
+				
+				<!-- ground island middle -->
 				<i o="1" x="-2" y="-1" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="0" />
@@ -70,27 +79,36 @@
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
 				<i o="1" x="-2" y="5" />
 					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="beach_south" x="-2" y="6" />
-					<i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" /><i o="beach_south" />
-				<i o="ice" x="-2" y="8" />
-				<i o="1" x="-2" y="9" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="10" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="11" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="12" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="13" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="14" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="1" x="-2" y="15" />
-					<i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" /><i o="1" />
-				<i o="beach_n-e" x="12" y="-2" />
-				<i o="beach_east" x="12" y="-1" />
-					<i o="beach_east" x="12" y="0" /><i o="beach_east" x="12" y="1" /><i o="beach_east" x="12" y="2" /><i o="beach_east" x="12" y="3" /><i o="beach_east" x="12" y="4" /><i o="beach_east" x="12" y="5" />
-				<i o="beach_e-s" x="12" y="6" />
+				
+				<!-- ice island middle -->
+				<i o="ice" x="-2" y="10" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				<i o="ice" x="-2" y="11" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				<i o="ice" x="-2" y="12" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				<i o="ice" x="-2" y="13" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				<i o="ice" x="-2" y="14" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				<i o="ice" x="-2" y="15" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				<i o="ice" x="-2" y="16" />
+					<i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" /><i o="ice" />
+				
+				<!-- ice rand -->
+				<i o="ice_north" x="-2" y="9" />
+					<i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" /><i o="ice_north" />
+				<i o="ice_n-e" x="12" y="9" />
+				<i o="ice_east" x="12" y="16" />
+					<i o="ice_east" x="12" y="15" /><i o="ice_east" x="12" y="14" /><i o="ice_east" x="12" y="13" /><i o="ice_east" x="12" y="12" /><i o="ice_east" x="12" y="11" /><i o="ice_east" x="12" y="10" />
+				<i o="ice_e-s" x="12" y="17" />
+				<i o="ice_south" x="-2" y="17" />
+					<i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" /><i o="ice_south" />
+				<i o="ice_s-w" x="-3" y="17" />
+				<i o="ice_west" x="-3" y="10" />
+					<i o="ice_west" x="-3" y="11" /><i o="ice_west" x="-3" y="12" /><i o="ice_west" x="-3" y="13" /><i o="ice_west" x="-3" y="14" /><i o="ice_west" x="-3" y="15" /><i o="ice_west" x="-3" y="16" />
+				<i o="ice_w-n" x="-3" y="9" />
 			</instances>		
 		</layer>
 
@@ -102,30 +120,42 @@
 			</metadata>
 
 			<instances>
-				<i o="water" x="-4" y="-3" />
-					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
-				<i o="water" x="-4" y="-2" /><i o="water" x="13" y="-2" />
-				<i o="water" x="-4" y="-1" /><i o="water" x="13" y="-1" />
-				<i o="water" x="-4" y="0" /><i o="water" x="13" y="0" />
-				<i o="water" x="-4" y="1" /><i o="water" x="13" y="1" />
-				<i o="water" x="-4" y="2" /><i o="water" x="13" y="2" />
-				<i o="water" x="-4" y="3" /><i o="water" x="13" y="3" />
-				<i o="water" x="-4" y="4" /><i o="water" x="13" y="4" />
-				<i o="water" x="-4" y="5" /><i o="water" x="13" y="5" />
-				<i o="water" x="-4" y="6" /><i o="water" x="13" y="6" />
-				<i o="water" x="-4" y="7" />
-					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
-				<i o="water" x="-4" y="8" /><i o="water" x="13" y="8" />
-				<i o="water" x="-4" y="9" /><i o="water" x="13" y="9" />
-				<i o="water" x="-4" y="10" /><i o="water" x="13" y="10" />
-				<i o="water" x="-4" y="11" /><i o="water" x="13" y="11" />
-				<i o="water" x="-4" y="12" /><i o="water" x="13" y="12" />
-				<i o="water" x="-4" y="13" /><i o="water" x="13" y="13" />
-				<i o="water" x="-4" y="14" /><i o="water" x="13" y="14" />
-				<i o="water" x="-4" y="15" /><i o="water" x="13" y="15" />
-				<i o="water" x="-4" y="16" /><i o="water" x="13" y="16" />
-				<i o="water" x="-4" y="17" />
-					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				<!-- water on the rand on the island -->
+				<i o="water" x="-5" y="-4" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				<i o="water" x="-5" y="-3" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				
+				<i o="water" x="-5" y="-2" /><i o="water" x="-4" y="-2" /> <!-- water rand --> <i o="water" x="13" y="-2" /><i o="water" x="14" y="-2" />
+				<i o="water" x="-5" y="-1" /><i o="water" x="-4" y="-1" /> <!-- water rand --> <i o="water" x="13" y="-1" /><i o="water" x="14" y="-1" />
+				<i o="water" x="-5" y="0" /><i o="water" x="-4" y="0" /> <!-- water rand --> <i o="water" x="13" y="0" /><i o="water" x="14" y="0" />
+				<i o="water" x="-5" y="1" /><i o="water" x="-4" y="1" /> <!-- water rand --> <i o="water" x="13" y="1" /><i o="water" x="14" y="1" />
+				<i o="water" x="-5" y="2" /><i o="water" x="-4" y="2" /> <!-- water rand --> <i o="water" x="13" y="2" /><i o="water" x="14" y="2" />
+				<i o="water" x="-5" y="3" /><i o="water" x="-4" y="3" /> <!-- water rand --> <i o="water" x="13" y="3" /><i o="water" x="14" y="3" />
+				<i o="water" x="-5" y="4" /><i o="water" x="-4" y="4" /> <!-- water rand --> <i o="water" x="13" y="4" /><i o="water" x="14" y="4" />
+				<i o="water" x="-5" y="5" /><i o="water" x="-4" y="5" /> <!-- water rand --> <i o="water" x="13" y="5" /><i o="water" x="14" y="5" />
+				<i o="water" x="-5" y="6" /><i o="water" x="-4" y="6" /> <!-- water rand --> <i o="water" x="13" y="6" /><i o="water" x="14" y="6" />
+				
+				<!-- water on the rand on the island -->
+				<i o="water" x="-5" y="7" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				<i o="water" x="-5" y="8" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				
+				<i o="water" x="-5" y="9" /><i o="water" x="-4" y="9" /> <!-- water rand --> <i o="water" x="13" y="9" /><i o="water" x="14" y="9" />
+				<i o="water" x="-5" y="10" /><i o="water" x="-4" y="10" /> <!-- water rand --> <i o="water" x="13" y="10" /><i o="water" x="14" y="10" />
+				<i o="water" x="-5" y="11" /><i o="water" x="-4" y="11" /> <!-- water rand --> <i o="water" x="13" y="11" /><i o="water" x="14" y="11" />
+				<i o="water" x="-5" y="12" /><i o="water" x="-4" y="12" /> <!-- water rand --> <i o="water" x="13" y="12" /><i o="water" x="14" y="12" />
+				<i o="water" x="-5" y="13" /><i o="water" x="-4" y="13" /> <!-- water rand --> <i o="water" x="13" y="13" /><i o="water" x="14" y="13" />
+				<i o="water" x="-5" y="14" /><i o="water" x="-4" y="14" /> <!-- water rand --> <i o="water" x="13" y="14" /><i o="water" x="14" y="14" />
+				<i o="water" x="-5" y="15" /><i o="water" x="-4" y="15" /> <!-- water rand --> <i o="water" x="13" y="15" /><i o="water" x="14" y="15" />
+				<i o="water" x="-5" y="16" /><i o="water" x="-4" y="16" /> <!-- water rand --> <i o="water" x="13" y="16" /><i o="water" x="14" y="16" />
+				<i o="water" x="-5" y="17" /><i o="water" x="-4" y="17" /> <!-- water rand --> <i o="water" x="13" y="17" /><i o="water" x="14" y="17" />
+				<!-- water on the rand on the island -->
+				<i o="water" x="-5" y="18" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
+				<i o="water" x="-5" y="19" />
+					<i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" /><i o="water" />
 			</instances>
 		</layer>
 		
@@ -163,9 +193,11 @@
 			<instances>
 				<i o="tent" x="1" y="0" />
 				<i o="tent" x="4" y="0" />
-				<i o="path_combined_64" x="0" y="2" />
-				<i o="path_combined_64" x="1" y="2" />
-				<i o="path_combined_64" x="2" y="2" />
+				<i o="path_64" x="0" y="2" />
+				<i o="path_64" x="1" y="2" />
+				<i o="path_64" x="2" y="2" />
+				<i o="path_64" x="3" y="2" />
+				<i o="path_64" x="4" y="2" />
 			</instances>
 		</layer>
 		

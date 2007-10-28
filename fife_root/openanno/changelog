@@ -1,7 +1,13 @@
 Change Log:
 
+2007.10.28 Rev. 34 by LinuxDonald
+	*/trunk/fife_root/openanno.py: sync with fife
+	*/trunk/fife_root/openanno/datasets/buildings/street/streets.xml: added path_64 tile
+	*/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/datasets/maps/openanno-test-map-savefile.xml:
+	Updated the ice island and added more comments to the mapfile
+
 2007.10.28 Rev. 33 by LinuxDonald
-	*/trunk/fife_root/openanno/gfx/base/land/ice/*.*, corrected alpha channel
+	*/trunk/fife_root/openanno/gfx/base/land/ice/*.*, corrected alpha channel´thanks goes to Speedator
 
 2007.10.27 Rev. 32 by LinuxDonald
 	fixed the Changelog
