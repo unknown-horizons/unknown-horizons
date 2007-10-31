@@ -14,4 +14,4 @@ LogToFile          = 0
 
 # test settings
 TestCameraPlacement = 0
-TestCameraPlacementRotation = 0
+TestRotationLayerName = "landLayer" #"landLayer"

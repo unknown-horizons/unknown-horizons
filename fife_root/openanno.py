@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 
 import sys, os, re
+
+def _jp(path):
+	return os.path.sep.join(path.split('/'))
+
 _paths = ('engine/swigwrappers/python', 'engine/extensions')
 for p in _paths:
 	if p not in sys.path:
-		sys.path.append(os.path.sep.join(p.split('/')))
+		sys.path.append(_jp(p))
 
 import fife, fifelog
 import openanno_settings as TDS
@@ -12,30 +16,6 @@ from loaders import loadMapFile
 from savers import saveMapFile
 
 from fifedit import *
-
-INFO_TEXT = '''
-Welcome to the OpenAnno techdemo, release Pre-Alpha\n\nKeybindings:
---------------
-- P = Make screenshot
-- LEFT = Move camera left
-- RIGHT = Move camera right
-- UP = Move camera up
-- DOWN = Move camera down
-- F10 = Toggle console on / off
-- ESC = Quit techdemo
-- LMB = Move agent around
-- T = Toggles grid on / off
-- C = Toggles coordinates on / off
-- S = Second camera on / off
-
-
-Have fun,
-The FIFE and OpenAnno teams
-
-http://www.openanno.org
-http://www.fifengine.de
-'''
-
 
 class InstanceReactor(fife.InstanceListener):
 	def OnActionFinished(self, instance, action):
@@ -73,10 +53,12 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		self.engine = engine		
 		self.quitRequested = False
 		self.newTarget = None
-		self.showTileOutline = TDS.TestCameraPlacement or TDS.TestCameraPlacementRotation
-		self.showCoordinates = TDS.TestCameraPlacement or TDS.TestCameraPlacementRotation
+		self.showTileOutline = True
+		self.showCoordinates = False
 		self.showSecondCamera = False
 		self.reloadRequested = False
+		self.scrollwheelvalue = 0
+		self.ctrl_scrollwheelvalue = 0
 				
 		# scroll support
 		self.horizscroll = 0
@@ -84,12 +66,26 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		
 		# gui
 		self.showInfo = False
+		self._ctrldown = False
+		self._dragx = 0
+		self._dragy = 0
+		
 
 	def mousePressed(self, evt):
-		self.newTarget = fife.ScreenPoint(evt.getX(), evt.getY())
+		if self._ctrldown:
+			self._dragx = evt.getX()
+			self._dragy = evt.getY()
+			self.horizscroll = 0
+			self.vertscroll = 0
+		else:
+			self.newTarget = fife.ScreenPoint(evt.getX(), evt.getY())
 
 	def mouseReleased(self, evt):
-		pass
+		self._dragx = 0
+		self._dragy = 0
+		self.horizscroll = 0
+		self.vertscroll = 0
+	
 	def mouseEntered(self, evt):
 		pass
 	def mouseExited(self, evt):
@@ -97,42 +93,58 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 	def mouseClicked(self, evt):
 		pass
 	def mouseWheelMovedUp(self, evt):
-		pass
+		if not self._ctrldown:
+			self.scrollwheelvalue += 1
+		else:
+			self.ctrl_scrollwheelvalue += 1
+		
 	def mouseWheelMovedDown(self, evt):
-		pass
+		if not self._ctrldown:
+			self.scrollwheelvalue -= 1
+		else:
+			self.ctrl_scrollwheelvalue -= 1
+	
 	def mouseMoved(self, evt):
 		pass
 	def mouseDragged(self, evt):
-		pass
+		if self._ctrldown:
+			self.horizscroll = (self._dragx - evt.getX()) / 100.0
+			self.vertscroll = (self._dragy - evt.getY()) / 100.0
+			self._dragx = evt.getX()
+			self._dragy = evt.getY()
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
-		if (keyval == fife.IKey.ESCAPE):
-			self.quitRequested = True		
-		elif (keyval == fife.IKey.F10):
+		if keyval == fife.IKey.ESCAPE:
+			self.quitRequested = True
+		elif keyval == fife.IKey.F10:
 			self.engine.getGuiManager().getConsole().toggleShowHide()
-		elif (keyval == fife.IKey.LEFT):
+		elif keyval == fife.IKey.LEFT:
 			self.horizscroll -= SCROLL_MODIFIER
-		elif (keyval == fife.IKey.RIGHT):
+		elif keyval == fife.IKey.RIGHT:
 			self.horizscroll += SCROLL_MODIFIER
-		elif (keyval == fife.IKey.UP):
+		elif keyval == fife.IKey.UP:
 			self.vertscroll -= SCROLL_MODIFIER
-		elif (keyval == fife.IKey.DOWN):
+		elif keyval == fife.IKey.DOWN:
 			self.vertscroll += SCROLL_MODIFIER
-		elif (keystr == 'p'):
+		elif keystr == 'p':
 			self.engine.getRenderBackend().captureScreen('techdemo.bmp')
-		elif (keystr == 't'):
+		elif keystr == 't':
 			self.showTileOutline = not self.showTileOutline
-		elif (keystr == 'c'):
+		elif keystr == 'c':
 			self.showCoordinates = not self.showCoordinates
-		elif (keystr == 's'):
+		elif keystr == 's':
 			self.showSecondCamera = not self.showSecondCamera
-		elif (keystr == 'r'):
+		elif keystr == 'r':
 			self.reloadRequested = True
+		elif keyval in (fife.IKey.LEFT_CONTROL, fife.IKey.RIGHT_CONTROL):
+			self._ctrldown = True
 	
 	def keyReleased(self, evt):
-		pass
+		keyval = evt.getKey().getValue()
+		if keyval in (fife.IKey.LEFT_CONTROL, fife.IKey.RIGHT_CONTROL):
+			self._ctrldown = False
 
 	def onCommand(self, command):
 		self.quitRequested = (command.getCommandType() == fife.CMD_QUIT_GAME)
@@ -230,7 +242,7 @@ class Gui(object):
 		# text
 		text_info = fife.TextBox()
 		text_info.setPosition(10,40)
-		text_info.setText(INFO_TEXT)
+		text_info.setText(open(_jp('openanno/infotext.txt'), 'r').read())
 		text_info.setOpaque(False)
 		text_info.setBorderSize(0)
 		self.register_widget(text_info, self.container_info)
@@ -253,6 +265,9 @@ class World(object):
 		self.gui = gui
 		self.view = self.engine.getView()
 		
+		self.ctrl_scrollwheelvalue = 0
+		self.scrollwheelvalue = 0
+		
 	def create_world(self, path):
 		self.map = loadMapFile(path, self.engine)
 	
@@ -269,6 +284,8 @@ class World(object):
 		self.target.setLayer(self.agent_layer)
 		
 		self.cameras = {}
+		
+		self.scrollwheelvalue = self.elevation.getLayers("id", TDS.TestRotationLayerName)[0].getCellGrid().getRotation()
 
 	def save_world(self, path):
 		saveMapFile(path, self.engine, self.map)
@@ -298,12 +315,11 @@ class World(object):
 	def adjust_views(self):
 		W = self.renderbackend.getScreenWidth()
 		H = self.renderbackend.getScreenHeight()
-		maincoords = (5, -1)
-		if TDS.TestCameraPlacementRotation:
-			maincoords = (1, 1)
+		maincoords = (1, 1)
 		self._create_camera('main', maincoords, (0, 0, W, H))
 		self._create_camera('small', (6,1), (W*0.6, H*0.01, W*0.39, H*0.36))
 		self.view.resetRenderers()
+		self.ctrl_scrollwheelvalue = self.cameras['main'].getRotation()
 		
 
 	def create_background_music(self):
@@ -316,6 +332,8 @@ class World(object):
 	def run(self):
 		camloc = fife.Location()
 		evtlistener = MyEventListener(self)
+		evtlistener.scrollwheelvalue = self.scrollwheelvalue
+		evtlistener.ctrl_scrollwheelvalue = self.ctrl_scrollwheelvalue
 		self.engine.initializePumping()
 		
 		showTileOutline = not evtlistener.showTileOutline
@@ -341,15 +359,23 @@ class World(object):
 				showSecondCamera = evtlistener.showSecondCamera
 				self.cameras['small'].setEnabled(showSecondCamera)
 				
-			if TDS.TestCameraPlacementRotation:
-				self.cameras['main'].setRotation(self.cameras['main'].getRotation()+0.5)
+			if self.ctrl_scrollwheelvalue != evtlistener.ctrl_scrollwheelvalue:
+				self.ctrl_scrollwheelvalue = evtlistener.ctrl_scrollwheelvalue
+				self.cameras['main'].setRotation(self.ctrl_scrollwheelvalue)
+			
+			if self.scrollwheelvalue != evtlistener.scrollwheelvalue:
+				self.scrollwheelvalue = evtlistener.scrollwheelvalue
+				l = self.elevation.getLayers("id", TDS.TestRotationLayerName)[0]
+				l.getCellGrid().setRotation(self.scrollwheelvalue)
+				self.cameras['main'].setRotation(self.ctrl_scrollwheelvalue)
+			
 			self.engine.pump()
 			
 			# agent movement
 			if evtlistener.newTarget:
 				ec = self.cameras['main'].toElevationCoordinates(evtlistener.newTarget)
 				self.target.setElevationCoordinates(ec)
-				self.agent.act('walk', self.target, 1.5)
+				self.agent.act('walk', self.target, 20.0)
 				evtlistener.newTarget = None
 			
 			if evtlistener.quitRequested:
