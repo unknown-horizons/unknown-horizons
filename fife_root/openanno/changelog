@@ -1,5 +1,8 @@
 Change Log:
 
+2007.11.02 rev. 37 by LinuxDonald
+	*/trunk/fife_root/openanno: forgotten to add license file and infotext.txt
+
 2007.10.31 Rev. 36 by LinuxDonald
 	*/trunk/fife_root/openanno.py: sync with fife
 	*/trunk/fife_root/openanno/Creative Commons Attribution-NonCommercial-NoDerivs 2.0 License: added license

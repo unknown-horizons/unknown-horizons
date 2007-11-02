@@ -275,6 +275,8 @@ class World(object):
 		self.layer = self.elevation.getLayers("id", "landLayer")[0]
 		
 		self.agent_layer = self.elevation.getLayers("id", "spriteLayer")[0]
+
+		self.water = self.elevation.getLayers("id", "seaLayer")[0]		
 		
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
@@ -307,8 +309,10 @@ class World(object):
 		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
 		
 		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
+		self.water = self.water.getInstances('id', 'water_ani')[0]
 		#self.agent.addListener(self.reactor)
 		self.agent.act_here('walk', self.target, True)
+		self.water.act_here('wave', 0, True)
 		#for g in self.agent_layer.getInstances('id', 'char_ani'):
 			#g.act_here('walk', self.target, True)		
 	
