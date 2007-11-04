@@ -11,6 +11,7 @@ LogModules         = []
 LogToPrompt        = 1
 LogToFile          = 0
 
+CoordinateLayerName = "landLayer"
 
 # test settings
 TestCameraPlacement = 0

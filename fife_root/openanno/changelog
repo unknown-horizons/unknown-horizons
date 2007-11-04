@@ -1,5 +1,8 @@
 Change Log:
 
+2007.11.04 Rev. 39 by LinuxDonald
+	*/trunk/fife_root/openanno/openanno_settings.py: forgotten to sync
+
 2007.11.04 Rev. 38 by LinuxDonald
 	*/trunk/fife_root/openanno.py: sync with fife
 	*/trunk/fife_root/openanno/gfx/base/water/animations/water.xml: fixed id
