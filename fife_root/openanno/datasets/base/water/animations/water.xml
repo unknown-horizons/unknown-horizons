@@ -1,4 +1,4 @@
-<animation delay="50" id="water">
+<animation delay="50" id="water_ani">
 	<frame source="openanno/gfx/base/water/animations/water.png" />
 	<frame source="openanno/gfx/base/water/animations/water2.png" />
 	<frame source="openanno/gfx/base/water/animations/water3.png" />

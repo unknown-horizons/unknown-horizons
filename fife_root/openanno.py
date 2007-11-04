@@ -59,6 +59,7 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		self.reloadRequested = False
 		self.scrollwheelvalue = 0
 		self.ctrl_scrollwheelvalue = 0
+		self.shift_scrollwheelvalue = 0
 				
 		# scroll support
 		self.horizscroll = 0
@@ -67,6 +68,7 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		# gui
 		self.showInfo = False
 		self._ctrldown = False
+		self._shiftdown = False
 		self._dragx = 0
 		self._dragy = 0
 		
@@ -93,16 +95,21 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 	def mouseClicked(self, evt):
 		pass
 	def mouseWheelMovedUp(self, evt):
-		if not self._ctrldown:
-			self.scrollwheelvalue += 1
-		else:
+		if self._ctrldown:
 			self.ctrl_scrollwheelvalue += 1
+		elif self._shiftdown:
+			self.shift_scrollwheelvalue += 0.01
+		else:
+			self.scrollwheelvalue += 0.1
+			
 		
 	def mouseWheelMovedDown(self, evt):
-		if not self._ctrldown:
-			self.scrollwheelvalue -= 1
-		else:
+		if self._ctrldown:
 			self.ctrl_scrollwheelvalue -= 1
+		elif self._shiftdown:
+			self.shift_scrollwheelvalue -= 0.01
+		else:
+			self.scrollwheelvalue -= 0.1
 	
 	def mouseMoved(self, evt):
 		pass
@@ -140,11 +147,15 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 			self.reloadRequested = True
 		elif keyval in (fife.IKey.LEFT_CONTROL, fife.IKey.RIGHT_CONTROL):
 			self._ctrldown = True
+		elif keyval in (fife.IKey.LEFT_SHIFT, fife.IKey.RIGHT_SHIFT):
+			self._shiftdown = True
 	
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()
 		if keyval in (fife.IKey.LEFT_CONTROL, fife.IKey.RIGHT_CONTROL):
 			self._ctrldown = False
+		elif keyval in (fife.IKey.LEFT_SHIFT, fife.IKey.RIGHT_SHIFT):
+			self._shiftdown = False
 
 	def onCommand(self, command):
 		self.quitRequested = (command.getCommandType() == fife.CMD_QUIT_GAME)
@@ -266,6 +277,7 @@ class World(object):
 		self.view = self.engine.getView()
 		
 		self.ctrl_scrollwheelvalue = 0
+		self.shift_scrollwheelvalue = 0
 		self.scrollwheelvalue = 0
 		
 	def create_world(self, path):
@@ -274,9 +286,7 @@ class World(object):
 		self.elevation = self.map.getElevations("id", "OpenAnnoMapElevation")[0]
 		self.layer = self.elevation.getLayers("id", "landLayer")[0]
 		
-		self.agent_layer = self.elevation.getLayers("id", "spriteLayer")[0]
-
-		self.water = self.elevation.getLayers("id", "seaLayer")[0]		
+		self.agent_layer = self.elevation.getLayers("id", "spriteLayer")[0]	
 		
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
@@ -309,10 +319,8 @@ class World(object):
 		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
 		
 		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
-		self.water = self.water.getInstances('id', 'water_ani')[0]
 		#self.agent.addListener(self.reactor)
 		self.agent.act_here('walk', self.target, True)
-		self.water.act_here('wave', 0, True)
 		#for g in self.agent_layer.getInstances('id', 'char_ani'):
 			#g.act_here('walk', self.target, True)		
 	
@@ -324,7 +332,11 @@ class World(object):
 		self._create_camera('small', (6,1), (W*0.6, H*0.01, W*0.39, H*0.36))
 		self.view.resetRenderers()
 		self.ctrl_scrollwheelvalue = self.cameras['main'].getRotation()
+		self.shift_scrollwheelvalue = self.cameras['main'].getZoom()
 		
+		renderer = self.view.getRenderer('CoordinateRenderer')
+		renderer.clearActiveLayers()
+		renderer.addActiveLayer(self.elevation.getLayers("id", TDS.CoordinateLayerName)[0])
 
 	def create_background_music(self):
 		# set up the audio engine
@@ -338,6 +350,7 @@ class World(object):
 		evtlistener = MyEventListener(self)
 		evtlistener.scrollwheelvalue = self.scrollwheelvalue
 		evtlistener.ctrl_scrollwheelvalue = self.ctrl_scrollwheelvalue
+		evtlistener.shift_scrollwheelvalue = self.shift_scrollwheelvalue
 		self.engine.initializePumping()
 		
 		showTileOutline = not evtlistener.showTileOutline
@@ -348,7 +361,7 @@ class World(object):
 		initial_camx = smallcamx
 		cam_to_right = True
 		self.cameras['small'].setEnabled(showSecondCamera)
-				
+		
 		while True:
 			if showTileOutline != evtlistener.showTileOutline:
 				self.view.getRenderer('GridRenderer').setEnabled(evtlistener.showTileOutline)
@@ -366,12 +379,18 @@ class World(object):
 			if self.ctrl_scrollwheelvalue != evtlistener.ctrl_scrollwheelvalue:
 				self.ctrl_scrollwheelvalue = evtlistener.ctrl_scrollwheelvalue
 				self.cameras['main'].setRotation(self.ctrl_scrollwheelvalue)
+				print "camera rotation " + str(self.ctrl_scrollwheelvalue)
+			
+			if self.shift_scrollwheelvalue != evtlistener.shift_scrollwheelvalue:
+				self.shift_scrollwheelvalue = evtlistener.shift_scrollwheelvalue
+				self.cameras['main'].setZoom(self.shift_scrollwheelvalue)
+				print "camera zoom " + str(self.shift_scrollwheelvalue)
 			
 			if self.scrollwheelvalue != evtlistener.scrollwheelvalue:
 				self.scrollwheelvalue = evtlistener.scrollwheelvalue
 				l = self.elevation.getLayers("id", TDS.TestRotationLayerName)[0]
 				l.getCellGrid().setRotation(self.scrollwheelvalue)
-				self.cameras['main'].setRotation(self.ctrl_scrollwheelvalue)
+				print "cell grid rotation " + str(self.scrollwheelvalue)
 			
 			self.engine.pump()
 			
@@ -397,6 +416,7 @@ class World(object):
 				camloc = self.cameras['main'].getLocation()
 				camloc.setExactLayerCoordinates(camcoords)
 				self.cameras['main'].setLocation(camloc)
+				evtlistener.scrollwheelvalue = self.scrollwheelvalue
 
 			# scroll the map with cursor keys
 			if (evtlistener.horizscroll or evtlistener.vertscroll):
@@ -433,7 +453,7 @@ if __name__ == '__main__':
 	engine = fife.Engine()
 	log = fifelog.LogManager(engine, TDS.LogToPrompt, TDS.LogToFile)
 	if TDS.LogModules:
-		log.setVisibleModules('all')
+		log.setVisibleModules(*TDS.LogModules)
 	
 	s = engine.getSettings()
 	s.setDefaultFontGlyphs(" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
