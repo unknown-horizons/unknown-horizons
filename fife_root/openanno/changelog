@@ -1,5 +1,8 @@
 Change Log:
 
+2007.11.05 Rev. 41 by LinuxDonald
+	*/trunk/fife_root/openanno.py: Activated "self.agent.addListener(self.reactor)" but don´t know for waht it is?
+
 2007.11.05 Rev. 40 by LinuxDonald
 	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml: sync with fife
 	For what is:
