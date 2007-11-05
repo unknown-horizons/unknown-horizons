@@ -2,11 +2,10 @@
 <map id="TechdemoMap" format="1.0">
 
 	<metadata>
-		<param type="text" name="Name">openanno-test-map.xml</param>
-		<param type="id" name="Version">1</param>
-		<param type="text" name="Comment">OpenAnno first Pre-Alpha Map/Version</param>
-		<param type="text" name="Author">OpenAnno Team</param>
-		<param type="id" name="_START_ELEVATION">1</param>
+		<param name="Name">openanno-test-map.xml</param>
+		<param name="Version">1</param>
+		<param name="Comment">OpenAnno first Pre-Alpha Map/Version</param>
+		<param name="Author">OpenAnno Team</param>
 	</metadata>
 
 	<!-- Load tile object datasets -->
@@ -37,18 +36,8 @@
 	<dataset type="XML" source="openanno/datasets/sprites/chars/char.xml" />
 
 	<elevation id="OpenAnnoMapElevation">
-
-		<metadata>
-			<param name="_START_POSITION" type="Point"><x>0</x><y>0</y></param>
-		</metadata>
-
 		<!-- landLayer - ground tiles for islands -->
 		<layer id="landLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-
 			<instances>
 				<!-- beach tiles -->
 				<i o="beach_north" x="-2" y="-2" />
@@ -114,11 +103,6 @@
 
 		<!-- seaLayer - open water tiles -->
 		<layer id="seaLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-
 			<instances>
 				<!-- water on the rand on the island -->
 				<i o="water" x="-5" y="-4" />
@@ -161,11 +145,6 @@
 		
 		<!-- resourceLayer - abstract layer to define resource deposits -->
 		<!--<layer id="resourceLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-
 			<instances>
 			
 			</instances>
@@ -173,11 +152,6 @@
 
 		<!-- terrainLayer - tile gfx for rocks, mountains, resource deposits and so on -->
 		<!--<layer id="terrainLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-
 			<instances>
 			
 			</instances>
@@ -185,11 +159,6 @@
 
 		<!-- buildLayer - gfx for everything that can be build, like companies, streets, fields, TREES! etc -->
 		<layer id="buildLayer" grid_type="square" scaling="0.1">
-
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>
-
 			<instances>
 				<i o="tent" x="1" y="0" />
 				<i o="tent" x="4" y="0" />
@@ -203,11 +172,6 @@
 		
 		<!-- spriteLayer - gfx for char animations including units-->
 		<layer id="spriteLayer" grid_type="square" scaling="0.1">
-		
-			<metadata>
-				<param name="_OVERLAY_IMAGE_OFFSET" type="Point"><x>0</x><y>0</y></param>
-			</metadata>	
-			
 			<instances>
 			<i o="char_40height" x="3" y="3" />
 			<i o="char_ani" x="4" y="4" />

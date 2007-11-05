@@ -1,5 +1,13 @@
 Change Log:
 
+2007.11.05 Rev. 40 by LinuxDonald
+	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml: sync with fife
+	For what is:
+	for g in self.agent_layer.getInstances('id', 'char_ani'):
+		g.act_here('walk', self.target, True)
+	in openanno.py (techdemo.py)?
+	
+
 2007.11.04 Rev. 39 by LinuxDonald
 	*/trunk/fife_root/openanno/openanno_settings.py: forgotten to sync
 

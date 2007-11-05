@@ -299,6 +299,17 @@ class World(object):
 		
 		self.scrollwheelvalue = self.elevation.getLayers("id", TDS.TestRotationLayerName)[0].getCellGrid().getRotation()
 
+		# no movement at start
+		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
+		
+		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
+		#self.agent.addListener(self.reactor)
+		self.agent.act_here('walk', self.target, True)
+		#self.agentcoords = self.target.getElevationCoordinates()
+		#for g in self.agent_layer.getInstances('id', 'char_ani'):
+			#g.act_here('walk', self.target, True)
+
+
 	def save_world(self, path):
 		saveMapFile(path, self.engine, self.map)
 		
@@ -314,15 +325,6 @@ class World(object):
 		camera.setViewPort(fife.Rect(*[int(c) for c in viewport]))
 		camera.setLocation(camloc)		
 		self.cameras[name] = camera
-		
-		# no movement at start
-		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
-		
-		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
-		#self.agent.addListener(self.reactor)
-		self.agent.act_here('walk', self.target, True)
-		#for g in self.agent_layer.getInstances('id', 'char_ani'):
-			#g.act_here('walk', self.target, True)		
 	
 	def adjust_views(self):
 		W = self.renderbackend.getScreenWidth()
@@ -398,7 +400,7 @@ class World(object):
 			if evtlistener.newTarget:
 				ec = self.cameras['main'].toElevationCoordinates(evtlistener.newTarget)
 				self.target.setElevationCoordinates(ec)
-				self.agent.act('walk', self.target, 20.0)
+				self.agent.act('walk', self.target, 0.5)
 				evtlistener.newTarget = None
 			
 			if evtlistener.quitRequested:
@@ -418,6 +420,14 @@ class World(object):
 				self.cameras['main'].setLocation(camloc)
 				evtlistener.scrollwheelvalue = self.scrollwheelvalue
 
+			#agentcoords = self.agent.getLocation().getElevationCoordinates()
+			#if not ((self.agentcoords.x == agentcoords.x) and (self.agentcoords.y == agentcoords.y)):
+				#loc = self.cameras['main'].getLocation()
+				#loc.setElevationCoordinates(agentcoords)
+				#self.cameras['main'].setLocation(loc)
+				#self.agentcoords.x = agentcoords.x
+				#self.agentcoords.y = agentcoords.y
+			
 			# scroll the map with cursor keys
 			if (evtlistener.horizscroll or evtlistener.vertscroll):
 				loc = self.cameras['main'].getLocation()
