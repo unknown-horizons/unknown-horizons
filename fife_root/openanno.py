@@ -19,7 +19,7 @@ from fifedit import *
 
 class InstanceReactor(fife.InstanceListener):
 	def OnActionFinished(self, instance, action):
-		instance.act_here('idle', instance.getFacingLocation(), True)
+		instance.act_here('walk', instance.getFacingLocation(), True) #the orgianl is: instance.act_here('idle', instance.getFacingLocation(), True)
 
 SCROLL_MODIFIER = 0.1
 class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListener, 

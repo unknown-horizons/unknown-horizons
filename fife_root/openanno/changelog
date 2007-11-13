@@ -1,5 +1,8 @@
 Change Log:
 
+2007-11-12 Rev. 43 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno.py: fixed the crash when the char end walk
+
 2007-11-12 Rev. 42 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
 
 	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno_settings.py: sync with fife
