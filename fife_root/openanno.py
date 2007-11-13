@@ -302,7 +302,7 @@ class World(object):
 		# no movement at start
 		self.target.setLayerCoordinates(fife.ModelCoordinate(4,4))
 		
-		self.agent = self.agent_layer.getInstances('id', 'char_ani')[0]
+		self.agent = self.agent_layer.getInstances('id', 'mainship_ani')[0]
 		self.agent.addListener(self.reactor)
 		self.agent.act_here('walk', self.target, True)
 		#self.agentcoords = self.target.getElevationCoordinates()

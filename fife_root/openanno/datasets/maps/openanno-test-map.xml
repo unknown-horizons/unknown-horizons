@@ -31,6 +31,7 @@
 	
 	<!-- Load agent datasets -->
 	<dataset type="XML" source="openanno/datasets/sprites/chars/animations/animations.xml" />
+	<dataset type="XML" source="openanno/datasets/sprites/ships/animations/mainship.xml" />
 
 	<!-- Load agent ( the agent is in fife an char) datasets -->
 	<dataset type="XML" source="openanno/datasets/sprites/chars/char.xml" />
@@ -174,7 +175,7 @@
 		<layer id="spriteLayer" grid_type="square" scaling="0.1">
 			<instances>
 			<i o="char_40height" x="3" y="3" />
-			<i o="char_ani" x="4" y="4" />
+			<i o="mainship_ani" x="4" y="4" />
 			</instances>	
 		</layer>
 		

@@ -1,0 +1,3 @@
+<animation delay="50" id="mainship">
+	<frame source="openanno/gfx/sprites/ships/mainship/mainship4.png" />
+</animation>

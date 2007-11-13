@@ -1,5 +1,10 @@
 Change Log:
 
+2007-11-12 Rev. 44 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno/datasets/sprites/ships: added mainship animation
+	*/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/datasets/maps/openanno-test-map- 		savefile.xml: deltet char_ani and added mainship_ani
+	*/trunk/fife_root/openanno/gfx/sprites/ships/mainship/*.*: maked the grafic`s transparent
+
 2007-11-12 Rev. 43 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
 	*/trunk/fife_root/openanno.py: fixed the crash when the char end walk
 
@@ -29,7 +34,7 @@ Change Log:
 
 	*/trunk/fife_root/openanno.py: sync with fife
 	*/trunk/fife_root/openanno/gfx/base/water/animations/water.xml: fixed id
-	*/trunk/fife_root/openanno/gfx/ships/*.*: added many ships graphic`s
+	*/trunk/fife_root/openanno/gfx/sprites/ships/*.*: added many ships graphic`s
 
 2007-11-02 Rev. 37 by LinuxDonald <linuxdonald@linuxdonald.de>
 
