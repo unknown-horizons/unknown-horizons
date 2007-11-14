@@ -1,0 +1,3 @@
+<animation delay="50" id="trade">
+	<frame source="openanno/gfx/sprites/ships/trade/trade.png" />
+</animation>

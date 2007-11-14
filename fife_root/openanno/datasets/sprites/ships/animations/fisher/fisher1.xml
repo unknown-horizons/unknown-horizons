@@ -1,0 +1,3 @@
+<animation delay="50" id="fisher">
+	<frame source="openanno/gfx/sprites/ships/fisher/fisher1.png" />
+</animation>

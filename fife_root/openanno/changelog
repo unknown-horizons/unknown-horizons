@@ -1,17 +1,24 @@
 Change Log:
 
-2007-11-12 Rev. 45 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
-	*/trunk/fife_root/openanno/datasets/sprites/ships/*.*: added more transparten for the grafic's
+2007-11-14 Rev. 47 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno/datasets/sprites/ships/animations/*.*: added more ships animation
+	*/trunk/fife_root/openanno/datasets/sprites/ships/animations/mainship.xml, */trunk/fife_root/openanno/datasets/sprites/ships/ 		animations/mainship/*.*: fixed animation
 
-2007-11-12 Rev. 44 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
-	*/trunk/fife_root/openanno/datasets/sprites/ships: added mainship animation
+2007-11-14 Rev. 46 by phiker < >
+	*/trunk/fife_root/openanno/gfx/sprites/ships/fisher/*.*: added transparation
+
+2007-11-14 Rev. 45 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno/datasets/sprites/ships/*.*: added more transparation for the grafic's
+
+2007-11-12 Rev. 44 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno/datasets/sprites/ships/animations/*.*: added mainship animation
 	*/trunk/fife_root/openanno/datasets/maps/openanno-test-map.xml, /trunk/fife_root/openanno/datasets/maps/openanno-test-map- 		savefile.xml: deltet char_ani and added mainship_ani
 	*/trunk/fife_root/openanno/gfx/sprites/ships/mainship/*.*: maked the grafic`s transparent
 
-2007-11-12 Rev. 43 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
+2007-11-12 Rev. 43 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/trunk/fife_root/openanno.py: fixed the crash when the char end walk
 
-2007-11-12 Rev. 42 by LinuxDonaldby LinuxDonald <linuxdonald@linuxdonald.de>
+2007-11-12 Rev. 42 by LinuxDonald <linuxdonald@linuxdonald.de>
 
 	*/trunk/fife_root/openanno.py, /trunk/fife_root/openanno_settings.py: sync with fife
 	*/trunk/fife_root/openanno/changelog: better formarted but its not ready
