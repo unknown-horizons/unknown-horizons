@@ -286,7 +286,7 @@ class World(object):
 		self.elevation = self.map.getElevations("id", "OpenAnnoMapElevation")[0]
 		self.layer = self.elevation.getLayers("id", "landLayer")[0]
 		
-		self.agent_layer = self.elevation.getLayers("id", "spriteLayer")[0]	
+		self.agent_layer = self.elevation.getLayers("id", "spriteLayer")[0]
 		
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
@@ -412,7 +412,7 @@ class World(object):
 				evtlistener.reloadRequested = False
 				self.model.clearMaps()
 				self.metamodel.clearDatasets()
-				self.create_world("techdemo/maps/city_new.xml")
+				self.create_world("openanno/datasets/maps/openanno-test-map.xml")
 				self.view.clearCameras()
 				self.adjust_views()
 				self.cameras['small'].setEnabled(showSecondCamera)
@@ -421,13 +421,13 @@ class World(object):
 				self.cameras['main'].setLocation(camloc)
 				evtlistener.scrollwheelvalue = self.scrollwheelvalue
 
-			#agentcoords = self.agent.getLocation().getElevationCoordinates()
-			#if not ((self.agentcoords.x == agentcoords.x) and (self.agentcoords.y == agentcoords.y)):
-				#loc = self.cameras['main'].getLocation()
-				#loc.setElevationCoordinates(agentcoords)
-				#self.cameras['main'].setLocation(loc)
-				#self.agentcoords.x = agentcoords.x
-				#self.agentcoords.y = agentcoords.y
+			agentcoords = self.agent.getLocation().getElevationCoordinates()
+			if not ((self.agentcoords.x == agentcoords.x) and (self.agentcoords.y == agentcoords.y)):
+				loc = self.cameras['main'].getLocation()
+				loc.setElevationCoordinates(agentcoords)
+				self.cameras['main'].setLocation(loc)
+				self.agentcoords.x = agentcoords.x
+				self.agentcoords.y = agentcoords.y
 			
 			# scroll the map with cursor keys
 			if (evtlistener.horizscroll or evtlistener.vertscroll):

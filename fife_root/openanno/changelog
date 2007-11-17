@@ -1,5 +1,8 @@
 Change Log:
 
+2007-11-14 Rev. 48 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno.py: fixed small bugs
+
 2007-11-14 Rev. 47 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/trunk/fife_root/openanno/datasets/sprites/ships/animations/*.*: added more ships animation
 	*/trunk/fife_root/openanno/datasets/sprites/ships/animations/mainship.xml, */trunk/fife_root/openanno/datasets/sprites/ships/ 		animations/mainship/*.*: fixed animation
