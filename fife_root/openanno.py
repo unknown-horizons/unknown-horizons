@@ -305,7 +305,7 @@ class World(object):
 		self.agent = self.agent_layer.getInstances('id', 'mainship_ani')[0]
 		self.agent.addListener(self.reactor)
 		self.agent.act_here('walk', self.target, True)
-		#self.agentcoords = self.target.getElevationCoordinates()
+		self.agentcoords = self.target.getElevationCoordinates()
 		#for g in self.agent_layer.getInstances('id', 'char_ani'):
 			#g.act_here('walk', self.target, True)
 
