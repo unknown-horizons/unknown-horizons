@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!-- Note, this file needs to be updated to collect all the animations in one object (with varying 'direction' value) -->
-<dataset id="spriteLayer" type="Embedded" format="1.0">
-	<object id="char_40height">
-		<image source="openanno/gfx/sprites/chars/idle/char_40height.png" direction='0' />
-	</object>
-
-</dataset>

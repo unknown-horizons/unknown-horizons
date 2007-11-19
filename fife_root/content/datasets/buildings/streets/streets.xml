@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<dataset id="streettiles" type="Embedded" format="1.0">
+
+	<object id="path_combined_64">
+		<image source="content/gfx/buildings/streets/path_combined_64.png" direction="0" />
+	</object>
+	
+	<object id="path_64">
+		<image source="content/gfx/buildings/streets/path_64.png" direction="0" />
+	</object>
+
+</dataset>

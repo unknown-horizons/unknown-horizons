@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<dataset id="watertiles" type="Embedded" format="1.0">
-
-	<object id="water">
-		<image source="openanno/gfx/base/water/water.png" direction="0" />
-	</object>
-
-</dataset>

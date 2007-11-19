@@ -5,7 +5,7 @@ import sys, os, re
 def _jp(path):
 	return os.path.sep.join(path.split('/'))
 
-_paths = ('engine/swigwrappers/python', 'engine/extensions')
+_paths = ('../../engine/swigwrappers/python', '../../engine/extensions')
 for p in _paths:
 	if p not in sys.path:
 		sys.path.append(_jp(p))
@@ -206,7 +206,7 @@ class Gui(object):
 		container.setOpaque(True)
 		self.register_widget(container, self.guimanager)
 		
-		label1 = fife.Label('OpenAnnoTechDemo')
+		label1 = fife.Label('OpenAnno-PreAlpha')
 		label1.setPosition(1, 0)
 		label1.setFont(self.font)
 		self.register_widget(label1, container)
@@ -253,7 +253,7 @@ class Gui(object):
 		# text
 		text_info = fife.TextBox()
 		text_info.setPosition(10,40)
-		text_info.setText(open(_jp('openanno/infotext.txt'), 'r').read())
+		text_info.setText(open(_jp('content/infotext.txt'), 'r').read())
 		text_info.setOpaque(False)
 		text_info.setBorderSize(0)
 		self.register_widget(text_info, self.container_info)
@@ -345,7 +345,7 @@ class World(object):
 		self.audiomanager = self.engine.getAudioManager()
 
 		# play track as background music
-		self.audiomanager.setAmbientSound('openanno/audio/music/music2.ogg')
+		self.audiomanager.setAmbientSound('content/audio/music/music2.ogg')
 			
 	def run(self):
 		camloc = fife.Location()
@@ -412,7 +412,7 @@ class World(object):
 				evtlistener.reloadRequested = False
 				self.model.clearMaps()
 				self.metamodel.clearDatasets()
-				self.create_world("openanno/datasets/maps/openanno-test-map.xml")
+				self.create_world("content/datasets/maps/openanno-test-map.xml")
 				self.view.clearCameras()
 				self.adjust_views()
 				self.cameras['small'].setEnabled(showSecondCamera)
@@ -469,7 +469,7 @@ if __name__ == '__main__':
 	s = engine.getSettings()
 	s.setDefaultFontGlyphs(" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
 			".,!?-+/:();%`'*#=[]")
-	s.setDefaultFontPath('techdemo/fonts/samanata.ttf')
+	s.setDefaultFontPath('content/fonts/samanata.ttf')
 	s.setDefaultFontSize(12)
 	s.setBitsPerPixel(TDS.BitsPerPixel)
 	s.setFullScreen(TDS.FullScreen)
@@ -485,10 +485,10 @@ if __name__ == '__main__':
 
 	e = FIFEdit(engine)
 
-	w.create_world("openanno/datasets/maps/openanno-test-map.xml")
+	w.create_world("content/datasets/maps/openanno-test-map.xml")
 	w.adjust_views()
 	if TDS.PlaySounds:
 		w.create_background_music()
 	w.run()
-	w.save_world("openanno/datasets/maps/openanno-test-map-savefile.xml")
+	w.save_world("content/datasets/maps/openanno-test-map-savefile.xml")
 
