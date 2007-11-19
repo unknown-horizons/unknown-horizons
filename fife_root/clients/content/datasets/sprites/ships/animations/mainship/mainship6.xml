@@ -1,0 +1,3 @@
+<animation delay="50" id="mainship">
+	<frame source="content/gfx/sprites/ships/mainship/mainship6.png" />
+</animation>

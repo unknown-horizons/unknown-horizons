@@ -1,0 +1,3 @@
+<animation delay="50" id="pirates">
+	<frame source="content/gfx/sprites/ships/pirates/pirates1.png" />
+</animation>

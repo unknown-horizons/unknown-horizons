@@ -1,0 +1,3 @@
+<animation delay="50" id="fisher">
+	<frame source="content/gfx/sprites/ships/fisher/fisher0.png" />
+</animation>

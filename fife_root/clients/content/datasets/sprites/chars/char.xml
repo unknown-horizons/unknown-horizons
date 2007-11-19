@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<dataset id="spriteLayer" type="Embedded" format="1.0">
+	<object id="char_40height">
+		<image source="content/gfx/sprites/chars/idle/char_40height.png" direction='0' />
+	</object>
+
+</dataset>

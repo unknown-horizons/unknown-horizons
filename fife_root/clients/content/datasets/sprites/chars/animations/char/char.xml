@@ -1,0 +1,3 @@
+<animation delay="50" id="char">
+	<frame source="content/gfx/sprites/chars/animations/char/char.png" />
+</animation>

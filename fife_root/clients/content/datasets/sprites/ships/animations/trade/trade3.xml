@@ -1,0 +1,3 @@
+<animation delay="50" id="trade">
+	<frame source="content/gfx/sprites/ships/trade/trade3.png" />
+</animation>
