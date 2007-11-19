@@ -1,5 +1,11 @@
 Change Log:
 
+2007-11-14 Rev. 51 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*correctet the path from rev 50
+
+2007-11-14 Rev. 50 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/fife_root/openanno/*.*: moved now to fife_root/clients/openanno in the few folder in fife
+
 2007-11-14 Rev. 49 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/trunk/fife_root/openanno.py: sync with fife
 
