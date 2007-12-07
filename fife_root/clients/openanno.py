@@ -410,8 +410,8 @@ class World(object):
 			if evtlistener.reloadRequested:
 				camcoords = self.cameras['main'].getLocation().getExactLayerCoordinates()
 				evtlistener.reloadRequested = False
-				self.model.clearMaps()
-				self.metamodel.clearDatasets()
+				self.model.deleteMaps()
+				self.metamodel.deleteDatasets()
 				self.create_world("content/datasets/maps/openanno-test-map.xml")
 				self.view.clearCameras()
 				self.adjust_views()

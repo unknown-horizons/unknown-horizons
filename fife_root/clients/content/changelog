@@ -1,5 +1,8 @@
 Change Log:
 
+2007-12-07 Rev. 59 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/clients/openanno.py: sync with fife
+
 2007-11-23 Rev. 58 by LinuxDonald <linuxdonald@linuxdonald.de>
 	added License file
 	Removed Changelog from 50 to 57 because is were bugie
