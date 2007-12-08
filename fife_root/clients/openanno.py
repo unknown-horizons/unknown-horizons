@@ -19,9 +19,10 @@ from fifedit import *
 
 class InstanceReactor(fife.InstanceListener):
 	def OnActionFinished(self, instance, action):
-		instance.act_here('walk', instance.getFacingLocation(), True) #the orgianl is: instance.act_here('idle', instance.getFacingLocation(), True)
+		instance.act_here('walk', instance.getFacingLocation(), True)
 
 SCROLL_MODIFIER = 0.1
+MAPFILE = 'content/datasets/maps/openanno-test-map.xml'
 class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListener, 
 	              fife.ConsoleExecuter, fife.IWidgetListener):
 	def __init__(self, world):
@@ -342,10 +343,14 @@ class World(object):
 
 	def create_background_music(self):
 		# set up the audio engine
-		self.audiomanager = self.engine.getAudioManager()
+		self.soundmanager = self.engine.getSoundManager()
+		self.soundmanager.init()
 
 		# play track as background music
-		self.audiomanager.setAmbientSound('content/audio/music/music2.ogg')
+		emitter = self.soundmanager.createEmitter()
+		emitter.load('content/audio/music/music2.ogg')
+		emitter.setLooping(True)
+		emitter.play()
 			
 	def run(self):
 		camloc = fife.Location()
@@ -412,7 +417,7 @@ class World(object):
 				evtlistener.reloadRequested = False
 				self.model.deleteMaps()
 				self.metamodel.deleteDatasets()
-				self.create_world("content/datasets/maps/openanno-test-map.xml")
+				self.create_world(MAPFILE)
 				self.view.clearCameras()
 				self.adjust_views()
 				self.cameras['small'].setEnabled(showSecondCamera)
@@ -483,9 +488,10 @@ if __name__ == '__main__':
 	gui = Gui(engine)
 	w = World(engine, gui)
 
-	e = FIFEdit(engine)
+	e = FIFEdit(engine, [MAPFILE])
+	e.show()
 
-	w.create_world("content/datasets/maps/openanno-test-map.xml")
+	w.create_world(MAPFILE)
 	w.adjust_views()
 	if TDS.PlaySounds:
 		w.create_background_music()
