@@ -1,5 +1,8 @@
 Change Log:
 
+2007-12-16 Rev. 61 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/clients/openanno.py: sync with fife (but map editor not work at the moment
+
 2007-12-08 Rev. 60 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/clients/openanno.py: sync with fife
 

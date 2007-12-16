@@ -50,7 +50,7 @@ class MyEventListener(fife.IKeyListener, fife.ICommandListener, fife.IMouseListe
 		engine.getGuiManager().getConsole().setConsoleExecuter(self)
 		fife.IWidgetListener.__init__(self)
 		eventmanager.addWidgetListener(self)
-		
+	
 		self.engine = engine		
 		self.quitRequested = False
 		self.newTarget = None
@@ -493,6 +493,9 @@ if __name__ == '__main__':
 
 	w.create_world(MAPFILE)
 	w.adjust_views()
+
+	e.edit_camview(w.cameras['main'])
+
 	if TDS.PlaySounds:
 		w.create_background_music()
 	w.run()
