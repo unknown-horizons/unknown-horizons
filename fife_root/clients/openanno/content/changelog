@@ -1,5 +1,9 @@
 Change Log:
 
+2007-12-27 Rev. 62 by LinuxDonald <linuxdonald@linuxdonald.de>
+	Map Editor is working see the wiki for details. At the momnent the details only in german
+	German wiki link: http://openanno.org/wiki/index.php/Map_Editor	
+
 2007-12-16 Rev. 61 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/clients/openanno.py: sync with fife (but map editor not work at the moment
 
