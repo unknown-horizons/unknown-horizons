@@ -10,7 +10,7 @@ try:
 except ImportError,e:
 	print 'FIFE was not found or failed to load'
 	print 'Reason: ' + e.message
-	print 'Please edit openanno.py and change fife_dir to point to your FIFE checkout'
+	print 'Please edit start_oa.sh or start_oa.bat and change fife_dir to point to your FIFE checkout'
 	exit()
 
 import openanno_settings as TDS
