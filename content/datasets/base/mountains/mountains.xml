@@ -17,4 +17,12 @@
 		<image source="content/gfx/base/mountains/quarry_b.png" direction="0" />
 	</object>
 
+	<object id="rock">
+		<image source="content/gfx/base/mountains/.png" direction="0" />
+	</object>
+
+	<object id="rock_snow">
+		<image source="content/gfx/base/mountains/rock_snow.png" direction="0" />
+	</object>
+
 </dataset>
