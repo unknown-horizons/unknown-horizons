@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<dataset id="buildtiles" type="Embedded" format="1.0">
+
+	<object id="harbour_lt">
+		<image source="content/gfx/buildings/harbour/harbour_lt.png" direction="0" />
+	</object>
+	
+	<object id="harbour_rt">
+		<image source="content/gfx/buildings/harbour/harbour_rt.png" direction="0" />
+	</object>
+	
+	<object id="harbour">
+		<image source="content/gfx/buildings/harbour/harbour.png" direction="0" />
+	</object>
+	
+	<object id="harbour_lb">
+		<image source="content/gfx/buildings/harbour/harbour_lb.png" direction="0" />
+	</object>
+
+</dataset>
