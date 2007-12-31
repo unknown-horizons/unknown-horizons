@@ -1,17 +1,56 @@
 Change Log:
 
+2007-12-16 Rev. 76 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*Completed Changelog file
+
+2007-12-16 Rev. 75 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/content/datasets/base/tree/*.*, /trunk/content/gfx/base/tree/*.*, /trunk/content/datasets/maps/
+	openanno-test-map-savefile.xml, /trunk/content/datasets/maps/openanno-test-map.xml: added trees and palms
+
+2007-12-16 Rev. 74 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*low letters in music file names
+
+2007-12-16 Rev. 73 by phiker <k.philipp xAxTx gmail xDxOxTx com>
+	*/trunk/openanno.py, /trunk/start_oa.bat: Modified errormessage and Added windows batchfile
+
+2007-12-16 Rev. 72 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/content/datasets/base/mountains/mountains.xml, /trunk/content/gfx/base/mountains/rock.png, /trunk/content/gfx/base/    		mountains/rock_snow.png: added more mountains
+
+2007-12-16 Rev. 71 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/content/datasets/base/mountains, /trunk/content/gfx/base/mountains, /trunk/content/datasets/maps/openanno-test-map- 		savefile.xml, /trunk/content/datasets/maps/openanno-test-map.xml: added mountains 
+
+2007-12-16 Rev. 70 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/trunk/content/datasets/buildings/harbour/*.*, /trunk/content/datasets/maps/openanno-test-map-savefile.xml, /trunk/content/ 		gfx/buildings/harbour: added harbour but it dont properly displayed 
+
+2007-12-16 Rev. 69 by phiker <k.philipp xAxTx gmail xDxOxTx com>
+	*/trunk/content/datasets/maps/openanno-test-map-savefile.xml, /trunk/openanno.py, /trunk/start_oa.sh: Temporary deployment 	 		whatever 
+
+2007-12-16 Rev. 68 by phiker <k.philipp xAxTx gmail xDxOxTx com>
+	*Changed svn:eol-style native
+	*Added fife_dir config variable to openanno.py 
+
+2007-12-16 Rev. 67 by phiker <k.philipp xAxTx gmail xDxOxTx com>
+	*/trunk/content, /trunk/fife_root, /trunk/openanno.py, /trunk/openanno_settings.py: Moved content to top dir 
+
+2007-12-16 Rev. 66 by phiker <k.philipp xAxTx gmail xDxOxTx com>
+	* Removed FIFE external 
+
 2007-12-31 Rev. 65 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/openanno/clients/openanno/content/gfx/sprites/buildings/farm
-	openanno/clients/openanno/content/datasets/sprites/buildings/animations
-	openanno/clients/openanno/content/datasets/maps/openanno-test-map.xml
-	openanno/clients/openanno/content/datasets/maps/openanno-test-map-savefile.xml
-	openanno/clients/openanno/content/datasets/buildings/work-buildings: added farm and farm-animation but at the momnet it don't 		give an animation system in openanno
+	/openanno/clients/openanno/content/datasets/sprites/buildings/animations
+	/openanno/clients/openanno/content/datasets/maps/openanno-test-map.xml
+	/openanno/clients/openanno/content/datasets/maps/openanno-test-map-savefile.xml
+	/openanno/clients/openanno/content/datasets/buildings/work-buildings: added farm and farm-animation but at the momnet it don't 		/give an animation system in openanno
 
-2007-12-27 Rev. 62 by LinuxDonald <linuxdonald@linuxdonald.de>
+2007-12-16 Rev. 64 by LinuxDonald <linuxdonald@linuxdonald.de>
+
+2007-12-16 Rev. 63 by LinuxDonald <linuxdonald@linuxdonald.de>
 	Map Editor is working see the wiki for details. At the momnent the details only in german
 	German wiki link: http://openanno.org/wiki/index.php/Map_Editor	
 
-2007-12-16 Rev. 61 by LinuxDonald <linuxdonald@linuxdonald.de>
+2007-12-08 Rev. 62 by LinuxDonald <linuxdonald@linuxdonald.de>
+
+2007-12-08 Rev. 61 by LinuxDonald <linuxdonald@linuxdonald.de>
 	*/clients/openanno.py: sync with fife (but map editor not work at the moment
 
 2007-12-08 Rev. 60 by LinuxDonald <linuxdonald@linuxdonald.de>
