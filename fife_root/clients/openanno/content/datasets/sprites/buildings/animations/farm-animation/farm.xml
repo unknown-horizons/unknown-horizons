@@ -1,0 +1,11 @@
+<animation delay="50" id="farm">
+	<frame source="content/gfx/sprites/buildings/farm/farm.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm1.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm2.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm3.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm4.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm5.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm6.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm7.png" />
+	<frame source="content/gfx/sprites/buildings/farm/farm8.png" />
+</animation>

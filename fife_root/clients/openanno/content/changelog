@@ -1,5 +1,12 @@
 Change Log:
 
+2007-12-31 Rev. 63 by LinuxDonald <linuxdonald@linuxdonald.de>
+	*/openanno/clients/openanno/content/gfx/sprites/buildings/farm
+	openanno/clients/openanno/content/datasets/sprites/buildings/animations
+	openanno/clients/openanno/content/datasets/maps/openanno-test-map.xml
+	openanno/clients/openanno/content/datasets/maps/openanno-test-map-savefile.xml
+	openanno/clients/openanno/content/datasets/buildings/work-buildings: added farm and farm-animation but at the momnet it don't 		give an animation system in openanno
+
 2007-12-27 Rev. 62 by LinuxDonald <linuxdonald@linuxdonald.de>
 	Map Editor is working see the wiki for details. At the momnent the details only in german
 	German wiki link: http://openanno.org/wiki/index.php/Map_Editor	
