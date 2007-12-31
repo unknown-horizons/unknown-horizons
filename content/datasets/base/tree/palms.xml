@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<dataset id="treetiles" type="Embedded" format="1.0">
+
+	<object id="palms1">
+		<image source="content/gfx/base/tree/palms/palms1.png" direction="0" />
+	</object>
+
+	<object id="palms2">
+		<image source="content/gfx/base/tree/palms/palms2.png" direction="0" />
+	</object>
+
+	<object id="palms3">
+		<image source="content/gfx/base/tree/palms/palms3.png" direction="0" />
+	</object>
+
+	<object id="palms4">
+		<image source="content/gfx/base/tree/palms/palms4.png" direction="0" />
+	</object>
+
+	<object id="palms5">
+		<image source="content/gfx/base/tree/palms/palms5.png" direction="0" />
+	</object>
+
+	<object id="palms6">
+		<image source="content/gfx/base/tree/palms/palms6.png" direction="0" />
+	</object>
+
+</dataset>

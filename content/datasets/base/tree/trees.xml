@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<dataset id="treetiles" type="Embedded" format="1.0">
+
+	<object id="tree1">
+		<image source="content/gfx/base/tree/trees/tree_1.png" direction="0" />
+	</object>
+
+	<object id="tree2">
+		<image source="content/gfx/base/tree/trees/tree_2.png" direction="0" />
+	</object>
+
+	<object id="tree3">
+		<image source="content/gfx/base/tree/trees/tree_3.png" direction="0" />
+	</object>
+
+	<object id="tree4">
+		<image source="content/gfx/base/tree/trees/tree_4.png" direction="0" />
+	</object>
+
+	<object id="tree5">
+		<image source="content/gfx/base/tree/trees/tree_5.png" direction="0" />
+	</object>
+
+</dataset>

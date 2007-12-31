@@ -23,6 +23,8 @@
 	
 	<!-- Map specific object -->
 	<dataset type="XML" source="content/datasets/base/mountains/mountains.xml" />
+	<dataset type="XML" source="content/datasets/base/tree/trees.xml" />
+	<dataset type="XML" source="content/datasets/base/tree/palms.xml" />
 
 	<!-- Load agent datasets -->
 	<dataset type="XML" source="content/datasets/sprites/chars/animations/animations.xml" />
@@ -150,6 +152,8 @@
 		<layer id="terrainLayer" grid_type="square" scaling="0.1">
 			<instances>
 				<i o="oremine" x="10" y="4" />
+				<i o="tree3" x="8" y="4" />
+				<i o="palms5" x="0" y="4" />
 			</instances>
 		</layer>
 
