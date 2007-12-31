@@ -16,7 +16,7 @@
 	<elevation id="OpenAnnoMapElevation">
 		<metadata>
 		</metadata>
-		<layer y_scale="1.0" grid_type="square" id="landLayer" x_scale="1.0" x_offset="0.0" y_offset="0.0" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" y_scale="1.0" grid_type="square" id="landLayer" x_scale="1.0">
 			<metadata>
 			</metadata>
 			<instances>
@@ -310,7 +310,7 @@
 				<i x="-3" o="ice_w-n" z="0" y="9"></i>
 			</instances>
 		</layer>
-		<layer y_scale="1.0" grid_type="square" id="seaLayer" x_scale="1.0" x_offset="0.0" y_offset="0.0" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" y_scale="1.0" grid_type="square" id="seaLayer" x_scale="1.0">
 			<metadata>
 			</metadata>
 			<instances>
@@ -508,7 +508,7 @@
 				<i x="14" o="water" z="0" y="19"></i>
 			</instances>
 		</layer>
-		<layer y_scale="1.0" grid_type="square" id="buildLayer" x_scale="1.0" x_offset="0.0" y_offset="0.0" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" y_scale="1.0" grid_type="square" id="buildLayer" x_scale="1.0">
 			<metadata>
 			</metadata>
 			<instances>
@@ -525,7 +525,7 @@
 				<i x="8" o="path_64" z="0" y="2"></i>
 			</instances>
 		</layer>
-		<layer y_scale="1.0" grid_type="square" id="spriteLayer" x_scale="1.0" x_offset="0.0" y_offset="0.0" rotation="0.0">
+		<layer x_offset="0.0" y_offset="0.0" rotation="0.0" y_scale="1.0" grid_type="square" id="spriteLayer" x_scale="1.0">
 			<metadata>
 			</metadata>
 			<instances>

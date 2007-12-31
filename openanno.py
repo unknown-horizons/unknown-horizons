@@ -1,25 +1,15 @@
 #!/usr/bin/env python
 
-#####
-
-# Change this to the path of your FIFE checkout
-fife_dir = '../../fife-trunk'
-
-#####
-
 import sys, os, re
 
 def _jp(path):
 	return os.path.sep.join(path.split('/'))
 
-_paths = (fife_dir + '/engine/swigwrappers/python', fife_dir + '/engine/extensions')
-for p in _paths:
-	if p not in sys.path:
-		sys.path.append(_jp(p))
 try:
 	import fife, fifelog
-except ImportError:
-	print 'FIFE was not found in "' + fife_dir + '"'
+except ImportError,e:
+	print 'FIFE was not found or failed to load'
+	print 'Reason: ' + e.message
 	print 'Please edit openanno.py and change fife_dir to point to your FIFE checkout'
 	exit()
 
