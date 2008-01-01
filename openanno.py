@@ -15,10 +15,7 @@ except ImportError,e:
 
 import openanno_settings as TDS
 
-from openanno.gui import Gui
-from openanno.world import World
-
-MAPFILE = 'content/datasets/maps/openanno-test-map.xml'
+from openanno.statemanager import StateManager
 
 if __name__ == '__main__':
 	engine = fife.Engine()
@@ -40,12 +37,5 @@ if __name__ == '__main__':
 	s.setScreenHeight(TDS.ScreenHeight)
 	engine.init()
 	
-	gui = Gui(engine)
-	w = World(engine, gui)
-
-	w.create_world(MAPFILE)
-	w.adjust_views()
-
-	if TDS.PlaySounds:
-		w.create_background_music()
-	w.run()
+	StateManager.init()
+	StateManager.run()
