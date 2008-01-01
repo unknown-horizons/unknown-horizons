@@ -1,6 +1,7 @@
 import fife, fifelog
 from loaders import loadMapFile
 from savers import saveMapFile
+from openanno.cameracontroller import CameraController
 
 class QuitListener(fife.ICommandListener, fife.IKeyListener):
 	def __init__(self, world):
@@ -93,16 +94,12 @@ class World(object):
 		emitter.play()
 		
 	def create_camera_controller(self):
-		from cameracontroller import CameraController
-		
 		controller = CameraController()
 		self.engine.getEventManager().addKeyListener(controller)
-			
+		
 	def run(self):
 		quitlistener = QuitListener(self)
-
-		self.create_camera_controller()
-
+		controller = CameraController(self)
 		self.engine.initializePumping()
 		
 		while True:

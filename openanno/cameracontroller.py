@@ -1,12 +1,16 @@
-from fife import IKeyListener
+import fife
 
-class CameraController(IKeyListener):
-	def __init__(self):	
-		IKeyListener.__init__(self)
+class CameraController(fife.IKeyListener):
+	def __init__(self, world):
+		fife.IKeyListener.__init__(self)
+		eventmanager = world.engine.getEventManager()
+		eventmanager.addKeyListener(self)
 		
-	def keyPressed(self, event):
-		pass
+	def keyPressed(self, evt):
+		keyval = evt.getKey().getValue()
+		if keyval == fife.IKey.LEFT:
+			print "blablubb"
 		
-	def keyReleased(self, event):
+	def keyReleased(self, evt):
 		pass
 	
