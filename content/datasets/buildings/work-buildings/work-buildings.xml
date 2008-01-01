@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<dataset id="work-buildings" type="Embedded" format="1.0">
+
+	<object id="bakery" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/bakery.png" />
+	</object>
+
+	<object id="blacksmith" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/blacksmith.png" />
+	</object>
+
+	<object id="branchoffice" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/branchoffice.png" />
+	</object>
+
+	<object id="lumberjack" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/lumberjack.png" />
+	</object>
+
+	<object id="lumbermill" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/lumbermill.png" />
+	</object>
+
+	<object id="smith" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/smith.png" />
+	</object>
+
+	<object id="tobaccoplantation" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/tobaccoplantation.png" />
+	</object>
+
+	<object id="weaponsmith" blocking="1">
+		<image source="content/gfx/buildings/work-buildings/weaponsmith.png" />
+	</object>
+
+</dataset>

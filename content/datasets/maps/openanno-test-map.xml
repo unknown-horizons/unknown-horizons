@@ -15,6 +15,7 @@
 	<!-- Load buildings/residents datasets -->
 	<!-- residents.xml -->
 	<dataset type="XML" source="content/datasets/buildings/residents/residents.xml" />
+	<dataset type="XML" source="content/datasets/buildings/work-buildings/work-buildings.xml" />
 	<dataset type="XML" source="content/datasets/buildings/work-buildings/farm.xml" />
 
 	<!-- Load object datasets -->

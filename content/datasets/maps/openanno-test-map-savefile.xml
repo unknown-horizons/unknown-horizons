@@ -8,6 +8,7 @@
 	<dataset source="content/datasets/base/water/animations/water_ani.xml" type="XML"></dataset>
 	<dataset source="content/datasets/base/water/water.xml" type="XML"></dataset>
 	<dataset source="content/datasets/buildings/residents/residents.xml" type="XML"></dataset>
+	<dataset source="content/datasets/buildings/work-buildings/work-buildings.xml" type="XML"></dataset>
 	<dataset source="content/datasets/buildings/work-buildings/farm.xml" type="XML"></dataset>
 	<dataset source="content/datasets/buildings/streets/streets.xml" type="XML"></dataset>
 	<dataset source="content/datasets/base/mountains/mountains.xml" type="XML"></dataset>
@@ -310,6 +311,8 @@
 				<i x="-3" o="ice_west" z="0" y="15"></i>
 				<i x="-3" o="ice_west" z="0" y="16"></i>
 				<i x="-3" o="ice_w-n" z="0" y="9"></i>
+				<i x="10" o="farmfield" z="0" y="0"></i>
+				<i x="10" o="farmfield" z="0" y="1"></i>
 			</instances>
 		</layer>
 		<layer y_scale="1.0" grid_type="square" id="seaLayer" x_scale="1.0" x_offset="0.0" y_offset="0.0" rotation="0.0">
@@ -542,7 +545,7 @@
 			<instances>
 				<i x="8" o="farm" z="0" y="0"></i>
 				<i x="3" o="char_40height" z="0" y="3"></i>
-				<i x="4" o="mainship_ani" z="0" y="4"></i>
+				<i x="8" o="mainship_ani" z="0" y="3"></i>
 			</instances>
 		</layer>
 	</elevation>
