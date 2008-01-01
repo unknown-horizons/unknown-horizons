@@ -91,9 +91,18 @@ class World(object):
 		emitter.load('content/audio/music/music2.ogg')
 		emitter.setLooping(True)
 		emitter.play()
+		
+	def create_camera_controller(self):
+		from cameracontroller import CameraController
+		
+		controller = CameraController()
+		self.engine.getEventManager().addKeyListener(controller)
 			
 	def run(self):
 		quitlistener = QuitListener(self)
+
+		self.create_camera_controller()
+
 		self.engine.initializePumping()
 		
 		while True:
