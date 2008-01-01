@@ -18,7 +18,10 @@ class QuitListener(fife.ICommandListener, fife.IKeyListener):
 		keyval = evt.getKey().getValue()
 		if keyval == fife.IKey.ESCAPE:
 			self.quitRequested = True
-
+			
+	def keyReleased(self, evt):
+		pass
+		
 class World(object):
 	def __init__(self, engine, gui):
 		self.engine = engine
