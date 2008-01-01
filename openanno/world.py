@@ -64,7 +64,7 @@ class World(object):
 		camera = self.view.addCamera()
 		camera.setCellImageDimensions(self.screen_cell_w, self.screen_cell_h)
 		camera.setRotation(45)
-		camera.setTilt(60)
+		camera.setTilt(62)
 
 		camloc = fife.Location()
 		camloc.setLayer(self.layer)
