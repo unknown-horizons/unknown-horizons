@@ -1,5 +1,26 @@
 #!/usr/bin/env python
 
+# ###################################################
+# Copyright (C) 2008 The OpenAnnoTeam
+# team@openanno.org
+# This file is part of OpenAnno.
+#
+# OpenAnno is free software; you can redistribute it and/or modify 
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
+
 import sys, os, re
 
 def _jp(path):
@@ -14,8 +35,7 @@ except ImportError,e:
 	exit()
 
 import openanno_settings as TDS
-
-from openanno.statemanager import StateManager
+import openanno.statemanager as StateManager
 
 if __name__ == '__main__':
 	engine = fife.Engine()
@@ -37,5 +57,5 @@ if __name__ == '__main__':
 	s.setScreenHeight(TDS.ScreenHeight)
 	engine.init()
 	
-	StateManager.init()
-	StateManager.run()
+	StateManager.init(engine)
+	StateManager.get_instance().run()

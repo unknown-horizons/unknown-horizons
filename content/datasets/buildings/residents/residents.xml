@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<dataset id="buildtiles" type="Embedded" format="1.0">
+<dataset id="residents" type="Embedded" format="1.0">
 
 	<object id="tent" blocking="1">
 		<image source="content/gfx/buildings/residents/tent_192.png" />
