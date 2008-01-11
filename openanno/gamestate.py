@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnnoTeam
+# Copyright (C) 2008 The OpenAnno Team
 # team@openanno.org
 # This file is part of OpenAnno.
 #
@@ -66,10 +66,15 @@ class GameState(object):
 		
 		self.elevation = self.map.getElevations("id", "OpenAnnoMapElevation")[0]
 		self.layer = self.elevation.getLayers("id", "landLayer")[0]
+		self.spriteLayer = self.elevation.getLayers("id", "spriteLayer")[0]
 		
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
 		self.screen_cell_h = img.getHeight()
+
+		self.tent_obj = self.metamodel.getObjects("id", "tent")[0]
+		self.tent = self.spriteLayer.createInstance(self.tent_obj, fife.ModelCoordinate(-2, -2))
+		fife.InstanceVisual.create(self.tent)
 		
 		self.cameras = {}
 
