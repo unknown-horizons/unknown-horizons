@@ -79,16 +79,11 @@ class GameState(object):
 		self.cameras = {}
 
 	def _create_camera(self, name, coordinate, viewport):
-		camera = self.view.addCamera()
+		camera = self.view.addCamera("default", self.layer, fife.Rect(*[int(c) for c in viewport]), fife.ExactModelCoordinate(coordinate[0],coordinate[1],0))
 		camera.setCellImageDimensions(self.screen_cell_w, self.screen_cell_h)
 		camera.setRotation(45)
 		camera.setTilt(62)
 
-		camloc = fife.Location()
-		camloc.setLayer(self.layer)
-		camloc.setLayerCoordinates(fife.ModelCoordinate(*coordinate))
-		camera.setViewPort(fife.Rect(*[int(c) for c in viewport]))
-		camera.setLocation(camloc)		
 		self.cameras[name] = camera
 	
 	def adjust_views(self):
