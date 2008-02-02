@@ -20,6 +20,7 @@
 # ###################################################
 
 import fife
+import math
 from openanno.buildgamecommand import BuildGameCommand
 
 class CameraController(fife.IKeyListener):
@@ -31,12 +32,31 @@ class CameraController(fife.IKeyListener):
 		eventmanager.addKeyListener(self)
 		self.world = gamestate.world
 		self.controller = gamestate.controller
+		self.gamestate = gamestate
 		
+	def move_camera(self, xdir, ydir):
+		loc = self.gamestate.cameras['main'].getLocation()
+		cam_scroll = loc.getExactLayerCoordinates()
+		if xdir != 0:
+			cam_scroll.x += 0.1*xdir*(2/self.gamestate.cameras['main'].getZoom()) * math.cos(self.gamestate.cameras['main'].getRotation()/180.0 * math.pi)
+			cam_scroll.y += 0.1*xdir*(2/self.gamestate.cameras['main'].getZoom()) * math.sin(self.gamestate.cameras['main'].getRotation()/180.0 * math.pi)
+		if ydir != 0:
+			cam_scroll.x += 0.1*ydir*(2/self.gamestate.cameras['main'].getZoom()) * math.sin(-self.gamestate.cameras['main'].getRotation()/180.0 * math.pi);
+			cam_scroll.y += 0.1*ydir*(2/self.gamestate.cameras['main'].getZoom()) * math.cos(-self.gamestate.cameras['main'].getRotation()/180.0 * math.pi);
+		loc.setExactLayerCoordinates(cam_scroll)
+		self.gamestate.cameras['main'].setLocation(loc)
+
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		if keyval == fife.IKey.LEFT:
-			self.controller.issue_command(BuildGameCommand(1, "Tent", self.world.local_playerid), self.world)
-		
+			self.move_camera(-3, 0)
+		elif keyval == fife.IKey.RIGHT:
+			self.move_camera(3, 0)
+		elif keyval == fife.IKey.UP:
+			self.move_camera(0, -3)
+		elif keyval == fife.IKey.DOWN:
+			self.move_camera(0, 3)
+	
 	def keyReleased(self, evt):
 		pass
 	
