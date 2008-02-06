@@ -24,7 +24,7 @@ import fife, fifelog
 class World(object):
 	"""World object representing the ingame model"""
 
-	def __init__(self, gamestate):
-		self.gamestate = gamestate
+	def __init__(self):
 		self.players = []
 		self.local_playerid = -1
+		self.map =  None

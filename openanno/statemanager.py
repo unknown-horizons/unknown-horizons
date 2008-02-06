@@ -19,7 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from openanno.gamestate import GameState
+from openanno.gameview import GameView
+from openanno.world import World
+from openanno.localcontroller import LocalController
+from openanno.player import Player	
 
 instance = None
 MAPFILE = 'content/datasets/maps/openanno-test-map.xml'
@@ -44,8 +47,17 @@ class StateManager(object):
 	
 	def __init__(self, engine):
 		self.engine = engine
-		self.currentState = GameState(engine)
-		self.currentState.create_world(MAPFILE)
+		
+		self.engine.getSoundManager().init()
+
+		world = World()
+		world.players.append(Player())
+		world.local_playerid = 0
+		
+		controller = LocalController(self.engine, world)
+		controller.create_world(MAPFILE)
+
+		self.currentState = GameView(controller)
 		self.currentState.adjust_views()
 	
 	def run(self):

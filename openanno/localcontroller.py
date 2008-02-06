@@ -22,8 +22,8 @@
 from openanno.gamecontroller import GameController
 
 class LocalController(GameController):
-	def __init__(self, world):
-		self.world = world
+	def __init__(self, engine, model):
+		GameController.__init__(self, engine, model)
 	
 	def issue_command(self, command, world):
 		root_commands = command.build_rootcommands()

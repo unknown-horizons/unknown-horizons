@@ -20,7 +20,6 @@
 # ###################################################
 
 import fife, fifelog
-from loaders import loadMapFile
 from openanno.cameracontroller import CameraController
 from openanno.world import World
 from openanno.player import Player
@@ -46,36 +45,25 @@ class QuitListener(fife.ICommandListener, fife.IKeyListener):
 	def keyReleased(self, evt):
 		pass
 		
-class GameState(object):
-	def __init__(self, engine):
-		self.engine = engine
+class GameView(object):
+	def __init__(self, controller):
+		self.controller = controller
+		self.engine = controller.engine
 		self.renderbackend = self.engine.getRenderBackend()
+		self.model = controller.model
 
 		self.eventmanager = self.engine.getEventManager()
-		self.model = self.engine.getModel()
-		self.metamodel = self.model.getMetaModel()
-		self.view = self.engine.getView()
+		self.fifemodel = self.engine.getModel()
+		self.metamodel = self.fifemodel.getMetaModel()
+		self.view = self.engine.getView()		
 		
-		self.world = World(self)
-		self.world.players.append(Player())
-		self.world.local_playerid = 0
-		self.controller = LocalController(self.world)
-		
-	def create_world(self, path):
-		self.map = loadMapFile(path, self.engine)
-		
+		self.map = self.model.map
 		self.elevation = self.map.getElevations("id", "OpenAnnoMapElevation")[0]
 		self.layer = self.elevation.getLayers("id", "landLayer")[0]
-		self.spriteLayer = self.elevation.getLayers("id", "spriteLayer")[0]
-		
+
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()
 		self.screen_cell_h = img.getHeight()
-
-		self.tent_obj = self.metamodel.getObjects("id", "tent")[0]
-		self.tent = self.spriteLayer.createInstance(self.tent_obj, fife.ModelCoordinate(-2, -2))
-		fife.InstanceVisual.create(self.tent)
-		
 		self.cameras = {}
 
 	def _create_camera(self, name, coordinate, viewport):
@@ -94,15 +82,12 @@ class GameState(object):
 		self.view.resetRenderers()
 		
 	def create_background_music(self):
-		# set up the audio engine
-		self.soundmanager = self.engine.getSoundManager()
-		self.soundmanager.init()
-
+		pass
 		# play track as background music
-		emitter = self.soundmanager.createEmitter()
-		emitter.load('content/audio/music/music2.ogg')
-		emitter.setLooping(True)
-		emitter.play()
+#		emitter = self.soundmanager.createEmitter()
+#		emitter.load('content/audio/music/music2.ogg')
+#		emitter.setLooping(True)
+#		emitter.play()
 		
 	def create_camera_controller(self):
 		controller = CameraController()

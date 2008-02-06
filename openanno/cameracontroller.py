@@ -26,25 +26,26 @@ from openanno.buildgamecommand import BuildGameCommand
 class CameraController(fife.IKeyListener):
 	"""Camera event processor"""
 	
-	def __init__(self, gamestate):
+	def __init__(self, view):
 		fife.IKeyListener.__init__(self)
-		eventmanager = gamestate.engine.getEventManager()
+		eventmanager = view.engine.getEventManager()
 		eventmanager.addKeyListener(self)
-		self.world = gamestate.world
-		self.controller = gamestate.controller
-		self.gamestate = gamestate
+		self.model = view.controller.model
+		self.controller = view.controller
+		self.view = view
 		
 	def move_camera(self, xdir, ydir):
-		loc = self.gamestate.cameras['main'].getLocation()
+		camera = self.view.cameras['main']
+		loc = camera.getLocation()
 		cam_scroll = loc.getExactLayerCoordinates()
 		if xdir != 0:
-			cam_scroll.x += 0.1*xdir*(2/self.gamestate.cameras['main'].getZoom()) * math.cos(self.gamestate.cameras['main'].getRotation()/180.0 * math.pi)
-			cam_scroll.y += 0.1*xdir*(2/self.gamestate.cameras['main'].getZoom()) * math.sin(self.gamestate.cameras['main'].getRotation()/180.0 * math.pi)
+			cam_scroll.x += 0.1*xdir*(2/camera.getZoom()) * math.cos(camera.getRotation()/180.0 * math.pi)
+			cam_scroll.y += 0.1*xdir*(2/camera.getZoom()) * math.sin(camera.getRotation()/180.0 * math.pi)
 		if ydir != 0:
-			cam_scroll.x += 0.1*ydir*(2/self.gamestate.cameras['main'].getZoom()) * math.sin(-self.gamestate.cameras['main'].getRotation()/180.0 * math.pi);
-			cam_scroll.y += 0.1*ydir*(2/self.gamestate.cameras['main'].getZoom()) * math.cos(-self.gamestate.cameras['main'].getRotation()/180.0 * math.pi);
+			cam_scroll.x += 0.1*ydir*(2/camera.getZoom()) * math.sin(-camera.getRotation()/180.0 * math.pi);
+			cam_scroll.y += 0.1*ydir*(2/camera.getZoom()) * math.cos(-camera.getRotation()/180.0 * math.pi);
 		loc.setExactLayerCoordinates(cam_scroll)
-		self.gamestate.cameras['main'].setLocation(loc)
+		camera.setLocation(loc)
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
