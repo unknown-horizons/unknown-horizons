@@ -58,8 +58,7 @@ class GameView(object):
 		self.view = self.engine.getView()		
 		
 		self.map = self.model.map
-		self.elevation = self.map.getElevations("id", "OpenAnnoMapElevation")[0]
-		self.layer = self.elevation.getLayers("id", "landLayer")[0]
+		self.layer = self.map.getLayers("id", "landLayer")[0]
 
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()

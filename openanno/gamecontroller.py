@@ -34,9 +34,8 @@ class GameController(object):
 	def create_world(self, path):
 		self.map = loadMapFile(path, self.engine)
 		
-		self.elevation = self.map.getElevations("id", "OpenAnnoMapElevation")[0]
-		self.layer = self.elevation.getLayers("id", "landLayer")[0]
-		self.spriteLayer = self.elevation.getLayers("id", "spriteLayer")[0]
+		self.layer = self.map.getLayers("id", "landLayer")[0]
+		self.spriteLayer = self.map.getLayers("id", "spriteLayer")[0]
 		
 		img = self.engine.getImagePool().getImage(self.layer.getInstances()[0].getObject().get2dGfxVisual().getStaticImageIndexByAngle(0))
 		self.screen_cell_w = img.getWidth()

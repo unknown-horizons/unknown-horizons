@@ -34,7 +34,6 @@
 	<!-- Load agent ( the agent is in fife an char) datasets -->
 	<dataset type="XML" source="content/datasets/sprites/chars/char.xml" />
 
-	<elevation id="OpenAnnoMapElevation">
 		<!-- landLayer - ground tiles for islands -->
 		<layer id="landLayer" grid_type="square" scaling="0.1">
 			<instances>
@@ -184,5 +183,4 @@
 			</instances>	
 		</layer>
 		
-	</elevation>
 </map>
