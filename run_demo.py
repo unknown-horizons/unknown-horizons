@@ -105,7 +105,7 @@ class IslandDemo(ApplicationBase):
 		if TDS.PlaySounds:
 			# play track as background music
 			emitter = self.soundmanager.createEmitter()
-			id = self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music2.ogg')
+			id = self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/rio_de_hola.ogg')
 			emitter.setSoundClip(id)
 			emitter.setLooping(True)
 			emitter.play()
@@ -116,7 +116,7 @@ class IslandDemo(ApplicationBase):
 	def _pump(self):
 		if self.listener.quit:
 			self.breakRequested = True
-			self.world.save('content/datasets/maps/savefile.xml')
+			self.world.save('content/maps/savefile.xml')
 		else:
 			self.world.pump()
 

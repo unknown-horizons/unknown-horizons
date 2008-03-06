@@ -2,10 +2,10 @@ import fife, math
 from eventlistenerbase import EventListenerBase
 from loaders import loadMapFile
 from savers import saveMapFile
-#from hero import Hero
-#from girl import Girl
-#from cloud import Cloud
-#from beekeeper import Beekeeper
+from hero import Hero
+from girl import Girl
+from cloud import Cloud
+from beekeeper import Beekeeper
 from agent import create_anonymous_agents
 import settings as TDS
 
@@ -25,7 +25,7 @@ class World(EventListenerBase):
 	def reset(self):
 		self.map, self.agentlayer = None, None
 		self.cameras = {}
-		#self.hero, self.girl, self.clouds, self.beekeepers = None, None, [], []
+		self.hero, self.girl, self.clouds, self.beekeepers = None, None, [], []
 		self.cur_cam2_x, self.initial_cam2_x, self.cam2_scrolling_right = 0, 0, True
 		self.target_rotation = 0
 
@@ -33,18 +33,18 @@ class World(EventListenerBase):
 		self.filename = filename
 		self.reset()
 		self.map = loadMapFile(filename, self.engine)
-		#self.agentlayer = self.map.getLayers("id", "TechdemoMapObjectLayer")[0]
-		#self.hero = Hero(self.model, 'PC', self.agentlayer)
-		#self.hero.start()
-		#self.girl = Girl(self.model, 'NPC:girl', self.agentlayer)
-		#self.girl.start()
-		#cloudlayer = self.map.getLayers("id", "TechdemoMapCloudLayer")[0]
-		#self.clouds = create_anonymous_agents(self.model, 'Cloud', cloudlayer, Cloud)
-		#for cloud in self.clouds:
-			#cloud.start(0.1, 0.05)
-		#self.beekeepers = create_anonymous_agents(self.model, 'Beekeeper', self.agentlayer, Beekeeper)
-		#for beekeeper in self.beekeepers:
-			#beekeeper.start()
+		self.agentlayer = self.map.getLayers("id", "spriteLayer")[0]
+		self.hero = Hero(self.model, 'PC', self.agentlayer)
+		self.hero.start()
+		self.girl = Girl(self.model, 'NPC:girl', self.agentlayer)
+		self.girl.start()
+		cloudlayer = self.map.getLayers("id", "TechdemoMapCloudLayer")[0]
+		self.clouds = create_anonymous_agents(self.model, 'Cloud', cloudlayer, Cloud)
+		for cloud in self.clouds:
+			cloud.start(0.1, 0.05)
+		self.beekeepers = create_anonymous_agents(self.model, 'Beekeeper', self.agentlayer, Beekeeper)
+		for beekeeper in self.beekeepers:
+			beekeeper.start()
 
 		for cam in self.view.getCameras():
 			self.cameras[cam.getId()] = cam
@@ -138,7 +138,7 @@ class World(EventListenerBase):
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
 		instances = self.cameras['main'].getMatchingInstances(pt, self.agentlayer);
 		for i in instances:
-			#if i.getObject().Id() in ('Girl', 'Beekeeper'):
+			if i.getObject().Id() in ('Girl', 'Beekeeper'):
 				renderer.addOutlined(i, 173, 255, 47, 2)
 	
 	
@@ -165,9 +165,9 @@ class World(EventListenerBase):
 					self.cam2_scrolling_right = True
 			self.cameras['small'].setLocation(loc)
 		if (self.pump_ctr % 50) == 0:
-			#heroloc = self.hero.agent.getLocationRef()
-			#girlloc = self.girl.agent.getLocationRef()
-			#print 'hero - girl distance. layer: %f, map: %f' % (
-				#heroloc.getLayerDistanceTo(girlloc), heroloc.getMapDistanceTo(girlloc))
+			heroloc = self.hero.agent.getLocationRef()
+			girlloc = self.girl.agent.getLocationRef()
+			print 'hero - girl distance. layer: %f, map: %f' % (
+				heroloc.getLayerDistanceTo(girlloc), heroloc.getMapDistanceTo(girlloc))
 		self.changeRotation()
 		self.pump_ctr += 1
