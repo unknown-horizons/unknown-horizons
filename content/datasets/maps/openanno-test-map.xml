@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <map id="TechdemoMap" format="1.0">
 
+	<metadata>
+		<param type="text" name="Name">openanno-test-map.xml</param>
+		<param type="id" name="Version">1</param>
+		<param type="text" name="Comment">OpenAnno test map</param>
+		<param type="text" name="Author">OpenAnno team</param>
+	</metadata>
+
 	<!-- Load tile object datasets -->
 	<!-- lands.xml , beach.xml and ice.xml-->
 	<dataset type="XML" source="content/datasets/base/land/gorund.xml" />
@@ -9,7 +16,7 @@
 	
 	<!-- Load tile object datasets -->
 	<!-- water.xml -->
-	<dataset type="XML" source="content/datasets/base/water/animations/water_ani.xml" />
+	<!-- <dataset type="XML" source="content/datasets/base/water/animations/water_ani.xml" /> -->
 	<dataset type="XML" source="content/datasets/base/water/water.xml" />
 	
 	<!-- Load buildings/residents datasets -->
@@ -28,14 +35,14 @@
 	<dataset type="XML" source="content/datasets/base/tree/palms.xml" />
 
 	<!-- Load agent datasets -->
-	<dataset type="XML" source="content/datasets/sprites/chars/animations/animations.xml" />
-	<dataset type="XML" source="content/datasets/sprites/ships/animations/mainship.xml" />
+	<!--<dataset type="XML" source="content/datasets/sprites/chars/animations/animations.xml" />
+	<dataset type="XML" source="content/datasets/sprites/ships/animations/mainship.xml" />-->
 
 	<!-- Load agent ( the agent is in fife an char) datasets -->
-	<dataset type="XML" source="content/datasets/sprites/chars/char.xml" />
+<!--	<dataset type="XML" source="content/datasets/sprites/chars/char.xml" />-->
 
 		<!-- landLayer - ground tiles for islands -->
-		<layer id="landLayer" grid_type="square" scaling="0.1">
+		<layer id="landLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
 			<instances>
 				<!-- beach tiles -->
 				<i o="beach_north" x="-2" y="-2" />
@@ -100,7 +107,7 @@
 		</layer>
 
 		<!-- seaLayer - open water tiles -->
-		<layer id="seaLayer" grid_type="square" scaling="0.1">
+		<layer id="seaLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
 			<instances>
 				<!-- water on the rand on the island -->
 				<i o="water" x="-5" y="-4" />
@@ -149,7 +156,7 @@
 		</layer> -->
 
 		<!-- terrainLayer - tile gfx for rocks, mountains, resource deposits and so on -->
-		<layer id="terrainLayer" grid_type="square" scaling="0.1">
+		<layer id="terrainLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
 			<instances>
 				<i o="oremine" x="10" y="4" />
 				<i o="tree3" x="8" y="4" />
@@ -158,7 +165,7 @@
 		</layer>
 
 		<!-- buildLayer - gfx for everything that can be build, like companies, streets, fields, TREES! etc -->
-		<layer id="buildLayer" grid_type="square" scaling="0.1">
+		<layer id="buildLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
 			<instances>
 				<i o="tent" x="1" y="0" />
 				<i o="tent" x="4" y="0" />
@@ -175,12 +182,16 @@
 		</layer>
 		
 		<!-- spriteLayer - gfx for char animations including units-->
-		<layer id="spriteLayer" grid_type="square" scaling="0.1">
+		<layer id="spriteLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
 			<instances>
 			<i o="farm" x="8" y="0" />
-			<i o="char_40height" x="3" y="3" />
-			<i o="mainship_ani" x="4" y="4" />
+<!--			<i o="char_40height" x="3" y="3" />
+			<i o="mainship_ani" x="4" y="4" />-->
 			</instances>	
+
+
 		</layer>
 		
+	<camera id='main' zoom='1' tilt='-42' rotation='45' ref_layer_id='buildLayer' ref_cell_width='32' ref_cell_height='16' viewport='0,0,1024,768' />
+
 </map>

@@ -49,13 +49,13 @@ class CameraController(fife.IKeyListener):
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
-		if keyval == fife.IKey.LEFT:
+		if keyval == fife.Key.LEFT:
 			self.move_camera(-3, 0)
-		elif keyval == fife.IKey.RIGHT:
+		elif keyval == fife.Key.RIGHT:
 			self.move_camera(3, 0)
-		elif keyval == fife.IKey.UP:
+		elif keyval == fife.Key.UP:
 			self.move_camera(0, -3)
-		elif keyval == fife.IKey.DOWN:
+		elif keyval == fife.Key.DOWN:
 			self.move_camera(0, 3)
 	
 	def keyReleased(self, evt):

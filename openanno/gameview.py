@@ -39,7 +39,7 @@ class QuitListener(fife.ICommandListener, fife.IKeyListener):
 		
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
-		if keyval == fife.IKey.ESCAPE:
+		if keyval == fife.Key.ESCAPE:
 			self.quitRequested = True
 			
 	def keyReleased(self, evt):
