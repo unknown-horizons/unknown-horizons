@@ -17,8 +17,8 @@ LogToFile           = 0
 UsePsyco            = False
 ImageChunkSize      = 256
 
-CoordinateLayerName = "spriteLayer"
-QuadTreeLayerName = "" #"spriteLayer"
+CoordinateLayerName = "TechdemoMapObjectLayer"
+QuadTreeLayerName = "" #"TechdemoMapObjectLayer"
 
 agentTexts = (
 	'I wonder when the guys will\n' + 'get this world ready for me',

@@ -1,5 +1,0 @@
-<HBox opaque='1'>
-	<Label name="Title" text="OpenAnno Alpha"/>
-	<Button name="quitButton" text="Quit"/>
-	<Button name="aboutButton" text="About"/>
-</HBox>
