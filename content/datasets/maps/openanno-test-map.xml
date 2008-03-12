@@ -192,6 +192,6 @@
 
 		</layer>
 		
-	<camera id='main' zoom='1' tilt='-42' rotation='45' ref_layer_id='buildLayer' ref_cell_width='32' ref_cell_height='16' viewport='0,0,1024,768' />
+	<camera id='main' zoom='1' tilt='62' rotation='45' ref_layer_id='buildLayer' ref_cell_width='64' ref_cell_height='32' viewport='0,0,1024,768' />
 
 </map>

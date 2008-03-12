@@ -1,3 +1,6 @@
+# fife paths
+path                = '../fife/'
+
 BitsPerPixel        = 0
 FullScreen          = 0
 InitialVolume       = 5.0
@@ -17,16 +20,9 @@ LogToFile           = 0
 UsePsyco            = False
 ImageChunkSize      = 256
 
-CoordinateLayerName = "TechdemoMapObjectLayer"
-QuadTreeLayerName = "" #"TechdemoMapObjectLayer"
-
-agentTexts = (
-	'I wonder when the guys will\n' + 'get this world ready for me',
-	'Bring it on baby,\n' + "I'm ready for action!",
-	'humm di dum....', '', '', ''
-)
 
 # test settings
 TestCameraPlacement = 0
 TestRotationLayerName = "landLayer"
 TestAgentSpeed      = 0.5
+
