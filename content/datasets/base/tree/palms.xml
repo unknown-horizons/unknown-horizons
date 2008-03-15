@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<dataset id="treetiles" type="Embedded" format="1.0">
+<dataset id="palms" type="Embedded" format="1.0">
 
 	<object id="palms1">
 		<image source="content/gfx/base/tree/palms/palms1.png" direction="0" />
