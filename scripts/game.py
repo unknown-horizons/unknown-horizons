@@ -21,16 +21,23 @@
 import math
 import fife
 from loaders import loadMapFile
+from eventlistenerbase import EventListenerBase
+from units.ship import Ship
 
-class Game:
+class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
     
     def __init__(self, engine, mapfile):
         """@var engine: fife game engine
         @var mapfile: string with the mapfile path
         """
+        super(Game, self).__init__(engine, regMouse=True, regKeys=True)
         self.engine = engine
-        
+        self.eventmanager = engine.getEventManager()
+        self.model = engine.getModel()
+        self.metamodel = self.model.getMetaModel()
+        self.instance_to_unit = {}
+	
         self.loadmap(mapfile) # load the map
         self.creategame()
 
@@ -41,16 +48,20 @@ class Game:
         """
         self.map = loadMapFile(mapfile, self.engine)
 
-
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
+        self.unitlayer = self.map.getLayers("id", "spriteLayer")[0]
+        self.ship = Ship(self.model, 'SHIP', self.unitlayer)
+        self.instance_to_unit[self.ship.unit.getFifeId()] = self.ship
+        self.ship.start()
+
         self.view = self.engine.getView()
         self.view.resetRenderers()
         self.cam = self.view.getCamera("main")
         self.set_cam_position(0.0, 0.0, 0.0)
         renderer = self.cam.getRenderer('QuadTreeRenderer')
         renderer.setEnabled(True)
-        renderer.clearActiveLayers()
+        renderer.clearActiveLayers()       
 
     def set_cam_position(self, x, y, z):
         """Sets the camera position

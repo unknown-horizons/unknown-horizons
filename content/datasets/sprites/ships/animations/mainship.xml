@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dataset id="mainship_ani" type="Embedded" format="1.0">
 	<object id="mainship_ani" blocking="1">
-		<action id="walk">
+		<action id="move">
 			<animation source="content/datasets/sprites/ships/animations/mainship/mainship0.xml" direction='0' />
 			<animation source="content/datasets/sprites/ships/animations/mainship/mainship1.xml" direction='45' />
 			<animation source="content/datasets/sprites/ships/animations/mainship/mainship2.xml" direction='90' />
