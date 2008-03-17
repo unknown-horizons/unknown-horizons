@@ -23,6 +23,7 @@ import fife
 from loaders import loadMapFile
 from eventlistenerbase import EventListenerBase
 from units.ship import Ship
+from player import Player
 
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
@@ -37,7 +38,11 @@ class Game(EventListenerBase):
         self.model = engine.getModel()
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
-	
+
+        self.selected_intance = None
+        self.human_player = None
+        self.players = {}
+
         self.loadmap(mapfile) # load the map
         self.creategame()
 
@@ -50,8 +55,13 @@ class Game(EventListenerBase):
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
+
+        self.human_player = Player('Arthus') # create a new player, which is the human player
+        self.players[self.human_player.name] = self.human_player
+
         self.unitlayer = self.map.getLayers("id", "layer1")[0]
-        self.ship = Ship(self.model, 'SHIP', self.unitlayer)
+        self.ship = Ship(self.model, 'SHIP', self.unitlayer, 'Matilde')
+        self.human_player.ships[self.ship.name]=self.ship # add ship to the humanplayer
         self.instance_to_unit[self.ship.unit.getFifeId()] = self.ship
         self.ship.start()
 
