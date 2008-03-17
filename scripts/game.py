@@ -50,7 +50,7 @@ class Game(EventListenerBase):
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
-        self.unitlayer = self.map.getLayers("id", "spriteLayer")[0]
+        self.unitlayer = self.map.getLayers("id", "layer1")[0]
         self.ship = Ship(self.model, 'SHIP', self.unitlayer)
         self.instance_to_unit[self.ship.unit.getFifeId()] = self.ship
         self.ship.start()
@@ -67,7 +67,7 @@ class Game(EventListenerBase):
         """Sets the camera position
         @var pos: tuple with coordinates(x.x,x.x,x.x) to set the camera to.
         """
-        layer = self.map.getLayers("id", "landLayer")[0]
+        layer = self.map.getLayers("id", "layer1")[0]
         loc = fife.Location(layer)
         loc.setExactLayerCoordinates(fife.ExactModelCoordinate(x, y, z))
         self.cam.setLocation(loc)

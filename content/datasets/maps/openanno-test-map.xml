@@ -41,8 +41,8 @@
 	<!-- Load agent ( the agent is in fife an char) datasets -->
 <!--	<dataset type="XML" source="content/datasets/sprites/chars/char.xml" />-->
 
-		<!-- landLayer - ground tiles for islands -->
-	<layer id="landLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
+		<!-- layer1 - ground tiles for islands -->
+	<layer id="layer1" grid_type="square" x_scale="1.0" y_scale="1.0">
 		<instances>
 			<!-- beach tiles -->
 			<i o="beach_north" x="-2" y="-2" />
@@ -260,11 +260,24 @@
 			<i o="ice_west" x="-3" y="15" />
 			<i o="ice_west" x="-3" y="16" />
 			<i o="ice_w-n" x="-3" y="9" />
+
+			<!-- terrain -->
+			<i o="oremine" x="10" y="4" />
+			<i o="tree3" x="8" y="4" />
+			<i o="palms5" x="0" y="4" />
+
+			<!-- sea units-->
+			<i o="mainship_ani" x="6" y="7">
+			<metadata>
+				<param name="name" value="SHIP"/>
+			</metadata>
+			</i>
+
 		</instances>		
 	</layer>
 
-	<!-- seaLayer - open water tiles -->
-	<layer id="seaLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
+	<!-- layer2 - open water tiles -->
+	<layer id="layer2" grid_type="square" x_scale="1.0" y_scale="1.0">
 		<instances>
 			<!-- water on the rand on the island -->
 			<i o="water" x="-5" y="-4" />
@@ -344,28 +357,9 @@
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
 			<i o="water" /><i o="water" /><i o="water" />
-		</instances>
-	</layer>
-	
-	<!-- resourceLayer - abstract layer to define resource deposits -->
-	<!--<layer id="resourceLayer" grid_type="square" scaling="0.1">
-		<instances>
-		
-		</instances>
-	</layer> -->
 
-	<!-- terrainLayer - tile gfx for rocks, mountains, resource deposits and so on -->
-	<layer id="terrainLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
-		<instances>
-			<i o="oremine" x="10" y="4" />
-			<i o="tree3" x="8" y="4" />
-			<i o="palms5" x="0" y="4" />
-		</instances>
-	</layer>
+			<!-- buildings -->
 
-	<!-- buildLayer - gfx for everything that can be build, like companies, streets, fields, TREES! etc -->
-	<layer id="buildLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
-		<instances>
 			<i o="tent" x="1" y="0" />
 			<i o="tent" x="4" y="0" />
 			<i o="path_64" x="0" y="2" />
@@ -377,20 +371,9 @@
 			<i o="path_64" x="6" y="2" />
 			<i o="path_64" x="7" y="2" />
 			<i o="path_64" x="8" y="2" />
+			<i o="farm" x="8" y="0" />
+			<!--<i o="char_40height" x="3" y="3" /> -->
 		</instances>
-	</layer>
-	
-	<!-- spriteLayer - gfx for char animations including units-->
-	<layer id="spriteLayer" grid_type="square" x_scale="1.0" y_scale="1.0">
-		<instances>
-		<i o="farm" x="8" y="0" />
-		<!--			<i o="char_40height" x="3" y="3" /> -->
-		<i o="mainship_ani" x="6" y="7">
-			<metadata>
-				<param name="name" value="SHIP"/>
-			</metadata>
-		</i>
-		</instances>	
 	</layer>
 		
 	<camera id='main' zoom='1' tilt='62' rotation='45' ref_layer_id='buildLayer' ref_cell_width='64' ref_cell_height='32' viewport='0,0,1024,768' />
