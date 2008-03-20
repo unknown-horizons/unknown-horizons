@@ -31,6 +31,8 @@ class Unit(fife.InstanceActionListener):
         self.model = model
         self.unit_name = unit_name
         self.layer = layer
+        self.type = None
+        self.health = 100
         if uniqInMap:
             self.unit = layer.getInstances('name', unit_name)[0]
             self.unit.addActionListener(self)

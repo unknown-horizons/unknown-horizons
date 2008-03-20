@@ -36,19 +36,9 @@ class KeyListener(fife.IKeyListener):
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue() 
-        keystr = evt.getKey().getAsString().lower() 
-        consumed = False 
         if keyval == fife.Key.ESCAPE:
             self.quit = True 
             evt.consume() 
-        elif keyval == fife.Key.LEFT:
-            self.main.get_game().move_camera(-3, 0)
-        elif keyval == fife.Key.RIGHT:
-            self.main.get_game().move_camera(3, 0)
-        elif keyval == fife.Key.UP:
-            self.main.get_game().move_camera(0, -3)
-        elif keyval == fife.Key.DOWN:
-            self.main.get_game().move_camera(0, 3)
 
     def keyReleased(self, evt):
         pass 

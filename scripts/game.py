@@ -25,6 +25,8 @@ from eventlistenerbase import EventListenerBase
 from units.ship import Ship
 from player import Player
 
+_MODE_NONE, _MODE_COMMAND, _MODE_BUILD = xrange(3)
+
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
     
@@ -38,10 +40,12 @@ class Game(EventListenerBase):
         self.model = engine.getModel()
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
+        self.cam = None
 
         self.selected_intance = None
         self.human_player = None
         self.players = {}
+        self.mode = _MODE_NONE
 
         self.loadmap(mapfile) # load the map
         self.creategame()
@@ -59,16 +63,25 @@ class Game(EventListenerBase):
         self.human_player = Player('Arthus') # create a new player, which is the human player
         self.players[self.human_player.name] = self.human_player
 
-        self.unitlayer = self.map.getLayers("id", "layer1")[0]
-        self.ship = Ship(self.model, 'SHIP', self.unitlayer, 'Matilde')
-        self.human_player.ships[self.ship.name]=self.ship # add ship to the humanplayer
-        self.instance_to_unit[self.ship.unit.getFifeId()] = self.ship
-        self.ship.start()
+        self.unitlayer = self.map.getLayers("id", "layer2")[0]
+        ship = Ship(self.model, 'SHIP', self.unitlayer, 'Matilde', 'ship')
+        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        self.instance_to_unit[ship.unit.getFifeId()] = ship
+        ship.start()
+
+        ship = Ship(self.model, 'SHIP2', self.unitlayer, 'Columbus', 'ship')
+        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        self.instance_to_unit[ship.unit.getFifeId()] = ship
+        ship.start()
+
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
         self.cam = self.view.getCamera("main")
-        self.set_cam_position(0.0, 0.0, 0.0)
+        self.set_cam_position(5.0, 5.0, 0.0)
+
+        renderer = fife.FloatingTextRenderer.getInstance(self.cam)
+
         renderer = self.cam.getRenderer('QuadTreeRenderer')
         renderer.setEnabled(True)
         renderer.clearActiveLayers()       
@@ -99,5 +112,42 @@ class Game(EventListenerBase):
         loc.setExactLayerCoordinates(cam_scroll)
         camera.setLocation(loc)
 
+    def keyPressed(self, evt):
+        keyval = evt.getKey().getValue()
+        if keyval == fife.Key.LEFT:
+            self.move_camera(-3, 0)
+        elif keyval == fife.Key.RIGHT:
+            self.move_camera(3, 0)
+        elif keyval == fife.Key.UP:
+            self.move_camera(0, -3)
+        elif keyval == fife.Key.DOWN:
+            self.move_camera(0, 3)
 
+    def mousePressed(self, evt):
+        clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
+        if (evt.getButton() == fife.MouseEvent.LEFT):
+            if self.mode is _MODE_NONE: # standart mode, check if the point clicked at is a unit, if yes, select for contol
+                instances = self.cam.getMatchingInstances(clickpoint, self.unitlayer)
+                if instances:
+                    selected = instances[0]
+                    print "selected instance: ", selected.getObject().Id(), selected.getFifeId()
+                    if selected.getFifeId() in self.instance_to_unit:
+                        self.selected_instance = self.instance_to_unit[selected.getFifeId()]
+                        self.selected_instance.unit.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
+                    self.mode = _MODE_COMMAND
 
+            elif self.mode is _MODE_COMMAND: # Command mode, steer units
+                if self.selected_instance:
+                    if self.selected_instance.type == 'ship':
+                        target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
+                        target_mapcoord.z = 0
+                        l = fife.Location(self.unitlayer)
+                        l.setMapCoordinates(target_mapcoord)
+                        self.selected_instance.move(l)
+			
+        elif (evt.getButton() == fife.MouseEvent.RIGHT):
+            if self.mode is _MODE_COMMAND: # switch back to normal mode
+                self.mode = _MODE_NONE
+                if self.selected_instance:
+                    self.selected_instance.unit.say('', 0) # remove health display
+                    self.selected_instance = None 
