@@ -18,7 +18,7 @@
 	</object>
 
 	<object id="rock">
-		<image source="content/gfx/base/mountains/.png" direction="0" />
+		<image source="content/gfx/base/mountains/rock.png" direction="0" />
 	</object>
 
 	<object id="rock_snow">

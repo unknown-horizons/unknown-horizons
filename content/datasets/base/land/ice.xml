@@ -50,7 +50,7 @@
 	</object>
 	
 	<object id="ice_corner_1">
-		<image source="content/gfx/base/land/ice/ice_corner_1" direction="0" />
+		<image source="content/gfx/base/land/ice/ice_corner_1.png" direction="0" />
 	</object>
 	
 	<object id="ice_corner_2">
