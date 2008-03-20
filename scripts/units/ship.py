@@ -25,7 +25,7 @@ _STATE_NONE, _STATE_IDLE, _STATE_MOVE = xrange(3)
 class Ship(Unit):
     """Class representing a ship"""
 
-    def __init__(self, model, unit_name, layer, name, type, uniqInMap=True):
+    def __init__(self, model, unit_name, layer, name, uniqInMap=True):
         """@var model: fife.Model: engine model beeing used.
         @var unit_name: str containing the units name used in the map.
         @var layer: fife.Layer on which the unit is present.
@@ -36,7 +36,7 @@ class Ship(Unit):
         self.name = name
         self.state = _STATE_NONE
         self.idlecounter = 1
-        self.type = type
+        self.type = 'ship' 
 
 
     def onInstanceActionFinished(self, instance, action):

@@ -25,7 +25,7 @@ from eventlistenerbase import EventListenerBase
 from units.ship import Ship
 from player import Player
 
-_MODE_NONE, _MODE_COMMAND, _MODE_BUILD = xrange(3)
+_MODE_COMMAND, _MODE_BUILD = xrange(2)
 
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
@@ -42,10 +42,10 @@ class Game(EventListenerBase):
         self.instance_to_unit = {}
         self.cam = None
 
-        self.selected_intance = None
+        self.selected_instance = None
         self.human_player = None
         self.players = {}
-        self.mode = _MODE_NONE
+        self.mode = _MODE_COMMAND
 
         self.loadmap(mapfile) # load the map
         self.creategame()
@@ -126,18 +126,19 @@ class Game(EventListenerBase):
     def mousePressed(self, evt):
         clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
         if (evt.getButton() == fife.MouseEvent.LEFT):
-            if self.mode is _MODE_NONE: # standart mode, check if the point clicked at is a unit, if yes, select for contol
+            if self.mode is _MODE_COMMAND: # standard mode
                 instances = self.cam.getMatchingInstances(clickpoint, self.unitlayer)
-                if instances:
+                if instances: #check if clicked point is a unit
                     selected = instances[0]
                     print "selected instance: ", selected.getObject().Id(), selected.getFifeId()
+                    if self.selected_instance:
+                            self.selected_instance.unit.say('') #remove status of last selected unit
                     if selected.getFifeId() in self.instance_to_unit:
                         self.selected_instance = self.instance_to_unit[selected.getFifeId()]
                         self.selected_instance.unit.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
-                    self.mode = _MODE_COMMAND
-
-            elif self.mode is _MODE_COMMAND: # Command mode, steer units
-                if self.selected_instance:
+                    else:
+                        self.selected_instance = None
+                elif self.selected_instance: # if unit is allready selected, move it 
                     if self.selected_instance.type == 'ship':
                         target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
                         target_mapcoord.z = 0
@@ -146,8 +147,7 @@ class Game(EventListenerBase):
                         self.selected_instance.move(l)
 			
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
-            if self.mode is _MODE_COMMAND: # switch back to normal mode
-                self.mode = _MODE_NONE
-                if self.selected_instance:
+            if self.mode is _MODE_COMMAND: 
+                if self.selected_instance: #remove unit selection 
                     self.selected_instance.unit.say('', 0) # remove health display
                     self.selected_instance = None 
