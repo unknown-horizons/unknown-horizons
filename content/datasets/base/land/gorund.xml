@@ -2,7 +2,7 @@
 <dataset id="groundtiles" type="Embedded" format="1.0">
 
 	<object id="1">
-		<image source="content/gfx/base/land/groundtile_64.png" direction="0" />
+		<image source="content/gfx/base/land/groundtile_64.png" static="1" direction="0" blocking="1"/>
 	</object>
 
 </dataset>

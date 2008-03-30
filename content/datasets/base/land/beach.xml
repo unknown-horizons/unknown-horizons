@@ -10,7 +10,7 @@
 	</object>
 	
 	<object id="beach_east">
-		<image source="content/gfx/base/land/beach/beach_east.png" direction="0" />
+		<image source="content/gfx/base/land/beach/beach_east.png" static="1" blocking="1" direction="0" />
 	</object>
 	
 	<object id="beach_e-s">

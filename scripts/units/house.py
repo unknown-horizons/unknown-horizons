@@ -22,21 +22,19 @@ from object import Object
 
 _STATE_NONE, _STATE_IDLE, _STATE_MOVE = xrange(3)
 
-class Ship(Object):
-    """Class representing a ship"""
+class House(Object):
+    """Class representing a house"""
 
-    def __init__(self, model, unit_name, layer, name, uniqInMap=True):
+    def __init__(self, model, object_name, layer, uniqInMap=True):
         """@var model: fife.Model: engine model beeing used.
-        @var unit_name: str containing the units name used in the map.
-        @var layer: fife.Layer on which the unit is present.
-        @var uniqInMap: bool if the unit is unique.
-        @var name: str containings the ships ingame name
+        @var unit_name: str containing the objects name used in the map.
+        @var layer: fife.Layer on which the object is present.
+        @var uniqInMap: bool if the object is unique.
         """
-        Object.__init__(self, model, unit_name, layer, uniqInMap)
-        self.name = name
+        Object.__init__(self, model, object_name, layer, uniqInMap)
         self.state = _STATE_NONE
         self.idlecounter = 1
-        self.type = 'ship' 
+        self.type = 'building'
 
 
     def onInstanceActionFinished(self, instance, action):
@@ -51,11 +49,11 @@ class Ship(Object):
 	
     def idle(self):
         self.state = _STATE_IDLE
-        self.object.act('move', self.object.getFacingLocation())
-		
+
     def move(self, location):
-        """Moves the ship to a certain location
-        @var location: fife.Location to which the unit should move"""
+        """Moves the house to a certain location
+        @var location: fife.Location to which the house should move"""
         self.state = _STATE_MOVE
-        self.object.move('move', location, 2)
+        self.object.setLocation(location)
+
 

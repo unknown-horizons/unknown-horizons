@@ -20,22 +20,22 @@
 # ###################################################
 import common, fife
 
-class Unit(fife.InstanceActionListener):
-    def __init__(self, model, unit_name, layer, uniqInMap=True):
+class Object(fife.InstanceActionListener):
+    def __init__(self, model, object_name, layer, uniqInMap=True):
         """@var model: fife.Model: engine model beeing used.
         @var unit_name: str containing the units name.
-        @var layer: fife.Layer on which the unit is present.
-        @var uniqInMap: bool if the unit is unique.
+        @var layer: fife.Layer on which the object is present.
+        @var uniqInMap: bool if the object is unique.
         """
         fife.InstanceActionListener.__init__(self)
         self.model = model
-        self.unit_name = unit_name
+        self.object_name = object_name
         self.layer = layer
         self.type = None
         self.health = 100
         if uniqInMap:
-            self.unit = layer.getInstances('name', unit_name)[0]
-            self.unit.addActionListener(self)
+            self.object = layer.getInstances('name', object_name)[0]
+            self.object.addActionListener(self)
 
     def onInstanceActionFinished(self, instance, action):
         raise ProgrammingError('No OnActionFinished defined for Unit.')
@@ -51,13 +51,13 @@ def create_anon_units(model, object_name, layer, UnitClass):
     @var layer: fife.Layer on which the unit is present.
     @var UnitClass: Class representing the unit.
     """
-    untis = []
+    units = []
     instances = [a for a in layer.getInstances() if a.getObject().Id() == object_name]
     i = 0
     for a in instances:
         unit_name = '%s:i:%d' % (objectName, i)
         i += 1
-        unit = UnitClass(model, unit_name, layer, False)
+        unit = UnitClass(model, object_name, layer, False)
         unit.unit = a
         a.addActionListener(unit)
         units.append(unit)

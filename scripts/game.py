@@ -23,6 +23,7 @@ import fife
 from loaders import loadMapFile
 from eventlistenerbase import EventListenerBase
 from units.ship import Ship
+from units.house import House
 from player import Player
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
@@ -46,6 +47,7 @@ class Game(EventListenerBase):
         self.human_player = None
         self.players = {}
         self.mode = _MODE_COMMAND
+        self.layers = {}
 
         self.loadmap(mapfile) # load the map
         self.creategame()
@@ -60,20 +62,27 @@ class Game(EventListenerBase):
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
 
+        self.layers['water']=self.map.getLayers("id", "layer1")[0]
+        self.layers['land']=self.map.getLayers("id", "layer2")[0]
+        self.layers['units']=self.map.getLayers("id", "layer3")[0]
+
         self.human_player = Player('Arthus') # create a new player, which is the human player
         self.players[self.human_player.name] = self.human_player
 
-        self.unitlayer = self.map.getLayers("id", "layer2")[0]
-        ship = Ship(self.model, 'SHIP', self.unitlayer, 'Matilde', 'ship')
+        ship = Ship(self.model, 'SHIP', self.layers['land'], 'Matilde')
         self.human_player.ships[ship.name] = ship # add ship to the humanplayer
-        self.instance_to_unit[ship.unit.getFifeId()] = ship
+        self.instance_to_unit[ship.object.getFifeId()] = ship
         ship.start()
 
-        ship = Ship(self.model, 'SHIP2', self.unitlayer, 'Columbus', 'ship')
+        ship = Ship(self.model, 'SHIP2', self.layers['land'], 'Columbus')
         self.human_player.ships[ship.name] = ship # add ship to the humanplayer
-        self.instance_to_unit[ship.unit.getFifeId()] = ship
+        self.instance_to_unit[ship.object.getFifeId()] = ship
         ship.start()
-
+        
+        inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
+        inst.set("name", "zelt")
+        print inst
+        #house = House(self.model, 'zelt', self.layers['units'])
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
@@ -81,10 +90,25 @@ class Game(EventListenerBase):
         self.set_cam_position(5.0, 5.0, 0.0)
 
         renderer = fife.FloatingTextRenderer.getInstance(self.cam)
-
         renderer = self.cam.getRenderer('QuadTreeRenderer')
         renderer.setEnabled(True)
-        renderer.clearActiveLayers()       
+        renderer.clearActiveLayers()   
+        
+
+    def create_instance(self, layer, objectID, id, x, y, z=0):
+        """Creates a new instance on the map
+        @var layer: layer the instance is created on
+        @var objectID: str representing the object
+        @var id: str with the object id
+        @var x, y, z: int coordinates for the new instance
+        """
+        query = self.metamodel.getObjects('id', str(objectID))
+        if len(query) != 1: 
+            self._err(''.join([str(len(query)), ' objects found with identifier ', str(objectID), '.']))
+        object = query[0]
+        inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
+        fife.InstanceVisual.create(inst)
+        return inst
 
     def set_cam_position(self, x, y, z):
         """Sets the camera position
@@ -127,27 +151,27 @@ class Game(EventListenerBase):
         clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
         if (evt.getButton() == fife.MouseEvent.LEFT):
             if self.mode is _MODE_COMMAND: # standard mode
-                instances = self.cam.getMatchingInstances(clickpoint, self.unitlayer)
+                instances = self.cam.getMatchingInstances(clickpoint, self.layers['units'])
                 if instances: #check if clicked point is a unit
                     selected = instances[0]
-                    print "selected instance: ", selected.getObject().Id(), selected.getFifeId()
+                    print "selected instance: ", selected.get("name"), selected.getFifeId()
                     if self.selected_instance:
-                            self.selected_instance.unit.say('') #remove status of last selected unit
+                            self.selected_instance.object.say('') #remove status of last selected unit
                     if selected.getFifeId() in self.instance_to_unit:
                         self.selected_instance = self.instance_to_unit[selected.getFifeId()]
-                        self.selected_instance.unit.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
+                        self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
                     else:
                         self.selected_instance = None
                 elif self.selected_instance: # if unit is allready selected, move it 
                     if self.selected_instance.type == 'ship':
                         target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
                         target_mapcoord.z = 0
-                        l = fife.Location(self.unitlayer)
+                        l = fife.Location(self.layers['land'])
                         l.setMapCoordinates(target_mapcoord)
                         self.selected_instance.move(l)
 			
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
             if self.mode is _MODE_COMMAND: 
                 if self.selected_instance: #remove unit selection 
-                    self.selected_instance.unit.say('', 0) # remove health display
+                    self.selected_instance.object.say('', 0) # remove health display
                     self.selected_instance = None 

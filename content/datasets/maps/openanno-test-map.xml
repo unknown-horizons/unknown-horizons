@@ -39,12 +39,12 @@
 	<dataset type="XML" source="content/datasets/sprites/ships/animations/mainship.xml" />
 
 	<!-- Load agent ( the agent is in fife an char) datasets -->
-<!--	<dataset type="XML" source="content/datasets/sprites/chars/char.xml" />-->
+    <!--	<dataset type="XML" source="content/datasets/sprites/chars/char.xml" />-->
 
-		<!-- layer1 - ground tiles for islands -->
+	<!-- layer1 - open water tiles -->
 	<layer id="layer1" grid_type="square" x_scale="1.0" y_scale="1.0">
-		<instances>
-<!-- water on the rand on the island -->
+        <instances>
+        <!-- water on the rand on the island -->
 			<i o="water" x="-5" y="-4" />
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
@@ -121,7 +121,16 @@
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
 			<i o="water" /><i o="water" /><i o="water" /><i o="water" />
-			<i o="water" /><i o="water" /><i o="water" />
+            <i o="water" /><i o="water" /><i o="water" />
+
+
+
+		</instances>
+    </layer>
+
+	<!-- layer2 - ground tiles for islands -->
+	<layer id="layer2" grid_type="square" pathing="cell_edges_and_diagonals" x_scale="1.00" y_scale="1.0" y_offset="0.00" x_offset="0.00">
+		<instances>
 
 			<!-- beach tiles -->
 			<i o="beach_north" x="-2" y="-2" />
@@ -350,12 +359,24 @@
 			<i o="path_64" x="7" y="2" />
 			<i o="path_64" x="8" y="2" />
 
-
+            <!-- sea units-->
+            <i o="mainship_ani" x="6" y="7">
+			<metadata>
+				<param name="name" value="SHIP"/>
+			</metadata>
+			</i>
+            <i o="mainship_ani" x="10" y="7">
+			<metadata>
+				<param name="name" value="SHIP2"/>
+			</metadata>
+			</i>
 		</instances>		
-	</layer>
+    </layer>
 
-	<!-- layer2 - open water tiles -->
-	<layer id="layer2" grid_type="square" x_scale="1.0" y_scale="1.0">
+
+
+    <!-- layer3 - units/buildings/trees -->
+	<layer id="layer3" grid_type="square" x_scale="1.0" y_scale="1.0">
 		<instances>
 			<!-- terrain -->
 			<i o="oremine" x="10" y="4" />
@@ -368,17 +389,6 @@
 			<i o="tent" x="1" y="3" />
             <i o="farm" x="8" y="0" />
 
-            <!-- sea units-->
-            <i o="mainship_ani" x="6" y="7">
-			<metadata>
-				<param name="name" value="SHIP"/>
-			</metadata>
-			</i>
-            <i o="mainship_ani" x="10" y="7">
-			<metadata>
-				<param name="name" value="SHIP2"/>
-			</metadata>
-			</i>
 			<!--<i o="char_40height" x="3" y="3" /> -->
 		</instances>
 	</layer>
