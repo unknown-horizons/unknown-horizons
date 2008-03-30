@@ -23,7 +23,7 @@
 	<!-- residents.xml -->
 	<dataset type="XML" source="content/datasets/buildings/residents/residents.xml" />
 	<dataset type="XML" source="content/datasets/buildings/work-buildings/work-buildings.xml" />
-	<dataset type="XML" source="content/datasets/buildings/work-buildings/farm.xml" />
+    <dataset type="XML" source="content/datasets/sprites/buildings/animations/farm.xml" />
 
 	<!-- Load object datasets -->
 	<!-- streets.xml -->
@@ -387,7 +387,6 @@
 
 			<i o="tent" x="1" y="0" />
 			<i o="tent" x="1" y="3" />
-            <i o="farm" x="8" y="0" />
 
 			<!--<i o="char_40height" x="3" y="3" /> -->
 		</instances>

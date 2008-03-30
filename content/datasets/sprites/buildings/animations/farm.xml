@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dataset id="farm_ani" type="Embedded" format="1.0">
 	<object id="farm_ani" blocking="1">
-		<action id="walk">
+		<action id="move">
 			<animation source="content/datasets/sprites/buildings/animations/farm-animation/farm.xml" direction='0' />
 		</action>
 	</object>

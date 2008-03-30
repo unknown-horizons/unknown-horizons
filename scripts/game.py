@@ -1,4 +1,4 @@
-# ###################################################
+
 # Copyright (C) 2008 The OpenAnnoTeam
 # team@openanno.org
 # This file is part of OpenAnno.
@@ -48,6 +48,7 @@ class Game(EventListenerBase):
         self.players = {}
         self.mode = _MODE_COMMAND
         self.layers = {}
+        self.house = None
 
         self.loadmap(mapfile) # load the map
         self.creategame()
@@ -79,10 +80,8 @@ class Game(EventListenerBase):
         self.instance_to_unit[ship.object.getFifeId()] = ship
         ship.start()
         
-        inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
-        inst.set("name", "zelt")
-        print inst
-        #house = House(self.model, 'zelt', self.layers['units'])
+
+        #ship = Ship(self.model, 'zelt', self.layers['land'], 'niae')
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
@@ -104,7 +103,7 @@ class Game(EventListenerBase):
         """
         query = self.metamodel.getObjects('id', str(objectID))
         if len(query) != 1: 
-            self._err(''.join([str(len(query)), ' objects found with identifier ', str(objectID), '.']))
+            print(''.join([str(len(query)), ' objects found with identifier ', str(objectID), '.']))
         object = query[0]
         inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
         fife.InstanceVisual.create(inst)
@@ -138,6 +137,7 @@ class Game(EventListenerBase):
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
+        keystr = evt.getKey().getAsString().lower()
         if keyval == fife.Key.LEFT:
             self.move_camera(-3, 0)
         elif keyval == fife.Key.RIGHT:
@@ -146,12 +146,19 @@ class Game(EventListenerBase):
             self.move_camera(0, -3)
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 3)
+        elif keystr == 'b':
+            self.mode = _MODE_BUILD
+            inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
+            inst.set("name", "zelt")
+            house = House(self.model, 'zelt', self.layers['units'])
+            house.start()
+            self.selected_instance = inst
 
     def mousePressed(self, evt):
         clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
         if (evt.getButton() == fife.MouseEvent.LEFT):
             if self.mode is _MODE_COMMAND: # standard mode
-                instances = self.cam.getMatchingInstances(clickpoint, self.layers['units'])
+                instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
                 if instances: #check if clicked point is a unit
                     selected = instances[0]
                     print "selected instance: ", selected.get("name"), selected.getFifeId()
@@ -169,9 +176,25 @@ class Game(EventListenerBase):
                         l = fife.Location(self.layers['land'])
                         l.setMapCoordinates(target_mapcoord)
                         self.selected_instance.move(l)
+            else:
+                self.mode = _MODE_COMMAND
+                self.selected_instance = None
 			
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
             if self.mode is _MODE_COMMAND: 
                 if self.selected_instance: #remove unit selection 
                     self.selected_instance.object.say('', 0) # remove health display
-                    self.selected_instance = None 
+                    self.selected_instance = None
+            else:
+                self.mode = _MODE_COMMAND
+                self.layers['units'].deleteInstance(self.selected_instance)
+                self.selected_instance = None
+
+    def mouseMoved(self, evt):
+        if self.mode == _MODE_BUILD:
+            pt = fife.ScreenPoint(evt.getX(), evt.getY())
+            target_mapcoord = self.cam.toMapCoordinates(pt, False)
+            target_mapcoord.z = 0
+            l = fife.Location(self.layers['units'])
+            l.setMapCoordinates(target_mapcoord)
+            self.selected_instance.setLocation(l)

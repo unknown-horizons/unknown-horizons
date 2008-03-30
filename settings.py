@@ -13,10 +13,10 @@ MapFile             = 'content/datasets/maps/openanno-test-map.xml'
 Font                = 'content/gfx/fonts/samanata.ttf'
 FontGlyphs          = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
 
-LogModules          = ['controller']
+LogModules          = ['controller'] #'all' for everything
 PychanDebug         = False
 LogToPrompt         = 1
-LogToFile           = 0
+LogToFile           = 1
 UsePsyco            = False
 ImageChunkSize      = 256
 
