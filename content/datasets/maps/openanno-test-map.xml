@@ -392,6 +392,6 @@
 		</instances>
 	</layer>
 		
-	<camera id='main' zoom='1' tilt='62' rotation='45' ref_layer_id='layer2' ref_cell_width='64' ref_cell_height='32' viewport='0,0,1024,768' />
+	<camera id='main' zoom='1' tilt='-62' rotation='45' ref_layer_id='layer2' ref_cell_width='64' ref_cell_height='32' viewport='0,0,1024,768' />
 
 </map>
