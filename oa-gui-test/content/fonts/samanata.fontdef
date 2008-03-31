@@ -1,0 +1,40 @@
+[Font/samanata_large_pixelated]
+
+type: truetype
+source: content/fonts/samanata.ttf
+size: 30
+
+antialias: 0
+
+color: 255,255,0
+
+[Font/samanata_large]
+
+type: truetype
+source: content/fonts/samanata.ttf
+size: 20
+
+antialias: 1
+
+color: 255,255,100
+
+[Font/samanata_small_pixelated]
+
+type: truetype
+source: content/fonts/samanata.ttf
+size: 8
+
+antialias: 0
+row_spacing: 50
+glyph_spacing: 50
+
+[Font/samanata_small]
+
+type: truetype
+source: content/fonts/samanata.ttf
+size: 10
+color: 255,255,100
+
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 50

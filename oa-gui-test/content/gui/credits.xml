@@ -1,0 +1,10 @@
+<Window title="Credits.">
+	<Label text="These guys contributed to FIFE. Man!" />
+	<ScrollArea size="400,400" vertical_scrollbar="0">
+		<TextBox name="creditText" filename="../../doc/AUTHORS"/>
+	</ScrollArea>
+	<HBox>
+		<Spacer />
+		<Button name="okButton" text="You guys rock!"/>
+	</HBox>
+</Window>
