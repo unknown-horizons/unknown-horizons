@@ -1,19 +1,9 @@
-<Window title="OpenAnno">
-	<VBox>
-		<HBox>
-			<VBox margins="0,0">
-				<Label text="OpenAnno Hauptmenu"/>
-			</VBox>
-		</HBox>
-		<HBox>
-			<Container size="100,28">
-			<ImageButton up_image="content/gui/button.png" name="button" text="button"/>
-			</Container>
-		</HBox>
-		<HBox>
-			<ClickLabel name="creditsLink" text="Credits"/>
-			<Spacer />
-			<Button name="closeButton" text="Quit Demo"/>
-		</HBox>
-	</VBox>
-</Window>
+<Container size="800,800" border_size="0">
+
+			<Icon image="content/gui/menu.png" position="300,200"/>
+
+			<ImageButton up_image="content/gui/button.png" name="button" text="button" position="450,400" size="100,28" border_size="0"/>
+
+			<ImageButton up_image="content/gui/button.png" name="creditsLink" text="Credits" position="250,650" size="100,28" border_size="0"/>
+			<ImageButton up_image="content/gui/button.png" name="closeButton" text="Quit Demo" position="650,650" size="100,28" border_size="0"/>
+</Container>
