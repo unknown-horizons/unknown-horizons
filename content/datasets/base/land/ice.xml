@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <dataset id="icetiles" type="Embedded" format="1.0">
 
-	<object id="ice">
+	<object id="ice" blocking="1">
 		<image source="content/gfx/base/land/ice/ice.png" direction="0" />
 	</object>
 
-	<object id="ice_north">
+	<object id="ice_north" blocking="1">
 		<image source="content/gfx/base/land/ice/ice_north.png" direction="0" />
 	</object>
 	
-	<object id="ice_n-e">
+	<object id="ice_n-e" blocking="1">
 		<image source="content/gfx/base/land/ice/ice_n-e.png" direction="0" />
 	</object>
 	
-	<object id="ice_east">
+	<object id="ice_east" blocking="1">
 		<image source="content/gfx/base/land/ice/ice_east.png" direction="0" />
 	</object>
 	

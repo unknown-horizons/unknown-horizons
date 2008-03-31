@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <dataset id="terraintiles" type="Embedded" format="1.0">
 
-	<object id="oremine">
+	<object id="oremine" blocking="1">
 		<image source="content/gfx/base/mountains/oremine.png" direction="0" />
 	</object>
 
-	<object id="oremine_b">
+	<object id="oremine_b" blocking="1">
 		<image source="content/gfx/base/mountains/oremine_b.png" direction="0" />
 	</object>
 
-	<object id="quarry">
+	<object id="quarry" blocking="1">
 		<image source="content/gfx/base/mountains/quarry.png" direction="0" />
 	</object>
 
-	<object id="quarry_b">
+	<object id="quarry_b" blocking="1">
 		<image source="content/gfx/base/mountains/quarry_b.png" direction="0" />
 	</object>
 
