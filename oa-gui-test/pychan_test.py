@@ -6,7 +6,7 @@ import sys, os, re
 def _jp(path):
 	return os.path.sep.join(path.split('/'))
 
-_paths = ('../../engine/swigwrappers/python', '../../engine/extensions')
+_paths = ('../../fife/engine/swigwrappers/python', '../../fife/engine/extensions')
 for p in _paths:
 	if p not in sys.path:
 		sys.path.append(_jp(p))

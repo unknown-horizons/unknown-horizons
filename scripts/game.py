@@ -91,7 +91,10 @@ class Game(EventListenerBase):
         renderer = fife.FloatingTextRenderer.getInstance(self.cam)
         renderer = self.cam.getRenderer('QuadTreeRenderer')
         renderer.setEnabled(True)
-        renderer.clearActiveLayers()   
+        renderer.clearActiveLayers() 
+        renderer = self.cam.getRenderer('CoordinateRenderer')
+        renderer.clearActiveLayers()
+        renderer.addActiveLayer(self.layers['land'])
         
 
     def create_instance(self, layer, objectID, id, x, y, z=0):
@@ -153,6 +156,12 @@ class Game(EventListenerBase):
             house = House(self.model, 'zelt', self.layers['units'])
             house.start()
             self.selected_instance = inst
+        elif keystr == 'c':
+            r = self.cam.getRenderer('CoordinateRenderer')
+            r.setEnabled(not r.isEnabled())
+        if keystr == 't':
+            r = self.cam.getRenderer('GridRenderer')
+            r.setEnabled(not r.isEnabled())
 
     def mousePressed(self, evt):
         clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
@@ -194,6 +203,8 @@ class Game(EventListenerBase):
         if self.mode == _MODE_BUILD:
             pt = fife.ScreenPoint(evt.getX(), evt.getY())
             target_mapcoord = self.cam.toMapCoordinates(pt, False)
+            target_mapcoord.x = int(target_mapcoord.x)
+            target_mapcoord.y = int(target_mapcoord.y)
             target_mapcoord.z = 0
             l = fife.Location(self.layers['units'])
             l.setMapCoordinates(target_mapcoord)
