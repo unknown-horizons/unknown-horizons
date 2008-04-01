@@ -1,19 +1,15 @@
-<inst id="zelt" o="tent">
+<dummy>
+<inst id="zelt" o="tent"
     name="Setler's tent"
     size.x="2"
     size.y="2"
-    <res>
-        gold="100"
-        wood="3"
-    </res>
-</inst>
+    res.gold="100"
+    res.wood="3" />
 
-<inst id="ship_blue" o="mainship_ani">
+<inst id="ship_blue" o="mainship_ani"
     name="Columbus"
     capacity="3"
-    <load>
-        wood="10"
-        stone="20"
-        tools="10"
-    </load>
-</inst>
+    load.wood="10"
+    load.stone="20"
+    load.tools="10" />
+</dummy>
