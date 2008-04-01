@@ -1,10 +1,10 @@
-<Window title="Credits.">
-	<Label text="These guys contributed to OpenAnno" />
-	<ScrollArea size="400,400" vertical_scrollbar="0">
+<Window title="Credits." base_color="229, 195, 141">
+	<Label text="These guys contributed to OpenAnno" base_color="229, 195, 141"/>
+	<ScrollArea size="400,400" vertical_scrollbar="0" base_color="229, 195, 141">
 		<TextBox name="creditText" filename="doc/AUTHORS"/>
 	</ScrollArea>
 	<HBox>
 		<Spacer />
-		<Button name="okButton" text="You guys rock!"/>
+		<Button name="okButton" text="You guys rock!" base_color="229, 195, 141"/>
 	</HBox>
 </Window>
