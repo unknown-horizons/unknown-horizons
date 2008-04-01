@@ -1,0 +1,19 @@
+<inst id="zelt" o="tent">
+    name="Setler's tent"
+    size.x="2"
+    size.y="2"
+    <res>
+        gold="100"
+        wood="3"
+    </res>
+</inst>
+
+<inst id="ship_blue" o="mainship_ani">
+    name="Columbus"
+    capacity="3"
+    <load>
+        wood="10"
+        stone="20"
+        tools="10"
+    </load>
+</inst>
