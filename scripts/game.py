@@ -44,11 +44,15 @@ class Game(EventListenerBase):
         self.cam = None
 
         self.selected_instance = None
+
         self.human_player = None
         self.players = {}
         self.mode = _MODE_COMMAND
         self.layers = {}
         self.house = None
+
+        #temp var for build testing purposes
+        self.num = 0
 
         self.loadmap(mapfile) # load the map
         self.creategame()
@@ -63,25 +67,23 @@ class Game(EventListenerBase):
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
 
-        self.layers['water']=self.map.getLayers("id", "layer1")[0]
-        self.layers['land']=self.map.getLayers("id", "layer2")[0]
-        self.layers['units']=self.map.getLayers("id", "layer3")[0]
+        self.layers['water'] = self.map.getLayers("id", "layer1")[0]
+        self.layers['land'] = self.map.getLayers("id", "layer2")[0]
+        self.layers['units'] = self.map.getLayers("id", "layer3")[0]
 
         self.human_player = Player('Arthus') # create a new player, which is the human player
         self.players[self.human_player.name] = self.human_player
 
-        ship = Ship(self.model, 'SHIP', self.layers['land'], 'Matilde')
-        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
-        self.instance_to_unit[ship.object.getFifeId()] = ship
-        ship.start()
 
-        ship = Ship(self.model, 'SHIP2', self.layers['land'], 'Columbus')
+        #temporary ship creation, should be done automatically in later releases
+        ship = self.create_unit(self.layers['land'], 'SHIP', Ship)
+        ship.name = 'Matilde'
         self.human_player.ships[ship.name] = ship # add ship to the humanplayer
-        self.instance_to_unit[ship.object.getFifeId()] = ship
-        ship.start()
+
+        ship = self.create_unit(self.layers['land'], 'SHIP2', Ship)
+        ship.name = 'Columbus'
+        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
         
-
-        #ship = Ship(self.model, 'zelt', self.layers['land'], 'niae')
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
@@ -111,6 +113,19 @@ class Game(EventListenerBase):
         inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
         fife.InstanceVisual.create(inst)
         return inst
+    
+    def create_unit(self, layer, objectID, UnitClass):
+        """Creates a new unit an the specified layer 
+        @var layer: fife.Layer the unit is to be created on
+        @var objectID: str containing the object's id
+        @var UnitClass: Class of the new unit (e.g. Ship, House)
+        @return: returnes a unit of the type specified by UnitClass
+        """
+        unit = UnitClass(self.model, objectID, layer)
+        self.instance_to_unit[unit.object.getFifeId()] = unit
+        unit.start()
+        return unit
+
 
     def set_cam_position(self, x, y, z):
         """Sets the camera position
@@ -149,13 +164,12 @@ class Game(EventListenerBase):
             self.move_camera(0, -3)
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 3)
-        elif keystr == 'b':
+        elif keystr == 'b' and self.mode is _MODE_COMMAND:
             self.mode = _MODE_BUILD
             inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
-            inst.set("name", "zelt")
-            house = House(self.model, 'zelt', self.layers['units'])
-            house.start()
-            self.selected_instance = inst
+            self.num += 1
+            inst.set("name", "zelt"+str(self.num))
+            self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), House)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
@@ -196,7 +210,7 @@ class Game(EventListenerBase):
                     self.selected_instance = None
             else:
                 self.mode = _MODE_COMMAND
-                self.layers['units'].deleteInstance(self.selected_instance)
+                self.layers['units'].deleteInstance(self.selected_instance.object)
                 self.selected_instance = None
 
     def mouseMoved(self, evt):
@@ -208,4 +222,4 @@ class Game(EventListenerBase):
             target_mapcoord.z = 0
             l = fife.Location(self.layers['units'])
             l.setMapCoordinates(target_mapcoord)
-            self.selected_instance.setLocation(l)
+            self.selected_instance.move(l)
