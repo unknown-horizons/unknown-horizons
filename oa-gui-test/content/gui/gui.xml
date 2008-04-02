@@ -1,9 +1,16 @@
 <Container size="800,800" border_size="0">
+	<Icon image="content/gui/menu.png" position="300,200"/>
 
-			<Icon image="content/gui/menu.png" position="300,200"/>
+	<ImageButton up_image="content/gui/button.png" name="button" text="button" position="450,400" size="100,28" border_size="0"/>
 
-			<ImageButton up_image="content/gui/button.png" name="button" text="button" position="450,400" size="100,28" border_size="0"/>
+	<ImageButton up_image="content/gui/button.png" name="creditsLink" text="Credits" position="250,650" size="100,28" border_size="0"/>
+	<ImageButton up_image="content/gui/button.png" name="closeButton" text="Quit Demo" position="650,650" size="100,28" border_size="0"/>
 
-			<ImageButton up_image="content/gui/button.png" name="creditsLink" text="Credits" position="250,650" size="100,28" border_size="0"/>
-			<ImageButton up_image="content/gui/button.png" name="closeButton" text="Quit Demo" position="650,650" size="100,28" border_size="0"/>
+	<HBox position="0, 700">
+		<Icon image="content/gui/logos/fife.jpg" />
+		<Icon image="content/gui/logos/sdl.gif" />
+		<Icon image="content/gui/logos/blender.png" />
+		<Label text="Inkscape" />
+		<Label text="GIMP" />
+	</HBox>
 </Container>
