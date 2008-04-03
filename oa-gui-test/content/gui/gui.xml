@@ -9,9 +9,8 @@
 		<Label  text="Credits" position="225,305"/>
 		<ImageButton up_image="content/gui/oa_startmenu_log.png" name="creditsLink" position="329,321" border_size="0"/>
 	
-
 	<Icon  image="content/gui/oa_startmenu_buttonbg.png" position="476,469"/>
-		<Label  text="Quit Game" position="420,565"/>
+		<Label  text="Quit Demo" position="420,565"/>
 		<ImageButton up_image="content/gui/oa_startmenu_door.png" name="closeButton" position="484,477" border_size="0"/>
 
 	<Icon  image="content/gui/oa_startmenu_buttonbg.png" position="629,315"/>	
@@ -20,6 +19,6 @@
 	
 	<Icon image="content/gui/logos/fife.jpg" position="22,632" />
 	<Icon image="content/gui/logos/sdl.gif" position="22, 682" />
-	<Label text="OpenAnno Alpha 0.1" position="898,748"/>
+	<Label text="OpenAnno Demo 0.1" position="898,748"/>
 	
 </Container>
