@@ -1,4 +1,4 @@
-
+# ###################################################
 # Copyright (C) 2008 The OpenAnnoTeam
 # team@openanno.org
 # This file is part of OpenAnno.
