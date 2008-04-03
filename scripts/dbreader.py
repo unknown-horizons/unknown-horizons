@@ -37,21 +37,31 @@ class DbReader:
         @var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
         @var vals: tuple containing the values to add into the command.
         """ 
+        ret = SqlResult()
         if sqlite3.complete_statement(command):
             try:
                 self.cur.execute(command, (vals+()))
+                ret.rows = self.cur.fetchall()
+                ret.affected = self.cur.rowcount
+                if ret.affected is -1:
+                    ret.affected = None
             except sqlite3.Error, e:
                 print "An error occurred:", e.args[0]
+                ret.success = False
+                ret.error = e.args[0]
         else:
             print "Error, no complete sql statement provided by \"",command,"\"."
-        if command.startswith("SELECT"): 
-            return self.cur.fetchall()
-        else:
-            return self.cur
+        return ret
 
     def execute_script(self, script):
         """Executes a multiline script.
         @var script: multiline str containing an sql script."""
         return self.cur.executescript(script)
 
-
+class SqlResult:
+    """Represents a SQL result"""
+    def __init__(self):
+        self.success = True
+        self.rows = None
+        self.error = None
+        self.affected = None
