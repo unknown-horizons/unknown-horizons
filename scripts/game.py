@@ -213,6 +213,24 @@ class Game(EventListenerBase):
                 self.layers['units'].deleteInstance(self.selected_instance.object)
                 self.selected_instance = None
 
+    def mouseWheelMovedUp(self, evt):
+        print evt.getButton()
+        camera = self.view.getCamera('main')
+        zoom = camera.getZoom() / 0.875
+        if(zoom > 1):
+            zoom = 1
+        print "zoom: ", zoom
+        camera.setZoom(zoom)
+
+    def mouseWheelMovedDown(self, evt):
+        print evt.getButton()
+        camera = self.view.getCamera('main')
+        zoom = camera.getZoom() * 0.875
+        if(zoom < 0.25):
+            zoom = 0.25
+        print "zoom: ", zoom
+        camera.setZoom(zoom)
+
     def mouseMoved(self, evt):
         if self.mode == _MODE_BUILD:
             pt = fife.ScreenPoint(evt.getX(), evt.getY())
