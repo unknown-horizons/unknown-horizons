@@ -24,20 +24,21 @@ import fife
 class KeyListener(fife.IKeyListener):
     """KeyListener Class to process key presses"""
 
-    def __init__(self,engine, main):
+    def __init__(self, engine, main):
         """@var engine: Game engine"""
         super(KeyListener, self).__init__() 
         self.main = main
-        fife.IKeyListener.__init__(self) # create the keylistener
-
         engine.getEventManager().addKeyListener(self) 
-        engine.getEventManager().setNonConsumableKeys([fife.Key.ESCAPE]) #add the escape key to the listener
-        self.quit = False 
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue() 
         if keyval == fife.Key.ESCAPE:
-            self.quit = True 
+            if self.main.gui.isVisible() and self.main.game is not None:
+                self.main.gui.hide()
+            elif self.main.gui.isVisible() and self.main.game is None:
+                self.main.quit()
+            elif not self.main.gui.isVisible():
+                self.main.gui.show()
             evt.consume() 
 
     def keyReleased(self, evt):

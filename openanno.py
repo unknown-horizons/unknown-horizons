@@ -57,7 +57,6 @@ class OpenAnno(basicapplication.ApplicationBase):
     """OpenAnno class, main game class. Creates the base."""
     def __init__(self):
         super(OpenAnno, self).__init__() 
-        self.listener = KeyListener(self.engine, self) 
 
         pychan.init(self.engine,debug=True)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
@@ -72,25 +71,21 @@ class OpenAnno(basicapplication.ApplicationBase):
         }
         self.gui.mapEvents(eventMap)
         self.gui.show()
+        self.game = None
 
     def showCredits(self):
-        pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : "Yay!" })
+        pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
 
     def showSettings(self):
-        pychan.loadXML('content/gui/settings.xml').execute({ 'okButton' : "Yay!" })
+        pychan.loadXML('content/gui/settings.xml').execute({ 'okButton' : True })
 
     def start_game(self):
         self.gui.hide()
         self.game = Game(self.engine, settings.MapFile)
 
+    def createListener(self):
+        self.listener = KeyListener(self.engine, self) 
 
-    def get_game(self):
-        """returns the Game instance"""
-        return self.game
-
-    def _pump(self):
-        if self.listener.quit:
-            self.breakRequested = True 
 
 # main methode, creates an OpenAnno instance
 def main():
