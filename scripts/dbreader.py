@@ -32,14 +32,14 @@ class DbReader:
         self.connection.isolation_level = None
         self.cur = self.connection.cursor()
 
-    def execute_command(self, command, vals):
+    def execute(self, command, vals):
         """Executes a sql command. 
         @var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
         @var vals: tuple containing the values to add into the command.
         """ 
-        if sq3lite.complete_statement(command):
+        if sqlite3.complete_statement(command):
             try:
-                self.cur.execute(command, vals)
+                self.cur.execute(command, (vals+()))
             except sqlite3.Error, e:
                 print "An error occurred:", e.args[0]
         else:
@@ -48,16 +48,6 @@ class DbReader:
             return self.cur.fetchall()
         else:
             return self.cur
-
-    def execute_select(self, item, fr, search, value):
-        """Executes a SELECT statement
-        executes "SELECT item FROM fr WHERE search='value'"
-        @var item: str, see above.
-        @var fr: str, see above.
-        @var search: str, see above.
-        @var value: str, see above.
-        """
-        return self.execute_command("SELECT ? FROM ? WHERE ?='?';", (item, fr, search, value))
 
     def execute_script(self, script):
         """Executes a multiline script.
