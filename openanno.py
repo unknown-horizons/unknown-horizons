@@ -81,7 +81,8 @@ class OpenAnno(basicapplication.ApplicationBase):
 
     def start_game(self):
         self.gui.hide()
-        self.game = Game(self.engine, settings.MapFile)
+        if self.game is None:
+            self.game = Game(self.engine, settings.MapFile)
 
     def createListener(self):
         self.listener = KeyListener(self.engine, self) 
