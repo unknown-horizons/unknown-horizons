@@ -46,9 +46,9 @@ class DemoApplication(basicapplication.ApplicationBase):
 		self.gui = pychan.loadXML('content/gui/gui.xml')
 		
 		eventMap = {
+			'settingsLink' : self.showSettings,
 			'creditsLink'  : self.showCredits,
 			'closeButton'  : self.quit,
-			'button'  : self.quit,
 		}
 		self.gui.mapEvents(eventMap)
 		self.gui.show()
@@ -58,6 +58,9 @@ class DemoApplication(basicapplication.ApplicationBase):
 
 	def showCredits(self):
 		print pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : "Yay!" })
+
+	def showSettings(self):
+		print pychan.loadXML('content/gui/settings.xml').execute({ 'okButton' : "Yay!" })
 
 if __name__ == '__main__':
 	import sys
