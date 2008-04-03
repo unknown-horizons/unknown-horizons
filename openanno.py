@@ -40,6 +40,8 @@ for p in _paths:
 try:
     import fife
     import fifelog
+    import pychan
+
 except ImportError,e:
     print 'FIFE was not found or failed to load'
     print 'Reason: ' + e.message
@@ -56,7 +58,31 @@ class OpenAnno(basicapplication.ApplicationBase):
     def __init__(self):
         super(OpenAnno, self).__init__() 
         self.listener = KeyListener(self.engine, self) 
+
+        pychan.init(self.engine,debug=True)
+        pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
+		
+        self.gui = pychan.loadXML('content/gui/gui.xml')
+		
+        eventMap = {
+            'startGame' : self.start_game,
+            'settingsLink' : self.showSettings,
+            'creditsLink'  : self.showCredits,
+            'closeButton'  : self.quit,
+        }
+        self.gui.mapEvents(eventMap)
+        self.gui.show()
+
+    def showCredits(self):
+        pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : "Yay!" })
+
+    def showSettings(self):
+        pychan.loadXML('content/gui/settings.xml').execute({ 'okButton' : "Yay!" })
+
+    def start_game(self):
+        self.gui.hide()
         self.game = Game(self.engine, settings.MapFile)
+
 
     def get_game(self):
         """returns the Game instance"""

@@ -1,0 +1,10 @@
+<Window title="Settings" base_color="40, 40, 40">
+	<Label text="Settings used for oa_gui_test" base_color="40, 40, 40"/>
+	<ScrollArea size="400,400" vertical_scrollbar="1" base_color="40, 40, 40">
+		<TextBox name="settingsText" filename="settings.py"/>
+	</ScrollArea>
+	<HBox>
+		<Spacer />
+		<Button name="okButton" text="Cool stuff!" base_color="40, 40, 40"/>
+	</HBox>
+</Window>
