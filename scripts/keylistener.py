@@ -38,6 +38,8 @@ class KeyListener(fife.IKeyListener):
             elif self.main.gui.isVisible() and self.main.game is None:
                 self.main.quit()
             elif not self.main.gui.isVisible():
+                button = self.main.gui.findChild(name='start')
+                button._setText(" Resume game... ")
                 self.main.gui.show()
             evt.consume() 
 
