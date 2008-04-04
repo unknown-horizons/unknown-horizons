@@ -214,19 +214,15 @@ class Game(EventListenerBase):
                 self.selected_instance = None
 
     def mouseWheelMovedUp(self, evt):
-        #print evt.getButton()
         zoom = self.cam.getZoom() / 0.875
         if(zoom > 1):
             zoom = 1
-        #print "zoom: ", zoom
         self.cam.setZoom(zoom)
 
     def mouseWheelMovedDown(self, evt):
-        #print evt.getButton()
         zoom = self.cam.getZoom() * 0.875
         if(zoom < 0.25):
             zoom = 0.25
-        #print "zoom: ", zoom
         self.cam.setZoom(zoom)
 
     def mouseMoved(self, evt):
