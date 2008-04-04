@@ -41,7 +41,7 @@ class Game(EventListenerBase):
         self.model = engine.getModel()
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
-        self.cam = None
+        self.cam = None # main camera
 
         self.selected_instance = None
 
@@ -214,22 +214,20 @@ class Game(EventListenerBase):
                 self.selected_instance = None
 
     def mouseWheelMovedUp(self, evt):
-        print evt.getButton()
-        camera = self.view.getCamera('main')
-        zoom = camera.getZoom() / 0.875
+        #print evt.getButton()
+        zoom = self.cam.getZoom() / 0.875
         if(zoom > 1):
             zoom = 1
-        print "zoom: ", zoom
-        camera.setZoom(zoom)
+        #print "zoom: ", zoom
+        self.cam.setZoom(zoom)
 
     def mouseWheelMovedDown(self, evt):
-        print evt.getButton()
-        camera = self.view.getCamera('main')
-        zoom = camera.getZoom() * 0.875
+        #print evt.getButton()
+        zoom = self.cam.getZoom() * 0.875
         if(zoom < 0.25):
             zoom = 0.25
-        print "zoom: ", zoom
-        camera.setZoom(zoom)
+        #print "zoom: ", zoom
+        self.cam.setZoom(zoom)
 
     def mouseMoved(self, evt):
         if self.mode == _MODE_BUILD:
