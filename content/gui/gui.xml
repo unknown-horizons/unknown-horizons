@@ -6,15 +6,15 @@
         <ImageButton up_image="content/gui/images/icons/oa_startmenu_compass.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="startGame" position="488,169"  border_size="0"/>
 	
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>	
-    <VBox opaque="1" base_color="0, 0, 0" position="225,305"><Label  text=" Credits "/></VBox>
+    <VBox opaque="1" base_color="0, 0, 0" position="225,305"><Label name="credits" text=" Credits "/></VBox>
         <ImageButton up_image="content/gui/images/icons/oa_startmenu_log.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="creditsLink" position="329,321" border_size="0"/>
 	
         <Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,469"/>
-		<VBox opaque="1" base_color="0, 0, 0" position="420,565"><Label  text=" Quit Demo "/></VBox>
+		<VBox opaque="1" base_color="0, 0, 0" position="420,565"><Label name="quit" text=" Quit Demo "/></VBox>
 		<ImageButton up_image="content/gui/images/icons/oa_startmenu_door.png" name="closeButton" position="484,477" border_size="0"/>
 
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="629,315"/>	
-		<VBox opaque="1" base_color="0, 0, 0" position="740,365"><Label  text=" Settings "/></VBox>
+		<VBox opaque="1" base_color="0, 0, 0" position="740,365"><Label name="settings" text=" Settings "/></VBox>
 		<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears.png" name="settingsLink" position="637,323" border_size="0"/>
 	
         <Icon image="content/gui/images/logos/fife.jpg" position="22,632" />

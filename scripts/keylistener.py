@@ -26,9 +26,13 @@ class KeyListener(fife.IKeyListener):
 
     def __init__(self, engine, main):
         """@var engine: Game engine"""
-        super(KeyListener, self).__init__() 
+        super(KeyListener, self).__init__()
         self.main = main
-        engine.getEventManager().addKeyListener(self) 
+        self.eventmanager = engine.getEventManager()
+        self.eventmanager.addKeyListener(self)
+
+    def __del__(self):
+        self.eventmanager.removeKeyListener(self)
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue() 

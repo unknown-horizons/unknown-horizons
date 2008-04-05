@@ -86,6 +86,8 @@ class OpenAnno(basicapplication.ApplicationBase):
         else:
             if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
                 self.game = None
+                button = self.gui.findChild(name='start')
+                button._setText("Start Demo")
 
     def start_game(self):
         self.gui.hide()
