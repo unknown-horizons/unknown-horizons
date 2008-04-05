@@ -67,7 +67,7 @@ class OpenAnno(basicapplication.ApplicationBase):
             'startGame' : self.start_game,
             'settingsLink' : self.showSettings,
             'creditsLink'  : self.showCredits,
-            'closeButton'  : self.quit,
+            'closeButton'  : self.showQuit,
         }
         self.gui.mapEvents(eventMap)
         self.gui.show()
@@ -78,6 +78,14 @@ class OpenAnno(basicapplication.ApplicationBase):
 
     def showSettings(self):
         pychan.loadXML('content/gui/settings.xml').execute({ 'okButton' : True })
+
+    def showQuit(self):
+        if self.game is None:
+            if(pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+                self.quit()
+        else:
+            if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+                self.game = None
 
     def start_game(self):
         self.gui.hide()

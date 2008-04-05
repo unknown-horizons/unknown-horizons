@@ -57,6 +57,12 @@ class Game(EventListenerBase):
         self.loadmap(mapfile) # load the map
         self.creategame()
 
+    def __del__(self):
+        super(Game, self).__del__()
+        self.model.deleteMap(self.map)
+        self.metamodel.deleteDatasets()
+        self.view.clearCameras()
+
     def loadmap(self, mapfile): 
         """Loads a map.
         @var mapfile: string with the mapfile path
@@ -97,7 +103,6 @@ class Game(EventListenerBase):
         renderer = self.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
-        
 
     def create_instance(self, layer, objectID, id, x, y, z=0):
         """Creates a new instance on the map

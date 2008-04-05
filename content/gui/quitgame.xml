@@ -1,0 +1,8 @@
+<Window title="Quit OpenAnno" base_color="40, 40, 40">
+	<Label text="Are you sure you want to Quit OpenAnno?" base_color="40, 40, 40"/>
+	<HBox>
+		<Spacer />
+		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
+		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
+	</HBox>
+</Window>
