@@ -35,6 +35,8 @@ class House(Object):
         self.state = _STATE_NONE
         self.idlecounter = 1
         self.type = 'building'
+        self.size_x = 0
+        self.size_y = 0 
 
 
     def onInstanceActionFinished(self, instance, action):

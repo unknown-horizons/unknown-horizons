@@ -44,7 +44,11 @@ class DbReader:
             else:
                 raise "Error, no complete sql statement provided by \"",command,"\"."
         try:
-            self.cur.execute(command, (vals+()))
+            if type(vals) is str().__class__:
+                vals = (vals,)
+            elif type(vals) is tuple().__class__:
+                vals = (vals+())
+            self.cur.execute(command, vals)
             ret.rows = self.cur.fetchall()
             ret.affected = self.cur.rowcount
             if ret.affected is -1:

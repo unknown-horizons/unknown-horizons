@@ -84,11 +84,11 @@ class Game(EventListenerBase):
 
 
         #temporary ship creation, should be done automatically in later releases
-        ship = self.create_unit(self.layers['land'], 'SHIP', Ship)
+        ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
         ship.name = 'Matilde'
         self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-        ship = self.create_unit(self.layers['land'], 'SHIP2', Ship)
+        ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
         ship.name = 'Columbus'
         self.human_player.ships[ship.name] = ship # add ship to the humanplayer
         
@@ -121,14 +121,18 @@ class Game(EventListenerBase):
         fife.InstanceVisual.create(inst)
         return inst
     
-    def create_unit(self, layer, objectID, UnitClass):
+    def create_unit(self, layer, objectName, object, UnitClass):
         """Creates a new unit an the specified layer 
         @var layer: fife.Layer the unit is to be created on
         @var objectID: str containing the object's id
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
-        unit = UnitClass(self.model, objectID, layer)
+        unit = UnitClass(self.model, objectName, layer)
+        if UnitClass is House:
+            res = self.db_static.query("SELECT * FROM house WHERE object = ?",object)
+            if res.success:
+                unit.object.size_x, unit.object.size_y = self.db_static.query("SELECT size_x,size_y FROM house WHERE object = ?",object).rows[0]
         self.instance_to_unit[unit.object.getFifeId()] = unit
         unit.start()
         return unit
@@ -176,7 +180,7 @@ class Game(EventListenerBase):
             inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
             self.num += 1
             inst.set("name", "zelt"+str(self.num))
-            self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), House)
+            self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), "tent", House)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
