@@ -32,25 +32,27 @@ class DbReader:
         self.connection.isolation_level = None
         self.cur = self.connection.cursor()
 
-    def execute(self, command, vals):
+    def query(self, command, vals = ()):
         """Executes a sql command. 
         @var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
         @var vals: tuple containing the values to add into the command.
         """ 
         ret = SqlResult()
-        if sqlite3.complete_statement(command):
-            try:
-                self.cur.execute(command, (vals+()))
-                ret.rows = self.cur.fetchall()
-                ret.affected = self.cur.rowcount
-                if ret.affected is -1:
-                    ret.affected = None
-            except sqlite3.Error, e:
-                print "An error occurred:", e.args[0]
-                ret.success = False
-                ret.error = e.args[0]
-        else:
-            print "Error, no complete sql statement provided by \"",command,"\"."
+        if not sqlite3.complete_statement(command):
+            if sqlite3.complete_statement(command + ';'):
+                command = command + ';'
+            else:
+                raise "Error, no complete sql statement provided by \"",command,"\"."
+        try:
+            self.cur.execute(command, (vals+()))
+            ret.rows = self.cur.fetchall()
+            ret.affected = self.cur.rowcount
+            if ret.affected is -1:
+                ret.affected = None
+        except sqlite3.Error, e:
+            print "An error occurred:", e.args[0]
+            ret.success = False
+            ret.error = e.args[0]
         return ret
 
     def execute_script(self, script):

@@ -51,19 +51,23 @@ except ImportError,e:
 import basicapplication
 from scripts.keylistener import KeyListener
 from scripts.game import Game
+from scripts.dbreader import DbReader
 
 
 class OpenAnno(basicapplication.ApplicationBase):
     """OpenAnno class, main game class. Creates the base."""
     def __init__(self):
         super(OpenAnno, self).__init__() 
-
-        pychan.init(self.engine,debug=True)
+        
+        self.db = DbReader('main.sqlite');
+        self.config = DbReader('config.sqlite');
+        print self.config.query("select * from config;").rows
+        pychan.init(self.engine,debug=False)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
-		
+        
         self.mainmenu = pychan.loadXML('content/gui/mainmenu.xml')
         self.gamemenu = pychan.loadXML('content/gui/gamemenu.xml')
-        		
+        
         eventMap = {
             'startGame' : self.start_game,
             'settingsLink' : self.showSettings,
