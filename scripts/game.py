@@ -20,6 +20,7 @@
 # ###################################################
 import math
 import fife
+import copy
 from loaders import loadMapFile
 from eventlistenerbase import EventListenerBase
 from units.ship import Ship
@@ -137,6 +138,47 @@ class Game(EventListenerBase):
         unit.start()
         return unit
 
+    def build_check(self, point, inst):
+        """
+        Checkes wether or not a building can be built at the current mouse position
+        @var clickpoint: fife MapPoint where the cursor is currently at
+        @var inst: fife.Instance that is to be built (must have size_x and size_y set)
+        """
+        def check_inst(layer, point, inst):
+            instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
+            if instances:
+                if inst.object.getFifeId() == instances[0].getFifeId():
+                    instances = instances[1:len(instances)]
+            if instances and len(instances) > 0:
+                return True
+            else:
+                return False
+        print inst.object.getLocation().getMapCoordinates().x, inst.object.getLocation().getLayerCoordinates().x
+        point.x = int(point.x) + 0.5 
+        starty = int(point.y) + 0.5
+        checkpoint = point
+        check = True
+        print 'Start check', point.x, point.y
+        for x in xrange(inst.object.size_x):
+            checkpoint.x -= x
+            checkpoint.y = starty
+            print point.y
+            for y in xrange(inst.object.size_y):
+                checkpoint.y -= y
+                print 'Checking', checkpoint.x, checkpoint.y
+                check = check_inst(self.layers['land'], checkpoint, inst)
+                print 'land check:', check
+                if check:
+                    check = (not check_inst(self.layers['units'], checkpoint, inst))
+                print 'unit check:', check
+                if not check:
+                    break
+            if not check:
+                break
+        print 'Finished check'
+        return check
+
+
 
     def set_cam_position(self, x, y, z):
         """Sets the camera position
@@ -211,8 +253,9 @@ class Game(EventListenerBase):
                         l.setMapCoordinates(target_mapcoord)
                         self.selected_instance.move(l)
             else:
-                self.mode = _MODE_COMMAND
-                self.selected_instance = None
+                if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
+                    self.mode = _MODE_COMMAND
+                    self.selected_instance = None
 			
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
             if self.mode is _MODE_COMMAND: 
@@ -246,3 +289,4 @@ class Game(EventListenerBase):
             l = fife.Location(self.layers['units'])
             l.setMapCoordinates(target_mapcoord)
             self.selected_instance.move(l)
+            print self.build_check(target_mapcoord, self.selected_instance)
