@@ -61,15 +61,18 @@ class OpenAnno(basicapplication.ApplicationBase):
         pychan.init(self.engine,debug=True)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
 		
-        self.gui = pychan.loadXML('content/gui/gui.xml')
-		
+        self.mainmenu = pychan.loadXML('content/gui/mainmenu.xml')
+        self.gamemenu = pychan.loadXML('content/gui/gamemenu.xml')
+        		
         eventMap = {
             'startGame' : self.start_game,
             'settingsLink' : self.showSettings,
             'creditsLink'  : self.showCredits,
             'closeButton'  : self.showQuit,
         }
-        self.gui.mapEvents(eventMap)
+        self.mainmenu.mapEvents(eventMap)
+        self.gamemenu.mapEvents(eventMap)
+        self.gui = self.mainmenu
         self.gui.show()
         self.game = None
 
@@ -86,11 +89,13 @@ class OpenAnno(basicapplication.ApplicationBase):
         else:
             if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
                 self.game = None
-                button = self.gui.findChild(name='start')
-                button._setText("Start Demo")
+                self.gui.hide()
+                self.gui = self.mainmenu
+                self.gui.show()
 
     def start_game(self):
         self.gui.hide()
+        self.gui = self.gamemenu
         if self.game is None:
             self.game = Game(self.engine, settings.MapFile)
 

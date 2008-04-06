@@ -39,11 +39,9 @@ class KeyListener(fife.IKeyListener):
         if keyval == fife.Key.ESCAPE:
             if self.main.gui.isVisible() and self.main.game is not None:
                 self.main.gui.hide()
-            elif self.main.gui.isVisible() and self.main.game is None:
-                self.main.quit()
+            elif self.main.gui.isVisible():
+                self.main.showQuit()
             elif not self.main.gui.isVisible():
-                button = self.main.gui.findChild(name='start')
-                button._setText(" Resume game... ")
                 self.main.gui.show()
             evt.consume() 
 
