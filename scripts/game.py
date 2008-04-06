@@ -25,6 +25,7 @@ from eventlistenerbase import EventListenerBase
 from units.ship import Ship
 from units.house import House
 from player import Player
+from dbreader import DbReader
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
@@ -42,6 +43,7 @@ class Game(EventListenerBase):
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
         self.cam = None # main camera
+        self.db_static = DbReader('statics.sqlite')
 
         self.selected_instance = None
 
