@@ -1,9 +1,22 @@
 <Window title="Settings" base_color="40, 40, 40">
-	<Label text="Settings used for OpenAnno" base_color="40, 40, 40"/>
-	<DropDown name="screen_resolution" />
-	<DropDown name="screen_renderer" />
-	<DropDown name="screen_bpp" />
-	<CheckBox name="screen_fullscreen" />
+	<Label text="This is the OpenAnno settings dialog. Please make sure that you know, what you do."  wrap_text="1" max_size="320,240" base_color="40, 40, 40"/>
+	<HBox>
+		<VBox>
+			<Label text="Screen resolution:" base_color="40, 40, 40"/>
+			<Label text="Used renderer:" base_color="40, 40, 40"/>
+			<Label text="Color depth:" base_color="40, 40, 40"/>
+		</VBox>
+		<Spacer />
+		<VBox>
+			<DropDown name="screen_resolution" base_color="40, 40, 40" />
+			<DropDown name="screen_renderer" base_color="40, 40, 40"/>
+			<DropDown name="screen_bpp" base_color="40, 40, 40"/>
+		</VBox>
+	</HBox>
+	<HBox>
+		<CheckBox size="32,32" name="screen_fullscreen" base_color="40, 40, 40"/>
+		<Label text="Use the full screen mode" base_color="40, 40, 40"/>
+	</HBox>
 	<HBox>
 		<Spacer />
 		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
