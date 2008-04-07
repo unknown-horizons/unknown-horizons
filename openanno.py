@@ -137,12 +137,26 @@ class OpenAnno(basicapplication.ApplicationBase):
         pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
 
     def showSettings(self):
+        resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
+        try:
+            resolutions.index(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight()))
+        except:
+            resolutions.append(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight()))
         dlg = pychan.loadXML('content/gui/settings.xml')
-        #load changes
+        dlg.distributeInitialData({
+           'screen_resolution' : resolutions,
+           'screen_renderer' : ["OpenGL", "SDL"],
+           'screen_bpp' : ["Desktop", "16", "24", "32"]
+        })
+        dlg.distributeData({
+           'screen_resolution' : resolutions.index(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight())),
+           'screen_renderer' : 0 if self.settings.RenderBackend == 'OpenGL' else 1,
+           'screen_bpp' : int(self.engine.getSettings().getBitsPerPixel() / 10), # 0:0 16:1 24:2 32:3 :)
+           'screen_fullscreen' : self.settings.FullScreen == 1
+        })
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;
         #save changes
-        #apply changes
 
     def showQuit(self):
         if self.game is None:
