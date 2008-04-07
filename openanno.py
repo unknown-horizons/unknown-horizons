@@ -67,7 +67,6 @@ class OpenAnno(basicapplication.ApplicationBase):
             InitialVolume       = 5.0 #
             PlaySounds          = 1 #
             SDLRemoveFakeAlpha  = 1
-            MapFile             = 'content/datasets/maps/openanno-test-map.xml'
             Font                = 'content/gfx/fonts/samanata.ttf'
             FontSize            = 12
             FontGlyphs          = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
