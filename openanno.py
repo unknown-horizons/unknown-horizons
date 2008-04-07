@@ -59,9 +59,11 @@ class OpenAnno(basicapplication.ApplicationBase):
     def __init__(self):
         super(OpenAnno, self).__init__() 
         
-        self.db = DbReader('main.sqlite');
-        self.config = DbReader('config.sqlite');
-        print self.config.query("select * from config;").rows
+        self.db = DbReader(':memory:')
+        self.db.query("attach ? AS config", ('./config.sqlite'))
+        self.db.query("attach ? AS core", ('./core.sqlite'))
+        self.db.query("begin transaction")
+        print self.db.query("select * from config.config;").rows
         pychan.init(self.engine,debug=False)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
         
@@ -89,6 +91,9 @@ class OpenAnno(basicapplication.ApplicationBase):
     def showQuit(self):
         if self.game is None:
             if(pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+                self.db.query("commit transaction")
+                self.db.query("detach core")
+                self.db.query("detach config")
                 self.quit()
         else:
             if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
