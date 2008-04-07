@@ -1,0 +1,7 @@
+<Window title="Changes require restart" base_color="40, 40, 40">
+	<Label text="Some of your changes require a restart of OpenAnno." base_color="40, 40, 40"/>
+	<HBox>
+		<Spacer />
+		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
+	</HBox>
+</Window>

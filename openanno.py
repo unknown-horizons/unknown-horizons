@@ -89,8 +89,6 @@ class OpenAnno(basicapplication.ApplicationBase):
                 self.settings.BitsPerPixel = int(value)
             if name == 'screen_renderer':
                 self.settings.RenderBackend = str(value)
-            if name == 'sound_volume':
-                self.settings.InitialVolume = float(value)
         
         super(OpenAnno, self).__init__() 
         
@@ -157,18 +155,22 @@ class OpenAnno(basicapplication.ApplicationBase):
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;
         screen_resolution, screen_renderer, screen_bpp, screen_fullscreen = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen')
+        changes_require_restart = False
         if screen_fullscreen != (self.settings.FullScreen == 1):
             self.settings.FullScreen = (1 if screen_fullscreen else 0)
             self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.FullScreen));
             self.engine.getSettings().setFullScreen(self.settings.FullScreen)
+            changes_require_restart = True
         if screen_bpp != int(self.settings.BitsPerPixel / 10):
             self.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
             self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', self.settings.BitsPerPixel));
             self.engine.getSettings().setBitsPerPixel(self.settings.BitsPerPixel)
+            changes_require_restart = True
         if screen_renderer != (0 if self.settings.RenderBackend == 'OpenGL' else 1):
             self.settings.RenderBackend = 'OpenGL' if screen_renderer == 0 else 'SDL'
-            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.RenderBackend));
+            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_renderer', self.settings.RenderBackend));
             self.engine.getSettings().setRenderBackend(self.settings.RenderBackend)
+            changes_require_restart = True
         if screen_resolution != resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight)):
             self.settings.ScreenWidth = int(resolutions[screen_resolution].partition('x')[0])
             self.settings.ScreenHeight = int(resolutions[screen_resolution].partition('x')[2])
@@ -176,7 +178,9 @@ class OpenAnno(basicapplication.ApplicationBase):
             self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', self.settings.ScreenHeight));
             self.engine.getSettings().setScreenWidth(self.settings.ScreenWidth)
             self.engine.getSettings().setScreenHeight(self.settings.ScreenHeight)
-        self.engine.validate()
+            changes_require_restart = True
+        if changes_require_restart:
+            pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
 
     def showQuit(self):
         if self.game is None:
