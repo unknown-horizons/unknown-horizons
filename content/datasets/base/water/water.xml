@@ -2,7 +2,7 @@
 <dataset id="watertiles" type="Embedded" format="1.0">
 
 	<object id="water">
-		<image source="content/gfx/base/water/water.png" direction="0" />
+		<image source="content/gfx/dummies/sea.png" direction="0" />
 	</object>
 
 </dataset>
