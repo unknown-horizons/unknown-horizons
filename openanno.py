@@ -63,7 +63,8 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.db.query("attach ? AS config", ('./config.sqlite'))
         self.db.query("attach ? AS core", ('./core.sqlite'))
         self.db.query("begin transaction")
-        print self.db.query("select * from config.config;").rows
+        print self.db.query("pragma config.user_version").rows
+        print self.db.query("select * from config.config").rows
         pychan.init(self.engine,debug=False)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
         
