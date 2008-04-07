@@ -1,10 +1,12 @@
 <Window title="Settings" base_color="40, 40, 40">
 	<Label text="Settings used for OpenAnno" base_color="40, 40, 40"/>
-	<ScrollArea size="400,400" vertical_scrollbar="1" base_color="40, 40, 40">
-		<TextBox name="settingsText" filename="settings.py"/>
-	</ScrollArea>
+	<DropDown name="screen_resolution" />
+	<DropDown name="screen_renderer" />
+	<DropDown name="screen_bpp" />
+	<CheckBox name="screen_fullscreen" />
 	<HBox>
 		<Spacer />
+		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
 		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
 	</HBox>
 </Window>
