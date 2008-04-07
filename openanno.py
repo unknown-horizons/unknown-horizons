@@ -139,9 +139,9 @@ class OpenAnno(basicapplication.ApplicationBase):
     def showSettings(self):
         resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
         try:
-            resolutions.index(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight()))
+            resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight))
         except:
-            resolutions.append(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight()))
+            resolutions.append(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight))
         dlg = pychan.loadXML('content/gui/settings.xml')
         dlg.distributeInitialData({
            'screen_resolution' : resolutions,
@@ -149,7 +149,7 @@ class OpenAnno(basicapplication.ApplicationBase):
            'screen_bpp' : ["Desktop", "16", "24", "32"]
         })
         dlg.distributeData({
-           'screen_resolution' : resolutions.index(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight())),
+           'screen_resolution' : resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight)),
            'screen_renderer' : 0 if self.settings.RenderBackend == 'OpenGL' else 1,
            'screen_bpp' : int(self.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
            'screen_fullscreen' : self.settings.FullScreen == 1
@@ -157,12 +157,26 @@ class OpenAnno(basicapplication.ApplicationBase):
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;
         screen_resolution, screen_renderer, screen_bpp, screen_fullscreen = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen')
-        if screen_fullscreen != self.settings.FullScreen == 1:
+        if screen_fullscreen != (self.settings.FullScreen == 1):
             self.settings.FullScreen = (1 if screen_fullscreen else 0)
+            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.FullScreen));
             self.engine.getSettings().setFullScreen(self.settings.FullScreen)
         if screen_bpp != int(self.settings.BitsPerPixel / 10):
             self.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
+            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', self.settings.BitsPerPixel));
             self.engine.getSettings().setBitsPerPixel(self.settings.BitsPerPixel)
+        if screen_renderer != (0 if self.settings.RenderBackend == 'OpenGL' else 1):
+            self.settings.RenderBackend = 'OpenGL' if screen_renderer == 0 else 'SDL'
+            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.RenderBackend));
+            self.engine.getSettings().setRenderBackend(self.settings.RenderBackend)
+        if screen_resolution != resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight)):
+            self.settings.ScreenWidth = int(resolutions[screen_resolution].partition('x')[0])
+            self.settings.ScreenHeight = int(resolutions[screen_resolution].partition('x')[2])
+            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_width', self.settings.ScreenWidth));
+            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', self.settings.ScreenHeight));
+            self.engine.getSettings().setScreenWidth(self.settings.ScreenWidth)
+            self.engine.getSettings().setScreenHeight(self.settings.ScreenHeight)
+        self.engine.validate()
 
     def showQuit(self):
         if self.game is None:
