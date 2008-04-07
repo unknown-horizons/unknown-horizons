@@ -151,12 +151,18 @@ class OpenAnno(basicapplication.ApplicationBase):
         dlg.distributeData({
            'screen_resolution' : resolutions.index(str(self.engine.getSettings().getScreenWidth()) + 'x' + str(self.engine.getSettings().getScreenHeight())),
            'screen_renderer' : 0 if self.settings.RenderBackend == 'OpenGL' else 1,
-           'screen_bpp' : int(self.engine.getSettings().getBitsPerPixel() / 10), # 0:0 16:1 24:2 32:3 :)
+           'screen_bpp' : int(self.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
            'screen_fullscreen' : self.settings.FullScreen == 1
         })
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;
-        #save changes
+        screen_resolution, screen_renderer, screen_bpp, screen_fullscreen = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen')
+        if screen_fullscreen != self.settings.FullScreen == 1:
+            self.settings.FullScreen = (1 if screen_fullscreen else 0)
+            self.engine.getSettings().setFullScreen(self.settings.FullScreen)
+        if screen_bpp != int(self.settings.BitsPerPixel / 10):
+            self.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
+            self.engine.getSettings().setBitsPerPixel(self.settings.BitsPerPixel)
 
     def showQuit(self):
         if self.game is None:

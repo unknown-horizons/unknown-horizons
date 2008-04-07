@@ -6,17 +6,13 @@
 			<Label text="Used renderer:" base_color="40, 40, 40"/>
 			<Label text="Color depth:" base_color="40, 40, 40"/>
 		</VBox>
-		<Spacer />
 		<VBox>
 			<DropDown name="screen_resolution" base_color="40, 40, 40" />
 			<DropDown name="screen_renderer" base_color="40, 40, 40"/>
 			<DropDown name="screen_bpp" base_color="40, 40, 40"/>
 		</VBox>
 	</HBox>
-	<HBox>
-		<CheckBox size="32,32" name="screen_fullscreen" base_color="40, 40, 40"/>
-		<Label text="Use the full screen mode" base_color="40, 40, 40"/>
-	</HBox>
+	<CheckBox size="32,32" name="screen_fullscreen" text="Use the full screen mode" base_color="40, 40, 40"/>
 	<HBox>
 		<Spacer />
 		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
