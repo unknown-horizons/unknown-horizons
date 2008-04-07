@@ -24,7 +24,6 @@
 import sys
 import os
 import re
-
 import settings
 
 def _jp(path):
@@ -57,14 +56,45 @@ from scripts.dbreader import DbReader
 class OpenAnno(basicapplication.ApplicationBase):
     """OpenAnno class, main game class. Creates the base."""
     def __init__(self):
+        self.db = DbReader(':memory:')
+        self.db.query("attach ? AS core", ('./core.sqlite'))
+        class DefaultSettings():
+            FullScreen          = 0 #
+            ScreenWidth         = 1024 #
+            ScreenHeight        = 768 #
+            BitsPerPixel        = 0 #
+            RenderBackend       = "OpenGL" #
+            InitialVolume       = 5.0 #
+            PlaySounds          = 1 #
+            SDLRemoveFakeAlpha  = 1
+            MapFile             = 'content/datasets/maps/openanno-test-map.xml'
+            Font                = 'content/gfx/fonts/samanata.ttf'
+            FontSize            = 12
+            FontGlyphs          = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
+            LogModules          = ['controller'] #'all' for everything
+            PychanDebug         = False
+            LogToPrompt         = 1
+            LogToFile           = 1
+            UsePsyco            = False
+            ImageChunkSize      = 256
+        self.settings = DefaultSettings()
+        self.db.query("attach ? AS config", ('./config.sqlite'))
+        for (name, value) in self.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
+            if name == 'screen_full':
+                self.settings.FullScreen = int(value)
+            if name == 'screen_width':
+                self.settings.ScreenWidth = int(value)
+            if name == 'screen_height':
+                self.settings.ScreenHeight = int(value)
+            if name == 'screen_bpp':
+                self.settings.BitsPerPixel = int(value)
+            if name == 'screen_renderer':
+                self.settings.RenderBackend = str(value)
+            if name == 'sound_volume':
+                self.settings.InitialVolume = float(value)
+        
         super(OpenAnno, self).__init__() 
         
-        self.db = DbReader(':memory:')
-        self.db.query("attach ? AS config", ('./config.sqlite'))
-        self.db.query("attach ? AS core", ('./core.sqlite'))
-        self.db.query("begin transaction")
-        print self.db.query("pragma config.user_version").rows
-        print self.db.query("select * from config.config").rows
         pychan.init(self.engine,debug=False)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
         
@@ -83,18 +113,41 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui.show()
         self.game = None
 
+    def loadSettings(self):
+        """
+        Load the settings from a python file and load them into the engine.
+        Called in the ApplicationBase constructor.
+        """
+        engineSetting = self.engine.getSettings()
+        engineSetting.setDefaultFontGlyphs(self.settings.FontGlyphs)
+        engineSetting.setDefaultFontPath(self.settings.Font)
+        engineSetting.setDefaultFontSize(self.settings.FontSize)
+        engineSetting.setBitsPerPixel(self.settings.BitsPerPixel)
+        engineSetting.setFullScreen(self.settings.FullScreen)
+        engineSetting.setInitialVolume(self.settings.InitialVolume)
+        engineSetting.setRenderBackend(self.settings.RenderBackend)
+        engineSetting.setSDLRemoveFakeAlpha(self.settings.SDLRemoveFakeAlpha)
+        engineSetting.setScreenWidth(self.settings.ScreenWidth)
+        engineSetting.setScreenHeight(self.settings.ScreenHeight)
+        try:
+            engineSetting.setImageChunkingSize(self.settings.ImageChunkSize)
+        except:
+            pass
+
     def showCredits(self):
         pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
 
     def showSettings(self):
-        pychan.loadXML('content/gui/settings.xml').execute({ 'okButton' : True })
+        dlg = pychan.loadXML('content/gui/settings.xml')
+        #load changes
+        if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
+            return;
+        #save changes
+        #apply changes
 
     def showQuit(self):
         if self.game is None:
             if(pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-                self.db.query("commit transaction")
-                self.db.query("detach core")
-                self.db.query("detach config")
                 self.quit()
         else:
             if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):

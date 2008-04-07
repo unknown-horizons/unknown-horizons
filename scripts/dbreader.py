@@ -20,6 +20,7 @@
 # ###################################################
 
 import sqlite3
+import re
 
 class DbReader:
     """Class that handles connections to sqlite databases"""
@@ -28,8 +29,14 @@ class DbReader:
         """Init function, opens the connection to a database and creates a cursor for that database
         @var file: str containing the database file.
         """
+
+
         self.connection = sqlite3.connect(file)
         self.connection.isolation_level = None
+        def regexp(expr, item):
+            r = re.compile(expr)
+            return r.match(item) is not None
+        self.connection.create_function("regexp", 2, regexp)
         self.cur = self.connection.cursor()
 
     def query(self, command, vals = ()):
