@@ -57,7 +57,7 @@ class OpenAnno(basicapplication.ApplicationBase):
     """OpenAnno class, main game class. Creates the base."""
     def __init__(self):
         self.db = DbReader(':memory:')
-        self.db.query("attach ? AS core", ('./core.sqlite'))
+        self.db.query("attach ? AS core", ('content/openanno.sqlite'))
         class DefaultSettings():
             FullScreen          = 0 #
             ScreenWidth         = 1024 #
@@ -77,6 +77,9 @@ class OpenAnno(basicapplication.ApplicationBase):
             UsePsyco            = False
             ImageChunkSize      = 256
         self.settings = DefaultSettings()
+        self.db.query("attach ? AS default_config", ('content/config.sqlite'))
+        #if(db file does not exist)
+            #copy db file
         self.db.query("attach ? AS config", ('./config.sqlite'))
         for (name, value) in self.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'screen_full':
