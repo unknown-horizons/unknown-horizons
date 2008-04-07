@@ -20,7 +20,6 @@
 # ###################################################
 import math
 import fife
-import copy
 from loaders import loadMapFile
 from eventlistenerbase import EventListenerBase
 from units.ship import Ship
