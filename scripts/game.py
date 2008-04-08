@@ -32,10 +32,12 @@ _MODE_COMMAND, _MODE_BUILD = xrange(2)
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
     
-    def __init__(self, engine, mapfile):
+    def __init__(self, main, map):
         """@var engine: fife game engine
         @var mapfile: string with the mapfile path
         """
+        self.main = main
+        engine = self.main.engine
         super(Game, self).__init__(engine, regMouse=True, regKeys=True)
         self.engine = engine
         self.eventmanager = engine.getEventManager()
@@ -56,7 +58,7 @@ class Game(EventListenerBase):
         #temp var for build testing purposes
         self.num = 0
 
-        self.loadmap(mapfile) # load the map
+        self.loadmap("content/datasets/maps/openanno-test-map.xml") # load the map
         self.creategame()
 
     def __del__(self):

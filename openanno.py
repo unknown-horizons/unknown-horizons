@@ -59,13 +59,13 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.db = DbReader(':memory:')
         self.db.query("attach ? AS core", ('content/openanno.sqlite'))
         class DefaultSettings():
-            FullScreen          = 0 #
-            ScreenWidth         = 1024 #
-            ScreenHeight        = 768 #
-            BitsPerPixel        = 0 #
-            RenderBackend       = "OpenGL" #
-            InitialVolume       = 5.0 #
-            PlaySounds          = 1 #
+            FullScreen          = 0         # configurable
+            ScreenWidth         = 1024      # configurable
+            ScreenHeight        = 768       # configurable
+            BitsPerPixel        = 0         # configurable
+            RenderBackend       = "OpenGL"  # configurable
+            InitialVolume       = 5.0
+            PlaySounds          = 1
             SDLRemoveFakeAlpha  = 1
             Font                = 'content/gfx/fonts/samanata.ttf'
             FontSize            = 12
@@ -77,11 +77,10 @@ class OpenAnno(basicapplication.ApplicationBase):
             UsePsyco            = False
             ImageChunkSize      = 256
         self.settings = DefaultSettings()
-        self.db.query("attach ? AS default_config", ('content/config.sqlite'))
         #if(db file does not exist)
             #copy db file
         self.db.query("attach ? AS config", ('./config.sqlite'))
-        for (name, value) in self.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
+        for (name, value) in self.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'screen_full':
                 self.settings.FullScreen = int(value)
             if name == 'screen_width':
@@ -200,11 +199,14 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui.hide()
         self.gui = self.gamemenu
         if self.game is None:
-            self.game = Game(self.engine, settings.MapFile)
+            self.game = Game(self, OpenAnnoMap(self, "content/maps/demo.sqlite"))
 
     def createListener(self):
         self.listener = KeyListener(self.engine, self) 
 
+class OpenAnnoMap:
+    def __init__(self, main, mapFile):
+        main.db.query("attach ? as map", (mapFile));
 
 # main methode, creates an OpenAnno instance
 def main():
