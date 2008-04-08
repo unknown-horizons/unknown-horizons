@@ -193,17 +193,16 @@ class Game(EventListenerBase):
         @var xdir: int representing x direction scroll.
         @var ydir: int representing y direction scroll.
         """
-        camera = self.view.getCamera("main")
-        loc = camera.getLocation()
+        loc = self.cam.getLocation()
         cam_scroll = loc.getExactLayerCoordinates()
         if xdir != 0:
-            cam_scroll.x += 0.1*xdir*(2/camera.getZoom()) * math.cos(camera.getRotation()/180.0 * math.pi)
-            cam_scroll.y += 0.1*xdir*(2/camera.getZoom()) * math.sin(camera.getRotation()/180.0 * math.pi)
+            cam_scroll.x += 0.1*xdir*(2/self.cam.getZoom()) * math.cos(self.cam.getRotation()/180.0 * math.pi)
+            cam_scroll.y += 0.1*xdir*(2/self.cam.getZoom()) * math.sin(self.cam.getRotation()/180.0 * math.pi)
         if ydir != 0:
-            cam_scroll.x += 0.1*ydir*(2/camera.getZoom()) * math.sin(-camera.getRotation()/180.0 * math.pi);
-            cam_scroll.y += 0.1*ydir*(2/camera.getZoom()) * math.cos(-camera.getRotation()/180.0 * math.pi);
+            cam_scroll.x += 0.1*ydir*(2/self.cam.getZoom()) * math.sin(-self.cam.getRotation()/180.0 * math.pi);
+            cam_scroll.y += 0.1*ydir*(2/self.cam.getZoom()) * math.cos(-self.cam.getRotation()/180.0 * math.pi);
         loc.setExactLayerCoordinates(cam_scroll)
-        camera.setLocation(loc)
+        self.cam.setLocation(loc)
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
