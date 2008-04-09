@@ -57,7 +57,7 @@ class OpenAnno(basicapplication.ApplicationBase):
     """OpenAnno class, main game class. Creates the base."""
     def __init__(self):
         self.db = DbReader(':memory:')
-        self.db.query("attach ? AS core", ('content/openanno.sqlite'))
+        self.db.query("attach ? AS data", ('content/openanno.sqlite'))
         class DefaultSettings():
             FullScreen          = 0         # configurable
             ScreenWidth         = 1024      # configurable
@@ -207,6 +207,7 @@ class OpenAnno(basicapplication.ApplicationBase):
 class OpenAnnoMap:
     def __init__(self, main, mapFile):
         main.db.query("attach ? as map", (mapFile));
+        main.db.query("attach ? as island", ("content/islands/demo.sqlite"));
 
 # main methode, creates an OpenAnno instance
 def main():

@@ -75,9 +75,11 @@ class Game(EventListenerBase):
         #self.map = loadMapFile("content/datasets/maps/openanno-test-map.xml", self.engine)
         self.map = self.model.createMap("map")
         
-        obj = self.metamodel.createDataset("ground").createObject("water", None)
-        fife.ObjectVisual.create(obj)
-        obj.get2dGfxVisual().addStaticImage(0, self.engine.getImagePool().addResourceFromFile("content/gfx/base/water/sea/sea.png"))
+        dataset = self.metamodel.createDataset("ground")
+        for (oid, img) in self.main.db.query("select oid, image_n from data.ground").rows:
+            obj = dataset.createObject(str(oid), None)
+            fife.ObjectVisual.create(obj)
+            obj.get2dGfxVisual().addStaticImage(0, self.engine.getImagePool().addResourceFromFile(str(img)))
 
         cellgrid = fife.SquareGrid(False)
         cellgrid.thisown = 0
@@ -89,10 +91,9 @@ class Game(EventListenerBase):
         self.map.createLayer("layer1", cellgrid)
         self.map.createLayer("layer2", cellgrid)
         self.map.createLayer("layer3", cellgrid).setPathingStrategy(fife.CELL_EDGES_ONLY)
-        for x in xrange(0,24):
-            for y in xrange(0,24):
-                inst = self.map.getLayers("id", "layer1")[0].createInstance(self.metamodel.getObjects('id', "water")[0], fife.ExactModelCoordinate(x, y, 0), '')
-                fife.InstanceVisual.create(inst)
+        for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
+            inst = self.map.getLayers("id", "layer1")[0].createInstance(self.metamodel.getObjects('id', str(ground))[0], fife.ExactModelCoordinate(x, y, 0), '')
+            fife.InstanceVisual.create(inst)
 
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
         
