@@ -100,8 +100,8 @@ class Game(EventListenerBase):
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
         
         cam.setCellImageDimensions(32, 16)
-        cam.setRotation(45)
-        cam.setTilt(-62)
+        cam.setRotation(45.0)
+        cam.setTilt(60.0)
         cam.setZoom(1)
 
     def creategame(self):
