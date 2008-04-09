@@ -72,7 +72,34 @@ class Game(EventListenerBase):
         @var mapfile: string with the mapfile path
         @var engine: fife game engine
         """
-        self.map = loadMapFile(mapfile, self.engine)
+        #self.map = loadMapFile("content/datasets/maps/openanno-test-map.xml", self.engine)
+        self.map = self.model.createMap("map")
+        
+        obj = self.metamodel.createDataset("ground").createObject("water", None)
+        fife.ObjectVisual.create(obj)
+        obj.get2dGfxVisual().addStaticImage(0, self.engine.getImagePool().addResourceFromFile("content/gfx/base/water/sea/sea.png"))
+
+        cellgrid = fife.SquareGrid(False)
+        cellgrid.thisown = 0
+        cellgrid.setRotation(0)
+        cellgrid.setXScale(1)
+        cellgrid.setYScale(1)
+        cellgrid.setXShift(0)
+        cellgrid.setYShift(0)
+        self.map.createLayer("layer1", cellgrid)
+        self.map.createLayer("layer2", cellgrid)
+        self.map.createLayer("layer3", cellgrid).setPathingStrategy(fife.CELL_EDGES_ONLY)
+        for x in xrange(0,24):
+            for y in xrange(0,24):
+                inst = self.map.getLayers("id", "layer1")[0].createInstance(self.metamodel.getObjects('id', "water")[0], fife.ExactModelCoordinate(x, y, 0), '')
+                fife.InstanceVisual.create(inst)
+
+        cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
+        
+        cam.setCellImageDimensions(32, 16)
+        cam.setRotation(45)
+        cam.setTilt(-62)
+        cam.setZoom(1)
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
@@ -86,13 +113,13 @@ class Game(EventListenerBase):
 
 
         #temporary ship creation, should be done automatically in later releases
-        ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
-        ship.name = 'Matilde'
-        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
+        #ship.name = 'Matilde'
+        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-        ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
-        ship.name = 'Columbus'
-        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        #ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
+        #ship.name = 'Columbus'
+        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
         
 
         self.view = self.engine.getView()
