@@ -58,7 +58,7 @@ class Game(EventListenerBase):
         #temp var for build testing purposes
         self.num = 0
 
-        self.loadmap("content/datasets/maps/openanno-test-map.xml") # load the map
+        self.loadmap(map) # load the map
         self.creategame()
 
     def __del__(self):
@@ -67,12 +67,12 @@ class Game(EventListenerBase):
         self.metamodel.deleteDatasets()
         self.view.clearCameras()
 
-    def loadmap(self, mapfile): 
+    def loadmap(self, map): 
         """Loads a map.
         @var mapfile: string with the mapfile path
         @var engine: fife game engine
         """
-        #self.map = loadMapFile("content/datasets/maps/openanno-test-map.xml", self.engine)
+        self.main.db.query("attach ? as map", (map));
         self.map = self.model.createMap("map")
         
         dataset = self.metamodel.createDataset("ground")
@@ -91,9 +91,11 @@ class Game(EventListenerBase):
         self.map.createLayer("layer1", cellgrid)
         self.map.createLayer("layer2", cellgrid)
         self.map.createLayer("layer3", cellgrid).setPathingStrategy(fife.CELL_EDGES_ONLY)
-        for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
-            inst = self.map.getLayers("id", "layer1")[0].createInstance(self.metamodel.getObjects('id', str(ground))[0], fife.ExactModelCoordinate(x, y, 0), '')
-            fife.InstanceVisual.create(inst)
+        for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
+            self.main.db.query("attach ? as island", (str(island)));
+            for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
+                fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.metamodel.getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
+            self.main.db.query("detach island");
 
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
         

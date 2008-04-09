@@ -199,15 +199,10 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui.hide()
         self.gui = self.gamemenu
         if self.game is None:
-            self.game = Game(self, OpenAnnoMap(self, "content/maps/demo.sqlite"))
+            self.game = Game(self, "content/maps/demo.sqlite")
 
     def createListener(self):
         self.listener = KeyListener(self.engine, self) 
-
-class OpenAnnoMap:
-    def __init__(self, main, mapFile):
-        main.db.query("attach ? as map", (mapFile));
-        main.db.query("attach ? as island", ("content/islands/demo.sqlite"));
 
 # main methode, creates an OpenAnno instance
 def main():
