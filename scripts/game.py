@@ -33,8 +33,8 @@ class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
     
     def __init__(self, main, map):
-        """@var engine: fife game engine
-        @var mapfile: string with the mapfile path
+        """@var main: parant Openanno instance
+        @var map: string with the mapfile path
         """
         self.main = main
         engine = self.main.engine
@@ -69,17 +69,14 @@ class Game(EventListenerBase):
 
     def loadmap(self, map): 
         """Loads a map.
-        @var mapfile: string with the mapfile path
-        @var engine: fife game engine
+        @var map: string with the mapfile path.
         """
         self.main.db.query("attach ? as map", (map));
         self.map = self.model.createMap("map")
         
         dataset = self.metamodel.createDataset("ground")
         for (oid, img) in self.main.db.query("select oid, image_n from data.ground").rows:
-            obj = dataset.createObject(str(oid), None)
-            fife.ObjectVisual.create(obj)
-            obj.get2dGfxVisual().addStaticImage(0, self.engine.getImagePool().addResourceFromFile(str(img)))
+            self.create_object(oid, img, dataset)
 
         cellgrid = fife.SquareGrid(False)
         cellgrid.thisown = 0
@@ -138,6 +135,16 @@ class Game(EventListenerBase):
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
 
+    def create_object(self, oid, img, dataset):
+        """Creates a new dataset object, that can later be used on the map
+        @var oid: the object oid in the database
+        @var img: str representing the object's image
+        @var dataset: the dataset the object is to be created on
+        """
+        obj = dataset.createObject(str(oid), None)
+        fife.ObjectVisual.create(obj)
+        obj.get2dGfxVisual().addStaticImage(0, self.engine.getImagePool().addResourceFromFile(str(img)))
+
     def create_instance(self, layer, objectID, id, x, y, z=0):
         """Creates a new instance on the map
         @var layer: layer the instance is created on
@@ -171,9 +178,9 @@ class Game(EventListenerBase):
 
     def build_check(self, point, inst):
         """
-        Checkes wether or not a building can be built at the current mouse position
-        @var clickpoint: fife MapPoint where the cursor is currently at
-        @var inst: fife.Instance that is to be built (must have size_x and size_y set)
+        Checkes whether or not a building can be built at the current mouse position.
+        @var point: fife.MapPoint where the cursor is currently at.
+        @var inst: fife.Instance that is to be built (must have size_x and size_y set).
         """
         def check_inst(layer, point, inst):
             instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
@@ -247,12 +254,13 @@ class Game(EventListenerBase):
             self.move_camera(0, -3)
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 3)
-        elif keystr == 'b' and self.mode is _MODE_COMMAND:
-            self.mode = _MODE_BUILD
-            inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
-            self.num += 1
-            inst.set("name", "zelt"+str(self.num))
-            self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), "tent", House)
+        # FIXME: Removed build option, as it does not work.
+        #elif keystr == 'b' and self.mode is _MODE_COMMAND:
+        #    self.mode = _MODE_BUILD
+        #    inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
+        #    self.num += 1
+        #    inst.set("name", "zelt"+str(self.num))
+        #    self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), "tent", House)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
@@ -286,7 +294,7 @@ class Game(EventListenerBase):
                 if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
                     self.mode = _MODE_COMMAND
                     self.selected_instance = None
-			
+
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
             if self.mode is _MODE_COMMAND: 
                 if self.selected_instance: #remove unit selection 
