@@ -73,11 +73,21 @@ class Game(EventListenerBase):
         """
         self.main.db.query("attach ? as map", (map));
         self.map = self.model.createMap("map")
-        
-        dataset = self.metamodel.createDataset("ground")
-        for (oid, img) in self.main.db.query("select oid, image_n from data.ground").rows:
-            self.create_object(oid, img, dataset)
 
+        self.datasets = {}
+        self.datasets['ground']=self.metamodel.createDataset("ground") # Dataset for ground tiles
+        self.datasets['object']=self.metamodel.createDataset("object") # Dataset for objects 
+        
+        for (oid, img) in self.main.db.query("select oid, image_n from data.ground").rows:
+            self.create_object(oid, img, self.datasets['ground'])
+
+        for (oid, img, size_x, size_y) in self.main.db.query("select oid, image_n, size_x, size_y from data.object").rows:
+            id = self.create_object(oid, img, self.datasets['object'])
+            #Fix offset NOTE: only testet with the tent, probably needs some adjustment
+            pool = self.engine.getImagePool()
+            image = pool.getImage(id)
+            image.setXShift(image.getWidth()/2-16)
+            image.setYShift(0)
         cellgrid = fife.SquareGrid(False)
         cellgrid.thisown = 0
         cellgrid.setRotation(0)
@@ -91,7 +101,7 @@ class Game(EventListenerBase):
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)));
             for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
-                fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.metamodel.getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
+                fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
             self.main.db.query("detach island");
 
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
@@ -143,7 +153,10 @@ class Game(EventListenerBase):
         """
         obj = dataset.createObject(str(oid), None)
         fife.ObjectVisual.create(obj)
-        obj.get2dGfxVisual().addStaticImage(0, self.engine.getImagePool().addResourceFromFile(str(img)))
+        id = self.engine.getImagePool().addResourceFromFile(str(img))
+        obj.get2dGfxVisual().addStaticImage(0, id)
+        return id
+        
 
     def create_instance(self, layer, objectID, id, x, y, z=0):
         """Creates a new instance on the map
@@ -152,26 +165,28 @@ class Game(EventListenerBase):
         @var id: str with the object id
         @var x, y, z: int coordinates for the new instance
         """
-        query = self.metamodel.getObjects('id', str(objectID))
+        query = self.datasets['object'].getObjects('id', str(id))
         if len(query) != 1: 
-            print(''.join([str(len(query)), ' objects found with identifier ', str(objectID), '.']))
+            print(''.join([str(len(query)), ' objects found with id ', str(7), '.']))
         object = query[0]
         inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
         fife.InstanceVisual.create(inst)
         return inst
     
-    def create_unit(self, layer, objectName, object, UnitClass):
+    def create_unit(self, layer, objectName, id, UnitClass):
         """Creates a new unit an the specified layer 
         @var layer: fife.Layer the unit is to be created on
-        @var objectID: str containing the object's id
+        @var id: str containing the object's id
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
-        unit = UnitClass(self.model, objectName, layer)
+        unit = UnitClass(self.model, id, layer)
         if UnitClass is House:
-            res = self.db_static.query("SELECT * FROM house WHERE object = ?",object)
+            res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",id)
             if res.success:
-                unit.object.size_x, unit.object.size_y = self.db_static.query("SELECT size_x,size_y FROM house WHERE object = ?",object).rows[0]
+
+                unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",id).rows[0]
+                print unit.size_x, unit.size_y
         self.instance_to_unit[unit.object.getFifeId()] = unit
         unit.start()
         return unit
@@ -182,6 +197,9 @@ class Game(EventListenerBase):
         @var point: fife.MapPoint where the cursor is currently at.
         @var inst: fife.Instance that is to be built (must have size_x and size_y set).
         """
+
+        #FIXME: checking doesn't work
+        
         def check_inst(layer, point, inst):
             instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
             if instances:
@@ -191,17 +209,17 @@ class Game(EventListenerBase):
                 return True
             else:
                 return False
-        print inst.object.getLocation().getMapCoordinates().x, inst.object.getLocation().getLayerCoordinates().x
-        point.x = int(point.x) + 0.5 
-        starty = int(point.y) + 0.5
+        print inst.object.getLocation().getMapCoordinates().x, inst.object.getLocation().getMapCoordinates().y
+        point.x = int(point.x)
+        starty = int(point.y)
         checkpoint = point
         check = True
         print 'Start check', point.x, point.y
-        for x in xrange(inst.object.size_x):
+        for x in xrange(inst.size_x):
             checkpoint.x -= x
             checkpoint.y = starty
             print point.y
-            for y in xrange(inst.object.size_y):
+            for y in xrange(inst.size_y):
                 checkpoint.y -= y
                 print 'Checking', checkpoint.x, checkpoint.y
                 check = check_inst(self.layers['land'], checkpoint, inst)
@@ -255,15 +273,16 @@ class Game(EventListenerBase):
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 3)
         # FIXME: Removed build option, as it does not work.
-        #elif keystr == 'b' and self.mode is _MODE_COMMAND:
-        #    self.mode = _MODE_BUILD
-        #    inst = self.create_instance(self.layers['units'], "tent", '', 4, 10)
-        #    self.num += 1
-        #    inst.set("name", "zelt"+str(self.num))
-        #    self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), "tent", House)
+        elif keystr == 'b' and self.mode is _MODE_COMMAND:
+            self.mode = _MODE_BUILD
+            inst = self.create_instance(self.layers['units'], "tent", '2', 4, 10)
+            self.num += 1
+            self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), '2', House)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
+        elif keystr == 'q':
+            self.main.quit()
         if keystr == 't':
             r = self.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())
@@ -291,7 +310,7 @@ class Game(EventListenerBase):
                         l.setMapCoordinates(target_mapcoord)
                         self.selected_instance.move(l)
             else:
-                if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
+                if True: #self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
                     self.mode = _MODE_COMMAND
                     self.selected_instance = None
 

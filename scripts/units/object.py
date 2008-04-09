@@ -21,20 +21,20 @@
 import common, fife
 
 class Object(fife.InstanceActionListener):
-    def __init__(self, model, object_name, layer, uniqInMap=True):
+    def __init__(self, model, object_id, layer, uniqInMap=True):
         """@var model: fife.Model: engine model beeing used.
-        @var unit_name: str containing the units name.
+        @var unit_id: str containing the objects id.
         @var layer: fife.Layer on which the object is present.
         @var uniqInMap: bool if the object is unique.
         """
         fife.InstanceActionListener.__init__(self)
         self.model = model
-        self.object_name = object_name
+        self.object_id = object_id
         self.layer = layer
         self.type = None
         self.health = 100
         if uniqInMap:
-            self.object = layer.getInstances('name', object_name)[0]
+            self.object = layer.getInstances('id', object_id)[0]
             self.object.addActionListener(self)
 
     def onInstanceActionFinished(self, instance, action):
