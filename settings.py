@@ -1,5 +1,5 @@
 # fife paths
-path                = '../FIFE/trunk'
+path                = '../fife/'
 
 # test settings
 MapFile             = 'content/datasets/maps/openanno-test-map.xml'
