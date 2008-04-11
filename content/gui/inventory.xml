@@ -1,0 +1,23 @@
+<Window title="Inventory" base_color="40, 40, 40">
+	<Label text="That's your island-wide inventory."  wrap_text="1" max_size="320,240" base_color="40, 40, 40"/>
+	<HBox>
+		<VBox>
+			<Label text="Coins:" base_color="40, 40, 40"/>
+			<Label text="Lamb wool:" base_color="40, 40, 40"/>
+			<Label text="Textiles:" base_color="40, 40, 40"/>
+			<Label text="Boards:" base_color="40, 40, 40"/>
+			<Label text="Food:" base_color="40, 40, 40"/>
+		</VBox>
+		<VBox>
+			<Label text="n/a" name="1" base_color="40, 40, 40"/>
+			<Label text="n/a" name="2" base_color="40, 40, 40"/>
+			<Label text="n/a" name="3" base_color="40, 40, 40"/>
+			<Label text="n/a" name="4" base_color="40, 40, 40"/>
+			<Label text="n/a" name="5" base_color="40, 40, 40"/>
+		</VBox>
+	</HBox>
+	<HBox>
+		<Spacer />
+		<Button name="closeButton" text="Close" base_color="40, 40, 40"/>
+	</HBox>
+</Window>
