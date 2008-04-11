@@ -101,7 +101,10 @@ class Game(EventListenerBase):
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)));
             for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
-                fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
+                if ground == 7 or ground == 11: #create water objects on the water layer
+                    fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
+                else: #put everything else on the land layer
+                    fife.InstanceVisual.create(self.map.getLayers("id", "layer2")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
             self.main.db.query("detach island");
 
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
@@ -195,42 +198,40 @@ class Game(EventListenerBase):
         """
         Checkes whether or not a building can be built at the current mouse position.
         @var point: fife.MapPoint where the cursor is currently at.
-        @var inst: fife.Instance that is to be built (must have size_x and size_y set).
+        @var inst: Object instance that is to be built (must have size_x and size_y set).
         """
 
-        #FIXME: checking doesn't work
+        #FIXME: works basically, but will result in problems with unit checking and wrong checks on the lower right side of islands
         
         def check_inst(layer, point, inst):
             instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
-            if instances:
+            if instances: #Check whether the found instance equals the instance that is to be built.
                 if inst.object.getFifeId() == instances[0].getFifeId():
                     instances = instances[1:len(instances)]
             if instances and len(instances) > 0:
                 return True
             else:
                 return False
-        print inst.object.getLocation().getMapCoordinates().x, inst.object.getLocation().getMapCoordinates().y
-        point.x = int(point.x)
-        starty = int(point.y)
+        point.x = float(point.x)+0.5
+        starty = float(point.y)-0.5
         checkpoint = point
         check = True
-        print 'Start check', point.x, point.y
+        print 'Start check x: ', point.x, ' y: ', starty
         for x in xrange(inst.size_x):
-            checkpoint.x -= x
             checkpoint.y = starty
-            print point.y
             for y in xrange(inst.size_y):
-                checkpoint.y -= y
-                print 'Checking', checkpoint.x, checkpoint.y
+                print 'Checking x: ', checkpoint.x,' y: ', checkpoint.y
                 check = check_inst(self.layers['land'], checkpoint, inst)
                 print 'land check:', check
                 if check:
                     check = (not check_inst(self.layers['units'], checkpoint, inst))
-                print 'unit check:', check
-                if not check:
+                    print 'unit check:', check
+                else:
                     break
+                checkpoint.y += 1
             if not check:
                 break
+            checkpoint.x += 1
         print 'Finished check'
         return check
 
@@ -310,7 +311,7 @@ class Game(EventListenerBase):
                         l.setMapCoordinates(target_mapcoord)
                         self.selected_instance.move(l)
             else:
-                if True: #self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
+                if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
                     self.mode = _MODE_COMMAND
                     self.selected_instance = None
 
