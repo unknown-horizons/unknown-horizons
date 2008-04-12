@@ -97,13 +97,8 @@ class Game(EventListenerBase):
         self.map.createLayer("layer3", cellgrid).setPathingStrategy(fife.CELL_EDGES_ONLY)
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)));
-            for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
-                #create water objects on the water layer
-                if ground == 7 or ground == 11:
-                    fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
-                #put everything else on the land layer
-                else:
-                    fife.InstanceVisual.create(self.map.getLayers("id", "layer2")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
+            for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
+                fife.InstanceVisual.create(self.map.getLayers("id", "layer" + str(layer))[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
             self.main.db.query("detach island");
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
         cam.setCellImageDimensions(32, 16)
@@ -123,13 +118,13 @@ class Game(EventListenerBase):
         self.players[self.human_player.name] = self.human_player
 
         #temporary ship creation, should be done automatically in later releases
-        #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
-        #ship.name = 'Matilde'
-        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
+        ship.name = 'Matilde'
+        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-        #ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
-        #ship.name = 'Columbus'
-        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
+        ship.name = 'Columbus'
+        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
