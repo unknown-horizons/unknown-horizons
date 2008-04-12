@@ -118,13 +118,13 @@ class Game(EventListenerBase):
         self.players[self.human_player.name] = self.human_player
 
         #temporary ship creation, should be done automatically in later releases
-        ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
-        ship.name = 'Matilde'
-        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
+        #ship.name = 'Matilde'
+        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-        ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
-        ship.name = 'Columbus'
-        self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+        #ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
+        #ship.name = 'Columbus'
+        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
