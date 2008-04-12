@@ -31,7 +31,7 @@ _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
-    
+
     def __init__(self, main, map):
         """@var main: parant Openanno instance
         @var map: string with the mapfile path
@@ -45,10 +45,7 @@ class Game(EventListenerBase):
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
         self.cam = None # main camera
-        self.db_static = DbReader('statics.sqlite')
-
         self.selected_instance = None
-
         self.human_player = None
         self.players = {}
         self.mode = _MODE_COMMAND
@@ -77,14 +74,14 @@ class Game(EventListenerBase):
         self.datasets = {}
         self.datasets['ground']=self.metamodel.createDataset("ground") # Dataset for ground tiles
         self.datasets['object']=self.metamodel.createDataset("object") # Dataset for objects 
-        
+
         for (oid, img) in self.main.db.query("select oid, image_n from data.ground").rows:
             self.create_object(oid, img, self.datasets['ground'])
 
+        pool = self.engine.getImagePool()
         for (oid, img, size_x, size_y) in self.main.db.query("select oid, image_n, size_x, size_y from data.object").rows:
             id = self.create_object(oid, img, self.datasets['object'])
-            #Fix offset NOTE: only testet with the tent, probably needs some adjustment
-            pool = self.engine.getImagePool()
+            #Fix offset NOTE: only tested with the tent, probably needs some adjustment
             image = pool.getImage(id)
             image.setXShift(image.getWidth()/2-16)
             image.setYShift(0)
@@ -101,14 +98,14 @@ class Game(EventListenerBase):
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)));
             for (x, y, ground) in self.main.db.query("select x, y, ground_id from island.ground").rows:
-                if ground == 7 or ground == 11: #create water objects on the water layer
+                #create water objects on the water layer
+                if ground == 7 or ground == 11:
                     fife.InstanceVisual.create(self.map.getLayers("id", "layer1")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
-                else: #put everything else on the land layer
+                #put everything else on the land layer
+                else:
                     fife.InstanceVisual.create(self.map.getLayers("id", "layer2")[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
             self.main.db.query("detach island");
-
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
-        
         cam.setCellImageDimensions(32, 16)
         cam.setRotation(45.0)
         cam.setTilt(60.0)
@@ -121,9 +118,9 @@ class Game(EventListenerBase):
         self.layers['land'] = self.map.getLayers("id", "layer2")[0]
         self.layers['units'] = self.map.getLayers("id", "layer3")[0]
 
-        self.human_player = Player('Arthus') # create a new player, which is the human player
+        #create a new player, which is the human player
+        self.human_player = Player('Arthus')
         self.players[self.human_player.name] = self.human_player
-
 
         #temporary ship creation, should be done automatically in later releases
         #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
@@ -133,7 +130,6 @@ class Game(EventListenerBase):
         #ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
         #ship.name = 'Columbus'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
-        
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
@@ -159,7 +155,6 @@ class Game(EventListenerBase):
         id = self.engine.getImagePool().addResourceFromFile(str(img))
         obj.get2dGfxVisual().addStaticImage(0, id)
         return id
-        
 
     def create_instance(self, layer, objectID, id, x, y, z=0):
         """Creates a new instance on the map
@@ -175,7 +170,7 @@ class Game(EventListenerBase):
         inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
         fife.InstanceVisual.create(inst)
         return inst
-    
+
     def create_unit(self, layer, objectName, id, UnitClass):
         """Creates a new unit an the specified layer 
         @var layer: fife.Layer the unit is to be created on
@@ -187,7 +182,6 @@ class Game(EventListenerBase):
         if UnitClass is House:
             res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",id)
             if res.success:
-
                 unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",id).rows[0]
                 print unit.size_x, unit.size_y
         self.instance_to_unit[unit.object.getFifeId()] = unit
@@ -234,8 +228,6 @@ class Game(EventListenerBase):
             checkpoint.x += 1
         print 'Finished check'
         return check
-
-
 
     def set_cam_position(self, x, y, z):
         """Sets the camera position
@@ -314,7 +306,6 @@ class Game(EventListenerBase):
                 if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
                     self.mode = _MODE_COMMAND
                     self.selected_instance = None
-
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
             if self.mode is _MODE_COMMAND: 
                 if self.selected_instance: #remove unit selection 
