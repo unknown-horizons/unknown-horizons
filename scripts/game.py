@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -64,27 +64,28 @@ class Game(EventListenerBase):
         self.metamodel.deleteDatasets()
         self.view.clearCameras()
 
-    def loadmap(self, map): 
+    def loadmap(self, map):
         """Loads a map.
         @var map: string with the mapfile path.
         """
-        self.main.db.query("attach ? as map", (map));
+        self.main.db.query("attach ? as map", (map))
         self.map = self.model.createMap("map")
 
         self.datasets = {}
-        self.datasets['ground']=self.metamodel.createDataset("ground") # Dataset for ground tiles
-        self.datasets['object']=self.metamodel.createDataset("object") # Dataset for objects 
+        #dataset for ground tiles
+        self.datasets['ground']=self.metamodel.createDataset("ground")
+        #dataset for objects
+        self.datasets['object']=self.metamodel.createDataset("object")
 
-        for (oid, img) in self.main.db.query("select oid, image_n from data.ground").rows:
-            self.create_object(oid, img, self.datasets['ground'])
 
-        pool = self.engine.getImagePool()
-        for (oid, img, size_x, size_y) in self.main.db.query("select oid, image_n, size_x, size_y from data.object").rows:
-            id = self.create_object(oid, img, self.datasets['object'])
-            #Fix offset NOTE: only tested with the tent, probably needs some adjustment
-            image = pool.getImage(id)
-            image.setXShift(image.getWidth()/2-16)
-            image.setYShift(0)
+        for (oid, image_overview, image_n, image_e, image_s, image_w) in self.main.db.query("select gnd.oid, grp.image_overview, gnd.image_n, gnd.image_e, gnd.image_s, gnd.image_w from data.ground gnd left join data.ground_group grp on gnd.`group` = grp.oid").rows:
+            print "before", oid, image_n
+            self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['ground'])
+            print "after"
+
+        for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in self.main.db.query("select oid, 'content/gfx/dummies/overview_object.png', image_n, image_e, image_s, image_w, size_x, size_y from data.object").rows:
+            self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['object'], size_x, size_y)
+
         cellgrid = fife.SquareGrid(False)
         cellgrid.thisown = 0
         cellgrid.setRotation(0)
@@ -96,10 +97,10 @@ class Game(EventListenerBase):
         self.map.createLayer("layer2", cellgrid)
         self.map.createLayer("layer3", cellgrid).setPathingStrategy(fife.CELL_EDGES_ONLY)
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
-            self.main.db.query("attach ? as island", (str(island)));
+            self.main.db.query("attach ? as island", (str(island)))
             for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
                 fife.InstanceVisual.create(self.map.getLayers("id", "layer" + str(layer))[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
-            self.main.db.query("detach island");
+            self.main.db.query("detach island")
         cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
         cam.setCellImageDimensions(32, 16)
         cam.setRotation(45.0)
@@ -134,22 +135,57 @@ class Game(EventListenerBase):
         renderer = fife.FloatingTextRenderer.getInstance(self.cam)
         renderer = self.cam.getRenderer('QuadTreeRenderer')
         renderer.setEnabled(True)
-        renderer.clearActiveLayers() 
+        renderer.clearActiveLayers()
         renderer = self.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
 
-    def create_object(self, oid, img, dataset):
+    def create_object(self, oid, image_overview, image_n, image_e, image_s, image_w, dataset, size_x = 1, size_y = 1):
         """Creates a new dataset object, that can later be used on the map
         @var oid: the object oid in the database
-        @var img: str representing the object's image
+        @var image_overview, image_n, image_e, image_s, image_w: str representing the object's images
         @var dataset: the dataset the object is to be created on
+        @var size_x: the x-size of the object in grid's
+        @var size_y: the y-size of the object in grid's
         """
+        
         obj = dataset.createObject(str(oid), None)
         fife.ObjectVisual.create(obj)
-        id = self.engine.getImagePool().addResourceFromFile(str(img))
-        obj.get2dGfxVisual().addStaticImage(0, id)
-        return id
+        
+        pool = self.engine.getImagePool()
+        visual = obj.get2dGfxVisual()
+
+        #img = pool.addResourceFromFile(str(image_overview))
+        #visual.addStaticImage(0, img)
+        #visual.addStaticImage(90, img)
+        #visual.addStaticImage(180, img)
+        #visual.addStaticImage(270, img)
+        
+        img = pool.addResourceFromFile(str(image_n))
+        visual.addStaticImage(45, img)
+        img = pool.getImage(img)
+        img.setXShift(16 - 16 * size_y)
+        img.setYShift(0)
+
+        #img = pool.addResourceFromFile(str(image_e))
+        #visual.addStaticImage(135, img)
+        #img = pool.getImage(img)
+        #img.setXShift(0)
+        #img.setYShift(0)
+
+        #img = pool.addResourceFromFile(str(image_s))
+        #visual.addStaticImage(225, img)
+        #img = pool.getImage(img)
+        #img.setXShift(0)
+        #img.setYShift(0)
+
+        #img = pool.addResourceFromFile(str(image_w))
+        #visual.addStaticImage(315, img)
+        #img = pool.getImage(img)
+        #img.setXShift(0)
+        #img.setYShift(0)
+
+        return obj
 
     def create_instance(self, layer, objectID, id, x, y, z=0):
         """Creates a new instance on the map
@@ -159,7 +195,7 @@ class Game(EventListenerBase):
         @var x, y, z: int coordinates for the new instance
         """
         query = self.datasets['object'].getObjects('id', str(id))
-        if len(query) != 1: 
+        if len(query) != 1:
             print(''.join([str(len(query)), ' objects found with id ', str(7), '.']))
         object = query[0]
         inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
@@ -167,7 +203,7 @@ class Game(EventListenerBase):
         return inst
 
     def create_unit(self, layer, objectName, id, UnitClass):
-        """Creates a new unit an the specified layer 
+        """Creates a new unit an the specified layer
         @var layer: fife.Layer the unit is to be created on
         @var id: str containing the object's id
         @var UnitClass: Class of the new unit (e.g. Ship, House)
@@ -191,7 +227,7 @@ class Game(EventListenerBase):
         """
 
         #FIXME: works basically, but will result in problems with unit checking and wrong checks on the lower right side of islands
-        
+
         def check_inst(layer, point, inst):
             instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
             if instances: #Check whether the found instance equals the instance that is to be built.
@@ -244,8 +280,8 @@ class Game(EventListenerBase):
             cam_scroll.x += 0.1*xdir*(2/self.cam.getZoom()) * math.cos(self.cam.getRotation()/180.0 * math.pi)
             cam_scroll.y += 0.1*xdir*(2/self.cam.getZoom()) * math.sin(self.cam.getRotation()/180.0 * math.pi)
         if ydir != 0:
-            cam_scroll.x += 0.1*ydir*(2/self.cam.getZoom()) * math.sin(-self.cam.getRotation()/180.0 * math.pi);
-            cam_scroll.y += 0.1*ydir*(2/self.cam.getZoom()) * math.cos(-self.cam.getRotation()/180.0 * math.pi);
+            cam_scroll.x += 0.1*ydir*(2/self.cam.getZoom()) * math.sin(-self.cam.getRotation()/180.0 * math.pi)
+            cam_scroll.y += 0.1*ydir*(2/self.cam.getZoom()) * math.cos(-self.cam.getRotation()/180.0 * math.pi)
         loc.setExactLayerCoordinates(cam_scroll)
         self.cam.setLocation(loc)
 
@@ -269,6 +305,8 @@ class Game(EventListenerBase):
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
+        elif keystr == 'r':
+            self.cam.setRotation((self.cam.getRotation() + 90) % 360)
         elif keystr == 'q':
             self.main.quit()
         if keystr == 't':
@@ -290,7 +328,7 @@ class Game(EventListenerBase):
                         self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
                     else:
                         self.selected_instance = None
-                elif self.selected_instance: # if unit is allready selected, move it 
+                elif self.selected_instance: # if unit is allready selected, move it
                     if self.selected_instance.type == 'ship':
                         target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
                         target_mapcoord.z = 0
@@ -302,8 +340,8 @@ class Game(EventListenerBase):
                     self.mode = _MODE_COMMAND
                     self.selected_instance = None
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
-            if self.mode is _MODE_COMMAND: 
-                if self.selected_instance: #remove unit selection 
+            if self.mode is _MODE_COMMAND:
+                if self.selected_instance: #remove unit selection
                     self.selected_instance.object.say('', 0) # remove health display
                     self.selected_instance = None
             else:
