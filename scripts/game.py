@@ -49,6 +49,7 @@ class Game(EventListenerBase):
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
         self.cam = None # main camera
+        self.uid = 0 # openanno intern uid which is used to create unique numbers for instances.
 
         self.selected_instance = None
         self.human_player = None
@@ -58,7 +59,6 @@ class Game(EventListenerBase):
         self.house = None
 
         #temp var for build testing purposes
-        self.num = 0   
         self.timermanager = timermanager.TimerManager() #managers timers
         self.loadmap(map) # load the map
         self.creategame()
@@ -106,7 +106,7 @@ class Game(EventListenerBase):
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)))
             for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
-                fife.InstanceVisual.create(self.map.getLayers("id", "layer" + str(layer))[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
+                self.create_instance(self.layers['land'], self.datasets['ground'], str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
             self.main.db.query("detach island")
 
         self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
@@ -193,31 +193,31 @@ class Game(EventListenerBase):
 
         return obj
 
-    def create_instance(self, layer, objectID, id, x, y, z=0):
+    def create_instance(self, layer, dataset, id, x, y, z=0):
         """Creates a new instance on the map
         @var layer: layer the instance is created on
-        @var objectID: str representing the object
         @var id: str with the object id
         @var x, y, z: int coordinates for the new instance
         """
 
         # FIXME: getObjects only looks for id, thus not returning unique objects, if more then one object exists with the same id. (e.g. multiple tents)
-        query = self.datasets['object'].getObjects('id', str(id))
+        query = dataset.getObjects('id', str(id))
         if len(query) != 1:
             print(''.join([str(len(query)), ' objects found with id ', str(7), '.']))
         object = query[0]
-        inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(id))
+        inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(self.uid))
+        self.uid += 1
         fife.InstanceVisual.create(inst)
         return inst
 
-    def create_unit(self, layer, objectName, id, UnitClass):
+    def create_unit(self, layer, id, UnitClass):
         """Creates a new unit an the specified layer
         @var layer: fife.Layer the unit is to be created on
         @var id: str containing the object's id
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
-        unit = UnitClass(self.model, id, layer, self)
+        unit = UnitClass(self.model, str(id), layer, self)
         if UnitClass is House:
             res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",id)
             if res.success:
@@ -306,9 +306,9 @@ class Game(EventListenerBase):
             self.move_camera(0, 3)
         elif keystr == 'b' and self.mode is _MODE_COMMAND:
             self.mode = _MODE_BUILD
-            inst = self.create_instance(self.layers['units'], "tent", '2', 4, 10)
-            self.num += 1
-            self.selected_instance = self.create_unit(self.layers['units'], "zelt"+str(self.num), '2', House)
+            curunique = self.uid
+            inst = self.create_instance(self.layers['units'], self.datasets['object'], '2', 4, 10)
+            self.selected_instance = self.create_unit(self.layers['units'], curunique, House)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())

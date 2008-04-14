@@ -39,7 +39,7 @@ class House(Object):
         self.size_y = 0
         self.res = 0
         #Uncomment here to test the new timemanger. Warning: Building more then one tent, will couse the game not to exit correctly.
-        #self.game.timermanager.add_new_object(10, self.produce, -1)
+        self.game.timermanager.add_new_object(10, self.produce, -1)
 
 
     def onInstanceActionFinished(self, instance, action):
