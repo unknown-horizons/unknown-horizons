@@ -97,26 +97,32 @@ class Game(EventListenerBase):
         cellgrid.setYScale(1)
         cellgrid.setXShift(0)
         cellgrid.setYShift(0)
-        self.map.createLayer("layer1", cellgrid)
-        self.map.createLayer("layer2", cellgrid)
-        self.map.createLayer("layer3", cellgrid).setPathingStrategy(fife.CELL_EDGES_ONLY)
+
+        self.layers['water'] = self.map.createLayer("layer1", cellgrid)
+        self.layers['land'] = self.map.createLayer("layer2", cellgrid)
+        self.layers['units'] = self.map.createLayer("layer3", cellgrid)
+        self.layers['units'].setPathingStrategy(fife.CELL_EDGES_ONLY)
+
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)))
             for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
                 fife.InstanceVisual.create(self.map.getLayers("id", "layer" + str(layer))[0].createInstance(self.datasets['ground'].getObjects('id', str(int(ground)))[0], fife.ExactModelCoordinate(int(x) + int(offset_x), int(y) + int(offset_y), 0), ''))
             self.main.db.query("detach island")
-        cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer2")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
-        cam.setCellImageDimensions(32, 16)
-        cam.setRotation(45.0)
-        cam.setTilt(60.0)
-        cam.setZoom(1)
+
+        self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(0,0,0))
+        self.cam.setCellImageDimensions(32, 16)
+        self.cam.setRotation(45.0)
+        self.cam.setTilt(60.0)
+        self.cam.setZoom(1)
+
+        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(0,0,0))
+        self.overview.setCellImageDimensions(2, 2)
+        self.overview.setRotation(0.0)
+        self.overview.setTilt(0.0)
+        self.overview.setZoom(1)
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
-
-        self.layers['water'] = self.map.getLayers("id", "layer1")[0]
-        self.layers['land'] = self.map.getLayers("id", "layer2")[0]
-        self.layers['units'] = self.map.getLayers("id", "layer3")[0]
 
         #create a new player, which is the human player
         self.human_player = Player('Arthus')
@@ -125,7 +131,6 @@ class Game(EventListenerBase):
         self.ingame_gui = IngameGui()
         self.ingame_gui.status_set('gold','10000')
         
-
         #temporary ship creation, should be done automatically in later releases
         #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
         #ship.name = 'Matilde'
@@ -137,13 +142,8 @@ class Game(EventListenerBase):
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
-        self.cam = self.view.getCamera("main")
         self.set_cam_position(5.0, 5.0, 0.0)
 
-        renderer = fife.FloatingTextRenderer.getInstance(self.cam)
-        renderer = self.cam.getRenderer('QuadTreeRenderer')
-        renderer.setEnabled(True)
-        renderer.clearActiveLayers()
         renderer = self.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
@@ -156,42 +156,40 @@ class Game(EventListenerBase):
         @var size_x: the x-size of the object in grid's
         @var size_y: the y-size of the object in grid's
         """
-        
         obj = dataset.createObject(str(oid), None)
         fife.ObjectVisual.create(obj)
-        
-        pool = self.engine.getImagePool()
         visual = obj.get2dGfxVisual()
+        pool = self.engine.getImagePool()
 
-        #img = pool.addResourceFromFile(str(image_overview))
-        #visual.addStaticImage(0, img)
-        #visual.addStaticImage(90, img)
-        #visual.addStaticImage(180, img)
-        #visual.addStaticImage(270, img)
-        
+        img = pool.addResourceFromFile(str(image_overview))
+        visual.addStaticImage(0, img)
+        visual.addStaticImage(90, img)
+        visual.addStaticImage(180, img)
+        visual.addStaticImage(270, img)
+
         img = pool.addResourceFromFile(str(image_n))
         visual.addStaticImage(45, img)
         img = pool.getImage(img)
         img.setXShift(16 - 16 * size_y)
         img.setYShift(0)
 
-        #img = pool.addResourceFromFile(str(image_e))
-        #visual.addStaticImage(135, img)
-        #img = pool.getImage(img)
-        #img.setXShift(0)
-        #img.setYShift(0)
+        img = pool.addResourceFromFile(str(image_e))
+        visual.addStaticImage(135, img)
+        img = pool.getImage(img)
+        img.setXShift(0)
+        img.setYShift(0)
 
-        #img = pool.addResourceFromFile(str(image_s))
-        #visual.addStaticImage(225, img)
-        #img = pool.getImage(img)
-        #img.setXShift(0)
-        #img.setYShift(0)
+        img = pool.addResourceFromFile(str(image_s))
+        visual.addStaticImage(225, img)
+        img = pool.getImage(img)
+        img.setXShift(0)
+        img.setYShift(0)
 
-        #img = pool.addResourceFromFile(str(image_w))
-        #visual.addStaticImage(315, img)
-        #img = pool.getImage(img)
-        #img.setXShift(0)
-        #img.setYShift(0)
+        img = pool.addResourceFromFile(str(image_w))
+        visual.addStaticImage(315, img)
+        img = pool.getImage(img)
+        img.setXShift(0)
+        img.setYShift(0)
 
         return obj
 
@@ -202,6 +200,7 @@ class Game(EventListenerBase):
         @var id: str with the object id
         @var x, y, z: int coordinates for the new instance
         """
+
         # FIXME: getObjects only looks for id, thus not returning unique objects, if more then one object exists with the same id. (e.g. multiple tents)
         query = self.datasets['object'].getObjects('id', str(id))
         if len(query) != 1:
@@ -236,7 +235,6 @@ class Game(EventListenerBase):
         """
 
         #FIXME: works basically, but will result in problems with unit checking and wrong checks on the lower right side of islands
-
         def check_inst(layer, point, inst):
             instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
             if instances: #Check whether the found instance equals the instance that is to be built.
@@ -273,10 +271,10 @@ class Game(EventListenerBase):
         """Sets the camera position
         @var pos: tuple with coordinates(x.x,x.x,x.x) to set the camera to.
         """
-        layer = self.map.getLayers("id", "layer1")[0]
-        loc = fife.Location(layer)
+        loc = fife.Location(self.layers['water'])
         loc.setExactLayerCoordinates(fife.ExactModelCoordinate(x, y, z))
         self.cam.setLocation(loc)
+        self.overview.setLocation(loc)
 
     def move_camera(self, xdir, ydir):
         """Moves the camera across the screen.
@@ -293,6 +291,7 @@ class Game(EventListenerBase):
             cam_scroll.y += 0.1*ydir*(2/self.cam.getZoom()) * math.cos(-self.cam.getRotation()/180.0 * math.pi)
         loc.setExactLayerCoordinates(cam_scroll)
         self.cam.setLocation(loc)
+        self.overview.setLocation(loc)
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
@@ -305,7 +304,6 @@ class Game(EventListenerBase):
             self.move_camera(0, -3)
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 3)
-        # FIXME: Removed build option, as it does not work.
         elif keystr == 'b' and self.mode is _MODE_COMMAND:
             self.mode = _MODE_BUILD
             inst = self.create_instance(self.layers['units'], "tent", '2', 4, 10)
@@ -325,39 +323,45 @@ class Game(EventListenerBase):
 
     def mousePressed(self, evt):
         clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-        if (evt.getButton() == fife.MouseEvent.LEFT):
-            if self.mode is _MODE_COMMAND: # standard mode
-                instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
-                if instances: #check if clicked point is a unit
-                    selected = instances[0]
-                    print "selected instance: ", selected.get("name"), selected.getFifeId()
-                    if self.selected_instance:
-                            self.selected_instance.object.say('') #remove status of last selected unit
-                    if selected.getFifeId() in self.instance_to_unit:
-                        self.selected_instance = self.instance_to_unit[selected.getFifeId()]
-                        self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
-                    else:
+        if evt.getX() < 200 and evt.getY() < 200:
+            loc = fife.Location(self.layers["water"])
+            loc.setExactLayerCoordinates(self.overview.toMapCoordinates(clickpoint, True))
+            self.cam.setLocation(loc)
+            self.overview.setLocation(loc)
+        else:
+            if (evt.getButton() == fife.MouseEvent.LEFT):
+                if self.mode is _MODE_COMMAND: # standard mode
+                    instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
+                    if instances: #check if clicked point is a unit
+                        selected = instances[0]
+                        print "selected instance: ", selected.get("name"), selected.getFifeId()
+                        if self.selected_instance:
+                                self.selected_instance.object.say('') #remove status of last selected unit
+                        if selected.getFifeId() in self.instance_to_unit:
+                            self.selected_instance = self.instance_to_unit[selected.getFifeId()]
+                            self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
+                        else:
+                            self.selected_instance = None
+                    elif self.selected_instance: # if unit is allready selected, move it
+                        if self.selected_instance.type == 'ship':
+                            target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
+                            target_mapcoord.z = 0
+                            l = fife.Location(self.layers['land'])
+                            l.setMapCoordinates(target_mapcoord)
+                            self.selected_instance.move(l)
+                else:
+                    if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
+                        self.mode = _MODE_COMMAND
                         self.selected_instance = None
-                elif self.selected_instance: # if unit is allready selected, move it
-                    if self.selected_instance.type == 'ship':
-                        target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
-                        target_mapcoord.z = 0
-                        l = fife.Location(self.layers['land'])
-                        l.setMapCoordinates(target_mapcoord)
-                        self.selected_instance.move(l)
-            else:
-                if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
+            elif (evt.getButton() == fife.MouseEvent.RIGHT):
+                if self.mode is _MODE_COMMAND:
+                    if self.selected_instance: #remove unit selection
+                        self.selected_instance.object.say('', 0) # remove health display
+                        self.selected_instance = None
+                else:
                     self.mode = _MODE_COMMAND
+                    self.layers['units'].deleteInstance(self.selected_instance.object)
                     self.selected_instance = None
-        elif (evt.getButton() == fife.MouseEvent.RIGHT):
-            if self.mode is _MODE_COMMAND:
-                if self.selected_instance: #remove unit selection
-                    self.selected_instance.object.say('', 0) # remove health display
-                    self.selected_instance = None
-            else:
-                self.mode = _MODE_COMMAND
-                self.layers['units'].deleteInstance(self.selected_instance.object)
-                self.selected_instance = None
 
     def mouseWheelMovedUp(self, evt):
         zoom = self.cam.getZoom() / 0.875

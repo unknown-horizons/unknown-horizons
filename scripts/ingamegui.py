@@ -26,7 +26,6 @@ class IngameGui():
     def __init__(self):
         self.status = pychan.loadXML('content/gui/status.xml')
         self.status.show()
- 
 
     def status_set(self, label, value):
         """Sets a value on the status bar.
