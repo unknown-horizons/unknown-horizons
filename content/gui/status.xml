@@ -1,0 +1,13 @@
+<HBox position="0,0">
+	<Label text="Gold:" />
+	<Label text="0" name="gold" />
+	<Label text="Food:" />
+	<Label text="0" name="food" />
+	<Label text="Tools:" />
+	<Label text="0" name="tools" />
+	<Label text="Wood:" />
+    <Label text="0" name="wood" />
+	<Label text="Bricks:" />
+    <Label text="0" name="bricks" />
+</HBox>
+

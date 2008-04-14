@@ -20,12 +20,16 @@
 # ###################################################
 import math
 import fife
+import pychan
 from loaders import loadMapFile
 from eventlistenerbase import EventListenerBase
 from units.ship import Ship
 from units.house import House
 from player import Player
 from dbreader import DbReader
+from ingamegui import IngameGui
+import timermanager
+import random
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
@@ -45,6 +49,7 @@ class Game(EventListenerBase):
         self.metamodel = self.model.getMetaModel()
         self.instance_to_unit = {}
         self.cam = None # main camera
+
         self.selected_instance = None
         self.human_player = None
         self.players = {}
@@ -53,8 +58,8 @@ class Game(EventListenerBase):
         self.house = None
 
         #temp var for build testing purposes
-        self.num = 0
-
+        self.num = 0   
+        self.timermanager = timermanager.TimerManager() #managers timers
         self.loadmap(map) # load the map
         self.creategame()
 
@@ -63,6 +68,7 @@ class Game(EventListenerBase):
         self.model.deleteMap(self.map)
         self.metamodel.deleteDatasets()
         self.view.clearCameras()
+        self.timermanager.stop_all()
 
     def loadmap(self, map):
         """Loads a map.
@@ -117,6 +123,10 @@ class Game(EventListenerBase):
         #create a new player, which is the human player
         self.human_player = Player('Arthus')
         self.players[self.human_player.name] = self.human_player
+
+        self.ingame_gui = IngameGui()
+        self.ingame_gui.status_set('gold','10000')
+        
 
         #temporary ship creation, should be done automatically in later releases
         #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
@@ -194,6 +204,7 @@ class Game(EventListenerBase):
         @var id: str with the object id
         @var x, y, z: int coordinates for the new instance
         """
+        # FIXME: getObjects only looks for id, thus not returning unique objects, if more then one object exists with the same id. (e.g. multiple tents)
         query = self.datasets['object'].getObjects('id', str(id))
         if len(query) != 1:
             print(''.join([str(len(query)), ' objects found with id ', str(7), '.']))
@@ -209,7 +220,7 @@ class Game(EventListenerBase):
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
-        unit = UnitClass(self.model, id, layer)
+        unit = UnitClass(self.model, id, layer, self)
         if UnitClass is House:
             res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",id)
             if res.success:
@@ -308,7 +319,8 @@ class Game(EventListenerBase):
         elif keystr == 'r':
             self.cam.setRotation((self.cam.getRotation() + 90) % 360)
         elif keystr == 'q':
-            self.main.quit()
+            self.__del__()
+            self.main.quit()    
         if keystr == 't':
             r = self.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())
@@ -371,4 +383,4 @@ class Game(EventListenerBase):
             l = fife.Location(self.layers['units'])
             l.setMapCoordinates(target_mapcoord)
             self.selected_instance.move(l)
-            print self.build_check(target_mapcoord, self.selected_instance)
+            #print self.build_check(target_mapcoord, self.selected_instance)

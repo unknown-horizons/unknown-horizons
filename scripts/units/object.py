@@ -21,10 +21,11 @@
 import common, fife
 
 class Object(fife.InstanceActionListener):
-    def __init__(self, model, object_id, layer, uniqInMap=True):
+    def __init__(self, model, object_id, layer, game, uniqInMap=True):
         """@var model: fife.Model: engine model beeing used.
         @var unit_id: str containing the objects id.
         @var layer: fife.Layer on which the object is present.
+        @var game: Main Game class instance
         @var uniqInMap: bool if the object is unique.
         """
         fife.InstanceActionListener.__init__(self)
@@ -32,6 +33,7 @@ class Object(fife.InstanceActionListener):
         self.object_id = object_id
         self.layer = layer
         self.type = None
+        self.game = game
         self.health = 100
         if uniqInMap:
             self.object = layer.getInstances('id', object_id)[0]
@@ -42,23 +44,3 @@ class Object(fife.InstanceActionListener):
 
     def start(self):
         raise ProgrammingError('No start defined for Unit.')
-	
-
-def create_anon_units(model, object_name, layer, UnitClass):
-    """Creates all units off a certain class.
-    @var model: fife.Model: engine model beeing used.
-    @var object_name: str containing the opject's name.
-    @var layer: fife.Layer on which the unit is present.
-    @var UnitClass: Class representing the unit.
-    """
-    units = []
-    instances = [a for a in layer.getInstances() if a.getObject().Id() == object_name]
-    i = 0
-    for a in instances:
-        unit_name = '%s:i:%d' % (objectName, i)
-        i += 1
-        unit = UnitClass(model, object_name, layer, False)
-        unit.unit = a
-        a.addActionListener(unit)
-        units.append(unit)
-    return units

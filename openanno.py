@@ -192,6 +192,7 @@ class OpenAnno(basicapplication.ApplicationBase):
                 self.quit()
         else:
             if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+                self.game.__del__()
                 self.game = None
                 self.gui.hide()
                 self.gui = self.mainmenu
