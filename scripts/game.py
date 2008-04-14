@@ -84,10 +84,9 @@ class Game(EventListenerBase):
         self.datasets['object']=self.metamodel.createDataset("object")
 
 
+        self.create_object("blocker", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", self.datasets['ground'])
         for (oid, image_overview, image_n, image_e, image_s, image_w) in self.main.db.query("select gnd.oid, grp.image_overview, gnd.image_n, gnd.image_e, gnd.image_s, gnd.image_w from data.ground gnd left join data.ground_group grp on gnd.`group` = grp.oid").rows:
-            print "before", oid, image_n
             self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['ground'])
-            print "after"
 
         for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in self.main.db.query("select oid, 'content/gfx/dummies/overview_object.png', image_n, image_e, image_s, image_w, size_x, size_y from data.object").rows:
             self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['object'], size_x, size_y)
