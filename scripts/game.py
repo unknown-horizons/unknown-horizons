@@ -199,8 +199,6 @@ class Game(EventListenerBase):
         @var id: str with the object id
         @var x, y, z: int coordinates for the new instance
         """
-
-        # FIXME: getObjects only looks for id, thus not returning unique objects, if more then one object exists with the same id. (e.g. multiple tents)
         query = dataset.getObjects('id', str(id))
         if len(query) != 1:
             print(''.join([str(len(query)), ' objects found with id ', str(7), '.']))
