@@ -21,7 +21,6 @@
 import math
 import fife
 import pychan
-from loaders import loadMapFile
 from eventlistenerbase import EventListenerBase
 from units.ship import Ship
 from units.house import House
@@ -29,7 +28,6 @@ from player import Player
 from dbreader import DbReader
 from ingamegui import IngameGui
 import timermanager
-import random
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
@@ -43,24 +41,52 @@ class Game(EventListenerBase):
         self.main = main
         engine = self.main.engine
         super(Game, self).__init__(engine, regMouse=True, regKeys=True)
+
+        #
+        # Engine specific variables
+        #
         self.engine = engine
         self.eventmanager = engine.getEventManager()
         self.model = engine.getModel()
         self.metamodel = self.model.getMetaModel()
-        self.instance_to_unit = {}
-        self.cam = None # main camera
-        self.uid = 0 # openanno intern uid which is used to create unique numbers for instances.
 
+        #
+        # Map and Instance specific variables
+        #
+        self.island_uid = 0     # Unique id used for islands.
+        self.uid = 0            # Unique id used to create unique ids for instances.
+        self.layers = {}
         self.selected_instance = None
+        self.instance_to_unit = {}
+
+        #
+        # Player related variables
+        #
         self.human_player = None
         self.players = {}
-        self.mode = _MODE_COMMAND
-        self.layers = {}
-        self.house = None
 
-        #temp var for build testing purposes
-        self.timermanager = timermanager.TimerManager() #managers timers
-        self.loadmap(map) # load the map
+        #
+        # Camera related variables
+        #
+        self.cam = None         # Main camera
+        self.overview = None    # Overview camera
+        self.view = None
+
+        #
+        # Gui related variables
+        #
+        self.ingame_gui = None
+
+        #
+        # Other variables
+        #
+        self.mode = _MODE_COMMAND
+        self.timermanager = timermanager.TimerManager() # Manages timers
+        
+        #
+        # Beginn map creation
+        #
+        self.loadmap(map)
         self.creategame()
 
     def __del__(self):
