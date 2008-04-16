@@ -159,17 +159,19 @@ class Game(EventListenerBase):
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 13, 0), ''))
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 14, 0), ''))
 
-        self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate((max_x - min_x) / 2.0, (max_y - min_y) / 2.0, 0.0))
+        print "center:", min_x + ((max_x - min_x) / 2.0), min_y + ((max_y - min_y) / 2.0)
+
+        self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(min_x + ((max_x - min_x) / 2.0), min_y + ((max_y - min_y) / 2.0), 0.0))
         self.cam.setCellImageDimensions(32, 16)
         self.cam.setRotation(45.0)
         self.cam.setTilt(-60.0)
         self.cam.setZoom(1)
 
-        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((max_x - min_x) / 2.0, (max_y - min_y) / 2.0, 0.0))
+        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(max_x - ((max_x - min_x) / 2.0), max_y - ((max_y - min_y) / 2.0), 0.0))
         self.overview.setCellImageDimensions(2, 2)
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
-        self.overview.setZoom(4)#100.0 / (1 + min(max_x - min_x, max_y - min_y)))
+        self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
@@ -192,7 +194,6 @@ class Game(EventListenerBase):
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
-        #self.set_cam_position(5.0, 5.0, 0.0)
 
         renderer = self.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
