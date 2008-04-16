@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class Island(self):
+class Island():
     """The Island class represents an Island by keeping a list of all instances on the map, 
     that belong to the island. The island variable is also set on every instance that belongs
     to an island, making it easy to determine to which island the instance belongs, when

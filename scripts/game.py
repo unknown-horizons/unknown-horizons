@@ -27,6 +27,7 @@ from units.house import House
 from player import Player
 from dbreader import DbReader
 from ingamegui import IngameGui
+from island import Island
 import timermanager
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
@@ -54,6 +55,7 @@ class Game(EventListenerBase):
         # Map and Instance specific variables
         #
         self.island_uid = 0     # Unique id used for islands.
+        self.islands = {}
         self.uid = 0            # Unique id used to create unique ids for instances.
         self.layers = {}
         self.selected_instance = None
@@ -88,6 +90,7 @@ class Game(EventListenerBase):
         #
         self.loadmap(map)
         self.creategame()
+        self.get_radius(self.layers['land'],10,10,10)
 
     def __del__(self):
         super(Game, self).__del__()
@@ -132,12 +135,16 @@ class Game(EventListenerBase):
         min_x, min_y, max_x, max_y = None, None, None, None
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)))
+            self.islands[self.island_uid]=Island(self.island_uid)
+            cur_isl = self.islands[self.island_uid]
             for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
-                self.create_instance(self.layers['land'], self.datasets['ground'], str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
+                inst = self.create_instance(self.layers['land'], self.datasets['ground'], str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
+                cur_isl.add_tile(inst)
                 min_x = int(x) + int(offset_x) if min_x is None or int(x) + int(offset_x) < min_x else min_x
                 max_x = int(x) + int(offset_x) if max_x is None or int(x) + int(offset_x) > min_x else min_x
                 max_y = int(y) + int(offset_y) if max_y is None or int(y) + int(offset_y) > min_y else min_y
                 min_y = int(y) + int(offset_y) if min_y is None or int(y) + int(offset_y) < min_y else min_y
+            self.island_uid += 1
             self.main.db.query("detach island")
 
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "2")[0], fife.ExactModelCoordinate(11, 13, 0), ''))
@@ -172,6 +179,7 @@ class Game(EventListenerBase):
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
         self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
+       
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
@@ -316,6 +324,39 @@ class Game(EventListenerBase):
         print 'Finished check'
         return check
 
+    def get_radius(self, layer, radius, startx, starty):
+        """Returns a list of instances in the radius on the specified layer
+        @var layer: fife.Layer the instances are present on.
+        @var raduis: int radius that is to be used
+        @var startx,starty: int startpoint
+        @return: list of fife.Instances in the radius arround (startx,starty)"""
+        list = []
+        center = fife.Location(layer)
+        center.setMapCoordinates(fife.ExactModelCoordinate(float(startx),float(starty)))
+        generator = (inst for inst in layer.getInstances() if math.fabs(int(inst.getLocation().getMapDistanceTo(center))) <= radius)
+        renderer = fife.InstanceRenderer.getInstance(self.cam)
+        renderer.removeAllOutlines()
+        for item in generator:
+            list.append(item)
+            # This is for testing purposes only, should later be done by an own funktion.
+            renderer.addOutlined(item, 0, 0, 0, 2)
+            print item.getLocation().getLayerCoordinates().x, item.getLocation().getLayerCoordinates().y
+        return list
+
+    def get_instance(self, layer, x, y):
+        """Returns the first instance found on the layer at gridpoint (x,y)
+        @var layer: fife.Layer to look on
+        @var x,y: float grid coordinates
+        @return: fife.Instance if an Instance is found, else returns None"""
+        instances = layer.getInstances()
+        inst = (inst for inst in instances if int(inst.getLocation().getExactLayerCoordinatesRef().x) is x and int(inst.getLocation().getExactLayerCoordinatesRef().y is y)).next()
+        print inst
+        if inst: 
+            return inst
+        else:
+            return None
+
+
     def set_cam_position(self, x, y, z):
         """Sets the camera position
         @var pos: tuple with coordinates(x.x,x.x,x.x) to set the camera to.
@@ -380,7 +421,7 @@ class Game(EventListenerBase):
                     instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
                     if instances: #check if clicked point is a unit
                         selected = instances[0]
-                        print "selected instance: ", selected.get("name"), selected.getFifeId()
+                        print "selected instance: ", selected.getFifeId(), self.cam.toMapCoordinates(clickpoint, True).x,  self.cam.toMapCoordinates(clickpoint, True).y, selected.getLocation().getMapCoordinates().x
                         if self.selected_instance:
                                 self.selected_instance.object.say('') #remove status of last selected unit
                         if selected.getFifeId() in self.instance_to_unit:
