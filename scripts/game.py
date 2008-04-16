@@ -167,7 +167,7 @@ class Game(EventListenerBase):
         self.cam.setTilt(-60.0)
         self.cam.setZoom(1)
 
-        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(max_x - ((max_x - min_x) / 2.0), max_y - ((max_y - min_y) / 2.0), 0.0))
+        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(min_x + ((max_x - min_x) / 2.0), min_y + ((max_y - min_y) / 2.0), 0.0))
         self.overview.setCellImageDimensions(2, 2)
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
@@ -323,7 +323,6 @@ class Game(EventListenerBase):
         loc = fife.Location(self.layers['water'])
         loc.setExactLayerCoordinates(fife.ExactModelCoordinate(x, y, z))
         self.cam.setLocation(loc)
-        self.overview.setLocation(loc)
 
     def move_camera(self, xdir, ydir):
         """Moves the camera across the screen.
@@ -340,7 +339,6 @@ class Game(EventListenerBase):
             cam_scroll.y += 0.1*ydir*(2/self.cam.getZoom()) * math.cos(-self.cam.getRotation()/180.0 * math.pi)
         loc.setExactLayerCoordinates(cam_scroll)
         self.cam.setLocation(loc)
-        self.overview.setLocation(loc)
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
@@ -376,7 +374,6 @@ class Game(EventListenerBase):
             loc = fife.Location(self.layers["water"])
             loc.setExactLayerCoordinates(self.overview.toMapCoordinates(clickpoint, True))
             self.cam.setLocation(loc)
-            self.overview.setLocation(loc)
         else:
             if (evt.getButton() == fife.MouseEvent.LEFT):
                 if self.mode is _MODE_COMMAND: # standard mode
