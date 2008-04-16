@@ -1,0 +1,6 @@
+<Container size="200,200" border_size="0">
+    <Container opaque="1" base_color="40, 40, 40" position="0,0" size="200,10"></Container>
+    <Container opaque="1" base_color="40, 40, 40" position="0,10" size="10,180"></Container>
+    <Container opaque="1" base_color="40, 40, 40" position="190,10" size="10,180"></Container>
+    <Container opaque="1" base_color="40, 40, 40" position="0,190" size="200,10"></Container>
+</Container>
