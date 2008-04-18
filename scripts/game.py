@@ -421,7 +421,7 @@ class Game(EventListenerBase):
                     instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
                     if instances: #check if clicked point is a unit
                         selected = instances[0]
-                        print "selected instance: ", selected.getFifeId(), self.cam.toMapCoordinates(clickpoint, True).x,  self.cam.toMapCoordinates(clickpoint, True).y, selected.getLocation().getMapCoordinates().x
+                        print "selected instance: ",  self.cam.toMapCoordinates(clickpoint, True).x,  self.cam.toMapCoordinates(clickpoint, True).y, selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
                         if self.selected_instance:
                                 self.selected_instance.object.say('') #remove status of last selected unit
                         if selected.getFifeId() in self.instance_to_unit:
