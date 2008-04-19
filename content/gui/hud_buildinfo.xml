@@ -1,0 +1,10 @@
+<Container size="200,200" border_size="0">
+  <Label name="buildingNameLabel" text="Building name" baseColor="40,40,40" position="0,0" />
+  
+  <HBox position="5,20">
+    <Icon image="content/gfx/dummies/transparent.png" size="190,190" />
+    <ScrollArea name="buildingDescription" vertical_scrollbar="1" base_color="40, 40, 40">
+    <Spacer />
+    <!-- Building Infos -->
+  </HBox>
+</Container>

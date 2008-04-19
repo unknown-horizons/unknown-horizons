@@ -1,0 +1,15 @@
+<Container size="200,200" border_size="0">
+  <HBox position="5,5" size="190,31">
+    <Button name="helpButton" text="F1" base_color="40, 40, 40" />
+    <Button name="escButton" text="Esc" base_color="40, 40, 40" />
+  </HBox>
+  
+  <Button name="zoomOutButton" text="-" base_color="40, 40, 40" size="32,32" position="5,36" />
+  <Button name="zoomInButton" text="+" base_color="40, 40, 40" size="32,32" position="110,36" />
+  <Button name="rotateCCWButton" text="<" base_color="40, 40, 40" size="32,32" position="5,163" />
+  <Button name="rotateCWButton" text=">" base_color="40, 40, 40" size="32,32" position="110,163" />
+  
+  <Button name="diplomacyMenuButton" text="Dip." base_color="40, 40, 40" size="48,48" position="147,41" />
+  <Button name="inventoryMenuButton" text="Inv." base_color="40, 40, 40" size="48,48" position="147,94" />
+  <Button name="buildMenuButton" text="Bui." base_color="40, 40, 40" size="48,48" position="147,147" />
+</Container>

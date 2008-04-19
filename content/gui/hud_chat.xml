@@ -1,0 +1,5 @@
+<Container size="200,200" border_size="0">
+  <Label text="Chat" baseColor="40,40,40" position="0,0" />
+  
+  <ScrollArea name="chatField" vertical_scrollbar="1" base_color="40, 40, 40">
+</Container>
