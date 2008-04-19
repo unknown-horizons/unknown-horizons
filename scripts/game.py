@@ -343,6 +343,16 @@ class Game(EventListenerBase):
             print item.getLocation().getLayerCoordinates().x, item.getLocation().getLayerCoordinates().y
         return list
 
+    def in_radius(self, location_a, location_b, radius):
+        """Checks whether location_b is an radius of location_a
+        @var location_a, location_b: fife.Location
+        @var radius: int radius
+        """
+        if int(location_a.getMapDistanceTo(location_b)) <= radius:
+            return True
+        else:
+            return False
+
     def get_instance(self, layer, x, y):
         """Returns the first instance found on the layer at gridpoint (x,y)
         @var layer: fife.Layer to look on
