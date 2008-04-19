@@ -51,11 +51,13 @@ class Ship(Object):
 	
     def idle(self):
         self.state = _STATE_IDLE
-        self.object.act('move', self.object.getFacingLocation())
+        #self.object.act('move', self.object.getFacingLocation())
 		
     def move(self, location):
         """Moves the ship to a certain location
         @var location: fife.Location to which the unit should move"""
         self.state = _STATE_MOVE
-        self.object.move('move', location, 2)
+        #self.object.move('move', location, 2)
+        self.object.setLocation(location)
+        self.game.get_radius(self.game.layers['land'], 4, location.getMapCoordinates().x, location.getMapCoordinates().y)
 

@@ -90,7 +90,6 @@ class Game(EventListenerBase):
         #
         self.loadmap(map)
         self.creategame()
-        self.get_radius(self.layers['land'],10,10,10)
 
     def __del__(self):
         super(Game, self).__del__()
@@ -193,10 +192,10 @@ class Game(EventListenerBase):
         
         #temporary ship creation, should be done automatically in later releases
         self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['object'], 1, 1)
+        tempid = self.uid
         inst = self.create_instance(self.layers['land'], self.datasets['object'], '99', 1, 1)
-        
-        #ship = self.create_unit(self.layers['land'], '99', Ship)
-        #ship.name = 'Matilde'
+        ship = self.create_unit(self.layers['land'], str(tempid), Ship)
+        ship.name = 'Matilde'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
         #ship = self.create_unit(self.layers['land'], 99, Ship)
@@ -277,14 +276,16 @@ class Game(EventListenerBase):
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
+        print 'test3'
         unit = UnitClass(self.model, str(id), layer, self)
         if UnitClass is House:
             res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",id)
             if res.success:
                 unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",id).rows[0]
-                print unit.size_x, unit.size_y
         self.instance_to_unit[unit.object.getFifeId()] = unit
+        print 'test'
         unit.start()
+        print 'test2'
         return unit
 
     def build_check(self, point, inst):
@@ -425,7 +426,7 @@ class Game(EventListenerBase):
         clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
         if evt.getX() < 200 and evt.getY() < 200:
             loc = fife.Location(self.layers["water"])
-            loc.setExactLayerCoordinates(self.overview.toMapCoordinates(clickpoint, True))
+            loc.setExactLayerCoordinates(self.overview.toMapCoordinates(clickpoint, False))
             self.cam.setLocation(loc)
         else:
             if (evt.getButton() == fife.MouseEvent.LEFT):
@@ -433,7 +434,7 @@ class Game(EventListenerBase):
                     instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
                     if instances: #check if clicked point is a unit
                         selected = instances[0]
-                        print "selected instance: ",  self.cam.toMapCoordinates(clickpoint, True).x,  self.cam.toMapCoordinates(clickpoint, True).y, selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
+                        print "selected instance: ",  self.cam.toMapCoordinates(clickpoint, False).x,  self.cam.toMapCoordinates(clickpoint, False).y, selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
                         if self.selected_instance:
                                 self.selected_instance.object.say('') #remove status of last selected unit
                         if selected.getFifeId() in self.instance_to_unit:
@@ -441,22 +442,22 @@ class Game(EventListenerBase):
                             self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
                         else:
                             self.selected_instance = None
-                    elif self.selected_instance: # if unit is allready selected, move it
-                        if self.selected_instance.type == 'ship':
-                            target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
-                            target_mapcoord.z = 0
-                            l = fife.Location(self.layers['land'])
-                            l.setMapCoordinates(target_mapcoord)
-                            self.selected_instance.move(l)
+                    elif self.selected_instance: # if unit is allready selected, move instance
+                        self.selected_instance.object.say('', 0) # remove health display
+                        self.selected_instance = None
                 else:
                     if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
                         self.mode = _MODE_COMMAND
                         self.selected_instance = None
             elif (evt.getButton() == fife.MouseEvent.RIGHT):
                 if self.mode is _MODE_COMMAND:
-                    if self.selected_instance: #remove unit selection
-                        self.selected_instance.object.say('', 0) # remove health display
-                        self.selected_instance = None
+                    if self.selected_instance: #remove unit selection   
+                        if self.selected_instance.type == 'ship':
+                            target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
+                            target_mapcoord.z = 0
+                            l = fife.Location(self.layers['land'])
+                            l.setMapCoordinates(target_mapcoord)
+                            self.selected_instance.move(l)
                 else:
                     self.mode = _MODE_COMMAND
                     self.layers['units'].deleteInstance(self.selected_instance.object)
