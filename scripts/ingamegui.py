@@ -30,6 +30,8 @@ class IngameGui():
         #self.minimap.show()
         self.main_gui = pychan.loadXML('content/gui/hud_main.xml')
         self.main_gui.show()
+        self.build = pychan.loadXML('content/gui/hud_build.xml')
+        self.build.show()
 
     def status_set(self, label, value):
         """Sets a value on the status bar.

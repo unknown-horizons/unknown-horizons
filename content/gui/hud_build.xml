@@ -1,5 +1,5 @@
-<Container size="200,200" border_size="0">
-  <VBox position="0,0" size="32,200">
+<Container size="200,200" position="300, 0" border_size="0">
+  <VBox position="0,0" size="50,200">
     <Button name="servicesTab" text="ser." base_color="40, 40, 40" />
     <Button name="residentsTab" text="res." base_color="40, 40, 40" />
     <Button name="companiesTab" text="com." base_color="40, 40, 40" />
@@ -7,7 +7,7 @@
     <Button name="streetsTab" text="str." base_color="40, 40, 40" />
   </VBox>
   
-  <ScrollArea position="32,0" size="168,200" horizontal_scrollbar="1" base_color="40, 40, 40">
+  <ScrollArea position="50,0" size="168,200" horizontal_scrollbar="1" base_color="40, 40, 40">
     <!-- Tabelle zum Einordnen der Gebäude: Nebeneinander die Gebäude, darunter 6 Zeilen für die einzelnen Klassen -->
   </ScrollArea>
 </Container>
