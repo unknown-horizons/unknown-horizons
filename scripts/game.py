@@ -174,7 +174,7 @@ class Game(EventListenerBase):
         self.cam.setTilt(-60.0)
         self.cam.setZoom(1)
 
-        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(min_x + ((max_x - min_x) / 2.0), min_y + ((max_y - min_y) / 2.0), 0.0))
+        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(max_x + 0*(min_x + ((max_x - min_x) / 2.0) + 5), min_y + ((max_y - min_y) / 2.0), 0.0))
         self.overview.setCellImageDimensions(2, 2)
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
@@ -380,28 +380,27 @@ class Game(EventListenerBase):
         @var xdir: int representing x direction scroll.
         @var ydir: int representing y direction scroll.
         """
-        loc = self.cam.getLocation()
-        cam_scroll = loc.getExactLayerCoordinates()
+        loc = self.cam.getLocationRef()
+        cam_scroll = loc.getExactLayerCoordinatesRef()
         if xdir != 0:
-            cam_scroll.x += 0.1*xdir*(2/self.cam.getZoom()) * math.cos(self.cam.getRotation()/180.0 * math.pi)
-            cam_scroll.y += 0.1*xdir*(2/self.cam.getZoom()) * math.sin(self.cam.getRotation()/180.0 * math.pi)
+            cam_scroll.x += xdir * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom()
+            cam_scroll.y += xdir * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom()
         if ydir != 0:
-            cam_scroll.x += 0.1*ydir*(2/self.cam.getZoom()) * math.sin(-self.cam.getRotation()/180.0 * math.pi)
-            cam_scroll.y += 0.1*ydir*(2/self.cam.getZoom()) * math.cos(-self.cam.getRotation()/180.0 * math.pi)
-        loc.setExactLayerCoordinates(cam_scroll)
+            cam_scroll.x += ydir * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
+            cam_scroll.y += ydir * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
         self.cam.setLocation(loc)
 
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
         keystr = evt.getKey().getAsString().lower()
         if keyval == fife.Key.LEFT:
-            self.move_camera(-3, 0)
+            self.move_camera(-1, 0)
         elif keyval == fife.Key.RIGHT:
-            self.move_camera(3, 0)
+            self.move_camera(1, 0)
         elif keyval == fife.Key.UP:
-            self.move_camera(0, -3)
+            self.move_camera(0, -1)
         elif keyval == fife.Key.DOWN:
-            self.move_camera(0, 3)
+            self.move_camera(0, 1)
         elif keystr == 'b' and self.mode is _MODE_COMMAND:
             self.mode = _MODE_BUILD
             curunique = self.uid
