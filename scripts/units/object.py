@@ -22,7 +22,8 @@ import common, fife
 
 class Object(fife.InstanceActionListener):
     def __init__(self, model, object_id, layer, game, uniqInMap=True):
-        """@var model: fife.Model: engine model beeing used.
+        """
+        @var model: fife.Model: engine model beeing used.
         @var unit_id: str containing the objects id.
         @var layer: fife.Layer on which the object is present.
         @var game: Main Game class instance

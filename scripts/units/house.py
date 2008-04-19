@@ -26,7 +26,8 @@ class House(Object):
     """Class representing a house"""
 
     def __init__(self, model, object_name, layer, game, uniqInMap=True):
-        """@var model: fife.Model: engine model beeing used.
+        """
+        @var model: fife.Model: engine model beeing used.
         @var object_name: str containing the objects name used in the map.
         @var layer: fife.Layer on which the object is present.
         @var game: Game instance of the main.
@@ -40,7 +41,6 @@ class House(Object):
         self.res = 0
         #Uncomment here to test the new timemanger. Warning: Building more then one tent, will couse the game not to exit correctly.
         self.game.timermanager.add_new_object(10, self.produce, -1)
-
 
     def onInstanceActionFinished(self, instance, action):
         self.idle()
@@ -64,6 +64,3 @@ class House(Object):
             self.object.say('+1', 1500)
         else:
             self.object.say('Full', 1500)
-        
-
-

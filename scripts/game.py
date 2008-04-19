@@ -192,11 +192,14 @@ class Game(EventListenerBase):
         self.ingame_gui.status_set('gold','10000')
         
         #temporary ship creation, should be done automatically in later releases
-        #ship = self.create_unit(self.layers['land'], 'SHIP', 'mainship_ani' , Ship)
+        self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['object'], 1, 1)
+        inst = self.create_instance(self.layers['land'], self.datasets['object'], '99', 1, 1)
+        
+        #ship = self.create_unit(self.layers['land'], '99', Ship)
         #ship.name = 'Matilde'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-        #ship = self.create_unit(self.layers['land'], 'SHIP2', 'mainship_ani', Ship)
+        #ship = self.create_unit(self.layers['land'], 99, Ship)
         #ship.name = 'Columbus'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
@@ -327,7 +330,7 @@ class Game(EventListenerBase):
     def get_radius(self, layer, radius, startx, starty):
         """Returns a list of instances in the radius on the specified layer
         @var layer: fife.Layer the instances are present on.
-        @var raduis: int radius that is to be used
+        @var radius: int radius that is to be used
         @var startx,starty: int startpoint
         @return: list of fife.Instances in the radius arround (startx,starty)"""
         list = []
@@ -414,7 +417,7 @@ class Game(EventListenerBase):
         elif keystr == 'q':
             self.__del__()
             self.main.quit()    
-        if keystr == 't':
+        elif keystr == 't':
             r = self.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())
 
