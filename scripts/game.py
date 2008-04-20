@@ -84,7 +84,12 @@ class Game(EventListenerBase):
         #
         self.mode = _MODE_COMMAND
         self.timermanager = timermanager.TimerManager() # Manages timers
-        
+
+        #
+        # _MODE_BUILD variables
+        #
+        self._build_tiles = None    # Stores the area a building can be built on  
+
         #
         # Beginn map creation
         #
@@ -194,13 +199,10 @@ class Game(EventListenerBase):
         self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['object'], 1, 1)
         tempid = self.uid
         inst = self.create_instance(self.layers['land'], self.datasets['object'], '99', 1, 1)
-        ship = self.create_unit(self.layers['land'], str(tempid), Ship)
+        ship = self.create_unit(self.layers['land'], str(tempid), 99, Ship)
         ship.name = 'Matilde'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-        #ship = self.create_unit(self.layers['land'], 99, Ship)
-        #ship.name = 'Columbus'
-        #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
         self.view = self.engine.getView()
         self.view.resetRenderers()
@@ -269,30 +271,33 @@ class Game(EventListenerBase):
         fife.InstanceVisual.create(inst)
         return inst
 
-    def create_unit(self, layer, id, UnitClass):
+    def create_unit(self, layer, id, object_id, UnitClass):
         """Creates a new unit an the specified layer
         @var layer: fife.Layer the unit is to be created on
         @var id: str containing the object's id
+        @var object_id: int containing the objects id in the database
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
         print 'test3'
         unit = UnitClass(self.model, str(id), layer, self)
         if UnitClass is House:
-            res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",id)
+            res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",str(object_id))
             if res.success:
-                unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",id).rows[0]
+                print 'foo'
+                unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",str(object_id)).rows[0]
+                print unit.size_x, unit.size_y
         self.instance_to_unit[unit.object.getFifeId()] = unit
-        print 'test'
         unit.start()
-        print 'test2'
         return unit
 
-    def build_check(self, point, inst):
+    def build_check(self, inst):
         """
         Checkes whether or not a building can be built at the current mouse position.
-        @var point: fife.MapPoint where the cursor is currently at.
         @var inst: Object instance that is to be built (must have size_x and size_y set).
+        @var tile_list: list containing fife.Instances, if specified it is also checked that the instance can
+                        only be built on the fife.Instances in the list.
+        @return: returns bool true if check successfull and false it. 
         """
 
         #FIXME: works basically, but will result in problems with unit checking and wrong checks on the lower right side of islands
@@ -302,14 +307,31 @@ class Game(EventListenerBase):
                 if inst.object.getFifeId() == instances[0].getFifeId():
                     instances = instances[1:len(instances)]
             if instances and len(instances) > 0:
-                return True
+                if self._build_tiles is not None:
+                    print "test1"
+                    print instances[0]
+                    renderer = fife.InstanceRenderer.getInstance(self.cam)
+                    renderer.removeOutlined(instances[0])
+                    print self._build_tiles
+                    instances[0].say("+")
+                    if instances[0] in self._build_tiles:
+                        print "test2"
+                        return True
+                    else:
+                        print "test3"
+                        return False
+                else:
+                    print "test4"
+                    return True
             else:
+                print "test5"
                 return False
-        point.x = float(point.x)+0.5
-        starty = float(point.y)-0.5
-        checkpoint = point
+        print inst.size_x, inst.size_y
+        checkpoint = inst.object.getLocation().getMapCoordinates()
+        starty = float(checkpoint.y)-0.5
+        checkpoint.x = float(checkpoint.x)+0.5
         check = True
-        print 'Start check x: ', point.x, ' y: ', starty
+        print 'Start check x: ', checkpoint.x, ' y: ', starty
         for x in xrange(inst.size_x):
             checkpoint.y = starty
             for y in xrange(inst.size_y):
@@ -328,16 +350,14 @@ class Game(EventListenerBase):
         print 'Finished check'
         return check
 
-    def get_radius(self, layer, radius, startx, starty):
+    def get_tiles_in_radius(self, layer, radius, start_loc):
         """Returns a list of instances in the radius on the specified layer.
         @var layer: fife.Layer the instances are present on.
         @var radius: int radius that is to be used.
-        @var startx,starty: int startpoint
+        @var start_loc: fife.Location startpoint.
         @return: list of fife.Instances in the radius arround (startx,starty)."""
         list = []
-        center = fife.Location(layer)
-        center.setMapCoordinates(fife.ExactModelCoordinate(float(startx),float(starty)))
-        generator = (inst for inst in layer.getInstances() if math.fabs(int(inst.getLocation().getMapDistanceTo(center))) <= radius)
+        generator = (inst for inst in layer.getInstances() if math.fabs(int(inst.getLocation().getMapDistanceTo(start_loc))) <= radius)
         renderer = fife.InstanceRenderer.getInstance(self.cam)
         renderer.removeAllOutlines()
         for item in generator:
@@ -357,17 +377,19 @@ class Game(EventListenerBase):
         else:
             return False
 
-    def build_object(self, id, layer, Object, x, y):
+    def build_object(self, id, layer, Object, x, y, tile_list):
         """Creates an instance and object for the id and sets the correct mode.
         @var id: str with the objects unique id.
         @var layer: fife.Layer the object is to be built on.
         @var Object: unit.Object class representing the object.
         @var x,y: int coordinates for initial placement.
+        @var tile_list: list containing fife.Instances on which the object can be built.
         """
         self.mode = _MODE_BUILD
+        self._build_tiles = tile_list
         curunique = self.uid
         inst = self.create_instance(layer , self.datasets['object'], id, x, y)
-        self.selected_instance = self.create_unit(layer, curunique, Object)
+        self.selected_instance = self.create_unit(layer, curunique, id, Object)
 
 
     def get_instance(self, layer, x, y):
@@ -419,7 +441,7 @@ class Game(EventListenerBase):
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 1)
         elif keystr == 'b' and self.mode is _MODE_COMMAND:
-            self.build_object('2', self.layers['units'], House, 0, 0)
+            self.build_object('2', self.layers['units'], House, 0, 0, None)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
@@ -462,9 +484,10 @@ class Game(EventListenerBase):
                         self.selected_instance.object.say('', 0) # remove health display
                         self.selected_instance = None
                 else:
-                    if self.build_check(self.cam.toMapCoordinates(clickpoint), self.selected_instance):
+                    if self.build_check(self.selected_instance):
                         self.mode = _MODE_COMMAND
                         self.selected_instance = None
+                        self._build_tiles = None
             elif (evt.getButton() == fife.MouseEvent.RIGHT):
                 if self.mode is _MODE_COMMAND:
                     if self.selected_instance: # move unit   
@@ -477,7 +500,9 @@ class Game(EventListenerBase):
                 else:
                     self.mode = _MODE_COMMAND
                     self.layers['units'].deleteInstance(self.selected_instance.object)
+                    del self.instance_to_unit[self.selected_instance.object.getFifeId()]
                     self.selected_instance = None
+                    self._build_tiles = None
 
     def mouseWheelMovedUp(self, evt):
         zoom = self.cam.getZoom() / 0.875
@@ -501,4 +526,4 @@ class Game(EventListenerBase):
             l = fife.Location(self.layers['units'])
             l.setMapCoordinates(target_mapcoord)
             self.selected_instance.move(l)
-            #print self.build_check(target_mapcoord, self.selected_instance)
+            #print self.build_check(self.selected_instance)

@@ -59,5 +59,4 @@ class Ship(Object):
         self.state = _STATE_MOVE
         #self.object.move('move', location, 2)
         self.object.setLocation(location)
-        self.game.get_radius(self.game.layers['land'], 4, location.getMapCoordinates().x, location.getMapCoordinates().y)
 
