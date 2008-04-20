@@ -1,0 +1,7 @@
+<Container size="384,64" position="640,0" border_size="0">
+  <Icon name="fertilityLogo2" position="336,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
+  <Label name="fertility1" position="336,48" text="?" />
+  
+  <Icon name="fertilityLogo2" position="272,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
+  <Label name="fertility2" position="272,48" text="?" />
+</Container>

@@ -1,0 +1,13 @@
+<Container size="384,64" position="0,0" border_size="0">
+  <Icon position="0,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
+  <Label name="resBoles" position="0,48" text="?" />
+  
+  <Icon position="64,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
+  <Label name="resBoles" position="64,48" text="?" />
+  
+  <Icon position="128,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
+  <Label name="resTextiles" position="128,48" text="?" />
+  
+  <Icon position="192,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
+  <Label name="resTools" position="192,48" text="?" />
+</Container>
