@@ -73,6 +73,7 @@ class Game(EventListenerBase):
         self.cam = None         # Main camera
         self.overview = None    # Overview camera
         self.view = None
+        self.outline_renderer = None
 
         #
         # Gui related variables
@@ -210,6 +211,8 @@ class Game(EventListenerBase):
         renderer = self.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
+        
+        self.outline_renderer = fife.InstanceRenderer.getInstance(self.cam)
 
     def create_object(self, oid, image_overview, image_n, image_e, image_s, image_w, dataset, size_x = 1, size_y = 1):
         """Creates a new dataset object, that can later be used on the map
@@ -308,23 +311,16 @@ class Game(EventListenerBase):
                     instances = instances[1:len(instances)]
             if instances and len(instances) > 0:
                 if self._build_tiles is not None:
-                    print "test1"
-                    print instances[0]
-                    renderer = fife.InstanceRenderer.getInstance(self.cam)
-                    renderer.removeOutlined(instances[0])
-                    print self._build_tiles
-                    instances[0].say("+")
-                    if instances[0] in self._build_tiles:
-                        print "test2"
-                        return True
-                    else:
-                        print "test3"
-                        return False
+                    print id(instances[0].getLocation())
+                    for inst in self._build_tiles:
+                        if inst.getLocation() == instances[0].getLocation():
+                            return True
+                        else:
+                            pass
+                    return False
                 else:
-                    print "test4"
                     return True
             else:
-                print "test5"
                 return False
         print inst.size_x, inst.size_y
         checkpoint = inst.object.getLocation().getMapCoordinates()
@@ -358,12 +354,11 @@ class Game(EventListenerBase):
         @return: list of fife.Instances in the radius arround (startx,starty)."""
         list = []
         generator = (inst for inst in layer.getInstances() if math.fabs(int(inst.getLocation().getMapDistanceTo(start_loc))) <= radius)
-        renderer = fife.InstanceRenderer.getInstance(self.cam)
-        renderer.removeAllOutlines()
+        self.outline_renderer.removeAllOutlines()
         for item in generator:
             list.append(item)
             # This is for testing purposes only, should later be done by an own funktion.
-            renderer.addOutlined(item, 0, 0, 0, 2)
+            self.outline_renderer.addOutlined(item, 0, 0, 0, 2)
             print item.getLocation().getLayerCoordinates().x, item.getLocation().getLayerCoordinates().y
         return list
 
@@ -440,8 +435,6 @@ class Game(EventListenerBase):
             self.move_camera(0, -1)
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 1)
-        elif keystr == 'b' and self.mode is _MODE_COMMAND:
-            self.build_object('2', self.layers['units'], House, 0, 0, None)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
