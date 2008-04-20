@@ -32,6 +32,16 @@ class IngameGui():
         self.main_gui.show()
         self.build = pychan.loadXML('content/gui/hud_build.xml')
         self.build.show()
+        self.buildinfo = pychan.loadXML('content/gui/hud_buildinfo.xml')
+        self.buildinfo.show()
+        self.chat = pychan.loadXML('content/gui/hud_chat.xml')
+        self.chat.show()
+        self.cityinfo = pychan.loadXML('content/gui/hud_cityinfo.xml')
+        self.cityinfo.show()
+        self.res = pychan.loadXML('content/gui/hud_res.xml')
+        self.res.show()
+        self.fertility = pychan.loadXML('content/gui/hud_fertility.xml')
+        self.fertility.show()
         self.ship = pychan.loadXML('content/gui/hud_ship.xml')
         self.ship.mapEvents({
             'build' : self._ship_build
