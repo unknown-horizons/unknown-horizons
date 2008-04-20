@@ -20,18 +20,23 @@
 # ###################################################
 
 import pychan
+from units.house import House
 
 class IngameGui():
     """Class handling all the ingame gui events."""
-    def __init__(self):
+    def __init__(self, game):
+        self.game = game
         self.status = pychan.loadXML('content/gui/status.xml')
         self.status.show()
-        #self.minimap = pychan.loadXML('content/gui/minimap.xml')
-        #self.minimap.show()
         self.main_gui = pychan.loadXML('content/gui/hud_main.xml')
         self.main_gui.show()
         self.build = pychan.loadXML('content/gui/hud_build.xml')
         self.build.show()
+        self.ship = pychan.loadXML('content/gui/hud_ship.xml')
+        self.ship.mapEvents({
+            'build' : self._ship_build
+        })
+
 
     def status_set(self, label, value):
         """Sets a value on the status bar.
@@ -42,3 +47,9 @@ class IngameGui():
         foundlabel._setText(value)
         foundlabel.resizeToContent()
         self.status.resizeToContent()
+
+    def _ship_build(self):
+        """Calls the Games build_object class."""
+        self.ship.hide()
+        self.game.build_object('2', self.game.layers['units'], House, 0, 0)
+

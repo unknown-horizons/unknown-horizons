@@ -187,7 +187,7 @@ class Game(EventListenerBase):
         self.human_player = Player('Arthus')
         self.players[self.human_player.name] = self.human_player
 
-        self.ingame_gui = IngameGui()
+        self.ingame_gui = IngameGui(self)
         self.ingame_gui.status_set('gold','10000')
         
         #temporary ship creation, should be done automatically in later releases
@@ -329,11 +329,11 @@ class Game(EventListenerBase):
         return check
 
     def get_radius(self, layer, radius, startx, starty):
-        """Returns a list of instances in the radius on the specified layer
+        """Returns a list of instances in the radius on the specified layer.
         @var layer: fife.Layer the instances are present on.
-        @var radius: int radius that is to be used
+        @var radius: int radius that is to be used.
         @var startx,starty: int startpoint
-        @return: list of fife.Instances in the radius arround (startx,starty)"""
+        @return: list of fife.Instances in the radius arround (startx,starty)."""
         list = []
         center = fife.Location(layer)
         center.setMapCoordinates(fife.ExactModelCoordinate(float(startx),float(starty)))
@@ -348,7 +348,7 @@ class Game(EventListenerBase):
         return list
 
     def in_radius(self, location_a, location_b, radius):
-        """Checks whether location_b is an radius of location_a
+        """Checks whether location_b is an radius of location_a.
         @var location_a, location_b: fife.Location
         @var radius: int radius
         """
@@ -357,9 +357,22 @@ class Game(EventListenerBase):
         else:
             return False
 
+    def build_object(self, id, layer, Object, x, y):
+        """Creates an instance and object for the id and sets the correct mode.
+        @var id: str with the objects unique id.
+        @var layer: fife.Layer the object is to be built on.
+        @var Object: unit.Object class representing the object.
+        @var x,y: int coordinates for initial placement.
+        """
+        self.mode = _MODE_BUILD
+        curunique = self.uid
+        inst = self.create_instance(layer , self.datasets['object'], id, x, y)
+        self.selected_instance = self.create_unit(layer, curunique, Object)
+
+
     def get_instance(self, layer, x, y):
-        """Returns the first instance found on the layer at gridpoint (x,y)
-        @var layer: fife.Layer to look on
+        """Returns the first instance found on the layer at gridpoint (x,y).
+        @var layer: fife.Layer to look on.
         @var x,y: float grid coordinates
         @return: fife.Instance if an Instance is found, else returns None"""
         instances = layer.getInstances()
@@ -406,10 +419,7 @@ class Game(EventListenerBase):
         elif keyval == fife.Key.DOWN:
             self.move_camera(0, 1)
         elif keystr == 'b' and self.mode is _MODE_COMMAND:
-            self.mode = _MODE_BUILD
-            curunique = self.uid
-            inst = self.create_instance(self.layers['units'], self.datasets['object'], '2', 4, 10)
-            self.selected_instance = self.create_unit(self.layers['units'], curunique, House)
+            self.build_object('2', self.layers['units'], House, 0, 0)
         elif keystr == 'c':
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
@@ -440,9 +450,15 @@ class Game(EventListenerBase):
                         if selected.getFifeId() in self.instance_to_unit:
                             self.selected_instance = self.instance_to_unit[selected.getFifeId()]
                             self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
+                            if self.selected_instance.__class__ is Ship:
+                                self.ingame_gui.ship.show() #show the gui for ships
                         else:
                             self.selected_instance = None
-                    elif self.selected_instance: # if unit is allready selected, move instance
+                    elif self.selected_instance: # remove unit selection
+                        print self.selected_instance.__class__
+                        print Ship
+                        if self.selected_instance.__class__ is Ship:
+                            self.ingame_gui.ship.hide() # hide the gui for ships
                         self.selected_instance.object.say('', 0) # remove health display
                         self.selected_instance = None
                 else:
@@ -451,7 +467,7 @@ class Game(EventListenerBase):
                         self.selected_instance = None
             elif (evt.getButton() == fife.MouseEvent.RIGHT):
                 if self.mode is _MODE_COMMAND:
-                    if self.selected_instance: #remove unit selection   
+                    if self.selected_instance: # move unit   
                         if self.selected_instance.type == 'ship':
                             target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
                             target_mapcoord.z = 0

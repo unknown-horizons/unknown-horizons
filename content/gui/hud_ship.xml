@@ -1,0 +1,4 @@
+<Container opaque="1" size="150,100" position="500,500" base_color="40,40,40" border_size="0">
+   <Label text="Ship" position="0,0" />
+   <Button name="build" text="Create Settlement" base_color="40,40,40" position="0,20" />
+</Container>
