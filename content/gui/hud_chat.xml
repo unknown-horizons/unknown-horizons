@@ -5,8 +5,8 @@
   </ScrollArea>
   
   <HBox position="5,165" size="190,30">
-    <TextField name="message" text="Enter your message" />
+    <TextField name="message" text="Enter your message" base_color="60,60,60" background_color="60,60,60" />
     <Spacer />
-    <Button name="sendButton" text="Send" />  
+    <Button name="sendButton" text="Send" base_color="40,40,40" />  
   </HBox>
 </Container>

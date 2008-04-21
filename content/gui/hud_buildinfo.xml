@@ -2,7 +2,7 @@
   <Label name="buildingNameLabel" text="Building name (Building Class ROMAN)" base_color="40,40,40" position="5,5" />
   
   <HBox position="5,35" size="590,160">
-    <Icon image="content/gui/images/buildings/dummy.jpg" size="160,160" border_size="0" />
+    <Icon image="content/gui/images/objects/buildings/dummy.jpg" size="160,160" border_size="0" />
     <ScrollArea name="buildingDescription" vertical_scrollbar="1" background_color="60,60,60" base_color="60,60,60" size="300,160">
       <!-- Text Area with building infos -->
     </ScrollArea>
