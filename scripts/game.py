@@ -462,19 +462,21 @@ class Game(EventListenerBase):
                         print "selected instance: ",  self.cam.toMapCoordinates(clickpoint, False).x,  self.cam.toMapCoordinates(clickpoint, False).y, selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
                         if self.selected_instance:
                                 self.selected_instance.object.say('') #remove status of last selected unit
+                                self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
+                                print 'test'
                         if selected.getFifeId() in self.instance_to_unit:
                             self.selected_instance = self.instance_to_unit[selected.getFifeId()]
                             self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
+                            self.outline_renderer.addOutlined(self.selected_instance.object, 0, 0, 0, 1)
                             if self.selected_instance.__class__ is Ship:
                                 self.ingame_gui.ship.show() #show the gui for ships
                         else:
                             self.selected_instance = None
                     elif self.selected_instance: # remove unit selection
-                        print self.selected_instance.__class__
-                        print Ship
                         if self.selected_instance.__class__ is Ship:
                             self.ingame_gui.ship.hide() # hide the gui for ships
                         self.selected_instance.object.say('', 0) # remove health display
+                        self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
                         self.selected_instance = None
                 else:
                     if self.build_check(self.selected_instance):
