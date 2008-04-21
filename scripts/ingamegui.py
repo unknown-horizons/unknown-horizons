@@ -26,24 +26,26 @@ class IngameGui():
     """Class handling all the ingame gui events."""
     def __init__(self, game):
         self.game = game
-        self.status = pychan.loadXML('content/gui/status.xml')
-        self.status.show()
-        self.main_gui = pychan.loadXML('content/gui/hud_main.xml')
-        self.main_gui.show()
-        self.build = pychan.loadXML('content/gui/hud_build.xml')
-        self.build.show()
-        self.buildinfo = pychan.loadXML('content/gui/hud_buildinfo.xml')
-        self.buildinfo.show()
-        self.chat = pychan.loadXML('content/gui/hud_chat.xml')
-        self.chat.show()
-        self.cityinfo = pychan.loadXML('content/gui/hud_cityinfo.xml')
-        self.cityinfo.show()
-        self.res = pychan.loadXML('content/gui/hud_res.xml')
-        self.res.show()
-        self.fertility = pychan.loadXML('content/gui/hud_fertility.xml')
-        self.fertility.show()
-        self.ship = pychan.loadXML('content/gui/hud_ship.xml')
-        self.ship.mapEvents({
+        self.gui = {}
+        self.gui['status'] = pychan.loadXML('content/gui/status.xml')
+        self.gui['main'] = pychan.loadXML('content/gui/hud_main.xml')
+        self.toggle_visible('main')        
+        self.gui['main'].mapEvents({
+            'build' : self.toggle_build,
+            'zoomIn' : self.game.zoom_in,
+            'zoomOut' : self.game.zoom_out,
+            'rotateRight' : self.game.rotate_map_right,
+            'rotateLeft' : self.game.rotate_map_left,
+            'escButton' : self.game.main.gui.show
+        })
+        self.gui['build'] = pychan.loadXML('content/gui/hud_build.xml')
+        self.gui['buildinfo'] = pychan.loadXML('content/gui/hud_buildinfo.xml')
+        self.gui['chat'] = pychan.loadXML('content/gui/hud_chat.xml')
+        self.gui['cityinfo'] = pychan.loadXML('content/gui/hud_cityinfo.xml')
+        self.gui['res'] = pychan.loadXML('content/gui/hud_res.xml')
+        self.gui['fertility'] = pychan.loadXML('content/gui/hud_fertility.xml')
+        self.gui['ship'] = pychan.loadXML('content/gui/hud_ship.xml')
+        self.gui['ship'].mapEvents({
             'build' : self._ship_build
         })
 
@@ -53,13 +55,30 @@ class IngameGui():
         @var label: str containing the name of the label to be set.
         @var value: value the Label is to be set to.
         """
-        foundlabel = self.status.findChild(name=label)
+        foundlabel = self.gui['status'].findChild(name=label)
         foundlabel._setText(value)
         foundlabel.resizeToContent()
-        self.status.resizeToContent()
+        self.gui['status'].resizeToContent()
 
     def _ship_build(self):
         """Calls the Games build_object class."""
-        self.ship.hide()
+        self.gui['ship'].hide()
         self.game.build_object('2', self.game.layers['units'], House, 0, 0, self.game.get_tiles_in_radius(self.game.layers['land'], 6, self.game.selected_instance.object.getLocation()))
+
+    def toggle_visible(self, guiname):
+        """Toggles whether a gui i visible or not.
+        @var guiname: str with the guiname.
+        """
+        if self.gui[guiname].isVisible():
+            self.gui[guiname].hide()
+        else:
+            self.gui[guiname].show()
+
+    def toggle_build(self):
+        """Toggles the build menu on and off"""
+        self.toggle_visible('build')
+
+    def toggle_(self):
+        """Toggles the build menu on and off"""
+        self.toggle_visible('build')
 

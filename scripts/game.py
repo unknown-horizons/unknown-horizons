@@ -439,7 +439,7 @@ class Game(EventListenerBase):
             r = self.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
         elif keystr == 'r':
-            self.cam.setRotation((self.cam.getRotation() + 90) % 360)
+            self.rotate_map_right()
         elif keystr == 'q':
             self.__del__()
             self.main.quit()    
@@ -467,9 +467,9 @@ class Game(EventListenerBase):
                         if selected.getFifeId() in self.instance_to_unit:
                             self.selected_instance = self.instance_to_unit[selected.getFifeId()]
                             self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
-                            self.outline_renderer.addOutlined(self.selected_instance.object, 0, 0, 0, 1)
+                            self.outline_renderer.addOutlined(self.selected_instance.object, 255, 255, 255, 1)
                             if self.selected_instance.__class__ is Ship:
-                                self.ingame_gui.ship.show() #show the gui for ships
+                                self.ingame_gui.toggle_visible('ship') #show the gui for ships
                         else:
                             self.selected_instance = None
                     elif self.selected_instance: # remove unit selection
@@ -500,16 +500,29 @@ class Game(EventListenerBase):
                     self._build_tiles = None
 
     def mouseWheelMovedUp(self, evt):
+        self.zoom_in()
+
+    def mouseWheelMovedDown(self, evt):
+        self.zoom_out()
+
+    def zoom_out(self):
+        zoom = self.cam.getZoom() * 0.875
+        if(zoom < 0.25):
+            zoom = 0.25
+        self.cam.setZoom(zoom)
+
+    def zoom_in(self):
         zoom = self.cam.getZoom() / 0.875
         if(zoom > 1):
             zoom = 1
         self.cam.setZoom(zoom)
 
-    def mouseWheelMovedDown(self, evt):
-        zoom = self.cam.getZoom() * 0.875
-        if(zoom < 0.25):
-            zoom = 0.25
-        self.cam.setZoom(zoom)
+    def rotate_map_right(self):
+          self.cam.setRotation((self.cam.getRotation() + 90) % 360)
+
+    def rotate_map_left(self):
+          self.cam.setRotation((self.cam.getRotation() - 90) % 360)
+
 
     def mouseMoved(self, evt):
         if self.mode == _MODE_BUILD:

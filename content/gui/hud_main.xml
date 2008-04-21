@@ -4,12 +4,12 @@
     <Button name="escButton" text="Esc" base_color="40, 40, 40" />
   </HBox>
   
-  <Icon image="content/gui/images/background/hud/background_32.png" position="5,36"/><ImageButton name="zoomOutButton" up_image="content/gui/images/icons/hud/main/zoom_out.png" size="32,32" position="5,36" border_size="0" />
-  <Icon image="content/gui/images/background/hud/background_32.png" position="110,36"/><ImageButton name="zoomInButton" up_image="content/gui/images/icons/hud/main/zoom_in.png" size="32,32" position="110,36" border_size="0" />
-  <Icon image="content/gui/images/background/hud/background_32.png" position="5,163"/><ImageButton name="rotateCCWButton" up_image="content/gui/images/icons/hud/main/rotate_ccw.png" size="32,32" position="5,163" border_size="0" />
-  <Icon image="content/gui/images/background/hud/background_32.png" position="110,163"/><ImageButton name="rotateCWButton" up_image="content/gui/images/icons/hud/main/rotate_cw.png" size="32,32" position="110,163" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_32.png" position="5,36"/><ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" size="32,32" position="5,36" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_32.png" position="110,36"/><ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" size="32,32" position="110,36" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_32.png" position="5,163"/><ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_ccw.png" size="32,32" position="5,163" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_32.png" position="110,163"/><ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_cw.png" size="32,32" position="110,163" border_size="0" />
   
-  <Icon image="content/gui/images/background/hud/background_48.png" position="147,41"/><ImageButton name="diplomacyMenuButton" up_image="content/gui/images/icons/hud/main/diplomacy.png" position="147,41" border_size="0" />
-  <Icon image="content/gui/images/background/hud/background_48.png" position="147,94"/><ImageButton name="inventoryMenuButton" up_image="content/gui/images/icons/hud/main/inventory.png" size="48,48" position="147,94" border_size="0" />
-  <Icon image="content/gui/images/background/hud/background_48.png" position="147,147"/><ImageButton name="buildMenuButton" up_image="content/gui/images/icons/hud/main/build.png" size="48,48" position="147,147" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_48.png" position="147,41"/><ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy.png" position="147,41" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_48.png" position="147,94"/><ImageButton name="inventory" up_image="content/gui/images/icons/hud/main/inventory.png" size="48,48" position="147,94" border_size="0" />
+  <Icon image="content/gui/images/background/hud/background_48.png" position="147,147"/><ImageButton name="build" up_image="content/gui/images/icons/hud/main/build.png" size="48,48" position="147,147" border_size="0" />
 </Container>
