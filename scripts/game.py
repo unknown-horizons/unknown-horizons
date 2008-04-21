@@ -474,7 +474,7 @@ class Game(EventListenerBase):
                             self.selected_instance = None
                     elif self.selected_instance: # remove unit selection
                         if self.selected_instance.__class__ is Ship:
-                            self.ingame_gui.ship.hide() # hide the gui for ships
+                            self.ingame_gui.toggle_visible('ship') # hide the gui for ships
                         self.selected_instance.object.say('', 0) # remove health display
                         self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
                         self.selected_instance = None
