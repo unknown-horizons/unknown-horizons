@@ -66,7 +66,7 @@ class IngameGui():
         self.game.build_object('2', self.game.layers['units'], House, 0, 0, self.game.get_tiles_in_radius(self.game.layers['land'], 6, self.game.selected_instance.object.getLocation()))
 
     def toggle_visible(self, guiname):
-        """Toggles whether a gui i visible or not.
+        """Toggles whether a gui is visible or not.
         @var guiname: str with the guiname.
         """
         if self.gui[guiname].isVisible():

@@ -282,14 +282,11 @@ class Game(EventListenerBase):
         @var UnitClass: Class of the new unit (e.g. Ship, House)
         @return: returnes a unit of the type specified by UnitClass
         """
-        print 'test3'
         unit = UnitClass(self.model, str(id), layer, self)
         if UnitClass is House:
             res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",str(object_id))
             if res.success:
-                print 'foo'
                 unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",str(object_id)).rows[0]
-                print unit.size_x, unit.size_y
         self.instance_to_unit[unit.object.getFifeId()] = unit
         unit.start()
         return unit
@@ -311,7 +308,6 @@ class Game(EventListenerBase):
                     instances = instances[1:len(instances)]
             if instances and len(instances) > 0:
                 if self._build_tiles is not None:
-                    print id(instances[0].getLocation())
                     for inst in self._build_tiles:
                         if inst.getLocation() == instances[0].getLocation():
                             return True
@@ -322,7 +318,6 @@ class Game(EventListenerBase):
                     return True
             else:
                 return False
-        print inst.size_x, inst.size_y
         checkpoint = inst.object.getLocation().getMapCoordinates()
         starty = float(checkpoint.y)-0.5
         checkpoint.x = float(checkpoint.x)+0.5
@@ -359,7 +354,6 @@ class Game(EventListenerBase):
             list.append(item)
             # This is for testing purposes only, should later be done by an own funktion.
             self.outline_renderer.addOutlined(item, 0, 0, 0, 2)
-            print item.getLocation().getLayerCoordinates().x, item.getLocation().getLayerCoordinates().y
         return list
 
     def in_radius(self, location_a, location_b, radius):
@@ -394,7 +388,6 @@ class Game(EventListenerBase):
         @return: fife.Instance if an Instance is found, else returns None"""
         instances = layer.getInstances()
         inst = (inst for inst in instances if int(inst.getLocation().getExactLayerCoordinatesRef().x) is x and int(inst.getLocation().getExactLayerCoordinatesRef().y is y)).next()
-        print inst
         if inst: 
             return inst
         else:
@@ -461,15 +454,17 @@ class Game(EventListenerBase):
                         selected = instances[0]
                         print "selected instance: ",  self.cam.toMapCoordinates(clickpoint, False).x,  self.cam.toMapCoordinates(clickpoint, False).y, selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
                         if self.selected_instance:
+                            if self.selected_instance.object.getFifeId() != selected.getFifeId():
+                                if self.selected_instance.__class__ is Ship:
+                                    self.ingame_gui.toggle_visible('ship') # hide the gui for ships
                                 self.selected_instance.object.say('') #remove status of last selected unit
                                 self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
-                                print 'test'
                         if selected.getFifeId() in self.instance_to_unit:
                             self.selected_instance = self.instance_to_unit[selected.getFifeId()]
                             self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
                             self.outline_renderer.addOutlined(self.selected_instance.object, 255, 255, 255, 1)
                             if self.selected_instance.__class__ is Ship:
-                                self.ingame_gui.toggle_visible('ship') #show the gui for ships
+                                self.ingame_gui.gui['ship'].show() #show the gui for ships
                         else:
                             self.selected_instance = None
                     elif self.selected_instance: # remove unit selection
