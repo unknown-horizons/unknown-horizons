@@ -46,7 +46,7 @@ class IngameGui():
         self.gui['fertility'] = pychan.loadXML('content/gui/hud_fertility.xml')
         self.gui['ship'] = pychan.loadXML('content/gui/hud_ship.xml')
         self.gui['ship'].mapEvents({
-            'build' : self._ship_build
+            'foundSettelmentButton' : self._ship_build
         })
 
 
