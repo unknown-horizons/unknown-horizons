@@ -490,7 +490,7 @@ class Game(EventListenerBase):
                 else:
                     self.mode = _MODE_COMMAND
                     self.layers['units'].deleteInstance(self.selected_instance.object)
-                    del self.instance_to_unit[self.selected_instance.object.getFifeId()]
+                    self.instance_to_unit[self.selected_instance.object.getFifeId()] = None
                     self.selected_instance = None
                     self._build_tiles = None
 
