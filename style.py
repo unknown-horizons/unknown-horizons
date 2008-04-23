@@ -82,6 +82,15 @@ STYLES= {
         },
         ('Container','HBox','VBox') : {
             'border_size': 0,
+        },
+        ('Icon', 'ImageButton') : {
+            'border_size': 0
+        },
+        'ScrollArea' : {
+            'border_size': 0,
+            'horizontal_scrollbar' : 1,
+            'base_color' : fife.Color(60,60,60),
+            'background_color' : fife.Color(60,60,60)
         }
     },
     'menu': { #Used in the main menu and game menu
