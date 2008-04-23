@@ -208,6 +208,7 @@ class Game(EventListenerBase):
         self.view = self.engine.getView()
         self.view.resetRenderers()
 
+
         renderer = self.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
@@ -417,6 +418,20 @@ class Game(EventListenerBase):
             cam_scroll.y += ydir * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
         self.cam.setLocation(loc)
 
+    def select_unit(self):
+        """Runs neccesary steps to select a unit."""
+        self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
+        self.outline_renderer.addOutlined(self.selected_instance.object, 255, 255, 255, 1)
+        if self.selected_instance.__class__ is Ship:
+            self.ingame_gui.gui['ship'].show() #show the gui for ships
+
+    def deselect_unit(self):
+        """Runs neccasary steps to deselect a unit."""
+        if self.selected_instance.__class__ is Ship:
+            self.ingame_gui.toggle_visible('ship') # hide the gui for ships
+            self.selected_instance.object.say('') #remove status of last selected unit
+            self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
+           
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
         keystr = evt.getKey().getAsString().lower()
@@ -452,26 +467,17 @@ class Game(EventListenerBase):
                     instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
                     if instances: #check if clicked point is a unit
                         selected = instances[0]
-                        print "selected instance: ",  self.cam.toMapCoordinates(clickpoint, False).x,  self.cam.toMapCoordinates(clickpoint, False).y, selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
+                        print "selected instance at: ",  selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
                         if self.selected_instance:
                             if self.selected_instance.object.getFifeId() != selected.getFifeId():
-                                if self.selected_instance.__class__ is Ship:
-                                    self.ingame_gui.toggle_visible('ship') # hide the gui for ships
-                                self.selected_instance.object.say('') #remove status of last selected unit
-                                self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
+                                self.deselect_unit()
                         if selected.getFifeId() in self.instance_to_unit:
                             self.selected_instance = self.instance_to_unit[selected.getFifeId()]
-                            self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
-                            self.outline_renderer.addOutlined(self.selected_instance.object, 255, 255, 255, 1)
-                            if self.selected_instance.__class__ is Ship:
-                                self.ingame_gui.gui['ship'].show() #show the gui for ships
+                            self.select_unit()
                         else:
                             self.selected_instance = None
                     elif self.selected_instance: # remove unit selection
-                        if self.selected_instance.__class__ is Ship:
-                            self.ingame_gui.toggle_visible('ship') # hide the gui for ships
-                        self.selected_instance.object.say('', 0) # remove health display
-                        self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
+                        self.deselect_unit()
                         self.selected_instance = None
                 else:
                     if self.build_check(self.selected_instance):
