@@ -31,7 +31,7 @@ class IngameGui():
         self.gui['main'] = pychan.loadXML('content/gui/hud_main.xml')
         self.toggle_visible('main')        
         self.gui['main'].mapEvents({
-            'build' : self.toggle_build,
+            'build' : pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
             'zoomIn' : self.game.zoom_in,
             'zoomOut' : self.game.zoom_out,
             'rotateRight' : self.game.rotate_map_right,
@@ -74,12 +74,4 @@ class IngameGui():
             self.gui[guiname].hide()
         else:
             self.gui[guiname].show()
-
-    def toggle_build(self):
-        """Toggles the build menu on and off"""
-        self.toggle_visible('build')
-
-    def toggle_(self):
-        """Toggles the build menu on and off"""
-        self.toggle_visible('build')
 

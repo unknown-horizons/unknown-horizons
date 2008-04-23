@@ -27,6 +27,8 @@ import re
 import settings
 import shutil
 
+import style
+
 def _jp(path):
     return os.path.sep.join(path.split('/'))
 
@@ -97,10 +99,16 @@ class OpenAnno(basicapplication.ApplicationBase):
         super(OpenAnno, self).__init__() 
         
         pychan.init(self.engine,debug=False)
+        # Load styles here
+        for name,stylepart in style.STYLES.items():
+            pychan.manager.addStyle(name,stylepart)
         pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
-        
+        pychan.loadFonts("content/fonts/samanata.fontdef")
+
         self.mainmenu = pychan.loadXML('content/gui/mainmenu.xml')
+        self.mainmenu.stylize('menu')
         self.gamemenu = pychan.loadXML('content/gui/gamemenu.xml')
+        self.gamemenu.stylize('menu')
         
         eventMap = {
             'startGame' : self.start_game,
