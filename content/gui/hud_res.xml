@@ -1,4 +1,4 @@
-<Container size="384,64" position="0,0" border_size="0">
+<Container size="384,64" position="0,0">
   <Icon position="0,0" size="48,64" image="content/gui/images/background/hud/res_bg.png" />
   <Label name="resBoles" position="0,48" text="?" />
   

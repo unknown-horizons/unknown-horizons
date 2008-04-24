@@ -1,4 +1,4 @@
-<Window title="City infos" base_color="40, 40, 40">
+<Window title="City infos">
   <!-- Tabs -->
   <HBox margins="0,0">
     <ImageButton name="shipsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
