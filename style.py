@@ -75,7 +75,8 @@ STYLES= {
             'border_size': 1,
             'margins': (10,10),
             'titlebar_height' : 30,
-            'font' : 'samanata_large'
+            'font' : 'samanata_large',
+            'base_color' : fife.Color(60,60,60)
         },
         'TextBox' : {
             'font' : 'samanata_small'
@@ -89,6 +90,10 @@ STYLES= {
         'ScrollArea' : {
             'border_size': 0,
             'horizontal_scrollbar' : 1,
+            'base_color' : fife.Color(60,60,60),
+            'background_color' : fife.Color(60,60,60)
+        },
+        'TextField' : {
             'base_color' : fife.Color(60,60,60),
             'background_color' : fife.Color(60,60,60)
         }
