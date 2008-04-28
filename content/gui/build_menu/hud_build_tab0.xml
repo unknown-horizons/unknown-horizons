@@ -1,0 +1,4 @@
+<Container name="tab0" size="533,190">
+    <Label text="foo" />
+    <Label text="foo2" />
+</Container>

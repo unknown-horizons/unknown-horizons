@@ -28,22 +28,24 @@ class IngameGui():
         self.game = game
         self.gui = {}
         self.gui['status'] = pychan.loadXML('content/gui/status.xml')
-        self.gui['build1'] = pychan.loadXML('content/gui/build_menu/hud_build.xml')
-        self.gui['build2'] = pychan.loadXML('content/gui/build_menu/hud_build_2.xml')
-        self.gui['build3'] = pychan.loadXML('content/gui/build_menu/hud_build_3.xml')
-        self.gui['build4'] = pychan.loadXML('content/gui/build_menu/hud_build_4.xml')
-        self.gui['build5'] = pychan.loadXML('content/gui/build_menu/hud_build_5.xml')
-        self.gui['build6'] = pychan.loadXML('content/gui/build_menu/hud_build_6.xml')
-        self.active_build = self.gui['build1']
-        for num in range(1,7):
-            self.gui['build'+str(num)].mapEvents({
-                'servicesTab' : pychan.tools.callbackWithArguments(self.build_menu_show, 1),
-                'residentsTab' : pychan.tools.callbackWithArguments(self.build_menu_show, 2),
-                'companiesTab' : pychan.tools.callbackWithArguments(self.build_menu_show, 3),
-                'militaryTab' : pychan.tools.callbackWithArguments(self.build_menu_show, 4),
-                'streetsTab' : pychan.tools.callbackWithArguments(self.build_menu_show, 5),
-                'specialTab' : pychan.tools.callbackWithArguments(self.build_menu_show, 6)
-            })
+        self.gui['build'] = pychan.loadXML('content/gui/build_menu/hud_build.xml')
+        self.gui['build_tab0'] = pychan.loadXML('content/gui/build_menu/hud_build_tab0.xml')
+        self.gui['build_tab1'] = pychan.loadXML('content/gui/build_menu/hud_build_tab1.xml')
+        self.gui['build_tab2'] = pychan.loadXML('content/gui/build_menu/hud_build_tab2.xml')
+        self.gui['build_tab3'] = pychan.loadXML('content/gui/build_menu/hud_build_tab3.xml')
+        self.gui['build_tab4'] = pychan.loadXML('content/gui/build_menu/hud_build_tab4.xml')
+        self.gui['build_tab5'] = pychan.loadXML('content/gui/build_menu/hud_build_tab5.xml')
+        self.gui['build_tab0'].show() #temporary fix
+        self.gui['build'].findChild(name='content').addChild(self.gui['build_tab0']) #Add first menu
+        self.active_build = 0
+        self.gui['build'].mapEvents({
+            'servicesTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 0),
+            'residentsTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 1),
+            'companiesTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 2),
+            'militaryTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 3),
+            'streetsTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 4),
+            'specialTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 5)
+        })
         self.gui['buildinfo'] = pychan.loadXML('content/gui/hud_buildinfo.xml')
         self.gui['chat'] = pychan.loadXML('content/gui/hud_chat.xml')
         self.gui['cityinfo'] = pychan.loadXML('content/gui/hud_cityinfo.xml')
@@ -56,7 +58,7 @@ class IngameGui():
         self.gui['main'] = pychan.loadXML('content/gui/hud_main.xml')
         self.toggle_visible('main')        
         self.gui['main'].mapEvents({
-            'build' : self.build_toggle,
+            'build' : pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
             'zoomIn' : self.game.zoom_in,
             'zoomOut' : self.game.zoom_out,
             'rotateRight' : self.game.rotate_map_right,
@@ -97,8 +99,19 @@ class IngameGui():
         self.active_build = self.gui['build' + str(num)]
         self.active_build.show()
 
-    def build_toggle(self):
-        if self.active_build.isVisible():
-            self.active_build.hide()
-        else:
-            self.active_build.show()
+    def build_load_tab(self, num):
+        """Loads a subcontainer into the build menu and changes the tabs background.
+        @var num: number representing the tab to load.
+        """
+        tab1 = self.gui['build'].findChild(name=('tab'+str(self.active_build)))
+        tab2 = self.gui['build'].findChild(name=('tab'+str(num)))
+        activetabimg, nonactiveimg= tab1._getImage(), tab2._getImage()
+        tab1._setImage(nonactiveimg)
+        tab2._setImage(activetabimg)
+        contentarea = self.gui['build'].findChild(name='content')
+        contentarea.removeChild(self.gui['build_tab'+str(self.active_build)])
+        self.gui['build_tab'+str(self.active_build)].hide()
+        self.gui['build_tab'+str(num)].show()
+        contentarea.addChild(self.gui['build_tab'+str(num)])  
+        self.active_build = num
+        
