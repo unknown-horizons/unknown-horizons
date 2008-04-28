@@ -35,8 +35,8 @@ class IngameGui():
         self.gui['build_tab3'] = pychan.loadXML('content/gui/build_menu/hud_build_tab3.xml')
         self.gui['build_tab4'] = pychan.loadXML('content/gui/build_menu/hud_build_tab4.xml')
         self.gui['build_tab5'] = pychan.loadXML('content/gui/build_menu/hud_build_tab5.xml')
-        self.gui['build_tab0'].show() #temporary fix
         self.gui['build'].findChild(name='content').addChild(self.gui['build_tab0']) #Add first menu
+        self.gui['build'].findChild(name='content').adaptLayout()
         self.active_build = 0
         self.gui['build'].mapEvents({
             'servicesTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 0),
@@ -110,8 +110,9 @@ class IngameGui():
         tab2._setImage(activetabimg)
         contentarea = self.gui['build'].findChild(name='content')
         contentarea.removeChild(self.gui['build_tab'+str(self.active_build)])
-        self.gui['build_tab'+str(self.active_build)].hide()
-        self.gui['build_tab'+str(num)].show()
-        contentarea.addChild(self.gui['build_tab'+str(num)])  
+        #self.gui['build_tab'+str(self.active_build)].hide()
+        #self.gui['build_tab'+str(num)].show()
+        contentarea.addChild(self.gui['build_tab'+str(num)])
+        contentarea.adaptLayout()
         self.active_build = num
         
