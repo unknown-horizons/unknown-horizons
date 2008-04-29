@@ -137,7 +137,7 @@ class Game(EventListenerBase):
         self.layers['units'] = self.map.createLayer("layer3", cellgrid)
         self.layers['units'].setPathingStrategy(fife.CELL_EDGES_ONLY)
 
-        min_x, min_y, max_x, max_y = None, None, None, None
+        min_x, min_y, max_x, max_y = 0, 0, 0, 0
         for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
             self.main.db.query("attach ? as island", (str(island)))
             self.islands[self.island_uid]=Island(self.island_uid)
@@ -145,12 +145,16 @@ class Game(EventListenerBase):
             for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
                 inst = self.create_instance(self.layers['land'], self.datasets['ground'], str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
                 cur_isl.add_tile(inst)
-                min_x = int(x) + int(offset_x) if min_x is None or int(x) + int(offset_x) < min_x else min_x
-                max_x = int(x) + int(offset_x) if max_x is None or int(x) + int(offset_x) > min_x else min_x
-                max_y = int(y) + int(offset_y) if max_y is None or int(y) + int(offset_y) > min_y else min_y
-                min_y = int(y) + int(offset_y) if min_y is None or int(y) + int(offset_y) < min_y else min_y
+                min_x = int(x) + int(offset_x) if min_x is 0 or int(x) + int(offset_x) < min_x else min_x
+                max_x = int(x) + int(offset_x) if max_x is 0 or int(x) + int(offset_x) > max_x else max_x
+                max_y = int(y) + int(offset_y) if max_y is 0 or int(y) + int(offset_y) > max_y else max_y
+                min_y = int(y) + int(offset_y) if min_y is 0 or int(y) + int(offset_y) < min_y else min_y
             self.island_uid += 1
             self.main.db.query("detach island")
+
+        for x in range(min_x-10, (max_x+11)): # Fill map with water tiles + 10 on each side
+            for y in range(min_y-10, max_y+11):
+                inst = self.create_instance(self.layers['water'], self.datasets['ground'], str(int(13)), int(x), int(y), 0)
 
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "2")[0], fife.ExactModelCoordinate(11, 13, 0), ''))
 
@@ -171,15 +175,15 @@ class Game(EventListenerBase):
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 13, 0), ''))
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 14, 0), ''))
 
-        print "center:", min_x + ((max_x - min_x) / 2.0), min_y + ((max_y - min_y) / 2.0)
+        print "center:", ((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0)
 
-        self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(min_x + ((max_x - min_x) / 2.0), min_y + ((max_y - min_y) / 2.0), 0.0))
+        self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
         self.cam.setCellImageDimensions(32, 16)
         self.cam.setRotation(45.0)
         self.cam.setTilt(-60.0)
         self.cam.setZoom(1)
 
-        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate(max_x + 0*(min_x + ((max_x - min_x) / 2.0) + 5), min_y + ((max_y - min_y) / 2.0), 0.0))
+        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
         self.overview.setCellImageDimensions(2, 2)
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
@@ -361,6 +365,7 @@ class Game(EventListenerBase):
         """Checks whether location_b is an radius of location_a.
         @var location_a, location_b: fife.Location
         @var radius: int radius
+        @return: boolean whether location_b is in radius of location_a
         """
         if int(location_a.getMapDistanceTo(location_b)) <= radius:
             return True

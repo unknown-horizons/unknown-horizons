@@ -45,18 +45,23 @@ class Ship(Object):
             self.idlecounter = 1
         else:
             self.idlecounter += 1
-	
+
     def start(self):
         self.idle()
-	
+
     def idle(self):
         self.state = _STATE_IDLE
         #self.object.act('move', self.object.getFacingLocation())
-		
+
     def move(self, location):
         """Moves the ship to a certain location
         @var location: fife.Location to which the unit should move"""
         self.state = _STATE_MOVE
         #self.object.move('move', location, 2)
         self.object.setLocation(location)
+        facecoord = location.getMapCoordinates()
+        facecoord.x = facecoord.x + 1
+        facecoord.y = facecoord.y + 1
+        location.setMapCoordinates(facecoord)
+        self.object.setFacingLocation(location)
 
