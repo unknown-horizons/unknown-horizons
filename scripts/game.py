@@ -29,6 +29,7 @@ from dbreader import DbReader
 from ingamegui import IngameGui
 from island import Island
 import timermanager
+from settlement import Settlement
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
@@ -398,6 +399,15 @@ class Game(EventListenerBase):
             return inst
         else:
             return None
+
+    def create_settlement(self, player, warehouse):
+        """Creates a new settlement
+        @var player: Player instance that built the settlement
+        @var warehouse: the initial warehouse
+        """
+        pass
+        #settlement = Settlement()
+        
 
 
     def set_cam_position(self, x, y, z):
