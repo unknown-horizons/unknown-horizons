@@ -28,31 +28,49 @@ class Ticker():
     Every command the player issues has to pass through the ticker, in order to make it multiplayer
     compatible.
     """
-    def __init__(self, tpm):
-        """@var tpm: int times per minute the ticker is to tick
+    def __init__(self, tps):
+        """@var tps: int times per second the ticker is to tick
         """
-        self.tpm = tpm
+        self.tps = tps
         self.ticklist = {}
-        self.cur_id = 0
+        self.process = 0
         self.add_tick()
+        self.cur_tick = self.ticklist[self.process]
         self.tick()
 
     def tick(self):
         """Performes the tick and starts the next tick"""
         # Add check here if all older ticks have been started by all players
-        timer = threading.Timer(1.0/self.tpm, self.tick)
+        tick = self.cur_tick
+        self.process += 1
+        self.add_tick()
+        self.cur_tick = self.ticklist[self.process]
+        timer = threading.Timer(1.0/self.tps, self.tick)
         timer.start()
-        for commandbatch in self.cur_tick.commandlist:
-            print 'Running commandlist of tick:', self.cur_tick.id
+        for commandbatch in tick.commandlist:
+            print 'Running commandlist of tick:', tick.id
             commandbatch[0](commandbatch[1]) # Execute all commands
         del self.ticklist[self.cur_tick.id]
-        self.add_tick()
+                
+    def add_tick(self, offset=0):
+        """Adds a tick to the ticklist
+        @var offset: int number ticks ahead the tick is to be placed. offset of 50 will result in a tick that is run after 50 ticks."""
+        if (self.process+offset) not in self.ticklist:
+            self.ticklist[self.process+offset] = Tick(self.process+offset)
+        else:
+            pass
 
-    def add_tick(self):
-        self.cur_tick = Tick(self.cur_id)
-        self.ticklist[self.cur_id] = self.cur_tick
-        self.cur_id += 1
-
+    def add_command(self, callback, args=[], tickoffset=0):
+        """
+        Adds command to the Ticks commandlist.
+        @var callback: function that is to be called.
+        @var args: list of arguments for the callback function.
+        @var tickoffset: int number ticks ahead the command is to be added.
+        """
+        if (self.process+tickoffset) not in self.ticklist:
+            self.add_tick(tickoffset)
+        print self.ticklist[self.process+tickoffset]
+        self.ticklist[self.process+tickoffset].add_command(callback, args)
     
 
 class Tick():
