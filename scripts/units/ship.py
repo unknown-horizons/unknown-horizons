@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from object import Object
+import fife
 
 _STATE_NONE, _STATE_IDLE, _STATE_MOVE = xrange(3)
 
@@ -58,10 +59,9 @@ class Ship(Object):
         @var location: fife.Location to which the unit should move"""
         self.state = _STATE_MOVE
         #self.object.move('move', location, 2)
-        self.object.setLocation(location)
-        facecoord = location.getMapCoordinates()
-        facecoord.x = facecoord.x + 1
-        facecoord.y = facecoord.y + 1
-        location.setMapCoordinates(facecoord)
-        self.object.setFacingLocation(location)
+	facing_location = fife.Location(location)
+	facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
+        
+	self.object.setLocation(location)
+        self.object.setFacingLocation(facing_location)
 

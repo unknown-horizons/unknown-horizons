@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from object import Object
+import fife
 
 _STATE_NONE, _STATE_IDLE, _STATE_MOVE = xrange(3)
 
@@ -55,7 +56,11 @@ class House(Object):
         """Moves the house to a certain location
         @var location: fife.Location to which the house should move"""
         self.state = _STATE_MOVE
-        self.object.setLocation(location)
+	facing_location = fife.Location(location)
+	facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
+        
+	self.object.setLocation(location)
+        self.object.setFacingLocation(facing_location)
 
     def produce(self):
         """Starts the production of the building's resource"""
