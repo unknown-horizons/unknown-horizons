@@ -8,7 +8,7 @@ class Building(object):
 _buildingclasses = {}
 
 def initBuildingClasses(dbreader):
-    buildings = dbreader.query("SELECT building_id, classPackage, classType, size_x, size_y, name FROM building")
+    buildings = dbreader.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
     for row in buildings.rows:
         building_id,  package,  type,  size_x,  size_y,  name = row
         
@@ -18,7 +18,7 @@ def initBuildingClasses(dbreader):
         propdict = {}
         propdict['size'] = (size_x,  size_y)
         
-        properties = dbreader.query("SELECT key, value FROM building_property WHERE building_id = ?",  str(building_id))
+        properties = dbreader.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
         for row in properties.rows:
             key,  value = row
             propdict[value] = key
