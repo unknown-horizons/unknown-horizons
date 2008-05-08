@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change to your FIFE checkout dir
-fife_dir="/home/linuxdonald/dev/svn/fife/"
+fife_dir="../../fife/trunk"
 
 echo "Trying to start OA with FIFE in '$fife_dir'"
 

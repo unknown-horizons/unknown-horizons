@@ -116,7 +116,7 @@ class Game(EventListenerBase):
         #dataset for ground tiles
         self.datasets['ground']=self.metamodel.createDataset("ground")
         #dataset for objects
-        self.datasets['object']=self.metamodel.createDataset("object")
+        self.datasets['building']=self.metamodel.createDataset("building")
 
         self.create_object("blocker", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", self.datasets['ground'])
         #todo...
@@ -126,8 +126,8 @@ class Game(EventListenerBase):
         for (oid, image_overview, image_n, image_e, image_s, image_w) in self.main.db.query("select gnd.oid, grp.image_overview, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 315) order by frame_end limit 1) as image_w from data.ground gnd left join data.ground_group grp on gnd.`group` = grp.oid").rows:
             self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['ground'])
 
-        for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in self.main.db.query("select oid, 'content/gfx/dummies/overview/object.png', (select file from data.animation where animation_id = (select animation from data.action where object = data.object.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where object = data.object.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where object = data.object.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where object = data.object.rowid and rotation = 315) order by frame_end limit 1) as image_w, size_x, size_y from data.object").rows:
-            self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['object'], size_x, size_y)
+        for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in self.main.db.query("select oid, 'content/gfx/dummies/overview/object.png', (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 315) order by frame_end limit 1) as image_w, size_x, size_y from data.building").rows:
+            self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['building'], size_x, size_y)
 
         cellgrid = fife.SquareGrid(False)
         cellgrid.thisown = 0
@@ -161,24 +161,24 @@ class Game(EventListenerBase):
             for y in range(min_y-10, max_y+11):
                 inst = self.create_instance(self.layers['water'], self.datasets['ground'], str(int(13)), int(x), int(y), 0)
 
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "2")[0], fife.ExactModelCoordinate(11, 13, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "2")[0], fife.ExactModelCoordinate(11, 13, 0), ''))
 
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(13, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(12, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(11, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 13, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 12, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 11, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(11, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(12, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(13, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 11, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 12, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 13, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['object'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 14, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(13, 14, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(12, 14, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(11, 14, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 14, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 13, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 12, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 11, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 10, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(11, 10, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(12, 10, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(13, 10, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 10, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 11, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 12, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 13, 0), ''))
+        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 14, 0), ''))
 
         print "center:", ((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0)
 
@@ -206,9 +206,9 @@ class Game(EventListenerBase):
         self.ingame_gui.status_set('gold','10000')
         
         #temporary ship creation, should be done automatically in later releases
-        self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['object'], 1, 1)
+        self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['building'], 1, 1)
         tempid = self.uid
-        inst = self.create_instance(self.layers['land'], self.datasets['object'], '99', 1, 1)
+        inst = self.create_instance(self.layers['land'], self.datasets['building'], '99', 1, 1)
         ship = self.create_unit(self.layers['land'], str(tempid), 99, Ship)
         ship.name = 'Matilde'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
@@ -294,9 +294,9 @@ class Game(EventListenerBase):
         """
         unit = UnitClass(self.model, str(id), layer, self)
         if UnitClass is House:
-            res = self.main.db.query("SELECT * FROM data.object WHERE rowid = ?",str(object_id))
+            res = self.main.db.query("SELECT * FROM data.building WHERE rowid = ?",str(object_id))
             if res.success:
-                unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.object WHERE rowid = ?",str(object_id)).rows[0]
+                unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.building WHERE rowid = ?",str(object_id)).rows[0]
         self.instance_to_unit[unit.object.getFifeId()] = unit
         unit.start()
         return unit
@@ -388,7 +388,7 @@ class Game(EventListenerBase):
         self.mode = _MODE_BUILD
         self._build_tiles = tile_list
         curunique = self.uid
-        inst = self.create_instance(layer , self.datasets['object'], id, x, y)
+        inst = self.create_instance(layer , self.datasets['building'], id, x, y)
         self.selected_instance = self.create_unit(layer, curunique, id, Object)
 
 
