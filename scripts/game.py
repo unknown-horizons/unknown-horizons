@@ -30,6 +30,7 @@ from ingamegui import IngameGui
 from island import Island
 import timermanager
 from settlement import Settlement
+from ticker import Ticker
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
@@ -86,6 +87,8 @@ class Game(EventListenerBase):
         #
         self.mode = _MODE_COMMAND
         self.timermanager = timermanager.TimerManager() # Manages timers
+        self.ticker = Ticker(16)                        # Creates new Ticker with 16ticks per minute
+        self.ticker.start()
 
         #
         # _MODE_BUILD variables
@@ -104,6 +107,7 @@ class Game(EventListenerBase):
         self.metamodel.deleteDatasets()
         self.view.clearCameras()
         self.timermanager.stop_all()
+        self.ticker.stop_ticker()
 
     def loadmap(self, map):
         """Loads a map.
@@ -511,7 +515,7 @@ class Game(EventListenerBase):
                             target_mapcoord.z = 0
                             l = fife.Location(self.layers['land'])
                             l.setMapCoordinates(target_mapcoord)
-                            self.selected_instance.move(l)
+                            self.ticker.add_command((lambda: self.selected_instance.move(l)))
                 else:
                     self.mode = _MODE_COMMAND
                     self.layers['units'].deleteInstance(self.selected_instance.object)
