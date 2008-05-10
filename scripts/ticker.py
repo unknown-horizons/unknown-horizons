@@ -72,7 +72,7 @@ class Ticker():
         print self.ticklist[self.process+tickoffset]
         self.ticklist[self.process+tickoffset].add_command(callback, args)
 
-    def change_tichrate(self, tps):
+    def change_tickrate(self, tps):
         """Changes the engines ticks per second
         @var tps: int ticks per second"""
         self.tps = tps 
