@@ -87,8 +87,6 @@ class Game(EventListenerBase):
         #
         self.mode = _MODE_COMMAND
         self.timermanager = timermanager.TimerManager() # Manages timers
-        self.ticker = Ticker(16)                        # Creates new Ticker with 16ticks per minute
-        self.ticker.start()
 
         #
         # _MODE_BUILD variables
@@ -107,7 +105,7 @@ class Game(EventListenerBase):
         self.metamodel.deleteDatasets()
         self.view.clearCameras()
         self.timermanager.stop_all()
-        self.ticker.stop_ticker()
+        self.ticker = None
 
     def loadmap(self, map):
         """Loads a map.
@@ -192,11 +190,11 @@ class Game(EventListenerBase):
         self.cam.setTilt(-60.0)
         self.cam.setZoom(1)
 
-        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
+        """self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
         self.overview.setCellImageDimensions(2, 2)
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
-        self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
+        self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))"""
        
 
     def creategame(self):

@@ -54,6 +54,7 @@ import basicapplication
 from scripts.keylistener import KeyListener
 from scripts.game import Game
 from scripts.dbreader import DbReader
+from scripts.ticker import Ticker
 
 
 class OpenAnno(basicapplication.ApplicationBase):
@@ -211,9 +212,14 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui = self.gamemenu
         if self.game is None:
             self.game = Game(self, "content/maps/demo.sqlite")
+            self.game.ticker = Ticker(16)
 
     def createListener(self):
-        self.listener = KeyListener(self.engine, self) 
+        self.listener = KeyListener(self.engine, self)
+
+    def _pump(self):
+        if self.game is not None and self.game.ticker is not None:
+            self.game.ticker.check_tick()
 
 # main methode, creates an OpenAnno instance
 def main():
