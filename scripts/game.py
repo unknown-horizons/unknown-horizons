@@ -22,6 +22,7 @@ import math
 import fife
 import pychan
 from eventlistenerbase import EventListenerBase
+from building import building
 from units.ship import Ship
 from units.house import House
 from player import Player
@@ -96,6 +97,9 @@ class Game(EventListenerBase):
         #
         # Beginn map creation
         #
+        
+        building.initBuildingClasses(self.main.db)
+        
         self.loadmap(map)
         self.creategame()
 

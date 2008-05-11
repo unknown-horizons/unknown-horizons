@@ -20,7 +20,7 @@
 # ###################################################
 
 import pychan
-from units.house import House
+from buildingtool import BuildingTool
 
 class IngameGui():
     """Class handling all the ingame gui events."""
@@ -80,7 +80,7 @@ class IngameGui():
         """Calls the Games build_object class."""
         self.gui['ship'].hide()
         self.game.selected_instance.object.say('')
-        self.game.build_object('2', self.game.layers['units'], House, 0, 0, self.game.get_tiles_in_radius(self.game.layers['land'], 6, self.game.selected_instance.object.getLocation()))
+        self.game.cursor = BuildingTool(self.game,  1)
 
     def toggle_visible(self, guiname):
         """Toggles whether a gui is visible or not.
