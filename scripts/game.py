@@ -214,7 +214,7 @@ class Game(EventListenerBase):
         #temporary ship creation, should be done automatically in later releases
         self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['building'], 1, 1)
         tempid = self.uid
-        inst = self.create_instance(self.layers['land'], self.datasets['building'], '99', 1, 1)
+        inst = self.create_instance(self.layers['land'], self.datasets['building'], '99', 25, 25)
         ship = self.create_unit(self.layers['land'], str(tempid), 99, Ship)
         ship.name = 'Matilde'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer

@@ -1,4 +1,4 @@
-
+import fife
 #TODO: Implement selection support over a common interface with Unit
 
 class BlockedError(Exception):
@@ -6,11 +6,23 @@ class BlockedError(Exception):
 
 class Building(object):
         
-    def calcBuildingCost():
+    def calcBuildingCost(cls, ground_layer,  building_layer, position):
         #TODO do ground checking and throw exception if blocked
-        return (100,  1,  1,  1)
+        def checkLayer(layer):
+            for x in xrange(cls.size[0]):
+                for y in xrange(cls.size[1]):
+                    coord = fife.ModelCoordinate(int(position.x + y),  int(position.y + y))
+                    if (layer.cellContainsBlockingInstance(coord)):
+                        print "Position at %s not okay"  % str(coord)   
+                        raise BlockedError
+                    
+        checkLayer(ground_layer)
+        checkLayer(building_layer)
         
-    calcBuildingCost = staticmethod(calcBuildingCost)
+        cost = (100,  1,  1,  1)
+        return cost
+        
+    calcBuildingCost = classmethod(calcBuildingCost)
 
 _buildingclasses = {}
 

@@ -78,9 +78,8 @@ class IngameGui():
 
     def _ship_build(self):
         """Calls the Games build_object class."""
-        self.gui['ship'].hide()
         self.game.selected_instance.object.say('')
-        self.game.cursor = BuildingTool(self.game,  1)
+        self.game.cursor = BuildingTool(self.game,  1,  self.game.selected_instance)
 
     def toggle_visible(self, guiname):
         """Toggles whether a gui is visible or not.
