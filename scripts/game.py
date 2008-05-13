@@ -195,11 +195,11 @@ class Game(EventListenerBase):
         self.cam.setTilt(-60.0)
         self.cam.setZoom(1)
 
-        """self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
+        self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
         self.overview.setCellImageDimensions(2, 2)
         self.overview.setRotation(0.0)
         self.overview.setTilt(0.0)
-        self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))"""
+        self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
        
 
     def creategame(self):
