@@ -12,9 +12,8 @@ class Building(object):
             for x in xrange(cls.size[0]):
                 for y in xrange(cls.size[1]):
                     coord = fife.ModelCoordinate(int(position.x + y),  int(position.y + y))
-                    if (layer.cellContainsBlockingInstance(coord)):
-                        print "Position at %s not okay"  % str(coord)   
-                        raise BlockedError
+                    # if (layer.cellContainsBlockingInstance(coord)):
+                    #    raise BlockedError
                     
         checkLayer(ground_layer)
         checkLayer(building_layer)
