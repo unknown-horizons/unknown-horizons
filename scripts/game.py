@@ -29,9 +29,9 @@ from player import Player
 from dbreader import DbReader
 from ingamegui import IngameGui
 from island import Island
-import timermanager
 from settlement import Settlement
 from ticker import Ticker
+from manager import Manager
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
@@ -87,7 +87,9 @@ class Game(EventListenerBase):
         # Other variables
         #
         self.mode = _MODE_COMMAND
-        self.timermanager = timermanager.TimerManager() # Manages timers
+        self.ticker = Ticker(16)
+        self.manager = Manager()
+        self.ticker.add_tick_item(self.manager)
 
         #
         # _MODE_BUILD variables
@@ -108,7 +110,6 @@ class Game(EventListenerBase):
         self.model.deleteMap(self.map)
         self.metamodel.deleteDatasets()
         self.view.clearCameras()
-        self.timermanager.stop_all()
         self.ticker = None
 
     def loadmap(self, map):
@@ -517,7 +518,7 @@ class Game(EventListenerBase):
                             target_mapcoord.z = 0
                             l = fife.Location(self.layers['land'])
                             l.setMapCoordinates(target_mapcoord)
-                            self.ticker.add_command((lambda: self.selected_instance.move(l)))
+                            self.manager.add_action((lambda: self.selected_instance.move(l)))
                 else:
                     self.mode = _MODE_COMMAND
                     self.layers['units'].deleteInstance(self.selected_instance.object)

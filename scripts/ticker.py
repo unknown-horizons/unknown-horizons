@@ -32,11 +32,8 @@ class Ticker():
         """@var tps: int times per second the ticker is to tick
         """
         self.tps = tps
-        self.ticklist = {}
-        self.process = 0
-        self.add_tick()
-        self.cur_tick = self.ticklist[self.process]
-        self.tick()
+        self.itemlist = []  # Stores objects that need to have a tick signaled, these items need to have a tick function, that will be called.
+        self.tickid = 0
         self.next_tick = time.time() + 1.0/self.tps
 
     def check_tick(self):
@@ -45,58 +42,22 @@ class Ticker():
             self.next_tick += 1.0/self.tps
             self.tick()
             self.check_tick()
-
+   
     def tick(self):
-        """Performes the tick and starts the next tick"""
-        # Add check here if all older ticks have been started by all players
-        tick = self.cur_tick
-        self.process += 1
-        self.add_tick()
-        self.cur_tick = self.ticklist[self.process]
-        for commandbatch in tick.commandlist:
-            print 'Running commandlist of tick:', tick.id
-            commandbatch() # Execute all commands
-        del self.ticklist[tick.id]
-                
-    def add_tick(self, offset=0):
-        """Adds a tick to the ticklist
-        @var offset: int number ticks ahead the tick is to be placed. offset of 50 will result in a tick that is run after 50 ticks."""
-        if (self.process+offset) not in self.ticklist:
-            self.ticklist[self.process+offset] = Tick(self.process+offset)
-        else:
-            pass
-
-    def add_command(self, callback_lambda, tickoffset=0):
-        """
-        Adds command to the Ticks commandlist.
-        @var callback_lambda: lambda of the function that is to be called with arguments [lambda: foo(2, 3, 4)].
-        @var tickoffset: int number ticks ahead the command is to be added.
-        """
-        if (self.process+tickoffset) not in self.ticklist:
-            self.add_tick(tickoffset)
-        self.ticklist[self.process+tickoffset].add_command(callback_lambda)
+       """Performes the tick, by calling all items tick() function in the itemlist."""
+       for item in self.itemlist:
+           item.tick(self.tickid)
+       self.tickid += 1
 
     def change_tickrate(self, tps):
         """Changes the engines ticks per second
         @var tps: int ticks per second"""
         self.tps = tps
 
+    def add_tick_item(self, object):
+       """Adds an object to the itemlist. 
+       @var object: Object that has to have a tick() function, which is called every tick."""
+       self.itemlist.append(object)
 
-class Tick():
-    """
-    The Tick class represents a single tick and stores all the commends that are to be executed.
-    """
-    def __init__(self, id):
-        """
-        @var id: int unique tick id.
-        """
-        self.id = id
-        self.commandlist = [] # List of command lambdas
 
-    def add_command(self, callback_lambda):
-        """
-        Adds command to the Ticks commandlist.
-        @var callback_lambda: lambda of the function that is to be called with arguments [lambda: foo(2, 3, 4)].
-        """
-        self.commandlist.append(callback_lambda)
-        print 'Added command to tick:', self.id
+
