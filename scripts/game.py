@@ -309,55 +309,6 @@ class Game(EventListenerBase):
         unit.start()
         return unit
 
-    def build_check(self, inst):
-        """
-        Checkes whether or not a building can be built at the current mouse position.
-        @var inst: Object instance that is to be built (must have size_x and size_y set).
-        @var tile_list: list containing fife.Instances, if specified it is also checked that the instance can
-                        only be built on the fife.Instances in the list.
-        @return: returns bool true if check successfull and false it. 
-        """
-
-        #FIXME: works basically, but will result in problems with unit checking and wrong checks on the lower right side of islands
-        def check_inst(layer, point, inst):
-            instances = self.cam.getMatchingInstances(self.cam.toScreenCoordinates(point), layer)
-            if instances: #Check whether the found instance equals the instance that is to be built.
-                if inst.object.getFifeId() == instances[0].getFifeId():
-                    instances = instances[1:len(instances)]
-            if instances and len(instances) > 0:
-                if self._build_tiles is not None:
-                    for inst in self._build_tiles:
-                        if inst.getLocation() == instances[0].getLocation():
-                            return True
-                        else:
-                            pass
-                    return False
-                else:
-                    return True
-            else:
-                return False
-        checkpoint = inst.object.getLocation().getMapCoordinates()
-        starty = float(checkpoint.y)-0.5
-        checkpoint.x = float(checkpoint.x)+0.5
-        check = True
-        print 'Start check x: ', checkpoint.x, ' y: ', starty
-        for x in xrange(inst.size_x):
-            checkpoint.y = starty
-            for y in xrange(inst.size_y):
-                print 'Checking x: ', checkpoint.x,' y: ', checkpoint.y
-                check = check_inst(self.layers['land'], checkpoint, inst)
-                print 'land check:', check
-                if check:
-                    check = (not check_inst(self.layers['units'], checkpoint, inst))
-                    print 'unit check:', check
-                else:
-                    break
-                checkpoint.y += 1
-            if not check:
-                break
-            checkpoint.x += 1
-        print 'Finished check'
-        return check
 
     def get_tiles_in_radius(self, layer, radius, start_loc):
         """Returns a list of instances in the radius on the specified layer.
@@ -385,21 +336,6 @@ class Game(EventListenerBase):
         else:
             return False
 
-    def build_object(self, id, layer, Object, x, y, tile_list):
-        """Creates an instance and object for the id and sets the correct mode.
-        @var id: str with the objects unique id.
-        @var layer: fife.Layer the object is to be built on.
-        @var Object: unit.Object class representing the object.
-        @var x,y: int coordinates for initial placement.
-        @var tile_list: list containing fife.Instances on which the object can be built.
-        """
-        self.mode = _MODE_BUILD
-        self._build_tiles = tile_list
-        curunique = self.uid
-        inst = self.create_instance(layer , self.datasets['building'], id, x, y)
-        self.selected_instance = self.create_unit(layer, curunique, id, Object)
-
-
     def get_instance(self, layer, x, y):
         """Returns the first instance found on the layer at gridpoint (x,y).
         @var layer: fife.Layer to look on.
@@ -411,16 +347,6 @@ class Game(EventListenerBase):
             return inst
         else:
             return None
-
-    def create_settlement(self, player, warehouse):
-        """Creates a new settlement
-        @var player: Player instance that built the settlement
-        @var warehouse: the initial warehouse
-        """
-        pass
-        #settlement = Settlement()
-        
-
 
     def set_cam_position(self, x, y, z):
         """Sets the camera position
