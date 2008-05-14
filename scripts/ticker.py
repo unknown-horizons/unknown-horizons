@@ -49,7 +49,7 @@ class Ticker:
         """Adds a call to the call list
         @var call: function function which should be added
         """
-        self.tick_func_test.append(call)
+        self.tick_func_call.append(call)
 
     def remove_test(self, call):
         """Removes a call from the test list
