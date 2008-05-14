@@ -21,15 +21,15 @@
 import math
 import fife
 import pychan
-from eventlistenerbase import EventListenerBase
-from building import building
-from units.ship import Ship
-from units.house import House
-from player import Player
+from gui.eventlistenerbase import EventListenerBase
+from world.building import building
+from world.units.ship import Ship
+from world.units.house import House
+from world.player import Player
 from dbreader import DbReader
-from ingamegui import IngameGui
-from island import Island
-from settlement import Settlement
+from gui.ingamegui import IngameGui
+from world.island import Island
+from world.settlement import Settlement
 from ticker import Ticker
 from manager import Manager
 
