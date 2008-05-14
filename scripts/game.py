@@ -89,7 +89,8 @@ class Game(EventListenerBase):
         self.mode = _MODE_COMMAND
         self.ticker = Ticker(16)
         self.manager = Manager()
-        self.ticker.add_tick_item(self.manager)
+        self.ticker.add_test(self.manager.test)
+        self.ticker.add_call(self.manager.tick)
 
         #
         # _MODE_BUILD variables

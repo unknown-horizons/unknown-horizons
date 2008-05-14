@@ -38,6 +38,10 @@ class Manager:
             print 'Running commandlist of tick:', cmdbatch.id
             commandbatch() # Execute all commands
         del self.cmdbatchlist[cmdbatch.id]
+
+    def test(self, id):
+        """Used to check if the manager is ready for the next tick."""
+        return 0
                 
     def add_batch(self):
         """Adds a CmdBatch to the cmdbatchlist"""
