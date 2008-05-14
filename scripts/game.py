@@ -40,6 +40,9 @@ class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
 
     def __init__(self, main, map):
+        tmp = command.unit.Move(1,'123')
+        tmp(asd = 'asd', units = '123')
+        
         """@var main: parant Openanno instance
         @var map: string with the mapfile path
         """
@@ -88,10 +91,10 @@ class Game(EventListenerBase):
         # Other variables
         #
         self.mode = _MODE_COMMAND
-        self.ticker = Ticker(16)
-        self.manager = Manager()
-        self.ticker.add_test(self.manager.test)
-        self.ticker.add_call(self.manager.tick)
+        self.timer = Timer(16)
+        self.manager = SPManager()
+        self.timer.add_test(self.manager.test)
+        self.timer.add_call(self.manager.tick)
 
         #
         # _MODE_BUILD variables

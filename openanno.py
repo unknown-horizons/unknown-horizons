@@ -216,8 +216,8 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.listener = KeyListener(self.engine, self)
 
     def _pump(self):
-        if self.game is not None and self.game.ticker is not None:
-            self.game.ticker.check_tick()
+        if self.game is not None and self.game.timer is not None:
+            self.game.timer.check_tick()
 
 # main methode, creates an OpenAnno instance
 def main():
