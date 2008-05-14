@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class Manager:
+class SPManager:
     """The manager class takes care of command issuing to the timermanager,sends tick-packets
     over the network, and syncronisation of network games."""
 

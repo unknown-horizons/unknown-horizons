@@ -30,8 +30,9 @@ from dbreader import DbReader
 from gui.ingamegui import IngameGui
 from world.island import Island
 from world.settlement import Settlement
-from ticker import Ticker
-from manager import Manager
+from timer import Timer
+from manager import SPManager
+import command.*
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 

@@ -21,7 +21,7 @@
 
 import threading
 
-class TimerManager():
+class Scheduler():
     """"Class providing a thread for timed callbacks.
     To start a timed callback, either create a CallbackObject with the apropriat values and call add_object(),
     or call add_new_object() to make the TimingThread Class create a CallbackObject for you.

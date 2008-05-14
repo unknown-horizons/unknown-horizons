@@ -21,16 +21,16 @@
 
 import time
 
-class Ticker:
+class Timer:
     """
-    The Ticker class manages game-ticks, every tick executes a set of functions in its call lists,
+    The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
     this is espacialy important for multiplayer, to allow syncronous play.
     """
     TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 
     def __init__(self, ticks_per_second, tick_next_id = 0):
         """
-        @var ticks_per_second: int times per second the ticker is to tick
+        @var ticks_per_second: int times per second the timer is to tick
         @var tick_next_id: int next tick id
         """
         self.ticks_per_second = ticks_per_second
