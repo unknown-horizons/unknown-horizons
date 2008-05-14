@@ -32,7 +32,7 @@ from world.island import Island
 from world.settlement import Settlement
 from timer import Timer
 from manager import SPManager
-import command.*
+import command.unit
 
 _MODE_COMMAND, _MODE_BUILD = xrange(2)
 
