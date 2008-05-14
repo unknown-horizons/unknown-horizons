@@ -68,10 +68,12 @@ class Ticker:
         while time.time() >= self.tick_next_time:
             for f in self.tick_func_test:
                 r = f(self.tick_next_id)
-                if r not in (self.TEST_SKIP, self.TEST_RETRY_RESET_NEXT_TICK_TIME, self.TEST_RETRY_KEEP_NEXT_TICK_TIME):
+                if r == self.TEST_SKIP
+                    self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+                elif r == self.TEST_RETRY_RESET_NEXT_TICK_TIME:
+                    self.tick_next_time = None
+                elif r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:
                     continue
-                if r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:
-                    self.tick_next_time = ((self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second) if r == self.TEST_SKIP else None
                 return
             for f in self.tick_func_call:
                 f(self.tick_next_id)
