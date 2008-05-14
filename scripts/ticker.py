@@ -21,43 +21,62 @@
 
 import time
 
-class Ticker():
+class Ticker:
     """
-    The Ticker class manages game-ticks, every tick executes a set of commands in its cache,
-    this is espacialy important for multiplayer, to allow syncronous play. 
-    Every command the player issues has to pass through the ticker, in order to make it multiplayer
-    compatible.
+    The Ticker class manages game-ticks, every tick executes a set of functions in its call lists,
+    this is espacialy important for multiplayer, to allow syncronous play.
     """
-    def __init__(self, tps):
-        """@var tps: int times per second the ticker is to tick
+    TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
+
+    def __init__(self, ticks_per_second, tick_next_id = 0):
         """
-        self.tps = tps
-        self.itemlist = []  # Stores objects that need to have a tick signaled, these items need to have a tick function, that will be called.
-        self.tickid = 0
-        self.next_tick = time.time() + 1.0/self.tps
+        @var ticks_per_second: int times per second the ticker is to tick
+        @var tick_next_id: int next tick id
+        """
+        self.ticks_per_second = ticks_per_second
+        self.tick_next_id = tick_next_id
+        self.tick_next_time = None
+        self.tick_func_test = []
+        self.tick_func_call = []
+
+    def add_test(self, call):
+        """Adds a call to the test list
+        @var call: function function which should be added
+        """
+        self.tick_func_test.append(call)
+
+    def add_call(self, call):
+        """Adds a call to the call list
+        @var call: function function which should be added
+        """
+        self.tick_func_test.append(call)
+
+    def remove_test(self, call):
+        """Removes a call from the test list
+        @var call: function function which were added before
+        """
+        self.tick_func_test.remove(call)
+
+    def remove_call(self, call):
+        """Removes a call from the call list
+        @var call: function function which were added before
+        """
+        self.tick_func_call.remove(call)
 
     def check_tick(self):
         """check_tick is called by the engines _pump function to signal a frame idle."""
-        if time.time() > self.next_tick:
-            self.next_tick += 1.0/self.tps
-            self.tick()
-            self.check_tick()
-   
+        while time.time() >= self.tick_next_time:
+            for f in self.tick_func_test:
+                r = f(self.tick_next_id)
+                if r not in (self.TEST_SKIP, self.TEST_RETRY_RESET_NEXT_TICK_TIME, self.TEST_RETRY_KEEP_NEXT_TICK_TIME):
+                    continue
+                if r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:
+                    self.tick_next_time = ((self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second) if r == self.TEST_SKIP else None
+                return
+            for f in self.tick_func_call:
+                f(self.tick_next_id)
+            self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+            self.tick_next_id += 1
+
     def tick(self):
-       """Performes the tick, by calling all items tick() function in the itemlist."""
-       for item in self.itemlist:
-           item.tick(self.tickid)
-       self.tickid += 1
-
-    def change_tickrate(self, tps):
-        """Changes the engines ticks per second
-        @var tps: int ticks per second"""
-        self.tps = tps
-
-    def add_tick_item(self, object):
-       """Adds an object to the itemlist. 
-       @var object: Object that has to have a tick() function, which is called every tick."""
-       self.itemlist.append(object)
-
-
-
+        """Performes the tick, by calling all function in the call lists and increasing the tick id between middle and after call lists."""
