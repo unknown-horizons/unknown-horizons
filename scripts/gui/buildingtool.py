@@ -69,7 +69,7 @@ class BuildingTool(CursorTool):
          
     def mousePressed(self,  evt):
         if fife.MouseEvent.RIGHT == evt.getButton():
-            self.game.cursor = None
+            self.game.set_selection_mode()
         elif fife.MouseEvent.LEFT == evt.getButton():
             pt = fife.ScreenPoint(evt.getX(), evt.getY())
             mapcoord = self.game.cam.toMapCoordinates(pt, False)

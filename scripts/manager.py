@@ -23,10 +23,11 @@ class SPManager:
     """The manager class takes care of command issuing to the timermanager,sends tick-packets
     over the network, and syncronisation of network games."""
 
-    def __init__(self):
+    def __init__(self, game):
         self.cmdbatchlist =  {}
         self.process = 0
         self.add_batch()
+        self.game = game
 
     def tick(self, id):
         """Performes the tick and starts the next tick
@@ -36,7 +37,7 @@ class SPManager:
         self.add_batch()
         for commandbatch in cmdbatch.cmdlist:
             print 'Running commandlist of tick:', cmdbatch.id
-            commandbatch() # Execute all commands
+            commandbatch.__call__(self.game) # Execute all commands
         del self.cmdbatchlist[cmdbatch.id]
 
     def test(self, id):

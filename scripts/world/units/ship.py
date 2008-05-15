@@ -59,9 +59,8 @@ class Ship(Object):
         @var location: fife.Location to which the unit should move"""
         self.state = _STATE_MOVE
         #self.object.move('move', location, 2)
-	facing_location = fife.Location(location)
-	facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
-        
-	self.object.setLocation(location)
+        facing_location = fife.Location(location)
+        facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())      
+        self.object.setLocation(location)
         self.object.setFacingLocation(facing_location)
 

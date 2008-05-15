@@ -22,33 +22,27 @@ import math
 import fife
 import pychan
 from gui.eventlistenerbase import EventListenerBase
+from gui.selectiontool import SelectionTool
 from world.building import building
 from world.units.ship import Ship
 from world.units.house import House
 from world.player import Player
-from dbreader import DbReader
 from gui.ingamegui import IngameGui
 from world.island import Island
-from world.settlement import Settlement
 from timer import Timer
+from scheduler import Scheduler
 from manager import SPManager
-import command.unit
-
-_MODE_COMMAND, _MODE_BUILD = xrange(2)
 
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
 
     def __init__(self, main, map):
-        tmp = command.unit.Move(1,'123')
-        tmp(asd = 'asd', units = '123')
-        
         """@var main: parant Openanno instance
         @var map: string with the mapfile path
         """
         self.main = main
         engine = self.main.engine
-        super(Game, self).__init__(engine, regMouse=True, regKeys=True)
+        super(Game, self).__init__(engine, regKeys=True)
 
         #
         # Engine specific variables
@@ -69,7 +63,7 @@ class Game(EventListenerBase):
         self.instance_to_unit = {}
 
         #
-        # Player related variables
+        # Player related variable
         #
         self.human_player = None
         self.players = {}
@@ -81,6 +75,8 @@ class Game(EventListenerBase):
         #self.overview = None    # Overview camera
         self.view = None
         self.outline_renderer = None
+        self.cursor = None
+        self.set_selection_mode()
 
         #
         # Gui related variables
@@ -90,11 +86,12 @@ class Game(EventListenerBase):
         #
         # Other variables
         #
-        self.mode = _MODE_COMMAND
         self.timer = Timer(16)
-        self.manager = SPManager()
+        self.manager = SPManager(self)
         self.timer.add_test(self.manager.test)
         self.timer.add_call(self.manager.tick)
+        self.scheduler = Scheduler()
+        self.timer.add_call(self.scheduler.tick)
 
         #
         # _MODE_BUILD variables
@@ -206,6 +203,10 @@ class Game(EventListenerBase):
         #self.overview.setTilt(0.0)
         #self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
        
+
+    def set_selection_mode(self):
+        """Sets the game into selection mode."""
+        self.cursor = SelectionTool(self)
 
     def creategame(self):
         """Initialises rendering, creates the camera and sets it's position."""
@@ -365,30 +366,17 @@ class Game(EventListenerBase):
         @var xdir: int representing x direction scroll.
         @var ydir: int representing y direction scroll.
         """
-        loc = self.cam.getLocationRef()
+        cam = self.cam
+        loc = cam.getLocationRef()
         cam_scroll = loc.getExactLayerCoordinatesRef()
         if xdir != 0:
-            cam_scroll.x += xdir * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom()
-            cam_scroll.y += xdir * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom()
+            cam_scroll.x += xdir * math.cos(math.pi * cam.getRotation() / 180.0) / cam.getZoom()
+            cam_scroll.y += xdir * math.sin(math.pi * cam.getRotation() / 180.0) / cam.getZoom()
         if ydir != 0:
-            cam_scroll.x += ydir * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
-            cam_scroll.y += ydir * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
-        self.cam.setLocation(loc)
+            cam_scroll.x += ydir * math.sin(math.pi * cam.getRotation() / -180.0) / cam.getZoom()
+            cam_scroll.y += ydir * math.cos(math.pi * cam.getRotation() / -180.0) / cam.getZoom()
+        cam.setLocation(loc)
 
-    def select_unit(self):
-        """Runs neccesary steps to select a unit."""
-        self.selected_instance.object.say(str(self.selected_instance.health) + '%', 0) # display health over selected ship
-        self.outline_renderer.addOutlined(self.selected_instance.object, 255, 255, 255, 1)
-        if self.selected_instance.__class__ is Ship:
-            self.ingame_gui.gui['ship'].show() #show the gui for ships
-
-    def deselect_unit(self):
-        """Runs neccasary steps to deselect a unit."""
-        if self.selected_instance.__class__ is Ship:
-            self.ingame_gui.toggle_visible('ship') # hide the gui for ships
-            self.selected_instance.object.say('') #remove status of last selected unit
-            self.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
-           
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
         keystr = evt.getKey().getAsString().lower()
@@ -412,57 +400,6 @@ class Game(EventListenerBase):
             r = self.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())
 
-    def mousePressed(self, evt):
-        clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-        if False: #evt.getX() < 200 and evt.getY() < 200:
-            loc = fife.Location(self.layers["water"])
-            loc.setExactLayerCoordinates(self.overview.toMapCoordinates(clickpoint, False))
-            self.cam.setLocation(loc)
-        else:
-            if (evt.getButton() == fife.MouseEvent.LEFT):
-                if self.mode is _MODE_COMMAND: # standard mode
-                    instances = self.cam.getMatchingInstances(clickpoint, self.layers['land'])
-                    if instances: #check if clicked point is a unit
-                        selected = instances[0]
-                        print "selected instance at: ",  selected.getLocation().getMapCoordinates().x, selected.getLocation().getMapCoordinates().y
-                        if self.selected_instance:
-                            if self.selected_instance.object.getFifeId() != selected.getFifeId():
-                                self.deselect_unit()
-                        if selected.getFifeId() in self.instance_to_unit:
-                            self.selected_instance = self.instance_to_unit[selected.getFifeId()]
-                            self.select_unit()
-                        else:
-                            self.selected_instance = None
-                    elif self.selected_instance: # remove unit selection
-                        self.deselect_unit()
-                        self.selected_instance = None
-                else:
-                    if self.build_check(self.selected_instance):
-                        self.mode = _MODE_COMMAND
-                        self.selected_instance = None
-                        self._build_tiles = None
-            elif (evt.getButton() == fife.MouseEvent.RIGHT):
-                if self.mode is _MODE_COMMAND:
-                    if self.selected_instance: # move unit   
-                        if self.selected_instance.type == 'ship':
-                            target_mapcoord = self.cam.toMapCoordinates(clickpoint, False)
-                            target_mapcoord.z = 0
-                            l = fife.Location(self.layers['land'])
-                            l.setMapCoordinates(target_mapcoord)
-                            self.manager.add_action((lambda: self.selected_instance.move(l)))
-                else:
-                    self.mode = _MODE_COMMAND
-                    self.layers['units'].deleteInstance(self.selected_instance.object)
-                    self.instance_to_unit[self.selected_instance.object.getFifeId()] = None
-                    self.selected_instance = None
-                    self._build_tiles = None
-
-    def mouseWheelMovedUp(self, evt):
-        self.zoom_in()
-
-    def mouseWheelMovedDown(self, evt):
-        self.zoom_out()
-
     def zoom_out(self):
         zoom = self.cam.getZoom() * 0.875
         if(zoom < 0.25):
@@ -481,15 +418,3 @@ class Game(EventListenerBase):
     def rotate_map_left(self):
           self.cam.setRotation((self.cam.getRotation() - 90) % 360)
 
-
-    def mouseMoved(self, evt):
-        if self.mode == _MODE_BUILD:
-            pt = fife.ScreenPoint(evt.getX(), evt.getY())
-            target_mapcoord = self.cam.toMapCoordinates(pt, False)
-            target_mapcoord.x = int(target_mapcoord.x)
-            target_mapcoord.y = int(target_mapcoord.y)
-            target_mapcoord.z = 0
-            l = fife.Location(self.layers['units'])
-            l.setMapCoordinates(target_mapcoord)
-            self.selected_instance.move(l)
-            #print self.build_check(self.selected_instance)
