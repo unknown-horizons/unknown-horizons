@@ -34,7 +34,7 @@ _paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', '
 for p in _paths:
     if p not in sys.path:
         # check if we are in a fife dir...
-        for pe in [ p + '/' + a for a in ('.', 'engine/swigwrappers/python', 'engine/extensions') ]:
+        for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
             if not os.path.exists(os.path.sep.join(pe.split('/'))):
                 break
         else:
