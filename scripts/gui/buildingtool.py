@@ -49,7 +49,7 @@ class BuildingTool(CursorTool):
 
     def mouseMoved(self,  evt):
          pt = fife.ScreenPoint(evt.getX(), evt.getY())
-         target_mapcoord = self.game.cam.toMapCoordinates(pt, False)
+         target_mapcoord = self.game.view.cam.toMapCoordinates(pt, False)
          target_mapcoord.x = int(target_mapcoord.x)
          target_mapcoord.y = int(target_mapcoord.y)
          target_mapcoord.z = 0
@@ -72,7 +72,7 @@ class BuildingTool(CursorTool):
             self.game.set_selection_mode()
         elif fife.MouseEvent.LEFT == evt.getButton():
             pt = fife.ScreenPoint(evt.getX(), evt.getY())
-            mapcoord = self.game.cam.toMapCoordinates(pt, False)
+            mapcoord = self.game.view.cam.toMapCoordinates(pt, False)
             if self._buildCheck(mapcoord):
                 pass
                 #TODO: Issue build command

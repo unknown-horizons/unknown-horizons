@@ -32,6 +32,7 @@ from world.island import Island
 from timer import Timer
 from scheduler import Scheduler
 from manager import SPManager
+from view import View
 
 class Game(EventListenerBase):
     """Game class represents the games main ingame view and controls cameras and map loading."""
@@ -71,7 +72,6 @@ class Game(EventListenerBase):
         #
         # Camera related variables
         #
-        self.cam = None         # Main camera
         #self.overview = None    # Overview camera
         self.view = None
         self.outline_renderer = None
@@ -109,7 +109,7 @@ class Game(EventListenerBase):
         super(Game, self).__del__()
         self.model.deleteMap(self.map)
         self.metamodel.deleteDatasets()
-        self.view.clearCameras()
+        self.engine.getView().clearCameras()
         self.ticker = None
 
     def loadmap(self, map):
@@ -187,20 +187,13 @@ class Game(EventListenerBase):
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 13, 0), ''))
         fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 14, 0), ''))
 
-        print "center:", ((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0)
-
-        self.cam = self.engine.getView().addCamera("main", self.map.getLayers("id", "layer1")[0], fife.Rect(0, 0, self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), fife.ExactModelCoordinate(((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
-        self.cam.setCellImageDimensions(32, 16)
-        self.cam.setRotation(45.0)
-        self.cam.setTilt(-60.0)
-        self.cam.setZoom(1)
+        self.view = View(self.engine, (self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), self.map.getLayers("id", "layer1")[0], (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
 
         #self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
         #self.overview.setCellImageDimensions(2, 2)
         #self.overview.setRotation(0.0)
         #self.overview.setTilt(0.0)
         #self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
-       
 
     def set_selection_mode(self):
         """Sets the game into selection mode."""
@@ -215,7 +208,7 @@ class Game(EventListenerBase):
 
         self.ingame_gui = IngameGui(self)
         self.ingame_gui.status_set('gold','10000')
-        
+
         #temporary ship creation, should be done automatically in later releases
         self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", self.datasets['building'], 1, 1)
         tempid = self.uid
@@ -225,15 +218,14 @@ class Game(EventListenerBase):
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
 
-        self.view = self.engine.getView()
-        self.view.resetRenderers()
+        self.engine.getView().resetRenderers()
 
 
-        renderer = self.cam.getRenderer('CoordinateRenderer')
+        renderer = self.view.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
         
-        self.outline_renderer = fife.InstanceRenderer.getInstance(self.cam)
+        self.outline_renderer = fife.InstanceRenderer.getInstance(self.view.cam)
 
     def create_object(self, oid, image_overview, image_n, image_e, image_s, image_w, dataset, size_x = 1, size_y = 1):
         """Creates a new dataset object, that can later be used on the map
@@ -351,68 +343,26 @@ class Game(EventListenerBase):
         else:
             return None
 
-    def set_cam_position(self, x, y, z):
-        """Sets the camera position
-        @var pos: tuple with coordinates(x.x,x.x,x.x) to set the camera to.
-        """
-        loc = fife.Location(self.layers['water'])
-        loc.setExactLayerCoordinates(fife.ExactModelCoordinate(x, y, z))
-        self.cam.setLocation(loc)
-
-    def move_camera(self, xdir, ydir):
-        """Moves the camera across the screen.
-        @var xdir: int representing x direction scroll.
-        @var ydir: int representing y direction scroll.
-        """
-        cam = self.cam
-        loc = cam.getLocationRef()
-        cam_scroll = loc.getExactLayerCoordinatesRef()
-        if xdir != 0:
-            cam_scroll.x += xdir * math.cos(math.pi * cam.getRotation() / 180.0) / cam.getZoom()
-            cam_scroll.y += xdir * math.sin(math.pi * cam.getRotation() / 180.0) / cam.getZoom()
-        if ydir != 0:
-            cam_scroll.x += ydir * math.sin(math.pi * cam.getRotation() / -180.0) / cam.getZoom()
-            cam_scroll.y += ydir * math.cos(math.pi * cam.getRotation() / -180.0) / cam.getZoom()
-        cam.setLocation(loc)
-
     def keyPressed(self, evt):
         keyval = evt.getKey().getValue()
         keystr = evt.getKey().getAsString().lower()
         if keyval == fife.Key.LEFT:
-            self.move_camera(-1, 0)
+            self.view.scroll(-1, 0)
         elif keyval == fife.Key.RIGHT:
-            self.move_camera(1, 0)
+            self.view.scroll(1, 0)
         elif keyval == fife.Key.UP:
-            self.move_camera(0, -1)
+            self.view.scroll(0, -1)
         elif keyval == fife.Key.DOWN:
-            self.move_camera(0, 1)
+            self.view.scroll(0, 1)
         elif keystr == 'c':
-            r = self.cam.getRenderer('CoordinateRenderer')
+            r = self.view.cam.getRenderer('CoordinateRenderer')
             r.setEnabled(not r.isEnabled())
         elif keystr == 'r':
-            self.rotate_map_right()
+            self.view.rotate_right()
         elif keystr == 'q':
             self.__del__()
             self.main.quit()    
         elif keystr == 't':
-            r = self.cam.getRenderer('GridRenderer')
+            r = self.view.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())
-
-    def zoom_out(self):
-        zoom = self.cam.getZoom() * 0.875
-        if(zoom < 0.25):
-            zoom = 0.25
-        self.cam.setZoom(zoom)
-
-    def zoom_in(self):
-        zoom = self.cam.getZoom() / 0.875
-        if(zoom > 1):
-            zoom = 1
-        self.cam.setZoom(zoom)
-
-    def rotate_map_right(self):
-          self.cam.setRotation((self.cam.getRotation() + 90) % 360)
-
-    def rotate_map_left(self):
-          self.cam.setRotation((self.cam.getRotation() - 90) % 360)
 

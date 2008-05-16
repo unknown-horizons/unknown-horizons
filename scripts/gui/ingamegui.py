@@ -59,10 +59,10 @@ class IngameGui():
         self.toggle_visible('main')        
         self.gui['main'].mapEvents({
             'build' : pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
-            'zoomIn' : self.game.zoom_in,
-            'zoomOut' : self.game.zoom_out,
-            'rotateRight' : self.game.rotate_map_right,
-            'rotateLeft' : self.game.rotate_map_left,
+            'zoomIn' : self.game.view.zoom_in,
+            'zoomOut' : self.game.view.zoom_out,
+            'rotateRight' : self.game.view.rotate_right,
+            'rotateLeft' : self.game.view.rotate_left,
             'escButton' : self.game.main.gui.show
         })
 
