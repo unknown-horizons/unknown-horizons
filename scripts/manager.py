@@ -35,7 +35,7 @@ class SPManager:
         """Executes a command
         @var command: Command the command to be executed
         """
-        command(**self.args)
+        command(owner = self.args['player'], **self.args)
 
 class MPManager:
     COMMAND_RATE = 1
@@ -62,7 +62,7 @@ class MPManager:
             if self.packets.has_key(tick - 2):
                 for p in self.args['players'][(tick - 2) % len(self.args['players']):] + self.args['players'][:((tick - 2) % len(self.args['players'])) - 1]:
                     for c in self.packets[tick - 2][p].commands:
-                        c(**self.args)
+                        c(owner = p, **self.args)
 
     def can_tick(self, tick):
         return timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
