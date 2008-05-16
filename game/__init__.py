@@ -177,7 +177,7 @@ class Game(EventListenerBase):
             for y in range(min_y-10, max_y+11):
                 inst = self.create_instance(self.layers['water'], self.datasets['ground'], str(int(13)), int(x), int(y), 0)
 
-        self.view = View(self.engine, (self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), self.map.getLayers("id", "layer1")[0], (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
+        self.view = View(self.engine, (all.settings.ScreenWidth, all.settings.ScreenHeight), self.map.getLayers("id", "layer1")[0], (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
 
         #self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
         #self.overview.setCellImageDimensions(2, 2)

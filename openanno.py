@@ -96,25 +96,27 @@ class OpenAnno(basicapplication.ApplicationBase):
             LogToFile           = 1
             UsePsyco            = False
             ImageChunkSize      = 256
-        self.settings = DefaultSettings()
+        all.settings = DefaultSettings()
         configFile = './openanno-config.sqlite'
         if not os.path.exists(configFile):
             shutil.copyfile('content/config.sqlite', configFile)
         all.db.query("attach ? AS config", (configFile))
         for (name, value) in all.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'screen_full':
-                self.settings.FullScreen = int(value)
+                all.settings.FullScreen = int(value)
             if name == 'screen_width':
-                self.settings.ScreenWidth = int(value)
+                all.settings.ScreenWidth = int(value)
             if name == 'screen_height':
-                self.settings.ScreenHeight = int(value)
+                all.settings.ScreenHeight = int(value)
             if name == 'screen_bpp':
-                self.settings.BitsPerPixel = int(value)
+                all.settings.BitsPerPixel = int(value)
             if name == 'screen_renderer':
-                self.settings.RenderBackend = str(value)
-        
+                all.settings.RenderBackend = str(value)
+
+        self.settings = all.settings
         super(OpenAnno, self).__init__() 
-        
+        self.settings = None
+
         pychan.init(self.engine,debug=False)
         # Load styles here
         for name,stylepart in style.STYLES.items():
@@ -155,18 +157,18 @@ class OpenAnno(basicapplication.ApplicationBase):
         Called in the ApplicationBase constructor.
         """
         engineSetting = self.engine.getSettings()
-        engineSetting.setDefaultFontGlyphs(self.settings.FontGlyphs)
-        engineSetting.setDefaultFontPath(self.settings.Font)
-        engineSetting.setDefaultFontSize(self.settings.FontSize)
-        engineSetting.setBitsPerPixel(self.settings.BitsPerPixel)
-        engineSetting.setFullScreen(self.settings.FullScreen)
-        engineSetting.setInitialVolume(self.settings.InitialVolume)
-        engineSetting.setRenderBackend(self.settings.RenderBackend)
-        engineSetting.setSDLRemoveFakeAlpha(self.settings.SDLRemoveFakeAlpha)
-        engineSetting.setScreenWidth(self.settings.ScreenWidth)
-        engineSetting.setScreenHeight(self.settings.ScreenHeight)
+        engineSetting.setDefaultFontGlyphs(all.settings.FontGlyphs)
+        engineSetting.setDefaultFontPath(all.settings.Font)
+        engineSetting.setDefaultFontSize(all.settings.FontSize)
+        engineSetting.setBitsPerPixel(all.settings.BitsPerPixel)
+        engineSetting.setFullScreen(all.settings.FullScreen)
+        engineSetting.setInitialVolume(all.settings.InitialVolume)
+        engineSetting.setRenderBackend(all.settings.RenderBackend)
+        engineSetting.setSDLRemoveFakeAlpha(all.settings.SDLRemoveFakeAlpha)
+        engineSetting.setScreenWidth(all.settings.ScreenWidth)
+        engineSetting.setScreenHeight(all.settings.ScreenHeight)
         try:
-            engineSetting.setImageChunkingSize(self.settings.ImageChunkSize)
+            engineSetting.setImageChunkingSize(all.settings.ImageChunkSize)
         except:
             pass
 
@@ -176,9 +178,9 @@ class OpenAnno(basicapplication.ApplicationBase):
     def showSettings(self):
         resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
         try:
-            resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight))
+            resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight))
         except:
-            resolutions.append(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight))
+            resolutions.append(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight))
         dlg = pychan.loadXML('content/gui/settings.xml')
         dlg.distributeInitialData({
            'screen_resolution' : resolutions,
@@ -186,37 +188,37 @@ class OpenAnno(basicapplication.ApplicationBase):
            'screen_bpp' : ["Desktop", "16", "24", "32"]
         })
         dlg.distributeData({
-           'screen_resolution' : resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight)),
-           'screen_renderer' : 0 if self.settings.RenderBackend == 'OpenGL' else 1,
-           'screen_bpp' : int(self.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
-           'screen_fullscreen' : self.settings.FullScreen == 1
+           'screen_resolution' : resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight)),
+           'screen_renderer' : 0 if all.settings.RenderBackend == 'OpenGL' else 1,
+           'screen_bpp' : int(all.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
+           'screen_fullscreen' : all.settings.FullScreen == 1
         })
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;
         screen_resolution, screen_renderer, screen_bpp, screen_fullscreen = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen')
         changes_require_restart = False
-        if screen_fullscreen != (self.settings.FullScreen == 1):
-            self.settings.FullScreen = (1 if screen_fullscreen else 0)
-            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.FullScreen));
-            self.engine.getSettings().setFullScreen(self.settings.FullScreen)
+        if screen_fullscreen != (all.settings.FullScreen == 1):
+            all.settings.FullScreen = (1 if screen_fullscreen else 0)
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', all.settings.FullScreen));
+            self.engine.getSettings().setFullScreen(all.settings.FullScreen)
             changes_require_restart = True
-        if screen_bpp != int(self.settings.BitsPerPixel / 10):
-            self.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
-            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', self.settings.BitsPerPixel));
-            self.engine.getSettings().setBitsPerPixel(self.settings.BitsPerPixel)
+        if screen_bpp != int(all.settings.BitsPerPixel / 10):
+            all.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', all.settings.BitsPerPixel));
+            self.engine.getSettings().setBitsPerPixel(all.settings.BitsPerPixel)
             changes_require_restart = True
-        if screen_renderer != (0 if self.settings.RenderBackend == 'OpenGL' else 1):
-            self.settings.RenderBackend = 'OpenGL' if screen_renderer == 0 else 'SDL'
-            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_renderer', self.settings.RenderBackend));
-            self.engine.getSettings().setRenderBackend(self.settings.RenderBackend)
+        if screen_renderer != (0 if all.settings.RenderBackend == 'OpenGL' else 1):
+            all.settings.RenderBackend = 'OpenGL' if screen_renderer == 0 else 'SDL'
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_renderer', all.settings.RenderBackend));
+            self.engine.getSettings().setRenderBackend(all.settings.RenderBackend)
             changes_require_restart = True
-        if screen_resolution != resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight)):
-            self.settings.ScreenWidth = int(resolutions[screen_resolution].partition('x')[0])
-            self.settings.ScreenHeight = int(resolutions[screen_resolution].partition('x')[2])
-            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_width', self.settings.ScreenWidth));
-            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', self.settings.ScreenHeight));
-            self.engine.getSettings().setScreenWidth(self.settings.ScreenWidth)
-            self.engine.getSettings().setScreenHeight(self.settings.ScreenHeight)
+        if screen_resolution != resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight)):
+            all.settings.ScreenWidth = int(resolutions[screen_resolution].partition('x')[0])
+            all.settings.ScreenHeight = int(resolutions[screen_resolution].partition('x')[2])
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_width', all.settings.ScreenWidth));
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', all.settings.ScreenHeight));
+            self.engine.getSettings().setScreenWidth(all.settings.ScreenWidth)
+            self.engine.getSettings().setScreenHeight(all.settings.ScreenHeight)
             changes_require_restart = True
         if changes_require_restart:
             pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
@@ -237,10 +239,10 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui.hide()
         self.gui = self.gamemenu
         if self.game is None:
-            self.game = Game(self, "content/maps/demo.sqlite")
+            self.game = Game(all.main, "content/maps/demo.sqlite")
 
     def createListener(self):
-        self.listener = KeyListener(self.engine, self)
+        self.listener = KeyListener(self.engine, all.main)
 
     def _pump(self):
         if self.game is not None and self.game.timer is not None:
