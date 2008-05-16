@@ -1,2 +1,0 @@
-#fife path:
-path = '../fife/'

@@ -28,13 +28,20 @@ try:
     import settings
     _paths = [ a + b for a in settings.path for b in ('/engine/swigwrappers/python', '/engine/extensions') ]
 except ImportError, e:
-    pass
-_paths += [ a + b + c + d for a in ('', '../', '../../') for b in ('', 'fife/', 'FIFE/', 'Fife/') for c in ('', 'trunk/') for d in ('engine/swigwrappers/python', 'engine/extensions') ]
+    _paths = []
+_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
 
 for p in _paths:
-    if p not in sys.path and os.path.exists(p):
-        print "found fife in:", p
-        sys.path.append(os.path.sep.join(p.split('/')))
+    if p not in sys.path:
+        # check if we are in a fife dir...
+        for pe in [ p + '/' + a for a in ('.', 'engine/swigwrappers/python', 'engine/extensions') ]:
+            if not os.path.exists(os.path.sep.join(pe.split('/'))):
+                break
+        else:
+            print "found fife in:", p
+            for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
+                sys.path.append(os.path.sep.join(pe.split('/')))
+            break
 
 try:
     import fife
