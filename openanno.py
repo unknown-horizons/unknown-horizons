@@ -46,6 +46,7 @@ for p in _paths:
                     sys.path.append(pe)
 
             #add windows paths (fife/.)
+            os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ p + '/' + a for a in ('.') ])
             os.path.defpath += os.path.pathsep + os.path.pathsep.join([ p + '/' + a for a in ('.') ])
 
             #add linux paths (fife/ext/minizip fife/ext/install/lib)
