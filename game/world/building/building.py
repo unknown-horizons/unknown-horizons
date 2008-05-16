@@ -1,4 +1,5 @@
 import fife
+from game import all
 #TODO: Implement selection support over a common interface with Unit
 
 class BlockedError(Exception):
@@ -25,8 +26,8 @@ class Building(object):
 
 _buildingclasses = {}
 
-def initBuildingClasses(dbreader):
-    buildings = dbreader.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
+def initBuildingClasses():
+    buildings = all.db.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
     for building_id,  package,  class_type,  size_x,  size_y,  name in buildings.rows:        
         
         #FIXME: these entrys should be deleted
@@ -38,7 +39,7 @@ def initBuildingClasses(dbreader):
         propdict = {}
         propdict['size'] = (size_x,  size_y)
         
-        properties = dbreader.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
+        properties = all.db.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
         for (key,  value) in properties.rows:
             propdict[value] = key
         

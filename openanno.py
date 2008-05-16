@@ -68,16 +68,16 @@ import re
 import shutil
 import style
 import basicapplication
-from game.gui.keylistener import KeyListener
 from game import Game
+from game.gui.keylistener import KeyListener
 from game.dbreader import DbReader
-
+from game import all
 
 class OpenAnno(basicapplication.ApplicationBase):
     """OpenAnno class, main game class. Creates the base."""
     def __init__(self):
-        self.db = DbReader(':memory:')
-        self.db.query("attach ? AS data", ('content/openanno.sqlite'))
+        all.db = DbReader(':memory:')
+        all.db.query("attach ? AS data", ('content/openanno.sqlite'))
         class DefaultSettings():
             FullScreen          = 0         # configurable
             ScreenWidth         = 1024      # configurable
@@ -100,8 +100,8 @@ class OpenAnno(basicapplication.ApplicationBase):
         configFile = './openanno-config.sqlite'
         if not os.path.exists(configFile):
             shutil.copyfile('content/config.sqlite', configFile)
-        self.db.query("attach ? AS config", (configFile))
-        for (name, value) in self.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
+        all.db.query("attach ? AS config", (configFile))
+        for (name, value) in all.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'screen_full':
                 self.settings.FullScreen = int(value)
             if name == 'screen_width':
@@ -126,7 +126,7 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.mainmenu.stylize('menu')
         self.gamemenu = pychan.loadXML('content/gui/gamemenu.xml')
         self.gamemenu.stylize('menu')
-        
+
         eventMap = {
             'startGame' : self.start_game,
             'settingsLink' : self.showSettings,
@@ -138,16 +138,16 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui = self.mainmenu
         self.gui.show()
         self.game = None
-	self.soundmanager = self.engine.getSoundManager()
-	self.soundmanager.init()
-		
 
-	# play track as background music
-	emitter = self.soundmanager.createEmitter()
-	id = self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
-	emitter.setSoundClip(id)
-	emitter.setLooping(True)
-	emitter.play()
+        self.soundmanager = self.engine.getSoundManager()
+        self.soundmanager.init()
+
+        # play track as background music
+        emitter = self.soundmanager.createEmitter()
+        id = self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
+        emitter.setSoundClip(id)
+        emitter.setLooping(True)
+        emitter.play()
 
     def loadSettings(self):
         """
@@ -197,24 +197,24 @@ class OpenAnno(basicapplication.ApplicationBase):
         changes_require_restart = False
         if screen_fullscreen != (self.settings.FullScreen == 1):
             self.settings.FullScreen = (1 if screen_fullscreen else 0)
-            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.FullScreen));
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', self.settings.FullScreen));
             self.engine.getSettings().setFullScreen(self.settings.FullScreen)
             changes_require_restart = True
         if screen_bpp != int(self.settings.BitsPerPixel / 10):
             self.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
-            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', self.settings.BitsPerPixel));
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', self.settings.BitsPerPixel));
             self.engine.getSettings().setBitsPerPixel(self.settings.BitsPerPixel)
             changes_require_restart = True
         if screen_renderer != (0 if self.settings.RenderBackend == 'OpenGL' else 1):
             self.settings.RenderBackend = 'OpenGL' if screen_renderer == 0 else 'SDL'
-            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_renderer', self.settings.RenderBackend));
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_renderer', self.settings.RenderBackend));
             self.engine.getSettings().setRenderBackend(self.settings.RenderBackend)
             changes_require_restart = True
         if screen_resolution != resolutions.index(str(self.settings.ScreenWidth) + 'x' + str(self.settings.ScreenHeight)):
             self.settings.ScreenWidth = int(resolutions[screen_resolution].partition('x')[0])
             self.settings.ScreenHeight = int(resolutions[screen_resolution].partition('x')[2])
-            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_width', self.settings.ScreenWidth));
-            self.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', self.settings.ScreenHeight));
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_width', self.settings.ScreenWidth));
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', self.settings.ScreenHeight));
             self.engine.getSettings().setScreenWidth(self.settings.ScreenWidth)
             self.engine.getSettings().setScreenHeight(self.settings.ScreenHeight)
             changes_require_restart = True
@@ -246,10 +246,6 @@ class OpenAnno(basicapplication.ApplicationBase):
         if self.game is not None and self.game.timer is not None:
             self.game.timer.check_tick()
 
-# main methode, creates an OpenAnno instance
-def main():
-    app = OpenAnno() 
-    app.run() 
-
 if __name__ == '__main__':
-    main() 
+    all.main = OpenAnno()
+    all.main.run()

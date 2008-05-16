@@ -18,6 +18,15 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+#this class(not its instances) contain all the objects used everywhere
+class AllMeta(type):
+    def __getattr__(self, name):
+        return None
+
+class all:
+    __metaclass__ = AllMeta
+
 import math
 import fife
 import pychan
@@ -87,7 +96,7 @@ class Game(EventListenerBase):
         # Other variables
         #
         self.timer = Timer(16)
-        self.manager = SPManager(main = self.main, game = self, timer = self.timer, players = self.players, player = self.players[0], db = self.main.db)
+        self.manager = SPManager(main = self.main, game = self, timer = self.timer, players = self.players, player = self.players[0], db = all.db)
         self.scheduler = Scheduler()
         self.timer.add_call(self.scheduler.tick)
 
@@ -100,7 +109,7 @@ class Game(EventListenerBase):
         # Beginn map creation
         #
 
-        building.initBuildingClasses(self.main.db)
+        building.initBuildingClasses()
 
         self.loadmap(map)
         self.creategame()
@@ -116,7 +125,7 @@ class Game(EventListenerBase):
         """Loads a map.
         @var map: string with the mapfile path.
         """
-        self.main.db.query("attach ? as map", (map))
+        all.db.query("attach ? as map", (map))
         self.map = self.model.createMap("map")
 
         self.datasets = {}
@@ -127,13 +136,13 @@ class Game(EventListenerBase):
 
         self.create_object("blocker", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", self.datasets['ground'])
         #todo...
-        for (oid, multi_action_or_animated) in self.main.db.query("SELECT id, max(actions_and_images) > 1 AS multi_action_or_animated FROM ( SELECT ground.oid as id, action.animation as animation, count(*) as actions_and_images FROM ground LEFT JOIN action ON action.ground = ground.oid LEFT JOIN animation ON action.animation = animation.animation_id GROUP BY ground.oid, action.rotation ) x GROUP BY id").rows:
+        for (oid, multi_action_or_animated) in all.db.query("SELECT id, max(actions_and_images) > 1 AS multi_action_or_animated FROM ( SELECT ground.oid as id, action.animation as animation, count(*) as actions_and_images FROM ground LEFT JOIN action ON action.ground = ground.oid LEFT JOIN animation ON action.animation = animation.animation_id GROUP BY ground.oid, action.rotation ) x GROUP BY id").rows:
             print oid, multi_action_or_animated
 
-        for (oid, image_overview, image_n, image_e, image_s, image_w) in self.main.db.query("select gnd.oid, grp.image_overview, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 315) order by frame_end limit 1) as image_w from data.ground gnd left join data.ground_group grp on gnd.`group` = grp.oid").rows:
+        for (oid, image_overview, image_n, image_e, image_s, image_w) in all.db.query("select gnd.oid, grp.image_overview, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 315) order by frame_end limit 1) as image_w from data.ground gnd left join data.ground_group grp on gnd.`group` = grp.oid").rows:
             self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['ground'])
 
-        for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in self.main.db.query("select oid, 'content/gfx/dummies/overview/object.png', (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 315) order by frame_end limit 1) as image_w, size_x, size_y from data.building").rows:
+        for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in all.db.query("select oid, 'content/gfx/dummies/overview/object.png', (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 315) order by frame_end limit 1) as image_w, size_x, size_y from data.building").rows:
             self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, self.datasets['building'], size_x, size_y)
 
         cellgrid = fife.SquareGrid(False)
@@ -150,11 +159,11 @@ class Game(EventListenerBase):
         self.layers['units'].setPathingStrategy(fife.CELL_EDGES_ONLY)
 
         min_x, min_y, max_x, max_y = 0, 0, 0, 0
-        for (island, offset_x, offset_y) in self.main.db.query("select island, x, y from map.islands").rows:
-            self.main.db.query("attach ? as island", (str(island)))
+        for (island, offset_x, offset_y) in all.db.query("select island, x, y from map.islands").rows:
+            all.db.query("attach ? as island", (str(island)))
             self.islands[self.island_uid]=Island(self.island_uid)
             cur_isl = self.islands[self.island_uid]
-            for (x, y, ground, layer) in self.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
+            for (x, y, ground, layer) in all.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
                 inst = self.create_instance(self.layers['land'], self.datasets['ground'], str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
                 cur_isl.add_tile(inst)
                 min_x = int(x) + int(offset_x) if min_x is 0 or int(x) + int(offset_x) < min_x else min_x
@@ -162,7 +171,7 @@ class Game(EventListenerBase):
                 max_y = int(y) + int(offset_y) if max_y is 0 or int(y) + int(offset_y) > max_y else max_y
                 min_y = int(y) + int(offset_y) if min_y is 0 or int(y) + int(offset_y) < min_y else min_y
             self.island_uid += 1
-            self.main.db.query("detach island")
+            all.db.query("detach island")
 
         for x in range(min_x-10, (max_x+11)): # Fill map with water tiles + 10 on each side
             for y in range(min_y-10, max_y+11):
@@ -276,9 +285,9 @@ class Game(EventListenerBase):
         """
         unit = UnitClass(self.model, str(id), layer, self)
         if UnitClass is House:
-            res = self.main.db.query("SELECT * FROM data.building WHERE rowid = ?",str(object_id))
+            res = all.db.query("SELECT * FROM data.building WHERE rowid = ?",str(object_id))
             if res.success:
-                unit.size_x, unit.size_y = self.main.db.query("SELECT size_x,size_y FROM data.building WHERE rowid = ?",str(object_id)).rows[0]
+                unit.size_x, unit.size_y = all.db.query("SELECT size_x,size_y FROM data.building WHERE rowid = ?",str(object_id)).rows[0]
         self.instance_to_unit[unit.object.getFifeId()] = unit
         unit.start()
         return unit
