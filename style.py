@@ -18,24 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import settings
-import sys
-import os
-def _jp(path):
-    return os.path.sep.join(path.split('/'))
-
-_paths = (settings.path + 'engine/swigwrappers/python', settings.path + 'engine/extensions')
-
-for p in _paths:
-    if p not in sys.path:
-        sys.path.append(_jp(p)) 
-
 import fife
-
-# 
-# This is the basic OpenAnno stylesheet
-# 
-
 
 STYLES= {
     'default': {

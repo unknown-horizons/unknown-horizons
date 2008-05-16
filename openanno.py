@@ -27,8 +27,6 @@ import re
 import settings
 import shutil
 
-import style
-
 def _jp(path):
     return os.path.sep.join(path.split('/'))
 
@@ -50,6 +48,7 @@ except ImportError,e:
     print "Please edit settings.py and change 'path' to point to your FIFE checkout"
     exit()
 
+import style
 import basicapplication
 from game.gui.keylistener import KeyListener
 from game import Game
