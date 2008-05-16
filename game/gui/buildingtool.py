@@ -1,5 +1,5 @@
 from cursortool import CursorTool
-from scripts.world.building.building import *
+from game.world.building.building import *
 
 import fife
 

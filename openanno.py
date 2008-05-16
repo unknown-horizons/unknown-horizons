@@ -51,9 +51,9 @@ except ImportError,e:
     exit()
 
 import basicapplication
-from scripts.gui.keylistener import KeyListener
-from scripts.game import Game
-from scripts.dbreader import DbReader
+from game.gui.keylistener import KeyListener
+from game import Game
+from game.dbreader import DbReader
 
 
 class OpenAnno(basicapplication.ApplicationBase):
