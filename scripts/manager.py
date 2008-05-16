@@ -54,7 +54,7 @@ class MPManager:
         """Executes a tick
         @var tick: the 
         """
-        if(tick % self.__class__.COMMAND_RATE == 0)
+        if tick % self.__class__.COMMAND_RATE == 0:
             if self.packets.has_key(tick):
                 self.packets[tick] = {}
             self.packets[tick][self.args['player']] = TickPacket(tick, self.commands)
