@@ -22,7 +22,7 @@
 # ###################################################
 
 import sys
-import os.path
+import os
 
 try:
     import settings
@@ -35,13 +35,22 @@ for p in _paths:
     if p not in sys.path:
         # check if we are in a fife dir...
         for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
-            if not os.path.exists(os.path.sep.join(pe.split('/'))):
+            if not os.path.exists(pe):
                 break
         else:
             print "found fife in:", p
-            for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python', 'ext/minizip', 'ext/install/lib') ]:
-                if os.path.exists(os.path.sep.join(pe.split('/'))):
-                    sys.path.append(os.path.sep.join(pe.split('/')))
+
+            #add python paths (fife/engine/extensions fife/engine/swigwrappers/python)
+            for pe in [ p + '/' + a for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
+                if os.path.exists(pe):
+                    sys.path.append(pe)
+
+            #add windows paths (fife/.)
+            os.path.defpath += os.path.pathsep + os.path.pathsep.join([ p + '/' + a for a in ('.') ])
+
+            #add linux paths (fife/ext/minizip fife/ext/install/lib)
+            os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join(os.environ.get('LD_LIBRARY_PATH', '').split(os.path.pathsep) + [ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ])
+
             break
 
 try:
