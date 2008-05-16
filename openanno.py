@@ -39,8 +39,9 @@ for p in _paths:
                 break
         else:
             print "found fife in:", p
-            for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
-                sys.path.append(os.path.sep.join(pe.split('/')))
+            for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python', 'ext/minizip', 'ext/install/lib') ]:
+                if os.path.exists(os.path.sep.join(pe.split('/'))):
+                    sys.path.append(os.path.sep.join(pe.split('/')))
             break
 
 try:
