@@ -66,7 +66,7 @@ class Game(EventListenerBase):
         # Player related variable
         #
         self.human_player = None
-        self.players = {}
+        self.players = {0 : None}
 
         #
         # Camera related variables
@@ -87,9 +87,7 @@ class Game(EventListenerBase):
         # Other variables
         #
         self.timer = Timer(16)
-        self.manager = SPManager(self)
-        self.timer.add_test(self.manager.test)
-        self.timer.add_call(self.manager.tick)
+        self.manager = SPManager(main = self.main, game = self, timer = self.timer, players = self.players, player = self.players[0], db = self.main.db)
         self.scheduler = Scheduler()
         self.timer.add_call(self.scheduler.tick)
 

@@ -19,59 +19,50 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import timer
+
 class SPManager:
     """The manager class takes care of command issuing to the timermanager,sends tick-packets
     over the network, and syncronisation of network games."""
 
-    def __init__(self, game):
-        self.cmdbatchlist =  {}
-        self.process = 0
-        self.add_batch()
-        self.game = game
+    def __init__(self, **args):
+        """Initialize the Singleplayer Manager
+        @var **args: args The arguments to be passed to commands
+        """
+        self.args = args
 
-    def tick(self, id):
-        """Performes the tick and starts the next tick
-        @var id: tick id"""
-        # NOTE: Add check here if all older ticks have been started by all players
-        cmdbatch = self.cmdbatchlist[id]
-        self.add_batch()
-        for commandbatch in cmdbatch.cmdlist:
-            print 'Running commandlist of tick:', cmdbatch.id
-            commandbatch.__call__(self.game) # Execute all commands
-        del self.cmdbatchlist[cmdbatch.id]
+    def execute(self, command):
+        """Executes a command
+        @var command: Command the command to be executed
+        """
+        command(**self.args)
 
-    def test(self, id):
-        """Used to check if the manager is ready for the next tick."""
-        return 0
-                
-    def add_batch(self):
-        """Adds a CmdBatch to the cmdbatchlist"""
-        self.cmdbatchlist[self.process] = CmdBatch(self.process)
-        self.process += 1
+class MPManager:
+    def __init__(self, **args): #args must contain timer, player and players
+        self.args = args
+        self.timer = args['timer']
+        self.timer.add_test(this.can_tick)
+        self.timer.add_call(this.tick)
+        self.commands = []
+        self.packets = {}
 
-    def add_action(self, callback_class):
-        """
-        Adds command to the Ticks commandlist.
-        @var callback_class: lambda of the function that is to be called with arguments [lambda: foo(2, 3, 4)].
-        @var tickoffset: int number ticks ahead the command is to be added.
-        """
-        self.cmdbatchlist[self.process-1].add_action(callback_class)
+    def tick(self, tick):
+        if self.packets.has_key(tick):
+            self.packets[tick] = {}
+        self.packets[tick][self.args['player']] = TickPacket(tick, self.commands)
+        self.commands = []
+        if self.packets.has_key(tick - 2):
+            for p in self.args['players'][(tick - 2) % len(self.args['players']):] + self.args['players'][:((tick - 2) % len(self.args['players'])) - 1]:
+                for c in self.packets[tick - 2][p].commands:
+                    c(**self.args)
 
-class CmdBatch():
-    """
-    The CmdBatch class stores all the commends that are to be executed on a single game tick.
-    """
-    def __init__(self, id):
-        """
-        @var id: int unique tick id.
-        """
-        self.id = id
-        self.cmdlist = [] # List of command classes
+    def can_tick(self, tick):
+        return timer.TEST_PASS if ((not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
 
-    def add_action(self, callback_class):
-        """
-        Adds command to the CmdBatch's commandlist.
-        @var callback_class: class that is to be called.
-        """
-        self.cmdlist.append(callback_class)
-        print 'Added commandclass to tick:', self.id
+    def execute(self, command):
+        self.commands.append(command)
+
+class TickPacket:
+    def __init__(self, tick, commands):
+        self.tick = tick
+        self.commands = commands
