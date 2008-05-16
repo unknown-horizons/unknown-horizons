@@ -79,6 +79,3 @@ class Timer:
                 f(self.tick_next_id)
             self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
             self.tick_next_id += 1
-
-    def tick(self):
-        """Performes the tick, by calling all function in the call lists and increasing the tick id between middle and after call lists."""
