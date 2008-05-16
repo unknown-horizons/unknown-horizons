@@ -80,7 +80,7 @@ class SelectionTool(CursorTool):
                         target_mapcoord.z = 0
                         l = fife.Location(self.game.layers['land'])
                         l.setMapCoordinates(target_mapcoord)
-                        self.game.manager.add_action(Move(self.game.selected_instance.object.getFifeId(), target_mapcoord.x, target_mapcoord.y, 'land'))
+                        self.game.manager.execute(Move(self.game.selected_instance.object.getFifeId(), target_mapcoord.x, target_mapcoord.y, 'land'))
         evt.consume()
 
     def mouseMoved(self, evt):
