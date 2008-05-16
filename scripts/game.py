@@ -99,9 +99,9 @@ class Game(EventListenerBase):
         #
         # Beginn map creation
         #
-        
+
         building.initBuildingClasses(self.main.db)
-        
+
         self.loadmap(map)
         self.creategame()
 
@@ -168,25 +168,6 @@ class Game(EventListenerBase):
             for y in range(min_y-10, max_y+11):
                 inst = self.create_instance(self.layers['water'], self.datasets['ground'], str(int(13)), int(x), int(y), 0)
 
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "2")[0], fife.ExactModelCoordinate(11, 13, 0), ''))
-
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(13, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(12, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(11, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 14, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 13, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 12, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 11, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(10, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(11, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(12, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(13, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 10, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 11, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 12, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 13, 0), ''))
-        fife.InstanceVisual.create(self.map.getLayers("id", "layer3")[0].createInstance(self.datasets['building'].getObjects('id', "3")[0], fife.ExactModelCoordinate(14, 14, 0), ''))
-
         self.view = View(self.engine, (self.main.settings.ScreenWidth, self.main.settings.ScreenHeight), self.map.getLayers("id", "layer1")[0], (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
 
         #self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
@@ -217,14 +198,12 @@ class Game(EventListenerBase):
         ship.name = 'Matilde'
         #self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-
         self.engine.getView().resetRenderers()
-
 
         renderer = self.view.cam.getRenderer('CoordinateRenderer')
         renderer.clearActiveLayers()
         renderer.addActiveLayer(self.layers['land'])
-        
+
         self.outline_renderer = fife.InstanceRenderer.getInstance(self.view.cam)
 
     def create_object(self, oid, image_overview, image_n, image_e, image_s, image_w, dataset, size_x = 1, size_y = 1):
@@ -304,7 +283,6 @@ class Game(EventListenerBase):
         unit.start()
         return unit
 
-
     def get_tiles_in_radius(self, layer, radius, start_loc):
         """Returns a list of instances in the radius on the specified layer.
         @var layer: fife.Layer the instances are present on.
@@ -365,4 +343,3 @@ class Game(EventListenerBase):
         elif keystr == 't':
             r = self.view.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())
-
