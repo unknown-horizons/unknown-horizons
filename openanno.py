@@ -121,6 +121,16 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui = self.mainmenu
         self.gui.show()
         self.game = None
+	self.soundmanager = self.engine.getSoundManager()
+	self.soundmanager.init()
+		
+
+	# play track as background music
+	emitter = self.soundmanager.createEmitter()
+	id = self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
+	emitter.setSoundClip(id)
+	emitter.setLooping(True)
+	emitter.play()
 
     def loadSettings(self):
         """
