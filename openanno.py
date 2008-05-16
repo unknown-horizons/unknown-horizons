@@ -22,32 +22,32 @@
 # ###################################################
 
 import sys
-import os
-import re
-import settings
-import shutil
+import os.path
 
-def _jp(path):
-    return os.path.sep.join(path.split('/'))
-
-_paths = (settings.path + 'engine/swigwrappers/python', settings.path + 'engine/extensions')
+try:
+    import settings
+    _paths = [ a + b for a in settings.path for b in ('/engine/swigwrappers/python', '/engine/extensions') ]
+except ImportError, e:
+    pass
+_paths += [ a + b + c + d for a in ('', '../', '../../') for b in ('', 'fife/', 'FIFE/', 'Fife/') for c in ('', 'trunk/') for d in ('engine/swigwrappers/python', 'engine/extensions') ]
 
 for p in _paths:
-    if p not in sys.path:
-        sys.path.append(_jp(p)) 
+    if p not in sys.path and os.path.exists(p):
+        print "found fife in:", p
+        sys.path.append(os.path.sep.join(p.split('/')))
 
-# Do all the necessary imports
 try:
     import fife
     import fifelog
     import pychan
-
-except ImportError,e:
+except ImportError, e:
     print 'FIFE was not found or failed to load'
     print 'Reason: ' + e.message
-    print "Please edit settings.py and change 'path' to point to your FIFE checkout"
+    print "Please create a settings.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
     exit()
 
+import re
+import shutil
 import style
 import basicapplication
 from game.gui.keylistener import KeyListener
