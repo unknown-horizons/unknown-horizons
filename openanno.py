@@ -63,7 +63,8 @@ try:
         except ImportError, e:
             os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
             print "Restarting OpenAnno with proper LD_LIBRARY_PATH..."
-            os.execvp(sys.argv[0], sys.argv)
+            args = [sys.executable] + sys.argv
+            os.execvp(args[0], args)
     else:
         import fife
     import fifelog
@@ -111,11 +112,11 @@ class OpenAnno(basicapplication.ApplicationBase):
         if not os.path.exists(configFile):
             shutil.copyfile('content/config.sqlite', configFile)
         all.db.query("attach ? AS config", (configFile))
-        for (name, value) in all.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'sound_enable' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
-            if name == 'screen_full':
-                self.settings.FullScreen = int(value)
+        for (name, value) in all.db.query("select name, value from config.config where ((name in ('screen_full', 'sound_enable') and value in ('0', '1')) or (name in ('screen_width', 'screen_height') and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'sound_enable':
                 self.settings.PlaySounds = int(value)
+            if name == 'screen_full':
+                self.settings.FullScreen = int(value)
             if name == 'screen_width':
                 self.settings.ScreenWidth = int(value)
             if name == 'screen_height':
