@@ -26,7 +26,7 @@ import os
 
 try:
     import settings
-    _paths = [ a + b for a in settings.path for b in ('/engine/swigwrappers/python', '/engine/extensions') ]
+    _paths = [settings.path]
 except ImportError, e:
     _paths = []
 _paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
@@ -78,7 +78,7 @@ class OpenAnno(basicapplication.ApplicationBase):
     def __init__(self):
         all.db = DbReader(':memory:')
         all.db.query("attach ? AS data", ('content/openanno.sqlite'))
-        class DefaultSettings():
+        class settings:
             FullScreen          = 0         # configurable
             ScreenWidth         = 1024      # configurable
             ScreenHeight        = 768       # configurable
@@ -96,28 +96,28 @@ class OpenAnno(basicapplication.ApplicationBase):
             LogToFile           = 1
             UsePsyco            = False
             ImageChunkSize      = 256
-        all.settings = DefaultSettings()
+        self.settings = settings()
         configFile = './openanno-config.sqlite'
         if not os.path.exists(configFile):
             shutil.copyfile('content/config.sqlite', configFile)
         all.db.query("attach ? AS config", (configFile))
         for (name, value) in all.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'screen_full':
-                all.settings.FullScreen = int(value)
+                self.settings.FullScreen = int(value)
             if name == 'screen_width':
-                all.settings.ScreenWidth = int(value)
+                self.settings.ScreenWidth = int(value)
             if name == 'screen_height':
-                all.settings.ScreenHeight = int(value)
+                self.settings.ScreenHeight = int(value)
             if name == 'screen_bpp':
-                all.settings.BitsPerPixel = int(value)
+                self.settings.BitsPerPixel = int(value)
             if name == 'screen_renderer':
-                all.settings.RenderBackend = str(value)
+                self.settings.RenderBackend = str(value)
 
-        self.settings = all.settings
         super(OpenAnno, self).__init__() 
-        self.settings = None
+        all.engine = self.engine
+        all.settings = self.settings
 
-        pychan.init(self.engine,debug=False)
+        pychan.init(all.engine, debug=False)
         # Load styles here
         for name,stylepart in style.STYLES.items():
             pychan.manager.addStyle(name,stylepart)
@@ -141,12 +141,12 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.gui.show()
         self.game = None
 
-        self.soundmanager = self.engine.getSoundManager()
+        self.soundmanager = all.engine.getSoundManager()
         self.soundmanager.init()
 
         # play track as background music
         emitter = self.soundmanager.createEmitter()
-        id = self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
+        id = all.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
         emitter.setSoundClip(id)
         emitter.setLooping(True)
         emitter.play()
@@ -157,16 +157,16 @@ class OpenAnno(basicapplication.ApplicationBase):
         Called in the ApplicationBase constructor.
         """
         engineSetting = self.engine.getSettings()
-        engineSetting.setDefaultFontGlyphs(all.settings.FontGlyphs)
-        engineSetting.setDefaultFontPath(all.settings.Font)
-        engineSetting.setDefaultFontSize(all.settings.FontSize)
-        engineSetting.setBitsPerPixel(all.settings.BitsPerPixel)
-        engineSetting.setFullScreen(all.settings.FullScreen)
-        engineSetting.setInitialVolume(all.settings.InitialVolume)
-        engineSetting.setRenderBackend(all.settings.RenderBackend)
-        engineSetting.setSDLRemoveFakeAlpha(all.settings.SDLRemoveFakeAlpha)
-        engineSetting.setScreenWidth(all.settings.ScreenWidth)
-        engineSetting.setScreenHeight(all.settings.ScreenHeight)
+        engineSetting.setDefaultFontGlyphs(self.settings.FontGlyphs)
+        engineSetting.setDefaultFontPath(self.settings.Font)
+        engineSetting.setDefaultFontSize(self.settings.FontSize)
+        engineSetting.setBitsPerPixel(self.settings.BitsPerPixel)
+        engineSetting.setFullScreen(self.settings.FullScreen)
+        engineSetting.setInitialVolume(self.settings.InitialVolume)
+        engineSetting.setRenderBackend(self.settings.RenderBackend)
+        engineSetting.setSDLRemoveFakeAlpha(self.settings.SDLRemoveFakeAlpha)
+        engineSetting.setScreenWidth(self.settings.ScreenWidth)
+        engineSetting.setScreenHeight(self.settings.ScreenHeight)
         try:
             engineSetting.setImageChunkingSize(all.settings.ImageChunkSize)
         except:
@@ -200,25 +200,25 @@ class OpenAnno(basicapplication.ApplicationBase):
         if screen_fullscreen != (all.settings.FullScreen == 1):
             all.settings.FullScreen = (1 if screen_fullscreen else 0)
             all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', all.settings.FullScreen));
-            self.engine.getSettings().setFullScreen(all.settings.FullScreen)
+            all.engine.getSettings().setFullScreen(all.settings.FullScreen)
             changes_require_restart = True
         if screen_bpp != int(all.settings.BitsPerPixel / 10):
             all.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))
             all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_bpp', all.settings.BitsPerPixel));
-            self.engine.getSettings().setBitsPerPixel(all.settings.BitsPerPixel)
+            all.engine.getSettings().setBitsPerPixel(all.settings.BitsPerPixel)
             changes_require_restart = True
         if screen_renderer != (0 if all.settings.RenderBackend == 'OpenGL' else 1):
             all.settings.RenderBackend = 'OpenGL' if screen_renderer == 0 else 'SDL'
             all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_renderer', all.settings.RenderBackend));
-            self.engine.getSettings().setRenderBackend(all.settings.RenderBackend)
+            all.engine.getSettings().setRenderBackend(all.settings.RenderBackend)
             changes_require_restart = True
         if screen_resolution != resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight)):
             all.settings.ScreenWidth = int(resolutions[screen_resolution].partition('x')[0])
             all.settings.ScreenHeight = int(resolutions[screen_resolution].partition('x')[2])
             all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_width', all.settings.ScreenWidth));
             all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_height', all.settings.ScreenHeight));
-            self.engine.getSettings().setScreenWidth(all.settings.ScreenWidth)
-            self.engine.getSettings().setScreenHeight(all.settings.ScreenHeight)
+            all.engine.getSettings().setScreenWidth(all.settings.ScreenWidth)
+            all.engine.getSettings().setScreenHeight(all.settings.ScreenHeight)
             changes_require_restart = True
         if changes_require_restart:
             pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
@@ -242,7 +242,7 @@ class OpenAnno(basicapplication.ApplicationBase):
             self.game = Game(all.main, "content/maps/demo.sqlite")
 
     def createListener(self):
-        self.listener = KeyListener(self.engine, all.main)
+        self.listener = KeyListener(all.engine, all.main)
 
     def _pump(self):
         if self.game is not None and self.game.timer is not None:
