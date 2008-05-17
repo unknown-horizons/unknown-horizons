@@ -62,7 +62,7 @@ try:
             import fife
         except ImportError, e:
             os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
-            print "Restarting OpenAnno with propper LD_LIBRARY_PATH..."
+            print "Restarting OpenAnno with proper LD_LIBRARY_PATH..."
             os.execvp(sys.argv[0], sys.argv)
     else:
         import fife
@@ -95,7 +95,7 @@ class OpenAnno(basicapplication.ApplicationBase):
             BitsPerPixel        = 0         # configurable
             RenderBackend       = "OpenGL"  # configurable
             InitialVolume       = 5.0
-            PlaySounds          = 1
+            PlaySounds          = 1         # configurable
             SDLRemoveFakeAlpha  = 1
             Font                = 'content/gfx/fonts/samanata.ttf'
             FontSize            = 12
