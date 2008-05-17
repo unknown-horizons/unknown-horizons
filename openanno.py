@@ -50,7 +50,8 @@ for p in _paths:
             os.path.defpath += os.path.pathsep + os.path.pathsep.join([ p + '/' + a for a in ('.') ])
 
             #add linux paths (fife/ext/minizip fife/ext/install/lib)
-            os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join(os.environ.get('LD_LIBRARY_PATH', '').split(os.path.pathsep) + [ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ])
+            os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
+            print os.environ['LD_LIBRARY_PATH']
 
             break
 
