@@ -111,9 +111,11 @@ class OpenAnno(basicapplication.ApplicationBase):
         if not os.path.exists(configFile):
             shutil.copyfile('content/config.sqlite', configFile)
         all.db.query("attach ? AS config", (configFile))
-        for (name, value) in all.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
+        for (name, value) in all.db.query("select name, value from config.config where ((name = 'screen_full' and value in ('0', '1')) or (name = 'sound_enable' and value in ('0', '1')) or (name = 'screen_width' and value regexp '^[0-9]+$') or (name = 'screen_height' and value regexp '^[0-9]+$') or (name = 'screen_bpp' and value in ('0', '16', '24', '32')) or (name = 'screen_renderer' and value in ('SDL', 'OpenGL')) or (name = 'sound_volume' and value regexp '^[0-9]+([.][0-9]+)?$'))").rows:
             if name == 'screen_full':
                 self.settings.FullScreen = int(value)
+            if name == 'sound_enable':
+                self.settings.PlaySounds = int(value)
             if name == 'screen_width':
                 self.settings.ScreenWidth = int(value)
             if name == 'screen_height':
@@ -155,11 +157,12 @@ class OpenAnno(basicapplication.ApplicationBase):
         self.soundmanager.init()
 
         # play track as background music
-        emitter = self.soundmanager.createEmitter()
-        id = all.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
-        emitter.setSoundClip(id)
-        emitter.setLooping(True)
-        emitter.play()
+        if self.settings.PlaySounds == 1:
+            emitter = self.soundmanager.createEmitter()
+            id = all.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg')
+            emitter.setSoundClip(id)
+            emitter.setLooping(True)
+            emitter.play()
 
     def loadSettings(self):
         """
@@ -201,16 +204,21 @@ class OpenAnno(basicapplication.ApplicationBase):
            'screen_resolution' : resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight)),
            'screen_renderer' : 0 if all.settings.RenderBackend == 'OpenGL' else 1,
            'screen_bpp' : int(all.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
-           'screen_fullscreen' : all.settings.FullScreen == 1
+           'screen_fullscreen' : all.settings.FullScreen == 1,
+           'sound_enable_opt' : self.settings.PlaySounds == 1
         })
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;
-        screen_resolution, screen_renderer, screen_bpp, screen_fullscreen = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen')
+        screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
         changes_require_restart = False
         if screen_fullscreen != (all.settings.FullScreen == 1):
             all.settings.FullScreen = (1 if screen_fullscreen else 0)
             all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('screen_full', all.settings.FullScreen));
             all.engine.getSettings().setFullScreen(all.settings.FullScreen)
+            changes_require_restart = True
+        if sound_enable_opt != (self.settings.PlaySounds == 1):
+            self.settings.PlaySounds = (1 if sound_enable_opt else 0)
+            all.db.query("REPLACE INTO config.config (name, value) VALUES (?, ?)", ('sound_enable', self.settings.PlaySounds));
             changes_require_restart = True
         if screen_bpp != int(all.settings.BitsPerPixel / 10):
             all.settings.BitsPerPixel = (0 if screen_bpp == 0 else ((screen_bpp + 1) * 8))

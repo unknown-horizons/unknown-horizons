@@ -13,6 +13,7 @@
 		</VBox>
 	</HBox>
 	<CheckBox size="32,32" name="screen_fullscreen" text="Use the full screen mode" base_color="40, 40, 40"/>
+	<CheckBox size="32,32" name="sound_enable_opt" text="Enable sound" base_color="40, 40, 40"/>
 	<HBox>
 		<Spacer />
 		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
