@@ -31,6 +31,7 @@ except ImportError, e:
     _paths = []
 _paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
 
+fife_path = None
 for p in _paths:
     if p not in sys.path:
         # check if we are in a fife dir...
@@ -38,25 +39,33 @@ for p in _paths:
             if not os.path.exists(pe):
                 break
         else:
-            print "found fife in:", p
+            fife_path = p
+            print "found fife in:", fife_path
 
-            #add python paths (fife/engine/extensions fife/engine/swigwrappers/python)
-            for pe in [ p + '/' + a for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
+            #add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
+            for pe in [ fife_path + '/' + a for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
                 if os.path.exists(pe):
                     sys.path.append(pe)
 
-            #add windows paths (fife/.)
-            os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ p + '/' + a for a in ('.') ])
-            os.path.defpath += os.path.pathsep + os.path.pathsep.join([ p + '/' + a for a in ('.') ])
-
-            #add linux paths (fife/ext/minizip fife/ext/install/lib)
-            os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
-            print os.environ['LD_LIBRARY_PATH']
-
+            #add windows paths (<fife>/.)
+            os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ fife_path + '/' + a for a in ('.') ])
+            os.path.defpath += os.path.pathsep + os.path.pathsep.join([ fife_path + '/' + a for a in ('.') ])
             break
+else:
+    print 'FIFE was not found.'
+    print "Please create a settings.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
+    exit()
 
 try:
-    import fife
+    if not os.environ.get('LD_LIBRARY_PATH', '').startswith(fife_path):
+        try:
+            import fife
+        except ImportError, e:
+            os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
+            print "Restarting OpenAnno with propper LD_LIBRARY_PATH..."
+            os.execvp(sys.argv[0], sys.argv)
+    else:
+        import fife
     import fifelog
     import pychan
 except ImportError, e:
