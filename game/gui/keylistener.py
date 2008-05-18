@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -35,7 +35,7 @@ class KeyListener(fife.IKeyListener):
         self.eventmanager.removeKeyListener(self)
 
     def keyPressed(self, evt):
-        keyval = evt.getKey().getValue() 
+        keyval = evt.getKey().getValue()
         if keyval == fife.Key.ESCAPE:
             if self.main.gui.isVisible() and self.main.game is not None:
                 self.main.gui.hide()
@@ -43,9 +43,9 @@ class KeyListener(fife.IKeyListener):
                 self.main.showQuit()
             elif not self.main.gui.isVisible():
                 self.main.gui.show()
-            evt.consume() 
+            evt.consume()
 
     def keyReleased(self, evt):
-        pass 
+        pass
 
 

@@ -1,5 +1,5 @@
 class ProgrammingError(Exception):
-	pass
+    pass
 
 class InitializationError(Exception):
-	pass
+    pass

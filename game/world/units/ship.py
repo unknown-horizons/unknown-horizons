@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -38,7 +38,7 @@ class Ship(Object):
         self.name = ""
         self.state = _STATE_NONE
         self.idlecounter = 1
-        self.type = 'ship' 
+        self.type = 'ship'
 
     def onInstanceActionFinished(self, instance, action):
         self.idle()
@@ -60,7 +60,7 @@ class Ship(Object):
         self.state = _STATE_MOVE
         #self.object.move('move', location, 2)
         facing_location = fife.Location(location)
-        facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())      
+        facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
         self.object.setLocation(location)
         self.object.setFacingLocation(facing_location)
 

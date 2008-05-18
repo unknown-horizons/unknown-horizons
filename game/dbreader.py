@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -24,12 +24,10 @@ import re
 
 class DbReader:
     """Class that handles connections to sqlite databases"""
-    
     def __init__(self, file):
         """Init function, opens the connection to a database and creates a cursor for that database
         @var file: str containing the database file.
         """
-
 
         self.connection = sqlite3.connect(file)
         self.connection.isolation_level = None
@@ -40,10 +38,10 @@ class DbReader:
         self.cur = self.connection.cursor()
 
     def query(self, command, vals = ()):
-        """Executes a sql command. 
+        """Executes a sql command.
         @var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
         @var vals: tuple containing the values to add into the command.
-        """ 
+        """
         ret = SqlResult()
         if not sqlite3.complete_statement(command):
             if sqlite3.complete_statement(command + ';'):

@@ -5,7 +5,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -126,7 +126,7 @@ class OpenAnno(basicapplication.ApplicationBase):
             if name == 'screen_renderer':
                 self.settings.RenderBackend = str(value)
 
-        super(OpenAnno, self).__init__() 
+        super(OpenAnno, self).__init__()
         all.engine = self.engine
         all.settings = self.settings
 
@@ -197,16 +197,16 @@ class OpenAnno(basicapplication.ApplicationBase):
             resolutions.append(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight))
         dlg = pychan.loadXML('content/gui/settings.xml')
         dlg.distributeInitialData({
-           'screen_resolution' : resolutions,
-           'screen_renderer' : ["OpenGL", "SDL"],
-           'screen_bpp' : ["Desktop", "16", "24", "32"]
+            'screen_resolution' : resolutions,
+            'screen_renderer' : ["OpenGL", "SDL"],
+            'screen_bpp' : ["Desktop", "16", "24", "32"]
         })
         dlg.distributeData({
-           'screen_resolution' : resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight)),
-           'screen_renderer' : 0 if all.settings.RenderBackend == 'OpenGL' else 1,
-           'screen_bpp' : int(all.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
-           'screen_fullscreen' : all.settings.FullScreen == 1,
-           'sound_enable_opt' : self.settings.PlaySounds == 1
+            'screen_resolution' : resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight)),
+            'screen_renderer' : 0 if all.settings.RenderBackend == 'OpenGL' else 1,
+            'screen_bpp' : int(all.settings.BitsPerPixel / 10), # 0:0 16:1 24:2 32:3 :)
+            'screen_fullscreen' : all.settings.FullScreen == 1,
+            'sound_enable_opt' : self.settings.PlaySounds == 1
         })
         if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
             return;

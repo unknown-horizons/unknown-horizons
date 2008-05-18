@@ -34,8 +34,8 @@ class SelectionTool(CursorTool):
         CursorTool.__init__(self,  game.eventmanager)
         self.game = game
         self.last_moved = 0
-        
-    def select_unit(self):
+
+def select_unit(self):
         """Runs neccesary steps to select a unit."""
         self.game.selected_instance.object.say(str(self.game.selected_instance.health) + '%', 0) # display health over selected ship
         self.game.outline_renderer.addOutlined(self.game.selected_instance.object, 255, 255, 255, 1)
@@ -69,7 +69,7 @@ class SelectionTool(CursorTool):
                 self.game.selected_instance = None
 
         elif (evt.getButton() == fife.MouseEvent.RIGHT):
-            if self.game.selected_instance: # move unit   
+            if self.game.selected_instance: # move unit
                 if self.game.selected_instance.type == 'ship':
                     target_mapcoord = cam.toMapCoordinates(clickpoint, False)
                     target_mapcoord.z = 0
@@ -80,7 +80,7 @@ class SelectionTool(CursorTool):
 
     def mouseMoved(self, evt):
         # Mouse scrolling
-        mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())  
+        mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
         if time.time() > self.last_moved+0.05:  # Make sure the screen doesn't move to rapidly.
             self.last_moved = time.time()
             if mousepoint.x < 50:

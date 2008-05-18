@@ -20,7 +20,7 @@
 # ###################################################
 
 class Settlement():
-    """The Settlement class describes a settlement and stores all the neccassary information 
+    """The Settlement class describes a settlement and stores all the neccassary information
     like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
     def __init__(self, island, name):
         """@var island: Island that this settlement is present on

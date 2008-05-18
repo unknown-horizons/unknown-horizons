@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -56,7 +56,7 @@ class IngameGui():
             'foundSettelmentButton' : self._ship_build
         })
         self.gui['main'] = pychan.loadXML('content/gui/hud_main.xml')
-        self.toggle_visible('main')        
+        self.toggle_visible('main')
         self.gui['main'].mapEvents({
             'build' : pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
             'zoomIn' : self.game.view.zoom_in,
@@ -114,4 +114,3 @@ class IngameGui():
         contentarea.addChild(self.gui['build_tab'+str(num)])
         contentarea.adaptLayout()
         self.active_build = num
-        

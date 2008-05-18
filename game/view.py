@@ -48,7 +48,7 @@ class View:
         self.cam.setZoom(zoom)
 
     def rotate_right(self):
-          self.cam.setRotation((self.cam.getRotation() + 90) % 360)
+        self.cam.setRotation((self.cam.getRotation() + 90) % 360)
 
     def rotate_left(self):
-          self.cam.setRotation((self.cam.getRotation() - 90) % 360)
+        self.cam.setRotation((self.cam.getRotation() - 90) % 360)

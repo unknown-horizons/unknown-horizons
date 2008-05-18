@@ -5,11 +5,11 @@ class CursorTool(fife.IMouseListener):
         fife.IMouseListener.__init__(self)
         self.eventmanager = eventmanager
         self.eventmanager.addMouseListener(self)
-        
-    def __del__(self):
+
+def __del__(self):
         self.eventmanager.removeMouseListener(self)
-        
-    def mousePressed(self, evt):
+
+def mousePressed(self, evt):
         pass
     def mouseReleased(self, evt):
         pass	

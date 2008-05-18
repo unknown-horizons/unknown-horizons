@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -45,7 +45,7 @@ class House(Object):
 
     def onInstanceActionFinished(self, instance, action):
         self.idle()
-    
+
     def start(self):
         self.idle()
 
@@ -56,10 +56,10 @@ class House(Object):
         """Moves the house to a certain location
         @var location: fife.Location to which the house should move"""
         self.state = _STATE_MOVE
-	facing_location = fife.Location(location)
-	facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
-        
-	self.object.setLocation(location)
+        facing_location = fife.Location(location)
+        facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
+
+        self.object.setLocation(location)
         self.object.setFacingLocation(facing_location)
 
     def produce(self):

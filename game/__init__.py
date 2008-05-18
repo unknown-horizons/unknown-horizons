@@ -103,7 +103,7 @@ class Game(EventListenerBase):
         #
         # _MODE_BUILD variables
         #
-        self._build_tiles = None    # Stores the area a building can be built on  
+        self._build_tiles = None    # Stores the area a building can be built on
 
         #
         # Beginn map creation
@@ -325,7 +325,7 @@ class Game(EventListenerBase):
         @return: fife.Instance if an Instance is found, else returns None"""
         instances = layer.getInstances()
         inst = (inst for inst in instances if int(inst.getLocation().getExactLayerCoordinatesRef().x) is x and int(inst.getLocation().getExactLayerCoordinatesRef().y is y)).next()
-        if inst: 
+        if inst:
             return inst
         else:
             return None
@@ -348,7 +348,7 @@ class Game(EventListenerBase):
             self.view.rotate_right()
         elif keystr == 'q':
             self.__del__()
-            self.main.quit()    
+            self.main.quit()
         elif keystr == 't':
             r = self.view.cam.getRenderer('GridRenderer')
             r.setEnabled(not r.isEnabled())

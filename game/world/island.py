@@ -3,7 +3,7 @@
 # team@openanno.org
 # This file is part of OpenAnno.
 #
-# OpenAnno is free software; you can redistribute it and/or modify 
+# OpenAnno is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -20,7 +20,7 @@
 # ###################################################
 
 class Island():
-    """The Island class represents an Island by keeping a list of all instances on the map, 
+    """The Island class represents an Island by keeping a list of all instances on the map,
     that belong to the island. The island variable is also set on every instance that belongs
     to an island, making it easy to determine to which island the instance belongs, when
     selected.
