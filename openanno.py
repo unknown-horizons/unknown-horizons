@@ -67,8 +67,6 @@ try:
 			os.execvp(args[0], args)
 	else:
 		import fife
-	import fifelog
-	import pychan
 except ImportError, e:
 	print 'FIFE was not found or failed to load'
 	print 'Reason: ' + e.message
@@ -78,13 +76,13 @@ except ImportError, e:
 import re
 import shutil
 import style
-import basicapplication
 from game import Game
 from game.gui.keylistener import KeyListener
 from game.dbreader import DbReader
 from game import all
+from game.engine import Fife
 
-class OpenAnno(basicapplication.ApplicationBase):
+class OpenAnno:
 	"""OpenAnno class, main game class. Creates the base."""
 	def __init__(self):
 		all.db = DbReader(':memory:')
@@ -126,20 +124,21 @@ class OpenAnno(basicapplication.ApplicationBase):
 			if name == 'screen_renderer':
 				self.settings.RenderBackend = str(value)
 
-		super(OpenAnno, self).__init__()
-		all.engine = self.engine
+		self.fife = Fife()
+		#sett settings
+		self.fife.init()
+		self.engine = self.fife.engine
+		all.engine = self.fife.engine
 		all.settings = self.settings
 
-		pychan.init(all.engine, debug=False)
 		# Load styles here
-		for name,stylepart in style.STYLES.items():
-			pychan.manager.addStyle(name,stylepart)
-		pychan.setupModalExecution(self.mainLoop,self.breakFromMainLoop)
-		pychan.loadFonts("content/fonts/samanata.fontdef")
+		for name, stylepart in style.STYLES.items():
+			self.fife.pychan.manager.addStyle(name, stylepart)
+		self.fife.pychan.loadFonts("content/fonts/samanata.fontdef")
 
-		self.mainmenu = pychan.loadXML('content/gui/mainmenu.xml')
+		self.mainmenu = self.fife.pychan.loadXML('content/gui/mainmenu.xml')
 		self.mainmenu.stylize('menu')
-		self.gamemenu = pychan.loadXML('content/gui/gamemenu.xml')
+		self.gamemenu = self.fife.pychan.loadXML('content/gui/gamemenu.xml')
 		self.gamemenu.stylize('menu')
 
 		eventMap = {
@@ -154,8 +153,7 @@ class OpenAnno(basicapplication.ApplicationBase):
 		self.gui.show()
 		self.game = None
 
-		self.soundmanager = all.engine.getSoundManager()
-		self.soundmanager.init()
+		self.soundmanager = self.fife.soundmanager
 
 		# play track as background music
 		if self.settings.PlaySounds == 1:
@@ -165,26 +163,8 @@ class OpenAnno(basicapplication.ApplicationBase):
 			emitter.setLooping(True)
 			emitter.play()
 
-	def loadSettings(self):
-		"""
-		Load the settings from a python file and load them into the engine.
-		Called in the ApplicationBase constructor.
-		"""
-		engineSetting = self.engine.getSettings()
-		engineSetting.setDefaultFontGlyphs(self.settings.FontGlyphs)
-		engineSetting.setDefaultFontPath(self.settings.Font)
-		engineSetting.setDefaultFontSize(self.settings.FontSize)
-		engineSetting.setBitsPerPixel(self.settings.BitsPerPixel)
-		engineSetting.setFullScreen(self.settings.FullScreen)
-		engineSetting.setInitialVolume(self.settings.InitialVolume)
-		engineSetting.setRenderBackend(self.settings.RenderBackend)
-		engineSetting.setSDLRemoveFakeAlpha(self.settings.SDLRemoveFakeAlpha)
-		engineSetting.setScreenWidth(self.settings.ScreenWidth)
-		engineSetting.setScreenHeight(self.settings.ScreenHeight)
-		try:
-			engineSetting.setImageChunkingSize(all.settings.ImageChunkSize)
-		except:
-			pass
+		self.fife.pump = self.pump
+		self.fife.run()
 
 	def showCredits(self):
 		pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
@@ -258,15 +238,14 @@ class OpenAnno(basicapplication.ApplicationBase):
 		self.gui.hide()
 		self.gui = self.gamemenu
 		if self.game is None:
-			self.game = Game(all.main, "content/maps/demo.sqlite")
+			self.game = Game(self, "content/maps/demo.sqlite")
 
 	def createListener(self):
 		self.listener = KeyListener(all.engine, all.main)
 
-	def _pump(self):
+	def pump(self):
 		if self.game is not None and self.game.timer is not None:
 			self.game.timer.check_tick()
 
 if __name__ == '__main__':
 	all.main = OpenAnno()
-	all.main.run()
