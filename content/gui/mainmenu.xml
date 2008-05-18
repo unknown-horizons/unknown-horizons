@@ -1,4 +1,5 @@
 <Container size="1024,768" >
+    <Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
     <Icon image="content/gui/images/background/oa_startmenu_wheel.png" position="212,44"/>
 
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,161"/>
