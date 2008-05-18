@@ -167,7 +167,7 @@ class OpenAnno:
 		self.fife.run()
 
 	def showCredits(self):
-		pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
+		self.fife.pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
 
 	def showSettings(self):
 		resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
@@ -175,7 +175,7 @@ class OpenAnno:
 			resolutions.index(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight))
 		except:
 			resolutions.append(str(all.settings.ScreenWidth) + 'x' + str(all.settings.ScreenHeight))
-		dlg = pychan.loadXML('content/gui/settings.xml')
+		dlg = self.fife.pychan.loadXML('content/gui/settings.xml')
 		dlg.distributeInitialData({
 			'screen_resolution' : resolutions,
 			'screen_renderer' : ["OpenGL", "SDL"],
@@ -220,14 +220,14 @@ class OpenAnno:
 			all.engine.getSettings().setScreenHeight(all.settings.ScreenHeight)
 			changes_require_restart = True
 		if changes_require_restart:
-			pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
+			self.fife.pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
 
 	def showQuit(self):
 		if self.game is None:
-			if(pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-				self.quit()
+			if(self.fife.pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+				self.fife.quit()
 		else:
-			if(pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+			if(self.fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
 				self.game.__del__()
 				self.game = None
 				self.gui.hide()
