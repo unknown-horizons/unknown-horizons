@@ -6,7 +6,7 @@ class View:
 		self.cam = engine.getView().addCamera("main", layer, fife.Rect(0, 0, screen_size[0], screen_size[1]), fife.ExactModelCoordinate(center[0], center[1], 0.0))
 		self.cam.setCellImageDimensions(32, 16)
 		self.cam.setRotation(45.0)
-		self.cam.setTilt(-60.0)
+		self.cam.setTilt(-63.5)
 		self.cam.setZoom(1)
 		self.center(center)
 
