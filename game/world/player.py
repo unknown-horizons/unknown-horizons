@@ -31,4 +31,3 @@ class Player:
         self.ships = {}
         self.soldiers = {}
         self.islands = {}
-

@@ -63,4 +63,3 @@ class Ship(Object):
         facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
         self.object.setLocation(location)
         self.object.setFacingLocation(facing_location)
-

@@ -47,5 +47,3 @@ class KeyListener(fife.IKeyListener):
 
     def keyReleased(self, evt):
         pass
-
-

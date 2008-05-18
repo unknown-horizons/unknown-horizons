@@ -53,4 +53,3 @@ class Warehouse(House):
 
     def on_build(self):
         self.game.create_settlement(player)
-
