@@ -35,12 +35,12 @@ class SelectionTool(CursorTool):
 		self.game = game
 		self.last_moved = 0
 
-def select_unit(self):
-	"""Runs neccesary steps to select a unit."""
-	self.game.selected_instance.object.say(str(self.game.selected_instance.health) + '%', 0) # display health over selected ship
-	self.game.outline_renderer.addOutlined(self.game.selected_instance.object, 255, 255, 255, 1)
-	if self.game.selected_instance.__class__ is Ship:
-		self.game.ingame_gui.gui['ship'].show() #show the gui for ships
+	def select_unit(self):
+		"""Runs neccesary steps to select a unit."""
+		self.game.selected_instance.object.say(str(self.game.selected_instance.health) + '%', 0) # display health over selected ship
+		self.game.outline_renderer.addOutlined(self.game.selected_instance.object, 255, 255, 255, 1)
+		if self.game.selected_instance.__class__ is Ship:
+			self.game.ingame_gui.gui['ship'].show() #show the gui for ships
 
 	def deselect_unit(self):
 		"""Runs neccasary steps to deselect a unit."""
