@@ -24,42 +24,42 @@ import fife
 _STATE_NONE, _STATE_IDLE, _STATE_MOVE = xrange(3)
 
 class Ship(Object):
-    """Class representing a ship"""
+	"""Class representing a ship"""
 
-    def __init__(self, model, object_name, layer, game, uniqInMap=True):
-        """
-        @var model: fife.Model: engine model beeing used.
-        @var unit_id: str containing the units id used in the map.
-        @var layer: fife.Layer on which the unit is present.
-        @var uniqInMap: bool if the unit is unique.
-        @var name: str containings the ships ingame name
-        """
-        Object.__init__(self, model, object_name, layer, game, uniqInMap)
-        self.name = ""
-        self.state = _STATE_NONE
-        self.idlecounter = 1
-        self.type = 'ship'
+	def __init__(self, model, object_name, layer, game, uniqInMap=True):
+		"""
+		@var model: fife.Model: engine model beeing used.
+		@var unit_id: str containing the units id used in the map.
+		@var layer: fife.Layer on which the unit is present.
+		@var uniqInMap: bool if the unit is unique.
+		@var name: str containings the ships ingame name
+		"""
+		Object.__init__(self, model, object_name, layer, game, uniqInMap)
+		self.name = ""
+		self.state = _STATE_NONE
+		self.idlecounter = 1
+		self.type = 'ship'
 
-    def onInstanceActionFinished(self, instance, action):
-        self.idle()
-        if action.Id() != 'idle':
-            self.idlecounter = 1
-        else:
-            self.idlecounter += 1
+	def onInstanceActionFinished(self, instance, action):
+		self.idle()
+		if action.Id() != 'idle':
+			self.idlecounter = 1
+		else:
+			self.idlecounter += 1
 
-    def start(self):
-        self.idle()
+	def start(self):
+		self.idle()
 
-    def idle(self):
-        self.state = _STATE_IDLE
-        #self.object.act('move', self.object.getFacingLocation())
+	def idle(self):
+		self.state = _STATE_IDLE
+		#self.object.act('move', self.object.getFacingLocation())
 
-    def move(self, location):
-        """Moves the ship to a certain location
-        @var location: fife.Location to which the unit should move"""
-        self.state = _STATE_MOVE
-        #self.object.move('move', location, 2)
-        facing_location = fife.Location(location)
-        facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
-        self.object.setLocation(location)
-        self.object.setFacingLocation(facing_location)
+	def move(self, location):
+		"""Moves the ship to a certain location
+		@var location: fife.Location to which the unit should move"""
+		self.state = _STATE_MOVE
+		#self.object.move('move', location, 2)
+		facing_location = fife.Location(location)
+		facing_location.setExactLayerCoordinates(self.object.getFacingLocation().getExactLayerCoordinates() - self.object.getLocation().getExactLayerCoordinates() + location.getExactLayerCoordinates())
+		self.object.setLocation(location)
+		self.object.setFacingLocation(facing_location)

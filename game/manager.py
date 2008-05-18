@@ -22,58 +22,58 @@
 import timer
 
 class SPManager:
-    """The manager class takes care of command issuing to the timermanager,sends tick-packets
-    over the network, and syncronisation of network games."""
+	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
+	over the network, and syncronisation of network games."""
 
-    def __init__(self, **args):
-        """Initialize the Singleplayer Manager
-        @var **args: args The arguments to be passed to commands
-        """
-        self.args = args
+	def __init__(self, **args):
+		"""Initialize the Singleplayer Manager
+		@var **args: args The arguments to be passed to commands
+		"""
+		self.args = args
 
-    def execute(self, command):
-        """Executes a command
-        @var command: Command the command to be executed
-        """
-        command(owner = self.args['player'], **self.args)
+	def execute(self, command):
+		"""Executes a command
+		@var command: Command the command to be executed
+		"""
+		command(owner = self.args['player'], **self.args)
 
 class MPManager:
-    COMMAND_RATE = 1
-    def __init__(self, **args):
-        """Initialize the Multiplayer Manager
-        @var args: arguments The arguments to be passed to commands, must contain timer, player and players
-        """
-        self.args = args
-        self.timer = args['timer']
-        self.timer.add_test(this.can_tick)
-        self.timer.add_call(this.tick)
-        self.commands = []
-        self.packets = {}
+	COMMAND_RATE = 1
+	def __init__(self, **args):
+		"""Initialize the Multiplayer Manager
+		@var args: arguments The arguments to be passed to commands, must contain timer, player and players
+		"""
+		self.args = args
+		self.timer = args['timer']
+		self.timer.add_test(this.can_tick)
+		self.timer.add_call(this.tick)
+		self.commands = []
+		self.packets = {}
 
-    def tick(self, tick):
-        """Executes a tick
-        @var tick: the
-        """
-        if tick % self.__class__.COMMAND_RATE == 0:
-            if self.packets.has_key(tick):
-                self.packets[tick] = {}
-            self.packets[tick][self.args['player']] = TickPacket(tick, self.commands)
-            self.commands = []
-            if self.packets.has_key(tick - 2):
-                for p in self.args['players'][(tick - 2) % len(self.args['players']):] + self.args['players'][:((tick - 2) % len(self.args['players'])) - 1]:
-                    for c in self.packets[tick - 2][p].commands:
-                        c(owner = p, **self.args)
+	def tick(self, tick):
+		"""Executes a tick
+		@var tick: the
+		"""
+		if tick % self.__class__.COMMAND_RATE == 0:
+			if self.packets.has_key(tick):
+				self.packets[tick] = {}
+			self.packets[tick][self.args['player']] = TickPacket(tick, self.commands)
+			self.commands = []
+			if self.packets.has_key(tick - 2):
+				for p in self.args['players'][(tick - 2) % len(self.args['players']):] + self.args['players'][:((tick - 2) % len(self.args['players'])) - 1]:
+					for c in self.packets[tick - 2][p].commands:
+						c(owner = p, **self.args)
 
-    def can_tick(self, tick):
-        return timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
+	def can_tick(self, tick):
+		return timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
 
-    def execute(self, command):
-        """Executes a command
-        @var command: Command the command to be executed
-        """
-        self.commands.append(command)
+	def execute(self, command):
+		"""Executes a command
+		@var command: Command the command to be executed
+		"""
+		self.commands.append(command)
 
 class TickPacket:
-    def __init__(self, tick, commands):
-        self.tick = tick
-        self.commands = commands
+	def __init__(self, tick, commands):
+		self.tick = tick
+		self.commands = commands

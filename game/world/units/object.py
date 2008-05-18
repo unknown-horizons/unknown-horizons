@@ -21,27 +21,27 @@
 import common, fife
 
 class Object(fife.InstanceActionListener):
-    def __init__(self, model, object_id, layer, game, uniqInMap=True):
-        """
-        @var model: fife.Model: engine model beeing used.
-        @var unit_id: str containing the objects id.
-        @var layer: fife.Layer on which the object is present.
-        @var game: Main Game class instance
-        @var uniqInMap: bool if the object is unique.
-        """
-        fife.InstanceActionListener.__init__(self)
-        self.model = model
-        self.object_id = object_id
-        self.layer = layer
-        self.type = None
-        self.game = game
-        self.health = 100
-        if uniqInMap:
-            self.object = layer.getInstances('id', object_id)[0]
-            self.object.addActionListener(self)
+	def __init__(self, model, object_id, layer, game, uniqInMap=True):
+		"""
+		@var model: fife.Model: engine model beeing used.
+		@var unit_id: str containing the objects id.
+		@var layer: fife.Layer on which the object is present.
+		@var game: Main Game class instance
+		@var uniqInMap: bool if the object is unique.
+		"""
+		fife.InstanceActionListener.__init__(self)
+		self.model = model
+		self.object_id = object_id
+		self.layer = layer
+		self.type = None
+		self.game = game
+		self.health = 100
+		if uniqInMap:
+			self.object = layer.getInstances('id', object_id)[0]
+			self.object.addActionListener(self)
 
-    def onInstanceActionFinished(self, instance, action):
-        raise ProgrammingError('No OnActionFinished defined for Unit.')
+	def onInstanceActionFinished(self, instance, action):
+		raise ProgrammingError('No OnActionFinished defined for Unit.')
 
-    def start(self):
-        raise ProgrammingError('No start defined for Unit.')
+	def start(self):
+		raise ProgrammingError('No start defined for Unit.')

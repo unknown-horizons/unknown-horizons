@@ -1,29 +1,29 @@
 import fife
 
 class CursorTool(fife.IMouseListener):
-    def __init__(self, eventmanager):
-        fife.IMouseListener.__init__(self)
-        self.eventmanager = eventmanager
-        self.eventmanager.addMouseListener(self)
+	def __init__(self, eventmanager):
+		fife.IMouseListener.__init__(self)
+		self.eventmanager = eventmanager
+		self.eventmanager.addMouseListener(self)
 
 def __del__(self):
-    self.eventmanager.removeMouseListener(self)
+	self.eventmanager.removeMouseListener(self)
 
 def mousePressed(self, evt):
-    pass
+	pass
 def mouseReleased(self, evt):
-    pass	
+	pass	
 def mouseEntered(self, evt):
-    pass
+	pass
 def mouseExited(self, evt):
-    pass
+	pass
 def mouseClicked(self, evt):
-    pass
+	pass
 def mouseWheelMovedUp(self, evt):
-    pass	
+	pass	
 def mouseWheelMovedDown(self, evt):
-    pass
+	pass
 def mouseMoved(self, evt):
-    pass
+	pass
 def mouseDragged(self, evt):
-    pass
+	pass

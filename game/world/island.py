@@ -20,28 +20,28 @@
 # ###################################################
 
 class Island():
-    """The Island class represents an Island by keeping a list of all instances on the map,
-    that belong to the island. The island variable is also set on every instance that belongs
-    to an island, making it easy to determine to which island the instance belongs, when
-    selected.
-    An Island instance is created at map creation, when all tiles are added to the map.
-    """
-    def __init__(self, id):
-        """@var id: int containing the islands unique id
-        """
-        self._instance_list = [] # Do not edit this list manually, always use the add_tile() and remove_tile() functions.
-        self.id = id
+	"""The Island class represents an Island by keeping a list of all instances on the map,
+	that belong to the island. The island variable is also set on every instance that belongs
+	to an island, making it easy to determine to which island the instance belongs, when
+	selected.
+	An Island instance is created at map creation, when all tiles are added to the map.
+	"""
+	def __init__(self, id):
+		"""@var id: int containing the islands unique id
+		"""
+		self._instance_list = [] # Do not edit this list manually, always use the add_tile() and remove_tile() functions.
+		self.id = id
 
-    def add_tile(self, tile):
-        """Adds a tile to the island's instance_list and sets the tiles island.
-        @var tile: fife.instance of the tile that is to be added.
-        """
-        self._instance_list.append(tile)
-        tile.island = self
+	def add_tile(self, tile):
+		"""Adds a tile to the island's instance_list and sets the tiles island.
+		@var tile: fife.instance of the tile that is to be added.
+		"""
+		self._instance_list.append(tile)
+		tile.island = self
 
-    def remove_tile(self, tile):
-        """Removes a tile from the island's instance_list and removes the tiles island variable.
-        @var tile: fife.instance of the tile that is to be removed.
-        """
-        self._instace_list.remove(tile)
-        tile.island = None
+	def remove_tile(self, tile):
+		"""Removes a tile from the island's instance_list and removes the tiles island variable.
+		@var tile: fife.instance of the tile that is to be removed.
+		"""
+		self._instace_list.remove(tile)
+		tile.island = None

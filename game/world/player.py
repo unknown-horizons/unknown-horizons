@@ -20,14 +20,14 @@
 # ###################################################
 
 class Player:
-    """Class representing a player"""
+	"""Class representing a player"""
 
-    def __init__(self, name):
-        """@var name: str containing the players name
-        """
-        self.name = name
+	def __init__(self, name):
+		"""@var name: str containing the players name
+		"""
+		self.name = name
 
-        self.gold = 20000
-        self.ships = {}
-        self.soldiers = {}
-        self.islands = {}
+		self.gold = 20000
+		self.ships = {}
+		self.soldiers = {}
+		self.islands = {}
