@@ -1,5 +1,26 @@
+# ###################################################
+# Copyright (C) 2008 The OpenAnnoTeam
+# team@openanno.org
+# This file is part of OpenAnno.
+#
+# OpenAnno is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
+
 import fife
-from game import all
+import game.main
 #TODO: Implement selection support over a common interface with Unit
 
 class BlockedError(Exception):
@@ -26,7 +47,7 @@ class Building(object):
 _buildingclasses = {}
 
 def initBuildingClasses():
-	buildings = all.db.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
+	buildings = game.main.instance.db.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
 	for building_id,  package,  class_type,  size_x,  size_y,  name in buildings.rows:
 
 		#FIXME: these entrys should be deleted
@@ -38,7 +59,7 @@ def initBuildingClasses():
 		propdict = {}
 		propdict['size'] = (size_x,  size_y)
 
-		properties = all.db.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
+		properties = game.main.instance.db.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
 		for (key,  value) in properties.rows:
 			propdict[value] = key
 
