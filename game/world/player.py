@@ -22,9 +22,12 @@
 class Player:
 	"""Class representing a player"""
 
-	def __init__(self, name):
-		"""@var name: str containing the players name
+	def __init__(self, id, name):
 		"""
+		@var id: unique player id
+		@var name: str containing the players name
+		"""
+		self.id = id
 		self.name = name
 
 		self.gold = 20000

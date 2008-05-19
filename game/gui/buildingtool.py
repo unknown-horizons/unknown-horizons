@@ -1,5 +1,6 @@
 from cursortool import CursorTool
 from game.world.building.building import *
+from game.command.building import Build
 
 import fife
 
@@ -18,6 +19,7 @@ class BuildingTool(CursorTool):
 
 		self.game = game
 		self.ship = ship
+		self.building_id = building_id
 
 		self._class = getBuildingClass(building_id)
 
@@ -61,6 +63,7 @@ class BuildingTool(CursorTool):
 		evt.consume()
 
 		can_build = self._buildCheck(target_mapcoord)
+		print can_build
 		if can_build: color = (255,  255,  0)
 		else: color = (255,  0,  0)
 
@@ -72,8 +75,10 @@ class BuildingTool(CursorTool):
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pt = fife.ScreenPoint(evt.getX(), evt.getY())
 			mapcoord = self.game.view.cam.toMapCoordinates(pt, False)
+			mapcoord.x = int(mapcoord.x)
+			mapcoord.y = int(mapcoord.y)
+			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
-				pass
-				#TODO: Issue build command
-
+				self.game.manager.execute(Build(self.building_id, mapcoord.x, mapcoord.y, self.game.human_player.id))
+				self.game.set_selection_mode()
 		evt.consume()

@@ -27,9 +27,9 @@ import fife
 from gui.selectiontool import SelectionTool
 from world.building import building
 from world.units.ship import Ship
-from world.units.house import House
 from world.player import Player
 from gui.ingamegui import IngameGui
+from gui.ingamekeylistener import IngameKeyListener
 from world.island import Island
 from timer import Timer
 from scheduler import Scheduler
@@ -77,13 +77,14 @@ class Game(EventListenerBase):
 		#self.overview = None    # Overview camera
 		self.view = None
 		self.outline_renderer = None
-		self.cursor = None
-		self.set_selection_mode()
 
 		#
 		# Gui related variables
 		#
 		self.ingame_gui = None
+		self.keylistener = IngameKeyListener(game.main.instance.fife.engine, self)
+		self.cursor = None
+		self.set_selection_mode()
 
 		#
 		# Other variables
@@ -92,11 +93,6 @@ class Game(EventListenerBase):
 		self.manager = SPManager(main = game.main.instance, game = self, timer = self.timer, players = self.players, player = self.players[0], db = game.main.instance.db)
 		self.scheduler = Scheduler()
 		self.timer.add_call(self.scheduler.tick)
-
-		#
-		# _MODE_BUILD variables
-		#
-		self._build_tiles = None    # Stores the area a building can be built on
 
 		#
 		# Beginn map creation
@@ -186,7 +182,7 @@ class Game(EventListenerBase):
 		"""Initialises rendering, creates the camera and sets it's position."""
 
 		#create a new player, which is the human player
-		self.human_player = Player('Arthus')
+		self.human_player = Player(1 ,'Arthus')
 		self.players[self.human_player.name] = self.human_player
 
 		self.ingame_gui = IngameGui()
@@ -269,7 +265,10 @@ class Game(EventListenerBase):
 		return inst
 
 	def create_unit(self, layer, id, object_id, UnitClass):
-		"""Creates a new unit an the specified layer
+		"""
+		DEPRECATED: To build a building use the Build CommandClass. Create_unit is only used for the temporary ship!
+		
+		Creates a new unit an the specified layer
 		@var layer: fife.Layer the unit is to be created on
 		@var id: str containing the object's id
 		@var object_id: int containing the objects id in the database
@@ -277,10 +276,6 @@ class Game(EventListenerBase):
 		@return: returnes a unit of the type specified by UnitClass
 		"""
 		unit = UnitClass(self.model, str(id), layer, self)
-		if UnitClass is House:
-			res = game.main.instance.db.query("SELECT * FROM data.building WHERE rowid = ?",str(object_id))
-			if res.success:
-				unit.size_x, unit.size_y = game.main.instance.db.query("SELECT size_x,size_y FROM data.building WHERE rowid = ?",str(object_id)).rows[0]
 		self.instance_to_unit[unit.object.getFifeId()] = unit
 		unit.start()
 		return unit
@@ -322,26 +317,3 @@ class Game(EventListenerBase):
 			return inst
 		else:
 			return None
-
-	def keyPressed(self, evt):
-		keyval = evt.getKey().getValue()
-		keystr = evt.getKey().getAsString().lower()
-		if keyval == fife.Key.LEFT:
-			self.view.scroll(-1, 0)
-		elif keyval == fife.Key.RIGHT:
-			self.view.scroll(1, 0)
-		elif keyval == fife.Key.UP:
-			self.view.scroll(0, -1)
-		elif keyval == fife.Key.DOWN:
-			self.view.scroll(0, 1)
-		elif keystr == 'c':
-			r = self.view.cam.getRenderer('CoordinateRenderer')
-			r.setEnabled(not r.isEnabled())
-		elif keystr == 'r':
-			self.view.rotate_right()
-		elif keystr == 'q':
-			self.__del__()
-			self.main.quit()
-		elif keystr == 't':
-			r = self.view.cam.getRenderer('GridRenderer')
-			r.setEnabled(not r.isEnabled())
