@@ -21,11 +21,11 @@
 
 import pychan
 from buildingtool import BuildingTool
+import game.main
 
 class IngameGui():
 	"""Class handling all the ingame gui events."""
-	def __init__(self, game):
-		self.game = game
+	def __init__(self):
 		self.gui = {}
 		self.gui['status'] = pychan.loadXML('content/gui/status.xml')
 		self.gui['build'] = pychan.loadXML('content/gui/build_menu/hud_build.xml')
@@ -59,11 +59,11 @@ class IngameGui():
 		self.toggle_visible('main')
 		self.gui['main'].mapEvents({
 			'build' : pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
-			'zoomIn' : self.game.view.zoom_in,
-			'zoomOut' : self.game.view.zoom_out,
-			'rotateRight' : self.game.view.rotate_right,
-			'rotateLeft' : self.game.view.rotate_left,
-			'escButton' : self.game.main.gui.show
+			'zoomIn' : game.main.instance.game.view.zoom_in,
+			'zoomOut' : game.main.instance.game.view.zoom_out,
+			'rotateRight' : game.main.instance.game.view.rotate_right,
+			'rotateLeft' : game.main.instance.game.view.rotate_left,
+			'escButton' : game.main.instance.gui.show
 		})
 
 	def status_set(self, label, value):
@@ -78,8 +78,8 @@ class IngameGui():
 
 	def _ship_build(self):
 		"""Calls the Games build_object class."""
-		self.game.selected_instance.object.say('')
-		self.game.cursor = BuildingTool(self.game,  1,  self.game.selected_instance)
+		game.main.instance.game.selected_instance.object.say('')
+		game.main.instance.game.cursor = BuildingTool(game.main.instance.game,  1,  game.main.instance.game.selected_instance)
 
 	def toggle_visible(self, guiname):
 		"""Toggles whether a gui is visible or not.

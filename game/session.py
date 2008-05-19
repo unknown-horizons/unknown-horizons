@@ -38,21 +38,21 @@ from view import View
 
 class Game(EventListenerBase):
 	"""Game class represents the games main ingame view and controls cameras and map loading."""
+	def __init__(self):
+		pass
 
-	def __init__(self, main, map):
-		"""@var main: parant Openanno instance
+	def init(self, map):
+		print game.main.instance.game
+		"""
 		@var map: string with the mapfile path
 		"""
-		self.main = main
-		engine = self.main.engine
-		super(Game, self).__init__(engine, regKeys=True)
+		super(Game, self).__init__(regKeys=True)
 
 		#
 		# Engine specific variables
 		#
-		self.engine = engine
-		self.eventmanager = engine.getEventManager()
-		self.model = engine.getModel()
+		self.eventmanager = game.main.instance.fife.engine.getEventManager()
+		self.model = game.main.instance.fife.engine.getModel()
 		self.metamodel = self.model.getMetaModel()
 
 		#
@@ -89,7 +89,7 @@ class Game(EventListenerBase):
 		# Other variables
 		#
 		self.timer = Timer(16)
-		self.manager = SPManager(main = self.main, game = self, timer = self.timer, players = self.players, player = self.players[0], db = game.main.instance.db)
+		self.manager = SPManager(main = game.main.instance, game = self, timer = self.timer, players = self.players, player = self.players[0], db = game.main.instance.db)
 		self.scheduler = Scheduler()
 		self.timer.add_call(self.scheduler.tick)
 
@@ -170,7 +170,7 @@ class Game(EventListenerBase):
 			for y in range(min_y-10, max_y+11):
 				inst = self.create_instance(self.layers['water'], self.datasets['ground'], str(int(13)), int(x), int(y), 0)
 
-		self.view = View(self.engine, (game.main.instance.fife.settings.getScreenWidth(), game.main.instance.fife.settings.getScreenHeight()), self.map.getLayers("id", "layer1")[0], (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
+		self.view = View(self.map.getLayers("id", "layer1")[0], (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
 
 		#self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
 		#self.overview.setCellImageDimensions(2, 2)
@@ -189,7 +189,7 @@ class Game(EventListenerBase):
 		self.human_player = Player('Arthus')
 		self.players[self.human_player.name] = self.human_player
 
-		self.ingame_gui = IngameGui(self)
+		self.ingame_gui = IngameGui()
 		self.ingame_gui.status_set('gold','10000')
 
 		#temporary ship creation, should be done automatically in later releases
@@ -200,7 +200,7 @@ class Game(EventListenerBase):
 		ship.name = 'Matilde'
 		#self.human_player.ships[ship.name] = ship # add ship to the humanplayer
 
-		self.engine.getView().resetRenderers()
+		game.main.instance.fife.engine.getView().resetRenderers()
 
 		renderer = self.view.cam.getRenderer('CoordinateRenderer')
 		renderer.clearActiveLayers()
@@ -219,7 +219,7 @@ class Game(EventListenerBase):
 		obj = dataset.createObject(str(oid), None)
 		fife.ObjectVisual.create(obj)
 		visual = obj.get2dGfxVisual()
-		pool = self.engine.getImagePool()
+		pool = game.main.instance.fife.engine.getImagePool()
 
 		img = pool.addResourceFromFile(str(image_overview))
 		visual.addStaticImage(0, img)

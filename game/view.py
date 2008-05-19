@@ -1,9 +1,10 @@
 import fife
 import math
+import game.main
 
 class View:
-	def __init__(self, engine, screen_size, layer, center = (0, 0)):
-		self.cam = engine.getView().addCamera("main", layer, fife.Rect(0, 0, screen_size[0], screen_size[1]), fife.ExactModelCoordinate(center[0], center[1], 0.0))
+	def __init__(self, layer, center = (0, 0)):
+		self.cam = game.main.instance.fife.engine.getView().addCamera("main", layer, fife.Rect(0, 0, game.main.instance.fife.settings.getScreenWidth(), game.main.instance.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
 		self.cam.setCellImageDimensions(32, 16)
 		self.cam.setRotation(45.0)
 		self.cam.setTilt(-60)

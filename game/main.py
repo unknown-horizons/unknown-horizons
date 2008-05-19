@@ -19,10 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import re
+import os.path
 import shutil
-import game.gui.style
 from game.dbreader import DbReader
 from game.engine import Fife
 from game.session import Game
@@ -59,7 +57,6 @@ class Main:
 
 		#init fife
 		self.fife.init()
-		self.engine = self.fife.engine
 
  		if self.sound_enable:
 			self.fife.bgsound.play()
@@ -141,7 +138,6 @@ class Main:
 				self.fife.quit()
 		else:
 			if(self.fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-				self.game.__del__()
 				self.game = None
 				self.gui.hide()
 				self.gui = self.mainmenu
@@ -151,6 +147,7 @@ class Main:
 		self.gui.hide()
 		self.gui = self.gamemenu
 		if self.game is None:
-			self.game = Game(self, "content/maps/demo.sqlite")
+			self.game = Game()
+			self.game.init("content/maps/demo.sqlite")
 
 instance = Main()

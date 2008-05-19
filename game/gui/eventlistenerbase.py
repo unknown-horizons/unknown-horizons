@@ -20,11 +20,12 @@
 # ###################################################
 
 import fife
+import game.main
 
 class EventListenerBase(fife.IKeyListener, fife.ICommandListener, fife.IMouseListener, fife.ConsoleExecuter, fife.IWidgetListener):
-	def __init__(self, engine, regKeys=False, regCmd=False, regMouse=False, regConsole=False, regWidget=False):
-		self.eventmanager = engine.getEventManager()
-		self.console = engine.getGuiManager().getConsole()
+	def __init__(self, regKeys=False, regCmd=False, regMouse=False, regConsole=False, regWidget=False):
+		self.eventmanager = game.main.instance.fife.engine.getEventManager()
+		self.console = game.main.instance.fife.engine.getGuiManager().getConsole()
 		fife.IKeyListener.__init__(self)
 
 		if regKeys:
