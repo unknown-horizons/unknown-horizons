@@ -10,8 +10,8 @@ class Setting(object):
 		try:
 			import config
 			for option in config.__dict__:
-				if option.startswith(name):
-					setattr(self, option[len(option):], getattr(config, option))
+				if option.startswith(name) and '_' not in option[len(name):]:
+					setattr(self, option[len(name):], getattr(config, option))
 		except ImportError, e:
 			pass
 		for (option, value) in main.instance.db.query("select substr(name, ?), value from config.config where substr(name, 0, ?) = ? and substr(name, ?) NOT LIKE '%_%'", (len(name), len(name), name, len(name))).rows:
@@ -34,6 +34,9 @@ class Setting(object):
 		for name in self._categorys:
 			self.__dict__[name].addChangeListener(listener)
 		self._listener.append(listener)
+		for name in self.__dict__:
+			if not name.startswith('_'):
+				listener(self, name, getattr(self, name))
 
 	def delChangeListener(self, listener):
 		for name in self._categorys:

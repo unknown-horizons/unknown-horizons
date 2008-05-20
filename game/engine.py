@@ -66,7 +66,6 @@ class Fife:
 
 	def _setSetting(self, settingObject, settingName, value):
 		setting = settingObject._name + settingName
-		print setting, '=', value
 		if setting == 'fife_defaultFont_path':
 			self.settings.setDefaultFontPath(value)
 		elif setting == 'fife_defaultFont_size':
@@ -89,8 +88,6 @@ class Fife:
 			self.settings.setImageChunkingSize(value)
 		elif setting == 'fife_sound_initialVolume':
 			self.settings.setInitialVolume(value)
-		else:
-			print "unknown!!!"
 
 	def init(self):
 		logToPrompt, logToFile, debugPychan = True, True, False
