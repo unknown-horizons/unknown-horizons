@@ -41,7 +41,7 @@ def findFIFE():
 					break
 			else:
 				fife_path = p
-				print "found fife in:", fife_path
+				print "Found FIFE in:", fife_path
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in [ fife_path + '/' + a for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
@@ -63,7 +63,7 @@ def findFIFE():
 				import fife
 			except ImportError, e:
 				os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
-				print "Restarting OpenAnno with proper LD_LIBRARY_PATH..."
+				print "Restarting with proper LD_LIBRARY_PATH..."
 				args = [sys.executable] + sys.argv
 				os.execvp(args[0], args)
 		else:

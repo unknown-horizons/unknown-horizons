@@ -17,7 +17,6 @@ class Setting(object):
 			pass
 		for (option, value) in main.instance.db.query("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", (len(name) + 1, len(name), name, len(name) + 1)).rows:
 			if not self.__dict__.has_key(option):
-				print 'sql:', option, '=', value
 				setattr(self, option, simplejson.loads(value))
 
 	def __getattr__(self, name):
