@@ -15,7 +15,7 @@ class Setting(object):
 					setattr(self, option[len(name):], getattr(config, option))
 		except ImportError:
 			pass
-		for (option, value) in main.instance.db.query("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", (len(name) + 1, len(name), name, len(name) + 1)).rows:
+		for (option, value) in main.db.query("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", (len(name) + 1, len(name), name, len(name) + 1)).rows:
 			if not self.__dict__.has_key(option):
 				setattr(self, option, simplejson.loads(value))
 
@@ -27,7 +27,7 @@ class Setting(object):
 		self.__dict__[name] = value
 		if not name.startswith('_'):
 			assert(name not in self._categorys)
-			main.instance.db.query("replace into config.config (name, value) values (?, ?)", (self._name + name, simplejson.dumps(value)))
+			main.db.query("replace into config.config (name, value) values (?, ?)", (self._name + name, simplejson.dumps(value)))
 			for listener in self._listener:
 				listener(self, name, value)
 
@@ -65,5 +65,5 @@ class Settings(Setting):
 	def __init__(self, config = 'config.sqlite'):
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)
-		main.instance.db.query("attach ? AS config", (config))
+		main.db.query("attach ? AS config", (config))
 		super(Settings, self).__init__()

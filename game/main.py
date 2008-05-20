@@ -23,110 +23,109 @@ import os.path
 import shutil
 from game.dbreader import DbReader
 from game.engine import Fife
-from game.session import Game
 from game.settings import Settings
+from game.session import Game
 
-class Main:
-	"""OpenAnno class, main game class. Creates the base."""
-	def init(self):
-		#init db
-		self.db = DbReader(':memory:')
-		self.db.query("attach ? AS data", ('content/openanno.sqlite'))
+def start():
+	global db, settings, fife, mainmenu, gamemenu, gui, game
+	#init db
+	db = DbReader(':memory:')
+	db.query("attach ? AS data", ('content/openanno.sqlite'))
 
-		#init settings
-		self.settings = Settings()
-		self.settings.addCategorys('sound')
-		self.settings.sound.setDefaults(enabled = True)
+	#init settings
+	settings = Settings()
+	settings.addCategorys('sound')
+	settings.sound.setDefaults(enabled = True)
 
-		#init fife
-		self.fife = Fife()
-		self.fife.init()
+	#init fife
+	fife = Fife()
+	fife.init()
 
- 		if self.settings.sound.enabled:
-			self.fife.bgsound.play()
-		
-		self.mainmenu = self.fife.pychan.loadXML('content/gui/mainmenu.xml')
-		self.mainmenu.stylize('menu')
-		self.gamemenu = self.fife.pychan.loadXML('content/gui/gamemenu.xml')
-		self.gamemenu.stylize('menu')
+	if settings.sound.enabled:
+		fife.bgsound.play()
 
-		eventMap = {
-			'startGame' : self.start_game,
-			'settingsLink' : self.showSettings,
-			'creditsLink'  : self.showCredits,
-			'closeButton'  : self.showQuit,
-		}
-		self.mainmenu.mapEvents(eventMap)
-		self.gamemenu.mapEvents(eventMap)
-		self.gui = self.mainmenu
-		self.gui.show()
-		self.game = None
+	mainmenu = fife.pychan.loadXML('content/gui/mainmenu.xml')
+	mainmenu.stylize('menu')
+	gamemenu = fife.pychan.loadXML('content/gui/gamemenu.xml')
+	gamemenu.stylize('menu')
 
-	def run(self):
-		self.fife.run()
+	eventMap = {
+		'startGame'    : startGame,
+		'settingsLink' : showSettings,
+		'creditsLink'  : showCredits,
+		'closeButton'  : showQuit,
+	}
+	mainmenu.mapEvents(eventMap)
+	gamemenu.mapEvents(eventMap)
+	gui = mainmenu
+	gui.show()
+	game = None
 
-	def showCredits(self):
-		self.fife.pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
+	fife.run()
 
-	def showSettings(self):
-		resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
-		try:
-			resolutions.index(str(self.settings.fife.screen.width) + 'x' + str(self.settings.fife.screen.height))
-		except:
-			resolutions.append(str(self.settings.fife.screen.width) + 'x' + str(self.settings.fife.screen.height))
-		dlg = self.fife.pychan.loadXML('content/gui/settings.xml')
-		dlg.distributeInitialData({
-			'screen_resolution' : resolutions,
-			'screen_renderer' : ["OpenGL", "SDL"],
-			'screen_bpp' : ["Desktop", "16", "24", "32"]
-		})
-		dlg.distributeData({
-			'screen_resolution' : resolutions.index(str(self.settings.fife.screen.width) + 'x' + str(self.settings.fife.screen.height)),
-			'screen_renderer' : 0 if self.settings.fife.renderer.backend == 'OpenGL' else 1,
-			'screen_bpp' : int(self.settings.fife.screen.bpp / 10), # 0:0 16:1 24:2 32:3 :)
-			'screen_fullscreen' : self.settings.fife.screen.fullscreen,
-			'sound_enable_opt' : self.settings.sound.enabled
-		})
-		if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
-			return;
-		screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
-		changes_require_restart = False
-		if screen_fullscreen != self.settings.fife.screen.fullscreen:
-			self.settings.fife.screen.fullscreen = screen_fullscreen
-			changes_require_restart = True
-		if sound_enable_opt != self.settings.sound.enabled:
-			self.settings.sound.enabled = sound_enable_opt
-			changes_require_restart = True
-		if screen_bpp != int(self.settings.fife.screen.bpp / 10):
-			self.settings.fife.screen.bpp = 0 if screen_bpp == 0 else ((screen_bpp + 1) * 8)
-			changes_require_restart = True
-		if screen_renderer != (0 if self.settings.fife.renderer.backend == 'OpenGL' else 1):
-			self.settings.fife.renderer.backend = 'OpenGL' if screen_renderer == 0 else 'SDL'
-			changes_require_restart = True
-		if screen_resolution != resolutions.index(str(self.settings.fife.screen.width) + 'x' + str(self.settings.fife.screen.height)):
-			self.settings.fife.screen.width = int(resolutions[screen_resolution].partition('x')[0])
-			self.settings.fife.screen.height = int(resolutions[screen_resolution].partition('x')[2])
-			changes_require_restart = True
-		if changes_require_restart:
-			self.fife.pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
+def showCredits():
+	global fife
+	fife.pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
 
-	def showQuit(self):
-		if self.game is None:
-			if(self.fife.pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-				self.fife.quit()
-		else:
-			if(self.fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-				self.game = None
-				self.gui.hide()
-				self.gui = self.mainmenu
-				self.gui.show()
+def showSettings():
+	global fife, settings
+	resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
+	try:
+		resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
+	except:
+		resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
+	dlg = fife.pychan.loadXML('content/gui/settings.xml')
+	dlg.distributeInitialData({
+		'screen_resolution' : resolutions,
+		'screen_renderer' : ["OpenGL", "SDL"],
+		'screen_bpp' : ["Desktop", "16", "24", "32"]
+	})
+	dlg.distributeData({
+		'screen_resolution' : resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height)),
+		'screen_renderer' : 0 if settings.fife.renderer.backend == 'OpenGL' else 1,
+		'screen_bpp' : int(settings.fife.screen.bpp / 10), # 0:0 16:1 24:2 32:3 :)
+		'screen_fullscreen' : settings.fife.screen.fullscreen,
+		'sound_enable_opt' : settings.sound.enabled
+	})
+	if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
+		return;
+	screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
+	changes_require_restart = False
+	if screen_fullscreen != settings.fife.screen.fullscreen:
+		settings.fife.screen.fullscreen = screen_fullscreen
+		changes_require_restart = True
+	if sound_enable_opt != settings.sound.enabled:
+		settings.sound.enabled = sound_enable_opt
+		changes_require_restart = True
+	if screen_bpp != int(settings.fife.screen.bpp / 10):
+		settings.fife.screen.bpp = 0 if screen_bpp == 0 else ((screen_bpp + 1) * 8)
+		changes_require_restart = True
+	if screen_renderer != (0 if settings.fife.renderer.backend == 'OpenGL' else 1):
+		settings.fife.renderer.backend = 'OpenGL' if screen_renderer == 0 else 'SDL'
+		changes_require_restart = True
+	if screen_resolution != resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height)):
+		settings.fife.screen.width = int(resolutions[screen_resolution].partition('x')[0])
+		settings.fife.screen.height = int(resolutions[screen_resolution].partition('x')[2])
+		changes_require_restart = True
+	if changes_require_restart:
+		fife.pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
 
-	def start_game(self):
-		self.gui.hide()
-		self.gui = self.gamemenu
-		if self.game is None:
-			self.game = Game()
-			self.game.init("content/maps/demo.sqlite")
+def showQuit():
+	global game, fife, gui
+	if game is None:
+		if(fife.pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+			fife.quit()
+	else:
+		if(fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+			game = None
+			gui.hide()
+			gui = mainmenu
+			gui.show()
 
-instance = Main()
-instance.init()
+def startGame():
+	global gui, game
+	gui.hide()
+	gui = gamemenu
+	if game is None:
+		game = Game()
+		game.init("content/maps/demo.sqlite")

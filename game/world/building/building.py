@@ -47,7 +47,7 @@ class Building(object):
 _buildingclasses = {}
 
 def initBuildingClasses():
-	buildings = game.main.instance.db.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
+	buildings = game.main.db.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
 	for building_id,  package,  class_type,  size_x,  size_y,  name in buildings.rows:
 
 		#FIXME: these entrys should be deleted
@@ -59,7 +59,7 @@ def initBuildingClasses():
 		propdict = {}
 		propdict['size'] = (size_x,  size_y)
 
-		properties = game.main.instance.db.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
+		properties = game.main.db.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
 		for (key,  value) in properties.rows:
 			propdict[value] = key
 

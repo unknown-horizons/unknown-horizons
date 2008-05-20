@@ -83,4 +83,4 @@ if __name__ == '__main__':
 
 	#start openanno
 	import game.main
-	game.main.instance.run()
+	game.main.start()

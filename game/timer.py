@@ -40,7 +40,7 @@ class Timer:
 		self.tick_func_test = []
 		self.tick_func_call = []
 
-		game.main.instance.fife.pump = self.check_tick
+		game.main.fife.pump = self.check_tick
 
 	def add_test(self, call):
 		"""Adds a call to the test list

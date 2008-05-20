@@ -37,27 +37,27 @@ class Fife:
 		self._gotInited = False
 
 		#init settings
-		main.instance.settings.addCategorys('fife')
-		main.instance.settings.fife.addChangeListener(self._setSetting)
-		main.instance.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
+		main.settings.addCategorys('fife')
+		main.settings.fife.addChangeListener(self._setSetting)
+		main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
-		main.instance.settings.fife.defaultFont.setDefaults(
+		main.settings.fife.defaultFont.setDefaults(
 			path = 'content/gfx/fonts/samanata.ttf',
 			size = 12,
 			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\"",
 		)
 
-		main.instance.settings.fife.sound.setDefaults(
+		main.settings.fife.sound.setDefaults(
 			initialVolume = 5.0,
 		)
 
-		main.instance.settings.fife.renderer.setDefaults(
+		main.settings.fife.renderer.setDefaults(
 			backend = 'OpenGL',
 			SDLRemoveFakeAlpha = False,
 			imageChunkingSize = 256,
 		)
 
-		main.instance.settings.fife.screen.setDefaults(
+		main.settings.fife.screen.setDefaults(
 			fullscreen = False,
 			width = 1024,
 			height = 768,
