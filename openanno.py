@@ -21,10 +21,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-def findFIFE():
-	import sys
-	import os
+import sys
+import os
 
+def findFIFE():
 	try:
 		import config
 		_paths = [config.fife_path]
@@ -75,6 +75,12 @@ def findFIFE():
 		exit()
 
 if __name__ == '__main__':
+	#find fife and setup search paths
 	findFIFE()
+
+	#for some external libraries distributed with openanno
+	sys.path.append('game/ext')
+
+	#start openanno
 	import game.main
 	game.main.instance.run()
