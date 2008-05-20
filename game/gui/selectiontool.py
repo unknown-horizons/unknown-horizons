@@ -20,8 +20,8 @@
 # ###################################################
 
 from cursortool import CursorTool
-from ..world.units.ship import Ship
-from ..command.unit import Move
+from game.world.units.ship import Ship
+from game.command.unit import Move
 import time
 import fife
 import math

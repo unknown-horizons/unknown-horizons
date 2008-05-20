@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
 from buildingtool import BuildingTool
 import game.main
 
@@ -27,38 +26,38 @@ class IngameGui():
 	"""Class handling all the ingame gui events."""
 	def __init__(self):
 		self.gui = {}
-		self.gui['status'] = pychan.loadXML('content/gui/status.xml')
-		self.gui['build'] = pychan.loadXML('content/gui/build_menu/hud_build.xml')
-		self.gui['build_tab0'] = pychan.loadXML('content/gui/build_menu/hud_build_tab0.xml')
-		self.gui['build_tab1'] = pychan.loadXML('content/gui/build_menu/hud_build_tab1.xml')
-		self.gui['build_tab2'] = pychan.loadXML('content/gui/build_menu/hud_build_tab2.xml')
-		self.gui['build_tab3'] = pychan.loadXML('content/gui/build_menu/hud_build_tab3.xml')
-		self.gui['build_tab4'] = pychan.loadXML('content/gui/build_menu/hud_build_tab4.xml')
-		self.gui['build_tab5'] = pychan.loadXML('content/gui/build_menu/hud_build_tab5.xml')
+		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
+		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
+		self.gui['build_tab0'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab0.xml')
+		self.gui['build_tab1'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab1.xml')
+		self.gui['build_tab2'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab2.xml')
+		self.gui['build_tab3'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab3.xml')
+		self.gui['build_tab4'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab4.xml')
+		self.gui['build_tab5'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab5.xml')
 		self.gui['build'].findChild(name='content').addChild(self.gui['build_tab0']) #Add first menu
 		self.gui['build'].findChild(name='content').adaptLayout()
 		self.active_build = 0
 		self.gui['build'].mapEvents({
-			'servicesTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 0),
-			'residentsTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 1),
-			'companiesTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 2),
-			'militaryTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 3),
-			'streetsTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 4),
-			'specialTab' : pychan.tools.callbackWithArguments(self.build_load_tab, 5)
+			'servicesTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 0),
+			'residentsTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 1),
+			'companiesTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 2),
+			'militaryTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 3),
+			'streetsTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 4),
+			'specialTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 5)
 		})
-		self.gui['buildinfo'] = pychan.loadXML('content/gui/hud_buildinfo.xml')
-		self.gui['chat'] = pychan.loadXML('content/gui/hud_chat.xml')
-		self.gui['cityinfo'] = pychan.loadXML('content/gui/hud_cityinfo.xml')
-		self.gui['res'] = pychan.loadXML('content/gui/hud_res.xml')
-		self.gui['fertility'] = pychan.loadXML('content/gui/hud_fertility.xml')
-		self.gui['ship'] = pychan.loadXML('content/gui/hud_ship.xml')
+		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
+		self.gui['chat'] = game.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
+		self.gui['cityinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_cityinfo.xml')
+		self.gui['res'] = game.main.fife.pychan.loadXML('content/gui/hud_res.xml')
+		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
+		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
 		self.gui['ship'].mapEvents({
 			'foundSettelmentButton' : self._ship_build
 		})
-		self.gui['main'] = pychan.loadXML('content/gui/hud_main.xml')
+		self.gui['main'] = game.main.fife.pychan.loadXML('content/gui/hud_main.xml')
 		self.toggle_visible('main')
 		self.gui['main'].mapEvents({
-			'build' : pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
+			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
 			'zoomIn' : game.main.game.view.zoom_in,
 			'zoomOut' : game.main.game.view.zoom_out,
 			'rotateRight' : game.main.game.view.rotate_right,

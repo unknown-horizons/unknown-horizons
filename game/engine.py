@@ -22,8 +22,8 @@
 import fife
 import fifelog
 import pychan
-import gui.style
-import main
+import game.gui.style
+import game.main
 
 class Fife:
 	def __init__(self):
@@ -37,27 +37,27 @@ class Fife:
 		self._gotInited = False
 
 		#init settings
-		main.settings.addCategorys('fife')
-		main.settings.fife.addChangeListener(self._setSetting)
-		main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
+		game.main.settings.addCategorys('fife')
+		game.main.settings.fife.addChangeListener(self._setSetting)
+		game.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
-		main.settings.fife.defaultFont.setDefaults(
+		game.main.settings.fife.defaultFont.setDefaults(
 			path = 'content/gfx/fonts/samanata.ttf',
 			size = 12,
 			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\"",
 		)
 
-		main.settings.fife.sound.setDefaults(
+		game.main.settings.fife.sound.setDefaults(
 			initialVolume = 5.0,
 		)
 
-		main.settings.fife.renderer.setDefaults(
+		game.main.settings.fife.renderer.setDefaults(
 			backend = 'OpenGL',
 			SDLRemoveFakeAlpha = False,
 			imageChunkingSize = 256,
 		)
 
-		main.settings.fife.screen.setDefaults(
+		game.main.settings.fife.screen.setDefaults(
 			fullscreen = False,
 			width = 1024,
 			height = 768,
@@ -109,7 +109,7 @@ class Fife:
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
-		for name, stylepart in gui.style.STYLES.items():
+		for name, stylepart in game.gui.style.STYLES.items():
 			self.pychan.manager.addStyle(name, stylepart)
 		self.pychan.loadFonts("content/fonts/samanata.fontdef")
 

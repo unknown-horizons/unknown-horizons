@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import timer
+import game.timer
 
 class SPManager:
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
@@ -44,9 +44,8 @@ class MPManager:
 		@var args: arguments The arguments to be passed to commands, must contain timer, player and players
 		"""
 		self.args = args
-		self.timer = args['timer']
-		self.timer.add_test(this.can_tick)
-		self.timer.add_call(this.tick)
+		game.timer.add_test(this.can_tick)
+		game.timer.add_call(this.tick)
 		self.commands = []
 		self.packets = {}
 
@@ -65,7 +64,7 @@ class MPManager:
 						c(owner = p, **self.args)
 
 	def can_tick(self, tick):
-		return timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
+		return game.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else game.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
 
 	def execute(self, command):
 		"""Executes a command
