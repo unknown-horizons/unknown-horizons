@@ -81,7 +81,7 @@ class Fife:
 		elif setting == 'fife_screen_bpp':
 			self.settings.setBitsPerPixel(1 if value else 0)
 		elif setting == 'fife_renderer_backend':
-			self.settings.setRenderBackend(value)
+			self.settings.setRenderBackend(str(value))
 		elif setting == 'fife_renderer_SDLRemoveFakeAlpha':
 			self.settings.setSDLRemoveFakeAlpha(value)
 		elif setting == 'fife_renderer_imageChunkingSize':

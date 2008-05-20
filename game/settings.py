@@ -13,7 +13,7 @@ class Setting(object):
 			for option in config.__dict__:
 				if option.startswith(name) and '_' not in option[len(name):]:
 					setattr(self, option[len(name):], getattr(config, option))
-		except ImportError, e:
+		except ImportError:
 			pass
 		for (option, value) in main.instance.db.query("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", (len(name) + 1, len(name), name, len(name) + 1)).rows:
 			if not self.__dict__.has_key(option):

@@ -28,7 +28,7 @@ def findFIFE():
 	try:
 		import config
 		_paths = [config.fife_path]
-	except ImportError, e:
+	except (ImportError, AttributeError):
 		_paths = []
 	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
 
