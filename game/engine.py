@@ -66,6 +66,7 @@ class Fife:
 
 	def _setSetting(self, settingObject, settingName, value):
 		setting = settingObject._name + settingName
+		print setting, '=', value
 		if setting == 'fife_defaultFont_path':
 			self.settings.setDefaultFontPath(value)
 		elif setting == 'fife_defaultFont_size':
