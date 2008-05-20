@@ -47,7 +47,7 @@ class DbReader:
 			if sqlite3.complete_statement(command + ';'):
 				command = command + ';'
 			else:
-				raise "Error, no complete sql statement provided by \"",command,"\"."
+				raise 'Error, no complete sql statement provided by "' + command + '".'
 		try:
 			if type(vals) is str().__class__:
 				vals = (vals,)

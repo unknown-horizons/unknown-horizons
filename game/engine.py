@@ -23,6 +23,7 @@ import fife
 import fifelog
 import pychan
 import gui.style
+import main
 
 class Fife:
 	def __init__(self):
@@ -35,27 +36,61 @@ class Fife:
 		self._doReturn = None
 		self._gotInited = False
 
-		#font
-		self.settings.setDefaultFontPath('content/gfx/fonts/samanata.ttf')
-		self.settings.setDefaultFontSize(12)
-		self.settings.setDefaultFontGlyphs(" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\"")
+		#init settings
+		main.instance.settings.addCategorys('fife')
+		main.instance.settings.fife.addChangeListener(self._setSetting)
+		main.instance.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
-		#sound
-		self.settings.setInitialVolume(5.0)
+		main.instance.settings.fife.defaultFont.setDefaults(
+			path = 'content/gfx/fonts/samanata.ttf',
+			size = 12,
+			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\"",
+		)
 
-		#render
-		self.settings.setRenderBackend('OpenGL')
-		self.settings.setSDLRemoveFakeAlpha(0)
-		try:
-			self.settings.setImageChunkingSize(256)
-		except:
-			pass
+		main.instance.settings.fife.sound.setDefaults(
+			initialVolume = 5.0,
+		)
 
-		#screen
-		self.settings.setFullScreen(0)
-		self.settings.setScreenWidth(1024)
-		self.settings.setScreenHeight(768)
-		self.settings.setBitsPerPixel(0)
+		main.instance.settings.fife.renderer.setDefaults(
+			backend = 'OpenGL',
+			SDLRemoveFakeAlpha = False,
+			imageChunkingSize = 256,
+		)
+
+		main.instance.settings.fife.screen.setDefaults(
+			fullscreen = False,
+			width = 1024,
+			height = 768,
+			bpp = 0
+		)
+
+	def _setSetting(self, settingObject, settingName, value):
+		setting = settingObject._name + settingName
+		print setting, '=', value
+		if setting == 'fife_defaultFont_path':
+			self.settings.setDefaultFontPath(value)
+		elif setting == 'fife_defaultFont_size':
+			self.settings.setDefaultFontSize(value)
+		elif setting == 'fife_defaultFont_glyphs':
+			self.settings.setDefaultFontGlyphs(value)
+		elif setting == 'fife_screen_fullscreen':
+			self.settings.setFullScreen(1 if value else 0)
+		elif setting == 'fife_screen_width':
+			self.settings.setScreenWidth(value)
+		elif setting == 'fife_screen_height':
+			self.settings.setScreenHeight(value)
+		elif setting == 'fife_screen_bpp':
+			self.settings.setBitsPerPixel(1 if value else 0)
+		elif setting == 'fife_renderer_backend':
+			self.settings.setRenderBackend(value)
+		elif setting == 'fife_renderer_SDLRemoveFakeAlpha':
+			self.settings.setSDLRemoveFakeAlpha(value)
+		elif setting == 'fife_renderer_imageChunkingSize':
+			self.settings.setImageChunkingSize(value)
+		elif setting == 'fife_sound_initialVolume':
+			self.settings.setInitialVolume(value)
+		else:
+			print "unknown!!!"
 
 	def init(self):
 		logToPrompt, logToFile, debugPychan = True, True, False

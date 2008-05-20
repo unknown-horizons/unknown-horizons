@@ -26,8 +26,8 @@ def findFIFE():
 	import os
 
 	try:
-		import settings
-		_paths = [settings.path]
+		import config
+		_paths = [config.fife_path]
 	except ImportError, e:
 		_paths = []
 	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
@@ -54,7 +54,7 @@ def findFIFE():
 				break
 	else:
 		print 'FIFE was not found.'
-		print "Please create a settings.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
+		print "Please create a config.py file and add a line with: fife_path = '<path to fife>' eg. path = '../../fife/trunk/'"
 		exit()
 
 	try:
@@ -71,7 +71,7 @@ def findFIFE():
 	except ImportError, e:
 		print 'FIFE was not found or failed to load'
 		print 'Reason: ' + e.message
-		print "Please create a settings.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
+		print "Please create a config.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
 		exit()
 
 if __name__ == '__main__':
