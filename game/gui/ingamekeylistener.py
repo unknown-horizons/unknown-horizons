@@ -55,7 +55,7 @@ class IngameKeyListener(fife.IKeyListener):
 		elif keystr == 'r':
 			self.session.view.rotate_right()
 		elif keystr == 'q':
-			game.main.instance.fife.quit()
+			game.main.fife.quit()
 		elif keystr == 't':
 			r = self.session.view.cam.getRenderer('GridRenderer')
 			r.setEnabled(not r.isEnabled())
