@@ -15,6 +15,6 @@ class Build:
 		@var game: main game Session instance.
 		"""
 		object_class = getBuildingClass(self.object_id)
-		object_class.object = game.create_instance(game.layers['units'], game.datasets['building'], self.object_id, self.x, self.y)
+		object_class.object = game.create_instance(game.layers['units'], 'building', self.object_id, self.x, self.y)
 		game.instance_to_unit[object_class.object.getFifeId()] = object_class
 		# TODO: Add building to players/settlements

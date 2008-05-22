@@ -25,7 +25,7 @@ class BuildingTool(CursorTool):
 
 		#TODO: Use a new preview layer
 
-		self.previewInstance = game.create_instance(game.layers['units'],  game.datasets['building'],  building_id,  -100,  -100,  0)
+		self.previewInstance = game.create_instance(game.layers['units'],  'building',  building_id,  -100,  -100,  0)
 
 	def __del__(self):
 		self.game.layers['units'].deleteInstance(self.previewInstance)

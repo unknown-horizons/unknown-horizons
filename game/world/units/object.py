@@ -37,7 +37,7 @@ class Object(fife.InstanceActionListener):
 		self.game = game
 		self.health = 100
 		if uniqInMap:
-			self.object = layer.getInstances('id', object_id)[0]
+			self.object = layer.getInstance(object_id)
 			self.object.addActionListener(self)
 
 	def onInstanceActionFinished(self, instance, action):
