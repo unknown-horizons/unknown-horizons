@@ -39,6 +39,8 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		game.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
+		self.commandbuffer = ''
+
 	def __del__(self):
 		game.main.fife.eventmanager.removeKeyListener(self)
 
@@ -69,8 +71,11 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			game.main.fife.quit()
 			return 'quitting...'
 		try:
-			cmd = code.compile_command(command)
-			if cmd != None:
+			cmd = code.compile_command(self.commandbuffer + command)
+			if cmd == None:
+				self.commandbuffer += command
+			else:
+				self.commandbuffer = ''
 				oldout = sys.stdout
 				class console_file:
 					def __init__(self):
