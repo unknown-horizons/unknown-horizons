@@ -62,8 +62,18 @@ class Setting(object):
 				inst.addChangeListener(listener)
 
 class Settings(Setting):
+	VERSION = 1
 	def __init__(self, config = 'config.sqlite'):
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)
 		game.main.db.query("attach ? AS config", (config))
+		version = game.main.db.query("PRAGMA config.user_version").rows[0][0]
+		if version > Settings.VERSION:
+			print "Error: Config version not supported, creating empty config which wont be saved."
+			game.main.db.query("detach config")
+			game.main.db.query("attach ':memory:' AS config")
+			game.main.db.query("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+		elif version < Settings.VERSION:
+			print "Upgrading Config from Version " + str(version) + " to Version " + str(Settings.VERSION) + "..."
+			game.main.db.query("PRAGMA config.user_version = " + str(Settings.VERSION))
 		super(Settings, self).__init__()
