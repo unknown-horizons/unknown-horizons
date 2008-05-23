@@ -34,6 +34,7 @@ class IngameKeyListener(fife.IKeyListener):
 		self.session = session
 		self.eventmanager = engine.getEventManager()
 		self.eventmanager.addKeyListener(self)
+		self.keysPressed = []
 
 	def __del__(self):
 		self.eventmanager.removeKeyListener(self)
@@ -41,25 +42,32 @@ class IngameKeyListener(fife.IKeyListener):
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
+		was = keyval in self.keysPressed
+		self.keysPressed.append(keyval)
 		if keyval == fife.Key.LEFT:
-			self.session.view.scroll(-1, 0)
+			if not was: self.session.view.autoscroll(-1, 0)
 		elif keyval == fife.Key.RIGHT:
-			self.session.view.scroll(1, 0)
+			if not was: self.session.view.autoscroll(1, 0)
 		elif keyval == fife.Key.UP:
-			self.session.view.scroll(0, -1)
+			if not was: self.session.view.autoscroll(0, -1)
 		elif keyval == fife.Key.DOWN:
-			self.session.view.scroll(0, 1)
+			if not was: self.session.view.autoscroll(0, 1)
 		elif keystr == 'c':
 			r = self.session.view.cam.getRenderer('CoordinateRenderer')
 			r.setEnabled(not r.isEnabled())
-		elif keystr == 'r':
-			self.session.view.rotate_right()
-		elif keystr == 'q':
-			game.main.fife.quit()
 		elif keystr == 't':
 			r = self.session.view.cam.getRenderer('GridRenderer')
 			r.setEnabled(not r.isEnabled())
 			evt.consume()
 
 	def keyReleased(self, evt):
-		pass
+		keyval = evt.getKey().getValue()
+		self.keysPressed.remove(keyval)
+		if keyval == fife.Key.LEFT:
+			self.session.view.autoscroll(1, 0)
+		elif keyval == fife.Key.RIGHT:
+			self.session.view.autoscroll(-1, 0)
+		elif keyval == fife.Key.UP:
+			self.session.view.autoscroll(0, 1)
+		elif keyval == fife.Key.DOWN:
+			self.session.view.autoscroll(0, -1)

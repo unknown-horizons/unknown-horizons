@@ -10,6 +10,7 @@ class View:
 		self.cam.setTilt(-60)
 		self.cam.setZoom(1)
 		self.center(center)
+		self._autoscroll = [0, 0]
 
 	def center(self, center):
 		"""Sets the camera position
@@ -20,6 +21,21 @@ class View:
 		pos.x = center[0]
 		pos.y = center[1]
 		self.cam.setLocation(loc)
+
+	def autoscroll(self, x, y):
+		print "autoscroll x:", x, "y:", y
+		old = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
+		self._autoscroll[0] += x
+		self._autoscroll[1] += y
+		new = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
+		if old != new:
+			if old:
+				game.main.game.timer.remove_test(self.tick)
+			if new:
+				game.main.game.timer.add_test(self.tick)
+
+	def tick(self, tick):
+		self.scroll(self._autoscroll[0], self._autoscroll[1])
 
 	def scroll(self, x, y):
 		"""Moves the camera across the screen
