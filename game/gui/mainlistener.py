@@ -22,6 +22,7 @@
 import fife
 import game.main
 import code
+import sys
 
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 	"""MainListener Class to process events of main window"""
@@ -70,7 +71,22 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		try:
 			cmd = code.compile_command(command)
 			if cmd != None:
+				oldout = sys.stdout
+				class console_file:
+					def __init__(self):
+						self.buffer = ''
+					def write(self, string):
+						parts = (self.buffer + string).split("\n")
+						self.buffer = parts.pop()
+						for p in parts:
+							if len(p) > 0:
+								game.main.fife.console.println(p)
+					def __del__(self):
+						if len(self.buffer) > 0:
+							self.write('\n')
+				sys.stdout = console_file()
 				exec cmd in globals()
+				sys.stdout = oldout
 		except Exception, e:
 			return str(e)
 		return ''
