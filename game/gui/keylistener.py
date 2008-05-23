@@ -20,30 +20,60 @@
 # ###################################################
 
 import fife
+import game.main
+import code
 
-class KeyListener(fife.IKeyListener):
-	"""KeyListener Class to process key presses"""
+class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
+	"""MainListener Class to process events of main window"""
 
-	def __init__(self, engine, main):
-		"""@var engine: Game engine"""
-		super(KeyListener, self).__init__()
-		self.main = main
-		self.eventmanager = engine.getEventManager()
-		self.eventmanager.addKeyListener(self)
+	def __init__(self):
+		fife.IKeyListener.__init__(self)
+		fife.ConsoleExecuter.__init__(self)
+		game.main.fife.eventmanager.addKeyListener(self)
+		game.main.fife.console.setConsoleExecuter(self)
+
+		#ugly but works o_O
+		class CmdListener(fife.ICommandListener): pass
+		self.cmdlist = CmdListener()
+		game.main.fife.eventmanager.addCommandListener(self.cmdlist)
+		self.cmdlist.onCommand = self.onCommand
 
 	def __del__(self):
-		self.eventmanager.removeKeyListener(self)
+		game.main.fife.eventmanager.removeKeyListener(self)
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		if keyval == fife.Key.ESCAPE:
-			if self.main.gui.isVisible() and self.main.game is not None:
-				self.main.gui.hide()
-			elif self.main.gui.isVisible():
-				self.main.showQuit()
-			elif not self.main.gui.isVisible():
-				self.main.gui.show()
+			if game.main.gui.isVisible() and game.main.game is not None:
+				game.main.gui.hide()
+			elif game.main.gui.isVisible():
+				game.main.showQuit()
+			elif not game.main.gui.isVisible():
+				game.main.gui.show()
+			evt.consume()
+		elif keyval == fife.Key.F10:
+			game.main.fife.console.toggleShowHide()
 			evt.consume()
 
 	def keyReleased(self, evt):
 		pass
+
+	def onCommand(self, command):
+		if command.getCommandType() == fife.CMD_QUIT_GAME:
+			game.main.fife.quit()
+			command.consume()
+
+	def onConsoleCommand(self, command):
+		if command.lower() in ('quit', 'exit', 'quit()', 'exit()'):
+			game.main.fife.quit()
+			return 'quitting...'
+		try:
+			cmd = code.compile_command(command)
+			if cmd != None:
+				exec cmd in globals()
+		except Exception, e:
+			return str(e)
+		return ''
+
+	def onToolsClick(self):
+		game.main.fife.console.println('not implemented...')

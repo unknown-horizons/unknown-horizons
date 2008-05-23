@@ -1,4 +1,6 @@
 from game.world.building.building import *
+import game.main
+
 class Build:
 	"""Command class that builds an object.
 	@var object_id: int objects id.
@@ -10,11 +12,11 @@ class Build:
 		self.y = y
 		self.player_id = player_id
 
-	def __call__(self, game, **trash):
+	def __call__(self, issuer):
 		"""__call__() gets called by the manager.
-		@var game: main game Session instance.
+		@var issuer: the issuer of the command
 		"""
 		object_class = getBuildingClass(self.object_id)
-		object_class.object = game.create_instance(game.layers['units'], 'building', self.object_id, self.x, self.y)
-		game.instance_to_unit[object_class.object.getFifeId()] = object_class
+		object_class.object = game.main.game.create_instance(game.main.game.layers['units'], 'building', self.object_id, self.x, self.y)
+		game.main.game.instance_to_unit[object_class.object.getFifeId()] = object_class
 		# TODO: Add building to players/settlements

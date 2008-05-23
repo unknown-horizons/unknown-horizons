@@ -88,7 +88,7 @@ class Game(EventListenerBase):
 		# Other variables
 		#
 		self.timer = Timer(16)
-		self.manager = SPManager(main = game.main, game = self, timer = self.timer, players = self.players, player = self.players[0], db = game.main.db)
+		self.manager = SPManager()
 		self.scheduler = Scheduler()
 		self.timer.add_call(self.scheduler.tick)
 

@@ -99,7 +99,11 @@ class Fife:
 
 		self.engine.init()
 
-		#init sound and background emitter
+		#init event manager, sound and background emitter
+		self.eventmanager = self.engine.getEventManager()
+		self.eventmanager.setNonConsumableKeys([fife.Key.ESCAPE, fife.Key.F10])
+		self.guimanager = self.engine.getGuiManager()
+		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.bgsound = self.soundmanager.createEmitter()

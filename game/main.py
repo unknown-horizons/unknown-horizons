@@ -25,6 +25,7 @@ from game.dbreader import DbReader
 from game.engine import Fife
 from game.settings import Settings
 from game.session import Game
+from game.gui.keylistener import MainListener
 
 def start():
 	global db, settings, fife, mainmenu, gamemenu, gui, game
@@ -57,8 +58,12 @@ def start():
 	}
 	mainmenu.mapEvents(eventMap)
 	gamemenu.mapEvents(eventMap)
+
+	mainlistener = MainListener()
+
 	gui = mainmenu
 	gui.show()
+
 	game = None
 
 	fife.run()

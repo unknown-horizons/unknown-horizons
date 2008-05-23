@@ -20,30 +20,22 @@
 # ###################################################
 
 import game.timer
+import game.main
 
 class SPManager:
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
 	over the network, and syncronisation of network games."""
 
-	def __init__(self, **args):
-		"""Initialize the Singleplayer Manager
-		@var **args: args The arguments to be passed to commands
-		"""
-		self.args = args
-
 	def execute(self, command):
 		"""Executes a command
 		@var command: Command the command to be executed
 		"""
-		command(owner = self.args['player'], **self.args)
+		command(issuer = game.main.game.players[0])
 
 class MPManager:
 	COMMAND_RATE = 1
-	def __init__(self, **args):
-		"""Initialize the Multiplayer Manager
-		@var args: arguments The arguments to be passed to commands, must contain timer, player and players
-		"""
-		self.args = args
+	def __init__(self):
+		"""Initialize the Multiplayer Manager"""
 		game.timer.add_test(this.can_tick)
 		game.timer.add_call(this.tick)
 		self.commands = []
@@ -56,15 +48,15 @@ class MPManager:
 		if tick % self.__class__.COMMAND_RATE == 0:
 			if self.packets.has_key(tick):
 				self.packets[tick] = {}
-			self.packets[tick][self.args['player']] = TickPacket(tick, self.commands)
+			self.packets[tick][game.main.game.players[0]] = TickPacket(tick, self.commands)
 			self.commands = []
 			if self.packets.has_key(tick - 2):
-				for p in self.args['players'][(tick - 2) % len(self.args['players']):] + self.args['players'][:((tick - 2) % len(self.args['players'])) - 1]:
+				for p in game.main.game.players[(tick - 2) % len(game.main.game.players):] + game.main.game.players[:((tick - 2) % len(game.main.game.players)) - 1]:
 					for c in self.packets[tick - 2][p].commands:
-						c(owner = p, **self.args)
+						c(issuer = p)
 
 	def can_tick(self, tick):
-		return game.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.args['players']))) else game.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
+		return game.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(game.main.game.player))) else game.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
 
 	def execute(self, command):
 		"""Executes a command
