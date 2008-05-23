@@ -33,7 +33,7 @@ class SelectionTool(CursorTool):
 	def __init__(self, game):
 		CursorTool.__init__(self,  game.eventmanager)
 		self.game = game
-		self.last_moved = 0
+		self.lastScroll = [0, 0]
 
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""
@@ -81,17 +81,19 @@ class SelectionTool(CursorTool):
 	def mouseMoved(self, evt):
 		# Mouse scrolling
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
-		if time.time() > self.last_moved+0.05:  # Make sure the screen doesn't move to rapidly.
-			self.last_moved = time.time()
-			if mousepoint.x < 50:
-				self.game.view.scroll(-1, 0)
-			if mousepoint.y < 50:
-				self.game.view.scroll(0, -1)
-			if mousepoint.x > (self.game.view.cam.getViewPort().right()-50):
-				self.game.view.scroll(1, 0)
-			if mousepoint.y > (self.game.view.cam.getViewPort().bottom()-50):
-				self.game.view.scroll(0, 1)
-		evt.consume()
+		old = self.lastScroll
+		new = [0, 0]
+		if mousepoint.x < 50:
+			new[0] -= 1
+		elif mousepoint.x >= (self.game.view.cam.getViewPort().right()-50):
+			new[0] += 1
+		if mousepoint.y < 50:
+			new[1] -= 1
+		elif mousepoint.y >= (self.game.view.cam.getViewPort().bottom()-50):
+			new[1] += 1
+		if new[0] != old[0] or new[1] != old[1]:
+			self.game.view.autoscroll(new[0]-old[0], new[1]-old[1])
+			self.lastScroll = new
 
 	def mouseWheelMovedUp(self, evt):
 		self.game.view.zoom_in()
