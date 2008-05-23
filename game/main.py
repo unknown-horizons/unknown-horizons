@@ -25,7 +25,7 @@ from game.dbreader import DbReader
 from game.engine import Fife
 from game.settings import Settings
 from game.session import Game
-from game.gui.keylistener import MainListener
+from game.gui.mainlistener import MainListener
 
 def start():
 	global db, settings, fife, mainmenu, gamemenu, gui, game
