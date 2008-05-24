@@ -78,18 +78,20 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 				self.commandbuffer = ''
 				oldout = sys.stdout
 				class console_file:
-					def __init__(self):
+					def __init__(self, copy = None):
 						self.buffer = ''
+						self.copy = copy
 					def write(self, string):
 						parts = (self.buffer + string).split("\n")
 						self.buffer = parts.pop()
 						for p in parts:
 							if len(p) > 0:
 								game.main.fife.console.println(p)
+						self.copy.write(string)
 					def __del__(self):
 						if len(self.buffer) > 0:
 							self.write('\n')
-				sys.stdout = console_file()
+				sys.stdout = console_file(oldout)
 				exec cmd in globals()
 				sys.stdout = oldout
 		except Exception, e:
