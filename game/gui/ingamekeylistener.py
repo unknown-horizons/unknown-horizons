@@ -25,38 +25,33 @@ import game.main
 class IngameKeyListener(fife.IKeyListener):
 	"""KeyListener Class to process key presses ingame"""
 
-	def __init__(self, engine, session):
-		"""
-		@var enginge: fife.Engine
-		@var session: Game session
-		"""
+	def __init__(self):
 		super(IngameKeyListener, self).__init__()
-		self.session = session
-		self.eventmanager = engine.getEventManager()
-		self.eventmanager.addKeyListener(self)
+		game.main.fife.eventmanager.addKeyListener(self)
 		self.keysPressed = []
 
 	def __del__(self):
-		self.eventmanager.removeKeyListener(self)
+		game.main.fife.eventmanager.removeKeyListener(self)
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
 		was = keyval in self.keysPressed
-		self.keysPressed.append(keyval)
+		if not was:
+			self.keysPressed.append(keyval)
 		if keyval == fife.Key.LEFT:
-			if not was: self.session.view.autoscroll(-1, 0)
+			if not was: game.main.game.view.autoscroll(-1, 0)
 		elif keyval == fife.Key.RIGHT:
-			if not was: self.session.view.autoscroll(1, 0)
+			if not was: game.main.game.view.autoscroll(1, 0)
 		elif keyval == fife.Key.UP:
-			if not was: self.session.view.autoscroll(0, -1)
+			if not was: game.main.game.view.autoscroll(0, -1)
 		elif keyval == fife.Key.DOWN:
-			if not was: self.session.view.autoscroll(0, 1)
+			if not was: game.main.game.view.autoscroll(0, 1)
 		elif keystr == 'c':
-			r = self.session.view.cam.getRenderer('CoordinateRenderer')
+			r = game.main.game.view.cam.getRenderer('CoordinateRenderer')
 			r.setEnabled(not r.isEnabled())
 		elif keystr == 't':
-			r = self.session.view.cam.getRenderer('GridRenderer')
+			r = game.main.game.view.cam.getRenderer('GridRenderer')
 			r.setEnabled(not r.isEnabled())
 			evt.consume()
 
@@ -64,10 +59,10 @@ class IngameKeyListener(fife.IKeyListener):
 		keyval = evt.getKey().getValue()
 		self.keysPressed.remove(keyval)
 		if keyval == fife.Key.LEFT:
-			self.session.view.autoscroll(1, 0)
+			game.main.game.view.autoscroll(1, 0)
 		elif keyval == fife.Key.RIGHT:
-			self.session.view.autoscroll(-1, 0)
+			game.main.game.view.autoscroll(-1, 0)
 		elif keyval == fife.Key.UP:
-			self.session.view.autoscroll(0, 1)
+			game.main.game.view.autoscroll(0, 1)
 		elif keyval == fife.Key.DOWN:
-			self.session.view.autoscroll(0, -1)
+			game.main.game.view.autoscroll(0, -1)

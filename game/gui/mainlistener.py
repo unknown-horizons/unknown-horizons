@@ -67,9 +67,6 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			command.consume()
 
 	def onConsoleCommand(self, command):
-		if command.lower() in ('quit', 'exit', 'quit()', 'exit()'):
-			game.main.fife.quit()
-			return 'quitting...'
 		try:
 			cmd = code.compile_command(self.commandbuffer + command)
 			if cmd == None:
@@ -85,8 +82,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 						parts = (self.buffer + string).split("\n")
 						self.buffer = parts.pop()
 						for p in parts:
-							if len(p) > 0:
-								game.main.fife.console.println(p)
+							game.main.fife.console.println(p)
 						self.copy.write(string)
 					def __del__(self):
 						if len(self.buffer) > 0:
@@ -99,4 +95,5 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		return ''
 
 	def onToolsClick(self):
-		game.main.fife.console.println('not implemented...')
+		self.onConsoleCommand('import debug')
+		self.onConsoleCommand('debug.printTree(game.main)')

@@ -3,6 +3,7 @@ from game.world.building.building import *
 from game.command.building import Build
 
 import fife
+import game.main
 
 """
 Represents a dangling tool after a building was selected from the list.
@@ -13,11 +14,10 @@ class BuildingTool(CursorTool):
 	"@param building_id: rowid of the selected building type"
 	"@param island: If building from a ship, restrict to range of ship"
 
-	def __init__(self,  game,  building_id,  ship = None):
+	def __init__(self, building_id, ship = None):
 		print "created buildingtool"
-		CursorTool.__init__(self,  game.eventmanager)
+		super(BuildingTool, self).__init__()
 
-		self.game = game
 		self.ship = ship
 		self.building_id = building_id
 
@@ -25,16 +25,16 @@ class BuildingTool(CursorTool):
 
 		#TODO: Use a new preview layer
 
-		self.previewInstance = game.create_instance(game.layers['units'],  'building',  building_id,  -100,  -100,  0)
+		self.previewInstance = game.main.game.create_instance(game.main.game.layers['units'],  'building',  building_id,  -100,  -100,  0)
 
 	def __del__(self):
-		self.game.layers['units'].deleteInstance(self.previewInstance)
+		game.main.game.layers['units'].deleteInstance(self.previewInstance)
 		CursorTool.__del__(self)
 
 	def _buildCheck(self,  position):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
-			cost = self._class.calcBuildingCost(self.game.layers['land'],  self.game.layers['units'],  position)
+			cost = self._class.calcBuildingCost(game.main.game.layers['land'],  game.main.game.layers['units'],  position)
 			# TODO: implement cost checking
 			# if cost < depot(nearest_island or ship):
 		except BlockedError:
@@ -50,11 +50,11 @@ class BuildingTool(CursorTool):
 
 	def mouseMoved(self,  evt):
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
-		target_mapcoord = self.game.view.cam.toMapCoordinates(pt, False)
+		target_mapcoord = game.main.game.view.cam.toMapCoordinates(pt, False)
 		target_mapcoord.x = int(target_mapcoord.x)
 		target_mapcoord.y = int(target_mapcoord.y)
 		target_mapcoord.z = 0
-		l = fife.Location(self.game.layers['units'])
+		l = fife.Location(game.main.game.layers['units'])
 		l.setMapCoordinates(target_mapcoord)
 		self.previewInstance.setLocation(l)
 		target_mapcoord.x = target_mapcoord.x + 1
@@ -67,18 +67,18 @@ class BuildingTool(CursorTool):
 		if can_build: color = (255,  255,  0)
 		else: color = (255,  0,  0)
 
-		self.game.outline_renderer.addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
+		game.main.game.outline_renderer.addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
 
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
-			self.game.set_selection_mode()
+			game.main.game.set_selection_mode()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pt = fife.ScreenPoint(evt.getX(), evt.getY())
-			mapcoord = self.game.view.cam.toMapCoordinates(pt, False)
+			mapcoord = game.main.game.view.cam.toMapCoordinates(pt, False)
 			mapcoord.x = int(mapcoord.x)
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
-				self.game.manager.execute(Build(self.building_id, mapcoord.x, mapcoord.y, self.game.human_player.id))
-				self.game.set_selection_mode()
+				game.main.game.manager.execute(Build(self.building_id, mapcoord.x, mapcoord.y, game.main.game.human_player.id))
+				game.main.game.set_selection_mode()
 		evt.consume()

@@ -21,7 +21,6 @@
 
 import game.main
 
-from game.gui.eventlistenerbase import EventListenerBase
 import math
 import fife
 from game.gui.selectiontool import SelectionTool
@@ -36,21 +35,15 @@ from game.scheduler import Scheduler
 from game.manager import SPManager
 from game.view import View
 
-class Game(EventListenerBase):
+class Game:
 	"""Game class represents the games main ingame view and controls cameras and map loading."""
-	def __init__(self):
-		pass
-
 	def init(self, map):
 		"""
 		@var map: string with the mapfile path
 		"""
-		super(Game, self).__init__(regKeys=True)
-
 		#
 		# Engine specific variables
 		#
-		self.eventmanager = game.main.fife.engine.getEventManager()
 		self.model = game.main.fife.engine.getModel()
 
 		#
@@ -80,7 +73,7 @@ class Game(EventListenerBase):
 		# Gui related variables
 		#
 		self.ingame_gui = None
-		self.keylistener = IngameKeyListener(game.main.fife.engine, self)
+		self.keylistener = IngameKeyListener()
 		self.cursor = None
 		self.set_selection_mode()
 
@@ -168,7 +161,7 @@ class Game(EventListenerBase):
 
 	def set_selection_mode(self):
 		"""Sets the game into selection mode."""
-		self.cursor = SelectionTool(self)
+		self.cursor = SelectionTool()
 
 	def creategame(self):
 		"""Initialises rendering, creates the camera and sets it's position."""
