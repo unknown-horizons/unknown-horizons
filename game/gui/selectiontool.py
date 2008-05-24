@@ -38,7 +38,7 @@ class SelectionTool(CursorTool):
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""
 		game.main.game.selected_instance.object.say(str(game.main.game.selected_instance.health) + '%', 0) # display health over selected ship
-		game.main.game.outline_renderer.addOutlined(game.main.game.selected_instance.object, 255, 255, 255, 1)
+		game.main.game.view.outline_renderer.addOutlined(game.main.game.selected_instance.object, 255, 255, 255, 1)
 		if game.main.game.selected_instance.__class__ is Ship:
 			game.main.game.ingame_gui.gui['ship'].show() #show the gui for ships
 
@@ -47,7 +47,7 @@ class SelectionTool(CursorTool):
 		if game.main.game.selected_instance.__class__ is Ship:
 			game.main.game.ingame_gui.toggle_visible('ship') # hide the gui for ships
 			game.main.game.selected_instance.object.say('') #remove status of last selected unit
-			game.main.game.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
+			game.main.game.view.outline_renderer.removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
 
 	def mousePressed(self, evt):
 		clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())

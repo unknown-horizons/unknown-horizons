@@ -95,5 +95,4 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		return ''
 
 	def onToolsClick(self):
-		self.onConsoleCommand('import debug')
-		self.onConsoleCommand('debug.printTree(game.main)')
+		pass

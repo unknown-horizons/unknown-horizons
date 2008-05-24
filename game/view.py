@@ -26,6 +26,8 @@ class View:
 		self.cam.setZoom(1)
 		self._autoscroll = [0, 0]
 
+		self.outline_renderer = fife.InstanceRenderer.getInstance(self.cam)
+
 	def center(self, x, y):
 		"""Sets the camera position
 		@var center: tuple with x and y coordinate (float or int) of tile to center

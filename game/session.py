@@ -52,8 +52,6 @@ class Game:
 		self.cursor = SelectionTool()
 
 		#to be (re)moved:
-		self.outline_renderer = None
-		
 		self.island_uid = 0     # Unique id used for islands.
 		self.islands = {}
 		self.uid = 0
@@ -109,7 +107,6 @@ class Game:
 		renderer = self.view.cam.getRenderer('CoordinateRenderer')
 		renderer.clearActiveLayers()
 		renderer.addActiveLayer(self.view.layers[1])
-		self.outline_renderer = fife.InstanceRenderer.getInstance(self.view.cam)
 
 		print self.view.model.getNamespaces()
 
@@ -200,11 +197,11 @@ class Game:
 		@return: list of fife.Instances in the radius arround (startx,starty)."""
 		list = []
 		generator = (inst for inst in layer.getInstances() if math.fabs(int(inst.getLocation().getMapDistanceTo(start_loc))) <= radius)
-		self.outline_renderer.removeAllOutlines()
+		self.view.outline_renderer.removeAllOutlines()
 		for item in generator:
 			list.append(item)
 			# This is for testing purposes only, should later be done by an own funktion.
-			self.outline_renderer.addOutlined(item, 0, 0, 0, 2)
+			self.view.outline_renderer.addOutlined(item, 0, 0, 0, 2)
 		return list
 
 	def in_radius(self, location_a, location_b, radius):
