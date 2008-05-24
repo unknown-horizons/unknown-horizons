@@ -48,12 +48,14 @@ class IngameKeyListener(fife.IKeyListener):
 		elif keyval == fife.Key.DOWN:
 			if not was: game.main.game.view.autoscroll(0, 1)
 		elif keystr == 'c':
-			r = game.main.game.view.cam.getRenderer('CoordinateRenderer')
+			r = game.main.game.view.renderer['CoordinateRenderer']
 			r.setEnabled(not r.isEnabled())
 		elif keystr == 't':
-			r = game.main.game.view.cam.getRenderer('GridRenderer')
+			r = game.main.game.view.renderer['GridRenderer']
 			r.setEnabled(not r.isEnabled())
-			evt.consume()
+		else:
+			return
+		evt.consume()
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()

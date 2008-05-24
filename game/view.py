@@ -19,7 +19,9 @@ class View:
 		for i in xrange(0,3):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
-		self.cam = game.main.fife.engine.getView().addCamera("main", self.layers[len(self.layers) - 1], fife.Rect(0, 0, game.main.fife.settings.getScreenWidth(), game.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
+		self.view = game.main.fife.engine.getView()
+
+		self.cam = self.view.addCamera("main", self.layers[len(self.layers) - 1], fife.Rect(0, 0, game.main.fife.settings.getScreenWidth(), game.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
 		self.cam.setCellImageDimensions(32, 16)
 		self.cam.setRotation(45.0)
 		self.cam.setTilt(-60)
@@ -27,6 +29,16 @@ class View:
 		self._autoscroll = [0, 0]
 
 		self.outline_renderer = fife.InstanceRenderer.getInstance(self.cam)
+
+		self.view.resetRenderers()
+		self.renderer = {}
+		for r in ('InstanceRenderer',):
+			self.renderer[r] = getattr(fife, r).getInstance(self.cam)
+		for r in ('CoordinateRenderer', 'GridRenderer'):
+			self.renderer[r] = self.cam.getRenderer(r)
+		print self.renderer
+		self.renderer['CoordinateRenderer'].clearActiveLayers()
+		self.renderer['CoordinateRenderer'].addActiveLayer(self.layers[1])
 
 	def center(self, x, y):
 		"""Sets the camera position

@@ -102,12 +102,6 @@ class Game:
 		inst = self.create_instance(self.view.layers[1], 'building', '99', 25, 25)
 		ship = self.create_unit(self.view.layers[1], str(self.uid-1), 99, Ship)
 
-		
-		game.main.fife.engine.getView().resetRenderers()
-		renderer = self.view.cam.getRenderer('CoordinateRenderer')
-		renderer.clearActiveLayers()
-		renderer.addActiveLayer(self.view.layers[1])
-
 		print self.view.model.getNamespaces()
 
 		self.world = World()
@@ -197,11 +191,11 @@ class Game:
 		@return: list of fife.Instances in the radius arround (startx,starty)."""
 		list = []
 		generator = (inst for inst in layer.getInstances() if math.fabs(int(inst.getLocation().getMapDistanceTo(start_loc))) <= radius)
-		self.view.outline_renderer.removeAllOutlines()
+		self.view.renderer['InstanceRenderer'].removeAllOutlines()
 		for item in generator:
 			list.append(item)
 			# This is for testing purposes only, should later be done by an own funktion.
-			self.view.outline_renderer.addOutlined(item, 0, 0, 0, 2)
+			self.view.renderer['InstanceRenderer'].addOutlined(item, 0, 0, 0, 2)
 		return list
 
 	def in_radius(self, location_a, location_b, radius):

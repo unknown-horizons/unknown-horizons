@@ -68,7 +68,7 @@ class BuildingTool(CursorTool):
 		if can_build: color = (255,  255,  0)
 		else: color = (255,  0,  0)
 
-		game.main.game.view.outline_renderer.addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
+		game.main.game.view.renderer['InstanceRenderer'].addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
 
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
