@@ -84,13 +84,13 @@ class SelectionTool(CursorTool):
 		old = self.lastScroll
 		new = [0, 0]
 		if mousepoint.x < 50:
-			new[0] -= 1
+			new[0] -= 50 - mousepoint.x
 		elif mousepoint.x >= (game.main.game.view.cam.getViewPort().right()-50):
-			new[0] += 1
+			new[0] += 51 + mousepoint.x - game.main.game.view.cam.getViewPort().right()
 		if mousepoint.y < 50:
-			new[1] -= 1
+			new[1] -= 50 - mousepoint.y
 		elif mousepoint.y >= (game.main.game.view.cam.getViewPort().bottom()-50):
-			new[1] += 1
+			new[1] += 51 + mousepoint.y - game.main.game.view.cam.getViewPort().bottom()
 		if new[0] != old[0] or new[1] != old[1]:
 			game.main.game.view.autoscroll(new[0]-old[0], new[1]-old[1])
 			self.lastScroll = new

@@ -73,11 +73,11 @@ class View:
 		loc = self.cam.getLocationRef()
 		pos = loc.getExactLayerCoordinatesRef()
 		if x != 0:
-			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom()
-			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom()
+			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32
+			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32
 		if y != 0:
-			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
-			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom()
+			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16
+			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16
 		self.cam.setLocation(loc)
 
 	def zoom_out(self):
