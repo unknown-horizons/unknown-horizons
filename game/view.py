@@ -3,23 +3,37 @@ import math
 import game.main
 
 class View:
-	def __init__(self, layer, center = (0, 0)):
-		self.cam = game.main.fife.engine.getView().addCamera("main", layer, fife.Rect(0, 0, game.main.fife.settings.getScreenWidth(), game.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
+	def __init__(self, center = (0, 0)):
+		self.model = game.main.fife.engine.getModel()
+		self.map = self.model.createMap("map")
+
+		cellgrid = fife.SquareGrid(False)
+		cellgrid.thisown = 0
+		cellgrid.setRotation(0)
+		cellgrid.setXScale(1)
+		cellgrid.setYScale(1)
+		cellgrid.setXShift(0)
+		cellgrid.setYShift(0)
+
+		self.layers = []
+		for i in xrange(0,3):
+			self.layers.append(self.map.createLayer(str(i), cellgrid))
+			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
+		self.cam = game.main.fife.engine.getView().addCamera("main", self.layers[len(self.layers) - 1], fife.Rect(0, 0, game.main.fife.settings.getScreenWidth(), game.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
 		self.cam.setCellImageDimensions(32, 16)
 		self.cam.setRotation(45.0)
 		self.cam.setTilt(-60)
 		self.cam.setZoom(1)
-		self.center(center)
 		self._autoscroll = [0, 0]
 
-	def center(self, center):
+	def center(self, x, y):
 		"""Sets the camera position
 		@var center: tuple with x and y coordinate (float or int) of tile to center
 		"""
 		loc = self.cam.getLocationRef()
 		pos = loc.getExactLayerCoordinatesRef()
-		pos.x = center[0]
-		pos.y = center[1]
+		pos.x = x
+		pos.y = y
 		self.cam.setLocation(loc)
 
 	def autoscroll(self, x, y):

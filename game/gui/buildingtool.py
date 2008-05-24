@@ -1,4 +1,5 @@
 from cursortool import CursorTool
+from selectiontool import SelectionTool
 from game.world.building.building import *
 from game.command.building import Build
 
@@ -25,16 +26,16 @@ class BuildingTool(CursorTool):
 
 		#TODO: Use a new preview layer
 
-		self.previewInstance = game.main.game.create_instance(game.main.game.layers['units'],  'building',  building_id,  -100,  -100,  0)
+		self.previewInstance = game.main.game.create_instance(game.main.game.view.layers[2],  'building',  building_id,  -100,  -100,  0)
 
 	def __del__(self):
-		game.main.game.layers['units'].deleteInstance(self.previewInstance)
+		game.main.game.view.layers[2].deleteInstance(self.previewInstance)
 		CursorTool.__del__(self)
 
 	def _buildCheck(self,  position):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
-			cost = self._class.calcBuildingCost(game.main.game.layers['land'],  game.main.game.layers['units'],  position)
+			cost = self._class.calcBuildingCost(game.main.game.view.layers[1],  game.main.game.view.layers[2],  position)
 			# TODO: implement cost checking
 			# if cost < depot(nearest_island or ship):
 		except BlockedError:
@@ -54,7 +55,7 @@ class BuildingTool(CursorTool):
 		target_mapcoord.x = int(target_mapcoord.x)
 		target_mapcoord.y = int(target_mapcoord.y)
 		target_mapcoord.z = 0
-		l = fife.Location(game.main.game.layers['units'])
+		l = fife.Location(game.main.game.view.layers[2])
 		l.setMapCoordinates(target_mapcoord)
 		self.previewInstance.setLocation(l)
 		target_mapcoord.x = target_mapcoord.x + 1
@@ -79,6 +80,6 @@ class BuildingTool(CursorTool):
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
-				game.main.game.manager.execute(Build(self.building_id, mapcoord.x, mapcoord.y, game.main.game.human_player.id))
-				game.main.game.set_selection_mode()
+				game.main.game.manager.execute(Build(self.building_id, mapcoord.x, mapcoord.y, game.main.game.world.player))
+				game.main.game.cursor = SelectionTool()
 		evt.consume()

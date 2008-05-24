@@ -17,6 +17,6 @@ class Build:
 		@var issuer: the issuer of the command
 		"""
 		object_class = getBuildingClass(self.object_id)
-		object_class.object = game.main.game.create_instance(game.main.game.layers['units'], 'building', self.object_id, self.x, self.y)
+		object_class.object = game.main.game.create_instance(game.main.game.view.layers[2], 'building', self.object_id, self.x, self.y)
 		game.main.game.instance_to_unit[object_class.object.getFifeId()] = object_class
 		# TODO: Add building to players/settlements

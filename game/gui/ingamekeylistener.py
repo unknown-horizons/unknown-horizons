@@ -37,7 +37,7 @@ class IngameKeyListener(fife.IKeyListener):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
 		was = keyval in self.keysPressed
-		if not was:
+		if was:
 			self.keysPressed.append(keyval)
 		if keyval == fife.Key.LEFT:
 			if not was: game.main.game.view.autoscroll(-1, 0)
@@ -57,7 +57,10 @@ class IngameKeyListener(fife.IKeyListener):
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()
-		self.keysPressed.remove(keyval)
+		try:
+			self.keysPressed.remove(keyval)
+		except:
+			return
 		if keyval == fife.Key.LEFT:
 			game.main.game.view.autoscroll(1, 0)
 		elif keyval == fife.Key.RIGHT:

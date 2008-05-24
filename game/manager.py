@@ -30,7 +30,7 @@ class SPManager:
 		"""Executes a command
 		@var command: Command the command to be executed
 		"""
-		command(issuer = game.main.game.players[0])
+		command(issuer = game.main.game.world.player)
 
 class MPManager:
 	COMMAND_RATE = 1

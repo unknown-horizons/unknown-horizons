@@ -133,4 +133,5 @@ def startGame():
 	gui = gamemenu
 	if game is None:
 		game = Game()
-		game.init("content/maps/demo.sqlite")
+		game.init()
+		game.loadmap("content/maps/demo.sqlite")

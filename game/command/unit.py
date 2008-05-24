@@ -17,6 +17,6 @@ class Move:
 		"""__call__() gets called by the manager.
 		@var issuer: the issuer of the command
 		"""
-		loc = fife.Location(game.main.game.layers[self.layer])
+		loc = fife.Location(game.main.game.view.layers[self.layer])
 		loc.setMapCoordinates(fife.ExactModelCoordinate(self.x,self.y,0))
 		game.main.game.instance_to_unit[self.unit_fife_id].move(loc)

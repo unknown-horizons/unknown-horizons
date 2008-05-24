@@ -53,7 +53,7 @@ class SelectionTool(CursorTool):
 		clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 		cam = game.main.game.view.cam
 		if (evt.getButton() == fife.MouseEvent.LEFT):
-			instances = cam.getMatchingInstances(clickpoint, game.main.game.layers['land'])
+			instances = cam.getMatchingInstances(clickpoint, game.main.game.view.layers[1])
 			if instances: #check if clicked point is a unit
 				selected = instances[0]
 				if game.main.game.selected_instance:
@@ -73,9 +73,9 @@ class SelectionTool(CursorTool):
 				if game.main.game.selected_instance.type == 'ship':
 					target_mapcoord = cam.toMapCoordinates(clickpoint, False)
 					target_mapcoord.z = 0
-					l = fife.Location(game.main.game.layers['land'])
+					l = fife.Location(game.main.game.view.layers[1])
 					l.setMapCoordinates(target_mapcoord)
-					game.main.game.manager.execute(Move(game.main.game.selected_instance.object.getFifeId(), target_mapcoord.x, target_mapcoord.y, 'land'))
+					game.main.game.manager.execute(Move(game.main.game.selected_instance.object.getFifeId(), target_mapcoord.x, target_mapcoord.y, 1))
 		evt.consume()
 
 	def mouseMoved(self, evt):

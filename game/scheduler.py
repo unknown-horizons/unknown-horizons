@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import game.main
+
 class Scheduler():
 	""""Class providing timed callbacks.
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
@@ -26,6 +28,7 @@ class Scheduler():
 	def __init__(self):
 		self.schedule = {}
 		self.cur_tick = 0
+		game.main.game.timer.add_call(self.tick)
 
 	def tick(self, tick_id):
 		"""Threads main loop

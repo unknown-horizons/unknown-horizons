@@ -34,78 +34,38 @@ from game.timer import Timer
 from game.scheduler import Scheduler
 from game.manager import SPManager
 from game.view import View
+from game.world import World
 
 class Game:
 	"""Game class represents the games main ingame view and controls cameras and map loading."""
-	def init(self, map):
-		"""
-		@var map: string with the mapfile path
-		"""
-		#
-		# Engine specific variables
-		#
-		self.model = game.main.fife.engine.getModel()
-
-		#
-		# Map and Instance specific variables
-		#
-		self.island_uid = 0     # Unique id used for islands.
-		self.islands = {}
-		self.uid = 0            # Unique id used to create unique ids for instances.
-		self.layers = {}
-		self.selected_instance = None
-		self.instance_to_unit = {}
-
-		#
-		# Player related variable
-		#
-		self.human_player = None
-		self.players = {0 : None}
-
-		#
-		# Camera related variables
-		#
-		#self.overview = None    # Overview camera
-		self.view = None
-		self.outline_renderer = None
-
-		#
-		# Gui related variables
-		#
-		self.ingame_gui = None
-		self.keylistener = IngameKeyListener()
-		self.cursor = None
-		self.set_selection_mode()
-
-		#
-		# Other variables
-		#
+	def init(self):
+		#game
 		self.timer = Timer(16)
 		self.manager = SPManager()
 		self.scheduler = Scheduler()
-		self.timer.add_call(self.scheduler.tick)
+		self.view = View()
+		self.world = None
 
-		#
-		# Beginn map creation
-		#
+		#GUI
+		self.ingame_gui = IngameGui()
+		self.keylistener = IngameKeyListener()
+		self.cursor = SelectionTool()
 
+		#to be (re)moved:
+		self.outline_renderer = None
+		
+		self.island_uid = 0     # Unique id used for islands.
+		self.islands = {}
+		self.uid = 0
+		self.selected_instance = None
+		self.instance_to_unit = {}
 		building.initBuildingClasses()
-
-		self.loadmap(map)
-		self.creategame()
-
-	def __del__(self):
-		super(Game, self).__del__()
-		self.model.deleteMap(self.map)
-		self.engine.getView().clearCameras()
-		self.ticker = None
 
 	def loadmap(self, map):
 		"""Loads a map.
 		@var map: string with the mapfile path.
 		"""
 		game.main.db.query("attach ? as map", (map))
-		self.map = self.model.createMap("map")
 
 		self.create_object("blocker", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "blocker")
 		#todo...
@@ -118,18 +78,7 @@ class Game:
 		for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in game.main.db.query("select oid, 'content/gfx/dummies/overview/object.png', (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 315) order by frame_end limit 1) as image_w, size_x, size_y from data.building").rows:
 			self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, "building", size_x, size_y)
 
-		cellgrid = fife.SquareGrid(False)
-		cellgrid.thisown = 0
-		cellgrid.setRotation(0)
-		cellgrid.setXScale(1)
-		cellgrid.setYScale(1)
-		cellgrid.setXShift(0)
-		cellgrid.setYShift(0)
-
-		self.layers['water'] = self.map.createLayer("layer1", cellgrid)
-		self.layers['land'] = self.map.createLayer("layer2", cellgrid)
-		self.layers['units'] = self.map.createLayer("layer3", cellgrid)
-		self.layers['units'].setPathingStrategy(fife.CELL_EDGES_ONLY)
+		self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", "building", 1, 1)
 
 		min_x, min_y, max_x, max_y = 0, 0, 0, 0
 		for (island, offset_x, offset_y) in game.main.db.query("select island, x, y from map.islands").rows:
@@ -137,7 +86,7 @@ class Game:
 			self.islands[self.island_uid]=Island(self.island_uid)
 			cur_isl = self.islands[self.island_uid]
 			for (x, y, ground, layer) in game.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
-				inst = self.create_instance(self.layers['land'], 'ground', str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
+				inst = self.create_instance(self.view.layers[1], 'ground', str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
 				cur_isl.add_tile(inst)
 				min_x = int(x) + int(offset_x) if min_x is 0 or int(x) + int(offset_x) < min_x else min_x
 				max_x = int(x) + int(offset_x) if max_x is 0 or int(x) + int(offset_x) > max_x else max_x
@@ -145,49 +94,26 @@ class Game:
 				min_y = int(y) + int(offset_y) if min_y is 0 or int(y) + int(offset_y) < min_y else min_y
 			self.island_uid += 1
 			game.main.db.query("detach island")
-
 		for x in range(min_x-10, (max_x+11)): # Fill map with water tiles + 10 on each side
 			for y in range(min_y-10, max_y+11):
-				inst = self.create_instance(self.layers['water'], 'ground', str(int(13)), int(x), int(y), 0)
+				inst = self.create_instance(self.view.layers[0], 'ground', str(int(13)), int(x), int(y), 0)
 
-		self.view = View(self.map.getLayer("layer1"), (((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0), 0.0))
-
-		#self.overview = self.engine.getView().addCamera("overview", self.map.getLayers("id", "layer1")[0], fife.Rect(0, self.main.settings.ScreenHeight - 200 if False else 0, 200, 200), fife.ExactModelCoordinate((((max_x - min_x) / 2.0) + 5), ((max_y - min_y) / 2.0), 0.0))
-		#self.overview.setCellImageDimensions(2, 2)
-		#self.overview.setRotation(0.0)
-		#self.overview.setTilt(0.0)
-		#self.overview.setZoom(100.0 / (1 + max(max_x - min_x, max_y - min_y)))
-		print self.model.getNamespaces()
-
-	def set_selection_mode(self):
-		"""Sets the game into selection mode."""
-		self.cursor = SelectionTool()
-
-	def creategame(self):
-		"""Initialises rendering, creates the camera and sets it's position."""
-
-		#create a new player, which is the human player
-		self.human_player = Player(1 ,'Arthus')
-		self.players[self.human_player.name] = self.human_player
-
-		self.ingame_gui = IngameGui()
-		self.ingame_gui.status_set('gold','10000')
+		self.view.center(((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0))
 
 		#temporary ship creation, should be done automatically in later releases
-		self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", "building", 1, 1)
-		tempid = self.uid
-		inst = self.create_instance(self.layers['land'], 'building', '99', 25, 25)
-		ship = self.create_unit(self.layers['land'], str(tempid), 99, Ship)
-		ship.name = 'Matilde'
-		#self.human_player.ships[ship.name] = ship # add ship to the humanplayer
+		inst = self.create_instance(self.view.layers[1], 'building', '99', 25, 25)
+		ship = self.create_unit(self.view.layers[1], str(self.uid-1), 99, Ship)
 
+		
 		game.main.fife.engine.getView().resetRenderers()
-
 		renderer = self.view.cam.getRenderer('CoordinateRenderer')
 		renderer.clearActiveLayers()
-		renderer.addActiveLayer(self.layers['land'])
-
+		renderer.addActiveLayer(self.view.layers[1])
 		self.outline_renderer = fife.InstanceRenderer.getInstance(self.view.cam)
+
+		print self.view.model.getNamespaces()
+
+		self.world = World()
 
 	def create_object(self, oid, image_overview, image_n, image_e, image_s, image_w, namespace, size_x = 1, size_y = 1):
 		"""Creates a new model object, that can later be used on the map
@@ -197,7 +123,7 @@ class Game:
 		@var size_y: the y-size of the object in grid's.
         @var namespace: namespace the object belongs to.
 		"""
-		obj = self.model.createObject(str(oid), namespace)
+		obj = self.view.model.createObject(str(oid), namespace)
 		fife.ObjectVisual.create(obj)
 		visual = obj.get2dGfxVisual()
 		pool = game.main.fife.engine.getImagePool()
@@ -241,7 +167,7 @@ class Game:
 		@var id: str with the object id
 		@var x, y, z: int coordinates for the new instance
 		"""
-		query = self.model.getObject(str(id), namespace)
+		query = self.view.model.getObject(str(id), namespace)
 		if query == 0:
 			print('Object not found with id ', str(id), '!')
 		object = query
@@ -261,7 +187,7 @@ class Game:
 		@var UnitClass: Class of the new unit (e.g. Ship, House)
 		@return: returnes a unit of the type specified by UnitClass
 		"""
-		unit = UnitClass(self.model, str(id), layer, self)
+		unit = UnitClass(self.view.model, str(id), layer, self)
 		self.instance_to_unit[unit.object.getFifeId()] = unit
 		unit.start()
 		return unit
