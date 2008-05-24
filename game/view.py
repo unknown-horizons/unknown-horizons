@@ -51,7 +51,6 @@ class View:
 		self.cam.setLocation(loc)
 
 	def autoscroll(self, x, y):
-		print "autoscroll x:", x, "y:", y
 		old = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
 		self._autoscroll[0] += x
 		self._autoscroll[1] += y
@@ -73,11 +72,11 @@ class View:
 		loc = self.cam.getLocationRef()
 		pos = loc.getExactLayerCoordinatesRef()
 		if x != 0:
-			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32
-			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32
+			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
+			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
 		if y != 0:
-			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16
-			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16
+			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
+			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
 		self.cam.setLocation(loc)
 
 	def zoom_out(self):
@@ -85,15 +84,19 @@ class View:
 		if(zoom < 0.25):
 			zoom = 0.25
 		self.cam.setZoom(zoom)
+		self.scroll(0, 0)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / 0.875
 		if(zoom > 1):
 			zoom = 1
 		self.cam.setZoom(zoom)
+		self.scroll(0, 0)
 
 	def rotate_right(self):
 		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
+		self.scroll(0, 0)
 
 	def rotate_left(self):
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
+		self.scroll(0, 0)
