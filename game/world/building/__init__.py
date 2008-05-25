@@ -4,7 +4,7 @@ from game.world.building import *
 import game.main
 import fife
 
-class Building(type):
+class BuildingClass(type):
 	def __new__(self, id):
 		(class_package,  class_name) = game.main.db.query("SELECT class_package, class_type FROM data.building WHERE rowid = ?", (id,)).rows[0]
 		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
@@ -23,7 +23,6 @@ class Building(type):
 		self._object = game.main.game.view.model.createObject(str(self.id), 'building')
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
-		self._count = 0
 
 		for rotation, file in game.main.db.query("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", (self.id,)).rows:
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))

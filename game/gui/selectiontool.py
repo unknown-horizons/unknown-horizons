@@ -20,6 +20,7 @@
 # ###################################################
 
 from cursortool import CursorTool
+from game.world.units import UnitClass
 from game.world.units.ship import Ship
 from game.command.unit import Move
 import time
@@ -37,16 +38,16 @@ class SelectionTool(CursorTool):
 
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""
-		game.main.game.selected_instance.object.say(str(game.main.game.selected_instance.health) + '%', 0) # display health over selected ship
-		game.main.game.view.renderer['InstanceRenderer'].addOutlined(game.main.game.selected_instance.object, 255, 255, 255, 1)
-		if game.main.game.selected_instance.__class__ is Ship:
+		game.main.game.selected_instance._instance.say(str(game.main.game.selected_instance.health) + '%', 0) # display health over selected ship
+		game.main.game.view.renderer['InstanceRenderer'].addOutlined(game.main.game.selected_instance._instance, 255, 255, 255, 1)
+		if isinstance(game.main.game.selected_instance, Ship):
 			game.main.game.ingame_gui.gui['ship'].show() #show the gui for ships
 
 	def deselect_unit(self):
 		"""Runs neccasary steps to deselect a unit."""
-		if game.main.game.selected_instance.__class__ is Ship:
+		if isinstance(game.main.game.selected_instance, Ship):
 			game.main.game.ingame_gui.toggle_visible('ship') # hide the gui for ships
-			game.main.game.selected_instance.object.say('') #remove status of last selected unit
+			game.main.game.selected_instance._instance.say('') #remove status of last selected unit
 			game.main.game.view.renderer['InstanceRenderer'].removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
 
 	def mousePressed(self, evt):
@@ -54,28 +55,23 @@ class SelectionTool(CursorTool):
 		cam = game.main.game.view.cam
 		if (evt.getButton() == fife.MouseEvent.LEFT):
 			instances = cam.getMatchingInstances(clickpoint, game.main.game.view.layers[1])
-			if instances: #check if clicked point is a unit
-				selected = instances[0]
-				if game.main.game.selected_instance:
-					if game.main.game.selected_instance.object.getFifeId() != selected.getFifeId():
-						self.deselect_unit()
-				if selected.getFifeId() in game.main.game.instance_to_unit:
-					game.main.game.selected_instance = game.main.game.instance_to_unit[selected.getFifeId()]
-					self.select_unit()
-				else:
-					game.main.game.selected_instance = None
-			elif game.main.game.selected_instance: # remove unit selection
+			if instances: #something under cursor
+				print instances[0].getId()
+				instance = game.main.game.entities.getInstance(instances[0].getId())
+				if game.main.game.selected_instance and game.main.game.selected_instance != instance:
+					self.deselect_unit()
+				game.main.game.selected_instance = instance
+				self.select_unit()
+			elif game.main.game.selected_instance: #nothing under cursor
 				self.deselect_unit()
 				game.main.game.selected_instance = None
-
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
-			if game.main.game.selected_instance: # move unit
-				if game.main.game.selected_instance.type == 'ship':
-					target_mapcoord = cam.toMapCoordinates(clickpoint, False)
-					target_mapcoord.z = 0
-					l = fife.Location(game.main.game.view.layers[1])
-					l.setMapCoordinates(target_mapcoord)
-					game.main.game.manager.execute(Move(game.main.game.selected_instance.object.getFifeId(), target_mapcoord.x, target_mapcoord.y, 1))
+			if game.main.game.selected_instance and isinstance(game.main.game.selected_instance, Ship):
+				target_mapcoord = cam.toMapCoordinates(clickpoint, False)
+				target_mapcoord.z = 0
+				l = fife.Location(game.main.game.view.layers[1])
+				l.setMapCoordinates(target_mapcoord)
+				game.main.game.manager.execute(Move(game.main.game.selected_instance, target_mapcoord.x, target_mapcoord.y))
 		evt.consume()
 
 	def mouseMoved(self, evt):
