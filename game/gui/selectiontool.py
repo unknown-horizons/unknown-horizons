@@ -45,10 +45,10 @@ class SelectionTool(CursorTool):
 
 	def deselect_unit(self):
 		"""Runs neccasary steps to deselect a unit."""
+		game.main.game.selected_instance._instance.say('') #remove status of last selected unit
+		game.main.game.view.renderer['InstanceRenderer'].removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
 		if isinstance(game.main.game.selected_instance, Ship):
 			game.main.game.ingame_gui.toggle_visible('ship') # hide the gui for ships
-			game.main.game.selected_instance._instance.say('') #remove status of last selected unit
-			game.main.game.view.renderer['InstanceRenderer'].removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
 
 	def mousePressed(self, evt):
 		clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
