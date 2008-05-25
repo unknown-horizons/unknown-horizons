@@ -22,15 +22,9 @@ class BuildingTool(CursorTool):
 		self.ship = ship
 		self.building_id = building_id
 
-		self._class = getBuildingClass(building_id)
+		self._class = game.main.game.entities.buildings[building_id]
 
-		#TODO: Use a new preview layer
-
-		self.previewInstance = game.main.game.create_instance(game.main.game.view.layers[2],  'building',  building_id,  -100,  -100,  0)
-
-	def __del__(self):
-		game.main.game.view.layers[2].deleteInstance(self.previewInstance)
-		CursorTool.__del__(self)
+		self.previewInstance = self._class.createInstance(-100, -100)
 
 	def _buildCheck(self,  position):
 		# TODO: Return more detailed error descriptions than a boolean
@@ -42,9 +36,8 @@ class BuildingTool(CursorTool):
 			return False
 
 		if self.ship:
-			shippos = self.ship.object.getLocation().getMapCoordinates()
+			shippos = self.ship._instance.getLocation().getMapCoordinates()
 			distance = (shippos - position).length()
-			print distance
 			if distance > 10:
 				return False
 		return True
@@ -64,7 +57,6 @@ class BuildingTool(CursorTool):
 		evt.consume()
 
 		can_build = self._buildCheck(target_mapcoord)
-		print can_build
 		if can_build: color = (255,  255,  0)
 		else: color = (255,  0,  0)
 
@@ -73,6 +65,7 @@ class BuildingTool(CursorTool):
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			game.main.game.cursor = SelectionTool()
+			game.main.game.view.layers[1].deleteInstance(self.previewInstance)
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pt = fife.ScreenPoint(evt.getX(), evt.getY())
 			mapcoord = game.main.game.view.cam.toMapCoordinates(pt, False)
@@ -80,6 +73,6 @@ class BuildingTool(CursorTool):
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
-				game.main.game.manager.execute(Build(self.building_id, mapcoord.x, mapcoord.y, game.main.game.world.player))
+				game.main.game.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
 				game.main.game.cursor = SelectionTool()
 		evt.consume()

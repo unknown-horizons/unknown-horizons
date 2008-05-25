@@ -27,6 +27,16 @@ class BlockedError(Exception):
 	pass
 
 class Building(object):
+	def __init__(self, x, y, owner, instance = None):
+		self.x = x
+		self.y = y
+		self.owner = owner
+		if instance == None:
+			self.createInstance(x, y)
+		else:
+			self._instance = instance
+			game.main.game.entities.updateInstance(self._instance, self)
+
 	def calcBuildingCost(cls, ground_layer,  building_layer, position):
 		#TODO do ground checking and throw exception if blocked
 		def checkLayer(layer):
@@ -43,8 +53,3 @@ class Building(object):
 		return cost
 
 	calcBuildingCost = classmethod(calcBuildingCost)
-
-def getBuildingClass(building_id):
-	bclass = _buildingclasses[building_id]
-	assert (bclass is not None)
-	return bclass

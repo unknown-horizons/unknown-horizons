@@ -26,5 +26,8 @@ class Entities(object):
 		self._instances_id += 1
 		return str(id)
 
+	def updateInstance(self, id, instance):
+		self._instances[int(id)] = instance
+
 	def getInstance(self, id):
 		return self._instances[int(id)]

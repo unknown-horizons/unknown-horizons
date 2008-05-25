@@ -30,3 +30,8 @@ class BuildingClass(type):
 			img = game.main.fife.imagepool.getImage(img)
 			img.setXShift(0)
 			img.setYShift(0)
+
+	def createInstance(self, x, y):
+		instance = game.main.game.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.game.entities.registerInstance(self))
+		fife.InstanceVisual.create(instance)
+		return instance

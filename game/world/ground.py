@@ -8,7 +8,6 @@ class Ground(object):
 		self.x = x
 		self.y = y
 		self._instance = game.main.game.view.layers[0].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.game.entities.registerInstance(self))
-		self.__class__._count += 1
 		fife.InstanceVisual.create(self._instance)
 
 class GroundClass(type):
@@ -24,7 +23,6 @@ class GroundClass(type):
 		self._object = game.main.game.view.model.createObject(str(self.id), 'ground')
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
-		self._count = 0
 
 		#for (oid, multi_action_or_animated) in game.main.db.query("SELECT id, max(actions_and_images) > 1 AS multi_action_or_animated FROM ( SELECT ground.oid as id, action.animation as animation, count(*) as actions_and_images FROM ground LEFT JOIN action ON action.ground = ground.oid LEFT JOIN animation ON action.animation = animation.animation_id GROUP BY ground.oid, action.rotation ) x GROUP BY id").rows:
 		#	print oid, multi_action_or_animated

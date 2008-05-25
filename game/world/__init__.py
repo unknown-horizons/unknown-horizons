@@ -48,3 +48,5 @@ class World(object):
 		#add ship
 		self.ships = []
 		self.ships.append(game.main.game.entities.units[1](25, 25))
+
+		self.buildings = []
