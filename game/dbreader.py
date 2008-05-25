@@ -22,7 +22,7 @@
 import sqlite3
 import re
 
-class DbReader:
+class DbReader(object):
 	"""Class that handles connections to sqlite databases"""
 	def __init__(self, file):
 		"""Init function, opens the connection to a database and creates a cursor for that database
@@ -69,7 +69,7 @@ class DbReader:
 		@var script: multiline str containing an sql script."""
 		return self.cur.executescript(script)
 
-class SqlResult:
+class SqlResult(object):
 	"""Represents a SQL result"""
 	def __init__(self):
 		self.success = True

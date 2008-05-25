@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class Player:
+class Player(object):
 	"""Class representing a player"""
 
 	def __init__(self, id, name):

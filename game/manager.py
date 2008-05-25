@@ -22,7 +22,7 @@
 import game.timer
 import game.main
 
-class SPManager:
+class SPManager(object):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
 	over the network, and syncronisation of network games."""
 
@@ -32,7 +32,7 @@ class SPManager:
 		"""
 		command(issuer = game.main.game.world.player)
 
-class MPManager:
+class MPManager(object):
 	COMMAND_RATE = 1
 	def __init__(self):
 		"""Initialize the Multiplayer Manager"""
@@ -64,7 +64,7 @@ class MPManager:
 		"""
 		self.commands.append(command)
 
-class TickPacket:
+class TickPacket(object):
 	def __init__(self, tick, commands):
 		self.tick = tick
 		self.commands = commands

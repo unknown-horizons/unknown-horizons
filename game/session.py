@@ -35,8 +35,9 @@ from game.scheduler import Scheduler
 from game.manager import SPManager
 from game.view import View
 from game.world import World
+from game.entities import Entities
 
-class Game:
+class Game(object):
 	"""Game class represents the games main ingame view and controls cameras and map loading."""
 	def init(self):
 		#game
@@ -44,7 +45,7 @@ class Game:
 		self.manager = SPManager()
 		self.scheduler = Scheduler()
 		self.view = View()
-		self.world = None
+		self.entities = Entities()
 
 		#GUI
 		self.ingame_gui = IngameGui()
@@ -52,120 +53,27 @@ class Game:
 		self.cursor = SelectionTool()
 
 		#to be (re)moved:
-		self.island_uid = 0     # Unique id used for islands.
-		self.islands = {}
 		self.uid = 0
 		self.selected_instance = None
 		self.instance_to_unit = {}
-		building.initBuildingClasses()
 
 	def loadmap(self, map):
 		"""Loads a map.
 		@var map: string with the mapfile path.
 		"""
+
+		#load map
 		game.main.db.query("attach ? as map", (map))
-
-		self.create_object("blocker", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "content/gfx/dummies/transparent.png", "blocker")
-		#todo...
-		for (oid, multi_action_or_animated) in game.main.db.query("SELECT id, max(actions_and_images) > 1 AS multi_action_or_animated FROM ( SELECT ground.oid as id, action.animation as animation, count(*) as actions_and_images FROM ground LEFT JOIN action ON action.ground = ground.oid LEFT JOIN animation ON action.animation = animation.animation_id GROUP BY ground.oid, action.rotation ) x GROUP BY id").rows:
-			print oid, multi_action_or_animated
-
-		for (oid, image_overview, image_n, image_e, image_s, image_w) in game.main.db.query("select gnd.oid, grp.image_overview, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where ground = gnd.rowid and rotation = 315) order by frame_end limit 1) as image_w from data.ground gnd left join data.ground_group grp on gnd.`group` = grp.oid").rows:
-			self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, "ground")
-
-		for (oid, image_overview, image_n, image_e, image_s, image_w, size_x, size_y) in game.main.db.query("select oid, 'content/gfx/dummies/overview/object.png', (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 45) order by frame_end limit 1) as image_n, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 135) order by frame_end limit 1) as image_e, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 225) order by frame_end limit 1) as image_s, (select file from data.animation where animation_id = (select animation from data.action where object = data.building.rowid and rotation = 315) order by frame_end limit 1) as image_w, size_x, size_y from data.building").rows:
-			self.create_object(oid, image_overview, image_n, image_e, image_s, image_w, "building", size_x, size_y)
-
-		self.create_object('99', "content/gfx/dummies/overview/object.png", "content/gfx/sprites/ships/mainship/mainship1.png", "content/gfx/sprites/ships/mainship/mainship3.png", "content/gfx/sprites/ships/mainship/mainship5.png", "content/gfx/sprites/ships/mainship/mainship7.png", "building", 1, 1)
-
-		min_x, min_y, max_x, max_y = 0, 0, 0, 0
-		for (island, offset_x, offset_y) in game.main.db.query("select island, x, y from map.islands").rows:
-			game.main.db.query("attach ? as island", (str(island)))
-			self.islands[self.island_uid]=Island(self.island_uid)
-			cur_isl = self.islands[self.island_uid]
-			for (x, y, ground, layer) in game.main.db.query("select i.x, i.y, i.ground_id, g.ground_type_id from island.ground i left join data.ground c on c.oid = i.ground_id left join data.ground_group g on g.oid = c.`group`").rows:
-				inst = self.create_instance(self.view.layers[1], 'ground', str(int(ground)), int(x) + int(offset_x), int(y) + int(offset_y), 0)
-				cur_isl.add_tile(inst)
-				min_x = int(x) + int(offset_x) if min_x is 0 or int(x) + int(offset_x) < min_x else min_x
-				max_x = int(x) + int(offset_x) if max_x is 0 or int(x) + int(offset_x) > max_x else max_x
-				max_y = int(y) + int(offset_y) if max_y is 0 or int(y) + int(offset_y) > max_y else max_y
-				min_y = int(y) + int(offset_y) if min_y is 0 or int(y) + int(offset_y) < min_y else min_y
-			self.island_uid += 1
-			game.main.db.query("detach island")
-		for x in range(min_x-10, (max_x+11)): # Fill map with water tiles + 10 on each side
-			for y in range(min_y-10, max_y+11):
-				inst = self.create_instance(self.view.layers[0], 'ground', str(int(13)), int(x), int(y), 0)
-
-		self.view.center(((max_x - min_x) / 2.0), ((max_y - min_y) / 2.0))
-
-		#temporary ship creation, should be done automatically in later releases
-		inst = self.create_instance(self.view.layers[1], 'building', '99', 25, 25)
-		ship = self.create_unit(self.view.layers[1], str(self.uid-1), 99, Ship)
-
-		print self.view.model.getNamespaces()
-
 		self.world = World()
 
-	def create_object(self, oid, image_overview, image_n, image_e, image_s, image_w, namespace, size_x = 1, size_y = 1):
-		"""Creates a new model object, that can later be used on the map
-		@var oid: the object oid in the database.
-		@var image_overview, image_n, image_e, image_s, image_w: str representing the object's images.
-        @var size_x: the x-size of the object in grid's.
-		@var size_y: the y-size of the object in grid's.
-        @var namespace: namespace the object belongs to.
-		"""
-		obj = self.view.model.createObject(str(oid), namespace)
-		fife.ObjectVisual.create(obj)
-		visual = obj.get2dGfxVisual()
-		pool = game.main.fife.engine.getImagePool()
+		#temporary ship creation, should be done automatically in later releases
+		#inst = self.create_instance(self.view.layers[1], 'building', '99', 25, 25)
+		#ship = self.create_unit(self.view.layers[1], str(self.uid-1), 99, Ship)
 
-		img = pool.addResourceFromFile(str(image_overview))
-		visual.addStaticImage(0, img)
-		visual.addStaticImage(90, img)
-		visual.addStaticImage(180, img)
-		visual.addStaticImage(270, img)
+		#setup view
+		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
-		img = pool.addResourceFromFile(str(image_n))
-		visual.addStaticImage(45, img)
-		img = pool.getImage(img)
-		img.setXShift(0)#16 - 16 * size_y
-		img.setYShift(-(img.getHeight() - 16) / 2)
-
-		img = pool.addResourceFromFile(str(image_e))
-		visual.addStaticImage(135, img)
-		img = pool.getImage(img)
-		img.setXShift(0)
-		img.setYShift(0)
-
-		img = pool.addResourceFromFile(str(image_s))
-		visual.addStaticImage(225, img)
-		img = pool.getImage(img)
-		img.setXShift(0)
-		img.setYShift(0)
-
-		img = pool.addResourceFromFile(str(image_w))
-		visual.addStaticImage(315, img)
-		img = pool.getImage(img)
-		img.setXShift(0)
-		img.setYShift(0)
-
-		return obj
-
-	def create_instance(self, layer, namespace, id, x, y, z=0):
-		"""Creates a new instance on the map
-		@var layer: layer the instance is created on
-        @var namespace: string namespace the object is present in
-		@var id: str with the object id
-		@var x, y, z: int coordinates for the new instance
-		"""
-		query = self.view.model.getObject(str(id), namespace)
-		if query == 0:
-			print('Object not found with id ', str(id), '!')
-		object = query
-		inst = layer.createInstance(object, fife.ExactModelCoordinate(x,y,z), str(self.uid))
-		self.uid += 1
-		fife.InstanceVisual.create(inst)
-		return inst
+		print self.view.model.getNamespaces()
 
 	def create_unit(self, layer, id, object_id, UnitClass):
 		"""

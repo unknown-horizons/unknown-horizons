@@ -22,7 +22,7 @@
 import time
 import game.main
 
-class Timer:
+class Timer(object):
 	"""
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is espacialy important for multiplayer, to allow syncronous play.

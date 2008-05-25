@@ -25,7 +25,7 @@ import pychan
 import game.gui.style
 import game.main
 
-class Fife:
+class Fife(object):
 	def __init__(self):
 		self.engine = fife.Engine()
 		self.settings = self.engine.getSettings()
@@ -99,7 +99,7 @@ class Fife:
 
 		self.engine.init()
 
-		#init event manager, sound and background emitter
+		#init stuff
 		self.eventmanager = self.engine.getEventManager()
 		self.eventmanager.setNonConsumableKeys([fife.Key.ESCAPE, fife.Key.F10])
 		self.guimanager = self.engine.getGuiManager()
@@ -109,6 +109,7 @@ class Fife:
 		self.bgsound = self.soundmanager.createEmitter()
 		self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg'))
 		self.bgsound.setLooping(True)
+		self.imagepool = self.engine.getImagePool()
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)

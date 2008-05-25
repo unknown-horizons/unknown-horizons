@@ -19,29 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class Island():
+import game.main
+
+class Island(object):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
 	that belong to the island. The island variable is also set on every instance that belongs
 	to an island, making it easy to determine to which island the instance belongs, when
 	selected.
 	An Island instance is created at map creation, when all tiles are added to the map.
 	"""
-	def __init__(self, id):
-		"""@var id: int containing the islands unique id
-		"""
-		self._instance_list = [] # Do not edit this list manually, always use the add_tile() and remove_tile() functions.
-		self.id = id
 
-	def add_tile(self, tile):
-		"""Adds a tile to the island's instance_list and sets the tiles island.
-		@var tile: fife.instance of the tile that is to be added.
-		"""
-		self._instance_list.append(tile)
-		tile.island = self
-
-	def remove_tile(self, tile):
-		"""Removes a tile from the island's instance_list and removes the tiles island variable.
-		@var tile: fife.instance of the tile that is to be removed.
-		"""
-		self._instace_list.remove(tile)
-		tile.island = None
+	def __init__(self, x, y, file):
+		self.x, self.y = x, y
+		game.main.db.query("attach ? as island", (file,))
+		self.width, self.height = game.main.db.query("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground").rows[0]
+		self.grounds = []
+		for (rel_x, rel_y, ground_id) in game.main.db.query("select x, y, ground_id from island.ground").rows:
+			self.grounds.append(game.main.game.entities.grounds[ground_id](x + rel_x, y + rel_y))
+		game.main.db.query("detach island")

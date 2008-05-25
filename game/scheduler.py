@@ -21,7 +21,7 @@
 
 import game.main
 
-class Scheduler():
+class Scheduler(object):
 	""""Class providing timed callbacks.
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	"""
@@ -68,7 +68,7 @@ class Scheduler():
 				if object.parent_class is class_inst:
 					self.schedule[key].remove(object)
 
-class CallbackObject():
+class CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self,  callback, parent_class, runin=1, loops=1):
 		"""Creates the CallbackObject instance.

@@ -1,7 +1,7 @@
 import fife
 import game.main
 
-class Move:
+class Move(object):
 	"""Command class that moves a unit.
 	@var unit_fife_id: int FifeId of the unit that is to be moved.
 	@var x,y: float coordinates where the unit is to be moved.

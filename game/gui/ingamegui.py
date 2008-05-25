@@ -22,7 +22,7 @@
 from buildingtool import BuildingTool
 import game.main
 
-class IngameGui():
+class IngameGui(object):
 	"""Class handling all the ingame gui events."""
 	def __init__(self):
 		self.gui = {}

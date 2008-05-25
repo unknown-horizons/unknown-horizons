@@ -74,7 +74,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			else:
 				self.commandbuffer = ''
 				oldout = sys.stdout
-				class console_file:
+				class console_file(object):
 					def __init__(self, copy = None):
 						self.buffer = ''
 						self.copy = copy

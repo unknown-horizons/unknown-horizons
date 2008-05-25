@@ -1,7 +1,7 @@
 from game.world.building.building import *
 import game.main
 
-class Build:
+class Build(object):
 	"""Command class that builds an object.
 	@var object_id: int objects id.
 	@var x,y: float coordinates where the object is to be built.

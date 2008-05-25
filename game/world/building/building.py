@@ -44,28 +44,6 @@ class Building(object):
 
 	calcBuildingCost = classmethod(calcBuildingCost)
 
-_buildingclasses = {}
-
-def initBuildingClasses():
-	buildings = game.main.db.query("SELECT rowid, class_package, class_type, size_x, size_y, name FROM building")
-	for building_id,  package,  class_type,  size_x,  size_y,  name in buildings.rows:
-
-		#FIXME: these entrys should be deleted
-		if len(class_type) == 0: continue
-
-		module = __import__(package,  globals(), locals())
-		baseclass = getattr(module,  class_type)
-
-		propdict = {}
-		propdict['size'] = (size_x,  size_y)
-
-		properties = game.main.db.query("SELECT name, value FROM building_property WHERE building_id = ?",  str(building_id))
-		for (key,  value) in properties.rows:
-			propdict[value] = key
-
-		global _buildingclasses
-		_buildingclasses[building_id] = type(str(name),  (baseclass, ),  propdict)
-
 def getBuildingClass(building_id):
 	bclass = _buildingclasses[building_id]
 	assert (bclass is not None)

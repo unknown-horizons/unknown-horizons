@@ -2,7 +2,7 @@ import fife
 import math
 import game.main
 
-class View:
+class View(object):
 	def __init__(self, center = (0, 0)):
 		self.model = game.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")

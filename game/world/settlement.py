@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class Settlement():
+class Settlement(object):
 	"""The Settlement class describes a settlement and stores all the neccassary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, island, name):
