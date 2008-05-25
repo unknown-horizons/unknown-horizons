@@ -1,4 +1,4 @@
-__all__ = ['island', 'player', 'setlement']
+__all__ = ['island', 'player', 'settlement']
 
 import game.main
 from game.world.island import Island
@@ -44,3 +44,7 @@ class World(object):
 		#setup players
 		self.player = None
 		self.players = {0:self.player}
+
+		#add ship
+		self.ships = []
+		#self.ships.append(game.main.game.entities.units[1](25, 25))

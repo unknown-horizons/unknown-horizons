@@ -1,4 +1,4 @@
-__all__ = ['common','object','ship','warehouse']
+__all__ = ['common','object','ship']
 
 from game.world.units import *
 import game.main
