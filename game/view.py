@@ -28,15 +28,13 @@ class View(object):
 		self.cam.setZoom(1)
 		self._autoscroll = [0, 0]
 
-		self.outline_renderer = fife.InstanceRenderer.getInstance(self.cam)
-
 		self.view.resetRenderers()
 		self.renderer = {}
 		for r in ('InstanceRenderer',):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam)
 		for r in ('CoordinateRenderer', 'GridRenderer'):
 			self.renderer[r] = self.cam.getRenderer(r)
-		print self.renderer
+
 		self.renderer['CoordinateRenderer'].clearActiveLayers()
 		self.renderer['CoordinateRenderer'].addActiveLayer(self.layers[1])
 

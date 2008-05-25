@@ -73,8 +73,6 @@ class Game(object):
 		#setup view
 		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
-		print self.view.model.getNamespaces()
-
 	def create_unit(self, layer, id, object_id, UnitClass):
 		"""
 		DEPRECATED: To build a building use the Build CommandClass. Create_unit is only used for the temporary ship!
