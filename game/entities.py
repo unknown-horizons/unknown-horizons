@@ -1,5 +1,5 @@
-from game.world.building import *
-#from game.world.units import *
+from game.world.building import Building
+from game.world.units import Unit
 from game.world.ground import Ground
 import game.main
 
@@ -23,9 +23,9 @@ class Entities(object):
 			self.grounds[ground_id] = Ground(ground_id)
 
 		self.buildings = {}
-		for building_id,  class_package,  class_type,  size_x,  size_y in game.main.db.query("SELECT rowid, class_package, class_type, size_x, size_y FROM data.building").rows:
-			properties = {'id': building_id, 'size': (int(size_x),  int(size_y))}
-			for (name,  value) in game.main.db.query("SELECT name, value FROM data.building_property WHERE building_id = ?",  (str(building_id),)).rows:
-				properties[name] = value
+		for (building_id,) in game.main.db.query("SELECT rowid FROM data.building").rows:
+			self.buildings[building_id] = Building(building_id)
 
-			self.buildings[building_id] = type('building[' + str(building_id) + ']',  (getattr(globals()[class_package], class_type), ),  properties)
+		self.units = {}
+		for (unit_id,) in game.main.db.query("SELECT rowid FROM data.unit").rows:
+			self.units[unit_id] = Unit(unit_id)
