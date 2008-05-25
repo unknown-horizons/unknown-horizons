@@ -28,6 +28,7 @@ class World(object):
 		self.max_y += 10
 
 		#add water
+		print "Filling world with water..."
 		self.grounds = []
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
@@ -40,6 +41,7 @@ class World(object):
 					break
 				else: #found no instance at x,y at any island
 					self.grounds.append(game.main.game.entities.grounds[int(self.properties.get('default_ground', 13))](x, y))
+		print "done."
 
 		#setup players
 		self.player = None
