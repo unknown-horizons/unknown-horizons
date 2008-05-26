@@ -62,7 +62,7 @@ class Ship(fife.InstanceActionListener):
 				self.next_target = (self.position[0] + 1, self.next_target[1])
 			elif self.target[0] < self.position[0]:
 				self.next_target = (self.position[0] - 1, self.next_target[1])
-			elif self.target[1] > self.position[1]:
+			if self.target[1] > self.position[1]:
 				self.next_target = (self.next_target[0], self.position[1] + 1)
 			elif self.target[1] < self.position[1]:
 				self.next_target = (self.next_target[0], self.position[1] - 1)
@@ -95,7 +95,7 @@ class Ship(fife.InstanceActionListener):
 				self.next_target = (self.position[0] + 1, self.next_target[1])
 			elif self.target[0] < self.position[0]:
 				self.next_target = (self.position[0] - 1, self.next_target[1])
-			elif self.target[1] > self.position[1]:
+			if self.target[1] > self.position[1]:
 				self.next_target = (self.next_target[0], self.position[1] + 1)
 			elif self.target[1] < self.position[1]:
 				self.next_target = (self.next_target[0], self.position[1] - 1)

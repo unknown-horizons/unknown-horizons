@@ -7,7 +7,7 @@ class View(object):
 		self.model = game.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
-		cellgrid = fife.SquareGrid(False)
+		cellgrid = fife.SquareGrid(True)
 		cellgrid.thisown = 0
 		cellgrid.setRotation(0)
 		cellgrid.setXScale(1)
