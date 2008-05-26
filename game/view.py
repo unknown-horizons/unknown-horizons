@@ -32,11 +32,10 @@ class View(object):
 		self.renderer = {}
 		for r in ('InstanceRenderer',):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam)
-		for r in ('CoordinateRenderer', 'GridRenderer'):
+		for r in ('CoordinateRenderer', 'GridRenderer', 'QuadTreeRenderer'):
 			self.renderer[r] = self.cam.getRenderer(r)
-
-		self.renderer['CoordinateRenderer'].clearActiveLayers()
-		self.renderer['CoordinateRenderer'].addActiveLayer(self.layers[1])
+			self.renderer[r].clearActiveLayers()
+			self.renderer[r].addActiveLayer(self.layers[1])
 
 	def center(self, x, y):
 		"""Sets the camera position

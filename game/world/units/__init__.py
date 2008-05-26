@@ -19,6 +19,9 @@ class UnitClass(type):
 	def _loadObject(self):
 		print 'Loading unit #' + str(self.id) + '...'
 		self._object = game.main.game.view.model.createObject(str(self.id), 'unit')
+		self._object.setPather(game.main.game.view.model.getPather('RoutePather'))
+		self._object.setBlocking(False)
+		self._object.setStatic(False)
 		action = self._object.createAction('default')
 		fife.ActionVisual.create(action)
 

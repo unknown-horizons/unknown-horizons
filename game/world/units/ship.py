@@ -87,6 +87,6 @@ class Ship(object):
 			#setup movement
 			location = fife.Location(self._instance.getLocationRef().getLayer())
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
-			#self._instance.move('default', location, time)
+			self._instance.move('default', location, time)
 			#setup next timer
 			game.main.game.scheduler.add_new_object(self.move_tick, self, time)
