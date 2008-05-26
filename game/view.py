@@ -16,7 +16,7 @@ class View(object):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(0,3):
+		for i in xrange(0,2):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 		self.view = game.main.fife.engine.getView()
