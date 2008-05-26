@@ -25,6 +25,24 @@ import pychan
 import game.gui.style
 import game.main
 
+class SQLiteAnimationLoader(fife.AnimationLoader):
+	def __init__(self):
+		fife.AnimationLoader.__init__(self)
+		self.thisown = 0
+
+	def loadResource(self, location):
+		print "Loading animation:", location.getFilename()
+		ani = fife.Animation()
+		ani.setActionFrame(0)
+		for (file,) in game.main.db.query("SELECT file from data.animation where animation_id = ?", (location.getFilename(),)).rows:
+			img = game.main.fife.imagepool.addResourceFromFile(str(file))
+			img = game.main.fife.imagepool.getImage(img)
+			img.setXShift(0)
+			img.setYShift(0)
+			ani.addFrame(img, 1)
+		ani.thisown = 0
+		return ani
+
 class Fife(object):
 	def __init__(self):
 		self.engine = fife.Engine()
@@ -110,6 +128,9 @@ class Fife(object):
 		self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg'))
 		self.bgsound.setLooping(True)
 		self.imagepool = self.engine.getImagePool()
+		self.animationpool = self.engine.getAnimationPool()
+		self.animationloader = SQLiteAnimationLoader()
+		self.animationpool.addResourceLoader(self.animationloader)
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)

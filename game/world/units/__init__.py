@@ -19,12 +19,10 @@ class UnitClass(type):
 	def _loadObject(self):
 		print 'Loading unit #' + str(self.id) + '...'
 		self._object = game.main.game.view.model.createObject(str(self.id), 'unit')
-		fife.ObjectVisual.create(self._object)
-		visual = self._object.get2dGfxVisual()
+		action = self._object.createAction('default')
+		fife.ActionVisual.create(action)
 
-		for rotation, file in game.main.db.query("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where unit=?", (self.id,)).rows:
-			img = game.main.fife.imagepool.addResourceFromFile(str(file))
-			visual.addStaticImage(int(rotation), img)
-			img = game.main.fife.imagepool.getImage(img)
-			img.setXShift(0)
-			img.setYShift(0)
+		for rotation, animation_id in game.main.db.query("SELECT rotation, animation FROM data.action where unit=?", (self.id,)).rows:
+			anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id))
+			action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
+			action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
