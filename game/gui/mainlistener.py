@@ -69,30 +69,34 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 	def onConsoleCommand(self, command):
 		try:
 			cmd = code.compile_command(self.commandbuffer + command)
-			if cmd == None:
-				self.commandbuffer += command
-			else:
-				self.commandbuffer = ''
-				oldout = sys.stdout
-				class console_file(object):
-					def __init__(self, copy = None):
-						self.buffer = ''
-						self.copy = copy
-					def write(self, string):
-						parts = (self.buffer + string).split("\n")
-						self.buffer = parts.pop()
-						for p in parts:
-							game.main.fife.console.println(p)
-						self.copy.write(string)
-					def __del__(self):
-						if len(self.buffer) > 0:
-							self.write('\n')
-				sys.stdout = console_file(oldout)
-				exec cmd in globals()
-				sys.stdout = oldout
-		except Exception, e:
+		except BaseException, e:
 			return str(e)
+		if cmd == None:
+			self.commandbuffer += command
+			return ''
+		self.commandbuffer = ''
+		oldout = sys.stdout
+		class console_file(object):
+			def __init__(self, copy = None):
+				self.buffer = ''
+				self.copy = copy
+			def write(self, string):
+				parts = (self.buffer + string).split("\n")
+				self.buffer = parts.pop()
+				for p in parts:
+					game.main.fife.console.println(p)
+				self.copy.write(string)
+			def __del__(self):
+				if len(self.buffer) > 0:
+					self.write('\n')
+		sys.stdout = console_file(oldout)
+		try:
+			exec cmd in globals()
+		except BaseException, e:
+			sys.stdout = oldout
+			return str(e)
+		sys.stdout = oldout
 		return ''
 
 	def onToolsClick(self):
-		pass
+		self.onConsoleCommand('import debug')
