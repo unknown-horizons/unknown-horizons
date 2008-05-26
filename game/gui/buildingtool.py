@@ -29,7 +29,7 @@ class BuildingTool(CursorTool):
 	def _buildCheck(self,  position):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
-			cost = self._class.calcBuildingCost(game.main.game.view.layers[1],  game.main.game.view.layers[2],  position)
+			cost = self._class.calcBuildingCost(game.main.game.view.layers[0],  game.main.game.view.layers[1],  position)
 			# TODO: implement cost checking
 			# if cost < depot(nearest_island or ship):
 		except BlockedError:
@@ -48,7 +48,7 @@ class BuildingTool(CursorTool):
 		target_mapcoord.x = int(target_mapcoord.x)
 		target_mapcoord.y = int(target_mapcoord.y)
 		target_mapcoord.z = 0
-		l = fife.Location(game.main.game.view.layers[2])
+		l = fife.Location(game.main.game.view.layers[1])
 		l.setMapCoordinates(target_mapcoord)
 		self.previewInstance.setLocation(l)
 		target_mapcoord.x = target_mapcoord.x + 1
