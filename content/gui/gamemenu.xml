@@ -18,7 +18,7 @@
 		<VBox opaque="1" base_color="0, 0, 0" position="740,365"><Label name="settings" text=" Settings "/></VBox>
 		<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears_gray.png" down_image="content/gui/images/icons/oa_startmenu_gears.png" hover_image="content/gui/images/icons/oa_startmenu_gears.png" name="settingsLink" position="637,323" border_size="0"/>
 	
-        <Icon image="content/gui/images/logos/fife.jpg" position="41,100" />
+        <Icon image="content/gui/images/logos/fife.png" position="22,100" />
 	<Icon image="content/gui/images/logos/sdl.gif" position="22,20" />
 	<Label text="OpenAnno Demo 0.1" position="898,748"/>
 	
