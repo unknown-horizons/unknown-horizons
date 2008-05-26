@@ -47,7 +47,7 @@ class Ship(fife.InstanceActionListener):
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position[0] + self.position[0] - self.last_position[0], self.position[1] + self.position[1] - self.last_position[1], 0))
 		self._instance.act('default', location, True)
-		print self._instance.getRotation()
+		game.main.game.view.cam.refresh()
 
 	def start(self):
 		pass
