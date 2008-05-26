@@ -46,9 +46,8 @@ class Ship(fife.InstanceActionListener):
 		print 'action finished'
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position[0] + self.position[0] - self.last_position[0], self.position[1] + self.position[1] - self.last_position[1], 0))
-		print self.position, self.last_position
-		self._instance.setFacingLocation(location)
 		self._instance.act('default', location, True)
+		print self._instance.getRotation()
 
 	def start(self):
 		pass
@@ -66,17 +65,12 @@ class Ship(fife.InstanceActionListener):
 				self.next_target = (self.next_target[0], self.position[1] + 1)
 			elif self.target[1] < self.position[1]:
 				self.next_target = (self.next_target[0], self.position[1] - 1)
-			time = 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17
 			#setup movement
 			location = fife.Location(self._instance.getLocation().getLayer())
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
-			self._instance.move('default', location, 16.0/time)
-			location = fife.Location(self._instance.getLocation().getLayer())
-			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0] + self.next_target[0] - self.position[0], self.next_target[1] + self.next_target[1] - self.position[1], 0))
-			self._instance.setFacingLocation(location)
-			print self._instance.getFacingLocation().getLayerCoordinates()
+			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
-			game.main.game.scheduler.add_new_object(self.move_tick, self, time)
+			game.main.game.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
 		self.target = (x, y)
 
 	def move_tick(self):
@@ -99,10 +93,9 @@ class Ship(fife.InstanceActionListener):
 				self.next_target = (self.next_target[0], self.position[1] + 1)
 			elif self.target[1] < self.position[1]:
 				self.next_target = (self.next_target[0], self.position[1] - 1)
-			time = 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17
 			#setup movement
 			location = fife.Location(self._instance.getLocation().getLayer())
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
-			self._instance.move('default', location, 16.0/time)
+			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
-			game.main.game.scheduler.add_new_object(self.move_tick, self, time)
+			game.main.game.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
