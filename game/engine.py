@@ -60,8 +60,8 @@ class Fife(object):
 		game.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
 		game.main.settings.fife.defaultFont.setDefaults(
-			path = 'content/gfx/fonts/samanata.ttf',
-			size = 12,
+			path = 'content/gfx/fonts/Essays1743-Italic.ttf',
+			size = 18,
 			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\"",
 		)
 
@@ -137,7 +137,7 @@ class Fife(object):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		for name, stylepart in game.gui.style.STYLES.items():
 			self.pychan.manager.addStyle(name, stylepart)
-		self.pychan.loadFonts("content/fonts/samanata.fontdef")
+		self.pychan.loadFonts("content/fonts/Essays1743-Italic.fontdef")
 
 		self._gotInited = True
 

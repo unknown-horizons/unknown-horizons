@@ -28,7 +28,7 @@ STYLES= {
 			'base_color' : fife.Color(40,40,40),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(40,40,40),
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
 			'border_size': 1,
@@ -44,25 +44,25 @@ STYLES= {
 		},
 		'Label' : {
 			'border_size': 0,
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		},
 		'ClickLabel' : {
 			'border_size': 0,
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		},
 		'ListBox' : {
 			'border_size': 0,
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		},
 		'Window' : {
 			'border_size': 1,
 			'margins': (10,10),
 			'titlebar_height' : 30,
-			'font' : 'samanata_large',
+			'font' : 'Essays1743-Italic_large',
 			'base_color' : fife.Color(60,60,60)
 		},
 		'TextBox' : {
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		},
 		('Container','HBox','VBox') : {
 			'border_size': 0,
@@ -89,7 +89,7 @@ STYLES= {
 			'base_color' : fife.Color(0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0,0,0),
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -97,7 +97,7 @@ STYLES= {
 		},
 		'Label' : {
 			'border_size': 0,
-			'font' : 'samanata_small'
+			'font' : 'Essays1743-Italic_small'
 		}
 	}
 }

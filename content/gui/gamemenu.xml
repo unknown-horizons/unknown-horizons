@@ -20,6 +20,6 @@
 	
         <Icon image="content/gui/images/logos/fife.png" position="22,100" />
 	<Icon image="content/gui/images/logos/sdl.gif" position="22,20" />
-	<Label text="OpenAnno Demo 0.1" position="898,748"/>
+	<Label text="OpenAnno Demo 0.1" position="850,720"/>
 	
 </Container>
