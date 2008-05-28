@@ -1,0 +1,5 @@
+<Container size="1024,768" border_size="0">
+	<Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
+	<Label text="Loading..." position="512,384"/>
+	<Label text="OpenAnno Demo 0.1" position="850,720"/>
+</Container>
