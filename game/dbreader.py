@@ -38,7 +38,7 @@ class DbReader(object):
 		self.cur = self.connection.cursor()
 
 	def __call__(self, query, *vals):
-		return self.query(query, tuple(*vals))
+		return self.query(query, tuple(vals))
 
 	def query(self, command, vals = ()):
 		"""Executes a sql command.
@@ -52,10 +52,8 @@ class DbReader(object):
 			else:
 				raise 'Error, no complete sql statement provided by "' + command + '".'
 		try:
-			if type(vals) is str().__class__:
+			if type(vals) is not tuple().__class__:
 				vals = (vals,)
-			elif type(vals) is tuple().__class__:
-				vals = (vals+())
 			self.cur.execute(command, vals)
 			ret.rows = self.cur.fetchall()
 			ret.affected = self.cur.rowcount

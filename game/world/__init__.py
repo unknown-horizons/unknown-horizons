@@ -7,12 +7,12 @@ class World(object):
 	def __init__(self):
 		#load properties
 		self.properties = {}
-		for (name, value) in game.main.db.query("select name, value from map.properties").rows:
+		for (name, value) in game.main.db("select name, value from map.properties"):
 			self.properties[name] = value
 
 		#load islands
 		self.islands = []
-		for (island, offset_x, offset_y) in game.main.db.query("select island, x, y from map.islands").rows:
+		for (island, offset_x, offset_y) in game.main.db("select island, x, y from map.islands"):
 			self.islands.append(Island(offset_x, offset_y, island))
 
 		#calculate map dimensions

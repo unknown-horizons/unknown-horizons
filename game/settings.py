@@ -15,7 +15,7 @@ class Setting(object):
 					setattr(self, option[len(name):], getattr(config, option))
 		except ImportError:
 			pass
-		for (option, value) in game.main.db.query("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", (len(name) + 1, len(name), name, len(name) + 1)).rows:
+		for (option, value) in game.main.db("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", len(name) + 1, len(name), name, len(name) + 1):
 			if not self.__dict__.has_key(option):
 				setattr(self, option, simplejson.loads(value))
 
@@ -27,7 +27,7 @@ class Setting(object):
 		self.__dict__[name] = value
 		if not name.startswith('_'):
 			assert(name not in self._categorys)
-			game.main.db.query("replace into config.config (name, value) values (?, ?)", (self._name + name, simplejson.dumps(value)))
+			game.main.db("replace into config.config (name, value) values (?, ?)", self._name + name, simplejson.dumps(value))
 			for listener in self._listener:
 				listener(self, name, value)
 
@@ -66,14 +66,14 @@ class Settings(Setting):
 	def __init__(self, config = 'config.sqlite'):
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)
-		game.main.db.query("attach ? AS config", (config))
-		version = game.main.db.query("PRAGMA config.user_version").rows[0][0]
+		game.main.db("attach ? AS config", config)
+		version = game.main.db("PRAGMA config.user_version")[0][0]
 		if version > Settings.VERSION:
 			print "Error: Config version not supported, creating empty config which wont be saved."
-			game.main.db.query("detach config")
-			game.main.db.query("attach ':memory:' AS config")
-			game.main.db.query("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+			game.main.db("detach config")
+			game.main.db("attach ':memory:' AS config")
+			game.main.db("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 		elif version < Settings.VERSION:
 			print "Upgrading Config from Version " + str(version) + " to Version " + str(Settings.VERSION) + "..."
-			game.main.db.query("PRAGMA config.user_version = " + str(Settings.VERSION))
+			game.main.db("PRAGMA config.user_version = " + str(Settings.VERSION))
 		super(Settings, self).__init__()

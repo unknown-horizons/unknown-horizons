@@ -9,15 +9,15 @@ class Entities(object):
 		self._instances_id = 0
 
 		self.grounds = {}
-		for (ground_id,) in game.main.db.query("SELECT rowid FROM data.ground").rows:
+		for (ground_id,) in game.main.db("SELECT rowid FROM data.ground"):
 			self.grounds[ground_id] = GroundClass(ground_id)
 
 		self.buildings = {}
-		for (building_id,) in game.main.db.query("SELECT rowid FROM data.building").rows:
+		for (building_id,) in game.main.db("SELECT rowid FROM data.building"):
 			self.buildings[building_id] = BuildingClass(building_id)
 
 		self.units = {}
-		for (unit_id,) in game.main.db.query("SELECT rowid FROM data.unit").rows:
+		for (unit_id,) in game.main.db("SELECT rowid FROM data.unit"):
 			self.units[unit_id] = UnitClass(unit_id)
 
 	def registerInstance(self, instance):

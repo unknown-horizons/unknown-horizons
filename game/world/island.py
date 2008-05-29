@@ -31,9 +31,9 @@ class Island(object):
 
 	def __init__(self, x, y, file):
 		self.x, self.y = x, y
-		game.main.db.query("attach ? as island", (file,))
-		self.width, self.height = game.main.db.query("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground").rows[0]
+		game.main.db("attach ? as island", file)
+		self.width, self.height = game.main.db("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground")[0]
 		self.grounds = []
-		for (rel_x, rel_y, ground_id) in game.main.db.query("select x, y, ground_id from island.ground").rows:
+		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
 			self.grounds.append(game.main.game.entities.grounds[ground_id](x + rel_x, y + rel_y))
-		game.main.db.query("detach island")
+		game.main.db("detach island")

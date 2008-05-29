@@ -63,7 +63,7 @@ class Game(object):
 		"""
 
 		#load map
-		game.main.db.query("attach ? as map", (map))
+		game.main.db("attach ? as map", map)
 		self.world = World()
 
 		#temporary ship creation, should be done automatically in later releases

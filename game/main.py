@@ -31,7 +31,7 @@ def start():
 	global db, settings, fife, mainmenu, gamemenu, gui, game, loadingscreen
 	#init db
 	db = DbReader(':memory:')
-	db.query("attach ? AS data", ('content/openanno.sqlite'))
+	db("attach ? AS data", 'content/openanno.sqlite')
 
 	#init settings
 	settings = Settings()

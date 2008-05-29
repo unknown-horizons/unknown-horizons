@@ -34,7 +34,7 @@ class SQLiteAnimationLoader(fife.AnimationLoader):
 		print "Loading animation:", location.getFilename()
 		ani = fife.Animation()
 		ani.setActionFrame(0)
-		for (file,) in game.main.db.query("SELECT file from data.animation where animation_id = ?", (location.getFilename(),)).rows:
+		for (file,) in game.main.db("SELECT file from data.animation where animation_id = ?", location.getFilename()):
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			img = game.main.fife.imagepool.getImage(img)
 			img.setXShift(0)

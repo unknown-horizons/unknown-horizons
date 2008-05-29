@@ -26,7 +26,7 @@ class GroundClass(type):
 
 		#for (oid, multi_action_or_animated) in game.main.db.query("SELECT id, max(actions_and_images) > 1 AS multi_action_or_animated FROM ( SELECT ground.oid as id, action.animation as animation, count(*) as actions_and_images FROM ground LEFT JOIN action ON action.ground = ground.oid LEFT JOIN animation ON action.animation = animation.animation_id GROUP BY ground.oid, action.rotation ) x GROUP BY id").rows:
 		#	print oid, multi_action_or_animated
-		for rotation, file in game.main.db.query("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where ground=?", (self.id,)).rows:
+		for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where ground=?", self.id):
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
