@@ -54,7 +54,8 @@ class Ship(fife.InstanceActionListener):
 
 	def move(self, x, y):
 		print "move"
-		if self.target == self.position:
+		self.target = (x, y)
+		if self.next_target == self.position:
 			#calculate next target
 			self.next_target = self.position
 			if self.target[0] > self.position[0]:
@@ -71,7 +72,6 @@ class Ship(fife.InstanceActionListener):
 			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
 			game.main.game.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
-		self.target = (x, y)
 
 	def move_tick(self):
 		print 'tick'

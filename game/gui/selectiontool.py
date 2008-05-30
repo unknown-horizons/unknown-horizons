@@ -98,6 +98,3 @@ class SelectionTool(CursorTool):
 	def mouseWheelMovedDown(self, evt):
 		game.main.game.view.zoom_out()
 		evt.consume()
-
-	def __del__(self):
-		CursorTool.__del__(self)
