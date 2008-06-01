@@ -37,7 +37,7 @@ class DbReader(object):
 		self.connection.create_function("regexp", 2, regexp)
 		self.cur = self.connection.cursor()
 
-	def __call__(self, query, *args):
+	def __call__(self, command, *args):
 		"""Executes a sql command.
 		@var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
 		@var args: tuple containing the values to add into the command.
@@ -63,13 +63,13 @@ class SqlError(object):
 	"""Represents a SQL error"""
 
 	def __init__(self, error):
-		self.success, self.error, self.affected, self.rows, self.id = False, error, None, None, None
+		self.success, self.error, self.rows, self.affected, self.id = False, error, None, None, None
 
 class SqlResult(object):
 	"""Represents a SQL result"""
 
 	def __init__(self, rows, affected, id):
-		self.success, self.error, self.affected, self.rows, self.id = True, None, rows, affected, id
+		self.success, self.error, self.rows, self.affected, self.id = True, None, rows, affected, id
 
 	def __getattr__(self, name):
 		return getattr(self.rows, name)
