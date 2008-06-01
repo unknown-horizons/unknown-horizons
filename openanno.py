@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2008 The OpenAnnoTeam
+# Copyright (C) 2008 The OpenAnno Team
 # team@openanno.org
 # This file is part of OpenAnno.
 #

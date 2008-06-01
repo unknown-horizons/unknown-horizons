@@ -28,12 +28,12 @@ class World(object):
 	def __init__(self):
 		#load properties
 		self.properties = {}
-		for (name, value) in game.main.db("select name, value from map.properties"):
+		for (name, value) in game.main.db("select name, value from map.map_properties"):
 			self.properties[name] = value
 
 		#load islands
 		self.islands = []
-		for (island, offset_x, offset_y) in game.main.db("select island, x, y from map.islands"):
+		for (island, offset_x, offset_y) in game.main.db("select island, x, y from map.island"):
 			self.islands.append(Island(offset_x, offset_y, island))
 
 		#calculate map dimensions
@@ -74,3 +74,13 @@ class World(object):
 		self.ships.append(game.main.game.entities.units[1](29, 25))
 
 		self.buildings = []
+
+	def save(self, db = 'savegame'):
+		for player in self.players:
+			player.save(db)
+		for island in self.islands:
+			island.save(db)
+		for ship in self.ships:
+			ship.save(db)
+		for building in self.buildings:
+			building.save(db)

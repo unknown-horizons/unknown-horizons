@@ -37,51 +37,42 @@ class DbReader(object):
 		self.connection.create_function("regexp", 2, regexp)
 		self.cur = self.connection.cursor()
 
-	def __call__(self, query, *vals):
-		return self.query(query, tuple(vals))
-
-	def query(self, command, vals = ()):
+	def __call__(self, query, *args):
 		"""Executes a sql command.
 		@var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
-		@var vals: tuple containing the values to add into the command.
+		@var args: tuple containing the values to add into the command.
 		"""
-		ret = SqlResult()
 		if not sqlite3.complete_statement(command):
 			if sqlite3.complete_statement(command + ';'):
 				command = command + ';'
 			else:
 				raise 'Error, no complete sql statement provided by "' + command + '".'
 		try:
-			if type(vals) is not tuple().__class__:
-				vals = (vals,)
-			self.cur.execute(command, vals)
-			ret.rows = self.cur.fetchall()
-			ret.affected = self.cur.rowcount
-			if ret.affected is -1:
-				ret.affected = None
+			self.cur.execute(command, args)
+			return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
 		except sqlite3.Error, e:
 			print "An error occurred:", e.args[0]
-			ret.success = False
-			ret.error = e.args[0]
-		return ret
+			return SqlError(e.args[0])
 
 	def execute_script(self, script):
 		"""Executes a multiline script.
 		@var script: multiline str containing an sql script."""
 		return self.cur.executescript(script)
 
+class SqlError(object):
+	"""Represents a SQL error"""
+
+	def __init__(self, error):
+		self.success, self.error, self.affected, self.rows, self.id = False, error, None, None, None
+
 class SqlResult(object):
 	"""Represents a SQL result"""
 
-	def __init__(self):
-		self.success = True
-		self.rows = None
-		self.error = None
-		self.affected = None
+	def __init__(self, rows, affected, id):
+		self.success, self.error, self.affected, self.rows, self.id = True, None, rows, affected, id
 
 	def __getattr__(self, name):
 		return getattr(self.rows, name)
-
 	def __iadd__(self, *args, **kwargs): return self.rows.__iadd__(*args, **kwargs)
 	def __imul__(self, *args, **kwargs): return self.rows.__imul__(*args, **kwargs)
 	def __iter__(self, *args, **kwargs): return self.rows.__iter__(*args, **kwargs)

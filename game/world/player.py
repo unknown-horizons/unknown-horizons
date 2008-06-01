@@ -29,8 +29,7 @@ class Player(object):
 		"""
 		self.id = id
 		self.name = name
-
 		self.gold = 20000
-		self.ships = {}
-		self.soldiers = {}
-		self.islands = {}
+
+	def save(self, db = 'savegame'):
+		game.main.db(("INSERT INTO %s.player (rowid, name, money) VALUES (?, ?, ?)" % db), self.id, self.name, self.money)
