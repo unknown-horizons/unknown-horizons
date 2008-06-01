@@ -67,12 +67,16 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			command.consume()
 
 	def onConsoleCommand(self, command):
+		if command == ' ':
+			command = ''
 		try:
-			cmd = code.compile_command(self.commandbuffer + command)
+			cmd = code.compile_command(self.commandbuffer + "\n" + command)
 		except BaseException, e:
+			print "XXX" + self.commandbuffer + "\n" + command + "XXX"
+			self.commandbuffer = ''
 			return str(e)
 		if cmd == None:
-			self.commandbuffer += command
+			self.commandbuffer += "\n" + command
 			return ''
 		self.commandbuffer = ''
 		oldout = sys.stdout

@@ -58,6 +58,9 @@ class View(object):
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].addActiveLayer(self.layers[1])
 
+	def __del__(self):
+		self.model.deleteMaps()
+
 	def center(self, x, y):
 		"""Sets the camera position
 		@var center: tuple with x and y coordinate (float or int) of tile to center
