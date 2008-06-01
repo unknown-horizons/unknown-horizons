@@ -50,7 +50,6 @@ def start():
 	gamemenu = fife.pychan.loadXML('content/gui/gamemenu.xml')
 	gamemenu.stylize('menu')
 	loadingscreen = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-	loadingscreen.stylize('menu')
 
 	eventMap = {
 		'startGame'    : startGame,
