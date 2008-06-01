@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnnoTeam
+# Copyright (C) 2008 The OpenAnno Team
 # team@openanno.org
 # This file is part of OpenAnno.
 #
@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import common, fife
 
 class Object(fife.InstanceActionListener):
