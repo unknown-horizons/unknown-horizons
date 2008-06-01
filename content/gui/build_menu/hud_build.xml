@@ -1,5 +1,5 @@
-<Container size="600,200" position="200, 568" border_size="0" background_image="content/gui/images/background/hud/menu_bg.png">
-    <Icon name="tab0" image="content/gui/images/background/hud/tab_bg_active.png" position="0,4" /><ImageButton name="servicesTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,4" />
+<Container size="600,200" position="267, 568" border_size="0" background_image="content/gui/images/background/hud/ingame2.png">
+    <Icon name="tab0" image="content/gui/images/background/hud/tab_bg.png" position="0,4" /><ImageButton name="servicesTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,4" />
     <Icon name="tab1" image="content/gui/images/background/hud/tab_bg.png" position="0,36" /><ImageButton name="residentsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,36" />
     <Icon name="tab2" image="content/gui/images/background/hud/tab_bg.png" position="0,68" /><ImageButton name="companiesTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,68" />
     <Icon name="tab3" image="content/gui/images/background/hud/tab_bg.png" position="0,100" /><ImageButton name="militaryTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,100" />
