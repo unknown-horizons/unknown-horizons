@@ -60,8 +60,9 @@ class View(object):
 
 	def __del__(self):
 		print 'deconstruct',self
-		self.view.clearCameras()
 		self.model.deleteMaps()
+		self.view.clearCameras()
+		print 'done'
 
 	def center(self, x, y):
 		"""Sets the camera position
