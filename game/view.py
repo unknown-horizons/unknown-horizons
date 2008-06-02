@@ -60,6 +60,7 @@ class View(object):
 
 	def __del__(self):
 		print 'deconstruct',self
+		self.view.clearCameras()
 		self.model.deleteMaps()
 
 	def center(self, x, y):
