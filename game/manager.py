@@ -32,6 +32,9 @@ class SPManager(object):
 		"""
 		command(issuer = game.main.game.world.player)
 
+	def __del__(self):
+		print 'deconstruct',self
+
 class MPManager(object):
 	COMMAND_RATE = 1
 	def __init__(self):

@@ -42,6 +42,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		self.commandbuffer = ''
 
 	def __del__(self):
+		print 'deconstruct',self
 		game.main.fife.eventmanager.removeKeyListener(self)
 
 	def keyPressed(self, evt):

@@ -30,6 +30,9 @@ class Scheduler(object):
 		self.cur_tick = 0
 		game.main.game.timer.add_call(self.tick)
 
+	def __del__(self):
+		print 'deconstruct',self
+
 	def tick(self, tick_id):
 		"""Threads main loop
 		@var tick_id: int id of the tick.

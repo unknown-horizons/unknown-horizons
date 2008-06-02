@@ -36,6 +36,9 @@ class SelectionTool(CursorTool):
 		super(SelectionTool, self).__init__()
 		self.lastScroll = [0, 0]
 
+	def __del__(self):
+		print 'deconstruct',self
+
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""
 		game.main.game.selected_instance._instance.say(str(game.main.game.selected_instance.health) + '%', 0) # display health over selected ship

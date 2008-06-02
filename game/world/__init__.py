@@ -75,6 +75,9 @@ class World(object):
 
 		self.buildings = []
 
+	def __del__(self):
+		print 'deconstruct',self
+
 	def save(self, db = 'savegame'):
 		for player in self.players:
 			player.save(db)

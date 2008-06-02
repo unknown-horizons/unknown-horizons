@@ -28,6 +28,7 @@ class CursorTool(fife.IMouseListener):
 		game.main.fife.eventmanager.addMouseListener(self)
 
 	def __del__(self):
+		print 'deconstruct',self
 		game.main.fife.eventmanager.removeMouseListener(self)
 
 	def mousePressed(self, evt):

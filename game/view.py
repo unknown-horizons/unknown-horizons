@@ -59,6 +59,7 @@ class View(object):
 			self.renderer[r].addActiveLayer(self.layers[1])
 
 	def __del__(self):
+		print 'deconstruct',self
 		self.model.deleteMaps()
 
 	def center(self, x, y):

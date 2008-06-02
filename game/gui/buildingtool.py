@@ -47,6 +47,9 @@ class BuildingTool(CursorTool):
 
 		self.previewInstance = self._class.createInstance(-100, -100)
 
+	def __del__(self):
+		print 'deconstruct',self
+
 	def _buildCheck(self,  position):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:

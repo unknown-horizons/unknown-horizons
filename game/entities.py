@@ -52,3 +52,6 @@ class Entities(object):
 
 	def getInstance(self, id):
 		return self._instances[int(id)]
+
+	def __del__(self):
+		print 'deconstruct',self
