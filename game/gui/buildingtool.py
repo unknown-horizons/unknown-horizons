@@ -48,6 +48,7 @@ class BuildingTool(CursorTool):
 		self.previewInstance = self._class.createInstance(-100, -100)
 
 	def __del__(self):
+		super(BuildingTool, self).__del__()
 		print 'deconstruct',self
 
 	def _buildCheck(self,  position):

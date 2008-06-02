@@ -37,6 +37,7 @@ class SelectionTool(CursorTool):
 		self.lastScroll = [0, 0]
 
 	def __del__(self):
+		super(SelectionTool, self).__del__()
 		print 'deconstruct',self
 
 	def select_unit(self):
