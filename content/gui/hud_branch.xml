@@ -31,14 +31,13 @@
   <Icon image="content/gui/images/background/hud/res_bg.png" position="294,131" />
 
   <!-- Infos -->
-  <!--
   <VBox position="350,35">
     <!-- No icons atm. The first number should display the current status, the second the maximum. --> <!--
     <HBox><Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" /><Label name="shipCanons" text="0/0" /></HBox>
     <HBox><Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" /><Label name="shipCrew" text="0/0" /></HBox>
     <HBox><Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" /><Label name="shipSpeed" text="0/0" /></HBox>
-  </VBox>
   -->
+  </VBox>
 
   <!-- Use the name of the buttons to identify their function. No logos atm -->
   <!-- City Buttons -->
