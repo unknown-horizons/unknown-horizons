@@ -1,9 +1,14 @@
-<Container size="1024,768" >
-    <Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
-	 <!-- <Icon image="content/gui/menu/m_serverlobby.png" position="0,0"/> Für besseres Verständnis wie man es besser rüber bringen könnte -->
-    <Icon image="content/gui/menu/newgame.png" position="150,150"/>
-    <Icon image="content/gui/menu/loadgame.png" position="150,200"/>	
-    <ScrollArea size="400,500"  horizontal_scrollbar="0"  position="500,150">
-		 <TextBox name="Missions" min_size="100,600"/> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
-    </ScrollArea>
+<Container size="1024,768">
+	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
+	<!-- <Icon image="content/gui/menu/m_serverlobby.png" position="0,0"/> Für besseres Verständnis wie man es besser rüber bringen könnte -->
+	<RadioButton position="150,150" size="32,32" name="showInternet" text="Internet spiele" />
+	<RadioButton position="150,200" size="32,32" name="showLAN" text="LAN spiele" />
+	<RadioButton position="150,250" size="32,32" name="showFavorites" text="Favoriten" />
+	<ScrollArea size="400,500"  horizontal_scrollbar="0" position="500,150">
+		<ListBox name="list" min_size="100,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
+	</ScrollArea>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears_gray.png" down_image="content/gui/images/icons/oa_startmenu_gears.png" hover_image="content/gui/images/icons/oa_startmenu_gears.png" name="refresh" position="300,700" />
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="create" position="900,700" />
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="join" position="700,700" />
 </Container>

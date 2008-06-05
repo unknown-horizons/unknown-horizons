@@ -9,15 +9,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,161"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startGame" position="488,169"  border_size="0"/>
 
-	<VBox position="225,305"><Label name="credits" text=" Credits "/></VBox>
-	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="creditsLink" position="329,321" border_size="0"/>
-
 	<VBox position="420,565"><Label name="quit" text=" Cancel Game "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,469"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="closeButton" position="484,477" border_size="0"/>
-
-	<VBox position="740,365"><Label name="settings" text=" Settings "/></VBox>
-	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="629,315"/>
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears_gray.png" down_image="content/gui/images/icons/oa_startmenu_gears.png" hover_image="content/gui/images/icons/oa_startmenu_gears.png" name="settingsLink" position="637,323" border_size="0"/>
 </Container>

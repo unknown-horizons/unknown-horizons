@@ -146,8 +146,8 @@ def showSingle(showSaved = False):
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
 	gui.stylize('menu')
 	eventMap = {
-		'okay'     : startSingle,
 		'cancel'   : showMain,
+		'okay'     : startSingle,
 	}
 	if showSaved:
 		eventMap['showNew'] = fife.pychan.tools.callbackWithArguments(showSingle, False)
@@ -190,10 +190,38 @@ def showMulti():
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlist.xml')
 	gui.stylize('menu')
+	gui.server = []
+	eventMap = {
+		'cancel'  : showMain,
+		'create'  : createServer,
+		'join'    : joinServer
+	}
+	gui.mapEvents(eventMap)
 	gui.show()
 	onEscape = showMain
+	listServers()
 
-def showLobby():
+def listServers(serverType='internet'):
+	global gui
+	eventMap = {'refresh' : fife.pychan.tools.callbackWithArguments(listServers, serverType)}
+	eventMap['showInternet'] = fife.pychan.tools.callbackWithArguments(listServers, 'internet') if serverType != 'internet' else lambda : None
+	eventMap['showLAN'] = fife.pychan.tools.callbackWithArguments(listServers, 'lan') if serverType != 'lan' else lambda : None
+	eventMap['showFavorites'] = fife.pychan.tools.callbackWithArguments(listServers, 'favorites') if serverType != 'favorites' else lambda : None
+	gui.distributeData({'showInternet' : serverType == 'internet', 'showLAN' : serverType == 'lan', 'showFavorites' : serverType == 'favorites'})
+	gui.mapEvents(eventMap)
+	gui.servers = []
+	gui.distributeInitialData({'list' : gui.servers})
+
+def createServer():
+	global gui, onEscape, showMulti
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	gui.stylize('menu')
+	gui.show()
+	onEscape = showMulti
+
+def joinServer():
 	global gui, onEscape, showMulti
 	if gui != None:
 		gui.hide()
