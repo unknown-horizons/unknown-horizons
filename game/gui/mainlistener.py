@@ -54,7 +54,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			game.main.fife.console.toggleShowHide()
 			evt.consume()
 		elif keyval == fife.Key.F1:
-                        game.main.onHelp()
+			game.main.onHelp()
 
 	def keyReleased(self, evt):
 		pass

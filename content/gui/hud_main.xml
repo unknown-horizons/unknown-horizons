@@ -1,11 +1,6 @@
-<Container size="267,200" position="0,568" background_image="content/gui/images/background/hud/ingame1.png">
-  <HBox position="5,5" size="190,31">
-    <Button name="helpButton" text="F1" />
-    <Button name="escButton" text="Esc"  />
-  </HBox>
-  
-  <ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" down_image="content/gui/images/icons/hud/main/zoom_out.png" hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" size="32,32" position="15,40" />
-  <ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" down_image="content/gui/images/icons/hud/main/zoom_in.png" hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" size="32,32" position="120,40" />
+<Container size="267,200" position="0,568" background_image="content/gui/images/background/hud/ingame1.png"> 
+  <ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" down_image="content/gui/images/icons/hud/main/zoom_out.png" hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" size="32,32" position="15,20" />
+  <ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" down_image="content/gui/images/icons/hud/main/zoom_in.png" hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" size="32,32" position="120,20" />
   <ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_left.png" size="32,32" down_image="content/gui/images/icons/hud/main/rotate_left_h.png" hover_image="content/gui/images/icons/hud/main/rotate_left.png" position="15,150" />
   <ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_right.png" size="32,32" down_image="content/gui/images/icons/hud/main/rotate_right_h.png" hover_image="content/gui/images/icons/hud/main/rotate_right.png"  position="120,150" />
   
