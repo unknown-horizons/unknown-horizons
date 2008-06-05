@@ -48,12 +48,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		if keyval == fife.Key.ESCAPE:
-			if game.main.gui.isVisible() and game.main.game is not None:
-				game.main.gui.hide()
-			elif game.main.gui.isVisible():
-				game.main.showQuit()
-			elif not game.main.gui.isVisible():
-				game.main.gui.show()
+			game.main.onEscape()
 			evt.consume()
 		elif keyval == fife.Key.F10:
 			game.main.fife.console.toggleShowHide()

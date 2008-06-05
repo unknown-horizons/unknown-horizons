@@ -28,7 +28,7 @@ from game.session import Game
 from game.gui.mainlistener import MainListener
 
 def start():
-	global db, settings, fife, mainmenu, gamemenu, gui, game, loadingscreen, loadmap, serverlist, serverlobby
+	global db, settings, fife, gui, game
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -45,41 +45,16 @@ def start():
 	if settings.sound.enabled:
 		fife.bgsound.play()
 
-	mainmenu = fife.pychan.loadXML('content/gui/mainmenu.xml')
-	mainmenu.stylize('menu')
-
-	loadmap = fife.pychan.loadXML('content/gui/loadmap.xml')
-	loadmap.stylize('menu')
-
-	serverlist = fife.pychan.loadXML('content/gui/serverlist.xml')
-	serverlist.stylize('menu')
-
-	serverlobby = fife.pychan.loadXML('content/gui/serverlobby.xml')
-	serverlobby.stylize('menu')
-
-	loadingscreen = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-	loadingscreen.stylize('menu')
-
-	gamemenu = fife.pychan.loadXML('content/gui/gamemenu.xml')
-	gamemenu.stylize('menu')
-
-	eventMap = {
-		'startGame'    : startGame,
-		'settingsLink' : showSettings,
-		'creditsLink'  : showCredits,
-		'closeButton'  : showQuit,
-	}
-	mainmenu.mapEvents(eventMap)
-	gamemenu.mapEvents(eventMap)
-
 	mainlistener = MainListener()
-
-	gui = mainmenu
-	gui.show()
-
 	game = None
+	gui = None
+
+	showMain()
 
 	fife.run()
+
+def onEscape():
+	pass
 
 def showCredits():
 	global fife
@@ -129,26 +104,110 @@ def showSettings():
 		fife.pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
 
 def showQuit():
-	global game, fife, gui
-	if game is None:
-		if(fife.pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-			fife.quit()
-	else:
-		if(fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
-			game = None
-			gui.hide()
-			gui = mainmenu
-			gui.show()
+	global fife
+	if(fife.pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+		fife.quit()
 
-def startGame():
-	global fife, gui, game, loadingscreen
+def showMain():
+	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')
+	gui.stylize('menu')
+	eventMap = {
+		'startSingle'  : showSingle,
+		'startMulti'   : showMulti,
+		'settingsLink' : showSettings,
+		'creditsLink'  : showCredits,
+		'closeButton'  : showQuit,
+	}
+	gui.mapEvents(eventMap)
+	gui.show()
+	onEscape = showQuit
+
+def showSingle():
+	global gui, onEscape, showMain
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
+	gui.stylize('menu')
+	eventMap = {
+		'okay'  : startSingle,
+		'cancel'  : showMain,
+	}
+	gui.mapEvents(eventMap)
+	gui.show()
+	onEscape = showMain
+
+def startSingle():
+	global gui, fife, game, onEscape, showPause
+
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
+	gui.stylize('menu')
+	gui.show()
+	fife.engine.pump()
 	gui.hide()
-	gui = gamemenu
-	if game is None:
-		loadingscreen.show()
-		fife.engine.pump()
-		loadingscreen.hide()
-		game = Game()
-		game.init()
-		
-		game.loadmap("content/maps/demo.sqlite")
+	gui = None
+	onEscape = showPause
+
+	map = "content/maps/demo.sqlite"
+	game = Game()
+	game.init()
+	game.loadmap(map)
+
+def showMulti():
+	global gui, onEscape, showMain
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/serverlist.xml')
+	gui.stylize('menu')
+	gui.show()
+	onEscape = showMain
+
+def showLobby():
+	global gui, onEscape, showMulti
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	gui.stylize('menu')
+	gui.show()
+	onEscape = showMulti
+
+def showMultiMapSelect():
+	global gui, onEscape, showLobby
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
+	gui.stylize('menu')
+	gui.show()
+	onEscape = showLobby
+
+def showPause():
+	global gui, onEscape, quitSession
+	if gui != None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/gamemenu.xml')
+	gui.stylize('menu')
+	eventMap = {
+		'startGame'    : returnGame,
+		'closeButton'  : quitSession,
+	}
+	gui.mapEvents(eventMap)
+	gui.show()
+	onEscape = returnGame
+
+def returnGame():
+	global gui, onEscape, showPause
+	gui.hide()
+	gui = None
+	onEscape = showPause
+
+def quitSession():
+	global gui, fife, game
+	if(fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+		gui.hide()
+		gui = None
+		game = None
+		showMain()

@@ -65,7 +65,7 @@ class IngameGui(fife.IWidgetListener):
 			'zoomOut' : game.main.game.view.zoom_out,
 			'rotateRight' : game.main.game.view.rotate_right,
 			'rotateLeft' : game.main.game.view.rotate_left,
-			'escButton' : game.main.gui.show
+			'escButton' : game.main.onEscape
 		})
 
 	def __del__(self):
