@@ -20,6 +20,7 @@
 # ###################################################
 
 import os.path
+import glob
 import shutil
 from game.dbreader import DbReader
 from game.engine import Fife
@@ -138,23 +139,35 @@ def showMain():
 	gui.show()
 	onEscape = showQuit
 
-def showSingle():
-	global gui, onEscape, showMain
+def showSingle(showSaved = False):
+	global gui, onEscape
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
 	gui.stylize('menu')
 	eventMap = {
-		'okay'  : startSingle,
-		'cancel'  : showMain,
+		'okay'     : startSingle,
+		'cancel'   : showMain,
 	}
+	if showSaved:
+		eventMap['showNew'] = fife.pychan.tools.callbackWithArguments(showSingle, False)
+		files = [f for p in ('content/save', 'content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
+	else:
+		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, True)
+		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 	gui.mapEvents(eventMap)
+	gui.distributeData({'showNew' : not showSaved, 'showLoad' : showSaved})
+
+	display = ['Zufallskarte' if i == None else i.rpartition('/')[2].rpartition('.')[0] for i in files]
+	gui.distributeInitialData({'list' : display})
+	gui.files = files
 	gui.show()
 	onEscape = showMain
 
 def startSingle():
 	global gui, fife, game, onEscape, showPause
 
+	file = gui.files[gui.collectData('list')]
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
@@ -164,10 +177,12 @@ def startSingle():
 	gui = None
 	onEscape = showPause
 
-	map = "content/maps/demo.sqlite"
 	game = Game()
 	game.init()
-	game.loadmap(map)
+	if file == None:
+		game.generateMap()
+	else:
+		game.loadMap(file)
 
 def showMulti():
 	global gui, onEscape, showMain
