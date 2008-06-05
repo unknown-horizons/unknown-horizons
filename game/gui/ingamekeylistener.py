@@ -48,6 +48,8 @@ class IngameKeyListener(fife.IKeyListener):
 			if not was: game.main.game.view.autoscroll(0, -25)
 		elif keyval == fife.Key.DOWN:
 			if not was: game.main.game.view.autoscroll(0, 25)
+		elif keyval == fife.Key.F1:
+                        game.main.onHelp()
 		elif keystr == 'c':
 			game.main.game.view.renderer['CoordinateRenderer'].setEnabled(not r.isEnabled())
 		elif keystr == 't':

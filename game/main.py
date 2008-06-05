@@ -238,3 +238,7 @@ def quitSession():
 		gui = None
 		game = None
 		showMain()
+
+def onHelp():
+        global fife
+        showDialog(fife.pychan.loadXML('content/gui/help.xml'), {'okButton' : True}, onPressEscape = True)
