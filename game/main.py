@@ -58,10 +58,10 @@ def onEscape():
 
 def showCredits():
 	global fife
-	fife.pychan.loadXML('content/gui/credits.xml').execute({ 'okButton' : True })
+	showDialog(fife.pychan.loadXML('content/gui/credits.xml'), {'okButton' : True}, onPressEscape = True)
 
 def showSettings():
-	global fife, settings
+	global fife, settings, onEscape
 	resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
 	try:
 		resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
@@ -80,8 +80,8 @@ def showSettings():
 		'screen_fullscreen' : settings.fife.screen.fullscreen,
 		'sound_enable_opt' : settings.sound.enabled
 	})
-	if(not dlg.execute({ 'okButton' : True, 'cancelButton' : False })):
-		return;
+	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		return
 	screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
 	changes_require_restart = False
 	if screen_fullscreen != settings.fife.screen.fullscreen:
@@ -101,11 +101,24 @@ def showSettings():
 		settings.fife.screen.height = int(resolutions[screen_resolution].partition('x')[2])
 		changes_require_restart = True
 	if changes_require_restart:
-		fife.pychan.loadXML('content/gui/changes_require_restart.xml').execute({ 'okButton' : True})
+		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
+
+def showDialog(dlg, actions, onPressEscape = None):
+	global onEscape
+	if onPressEscape != None:
+		def _escape():
+			fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
+			dlg.hide()
+		tmp_escape = onEscape
+		onEscape = _escape
+	ret = dlg.execute(actions)
+	if onPressEscape != None:
+		onEscape = tmp_escape
+	return ret
 
 def showQuit():
 	global fife
-	if(fife.pychan.loadXML('content/gui/quitgame.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+	if showDialog(fife.pychan.loadXML('content/gui/quitgame.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		fife.quit()
 
 def showMain():
@@ -205,7 +218,7 @@ def returnGame():
 
 def quitSession():
 	global gui, fife, game
-	if(fife.pychan.loadXML('content/gui/quitsession.xml').execute({ 'okButton' : True, 'cancelButton' : False })):
+	if showDialog(fife.pychan.loadXML('content/gui/quitsession.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		gui.hide()
 		gui = None
 		game = None
