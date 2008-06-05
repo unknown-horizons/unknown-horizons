@@ -28,7 +28,7 @@ from game.session import Game
 from game.gui.mainlistener import MainListener
 
 def start():
-	global db, settings, fife, mainmenu, gamemenu, gui, game, loadingscreen
+	global db, settings, fife, mainmenu, gamemenu, gui, game, loadingscreen, spmenu, mpmenu
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -47,9 +47,21 @@ def start():
 
 	mainmenu = fife.pychan.loadXML('content/gui/mainmenu.xml')
 	mainmenu.stylize('menu')
+
+	loadmap = fife.pychan.loadXML('content/gui/loadmap.xml')
+	loadmap.stylize('menu')
+
+	serverlist = fife.pychan.loadXML('content/gui/serverlist.xml')
+	serverlist.stylize('menu')
+
+	serverlobby = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	serverlobby.stylize('menu')
+
+	loadingscreen = fife.pychan.loadXML('content/gui/loadingscreen.xml')
+	loadingscreen.stylize('menu')
+
 	gamemenu = fife.pychan.loadXML('content/gui/gamemenu.xml')
 	gamemenu.stylize('menu')
-	loadingscreen = fife.pychan.loadXML('content/gui/loadingscreen.xml')
 
 	eventMap = {
 		'startGame'    : startGame,
