@@ -61,13 +61,26 @@ class Game(object):
 		self.ingame_gui.end()
 		game.main.fife.pump = lambda : None
 
-	def loadmap(self, map):
+	def loadMap(self, map):
 		"""Loads a map.
 		@var map: string with the mapfile path.
 		"""
 
 		#load map
 		game.main.db("attach ? as map", map)
+		self.world = World()
+
+		#setup view
+		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
+
+	def generateMap(self):
+		"""Loads a map.
+		@var map: string with the mapfile path.
+		"""
+
+		#load map
+		game.main.db("attach ':memory:' as map")
+		#...
 		self.world = World()
 
 		#setup view
