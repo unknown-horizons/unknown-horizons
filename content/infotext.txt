@@ -1,24 +1,20 @@
-INFO_TEXT = '''
-Welcome to the OpenAnno techdemo, release Pre-Alpha\n\nKeybindings:
+Welcome to the OpenAnno Demo 0.1, Keybindings:
 --------------
-- P = Make screenshot
-- LEFT = Move camera left
-- RIGHT = Move camera right
-- UP = Move camera up
-- DOWN = Move camera down
+- LEFT = Scroll Left
+- RIGHT = Scroll Right
+- UP = Scroll Up
+- DOWN = Scroll Down
+- F1 = Display Help
 - F10 = Toggle console on / off
-- ESC = Quit techdemo
-- LMB = Move agent around
+- ESC = Show Pause menu
 - T = Toggles grid on / off
 - C = Toggles coordinates on / off
-- S = Second camera on / off
 
-
-Have fun,
+Have fun.
 The FIFE and OpenAnno teams
 
 http://www.openanno.org
 http://www.fifengine.de
-'''
+
 
 
