@@ -28,7 +28,7 @@ from game.session import Game
 from game.gui.mainlistener import MainListener
 
 def start():
-	global db, settings, fife, mainmenu, gamemenu, gui, game, loadingscreen, spmenu, mpmenu
+	global db, settings, fife, mainmenu, gamemenu, gui, game, loadingscreen, loadmap, serverlist, serverlobby
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
