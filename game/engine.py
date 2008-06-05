@@ -83,21 +83,6 @@ class Fife(object):
 			bpp = 0
 		)
 
-	def sugarEvent(self, event):
-		"""This function makes event objects more usable, just pass an object and use some new methods"""
-
-		#enrich the event to search for the corresponding pychan widget, return None if not found
-		def findPychanWidget(self, *widgets):
-			wid = self.getId()
-			for w in widgets:
-				if w.match(_event_id = wid):
-					return w
-				w = w.findChild(_event_id = wid)
-				if w != None:
-					return w
-			return None
-		event.findPychanWidget = new.instancemethod(findPychanWidget, event, event.__class__)
-
 	def _setSetting(self, settingObject, settingName, value):
 		setting = settingObject._name + settingName
 		if setting == 'fife_defaultFont_path':
@@ -181,6 +166,6 @@ class Fife(object):
 	def breakLoop(self, returnValue = None):
 		self._doReturn = returnValue
 		self._doBreak = True
-	
+
 	def quit(self):
 		self._doQuit = True
