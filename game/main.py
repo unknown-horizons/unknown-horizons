@@ -145,7 +145,6 @@ def startSingle():
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-	gui.stylize('menu')
 	gui.show()
 	fife.engine.pump()
 	gui.hide()
