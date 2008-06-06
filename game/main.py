@@ -158,7 +158,7 @@ def showSingle(showSaved = False):
 	gui.mapEvents(eventMap)
 	gui.distributeData({'showNew' : not showSaved, 'showLoad' : showSaved})
 
-	display = ['Zufallskarte' if i == None else i.rpartition('/')[2].rpartition('.')[0] for i in files]
+	display = ['Random Map' if i == None else i.rpartition('/')[2].rpartition('.')[0] for i in files]
 	gui.distributeInitialData({'list' : display})
 	gui.files = files
 	gui.show()
