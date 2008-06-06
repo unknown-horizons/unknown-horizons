@@ -1,7 +1,7 @@
 <Container size="1024,768">
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
 	<!-- <Icon image="content/gui/menu/m_serverlobby.png" position="0,0"/> Für besseres Verständnis wie man es besser rüber bringen könnte -->
-	<RadioButton position="150,150" size="32,32" name="showNew" text="Start new Game" />
+	<RadioButton position="150,150" size="32,32" name="showNew" text="Start New Game" />
 	<RadioButton position="150,200" size="32,32" name="showLoad" text="Load Game" />
 	<ScrollArea size="400,500"  horizontal_scrollbar="0" position="500,150">
 		<ListBox name="list" min_size="100,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
