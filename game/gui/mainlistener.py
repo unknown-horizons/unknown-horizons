@@ -47,6 +47,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
+		keystr = evt.getKey().getAsString().lower()
 		if keyval == fife.Key.ESCAPE:
 			game.main.onEscape()
 			evt.consume()
@@ -55,6 +56,8 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			evt.consume()
 		elif keyval == fife.Key.F1:
 			game.main.onHelp()
+		elif keystr == 'p':
+			game.main.fife.engine.getRenderBackend().captureScreen("screenshot.png")
 
 	def keyReleased(self, evt):
 		pass
