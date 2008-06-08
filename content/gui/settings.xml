@@ -1,5 +1,5 @@
 <Window title="Settings" base_color="40, 40, 40">
-	<Label text="This is the OpenAnno settings dialog. Please make sure that you know, what you do."  wrap_text="1" max_size="320,240" base_color="40, 40, 40"/>
+	<Label text="This is the OpenAnno settings dialog. Please make sure that you know, what you do."  wrap_text="1" max_size="420,340" base_color="40, 40, 40"/>
 	<HBox>
 		<VBox>
 			<Label text="Screen resolution:" base_color="40, 40, 40"/>
