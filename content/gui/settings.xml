@@ -7,9 +7,9 @@
 			<Label text="Color depth:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
-			<DropDown name="screen_resolution" base_color="40, 40, 40" />
-			<DropDown name="screen_renderer" base_color="40, 40, 40"/>
-			<DropDown name="screen_bpp" base_color="40, 40, 40"/>
+			<DropDown min_size="120,0" name="screen_resolution" base_color="40, 40, 40" />
+			<DropDown min_size="120,0" name="screen_renderer" base_color="40, 40, 40"/>
+			<DropDown min_size="120,0" name="screen_bpp" base_color="40, 40, 40"/>
 		</VBox>
 	</HBox>
 	<CheckBox size="32,32" name="screen_fullscreen" text="Use the full screen mode" base_color="40, 40, 40"/>
