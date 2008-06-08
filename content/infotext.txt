@@ -1,4 +1,4 @@
-Welcome to the OpenAnno Demo 0.1, Keybindings:
+Welcome to the OpenAnno Alpha 0.1, Keybindings:
 --------------
 - LEFT = Scroll Left
 - RIGHT = Scroll Right
@@ -9,6 +9,7 @@ Welcome to the OpenAnno Demo 0.1, Keybindings:
 - ESC = Show Pause menu
 - T = Toggles grid on / off
 - C = Toggles coordinates on / off
+- P = Screenshot
 
 Have fun.
 The FIFE and OpenAnno teams
