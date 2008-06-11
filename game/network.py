@@ -65,7 +65,10 @@ class Socket(object):
 			read, write, error = select.select([self._socket], [], [], 0)
 			if len(read) == 0:
 				break
-			data, address = self._socket.recvfrom(1024)
+			try:
+				data, address = self._socket.recvfrom(1024)
+			except socket.error:
+				continue
 			print '[incoming] bytes:', len(data), 'address:', address
 			if len(data) > 0:
 				packet = pickle.loads(data)
