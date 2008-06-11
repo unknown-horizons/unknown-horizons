@@ -27,6 +27,7 @@ from game.engine import Fife
 from game.settings import Settings
 from game.session import Game
 from game.gui.mainlistener import MainListener
+from game.network import *
 
 def start():
 	global db, settings, fife, gui, game
@@ -38,6 +39,8 @@ def start():
 	settings = Settings()
 	settings.addCategorys('sound')
 	settings.sound.setDefaults(enabled = True)
+	settings.addCategorys('network')
+	settings.network.setDefaults(port = 62666, favorites = [], url_servers = 'http://master.openanno.org/servers', url_register = 'http://master.openanno.org/register?port=%s')
 
 	#init fife
 	fife = Fife()
@@ -124,6 +127,7 @@ def showQuit():
 
 def showMain():
 	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits
+	fife.pump = lambda : None
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')
@@ -199,18 +203,41 @@ def showMulti():
 	gui.mapEvents(eventMap)
 	gui.show()
 	onEscape = showMain
+	gui.oldServerType = None
 	listServers()
 
-def listServers(serverType='internet'):
-	global gui
-	eventMap = {'refresh' : fife.pychan.tools.callbackWithArguments(listServers, serverType)}
-	eventMap['showInternet'] = fife.pychan.tools.callbackWithArguments(listServers, 'internet') if serverType != 'internet' else lambda : None
-	eventMap['showLAN'] = fife.pychan.tools.callbackWithArguments(listServers, 'lan') if serverType != 'lan' else lambda : None
-	eventMap['showFavorites'] = fife.pychan.tools.callbackWithArguments(listServers, 'favorites') if serverType != 'favorites' else lambda : None
-	gui.distributeData({'showInternet' : serverType == 'internet', 'showLAN' : serverType == 'lan', 'showFavorites' : serverType == 'favorites'})
-	gui.mapEvents(eventMap)
-	gui.servers = []
-	gui.distributeInitialData({'list' : gui.servers})
+def listServers(serverType = 'internet'):
+	def _changed():
+		servers = []
+		for server in gui.serverList:
+			servers.append(str(server))
+		gui.distributeInitialData({'list' : servers})
+
+	gui.mapEvents({
+		'refresh'       : fife.pychan.tools.callbackWithArguments(listServers, serverType),
+		'showLAN'       : fife.pychan.tools.callbackWithArguments(listServers, 'lan') if serverType != 'lan' else lambda : None,
+		'showInternet'  : fife.pychan.tools.callbackWithArguments(listServers, 'internet') if serverType != 'internet' else lambda : None,
+		'showFavorites' : fife.pychan.tools.callbackWithArguments(listServers, 'favorites') if serverType != 'favorites' else lambda : None
+	})
+	gui.distributeData({
+		'showLAN'       : serverType == 'lan',
+		'showInternet'  : serverType == 'internet',
+		'showFavorites' : serverType == 'favorites'
+	})
+
+	if gui.oldServerType != serverType:
+		if serverType == 'internet':
+			gui.serverList = WANServerList()
+		elif serverType == 'lan':
+			gui.serverList = LANServerList()
+		elif serverType == 'favorites':
+			gui.serverList = FavoriteServerList()
+		gui.serverList.changed = _changed
+	else:
+		gui.serverList.update()
+	_changed()
+	gui.oldServerType = serverType
+	
 
 def createServer():
 	global gui, onEscape, showMulti

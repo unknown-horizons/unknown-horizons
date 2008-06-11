@@ -28,10 +28,13 @@ class Server(object):
 	def __init__(self, address, port):
 		self.address = address
 		self.port = port
-		self.ping, self.map, self.players, self.maxplayers = None, None, None, None
+		self.ping, self.map, self.players, self.bots, self.maxplayers = None, None, None, None, None
 
 	def __eq__(self, other):
 		return self.address == other.address and self.port == other.port
+
+	def __str__(self):
+		return str(self.address) + ':' + str(self.port) + '(ping: ' + str(self.ping) + ', map: ' + str(self.map) + ', players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers) + ')'
 
 class ServerList(object):
 	def __init__(self):
@@ -39,7 +42,7 @@ class ServerList(object):
 		#todo: setup socket
 
 	def _clear(self):
-		self._servers.clear()
+		self._servers = []
 
 	def _present(self, server):
 		return server in self._servers
@@ -54,15 +57,18 @@ class ServerList(object):
 		self._servers.remove(server)
 
 	def _query(self, address, port):
+		print 'query:',address,port
 		#todo: query server
-		pass
 
 	def _response(self, server):
 		if self._present(server):
 			#todo: update server
 			pass
 
-	#todo: add list functions
+	def __getitem__(self, *args, **kwargs): return self._servers.__getitem__(*args, **kwargs)
+	def __getslice__(self, *args, **kwargs): return self._servers.__getslice__(*args, **kwargs)
+	def __iter__(self, *args, **kwargs): return self._servers.__iter__(*args, **kwargs)
+	def __len__(self, *args, **kwargs): return self._servers.__len__(*args, **kwargs)
 
 class WANServerList(ServerList):
 	def __init__(self):
@@ -95,6 +101,10 @@ class FavoriteServerList(ServerList):
 	def __init__(self):
 		super(FavoriteServerList, self).__init__()
 		#load from settings
+
+	def update(self):
+		for server in self:
+			self._query(server.address, server.port)
 
 	def add(self, address, port):
 		self._add(Server(address, port))
