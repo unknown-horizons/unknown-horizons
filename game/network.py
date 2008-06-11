@@ -24,6 +24,13 @@ import re
 import game.main
 import time
 
+class Packet(object):
+	def __init__(self):
+		self.address, self.port = None, None
+
+class QueryPacket(Packet):
+	pass
+
 class Socket(object):
 	def __init__(self):
 		game.main.fife.pump.append(self.pump)
@@ -35,12 +42,12 @@ class Socket(object):
 		game.main.fife.pump.remove(self.pump)
 
 	def pump(self):
-		self.receive(None)
-
-	def send(self, address, port, data):
 		pass
 
-	def receive(self, info):
+	def send(self, address, port, packet):
+		pass
+
+	def receive(self, packet):
 		pass
 
 class Server(object):
@@ -54,7 +61,14 @@ class Server(object):
 		return self.address == other.address and self.port == other.port
 
 	def __str__(self):
-		return str(self.address) + ':' + str(self.port) + ' (ping: ' + str(self.ping) + ', map: ' + str(self.map) + ', players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers) + ')'
+		info = []
+		if self.ping != None:
+			info.append('ping: ' + str(self.ping))
+		if self.map != None:
+			info.append('map: ' + str(self.map))
+		if self.players != None or self.maxplayers != None or self.bots != None:
+			info.append('players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers))
+		return str(self.address) + ':' + str(self.port) + ('' if len(info) == 0 else ' (' + ', '.join(info) + ')')
 
 class ServerList(object):
 	queryPacket = QueryPacket()
@@ -87,9 +101,9 @@ class ServerList(object):
 	def _request(self, address, port):
 		self.socket.send(address, port, self.__class__.queryPacket)
 
-	def _response(self, info):
+	def _response(self, packet):
 		for server in self:
-			if server.address == info.address and server.port == info.port:
+			if server.address == packet.address and server.port == packet.port:
 				server.timeLastResponse = time.time()
 				server.ping = int(((server.timeLastResponse - server.timeLastQuery) * 1000) + 0.5)
 				self.changed()
@@ -128,14 +142,14 @@ class LANServerList(ServerList):
 			server.timeLastQuery = time.time()
 		self._request('255.255.255.255', game.main.settings.network.port)
 
-	def _response(self, info):
+	def _response(self, packet):
 		for server in self:
-			if server.address == info.address and server.port == info.port:
+			if server.address == packet.address and server.port == packet.port:
 				break
 		else:
-			self._add(Server(info.address, info.port))
-			self._query(info.address, info.port)
-		super(LANServerList, self)._response(info)
+			self._add(Server(packet.address, packet.port))
+			self._query(packet.address, packet.port)
+		super(LANServerList, self)._response(packet)
 
 class FavoriteServerList(ServerList):
 	def __init__(self):
