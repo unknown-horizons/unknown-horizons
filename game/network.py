@@ -65,16 +65,12 @@ class Socket(object):
 			read, write, error = select.select([self._socket], [], [], 0)
 			if len(read) == 0:
 				break
-			data = array.array('c')
-			bytes, address = self._socket.recvfrom_into(data)
-			data = data.tostring()
-			print '[incoming] bytes:', bytes, 'address:', address,
+			data, address = self._socket.recvfrom(1024)
+			print '[incoming] bytes:', len(data), 'address:', address
 			if len(data) > 0:
-				print ' data:', data
-				packet = pickle.loads(data.tostring())
-				packet.adress, packet.port = addres
+				packet = pickle.loads(data)
+				packet.address, packet.port = address
 				self.receive(packet)
-			print ''
 
 	def send(self, packet):
 		self._socket.sendto(pickle.dumps(packet), (packet.address, packet.port))
@@ -93,14 +89,14 @@ class Server(object):
 			else:
 				port = game.main.settings.network.port
 		self.address = address
-		self.port = port
+		self.port = int(port)
 		self.ping, self.map, self.players, self.bots, self.maxplayers = None, None, None, None, None
 
 	def __eq__(self, other):
 		return self.address == other.address and self.port == other.port
 
 	def __str__(self):
-		info = ['timeout' if self.ping == None else 'ping: ' + str(self.ping)]
+		info = ['timeout' if self.ping == None else 'ping: ' + str(self.ping) + 'ms']
 		if self.map != None:
 			info.append('map: ' + str(self.map))
 		if self.players != None or self.maxplayers != None or self.bots != None:
