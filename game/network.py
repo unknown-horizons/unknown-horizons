@@ -25,8 +25,14 @@ import game.main
 import time
 
 class Packet(object):
-	def __init__(self):
+	def __init__(self, address, port):
 		self.address, self.port = None, None
+
+class TickPacket(Packet):
+	def __init__(self, address, port, tick, commands):
+		super(TickPacket, self).__init__(address, port)
+		self.tick = tick
+		self.commands = commands
 
 class QueryPacket(Packet):
 	pass
@@ -44,7 +50,7 @@ class Socket(object):
 	def pump(self):
 		pass
 
-	def send(self, address, port, packet):
+	def send(self, packet):
 		pass
 
 	def receive(self, packet):
@@ -71,7 +77,6 @@ class Server(object):
 		return str(self.address) + ':' + str(self.port) + ('' if len(info) == 0 else ' (' + ', '.join(info) + ')')
 
 class ServerList(object):
-	queryPacket = QueryPacket()
 	def __init__(self):
 		self._servers = []
 		self.socket = Socket()
@@ -99,7 +104,7 @@ class ServerList(object):
 		self._request(address, port)
 
 	def _request(self, address, port):
-		self.socket.send(address, port, self.__class__.queryPacket)
+		self.socket.send(QueryPacket(address, port))
 
 	def _response(self, packet):
 		for server in self:

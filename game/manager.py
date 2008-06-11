@@ -21,6 +21,7 @@
 
 import game.timer
 import game.main
+import game.network
 
 class SPManager(object):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
@@ -66,8 +67,3 @@ class MPManager(object):
 		@var command: Command the command to be executed
 		"""
 		self.commands.append(command)
-
-class TickPacket(object):
-	def __init__(self, tick, commands):
-		self.tick = tick
-		self.commands = commands
