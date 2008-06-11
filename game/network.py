@@ -38,19 +38,23 @@ class QueryPacket(Packet):
 	pass
 
 class Socket(object):
-	def __init__(self):
-		game.main.fife.pump.append(self.pump)
+	def __init__(self, port = None):
+		game.main.fife.pump.append(self._pump)
+		#todo: add socket
 
 	def __del__(self):
+		#todo: remove socket
 		pass
 
 	def end(self):
-		game.main.fife.pump.remove(self.pump)
+		game.main.fife.pump.remove(self._pump)
 
-	def pump(self):
+	def _pump(self):
+		#todo: check socket; call receive
 		pass
 
 	def send(self, packet):
+		#todo: send packet
 		pass
 
 	def receive(self, packet):
