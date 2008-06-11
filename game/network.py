@@ -37,6 +37,11 @@ class TickPacket(Packet):
 class QueryPacket(Packet):
 	pass
 
+class InfoPacket(Packet):
+	def __init__(self, address, port, map, players, bots, maxplayers):
+		super(TickPacket, self).__init__(address, port)
+		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers
+
 class Socket(object):
 	def __init__(self, port = None):
 		game.main.fife.pump.append(self._pump)
