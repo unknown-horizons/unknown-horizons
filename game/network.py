@@ -93,7 +93,7 @@ class Server(object):
 				port = game.main.settings.network.port
 		self.address = address
 		self.port = int(port)
-		self.ping, self.map, self.players, self.bots, self.maxplayers = None, None, None, None, None
+		self.ping, self.map, self.players, self.bots, self.maxplayers, self.timeLastQuery, self.timeLastResponse = None, None, None, None, None, None, None
 
 	def __eq__(self, other):
 		return self.address == other.address and self.port == other.port
@@ -108,6 +108,7 @@ class Server(object):
 
 class ServerList(object):
 	queryIntervall = 1
+	queryTimeout = 2
 	def __init__(self):
 		self._servers = []
 		self.socket = Socket()
@@ -122,6 +123,9 @@ class ServerList(object):
 	def _pump(self):
 		for server in self:
 			if server.timeLastQuery + self.__class__.queryIntervall <= time.time():
+				if server.ping != None and int(server.timeLastResponse or 0) + self.__class__.queryTimeout <= server.timeLastQuery:
+					server.ping = None
+					self.changed()
 				self._query(server.address, server.port)
 				return
 
@@ -165,9 +169,21 @@ class ServerList(object):
 	def __contains__(self, *args, **kwargs): return self._servers.__contains__(*args, **kwargs)
 
 class WANServerList(ServerList):
+	updateIntervall = 60
+
 	def __init__(self):
 		super(WANServerList, self).__init__()
 		self.update()
+		if self.__class__.updateIntervall > 0:
+			game.main.fife.pump.append(self._update)
+
+	def end(self):
+		game.main.fife.pump.remove(self._update)
+		super(WANServerList, self).end()
+
+	def _update(self):
+		if self.lastUpdate + self.__class__.updateIntervall <= time.time():
+			self.update()
 
 	def update(self):
 		self._clear()
@@ -178,16 +194,30 @@ class WANServerList(ServerList):
 				if not server in self:
 					self._add(server)
 					self._query(server.address, server.port)
+		self.lastUpdate = time.time()
 
 class LANServerList(ServerList):
+	updateIntervall = 5
+
 	def __init__(self):
 		super(LANServerList, self).__init__()
 		self.update()
+		if self.__class__.updateIntervall > 0:
+			game.main.fife.pump.append(self._update)
+
+	def end(self):
+		game.main.fife.pump.remove(self._update)
+		super(LANServerList, self).end()
+
+	def _update(self):
+		if self.lastUpdate + self.__class__.updateIntervall <= time.time():
+			self.update()
 
 	def update(self):
 		for server in self:
 			server.timeLastQuery = time.time()
 		self._request('255.255.255.255', game.main.settings.network.port)
+		self.lastUpdate = time.time()
 
 	def _response(self, packet):
 		for server in self:
@@ -201,8 +231,10 @@ class LANServerList(ServerList):
 class FavoriteServerList(ServerList):
 	def __init__(self):
 		super(FavoriteServerList, self).__init__()
-		for server in game.main.settings.network.favorites:
-			self.add(server)
+		for serverstr in game.main.settings.network.favorites:
+			server = Server(serverstr)
+			self._add(server)
+			self._query(server.address, server.port)
 
 	def update(self):
 		for server in self:
