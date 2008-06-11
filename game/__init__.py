@@ -19,4 +19,4 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['dbreader', 'engine', 'main', 'manager', 'scheduler', 'session', 'settings', 'timer', 'view']
+__all__ = ['dbreader', 'engine', 'main', 'manager', 'scheduler', 'session', 'settings', 'timer', 'view', 'network']
