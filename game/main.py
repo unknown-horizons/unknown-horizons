@@ -207,12 +207,6 @@ def showMulti():
 	listServers()
 
 def listServers(serverType = 'internet'):
-	def _changed():
-		servers = []
-		for server in gui.serverList:
-			servers.append(str(server))
-		gui.distributeInitialData({'list' : servers})
-
 	gui.mapEvents({
 		'refresh'       : fife.pychan.tools.callbackWithArguments(listServers, serverType),
 		'showLAN'       : fife.pychan.tools.callbackWithArguments(listServers, 'lan') if serverType != 'lan' else lambda : None,
@@ -232,12 +226,17 @@ def listServers(serverType = 'internet'):
 			gui.serverList = LANServerList()
 		elif serverType == 'favorites':
 			gui.serverList = FavoriteServerList()
-		gui.serverList.changed = _changed
 	else:
+		gui.serverList.changed = lambda : None
 		gui.serverList.update()
+	def _changed():
+		servers = []
+		for server in gui.serverList:
+			servers.append(str(server))
+		gui.distributeInitialData({'list' : servers})
 	_changed()
+	gui.serverList.changed = _changed
 	gui.oldServerType = serverType
-	
 
 def createServer():
 	global gui, onEscape, showMulti
