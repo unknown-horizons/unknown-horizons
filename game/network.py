@@ -25,10 +25,12 @@ import game.main
 import time
 import socket
 import select
+import pickle
+import array
 
 class Packet(object):
 	def __init__(self, address, port):
-		self.address, self.port = None, None
+		self.address, self.port = str(address), int(port)
 
 class TickPacket(Packet):
 	def __init__(self, address, port, tick, commands):
@@ -48,6 +50,8 @@ class Socket(object):
 	def __init__(self, port = 0):
 		game.main.fife.pump.append(self._pump)
 		self._socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_UDP)
+		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 		self._socket.bind(('', port))
 
 	def __del__(self):
@@ -61,18 +65,33 @@ class Socket(object):
 			read, write, error = select.select([self._socket], [], [], 0)
 			if len(read) == 0:
 				break
-			#read from socket and call receive
+			data = array.array('c')
+			bytes, address = self._socket.recvfrom_into(data)
+			data = data.tostring()
+			print '[incoming] bytes:', bytes, 'address:', address,
+			if len(data) > 0:
+				print ' data:', data
+				packet = pickle.loads(data.tostring())
+				packet.adress, packet.port = addres
+				self.receive(packet)
+			print ''
 
 	def send(self, packet):
-		#todo: send packet
-		pass
+		self._socket.sendto(pickle.dumps(packet), (packet.address, packet.port))
 
 	def receive(self, packet):
 		pass
 
 class Server(object):
 	re_ip_port = re.compile("^((?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5])))(?::((?:[0-5]?[0-9]{1,4}|6(?:[0-4][0-9]{3}|5(?:[0-4][0-9]{2}|5(?:[0-2][0-9]|3[0-5]))))))?$")
-	def __init__(self, address, port):
+	def __init__(self, address, port = None):
+		if port == None:
+			match = Server.re_ip_port.match(address)
+			if match:
+				address = match.group(1)
+				port = match.group(2) or game.main.settings.network.port
+			else:
+				port = game.main.settings.network.port
 		self.address = address
 		self.port = port
 		self.ping, self.map, self.players, self.bots, self.maxplayers = None, None, None, None, None
@@ -109,17 +128,18 @@ class ServerList(object):
 
 	def _clear(self):
 		self._servers = []
+		self.changed()
 
 	def _add(self, server):
 		if server in self:
 			self._servers.remove(server)
 		self._servers.append(server)
+		self.changed()
 
 	def _remove(self, server):
 		self._servers.remove(server)
 
 	def _query(self, address, port):
-		print 'query',address,port
 		tmp_server = Server(address, port)
 		for server in self:
 			if server == tmp_server:
