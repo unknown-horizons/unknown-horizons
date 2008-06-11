@@ -127,7 +127,6 @@ def showQuit():
 
 def showMain():
 	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits
-	fife.pump = lambda : None
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')

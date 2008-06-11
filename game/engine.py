@@ -46,6 +46,8 @@ class SQLiteAnimationLoader(fife.AnimationLoader):
 
 class Fife(object):
 	def __init__(self):
+		self.pump = []
+
 		self.engine = fife.Engine()
 		self.settings = self.engine.getSettings()
 		self.pychan = pychan
@@ -155,13 +157,11 @@ class Fife(object):
 			except fife.Exception, e:
 				print e.getMessage()
 				break
-			self.pump()
+			for f in self.pump:
+				f()
 			if self._doBreak:
 				self._doBreak = False
 				return self._doReturn
-
-	def pump(self):
-		pass
 
 	def breakLoop(self, returnValue = None):
 		self._doReturn = returnValue

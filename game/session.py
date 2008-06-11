@@ -42,7 +42,7 @@ class Game(object):
 	def init(self):
 		#game
 		self.timer = Timer(16)
-		game.main.fife.pump = self.timer.check_tick
+		game.main.fife.pump.append(self.timer.check_tick)
 		self.manager = SPManager()
 		self.scheduler = Scheduler()
 		self.view = View()
@@ -59,7 +59,7 @@ class Game(object):
 	def __del__(self):
 		print 'deconstruct',self
 		self.ingame_gui.end()
-		game.main.fife.pump = lambda : None
+		game.main.fife.pump.remove(self.timer.check_tick)
 
 	def loadMap(self, map):
 		"""Loads a map.

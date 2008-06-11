@@ -24,6 +24,25 @@ import re
 import game.main
 import time
 
+class Socket(object):
+	def __init__(self):
+		game.main.fife.pump.append(self.pump)
+
+	def __del__(self):
+		pass
+
+	def end(self):
+		game.main.fife.pump.remove(self.pump)
+
+	def pump(self):
+		self.receive(None)
+
+	def send(self, address, port, data):
+		pass
+
+	def receive(self, info):
+		pass
+
 class Server(object):
 	re_ip_port = re.compile("^((?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5])))(?::((?:[0-5]?[0-9]{1,4}|6(?:[0-4][0-9]{3}|5(?:[0-4][0-9]{2}|5(?:[0-2][0-9]|3[0-5]))))))?$")
 	def __init__(self, address, port):
@@ -38,9 +57,14 @@ class Server(object):
 		return str(self.address) + ':' + str(self.port) + ' (ping: ' + str(self.ping) + ', map: ' + str(self.map) + ', players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers) + ')'
 
 class ServerList(object):
+	queryPacket = QueryPacket()
 	def __init__(self):
 		self._servers = []
-		#todo: setup socket
+		self.socket = Socket()
+		self.socket.receive = self._response
+
+	def __del__(self):
+		self.socket.end()
 
 	def _clear(self):
 		self._servers = []
@@ -61,12 +85,11 @@ class ServerList(object):
 		self._request(address, port)
 
 	def _request(self, address, port):
-		#todo: query server
-		pass
+		self.socket.send(address, port, self.__class__.queryPacket)
 
 	def _response(self, info):
 		for server in self:
-			if server.address == info['address'] and server.port == info['port']:
+			if server.address == info.address and server.port == info.port:
 				server.timeLastResponse = time.time()
 				server.ping = int(((server.timeLastResponse - server.timeLastQuery) * 1000) + 0.5)
 				self.changed()
@@ -107,11 +130,11 @@ class LANServerList(ServerList):
 
 	def _response(self, info):
 		for server in self:
-			if server.address == info['address'] and server.port == info['port']:
+			if server.address == info.address and server.port == info.port:
 				break
 		else:
-			self._add(Server(info['address'], info['port']))
-			self._query(info['address'], info['port'])
+			self._add(Server(info.address, info.port))
+			self._query(info.address, info.port)
 		super(LANServerList, self)._response(info)
 
 class FavoriteServerList(ServerList):
