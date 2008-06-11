@@ -111,7 +111,7 @@ class Fife(object):
 			self.settings.setInitialVolume(value)
 
 	def init(self):
-		logToPrompt, logToFile, debugPychan = True, True, True
+		logToPrompt, logToFile, debugPychan = True, True, False
 		if self._gotInited:
 			return
 		#start modules
