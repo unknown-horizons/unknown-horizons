@@ -40,7 +40,7 @@ def start():
 	settings.addCategorys('sound')
 	settings.sound.setDefaults(enabled = True)
 	settings.addCategorys('network')
-	settings.network.setDefaults(port = 62666, favorites = [], url_servers = 'http://master.openanno.org/servers', url_register = 'http://master.openanno.org/register?port=%s')
+	settings.network.setDefaults(port = 62666, favorites = [], url_servers = 'http://master.openanno.org/servers', url_register = 'http://master.openanno.org/register?port=%s', favorites = [])
 
 	#init fife
 	fife = Fife()
@@ -194,14 +194,21 @@ def showMulti():
 	gui = fife.pychan.loadXML('content/gui/serverlist.xml')
 	gui.stylize('menu')
 	gui.server = []
+	def _close():
+		global gui
+		print 'exit'
+		print gui.serverList
+		gui.serverList.end()
+		gui.serverList = None
+		showMain()
 	eventMap = {
-		'cancel'  : showMain,
+		'cancel'  : _close,
 		'create'  : createServer,
 		'join'    : joinServer
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
-	onEscape = showMain
+	onEscape = _close
 	gui.oldServerType = None
 	listServers()
 
@@ -219,6 +226,8 @@ def listServers(serverType = 'internet'):
 	})
 
 	if gui.oldServerType != serverType:
+		if gui.oldServerType != None:
+			gui.serverList.end()
 		if serverType == 'internet':
 			gui.serverList = WANServerList()
 		elif serverType == 'lan':

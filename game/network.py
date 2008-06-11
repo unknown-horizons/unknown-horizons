@@ -23,6 +23,8 @@ import urllib
 import re
 import game.main
 import time
+import socket
+import select
 
 class Packet(object):
 	def __init__(self, address, port):
@@ -43,20 +45,23 @@ class InfoPacket(Packet):
 		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers
 
 class Socket(object):
-	def __init__(self, port = None):
+	def __init__(self, port = 0):
 		game.main.fife.pump.append(self._pump)
-		#todo: add socket
+		self._socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_UDP)
+		self._socket.bind(('', port))
 
 	def __del__(self):
-		#todo: remove socket
-		pass
+		self._socket.close()
 
 	def end(self):
 		game.main.fife.pump.remove(self._pump)
 
 	def _pump(self):
-		#todo: check socket; call receive
-		pass
+		while 1:
+			read, write, error = select.select([self._socket], [], [], 0)
+			if len(read) == 0:
+				break
+			#read from socket and call receive
 
 	def send(self, packet):
 		#todo: send packet
@@ -76,23 +81,31 @@ class Server(object):
 		return self.address == other.address and self.port == other.port
 
 	def __str__(self):
-		info = []
-		if self.ping != None:
-			info.append('ping: ' + str(self.ping))
+		info = ['timeout' if self.ping == None else 'ping: ' + str(self.ping)]
 		if self.map != None:
 			info.append('map: ' + str(self.map))
 		if self.players != None or self.maxplayers != None or self.bots != None:
 			info.append('players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers))
-		return str(self.address) + ':' + str(self.port) + ('' if len(info) == 0 else ' (' + ', '.join(info) + ')')
+		return str(self.address) + ':' + str(self.port) + ' (' + ', '.join(info) + ')'
 
 class ServerList(object):
+	queryIntervall = 1
 	def __init__(self):
 		self._servers = []
 		self.socket = Socket()
 		self.socket.receive = self._response
+		game.main.fife.pump.append(self._pump)
 
-	def __del__(self):
+	def end(self):
+		game.main.fife.pump.remove(self._pump)
+		self.socket.receive = lambda x : None
 		self.socket.end()
+
+	def _pump(self):
+		for server in self:
+			if server.timeLastQuery + self.__class__.queryIntervall <= time.time():
+				self._query(server.address, server.port)
+				return
 
 	def _clear(self):
 		self._servers = []
@@ -106,6 +119,7 @@ class ServerList(object):
 		self._servers.remove(server)
 
 	def _query(self, address, port):
+		print 'query',address,port
 		tmp_server = Server(address, port)
 		for server in self:
 			if server == tmp_server:
@@ -168,21 +182,25 @@ class LANServerList(ServerList):
 class FavoriteServerList(ServerList):
 	def __init__(self):
 		super(FavoriteServerList, self).__init__()
-		#load from settings
+		for server in game.main.settings.network.favorites:
+			self.add(server)
 
 	def update(self):
 		for server in self:
 			self._query(server.address, server.port)
 
-	def add(self, address, port):
-		self._add(Server(address, port))
+	def add(self, serverstr):
+		server = Server(serverstr)
+		self._add(server)
 		self._query(server.address, server.port)
-		#save to setings
+		game.main.settings.network.favorites = game.main.settings.network.favorites + [serverstr]
 
-	def remove(self, address, port):
-		self._remove(Server(address, port))
-		#save to setings
+	def remove(self, serverstr):
+		self._remove(Server(serverstr))
+		favorites = game.main.settings.network.favorites
+		favorites.remove(serverstr)
+		game.main.settings.network.favorites = favorites
 
 	def clear(self):
 		self._clear()
-		#save to setings
+		game.main.settings.network.favorites = []
