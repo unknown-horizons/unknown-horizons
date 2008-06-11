@@ -249,6 +249,7 @@ def listServers(serverType = 'internet'):
 def createServer():
 	global gui, onEscape, showMulti
 	if gui != None:
+		gui.serverList.end()
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
 	gui.stylize('menu')
@@ -258,6 +259,7 @@ def createServer():
 def joinServer():
 	global gui, onEscape, showMulti
 	if gui != None:
+		gui.serverList.end()
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
 	gui.stylize('menu')
