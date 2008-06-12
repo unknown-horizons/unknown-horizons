@@ -41,6 +41,12 @@ class TickPacket(Packet):
 class QueryPacket(Packet):
 	pass
 
+class ConnectPacket(Packet):
+	pass
+
+class RegisterPacket(Packet):
+	pass
+
 class InfoPacket(Packet):
 	def __init__(self, address, port, map, players, bots, maxplayers):
 		super(TickPacket, self).__init__(address, port)
@@ -53,6 +59,7 @@ class Socket(object):
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 		self._socket.bind(('', port))
+		self.port = self._socket.getsockname()[1]
 
 	def __del__(self):
 		self._socket.close()
@@ -81,8 +88,55 @@ class Socket(object):
 	def receive(self, packet):
 		pass
 
+class NetworkClient(object):
+	connectTimeout = 5
+
+	def __init__(self, address, port):
+		self._socket = Socket()
+		self._socket.receive = self.onPacket
+		game.main.fife.pump.append(self._pump)
+
+		self.address, self.port = address, port
+		self.reconnect()
+
+	def reconnect(self):
+		self._socket.send(ConnectPacket(self.address, self.port))
+		self.connectTime = time.time()
+
+	def end(self):
+		self.socket.receive = lambda : None
+		if self._pump in game.main.fife.pump:
+			game.main.fife.pump.remove(self._pump)
+
+	def _pump(self):
+		if self.connectTime + self.__class__.connectTimeout <= time.time():
+			self.onTimeout()
+
+	def send(self, packet):
+		self._socket.send(packet)
+
+	def onTimeout(self):
+		pass
+
+	def onPacket(self, packet):
+		pass
+
+class NetworkServer(NetworkClient):
+	def __init__(self, port = None):
+		self._socket = Socket(port or game.main.settings.network.port)
+		self._socket.receive = self.onPacket
+
+		self.register()
+
+	def register(self):
+		self._socket.send(RegisterPacket(self._socket.port))
+
+	def end(self):
+		self._socket.receive = lambda : None
+
 class Server(object):
 	re_ip_port = re.compile("^((?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5])))(?::((?:[0-5]?[0-9]{1,4}|6(?:[0-4][0-9]{3}|5(?:[0-4][0-9]{2}|5(?:[0-2][0-9]|3[0-5]))))))?$")
+
 	def __init__(self, address, port = None):
 		if port == None:
 			match = Server.re_ip_port.match(address)
@@ -109,6 +163,7 @@ class Server(object):
 class ServerList(object):
 	queryIntervall = 1
 	queryTimeout = 2
+
 	def __init__(self):
 		self._servers = []
 		self.socket = Socket()
