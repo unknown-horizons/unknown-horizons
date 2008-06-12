@@ -21,13 +21,15 @@
 
 from game.world.building.building import *
 import game.main
+from game.world.settlement import Settlement
 
 class Build(object):
 	"""Command class that builds an object."""
 	def __init__(self, building, x, y, instance = None):
 		"""Create the command
-		@var object_id: int objects id.
+		@var building: building class that is to be built.
 		@var x,y: int coordinates where the object is to be built.
+		@var instance: preview instance, can then be reused for the final building (only singleplayer)
 		"""
 		self.building = building.id
 		self.instance = None if instance == None else instance.getId()
@@ -40,3 +42,23 @@ class Build(object):
 		"""
 		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
 		# TODO: Add building to players/settlements
+
+class Settle(object):
+	"""Command class that creates a warehouse and a settlement."""
+	def __init__(self, building, x, y, island_id, player, instance = None):
+		"""Create the command
+		@var building: building class that is to be built
+		@var x, y: int coordinates where the object is to be built.
+		@param island_id: int id of the island teh object is to be built on.
+		@var player: int player id of the player that creates the new settlement.
+		@var instance: preview instance, can then be reused for the final building (only singleplayer)
+		"""
+		self.building = building.id
+		self.island_id = island_id
+		self.x, self.y = int(x), int(y)
+		self.player = int(player.id)
+		self.instance = None if instance == None else instance.getId()
+		
+	def __call__(self, issuer):
+		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
+		game.main.session.world.islands[self.island_id].settlements.append(Settlement(game.main.session.world.players[self.player]))

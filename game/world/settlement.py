@@ -22,12 +22,13 @@
 class Settlement(object):
 	"""The Settlement class describes a settlement and stores all the neccassary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
-	def __init__(self, island, name):
-		"""@var island: Island that this settlement is present on
-		@var name: the settlements name
+	def __init__(self, owner):
 		"""
-		self.island = island
-		self.name = name
+		@var owner: player that owns the settlement
+		"""
+		print "settlement created"
+		self.name = 'foo' # TODO: add name generator here
+		self.owner = owner
 		self._inhabitants = 0
 		self.tiles = [] # List of tiles belonging to the settlement
 		self.buildings = [] # List of all the buildings belonging to the settlement

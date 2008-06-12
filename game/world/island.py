@@ -29,7 +29,8 @@ class Island(object):
 	An Island instance is created at map creation, when all tiles are added to the map.
 	"""
 
-	def __init__(self, x, y, file):
+	def __init__(self, id, x, y, file):
+		self.id = id
 		self.file = file
 		self.x, self.y = x, y
 		game.main.db("attach ? as island", file)
@@ -38,6 +39,7 @@ class Island(object):
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
 			self.grounds.append(game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y))
 		game.main.db("detach island")
+		self.settlements = []
 
 	def save(self, db = 'savegame'):
 		id = game.main.db(("INSERT INTO %s.island (x, y, file) VALUES (?, ?, ?)" % db), self.x, self.y, self.file).id

@@ -22,7 +22,7 @@
 from cursortool import CursorTool
 from selectiontool import SelectionTool
 from game.world.building.building import *
-from game.command.building import Build
+from game.command.building import Build, Settle
 
 import fife
 import game.main
@@ -33,13 +33,18 @@ Builder visualizes if and why a building can not be built under the cursor posit
 """
 
 class BuildingTool(CursorTool):
-	"@param building_id: rowid of the selected building type"
-	"@param island: If building from a ship, restrict to range of ship"
+	"""@param building_id: rowid of the selected building type"
+	@param player_id: player id of the player that builds the building
+	@param ship: If building from a ship, restrict to range of ship
+	@param settle: bool Tells the building tool if a new settlement is created. Default: False
+	"""
+	
 
-	def __init__(self, building_id, ship = None):
+	def __init__(self, building_id, player_id, ship = None):
 		print "created buildingtool"
 		super(BuildingTool, self).__init__()
 
+		self.player_id = player_id
 		self.ship = ship
 		self.building_id = building_id
 
@@ -97,7 +102,11 @@ class BuildingTool(CursorTool):
 			mapcoord.x = int(mapcoord.x)
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
-			if self._buildCheck(mapcoord):
-				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
+			if self._buildCheck(mapcoord) and game.main.session.world.get_island(mapcoord.x, mapcoord.y) is not None:
+				if self.ship:
+					island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
+					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island, self.player_id, self.previewInstance))
+				else:
+					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
 				game.main.session.cursor = SelectionTool()
 		evt.consume()

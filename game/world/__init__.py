@@ -23,6 +23,7 @@ __all__ = ['island', 'player', 'settlement']
 
 import game.main
 from game.world.island import Island
+from game.world.player import Player
 
 class World(object):
 	def __init__(self):
@@ -32,13 +33,13 @@ class World(object):
 			self.properties[name] = value
 
 		#load islands
-		self.islands = []
-		for (island, offset_x, offset_y) in game.main.db("select island, x, y from map.island"):
-			self.islands.append(Island(offset_x, offset_y, island))
+		self.islands = {}
+		for index,(island, offset_x, offset_y) in enumerate(game.main.db("select island, x, y from map.island")):
+			self.islands[index] = Island(index, offset_x, offset_y, island)
 
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
-		for i in self.islands:
+		for i in self.islands.values():
 			self.min_x = i.x if self.min_x == None or i.x < self.min_x else self.min_x
 			self.min_y = i.y if self.min_y == None or i.y < self.min_y else self.min_y
 			self.max_x = (i.x + i.width - 1) if self.max_x == None or (i.x + i.width - 1) > self.max_x else self.max_x
@@ -54,7 +55,7 @@ class World(object):
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
 				for i in self.islands:
-					for g in i.grounds:
+					for g in self.islands[i].grounds:
 						if g.x == x and g.y == y:
 							break
 					else: #found no instance at x,y in the island
@@ -65,7 +66,7 @@ class World(object):
 		print "done."
 
 		#setup players
-		self.player = None
+		self.player = Player(0, "Arthus")
 		self.players = {0:self.player}
 
 		#add ship
@@ -75,6 +76,27 @@ class World(object):
 
 		self.buildings = []
 
+	def get_island(self, x, y):
+		"""Returns the island for that coordinate, if non is found, returns None.
+		@param x: int x position.
+		@param y: int y position. """
+		for i in self.islands:
+			for tile in self.islands[i].grounds:
+				if tile.x == x and tile.y == y:
+					return i
+		return None
+	
+	def get_settlement(self, x, y):
+		"""Returns the settlement for that coordinate, if non is found, returns None.
+		@param x: int x position.
+		@param y: int y position. """
+		for i in self.islands:
+			for settlement in self.islands[i].settlements:
+				for tile in self.islands[i].settlements[settlement]:
+					if tile.x == x and tile.y == y:
+						return settlement
+		return None
+		
 	def __del__(self):
 		print 'deconstruct',self
 

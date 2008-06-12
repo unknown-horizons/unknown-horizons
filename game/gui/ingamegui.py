@@ -122,7 +122,7 @@ class IngameGui(fife.IWidgetListener):
 	def _ship_build(self):
 		"""Calls the Games build_object class."""
 		game.main.session.selected_instance._instance.say('')
-		game.main.session.cursor = BuildingTool(1, game.main.session.selected_instance)
+		game.main.session.cursor = BuildingTool(1, game.main.session.world.player, game.main.session.selected_instance)
 
 	def toggle_visible(self, guiname):
 		"""Toggles whether a gui is visible or not.
