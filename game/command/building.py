@@ -27,9 +27,9 @@ class Build(object):
 	"""Command class that builds an object."""
 	def __init__(self, building, x, y, instance = None):
 		"""Create the command
-		@var building: building class that is to be built.
-		@var x,y: int coordinates where the object is to be built.
-		@var instance: preview instance, can then be reused for the final building (only singleplayer)
+		@param building: building class that is to be built.
+		@param x,y: int coordinates where the object is to be built.
+		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		"""
 		self.building = building.id
 		self.instance = None if instance == None else instance.getId()
@@ -38,7 +38,7 @@ class Build(object):
 
 	def __call__(self, issuer):
 		"""Execute the command
-		@var issuer: the issuer of the command
+		@param issuer: the issuer of the command
 		"""
 		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
 		# TODO: Add building to players/settlements
@@ -47,11 +47,11 @@ class Settle(object):
 	"""Command class that creates a warehouse and a settlement."""
 	def __init__(self, building, x, y, island_id, player, instance = None):
 		"""Create the command
-		@var building: building class that is to be built
-		@var x, y: int coordinates where the object is to be built.
+		@param building: building class that is to be built
+		@param x, y: int coordinates where the object is to be built.
 		@param island_id: int id of the island teh object is to be built on.
-		@var player: int player id of the player that creates the new settlement.
-		@var instance: preview instance, can then be reused for the final building (only singleplayer)
+		@param player: int player id of the player that creates the new settlement.
+		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		"""
 		self.building = building.id
 		self.island_id = island_id

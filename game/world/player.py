@@ -24,8 +24,8 @@ class Player(object):
 
 	def __init__(self, id, name):
 		"""
-		@var id: unique player id
-		@var name: str containing the players name
+		@param id: unique player id
+		@param name: str containing the players name
 		"""
 		self.id = id
 		self.name = name

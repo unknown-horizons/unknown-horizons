@@ -24,11 +24,11 @@ import common, fife
 class Object(fife.InstanceActionListener):
 	def __init__(self, model, object_id, layer, game, uniqInMap=True):
 		"""
-		@var model: fife.Model: engine model beeing used.
-		@var unit_id: str containing the objects id.
-		@var layer: fife.Layer on which the object is present.
-		@var game: Main Game class instance
-		@var uniqInMap: bool if the object is unique.
+		@param model: fife.Model: engine model beeing used.
+		@param unit_id: str containing the objects id.
+		@param layer: fife.Layer on which the object is present.
+		@param game: Main Game class instance
+		@param uniqInMap: bool if the object is unique.
 		"""
 		fife.InstanceActionListener.__init__(self)
 		self.model = model

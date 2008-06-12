@@ -31,8 +31,8 @@ class Timer(object):
 
 	def __init__(self, ticks_per_second, tick_next_id = 0):
 		"""
-		@var ticks_per_second: int times per second the timer is to tick
-		@var tick_next_id: int next tick id
+		@param ticks_per_second: int times per second the timer is to tick
+		@param tick_next_id: int next tick id
 		"""
 		self.ticks_per_second = ticks_per_second
 		self.tick_next_id = tick_next_id
@@ -45,25 +45,25 @@ class Timer(object):
 
 	def add_test(self, call):
 		"""Adds a call to the test list
-		@var call: function function which should be added
+		@param call: function function which should be added
 		"""
 		self.tick_func_test.append(call)
 
 	def add_call(self, call):
 		"""Adds a call to the call list
-		@var call: function function which should be added
+		@param call: function function which should be added
 		"""
 		self.tick_func_call.append(call)
 
 	def remove_test(self, call):
 		"""Removes a call from the test list
-		@var call: function function which were added before
+		@param call: function function which were added before
 		"""
 		self.tick_func_test.remove(call)
 
 	def remove_call(self, call):
 		"""Removes a call from the call list
-		@var call: function function which were added before
+		@param call: function function which were added before
 		"""
 		self.tick_func_call.remove(call)
 

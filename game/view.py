@@ -66,7 +66,7 @@ class View(object):
 
 	def center(self, x, y):
 		"""Sets the camera position
-		@var center: tuple with x and y coordinate (float or int) of tile to center
+		@param center: tuple with x and y coordinate (float or int) of tile to center
 		"""
 		loc = self.cam.getLocationRef()
 		pos = loc.getExactLayerCoordinatesRef()
@@ -90,8 +90,8 @@ class View(object):
 
 	def scroll(self, x, y):
 		"""Moves the camera across the screen
-		@var x: int representing the amount of pixels to scroll in x direction
-		@var y: int representing the amount of pixels to scroll in y direction
+		@param x: int representing the amount of pixels to scroll in x direction
+		@param y: int representing the amount of pixels to scroll in y direction
 		"""
 		loc = self.cam.getLocationRef()
 		pos = loc.getExactLayerCoordinatesRef()

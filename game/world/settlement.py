@@ -24,7 +24,7 @@ class Settlement(object):
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
 		"""
-		@var owner: player that owns the settlement
+		@param owner: player that owns the settlement
 		"""
 		print "settlement created"
 		self.name = 'foo' # TODO: add name generator here
@@ -35,12 +35,12 @@ class Settlement(object):
 
 	def add_inhabitants(self, num):
 		"""Increases the number of inhabitants by num
-		@var num: int number of inhabitants to be added
+		@param num: int number of inhabitants to be added
 		"""
 		self._inhabitants += num
 
 	def rem_inhabitants(self, num):
 		"""Decreases the number of inhabitants by num
-		@var num: int number of inhabitants to be removed
+		@param num: int number of inhabitants to be removed
 		"""
 		self._inhabitants -= num

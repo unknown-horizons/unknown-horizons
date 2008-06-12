@@ -35,7 +35,7 @@ class Scheduler(object):
 
 	def tick(self, tick_id):
 		"""Threads main loop
-		@var tick_id: int id of the tick.
+		@param tick_id: int id of the tick.
 		"""
 		self.cur_tick = tick_id
 		if self.schedule.has_key(self.cur_tick):
@@ -47,7 +47,7 @@ class Scheduler(object):
 
 	def add_object(self, object):
 		"""Adds a new CallbackObject instance to the callbacks list
-		@var object: CallbackObject type object, containing all neccessary  information
+		@param object: CallbackObject type object, containing all neccessary  information
 		"""
 		if not self.schedule.has_key(self.cur_tick + object.runin):
 			self.schedule[self.cur_tick + object.runin] = []
@@ -57,10 +57,10 @@ class Scheduler(object):
 
 	def add_new_object(self, callback, parent_class, runin=1, loops=1):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
-		@var callback: lambda function callback, which is called runin ticks.
-		@var parent_class: class instance the function belongs to.
-		@var runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
-		@var loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
+		@param callback: lambda function callback, which is called runin ticks.
+		@param parent_class: class instance the function belongs to.
+		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
+		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
 		object = CallbackObject(callback, parent_class, runin, loops)
 		self.add_object(object)
 
@@ -75,10 +75,10 @@ class CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self,  callback, parent_class, runin=1, loops=1):
 		"""Creates the CallbackObject instance.
-		@var callback: lambda function callback, which is called runin ticks.
-		@var parent_class: class instance the original function(not the lambda function!) belongs to.
-		@var runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
-		@var loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
+		@param callback: lambda function callback, which is called runin ticks.
+		@param parent_class: class instance the original function(not the lambda function!) belongs to.
+		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
+		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
 		"""
 		self.runin = runin
 		self.callback = callback

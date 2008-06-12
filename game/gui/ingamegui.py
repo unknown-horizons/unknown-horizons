@@ -111,8 +111,8 @@ class IngameGui(fife.IWidgetListener):
 
 	def status_set(self, label, value):
 		"""Sets a value on the status bar.
-		@var label: str containing the name of the label to be set.
-		@var value: value the Label is to be set to.
+		@param label: str containing the name of the label to be set.
+		@param value: value the Label is to be set to.
 		"""
 		foundlabel = self.gui['status'].findChild(name=label)
 		foundlabel._setText(value)
@@ -126,7 +126,7 @@ class IngameGui(fife.IWidgetListener):
 
 	def toggle_visible(self, guiname):
 		"""Toggles whether a gui is visible or not.
-		@var guiname: str with the guiname.
+		@param guiname: str with the guiname.
 		"""
 		if self.gui[guiname].isVisible():
 			self.gui[guiname].hide()
@@ -135,7 +135,7 @@ class IngameGui(fife.IWidgetListener):
 
 	def build_menu_show(self, num):
 		"""Shows the selected build menu
-		@var num: int with the menu id
+		@param num: int with the menu id
 		"""
 		self.active_build.hide()
 		self.active_build = self.gui['build' + str(num)]
@@ -143,7 +143,7 @@ class IngameGui(fife.IWidgetListener):
 
 	def build_load_tab(self, num):
 		"""Loads a subcontainer into the build menu and changes the tabs background.
-		@var num: number representing the tab to load.
+		@param num: number representing the tab to load.
 		"""
 		tab1 = self.gui['build'].findChild(name=('tab'+str(self.active_build)))
 		tab2 = self.gui['build'].findChild(name=('tab'+str(num)))

@@ -63,7 +63,7 @@ class Session(object):
 
 	def loadMap(self, map):
 		"""Loads a map.
-		@var map: string with the mapfile path.
+		@param map: string with the mapfile path.
 		"""
 
 		#load map
@@ -75,7 +75,7 @@ class Session(object):
 
 	def generateMap(self):
 		"""Loads a map.
-		@var map: string with the mapfile path.
+		@param map: string with the mapfile path.
 		"""
 
 		#load map

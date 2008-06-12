@@ -29,7 +29,7 @@ class SPManager(object):
 
 	def execute(self, command):
 		"""Executes a command
-		@var command: Command the command to be executed
+		@param command: Command the command to be executed
 		"""
 		command(issuer = game.main.session.world.player)
 
@@ -47,7 +47,7 @@ class MPManager(object):
 
 	def tick(self, tick):
 		"""Executes a tick
-		@var tick: the
+		@param tick: the
 		"""
 		if tick % self.__class__.COMMAND_RATE == 0:
 			if self.packets.has_key(tick):
@@ -64,6 +64,6 @@ class MPManager(object):
 
 	def execute(self, command):
 		"""Executes a command
-		@var command: Command the command to be executed
+		@param command: Command the command to be executed
 		"""
 		self.commands.append(command)

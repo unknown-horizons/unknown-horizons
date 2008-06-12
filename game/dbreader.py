@@ -26,7 +26,7 @@ class DbReader(object):
 	"""Class that handles connections to sqlite databases"""
 	def __init__(self, file):
 		"""Init function, opens the connection to a database and creates a cursor for that database
-		@var file: str containing the database file.
+		@param file: str containing the database file.
 		"""
 
 		self.connection = sqlite3.connect(file)
@@ -39,8 +39,8 @@ class DbReader(object):
 
 	def __call__(self, command, *args):
 		"""Executes a sql command.
-		@var command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
-		@var args: tuple containing the values to add into the command.
+		@param command: str containing the raw sql command, with ? as placeholders for values (eg. SELELCT ? FROM ?).
+		@param args: tuple containing the values to add into the command.
 		"""
 		if not sqlite3.complete_statement(command):
 			if sqlite3.complete_statement(command + ';'):
@@ -56,7 +56,7 @@ class DbReader(object):
 
 	def execute_script(self, script):
 		"""Executes a multiline script.
-		@var script: multiline str containing an sql script."""
+		@param script: multiline str containing an sql script."""
 		return self.cur.executescript(script)
 
 class SqlError(object):

@@ -24,9 +24,9 @@ import game.main
 
 class Move(object):
 	"""Command class that moves a unit.
-	@var unit_fife_id: int FifeId of the unit that is to be moved.
-	@var x,y: float coordinates where the unit is to be moved.
-	@var layer: the layer the unit is present on.
+	@param unit_fife_id: int FifeId of the unit that is to be moved.
+	@param x,y: float coordinates where the unit is to be moved.
+	@param layer: the layer the unit is present on.
 	"""
 	def __init__(self, unit, x, y):
 		self.unit = unit._instance.getId()
@@ -35,6 +35,6 @@ class Move(object):
 
 	def __call__(self, issuer):
 		"""__call__() gets called by the manager.
-		@var issuer: the issuer of the command
+		@param issuer: the issuer of the command
 		"""
 		game.main.session.entities.getInstance(self.unit).move(self.x, self.y)

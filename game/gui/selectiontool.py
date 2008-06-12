@@ -30,7 +30,7 @@ import game.main
 
 class SelectionTool(CursorTool):
 	"""The Selectiontool is used to select instances on the game screen.
-	@var game: the main game Instance
+	@param game: the main game Instance
 	"""
 	def __init__(self):
 		super(SelectionTool, self).__init__()
