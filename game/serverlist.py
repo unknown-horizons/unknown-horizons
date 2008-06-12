@@ -22,7 +22,8 @@
 import urllib
 import re
 import game.main
-from game.network import Socket, QueryPacket
+from game.network import Socket
+from game.packets import QueryPacket
 import time
 
 class Server(object):

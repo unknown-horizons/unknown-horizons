@@ -24,30 +24,7 @@ import socket
 import select
 import pickle
 import game.main
-
-class Packet(object):
-	def __init__(self, address, port):
-		self.address, self.port = str(address), int(port)
-
-class TickPacket(Packet):
-	def __init__(self, address, port, tick, commands):
-		super(TickPacket, self).__init__(address, port)
-		self.tick = tick
-		self.commands = commands
-
-class QueryPacket(Packet):
-	pass
-
-class ConnectPacket(Packet):
-	pass
-
-class RegisterPacket(Packet):
-	pass
-
-class InfoPacket(Packet):
-	def __init__(self, address, port, map, players, bots, maxplayers):
-		super(TickPacket, self).__init__(address, port)
-		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers
+from game.packets import *
 
 class Socket(object):
 	def __init__(self, port = 0):
