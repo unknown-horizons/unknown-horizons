@@ -27,7 +27,7 @@ from game.engine import Fife
 from game.settings import Settings
 from game.session import Session
 from game.gui.mainlistener import MainListener
-from game.network import *
+from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 
 def start():
 	global db, settings, fife, gui, session
