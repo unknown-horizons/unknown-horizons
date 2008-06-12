@@ -28,7 +28,7 @@ class Ground(object):
 			self.__class__._loadObject()
 		self.x = x
 		self.y = y
-		self._instance = game.main.game.view.layers[0].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.game.entities.registerInstance(self))
+		self._instance = game.main.session.view.layers[0].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(self._instance)
 
 class GroundClass(type):
@@ -41,7 +41,7 @@ class GroundClass(type):
 
 	def _loadObject(self):
 		print 'Loading ground #' + str(self.id) + '...'
-		self._object = game.main.game.view.model.createObject(str(self.id), 'ground')
+		self._object = game.main.session.view.model.createObject(str(self.id), 'ground')
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 

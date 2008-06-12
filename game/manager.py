@@ -31,7 +31,7 @@ class SPManager(object):
 		"""Executes a command
 		@var command: Command the command to be executed
 		"""
-		command(issuer = game.main.game.world.player)
+		command(issuer = game.main.session.world.player)
 
 	def __del__(self):
 		print 'deconstruct',self
@@ -52,15 +52,15 @@ class MPManager(object):
 		if tick % self.__class__.COMMAND_RATE == 0:
 			if self.packets.has_key(tick):
 				self.packets[tick] = {}
-			self.packets[tick][game.main.game.players[0]] = TickPacket(tick, self.commands)
+			self.packets[tick][game.main.session.players[0]] = TickPacket(tick, self.commands)
 			self.commands = []
 			if self.packets.has_key(tick - 2):
-				for p in game.main.game.players[(tick - 2) % len(game.main.game.players):] + game.main.game.players[:((tick - 2) % len(game.main.game.players)) - 1]:
+				for p in game.main.session.players[(tick - 2) % len(game.main.session.players):] + game.main.session.players[:((tick - 2) % len(game.main.session.players)) - 1]:
 					for c in self.packets[tick - 2][p].commands:
 						c(issuer = p)
 
 	def can_tick(self, tick):
-		return game.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(game.main.game.player))) else game.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
+		return game.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(game.main.session.player))) else game.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
 
 	def execute(self, command):
 		"""Executes a command

@@ -36,7 +36,7 @@ class Island(object):
 		self.width, self.height = game.main.db("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground")[0]
 		self.grounds = []
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
-			self.grounds.append(game.main.game.entities.grounds[ground_id](x + rel_x, y + rel_y))
+			self.grounds.append(game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y))
 		game.main.db("detach island")
 
 	def save(self, db = 'savegame'):

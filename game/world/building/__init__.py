@@ -41,7 +41,7 @@ class BuildingClass(type):
 
 	def _loadObject(self):
 		print 'Loading building #' + str(self.id) + '...'
-		self._object = game.main.game.view.model.createObject(str(self.id), 'building')
+		self._object = game.main.session.view.model.createObject(str(self.id), 'building')
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 
@@ -53,6 +53,6 @@ class BuildingClass(type):
 			img.setYShift(0)
 
 	def createInstance(self, x, y):
-		instance = game.main.game.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.game.entities.registerInstance(self))
+		instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(instance)
 		return instance

@@ -43,7 +43,7 @@ class BuildingTool(CursorTool):
 		self.ship = ship
 		self.building_id = building_id
 
-		self._class = game.main.game.entities.buildings[building_id]
+		self._class = game.main.session.entities.buildings[building_id]
 
 		self.previewInstance = self._class.createInstance(-100, -100)
 
@@ -54,9 +54,9 @@ class BuildingTool(CursorTool):
 	def _buildCheck(self,  position):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
-			cost = self._class.calcBuildingCost(game.main.game.view.layers[0],  game.main.game.view.layers[1],  position)
+			cost = self._class.calcBuildingCost(game.main.session.view.layers[0],  game.main.session.view.layers[1],  position)
 			# TODO: implement cost checking
-			# if cost < depot(nearest_island or ship):
+			# if cost < depot(nearest_island or ship):BlockedError
 		except BlockedError:
 			return False
 
@@ -69,11 +69,11 @@ class BuildingTool(CursorTool):
 
 	def mouseMoved(self,  evt):
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
-		target_mapcoord = game.main.game.view.cam.toMapCoordinates(pt, False)
+		target_mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
 		target_mapcoord.x = int(target_mapcoord.x)
 		target_mapcoord.y = int(target_mapcoord.y)
 		target_mapcoord.z = 0
-		l = fife.Location(game.main.game.view.layers[1])
+		l = fife.Location(game.main.session.view.layers[1])
 		l.setMapCoordinates(target_mapcoord)
 		self.previewInstance.setLocation(l)
 		target_mapcoord.x = target_mapcoord.x + 1
@@ -85,19 +85,19 @@ class BuildingTool(CursorTool):
 		if can_build: color = (255,  255,  0)
 		else: color = (255,  0,  0)
 
-		game.main.game.view.renderer['InstanceRenderer'].addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
+		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
 
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
-			game.main.game.cursor = SelectionTool()
-			game.main.game.view.layers[1].deleteInstance(self.previewInstance)
+			game.main.session.cursor = SelectionTool()
+			game.main.session.view.layers[1].deleteInstance(self.previewInstance)
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pt = fife.ScreenPoint(evt.getX(), evt.getY())
-			mapcoord = game.main.game.view.cam.toMapCoordinates(pt, False)
+			mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
 			mapcoord.x = int(mapcoord.x)
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
-				game.main.game.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
-				game.main.game.cursor = SelectionTool()
+				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
+				game.main.session.cursor = SelectionTool()
 		evt.consume()

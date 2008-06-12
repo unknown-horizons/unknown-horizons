@@ -83,10 +83,10 @@ else:
 
 	def cmd(name, *pargs, **kargs):
 		from game.command import *
-		game.main.game.manager.execute(eval(name)(*pargs, **kargs))
+		game.main.session.manager.execute(eval(name)(*pargs, **kargs))
 
 	print 'Debuging tools usage:'
 	print 'import debug (already done): load the tools'
 	print 'debug.printTree(<object>):   print a tree of an object (the properties, recursive)'
-	print "debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.game.selected_instance, x, y)"
+	print "debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
 	print ''

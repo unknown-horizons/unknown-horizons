@@ -37,8 +37,8 @@ from game.view import View
 from game.world import World
 from game.entities import Entities
 
-class Game(object):
-	"""Game class represents the games main ingame view and controls cameras and map loading."""
+class Session(object):
+	"""Session class represents the games main ingame view and controls cameras and map loading."""
 	def init(self):
 		#game
 		self.timer = Timer(16)

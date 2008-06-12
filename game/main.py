@@ -25,12 +25,12 @@ import shutil
 from game.dbreader import DbReader
 from game.engine import Fife
 from game.settings import Settings
-from game.session import Game
+from game.session import Session
 from game.gui.mainlistener import MainListener
 from game.network import *
 
 def start():
-	global db, settings, fife, gui, game
+	global db, settings, fife, gui, session
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -50,7 +50,7 @@ def start():
 		fife.bgsound.play()
 
 	mainlistener = MainListener()
-	game = None
+	session = None
 	gui = None
 
 	showMain()
@@ -168,7 +168,7 @@ def showSingle(showSaved = False):
 	onEscape = showMain
 
 def startSingle():
-	global gui, fife, game, onEscape, showPause
+	global gui, fife, session, onEscape, showPause
 
 	file = gui.files[gui.collectData('list')]
 	if gui != None:
@@ -180,12 +180,12 @@ def startSingle():
 	gui = None
 	onEscape = showPause
 
-	game = Game()
-	game.init()
+	session = Session()
+	session.init()
 	if file == None:
-		game.generateMap()
+		session.generateMap()
 	else:
-		game.loadMap(file)
+		session.loadMap(file)
 
 def showMulti():
 	global gui, onEscape, showMain
@@ -296,13 +296,13 @@ def returnGame():
 	onEscape = showPause
 
 def quitSession():
-	global gui, fife, game
+	global gui, fife, session
 	if showDialog(fife.pychan.loadXML('content/gui/quitsession.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		gui.hide()
 		gui = None
-		game = None
+		session = None
 		showMain()
 
 def onHelp():
-        global fife
-        showDialog(fife.pychan.loadXML('content/gui/help.xml'), {'okButton' : True}, onPressEscape = True)
+	global fife
+	showDialog(fife.pychan.loadXML('content/gui/help.xml'), {'okButton' : True}, onPressEscape = True)

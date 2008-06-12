@@ -42,40 +42,40 @@ class SelectionTool(CursorTool):
 
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""
-		game.main.game.selected_instance._instance.say(str(game.main.game.selected_instance.health) + '%', 0) # display health over selected ship
-		game.main.game.view.renderer['InstanceRenderer'].addOutlined(game.main.game.selected_instance._instance, 255, 255, 255, 1)
-		if isinstance(game.main.game.selected_instance, Ship):
-			game.main.game.ingame_gui.gui['ship'].show() #show the gui for ships
+		game.main.session.selected_instance._instance.say(str(game.main.session.selected_instance.health) + '%', 0) # display health over selected ship
+		game.main.session.view.renderer['InstanceRenderer'].addOutlined(game.main.session.selected_instance._instance, 255, 255, 255, 1)
+		if isinstance(game.main.session.selected_instance, Ship):
+			game.main.session.ingame_gui.gui['ship'].show() #show the gui for ships
 
 	def deselect_unit(self):
 		"""Runs neccasary steps to deselect a unit."""
-		game.main.game.selected_instance._instance.say('') #remove status of last selected unit
-		game.main.game.view.renderer['InstanceRenderer'].removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
-		if isinstance(game.main.game.selected_instance, Ship):
-			game.main.game.ingame_gui.toggle_visible('ship') # hide the gui for ships
+		game.main.session.selected_instance._instance.say('') #remove status of last selected unit
+		game.main.session.view.renderer['InstanceRenderer'].removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
+		if isinstance(game.main.session.selected_instance, Ship):
+			game.main.session.ingame_gui.toggle_visible('ship') # hide the gui for ships
 
 	def mousePressed(self, evt):
 		clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-		cam = game.main.game.view.cam
+		cam = game.main.session.view.cam
 		if (evt.getButton() == fife.MouseEvent.LEFT):
-			instances = cam.getMatchingInstances(clickpoint, game.main.game.view.layers[1])
+			instances = cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
 			if instances: #something under cursor
 				print instances[0].getId()
-				instance = game.main.game.entities.getInstance(instances[0].getId())
-				if game.main.game.selected_instance and game.main.game.selected_instance != instance:
+				instance = game.main.session.entities.getInstance(instances[0].getId())
+				if game.main.session.selected_instance and game.main.session.selected_instance != instance:
 					self.deselect_unit()
-				game.main.game.selected_instance = instance
+				game.main.session.selected_instance = instance
 				self.select_unit()
-			elif game.main.game.selected_instance: #nothing under cursor
+			elif game.main.session.selected_instance: #nothing under cursor
 				self.deselect_unit()
-				game.main.game.selected_instance = None
+				game.main.session.selected_instance = None
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
-			if game.main.game.selected_instance and isinstance(game.main.game.selected_instance, Ship):
+			if game.main.session.selected_instance and isinstance(game.main.session.selected_instance, Ship):
 				target_mapcoord = cam.toMapCoordinates(clickpoint, False)
 				target_mapcoord.z = 0
-				l = fife.Location(game.main.game.view.layers[1])
+				l = fife.Location(game.main.session.view.layers[1])
 				l.setMapCoordinates(target_mapcoord)
-				game.main.game.manager.execute(Move(game.main.game.selected_instance, target_mapcoord.x, target_mapcoord.y))
+				game.main.session.manager.execute(Move(game.main.session.selected_instance, target_mapcoord.x, target_mapcoord.y))
 		evt.consume()
 
 	def mouseMoved(self, evt):
@@ -85,20 +85,20 @@ class SelectionTool(CursorTool):
 		new = [0, 0]
 		if mousepoint.x < 50:
 			new[0] -= 50 - mousepoint.x
-		elif mousepoint.x >= (game.main.game.view.cam.getViewPort().right()-50):
-			new[0] += 51 + mousepoint.x - game.main.game.view.cam.getViewPort().right()
+		elif mousepoint.x >= (game.main.session.view.cam.getViewPort().right()-50):
+			new[0] += 51 + mousepoint.x - game.main.session.view.cam.getViewPort().right()
 		if mousepoint.y < 50:
 			new[1] -= 50 - mousepoint.y
-		elif mousepoint.y >= (game.main.game.view.cam.getViewPort().bottom()-50):
-			new[1] += 51 + mousepoint.y - game.main.game.view.cam.getViewPort().bottom()
+		elif mousepoint.y >= (game.main.session.view.cam.getViewPort().bottom()-50):
+			new[1] += 51 + mousepoint.y - game.main.session.view.cam.getViewPort().bottom()
 		if new[0] != old[0] or new[1] != old[1]:
-			game.main.game.view.autoscroll(new[0]-old[0], new[1]-old[1])
+			game.main.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
 			self.lastScroll = new
 
 	def mouseWheelMovedUp(self, evt):
-		game.main.game.view.zoom_in()
+		game.main.session.view.zoom_in()
 		evt.consume()
 
 	def mouseWheelMovedDown(self, evt):
-		game.main.game.view.zoom_out()
+		game.main.session.view.zoom_out()
 		evt.consume()

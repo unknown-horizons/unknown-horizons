@@ -41,17 +41,17 @@ class IngameKeyListener(fife.IKeyListener):
 		if not was:
 			self.keysPressed.append(keyval)
 		if keyval == fife.Key.LEFT:
-			if not was: game.main.game.view.autoscroll(-25, 0)
+			if not was: game.main.session.view.autoscroll(-25, 0)
 		elif keyval == fife.Key.RIGHT:
-			if not was: game.main.game.view.autoscroll(25, 0)
+			if not was: game.main.session.view.autoscroll(25, 0)
 		elif keyval == fife.Key.UP:
-			if not was: game.main.game.view.autoscroll(0, -25)
+			if not was: game.main.session.view.autoscroll(0, -25)
 		elif keyval == fife.Key.DOWN:
-			if not was: game.main.game.view.autoscroll(0, 25)
+			if not was: game.main.session.view.autoscroll(0, 25)
 		elif keystr == 'c':
-			game.main.game.view.renderer['CoordinateRenderer'].setEnabled(not r.isEnabled())
+			game.main.session.view.renderer['CoordinateRenderer'].setEnabled(not r.isEnabled())
 		elif keystr == 't':
-			game.main.game.view.renderer['GridRenderer'].setEnabled(not r.isEnabled())
+			game.main.session.view.renderer['GridRenderer'].setEnabled(not r.isEnabled())
 		else:
 			return
 		evt.consume()
@@ -63,10 +63,10 @@ class IngameKeyListener(fife.IKeyListener):
 		except:
 			return
 		if keyval == fife.Key.LEFT:
-			game.main.game.view.autoscroll(25, 0)
+			game.main.session.view.autoscroll(25, 0)
 		elif keyval == fife.Key.RIGHT:
-			game.main.game.view.autoscroll(-25, 0)
+			game.main.session.view.autoscroll(-25, 0)
 		elif keyval == fife.Key.UP:
-			game.main.game.view.autoscroll(0, 25)
+			game.main.session.view.autoscroll(0, 25)
 		elif keyval == fife.Key.DOWN:
-			game.main.game.view.autoscroll(0, -25)
+			game.main.session.view.autoscroll(0, -25)

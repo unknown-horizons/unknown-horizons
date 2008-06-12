@@ -38,5 +38,5 @@ class Build(object):
 		"""Execute the command
 		@var issuer: the issuer of the command
 		"""
-		game.main.game.world.buildings.append(game.main.game.entities.buildings[self.building](self.x, self.y, issuer, game.main.game.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.game.world.player else None))
+		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
 		# TODO: Add building to players/settlements

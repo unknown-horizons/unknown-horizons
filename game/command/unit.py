@@ -37,4 +37,4 @@ class Move(object):
 		"""__call__() gets called by the manager.
 		@var issuer: the issuer of the command
 		"""
-		game.main.game.entities.getInstance(self.unit).move(self.x, self.y)
+		game.main.session.entities.getInstance(self.unit).move(self.x, self.y)

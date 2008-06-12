@@ -35,7 +35,7 @@ class Building(object):
 			self.createInstance(x, y)
 		else:
 			self._instance = instance
-			game.main.game.entities.updateInstance(self._instance.getId(), self)
+			game.main.session.entities.updateInstance(self._instance.getId(), self)
 		self.health = 50
 
 	def calcBuildingCost(cls, ground_layer,  building_layer, position):

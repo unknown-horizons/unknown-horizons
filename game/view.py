@@ -81,9 +81,9 @@ class View(object):
 		new = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
 		if old != new:
 			if old:
-				game.main.game.timer.remove_test(self.tick)
+				game.main.session.timer.remove_test(self.tick)
 			if new:
-				game.main.game.timer.add_test(self.tick)
+				game.main.session.timer.add_test(self.tick)
 
 	def tick(self, tick):
 		self.scroll(self._autoscroll[0], self._autoscroll[1])

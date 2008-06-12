@@ -32,7 +32,7 @@ class Ship(fife.InstanceActionListener):
 		self.position = (x, y)
 		self.target = (x, y)
 		self.next_target = (x, y)
-		self._instance = game.main.game.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.game.entities.registerInstance(self))
+		self._instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(self._instance)
 
 		self.name = ""
@@ -47,7 +47,7 @@ class Ship(fife.InstanceActionListener):
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position[0] + self.position[0] - self.last_position[0], self.position[1] + self.position[1] - self.last_position[1], 0))
 		self._instance.act('default', location, True)
-		game.main.game.view.cam.refresh()
+		game.main.session.view.cam.refresh()
 
 	def start(self):
 		pass
@@ -71,7 +71,7 @@ class Ship(fife.InstanceActionListener):
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
 			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
-			game.main.game.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
+			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
 
 	def move_tick(self):
 		print 'tick'
@@ -98,4 +98,4 @@ class Ship(fife.InstanceActionListener):
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
 			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
-			game.main.game.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
+			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)

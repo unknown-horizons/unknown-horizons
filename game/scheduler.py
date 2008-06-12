@@ -28,7 +28,7 @@ class Scheduler(object):
 	def __init__(self):
 		self.schedule = {}
 		self.cur_tick = 0
-		game.main.game.timer.add_call(self.tick)
+		game.main.session.timer.add_call(self.tick)
 
 	def __del__(self):
 		print 'deconstruct',self

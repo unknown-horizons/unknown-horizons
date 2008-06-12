@@ -61,10 +61,10 @@ class IngameGui(fife.IWidgetListener):
 		self.toggle_visible('main')
 		self.gui['main'].mapEvents({
 			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
-			'zoomIn' : game.main.game.view.zoom_in,
-			'zoomOut' : game.main.game.view.zoom_out,
-			'rotateRight' : game.main.game.view.rotate_right,
-			'rotateLeft' : game.main.game.view.rotate_left,
+			'zoomIn' : game.main.session.view.zoom_in,
+			'zoomOut' : game.main.session.view.zoom_out,
+			'rotateRight' : game.main.session.view.rotate_right,
+			'rotateLeft' : game.main.session.view.rotate_left,
 		})
 
 	def __del__(self):
@@ -96,10 +96,10 @@ class IngameGui(fife.IWidgetListener):
 		if widget == None:
 			return
 		if widget.name == 'build': game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build')
-		elif widget.name == 'zoomIn': game.main.game.view.zoom_in
-		elif widget.name == 'zoomOut': game.main.game.view.zoom_out
-		elif widget.name == 'rotateLeft': game.main.game.view.rotate_left
-		elif widget.name == 'rotateRight': game.main.game.view.rotate_right
+		elif widget.name == 'zoomIn': game.main.session.view.zoom_in
+		elif widget.name == 'zoomOut': game.main.session.view.zoom_out
+		elif widget.name == 'rotateLeft': game.main.session.view.rotate_left
+		elif widget.name == 'rotateRight': game.main.session.view.rotate_right
 		elif widget.name == 'foundSettelmentButton': self._ship_build
 		elif widget.name == 'servicesTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 0)
 		elif widget.name == 'residentsTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 1)
@@ -121,8 +121,8 @@ class IngameGui(fife.IWidgetListener):
 
 	def _ship_build(self):
 		"""Calls the Games build_object class."""
-		game.main.game.selected_instance._instance.say('')
-		game.main.game.cursor = BuildingTool(1, game.main.game.selected_instance)
+		game.main.session.selected_instance._instance.say('')
+		game.main.session.cursor = BuildingTool(1, game.main.session.selected_instance)
 
 	def toggle_visible(self, guiname):
 		"""Toggles whether a gui is visible or not.

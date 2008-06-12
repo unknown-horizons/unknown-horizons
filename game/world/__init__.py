@@ -61,7 +61,7 @@ class World(object):
 						continue
 					break
 				else: #found no instance at x,y at any island
-					self.grounds.append(game.main.game.entities.grounds[int(self.properties.get('default_ground', 13))](x, y))
+					self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 13))](x, y))
 		print "done."
 
 		#setup players
@@ -70,8 +70,8 @@ class World(object):
 
 		#add ship
 		self.ships = []
-		self.ships.append(game.main.game.entities.units[1](25, 25))
-		self.ships.append(game.main.game.entities.units[1](29, 25))
+		self.ships.append(game.main.session.entities.units[1](25, 25))
+		self.ships.append(game.main.session.entities.units[1](29, 25))
 
 		self.buildings = []
 
