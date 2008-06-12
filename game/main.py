@@ -40,7 +40,7 @@ def start():
 	settings.addCategorys('sound')
 	settings.sound.setDefaults(enabled = True)
 	settings.addCategorys('network')
-	settings.network.setDefaults(port = 62666, favorites = [], url_servers = 'http://master.openanno.org/servers', url_register = 'http://master.openanno.org/register?port=%s', favorites = [])
+	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_register = 'http://master.openanno.org/register?port=%s', favorites = [])
 
 	#init fife
 	fife = Fife()
