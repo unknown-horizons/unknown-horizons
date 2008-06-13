@@ -23,6 +23,7 @@ import time
 import socket
 import select
 import pickle
+import struct
 import game.main
 from game.packets import *
 
@@ -34,6 +35,7 @@ class Socket(object):
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 		self._socket.bind(('', port))
 		self.port = self._socket.getsockname()[1]
+		self.buffers = {}
 
 	def __del__(self):
 		self._socket.close()
@@ -42,6 +44,7 @@ class Socket(object):
 		game.main.fife.pump.remove(self._pump)
 
 	def _pump(self):
+		#a packet is: OA<len><data>
 		while 1:
 			read, write, error = select.select([self._socket], [], [], 0)
 			if len(read) == 0:
@@ -51,12 +54,31 @@ class Socket(object):
 			except socket.error:
 				continue
 			if len(data) > 0:
-				packet = pickle.loads(data)
-				packet.address, packet.port = address
-				self.receive(packet)
+				self.buffers[address] = (self.buffers[address]  + data) if address in self.buffers else data
+			else:
+				print 'a'
+				continue
+			if self.buffers[address][0:2] != 'OA':
+				del self.buffers[address]
+				print 'b'
+				continue
+			if len(self.buffers[address]) < 6:
+				print 'c'
+				continue
+			if struct.unpack('I', self.buffers[address][2:6])[0] + 6 > len(self.buffers[address]):
+				print 'd'
+				continue
+			data = self.buffers[address][6:6 + struct.unpack('I', self.buffers[address][2:6])[0]]
+			self.buffers[address] = self.buffers[address][6 + struct.unpack('I', self.buffers[address][2:6])[0]:]
+			if len(self.buffers[address]) == 0:
+				del self.buffers[address]
+			packet = pickle.loads(data)
+			packet.address, packet.port = address
+			self.receive(packet)
 
 	def send(self, packet):
-		self._socket.sendto(pickle.dumps(packet), (packet.address, packet.port))
+		data = pickle.dumps(packet)
+		self._socket.sendto('OA' + struct.pack('I',len(data)) + data, (packet.address, packet.port))
 
 	def receive(self, packet):
 		pass
