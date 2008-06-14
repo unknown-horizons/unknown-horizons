@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # ###################################################
 # Copyright (C) 2008 The OpenAnno Team
 # team@openanno.org
@@ -19,38 +21,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class Packet(object):
-	def __init__(self, address, port):
-		self.address, self.port = str(address), int(port)
+from game.network import Socket
+from game.packets import *
 
-class TickPacket(Packet):
-	def __init__(self, address, port, tick, commands):
-		super(TickPacket, self).__init__(address, port)
-		self.tick = tick
-		self.commands = commands
+def receive(packet):
+	if isinstance(packet, QueryPacket):
+		socket.send(InfoPacket(packet.address, packet.port, 'demo', 2, 0, 8))
 
-class QueryPacket(Packet):
-	pass
-
-class ConnectPacket(Packet):
-	pass
-
-class MasterRegisterPacket(Packet):
-	pass
-
-class MasterServerListQueryPacket(Packet):
-	pass
-
-class MasterServerListAnswerPacket(Packet):
-	pass
-
-class MasterVersionPacket(Packet):
-	pass
-
-class MasterRegisterPacket(Packet):
-	pass
-
-class InfoPacket(Packet):
-	def __init__(self, address, port, map, players, bots, maxplayers):
-		super(InfoPacket, self).__init__(address, port)
-		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers
+socket = Socket(62666)
+socket.receive = receive
+socket._pump(True)

@@ -24,12 +24,16 @@ import socket
 import select
 import pickle
 import struct
-import game.main
+import sys
 from game.packets import *
+
+if sys.argv[0].lower().endswith('openanno.py'):
+	import game.main
 
 class Socket(object):
 	def __init__(self, port = 0):
-		game.main.fife.pump.append(self._pump)
+		if sys.argv[0].lower().endswith('openanno.py'):
+			game.main.fife.pump.append(self._pump)
 		self._socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_UDP)
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
@@ -41,12 +45,13 @@ class Socket(object):
 		self._socket.close()
 
 	def end(self):
-		game.main.fife.pump.remove(self._pump)
+		if sys.argv[0].lower().endswith('openanno.py'):
+			game.main.fife.pump.remove(self._pump)
 
-	def _pump(self):
+	def _pump(self, forever = False):
 		#a packet is: OA<len><data>
 		while 1:
-			read, write, error = select.select([self._socket], [], [], 0)
+			read, write, error = select.select([self._socket], [], [], *([] if forever else [0]))
 			if len(read) == 0:
 				break
 			try:

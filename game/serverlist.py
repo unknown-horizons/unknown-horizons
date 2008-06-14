@@ -104,6 +104,11 @@ class ServerList(object):
 			if server.address == packet.address and server.port == packet.port:
 				server.timeLastResponse = time.time()
 				server.ping = int(((server.timeLastResponse - server.timeLastQuery) * 1000) + 0.5)
+				#try except shouldnt be needed, have to fix the master server
+				try:
+					server.map, server.players, server.bots, server.maxplayers = packet.map, packet.players, packet.bots, packet.maxplayers
+				except:
+					pass
 				self.changed()
 
 	def changed(self):

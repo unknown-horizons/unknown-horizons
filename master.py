@@ -21,3 +21,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from game.network import Socket
+from game.packets import *
+
+def receive(packet):
+	if isinstance(packet, MasterRegisterPacket):
+		pass
+	elif isinstance(packet, MasterServerListQueryPacket):
+		socket.send(MasterServerListAnswerPacket(packet.address,packet.port))
+	elif isinstance(packet, MasterVersionPacket):
+		pass
+
+socket = Socket(62666)
+socket.receive = receive
+socket._pump(True)
