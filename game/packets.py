@@ -32,6 +32,11 @@ class TickPacket(Packet):
 class QueryPacket(Packet):
 	pass
 
+class ChatPacket(Packet):
+	def __init__(self, address, port, text):
+		super(ChatPacket, self).__init__(address, port)
+		self.text = text
+
 class ConnectPacket(Packet):
 	pass
 
@@ -48,7 +53,8 @@ class MasterVersionPacket(Packet):
 	pass
 
 class MasterRegisterPacket(Packet):
-	pass
+	def __init__(self, port):
+		self.myport = port
 
 class InfoPacket(Packet):
 	def __init__(self, address, port, map, players, bots, maxplayers):

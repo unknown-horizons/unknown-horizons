@@ -88,51 +88,123 @@ class Socket(object):
 	def receive(self, packet):
 		pass
 
-class NetworkClient(object):
+class Player(object):
+	def __init__(self, name):
+		self.name = name
+		self.color, self.team = None, None
+
+class ClientConnection(object):
 	connectTimeout = 5
 
 	def __init__(self, address, port):
+		self.players = {}
+
 		self._socket = Socket()
-		self._socket.receive = self.onPacket
-		game.main.fife.pump.append(self._pump)
+		self._socket.receive = self._receive
 
 		self.address, self.port = address, port
 		self.reconnect()
 
+	def _pump(self):
+		if self.connectTime + self.__class__.connectTimeout <= time.time():
+			self.onTimeout()
+
+	def _receive(self, packet):
+		if isinstance(packet, ConnectedPacket):
+			self.onConnected(packet.players, packet.map, packet.settings)
+
+
 	def reconnect(self):
-		self._socket.send(ConnectPacket(self.address, self.port))
+		if self.state not in (self.__class__.STATE_CONNECTING, self.__class__.STATE_DISCONNECTED):
+			self.doDisconnect()
+		if self._pump not in game.main.fife.pump:
+			game.main.fife.pump.append(self._pump)
+		self.send(ConnectPacket(self.address, self.port))
 		self.connectTime = time.time()
+		self.state = self.__class__.STATE_CONNECTING
 
 	def end(self):
 		self.socket.receive = lambda : None
 		if self._pump in game.main.fife.pump:
 			game.main.fife.pump.remove(self._pump)
 
-	def _pump(self):
-		if self.connectTime + self.__class__.connectTimeout <= time.time():
-			self.onTimeout()
-
 	def send(self, packet):
-		self._socket.send(packet)
+		if packet.address == None and packet.port == None:
+			for packet.address, packet.port in self.players:
+				if packet.address == None and packet.port == None:
+					self._receive(packet)
+				else:
+					game.main.connection.send(packet)
+		else:
+			game.main.connection.send(packet)
+
+
+	def doChat(self, text):
+		self.send(ChatPacket(text))
+
+	def doDisconnect(self):
+		self.send(DisconnectPacket(self.address, self.port))
+
+	def doPlayerModify(self, **settings):
+		for name, value in settings.items():
+			self.send(PlayerModify(name, value))
+
 
 	def onTimeout(self):
 		pass
 
-	def onPacket(self, packet):
+	def onConnected(self, players, map, settings):
 		pass
 
-class NetworkServer(NetworkClient):
+	def onDisconnect(self):
+		pass
+
+	def onChat(self, player, text):
+		pass
+
+	def onPlayerJoin(self, player):
+		pass
+
+	def onPlayerPart(self, player):
+		pass
+
+	def onPlayerModify(self, player):
+		pass
+
+	def onServerSetting(self, settings):
+		pass
+
+	def onServerMap(self, map):
+		pass
+
+	def onTickPacket(self, tick, commands):
+		pass
+
+class ServerConnection(object):
+	registerTimeout = 120
+
 	def __init__(self, port = None):
+		if self._pump not in game.main.fife.pump:
+			game.main.fife.pump.append(self._pump)
 		self._socket = Socket(port or game.main.settings.network.port)
 		self._socket.receive = self.onPacket
 
 		self.register()
 
+	def _pump(self):
+		if self.registerTime + self.__class__.registerTimeout <= time.time():
+			self.register()
+
 	def register(self):
-		self._socket.send(RegisterPacket(self._socket.port))
+		self._socket.send(MasterRegisterPacket(self._socket.port))
+		self.registerTime = time.time()
 
 	def end(self):
 		self._socket.receive = lambda : None
 
-class ServerLobby(object):
-	pass
+	def send(self, packet):
+		if packet.address == None and packet.port == None:
+			for packet.address, packet.port in self.players:
+				game.main.connection.send(packet)
+		else:
+			game.main.connection.send(packet)

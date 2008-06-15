@@ -30,7 +30,7 @@ from game.gui.mainlistener import MainListener
 from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 
 def start():
-	global db, settings, fife, gui, session
+	global db, settings, fife, gui, session, connection
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -50,6 +50,7 @@ def start():
 		fife.bgsound.play()
 
 	mainlistener = MainListener()
+	connection = None
 	session = None
 	gui = None
 
