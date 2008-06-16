@@ -23,7 +23,7 @@ import urllib
 import re
 import game.main
 from game.network import Socket
-from game.packets import QueryPacket
+from game.packets import QueryPacket, InfoPacket
 import time
 
 class Server(object):
@@ -100,15 +100,13 @@ class ServerList(object):
 		self._socket.send(QueryPacket(address, port))
 
 	def _response(self, packet):
+		if not isinstance(packet, InfoPacket):
+			return
 		for server in self:
 			if server.address == packet.address and server.port == packet.port:
 				server.timeLastResponse = time.time()
 				server.ping = int(((server.timeLastResponse - server.timeLastQuery) * 1000) + 0.5)
-				#try except shouldnt be needed, have to fix the master server
-				try:
-					server.map, server.players, server.bots, server.maxplayers = packet.map, packet.players, packet.bots, packet.maxplayers
-				except:
-					pass
+				server.map, server.players, server.bots, server.maxplayers = packet.map, packet.players, packet.bots, packet.maxplayers
 				self.changed()
 
 	def changed(self):
@@ -172,6 +170,8 @@ class LANServerList(ServerList):
 		self.lastUpdate = time.time()
 
 	def _response(self, packet):
+		if not isinstance(packet, InfoPacket):
+			return
 		for server in self:
 			if server.address == packet.address and server.port == packet.port:
 				break
