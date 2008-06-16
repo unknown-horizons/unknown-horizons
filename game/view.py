@@ -56,7 +56,7 @@ class View(object):
 		for r in ('CoordinateRenderer', 'GridRenderer', 'QuadTreeRenderer'):
 			self.renderer[r] = self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
-			self.renderer[r].addActiveLayer(self.layers[1])
+			self.renderer[r].addActiveLayer(self.layers[0])
 
 	def __del__(self):
 		print 'deconstruct',self

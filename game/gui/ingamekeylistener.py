@@ -49,9 +49,9 @@ class IngameKeyListener(fife.IKeyListener):
 		elif keyval == fife.Key.DOWN:
 			if not was: game.main.session.view.autoscroll(0, 25)
 		elif keystr == 'c':
-			game.main.session.view.renderer['CoordinateRenderer'].setEnabled(not r.isEnabled())
+			game.main.session.view.renderer['CoordinateRenderer'].setEnabled(not game.main.session.view.renderer['CoordinateRenderer'].isEnabled())
 		elif keystr == 't':
-			game.main.session.view.renderer['GridRenderer'].setEnabled(not r.isEnabled())
+			game.main.session.view.renderer['GridRenderer'].setEnabled(not game.main.session.view.renderer['GridRenderer'].isEnabled())
 		else:
 			return
 		evt.consume()

@@ -71,8 +71,21 @@ class BuildingTool(CursorTool):
 			if distance > 10:
 				return False
 
-		if game.main.session.world.get_island(position.x, position.y) is None:
+		print position.x, position.y
+		print self._class.size[0], self._class.size[1]
+		island = game.main.session.world.get_island(position.x, position.y)
+		if island:
+			for i in range(0, self._class.size[0]):
+				startx = position.x - self._class.size[0]/2 + i
+				for b in range(0, self._class.size[1]):
+					starty = position.y - self._class.size[1]/2 + b
+					print 'Checking:', startx, ":", starty
+					if game.main.session.world.get_island(startx, starty, island) is None:
+						return False
+		else:
 			return False
+
+
 		return True
 
 	def mouseMoved(self,  evt):

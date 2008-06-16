@@ -76,27 +76,31 @@ class World(object):
 
 		self.buildings = []
 
-	def get_island(self, x, y):
+	def get_island(self, x, y, island=None):
 		"""Returns the island for that coordinate, if non is found, returns None.
 		@param x: int x position.
 		@param y: int y position. """
-		for i in self.islands:
-			for tile in self.islands[i].grounds:
+		if island:
+			for tile in self.islands[island].grounds:
 				if tile.x == x and tile.y == y:
-					return i
+					return island
+		else:
+			for i in self.islands:
+				for tile in self.islands[i].grounds:
+					if tile.x == x and tile.y == y:
+						return i
 		return None
-	
-	def get_settlement(self, x, y):
+
+	def get_settlement(self, x, y, island):
 		"""Returns the settlement for that coordinate, if non is found, returns None.
 		@param x: int x position.
 		@param y: int y position. """
-		for i in self.islands:
-			for settlement in self.islands[i].settlements:
-				for tile in self.islands[i].settlements[settlement]:
-					if tile.x == x and tile.y == y:
-						return settlement
+		for settlement in self.islands[island].settlements:
+			for tile in self.islands[island].settlements[settlement]:
+				if tile.x == x and tile.y == y:
+					return settlement
 		return None
-		
+
 	def __del__(self):
 		print 'deconstruct',self
 
