@@ -41,7 +41,7 @@ class BuildingTool(CursorTool):
 
 
 	def __init__(self, building_id, player_id, ship = None):
-		print "created buildingtool"
+		print "Created buildingtool."
 		super(BuildingTool, self).__init__()
 
 		self.player_id = player_id
@@ -121,7 +121,7 @@ class BuildingTool(CursorTool):
 			if self._buildCheck(mapcoord):
 				if self.ship:
 					island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
-					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, 10, self.previewInstance))
+					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
 				else:
 					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
 				game.main.session.cursor = SelectionTool()

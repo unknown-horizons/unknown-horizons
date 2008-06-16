@@ -45,7 +45,7 @@ class Build(object):
 
 class Settle(object):
 	"""Command class that creates a warehouse and a settlement."""
-	def __init__(self, building, x, y, island_id, player, radius, instance = None):
+	def __init__(self, building, x, y, island_id, player, instance = None):
 		"""Create the command
 		@param building: building class that is to be built
 		@param x, y: int coordinates where the object is to be built.
@@ -58,7 +58,7 @@ class Settle(object):
 		self.island_id = island_id
 		self.x, self.y = int(x), int(y)
 		self.player = int(player.id)
-		self.radius = radius
+		self.radius = building.radius
 		self.instance = None if instance == None else instance.getId()
 
 	def __call__(self, issuer):
