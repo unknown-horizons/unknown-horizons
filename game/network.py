@@ -58,28 +58,29 @@ class Socket(object):
 				data, address = self._socket.recvfrom(1024)
 			except socket.error:
 				continue
-			if len(data) > 0:
-				self.buffers[address] = (self.buffers[address]  + data) if address in self.buffers else data
-			else:
-				print 'a'
+			if len(data) == 0:
 				continue
-			if self.buffers[address][0:2] != 'OA':
-				del self.buffers[address]
-				print 'b'
-				continue
-			if len(self.buffers[address]) < 6:
-				print 'c'
-				continue
-			if struct.unpack('I', self.buffers[address][2:6])[0] + 6 > len(self.buffers[address]):
-				print 'd'
-				continue
-			data = self.buffers[address][6:6 + struct.unpack('I', self.buffers[address][2:6])[0]]
-			self.buffers[address] = self.buffers[address][6 + struct.unpack('I', self.buffers[address][2:6])[0]:]
-			if len(self.buffers[address]) == 0:
-				del self.buffers[address]
-			packet = pickle.loads(data)
-			packet.address, packet.port = address
-			self.receive(packet)
+			self.buffers[address] = (self.buffers[address]  + data) if address in self.buffers else data
+			while 1:
+				if self.buffers[address][0:2] != 'OA':
+					del self.buffers[address]
+					break
+				if len(self.buffers[address]) < 6:
+					break
+				length = struct.unpack('I', self.buffers[address][2:6])[0]
+				if length + 6 > len(self.buffers[address]):
+					break
+				data = self.buffers[address][6:6 + length]
+				self.buffers[address] = self.buffers[address][6 + length:]
+				try:
+					packet = pickle.loads(data)
+				except pickle.PickleError:
+					continue
+				packet.address, packet.port = address
+				self.receive(packet)
+				if len(self.buffers[address]) == 0:
+					del self.buffers[address]
+					break
 
 	def send(self, packet):
 		data = pickle.dumps(packet)
