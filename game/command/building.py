@@ -45,20 +45,22 @@ class Build(object):
 
 class Settle(object):
 	"""Command class that creates a warehouse and a settlement."""
-	def __init__(self, building, x, y, island_id, player, instance = None):
+	def __init__(self, building, x, y, island_id, player, radius, instance = None):
 		"""Create the command
 		@param building: building class that is to be built
 		@param x, y: int coordinates where the object is to be built.
 		@param island_id: int id of the island teh object is to be built on.
 		@param player: int player id of the player that creates the new settlement.
+		@param radius: int radius of the area of influence of the new settlement.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		"""
 		self.building = building.id
 		self.island_id = island_id
 		self.x, self.y = int(x), int(y)
 		self.player = int(player.id)
+		self.radius = radius
 		self.instance = None if instance == None else instance.getId()
 
 	def __call__(self, issuer):
 		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
-		game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, 10, self.player)
+		game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, self.radius, self.player)

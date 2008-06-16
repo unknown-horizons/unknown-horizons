@@ -76,7 +76,7 @@ class Island(object):
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(game.main.session.world.players[player])
 		self.settlements.append(settlement)
-		print radius**2
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			if abs((tile.x-x)**2-(tile.y-y)**2) <= radius**2:
 				tile.settlement = settlement
+		print "New settlement created at (%i:%i) for player: %s" % (x, y, game.main.session.world.players[player].name)

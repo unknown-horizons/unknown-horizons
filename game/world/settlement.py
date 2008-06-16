@@ -26,21 +26,7 @@ class Settlement(object):
 		"""
 		@param owner: player that owns the settlement
 		"""
-		print "settlement created"
 		self.name = 'foo' # TODO: add name generator here
 		self.owner = owner
 		self._inhabitants = 0
-		self.tiles = [] # List of tiles belonging to the settlement
 		self.buildings = [] # List of all the buildings belonging to the settlement
-
-	def add_inhabitants(self, num):
-		"""Increases the number of inhabitants by num
-		@param num: int number of inhabitants to be added
-		"""
-		self._inhabitants += num
-
-	def rem_inhabitants(self, num):
-		"""Decreases the number of inhabitants by num
-		@param num: int number of inhabitants to be removed
-		"""
-		self._inhabitants -= num
