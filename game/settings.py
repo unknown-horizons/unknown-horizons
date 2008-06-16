@@ -33,12 +33,12 @@ class Setting(object):
 			import config
 			for option in config.__dict__:
 				if option.startswith(name) and '_' not in option[len(name):]:
-					setattr(self, option[len(name):], getattr(config, option))
+					self.__dict__[option[len(name):]] = getattr(config, option)
 		except ImportError:
 			pass
 		for (option, value) in game.main.db("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", len(name) + 1, len(name), name, len(name) + 1):
 			if not self.__dict__.has_key(option):
-				setattr(self, option, simplejson.loads(value))
+				self.__dict__[option] = simplejson.loads(value)
 
 	def __getattr__(self, name):
 		assert(not name.startswith('_'))
