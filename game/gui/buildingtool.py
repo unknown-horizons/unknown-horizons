@@ -38,7 +38,7 @@ class BuildingTool(CursorTool):
 	@param ship: If building from a ship, restrict to range of ship
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False
 	"""
-	
+
 
 	def __init__(self, building_id, player_id, ship = None):
 		print "created buildingtool"
@@ -70,6 +70,9 @@ class BuildingTool(CursorTool):
 			distance = (shippos - position).length()
 			if distance > 10:
 				return False
+
+		if game.main.session.world.get_island(position.x, position.y) is None:
+			return False
 		return True
 
 	def mouseMoved(self,  evt):
@@ -102,7 +105,7 @@ class BuildingTool(CursorTool):
 			mapcoord.x = int(mapcoord.x)
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
-			if self._buildCheck(mapcoord) and game.main.session.world.get_island(mapcoord.x, mapcoord.y) is not None:
+			if self._buildCheck(mapcoord):
 				if self.ship:
 					island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
 					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island, self.player_id, self.previewInstance))
