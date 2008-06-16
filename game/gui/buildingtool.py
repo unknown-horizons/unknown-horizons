@@ -77,7 +77,7 @@ class BuildingTool(CursorTool):
 				startx = position.x - self._class.size[0]/2 + i
 				for b in range(0, self._class.size[1]):
 					starty = position.y - self._class.size[1]/2 + b
-					if game.main.session.world.get_island(startx, starty, island) is None:
+					if not game.main.session.world.islands[island].contains_tile_at(startx, starty):
 						return False
 		else:
 			return False
