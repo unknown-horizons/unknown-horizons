@@ -43,3 +43,26 @@ class Island(object):
 
 	def save(self, db = 'savegame'):
 		id = game.main.db(("INSERT INTO %s.island (x, y, file) VALUES (?, ?, ?)" % db), self.x, self.y, self.file).id
+
+	def contains_tile_at(self, x, y):
+		"""Returns whether a tile is on island or not.
+		@param x: int x position of the tile.
+		@param y: int y position of the tile.
+		@param island: id of the island that is to be checked.
+		@return: bool True if tile is on island, else false."""
+		for tile in self.grounds:
+				if tile.x == x and tile.y == y:
+					return True
+		return False
+
+	def get_settlement_at_position(self, x, y):
+		"""Returns the settlement for that coordinate, if non is found, returns None.
+		@param x: int x position.
+		@param y: int y position.
+		@param island: island that is to be searched.
+		@return: int id of the settlement"""
+		for settlement in self.settlements:
+			for tile in self.settlements[settlement]:
+				if tile.x == x and tile.y == y:
+					return settlement
+		return None
