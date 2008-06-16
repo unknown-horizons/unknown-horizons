@@ -58,7 +58,7 @@ class Settle(object):
 		self.x, self.y = int(x), int(y)
 		self.player = int(player.id)
 		self.instance = None if instance == None else instance.getId()
-		
+
 	def __call__(self, issuer):
 		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
-		game.main.session.world.islands[self.island_id].settlements.append(Settlement(game.main.session.world.players[self.player]))
+		game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, 10, self.player)

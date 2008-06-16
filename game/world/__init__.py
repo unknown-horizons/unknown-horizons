@@ -83,7 +83,7 @@ class World(object):
 		for i in self.islands:
 			for tile in self.islands[i].grounds:
 				if tile.x == x and tile.y == y:
-					return i
+					return self.islands[i]
 		return None
 
 	def __del__(self):
