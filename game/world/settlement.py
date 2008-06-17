@@ -30,3 +30,16 @@ class Settlement(object):
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = [] # List of all the buildings belonging to the settlement
+		self.inventory = {}
+		self.inventory_size = 30
+
+	def alter_inventory(self, ressource, num):
+		"""Changes the invertory ressources by the factor num
+		@param ressource: string representing the ressource
+		@param num: int how the ressource is to be changed. (Can be 2 if you want to add 2 or could be -4 if you wanted to remove 4)
+		"""
+		self.inventory[ressource] += num
+		if self.inventory[ressource] > self.inventory_size:
+			self.inventory = self.inventory_size
+		elif self.inventory[ressource] < 0:
+			raise Exception, 'Removed more from the inventory than was in it.'
