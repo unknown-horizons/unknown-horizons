@@ -31,6 +31,10 @@ class Settlement(object):
 		self._inhabitants = 0
 		self.buildings = [] # List of all the buildings belonging to the settlement
 		self.inventory = {}
+		self.inventory['wood'] = 5
+		self.inventory['tools'] = 6
+		self.inventory['bricks'] = 7
+		self.inventory['food'] = 8
 		self.inventory_size = 30
 
 	def alter_inventory(self, ressource, num):

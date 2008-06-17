@@ -74,7 +74,7 @@ class World(object):
 		self.ships.append(game.main.session.entities.units[1](25, 25))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 
-		self.buildings = []
+		game.main.session.ingame_gui.status_set("gold", str(self.player.gold))
 
 	def get_island(self, x, y,):
 		"""Returns the island for that coordinate, if non is found, returns None.

@@ -35,6 +35,7 @@ class SelectionTool(CursorTool):
 	def __init__(self):
 		super(SelectionTool, self).__init__()
 		self.lastScroll = [0, 0]
+		self.lastmoved = fife.ExactModelCoordinate()
 
 	def __del__(self):
 		super(SelectionTool, self).__del__()
@@ -79,8 +80,25 @@ class SelectionTool(CursorTool):
 		evt.consume()
 
 	def mouseMoved(self, evt):
-		# Mouse scrolling
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
+		# Status menu update
+		current = game.main.session.view.cam.toMapCoordinates(mousepoint, False)
+		if abs((current.x-self.lastmoved.x)**2-(current.y-self.lastmoved.y)**2) >= 4**2:
+			self.lastmoved = current
+			island = game.main.session.world.get_island(int(current.x), int(current.y))
+			if island:
+				settlement = island.get_settlement_at_position(int(current.x), int(current.y))
+				if settlement:
+					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory['wood']))
+					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory['tools']))
+					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory['bricks']))
+					game.main.session.ingame_gui.status_set('food', str(settlement.inventory['food']))
+					game.main.session.ingame_gui.gui['status'].show()
+				else:
+					game.main.session.ingame_gui.gui['status'].hide()
+			else:
+				game.main.session.ingame_gui.gui['status'].hide()
+		# Mouse scrolling
 		old = self.lastScroll
 		new = [0, 0]
 		if mousepoint.x < 50:
