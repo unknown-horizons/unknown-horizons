@@ -40,6 +40,8 @@ class Island(object):
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
 			ground = game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y)
 			ground.settlement = None
+			ground.blocked = False
+			ground.object = None
 			self.grounds.append(ground)
 		game.main.db("detach island")
 		self.settlements = []
@@ -47,16 +49,18 @@ class Island(object):
 	def save(self, db = 'savegame'):
 		id = game.main.db(("INSERT INTO %s.island (x, y, file) VALUES (?, ?, ?)" % db), self.x, self.y, self.file).id
 
-	def contains_tile_at(self, x, y):
+	def get_tile(self, x, y):
 		"""Returns whether a tile is on island or not.
 		@param x: int x position of the tile.
 		@param y: int y position of the tile.
 		@param island: id of the island that is to be checked.
-		@return: bool True if tile is on island, else false."""
+		@return: tile instanze if tile is on island, else None."""
 		for tile in self.grounds:
 				if tile.x == x and tile.y == y:
-					return True
-		return False
+					return tile
+		return None
+
+
 
 	def get_settlement_at_position(self, x, y):
 		"""Returns the settlement for that coordinate, if non is found, returns None.
@@ -80,3 +84,24 @@ class Island(object):
 			if abs((tile.x-x)**2-(tile.y-y)**2) <= radius**2:
 				tile.settlement = settlement
 		print "New settlement created at (%i:%i) for player: %s" % (x, y, game.main.session.world.players[player].name)
+
+	def add_building(self, x, y, building, player):
+		"""Adds a building to the island at the posititon x, y with player as the owner.
+		@param x,y: int position used as center for the area of influence
+		@param building: Building class instance of the building that is to be added.
+		@param player: int id of the player that owns the settlement"""
+		settlement = self.get_settlement_at_position(x, y)
+		if building.size[0] == 1 and building.size[1] == 1:
+			tile = self.get_tile(x, y)
+			tile.blocked = True 	# Set tile blocked
+			tile.object = building 	# Set tile's object to the building
+		else:
+			for i in range(0, building.size[0]):
+				startx = x - building.size[0]/2 + i
+				for b in range(0, building.size[1]):
+					starty = y - building.size[1]/2 + b
+					tile = self.get_tile(startx, starty)
+					tile.blocked = True 	# Set tile blocked
+					tile.object = building 	# Set tile's object to the building
+		settlement.buildings.append(building)
+		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, game.main.session.world.players[player].name, settlement.name)

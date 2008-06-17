@@ -77,15 +77,15 @@ class BuildingTool(CursorTool):
 				startx = position.x - self._class.size[0]/2 + i
 				for b in range(0, self._class.size[1]):
 					starty = position.y - self._class.size[1]/2 + b
-					if not island.contains_tile_at(startx, starty):
+					tile = island.get_tile(startx, starty)
+					if not tile or tile.blocked:
 						return False
 		else:
 			return False
 
-		if self.ship: #NOTE: added here for performance reasons. should later be replaced by a settlement test.
-			if island.get_settlement_at_position(position.x, position.y):
+		if not island.get_settlement_at_position(position.x, position.y):
+			if not self.ship:
 				return False
-
 		return True
 
 	def mouseMoved(self,  evt):
@@ -119,10 +119,11 @@ class BuildingTool(CursorTool):
 			mapcoord.y = int(mapcoord.y)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
+				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
 				if self.ship:
-					island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
 					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
 				else:
-					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance))
+					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
+					game.main.session.view.renderer['InstanceRenderer'].removeAllOutlines()
 				game.main.session.cursor = SelectionTool()
 		evt.consume()

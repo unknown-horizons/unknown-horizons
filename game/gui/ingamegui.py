@@ -48,6 +48,9 @@ class IngameGui(fife.IWidgetListener):
 			'streetsTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 4),
 			'specialTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 5)
 		})
+		self.gui['build_tab1'].mapEvents({
+			'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
+		})
 		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
 		self.gui['chat'] = game.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
 		self.gui['cityinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_cityinfo.xml')
@@ -123,6 +126,11 @@ class IngameGui(fife.IWidgetListener):
 		"""Calls the Games build_object class."""
 		game.main.session.selected_instance._instance.say('')
 		game.main.session.cursor = BuildingTool(1, game.main.session.world.player, game.main.session.selected_instance)
+
+	def _build(self, building_id):
+		"""Calls the games buildingtool class for the building_id.
+		@param building_id: int with the building id that is to be built."""
+		game.main.session.cursor = BuildingTool(building_id, game.main.session.world.player)
 
 	def toggle_visible(self, guiname):
 		"""Toggles whether a gui is visible or not.

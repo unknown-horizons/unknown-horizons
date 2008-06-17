@@ -25,14 +25,18 @@ from game.world.settlement import Settlement
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, instance = None):
+	def __init__(self, building, x, y, island_id, player, instance = None):
 		"""Create the command
 		@param building: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
+		@param island_id: the island that the building is to be built on.
+		@param player: Player instance that builds the building.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		"""
 		self.building = building.id
+		self.island_id = island_id
 		self.instance = None if instance == None else instance.getId()
+		self.player = player.id
 		self.x = int(x)
 		self.y = int(y)
 
@@ -40,7 +44,8 @@ class Build(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
+		building = game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
+		game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, self.player)
 		# TODO: Add building to players/settlements
 
 class Settle(object):
@@ -62,5 +67,6 @@ class Settle(object):
 		self.instance = None if instance == None else instance.getId()
 
 	def __call__(self, issuer):
-		game.main.session.world.buildings.append(game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None))
+		building = game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
 		game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, self.radius, self.player)
+		game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, self.player)
