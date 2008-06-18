@@ -39,6 +39,7 @@ class SelectionTool(CursorTool):
 
 	def __del__(self):
 		super(SelectionTool, self).__del__()
+		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		print 'deconstruct',self
 
 	def select_unit(self):

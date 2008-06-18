@@ -141,14 +141,6 @@ class IngameGui(fife.IWidgetListener):
 		else:
 			self.gui[guiname].show()
 
-	def build_menu_show(self, num):
-		"""Shows the selected build menu
-		@param num: int with the menu id
-		"""
-		self.active_build.hide()
-		self.active_build = self.gui['build' + str(num)]
-		self.active_build.show()
-
 	def build_load_tab(self, num):
 		"""Loads a subcontainer into the build menu and changes the tabs background.
 		@param num: number representing the tab to load.
