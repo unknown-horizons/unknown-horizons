@@ -116,10 +116,10 @@ class BuildingTool(CursorTool):
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
 				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
+				game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self.previewInstance)
 				if self.ship:
 					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
 				else:
 					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
-					game.main.session.view.renderer['InstanceRenderer'].removeAllOutlines()
 				game.main.session.cursor = SelectionTool()
 		evt.consume()
