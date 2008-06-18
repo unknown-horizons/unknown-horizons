@@ -25,6 +25,7 @@ import sys
 import os
 
 def findFIFE():
+	global fife_path
 	try:
 		import config
 		_paths = [config.fife_path]
@@ -36,7 +37,7 @@ def findFIFE():
 	for p in _paths:
 		if p not in sys.path:
 			# check if we are in a fife dir...
-			for pe in [ p + '/' + a for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
+			for pe in [ os.path.abspath(p + '/' + a) for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
 				if not os.path.exists(pe):
 					break
 			else:
@@ -44,13 +45,14 @@ def findFIFE():
 				print "Found FIFE in:", fife_path
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				for pe in [ fife_path + '/' + a for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
+				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
 					if os.path.exists(pe):
 						sys.path.append(pe)
+				os.environ['PYTHONPATH'] = os.path.pathsep.join(os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ])
 
 				#add windows paths (<fife>/.)
-				os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ fife_path + '/' + a for a in ('.') ])
-				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ fife_path + '/' + a for a in ('.') ])
+				os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
 				break
 	else:
 		print 'FIFE was not found.'
@@ -58,11 +60,11 @@ def findFIFE():
 		exit()
 
 	try:
-		if not os.environ.get('LD_LIBRARY_PATH', '').startswith(fife_path):
+		if not os.environ.get('LD_LIBRARY_PATH', '').startswith(os.path.abspath(fife_path)):
 			try:
 				import fife
 			except ImportError, e:
-				os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ p + '/' + a for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
+				os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ os.path.abspath(p + '/' + a) for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
 				print "Restarting with proper LD_LIBRARY_PATH..."
 				args = [sys.executable] + sys.argv
 				os.execvp(args[0], args)
