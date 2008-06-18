@@ -99,8 +99,10 @@ class BuildingTool(CursorTool):
 		target_mapcoord.x = target_mapcoord.x - 1
 
 		can_build = self._buildCheck(target_mapcoord)
-		color = (0, 0,  255) if can_build else (255,  0,  0)
-		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
+		if can_build:
+			game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
+		else:
+			game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance,  255, 0, 0)
 
 		evt.consume()
 
@@ -116,7 +118,7 @@ class BuildingTool(CursorTool):
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
 				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
-				game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self.previewInstance)
+				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
 				if self.ship:
 					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
 				else:
