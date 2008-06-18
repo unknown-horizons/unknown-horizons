@@ -99,10 +99,8 @@ class BuildingTool(CursorTool):
 		target_mapcoord.x = target_mapcoord.x - 1
 
 		can_build = self._buildCheck(target_mapcoord)
-		if can_build:
-			game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
-		else:
-			game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance,  255, 0, 0)
+		color = (255, 255, 255) if can_build else (255, 0, 0)
+		game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance,  *color)
 
 		evt.consume()
 
