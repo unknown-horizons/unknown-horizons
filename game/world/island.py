@@ -63,7 +63,7 @@ class Island(object):
 
 
 	def get_settlement_at_position(self, x, y):
-		"""Returns the settlement for that coordinate, if non is found, returns None.
+		"""Returns the settlement for that coordinate, if none is found, returns None.
 		@param x: int x position.
 		@param y: int y position.
 		@param island: island that is to be searched.
@@ -81,7 +81,7 @@ class Island(object):
 		settlement = Settlement(game.main.session.world.players[player])
 		self.settlements.append(settlement)
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
-			if abs((tile.x-x)**2-(tile.y-y)**2) <= radius**2:
+			if abs((tile.x-x)**2+(tile.y-y)**2) <= radius**2:
 				tile.settlement = settlement
 		print "New settlement created at (%i:%i) for player: %s" % (x, y, game.main.session.world.players[player].name)
 

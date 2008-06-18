@@ -39,7 +39,6 @@ class BuildingTool(CursorTool):
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False
 	"""
 
-
 	def __init__(self, building_id, player_id, ship = None):
 		print "Created buildingtool."
 		super(BuildingTool, self).__init__()
@@ -83,10 +82,7 @@ class BuildingTool(CursorTool):
 		else:
 			return False
 
-		if not island.get_settlement_at_position(position.x, position.y):
-			if not self.ship:
-				return False
-		return True
+		return self.ship or island.get_settlement_at_position(position.x, position.y)
 
 	def mouseMoved(self,  evt):
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
@@ -100,13 +96,13 @@ class BuildingTool(CursorTool):
 		target_mapcoord.x = target_mapcoord.x + 1
 		l.setMapCoordinates(target_mapcoord)
 		self.previewInstance.setFacingLocation(l)
-		evt.consume()
+		target_mapcoord.x = target_mapcoord.x - 1
 
 		can_build = self._buildCheck(target_mapcoord)
-		if can_build: color = (255,  255,  0)
-		else: color = (255,  0,  0)
-
+		color = (0, 0,  255) if can_build else (255,  0,  0)
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self.previewInstance,  color[0],  color[1],  color[2],  5)
+
+		evt.consume()
 
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
