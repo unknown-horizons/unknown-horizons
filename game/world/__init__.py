@@ -76,6 +76,10 @@ class World(object):
 
 		game.main.session.ingame_gui.status_set("gold", str(self.player.gold))
 
+	def get_building(self, x, y):
+		i = self.get_island(x, y)
+		return None if i == None else i.get_building(x, y)
+
 	def get_island(self, x, y,):
 		"""Returns the island for that coordinate, if non is found, returns None.
 		@param x: int x position.

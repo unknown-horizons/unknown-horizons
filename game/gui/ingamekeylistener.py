@@ -21,6 +21,7 @@
 
 import fife
 import game.main
+from tearingtool import TearingTool
 
 class IngameKeyListener(fife.IKeyListener):
 	"""KeyListener Class to process key presses ingame"""
@@ -52,6 +53,8 @@ class IngameKeyListener(fife.IKeyListener):
 			game.main.session.view.renderer['CoordinateRenderer'].setEnabled(not game.main.session.view.renderer['CoordinateRenderer'].isEnabled())
 		elif keystr == 't':
 			game.main.session.view.renderer['GridRenderer'].setEnabled(not game.main.session.view.renderer['GridRenderer'].isEnabled())
+		elif keystr == 'x':
+			game.main.session.cursor = TearingTool()
 		else:
 			return
 		evt.consume()

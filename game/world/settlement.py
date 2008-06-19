@@ -47,3 +47,13 @@ class Settlement(object):
 			self.inventory = self.inventory_size
 		elif self.inventory[ressource] < 0:
 			raise Exception, 'Removed more from the inventory than was in it.'
+
+	def remove_building(self, building):
+		pass
+
+	def get_building(self, x, y):
+		for b in self.buildings:
+			if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
+				return b
+		else:
+			return None

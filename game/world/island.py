@@ -37,6 +37,7 @@ class Island(object):
 		game.main.db("attach ? as island", file)
 		self.width, self.height = game.main.db("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground")[0]
 		self.grounds = []
+		self.buildings = []
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
 			ground = game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y)
 			ground.settlement = None
@@ -60,7 +61,16 @@ class Island(object):
 					return tile
 		return None
 
-
+	def get_building(self, x, y):
+		s = self.get_settlement_at_position(x, y)
+		if s == None:
+			for b in self.buildings:
+				if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
+					return b
+			else:
+				return None
+		else:
+			return s.get_building(x, y)
 
 	def get_settlement_at_position(self, x, y):
 		"""Returns the settlement for that coordinate, if none is found, returns None.
@@ -85,6 +95,9 @@ class Island(object):
 				tile.settlement = settlement
 		print "New settlement created at (%i:%i) for player: %s" % (x, y, game.main.session.world.players[player].name)
 
+	def remove_building(self, building):
+		pass
+
 	def add_building(self, x, y, building, player):
 		"""Adds a building to the island at the posititon x, y with player as the owner.
 		@param x,y: int position used as center for the area of influence
@@ -103,5 +116,6 @@ class Island(object):
 					tile = self.get_tile(startx, starty)
 					tile.blocked = True 	# Set tile blocked
 					tile.object = building 	# Set tile's object to the building
+		building.island = self
 		settlement.buildings.append(building)
 		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, game.main.session.world.players[player].name, settlement.name)

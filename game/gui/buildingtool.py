@@ -103,7 +103,7 @@ class BuildingTool(NavigationTool):
 
 		can_build = self._buildCheck(target_mapcoord)
 		color = (255, 255, 255) if can_build else (255, 0, 0)
-		game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance,  *color)
+		game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance, *color)
 
 		evt.consume()
 

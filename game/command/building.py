@@ -48,6 +48,22 @@ class Build(object):
 		game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, self.player)
 		# TODO: Add building to players/settlements
 
+class Tear(object):
+	"""Command class that builds an object."""
+	def __init__(self, building):
+		"""Create the command
+		@param building: building that is to be teared.
+		"""
+		self.island_id = game.main.session.world.islands.key(building.island) if hasattr(building, 'island') else None
+		self.building_id = (game.main.session.world if self.island_id == None else building.island).buildings.index(building)
+
+	def __call__(self, issuer):
+		"""Execute the command
+		@param issuer: the issuer of the command
+		"""
+		i_or_s = (game.main.session.world if self.island_id == None else game.main.session.world.islands[self.island_id])
+		i_or_s.remove_building(i_or_s.buildings[building_id])
+
 class Settle(object):
 	"""Command class that creates a warehouse and a settlement."""
 	def __init__(self, building, x, y, island_id, player, instance = None):
