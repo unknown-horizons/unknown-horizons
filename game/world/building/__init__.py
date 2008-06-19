@@ -54,8 +54,8 @@ class BuildingClass(type):
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
 			#works for 45°
-			img.setXShift(0)
-			img.setYShift(-img.getHeight() / 2 + 8)
+			img.setXShift((self.size[0] - self.size[1]) * 16)
+			img.setYShift(8 - img.getHeight() / 2)
 
 	def createInstance(self, x, y):
 		instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
