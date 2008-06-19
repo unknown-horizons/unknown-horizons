@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from cursortool import CursorTool
+from navigationtool import NavigationTool
 from game.world.units import UnitClass
 from game.world.units.ship import Ship
 from game.command.unit import Move
@@ -28,18 +28,17 @@ import fife
 import math
 import game.main
 
-class SelectionTool(CursorTool):
+class SelectionTool(NavigationTool):
 	"""The Selectiontool is used to select instances on the game screen.
 	@param game: the main game Instance
 	"""
 	def __init__(self):
 		super(SelectionTool, self).__init__()
-		self.lastScroll = [0, 0]
-		self.lastmoved = fife.ExactModelCoordinate()
+
+		game.main.onEscape = game.main.showPause
 
 	def __del__(self):
 		super(SelectionTool, self).__del__()
-		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		print 'deconstruct',self
 
 	def select_unit(self):
@@ -78,46 +77,4 @@ class SelectionTool(CursorTool):
 				l = fife.Location(game.main.session.view.layers[1])
 				l.setMapCoordinates(target_mapcoord)
 				game.main.session.manager.execute(Move(game.main.session.selected_instance, target_mapcoord.x, target_mapcoord.y))
-		evt.consume()
-
-	def mouseMoved(self, evt):
-		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
-		# Status menu update
-		current = game.main.session.view.cam.toMapCoordinates(mousepoint, False)
-		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
-			self.lastmoved = current
-			island = game.main.session.world.get_island(int(current.x), int(current.y))
-			if island:
-				settlement = island.get_settlement_at_position(int(current.x), int(current.y))
-				if settlement:
-					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory['wood']))
-					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory['tools']))
-					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory['bricks']))
-					game.main.session.ingame_gui.status_set('food', str(settlement.inventory['food']))
-					game.main.session.ingame_gui.gui['status'].show()
-				else:
-					game.main.session.ingame_gui.gui['status'].hide()
-			else:
-				game.main.session.ingame_gui.gui['status'].hide()
-		# Mouse scrolling
-		old = self.lastScroll
-		new = [0, 0]
-		if mousepoint.x < 50:
-			new[0] -= 50 - mousepoint.x
-		elif mousepoint.x >= (game.main.session.view.cam.getViewPort().right()-50):
-			new[0] += 51 + mousepoint.x - game.main.session.view.cam.getViewPort().right()
-		if mousepoint.y < 50:
-			new[1] -= 50 - mousepoint.y
-		elif mousepoint.y >= (game.main.session.view.cam.getViewPort().bottom()-50):
-			new[1] += 51 + mousepoint.y - game.main.session.view.cam.getViewPort().bottom()
-		if new[0] != old[0] or new[1] != old[1]:
-			game.main.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
-			self.lastScroll = new
-
-	def mouseWheelMovedUp(self, evt):
-		game.main.session.view.zoom_in()
-		evt.consume()
-
-	def mouseWheelMovedDown(self, evt):
-		game.main.session.view.zoom_out()
 		evt.consume()

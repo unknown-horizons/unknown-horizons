@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from cursortool import CursorTool
+from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from game.world.building.building import *
 from game.command.building import Build, Settle
@@ -32,7 +32,7 @@ Represents a dangling tool after a building was selected from the list.
 Builder visualizes if and why a building can not be built under the cursor position.
 """
 
-class BuildingTool(CursorTool):
+class BuildingTool(NavigationTool):
 	"""@param building_id: rowid of the selected building type"
 	@param player_id: player id of the player that builds the building
 	@param ship: If building from a ship, restrict to range of ship
@@ -50,6 +50,8 @@ class BuildingTool(CursorTool):
 		self._class = game.main.session.entities.buildings[building_id]
 
 		self.previewInstance = self._class.createInstance(-100, -100)
+
+		game.main.onEscape = self.onEscape
 
 	def __del__(self):
 		super(BuildingTool, self).__del__()
@@ -85,6 +87,7 @@ class BuildingTool(CursorTool):
 		return self.ship or island.get_settlement_at_position(position.x, position.y)
 
 	def mouseMoved(self,  evt):
+		super(BuildingTool, self).mouseMoved(evt)
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
 		target_mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
 		target_mapcoord.x = int(target_mapcoord.x)
@@ -104,10 +107,13 @@ class BuildingTool(CursorTool):
 
 		evt.consume()
 
+	def onEscape(self):
+		game.main.session.cursor = SelectionTool()
+		game.main.session.view.layers[1].deleteInstance(self.previewInstance)
+
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
-			game.main.session.cursor = SelectionTool()
-			game.main.session.view.layers[1].deleteInstance(self.previewInstance)
+			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pt = fife.ScreenPoint(evt.getX(), evt.getY())
 			mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
