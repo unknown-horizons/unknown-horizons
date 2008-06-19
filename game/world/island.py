@@ -88,12 +88,12 @@ class Island(object):
 		@param x,y: int position used as center for the area of influence
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
-		settlement = Settlement(game.main.session.world.players[player])
+		settlement = Settlement(player)
 		self.settlements[max([0] if len(self.settlements) == 0 else self.settlements.keys()) + 1] = settlement
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			if abs((tile.x-x)**2+(tile.y-y)**2) <= radius**2:
 				tile.settlement = settlement
-		print "New settlement created at (%i:%i) for player: %s" % (x, y, game.main.session.world.players[player].name)
+		print "New settlement created at (%i:%i) for player: %s" % (x, y, player.name)
 
 	def add_building(self, x, y, building, player):
 		"""Adds a building to the island at the posititon x, y with player as the owner.
@@ -116,4 +116,4 @@ class Island(object):
 		building.island = self
 		building.settlement = settlement
 		settlement.buildings[max([0] if len(settlement.buildings) == 0 else settlement.buildings.keys()) + 1] = building
-		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, game.main.session.world.players[player].name, settlement.name)
+		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, settlement.name)

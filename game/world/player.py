@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from game.world.storage import Storage
+
 class Player(object):
 	"""Class representing a player"""
 
@@ -29,7 +31,9 @@ class Player(object):
 		"""
 		self.id = id
 		self.name = name
-		self.gold = 20000
+		self.inventory = Storage()
+
+		self.inventory.alter_inventory(1, 9999)
 
 	def save(self, db = 'savegame'):
-		game.main.db(("INSERT INTO %s.player (rowid, name, money) VALUES (?, ?, ?)" % db), self.id, self.name, self.money)
+		game.main.db(("INSERT INTO %s.player (rowid, name) VALUES (?, ?, ?)" % db), self.id, self.name)

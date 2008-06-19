@@ -33,21 +33,17 @@ Builder visualizes if and why a building can not be built under the cursor posit
 """
 
 class BuildingTool(NavigationTool):
-	"""@param building_id: rowid of the selected building type"
-	@param player_id: player id of the player that builds the building
+	"""
+	@param building: selected building type"
 	@param ship: If building from a ship, restrict to range of ship
-	@param settle: bool Tells the building tool if a new settlement is created. Default: False
 	"""
 
-	def __init__(self, building_id, player_id, ship = None):
+	def __init__(self, building, ship = None):
 		print "Created buildingtool."
 		super(BuildingTool, self).__init__()
 
-		self.player_id = player_id
 		self.ship = ship
-		self.building_id = building_id
-
-		self._class = game.main.session.entities.buildings[building_id]
+		self._class = building
 
 		self.previewInstance = self._class.createInstance(-100, -100)
 
@@ -77,9 +73,7 @@ class BuildingTool(NavigationTool):
 			settlement = island.get_settlement_at_position(position.x, position.y)
 			if settlement:
 				for (key, value) in cost.iteritems():
-					if key == 1 and self.player_id.gold < value:
-						return False
-					elif settlement.inventory.get_value(key) < value:
+					if game.main.session.world.player.inventory.get_value(key) + settlement.inventory.get_value(key) < value:
 						return False
 			for i in range(0, self._class.size[0]):
 				startx = position.x - self._class.size[0]/2 + i
@@ -131,8 +125,8 @@ class BuildingTool(NavigationTool):
 				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
 				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
 				if self.ship:
-					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
+					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.previewInstance))
 				else:
-					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.player_id, self.previewInstance))
+					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.previewInstance))
 				game.main.session.cursor = SelectionTool()
 		evt.consume()

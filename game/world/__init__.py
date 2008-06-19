@@ -74,7 +74,7 @@ class World(object):
 		self.ships.append(game.main.session.entities.units[1](25, 25))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 
-		game.main.session.ingame_gui.status_set("gold", str(self.player.gold))
+		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
 
 	def get_building(self, x, y):
 		i = self.get_island(x, y)

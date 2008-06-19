@@ -104,12 +104,12 @@ class IngameGui(object):
 	def _ship_build(self):
 		"""Calls the Games build_object class."""
 		game.main.session.selected_instance._instance.say('')
-		game.main.session.cursor = BuildingTool(1, game.main.session.world.player, game.main.session.selected_instance)
+		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], game.main.session.selected_instance)
 
 	def _build(self, building_id):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built."""
-		game.main.session.cursor = BuildingTool(building_id, game.main.session.world.player)
+		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[building_id])
 
 	def toggle_visible(self, guiname):
 		"""Toggles whether a gui is visible or not.
