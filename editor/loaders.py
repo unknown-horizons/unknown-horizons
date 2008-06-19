@@ -21,12 +21,38 @@
 
 from dbreader import DbReader
 import fife
-from serializers import WrongFileType, NameClash
+from serializers import WrongFileType
+import os.path
 
 fileExtensions = ('sqlite',)
+_inited = False
+
+def load(file, engine):
+	global _inited
+	if not _inited:
+		init(engine)
+		_inited = True
+
+	if not db("attach ? AS island", file).success:
+		raise WrongFileType(file)
+
+	print 'todo'
+
+	db("detach island")
+
+def save(file, engine, map):
+	print 'save(file = ', file, ', engine, map = ', map, ')'
+
+def init(engine):
+	global db
+	db = DbReader(':memory:')
+	db("attach ? AS data", os.path.abspath(os.path.basename(__file__) + '/../content/openanno.sqlite'))
 
 def loadMapFile(path, engine, content = ''):
-	print 'TODO: loadMapFile(path = ', path, ', engine = ..., content = ', content, ')'
+	load(path, engine)
+
+def saveMapFile(path, engine, map, importList=[]):
+	save(path, engine, map)
 
 def loadImportFile(path, engine):
 	pass

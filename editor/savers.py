@@ -19,10 +19,5 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from dbreader import DbReader
-import fife
-
+from loaders import saveMapFile
 fileExtensions = ('sqlite',)
-
-def saveMapFile(path, engine, map, importList=[]):
-	print 'TODO: saveMapFile(path = ', path, ', engine = ..., map = ', map, ', importList=', importList, ')'
