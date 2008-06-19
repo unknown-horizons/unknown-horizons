@@ -47,10 +47,10 @@ class NavigationTool(CursorTool):
 			if island:
 				settlement = island.get_settlement_at_position(int(current.x), int(current.y))
 				if settlement:
-					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory['wood']))
-					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory['tools']))
-					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory['bricks']))
-					game.main.session.ingame_gui.status_set('food', str(settlement.inventory['food']))
+					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory.get_value(4)))
+					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory.get_value(6)))
+					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory.get_value(7)))
+					game.main.session.ingame_gui.status_set('food', str(settlement.inventory.get_value(5)))
 					game.main.session.ingame_gui.gui['status'].show()
 				else:
 					game.main.session.ingame_gui.gui['status'].hide()

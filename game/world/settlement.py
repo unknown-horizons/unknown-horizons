@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from game.world.storage import Storage
 
 class Settlement(object):
 	"""The Settlement class describes a settlement and stores all the neccassary information
@@ -30,12 +31,10 @@ class Settlement(object):
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = {} # List of all the buildings belonging to the settlement
-		self.inventory = {}
-		self.inventory['wood'] = 5
-		self.inventory['tools'] = 6
-		self.inventory['bricks'] = 7
-		self.inventory['food'] = 8
-		self.inventory_size = 30
+		self.inventory = Storage(4, 30)
+		self.inventory.alter_inventory(6, 20)
+		self.inventory.alter_inventory(5, 20)
+		self.inventory.alter_inventory(4, 20)
 
 	def alter_inventory(self, ressource, num):
 		"""Changes the invertory ressources by the factor num

@@ -60,7 +60,6 @@ class Building(object):
 		checkLayer(ground_layer)
 		checkLayer(building_layer)
 
-		cost = (100,  1,  1,  1)
-		return cost
+		return cls.costs
 
 	calcBuildingCost = classmethod(calcBuildingCost)

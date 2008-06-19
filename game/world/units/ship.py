@@ -21,6 +21,7 @@
 
 import game.main
 import fife
+from game.world.storage import Storage
 
 class Ship(fife.InstanceActionListener):
 	"""Class representing a ship"""
@@ -34,7 +35,10 @@ class Ship(fife.InstanceActionListener):
 		self.next_target = (x, y)
 		self._instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(self._instance)
-
+		self.inventory = Storage(4, 50)
+		self.inventory.alter_inventory(6, 15)
+		self.inventory.alter_inventory(5, 30)
+		self.inventory.alter_inventory(4, 50)
 		self.name = ""
 		self.health = 100
 
