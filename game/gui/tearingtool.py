@@ -70,7 +70,7 @@ class TearingTool(NavigationTool):
 	def mouseReleased(self,  evt):
 		if fife.MouseEvent.LEFT == evt.getButton():
 			coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			self._mark((int(coords.x + 0.5), int(coords.y + 0.5)))
+			self._mark(self.coords, (int(coords.x + 0.5), int(coords.y + 0.5)))
 			for i in self.selected:
 				game.main.session.manager.execute(Tear(i))
 			game.main.session.cursor = SelectionTool()
