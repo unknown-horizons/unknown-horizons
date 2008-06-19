@@ -61,7 +61,6 @@ class SelectionTool(NavigationTool):
 		if (evt.getButton() == fife.MouseEvent.LEFT):
 			instances = cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
 			if instances: #something under cursor
-				print instances[0].getId()
 				instance = game.main.session.entities.getInstance(instances[0].getId())
 				if game.main.session.selected_instance and game.main.session.selected_instance != instance:
 					self.deselect_unit()
