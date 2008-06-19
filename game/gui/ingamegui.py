@@ -23,11 +23,9 @@ from buildingtool import BuildingTool
 import game.main
 import fife
 
-class IngameGui(fife.IWidgetListener):
+class IngameGui(object):
 	"""Class handling all the ingame gui events."""
 	def __init__(self):
-		super(IngameGui, self).__init__()
-		game.main.fife.eventmanager.addWidgetListener(self)
 		self.gui = {}
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
@@ -92,25 +90,6 @@ class IngameGui(fife.IWidgetListener):
 			'rotateRight' : lambda : None,
 			'rotateLeft' : lambda : None,
 		})
-
-	def onWidgetAction(self, event):
-		"""game.main.fife.sugarEvent(event)
-		widget = event.findPychanWidget(*self.gui.values())
-		if widget == None:
-			return
-		if widget.name == 'build': game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build')
-		elif widget.name == 'zoomIn': game.main.session.view.zoom_in
-		elif widget.name == 'zoomOut': game.main.session.view.zoom_out
-		elif widget.name == 'rotateLeft': game.main.session.view.rotate_left
-		elif widget.name == 'rotateRight': game.main.session.view.rotate_right
-		elif widget.name == 'foundSettelmentButton': self._ship_build
-		elif widget.name == 'servicesTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 0)
-		elif widget.name == 'residentsTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 1)
-		elif widget.name == 'companiesTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 2)
-		elif widget.name == 'militaryTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 3)
-		elif widget.name == 'streetsTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 4)
-		elif widget.name == 'specialTab': game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 5)
-		else: print 'unknown event:', widget.name"""
 
 	def status_set(self, label, value):
 		"""Sets a value on the status bar.
