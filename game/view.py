@@ -101,6 +101,17 @@ class View(object):
 		if y != 0:
 			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
 			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
+
+		if pos.x > game.main.session.world.max_x:
+			pos.x = game.main.session.world.max_x
+		elif pos.x < game.main.session.world.min_x:
+			pos.x = game.main.session.world.min_x
+
+		if pos.y > game.main.session.world.max_y:
+			pos.y = game.main.session.world.max_y
+		elif pos.y < game.main.session.world.min_y:
+			pos.y = game.main.session.world.min_y
+
 		self.cam.setLocation(loc)
 
 	def zoom_out(self):
