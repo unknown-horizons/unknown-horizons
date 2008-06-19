@@ -29,7 +29,7 @@ class Settlement(object):
 		self.name = 'foo' # TODO: add name generator here
 		self.owner = owner
 		self._inhabitants = 0
-		self.buildings = [] # List of all the buildings belonging to the settlement
+		self.buildings = {} # List of all the buildings belonging to the settlement
 		self.inventory = {}
 		self.inventory['wood'] = 5
 		self.inventory['tools'] = 6
@@ -48,11 +48,8 @@ class Settlement(object):
 		elif self.inventory[ressource] < 0:
 			raise Exception, 'Removed more from the inventory than was in it.'
 
-	def remove_building(self, building):
-		pass
-
 	def get_building(self, x, y):
-		for b in self.buildings:
+		for b in self.buildings.values():
 			if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
 				return b
 		else:

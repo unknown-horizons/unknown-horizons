@@ -50,6 +50,9 @@ class Entities(object):
 	def updateInstance(self, id, instance):
 		self._instances[int(id)] = instance
 
+	def deleteInstance(self, id):
+		del self._instances[int(id)]
+
 	def getInstance(self, id):
 		return self._instances[int(id)]
 

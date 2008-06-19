@@ -38,6 +38,12 @@ class Building(object):
 			game.main.session.entities.updateInstance(self._instance.getId(), self)
 		self.health = 50
 
+	def remove(self):
+		print 'removing', self
+		game.main.session.entities.deleteInstance(self._instance.getId())
+		game.main.session.view.layers[1].deleteInstance(self._instance)
+		self._instance.thisown = 1
+
 	def calcBuildingCost(cls, ground_layer,  building_layer, position):
 		#TODO do ground checking and throw exception if blocked
 		def checkLayer(layer):
