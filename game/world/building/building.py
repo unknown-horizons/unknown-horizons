@@ -39,7 +39,11 @@ class Building(object):
 		self.health = 50
 
 	def remove(self):
-		print 'removing', self
+		for x in xrange(self.x, self.x + self.__class__.size[0]):
+			for y in xrange(self.y, self.y + self.__class__.size[1]):
+				tile = self.island.get_tile(x,y)
+				tile.blocked = False
+				tile.object = None
 		game.main.session.entities.deleteInstance(self._instance.getId())
 		game.main.session.view.layers[1].deleteInstance(self._instance)
 		self._instance.thisown = 1

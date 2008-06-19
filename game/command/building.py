@@ -74,10 +74,7 @@ class Tear(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		print 'asdasd'
-		i_or_s = (game.main.session.world.islands[self.island_id] if self.settlement_id == None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id])
-		i_or_s.buildings[self.building_id].remove()
-		del i_or_s.buildings[self.building_id]
+		(game.main.session.world.islands[self.island_id] if self.settlement_id == None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].remove()
 
 class Settle(object):
 	"""Command class that creates a warehouse and a settlement."""
