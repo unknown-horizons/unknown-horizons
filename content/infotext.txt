@@ -8,7 +8,7 @@ Welcome to the OpenAnno Alpha 0.1, Keybindings:
 - F10 = Toggle console on / off
 - ESC = Show Pause menu
 - T = Toggles grid on / off
-- C = Toggles coordinates on / off
+- X = enable destruct mode
 - P = Screenshot
 
 Have fun.
