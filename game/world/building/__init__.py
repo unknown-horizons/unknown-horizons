@@ -38,6 +38,9 @@ class BuildingClass(type):
 		self.radius = game.main.db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
 		for (name,  value) in game.main.db("SELECT name, value FROM data.building_property WHERE building_id = ?", str(id)):
 			setattr(self, name, value)
+		self.costs = {}
+		for (name, value) in game.main.db("SELECT ressource_id, amount FROM data.building_costs WHERE building_id = ?", str(id)):
+			self.costs[name]=value
 		self._loadObject()
 
 	def _loadObject(self):
