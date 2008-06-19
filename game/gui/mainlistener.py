@@ -73,7 +73,6 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		try:
 			cmd = code.compile_command(self.commandbuffer + "\n" + command)
 		except BaseException, e:
-			print "XXX" + self.commandbuffer + "\n" + command + "XXX"
 			self.commandbuffer = ''
 			return str(e)
 		if cmd == None:
