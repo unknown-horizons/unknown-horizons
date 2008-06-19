@@ -53,7 +53,7 @@ class View(object):
 		self.renderer = {}
 		for r in ('InstanceRenderer',):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam)
-		for r in ('CoordinateRenderer', 'GridRenderer', 'QuadTreeRenderer'):
+		for r in ('GridRenderer',):
 			self.renderer[r] = self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].addActiveLayer(self.layers[0])
