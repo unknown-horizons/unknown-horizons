@@ -60,12 +60,14 @@ class BuildingClass(type):
 				shift_x = shift_x - self.size[0] * 16
 				shift_y = shift_y + 8
 			elif rotation == 135:
-				pass
+				shift_x = shift_x - (self.size[0] + self.size[1] - 1) * 16
+				shift_y = shift_y + self.size[0] * 8
 			elif rotation == 225:
 				shift_x = shift_x - self.size[1] * 16
 				shift_y = shift_y + (self.size[0] + self.size[1] - 1) * 8
 			elif rotation == 315:
-				pass
+				shift_x = shift_x - 16
+				shift_y = shift_y + self.size[0] * 8
 			img.setXShift(shift_x)
 			img.setYShift(shift_y)
 
