@@ -27,10 +27,10 @@ import os.path
 fileExtensions = ('sqlite',)
 _inited = False
 
-def load(file, engine):
+def _load(file, engine):
 	global _inited
 	if not _inited:
-		init(engine)
+		_init(engine)
 		_inited = True
 
 	if not db("attach ? AS island", file).success:
@@ -40,19 +40,29 @@ def load(file, engine):
 
 	db("detach island")
 
-def save(file, engine, map):
-	print 'save(file = ', file, ', engine, map = ', map, ')'
+def _save(file, engine, map):
+	global _inited
+	if not _inited:
+		_init(engine)
+		_inited = True
 
-def init(engine):
+	if not db("attach ? AS island", file).success:
+		raise WrongFileType(file)
+	
+	print 'todo'
+
+	db("detach island")
+
+def _init(engine):
 	global db
 	db = DbReader(':memory:')
 	db("attach ? AS data", os.path.abspath(os.path.basename(__file__) + '/../content/openanno.sqlite'))
 
 def loadMapFile(path, engine, content = ''):
-	load(path, engine)
+	_load(path, engine)
 
 def saveMapFile(path, engine, map, importList=[]):
-	save(path, engine, map)
+	_save(path, engine, map)
 
 def loadImportFile(path, engine):
 	pass
