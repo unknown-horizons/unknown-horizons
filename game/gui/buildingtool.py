@@ -74,6 +74,14 @@ class BuildingTool(NavigationTool):
 
 		island = game.main.session.world.get_island(position.x, position.y)
 		if island:
+			settlement = island.get_settlement_at_position(position.x, position.y)
+			if settlement:
+				for (key, value) in cost.iteritems():
+					if key == 1:
+						if self.player_id.gold < value:
+							return False
+					elif settlement.inventory.get_value(key) < value:
+						return False
 			for i in range(0, self._class.size[0]):
 				startx = position.x - self._class.size[0]/2 + i
 				for b in range(0, self._class.size[1]):

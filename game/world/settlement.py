@@ -36,17 +36,6 @@ class Settlement(object):
 		self.inventory.alter_inventory(5, 20)
 		self.inventory.alter_inventory(4, 20)
 
-	def alter_inventory(self, ressource, num):
-		"""Changes the invertory ressources by the factor num
-		@param ressource: string representing the ressource
-		@param num: int how the ressource is to be changed. (Can be 2 if you want to add 2 or could be -4 if you wanted to remove 4)
-		"""
-		self.inventory[ressource] += num
-		if self.inventory[ressource] > self.inventory_size:
-			self.inventory = self.inventory_size
-		elif self.inventory[ressource] < 0:
-			raise Exception, 'Removed more from the inventory than was in it.'
-
 	def get_building(self, x, y):
 		for b in self.buildings.values():
 			if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
