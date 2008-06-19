@@ -90,8 +90,8 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).mouseMoved(evt)
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
 		target_mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
-		target_mapcoord.x = int(target_mapcoord.x)
-		target_mapcoord.y = int(target_mapcoord.y)
+		target_mapcoord.x = int(target_mapcoord.x + 0.5)
+		target_mapcoord.y = int(target_mapcoord.y + 0.5)
 		target_mapcoord.z = 0
 		l = fife.Location(game.main.session.view.layers[1])
 		l.setMapCoordinates(target_mapcoord)
@@ -117,8 +117,8 @@ class BuildingTool(NavigationTool):
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pt = fife.ScreenPoint(evt.getX(), evt.getY())
 			mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
-			mapcoord.x = int(mapcoord.x)
-			mapcoord.y = int(mapcoord.y)
+			mapcoord.x = int(mapcoord.x + 0.5)
+			mapcoord.y = int(mapcoord.y + 0.5)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
 				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
