@@ -37,6 +37,9 @@ class NavigationTool(CursorTool):
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		print 'deconstruct',self
 
+	def mouseDragged(self, evt):
+		NavigationTool.mouseMoved(self, evt)
+
 	def mouseMoved(self, evt):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 		# Status menu update
