@@ -74,6 +74,7 @@ class BuildingTool(NavigationTool):
 			if settlement:
 				for (key, value) in cost.iteritems():
 					if game.main.session.world.player.inventory.get_value(key) + settlement.inventory.get_value(key) < value:
+						print 'more of ressource #' + str(key), 'needed: player:', game.main.session.world.player.inventory.get_value(key), 'settlement:', settlement.inventory.get_value(key), '<', value
 						return False
 			for i in range(0, self._class.size[0]):
 				startx = position.x - self._class.size[0]/2 + i
