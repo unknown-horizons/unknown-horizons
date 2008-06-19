@@ -179,7 +179,6 @@ def startSingle():
 	fife.engine.pump()
 	gui.hide()
 	gui = None
-	onEscape = showPause
 
 	session = Session()
 	session.init()
