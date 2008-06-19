@@ -57,14 +57,13 @@ class BuildingClass(type):
 			shift_y = img.getHeight() / -2
 			#currently a bit useless
 			if rotation == 45:
-				pass
-				#shift_x = shift_x - self.size[1] * 16
-				#shift_y = shift_y - (self.size[0] + self.size[1]) * 8
+				shift_x = shift_x - self.size[0] * 16
+				shift_y = shift_y + 8
 			elif rotation == 135:
 				pass
 			elif rotation == 225:
-				shift_x = shift_x - self.size[0] * 16
-				shift_y = shift_y + 8
+				shift_x = shift_x - self.size[1] * 16
+				shift_y = shift_y + (self.size[0] + self.size[1] - 1) * 8
 			elif rotation == 315:
 				pass
 			img.setXShift(shift_x)
