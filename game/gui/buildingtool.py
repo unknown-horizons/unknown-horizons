@@ -77,9 +77,8 @@ class BuildingTool(NavigationTool):
 			settlement = island.get_settlement_at_position(position.x, position.y)
 			if settlement:
 				for (key, value) in cost.iteritems():
-					if key == 1:
-						if self.player_id.gold < value:
-							return False
+					if key == 1 and self.player_id.gold < value:
+						return False
 					elif settlement.inventory.get_value(key) < value:
 						return False
 			for i in range(0, self._class.size[0]):
