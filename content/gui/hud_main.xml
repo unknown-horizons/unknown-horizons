@@ -6,5 +6,5 @@
   
   <Icon image="content/gui/images/background/hud/background_48.png" position="200,37"/><ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy.png" position="200,37" />
   <Icon image="content/gui/images/background/hud/background_48.png" position="200,90"/><ImageButton name="inventory" up_image="content/gui/images/icons/hud/main/inventory.png" size="48,48" position="200,90" />
-  <ImageButton name="build" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build.png" hover_image="content/gui/images/icons/hud/main/build.png" size="48,48" position="200,143" />
+  <ImageButton name="build" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build.png" hover_image="content/gui/images/icons/hud/main/build.png" size="40,40" position="200,143" />
 </Container>
