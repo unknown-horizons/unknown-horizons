@@ -113,6 +113,12 @@ class stablelist(object):
 	def __ne__(self, other):
 		return not (self == other)
 
+	def __repr__(self):
+		return repr(self._values)
+
+	def __str__(self):
+		return str(self._values)
+
 	def __setitem__(self, key, value):
 		if key not in self._values:
 			if key in self._free:
