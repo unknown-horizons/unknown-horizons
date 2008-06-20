@@ -21,6 +21,7 @@
 
 import game.main
 from game.world.settlement import Settlement
+from stablelist import stablelist
 
 class Island(object):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -37,7 +38,7 @@ class Island(object):
 		game.main.db("attach ? as island", file)
 		self.width, self.height = game.main.db("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground")[0]
 		self.grounds = []
-		self.buildings = {}
+		self.buildings = stablelist()
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
 			ground = game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y)
 			ground.settlement = None
@@ -45,7 +46,7 @@ class Island(object):
 			ground.object = None
 			self.grounds.append(ground)
 		game.main.db("detach island")
-		self.settlements = {}
+		self.settlements = stablelist()
 
 	def save(self, db = 'savegame'):
 		id = game.main.db(("INSERT INTO %s.island (x, y, file) VALUES (?, ?, ?)" % db), self.x, self.y, self.file).id
@@ -64,7 +65,7 @@ class Island(object):
 	def get_building(self, x, y):
 		s = self.get_settlement_at_position(x, y)
 		if s == None:
-			for b in self.buildings.values():
+			for b in self.buildings:
 				if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
 					return b
 			else:
@@ -89,7 +90,7 @@ class Island(object):
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(player)
-		self.settlements[max([0] if len(self.settlements) == 0 else self.settlements.keys()) + 1] = settlement
+		self.settlements.append(settlement)
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			if abs((tile.x-x)**2+(tile.y-y)**2) <= radius**2:
 				tile.settlement = settlement
@@ -106,14 +107,14 @@ class Island(object):
 			tile.blocked = True 	# Set tile blocked
 			tile.object = building 	# Set tile's object to the building
 		else:
-			for i in range(0, building.size[0]):
+			for i in xrange(0, building.size[0]):
 				startx = x - building.size[0]/2 + i
-				for b in range(0, building.size[1]):
+				for b in xrange(0, building.size[1]):
 					starty = y - building.size[1]/2 + b
 					tile = self.get_tile(startx, starty)
 					tile.blocked = True 	# Set tile blocked
 					tile.object = building 	# Set tile's object to the building
 		building.island = self
 		building.settlement = settlement
-		settlement.buildings[max([0] if len(settlement.buildings) == 0 else settlement.buildings.keys()) + 1] = building
+		settlement.buildings.append(building)
 		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, settlement.name)

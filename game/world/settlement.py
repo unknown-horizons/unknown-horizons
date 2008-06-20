@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from game.world.storage import Storage
+from stablelist import stablelist
 
 class Settlement(object):
 	"""The Settlement class describes a settlement and stores all the neccassary information
@@ -30,14 +31,14 @@ class Settlement(object):
 		self.name = 'foo' # TODO: add name generator here
 		self.owner = owner
 		self._inhabitants = 0
-		self.buildings = {} # List of all the buildings belonging to the settlement
+		self.buildings = stablelist() # List of all the buildings belonging to the settlement
 		self.inventory = Storage(4, 30)
 		self.inventory.alter_inventory(6, 20)
 		self.inventory.alter_inventory(5, 20)
 		self.inventory.alter_inventory(4, 20)
 
 	def get_building(self, x, y):
-		for b in self.buildings.values():
+		for b in self.buildings:
 			if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
 				return b
 		else:

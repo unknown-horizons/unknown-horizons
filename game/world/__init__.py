@@ -24,6 +24,7 @@ __all__ = ['island', 'player', 'settlement']
 import game.main
 from game.world.island import Island
 from game.world.player import Player
+from stablelist import stablelist
 
 class World(object):
 	def __init__(self):
@@ -33,7 +34,7 @@ class World(object):
 			self.properties[name] = value
 
 		#load islands
-		self.islands = {}
+		self.islands = stablelist()
 		for index,(island, offset_x, offset_y) in enumerate(game.main.db("select island, x, y from map.island")):
 			self.islands[index] = Island(index, offset_x, offset_y, island)
 
@@ -55,7 +56,7 @@ class World(object):
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
 				for i in self.islands:
-					for g in self.islands[i].grounds:
+					for g in i.grounds:
 						if g.x == x and g.y == y:
 							break
 					else: #found no instance at x,y in the island
@@ -70,7 +71,7 @@ class World(object):
 		self.players = {0:self.player}
 
 		#add ship
-		self.ships = []
+		self.ships = stablelist()
 		self.ships.append(game.main.session.entities.units[1](25, 25))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 
@@ -85,9 +86,9 @@ class World(object):
 		@param x: int x position.
 		@param y: int y position. """
 		for i in self.islands:
-			for tile in self.islands[i].grounds:
+			for tile in i.grounds:
 				if tile.x == x and tile.y == y:
-					return self.islands[i]
+					return i
 		return None
 
 	def __del__(self):
