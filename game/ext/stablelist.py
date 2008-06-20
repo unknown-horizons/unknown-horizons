@@ -39,6 +39,14 @@ class stablelist(object):
 		self._values[key] = value
 		return key
 
+	def clear(self):
+		self._last = 0
+		self._free = []
+		self._values = {}
+
+	def copy(self):
+		pass
+
 	def count(self):
 		return len(self._values)
 
@@ -46,10 +54,31 @@ class stablelist(object):
 		for v in values:
 			self.append(v)
 
+	def get(self, key, otherwise = None):
+		return self[key] if key in self else otherwise
+
+	def has_key(self, key):
+		return key in self._values
+
 	def index(self, value):
 		for k, v in self._values.items():
 			if v == value:
 				return k
+
+	def items(self):
+		return self._values.items()
+
+	def iteritems(self):
+		return self._values.iteritems()
+
+	def iterkeys(self):
+		return self._values.iterkeys()
+
+	def itervalues(self):
+		return self._values.itervalues()
+
+	def keys(self):
+		return self._values.keys()
 
 	def pop(self, index = None):
 		if index == None:
@@ -59,8 +88,19 @@ class stablelist(object):
 		del self[index]
 		return ret
 
+	def popitem(self):
+		return (self._last, self.pop(self._last))
+
 	def remove(self, value):
 		del self[self.index(value)]
+
+	def setdefault(self, key, value):
+		if key not in self._values:
+			self[key] = value
+		return self[key]
+
+	def values(self):
+		return self._values.values()
 
 	def __add__(self, other):
 		ret = stablelist(self)
@@ -105,7 +145,7 @@ class stablelist(object):
 		return ret
 
 	def __iter__(self):
-		return iter(self._values.values())
+		return self._values.itervalues()
 
 	def __len__(self):
 		return len(self._values)
