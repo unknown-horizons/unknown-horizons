@@ -68,7 +68,8 @@ class World(object):
 
 		#setup players
 		self.player = Player(0, "Arthus")
-		self.players = {0:self.player}
+		self.players = stablelist()
+		self.players.append(self.player)
 
 		#add ship
 		self.ships = stablelist()

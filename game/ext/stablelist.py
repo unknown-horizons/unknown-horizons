@@ -21,9 +21,7 @@
 
 class stablelist(object):
 	def __init__(self, *values):
-		self._free = []
-		self._values = {}
-		self._last = 0
+		self.clear()
 		for v in values:
 			self.append(v)
 
@@ -40,12 +38,9 @@ class stablelist(object):
 		return key
 
 	def clear(self):
-		self._last = 0
+		self._last = -1
 		self._free = []
 		self._values = {}
-
-	def copy(self):
-		pass
 
 	def count(self):
 		return len(self._values)
@@ -55,15 +50,19 @@ class stablelist(object):
 			self.append(v)
 
 	def get(self, key, otherwise = None):
+		assert(isinstance(key, int) and key >= 0)
 		return self[key] if key in self else otherwise
 
 	def has_key(self, key):
+		assert(isinstance(key, int) and key >= 0)
 		return key in self._values
 
 	def index(self, value):
 		for k, v in self._values.items():
 			if v == value:
 				return k
+		else:
+			raise ValueError()
 
 	def items(self):
 		return self._values.items()
@@ -83,6 +82,8 @@ class stablelist(object):
 	def pop(self, index = None):
 		if index == None:
 			index = self._last
+		else:
+			assert(isinstance(key, int) and key >= 0)
 		#index can be 0 if no item exists... -> error
 		ret = self[index]
 		del self[index]
@@ -95,6 +96,7 @@ class stablelist(object):
 		del self[self.index(value)]
 
 	def setdefault(self, key, value):
+		assert(isinstance(key, int) and key >= 0)
 		if key not in self._values:
 			self[key] = value
 		return self[key]
@@ -103,6 +105,7 @@ class stablelist(object):
 		return self._values.values()
 
 	def __add__(self, other):
+		assert(self.__class__ == other.__class__)
 		ret = stablelist(self)
 		for v in other:
 			ret.append(self)
@@ -110,35 +113,38 @@ class stablelist(object):
 
 	def __contains__(self, value):
 		try:
-			return self.index(value) != 0
+			return self.index(value) >= 0
 		except:
 			return False
 
 	def __delitem__(self, key):
+		assert(isinstance(key, int) and key >= 0)
 		del self._values[key]
 		if key == self._last:
-			for i in xrange(key - 1, 0, -1):
+			for i in xrange(key - 1, -1, -1):
 				if i in self._values:
 					self._last = i
 					return
 				else:
 					self._free.remove(i)
 			else:
-				self._last = 0
+				self._last = -1
 		else:
 			self._free.append(key)
 
 	def __eq__(self, other):
-		assert(other.__class__ == self.__class__)
+		assert(self.__class__ == other.__class__)
 		return self._values == other._values
 
 	def __getitem__(self, key):
+		assert(isinstance(key, int) and key >= 0)
 		return self._values[key]
 
 	def __hash__(self):
 		return hash(self._values)
 
 	def __iadd__(self, other):
+		assert(self.__class__ == other.__class__)
 		ret = []
 		for v in other:
 			ret = ret + [self.append(v)]
@@ -160,6 +166,7 @@ class stablelist(object):
 		return str(self._values)
 
 	def __setitem__(self, key, value):
+		assert(isinstance(key, int) and key >= 0)
 		if key not in self._values:
 			if key in self._free:
 				self._free.remove(key)
