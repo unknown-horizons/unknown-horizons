@@ -3,7 +3,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_wheel.png" position="212,44"/>
 	<Icon image="content/gui/images/logos/fife.png" position="22,100" />
 	<Icon image="content/gui/images/logos/sdl.gif" position="22,20" />
-	<Label text="OpenAnno Alpha 0.1" position="850,720"/>
+	<Label text="OpenAnno Alpha 2008.0" position="850,720"/>
 
 	<VBox position="530,100"><Label name="start" text="Return to Game"/></VBox>
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,161"/>
