@@ -107,20 +107,12 @@ class Island(object):
 		@param x,y: int position used as center for the area of influence
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
-		settlement = self.get_settlement_at_position(x, y)
-		if building.size[0] == 1 and building.size[1] == 1:
-			tile = self.get_tile(x, y)
-			tile.blocked = True 	# Set tile blocked
-			tile.object = building 	# Set tile's object to the building
-		else:
-			for i in xrange(0, building.size[0]):
-				startx = x - building.size[0]/2 + i
-				for b in xrange(0, building.size[1]):
-					starty = y - building.size[1]/2 + b
-					tile = self.get_tile(startx, starty)
-					tile.blocked = True 	# Set tile blocked
-					tile.object = building 	# Set tile's object to the building
 		building.island = self
-		building.settlement = settlement
-		settlement.buildings.append(building)
-		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, settlement.name)
+		building.settlement = self.get_settlement_at_position(x, y)
+		for xx in xrange(x, x + building.size[0]):
+			for yy in xrange(y, y + building.size[1]):
+				tile = self.get_tile(xx, yy)
+				tile.blocked = True # Set tile blocked
+				tile.object = building # Set tile's object to the building
+		building.settlement.buildings.append(building)
+		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)

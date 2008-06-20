@@ -31,6 +31,7 @@ class NavigationTool(CursorTool):
 		super(NavigationTool, self).__init__()
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
+		self.debug = False
 
 	def __del__(self):
 		super(NavigationTool, self).__del__()
@@ -44,11 +45,13 @@ class NavigationTool(CursorTool):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 		# Status menu update
 		current = game.main.session.view.cam.toMapCoordinates(mousepoint, False)
+		if self.debug:
+			print 'pos: x:', int(current.x + 0.5), 'y:', int(current.y + 0.5)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
 			self.lastmoved = current
-			island = game.main.session.world.get_island(int(current.x), int(current.y))
+			island = game.main.session.world.get_island(int(current.x + 0.5), int(current.y + 0.5))
 			if island:
-				settlement = island.get_settlement_at_position(int(current.x), int(current.y))
+				settlement = island.get_settlement_at_position(int(current.x + 0.5), int(current.y + 0.5))
 				if settlement:
 					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory.get_value(4)))
 					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory.get_value(6)))

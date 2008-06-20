@@ -53,6 +53,8 @@ class IngameKeyListener(fife.IKeyListener):
 			game.main.session.view.renderer['GridRenderer'].setEnabled(not game.main.session.view.renderer['GridRenderer'].isEnabled())
 		elif keystr == 'x':
 			game.main.session.cursor = TearingTool()
+		elif keystr == 'd':
+			game.main.session.cursor.debug = True
 		else:
 			return
 		evt.consume()
