@@ -57,12 +57,16 @@ class Island(object):
 		@param y: int y position of the tile.
 		@param island: id of the island that is to be checked.
 		@return: tile instanze if tile is on island, else None."""
+		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
+			return None
 		for tile in self.grounds:
 				if tile.x == x and tile.y == y:
 					return tile
 		return None
 
 	def get_building(self, x, y):
+		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
+			return None
 		s = self.get_settlement_at_position(x, y)
 		if s == None:
 			for b in self.buildings:
@@ -79,6 +83,8 @@ class Island(object):
 		@param y: int y position.
 		@param island: island that is to be searched.
 		@return: Settlement instance at that position."""
+		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
+			return None
 		for tile in self.grounds:
 			if tile.x == x and tile.y == y:
 				return tile.settlement
