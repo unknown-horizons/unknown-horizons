@@ -79,11 +79,10 @@ class BuildingTool(NavigationTool):
 				return False
 			else:
 				return False
-			for i in range(0, self._class.size[0]):
-				startx = position.x - self._class.size[0]/2 + i
-				for b in range(0, self._class.size[1]):
-					starty = position.y - self._class.size[1]/2 + b
-					tile = island.get_tile(startx, starty)
+			print position.x, position.y, self._class.size[0], self._class.size[1]
+			for xx in xrange(position.x, position.x + self._class.size[0]):
+				for yy in xrange(position.y, position.y + self._class.size[1]):
+					tile = island.get_tile(xx, yy)
 					if not tile or tile.blocked:
 						return False
 		else:
