@@ -9,14 +9,14 @@
     <Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
     <Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
   -->
-  <ImageButton name="herder-1" position="58,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Herdsman's tent" />
+  <ImageButton name="herder-1" position="58,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
   <ImageButton name="weaver-1" position="106,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
 
-  <ImageButton name="lumberjack-1" position="159,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
+  <ImageButton name="lumberjack-1" position="159,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="LJ" />
 
-  <ImageButton name="hunter-1" position="212,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Hunter's tent" />
+  <ImageButton name="hunter-1" position="212,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
 
-  <ImageButton name="fisher-1" position="265,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Fisherman's tent" />
+  <ImageButton name="fisher-1" position="265,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
 
-  <ImageButton name="boatyard-1" position="318,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Raft builder" />
+  <ImageButton name="boatyard-1" position="318,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
 </Container>

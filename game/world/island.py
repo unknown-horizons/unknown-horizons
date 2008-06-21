@@ -115,4 +115,5 @@ class Island(object):
 				tile.blocked = True # Set tile blocked
 				tile.object = building # Set tile's object to the building
 		building.settlement.buildings.append(building)
+		building.start()
 		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)

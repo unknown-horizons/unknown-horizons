@@ -19,15 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
+from building import Building
 import game.main
-#TODO: Implement selection support over a common interface with Unit
 
-class BlockedError(Exception):
-	pass
-
-class Building(object):
+class Production(Building):
+	"""Class used for production buildings"""
 	def __init__(self, x, y, owner, instance = None):
+		self.current_stock = 0
+		self.current_production = 0
 		self.x = x
 		self.y = y
 		self.owner = owner
@@ -36,34 +35,25 @@ class Building(object):
 		else:
 			self._instance = instance
 			game.main.session.entities.updateInstance(self._instance.getId(), self)
-		self.health = 50
-
-	def remove(self):
-		for x in xrange(self.x, self.x + self.__class__.size[0]):
-			for y in xrange(self.y, self.y + self.__class__.size[1]):
-				tile = self.island.get_tile(x,y)
-				tile.blocked = False
-				tile.object = None
-		game.main.session.entities.deleteInstance(self._instance.getId())
-		game.main.session.view.layers[1].deleteInstance(self._instance)
-		self._instance.thisown = 1
-
-	def calcBuildingCost(cls, ground_layer,  building_layer, position):
-		#TODO do ground checking and throw exception if blocked
-		def checkLayer(layer):
-			for x in xrange(cls.size[0]):
-				for y in xrange(cls.size[1]):
-					coord = fife.ModelCoordinate(int(position.x + y),  int(position.y + y))
-					if (layer.cellContainsBlockingInstance(coord)):
-						raise BlockedError
-
-		checkLayer(ground_layer)
-		checkLayer(building_layer)
-
-		return cls.costs
-
-	calcBuildingCost = classmethod(calcBuildingCost)
+		self.health = 100
 
 	def start(self):
-		"""This function is called when the building is built, to start production for example."""
-		pass
+		game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
+		print dir(self)
+
+	def tick(self):
+		self.current_production += 1
+		if self.current_production == 10:
+			self._instance.say('+1', 2000)
+			self.current_stock += 1
+			self.current_production = 0
+			if self.current_stock == 4:
+				self._instance.say('Full', 2000)
+				game.main.session.scheduler.add_new_object(lambda: self.get_ressouces(4), self, 64)
+		if self.current_stock < 4:
+			game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
+
+	def get_ressouces(self, num):
+		self.settlement.inventory.alter_inventory(int(self.production_res), num)
+		self.current_stock -= num
+		game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
