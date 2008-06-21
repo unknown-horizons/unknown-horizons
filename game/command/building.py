@@ -24,20 +24,16 @@ import game.main
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, island_id, instance = None, ship = None):
+	def __init__(self, building_class, x, y, instance = None, ship = None):
 		"""Create the command
-		@param building: building class that is to be built.
+		@param building_class: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
-		@param island_id: the island that the building is to be built on.
-		@param player: Player instance that builds the building.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
+		@param ship: ship instance
 		"""
-		self.building = building.id
-		self.island_id = island_id
+		self.building_class = building_class.id
 		self.instance = None if instance == None else instance.getId()
 		self.ship = None if ship == None else game.main.session.world.ships.index(ship)
-		print self.ship, ship
-		self.radius = building.radius
 		self.x = int(x)
 		self.y = int(y)
 
@@ -45,19 +41,13 @@ class Build(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		building = game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
-		if self.ship is not None:
-			game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, self.radius, issuer)
-			game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)
-			for (key, value) in building.costs.items():
-				game.main.session.world.ships[self.ship].inventory.alter_inventory(key, -value)
-				issuer.inventory.alter_inventory(key, -value)
-		else:
-			game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)
-			settlement = game.main.session.world.islands[self.island_id].get_settlement_at_position(self.x, self.y)
-			for (key, value) in building.costs.items():
-				issuer.inventory.alter_inventory(key, -value)
-				settlement.inventory.alter_inventory(key, -value)
+		island = game.main.session.world.get_island(self.x, self.y)
+		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
+
+		island.add_building(self.x, self.y, building, issuer)
+		secondary_ressource_source = island.get_settlement_at_position(self.x, self.y) if self.ship == None else game.main.session.world.ships[self.ship]
+		for (ressource, value) in building.costs.items():
+			assert(secondary_ressource_source.inventory.alter_inventory(ressource, issuer.inventory.alter_inventory(ressource, -value)) == 0)
 
 class Tear(object):
 	"""Command class that tears an object."""

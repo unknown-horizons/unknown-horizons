@@ -101,6 +101,7 @@ class Island(object):
 			if abs((tile.x-x)**2+(tile.y-y)**2) <= radius**2:
 				tile.settlement = settlement
 		print "New settlement created at (%i:%i) for player: %s" % (x, y, player.name)
+		return settlement
 
 	def add_building(self, x, y, building, player):
 		"""Adds a building to the island at the posititon x, y with player as the owner.
@@ -109,6 +110,8 @@ class Island(object):
 		@param player: int id of the player that owns the settlement"""
 		building.island = self
 		building.settlement = self.get_settlement_at_position(x, y)
+		if building.settlement == None:
+			building.settlement = self.add_settlement(x, y, building.radius, player)
 		for xx in xrange(x, x + building.size[0]):
 			for yy in xrange(y, y + building.size[1]):
 				tile = self.get_tile(xx, yy)
@@ -117,3 +120,4 @@ class Island(object):
 		building.settlement.buildings.append(building)
 		building.start()
 		print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)
+		return building

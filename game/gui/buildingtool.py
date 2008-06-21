@@ -122,8 +122,7 @@ class BuildingTool(NavigationTool):
 			mapcoord.y = int(mapcoord.y + 0.5)
 			mapcoord.z = 0
 			if self._buildCheck(mapcoord):
-				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
 				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
-				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.previewInstance, self.ship))
+				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance, self.ship))
 				game.main.session.cursor = SelectionTool()
 		evt.consume()
