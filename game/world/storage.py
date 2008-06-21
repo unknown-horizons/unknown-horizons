@@ -63,3 +63,10 @@ class Storage(object):
 		@return int amount of ressources for key in inventory. If not in inventory 0."""
 		return self._inventory.get(key, 0)
 
+	def __repr__(self):
+		return repr(self._inventory)
+
+	def __str__(self):
+		return str(self._inventory)
+
+

@@ -72,17 +72,17 @@ class BuildingTool(NavigationTool):
 			if settlement and self.ship:
 				return False
 			elif settlement or self.ship:
-				for (key, value) in cost.iteritems():
+				for (key, value) in cost.iteritems(): # Cost checking
 					if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
 						print "Warning: more ressources of #%i needed for building id '%i'. Storage %i < %i" % (key, self._class.id, game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)), value)
 						return False
+				for xx in xrange(position.x, position.x + self._class.size[0]): # Blocked checking
+					for yy in xrange(position.y, position.y + self._class.size[1]):
+						tile = island.get_tile(xx, yy)
+						if not tile or tile.blocked:
+							return False
 			else:
 				return False
-			for xx in xrange(position.x, position.x + self._class.size[0]):
-				for yy in xrange(position.y, position.y + self._class.size[1]):
-					tile = island.get_tile(xx, yy)
-					if not tile or tile.blocked:
-						return False
 		else:
 			return False
 
