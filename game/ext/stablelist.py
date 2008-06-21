@@ -29,9 +29,9 @@ class stablelist(object):
 		if len(self._free) > 0:
 			return self._free.pop()
 		else:
-			self._last = self._last + 1
+			self._last += 1
 			return self._last
-	
+
 	def append(self, value):
 		key = self._getFreeKey()
 		self._values[key] = value

@@ -21,11 +21,10 @@
 
 from game.world.building.building import *
 import game.main
-from game.world.settlement import Settlement
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, island_id, instance = None):
+	def __init__(self, building, x, y, island_id, instance = None, ship = None):
 		"""Create the command
 		@param building: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
@@ -36,6 +35,8 @@ class Build(object):
 		self.building = building.id
 		self.island_id = island_id
 		self.instance = None if instance == None else instance.getId()
+		self.ship = None if ship == None else game.main.session.world.ships.index(ship)
+		self.radius = building.radius
 		self.x = int(x)
 		self.y = int(y)
 
@@ -44,11 +45,21 @@ class Build(object):
 		@param issuer: the issuer of the command
 		"""
 		building = game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
-		game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)
-		# TODO: Add building to players/settlements
+		if self.ship:
+			game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, self.radius, issuer)
+			game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)
+			for (key, value) in building.costs.items():
+				game.main.session.world.ships[self.ship].inventory.alter_inventory(key, -value)
+				issuer.inventory.alter_inventory(key, -value)
+		else:
+			game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)
+			settlement = game.main.session.world.islands[self.island_id].get_settlement_at_position(self.x, self.y)
+			for (key, value) in building.costs.items():
+				issuer.inventory.alter_inventory(key, -value)
+				settlement.inventory.alter_inventory(key, -value)
 
 class Tear(object):
-	"""Command class that builds an object."""
+	"""Command class that tears an object."""
 	def __init__(self, building):
 		"""Create the command
 		@param building: building that is to be teared.
@@ -75,24 +86,3 @@ class Tear(object):
 		"""
 		(game.main.session.world.islands[self.island_id] if self.settlement_id == None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].remove()
 
-class Settle(object):
-	"""Command class that creates a warehouse and a settlement."""
-	def __init__(self, building, x, y, island_id, instance = None):
-		"""Create the command
-		@param building: building class that is to be built
-		@param x, y: int coordinates where the object is to be built.
-		@param island_id: int id of the island teh object is to be built on.
-		@param player: int player id of the player that creates the new settlement.
-		@param radius: int radius of the area of influence of the new settlement.
-		@param instance: preview instance, can then be reused for the final building (only singleplayer)
-		"""
-		self.building = building.id
-		self.island_id = island_id
-		self.x, self.y = int(x), int(y)
-		self.radius = building.radius
-		self.instance = None if instance == None else instance.getId()
-
-	def __call__(self, issuer):
-		building = game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
-		game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, self.radius, issuer)
-		game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)

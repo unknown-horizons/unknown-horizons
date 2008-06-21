@@ -22,7 +22,7 @@
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from game.world.building.building import *
-from game.command.building import Build, Settle
+from game.command.building import Build
 
 import fife
 import game.main
@@ -125,9 +125,6 @@ class BuildingTool(NavigationTool):
 			if self._buildCheck(mapcoord):
 				island = game.main.session.world.get_island(mapcoord.x, mapcoord.y)
 				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
-				if self.ship:
-					game.main.session.manager.execute(Settle(self._class, mapcoord.x, mapcoord.y, island.id, self.previewInstance))
-				else:
-					game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.previewInstance))
+				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, island.id, self.previewInstance, self.ship))
 				game.main.session.cursor = SelectionTool()
 		evt.consume()
