@@ -4,7 +4,7 @@
   <ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_left.png" size="32,32" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" position="15,150" />
   <ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_right.png" size="32,32" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png"  position="120,150" />
   
-  <ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy.png" size="40,40" position="200,37" />
+  <ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy.png" down_image="content/gui/images/icons/hud/main/diplomacy.png" hover_image="content/gui/images/icons/hud/main/diplomacy.png" size="40,40" position="200,37" />
   <Icon image="content/gui/images/background/hud/background_48.png" position="200,90"/><ImageButton name="inventory" up_image="content/gui/images/icons/hud/main/inventory.png" size="48,48" position="200,90" />
   <ImageButton name="build" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build.png" hover_image="content/gui/images/icons/hud/main/build.png" size="40,40" position="200,143" />
 </Container>
