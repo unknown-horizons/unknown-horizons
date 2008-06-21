@@ -36,6 +36,7 @@ class Build(object):
 		self.island_id = island_id
 		self.instance = None if instance == None else instance.getId()
 		self.ship = None if ship == None else game.main.session.world.ships.index(ship)
+		print self.ship, ship
 		self.radius = building.radius
 		self.x = int(x)
 		self.y = int(y)
@@ -45,7 +46,7 @@ class Build(object):
 		@param issuer: the issuer of the command
 		"""
 		building = game.main.session.entities.buildings[self.building](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
-		if self.ship:
+		if self.ship is not None:
 			game.main.session.world.islands[self.island_id].add_settlement(self.x, self.y, self.radius, issuer)
 			game.main.session.world.islands[self.island_id].add_building(self.x, self.y, building, issuer)
 			for (key, value) in building.costs.items():

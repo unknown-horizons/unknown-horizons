@@ -41,7 +41,6 @@ class BuildingTool(NavigationTool):
 	def __init__(self, building, ship = None):
 		print "Created buildingtool."
 		super(BuildingTool, self).__init__()
-
 		self.ship = ship
 		self._class = building
 
