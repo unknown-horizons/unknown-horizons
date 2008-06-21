@@ -57,8 +57,6 @@ class BuildingTool(NavigationTool):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
 			cost = self._class.calcBuildingCost(game.main.session.view.layers[0],  game.main.session.view.layers[1],  position)
-			# TODO: implement cost checking
-			# if cost < depot(nearest_island or ship):BlockedError
 		except BlockedError:
 			return False
 
@@ -71,11 +69,16 @@ class BuildingTool(NavigationTool):
 		island = game.main.session.world.get_island(position.x, position.y)
 		if island:
 			settlement = island.get_settlement_at_position(position.x, position.y)
-			if settlement:
+			if settlement or self.ship:
 				for (key, value) in cost.iteritems():
-					if game.main.session.world.player.inventory.get_value(key) + settlement.inventory.get_value(key) < value:
-						print 'more of ressource #' + str(key), 'needed: player:', game.main.session.world.player.inventory.get_value(key), 'settlement:', settlement.inventory.get_value(key), '<', value
+					if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
+						print 'more of ressource #' + str(key), 'needed: player:', game.main.session.world.player.inventory.get_value(key),
+						print ('settlement:', settlement.inventory.get_value(key), '<', value) if settlement else ('ship:', self.ship.inventory.get_value(key), '<', value)
 						return False
+			elif settlement and self.ship:
+				return False
+			else:
+				return False
 			for i in range(0, self._class.size[0]):
 				startx = position.x - self._class.size[0]/2 + i
 				for b in range(0, self._class.size[1]):
