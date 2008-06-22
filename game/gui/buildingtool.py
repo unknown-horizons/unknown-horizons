@@ -26,6 +26,7 @@ from game.command.building import Build
 
 import fife
 import game.main
+import math
 
 """
 Represents a dangling tool after a building was selected from the list.
@@ -48,11 +49,18 @@ class BuildingTool(NavigationTool):
 
 		game.main.onEscape = self.onEscape
 
+		if ship == None:
+			for island in game.main.session.world.islands:
+				for tile in island.grounds:
+					if tile.settlement != None and tile.settlement.owner == game.main.session.world.player:
+						game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+
 	def __del__(self):
 		super(BuildingTool, self).__del__()
+		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		print 'deconstruct',self
 
-	def _buildCheck(self,  position):
+	def _buildCheck(self, position):
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
 			cost = self._class.calcBuildingCost(game.main.session.view.layers[0],  game.main.session.view.layers[1],  position)
@@ -60,9 +68,8 @@ class BuildingTool(NavigationTool):
 			return False
 
 		if self.ship:
-			shippos = self.ship._instance.getLocation().getMapCoordinates()
-			distance = (shippos - position).length()
-			if distance > 10:
+			square_distance = (self.ship.position[0] - position.x) ** 2 + (self.ship.position[1] - position.y) ** 2
+			if square_distance > 100:
 				return False
 
 		island = game.main.session.world.get_island(position.x, position.y)
@@ -87,7 +94,7 @@ class BuildingTool(NavigationTool):
 
 		return self.ship or island.get_settlement_at_position(position.x, position.y)
 
-	def mouseMoved(self,  evt):
+	def mouseMoved(self, evt):
 		super(BuildingTool, self).mouseMoved(evt)
 		pt = fife.ScreenPoint(evt.getX(), evt.getY())
 		target_mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
@@ -112,7 +119,7 @@ class BuildingTool(NavigationTool):
 		game.main.session.cursor = SelectionTool()
 		game.main.session.view.layers[1].deleteInstance(self.previewInstance)
 
-	def mousePressed(self,  evt):
+	def mousePressed(self, evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
