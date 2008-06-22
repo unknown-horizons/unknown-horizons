@@ -39,7 +39,6 @@ class Production(Building):
 
 	def start(self):
 		game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
-		print dir(self)
 
 	def tick(self):
 		self.current_production += 1
