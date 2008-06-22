@@ -90,18 +90,28 @@ class Island(object):
 				return tile.settlement
 		return None
 
-	def add_settlement(self, x, y, radius, player):
+	def add_settlement(self, min_x, min_y, max_x, max_y, radius, player):
 		"""Adds a settlement to the island at the posititon x, y with radius as area of influence.
 		@param x,y: int position used as center for the area of influence
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(player)
 		self.settlements.append(settlement)
-		for tile in self.grounds: # Set settlement var for all tiles in the radius.
-			if abs((tile.x-x)**2+(tile.y-y)**2) <= radius**2:
-				tile.settlement = settlement
-		print "New settlement created at (%i:%i) for player: %s" % (x, y, player.name)
+		self.assign_settlement(min_x, min_y, max_x, max_y, radius, settlement)
 		return settlement
+
+	def assign_settlement(self, min_x, min_y, max_x, max_y, radius, settlement):
+		inherits = []
+		for tile in self.grounds: # Set settlement var for all tiles in the radius.
+			if (max(min_x - tile.x, 0, tile.x - max_x) ** 2) + (max(min_x - tile.x, 0, tile.x - max_x) ** 2) <= radius ** 2:
+				if tile.settlement == None:
+					tile.settlement = settlement
+				elif tile.settlement.owner == settlement.owner:
+					inherits.append(tile.settlement)
+		for tile in self.grounds:
+			if tile.settlement in inherits:
+				tile.settlement = settlement
+		#todo: inherit ressources etc
 
 	def add_building(self, x, y, building, player):
 		"""Adds a building to the island at the posititon x, y with player as the owner.
@@ -111,7 +121,9 @@ class Island(object):
 		building.island = self
 		building.settlement = self.get_settlement_at_position(x, y)
 		if building.settlement == None:
-			building.settlement = self.add_settlement(x, y, building.radius, player)
+			building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
+		else:
+			self.assign_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, building.settlement)
 		for xx in xrange(x, x + building.size[0]):
 			for yy in xrange(y, y + building.size[1]):
 				tile = self.get_tile(xx, yy)
