@@ -93,7 +93,7 @@ class View(object):
 		@param x: int representing the amount of pixels to scroll in x direction
 		@param y: int representing the amount of pixels to scroll in y direction
 		"""
-		loc = self.cam.getLocationRef()
+		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
 		if x != 0:
 			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
@@ -113,25 +113,22 @@ class View(object):
 			pos.y = game.main.session.world.min_y
 
 		self.cam.setLocation(loc)
+		self.cam.refresh()
 
 	def zoom_out(self):
 		zoom = self.cam.getZoom() * 0.875
 		if(zoom < 0.25):
 			zoom = 0.25
 		self.cam.setZoom(zoom)
-		self.scroll(0, 0)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / 0.875
 		if(zoom > 1):
 			zoom = 1
 		self.cam.setZoom(zoom)
-		self.scroll(0, 0)
 
 	def rotate_right(self):
 		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
-		self.scroll(0, 0)
 
 	def rotate_left(self):
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
-		self.scroll(0, 0)
