@@ -58,6 +58,8 @@ class BuildingTool(NavigationTool):
 	def __del__(self):
 		super(BuildingTool, self).__del__()
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		if self.previewInstance is not None:
+			game.main.session.view.layers[1].deleteInstance(self.previewInstance)
 		print 'deconstruct',self
 
 	def _buildCheck(self,  x, y):
@@ -120,7 +122,6 @@ class BuildingTool(NavigationTool):
 
 	def onEscape(self):
 		game.main.session.cursor = SelectionTool()
-		game.main.session.view.layers[1].deleteInstance(self.previewInstance)
 
 	def mousePressed(self, evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
@@ -134,5 +135,6 @@ class BuildingTool(NavigationTool):
 			if self._buildCheck(mapcoord.x, mapcoord.y):
 				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
 				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance, self.ship))
+				self.previewInstance = None
 				game.main.session.cursor = SelectionTool()
 		evt.consume()
