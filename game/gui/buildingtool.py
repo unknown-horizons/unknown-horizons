@@ -66,11 +66,11 @@ class BuildingTool(NavigationTool):
 		try:
 			cost = self._class.calcBuildingCost()
 		except BlockedError:
+			print 'blocked error'
 			return False
 
 		if self.ship:
-			shippos = self.ship._instance.getLocation().getMapCoordinates()
-			if (max(x - shippos.x, 0, shippos.x - (x+self._class.size[0]-1)) ** 2) + (max(y - shippos.y, 0, shippos.y - (y+self._class.size[1]-1)) ** 2) >= 10 ** 2:
+			if (max(x - self.ship.position[0], 0, self.ship.position[0] - x - self._class.size[0] + 1) ** 2) + (max(y - self.ship.position[1], 0, self.ship.position[1] - (y + self._class.size[1]-1)) ** 2) >= 100:
 				return False
 
 		island = game.main.session.world.get_island(x, y)
@@ -89,8 +89,10 @@ class BuildingTool(NavigationTool):
 						if not tile or tile.blocked:
 							return False
 			else:
+				print 'no settlement'
 				return False
 		else:
+			print 'no island'
 			return False
 
 		return self.ship or island.get_settlement_at_position(x, y)

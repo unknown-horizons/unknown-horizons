@@ -34,9 +34,8 @@ class Island(object):
 	def __init__(self, id, x, y, file):
 		self.id = id
 		self.file = file
-		self.x, self.y = x, y
 		game.main.db("attach ? as island", file)
-		self.width, self.height = game.main.db("select (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground")[0]
+		self.x, self.y, self.width, self.height = game.main.db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground", x, y)[0]
 		self.grounds = []
 		self.buildings = stablelist()
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):

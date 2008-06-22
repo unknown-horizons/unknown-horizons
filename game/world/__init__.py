@@ -89,6 +89,7 @@ class World(object):
 		for i in self.islands:
 			if not (i.x <= x < i.x + i.width and i.y <= y < i.y + i.height):
 				continue
+			print 'found island'
 			for tile in i.grounds:
 				if tile.x == x and tile.y == y:
 					return i
