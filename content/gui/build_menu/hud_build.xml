@@ -7,9 +7,7 @@
     <Icon name="tab5" image="content/gui/images/background/hud/tab_bg.png" position="0,164" /><ImageButton name="specialTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,164" />
 
     <Icon image="content/gui/images/background/hud/ingame3.png" position="64,4" />
-    <ScrollArea position="64,5" size="533,190" >
-        <Container size="533,190" name="content">
-        <!-- Tabelle zum Einordnen der Gebäude: Nebeneinander die Gebäude, darunter 6 Zeilen für die einzelnen Klassen -->
-        </Container>
-    </ScrollArea>
+    <Container  position="64,5" size="533,190" name="content" background_image="content/gui/images/background/hud/ingame3.png">
+    <!-- Tabelle zum Einordnen der Gebaeude: Nebeneinander die Gebaeude, darunter 6 Zeilen fuer die einzelnen Klassen -->
+    </Container>
 </Container>

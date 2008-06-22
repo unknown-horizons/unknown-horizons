@@ -29,12 +29,10 @@ class IngameGui(object):
 		self.gui = {}
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
-		self.gui['build_tab0'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab0.xml')
-		self.gui['build_tab1'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab1.xml')
-		self.gui['build_tab2'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab2.xml')
-		self.gui['build_tab3'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab3.xml')
-		self.gui['build_tab4'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab4.xml')
-		self.gui['build_tab5'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab5.xml')
+		self.gui['build'].stylize('menu')
+		for i in range(0,6):
+			self.gui['build_tab'+str(i)] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab'+str(i)+'.xml')
+			self.gui['build_tab'+str(i)].stylize('menu')
 		self.gui['build'].findChild(name='content').addChild(self.gui['build_tab0']) #Add first menu
 		self.gui['build'].findChild(name='content').adaptLayout()
 		self.active_build = 0

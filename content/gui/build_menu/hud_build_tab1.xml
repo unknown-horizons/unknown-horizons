@@ -1,7 +1,7 @@
 <!-- Residents tab -->
 <Container name="tab0" size="533,190">
-  <Label position="5,5" text="Residents" />
-  <Icon position="5,53" image="content/gui/images/icons/hud/common/class1.png" />
+  <Label position="10,5" text="Residents" />
+  <Icon position="10,53" image="content/gui/images/icons/hud/common/class1.png" />
   <!-- Uncomment if implented
     <Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
     <Icon position="5,149" image="content/gui/images/icons/hud/common/class3.png" />
