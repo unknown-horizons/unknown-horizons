@@ -25,6 +25,7 @@ from game.world.ground import GroundClass
 import game.main
 
 class Entities(object):
+	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances."""
 	def __init__(self):
 		self._instances = {}
 		self._instances_id = 0

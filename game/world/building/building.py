@@ -27,6 +27,10 @@ class BlockedError(Exception):
 	pass
 
 class Building(object):
+	"""Class that represents a building. The building class is mainly a super class for other buildings.
+	@param x, y: int position of the building.
+	@param owner: Player that owns the building.
+	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	def __init__(self, x, y, owner, instance = None):
 		self.x = x
 		self.y = y
@@ -48,19 +52,9 @@ class Building(object):
 		game.main.session.view.layers[1].deleteInstance(self._instance)
 		self._instance.thisown = 1
 
-	def calcBuildingCost(cls, ground_layer,  building_layer, position):
+	def calcBuildingCost(self):
 		#TODO do ground checking and throw exception if blocked
-		def checkLayer(layer):
-			for x in xrange(cls.size[0]):
-				for y in xrange(cls.size[1]):
-					coord = fife.ModelCoordinate(int(position.x + y),  int(position.y + y))
-					if (layer.cellContainsBlockingInstance(coord)):
-						raise BlockedError
-
-		checkLayer(ground_layer)
-		checkLayer(building_layer)
-
-		return cls.costs
+		return self.costs
 
 	calcBuildingCost = classmethod(calcBuildingCost)
 

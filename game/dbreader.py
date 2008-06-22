@@ -28,7 +28,6 @@ class DbReader(object):
 		"""Init function, opens the connection to a database and creates a cursor for that database
 		@param file: str containing the database file.
 		"""
-
 		self.connection = sqlite3.connect(file)
 		self.connection.isolation_level = None
 		def regexp(expr, item):

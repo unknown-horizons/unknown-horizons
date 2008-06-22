@@ -26,6 +26,8 @@ import game.main
 import fife
 
 class BuildingClass(type):
+	"""Class that is used to create Building-Classes from the database.
+	@param id: int - building id in the database."""
 	def __new__(self, id):
 		(class_package,  class_name) = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
 		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})

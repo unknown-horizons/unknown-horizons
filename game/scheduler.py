@@ -80,7 +80,7 @@ class CallbackObject(object):
 		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
 		"""
-		self.runin = runin
 		self.callback = callback
-		self.loops = loops
 		self.parent_class = parent_class
+		self.runin = runin
+		self.loops = loops

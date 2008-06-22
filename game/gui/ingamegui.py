@@ -132,8 +132,6 @@ class IngameGui(object):
 		tab2._setImage(activetabimg)
 		contentarea = self.gui['build'].findChild(name='content')
 		contentarea.removeChild(self.gui['build_tab'+str(self.active_build)])
-		#self.gui['build_tab'+str(self.active_build)].hide()
-		#self.gui['build_tab'+str(num)].show()
 		contentarea.addChild(self.gui['build_tab'+str(num)])
 		contentarea.adaptLayout()
 		self.active_build = num

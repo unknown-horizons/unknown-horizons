@@ -23,6 +23,7 @@ import fife
 import game.main
 
 class CursorTool(fife.IMouseListener):
+	"""Basic tool for cursors."""
 	def __init__(self):
 		super(CursorTool, self).__init__()
 		game.main.fife.eventmanager.addMouseListener(self)
@@ -34,7 +35,7 @@ class CursorTool(fife.IMouseListener):
 	def mousePressed(self, evt):
 		pass
 	def mouseReleased(self, evt):
-		pass	
+		pass
 	def mouseEntered(self, evt):
 		pass
 	def mouseExited(self, evt):
@@ -42,7 +43,7 @@ class CursorTool(fife.IMouseListener):
 	def mouseClicked(self, evt):
 		pass
 	def mouseWheelMovedUp(self, evt):
-		pass	
+		pass
 	def mouseWheelMovedDown(self, evt):
 		pass
 	def mouseMoved(self, evt):

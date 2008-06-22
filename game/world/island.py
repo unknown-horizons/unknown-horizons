@@ -103,7 +103,7 @@ class Island(object):
 	def assign_settlement(self, min_x, min_y, max_x, max_y, radius, settlement):
 		inherits = []
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
-			if (max(min_x - tile.x, 0, tile.x - max_x) ** 2) + (max(min_x - tile.x, 0, tile.x - max_x) ** 2) <= radius ** 2:
+			if (max(min_x - tile.x, 0, tile.x - max_x) ** 2) + (max(min_y - tile.y, 0, tile.y - max_y) ** 2) <= radius ** 2:
 				if tile.settlement == None:
 					tile.settlement = settlement
 				elif tile.settlement.owner == settlement.owner:

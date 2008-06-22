@@ -60,21 +60,22 @@ class BuildingTool(NavigationTool):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		print 'deconstruct',self
 
-	def _buildCheck(self, position):
+	def _buildCheck(self,  x, y):
+		"""@param x,y: int position that is to be checked."""
 		# TODO: Return more detailed error descriptions than a boolean
 		try:
-			cost = self._class.calcBuildingCost(game.main.session.view.layers[0],  game.main.session.view.layers[1],  position)
+			cost = self._class.calcBuildingCost()
 		except BlockedError:
 			return False
 
 		if self.ship:
-			square_distance = (self.ship.position[0] - position.x) ** 2 + (self.ship.position[1] - position.y) ** 2
-			if square_distance > 100:
+			shippos = self.ship._instance.getLocation().getMapCoordinates()
+			if (max(x - shippos.x, 0, shippos.x - (x+self._class.size[0]-1)) ** 2) + (max(y - shippos.y, 0, shippos.y - (y+self._class.size[1]-1)) ** 2) >= 10 ** 2:
 				return False
 
-		island = game.main.session.world.get_island(position.x, position.y)
+		island = game.main.session.world.get_island(x, y)
 		if island:
-			settlement = island.get_settlement_at_position(position.x, position.y)
+			settlement = island.get_settlement_at_position(x, y)
 			if settlement and self.ship:
 				return False
 			elif settlement or self.ship:
@@ -82,8 +83,8 @@ class BuildingTool(NavigationTool):
 					if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
 						print "Warning: more ressources of #%i needed for building id '%i'. Storage %i < %i" % (key, self._class.id, game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)), value)
 						return False
-				for xx in xrange(position.x, position.x + self._class.size[0]): # Blocked checking
-					for yy in xrange(position.y, position.y + self._class.size[1]):
+				for xx in xrange(x, x + self._class.size[0]): # Blocked checking
+					for yy in xrange(y, y + self._class.size[1]):
 						tile = island.get_tile(xx, yy)
 						if not tile or tile.blocked:
 							return False
@@ -92,7 +93,7 @@ class BuildingTool(NavigationTool):
 		else:
 			return False
 
-		return self.ship or island.get_settlement_at_position(position.x, position.y)
+		return self.ship or island.get_settlement_at_position(x, y)
 
 	def mouseMoved(self, evt):
 		super(BuildingTool, self).mouseMoved(evt)
@@ -109,7 +110,7 @@ class BuildingTool(NavigationTool):
 		self.previewInstance.setFacingLocation(l)
 		target_mapcoord.x = target_mapcoord.x - 1
 
-		can_build = self._buildCheck(target_mapcoord)
+		can_build = self._buildCheck(target_mapcoord.x, target_mapcoord.y)
 		color = (255, 255, 255) if can_build else (255, 0, 0)
 		game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance, *color)
 
@@ -128,7 +129,7 @@ class BuildingTool(NavigationTool):
 			mapcoord.x = int(mapcoord.x + 0.5)
 			mapcoord.y = int(mapcoord.y + 0.5)
 			mapcoord.z = 0
-			if self._buildCheck(mapcoord):
+			if self._buildCheck(mapcoord.x, mapcoord.y):
 				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
 				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance, self.ship))
 				game.main.session.cursor = SelectionTool()
