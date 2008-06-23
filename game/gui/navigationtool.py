@@ -50,8 +50,9 @@ class NavigationTool(CursorTool):
 			self.lastmoved = current
 			island = game.main.session.world.get_island(int(current.x + 0.5), int(current.y + 0.5))
 			if island:
-				settlement = island.get_settlement_at_position(int(current.x + 0.5), int(current.y + 0.5))
-				if settlement:
+				settlements = island.get_settlements(int(current.x + 0.5), int(current.y + 0.5))
+				if len(settlements) > 0:
+					settlement = settlements.pop()
 					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory.get_value(4)))
 					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory.get_value(6)))
 					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory.get_value(7)))

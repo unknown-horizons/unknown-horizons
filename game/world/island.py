@@ -66,28 +66,35 @@ class Island(object):
 	def get_building(self, x, y):
 		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
 			return None
-		s = self.get_settlement_at_position(x, y)
-		if s == None:
+		settlements = self.get_settlements(x, y)
+		if len(settlements) == 0:
 			for b in self.buildings:
 				if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
 					return b
 			else:
 				return None
 		else:
-			return s.get_building(x, y)
+			for settlement in settlements:
+				return settlement.get_building(x, y)
 
-	def get_settlement_at_position(self, x, y):
-		"""Returns the settlement for that coordinate, if none is found, returns None.
-		@param x: int x position.
-		@param y: int y position.
-		@param island: island that is to be searched.
-		@return: Settlement instance at that position."""
-		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
-			return None
+	def get_settlements(self, min_x, min_y, max_x = None, max_y = None):
+		"""Returns the list of settlements for the coordinates describing a rect.
+		@param min_x: int minimum x position.
+		@param min_y: int minimum y position.
+		@param max_x: int maximum x position.
+		@param max_y: int maximum y position.
+		@return: list of Settlement instances at that position."""
+		if max_x == None:
+			max_x = min_x
+		if max_y == None:
+			max_y = min_y
+		settlements = []
+		if max_x < self.x or min_x >= self.x + self.width or max_y < self.y or min_y >= self.y + self.height:
+			return []
 		for tile in self.grounds:
-			if tile.x == x and tile.y == y:
-				return tile.settlement
-		return None
+			if min_x <= tile.x <= max_x and min_y <= tile.y <= max_y and tile.settlement != None and tile.settlement not in settlements:
+				settlements.append(tile.settlement)
+		return settlements
 
 	def add_settlement(self, min_x, min_y, max_x, max_y, radius, player):
 		"""Adds a settlement to the island at the posititon x, y with radius as area of influence.
@@ -118,11 +125,11 @@ class Island(object):
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
 		building.island = self
-		building.settlement = self.get_settlement_at_position(x, y)
-		if building.settlement == None:
-			building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
-		else:
+		for building.settlement in self.get_settlements(x, y):
 			self.assign_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, building.settlement)
+			break
+		else:
+			building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
 		for xx in xrange(x, x + building.size[0]):
 			for yy in xrange(y, y + building.size[1]):
 				tile = self.get_tile(xx, yy)

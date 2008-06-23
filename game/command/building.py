@@ -45,7 +45,7 @@ class Build(object):
 		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
 
 		island.add_building(self.x, self.y, building, issuer)
-		secondary_ressource_source = island.get_settlement_at_position(self.x, self.y) if self.ship == None else game.main.session.world.ships[self.ship]
+		secondary_ressource_source = island.get_settlements(self.x, self.y).pop() if self.ship == None else game.main.session.world.ships[self.ship]
 		for (ressource, value) in building.costs.items():
 			assert(secondary_ressource_source.inventory.alter_inventory(ressource, issuer.inventory.alter_inventory(ressource, -value)) == 0)
 

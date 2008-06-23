@@ -76,10 +76,11 @@ class BuildingTool(NavigationTool):
 
 		island = game.main.session.world.get_island(x, y)
 		if island:
-			settlement = island.get_settlement_at_position(x, y)
-			if settlement and self.ship:
+			settlements = island.get_settlements(x, y, x + self._class.size[0] - 1, y + self._class.size[1] - 1)
+			if len(settlements) > 0 and self.ship and not False: #False -> game setting "allow_multi_settlements_pre_island"
 				return False
-			elif settlement or self.ship:
+			elif len(settlements) > 0 or self.ship:
+				settlement = settlements.pop() if len(settlements) > 0 else None
 				for (key, value) in cost.iteritems(): # Cost checking
 					if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
 						print "Warning: more ressources of #%i needed for building id '%i'. Storage %i < %i" % (key, self._class.id, game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)), value)
@@ -89,14 +90,11 @@ class BuildingTool(NavigationTool):
 						tile = island.get_tile(xx, yy)
 						if not tile or tile.blocked:
 							return False
+				return True
 			else:
-				print 'no settlement'
 				return False
 		else:
-			print 'no island'
 			return False
-
-		return self.ship or island.get_settlement_at_position(x, y)
 
 	def mouseMoved(self, evt):
 		super(BuildingTool, self).mouseMoved(evt)
