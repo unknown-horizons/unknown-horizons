@@ -36,6 +36,10 @@ class SelectionTool(NavigationTool):
 		super(SelectionTool, self).begin()
 		game.main.onEscape = game.main.showPause
 
+	def end(self):
+		game.main.onEscape = lambda : None
+		super(SelectionTool, self).end()
+
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""
 		game.main.session.selected_instance._instance.say(str(game.main.session.selected_instance.health) + '%', 0) # display health over selected ship

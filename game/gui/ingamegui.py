@@ -22,10 +22,12 @@
 from buildingtool import BuildingTool
 import game.main
 import fife
+from living import livingObject
 
-class IngameGui(object):
+class IngameGui(livingObject):
 	"""Class handling all the ingame gui events."""
-	def __init__(self):
+	def begin(self):
+		super(IngameGui, self).begin()
 		self.gui = {}
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
@@ -69,10 +71,8 @@ class IngameGui(object):
 			'rotateLeft' : game.main.session.view.rotate_left,
 		})
 
-	def __del__(self):
-		print 'deconstruct',self
-
 	def end(self):
+		super(IngameGui, self).end()
 		self.gui['build'].mapEvents({
 			'servicesTab' : lambda : None,
 			'residentsTab' : lambda : None,

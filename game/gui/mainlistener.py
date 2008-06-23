@@ -23,11 +23,13 @@ import fife
 import game.main
 import code
 import sys
+from living import livingObject
 
-class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
+class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 	"""MainListener Class to process events of main window"""
 
-	def __init__(self):
+	def begin(self):
+		super(MainListener, self).begin()
 		fife.IKeyListener.__init__(self)
 		fife.ConsoleExecuter.__init__(self)
 		game.main.fife.eventmanager.addKeyListener(self)
@@ -41,8 +43,8 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 
 		self.commandbuffer = ''
 
-	def __del__(self):
-		print 'deconstruct',self
+	def end(self):
+		super(MainListener, self).end()
 		game.main.fife.eventmanager.removeKeyListener(self)
 
 	def keyPressed(self, evt):

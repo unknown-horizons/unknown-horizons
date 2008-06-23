@@ -50,6 +50,7 @@ def start():
 		fife.bgsound.play()
 
 	mainlistener = MainListener()
+	mainlistener.begin()
 	connection = None
 	session = None
 	gui = None

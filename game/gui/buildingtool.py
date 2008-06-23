@@ -39,19 +39,16 @@ class BuildingTool(NavigationTool):
 	@param ship: If building from a ship, restrict to range of ship
 	"""
 
-	def __init__(self, building, ship = None):
-		super(BuildingTool, self).__init__()
+	def begin(self, building, ship = None):
+		super(BuildingTool, self).begin()
 		self.ship = ship
 		self._class = building
-
-	def begin(self):
-		super(BuildingTool, self).begin()
 
 		self.previewInstance = self._class.createInstance(-100, -100)
 
 		game.main.onEscape = self.onEscape
 
-		if self.ship == None:
+		if ship == None:
 			for island in game.main.session.world.islands:
 				for tile in island.grounds:
 					if tile.settlement != None and tile.settlement.owner == game.main.session.world.player:

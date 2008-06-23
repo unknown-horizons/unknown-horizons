@@ -26,13 +26,11 @@ class Scheduler(livingObject):
 	""""Class providing timed callbacks.
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	"""
-	def __init__(self):
+	def begin(self):
+		super(Scheduler, self).begin()
 		self.schedule = {}
 		self.cur_tick = 0
 		game.main.session.timer.add_call(self.tick)
-
-	def __del__(self):
-		print 'deconstruct',self
 
 	def tick(self, tick_id):
 		"""Threads main loop

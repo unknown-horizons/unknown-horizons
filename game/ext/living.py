@@ -34,12 +34,21 @@ class livingProperty(object):
 		else:
 			self.values[obj] = value
 			if hasattr(value, 'begin'):
-				value.begin()
+				print 'beginning', value
+				value.begin(*value._livingObject_args, **value._livingObject_kwargs)
+				del value._livingObject_args
+				del value._livingObject_kwargs
 
-	def __del__(self, obj):
+	def __delete__(self, obj):
 		self.__set__(obj, None)
 
 class livingObject(object):
+	def __init__(self, *args, **kwargs):
+		print 'initing', self
+		super(livingObject, self).__init__()
+		self._livingObject_args = args
+		self._livingObject_kwargs = kwargs
+
 	def begin(self):
 		pass
 

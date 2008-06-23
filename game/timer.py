@@ -30,27 +30,22 @@ class Timer(livingObject):
 	"""
 	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 
-	def __init__(self, ticks_per_second, tick_next_id = 0):
+	def begin(self, ticks_per_second, tick_next_id = 0):
 		"""
 		@param ticks_per_second: int times per second the timer is to tick
 		@param tick_next_id: int next tick id
 		"""
+		super(Timer, self).begin()
 		self.ticks_per_second = ticks_per_second
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
 		self.tick_func_test = []
 		self.tick_func_call = []
-
-	def begin(self):
-		super(Timer, self).begin()
 		game.main.fife.pump.append(self.check_tick)
 
 	def end(self):
-		super(Timer, self).end()
 		game.main.fife.pump.remove(self.check_tick)
-
-	def __del__(self):
-		print 'deconstruct',self
+		super(Timer, self).end()
 
 	def add_test(self, call):
 		"""Adds a call to the test list

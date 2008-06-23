@@ -27,7 +27,8 @@ from living import *
 
 class Entities(livingObject):
 	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances."""
-	def __init__(self):
+	def begin(self):
+		super(Entities, self).begin()
 		self._instances = {}
 		self._instances_id = 0
 
@@ -57,6 +58,3 @@ class Entities(livingObject):
 
 	def getInstance(self, id):
 		return self._instances[int(id)]
-
-	def __del__(self):
-		print 'deconstruct',self

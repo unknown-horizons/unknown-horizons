@@ -22,17 +22,18 @@
 import fife
 import game.main
 from tearingtool import TearingTool
+from living import livingObject
 
-class IngameKeyListener(fife.IKeyListener):
+class IngameKeyListener(livingObject, fife.IKeyListener):
 	"""KeyListener Class to process key presses ingame"""
 
-	def __init__(self):
-		super(IngameKeyListener, self).__init__()
+	def begin(self):
+		super(IngameKeyListener, self).begin()
 		game.main.fife.eventmanager.addKeyListener(self)
 		self.keysPressed = []
 
-	def __del__(self):
-		print 'deconstruct',self
+	def end(self):
+		super(IngameKeyListener, self).end()
 		game.main.fife.eventmanager.removeKeyListener(self)
 
 	def keyPressed(self, evt):

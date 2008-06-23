@@ -34,13 +34,11 @@ class SPManager(livingObject):
 		"""
 		command(issuer = game.main.session.world.player)
 
-	def __del__(self):
-		print 'deconstruct',self
-
-class MPManager(object):
+class MPManager(livingObject):
 	COMMAND_RATE = 1
-	def __init__(self):
+	def begin(self):
 		"""Initialize the Multiplayer Manager"""
+		super(MPManager, self).begin()
 		game.timer.add_test(this.can_tick)
 		game.timer.add_call(this.tick)
 		self.commands = []

@@ -25,7 +25,7 @@ import game.main
 from living import *
 
 class View(livingObject):
-	def __init__(self, center = (0, 0)):
+	def begin(self, center = (0, 0)):
 		self.model = game.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -59,7 +59,7 @@ class View(livingObject):
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].addActiveLayer(self.layers[0])
 
-	def __del__(self):
+	def end(self):
 		print 'deconstruct',self
 		self.model.deleteMaps()
 		self.view.clearCameras()
