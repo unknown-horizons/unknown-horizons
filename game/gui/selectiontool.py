@@ -32,14 +32,9 @@ class SelectionTool(NavigationTool):
 	"""The Selectiontool is used to select instances on the game screen.
 	@param game: the main game Instance
 	"""
-	def __init__(self):
-		super(SelectionTool, self).__init__()
-
+	def begin(self):
+		super(SelectionTool, self).begin()
 		game.main.onEscape = game.main.showPause
-
-	def __del__(self):
-		super(SelectionTool, self).__del__()
-		print 'deconstruct',self
 
 	def select_unit(self):
 		"""Runs neccesary steps to select a unit."""

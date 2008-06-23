@@ -38,19 +38,12 @@ class TearingTool(NavigationTool):
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False
 	"""
 
-	def __init__(self):
-		print "Created tearingtool."
-		super(TearingTool, self).__init__()
-
+	def begin(self):
+		super(TearingTool, self).begin()
 		self.coords = None
 		self.selected = []
 		self.oldedges = None
-
 		game.main.onEscape = self.onEscape
-
-	def __del__(self):
-		super(TearingTool, self).__del__()
-		print 'deconstruct',self
 
 	def mouseDragged(self, evt):
 		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)

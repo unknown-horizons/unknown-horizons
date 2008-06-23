@@ -181,7 +181,7 @@ def startSingle():
 	gui = None
 
 	session = Session()
-	session.init()
+	session.begin()
 	if file == None:
 		session.generateMap()
 	else:
@@ -300,6 +300,7 @@ def quitSession():
 	if showDialog(fife.pychan.loadXML('content/gui/quitsession.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		gui.hide()
 		gui = None
+		session.end()
 		session = None
 		showMain()
 

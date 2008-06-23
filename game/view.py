@@ -22,8 +22,9 @@
 import fife
 import math
 import game.main
+from living import *
 
-class View(object):
+class View(livingObject):
 	def __init__(self, center = (0, 0)):
 		self.model = game.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")

@@ -36,13 +36,24 @@ from game.manager import SPManager
 from game.view import View
 from game.world import World
 from game.entities import Entities
+from living import *
 
-class Session(object):
+class Session(livingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading."""
-	def init(self):
+	timer = livingProperty()
+	manager = livingProperty()
+	scheduler = livingProperty()
+	view = livingProperty()
+	entities = livingProperty()
+	ingame_gui = livingProperty()
+	keylistener = livingProperty()
+	cursor = livingProperty()
+
+	def begin(self):
+		super(Session, self).begin()
+
 		#game
 		self.timer = Timer(16)
-		game.main.fife.pump.append(self.timer.check_tick)
 		self.manager = SPManager()
 		self.scheduler = Scheduler()
 		self.view = View()
@@ -55,11 +66,6 @@ class Session(object):
 
 		#to be (re)moved:
 		self.selected_instance = None
-
-	def __del__(self):
-		print 'deconstruct',self
-		self.ingame_gui.end()
-		game.main.fife.pump.remove(self.timer.check_tick)
 
 	def loadMap(self, map):
 		"""Loads a map.

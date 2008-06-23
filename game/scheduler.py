@@ -20,8 +20,9 @@
 # ###################################################
 
 import game.main
+from living import *
 
-class Scheduler(object):
+class Scheduler(livingObject):
 	""""Class providing timed callbacks.
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	"""

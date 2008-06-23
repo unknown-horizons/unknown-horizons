@@ -27,16 +27,15 @@ class NavigationTool(CursorTool):
 	"""The Selectiontool is used to select instances on the game screen.
 	@param game: the main game Instance
 	"""
-	def __init__(self):
-		super(NavigationTool, self).__init__()
+	def begin(self):
+		super(NavigationTool, self).begin()
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.debug = False
 
-	def __del__(self):
-		super(NavigationTool, self).__del__()
+	def end(self):
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		print 'deconstruct',self
+		super(NavigationTool, self).end()
 
 	def mouseDragged(self, evt):
 		NavigationTool.mouseMoved(self, evt)

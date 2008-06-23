@@ -22,8 +22,9 @@
 import game.timer
 import game.main
 from game.packets import TickPacket
+from living import *
 
-class SPManager(object):
+class SPManager(livingObject):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
 	over the network, and syncronisation of network games."""
 

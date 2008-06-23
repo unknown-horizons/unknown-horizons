@@ -40,27 +40,29 @@ class BuildingTool(NavigationTool):
 	"""
 
 	def __init__(self, building, ship = None):
-		print "Created buildingtool."
 		super(BuildingTool, self).__init__()
 		self.ship = ship
 		self._class = building
+
+	def begin(self):
+		super(BuildingTool, self).begin()
 
 		self.previewInstance = self._class.createInstance(-100, -100)
 
 		game.main.onEscape = self.onEscape
 
-		if ship == None:
+		if self.ship == None:
 			for island in game.main.session.world.islands:
 				for tile in island.grounds:
 					if tile.settlement != None and tile.settlement.owner == game.main.session.world.player:
 						game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 
-	def __del__(self):
-		super(BuildingTool, self).__del__()
+	def end(self):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		if self.previewInstance is not None:
 			game.main.session.view.layers[1].deleteInstance(self.previewInstance)
-		print 'deconstruct',self
+		super(BuildingTool, self).end()
+
 
 	def _buildCheck(self,  x, y):
 		"""@param x,y: int position that is to be checked."""

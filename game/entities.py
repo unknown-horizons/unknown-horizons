@@ -23,8 +23,9 @@ from game.world.building import BuildingClass
 from game.world.units import UnitClass
 from game.world.ground import GroundClass
 import game.main
+from living import *
 
-class Entities(object):
+class Entities(livingObject):
 	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances."""
 	def __init__(self):
 		self._instances = {}

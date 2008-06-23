@@ -21,8 +21,9 @@
 
 import time
 import game.main
+from living import *
 
-class Timer(object):
+class Timer(livingObject):
 	"""
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is espacialy important for multiplayer, to allow syncronous play.
@@ -39,6 +40,14 @@ class Timer(object):
 		self.tick_next_time = None
 		self.tick_func_test = []
 		self.tick_func_call = []
+
+	def begin(self):
+		super(Timer, self).begin()
+		game.main.fife.pump.append(self.check_tick)
+
+	def end(self):
+		super(Timer, self).end()
+		game.main.fife.pump.remove(self.check_tick)
 
 	def __del__(self):
 		print 'deconstruct',self

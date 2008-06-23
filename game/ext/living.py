@@ -19,35 +19,33 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
-import game.main
-from living import *
+class livingProperty(object):
+	def __init__(self):
+		self.values = {}
 
-class CursorTool(fife.IMouseListener, livingObject):
-	"""Basic tool for cursors."""
+	def __get__(self, obj, cls=None):
+		return self.values.get(obj, None)
+
+	def __set__(self, obj, value):
+		if obj in self.values and hasattr(self.values[obj], 'end'):
+			self.values[obj].end()
+		if value == None:
+			del self.values[obj]
+		else:
+			self.values[obj] = value
+			if hasattr(value, 'begin'):
+				value.begin()
+
+	def __del__(self, obj):
+		self.__set__(obj, None)
+
+class livingObject(object):
 	def begin(self):
-		super(CursorTool, self).begin()
-		game.main.fife.eventmanager.addMouseListener(self)
+		pass
 
 	def end(self):
-		super(CursorTool, self).end()
-		game.main.fife.eventmanager.removeMouseListener(self)
+		self._is_ended = True
 
-	def mousePressed(self, evt):
-		pass
-	def mouseReleased(self, evt):
-		pass
-	def mouseEntered(self, evt):
-		pass
-	def mouseExited(self, evt):
-		pass
-	def mouseClicked(self, evt):
-		pass
-	def mouseWheelMovedUp(self, evt):
-		pass
-	def mouseWheelMovedDown(self, evt):
-		pass
-	def mouseMoved(self, evt):
-		pass
-	def mouseDragged(self, evt):
-		pass
+	def __del__(self):
+		if not self._is_ended:
+			print "Warning: Object is not ended but no reference is left."
