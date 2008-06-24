@@ -23,7 +23,7 @@ from stablelist import stablelist
 from game.world.building.storages import Pickup
 
 class Settlement(object):
-	"""The Settlement class describes a settlement and stores all the neccassary information
+	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
 		"""
@@ -48,8 +48,6 @@ class Settlement(object):
 	def get_nearest_pickup(self, x, y):
 		"""Returns the nearest storage building that provides pickups.
 		"""
-		#TODO: Think of something better then the storage var
-		'checking distance'
 		ret = None
 		ret_dist = 0
 		for b in self.buildings:

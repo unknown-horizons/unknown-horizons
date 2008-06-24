@@ -40,6 +40,7 @@ class Production(Building):
 		self.health = 100
 		self.stock = Storage(1, 4)
 		self.current_production = 0
+		self.pickup_check = True
 
 
 	def start(self):
@@ -53,9 +54,9 @@ class Production(Building):
 				self.stock.alter_inventory(int(self.production_res), 1)
 			if self.stock.get_value(int(self.production_res)) <= 3:
 				self._instance.say('Stock: '+ str(self.stock.get_value(int(self.production_res))), 2000)
-			if self.stock.get_value(int(self.production_res)) == 4:
+			elif self.stock.get_value(int(self.production_res)) == 4:
 				self._instance.say('Full', 2000)
-			elif self.stock.get_value(int(self.production_res)) == 2:
+			if self.stock.get_value(int(self.production_res)) == 2 or not self.pickup_check:
 				self.call_pickup()
 		game.main.session.scheduler.add_new_object(self.tick, self, (6/int(self.production_rate))*game.main.session.timer.ticks_per_second)
 
@@ -64,8 +65,10 @@ class Production(Building):
 		pickup = self.settlement.get_nearest_pickup(self.x, self.y)
 		if pickup is None:
 			self._instance.say('NO PICKUP AVAILABLE!', 3000)
+			self.pickup_check = False
 		else:
 			pickup.add_to_queue(self, int(self.production_res))
+			self.pickup_check = True
 
 	def get_ressources(self, res):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
