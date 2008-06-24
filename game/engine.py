@@ -26,9 +26,9 @@ import game.gui.style
 import game.main
 import new
 
-class SQLiteAnimationLoader(fife.AnimationLoader):
+class SQLiteAnimationLoader(fife.ResourceLoader):
 	def __init__(self):
-		fife.AnimationLoader.__init__(self)
+		super(SQLiteAnimationLoader, self).__init__()
 		self.thisown = 0
 
 	def loadResource(self, location):
