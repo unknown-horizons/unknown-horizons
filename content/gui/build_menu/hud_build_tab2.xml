@@ -10,7 +10,7 @@
     <Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
   -->
   <ImageButton name="herder-1" position="58,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
-  <ImageButton name="weaver-1" position="106,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
+  <ImageButton name="weaver-1" position="106,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Weaver" />
 
   <ImageButton name="lumberjack-1" position="159,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="LJ" />
 
