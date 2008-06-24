@@ -45,13 +45,13 @@ class BuildingClass(type):
 			self.costs[name]=value
 		self._loadObject()
 
-	def _loadObject(self):
-		print 'Loading building #' + str(self.id) + '...'
-		self._object = game.main.session.view.model.createObject(str(self.id), 'building')
-		fife.ObjectVisual.create(self._object)
-		visual = self._object.get2dGfxVisual()
+	def _loadObject(cls):
+		print 'Loading building #' + str(cls.id) + '...'
+		cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
+		fife.ObjectVisual.create(cls._object)
+		visual = cls._object.get2dGfxVisual()
 
-		for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", self.id):
+		for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", cls.id):
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
@@ -60,16 +60,16 @@ class BuildingClass(type):
 			#currently a bit useless
 			if rotation == 45:
 				shift_x = shift_x - 15
-				shift_y = shift_y + self.size[0] * 8
+				shift_y = shift_y + cls.size[0] * 8
 			elif rotation == 135:
-				shift_x = shift_x - self.size[0] * 15
+				shift_x = shift_x - cls.size[0] * 15
 				shift_y = shift_y + 8
 			elif rotation == 225:
-				shift_x = shift_x - (self.size[0] + self.size[1] - 1) * 15
-				shift_y = shift_y + self.size[0] * 8
+				shift_x = shift_x - (cls.size[0] + cls.size[1] - 1) * 15
+				shift_y = shift_y + cls.size[0] * 8
 			elif rotation == 315:
-				shift_x = shift_x - self.size[1] * 15
-				shift_y = shift_y + (self.size[0] + self.size[1] - 1) * 8
+				shift_x = shift_x - cls.size[1] * 15
+				shift_y = shift_y + (cls.size[0] + cls.size[1] - 1) * 8
 			img.setXShift(shift_x)
 			img.setYShift(shift_y)
 

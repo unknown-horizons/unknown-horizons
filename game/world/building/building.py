@@ -52,11 +52,30 @@ class Building(object):
 		game.main.session.view.layers[1].deleteInstance(self._instance)
 		self._instance.thisown = 1
 
+	@classmethod
+	def getBuildList(cls, point1, point2):
+		if (int(point1[0] + 0.5) == int(point2[0] + 0.5) and int(point1[1] + 0.5) == int(point2[1] + 0.5)) or cls.size[0] > 1 or cls.size[1] > 1:
+			island = game.main.session.world.get_island(int(point2[0] + 0.5), int(point2[1] + 0.5))
+			print island
+			if island == None:
+				return []
+			settlements = island.get_settlements(int(point2[0] + 0.5), int(point2[1] + 0.5), int(point2[0] + 0.5) + cls.size[0] - 1, int(point2[1] + 0.5) + cls.size[1] - 1)
+			return [{'class' : cls, 'x' : point2[0], 'y' : point2[1], 'instance' : cls.createInstance(*point2), 'settlement' : None if len(settlements) == 0 else settlements.pop()}]
+		else:
+			ret = []
+			for x in xrange(min(int(point1[0] + 0.5), int(point2[0] + 0.5)), max(int(point1[0] + 1.5), int(point2[0] + 1.5))):
+				for y in xrange(min(int(point1[1] + 0.5), int(point2[1] + 0.5)), max(int(point1[1] + 1.5), int(point2[1] + 1.5))):
+					island = game.main.session.world.get_island(x, y)
+					print island
+					if island != None:
+						settlements = island.get_settlements(x, y, x, y)
+						ret.append({'class' : cls, 'x' : x, 'y' : y, 'instance' : cls.createInstance(x, y), 'settlement' : None if len(settlements) == 0 else settlements.pop()})
+			return ret
+
+	@classmethod
 	def calcBuildingCost(self):
 		#TODO do ground checking and throw exception if blocked
 		return self.costs
-
-	calcBuildingCost = classmethod(calcBuildingCost)
 
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""

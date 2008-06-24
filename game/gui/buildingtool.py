@@ -43,8 +43,8 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).begin()
 		self.ship = ship
 		self._class = building
-
-		self.previewInstance = self._class.createInstance(-100, -100)
+		self.buildList = []
+		self.startPoint, self.endPoint = None, None
 
 		game.main.onEscape = self.onEscape
 
@@ -53,85 +53,120 @@ class BuildingTool(NavigationTool):
 				for tile in island.grounds:
 					if tile.settlement != None and tile.settlement.owner == game.main.session.world.player:
 						game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+						if tile.object != None:
+							game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def end(self):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
-		if self.previewInstance is not None:
-			game.main.session.view.layers[1].deleteInstance(self.previewInstance)
+		for buildInfo in self.buildList:
+			game.main.session.view.layers[1].deleteInstance(buildInfo['instance'])
 		super(BuildingTool, self).end()
 
+	#def _buildCheck(self,  x, y):
+		#"""@param x,y: int position that is to be checked."""
+		## TODO: Return more detailed error descriptions than a boolean
+		#try:
+			#cost = self._class.calcBuildingCost()
+		#except BlockedError:
+			#print 'blocked error'
+			#return False
 
-	def _buildCheck(self,  x, y):
-		"""@param x,y: int position that is to be checked."""
-		# TODO: Return more detailed error descriptions than a boolean
-		try:
-			cost = self._class.calcBuildingCost()
-		except BlockedError:
-			print 'blocked error'
-			return False
+		#if self.ship:
+			#if (max(x - self.ship.position[0], 0, self.ship.position[0] - x - self._class.size[0] + 1) ** 2) + (max(y - self.ship.position[1], 0, self.ship.position[1] - (y + self._class.size[1]-1)) ** 2) >= 100:
+				#return False
 
-		if self.ship:
-			if (max(x - self.ship.position[0], 0, self.ship.position[0] - x - self._class.size[0] + 1) ** 2) + (max(y - self.ship.position[1], 0, self.ship.position[1] - (y + self._class.size[1]-1)) ** 2) >= 100:
-				return False
+		#island = game.main.session.world.get_island(x, y)
+		#if island:
+			#settlements = island.get_settlements(x, y, x + self._class.size[0] - 1, y + self._class.size[1] - 1)
+			#if len(settlements) > 0 and self.ship and not False: #False -> game setting "allow_multi_settlements_pre_island"
+				#return False
+			#elif len(settlements) > 0 or self.ship:
+				#settlement = settlements.pop() if len(settlements) > 0 else None
+				#for (key, value) in cost.iteritems(): # Cost checking
+					#if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
+						#print "Warning: more ressources of #%i needed for building id '%i'. Storage %i < %i" % (key, self._class.id, game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)), value)
+						#return False
+				#for xx in xrange(x, x + self._class.size[0]): # Blocked checking
+					#for yy in xrange(y, y + self._class.size[1]):
+						#tile = island.get_tile(xx, yy)
+						#if not tile or tile.blocked:
+							#return False
+				#return True
+			#else:
+				#return False
+		#else:
+			#return False
 
-		island = game.main.session.world.get_island(x, y)
-		if island:
-			settlements = island.get_settlements(x, y, x + self._class.size[0] - 1, y + self._class.size[1] - 1)
-			if len(settlements) > 0 and self.ship and not False: #False -> game setting "allow_multi_settlements_pre_island"
-				return False
-			elif len(settlements) > 0 or self.ship:
-				settlement = settlements.pop() if len(settlements) > 0 else None
-				for (key, value) in cost.iteritems(): # Cost checking
-					if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
-						print "Warning: more ressources of #%i needed for building id '%i'. Storage %i < %i" % (key, self._class.id, game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)), value)
-						return False
-				for xx in xrange(x, x + self._class.size[0]): # Blocked checking
-					for yy in xrange(y, y + self._class.size[1]):
-						tile = island.get_tile(xx, yy)
-						if not tile or tile.blocked:
-							return False
-				return True
+	def previewBuild(self, point1, point2):
+		for buildInfo in self.buildList:
+			game.main.session.view.layers[1].deleteInstance(buildInfo['instance'])
+		self.buildList = self._class.getBuildList(point1, point2)
+		neededRessources, usableRessources = {}, {}
+		for buildInfo in self.buildList:
+			ressources = buildInfo['class'].calcBuildingCost()
+			for ressource in ressources:
+				neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
+			for ressource in neededRessources:
+				available = game.main.session.world.player.inventory.get_value(ressource) + (self.ship.inventory.get_value(ressource) if self.ship != None else buildInfo['settlement'].inventory.get_value(ressource) if buildInfo['settlement'] != None else 0)
+				if available < neededRessources[ressource]:
+					game.main.session.view.renderer['InstanceRenderer'].addColored(buildInfo['instance'], 255, 0, 0)
+					buildInfo['buildable'] = False
+					break
 			else:
-				return False
-		else:
-			return False
-
-	def mouseMoved(self, evt):
-		super(BuildingTool, self).mouseMoved(evt)
-		pt = fife.ScreenPoint(evt.getX(), evt.getY())
-		target_mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
-		target_mapcoord.x = int(target_mapcoord.x + 0.5)
-		target_mapcoord.y = int(target_mapcoord.y + 0.5)
-		target_mapcoord.z = 0
-		l = fife.Location(game.main.session.view.layers[1])
-		l.setMapCoordinates(target_mapcoord)
-		self.previewInstance.setLocation(l)
-		target_mapcoord.x = target_mapcoord.x + 1
-		l.setMapCoordinates(target_mapcoord)
-		self.previewInstance.setFacingLocation(l)
-		target_mapcoord.x = target_mapcoord.x - 1
-
-		can_build = self._buildCheck(target_mapcoord.x, target_mapcoord.y)
-		color = (255, 255, 255) if can_build else (255, 0, 0)
-		game.main.session.view.renderer['InstanceRenderer'].addColored(self.previewInstance, *color)
-
-		evt.consume()
+				for ressource in ressources:
+					usableRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
+				game.main.session.view.renderer['InstanceRenderer'].addColored(buildInfo['instance'], 255, 255, 255)
+				buildInfo['buildable'] = True
 
 	def onEscape(self):
 		game.main.session.cursor = SelectionTool()
+
+	def mouseMoved(self, evt):
+		super(BuildingTool, self).mouseMoved(evt)
+		mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+		if self.startPoint != point:
+			self.startPoint = point
+			self.previewBuild(point, point)
+		evt.consume()
 
 	def mousePressed(self, evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			pt = fife.ScreenPoint(evt.getX(), evt.getY())
-			mapcoord = game.main.session.view.cam.toMapCoordinates(pt, False)
-			mapcoord.x = int(mapcoord.x + 0.5)
-			mapcoord.y = int(mapcoord.y + 0.5)
-			mapcoord.z = 0
-			if self._buildCheck(mapcoord.x, mapcoord.y):
-				game.main.session.view.renderer['InstanceRenderer'].removeColored(self.previewInstance)
-				game.main.session.manager.execute(Build(self._class, mapcoord.x, mapcoord.y, self.previewInstance, self.ship))
-				self.previewInstance = None
-				game.main.session.cursor = SelectionTool()
+			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+			if self.startPoint != point:
+				self.startPoint = point
+				self.previewBuild(point, point)
+		else:
+			super(BuildingTool, self).mousePressed(evt)
+			return
 		evt.consume()
+
+	def mouseDragged(self, evt):
+		super(BuildingTool, self).mouseDragged(evt)
+		mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+		if self.endPoint != point:
+			self.endPoint = point
+			self.previewBuild(self.startPoint, point)
+		evt.consume()
+
+	def mouseReleased(self, evt):
+		if fife.MouseEvent.LEFT == evt.getButton():
+			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+			if self.endPoint != point:
+				self.endPoint = point
+				self.previewBuild(self.startPoint, point)
+			for buildInfo in self.buildList:
+				if buildInfo['buildable']:
+					game.main.session.view.renderer['InstanceRenderer'].removeColored(buildInfo['instance'])
+					game.main.session.manager.execute(Build(buildInfo['class'], buildInfo['x'], buildInfo['y'], buildInfo['instance'], self.ship))
+				else:
+					game.main.session.view.layers[1].deleteInstance(buildInfo['instance'])
+			self.buildList = []
+			evt.consume()
+		elif fife.MouseEvent.RIGHT != evt.getButton():
+			super(BuildingTool, self).mouseReleased(evt)

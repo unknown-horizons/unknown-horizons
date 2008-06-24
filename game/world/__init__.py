@@ -82,10 +82,11 @@ class World(object):
 		i = self.get_island(x, y)
 		return None if i == None else i.get_building(x, y)
 
-	def get_island(self, x, y,):
+	def get_island(self, x, y):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param x: int x position.
 		@param y: int y position. """
+		print x, y
 		for i in self.islands:
 			if not (i.x <= x < i.x + i.width and i.y <= y < i.y + i.height):
 				continue
