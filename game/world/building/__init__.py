@@ -55,20 +55,20 @@ class BuildingClass(type):
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
-			shift_x = img.getWidth() / 2 + 1
+			shift_x = 1 + img.getWidth() / 2
 			shift_y = img.getHeight() / -2
 			#currently a bit useless
 			if rotation == 45:
 				shift_x = shift_x - 15
 				shift_y = shift_y + cls.size[0] * 8
 			elif rotation == 135:
-				shift_x = shift_x - cls.size[1] * 15
+				shift_x = shift_x - cls.size[1] * 16
 				shift_y = shift_y + 8
 			elif rotation == 225:
-				shift_x = shift_x - (cls.size[0] + cls.size[1] - 1) * 15
+				shift_x = shift_x - (cls.size[0] + cls.size[1] - 1) * 16
 				shift_y = shift_y + cls.size[1] * 8
 			elif rotation == 315:
-				shift_x = shift_x - cls.size[0] * 15
+				shift_x = shift_x - cls.size[0] * 16
 				shift_y = shift_y + (cls.size[0] + cls.size[1] - 1) * 8
 			img.setXShift(shift_x)
 			img.setYShift(shift_y)
