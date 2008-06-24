@@ -24,14 +24,14 @@ import game.main
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building_class, x, y, instance = None, ship = None):
+	def __init__(self, building, x, y, instance = None, ship = None, **trash):
 		"""Create the command
 		@param building_class: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		@param ship: ship instance
 		"""
-		self.building_class = building_class.id
+		self.building_class = building.id
 		self.instance = None if instance == None else instance.getId()
 		self.ship = None if ship == None else game.main.session.world.ships.index(ship)
 		self.x = int(x)

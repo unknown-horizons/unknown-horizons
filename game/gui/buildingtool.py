@@ -43,7 +43,7 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).begin()
 		self.ship = ship
 		self._class = building
-		self.buildList = []
+		self.buildings = []
 		self.startPoint, self.endPoint = None, None
 
 		game.main.onEscape = self.onEscape
@@ -58,8 +58,8 @@ class BuildingTool(NavigationTool):
 
 	def end(self):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
-		for buildInfo in self.buildList:
-			game.main.session.view.layers[1].deleteInstance(buildInfo['instance'])
+		for building in self.buildings:
+			game.main.session.view.layers[1].deleteInstance(building['instance'])
 		super(BuildingTool, self).end()
 
 	#def _buildCheck(self,  x, y):
@@ -98,25 +98,31 @@ class BuildingTool(NavigationTool):
 			#return False
 
 	def previewBuild(self, point1, point2):
-		for buildInfo in self.buildList:
-			game.main.session.view.layers[1].deleteInstance(buildInfo['instance'])
-		self.buildList = self._class.getBuildList(point1, point2)
+		for building in self.buildings:
+			game.main.session.view.layers[1].deleteInstance(building['instance'])
+		self.buildings = []
+		buildList = self._class.getBuildList(point1, point2)
+		if buildList == None:
+			return
+		self.buildings_island = buildList['island']
+		self.buildings_settlement = buildList['settlement']
+		self.buildings = buildList['buildings']
 		neededRessources, usableRessources = {}, {}
-		for buildInfo in self.buildList:
-			ressources = buildInfo['class'].calcBuildingCost()
+		for building in self.buildings:
+			building['instance'] = self._class.getInstance(**building)
+			ressources = self._class.getBuildCosts(**building)
 			for ressource in ressources:
 				neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
 			for ressource in neededRessources:
-				available = game.main.session.world.player.inventory.get_value(ressource) + (self.ship.inventory.get_value(ressource) if self.ship != None else buildInfo['settlement'].inventory.get_value(ressource) if buildInfo['settlement'] != None else 0)
-				if available < neededRessources[ressource]:
-					game.main.session.view.renderer['InstanceRenderer'].addColored(buildInfo['instance'], 255, 0, 0)
-					buildInfo['buildable'] = False
+				available = game.main.session.world.player.inventory.get_value(ressource) + (self.ship.inventory.get_value(ressource) if self.ship != None else self.buildings_settlement.inventory.get_value(ressource) if self.buildings_settlement != None else 0)
+				building['buildable'] = available >= neededRessources[ressource]
+				if building['buildable'] == False:
+					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
 					break
 			else:
 				for ressource in ressources:
 					usableRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
-				game.main.session.view.renderer['InstanceRenderer'].addColored(buildInfo['instance'], 255, 255, 255)
-				buildInfo['buildable'] = True
+				game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
 
 	def onEscape(self):
 		game.main.session.cursor = SelectionTool()
@@ -124,7 +130,7 @@ class BuildingTool(NavigationTool):
 	def mouseMoved(self, evt):
 		super(BuildingTool, self).mouseMoved(evt)
 		mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-		point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.startPoint != point:
 			self.startPoint = point
 			self.previewBuild(point, point)
@@ -135,7 +141,7 @@ class BuildingTool(NavigationTool):
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 			if self.startPoint != point:
 				self.startPoint = point
 				self.previewBuild(point, point)
@@ -147,7 +153,7 @@ class BuildingTool(NavigationTool):
 	def mouseDragged(self, evt):
 		super(BuildingTool, self).mouseDragged(evt)
 		mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-		point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.endPoint != point:
 			self.endPoint = point
 			self.previewBuild(self.startPoint, point)
@@ -156,17 +162,20 @@ class BuildingTool(NavigationTool):
 	def mouseReleased(self, evt):
 		if fife.MouseEvent.LEFT == evt.getButton():
 			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			point = (int(mapcoord.x + mapcoord.x) / 2.0 + 0.25, int(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 			if self.endPoint != point:
 				self.endPoint = point
 				self.previewBuild(self.startPoint, point)
-			for buildInfo in self.buildList:
-				if buildInfo['buildable']:
-					game.main.session.view.renderer['InstanceRenderer'].removeColored(buildInfo['instance'])
-					game.main.session.manager.execute(Build(buildInfo['class'], buildInfo['x'], buildInfo['y'], buildInfo['instance'], self.ship))
+			default_args = {'building' : self._class, 'ship':self.ship, 'island' : self.buildings_island, 'settlement' : self.buildings_settlement}
+			for building in self.buildings:
+				if building['buildable']:
+					game.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
+					args = default_args.copy()
+					args.update(building)
+					game.main.session.manager.execute(Build(**args))
 				else:
-					game.main.session.view.layers[1].deleteInstance(buildInfo['instance'])
-			self.buildList = []
+					game.main.session.view.layers[1].deleteInstance(building['instance'])
+			self.buildings = []
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)

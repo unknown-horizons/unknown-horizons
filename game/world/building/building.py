@@ -21,10 +21,7 @@
 
 import fife
 import game.main
-#TODO: Implement selection support over a common interface with Unit
-
-class BlockedError(Exception):
-	pass
+import math
 
 class Building(object):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -53,28 +50,46 @@ class Building(object):
 		self._instance.thisown = 1
 
 	@classmethod
-	def getBuildList(cls, point1, point2):
-		if (int(point1[0] + 0.5) == int(point2[0] + 0.5) and int(point1[1] + 0.5) == int(point2[1] + 0.5)) or cls.size[0] > 1 or cls.size[1] > 1:
-			island = game.main.session.world.get_island(int(point2[0] + 0.5), int(point2[1] + 0.5))
-			print island
-			if island == None:
-				return []
-			settlements = island.get_settlements(int(point2[0] + 0.5), int(point2[1] + 0.5), int(point2[0] + 0.5) + cls.size[0] - 1, int(point2[1] + 0.5) + cls.size[1] - 1)
-			return [{'class' : cls, 'x' : point2[0], 'y' : point2[1], 'instance' : cls.createInstance(*point2), 'settlement' : None if len(settlements) == 0 else settlements.pop()}]
-		else:
-			ret = []
-			for x in xrange(min(int(point1[0] + 0.5), int(point2[0] + 0.5)), max(int(point1[0] + 1.5), int(point2[0] + 1.5))):
-				for y in xrange(min(int(point1[1] + 0.5), int(point2[1] + 0.5)), max(int(point1[1] + 1.5), int(point2[1] + 1.5))):
-					island = game.main.session.world.get_island(x, y)
-					print island
-					if island != None:
-						settlements = island.get_settlements(x, y, x, y)
-						ret.append({'class' : cls, 'x' : x, 'y' : y, 'instance' : cls.createInstance(x, y), 'settlement' : None if len(settlements) == 0 else settlements.pop()})
-			return ret
+	def getInstance(cls, x, y, **trash):
+		instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
+		fife.InstanceVisual.create(instance)
+		return instance
 
 	@classmethod
-	def calcBuildingCost(self):
-		#TODO do ground checking and throw exception if blocked
+	def getBuildList(cls, point1, point2):
+		if cls.size[0] == 1 and cls.size[1] == 1: #rect build mode
+			island = None
+			settlement = None
+			buildings = []
+			for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))):
+				for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))):
+					new_island = game.main.session.world.get_island(x, y)
+					if new_island == None or (island != None and island != new_island):
+						continue
+					island = new_island
+
+					new_settlement = island.get_settlements(x, y, x, y)
+					new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
+					if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
+						continue
+					settlement = new_settlement
+
+					buildings.append({'x' : x, 'y' : y})
+				return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
+
+		else: #single build mode
+			x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
+			y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
+			island = game.main.session.world.get_island(x, y)
+			if island == None:
+				return None
+			settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
+			if len(settlements) > 1:
+				return None
+			return {'island' : island, 'settlement' : None if len(settlements) == 0 else settlements.pop(), 'buildings' : [{'x' : x, 'y' : y}]}
+
+	@classmethod
+	def getBuildCosts(self, **trash):
 		return self.costs
 
 	def start(self):
