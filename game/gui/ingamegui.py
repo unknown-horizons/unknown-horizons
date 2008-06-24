@@ -46,6 +46,9 @@ class IngameGui(livingObject):
 			'streetsTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 4),
 			'specialTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 5)
 		})
+		self.gui['build_tab0'].mapEvents({
+			'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
+		})
 		self.gui['build_tab1'].mapEvents({
 			'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
 		})
