@@ -75,7 +75,7 @@ class Building(object):
 					settlement = new_settlement
 
 					buildings.append({'x' : x, 'y' : y})
-				return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
+			return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
 		else: #single build mode
 			x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
@@ -83,6 +83,10 @@ class Building(object):
 			island = game.main.session.world.get_island(x, y)
 			if island == None:
 				return None
+			for xx in xrange(x, x + cls.size[0]):
+				for yy in xrange(y, y + cls.size[1]):
+					if island.get_tile(xx,yy) == None:
+						return None
 			settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
 			if len(settlements) > 1:
 				return None
