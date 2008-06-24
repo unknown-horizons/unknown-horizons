@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<dataset id="beachtiles" type="Embedded" format="1.0">
-
-	<object id="1" blocking="1">
-		<image source="content/gfx/dummies/beach.png" static="1" direction="0" blocking="1"/>
-	</object>
-
-</dataset>
