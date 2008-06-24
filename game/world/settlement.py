@@ -43,3 +43,20 @@ class Settlement(object):
 				return b
 		else:
 			return None
+
+	def get_nearest_pickup(self, x, y):
+		"""Returns the nearest storage building that provides pickups.
+		"""
+		#TODO: Think of something better then the storage var
+		'checking distance'
+		ret = None
+		ret_dist = 0
+		for b in self.buildings:
+			if hasattr(b, 'storage'):
+				dist = ((x - b.x) ** 2) + ((y - b.y) ** 2)
+				if dist < ret_dist or ret_dist == 0:
+					ret = b
+					ret_dist = dist
+		return ret
+
+

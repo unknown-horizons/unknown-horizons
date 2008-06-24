@@ -70,6 +70,11 @@ class Scheduler(livingObject):
 				if object.parent_class is class_inst:
 					self.schedule[key].remove(object)
 
+	def end(self):
+		for item in self.schedule:
+			del item
+		game.main.session.timer.remove_call(self.tick)
+
 class CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self,  callback, parent_class, runin=1, loops=1):
