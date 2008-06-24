@@ -20,6 +20,7 @@
 # ###################################################
 from game.world.storage import Storage
 from stablelist import stablelist
+from game.world.building.storages import Pickup
 
 class Settlement(object):
 	"""The Settlement class describes a settlement and stores all the neccassary information
@@ -52,7 +53,7 @@ class Settlement(object):
 		ret = None
 		ret_dist = 0
 		for b in self.buildings:
-			if hasattr(b, 'storage'):
+			if isinstance(b, Pickup):
 				dist = ((x - b.x) ** 2) + ((y - b.y) ** 2)
 				if dist < ret_dist or ret_dist == 0:
 					ret = b

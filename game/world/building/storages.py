@@ -22,7 +22,7 @@
 from building import Building
 import game.main
 
-class Storagetent(Building):
+class Pickup(Building):
 	"""Class used for storage buildings that pic up ressources for the settlement.
 	@param x,y: int coordinates of the building.
 	@param owner: Player instance that owns the building.
@@ -40,7 +40,6 @@ class Storagetent(Building):
 		self.queue = []
 		self.pickups_active = 0
 		self.pickups = 2
-		self.storage = True
 
 	def start(self):
 		self.tick()
@@ -65,3 +64,6 @@ class Storagetent(Building):
 		@param res_id: ressource id that is to be picked up.
 		"""
 		self.queue.append((buiding, res_id))
+
+class Storagetent(Pickup):
+	pass

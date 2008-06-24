@@ -52,7 +52,7 @@ class Production(Building):
 			if self.stock.get_value(int(self.production_res)) < 4:
 				self.stock.alter_inventory(int(self.production_res), 1)
 			if self.stock.get_value(int(self.production_res)) <= 3:
-				self._instance.say('+1', 2000)
+				self._instance.say('Stock: '+ str(self.stock.get_value(int(self.production_res))), 2000)
 			if self.stock.get_value(int(self.production_res)) == 4:
 				self._instance.say('Full', 2000)
 			elif self.stock.get_value(int(self.production_res)) == 2:
