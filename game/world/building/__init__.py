@@ -48,10 +48,16 @@ class BuildingClass(type):
 	def _loadObject(cls):
 		print 'Loading building #' + str(cls.id) + '...'
 		cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
-		fife.ObjectVisual.create(cls._object)
-		visual = cls._object.get2dGfxVisual()
+		for (action_id,) in game.main.db("SELECT action FROM data.action where object=? group by action", cls.id):
+			action = cls._object.createAction(str(action_id))
+			fife.ActionVisual.create(action)
+			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where object=? and action=?", cls.id, action_id):
+				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id))
+				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
+				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
 
-		for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", cls.id):
+		#old code, but with "correcter" image positioning
+		"""for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", cls.id):
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
@@ -71,7 +77,7 @@ class BuildingClass(type):
 				shift_x = shift_x - cls.size[0] * 16
 				shift_y = shift_y + (cls.size[0] + cls.size[1] - 1) * 8
 			img.setXShift(shift_x)
-			img.setYShift(shift_y)
+			img.setYShift(shift_y)"""
 
 	def createInstance(self, x, y):
 		instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
