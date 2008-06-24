@@ -43,7 +43,7 @@ class Production(Building):
 
 
 	def start(self):
-		game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
+		game.main.session.scheduler.add_new_object(self.tick, self, (6/int(self.production_rate))*game.main.session.timer.ticks_per_second)
 
 	def tick(self):
 		self.current_production += 1
@@ -57,7 +57,7 @@ class Production(Building):
 				self._instance.say('Full', 2000)
 			elif self.stock.get_value(int(self.production_res)) == 2:
 				self.call_pickup()
-		game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
+		game.main.session.scheduler.add_new_object(self.tick, self, (6/int(self.production_rate))*game.main.session.timer.ticks_per_second)
 
 	def call_pickup(self):
 		"""Calls for ressource pickup at the nearest storage facility."""
