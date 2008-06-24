@@ -24,7 +24,10 @@ from game.world.storage import Storage
 import game.main
 
 class Production(Building):
-	"""Class used for production buildings"""
+	"""Class used for production buildings
+	@param x,y: int coordinates of the building.
+	@param owner: Player instance that owns the building.
+	@param instance: fife.Instance that is used in case a preview instance has already been created."""
 	def __init__(self, x, y, owner, instance = None):
 		self.x = x
 		self.y = y
@@ -57,6 +60,7 @@ class Production(Building):
 		game.main.session.scheduler.add_new_object(self.tick, self, int(self.production_rate))
 
 	def call_pickup(self):
+		"""Calls for ressource pickup at the nearest storage facility."""
 		pickup = self.settlement.get_nearest_pickup(self.x, self.y)
 		if pickup is None:
 			self._instance.say('NO PICKUP AVAILABLE!', 3000)
@@ -64,6 +68,8 @@ class Production(Building):
 			pickup.add_to_queue(self, int(self.production_res))
 
 	def get_ressources(self, res):
+		"""Return the ressources of id res that are in stock and removes them from the stock.
+		@return: int number of ressources."""
 		ret = self.stock.get_value(res)
 		self.stock.alter_inventory(res, -ret)
 		return ret

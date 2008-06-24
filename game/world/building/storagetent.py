@@ -23,7 +23,10 @@ from building import Building
 import game.main
 
 class Storagetent(Building):
-	"""Class used for storage buildings that pic up ressources for the settlement"""
+	"""Class used for storage buildings that pic up ressources for the settlement.
+	@param x,y: int coordinates of the building.
+	@param owner: Player instance that owns the building.
+	@param instance: fife.Instance that is used in case a preview instance has already been created."""
 	def __init__(self, x, y, owner, instance = None):
 		self.x = x
 		self.y = y
@@ -50,10 +53,15 @@ class Storagetent(Building):
 		game.main.session.scheduler.add_new_object(self.tick, self, int(game.main.session.timer.ticks_per_second))
 
 	def pickup(self, info):
-		"""@param info: tuple (building, ressource_id)"""
+		""" Gets ressources from the building specified in info and adds them to the settlements inventory.
+		@param info: tuple (building, ressource_id)"""
 		self.pickups_active -= 1
 		load = info[0].get_ressources(info[1])
 		self.settlement.inventory.alter_inventory(info[1], load)
 
-	def add_to_queue(self, buiding_id, res_id):
-		self.queue.append((buiding_id, res_id))
+	def add_to_queue(self, buiding, res_id):
+		"""Adds a building to the picup queue.
+		@param building: buildingclass instanz that calls for a pickup.
+		@param res_id: ressource id that is to be picked up.
+		"""
+		self.queue.append((buiding, res_id))
