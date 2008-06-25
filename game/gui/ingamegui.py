@@ -56,6 +56,9 @@ class IngameGui(livingObject):
 			'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
 			'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8)
 		})
+		self.gui['build_tab4'].mapEvents({
+			'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
+		})
 		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
 		self.gui['chat'] = game.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
 		self.gui['cityinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_cityinfo.xml')

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'housing', 'production', 'storages']
+__all__ = ['building', 'housing', 'production', 'storages', 'path']
 
 from game.world.building import *
 import game.main

@@ -20,6 +20,9 @@
 # ###################################################
 
 from building import Building
+import fife
+import game.main
+import math
 
 class Path(Building):
 	@classmethod
@@ -29,7 +32,6 @@ class Path(Building):
 		buildings = []
 		for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))):
 			for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int((min if x < int(max(round(point1[0]), round(point2[0]))) else max)(round(point1[1]), round(point2[1])))):
-				if x ==
 				new_island = game.main.session.world.get_island(x, y)
 				if new_island == None or (island != None and island != new_island):
 					continue

@@ -120,6 +120,7 @@ class BuildingTool(NavigationTool):
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
 					break
 			else:
+				building['buildable'] = True
 				for ressource in ressources:
 					usableRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
 				game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
