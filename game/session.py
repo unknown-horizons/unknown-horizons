@@ -80,9 +80,7 @@ class Session(livingObject):
 		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
 	def generateMap(self):
-		"""Loads a map.
-		@param map: string with the mapfile path.
-		"""
+		"""Generates a map."""
 
 		#load map
 		game.main.db("attach ':memory:' as map")

@@ -40,6 +40,7 @@ class Building(object):
 		self.health = 50
 
 	def remove(self):
+		"""Removes the building"""
 		for x in xrange(self.x, self.x + self.__class__.size[0]):
 			for y in xrange(self.y, self.y + self.__class__.size[1]):
 				tile = self.island.get_tile(x,y)
@@ -64,6 +65,8 @@ class Building(object):
 
 	@classmethod
 	def getBuildList(cls, point1, point2):
+		"""Returns a list coordinats where buildings are to be built.
+		@param point1, point2: tuple coordinates (x,y) starting and endpoint."""
 		if cls.size[0] == 1 and cls.size[1] == 1: #rect build mode
 			island = None
 			settlement = None

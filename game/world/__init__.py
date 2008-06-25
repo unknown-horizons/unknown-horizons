@@ -79,6 +79,9 @@ class World(object):
 		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
 
 	def get_building(self, x, y):
+		"""Returns the bilding at the position x,y.
+		@param x,y: int coordinates.
+		@return: Building class instance if a building is found, else none."""
 		i = self.get_island(x, y)
 		return None if i == None else i.get_building(x, y)
 
@@ -99,6 +102,8 @@ class World(object):
 		print 'deconstruct',self
 
 	def save(self, db = 'savegame'):
+		"""Saves the current game to the specified db.
+		@param db: string representing the db that the game is to be saved to."""
 		for player in self.players:
 			player.save(db)
 		for island in self.islands:

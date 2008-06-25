@@ -32,21 +32,39 @@ for filename in files:
 	file = open(filename, 'rw')
 	linenr = 0
 	decorators = []
+	funk = None
+	newfile = []
 	for line in file:
 		linenr += 1
 		empty = is_empty.match(line)
 		if empty != None:
 			continue
-		decorator = is_decorator.match(line)
-		if decorator != None:
-			decorators.append(decorator.group(2))
-			continue
-		func = is_function.match(line)
-		if func != None:
-			params = func_param.findall(func.group(3))
-			the_function = {'file' : filename, 'line' : linenr, 'depth' : len(empty.group(1).expandtabls()), 'name' : func.group(2), 'decorators' : decorators, 'params' : params}
-			decorators = []
-			continue
+		if line.strip().startswith('def'):
+			funk = line
+			newfile.append(funk)
+		elif funk is not None and line.strip().startswith('"""'):
+			newfile.append(line)
+			funk = None
+		elif funk is not None:
+			list = funk[funk.find('(')+1:funk.rfind(')')].split(',')
+			indent = funk[0:funk.find('def')]*2
+			docstub = [(indent + '"""')]
+			tab = '	'
+			for i in list:
+				if i != 'self':
+					docstub.append(("%s@param %s:\n" % (indent, i)))
+			docstub.append((indent + '"""'))
+			newfile.extend(docstub)
+			newfile.append(line)
+			funk = None
+		else:
+			newfile.append(line)
+
+	for line in newfile:
+		print line
+	print file
+	file.writelines(newfile)
+	file.close()
 
 #print filepart + ' ' + func.group(2) + ':'
 #print decorators
