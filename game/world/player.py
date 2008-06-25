@@ -36,4 +36,7 @@ class Player(object):
 		self.inventory.alter_inventory(1, 9999)
 
 	def save(self, db = 'savegame'):
+		"""
+		@param db: db that the player is saved to.
+		"""
 		game.main.db(("INSERT INTO %s.player (rowid, name) VALUES (?, ?, ?)" % db), self.id, self.name)

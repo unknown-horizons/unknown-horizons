@@ -24,6 +24,10 @@ import fife
 
 class Ground(object):
 	def __init__(self, x, y):
+		"""
+		@param x: int x position the ground is created.
+		@param y: int y position the ground is created.
+		"""
 		if self._object == None:
 			self.__class__._loadObject()
 		self.x = x
@@ -32,14 +36,22 @@ class Ground(object):
 		fife.InstanceVisual.create(self._instance)
 
 class GroundClass(type):
-	def __new__(self, id):
-		return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
-
+	"""
+	@param id: ground id.
+	"""
 	def __init__(self, id):
 		self.id = id
 		self._object = None
 
+	def __new__(self, id):
+		"""
+		@param id: ground id.
+		"""
+		return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
+
 	def _loadObject(self):
+		""" Loads the ground object from the db (animations, etc)
+		"""
 		print 'Loading ground #' + str(self.id) + '...'
 		self._object = game.main.session.view.model.createObject(str(self.id), 'ground')
 		fife.ObjectVisual.create(self._object)

@@ -25,6 +25,10 @@ class Storage(object):
 	ressources that they can store for a certain slot.
 	"""
 	def __init__(self, slots=None, size=None):
+		"""
+		@param slots: number of slots the Storage has to store stuff.
+		@param size: size of each slot
+		"""
 		self._inventory = {}
 		self.slots = slots
 		self.size = size

@@ -29,9 +29,18 @@ class Island(object):
 	to an island, making it easy to determine to which island the instance belongs, when
 	selected.
 	An Island instance is created at map creation, when all tiles are added to the map.
+	@param id: island id.
+	@param x, y: int position coordinates.
+	@param file: file from which the island is loaded.
 	"""
 
 	def __init__(self, id, x, y, file):
+		"""
+		@param id:
+		@param x:
+		@param y:
+		@param file:
+		"""
 		self.id = id
 		self.file = file
 		game.main.db("attach ? as island", file)
@@ -48,6 +57,9 @@ class Island(object):
 		self.settlements = stablelist()
 
 	def save(self, db = 'savegame'):
+		"""
+		@param db: db that the island is saved to.
+		"""
 		id = game.main.db(("INSERT INTO %s.island (x, y, file) VALUES (?, ?, ?)" % db), self.x, self.y, self.file).id
 
 	def get_tile(self, x, y):
@@ -64,6 +76,11 @@ class Island(object):
 		return None
 
 	def get_building(self, x, y):
+		"""Returns the building at the position (x,y)
+		@param x: int x coordinate
+		@param y: int y coordinate
+		@returns: Building class instance or None if none is found.
+		"""
 		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
 			return None
 		settlements = self.get_settlements(x, y)
@@ -107,6 +124,14 @@ class Island(object):
 		return settlement
 
 	def assign_settlement(self, min_x, min_y, max_x, max_y, radius, settlement):
+		"""
+		@param min_x:
+		@param min_y:
+		@param max_x:
+		@param max_y:
+		@param radius:
+		@param settlement:
+		"""
 		inherits = []
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			if (max(min_x - tile.x, 0, tile.x - max_x) ** 2) + (max(min_y - tile.y, 0, tile.y - max_y) ** 2) <= radius ** 2:

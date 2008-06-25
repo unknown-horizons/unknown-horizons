@@ -27,6 +27,8 @@ from game.world.player import Player
 from stablelist import stablelist
 
 class World(object):
+	"""
+	"""
 	def __init__(self):
 		#load properties
 		self.properties = {}
@@ -99,6 +101,8 @@ class World(object):
 		return None
 
 	def __del__(self):
+		"""
+		"""
 		print 'deconstruct',self
 
 	def save(self, db = 'savegame'):
