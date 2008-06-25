@@ -29,44 +29,31 @@ is_empty = re.compile('^(\\s*)(?:#.*)?$')
 import sys
 files = sys.argv[1:]
 for filename in files:
-	file = open(filename, 'rw')
-	linenr = 0
-	decorators = []
-	funk = None
+	print 'Adding documentation stubs to:', filename
+	file = open(filename, 'r+')
+	funk_reg = None
 	newfile = []
 	for line in file:
-		linenr += 1
-		empty = is_empty.match(line)
-		if empty != None:
-			continue
-		if line.strip().startswith('def'):
-			funk = line
-			newfile.append(funk)
-		elif funk is not None and line.strip().startswith('"""'):
+		if is_function.match(line) is not None:
 			newfile.append(line)
-			funk = None
-		elif funk is not None:
-			list = funk[funk.find('(')+1:funk.rfind(')')].split(',')
-			indent = funk[0:funk.find('def')]*2
-			docstub = [(indent + '"""')]
-			tab = '	'
-			for i in list:
-				if i != 'self':
-					docstub.append(("%s@param %s:\n" % (indent, i)))
-			docstub.append((indent + '"""'))
+			funk_reg = is_function.match(line)
+		elif funk_reg is not None and line.strip().startswith('"""'):
+			newfile.append(line)
+			funk_reg = None
+		elif funk_reg is not None:
+			params = func_param.findall(funk_reg.group(3))
+			indent = funk_reg.group(1)*2
+			docstub = [(indent + '"""\n')]
+			for i in params:
+				if i[0] != 'self':
+					docstub.append(("%s@param %s:\n" % (indent, i[0])))
+			docstub.append((indent + '"""\n'))
 			newfile.extend(docstub)
 			newfile.append(line)
-			funk = None
+			funk_reg = None
 		else:
 			newfile.append(line)
-
-	for line in newfile:
-		print line
-	print file
+	file.seek(0)
 	file.writelines(newfile)
 	file.close()
-
-#print filepart + ' ' + func.group(2) + ':'
-#print decorators
-#filepart = "%s:%d" % (filename, linenr)
-#filepart += ' ' * (40 - len(filepart))
+	print 'Done'
