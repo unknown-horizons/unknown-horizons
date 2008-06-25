@@ -38,7 +38,8 @@ def _load(file, engine):
 	cellgrid.setXShift(0)
 	cellgrid.setYShift(0)
 
-	map = engine.getModel().createMap("map")
+	map = engine.getModel().createMap("island")
+	map.setResourceFile(file)
 
 	layers = []
 	layers.append(map.createLayer('ground', cellgrid))
@@ -56,6 +57,9 @@ def _load(file, engine):
 		instance.thisown = 0
 
 	db("detach island")
+
+	map.importDirs = []
+	return map
 
 def _save(file, engine, map):
 	if not db("attach ? AS island", file).success:
@@ -110,14 +114,14 @@ def loadMapFile(path, engine, content = ''):
 	if not _inited:
 		_init(engine)
 		_inited = True
-	_load(path, engine)
+	return _load(path, engine)
 
 def saveMapFile(path, engine, map, importList=[]):
 	global _inited
 	if not _inited:
 		_init(engine)
 		_inited = True
-	_save(path, engine, map)
+	return _save(path, engine, map)
 
 def loadImportFile(path, engine):
 	global _inited
