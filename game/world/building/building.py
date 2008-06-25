@@ -99,6 +99,9 @@ class Building(object):
 	def getBuildCosts(self, **trash):
 		return self.costs
 
+	def init(self):
+		pass
+
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
 		pass
