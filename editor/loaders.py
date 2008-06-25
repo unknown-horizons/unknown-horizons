@@ -30,33 +30,35 @@ def _load(file, engine):
 	if not db("attach ? AS island", file).success:
 		raise WrongFileType(file)
 
-	try:
-		cellgrid = fife.SquareGrid(True)
-		cellgrid.thisown = 0
-		cellgrid.setRotation(0)
-		cellgrid.setXScale(1)
-		cellgrid.setYScale(1)
-		cellgrid.setXShift(0)
-		cellgrid.setYShift(0)
+	#try:
+	cellgrid = fife.SquareGrid(True)
+	cellgrid.thisown = 0
+	cellgrid.setRotation(0)
+	cellgrid.setXScale(1)
+	cellgrid.setYScale(1)
+	cellgrid.setXShift(0)
+	cellgrid.setYShift(0)
 
-		map = engine.getModel().createMap("island")
-		map.setResourceFile(file)
+	engine.getModel().deleteMaps()
+	map = engine.getModel().createMap("island")
+	map.setResourceFile(file)
 
-		layer = map.createLayer('ground', cellgrid)
-		view = engine.getView()
+	layer = map.createLayer('ground', cellgrid)
+	view = engine.getView()
 
-		cam = view.addCamera("main", layer, fife.Rect(0, 0, 1024, 768), fife.ExactModelCoordinate(0.0, 0.0, 0.0))
-		cam.setCellImageDimensions(32, 16)
-		cam.setRotation(45.0)
-		cam.setTilt(-60)
-		cam.setZoom(1)
+	view.clearCameras()
+	cam = view.addCamera("main", layer, fife.Rect(0, 0, 1024, 768), fife.ExactModelCoordinate(0.0, 0.0, 0.0))
+	cam.setCellImageDimensions(32, 16)
+	cam.setRotation(45.0)
+	cam.setTilt(-60)
+	cam.setZoom(1)
 
-		for (x, y, ground_id) in db("select x, y, ground_id from island.ground"):
-			instance = layer.createInstance(engine.getModel().getObject(str(ground_id), 'ground'), fife.ModelCoordinate(int(x), int(y), 0), str(x) + ',' + str(y))
-			fife.InstanceVisual.create(instance)
-			instance.thisown = 0
-	except:
-		raise WrongFileType(file)
+	for (x, y, ground_id) in db("select x, y, ground_id from island.ground"):
+		instance = layer.createInstance(engine.getModel().getObject(str(ground_id), 'ground'), fife.ModelCoordinate(int(x), int(y), 0), str(x) + ',' + str(y))
+		fife.InstanceVisual.create(instance)
+		instance.thisown = 0
+	#except:
+	#	raise WrongFileType(file)
 
 	db("detach island")
 
@@ -66,9 +68,17 @@ def _load(file, engine):
 def _save(file, engine, map):
 	if not db("attach ? AS island", file).success:
 		raise WrongFileType(file)
+	try:
+		db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)')
+	except:
+		pass
+	try:
+		db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
+	except:
+		pass
 
-	db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)')
-	db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
+	db('delete from island.ground')
+	db('delete from island.island_properties')
 
 	layer = map.getLayer('ground')
 
