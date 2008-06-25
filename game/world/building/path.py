@@ -30,18 +30,33 @@ class Path(Building):
 		island = None
 		settlement = None
 		buildings = []
+		action = 'abcd'
+		y = int(round(point1[1]))
 		for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))):
-			for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int((min if x < int(max(round(point1[0]), round(point2[0]))) else max)(round(point1[1]), round(point2[1])))):
-				new_island = game.main.session.world.get_island(x, y)
-				if new_island == None or (island != None and island != new_island):
-					continue
-				island = new_island
+			new_island = game.main.session.world.get_island(x, y)
+			if new_island == None or (island != None and island != new_island):
+				continue
+			island = new_island
 
-				new_settlement = island.get_settlements(x, y, x, y)
-				new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-				if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
-					continue
-				settlement = new_settlement
+			new_settlement = island.get_settlements(x, y, x, y)
+			new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
+			if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
+				continue
+			settlement = new_settlement
 
-				buildings.append({'x' : x, 'y' : y})
+			buildings.append({'x' : x, 'y' : y, 'action' : action})
+		x = int(round(point2[0]))
+		for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))):
+			new_island = game.main.session.world.get_island(x, y)
+			if new_island == None or (island != None and island != new_island):
+				continue
+			island = new_island
+
+			new_settlement = island.get_settlements(x, y, x, y)
+			new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
+			if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
+				continue
+			settlement = new_settlement
+
+			buildings.append({'x' : x, 'y' : y, 'action' : action})
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
