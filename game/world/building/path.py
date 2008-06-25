@@ -59,8 +59,8 @@ class Path(Building):
 			settlement = new_settlement
 
 			if len(buildings) == 0: #first tile
-				if y == int(round(point2[1])):
-					action = 'ac'
+				if y == int(round(point2[1])): #only tile
+					action = 'default'
 				else:
 					action = 'd' if int(round(point2[1])) > int(round(point1[1])) else 'b'
 			elif y == int(round(point2[1])): #last tile
@@ -77,6 +77,11 @@ class Path(Building):
 				action = 'bd'
 			buildings.append({'x' : x, 'y' : y, 'action' : action})
 			is_first = False
+		#just "randomly" insert a bridge:
+		try:
+			buildings[len(buildings)/2].update({'action' : 'default', 'building' : game.main.session.entities.buildings[16]})
+		except:
+			pass
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
 	def init(self):
@@ -90,20 +95,26 @@ class Path(Building):
 	def recalculateOrientation(self):
 		action = ''
 		island = game.main.session.world.get_island(self.x, self.y)
-		if isinstance(island.get_tile(self.x - 1, self.y).object, Path):
+		if isinstance(island.get_tile(self.x - 1, self.y).object, (Path, Bridge)):
 			action += 'a'
-		if isinstance(island.get_tile(self.x, self.y - 1).object, Path):
+		if isinstance(island.get_tile(self.x, self.y - 1).object, (Path, Bridge)):
 			action += 'b'
-		if isinstance(island.get_tile(self.x + 1, self.y).object, Path):
+		if isinstance(island.get_tile(self.x + 1, self.y).object, (Path, Bridge)):
 			action += 'c'
-		if isinstance(island.get_tile(self.x, self.y + 1).object, Path):
+		if isinstance(island.get_tile(self.x, self.y + 1).object, (Path, Bridge)):
 			action += 'd'
 		if action == '':
 			action = 'ac'
 		self._instance.act(action, self._instance.getLocation(), True)
-		print 'recalculated',self,':',action
 
 class Bridge(Building):
-	@classmethod
-	def getInstance(cls, x, y, **trash):
-		super(Bridge, cls).getInstance(x = x, y = y, action = 'ac', **trash)
+	#@classmethod
+	#def getInstance(cls, x, y, action=None, **trash):
+	#	super(Bridge, cls).getInstance(x = x, y = y, action = 'default', **trash)
+
+	def init(self):
+		super(Bridge, self).init()
+		island = game.main.session.world.get_island(self.x, self.y)
+		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
+			if tile != None and isinstance(tile.object, Path):
+				tile.object.recalculateOrientation()

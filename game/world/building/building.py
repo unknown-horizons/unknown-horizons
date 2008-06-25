@@ -50,13 +50,17 @@ class Building(object):
 		self._instance.thisown = 1
 
 	@classmethod
-	def getInstance(cls, x, y, action='default', **trash):
-		print x,y,action
-		instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
-		fife.InstanceVisual.create(instance)
-		instance.act(action, instance.getLocation(), True)
-		print 'done'
-		return instance
+	def getInstance(cls, x, y, action='default', building=None, **trash):
+		if building != None:
+			print 'redirecting...',cls,building
+			return building.getInstance(x = x, y = y, action=action, **trash)
+		else:
+			print x,y,action
+			instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
+			fife.InstanceVisual.create(instance)
+			instance.act(action, instance.getLocation(), True)
+			print 'done', instance.getLocation()
+			return instance
 
 	@classmethod
 	def getBuildList(cls, point1, point2):
