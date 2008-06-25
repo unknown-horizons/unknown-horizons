@@ -52,23 +52,18 @@ class Building(object):
 
 	@classmethod
 	def getInstance(cls, x, y, action='default', building=None, **trash):
-		"""
-		@param cls:
-		@param x:
-		@param y:
-		@param action:
-		@param building:
-		@param **trash:
+		"""Get a Fife instance
+		@param x, y: The coordinates
+		@param action: The action, defaults to 'default'
+		@param building: This parameter is used for overrriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
+		@param **trash: sometimes we get more keys we are not interested in
 		"""
 		if building != None:
-			print 'redirecting...',cls,building
 			return building.getInstance(x = x, y = y, action=action, **trash)
 		else:
-			print x,y,action
 			instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
 			fife.InstanceVisual.create(instance)
 			instance.act(action, instance.getLocation(), True)
-			print 'done', instance.getLocation()
 			return instance
 
 	@classmethod
@@ -112,13 +107,13 @@ class Building(object):
 
 	@classmethod
 	def getBuildCosts(self, **trash):
-		"""
-		@param **trash:
+		"""Get the costs for the building
+		@param **trash: we normally dont need any parameter, but we get the same as the getInstance function
 		"""
 		return self.costs
 
 	def init(self):
-		"""
+		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
 		"""
 		pass
 
