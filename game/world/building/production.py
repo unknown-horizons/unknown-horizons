@@ -44,9 +44,13 @@ class Production(Building):
 
 
 	def start(self):
+		"""Starts the object. Overrides the standart Building.start() methode.
+		"""
 		game.main.session.scheduler.add_new_object(self.tick, self, (6/int(self.production_rate))*game.main.session.timer.ticks_per_second)
 
 	def tick(self):
+		"""Called by the ticker, to produce goods.
+		"""
 		self.current_production += 1
 		if self.current_production == 10:
 			self.current_production = 0
@@ -72,6 +76,7 @@ class Production(Building):
 
 	def get_ressources(self, res):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
+		@param res: int ressouce id.
 		@return: int number of ressources."""
 		ret = self.stock.get_value(res)
 		self.stock.alter_inventory(res, -ret)

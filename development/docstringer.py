@@ -45,7 +45,7 @@ for filename in files:
 			indent = funk_reg.group(1)*2
 			docstub = [(indent + '"""\n')]
 			for i in params:
-				if i[0] != 'self':
+				if i[0] != 'self' and i[0] != 'cls':
 					docstub.append(("%s@param %s:\n" % (indent, i[0])))
 			docstub.append((indent + '"""\n'))
 			newfile.extend(docstub)

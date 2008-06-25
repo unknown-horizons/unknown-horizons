@@ -52,6 +52,14 @@ class Building(object):
 
 	@classmethod
 	def getInstance(cls, x, y, action='default', building=None, **trash):
+		"""
+		@param cls:
+		@param x:
+		@param y:
+		@param action:
+		@param building:
+		@param **trash:
+		"""
 		if building != None:
 			print 'redirecting...',cls,building
 			return building.getInstance(x = x, y = y, action=action, **trash)
@@ -104,9 +112,14 @@ class Building(object):
 
 	@classmethod
 	def getBuildCosts(self, **trash):
+		"""
+		@param **trash:
+		"""
 		return self.costs
 
 	def init(self):
+		"""
+		"""
 		pass
 
 	def start(self):

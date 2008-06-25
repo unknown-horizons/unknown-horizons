@@ -27,6 +27,10 @@ import math
 class Path(Building):
 	@classmethod
 	def getBuildList(cls, point1, point2):
+		"""
+		@param point1:
+		@param point2:
+		"""
 		island = None
 		settlement = None
 		buildings = []
@@ -80,6 +84,8 @@ class Path(Building):
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
 	def init(self):
+		"""
+		"""
 		super(Path, self).init()
 		island = game.main.session.world.get_island(self.x, self.y)
 		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
@@ -88,6 +94,8 @@ class Path(Building):
 		self.recalculateOrientation()
 
 	def recalculateOrientation(self):
+		"""
+		"""
 		action = ''
 		island = game.main.session.world.get_island(self.x, self.y)
 		if isinstance(island.get_tile(self.x - 1, self.y).object, (Path, Bridge)):
@@ -108,6 +116,8 @@ class Bridge(Building):
 	#	super(Bridge, cls).getInstance(x = x, y = y, action = 'default', **trash)
 
 	def init(self):
+		"""
+		"""
 		super(Bridge, self).init()
 		island = game.main.session.world.get_island(self.x, self.y)
 		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:

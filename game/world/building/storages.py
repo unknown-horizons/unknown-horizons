@@ -42,9 +42,13 @@ class Pickup(Building):
 		self.pickups = 2
 
 	def start(self):
+		"""Starts the object. Overrides the standart Building.start() methode.
+		"""
 		self.tick()
 
 	def tick(self):
+		"""Method that is called by the scheduler to check for new pickups.
+		"""
 		if self.pickups_active < self.pickups and len(self.queue) > 0:
 			info = self.queue.pop(0) # Needs to be set, otherwise the item will not pop until the lambda function is called.
 			game.main.session.scheduler.add_new_object(lambda: self.pickup(info), self, int(game.main.session.timer.ticks_per_second*6))

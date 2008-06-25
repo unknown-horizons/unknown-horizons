@@ -33,6 +33,9 @@ class BuildingClass(type):
 		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
 
 	def __init__(self, id):
+		"""
+		@param id: building id.
+		"""
 		self.id = id
 		self._object = None
 		(size_x,  size_y) = game.main.db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
@@ -46,6 +49,8 @@ class BuildingClass(type):
 		self._loadObject()
 
 	def _loadObject(cls):
+		"""Loads building from the db.
+		"""
 		print 'Loading building #' + str(cls.id) + '...'
 		cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
 		for (action_id,) in game.main.db("SELECT action FROM data.action where object=? group by action", cls.id):
@@ -80,6 +85,10 @@ class BuildingClass(type):
 			img.setYShift(shift_y)"""
 
 	def createInstance(self, x, y):
+		"""
+		@param x: int x position
+		@param y: int y position
+		"""
 		instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(instance)
 		return instance
