@@ -51,9 +51,11 @@ class Building(object):
 
 	@classmethod
 	def getInstance(cls, x, y, action='default', **trash):
+		print x,y,action
 		instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
 		fife.InstanceVisual.create(instance)
 		instance.act(action, instance.getLocation(), True)
+		print 'done'
 		return instance
 
 	@classmethod

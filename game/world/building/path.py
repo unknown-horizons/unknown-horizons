@@ -31,8 +31,7 @@ class Path(Building):
 		settlement = None
 		buildings = []
 		y = int(round(point1[1]))
-		is_first = True
-		for x in xrange(int(min(round(point1[0]), round(point2[0]))), int(max(round(point1[0]), round(point2[0])))):
+		for x in xrange(int(round(point1[0])), int(round(point2[0])), (1 if int(round(point2[0])) > int(round(point1[0])) else -1)):
 			new_island = game.main.session.world.get_island(x, y)
 			if new_island == None or (island != None and island != new_island):
 				continue
@@ -44,11 +43,10 @@ class Path(Building):
 				continue
 			settlement = new_settlement
 
-			buildings.append({'x' : x, 'y' : y, 'action' : 'c' if is_first else 'ac'})
-			is_first = False
+			buildings.append({'x' : x, 'y' : y, 'action' : ('a' if int(round(point2[0])) < int(round(point1[0])) else 'c') if len(buildings) == 0 else 'ac'})
 		x = int(round(point2[0]))
-		is_first2 = True
-		for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))):
+		is_first = True
+		for y in xrange(int(round(point1[1])), int(round(point2[1])) + (1 if int(round(point2[1])) > int(round(point1[1])) else -1), (1 if int(round(point2[1])) > int(round(point1[1])) else -1)):
 			new_island = game.main.session.world.get_island(x, y)
 			if new_island == None or (island != None and island != new_island):
 				continue
@@ -60,9 +58,28 @@ class Path(Building):
 				continue
 			settlement = new_settlement
 
-			buildings.append({'x' : x, 'y' : y, 'action' : ('d' if is_first else 'ad') if is_first2 else 'bd'})
-			is_first2 = False
+			if len(buildings) == 0: #first tile
+				if y == int(round(point2[1])):
+					action = 'ac'
+				else:
+					action = 'd' if int(round(point2[1])) > int(round(point1[1])) else 'b'
+			elif y == int(round(point2[1])): #last tile
+				if int(round(point1[1])) == int(round(point2[1])): #only tile in this loop
+					action = 'a' if int(round(point2[0])) > int(round(point1[0])) else 'c'
+				else:
+					action = 'b' if int(round(point2[1])) > int(round(point1[1])) else 'd'
+			elif y == int(round(point1[1])): #edge
+				if int(round(point2[0])) > int(round(point1[0])):
+					action = 'ad' if int(round(point2[1])) > int(round(point1[1])) else 'ab'
+				else:
+					action = 'cd' if int(round(point2[1])) > int(round(point1[1])) else 'bc'
+			else:
+				action = 'bd'
+			buildings.append({'x' : x, 'y' : y, 'action' : action})
+			is_first = False
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
 class Bridge(Building):
-	pass
+	@classmethod
+	def getInstance(cls, x, y, **trash):
+		super(Bridge, cls).getInstance(x = x, y = y, action = 'ac', **trash)

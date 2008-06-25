@@ -58,6 +58,7 @@ class IngameGui(livingObject):
 		})
 		self.gui['build_tab4'].mapEvents({
 			'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
+			'bridge-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
 		})
 		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
 		self.gui['chat'] = game.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
