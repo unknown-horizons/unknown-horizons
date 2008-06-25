@@ -30,9 +30,9 @@ class Path(Building):
 		island = None
 		settlement = None
 		buildings = []
-		action = 'abcd'
 		y = int(round(point1[1]))
-		for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))):
+		is_first = True
+		for x in xrange(int(min(round(point1[0]), round(point2[0]))), int(max(round(point1[0]), round(point2[0])))):
 			new_island = game.main.session.world.get_island(x, y)
 			if new_island == None or (island != None and island != new_island):
 				continue
@@ -44,8 +44,10 @@ class Path(Building):
 				continue
 			settlement = new_settlement
 
-			buildings.append({'x' : x, 'y' : y, 'action' : action})
+			buildings.append({'x' : x, 'y' : y, 'action' : 'c' if is_first else 'ac'})
+			is_first = False
 		x = int(round(point2[0]))
+		is_first2 = True
 		for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))):
 			new_island = game.main.session.world.get_island(x, y)
 			if new_island == None or (island != None and island != new_island):
@@ -58,5 +60,6 @@ class Path(Building):
 				continue
 			settlement = new_settlement
 
-			buildings.append({'x' : x, 'y' : y, 'action' : action})
+			buildings.append({'x' : x, 'y' : y, 'action' : ('d' if is_first else 'ad') if is_first2 else 'bd'})
+			is_first2 = False
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
