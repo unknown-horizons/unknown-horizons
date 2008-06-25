@@ -77,11 +77,6 @@ class Path(Building):
 				action = 'bd'
 			buildings.append({'x' : x, 'y' : y, 'action' : action})
 			is_first = False
-		#just "randomly" insert a bridge:
-		try:
-			buildings[len(buildings)/2].update({'action' : 'default', 'building' : game.main.session.entities.buildings[16]})
-		except:
-			pass
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
 	def init(self):
