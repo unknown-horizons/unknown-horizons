@@ -79,6 +79,30 @@ class Path(Building):
 			is_first = False
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
+	def __init__(self, *args, **kws):
+		super(Path, self).__init__(*args, **kws)
+		island = game.main.session.world.get_island(self.x, self.y)
+		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
+			if tile != None and isinstance(tile.object, Path):
+				tile.object.recalculateOrientation()
+		self.recalculateOrientation()
+
+	def recalculateOrientation(self):
+		action = ''
+		island = game.main.session.world.get_island(self.x, self.y)
+		if isinstance(island.get_tile(self.x - 1, self.y).object, Path):
+			action += 'a'
+		if isinstance(island.get_tile(self.x, self.y - 1).object, Path):
+			action += 'b'
+		if isinstance(island.get_tile(self.x + 1, self.y).object, Path):
+			action += 'c'
+		if isinstance(island.get_tile(self.x, self.y + 1).object, Path):
+			action += 'd'
+		if action == '':
+			action = 'ac'
+		self._instance.act(action, self._instance.getLocation(), True)
+		print 'recalculated',self,':',action
+
 class Bridge(Building):
 	@classmethod
 	def getInstance(cls, x, y, **trash):
