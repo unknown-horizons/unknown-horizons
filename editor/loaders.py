@@ -41,8 +41,7 @@ def _load(file, engine):
 	map = engine.getModel().createMap("map")
 
 	layers = []
-	for i in xrange(0,2):
-		layers.append(map.createLayer(str(i), cellgrid))
+	layers.append(map.createLayer('ground', cellgrid))
 	view = engine.getView()
 
 	cam = view.addCamera("main", layers[len(layers) - 1], fife.Rect(0, 0, 1024, 768), fife.ExactModelCoordinate(0.0, 0.0, 0.0))
