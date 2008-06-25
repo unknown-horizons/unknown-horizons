@@ -63,3 +63,6 @@ class Path(Building):
 			buildings.append({'x' : x, 'y' : y, 'action' : ('d' if is_first else 'ad') if is_first2 else 'bd'})
 			is_first2 = False
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
+
+class Bridge(Building):
+	pass
