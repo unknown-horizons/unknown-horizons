@@ -45,16 +45,30 @@ class Entities(livingObject):
 			self.units[unit_id] = UnitClass(unit_id)
 
 	def registerInstance(self, instance):
+		"""Saves a instance in the _instances list for further reference.
+		@param instance: fife.Instance
+		"""
 		id = self._instances_id
 		self._instances[id] = instance
 		self._instances_id += 1
 		return str(id)
 
 	def updateInstance(self, id, instance):
+		"""
+		@param id: instance id
+		@param instance: new fife.Instance that is to take the place at id.
+		"""
 		self._instances[int(id)] = instance
 
 	def deleteInstance(self, id):
+		"""deletes an instance from the list.
+		@param id: instance id
+		"""
 		del self._instances[int(id)]
 
 	def getInstance(self, id):
+		"""
+		@param id: instance id
+		@return: fife.Instance
+		"""
 		return self._instances[int(id)]

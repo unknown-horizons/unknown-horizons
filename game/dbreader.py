@@ -23,14 +23,16 @@ import sqlite3
 import re
 
 class DbReader(object):
-	"""Class that handles connections to sqlite databases"""
+	"""Class that handles connections to sqlite databases
+	@param file: str containing the database file."""
 	def __init__(self, file):
-		"""Init function, opens the connection to a database and creates a cursor for that database
-		@param file: str containing the database file.
-		"""
 		self.connection = sqlite3.connect(file)
 		self.connection.isolation_level = None
 		def regexp(expr, item):
+			"""
+			@param expr:
+			@param item:
+			"""
 			r = re.compile(expr)
 			return r.match(item) is not None
 		self.connection.create_function("regexp", 2, regexp)
@@ -59,18 +61,25 @@ class DbReader(object):
 		return self.cur.executescript(script)
 
 class SqlError(object):
-	"""Represents a SQL error"""
-
+	"""Represents a SQL error
+	@param error: str error description.
+	"""
 	def __init__(self, error):
 		self.success, self.error, self.rows, self.affected, self.id = False, error, None, None, None
 
 class SqlResult(object):
-	"""Represents a SQL result"""
-
+	"""Represents a SQL result
+	@param rows: the rows that were returned by the sql query
+	@param affected: int number of rows affected by the sql query
+	@param id: int id of the sqlresult(lastrowid of the curser)
+	"""
 	def __init__(self, rows, affected, id):
 		self.success, self.error, self.rows, self.affected, self.id = True, None, rows, affected, id
 
 	def __getattr__(self, name):
+		"""
+		@param name: key in self.rows, whose corresponding value is then returned.
+		"""
 		return getattr(self.rows, name)
 	def __add__(self, *args, **kwargs): return self.rows.__add__(*args, **kwargs)
 	def __contains__(self, *args, **kwargs): return self.rows.__contains__(*args, **kwargs)

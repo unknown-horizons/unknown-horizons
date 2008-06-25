@@ -27,11 +27,18 @@ import game.main
 import new
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
+	"""Loads animations from a SQLite database.
+	"""
+	"""
+	"""
 	def __init__(self):
 		super(SQLiteAnimationLoader, self).__init__()
 		self.thisown = 0
 
 	def loadResource(self, location):
+		"""
+		@param location:
+		"""
 		print "Loading animation:", location.getFilename()
 		ani = fife.Animation()
 		ani.setActionFrame(0)
@@ -45,6 +52,10 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		return ani
 
 class Fife(object):
+	"""
+	"""
+	"""
+	"""
 	def __init__(self):
 		self.pump = []
 
@@ -86,6 +97,11 @@ class Fife(object):
 		)
 
 	def _setSetting(self, settingObject, settingName, value):
+		"""
+		@param settingObject:
+		@param settingName:
+		@param value:
+		"""
 		setting = settingObject._name + settingName
 		if setting == 'fife_defaultFont_path':
 			self.settings.setDefaultFontPath(value)
@@ -111,6 +127,8 @@ class Fife(object):
 			self.settings.setInitialVolume(value)
 
 	def init(self):
+		"""
+		"""
 		logToPrompt, logToFile, debugPychan = True, True, False
 		if self._gotInited:
 			return
@@ -145,12 +163,16 @@ class Fife(object):
 		self._gotInited = True
 
 	def run(self):
+		"""
+		"""
 		self.init()
 		self.engine.initializePumping()
 		self.loop()
 		self.engine.finalizePumping()
 
 	def loop(self):
+		"""
+		"""
 		while not self._doQuit:
 			try:
 				self.engine.pump()
@@ -164,8 +186,13 @@ class Fife(object):
 				return self._doReturn
 
 	def breakLoop(self, returnValue = None):
+		"""
+		@param returnValue:
+		"""
 		self._doReturn = returnValue
 		self._doBreak = True
 
 	def quit(self):
+		""" Quits the engine.
+		"""
 		self._doQuit = True

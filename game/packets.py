@@ -20,10 +20,20 @@
 # ###################################################
 
 class Packet(object):
+	"""
+	@param address:
+	@param port:
+	"""
 	def __init__(self, address, port):
 		self.address, self.port = str(address), int(port)
 
 class TickPacket(Packet):
+	"""
+	@param address:
+	@param port:
+	@param tick:
+	@param commands:
+	"""
 	def __init__(self, address, port, tick, commands):
 		super(TickPacket, self).__init__(address, port)
 		self.tick = tick
@@ -33,6 +43,11 @@ class QueryPacket(Packet):
 	pass
 
 class ChatPacket(Packet):
+	"""
+	@param address:
+	@param port:
+	@param text:
+	"""
 	def __init__(self, address, port, text):
 		super(ChatPacket, self).__init__(address, port)
 		self.text = text
@@ -53,10 +68,21 @@ class MasterVersionPacket(Packet):
 	pass
 
 class MasterRegisterPacket(Packet):
+	"""
+	@param port:
+	"""
 	def __init__(self, port):
 		self.myport = port
 
 class InfoPacket(Packet):
+	"""
+	@param address:
+	@param port:
+	@param map:
+	@param players:
+	@param bots:
+	@param maxplayers:
+	"""
 	def __init__(self, address, port, map, players, bots, maxplayers):
 		super(InfoPacket, self).__init__(address, port)
 		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers

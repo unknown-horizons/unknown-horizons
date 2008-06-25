@@ -25,6 +25,9 @@ import os.path
 import simplejson
 
 class Setting(object):
+	"""
+	@param name:
+	"""
 	def __init__(self, name = ''):
 		self._name = name
 		self._categorys = []
@@ -41,10 +44,17 @@ class Setting(object):
 				self.__dict__[option] = simplejson.loads(value)
 
 	def __getattr__(self, name):
+		"""
+		@param name:
+		"""
 		assert(not name.startswith('_'))
 		return None
 
 	def __setattr__(self, name, value):
+		"""
+		@param name:
+		@param value:
+		"""
 		self.__dict__[name] = value
 		if not name.startswith('_'):
 			assert(name not in self._categorys)
@@ -53,6 +63,9 @@ class Setting(object):
 				listener(self, name, value)
 
 	def addChangeListener(self, listener):
+		"""
+		@param listener:
+		"""
 		for name in self._categorys:
 			self.__dict__[name].addChangeListener(listener)
 		self._listener.append(listener)
@@ -61,11 +74,17 @@ class Setting(object):
 				listener(self, name, getattr(self, name))
 
 	def delChangeListener(self, listener):
+		"""
+		@param listener:
+		"""
 		for name in self._categorys:
 			self.__dict__[name].delChangeListener(listener)
 		self._listener.remove(listener)
 
 	def setDefaults(self, **defaults):
+		"""
+		@param **defaults:
+		"""
 		for name in defaults:
 			assert(not name.startswith('_'))
 			assert(name not in self._categorys)
@@ -75,6 +94,9 @@ class Setting(object):
 					listener(self, name, defaults[name])
 
 	def addCategorys(self, *categorys):
+		"""
+		@param *categorys:
+		"""
 		for category in categorys:
 			self._categorys.append(category)
 			inst = Setting(self._name + category + '_')
@@ -84,6 +106,9 @@ class Setting(object):
 
 class Settings(Setting):
 	VERSION = 1
+	"""
+	@param config:
+	"""
 	def __init__(self, config = 'config.sqlite'):
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)

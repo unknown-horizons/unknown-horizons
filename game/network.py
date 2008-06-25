@@ -31,6 +31,9 @@ if sys.argv[0].lower().endswith('openanno.py'):
 	import game.main
 
 class Socket(object):
+	"""
+	@param port:
+	"""
 	def __init__(self, port = 0):
 		if sys.argv[0].lower().endswith('openanno.py'):
 			game.main.fife.pump.append(self._pump)
@@ -42,13 +45,20 @@ class Socket(object):
 		self.buffers = {}
 
 	def __del__(self):
+		"""
+		"""
 		self._socket.close()
 
 	def end(self):
+		"""
+		"""
 		if sys.argv[0].lower().endswith('openanno.py'):
 			game.main.fife.pump.remove(self._pump)
 
 	def _pump(self, forever = False):
+		"""
+		@param forever:
+		"""
 		#a packet is: OA<len><data>
 		while 1:
 			read, write, error = select.select([self._socket], [], [], *([] if forever else [0]))
@@ -83,13 +93,22 @@ class Socket(object):
 					break
 
 	def send(self, packet):
+		"""
+		@param packet:
+		"""
 		data = pickle.dumps(packet)
 		self._socket.sendto('OA' + struct.pack('I',len(data)) + data, (packet.address, packet.port))
 
 	def receive(self, packet):
+		"""
+		@param packet:
+		"""
 		pass
 
 class Player(object):
+	"""
+	@param name:
+	"""
 	def __init__(self, name):
 		self.name = name
 		self.color, self.team = None, None
@@ -97,6 +116,10 @@ class Player(object):
 class ClientConnection(object):
 	connectTimeout = 5
 
+	"""
+	@param address:
+	@param port:
+	"""
 	def __init__(self, address, port):
 		self.players = {}
 
@@ -107,15 +130,22 @@ class ClientConnection(object):
 		self.reconnect()
 
 	def _pump(self):
+		"""
+		"""
 		if self.connectTime + self.__class__.connectTimeout <= time.time():
 			self.onTimeout()
 
 	def _receive(self, packet):
+		"""
+		@param packet:
+		"""
 		if isinstance(packet, ConnectedPacket):
 			self.onConnected(packet.players, packet.map, packet.settings)
 
 
 	def reconnect(self):
+		"""
+		"""
 		if self.state not in (self.__class__.STATE_CONNECTING, self.__class__.STATE_DISCONNECTED):
 			self.doDisconnect()
 		if self._pump not in game.main.fife.pump:
@@ -125,11 +155,16 @@ class ClientConnection(object):
 		self.state = self.__class__.STATE_CONNECTING
 
 	def end(self):
+		"""
+		"""
 		self.socket.receive = lambda : None
 		if self._pump in game.main.fife.pump:
 			game.main.fife.pump.remove(self._pump)
 
 	def send(self, packet):
+		"""
+		@param packet:
+		"""
 		if packet.address == None and packet.port == None:
 			for packet.address, packet.port in self.players:
 				if packet.address == None and packet.port == None:
@@ -141,49 +176,92 @@ class ClientConnection(object):
 
 
 	def doChat(self, text):
+		"""
+		@param text:
+		"""
 		self.send(ChatPacket(text))
 
 	def doDisconnect(self):
+		"""
+		"""
 		self.send(DisconnectPacket(self.address, self.port))
 
 	def doPlayerModify(self, **settings):
+		"""
+		@param **settings:
+		"""
 		for name, value in settings.items():
 			self.send(PlayerModify(name, value))
 
 
 	def onTimeout(self):
+		"""
+		"""
 		pass
 
 	def onConnected(self, players, map, settings):
+		"""
+		@param players:
+		@param map:
+		@param settings:
+		"""
 		pass
 
 	def onDisconnect(self):
+		"""
+		"""
 		pass
 
 	def onChat(self, player, text):
+		"""
+		@param player:
+		@param text:
+		"""
 		pass
 
 	def onPlayerJoin(self, player):
+		"""
+		@param player:
+		"""
 		pass
 
 	def onPlayerPart(self, player):
+		"""
+		@param player:
+		"""
 		pass
 
 	def onPlayerModify(self, player):
+		"""
+		@param player:
+		"""
 		pass
 
 	def onServerSetting(self, settings):
+		"""
+		@param settings:
+		"""
 		pass
 
 	def onServerMap(self, map):
+		"""
+		@param map:
+		"""
 		pass
 
 	def onTickPacket(self, tick, commands):
+		"""
+		@param tick:
+		@param commands:
+		"""
 		pass
 
 class ServerConnection(object):
 	registerTimeout = 120
 
+	"""
+	@param port:
+	"""
 	def __init__(self, port = None):
 		if self._pump not in game.main.fife.pump:
 			game.main.fife.pump.append(self._pump)
@@ -193,17 +271,26 @@ class ServerConnection(object):
 		self.register()
 
 	def _pump(self):
+		"""
+		"""
 		if self.registerTime + self.__class__.registerTimeout <= time.time():
 			self.register()
 
 	def register(self):
+		"""
+		"""
 		self._socket.send(MasterRegisterPacket(self._socket.port))
 		self.registerTime = time.time()
 
 	def end(self):
+		"""
+		"""
 		self._socket.receive = lambda : None
 
 	def send(self, packet):
+		"""
+		@param packet:
+		"""
 		if packet.address == None and packet.port == None:
 			for packet.address, packet.port in self.players:
 				game.main.connection.send(packet)

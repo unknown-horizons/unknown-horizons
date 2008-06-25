@@ -25,7 +25,11 @@ import game.main
 from living import *
 
 class View(livingObject):
+	"""Class that takes care of all the camera and rendering stuff."""
 	def begin(self, center = (0, 0)):
+		"""
+		@param center: center position for the main camera
+		"""
 		self.model = game.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -60,6 +64,8 @@ class View(livingObject):
 			self.renderer[r].addActiveLayer(self.layers[0])
 
 	def end(self):
+		"""
+		"""
 		print 'deconstruct',self
 		self.model.deleteMaps()
 		self.view.clearCameras()
@@ -76,6 +82,10 @@ class View(livingObject):
 		self.cam.setLocation(loc)
 
 	def autoscroll(self, x, y):
+		"""
+		@param x:
+		@param y:
+		"""
 		old = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
 		self._autoscroll[0] += x
 		self._autoscroll[1] += y
@@ -87,6 +97,9 @@ class View(livingObject):
 				game.main.session.timer.add_test(self.tick)
 
 	def tick(self, tick):
+		"""
+		@param tick:
+		"""
 		self.scroll(self._autoscroll[0], self._autoscroll[1])
 
 	def scroll(self, x, y):

@@ -30,6 +30,8 @@ from game.gui.mainlistener import MainListener
 from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 
 def start():
+	"""Starts the game.
+	"""
 	global db, settings, fife, gui, session, connection
 	#init db
 	db = DbReader(':memory:')
@@ -63,10 +65,14 @@ def onEscape():
 	pass
 
 def showCredits():
+	"""Shows the credits dialog.
+	"""
 	global fife
 	showDialog(fife.pychan.loadXML('content/gui/credits.xml'), {'okButton' : True}, onPressEscape = True)
 
 def showSettings():
+	"""Shows the settings.
+	"""
 	global fife, settings, onEscape
 	resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
 	try:
@@ -110,6 +116,11 @@ def showSettings():
 		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
 
 def showDialog(dlg, actions, onPressEscape = None):
+	"""
+	@param dlg: dialog that is to be shown
+	@param actions:
+	@param onPressEscape:
+	"""
 	global onEscape
 	if onPressEscape != None:
 		def _escape():
@@ -123,11 +134,15 @@ def showDialog(dlg, actions, onPressEscape = None):
 	return ret
 
 def showQuit():
+	"""Shows the quit dialog
+	"""
 	global fife
 	if showDialog(fife.pychan.loadXML('content/gui/quitgame.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		fife.quit()
 
 def showMain():
+	""" shows the main menu
+	"""
 	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits
 	if gui != None:
 		gui.hide()
@@ -145,6 +160,9 @@ def showMain():
 	onEscape = showQuit
 
 def showSingle(showSaved = False):
+	"""
+	@param showSaved: Bool whether saved games are to be shown.
+	"""
 	global gui, onEscape
 	if gui != None:
 		gui.hide()
@@ -170,6 +188,8 @@ def showSingle(showSaved = False):
 	onEscape = showMain
 
 def startSingle():
+	""" Starts a single player game.
+	"""
 	global gui, fife, session, onEscape, showPause
 
 	file = gui.files[gui.collectData('list')]
@@ -196,6 +216,8 @@ def showMulti():
 	gui.stylize('menu')
 	gui.server = []
 	def _close():
+		"""
+		"""
 		global gui
 		print 'exit'
 		print gui.serverList
@@ -214,6 +236,9 @@ def showMulti():
 	listServers()
 
 def listServers(serverType = 'internet'):
+	"""
+	@param serverType:
+	"""
 	gui.mapEvents({
 		'refresh'       : fife.pychan.tools.callbackWithArguments(listServers, serverType),
 		'showLAN'       : fife.pychan.tools.callbackWithArguments(listServers, 'lan') if serverType != 'lan' else lambda : None,
@@ -239,6 +264,8 @@ def listServers(serverType = 'internet'):
 		gui.serverList.changed = lambda : None
 		gui.serverList.update()
 	def _changed():
+		"""
+		"""
 		servers = []
 		for server in gui.serverList:
 			servers.append(str(server))
@@ -248,6 +275,8 @@ def listServers(serverType = 'internet'):
 	gui.oldServerType = serverType
 
 def createServer():
+	"""
+	"""
 	global gui, onEscape, showMulti
 	if gui != None:
 		gui.serverList.end()
@@ -258,6 +287,8 @@ def createServer():
 	onEscape = showMulti
 
 def joinServer():
+	"""
+	"""
 	global gui, onEscape, showMulti
 	if gui != None:
 		gui.serverList.end()
@@ -268,6 +299,8 @@ def joinServer():
 	onEscape = showMulti
 
 def showMultiMapSelect():
+	"""
+	"""
 	global gui, onEscape, showLobby
 	if gui != None:
 		gui.hide()
@@ -277,6 +310,8 @@ def showMultiMapSelect():
 	onEscape = showLobby
 
 def showPause():
+	"""
+	"""
 	global gui, onEscape, quitSession
 	if gui != None:
 		gui.hide()
@@ -291,12 +326,16 @@ def showPause():
 	onEscape = returnGame
 
 def returnGame():
+	"""
+	"""
 	global gui, onEscape, showPause
 	gui.hide()
 	gui = None
 	onEscape = showPause
 
 def quitSession():
+	"""
+	"""
 	global gui, fife, session
 	if showDialog(fife.pychan.loadXML('content/gui/quitsession.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		gui.hide()
@@ -306,5 +345,7 @@ def quitSession():
 		showMain()
 
 def onHelp():
+	"""
+	"""
 	global fife
 	showDialog(fife.pychan.loadXML('content/gui/help.xml'), {'okButton' : True}, onPressEscape = True)
