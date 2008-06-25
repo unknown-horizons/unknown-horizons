@@ -64,10 +64,11 @@ def _load(file, engine):
 	return map
 
 def _save(file, engine, map):
-	if not db("attach ? AS island", ':memory:').success:
+	if not db("attach ? AS island", file).success:
 		raise WrongFileType(file)
 
-	db('create table island.ground (x INTEGER, y INTEGER, ground_id INTEGER)')
+	db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)')
+	db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
 
 	layer = map.getLayer('ground')
 
@@ -77,7 +78,7 @@ def _save(file, engine, map):
 		coord = instance.getLocation().getLayerCoordinates()
 		x,y = int(coord.x), int(coord.y)
 		ground_id = int(instance.getObject().getId())
-		print x,y,ground_id
+		db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
 
 	db("detach island")
 
