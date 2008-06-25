@@ -45,4 +45,6 @@ class Object(fife.InstanceActionListener):
 		raise ProgrammingError('No OnActionFinished defined for Unit.')
 
 	def start(self):
+		"""Called when the unit is placed into the game.
+		"""
 		raise ProgrammingError('No start defined for Unit.')

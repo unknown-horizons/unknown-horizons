@@ -27,10 +27,16 @@ import fife
 
 class UnitClass(type):
 	def __new__(self, id):
+		"""
+		@param id: unit id
+		"""
 		(class_package,  class_name) = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
 		return type.__new__(self, 'Unit[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
 
 	def __init__(self, id):
+		"""
+		@param id: unit id
+		"""
 		self.id = id
 		self._object = None
 		for (name,  value) in game.main.db("SELECT name, value FROM data.unit_property WHERE unit_id = ?", str(id)):
@@ -38,6 +44,8 @@ class UnitClass(type):
 		self._loadObject()
 
 	def _loadObject(self):
+		"""Loads the object with all animations.
+		"""
 		print 'Loading unit #' + str(self.id) + '...'
 		self._object = game.main.session.view.model.createObject(str(self.id), 'unit')
 		self._object.setPather(game.main.session.view.model.getPather('RoutePather'))

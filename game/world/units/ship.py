@@ -24,8 +24,10 @@ import fife
 from game.world.storage import Storage
 
 class Ship(fife.InstanceActionListener):
-	"""Class representing a ship"""
-
+	"""Class representing a ship
+		@param x: int x position
+		@param y: int y position
+	"""
 	def __init__(self, x, y):
 		if self._object == None:
 			self.__class__._loadObject()
@@ -47,6 +49,10 @@ class Ship(fife.InstanceActionListener):
 		self._instance.addActionListener(self)
 
 	def onInstanceActionFinished(self, instance, action):
+		"""
+		@param instance: fife.Instance
+		@param action: string representing the action that is finished.
+		"""
 		print 'action finished'
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position[0] + self.position[0] - self.last_position[0], self.position[1] + self.position[1] - self.last_position[1], 0))
@@ -57,6 +63,10 @@ class Ship(fife.InstanceActionListener):
 		pass
 
 	def move(self, x, y):
+		"""
+		@param x: int x coordinate
+		@param y: int y coordinate
+		"""
 		print "move"
 		self.target = (x, y)
 		if self.next_target == self.position:
@@ -78,7 +88,8 @@ class Ship(fife.InstanceActionListener):
 			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.position[0] or self.next_target[1] == self.position[1] else 17)
 
 	def move_tick(self):
-		print 'tick'
+		"""Called by the schedular, moves the unit one step for this tick.
+		"""
 		#sync position
 		self.last_position = self.position
 		self.position = self.next_target
