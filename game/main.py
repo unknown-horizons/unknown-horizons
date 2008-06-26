@@ -133,6 +133,19 @@ def showDialog(dlg, actions, onPressEscape = None):
 		onEscape = tmp_escape
 	return ret
 
+def getMaps(showSaved = False):
+	""" Gets available maps both for displaying and loading.
+
+	@param showSaved: Bool wether saved games are to be shown.
+	@return Tuple of two lists; first: files with path; second: files for displaying
+	""" 
+	files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
+	if showSaved:
+		files.extend([f for p in ('content/save',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
+
+	display = ['Random Map' if i == None else os.path.split(i)[1].rpartition('.')[0] for i in files]
+	return (files, display)
+
 def showQuit():
 	"""Shows the quit dialog
 	"""
@@ -174,16 +187,13 @@ def showSingle(showSaved = False):
 	}
 	if showSaved:
 		eventMap['showNew'] = fife.pychan.tools.callbackWithArguments(showSingle, False)
-		files = [f for p in ('content/save', 'content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 	else:
 		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, True)
-		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 	gui.mapEvents(eventMap)
 	gui.distributeData({'showNew' : not showSaved, 'showLoad' : showSaved})
 
-	display = ['Random Map' if i == None else i.rpartition('/')[2].rpartition('.')[0] for i in files]
+	(gui.files, display) = getMaps(showSaved)
 	gui.distributeInitialData({'list' : display})
-	gui.files = files
 	gui.show()
 	onEscape = showMain
 
