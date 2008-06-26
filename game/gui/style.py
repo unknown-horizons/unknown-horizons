@@ -66,7 +66,8 @@ STYLES= {
 			'font' : 'Essays1743-Italic_small'
 		},
 		('Container','HBox','VBox') : {
-			'border_size': 0,
+			'opaque' : 0,
+			'border_size': 0
 		},
 		('Icon', 'ImageButton') : {
 			'border_size': 0
