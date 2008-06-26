@@ -117,14 +117,14 @@ def _init(engine):
 	db = DbReader(':memory:')
 	db("attach ? AS data", os.path.abspath(os.path.dirname(__file__) + '/../content/openanno.sqlite'))
 
-	for (ground_id,) in db("SELECT rowid FROM data.ground"):
+	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground"):
 		print 'Loading ground #' + str(ground_id) + '...'
 		object = engine.getModel().createObject(str(ground_id), 'ground')
 		object.thisown = 0
 		fife.ObjectVisual.create(object)
 		visual = object.get2dGfxVisual()
 
-		for rotation, file in db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where ground=?", ground_id):
+		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = engine.getImagePool().addResourceFromFile(relpath(os.getcwd(), os.path.abspath(os.path.dirname(__file__) + '/../' + str(file))))
 			visual.addStaticImage(int(rotation), img)
 			img = engine.getImagePool().getImage(img)
