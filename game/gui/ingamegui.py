@@ -40,6 +40,10 @@ class IngameGui(livingObject):
 		self.toggle_visible('gamemenu')
 
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
+		self.gui['minimap'].position = (
+				game.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0], 
+				game.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1]
+		)
 		self.toggle_visible('minimap')
 		self.gui['minimap'].mapEvents({
 			'zoomIn' : game.main.session.view.zoom_in,
