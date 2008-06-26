@@ -56,7 +56,7 @@ def findFIFE():
 				break
 	else:
 		print 'FIFE was not found.'
-		print "Please create a config.py file and add a line with: fife_path = '<path to fife>' eg. path = '../../fife/trunk/'"
+		print "Please create a config.py file and add a line with: fife_path = '<path to fife>' eg. fife_path = '../../fife/trunk/'"
 		exit()
 
 	try:

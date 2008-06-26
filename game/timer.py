@@ -26,7 +26,7 @@ from living import *
 class Timer(livingObject):
 	"""
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
-	this is espacialy important for multiplayer, to allow syncronous play.
+	this is especially important for multiplayer, to allow synchronous play.
 	"""
 	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 

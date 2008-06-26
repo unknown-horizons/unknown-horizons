@@ -81,7 +81,7 @@ class World(object):
 		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
 
 	def get_building(self, x, y):
-		"""Returns the bilding at the position x,y.
+		"""Returns the building at the position x,y.
 		@param x,y: int coordinates.
 		@return: Building class instance if a building is found, else none."""
 		i = self.get_island(x, y)
