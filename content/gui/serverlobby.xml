@@ -12,5 +12,5 @@
 	<ScrollArea size="200,350"  horizontal_scrollbar="0"  position="800,300">
 				<TextBox name="Settings"/>
 	</ScrollArea>
-	<Icon image="content/gui/menu/start.png" position="850,680"/>
+	<Icon image="content/gui/menu/start.png" position="850,680">
 </Container>
