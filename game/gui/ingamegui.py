@@ -29,6 +29,31 @@ class IngameGui(livingObject):
 	def begin(self):
 		super(IngameGui, self).begin()
 		self.gui = {}
+
+		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
+		self.toggle_visible('encyclopedia')
+
+		self.gui['topmain'] = game.main.fife.pychan.loadXML('content/gui/top_main.xml')
+		self.toggle_visible('topmain')
+
+		self.gui['gamemenu'] = game.main.fife.pychan.loadXML('content/gui/gamemenu_button.xml')
+		self.toggle_visible('gamemenu')
+
+		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
+		self.toggle_visible('minimap')
+		self.gui['minimap'].mapEvents({
+			'zoomIn' : game.main.session.view.zoom_in,
+			'zoomOut' : game.main.session.view.zoom_out,
+			'rotateRight' : game.main.session.view.rotate_right,
+			'rotateLeft' : game.main.session.view.rotate_left
+		})
+
+		self.gui['leftPanel'] = game.main.fife.pychan.loadXML('content/gui/left_panel.xml')
+		self.toggle_visible('leftPanel')
+		self.gui['leftPanel'].mapEvents({
+			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build')
+		})
+
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
 		self.gui['build'].stylize('menu')
@@ -69,18 +94,10 @@ class IngameGui(livingObject):
 		self.gui['ship'].mapEvents({
 			'foundSettelmentButton' : self._ship_build
 		})
-		self.gui['main'] = game.main.fife.pychan.loadXML('content/gui/hud_main.xml')
-		self.toggle_visible('main')
-		self.gui['main'].mapEvents({
-			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build'),
-			'zoomIn' : game.main.session.view.zoom_in,
-			'zoomOut' : game.main.session.view.zoom_out,
-			'rotateRight' : game.main.session.view.rotate_right,
-			'rotateLeft' : game.main.session.view.rotate_left,
-		})
 
 	def end(self):
 		super(IngameGui, self).end()
+
 		self.gui['build'].mapEvents({
 			'servicesTab' : lambda : None,
 			'residentsTab' : lambda : None,
@@ -92,8 +109,7 @@ class IngameGui(livingObject):
 		self.gui['ship'].mapEvents({
 			'foundSettelmentButton' : lambda : None
 		})
-		self.gui['main'].mapEvents({
-			'build' : lambda : None,
+		self.gui['minimap'].mapEvents({
 			'zoomIn' : lambda : None,
 			'zoomOut' : lambda : None,
 			'rotateRight' : lambda : None,
