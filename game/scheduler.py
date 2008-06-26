@@ -71,8 +71,7 @@ class Scheduler(livingObject):
 					self.schedule[key].remove(object)
 
 	def end(self):
-		for item in self.schedule:
-			del item
+		self.schedule = {}
 		game.main.session.timer.remove_call(self.tick)
 
 class CallbackObject(object):
