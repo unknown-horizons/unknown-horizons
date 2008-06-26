@@ -67,6 +67,11 @@ class Session(livingObject):
 		#to be (re)moved:
 		self.selected_instance = None
 
+	def end(self):
+		self.view.model.deleteMaps()
+		self.view.view.clearCameras()
+		super(Session, self).end()
+
 	def loadMap(self, map):
 		"""Loads a map.
 		@param map: string with the mapfile path.
