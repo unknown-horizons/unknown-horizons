@@ -57,9 +57,8 @@ class GroundClass(type):
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 
-		#for (oid, multi_action_or_animated) in game.main.db("SELECT id, max(actions_and_images) > 1 AS multi_action_or_animated FROM ( SELECT ground.oid as id, action.animation as animation, count(*) as actions_and_images FROM ground LEFT JOIN action ON action.ground = ground.oid LEFT JOIN animation ON action.animation = animation.animation_id GROUP BY ground.oid, action.rotation ) x GROUP BY id"):
-		#	print oid, multi_action_or_animated
-		for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where ground=?", self.id):
+		animation_45, animation_135, animation_225, animation_315 = game.main.db("SELECT (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground WHERE rowid = ?", self.id)[0]
+		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
