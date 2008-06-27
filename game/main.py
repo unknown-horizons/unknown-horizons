@@ -134,6 +134,12 @@ def showDialog(dlg, actions, onPressEscape = None):
 		onEscape = tmp_escape
 	return ret
 
+def showPopup(windowtitle, message):
+	popup = fife.pychan.loadXML('content/gui/popupbox.xml')
+	popup.findChild(name='popup_window').text = windowtitle
+	popup.findChild(name='popup_message').text = message
+	showDialog(popup,{'okButton' : True}, onPressEscape = True)
+
 def getMaps(showSaved = False):
 	""" Gets available maps both for displaying and loading.
 
