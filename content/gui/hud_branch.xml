@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <Container size="600,200" position="200, 568" border_size="0" background_image="content/gui/images/background/hud/menu_bg.png">
   <!-- Name -->
   <Label name="buildingNameLabel" text="Branch office (Branch class ROMAN)" base_color="40,40,40" position="5,5" />

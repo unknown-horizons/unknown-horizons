@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!-- Residents tab -->
 <Container name="tab0" size="533,190">
   <Label position="10,5" text="Residents" />

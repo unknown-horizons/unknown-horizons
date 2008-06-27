@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <Container size="210,210">
 	<Icon image="content/gui/images/misc/minimap_placeholder.png" />
 	<ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" down_image="content/gui/images/icons/hud/main/zoom_out.png" hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" size="32,32" position="40,170" />

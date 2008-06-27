@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <HBox position="0,0">
 	<Label text="Gold:" />
 	<Label text="0" name="gold" />

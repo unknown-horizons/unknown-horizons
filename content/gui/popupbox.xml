@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <Window name="popup_window" base_color="40, 40, 40">
 	<Label name="popup_message" base_color="40, 40, 40"/>
 	<HBox>

@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!-- Military tab -->
 <Container name="tab0" size="533,190">
   <Label position="5,5" text="Military" />

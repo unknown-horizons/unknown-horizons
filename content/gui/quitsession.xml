@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <Window title="Quit OpenAnno" base_color="40, 40, 40">
 	<Label text="Are you sure you want to abort the running session?" base_color="40, 40, 40"/>
 	<HBox>

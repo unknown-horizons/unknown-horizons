@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <Container size="600,200" position="267, 568" background_image="content/gui/images/background/hud/ingame2.png">
   <!-- Names -->
   <HBox position="5,5">
