@@ -103,12 +103,14 @@ def _save(file, engine, map):
 		raise WrongFileType(file)
 
 	try:
-		db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)')
+		if not db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)').success:
+			raise int #just throw anything, int was the first i thought of...
 	except:
 		db('delete from island.ground')
 
 	try:
-		db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
+		if not db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)').success:
+			raise int
 	except:
 		db('delete from island.island_properties')
 
@@ -124,9 +126,7 @@ def _save(file, engine, map):
 			ground_id = int(instance.getObject().getId())
 			rotation = instance.getRotation()
 			if rotation != 0:
-				print 'old:',ground_id
 				ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
-				print 'new:',ground_id
 			db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
 			already.append((int(x), int(y)))
 
