@@ -31,8 +31,8 @@ if sys.argv[0].lower().endswith('openanno.py'):
 	import game.main
 
 class Socket(object):
-	"""
-	@param port:
+	"""A socket which handles network communication, it sends and receives packets (packets=Objects of (sub)type Packet)
+	@param port: the port to listen on or 0 for auto chhosing a port
 	"""
 	def __init__(self, port = 0):
 		if sys.argv[0].lower().endswith('openanno.py'):
@@ -56,8 +56,8 @@ class Socket(object):
 			game.main.fife.pump.remove(self._pump)
 
 	def _pump(self, forever = False):
-		"""
-		@param forever:
+		"""internal function which gets regularly called and checks for incoming packets
+		@param forever: used internally in masterserver, to not waste ressources
 		"""
 		#a packet is: OA<len><data>
 		while 1:
@@ -93,15 +93,15 @@ class Socket(object):
 					break
 
 	def send(self, packet):
-		"""
-		@param packet:
+		"""Send a packet
+		@param packet: the packet to send (packet = object of (sub)type Packet) (see packet.py
 		"""
 		data = pickle.dumps(packet)
 		self._socket.sendto('OA' + struct.pack('I',len(data)) + data, (packet.address, packet.port))
 
 	def receive(self, packet):
-		"""
-		@param packet:
+		"""Hook this function to receive packets
+		@param packet: the incoming packet
 		"""
 		pass
 
