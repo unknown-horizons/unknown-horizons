@@ -44,6 +44,7 @@ def _load(file, engine):
 	map.setResourceFile(file)
 
 	layer = map.createLayer('ground', cellgrid)
+	layer.setPathingStrategy('cell_edges_and_diagonals')
 	view = engine.getView()
 
 	view.clearCameras()
@@ -53,10 +54,18 @@ def _load(file, engine):
 	cam.setTilt(-60)
 	cam.setZoom(1)
 
+	nr = 0
+	already = []
 	for (x, y, ground_id) in db("select x, y, ground_id from island.ground"):
-		instance = layer.createInstance(engine.getModel().getObject(str(ground_id), 'ground'), fife.ModelCoordinate(int(x), int(y), 0), str(x) + ',' + str(y))
-		fife.InstanceVisual.create(instance)
-		instance.thisown = 0
+		if (int(x), int(y)) not in already:
+			instance = layer.createInstance(engine.getModel().getObject(str(ground_id), 'ground'), fife.ModelCoordinate(int(x), int(y), 0), str(nr))
+			location = fife.Location(layer)
+			location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
+			instance.setFacingLocation(location)
+			fife.InstanceVisual.create(instance)
+			instance.thisown = 0
+			nr+=1
+			already.append((int(x), int(y)))
 	#except:
 	#	raise WrongFileType(file)
 
@@ -68,17 +77,16 @@ def _load(file, engine):
 def _save(file, engine, map):
 	if not db("attach ? AS island", file).success:
 		raise WrongFileType(file)
+
 	try:
 		db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)')
 	except:
-		pass
+		db('delete from island.ground')
+
 	try:
 		db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
 	except:
-		pass
-
-	db('delete from island.ground')
-	db('delete from island.island_properties')
+		db('delete from island.island_properties')
 
 	layer = map.getLayer('ground')
 
@@ -88,6 +96,8 @@ def _save(file, engine, map):
 		coord = instance.getLocation().getLayerCoordinates()
 		x,y = int(coord.x), int(coord.y)
 		ground_id = int(instance.getObject().getId())
+		rotation = instance.getRotation()
+		ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
 		db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
 
 	db("detach island")
