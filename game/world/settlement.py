@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import game.main
 from game.world.storage import Storage
 from stablelist import stablelist
 from game.world.building.storages import Pickup
@@ -29,7 +30,7 @@ class Settlement(object):
 		"""
 		@param owner: player that owns the settlement
 		"""
-		self.name = 'foo city' # TODO: add name generator here
+		self.name = str(game.main.db("SELECT name FROM citynames ORDER BY random() LIMIT 1")[0][0])
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = stablelist() # List of all the buildings belonging to the settlement

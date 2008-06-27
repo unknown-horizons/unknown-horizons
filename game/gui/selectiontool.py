@@ -45,7 +45,7 @@ class SelectionTool(NavigationTool):
 		game.main.session.selected_instance._instance.say(str(game.main.session.selected_instance.health) + '%', 0) # display health over selected ship
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(game.main.session.selected_instance._instance, 255, 255, 255, 1)
 		if isinstance(game.main.session.selected_instance, Ship):
-			game.main.session.ingame_gui.gui['ship'].show() #show the gui for ships
+			game.main.session.ingame_gui.show_ship(game.main.session.selected_instance) #show the gui for ships
 
 	def deselect_unit(self):
 		"""Runs neccasary steps to deselect a unit."""

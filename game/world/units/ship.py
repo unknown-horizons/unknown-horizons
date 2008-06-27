@@ -41,7 +41,7 @@ class Ship(fife.InstanceActionListener):
 		self.inventory.alter_inventory(6, 15)
 		self.inventory.alter_inventory(5, 30)
 		self.inventory.alter_inventory(4, 50)
-		self.name = ""
+		self.name = str(game.main.db("SELECT name FROM shipnames ORDER BY random() LIMIT 1")[0][0])
 		self.health = 100
 
 		self._instance.act('default', self._instance.getLocation(), True)

@@ -176,6 +176,10 @@ class IngameGui(livingObject):
 		game.main.session.selected_instance._instance.say('')
 		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], game.main.session.selected_instance)
 
+	def show_ship(self, ship):
+		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
+		self.gui['ship'].show()
+
 	def _build(self, building_id):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built."""
