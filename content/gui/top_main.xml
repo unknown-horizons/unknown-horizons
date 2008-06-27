@@ -1,4 +1,4 @@
-<Container size="850,48" position="90,5">
+<Container size="850,48">
 	<Icon image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="2,0" size="48,48" />
 	<Icon image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="56,0" size="48,48" />
 	<Icon image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="112,0" size="48,48" />

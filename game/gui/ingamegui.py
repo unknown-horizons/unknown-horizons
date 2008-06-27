@@ -34,9 +34,17 @@ class IngameGui(livingObject):
 		self.toggle_visible('encyclopedia')
 
 		self.gui['topmain'] = game.main.fife.pychan.loadXML('content/gui/top_main.xml')
+		self.gui['topmain'].position = (
+			game.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2,
+			5
+		)
 		self.toggle_visible('topmain')
 
 		self.gui['gamemenu'] = game.main.fife.pychan.loadXML('content/gui/gamemenu_button.xml')
+		self.gui['gamemenu'].position = (
+			game.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 5,
+			5
+		)
 		self.toggle_visible('gamemenu')
 
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
@@ -53,6 +61,10 @@ class IngameGui(livingObject):
 		})
 
 		self.gui['leftPanel'] = game.main.fife.pychan.loadXML('content/gui/left_panel.xml')
+		self.gui['leftPanel'].position = (
+			5,
+			game.main.fife.settings.getScreenHeight()/2 - self.gui['minimap'].size[1]/2
+		)
 		self.toggle_visible('leftPanel')
 		self.gui['leftPanel'].mapEvents({
 			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build')
