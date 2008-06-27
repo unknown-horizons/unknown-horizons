@@ -27,4 +27,6 @@ from plugins.importer import Importer
 class myImporter(plugins.plugin.Plugin):
 	def __init__(self, engine):
 		self.menu_items = {}
+	def addDirs(*args):
+		pass
 plugins.importer.Importer = myImporter
