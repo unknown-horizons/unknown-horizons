@@ -23,6 +23,7 @@ from buildingtool import BuildingTool
 import game.main
 import fife
 from living import livingObject
+from messagewidget import MessageWidget
 
 class IngameGui(livingObject):
 	"""Class handling all the ingame gui events."""
@@ -38,6 +39,7 @@ class IngameGui(livingObject):
 			game.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2,
 			5
 		)
+		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
 		self.toggle_visible('topmain')
 
 		self.gui['gamemenu'] = game.main.fife.pychan.loadXML('content/gui/gamemenu_button.xml')
