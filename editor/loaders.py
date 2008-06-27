@@ -23,14 +23,25 @@ from dbreader import DbReader
 import fife
 from serializers import WrongFileType
 import os.path
+from plugins.mapwizard import MapWizard
+import plugins.plugin
 
 fileExtensions = ('sqlite',)
 _inited = False
-def _load(file, engine):
-	if not db("attach ? AS island", file).success:
-		raise WrongFileType(file)
 
-	#try:
+class myMapWizard(plugins.plugin.Plugin):
+	def __init__(self, engine):
+		self.engine = engine
+		self.menu_items = { 'New Map' : self.new_map }
+		self.newMap = None
+
+	def new_map(self):
+		self.map = _empty(self.engine)
+		self.newMap = self.map
+
+plugins.mapwizard.MapWizard = myMapWizard
+
+def _empty(engine):
 	cellgrid = fife.SquareGrid(True)
 	cellgrid.thisown = 0
 	cellgrid.setRotation(0)
@@ -41,7 +52,6 @@ def _load(file, engine):
 
 	engine.getModel().deleteMaps()
 	map = engine.getModel().createMap("island")
-	map.setResourceFile(file)
 
 	layer = map.createLayer('ground', cellgrid)
 	layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
@@ -53,6 +63,16 @@ def _load(file, engine):
 	cam.setRotation(45.0)
 	cam.setTilt(-60)
 	cam.setZoom(1)
+
+	return map
+
+def _load(file, engine):
+	if not db("attach ? AS island", file).success:
+		raise WrongFileType(file)
+
+	map = _empty(engine)
+	map.setResourceFile(file)
+	layer = map.getLayer('ground')
 
 	nr = 0
 	already = []
@@ -92,16 +112,19 @@ def _save(file, engine, map):
 
 	instances = layer.getInstances()
 
+	already = []
 	for instance in instances:
-		coord = instance.getLocation().getLayerCoordinates()
-		x,y = int(coord.x), int(coord.y)
-		ground_id = int(instance.getObject().getId())
-		rotation = instance.getRotation()
-		if rotation != 0:
-			print 'old:',ground_id
-			ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
-			print 'new:',ground_id
-		db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
+		if (int(x), int(y)) not in already:
+			coord = instance.getLocation().getLayerCoordinates()
+			x,y = int(coord.x), int(coord.y)
+			ground_id = int(instance.getObject().getId())
+			rotation = instance.getRotation()
+			if rotation != 0:
+				print 'old:',ground_id
+				ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
+				print 'new:',ground_id
+			db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
+			already.append((int(x), int(y)))
 
 	db("detach island")
 
@@ -143,7 +166,6 @@ def _init(engine):
 			img = engine.getImagePool().getImage(img)
 			img.setXShift(0)
 			img.setYShift(0)
-
 
 def loadMapFile(path, engine, content = ''):
 	global _inited
