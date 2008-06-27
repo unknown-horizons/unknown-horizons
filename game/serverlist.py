@@ -181,7 +181,14 @@ class WANServerList(ServerList):
 		"""
 		"""
 		self._clear()
-		for server in urllib.urlopen(game.main.settings.network.url_servers):
+
+		wan_servers = [] 
+		try:
+			wan_servers = (urllib.urlopen(game.main.settings.network.url_servers))
+		except IOError,e:
+			game.main.showPopup("Network error", "Error: "+e.strerror[1])
+
+		for server in wan_servers:
 			match = Server.re_ip_port.match(server)
 			if match:
 				server = Server(match.group(1), match.group(2) or game.main.settings.network.port)

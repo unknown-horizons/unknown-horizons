@@ -135,6 +135,10 @@ def showDialog(dlg, actions, onPressEscape = None):
 	return ret
 
 def showPopup(windowtitle, message):
+	""" Displays a popup with the specified text
+
+	TODO: windowtitle doesn't work yet
+	"""
 	popup = fife.pychan.loadXML('content/gui/popupbox.xml')
 	popup.findChild(name='popup_window').text = windowtitle
 	popup.findChild(name='popup_message').text = message
