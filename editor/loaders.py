@@ -41,6 +41,10 @@ class myMapWizard(plugins.plugin.Plugin):
 plugins.mapwizard.MapWizard = myMapWizard
 
 def _empty(engine):
+	global _inited
+	if not _inited:
+		_init(engine)
+		_inited = True
 	cellgrid = fife.SquareGrid(True)
 	cellgrid.thisown = 0
 	cellgrid.setRotation(0)
