@@ -24,13 +24,15 @@ from game.world.storage import Storage
 class Player(object):
 	"""Class representing a player"""
 
-	def __init__(self, id, name):
+	def __init__(self, id, name, color):
 		"""
 		@param id: unique player id
-		@param name: str containing the players name
+		@param name: user-chosen name
+		@param color: color of player (as fife.Color)
 		"""
 		self.id = id
 		self.name = name
+		self.color = color
 		self.inventory = Storage()
 
 		self.inventory.alter_inventory(1, 9999)

@@ -22,6 +22,7 @@
 import os.path
 import glob
 import shutil
+from fife import Color
 from game.dbreader import DbReader
 from game.engine import Fife
 from game.settings import Settings
@@ -182,6 +183,8 @@ def showSingle(showSaved = False):
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
 	gui.stylize('menu')
+	
+	# create eventMap
 	eventMap = {
 		'cancel'   : showMain,
 		'okay'     : startSingle,
@@ -191,10 +194,30 @@ def showSingle(showSaved = False):
 	else:
 		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, True)
 	gui.mapEvents(eventMap)
-	gui.distributeData({'showNew' : not showSaved, 'showLoad' : showSaved})
-
+	
+	# distribute data 
 	(gui.files, display) = getMaps(showSaved)
-	gui.distributeInitialData({'list' : display})
+	# the definition of colors should later be outsourced
+	# to some kind of config file
+	gui.colors = [
+			Color(255,  0,  0),
+			Color(  0,255,  0),
+			Color(  0,  0,255)
+	]
+	colornames = [
+			"red",
+			"green",
+			"blue"
+	]
+	gui.distributeInitialData({
+		'maplist' : display,
+		'playercolor' : colornames
+	})
+	gui.distributeData({
+		'showNew' : not showSaved, 'showLoad' : showSaved,
+		'playercolor' : 0
+	})
+	
 	gui.show()
 	onEscape = showMain
 
@@ -203,7 +226,10 @@ def startSingle():
 	"""
 	global gui, fife, session, onEscape, showPause
 
-	file = gui.files[gui.collectData('list')]
+	file = gui.files[gui.collectData('maplist')]
+	playername = gui.collectData('playername')
+	playercolor = gui.colors[gui.collectData('playercolor')]
+
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
@@ -218,6 +244,7 @@ def startSingle():
 		session.generateMap()
 	else:
 		session.loadMap(file)
+	session.world.setupPlayer(playername, playercolor);
 
 def showMulti():
 	global gui, onEscape, showMain

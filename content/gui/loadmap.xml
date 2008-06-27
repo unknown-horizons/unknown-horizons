@@ -3,8 +3,18 @@
 	<!-- <Icon image="content/gui/menu/m_serverlobby.png" position="0,0"/> Für besseres Verständnis wie man es besser rüber bringen könnte -->
 	<RadioButton position="150,150" size="32,32" name="showNew" text="Start New Game" />
 	<RadioButton position="150,200" size="32,32" name="showLoad" text="Load Game" />
+	<HBox position="120,300">
+		<VBox>
+			<Label text="Player:" base_color="40, 40, 40"/>
+			<Label text="Color:" base_color="40, 40, 40"/>
+		</VBox>
+		<VBox min_size="500,500"> <!-- size has to be defined here, so that the dropdown has enough space -->
+			<TextBox name="playername" text="unknown player" size="150,16" base_color="40, 40, 40"/>
+			<DropDown name="playercolor" base_color="40, 40, 40"/>
+		</VBox>
+	</HBox>
 	<ScrollArea size="400,500"  horizontal_scrollbar="0" position="500,150">
-		<ListBox name="list" min_size="100,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
+		<ListBox name="maplist" min_size="100,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
 	</ScrollArea>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="okay" position="800,700" />

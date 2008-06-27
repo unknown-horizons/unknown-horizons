@@ -67,17 +67,20 @@ class World(object):
 				else: #found no instance at x,y at any island
 					self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 82))](x, y))
 		print "done."
-
-		#setup players
-		self.player = Player(0, "Arthus")
+		
+		# create playerlist
 		self.players = stablelist()
-		self.players.append(self.player)
-
-		#add ship
+		
+		# add ship
 		self.ships = stablelist()
 		self.ships.append(game.main.session.entities.units[1](25, 25))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 
+
+	def setupPlayer(self, name, color):
+		game.main.session.world.player =  Player(0, name, color)
+		self.players.append(self.player)
+		
 		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
 
 	def get_building(self, x, y):
