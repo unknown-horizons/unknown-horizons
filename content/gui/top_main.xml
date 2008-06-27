@@ -1,3 +1,3 @@
 <Container size="200,48">
-	<Label text="Middle Wigdet"/>
+	<Label name="city_name"/>
 </Container>

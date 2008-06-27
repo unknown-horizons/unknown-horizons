@@ -105,7 +105,7 @@ class Socket(object):
 		"""
 		pass
 
-class Player(object):
+class MPPlayer(object):
 	"""
 	@param name:
 	"""
