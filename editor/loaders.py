@@ -44,7 +44,7 @@ def _load(file, engine):
 	map.setResourceFile(file)
 
 	layer = map.createLayer('ground', cellgrid)
-	layer.setPathingStrategy('cell_edges_and_diagonals')
+	layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
 	view = engine.getView()
 
 	view.clearCameras()
