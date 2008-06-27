@@ -72,6 +72,7 @@ class Scheduler(livingObject):
 
 	def end(self):
 		self.schedule = {}
+		self._is_ended = True
 		game.main.session.timer.remove_call(self.tick)
 
 class CallbackObject(object):

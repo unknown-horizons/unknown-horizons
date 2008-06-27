@@ -70,6 +70,8 @@ class Session(livingObject):
 	def end(self):
 		self.view.model.deleteMaps()
 		self.view.view.clearCameras()
+		self.scheduler = None
+		self.timer = None
 		super(Session, self).end()
 
 	def loadMap(self, map):
