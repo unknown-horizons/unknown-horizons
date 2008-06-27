@@ -75,4 +75,7 @@ class SelectionTool(NavigationTool):
 				l = fife.Location(game.main.session.view.layers[1])
 				l.setMapCoordinates(target_mapcoord)
 				game.main.session.manager.execute(Move(game.main.session.selected_instance, target_mapcoord.x, target_mapcoord.y))
+		else:
+			super(SelectionTool, self).mousePressed(evt)
+			return
 		evt.consume()

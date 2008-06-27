@@ -37,8 +37,22 @@ class NavigationTool(CursorTool):
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).end()
 
+	def mousePressed(self, evt):
+		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+			game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
+			self.lastScroll = [evt.getX(), evt.getY()]
+
+	def mouseReleased(self, evt):
+		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+			self.lastScroll = [0, 0]
+			CursorTool.mouseMoved(self, evt)
+
 	def mouseDragged(self, evt):
-		NavigationTool.mouseMoved(self, evt)
+		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+			game.main.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
+			self.lastScroll = [evt.getX(), evt.getY()]
+		else:
+			NavigationTool.mouseMoved(self, evt)
 
 	def mouseMoved(self, evt):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
