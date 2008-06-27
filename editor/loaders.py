@@ -34,6 +34,7 @@ class myMapWizard(plugins.plugin.Plugin):
 		self.engine = engine
 		self.menu_items = { 'New Map' : self.new_map }
 		self.newMap = None
+		self.new_map()
 
 	def new_map(self):
 		self.map = _empty(self.engine)
