@@ -67,7 +67,7 @@ class NavigationTool(CursorTool):
 				settlements = island.get_settlements(int(current.x + 0.5), int(current.y + 0.5))
 				if len(settlements) > 0:
 					settlement = settlements.pop()
-					game.main.session.ingame_gui.gui['topmain'].findChild(name='city_name').text = settlement.name
+					game.main.session.ingame_gui.cityname_set(settlement.name)
 					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory.get_value(4)))
 					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory.get_value(6)))
 					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory.get_value(7)))
@@ -75,8 +75,10 @@ class NavigationTool(CursorTool):
 					game.main.session.ingame_gui.status_set('gold', str(game.main.session.world.player.inventory.get_value(1)))
 					game.main.session.ingame_gui.gui['status'].show()
 				else:
+					game.main.session.ingame_gui.cityname_set('')
 					game.main.session.ingame_gui.gui['status'].hide()
 			else:
+				game.main.session.ingame_gui.cityname_set('')
 				game.main.session.ingame_gui.gui['status'].hide()
 		# Mouse scrolling
 		old = self.lastScroll

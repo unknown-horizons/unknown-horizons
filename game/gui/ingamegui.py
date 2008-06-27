@@ -155,6 +155,22 @@ class IngameGui(livingObject):
 		foundlabel.resizeToContent()
 		self.gui['status'].resizeToContent()
 
+	def cityname_set(self, name):
+		"""Sets the city name at top center
+
+		Show/Hide is handled automatically
+		To hide cityname, set name to ''
+		@param name: name of the city
+		"""
+		if(name == ''): 
+			self.gui['topmain'].hide()
+			return
+		foundlabel = self.gui['topmain'].findChild(name='city_name')
+		foundlabel._setText(name)
+		foundlabel.resizeToContent()
+		self.gui['topmain'].resizeToContent()
+		self.gui['topmain'].show();
+
 	def _ship_build(self):
 		"""Calls the Games build_object class."""
 		game.main.session.selected_instance._instance.say('')

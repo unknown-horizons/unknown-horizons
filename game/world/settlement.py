@@ -29,7 +29,7 @@ class Settlement(object):
 		"""
 		@param owner: player that owns the settlement
 		"""
-		self.name = 'foo' # TODO: add name generator here
+		self.name = 'foo city' # TODO: add name generator here
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = stablelist() # List of all the buildings belonging to the settlement
