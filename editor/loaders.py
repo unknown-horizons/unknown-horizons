@@ -117,9 +117,9 @@ def _save(file, engine, map):
 
 	already = []
 	for instance in instances:
+		coord = instance.getLocation().getLayerCoordinates()
+		x,y = int(coord.x), int(coord.y)
 		if (int(x), int(y)) not in already:
-			coord = instance.getLocation().getLayerCoordinates()
-			x,y = int(coord.x), int(coord.y)
 			ground_id = int(instance.getObject().getId())
 			rotation = instance.getRotation()
 			if rotation != 0:
