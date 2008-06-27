@@ -31,7 +31,7 @@ def findFIFE():
 		_paths = [config.fife_path]
 	except (ImportError, AttributeError):
 		_paths = []
-	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'branches/active/datasets', 'trunk') ]
+	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife', 'fife-dataset') for c in ('.', 'branches/active/datasets', 'trunk') ]
 
 	fife_path = None
 	for p in _paths:
