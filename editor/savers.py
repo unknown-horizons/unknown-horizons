@@ -21,3 +21,10 @@
 
 from loaders import saveMapFile
 fileExtensions = ('sqlite',)
+
+import plugins.plugin
+from plugins.importer import Importer
+class myImporter(plugins.plugin.Plugin):
+	def __init__(self, engine):
+		self.menu_items = {}
+plugins.importer.Importer = myImporter

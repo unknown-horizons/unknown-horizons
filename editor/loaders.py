@@ -23,12 +23,12 @@ from dbreader import DbReader
 import fife
 from serializers import WrongFileType
 import os.path
-from plugins.mapwizard import MapWizard
-import plugins.plugin
 
 fileExtensions = ('sqlite',)
 _inited = False
 
+from plugins.mapwizard import MapWizard
+import plugins.plugin
 class myMapWizard(plugins.plugin.Plugin):
 	def __init__(self, engine):
 		self.engine = engine
@@ -38,7 +38,6 @@ class myMapWizard(plugins.plugin.Plugin):
 	def new_map(self):
 		self.map = _empty(self.engine)
 		self.newMap = self.map
-
 plugins.mapwizard.MapWizard = myMapWizard
 
 def _empty(engine):
