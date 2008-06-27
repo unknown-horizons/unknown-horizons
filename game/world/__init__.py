@@ -67,10 +67,10 @@ class World(object):
 				else: #found no instance at x,y at any island
 					self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 82))](x, y))
 		print "done."
-		
+
 		# create playerlist
 		self.players = stablelist()
-		
+
 		# add ship
 		self.ships = stablelist()
 		self.ships.append(game.main.session.entities.units[1](25, 25))
@@ -80,7 +80,7 @@ class World(object):
 	def setupPlayer(self, name, color):
 		game.main.session.world.player =  Player(0, name, color)
 		self.players.append(self.player)
-		
+
 		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
 
 	def get_building(self, x, y):
@@ -94,7 +94,6 @@ class World(object):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param x: int x position.
 		@param y: int y position. """
-		print x, y
 		for i in self.islands:
 			if not (i.x <= x < i.x + i.width and i.y <= y < i.y + i.height):
 				continue
