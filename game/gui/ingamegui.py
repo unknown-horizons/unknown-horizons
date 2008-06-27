@@ -45,6 +45,9 @@ class IngameGui(livingObject):
 			game.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 5,
 			5
 		)
+		self.gui['gamemenu'].mapEvents({
+			'gameMenuButton' : game.main.showPause
+		})
 		self.toggle_visible('gamemenu')
 
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
@@ -113,6 +116,10 @@ class IngameGui(livingObject):
 
 	def end(self):
 		super(IngameGui, self).end()
+
+		self.gui['gamemenu'].mapEvents({
+			'gameMenuButton' : lambda : None
+		})
 
 		self.gui['build'].mapEvents({
 			'servicesTab' : lambda : None,
