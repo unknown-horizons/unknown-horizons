@@ -97,7 +97,10 @@ def _save(file, engine, map):
 		x,y = int(coord.x), int(coord.y)
 		ground_id = int(instance.getObject().getId())
 		rotation = instance.getRotation()
-		ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
+		if rotation != 0:
+			print 'old:',ground_id
+			ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
+			print 'new:',ground_id
 		db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
 
 	db("detach island")
