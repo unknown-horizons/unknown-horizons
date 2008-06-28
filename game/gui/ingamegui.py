@@ -88,10 +88,17 @@ class IngameGui(livingObject):
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
 		self.gui['build'].stylize('menu')
-		self.gui['build'].position = (
+		if game.main.fife.settings.getScreenWidth()/2 + self.gui['build'].size[0]/2 > self.gui['minimap'].position[0] :
+			self.gui['build'].position = (
+				self.gui['minimap'].position[0] - self.gui['build'].size[0] - 5,
+				game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1]
+			)
+		else:
+			self.gui['build'].position = (
 				game.main.fife.settings.getScreenWidth()/2 - self.gui['build'].size[0]/2,
 				game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1]
-		)
+			)
+
 		for i in range(0,6):
 			self.gui['build_tab'+str(i)] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab'+str(i)+'.xml')
 			self.gui['build_tab'+str(i)].stylize('menu')
