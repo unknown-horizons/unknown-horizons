@@ -229,7 +229,12 @@ def startSingle():
 	"""
 	global gui, fife, session, onEscape, showPause
 
-	file = gui.files[gui.collectData('maplist')]
+	map_id = gui.collectData('maplist')
+	if map_id == -1:
+		showPopup('Error','You have to select a map')
+		return
+
+	map_file = gui.files[map_id]
 	playername = gui.collectData('playername')
 	playercolor = gui.colors.values()[gui.collectData('playercolor')]
 
@@ -243,10 +248,10 @@ def startSingle():
 
 	session = Session()
 	session.begin()
-	if file == None:
+	if map_file == None:
 		session.generateMap()
 	else:
-		session.loadMap(file)
+		session.loadMap(map_file)
 	session.world.setupPlayer(playername, playercolor);
 
 def showMulti():
