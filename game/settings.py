@@ -114,6 +114,12 @@ class Settings(Setting):
 			shutil.copyfile('content/config.sqlite', config)
 		game.main.db("attach ? AS config", config)
 		version = game.main.db("PRAGMA config.user_version")[0][0]
+
+		# copy datasets from content/config.sqlite to config.sqlite
+		# this code should stay here until the contents of
+		# content/config.sqlite are definitiv
+		config_datasets = game.main.db("SELECT name, value from config")
+
 		if version > Settings.VERSION:
 			print "Error: Config version not supported, creating empty config which wont be saved."
 			game.main.db("detach config")
@@ -122,4 +128,10 @@ class Settings(Setting):
 		elif version < Settings.VERSION:
 			print "Upgrading Config from Version " + str(version) + " to Version " + str(Settings.VERSION) + "..."
 			game.main.db("PRAGMA config.user_version = " + str(Settings.VERSION))
+
+		# see comment above
+		for (name, value) in config_datasets:
+			game.main.db("DELETE FROM config WHERE name = ?", name)
+			game.main.db("INSERT INTO config(name, value) VALUES(\"%s\", \"%s\")" % (name, value)) 
+
 		super(Settings, self).__init__()
