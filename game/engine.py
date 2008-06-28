@@ -29,8 +29,6 @@ import new
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
 	"""
-	"""
-	"""
 	def __init__(self):
 		super(SQLiteAnimationLoader, self).__init__()
 		self.thisown = 0
@@ -52,8 +50,6 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		return ani
 
 class Fife(object):
-	"""
-	"""
 	"""
 	"""
 	def __init__(self):

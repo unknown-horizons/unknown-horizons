@@ -25,7 +25,7 @@ import os.path
 import simplejson
 
 class Setting(object):
-	"""
+	""" Class to store settings
 	@param name:
 	"""
 	def __init__(self, name = ''):
@@ -94,7 +94,10 @@ class Setting(object):
 					listener(self, name, defaults[name])
 
 	def addCategorys(self, *categorys):
-		"""
+		"""Adds one or more setting categories
+
+		The new categories can be accessed via 
+		settingsObj.NEWCATEGORY
 		@param *categorys:
 		"""
 		for category in categorys:

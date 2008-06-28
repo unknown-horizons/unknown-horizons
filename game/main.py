@@ -138,6 +138,8 @@ def showPopup(windowtitle, message):
 	""" Displays a popup with the specified text
 
 	TODO: windowtitle doesn't work yet
+	@param windowtitle: the title of the popup
+	@param message: the text displayed in the popup
 	"""
 	popup = fife.pychan.loadXML('content/gui/popupbox.xml')
 	popup.findChild(name='popup_window').text = windowtitle
