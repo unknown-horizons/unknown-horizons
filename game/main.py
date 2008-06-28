@@ -188,7 +188,7 @@ def showSingle(showSaved = False):
 	"""
 	@param showSaved: Bool whether saved games are to be shown.
 	"""
-	global gui, onEscape
+	global gui, onEscape, db
 	if gui != None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
@@ -207,21 +207,14 @@ def showSingle(showSaved = False):
 	
 	# distribute data 
 	(gui.files, display) = getMaps(showSaved)
-	# the definition of colors should later be outsourced
-	# to some kind of config file
-	gui.colors = [
-			Color(255,  0,  0),
-			Color(  0,255,  0),
-			Color(  0,  0,255)
-	]
-	colornames = [
-			"red",
-			"green",
-			"blue"
-	]
+
+	gui.colors = {}
+	for (name, r, g, b, alpha) in db("SELECT name, red, green, blue, alpha from colors"):
+		gui.colors[name] = Color(r,g,b,alpha)
+
 	gui.distributeInitialData({
 		'maplist' : display,
-		'playercolor' : colornames
+		'playercolor' : gui.colors.keys()
 	})
 	gui.distributeData({
 		'showNew' : not showSaved, 'showLoad' : showSaved,
@@ -238,7 +231,8 @@ def startSingle():
 
 	file = gui.files[gui.collectData('maplist')]
 	playername = gui.collectData('playername')
-	playercolor = gui.colors[gui.collectData('playercolor')]
+	playercolor = gui.colors.values()[gui.collectData('playercolor')]
+	print 'COL', playercolor
 
 	if gui != None:
 		gui.hide()
