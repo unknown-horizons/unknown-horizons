@@ -52,9 +52,19 @@ class IngameGui(livingObject):
 		})
 		self.toggle_visible('gamemenu')
 
+		self.gui['minimap_toggle'] = game.main.fife.pychan.loadXML('content/gui/minimap_toggle_button.xml')
+		self.gui['minimap_toggle'].position = (
+			game.main.fife.settings.getScreenWidth() - self.gui['minimap_toggle'].size[0] - 5,
+			game.main.fife.settings.getScreenHeight() - self.gui['minimap_toggle'].size[1]
+		)
+		self.toggle_visible('minimap_toggle')
+		self.gui['minimap_toggle'].mapEvents({
+			'minimapToggle' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'minimap')
+		})
+
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
 		self.gui['minimap'].position = (
-				game.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0],
+				game.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] - self.gui['minimap_toggle'].size[0],
 				game.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1]
 		)
 		self.toggle_visible('minimap')
@@ -143,6 +153,10 @@ class IngameGui(livingObject):
 			'zoomOut' : lambda : None,
 			'rotateRight' : lambda : None,
 			'rotateLeft' : lambda : None,
+		})
+
+		self.gui['minimap_toggle'].mapEvents({
+			'minimapToggle' : lambda : None
 		})
 
 	def status_set(self, label, value):
