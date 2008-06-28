@@ -232,7 +232,6 @@ def startSingle():
 	file = gui.files[gui.collectData('maplist')]
 	playername = gui.collectData('playername')
 	playercolor = gui.colors.values()[gui.collectData('playercolor')]
-	print 'COL', playercolor
 
 	if gui != None:
 		gui.hide()

@@ -63,6 +63,12 @@ class View(livingObject):
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].addActiveLayer(self.layers[0])
 
+
+		(self.zoom_min,) = game.main.db("SELECT value FROM config WHERE name = \"zoom_min\";")[0]
+		(self.zoom_max,) = game.main.db("SELECT value FROM config WHERE name = \"zoom_max\";")[0]
+		self.zoom_min = float(self.zoom_min)
+		self.zoom_max = float(self.zoom_max)
+
 	def end(self):
 		"""
 		"""
@@ -131,14 +137,14 @@ class View(livingObject):
 
 	def zoom_out(self):
 		zoom = self.cam.getZoom() * 0.875
-		if(zoom < 0.25):
-			zoom = 0.25
+		if(zoom < self.zoom_min):
+			zoom = self.zoom_min
 		self.cam.setZoom(zoom)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / 0.875
-		if(zoom > 1):
-			zoom = 1
+		if(zoom > self.zoom_max):
+			zoom = self.zoom_max
 		self.cam.setZoom(zoom)
 
 	def rotate_right(self):
