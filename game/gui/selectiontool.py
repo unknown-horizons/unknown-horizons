@@ -54,11 +54,31 @@ class SelectionTool(NavigationTool):
 		if isinstance(game.main.session.selected_instance, Ship):
 			game.main.session.ingame_gui.toggle_visible('ship') # hide the gui for ships
 
-	def mousePressed(self, evt):
-		clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-		cam = game.main.session.view.cam
+	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.LEFT):
-			instances = cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
+			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
+			if do_multi:
+				if not hasattr(self, 'select_rect'):
+					self.select_rect = game.main.fife.pychan.widgets.Window(parent = None, size=(100,100))
+					self.select_rect.show()
+				self.select_rect._setX(min(self.select_begin[0], evt.getX()))
+				self.select_rect._setY(min(self.select_begin[1], evt.getY()))
+				self.select_rect._setWidth(abs(self.select_begin[0] - evt.getX()))
+				self.select_rect._setHeight(abs(self.select_begin[1] - evt.getY()))
+			elif hasattr(self, 'select_rect'):
+				self.select_rect.hide()
+				del self.select_rect
+		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+			pass
+		else:
+			super(SelectionTool, self).mouseDragged(evt)
+			return
+		evt.consume()
+
+	def mouseReleased(self, evt):
+		if (evt.getButton() == fife.MouseEvent.LEFT):
+			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
+			instances = game.main.session.view.cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
 			if len(instances) != 0: #something under cursor
 				assert(len(instances) == 1)
 				instance = game.main.session.entities.getInstance(instances[0].getId())
@@ -73,8 +93,19 @@ class SelectionTool(NavigationTool):
 				if instance is not None:
 					self.select_unit()
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+			pass
+		else:
+			super(SelectionTool, self).mouseDragged(evt)
+			return
+		evt.consume()
+
+	def mousePressed(self, evt):
+		if (evt.getButton() == fife.MouseEvent.LEFT):
+			self.select_begin = (evt.getX(), evt.getY())
+		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			if game.main.session.selected_instance is not None and isinstance(game.main.session.selected_instance, Ship):
-				target_mapcoord = cam.toMapCoordinates(clickpoint, False)
+				target_mapcoord = game.main.session.view.cam.toMapCoordinates(clickpoint, False)
 				target_mapcoord.z = 0
 				l = fife.Location(game.main.session.view.layers[1])
 				l.setMapCoordinates(target_mapcoord)
