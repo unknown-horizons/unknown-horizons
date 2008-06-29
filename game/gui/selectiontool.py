@@ -59,17 +59,21 @@ class SelectionTool(NavigationTool):
 		cam = game.main.session.view.cam
 		if (evt.getButton() == fife.MouseEvent.LEFT):
 			instances = cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
-			if instances: #something under cursor
+			if len(instances) != 0: #something under cursor
+				assert(len(instances) == 1)
 				instance = game.main.session.entities.getInstance(instances[0].getId())
-				if game.main.session.selected_instance and game.main.session.selected_instance != instance:
+				if not instance.selectable:
+					instance = None
+			else:
+				instance = None
+			if game.main.session.selected_instance != instance:
+				if game.main.session.selected_instance is not None:
 					self.deselect_unit()
 				game.main.session.selected_instance = instance
-				self.select_unit()
-			elif game.main.session.selected_instance: #nothing under cursor
-				self.deselect_unit()
-				game.main.session.selected_instance = None
+				if instance is not None:
+					self.select_unit()
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
-			if game.main.session.selected_instance and isinstance(game.main.session.selected_instance, Ship):
+			if game.main.session.selected_instance is not None and isinstance(game.main.session.selected_instance, Ship):
 				target_mapcoord = cam.toMapCoordinates(clickpoint, False)
 				target_mapcoord.z = 0
 				l = fife.Location(game.main.session.view.layers[1])

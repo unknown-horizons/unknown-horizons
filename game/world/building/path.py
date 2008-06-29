@@ -25,6 +25,8 @@ import game.main
 import math
 
 class Path(Building):
+	selectable = False
+
 	@classmethod
 	def getBuildList(cls, point1, point2):
 		"""

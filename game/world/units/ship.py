@@ -24,6 +24,7 @@ import fife
 from game.world.storage import Storage
 
 class Ship(fife.InstanceActionListener):
+	selectable = True
 	"""Class representing a ship
 		@param x: int x position
 		@param y: int y position

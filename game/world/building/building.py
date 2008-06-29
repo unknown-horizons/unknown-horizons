@@ -24,6 +24,7 @@ import game.main
 import math
 
 class Building(object):
+	selectable = True
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
