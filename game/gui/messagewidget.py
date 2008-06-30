@@ -36,6 +36,7 @@ class MessageWidget(object):
 		self.widget.position = (x,y)
 		self.widget.show()
 		self.current_tick = None
+		self.position = 0
 
 	def add_message(self, x, y, id):
 		"""Adds a message to the MessageWidget.
@@ -43,6 +44,16 @@ class MessageWidget(object):
 		@param id: message id, needed to retrieve the message from the database.
 		"""
 		self.active_messages.insert(Message(x,y,id, self.current_tick))
+
+	def draw_wigdet(self):
+		"""Updates the widget."""
+		widg = self.widget
+		for i in range(1,5):
+			if self.position + i-1 in self.active_messages:
+				w = findChild(name, str(i))
+				w._setUpImage(self.active_messages[self.position + i-1].up_image)
+				w._setHoverImage(self.active_messages[self.position + i-1].hover_image)
+				w._setDownImage(self.active_messages[self.position + i-1].down_image)
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -52,9 +63,16 @@ class MessageWidget(object):
 		"""Sets the widget to the previous icon."""
 		pass
 
-	def tick(self, tick):
+	def tick(self):
 		"""Check wether a message is old enough to be put into the archives"""
-		self.current_tick = tick
+		changed = False
+		for item in self.active_messages:
+			item.display -= 1
+			if item.dispay == 0:
+				self.archive.append
+				self.active_messages.remove(item)
+				changed = True
+		self.draw_wigdet()
 
 
 class Message(object):
@@ -69,3 +87,6 @@ class Message(object):
 		self.read = False
 		self.created = created
 		self.display = 32 # TODO: select the length that the message is displayed from the db
+		self.up_image = ''
+		self.down_image = ''
+		self.hover_image = ''
