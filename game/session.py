@@ -68,9 +68,13 @@ class Session(livingObject):
 		self.selected_instance = None
 
 	def end(self):
-		self.view.model.deleteMaps()
-		self.view.view.clearCameras()
+		self.cursor = None
+		self.keylistener = None
+		self.ingame_gui = None
+		self.entities = None
+		self.view = None
 		self.scheduler = None
+		self.manager = None
 		self.timer = None
 		super(Session, self).end()
 

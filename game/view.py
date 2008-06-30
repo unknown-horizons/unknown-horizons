@@ -72,10 +72,9 @@ class View(livingObject):
 	def end(self):
 		"""
 		"""
-		print 'deconstruct',self
 		self.model.deleteMaps()
 		self.view.clearCameras()
-		print 'done'
+		super(View, self).end()
 
 	def center(self, x, y):
 		"""Sets the camera position
