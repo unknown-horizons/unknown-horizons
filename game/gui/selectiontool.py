@@ -57,7 +57,7 @@ class SelectionTool(NavigationTool):
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.LEFT):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
-			if do_multi:
+			"""if do_multi:
 				if not hasattr(self, 'select_rect'):
 					self.select_rect = game.main.fife.pychan.widgets.Window(parent = None, size=(100,100))
 					self.select_rect.show()
@@ -67,7 +67,7 @@ class SelectionTool(NavigationTool):
 				self.select_rect._setHeight(abs(self.select_begin[1] - evt.getY()))
 			elif hasattr(self, 'select_rect'):
 				self.select_rect.hide()
-				del self.select_rect
+				del self.select_rect"""
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
