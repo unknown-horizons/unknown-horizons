@@ -19,8 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
+class Color(object):
+	def __init__(self, r = 0, g = 0, b = 0, a = 255):
+		self.r, self.g, self.b, self.a = r, g, b, a
 
-from living import livingProperty, livingObject
-from stablelist import stablelist
-from color import Color
+Color.red = Color(255,0,0)
+Color.green = Color(0,255,0)
+Color.blue = Color(0,0,255)
+Color.black = Color(0,0,0)
+Color.white = Color(255,255,255)
