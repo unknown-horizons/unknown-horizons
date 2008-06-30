@@ -19,75 +19,58 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
-from living import *
+from game.scheduler import CallbackObject
+import time
 
-class Scheduler(livingObject):
-	""""Class providing timed callbacks.
+class ExtScheduler():
+	"""The ExtScheduler ist used for time based events that are not part of the simulation(gui, menu, scrolling).
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
-	@param timer: Timer instance the schedular registers itself with.
+	@param pump: pump list the schedular registers itself with.
 	"""
-	def begin(self, timer):
-		super(Scheduler, self).begin()
-		self.schedule = {}
-		self.cur_tick = 0
-		self.timer = timer
-		self.timer.add_call(self.tick)
 
-	def tick(self, tick_id):
+	def __init__(self, pump):
+		self.schedule = []
+		self.pump = pump
+		self.pump.append(self.tick)
+
+	def tick(self):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
-		self.cur_tick = tick_id
-		if self.schedule.has_key(self.cur_tick):
-			for object in self.schedule[self.cur_tick]:
+		for tup in self.schedule:
+			if tup[1].run <= time.time():
+				object = self.schedule.pop(0)[1]
 				object.callback()
 				if object.loops > 0 or object.loops is -1:
 					self.add_object(object) # readd object
-			del self.schedule[self.cur_tick]
+			else:
+				break
 
 	def add_object(self, object):
 		"""Adds a new CallbackObject instance to the callbacks list
 		@param object: CallbackObject type object, containing all neccessary  information
 		"""
-		if not self.schedule.has_key(self.cur_tick + object.runin):
-			self.schedule[self.cur_tick + object.runin] = []
 		if object.loops > 0:
 			object.loops -= 1
-		self.schedule[self.cur_tick + object.runin].append(object)
+		self.schedule.append((time.time() + object.runin, object))
+		self.schedule.sort()
 
 	def add_new_object(self, callback, parent_class, runin=1, loops=1):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
-		@param callback: lambda function callback, which is called runin ticks.
+		@param callback: function callback, which is called runin time.
 		@param parent_class: class instance the function belongs to.
-		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
+		@param runin: float number of seconds after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
 		object = CallbackObject(callback, parent_class, runin, loops)
 		self.add_object(object)
 
 	def rem_all_classinst_calls(self, class_inst):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
-		for key in self.schedule:
-			for object in self.schedule[key]:
-				if object.parent_class is class_inst:
-					self.schedule[key].remove(object)
+		for tup in self.schedule:
+			if tup[1].parent_class is class_inst:
+				self.schedule.remove(tup)
 
-	def end(self):
-		self.schedule = {}
-		self._is_ended = True
-		self.timer.remove_call(self.tick)
-		self.timer = None
-
-class CallbackObject(object):
-	"""Class used by the TimerManager Class to organize callbacks."""
-	def __init__(self,  callback, parent_class, runin=1, loops=1):
-		"""Creates the CallbackObject instance.
-		@param callback: lambda function callback, which is called runin ticks.
-		@param parent_class: class instance the original function(not the lambda function!) belongs to.
-		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
-		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
-		"""
-		self.callback = callback
-		self.parent_class = parent_class
-		self.runin = runin
-		self.loops = loops
+	def __del__(self):
+		self.schedule = []
+		self.pump.remove(self.tick)
+		self.pump = None

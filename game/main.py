@@ -31,11 +31,12 @@ from game.gui.mainlistener import MainListener
 from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 from game.serverlobby import MasterServerLobby, ClientServerLobby
 from game.network import Socket, ServerConnection, ClientConnection
+from extscheduler import ExtScheduler
 
 def start():
 	"""Starts the game.
 	"""
-	global db, settings, fife, gui, session, connection
+	global db, settings, fife, gui, session, connection, ext_timer, ext_scheduler
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -61,6 +62,8 @@ def start():
 	gui = None
 
 	showMain()
+
+	ext_scheduler = ExtScheduler(fife.pump)
 
 	fife.run()
 
@@ -153,7 +156,7 @@ def getMaps(showSaved = False):
 
 	@param showSaved: Bool wether saved games are to be shown.
 	@return Tuple of two lists; first: files with path; second: files for displaying
-	""" 
+	"""
 	if showSaved:
 		files = ([f for p in ('content/save','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
 	else:
@@ -197,7 +200,7 @@ def showSingle(showSaved = False):
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
 	gui.stylize('menu')
-	
+
 	# create eventMap
 	eventMap = {
 		'cancel'   : showMain,
@@ -208,8 +211,8 @@ def showSingle(showSaved = False):
 	else:
 		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, True)
 	gui.mapEvents(eventMap)
-	
-	# distribute data 
+
+	# distribute data
 	(gui.files, display) = getMaps(showSaved)
 
 	gui.colors = {}
@@ -224,7 +227,7 @@ def showSingle(showSaved = False):
 		'showNew' : not showSaved, 'showLoad' : showSaved,
 		'playercolor' : 0
 	})
-	
+
 	gui.show()
 	onEscape = showMain
 
@@ -265,7 +268,7 @@ def showMulti():
 	global gui, onEscape, showMain, connection
 	if gui != None:
 		# delete serverlobby and (Server|Client)Connection
-		try: 
+		try:
 			gui.serverlobby.end()
 		except AttributeError:
 			pass
@@ -354,7 +357,7 @@ def showCreateServer():
 		gui.serverList.end()
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
-	
+
 	connection = ServerConnection(settings.network.port)
 
 	gui.serverlobby = MasterServerLobby(gui)
@@ -372,7 +375,7 @@ def showCreateServer():
 	  'startMulti' : startMulti,
 	  'cancel' : _cancel
 	})
-	
+
 	gui.stylize('menu')
 	gui.show()
 	onEscape = showMulti
