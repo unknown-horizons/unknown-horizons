@@ -38,7 +38,7 @@ class ExtScheduler():
 		@param tick_id: int id of the tick.
 		"""
 		for tup in self.schedule:
-			if tup[1].run <= time.time():
+			if tup[0] <= time.time():
 				object = self.schedule.pop(0)[1]
 				object.callback()
 				if object.loops > 0 or object.loops is -1:
