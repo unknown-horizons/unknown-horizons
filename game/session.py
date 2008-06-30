@@ -55,7 +55,7 @@ class Session(livingObject):
 		#game
 		self.timer = Timer(16)
 		self.manager = SPManager()
-		self.scheduler = Scheduler()
+		self.scheduler = Scheduler(self.timer)
 		self.view = View()
 		self.entities = Entities()
 
