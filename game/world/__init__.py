@@ -102,11 +102,6 @@ class World(object):
 					return i
 		return None
 
-	def __del__(self):
-		"""
-		"""
-		print 'deconstruct',self
-
 	def save(self, db = 'savegame'):
 		"""Saves the current game to the specified db.
 		@param db: string representing the db that the game is to be saved to."""

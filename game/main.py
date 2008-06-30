@@ -371,8 +371,8 @@ def showCreateServer():
 		showMulti()
 
 	gui.mapEvents({
-	  'startMulti' : startMulti,
-	  'cancel' : _cancel
+		'startMulti' : startMulti,
+		'cancel' : _cancel
 	})
 
 	gui.stylize('menu')

@@ -150,8 +150,7 @@ class LobbyServerInfoPacket(Packet):
 
 	The game server sends this packet to clients
 	to notify them about game settings 
-	NOTE: address & port are none, because this way the
-	      packet gets sent to all clients
+	NOTE: address & port are none, because this way the packet gets sent to all clients
 	"""
 	def __init__(self, mpoptions, address = None, port = None):
 		super(LobbyServerInfoPacket, self).__init__(address, port)

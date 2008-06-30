@@ -137,10 +137,10 @@ class ClientServerLobby(ServerLobby):
 		})
 
 		if game.main.connection.local_player.name != newName or \
-			 game.main.connection.local_player.color != newColor:
-				 game.main.connection.local_player.name = newName
-				 game.main.connection.local_player.color = newColor
-				 game.main.connection.sendToServer(LobbyPlayerModifiedPacket(None, None, game.main.connection.local_player))
+			game.main.connection.local_player.color != newColor:
+				game.main.connection.local_player.name = newName
+				game.main.connection.local_player.color = newColor
+				game.main.connection.sendToServer(LobbyPlayerModifiedPacket(None, None, game.main.connection.local_player))
 
 
 
