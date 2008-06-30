@@ -21,6 +21,15 @@
 
 class Color(object):
 	def __init__(self, r = 0, g = 0, b = 0, a = 255):
+		if isinstance(r, float) and r >= 0.0 and r <= 1.0:
+			r = int(r * 255)
+		if isinstance(g, float) and g >= 0.0 and g <= 1.0:
+			g = int(g * 255)
+		if isinstance(b, float) and b >= 0.0 and b <= 1.0:
+			b = int(b * 255)
+		if isinstance(a, float) and a >= 0.0 and a <= 1.0:
+			a = int(a * 255)
+		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
 
 Color.red = Color(255,0,0)
