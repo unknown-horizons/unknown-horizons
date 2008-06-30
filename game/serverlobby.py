@@ -47,19 +47,17 @@ class ServerLobby(object):
 
 		self.guiLastUpdate = 0
 
-		game.main.fife.pump.append(self._update_gui)
+		game.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
+		#game.main.fife.pump.append(self._update_gui)
 
 	def end(self):
-		game.main.fife.pump.remove(self._update_gui)
+		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		#game.main.fife.pump.remove(self._update_gui)
 
 	def _update_gui(self):
 		""" Updates elements that are common for every lobby and
 		calls lobbyspecific update
 		"""
-		if self.guiLastUpdate + self.__class__.guiUpdateInterval > time.time():
-			return
-		self.guiLastUpdate = time.time()
-
 		self.update_gui()
 		
 		o = game.main.connection.mpoptions

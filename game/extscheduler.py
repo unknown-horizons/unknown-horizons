@@ -37,12 +37,13 @@ class ExtScheduler():
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
+		print self.schedule
 		for tup in self.schedule:
 			if tup[0] <= time.time():
 				object = self.schedule.pop(0)[1]
 				object.callback()
 				if object.loops > 0 or object.loops is -1:
-					self.add_object(object) # readd object
+					self.add_object(object) # re-add object
 			else:
 				break
 
@@ -55,19 +56,20 @@ class ExtScheduler():
 		self.schedule.append((time.time() + object.runin, object))
 		self.schedule.sort()
 
-	def add_new_object(self, callback, parent_class, runin=1, loops=1):
+	def add_new_object(self, callback, class_instance, runin=1, loops=1):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
 		@param callback: function callback, which is called runin time.
-		@param parent_class: class instance the function belongs to.
+		@param class_instance: class instance the function belongs to.
 		@param runin: float number of seconds after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
-		object = CallbackObject(callback, parent_class, runin, loops)
+		print runin
+		object = CallbackObject(callback, class_instance, runin, loops)
 		self.add_object(object)
 
-	def rem_all_classinst_calls(self, class_inst):
+	def rem_all_classinst_calls(self, class_instance):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
 		for tup in self.schedule:
-			if tup[1].parent_class is class_inst:
+			if tup[1].class_instance is class_instance:
 				self.schedule.remove(tup)
 
 	def __del__(self):
