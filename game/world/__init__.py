@@ -24,7 +24,7 @@ __all__ = ['island', 'player', 'settlement']
 import game.main
 from game.world.island import Island
 from game.world.player import Player
-from stablelist import stablelist
+from game.util import stablelist
 
 class World(object):
 	"""

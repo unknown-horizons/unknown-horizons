@@ -20,7 +20,7 @@
 # ###################################################
 import game.main
 from game.world.storage import Storage
-from stablelist import stablelist
+from game.util import stablelist
 from game.world.building.storages import Pickup
 
 class Settlement(object):

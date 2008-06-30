@@ -21,7 +21,7 @@
 
 import game.main
 from game.world.settlement import Settlement
-from stablelist import stablelist
+from game.util import stablelist
 
 class Island(object):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
