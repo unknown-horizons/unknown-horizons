@@ -71,12 +71,12 @@ class ServerList(object):
 		self._servers = []
 		self._socket = Socket()
 		self._socket.receive = self._response
-		game.main.fife.pump.append(self._pump)
+		game.main.ext_scheduler.add_new_object(self._pump, self, self.queryIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		game.main.fife.pump.remove(self._pump)
+		game.main.ext_scheduler.rem_all_classinst_calls(self)
 		self._socket.receive = lambda x : None
 		self._socket.end()
 
@@ -84,12 +84,11 @@ class ServerList(object):
 		"""internal function, regularly called to ping the contained servers etc
 		"""
 		for server in self:
-			if server.timeLastQuery + self.__class__.queryIntervall <= time.time():
-				if server.ping != None and int(server.timeLastResponse or 0) + self.__class__.queryTimeout <= server.timeLastQuery:
-					server.ping = None
-					self.changed()
-				self._query(server.address, server.port)
-				return
+			if server.ping != None and int(server.timeLastResponse or 0) + self.__class__.queryTimeout <= server.timeLastQuery:
+				server.ping = None
+				self.changed()
+			self._query(server.address, server.port)
+			return
 
 	def _clear(self):
 		"""remove all servers from the list
@@ -163,19 +162,13 @@ class WANServerList(ServerList):
 		super(WANServerList, self).__init__()
 		self.update()
 		if self.__class__.updateIntervall > 0:
-			game.main.fife.pump.append(self._update)
+			game.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		game.main.fife.pump.remove(self._update)
+		game.main.ext_scheduler.rem_all_classinst_calls(self)
 		super(WANServerList, self).end()
-
-	def _update(self):
-		"""internal function regularly called to update the server list (query for new servers from the url)
-		"""
-		if self.lastUpdate + self.__class__.updateIntervall <= time.time():
-			self.update()
 
 	def update(self):
 		"""manually update the serverlist from the url
@@ -195,10 +188,9 @@ class WANServerList(ServerList):
 				if not server in self:
 					self._add(server)
 					self._query(server.address, server.port)
-		self.lastUpdate = time.time()
 
 class LANServerList(ServerList):
-	updateIntervall = 5
+	updateIntervall = 3
 
 	"""a serverlist which regularly searches the lan for servers (sends a broadcast)
 	"""
@@ -206,19 +198,13 @@ class LANServerList(ServerList):
 		super(LANServerList, self).__init__()
 		self.update()
 		if self.__class__.updateIntervall > 0:
-			game.main.fife.pump.append(self._update)
+			game.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		game.main.fife.pump.remove(self._update)
+		game.main.ext_scheduler.rem_all_classinst_calls(self)
 		super(LANServerList, self).end()
-
-	def _update(self):
-		"""internal function to regularly search for servers
-		"""
-		if self.lastUpdate + self.__class__.updateIntervall <= time.time():
-			self.update()
 
 	def update(self):
 		"""manually update the list, search for servers (send the broadcast)
@@ -226,7 +212,6 @@ class LANServerList(ServerList):
 		for server in self:
 			server.timeLastQuery = time.time()
 		self._request('255.255.255.255', game.main.settings.network.port)
-		self.lastUpdate = time.time()
 
 	def _response(self, packet):
 		"""overwritten function of the base class, ensures that the server is in the list when a packet is received

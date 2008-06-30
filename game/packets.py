@@ -64,7 +64,6 @@ class QueryPacket(Packet):
 	"""Client sends this to discover servers
 	"""
 	def handleOnServer(self):
-		print 'HANDLING QUERYPACKET ON SERVER'
 		o = game.main.connection.mpoptions
 		game.main.connection.send(InfoPacket(self.address, self.port, 'unknown map' if o['selected_map'] == -1 else o['maps'][1][o['selected_map']], len(o['players']), 0 if o['bots'] is None else o['bots'], 0 if o['slots'] is None else o['slots']))
 
