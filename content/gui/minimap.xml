@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<Container size="210,210">
-	<Icon image="content/gui/images/misc/minimap_placeholder.png" />
-	<ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" down_image="content/gui/images/icons/hud/main/zoom_out.png" hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" size="32,32" position="40,170" />
-	<ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" down_image="content/gui/images/icons/hud/main/zoom_in.png" hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" size="32,32" position="10,130" />
-	<ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_left.png" size="32,32" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" position="50,0" />
-	<ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_right.png" size="32,32" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" position="10,40" />
+<Container size="240,210">
+	<Icon image="content/gui/images/misc/minimap_placeholder.png" position="30,0" />
+	<ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" down_image="content/gui/images/icons/hud/main/zoom_out.png" hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" size="32,32" position="0,120" />
+	<ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" down_image="content/gui/images/icons/hud/main/zoom_in.png" hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" size="32,32" position="0,80" />
+	<ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" size="32,32" position="0,0" />
+	<ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" size="32,32" position="0,40" />
 </Container>

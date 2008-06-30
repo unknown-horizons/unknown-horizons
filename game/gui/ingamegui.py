@@ -59,7 +59,7 @@ class IngameGui(livingObject):
 		)
 		self.toggle_visible('minimap_toggle')
 		self.gui['minimap_toggle'].mapEvents({
-			'minimapToggle' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'minimap')
+			'minimapToggle' : self.toggle_minmap
 		})
 
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
@@ -69,6 +69,18 @@ class IngameGui(livingObject):
 		)
 		self.toggle_visible('minimap')
 		self.gui['minimap'].mapEvents({
+			'zoomIn' : game.main.session.view.zoom_in,
+			'zoomOut' : game.main.session.view.zoom_out,
+			'rotateRight' : game.main.session.view.rotate_right,
+			'rotateLeft' : game.main.session.view.rotate_left
+		})
+
+		self.gui['camTools'] = game.main.fife.pychan.loadXML('content/gui/cam_tools.xml')
+		self.gui['camTools'].position = (
+				game.main.fife.settings.getScreenWidth() - self.gui['camTools'].size[0] - self.gui['minimap_toggle'].size[0],
+				game.main.fife.settings.getScreenHeight() - self.gui['camTools'].size[1]
+		)
+		self.gui['camTools'].mapEvents({
 			'zoomIn' : game.main.session.view.zoom_in,
 			'zoomOut' : game.main.session.view.zoom_out,
 			'rotateRight' : game.main.session.view.rotate_right,
@@ -148,6 +160,7 @@ class IngameGui(livingObject):
 		self.gui['ship'].mapEvents({
 			'foundSettelmentButton' : lambda : None
 		})
+
 		self.gui['minimap'].mapEvents({
 			'zoomIn' : lambda : None,
 			'zoomOut' : lambda : None,
@@ -157,6 +170,13 @@ class IngameGui(livingObject):
 
 		self.gui['minimap_toggle'].mapEvents({
 			'minimapToggle' : lambda : None
+		})
+
+		self.gui['camTools'].mapEvents({
+			'zoomIn' : lambda : None,
+			'zoomOut' : lambda : None,
+			'rotateRight' : lambda : None,
+			'rotateLeft' : lambda : None,
 		})
 
 	def status_set(self, label, value):
@@ -222,3 +242,7 @@ class IngameGui(livingObject):
 		contentarea.addChild(self.gui['build_tab'+str(num)])
 		contentarea.adaptLayout()
 		self.active_build = num
+
+	def toggle_minmap(self):
+		self.toggle_visible('minimap')
+		self.toggle_visible('camTools')
