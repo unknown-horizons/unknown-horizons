@@ -130,7 +130,7 @@ class Fife(object):
 			return
 		#start modules
 		self.log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
-		self.log.setVisibleModules('controller')
+		#self.log.setVisibleModules('controller')
 
 		self.engine.init()
 

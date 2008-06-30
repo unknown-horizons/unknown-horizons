@@ -27,12 +27,16 @@ import struct
 import sys
 from game.packets import *
 
+
+# TODO: make networking robust
+#       (i.e. GUI freezes sometimes when waiting for timeout)
+
 if sys.argv[0].lower().endswith('openanno.py'):
 	import game.main
 
 class Socket(object):
 	"""A socket which handles network communication, it sends and receives packets (packets=Objects of (sub)type Packet)
-	@param port: the port to listen on or 0 for auto chhosing a port
+	@param port: the port to listen on or 0 for auto choosing a port
 	"""
 	def __init__(self, port = 0):
 		if sys.argv[0].lower().endswith('openanno.py'):
@@ -45,13 +49,9 @@ class Socket(object):
 		self.buffers = {}
 
 	def __del__(self):
-		"""
-		"""
 		self._socket.close()
 
 	def end(self):
-		"""
-		"""
 		if sys.argv[0].lower().endswith('openanno.py'):
 			game.main.fife.pump.remove(self._pump)
 
@@ -97,6 +97,7 @@ class Socket(object):
 		@param packet: the packet to send (packet = object of (sub)type Packet) (see packet.py
 		"""
 		data = pickle.dumps(packet)
+		#print 'SEND', packet, 'TO', packet.address, packet.port
 		self._socket.sendto('OA' + struct.pack('I',len(data)) + data, (packet.address, packet.port))
 
 	def receive(self, packet):
@@ -109,43 +110,75 @@ class MPPlayer(object):
 	"""
 	@param name:
 	"""
-	def __init__(self, name):
-		self.name = name
-		self.color, self.team = None, None
+	def __init__(self, address = None, port = None):
+		self.address, self.port = address, port 
+		self.name, self.color, self.team = "unknown player", -1, None
+		self.ready = False
 
-class ClientConnection(object):
+
+class Connection(object):
+	""" Base Class for network connection
+	"""
+	def __init__(self, port = 0):
+		self._socket = Socket(port)
+		self._socket.receive = self.onPacket
+
+		self.local_player = None
+		self.mpoptions = {}
+		self.mpoptions['players'] = []
+		self.mpoptions['slots'] = None
+		self.mpoptions['bots'] = None
+		self.mpoptions['maps'] = {}
+		self.mpoptions['selected_map'] = -1
+
+	def onPacket(self, packet):
+		"""Called on packet receive
+		"""
+		pass
+
+	def send(self, packet):
+		# if no address, send to all players 
+		if packet.address == None and packet.port == None:
+			for player in self.mpoptions['players']:
+				packet.address, packet.port = player.address, player.port
+				if packet.address == None and packet.port == None:
+					self.onPacket(packet)
+				else:
+					self._socket.send(packet)
+		else:
+			self._socket.send(packet)
+
+
+class ClientConnection(Connection):
+	""" Connection for a client
+
+	Use an instance of this class for 
+	game.main.connectin on a client machine
+	"""
 	connectTimeout = 5
 
-	"""
-	@param address:
-	@param port:
-	"""
-	def __init__(self, address, port):
-		self.players = {}
+	STATE_DISCONNECTED, STATE_CONNECTING, STATE_CONNECTED = range(0,3)
 
-		self._socket = Socket()
-		self._socket.receive = self._receive
+	def __init__(self):
+		super(ClientConnection, self).__init__()
 
+		self.local_player = MPPlayer()
+
+		self.state = self.__class__.STATE_DISCONNECTED
+
+	def join(self, address, port):
 		self.address, self.port = address, port
-		self.reconnect()
+		self.sendToServer(LobbyJoinPacket(self.address, self.port, self.local_player))
 
 	def _pump(self):
-		"""
-		"""
 		if self.connectTime + self.__class__.connectTimeout <= time.time():
 			self.onTimeout()
 
-	def _receive(self, packet):
-		"""
-		@param packet:
-		"""
-		if isinstance(packet, ConnectedPacket):
-			self.onConnected(packet.players, packet.map, packet.settings)
-
+	def onPacket(self, packet):
+		#print 'RECV', packet,'FROM',packet.address,packet.port
+		packet.handleOnClient()
 
 	def reconnect(self):
-		"""
-		"""
 		if self.state not in (self.__class__.STATE_CONNECTING, self.__class__.STATE_DISCONNECTED):
 			self.doDisconnect()
 		if self._pump not in game.main.fife.pump:
@@ -154,26 +187,14 @@ class ClientConnection(object):
 		self.connectTime = time.time()
 		self.state = self.__class__.STATE_CONNECTING
 
+	def sendToServer(self, packet):
+		packet.address, packet.port = self.address, self.port
+		self.send(packet)
+
 	def end(self):
-		"""
-		"""
-		self.socket.receive = lambda : None
+		self._socket.receive = lambda a: None
 		if self._pump in game.main.fife.pump:
 			game.main.fife.pump.remove(self._pump)
-
-	def send(self, packet):
-		"""
-		@param packet:
-		"""
-		if packet.address == None and packet.port == None:
-			for packet.address, packet.port in self.players:
-				if packet.address == None and packet.port == None:
-					self._receive(packet)
-				else:
-					game.main.connection.send(packet)
-		else:
-			game.main.connection.send(packet)
-
 
 	def doChat(self, text):
 		"""
@@ -182,8 +203,6 @@ class ClientConnection(object):
 		self.send(ChatPacket(text))
 
 	def doDisconnect(self):
-		"""
-		"""
 		self.send(DisconnectPacket(self.address, self.port))
 
 	def doPlayerModify(self, **settings):
@@ -193,35 +212,21 @@ class ClientConnection(object):
 		for name, value in settings.items():
 			self.send(PlayerModify(name, value))
 
-
 	def onTimeout(self):
-		"""
-		"""
 		pass
 
-	def onConnected(self, players, map, settings):
-		"""
-		@param players:
-		@param map:
-		@param settings:
+	def onConnected(self):
+		"""Called when connection to server is confirmed
 		"""
 		pass
 
 	def onDisconnect(self):
-		"""
-		"""
 		pass
 
 	def onChat(self, player, text):
 		"""
 		@param player:
 		@param text:
-		"""
-		pass
-
-	def onPlayerJoin(self, player):
-		"""
-		@param player:
 		"""
 		pass
 
@@ -243,12 +248,6 @@ class ClientConnection(object):
 		"""
 		pass
 
-	def onServerMap(self, map):
-		"""
-		@param map:
-		"""
-		pass
-
 	def onTickPacket(self, tick, commands):
 		"""
 		@param tick:
@@ -256,43 +255,51 @@ class ClientConnection(object):
 		"""
 		pass
 
-class ServerConnection(object):
+class ServerConnection(Connection):
+	""" Connection on a server
+
+	Use an instance of this class for 
+	game.main.connectin on a game server
+	"""
+
+	clientUpdateInterval = 2
 	registerTimeout = 120
 
-	"""
-	@param port:
-	"""
 	def __init__(self, port = None):
+		super(ServerConnection, self).__init__(game.main.settings.network.port)
+		self.registerTime = 0
 		if self._pump not in game.main.fife.pump:
 			game.main.fife.pump.append(self._pump)
-		self._socket = Socket(port or game.main.settings.network.port)
-		self._socket.receive = self.onPacket
+
+		self.local_player = MPPlayer("127.0.0.1", port)
 
 		self.register()
 
+		self.clientLastUpdate = 0
+
+		game.main.fife.pump.append(self.notifyClients)
+
+	def end(self):
+		game.main.fife.pump.remove(self.notifyClients)
+		self._socket.receive = lambda a: None
+
+	def notifyClients(self, force = False):
+		if not force and self.clientLastUpdate + self.__class__.clientUpdateInterval > time.time():
+			return
+		self.clientLastUpdate = time.time()
+		self.send(LobbyServerInfoPacket(self.mpoptions))
+
 	def _pump(self):
-		"""
-		"""
 		if self.registerTime + self.__class__.registerTimeout <= time.time():
 			self.register()
 
 	def register(self):
-		"""
+		""" Registers game server on master game server
 		"""
 		self._socket.send(MasterRegisterPacket(self._socket.port))
 		self.registerTime = time.time()
 
-	def end(self):
-		"""
-		"""
-		self._socket.receive = lambda : None
+	def onPacket(self, packet):
+		#print 'RECV', packet,'FROM',packet.address,packet.port
+		packet.handleOnServer()
 
-	def send(self, packet):
-		"""
-		@param packet:
-		"""
-		if packet.address == None and packet.port == None:
-			for packet.address, packet.port in self.players:
-				game.main.connection.send(packet)
-		else:
-			game.main.connection.send(packet)

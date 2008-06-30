@@ -19,13 +19,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import game.main
+
 class Packet(object):
 	"""
 	@param address:
 	@param port:
 	"""
 	def __init__(self, address, port):
-		self.address, self.port = str(address), int(port)
+		(self.address,) = None if address is None else str(address), 
+		self.port = None if port is None else int(port)
+
+	def handleOnServer(self):
+		"""Defines how packet is handled when received on game server
+
+		Gets overwritten in every packet subclass, that has to be
+		handled on a server
+		TIP: you can access (Server|Client)connection via game.main.connection
+		"""
+		print "Warning: unhandled packet on server:",self
+
+	def handleOnClient(self):
+		"""Defines how packet is handled when received on game client
+
+		Gets overwritten in every packet subclass, that has to be
+		handled on a client
+		"""
+		print "Warning: unhandled packet on client:",self
+
 
 class TickPacket(Packet):
 	"""
@@ -40,7 +61,13 @@ class TickPacket(Packet):
 		self.commands = commands
 
 class QueryPacket(Packet):
-	pass
+	"""Client sends this to discover servers
+	"""
+	def handleOnServer(self):
+		print 'HANDLING QUERYPACKET ON SERVER'
+		o = game.main.connection.mpoptions
+		game.main.connection.send(InfoPacket(self.address, self.port, 'unknown map' if o['selected_map'] == -1 else o['maps'][1][o['selected_map']], len(o['players']), 0 if o['bots'] is None else o['bots'], 0 if o['slots'] is None else o['slots']))
+
 
 class ChatPacket(Packet):
 	"""
@@ -54,6 +81,36 @@ class ChatPacket(Packet):
 
 class ConnectPacket(Packet):
 	pass
+
+class LobbyJoinPacket(Packet):
+	"""Use this to join a game 
+	"""
+	def __init__(self, address, port, player):
+		super(LobbyJoinPacket, self).__init__(address, port)
+		self.player = player
+
+	def handleOnServer(self):
+		self.player.address, self.player.port = self.address, self.port
+		game.main.connection.mpoptions['players'].append(self.player)
+		print 'JOIN BY', self.player.address
+		game.main.connection.notifyClients(True)
+
+class LobbyPlayerModifiedPacket(Packet):
+	"""Notifes server about changes to the local player
+	"""
+	def __init__(self, address, port, player):
+		super(LobbyPlayerModifiedPacket, self).__init__(address, port)
+		self.player = player
+
+	def handleOnServer(self):
+		self.player.address, self.player.port = self.address, self.port
+		players = game.main.connection.mpoptions['players']
+		for i in xrange(0, len(players)):
+			if players[i].address == self.address and players[i].port == self.port:
+				players[i] = self.player
+				break
+		game.main.connection.notifyClients(True)
+
 
 class MasterRegisterPacket(Packet):
 	pass
@@ -69,9 +126,10 @@ class MasterVersionPacket(Packet):
 
 class MasterRegisterPacket(Packet):
 	"""
-	@param port:
+	@param port: port on which local game server runs
 	"""
 	def __init__(self, port):
+		super(MasterRegisterPacket, self).__init__(game.main.settings.network.url_master, game.main.settings.network.port)
 		self.myport = port
 
 class InfoPacket(Packet):
@@ -86,3 +144,24 @@ class InfoPacket(Packet):
 	def __init__(self, address, port, map, players, bots, maxplayers):
 		super(InfoPacket, self).__init__(address, port)
 		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers
+
+
+class LobbyServerInfoPacket(Packet):
+	""" Contains info about multiplayer game
+
+	The game server sends this packet to clients
+	to notify them about game settings 
+	NOTE: address & port are none, because this way the
+	      packet gets sent to all clients
+	"""
+	def __init__(self, mpoptions, address = None, port = None):
+		super(LobbyServerInfoPacket, self).__init__(address, port)
+		self.mpoptions = mpoptions
+
+	def handleOnClient(self):
+		game.main.connection.mpoptions = self.mpoptions
+
+	def handleOnServer(self):
+		# server sent this, so it can ignore it
+		pass
+

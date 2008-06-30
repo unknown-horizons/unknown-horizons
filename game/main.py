@@ -29,6 +29,8 @@ from game.settings import Settings
 from game.session import Session
 from game.gui.mainlistener import MainListener
 from game.serverlist import WANServerList, LANServerList, FavoriteServerList
+from game.serverlobby import MasterServerLobby, ClientServerLobby
+from game.network import Socket, ServerConnection, ClientConnection
 
 def start():
 	"""Starts the game.
@@ -43,7 +45,7 @@ def start():
 	settings.addCategorys('sound')
 	settings.sound.setDefaults(enabled = True)
 	settings.addCategorys('network')
-	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_register = 'http://master.openanno.org/register?port=%s', favorites = [])
+	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 
 	#init fife
 	fife = Fife()
@@ -257,9 +259,17 @@ def startSingle():
 	session.world.setupPlayer(playername, playercolor);
 
 def showMulti():
-	global gui, onEscape, showMain
+	global gui, onEscape, showMain, connection
 	if gui != None:
+		# delete serverlobby and (Server|Client)Connection
+		try: 
+			gui.serverlobby.end()
+		except AttributeError:
+			pass
+		gui.serverlobby = None
+		connection = None
 		gui.hide()
+
 	gui = fife.pychan.loadXML('content/gui/serverlist.xml')
 	gui.stylize('menu')
 	gui.server = []
@@ -274,14 +284,21 @@ def showMulti():
 		showMain()
 	eventMap = {
 		'cancel'  : _close,
-		'create'  : createServer,
-		'join'    : joinServer
+		'create'  : showCreateServer,
+		'join'    : showJoinServer
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
 	onEscape = _close
 	gui.oldServerType = None
 	listServers()
+
+def startMulti():
+	"""Starts a multiplayer game server (dummy)
+
+	This also starts the game for the game mater
+	"""
+	pass
 
 def listServers(serverType = 'internet'):
 	"""
@@ -300,6 +317,8 @@ def listServers(serverType = 'internet'):
 	})
 
 	if gui.oldServerType != serverType:
+		# deselect server when changing mode
+		gui.distributeData({'list' : -1})
 		if gui.oldServerType != None:
 			gui.serverList.end()
 		if serverType == 'internet':
@@ -322,40 +341,77 @@ def listServers(serverType = 'internet'):
 	gui.serverList.changed = _changed
 	gui.oldServerType = serverType
 
-def createServer():
+def showCreateServer():
+	"""Interface for creating a server
+
+	Here, the game master can set details about a multiplayer game.
 	"""
-	"""
-	global gui, onEscape, showMulti
+	global gui, onEscape, showMulti, startMulti, settings, connection
 	if gui != None:
 		gui.serverList.end()
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	
+	connection = ServerConnection(settings.network.port)
+
+	gui.serverlobby = MasterServerLobby(gui)
+	gui.serverlobby.update_gui()
+
+	def _cancel():
+		global gui, connection
+		connection.end()
+		gui.serverlobby.end()
+		connection = None
+		gui.serverlobby = None
+		showMulti()
+
+	gui.mapEvents({
+	  'startMulti' : startMulti,
+	  'cancel' : _cancel
+	})
+	
 	gui.stylize('menu')
 	gui.show()
 	onEscape = showMulti
 
-def joinServer():
+def showJoinServer():
+	"""Interface for joining a server
+
+	The user can select username & color here
+	and map & player are displayed (read-only)
 	"""
-	"""
-	global gui, onEscape, showMulti
-	if gui != None:
-		gui.serverList.end()
-		gui.hide()
+	global gui, onEscape, showMulti, connection, settings
+	#if gui != None:
+	# gui has to be not None, otherwise the selected server
+	# couldn't be retrieved
+
+	server_id = gui.collectData('list')
+	if server_id == -1: # no server selected
+		showPopup('Error','You have to select a server')
+		return
+	server = gui.serverList[server_id];
+	gui.serverList.end()
+	gui.hide()
+
+	connection = ClientConnection()
+	connection.join(server.address, server.port)
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	gui.serverlobby = ClientServerLobby(gui)
+
+	def _cancel():
+		global gui, connection
+		connection.end()
+		gui.serverlobby.end()
+		connection = None
+		gui.serverlobby = None
+		showMulti()
+
+	gui.mapEvents({
+		'cancel' : _cancel
+	})
 	gui.stylize('menu')
 	gui.show()
 	onEscape = showMulti
-
-def showMultiMapSelect():
-	"""
-	"""
-	global gui, onEscape, showLobby
-	if gui != None:
-		gui.hide()
-	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
-	gui.stylize('menu')
-	gui.show()
-	onEscape = showLobby
 
 def showPause():
 	"""
