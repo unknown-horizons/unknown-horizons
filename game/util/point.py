@@ -19,10 +19,5 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
-
-from living import livingProperty, livingObject
-from stablelist import stablelist
-from color import Color
-from point import Point
-from rect import Rect
+class Point(object):
+	pass
