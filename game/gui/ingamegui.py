@@ -166,7 +166,7 @@ class IngameGui(livingObject):
 			'zoomIn' : lambda : None,
 			'zoomOut' : lambda : None,
 			'rotateRight' : lambda : None,
-			'rotateLeft' : lambda : None,
+			'rotateLeft' : lambda : None
 		})
 
 		self.gui['minimap_toggle'].mapEvents({
@@ -177,7 +177,7 @@ class IngameGui(livingObject):
 			'zoomIn' : lambda : None,
 			'zoomOut' : lambda : None,
 			'rotateRight' : lambda : None,
-			'rotateLeft' : lambda : None,
+			'rotateLeft' : lambda : None
 		})
 
 	def status_set(self, label, value):
