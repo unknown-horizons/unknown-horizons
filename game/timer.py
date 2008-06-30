@@ -21,7 +21,7 @@
 
 import time
 import game.main
-from living import *
+from game.util import livingObject
 
 class Timer(livingObject):
 	"""

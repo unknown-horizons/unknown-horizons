@@ -23,7 +23,7 @@ import fife
 import game.main
 import code
 import sys
-from living import livingObject
+from game.util import livingObject
 
 class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 	"""MainListener Class to process events of main window"""

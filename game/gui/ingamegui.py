@@ -22,7 +22,7 @@
 from buildingtool import BuildingTool
 import game.main
 import fife
-from living import livingObject
+from game.util import livingObject
 from messagewidget import MessageWidget
 
 class IngameGui(livingObject):

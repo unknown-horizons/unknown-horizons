@@ -21,7 +21,7 @@
 
 import fife
 import game.main
-from living import livingObject
+from game.util import livingObject
 
 class CursorTool(livingObject, fife.IMouseListener):
 	"""Basic tool for cursors."""

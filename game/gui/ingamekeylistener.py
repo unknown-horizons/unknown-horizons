@@ -22,7 +22,7 @@
 import fife
 import game.main
 from tearingtool import TearingTool
-from living import livingObject
+from game.util import livingObject
 
 class IngameKeyListener(livingObject, fife.IKeyListener):
 	"""KeyListener Class to process key presses ingame"""

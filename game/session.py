@@ -36,7 +36,7 @@ from game.manager import SPManager
 from game.view import View
 from game.world import World
 from game.entities import Entities
-from living import *
+from game.util import livingObject, livingProperty
 
 class Session(livingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading."""

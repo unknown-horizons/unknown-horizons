@@ -20,7 +20,7 @@
 # ###################################################
 
 import game.main
-from living import *
+from game.util import livingObject
 
 class Scheduler(livingObject):
 	""""Class providing timed callbacks.

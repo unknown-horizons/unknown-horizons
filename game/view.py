@@ -22,7 +22,7 @@
 import fife
 import math
 import game.main
-from living import *
+from game.util import livingObject
 
 class View(livingObject):
 	"""Class that takes care of all the camera and rendering stuff."""
