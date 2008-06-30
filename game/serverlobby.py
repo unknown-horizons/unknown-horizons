@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import time
 import game.main
 from fife import Color
 from game.network import MPPlayer, ClientConnection, ServerConnection
@@ -44,8 +43,6 @@ class ServerLobby(object):
 		self.colors = {}
 		for (name, r, g, b, alpha) in game.main.db("SELECT name, red, green, blue, alpha from colors"):
 			self.colors[name] = Color(r,g,b,alpha)
-
-		self.guiLastUpdate = 0
 
 		game.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
 		#game.main.fife.pump.append(self._update_gui)

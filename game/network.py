@@ -97,7 +97,7 @@ class Socket(object):
 		@param packet: the packet to send (packet = object of (sub)type Packet) (see packet.py
 		"""
 		data = pickle.dumps(packet)
-		print 'SEND', packet, 'TO', packet.address, packet.port
+		#print 'SEND', packet, 'TO', packet.address, packet.port
 		self._socket.sendto('OA' + struct.pack('I',len(data)) + data, (packet.address, packet.port))
 
 	def receive(self, packet):
@@ -175,7 +175,7 @@ class ClientConnection(Connection):
 			self.onTimeout()
 
 	def onPacket(self, packet):
-		print 'RECV', packet,'FROM',packet.address,packet.port
+		#print 'RECV', packet,'FROM',packet.address,packet.port
 		packet.handleOnClient()
 
 	def reconnect(self):
@@ -275,9 +275,7 @@ class ServerConnection(Connection):
 
 		self.register()
 
-		self.clientLastUpdate = 0
-
-		game.main.ext_scheduler.add_new_object(self.notifyClients, self, self.clientLastUpdate, -1)
+		game.main.ext_scheduler.add_new_object(self.notifyClients, self, self.clientUpdateInterval, -1)
 		#game.main.fife.pump.append(self.notifyClients)
 
 	def end(self):
@@ -286,7 +284,6 @@ class ServerConnection(Connection):
 		self._socket.receive = lambda a: None
 
 	def notifyClients(self):
-		self.clientLastUpdate = time.time()
 		self.send(LobbyServerInfoPacket(self.mpoptions))
 
 	def _pump(self):
@@ -300,6 +297,6 @@ class ServerConnection(Connection):
 		self.registerTime = time.time()
 
 	def onPacket(self, packet):
-		print 'RECV', packet,'FROM',packet.address,packet.port
+		#print 'RECV', packet,'FROM',packet.address,packet.port
 		packet.handleOnServer()
 
