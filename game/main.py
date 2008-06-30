@@ -235,8 +235,11 @@ def startSingle():
 
 	map_id = gui.collectData('maplist')
 	if map_id == -1:
-		showPopup('Error','You have to select a map')
-		return
+		# BUG: this selects the last map by defaut
+		# uncomment the following lines to fix the bug
+		#showPopup('Error','You have to select a map')
+		#return
+		pass
 
 	map_file = gui.files[map_id]
 	playername = gui.collectData('playername')
