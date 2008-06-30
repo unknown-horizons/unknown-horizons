@@ -138,8 +138,9 @@ class IngameGui(livingObject):
 		self.gui['res'] = game.main.fife.pychan.loadXML('content/gui/hud_res.xml')
 		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
 		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
+		self.gui['ship'].position = self.gui['build'].position
 		self.gui['ship'].mapEvents({
-			'foundSettelmentButton' : self._ship_build
+			'foundSettelment' : self.ship_build
 		})
 
 	def end(self):
@@ -158,7 +159,7 @@ class IngameGui(livingObject):
 			'specialTab' : lambda : None
 		})
 		self.gui['ship'].mapEvents({
-			'foundSettelmentButton' : lambda : None
+			'foundSettelment' : lambda : None
 		})
 
 		self.gui['minimap'].mapEvents({
@@ -205,8 +206,9 @@ class IngameGui(livingObject):
 		self.gui['topmain'].resizeToContent()
 		self.gui['topmain'].show();
 
-	def _ship_build(self):
+	def ship_build(self):
 		"""Calls the Games build_object class."""
+		print 'called'
 		game.main.session.selected_instance._instance.say('')
 		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], game.main.session.selected_instance)
 
