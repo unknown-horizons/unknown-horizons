@@ -93,7 +93,7 @@ class LobbyJoinPacket(Packet):
 		self.player.address, self.player.port = self.address, self.port
 		game.main.connection.mpoptions['players'].append(self.player)
 		print 'JOIN BY', self.player.address
-		game.main.connection.notifyClients(True)
+		game.main.connection.notifyClients()
 
 class LobbyPlayerModifiedPacket(Packet):
 	"""Notifes server about changes to the local player
@@ -109,7 +109,7 @@ class LobbyPlayerModifiedPacket(Packet):
 			if players[i].address == self.address and players[i].port == self.port:
 				players[i] = self.player
 				break
-		game.main.connection.notifyClients(True)
+		game.main.connection.notifyClients()
 
 
 class MasterRegisterPacket(Packet):
