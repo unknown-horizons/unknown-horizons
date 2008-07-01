@@ -19,12 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
+from building import UnselectableBuilding
 import fife
 import game.main
 import math
 
-class Path(Building):
+class Path(UnselectableBuilding):
 	@classmethod
 	def getBuildList(cls, point1, point2):
 		"""
@@ -110,7 +110,7 @@ class Path(Building):
 			action = 'ac'
 		self._instance.act(action, self._instance.getLocation(), True)
 
-class Bridge(Building):
+class Bridge(UnselectableBuilding):
 	#@classmethod
 	#def getInstance(cls, x, y, action=None, **trash):
 	#	super(Bridge, cls).getInstance(x = x, y = y, action = 'default', **trash)

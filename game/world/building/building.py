@@ -23,8 +23,7 @@ import fife
 import game.main
 import math
 
-class Building(object):
-	selectable = True
+class UnselectableBuilding(object):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
@@ -106,18 +105,6 @@ class Building(object):
 				return None
 			return {'island' : island, 'settlement' : None if len(settlements) == 0 else settlements.pop(), 'buildings' : [{'x' : x, 'y' : y}]}
 
-	def select(self):
-		"""Runs neccesary steps to select the unit."""
-		self._instance.say(str(self.health) + '%', 0) # display health over selected ship
-		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		game.main.session.ingame_gui.show_ship(game.main.session.selected_instance) #show the gui for ships
-
-	def deselect(self):
-		"""Runs neccasary steps to deselect the unit."""
-		game.main.session.selected_instance._instance.say('') #remove status of last selected unit
-		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		game.main.session.ingame_gui.toggle_visible('ship') # hide the gui for ships
-
 	@classmethod
 	def getBuildCosts(self, **trash):
 		"""Get the costs for the building
@@ -133,3 +120,19 @@ class Building(object):
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
 		pass
+
+class Building(UnselectableBuilding):
+	def select(self):
+		"""Runs neccesary steps to select the unit."""
+		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		for tile in self.island.grounds:
+			if tile.settlement == self.settlement and (max(self.x - tile.x, 0, tile.x - self.x - self.size[0] + 1) ** 2) + (max(self.y - tile.y, 0, tile.y - self.y - self.size[1] + 1) ** 2) <= self.radius ** 2:
+				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+				if tile.object != None:
+					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+
+	def deselect(self):
+		"""Runs neccasary steps to deselect the unit."""
+		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+
