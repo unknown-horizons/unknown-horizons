@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <Window title="City infos">
-  <!-- Tabs -->
-  <HBox margins="0,0">
-    <ImageButton name="shipsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
-    <ImageButton name="moneyTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
-    <ImageButton name="inhabitantsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
-    <ImageButton name="infoTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
-  </HBox>
- 
-  <!-- The outset part under the tab bar -->
-  <ScrollArea>
-    <!-- The tabs -->
-  </ScrollArea>
+	<!-- Tabs -->
+	<HBox margins="0,0">
+		<ImageButton name="shipsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
+		<ImageButton name="moneyTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
+		<ImageButton name="inhabitantsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
+		<ImageButton name="infoTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />
+	</HBox>
+
+	<!-- The outset part under the tab bar -->
+	<ScrollArea>
+		<!-- The tabs -->
+	</ScrollArea>
 </Window>

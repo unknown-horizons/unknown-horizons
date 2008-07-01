@@ -9,11 +9,11 @@
 	<VBox position="530,100"><Label name="start" text="Singleplayer"/></VBox>
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,161"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startSingle" position="488,169"  />
-	
+
 	<VBox position="680,200"><Label name="start" text="Multiplayer"/></VBox>
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="586,204"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startMulti" position="598,212"  />
-	
+
 	<VBox position="225,305"><Label name="credits" text=" Credits "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="creditsLink" position="329,321" />
