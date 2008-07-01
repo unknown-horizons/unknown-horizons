@@ -34,6 +34,7 @@ class Player(object):
 		self.name = name
 		self.color = color
 		self.inventory = Storage()
+		self.inventory.addSlot(1, -1)
 
 		self.inventory.alter_inventory(1, 9999)
 

@@ -36,10 +36,10 @@ class Island(object):
 
 	def __init__(self, id, x, y, file):
 		"""
-		@param id:
+		@param id: island id
 		@param x:
 		@param y:
-		@param file:
+		@param file: db file for island
 		"""
 		self.id = id
 		self.file = file
@@ -101,9 +101,9 @@ class Island(object):
 		@param max_x: int maximum x position.
 		@param max_y: int maximum y position.
 		@return: list of Settlement instances at that position."""
-		if max_x == None:
+		if max_x is None:
 			max_x = min_x
-		if max_y == None:
+		if max_y is None:
 			max_y = min_y
 		settlements = []
 		if max_x < self.x or min_x >= self.x + self.width or max_y < self.y or min_y >= self.y + self.height:
@@ -136,14 +136,14 @@ class Island(object):
 		inherits = []
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			if (max(min_x - tile.x, 0, tile.x - max_x) ** 2) + (max(min_y - tile.y, 0, tile.y - max_y) ** 2) <= radius ** 2:
-				if tile.settlement == None:
+				if tile.settlement is None:
 					tile.settlement = settlement
 				elif tile.settlement.owner == settlement.owner:
 					inherits.append(tile.settlement)
 		for tile in self.grounds:
 			if tile.settlement in inherits:
 				tile.settlement = settlement
-		#todo: inherit ressources etc
+		#TODO: inherit ressources etc
 
 	def add_building(self, x, y, building, player):
 		"""Adds a building to the island at the posititon x, y with player as the owner.

@@ -19,16 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
-from game.world.building.producer import Producer
-from game.world.building.consumer import Consumer
-import game.main
 
+from game.world.storage import Storage
 
-class Storagetent(Building, Producer, Consumer):
-	def __init__(self, x, y, owner, instance = None):
-		Building.__init__(self, x, y, owner, instance)
-		Producer.__init__(self, self.id)
-		Consumer.__init__(self, self.id)
-	
-	
+class Carriage(Storage)

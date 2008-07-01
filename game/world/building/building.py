@@ -32,7 +32,7 @@ class UnselectableBuilding(object):
 		self.x = x
 		self.y = y
 		self.owner = owner
-		if instance == None:
+		if instance is None:
 			self.createInstance(x, y)
 		else:
 			self._instance = instance
@@ -55,10 +55,10 @@ class UnselectableBuilding(object):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'default'
-		@param building: This parameter is used for overrriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
+		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
-		if building != None:
+		if not building is None:
 			return building.getInstance(x = x, y = y, action=action, **trash)
 		else:
 			instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))

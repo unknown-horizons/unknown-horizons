@@ -20,15 +20,21 @@
 # ###################################################
 
 from building import Building
-from game.world.building.producer import Producer
-from game.world.building.consumer import Consumer
+from game.world.storage import Storage
 import game.main
 
-
-class Storagetent(Building, Producer, Consumer):
-	def __init__(self, x, y, owner, instance = None):
-		Building.__init__(self, x, y, owner, instance)
-		Producer.__init__(self, self.id)
-		Consumer.__init__(self, self.id)
+class Consumer(Storage):
+	"""Class used for buildings that need some resource
 	
-	
+	Has to be inherited by a building
+	This includes e.g. lumberjack, weaver, storages
+	"""
+	def __init__(self, building_id):
+		"""
+		@param id: building id
+		"""
+		self.consumed_res = []
+		consumed_resources = game.main.db("SELECT resource, storage_size FROM consumation WHERE building = ?", building_id)
+		for (res, size) in consumed_resources:
+			self.addSlot(res, size)
+			self.consumed_res.append(res)
