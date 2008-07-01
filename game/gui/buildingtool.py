@@ -138,6 +138,9 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mousePressed(self, evt):
+		if evt.isConsumedByGuichan():
+			super(BuildingTool, self).mousePressed(evt)
+			return
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
@@ -161,7 +164,9 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mouseReleased(self, evt):
-		if fife.MouseEvent.LEFT == evt.getButton():
+		if evt.isConsumedByGuichan():
+			super(BuildingTool, self).mouseReleased(evt)
+		elif fife.MouseEvent.LEFT == evt.getButton():
 			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 			if self.endPoint != point:

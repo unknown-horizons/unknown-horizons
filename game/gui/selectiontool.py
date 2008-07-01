@@ -62,7 +62,10 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def mouseReleased(self, evt):
-		if (evt.getButton() == fife.MouseEvent.LEFT):
+		if evt.isConsumedByGuichan():
+			super(SelectionTool, self).mouseReleased(evt)
+			return
+		elif (evt.getButton() == fife.MouseEvent.LEFT):
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			instances = game.main.session.view.cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
 			if len(instances) != 0: #something under cursor
@@ -81,12 +84,15 @@ class SelectionTool(NavigationTool):
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
-			super(SelectionTool, self).mouseDragged(evt)
+			super(SelectionTool, self).mouseReleased(evt)
 			return
 		evt.consume()
 
 	def mousePressed(self, evt):
-		if (evt.getButton() == fife.MouseEvent.LEFT):
+		if evt.isConsumedByGuichan():
+			super(SelectionTool, self).mousePressed(evt)
+			return
+		elif (evt.getButton() == fife.MouseEvent.LEFT):
 			self.select_begin = (evt.getX(), evt.getY())
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
