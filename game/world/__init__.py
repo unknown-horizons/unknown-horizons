@@ -58,7 +58,7 @@ class World(object):
 		for i in self.islands:
 			for g in i.grounds:
 				empty.remove((g.x,g.y))
-		print "Adding %d water tiles..." % (len(tmp),)
+		print "Adding %d water tiles..." % (len(empty),)
 		self.grounds = []
 		for x,y in empty:
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
