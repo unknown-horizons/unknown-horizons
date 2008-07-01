@@ -103,3 +103,4 @@ class Message(object):
 		self.display = int(game.main.db('SELECT visible_for from message WHERE rowid=?', id).rows[0][0])
 		self.image = str(game.main.db('SELECT icon from message_icon WHERE color=? AND icon_id=?', 1, id).rows[0][0])
 		self.message = str(game.main.db('SELECT text from message WHERE rowid=?', id).rows[0][0])
+		
