@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['common','object','ship']
+__all__ = ['ship','unit']
 
 from game.world.units import *
 import game.main

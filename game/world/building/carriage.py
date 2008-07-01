@@ -22,4 +22,5 @@
 
 from game.world.storage import Storage
 
-class Carriage(Storage)
+class Carriage(Storage):
+	pass
