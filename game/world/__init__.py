@@ -55,17 +55,13 @@ class World(object):
 		#add water
 		print "Filling world with water..."
 		self.grounds = []
-		for x in xrange(self.min_x, self.max_x):
-			for y in xrange(self.min_y, self.max_y):
-				for i in self.islands:
-					for g in i.grounds:
-						if g.x == x and g.y == y:
-							break
-					else: #found no instance at x,y in the island
-						continue
-					break
-				else: #found no instance at x,y at any island
-					self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
+		tmp = [ (x,y) for x in xrange(self.min_x, self.max_x) for y in xrange(self.min_y, self.max_y) ]
+		for i in self.islands:
+			for g in i.grounds:
+				tmp.remove((g.x,g.y))
+		print "Adding %d water tiles..." % (len(tmp),)
+		for x,y in tmp:
+			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "done."
 
 		# create playerlist

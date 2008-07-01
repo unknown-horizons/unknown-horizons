@@ -40,20 +40,6 @@ class SelectionTool(NavigationTool):
 		game.main.onEscape = lambda : None
 		super(SelectionTool, self).end()
 
-	def select_unit(self):
-		"""Runs neccesary steps to select a unit."""
-		game.main.session.selected_instance._instance.say(str(game.main.session.selected_instance.health) + '%', 0) # display health over selected ship
-		game.main.session.view.renderer['InstanceRenderer'].addOutlined(game.main.session.selected_instance._instance, 255, 255, 255, 1)
-		if isinstance(game.main.session.selected_instance, Ship):
-			game.main.session.ingame_gui.show_ship(game.main.session.selected_instance) #show the gui for ships
-
-	def deselect_unit(self):
-		"""Runs neccasary steps to deselect a unit."""
-		game.main.session.selected_instance._instance.say('') #remove status of last selected unit
-		game.main.session.view.renderer['InstanceRenderer'].removeAllOutlines() # FIXME: removeOutlined(self.selected_instance.object) doesn't work
-		if isinstance(game.main.session.selected_instance, Ship):
-			game.main.session.ingame_gui.toggle_visible('ship') # hide the gui for ships
-
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.LEFT):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
@@ -82,16 +68,16 @@ class SelectionTool(NavigationTool):
 			if len(instances) != 0: #something under cursor
 				assert(len(instances) == 1)
 				instance = game.main.session.entities.getInstance(instances[0].getId())
-				if not instance.selectable:
+				if not hasattr(instance, 'select'):
 					instance = None
 			else:
 				instance = None
 			if game.main.session.selected_instance != instance:
 				if game.main.session.selected_instance is not None:
-					self.deselect_unit()
+					game.main.session.selected_instance.deselect()
 				game.main.session.selected_instance = instance
 				if instance is not None:
-					self.select_unit()
+					game.main.session.selected_instance.select()
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
