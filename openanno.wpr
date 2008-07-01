@@ -7,13 +7,14 @@
 proj.directory-list = [{'dirloc': loc('game'),
                         'excludes': (),
                         'filter': 'Python Files',
-                        'include_hidden': False,
-                        'recursive': True,
-                        'watch_for_changes': True},
+                        'include_hidden': 0,
+                        'recursive': 1,
+                        'watch_for_changes': 1},
                        {'dirloc': loc('.'),
                         'excludes': [u'content'],
                         'filter': 'Python Files',
-                        'include_hidden': False,
-                        'recursive': True,
-                        'watch_for_changes': True}]
+                        'include_hidden': 0,
+                        'recursive': 1,
+                        'watch_for_changes': 1}]
 proj.file-type = 'shared'
+proj.main-file = loc('openanno.py')
