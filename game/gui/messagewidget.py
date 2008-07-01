@@ -37,23 +37,30 @@ class MessageWidget(object):
 		self.widget.show()
 		self.current_tick = None
 		self.position = 0
+		game.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
 
-	def add_message(self, x, y, id):
+	def add(self, x, y, id):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id, needed to retrieve the message from the database.
 		"""
-		self.active_messages.insert(Message(x,y,id, self.current_tick))
+		self.active_messages.insert(0, Message(x,y,id, self.current_tick))
+		self.draw_wigdet()
 
 	def draw_wigdet(self):
 		"""Updates the widget."""
 		widg = self.widget
 		for i in range(1,5):
-			if self.position + i-1 in self.active_messages:
-				w = findChild(name, str(i))
-				w._setUpImage(self.active_messages[self.position + i-1].up_image)
-				w._setHoverImage(self.active_messages[self.position + i-1].hover_image)
-				w._setDownImage(self.active_messages[self.position + i-1].down_image)
+			if self.position + i-1 < len(self.active_messages):
+				w = self.widget.findChild(name=str(i))
+				w.image = self.active_messages[self.position + i-1].image
+				w2 = self.widget.findChild(name='button_'+str(i))
+				w2.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, self.active_messages[self.position + i-1].x,self.active_messages[self.position + i-1].y))
+			else:
+				w = self.widget.findChild(name=str(i))
+				w.image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
+				w2 = self.widget.findChild(name='button_'+str(i))
+				w2.capture(lambda : None)
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -65,14 +72,21 @@ class MessageWidget(object):
 
 	def tick(self):
 		"""Check wether a message is old enough to be put into the archives"""
+		print 'tick'
 		changed = False
 		for item in self.active_messages:
 			item.display -= 1
-			if item.dispay == 0:
-				self.archive.append
+			if item.display == 0:
+				self.archive.append(item)
 				self.active_messages.remove(item)
 				changed = True
-		self.draw_wigdet()
+		if changed:
+			self.draw_wigdet()
+
+	def __del__(self):
+		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		self.active_messages = []
+		self.archive = []
 
 
 class Message(object):
@@ -86,7 +100,6 @@ class Message(object):
 		self.id = id
 		self.read = False
 		self.created = created
-		self.display = 32 # TODO: select the length that the message is displayed from the db
-		self.up_image = ''
-		self.down_image = ''
-		self.hover_image = ''
+		self.display = int(game.main.db('SELECT visible_for from message WHERE rowid=?', id).rows[0][0])
+		self.image = str(game.main.db('SELECT icon from message_icon WHERE color=? AND icon_id=?', 1, id).rows[0][0])
+		self.message = str(game.main.db('SELECT text from message WHERE rowid=?', id).rows[0][0])

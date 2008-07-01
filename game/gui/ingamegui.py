@@ -179,6 +179,7 @@ class IngameGui(livingObject):
 			'rotateRight' : lambda : None,
 			'rotateLeft' : lambda : None
 		})
+		self.message_widget = None
 
 	def status_set(self, label, value):
 		"""Sets a value on the status bar.

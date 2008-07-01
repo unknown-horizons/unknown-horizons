@@ -121,6 +121,7 @@ class Island(object):
 		settlement = Settlement(player)
 		self.settlements.append(settlement)
 		self.assign_settlement(min_x, min_y, max_x, max_y, radius, settlement)
+		game.main.session.ingame_gui.message_widget.add(min_x,min_y,1)
 		return settlement
 
 	def assign_settlement(self, min_x, min_y, max_x, max_y, radius, settlement):
