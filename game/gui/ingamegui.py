@@ -98,6 +98,11 @@ class IngameGui(livingObject):
 		})
 
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
+		self.gui['status'].position = (
+			self.gui['topmain'].position[0] - self.gui['status'].size[0],
+			5
+		)
+
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
 		self.gui['build'].stylize('menu')
 		self.gui['build'].position = (
@@ -249,3 +254,10 @@ class IngameGui(livingObject):
 	def toggle_minmap(self):
 		self.toggle_visible('minimap')
 		self.toggle_visible('camTools')
+
+	def set_status_position(self, resource_name):
+		icon_name = resource_name + '_icon'
+		self.gui['status'].findChild(name = resource_name).position = (
+			self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name).size[0]/2,
+			48
+		)

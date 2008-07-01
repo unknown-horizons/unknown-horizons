@@ -73,6 +73,11 @@ class NavigationTool(CursorTool):
 					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory.get_value(7)))
 					game.main.session.ingame_gui.status_set('food', str(settlement.inventory.get_value(5)))
 					game.main.session.ingame_gui.status_set('gold', str(game.main.session.world.player.inventory.get_value(1)))
+					game.main.session.ingame_gui.set_status_position('wood')
+					game.main.session.ingame_gui.set_status_position('tools')
+					game.main.session.ingame_gui.set_status_position('bricks')
+					game.main.session.ingame_gui.set_status_position('food')
+					game.main.session.ingame_gui.set_status_position('gold')
 					game.main.session.ingame_gui.gui['status'].show()
 				else:
 					game.main.session.ingame_gui.cityname_set('')

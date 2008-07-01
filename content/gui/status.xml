@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
-<HBox position="0,0">
-	<Label text="Gold:" />
-	<Label text="0" name="gold" />
-	<Label text="Food:" />
-	<Label text="0" name="food" />
-	<Label text="Tools:" />
-	<Label text="0" name="tools" />
-	<Label text="Wood:" />
-    <Label text="0" name="wood" />
-	<Label text="Bricks:" />
-    <Label text="0" name="bricks" />
-</HBox>
-
+<Container size="300,80">
+	<Icon name="gold_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="0,0" />
+	<Label name="gold" text="0"  />
+	<Icon name="food_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="50,0" />
+	<Label name="food" text="0"  />
+	<Icon name="tools_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="100,0" />
+	<Label name="tools" text="0"  />
+	<Icon name="wood_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="150,0" />
+	<Label name="wood" text="0"  />
+	<Icon name="bricks_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" />
+	<Label name="bricks" text="0"  />
+</Container>
