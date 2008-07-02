@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <Container size="300,80">
 	<Label name="city_name" text=""/>
-	<Icon name="CoA" image="content/gui/images/icons/hud/main/CoA.png" />
+	<Icon name="CoA" image="content/gui/images/icons/hud/main/coa.png" />
 </Container>
