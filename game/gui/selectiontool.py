@@ -78,6 +78,7 @@ class SelectionTool(NavigationTool):
 				game.main.session.selected_instance = instance
 				if instance is not None:
 					game.main.session.selected_instance.select()
+			del self.select_begin
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
@@ -89,9 +90,9 @@ class SelectionTool(NavigationTool):
 		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mousePressed(evt)
 			return
-		elif (evt.getButton() == fife.MouseEvent.LEFT):
+		elif evt.getButton() == fife.MouseEvent.LEFT:
 			self.select_begin = (evt.getX(), evt.getY())
-		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			if game.main.session.selected_instance is not None and isinstance(game.main.session.selected_instance, Ship):
 				target_mapcoord = game.main.session.view.cam.toMapCoordinates(clickpoint, False)
