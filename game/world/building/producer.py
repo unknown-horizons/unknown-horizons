@@ -29,14 +29,14 @@ class Producer(Storage):
 	Has to be inherited by a building
 	This includes e.g. trees, lumberjack, weaver, storages
 	"""
-	def __init__(self, building_id):
+	def __init__(self):
 		"""
-		@param id: building id
 		"""
+		super(Producer, self).__init__()
 		
 		# produced resources: (production is enabled by default)
 		self.prod_res = {}
-		productions = game.main.db("SELECT resource, time, storage_size FROM production WHERE building = ?", building_id)
+		productions = game.main.db("SELECT resource, time, storage_size FROM production WHERE building = ?", self.id)
 		for (res, time, size) in productions:
 			self.prod_res[res] = (time, True)
 			self.addSlot(res, size)
@@ -44,7 +44,7 @@ class Producer(Storage):
 		# production ratios:
 		self.prod_ratios = {}
 		for res in self.prod_ratios.keys():
-			prod_ratios = game.main.db("SELECT (SELECT resource FROM consumation where consumation.rowid = production_ratio.consumation) as raw_material, ratio FROM production_ratio WHERE production_ratio.production = (SELECT rowid FROM production WHERE building = ? AND resource = ?", building_id, res)
+			prod_ratios = game.main.db("SELECT (SELECT resource FROM consumation where consumation.rowid = production_ratio.consumation) as raw_material, ratio FROM production_ratio WHERE production_ratio.production = (SELECT rowid FROM production WHERE building = ? AND resource = ?", self.id , res)
 			for (raw_material, ratio) in prod_ratios:
 				self.prod_ratio[res] = (raw_material, ratio)
 
@@ -87,6 +87,9 @@ class Producer(Storage):
 				for raw_material, ratio in self.prod_ratios[res]:
 					self.alter_inventory(raw_material, -(1/ratio))
 					
+	def get_available_pickups(self):
+		available_pickups = {}
+		#for (
 			
 	def pickup_resources(self, res):
 		"""Return the ressources of id res that are in stock and removes them from the stock.

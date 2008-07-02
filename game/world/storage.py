@@ -27,6 +27,14 @@ class Storage(object):
 	Is inherited by Producer and Consumer.
 	"""
 	def __init__(self):
+		# this might be called multiple times if class is inherited 
+		# multiple times (indirectly)
+		
+		# multiple execution prevention:
+		try: self._inited
+		except AttributeError: self._inited = True
+		else: return
+		
 		# inventory: a dict with this pattern: _inventory[res_id] = (amount, size)
 		self._inventory = {}
 		

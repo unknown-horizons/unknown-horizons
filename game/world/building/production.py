@@ -28,6 +28,6 @@ class Production(Building, Producer, Consumer):
 	"""
 	def __init__(self, x, y, owner, instance = None):
 		Building.__init__(self, x, y, owner, instance)
-		Producer.__init__(self, self.id)
-		Consumer.__init__(self, self.id)
+		Producer.__init__(self)
+		Consumer.__init__(self)
 		

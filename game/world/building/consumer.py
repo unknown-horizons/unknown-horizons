@@ -29,12 +29,12 @@ class Consumer(Storage):
 	Has to be inherited by a building
 	This includes e.g. lumberjack, weaver, storages
 	"""
-	def __init__(self, building_id):
+	def __init__(self):
 		"""
-		@param id: building id
 		"""
+		super(Consumer, self).__init__()
 		self.consumed_res = []
-		consumed_resources = game.main.db("SELECT resource, storage_size FROM consumation WHERE building = ?", building_id)
+		consumed_resources = game.main.db("SELECT resource, storage_size FROM consumation WHERE building = ?", self.id)
 		for (res, size) in consumed_resources:
 			self.addSlot(res, size)
 			self.consumed_res.append(res)
