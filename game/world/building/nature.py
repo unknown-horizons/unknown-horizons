@@ -20,6 +20,7 @@
 # ###################################################
 
 from building import Building
+from producer import Producer
 
-class Tree(Building):
+class Tree(Building, Producer):
 	pass

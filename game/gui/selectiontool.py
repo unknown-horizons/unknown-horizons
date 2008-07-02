@@ -41,7 +41,7 @@ class SelectionTool(NavigationTool):
 		super(SelectionTool, self).end()
 
 	def mouseDragged(self, evt):
-		if (evt.getButton() == fife.MouseEvent.LEFT):
+		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
 			"""if do_multi:
 				if not hasattr(self, 'select_rect'):
@@ -62,10 +62,7 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def mouseReleased(self, evt):
-		if evt.isConsumedByWidgets():
-			super(SelectionTool, self).mouseReleased(evt)
-			return
-		elif (evt.getButton() == fife.MouseEvent.LEFT):
+		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			instances = game.main.session.view.cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
 			if len(instances) != 0: #something under cursor
