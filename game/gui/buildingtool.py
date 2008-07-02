@@ -138,7 +138,7 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mousePressed(self, evt):
-		if evt.isConsumedBywidgets():
+		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mousePressed(evt)
 			return
 		if fife.MouseEvent.RIGHT == evt.getButton():
@@ -164,7 +164,7 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mouseReleased(self, evt):
-		if evt.isConsumedBywidgets():
+		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)

@@ -62,7 +62,7 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def mouseReleased(self, evt):
-		if evt.isConsumedBywidgets():
+		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mouseReleased(evt)
 			return
 		elif (evt.getButton() == fife.MouseEvent.LEFT):
@@ -89,7 +89,7 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def mousePressed(self, evt):
-		if evt.isConsumedBywidgets():
+		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mousePressed(evt)
 			return
 		elif (evt.getButton() == fife.MouseEvent.LEFT):
