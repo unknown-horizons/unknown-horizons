@@ -68,6 +68,7 @@ class NavigationTool(CursorTool):
 				if len(settlements) > 0:
 					settlement = settlements.pop()
 					game.main.session.ingame_gui.cityname_set(settlement.name)
+					game.main.session.ingame_gui.gui['topmain'].findChild(name='CoA').position = ( game.main.session.ingame_gui.gui['topmain'].findChild(name='city_name').position[0] + game.main.session.ingame_gui.gui['topmain'].findChild(name='city_name').size[0] + 5, 0)
 					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory.get_value(4)))
 					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory.get_value(6)))
 					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory.get_value(7)))
