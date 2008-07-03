@@ -40,7 +40,6 @@ class IngameGui(livingObject):
 			5
 		)
 		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
-		
 		self.toggle_visible('topmain')
 		self.gui['gamemenu'] = game.main.fife.pychan.loadXML('content/gui/gamemenu_button.xml')
 		self.gui['gamemenu'].position = (
@@ -210,7 +209,7 @@ class IngameGui(livingObject):
 		foundlabel._setText(name)
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
-		self.gui['topmain'].show();
+		self.gui['topmain'].show()
 
 	def ship_build(self):
 		"""Calls the Games build_object class."""
