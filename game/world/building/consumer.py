@@ -21,6 +21,7 @@
 
 from building import Building
 from game.world.storage import Storage
+from game.world.units.carriage import Carriage
 import game.main
 
 class Consumer(Storage):
@@ -38,3 +39,7 @@ class Consumer(Storage):
 		for (res, size) in consumed_resources:
 			self.addSlot(res, size)
 			self.consumed_res.append(res)
+			
+		#self.local_carriages.append(Carriage(6, self))
+			
+			

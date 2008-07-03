@@ -34,9 +34,6 @@ class Settlement(object):
 		self._inhabitants = 0
 		self.buildings = stablelist() # List of all the buildings belonging to the settlement
 		self.inventory = Storage()
-		resources = game.main.db("SELECT rowid FROM ressource")
-		for (res,) in resources:
-			self.inventory.addSlot(res, 30)
 		self.inventory.alter_inventory(6, 20)
 		self.inventory.alter_inventory(5, 20)
 		self.inventory.alter_inventory(4, 20)
@@ -52,20 +49,4 @@ class Settlement(object):
 				return b
 		else:
 			return None
-
-# move something like this to carriage
-
-#	def get_nearest_pickup(self, x, y):
-#		"""Returns the nearest storage building that provides pickups.
-#		"""
-#		ret = None
-#		ret_dist = 0
-#		for b in self.buildings:
-#			if isinstance(b, Pickup):
-#				dist = ((x - b.x) ** 2) + ((y - b.y) ** 2)
-#				if dist < ret_dist or ret_dist == 0:
-#					ret = b
-#					ret_dist = dist
-#		return ret
-
 

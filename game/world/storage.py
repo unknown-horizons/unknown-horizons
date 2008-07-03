@@ -38,6 +38,15 @@ class Storage(object):
 		# inventory: a dict with this pattern: _inventory[res_id] = (amount, size)
 		self._inventory = {}
 		
+		# save references to carriages that are on the way to here.
+		# this ensures that the resources, that it will get, won't be taken
+		# and that the space, that the arriving resources will occupy
+		# isn't filled up
+		self.pickup_carriages = []
+		
+		# carriages owned by the building
+		self.local_carriages = []
+		
 	def addSlot(self, res_id, size):
 		""" Add the possibility to save size amount of res_id
 		@param res_id: id of the resource
@@ -53,10 +62,10 @@ class Storage(object):
 			new_amount = self._inventory[res_id][0] + amount;
 		except KeyError:
 			return 0
-		if new_amount > self._inventory[res_id][1] and self._inventory[res_id][1] != -1: 
+		if new_amount > self.get_size(res_id) and self.get_size(res_id) != -1: 
 			# stuff doesn't fit in inventory
-			ret = new_amount - self._inventory[res_id][1]
-			self._inventory[res_id][0] = self._inventory[res_id][1]
+			ret = new_amount - self.get_size(res_id)
+			self._inventory[res_id][0] = self.get_size(res_id)
 			return ret
 		elif new_amount < 0:
 			# trying to take more stuff than inventory contains
@@ -74,7 +83,19 @@ class Storage(object):
 		@return int amount of resources for res_id in inventory.
 		"""
 		try:
-			return self._inventory[res_id][0]
+			value = self._inventory[res_id][0]
+			
+			# subtract/add carriage stuff
+			for carriage in self.pickup_carriages:
+				if len(carriage.target) > 0:
+					if carriage.target[1] == res_id:
+						value -= carriage.target[2]
+			for carriage in self.local_carriages:
+				if len(carriage.target) > 0:
+					if carriage.target[1] == res_id:
+						value += carriage.target[2]
+						
+			return value
 		except KeyError:
 			return 0
 	
@@ -132,4 +153,15 @@ class ArbitraryStorage(object):
 			if slot[0] == res_id:
 				ret += slot[1]
 		return ret
+	
+	def get_size(self, res_id):
+		"""This just ensures compatibility with Storage"""
+		## TODO: if carriage is on the way, ensure that other slots won't get filled
+		size = 0 
+		for slot in self._inventory:
+			if slot[0] == res_id and slot[1] < self.size:
+				size += self.size - slot[1]
+				
+		size += (self.slots - len(self._inventory)) * self.size
+		return size
 	

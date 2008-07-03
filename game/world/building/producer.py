@@ -47,6 +47,11 @@ class Producer(Storage):
 			prod_ratios = game.main.db("SELECT (SELECT resource FROM consumation where consumation.rowid = production_ratio.consumation) as raw_material, ratio FROM production_ratio WHERE production_ratio.production = (SELECT rowid FROM production WHERE building = ? AND resource = ?", self.id , res)
 			for (raw_material, ratio) in prod_ratios:
 				self.prod_ratio[res] = (raw_material, ratio)
+				
+		# save references to carriages that are on the way
+		# this ensures that the resources, that it will get, won't be taken
+		# by anything else but this carriages
+		self.pickup_carriages = []
 
 	def start(self):
 		"""Starts the object. Overrides the standart Building.start() methode.
@@ -87,14 +92,10 @@ class Producer(Storage):
 				for raw_material, ratio in self.prod_ratios[res]:
 					self.alter_inventory(raw_material, -(1/ratio))
 					
-	def get_available_pickups(self):
-		available_pickups = {}
-		#for (
-			
 	def pickup_resources(self, res):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
 		@param res: int ressouce id.
 		@return: int number of ressources."""
-		ret = self.stock.get_value(res)
-		self.stock.alter_inventory(res, -ret)
-		return ret
+		pickup_amount = self.stock.get_value(res)
+		self.stock.alter_inventory(res, -pickup_amount)
+		return pickup_amount

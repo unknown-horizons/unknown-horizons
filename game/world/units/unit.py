@@ -24,7 +24,7 @@ import fife
 
 class Unit(fife.InstanceActionListener):
 	def __init__(self, x, y):
-		if self._object == None:
+		if self._object is None:
 			self.__class__._loadObject()
 		self.last_position = (x, y)
 		self.position = (x, y)
