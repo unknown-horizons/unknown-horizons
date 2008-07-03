@@ -34,6 +34,9 @@ class Settlement(object):
 		self._inhabitants = 0
 		self.buildings = stablelist() # List of all the buildings belonging to the settlement
 		self.inventory = Storage()
+		resources = game.main.db("SELECT rowid FROM ressource")
+		for (res,) in resources:
+			self.inventory.addSlot(res, 30)
 		self.inventory.alter_inventory(6, 20)
 		self.inventory.alter_inventory(5, 20)
 		self.inventory.alter_inventory(4, 20)
