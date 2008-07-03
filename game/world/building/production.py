@@ -22,11 +22,26 @@
 from building import Building
 from game.world.building.consumer import Consumer
 from game.world.building.producer import Producer
+from game.world.storage import Storage
 
-class Production(Building, Producer, Consumer):
-	"""Class used for production buildings
+class PrimaryProducer(Building, Producer):
+	"""Class used for primary production buildings, e.g. tree
+	
+	These object produce something out of nothing, without
+	requiring any raw material
 	"""
 	def __init__(self, x, y, owner, instance = None):
+		self.inventory = Storage()
+		Building.__init__(self, x, y, owner, instance)
+		Producer.__init__(self)
+
+class SecondaryProducer(Building, Producer, Consumer):
+	"""Class used for secondary production buildings, e.g. lumberjack, weaver
+	
+	These object turn resources into something else
+	"""
+	def __init__(self, x, y, owner, instance = None):
+		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)
 		Consumer.__init__(self)

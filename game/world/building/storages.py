@@ -22,22 +22,24 @@
 from building import Building
 from game.world.building.producer import Producer
 from game.world.building.consumer import Consumer
-from game.world.building.carriage import Carriage
+from game.world.storage import Storage
+from game.world.units.carriage import Carriage
 import game.main
 
 
-class Storagetent(Building, Producer, Consumer):
+class StorageBuilding(Building, Producer, Consumer):
 	"""Building that gets pickups and provides them for anyone
 	Inherited eg. by branch office, storage tent
 	"""
 	def __init__(self, x, y, owner, instance = None):
+		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)
 		Consumer.__init__(self)
 		
 		resources = game.main.db("SELECT rowid FROM ressource")
 		for (res,) in resources:
-			self.addSlot(res, 30)
+			self.inventory.addSlot(res, 30)
 			self.consumed_res.append(res)
 			
 		# add extra carriage

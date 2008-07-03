@@ -20,10 +20,9 @@
 # ###################################################
 
 from building import Building
-from game.world.storage import Storage
 import game.main
 
-class Producer(Storage):
+class Producer(object):
 	"""Class used for production buildings
 	
 	Has to be inherited by a building
@@ -39,7 +38,7 @@ class Producer(Storage):
 		productions = game.main.db("SELECT resource, time, storage_size FROM production WHERE building = ?", self.id)
 		for (res, time, size) in productions:
 			self.prod_res[res] = (time, True)
-			self.addSlot(res, size)
+			self.inventory.addSlot(res, size)
 			
 		# production ratios:
 		self.prod_ratios = {}
@@ -77,25 +76,25 @@ class Producer(Storage):
 				
 				# check for needed resources
 				for raw_material, ratio in self.prod_ratios[res]:
-					if self.get_value(raw_material) < 1/ratio:
+					if self.inventory.get_value(raw_material) < 1/ratio:
 						# missing raw_material
 						break
 				else:
 					continue
 				
 				# check for storage capacity
-				if self.get_value(res) == self.get_size(res):
+				if self.inventory.get_value(res) == self.get_size(res):
 					continue
 				
 				# produce 1 res and remove raw_material
-				self.alter_inventory(res, 1)
+				self.inventory.alter_inventory(res, 1)
 				for raw_material, ratio in self.prod_ratios[res]:
-					self.alter_inventory(raw_material, -(1/ratio))
+					self.inventory.alter_inventory(raw_material, -(1/ratio))
 					
 	def pickup_resources(self, res):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
 		@param res: int ressouce id.
 		@return: int number of ressources."""
-		pickup_amount = self.stock.get_value(res)
-		self.stock.alter_inventory(res, -pickup_amount)
+		pickup_amount = self.inventory.get_value(res)
+		self.inventory.alter_inventory(res, -pickup_amount)
 		return pickup_amount

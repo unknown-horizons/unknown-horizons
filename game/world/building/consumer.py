@@ -20,11 +20,10 @@
 # ###################################################
 
 from building import Building
-from game.world.storage import Storage
 from game.world.units.carriage import Carriage
 import game.main
 
-class Consumer(Storage):
+class Consumer(object):
 	"""Class used for buildings that need some resource
 	
 	Has to be inherited by a building
@@ -33,11 +32,10 @@ class Consumer(Storage):
 	def __init__(self):
 		"""
 		"""
-		super(Consumer, self).__init__()
 		self.consumed_res = []
 		consumed_resources = game.main.db("SELECT resource, storage_size FROM consumation WHERE building = ?", self.id)
 		for (res, size) in consumed_resources:
-			self.addSlot(res, size)
+			self.inventory.addSlot(res, size)
 			self.consumed_res.append(res)
 			
 		#self.local_carriages.append(Carriage(6, self))

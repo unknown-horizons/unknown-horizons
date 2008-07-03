@@ -114,7 +114,7 @@ class BuildingTool(NavigationTool):
 			for ressource in ressources:
 				neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
 			for ressource in neededRessources:
-				available = game.main.session.world.player.inventory.get_value(ressource) + (self.ship.inventory.get_value(ressource) if self.ship != None else self.buildings_settlement.inventory.get_value(ressource) if self.buildings_settlement != None else 0)
+				available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship != None else self.buildings_settlement.inventory.get_value(ressource) if self.buildings_settlement != None else 0)
 				building['buildable'] = available >= neededRessources[ressource]
 				if building['buildable'] == False:
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)

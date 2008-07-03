@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
-from producer import Producer
-
-class Tree(Building, Producer):
-	pass
+#from building import Building
+#from producer import Producer
+#
+#class Tree(Building, Producer):
+#	pass

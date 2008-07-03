@@ -20,6 +20,7 @@
 # ###################################################
 
 
+import math
 from game.world.units.unit import Unit
 from game.world.storage import ArbitraryStorage
 import game.main 
@@ -44,13 +45,11 @@ class Carriage(Unit, ArbitraryStorage):
 		# test during development:
 		#assert(len(building.consumed_res) > 0 )
 		
-	def search_pickup(self, already_scanned_min = 0):
+	def search_job(self, already_scanned_min = 0):
 		"""Finds out, which resource it should get from where and get it
 		@param already_scanned_min: all values smaller than this are not scanned
 		@return: bool wether pickup was found
 		"""
-		import pdb
-		pdb.set_trace()
 		min = 10000
 		# scan for resources, where more then the already scanned tons are stored
 		# and less then the current minimum
@@ -74,6 +73,8 @@ class Carriage(Unit, ArbitraryStorage):
 	
 		# search for available pickups for needed_res
 		# values of possible_pickup: [building, resource, amount, distance, rating]
+		max_amount = 0
+		max_distance = 0
 		possible_pickups = []
 		for b in building.settlement.buildings:
 			if isinstance(b, Producer):
@@ -88,22 +89,21 @@ class Carriage(Unit, ArbitraryStorage):
 							continue
 						stored = b.get_value(res)
 						if stored > 0:
-							possible_pickups.append([b, res, stored, 0, 0])
+							distance = math.sqrt(((pickup[0].x - self.building.x)**2) + ((pickup[0].y - self.building.y)))
+							if distance > self.building.radius:
+								break
+							if stored > max_amount:
+								max_amount = stored
+							if distance > max_distance:
+								max_distance = distance
+							possible_pickups.append([b, res, stored, distance, 0])
+				else:
+					continue
 							
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
 			return self.search_pickup(min)
 							
-		# calculate distance 
-		max_amount = 0
-		max_distance = 0
-		for pickup in possible_pickups:
-			pickup[3] = ((pickup[0].x - self.building.x)**2) + ((pickup[0].y - self.building.y))
-			if pickup[3] > max_distance:
-				max_distance = pickup[3]
-			if pickup[2] > max_amount:
-				max_amount = pickup[2]
-			
 		# calculate relative values to max for decision making
 		max_rating = [0, None]
 		for pickup in possible_pickups:
