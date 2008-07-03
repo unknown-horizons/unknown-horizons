@@ -26,7 +26,7 @@ from game.world.storage import ArbitraryStorage
 import game.main 
 
 
-class Carriage(Unit, ArbitraryStorage):
+class Carriage(Unit):
 	"""A Carriage that gets pickups for buildings
 	"""
 	def __init__(self, size, building):
@@ -34,10 +34,10 @@ class Carriage(Unit, ArbitraryStorage):
 		@param size: the size of the storage in the carriage
 		@param building: the building that the carriage works for. Has to be instance of Consumer.
 		"""
+		self.inventory = ArbitraryStorage(1, size)
 		self.building = building
 		# this makes cariage position _in_ the building
 		Unit.__init__(self, self.building.x, self.building.y)
-		ArbitraryStorage.__init__(self, 1, size)
 		# target: [building, resource_id,  amount]
 		self.target = []
 		
@@ -55,7 +55,7 @@ class Carriage(Unit, ArbitraryStorage):
 		# and less then the current minimum
 		needed_res = []
 		for res in self.building.consumed_res:
-			stored = self.building.get_value(res)
+			stored = self.building.inventory.get_value(res)
 			# check if we already scanned for pickups for this res
 			if stored >= already_scanned_min:
 				continue
@@ -87,7 +87,7 @@ class Carriage(Unit, ArbitraryStorage):
 								break
 						else:
 							continue
-						stored = b.get_value(res)
+						stored = b.inventory.get_value(res)
 						if stored > 0:
 							distance = math.sqrt(((pickup[0].x - self.building.x)**2) + ((pickup[0].y - self.building.y)))
 							if distance > self.building.radius:
@@ -115,13 +115,13 @@ class Carriage(Unit, ArbitraryStorage):
 		# get pickup 
 		# save target building and res to pick up, 
 		self.target = [max_rating[1][0], max_rating[1][1], 0]
-		self.target[2] = self.target[0].get_value(self.target[1])
+		self.target[2] = self.target[0].inventory.get_value(self.target[1])
 		# check for carriage size overflow
 		if self.target[2] > self.size:
 			self.target[2] = self.size
 		# check for home building storage size overflow
-		if self.target[2] > (self.building.get_size(self.target[1]) - self.building.get_value(self.target[1])):
-			self.target[2] = (self.building.get_size(self.target[1]) - self.building.get_value(self.target[1]))
+		if self.target[2] > (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1])):
+			self.target[2] = (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1]))
 		self.target[0].pickup_carriages.append(self)
 		self.move(self.target[0].x, self.target[0].y, self.reached_pickup)
 		
@@ -135,22 +135,22 @@ class Carriage(Unit, ArbitraryStorage):
 		"""Called when the carriage reaches target building
 		"""
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.size)
-		self.alter_inventory(self.target[1], pickup_amount)
+		self.inventory.alter_inventory(self.target[1], pickup_amount)
 		self.target[0].pickup_carriages.remove(self)
 		self.move(self.building.x, self.building.y, self.reached_home)
 	
 	def reached_home(self):
 		"""Called when carriage is in the building, it was assigned to
 		"""
-		self.building.alter_inventory(self.target[1], self.target[2])
-		self.alter_inventory(self.target[1], -self.target[2])
+		self.building.inventory.alter_inventory(self.target[1], self.target[2])
+		self.inventory.alter_inventory(self.target[1], -self.target[2])
 		assert(self.get_size(self.target[1]) == 0)
 		self.target.clear()
 		self.start()
 			
 	def start(self):
 		"""Sends carriage on it's way"""
-		if not self.search_pickup():
+		if not self.search_job():
 			game.main.session.scheduler.add_new_object(self.start, (self, game.main.session.timer.ticks_per_second / 2))
 			
 	

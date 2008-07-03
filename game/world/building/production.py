@@ -31,6 +31,7 @@ class PrimaryProducer(Building, Producer):
 	requiring any raw material
 	"""
 	def __init__(self, x, y, owner, instance = None):
+		self.local_carriages = []
 		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)
@@ -41,6 +42,7 @@ class SecondaryProducer(Building, Producer, Consumer):
 	These object turn resources into something else
 	"""
 	def __init__(self, x, y, owner, instance = None):
+		self.local_carriages = []
 		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)

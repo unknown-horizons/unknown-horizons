@@ -57,11 +57,13 @@ class Storage(object):
 	def alter_inventory(self, res_id, amount):
 		"""Alters the inventory for the resource res_id with amount.
 		@param res_id: int resource_id
-		@param amount: amount that is to be added."""
+		@param amount: amount that is to be added.
+		@return amount that couldn't be stored in this storage"""
+		new_amount = 0
 		try:
 			new_amount = self._inventory[res_id][0] + amount;
 		except KeyError:
-			return 0
+			return amount
 		if new_amount > self.get_size(res_id) and self.get_size(res_id) != -1: 
 			# stuff doesn't fit in inventory
 			ret = new_amount - self.get_size(res_id)
@@ -79,6 +81,8 @@ class Storage(object):
 
 	def get_value(self, res_id):
 		"""Returns amount of resource res_id in the storage
+		NOTE: this returns "false" value depending on carriages, that are on their way
+					alter_inventory always returns acctual value of res currently in the building
 		@param res_id: int resource_id
 		@return int amount of resources for res_id in inventory.
 		"""
@@ -133,6 +137,9 @@ class ArbitraryStorage(object):
 				elif new_amount > self.size:
 					slot[1] = self.size
 					amount = new_amount - self.size
+				else:
+					slot[1] = new_amount
+					return 0
 					
 		# handle stuff that couldn't be handled with existing slots
 		if amount > 0:

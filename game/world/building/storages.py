@@ -32,6 +32,7 @@ class StorageBuilding(Building, Producer, Consumer):
 	Inherited eg. by branch office, storage tent
 	"""
 	def __init__(self, x, y, owner, instance = None):
+		self.local_carriages = []
 		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)
@@ -45,4 +46,3 @@ class StorageBuilding(Building, Producer, Consumer):
 		# add extra carriage
 		#self.local_carriages.append(game.main.session.entities.units[2](6, self))
 			
-	

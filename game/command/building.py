@@ -47,6 +47,7 @@ class Build(object):
 		island.add_building(self.x, self.y, building, issuer)
 		secondary_ressource_source = island.get_settlements(self.x, self.y).pop() if self.ship == None else game.main.session.world.ships[self.ship]
 		for (ressource, value) in building.costs.items():
+			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
 			assert(secondary_ressource_source.inventory.alter_inventory(ressource, issuer.inventory.alter_inventory(ressource, -value)) == 0)
 
 class Tear(object):
