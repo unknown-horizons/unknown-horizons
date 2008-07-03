@@ -67,6 +67,8 @@ def findFIFE():
 				os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ os.path.abspath(p + '/' + a) for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
 				print "Restarting with proper LD_LIBRARY_PATH..."
 				args = [sys.executable] + sys.argv
+				#we are already in openanno root, so just exec local executeable
+				args[1] = "openanno.py"
 				os.execvp(args[0], args)
 		else:
 			import fife
@@ -77,6 +79,9 @@ def findFIFE():
 		exit()
 
 if __name__ == '__main__':
+	#chdir to openanno root
+	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
+
 	#find fife and setup search paths
 	findFIFE()
 
