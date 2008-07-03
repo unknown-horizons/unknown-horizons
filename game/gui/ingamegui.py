@@ -213,7 +213,6 @@ class IngameGui(livingObject):
 
 	def ship_build(self):
 		"""Calls the Games build_object class."""
-		print 'called'
 		game.main.session.selected_instance._instance.say('')
 		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], game.main.session.selected_instance)
 
