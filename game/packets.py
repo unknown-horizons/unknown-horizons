@@ -20,6 +20,14 @@
 # ###################################################
 
 import game.main
+import time
+
+
+# There are two ways of sending packets without specifing target ip/port:
+# 1. Server sends with address and port == None, then it gets sent to all players
+# 2. Client uses sendToServer
+
+
 
 class Packet(object):
 	"""
@@ -27,6 +35,10 @@ class Packet(object):
 	@param port:
 	"""
 	def __init__(self, address, port):
+		""" This can just set address and port
+		
+		If you want to extend this function, you have to update most of the Packet-classes
+		"""
 		(self.address,) = None if address is None else str(address), 
 		self.port = None if port is None else int(port)
 
@@ -91,8 +103,21 @@ class LobbyJoinPacket(Packet):
 	def handleOnServer(self):
 		self.player.address, self.player.port = self.address, self.port
 		game.main.connection.mpoptions['players'].append(self.player)
-		print 'JOIN BY', self.player.address
+		game.main.connection.last_client_message[(self.player.address, self.player.port)] = time.time()
+		print 'JOIN BY', self.player.address, self.player.port
 		game.main.connection.notifyClients()
+		
+class LeaveServerPacket(Packet):
+	"""Use this to leave a server
+	"""
+	def __init__(self):
+		pass
+	
+	def handleOnServer(self):
+		for player in game.main.connection.mpoptions['players']:
+			if player.address == self.address and player.port == self.port:
+				print 'LEAVE BY', self.address, self.port
+				game.main.connection.mpoptions['players'].remove(player)
 
 class LobbyPlayerModifiedPacket(Packet):
 	"""Notifes server about changes to the local player
@@ -109,7 +134,23 @@ class LobbyPlayerModifiedPacket(Packet):
 				players[i] = self.player
 				break
 		game.main.connection.notifyClients()
-
+		
+class LobbyKeepAlivePacket(Packet):
+	"""Sent regularly to master server to tell it that we are still there"""
+	def __init__(self):
+		pass
+	
+	def handleOnServer(self):
+		game.main.connection.last_client_message[(self.address, self.port)] = time.time()
+		
+		
+# MAYBE:
+# try to tell client when he got disconnected 
+# packet might not arrive
+# but he could be kicked for another reason
+# so include a parameter in the packet which tells the client why he got disconnected
+		
+# packet when server is closed. probably packet above can be used
 
 class MasterRegisterPacket(Packet):
 	pass

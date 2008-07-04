@@ -155,7 +155,8 @@ class ClientConnection(Connection):
 	Use an instance of this class for 
 	game.main.connectin on a client machine
 	"""
-	connectTimeout = 5
+	
+	keepAliveInterval = 1.5
 
 	STATE_DISCONNECTED, STATE_CONNECTING, STATE_CONNECTED = range(0,3)
 
@@ -169,14 +170,16 @@ class ClientConnection(Connection):
 	def join(self, address, port):
 		self.address, self.port = address, port
 		self.sendToServer(LobbyJoinPacket(self.address, self.port, self.local_player))
-
-	def _pump(self):
-		if self.connectTime + self.__class__.connectTimeout <= time.time():
-			self.onTimeout()
+		
+		game.main.ext_scheduler.add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
 
 	def onPacket(self, packet):
 		#print 'RECV', packet,'FROM',packet.address,packet.port
 		packet.handleOnClient()
+		
+	def sendKeepAlive(self):
+		"""Telling server that i'm still there"""
+		self.sendToServer(LobbyKeepAlivePacket())
 
 	def reconnect(self):
 		if self.state not in (self.__class__.STATE_CONNECTING, self.__class__.STATE_DISCONNECTED):
@@ -193,8 +196,8 @@ class ClientConnection(Connection):
 
 	def end(self):
 		self._socket.receive = lambda a: None
-		if self._pump in game.main.fife.pump:
-			game.main.fife.pump.remove(self._pump)
+		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		self.sendToServer(LeaveServerPacket())
 
 	def doChat(self, text):
 		"""
@@ -263,32 +266,45 @@ class ServerConnection(Connection):
 	"""
 
 	clientUpdateInterval = 2
+	clientTimeout = 5
 	registerTimeout = 120
 
 	def __init__(self, port = None):
 		super(ServerConnection, self).__init__(game.main.settings.network.port)
-		self.registerTime = 0
-		if self._pump not in game.main.fife.pump:
-			game.main.fife.pump.append(self._pump)
 
 		self.local_player = MPPlayer("127.0.0.1", port)
+		
+		# here we save the time of the arrival of keep-alive packets
+		# last_client_message[(ip, port)] = timestamp
+		self.last_client_message = {}
 
 		self.register()
 
+		game.main.ext_scheduler.add_new_object(self.register, self, self.registerTimeout, -1)
+		game.main.ext_scheduler.add_new_object(self.check_client_timeout, self, self.clientTimeout, -1)
 		game.main.ext_scheduler.add_new_object(self.notifyClients, self, self.clientUpdateInterval, -1)
-		#game.main.fife.pump.append(self.notifyClients)
 
 	def end(self):
 		game.main.ext_scheduler.rem_all_classinst_calls(self)
-		#game.main.fife.pump.remove(self.notifyClients)
 		self._socket.receive = lambda a: None
 
 	def notifyClients(self):
 		self.send(LobbyServerInfoPacket(self.mpoptions))
-
-	def _pump(self):
-		if self.registerTime + self.__class__.registerTimeout <= time.time():
-			self.register()
+		
+	def check_client_timeout(self):
+		for client, last_reception in self.last_client_message.items():
+			if last_reception + self.clientTimeout < time.time():
+				for player in self.mpoptions['players']:
+					if player.address == client[0] and player.port == client[1]:
+						print "PLAYER TIMEOUT", client[0], client[1]
+						self.remove_player(player)
+						self.notifyClients()
+						break
+						
+	def remove_player(self, player):
+		self.mpoptions['players'].remove(player)
+		del self.last_client_message[(player.address, player.port)]
+		
 
 	def register(self):
 		""" Registers game server on master game server
