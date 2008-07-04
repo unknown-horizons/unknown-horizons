@@ -26,6 +26,9 @@ import sys
 import openanno
 
 if __name__ == '__main__':
+	#chdir to openanno root
+	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
+
 	#find fife and setup search paths
 	openanno.findFIFE()
 

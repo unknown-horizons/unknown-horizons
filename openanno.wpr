@@ -13,8 +13,8 @@ proj.directory-list = [{'dirloc': loc('game'),
                        {'dirloc': loc('.'),
                         'excludes': [u'content'],
                         'filter': 'Python Files',
-                        'include_hidden': 0,
+                        'include_hidden': False,
                         'recursive': 1,
-                        'watch_for_changes': 1}]
+                        'watch_for_changes': True}]
 proj.file-type = 'shared'
 proj.main-file = loc('openanno.py')
