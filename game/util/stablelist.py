@@ -80,7 +80,7 @@ class stablelist(object):
 		return self._values.keys()
 
 	def pop(self, index = None):
-		if index == None:
+		if index is None:
 			index = self._last
 		else:
 			assert(isinstance(key, int) and key >= 0)

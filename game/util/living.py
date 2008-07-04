@@ -29,7 +29,7 @@ class livingProperty(object):
 	def __set__(self, obj, value):
 		if obj in self.values and hasattr(self.values[obj], 'end'):
 			self.values[obj].end()
-		if value == None:
+		if value is None:
 			del self.values[obj]
 		else:
 			self.values[obj] = value

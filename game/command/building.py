@@ -32,8 +32,8 @@ class Build(object):
 		@param ship: ship instance
 		"""
 		self.building_class = building.id
-		self.instance = None if instance == None else instance.getId()
-		self.ship = None if ship == None else game.main.session.world.ships.index(ship)
+		self.instance = None if instance is None else instance.getId()
+		self.ship = None if ship is None else game.main.session.world.ships.index(ship)
 		self.x = int(x)
 		self.y = int(y)
 
@@ -42,10 +42,10 @@ class Build(object):
 		@param issuer: the issuer of the command
 		"""
 		island = game.main.session.world.get_island(self.x, self.y)
-		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance != None and issuer == game.main.session.world.player else None)
+		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
 
 		island.add_building(self.x, self.y, building, issuer)
-		secondary_ressource_source = island.get_settlements(self.x, self.y).pop() if self.ship == None else game.main.session.world.ships[self.ship]
+		secondary_ressource_source = island.get_settlements(self.x, self.y).pop() if self.ship is None else game.main.session.world.ships[self.ship]
 		for (ressource, value) in building.costs.items():
 			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
 			assert(secondary_ressource_source.inventory.alter_inventory(ressource, issuer.inventory.alter_inventory(ressource, -value)) == 0)
@@ -67,7 +67,7 @@ class Tear(object):
 					break
 		else:
 			self.settlement_id = None
-		for id, b in (building.island if self.settlement_id == None else building.settlement).buildings.iteritems():
+		for id, b in (building.island if self.settlement_id is None else building.settlement).buildings.iteritems():
 			if b == building:
 				self.building_id = id
 				break
@@ -76,5 +76,5 @@ class Tear(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		(game.main.session.world.islands[self.island_id] if self.settlement_id == None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].remove()
+		(game.main.session.world.islands[self.island_id] if self.settlement_id is None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].remove()
 

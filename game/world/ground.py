@@ -28,7 +28,7 @@ class Ground(object):
 		@param x: int x position the ground is created.
 		@param y: int y position the ground is created.
 		"""
-		if self._object == None:
+		if self._object is None:
 			self.__class__._loadObject()
 		self.x = x
 		self.y = y

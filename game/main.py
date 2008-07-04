@@ -128,14 +128,14 @@ def showDialog(dlg, actions, onPressEscape = None):
 	@param onPressEscape:
 	"""
 	global onEscape
-	if onPressEscape != None:
+	if onPressEscape is not None:
 		def _escape():
 			fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
 			dlg.hide()
 		tmp_escape = onEscape
 		onEscape = _escape
 	ret = dlg.execute(actions)
-	if onPressEscape != None:
+	if onPressEscape is not None:
 		onEscape = tmp_escape
 	return ret
 
@@ -161,7 +161,7 @@ def getMaps(showSaved = False):
 	else:
 		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 
-	display = ['Random Map' if i == None else os.path.split(i)[1].rpartition('.')[0] for i in files]
+	display = ['Random Map' if i is None else os.path.split(i)[1].rpartition('.')[0] for i in files]
 	return (files, display)
 
 def showQuit():
@@ -175,7 +175,7 @@ def showMain():
 	""" shows the main menu
 	"""
 	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits
-	if gui != None:
+	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')
 	gui.stylize('menu')
@@ -195,7 +195,7 @@ def showSingle(showSaved = False):
 	@param showSaved: Bool whether saved games are to be shown.
 	"""
 	global gui, onEscape, db
-	if gui != None:
+	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
 	gui.stylize('menu')
@@ -247,7 +247,7 @@ def startSingle():
 	playername = gui.collectData('playername')
 	playercolor = gui.colors.values()[gui.collectData('playercolor')]
 
-	if gui != None:
+	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
 	gui.show()
@@ -257,7 +257,7 @@ def startSingle():
 
 	session = Session()
 	session.begin()
-	if map_file == None:
+	if map_file is None:
 		session.generateMap()
 	else:
 		session.loadMap(map_file)
@@ -265,7 +265,7 @@ def startSingle():
 
 def showMulti():
 	global gui, onEscape, showMain, connection
-	if gui != None:
+	if gui is not None:
 		# delete serverlobby and (Server|Client)Connection
 		try:
 			gui.serverlobby.end()
@@ -324,7 +324,7 @@ def listServers(serverType = 'internet'):
 	if gui.oldServerType != serverType:
 		# deselect server when changing mode
 		gui.distributeData({'list' : -1})
-		if gui.oldServerType != None:
+		if gui.oldServerType is not None:
 			gui.serverList.end()
 		if serverType == 'internet':
 			gui.serverList = WANServerList()
@@ -352,7 +352,7 @@ def showCreateServer():
 	Here, the game master can set details about a multiplayer game.
 	"""
 	global gui, onEscape, showMulti, startMulti, settings, connection
-	if gui != None:
+	if gui is not None:
 		gui.serverList.end()
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
@@ -386,7 +386,7 @@ def showJoinServer():
 	and map & player are displayed (read-only)
 	"""
 	global gui, onEscape, showMulti, connection, settings
-	#if gui != None:
+	#if gui is not None:
 	# gui has to be not None, otherwise the selected server
 	# couldn't be retrieved
 
@@ -422,7 +422,7 @@ def showPause():
 	"""
 	"""
 	global gui, onEscape, quitSession
-	if gui != None:
+	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/gamemenu.xml')
 	gui.stylize('menu')

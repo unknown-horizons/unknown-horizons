@@ -77,7 +77,7 @@ class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 		except BaseException, e:
 			self.commandbuffer = ''
 			return str(e)
-		if cmd == None:
+		if cmd is None:
 			self.commandbuffer += "\n" + command
 			return ''
 		self.commandbuffer = ''

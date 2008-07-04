@@ -48,12 +48,12 @@ class BuildingTool(NavigationTool):
 
 		game.main.onEscape = self.onEscape
 
-		if ship == None:
+		if ship is None:
 			for island in game.main.session.world.islands:
 				for tile in island.grounds:
-					if tile.settlement != None and tile.settlement.owner == game.main.session.world.player:
+					if tile.settlement is not None and tile.settlement.owner == game.main.session.world.player:
 						game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
-						if tile.object != None:
+						if tile.object is not None:
 							game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def end(self):
@@ -102,7 +102,7 @@ class BuildingTool(NavigationTool):
 			game.main.session.view.layers[1].deleteInstance(building['instance'])
 		self.buildings = []
 		buildList = self._class.getBuildList(point1, point2)
-		if buildList == None:
+		if buildList is None:
 			return
 		self.buildings_island = buildList['island']
 		self.buildings_settlement = buildList['settlement']
@@ -114,7 +114,7 @@ class BuildingTool(NavigationTool):
 			for ressource in ressources:
 				neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
 			for ressource in neededRessources:
-				available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship != None else self.buildings_settlement.inventory.get_value(ressource) if self.buildings_settlement != None else 0)
+				available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship is not None else self.buildings_settlement.inventory.get_value(ressource) if self.buildings_settlement is not None else 0)
 				building['buildable'] = available >= neededRessources[ressource]
 				if building['buildable'] == False:
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)

@@ -138,10 +138,10 @@ class Connection(object):
 
 	def send(self, packet):
 		# if no address, send to all players 
-		if packet.address == None and packet.port == None:
+		if packet.address is None and packet.port is None:
 			for player in self.mpoptions['players']:
 				packet.address, packet.port = player.address, player.port
-				if packet.address == None and packet.port == None:
+				if packet.address is None and packet.port is None:
 					self.onPacket(packet)
 				else:
 					self._socket.send(packet)

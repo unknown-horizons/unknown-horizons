@@ -37,13 +37,13 @@ class Path(UnselectableBuilding):
 		y = int(round(point1[1]))
 		for x in xrange(int(round(point1[0])), int(round(point2[0])), (1 if int(round(point2[0])) > int(round(point1[0])) else -1)):
 			new_island = game.main.session.world.get_island(x, y)
-			if new_island == None or (island != None and island != new_island):
+			if new_island is None or (island is not None and island != new_island):
 				continue
 			island = new_island
 
 			new_settlement = island.get_settlements(x, y, x, y)
 			new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-			if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
+			if new_settlement is None or (settlement is not None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
 				continue
 			settlement = new_settlement
 
@@ -52,13 +52,13 @@ class Path(UnselectableBuilding):
 		is_first = True
 		for y in xrange(int(round(point1[1])), int(round(point2[1])) + (1 if int(round(point2[1])) > int(round(point1[1])) else -1), (1 if int(round(point2[1])) > int(round(point1[1])) else -1)):
 			new_island = game.main.session.world.get_island(x, y)
-			if new_island == None or (island != None and island != new_island):
+			if new_island is None or (island is not None and island != new_island):
 				continue
 			island = new_island
 
 			new_settlement = island.get_settlements(x, y, x, y)
 			new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-			if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
+			if new_settlement is None or (settlement is not None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
 				continue
 			settlement = new_settlement
 
@@ -89,7 +89,7 @@ class Path(UnselectableBuilding):
 		super(Path, self).init()
 		island = game.main.session.world.get_island(self.x, self.y)
 		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
-			if tile != None and isinstance(tile.object, Path):
+			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
 
@@ -121,5 +121,5 @@ class Bridge(UnselectableBuilding):
 		super(Bridge, self).init()
 		island = game.main.session.world.get_island(self.x, self.y)
 		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
-			if tile != None and isinstance(tile.object, Path):
+			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()

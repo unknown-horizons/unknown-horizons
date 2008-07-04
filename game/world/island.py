@@ -109,7 +109,7 @@ class Island(object):
 		if max_x < self.x or min_x >= self.x + self.width or max_y < self.y or min_y >= self.y + self.height:
 			return []
 		for tile in self.grounds:
-			if min_x <= tile.x <= max_x and min_y <= tile.y <= max_y and tile.settlement != None and tile.settlement not in settlements:
+			if min_x <= tile.x <= max_x and min_y <= tile.y <= max_y and tile.settlement is not None and tile.settlement not in settlements:
 				settlements.append(tile.settlement)
 		return settlements
 

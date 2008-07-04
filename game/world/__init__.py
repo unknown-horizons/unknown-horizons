@@ -43,10 +43,10 @@ class World(object):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
 		for i in self.islands.values():
-			self.min_x = i.x if self.min_x == None or i.x < self.min_x else self.min_x
-			self.min_y = i.y if self.min_y == None or i.y < self.min_y else self.min_y
-			self.max_x = (i.x + i.width - 1) if self.max_x == None or (i.x + i.width - 1) > self.max_x else self.max_x
-			self.max_y = (i.y + i.height - 1) if self.max_y == None or (i.y + i.width - 1) > self.max_y else self.max_y
+			self.min_x = i.x if self.min_x is None or i.x < self.min_x else self.min_x
+			self.min_y = i.y if self.min_y is None or i.y < self.min_y else self.min_y
+			self.max_x = (i.x + i.width - 1) if self.max_x is None or (i.x + i.width - 1) > self.max_x else self.max_x
+			self.max_y = (i.y + i.height - 1) if self.max_y is None or (i.y + i.width - 1) > self.max_y else self.max_y
 		self.min_x -= 10
 		self.min_y -= 10
 		self.max_x += 10
@@ -84,7 +84,7 @@ class World(object):
 		@param x,y: int coordinates.
 		@return: Building class instance if a building is found, else none."""
 		i = self.get_island(x, y)
-		return None if i == None else i.get_building(x, y)
+		return None if i is None else i.get_building(x, y)
 
 	def get_island(self, x, y):
 		"""Returns the island for that coordinate, if none is found, returns None.

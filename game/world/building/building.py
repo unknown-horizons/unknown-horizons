@@ -77,13 +77,13 @@ class UnselectableBuilding(object):
 			for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))):
 				for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))):
 					new_island = game.main.session.world.get_island(x, y)
-					if new_island == None or (island != None and island != new_island):
+					if new_island is None or (island is not None and island != new_island):
 						continue
 					island = new_island
 
 					new_settlement = island.get_settlements(x, y, x, y)
 					new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-					if new_settlement == None or (settlement != None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
+					if new_settlement is None or (settlement is not None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
 						continue
 					settlement = new_settlement
 
@@ -94,11 +94,11 @@ class UnselectableBuilding(object):
 			x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
 			y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
 			island = game.main.session.world.get_island(x, y)
-			if island == None:
+			if island is None:
 				return None
 			for xx in xrange(x, x + cls.size[0]):
 				for yy in xrange(y, y + cls.size[1]):
-					if island.get_tile(xx,yy) == None:
+					if island.get_tile(xx,yy) is None:
 						return None
 			settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
 			if len(settlements) > 1:
@@ -128,7 +128,7 @@ class Building(UnselectableBuilding):
 		for tile in self.island.grounds:
 			if tile.settlement == self.settlement and (max(self.x - tile.x, 0, tile.x - self.x - self.size[0] + 1) ** 2) + (max(self.y - tile.y, 0, tile.y - self.y - self.size[1] + 1) ** 2) <= self.radius ** 2:
 				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
-				if tile.object != None:
+				if tile.object is not None:
 					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):

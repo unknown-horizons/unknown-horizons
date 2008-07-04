@@ -34,7 +34,7 @@ class Server(object):
 	@param port: and the port :)
 	"""
 	def __init__(self, address, port = None):
-		if port == None:
+		if port is None:
 			match = Server.re_ip_port.match(address)
 			if match:
 				address = match.group(1)
@@ -54,10 +54,10 @@ class Server(object):
 	def __str__(self):
 		"""A nice representation we can show in the list
 		"""
-		info = ['timeout' if self.ping == None else 'ping: ' + str(self.ping) + 'ms']
-		if self.map != None:
+		info = ['timeout' if self.ping is None else 'ping: ' + str(self.ping) + 'ms']
+		if self.map is not None:
 			info.append('map: ' + str(self.map))
-		if self.players != None or self.maxplayers != None or self.bots != None:
+		if self.players is not None or self.maxplayers is not None or self.bots is not None:
 			info.append('players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers))
 		return str(self.address) + ':' + str(self.port) + ' (' + ', '.join(info) + ')'
 
@@ -84,7 +84,7 @@ class ServerList(object):
 		"""internal function, regularly called to ping the contained servers etc
 		"""
 		for server in self:
-			if server.ping != None and int(server.timeLastResponse or 0) + self.__class__.queryTimeout <= server.timeLastQuery:
+			if server.ping is not None and int(server.timeLastResponse or 0) + self.__class__.queryTimeout <= server.timeLastQuery:
 				server.ping = None
 				self.changed()
 			self._query(server.address, server.port)

@@ -91,16 +91,16 @@ class TearingTool(NavigationTool):
 			edges = ((min(edges[0][0], edges[1][0]), min(edges[0][1], edges[1][1])), (max(edges[0][0], edges[1][0]), max(edges[0][1], edges[1][1])))
 		else:
 			edges = None
-		if self.oldedges != edges or edges == None:
+		if self.oldedges != edges or edges is None:
 			for i in self.selected:
 				game.main.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 			self.selected = []
 			self.oldedges = edges
-		if edges != None:
+		if edges is not None:
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = game.main.session.world.get_building(x,y)
-					if b != None and b not in self.selected:
+					if b is not None and b not in self.selected:
 						self.selected.append(b)
 			for i in self.selected:
 				game.main.session.view.renderer['InstanceRenderer'].addColored(i._instance, 255, 255, 255)
