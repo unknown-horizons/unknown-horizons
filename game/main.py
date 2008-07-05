@@ -178,6 +178,8 @@ def showMain():
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.stylize('menu')
 	eventMap = {
 		'startSingle'  : showSingle,
@@ -198,6 +200,8 @@ def showSingle(showSaved = False):
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.stylize('menu')
 
 	# create eventMap
@@ -205,6 +209,7 @@ def showSingle(showSaved = False):
 		'cancel'   : showMain,
 		'okay'     : startSingle,
 	}
+	gui.mapEvents(eventMap)
 	if showSaved:
 		eventMap['showNew'] = fife.pychan.tools.callbackWithArguments(showSingle, False)
 	else:
@@ -250,6 +255,8 @@ def startSingle():
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.show()
 	fife.engine.pump()
 	gui.hide()
@@ -276,6 +283,8 @@ def showMulti():
 		gui.hide()
 
 	gui = fife.pychan.loadXML('content/gui/serverlist.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.stylize('menu')
 	gui.server = []
 	def _close():
@@ -356,6 +365,8 @@ def showCreateServer():
 		gui.serverList.end()
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 
 	connection = ServerConnection(settings.network.port)
 
@@ -401,6 +412,8 @@ def showJoinServer():
 	connection = ClientConnection()
 	connection.join(server.address, server.port)
 	gui = fife.pychan.loadXML('content/gui/serverlobby.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.serverlobby = ClientServerLobby(gui)
 
 	def _cancel():
@@ -425,6 +438,8 @@ def showPause():
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/gamemenu.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.stylize('menu')
 	eventMap = {
 		'startGame'    : returnGame,
