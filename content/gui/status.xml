@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container size="300,80">
-	<Icon name="gold_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="0,0" />
+	<Icon name="gold_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="0,0" /><Icon image="content/gui/images/icons/hud/main/gold.png" position="8,8" />
 	<Label name="gold" text="0"  />
 	<Icon name="food_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="50,0" />
 	<Label name="food" text="0"  />
