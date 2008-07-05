@@ -65,8 +65,7 @@ class SelectionTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			instances = game.main.session.view.cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
-			if len(instances) != 0: #something under cursor
-				assert(len(instances) == 1)
+			if len(instances) > 0: #something under cursor
 				instance = game.main.session.entities.getInstance(instances[0].getId())
 				if not hasattr(instance, 'select'):
 					instance = None
