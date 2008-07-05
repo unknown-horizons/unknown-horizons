@@ -2,7 +2,7 @@
 <Container size="300,80">
 	<Icon name="gold_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="0,0" /><Icon image="content/gui/images/icons/hud/main/gold.png" position="8,8" />
 	<Label name="gold" text="0"  />
-	<Icon name="food_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="50,0" />
+	<Icon name="food_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="50,0" /><Icon image="content/gui/images/icons/hud/main/wood.png" position="58,8" />
 	<Label name="food" text="0"  />
 	<Icon name="tools_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="100,0" />
 	<Label name="tools" text="0"  />
