@@ -49,6 +49,7 @@ class Build(object):
 		for (ressource, value) in building.costs.items():
 			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
 			assert(secondary_ressource_source.inventory.alter_inventory(ressource, issuer.inventory.alter_inventory(ressource, -value)) == 0)
+		building.start()
 
 class Tear(object):
 	"""Command class that tears an object."""
