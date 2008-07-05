@@ -38,6 +38,6 @@ class Consumer(object):
 			self.inventory.addSlot(res, size)
 			self.consumed_res.append(res)
 			
-		#self.local_carriages.append(game.main.session.entities.units[2](6, self))
+		self.local_carriages.append(game.main.session.entities.units[2](6, self))
 		
 		

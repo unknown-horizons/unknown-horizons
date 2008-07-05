@@ -44,5 +44,5 @@ class StorageBuilding(Building, Producer, Consumer):
 			self.consumed_res.append(res)
 			
 		# add extra carriage
-		#self.local_carriages.append(game.main.session.entities.units[2](6, self))
+		self.local_carriages.append(game.main.session.entities.units[2](6, self))
 			
