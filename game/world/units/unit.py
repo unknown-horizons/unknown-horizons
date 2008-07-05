@@ -74,6 +74,8 @@ class Unit(fife.InstanceActionListener):
 			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
 			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.unit_position[0] or self.next_target[1] == self.unit_position[1] else 17)
+		elif self.move_callback is not None:
+			self.move_callback()
 
 	def move_tick(self):
 		"""Called by the schedular, moves the unit one step for this tick.
@@ -102,8 +104,6 @@ class Unit(fife.InstanceActionListener):
 			self._instance.move('default', location, 4.0/3.0)
 			#setup next timer
 			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.unit_position[0] or self.next_target[1] == self.unit_position[1] else 17)
-		else:
-			if self.move_callback is not None:
-				print "EXEC CALLB", self.move_callback
-				self.move_callback()
+		elif self.move_callback is not None:
+			self.move_callback()
 
