@@ -41,7 +41,8 @@ class Carriage(Unit):
 		# target: [building, resource_id,  amount]
 		self.target = []
 		
-		self.start()
+		#self.start()
+		game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*3)
 		# test during development:
 		#assert(len(building.consumed_res) > 0 )
 		
@@ -50,25 +51,28 @@ class Carriage(Unit):
 		@param already_scanned_min: all values smaller than this are not scanned
 		@return: bool wether pickup was found
 		"""
+		print 'SEARCH_JOB IN',self.building.id
 		min = 10000
 		# scan for resources, where more then the already scanned tons are stored
 		# and less then the current minimum
 		needed_res = []
-		for res in self.building.consumed_res:
+		building_needed_res = self.building.get_needed_resources()
+		for res in building_needed_res:
 			stored = self.building.inventory.get_value(res)
 			# check if we already scanned for pickups for this res
-			if stored >= already_scanned_min:
+			if stored < already_scanned_min:
 				continue
 			# if new minimum, discard every other value cause it's higher
 			if stored < min:
 				min = stored
-				needed_res.clear()
+				needed_res = []
 				needed_res.append(res)
 			elif stored == min:
 				needed_res.append(res)
 		
 		# if none found, no pickup available
 		if len(needed_res) == 0:
+			print 'CAR: NO needed res w min', min
 			return False
 	
 		# search for available pickups for needed_res
@@ -76,20 +80,23 @@ class Carriage(Unit):
 		max_amount = 0
 		max_distance = 0
 		possible_pickups = []
-		for b in building.settlement.buildings:
+		
+		for b in self.building.settlement.buildings:
+			# maybe use is instead of = here
+			if b == self.building:
+				continue
+			from game.world.building.producer import Producer
 			if isinstance(b, Producer):
 				# check if building produces one of the needed_res and if it has some available
 				for res in needed_res:
-					if res in b.prod_res.keys():
+					if res in b.prod_res:
 						# check if another carriage is already on the way for same res
 						for carriage in b.pickup_carriages:
 							if carriage.target[1] == res:
 								break
-						else:
-							continue
 						stored = b.inventory.get_value(res)
 						if stored > 0:
-							distance = math.sqrt(((pickup[0].x - self.building.x)**2) + ((pickup[0].y - self.building.y)))
+							distance = math.sqrt(((b.x - self.building.x)**2) + ((b.y - self.building.y))**2)
 							if distance > self.building.radius:
 								break
 							if stored > max_amount:
@@ -97,12 +104,11 @@ class Carriage(Unit):
 							if distance > max_distance:
 								max_distance = distance
 							possible_pickups.append([b, res, stored, distance, 0])
-				else:
-					continue
 							
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
-			return self.search_pickup(min)
+			print 'CAR: NO POSSIBLE FOR',needed_res
+			return self.search_job(min+1)
 							
 		# calculate relative values to max for decision making
 		max_rating = [0, None]
@@ -117,8 +123,8 @@ class Carriage(Unit):
 		self.target = [max_rating[1][0], max_rating[1][1], 0]
 		self.target[2] = self.target[0].inventory.get_value(self.target[1])
 		# check for carriage size overflow
-		if self.target[2] > self.size:
-			self.target[2] = self.size
+		if self.target[2] > self.inventory.size:
+			self.target[2] = self.inventory.size
 		# check for home building storage size overflow
 		if self.target[2] > (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1])):
 			self.target[2] = (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1]))
@@ -129,12 +135,16 @@ class Carriage(Unit):
 		##       and ensure there, that the space for the resources,
 		##       which the carriage gets, isn't filled up
 		
+		print 'CAR: GETTING',self.target
 		return True
 			
 	def reached_pickup(self):
 		"""Called when the carriage reaches target building
 		"""
-		pickup_amount = self.target[0].pickup_resources(self.target[1], self.size)
+		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
+		# maybe remove pickup_amount and replace it with self.target[2]
+		print "ACCTUAL PICUP", pickup_amount
+		#assert(pickup_amount == self.target[2])
 		self.inventory.alter_inventory(self.target[1], pickup_amount)
 		self.target[0].pickup_carriages.remove(self)
 		self.move(self.building.x, self.building.y, self.reached_home)
@@ -144,13 +154,15 @@ class Carriage(Unit):
 		"""
 		self.building.inventory.alter_inventory(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], -self.target[2])
-		assert(self.get_size(self.target[1]) == 0)
-		self.target.clear()
-		self.start()
+		assert(self.inventory.get_value(self.target[1]) == 0)
+		# check if this cleanup is alright
+		# this is also done this way somewhere else
+		self.target = []
+		self.send()
 			
-	def start(self):
+	def send(self):
 		"""Sends carriage on it's way"""
 		if not self.search_job():
-			game.main.session.scheduler.add_new_object(self.start, (self, game.main.session.timer.ticks_per_second / 2))
+			game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*3)
 			
 	

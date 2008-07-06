@@ -26,18 +26,36 @@ import game.main
 class Consumer(object):
 	"""Class used for buildings that need some resource
 	
-	Has to be inherited by a building
+	Has to be inherited by a building that also inherits from producer
 	This includes e.g. lumberjack, weaver, storages
 	"""
 	def __init__(self):
 		"""
 		"""
-		self.consumed_res = []
-		consumed_resources = game.main.db("SELECT resource, storage_size FROM consumation WHERE building = ?", self.id)
-		for (res, size) in consumed_resources:
-			self.inventory.addSlot(res, size)
-			self.consumed_res.append(res)
+
+		# for now:
+		try: a = self.inited
+		except:
+			self.inited = True
+			print 'CONSUMER FIRST INIT', self
+		else:
+			print "CONSUMER DOUBLE INIT ATTEMPT",self
+			return
+		
+		self.consumation = {}
+		result = game.main.db("SELECT rowid FROM production_line where building = ?", self.id);
+		for (production_line,) in result:
+			self.consumation[production_line] = []
 			
+			consumed_resources = game.main.db("select resource, storage_size from storage where rowid in (select resource from production where production_line = ? and amount <= 0);",production_line)
+			for (res, size) in consumed_resources:
+				self.inventory.addSlot(res, size)
+				self.consumation[production_line].append(res)
+			
+		print 'ADDIN CAR FOR', self.id
 		self.local_carriages.append(game.main.session.entities.units[2](6, self))
 		
+		
+	def get_needed_resources(self):
+		return self.consumation[self.active_production_line];
 		

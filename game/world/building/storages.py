@@ -38,11 +38,6 @@ class StorageBuilding(Building, Producer, Consumer):
 		Producer.__init__(self)
 		Consumer.__init__(self)
 		
-		resources = game.main.db("SELECT rowid FROM ressource")
-		for (res,) in resources:
-			self.inventory.addSlot(res, 30)
-			self.consumed_res.append(res)
-			
 		# add extra carriage
 		self.local_carriages.append(game.main.session.entities.units[2](6, self))
 			

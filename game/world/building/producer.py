@@ -33,68 +33,93 @@ class Producer(object):
 		"""
 		super(Producer, self).__init__()
 		
-		# produced resources: (production is enabled by default)
-		self.prod_res = {}
-		productions = game.main.db("SELECT resource, time, storage_size FROM production WHERE building = ?", self.id)
-		for (res, time, size) in productions:
-			self.prod_res[res] = (time, True)
-			self.inventory.addSlot(res, size)
+		# list of produced resource
+		# this is rather a shortcut, this info is also stored 
+		# indirectly in self.prodcution
+		self.prod_res = []
+		# infos about production
+		self.production = {}
+		
+		result = game.main.db("SELECT rowid, time FROM production_line where building = ?", self.id);
+		for (prod_line, time) in result:
+			self.production[prod_line] = {}
+			self.production[prod_line]['res'] = {}
+			self.production[prod_line]['time'] = time
 			
-		# production ratios:
-		self.prod_ratios = {}
-		for res in self.prod_ratios.keys():
-			prod_ratios = game.main.db("SELECT (SELECT resource FROM consumation where consumation.rowid = production_ratio.consumation) as raw_material, ratio FROM production_ratio WHERE production_ratio.production = (SELECT rowid FROM production WHERE building = ? AND resource = ?", self.id , res)
-			for (raw_material, ratio) in prod_ratios:
-				self.prod_ratio[res] = (raw_material, ratio)
+			prod_infos = game.main.db("SELECT \
+			(SELECT storage.resource FROM storage WHERE storage.rowid = production.resource) as resource, \
+			(SELECT storage.storage_size FROM storage WHERE storage.rowid = production.resource) as storage_size, \
+			amount \
+			FROM production WHERE production_line = ?", prod_line)
+			for (resource, storage_size, amount) in prod_infos:
+				if amount > 0: # acctually produced res
+					self.prod_res.append(resource)
+					self.inventory.addSlot(resource, storage_size)
+					if not resource in self.prod_res:
+						self.prod_res.append(resource)
+				if amount != 0: # produced or consumed res
+					self.production[prod_line]['res'][resource] = amount
+		
+		print 'PRODUCTION OF',self.id, self.production
+				
+		## TODO: GUI-interface for changing active production line
+		if len(self.production) == 0:
+			self.active_production_line = -1
+		else:
+			self.active_production_line = min(self.production.keys())
+		
+		self._current_production = 0
 				
 		# save references to carriages that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this carriages
 		self.pickup_carriages = []
 
-	def start(self):
-		"""Starts the object. Overrides the standart Building.start() methode.
-		"""
-		# run self.tick every tick (NOTE: this should be discussed)
-		game.main.session.scheduler.add_new_object(self.tick, self, 1, -1)
+		# run self.tick every second tick (NOTE: this should be discussed)
+		game.main.session.scheduler.add_new_object(self.tick, self, 2, -1)
 		
-	def stop_production(self, res_id, stop = True):
-		""" Stops or starts the production
-		
-		Use 'stop_production(res_id, False)' for starting
-		"""
-		self.prod_res[res_id] = not stop
-
 	def tick(self):
 		"""Called by the ticker, to produce goods.
 		"""
+		# check if production is disabled
+		if self.active_production_line == -1:
+			return
 		
-		self.current_production += 1
-		for res in self.prod_res.keys():
-			if self.prod_res[res][1] and self.current_production % self.prod_res[res][0] == 0:
-				# time to produce res
-				
+		# check if building is in storage mode or is a storage
+		if self.production[self.active_production_line]['time'] == 0:
+			return
+		
+		self._current_production += 1
+		if self.active_production_line != -1 and (self._current_production % (self.production[self.active_production_line]['time']) == 0):
+			# time to produce res
+			for res in self.production[self.active_production_line]['res'].items():
 				# check for needed resources
-				for raw_material, ratio in self.prod_ratios[res]:
-					if self.inventory.get_value(raw_material) < 1/ratio:
-						# missing raw_material
-						break
-				else:
-					continue
+				if res[1] < 0:
+					if self.inventory.get_value(res[0]) + res[1] < 0:
+						# missing res res[0]
+						return
 				
 				# check for storage capacity
-				if self.inventory.get_value(res) == self.get_size(res):
-					continue
+				else:
+					if self.inventory.get_value(res[0]) == self.inventory.get_size(res[0]):
+						# no space for res[0]
+						return
 				
-				# produce 1 res and remove raw_material
-				self.inventory.alter_inventory(res, 1)
-				for raw_material, ratio in self.prod_ratios[res]:
-					self.inventory.alter_inventory(raw_material, -(1/ratio))
-					
-	def pickup_resources(self, res):
+			# everything ok, acctual production:
+			for res in self.production[self.active_production_line]['res'].items():
+				self.inventory.alter_inventory(res[0], res[1])
+				
+				#debug:
+				if res[1] >0: print "PRODUCING", res[0], "IN", self.id
+				
+				
+	def pickup_resources(self, res, max_amount):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
 		@param res: int ressouce id.
+		@param max_amount: int maximum resources that are picked up
 		@return: int number of ressources."""
-		pickup_amount = self.inventory.get_value(res)
-		self.inventory.alter_inventory(res, -pickup_amount)
-		return pickup_amount
+		picked_up = self.inventory.get_value(res)
+		if picked_up > max_amount:
+			picked_up = max_amount
+		self.inventory.alter_inventory(res, -picked_up)
+		return picked_up
