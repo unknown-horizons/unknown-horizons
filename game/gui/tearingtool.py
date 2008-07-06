@@ -46,8 +46,8 @@ class TearingTool(NavigationTool):
 		game.main.onEscape = self.onEscape
 
 	def end(self):
-		super(TearingTool, self).end()
 		game.main.onEscape = lambda : None
+		super(TearingTool, self).end()
 
 	def mouseDragged(self, evt):
 		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)

@@ -53,10 +53,9 @@ class livingObject(object):
 		pass
 
 	def end(self):
+		for p in self.__dict__.keys()[:]:
+			delattr(self, p)
 		self._is_ended = True
-		for p in self.__dict__.values():
-			if isinstance(p, livingProperty):
-				print "Warning: Object %s is being ended but living properties still hold %d values." % (repr(self), len(p.values))
 
 	def __del__(self):
 		if not (hasattr(self, '_is_ended') and self._is_ended):

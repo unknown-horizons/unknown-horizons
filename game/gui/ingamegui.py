@@ -151,8 +151,6 @@ class IngameGui(livingObject):
 		self.gui['branch_office'].position = self.gui['build'].position
 
 	def end(self):
-		super(IngameGui, self).end()
-
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : lambda : None
 		})
@@ -186,7 +184,11 @@ class IngameGui(livingObject):
 			'rotateRight' : lambda : None,
 			'rotateLeft' : lambda : None
 		})
+		for w in self.gui.values():
+			if w._parent is None:
+				w.hide()
 		self.message_widget = None
+		super(IngameGui, self).end()
 
 	def status_set(self, label, value):
 		"""Sets a value on the status bar.

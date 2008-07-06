@@ -44,8 +44,8 @@ class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 		self.commandbuffer = ''
 
 	def end(self):
-		super(MainListener, self).end()
 		game.main.fife.eventmanager.removeKeyListener(self)
+		super(MainListener, self).end()
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()

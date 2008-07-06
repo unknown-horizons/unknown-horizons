@@ -33,8 +33,8 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 		self.keysPressed = []
 
 	def end(self):
-		super(IngameKeyListener, self).end()
 		game.main.fife.eventmanager.removeKeyListener(self)
+		super(IngameKeyListener, self).end()
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
