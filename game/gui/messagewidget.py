@@ -72,7 +72,7 @@ class MessageWidget(object):
 
 	def tick(self):
 		"""Check wether a message is old enough to be put into the archives"""
-		print 'tick'
+		#print 'tick'
 		changed = False
 		for item in self.active_messages:
 			item.display -= 1

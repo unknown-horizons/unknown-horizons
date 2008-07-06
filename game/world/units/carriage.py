@@ -51,7 +51,7 @@ class Carriage(Unit):
 		@param already_scanned_min: all values smaller than this are not scanned
 		@return: bool wether pickup was found
 		"""
-		print 'SEARCH_JOB IN',self.building.id
+		#print 'SEARCH_JOB IN',self.building.id,"CAR", self.id
 		min = 10000
 		# scan for resources, where more then the already scanned tons are stored
 		# and less then the current minimum
@@ -72,7 +72,7 @@ class Carriage(Unit):
 		
 		# if none found, no pickup available
 		if len(needed_res) == 0:
-			print 'CAR: NO needed res w min', min
+			#print 'CAR: NO needed res w min', min
 			return False
 	
 		# search for available pickups for needed_res
@@ -97,6 +97,7 @@ class Carriage(Unit):
 						stored = b.inventory.get_value(res)
 						if stored > 0:
 							distance = math.sqrt(((b.x - self.building.x)**2) + ((b.y - self.building.y))**2)
+							print "DIST to",b.id,"IS",distance
 							if distance > self.building.radius:
 								break
 							if stored > max_amount:
@@ -107,7 +108,7 @@ class Carriage(Unit):
 							
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
-			print 'CAR: NO POSSIBLE FOR',needed_res
+			#print 'CAR: NO POSSIBLE FOR',needed_res
 			return self.search_job(min+1)
 							
 		# calculate relative values to max for decision making
@@ -135,7 +136,7 @@ class Carriage(Unit):
 		##       and ensure there, that the space for the resources,
 		##       which the carriage gets, isn't filled up
 		
-		print 'CAR: GETTING',self.target
+		#print 'CAR: GETTING',self.target
 		return True
 			
 	def reached_pickup(self):
@@ -143,7 +144,7 @@ class Carriage(Unit):
 		"""
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
 		# maybe remove pickup_amount and replace it with self.target[2]
-		print "ACCTUAL PICUP", pickup_amount
+		#print "ACCTUAL PICUP", pickup_amount
 		#assert(pickup_amount == self.target[2])
 		self.inventory.alter_inventory(self.target[1], pickup_amount)
 		self.target[0].pickup_carriages.remove(self)
