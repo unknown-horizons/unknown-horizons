@@ -22,3 +22,9 @@
 class Point(object):
 	def __init__(self, x, y):
 		self.x, self.y = x, y
+
+	def distance(self, other):
+		if isinstance(other, Point):
+			return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+		else:
+			return other.distance(self)

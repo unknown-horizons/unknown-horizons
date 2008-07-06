@@ -40,3 +40,11 @@ class Rect(object):
 			self.left = min(args[0], args[2])
 			self.right = max(args[0], args[2])
 			self.bottom = max(args[1], args[3])
+
+	def distance(self, other):
+		if isinstance(other, Point):
+			return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
+		elif isinstance(other, Rect):
+			return 0
+		else:
+			return other.distance(self)
