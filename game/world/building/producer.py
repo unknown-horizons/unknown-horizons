@@ -122,4 +122,10 @@ class Producer(object):
 		if picked_up > max_amount:
 			picked_up = max_amount
 		self.inventory.alter_inventory(res, -picked_up)
+		self.restart_animation()
 		return picked_up
+	
+	def restart_animation(self):
+		"""This is overwritten by buildings, that have an animation
+		"""
+		pass

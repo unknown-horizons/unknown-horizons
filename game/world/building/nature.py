@@ -19,8 +19,38 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-#from building import Building
-#from producer import Producer
-#
-#class Tree(Building, Producer):
-#	pass
+from building import Building
+from production import PrimaryProducer
+import game.main
+
+class GrowingBuilding(PrimaryProducer):
+	""" Class for stuff that grows, such as trees
+	"""
+	def __init__(self, x, y, owner, instance = None):
+		PrimaryProducer.__init__(self, x, y, owner, instance)
+		# assumption: GrowingBuildings can only have one production line
+		actions = game.main.db("SELECT action FROM action WHERE object = ? AND action != \"default\"", self.id)
+		self.actions = []
+		for (a,) in actions:
+			self.actions.append(str(a))
+		# the interval has to be int, an amount of ticks
+		# this may cause, that the animation is changed a few ticks
+		# before or after the building produces
+		
+		self.restart_animation()
+		
+	def update_animation(self):
+		""" Executes next action """
+		action = self.cur_action.next()
+		self._instance.act(action, self._instance.getLocation(), True)
+		
+	def restart_animation(self):
+		""" Starts animation from the beginning
+		
+		Useful if e.g. a tree is cut down
+		"""
+		self.cur_action = iter(self.actions)
+		interval = int(round( self.production[self.active_production_line]['time'] / len(self.actions) ))
+		game.main.session.scheduler.add_new_object(self.update_animation, self, interval, len(self.actions))
+		
+		

@@ -24,27 +24,27 @@ from game.world.building.consumer import Consumer
 from game.world.building.producer import Producer
 from game.world.storage import Storage
 
-class PrimaryProducer(Building, Producer):
+class DummyProducer(Building, Producer):
+	""" Class for internal use in this file only. """
+	def __init__(self, x, y, owner, instance = None):
+		self.local_carriages = []
+		self.inventory = Storage()
+		Building.__init__(self, x, y, owner, instance)
+		Producer.__init__(self)
+		
+class PrimaryProducer(DummyProducer):
 	"""Class used for primary production buildings, e.g. tree
 	
 	These object produce something out of nothing, without
 	requiring any raw material
 	"""
-	def __init__(self, x, y, owner, instance = None):
-		self.local_carriages = []
-		self.inventory = Storage()
-		Building.__init__(self, x, y, owner, instance)
-		Producer.__init__(self)
 
-class SecondaryProducer(Building, Producer, Consumer):
+class SecondaryProducer(DummyProducer, Consumer):
 	"""Class used for secondary production buildings, e.g. lumberjack, weaver
 	
 	These object turn resources into something else
 	"""
 	def __init__(self, x, y, owner, instance = None):
-		self.local_carriages = []
-		self.inventory = Storage()
-		Building.__init__(self, x, y, owner, instance)
-		Producer.__init__(self)
+		DummyProducer.__init__(self, x, y, owner, instance)
 		Consumer.__init__(self)
 		
