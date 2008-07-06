@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import Point
+from point import Point
 
 class Rect(object):
 	def __init__(self, *args):
