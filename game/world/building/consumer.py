@@ -57,5 +57,8 @@ class Consumer(object):
 		
 		
 	def get_needed_resources(self):
-		return self.consumation[self.active_production_line];
+		if self.active_production_line == -1:
+			return []
+		else:
+			return self.consumation[self.active_production_line];
 		
