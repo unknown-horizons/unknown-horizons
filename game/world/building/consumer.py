@@ -32,16 +32,6 @@ class Consumer(object):
 	def __init__(self):
 		"""
 		"""
-
-		# for now:
-		try: a = self.inited
-		except:
-			self.inited = True
-			print 'CONSUMER FIRST INIT', self
-		else:
-			print "CONSUMER DOUBLE INIT ATTEMPT",self
-			return
-		
 		self.consumation = {}
 		result = game.main.db("SELECT rowid FROM production_line where building = ?", self.id);
 		for (production_line,) in result:
@@ -52,8 +42,7 @@ class Consumer(object):
 				self.inventory.addSlot(res, size)
 				self.consumation[production_line].append(res)
 			
-		print 'ADDIN CAR FOR', self.id
-		self.local_carriages.append(game.main.session.entities.units[2](6, self))
+		self.local_carriages.append(game.main.session.entities.units[2](self))
 		
 		
 	def get_needed_resources(self):

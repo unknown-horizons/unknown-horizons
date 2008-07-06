@@ -29,12 +29,12 @@ import game.main
 class Carriage(Unit):
 	"""A Carriage that gets pickups for buildings
 	"""
-	def __init__(self, size, building):
+	def __init__(self, building, slots = 1, size = 6):
 		"""
 		@param size: the size of the storage in the carriage
 		@param building: the building that the carriage works for. Has to be instance of Consumer.
 		"""
-		self.inventory = ArbitraryStorage(1, size)
+		self.inventory = ArbitraryStorage(slots, size)
 		self.building = building
 		# this makes cariage position _in_ the building
 		Unit.__init__(self, self.building.x, self.building.y)

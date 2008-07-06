@@ -39,7 +39,7 @@ class StorageBuilding(Building, Producer, Consumer):
 		Consumer.__init__(self)
 		
 		# add extra carriage
-		self.local_carriages.append(game.main.session.entities.units[2](6, self))
+		self.local_carriages.append(game.main.session.entities.units[2](self))
 			
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

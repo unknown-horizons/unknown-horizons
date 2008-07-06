@@ -31,8 +31,6 @@ class Producer(object):
 	def __init__(self):
 		"""
 		"""
-		super(Producer, self).__init__()
-		
 		# list of produced resource
 		# this is rather a shortcut, this info is also stored 
 		# indirectly in self.prodcution
@@ -60,8 +58,6 @@ class Producer(object):
 				if amount != 0: # produced or consumed res
 					self.production[prod_line]['res'][resource] = amount
 		
-		print 'PRODUCTION OF',self.id, self.production
-				
 		## TODO: GUI-interface for changing active production line
 		if len(self.production) == 0:
 			self.active_production_line = -1
