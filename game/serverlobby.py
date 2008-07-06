@@ -20,13 +20,10 @@
 # ###################################################
 
 import game.main
-from fife import Color
+from game.util.color import Color
 from game.network import MPPlayer, ClientConnection, ServerConnection
 from game.packets import *
 
-
-# TODO: serverlobby doesn't get deleted
-# the problem lies in main.(join|create)Server
 
 class ServerLobby(object):
 	"""Manages the data for the serverlobby
@@ -39,10 +36,6 @@ class ServerLobby(object):
 
 	def __init__(self, gui):
 		self.gui = gui
-
-		self.colors = {}
-		for (name, r, g, b, alpha) in game.main.db("SELECT name, red, green, blue, alpha from colors"):
-			self.colors[name] = Color(r,g,b,alpha)
 
 		game.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
 		#game.main.fife.pump.append(self._update_gui)
@@ -60,19 +53,17 @@ class ServerLobby(object):
 		o = game.main.connection.mpoptions
 
 		self.gui.distributeInitialData({
-			'playerlist' : [ player.name for player in o['players'] ],
+			'playerlist' : o['players'],
 		})
 
 		if len(o['players']) > 0: # just display colors when playerlist is received
 			self.gui.distributeInitialData({
 				# display colors that are not taken by a player
-				# try to write this in one line in c++ ;)
-				'playercolors' : [ i for i in self.colors.keys() if self.colors[i] not in [ j.color for j in o['players'] if j.color != -1 ] ]
+				'playercolors' : [ i.name for i in Color if i not in [ j.color for j in o['players'] if j.color != None ] ]
 			})
-
+			
 		if not o['bots'] is None:
 			self.gui.distributeData({'bots' : o['bots']})
-
 
 class MasterServerLobby(ServerLobby):
 	"""Serverlobby from the view of the game server
@@ -99,7 +90,9 @@ class MasterServerLobby(ServerLobby):
 		o = game.main.connection.mpoptions
 		o['slots'] = self.gui.collectData('server_slots')+2
 
-		game.main.connection.local_player.name, game.main.connection.local_player.color, o['bots'] = self.gui.collectData('playername','playercolor', 'bots')
+		game.main.connection.local_player.name = self.gui.collectData('playername') 
+		game.main.connection.local_player.color = Color[self.gui.collectData('playercolor')+1] 
+		o['bots'] = self.gui.collectData('bots')
 
 		# sanity check for bot count
 		if o['bots'] > (o['slots'] - len(o['players'])):
@@ -122,7 +115,6 @@ class ClientServerLobby(ServerLobby):
 		
 
 	def update_gui(self):
-		newName, newColor =  self.gui.collectData('playername','playercolor')
 		o = game.main.connection.mpoptions
 		self.gui.distributeInitialData({
 			'bots' : [] if o['bots'] is None else [o['bots']],
@@ -135,12 +127,14 @@ class ClientServerLobby(ServerLobby):
 			'server_slots' : 0,
 			'maplist' : o['selected_map']
 		})
+		
+		newName = self.gui.collectData('playername') 
+		newColor = Color[self.gui.collectData('playercolor')+1]
 
 		if game.main.connection.local_player.name != newName or \
 			game.main.connection.local_player.color != newColor:
 				game.main.connection.local_player.name = newName
 				game.main.connection.local_player.color = newColor
 				game.main.connection.sendToServer(LobbyPlayerModifiedPacket(None, None, game.main.connection.local_player))
-
 
 

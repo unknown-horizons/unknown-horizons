@@ -6,14 +6,16 @@ We should probably keep it synchronised, for consistency.
 -->
 <Container size="1024,768" >
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
-	<HBox position="100,100" min_size="0,400">
+	<HBox position="100,40" min_size="0,400">
 		<VBox>
 			<Label text="Player:" base_color="40, 40, 40"/>
 			<Label text="Color:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
 			<TextBox name="playername" text="unknown player" size="150,16" base_color="40, 40, 40"/>
-			<DropDown name="playercolor" min_size="120,0" base_color="40, 40, 40"/>
+			<VBox min_size="600,600"> <!-- this huge size should give the dropdown enough space, but it doesn't work -->
+				<DropDown name="playercolor" min_size="120,0" base_color="40, 40, 40"/>
+			</VBox>
 		</VBox>
 	</HBox>
 
@@ -27,12 +29,22 @@ We should probably keep it synchronised, for consistency.
 	</HBox>
 
 	<ScrollArea name="maparea" size="350,500"  horizontal_scrollbar="0" position="500,150">
-		<ListBox name="maplist" min_size="100,600" />
+		<ListBox name="maplist" min_size="350,600" />
 	</ScrollArea>
 
-	<ScrollArea name="playerarea" size="350,200"  horizontal_scrollbar="0" position="80,320">
+	<ScrollArea name="playerarea" size="350,200"  horizontal_scrollbar="0" position="60,140">
 		<ListBox name="playerlist" min_size="100,200" />
 	</ScrollArea>
+	
+	<ScrollArea name="chatarea" size="350,250" horizontal_scrollbar="0" position="60,370">
+		<ListBox name="chatlounge" min_size="350,800"/>
+	</ScrollArea>
+	
+	<HBox position="60,650" background_color="200,0,0">
+		<TextBox name="chatinput" text="chat" min_size="300,16" base_color="40, 40, 40"/>
+		<Button name="chatbutton" text="chat" base_color="40, 40, 40"/>
+	</HBox>
+	
 
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startMulti" position="900,700" />

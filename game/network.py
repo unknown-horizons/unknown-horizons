@@ -39,6 +39,7 @@ class Socket(object):
 	@param port: the port to listen on or 0 for auto choosing a port
 	"""
 	def __init__(self, port = 0):
+		## TODO: use ext_scheduler for socket
 		if sys.argv[0].lower().endswith('openanno.py'):
 			game.main.fife.pump.append(self._pump)
 		self._socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_UDP)
@@ -112,8 +113,14 @@ class MPPlayer(object):
 	"""
 	def __init__(self, address = None, port = None):
 		self.address, self.port = address, port 
-		self.name, self.color, self.team = "unknown player", -1, None
+		self.name, self.color, self.team = "unknown player", None, None
 		self.ready = False
+		
+	def __str__(self):
+		playerstr = self.name
+		if self.color is not None:
+			playerstr += "(%s)" % self.color.name
+		return playerstr
 
 
 class Connection(object):

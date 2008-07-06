@@ -96,8 +96,10 @@ class Carriage(Unit):
 								break
 						stored = b.inventory.get_value(res)
 						if stored > 0:
-							distance = math.sqrt(((b.x - self.building.x)**2) + ((b.y - self.building.y))**2)
-							print "DIST to",b.id,"IS",distance
+							distance = math.sqrt( \
+								(( (b.x+b.size[0]/2) - (self.building.x+self.building.size[0]/2) )**2) + \
+								(( (b.y+b.size[1]/2) - (self.building.y+self.building.size[1]/2) )**2) \
+								)
 							if distance > self.building.radius:
 								break
 							if stored > max_amount:

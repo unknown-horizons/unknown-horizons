@@ -212,6 +212,7 @@ class LANServerList(ServerList):
 		for server in self:
 			server.timeLastQuery = time.time()
 		self._request('255.255.255.255', game.main.settings.network.port)
+		#self._request('192.168.2.255', game.main.settings.network.port)
 
 	def _response(self, packet):
 		"""overwritten function of the base class, ensures that the server is in the list when a packet is received

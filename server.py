@@ -24,6 +24,10 @@
 from game.network import Socket
 from game.packets import *
 
+
+## TODO: create cmdline interface for serverconnection
+
+
 def receive(packet):
 	if isinstance(packet, QueryPacket):
 		socket.send(InfoPacket(packet.address, packet.port, 'demo', 2, 0, 8))

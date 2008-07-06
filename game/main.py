@@ -22,7 +22,7 @@
 import os.path
 import glob
 import shutil
-from fife import Color
+from game.util.color import Color
 from game.dbreader import DbReader
 from game.engine import Fife
 from game.settings import Settings
@@ -204,7 +204,6 @@ def showSingle(showSaved = False):
 	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.stylize('menu')
 
-	# create eventMap
 	eventMap = {
 		'cancel'   : showMain,
 		'okay'     : startSingle,
@@ -219,16 +218,13 @@ def showSingle(showSaved = False):
 	# distribute data
 	(gui.files, display) = getMaps(showSaved)
 
-	gui.colors = {}
-	for (name, r, g, b, alpha) in db("SELECT name, red, green, blue, alpha from colors"):
-		gui.colors[name] = Color(r,g,b,alpha)
-
 	gui.distributeInitialData({
 		'maplist' : display,
-		'playercolor' : gui.colors.keys()
+		'playercolor' : [ i.name for i in Color ]
 	})
 	gui.distributeData({
-		'showNew' : not showSaved, 'showLoad' : showSaved,
+		'showNew' : not showSaved, 
+		'showLoad' : showSaved,
 		'playercolor' : 0
 	})
 
@@ -250,7 +246,7 @@ def startSingle():
 
 	map_file = gui.files[map_id]
 	playername = gui.collectData('playername')
-	playercolor = gui.colors.values()[gui.collectData('playercolor')]
+	playercolor = Color[gui.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
 
 	if gui is not None:
 		gui.hide()
@@ -291,8 +287,6 @@ def showMulti():
 		"""
 		"""
 		global gui
-		print 'exit'
-		print gui.serverList
 		gui.serverList.end()
 		gui.serverList = None
 		showMain()

@@ -5,16 +5,24 @@
 ##################################################################
 [project attributes]
 proj.directory-list = [{'dirloc': loc('game'),
-                        'excludes': (),
+                        'excludes': [u'ext/simplejson'],
                         'filter': 'Python Files',
                         'include_hidden': 0,
                         'recursive': 1,
                         'watch_for_changes': 1},
                        {'dirloc': loc('.'),
-                        'excludes': [u'content'],
+                        'excludes': [u'content',
+                                     u'development',
+                                     u'editor'],
                         'filter': 'Python Files',
                         'include_hidden': 0,
                         'recursive': 1,
+                        'watch_for_changes': 1},
+                       {'dirloc': loc('content/gui'),
+                        'excludes': (),
+                        'filter': '*',
+                        'include_hidden': 0,
+                        'recursive': 0,
                         'watch_for_changes': 1}]
 proj.file-type = 'shared'
 proj.main-file = loc('openanno.py')
