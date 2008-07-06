@@ -45,6 +45,6 @@ class Rect(object):
 		if isinstance(other, Point):
 			return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
 		elif isinstance(other, Rect):
-			return 0
+			return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 		else:
 			return other.distance(self)
