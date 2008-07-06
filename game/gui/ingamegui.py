@@ -147,6 +147,8 @@ class IngameGui(livingObject):
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : self.ship_build
 		})
+		self.gui['branch_office'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/branch_office.xml')
+		self.gui['branch_office'].position = self.gui['build'].position
 
 	def end(self):
 		super(IngameGui, self).end()
@@ -220,6 +222,9 @@ class IngameGui(livingObject):
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
 		self.gui['ship'].show()
+
+	def show_branch_office(self, branch_office):
+		self.gui['branch_office'].show()
 
 	def _build(self, building_id):
 		"""Calls the games buildingtool class for the building_id.

@@ -46,3 +46,18 @@ class StorageBuilding(Building, Producer, Consumer):
 		# add extra carriage
 		self.local_carriages.append(game.main.session.entities.units[2](6, self))
 			
+	def select(self):
+		"""Runs neccesary steps to select the unit."""
+		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		for tile in self.island.grounds:
+			if tile.settlement == self.settlement:
+				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+				if tile.object is not None:
+					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+		game.main.session.ingame_gui.show_branch_office(self)
+
+	def deselect(self):
+		"""Runs neccasary steps to deselect the unit."""
+		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		game.main.session.ingame_gui.toggle_visible('branch_office')
