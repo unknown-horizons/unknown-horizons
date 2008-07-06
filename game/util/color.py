@@ -21,13 +21,29 @@
 
 import game.main
 
+class ColorIter(object):
+	def __iter__(self):
+		return self
+
+	def next(self):
+		try:
+			if hasattr(self, 'last'):
+				id = game.main.db('SELECT rowid from data.colors where rowid > ? order by rowid limit 1', self.last)[0][0]
+			else:
+				id = game.main.db('SELECT rowid from data.colors order by rowid limit 1')[0][0]
+		except:
+			raise StopIteration
+		self.last = id
+		return Color[id]
+
 class ColorMeta(type):
 	def __getitem__(cls, key):
-		r,g,b,name,id = game.main.db('SELECT red,green,blue,name,rowid from data.colors where %s = ?' % ('name' if isinstance(key, (str, unicode)) else 'rowid',), key)[0]
+		r,g,b = game.main.db('SELECT red,green,blue from data.colors where %s = ?' % ('name' if isinstance(key, (str, unicode)) else 'rowid',), key)[0]
 		c = Color(r, g, b)
-		c.name = name
-		c.id = id
 		return c
+
+	def __iter__(cls):
+		return ColorIter()
 
 class Color(object):
 	__metaclass__ = ColorMeta
@@ -42,3 +58,7 @@ class Color(object):
 			a = int(a * 255)
 		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
+		try:
+			self.name, self.id = game.main.db('SELECT name,rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
+		except:
+			pass
