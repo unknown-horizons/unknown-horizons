@@ -19,7 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import game.main
+
+class ColorMeta(type):
+	def __getitem__(cls, key):
+		r,g,b,name,id = game.main.db('SELECT red,green,blue,name,rowid from data.colors where %s = ?' % ('name' if isinstance(key, (str, unicode)) else 'rowid',), key)[0]
+		c = Color(r, g, b)
+		c.name = name
+		c.id = id
+		return c
+
 class Color(object):
+	__metaclass__ = ColorMeta
 	def __init__(self, r = 0, g = 0, b = 0, a = 255):
 		if isinstance(r, float) and r >= 0.0 and r <= 1.0:
 			r = int(r * 255)
@@ -31,9 +42,3 @@ class Color(object):
 			a = int(a * 255)
 		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
-
-Color.red = Color(255,0,0)
-Color.green = Color(0,255,0)
-Color.blue = Color(0,0,255)
-Color.black = Color(0,0,0)
-Color.white = Color(255,255,255)
