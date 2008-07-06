@@ -150,12 +150,13 @@ class Island(object):
 		@param x,y: int position used as center for the area of influence
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
-		building.island = self
+		# the lines that are commented out, were moved to UnselectableBuilding.__init__()
+		#building.island = self
 		for building.settlement in self.get_settlements(x, y):
 			self.assign_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, building.settlement)
 			break
-		else:
-			building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
+		#else:
+		#	building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
 		for xx in xrange(x, x + building.size[0]):
 			for yy in xrange(y, y + building.size[1]):
 				tile = self.get_tile(xx, yy)

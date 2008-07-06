@@ -38,6 +38,13 @@ class UnselectableBuilding(object):
 			self._instance = instance
 			game.main.session.entities.updateInstance(self._instance.getId(), self)
 		self.health = 50
+		
+		self.island = game.main.session.world.get_island(self.x, self.y)
+		settlements = self.island.get_settlements(self.x, self.y)
+		if len(settlements) == 0:
+			self.settlement = self.island.add_settlement(self.x, self.y, self.x + self.size[0] - 1, self.y + self.size[1] - 1, self.radius, owner)
+		else:
+			self.settlement = settlements[0]
 
 	def remove(self):
 		"""Removes the building"""

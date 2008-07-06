@@ -52,7 +52,8 @@ class Producer(object):
 			for (resource, storage_size, amount) in prod_infos:
 				if amount > 0: # acctually produced res
 					self.prod_res.append(resource)
-					self.inventory.addSlot(resource, storage_size)
+					if not self.inventory.hasSlot(resource):
+						self.inventory.addSlot(resource, storage_size)
 					if not resource in self.prod_res:
 						self.prod_res.append(resource)
 				if amount != 0: # produced or consumed res
@@ -106,7 +107,7 @@ class Producer(object):
 				self.inventory.alter_inventory(res[0], res[1])
 				
 				#debug:
-				if res[1] >0: print "PRODUCING", res[0], "IN", self.id
+				#if res[1] >0: print "PRODUCING", res[0], "IN", self.id
 				
 				
 	def pickup_resources(self, res, max_amount):

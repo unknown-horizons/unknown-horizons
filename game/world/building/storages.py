@@ -33,8 +33,9 @@ class StorageBuilding(Building, Producer, Consumer):
 	"""
 	def __init__(self, x, y, owner, instance = None):
 		self.local_carriages = []
-		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
+		self.inventory = self.settlement.inventory
+		#self.inventory  = Storage()
 		Producer.__init__(self)
 		Consumer.__init__(self)
 		

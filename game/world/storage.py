@@ -24,28 +24,12 @@ from game.util.stablelist import stablelist
 class Storage(object):
 	"""Class that represent a storage compartment with fixed resources slots
 	
-	Is inherited by Producer and Consumer.
+	Used e.g. by production buildings (e.g. PrimaryProducer)
 	"""
 	def __init__(self):
-		# this might be called multiple times if class is inherited 
-		# multiple times (indirectly)
-		
-		# multiple execution prevention:
-		try: self._inited
-		except AttributeError: self._inited = True
-		else: return
-		
-		# inventory: a dict with this pattern: _inventory[res_id] = (amount, size)
+		# inventory: a dict with this pattern: _inventory[res_id] = [amount, size]
 		self._inventory = {}
 		
-		# save references to carriages that are on the way to here.
-		# this ensures that the resources, that it will get, won't be taken
-		# and that the space, that the arriving resources will occupy
-		# isn't filled up
-		self.pickup_carriages = []
-		
-		# carriages owned by the building
-		self.local_carriages = []
 		
 	def addSlot(self, res_id, size):
 		""" Add the possibility to save size amount of res_id
@@ -53,6 +37,10 @@ class Storage(object):
 		@param size: maximum amount of res_id that can be stored here; -1 for infinity
 		"""
 		self._inventory[res_id] = [0, size]
+		
+	def hasSlot(self, res_id):
+		""" Returns wether slot for res_id exists"""
+		return (res_id in self._inventory.keys())
 
 	def alter_inventory(self, res_id, amount):
 		"""Alters the inventory for the resource res_id with amount.
@@ -90,14 +78,16 @@ class Storage(object):
 			value = self._inventory[res_id][0]
 			
 			# subtract/add carriage stuff
-			for carriage in self.pickup_carriages:
+			"""
+			for carriage in self.building.pickup_carriages:
 				if len(carriage.target) > 0:
 					if carriage.target[1] == res_id:
 						value -= carriage.target[2]
-			for carriage in self.local_carriages:
+			for carriage in self.building.local_carriages:
 				if len(carriage.target) > 0:
 					if carriage.target[1] == res_id:
 						value += carriage.target[2]
+			"""
 						
 			return value
 		except KeyError:

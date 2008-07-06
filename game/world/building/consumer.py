@@ -39,7 +39,8 @@ class Consumer(object):
 			
 			consumed_resources = game.main.db("select resource, storage_size from storage where rowid in (select resource from production where production_line = ? and amount <= 0);",production_line)
 			for (res, size) in consumed_resources:
-				self.inventory.addSlot(res, size)
+				if not self.inventory.hasSlot(res):
+					self.inventory.addSlot(res, size)
 				self.consumation[production_line].append(res)
 			
 		self.local_carriages.append(game.main.session.entities.units[2](self))
