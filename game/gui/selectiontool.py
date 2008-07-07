@@ -63,8 +63,10 @@ class SelectionTool(NavigationTool):
 	def mouseReleased(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-			instances = game.main.session.view.cam.getMatchingInstances(clickpoint, game.main.session.view.layers[1])
+			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
+			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else clickpoint, game.main.session.view.layers[1])
 			if len(instances) > 0: #something under cursor
+				print len(instances)
 				instance = game.main.session.entities.getInstance(instances[0].getId())
 				if not hasattr(instance, 'select'):
 					instance = None
