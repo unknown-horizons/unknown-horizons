@@ -48,27 +48,27 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 				if command == 'shift':
 					x, y = arg.split(',')
 					if x.startswith('left'):
-						x = float(x[4:]) + img.getWidth()/2
+						x = int(x[4:]) + int(img.getWidth() / 2)
 					elif x.startswith('right'):
-						x = float(x[5:]) - img.getWidth()/2
+						x = int(x[5:]) - int(img.getWidth() / 2)
 					elif x.startswith(('center', 'middle')):
-						x = float(x[6:])
+						x = int(x[6:])
 					else:
-						x = float(x)
+						x = int(x)
 					
-					if x.startswith('top'):
-						y = float(y[3:]) + img.getHeight()/2
-					elif x.startswith('bottom'):
-						y = float(y[6:]) - img.getHeight()/2
-					elif x.startswith(('center', 'middle')):
-						y = float(y[6:])
+					if y.startswith('top'):
+						y = int(y[3:]) + int(img.getHeight() / 2)
+					elif y.startswith('bottom'):
+						y = int(y[6:]) - int(img.getHeight() / 2)
+					elif y.startswith(('center', 'middle')):
+						y = int(y[6:])
 					else:
-						y = float(y)
+						y = int(y)
 
-					img.setShiftX(x)
-					img.setShiftY(y)
+					img.setXShift(x)
+					img.setYShift(y)
 				elif command == 'cut':
-					loc = fife.ImageLocation('')
+					loc = fife.ImageLocation('asdf')
 					loc.setParentSource(img)
 					x, y, w, h = arg.split(',')
 					
@@ -81,11 +81,11 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					else:
 						x = int(x)
 					
-					if x.startswith('top'):
+					if y.startswith('top'):
 						y = int(y[3:])
-					elif x.startswith('bottom'):
+					elif y.startswith('bottom'):
 						y = int(y[6:]) - img.getHeight()
-					elif x.startswith(('center', 'middle')):
+					elif y.startswith(('center', 'middle')):
 						y = int(y[6:]) + int(img.getHeight() / 2)
 					else:
 						y = int(y)
@@ -102,14 +102,15 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					if h.startswith('top'):
 						h = int(h[3:]) - y
 					elif h.startswith('bottom'):
-						h = int(h[6:]) - img.getHeight() - y
+						h = int(h[6:]) + img.getHeight() - y
 					elif h.startswith(('center', 'middle')):
 						h = int(h[6:]) + int(img.getHeight() / 2) - y
 					else:
 						h = int(h)
-					
-					loc.setShiftX(x)
-					loc.setShiftY(y)
+
+					print x,y,w,h
+					loc.setXShift(x)
+					loc.setYShift(y)
 					loc.setWidth(w)
 					loc.setHeight(h)
 
