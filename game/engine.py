@@ -37,15 +37,85 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		"""
 		@param location:
 		"""
-		print "Loading animation:", location.getFilename()
+		commands = location.getFilename().split(':')
+		id = commands.pop(0)
+		commands = zip(commands[0::2], commands[1::2])
+		print "Loading animation:", id
 		ani = fife.Animation()
-		ani.setActionFrame(0)
-		for (file,) in game.main.db("SELECT file from data.animation where animation_id = ?", location.getFilename()):
-			img = game.main.fife.imagepool.addResourceFromFile(str(file))
-			img = game.main.fife.imagepool.getImage(img)
-			img.setXShift(0)
-			img.setYShift(0)
+		for (file,) in game.main.db("SELECT file from data.animation where animation_id = ?", id):
+			img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromFile(str(file)))
+			for command, arg in commands:
+				if command == 'shift':
+					x, y = arg.split(',')
+					if x.startswith('left'):
+						x = float(x[4:]) + img.getWidth()/2
+					elif x.startswith('right'):
+						x = float(x[5:]) - img.getWidth()/2
+					elif x.startswith(('center', 'middle')):
+						x = float(x[6:])
+					else:
+						x = float(x)
+					
+					if x.startswith('top'):
+						y = float(y[3:]) + img.getHeight()/2
+					elif x.startswith('bottom'):
+						y = float(y[6:]) - img.getHeight()/2
+					elif x.startswith(('center', 'middle')):
+						y = float(y[6:])
+					else:
+						y = float(y)
+
+					img.setShiftX(x)
+					img.setShiftY(y)
+				elif command == 'cut':
+					loc = fife.ImageLocation('')
+					loc.setParentSource(img)
+					x, y, w, h = arg.split(',')
+					
+					if x.startswith('left'):
+						x = int(x[4:])
+					elif x.startswith('right'):
+						x = int(x[5:]) + img.getWidth()
+					elif x.startswith(('center', 'middle')):
+						x = int(x[6:]) + int(img.getWidth() / 2)
+					else:
+						x = int(x)
+					
+					if x.startswith('top'):
+						y = int(y[3:])
+					elif x.startswith('bottom'):
+						y = int(y[6:]) - img.getHeight()
+					elif x.startswith(('center', 'middle')):
+						y = int(y[6:]) + int(img.getHeight() / 2)
+					else:
+						y = int(y)
+					
+					if w.startswith('left'):
+						w = int(w[4:]) - x
+					elif w.startswith('right'):
+						w = int(w[5:]) + img.getWidth() - x
+					elif w.startswith(('center', 'middle')):
+						w = int(w[6:]) + int(img.getWidth() / 2) - x
+					else:
+						w = int(w)
+					
+					if h.startswith('top'):
+						h = int(h[3:]) - y
+					elif h.startswith('bottom'):
+						h = int(h[6:]) - img.getHeight() - y
+					elif h.startswith(('center', 'middle')):
+						h = int(h[6:]) + int(img.getHeight() / 2) - y
+					else:
+						h = int(h)
+					
+					loc.setShiftX(x)
+					loc.setShiftY(y)
+					loc.setWidth(w)
+					loc.setHeight(h)
+
+					img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromLocation(loc))
 			ani.addFrame(img, 1)
+		ani.setActionFrame(0)
 		ani.thisown = 0
 		return ani
 
