@@ -43,17 +43,16 @@ class SelectionTool(NavigationTool):
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
-			"""if do_multi:
-				if not hasattr(self, 'select_rect'):
-					self.select_rect = game.main.fife.pychan.widgets.Window(parent = None, size=(100,100))
-					self.select_rect.show()
-				self.select_rect._setX(min(self.select_begin[0], evt.getX()))
-				self.select_rect._setY(min(self.select_begin[1], evt.getY()))
-				self.select_rect._setWidth(abs(self.select_begin[0] - evt.getX()))
-				self.select_rect._setHeight(abs(self.select_begin[1] - evt.getY()))
-			elif hasattr(self, 'select_rect'):
-				self.select_rect.hide()
-				del self.select_rect"""
+			game.main.session.view.renderer['GeometricRenderer'].removeAllLines()
+			if do_multi:
+				a = fife.Point(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()))
+				b = fife.Point(max(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()))
+				c = fife.Point(max(self.select_begin[0], evt.getX()), max(self.select_begin[1], evt.getY()))
+				d = fife.Point(min(self.select_begin[0], evt.getX()), max(self.select_begin[1], evt.getY()))
+				game.main.session.view.renderer['GeometricRenderer'].addLine(a, b, 0, 255, 0)
+				game.main.session.view.renderer['GeometricRenderer'].addLine(b, c, 0, 255, 0)
+				game.main.session.view.renderer['GeometricRenderer'].addLine(d, c, 0, 255, 0)
+				game.main.session.view.renderer['GeometricRenderer'].addLine(a, d, 0, 255, 0)
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
@@ -78,6 +77,7 @@ class SelectionTool(NavigationTool):
 				if instance is not None:
 					game.main.session.selected_instance.select()
 			del self.select_begin
+			game.main.session.view.renderer['GeometricRenderer'].removeAllLines()
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:

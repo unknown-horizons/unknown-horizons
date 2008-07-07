@@ -56,8 +56,9 @@ class View(livingObject):
 
 		self.view.resetRenderers()
 		self.renderer = {}
-		for r in ('InstanceRenderer',):
+		for r in ('InstanceRenderer','GeometricRenderer'):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam)
+		self.renderer['GeometricRenderer'].setEnabled(True)
 		for r in ('GridRenderer',):
 			self.renderer[r] = self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
