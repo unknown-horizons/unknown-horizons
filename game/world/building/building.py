@@ -70,7 +70,9 @@ class UnselectableBuilding(object):
 		else:
 			instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
 			fife.InstanceVisual.create(instance)
-			instance.act(action, instance.getLocation(), True)
+			location = fife.Location(game.main.session.view.layers[1])
+			location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
+			instance.act(action, location, True)
 			return instance
 
 	@classmethod

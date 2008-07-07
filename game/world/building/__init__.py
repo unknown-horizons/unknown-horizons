@@ -57,7 +57,17 @@ class BuildingClass(type):
 			action = cls._object.createAction(str(action_id))
 			fife.ActionVisual.create(action)
 			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where object=? and action=?", cls.id, action_id):
-				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id))
+				if rotation == 45:
+					command = 'left-16,bottom+' + str(cls.size[0] * 8)
+				elif rotation == 135:
+					command = 'left-' + str(cls.size[1] * 16) + ',bottom+8'
+				elif rotation == 225:
+					command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 16) + ',bottom+' + str(cls.size[1] * 8)
+				elif rotation == 315:
+					command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
+				else:
+					command = 'left-16,bottom+8'
+				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
 
@@ -66,8 +76,8 @@ class BuildingClass(type):
 			img = game.main.fife.imagepool.addResourceFromFile(str(file))
 			visual.addStaticImage(int(rotation), img)
 			img = game.main.fife.imagepool.getImage(img)
-			shift_x = 1 + img.getWidth() / 2
-			shift_y = img.getHeight() / -2
+			shift_x = 1 + img.getWidth() / 2 //left
+			shift_y = img.getHeight() / -2 //bottom
 			#currently a bit useless
 			if rotation == 45:
 				shift_x = shift_x - 15

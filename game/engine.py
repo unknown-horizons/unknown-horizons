@@ -27,6 +27,7 @@ import game.main
 import new
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
+	unique_number = 0x123123
 	"""Loads animations from a SQLite database.
 	"""
 	def __init__(self):
@@ -39,6 +40,10 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		"""
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
+		if ',' in id:
+			id, shift_x, shift_y = id.split(',')
+		else:
+			shift_x, shift_y = None, None
 		commands = zip(commands[0::2], commands[1::2])
 		print "Loading animation:", id
 		ani = fife.Animation()
@@ -65,6 +70,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					else:
 						y = int(y)
 
+					print 'shifting',x,y
 					img.setXShift(x)
 					img.setYShift(y)
 				elif command == 'cut':
@@ -116,6 +122,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 
 					img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromLocation(loc))
 			ani.addFrame(img, 1)
+		self.__class__.unique_number += 1
 		ani.setActionFrame(0)
 		ani.thisown = 0
 		return ani
@@ -201,7 +208,7 @@ class Fife(object):
 			return
 		#start modules
 		self.log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
-		#self.log.setVisibleModules('controller')
+		#self.log.setVisibleModules('all')
 
 		self.engine.init()
 
