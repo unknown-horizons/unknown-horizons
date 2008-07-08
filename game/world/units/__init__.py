@@ -43,18 +43,18 @@ class UnitClass(type):
 			setattr(self, name, value)
 		self._loadObject()
 
-	def _loadObject(self):
+	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
-		print 'Loading unit #' + str(self.id) + '...'
-		self._object = game.main.session.view.model.createObject(str(self.id), 'unit')
-		self._object.setPather(game.main.session.view.model.getPather('RoutePather'))
-		self._object.setBlocking(False)
-		self._object.setStatic(False)
-		action = self._object.createAction('default')
-		fife.ActionVisual.create(action)
-
-		for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where unit=?", self.id):
-			anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id))
-			action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
-			action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
+		print 'Loading unit #' + str(cls.id) + '...'
+		cls._object = game.main.session.view.model.createObject(str(self.id), 'unit')
+		cls._object.setPather(game.main.session.view.model.getPather('RoutePather'))
+		cls._object.setBlocking(False)
+		cls._object.setStatic(False)
+		for (action_id,) in game.main.db("SELECT action FROM data.action where unit=? group by action", cls.id):
+			action = cls._object.createAction(str(action_id))
+			fife.ActionVisual.create(action)
+			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where unit=? and action=?", cls.id, action_id):
+				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id))
+				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
+				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
