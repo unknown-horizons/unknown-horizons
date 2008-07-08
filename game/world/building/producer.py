@@ -25,7 +25,9 @@ import game.main
 class Producer(object):
 	"""Class used for production buildings
 	
-	Has to be inherited by a building
+	# Has to be inherited by a class that provides:
+	* inventory
+	
 	This includes e.g. trees, lumberjack, weaver, storages
 	"""
 	def __init__(self):

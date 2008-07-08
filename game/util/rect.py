@@ -40,6 +40,10 @@ class Rect(object):
 			self.left = min(args[0], args[2])
 			self.right = max(args[0], args[2])
 			self.bottom = max(args[1], args[3])
+			
+	def __str__(self):
+		# nice representation for debugging purposes
+		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)
 
 	def distance(self, other):
 		if isinstance(other, Point):

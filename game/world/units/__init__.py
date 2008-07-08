@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['carriage','ship','unit']
+__all__ = ['animal','carriage','ship','unit']
 
 from game.world.units import *
 import game.main

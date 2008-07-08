@@ -20,7 +20,7 @@
 # ###################################################
 
 from building import Building
-from game.world.units.carriage import Carriage
+from game.world.units.carriage import BuildingCarriage
 import game.main
 
 class Consumer(object):
@@ -29,7 +29,7 @@ class Consumer(object):
 	Has to be inherited by a building that also inherits from producer
 	This includes e.g. lumberjack, weaver, storages
 	"""
-	def __init__(self):
+	def __init__(self, create_carriage = True):
 		"""
 		"""
 		self.consumation = {}
@@ -43,10 +43,10 @@ class Consumer(object):
 					self.inventory.addSlot(res, size)
 				self.consumation[production_line].append(res)
 			
-		self.local_carriages.append(game.main.session.entities.units[2](self))
+		if create_carriage:
+			self.local_carriages.append(game.main.session.entities.units[2](self))
 		
-		
-	def get_needed_resources(self):
+	def get_consumed_res(self):
 		if self.active_production_line == -1:
 			return []
 		else:

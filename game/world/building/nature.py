@@ -33,16 +33,18 @@ class GrowingBuilding(PrimaryProducer):
 		self.actions = []
 		for (a,) in actions:
 			self.actions.append(str(a))
-		# the interval has to be int, an amount of ticks
-		# this may cause, that the animation is changed a few ticks
-		# before or after the building produces
+		self.actions.sort()
 		
 		self.restart_animation()
 		
 	def update_animation(self):
 		""" Executes next action """
-		action = self.cur_action.next()
-		self._instance.act(action, self._instance.getLocation(), True)
+		try:
+			action = self.cur_action.next()
+			self._instance.act(action, self._instance.getLocation(), True)
+		except StopIteration:
+			# this is a quick & dirty fix, source of the bug has yet to be traced
+			pass
 		
 	def restart_animation(self):
 		""" Starts animation from the beginning
@@ -50,7 +52,12 @@ class GrowingBuilding(PrimaryProducer):
 		Useful if e.g. a tree is cut down
 		"""
 		self.cur_action = iter(self.actions)
+		self.update_animation()
+		if self.active_production_line == -1:
+			return
 		interval = int(round( self.production[self.active_production_line]['time'] / len(self.actions) ))
-		game.main.session.scheduler.add_new_object(self.update_animation, self, interval, len(self.actions))
+		loops = len(self.actions)-1
+		if loops > 0:
+			game.main.session.scheduler.add_new_object(self.update_animation, self, interval, loops)
 		
 		

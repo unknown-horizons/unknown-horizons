@@ -129,9 +129,10 @@ class IngameGui(livingObject):
 			'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
 		})
 		self.gui['build_tab2'].mapEvents({
-			'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
+			'tree' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
 			'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
-			'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8)
+			'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
+			'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10)
 		})
 		self.gui['build_tab4'].mapEvents({
 			'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),

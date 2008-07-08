@@ -23,7 +23,7 @@ from building import Building
 from game.world.building.producer import Producer
 from game.world.building.consumer import Consumer
 from game.world.storage import Storage
-from game.world.units.carriage import Carriage
+from game.world.units.carriage import BuildingCarriage
 import game.main
 
 
