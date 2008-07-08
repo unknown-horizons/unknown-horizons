@@ -144,9 +144,6 @@ class IngameGui(livingObject):
 		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
 		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
 		self.gui['ship'].position = self.gui['build'].position
-		self.gui['ship'].mapEvents({
-			'foundSettelment' : self.ship_build
-		})
 		self.gui['branch_office'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/branch_office.xml')
 		self.gui['branch_office'].position = self.gui['build'].position
 
@@ -216,13 +213,16 @@ class IngameGui(livingObject):
 		self.gui['topmain'].resizeToContent()
 		self.gui['topmain'].show()
 
-	def ship_build(self):
+	def ship_build(self, ship):
 		"""Calls the Games build_object class."""
-		game.main.session.selected_instance._instance.say('')
-		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], game.main.session.selected_instance)
+		ship._instance.say('')
+		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], ship)
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
+		self.gui['ship'].mapEvents({
+			'foundSettelment' : game.main.fife.pychan.tools.callbackWithArguments(self.ship_build, ship)
+		})
 		self.gui['ship'].show()
 
 	def show_branch_office(self, branch_office):

@@ -65,7 +65,7 @@ class Session(livingObject):
 		self.cursor = SelectionTool()
 
 		#to be (re)moved:
-		self.selected_instance = None
+		self.selected_instances = []
 
 	def end(self):
 		self.cursor = None

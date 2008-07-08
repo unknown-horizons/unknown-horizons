@@ -42,10 +42,10 @@ class Ship(Unit):
 		"""Runs neccesary steps to select the unit."""
 		self._instance.say(str(self.health) + '%', 0) # display health over selected ship
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		game.main.session.ingame_gui.show_ship(game.main.session.selected_instance) #show the gui for ships
+		game.main.session.ingame_gui.show_ship(self) #show the gui for ships
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
-		game.main.session.selected_instance._instance.say('') #remove status of last selected unit
+		self._instance.say('') #remove status of last selected unit
 		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		game.main.session.ingame_gui.toggle_visible('ship') # hide the gui for ships

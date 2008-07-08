@@ -65,19 +65,19 @@ class SelectionTool(NavigationTool):
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
 			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else clickpoint, game.main.session.view.layers[1])
+			selectable = []
 			if len(instances) > 0: #something under cursor
-				print len(instances)
-				instance = game.main.session.entities.getInstance(instances[0].getId())
-				if not hasattr(instance, 'select'):
-					instance = None
-			else:
-				instance = None
-			if game.main.session.selected_instance != instance:
-				if game.main.session.selected_instance is not None:
-					game.main.session.selected_instance.deselect()
-				game.main.session.selected_instance = instance
-				if instance is not None:
-					game.main.session.selected_instance.select()
+				for i in instances:
+					instance = game.main.session.entities.getInstance(i.getId())
+					if hasattr(instance, 'select'):
+						selectable.append(instance)
+			for instance in game.main.session.selected_instances:
+				if instance not in selectable:
+					instance.deselect()
+			for instance in selectable:
+				if instance not in game.main.session.selected_instances:
+					instance.select()
+			game.main.session.selected_instances = selectable
 			del self.select_begin
 			game.main.session.view.renderer['GeometricRenderer'].removeAllLines()
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
@@ -95,12 +95,12 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-			if game.main.session.selected_instance is not None and isinstance(game.main.session.selected_instance, Ship):
+			if (game.main.session.selected_instances) == 1 and isinstance(game.main.session.selected_instances[0], Ship):
 				target_mapcoord = game.main.session.view.cam.toMapCoordinates(clickpoint, False)
 				target_mapcoord.z = 0
 				l = fife.Location(game.main.session.view.layers[1])
 				l.setMapCoordinates(target_mapcoord)
-				game.main.session.manager.execute(Move(game.main.session.selected_instance, target_mapcoord.x, target_mapcoord.y))
+				game.main.session.manager.execute(Move(game.main.session.selected_instances[0], target_mapcoord.x, target_mapcoord.y))
 		else:
 			super(SelectionTool, self).mousePressed(evt)
 			return
