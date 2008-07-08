@@ -78,7 +78,6 @@ class NavigationTool(CursorTool):
 					game.main.session.ingame_gui.set_status_position('tools')
 					game.main.session.ingame_gui.set_status_position('bricks')
 					game.main.session.ingame_gui.set_status_position('food')
-					game.main.session.ingame_gui.set_status_position('gold')
 					game.main.session.ingame_gui.gui['status'].show()
 				else:
 					game.main.session.ingame_gui.cityname_set('')

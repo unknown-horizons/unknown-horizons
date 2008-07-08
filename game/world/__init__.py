@@ -78,6 +78,7 @@ class World(object):
 		self.players.append(self.player)
 
 		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
+		game.main.session.ingame_gui.set_status_position('gold')
 
 	def get_building(self, x, y):
 		"""Returns the building at the position x,y.

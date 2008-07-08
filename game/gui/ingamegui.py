@@ -101,6 +101,12 @@ class IngameGui(livingObject):
 			self.gui['topmain'].position[0] - self.gui['status'].size[0],
 			5
 		)
+		self.gui['status_gold'] = game.main.fife.pychan.loadXML('content/gui/status_gold.xml')
+		self.gui['status_gold'].position = (
+			self.gui['status'].position[0] - 48,
+			5
+		)
+		self.toggle_visible('status_gold')
 
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
 		self.gui['build'].stylize('menu')
@@ -193,10 +199,13 @@ class IngameGui(livingObject):
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
-		foundlabel = self.gui['status'].findChild(name=label)
+		foundlabel = self.gui['status_gold'].findChild(name=label) if label == 'gold' else self.gui['status'].findChild(name=label)
 		foundlabel._setText(value)
 		foundlabel.resizeToContent()
-		self.gui['status'].resizeToContent()
+		if label == 'gold':
+			self.gui['status_gold'].resizeToContent()
+		else:
+			self.gui['status'].resizeToContent()
 
 	def cityname_set(self, name):
 		"""Sets the city name at top center
@@ -264,7 +273,13 @@ class IngameGui(livingObject):
 
 	def set_status_position(self, resource_name):
 		icon_name = resource_name + '_icon'
-		self.gui['status'].findChild(name = resource_name).position = (
-			self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name).size[0]/2,
-			48
-		)
+		if resource_name == 'gold':
+					self.gui['status_gold'].findChild(name = resource_name).position = (
+				self.gui['status_gold'].findChild(name = icon_name).position[0] + 24 - self.gui['status_gold'].findChild(name = resource_name).size[0]/2,
+				48
+			)
+		else:
+			self.gui['status'].findChild(name = resource_name).position = (
+				self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name).size[0]/2,
+				48
+			)
