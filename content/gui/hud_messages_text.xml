@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<Container size="350,60">
-	<Label name="text" text="" position="0,0" />
+<Container size="300,100">
+	<Label name="text" text=""  wrap_text="1" max_size="300,100" position="0,0" />
 </Container>
