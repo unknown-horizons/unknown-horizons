@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
+import random
 from game.world.units.unit import Unit
 from game.world.units.carriage import BuildingCarriage
 from game.world.building.production import SecondaryProducer
@@ -55,6 +55,14 @@ class Animal(BuildingCarriage):
 	
 	def get_position(self):
 		return Point(self.unit_position[0], self.unit_position[1])
+	
+	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
+		pickups = []
+		for pickup in possible_pickups:
+			if pickup[2] > 0:
+				pickups.append(pickup)
+		choice = int(round(random.uniform(0, len(pickups))))
+		return [pickups[choice][4], pickups[choice]]
 	
 	def reached_pickup(self):
 		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second*self.__class__.grazingTime)

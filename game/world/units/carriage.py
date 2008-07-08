@@ -163,13 +163,7 @@ class BuildingCarriage(Unit):
 		assert(max_amount != 0)
 		assert(max_distance != 0)
 			
-		# calculate relative values to max for decision making
-		max_rating = [0, None]
-		for pickup in possible_pickups:
-			pickup[4] = 2 + pickup[2] / max_amount - pickup[3] / max_distance # 2+ ensures positiv value
-			if pickup[4] > max_rating[0]:
-				max_rating[0] = pickup[4]
-				max_rating[1] = pickup
+		max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
 			
 		# get pickup 
 		# save target building and res to pick up, 
@@ -183,11 +177,6 @@ class BuildingCarriage(Unit):
 			self.target[2] = (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1]))
 		self.target[0].pickup_carriages.append(self)
 		self.move(self.target[0].x, self.target[0].y, self.reached_pickup)
-		
-		## TODO: create a list in the building, that owns a carriage
-		##       and ensure there, that the space for the resources,
-		##       which the carriage gets, isn't filled up
-		
 		
 		#print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
 		#print 'CAR:', self.id, 'GETTING', self.target[0].x, self.target[0].y
@@ -221,4 +210,13 @@ class BuildingCarriage(Unit):
 		if not self.search_job():
 			game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
 			
+	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
+		""" chooses a pickup """
+		max_rating = [0, None]
+		for pickup in possible_pickups:
+			pickup[4] = 2 + pickup[2] / max_amount - pickup[3] / max_distance # 2+ ensures positiv value
+			if pickup[4] > max_rating[0]:
+				max_rating[0] = pickup[4]
+				max_rating[1] = pickup
+		return max_rating
 	
