@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<Container size="350,60">
+	<Label name="text" text="" position="0,0" />
+</Container>

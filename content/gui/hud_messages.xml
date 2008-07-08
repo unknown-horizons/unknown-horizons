@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<Container size="300,48">
+<Container size="240,48">
 	<ImageButton name="next" up_image="content/gui/images/background/oa_ingame_buttonbg_16.png" position="0,0" size="16,16" />
-	<Icon name="1" image="content/gui/images/icons/hud/build/dummy.png" position="20,0" /><ImageButton name="button_1" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="20,0" size="48,48" />
-	<Icon name="2" image="content/gui/images/icons/hud/build/dummy.png" position="70,0" /><ImageButton name="button_2" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="70,0" size="48,48" />
-	<Icon name="3" image="content/gui/images/icons/hud/build/dummy.png" position="120,0" /><ImageButton name="button_3" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="120,0" size="48,48" />
-	<Icon name="4" image="content/gui/images/icons/hud/build/dummy.png" position="170,0" /><ImageButton name="button_4" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="170,0" size="48,48" />
+	<ImageButton name="1" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="20,0" size="48,48" />
+	<ImageButton name="2" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="70,0" size="48,48" />
+	<ImageButton name="3" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="120,0" size="48,48" />
+	<ImageButton name="4" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="170,0" size="48,48" />
 	<ImageButton name="back" up_image="content/gui/images/background/oa_ingame_buttonbg_16.png" position="220,0" size="16,16" />
 </Container>

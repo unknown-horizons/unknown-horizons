@@ -21,6 +21,7 @@
 
 import game.main
 import fife
+from string import Template
 
 
 class MessageWidget(object):
@@ -34,17 +35,20 @@ class MessageWidget(object):
 		self.archive = []
 		self.widget = game.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
 		self.widget.position = (x,y)
+		self.text_widget = game.main.fife.pychan.loadXML('content/gui/hud_messages_text.xml')
+		self.text_widget.position = (x,y+self.widget.height)
 		self.widget.show()
 		self.current_tick = None
 		self.position = 0
 		game.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
 
-	def add(self, x, y, id):
+	def add(self, x, y, id, message_dict=None):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id, needed to retrieve the message from the database.
+		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
-		self.active_messages.insert(0, Message(x,y,id, self.current_tick))
+		self.active_messages.insert(0, Message(x,y,id, self.current_tick, message_dict))
 		self.draw_wigdet()
 
 	def draw_wigdet(self):
@@ -53,14 +57,19 @@ class MessageWidget(object):
 		for i in range(1,5):
 			if self.position + i-1 < len(self.active_messages):
 				w = self.widget.findChild(name=str(i))
-				w.image = self.active_messages[self.position + i-1].image
-				w2 = self.widget.findChild(name='button_'+str(i))
-				w2.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, self.active_messages[self.position + i-1].x,self.active_messages[self.position + i-1].y))
+				w.up_image = self.active_messages[self.position + i-1].image
+				w.hover_image = self.active_messages[self.position + i-1].image
+				w.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, self.active_messages[self.position + i-1].x,self.active_messages[self.position + i-1].y))
+				print 'set showtext to', self.position + i-1
+				w.setEnterCallback(self.show_text)
+				w.setExitCallback(self.hide_text)
 			else:
 				w = self.widget.findChild(name=str(i))
-				w.image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
-				w2 = self.widget.findChild(name='button_'+str(i))
-				w2.capture(lambda : None)
+				w.up_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
+				w.hover_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
+				w.capture(lambda : None)
+				w.setEnterCallback(lambda button: None)
+				w.setExitCallback(lambda button: None)
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -70,9 +79,21 @@ class MessageWidget(object):
 		"""Sets the widget to the previous icon."""
 		pass
 
+	def show_text(self, button):
+		"""Shows the text for the button."""
+		label = self.text_widget.findChild(name='text')
+		label.text = self.active_messages[self.position+int(button.name)-1].message
+		label.resizeToContent()
+		self.text_widget.size = (self.text_widget.getMaxChildrenWidth(), self.text_widget.height)
+		self.text_widget.position = (self.widget.x + self.widget.width/2-self.text_widget.width/2, self.text_widget.y)
+		self.text_widget.show()
+
+	def hide_text(self, button):
+		"""Hides the text."""
+		self.text_widget.hide()
+
 	def tick(self):
 		"""Check wether a message is old enough to be put into the archives"""
-		#print 'tick'
 		changed = False
 		for item in self.active_messages:
 			item.display -= 1
@@ -91,16 +112,22 @@ class MessageWidget(object):
 
 class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
+	The message is used as a string.Template, meaning it can contain placeholders
+	like the following: $player, ${gold}. The second version is recommendet, as the word
+	can then be followed by other characters without a whitespace (e.g. "${player}'s home").
+	The dict needed to fill these placeholders needs to be provided when creating the Message.
+
 	@param x,y: int position on the map where the action took place.
 	@param id: message id, needed to retrieve the message from the database.
 	@param created: tickid when the message was created.
+	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}
 	"""
-	def __init__(self, x, y, id, created):
+	def __init__(self, x, y, id, created, message_dict=None):
 		self.x, self.y = x, y
 		self.id = id
 		self.read = False
 		self.created = created
 		self.display = int(game.main.db('SELECT visible_for from message WHERE rowid=?', id).rows[0][0])
 		self.image = str(game.main.db('SELECT icon from message_icon WHERE color=? AND icon_id=?', 1, id).rows[0][0])
-		self.message = str(game.main.db('SELECT text from message WHERE rowid=?', id).rows[0][0])
-		
+		self.message = Template(str(game.main.db('SELECT text from message WHERE rowid=?', id).rows[0][0])).safe_substitute(message_dict if message_dict is not None else {})
+
