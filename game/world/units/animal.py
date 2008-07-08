@@ -61,7 +61,7 @@ class Animal(BuildingCarriage):
 		for pickup in possible_pickups:
 			if pickup[2] > 0:
 				pickups.append(pickup)
-		choice = int(round(random.uniform(0, len(pickups))))
+		choice = int(round(random.uniform(0, len(pickups)-1)))
 		return [pickups[choice][4], pickups[choice]]
 	
 	def reached_pickup(self):
