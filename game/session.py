@@ -64,7 +64,6 @@ class Session(livingObject):
 		self.keylistener = IngameKeyListener()
 		self.cursor = SelectionTool()
 
-		#to be (re)moved:
 		self.selected_instances = []
 
 	def end(self):
