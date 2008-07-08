@@ -95,7 +95,7 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-			if (game.main.session.selected_instances) == 1 and isinstance(game.main.session.selected_instances[0], Ship):
+			if len(game.main.session.selected_instances) == 1 and isinstance(game.main.session.selected_instances[0], Ship):
 				target_mapcoord = game.main.session.view.cam.toMapCoordinates(clickpoint, False)
 				target_mapcoord.z = 0
 				l = fife.Location(game.main.session.view.layers[1])
