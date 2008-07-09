@@ -137,7 +137,7 @@ class Building(UnselectableBuilding):
 		for tile in self.island.grounds:
 			if tile.settlement == self.settlement and (max(self.x - tile.x, 0, tile.x - self.x - self.size[0] + 1) ** 2) + (max(self.y - tile.y, 0, tile.y - self.y - self.size[1] + 1) ** 2) <= self.radius ** 2:
 				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
-				if tile.object is not None:
+				if tile.object is not None and False: #todo: only highlight buildings that produce something were interested in
 					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):
