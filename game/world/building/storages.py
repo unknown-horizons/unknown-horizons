@@ -42,7 +42,7 @@ class StorageBuilding(Building, Producer, Consumer):
 		# add extra carriage
 		self.local_carriages.append(game.main.session.entities.units[2](self))
 			
-	def select(self):
+	def select(self, multi = False):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island.grounds:

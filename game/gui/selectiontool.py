@@ -66,17 +66,22 @@ class SelectionTool(NavigationTool):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
 			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else clickpoint, game.main.session.view.layers[1])
 			selectable = []
-			if len(instances) > 0: #something under cursor
-				for i in instances:
-					instance = game.main.session.entities.getInstance(i.getId())
-					if hasattr(instance, 'select'):
-						selectable.append(instance)
+			for i in instances:
+				instance = game.main.session.entities.getInstance(i.getId())
+				if hasattr(instance, 'select'):
+					selectable.append(instance)
+			if len(selectable) > 1:
+				for instance in selectable[:]:
+					if isinstance(instance.__class__, game.world.building.BuildingClass):
+						selectable.remove(instance)
+					else:
+						print instance
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
 			for instance in selectable:
 				if instance not in game.main.session.selected_instances:
-					instance.select()
+					instance.select(len(selectable) > 1)
 			game.main.session.selected_instances = selectable
 			del self.select_begin
 			game.main.session.view.renderer['GeometricRenderer'].removeAllLines()

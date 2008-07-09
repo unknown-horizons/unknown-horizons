@@ -38,11 +38,12 @@ class Ship(Unit):
 		self.name = str(game.main.db("SELECT name FROM shipnames ORDER BY random() LIMIT 1")[0][0])
 		self.health = 100
 
-	def select(self):
+	def select(self, multi = False):
 		"""Runs neccesary steps to select the unit."""
 		self._instance.say(str(self.health) + '%', 0) # display health over selected ship
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		game.main.session.ingame_gui.show_ship(self) #show the gui for ships
+		if not multi:
+			game.main.session.ingame_gui.show_ship(self) #show the gui for ships
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
