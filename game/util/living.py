@@ -35,9 +35,10 @@ class livingProperty(object):
 			self.values[obj] = value
 			if hasattr(value, 'begin'):
 				print 'beginning', value
-				value.begin(*value._livingObject_args, **value._livingObject_kwargs)
+				tmp1, tmp2 = value._livingObject_args, value._livingObject_kwargs
 				del value._livingObject_args
 				del value._livingObject_kwargs
+				value.begin(*tmp1, **tmp2)
 
 	def __delete__(self, obj):
 		self.__set__(obj, None)
