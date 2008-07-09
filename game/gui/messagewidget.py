@@ -23,7 +23,6 @@ import game.main
 import fife
 from string import Template
 
-
 class MessageWidget(object):
 	"""Class that organises the messages in the top right of the screen.
 	It uses Message Class instances to store messages and manages the
@@ -109,7 +108,6 @@ class MessageWidget(object):
 		self.active_messages = []
 		self.archive = []
 
-
 class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string.Template, meaning it can contain placeholders
@@ -130,4 +128,3 @@ class Message(object):
 		self.display = int(game.main.db('SELECT visible_for from message WHERE rowid=?', id).rows[0][0])
 		self.image = str(game.main.db('SELECT icon from message_icon WHERE color=? AND icon_id=?', 1, id).rows[0][0])
 		self.message = Template(str(game.main.db('SELECT text from message WHERE rowid=?', id).rows[0][0])).safe_substitute(message_dict if message_dict is not None else {})
-

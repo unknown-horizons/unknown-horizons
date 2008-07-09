@@ -69,7 +69,6 @@ class View(livingObject):
 		game.main.settings.view.zoom.max = 1
 		game.main.settings.view.zoom.min = 0.25
 
-
 	def end(self):
 		"""
 		"""

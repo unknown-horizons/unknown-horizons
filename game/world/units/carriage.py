@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 #import math
 from game.world.units.unit import Unit
 from game.world.storage import ArbitraryStorage
 from game.util.rect import Rect
 from game.util.point import Point
 import game.main
-
 
 class BuildingCarriage(Unit):
 	searchJobInterval = 2
@@ -219,4 +217,3 @@ class BuildingCarriage(Unit):
 				max_rating[0] = pickup[4]
 				max_rating[1] = pickup
 		return max_rating
-

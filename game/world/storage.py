@@ -104,7 +104,6 @@ class Storage(object):
 	def __str__(self):
 		return str(self._inventory)
 
-
 class ArbitraryStorage(object):
 	"""Class that represents a storage compartment for ships
 	Storages have a certain number of slots and a certain maximum number of
@@ -160,4 +159,3 @@ class ArbitraryStorage(object):
 
 		size += (self.slots - len(self._inventory)) * self.size
 		return size
-

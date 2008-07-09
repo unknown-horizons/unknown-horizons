@@ -106,4 +106,3 @@ class Unit(fife.InstanceActionListener):
 			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.unit_position[0] or self.next_target[1] == self.unit_position[1] else 17)
 		elif self.move_callback is not None:
 			self.move_callback()
-

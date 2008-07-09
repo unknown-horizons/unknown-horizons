@@ -59,5 +59,3 @@ class GrowingBuilding(PrimaryProducer):
 		loops = len(self.actions)-1
 		if loops > 0:
 			game.main.session.scheduler.add_new_object(self.update_animation, self, interval, loops)
-
-

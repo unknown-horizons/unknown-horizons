@@ -29,7 +29,6 @@ from game.util.point import Point
 from game.command.building import Build
 import game.main
 
-
 class Animal(BuildingCarriage):
 	grazingTime = 2
 
@@ -70,4 +69,3 @@ class Animal(BuildingCarriage):
 	def finished_grazing(self):
 		self.transfer_pickup()
 		self.send()
-

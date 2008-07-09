@@ -144,4 +144,3 @@ class Building(UnselectableBuilding):
 		"""Runs neccasary steps to deselect the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
-

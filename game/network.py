@@ -27,7 +27,6 @@ import struct
 import sys
 from game.packets import *
 
-
 # TODO: make networking robust
 #       (i.e. GUI freezes sometimes when waiting for timeout)
 
@@ -122,7 +121,6 @@ class MPPlayer(object):
 			playerstr += "(%s)" % self.color.name
 		return playerstr
 
-
 class Connection(object):
 	""" Base Class for network connection
 	"""
@@ -154,7 +152,6 @@ class Connection(object):
 					self._socket.send(packet)
 		else:
 			self._socket.send(packet)
-
 
 class ClientConnection(Connection):
 	""" Connection for a client
@@ -312,7 +309,6 @@ class ServerConnection(Connection):
 		self.mpoptions['players'].remove(player)
 		del self.last_client_message[(player.address, player.port)]
 
-
 	def register(self):
 		""" Registers game server on master game server
 		"""
@@ -322,4 +318,3 @@ class ServerConnection(Connection):
 	def onPacket(self, packet):
 		#print 'RECV', packet,'FROM',packet.address,packet.port
 		packet.handleOnServer()
-

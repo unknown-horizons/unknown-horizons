@@ -72,7 +72,6 @@ class World(object):
 		self.ships.append(game.main.session.entities.units[1](25, 25))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 
-
 	def setupPlayer(self, name, color):
 		game.main.session.world.player =  Player(0, name, color)
 		self.players.append(self.player)

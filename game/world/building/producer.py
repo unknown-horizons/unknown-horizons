@@ -111,7 +111,6 @@ class Producer(object):
 				#debug:
 				#if res[1] >0: print "PRODUCING", res[0], "IN", self.id
 
-
 	def pickup_resources(self, res, max_amount):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
 		@param res: int ressouce id.

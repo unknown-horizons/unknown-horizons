@@ -97,6 +97,3 @@ class AnimalFarm(SecondaryProducer):
 		for coords in self.pasture_coords:
 			instance = game.main.session.entities.buildings[18].createInstance(coords[0],coords[1])
 			self.pasture.append(game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance))
-
-
-

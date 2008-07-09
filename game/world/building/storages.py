@@ -26,7 +26,6 @@ from game.world.storage import Storage
 from game.world.units.carriage import BuildingCarriage
 import game.main
 
-
 class StorageBuilding(Building, Producer, Consumer):
 	"""Building that gets pickups and provides them for anyone
 	Inherited eg. by branch office, storage tent

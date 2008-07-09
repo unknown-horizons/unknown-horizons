@@ -51,4 +51,3 @@ class Consumer(object):
 			return []
 		else:
 			return self.consumation[self.active_production_line];
-

@@ -22,12 +22,9 @@
 import game.main
 import time
 
-
 # There are two ways of sending packets without specifing target ip/port:
 # 1. Server sends with address and port == None, then it gets sent to all players
 # 2. Client uses sendToServer
-
-
 
 class Packet(object):
 	"""
@@ -59,7 +56,6 @@ class Packet(object):
 		"""
 		print "Warning: unhandled packet on client:",self
 
-
 class TickPacket(Packet):
 	"""
 	@param address:
@@ -78,7 +74,6 @@ class QueryPacket(Packet):
 	def handleOnServer(self):
 		o = game.main.connection.mpoptions
 		game.main.connection.send(InfoPacket(self.address, self.port, 'unknown map' if o['selected_map'] == -1 else o['maps'][1][o['selected_map']], len(o['players']), 0 if o['bots'] is None else o['bots'], 0 if o['slots'] is None else o['slots']))
-
 
 class LobbyChatPacket(Packet):
 	"""
@@ -143,7 +138,6 @@ class LobbyKeepAlivePacket(Packet):
 	def handleOnServer(self):
 		game.main.connection.last_client_message[(self.address, self.port)] = time.time()
 
-
 # MAYBE:
 # try to tell client when he got disconnected
 # packet might not arrive
@@ -185,7 +179,6 @@ class InfoPacket(Packet):
 		super(InfoPacket, self).__init__(address, port)
 		self.map, self.players, self.bots, self.maxplayers = map, players, bots, maxplayers
 
-
 class LobbyServerInfoPacket(Packet):
 	""" Contains info about multiplayer game
 
@@ -203,4 +196,3 @@ class LobbyServerInfoPacket(Packet):
 	def handleOnServer(self):
 		# server sent this, so it can ignore it
 		pass
-

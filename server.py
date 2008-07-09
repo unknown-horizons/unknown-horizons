@@ -24,9 +24,7 @@
 from game.network import Socket
 from game.packets import *
 
-
 ## TODO: create cmdline interface for serverconnection
-
 
 def receive(packet):
 	if isinstance(packet, QueryPacket):

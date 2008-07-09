@@ -52,4 +52,3 @@ class Settlement(object):
 				return b
 		else:
 			return None
-

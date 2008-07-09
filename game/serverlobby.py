@@ -24,7 +24,6 @@ from game.util.color import Color
 from game.network import MPPlayer, ClientConnection, ServerConnection
 from game.packets import *
 
-
 class ServerLobby(object):
 	"""Manages the data for the serverlobby
 
@@ -113,7 +112,6 @@ class ClientServerLobby(ServerLobby):
 	def __init__(self, gui):
 		super(ClientServerLobby, self).__init__(gui)
 
-
 	def update_gui(self):
 		o = game.main.connection.mpoptions
 		self.gui.distributeInitialData({
@@ -136,5 +134,3 @@ class ClientServerLobby(ServerLobby):
 				game.main.connection.local_player.name = newName
 				game.main.connection.local_player.color = newColor
 				game.main.connection.sendToServer(LobbyPlayerModifiedPacket(None, None, game.main.connection.local_player))
-
-
