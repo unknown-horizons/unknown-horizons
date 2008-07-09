@@ -1,4 +1,4 @@
-Welcome to the OpenAnno Alpha 2008.0, Keybindings:
+Welcome to the OpenAnno Alpha 2008.01, Keybindings:
 --------------
 - LEFT = Scroll Left
 - RIGHT = Scroll Right
