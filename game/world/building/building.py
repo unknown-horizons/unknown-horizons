@@ -131,7 +131,7 @@ class UnselectableBuilding(object):
 		pass
 
 class Building(UnselectableBuilding):
-	def select(self, multi = False):
+	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island.grounds:

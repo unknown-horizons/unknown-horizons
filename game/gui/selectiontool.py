@@ -74,14 +74,17 @@ class SelectionTool(NavigationTool):
 				for instance in selectable[:]:
 					if isinstance(instance.__class__, game.world.building.BuildingClass):
 						selectable.remove(instance)
-					else:
-						print instance
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
 			for instance in selectable:
 				if instance not in game.main.session.selected_instances:
-					instance.select(len(selectable) > 1)
+					instance.select()
+			game.main.session.ingame_gui.hide_menu()
+			if len(selectable) > 1:
+				pass #todo: show multi select menu
+			elif len(selectable) == 1 and hasattr(selectable[0], 'show_menu'):
+				selectable[0].show_menu()
 			game.main.session.selected_instances = selectable
 			del self.select_begin
 			game.main.session.view.renderer['GeometricRenderer'].removeAllLines()

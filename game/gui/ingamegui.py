@@ -30,9 +30,10 @@ class IngameGui(livingObject):
 	def begin(self):
 		super(IngameGui, self).begin()
 		self.gui = {}
+		self._old_menu = None
 
 		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
-		self.toggle_visible('encyclopedia')
+		self.gui['encyclopedia'].show()
 
 		self.gui['topmain'] = game.main.fife.pychan.loadXML('content/gui/top_main.xml')
 		self.gui['topmain'].position = (
@@ -40,7 +41,7 @@ class IngameGui(livingObject):
 			5
 		)
 		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
-		self.toggle_visible('topmain')
+		self.gui['topmain'].show()
 		self.gui['gamemenu'] = game.main.fife.pychan.loadXML('content/gui/gamemenu_button.xml')
 		self.gui['gamemenu'].position = (
 			game.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 5,
@@ -49,14 +50,14 @@ class IngameGui(livingObject):
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : game.main.showPause
 		})
-		self.toggle_visible('gamemenu')
+		self.gui['gamemenu'].show()
 
 		self.gui['minimap_toggle'] = game.main.fife.pychan.loadXML('content/gui/minimap_toggle_button.xml')
 		self.gui['minimap_toggle'].position = (
 			game.main.fife.settings.getScreenWidth() - self.gui['minimap_toggle'].size[0] - 5,
 			game.main.fife.settings.getScreenHeight() - self.gui['minimap_toggle'].size[1]
 		)
-		self.toggle_visible('minimap_toggle')
+		self.gui['minimap_toggle'].show()
 		self.gui['minimap_toggle'].mapEvents({
 			'minimapToggle' : self.toggle_minmap
 		})
@@ -66,7 +67,7 @@ class IngameGui(livingObject):
 				game.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] - self.gui['minimap_toggle'].size[0],
 				game.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1]
 		)
-		self.toggle_visible('minimap')
+		self.gui['minimap'].show()
 		self.gui['minimap'].mapEvents({
 			'zoomIn' : game.main.session.view.zoom_in,
 			'zoomOut' : game.main.session.view.zoom_out,
@@ -91,9 +92,9 @@ class IngameGui(livingObject):
 			5,
 			game.main.fife.settings.getScreenHeight()/2 - self.gui['minimap'].size[1]/2
 		)
-		self.toggle_visible('leftPanel')
+		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
-			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.toggle_visible, 'build')
+			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.show_menu, 'build')
 		})
 
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
@@ -106,7 +107,7 @@ class IngameGui(livingObject):
 			self.gui['status'].position[0] - 48,
 			5
 		)
-		self.toggle_visible('status_gold')
+		self.gui['status_gold'].show()
 
 		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
 		self.gui['build'].stylize('menu')
@@ -233,24 +234,28 @@ class IngameGui(livingObject):
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : game.main.fife.pychan.tools.callbackWithArguments(self.ship_build, ship)
 		})
-		self.gui['ship'].show()
+		self.show_menu('ship')
 
 	def show_branch_office(self, branch_office):
-		self.gui['branch_office'].show()
+		self.show_menu('branch_office')
 
 	def _build(self, building_id):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built."""
 		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[building_id])
 
-	def toggle_visible(self, guiname):
-		"""Toggles whether a gui is visible or not.
+	def show_menu(self, guiname):
+		"""Shows a menu
 		@param guiname: str with the guiname.
 		"""
-		if self.gui[guiname].isVisible():
-			self.gui[guiname].hide()
-		else:
+		if self._old_menu is not None:
+			self.gui[self._old_menu].hide()
+		if guiname is not None:
 			self.gui[guiname].show()
+		self._old_menu = guiname
+
+	def hide_menu(self):
+		self.show_menu(None)
 
 	def build_load_tab(self, num):
 		"""Loads a subcontainer into the build menu and changes the tabs background.
@@ -268,8 +273,15 @@ class IngameGui(livingObject):
 		self.active_build = num
 
 	def toggle_minmap(self):
-		self.toggle_visible('minimap')
-		self.toggle_visible('camTools')
+		if self.gui['minimap'].isVisible():
+			self.gui['minimap'].hide()
+		else:
+			self.gui['minimap'].show()
+
+		if self.gui['camTools'].isVisible():
+			self.gui['camTools'].hide()
+		else:
+			self.gui['camTools'].show()
 
 	def set_status_position(self, resource_name):
 		icon_name = resource_name + '_icon'
