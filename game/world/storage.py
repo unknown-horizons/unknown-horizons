@@ -23,21 +23,20 @@ from game.util.stablelist import stablelist
 
 class Storage(object):
 	"""Class that represent a storage compartment with fixed resources slots
-	
+
 	Used e.g. by production buildings (e.g. PrimaryProducer)
 	"""
 	def __init__(self):
 		# inventory: a dict with this pattern: _inventory[res_id] = [amount, size]
 		self._inventory = {}
-		
-		
+
 	def addSlot(self, res_id, size):
 		""" Add the possibility to save size amount of res_id
 		@param res_id: id of the resource
 		@param size: maximum amount of res_id that can be stored here; -1 for infinity
 		"""
 		self._inventory[res_id] = [0, size]
-		
+
 	def hasSlot(self, res_id):
 		""" Returns wether slot for res_id exists"""
 		return (res_id in self._inventory.keys())
@@ -52,7 +51,7 @@ class Storage(object):
 			new_amount = self._inventory[res_id][0] + amount;
 		except KeyError:
 			return amount
-		if new_amount > self.get_size(res_id) and self.get_size(res_id) != -1: 
+		if new_amount > self.get_size(res_id) and self.get_size(res_id) != -1:
 			# stuff doesn't fit in inventory
 			ret = new_amount - self.get_size(res_id)
 			self._inventory[res_id][0] = self.get_size(res_id)
@@ -76,7 +75,7 @@ class Storage(object):
 		"""
 		try:
 			value = self._inventory[res_id][0]
-			
+
 			# subtract/add carriage stuff
 			"""
 			for carriage in self.building.pickup_carriages:
@@ -88,17 +87,17 @@ class Storage(object):
 					if carriage.target[1] == res_id:
 						value += carriage.target[2]
 			"""
-						
+
 			return value
 		except KeyError:
 			return 0
-	
+
 	def get_size(self, res_id):
 		""" Returns the capacity of the storage for resource res_id
 		@param res_id: int resource_id
 		"""
 		return self._inventory[res_id][1]
-		
+
 	def __repr__(self):
 		return repr(self._inventory)
 
@@ -115,7 +114,7 @@ class ArbitraryStorage(object):
 		self._inventory = stablelist()
 		self.slots = slots
 		self.size = size
-		
+
 	def alter_inventory(self, res_id, amount):
 		# try using existing slots
 		for slot in self._inventory:
@@ -130,35 +129,35 @@ class ArbitraryStorage(object):
 				else:
 					slot[1] = new_amount
 					return 0
-					
+
 		# handle stuff that couldn't be handled with existing slots
 		if amount > 0:
-			if len(self._inventory) < self.slots: 
+			if len(self._inventory) < self.slots:
 				if amount > self.size:
 					self._inventory.append([res_id, self.size])
 					return self.alter_inventory(res_id, amount - self.size)
 				else:
 					self._inventory.append([res_id, amount])
 					amount = 0
-			
+
 		# return what couldn't be added/taken
 		return amount
-	
+
 	def get_value(self, res_id):
 		ret = 0
 		for slot in self._inventory:
 			if slot[0] == res_id:
 				ret += slot[1]
 		return ret
-	
+
 	def get_size(self, res_id):
 		"""This just ensures compatibility with Storage"""
 		## TODO: if carriage is on the way, ensure that other slots won't get filled
-		size = 0 
+		size = 0
 		for slot in self._inventory:
 			if slot[0] == res_id and slot[1] < self.size:
 				size += self.size - slot[1]
-				
+
 		size += (self.slots - len(self._inventory)) * self.size
 		return size
-	
+

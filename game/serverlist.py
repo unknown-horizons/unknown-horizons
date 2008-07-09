@@ -175,7 +175,7 @@ class WANServerList(ServerList):
 		"""
 		self._clear()
 
-		wan_servers = [] 
+		wan_servers = []
 		try:
 			wan_servers = (urllib.urlopen(game.main.settings.network.url_servers))
 		except IOError,e:

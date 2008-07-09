@@ -25,17 +25,17 @@ from game.world.units.unit import Unit
 from game.world.storage import ArbitraryStorage
 from game.util.rect import Rect
 from game.util.point import Point
-import game.main 
+import game.main
 
 
 class BuildingCarriage(Unit):
 	searchJobInterval = 2
 	"""A BuildingCarriage that gets pickups for buildings
-	
+
 	building has to support:
 	* attribute 'inventory', which supports get_value(res) and get_size(res)
 	* x and y coords
-	
+
 	Can be subclassed for use in e.g. Animal
 	"""
 	def __init__(self, building, inventory = None, slots = 1, size = 6):
@@ -53,29 +53,29 @@ class BuildingCarriage(Unit):
 		Unit.__init__(self, self.building.x, self.building.y)
 		# target: [building, resource_id,  amount]
 		self.target = []
-		
+
 		game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
 		# test during development:
 		#assert(len(building.consumed_res) > 0 )
-	
+
 	def get_consumed_resources(self):
 		""" This can and should be overwritten in subclass, if needed
 		@return: list [ (needed_res_id, stored), ... ]
-		"""		
+		"""
 		building_needed_res = self.building.get_consumed_res()
 		needed_res = []
 		for res in building_needed_res:
 			needed_res.append((res, self.building.inventory.get_value(res)))
 		return needed_res
-	
-	def get_possible_pickup_places(self):		
+
+	def get_possible_pickup_places(self):
 		""" Returns places that should be analysed for pickup
 		@return: list: [ (building, [ produced_res_id, .. ] ) ]
 		"""
-		# this is imported here, cause otherwise, there's some error 
+		# this is imported here, cause otherwise, there's some error
 		# that probably is caused by circular dependencies
 		from game.world.building.producer import Producer
-		
+
 		possible_pickup_places = []
 		for b in self.building.settlement.buildings:
 			if b == self.building:
@@ -83,11 +83,11 @@ class BuildingCarriage(Unit):
 			if isinstance(b, Producer):
 				possible_pickup_places.append( (b, b.prod_res ) )
 		return possible_pickup_places
-	
+
 	def get_position(self):
 		#return Rect(self.building.x, self.building.y, self.building.x+self.building.size[0], self.building.y+self.building.size[1])
 		return Point(self.building.x, self.building.y)
-	
+
 	def search_job(self, already_scanned_min = 0):
 		"""Finds out, which resource it should get from where and get it
 		@param already_scanned_min: all values smaller than this are not scanned
@@ -110,18 +110,18 @@ class BuildingCarriage(Unit):
 				needed_res.append(res[0])
 			elif res[1] == min:
 				needed_res.append(res)
-		
+
 		# if none found, no pickup available
 		if len(needed_res) == 0:
 			#print 'CAR: NO needed res'
 			return False
-	
+
 		# search for available pickups for needed_res
 		# values of possible_pickup: [building, resource, amount, distance, rating]
 		max_amount = 0
 		max_distance = 0
 		possible_pickups = []
-		
+
 		possible_pickup_places = self.get_possible_pickup_places()
 		position = self.get_position()
 		for b in possible_pickup_places:
@@ -134,7 +134,7 @@ class BuildingCarriage(Unit):
 					#	pdb.set_trace()
 					if len([ carriage for carriage in b[0].pickup_carriages if carriage.target[1] == res ]) > 0:
 						break
-							
+
 					stored = b[0].inventory.get_value(res)
 					if stored > 0:
 						## TODO: use Rect in buildings and use their Rect here
@@ -153,20 +153,20 @@ class BuildingCarriage(Unit):
 						if distance > max_distance:
 							max_distance = distance
 						possible_pickups.append([b[0], res, stored, distance, 0])
-						
+
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
 			#print 'CAR: NO POSSIBLE FOR',needed_res
 			return self.search_job(min+1)
-		
+
 		# development asserts
 		assert(max_amount != 0)
 		assert(max_distance != 0)
-			
+
 		max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
-			
-		# get pickup 
-		# save target building and res to pick up, 
+
+		# get pickup
+		# save target building and res to pick up,
 		self.target = [max_rating[1][0], max_rating[1][1], 0]
 		self.target[2] = self.target[0].inventory.get_value(self.target[1])
 		# check for carriage size overflow
@@ -177,22 +177,22 @@ class BuildingCarriage(Unit):
 			self.target[2] = (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1]))
 		self.target[0].pickup_carriages.append(self)
 		self.move(self.target[0].x, self.target[0].y, self.reached_pickup)
-		
+
 		#print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
 		#print 'CAR:', self.id, 'GETTING', self.target[0].x, self.target[0].y
 		return True
-			
+
 	def reached_pickup(self):
 		"""Called when the carriage reaches target building
 		"""
 		self.transfer_pickup()
 		self.move(self.building.x, self.building.y, self.reached_home)
-		
+
 	def transfer_pickup(self):
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], pickup_amount)
 		self.target[0].pickup_carriages.remove(self)
-	
+
 	def reached_home(self):
 		"""Called when carriage is in the building, it was assigned to
 		"""
@@ -203,13 +203,13 @@ class BuildingCarriage(Unit):
 		# this is also done this way somewhere else
 		self.target = []
 		self.send()
-			
+
 	def send(self):
 		"""Sends carriage on it's way"""
 		#print 'SENT'
 		if not self.search_job():
 			game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
-			
+
 	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
 		""" chooses a pickup """
 		max_rating = [0, None]
@@ -219,4 +219,4 @@ class BuildingCarriage(Unit):
 				max_rating[0] = pickup[4]
 				max_rating[1] = pickup
 		return max_rating
-	
+

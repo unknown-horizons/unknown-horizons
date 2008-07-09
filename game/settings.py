@@ -96,7 +96,7 @@ class Setting(object):
 	def addCategorys(self, *categorys):
 		"""Adds one or more setting categories
 
-		The new categories can be accessed via 
+		The new categories can be accessed via
 		settingsObj.NEWCATEGORY
 		@param *categorys:
 		"""

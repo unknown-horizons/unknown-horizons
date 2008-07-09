@@ -49,7 +49,7 @@ class ServerLobby(object):
 		calls lobbyspecific update
 		"""
 		self.update_gui()
-		
+
 		o = game.main.connection.mpoptions
 
 		self.gui.distributeInitialData({
@@ -61,7 +61,7 @@ class ServerLobby(object):
 				# display colors that are not taken by a player
 				'playercolors' : [ i.name for i in Color if i not in [ j.color for j in o['players'] if j.color != None ] ]
 			})
-			
+
 		if not o['bots'] is None:
 			self.gui.distributeData({'bots' : o['bots']})
 
@@ -90,8 +90,8 @@ class MasterServerLobby(ServerLobby):
 		o = game.main.connection.mpoptions
 		o['slots'] = self.gui.collectData('server_slots')+2
 
-		game.main.connection.local_player.name = self.gui.collectData('playername') 
-		game.main.connection.local_player.color = Color[self.gui.collectData('playercolor')+1] 
+		game.main.connection.local_player.name = self.gui.collectData('playername')
+		game.main.connection.local_player.color = Color[self.gui.collectData('playercolor')+1]
 		o['bots'] = self.gui.collectData('bots')
 
 		# sanity check for bot count
@@ -112,7 +112,7 @@ class ClientServerLobby(ServerLobby):
 	"""
 	def __init__(self, gui):
 		super(ClientServerLobby, self).__init__(gui)
-		
+
 
 	def update_gui(self):
 		o = game.main.connection.mpoptions
@@ -127,8 +127,8 @@ class ClientServerLobby(ServerLobby):
 			'server_slots' : 0,
 			'maplist' : o['selected_map']
 		})
-		
-		newName = self.gui.collectData('playername') 
+
+		newName = self.gui.collectData('playername')
 		newColor = Color[self.gui.collectData('playercolor')+1]
 
 		if game.main.connection.local_player.name != newName or \

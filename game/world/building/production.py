@@ -35,26 +35,26 @@ class _DummyProducer(Building, Producer):
 		self.inventory = Storage()
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)
-		
+
 class PrimaryProducer(_DummyProducer):
 	"""Class used for primary production buildings, e.g. tree
-	
+
 	These object produce something out of nothing, without
 	requiring any raw material
 	"""
 
 class SecondaryProducer(_DummyProducer, Consumer):
 	"""Class used for secondary production buildings, e.g. lumberjack, weaver
-	
+
 	These object turn resources into something else
 	"""
 	def __init__(self, x, y, owner, instance = None):
 		_DummyProducer.__init__(self, x, y, owner, instance)
 		Consumer.__init__(self)
-		
+
 class BuildinglessProducer(Producer, Consumer):
 	""" Class for immaterial producers
-	
+
 	For example the sheep uses this to produce wool out of grass,
 	because the sheep itself is a unit, not a building
 	"""
@@ -63,13 +63,13 @@ class BuildinglessProducer(Producer, Consumer):
 		self.inventory = Storage()
 		Producer.__init__(self)
 		Consumer.__init__(self, create_carriage = False)
-		
+
 class AnimalFarm(SecondaryProducer):
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
 	def __init__(self, x, y, owner, instance = None):
 		SecondaryProducer.__init__(self, x, y, owner, instance)
-		
+
 		self.building_coords = [ (x,y) for x in xrange(self.x, self.x+self.size[0]) for y in xrange(self.y, self.y+self.size[1]) ]
 		rect = Rect(self.x, self.y, self.x+self.size[0]-1, self.y+self.size[1]-1)
 		center = ((self.x+(self.size[0]/2)), (self.y+(self.size[1]/2)))
@@ -80,23 +80,23 @@ class AnimalFarm(SecondaryProducer):
 				if ( rect.distance( Point(x,y) ) <= self.radius ) and \
 				 (x,y) not in self.building_coords ]
 		self.pasture = []
-		
+
 		self.recreate_pasture()
-		
+
 		self.animals = []
 		animals = game.main.db("SELECT animal, number from animals where building = ?", self.id)
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
-			
+
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
 		# use building rect here when it exists
 		brect = Rect(self.x, self.y, self.x+self.size[0], self.y+self.size[1])
-		
+
 		for coords in self.pasture_coords:
 			instance = game.main.session.entities.buildings[18].createInstance(coords[0],coords[1])
 			self.pasture.append(game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance))
-				
-		
-	
+
+
+

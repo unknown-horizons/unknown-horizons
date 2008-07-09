@@ -27,23 +27,23 @@ from game.world.storage import Storage
 from game.util.rect import Rect
 from game.util.point import Point
 from game.command.building import Build
-import game.main 
+import game.main
 
 
 class Animal(BuildingCarriage):
 	grazingTime = 2
-	
+
 	def __init__(self, building):
 		self.attached_building = building
-		
+
 		self.building = game.main.session.entities.buildings[19]()
-		
+
 		# workaround: the BuildingCarriage needs coords in ctor for inital placement
 		self.building.x = self.attached_building.x
 		self.building.y = self.attached_building.y
 		BuildingCarriage.__init__(self, self.building, self.building.inventory)
 		del self.building.x, self.building.y
-		
+
 	def get_possible_pickup_places(self):
 		""" Returns places that should be analysed for pickup
 		@return: list: [ (building, [ produced_res_id, .. ] ) ]
@@ -52,10 +52,10 @@ class Animal(BuildingCarriage):
 		for p in self.attached_building.pasture:
 			possible_pickup_places.append( (p, p.prod_res) )
 		return possible_pickup_places
-	
+
 	def get_position(self):
 		return Point(self.unit_position[0], self.unit_position[1])
-	
+
 	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
 		pickups = []
 		for pickup in possible_pickups:
@@ -63,13 +63,11 @@ class Animal(BuildingCarriage):
 				pickups.append(pickup)
 		choice = int(round(random.uniform(0, len(pickups)-1)))
 		return [pickups[choice][4], pickups[choice]]
-	
+
 	def reached_pickup(self):
 		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second*self.__class__.grazingTime)
-		
+
 	def finished_grazing(self):
 		self.transfer_pickup()
 		self.send()
 
-		
-		

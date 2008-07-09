@@ -34,9 +34,9 @@ class GrowingBuilding(PrimaryProducer):
 		for (a,) in actions:
 			self.actions.append(str(a))
 		self.actions.sort()
-		
+
 		self.restart_animation()
-		
+
 	def update_animation(self):
 		""" Executes next action """
 		try:
@@ -45,10 +45,10 @@ class GrowingBuilding(PrimaryProducer):
 		except StopIteration:
 			# this is a quick & dirty fix, source of the bug has yet to be traced
 			pass
-		
+
 	def restart_animation(self):
 		""" Starts animation from the beginning
-		
+
 		Useful if e.g. a tree is cut down
 		"""
 		self.cur_action = iter(self.actions)
@@ -59,5 +59,5 @@ class GrowingBuilding(PrimaryProducer):
 		loops = len(self.actions)-1
 		if loops > 0:
 			game.main.session.scheduler.add_new_object(self.update_animation, self, interval, loops)
-		
-		
+
+

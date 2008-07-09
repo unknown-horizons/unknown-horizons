@@ -36,10 +36,10 @@ class Packet(object):
 	"""
 	def __init__(self, address, port):
 		""" This can just set address and port
-		
+
 		If you want to extend this function, you have to update most of the Packet-classes
 		"""
-		(self.address,) = None if address is None else str(address), 
+		(self.address,) = None if address is None else str(address),
 		self.port = None if port is None else int(port)
 
 	def handleOnServer(self):
@@ -94,7 +94,7 @@ class ConnectPacket(Packet):
 	pass
 
 class LobbyJoinPacket(Packet):
-	"""Use this to join a game 
+	"""Use this to join a game
 	"""
 	def __init__(self, address, port, player):
 		super(LobbyJoinPacket, self).__init__(address, port)
@@ -106,13 +106,13 @@ class LobbyJoinPacket(Packet):
 		game.main.connection.last_client_message[(self.player.address, self.player.port)] = time.time()
 		print 'JOIN BY', self.player.address, self.player.port
 		game.main.connection.notifyClients()
-		
+
 class LeaveServerPacket(Packet):
 	"""Use this to leave a server
 	"""
 	def __init__(self):
 		pass
-	
+
 	def handleOnServer(self):
 		for player in game.main.connection.mpoptions['players']:
 			if player.address == self.address and player.port == self.port:
@@ -134,22 +134,22 @@ class LobbyPlayerModifiedPacket(Packet):
 				players[i] = self.player
 				break
 		game.main.connection.notifyClients()
-		
+
 class LobbyKeepAlivePacket(Packet):
 	"""Sent regularly to master server to tell it that we are still there"""
 	def __init__(self):
 		pass
-	
+
 	def handleOnServer(self):
 		game.main.connection.last_client_message[(self.address, self.port)] = time.time()
-		
-		
+
+
 # MAYBE:
-# try to tell client when he got disconnected 
+# try to tell client when he got disconnected
 # packet might not arrive
 # but he could be kicked for another reason
 # so include a parameter in the packet which tells the client why he got disconnected
-		
+
 # packet when server is closed. probably packet above can be used
 
 class MasterRegisterPacket(Packet):
@@ -190,7 +190,7 @@ class LobbyServerInfoPacket(Packet):
 	""" Contains info about multiplayer game
 
 	The game server sends this packet to clients
-	to notify them about game settings 
+	to notify them about game settings
 	NOTE: address & port are none, because this way the packet gets sent to all clients
 	"""
 	def __init__(self, mpoptions, address = None, port = None):

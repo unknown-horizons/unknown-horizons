@@ -38,7 +38,7 @@ class UnselectableBuilding(object):
 			self._instance = instance
 			game.main.session.entities.updateInstance(self._instance.getId(), self)
 		self.health = 50
-		
+
 		self.island = game.main.session.world.get_island(self.x, self.y)
 		settlements = self.island.get_settlements(self.x, self.y)
 		if len(settlements) == 0:

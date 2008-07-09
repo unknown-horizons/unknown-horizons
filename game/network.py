@@ -112,10 +112,10 @@ class MPPlayer(object):
 	@param name:
 	"""
 	def __init__(self, address = None, port = None):
-		self.address, self.port = address, port 
+		self.address, self.port = address, port
 		self.name, self.color, self.team = "unknown player", None, None
 		self.ready = False
-		
+
 	def __str__(self):
 		playerstr = self.name
 		if self.color is not None:
@@ -144,7 +144,7 @@ class Connection(object):
 		pass
 
 	def send(self, packet):
-		# if no address, send to all players 
+		# if no address, send to all players
 		if packet.address is None and packet.port is None:
 			for player in self.mpoptions['players']:
 				packet.address, packet.port = player.address, player.port
@@ -159,10 +159,10 @@ class Connection(object):
 class ClientConnection(Connection):
 	""" Connection for a client
 
-	Use an instance of this class for 
+	Use an instance of this class for
 	game.main.connectin on a client machine
 	"""
-	
+
 	keepAliveInterval = 1.5
 
 	STATE_DISCONNECTED, STATE_CONNECTING, STATE_CONNECTED = range(0,3)
@@ -177,13 +177,13 @@ class ClientConnection(Connection):
 	def join(self, address, port):
 		self.address, self.port = address, port
 		self.sendToServer(LobbyJoinPacket(self.address, self.port, self.local_player))
-		
+
 		game.main.ext_scheduler.add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
 
 	def onPacket(self, packet):
 		#print 'RECV', packet,'FROM',packet.address,packet.port
 		packet.handleOnClient()
-		
+
 	def sendKeepAlive(self):
 		"""Telling server that i'm still there"""
 		self.sendToServer(LobbyKeepAlivePacket())
@@ -268,7 +268,7 @@ class ClientConnection(Connection):
 class ServerConnection(Connection):
 	""" Connection on a server
 
-	Use an instance of this class for 
+	Use an instance of this class for
 	game.main.connectin on a game server
 	"""
 
@@ -280,7 +280,7 @@ class ServerConnection(Connection):
 		super(ServerConnection, self).__init__(game.main.settings.network.port)
 
 		self.local_player = MPPlayer("127.0.0.1", port)
-		
+
 		# here we save the time of the arrival of keep-alive packets
 		# last_client_message[(ip, port)] = timestamp
 		self.last_client_message = {}
@@ -297,7 +297,7 @@ class ServerConnection(Connection):
 
 	def notifyClients(self):
 		self.send(LobbyServerInfoPacket(self.mpoptions))
-		
+
 	def check_client_timeout(self):
 		for client, last_reception in self.last_client_message.items():
 			if last_reception + self.clientTimeout < time.time():
@@ -307,11 +307,11 @@ class ServerConnection(Connection):
 						self.remove_player(player)
 						self.notifyClients()
 						break
-						
+
 	def remove_player(self, player):
 		self.mpoptions['players'].remove(player)
 		del self.last_client_message[(player.address, player.port)]
-		
+
 
 	def register(self):
 		""" Registers game server on master game server

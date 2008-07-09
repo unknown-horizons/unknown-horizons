@@ -38,10 +38,10 @@ class StorageBuilding(Building, Producer, Consumer):
 		#self.inventory  = Storage()
 		Producer.__init__(self)
 		Consumer.__init__(self)
-		
+
 		# add extra carriage
 		self.local_carriages.append(game.main.session.entities.units[2](self))
-			
+
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)

@@ -223,7 +223,7 @@ def showSingle(showSaved = False):
 		'playercolor' : [ i.name for i in Color ]
 	})
 	gui.distributeData({
-		'showNew' : not showSaved, 
+		'showNew' : not showSaved,
 		'showLoad' : showSaved,
 		'playercolor' : 0
 	})

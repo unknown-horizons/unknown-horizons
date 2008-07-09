@@ -60,7 +60,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 						x = int(x[6:])
 					else:
 						x = int(x)
-					
+
 					if y.startswith('top'):
 						y = int(y[3:]) + int(img.getHeight() / 2)
 					elif y.startswith('bottom'):
@@ -77,7 +77,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					loc = fife.ImageLocation('asdf')
 					loc.setParentSource(img)
 					x, y, w, h = arg.split(',')
-					
+
 					if x.startswith('left'):
 						x = int(x[4:])
 					elif x.startswith('right'):
@@ -86,7 +86,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 						x = int(x[6:]) + int(img.getWidth() / 2)
 					else:
 						x = int(x)
-					
+
 					if y.startswith('top'):
 						y = int(y[3:])
 					elif y.startswith('bottom'):
@@ -95,7 +95,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 						y = int(y[6:]) + int(img.getHeight() / 2)
 					else:
 						y = int(y)
-					
+
 					if w.startswith('left'):
 						w = int(w[4:]) - x
 					elif w.startswith('right'):
@@ -104,7 +104,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 						w = int(w[6:]) + int(img.getWidth() / 2) - x
 					else:
 						w = int(w)
-					
+
 					if h.startswith('top'):
 						h = int(h[3:]) - y
 					elif h.startswith('bottom'):
