@@ -53,18 +53,7 @@ class SelectionTool(NavigationTool):
 				game.main.session.view.renderer['GeometricRenderer'].addLine(b, c, 0, 255, 0)
 				game.main.session.view.renderer['GeometricRenderer'].addLine(d, c, 0, 255, 0)
 				game.main.session.view.renderer['GeometricRenderer'].addLine(a, d, 0, 255, 0)
-		elif (evt.getButton() == fife.MouseEvent.RIGHT):
-			pass
-		else:
-			super(SelectionTool, self).mouseDragged(evt)
-			return
-		evt.consume()
-
-	def mouseReleased(self, evt):
-		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
-			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
-			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else clickpoint, game.main.session.view.layers[1])
+			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
 			selectable = []
 			for i in instances:
 				instance = game.main.session.entities.getInstance(i.getId())
@@ -80,12 +69,20 @@ class SelectionTool(NavigationTool):
 			for instance in selectable:
 				if instance not in game.main.session.selected_instances:
 					instance.select()
-			game.main.session.ingame_gui.hide_menu()
-			if len(selectable) > 1:
-				pass #todo: show multi select menu
-			elif len(selectable) == 1 and hasattr(selectable[0], 'show_menu'):
-				selectable[0].show_menu()
 			game.main.session.selected_instances = selectable
+		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+			pass
+		else:
+			super(SelectionTool, self).mouseDragged(evt)
+			return
+		evt.consume()
+
+	def mouseReleased(self, evt):
+		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
+			if len(game.main.session.selected_instances) > 1:
+				pass #todo: show multi select menu
+			elif len(game.main.session.selected_instances) == 1 and hasattr(game.main.session.selected_instances[0], 'show_menu'):
+				game.main.session.selected_instances[0].show_menu()
 			del self.select_begin
 			game.main.session.view.renderer['GeometricRenderer'].removeAllLines()
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
@@ -100,7 +97,25 @@ class SelectionTool(NavigationTool):
 			super(SelectionTool, self).mousePressed(evt)
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
+			instances = game.main.session.view.cam.getMatchingInstances(fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
+			selectable = []
+			for i in instances:
+				instance = game.main.session.entities.getInstance(i.getId())
+				if hasattr(instance, 'select'):
+					selectable.append(instance)
+			if len(selectable) > 1:
+				for instance in selectable[:]:
+					if isinstance(instance.__class__, game.world.building.BuildingClass):
+						selectable.remove(instance)
+			for instance in game.main.session.selected_instances:
+				if instance not in selectable:
+					instance.deselect()
+			for instance in selectable:
+				if instance not in game.main.session.selected_instances:
+					instance.select()
+			game.main.session.selected_instances = selectable
 			self.select_begin = (evt.getX(), evt.getY())
+			game.main.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
 			if len(game.main.session.selected_instances) == 1 and isinstance(game.main.session.selected_instances[0], Ship):
