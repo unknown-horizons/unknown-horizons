@@ -188,7 +188,7 @@ class BuildingTool(NavigationTool):
 				else:
 					game.main.session.view.layers[1].deleteInstance(building['instance'])
 			self.buildings = []
-			self.previewBuild(point, point)
+			self.onEscape()
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
