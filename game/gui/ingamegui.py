@@ -94,7 +94,7 @@ class IngameGui(livingObject):
 		)
 		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
-			'build' : game.main.fife.pychan.tools.callbackWithArguments(self.show_menu, 'build')
+			'build' : self.show_build_menu
 		})
 
 		self.gui['status'] = game.main.fife.pychan.loadXML('content/gui/status.xml')
@@ -226,8 +226,7 @@ class IngameGui(livingObject):
 
 	def ship_build(self, ship):
 		"""Calls the Games build_object class."""
-		ship._instance.say('')
-		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[1], ship)
+		self._build(1, ship)
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
@@ -236,13 +235,28 @@ class IngameGui(livingObject):
 		})
 		self.show_menu('ship')
 
+	def show_build_menu(self):
+		self.deselect_all()
+		self.show_menu('build')
+
 	def show_branch_office(self, branch_office):
 		self.show_menu('branch_office')
 
-	def _build(self, building_id):
+	def deselect_all(self):
+		for instance in game.main.session.selected_instances:
+			instance.deselect()
+		game.main.session.ingame_gui.hide_menu()
+		game.main.session.selected_instances = []
+
+	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built."""
-		game.main.session.cursor = BuildingTool(game.main.session.entities.buildings[building_id])
+		self.hide_menu()
+		self.deselect_all()
+		cls = game.main.session.entities.buildings[building_id]
+		if hasattr(cls, 'show_build_menu'):
+			cls.show_build_menu()
+		game.main.session.cursor = BuildingTool(cls, unit)
 
 	def show_menu(self, guiname):
 		"""Shows a menu

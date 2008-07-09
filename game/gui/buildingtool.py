@@ -126,6 +126,12 @@ class BuildingTool(NavigationTool):
 				game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
 
 	def onEscape(self):
+		if self.ship is None:
+			game.main.session.ingame_gui.show_menu('build')
+		else:
+			game.main.session.selected_instances = [self.ship]
+			self.ship.select()
+			self.ship.show_menu()
 		game.main.session.cursor = SelectionTool()
 
 	def mouseMoved(self, evt):
