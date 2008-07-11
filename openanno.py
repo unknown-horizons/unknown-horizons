@@ -90,4 +90,5 @@ if __name__ == '__main__':
 
 	#start openanno
 	import game.main
-	game.main.start()
+	import profile
+	profile.run('game.main.start()')
