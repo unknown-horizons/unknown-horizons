@@ -70,7 +70,6 @@ class World(object):
 		# add ship
 		self.ships = stablelist()
 		self.ships.append(game.main.session.entities.units[1](25, 25))
-		self.ships[0].draw_health()
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 
 	def setupPlayer(self, name, color):
