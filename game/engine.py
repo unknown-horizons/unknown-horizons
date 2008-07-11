@@ -27,7 +27,6 @@ import game.main
 import new
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
-	unique_number = 0x123123
 	"""Loads animations from a SQLite database.
 	"""
 	def __init__(self):
@@ -47,7 +46,8 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		commands = zip(commands[0::2], commands[1::2])
 		print "Loading animation:", id
 		ani = fife.Animation()
-		for (file,) in game.main.db("SELECT file from data.animation where animation_id = ?", id):
+		frame_start, frame_end = 0.0, 0.0
+		for file,frame_end in game.main.db("SELECT file, frame_end from data.animation where animation_id = ?", id):
 			img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromFile(str(file)))
 			for command, arg in commands:
 				if command == 'shift':
@@ -70,7 +70,6 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					else:
 						y = int(y)
 
-					print 'shifting',x,y
 					img.setXShift(x)
 					img.setYShift(y)
 				elif command == 'cut':
@@ -114,15 +113,14 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					else:
 						h = int(h)
 
-					print x,y,w,h
 					loc.setXShift(x)
 					loc.setYShift(y)
 					loc.setWidth(w)
 					loc.setHeight(h)
 
 					img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromLocation(loc))
-			ani.addFrame(img, 1)
-		self.__class__.unique_number += 1
+			ani.addFrame(img, max(1,int((float(frame_end) - frame_start)*1000)))
+			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		ani.thisown = 0
 		return ani
