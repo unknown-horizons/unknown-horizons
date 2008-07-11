@@ -110,6 +110,7 @@ class Unit(fife.InstanceActionListener):
 			self.move_callback()
 
 	def draw_health(self):
+		"""Draws the units current health as a healthbar over the unit."""
 		renderer = game.main.session.view.renderer['GenericRenderer']
 		width = 50
 		height = 5

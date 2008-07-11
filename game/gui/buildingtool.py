@@ -75,41 +75,6 @@ class BuildingTool(NavigationTool):
 			game.main.session.view.layers[1].deleteInstance(building['instance'])
 		super(BuildingTool, self).end()
 
-	#def _buildCheck(self,  x, y):
-		#"""@param x,y: int position that is to be checked."""
-		## TODO: Return more detailed error descriptions than a boolean
-		#try:
-			#cost = self._class.calcBuildingCost()
-		#except BlockedError:
-			#print 'blocked error'
-			#return False
-
-		#if self.ship:
-			#if (max(x - self.ship.position[0], 0, self.ship.position[0] - x - self._class.size[0] + 1) ** 2) + (max(y - self.ship.position[1], 0, self.ship.position[1] - (y + self._class.size[1]-1)) ** 2) >= 100:
-				#return False
-
-		#island = game.main.session.world.get_island(x, y)
-		#if island:
-			#settlements = island.get_settlements(x, y, x + self._class.size[0] - 1, y + self._class.size[1] - 1)
-			#if len(settlements) > 0 and self.ship and not False: #False -> game setting "allow_multi_settlements_pre_island"
-				#return False
-			#elif len(settlements) > 0 or self.ship:
-				#settlement = settlements.pop() if len(settlements) > 0 else None
-				#for (key, value) in cost.iteritems(): # Cost checking
-					#if game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)) < value:
-						#print "Warning: more ressources of #%i needed for building id '%i'. Storage %i < %i" % (key, self._class.id, game.main.session.world.player.inventory.get_value(key) + (settlement.inventory.get_value(key) if settlement else self.ship.inventory.get_value(key)), value)
-						#return False
-				#for xx in xrange(x, x + self._class.size[0]): # Blocked checking
-					#for yy in xrange(y, y + self._class.size[1]):
-						#tile = island.get_tile(xx, yy)
-						#if not tile or tile.blocked:
-							#return False
-				#return True
-			#else:
-				#return False
-		#else:
-			#return False
-
 	def previewBuild(self, point1, point2):
 		for building in self.buildings:
 			game.main.session.view.layers[1].deleteInstance(building['instance'])

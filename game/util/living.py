@@ -34,7 +34,7 @@ class livingProperty(object):
 		else:
 			self.values[obj] = value
 			if hasattr(value, 'begin'):
-				print 'beginning', value
+				print 'Beginning:', value
 				tmp1, tmp2 = value._livingObject_args, value._livingObject_kwargs
 				del value._livingObject_args
 				del value._livingObject_kwargs
@@ -45,7 +45,7 @@ class livingProperty(object):
 
 class livingObject(object):
 	def __init__(self, *args, **kwargs):
-		print 'initing', self
+		print 'Initing:', self
 		super(livingObject, self).__init__()
 		self._livingObject_args = args
 		self._livingObject_kwargs = kwargs

@@ -73,7 +73,7 @@ def findFIFE():
 		else:
 			import fife
 	except ImportError, e:
-		print 'FIFE was not found or failed to load'
+		print 'FIFE was not found or failed to load.'
 		print 'Reason: ' + e.message
 		print "Please create a config.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
 		exit()

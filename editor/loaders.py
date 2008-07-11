@@ -158,7 +158,7 @@ def _init(engine):
 	db("attach ? AS data", os.path.abspath(os.path.dirname(__file__) + '/../content/openanno.sqlite'))
 
 	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground"):
-		print 'Loading ground #' + str(ground_id) + '...'
+		print 'Loading ground #%i ...' % (ground_id)
 		object = engine.getModel().createObject(str(ground_id), 'ground')
 		object.thisown = 0
 		fife.ObjectVisual.create(object)

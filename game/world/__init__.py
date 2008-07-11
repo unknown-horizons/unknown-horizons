@@ -62,7 +62,7 @@ class World(object):
 		self.grounds = []
 		for x,y in empty:
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
-		print "done."
+		print "Done."
 
 		# create playerlist
 		self.players = stablelist()
