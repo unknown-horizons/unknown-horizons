@@ -10,18 +10,19 @@
 
 	<!-- Symbols-->
 	<!-- The following symbols should show a few infos about the ship as boolean (true=colored; false=grayscale). -->
-	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="5,35" />
+	<!--<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="5,35" />
 	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="21,35" />
 	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="37,35" />
 	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="53,35" />
-	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="69,35" />
+	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="69,35" />-->
 
 	<!-- Picture -->
-	<Icon name="shipImage" image="content/gui/images/objects/ships/ship_dummy.jpg" position="5,56" />
+	<!--<Icon name="shipImage" image="content/gui/images/objects/ships/ship_dummy.jpg" position="5,56" />-->
 
 	<!-- Charge bar -->
-	<Icon image="content/gui/images/background/hud/chargebar_bg.png" position="150,35" />
-	<Icon name="chargeBar" image="content/gui/images/icons/hud/ship/chargebar_stretch.png" position="154,39" size="184,19" />
+	<Icon name="chargeBar" image="content/gui/images/background/hud/chargebar_bg.png" position="150,35" />
+	<Container name="chargeBarLeft" position="151,36" size="10,10" background_color="0,255,0" base_color="0,255,0" opaque="1" />
+	<Container name="chargeBarRight" position="161,36" size="10,10" background_color="255,0,0" base_color="255,0,0" opaque="1" />
 
 	<!-- The following two chapters contain the eight loading slots (some ships can have less). On the upper part, the icon should be shown, on the lower the charge as numeric and progress bar in the background. -->
 	<!-- Charge (upper row) -->

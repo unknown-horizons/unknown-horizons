@@ -230,6 +230,16 @@ class IngameGui(livingObject):
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
+		
+		size = self.gui['ship'].findChild(name='chargeBar').size
+		size = (size[0] - 2, size[1] - 2)
+		self.gui['ship'].findChild(name='chargeBarLeft').size = (int(0.5 + 0.75 * size[0]), size[1])
+		self.gui['ship'].findChild(name='chargeBarRight').size = (int(0.5 + size[0] - 0.75 * size[0]), size[1])
+		
+		pos = self.gui['ship'].findChild(name='chargeBar').position
+		pos = (pos[0] + 1, pos[1] + 1)
+		self.gui['ship'].findChild(name='chargeBarLeft').position = pos
+		self.gui['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : game.main.fife.pychan.tools.callbackWithArguments(self.ship_build, ship)
 		})
