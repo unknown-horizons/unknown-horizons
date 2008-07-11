@@ -40,6 +40,10 @@ class MessageWidget(object):
 		self.current_tick = None
 		self.position = 0
 		game.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
+		button_next = self.widget.findChild(name='next')
+		button_next.capture(self.forward)
+		button_back = self.widget.findChild(name='back')
+		button_back.capture(self.back)
 
 	def add(self, x, y, id, message_dict=None):
 		"""Adds a message to the MessageWidget.
@@ -48,18 +52,16 @@ class MessageWidget(object):
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
 		self.active_messages.insert(0, Message(x,y,id, self.current_tick, message_dict))
-		self.draw_wigdet()
+		self.draw_widget()
 
-	def draw_wigdet(self):
+	def draw_widget(self):
 		"""Updates the widget."""
-		widg = self.widget
 		for i in range(1,5):
 			if self.position + i-1 < len(self.active_messages):
 				w = self.widget.findChild(name=str(i))
 				w.up_image = self.active_messages[self.position + i-1].image
 				w.hover_image = self.active_messages[self.position + i-1].image
 				w.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, self.active_messages[self.position + i-1].x,self.active_messages[self.position + i-1].y))
-				print 'set showtext to', self.position + i-1
 				w.setEnterCallback(self.show_text)
 				w.setExitCallback(self.hide_text)
 			else:
@@ -72,11 +74,15 @@ class MessageWidget(object):
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
-		pass
+		if len(self.active_messages) > 4 and self.position < len(self.active_messages)-1:
+			self.position += 1
+			self.draw_widget()
 
 	def back(self):
 		"""Sets the widget to the previous icon."""
-		pass
+		if self.position > 0:
+			self.position -= 1
+			self.draw_widget()
 
 	def show_text(self, button):
 		"""Shows the text for the button."""
@@ -101,7 +107,7 @@ class MessageWidget(object):
 				self.active_messages.remove(item)
 				changed = True
 		if changed:
-			self.draw_wigdet()
+			self.draw_widget()
 
 	def __del__(self):
 		game.main.ext_scheduler.rem_all_classinst_calls(self)
