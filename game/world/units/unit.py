@@ -36,6 +36,8 @@ class Unit(fife.InstanceActionListener):
 		super(Unit, self).__init__()
 		self._instance.addActionListener(self)
 		self.move_callback = None
+		self.health = 60.0
+		self.max_health = 100.0
 
 	def start(self):
 		pass
@@ -106,3 +108,13 @@ class Unit(fife.InstanceActionListener):
 			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.unit_position[0] or self.next_target[1] == self.unit_position[1] else 17)
 		elif self.move_callback is not None:
 			self.move_callback()
+
+	def draw_health(self):
+		renderer = game.main.session.view.renderer['GenericRenderer']
+		width = 50
+		mid_node_up = fife.GenericRendererNode(self._instance, fife.Point(-width/2+int(((self.health/self.max_health)*width)),-35))
+		mid_node_down = fife.GenericRendererNode(self._instance, fife.Point(-width/2+int(((self.health/self.max_health)*width)),-30))
+		if self.health != 0:
+			renderer.addQuad(2, fife.GenericRendererNode(self._instance, fife.Point(-25,-35)), mid_node_up, mid_node_down, fife.GenericRendererNode(self._instance, fife.Point(-25,-30)), 0, 255, 0);
+		if self.health != self.max_health:
+			renderer.addQuad(2, mid_node_up, fife.GenericRendererNode(self._instance, fife.Point(25,-35)), fife.GenericRendererNode(self._instance, fife.Point(25,-30)), mid_node_down, 255, 0, 0);
