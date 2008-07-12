@@ -88,14 +88,15 @@ class NavigationTool(CursorTool):
 		# Mouse scrolling
 		old = self.lastScroll
 		new = [0, 0]
-		if mousepoint.x < 50:
-			new[0] -= 50 - mousepoint.x
-		elif mousepoint.x >= (game.main.session.view.cam.getViewPort().right()-50):
-			new[0] += 51 + mousepoint.x - game.main.session.view.cam.getViewPort().right()
-		if mousepoint.y < 50:
-			new[1] -= 50 - mousepoint.y
-		elif mousepoint.y >= (game.main.session.view.cam.getViewPort().bottom()-50):
-			new[1] += 51 + mousepoint.y - game.main.session.view.cam.getViewPort().bottom()
+		if mousepoint.x < 5:
+			new[0] -= 5 - mousepoint.x
+		elif mousepoint.x >= (game.main.session.view.cam.getViewPort().right()-5):
+			new[0] += 6 + mousepoint.x - game.main.session.view.cam.getViewPort().right()
+		if mousepoint.y < 5:
+			new[1] -= 5 - mousepoint.y
+		elif mousepoint.y >= (game.main.session.view.cam.getViewPort().bottom()-5):
+			new[1] += 6 + mousepoint.y - game.main.session.view.cam.getViewPort().bottom()
+		new = [new[0] * 10, new[1] * 10]
 		if new[0] != old[0] or new[1] != old[1]:
 			game.main.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
 			self.lastScroll = new
