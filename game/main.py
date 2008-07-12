@@ -80,7 +80,7 @@ def showSettings():
 	"""Shows the settings.
 	"""
 	global fife, settings, onEscape
-	resolutions = ["640x480", "800x600", "1024x768", "1440x900"];
+	resolutions = ["1024x768", "1440x900", "1280x1024"];
 	try:
 		resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 	except:
