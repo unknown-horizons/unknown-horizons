@@ -22,7 +22,7 @@
 import fife
 import game.main
 
-class Move(object):
+class Act(object):
 	"""Command class that moves a unit.
 	@param unit_fife_id: int FifeId of the unit that is to be moved.
 	@param x,y: float coordinates where the unit is to be moved.
@@ -37,4 +37,4 @@ class Move(object):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		game.main.session.entities.getInstance(self.unit).move(self.x, self.y)
+		game.main.session.entities.getInstance(self.unit).act(self.x, self.y)

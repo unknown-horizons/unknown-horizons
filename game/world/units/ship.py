@@ -40,12 +40,34 @@ class Ship(Unit):
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
+		if self.unit_position[0] != self.move_target[0] or self.unit_position[1] != self.move_target[1]:
+			loc = fife.Location(game.main.session.view.layers[1])
+			loc.thisown = 0
+			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
+			coords.thisown = 0
+			loc.setLayerCoordinates(coords)
+			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("219"));
 		self.draw_health()
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		game.main.session.view.renderer['GenericRenderer'].removeAll(2)
+		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_ship(self) #show the gui for ships
+
+	def act(self, x, y):
+		def tmp():
+			game.main.session.view.renderer['GenericRenderer'].removeAll(3)
+		tmp()
+		self.move(int(x), int(y), tmp)
+		if self.unit_position[0] != int(x) or self.unit_position[1] != int(y):
+			loc = fife.Location(game.main.session.view.layers[1])
+			loc.thisown = 0
+			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
+			coords.thisown = 0
+			loc.setLayerCoordinates(coords)
+			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("219"));

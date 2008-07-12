@@ -22,7 +22,7 @@
 from navigationtool import NavigationTool
 from game.world.units import UnitClass
 from game.world.units.ship import Ship
-from game.command.unit import Move
+from game.command.unit import Act
 import time
 import fife
 import math
@@ -117,13 +117,9 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			game.main.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			clickpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-			if len(game.main.session.selected_instances) == 1 and isinstance(game.main.session.selected_instances[0], Ship):
-				target_mapcoord = game.main.session.view.cam.toMapCoordinates(clickpoint, False)
-				target_mapcoord.z = 0
-				l = fife.Location(game.main.session.view.layers[1])
-				l.setMapCoordinates(target_mapcoord)
-				game.main.session.manager.execute(Move(game.main.session.selected_instances[0], target_mapcoord.x, target_mapcoord.y))
+			if len(game.main.session.selected_instances) == 1 and hasattr(game.main.session.selected_instances[0], 'act'):
+				target_mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+				game.main.session.manager.execute(Act(game.main.session.selected_instances[0], target_mapcoord.x, target_mapcoord.y))
 		else:
 			super(SelectionTool, self).mousePressed(evt)
 			return
