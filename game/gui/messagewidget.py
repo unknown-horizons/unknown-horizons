@@ -70,7 +70,6 @@ class MessageWidget(object):
 				w.hover_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
 				w.capture(lambda : None)
 				w.setEnterCallback(lambda button: None)
-				w.setExitCallback(lambda button: None)
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -105,6 +104,7 @@ class MessageWidget(object):
 			if item.display == 0:
 				self.archive.append(item)
 				self.active_messages.remove(item)
+				self.hide_text('thiswouldnormallybeabutton')
 				changed = True
 		if changed:
 			self.draw_widget()
