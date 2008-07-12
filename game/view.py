@@ -56,13 +56,13 @@ class View(livingObject):
 
 		self.view.resetRenderers()
 		self.renderer = {}
-		for r in ('InstanceRenderer','GenericRenderer'):
-			self.renderer[r] = getattr(fife, r).getInstance(self.cam)
-		self.renderer['GenericRenderer'].setEnabled(True)
-		for r in ('GridRenderer',):
-			self.renderer[r] = self.cam.getRenderer(r)
+		for r in ('CameraZoneRenderer','InstanceRenderer','GridRenderer','CellSelectionRenderer','BlockingInfoRenderer','FloatingTextRenderer','QuadTreeRenderer','CoordinateRenderer','GenericRenderer'):
+			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
-			self.renderer[r].addActiveLayer(self.layers[0])
+			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))
+		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
+		self.renderer['GenericRenderer'].addActiveLayer(self.layers[1])
+		self.renderer['GridRenderer'].addActiveLayer(self.layers[0])
 
 		game.main.settings.addCategorys('view')
 		game.main.settings.view.addCategorys('zoom')
