@@ -97,3 +97,32 @@ class AnimalFarm(SecondaryProducer):
 		for coords in self.pasture_coords:
 			instance = game.main.session.entities.buildings[18].createInstance(coords[0],coords[1])
 			self.pasture.append(game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance))
+
+class Lumberjack(SecondaryProducer):
+	"""Class representing a Lumberjack."""
+	def __init__(self, x, y, owner, instance = None):
+		SecondaryProducer.__init__(self, x, y, owner, instance)
+
+		self.building_coords = [ (x,y) for x in xrange(self.x, self.x+self.size[0]) for y in xrange(self.y, self.y+self.size[1]) ]
+		rect = Rect(self.x, self.y, self.x+self.size[0]-1, self.y+self.size[1]-1)
+		center = ((self.x+(self.size[0]/2)), (self.y+(self.size[1]/2)))
+
+		self.pasture_coords = \
+		[ (x,y) for x in xrange(self.x-self.radius, self.x+self.size[0]+self.radius+1) \
+			for y in xrange(self.y-self.radius, self.y+self.size[1]+self.radius+1) \
+				#if ( (((x-center[0]) ** 2) + ((y-center[1]) ** 2)) <= (self.radius ** 2)) and \
+				if ( rect.distance( Point(x,y) ) <= self.radius ) and \
+				 (x,y) not in self.building_coords ]
+
+		self.pasture = []
+
+		self.recreate_pasture()
+
+	def recreate_pasture(self):
+		""" Turns everything in the radius to pasture, that can be turned"""
+		for coords in self.pasture_coords:
+			instance = game.main.session.entities.buildings[17].createInstance(coords[0],coords[1])
+			building = game.main.session.entities.buildings[17](coords[0], coords[1], self.owner, instance)
+			self.island.add_building(coords[0], coords[1], building, self.owner)
+			self.pasture.append(building)
+			building.start()

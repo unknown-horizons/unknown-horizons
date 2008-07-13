@@ -40,6 +40,7 @@ class GrowingBuilding(PrimaryProducer):
 	def update_animation(self):
 		""" Executes next action """
 		try:
+			print 'animation'
 			action = self.cur_action.next()
 			location = fife.Location(game.main.session.view.layers[1])
 			location.setLayerCoordinates(fife.ModelCoordinate(int(self.position[0] + 1), int(self.position[1]), 0))
