@@ -141,6 +141,9 @@ class IngameGui(livingObject):
 			'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
 			'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10)
 		})
+		self.gui['build_tab3'].mapEvents({
+			'tower-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 13),
+		})
 		self.gui['build_tab4'].mapEvents({
 			'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
 			'bridge-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
