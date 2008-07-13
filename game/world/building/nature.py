@@ -22,7 +22,7 @@
 from building import Building
 from production import PrimaryProducer
 import game.main
-
+import fife
 class GrowingBuilding(PrimaryProducer):
 	""" Class for stuff that grows, such as trees
 	"""
@@ -42,7 +42,7 @@ class GrowingBuilding(PrimaryProducer):
 		try:
 			action = self.cur_action.next()
 			location = fife.Location(game.main.session.view.layers[1])
-			location.setLayerCoordinates(fife.ModelCoordinate(int(self.unit_position[0] + 1), int(self.unit_position[1]), 0))
+			location.setLayerCoordinates(fife.ModelCoordinate(int(self.position[0] + 1), int(self.position[1]), 0))
 			self._instance.act(action, location, True)
 		except StopIteration:
 			# this is a quick & dirty fix, source of the bug has yet to be traced

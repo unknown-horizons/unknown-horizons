@@ -31,6 +31,7 @@ class UnselectableBuilding(object):
 	def __init__(self, x, y, owner, instance = None):
 		self.x = x
 		self.y = y
+		self.position = (x, y)
 		self.owner = owner
 		if instance is None:
 			self.createInstance(x, y)
