@@ -47,7 +47,7 @@ class Path(UnselectableBuilding):
 				continue
 			settlement = new_settlement
 
-			buildings.append({'x' : x, 'y' : y, 'action' : ('a' if int(round(point2[0])) < int(round(point1[0])) else 'c') if len(buildings) == 0 else 'ac'})
+			buildings.append({'x' : x, 'y' : y, 'action' : ('d' if int(round(point2[0])) < int(round(point1[0])) else 'b') if len(buildings) == 0 else 'bd'})
 		x = int(round(point2[0]))
 		is_first = True
 		for y in xrange(int(round(point1[1])), int(round(point2[1])) + (1 if int(round(point2[1])) > int(round(point1[1])) else -1), (1 if int(round(point2[1])) > int(round(point1[1])) else -1)):
@@ -66,19 +66,19 @@ class Path(UnselectableBuilding):
 				if y == int(round(point2[1])): #only tile
 					action = 'default'
 				else:
-					action = 'd' if int(round(point2[1])) > int(round(point1[1])) else 'b'
+					action = 'c' if int(round(point2[1])) > int(round(point1[1])) else 'a'
 			elif y == int(round(point2[1])): #last tile
 				if int(round(point1[1])) == int(round(point2[1])): #only tile in this loop
-					action = 'a' if int(round(point2[0])) > int(round(point1[0])) else 'c'
+					action = 'd' if int(round(point2[0])) > int(round(point1[0])) else 'b'
 				else:
-					action = 'b' if int(round(point2[1])) > int(round(point1[1])) else 'd'
+					action = 'a' if int(round(point2[1])) > int(round(point1[1])) else 'c'
 			elif y == int(round(point1[1])): #edge
 				if int(round(point2[0])) > int(round(point1[0])):
-					action = 'ad' if int(round(point2[1])) > int(round(point1[1])) else 'ab'
+					action = 'cd' if int(round(point2[1])) > int(round(point1[1])) else 'ad'
 				else:
-					action = 'cd' if int(round(point2[1])) > int(round(point1[1])) else 'bc'
+					action = 'bc' if int(round(point2[1])) > int(round(point1[1])) else 'ab'
 			else:
-				action = 'bd'
+				action = 'ac'
 			buildings.append({'x' : x, 'y' : y, 'action' : action})
 			is_first = False
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
@@ -93,22 +93,31 @@ class Path(UnselectableBuilding):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
 
+	def remove(self):
+		super(Path, self).remove()
+		island = game.main.session.world.get_island(self.x, self.y)
+		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
+			if tile is not None and isinstance(tile.object, Path):
+				tile.object.recalculateOrientation()
+
 	def recalculateOrientation(self):
 		"""
 		"""
 		action = ''
 		island = game.main.session.world.get_island(self.x, self.y)
-		if isinstance(island.get_tile(self.x - 1, self.y).object, (Path, Bridge)):
-			action += 'a'
 		if isinstance(island.get_tile(self.x, self.y - 1).object, (Path, Bridge)):
-			action += 'b'
+			action += 'a'
 		if isinstance(island.get_tile(self.x + 1, self.y).object, (Path, Bridge)):
-			action += 'c'
+			action += 'b'
 		if isinstance(island.get_tile(self.x, self.y + 1).object, (Path, Bridge)):
+			action += 'c'
+		if isinstance(island.get_tile(self.x - 1, self.y).object, (Path, Bridge)):
 			action += 'd'
 		if action == '':
-			action = 'ac'
-		self._instance.act(action, self._instance.getLocation(), True)
+			action = 'default'
+		location = fife.Location(game.main.session.view.layers[1])
+		location.setLayerCoordinates(fife.ModelCoordinate(int(self.x + 1), int(self.y), 0))
+		self._instance.act(action, location, True)
 
 class Bridge(UnselectableBuilding):
 	#@classmethod
