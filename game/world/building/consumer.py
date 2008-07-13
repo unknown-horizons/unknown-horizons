@@ -47,7 +47,4 @@ class Consumer(object):
 			self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def get_consumed_res(self):
-		if self.active_production_line == -1:
-			return []
-		else:
-			return self.consumation[self.active_production_line];
+			return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
