@@ -41,7 +41,9 @@ class GrowingBuilding(PrimaryProducer):
 		""" Executes next action """
 		try:
 			action = self.cur_action.next()
-			self._instance.act(action, self._instance.getLocation(), True)
+			location = fife.Location(game.main.session.view.layers[1])
+			location.setLayerCoordinates(fife.ModelCoordinate(int(self.unit_position[0] + 1), int(self.unit_position[1]), 0))
+			self._instance.act(action, location, True)
 		except StopIteration:
 			# this is a quick & dirty fix, source of the bug has yet to be traced
 			pass

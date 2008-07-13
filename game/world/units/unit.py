@@ -32,7 +32,9 @@ class Unit(fife.InstanceActionListener):
 		self.next_target = (x, y)
 		self._instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(self._instance)
-		self._instance.act('default', self._instance.getLocation(), True)
+		location = fife.Location(game.main.session.view.layers[1])
+		location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
+		self._instance.act('default', location, True)
 		super(Unit, self).__init__()
 		self._instance.addActionListener(self)
 		self.move_callback = None
