@@ -47,7 +47,7 @@ class Ship(Unit):
 			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("235"));
+			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
 		self.draw_health()
 
 	def deselect(self):
@@ -70,4 +70,4 @@ class Ship(Unit):
 			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("235"));
+			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
