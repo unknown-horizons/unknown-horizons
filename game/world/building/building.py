@@ -57,7 +57,6 @@ class UnselectableBuilding(object):
 		game.main.session.entities.deleteInstance(self._instance.getId())
 		game.main.session.view.layers[1].deleteInstance(self._instance)
 		self._instance.thisown = 1
-		self.settlement.rem_inhabitants(self.inhabitants)
 
 	@classmethod
 	def getInstance(cls, x, y, action='default', building=None, **trash):
