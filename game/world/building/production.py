@@ -90,7 +90,7 @@ class AnimalFarm(SecondaryProducer):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_herder(self)
+		game.main.session.ingame_gui.show_menu('herder')
 
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""

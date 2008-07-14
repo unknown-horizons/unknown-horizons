@@ -24,6 +24,7 @@ import game.main
 import fife
 from game.util import livingObject
 from messagewidget import MessageWidget
+from tabwidget import TabWidget
 
 class IngameGui(livingObject):
 	"""Class handling all the ingame gui events."""
@@ -159,6 +160,9 @@ class IngameGui(livingObject):
 		self.gui['herder'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/work_building.xml')
 		self.gui['herder'].position = self.gui['build'].position
 
+		#self.tabwidget = TabWidget(1,[], [('content/gui/build_menu/hud_build_tab0.xml','content/gui/images/background/hud/tab_bg.png'),('content/gui/tab_widget/tab_tab0.xml','content/gui/images/background/hud/tab_bg.png')])
+		#self.tabwidget.show()
+
 	def end(self):
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : lambda : None
@@ -258,9 +262,6 @@ class IngameGui(livingObject):
 
 	def show_branch_office(self, branch_office):
 		self.show_menu('branch_office')
-
-	def show_herder(self, herder):
-		self.show_menu('herder')
 
 	def deselect_all(self):
 		for instance in game.main.session.selected_instances:
