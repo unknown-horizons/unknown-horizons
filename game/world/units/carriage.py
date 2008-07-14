@@ -49,6 +49,7 @@ class BuildingCarriage(Unit):
 		self.radius = self.building.radius
 		# this makes cariage position _in_ the building
 		Unit.__init__(self, self.building.x, self.building.y)
+		self.hide()
 		# target: [building, resource_id,  amount]
 		self.target = []
 
@@ -174,6 +175,7 @@ class BuildingCarriage(Unit):
 		if self.target[2] > (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1])):
 			self.target[2] = (self.building.inventory.get_size(self.target[1]) - self.building.inventory.get_value(self.target[1]))
 		self.target[0].pickup_carriages.append(self)
+		self.show()
 		self.move(self.target[0].x, self.target[0].y, self.reached_pickup)
 
 		#print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
@@ -200,6 +202,7 @@ class BuildingCarriage(Unit):
 		# check if this cleanup is alright
 		# this is also done this way somewhere else
 		self.target = []
+		self.hide()
 		self.send()
 
 	def send(self):
