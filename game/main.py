@@ -48,8 +48,9 @@ def start():
 	settings.addCategorys('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 
-	#init fife
 	fife = Fife()
+	ext_scheduler = ExtScheduler(fife.pump)
+	
 	fife.init()
 
 	if settings.sound.enabled:
@@ -63,7 +64,6 @@ def start():
 
 	showMain()
 
-	ext_scheduler = ExtScheduler(fife.pump)
 
 	fife.run()
 
