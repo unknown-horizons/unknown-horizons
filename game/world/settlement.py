@@ -52,3 +52,9 @@ class Settlement(object):
 				return b
 		else:
 			return None
+
+	def add_inhabitants(self, num):
+		self._inhabitants += num
+
+	def rem_inhabitants(self, num):
+		self._inhabitants -= num

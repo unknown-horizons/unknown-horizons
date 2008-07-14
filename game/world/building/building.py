@@ -124,11 +124,14 @@ class UnselectableBuilding(object):
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
 		"""
-		pass
+		self.settlement.add_inhabitants(self.inhabitants)
 
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
 		pass
+
+	def deconstruct(self):
+		self.settlement.rem_inhabitants(self.inhabitants)
 
 class Building(UnselectableBuilding):
 	def select(self):

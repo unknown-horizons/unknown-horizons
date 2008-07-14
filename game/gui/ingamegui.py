@@ -212,18 +212,21 @@ class IngameGui(livingObject):
 		else:
 			self.gui['status'].resizeToContent()
 
-	def cityname_set(self, name):
+	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center
 
 		Show/Hide is handled automatically
 		To hide cityname, set name to ''
-		@param name: name of the city
+		@param settlement: Settlement class providing the information needed
 		"""
-		if(name == ''):
+		if(settlement == None):
 			self.gui['topmain'].hide()
 			return
 		foundlabel = self.gui['topmain'].findChild(name='city_name')
-		foundlabel._setText(name)
+		foundlabel._setText(settlement.name)
+		foundlabel.resizeToContent()
+		foundlabel = self.gui['topmain'].findChild(name='city_inhabitants')
+		foundlabel.text = 'Inhabitants: '+str(settlement._inhabitants)
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
 		self.gui['topmain'].show()
@@ -234,12 +237,12 @@ class IngameGui(livingObject):
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
-		
+
 		size = self.gui['ship'].findChild(name='chargeBar').size
 		size = (size[0] - 2, size[1] - 2)
 		self.gui['ship'].findChild(name='chargeBarLeft').size = (int(0.5 + 0.75 * size[0]), size[1])
 		self.gui['ship'].findChild(name='chargeBarRight').size = (int(0.5 + size[0] - 0.75 * size[0]), size[1])
-		
+
 		pos = self.gui['ship'].findChild(name='chargeBar').position
 		pos = (pos[0] + 1, pos[1] + 1)
 		self.gui['ship'].findChild(name='chargeBarLeft').position = pos
