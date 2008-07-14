@@ -8,7 +8,7 @@
 	<Icon name="tab5" image="content/gui/images/background/hud/tab_bg.png" position="0,164" /><ImageButton name="research" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,164" />
 
 	<Icon image="content/gui/images/background/hud/green.png" position="64,4" />
-	<Container  position="64,5" size="533,190" name="content">
+	<Container  position="64,5" size="530,190" name="content">
 	<!-- Tabelle zum Einordnen der Gebaeude: Nebeneinander die Gebaeude, darunter 6 Zeilen fuer die einzelnen Klassen -->
 	</Container>
 </Container>
