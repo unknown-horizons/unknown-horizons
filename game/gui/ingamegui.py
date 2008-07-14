@@ -156,6 +156,8 @@ class IngameGui(livingObject):
 		self.gui['ship'].position = self.gui['build'].position
 		self.gui['branch_office'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/branch_office.xml')
 		self.gui['branch_office'].position = self.gui['build'].position
+		self.gui['herder'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/work_building.xml')
+		self.gui['herder'].position = self.gui['build'].position
 
 	def end(self):
 		self.gui['gamemenu'].mapEvents({
@@ -253,6 +255,9 @@ class IngameGui(livingObject):
 
 	def show_branch_office(self, branch_office):
 		self.show_menu('branch_office')
+
+	def show_herder(self, herder):
+		self.show_menu('herder')
 
 	def deselect_all(self):
 		for instance in game.main.session.selected_instances:
