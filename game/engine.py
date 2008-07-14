@@ -25,6 +25,7 @@ import pychan
 import game.gui.style
 import game.main
 import new
+import glob, random
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -210,6 +211,10 @@ class Fife(object):
 
 		self.engine.init()
 
+		#temporarily select a random music file to play. TODO: Replace with proper playlist
+		music = glob.glob('content/audio/music/*.ogg')
+		print music
+
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
 		self.eventmanager.setNonConsumableKeys([fife.Key.ESCAPE, fife.Key.F10])
@@ -218,7 +223,7 @@ class Fife(object):
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.bgsound = self.soundmanager.createEmitter()
-		self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile('content/audio/music/music.ogg'))
+		self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile(music[random.randint(0, len(music) - 1)]))
 		self.bgsound.setLooping(True)
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
