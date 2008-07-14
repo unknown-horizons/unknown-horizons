@@ -213,7 +213,6 @@ class Fife(object):
 
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		music = glob.glob('content/audio/music/*.ogg')
-		print music
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
