@@ -77,5 +77,4 @@ class Tear(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		(game.main.session.world.islands[self.island_id] if self.settlement_id is None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].deconstruct()
 		(game.main.session.world.islands[self.island_id] if self.settlement_id is None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].remove()

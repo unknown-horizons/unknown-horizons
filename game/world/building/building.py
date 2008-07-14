@@ -48,6 +48,7 @@ class UnselectableBuilding(object):
 
 	def remove(self):
 		"""Removes the building"""
+		self.settlement.rem_inhabitants(self.inhabitants)
 		for x in xrange(self.x, self.x + self.__class__.size[0]):
 			for y in xrange(self.y, self.y + self.__class__.size[1]):
 				tile = self.island.get_tile(x,y)
@@ -56,6 +57,7 @@ class UnselectableBuilding(object):
 		game.main.session.entities.deleteInstance(self._instance.getId())
 		game.main.session.view.layers[1].deleteInstance(self._instance)
 		self._instance.thisown = 1
+		self.settlement.rem_inhabitants(self.inhabitants)
 
 	@classmethod
 	def getInstance(cls, x, y, action='default', building=None, **trash):
@@ -130,8 +132,6 @@ class UnselectableBuilding(object):
 		"""This function is called when the building is built, to start production for example."""
 		pass
 
-	def deconstruct(self):
-		self.settlement.rem_inhabitants(self.inhabitants)
 
 class Building(UnselectableBuilding):
 	def select(self):
