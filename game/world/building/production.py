@@ -89,6 +89,9 @@ class AnimalFarm(SecondaryProducer):
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
+	def show_menu(self):
+		game.main.session.ingame_gui.show_herder(self)
+
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
 		# use building rect here when it exists
