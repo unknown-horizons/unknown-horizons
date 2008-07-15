@@ -263,10 +263,10 @@ class IngameGui(livingObject):
 		"""
 		if self._old_menu is not None:
 			self._old_menu.hide()
-		if isinstance(guiname, str):
-			self._old_menu = self.gui[guiname]
+		if isinstance(menu, str):
+			self._old_menu = self.gui[menu]
 		else:
-			self._old_menu = guiname
+			self._old_menu = menu
 		if self._old_menu is not None:
 			self._old_menu.show()
 
