@@ -35,6 +35,10 @@ class TabWidget(object):
 			self.tabs.append(Tab(name, xml, up, down, hover))
 		self.widget = game.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
 		self.widget.stylize('menu')
+		self.widget.position = (
+			game.main.session.ingame_gui.gui['minimap'].position[0] - self.widget.size[0] - 5 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			game.main.fife.settings.getScreenHeight() - self.widget.size[1]
+		)
 		self.widget.active = 0 # index of the currently active tab
 		for index, tab in enumerate(self.tabs):
 			button = self.widget.findChild(name=str(index)) # load button

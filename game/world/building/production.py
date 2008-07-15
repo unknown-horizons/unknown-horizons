@@ -94,9 +94,6 @@ class AnimalFarm(SecondaryProducer):
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
-	def show_menu(self):
-		game.main.session.ingame_gui.show_menu('herder')
-
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
 		# use building rect here when it exists
@@ -104,7 +101,10 @@ class AnimalFarm(SecondaryProducer):
 
 		for coords in self.pasture_coords:
 			instance = game.main.session.entities.buildings[18].createInstance(coords[0],coords[1])
-			self.pasture.append(game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance))
+			building = game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance)
+			self.island.add_building(coords[0], coords[1], building, self.owner)
+			self.pasture.append(building)
+			building.start()
 
 class Lumberjack(SecondaryProducer):
 	"""Class representing a Lumberjack."""
