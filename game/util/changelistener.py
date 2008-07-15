@@ -19,11 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
+class changelistener(object):
+	def __init__(self, *args, **kwargs):
+		self.__listeners = []
+		super(changelistener, self).__init__(*args, **kwargs)
 
-from living import livingProperty, livingObject
-from stablelist import stablelist
-from color import Color
-from point import Point
-from rect import Rect
-from changelistener import changelistener
+	def addChangeListener(self, listener):
+		self.__listeners.append(listener)
+
+	def removeChangeListener(self, listener):
+		self.__listeners.remove(listener)
+
+	def __setattribute__(self, name, value):
+		super(changelistener, self).__setattribute__(self, name, value)
+		self._changed(name, value)
+
+	def _changed(self, name = None, value = None):
+		for listener in self.__listeners:
+			listener(self, name, value)
