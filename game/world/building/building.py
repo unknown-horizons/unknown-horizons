@@ -94,7 +94,7 @@ class Building(object):
 
 class Selectable(object):
 	def select(self):
-		"""Runs neccesary steps to select the unit."""
+		"""Runs neccesary steps to select the building."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island.grounds:
 			if tile.settlement == self.settlement and (max(self.x - tile.x, 0, tile.x - self.x - self.size[0] + 1) ** 2) + (max(self.y - tile.y, 0, tile.y - self.y - self.size[1] + 1) ** 2) <= self.radius ** 2:

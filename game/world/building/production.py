@@ -26,6 +26,7 @@ from game.world.storage import Storage
 from game.world.units.carriage import BuildingCarriage
 from game.util.rect import Rect
 from game.util.point import Point
+from game.gui.tabwidget import TabWidget
 import game.main
 from buildable import BuildableSingle
 
@@ -52,6 +53,9 @@ class SecondaryProducer(_DummyProducer, Consumer):
 	def __init__(self, x, y, owner, instance = None):
 		_DummyProducer.__init__(self, x, y, owner, instance)
 		Consumer.__init__(self)
+
+	def show_menu(self):
+		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
 
 class BuildinglessProducer(Producer, Consumer):
 	""" Class for immaterial producers

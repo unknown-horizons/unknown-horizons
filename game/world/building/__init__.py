@@ -39,6 +39,7 @@ class BuildingClass(type):
 		self.id = id
 		self._object = None
 		(size_x,  size_y) = game.main.db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
+		self.name = game.main.db("SELECT name FROM data.building WHERE rowid = ?", id)[0][0]
 		self.size = (int(size_x), int(size_y))
 		self.radius = game.main.db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
 		self.health = int(game.main.db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])

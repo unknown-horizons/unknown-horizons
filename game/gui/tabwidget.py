@@ -45,6 +45,7 @@ class TabWidget(object):
 			if tab.name in callbacks:
 				tab.widget.mapEvents(callbacks[tab.name])
 		self.widget.findChild(name='content').addChild(self.tabs[self.widget.active].widget)
+		self.tabs[self.widget.active].update(self.object)
 		self.widget.findChild(name='content').adaptLayout()
 
 	def load_tab(self, id):

@@ -25,6 +25,7 @@ from game.world.building.producer import Producer
 from game.world.building.consumer import Consumer
 from game.world.storage import Storage
 from game.world.units.carriage import BuildingCarriage
+from game.gui.tabwidget import TabWidget
 import game.main
 
 class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer):
@@ -52,7 +53,7 @@ class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer)
 					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_branch_office(self)
+		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
