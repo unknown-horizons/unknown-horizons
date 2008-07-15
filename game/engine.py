@@ -212,7 +212,7 @@ class Fife(object):
 		self.engine.init()
 
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
-		music = glob.glob('content/audio/music/*.ogg')
+		self.music = glob.glob('content/audio/music/*.ogg')
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
@@ -222,8 +222,10 @@ class Fife(object):
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.bgsound = self.soundmanager.createEmitter()
-		self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile(music[random.randint(0, len(music) - 1)]))
-		self.bgsound.setLooping(True)
+		self.music_rand_element = random.randint(0, len(self.music) - 1)
+		self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile(self.music[self.music_rand_element]))
+		game.main.ext_scheduler.add_new_object(self.check_music, self, loops=-1)
+		self.bgsound.setLooping(False)
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
 		self.animationloader = SQLiteAnimationLoader()
@@ -272,3 +274,12 @@ class Fife(object):
 		""" Quits the engine.
 		"""
 		self._doQuit = True
+
+	def check_music(self):
+		if hasattr(self, '_bgsound_old_byte_pos'):
+			if self._bgsound_old_byte_pos == game.main.fife.bgsound.getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == game.main.fife.bgsound.getCursor(fife.SD_SAMPLE_POS):
+				self.music_rand_element = self.music_rand_element + 1 if self.music_rand_element + 1 < len(self.music) else 0
+				self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile(self.music[self.music_rand_element]))
+				self.bgsound.play()
+				print 'Track Changed'
+		self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = game.main.fife.bgsound.getCursor(fife.SD_BYTE_POS), game.main.fife.bgsound.getCursor(fife.SD_SAMPLE_POS)
