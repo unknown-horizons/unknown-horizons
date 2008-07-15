@@ -22,7 +22,28 @@
 import game.main
 import math
 
-class BuildableRect(object):
+class BuildableSingle(object):
+	@classmethod
+	def isBuildable(cls, x, y):
+		return True
+
+	@classmethod
+	def getBuildList(cls, point1, point2):
+		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
+		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
+		island = game.main.session.world.get_island(x, y)
+		if island is None:
+			return None
+		for xx in xrange(x, x + cls.size[0]):
+			for yy in xrange(y, y + cls.size[1]):
+				if island.get_tile(xx,yy) is None:
+					return None
+		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
+		if len(settlements) > 1:
+			return None
+		return {'island' : island, 'settlement' : None if len(settlements) == 0 else settlements.pop(), 'buildings' : [{'x' : x, 'y' : y}]}
+
+class BuildableRect(BuildableSingle):
 	@classmethod
 	def getBuildList(cls, point1, point2):
 		island = None
@@ -44,24 +65,7 @@ class BuildableRect(object):
 				buildings.append({'x' : x, 'y' : y})
 		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
 
-class BuildableSingle(object):
-	@classmethod
-	def getBuildList(cls, point1, point2):
-		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
-		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
-		island = game.main.session.world.get_island(x, y)
-		if island is None:
-			return None
-		for xx in xrange(x, x + cls.size[0]):
-			for yy in xrange(y, y + cls.size[1]):
-				if island.get_tile(xx,yy) is None:
-					return None
-		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
-		if len(settlements) > 1:
-			return None
-		return {'island' : island, 'settlement' : None if len(settlements) == 0 else settlements.pop(), 'buildings' : [{'x' : x, 'y' : y}]}
-
-class BuildableLine(object):
+class BuildableLine(BuildableSingle):
 	@classmethod
 	def getBuildList(cls, point1, point2):
 		"""
