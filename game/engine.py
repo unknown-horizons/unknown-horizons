@@ -278,8 +278,8 @@ class Fife(object):
 	def check_music(self):
 		if hasattr(self, '_bgsound_old_byte_pos'):
 			if self._bgsound_old_byte_pos == game.main.fife.bgsound.getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == game.main.fife.bgsound.getCursor(fife.SD_SAMPLE_POS):
+				self.bgsound.reset()
 				self.music_rand_element = self.music_rand_element + 1 if self.music_rand_element + 1 < len(self.music) else 0
 				self.bgsound.setSoundClip(self.engine.getSoundClipPool().addResourceFromFile(self.music[self.music_rand_element]))
 				self.bgsound.play()
-				print 'Track Changed'
 		self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = game.main.fife.bgsound.getCursor(fife.SD_BYTE_POS), game.main.fife.bgsound.getCursor(fife.SD_SAMPLE_POS)
