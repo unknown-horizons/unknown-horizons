@@ -257,15 +257,18 @@ class IngameGui(livingObject):
 			cls.show_build_menu()
 		game.main.session.cursor = BuildingTool(cls, unit)
 
-	def show_menu(self, guiname):
+	def show_menu(self, menu):
 		"""Shows a menu
-		@param guiname: str with the guiname.
+		@param menu: str with the guiname or pychan object.
 		"""
 		if self._old_menu is not None:
-			self.gui[self._old_menu].hide()
-		if guiname is not None:
-			self.gui[guiname].show()
-		self._old_menu = guiname
+			self._old_menu.hide()
+		if isinstance(guiname, str):
+			self._old_menu = self.gui[guiname]
+		else:
+			self._old_menu = guiname
+		if self._old_menu is not None:
+			self._old_menu.show()
 
 	def hide_menu(self):
 		self.show_menu(None)
