@@ -30,8 +30,8 @@ class Act(object):
 	"""
 	def __init__(self, unit, x, y):
 		self.unit = unit._instance.getId()
-		self.x = int(x)
-		self.y = int(y)
+		self.x = x
+		self.y = y
 
 	def __call__(self, issuer):
 		"""__call__() gets called by the manager.

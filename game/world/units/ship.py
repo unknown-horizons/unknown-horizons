@@ -63,8 +63,9 @@ class Ship(Unit):
 		def tmp():
 			game.main.session.view.renderer['GenericRenderer'].removeAll(3)
 		tmp()
-		self.move(int(x), int(y), tmp)
-		if self.unit_position[0] != int(x) or self.unit_position[1] != int(y):
+		x,y=int(round(x)),int(round(y))
+		self.move(x, y, tmp)
+		if self.unit_position[0] != x or self.unit_position[1] != y:
 			loc = fife.Location(game.main.session.view.layers[1])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
