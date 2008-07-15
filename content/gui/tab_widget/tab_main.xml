@@ -6,7 +6,7 @@
 	<ImageButton name="3" up_image="" size="64,32" position="0,100" />
 	<ImageButton name="4" up_image="" size="64,32" position="0,132" />
 	<ImageButton name="5" up_image="" size="64,32" position="0,164" />
-
+	<ImageButton name="6" up_image="" size="64,32" position="0,196" />
 	<Icon image="content/gui/images/background/hud/ingame3.png" position="64,4" />
 	<Container  position="64,5" size="530,190" name="content">
 	</Container>

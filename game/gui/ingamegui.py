@@ -31,6 +31,7 @@ class IngameGui(livingObject):
 	def begin(self):
 		super(IngameGui, self).begin()
 		self.gui = {}
+		self.tabwidgets = {}
 		self._old_menu = None
 
 		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
@@ -109,45 +110,32 @@ class IngameGui(livingObject):
 		)
 		self.gui['status_gold'].show()
 
-		self.gui['build'] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build.xml')
-		self.gui['build'].stylize('menu')
-		self.gui['build'].position = (
-			self.gui['minimap'].position[0] - self.gui['build'].size[0] - 5 if game.main.fife.settings.getScreenWidth()/2 + self.gui['build'].size[0]/2 > self.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.gui['build'].size[0]/2,
-			game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1]
-		)
-		for i in range(0,6):
-			self.gui['build_tab'+str(i)] = game.main.fife.pychan.loadXML('content/gui/build_menu/hud_build_tab'+str(i)+'.xml')
-			self.gui['build_tab'+str(i)].stylize('menu')
-		self.gui['build'].findChild(name='content').addChild(self.gui['build_tab0']) #Add first menu
-		self.gui['build'].findChild(name='content').adaptLayout()
-		self.active_build = 0
-		self.gui['build'].mapEvents({
-			'servicesTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 0),
-			'residentsTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 1),
-			'companiesTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 2),
-			'militaryTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 3),
-			'streetsTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 4),
-			'specialTab' : game.main.fife.pychan.tools.callbackWithArguments(self.build_load_tab, 5)
-		})
-		self.gui['build_tab0'].mapEvents({
+
+		callbacks_build = {'build1': {
 			'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
-		})
-		self.gui['build_tab1'].mapEvents({
+		},
+		 'build2': {
 			'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
-		})
-		self.gui['build_tab2'].mapEvents({
+		},
+		 'build3': {
 			'tree' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
 			'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
 			'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
 			'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10)
-		})
-		self.gui['build_tab3'].mapEvents({
-			'tower-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 13),
-		})
-		self.gui['build_tab4'].mapEvents({
+		},
+		 'build5': {
 			'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
 			'bridge-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
-		})
+		}
+		}
+
+		self.tabwidgets['build'] = TabWidget(1, callbacks=callbacks_build)
+		self.gui['build'] = self.tabwidgets['build'].widget
+		self.gui['build'].position = (
+			self.gui['minimap'].position[0] - self.gui['build'].size[0] - 5 if game.main.fife.settings.getScreenWidth()/2 + self.gui['build'].size[0]/2 > self.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.gui['build'].size[0]/2,
+			game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1]
+		)
+
 		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
 		self.gui['chat'] = game.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
 		self.gui['cityinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_cityinfo.xml')
@@ -160,22 +148,11 @@ class IngameGui(livingObject):
 		self.gui['herder'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/work_building.xml')
 		self.gui['herder'].position = self.gui['build'].position
 
-		#self.tabwidget = TabWidget(1,[], [('content/gui/build_menu/hud_build_tab0.xml','content/gui/images/background/hud/tab_bg.png'),('content/gui/tab_widget/tab_tab0.xml','content/gui/images/background/hud/tab_bg.png')])
-		#self.tabwidget.show()
-
 	def end(self):
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : lambda : None
 		})
 
-		self.gui['build'].mapEvents({
-			'servicesTab' : lambda : None,
-			'residentsTab' : lambda : None,
-			'companiesTab' : lambda : None,
-			'militaryTab' : lambda : None,
-			'streetsTab' : lambda : None,
-			'specialTab' : lambda : None
-		})
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : lambda : None
 		})
@@ -201,6 +178,7 @@ class IngameGui(livingObject):
 			if w._parent is None:
 				w.hide()
 		self.message_widget = None
+		self.tabwidgets = None
 		super(IngameGui, self).end()
 
 	def status_set(self, label, value):
