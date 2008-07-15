@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
+from building import Building, Selectable
 from game.world.building.consumer import Consumer
 from game.world.building.producer import Producer
 from game.world.storage import Storage
@@ -27,8 +27,9 @@ from game.world.units.carriage import BuildingCarriage
 from game.util.rect import Rect
 from game.util.point import Point
 import game.main
+from buildable import BuildableSingle
 
-class _DummyProducer(Building, Producer):
+class _DummyProducer(Building, BuildableSingle, Selectable, Producer):
 	""" Class for internal use in this file only. """
 	def __init__(self, x, y, owner, instance = None):
 		self.local_carriages = []

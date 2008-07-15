@@ -19,14 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
+from building import Building, Selectable
+from buildable import BuildableSingle
 from game.world.building.producer import Producer
 from game.world.building.consumer import Consumer
 from game.world.storage import Storage
 from game.world.units.carriage import BuildingCarriage
 import game.main
 
-class StorageBuilding(Building, Producer, Consumer):
+class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer):
 	"""Building that gets pickups and provides them for anyone
 	Inherited eg. by branch office, storage tent
 	"""

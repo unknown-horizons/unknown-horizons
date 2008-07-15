@@ -20,10 +20,11 @@
 # ###################################################
 
 from building import Building
+from buildable import BuildableRect
 from production import PrimaryProducer
 import game.main
 import fife
-class GrowingBuilding(PrimaryProducer):
+class GrowingBuilding(BuildableRect, PrimaryProducer):
 	""" Class for stuff that grows, such as trees
 	"""
 	def __init__(self, x, y, owner, instance = None):

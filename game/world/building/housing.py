@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
+from building import Building, Selectable
+from buildable import BuildableSingle
 
-class Housing(Building):
+class Housing(Building, Selectable, BuildableSingle):
 	pass
