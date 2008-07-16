@@ -76,8 +76,13 @@ class Ship(Unit):
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
-	pass
+
+	def show_menu(self):
+		pass
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
-	pass
+
+	def show_menu(self):
+		pass
+
