@@ -215,7 +215,6 @@ class IngameGui(livingObject):
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
-		#self.gui['ship'].findChild(name='pirateshipname').text = ship.name+" (Ship type)"
 
 		size = self.gui['ship'].findChild(name='chargeBar').size
 		size = (size[0] - 2, size[1] - 2)
@@ -230,32 +229,10 @@ class IngameGui(livingObject):
 			'foundSettelment' : game.main.fife.pychan.tools.callbackWithArguments(self.ship_build, ship)
 		})
 		self.show_menu('ship')
-
-	def show_ship_pirate(self, ship):
-		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
-		#self.gui['ship'].findChild(name='pirateshipname').text = ship.name+" (Ship type)"
-
-		size = self.gui['ship'].findChild(name='chargeBar').size
-		size = (size[0] - 2, size[1] - 2)
-		self.gui['ship'].findChild(name='chargeBarLeft').size = (int(0.5 + 0.75 * size[0]), size[1])
-		self.gui['ship'].findChild(name='chargeBarRight').size = (int(0.5 + size[0] - 0.75 * size[0]), size[1])
-
-		pos = self.gui['ship'].findChild(name='chargeBar').position
-		pos = (pos[0] + 1, pos[1] + 1)
-		self.gui['ship'].findChild(name='chargeBarLeft').position = pos
-		self.gui['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
-		self.gui['ship'].mapEvents({
-			'foundSettelment' : game.main.fife.pychan.tools.callbackWithArguments(self.ship_build, ship)
-		})
-		self.show_menu('ship')
-
 
 	def show_build_menu(self):
 		self.deselect_all()
 		self.show_menu('build')
-
-	def show_branch_office(self, branch_office):
-		self.show_menu('branch_office')
 
 	def deselect_all(self):
 		for instance in game.main.session.selected_instances:
