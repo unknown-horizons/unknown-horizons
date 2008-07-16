@@ -26,6 +26,7 @@ import game.gui.style
 import game.main
 import new
 import glob, random
+from game.util.inventory_widget import Inventory, ImageFillStatusButton
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -243,6 +244,8 @@ class Fife(object):
 		for name, stylepart in game.gui.style.STYLES.items():
 			self.pychan.manager.addStyle(name, stylepart)
 		self.pychan.loadFonts("content/fonts/Essays1743-Italic.fontdef")
+		pychan.widgets.registerWidget(Inventory)
+		pychan.widgets.registerWidget(ImageFillStatusButton)
 
 		self._gotInited = True
 

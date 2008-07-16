@@ -21,6 +21,7 @@
 
 import game.main
 import pychan
+from game.util.inventory_widget import Inventory
 
 class TabWidget(object):
 	"""Used to create menus for buildings, ships, etc. Uses multiple tabs.
@@ -94,6 +95,10 @@ class Tab(object):
 			for label in labels:
 				if hasattr(instance, label.name):
 					label.text = str(getattr(instance, label.name))
+			inventorys = self.get_named_widgets(Inventory)
+			for inv in inventorys:
+				if hasattr(instance, inv.name):
+					inv.inventory = getattr(instance, inv.name)
 			self.widget._recursiveResizeToContent()
 
 	def get_named_widgets(self, widget_class):

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container size="600,200" background_image="content/gui/images/background/hud/build_bg.png">
-	<Icon image="content/gui/images/icons/hud/main/wood.png" position="10,35" />
+	<!-- <Icon image="content/gui/images/icons/hud/main/wood.png" position="10,35" />
 	<Label name="wood" text="" />
 	<Icon image="content/gui/images/icons/hud/main/bricks.png" position="60,35" />
 	<Label name="bricks" text=""  />
@@ -8,5 +8,6 @@
 	<Label name="food" text="" />
 	<Icon image="content/gui/images/icons/hud/main/wood.png" position="60,70" />
 	<Icon name="wool_icon" image="content/gui/images/icons/hud/main/wool.png" position="10,105" />
-	<Label name="wool" text="" />
+	<Label name="wool" text="" /> -->
+	<Inventory name="inventory" size="600,200" position="10,10"/>
 </Container>
