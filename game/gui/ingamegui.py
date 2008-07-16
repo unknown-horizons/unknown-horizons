@@ -114,18 +114,18 @@ class IngameGui(livingObject):
 		callbacks_build = {'build1': {
 			'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
 		},
-		 'build2': {
-			'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
+			'build2': {
+				'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
 		},
-		 'build3': {
-			'tree' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
-			'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
-			'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
-			'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10)
+			'build3': {
+				'tree' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
+				'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
+				'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
+				'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10)
 		},
-		 'build5': {
-			'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
-			'bridge-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
+			'build5': {
+				'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
+				'bridge-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
 		}
 		}
 
