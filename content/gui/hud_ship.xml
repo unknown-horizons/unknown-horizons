@@ -10,14 +10,14 @@
 
 	<!-- Symbols-->
 	<!-- The following symbols should show a few infos about the ship as boolean (true=colored; false=grayscale). -->
-	<!--<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="5,35" />
-	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="21,35" />
-	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="37,35" />
-	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="53,35" />
-	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="69,35" />-->
+	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="35,35" />
+	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="50,35" />
+	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="65,35" />
+	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="80,35" />
+	<Icon image="content/gui/images/icons/hud/ship/symbol_dummy.png" position="95,35" />
 
 	<!-- Picture -->
-	<!--<Icon name="shipImage" image="content/gui/images/objects/ships/ship_dummy.jpg" position="5,56" />-->
+	<Icon name="shipImage" image="content/gui/images/objects/ships/ship_dummy.png" position="5,56" />
 
 	<!-- Charge bar -->
 	<Icon name="chargeBar" image="content/gui/images/background/hud/chargebar_bg.png" position="150,35" />

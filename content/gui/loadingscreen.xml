@@ -3,5 +3,5 @@
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
 	<Icon image="content/gui/images/misc/load.png" position="387,316"/>
 	<Label text="Loading..." position="470,360" font="Essays1743-Italic_large_load" min_size="100,70"/>
-	<Label text="OpenAnno Demo 2008.0" position="850,720"/>
+	<Label text="OpenAnno Demo 2008.01" position="850,720"/>
 </Container>
