@@ -73,3 +73,11 @@ class Ship(Unit):
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
+
+class PirateShip(Ship):
+	"""Represents a pirate ship."""
+	pass
+
+class TradeShip(Ship):
+	"""Represents a trade ship."""
+	pass
