@@ -53,9 +53,6 @@ def start():
 	
 	fife.init()
 
-	if settings.sound.enabled:
-		fife.bgsound.play()
-
 	mainlistener = MainListener()
 	mainlistener.begin()
 	connection = None
