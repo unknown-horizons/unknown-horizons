@@ -7,4 +7,6 @@
 	<Icon name="food_icon" image="content/gui/images/icons/hud/main/food.png" position="10,70" />
 	<Label name="food" text="" />
 	<Icon image="content/gui/images/icons/hud/main/wood.png" position="60,70" />
+	<Icon name="wool_icon" image="content/gui/images/icons/hud/main/wool.png" position="40,105" />
+	<Label name="wool" text="" />
 </Container>
