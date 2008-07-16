@@ -215,6 +215,7 @@ class IngameGui(livingObject):
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
+		#self.gui['ship'].findChild(name='pirateshipname').text = ship.name+" (Ship type)"
 
 		size = self.gui['ship'].findChild(name='chargeBar').size
 		size = (size[0] - 2, size[1] - 2)

@@ -36,6 +36,7 @@ class Ship(Unit):
 		self.inventory.alter_inventory(5, 30)
 		self.inventory.alter_inventory(4, 50)
 		self.name = str(game.main.db("SELECT name FROM shipnames ORDER BY random() LIMIT 1")[0][0])
+		#self.name = str(game.main.db("SELECT name FROM shipnamespirate ORDER BY random() LIMIT 1")[0][0])
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
