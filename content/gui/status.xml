@@ -8,4 +8,6 @@
 	<Label name="wood" text=""  />
 	<Icon name="bricks_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="150,0" /><Icon image="content/gui/images/icons/hud/main/bricks.png" position="158,8" />
 	<Label name="bricks" text="" />
+	<Icon name="wool_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" /><Icon image="content/gui/images/icons/hud/main/wool.png" position="208,8" />
+	<Label name="wool" text="" />
 </Container>
