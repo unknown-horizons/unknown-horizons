@@ -166,7 +166,9 @@ class Fife(object):
 			fullscreen = False,
 			width = 1024,
 			height = 768,
-			bpp = 0
+			bpp = 0,
+			title = 'OpenAnno',
+			icon = 'content/gui/images/icon.png'
 		)
 
 	def _setSetting(self, settingObject, settingName, value):
@@ -198,6 +200,10 @@ class Fife(object):
 			self.settings.setImageChunkingSize(value)
 		elif setting == 'fife_sound_initialVolume':
 			self.settings.setInitialVolume(value)
+		elif setting == 'fife_screen_title':
+			self.settings.setWindowTitle(value)
+		elif setting == 'fife_screen_icon':
+			self.settings.setWindowIcon(value)
 
 	def init(self):
 		"""
