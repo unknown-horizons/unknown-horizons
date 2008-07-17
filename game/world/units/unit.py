@@ -67,6 +67,9 @@ class Unit(fife.InstanceActionListener):
 		@param destination: Point or Rect
 		@param callback: function that gets called when the unit arrives
 		"""
+		# cancel current move
+		game.main.session.scheduler.rem_all_classinst_calls(self)
+		
 		self.move_callback = callback
 		self.move_target = destination
 		diagonal = False

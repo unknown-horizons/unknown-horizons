@@ -68,11 +68,12 @@ class Animal(BuildingCarriage, GrowingUnit):
 		return [pickups[choice][4], pickups[choice]]
 	
 	def reached_pickup(self):
-		print 'FIN GRAZING AT', self.target[0].x, self.target[1].y
+		print 'STA GRAZING AT', self.target[0]
 		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second*self.__class__.grazingTime)
 		
 	def finished_grazing(self):
-		print 'FIN GRAZING AT', self.target[0].x, self.target[1].y
+		print 'FIN GRAZING AT', self.target[0]
+		self.transfer_pickup()
 		self.target = []
 		if self.production.get_growing_info()[1] > 0:
 			# produced something, wait for AnimalCarriage
