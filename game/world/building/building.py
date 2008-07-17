@@ -22,6 +22,7 @@
 import fife
 import game.main
 import math
+from game.util import Rect
 
 class Building(object):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -91,7 +92,7 @@ class Building(object):
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
 		pass
-
+	
 class Selectable(object):
 	def select(self):
 		"""Runs neccesary steps to select the building."""

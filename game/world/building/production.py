@@ -23,9 +23,7 @@ from building import Building, Selectable
 from game.world.building.consumer import Consumer
 from game.world.building.producer import Producer
 from game.world.storage import Storage
-from game.world.units.carriage import BuildingCarriage
-from game.util.rect import Rect
-from game.util.point import Point
+from game.world.units.carriage import BuildingCarriage, AnimalCarriage
 from game.gui.tabwidget import TabWidget
 import game.main
 from buildable import BuildableSingle
@@ -64,26 +62,22 @@ class BuildinglessProducer(Producer, Consumer):
 	because the sheep itself is a unit, not a building
 	"""
 	def __init__(self):
+		self.x, self.y = None, None
 		self.local_carriages = []
 		self.inventory = Storage()
 		Producer.__init__(self)
-		Consumer.__init__(self, create_carriage = False)
+		Consumer.__init__(self)
 
+	def create_carriage(self):
+		# this class of buildings doesn't have carriages
+		pass
+		
 class AnimalFarm(SecondaryProducer):
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
 	def __init__(self, x, y, owner, instance = None):
 		SecondaryProducer.__init__(self, x, y, owner, instance)
 
-		self.building_coords = [ (x,y) for x in xrange(self.x, self.x+self.size[0]) for y in xrange(self.y, self.y+self.size[1]) ]
-		rect = Rect(self.x, self.y, self.x+self.size[0]-1, self.y+self.size[1]-1)
-		center = ((self.x+(self.size[0]/2)), (self.y+(self.size[1]/2)))
-		self.pasture_coords = \
-		[ (x,y) for x in xrange(self.x-self.radius, self.x+self.size[0]+self.radius+1) \
-			for y in xrange(self.y-self.radius, self.y+self.size[1]+self.radius+1) \
-				#if ( (((x-center[0]) ** 2) + ((y-center[1]) ** 2)) <= (self.radius ** 2)) and \
-				if ( rect.distance( Point(x,y) ) <= self.radius ) and \
-				 (x,y) not in self.building_coords ]
 		self.pasture = []
 
 		self.recreate_pasture()
@@ -93,13 +87,14 @@ class AnimalFarm(SecondaryProducer):
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
-
+				
+	def create_carriage(self):
+		self.local_carriages.append(game.main.session.entities.units[7](self))
+			
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
-		# use building rect here when it exists
-		brect = Rect(self.x, self.y, self.x+self.size[0], self.y+self.size[1])
-
-		for coords in self.pasture_coords:
+		## TODO: don't create pasture on tiles like rocks, mountains, water..
+		for coords in self.radius_coords:
 			instance = game.main.session.entities.buildings[18].createInstance(coords[0],coords[1])
 			building = game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance)
 			self.island.add_building(coords[0], coords[1], building, self.owner)
@@ -111,24 +106,13 @@ class Lumberjack(SecondaryProducer):
 	def __init__(self, x, y, owner, instance = None):
 		SecondaryProducer.__init__(self, x, y, owner, instance)
 
-		self.building_coords = [ (x,y) for x in xrange(self.x, self.x+self.size[0]) for y in xrange(self.y, self.y+self.size[1]) ]
-		rect = Rect(self.x, self.y, self.x+self.size[0]-1, self.y+self.size[1]-1)
-		center = ((self.x+(self.size[0]/2)), (self.y+(self.size[1]/2)))
-
-		self.pasture_coords = \
-		[ (x,y) for x in xrange(self.x-self.radius, self.x+self.size[0]+self.radius+1) \
-			for y in xrange(self.y-self.radius, self.y+self.size[1]+self.radius+1) \
-				#if ( (((x-center[0]) ** 2) + ((y-center[1]) ** 2)) <= (self.radius ** 2)) and \
-				if ( rect.distance( Point(x,y) ) <= self.radius ) and \
-				 (x,y) not in self.building_coords ]
-
 		self.pasture = []
 
 		self.recreate_pasture()
 
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
-		for coords in self.pasture_coords:
+		for coords in self.radius_coords:
 			instance = game.main.session.entities.buildings[17].createInstance(coords[0],coords[1])
 			building = game.main.session.entities.buildings[17](coords[0], coords[1], self.owner, instance)
 			self.island.add_building(coords[0], coords[1], building, self.owner)

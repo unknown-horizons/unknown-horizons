@@ -20,11 +20,31 @@
 # ###################################################
 
 class Point(object):
-	def __init__(self, x, y):
-		self.x, self.y = x, y
+	def __init__(self, *args):
+		""" 
+		Can be initialised with Point(1,2) or tu = (1,2); Point(tu)
+		"""
+		if len(args) == 1 and isinstance(args[0], tuple):
+			self.x = args[0][0]
+			self.y = args[0][1]
+		elif len(args) == 2: # no need to check for int, who would be stupid enough to pass something else than a number for coords.. 
+			self.x = args[0]
+			self.y = args[1]
 
 	def distance(self, other):
 		if isinstance(other, Point):
 			return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+		elif isinstance(other, tuple):
+			return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
 		else:
 			return other.distance(self)
+
+	def __str__(self):
+		""" nice representation for debugging purposes """
+		return 'Point(%s, %s)' % (self.x, self.y)
+	
+	def get_coordinates(self):
+		""" Returns point as coordinate
+		This is useful, because Rect supports this too.
+		"""
+		return [(self.x, self.y)]

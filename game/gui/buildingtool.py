@@ -60,7 +60,7 @@ class BuildingTool(NavigationTool):
 			for island in game.main.session.world.islands:
 				if True:#todo: check if radius in island rect
 					for tile in island.grounds:
-						if ((tile.x - self.ship.unit_position[0]) ** 2 + (tile.y - self.ship.unit_position[1]) ** 2) <= 25:
+						if ((tile.x - self.ship.unit_position.x) ** 2 + (tile.y - self.ship.unit_position.y) ** 2) <= 25:
 							free = (tile.settlement is None or tile.settlement.owner == game.main.session.world.player)
 							game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255,255,255) if free else (0,0,0)))
 							if free and tile.object is not None:

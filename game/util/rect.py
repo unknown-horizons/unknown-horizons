@@ -51,4 +51,16 @@ class Rect(object):
 		elif isinstance(other, Rect):
 			return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 		else:
-			return other.distance(self)
+			try:
+				## TODO: other = (x,y, width, height)
+				# is other tuple: (x,y)?
+				if isinstance(other[0], int) and isinstance(other[1], int):
+					return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
+			except TypeError:
+				return other.distance(self)
+			
+	def get_coordinates(self):
+		""" Returns all coordinates, that are in the Rect """
+		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ] 
+			
+			

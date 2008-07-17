@@ -22,6 +22,7 @@
 import game.main
 from game.world.settlement import Settlement
 from game.util import stablelist
+from pathfinding import findPath
 
 class Island(object):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -55,6 +56,8 @@ class Island(object):
 			self.grounds.append(ground)
 		game.main.db("detach island")
 		self.settlements = stablelist()
+		
+		self.path_nodes = {}
 
 	def save(self, db = 'savegame'):
 		"""
@@ -66,8 +69,7 @@ class Island(object):
 		"""Returns whether a tile is on island or not.
 		@param x: int x position of the tile.
 		@param y: int y position of the tile.
-		@param island: id of the island that is to be checked.
-		@return: tile instanze if tile is on island, else None."""
+		@return: tile instance if tile is on island, else None."""
 		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
 			return None
 		for tile in self.grounds:
@@ -167,3 +169,10 @@ class Island(object):
 		building.start()
 		#print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)
 		return building
+
+	def registerPath(self, path):
+		self.path_nodes[ (path.x, path.y) ] = path.__class__.speed
+		
+	def unregisterPath(self, path):
+		del self.path_nodes[ (path.x, path.y) ]
+

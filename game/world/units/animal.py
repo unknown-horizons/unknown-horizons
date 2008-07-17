@@ -22,39 +22,43 @@
 import random
 from game.world.units.unit import Unit
 from game.world.units.carriage import BuildingCarriage
+from game.world.units.nature import GrowingUnit
 from game.world.building.production import SecondaryProducer
 from game.world.storage import Storage
 from game.util.rect import Rect
 from game.util.point import Point
 from game.command.building import Build
-import game.main
+import game.main 
 
-class Animal(BuildingCarriage):
+
+class Animal(BuildingCarriage, GrowingUnit):
 	grazingTime = 2
-
+	
 	def __init__(self, building):
-		self.attached_building = building
-
-		self.building = game.main.session.entities.buildings[19]()
-
+		self.animal_building = building
+		
+		self.production = game.main.session.entities.buildings[19]()
+		
 		# workaround: the BuildingCarriage needs coords in ctor for inital placement
-		self.building.x = self.attached_building.x
-		self.building.y = self.attached_building.y
-		BuildingCarriage.__init__(self, self.building, self.building.inventory)
-		del self.building.x, self.building.y
-
+		BuildingCarriage.__init__(self, self.production, self.production.inventory, attached_building=self.animal_building)
+		
+		self.production.restart_animation = self.restart_animation
+		self.production.next_animation = self.next_animation
+		
+		GrowingUnit.__init__(self, self.production)
+		
 	def get_possible_pickup_places(self):
 		""" Returns places that should be analysed for pickup
 		@return: list: [ (building, [ produced_res_id, .. ] ) ]
 		"""
 		possible_pickup_places = []
-		for p in self.attached_building.pasture:
+		for p in self.animal_building.pasture:
 			possible_pickup_places.append( (p, p.prod_res) )
 		return possible_pickup_places
-
+	
 	def get_position(self):
-		return Point(self.unit_position[0], self.unit_position[1])
-
+		return self.unit_position
+	
 	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
 		pickups = []
 		for pickup in possible_pickups:
@@ -62,10 +66,31 @@ class Animal(BuildingCarriage):
 				pickups.append(pickup)
 		choice = int(round(random.uniform(0, len(pickups)-1)))
 		return [pickups[choice][4], pickups[choice]]
-
+	
 	def reached_pickup(self):
+		print 'FIN GRAZING AT', self.target[0].x, self.target[1].y
 		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second*self.__class__.grazingTime)
-
+		
 	def finished_grazing(self):
-		self.transfer_pickup()
-		self.send()
+		print 'FIN GRAZING AT', self.target[0].x, self.target[1].y
+		self.target = []
+		if self.production.get_growing_info()[1] > 0:
+			# produced something, wait for AnimalCarriage
+			pass
+		else:
+			self.send()
+			
+	def next_animation(self):
+		# this prevents growing by time
+		# cause animals grow, when they ate enough
+		# if other animals do grow by time, we need to create two Animal classes,
+		self.loop_until = 99999
+		GrowingUnit.next_animation(self)
+		
+	def move(self, destination, callback = None):
+		Unit.move(self, destination, callback)
+		# keep position synchronised for pickup
+		# this is obviously not exact, but should do it (at least for now)
+		self.production.x = destination.x
+		self.production.y = destination.y
+			

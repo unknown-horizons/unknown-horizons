@@ -21,23 +21,31 @@
 
 import game.main
 import fife
+from game.world.pathfinding import findPath, Movement
+from game.util import Point, Rect
 
 class Unit(fife.InstanceActionListener):
+	movement = Movement.SOLDIER_MOVEMENT
+
 	def __init__(self, x, y):
 		if self._object is None:
 			self.__class__._loadObject()
-		self.last_unit_position = (x, y)
-		self.unit_position = (x, y)
-		self.move_target = (x, y)
-		self.next_target = (x, y)
+		self.last_unit_position = Point(x, y)
+		self.unit_position = self.last_unit_position
+		self.move_target = self.last_unit_position
+		self.next_target = self.last_unit_position
 		self._instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(self._instance)
-		location = fife.Location(game.main.session.view.layers[1])
-		location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
-		self._instance.act('default', location, True)
+		self.action = 'default'
+		self._instance.act(self.action, self._instance.getLocation(), True)
 		super(Unit, self).__init__()
 		self._instance.addActionListener(self)
+
 		self.move_callback = None
+
+		self.path = None
+		self.cur_path = None
+
 		self.health = 60.0
 		self.max_health = 100.0
 
@@ -50,66 +58,126 @@ class Unit(fife.InstanceActionListener):
 		@param action: string representing the action that is finished.
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position[0] + self.unit_position[0] - self.last_unit_position[0], self.unit_position[1] + self.unit_position[1] - self.last_unit_position[1], 0))
-		self._instance.act('default', location, True)
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x + self.unit_position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
+		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
 
-	def move(self, x, y, callback = None):
+	def move(self, destination, callback = None):
+		""" Moves unit to destination
+		@param destination: Point or Rect
+		@param callback: function that gets called when the unit arrives
 		"""
-		@param x: int x coordinate
-		@param y: int y coordinate
-		"""
-		self.move_target = (x, y)
 		self.move_callback = callback
+		self.move_target = destination
+		diagonal = False
+		if self.__class__.movement == Movement.SOLDIER_MOVEMENT:
+			assert(isinstance(destination, Point)) # rect not yet supported here
+			self.move_directly(destination)
+			return
+		elif self.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT:
+			island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
+			path_graph = island.path_nodes
+		elif self.__class__.movement == Movement.CARRIAGE_MOVEMENT:
+			path_graph = self.carriage_attached_building.radius_coords
+			diagonal = True
+		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
+			path_graph = game.main.session.world.water
+			diagonal = True
+
+		self.path = findPath(self.unit_position, destination, path_graph, diagonal) 
+
+		if self.path == False:
+			print 'UNIT: NO PATH FOUND'
+			return
+
+		self.cur_path = iter(self.path)
+		self.next_target = self.cur_path.next()
+		self.next_target = Point(self.next_target[0], self.next_target[1])
+		self.move_tick()
+
+	def move_directly(self, destination):
+		""" will be deprecated soon, do not use this. 
+		"""
+
 		if self.next_target == self.unit_position:
 			#calculate next target
 			self.next_target = self.unit_position
-			if self.move_target[0] > self.unit_position[0]:
-				self.next_target = (self.unit_position[0] + 1, self.next_target[1])
-			elif self.move_target[0] < self.unit_position[0]:
-				self.next_target = (self.unit_position[0] - 1, self.next_target[1])
-			if self.move_target[1] > self.unit_position[1]:
-				self.next_target = (self.next_target[0], self.unit_position[1] + 1)
-			elif self.move_target[1] < self.unit_position[1]:
-				self.next_target = (self.next_target[0], self.unit_position[1] - 1)
+			if self.move_target.x > self.unit_position.x:
+				self.next_target = (self.unit_position.x + 1, self.next_target.y)
+			elif self.move_target.x < self.unit_position.x:
+				self.next_target = (self.unit_position.x - 1, self.next_target.y)
+			if self.move_target.y > self.unit_position.y:
+				self.next_target = (self.next_target.x, self.unit_position.y + 1)
+			elif self.move_target.y < self.unit_position.y:
+				self.next_target = (self.next_target.x, self.unit_position.y - 1)
+
+			self.next_target = Point(self.next_target)
+
 			#setup movement
 			location = fife.Location(self._instance.getLocation().getLayer())
-			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
-			self._instance.move('default', location, 4.0/3.0)
-			#setup next timer
-			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.unit_position[0] or self.next_target[1] == self.unit_position[1] else 17)
-		elif self.move_callback is not None:
+			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
+			self._instance.move(self.action, location, 4.0/3.0)
+			#setup next timer (12 ticks for horizontal or vertical move, 12*sqrt(2)==17 ticks for diagonal move)
+			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
+		else:
+			self.movement_finished()
+
+	def movement_finished(self):
+		print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
+		if self.move_callback is not None:
 			self.move_callback()
 
 	def move_tick(self):
-		"""Called by the schedular, moves the unit one step for this tick.
+		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		#sync unit_position
+		#if isinstance(self.next_target, tuple):
+			# this shouldn't be necessary, this is a bug to trace
+			#self.next_target = Point(self.next_target[0], self.next_target[1])
 		self.last_unit_position = self.unit_position
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position[0], self.unit_position[1], 0))
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
 		self._instance.setLocation(location)
 
 		if self.unit_position != self.move_target:
-			#calculate next target
-			self.next_target = self.unit_position
-			if self.move_target[0] > self.unit_position[0]:
-				self.next_target = (self.unit_position[0] + 1, self.next_target[1])
-			elif self.move_target[0] < self.unit_position[0]:
-				self.next_target = (self.unit_position[0] - 1, self.next_target[1])
-			if self.move_target[1] > self.unit_position[1]:
-				self.next_target = (self.next_target[0], self.unit_position[1] + 1)
-			elif self.move_target[1] < self.unit_position[1]:
-				self.next_target = (self.next_target[0], self.unit_position[1] - 1)
-			#setup movement
-			location = fife.Location(self._instance.getLocation().getLayer())
-			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target[0], self.next_target[1], 0))
-			self._instance.move('default', location, 4.0/3.0)
-			#setup next timer
-			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target[0] == self.unit_position[0] or self.next_target[1] == self.unit_position[1] else 17)
-		elif self.move_callback is not None:
-			self.move_callback()
+			if self.__class__.movement == Movement.CARRIAGE_MOVEMENT or \
+				 self.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT or \
+				 self.__class__.movement == Movement.SHIP_MOVEMENT :
+				# retrieve next target from already calculated path
+				try:
+					self.next_target = Point(self.cur_path.next())
+				except StopIteration:
+					self.movement_finished()
+					return
+
+			elif self.__class__.movement == Movement.SOLDIER_MOVEMENT:
+				# this is deprecated, just like move_directly
+				#calculate next target 
+				self.next_target = self.unit_position
+				if self.move_target.x > self.unit_position.x:
+					self.next_target = (self.unit_position.x + 1, self.next_target.y)
+				elif self.move_target.x < self.unit_position.x:
+					self.next_target = (self.unit_position.x - 1, self.next_target.y)
+				if self.move_target.y > self.unit_position.y:
+					self.next_target = (self.next_target.x, self.unit_position.y + 1)
+				elif self.move_target.y < self.unit_position.y:
+					self.next_target = (self.next_target.x, self.unit_position.y - 1)
+
+				self.next_target = Point(self.next_target)
+
+		else:
+			self.movement_finished()
+			return
+
+		print self.id,'NEXT TARGET', self.next_target
+
+		#setup movement
+		location = fife.Location(self._instance.getLocation().getLayer())
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
+		self._instance.move(self.action, location, 4.0/3.0)
+		#setup next timer
+		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
@@ -132,3 +200,4 @@ class Unit(fife.InstanceActionListener):
 	def show(self):
 		vis = self._instance.get2dGfxVisual()
 		vis.setVisible(True)
+

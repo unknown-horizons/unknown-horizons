@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['island', 'player', 'settlement']
+__all__ = ['island', 'nature', 'player', 'settlement']
 
 import game.main
 from game.world.island import Island
@@ -63,6 +63,8 @@ class World(object):
 		for x,y in empty:
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "Done."
+		
+		self.water = empty
 
 		# create playerlist
 		self.players = stablelist()

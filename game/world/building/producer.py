@@ -23,29 +23,33 @@ from building import Building
 import game.main
 
 class Producer(object):
+	check_production_interval = 2
+	# run self.tick every second tick (NOTE: this should be discussed)
+	# running every tick currently requires all production times to be
+	# a multiple of 2
 	"""Class used for production buildings
-
+	
 	# Has to be inherited by a class that provides:
 	* inventory
-
+	
 	This includes e.g. trees, lumberjack, weaver, storages
 	"""
 	def __init__(self):
 		"""
 		"""
 		# list of produced resource
-		# this is rather a shortcut, this info is also stored
+		# this is rather a shortcut, this info is also stored 
 		# indirectly in self.prodcution
 		self.prod_res = []
 		# infos about production
 		self.production = {}
-
+		
 		result = game.main.db("SELECT rowid, time FROM production_line where building = ?", self.id);
 		for (prod_line, time) in result:
 			self.production[prod_line] = {}
 			self.production[prod_line]['res'] = {}
 			self.production[prod_line]['time'] = time
-
+			
 			prod_infos = game.main.db("SELECT \
 			(SELECT storage.resource FROM storage WHERE storage.rowid = production.resource) as resource, \
 			(SELECT storage.storage_size FROM storage WHERE storage.rowid = production.resource) as storage_size, \
@@ -60,35 +64,34 @@ class Producer(object):
 						self.prod_res.append(resource)
 				if amount != 0: # produced or consumed res
 					self.production[prod_line]['res'][resource] = amount
-
+		
 		## TODO: GUI-interface for changing active production line
 		if len(self.production) == 0:
 			self.active_production_line = -1
 		else:
 			self.active_production_line = min(self.production.keys())
-
+			
 		self._current_production = 0
-
+				
 		# save references to carriages that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this carriages
 		self.pickup_carriages = []
 
-		# run self.tick every second tick (NOTE: this should be discussed)
-		game.main.session.scheduler.add_new_object(self.tick, self, 2, -1)
-
+		game.main.session.scheduler.add_new_object(self.tick, self, self.__class__.check_production_interval, -1)
+		
 	def tick(self):
 		"""Called by the ticker, to produce goods.
 		"""
 		# check if production is disabled
 		if self.active_production_line == -1:
 			return
-
+		
 		# check if building is in storage mode or is a storage
 		if self.production[self.active_production_line]['time'] == 0:
 			return
-
-		self._current_production += 1
+		
+		self._current_production += self.__class__.check_production_interval
 		if self.active_production_line != -1 and (self._current_production % (self.production[self.active_production_line]['time']) == 0):
 			# time to produce res
 			for res in self.production[self.active_production_line]['res'].items():
@@ -97,20 +100,21 @@ class Producer(object):
 					if self.inventory.get_value(res[0]) + res[1] < 0:
 						# missing res res[0]
 						return
-
+				
 				# check for storage capacity
 				else:
 					if self.inventory.get_value(res[0]) == self.inventory.get_size(res[0]):
 						# no space for res[0]
 						return
-
+				
 			# everything ok, acctual production:
 			for res in self.production[self.active_production_line]['res'].items():
 				self.inventory.alter_inventory(res[0], res[1])
-
 				#debug:
-				#if res[1] >0: print "PRODUCING", res[0], "IN", self.id
-
+				if res[1] > 0: print "PRODUCING", res[0], "IN", self.id
+			
+			self.next_animation()
+				
 	def pickup_resources(self, res, max_amount):
 		"""Return the ressources of id res that are in stock and removes them from the stock.
 		@param res: int ressouce id.
@@ -122,8 +126,27 @@ class Producer(object):
 		self.inventory.alter_inventory(res, -picked_up)
 		self.restart_animation()
 		return picked_up
-
+	
 	def restart_animation(self):
 		"""This is overwritten by buildings, that have an animation
 		"""
 		pass
+	
+	def next_animation(self):
+		""" see above
+		"""
+		pass
+	
+	def get_growing_info(self):
+		"""
+		@return (all values are average) tuple: (cur_production, cur_production_res_amount, cur_production_res_size, cur_production_time) OR -1 if no cur production
+		"""
+		if self.active_production_line == -1:
+			return -1
+		data = (\
+			[ self.production[self.active_production_line]['res'][res] for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ], \
+			[ self.inventory.get_value(res) for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ], \
+			[ self.inventory.get_size(res) for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ],\
+			self.production[self.active_production_line]['time'] )
+
+		return (sum(data[0])/len(data[0]), sum(data[1])/len(data[1]), sum(data[2])/len(data[2]), data[3])

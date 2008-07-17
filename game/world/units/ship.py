@@ -23,8 +23,11 @@ import game.main
 import fife
 from game.world.storage import ArbitraryStorage
 from unit import Unit
+from game.world.pathfinding import Movement
+from game.util import Point
 
 class Ship(Unit):
+	movement = Movement.SHIP_MOVEMENT
 	"""Class representing a ship
 		@param x: int x position
 		@param y: int y position
@@ -42,10 +45,10 @@ class Ship(Unit):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
-		if self.unit_position[0] != self.move_target[0] or self.unit_position[1] != self.move_target[1]:
+		if self.unit_position.x != self.move_target.x or self.unit_position.y != self.move_target.y:
 			loc = fife.Location(game.main.session.view.layers[1])
 			loc.thisown = 0
-			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
+			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
@@ -65,11 +68,11 @@ class Ship(Unit):
 			game.main.session.view.renderer['GenericRenderer'].removeAll(3)
 		tmp()
 		x,y=int(round(x)),int(round(y))
-		self.move(x, y, tmp)
-		if self.unit_position[0] != x or self.unit_position[1] != y:
+		self.move(Point(x,y), tmp)
+		if self.unit_position.x != x or self.unit_position.y != y:
 			loc = fife.Location(game.main.session.view.layers[1])
 			loc.thisown = 0
-			coords = fife.ModelCoordinate(self.move_target[0], self.move_target[1])
+			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));

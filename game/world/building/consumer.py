@@ -21,6 +21,7 @@
 
 from building import Building
 from game.world.units.carriage import BuildingCarriage
+from game.util import Rect, Point
 import game.main
 
 class Consumer(object):
@@ -29,7 +30,7 @@ class Consumer(object):
 	Has to be inherited by a building that also inherits from producer
 	This includes e.g. lumberjack, weaver, storages
 	"""
-	def __init__(self, create_carriage = True):
+	def __init__(self):
 		"""
 		"""
 		self.consumation = {}
@@ -42,9 +43,24 @@ class Consumer(object):
 				if not self.inventory.hasSlot(res):
 					self.inventory.addSlot(res, size)
 				self.consumation[production_line].append(res)
-
-		if create_carriage:
-			self.local_carriages.append(game.main.session.entities.units[2](self))
+				
+		# calculate coords where carriage can move
+		# workaround for BuildinglessProducer (TODO: find better solution)
+		if self.x is not None and self.y is not None:
+			self.building_coords = [ (x,y) for x in xrange(self.x, self.x+self.size[0]) for y in xrange(self.y, self.y+self.size[1]) ]
+			building_rect = Rect(self.x, self.y, self.x+self.size[0]-1, self.y+self.size[1]-1)
+			self.radius_coords = \
+				[ (x,y) for x in xrange(self.x-self.radius, self.x+self.size[0]+self.radius+1) \
+				for y in xrange(self.y-self.radius, self.y+self.size[1]+self.radius+1) \
+				if ( building_rect.distance( Point(x,y) ) <= self.radius ) and \
+				(x,y) not in self.building_coords ]
+		
+		self.create_carriage()
+			
+	def create_carriage(self):
+		""" Creates carriage according to building type (chosen by polymorphism)
+		"""
+		self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def get_consumed_res(self):
 			return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
