@@ -66,4 +66,10 @@ class BranchOffice(StorageBuilding):
 		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
 		if len(settlements) != 0:
 			return None
+		
 		return {'settlement' : None}
+
+	@classmethod
+	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
+		#todo: check cost line
+		return {}
