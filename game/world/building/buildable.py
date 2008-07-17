@@ -21,7 +21,6 @@
 
 import game.main
 import math
-
 class BuildableSingle(object):
 	@classmethod
 	def areBuildRequirementsSatisfied(cls, x, y, before = None):
@@ -49,10 +48,9 @@ class BuildableSingle(object):
 		island = game.main.session.world.get_island(x, y)
 		if island is None:
 			return None
-		for xx in xrange(x, x + cls.size[0]):
-			for yy in xrange(y, y + cls.size[1]):
-				if island.get_tile(xx,yy) is None:
-					return None
+		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			if island.get_tile(xx,yy) is None:
+				return None
 		return {'island' : island}
 
 	@classmethod
@@ -64,11 +62,25 @@ class BuildableSingle(object):
 
 	@classmethod
 	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
+		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			tile_classes = island.get_tile(xx,yy).__class__.classes
+			if 'constructible' not in tile_classes:
+				return None
 		return {}
 
 	@classmethod
-	def isBuildingBuildRequirementSatisfied(cls, x, y, settlement, **state):
-		return {}
+	def isBuildingBuildRequirementSatisfied(cls, x, y, island, **state):
+		from nature import GrowingBuilding
+		from path import Path
+		tear = []
+		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			obj = island.get_tile(xx,yy).object
+			if obj is not None:
+				if isinstance(obj, (GrowingBuilding, Path)):
+					tear.append(obj)
+				else:
+					return None
+		return {} if len(tear) == 0 else {'tear' : tear}
 
 	@classmethod
 	def isUnitBuildRequirementSatisfied(cls, x, y, island, **state):

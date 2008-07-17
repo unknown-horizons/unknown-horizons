@@ -42,6 +42,9 @@ class GroundClass(type):
 	def __init__(self, id):
 		self.id = id
 		self._object = None
+		self.classes = ['ground[' + str(id) + ']']
+		for (name,) in game.main.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
+			self.classes.append(name)
 
 	def __new__(self, id):
 		"""
