@@ -78,13 +78,7 @@ class BuildingTool(NavigationTool):
 	def previewBuild(self, point1, point2):
 		for building in self.buildings:
 			game.main.session.view.layers[1].deleteInstance(building['instance'])
-		self.buildings = []
-		buildList = self._class.getBuildList(point1, point2)
-		if buildList is None:
-			return
-		self.buildings_island = buildList['island']
-		self.buildings_settlement = buildList['settlement']
-		self.buildings = buildList['buildings']
+		self.buildings = self._class.getBuildList(point1, point2)
 		neededRessources, usableRessources = {}, {}
 		for building in self.buildings:
 			building['instance'] = self._class.getInstance(**building)
@@ -92,7 +86,7 @@ class BuildingTool(NavigationTool):
 			for ressource in ressources:
 				neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
 			for ressource in neededRessources:
-				available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship is not None else self.buildings_settlement.inventory.get_value(ressource) if self.buildings_settlement is not None else 0)
+				available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship is not None else building['settlement'].inventory.get_value(ressource) if building['settlement'] is not None else 0)
 				building['buildable'] = available >= neededRessources[ressource]
 				if building['buildable'] == False:
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
@@ -156,12 +150,13 @@ class BuildingTool(NavigationTool):
 			if self.endPoint != point:
 				self.endPoint = point
 				self.previewBuild(self.startPoint, point)
-			default_args = {'building' : self._class, 'ship':self.ship, 'island' : self.buildings_island, 'settlement' : self.buildings_settlement}
+			default_args = {'building' : self._class, 'ship':self.ship}
 			for building in self.buildings:
 				if building['buildable']:
 					game.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
+					print args
 					game.main.session.manager.execute(Build(**args))
 				else:
 					game.main.session.view.layers[1].deleteInstance(building['instance'])

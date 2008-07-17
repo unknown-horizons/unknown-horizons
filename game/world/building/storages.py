@@ -59,3 +59,11 @@ class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer)
 		"""Runs neccasary steps to deselect the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+
+class BranchOffice(StorageBuilding):
+	@classmethod
+	def isSettlementBuildRequirementSatisfied(cls, x, y, island, **state):
+		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
+		if len(settlements) != 0:
+			return None
+		return {'settlement' : None}

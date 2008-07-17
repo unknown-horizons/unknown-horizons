@@ -48,13 +48,17 @@ class Path(Building, BuildableLine):
 		"""
 		action = ''
 		island = game.main.session.world.get_island(self.x, self.y)
-		if isinstance(island.get_tile(self.x, self.y - 1).object, (Path, Bridge)):
+		tile = island.get_tile(self.x, self.y - 1)
+		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'a'
-		if isinstance(island.get_tile(self.x + 1, self.y).object, (Path, Bridge)):
+		tile = island.get_tile(self.x + 1, self.y)
+		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'b'
-		if isinstance(island.get_tile(self.x, self.y + 1).object, (Path, Bridge)):
+		tile = island.get_tile(self.x, self.y + 1)
+		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'c'
-		if isinstance(island.get_tile(self.x - 1, self.y).object, (Path, Bridge)):
+		tile = island.get_tile(self.x - 1, self.y)
+		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'd'
 		if action == '':
 			action = 'default'

@@ -24,13 +24,28 @@ import math
 
 class BuildableSingle(object):
 	@classmethod
-	def isBuildable(cls, x, y):
-		return True
+	def areBuildRequirementsSatisfied(cls, x, y, before = None):
+		state = {'x' : x, 'y' : y}
+		for check in (cls.isIslandBuildRequirementSatisfied, cls.isSettlementBuildRequirementSatisfied, cls.isGroundBuildRequirementSatisfied, cls.isBuildingBuildRequirementSatisfied, cls.isUnitBuildRequirementSatisfied):
+			update = check(**state)
+			if update is None:
+				return None
+			else:
+				state.update(update)
+		if before is not None:
+			update = cls.isMultiBuildRequirementSatisfied(*before, **state)
+			if update is None:
+				return None
+			else:
+				state.update(update)
+		return state
 
 	@classmethod
-	def getBuildList(cls, point1, point2):
-		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
-		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
+	def isMultiBuildRequirementSatisfied(cls, *before, **state):
+		return None if (len(before) >= 1 and (before[0]['island'] != state['island'] or before[0]['settlement'] != state['settlement'])) else {}
+
+	@classmethod
+	def isIslandBuildRequirementSatisfied(cls, x, y, **state):
 		island = game.main.session.world.get_island(x, y)
 		if island is None:
 			return None
@@ -38,32 +53,47 @@ class BuildableSingle(object):
 			for yy in xrange(y, y + cls.size[1]):
 				if island.get_tile(xx,yy) is None:
 					return None
+		return {'island' : island}
+
+	@classmethod
+	def isSettlementBuildRequirementSatisfied(cls, x, y, island, **state):
 		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
-		if len(settlements) > 1:
+		if len(settlements) != 1:
 			return None
-		return {'island' : island, 'settlement' : None if len(settlements) == 0 else settlements.pop(), 'buildings' : [{'x' : x, 'y' : y}]}
+		return {'settlement' : settlements.pop()}
+
+	@classmethod
+	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
+		return {}
+
+	@classmethod
+	def isBuildingBuildRequirementSatisfied(cls, x, y, settlement, **state):
+		return {}
+
+	@classmethod
+	def isUnitBuildRequirementSatisfied(cls, x, y, island, **state):
+		return {}
+
+	@classmethod
+	def getBuildList(cls, point1, point2):
+		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
+		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
+		building = cls.areBuildRequirementsSatisfied(x, y)
+		if building is None:
+			return []
+		else:
+			return [building]
 
 class BuildableRect(BuildableSingle):
 	@classmethod
 	def getBuildList(cls, point1, point2):
-		island = None
-		settlement = None
 		buildings = []
-		for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))):
-			for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))):
-				new_island = game.main.session.world.get_island(x, y)
-				if new_island is None or (island is not None and island != new_island):
-					continue
-				island = new_island
+		for x, y in [ (x, y) for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))) for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))) ]:
+			building = cls.areBuildRequirementsSatisfied(x, y, buildings)
+			if building is not None:
+				buildings.append(building)
 
-				new_settlement = island.get_settlements(x, y, x, y)
-				new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-				if new_settlement is None or (settlement is not None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
-					continue
-				settlement = new_settlement
-
-				buildings.append({'x' : x, 'y' : y})
-		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
+		return buildings
 
 class BuildableLine(BuildableSingle):
 	@classmethod
@@ -72,37 +102,16 @@ class BuildableLine(BuildableSingle):
 		@param point1:
 		@param point2:
 		"""
-		island = None
-		settlement = None
 		buildings = []
 		y = int(round(point1[1]))
 		for x in xrange(int(round(point1[0])), int(round(point2[0])), (1 if int(round(point2[0])) > int(round(point1[0])) else -1)):
-			new_island = game.main.session.world.get_island(x, y)
-			if new_island is None or (island is not None and island != new_island):
-				continue
-			island = new_island
-
-			new_settlement = island.get_settlements(x, y, x, y)
-			new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-			if new_settlement is None or (settlement is not None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
-				continue
-			settlement = new_settlement
-
-			buildings.append({'x' : x, 'y' : y, 'action' : ('d' if int(round(point2[0])) < int(round(point1[0])) else 'b') if len(buildings) == 0 else 'bd'})
+			building = cls.areBuildRequirementsSatisfied(x, y, buildings)
+			if building is not None:
+				building.update({'action' : ('d' if int(round(point2[0])) < int(round(point1[0])) else 'b') if len(buildings) == 0 else 'bd'})
+				buildings.append(building)
 		x = int(round(point2[0]))
 		is_first = True
 		for y in xrange(int(round(point1[1])), int(round(point2[1])) + (1 if int(round(point2[1])) > int(round(point1[1])) else -1), (1 if int(round(point2[1])) > int(round(point1[1])) else -1)):
-			new_island = game.main.session.world.get_island(x, y)
-			if new_island is None or (island is not None and island != new_island):
-				continue
-			island = new_island
-
-			new_settlement = island.get_settlements(x, y, x, y)
-			new_settlement = None if len(new_settlement) == 0 else new_settlement.pop()
-			if new_settlement is None or (settlement is not None and settlement != new_settlement): #we cant build where no settlement is or from one settlement to another
-				continue
-			settlement = new_settlement
-
 			if len(buildings) == 0: #first tile
 				if y == int(round(point2[1])): #only tile
 					action = 'default'
@@ -120,6 +129,10 @@ class BuildableLine(BuildableSingle):
 					action = 'bc' if int(round(point2[1])) > int(round(point1[1])) else 'ab'
 			else:
 				action = 'ac'
-			buildings.append({'x' : x, 'y' : y, 'action' : action})
 			is_first = False
-		return None if len(buildings) == 0 else {'island' : island, 'settlement' : settlement, 'buildings' : buildings}
+			
+			building = cls.areBuildRequirementsSatisfied(x, y, buildings)
+			if building is not None:
+				building.update({'action' : action})
+				buildings.append(building)
+		return buildings
