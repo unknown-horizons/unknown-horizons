@@ -60,7 +60,8 @@ class Inventory(pychan.widgets.Container):
 			print 'found res', resid
 			icon = str(game.main.db('SELECT icon from ressource WHERE rowid=?', resid[0])[0][0])
 			button = ImageFillStatusButton(up_image=icon, down_image=icon, hover_image=icon, text=str(resid[1][0]), size=(50,50), opaque=False)
-			button.filled = 70
+			print int(float(resid[1][0])/float(resid[1][1])*100.0)
+			button.filled = int(float(resid[1][0])/float(resid[1][1])*100.0)
 			current_hbox.addChild(button)
 			if index % (vbox.width/self.__class__.icon_width) == 0 and  index is not 0:
 				vbox.addChild(current_hbox)
@@ -90,15 +91,13 @@ class ImageFillStatusButton(pychan.widgets.Container):
 	filled = property(_get_filled, _set_filled)
 
 	def _draw(self):
-		print 'filling'
-		button = pychan.widgets.ImageButton(text=self.text, up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image, size=(50,50))
+		button = pychan.widgets.ImageButton(text=self.text, up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
+		button.size = (50,50)
 		self.addChild(button)
-		bar1 = pychan.widgets.Icon("content/gui/tab_widget/red_line.png")
+		#bar1 = pychan.widgets.Icon("content/gui/tab_widget/red_line.png")
 		bar2 = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
 		center = (button.width-5, button.height-int(button.height/100.0*self._filled))
-		bar1.position = (button.width-5, 0)
+		#bar1.position = (button.width-5, 0)
 		bar2.position = center
-		bar2.size = (5, button.height-center[1])
-		bar1.size = (5, center[1])
-		self.addChild(bar1)
+		#self.addChild(bar1)
 		self.addChild(bar2)
