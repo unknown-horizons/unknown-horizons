@@ -86,3 +86,8 @@ class TradeShip(Ship):
 	def show_menu(self):
 		pass
 
+class FisherShip(Ship):
+	"""Represents a fisher ship."""
+
+	def show_menu(self):
+		pass

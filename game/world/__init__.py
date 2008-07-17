@@ -71,6 +71,7 @@ class World(object):
 		self.ships = stablelist()
 		self.ships.append(game.main.session.entities.units[1](15, 15))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
+		self.ships.append(game.main.session.entities.units[4](30, 35))
 		self.ships.append(game.main.session.entities.units[5](35, 30))
 		self.ships.append(game.main.session.entities.units[6](45, 30))
 
