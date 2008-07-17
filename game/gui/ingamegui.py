@@ -66,7 +66,7 @@ class IngameGui(livingObject):
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
 		self.gui['minimap'].position = (
 				game.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] - self.gui['minimap_toggle'].size[0],
-				game.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1]
+				game.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1],
 		)
 		self.gui['minimap'].show()
 		self.gui['minimap'].mapEvents({
