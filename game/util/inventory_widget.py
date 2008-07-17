@@ -24,18 +24,21 @@ from game.world.storage import Storage
 import game.main
 
 class Inventory(pychan.widgets.Container):
+	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
+	It makes use of the ImageFillStatusButton to display the icons for ressources and the fill bar.
+	It can be used like any other widget inside of xml's, but for full functionality the inventory
+	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
+	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
 	icon_width = 50 # pixels a ressource icon is wide
 
 	def __init__(self, **kwargs):
 		super(Inventory,self).__init__(**kwargs)
-		self.stylize('menu')
 		self._inventory = None
 
 	def _set_inventory(self, inv):
 		"""Sets the inventory
 		@var inventory: Storage class inventory"""
-		print inv
 		assert(isinstance(inv, Storage))
 		self._inventory = inv
 		self._draw()
@@ -51,22 +54,19 @@ class Inventory(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the inventory."""
-		vbox = pychan.widgets.VBox()
-		vbox._setOpaque(False)
+		if len(self.children) is not 0:
+			self.removeChildren(*self.children)
+		vbox = pychan.widgets.VBox(padding = 0)
 		vbox.width = self.width
-		current_hbox = pychan.widgets.HBox()
-		current_hbox._setOpaque(False)
+		current_hbox = pychan.widgets.HBox(padding = 0)
 		for index, resid in enumerate(self._inventory._inventory.iteritems()):
-			print 'found res', resid
 			icon = str(game.main.db('SELECT icon from ressource WHERE rowid=?', resid[0])[0][0])
 			button = ImageFillStatusButton(up_image=icon, down_image=icon, hover_image=icon, text=str(resid[1][0]), size=(50,50), opaque=False)
-			print int(float(resid[1][0])/float(resid[1][1])*100.0)
 			button.filled = int(float(resid[1][0])/float(resid[1][1])*100.0)
 			current_hbox.addChild(button)
-			if index % (vbox.width/self.__class__.icon_width) == 0 and  index is not 0:
+			if index % (vbox.width/(self.__class__.icon_width+10)) == 0 and  index is not 0:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox()
-				current_hbox._setOpaque(False)
+				current_hbox = pychan.widgets.HBox(padding=0)
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		self.stylize('menu')
@@ -74,11 +74,13 @@ class Inventory(pychan.widgets.Container):
 class ImageFillStatusButton(pychan.widgets.Container):
 
 	def __init__(self, up_image, down_image, hover_image, text, **kwargs):
+		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that ressource
+		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
+		in order to display the image. The container is only used, because ImageButtons can't have children.
+		This is ment to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
 		self._filled = 0
-		#self._setOpaque(True)
-		#self.stylize('default')
 
 	def _set_filled(self, percent):
 		""""@var percent: int percent that fillstatus will be green"""
@@ -91,13 +93,9 @@ class ImageFillStatusButton(pychan.widgets.Container):
 	filled = property(_get_filled, _set_filled)
 
 	def _draw(self):
+		"""Draws the icon + bar."""
 		button = pychan.widgets.ImageButton(text=self.text, up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
 		button.size = (50,50)
-		self.addChild(button)
-		#bar1 = pychan.widgets.Icon("content/gui/tab_widget/red_line.png")
-		bar2 = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
-		center = (button.width-5, button.height-int(button.height/100.0*self._filled))
-		#bar1.position = (button.width-5, 0)
-		bar2.position = center
-		#self.addChild(bar1)
-		self.addChild(bar2)
+		bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
+		bar.position = (button.width-bar.width-1, button.height-int(button.height/100.0*self._filled))
+		self.addChildren(button, bar)

@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
-<Container size="600,200" position="267, 568" border_size="0" background_image="content/gui/images/background/hud/black.png">
-	<ImageButton name="0" up_image="" size="64,32" position="0,4" />
-	<ImageButton name="1" up_image="" size="64,32" position="0,36" />
-	<ImageButton name="2" up_image="" size="64,32" position="0,68" />
-	<ImageButton name="3" up_image="" size="64,32" position="0,100" />
-	<ImageButton name="4" up_image="" size="64,32" position="0,132" />
-	<ImageButton name="5" up_image="" size="64,32" position="0,164" />
-	<ImageButton name="6" up_image="" size="64,32" position="0,196" />
-	<Icon image="content/gui/images/background/hud/ingame3.png" position="64,4" />
-	<Container  position="64,5" size="530,190" name="content">
+<Container size="400,192" border_size="0" background_image="content/gui/images/background/hud/black.png">
+	<ImageButton name="0" up_image="" size="64,32" position="0,0" />
+	<ImageButton name="1" up_image="" size="64,32" position="0,32" />
+	<ImageButton name="2" up_image="" size="64,32" position="0,64" />
+	<ImageButton name="3" up_image="" size="64,32" position="0,96" />
+	<ImageButton name="4" up_image="" size="64,32" position="0,128" />
+	<ImageButton name="5" up_image="" size="64,32" position="0,160" />
+	<Icon image="content/gui/images/background/hud/ingame3.png" position="64,0" />
+	<Container  position="64,0" size="336,192" name="content">
 	</Container>
 </Container>
