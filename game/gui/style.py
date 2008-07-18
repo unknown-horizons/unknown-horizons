@@ -29,6 +29,7 @@ STYLES= {
 			'base_color' : fife.Color(40,40,40),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(40,40,40),
+			'selection_color' : fife.Color(80,80,80),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
@@ -69,7 +70,7 @@ STYLES= {
 			'opaque' : 0,
 			'border_size': 0
 		},
-		('Icon', 'ImageButton') : {
+		('Icon', 'ImageButton', 'DropDown') : {
 			'border_size': 0
 		},
 		'ScrollArea' : {
@@ -91,6 +92,7 @@ STYLES= {
 			'base_color' : fife.Color(0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0,0,0),
+			'selection_color' : fife.Color(80,80,80),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
