@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container size="64,300">
 	<Icon image="content/gui/images/background/oa_ingame_buttonbg_64.png" position="0,5" size="64,64" />
-	<ImageButton name="build" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build.png" hover_image="content/gui/images/icons/hud/main/build_h.png" size="48,48" position="10,15" />
+	<ImageButton name="build" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build_h.png" hover_image="content/gui/images/icons/hud/main/build_h.png" size="48,48" position="10,15" />
 	<Icon image="content/gui/images/background/oa_ingame_buttonbg_64.png" position="0,100" size="64,64" />
-	<ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy.png" down_image="content/gui/images/icons/hud/main/diplomacy.png" hover_image="content/gui/images/icons/hud/main/diplomacy_h.png" size="48,48" position="8,108" />
+	<ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy.png" down_image="content/gui/images/icons/hud/main/diplomacy_h.png" hover_image="content/gui/images/icons/hud/main/diplomacy_h.png" size="48,48" position="8,108" />
 	<Icon image="content/gui/images/background/oa_ingame_buttonbg_64.png" position="0,200" size="64,64" />
 </Container>

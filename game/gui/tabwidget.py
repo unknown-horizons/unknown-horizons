@@ -44,7 +44,7 @@ class TabWidget(object):
 		for index, tab in enumerate(self.tabs):
 			button = self.widget.findChild(name=str(index)) # load button
 			button.up_image = tab.up_image
-			button.down_image = tab.down_image
+			button.down_image = tab.hover_image
 			button.hover_image = tab.hover_image
 			button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.load_tab, index))
 			if tab.name in callbacks:

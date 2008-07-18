@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <Container size="48,48">
-	<ImageButton name="gameMenuButton" up_image="content/gui/images/icons/hud/main/gamemenu.png" down_image="content/gui/images/icons/hud/main/gamemenu.png" hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" size="48,40" position="0,0" />
+	<ImageButton name="gameMenuButton" up_image="content/gui/images/icons/hud/main/gamemenu.png" down_image="content/gui/images/icons/hud/main/gamemenu_h.png" hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" size="48,40" position="0,0" />
 </Container>
