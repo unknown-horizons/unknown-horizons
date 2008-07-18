@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="600,200" position="267, 568" background_image="content/gui/images/background/hud/ingame2.png">
+<Container size="500,200" position="267, 568" background_image="content/gui/images/background/hud/ingame2.png">
 	<!-- Names -->
 	<HBox position="5,5">
 		<Label name="buildingNameLabel" text="Ship name (Ship type)" base_color="40,40,40" />
@@ -48,16 +48,16 @@
 
 	<!-- Use the name of the buttons to identify their function. No logos atm -->
 	<!-- Civil Buttons -->
-	<Icon image="content/gui/images/icons/hud/ship/civil_32.png" position="526,35" />
-	<ImageButton name="foundSettelment" up_image="content/gui/images/background/hud/background_32.png" position="526,67" border_size="0" text="New"/>
-	<ImageButton name="tradeRouteButton" up_image="content/gui/images/background/hud/background_32.png" position="526,99" border_size="0" />
-	<ImageButton name="throwChargesOverboardButton" up_image="content/gui/images/background/hud/background_32.png" position="526,131" border_size="0" />
-	<ImageButton name="anchorButton" up_image="content/gui/images/background/hud/background_32.png" position="526,163" border_size="0" />
+	<Icon image="content/gui/images/icons/hud/ship/civil_32.png" position="426,35" />
+	<ImageButton name="foundSettelment" up_image="content/gui/images/background/hud/background_32.png" position="426,67" border_size="0" text="New"/>
+	<ImageButton name="tradeRouteButton" up_image="content/gui/images/background/hud/background_32.png" position="426,99" border_size="0" />
+	<ImageButton name="throwChargesOverboardButton" up_image="content/gui/images/background/hud/background_32.png" position="426,131" border_size="0" />
+	<ImageButton name="anchorButton" up_image="content/gui/images/background/hud/background_32.png" position="426,163" border_size="0" />
 
 	<!-- War buttons -->
-	<Icon image="content/gui/images/icons/hud/ship/war_32.png" position="563,35" />
-	<ImageButton name="boardEnemyShipButton" up_image="content/gui/images/background/hud/background_32.png" position="563,67" border_size="0" />
-	<ImageButton name="capitulateButton" up_image="content/gui/images/background/hud/background_32.png" position="563,99" border_size="0" />
-	<ImageButton name="patrolButton" up_image="content/gui/images/background/hud/background_32.png" position="563,131" border_size="0" />
-	<ImageButton name="escortButton" up_image="content/gui/images/background/hud/background_32.png" position="563,163" border_size="0" />
+	<Icon image="content/gui/images/icons/hud/ship/war_32.png" position="463,35" />
+	<ImageButton name="boardEnemyShipButton" up_image="content/gui/images/background/hud/background_32.png" position="463,67" border_size="0" />
+	<ImageButton name="capitulateButton" up_image="content/gui/images/background/hud/background_32.png" position="463,99" border_size="0" />
+	<ImageButton name="patrolButton" up_image="content/gui/images/background/hud/background_32.png" position="463,131" border_size="0" />
+	<ImageButton name="escortButton" up_image="content/gui/images/background/hud/background_32.png" position="463,163" border_size="0" />
 </Container>
