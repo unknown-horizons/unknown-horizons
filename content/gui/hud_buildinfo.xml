@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="600,200" position="200,368" background_image="content/gui/images/background/hud/menu_bg.png">
+<Container size="600,200" background_image="content/gui/images/background/hud/menu_bg.png">
 	<Label name="buildingNameLabel" text="Building name (Building Class ROMAN)" position="5,5" />
 
 	<HBox position="5,35" size="590,160">
