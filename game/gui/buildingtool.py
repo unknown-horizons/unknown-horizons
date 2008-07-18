@@ -76,6 +76,8 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).end()
 
 	def previewBuild(self, point1, point2):
+		print point1, point2
+		print self._class.getBuildList
 		for building in self.buildings:
 			game.main.session.view.layers[1].deleteInstance(building['instance'])
 		self.buildings = self._class.getBuildList(point1, point2)

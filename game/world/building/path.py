@@ -27,7 +27,7 @@ from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):
 	speed = 5.0
-	
+
 	def init(self):
 		"""
 		"""
@@ -38,7 +38,7 @@ class Path(Building, BuildableLine):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
 		self.island.registerPath(self)
-		
+
 	def remove(self):
 		super(Path, self).remove()
 		self.island.unregisterPath(self)
