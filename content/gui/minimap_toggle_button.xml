@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<Container size="50,105">
-	<ImageButton name="minimapToggle" up_image="content/gui/images/misc/minimap_toggle_button.png" down_image="content/gui/images/misc/minimap_toggle_button.png" hover_image="content/gui/images/misc/minimap_toggle_button.png" />
+<Container size="60,110">
+	<ImageButton name="minimapToggle" up_image="content/gui/images/misc/minimap_toggle_button.png" down_image="content/gui/images/misc/minimap_toggle_button.png" hover_image="content/gui/images/misc/minimap_toggle_button_h.png" />
 </Container>
