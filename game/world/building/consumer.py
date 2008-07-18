@@ -38,12 +38,12 @@ class Consumer(object):
 		for (production_line,) in result:
 			self.consumation[production_line] = []
 
-			consumed_resources = game.main.db("select resource, storage_size from storage where rowid in (select resource from production where production_line = ? and amount <= 0);",production_line)
+			consumed_resources = game.main.db("select resource, storage_size from storage where rowid in (select storage from production where production_line = ? and amount <= 0);",production_line)
 			for (res, size) in consumed_resources:
 				if not self.inventory.hasSlot(res):
 					self.inventory.addSlot(res, size)
 				self.consumation[production_line].append(res)
-				
+
 		# calculate coords where carriage can move
 		# workaround for BuildinglessProducer (TODO: find better solution)
 		if self.x is not None and self.y is not None:
@@ -54,9 +54,9 @@ class Consumer(object):
 				for y in xrange(self.y-self.radius, self.y+self.size[1]+self.radius+1) \
 				if ( building_rect.distance( Point(x,y) ) <= self.radius ) and \
 				(x,y) not in self.building_coords ]
-		
+
 		self.create_carriage()
-			
+
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
 		"""
