@@ -139,8 +139,8 @@ class IngameGui(livingObject):
 		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
 		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
 		self.gui['ship'].position = (
-			self.gui['build'].position[0] - 130,
-			540
+			game.main.fife.settings.getScreenWidth() - self.gui['build'].size[0] - 450,
+			game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1] - 35,
 		)
 		self.gui['branch_office'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/branch_office.xml')
 		self.gui['branch_office'].position = self.gui['build'].position
