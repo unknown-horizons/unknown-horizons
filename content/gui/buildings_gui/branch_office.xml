@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="600,200" position="0,400" background_image="content/gui/images/background/hud/build_bg.png">	
+<Container size="600,200" background_image="content/gui/images/background/hud/build_bg.png">	
 	<Icon name="wood_icon" image="content/gui/images/icons/hud/main/wood.png" position="10,35" />
 	<Label name="wood" text="" />
 	<Icon name="wood_icon" image="content/gui/images/icons/hud/main/bricks.png" position="60,35" />
