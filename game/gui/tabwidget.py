@@ -32,7 +32,7 @@ class TabWidget(object):
 	def __init__(self, system_id, object=None, callbacks={}):
 		self.object = object
 		self.tabs = []
-		for name, xml, up, down, hover in game.main.db("SELECT name, xml, button_up_image, button_down_image, button_hover_image FROM tabs WHERE rowid IN (SELECT tab_id FROM tab_system WHERE system_id=? ORDER BY position)", system_id):
+		for name, xml, up, down, hover in game.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM tab_system LEFT JOIN tabs ON tabs.rowid = tab_system.tab_id WHERE tab_system.system_id=? ORDER BY tab_system.position", system_id):
 			self.tabs.append(Tab(name, xml, up, down, hover))
 		self.widget = game.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
 		self.widget.stylize('menu')

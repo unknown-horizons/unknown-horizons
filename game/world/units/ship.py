@@ -21,10 +21,11 @@
 
 import game.main
 import fife
-from game.world.storage import ArbitraryStorage
+from game.world.storage import Storage
 from unit import Unit
 from game.world.pathfinding import Movement
 from game.util import Point
+from game.gui.tabwidget import TabWidget
 
 class Ship(Unit):
 	movement = Movement.SHIP_MOVEMENT
@@ -34,7 +35,10 @@ class Ship(Unit):
 	"""
 	def __init__(self, x, y):
 		super(Ship, self).__init__(x, y)
-		self.inventory = ArbitraryStorage(4, 50)
+		self.inventory = Storage()
+		self.inventory.addSlot(6,50)
+		self.inventory.addSlot(5,50)
+		self.inventory.addSlot(4,50)
 		self.inventory.alter_inventory(6, 15)
 		self.inventory.alter_inventory(5, 30)
 		self.inventory.alter_inventory(4, 50)
@@ -61,7 +65,7 @@ class Ship(Unit):
 		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_ship(self) #show the gui for ships
+		game.main.session.ingame_gui.show_menu(TabWidget(3, self, {'overview_ship':{'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, self)}}))
 
 	def act(self, x, y):
 		def tmp():
