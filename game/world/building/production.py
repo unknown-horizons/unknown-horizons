@@ -88,8 +88,6 @@ class AnimalFarm(SecondaryProducer):
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
-		self.create_carriage()
-
 	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[7](self))
 

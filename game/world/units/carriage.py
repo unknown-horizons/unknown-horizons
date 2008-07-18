@@ -96,7 +96,6 @@ class Carriage(Unit):
 
 			# if new minimum, discard every other value cause it's higher
 			if res[1] < min:
-				next_to_min = min
 				min = res[1]
 				needed_res = []
 				needed_res.append(res[0])
