@@ -142,10 +142,6 @@ class IngameGui(livingObject):
 			game.main.fife.settings.getScreenWidth() - self.gui['build'].size[0] - 450,
 			game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1] - 35,
 		)
-		self.gui['branch_office'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/branch_office.xml')
-		self.gui['branch_office'].position = self.gui['build'].position
-		self.gui['herder'] = game.main.fife.pychan.loadXML('content/gui/buildings_gui/work_building.xml')
-		self.gui['herder'].position = self.gui['build'].position
 
 	def end(self):
 		self.gui['gamemenu'].mapEvents({
