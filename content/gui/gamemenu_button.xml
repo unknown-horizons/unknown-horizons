@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
 <Container size="48,48">
-	<Icon image="content/gui/images/background/oa_ingame_buttonbg_48.png" />
-	<ImageButton name="gameMenuButton" up_image="content/gui/images/icons/hud/main/gamemenu.png" down_image="content/gui/images/icons/hud/main/gamemenu.png" hover_image="content/gui/images/icons/hud/main/gamemenu.png" size="40,40" position="6,4" />
+	<ImageButton name="gameMenuButton" up_image="content/gui/images/icons/hud/main/gamemenu.png" down_image="content/gui/images/icons/hud/main/gamemenu.png" hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" size="48,40" position="0,0" />
 </Container>
