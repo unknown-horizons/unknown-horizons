@@ -55,8 +55,8 @@ class IngameGui(livingObject):
 
 		self.gui['minimap_toggle'] = game.main.fife.pychan.loadXML('content/gui/minimap_toggle_button.xml')
 		self.gui['minimap_toggle'].position = (
-			game.main.fife.settings.getScreenWidth() - self.gui['minimap_toggle'].size[0] - 5,
-			game.main.fife.settings.getScreenHeight() - self.gui['minimap_toggle'].size[1]
+			game.main.fife.settings.getScreenWidth() - self.gui['minimap_toggle'].size[0] - 15,
+			game.main.fife.settings.getScreenHeight() - self.gui['minimap_toggle'].size[1] -15,
 		)
 		self.gui['minimap_toggle'].show()
 		self.gui['minimap_toggle'].mapEvents({
@@ -78,8 +78,8 @@ class IngameGui(livingObject):
 
 		self.gui['camTools'] = game.main.fife.pychan.loadXML('content/gui/cam_tools.xml')
 		self.gui['camTools'].position = (
-				game.main.fife.settings.getScreenWidth() - self.gui['camTools'].size[0] - self.gui['minimap_toggle'].size[0],
-				game.main.fife.settings.getScreenHeight() - self.gui['camTools'].size[1]
+				game.main.fife.settings.getScreenWidth() - self.gui['camTools'].size[0] - self.gui['minimap_toggle'].size[0] -15,
+				game.main.fife.settings.getScreenHeight() - self.gui['camTools'].size[1] -15,
 		)
 		self.gui['camTools'].mapEvents({
 			'zoomIn' : game.main.session.view.zoom_in,
