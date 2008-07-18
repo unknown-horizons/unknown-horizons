@@ -181,7 +181,7 @@ def findPath(source, destination, path_nodes, diagonal = False):
 			#	path.append(node_in_dest)
 				
 			t1 = time.time()
-			print 'PATH FINDING TIME', t1-t0
+			#print 'PATH FINDING TIME', t1-t0
 			print 'PATH FROM',source,'TO', destination,':', path
 			if len(path_nodes) < 0:
 				print 'PATH NODES', path_nodes
@@ -191,7 +191,7 @@ def findPath(source, destination, path_nodes, diagonal = False):
 		
 	else:
 		t1 = time.time()
-		print 'PATH FINDING TIME', t1-t0
+		#print 'PATH FINDING TIME', t1-t0
 		p_k = path_nodes.keys()
 		p_k.sort()
 		p_di = dict.fromkeys(p_k,0)

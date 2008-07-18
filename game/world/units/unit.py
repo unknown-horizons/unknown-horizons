@@ -66,9 +66,15 @@ class Unit(fife.InstanceActionListener):
 		""" Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: function that gets called when the unit arrives
+		@return: True if move is possible, else False
 		"""
 		# cancel current move
-		game.main.session.scheduler.rem_all_classinst_calls(self)
+		print 'NEW MOVE, clearing old one'
+		#game.main.session.scheduler.rem_all_classinst_calls(self)
+		self.path = None
+		self.cur_path = None
+		self.next_target = None
+		self.move_target = None
 		
 		self.move_callback = callback
 		self.move_target = destination
@@ -91,12 +97,16 @@ class Unit(fife.InstanceActionListener):
 
 		if self.path == False:
 			print 'UNIT: NO PATH FOUND'
-			return
+			return False
+		
+		print 'MOVING TO', destination
 
 		self.cur_path = iter(self.path)
 		self.next_target = self.cur_path.next()
 		self.next_target = Point(self.next_target[0], self.next_target[1])
 		self.move_tick()
+		
+		return True
 
 	def move_directly(self, destination):
 		""" will be deprecated soon, do not use this. 
@@ -126,7 +136,13 @@ class Unit(fife.InstanceActionListener):
 			self.movement_finished()
 
 	def movement_finished(self):
-		print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
+		print self.id, 'MOVEMENT FINISHED'
+		self.path = None
+		self.cur_path = None
+		self.next_target = self.unit_position
+		self.move_target = self.unit_position
+		
+		#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 		if self.move_callback is not None:
 			self.move_callback()
 
@@ -134,9 +150,6 @@ class Unit(fife.InstanceActionListener):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		#sync unit_position
-		#if isinstance(self.next_target, tuple):
-			# this shouldn't be necessary, this is a bug to trace
-			#self.next_target = Point(self.next_target[0], self.next_target[1])
 		self.last_unit_position = self.unit_position
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
@@ -168,12 +181,12 @@ class Unit(fife.InstanceActionListener):
 					self.next_target = (self.next_target.x, self.unit_position.y - 1)
 
 				self.next_target = Point(self.next_target)
+				
+			print self.id, 'MOVE_TICK TO', self.next_target
 
 		else:
 			self.movement_finished()
 			return
-
-		print self.id,'NEXT TARGET', self.next_target
 
 		#setup movement
 		location = fife.Location(self._instance.getLocation().getLayer())

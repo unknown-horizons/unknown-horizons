@@ -99,19 +99,21 @@ class Producer(object):
 				if res[1] < 0:
 					if self.inventory.get_value(res[0]) + res[1] < 0:
 						# missing res res[0]
+						#print 'PROD', self.id,'missing', res[0]
 						return
 
 				# check for storage capacity
 				else:
 					if self.inventory.get_value(res[0]) == self.inventory.get_size(res[0]):
 						# no space for res[0]
+						#print 'PROD', self.id,'no space for', res[0]
 						return
 
 			# everything ok, acctual production:
 			for res in self.production[self.active_production_line]['res'].items():
 				self.inventory.alter_inventory(res[0], res[1])
 				#debug:
-				if res[1] > 0: print "PRODUCING", res[0], "IN", self.id
+				print "PROD", self.id, 'res', res[0], 'amount', res[1]
 
 			self.next_animation()
 

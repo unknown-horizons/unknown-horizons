@@ -44,8 +44,7 @@ class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer)
 		self.create_carriage()
 		
 	def create_carriage(self):
-		#self.local_carriages.append(game.main.session.entities.units[6](self))
-		pass
+		self.local_carriages.append(game.main.session.entities.units[8](self))
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

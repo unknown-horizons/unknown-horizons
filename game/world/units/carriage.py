@@ -20,7 +20,7 @@
 # ###################################################
 
 
-#import math
+import math
 from game.world.units.unit import Unit
 from game.world.storage import ArbitraryStorage
 from game.util import Rect, Point
@@ -77,8 +77,9 @@ class Carriage(Unit):
 		@param already_scanned_min: all values smaller than this are not scanned
 		@return: bool wether pickup was found
 		"""
-		print 'SEARCH_JOB IN',self.carriage_consumer.id,"CAR", self.id, self
-		min = 10000
+		#print 'SEARCH_JOB IN',self.carriage_consumer.id,"CAR", self.id, self
+		print self.id, 'SEARCH JOB w min', already_scanned_min
+		min = 100000
 		# scan for resources, where more then the already scanned tons are stored
 		# and less then the current minimum
 		needed_res = []
@@ -87,18 +88,26 @@ class Carriage(Unit):
 			# check if we already scanned for pickups for this res
 			if res[1] < already_scanned_min:
 				continue
+			
+			# check if storage is already full
+			if res[1] == self.carriage_consumer.inventory.get_size(res[0]):
+				continue
+			
 			# if new minimum, discard every other value cause it's higher
 			if res[1] < min:
+				next_to_min = min
 				min = res[1]
 				needed_res = []
 				needed_res.append(res[0])
 			elif res[1] == min:
-				needed_res.append(res)
-
+				needed_res.append(res[0])
+				
 		# if none found, no pickup available
 		if len(needed_res) == 0:
-			#print 'CAR: NO needed res, home_id',self.carriage_consumer.id
+			print 'CAR',self.id,' NO needed res'
 			return False
+		
+		print 'CAR', self.id,'NEEDED', needed_res
 
 		# search for available pickups for needed_res
 		# values of possible_pickup: [building, resource, amount, distance, rating]
@@ -108,6 +117,8 @@ class Carriage(Unit):
 
 		possible_pickup_places = self.get_possible_pickup_places()
 		position = self.get_position()
+		
+		#print 'CAR', self.id, 'POS PICK', [ possible_pickup_places[i][1] for i in xrange(0, len(possible_pickup_places)) ]
 
 		# if carriage is in it's building, it has to be able to reach
 		# everything within the building-radius, not its own radius
@@ -123,20 +134,24 @@ class Carriage(Unit):
 				if res in b[1]:
 					# check if another carriage is already on the way for same res
 					if len([ carriage for carriage in b[0].pickup_carriages if carriage.target[1] == res ]) > 0:
+						print 'CAR', self.id, 'other carriage'
 						break
 
 					stored = b[0].inventory.get_value(res)
 					if stored > 0:
 						## TODO: use Rect in buildings and use their Rect here
 						brect = Rect(Point(b[0].x, b[0].y), b[0].size[0], b[0].size[1])
-						distance = brect.distance( position )
+						distance = math.floor(brect.distance( position ) )
 						if distance > self.radius:
+							print 'CAR', self.id, 'to far', distance, self.radius
 							break
 						if stored > max_amount:
 							max_amount = stored
 						if distance > max_distance:
 							max_distance = distance
 						possible_pickups.append([b[0], res, stored, distance, 0])
+					else:
+						print 'CAR', self.id, 'nix stored of', res
 
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
@@ -149,12 +164,6 @@ class Carriage(Unit):
 
 		max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
 
-		# DEBUG
-		if max_rating == []:
-			print 'MAX RATING IS EMPTY LIST'
-			import pdb; pdb.set_trace()
-			max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
-
 		# get pickup
 		# save target building and res to pick up,
 		self.target = [max_rating[1][0], max_rating[1][1], 0]
@@ -165,14 +174,18 @@ class Carriage(Unit):
 		# check for home building storage size overflow
 		if self.target[2] > (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1])):
 			self.target[2] = (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1]))
-
+			
 		self.target[0].pickup_carriages.append(self)
 
 		if self.hide_when_idle:
 			self.show()
 
-		self.move(Point(self.target[0].x, self.target[0].y), self.reached_pickup)
-
+		move_possible = self.move(Point(self.target[0].x, self.target[0].y), self.reached_pickup)
+		
+		if not move_possible:
+			self.target = []
+			return False
+			
 		print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
 		print 'CAR:', self.id, 'GETTING', self.target[0].x, self.target[0].y
 		return True
@@ -180,6 +193,7 @@ class Carriage(Unit):
 	def reached_pickup(self):
 		"""Called when the carriage reaches target building
 		"""
+		print self.id, 'REACHED PICKUP'
 		self.transfer_pickup()
 		self.move(Point(self.home_position.x, self.home_position.y), self.reached_home)
 
@@ -187,12 +201,12 @@ class Carriage(Unit):
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], pickup_amount)
 
-		print 'removing', self, 'to pickup_carriages at', self.target[0]
 		self.target[0].pickup_carriages.remove(self)
 
 	def reached_home(self):
 		"""Called when carriage is in the building, it was assigned to
 		"""
+		print self.id, 'REACHED HOME'
 		self.carriage_consumer.inventory.alter_inventory(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], -self.target[2])
 		assert(self.inventory.get_value(self.target[1]) == 0)
