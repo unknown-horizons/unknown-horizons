@@ -41,7 +41,7 @@ class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer)
 		Consumer.__init__(self)
 
 		# add extra carriage
-		self.create_carriage()
+		#self.create_carriage()
 		
 	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[8](self))

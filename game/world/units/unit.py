@@ -92,8 +92,24 @@ class Unit(fife.InstanceActionListener):
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
 			diagonal = True
+			
+		source = self.unit_position
+		dest = destination
+						
 
-		self.path = findPath(self.unit_position, destination, path_graph, diagonal) 
+		island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
+		print 'island', island
+		if island is not None:
+			b = island.get_building(self.unit_position.x, self.unit_position.y)
+			print 'building', b
+			if b is not None:
+				source = Rect(Point(b.x, b.y), b.size[0], b.size[1])
+			b = island.get_building(destination.x, destination.y)
+			if b is not None and isinstance(destination, Point):
+				dest = Rect(Point(b.x, b.y), b.size[0], b.size[1])
+			print 'building', b
+
+		self.path = findPath(source, dest, path_graph, diagonal) 
 
 		if self.path == False:
 			print 'UNIT: NO PATH FOUND'

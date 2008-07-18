@@ -183,7 +183,7 @@ def findPath(source, destination, path_nodes, diagonal = False):
 			t1 = time.time()
 			#print 'PATH FINDING TIME', t1-t0
 			print 'PATH FROM',source,'TO', destination,':', path
-			if len(path_nodes) < 0:
+			if len(path_nodes) < 20:
 				print 'PATH NODES', path_nodes
 			check_path(path)
 			#sys.stdout = real_stdout
