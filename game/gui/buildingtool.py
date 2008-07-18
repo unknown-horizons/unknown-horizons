@@ -76,8 +76,6 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).end()
 
 	def previewBuild(self, point1, point2):
-		print point1, point2
-		print self._class.getBuildList
 		for building in self.buildings:
 			game.main.session.view.layers[1].deleteInstance(building['instance'])
 		self.buildings = self._class.getBuildList(point1, point2)
@@ -158,7 +156,6 @@ class BuildingTool(NavigationTool):
 					game.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
-					print args
 					game.main.session.manager.execute(Build(**args))
 				else:
 					game.main.session.view.layers[1].deleteInstance(building['instance'])

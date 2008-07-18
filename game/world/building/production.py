@@ -71,7 +71,7 @@ class BuildinglessProducer(Producer, Consumer):
 	def create_carriage(self):
 		# this class of buildings doesn't have carriages
 		pass
-		
+
 class AnimalFarm(SecondaryProducer):
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
@@ -87,10 +87,12 @@ class AnimalFarm(SecondaryProducer):
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
-				
+
+		self.create_carriage()
+
 	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[7](self))
-			
+
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
 		## TODO: don't create pasture on tiles like rocks, mountains, water..

@@ -84,15 +84,16 @@ class Carriage(Unit):
 		# and less then the current minimum
 		needed_res = []
 		consumed_res = self.get_consumed_resources()
+
 		for res in consumed_res:
 			# check if we already scanned for pickups for this res
 			if res[1] < already_scanned_min:
 				continue
-			
+
 			# check if storage is already full
 			if res[1] == self.carriage_consumer.inventory.get_size(res[0]):
 				continue
-			
+
 			# if new minimum, discard every other value cause it's higher
 			if res[1] < min:
 				next_to_min = min
@@ -101,12 +102,12 @@ class Carriage(Unit):
 				needed_res.append(res[0])
 			elif res[1] == min:
 				needed_res.append(res[0])
-				
+
 		# if none found, no pickup available
 		if len(needed_res) == 0:
 			print 'CAR',self.id,' NO needed res'
 			return False
-		
+
 		print 'CAR', self.id,'NEEDED', needed_res
 
 		# search for available pickups for needed_res
@@ -117,7 +118,7 @@ class Carriage(Unit):
 
 		possible_pickup_places = self.get_possible_pickup_places()
 		position = self.get_position()
-		
+
 		#print 'CAR', self.id, 'POS PICK', [ possible_pickup_places[i][1] for i in xrange(0, len(possible_pickup_places)) ]
 
 		# if carriage is in it's building, it has to be able to reach
@@ -133,6 +134,8 @@ class Carriage(Unit):
 			for res in needed_res:
 				if res in b[1]:
 					# check if another carriage is already on the way for same res
+					for carriage in b[0].pickup_carriages:
+						print carriage.target
 					if len([ carriage for carriage in b[0].pickup_carriages if carriage.target[1] == res ]) > 0:
 						print 'CAR', self.id, 'other carriage'
 						break
@@ -174,18 +177,17 @@ class Carriage(Unit):
 		# check for home building storage size overflow
 		if self.target[2] > (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1])):
 			self.target[2] = (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1]))
-			
+
 		self.target[0].pickup_carriages.append(self)
 
 		if self.hide_when_idle:
 			self.show()
-
 		move_possible = self.move(Point(self.target[0].x, self.target[0].y), self.reached_pickup)
-		
+
 		if not move_possible:
 			self.target = []
 			return False
-			
+
 		print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
 		print 'CAR:', self.id, 'GETTING', self.target[0].x, self.target[0].y
 		return True
@@ -217,7 +219,7 @@ class Carriage(Unit):
 
 	def send(self):
 		"""Sends carriage on it's way"""
-		#print 'SEND'
+		print 'SEND'
 		if not self.search_job():
 			game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
 

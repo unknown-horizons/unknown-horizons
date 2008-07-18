@@ -113,7 +113,7 @@ class Producer(object):
 			for res in self.production[self.active_production_line]['res'].items():
 				self.inventory.alter_inventory(res[0], res[1])
 				#debug:
-				print "PROD", self.id, 'res', res[0], 'amount', res[1]
+				#print "PROD", self.id, 'res', res[0], 'amount', res[1]
 
 			self.next_animation()
 
