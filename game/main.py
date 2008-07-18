@@ -62,8 +62,10 @@ def start():
 	showMain()
 
 	
-	import game.world.pathfinding
-	game.world.pathfinding.test_pathfinding()
+	# place for unittests
+
+	#import game.world.pathfinding
+	#game.world.pathfinding.test_pathfinding()
 
 	fife.run()
 
