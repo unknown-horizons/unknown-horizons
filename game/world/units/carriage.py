@@ -27,7 +27,6 @@ from game.util import Rect, Point
 from game.world.pathfinding import Movement
 import game.main
 
-
 class Carriage(Unit):
 	searchJobInterval = 2
 	movement = Movement.CARRIAGE_MOVEMENT
@@ -78,7 +77,7 @@ class Carriage(Unit):
 		@return: bool wether pickup was found
 		"""
 		#print 'SEARCH_JOB IN',self.carriage_consumer.id,"CAR", self.id, self
-		print self.id, 'SEARCH JOB w min', already_scanned_min
+		#print self.id, 'SEARCH JOB w min', already_scanned_min
 		min = 100000
 		# scan for resources, where more then the already scanned tons are stored
 		# and less then the current minimum
@@ -104,10 +103,10 @@ class Carriage(Unit):
 
 		# if none found, no pickup available
 		if len(needed_res) == 0:
-			print 'CAR',self.id,' NO needed res'
+			#print 'CAR',self.id,' NO needed res'
 			return False
 
-		print 'CAR', self.id,'NEEDED', needed_res
+		#print 'CAR', self.id,'NEEDED', needed_res
 
 		# search for available pickups for needed_res
 		# values of possible_pickup: [building, resource, amount, distance, rating]
@@ -136,7 +135,7 @@ class Carriage(Unit):
 					for carriage in b[0].pickup_carriages:
 						print carriage.target
 					if len([ carriage for carriage in b[0].pickup_carriages if carriage.target[1] == res ]) > 0:
-						print 'CAR', self.id, 'other carriage'
+						#print 'CAR', self.id, 'other carriage'
 						break
 
 					stored = b[0].inventory.get_value(res)
@@ -145,15 +144,15 @@ class Carriage(Unit):
 						brect = Rect(Point(b[0].x, b[0].y), b[0].size[0], b[0].size[1])
 						distance = math.floor(brect.distance( position ) )
 						if distance > self.radius:
-							print 'CAR', self.id, 'to far', distance, self.radius
+							#print 'CAR', self.id, 'to far', distance, self.radius
 							break
 						if stored > max_amount:
 							max_amount = stored
 						if distance > max_distance:
 							max_distance = distance
 						possible_pickups.append([b[0], res, stored, distance, 0])
-					else:
-						print 'CAR', self.id, 'nix stored of', res
+					#else:
+						#print 'CAR', self.id, 'nix stored of', res
 
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
@@ -164,28 +163,38 @@ class Carriage(Unit):
 		assert(max_amount != 0)
 		assert(max_distance != 0)
 
-		max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
-
-		# get pickup
-		# save target building and res to pick up,
-		self.target = [max_rating[1][0], max_rating[1][1], 0]
-		self.target[2] = self.target[0].inventory.get_value(self.target[1])
-		# check for carriage size overflow
-		if self.target[2] > self.inventory.get_size(self.target[1]):
-			self.target[2] = self.inventory.get_size(self.target[1])
-		# check for home building storage size overflow
-		if self.target[2] > (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1])):
-			self.target[2] = (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1]))
-
-		self.target[0].pickup_carriages.append(self)
-
+		while True: # do-while loop
+			
+			if len(possible_pickups) == 0:
+				#print 'CAR', self.id, 'NO pickup reachable'
+				print 'BREAKING WHILE TRUE'
+				return False
+			
+			max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
+			
+			# save target building and res to pick up,
+			self.target = [max_rating[1][0], max_rating[1][1], 0]
+			self.target[2] = self.target[0].inventory.get_value(self.target[1])
+			# check for carriage size overflow
+			if self.target[2] > self.inventory.get_size(self.target[1]):
+				self.target[2] = self.inventory.get_size(self.target[1])
+			# check for home building storage size overflow
+			if self.target[2] > (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1])):
+				self.target[2] = (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1]))
+			
+			path = self.check_move(Point(self.target[0].x, self.target[0].y))
+			
+			if path == False:
+				possible_pickups.remove(max_rating[1])
+			else:
+				print 'BREAKING WHILE TRUE'
+				break
+			
 		if self.hide_when_idle:
 			self.show()
-		move_possible = self.move(Point(self.target[0].x, self.target[0].y), self.reached_pickup)
-
-		if not move_possible:
-			self.target = []
-			return False
+			
+		self.target[0].pickup_carriages.append(self)
+		self.do_move(path, self.reached_pickup)
 
 		print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
 		print 'CAR:', self.id, 'GETTING', self.target[0].x, self.target[0].y
@@ -196,7 +205,8 @@ class Carriage(Unit):
 		"""
 		print self.id, 'REACHED PICKUP'
 		self.transfer_pickup()
-		self.move(Point(self.home_position.x, self.home_position.y), self.reached_home)
+		ret = self.move(Point(self.home_position.x, self.home_position.y), self.reached_home)
+		assert(ret == True) # there has to be a way back
 
 	def transfer_pickup(self):
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
@@ -218,7 +228,7 @@ class Carriage(Unit):
 
 	def send(self):
 		"""Sends carriage on it's way"""
-		print 'SEND'
+		#print 'SEND'
 		if not self.search_job():
 			game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
 

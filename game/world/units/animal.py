@@ -69,7 +69,6 @@ class Animal(BuildingCarriage, GrowingUnit):
 
 	def reached_pickup(self):
 		print "reached pickup"
-		print 'STA GRAZING AT', self.target
 		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second*self.__class__.grazingTime)
 
 	def finished_grazing(self):
@@ -93,6 +92,12 @@ class Animal(BuildingCarriage, GrowingUnit):
 		ret = Unit.move(self, destination, callback)
 		# keep position synchronised for pickup
 		# this is obviously not exact, but should do it (at least for now)
-		self.production.x = destination.x
-		self.production.y = destination.y
+		self.production.x = self.path[ len(self.path)-1 ][0]
+		self.production.y = self.path[ len(self.path)-1 ][1]
 		return ret
+
+	def do_move(self, path, callback = None):
+		self.production.x = path[ len(path)-1 ][0]
+		self.production.y = path[ len(path)-1 ][1]
+		Unit.do_move(self, path, callback)
+		

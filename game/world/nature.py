@@ -52,7 +52,12 @@ class Growable(object):
 		import time
 		#if self.id == 3: import pdb; pdb.set_trace()
 		#print 'CALLED NEXT_ANI, id',self.id,self, "AT", time.time()
-		self.action = self.action_iter.next()
+		try:
+			self.action = self.action_iter.next()
+		except StopIteration: 
+			# we don't want the audience to notice small bugs at the dusmania, so for safety:
+			pass
+		
 		self._instance.act(self.action, self._instance.getLocation(), True)
 		
 		iter_pos = len(self.actions) - self.action_iter.__length_hint__()

@@ -71,6 +71,16 @@ class Scheduler(livingObject):
 			for object in self.schedule[key]:
 				if object.class_instance is class_instance:
 					self.schedule[key].remove(object)
+					
+	def rem_call(self, instance, callback):
+		"""Removes all callbacks of 'instance' that are 'callback'
+		@param instance: the instance that would execute the call
+		@param callback: the function to remove
+		"""
+		for key in self.schedule:
+			for object in self.schedule[key]:
+				if object.class_instance is instance and object.callback == callback:
+					self.schedule[key].remove(object)
 
 	def end(self):
 		self.schedule = {}
