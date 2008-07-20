@@ -65,10 +65,14 @@ class Path(Building, BuildableLine):
 			action += 'd'
 		if action == '':
 			action = 'default'
-		location = fife.Location(game.main.session.view.layers[1])
+		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(self.x + 1), int(self.y), 0))
 		self._instance.act(action, location, True)
 
+	@classmethod
+	def getInstance(cls, *args, **kwargs):
+		kwargs['layer'] = 1
+		return super(Path, cls).getInstance(*args, **kwargs)
 
 class Bridge(Building, BuildableSingle):
 	#@classmethod
@@ -83,3 +87,8 @@ class Bridge(Building, BuildableSingle):
 		for tile in [self.island.get_tile(self.x + 1, self.y), self.island.get_tile(self.x - 1, self.y), self.island.get_tile(self.x, self.y + 1), self.island.get_tile(self.x, self.y - 1)]:
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
+
+	@classmethod
+	def getInstance(cls, *args, **kwargs):
+		kwargs['layer'] = 1
+		return super(Bridge, cls).getInstance(*args, **kwargs)

@@ -42,7 +42,7 @@ class View(livingObject):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(0,2):
+		for i in xrange(0,3):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 		self.view = game.main.fife.engine.getView()
@@ -61,7 +61,7 @@ class View(livingObject):
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
-		self.renderer['GenericRenderer'].addActiveLayer(self.layers[1])
+		self.renderer['GenericRenderer'].addActiveLayer(self.layers[2])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[0])
 
 		game.main.settings.addCategorys('view')

@@ -50,7 +50,7 @@ class Ship(Unit):
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
 		if self.unit_position.x != self.move_target.x or self.unit_position.y != self.move_target.y:
-			loc = fife.Location(game.main.session.view.layers[1])
+			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
 			coords.thisown = 0
@@ -74,7 +74,7 @@ class Ship(Unit):
 		x,y=int(round(x)),int(round(y))
 		self.move(Point(x,y), tmp)
 		if self.unit_position.x != x or self.unit_position.y != y:
-			loc = fife.Location(game.main.session.view.layers[1])
+			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
 			coords.thisown = 0

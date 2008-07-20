@@ -36,6 +36,10 @@ class GrowingBuilding(BuildableRect, Growable, PrimaryProducer):
 		self.db_actions = game.main.db("SELECT action FROM action WHERE object = ? AND action != \"default\"", self.id)
 		Growable.__init__(self, self)
 
+	@classmethod
+	def getInstance(cls, *args, **kwargs):
+		kwargs['layer'] = 1
+		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
 # the following is the result of an svn conflict
 # probably deprecated
@@ -45,7 +49,7 @@ class GrowingBuilding(BuildableRect, Growable, PrimaryProducer):
 #		""" Executes next action """
 #		try:
 #			action = self.cur_action.next()
-#			location = fife.Location(game.main.session.view.layers[1])
+#			location = fife.Location(game.main.session.view.layers[2])
 #			location.setLayerCoordinates(fife.ModelCoordinate(int(self.position[0] + 1), int(self.position[1]), 0))
 #			self._instance.act(action, location, True)
 #		except StopIteration:

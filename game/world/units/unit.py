@@ -34,7 +34,7 @@ class Unit(fife.InstanceActionListener):
 		self.unit_position = self.last_unit_position
 		self.move_target = self.last_unit_position
 		self.next_target = self.last_unit_position
-		self._instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
+		self._instance = game.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'default'
 		self._instance.act(self.action, self._instance.getLocation(), True)

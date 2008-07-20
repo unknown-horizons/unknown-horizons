@@ -97,12 +97,3 @@ class BuildingClass(type):
 				shift_y = shift_y + (cls.size[0] + cls.size[1] - 1) * 8
 			img.setXShift(shift_x)
 			img.setYShift(shift_y)"""
-
-	def createInstance(self, x, y):
-		"""
-		@param x: int x position
-		@param y: int y position
-		"""
-		instance = game.main.session.view.layers[1].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(self))
-		fife.InstanceVisual.create(instance)
-		return instance

@@ -33,6 +33,8 @@ class Build(object):
 		"""
 		self.building_class = building.id
 		self.instance = None if instance is None else instance.getId()
+		print 
+		self.layer = 2 if instance is None else int(instance.getLocationRef().getLayer().getId())
 		self.ship = None if ship is None else game.main.session.world.ships.index(ship)
 		self.x = int(x)
 		self.y = int(y)
@@ -42,7 +44,7 @@ class Build(object):
 		@param issuer: the issuer of the command
 		"""
 		island = game.main.session.world.get_island(self.x, self.y)
-		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[1].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
+		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[self.layer].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
 
 		island.add_building(self.x, self.y, building, issuer)
 		secondary_ressource_source = island.get_settlements(self.x, self.y).pop() if self.ship is None else game.main.session.world.ships[self.ship]

@@ -95,7 +95,7 @@ class AnimalFarm(SecondaryProducer):
 		""" Turns everything in the radius to pasture, that can be turned"""
 		## TODO: don't create pasture on tiles like rocks, mountains, water..
 		for coords in self.radius_coords:
-			instance = game.main.session.entities.buildings[18].createInstance(coords[0],coords[1])
+			instance = game.main.session.entities.buildings[18].getInstance(coords[0],coords[1])
 			building = game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance)
 			self.island.add_building(coords[0], coords[1], building, self.owner)
 			self.pasture.append(building)
@@ -113,7 +113,7 @@ class Lumberjack(SecondaryProducer):
 	def recreate_pasture(self):
 		""" Turns everything in the radius to pasture, that can be turned"""
 		for coords in self.radius_coords:
-			instance = game.main.session.entities.buildings[17].createInstance(coords[0],coords[1])
+			instance = game.main.session.entities.buildings[17].getInstance(coords[0],coords[1])
 			building = game.main.session.entities.buildings[17](coords[0], coords[1], self.owner, instance)
 			self.island.add_building(coords[0], coords[1], building, self.owner)
 			self.pasture.append(building)

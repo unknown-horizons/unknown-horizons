@@ -53,7 +53,7 @@ class SelectionTool(NavigationTool):
 				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
 				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
 				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
-			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
+			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
 			selectable = []
 			for i in instances:
 				instance = game.main.session.entities.getInstance(i.getId())
@@ -97,7 +97,7 @@ class SelectionTool(NavigationTool):
 			super(SelectionTool, self).mousePressed(evt)
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
-			instances = game.main.session.view.cam.getMatchingInstances(fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
+			instances = game.main.session.view.cam.getMatchingInstances(fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
 			selectable = []
 			for i in instances:
 				instance = game.main.session.entities.getInstance(i.getId())

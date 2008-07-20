@@ -35,7 +35,7 @@ class Building(object):
 		self.position = (x, y)
 		self.owner = owner
 		if instance is None:
-			self.createInstance(x, y)
+			self.getInstance(x, y)
 		else:
 			self._instance = instance
 			game.main.session.entities.updateInstance(self._instance.getId(), self)
@@ -56,11 +56,11 @@ class Building(object):
 				tile.blocked = False
 				tile.object = None
 		game.main.session.entities.deleteInstance(self._instance.getId())
-		game.main.session.view.layers[1].deleteInstance(self._instance)
+		self._instance.getLocationRef().getLocation().deleteInstance(self._instance)
 		self._instance.thisown = 1
 
 	@classmethod
-	def getInstance(cls, x, y, action='default', building=None, **trash):
+	def getInstance(cls, x, y, action='default', building=None, layer=2, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'default'
@@ -70,9 +70,9 @@ class Building(object):
 		if not building is None:
 			return building.getInstance(x = x, y = y, action=action, **trash)
 		else:
-			instance = game.main.session.view.layers[1].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
+			instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
 			fife.InstanceVisual.create(instance)
-			location = fife.Location(game.main.session.view.layers[1])
+			location = fife.Location(game.main.session.view.layers[layer])
 			location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
 			instance.act(action, location, True)
 			return instance

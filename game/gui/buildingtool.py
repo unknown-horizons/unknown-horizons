@@ -72,12 +72,12 @@ class BuildingTool(NavigationTool):
 	def end(self):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for building in self.buildings:
-			game.main.session.view.layers[1].deleteInstance(building['instance'])
+			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		super(BuildingTool, self).end()
 
 	def previewBuild(self, point1, point2):
 		for building in self.buildings:
-			game.main.session.view.layers[1].deleteInstance(building['instance'])
+			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.buildings = self._class.getBuildList(point1, point2)
 		neededRessources, usableRessources = {}, {}
 		for building in self.buildings:
@@ -158,7 +158,7 @@ class BuildingTool(NavigationTool):
 					args.update(building)
 					game.main.session.manager.execute(Build(**args))
 				else:
-					game.main.session.view.layers[1].deleteInstance(building['instance'])
+					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			self.buildings = []
 			self.onEscape()
 			evt.consume()
