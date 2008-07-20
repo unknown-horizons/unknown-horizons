@@ -40,6 +40,13 @@ class Rect(object):
 			self.left = min(args[0], args[2])
 			self.right = max(args[0], args[2])
 			self.bottom = max(args[1], args[3])
+			
+		#development assert:
+		elif __debug__:
+			if len(args) > 0 and isinstance(args[0], Rect):
+				assert False, "TRIED TO INIT RECT WITH RECT"
+			else:
+				assert False, 'INVALID RECT INITIALISATION'+str(args)
 
 	def __str__(self):
 		# nice representation for debugging purposes

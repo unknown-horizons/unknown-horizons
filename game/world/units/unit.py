@@ -105,9 +105,9 @@ class Unit(fife.InstanceActionListener):
 		# cancel current move
 		
 		## TODO: replace this quick and really hard-core dirty fix (dusmania..)
-		from game.world.units.carriage import Carriage
-		if not isinstance(self, Carriage):
-			game.main.session.scheduler.rem_call(self, self.move_tick)
+		#from game.world.units.carriage import Carriage
+		#if not isinstance(self, Carriage):
+		game.main.session.scheduler.rem_call(self, self.move_tick)
 			
 		self.cur_path = None
 		self.next_target = None
@@ -117,6 +117,8 @@ class Unit(fife.InstanceActionListener):
 		self.path = path
 		self.move_callback = callback
 
+		print 'MOVING FROM', path[0], 'TO', path[ len(path)-1 ]
+		
 		self.cur_path = iter(self.path)
 		self.next_target = self.cur_path.next()
 		# findPath returns tuples, so we have to turn them into Point
@@ -124,6 +126,14 @@ class Unit(fife.InstanceActionListener):
 		
 		# enqueue first move (move_tick takes care of the rest)
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
+		
+	def stop(self):
+		"""Stops a moveing unit"""
+		game.main.session.scheduler.rem_call(self, self.move_tick)
+		self.path = None
+		self.cur_path = None
+		self.next_target = None
+		self.move_callback = None
 		
 	def move(self, destination, callback = None):
 		""" Moves unit to destination
@@ -141,7 +151,6 @@ class Unit(fife.InstanceActionListener):
 		# move_target is deprecated, will be removed soon
 		self.move_target = Point(path[ len(path)-1 ])
 		
-		print 'MOVING TO', path[ len(path)-1 ]
 		
 		return True
 
@@ -180,9 +189,10 @@ class Unit(fife.InstanceActionListener):
 		# deprecated:
 		self.move_target = self.unit_position
 		
-		#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 		if self.move_callback is not None:
+			print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 			self.move_callback()
+			print '</CALLBACK>'
 
 	def move_tick(self):
 		"""Called by the scheduler, moves the unit one step for this tick.
@@ -220,7 +230,7 @@ class Unit(fife.InstanceActionListener):
 
 				self.next_target = Point(self.next_target)
 				
-			print self.id, 'MOVE_TICK TO', self.next_target
+			#print self.id, 'MOVE_TICK TO', self.next_target
 
 		else:
 			self.movement_finished()

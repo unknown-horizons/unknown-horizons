@@ -30,6 +30,13 @@ class Point(object):
 		elif len(args) == 2: # no need to check for int, who would be stupid enough to pass something else than a number for coords.. 
 			self.x = args[0]
 			self.y = args[1]
+			
+		# development assert:
+		elif __debug__:
+			if len(args) > 0 and isinstance(args[0], Point):
+				assert False, 'TRIED TO INIT A POINT WITH A POINT'
+			else: 
+				assert False, 'INVALID POINT INITIALISATION'+str(args)
 
 	def distance(self, other):
 		if isinstance(other, Point):

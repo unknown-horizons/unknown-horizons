@@ -80,6 +80,7 @@ class Scheduler(livingObject):
 		for key in self.schedule:
 			for object in self.schedule[key]:
 				if object.class_instance is instance and object.callback == callback:
+					print 'REM_CALL', object.callback
 					self.schedule[key].remove(object)
 
 	def end(self):

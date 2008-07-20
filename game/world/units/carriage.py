@@ -61,7 +61,6 @@ class Carriage(Unit):
 
 		game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
 		# test during development:
-		#assert(len(building.consumed_res) > 0 )
 		self.hide_when_idle = hide_when_idle
 		if self.hide_when_idle:
 			self.hide()
@@ -133,7 +132,7 @@ class Carriage(Unit):
 				if res in b[1]:
 					# check if another carriage is already on the way for same res
 					for carriage in b[0].pickup_carriages:
-						print carriage.target
+						print carriage
 					if len([ carriage for carriage in b[0].pickup_carriages if carriage.target[1] == res ]) > 0:
 						#print 'CAR', self.id, 'other carriage'
 						break
@@ -160,14 +159,14 @@ class Carriage(Unit):
 			return self.search_job(min+1)
 
 		# development asserts
-		assert(max_amount != 0)
-		assert(max_distance != 0)
+		if __debug__:
+			assert(max_amount != 0)
+			assert(max_distance != 0)
 
 		while True: # do-while loop
 			
 			if len(possible_pickups) == 0:
 				#print 'CAR', self.id, 'NO pickup reachable'
-				print 'BREAKING WHILE TRUE'
 				return False
 			
 			max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
@@ -187,7 +186,6 @@ class Carriage(Unit):
 			if path == False:
 				possible_pickups.remove(max_rating[1])
 			else:
-				print 'BREAKING WHILE TRUE'
 				break
 			
 		if self.hide_when_idle:
@@ -203,10 +201,13 @@ class Carriage(Unit):
 	def reached_pickup(self):
 		"""Called when the carriage reaches target building
 		"""
-		print self.id, 'REACHED PICKUP'
+		print self.id, 'REACHED PICKUP AT',Rect(Point(self.target[0].x, self.target[0].y), self.target[0].size[0], self.target[0].size[1]), ' UNIT POS', self.unit_position
+		if __debug__:
+			assert( Rect(Point(self.target[0].x, self.target[0].y), self.target[0].size[0], self.target[0].size[1]).distance(self.unit_position) == 0)
 		self.transfer_pickup()
 		ret = self.move(Point(self.home_position.x, self.home_position.y), self.reached_home)
-		assert(ret == True) # there has to be a way back
+		if __debug__:
+			assert(ret == True) # there has to be a way back
 
 	def transfer_pickup(self):
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
@@ -217,7 +218,8 @@ class Carriage(Unit):
 	def reached_home(self):
 		"""Called when carriage is in the building, it was assigned to
 		"""
-		print self.id, 'REACHED HOME'
+		print self.id, 'REACHED HOME AT', self.unit_position
+		assert( self.unit_position.get_coordinates()[0] in Rect(Point(self.carriage_attached_building.x, self.carriage_attached_building.y), self.carriage_attached_building.size[0], self.carriage_attached_building.size[0]).get_coordinates())
 		self.carriage_consumer.inventory.alter_inventory(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], -self.target[2])
 		assert(self.inventory.get_value(self.target[1]) == 0)
@@ -291,9 +293,6 @@ class StorageCarriage(BuildingCarriage):
 class AnimalCarriage(BuildingCarriage):
 	searchJobInterval = 10
 	""" Collects resources produced by animals (german: Tierhueter)
-
-	More exactly: brings animals, that have produced something,
-	to the building, where resources are transfaired (this is TODO)
 
 	Has to be attached to an instance of AnimalFarm.
 	"""

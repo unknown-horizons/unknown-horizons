@@ -35,6 +35,7 @@ class Movement:
 	(SOLDIER_MOVEMENT, STORAGE_CARRIAGE_MOVEMENT, SHIP_MOVEMENT, CARRIAGE_MOVEMENT) = xrange(0,4)
 
 def check_path(path):
+	""" debug function to check if a path is valid """
 	i = iter(path)
 	prev = i.next()
 	
@@ -72,10 +73,7 @@ def findPath(source, destination, path_nodes, diagonal = False):
 	@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
 	@return list of coords that are part of the best path (from first coord after source to last coord before destination) or False if no path is found
 	"""
-	import sys
-	#real_stdout = sys.stdout
-	#sys.stdout = open('/tmp/oa.log', 'w')
-	t0 = time.time()
+	#t0 = time.time()
 	
 	# if path_nodes is a list, turn it into a dict
 	if isinstance(path_nodes, list):
@@ -164,33 +162,20 @@ def findPath(source, destination, path_nodes, diagonal = False):
 				# maybe always append here and call list.reverse afterwards (depends on speed test results)
 				path.insert(0, previous_node)
 				previous_node = checked[previous_node][0]
-
-			# the following shouldn't be necessary any more
 			
-			#if isinstance(destination, Point):
-			#	path.append((destination.x, destination.y))
-			#elif isinstance(destination, Rect):
-			#	# find the node next to the last node in the path
-			#	# this node has to be in the destination
-			#	last_node = path[ len(path) - 1 ]
-			#	if last_node[0] in xrange(destination.left, destination.right+1):
-			#		node_in_dest = (last_node[0], [ last_node[1]+i for i in [1,-1] if last_node[1]+i in xrange(destination.top, destination.bottom+1) ][0])
-			#	elif last_node[1] in xrange(destination.top, destination.bottom+1):
-			#		node_in_dest = ([ last_node[0]+i for i in [1,-1] if last_node[0]+i in xrange(destination.left, destination.right+1) ][0], last_node[1])
-			#	else: assert(False)
-			#	path.append(node_in_dest)
-				
-			t1 = time.time()
+			#t1 = time.time()
 			#print 'PATH FINDING TIME', t1-t0
 			print 'PATH FROM',source,'TO', destination,':', path
-			if len(path_nodes) < 20:
+			if len(path_nodes) < 0:
 				print 'PATH NODES', path_nodes
-			check_path(path)
-			#sys.stdout = real_stdout
+				
+			if __debug__:
+				check_path(path)
+				
 			return path
 		
 	else:
-		t1 = time.time()
+		#t1 = time.time()
 		#print 'PATH FINDING TIME', t1-t0
 		p_k = path_nodes.keys()
 		p_k.sort()

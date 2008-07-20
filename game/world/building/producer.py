@@ -83,7 +83,6 @@ class Producer(object):
 	def tick(self):
 		"""Called by the ticker, to produce goods.
 		"""
-		if self.id == 8: print 'PROD', self.id,'TICK'
 		# check if production is disabled
 		if self.active_production_line == -1:
 			return
@@ -100,21 +99,21 @@ class Producer(object):
 				if res[1] < 0:
 					if self.inventory.get_value(res[0]) + res[1] < 0:
 						# missing res res[0]
-						print 'PROD', self.id,'missing', res[0]
+						#print 'PROD', self.id,'missing', res[0]
 						return
 
 				# check for storage capacity
 				else:
 					if self.inventory.get_value(res[0]) == self.inventory.get_size(res[0]):
 						# no space for res[0]
-						print 'PROD', self.id,'no space for', res[0]
+						#print 'PROD', self.id,'no space for', res[0]
 						return
 
 			# everything ok, acctual production:
 			for res in self.production[self.active_production_line]['res'].items():
 				self.inventory.alter_inventory(res[0], res[1])
 				#debug:
-				print "PROD", self.id, 'res', res[0], 'amount', res[1]
+				#print "PROD", self.id, 'res', res[0], 'amount', res[1]
 
 			self.next_animation()
 

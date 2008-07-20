@@ -50,7 +50,6 @@ class Growable(object):
 	def next_animation(self):
 		""" Executes next action """
 		import time
-		#if self.id == 3: import pdb; pdb.set_trace()
 		#print 'CALLED NEXT_ANI, id',self.id,self, "AT", time.time()
 		try:
 			self.action = self.action_iter.next()

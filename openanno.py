@@ -69,6 +69,9 @@ def findFIFE():
 				args = [sys.executable] + sys.argv
 				#we are already in openanno root, so just exec local executeable
 				args[1] = os.path.split(os.path.realpath(args[1]))[1]
+				# support for python -O flag (disables __debug__)
+				if not __debug__:
+					args.insert(1, '-O')
 				os.execvp(args[0], args)
 		else:
 			import fife
