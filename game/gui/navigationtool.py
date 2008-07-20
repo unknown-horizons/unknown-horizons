@@ -33,6 +33,12 @@ class NavigationTool(CursorTool):
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.debug = False
 
+		#ugly but works o_O
+		class CmdListener(fife.ICommandListener): pass
+		self.cmdlist = CmdListener()
+		game.main.fife.eventmanager.addCommandListener(self.cmdlist)
+		self.cmdlist.onCommand = self.onCommand
+
 	def end(self):
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).end()
@@ -109,3 +115,9 @@ class NavigationTool(CursorTool):
 	def mouseWheelMovedDown(self, evt):
 		game.main.session.view.zoom_out()
 		evt.consume()
+
+	def onCommand(self, command):
+		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
+			old = self.lastScroll
+			game.main.session.view.autoscroll(-old[0], -old[1])
+			self.lastScroll = [0, 0]
