@@ -28,7 +28,7 @@ import random
 from game.world.building.producer import Producer
 
 
-class BuildingCollecter(Unit):
+class BuildingCollector(Unit):
 	movement = Movement.CARRIAGE_MOVEMENT
 	"""
 	How does this class work ?
@@ -41,7 +41,7 @@ class BuildingCollecter(Unit):
 	"""
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True):
-		super(BuildingCollecter, self).__init__(home_building.x, home_building.y)
+		super(BuildingCollector, self).__init__(home_building.x, home_building.y)
 		self.inventory = ArbitraryStorage(slots, size)
 		self.__home_building = home_building
 		self.start_hidden = start_hidden
@@ -50,7 +50,7 @@ class BuildingCollecter(Unit):
 		self.search_job()
 
 	def search_job(self):
-		"""Search for a job, only called if the collecter does not have a job."""
+		"""Search for a job, only called if the collector does not have a job."""
 		self.job = self.get_job()
 		if self.job is None:
 			print self.id, 'JOB NONE'
@@ -71,8 +71,8 @@ class BuildingCollecter(Unit):
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
 					# get sum of picked up ressources for res
-					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collecters if carriage.job.res == res ])
-					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.__home_building._Consumer__registered_collecters if carriage.job.res == res ])
+					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collectors if carriage.job.res == res ])
+					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.__home_building._Consumer__registered_collectors if carriage.job.res == res ])
 					# check if there are ressources left to pickup
 					max_consumer_res_free = self.__home_building.inventory.get_size(res)-(total_registered_amount_consumer+self.__home_building.inventory.get_value(res))
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
@@ -93,8 +93,8 @@ class BuildingCollecter(Unit):
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.building._Producer__registered_collecters.append(self)
-		self.__home_building._Consumer__registered_collecters.append(self)
+		self.job.building._Producer__registered_collectors.append(self)
+		self.__home_building._Consumer__registered_collectors.append(self)
 		if self.start_hidden:
 			self.show()
 		self.do_move(self.job.path, self.begin_working)
@@ -111,7 +111,7 @@ class BuildingCollecter(Unit):
 		# transfer res
 		self.transfer_res()
 		# deregister at the target we're at
-		self.job.building._Producer__registered_collecters.remove(self)
+		self.job.building._Producer__registered_collectors.remove(self)
 		# reverse the path
 		self.job.path.reverse()
 		# move back to home
@@ -126,20 +126,20 @@ class BuildingCollecter(Unit):
 		assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
 		if self.start_hidden:
 			self.hide()
-		self.__home_building._Consumer__registered_collecters.remove(self)
+		self.__home_building._Consumer__registered_collectors.remove(self)
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
 
 	def transfer_res(self):
 		print self.id, 'TRANSFER PICKUP'
 		res_amount = self.job.building.pickup_resources(self.job.res, self.job.amount)
-		# should not to be. register_collecter function at the building should prevent it
+		# should not to be. register_collector function at the building should prevent it
 		assert(res_amount == self.job.amount)
 		self.inventory.alter_inventory(self.job.res, res_amount)
 
 
 	def get_collectable_res(self):
-		"""Gets all ressources the Collecter can collect"""
+		"""Gets all ressources the Collector can collect"""
 		print self.id, 'GET COLLECTABLE RES'
 		# find needed res (only res that we have free room for) - Building function
 		return self.__home_building.get_needed_res()
@@ -150,6 +150,12 @@ class BuildingCollecter(Unit):
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		return [building for building in self.__home_building.get_buildings_in_range() if isinstance(building, Producer)]
 
+	
+class StorageCollector(BuildingCollector):
+	""" Same as BuildingCollector, except that it moves on roads.
+	Used in storage facilities.
+	"""
+	movement = Movement.STORAGE_CARRIAGE_MOVEMENT
 
 
 class Job(object):

@@ -76,7 +76,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
 			path_graph = island.path_nodes
 		elif self.__class__.movement == Movement.CARRIAGE_MOVEMENT:
-			path_graph = self._BuildingCollecter__home_building.radius_coords
+			path_graph = self._BuildingCollector__home_building.radius_coords
 			diagonal = True
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
@@ -137,7 +137,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		"""
 		path = self.check_move(destination)
 
-		if path == False:
+		if path is None:
 			return False
 
 		self.do_move(path, callback)
@@ -189,9 +189,9 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		
 		#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 		if self.move_callback is not None:
-			print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
+			#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 			self.move_callback()
-			print '</CALLBACK>'
+			#print '</CALLBACK>'
 
 	def move_tick(self):
 		"""Called by the scheduler, moves the unit one step for this tick.

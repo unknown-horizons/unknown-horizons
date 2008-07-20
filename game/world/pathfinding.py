@@ -64,14 +64,13 @@ def check_path(path):
 		sys.exit()
 	
 def findPath(source, destination, path_nodes, diagonal = False):
-	## TODO: possibility to have a rect as source (for carriages that are in a building)
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which 
 	is not necessarily the shortest path (cause roads have different speeds)
 	@param source: Rect or Point (use Rect if unit is in a building)
 	@param destination: Rect or Point (same as above)
 	@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
-	@return list of coords that are part of the best path (from first coord after source to last coord before destination) or False if no path is found
+	@return list of coords that are part of the best path (from first coord after source to last coord before destination) or None if no path is found
 	"""
 	#t0 = time.time()
 	
@@ -182,7 +181,7 @@ def findPath(source, destination, path_nodes, diagonal = False):
 		p_di = dict.fromkeys(p_k,0)
 		print '_NO_ PATH FROM',source,'TO', destination, ',PATH_NODES:', p_di
 		#sys.stdout = real_stdout
-		return False
+		return None
 
 def test_pathfinding():
 	# basic tests

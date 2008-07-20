@@ -57,7 +57,7 @@ class Consumer(object):
 
 		self.create_carriage()
 
-		self.__registered_collecters = []
+		self.__registered_collectors = []
 
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)

@@ -173,7 +173,7 @@ class Carriage(Unit):
 
 			path = self.check_move(Point(self.target[0].x, self.target[0].y)) # Get path
 
-			if path == False:
+			if path is None:
 				possible_pickups.remove(max_rating[1]) # remove pickups that are not reachable
 			else:
 				break
