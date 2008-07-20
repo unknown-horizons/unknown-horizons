@@ -41,6 +41,7 @@ class NavigationTool(CursorTool):
 		self.cmdlist.onCommand = self.onCommand
 
 	def end(self):
+		game.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).end()
 
