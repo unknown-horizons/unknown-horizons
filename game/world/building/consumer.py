@@ -57,10 +57,17 @@ class Consumer(object):
 
 		self.create_carriage()
 
+		self.__registered_collecters = []
+
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
 		"""
 		self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def get_consumed_res(self):
-			return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
+		return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
+
+	def get_needed_res(self):
+		# get needed res
+		return [res for res in self.get_consumed_res() if self.inventory.get_value(res) < self.inventory.get_size(res)]
+

@@ -22,7 +22,7 @@
 import fife
 import game.main
 import math
-from game.util import Rect
+from game.util import Rect,Point
 from game.util import WorldObject
 
 class Building(WorldObject):
@@ -33,7 +33,7 @@ class Building(WorldObject):
 	def __init__(self, x, y, owner, instance = None):
 		self.x = x
 		self.y = y
-		self.position = (x, y)
+		self.position = Point(x, y)
 		self.owner = owner
 		if instance is None:
 			self.getInstance(x, y)
@@ -60,6 +60,16 @@ class Building(WorldObject):
 		game.main.session.entities.deleteInstance(self._instance.getId())
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance.thisown = 1
+
+	def get_buildings_in_range(self):
+		buildings = self.settlement.buildings
+		ret_building = []
+		for building in buildings:
+			if building == self:
+				continue
+			if self.position.distance( building.position ) <= self.radius:
+				ret_building.append( building )
+		return ret_building
 
 	@classmethod
 	def getInstance(cls, x, y, action='default', building=None, layer=2, **trash):
@@ -94,7 +104,7 @@ class Building(WorldObject):
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
 		pass
-	
+
 class Selectable(object):
 	def select(self):
 		"""Runs neccesary steps to select the building."""

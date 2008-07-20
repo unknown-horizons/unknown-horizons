@@ -73,10 +73,10 @@ class Producer(object):
 
 		self._current_production = 0
 
-		# save references to carriages that are on the way
+		# save references to collecters that are on the way
 		# this ensures that the resources, that it will get, won't be taken
-		# by anything else but this carriages
-		self.pickup_carriages = []
+		# by anything else but this collecter
+		self.__registered_collecters = []
 
 		game.main.session.scheduler.add_new_object(self.tick, self, self.__class__.check_production_interval, -1)
 

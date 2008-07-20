@@ -76,7 +76,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
 			path_graph = island.path_nodes
 		elif self.__class__.movement == Movement.CARRIAGE_MOVEMENT:
-			path_graph = self.carriage_attached_building.radius_coords
+			path_graph = self._BuildingCollecter__home_building.radius_coords
 			diagonal = True
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
@@ -168,6 +168,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 			#setup movement
 			location = fife.Location(self._instance.getLocation().getLayer())
+			print self.next_target
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
 			self._instance.move(self.action, location, 4.0/3.0)
 			#setup next timer (12 ticks for horizontal or vertical move, 12*sqrt(2)==17 ticks for diagonal move)

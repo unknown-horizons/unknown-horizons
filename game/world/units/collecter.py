@@ -24,11 +24,23 @@ from game.world.storage import ArbitraryStorage
 from game.util import Rect, Point
 from game.world.pathfinding import Movement
 import game.main
+import random
+
 
 class BuildingCollecter(Unit):
+	movement = Movement.CARRIAGE_MOVEMENT
+	"""
+	How does this class work ?
+	Timeline:
+	init
+	|-search_job()
+	  |- get_job   - he found a job ( it's best )
+	  |-
 
-	def __init__(self, x, y, home_building, slots = 1, size = 6):
-		super(BuildingCollecter, self).__init__(x, y)
+	"""
+
+	def __init__(self, home_building, slots = 1, size = 6):
+		super(BuildingCollecter, self).__init__(home_building.x, home_building.y)
 		self.inventory = ArbitraryStorage(slots, size)
 		self.__home_building = home_building
 
@@ -36,29 +48,107 @@ class BuildingCollecter(Unit):
 
 	def search_job(self):
 		"""Search for a job, only called if the collecter does not have a job."""
-		job = self.get_job()
-		if job is None:
-			game.main.scheduler.add_object(self.search_job, self, 32)
+		self.job = self.get_job()
+		if self.job is None:
+			print self.id, 'JOB NONE'
+			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
 		else:
-			self.execute_job(job)
+			print self.id, 'EXECUTE JOB'
+			self.begin_current_job()
 
 	def get_job(self):
 		"""Returns the next job or None"""
-		# get collectable res
-		#    find needed res (only res that we have free room for) - Building function
-		#    and collecter has free room
-		# find building in range
-		#    providing res in needed_res
-		#       check if res is free to pick up
-		#
-		# return job(building, res, amount)
-	def execute_job(self, job):
-		"""Executes a job"""
+		print self.id, 'GET JOB'
+		collectable_res = self.get_collectable_res()
+		if len(collectable_res) == 0:
+			return None
+		jobs = []
+		for building in self.get_buildings_in_range():
+			for res in collectable_res:
+				res_amount = building.inventory.get_value(res)
+				if res_amount > 0:
+					# get sum of picked up ressources for res
+					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collecters if carriage.job.res == res ])
+					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.__home_building._Consumer__registered_collecters if carriage.job.res == res ])
+					# check if there are ressources left to pickup
+					if res_amount > total_pickup_amount:
+						# add a new job
+						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), self.__home_building.inventory.get_size(res)-(total_registered_amount_consumer+self.__home_building.inventory.get_value(res)))))
+
+
+		## TODO: Sort job list
+		jobs.sort(lambda x,y: random.randint(-1,1))
+
+
+		for job in jobs:
+			job.path =  self.check_move(Point(job.building.x, job.building.y))
+			if job.path is not None:
+				return job
+		return None
+
+	def begin_current_job(self):
+		"""Executes the current job"""
+		print self.id, 'BEGIN CURRENT JOB'
+		self.job.building._Producer__registered_collecters.append(self)
+		self.__home_building._Consumer__registered_collecters.append(self)
+		self.do_move(self.job.path, self.begin_working)
+
+	def begin_working(self):
+		""""""
+		# TODO: animation change
+		print self.id, 'BEGIN WORKING'
+		game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
+
+	def finish_working(self):
+		print self.id, 'FINISH WORKING'
+		# TODO: animation change
+		# transfer res
+		self.transfer_res()
+		# deregister at the target we're at
+		self.job.building._Producer__registered_collecters.remove(self)
+		# reverse the path
+		self.job.path.reverse()
+		# move back to home
+		self.do_move(self.job.path, self.reached_home)
+
+	def reached_home(self):
+		""" we finished now our complete work. Let's do it again in 32 ticks
+			you can use this as event as after work
+		"""
+		print self.id, 'FINISHED WORK'
+		assert(self.__home_building.inventory.alter_inventory(self.job.res, self.job.amount) == 0)
+		assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+		self.__home_building._Consumer__registered_collecters.remove(self)
+		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
+
+
+	def transfer_res(self):
+		print self.id, 'TRANSFER PICKUP'
+		res_amount = self.job.building.pickup_resources(self.job.res, self.job.amount)
+		# should not to be. register_collecter function at the building should prevent it
+		assert(res_amount == self.job.amount)
+		self.inventory.alter_inventory(self.job.res, res_amount)
+
+
+	def get_collectable_res(self):
+		"""Gets all ressources the Collecter can collect"""
+		print self.id, 'GET COLLECTABLE RES'
+		# find needed res (only res that we have free room for) - Building function
+		return self.__home_building.get_needed_res()
+
+	def get_buildings_in_range(self):
+		print self.id, 'GET BUILDINGS IN RANGE'
+		"""returns all buildings in range
+		Overwrite in subclasses that need ranges arroung the pickup."""
+		return self.__home_building.get_buildings_in_range()
+
+
 
 class Job(object):
 	def __init__(self, building, res, amount):
 		self.building = building
 		self.res = res
 		self.amount = amount
+		self.path = []
 
 
