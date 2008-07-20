@@ -64,6 +64,9 @@ class Carriage(Unit):
 		self.hide_when_idle = hide_when_idle
 		if self.hide_when_idle:
 			self.hide()
+		game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
+		# test during development:
+		#assert(len(building.consumed_res) > 0 )
 
 	def get_position(self):
 		#return Rect(self.carriage_home.x, self.carriage_home.y, self.carriage_home.x+self.carriage_home.size[0], self.carriage_home.y+self.carriage_home.size[1])
@@ -102,7 +105,7 @@ class Carriage(Unit):
 
 		# if none found, no pickup available
 		if len(needed_res) == 0:
-			#print 'CAR',self.id,' NO needed res'
+			#print self.id,' NO needed res'
 			return False
 
 		#print 'CAR', self.id,'NEEDED', needed_res
@@ -116,7 +119,7 @@ class Carriage(Unit):
 		possible_pickup_places = self.get_possible_pickup_places()
 		position = self.get_position()
 
-		#print 'CAR', self.id, 'POS PICK', [ possible_pickup_places[i][1] for i in xrange(0, len(possible_pickup_places)) ]
+		#print self.id, 'POS PICK', [ possible_pickup_places[i][1] for i in xrange(0, len(possible_pickup_places)) ]
 
 		# if carriage is in it's building, it has to be able to reach
 		# everything within the building-radius, not its own radius
@@ -143,7 +146,7 @@ class Carriage(Unit):
 						brect = Rect(Point(b[0].x, b[0].y), b[0].size[0], b[0].size[1])
 						distance = math.floor(brect.distance( position ) )
 						if distance > self.radius:
-							#print 'CAR', self.id, 'to far', distance, self.radius
+							print self.id, 'to far', distance, self.radius
 							break
 						if stored > max_amount:
 							max_amount = stored
@@ -155,7 +158,7 @@ class Carriage(Unit):
 
 		# if no possible pickups, retry with changed min to scan for other res
 		if len(possible_pickups) == 0:
-			#print 'CAR: NO POSSIBLE FOR ',needed_res, 'at', self.carriage_consumer.id
+			#print self.id, 'NO POSSIBLE FOR ',needed_res, 'at', self.carriage_consumer.id
 			return self.search_job(min+1)
 
 		# development asserts
@@ -164,13 +167,13 @@ class Carriage(Unit):
 			assert(max_distance != 0)
 
 		while True: # do-while loop
-			
+
 			if len(possible_pickups) == 0:
 				#print 'CAR', self.id, 'NO pickup reachable'
 				return False
-			
+
 			max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
-			
+
 			# save target building and res to pick up,
 			self.target = [max_rating[1][0], max_rating[1][1], 0]
 			self.target[2] = self.target[0].inventory.get_value(self.target[1])
@@ -180,22 +183,22 @@ class Carriage(Unit):
 			# check for home building storage size overflow
 			if self.target[2] > (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1])):
 				self.target[2] = (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1]))
-			
+
 			path = self.check_move(Point(self.target[0].x, self.target[0].y))
-			
+
 			if path == False:
 				possible_pickups.remove(max_rating[1])
 			else:
 				break
-			
+
 		if self.hide_when_idle:
 			self.show()
-			
+
 		self.target[0].pickup_carriages.append(self)
 		self.do_move(path, self.reached_pickup)
 
-		print 'CAR:', self.id, 'CURRENT', self.get_position().x, self.get_position().y
-		print 'CAR:', self.id, 'GETTING', self.target[0].x, self.target[0].y
+		print self.id, 'CURRENT', self.get_position().x, self.get_position().y
+		print self.id, 'GETTING', self.target[0].x, self.target[0].y
 		return True
 
 	def reached_pickup(self):
@@ -230,8 +233,10 @@ class Carriage(Unit):
 
 	def send(self):
 		"""Sends carriage on it's way"""
-		#print 'SEND'
-		if not self.search_job():
+		print self.id, 'SEND'
+		ret = self.search_job()
+		print self.id, 'ret', ret
+		if not ret:
 			game.main.session.scheduler.add_new_object(self.send, self, game.main.session.timer.ticks_per_second*self.__class__.searchJobInterval)
 
 	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
@@ -311,9 +316,11 @@ class AnimalCarriage(BuildingCarriage):
 		self.get_animal(self.target[0]).move(Point(self.home_position.x, self.home_position.y))
 
 	def get_animal_pickup(self):
+		print self.id, 'Getting animal'
 		self.transfer_pickup()
 		animal = self.get_animal(self.target[0])
 		self.reached_home()
+		print self.id, 'Got animal'
 		animal.send()
 
 	def get_animal(self, production):

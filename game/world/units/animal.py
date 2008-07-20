@@ -72,7 +72,7 @@ class Animal(BuildingCarriage, GrowingUnit):
 		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second * self.__class__.grazingTime)
 
 	def finished_grazing(self):
-		print 'FIN GRAZING AT', self.target
+		print self.id, 'FIN GRAZING AT', self.target
 		self.transfer_pickup()
 		self.target = []
 		if self.production.get_growing_info()[1] > 0:
@@ -89,6 +89,7 @@ class Animal(BuildingCarriage, GrowingUnit):
 		GrowingUnit.next_animation(self)
 
 	def move(self, destination, callback = None):
+		print self.id, 'animal move'
 		ret = Unit.move(self, destination, callback)
 		# keep position synchronised for pickup
 		# this is obviously not exact, but should do it (at least for now)
@@ -100,4 +101,3 @@ class Animal(BuildingCarriage, GrowingUnit):
 		self.production.x = path[ len(path)-1 ][0]
 		self.production.y = path[ len(path)-1 ][1]
 		return Unit.do_move(self, path, callback)
-		
