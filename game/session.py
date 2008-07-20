@@ -36,7 +36,7 @@ from game.manager import SPManager
 from game.view import View
 from game.world import World
 from game.entities import Entities
-from game.util import livingObject, livingProperty
+from game.util import livingObject, livingProperty, WorldObject
 
 class Session(livingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading."""
@@ -52,6 +52,8 @@ class Session(livingObject):
 	def begin(self):
 		super(Session, self).begin()
 
+		WorldObject.reset()
+
 		#game
 		self.timer = Timer(16)
 		self.manager = SPManager()
@@ -65,6 +67,8 @@ class Session(livingObject):
 		self.cursor = SelectionTool()
 
 		self.selected_instances = []
+
+
 
 	def end(self):
 		self.cursor = None

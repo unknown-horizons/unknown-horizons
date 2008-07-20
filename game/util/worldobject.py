@@ -19,17 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 class WorldObject(object):
-	next_id = 1
-	objects = []
+	__next_id = 1
+	__objects = weakref.WeakValueDictionary()
 
 	def getId(self):
 		if not hasattr(self, "_WorldObject__id"):
-			self.__id = WorldObject.next_id
-			WorldObject.next_id = WorldObject.next_id + 1
-			WorldObject.objects.append(self)
+			self.__id = WorldObject.__next_id
+			WorldObject.__next_id = WorldObject.__next_id + 1
+			WorldObject.__objects[self.__id] = self
 		return self.__id
 
 	@classmethod
-	def getObjectById(cls, id)
-		return WorldObject.objects[id-1]
+	def getObjectById(cls, id):
+		return cls.__objects[id]
+
+	@classmethod
+	def reset(cls):
+		cls.__next_id = 1
+		cls.__objects.clear()
