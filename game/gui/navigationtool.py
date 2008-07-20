@@ -32,6 +32,7 @@ class NavigationTool(CursorTool):
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.debug = False
+		self.middle_scroll_active = False
 
 		#ugly but works o_O
 		class CmdListener(fife.ICommandListener): pass
@@ -47,18 +48,23 @@ class NavigationTool(CursorTool):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 			self.lastScroll = [evt.getX(), evt.getY()]
+			self.middle_scroll_active = True
 
 	def mouseReleased(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			self.lastScroll = [0, 0]
 			CursorTool.mouseMoved(self, evt)
+			self.middle_scroll_active = False
 
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			game.main.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
 			self.lastScroll = [evt.getX(), evt.getY()]
 		else:
-			NavigationTool.mouseMoved(self, evt)
+			# Else the event will mistakenly be delegated if the left mouse button is hit while
+			# scrolling using the middle mouse button
+			if not self.middle_scroll_active:
+				NavigationTool.mouseMoved(self, evt)
 
 	def mouseMoved(self, evt):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
