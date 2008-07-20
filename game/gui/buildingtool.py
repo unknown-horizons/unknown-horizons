@@ -160,7 +160,10 @@ class BuildingTool(NavigationTool):
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			self.buildings = []
-			self.onEscape()
+			if not evt.isShiftPressed():
+				self.onEscape()
+			else:
+				self.startPoint = None
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
