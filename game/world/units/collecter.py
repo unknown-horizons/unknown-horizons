@@ -71,9 +71,10 @@ class BuildingCollecter(Unit):
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collecters if carriage.job.res == res ])
 					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.__home_building._Consumer__registered_collecters if carriage.job.res == res ])
 					# check if there are ressources left to pickup
-					if res_amount > total_pickup_amount:
+					max_consumer_res_free = self.__home_building.inventory.get_size(res)-(total_registered_amount_consumer+self.__home_building.inventory.get_value(res))
+					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
 						# add a new job
-						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), self.__home_building.inventory.get_size(res)-(total_registered_amount_consumer+self.__home_building.inventory.get_value(res)))))
+						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), max_consumer_res_free)))
 
 
 		## TODO: Sort job list
