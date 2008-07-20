@@ -23,8 +23,9 @@ import game.main
 import math
 class BuildableSingle(object):
 	@classmethod
-	def areBuildRequirementsSatisfied(cls, x, y, before = None):
+	def areBuildRequirementsSatisfied(cls, x, y, before = None, **kwargs):
 		state = {'x' : x, 'y' : y}
+		state.update(kwargs)
 		for check in (cls.isIslandBuildRequirementSatisfied, cls.isSettlementBuildRequirementSatisfied, cls.isGroundBuildRequirementSatisfied, cls.isBuildingBuildRequirementSatisfied, cls.isUnitBuildRequirementSatisfied):
 			update = check(**state)
 			if update is None:
@@ -87,10 +88,10 @@ class BuildableSingle(object):
 		return {}
 
 	@classmethod
-	def getBuildList(cls, point1, point2):
+	def getBuildList(cls, point1, point2, **kwargs):
 		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
 		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
-		building = cls.areBuildRequirementsSatisfied(x, y)
+		building = cls.areBuildRequirementsSatisfied(x, y, **kwargs)
 		if building is None:
 			return []
 		else:
@@ -98,10 +99,10 @@ class BuildableSingle(object):
 
 class BuildableRect(BuildableSingle):
 	@classmethod
-	def getBuildList(cls, point1, point2):
+	def getBuildList(cls, point1, point2, **kwargs):
 		buildings = []
 		for x, y in [ (x, y) for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))) for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))) ]:
-			building = cls.areBuildRequirementsSatisfied(x, y, buildings)
+			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				buildings.append(building)
 
@@ -109,7 +110,7 @@ class BuildableRect(BuildableSingle):
 
 class BuildableLine(BuildableSingle):
 	@classmethod
-	def getBuildList(cls, point1, point2):
+	def getBuildList(cls, point1, point2, **kwargs):
 		"""
 		@param point1:
 		@param point2:
@@ -117,7 +118,7 @@ class BuildableLine(BuildableSingle):
 		buildings = []
 		y = int(round(point1[1]))
 		for x in xrange(int(round(point1[0])), int(round(point2[0])), (1 if int(round(point2[0])) > int(round(point1[0])) else -1)):
-			building = cls.areBuildRequirementsSatisfied(x, y, buildings)
+			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : ('d' if int(round(point2[0])) < int(round(point1[0])) else 'b') if len(buildings) == 0 else 'bd'})
 				buildings.append(building)
@@ -143,7 +144,7 @@ class BuildableLine(BuildableSingle):
 				action = 'ac'
 			is_first = False
 			
-			building = cls.areBuildRequirementsSatisfied(x, y, buildings)
+			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : action})
 				buildings.append(building)

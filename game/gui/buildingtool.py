@@ -78,7 +78,7 @@ class BuildingTool(NavigationTool):
 	def previewBuild(self, point1, point2):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
-		self.buildings = self._class.getBuildList(point1, point2)
+		self.buildings = self._class.getBuildList(point1, point2, ship = self.ship)
 		neededRessources, usableRessources = {}, {}
 		for building in self.buildings:
 			building['instance'] = self._class.getInstance(**building)

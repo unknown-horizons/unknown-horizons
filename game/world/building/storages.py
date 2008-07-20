@@ -65,14 +65,16 @@ class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer)
 
 class BranchOffice(StorageBuilding):
 	@classmethod
-	def isSettlementBuildRequirementSatisfied(cls, x, y, island, **state):
+	def isSettlementBuildRequirementSatisfied(cls, x, y, island, ship, **state):
 		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
 		#if multi branch office allowed:
 		#if len(settlements) == 1:
 		#	return settlements.pop()
 		if len(settlements) != 0:
 			return None
-		#todo: add ship check
+		#ship check
+		if (max(x - ship.unit_position.x, 0, ship.unit_position.x - x - cls.size[0] + 1) ** 2) + (max(y - ship.unit_position.y, 0, ship.unit_position.y - y - cls.size[1] + 1) ** 2) > 25:
+			return None
 		return {'settlement' : None}
 
 	@classmethod
