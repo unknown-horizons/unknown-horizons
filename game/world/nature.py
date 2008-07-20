@@ -53,7 +53,8 @@ class Growable(object):
 		#print 'CALLED NEXT_ANI, id',self.id,self, "AT", time.time()
 		self.action = self.action_iter.next()
 
-		self._instance.act(self.action, self._instance.getLocation(), True)
+		# FIXME: Crashes
+#		self._instance.act(self.action, self._instance.getLocation(), True)
 
 		iter_pos = len(self.actions) - self.action_iter.__length_hint__()
 		#if self.loop_until < (len(self.actions) - self.action_iter.__length_hint__()):
