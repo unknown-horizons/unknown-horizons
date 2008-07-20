@@ -50,6 +50,7 @@ class Building(WorldObject):
 
 	def remove(self):
 		"""Removes the building"""
+		#print "BUILDING: REMOVE " + str(self)
 		self.settlement.rem_inhabitants(self.inhabitants)
 		for x in xrange(self.x, self.x + self.__class__.size[0]):
 			for y in xrange(self.y, self.y + self.__class__.size[1]):
@@ -57,7 +58,7 @@ class Building(WorldObject):
 				tile.blocked = False
 				tile.object = None
 		game.main.session.entities.deleteInstance(self._instance.getId())
-		self._instance.getLocationRef().getLocation().deleteInstance(self._instance)
+		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance.thisown = 1
 
 	@classmethod

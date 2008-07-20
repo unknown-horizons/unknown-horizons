@@ -27,8 +27,9 @@ class WorldObject(object):
 		if not hasattr(self, "_WorldObject__id"):
 			self.__id = WorldObject.next_id
 			WorldObject.next_id = WorldObject.next_id + 1
+			self.objects.append(self)
 		return self.__id
 
 	@classmethod
 	def getObjectById(cls, id):
-		pass
+		return cls.objects[id-1]

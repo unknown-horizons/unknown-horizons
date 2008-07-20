@@ -51,14 +51,10 @@ class Growable(object):
 		""" Executes next action """
 		import time
 		#print 'CALLED NEXT_ANI, id',self.id,self, "AT", time.time()
-		try:
-			self.action = self.action_iter.next()
-		except StopIteration: 
-			# we don't want the audience to notice small bugs at the dusmania, so for safety:
-			pass
-		
+		self.action = self.action_iter.next()
+
 		self._instance.act(self.action, self._instance.getLocation(), True)
-		
+
 		iter_pos = len(self.actions) - self.action_iter.__length_hint__()
 		#if self.loop_until < (len(self.actions) - self.action_iter.__length_hint__()):
 		if self.loop_until < iter_pos:
@@ -90,4 +86,3 @@ class Growable(object):
 		self.action_iter = iter(self.actions)
 		self.loop_until = -1 # force recalculation
 		self.next_animation()
-		
