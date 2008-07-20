@@ -22,6 +22,7 @@
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from game.command.building import Tear
+from game.world.building.storages import StorageBuilding
 
 import fife
 import game.main
@@ -100,7 +101,7 @@ class TearingTool(NavigationTool):
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = game.main.session.world.get_building(x,y)
-					if b is not None and b not in self.selected:
+					if b is not None and b not in self.selected and not isinstance(b, StorageBuilding):
 						self.selected.append(b)
 			for i in self.selected:
 				game.main.session.view.renderer['InstanceRenderer'].addColored(i._instance, 255, 255, 255)
