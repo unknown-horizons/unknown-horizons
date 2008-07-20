@@ -56,8 +56,7 @@ class Growable(object):
 		except StopIteration:
 			return
 
-		# FIXME: Crashes
-		#self._instance.act(self.action, self._instance.getLocation(), True)
+		self._instance.act(self.action, self._instance.getLocation(), True)
 
 		iter_pos = len(self.actions) - self.action_iter.__length_hint__()
 		#if self.loop_until < (len(self.actions) - self.action_iter.__length_hint__()):
