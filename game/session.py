@@ -56,7 +56,7 @@ class Session(livingObject):
 		self.timer = Timer(16)
 		self.manager = SPManager()
 		self.scheduler = Scheduler(self.timer)
-		self.view = View()
+		self.view = View((15, 15))
 		self.entities = Entities()
 
 		#GUI
@@ -87,7 +87,7 @@ class Session(livingObject):
 		self.world = World()
 
 		#setup view
-		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
+		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
 	def generateMap(self):
 		"""Generates a map."""
