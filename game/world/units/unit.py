@@ -62,9 +62,9 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x + self.unit_position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
 		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
-		
+
 	def check_move(self, destination):
-		""" Tries to find a path to destination 
+		""" Tries to find a path to destination
 		@param destination: Point or Rect. if it's a Point that's in a building, the building is used as destination.
 		"""
 		diagonal = False
@@ -81,10 +81,10 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
 			diagonal = True
-			
+
 		source = self.unit_position
 		dest = destination
-			
+
 		island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
 		if island is not None:
 			b = island.get_building(self.unit_position.x, self.unit_position.y)
@@ -93,27 +93,28 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			b = island.get_building(destination.x, destination.y)
 			if b is not None and isinstance(destination, Point):
 				dest = Rect(Point(b.x, b.y), b.size[0], b.size[1])
-	
-		return findPath(source, dest, path_graph, diagonal) 
-	
+
+		return findPath(source, dest, path_graph, diagonal)
+
 	def do_move(self, path, callback = None):
 		"""Conducts a move, that was previously calculated in check_move or specified as path.
 		@param callback: function to call when unit arrives
 		@param path: path to take. defaults to self.path
 		If you just want to move a unit without checks, use move()
-		""" 
-			
+		"""
+
 		# cancel current move
-		
+
 		## TODO: replace this quick and really hard-core dirty fix (dusmania..)
-		#from game.world.units.carriage import Carriage
-		#if not isinstance(self, Carriage):
-		game.main.session.scheduler.rem_call(self, self.move_tick)
-			
+		from game.world.units.carriage import Carriage
+		if not isinstance(self, Carriage):
+			print self.id, 'removing move_tick for Carriages'
+			game.main.session.scheduler.rem_call(self, self.move_tick)
+
 		self.cur_path = None
 		self.next_target = None
 		self.move_target = None
-		
+
 		# setup move
 		self.path = path
 		self.move_callback = callback
@@ -124,18 +125,10 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self.next_target = self.cur_path.next()
 		# findPath returns tuples, so we have to turn them into Point
 		self.next_target = Point(self.next_target)
-		
+
 		# enqueue first move (move_tick takes care of the rest)
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
-		
-	def stop(self):
-		"""Stops a moveing unit"""
-		game.main.session.scheduler.rem_call(self, self.move_tick)
-		self.path = None
-		self.cur_path = None
-		self.next_target = None
-		self.move_callback = None
-		
+	
 	def move(self, destination, callback = None):
 		""" Moves unit to destination
 		@param destination: Point or Rect
@@ -143,20 +136,21 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		@return: True if move is possible, else False
 		"""
 		path = self.check_move(destination)
-		
+
 		if path == False:
 			return False
-		
+
 		self.do_move(path, callback)
-		
+
 		# move_target is deprecated, will be removed soon
 		self.move_target = Point(path[ len(path)-1 ])
-		
-		
+
+		print self.id, 'MOVING TO', path[ len(path)-1 ]
+
 		return True
 
 	def move_directly(self, destination):
-		""" this is deprecated, do not use this. 
+		""" this is deprecated, do not use this.
 		"""
 		if self.next_target == self.unit_position:
 			#calculate next target
@@ -182,14 +176,17 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			self.movement_finished()
 
 	def movement_finished(self):
+		#print [callback for callback in [object for object in game.main.session.scheduler.schedule] if game.main.session.scheduler.schedule[callback].class_instance == self ]
+
 		print self.id, 'MOVEMENT FINISHED'
 		self.path = None
 		self.cur_path = None
 		self.next_target = self.unit_position
-		
+
 		# deprecated:
 		self.move_target = self.unit_position
 		
+		#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 		if self.move_callback is not None:
 			print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 			self.move_callback()
@@ -218,7 +215,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 			elif self.__class__.movement == Movement.SOLDIER_MOVEMENT:
 				# this is deprecated, just like move_directly
-				#calculate next target 
+				#calculate next target
 				self.next_target = self.unit_position
 				if self.move_target.x > self.unit_position.x:
 					self.next_target = (self.unit_position.x + 1, self.next_target.y)
@@ -230,7 +227,6 @@ class Unit(WorldObject, fife.InstanceActionListener):
 					self.next_target = (self.next_target.x, self.unit_position.y - 1)
 
 				self.next_target = Point(self.next_target)
-				
 			#print self.id, 'MOVE_TICK TO', self.next_target
 
 		else:

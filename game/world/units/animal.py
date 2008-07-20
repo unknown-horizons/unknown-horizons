@@ -64,7 +64,7 @@ class Animal(BuildingCarriage, GrowingUnit):
 		for pickup in possible_pickups:
 			if pickup[2] > 0:
 				pickups.append(pickup)
-		choice = int(round(random.uniform(0, len(pickups)-1)))
+		choice = int(round(random.uniform(0, len(pickups)-1))) ## TODO: Calc rating
 		return [pickups[choice][4], pickups[choice]]
 
 	def reached_pickup(self):
@@ -76,8 +76,8 @@ class Animal(BuildingCarriage, GrowingUnit):
 		self.transfer_pickup()
 		self.target = []
 		if self.production.get_growing_info()[1] > 0:
-			# produced something, wait for AnimalCarriage
-			pass
+			print self.id, 'produced something, wait for AnimalCarriage'
+			#pass
 		else:
 			self.send()
 

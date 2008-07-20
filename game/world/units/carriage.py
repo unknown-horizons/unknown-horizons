@@ -80,35 +80,23 @@ class Carriage(Unit):
 		"""
 		#print 'SEARCH_JOB IN',self.carriage_consumer.id,"CAR", self.id, self
 		#print self.id, 'SEARCH JOB w min', already_scanned_min
-		min = 100000
 		# scan for resources, where more then the already scanned tons are stored
 		# and less then the current minimum
-		needed_res = []
 		consumed_res = self.get_consumed_resources()
 
-		for res in consumed_res:
-			# check if we already scanned for pickups for this res
-			if res[1] < already_scanned_min:
-				continue
-
-			# check if storage is already full
-			if res[1] == self.carriage_consumer.inventory.get_size(res[0]):
-				continue
-
-			# if new minimum, discard every other value cause it's higher
-			if res[1] < min:
-				min = res[1]
-				needed_res = []
-				needed_res.append(res[0])
-			elif res[1] == min:
-				needed_res.append(res[0])
+		# Scan for most needed ressources (based on the smallest amount of the needed ressource in the neededd ressources list
+		needed_res = self.get_needed_ressources(consumed_res)
 
 		# if none found, no pickup available
 		if len(needed_res) == 0:
-			#print self.id,' NO needed res'
+			print self.id,' NO needed res'
 			return False
 
 		#print 'CAR', self.id,'NEEDED', needed_res
+
+		#print self.id, 'POS PICK', [ possible_pickup_places[i][1] for i in xrange(0, len(possible_pickup_places)) ]
+
+		radius = self.carriage_attached_building.radius
 
 		# search for available pickups for needed_res
 		# values of possible_pickup: [building, resource, amount, distance, rating]
@@ -117,77 +105,76 @@ class Carriage(Unit):
 		possible_pickups = []
 
 		possible_pickup_places = self.get_possible_pickup_places()
-		position = self.get_position()
-
-		#print self.id, 'POS PICK', [ possible_pickup_places[i][1] for i in xrange(0, len(possible_pickup_places)) ]
 
 		# if carriage is in it's building, it has to be able to reach
 		# everything within the building-radius, not its own radius
+		## TODO: MOVE into pather
+		b_home_rect = Rect( Point(self.carriage_attached_building.x, self.carriage_attached_building.y), self.carriage_attached_building.size[0], self.carriage_attached_building.size[1])
+		position = self.get_position()
 		if position == self.home_position:
-			position = Rect( Point(self.carriage_attached_building.x, self.carriage_attached_building.y), self.carriage_attached_building.size[0], self.carriage_attached_building.size[1])
-			radius = self.carriage_attached_building.radius
-		else:
-			radius = self.radius
+			position = b_home_rect
 
-		for b in possible_pickup_places:
+		for building, res_list in possible_pickup_places:
 			# check if building produces one of the needed_res and if it has some available
 			for res in needed_res:
-				if res in b[1]:
-					# check if another carriage is already on the way for same res
-					for carriage in b[0].pickup_carriages:
-						print carriage
-					if len([ carriage for carriage in b[0].pickup_carriages if carriage.target[1] == res ]) > 0:
-						#print 'CAR', self.id, 'other carriage'
-						break
-
-					stored = b[0].inventory.get_value(res)
+				if res in res_list:
+					stored = building.inventory.get_value(res)
 					if stored > 0:
+						# check if another carriage is already on the way for same res
+						## TODO: Improve Check other carraiges at the target producer:
+						if len([ carriage for carriage in building.pickup_carriages if carriage.target[1] == res ]) > 0:
+							##print self.id, 'other carriage'
+							continue
+
 						## TODO: use Rect in buildings and use their Rect here
-						brect = Rect(Point(b[0].x, b[0].y), b[0].size[0], b[0].size[1])
-						distance = math.floor(brect.distance( position ) )
-						if distance > self.radius:
-							print self.id, 'to far', distance, self.radius
-							break
+						brect = Rect(Point(building.x, building.y), building.size[0], building.size[1])
+						distance = math.floor(brect.distance( b_home_rect )) #math.floor()
+						if distance > self.carriage_attached_building.radius:
+							#print self.id, 'to far', distance, self.radius
+							continue
+
 						if stored > max_amount:
 							max_amount = stored
 						if distance > max_distance:
 							max_distance = distance
-						possible_pickups.append([b[0], res, stored, distance, 0])
+						possible_pickups.append([building, res, stored, distance, 0])
 					#else:
 						#print 'CAR', self.id, 'nix stored of', res
 
-		# if no possible pickups, retry with changed min to scan for other res
+
+
+		# if no possible pickups, return
 		if len(possible_pickups) == 0:
 			#print self.id, 'NO POSSIBLE FOR ',needed_res, 'at', self.carriage_consumer.id
-			return self.search_job(min+1)
+			return False
 
 		# development asserts
-		if __debug__:
-			assert(max_amount != 0)
-			assert(max_distance != 0)
+		assert(max_amount != 0, self.id)
+		#assert(max_distance != 0, self.id)
 
 		while True: # do-while loop
 
 			if len(possible_pickups) == 0:
-				#print 'CAR', self.id, 'NO pickup reachable'
+				print self.id, 'NO pickup reachable'
 				return False
 
 			max_rating = self.calc_best_pickup(possible_pickups, max_amount, max_distance)
 
 			# save target building and res to pick up,
+			## TODO: use dicts instead of lists for better overview of functionallity
 			self.target = [max_rating[1][0], max_rating[1][1], 0]
-			self.target[2] = self.target[0].inventory.get_value(self.target[1])
+			self.target[2] = self.target[0].inventory.get_value(self.target[1]) # Set amount to  be picked up
 			# check for carriage size overflow
 			if self.target[2] > self.inventory.get_size(self.target[1]):
-				self.target[2] = self.inventory.get_size(self.target[1])
+				self.target[2] = self.inventory.get_size(self.target[1]) # Check own inventory is smaller then amount that can be picked up
 			# check for home building storage size overflow
 			if self.target[2] > (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1])):
 				self.target[2] = (self.carriage_consumer.inventory.get_size(self.target[1]) - self.carriage_consumer.inventory.get_value(self.target[1]))
 
-			path = self.check_move(Point(self.target[0].x, self.target[0].y))
+			path = self.check_move(Point(self.target[0].x, self.target[0].y)) # Get path
 
 			if path == False:
-				possible_pickups.remove(max_rating[1])
+				possible_pickups.remove(max_rating[1]) # remove pickups that are not reachable
 			else:
 				break
 
@@ -195,11 +182,21 @@ class Carriage(Unit):
 			self.show()
 
 		self.target[0].pickup_carriages.append(self)
+		print self.id, '----------------- do_move call search_job'
 		self.do_move(path, self.reached_pickup)
 
 		print self.id, 'CURRENT', self.get_position().x, self.get_position().y
 		print self.id, 'GETTING', self.target[0].x, self.target[0].y
 		return True
+
+	def get_needed_ressources(self, consumed_res):
+		"""Returns the needed ressources"""
+		for resid,stock in consumed_res:
+			print self.id, 'GET NEEDED RESSOURCES'
+			needed_res = []# check if storage is already full
+			if stock < self.carriage_consumer.inventory.get_size(resid):
+				needed_res.append(resid)
+		return needed_res
 
 	def reached_pickup(self):
 		"""Called when the carriage reaches target building
@@ -208,11 +205,13 @@ class Carriage(Unit):
 		if __debug__:
 			assert( Rect(Point(self.target[0].x, self.target[0].y), self.target[0].size[0], self.target[0].size[1]).distance(self.unit_position) == 0)
 		self.transfer_pickup()
+		print self.id, '------------------ move call reached_pickup'
 		ret = self.move(Point(self.home_position.x, self.home_position.y), self.reached_home)
 		if __debug__:
 			assert(ret == True) # there has to be a way back
 
 	def transfer_pickup(self):
+		print self.id, 'TRANSFER PICKUP'
 		pickup_amount = self.target[0].pickup_resources(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], pickup_amount)
 
@@ -221,8 +220,8 @@ class Carriage(Unit):
 	def reached_home(self):
 		"""Called when carriage is in the building, it was assigned to
 		"""
-		print self.id, 'REACHED HOME AT', self.unit_position
-		assert( self.unit_position.get_coordinates()[0] in Rect(Point(self.carriage_attached_building.x, self.carriage_attached_building.y), self.carriage_attached_building.size[0], self.carriage_attached_building.size[0]).get_coordinates())
+		print self.id, 'REACHED HOME'
+		print self.id , self.target[1], self.target[2]
 		self.carriage_consumer.inventory.alter_inventory(self.target[1], self.target[2])
 		self.inventory.alter_inventory(self.target[1], -self.target[2])
 		assert(self.inventory.get_value(self.target[1]) == 0)
@@ -241,9 +240,11 @@ class Carriage(Unit):
 
 	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
 		""" chooses a pickup according to their current storage value and distance
-		"""
+		[building, res, stored, distance, 0]"""
 		max_rating = [0, None]
 		for pickup in possible_pickups:
+			print 'pickup', pickup
+			assert(max_amount != 0)
 			pickup[4] = 2 + pickup[2] / max_amount - pickup[3] / max_distance # 2+ ensures positiv value
 			if pickup[4] > max_rating[0]:
 				max_rating[0] = pickup[4]
@@ -301,6 +302,7 @@ class AnimalCarriage(BuildingCarriage):
 
 	Has to be attached to an instance of AnimalFarm.
 	"""
+
 	def get_possible_pickup_places(self):
 		ret = []
 		# this could be optimised by caching the results
@@ -312,16 +314,30 @@ class AnimalCarriage(BuildingCarriage):
 		return ret
 
 	def reached_pickup(self):
+		print self.id, 'move reached_pickup animal carraige'
 		self.move(Point(self.home_position.x, self.home_position.y), self.get_animal_pickup)
+		animal = self.get_animal(self.target[0])
+		print animal.id, 'is moved by ', self.id
 		self.get_animal(self.target[0]).move(Point(self.home_position.x, self.home_position.y))
 
 	def get_animal_pickup(self):
-		print self.id, 'Getting animal'
-		self.transfer_pickup()
-		animal = self.get_animal(self.target[0])
-		self.reached_home()
 		print self.id, 'Got animal'
+		self.transfer_pickup()
+		self.reached_home()
+
+	def reached_home(self):
+		print self.id, 'REACHED HOME'
+		print self.id , self.target[1], self.target[2]
+		self.carriage_consumer.inventory.alter_inventory(self.target[1], self.target[2])
+		self.inventory.alter_inventory(self.target[1], -self.target[2])
+		assert(self.inventory.get_value(self.target[1]) == 0)
+		if self.hide_when_idle:
+			self.hide()
+		animal = self.get_animal(self.target[0])
+		print self.id, 'sending animal'
 		animal.send()
+		self.target = []
+		self.send()
 
 	def get_animal(self, production):
 		""" Returns the animal, whose producer == production """
