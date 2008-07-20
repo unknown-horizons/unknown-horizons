@@ -25,6 +25,7 @@ from game.util import Rect, Point
 from game.world.pathfinding import Movement
 import game.main
 import random
+from game.world.building.consumer import Consumer
 
 
 class BuildingCollecter(Unit):
@@ -39,11 +40,13 @@ class BuildingCollecter(Unit):
 
 	"""
 
-	def __init__(self, home_building, slots = 1, size = 6):
+	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True):
 		super(BuildingCollecter, self).__init__(home_building.x, home_building.y)
 		self.inventory = ArbitraryStorage(slots, size)
 		self.__home_building = home_building
-
+		self.start_hidden = start_hidden
+		if self.start_hidden:
+			self.hide()
 		self.search_job()
 
 	def search_job(self):
@@ -92,6 +95,8 @@ class BuildingCollecter(Unit):
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.building._Producer__registered_collecters.append(self)
 		self.__home_building._Consumer__registered_collecters.append(self)
+		if self.start_hidden:
+			self.show()
 		self.do_move(self.job.path, self.begin_working)
 
 	def begin_working(self):
@@ -119,6 +124,8 @@ class BuildingCollecter(Unit):
 		print self.id, 'FINISHED WORK'
 		assert(self.__home_building.inventory.alter_inventory(self.job.res, self.job.amount) == 0)
 		assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+		if self.start_hidden:
+			self.hide()
 		self.__home_building._Consumer__registered_collecters.remove(self)
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
@@ -141,7 +148,7 @@ class BuildingCollecter(Unit):
 		print self.id, 'GET BUILDINGS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		return self.__home_building.get_buildings_in_range()
+		return [building for building in self.__home_building.get_buildings_in_range() if isinstance(building, Consumer)]
 
 
 
