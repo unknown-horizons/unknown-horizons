@@ -25,7 +25,7 @@ from game.util import Rect, Point
 from game.world.pathfinding import Movement
 import game.main
 import random
-from game.world.building.consumer import Consumer
+from game.world.building.producer import Producer
 
 
 class BuildingCollecter(Unit):
@@ -148,7 +148,7 @@ class BuildingCollecter(Unit):
 		print self.id, 'GET BUILDINGS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		return [building for building in self.__home_building.get_buildings_in_range() if isinstance(building, Consumer)]
+		return [building for building in self.__home_building.get_buildings_in_range() if isinstance(building, Producer)]
 
 
 
