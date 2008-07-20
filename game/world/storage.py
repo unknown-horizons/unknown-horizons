@@ -20,8 +20,9 @@
 # ###################################################
 
 from game.util.stablelist import stablelist
+from game.util import WorldObject
 
-class Storage(object):
+class Storage(WorldObject):
 	"""Class that represent a storage compartment with fixed resources slots
 
 	Used e.g. by production buildings (e.g. PrimaryProducer)
@@ -104,7 +105,7 @@ class Storage(object):
 	def __str__(self):
 		return str(self._inventory)
 
-class ArbitraryStorage(object):
+class ArbitraryStorage(WorldObject):
 	"""Class that represents a storage compartment for ships
 	Storages have a certain number of slots and a certain maximum number of
 	resources that they can store for a certain slot.

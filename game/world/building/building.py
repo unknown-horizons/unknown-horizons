@@ -23,8 +23,9 @@ import fife
 import game.main
 import math
 from game.util import Rect
+from game.util import WorldObject
 
-class Building(object):
+class Building(WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.

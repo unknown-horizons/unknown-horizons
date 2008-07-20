@@ -27,3 +27,4 @@ from color import Color
 from point import Point
 from rect import Rect
 from changelistener import changelistener
+from worldobject import WorldObject

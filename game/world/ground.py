@@ -21,8 +21,9 @@
 
 import game.main
 import fife
+from game.util import WorldObject
 
-class Ground(object):
+class Ground(WorldObject):
 	def __init__(self, x, y):
 		"""
 		@param x: int x position the ground is created.

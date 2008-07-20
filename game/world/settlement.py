@@ -20,9 +20,9 @@
 # ###################################################
 import game.main
 from game.world.storage import Storage
-from game.util import stablelist
+from game.util import WorldObject
 
-class Settlement(object):
+class Settlement(WorldObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
@@ -32,7 +32,7 @@ class Settlement(object):
 		self.name = str(game.main.db("SELECT name FROM citynames ORDER BY random() LIMIT 1")[0][0])
 		self.owner = owner
 		self._inhabitants = 0
-		self.buildings = stablelist() # List of all the buildings belonging to the settlement
+		self.buildings = [] # List of all the buildings belonging to the settlement
 		self.inventory = Storage()
 		resources = game.main.db("SELECT rowid FROM ressource")
 		for (res,) in resources:

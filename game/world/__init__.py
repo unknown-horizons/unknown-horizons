@@ -24,7 +24,6 @@ __all__ = ['island', 'nature', 'player', 'settlement']
 import game.main
 from game.world.island import Island
 from game.world.player import Player
-from game.util import stablelist
 
 class World(object):
 	"""
@@ -36,13 +35,13 @@ class World(object):
 			self.properties[name] = value
 
 		#load islands
-		self.islands = stablelist()
-		for index,(island, offset_x, offset_y) in enumerate(game.main.db("select island, x, y from map.island")):
-			self.islands[index] = Island(index, offset_x, offset_y, island)
+		self.islands = []
+		for island, offset_x, offset_y in game.main.db("select island, x, y from map.island"):
+			self.islands.append(Island(offset_x, offset_y, island))
 
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
-		for i in self.islands.values():
+		for i in self.islands:
 			self.min_x = i.x if self.min_x is None or i.x < self.min_x else self.min_x
 			self.min_y = i.y if self.min_y is None or i.y < self.min_y else self.min_y
 			self.max_x = (i.x + i.width - 1) if self.max_x is None or (i.x + i.width - 1) > self.max_x else self.max_x
@@ -60,17 +59,17 @@ class World(object):
 				empty.remove((g.x,g.y))
 		print "Adding %d water tiles..." % (len(empty),)
 		self.grounds = []
-		for x,y in empty:
+		for x, y in empty:
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "Done."
 		
 		self.water = empty
 
 		# create playerlist
-		self.players = stablelist()
+		self.players = []
 
 		# add ship
-		self.ships = stablelist()
+		self.ships = []
 		self.ships.append(game.main.session.entities.units[1](15, 15))
 		self.ships.append(game.main.session.entities.units[1](29, 25))
 		self.ships.append(game.main.session.entities.units[4](30, 35))

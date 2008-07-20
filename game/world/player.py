@@ -20,8 +20,9 @@
 # ###################################################
 
 from game.world.storage import Storage
+from game.util import WorldObject
 
-class Player(object):
+class Player(WorldObject):
 	"""Class representing a player"""
 
 	def __init__(self, id, name, color):

@@ -21,10 +21,10 @@
 
 import game.main
 from game.world.settlement import Settlement
-from game.util import stablelist
 from pathfinding import findPath
+from game.util import WorldObject
 
-class Island(object):
+class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
 	that belong to the island. The island variable is also set on every instance that belongs
 	to an island, making it easy to determine to which island the instance belongs, when
@@ -35,19 +35,18 @@ class Island(object):
 	@param file: file from which the island is loaded.
 	"""
 
-	def __init__(self, id, x, y, file):
+	def __init__(self, x, y, file):
 		"""
 		@param id: island id
 		@param x:
 		@param y:
 		@param file: db file for island
 		"""
-		self.id = id
 		self.file = file
 		game.main.db("attach ? as island", file)
 		self.x, self.y, self.width, self.height = game.main.db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground", x, y)[0]
 		self.grounds = []
-		self.buildings = stablelist()
+		self.buildings = []
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
 			ground = game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y)
 			ground.settlement = None
@@ -55,7 +54,7 @@ class Island(object):
 			ground.object = None
 			self.grounds.append(ground)
 		game.main.db("detach island")
-		self.settlements = stablelist()
+		self.settlements = []
 		
 		self.path_nodes = {}
 

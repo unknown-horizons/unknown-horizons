@@ -24,18 +24,21 @@ import game.main
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, instance = None, ship = None, **trash):
+	def __init__(self, building, x, y, instance = None, ship = None, tear = [], **trash):
 		"""Create the command
-		@param building_class: building class that is to be built.
+		@param building: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
+		@param tear: list of buildings to be teared
 		@param ship: ship instance
 		"""
 		self.building_class = building.id
 		self.instance = None if instance is None else instance.getId()
-		print 
 		self.layer = 2 if instance is None else int(instance.getLocationRef().getLayer().getId())
-		self.ship = None if ship is None else game.main.session.world.ships.index(ship)
+		self.tear = []
+		for obj in tear:
+			self.tear.append(obj.getId())
+		self.ship = None if ship is None else ship.getId()
 		self.x = int(x)
 		self.y = int(y)
 
@@ -43,6 +46,9 @@ class Build(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
+		for id in self.tear:
+			WorldObject.getObjectById(id).remove()
+
 		island = game.main.session.world.get_island(self.x, self.y)
 		building = game.main.session.entities.buildings[self.building_class](self.x, self.y, issuer, game.main.session.view.layers[self.layer].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
 
@@ -59,24 +65,10 @@ class Tear(object):
 		"""Create the command
 		@param building: building that is to be teared.
 		"""
-		for id, i in game.main.session.world.islands.iteritems():
-			if i == building.island:
-				self.island_id = id
-				break
-		if hasattr(building, 'settlement'):
-			for id, s in building.island.settlements.iteritems():
-				if s == building.settlement:
-					self.settlement_id = id
-					break
-		else:
-			self.settlement_id = None
-		for id, b in (building.island if self.settlement_id is None else building.settlement).buildings.iteritems():
-			if b == building:
-				self.building_id = id
-				break
+		self.building = building.getId()
 
 	def __call__(self, issuer):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		(game.main.session.world.islands[self.island_id] if self.settlement_id is None else game.main.session.world.islands[self.island_id].settlements[self.settlement_id]).buildings[self.building_id].remove()
+		WorldObject.getObjectById(self.building).remove()

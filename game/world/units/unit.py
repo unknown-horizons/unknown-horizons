@@ -23,8 +23,9 @@ import game.main
 import fife
 from game.world.pathfinding import findPath, Movement
 from game.util import Point, Rect
+from game.util import WorldObject
 
-class Unit(fife.InstanceActionListener):
+class Unit(WorldObject, fife.InstanceActionListener):
 	movement = Movement.SOLDIER_MOVEMENT
 
 	def __init__(self, x, y):
