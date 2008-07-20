@@ -23,15 +23,12 @@ class WorldObject(object):
 	next_id = 1
 	objects = []
 
-	def __init__(self, *args, **kwargs):
-		self.__id = WorldObject.next_id
-		WorldObject.next_id = WorldObject.next_id + 1
-		super(WorldObject, self).__init__(*args, **kwargs)
-
 	def getId(self):
+		if not hasattr(self, "_WorldObject__id"):
+			self.__id = WorldObject.next_id
+			WorldObject.next_id = WorldObject.next_id + 1
 		return self.__id
 
 	@classmethod
 	def getObjectById(cls, id):
 		pass
-
