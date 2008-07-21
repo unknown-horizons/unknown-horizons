@@ -59,7 +59,8 @@ class Building(WorldObject):
 				tile.object = None
 		game.main.session.entities.deleteInstance(self._instance.getId())
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
-		self._instance.thisown = 1
+		#instance is owned by layer...
+		#self._instance.thisown = 1
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings
