@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.scheduler import CallbackObject
 import time
 
 class ExtScheduler():
@@ -74,3 +73,19 @@ class ExtScheduler():
 		self.schedule = []
 		self.pump.remove(self.tick)
 		self.pump = None
+
+
+class CallbackObject(object):
+	"""Class used by the ExtScheduler Class to organize callbacks."""
+	def __init__(self,  callback, class_instance, runin=1, loops=1):
+		"""Creates the CallbackObject instance.
+		@param callback: lambda function callback, which is called runin ticks.
+		@param class_instance: class instance the original function(not the lambda function!) belongs to.
+		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
+		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
+		"""
+		self.callback = callback
+		self.class_instance = class_instance
+		self.runin = runin
+		self.loops = loops
+
