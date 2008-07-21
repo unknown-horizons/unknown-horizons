@@ -29,7 +29,8 @@ class BuildableSingle(object):
 		for check in (cls.isIslandBuildRequirementSatisfied, cls.isSettlementBuildRequirementSatisfied, cls.isGroundBuildRequirementSatisfied, cls.isBuildingBuildRequirementSatisfied, cls.isUnitBuildRequirementSatisfied):
 			update = check(**state)
 			if update is None:
-				return None
+				state.update({'buildable' : False})
+				return state
 			else:
 				state.update(update)
 		if before is not None:

@@ -154,8 +154,10 @@ class BuildingTool(NavigationTool):
 				self.endPoint = point
 				self.previewBuild(self.startPoint, point)
 			default_args = {'building' : self._class, 'ship':self.ship}
+			found_buildable = False
 			for building in self.buildings:
 				if building['buildable']:
+					found_buildable = True
 					game.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
@@ -163,10 +165,11 @@ class BuildingTool(NavigationTool):
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			self.buildings = []
-			if not evt.isShiftPressed():
-				self.onEscape()
+			if evt.isShiftPressed() or not found_buildable:
+				self.startPoint = point
+				self.previewBuild(point, point)
 			else:
-				self.startPoint = None
+				self.onEscape()
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
