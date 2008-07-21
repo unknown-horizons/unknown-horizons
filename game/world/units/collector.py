@@ -24,7 +24,7 @@ from game.world.storage import ArbitraryStorage
 from game.util import Rect, Point
 from game.world.pathfinding import Movement
 import game.main
-import random
+import operator
 from game.world.building.producer import Producer
 
 
@@ -81,7 +81,8 @@ class BuildingCollector(Unit):
 
 
 		## TODO: Sort job list
-		jobs.sort(lambda x,y: random.randint(-1,1))
+		jobs.sort(key=operator.attrgetter('rating') )
+		jobs.reverse()
 
 
 		for job in jobs:
@@ -168,5 +169,8 @@ class Job(object):
 		self.res = res
 		self.amount = amount
 		self.path = []
+		
+		# this is rather a dummy
+		self.rating = amount
 
 
