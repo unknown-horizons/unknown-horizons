@@ -83,19 +83,22 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			building['instance'] = self._class.getInstance(**building)
 			ressources = self._class.getBuildCosts(**building)
-			for ressource in ressources:
-				neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
-			for ressource in neededRessources:
-				available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship is not None else building['settlement'].inventory.get_value(ressource) if building['settlement'] is not None else 0)
-				building['buildable'] = available >= neededRessources[ressource]
-				if building['buildable'] == False:
-					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
-					break
+			if not building.get('buildable', True):
+				game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
 			else:
-				building['buildable'] = True
 				for ressource in ressources:
-					usableRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
-				game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
+					neededRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
+				for ressource in neededRessources:
+					available = ( game.main.session.world.player.inventory.get_value(ressource) if ressource == 1 else 0 ) + (self.ship.inventory.get_value(ressource) if self.ship is not None else building['settlement'].inventory.get_value(ressource) if building['settlement'] is not None else 0)
+					building['buildable'] = available >= neededRessources[ressource]
+					if not building['buildable']:
+						game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
+						break
+				else:
+					building['buildable'] = True
+					for ressource in ressources:
+						usableRessources[ressource] = neededRessources.get(ressource, 0) + ressources[ressource]
+					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
 
 	def onEscape(self):
 		if self.ship is None:
