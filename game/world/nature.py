@@ -44,9 +44,12 @@ class Growable(object):
 		self.actions.sort()
 		self.restart_animation()
 		
+	def remove(self):
+		super(Growable, self).remove()
+		game.main.session.scheduler.rem_all_classinst_calls(self.growing_producer)
+
 	# parts of the following code is to difficult to comment
 	# but it works, trust me ;-)
-		
 	def next_animation(self):
 		""" Executes next action """
 		import time
