@@ -31,6 +31,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 	def __init__(self, x, y):
 		if self._object is None:
 			self.__class__._loadObject()
+		self.object_type = 1
 		self.last_unit_position = Point(x, y)
 		self.unit_position = self.last_unit_position
 		self.move_target = self.last_unit_position
@@ -76,11 +77,13 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
 			path_graph = island.path_nodes
 		elif self.__class__.movement == Movement.CARRIAGE_MOVEMENT:
-			path_graph = self._BuildingCollector__home_building.radius_coords
+			path_graph = self.home_building.radius_coords
 			diagonal = True
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
 			diagonal = True
+		else:
+			print self.id, 'has no Movement def'
 
 		source = self.unit_position
 		dest = destination

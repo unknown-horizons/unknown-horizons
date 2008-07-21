@@ -35,6 +35,7 @@ class Building(WorldObject):
 		self.y = y
 		self.position = Point(x, y)
 		self.owner = owner
+		self.object_type = 0
 		if instance is None:
 			self.getInstance(x, y)
 		else:

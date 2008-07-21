@@ -20,6 +20,7 @@
 # ###################################################
 
 from building import Building
+from game.world.units.unit import Unit
 import game.main
 
 class Producer(object):
@@ -44,7 +45,18 @@ class Producer(object):
 		# infos about production
 		self.production = {}
 
-		result = game.main.db("SELECT rowid, time FROM production_line where building = ?", self.id);
+	
+		if self.object_type == 0:
+			print self.id, "Producer: IS A BUILDING"
+		
+		elif self.object_type == 1:
+			print self.id, "Producer: IS A UNIT"
+		else:
+			print self.id, "Producer: UNKNOWN TYPE"
+			assert(False)	
+					
+			
+		result = game.main.db("SELECT rowid, time FROM production_line where object = ? and type = ?", self.id, self.object_type);
 		for (prod_line, time) in result:
 			self.production[prod_line] = {}
 			self.production[prod_line]['res'] = {}
