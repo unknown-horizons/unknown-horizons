@@ -116,20 +116,14 @@ class CallbackObject(object):
 		"""
 		
 		# Do some input validation, otherwise errors occure long after wrong data was added
-		# TODO: Use garbage collector to check for strong references in debug mode
 		if not callable(callback):
-			raise ValueError("callback parameter is not callable")
+			raise ValueError("callback parameter is not callable")			
 
 		if runin < 1:
 			raise ValueError("Can't schedule callbacks in the past, runin must be a positive number")
 			
 		if (loops < -1) or (loops is 0):
 			raise ValueError("Loop count must be a positive number or -1 for infinite repeat")
-
-		
-		self.scheduler = scheduler
-		self.runin = runin
-		self.loops = loops
 		
 		# We have to unwrap bound methods, because they normally hold a strong reference
 		from new import instancemethod
@@ -139,6 +133,16 @@ class CallbackObject(object):
 			self.callback = lambda: func(ref())
 		else:
 			self.callback = callback
-			
+		
+		# Check for persisting strong references
+		if __debug__:
+			import gc
+			if (class_instance in gc.get_referents(self.callback)):
+				del self.callback
+				raise ValueError("callback has strong reference to class_instance")
+				
+		self.scheduler = scheduler
+		self.runin = runin
+		self.loops = loops	
 		self.class_instance = weakref.ref(class_instance, lambda ref: self.scheduler.rem_object(self))
 	
