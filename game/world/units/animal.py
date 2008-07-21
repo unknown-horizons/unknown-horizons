@@ -21,9 +21,9 @@
 
 import random
 from game.world.units.unit import Unit
-from game.world.units.carriage import BuildingCarriage
+from game.world.units.collector import BuildingCollector
 from game.world.units.nature import GrowingUnit
-from game.world.building.production import SecondaryProducer
+from game.world.building.production import BuildinglessProducer
 from game.world.storage import Storage
 from game.util.rect import Rect
 from game.util.point import Point
@@ -31,73 +31,35 @@ from game.command.building import Build
 import game.main
 
 
-class Animal(BuildingCarriage, GrowingUnit):
+class Animal(BuildingCollector, BuildinglessProducer):
 	grazingTime = 2
 
-	def __init__(self, building):
-		self.animal_building = building
-
-		self.production = game.main.session.entities.buildings[19]()
-
-		# workaround: the BuildingCarriage needs coords in ctor for inital placement
-		BuildingCarriage.__init__(self, self.production, self.production.inventory, attached_building=self.animal_building)
-
-		self.production.restart_animation = self.restart_animation
-		self.production.next_animation = self.next_animation
-
-		GrowingUnit.__init__(self, self.production)
-
-	def get_possible_pickup_places(self):
-		""" Returns places that should be analysed for pickup
-		@return: list: [ (building, [ produced_res_id, .. ] ) ]
-		"""
-		possible_pickup_places = []
-		for p in self.animal_building.pasture:
-			possible_pickup_places.append( (p, p.prod_res) )
-		return possible_pickup_places
-
-	def get_position(self):
-		return self.unit_position
-
-	def calc_best_pickup(self, possible_pickups, max_amount, max_distance):
-		pickups = []
-		for pickup in possible_pickups:
-			if pickup[2] > 0:
-				pickups.append(pickup)
-		choice = int(round(random.uniform(0, len(pickups)-1))) ## TODO: Calc rating
-		return [pickups[choice][4], pickups[choice]]
-
-	def reached_pickup(self):
-		print "reached pickup"
-		game.main.session.scheduler.add_new_object(self.finished_grazing, self, game.main.session.timer.ticks_per_second * self.__class__.grazingTime)
-
-	def finished_grazing(self):
-		print self.id, 'FIN GRAZING AT', self.target
-		self.transfer_pickup()
-		self.target = []
-		if self.production.get_growing_info()[1] > 0:
-			print self.id, 'produced something, wait for AnimalCarriage'
-			#pass
-		else:
-			self.send()
-
-	def next_animation(self):
-		# this prevents growing by time
-		# cause animals grow, when they ate enough
-		# if other animals do grow by time, we need to create two Animal classes,
-		self.loop_until = 99999
-		GrowingUnit.next_animation(self)
-
-	def move(self, destination, callback = None):
-		print self.id, 'animal move'
-		ret = Unit.move(self, destination, callback)
-		# keep position synchronised for pickup
-		# this is obviously not exact, but should do it (at least for now)
-		self.production.x = self.path[ len(self.path)-1 ][0]
-		self.production.y = self.path[ len(self.path)-1 ][1]
-		return ret
-
-	def do_move(self, path, callback = None):
-		self.production.x = path[ len(path)-1 ][0]
-		self.production.y = path[ len(path)-1 ][1]
-		return Unit.do_move(self, path, callback)
+	def __init__(self, home_building):
+		self.__home_building = home_building
+		BuildingCollector.__init__(self, home_building)
+		BuildinglessProducer.__init__(self)
+		print self.id, "Sheep ID is "
+	
+		
+	
+		
+	def finish_working(self):
+		print self.id, 'FINISH WORKING'
+		# TODO: animation change
+		# deregister at the target we're at
+		self.job.building._Producer__registered_collectors.remove(self)
+	
+	
+	def begin_current_job(self):
+		"""Executes the current job"""
+		print self.id, 'BEGIN CURRENT JOB'
+		self.job.building._Producer__registered_collectors.append(self)
+		self.__home_building._Consumer__registered_collectors.append(self)
+		if self.start_hidden:
+			self.show()
+		self.do_move(self.job.path, self.begin_working)
+	
+	def get_collectable_res(self):
+		print self.id, 'GET COLLECTABLE RES'
+		return self.get_needed_res()
+		
