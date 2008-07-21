@@ -44,10 +44,13 @@ class Growable(object):
 		self.actions.sort()
 		self.restart_animation()
 		
+	# FIXME: This ugly hack removes the cyclic reference of most Growables
+	# FIXME: Please fix this fucked up class in the first place
 	def remove(self):
+		del self.growing_producer.restart_animation
+		del self.growing_producer
 		super(Growable, self).remove()
-		game.main.session.scheduler.rem_all_classinst_calls(self.growing_producer)
-
+		
 	# parts of the following code is to difficult to comment
 	# but it works, trust me ;-)
 	def next_animation(self):

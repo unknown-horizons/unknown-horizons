@@ -52,6 +52,8 @@ class Building(WorldObject):
 		"""Removes the building"""
 		#print "BUILDING: REMOVE " + str(self)
 		self.settlement.rem_inhabitants(self.inhabitants)
+		self.island.remove_building(self)
+		
 		for x in xrange(self.x, self.x + self.__class__.size[0]):
 			for y in xrange(self.y, self.y + self.__class__.size[1]):
 				tile = self.island.get_tile(x,y)
