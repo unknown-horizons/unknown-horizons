@@ -23,7 +23,7 @@ from game.world.building.production import SecondaryProducer
 import game.main
 
 class Settler(SecondaryProducer):
-	"""Represents a settlers house, that uses ressources and creates inhabitants."""
+	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None):
 		SecondaryProducer.__init__(self, x, y, owner, instance)
 		self.inhabitants = 1 # TODE: read initial value from the db

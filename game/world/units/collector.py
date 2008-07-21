@@ -70,10 +70,10 @@ class BuildingCollector(Unit):
 			for res in collectable_res:
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
-					# get sum of picked up ressources for res
+					# get sum of picked up resources for res
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collectors if carriage.job.res == res ])
 					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.__home_building._Consumer__registered_collectors if carriage.job.res == res ])
-					# check if there are ressources left to pickup
+					# check if there are resources left to pickup
 					max_consumer_res_free = self.__home_building.inventory.get_size(res)-(total_registered_amount_consumer+self.__home_building.inventory.get_value(res))
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
 						# add a new job
@@ -139,7 +139,7 @@ class BuildingCollector(Unit):
 
 
 	def get_collectable_res(self):
-		"""Gets all ressources the Collector can collect"""
+		"""Gets all resources the Collector can collect"""
 		print self.id, 'GET COLLECTABLE RES'
 		# find needed res (only res that we have free room for) - Building function
 		return self.__home_building.get_needed_res()

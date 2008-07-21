@@ -144,7 +144,7 @@ class Island(WorldObject):
 		for tile in self.grounds:
 			if tile.settlement in inherits:
 				tile.settlement = settlement
-		#TODO: inherit ressources etc
+		#TODO: inherit resources etc
 
 	def add_building(self, x, y, building, player):
 		"""Adds a building to the island at the posititon x, y with player as the owner.

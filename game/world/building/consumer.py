@@ -65,9 +65,12 @@ class Consumer(object):
 		self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def get_consumed_res(self):
+		"""Returns list of resources, that the building uses, without
+		considering, if it currently needs them"""
 		return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
 
 	def get_needed_res(self):
-		# get needed res
+		"""Returns list of resources, where free space in the inventory exists,
+		because a building doesn't need resources, that it can't store"""
 		return [res for res in self.get_consumed_res() if self.inventory.get_value(res) < self.inventory.get_size(res)]
 

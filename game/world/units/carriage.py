@@ -40,7 +40,7 @@ class Carriage(Unit):
 		@param size: the size of the storage in the carriage
 		@param consumer: the building that the carriage works for. Has to be instance of Consumer.
 		@param attached_building: the building that owns the carriage (influences the possible path nodes of the carriage). Usually, this is the same as consumer. This is e.g. used by Animal, which gathers resources for itself, but can only move in the radius of its animal farm.
-		@var hide_when_idle: hide the carrige, when it waits for a new producer to pick up ressources.
+		@var hide_when_idle: hide the carrige, when it waits for a new producer to pick up resources.
 		carriage_consumer has to support:
 		  * attribute 'inventory' or parameter 'inventory', which supports get_value(), alter_inventory() and get_size()
 		carriage_attached_building has to support:
@@ -87,8 +87,8 @@ class Carriage(Unit):
 		# and less then the current minimum
 		consumed_res = self.get_consumed_resources()
 
-		# Scan for most needed ressources (based on the smallest amount of the needed ressource in the neededd ressources list
-		needed_res = self.get_needed_ressources(consumed_res)
+		# Scan for most needed resources (based on the smallest amount of the needed resource in the neededd resources list
+		needed_res = self.get_needed_resources(consumed_res)
 
 		# if none found, no pickup available
 		if len(needed_res) == 0:
@@ -192,8 +192,8 @@ class Carriage(Unit):
 		print self.id, 'GETTING', self.target[0].x, self.target[0].y
 		return True
 
-	def get_needed_ressources(self, consumed_res):
-		"""Returns the needed ressources"""
+	def get_needed_resources(self, consumed_res):
+		"""Returns the needed resources"""
 		for resid,stock in consumed_res:
 			print self.id, 'GET NEEDED RESSOURCES'
 			needed_res = []# check if storage is already full

@@ -118,10 +118,10 @@ class Producer(object):
 			self.next_animation()
 
 	def pickup_resources(self, res, max_amount):
-		"""Return the ressources of id res that are in stock and removes them from the stock.
+		"""Return the resources of id res that are in stock and removes them from the stock.
 		@param res: int ressouce id.
 		@param max_amount: int maximum resources that are picked up
-		@return: int number of ressources."""
+		@return: int number of resources."""
 		picked_up = self.inventory.get_value(res)
 		if picked_up > max_amount:
 			picked_up = max_amount

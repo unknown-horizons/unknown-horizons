@@ -1,0 +1,75 @@
+# format in here like the following 2 lines:
+
+# tablename:
+# description
+
+# in the description, use `` around table and column names.
+# try to sort tables according to context (production_time 
+# next to procution_ratio, etc.) and roughly to the alphabet.
+
+animation:
+lists all graphics, that are used by units, buildings or maps in `file`
+the `animation_id` is used in other tables to connect this references to objects.
+
+action:
+connects graphics to objects. one of the values of the columns `ground`, `object` and `unit` has to be an integer ID to assign an `animation` to a ground of a map, a building or a unit respectively. 
+`action` is a string, which can be used as first parameter of the function 'act', which applies the action.
+`rotation` obviously defines the perspective.
+
+building:
+this is a trivial list of all buildings, most columns are self-explanatory.
+`class_type` is the name of the python class of the building, this class has to be located in the file in game/world/building , whose basename is `class_package`.
+
+building_costs:
+defines how much resources you need to build a building. `resource_id` is a reference to rowid in `resource`.
+
+building_property:
+saves extra information for buildings. `name` will be an attribute of the building (in the python code), the value of it will be `value`
+
+citynames:
+trivial list of city names, that are assigned to new settlements (by random).
+
+climate:
+(not yet used)
+
+colors:
+colors in the RGB model with values from 0 to 255, additionally an `alpha` value used for transparency.
+
+ground_class:
+
+message:
+Saves possible ingame messages. `icon` is a reference
+
+message_icon:
+obviously the icons for ingame messages.
+
+production:
+adds consumed or produced resources for a `production_line`. `resource` is a reference to a dataset in `storage`. the amount is negative/positiv/zero if the `resource` is consumed/produced/stored in this `production_line`. The special value 0 in `amount` defines the a storage of `resource`, e.g. a storage tent, where this resource is saved in order to bepicked up by anyone.
+
+production_line:
+defines lines of production and their assigned `building` and production `time`.
+
+storage:
+defines a `storage_size` for a `resource`, to be referenced in `production`.
+
+resource:
+saves every resource including an `icon`, that is used to display the resource in inventories.
+
+shipnames:
+see `citynames`.
+
+shipnamespirate:
+see `shipnames`.
+
+sqlite_stat1:
+internal sqlite table. probably not needed.
+
+tabs:
+
+tab_system:
+
+unit:
+Saves all units. `class_package` and `class_type` work the same way as in `building`, except the `class_package` has to be located in game/world/unit.
+
+unit_property:
+see `building_property`.

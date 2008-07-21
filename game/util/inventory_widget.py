@@ -25,12 +25,12 @@ import game.main
 
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
-	It makes use of the ImageFillStatusButton to display the icons for ressources and the fill bar.
+	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
 	It can be used like any other widget inside of xml's, but for full functionality the inventory
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
-	icon_width = 50 # pixels a ressource icon is wide
+	icon_width = 50 # pixels a resource icon is wide
 
 	def __init__(self, **kwargs):
 		super(Inventory,self).__init__(**kwargs)
@@ -60,7 +60,7 @@ class Inventory(pychan.widgets.Container):
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		for index, resid in enumerate(self._inventory._inventory.iteritems()):
-			icon = str(game.main.db('SELECT icon from ressource WHERE rowid=?', resid[0])[0][0])
+			icon = str(game.main.db('SELECT icon from resource WHERE rowid=?', resid[0])[0][0])
 			button = ImageFillStatusButton(up_image=icon, down_image=icon, hover_image=icon, text=str(resid[1][0]), size=(50,50), opaque=False)
 			button.filled = int(float(resid[1][0])/float(resid[1][1])*100.0)
 			current_hbox.addChild(button)
@@ -74,7 +74,7 @@ class Inventory(pychan.widgets.Container):
 class ImageFillStatusButton(pychan.widgets.Container):
 
 	def __init__(self, up_image, down_image, hover_image, text, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that ressource
+		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
 		This is ment to be used with the Inventory widget."""

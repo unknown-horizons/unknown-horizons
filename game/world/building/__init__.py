@@ -48,7 +48,7 @@ class BuildingClass(type):
 		for (name,  value) in game.main.db("SELECT name, value FROM data.building_property WHERE building_id = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in game.main.db("SELECT ressource_id, amount FROM data.building_costs WHERE building_id = ?", str(id)):
+		for (name, value) in game.main.db("SELECT resource_id, amount FROM data.building_costs WHERE building_id = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
 

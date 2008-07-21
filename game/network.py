@@ -57,7 +57,7 @@ class Socket(object):
 
 	def _pump(self, forever = False):
 		"""internal function which gets regularly called and checks for incoming packets
-		@param forever: used internally in masterserver, to not waste ressources
+		@param forever: used internally in masterserver, to not waste resources
 		"""
 		#a packet is: OA<len><data>
 		while 1:
