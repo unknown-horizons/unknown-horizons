@@ -158,6 +158,10 @@ class StorageCollector(BuildingCollector):
 	movement = Movement.STORAGE_CARRIAGE_MOVEMENT
 
 
+class AnimalCollector(BuildingCollector):
+	""" Collector that gets resources from animals """
+	pass
+
 class Job(object):
 	def __init__(self, building, res, amount):
 		self.building = building

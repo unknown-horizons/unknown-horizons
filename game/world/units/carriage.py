@@ -30,6 +30,8 @@ import game.main
 class Carriage(Unit):
 	searchJobInterval = 2
 	movement = Movement.CARRIAGE_MOVEMENT
+	""" DEPRECATED """
+	
 	"""A BuildingCarriage that gets pickups for buildings
 	Can be subclassed for use in e.g. Animal
 	"""
@@ -45,6 +47,7 @@ class Carriage(Unit):
 		  * x and y coords
 		  * radius
 		"""
+		assert(False)
 		if inventory is None:
 			self.inventory = ArbitraryStorage(slots, size)
 		else:
