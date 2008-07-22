@@ -21,7 +21,7 @@
 
 import fife
 import game.main
-from game.util import Point
+from game.util import Point, WorldObject
 
 class Act(object):
 	"""Command class that moves a unit.
