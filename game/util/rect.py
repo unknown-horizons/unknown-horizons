@@ -65,7 +65,15 @@ class Rect(object):
 	def get_coordinates(self):
 		""" Returns all coordinates, that are in the Rect """
 		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ] 
-			
+	
+	def get_radius_coordinates(self, radius):
+		""" Returns a list of all coordinates, that are in the radius but are in not the building"""
+		self_coords = self.get_coordinates()
+		return  [ (x,y) for x in xrange(self.left-radius, self.right+radius+1) \
+			      for y in xrange(self.top-radius, self.bottom+radius+1)
+						if (x,y) not in self_coords and \
+						self.distance( (x,y) ) <= radius ]
+				
 	def __str__(self):
 		# nice representation for debugging purposes
 		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)

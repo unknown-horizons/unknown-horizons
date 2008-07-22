@@ -152,7 +152,8 @@ class Producer(object):
 		pass
 
 	def get_growing_info(self):
-		"""
+		""" will probably be deleted when refactoring Growable
+		
 		@return (all values are average) tuple: (cur_production, cur_production_res_amount, cur_production_res_size, cur_production_time) OR -1 if no cur production
 		"""
 		if self.active_production_line == -1:

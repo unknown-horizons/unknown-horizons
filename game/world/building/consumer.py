@@ -56,15 +56,9 @@ class Consumer(object):
 				self.consumation[production_line].append(res)
 
 		# calculate coords where carriage can move
-		# workaround for BuildinglessProducer (TODO: find better solution)
-		if self.x is not None and self.y is not None:
-			self.building_coords = [ (x,y) for x in xrange(self.x, self.x+self.size[0]) for y in xrange(self.y, self.y+self.size[1]) ]
-			building_rect = Rect(self.x, self.y, self.x+self.size[0]-1, self.y+self.size[1]-1)
-			self.radius_coords = \
-				[ (x,y) for x in xrange(self.x-self.radius, self.x+self.size[0]+self.radius+1) \
-				for y in xrange(self.y-self.radius, self.y+self.size[1]+self.radius+1) \
-				if ( building_rect.distance( Point(x,y) ) <= self.radius ) and \
-				(x,y) not in self.building_coords ]
+		from game.world.building.production import BuildinglessProducer
+		if isinstance(self, Building) and not isinstance(self, BuildinglessProducer):
+			self.radius_coords = self.building_position.get_radius_coordinates(self.radius)
 
 		self.create_carriage()
 

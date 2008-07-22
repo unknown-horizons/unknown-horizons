@@ -31,9 +31,9 @@ class Building(WorldObject):
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	def __init__(self, x, y, owner, instance = None):
+		self.building_position = Rect((Point(x, y)), self.size[0]-1, self.size[1]-1)
 		self.x = x
 		self.y = y
-		self.position = Point(x, y)
 		self.owner = owner
 		self.object_type = 0
 		self._instance = self.getInstance(x, y) if instance is None else instance
@@ -67,7 +67,7 @@ class Building(WorldObject):
 		for building in buildings:
 			if building == self:
 				continue
-			if self.position.distance( building.position ) <= self.radius:
+			if self.building_position.distance( building.building_position ) <= self.radius:
 				ret_building.append( building )
 		return ret_building
 

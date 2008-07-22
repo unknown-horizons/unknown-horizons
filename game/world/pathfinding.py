@@ -140,7 +140,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 		if diagonal:
 			neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) if path_nodes.has_key((xx,yy)) and not checked.has_key((xx,yy)) and (xx,yy) != (x,y) and (xx,yy) not in blocked_coords ]
 		else: 
-			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if path_nodes.has_key(i) and not checked.has_key((xx,yy)) and (xx,yy) not in blocked_coords ]
+			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if path_nodes.has_key(i) and not checked.has_key(i) and i not in blocked_coords ]
 			
 		for neighbor_node in neighbors:
 			
@@ -189,10 +189,9 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	else:
 		#t1 = time.time()
 		#print 'PATH FINDING TIME', t1-t0
-		p_k = path_nodes.keys()
-		p_k.sort()
-		p_di = dict.fromkeys(p_k,0)
-		print '_NO_ PATH FROM',source,'TO', destination, ',PATH_NODES:', p_di
+		print '_NO_ PATH FROM',source,'TO', destination 
+		#if len(path_nodes) < 20:
+			#	print 'PATH NODES', path_nodes
 		#sys.stdout = real_stdout
 		return None
 

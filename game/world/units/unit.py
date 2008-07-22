@@ -94,10 +94,10 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		if island is not None:
 			b = island.get_building(self.unit_position.x, self.unit_position.y)
 			if b is not None:
-				source = Rect(Point(b.x, b.y), b.size[0], b.size[1])
+				source = b.building_position
 			b = island.get_building(destination.x, destination.y)
 			if b is not None and isinstance(destination, Point):
-				dest = Rect(Point(b.x, b.y), b.size[0], b.size[1])
+				dest = b.building_position
 
 		return findPath(source, dest, path_graph, blocked_coords, diagonal)
 
