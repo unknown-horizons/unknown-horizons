@@ -21,6 +21,7 @@
 
 import game.main
 import math
+
 class BuildableSingle(object):
 	@classmethod
 	def areBuildRequirementsSatisfied(cls, x, y, before = None, **kwargs):
@@ -36,14 +37,20 @@ class BuildableSingle(object):
 		if before is not None:
 			update = cls.isMultiBuildRequirementSatisfied(*before, **state)
 			if update is None:
-				return None
+				state.update({'buildable' : False})
+				return state
 			else:
 				state.update(update)
 		return state
 
 	@classmethod
 	def isMultiBuildRequirementSatisfied(cls, *before, **state):
-		return None if (len(before) >= 1 and (before[0]['island'] != state['island'] or before[0]['settlement'] != state['settlement'])) else {}
+		for i in before:
+			if not i.get('buildable', True):
+				continue
+			if i['island'] != state['island']:
+				return None
+		return {}
 
 	@classmethod
 	def isIslandBuildRequirementSatisfied(cls, x, y, **state):

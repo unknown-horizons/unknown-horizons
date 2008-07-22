@@ -36,11 +36,8 @@ class Building(WorldObject):
 		self.position = Point(x, y)
 		self.owner = owner
 		self.object_type = 0
-		if instance is None:
-			self.getInstance(x, y)
-		else:
-			self._instance = instance
-			game.main.session.entities.updateInstance(self._instance.getId(), self)
+		self._instance = self.getInstance(x, y) if instance is None else instance
+		self._instance.setId(str(self.getId()))
 
 		self.island = game.main.session.world.get_island(self.x, self.y)
 		settlements = self.island.get_settlements(self.x, self.y)
@@ -60,7 +57,6 @@ class Building(WorldObject):
 				tile = self.island.get_tile(x,y)
 				tile.blocked = False
 				tile.object = None
-		game.main.session.entities.deleteInstance(self._instance.getId())
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
@@ -86,7 +82,7 @@ class Building(WorldObject):
 		if not building is None:
 			return building.getInstance(x = x, y = y, action=action, **trash)
 		else:
-			instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0), game.main.session.entities.registerInstance(cls))
+			instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
 			fife.InstanceVisual.create(instance)
 			location = fife.Location(game.main.session.view.layers[layer])
 			location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
