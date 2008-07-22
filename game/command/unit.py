@@ -30,7 +30,7 @@ class Act(object):
 	@param layer: the layer the unit is present on.
 	"""
 	def __init__(self, unit, x, y):
-		self.unit = unit._instance.getId()
+		self.unit = unit.getId()
 		self.x = x
 		self.y = y
 
@@ -38,4 +38,4 @@ class Act(object):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		game.main.session.entities.getInstance(self.unit).act(self.x, self.y)
+		WorldObject.getObjectById(self.unit).act(self.x, self.y)
