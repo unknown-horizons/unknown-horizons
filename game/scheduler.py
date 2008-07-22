@@ -22,6 +22,7 @@
 import game.main
 from game.util import livingObject
 import weakref
+from new import instancemethod
 
 class Scheduler(livingObject):
 	""""Class providing timed callbacks.
@@ -126,7 +127,6 @@ class CallbackObject(object):
 			raise ValueError("Loop count must be a positive number or -1 for infinite repeat")
 		
 		# We have to unwrap bound methods, because they normally hold a strong reference
-		from new import instancemethod
 		if isinstance(callback, instancemethod):
 			func = callback.im_func
 			ref = weakref.ref(callback.im_self)

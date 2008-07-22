@@ -44,6 +44,19 @@ class Ship(Unit):
 		self.inventory.alter_inventory(4, 50)
 		self.name = str(game.main.db("SELECT name FROM shipnames ORDER BY random() LIMIT 1")[0][0])
 		#self.name = str(game.main.db("SELECT name FROM shipnames_pirate ORDER BY random() LIMIT 1")[0][0])
+		
+		game.main.session.world.ship_map[self.unit_position] = self
+	
+	def move_tick(self):
+		del game.main.session.world.ship_map[self.unit_position]
+		super(Ship, self).move_tick()
+		game.main.session.world.ship_map[self.unit_position] = self
+		
+	def check_for_blocking_units(self, position):
+		if game.main.session.world.ship_map.has_key(position):
+			return False
+		else:
+			return True
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

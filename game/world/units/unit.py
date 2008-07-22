@@ -69,6 +69,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		@param destination: Point or Rect. if it's a Point that's in a building, the building is used as destination.
 		"""
 		diagonal = False
+		blocked_coords = []
 		if self.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			assert(isinstance(destination, Point)) # rect not yet supported here
 			self.move_directly(destination)
@@ -81,6 +82,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			diagonal = True
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
+			blocked_coords = game.main.session.world.ship_map.keys()
 			diagonal = True
 		else:
 			print self.id, 'has no Movement def'
@@ -97,7 +99,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			if b is not None and isinstance(destination, Point):
 				dest = Rect(Point(b.x, b.y), b.size[0], b.size[1])
 
-		return findPath(source, dest, path_graph, diagonal)
+		return findPath(source, dest, path_graph, blocked_coords, diagonal)
 
 	def do_move(self, path, callback = None):
 		"""Conducts a move, that was previously calculated in check_move or specified as path.
@@ -109,10 +111,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		# cancel current move
 
 		## TODO: replace this quick and really hard-core dirty fix (dusmania..)
-		from game.world.units.carriage import Carriage
-		if not isinstance(self, Carriage):
-			print self.id, 'removing move_tick for Carriages'
-			game.main.session.scheduler.rem_call(self, self.move_tick)
+		game.main.session.scheduler.rem_call(self, self.move_tick)
 
 		self.cur_path = None
 		self.next_target = None
@@ -201,6 +200,17 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		"""
 		#sync unit_position
 		self.last_unit_position = self.unit_position
+		
+		# check if next_target is blocked by a unit
+		if not self.check_for_blocking_units(self.next_target):
+			new_path = self.check_move(self.path[ len(self.path) - 1] )
+			if new_path is None:
+				# if there's no possible path now, wait a second and retry
+				game.main.session.scheduler.add_new_object(self.move_tick, self, game.main.session.timer.ticks_per_seond)
+				return
+			self.do_move(new_path, self.move_callback)
+			return
+		
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
@@ -243,6 +253,13 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self._instance.move(self.action, location, 4.0/3.0)
 		#setup next timer
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
+		
+	def check_for_blocking_units(self, position):
+		"""Returns wether position is blocked by a unit
+		@param position: instance of Point
+		@return: True if position is clear, False if blocked
+		"""
+		return True
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""

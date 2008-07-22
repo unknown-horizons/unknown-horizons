@@ -31,13 +31,12 @@ class Point(object):
 			elif isinstance(args[0], Point):
 				self.x = args[0].x
 				self.y = args[0].y
-		elif len(args) == 2: # no need to check for int, who would be stupid enough to pass something else than a number for coords..
+		elif len(args) == 2:
 			self.x = args[0]
 			self.y = args[1]
 		else:
 			print args
 			assert(False)
-
 
 	def distance(self, other):
 		if isinstance(other, Point):
@@ -47,12 +46,18 @@ class Point(object):
 		else:
 			return other.distance(self)
 
-	def __str__(self):
-		""" nice representation for debugging purposes """
-		return 'Point(%s, %s)' % (self.x, self.y)
-
 	def get_coordinates(self):
 		""" Returns point as coordinate
 		This is useful, because Rect supports this too.
 		"""
 		return [(self.x, self.y)]
+	
+	def __str__(self):
+		""" nice representation for debugging purposes """
+		return 'Point(%s, %s)' % (self.x, self.y)
+	
+	def __eq__(self, other):
+		if isinstance(other, Point):
+			return (self.x == other.x and self.y == other.y)
+		else: # other is tuple
+			return (self.x == other[0] and self.y == other[1])

@@ -48,10 +48,6 @@ class Rect(object):
 			else:
 				assert False, 'INVALID RECT INITIALISATION'+str(args)
 
-	def __str__(self):
-		# nice representation for debugging purposes
-		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)
-
 	def distance(self, other):
 		if isinstance(other, Point):
 			return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
@@ -70,4 +66,10 @@ class Rect(object):
 		""" Returns all coordinates, that are in the Rect """
 		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ] 
 			
+	def __str__(self):
+		# nice representation for debugging purposes
+		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)
+	
+	def __eq__(self, other):
+		return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
 			

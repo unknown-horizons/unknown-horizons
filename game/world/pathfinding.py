@@ -63,16 +63,27 @@ def check_path(path):
 		print 'STOPPING BECAUSE OF ERRORS'
 		sys.exit()
 	
-def findPath(source, destination, path_nodes, diagonal = False):
+def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = False):
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which 
 	is not necessarily the shortest path (cause roads have different speeds)
 	@param source: Rect or Point (use Rect if unit is in a building)
 	@param destination: Rect or Point (same as above)
 	@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
+	@param blocked_coords: temporarily blocked coords (e.g. by a unit)
+	@param diagonal: wether the unit is able to move diagonally
 	@return list of coords that are part of the best path (from first coord after source to last coord before destination) or None if no path is found
 	"""
 	#t0 = time.time()
+	
+	# assurce correct call
+	assert(isinstance(destination, (Rect, Point)))
+	assert(isinstance(path_nodes, (dict, list)))
+	assert(isinstance(blocked_coords, list))
+	assert(isinstance(diagonal, (bool)))
+	
+	if destination in blocked_coords:
+		return False
 	
 	# if path_nodes is a list, turn it into a dict
 	if isinstance(path_nodes, list):
@@ -99,7 +110,6 @@ def findPath(source, destination, path_nodes, diagonal = False):
 		path_nodes[c] = 0
 		
 	# if one of the dest_coords is in checked, a good path is found
-	# i'm not sue if this is the best path..
 	dest_coords = destination.get_coordinates()
 		
 	# make source and target walkable
@@ -128,12 +138,11 @@ def findPath(source, destination, path_nodes, diagonal = False):
 		y = cur_node_coords[1]
 				
 		if diagonal:
-			neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) if (xx,yy) != (x,y) and path_nodes.has_key((xx,yy))]
+			neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) if path_nodes.has_key((xx,yy)) and not checked.has_key((xx,yy)) and (xx,yy) != (x,y) and (xx,yy) not in blocked_coords ]
 		else: 
-			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if path_nodes.has_key(i) ]
+			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if path_nodes.has_key(i) and not checked.has_key((xx,yy)) and (xx,yy) not in blocked_coords ]
+			
 		for neighbor_node in neighbors:
-			if checked.has_key(neighbor_node):
-				continue
 			
 			#print 'NEW NODE', neighbor_node
 			
@@ -142,12 +151,16 @@ def findPath(source, destination, path_nodes, diagonal = False):
 				to_check[neighbor_node].append(to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
 				#print 'NEW',neighbor_node, ':', to_check[neighbor_node]
 			else:
-				node_distance = cur_node_data[1]+path_nodes[cur_node_coords]
+				distance_to_neighbor = cur_node_data[1]+path_nodes[cur_node_coords]
+				
+				# shortcut:
+				neighbor = to_check[neighbor_node]
+				
 				# if cur_node provides a better path to neighbor_node, use it
-				if to_check[(neighbor_node)][1] > node_distance:
-					to_check[(neighbor_node)][0] = cur_node_coords
-					to_check[(neighbor_node)][1] = node_distance
-					to_check[(neighbor_node)][3] = node_distance + to_check[(neighbor_node)][2]
+				if neighbor[1] > distance_to_neighbor:
+					neighbor[0] = cur_node_coords
+					neighbor[1] = distance_to_neighbor
+					neighbor[3] = distance_to_neighbor + neighbor[2]
 					#print 'OLD',neighbor_node,':', to_check[neighbor_node]
 		
 		checked[cur_node_coords] = cur_node_data
@@ -165,8 +178,8 @@ def findPath(source, destination, path_nodes, diagonal = False):
 			#t1 = time.time()
 			#print 'PATH FINDING TIME', t1-t0
 			print 'PATH FROM',source,'TO', destination,':', path
-			if len(path_nodes) < 0:
-				print 'PATH NODES', path_nodes
+			#if len(path_nodes) < 20:
+			#	print 'PATH NODES', path_nodes
 				
 			if __debug__:
 				check_path(path)
@@ -198,4 +211,3 @@ def test_pathfinding():
 	
 	p = findPath(Point(1,1), Rect(3,3,5,5), [(1,2),(2,2),(2,1),(2,3)])
 	assert(p ==  [(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)])
-	
