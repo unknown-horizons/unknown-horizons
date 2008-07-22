@@ -34,7 +34,18 @@ class Consumer(object):
 		"""
 		"""
 		self.consumation = {}
-		result = game.main.db("SELECT rowid FROM production_line where building = ?", self.id);
+		
+		
+		if self.object_type == 0:
+			print self.id, "Consumer: IS A BUILDING"
+
+		elif self.object_type == 1:
+			print self.id, "Consumer: IS A UNIT"
+		else:
+			print self.id, "Consumer: UNKNOWN TYPE"
+			assert(False)
+		
+		result = game.main.db("SELECT rowid FROM production_line where object = ? and type = ?", self.id, self.object_type);
 		for (production_line,) in result:
 			self.consumation[production_line] = []
 
@@ -67,6 +78,7 @@ class Consumer(object):
 	def get_consumed_res(self):
 		"""Returns list of resources, that the building uses, without
 		considering, if it currently needs them"""
+
 		return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
 
 	def get_needed_res(self):
