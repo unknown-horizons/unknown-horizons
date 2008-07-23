@@ -20,9 +20,8 @@
 # ###################################################
 
 import game.main
-from game.util import livingObject
+from game.util import livingObject, WeakMethod
 import weakref
-from new import instancemethod
 
 class Scheduler(livingObject):
 	""""Class providing timed callbacks.
@@ -116,9 +115,7 @@ class CallbackObject(object):
 		@param weakref_aciton: A callback to register with the weak reference
 		"""
 		
-		# Do some input validation, otherwise errors occure long after wrong data was added
-		if not callable(callback):
-			raise ValueError("callback parameter is not callable")			
+		# Do some input validation, otherwise errors occure long after wrong data was added	
 
 		if runin < 1:
 			raise ValueError("Can't schedule callbacks in the past, runin must be a positive number")
@@ -126,13 +123,7 @@ class CallbackObject(object):
 		if (loops < -1) or (loops is 0):
 			raise ValueError("Loop count must be a positive number or -1 for infinite repeat")
 		
-		# We have to unwrap bound methods, because they normally hold a strong reference
-		if isinstance(callback, instancemethod):
-			func = callback.im_func
-			ref = weakref.ref(callback.im_self)
-			self.callback = lambda: func(ref())
-		else:
-			self.callback = callback
+		self.callback = WeakMethod(callback)
 		
 		# Check for persisting strong references
 		if __debug__:

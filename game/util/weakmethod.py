@@ -19,13 +19,33 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
+import new
+import weakref
 
-from living import livingProperty, livingObject
-from stablelist import stablelist
-from color import Color
-from point import Point
-from rect import Rect
-from changelistener import changelistener
-from weakmethod import WeakMethod
-from worldobject import WorldObject
+class WeakMethod(object):
+	def __init__(self, function):
+		if not callable(function):
+			raise ValueError("Function parameter not callable")
+		
+		if isinstance(function, new.instancemethod) and function.im_self is not None:
+			self.function = function.im_func
+			self.instance = weakref.ref(function.im_self)
+		else:
+			self.function = function
+			self.instance = None
+			
+	def __call__(self, *args, **kwargs):
+		if self.instance is None:
+			return self.function(*args, **kwargs)
+		elif self.instance() is not None:
+			return self.function(self.instance(), *args, **kwargs)
+		else:
+			raise ReferenceError
+			
+	def __eq__(self, other):
+		return self.function == other.function and self.instance() == other.instance()
+
+	def __ne__(self, other):
+	    return not self.__eq__(other)
+		
+		

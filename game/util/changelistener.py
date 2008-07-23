@@ -21,6 +21,8 @@
 
 #because of unclean inheritance, bad usage of parameters and bad use of super in most world object, i cant trust that the init constructor is called.
 
+from weakmethod import WeakMethod
+
 class changelistener(object):
 	def __init__(self, *args, **kwargs):
 		super(changelistener, self).__init__(*args, **kwargs)
@@ -29,12 +31,12 @@ class changelistener(object):
 	def addChangeListener(self, listener):
 		if not hasattr(self, '_changelistener__listeners'):
 			self.__listeners = []
-		self.__listeners.append(listener)
+		self.__listeners.append(WeakMethod(listener))
 
 	def removeChangeListener(self, listener):
 		if not hasattr(self, '_changelistener__listeners'):
 			self.__listeners = []
-		self.__listeners.remove(listener)
+		self.__listeners.remove(WeakMethod(listener))
 
 	def _changed(self):
 		if not hasattr(self, '_changelistener__listeners'):
