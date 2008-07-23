@@ -33,6 +33,7 @@ class _DummyProducer(Building, BuildableSingle, Selectable, Producer):
 	def __init__(self, x, y, owner, instance = None):
 		self.local_carriages = []
 		self.inventory = Storage()
+		self.inventory.addChangeListener(self._changed)
 		Building.__init__(self, x, y, owner, instance)
 		Producer.__init__(self)
 

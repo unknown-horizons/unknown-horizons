@@ -37,6 +37,7 @@ class Storage(WorldObject):
 		@param size: maximum amount of res_id that can be stored here; -1 for infinity
 		"""
 		self._inventory[res_id] = [0, size]
+		self._changed()
 
 	def hasSlot(self, res_id):
 		""" Returns wether slot for res_id exists"""
@@ -56,15 +57,18 @@ class Storage(WorldObject):
 			# stuff doesn't fit in inventory
 			ret = new_amount - self.get_size(res_id)
 			self._inventory[res_id][0] = self.get_size(res_id)
+			self._changed()
 			return ret
 		elif new_amount < 0:
 			# trying to take more stuff than inventory contains
 			ret = new_amount
 			self._inventory[res_id][0] = 0
+			self._changed()
 			return ret
 		else:
 			# new amount is in boundaries
 			self._inventory[res_id][0] = new_amount
+			self._changed()
 			return 0
 
 	def get_value(self, res_id):
@@ -128,6 +132,7 @@ class ArbitraryStorage(WorldObject):
 					amount = new_amount - self.size
 				else:
 					slot[1] = new_amount
+					self._changed()
 					return 0
 
 		# handle stuff that couldn't be handled with existing slots
@@ -135,12 +140,14 @@ class ArbitraryStorage(WorldObject):
 			if len(self._inventory) < self.slots:
 				if amount > self.size:
 					self._inventory.append([res_id, self.size])
+					self._changed()
 					return self.alter_inventory(res_id, amount - self.size)
 				else:
 					self._inventory.append([res_id, amount])
 					amount = 0
 
 		# return what couldn't be added/taken
+		self._changed()
 		return amount
 
 	def get_value(self, res_id):

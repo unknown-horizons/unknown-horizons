@@ -19,21 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+#because of unclean inheritance, bad usage of parameters and bad use of super in most world object, i cant trust that the init constructor is called.
+
 class changelistener(object):
 	def __init__(self, *args, **kwargs):
-		self.__listeners = []
 		super(changelistener, self).__init__(*args, **kwargs)
+		self.__listeners = []
 
 	def addChangeListener(self, listener):
+		if not hasattr(self, '_changelistener__listeners'):
+			self.__listeners = []
 		self.__listeners.append(listener)
 
 	def removeChangeListener(self, listener):
+		if not hasattr(self, '_changelistener__listeners'):
+			self.__listeners = []
 		self.__listeners.remove(listener)
 
-	def __setattribute__(self, name, value):
-		super(changelistener, self).__setattribute__(self, name, value)
-		self._changed(name, value)
-
-	def _changed(self, name = None, value = None):
+	def _changed(self):
+		if not hasattr(self, '_changelistener__listeners'):
+			self.__listeners = []
 		for listener in self.__listeners:
-			listener(self, name, value)
+			listener()

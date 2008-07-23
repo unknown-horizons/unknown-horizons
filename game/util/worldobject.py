@@ -20,8 +20,9 @@
 # ###################################################
 
 import weakref
+from changelistener import changelistener
 
-class WorldObject(object):
+class WorldObject(changelistener):
 	__next_id = 1
 	__objects = weakref.WeakValueDictionary()
 

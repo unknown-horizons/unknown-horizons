@@ -36,6 +36,7 @@ class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer)
 		self.local_carriages = []
 		Building.__init__(self, x, y, owner, instance)
 		self.inventory = self.settlement.inventory
+		self.inventory.addChangeListener(self._changed)
 		#self.inventory  = Storage()
 		Producer.__init__(self)
 		Consumer.__init__(self)

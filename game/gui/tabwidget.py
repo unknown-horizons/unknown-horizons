@@ -64,14 +64,18 @@ class TabWidget(object):
 		contentarea.adaptLayout()
 		self.widget.active = id
 
+	def _update_active(self):
+		self.tabs[self.widget.active].update(self.object)
+
 	def show(self):
 		"""Shows the widget."""
 		self.widget.show()
+		self.object.addChangeListener(self._update_active)
 
 	def hide(self):
 		"""Hides the widget."""
 		self.widget.hide()
-
+		self.object.removeChangeListener(self._update_active)
 
 class Tab(object):
 	"""Used to create tabs, stores the widget and needed buttons, that are used by the TabWidget, to display tabs.
