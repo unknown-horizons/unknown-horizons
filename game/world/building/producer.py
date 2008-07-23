@@ -22,6 +22,7 @@
 from building import Building
 from game.world.units.unit import Unit
 import game.main
+from game.util import WeakList
 
 class Producer(object):
 	check_production_interval = 2
@@ -81,7 +82,7 @@ class Producer(object):
 		# save references to collectors that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this collector
-		self.__registered_collectors = []
+		self.__registered_collectors = WeakList()
 
 		game.main.session.scheduler.add_new_object(self.tick, self, self.__class__.check_production_interval, -1)
 

@@ -21,7 +21,7 @@
 
 from building import Building
 from game.world.units.carriage import BuildingCarriage
-from game.util import Rect, Point
+from game.util import Rect, Point, WeakList
 import game.main
 
 class Consumer(object):
@@ -60,7 +60,7 @@ class Consumer(object):
 		if isinstance(self, Building) and not isinstance(self, BuildinglessProducer):
 			self.radius_coords = self.building_position.get_radius_coordinates(self.radius)
 
-		self.__registered_collectors = []
+		self.__registered_collectors = WeakList()
 		
 		self.create_carriage()
 

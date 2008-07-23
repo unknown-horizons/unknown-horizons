@@ -50,7 +50,7 @@ class BuildingCollector(Unit):
 			pdb.Pdb().set_trace()
 			self._instance.removeActionListener(self)
 		
-		self.home_building = weakref.ref(home_building, remove_actionlistener)
+		self.home_building = weakref.ref(home_building)
 		
 		self.start_hidden = start_hidden
 		if self.start_hidden:

@@ -53,8 +53,6 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self.max_health = 100.0
 		
 	def __del__(self):
-		import pdb
-		pdb.Pdb().set_trace()
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def start(self):
