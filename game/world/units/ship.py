@@ -42,8 +42,8 @@ class Ship(Unit):
 		self.inventory.alter_inventory(6, 15)
 		self.inventory.alter_inventory(5, 30)
 		self.inventory.alter_inventory(4, 50)
-		self.name = str(game.main.db("SELECT name FROM shipnames ORDER BY random() LIMIT 1")[0][0])
-		#self.name = str(game.main.db("SELECT name FROM shipnames_pirate ORDER BY random() LIMIT 1")[0][0])
+		
+		self.set_name()
 		
 		game.main.session.world.ship_map[self.unit_position] = self
 	
@@ -93,10 +93,15 @@ class Ship(Unit):
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
+			
+	def set_name(self):
+		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
-
+	def set_name(self):
+		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0])
+		
 	def show_menu(self):
 		pass
 
