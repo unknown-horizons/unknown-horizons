@@ -60,9 +60,9 @@ class Consumer(object):
 		if isinstance(self, Building) and not isinstance(self, BuildinglessProducer):
 			self.radius_coords = self.building_position.get_radius_coordinates(self.radius)
 
-		self.create_carriage()
-
 		self.__registered_collectors = []
+		
+		self.create_carriage()
 
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
