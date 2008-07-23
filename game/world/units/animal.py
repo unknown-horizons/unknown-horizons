@@ -57,7 +57,7 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.building._Producer__registered_collectors.append(self)
+		self.job.object._Producer__registered_collectors.append(self)
 		if self.start_hidden:
 			self.show()
 		self.do_move(self.job.path, self.begin_working)
@@ -68,7 +68,7 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 		# transfer ressources
 		self.transfer_res()
 		# deregister at the target we're at
-		self.job.building._Producer__registered_collectors.remove(self)
+		self.job.object._Producer__registered_collectors.remove(self)
 		self.end_job()
 		
 	def get_job(self):
@@ -100,7 +100,7 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 
 
 		for job in jobs:
-			job.path =  self.check_move(Point(job.building.x, job.building.y))
+			job.path =  self.check_move(Point(job.object.x, job.object.y))
 			if job.path is not None:
 				return job
 		return None

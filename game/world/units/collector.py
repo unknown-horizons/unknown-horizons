@@ -98,7 +98,7 @@ class BuildingCollector(Unit):
 
 
 		for job in jobs:
-			job.path =  self.check_move(Point(job.building.x, job.building.y))
+			job.path =  self.check_move(Point(job.object.x, job.object.y))
 			if job.path is not None:
 				return job
 		return None
@@ -106,7 +106,7 @@ class BuildingCollector(Unit):
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.building._Producer__registered_collectors.append(self)
+		self.job.object._Producer__registered_collectors.append(self)
 		self.home_building()._Consumer__registered_collectors.append(self)
 		if self.start_hidden:
 			self.show()
@@ -124,7 +124,7 @@ class BuildingCollector(Unit):
 		# transfer res
 		self.transfer_res()
 		# deregister at the target we're at
-		self.job.building._Producer__registered_collectors.remove(self)
+		self.job.object._Producer__registered_collectors.remove(self)
 		# reverse the path
 		self.job.path.reverse()
 		# move back to home
@@ -153,7 +153,7 @@ class BuildingCollector(Unit):
 
 	def transfer_res(self):
 		print self.id, 'TRANSFER PICKUP'
-		res_amount = self.job.building.pickup_resources(self.job.res, self.job.amount)
+		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
 		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
 		assert(res_amount == self.job.amount)
