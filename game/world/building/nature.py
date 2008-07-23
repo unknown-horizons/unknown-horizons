@@ -33,7 +33,7 @@ class GrowingBuilding(BuildableRect, Growable, PrimaryProducer):
 	def __init__(self, x, y, owner, instance = None):
 		PrimaryProducer.__init__(self, x, y, owner, instance)
 		# assumption: GrowingBuildings can only have one production line
-		self.db_actions = game.main.db("SELECT action FROM action WHERE object = ? AND action != \"default\"", self.id)
+		self.db_actions = game.main.db("SELECT action FROM data.action WHERE building = ? AND action != 'default'", self.id)
 		Growable.__init__(self, self)
 
 	@classmethod

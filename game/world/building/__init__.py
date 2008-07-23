@@ -45,10 +45,10 @@ class BuildingClass(type):
 		self.health = int(game.main.db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])
 		self.inhabitants = int(game.main.db("SELECT inhabitants_start FROM data.building WHERE rowid = ?", id)[0][0])
 		self.inhabitants_max = int(game.main.db("SELECT inhabitants_max FROM data.building WHERE rowid = ?", id)[0][0])
-		for (name,  value) in game.main.db("SELECT name, value FROM data.building_property WHERE building_id = ?", str(id)):
+		for (name,  value) in game.main.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in game.main.db("SELECT resource_id, amount FROM data.building_costs WHERE building_id = ?", str(id)):
+		for (name, value) in game.main.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
 
@@ -57,10 +57,10 @@ class BuildingClass(type):
 		"""
 		print 'Loading building #' + str(cls.id) + '...'
 		cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
-		for (action_id,) in game.main.db("SELECT action FROM data.action where object=? group by action", cls.id):
+		for (action_id,) in game.main.db("SELECT action FROM data.action where building=? group by action", cls.id):
 			action = cls._object.createAction(str(action_id))
 			fife.ActionVisual.create(action)
-			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where object=? and action=?", cls.id, action_id):
+			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where building=? and action=?", cls.id, action_id):
 				if rotation == 45:
 					command = 'left-16,bottom+' + str(cls.size[0] * 8)
 				elif rotation == 135:

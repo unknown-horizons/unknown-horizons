@@ -45,11 +45,11 @@ class Consumer(object):
 			print self.id, "Consumer: UNKNOWN TYPE"
 			assert(False)
 		
-		result = game.main.db("SELECT rowid FROM production_line where object = ? and type = ?", self.id, self.object_type);
+		result = game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id);
 		for (production_line,) in result:
 			self.consumation[production_line] = []
 
-			consumed_resources = game.main.db("select resource, storage_size from storage where rowid in (select storage from production where production_line = ? and amount <= 0);",production_line)
+			consumed_resources = game.main.db("select resource, size from data.storage where %(type)s = ? and resource in (select resource from data.production p left join data.production_line l on p.production_line = l.rowid where l.%(type)s = ?);" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id, self.id)
 			for (res, size) in consumed_resources:
 				if not self.inventory.hasSlot(res):
 					self.inventory.addSlot(res, size)

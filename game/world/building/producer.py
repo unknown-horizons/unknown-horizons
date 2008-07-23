@@ -45,28 +45,21 @@ class Producer(object):
 		# infos about production
 		self.production = {}
 
-	
 		if self.object_type == 0:
 			print self.id, "Producer: IS A BUILDING"
-		
 		elif self.object_type == 1:
 			print self.id, "Producer: IS A UNIT"
 		else:
 			print self.id, "Producer: UNKNOWN TYPE"
 			assert(False)	
-					
-			
-		result = game.main.db("SELECT rowid, time FROM production_line where object = ? and type = ?", self.id, self.object_type);
+
+		result = game.main.db("SELECT rowid, time FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id);
 		for (prod_line, time) in result:
 			self.production[prod_line] = {}
 			self.production[prod_line]['res'] = {}
 			self.production[prod_line]['time'] = time
 
-			prod_infos = game.main.db("SELECT \
-			(SELECT storage.resource FROM storage WHERE storage.rowid = production.storage) as resource, \
-			(SELECT storage.storage_size FROM storage WHERE storage.rowid = production.storage) as storage_size, \
-			amount \
-			FROM production WHERE production_line = ?", prod_line)
+			prod_infos = game.main.db("SELECT resource, (select size from data.storage s where s.resource = p.resource and s.%(type)s = (select %(type)s from data.production_line where rowid = p.production_line)), amount FROM data.production p WHERE production_line = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, prod_line)
 			for (resource, storage_size, amount) in prod_infos:
 				if amount > 0: # actually produced res
 					self.prod_res.append(resource)
@@ -158,10 +151,12 @@ class Producer(object):
 		"""
 		if self.active_production_line == -1:
 			return -1
+
 		data = (\
 			[ self.production[self.active_production_line]['res'][res] for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ], \
 			[ self.inventory.get_value(res) for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ], \
 			[ self.inventory.get_size(res) for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ],\
 			self.production[self.active_production_line]['time'] )
 
+		print data
 		return (sum(data[0])/len(data[0]), sum(data[1])/len(data[1]), sum(data[2])/len(data[2]), data[3])

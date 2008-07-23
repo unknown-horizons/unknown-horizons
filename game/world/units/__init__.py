@@ -39,7 +39,7 @@ class UnitClass(type):
 		"""
 		self.id = id
 		self._object = None
-		for (name,  value) in game.main.db("SELECT name, value FROM data.unit_property WHERE unit_id = ?", str(id)):
+		for (name,  value) in game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)):
 			setattr(self, name, value)
 		self._loadObject()
 

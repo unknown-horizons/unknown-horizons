@@ -54,6 +54,7 @@ class Growable(object):
 	# parts of the following code is to difficult to comment
 	# but it works, trust me ;-)
 	def next_animation(self):
+		return
 		""" Executes next action """
 		import time
 		#print 'CALLED NEXT_ANI, id',self.id,self, "AT", time.time()
