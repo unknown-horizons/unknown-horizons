@@ -82,11 +82,10 @@ class World(object):
 		self.ships.append(game.main.session.entities.units[6](45, 30))
 
 	def setupPlayer(self, name, color):
-		game.main.session.world.player =  Player(0, name, color)
+		self.player =  Player(0, name, color)
 		self.players.append(self.player)
-
-		game.main.session.ingame_gui.status_set("gold", str(self.player.inventory.get_value(1)))
-		game.main.session.ingame_gui.set_status_position('gold')
+		game.main.session.ingame_gui.update_gold()
+		self.player.inventory.addChangeListener(game.main.session.ingame_gui.update_gold)
 
 	def get_building(self, x, y):
 		"""Returns the building at the position x,y.

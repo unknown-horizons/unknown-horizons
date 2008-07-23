@@ -177,6 +177,10 @@ class IngameGui(livingObject):
 		self.tabwidgets = None
 		super(IngameGui, self).end()
 
+	def update_gold(self):
+		self.status_set('gold', str(game.main.session.world.player.inventory.get_value(1)))
+		self.set_status_position('gold')
+
 	def status_set(self, label, value):
 		"""Sets a value on the status bar.
 		@param label: str containing the name of the label to be set.
