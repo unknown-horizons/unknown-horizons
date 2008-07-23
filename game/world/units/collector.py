@@ -182,8 +182,72 @@ class StorageCollector(BuildingCollector):
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
-	pass
+	
+	def begin_current_job(self):
+		"""Executes the current job"""
+		print self.id, 'BEGIN CURRENT JOB'
+		self.job.object._Producer__registered_collectors.append(self)
+		self.home_building()._Consumer__registered_collectors.append(self)
+		# removes the animal from the scheduler. It does not move anymore
+		self.stop_animal()
+		if self.start_hidden:
+			self.show()
+		self.do_move(self.job.path, self.begin_working)
 
+	def finish_working(self):
+		print self.id, 'FINISH WORKING'
+		# TODO: animation change
+		# transfer res
+		self.transfer_res()
+		# deregister at the target we're at
+		self.job.object._Producer__registered_collectors.remove(self)
+		# reverse the path
+		self.job.path.reverse()
+		# send the animal to home
+		self.get_animal()
+		# move back to home
+		self.do_move(self.job.path, self.reached_home)
+	
+	def reached_home(self):
+		""" we finished now our complete work. Let's do it again in 32 ticks
+			you can use this as event as after work
+		"""
+		print self.id, 'FINISHED WORK'
+		assert(self.home_building().inventory.alter_inventory(self.job.res, self.job.amount) == 0)
+		assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+		if self.start_hidden:
+			self.hide()
+		self.home_building()._Consumer__registered_collectors.remove(self)
+		self.release_animal()
+		self.end_job()
+		
+	
+	def get_buildings_in_range(self):
+		# This is only a small workarround
+		# as long we have no Collector class
+		return self.get_animals_in_range()
+		
+	def get_animals_in_range(self):
+		# TODO: use the Collector class instead of BuildCollector
+		print self.id, 'GET ANIMALS IN RANGE'
+		"""returns all buildings in range
+		Overwrite in subclasses that need ranges arroung the pickup."""
+		return self.home_building().animals
+
+	def stop_animal(self):
+		print self.id, 'STOP ANIMAL'
+		#Our animal shouldn't move anymore
+		game.main.session.scheduler.rem_all_classinst_calls(self.job.object)
+		
+	def get_animal(self):
+		print self.id, 'GET ANIMAL'
+		self.job.object.do_move(self.job.patch)
+		
+	def release_animal(self):
+		print self.id, 'RELEASE ANIMAL'
+		game.main.session.scheduler.add_new_object(self.search_job, self, 16)
+	
+		
 class Job(object):
 	def __init__(self, object, res, amount):
 		self.object = object

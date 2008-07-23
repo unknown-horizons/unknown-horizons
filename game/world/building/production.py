@@ -79,13 +79,14 @@ class AnimalFarm(SecondaryProducer, BuildableSingleWithSurrounding):
 	so that farm animals can graze there """
 	def __init__(self, x, y, owner, instance = None):
 		SecondaryProducer.__init__(self, x, y, owner, instance)
+
+	def create_carriage(self):
 		self.animals = []
 		animals = game.main.db("SELECT animal, number from animals where building = ?", self.id)
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
-	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[7](self))
 
 class Lumberjack(SecondaryProducer, BuildableSingleWithSurrounding):
