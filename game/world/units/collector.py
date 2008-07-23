@@ -23,9 +23,10 @@ from game.world.units.unit import Unit
 from game.world.storage import ArbitraryStorage
 from game.util import Rect, Point
 from game.world.pathfinding import Movement
+from game.world.building.producer import Producer
 import game.main
 import operator
-from game.world.building.producer import Producer
+import weakref
 
 
 class BuildingCollector(Unit):
@@ -43,9 +44,13 @@ class BuildingCollector(Unit):
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True):
 		super(BuildingCollector, self).__init__(home_building.x, home_building.y)
 		self.inventory = ArbitraryStorage(slots, size)
-		self.home_building = home_building 
 		
-		self.home_building = home_building # this or that above must be removed
+		def remove_actionlistener(ref):
+			import pdb
+			pdb.Pdb().set_trace()
+			self._instance.removeActionListener(self)
+		
+		self.home_building = weakref.ref(home_building, remove_actionlistener)
 		
 		self.start_hidden = start_hidden
 		if self.start_hidden:
@@ -64,6 +69,9 @@ class BuildingCollector(Unit):
 
 	def get_job(self):
 		"""Returns the next job or None"""
+		
+		if (self.home_building() is None) : return None
+		
 		print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
@@ -76,9 +84,9 @@ class BuildingCollector(Unit):
 					# get sum of picked up resources for res
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collectors if carriage.job.res == res ])
 					# check how much will be delivered
-					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building._Consumer__registered_collectors if carriage.job.res == res ])
+					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__registered_collectors if carriage.job.res == res ])
 					# check if there are resources left to pickup
-					max_consumer_res_free = self.home_building.inventory.get_size(res)-(total_registered_amount_consumer+self.home_building.inventory.get_value(res))
+					max_consumer_res_free = self.home_building().inventory.get_size(res)-(total_registered_amount_consumer+self.home_building().inventory.get_value(res))
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
 						# add a new job
 						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), max_consumer_res_free)))
@@ -99,7 +107,7 @@ class BuildingCollector(Unit):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.building._Producer__registered_collectors.append(self)
-		self.home_building._Consumer__registered_collectors.append(self)
+		self.home_building()._Consumer__registered_collectors.append(self)
 		if self.start_hidden:
 			self.show()
 		self.do_move(self.job.path, self.begin_working)
@@ -133,11 +141,13 @@ class BuildingCollector(Unit):
 			you can use this as event as after work
 		"""
 		print self.id, 'FINISHED WORK'
-		assert(self.home_building.inventory.alter_inventory(self.job.res, self.job.amount) == 0)
-		assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+		
+		if self.home_building() is not None:
+			assert(self.home_building().inventory.alter_inventory(self.job.res, self.job.amount) == 0)
+			assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
 		if self.start_hidden:
 			self.hide()
-		self.home_building._Consumer__registered_collectors.remove(self)
+		self.home_building()._Consumer__registered_collectors.remove(self)
 		self.end_job()
 
 
@@ -154,13 +164,13 @@ class BuildingCollector(Unit):
 		"""Gets all resources the Collector can collect"""
 		print self.id, 'GET COLLECTABLE RES'
 		# find needed res (only res that we have free room for) - Building function
-		return self.home_building.get_needed_res()
+		return self.home_building().get_needed_res()
 
 	def get_buildings_in_range(self):
 		print self.id, 'GET BUILDINGS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		return [building for building in self.home_building.get_buildings_in_range() if isinstance(building, Producer)]
+		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Producer)]
 
 	
 class StorageCollector(BuildingCollector):

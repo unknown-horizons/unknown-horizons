@@ -23,6 +23,7 @@ import game.main
 import fife
 from game.world.pathfinding import findPath, Movement
 from game.util import Point, Rect
+from game.util import WeakMethod
 from game.util import WorldObject
 
 class Unit(WorldObject, fife.InstanceActionListener):
@@ -50,6 +51,11 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 		self.health = 60.0
 		self.max_health = 100.0
+		
+	def __del__(self):
+		import pdb
+		pdb.Pdb().set_trace()
+		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def start(self):
 		pass
@@ -78,7 +84,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
 			path_graph = island.path_nodes
 		elif self.__class__.movement == Movement.CARRIAGE_MOVEMENT:
-			path_graph = self.home_building.radius_coords
+			path_graph = self.home_building().radius_coords
 			diagonal = True
 		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
 			path_graph = game.main.session.world.water
@@ -119,7 +125,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 		# setup move
 		self.path = path
-		self.move_callback = callback
+		self.move_callback = WeakMethod(callback)
 
 		print 'MOVING FROM', path[0], 'TO', path[ len(path)-1 ]
 		
