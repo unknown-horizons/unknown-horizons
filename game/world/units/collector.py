@@ -185,8 +185,8 @@ class AnimalCollector(BuildingCollector):
 	pass
 
 class Job(object):
-	def __init__(self, building, res, amount):
-		self.building = building
+	def __init__(self, object, res, amount):
+		self.object = object
 		self.res = res
 		self.amount = amount
 		self.path = []
