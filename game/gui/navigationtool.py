@@ -79,26 +79,11 @@ class NavigationTool(CursorTool):
 			if island:
 				settlements = island.get_settlements(int(current.x + 0.5), int(current.y + 0.5))
 				if len(settlements) > 0:
-					settlement = settlements.pop()
-					game.main.session.ingame_gui.cityinfo_set(settlement)
-					game.main.session.ingame_gui.status_set('wood', str(settlement.inventory.get_value(4)))
-					game.main.session.ingame_gui.status_set('tools', str(settlement.inventory.get_value(6)))
-					game.main.session.ingame_gui.status_set('bricks', str(settlement.inventory.get_value(7)))
-					game.main.session.ingame_gui.status_set('food', str(settlement.inventory.get_value(5)))
-					game.main.session.ingame_gui.status_set('wool', str(settlement.inventory.get_value(2)))
-					game.main.session.ingame_gui.status_set('gold', str(game.main.session.world.player.inventory.get_value(1)))
-					game.main.session.ingame_gui.set_status_position('wood')
-					game.main.session.ingame_gui.set_status_position('tools')
-					game.main.session.ingame_gui.set_status_position('bricks')
-					game.main.session.ingame_gui.set_status_position('food')
-					game.main.session.ingame_gui.set_status_position('wool')
-					game.main.session.ingame_gui.gui['status'].show()
+					game.main.session.ingame_gui.cityinfo_set(settlements.pop())
 				else:
 					game.main.session.ingame_gui.cityinfo_set(None)
-					game.main.session.ingame_gui.gui['status'].hide()
 			else:
 				game.main.session.ingame_gui.cityinfo_set(None)
-				game.main.session.ingame_gui.gui['status'].hide()
 		# Mouse scrolling
 		old = self.lastScroll
 		new = [0, 0]

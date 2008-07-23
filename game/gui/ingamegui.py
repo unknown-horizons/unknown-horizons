@@ -32,6 +32,7 @@ class IngameGui(livingObject):
 		super(IngameGui, self).begin()
 		self.gui = {}
 		self.tabwidgets = {}
+		self.settlement = None
 		self._old_menu = None
 
 		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
@@ -181,7 +182,7 @@ class IngameGui(livingObject):
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
-		foundlabel = self.gui['status_gold'].findChild(name=label) if label == 'gold' else self.gui['status'].findChild(name=label)
+		foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label)
 		foundlabel._setText(value)
 		foundlabel.resizeToContent()
 		if label == 'gold':
@@ -196,17 +197,37 @@ class IngameGui(livingObject):
 		To hide cityname, set name to ''
 		@param settlement: Settlement class providing the information needed
 		"""
+		if settlement != self.settlement and self.settlement is not None:
+			self.settlement.removeChangeListener(self.update_settlement)
+		self.settlement = settlement
 		if(settlement == None):
 			self.gui['topmain'].hide()
-			return
+			self.gui['status'].hide()
+		else:
+			self.gui['topmain'].show()
+			self.gui['status'].show()
+			self.update_settlement()
+			settlement.addChangeListener(self.update_settlement)
+
+	def update_settlement(self):
 		foundlabel = self.gui['topmain'].findChild(name='city_name')
-		foundlabel._setText(settlement.name)
+		foundlabel._setText(self.settlement.name)
 		foundlabel.resizeToContent()
 		foundlabel = self.gui['topmain'].findChild(name='city_inhabitants')
-		foundlabel.text = 'Inhabitants: '+str(settlement._inhabitants)
+		foundlabel.text = 'Inhabitants: '+str(self.settlement._inhabitants)
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
-		self.gui['topmain'].show()
+
+		self.status_set('wool', str(self.settlement.inventory.get_value(2)))
+		self.set_status_position('wool')
+		self.status_set('wood', str(self.settlement.inventory.get_value(4)))
+		self.set_status_position('wood')
+		self.status_set('food', str(self.settlement.inventory.get_value(5)))
+		self.set_status_position('food')
+		self.status_set('tools', str(self.settlement.inventory.get_value(6)))
+		self.set_status_position('tools')
+		self.status_set('bricks', str(self.settlement.inventory.get_value(7)))
+		self.set_status_position('bricks')
 
 	def ship_build(self, ship):
 		"""Calls the Games build_object class."""
@@ -236,7 +257,7 @@ class IngameGui(livingObject):
 	def deselect_all(self):
 		for instance in game.main.session.selected_instances:
 			instance.deselect()
-		game.main.session.ingame_gui.hide_menu()
+		self.hide_menu()
 		game.main.session.selected_instances = []
 
 	def _build(self, building_id, unit = None):
