@@ -157,3 +157,22 @@ class BuildableLine(BuildableSingle):
 				building.update({'action' : action})
 				buildings.append(building)
 		return buildings
+
+class BuildableSingleWithSurrounding(BuildableSingle):
+	@classmethod
+	def getBuildList(cls, point1, point2, **kwargs):
+		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
+		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
+		building = cls.areBuildRequirementsSatisfied(x, y, **kwargs)
+		if building is None:
+			buildings = []
+		else:
+			buildings = [building]
+		for xx in xrange(x - cls.radius, x + cls.size[0] + cls.radius):
+			for yy in xrange(y - cls.radius, y + cls.size[1] + cls.radius):
+				if ((xx < x or xx >= x + cls.size[0]) or (yy < y or yy >= y + cls.size[1])) and ((max(x - xx, 0, xx - x - cls.size[0] + 1) ** 2) + (max(y - yy, 0, yy - y - cls.size[1] + 1) ** 2)) <= cls.radius ** 2:
+					building = game.main.session.entities.buildings[cls._surroundingBuildingClass].areBuildRequirementsSatisfied(xx, yy, **kwargs)
+					if building is not None:
+						building.update(building = game.main.session.entities.buildings[cls._surroundingBuildingClass], **kwargs)
+						buildings.append(building)
+		return buildings

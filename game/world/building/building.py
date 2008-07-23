@@ -79,8 +79,8 @@ class Building(WorldObject):
 		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
-		if not building is None:
-			return building.getInstance(x = x, y = y, action=action, **trash)
+		if building is not None:
+			return building.getInstance(x = x, y = y, action=action, layer=layer, **trash)
 		else:
 			instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
 			fife.InstanceVisual.create(instance)
@@ -90,11 +90,14 @@ class Building(WorldObject):
 			return instance
 
 	@classmethod
-	def getBuildCosts(self, **trash):
+	def getBuildCosts(self, building=None, **trash):
 		"""Get the costs for the building
 		@param **trash: we normally dont need any parameter, but we get the same as the getInstance function
 		"""
-		return self.costs
+		if building is not None:
+			return building.getBuildCosts(**trash)
+		else:
+			return self.costs
 
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)

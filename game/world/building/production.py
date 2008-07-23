@@ -26,9 +26,9 @@ from game.world.storage import Storage
 from game.world.units.carriage import BuildingCarriage, AnimalCarriage
 from game.gui.tabwidget import TabWidget
 import game.main
-from buildable import BuildableSingle
+from buildable import BuildableSingle, BuildableSingleWithSurrounding
 
-class _DummyProducer(Building, BuildableSingle, Selectable, Producer):
+class _DummyProducer(Building, Selectable, Producer):
 	""" Class for internal use in this file only. """
 	def __init__(self, x, y, owner, instance = None):
 		self.local_carriages = []
@@ -73,16 +73,12 @@ class BuildinglessProducer(Producer, Consumer):
 		# this class of buildings doesn't have carriages
 		pass
 
-class AnimalFarm(SecondaryProducer):
+class AnimalFarm(SecondaryProducer, BuildableSingleWithSurrounding):
+	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
 	def __init__(self, x, y, owner, instance = None):
 		SecondaryProducer.__init__(self, x, y, owner, instance)
-
-		self.pasture = []
-
-		self.recreate_pasture()
-
 		self.animals = []
 		animals = game.main.db("SELECT animal, number from animals where building = ?", self.id)
 		for (animal,number) in animals:
@@ -92,30 +88,6 @@ class AnimalFarm(SecondaryProducer):
 	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[7](self))
 
-	def recreate_pasture(self):
-		""" Turns everything in the radius to pasture, that can be turned"""
-		## TODO: don't create pasture on tiles like rocks, mountains, water..
-		for coords in self.radius_coords:
-			instance = game.main.session.entities.buildings[18].getInstance(coords[0],coords[1])
-			building = game.main.session.entities.buildings[18](coords[0], coords[1], self.owner, instance)
-			self.island.add_building(coords[0], coords[1], building, self.owner)
-			self.pasture.append(building)
-			building.start()
-
-class Lumberjack(SecondaryProducer):
+class Lumberjack(SecondaryProducer, BuildableSingleWithSurrounding):
+	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
-	def __init__(self, x, y, owner, instance = None):
-		SecondaryProducer.__init__(self, x, y, owner, instance)
-
-		self.pasture = []
-
-		self.recreate_pasture()
-
-	def recreate_pasture(self):
-		""" Turns everything in the radius to pasture, that can be turned"""
-		for coords in self.radius_coords:
-			instance = game.main.session.entities.buildings[17].getInstance(coords[0],coords[1])
-			building = game.main.session.entities.buildings[17](coords[0], coords[1], self.owner, instance)
-			self.island.add_building(coords[0], coords[1], building, self.owner)
-			self.pasture.append(building)
-			building.start()
