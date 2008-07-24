@@ -27,8 +27,7 @@ if __name__ == '__main__':
 	import os
 	#find fife and setup search paths
 	openanno.findFIFE()
-	args = ['gdb', '--args', sys.executable] + sys.argv[1:]
-	os.execvp(args[0], args)
+	os.execvp(args[1], sys.argv[1:])
 else:
 	import inspect
 	import game.main
