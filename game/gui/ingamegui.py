@@ -201,7 +201,9 @@ class IngameGui(livingObject):
 		To hide cityname, set name to ''
 		@param settlement: Settlement class providing the information needed
 		"""
-		if settlement != self.settlement and self.settlement is not None:
+		if settlement == self.settlement:
+			return
+		if self.settlement is not None:
 			self.settlement.removeChangeListener(self.update_settlement)
 		self.settlement = settlement
 		if(settlement == None):
