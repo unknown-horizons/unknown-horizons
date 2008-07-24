@@ -23,6 +23,7 @@ from navigationtool import NavigationTool
 from game.world.units import UnitClass
 from game.world.units.ship import Ship
 from game.command.unit import Act
+from game.util import WeakList
 from game.util import WorldObject
 import time
 import fife
@@ -59,7 +60,7 @@ class SelectionTool(NavigationTool):
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
 				if hasattr(instance, 'select'):
-					selectable.add(instance)
+					selectable.append(instance)
 			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
