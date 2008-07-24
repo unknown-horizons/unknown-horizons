@@ -59,7 +59,7 @@ class SelectionTool(NavigationTool):
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
 				if hasattr(instance, 'select'):
-					selectable.append(instance)
+					selectable.add(instance)
 			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
@@ -72,6 +72,10 @@ class SelectionTool(NavigationTool):
 							selectable.remove(instance)
 				else:
 					selectable = [selectable.pop(0)]
+			if do_multi:
+				selectable = list(self.select_old | frozenset(selectable))
+			else:
+				selectable = list(self.select_old ^ frozenset(selectable))
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
@@ -92,7 +96,7 @@ class SelectionTool(NavigationTool):
 				pass #todo: show multi select menu
 			elif len(game.main.session.selected_instances) == 1 and hasattr(game.main.session.selected_instances[0], 'show_menu'):
 				game.main.session.selected_instances[0].show_menu()
-			del self.select_begin
+			del self.select_begin, self.select_old
 			game.main.session.view.renderer['GenericRenderer'].removeAll(1)
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
@@ -118,7 +122,9 @@ class SelectionTool(NavigationTool):
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:
-				selectable = [selectable.pop(0)]
+				selectable = selectable[0:0]
+			self.select_old = frozenset(game.main.session.selected_instances) if evt.isControlPressed() else frozenset()
+			selectable = list(self.select_old ^ frozenset(selectable))
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
