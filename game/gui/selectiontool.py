@@ -44,16 +44,16 @@ class SelectionTool(NavigationTool):
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
-			game.main.session.view.renderer['GenericRenderer'].removeAll(1)
+			game.main.session.view.renderer['GenericRenderer'].removeAll("select")
 			if do_multi:
 				a = fife.Point(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()))
 				b = fife.Point(max(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()))
 				c = fife.Point(max(self.select_begin[0], evt.getX()), max(self.select_begin[1], evt.getY()))
 				d = fife.Point(min(self.select_begin[0], evt.getX()), max(self.select_begin[1], evt.getY()))
-				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
-				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
-				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
-				game.main.session.view.renderer['GenericRenderer'].addLine(1, fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
 			selectable = []
 			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
 			for i in instances:
@@ -97,7 +97,7 @@ class SelectionTool(NavigationTool):
 			elif len(game.main.session.selected_instances) == 1 and hasattr(game.main.session.selected_instances[0], 'show_menu'):
 				game.main.session.selected_instances[0].show_menu()
 			del self.select_begin, self.select_old
-			game.main.session.view.renderer['GenericRenderer'].removeAll(1)
+			game.main.session.view.renderer['GenericRenderer'].removeAll("select")
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:

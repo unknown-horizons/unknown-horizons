@@ -61,28 +61,27 @@ class Ship(Unit):
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
 		if self.unit_position.x != self.move_target.x or self.unit_position.y != self.move_target.y:
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
+			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
 		self.draw_health()
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		game.main.session.view.renderer['GenericRenderer'].removeAll(2)
-		game.main.session.view.renderer['GenericRenderer'].removeAll(3)
+		game.main.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.getId()))
+		game.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(3, self, {'overview_ship':{'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, self)}}))
 
 	def act(self, x, y):
 		def tmp():
-			game.main.session.view.renderer['GenericRenderer'].removeAll(3)
+			game.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 		tmp()
 		x,y=int(round(x)),int(round(y))
 		self.move(Point(x,y), tmp)
@@ -92,7 +91,7 @@ class Ship(Unit):
 			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			game.main.session.view.renderer['GenericRenderer'].addAnimation(3, fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
+			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
 			
 	def set_name(self):
 		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
