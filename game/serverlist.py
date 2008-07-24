@@ -138,7 +138,7 @@ class ServerList(object):
 		for server in self:
 			if server.address == packet.address and server.port == packet.port:
 				server.timeLastResponse = time.time()
-				server.ping = int(((server.timeLastResponse - server.timeLastQuery) * 1000) + 0.5)
+				server.ping = int(round(((server.timeLastResponse - server.timeLastQuery) * 1000)))
 				server.map, server.players, server.bots, server.maxplayers = packet.map, packet.players, packet.bots, packet.maxplayers
 				self.changed()
 

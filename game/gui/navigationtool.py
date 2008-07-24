@@ -71,13 +71,11 @@ class NavigationTool(CursorTool):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 		# Status menu update
 		current = game.main.session.view.cam.toMapCoordinates(mousepoint, False)
-		#if self.debug:
-		#	print 'pos: x:', int(current.x + 0.5), 'y:', int(current.y + 0.5)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
 			self.lastmoved = current
-			island = game.main.session.world.get_island(int(current.x + 0.5), int(current.y + 0.5))
+			island = game.main.session.world.get_island(int(round(current.x)), int(round(current.y)))
 			if island:
-				settlements = island.get_settlements(int(current.x + 0.5), int(current.y + 0.5))
+				settlements = island.get_settlements(int(round(current.x)), int(round(current.y)))
 				if len(settlements) > 0:
 					game.main.session.ingame_gui.cityinfo_set(settlements.pop())
 				else:
