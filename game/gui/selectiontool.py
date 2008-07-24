@@ -73,9 +73,9 @@ class SelectionTool(NavigationTool):
 				else:
 					selectable = [selectable.pop(0)]
 			if do_multi:
-				selectable = list(self.select_old | frozenset(selectable))
+				selectable = set(self.select_old | frozenset(selectable))
 			else:
-				selectable = list(self.select_old ^ frozenset(selectable))
+				selectable = set(self.select_old ^ frozenset(selectable))
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
@@ -94,8 +94,11 @@ class SelectionTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			if len(game.main.session.selected_instances) > 1:
 				pass #todo: show multi select menu
-			elif len(game.main.session.selected_instances) == 1 and hasattr(game.main.session.selected_instances[0], 'show_menu'):
-				game.main.session.selected_instances[0].show_menu()
+			elif len(game.main.session.selected_instances) == 1:
+				for i in game.main.session.selected_instances:
+					if hasattr(i, 'show_menu'):
+						i.show_menu()
+					
 			del self.select_begin, self.select_old
 			game.main.session.view.renderer['GenericRenderer'].removeAll("select")
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
@@ -124,7 +127,7 @@ class SelectionTool(NavigationTool):
 			if len(selectable) > 1:
 				selectable = selectable[0:0]
 			self.select_old = frozenset(game.main.session.selected_instances) if evt.isControlPressed() else frozenset()
-			selectable = list(self.select_old ^ frozenset(selectable))
+			selectable = set(self.select_old ^ frozenset(selectable))
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()

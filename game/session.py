@@ -67,8 +67,7 @@ class Session(livingObject):
 		self.cursor = SelectionTool()
 
 		self.selected_instances = []
-
-
+		self.selection_groups = [set(),set(),set(),set(),set(),set(),set(),set(),set(),set()]
 
 	def end(self):
 		self.cursor = None

@@ -39,6 +39,7 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
+
 		was = keyval in self.keysPressed
 		if not was:
 			self.keysPressed.append(keyval)
@@ -56,6 +57,20 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 			game.main.session.cursor = TearingTool()
 		elif keystr == 'd':
 			game.main.session.cursor.debug = True
+		elif keystr in ('0','1','2','3','4','5','6','7','8','9'):
+			if evt.isControlPressed():
+				game.main.session.selection_groups[int(keystr)] = game.main.session.selected_instances.copy()
+				for group in game.main.session.selection_groups:
+					if group is not game.main.session.selection_groups[int(keystr)]:
+						group -= game.main.session.selection_groups[int(keystr)]
+			else:
+				for instance in game.main.session.selected_instances:
+					if instance not in game.main.session.selection_groups[int(keystr)]:
+						instance.deselect()
+				for instance in game.main.session.selection_groups[int(keystr)]:
+					if instance not in game.main.session.selected_instances:
+						instance.select()
+				game.main.session.selected_instances = game.main.session.selection_groups[int(keystr)]
 		else:
 			return
 		evt.consume()
