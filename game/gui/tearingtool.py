@@ -52,13 +52,13 @@ class TearingTool(NavigationTool):
 
 	def mouseDragged(self, evt):
 		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-		self._mark(self.coords, (int(coords.x + 0.5), int(coords.y + 0.5)))
+		self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
 		evt.consume()
 
 	def mouseMoved(self,  evt):
 		super(TearingTool, self).mouseMoved(evt)
 		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-		self._mark((int(coords.x + 0.5), int(coords.y + 0.5)))
+		self._mark((int(round(coords.x)), int(round(coords.y))))
 		evt.consume()
 
 	def onEscape(self):
@@ -68,7 +68,7 @@ class TearingTool(NavigationTool):
 	def mouseReleased(self,  evt):
 		if fife.MouseEvent.LEFT == evt.getButton():
 			coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			self._mark(self.coords, (int(coords.x + 0.5), int(coords.y + 0.5)))
+			self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
 			for i in self.selected:
 				game.main.session.manager.execute(Tear(i))
 			game.main.session.cursor = SelectionTool()
@@ -79,7 +79,7 @@ class TearingTool(NavigationTool):
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			self.coords = (int(coords.x + 0.5), int(coords.y + 0.5))
+			self.coords = (int(round(coords.x)), int(round(coords.y)))
 			self._mark(self.coords)
 		else:
 			return
