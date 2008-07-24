@@ -9,7 +9,7 @@
 
 animation:
 lists all graphics, that are used by units, buildings or maps in `file`
-the `animation_id` is used in other tables to connect this references to objects.
+the `animation` is used in other tables to connect this references to objects.
 
 action:
 connects graphics to objects. one of the values of the columns `ground`, `object` and `unit` has to be an integer ID to assign an `animation` to a ground of a map, a building or a unit respectively. 
@@ -21,7 +21,7 @@ this is a trivial list of all buildings, most columns are self-explanatory.
 `class_type` is the name of the python class of the building, this class has to be located in the file in game/world/building , whose basename is `class_package`.
 
 building_costs:
-defines how much resources you need to build a building. `resource_id` is a reference to rowid in `resource`.
+defines how much resources you need to build a building. `resource` is a reference to rowid in `resource`.
 
 building_property:
 saves extra information for buildings. `name` will be an attribute of the building (in the python code), the value of it will be `value`
