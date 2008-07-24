@@ -32,6 +32,7 @@ from collector import Job
 from game.world.building.producer import Producer
 from game.world.pathfinding import Movement
 import game.main
+import weakref
 
 class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 	grazingTime = 2
@@ -49,6 +50,7 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 		if self.start_hidden:
 			self.hide()
 		
+		self.home_building = weakref.ref(home_building)
 		self.search_job()
 		
 

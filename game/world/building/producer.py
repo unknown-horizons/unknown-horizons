@@ -47,20 +47,25 @@ class Producer(object):
 		self.production = {}
 
 		if self.object_type == 0:
-			print self.id, "Producer: IS A BUILDING"
+		#	print self.id, "Producer: IS A BUILDING"
+		        pass
 		elif self.object_type == 1:
-			print self.id, "Producer: IS A UNIT"
+		#	print self.id, "Producer: IS A UNIT"
+		        pass
 		else:
-			print self.id, "Producer: UNKNOWN TYPE"
+		#	print self.id, "Producer: UNKNOWN TYPE"
 			assert(False)	
 
-		result = game.main.db("SELECT rowid, time FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id);
+		result = game.main.db("SELECT rowid, time FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
 		for (prod_line, time) in result:
 			self.production[prod_line] = {}
 			self.production[prod_line]['res'] = {}
 			self.production[prod_line]['time'] = time
-
+			
 			prod_infos = game.main.db("SELECT resource, (select size from data.storage s where s.resource = p.resource and s.%(type)s = (select %(type)s from data.production_line where rowid = p.production_line)), amount FROM data.production p WHERE production_line = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, prod_line)
+
+			#prod_infos = game.main.db("SELECT p.resource, p.amount, s.size FROM production p, storage s WHERE p.resource = s.resource AND p.production_line = ? AND s.%(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, prod_line, self.id)
+			print self.id, "PRODUCER : prod_info" , prod_line, " : ", prod_infos 
 			for (resource, storage_size, amount) in prod_infos:
 				if amount > 0: # actually produced res
 					self.prod_res.append(resource)
@@ -117,9 +122,11 @@ class Producer(object):
 
 			# everything ok, acctual production:
 			for res in self.production[self.active_production_line]['res'].items():
+				print self.id, "PRODUCE" 'res', res[0], 'amount', res[1]
 				self.inventory.alter_inventory(res[0], res[1])
+				print self.id, "PRODUCE : inventory = ", self.inventory
 				#debug:
-				#print "PROD", self.id, 'res', res[0], 'amount', res[1]
+				
 
 			self.next_animation()
 
