@@ -83,7 +83,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	assert(isinstance(diagonal, (bool)))
 	
 	if destination in blocked_coords:
-		return False
+		return None
 	
 	# if path_nodes is a list, turn it into a dict
 	if isinstance(path_nodes, list):

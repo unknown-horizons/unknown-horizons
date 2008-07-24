@@ -55,6 +55,6 @@ class UnitClass(type):
 			action = cls._object.createAction(str(action_id))
 			fife.ActionVisual.create(action)
 			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where unit=? and action=?", cls.id, action_id):
-				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id))
+				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:center+0,bottom+8')
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
