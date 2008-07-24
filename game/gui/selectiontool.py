@@ -66,9 +66,12 @@ class SelectionTool(NavigationTool):
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:
-				for instance in selectable[:]:
-					if isinstance(instance.__class__, game.world.building.BuildingClass):
-						selectable.remove(instance)
+				if do_multi:
+					for instance in selectable[:]:
+						if isinstance(instance.__class__, game.world.building.BuildingClass):
+							selectable.remove(instance)
+				else:
+					selectable = [selectable.pop(0)]
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
@@ -115,9 +118,7 @@ class SelectionTool(NavigationTool):
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:
-				for instance in selectable[:]:
-					if isinstance(instance.__class__, game.world.building.BuildingClass):
-						selectable.remove(instance)
+				selectable = [selectable.pop(0)]
 			for instance in game.main.session.selected_instances:
 				if instance not in selectable:
 					instance.deselect()
