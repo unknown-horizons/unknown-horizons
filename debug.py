@@ -27,7 +27,7 @@ if __name__ == '__main__':
 	import os
 	#find fife and setup search paths
 	openanno.findFIFE()
-	os.execvp(args[1], sys.argv[1:])
+	os.execvp(sys.argv[1], sys.argv[1:])
 else:
 	import inspect
 	import game.main
@@ -80,8 +80,8 @@ else:
 			print (deep * ' ') + str(name) + ': ',
 			printTree(obj.__dict__[name], deep)
 
+	from game.command import *
 	def cmd(name, *pargs, **kargs):
-		from game.command import *
 		game.main.session.manager.execute(eval(name)(*pargs, **kargs))
 
 	print 'Debuging tools usage:'
