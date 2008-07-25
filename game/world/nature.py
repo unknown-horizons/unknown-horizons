@@ -32,13 +32,15 @@ class Growable(object):
 	IDEA: maybe store reference to production building,
 	      if such exists, here
 	"""
-	def __init__(self, producer):
+	def __init__(self, producer, **kwargs):
 		"""
 		@param producer: producer that determines animation change intervals and such
 		"""
+		super(Growable, self).__init__(producer=producer, **kwargs)
 		self.growing_producer = producer
 		self.growing_producer.restart_animation = self.restart_animation
 		self.actions = []
+		self.db_actions = game.main.db("SELECT action FROM data.action WHERE %(type)s = ? AND action != 'default'" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
 		for (a,) in self.db_actions:
 			self.actions.append(str(a))
 		self.actions.sort()

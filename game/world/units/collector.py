@@ -23,7 +23,6 @@ from game.world.units.unit import Unit
 from game.world.storage import ArbitraryStorage
 from game.util import Rect, Point
 from game.world.pathfinding import Movement
-from game.world.building.producer import Producer
 import game.main
 import operator
 import weakref
@@ -44,14 +43,14 @@ class BuildingCollector(Unit):
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True):
 		super(BuildingCollector, self).__init__(home_building.x, home_building.y)
 		self.inventory = ArbitraryStorage(slots, size)
-		
+
 		def remove_actionlistener(ref):
 			import pdb
 			pdb.Pdb().set_trace()
 			self._instance.removeActionListener(self)
-		
+
 		self.home_building = weakref.ref(home_building)
-		
+
 		self.start_hidden = start_hidden
 		if self.start_hidden:
 			self.hide()
@@ -69,9 +68,9 @@ class BuildingCollector(Unit):
 
 	def get_job(self):
 		"""Returns the next job or None"""
-		
+
 		if (self.home_building() is None) : return None
-		
+
 		print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
@@ -129,19 +128,19 @@ class BuildingCollector(Unit):
 		self.job.path.reverse()
 		# move back to home
 		self.do_move(self.job.path, self.reached_home)
-	
+
 	def end_job(self):
 		# he finished the job now
 		# before the new job can begin this will be executed
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
-		
+
 
 	def reached_home(self):
 		""" we finished now our complete work. Let's do it again in 32 ticks
 			you can use this as event as after work
 		"""
 		print self.id, 'FINISHED WORK'
-		
+
 		if self.home_building() is not None:
 			assert(self.home_building().inventory.alter_inventory(self.job.res, self.job.amount) == 0)
 			assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
@@ -170,9 +169,10 @@ class BuildingCollector(Unit):
 		print self.id, 'GET BUILDINGS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Producer)]
+		from game.world.provider import Provider
+		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
-	
+
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
 	Used in storage facilities.
@@ -182,7 +182,7 @@ class StorageCollector(BuildingCollector):
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
-	
+
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
@@ -207,7 +207,7 @@ class AnimalCollector(BuildingCollector):
 		self.get_animal()
 		# move back to home
 		self.do_move(self.job.path, self.reached_home)
-	
+
 	def reached_home(self):
 		""" we finished now our complete work. Let's do it again in 32 ticks
 			you can use this as event as after work
@@ -220,13 +220,13 @@ class AnimalCollector(BuildingCollector):
 		self.home_building()._Consumer__registered_collectors.remove(self)
 		self.release_animal()
 		self.end_job()
-		
-	
+
+
 	def get_buildings_in_range(self):
 		# This is only a small workarround
 		# as long we have no Collector class
 		return self.get_animals_in_range()
-		
+
 	def get_animals_in_range(self):
 		# TODO: use the Collector class instead of BuildCollector
 		print self.id, 'GET ANIMALS IN RANGE'
@@ -238,23 +238,23 @@ class AnimalCollector(BuildingCollector):
 		print self.id, 'STOP ANIMAL'
 		#Our animal shouldn't move anymore
 		game.main.session.scheduler.rem_all_classinst_calls(self.job.object)
-		
+
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
 		self.job.object.do_move(self.job.patch)
-		
+
 	def release_animal(self):
 		print self.id, 'RELEASE ANIMAL'
 		game.main.session.scheduler.add_new_object(self.search_job, self, 16)
-	
-		
+
+
 class Job(object):
 	def __init__(self, object, res, amount):
 		self.object = object
 		self.res = res
 		self.amount = amount
 		self.path = []
-		
+
 		# this is rather a dummy
 		self.rating = amount
 

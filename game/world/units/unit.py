@@ -29,7 +29,9 @@ from game.util import WorldObject
 class Unit(WorldObject, fife.InstanceActionListener):
 	movement = Movement.SOLDIER_MOVEMENT
 
-	def __init__(self, x, y):
+	def __init__(self, x, y, **kwargs):
+		super(Unit, self).__init__(**kwargs)
+		fife.InstanceActionListener.__init__(self)
 		if self._object is None:
 			self.__class__._loadObject()
 		self.object_type = 1
@@ -41,7 +43,6 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'default'
 		self._instance.act(self.action, self._instance.getLocation(), True)
-		super(Unit, self).__init__()
 		self._instance.addActionListener(self)
 
 		self.move_callback = None
@@ -51,7 +52,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 		self.health = 60.0
 		self.max_health = 100.0
-		
+
 	def __del__(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
@@ -126,7 +127,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self.move_callback = WeakMethod(callback)
 
 		print 'MOVING FROM', path[0], 'TO', path[ len(path)-1 ]
-		
+
 		self.cur_path = iter(self.path)
 		self.next_target = self.cur_path.next()
 		# findPath returns tuples, so we have to turn them into Point
@@ -134,7 +135,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 		# enqueue first move (move_tick takes care of the rest)
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
-	
+
 	def move(self, destination, callback = None):
 		""" Moves unit to destination
 		@param destination: Point or Rect
@@ -192,7 +193,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 		# deprecated:
 		self.move_target = self.unit_position
-		
+
 		#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 		if self.move_callback is not None:
 			#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
@@ -204,7 +205,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		"""
 		#sync unit_position
 		self.last_unit_position = self.unit_position
-		
+
 		# check if next_target is blocked by a unit
 		if not self.check_for_blocking_units(self.next_target):
 			new_path = self.check_move(self.path[ len(self.path) - 1] )
@@ -214,7 +215,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 				return
 			self.do_move(new_path, self.move_callback)
 			return
-		
+
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
@@ -257,7 +258,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self._instance.move(self.action, location, 4.0/3.0)
 		#setup next timer
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
-		
+
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit
 		@param position: instance of Point

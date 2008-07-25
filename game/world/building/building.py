@@ -30,7 +30,9 @@ class Building(WorldObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
-	def __init__(self, x, y, owner, instance = None):
+	def __init__(self, x, y, owner, instance = None, **kwargs):
+		print self.__class__.__mro__
+		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.building_position = Rect((Point(x, y)), self.size[0]-1, self.size[1]-1)
 		self.x = x
 		self.y = y
@@ -51,7 +53,7 @@ class Building(WorldObject):
 		#print "BUILDING: REMOVE " + str(self)
 		self.settlement.rem_inhabitants(self.inhabitants)
 		self.island.remove_building(self)
-		
+
 		for x in xrange(self.x, self.x + self.__class__.size[0]):
 			for y in xrange(self.y, self.y + self.__class__.size[1]):
 				tile = self.island.get_tile(x,y)

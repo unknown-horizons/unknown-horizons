@@ -19,9 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'consumer', 'housing', 'nature', 'path', 'producer', 'production', 'storages', 'settler']
+__all__ = ['building', 'housing', 'nature', 'path', 'production', 'storages', 'settler']
 
-from game.world.building import *
 import game.main
 import fife
 
@@ -30,7 +29,8 @@ class BuildingClass(type):
 	@param id: int - building id in the database."""
 	def __new__(self, id):
 		(class_package,  class_name) = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
-		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
+		__import__('game.world.building.'+str(class_package))
+		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[str(class_package)], str(class_name)),), {})
 
 	def __init__(self, id):
 		"""

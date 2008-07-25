@@ -23,39 +23,31 @@ import random
 from game.world.units.unit import Unit
 from game.world.units.collector import BuildingCollector
 from game.world.units.nature import GrowingUnit
-from game.world.building.production import BuildinglessProducer
-from game.world.storage import Storage
 from game.util.rect import Rect
 from game.util.point import Point
-from game.command.building import Build
 from collector import Job
-from game.world.building.producer import Producer
+from game.world.production import SecondaryProducer
 from game.world.pathfinding import Movement
 import game.main
 import weakref
 
-class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
+class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	grazingTime = 2
 	movement = Movement.CARRIAGE_MOVEMENT
-	
+
 	def __init__(self, home_building, start_hidden=True):
+		super(Animal, self).__init__(x=home_building.x, y=home_building.y)
 		self.__home_building = home_building
 		self.home_building = home_building
 		self.start_hidden = start_hidden
-		
-		Unit.__init__(self, home_building.x, home_building.y)
-		BuildinglessProducer.__init__(self)
 		print self.id, "Sheep has a storage :" , self.inventory._inventory
 		#BuildingCollector.__init__(self, home_building)
 		if self.start_hidden:
 			self.hide()
-		
+
 		self.home_building = weakref.ref(home_building)
 		self.search_job()
-		
 
-		
-	
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
@@ -63,7 +55,7 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 		if self.start_hidden:
 			self.show()
 		self.do_move(self.job.path, self.begin_working)
-			
+
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'
 		# TODO: animation change
@@ -72,7 +64,7 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 		# deregister at the target we're at
 		self.job.object._Producer__registered_collectors.remove(self)
 		self.end_job()
-		
+
 	def get_job(self):
 		"""Returns the next job or None"""
 		print self.id, 'GET JOB'
@@ -106,11 +98,11 @@ class Animal(BuildingCollector, GrowingUnit, BuildinglessProducer):
 			if job.path is not None:
 				return job
 		return None
-	
+
 	def get_collectable_res(self):
 		print self.id, 'GET COLLECTABLE RES'
 		return self.get_needed_res()
-	
+
 	def next_animation(self):
 		# our sheep has no animation yes
 		# TODO: animation for animals

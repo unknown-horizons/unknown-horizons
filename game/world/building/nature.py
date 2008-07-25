@@ -21,20 +21,19 @@
 
 from building import Building
 from buildable import BuildableRect
-from production import PrimaryProducer
 from game.world.nature import Growable
 import game.main
 import fife
 
 #class GrowingBuilding(BuildableRect, PrimaryProducer):
-class GrowingBuilding(BuildableRect, Growable, PrimaryProducer):
+class GrowingBuilding(BuildableRect, Growable, Building):
 	""" Class for stuff that grows, such as trees
 	"""
-	def __init__(self, x, y, owner, instance = None):
-		PrimaryProducer.__init__(self, x, y, owner, instance)
+	def __init__(self, x, y, owner, instance = None, **kwargs):
+		super(GrowingBuilding, self).__init__(producer=self,x=x, y=y, owner=owner, instance=instance, **kwargs)
+		
 		# assumption: GrowingBuildings can only have one production line
-		self.db_actions = game.main.db("SELECT action FROM data.action WHERE building = ? AND action != 'default'", self.id)
-		Growable.__init__(self, self)
+		
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
@@ -70,3 +69,22 @@ class GrowingBuilding(BuildableRect, Growable, PrimaryProducer):
 #		if loops > 0:
 #			game.main.session.scheduler.add_new_object(self.update_animation, self, interval, loops)
 #
+	def get_growing_info(self):
+		""" will probably be deleted when refactoring Growable
+
+		@return (all values are average) tuple: (cur_production, cur_production_res_amount, cur_production_res_size, cur_production_time) OR -1 if no cur production
+
+		REMOVE this function
+
+		"""
+		if self.active_production_line == -1:
+			return -1
+
+		data = (\
+			[ self.production[self.active_production_line]['res'][res] for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ], \
+			[ self.inventory.get_value(res) for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ], \
+			[ self.inventory.get_size(res) for res in self.production[self.active_production_line]['res'] if self.production[self.active_production_line]['res'][res] > 0 ],\
+			self.production[self.active_production_line]['time'] )
+
+		print data
+		return (sum(data[0])/len(data[0]), sum(data[1])/len(data[1]), sum(data[2])/len(data[2]), data[3])

@@ -26,7 +26,7 @@ from stablelist import stablelist
 from color import Color
 from point import Point
 from rect import Rect
-from changelistener import changelistener
+from changelistener import Changelistener
 from weakmethod import WeakMethod
 from weaklist import WeakList
 from worldobject import WorldObject

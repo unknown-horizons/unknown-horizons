@@ -21,28 +21,26 @@
 
 from building import Building, Selectable
 from buildable import BuildableSingle
-from game.world.building.producer import Producer
-from game.world.building.consumer import Consumer
+from game.world.consumer import Consumer
+from game.world.provider import Provider
 from game.world.storage import Storage
 from game.world.units.carriage import BuildingCarriage
 from game.gui.tabwidget import TabWidget
 import game.main
 
-class StorageBuilding(Building, Selectable, BuildableSingle, Producer, Consumer):
+class StorageBuilding(Building, Selectable, BuildableSingle, Provider, Consumer):
 	"""Building that gets pickups and provides them for anyone
 	Inherited eg. by branch office, storage tent
 	"""
-	def __init__(self, x, y, owner, instance = None):
+	def __init__(self, x, y, owner, instance = None, **kwargs):
+		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.local_carriages = []
-		Building.__init__(self, x, y, owner, instance)
 		self.inventory = self.settlement.inventory
 		self.inventory.addChangeListener(self._changed)
 		#self.inventory  = Storage()
-		Producer.__init__(self)
-		Consumer.__init__(self)
 
 		# add extra carriage
-		self.create_carriage()
+		# self.create_carriage()
 
 	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[8](self))

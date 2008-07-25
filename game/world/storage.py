@@ -27,7 +27,8 @@ class Storage(WorldObject):
 
 	Used e.g. by production buildings (e.g. PrimaryProducer)
 	"""
-	def __init__(self):
+	def __init__(self, **kwargs):
+		super(Storage, self).__init__(**kwargs)
 		# inventory: a dict with this pattern: _inventory[res_id] = [amount, size]
 		self._inventory = {}
 

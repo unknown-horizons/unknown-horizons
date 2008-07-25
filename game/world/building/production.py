@@ -20,65 +20,19 @@
 # ###################################################
 
 from building import Building, Selectable
-from game.world.building.consumer import Consumer
-from game.world.building.producer import Producer
-from game.world.storage import Storage
+from game.world.production import SecondaryProducer
 from game.world.units.carriage import BuildingCarriage, AnimalCarriage
 from game.gui.tabwidget import TabWidget
 import game.main
 from buildable import BuildableSingle, BuildableSingleWithSurrounding
 
-class _DummyProducer(Building, Selectable, Producer):
-	""" Class for internal use in this file only. """
-	def __init__(self, x, y, owner, instance = None):
-		self.local_carriages = []
-		self.inventory = Storage()
-		self.inventory.addChangeListener(self._changed)
-		Building.__init__(self, x, y, owner, instance)
-		Producer.__init__(self)
 
-class PrimaryProducer(_DummyProducer):
-	"""Class used for primary production buildings, e.g. tree
-
-	These object produce something out of nothing, without
-	requiring any raw material
-	"""
-
-class SecondaryProducer(_DummyProducer, Consumer):
-	"""Class used for secondary production buildings, e.g. lumberjack, weaver
-
-	These object turn resources into something else
-	"""
-	def __init__(self, x, y, owner, instance = None):
-		_DummyProducer.__init__(self, x, y, owner, instance)
-		Consumer.__init__(self)
-
-	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
-
-class BuildinglessProducer(Producer, Consumer):
-	""" Class for immaterial producers
-
-	For example the sheep uses this to produce wool out of grass,
-	because the sheep itself is a unit, not a building
-	"""
-	def __init__(self):
-		self.x, self.y = None, None
-		self.local_carriages = []
-		self.inventory = Storage()
-		Producer.__init__(self)
-		Consumer.__init__(self)
-
-	def create_carriage(self):
-		# this class of buildings doesn't have carriages
-		pass
-
-class AnimalFarm(SecondaryProducer, BuildableSingleWithSurrounding):
+class AnimalFarm(Building, SecondaryProducer, BuildableSingleWithSurrounding):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
-	def __init__(self, x, y, owner, instance = None):
-		SecondaryProducer.__init__(self, x, y, owner, instance)
+	def __init__(self, x, y, owner, instance = None, **kwargs):
+		super(AnimalFarm, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def create_carriage(self):
 		self.animals = []
@@ -89,6 +43,6 @@ class AnimalFarm(SecondaryProducer, BuildableSingleWithSurrounding):
 
 		self.local_carriages.append(game.main.session.entities.units[7](self))
 
-class Lumberjack(SecondaryProducer, BuildableSingleWithSurrounding):
+class Lumberjack(Building, SecondaryProducer, BuildableSingleWithSurrounding):
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""

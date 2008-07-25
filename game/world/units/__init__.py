@@ -21,7 +21,6 @@
 
 __all__ = ['animal','collector','nature','ship','unit']
 
-from game.world.units import *
 import game.main
 import fife
 
@@ -31,6 +30,7 @@ class UnitClass(type):
 		@param id: unit id
 		"""
 		(class_package,  class_name) = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
+		__import__('game.world.units.'+str(class_package))
 		return type.__new__(self, 'Unit[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
 
 	def __init__(self, id):

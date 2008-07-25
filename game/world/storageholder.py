@@ -19,27 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
-from changelistener import Changelistener
+from game.world.storage import Storage
 
-class WorldObject(Changelistener):
-	__next_id = 1
-	__objects = weakref.WeakValueDictionary()
+class StorageHolder(object):
 	def __init__(self, **kwargs):
-		super(WorldObject, self).__init__(**kwargs)
-
-	def getId(self):
-		if not hasattr(self, "_WorldObject__id"):
-			self.__id = WorldObject.__next_id
-			WorldObject.__next_id = WorldObject.__next_id + 1
-			WorldObject.__objects[self.__id] = self
-		return self.__id
-
-	@classmethod
-	def getObjectById(cls, id):
-		return cls.__objects[id]
-
-	@classmethod
-	def reset(cls):
-		cls.__next_id = 1
-		cls.__objects.clear()
+		super(StorageHolder, self).__init__(**kwargs)
+		print '---------------------------------------storageholder----------------------------'
+		self.inventory = Storage()
+		# Init storage
+		resources = game.main.db("select resource, size from data.storage where %(type)s = ? and resource in (select resource from data.production p left join data.production_line l on p.production_line = l.rowid where l.%(type)s = ?);" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id, self.id)
+		for (res, size) in resources:
+			if not self.inventory.hasSlot(res):
+				self.inventory.addSlot(res, size)

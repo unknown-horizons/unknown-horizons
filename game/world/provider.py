@@ -19,27 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
-from changelistener import Changelistener
+from game.world.storageholder import StorageHolder
+from game.util import WeakList
 
-class WorldObject(Changelistener):
-	__next_id = 1
-	__objects = weakref.WeakValueDictionary()
+class Provider(StorageHolder):
 	def __init__(self, **kwargs):
-		super(WorldObject, self).__init__(**kwargs)
+		super(Provider, self).__init__(**kwargs)
 
-	def getId(self):
-		if not hasattr(self, "_WorldObject__id"):
-			self.__id = WorldObject.__next_id
-			WorldObject.__next_id = WorldObject.__next_id + 1
-			WorldObject.__objects[self.__id] = self
-		return self.__id
+		# save references to collectors that are on the way
+		# this ensures that the resources, that it will get, won't be taken
+		# by anything else but this collector
+		self.__registered_collectors = WeakList()
 
-	@classmethod
-	def getObjectById(cls, id):
-		return cls.__objects[id]
-
-	@classmethod
-	def reset(cls):
-		cls.__next_id = 1
-		cls.__objects.clear()
+	def pickup_resources(self, res, max_amount):
+		"""Return the resources of id res that are in stock and removes them from the stock.
+		@param res: int ressouce id.
+		@param max_amount: int maximum resources that are picked up
+		@return: int number of resources."""
+		picked_up = self.inventory.get_value(res)
+		if picked_up > max_amount:
+			picked_up = max_amount
+		self.inventory.alter_inventory(res, -picked_up)
+		return picked_up

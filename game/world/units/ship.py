@@ -33,8 +33,9 @@ class Ship(Unit):
 		@param x: int x position
 		@param y: int y position
 	"""
-	def __init__(self, x, y):
-		super(Ship, self).__init__(x, y)
+	def __init__(self, x, y, **kwargs):
+		super(Ship, self).__init__(x=x, y=y, **kwargs)
+		## TODO: inherit from storageholder
 		self.inventory = Storage()
 		self.inventory.addSlot(6,50)
 		self.inventory.addSlot(5,50)
@@ -42,16 +43,16 @@ class Ship(Unit):
 		self.inventory.alter_inventory(6, 15)
 		self.inventory.alter_inventory(5, 30)
 		self.inventory.alter_inventory(4, 50)
-		
+
 		self.set_name()
-		
+
 		game.main.session.world.ship_map[self.unit_position] = self
-	
+
 	def move_tick(self):
 		del game.main.session.world.ship_map[self.unit_position]
 		super(Ship, self).move_tick()
 		game.main.session.world.ship_map[self.unit_position] = self
-		
+
 	def check_for_blocking_units(self, position):
 		if game.main.session.world.ship_map.has_key(position):
 			return False
@@ -92,7 +93,7 @@ class Ship(Unit):
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
-			
+
 	def set_name(self):
 		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
 
@@ -100,7 +101,7 @@ class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	def set_name(self):
 		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0])
-		
+
 	def show_menu(self):
 		pass
 

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.building.production import SecondaryProducer
+from game.world.production import SecondaryProducer
 import game.main
 
 class Settler(SecondaryProducer):
