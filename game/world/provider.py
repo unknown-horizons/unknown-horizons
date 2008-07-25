@@ -29,7 +29,7 @@ class Provider(StorageHolder):
 		# save references to collectors that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this collector
-		self.__registered_collectors = WeakList()
+		self.__collectors = WeakList()
 
 	def pickup_resources(self, res, max_amount):
 		"""Return the resources of id res that are in stock and removes them from the stock.

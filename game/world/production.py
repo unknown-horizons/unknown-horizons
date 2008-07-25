@@ -30,32 +30,13 @@ class PrimaryProducer(Provider):
 	# run self.tick every second tick (NOTE: this should be discussed)
 	# running every tick currently requires all production times to be
 	# a multiple of 2
-	"""Class used for production buildings
-
-	# Has to be inherited by a class that provides:
-	* inventory
-
-	"""
+	"""Class used for production buildings"""
 	def __init__(self, **kwargs):
 		"""
 		"""
 		super(PrimaryProducer, self).__init__(**kwargs)
-		# list of produced resource
-		# this is rather a shortcut, this info is also stored
-		# indirectly in self.prodcution
-		self.prod_res = []
 		# infos about production
 		self.production = {}
-
-		if self.object_type == 0:
-		#	print self.id, "Producer: IS A BUILDING"
-			pass
-		elif self.object_type == 1:
-		#	print self.id, "Producer: IS A UNIT"
-			pass
-		else:
-		#	print self.id, "Producer: UNKNOWN TYPE"
-			assert(False)
 
 		# Init production lines
 		result = game.main.db("SELECT rowid FROM production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
@@ -108,10 +89,6 @@ class PrimaryProducer(Provider):
 				print self.id, "PRODUCE" 'res', res[0], 'amount', res[1]
 				self.inventory.alter_inventory(res[0], res[1])
 				print self.id, "PRODUCE : inventory = ", self.inventory
-				
-
-			# deprecated:
-			#self.next_animation()
 
 class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""

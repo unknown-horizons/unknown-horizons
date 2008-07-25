@@ -105,8 +105,8 @@ class BuildingCollector(Unit):
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.object._Producer__registered_collectors.append(self)
-		self.home_building()._Consumer__registered_collectors.append(self)
+		self.job.object._Provider__collectors.append(self)
+		self.home_building()._Consumer__collectors.append(self)
 		if self.start_hidden:
 			self.show()
 		self.do_move(self.job.path, self.begin_working)

@@ -33,39 +33,16 @@ class Consumer(StorageHolder):
 		"""
 		"""
 		super(Consumer, self).__init__(**kwargs)
-		self.consumation = {}
+		self.__resources = {}
 
+		for (production_line,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
+			self.__resources[production_line] = []
+			for (res,) in game.main.db("select resource from data.production where production_line = ? and amount < 0 group by resource", production_line):
+				self.__resources[production_line].append(res)
 
-		if self.object_type == 0:
-			#print self.id, "Consumer: IS A BUILDING"
-			pass
+		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
 
-		elif self.object_type == 1:
-			#print self.id, "Consumer: IS A UNIT"
-			pass
-		else:
-			print self.id, "Consumer: UNKNOWN TYPE"
-			assert(False)
-
-		result = game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id);
-		for (production_line,) in result:
-			self.consumation[production_line] = []
-
-			consumed_resources = game.main.db("select resource, size from data.storage where %(type)s = ? and resource in (select resource from data.production p left join data.production_line l on p.production_line = l.rowid where l.%(type)s = ?);" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id, self.id)
-			for (res, size) in consumed_resources:
-				self.consumation[production_line].append(res)
-
-		if len(self.consumation) == 0:
-			self.active_production_line = -1
-		else:
-			self.active_production_line = min(self.consumation.keys())
-		print 'production line:', self.active_production_line
-		
-		# calculate coords where carriage can move
-		if isinstance(self, Building):
-			self.radius_coords = self.building_position.get_radius_coordinates(self.radius)
-
-		self.__registered_collectors = WeakList()
+		self.__collectors = WeakList()
 
 		self.create_carriage()
 
@@ -76,11 +53,12 @@ class Consumer(StorageHolder):
 
 	def get_needed_res(self):
 		"""Returns list of resources, where free space in the inventory exists,
-		because a building doesn't need resources, that it can't store"""
+		because a building doesn't need resources, that it can't store
+		"""
 		return [res for res in self.get_consumed_res() if self.inventory.get_value(res) < self.inventory.get_size(res)]
 
 	def get_consumed_res(self):
 		"""Returns list of resources, that the building uses, without
-		considering, if it currently needs them"""
-
-		return self.consumation[self.active_production_line] if self.active_production_line != -1 else [];
+		considering, if it currently needs them
+		"""
+		return [] if self.active_production_line is None else self.__resources[self.active_production_line]

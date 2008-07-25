@@ -40,7 +40,6 @@ class BuildingTool(NavigationTool):
 	"""
 
 	def begin(self, building, ship = None):
-		print building.__mro__
 		super(BuildingTool, self).begin()
 		self.ship = ship
 		self._class = building
