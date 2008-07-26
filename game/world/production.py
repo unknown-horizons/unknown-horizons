@@ -24,6 +24,7 @@ from consumer import Consumer
 from game.world.units.unit import Unit
 import game.main
 from game.util import WeakList
+from game.gui.tabwidget import TabWidget
 
 class PrimaryProducer(Provider):
 	"""Class used for production buildings"""
