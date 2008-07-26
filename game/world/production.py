@@ -43,28 +43,37 @@ class PrimaryProducer(Provider):
 
 		self.__used_resources = {}
 
-		#game.main.session.scheduler.add_new_object(self.tick, self, self.__class__.check_production_interval, -1)
 		if self.active_production_line is not None:
 			self.addChangeListener(self.check_production_startable)
+			self.check_production_startable()
 
 	def check_production_startable(self):
-		usable_resources = {}
 		for res, amount in self.production[self.active_production_line].production.items():
-			#we have something to work with, if the res is needed, we have something in the inv and we dont already have used everything we need from that resource
-			if amount < 0 and self.inventory.get_value(res) > 0 and self.__used_resources.get(res, 0) < -amount:
-				usable_resources[res] = -amount - self.__used_resources.get(res, 0)
-		if len(usable_resources) > 0:
-			self.removeChangeListener(self.check_production_startable)
-			time = int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / sum(self.production[self.active_production_line].production.values())))
-			for res, amount in usable_resources:
-				if res in self.__used_resources:
-					self.__used_resources[res] += amount
-				else:
-					self.__used_resources[res] = amount
-			for res, amount in usable_resources.items():
-				if amount < 0:
-					self.inventory.alter_inventory(res, amount)
-			game.main.session.scheduler.add_new_object(self.production_step, self, int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / sum(self.production[self.active_production_line].production.values()))) - time, -1)
+			if amount > 0 and self.inventory.get_value(res) + amount > self.inventory.get_size(res):
+				return
+		print "test", self.getId()
+		usable_resources = {}
+		if min(self.production[self.active_production_line].production.values()) < 0:
+			for res, amount in self.production[self.active_production_line].production.items():
+				#we have something to work with, if the res is needed, we have something in the inv and we dont already have used everything we need from that resource
+				if amount < 0 and self.inventory.get_value(res) > 0 and self.__used_resources.get(res, 0) < -amount:
+					usable_resources[res] = -amount - self.__used_resources.get(res, 0)
+			if len(usable_resources) == 0:
+				return
+			time = int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)))
+		else:
+			time = 0
+		self.removeChangeListener(self.check_production_startable)
+		for res, amount in usable_resources:
+			if res in self.__used_resources:
+				self.__used_resources[res] += amount
+			else:
+				self.__used_resources[res] = amount
+		for res, amount in usable_resources.items():
+			if amount < 0:
+				self.inventory.alter_inventory(res, amount)
+		game.main.session.scheduler.add_new_object(self.production_step, self, 16 * (self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0 else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))) - time)), -1)
+		self._instance.act("working", self._instance.getFacingLocation(), True)
 
 	def production_step(self):
 		if sum(self.__used_resources.values()) < sum(self.production[self.active_production_line].production.values()):
@@ -72,6 +81,7 @@ class PrimaryProducer(Provider):
 				if amount > 0:
 					self.inventory.alter_inventory(res, amount)
 			self.__used_resources = {}
+		self._instance.act("default", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)
 		self.check_production_startable()
 
@@ -83,7 +93,6 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 
 class ProductionLine(object):
 	def __init__(self, id):
-		print type(id), id
 		self.id = id
 		self.time = game.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
 		self.production = {}
