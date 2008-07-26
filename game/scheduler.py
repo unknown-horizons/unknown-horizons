@@ -40,7 +40,7 @@ class Scheduler(livingObject):
 		@param tick_id: int id of the tick.
 		"""
 		self.cur_tick = tick_id
-		if self.schedule.has_key(self.cur_tick):
+		if self.cur_tick in self.schedule:
 			for callback in self.schedule[self.cur_tick]:
 				callback.callback()
 				assert callback.loops >= -1
@@ -53,7 +53,7 @@ class Scheduler(livingObject):
 		"""Adds a new CallbackObject instance to the callbacks list
 		@param callback_obj: CallbackObject type object, containing all neccessary  information
 		"""
-		if not self.schedule.has_key(self.cur_tick + callback_obj.runin):
+		if not (self.cur_tick + callback_obj.runin) in self.schedule:
 			self.schedule[self.cur_tick + callback_obj.runin] = []
 		if callback_obj.loops > 0:
 			callback_obj.loops -= 1

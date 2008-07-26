@@ -91,11 +91,9 @@ class BuildingCollector(Unit):
 						# add a new job
 						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), max_consumer_res_free)))
 
-
-		## TODO: Sort job list
+		# sort job list
 		jobs.sort(key=operator.attrgetter('rating') )
 		jobs.reverse()
-
 
 		for job in jobs:
 			job.path =  self.check_move(Point(job.object.x, job.object.y))

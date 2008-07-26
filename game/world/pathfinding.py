@@ -21,6 +21,7 @@
 
 
 from game.util import Rect, Point
+from game.world.building.building import Building
 
 # for speed testing:
 import time
@@ -67,8 +68,8 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which 
 	is not necessarily the shortest path (cause roads have different speeds)
-	@param source: Rect or Point (use Rect if unit is in a building)
-	@param destination: Rect or Point (same as above)
+	@param source: Rect, Point or Building
+	@param destination: Rect, Point or Building
 	@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
 	@param blocked_coords: temporarily blocked coords (e.g. by a unit)
 	@param diagonal: wether the unit is able to move diagonally
@@ -77,10 +78,17 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	#t0 = time.time()
 	
 	# assurce correct call
-	assert(isinstance(destination, (Rect, Point)))
+	assert(isinstance(source, (Rect, Point, Building))
+	assert(isinstance(destination, (Rect, Point, Building)))
 	assert(isinstance(path_nodes, (dict, list)))
 	assert(isinstance(blocked_coords, list))
 	assert(isinstance(diagonal, (bool)))
+	
+	# support for building 
+	if isinstance(source, Building):
+		source = source.building_position
+	if isinstance(destination, Building):
+		destination = destination.building_position
 	
 	if destination in blocked_coords:
 		return None
@@ -114,7 +122,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 		
 	# make source and target walkable
 	for c in dest_coords:
-		if not path_nodes.has_key(c):
+		if not c in path_nodes:
 			path_nodes[c] = 0
 	
 	while len(to_check) is not 0: # is there an isEmpty-function?
@@ -138,15 +146,14 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 		y = cur_node_coords[1]
 				
 		if diagonal:
-			neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) if path_nodes.has_key((xx,yy)) and not checked.has_key((xx,yy)) and (xx,yy) != (x,y) and (xx,yy) not in blocked_coords ]
+			neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) if (xx,yy) in path_nodes and not (xx,yy) in checked and (xx,yy) != (x,y) and (xx,yy) not in blocked_coords ]
 		else: 
-			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if path_nodes.has_key(i) and not checked.has_key(i) and i not in blocked_coords ]
+			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if i in path_nodes and not i in checked and i not in blocked_coords ]
 			
 		for neighbor_node in neighbors:
-			
 			#print 'NEW NODE', neighbor_node
 			
-			if not to_check.has_key(neighbor_node):
+			if not neighbor_node in to_check:
 				to_check[neighbor_node] = [cur_node_coords, cur_node_data[1]+path_nodes[cur_node_coords], destination.distance(neighbor_node) ]
 				to_check[neighbor_node].append(to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
 				#print 'NEW',neighbor_node, ':', to_check[neighbor_node]

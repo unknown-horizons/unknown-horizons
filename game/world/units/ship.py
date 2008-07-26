@@ -54,7 +54,7 @@ class Ship(Unit):
 		game.main.session.world.ship_map[self.unit_position] = self
 
 	def check_for_blocking_units(self, position):
-		if game.main.session.world.ship_map.has_key(position):
+		if position in game.main.session.world.ship_map:
 			return False
 		else:
 			return True
