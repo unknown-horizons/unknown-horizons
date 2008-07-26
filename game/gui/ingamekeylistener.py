@@ -57,18 +57,19 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 			game.main.session.cursor = TearingTool()
 		elif keystr == 'd':
 			game.main.session.cursor.debug = True
-		elif keystr in ('0','1','2','3','4','5','6','7','8','9'):
+		elif keyval in (fife.Key.NUM_0,fife.Key.NUM_1,fife.Key.NUM_2,fife.Key.NUM_3,fife.Key.NUM_4,fife.Key.NUM_5,fife.Key.NUM_6,fife.Key.NUM_7,fife.Key.NUM_8,fife.Key.NUM_9):
+			num = int(keyval - fife.Key.NUM_0)
 			if evt.isControlPressed():
-				game.main.session.selection_groups[int(keystr)] = game.main.session.selected_instances.copy()
+				game.main.session.selection_groups[num] = game.main.session.selected_instances.copy()
 				for group in game.main.session.selection_groups:
-					if group is not game.main.session.selection_groups[int(keystr)]:
-						group -= game.main.session.selection_groups[int(keystr)]
+					if group is not game.main.session.selection_groups[num]:
+						group -= game.main.session.selection_groups[num]
 			else:
-				for instance in game.main.session.selected_instances - game.main.session.selection_groups[int(keystr)]:
+				for instance in game.main.session.selected_instances - game.main.session.selection_groups[num]:
 					instance.deselect()
-				for instance in game.main.session.selection_groups[int(keystr)] - game.main.session.selected_instances:
+				for instance in game.main.session.selection_groups[num] - game.main.session.selected_instances:
 					instance.select()
-				game.main.session.selected_instances = game.main.session.selection_groups[int(keystr)]
+				game.main.session.selected_instances = game.main.session.selection_groups[num]
 		else:
 			return
 		evt.consume()

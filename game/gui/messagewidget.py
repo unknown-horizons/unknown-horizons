@@ -68,8 +68,8 @@ class MessageWidget(object):
 				w = self.widget.findChild(name=str(i))
 				w.up_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
 				w.hover_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
-				w.capture(lambda : None)
-				w.setEnterCallback(lambda button: None)
+				w.capture(None)
+				w.setEnterCallback(None)
 
 	def forward(self):
 		"""Sets the widget to the next icon."""

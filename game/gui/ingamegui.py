@@ -146,29 +146,29 @@ class IngameGui(livingObject):
 
 	def end(self):
 		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : lambda : None
+			'gameMenuButton' : None
 		})
 
 		self.gui['ship'].mapEvents({
-			'foundSettelment' : lambda : None
+			'foundSettelment' : None
 		})
 
 		self.gui['minimap'].mapEvents({
-			'zoomIn' : lambda : None,
-			'zoomOut' : lambda : None,
-			'rotateRight' : lambda : None,
-			'rotateLeft' : lambda : None
+			'zoomIn' : None,
+			'zoomOut' : None,
+			'rotateRight' : None,
+			'rotateLeft' : None
 		})
 
 		self.gui['minimap_toggle'].mapEvents({
-			'minimapToggle' : lambda : None
+			'minimapToggle' : None
 		})
 
 		self.gui['camTools'].mapEvents({
-			'zoomIn' : lambda : None,
-			'zoomOut' : lambda : None,
-			'rotateRight' : lambda : None,
-			'rotateLeft' : lambda : None
+			'zoomIn' : None,
+			'zoomOut' : None,
+			'rotateRight' : None,
+			'rotateLeft' : None
 		})
 		for w in self.gui.values():
 			if w._parent is None:
