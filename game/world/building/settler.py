@@ -19,24 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from building import Building, Selectable
 from game.world.production import SecondaryProducer
+from game.gui.tabwidget import TabWidget
 import game.main
+from buildable import BuildableSingle
 
-class Settler(SecondaryProducer):
+class Settler(Building, Selectable, SecondaryProducer, BuildableSingle):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
-	def __init__(self, x, y, owner, instance = None):
-		SecondaryProducer.__init__(self, x, y, owner, instance)
+	def __init__(self, x, y, owner, instance = None, **kwargs):
+		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.inhabitants = 1 # TODE: read initial value from the db
 		self.max_inhabitants = 4 # TODO: read from db!
 
 		# run self.tick every second tick (NOTE: this should be discussed)
-		game.main.session.scheduler.add_new_object(self.tick, self, 2, -1)
+		#game.main.session.scheduler.add_new_object(self.tick, self, 2, -1)
 
 	def tick(self):
 		"""Called by the ticker, to produce gold/inhabitants.
 		"""
 		# check if production is disabled and check if building is in storage mode or is a storage
-		if self.active_production_line == -1 or self.production[self.active_production_line]['time'] == 0:
+		if self.active_production_line == None or self.production[self.active_production_line]['time'] == 0:
 			return
 
 		self._current_production += 1

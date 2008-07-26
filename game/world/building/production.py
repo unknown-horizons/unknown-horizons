@@ -22,9 +22,9 @@
 from building import Building, Selectable
 from game.world.production import SecondaryProducer
 from game.world.units.carriage import BuildingCarriage, AnimalCarriage
+from buildable import BuildableSingleWithSurrounding
 from game.gui.tabwidget import TabWidget
 import game.main
-from buildable import BuildableSingle, BuildableSingleWithSurrounding
 
 class AnimalFarm(Building, Selectable, SecondaryProducer, BuildableSingleWithSurrounding):
 	_surroundingBuildingClass = 18
