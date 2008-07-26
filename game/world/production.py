@@ -36,7 +36,7 @@ class PrimaryProducer(Provider):
 		self.production = {}
 
 		# Init production lines
-		for id in game.main.db("SELECT rowid FROM production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
+		for (id,) in game.main.db("SELECT rowid FROM production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
 		self.active_production_line = None if len(self.production) == 0 else min(self.production.keys())
@@ -83,8 +83,9 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 
 class ProductionLine(object):
 	def __init__(self, id):
+		print type(id), id
 		self.id = id
-		self.time = game.main.db("SELECT time FROM production_line WHERE rowid = ?", self.id).pop().pop()
+		self.time = game.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
 		self.production = {}
-		for res, amount in game.main.db("SELECT resource, amount FROM production WHERE production_line = ?);", self.id):
+		for res, amount in game.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
 			self.production[res] = amount

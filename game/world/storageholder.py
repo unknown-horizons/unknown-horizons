@@ -20,6 +20,7 @@
 # ###################################################
 
 from game.world.storage import Storage
+import game.main
 
 class StorageHolder(object):
 	def __init__(self, **kwargs):
