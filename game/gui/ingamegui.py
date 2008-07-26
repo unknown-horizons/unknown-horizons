@@ -264,7 +264,7 @@ class IngameGui(livingObject):
 		for instance in game.main.session.selected_instances:
 			instance.deselect()
 		self.hide_menu()
-		game.main.session.selected_instances = []
+		game.main.session.selected_instances = set()
 
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.

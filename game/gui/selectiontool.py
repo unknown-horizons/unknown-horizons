@@ -77,12 +77,10 @@ class SelectionTool(NavigationTool):
 				selectable = set(self.select_old | frozenset(selectable))
 			else:
 				selectable = set(self.select_old ^ frozenset(selectable))
-			for instance in game.main.session.selected_instances:
-				if instance not in selectable:
-					instance.deselect()
-			for instance in selectable:
-				if instance not in game.main.session.selected_instances:
-					instance.select()
+			for instance in game.main.session.selected_instances - selectable:
+				instance.deselect()
+			for instance in selectable - game.main.session.selected_instances:
+				instance.select()
 			game.main.session.selected_instances = selectable
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
@@ -129,19 +127,18 @@ class SelectionTool(NavigationTool):
 				selectable = selectable[0:0]
 			self.select_old = frozenset(game.main.session.selected_instances) if evt.isControlPressed() else frozenset()
 			selectable = set(self.select_old ^ frozenset(selectable))
-			for instance in game.main.session.selected_instances:
-				if instance not in selectable:
-					instance.deselect()
-			for instance in selectable:
-				if instance not in game.main.session.selected_instances:
-					instance.select()
+			for instance in game.main.session.selected_instances - selectable:
+				instance.deselect()
+			for instance in selectable - game.main.session.selected_instances:
+				instance.select()
 			game.main.session.selected_instances = selectable
 			self.select_begin = (evt.getX(), evt.getY())
 			game.main.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			if len(game.main.session.selected_instances) == 1 and hasattr(game.main.session.selected_instances[0], 'act'):
+			if len(game.main.session.selected_instances) == 1 and any(hasattr(i, 'act') for i in game.main.session.selected_instances):
 				target_mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-				game.main.session.manager.execute(Act(game.main.session.selected_instances[0], target_mapcoord.x, target_mapcoord.y))
+				for i in game.main.session.selected_instances:
+					game.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
 		else:
 			super(SelectionTool, self).mousePressed(evt)
 			return

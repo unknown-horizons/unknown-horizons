@@ -104,7 +104,7 @@ class BuildingTool(NavigationTool):
 		if self.ship is None:
 			game.main.session.ingame_gui.show_menu('build')
 		else:
-			game.main.session.selected_instances = [self.ship]
+			game.main.session.selected_instances = set([self.ship])
 			self.ship.select()
 			self.ship.show_menu()
 		game.main.session.cursor = SelectionTool()

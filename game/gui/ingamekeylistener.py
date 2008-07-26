@@ -64,12 +64,10 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 					if group is not game.main.session.selection_groups[int(keystr)]:
 						group -= game.main.session.selection_groups[int(keystr)]
 			else:
-				for instance in game.main.session.selected_instances:
-					if instance not in game.main.session.selection_groups[int(keystr)]:
-						instance.deselect()
-				for instance in game.main.session.selection_groups[int(keystr)]:
-					if instance not in game.main.session.selected_instances:
-						instance.select()
+				for instance in game.main.session.selected_instances - game.main.session.selection_groups[int(keystr)]:
+					instance.deselect()
+				for instance in game.main.session.selection_groups[int(keystr)] - game.main.session.selected_instances:
+					instance.select()
 				game.main.session.selected_instances = game.main.session.selection_groups[int(keystr)]
 		else:
 			return

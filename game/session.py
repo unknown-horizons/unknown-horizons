@@ -66,7 +66,7 @@ class Session(livingObject):
 		self.keylistener = IngameKeyListener()
 		self.cursor = SelectionTool()
 
-		self.selected_instances = []
+		self.selected_instances = set()
 		self.selection_groups = [set(),set(),set(),set(),set(),set(),set(),set(),set(),set()]
 
 	def end(self):
