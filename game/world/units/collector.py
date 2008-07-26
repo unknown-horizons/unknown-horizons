@@ -20,7 +20,7 @@
 # ###################################################
 
 from game.world.units.unit import Unit
-from game.world.storage import ArbitraryStorage
+from game.world.storageholder import StorageHolder
 from game.util import Rect, Point
 from game.world.pathfinding import Movement
 import game.main
@@ -28,7 +28,7 @@ import operator
 import weakref
 
 
-class BuildingCollector(Unit):
+class BuildingCollector(StorageHolder, Unit):
 	movement = Movement.CARRIAGE_MOVEMENT
 	"""
 	How does this class work ?
@@ -40,10 +40,9 @@ class BuildingCollector(Unit):
 
 	"""
 
-	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True):
-		super(BuildingCollector, self).__init__(home_building.x, home_building.y)
+	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
+		super(BuildingCollector, self).__init__(x = home_building.x, y = home_building.y, home_building = home_building, slots = slots, size = size, start_hidden=start_hidden, **kwargs)
 		print 'carriage beeing inited'
-		self.inventory = ArbitraryStorage(slots, size)
 
 		def remove_actionlistener(ref):
 			import pdb

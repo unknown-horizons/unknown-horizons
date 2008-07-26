@@ -95,12 +95,12 @@ class Ship(Unit):
 			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"));
 
 	def set_name(self):
-		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
+		self.name = str(game.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	def set_name(self):
-		self.name = str(game.main.db("SELECT name FROM shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0])
+		self.name = str(game.main.db("SELECT name FROM data.shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0])
 
 	def show_menu(self):
 		pass

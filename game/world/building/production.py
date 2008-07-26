@@ -33,7 +33,7 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 	def create_carriage(self):
 		self.animals = []
-		animals = game.main.db("SELECT animal, count from animals where building = ?", self.id)
+		animals = game.main.db("SELECT animal, count from data.animals where building = ?", self.id)
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))

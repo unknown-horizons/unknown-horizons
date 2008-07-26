@@ -37,7 +37,7 @@ class PrimaryProducer(Provider):
 
 		# Init production lines
 		print self.id, 'id'
-		for (id,) in game.main.db("SELECT rowid FROM production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
+		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
 		self.active_production_line = None if len(self.production) == 0 else min(self.production.keys())

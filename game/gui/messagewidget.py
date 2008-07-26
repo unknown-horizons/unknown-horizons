@@ -131,6 +131,6 @@ class Message(object):
 		self.id = id
 		self.read = False
 		self.created = created
-		self.display = int(game.main.db('SELECT visible_for from message WHERE rowid=?', id).rows[0][0])
-		self.image = str(game.main.db('SELECT file from message_icon WHERE color=? AND icon_id=?', 1, id).rows[0][0])
-		self.message = Template(str(game.main.db('SELECT text from message WHERE rowid=?', id).rows[0][0])).safe_substitute(message_dict if message_dict is not None else {})
+		self.display = int(game.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
+		self.image = str(game.main.db('SELECT file from data.message_icon WHERE color=? AND icon_id=?', 1, id).rows[0][0])
+		self.message = Template(str(game.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0])).safe_substitute(message_dict if message_dict is not None else {})

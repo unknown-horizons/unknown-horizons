@@ -29,13 +29,13 @@ class Settlement(WorldObject):
 		"""
 		@param owner: player that owns the settlement
 		"""
-		self.name = str(game.main.db("SELECT name FROM citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
+		self.name = str(game.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0])
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = [] # List of all the buildings belonging to the settlement
 		self.inventory = Storage()
 		self.inventory.addChangeListener(self._changed)
-		resources = game.main.db("SELECT rowid FROM resource")
+		resources = game.main.db("SELECT rowid FROM data.resource")
 		for (res,) in resources:
 			self.inventory.addSlot(res, 30)
 		self.inventory.alter_inventory(6, 20)
