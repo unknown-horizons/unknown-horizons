@@ -35,8 +35,8 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	grazingTime = 2
 	movement = Movement.CARRIAGE_MOVEMENT
 
-	def __init__(self, home_building, start_hidden=True):
-		super(Animal, self).__init__(x=home_building.x, y=home_building.y)
+	def __init__(self, home_building, start_hidden=True, **kwargs):
+		super(Animal, self).__init__(x=home_building.x, y=home_building.y, home_building = home_building, start_hidden = start_hidden, **kwargs)
 		self.__home_building = home_building
 		self.home_building = home_building
 		self.start_hidden = start_hidden

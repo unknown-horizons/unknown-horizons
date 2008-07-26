@@ -142,7 +142,7 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
 			assert(remnant == 0)
-			remnant = (self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 			assert(remnant == 0)
 		if self.start_hidden:
 			self.hide()
