@@ -52,9 +52,9 @@ class Unit(WorldObject):
 		self._instance.act(self.action, self._instance.getLocation(), True)
 		self._instance.addActionListener(self.InstanceActionListener)
 		
-		self.time_move_straight = game.main.db("SELECT time_move_straight FROM data.unit WHERE rowid = ?;", self.id)[0]
+		self.time_move_straight = game.main.db("SELECT time_move_straight FROM data.unit WHERE rowid = ?", self.id)[0]
 		self.acceleration = {}
-		res = game.main.db("SELECT step, velocity_rate from data.unit_acceleration WHERE unit = ?;", self.id)
+		res = game.main.db("SELECT step, velocity_rate from data.unit_acceleration WHERE unit = ?", self.id)
 		for (step, velocity_rate) in res:
 			self.acceleration[step] = velocity_rate
 
