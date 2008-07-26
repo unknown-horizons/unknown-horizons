@@ -78,7 +78,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	#t0 = time.time()
 	
 	# assurce correct call
-	assert(isinstance(source, (Rect, Point, Building))
+	assert(isinstance(source, (Rect, Point, Building)))
 	assert(isinstance(destination, (Rect, Point, Building)))
 	assert(isinstance(path_nodes, (dict, list)))
 	assert(isinstance(blocked_coords, list))
@@ -125,7 +125,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 		if not c in path_nodes:
 			path_nodes[c] = 0
 	
-	while len(to_check) is not 0: # is there an isEmpty-function?
+	while to_check:
 		
 		min = 99999
 		cur_node_coords = None
