@@ -26,10 +26,6 @@ import game.main
 from game.util import WeakList
 
 class PrimaryProducer(Provider):
-	check_production_interval = 2
-	# run self.tick every second tick (NOTE: this should be discussed)
-	# running every tick currently requires all production times to be
-	# a multiple of 2
 	"""Class used for production buildings"""
 	def __init__(self, **kwargs):
 		"""
@@ -39,56 +35,44 @@ class PrimaryProducer(Provider):
 		self.production = {}
 
 		# Init production lines
-		result = game.main.db("SELECT rowid FROM production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
-		for id in result:
+		for id in game.main.db("SELECT rowid FROM production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
+		self.active_production_line = None if len(self.production) == 0 else min(self.production.keys())
 
-		if len(self.production) == 0:
-			self.active_production_line = -1
-		else:
-			self.active_production_line = min(self.production.keys())
+		self.__used_resources = {}
 
-		self._current_production = 0
+		#game.main.session.scheduler.add_new_object(self.tick, self, self.__class__.check_production_interval, -1)
+		if self.active_production_line is not None:
+			self.addChangeListener(self.check_production_startable)
 
-		game.main.session.scheduler.add_new_object(self.tick, self, self.__class__.check_production_interval, -1)
-
-	def tick(self):
-		"""Called by the ticker, to produce goods.
-		"""
-		# check if production is disabled
-		if self.active_production_line == -1:
-			return
-
-		# check if building is in storage mode or is a storage
-		if self.production[self.active_production_line].time == 0:
-			return
-
-		self._current_production += self.__class__.check_production_interval
-		if self._current_production % self.production[self.active_production_line].time == 0:
-			# time to produce res
-			for res in self.production[self.active_production_line].production.items():
-				# res[0]: resource; res[1]: amount
-				
-				# check for needed resources
-				if res[1] < 0:
-					if self.inventory.get_value(res[0]) + res[1] < 0:
-						# missing res res[0]
-						#print 'PROD', self.id,'missing', res[0]
-						return
-
-				# check for storage capacity
+	def check_production_startable(self):
+		usable_resources = {}
+		for res, amount in self.production[self.active_production_line].production.items():
+			#we have something to work with, if the res is needed, we have something in the inv and we dont already have used everything we need from that resource
+			if amount < 0 and self.inventory.get_value(res) > 0 and self.__used_resources.get(res, 0) < -amount:
+				usable_resources[res] = -amount - self.__used_resources.get(res, 0)
+		if len(usable_resources) > 0:
+			self.removeChangeListener(self.check_production_startable)
+			time = int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / sum(self.production[self.active_production_line].production.values())))
+			for res, amount in usable_resources:
+				if res in self.__used_resources:
+					self.__used_resources[res] += amount
 				else:
-					if self.inventory.get_value(res[0]) == self.inventory.get_size(res[0]):
-						# no space for res[0]
-						#print 'PROD', self.id,'no space for', res[0]
-						return
+					self.__used_resources[res] = amount
+			for res, amount in usable_resources.items():
+				if amount < 0:
+					self.inventory.alter_inventory(res, amount)
+			game.main.session.scheduler.add_new_object(self.production_step, self, int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / sum(self.production[self.active_production_line].production.values()))) - time, -1)
 
-			# everything ok, actual production:
-			for res in self.production[self.active_production_line].production.items():
-				print self.id, "PRODUCE" 'res', res[0], 'amount', res[1]
-				self.inventory.alter_inventory(res[0], res[1])
-				print self.id, "PRODUCE : inventory = ", self.inventory
+	def production_step(self):
+		if sum(self.__used_resources.values()) < sum(self.production[self.active_production_line].production.values()):
+			for res, amount in self.production[self.active_production_line].production.items():
+				if amount > 0:
+					self.inventory.alter_inventory(res, amount)
+			self.__used_resources = {}
+		self.addChangeListener(self.check_production_startable)
+		self.check_production_startable()
 
 class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""
@@ -99,6 +83,7 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 class ProductionLine(object):
 	def __init__(self, id):
 		self.id = id
-		self.time = game.main.db("SELECT time FROM production_line WHERE rowid == ?", self.id)
-		self.active = False
-		self.production = game.main.db("SELECT resource, amount FROM production WHERE production_line = ?);", self.id)
+		self.time = game.main.db("SELECT time FROM production_line WHERE rowid = ?", self.id).pop().pop()
+		self.production = {}
+		for res, amount in game.main.db("SELECT resource, amount FROM production WHERE production_line = ?);", self.id):
+			self.production[res] = amount
