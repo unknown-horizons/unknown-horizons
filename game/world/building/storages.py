@@ -23,27 +23,21 @@ from building import Building, Selectable
 from buildable import BuildableSingle
 from game.world.consumer import Consumer
 from game.world.provider import Provider
-from game.world.storage import Storage
-from game.world.units.carriage import BuildingCarriage
 from game.gui.tabwidget import TabWidget
 import game.main
 
-class StorageBuilding(Building, Selectable, BuildableSingle, Provider, Consumer):
+class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
 	"""Building that gets pickups and provides them for anyone
 	Inherited eg. by branch office, storage tent
 	"""
 	def __init__(self, x, y, owner, instance = None, **kwargs):
+		print self.__class__.__mro__
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
-		self.local_carriages = []
 		self.inventory = self.settlement.inventory
 		self.inventory.addChangeListener(self._changed)
-		#self.inventory  = Storage()
-
-		# add extra carriage
-		# self.create_carriage()
 
 	def create_carriage(self):
-		self.local_carriages.append(game.main.session.entities.units[8](self))
+		self._Consumer__local_carriages.append(game.main.session.entities.units[8](self))
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

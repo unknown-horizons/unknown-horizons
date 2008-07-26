@@ -42,6 +42,7 @@ class BuildingCollector(Unit):
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True):
 		super(BuildingCollector, self).__init__(home_building.x, home_building.y)
+		print 'carriage beeing inited'
 		self.inventory = ArbitraryStorage(slots, size)
 
 		def remove_actionlistener(ref):
@@ -81,9 +82,9 @@ class BuildingCollector(Unit):
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
 					# get sum of picked up resources for res
-					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collectors if carriage.job.res == res ])
+					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
 					# check how much will be delivered
-					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__registered_collectors if carriage.job.res == res ])
+					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__collectors if carriage.job.res == res ])
 					# check if there are resources left to pickup
 					max_consumer_res_free = self.home_building().inventory.get_size(res)-(total_registered_amount_consumer+self.home_building().inventory.get_value(res))
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
@@ -123,7 +124,7 @@ class BuildingCollector(Unit):
 		# transfer res
 		self.transfer_res()
 		# deregister at the target we're at
-		self.job.object._Producer__registered_collectors.remove(self)
+		self.job.object._Provider__collectors.remove(self)
 		# reverse the path
 		self.job.path.reverse()
 		# move back to home
@@ -146,7 +147,7 @@ class BuildingCollector(Unit):
 			assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
 		if self.start_hidden:
 			self.hide()
-		self.home_building()._Consumer__registered_collectors.remove(self)
+		self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
 
 

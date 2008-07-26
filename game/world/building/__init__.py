@@ -32,10 +32,11 @@ class BuildingClass(type):
 		__import__('game.world.building.'+str(class_package))
 		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[str(class_package)], str(class_name)),), {})
 
-	def __init__(self, id):
+	def __init__(self, id, **kwargs):
 		"""
 		@param id: building id.
 		"""
+		super(BuildingClass, self).__init__(**kwargs)
 		self.id = id
 		self._object = None
 		(size_x,  size_y) = game.main.db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]

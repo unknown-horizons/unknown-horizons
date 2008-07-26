@@ -26,7 +26,7 @@ from buildable import BuildableSingleWithSurrounding
 from game.gui.tabwidget import TabWidget
 import game.main
 
-class AnimalFarm(Building, Selectable, SecondaryProducer, BuildableSingleWithSurrounding):
+class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
@@ -40,6 +40,6 @@ class AnimalFarm(Building, Selectable, SecondaryProducer, BuildableSingleWithSur
 
 		self.local_carriages.append(game.main.session.entities.units[7](self))
 
-class Lumberjack(Building, Selectable, SecondaryProducer, BuildableSingleWithSurrounding):
+class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""

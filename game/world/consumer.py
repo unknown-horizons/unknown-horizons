@@ -34,6 +34,7 @@ class Consumer(StorageHolder):
 		"""
 		super(Consumer, self).__init__(**kwargs)
 		self.__resources = {}
+		self.__local_carriages = []
 
 		for (production_line,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.__resources[production_line] = []
@@ -42,6 +43,10 @@ class Consumer(StorageHolder):
 
 		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
 
+		from game.world.building.building import Building
+		if isinstance(self, Building):
+			self.radius_coords = self.building_position.get_radius_coordinates(self.radius)
+
 		self.__collectors = WeakList()
 
 		self.create_carriage()
@@ -49,7 +54,7 @@ class Consumer(StorageHolder):
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
 		"""
-		self.local_carriages.append(game.main.session.entities.units[2](self))
+		self.__local_carriages.append(game.main.session.entities.units[2](self))
 
 	def get_needed_res(self):
 		"""Returns list of resources, where free space in the inventory exists,
