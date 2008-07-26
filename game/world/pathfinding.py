@@ -154,6 +154,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 			#print 'NEW NODE', neighbor_node
 			
 			if not neighbor_node in to_check:
+				# save previous, calc distance to neighbor_node and from neighbor_node to destination
 				to_check[neighbor_node] = [cur_node_coords, cur_node_data[1]+path_nodes[cur_node_coords], destination.distance(neighbor_node) ]
 				to_check[neighbor_node].append(to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
 				#print 'NEW',neighbor_node, ':', to_check[neighbor_node]

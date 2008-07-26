@@ -141,8 +141,10 @@ class BuildingCollector(Unit):
 		print self.id, 'FINISHED WORK'
 
 		if self.home_building() is not None:
-			assert(self.home_building().inventory.alter_inventory(self.job.res, self.job.amount) == 0)
-			assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+			remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
+			assert(remnant == 0)
+			remnant = (self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+			assert(remnant == 0)
 		if self.start_hidden:
 			self.hide()
 		self.home_building()._Consumer__collectors.remove(self)
@@ -212,8 +214,10 @@ class AnimalCollector(BuildingCollector):
 			you can use this as event as after work
 		"""
 		print self.id, 'FINISHED WORK'
-		assert(self.home_building().inventory.alter_inventory(self.job.res, self.job.amount) == 0)
-		assert(self.inventory.alter_inventory(self.job.res, -self.job.amount) == 0)
+		remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
+		assert(remnant == 0)
+		remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
+		assert(remnant == 0)
 		if self.start_hidden:
 			self.hide()
 		self.home_building()._Consumer__registered_collectors.remove(self)

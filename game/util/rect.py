@@ -44,9 +44,9 @@ class Rect(object):
 		#development assert:
 		elif __debug__:
 			if len(args) > 0 and isinstance(args[0], Rect):
-				assert False, "TRIED TO INIT RECT WITH RECT"
+				assert False, "Tried to init rect with rect"
 			else:
-				assert False, 'INVALID RECT INITIALISATION'+str(args)
+				assert False, 'Invalid rect initialisation'+str(args)
 
 	def distance(self, other):
 		if isinstance(other, Point):
