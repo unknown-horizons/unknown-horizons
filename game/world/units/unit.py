@@ -39,11 +39,21 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self.unit_position = self.last_unit_position
 		self.move_target = self.last_unit_position
 		self.next_target = self.last_unit_position
+		# use for changing path while moving:
+		self.new_target = None
+		self.new_callback = None
+		
 		self._instance = game.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'default'
 		self._instance.act(self.action, self._instance.getLocation(), True)
 		self._instance.addActionListener(self)
+		
+		self.time_move_straight = game.main.db("SELECT time_move_straight FROM unit WHERE rowid = ?;", self.id)[0]
+		self.acceleration = {}
+		res = game.main.db("SELECT step, velocity_rate from unit_acceleration WHERE unit = ?;", self.id)
+		for (step, velocity_rate) in res:
+			self.acceleration[step] = velocity_rate
 
 		self.move_callback = None
 
@@ -52,13 +62,15 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 		self.health = 60.0
 		self.max_health = 100.0
+		
+		self.is_moving = False
 
 	def __del__(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def start(self):
 		pass
-
+	
 	def onInstanceActionFinished(self, instance, action):
 		"""
 		@param instance: fife.Instance
@@ -68,9 +80,13 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x + self.unit_position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
 		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
+		
+	def is_unit_moving(self):
+		"""Returns wether unit is moving"""
+		return self.is_moving
 
 	def check_move(self, destination):
-		""" Tries to find a path to destination
+		"""Tries to find a path to destination
 		@param destination: Point or Rect. if it's a Point that's in a building, the building is used as destination.
 		"""
 		diagonal = False
@@ -112,21 +128,19 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		@param path: path to take. defaults to self.path
 		If you just want to move a unit without checks, use move()
 		"""
-
-		# cancel current move
-
-		## TODO: replace this quick and really hard-core dirty fix (dusmania..)
-		game.main.session.scheduler.rem_call(self, self.move_tick)
-
-		self.cur_path = None
-		self.next_target = None
-		self.move_target = None
+		
+		if self.is_unit_moving():
+			self.new_target = Point(path[-1])
+			self.new_callback = callback
+			return
+		
+		self.is_moving = True
 
 		# setup move
 		self.path = path
 		self.move_callback = WeakMethod(callback)
 
-		print 'MOVING FROM', path[0], 'TO', path[ len(path)-1 ]
+		print 'MOVING FROM', path[0], 'TO', path[-1]
 
 		self.cur_path = iter(self.path)
 		self.next_target = self.cur_path.next()
@@ -134,7 +148,7 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self.next_target = Point(self.next_target)
 
 		# enqueue first move (move_tick takes care of the rest)
-		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
+		game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
 
 	def move(self, destination, callback = None):
 		""" Moves unit to destination
@@ -150,9 +164,9 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		self.do_move(path, callback)
 
 		# move_target is deprecated, will be removed soon
-		self.move_target = Point(path[ len(path)-1 ])
+		self.move_target = Point(path[-1])
 
-		print self.id, 'MOVING TO', path[ len(path)-1 ]
+		print self.id, 'MOVING TO', path[-1]
 
 		return True
 
@@ -175,7 +189,6 @@ class Unit(WorldObject, fife.InstanceActionListener):
 
 			#setup movement
 			location = fife.Location(self._instance.getLocation().getLayer())
-			print self.next_target
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
 			self._instance.move(self.action, location, 4.0/3.0)
 			#setup next timer (12 ticks for horizontal or vertical move, 12*sqrt(2)==17 ticks for diagonal move)
@@ -184,9 +197,10 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			self.movement_finished()
 
 	def movement_finished(self):
-		#print [callback for callback in [object for object in game.main.session.scheduler.schedule] if game.main.session.scheduler.schedule[callback].class_instance == self ]
-
 		print self.id, 'MOVEMENT FINISHED'
+		
+		self.is_moving = False
+		
 		self.path = None
 		self.cur_path = None
 		self.next_target = self.unit_position
@@ -194,32 +208,37 @@ class Unit(WorldObject, fife.InstanceActionListener):
 		# deprecated:
 		self.move_target = self.unit_position
 
-		#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 		if self.move_callback is not None:
-			#print 'EXECUTING CALLBACK FOR', self, ':', self.move_callback
 			self.move_callback()
-			#print '</CALLBACK>'
 
 	def move_tick(self):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		#sync unit_position
 		self.last_unit_position = self.unit_position
-
-		# check if next_target is blocked by a unit
-		if not self.check_for_blocking_units(self.next_target):
-			new_path = self.check_move(self.path[ len(self.path) - 1] )
-			if new_path is None:
-				# if there's no possible path now, wait a second and retry
-				game.main.session.scheduler.add_new_object(self.move_tick, self, game.main.session.timer.ticks_per_seond)
-				return
-			self.do_move(new_path, self.move_callback)
-			return
-
+		
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
 		self._instance.setLocation(location)
+
+		if self.new_target != None:
+			import time
+			self.is_moving = False
+			self.move(self.new_target, self.new_callback)
+			self.new_target = None
+			return
+
+		# check if next_target is blocked by a unit
+		## TODO: the location of this code might should be changed
+		if not self.check_for_blocking_units(self.next_target):
+			new_path = self.check_move(self.path[-1] )
+			if new_path is None:
+				# if there's no path now, just stop moving
+				## TODO: if unit, that blocks us, belongs to our player, tell it to move
+				return
+			self.do_move(new_path, self.move_callback)
+			return
 
 		if self.unit_position != self.move_target:
 			if self.__class__.movement == Movement.CARRIAGE_MOVEMENT or \
@@ -253,12 +272,45 @@ class Unit(WorldObject, fife.InstanceActionListener):
 			return
 
 		#setup movement
+		
+		# WORK IN PROGRESS
+		#time_move_straight = self.get_unit_speed()
+		
+		# just until other bug is fixed
+		time_move_straight = 12.0
+		
+		#print time_move_straight
+		
+		## IDEA:
+		## add speed value to ground as float from 0.1 to 1.0 in db (ground or ground_class, ask spq)
+		## add them to the class, not the instance (for speed & memory usage)
+		## maybe create function in world get_speed_on(self, x, y) or query it here
+		## multiply it to speed
+		
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
-		self._instance.move(self.action, location, 4.0/3.0)
+		self._instance.move(self.action, location, 16.0 / time_move_straight)
+		# coords pro sec
+		
 		#setup next timer
-		game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
+		# diagonal_move = straight_move * sqrt(2)
+		ticks = int(time_move_straight) if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else int(time_move_straight*1.414)
+		#print ticks
 
+		game.main.session.scheduler.add_new_object(self.move_tick, self, ticks)
+		
+	def get_unit_speed(self):
+		"""Returns number of ticks that it takes to do a vertical/horizontal movement
+		@return: float 
+		"""
+		if len(self.acceleration) > 0:
+			len_path = len(path) 
+			pos_in_path = path.index(self.unit_position)
+			accelerations = [ accel  for step, accel in self.acceleration.items() if step == pos_in_path or step == pos_in_path - len_path ]
+			if len(accelerations) > 0:
+				return self.time_move_straight * max(accelerations)
+		return self.time_move_straight
+		
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit
 		@param position: instance of Point

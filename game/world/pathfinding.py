@@ -174,7 +174,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 				# maybe always append here and call list.reverse afterwards (depends on speed test results)
 				path.insert(0, previous_node)
 				previous_node = checked[previous_node][0]
-			
+				
 			#t1 = time.time()
 			#print 'PATH FINDING TIME', t1-t0
 			print 'PATH FROM',source,'TO', destination,':', path
