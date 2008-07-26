@@ -64,7 +64,7 @@ class PrimaryProducer(Provider):
 		else:
 			time = 0
 		self.removeChangeListener(self.check_production_startable)
-		for res, amount in usable_resources:
+		for res, amount in usable_resources.items():
 			if res in self.__used_resources:
 				self.__used_resources[res] += amount
 			else:

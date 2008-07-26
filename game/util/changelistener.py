@@ -39,6 +39,7 @@ class Changelistener(object):
 		self.__listeners.remove(WeakMethod(listener))
 
 	def _changed(self):
+		print self.getId(), "changed"
 		if not hasattr(self, '_Changelistener__listeners'):
 			self.__listeners = []
 		for listener in self.__listeners:
