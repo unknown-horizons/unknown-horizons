@@ -61,12 +61,6 @@ def start():
 
 	showMain()
 
-	
-	# place for unittests
-
-	#import game.world.pathfinding
-	#game.world.pathfinding.test_pathfinding()
-
 	fife.run()
 
 def onEscape():

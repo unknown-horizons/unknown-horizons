@@ -57,12 +57,10 @@ def check_path(path):
 			
 		prev = cur
 	
-
-	import sys
-	sys.stdout.flush()
 	if err:
-		print 'STOPPING BECAUSE OF ERRORS'
-		sys.exit()
+		assert False, 'Encountered errors when testing pathfinding'
+		
+	return True
 	
 def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = False):
 	""" Finds best path from source to destination via a*-algo
@@ -202,19 +200,3 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 			#	print 'PATH NODES', path_nodes
 		#sys.stdout = real_stdout
 		return None
-
-def test_pathfinding():
-	# basic tests
-	import time
-	
-	p = findPath(Point(1,1), Rect(2,2,2,2), [(1,2)])
-	assert(p == [(1, 1), (1, 2), (2, 2)])
-	
-	p = findPath(Point(1,1), Rect(2,2,2,2), [(1,2)], diagonal = True)
-	assert(p == [(1, 1), (2, 2)])
-	
-	p = findPath(Point(1,1), Rect(3,3,3,3), [(1,2),(2,2),(2,1),(2,3)])
-	assert(p ==  [(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)])
-	
-	p = findPath(Point(1,1), Rect(3,3,5,5), [(1,2),(2,2),(2,1),(2,3)])
-	assert(p ==  [(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)])
