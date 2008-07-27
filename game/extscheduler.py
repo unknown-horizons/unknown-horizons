@@ -88,4 +88,3 @@ class CallbackObject(object):
 		self.class_instance = class_instance
 		self.runin = runin
 		self.loops = loops
-

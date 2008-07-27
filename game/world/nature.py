@@ -26,9 +26,9 @@ class Growable(object):
 	""" Base class for everything that grows
 	Growing means, that the object changes it's apperance
 	after a certain amount of time
-	
+
 	Subclasses have to provide self.db_actions
-	
+
 	IDEA: maybe store reference to production building,
 	      if such exists, here
 	"""
@@ -45,14 +45,14 @@ class Growable(object):
 			self.actions.append(a)
 		self.actions.sort()
 		self.restart_animation()
-		
+
 	# FIXME: This ugly hack removes the cyclic reference of most Growables
 	# FIXME: Please fix this fucked up class in the first place
 	def remove(self):
 		del self.growing_producer.restart_animation
 		del self.growing_producer
 		super(Growable, self).remove()
-		
+
 	# parts of the following code is to difficult to comment
 	# but it works, trust me ;-)
 	def next_animation(self):
@@ -80,7 +80,7 @@ class Growable(object):
 			#print 'INTER', interval
 			# loop_until = floor ( num_actions-1 / production_storage_size ) * max(1, cur_production_amount)
 			# -1 because the fun already did the work in the head of this fun
-			
+
 			self.loop_until = int(math.floor(((len(self.actions)-1) / self.growing_info[2]) * max(1, self.growing_info[1])))
 			loops = self.loop_until - iter_pos
 			#print 'UNTIL', self.loop_until
@@ -88,10 +88,10 @@ class Growable(object):
 			#print 'LOOPS', loops
 			if loops > 0:
 				game.main.session.scheduler.add_new_object(self.next_animation, self, interval, loops)
-		
+
 	def restart_animation(self):
 		""" Starts animation from the beginning
-		
+
 		Useful if e.g. a tree is cut down
 		"""
 		#print 'RESTARTING ANI, id',self.id,self

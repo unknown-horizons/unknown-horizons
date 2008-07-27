@@ -33,7 +33,7 @@ class _CopyDocFromParentClass(type):
     metaclass that copy, for a given class,
     all the docstring from their parents if there are not set
     """
-    
+
     def __init__(cls, name, bases, dict):
         for name, method in dict.iteritems():
             try:
@@ -78,7 +78,7 @@ class WeakList(list):
     # So even if the class look undocumented, it is ! (use pydoc)
     __metaclass__ = _CopyDocFromParentClass
 
-    
+
     ## Basic custom
 
     def __init__(self, items=None):
@@ -109,22 +109,22 @@ class WeakList(list):
         When an object from the list is destroy,  this
         method is call to remove it from list
         """
-        
+
         list.remove(self, ref)
 
 
     ## list method
-  
+
     def extend(self, iterable):
-        iterable = self.__iter_over_weakref(list(iterable))    
+        iterable = self.__iter_over_weakref(list(iterable))
         list.extend(self, iterable)
-        
+
     def append(self, object):
         list.append(self, weakref.ref(object, self.__remove_ref))
-        
+
     def remove(self, object):
         list.remove(self, weakref.ref(object))
-    
+
     def count(self, value):
         return list.count(self, weakref.ref(value))
 
@@ -133,7 +133,7 @@ class WeakList(list):
 
     def pop(self, index=-1):
         return list.pop(self,index)()
-    
+
     def sort(self, cmp=None,  key=None,  reverse=False):
         sortable = list(self)
         sortable.sort(cmp,key,reverse)
@@ -162,7 +162,7 @@ class WeakList(list):
 
     def __getslice__(self,i,j):
         return WeakList(list(self)[i:j])
-  
+
     def __setslice__(self, i, j, iterable):
         list.__setslice__(self, i, j, self.__iter_over_weakref(iterable))
 
@@ -175,7 +175,7 @@ class WeakList(list):
     def __iadd__(self, other):
         self.extend(other)
         return self
-     
+
     def __add__(self, other):
         return self.__class__(list(self) + list(other))
 
@@ -203,7 +203,7 @@ class WeakList(list):
             other = list(other)
 
         return list.__gt__(list(self), other)
-    
+
     def __ne__(self, other):
         if isinstance(other,WeakList):
             other = list(other)
@@ -217,4 +217,3 @@ class WeakList(list):
         return list.__lt__(list(self), other)
 
 ### End of WeakList class
-

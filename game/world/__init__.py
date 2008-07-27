@@ -63,7 +63,7 @@ class World(object):
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "Done."
 		self.water = empty
-		
+
 		# create ship position list. entries: ship_map[ship.unit_position] = ship
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
@@ -73,7 +73,7 @@ class World(object):
 
 		# create shiplist
 		self.ships = []
-		
+
 	def create_dummy_ships(self):
 		self.ships.append(game.main.session.entities.units[1](15, 15))
 		self.ships.append(game.main.session.entities.units[1](29, 25))

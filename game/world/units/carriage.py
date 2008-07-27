@@ -31,7 +31,7 @@ class Carriage(Unit):
 	searchJobInterval = 2
 	movement = Movement.CARRIAGE_MOVEMENT
 	""" DEPRECATED """
-	
+
 	"""A BuildingCarriage that gets pickups for buildings
 	Can be subclassed for use in e.g. Animal
 	"""
@@ -347,4 +347,3 @@ class AnimalCarriage(BuildingCarriage):
 		for animal in self.carriage_attached_building.animals:
 			if animal.production == self.target[0]:
 				return animal
-

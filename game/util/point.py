@@ -51,11 +51,11 @@ class Point(object):
 		This is useful, because Rect supports this too.
 		"""
 		return [(self.x, self.y)]
-	
+
 	def __str__(self):
 		""" nice representation for debugging purposes """
 		return 'Point(%s, %s)' % (self.x, self.y)
-	
+
 	def __eq__(self, other):
 		if isinstance(other, Point):
 			return (self.x == other.x and self.y == other.y)

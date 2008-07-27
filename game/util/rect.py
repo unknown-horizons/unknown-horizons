@@ -40,7 +40,7 @@ class Rect(object):
 			self.left = min(args[0], args[2])
 			self.right = max(args[0], args[2])
 			self.bottom = max(args[1], args[3])
-			
+
 		#development assert:
 		elif __debug__:
 			if len(args) > 0 and isinstance(args[0], Rect):
@@ -61,11 +61,11 @@ class Rect(object):
 					return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
 			except TypeError:
 				return other.distance(self)
-			
+
 	def get_coordinates(self):
 		""" Returns all coordinates, that are in the Rect """
-		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ] 
-	
+		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
+
 	def get_radius_coordinates(self, radius):
 		""" Returns a list of all coordinates, that are in the radius but are in not the building"""
 		self_coords = self.get_coordinates()
@@ -73,11 +73,10 @@ class Rect(object):
 			      for y in xrange(self.top-radius, self.bottom+radius+1)
 						if (x,y) not in self_coords and \
 						self.distance( (x,y) ) <= radius ]
-				
+
 	def __str__(self):
 		# nice representation for debugging purposes
 		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)
-	
+
 	def __eq__(self, other):
 		return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
-			

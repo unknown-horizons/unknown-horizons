@@ -38,38 +38,35 @@ if __name__ == '__main__':
 	suite = unittest.TestSuite()
 
 	from tests import *
-	
-	
+
+
 	# add tests here:
 	suite.addTest(loader.loadTestsFromModule(pathfinding))
-	
-	
-	
+
+
+
 	suite.run(result)
-	
-	
+
+
 	print "\nRESULTS:\n"
-	
+
 	print result.testsRun, 'tests were run'
 	print 'All successful:', result.wasSuccessful()
-	
+
 	if not result.wasSuccessful():
-	
+
 		print
-			
+
 		print len(result.failures),'Failures:'
 		for (case, error) in result.failures:
 			print 'Case:', case
 			print error
 			print
-			
+
 		print
-		
+
 		print len(result.errors),'Errors:'
 		for (case, error) in result.errors:
 			print 'Case:', case
 			print error
 			print
-			
-			
-	

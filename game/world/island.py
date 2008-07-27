@@ -55,7 +55,7 @@ class Island(WorldObject):
 			self.grounds.append(ground)
 		game.main.db("detach island")
 		self.settlements = []
-		
+
 		self.path_nodes = {}
 
 	def save(self, db = 'savegame'):
@@ -168,10 +168,10 @@ class Island(WorldObject):
 		building.start()
 		#print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)
 		return building
-		
+
 	def remove_building(self, building):
 		assert (building.island == self)
-		
+
 		for x in xrange(building.x, building.x + building.__class__.size[0]):
 			for y in xrange(building.y, building.y + building.__class__.size[1]):
 				tile = self.get_tile(x,y)
@@ -182,7 +182,6 @@ class Island(WorldObject):
 
 	def registerPath(self, path):
 		self.path_nodes[ (path.x, path.y) ] = path.__class__.speed
-		
+
 	def unregisterPath(self, path):
 		del self.path_nodes[ (path.x, path.y) ]
-

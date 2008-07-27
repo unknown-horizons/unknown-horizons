@@ -65,18 +65,18 @@ class Scheduler(livingObject):
 		@param class_instance: class instance the function belongs to.
 		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
-		
+
 		callback_obj = CallbackObject(self, callback, class_instance, runin, loops)
 		self.add_object(callback_obj)
-		
+
 	def rem_object(self, callback_obj):
 		"""Removes a CallbackObject from all callback lists
 		@param callback_obj: CallbackObject to remove
 		"""
 		for key in self.schedule:
 			for i in xrange(0, self.schedule[key].count(callback_obj)):
-				self.schedule[key].remove(callback_obj)			
-		
+				self.schedule[key].remove(callback_obj)
+
 
 	#TODO: Check if this is still necessary for weak referenced objects
 	def rem_all_classinst_calls(self, class_instance):
@@ -113,26 +113,25 @@ class CallbackObject(object):
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
 		@param weakref_aciton: A callback to register with the weak reference
 		"""
-		
-		# Do some input validation, otherwise errors occure long after wrong data was added	
+
+		# Do some input validation, otherwise errors occure long after wrong data was added
 
 		if runin < 1:
 			raise ValueError("Can't schedule callbacks in the past, runin must be a positive number")
-			
+
 		if (loops < -1) or (loops is 0):
 			raise ValueError("Loop count must be a positive number or -1 for infinite repeat")
-		
+
 		self.callback = WeakMethod(callback)
-		
+
 		# Check for persisting strong references
 		if __debug__:
 			import gc
 			if (class_instance in gc.get_referents(self.callback)):
 				del self.callback
 				raise ValueError("callback has strong reference to class_instance")
-				
+
 		self.scheduler = scheduler
 		self.runin = runin
-		self.loops = loops	
+		self.loops = loops
 		self.class_instance = weakref.ref(class_instance, lambda ref: self.scheduler.rem_object(self))
-	

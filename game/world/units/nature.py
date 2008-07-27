@@ -22,11 +22,10 @@
 import game.main
 from game.world.nature import Growable
 
-	
+
 class GrowingUnit(Growable):
 	""" Class for units that grow, such as animals
 	"""
 	def __init__(self, production):
 		self.db_actions = game.main.db("SELECT action FROM data.action WHERE unit = ? AND action != \"default\"", self.id)
 		Growable.__init__(self, production)
-		

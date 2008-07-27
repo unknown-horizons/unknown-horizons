@@ -50,7 +50,7 @@ def start():
 
 	fife = Fife()
 	ext_scheduler = ExtScheduler(fife.pump)
-	
+
 	fife.init()
 
 	mainlistener = MainListener()

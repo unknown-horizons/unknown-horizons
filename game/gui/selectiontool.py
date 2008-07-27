@@ -97,7 +97,7 @@ class SelectionTool(NavigationTool):
 				for i in game.main.session.selected_instances:
 					if hasattr(i, 'show_menu'):
 						i.show_menu()
-					
+
 			del self.select_begin, self.select_old
 			game.main.session.view.renderer['GenericRenderer'].removeAll("select")
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):

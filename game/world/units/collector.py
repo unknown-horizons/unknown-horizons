@@ -254,5 +254,3 @@ class Job(object):
 
 		# this is rather a dummy
 		self.rating = amount
-
-

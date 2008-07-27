@@ -45,13 +45,13 @@ class Unit(WorldObject):
 		# use for changing path while moving:
 		self.new_target = None
 		self.new_callback = None
-		
+
 		self._instance = game.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'default'
 		self._instance.act(self.action, self._instance.getLocation(), True)
 		self._instance.addActionListener(self.InstanceActionListener)
-		
+
 		self.time_move_straight = game.main.db("SELECT time_move_straight FROM data.unit WHERE rowid = ?", self.id)[0]
 		self.acceleration = {}
 		res = game.main.db("SELECT step, velocity_rate from data.unit_acceleration WHERE unit = ?", self.id)
@@ -65,7 +65,7 @@ class Unit(WorldObject):
 
 		self.health = 60.0
 		self.max_health = 100.0
-		
+
 		self.is_moving = False
 
 	def __del__(self):
@@ -73,7 +73,7 @@ class Unit(WorldObject):
 
 	def start(self):
 		pass
-	
+
 	def onInstanceActionFinished(self, instance, action):
 		"""
 		@param instance: fife.Instance
@@ -83,7 +83,7 @@ class Unit(WorldObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x + self.unit_position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
 		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
-		
+
 	def is_unit_moving(self):
 		"""Returns wether unit is moving"""
 		return self.is_moving
@@ -131,12 +131,12 @@ class Unit(WorldObject):
 		@param path: path to take. defaults to self.path
 		If you just want to move a unit without checks, use move()
 		"""
-		
+
 		if self.is_unit_moving():
 			self.new_target = Point(path[-1])
 			self.new_callback = callback
 			return
-		
+
 		self.is_moving = True
 
 		# setup move
@@ -201,9 +201,9 @@ class Unit(WorldObject):
 
 	def movement_finished(self):
 		print self.id, 'MOVEMENT FINISHED'
-		
+
 		self.is_moving = False
-		
+
 		self.path = None
 		self.cur_path = None
 		self.next_target = self.unit_position
@@ -219,7 +219,7 @@ class Unit(WorldObject):
 		"""
 		#sync unit_position
 		self.last_unit_position = self.unit_position
-		
+
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
@@ -275,45 +275,45 @@ class Unit(WorldObject):
 			return
 
 		#setup movement
-		
+
 		# WORK IN PROGRESS
 		#time_move_straight = self.get_unit_speed()
-		
+
 		# just until other bug is fixed
 		time_move_straight = 12.0
-		
+
 		#print time_move_straight
-		
+
 		## IDEA:
 		## add speed value to ground as float from 0.1 to 1.0 in db (ground or ground_class, ask spq)
 		## add them to the class, not the instance (for speed & memory usage)
 		## maybe create function in world get_speed_on(self, x, y) or query it here
 		## multiply it to speed
-		
+
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
 		self._instance.move(self.action, location, 16.0 / time_move_straight)
 		# coords pro sec
-		
+
 		#setup next timer
 		# diagonal_move = straight_move * sqrt(2)
 		ticks = int(time_move_straight) if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else int(time_move_straight*1.414)
 		#print ticks
 
 		game.main.session.scheduler.add_new_object(self.move_tick, self, ticks)
-		
+
 	def get_unit_speed(self):
 		"""Returns number of ticks that it takes to do a vertical/horizontal movement
-		@return: float 
+		@return: float
 		"""
 		if len(self.acceleration) > 0:
-			len_path = len(path) 
+			len_path = len(path)
 			pos_in_path = path.index(self.unit_position)
 			accelerations = [ accel  for step, accel in self.acceleration.items() if step == pos_in_path or step == pos_in_path - len_path ]
 			if len(accelerations) > 0:
 				return self.time_move_straight * max(accelerations)
 		return self.time_move_straight
-		
+
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit
 		@param position: instance of Point
@@ -342,4 +342,3 @@ class Unit(WorldObject):
 	def show(self):
 		vis = self._instance.get2dGfxVisual()
 		vis.setVisible(True)
-

@@ -151,7 +151,7 @@ class BuildableLine(BuildableSingle):
 			else:
 				action = 'ac'
 			is_first = False
-			
+
 			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : action})

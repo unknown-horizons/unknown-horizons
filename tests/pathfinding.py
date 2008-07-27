@@ -27,7 +27,7 @@ from game.world.pathfinding import findPath
 from game.util import Point, Rect
 
 class TestPathfinding(unittest.TestCase):
-	
+
 	def testA(self):
 		p = findPath(Point(1,1), Rect(2,2,2,2), [(1,2)])
 		self.assertEqual(p, [(1, 1), (1, 2), (2, 2)])
@@ -35,11 +35,11 @@ class TestPathfinding(unittest.TestCase):
 	def testB(self):
 		p = findPath(Point(1,1), Rect(2,2,2,2), [(1,2)], diagonal = True)
 		self.assertEqual(p,[(1, 1), (2, 2)])
-		
+
 	def testC(self):
 		p = findPath(Point(1,1), Rect(3,3,3,3), [(1,2),(2,2),(2,1),(2,3)])
 		self.assertEqual(p, [(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)])
-		
+
 	def testD(self):
 		p = findPath(Point(1,1), Rect(3,3,5,5), [(1,2),(2,2),(2,1),(2,3)])
 		self.assertEqual(p, [(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)])
