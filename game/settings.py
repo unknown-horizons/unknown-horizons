@@ -42,6 +42,8 @@ class Setting(object):
 		for (option, value) in game.main.db("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%#_%' ESCAPE '#'", len(name) + 1, len(name), name, len(name) + 1):
 			if not self.__dict__.has_key(option):
 				self.__dict__[option] = simplejson.loads(value)
+				if isinstance(self.__dict__[option], unicode):
+					self.__dict__[option] = str(self.__dict__[option])
 
 	def __getattr__(self, name):
 		"""
