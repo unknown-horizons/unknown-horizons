@@ -28,6 +28,7 @@ class DbReader(object):
 	def __init__(self, file):
 		self.connection = sqlite3.connect(file)
 		self.connection.isolation_level = None
+		self.connection.text_factory = str
 		def regexp(expr, item):
 			"""
 			@param expr:
