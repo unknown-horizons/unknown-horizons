@@ -83,7 +83,7 @@ class MasterServerLobby(ServerLobby):
 			'server_slots' : 2, # 2 means 4 slots
 			'bots' : o['bots']
 		})
-		o['players'].append(game.main.connection.local_player);
+		o['players'].append(game.main.connection.local_player)
 
 	def update_gui(self):
 		o = game.main.connection.mpoptions

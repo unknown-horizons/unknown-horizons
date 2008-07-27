@@ -51,7 +51,7 @@ class Storage(WorldObject):
 		@return amount that couldn't be stored in this storage"""
 		new_amount = 0
 		try:
-			new_amount = self._inventory[res_id][0] + amount;
+			new_amount = self._inventory[res_id][0] + amount
 		except KeyError:
 			return amount
 		if new_amount > self.get_size(res_id) and self.get_size(res_id) != -1:

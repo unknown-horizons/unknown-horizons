@@ -271,7 +271,7 @@ def startSingle():
 		session.generateMap()
 	else:
 		session.loadMap(map_file)
-	session.world.setupPlayer(playername, playercolor);
+	session.world.setupPlayer(playername, playercolor)
 
 def showMulti():
 	global gui, onEscape, showMain, connection
@@ -406,7 +406,7 @@ def showJoinServer():
 	if server_id == -1: # no server selected
 		showPopup('Error','You have to select a server')
 		return
-	server = gui.serverList[server_id];
+	server = gui.serverList[server_id]
 	gui.serverList.end()
 	gui.hide()
 

@@ -45,7 +45,7 @@ def check_path(path):
 		try:
 			cur = i.next()
 		except StopIteration: 
-			break;
+			break
 		
 		dist = Point(cur[0], cur[1]).distance(Point(prev[0], prev[1]))
 		
