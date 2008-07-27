@@ -44,11 +44,6 @@ class BuildingCollector(StorageHolder, Unit):
 		super(BuildingCollector, self).__init__(x = home_building.x, y = home_building.y, home_building = home_building, slots = slots, size = size, start_hidden=start_hidden, **kwargs)
 		print 'carriage beeing inited'
 
-		def remove_actionlistener(ref):
-			import pdb
-			pdb.Pdb().set_trace()
-			self._instance.removeActionListener(self)
-
 		self.home_building = weakref.ref(home_building)
 
 		self.start_hidden = start_hidden

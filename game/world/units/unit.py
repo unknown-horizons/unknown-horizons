@@ -34,7 +34,7 @@ class Unit(WorldObject):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
-		self.InstanceActionListener.onInstanceActionFinished = self.onInstanceActionFinished
+		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
 		if self._object is None:
 			self.__class__._loadObject()
 		self.object_type = 1
