@@ -165,7 +165,7 @@ def _init(engine):
 		visual = object.get2dGfxVisual()
 
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
-			img = engine.getImagePool().addResourceFromFile(relpath(os.getcwd(), os.path.abspath(os.path.dirname(__file__) + '/../' + str(file))))
+			img = engine.getImagePool().addResourceFromFile(relpath(os.getcwd(), os.path.abspath(os.path.dirname(__file__) + '/../' + file)))
 			visual.addStaticImage(int(rotation), img)
 			img = engine.getImagePool().getImage(img)
 			img.setXShift(0)

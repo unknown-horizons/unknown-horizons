@@ -42,7 +42,7 @@ class Growable(object):
 		self.actions = []
 		self.db_actions = game.main.db("SELECT action FROM data.action WHERE %(type)s = ? AND action != 'default'" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
 		for (a,) in self.db_actions:
-			self.actions.append(str(a))
+			self.actions.append(a)
 		self.actions.sort()
 		self.restart_animation()
 		

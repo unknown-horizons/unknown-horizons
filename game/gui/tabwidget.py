@@ -56,7 +56,7 @@ class TabWidget(object):
 	def load_tab(self, id):
 		"""Loads a tab.
 		@var id: int for the self.tabs list to get the tab."""
-		tab1 = self.widget.findChild(name=(str(id)))
+		tab1 = self.widget.findChild(name=str(id))
 		contentarea = self.widget.findChild(name='content')
 		contentarea.removeChild(self.tabs[self.widget.active].widget)
 		self.tabs[id].update(self.object)
@@ -86,9 +86,9 @@ class Tab(object):
 		self.name = name
 		self.widget = game.main.fife.pychan.loadXML(xml)
 		self.widget.stylize('menu')
-		self.up_image = str(button_up_image)
-		self.down_image = str(button_down_image)
-		self.hover_image = str(button_hover_image)
+		self.up_image = button_up_image
+		self.down_image = button_down_image
+		self.hover_image = button_hover_image
 
 	def update(self, instance):
 		"""Updates all labels on the widget with text taken from instances var.

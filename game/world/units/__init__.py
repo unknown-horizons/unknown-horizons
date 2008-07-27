@@ -29,8 +29,8 @@ class UnitClass(type):
 		"""
 		@param id: unit id
 		"""
-		(class_package,  class_name) = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
-		__import__('game.world.units.'+str(class_package))
+		class_package,  class_name = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
+		__import__('game.world.units.'+class_package)
 		return type.__new__(self, 'Unit[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
 
 	def __init__(self, id):
@@ -39,7 +39,7 @@ class UnitClass(type):
 		"""
 		self.id = id
 		self._object = None
-		for (name,  value) in game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)):
+		for name, value in game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)):
 			setattr(self, name, value)
 		self._loadObject()
 
@@ -52,9 +52,9 @@ class UnitClass(type):
 		cls._object.setBlocking(False)
 		cls._object.setStatic(False)
 		for (action_id,) in game.main.db("SELECT action FROM data.action where unit=? group by action", cls.id):
-			action = cls._object.createAction(str(action_id))
+			action = cls._object.createAction(action_id)
 			fife.ActionVisual.create(action)
 			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where unit=? and action=?", cls.id, action_id):
-				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:center+0,bottom+8')
+				anim_id = game.main.fife.animationpool.addResourceFromFile(animation_id + ':shift:center+0,bottom+8')
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())

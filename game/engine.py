@@ -50,7 +50,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
 		for file,frame_end in game.main.db("SELECT file, frame_end from data.animation where animation_id = ?", id):
-			img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromFile(str(file)))
+			img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromFile(file))
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -194,7 +194,7 @@ class Fife(object):
 		elif setting == 'fife_screen_bpp':
 			self.settings.setBitsPerPixel(1 if value else 0)
 		elif setting == 'fife_renderer_backend':
-			self.settings.setRenderBackend(str(value))
+			self.settings.setRenderBackend(value)
 		elif setting == 'fife_renderer_SDLRemoveFakeAlpha':
 			self.settings.setSDLRemoveFakeAlpha(value)
 		elif setting == 'fife_renderer_imageChunkingSize':

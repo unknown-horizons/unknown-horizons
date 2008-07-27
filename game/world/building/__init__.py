@@ -28,9 +28,9 @@ class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.
 	@param id: int - building id in the database."""
 	def __new__(self, id):
-		(class_package,  class_name) = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
-		__import__('game.world.building.'+str(class_package))
-		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[str(class_package)], str(class_name)),), {})
+		class_package, class_name = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
+		__import__('game.world.building.'+class_package)
+		return type.__new__(self, 'Building[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
 
 	def __init__(self, id, **kwargs):
 		"""
@@ -59,7 +59,7 @@ class BuildingClass(type):
 		print 'Loading building #' + str(cls.id) + '...'
 		cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
 		for (action_id,) in game.main.db("SELECT action FROM data.action where building=? group by action", cls.id):
-			action = cls._object.createAction(str(action_id))
+			action = cls._object.createAction(action_id)
 			fife.ActionVisual.create(action)
 			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where building=? and action=?", cls.id, action_id):
 				if rotation == 45:
@@ -72,7 +72,7 @@ class BuildingClass(type):
 					command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
 				else:
 					command = 'left-16,bottom+8'
-				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
+				anim_id = game.main.fife.animationpool.addResourceFromFile(animation_id + ':shift:' + command)
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
 

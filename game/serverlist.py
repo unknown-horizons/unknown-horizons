@@ -56,7 +56,7 @@ class Server(object):
 		"""
 		info = ['timeout' if self.ping is None else 'ping: ' + str(self.ping) + 'ms']
 		if self.map is not None:
-			info.append('map: ' + str(self.map))
+			info.append('map: ' + self.map)
 		if self.players is not None or self.maxplayers is not None or self.bots is not None:
 			info.append('players: ' + str(self.players) + '+' + str(self.bots) + '/' + str(self.maxplayers))
 		return str(self.address) + ':' + str(self.port) + ' (' + ', '.join(info) + ')'
