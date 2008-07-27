@@ -72,7 +72,7 @@ class BuildingClass(type):
 					command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
 				else:
 					command = 'left-16,bottom+8'
-				anim_id = game.main.fife.animationpool.addResourceFromFile(animation_id + ':shift:' + command)
+				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
 

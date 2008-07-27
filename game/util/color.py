@@ -40,7 +40,7 @@ class ColorMeta(type):
 	def __getitem__(cls, key):
 		if key == 0:
 			return None
-		r,g,b = game.main.db('SELECT red,green,blue from data.colors where %s = ?' % ('name' if isinstance(key, (str, unicode)) else 'rowid',), key)[0]
+		r,g,b = game.main.db('SELECT red,green,blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
 		c = Color(r, g, b)
 		return c
 
