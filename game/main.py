@@ -82,7 +82,12 @@ def showSettings():
 	"""Shows the settings.
 	"""
 	global fife, settings, onEscape
-	resolutions = ["1024x768", "1280x1024", "1440x900", "1680x1050"];
+	resolutions = [str(w) + "x" + str(h) for w, h in fife.settings.getPossibleResolutions() if w >= 1024 and h >= 768]
+	if len(resolutions) == 0:
+		old = fife.settings.isFullScreen()
+		fife.settings.setFullScreen(1)
+		resolutions = [str(w) + "x" + str(h) for w, h in fife.settings.getPossibleResolutions() if w >= 1024 and h >= 768]
+		fife.settings.setFullScreen(1 if old else 0)
 	try:
 		resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 	except:
