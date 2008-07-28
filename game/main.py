@@ -439,6 +439,8 @@ def showPause():
 	eventMap = {
 		'startGame'    : returnGame,
 		'closeButton'  : quitSession,
+		'savegameButton' : saveGame,
+		'loadgameButton' : loadGame
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
@@ -462,6 +464,16 @@ def quitSession():
 		session.end()
 		session = None
 		showMain()
+		
+def saveGame():
+	import game
+	# FIXME: Implement save dialog
+	game.main.session.save()
+	
+def loadGame():
+	# FIXME: Implement loading dialog
+	raise NotImplementedError("Loading not implemented")
+	
 
 def onHelp():
 	"""

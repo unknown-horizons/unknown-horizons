@@ -13,4 +13,14 @@
 	<VBox position="420,565"><Label name="quit" text=" Cancel Game "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,469"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="closeButton" position="484,477" border_size="0"/>
+	
+	<VBox position="225,305"><Label name="savegame" text=" Save Game "/></VBox>
+	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="savegameButton" position="329,321" />
+	
+	<VBox position="740,365"><Label name="loadgame" text=" Load Game "/></VBox>
+	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="629,315"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="loadgameButton" position="637,323"/>
+	
+	
 </Container>
