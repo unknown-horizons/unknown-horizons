@@ -21,6 +21,7 @@
 
 from game.util.stablelist import stablelist
 from game.util import WorldObject
+import game.main
 
 class Storage(WorldObject):
 	"""Class that represent a storage compartment with fixed resources slots

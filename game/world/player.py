@@ -21,6 +21,7 @@
 
 from game.world.storage import Storage
 from game.util import WorldObject
+import game.main
 
 class Player(WorldObject):
 	"""Class representing a player"""
