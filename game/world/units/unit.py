@@ -342,3 +342,6 @@ class Unit(WorldObject):
 	def show(self):
 		vis = self._instance.get2dGfxVisual()
 		vis.setVisible(True)
+	
+	def save(self, db):
+		pass

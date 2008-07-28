@@ -43,4 +43,4 @@ class Player(WorldObject):
 		"""
 		@param db: db that the player is saved to.
 		"""
-		game.main.db(("INSERT INTO %s.player (rowid, name) VALUES (?, ?, ?)" % db), self.id, self.name)
+		game.main.db("INSERT INTO %(db)s.player (rowid, name) VALUES (?, ?)" % {'db' : db}, self.getId(), self.name)

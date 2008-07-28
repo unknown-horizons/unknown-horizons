@@ -63,7 +63,7 @@ class World(object):
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "Done."
 		self.water = empty
-
+		
 		# create ship position list. entries: ship_map[ship.unit_position] = ship
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
@@ -109,11 +109,29 @@ class World(object):
 	def save(self, db = 'savegame'):
 		"""Saves the current game to the specified db.
 		@param db: string representing the db that the game is to be saved to."""
-		for player in self.players:
-			player.save(db)
+		for name, value in self.properties.items():
+			game.main.db("insert into %(db)s.map_properties (name, value) values (?, ?)" % {'db' : db}, name, value)
 		for island in self.islands:
 			island.save(db)
+		for player in self.players:
+			player.save(db)
 		for ship in self.ships:
 			ship.save(db)
-		for building in self.buildings:
-			building.save(db)
+
+"""	@classmethod
+	def load(cls, db):
+		"x"x"Loads a saved game from db"x"x"
+
+		#create a new instance of the class without calling the constructor
+		self = cls.__new__(cls)
+		#work with self...
+		
+		self.properties = {}
+		for name, value in game.main.db("SELECT name, value from %(db)s.map_properties" % {'db' : db}):
+			self.properties[name] = value
+
+		# generate ship_map
+		for ship in self.ships:
+			self.ship_map[ship.unit_position] = self
+
+		return self"""

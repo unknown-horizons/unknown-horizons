@@ -62,7 +62,11 @@ class Island(WorldObject):
 		"""
 		@param db: db that the island is saved to.
 		"""
-		id = game.main.db(("INSERT INTO %s.island (x, y, file) VALUES (?, ?, ?)" % db), self.x, self.y, self.file).id
+		game.main.db("INSERT INTO %(db)s.island (x, y, file) VALUES (?, ?, ?)" % {'db' : db}, self.x, self.y, self.file)
+		for settlement in self.settlements:
+			settlement.save(db)
+		for building in self.buildings:
+			building.save(db)
 
 	def get_tile(self, x, y):
 		"""Returns whether a tile is on island or not.
