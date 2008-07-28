@@ -62,6 +62,9 @@ class Building(WorldObject):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
+		
+	def save(self, db):
+		game.main.db("INSERT INTO %(db)s.building (rowid, x, y, size_x, size_y, owner, object_type) VALUES (?,?,?,?,?,?,?)"%{'db':db}, self.getId(), self.x, self.y, self.size[0], self.size[1], self.owner.getId(), self.object_type)
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings

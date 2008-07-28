@@ -29,7 +29,7 @@ class Player(WorldObject):
 		"""
 		@param id: unique player id
 		@param name: user-chosen name
-		@param color: color of player (as fife.Color)
+		@param color: color of player (as Color)
 		"""
 		self.id = id
 		self.name = name
@@ -43,4 +43,7 @@ class Player(WorldObject):
 		"""
 		@param db: db that the player is saved to.
 		"""
-		game.main.db("INSERT INTO %(db)s.player (rowid, name) VALUES (?, ?)" % {'db' : db}, self.getId(), self.name)
+		game.main.db("INSERT INTO %(db)s.player (rowid, name, inventory) VALUES (?, ?)" % {'db' : db}, self.getId(), self.name, self.inventory.getId())
+		self.inventory.save(db)
+		# TODO: 
+		# color

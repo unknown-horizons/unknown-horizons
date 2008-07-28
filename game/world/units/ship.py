@@ -96,9 +96,11 @@ class Ship(Unit):
 
 	def set_name(self):
 		self.name = game.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
+		
 	def save(self, db):
 		super(Ship, self).save(db)
-		game.main.db("INSERT INTO %(db)s.ship ...")
+		game.main.db("INSERT INTO %(db)s.ship (rowid, name, storage) VALUES(?, ?) " % {'db':db}, self.getId(), self.name, self.inventory.getId())
+		self.inventory.save(db)
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

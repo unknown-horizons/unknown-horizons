@@ -30,7 +30,6 @@ class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
 
 	def __init__(self, x, y, **kwargs):
-		print self.__class__.__mro__
 		super(Unit, self).__init__(x=x, y=y, **kwargs)
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
@@ -169,8 +168,6 @@ class Unit(WorldObject):
 		# move_target is deprecated, will be removed soon
 		self.move_target = Point(path[-1])
 
-		print self.id, 'MOVING TO', path[-1]
-
 		return True
 
 	def move_directly(self, destination):
@@ -268,7 +265,6 @@ class Unit(WorldObject):
 					self.next_target = (self.next_target.x, self.unit_position.y - 1)
 
 				self.next_target = Point(self.next_target)
-			#print self.id, 'MOVE_TICK TO', self.next_target
 
 		else:
 			self.movement_finished()
@@ -278,17 +274,7 @@ class Unit(WorldObject):
 
 		# WORK IN PROGRESS
 		#time_move_straight = self.get_unit_speed()
-
-		# just until other bug is fixed
 		time_move_straight = 12.0
-
-		#print time_move_straight
-
-		## IDEA:
-		## add speed value to ground as float from 0.1 to 1.0 in db (ground or ground_class, ask spq)
-		## add them to the class, not the instance (for speed & memory usage)
-		## maybe create function in world get_speed_on(self, x, y) or query it here
-		## multiply it to speed
 
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
@@ -298,7 +284,6 @@ class Unit(WorldObject):
 		#setup next timer
 		# diagonal_move = straight_move * sqrt(2)
 		ticks = int(time_move_straight) if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else int(time_move_straight*1.414)
-		#print ticks
 
 		game.main.session.scheduler.add_new_object(self.move_tick, self, ticks)
 
@@ -344,4 +329,13 @@ class Unit(WorldObject):
 		vis.setVisible(True)
 	
 	def save(self, db):
-		pass
+		super(Unit, self).save(db)
+		game.main.db("INSERT INTO %(db)s.unit (rowid, object_type, unit_position_x, unit_position_y, health) VALUES(?, ?, ?  " % {'db':db}, self.getId(), self.object_type, self.unit_position.x, self.unit_position.y, self.health)
+		# max_health was skipped because i guess it will be read from somewhere
+		
+		# TODO (not necessarily necessary):
+		# - actionlistener
+		# - self._object
+		# - self._instance
+		
+		# movement-code will be moved, don't save it here!
