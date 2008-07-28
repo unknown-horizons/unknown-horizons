@@ -23,6 +23,8 @@ import game.main
 
 import math
 import fife
+import shutil
+import os.path
 from game.gui.selectiontool import SelectionTool
 from game.world.building import building
 from game.world.units.ship import Ship
@@ -92,6 +94,21 @@ class Session(livingObject):
 
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
+
+	def save(self, file = "content/save/quicksave.sqlite"):
+		if not os.path.exists(file):
+			shutil.copyfile('content/savegame_template.sqlite', file)
+		try:
+			game.main.db("attach ? as savegame", file)
+			try:
+				game.main.db("begin")
+				self.world.save("savegame")
+				#self.manager.save("savegame")
+				#self.view.save("savegame")
+			finally:
+				game.main.db("commit")
+		finally:
+			game.main.db("detach savegame")
 
 	def generateMap(self):
 		"""Generates a map."""
