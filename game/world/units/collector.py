@@ -50,6 +50,17 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 		self.search_job()
+		
+	def save(self, db):
+		super(BuildingCollector, self).save(db)
+		game.main.db("INSERT INTO %(db)s.buildingcollector (rowid, start_hidden, home_building, job) VALUES (?, ?)" % {'db':db}, self.getId(), self.start_hidden, self.home_building.getId(), 0)
+		if self.job is not None:
+			game.main.db("UPDATE %(db)s.buildingcollector SET job = ?, job_object = ?, job_res = ?, job_amount = ? WHERE rowid = %(rowid)d" % {'db':db, 'rowid':self.getId()}, 1, self.job.object.getId(), self.job.res, self.job.amount)
+		
+		# TODO:
+		# home_building (weakref)
+		# state of current job
+		# job.path
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -127,7 +138,6 @@ class BuildingCollector(StorageHolder, Unit):
 		# before the new job can begin this will be executed
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
-
 	def reached_home(self):
 		""" we finished now our complete work. Let's do it again in 32 ticks
 			you can use this as event as after work
@@ -144,7 +154,6 @@ class BuildingCollector(StorageHolder, Unit):
 		self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
 
-
 	def transfer_res(self):
 		print self.id, 'TRANSFER PICKUP'
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
@@ -152,7 +161,6 @@ class BuildingCollector(StorageHolder, Unit):
 		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
 		assert(res_amount == self.job.amount)
 		self.inventory.alter_inventory(self.job.res, res_amount)
-
 
 	def get_collectable_res(self):
 		"""Gets all resources the Collector can collect"""

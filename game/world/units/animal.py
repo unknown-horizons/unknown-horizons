@@ -41,12 +41,15 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		self.home_building = home_building
 		self.start_hidden = start_hidden
 		print self.id, "Sheep has a storage :" , self.inventory._inventory
-		#BuildingCollector.__init__(self, home_building)
 		if self.start_hidden:
 			self.hide()
 
 		self.home_building = weakref.ref(home_building)
 		self.search_job()
+		
+	def save(self, db):
+		super(Animal, self).save(db)
+		# NOTE: home_building and start_hidden are also set in BuildingCollector
 
 	def begin_current_job(self):
 		"""Executes the current job"""

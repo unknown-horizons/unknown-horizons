@@ -32,3 +32,10 @@ class StorageHolder(object):
 			print res, size
 			if not self.inventory.hasSlot(res):
 				self.inventory.addSlot(res, size)
+				
+	def save(self, db):
+		super(StorageHolder, self).save(db)
+		game.main.db("INSERT INTO %(db)s.storageholder (inventory) VALUES(?)" % {'db':db}, self.inventory.getId())
+		self.inventory.save()
+		# TODO:
+		# some kind of id 
