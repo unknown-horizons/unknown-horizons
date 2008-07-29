@@ -30,7 +30,8 @@ class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
 
 	def __init__(self, x, y, **kwargs):
-		super(Unit, self).__init__(x=x, y=y, **kwargs)
+		print "---------------------------------unit...----------------"
+		super(Unit, self).__init__(**kwargs)
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
@@ -88,7 +89,7 @@ class Unit(WorldObject):
 		@param destination_in_building: bool, wether unit should enter building
 		"""
 		return self.path.calc_path(destination, check_only = True)
-		
+
 
 	"""
 	def do_move(self, path, callback = None):
@@ -113,7 +114,7 @@ class Unit(WorldObject):
 		# enqueue first move (move_tick takes care of the rest)
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
 	"""
-	
+
 	def is_moving(self):
 		"""Returns wether unit is currently moving"""
 		return self.__is_moving
@@ -124,25 +125,25 @@ class Unit(WorldObject):
 		@param callback: function that gets called when the unit arrives
 		@return: True if move is possible, else False
 		"""
-		
+
 		move_possible = self.path.calc_path(destination, destination_in_building)
 
 		if not move_possible:
 			return False
-		
+
 		print 'NEW DEST', destination
 		self.move_callback = None if callback is None else WeakMethod(callback)
 
 		# move_target is deprecated, will be removed soon
 		#self.move_target = Point(path[-1])
-		
+
 		if not self.is_moving():
 			game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
-		
+
 		self.__is_moving = True
-		
+
 		return True
-	
+
 	def move_back(self, callback = None, destination_in_building = False):
 		self.path.revert_path(destination_in_building)
 		self.move_callback = callback
@@ -180,9 +181,9 @@ class Unit(WorldObject):
 
 		# deprecated:
 		self.move_target = self.unit_position
-		
+
 		self.next_target = self.unit_position
-		
+
 		self.__is_moving = False
 
 		if self.move_callback is not None:
@@ -199,16 +200,16 @@ class Unit(WorldObject):
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
 		self._instance.setLocation(location)
-		
+
 		try:
 			self.next_target = self.path.get_next_step()
 		except PathBlockedError:
 			return
-		
+
 		if self.next_target is None:
 			self.movement_finished()
 			return
-		
+
 		"""
 			if self.__class__.movement == Movement.SOLDIER_MOVEMENT:
 				# this is deprecated, just like move_directly
@@ -283,15 +284,15 @@ class Unit(WorldObject):
 	def show(self):
 		vis = self._instance.get2dGfxVisual()
 		vis.setVisible(True)
-	
+
 	def save(self, db):
 		super(Unit, self).save(db)
 		game.main.db("INSERT INTO %(db)s.unit (rowid, object_type, unit_position_x, unit_position_y, health) VALUES(?, ?, ?  " % {'db':db}, self.getId(), self.object_type, self.unit_position.x, self.unit_position.y, self.health)
 		# max_health was skipped because i guess it will be read from somewhere
-		
+
 		# TODO (not necessarily necessary):
 		# - actionlistener
 		# - self._object
 		# - self._instance
-		
+
 		# movement-code will be moved, don't save it here!

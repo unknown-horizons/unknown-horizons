@@ -46,7 +46,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 		self.home_building = weakref.ref(home_building)
 		self.search_job()
-		
+
 	def save(self, db):
 		super(Animal, self).save(db)
 		# NOTE: home_building and start_hidden are also set in BuildingCollector

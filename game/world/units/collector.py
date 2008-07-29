@@ -41,7 +41,8 @@ class BuildingCollector(StorageHolder, Unit):
 	"""
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
-		super(BuildingCollector, self).__init__(x = home_building.x, y = home_building.y, home_building = home_building, slots = slots, size = size, start_hidden=start_hidden, **kwargs)
+		print self.__class__.__mro__
+		super(BuildingCollector, self).__init__(x = home_building.x, y = home_building.y, slots = slots, size = size, **kwargs)
 		print 'carriage beeing inited'
 
 		self.home_building = weakref.ref(home_building)
@@ -50,13 +51,13 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 		self.search_job()
-		
+
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
 		game.main.db("INSERT INTO %(db)s.buildingcollector (rowid, start_hidden, home_building, job) VALUES (?, ?)" % {'db':db}, self.getId(), self.start_hidden, self.home_building.getId(), 0)
 		if self.job is not None:
 			game.main.db("UPDATE %(db)s.buildingcollector SET job = ?, job_object = ?, job_res = ?, job_amount = ? WHERE rowid = %(rowid)d" % {'db':db, 'rowid':self.getId()}, 1, self.job.object.getId(), self.job.res, self.job.amount)
-		
+
 		# TODO:
 		# home_building (weakref)
 		# state of current job
