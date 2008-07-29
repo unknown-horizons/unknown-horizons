@@ -21,7 +21,6 @@
 
 from building import Building, Selectable
 from game.world.production import SecondaryProducer
-from game.world.units.carriage import BuildingCarriage, AnimalCarriage
 from buildable import BuildableSingleWithSurrounding
 from game.gui.tabwidget import TabWidget
 import game.main
