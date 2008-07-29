@@ -76,7 +76,7 @@ class PrimaryProducer(Provider):
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
 		self._instance.act("working", self._instance.getFacingLocation(), True)
-		print self.getId(), "begin working!!!"
+		print self.getId(), "begin working"
 
 	def production_step(self):
 		print self.getId(), "production_step"

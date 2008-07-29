@@ -155,7 +155,7 @@ def getMaps(showSaved = False):
 	""" Gets available maps both for displaying and loading.
 
 	@param showSaved: Bool wether saved games are to be shown.
-	@return Tuple of two lists; first: files with path; second: files for displaying
+	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
 	if showSaved:
 		files = ([f for p in ('content/save','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])

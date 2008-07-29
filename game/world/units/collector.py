@@ -111,9 +111,7 @@ class BuildingCollector(StorageHolder, Unit):
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
-		if self.start_hidden:
-			self.show()
-		self.do_move(self.job.path, self.begin_working)
+		self.move(Point(self.job.object.x, self.job.object.y), self.begin_working)
 
 	def begin_working(self):
 		""""""
@@ -128,10 +126,8 @@ class BuildingCollector(StorageHolder, Unit):
 		self.transfer_res()
 		# deregister at the target we're at
 		self.job.object._Provider__collectors.remove(self)
-		# reverse the path
-		self.job.path.reverse()
 		# move back to home
-		self.do_move(self.job.path, self.reached_home)
+		self.move_back(self.reached_home, destination_in_building = True)
 
 	def end_job(self):
 		# he finished the job now
@@ -149,8 +145,6 @@ class BuildingCollector(StorageHolder, Unit):
 			assert(remnant == 0)
 			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 			assert(remnant == 0)
-		if self.start_hidden:
-			self.hide()
 		self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
 
@@ -193,9 +187,7 @@ class AnimalCollector(BuildingCollector):
 		self.home_building()._Consumer__registered_collectors.append(self)
 		# removes the animal from the scheduler. It does not move anymore
 		self.stop_animal()
-		if self.start_hidden:
-			self.show()
-		self.do_move(self.job.path, self.begin_working)
+		self.move(Point(self.job.object.x, self.job.object.y), self.begin_working)
 
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'
@@ -204,12 +196,10 @@ class AnimalCollector(BuildingCollector):
 		self.transfer_res()
 		# deregister at the target we're at
 		self.job.object._Producer__registered_collectors.remove(self)
-		# reverse the path
-		self.job.path.reverse()
 		# send the animal to home
 		self.get_animal()
 		# move back to home
-		self.do_move(self.job.path, self.reached_home)
+		self.move_back(self.reached_home)
 
 	def reached_home(self):
 		""" we finished now our complete work. Let's do it again in 32 ticks
@@ -220,8 +210,6 @@ class AnimalCollector(BuildingCollector):
 		assert(remnant == 0)
 		remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 		assert(remnant == 0)
-		if self.start_hidden:
-			self.hide()
 		self.home_building()._Consumer__registered_collectors.remove(self)
 		self.release_animal()
 		self.end_job()
@@ -246,7 +234,7 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
-		self.job.object.do_move(self.job.patch)
+		self.job.object.move(Point(self.job.object.x, self.job.object.y))
 
 	def release_animal(self):
 		print self.id, 'RELEASE ANIMAL'

@@ -84,7 +84,7 @@ class Island(WorldObject):
 		"""Returns the building at the position (x,y)
 		@param x: int x coordinate
 		@param y: int y coordinate
-		@returns: Building class instance or None if none is found.
+		@return: Building class instance or None if none is found.
 		"""
 		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
 			return None

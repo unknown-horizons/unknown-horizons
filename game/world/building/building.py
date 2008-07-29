@@ -33,7 +33,7 @@ class Building(WorldObject):
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.building_position = Rect((Point(x, y)), self.size[0]-1, self.size[1]-1)
-		print '-----------------------check dat...------------------------------'
+		#print '-----------------------check dat...------------------------------'
 		self.x = x
 		self.y = y
 		self.owner = owner

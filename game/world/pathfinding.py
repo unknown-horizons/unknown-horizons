@@ -22,9 +22,15 @@
 
 from game.util import Rect, Point
 from game.world.building.building import Building
+import game.main
+import weakref
+import exceptions
 
 # for speed testing:
 import time
+
+class PathBlockedError(exceptions.Exception):
+	pass
 
 class Movement:
 	"""Saves walkable tiles according to unit in a seperate namespace
@@ -42,10 +48,8 @@ def check_path(path):
 
 	err = False
 	while True:
-		try:
-			cur = i.next()
-		except StopIteration:
-			break
+		try: cur = i.next()
+		except StopIteration: break
 
 		dist = Point(cur[0], cur[1]).distance(Point(prev[0], prev[1]))
 
@@ -54,12 +58,10 @@ def check_path(path):
 		if dist != 1 and int((dist)*100) != 141:
 			err = True
 			print 'PATH ERROR FROM', prev, 'TO', cur,' DIST: ', dist
-
 		prev = cur
-
+		
 	if err:
 		assert False, 'Encountered errors when testing pathfinding'
-
 	return True
 
 def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = False):
@@ -71,7 +73,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
 	@param blocked_coords: temporarily blocked coords (e.g. by a unit)
 	@param diagonal: wether the unit is able to move diagonally
-	@return list of coords that are part of the best path (from first coord after source to last coord before destination) or None if no path is found
+	@return: list of coords that are part of the best path (from first coord after source to last coord before destination) or None if no path is found
 	"""
 	#t0 = time.time()
 
@@ -200,3 +202,103 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 			#	print 'PATH NODES', path_nodes
 		#sys.stdout = real_stdout
 		return None
+
+class Pather(object):
+	"""Interface for pathfinding. To be inherited by Unit"""
+	def __init__(self, unit):
+		self.move_diagonal = False
+		self.blocked_coords = []
+		if unit.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT:
+			island = game.main.session.world.get_island(unit.unit_position.x, unit.unit_position.y)
+			self.path_nodes = island.path_nodes
+		elif unit.__class__.movement == Movement.CARRIAGE_MOVEMENT:
+			self.move_diagonal = True
+		elif unit.__class__.movement == Movement.SHIP_MOVEMENT:
+			self.move_diagonal = True
+			self.path_nodes = game.main.session.world.water
+			self.blocked_coords = game.main.session.world.ship_map
+		elif unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
+			# TODO
+			pass 
+		else:
+			assert False, 'Invalid way of movement'
+			
+		self.unit = weakref.ref(unit)
+		
+		self.cur = None
+		
+	def calc_path(self, destination, destination_in_building = False, check_only = False):
+		"""Calculates a path to destination
+		@param destination: a destination supported by find_path
+		@param destination_in_building: bool, wether destination is in a building. this makes the unit 
+		@param check_only: if True the path isn't saved, 
+		@return: False if movement is impossible, else True"""
+		
+		# this can't be initalized at construction time
+		if self.unit().__class__.movement == Movement.CARRIAGE_MOVEMENT:
+			self.path_nodes = self.unit().home_building().radius_coords
+		
+		if not check_only:
+			self.source_in_building = False
+		source = self.unit().unit_position
+		if self.unit().is_moving():
+			source = Point(self.path[self.cur])
+		else:
+			island = game.main.session.world.get_island(self.unit().unit_position.x, self.unit().unit_position.y)
+			if island is not None:
+				building = island.get_building(self.unit().unit_position.x, self.unit().unit_position.y)
+				if building is not None:
+					print 'SRC IN BUILDING:', building.building_position
+					source = building
+					if not check_only:
+						self.source_in_building = True
+		
+		blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else self.blocked_coords.keys()
+		path = findPath(source, destination, self.path_nodes, blocked_coords, self.move_diagonal)
+		if not check_only:
+			self.path = path
+			if self.unit().is_moving():
+				self.cur = 0
+			else:
+				self.cur = -1
+			self.destination_in_building = destination_in_building
+		
+		if path == None:
+			return False
+		else:
+			return True
+	
+	def revert_path(self, destination_in_building):
+		"""Moves back to the source of last movement, using same path"""
+		self.cur = -1
+		self.destination_in_building = destination_in_building
+		self.path.reverse()
+	
+	def get_next_step(self):
+		"""Returns the next step in the current movement
+		@return: Point"""
+		self.cur += 1
+		if self.cur == len(self.path):
+			self.cur = None
+			return None
+		
+		if self.path[self.cur] in self.blocked_coords:
+			# path is suddenly blocked, find another path
+			blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else dict.fromkeys(self.blocked_coords, 1.0)
+			self.path = findPath(self.path[self.cur-1], self.path[-1], self.path_nodes, blocked_coords, self.move_diagonal)
+			if self.path is None:
+				raise PathBlockedError
+			self.cur = 1
+		
+		if self.destination_in_building and self.cur == len(self.path)-1:
+			self.destination_in_building = False
+			self.unit().hide()
+		elif self.source_in_building and self.cur == 2:
+			self.source_in_building = False
+			print 'SHOW AT', self.path[self.cur]
+			self.unit().show()
+			
+		return Point(self.path[self.cur])
+		
+	
+		

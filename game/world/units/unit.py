@@ -21,7 +21,7 @@
 
 import game.main
 import fife
-from game.world.pathfinding import findPath, Movement
+from game.world.pathfinding import Pather, PathBlockedError, Movement
 from game.util import Point, Rect
 from game.util import WeakMethod
 from game.util import WorldObject
@@ -59,13 +59,12 @@ class Unit(WorldObject):
 
 		self.move_callback = None
 
-		self.path = None
-		self.cur_path = None
+		self.path = Pather(self)
 
 		self.health = 60.0
 		self.max_health = 100.0
 
-		self.is_moving = False
+		self.__is_moving = False
 
 	def __del__(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
@@ -83,60 +82,22 @@ class Unit(WorldObject):
 		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
 
-	def is_unit_moving(self):
-		"""Returns wether unit is moving"""
-		return self.is_moving
-
 	def check_move(self, destination):
 		"""Tries to find a path to destination
-		@param destination: Point or Rect. if it's a Point that's in a building, the building is used as destination.
+		@param destination: destination supported by findPath
+		@param destination_in_building: bool, wether unit should enter building
 		"""
-		diagonal = False
-		blocked_coords = []
-		if self.__class__.movement == Movement.SOLDIER_MOVEMENT:
-			assert(isinstance(destination, Point)) # rect not yet supported here
-			self.move_directly(destination)
-			return
-		elif self.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT:
-			island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
-			path_graph = island.path_nodes
-		elif self.__class__.movement == Movement.CARRIAGE_MOVEMENT:
-			path_graph = self.home_building().radius_coords
-			diagonal = True
-		elif self.__class__.movement == Movement.SHIP_MOVEMENT:
-			path_graph = game.main.session.world.water
-			blocked_coords = game.main.session.world.ship_map.keys()
-			diagonal = True
-		else:
-			print self.id, 'has no Movement def'
+		return self.path.calc_path(destination, check_only = True)
+		
 
-		source = self.unit_position
-		dest = destination
-
-		island = game.main.session.world.get_island(self.unit_position.x, self.unit_position.y)
-		if island is not None:
-			b = island.get_building(self.unit_position.x, self.unit_position.y)
-			if b is not None:
-				source = b.building_position
-			b = island.get_building(destination.x, destination.y)
-			if b is not None and isinstance(destination, Point):
-				dest = b.building_position
-
-		return findPath(source, dest, path_graph, blocked_coords, diagonal)
-
+	"""
 	def do_move(self, path, callback = None):
-		"""Conducts a move, that was previously calculated in check_move or specified as path.
+		""Conducts a move, that was previously calculated in check_move or specified as path.
 		@param callback: function to call when unit arrives
 		@param path: path to take. defaults to self.path
 		If you just want to move a unit without checks, use move()
-		"""
-
-		if self.is_unit_moving():
-			self.new_target = Point(path[-1])
-			self.new_callback = callback
-			return
-
-		self.is_moving = True
+		""
+		assert(False)
 
 		# setup move
 		self.path = path
@@ -151,24 +112,42 @@ class Unit(WorldObject):
 
 		# enqueue first move (move_tick takes care of the rest)
 		game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
+	"""
+	
+	def is_moving(self):
+		"""Returns wether unit is currently moving"""
+		return self.__is_moving
 
-	def move(self, destination, callback = None):
-		""" Moves unit to destination
+	def move(self, destination, callback = None, destination_in_building = False):
+		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: function that gets called when the unit arrives
 		@return: True if move is possible, else False
 		"""
-		path = self.check_move(destination)
+		
+		move_possible = self.path.calc_path(destination, destination_in_building)
 
-		if path is None:
+		if not move_possible:
 			return False
-
-		self.do_move(path, callback)
+		
+		print 'NEW DEST', destination
+		self.move_callback = None if callback is None else WeakMethod(callback)
 
 		# move_target is deprecated, will be removed soon
-		self.move_target = Point(path[-1])
-
+		#self.move_target = Point(path[-1])
+		
+		if not self.is_moving():
+			game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
+		
+		self.__is_moving = True
+		
 		return True
+	
+	def move_back(self, callback = None, destination_in_building = False):
+		self.path.revert_path(destination_in_building)
+		self.move_callback = callback
+		self.__is_moving = True
+		game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
 
 	def move_directly(self, destination):
 		""" this is deprecated, do not use this.
@@ -199,14 +178,12 @@ class Unit(WorldObject):
 	def movement_finished(self):
 		print self.id, 'MOVEMENT FINISHED'
 
-		self.is_moving = False
-
-		self.path = None
-		self.cur_path = None
-		self.next_target = self.unit_position
-
 		# deprecated:
 		self.move_target = self.unit_position
+		
+		self.next_target = self.unit_position
+		
+		self.__is_moving = False
 
 		if self.move_callback is not None:
 			self.move_callback()
@@ -217,41 +194,23 @@ class Unit(WorldObject):
 		#sync unit_position
 		self.last_unit_position = self.unit_position
 
+		assert(self.next_target is not None)
 		self.unit_position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
 		self._instance.setLocation(location)
-
-		if self.new_target != None:
-			import time
-			self.is_moving = False
-			self.move(self.new_target, self.new_callback)
-			self.new_target = None
+		
+		try:
+			self.next_target = self.path.get_next_step()
+		except PathBlockedError:
 			return
-
-		# check if next_target is blocked by a unit
-		## TODO: the location of this code might should be changed
-		if not self.check_for_blocking_units(self.next_target):
-			new_path = self.check_move(self.path[-1] )
-			if new_path is None:
-				# if there's no path now, just stop moving
-				## TODO: if unit, that blocks us, belongs to our player, tell it to move
-				return
-			self.do_move(new_path, self.move_callback)
+		
+		if self.next_target is None:
+			self.movement_finished()
 			return
-
-		if self.unit_position != self.move_target:
-			if self.__class__.movement == Movement.CARRIAGE_MOVEMENT or \
-				 self.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT or \
-				 self.__class__.movement == Movement.SHIP_MOVEMENT :
-				# retrieve next target from already calculated path
-				try:
-					self.next_target = Point(self.cur_path.next())
-				except StopIteration:
-					self.movement_finished()
-					return
-
-			elif self.__class__.movement == Movement.SOLDIER_MOVEMENT:
+		
+		"""
+			if self.__class__.movement == Movement.SOLDIER_MOVEMENT:
 				# this is deprecated, just like move_directly
 				#calculate next target
 				self.next_target = self.unit_position
@@ -265,10 +224,7 @@ class Unit(WorldObject):
 					self.next_target = (self.next_target.x, self.unit_position.y - 1)
 
 				self.next_target = Point(self.next_target)
-
-		else:
-			self.movement_finished()
-			return
+		"""
 
 		#setup movement
 

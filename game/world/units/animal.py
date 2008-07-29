@@ -57,7 +57,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		self.job.object._Producer__registered_collectors.append(self)
 		if self.start_hidden:
 			self.show()
-		self.do_move(self.job.path, self.begin_working)
+		self.move(self.job.path, self.begin_working)
 
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'

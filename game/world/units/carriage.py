@@ -185,7 +185,6 @@ class Carriage(Unit):
 			self.show()
 
 		self.target[0].pickup_carriages.append(self)
-		print self.id, '----------------- do_move call search_job'
 		self.do_move(path, self.reached_pickup)
 
 		print self.id, 'CURRENT', self.get_position().x, self.get_position().y
@@ -208,7 +207,6 @@ class Carriage(Unit):
 		if __debug__:
 			assert( Rect(Point(self.target[0].x, self.target[0].y), self.target[0].size[0], self.target[0].size[1]).distance(self.unit_position) == 0)
 		self.transfer_pickup()
-		print self.id, '------------------ move call reached_pickup'
 		ret = self.move(Point(self.home_position.x, self.home_position.y), self.reached_home)
 		if __debug__:
 			assert(ret == True) # there has to be a way back

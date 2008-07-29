@@ -46,7 +46,7 @@ class Settlement(WorldObject):
 		"""Returns the building at the position (x,y)
 		@param x: int x coordinate
 		@param y: int y coordinate
-		@returns: Building class instance or None if none is found.
+		@return: Building class instance or None if none is found.
 		"""
 		for b in self.buildings:
 			if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
