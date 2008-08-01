@@ -64,7 +64,8 @@ class Building(WorldObject):
 		#self._instance.thisown = 1
 		
 	def save(self, db):
-		game.main.db("INSERT INTO %(db)s.building (rowid, x, y, owner, object_type) VALUES (?,?,?,?,?,?,?)"%{'db':db}, self.getId(), self.x, self.y, self.owner.getId(), self.object_type)
+		db("INSERT INTO building (rowid, type, x, y, health, owner) VALUES (?, ?, ?, ?, ?, ?)",
+			self.getId(), self.__class__.id, self.x, self.y, self.health, self.owner.getId())
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings

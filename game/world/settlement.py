@@ -63,7 +63,7 @@ class Settlement(WorldObject):
 	def save(self, db):
 		db("INSERT INTO settlement (rowid, owner) VALUES(?, ?)",
 			self.getId(), self.owner.getId())
-		db("INSERT INTO names (rowid, names) VALUES(?, ?)",
+		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
 			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
 		

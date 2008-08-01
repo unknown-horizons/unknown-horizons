@@ -288,8 +288,8 @@ class Unit(WorldObject):
 		super(Unit, self).save(db)
 		
 		# TODO: save owner
-		db("INSERT INTO unit (rowid, type, x, y, health) VALUES(?, ?, ?, ?, ?)", 
-			self.getId(), self.__class__.id, self.unit_position.x, self.unit_position.y, self.health)
+		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)", 
+			self.getId(), self.__class__.id, self.unit_position.x, self.unit_position.y, self.health, 0)
 		# max_health was skipped because i guess it will be read from somewhere
 
 		# TODO (not necessarily necessary):
