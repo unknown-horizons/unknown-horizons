@@ -53,6 +53,11 @@ class BuildingClass(type):
 			self.costs[name]=value
 		self._loadObject()
 
+	def load(cls, id):
+		self = cls.__new__(cls)
+		super(cls, self).load(id = id)
+		return self
+
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
