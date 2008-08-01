@@ -286,7 +286,10 @@ class Unit(WorldObject):
 
 	def save(self, db):
 		super(Unit, self).save(db)
-		game.main.db("INSERT INTO %(db)s.unit (rowid, object_type, unit_position_x, unit_position_y, health) VALUES(?, ?, ?  " % {'db':db}, self.getId(), self.object_type, self.unit_position.x, self.unit_position.y, self.health)
+		
+		# TODO: save owner
+		db("INSERT INTO unit (rowid, type, x, y, health) VALUES(?, ?, ?, ?, ?)", 
+			self.getId(), self.__class__.id, self.unit_position.x, self.unit_position.y, self.health)
 		# max_health was skipped because i guess it will be read from somewhere
 
 		# TODO (not necessarily necessary):

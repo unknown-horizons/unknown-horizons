@@ -58,11 +58,8 @@ class Island(WorldObject):
 
 		self.path_nodes = {}
 
-	def save(self, db = 'savegame'):
-		"""
-		@param db: db that the island is saved to.
-		"""
-		game.main.db("INSERT INTO %(db)s.island (x, y, file) VALUES (?, ?, ?)" % {'db' : db}, self.x, self.y, self.file)
+	def save(self, db):
+		db("INSERT INTO island (x, y, file) VALUES (?, ?, ?)", self.x, self.y, self.file)
 		for settlement in self.settlements:
 			settlement.save(db)
 		for building in self.buildings:

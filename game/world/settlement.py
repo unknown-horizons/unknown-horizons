@@ -61,8 +61,11 @@ class Settlement(WorldObject):
 		self._inhabitants -= num
 
 	def save(self, db):
-		game.main.db("INSERT INTO %(db)s.settlement (rowid, name, owner, storage) VALUES(?, ?, ?, ?)" % {'db':db}, self.getId(), self.name, self.owner.getId(), self.inventory.getId())
-		self.inventory.save(db)
+		db("INSERT INTO settlement (rowid, owner) VALUES(?, ?)",
+			self.getId(), self.owner.getId())
+		db("INSERT INTO names (rowid, names) VALUES(?, ?)",
+			self.getId(), self.name)
+		self.inventory.save(db, self.getId())
 		
 		# TODO:
 		# self.buildings ?

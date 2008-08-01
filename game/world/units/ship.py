@@ -99,8 +99,9 @@ class Ship(Unit):
 		
 	def save(self, db):
 		super(Ship, self).save(db)
-		game.main.db("INSERT INTO %(db)s.ship (rowid, name, storage) VALUES(?, ?) " % {'db':db}, self.getId(), self.name, self.inventory.getId())
-		self.inventory.save(db)
+		
+		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
+		self.inventory.save(db, self.getId())
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

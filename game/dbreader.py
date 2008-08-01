@@ -49,12 +49,8 @@ class DbReader(object):
 				command = command + ';'
 			else:
 				raise 'Error, no complete sql statement provided by "' + command + '".'
-		try:
-			self.cur.execute(command, args)
-			return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
-		except sqlite3.Error, e:
-			print "An error occurred:", e.args[0]
-			return SqlError(e.args[0])
+		self.cur.execute(command, args)
+		return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
 
 	def execute_script(self, script):
 		"""Executes a multiline script.

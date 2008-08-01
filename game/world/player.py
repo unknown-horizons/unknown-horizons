@@ -40,11 +40,14 @@ class Player(WorldObject):
 
 		self.inventory.alter_inventory(1, 9999)
 
-	def save(self, db = 'savegame'):
+	def save(self, db):
 		"""
 		@param db: db that the player is saved to.
 		"""
-		game.main.db("INSERT INTO %(db)s.player (rowid, name, inventory) VALUES (?, ?)" % {'db' : db}, self.getId(), self.name, self.inventory.getId())
-		self.inventory.save(db)
+		
+		# Doesn't save anything yet, because this class it not designed
+		# clean yet. It has to seperate aspects of world and session first.
+		
+		self.inventory.save(db, self.getId())
 		# TODO: 
 		# color

@@ -111,12 +111,12 @@ class Storage(WorldObject):
 	def __str__(self):
 		return str(self._inventory)
 	
-	def save(self,db):
+	def save(self, db, ownerid):
 		super(Storage, self).save(db)
 		
 		for (res, (value, size)) in self._inventory.iteritems():
-			game.main.db("INSERT INTO %(db)s.storage (object, resource, amount) VALUES (?) " % {'db':db},
-				self.getId(), res, value)
+			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
+				ownerid, res, value)
 
 class ArbitraryStorage(WorldObject):
 	"""Class that represents a storage compartment for ships
@@ -176,13 +176,6 @@ class ArbitraryStorage(WorldObject):
 
 		size += (self.slots - len(self._inventory)) * self.size
 		return size
-		
-		
-	def save(self,db):
-		game.main.db("INSERT INTO %(db)s.arbitrarystorage (rowid, slots, size) VALUES (?, ?, ?) " % {'db':db}, self.getId(), self.slots, self.size)
-		
-		for (res, value) in self._inventory:
-			game.main.db("INSERT INTO %(db)s.arbitrarystorage_value (storage, resource, value) VALUES (?, ?, ?, ?)" % {'db':db}, self.getId(), res, value)
 
 class GenericStorage(object):
 	def __init__(self, **kwargs):

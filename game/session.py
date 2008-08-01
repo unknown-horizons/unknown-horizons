@@ -32,6 +32,7 @@ from game.world.player import Player
 from game.gui.ingamegui import IngameGui
 from game.gui.ingamekeylistener import IngameKeyListener
 from game.world.island import Island
+from game.dbreader import DbReader
 from game.timer import Timer
 from game.scheduler import Scheduler
 from game.manager import SPManager
@@ -96,19 +97,18 @@ class Session(livingObject):
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
 	def save(self, file = "content/save/quicksave.sqlite"):
-		if not os.path.exists(file):
-			shutil.copyfile('content/savegame_template.sqlite', file)
+		if os.path.exists(file):
+			os.unlink(file)
+		shutil.copyfile('content/savegame_template.sqlite', file)
+		
+		db = DbReader(file)
 		try:
-			game.main.db("attach ? as savegame", file)
-			try:
-				game.main.db("begin")
-				self.world.save("savegame")
-				#self.manager.save("savegame")
-				#self.view.save("savegame")
-			finally:
-				game.main.db("commit")
+			db("BEGIN")
+			self.world.save(db)
+			#self.manager.save(db)
+			#self.view.save(db)
 		finally:
-			game.main.db("detach savegame")
+			db("COMMIT")
 
 	def generateMap(self):
 		"""Generates a map."""

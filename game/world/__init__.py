@@ -106,11 +106,11 @@ class World(object):
 					return i
 		return None
 
-	def save(self, db = 'savegame'):
+	def save(self, db):
 		"""Saves the current game to the specified db.
-		@param db: string representing the db that the game is to be saved to."""
-		for name, value in self.properties.items():
-			game.main.db("insert into %(db)s.map_properties (name, value) values (?, ?)" % {'db' : db}, name, value)
+		@param db: DbReader object of the db the game is saved to."""
+		for name, value in self.properties.iteritems():
+			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, value)
 		for island in self.islands:
 			island.save(db)
 		for player in self.players:
