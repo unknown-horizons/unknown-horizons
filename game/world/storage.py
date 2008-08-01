@@ -113,11 +113,10 @@ class Storage(WorldObject):
 	
 	def save(self,db):
 		super(Storage, self).save(db)
-		game.main.db("INSERT INTO %(db)s.storage (rowid) VALUES (?) " % {'db':db}, self.getId())
-		# PROBLEM: you can't create a table in sqlite with just the rowid column
 		
-		for (res, (value, size)) in self._inventory:
-			game.main.db("INSERT INTO %(db)s.storage_value (storage, resource, value, size) VALUES (?, ?, ?, ?)" % {'db':db}, self.getId(), res, value, size)
+		for (res, (value, size)) in self._inventory.iteritems():
+			game.main.db("INSERT INTO %(db)s.storage (object, resource, amount) VALUES (?) " % {'db':db},
+				self.getId(), res, value)
 
 class ArbitraryStorage(WorldObject):
 	"""Class that represents a storage compartment for ships

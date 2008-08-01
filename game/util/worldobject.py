@@ -43,3 +43,6 @@ class WorldObject(Changelistener):
 	def reset(cls):
 		cls.__next_id = 1
 		cls.__objects.clear()
+		
+	def save(self, db):
+		pass
