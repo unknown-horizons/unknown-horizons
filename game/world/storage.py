@@ -184,3 +184,58 @@ class ArbitraryStorage(WorldObject):
 		
 		for (res, value) in self._inventory:
 			game.main.db("INSERT INTO %(db)s.arbitrarystorage_value (storage, resource, value) VALUES (?, ?, ?, ?)" % {'db':db}, self.getId(), res, value)
+
+class GenericStorage(object):
+	def __init__(self, **kwargs):
+		super(GenericStorage, self).__init__(**kwargs)
+		self._storage = {}
+
+	def alter(res, amount):
+		if res in self._storage:
+			self._storage[res] += amount
+		else:
+			self._storage[res] = amount
+		return 0
+
+	def __getitem__(self, res):
+		return self._storage[res] if res in self._storage else 0
+
+class SpecializedStorage(GenericStorage):
+	def alter(res, amount):
+		return super(SpecializedStorage, self).alter(res, amount) if res in self._storage else amount
+
+	def addResourceSlot(res):
+		super(SpecializedStorage, self).alter(res, 0)
+
+	def hasResourceSlot(res):
+		return res in self._storage
+
+class SizedSpecializedStorage(SpecializedStorage):
+	def __init__(self, **kwargs):
+		super(SizedSpecializedStorage, self).__init__(**kwargs)
+		self.__size = {}
+	
+	def alter(res, amount):
+		return amount - super(SizedSpecializedStorage, self).alter(res, amount - max(0, amount + self[res] - self.__size.get(res,0)))
+
+	def addResourceSlot(res, size, **kwargs):
+		super(SpecializedStorage, self).addResourceSlot(res = res, size = size, **kwargs)
+		self.__size[res] = size
+
+class TotalStorage(GenericStorage):
+	def __init__(self, space, **kwargs):
+		super(TotalStorage, self).__init__(space = space, **kwargs)
+		self.__space = space
+
+	def alter(self, res, amount):
+		return amount - super(TotalStorage, self).alter(res, amount - max(0, amount + sum(self._storage.values()) - self.__space))
+
+class PositiveStorage(GenericStorage):
+	def alter(res, amount):
+		return amount - super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
+
+class PositiveTotalStorage(PositiveStorage, TotalStorage):
+	pass
+
+class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
+	pass
