@@ -37,7 +37,7 @@ class Consumer(StorageHolder):
 
 		for (production_line,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.__resources[production_line] = []
-			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount < 0 GROUP BY resource", production_line):
+			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self.__resources[production_line].append(res)
 
 		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
@@ -49,12 +49,12 @@ class Consumer(StorageHolder):
 		self.__collectors = WeakList()
 
 		self.create_carriage()
-		
+
 	def save(self, db):
 		super(Consumer, self).save(db)
 		for carriage in self.__local_carriages:
 			game.main.db("INSERT INTO %(db)s.consumer_carriages (consumer, carriage) VALUES (?, ?)" % {'db':db}, self.getId(), carriage.getId())
-		
+
 
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)

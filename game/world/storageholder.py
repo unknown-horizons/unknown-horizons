@@ -25,17 +25,16 @@ import game.main
 class StorageHolder(object):
 	def __init__(self, **kwargs):
 		super(StorageHolder, self).__init__(**kwargs)
-		print '---------------------------------------storageholder----------------------------'
 		self.inventory = Storage()
 		self.inventory.addChangeListener(self._changed)
 		for (res, size) in game.main.db("select resource, size from data.storage where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			print res, size
 			if not self.inventory.hasSlot(res):
 				self.inventory.addSlot(res, size)
-				
+
 	def save(self, db):
 		super(StorageHolder, self).save(db)
 		game.main.db("INSERT INTO %(db)s.storageholder (inventory) VALUES(?)" % {'db':db}, self.inventory.getId())
 		self.inventory.save()
 		# TODO:
-		# some kind of id 
+		# some kind of id

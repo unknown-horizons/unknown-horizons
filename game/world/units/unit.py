@@ -30,7 +30,6 @@ class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
 
 	def __init__(self, x, y, **kwargs):
-		print "---------------------------------unit...----------------"
 		super(Unit, self).__init__(**kwargs)
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()

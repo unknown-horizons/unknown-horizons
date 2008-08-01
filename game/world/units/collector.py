@@ -47,6 +47,10 @@ class BuildingCollector(StorageHolder, Unit):
 
 		self.home_building = weakref.ref(home_building)
 
+		for res in self.home_building().get_needed_res(): # NOTE: this does not work for multiple production lines yet.
+			if not self.inventory.hasSlot(res):
+				self.inventory.addSlot(res, size)
+
 		self.start_hidden = start_hidden
 		if self.start_hidden:
 			self.hide()
@@ -102,7 +106,7 @@ class BuildingCollector(StorageHolder, Unit):
 		jobs.reverse()
 
 		for job in jobs:
-			job.path =  self.check_move(Point(job.object.x, job.object.y))
+			job.path = self.check_move(Point(job.object.x, job.object.y))
 			if job.path is not None:
 				return job
 		return None
