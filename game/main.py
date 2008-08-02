@@ -471,8 +471,9 @@ def saveGame():
 	game.main.session.save()
 	
 def loadGame():
-	# FIXME: Implement loading dialog
-	raise NotImplementedError("Loading not implemented")
+	import game
+	# FIXME: Implement save dialog
+	game.main.session.load()
 	
 
 def onHelp():

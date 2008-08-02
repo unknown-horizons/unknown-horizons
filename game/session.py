@@ -85,12 +85,12 @@ class Session(livingObject):
 		self.world = None
 		super(Session, self).end()
 
-	def save(self, file = "content/save/quicksave.sqlite"):
-		if os.path.exists(file):
-			os.unlink(file)
-		shutil.copyfile('content/savegame_template.sqlite', file)
+	def save(self, savegame = "content/save/quicksave.sqlite"):
+		if os.path.exists(savegame):
+			os.unlink(savegame)
+		shutil.copyfile('content/savegame_template.sqlite', savegame)
 		
-		db = DbReader(file)
+		db = DbReader(savegame)
 		try:
 			db("BEGIN")
 			self.world.save(db)
@@ -99,7 +99,7 @@ class Session(livingObject):
 		finally:
 			db("COMMIT")
 
-	def load(self, savegame):
+	def load(self, savegame = "content/save/quicksave.sqlite"):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		"""
