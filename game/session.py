@@ -71,7 +71,7 @@ class Session(livingObject):
 		self.cursor = SelectionTool()
 
 		self.selected_instances = set()
-		self.selection_groups = [set(),set(),set(),set(),set(),set(),set(),set(),set(),set()]
+		self.selection_groups = [set()] * 10
 
 	def end(self):
 		self.cursor = None
