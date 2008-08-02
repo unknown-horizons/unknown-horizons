@@ -114,7 +114,7 @@ class Ship(Unit):
 		self.setup_inventory()
 		self.inventory.load(db, worldid)
 		
-		self.name = db("SELECT name FROM name WHERE rowid = ?", worlid)[0][0]
+		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		
 
 class PirateShip(Ship):
