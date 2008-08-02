@@ -117,6 +117,13 @@ class Storage(WorldObject):
 		for (res, (value, size)) in self._inventory.iteritems():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, res, value)
+				
+	def load(self, db, ownerid):
+		super(Storage, self).save(db)
+		
+		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
+			self.alter_inventory(res, amount)
+		
 
 class ArbitraryStorage(WorldObject):
 	"""Class that represents a storage compartment for ships

@@ -42,6 +42,11 @@ class UnitClass(type):
 		for name, value in game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)):
 			setattr(self, name, value)
 		self._loadObject()
+	
+	def load(cls, db, worldid):
+		self = cls.__new__(cls)
+		self.load(db, worldid)
+		return self
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.

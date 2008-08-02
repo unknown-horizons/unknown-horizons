@@ -53,9 +53,9 @@ class BuildingClass(type):
 			self.costs[name]=value
 		self._loadObject()
 
-	def load(cls, id):
+	def load(cls, db, worldid):
 		self = cls.__new__(cls)
-		super(cls, self).load(id = id)
+		self.load(db, worlid)
 		return self
 
 	def _loadObject(cls):

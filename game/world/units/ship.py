@@ -35,18 +35,22 @@ class Ship(Unit):
 	"""
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
+
+		self.setup_inventory()
+		self.inventory.alter_inventory(6, 15)
+		self.inventory.alter_inventory(5, 30)
+		self.inventory.alter_inventory(4, 50)	
+		
+		self.set_name()
+
+		game.main.session.world.ship_map[self.unit_position] = self
+		
+	def setup_inventory(self):
 		## TODO: inherit from storageholder
 		self.inventory = Storage()
 		self.inventory.addSlot(6,50)
 		self.inventory.addSlot(5,50)
 		self.inventory.addSlot(4,50)
-		self.inventory.alter_inventory(6, 15)
-		self.inventory.alter_inventory(5, 30)
-		self.inventory.alter_inventory(4, 50)
-
-		self.set_name()
-
-		game.main.session.world.ship_map[self.unit_position] = self
 
 	def move_tick(self):
 		del game.main.session.world.ship_map[self.unit_position]
@@ -102,6 +106,16 @@ class Ship(Unit):
 		
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
 		self.inventory.save(db, self.getId())
+		
+	def load(self, db, worldid):
+		super(Ship, self).load(db, worldid)
+		
+		self.inventory = Storage()
+		self.setup_inventory()
+		self.inventory.load(db, worldid)
+		
+		self.name = db("SELECT name FROM name WHERE rowid = ?", worlid)[0][0]
+		
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

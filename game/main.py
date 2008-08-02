@@ -264,7 +264,7 @@ def startSingle():
 	if map_file is None:
 		session.generateMap()
 	else:
-		session.loadMap(map_file)
+		session.load(map_file)
 	session.world.setupPlayer(playername, playercolor)
 
 def showMulti():

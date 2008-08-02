@@ -28,15 +28,15 @@ from game.world.player import Player
 class World(object):
 	"""
 	"""
-	def __init__(self):
+	def __init__(self, db):
 		#load properties
 		self.properties = {}
-		for (name, value) in game.main.db("select name, value from map.map_properties"):
+		for (name, value) in db("select name, value from map_properties"):
 			self.properties[name] = value
 
 		#load islands
 		self.islands = []
-		for island, offset_x, offset_y in game.main.db("select island, x, y from map.island"):
+		for island, offset_x, offset_y in db("select file, x, y from island"):
 			self.islands.append(Island(offset_x, offset_y, island))
 
 		#calculate map dimensions
@@ -73,13 +73,15 @@ class World(object):
 
 		# create shiplist
 		self.ships = []
-
-	def create_dummy_ships(self):
-		self.ships.append(game.main.session.entities.units[1](15, 15))
-		self.ships.append(game.main.session.entities.units[1](29, 25))
-		self.ships.append(game.main.session.entities.units[4](30, 35))
-		self.ships.append(game.main.session.entities.units[5](35, 30))
-		self.ships.append(game.main.session.entities.units[6](45, 30))
+		
+		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
+			# workaround to distinguish between ships and other units
+			unitclass = game.main.session.entities.units[typeid]
+			from game.world.units.ship import Ship
+			if issubclass(unitclass, Ship):
+				import pdb
+				pdb.set_trace()
+				self.ships.append(unitclass.load(db, worldid))
 
 	def setupPlayer(self, name, color):
 		self.player =  Player(0, name, color)
@@ -117,21 +119,3 @@ class World(object):
 			player.save(db)
 		for ship in self.ships:
 			ship.save(db)
-
-"""	@classmethod
-	def load(cls, db):
-		"x"x"Loads a saved game from db"x"x"
-
-		#create a new instance of the class without calling the constructor
-		self = cls.__new__(cls)
-		#work with self...
-		
-		self.properties = {}
-		for name, value in game.main.db("SELECT name, value from %(db)s.map_properties" % {'db' : db}):
-			self.properties[name] = value
-
-		# generate ship_map
-		for ship in self.ships:
-			self.ship_map[ship.unit_position] = self
-
-		return self"""

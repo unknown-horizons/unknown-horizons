@@ -83,19 +83,6 @@ class Session(livingObject):
 		self.timer = None
 		super(Session, self).end()
 
-	def loadMap(self, map):
-		"""Loads a map.
-		@param map: string with the mapfile path.
-		"""
-
-		#load map
-		game.main.db("attach ? as map", map)
-		self.world = World()
-		self.world.create_dummy_ships()
-
-		#setup view
-		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
-
 	def save(self, file = "content/save/quicksave.sqlite"):
 		if os.path.exists(file):
 			os.unlink(file)
@@ -109,6 +96,16 @@ class Session(livingObject):
 			#self.view.save(db)
 		finally:
 			db("COMMIT")
+
+	def load(self, savegame):
+		"""Loads a map.
+		@param savegame: path to the savegame database.
+		"""
+
+		db = DbReader(savegame)
+		self.world = World(db)
+		#setup view
+		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
 	def generateMap(self):
 		"""Generates a map."""
