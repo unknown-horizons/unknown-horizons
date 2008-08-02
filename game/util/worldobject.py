@@ -46,3 +46,6 @@ class WorldObject(Changelistener):
 		
 	def save(self, db):
 		pass
+		
+	def load(self, db, worldid):
+		pass
