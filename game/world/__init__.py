@@ -79,8 +79,6 @@ class World(object):
 			unitclass = game.main.session.entities.units[typeid]
 			from game.world.units.ship import Ship
 			if issubclass(unitclass, Ship):
-				import pdb
-				pdb.set_trace()
 				self.ships.append(unitclass.load(db, worldid))
 
 	def setupPlayer(self, name, color):

@@ -298,3 +298,17 @@ class Unit(WorldObject):
 		# - self._instance
 
 		# movement-code will be moved, don't save it here!
+		
+	def load(self, db, worldid):
+		import pdb
+		pdb.set_trace()
+		
+		# HACK: Call bloated __init__, which is not a good idea, but saves me from copying tons of code for now
+		# TODO: Implement location loading
+		(x, y, health, owner) = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
+		
+		self.__init__(x, y)
+		
+		
+		
+		
