@@ -23,6 +23,7 @@ import fife
 import game.main
 import code
 import sys
+import datetime
 from game.util import livingObject
 
 class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
@@ -59,7 +60,7 @@ class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 		elif keyval == fife.Key.F1:
 			game.main.onHelp()
 		elif keystr == 'p':
-			game.main.fife.engine.getRenderBackend().captureScreen("screenshot.png")
+			game.main.fife.engine.getRenderBackend().captureScreen("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png")
 
 	def keyReleased(self, evt):
 		pass
