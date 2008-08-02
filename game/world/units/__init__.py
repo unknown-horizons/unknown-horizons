@@ -31,7 +31,16 @@ class UnitClass(type):
 		"""
 		class_package,  class_name = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
 		__import__('game.world.units.'+class_package)
-		return type.__new__(self, 'Unit[' + str(id) + ']', (getattr(globals()[class_package], class_name),), {})
+		
+		@classmethod
+		def load(cls, db, worldid):
+			self = cls.__new__(cls)
+			super(cls, self).load(db, worldid)
+			return self
+		
+		return type('Unit[' + str(id) + ']',
+			(getattr(globals()[class_package], class_name),),
+			{"load": load})
 
 	def __init__(self, id):
 		"""
@@ -42,11 +51,6 @@ class UnitClass(type):
 		for name, value in game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)):
 			setattr(self, name, value)
 		self._loadObject()
-	
-	def load(cls, db, worldid):
-		self = cls.__new__(cls)
-		self.load(db, worldid)
-		return self
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.
