@@ -51,6 +51,7 @@ class Session(livingObject):
 	ingame_gui = livingProperty()
 	keylistener = livingProperty()
 	cursor = livingProperty()
+	world = livingProperty()
 
 	def begin(self):
 		super(Session, self).begin()
@@ -81,6 +82,7 @@ class Session(livingObject):
 		self.scheduler = None
 		self.manager = None
 		self.timer = None
+		self.world = None
 		super(Session, self).end()
 
 	def save(self, file = "content/save/quicksave.sqlite"):

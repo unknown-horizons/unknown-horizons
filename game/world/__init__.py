@@ -24,11 +24,12 @@ __all__ = ['island', 'nature', 'player', 'settlement']
 import game.main
 from game.world.island import Island
 from game.world.player import Player
+from game.util import livingObject
 
-class World(object):
+class World(livingObject):
 	"""
 	"""
-	def __init__(self, db):
+	def begin(self, db):
 		#load properties
 		self.properties = {}
 		for (name, value) in db("select name, value from map_properties"):
