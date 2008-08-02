@@ -38,7 +38,7 @@ class BuildingClass(type):
 			super(cls, self).load(db, worldid)
 			return self
 		
-		return type('Building[' + str(id) + ']',
+		return type.__new__(self, 'Building[' + str(id) + ']',
 			(getattr(globals()[class_package], class_name),),
 			{"load": load})
 
