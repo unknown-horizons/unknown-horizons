@@ -30,6 +30,7 @@ class WorldObject(Changelistener):
 
 	def getId(self):
 		if not hasattr(self, "_WorldObject__id"):
+			assert WorldObject.__next_id not in WorldObject.__objects
 			self.__id = WorldObject.__next_id
 			WorldObject.__next_id = WorldObject.__next_id + 1
 			WorldObject.__objects[self.__id] = self
@@ -49,10 +50,8 @@ class WorldObject(Changelistener):
 		
 	def load(self, db, worldid):
 		self.__id = worldid
+		assert worldid not in WorldObject.__objects
 		WorldObject.__objects[worldid] = self
 		
 		# Make sure that new WorldIDs are always higher than every other WorldObject
-		if self.__next_id <= worldid:
-			self.__next_id = worldid + 1
-		
-		pass
+		WorldObject.__next_id = max(self.__next_id, worldid + 1)

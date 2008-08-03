@@ -37,7 +37,6 @@ class Island(WorldObject):
 
 	def __init__(self, x, y, file):
 		"""
-		@param id: island id
 		@param x:
 		@param y:
 		@param file: db file for island
@@ -65,11 +64,17 @@ class Island(WorldObject):
 		islanddb = DbReader(self.file)
 		save_x, save_y = islanddb("SELECT (? - min(x)), (? - min(y)) FROM ground", self.x, self.y)[0]
 		
-		db("INSERT INTO island (x, y, file) VALUES (?, ?, ?)", save_x, save_y, self.file)
+		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
+			self.getId(), save_x, save_y, self.file)
 		for settlement in self.settlements:
 			settlement.save(db)
 		for building in self.buildings:
 			building.save(db)
+			
+	def load(self, db, worldid):
+		
+		
+		super(Island, self).load(db, worldid)
 
 	def get_tile(self, x, y):
 		"""Returns whether a tile is on island or not.

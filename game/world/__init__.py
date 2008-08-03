@@ -37,8 +37,10 @@ class World(livingObject):
 
 		#load islands
 		self.islands = []
-		for island, offset_x, offset_y in db("select file, x, y from island"):
-			self.islands.append(Island(offset_x, offset_y, island))
+		for filename, offset_x, offset_y, islandid in db("select file, x, y, rowid from island"):
+			island = Island(offset_x, offset_y, filename)
+			island.load(db, islandid)
+			self.islands.append(island)
 
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None

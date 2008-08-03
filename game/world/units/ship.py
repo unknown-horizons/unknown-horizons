@@ -116,6 +116,8 @@ class Ship(Unit):
 		
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		
+		game.main.session.world.ship_map[self.unit_position] = self
+		
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
