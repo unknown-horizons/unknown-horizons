@@ -59,7 +59,13 @@ class Island(WorldObject):
 		self.path_nodes = {}
 
 	def save(self, db):
-		db("INSERT INTO island (x, y, file) VALUES (?, ?, ?)", self.x, self.y, self.file)
+		
+		from game.dbreader import DbReader
+		
+		islanddb = DbReader(self.file)
+		save_x, save_y = islanddb("SELECT (? - min(x)), (? - min(y)) FROM ground", self.x, self.y)[0]
+		
+		db("INSERT INTO island (x, y, file) VALUES (?, ?, ?)", save_x, save_y, self.file)
 		for settlement in self.settlements:
 			settlement.save(db)
 		for building in self.buildings:

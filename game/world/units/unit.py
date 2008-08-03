@@ -307,6 +307,8 @@ class Unit(WorldObject):
 		
 		Unit.__init__(self, x, y)
 		
+		self.health = health
+		
 		
 		
 		
