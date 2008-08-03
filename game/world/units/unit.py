@@ -305,7 +305,7 @@ class Unit(WorldObject):
 		# TODO: Implement location loading
 		(x, y, health, owner) = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
 		
-		self.__init__(x, y)
+		Unit.__init__(self, x, y)
 		
 		
 		

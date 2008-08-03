@@ -53,7 +53,7 @@ class Build(object):
 		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, owner=issuer, instance=game.main.session.view.layers[self.layer].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
 
 		island.add_building(self.x, self.y, building, issuer)
-		secondary_resource_source = island.get_settlements(self.x, self.y).pop() if self.ship is None else game.main.session.world.ships[self.ship]
+		secondary_resource_source = island.get_settlements(self.x, self.y).pop() if self.ship is None else WorldObject.getObjectById(self.ship)
 		for (resource, value) in building.costs.items():
 			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
 			remnant = secondary_resource_source.inventory.alter_inventory(resource, issuer.inventory.alter_inventory(resource, -value))

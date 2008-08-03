@@ -48,4 +48,11 @@ class WorldObject(Changelistener):
 		pass
 		
 	def load(self, db, worldid):
+		self.__id = worldid
+		WorldObject.__objects[worldid] = self
+		
+		# Make sure that new WorldIDs are always higher than every other WorldObject
+		if self.__next_id <= worldid:
+			self.__next_id = worldid + 1
+		
 		pass
