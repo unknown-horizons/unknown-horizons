@@ -49,8 +49,10 @@ class WorldObject(Changelistener):
 		pass
 		
 	def load(self, db, worldid):
-		self.__id = worldid
+		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
+		
+		self.__id = worldid
 		WorldObject.__objects[worldid] = self
 		
 		# Make sure that new WorldIDs are always higher than every other WorldObject
