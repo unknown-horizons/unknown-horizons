@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
+import weakref
 import fife
 import game.main
-import math
 from game.util import Rect,Point
 from game.util import WorldObject
 
@@ -39,7 +40,7 @@ class Building(WorldObject):
 		self._instance = self.getInstance(x, y) if instance is None else instance
 		self._instance.setId(str(self.getId()))
 
-		self.island = game.main.session.world.get_island(origin.x, origin.y)
+		self.island = weakref.weakref(game.main.session.world.get_island(origin.x, origin.y))
 		self.settlement = self.island.get_settlement(origin) or self.island.add_settlement(self.position, self.radius, owner)
 		
 	def remove(self):
