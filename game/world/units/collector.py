@@ -42,7 +42,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		print self.__class__.__mro__
-		super(BuildingCollector, self).__init__(x = home_building.x, y = home_building.y, slots = slots, size = size, **kwargs)
+		super(BuildingCollector, self).__init__(x = home_building.point.x, y = home_building.point.y, slots = slots, size = size, **kwargs)
 		print 'carriage beeing inited'
 
 		self.home_building = weakref.ref(home_building)

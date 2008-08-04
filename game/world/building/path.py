@@ -32,8 +32,8 @@ class Path(Building, BuildableLine):
 		"""
 		"""
 		super(Path, self).init()
-		self.island = game.main.session.world.get_island(self.x, self.y)
-		for tile in [self.island.get_tile(self.x + 1, self.y), self.island.get_tile(self.x - 1, self.y), self.island.get_tile(self.x, self.y + 1), self.island.get_tile(self.x, self.y - 1)]:
+		self.island = game.main.session.world.get_island(self.point.x, self.point.y)
+		for tile in [self.island.get_tile(self.point.x + 1, self.point.y), self.island.get_tile(self.point.x - 1, self.point.y), self.island.get_tile(self.point.x, self.point.y + 1), self.island.get_tile(self.point.x, self.point.y - 1)]:
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
@@ -42,8 +42,8 @@ class Path(Building, BuildableLine):
 	def remove(self):
 		super(Path, self).remove()
 		self.island.unregisterPath(self)
-		island = game.main.session.world.get_island(self.x, self.y)
-		for tile in [island.get_tile(self.x + 1, self.y), island.get_tile(self.x - 1, self.y), island.get_tile(self.x, self.y + 1), island.get_tile(self.x, self.y - 1)]:
+		island = game.main.session.world.get_island(self.point.x, self.point.y)
+		for tile in [island.get_tile(self.point.x + 1, self.point.y), island.get_tile(self.point.x - 1, self.point.y), island.get_tile(self.point.x, self.point.y + 1), island.get_tile(self.point.x, self.point.y - 1)]:
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 
@@ -51,22 +51,22 @@ class Path(Building, BuildableLine):
 		"""
 		"""
 		action = ''
-		tile = self.island.get_tile(self.x, self.y - 1)
+		tile = self.island.get_tile(self.point.x, self.point.y - 1)
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'a'
-		tile = self.island.get_tile(self.x + 1, self.y)
+		tile = self.island.get_tile(self.point.x + 1, self.point.y)
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'b'
-		tile = self.island.get_tile(self.x, self.y + 1)
+		tile = self.island.get_tile(self.point.x, self.point.y + 1)
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'c'
-		tile = self.island.get_tile(self.x - 1, self.y)
+		tile = self.island.get_tile(self.point.x - 1, self.point.y)
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'd'
 		if action == '':
 			action = 'default'
 		location = self._instance.getLocation()
-		location.setLayerCoordinates(fife.ModelCoordinate(int(self.x + 1), int(self.y), 0))
+		location.setLayerCoordinates(fife.ModelCoordinate(int(self.point.x + 1), int(self.point.y), 0))
 		self._instance.act(action, location, True)
 
 	@classmethod
@@ -83,8 +83,8 @@ class Bridge(Building, BuildableSingle):
 		"""
 		"""
 		super(Bridge, self).init()
-		self.island = game.main.session.world.get_island(self.x, self.y)
-		for tile in [self.island.get_tile(self.x + 1, self.y), self.island.get_tile(self.x - 1, self.y), self.island.get_tile(self.x, self.y + 1), self.island.get_tile(self.x, self.y - 1)]:
+		self.island = game.main.session.world.get_island(self.point.x, self.point.y)
+		for tile in [self.island.get_tile(self.point.x + 1, self.point.y), self.island.get_tile(self.point.x - 1, self.point.y), self.island.get_tile(self.point.x, self.point.y + 1), self.island.get_tile(self.point.x, self.point.y - 1)]:
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 
