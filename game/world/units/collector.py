@@ -111,7 +111,7 @@ class BuildingCollector(StorageHolder, Unit):
 		jobs.reverse()
 
 		for job in jobs:
-			job.path = self.check_move(job.object.position.origin)
+			job.path = self.check_move(job.object.position)
 			if job.path is not None:
 				return job
 		return None
@@ -122,7 +122,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
 		self.show()
-		self.move(self.job.object.position.origin, self.begin_working)
+		self.move(self.job.object.position, self.begin_working)
 
 	def begin_working(self):
 		""""""
@@ -196,11 +196,11 @@ class AnimalCollector(BuildingCollector):
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.object._Producer__registered_collectors.append(self)
-		self.home_building()._Consumer__registered_collectors.append(self)
+		self.job.object._Provider__collectors.append(self)
+		self.home_building()._Consumer__collectors.append(self)
 		# removes the animal from the scheduler. It does not move anymore
 		self.stop_animal()
-		self.move(Point(self.job.object.x, self.job.object.y), self.begin_working)
+		self.move(self.job.object.position, self.begin_working)
 
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'
@@ -208,7 +208,7 @@ class AnimalCollector(BuildingCollector):
 		# transfer res
 		self.transfer_res()
 		# deregister at the target we're at
-		self.job.object._Producer__registered_collectors.remove(self)
+		self.job.object._Provider__collectors.remove(self)
 		# send the animal to home
 		self.get_animal()
 		# move back to home
@@ -223,7 +223,7 @@ class AnimalCollector(BuildingCollector):
 		assert(remnant == 0)
 		remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 		assert(remnant == 0)
-		self.home_building()._Consumer__registered_collectors.remove(self)
+		self.home_building()._Consumer__collectors.remove(self)
 		self.release_animal()
 		self.end_job()
 
@@ -247,7 +247,7 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
-		self.job.object.move(Point(self.job.object.x, self.job.object.y))
+		self.job.object.move(self.job.object.position)
 
 	def release_animal(self):
 		print self.id, 'RELEASE ANIMAL'

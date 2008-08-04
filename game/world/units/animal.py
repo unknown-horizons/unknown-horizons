@@ -54,9 +54,9 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.object._Producer__registered_collectors.append(self)
+		self.job.object._Provider__collectors.append(self)
 		self.show()
-		self.move(self.job.path, self.begin_working)
+		self.move(self.job.object.position.origin, self.begin_working)
 
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'
@@ -64,7 +64,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		# transfer ressources
 		self.transfer_res()
 		# deregister at the target we're at
-		self.job.object._Producer__registered_collectors.remove(self)
+		self.job.object._Provider__collectors.remove(self)
 		self.end_job()
 
 	def get_job(self):
@@ -80,7 +80,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
 					# get sum of picked up ressources for res
-					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Producer__registered_collectors if carriage.job.res == res ])
+					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
 					# check how much will be delivered
 					# this is a animal. It delivers to himself. So it can get only one item at time
 					total_registered_amount_consumer = 0
@@ -96,7 +96,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 
 		for job in jobs:
-			job.path =  self.check_move(Point(job.object.x, job.object.y))
+			job.path =  self.check_move(Point(job.object.position.origin.x, job.object.position.origin.y))
 			if job.path is not None:
 				return job
 		return None
