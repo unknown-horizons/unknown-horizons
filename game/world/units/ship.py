@@ -66,10 +66,11 @@ class Ship(Unit):
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		if self.position.x != self.move_target.x or self.position.y != self.move_target.y:
+		if self.is_moving():
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
-			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
+			move_target = self.get_move_target()
+			coords = fife.ModelCoordinate(move_target.x, move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"))
@@ -93,7 +94,8 @@ class Ship(Unit):
 		if self.position.x != x or self.position.y != y:
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
-			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
+			move_target = self.get_move_target()
+			coords = fife.ModelCoordinate(move_target.x, move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"))

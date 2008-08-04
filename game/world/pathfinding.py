@@ -225,6 +225,7 @@ class Pather(object):
 
 		self.unit = weakref.ref(unit)
 
+		self.path = None
 		self.cur = None
 
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
@@ -248,7 +249,6 @@ class Pather(object):
 			if island is not None:
 				building = island.get_building(self.unit().position.x, self.unit().position.y)
 				if building is not None:
-					print 'SRC IN BUILDING:', building.position
 					source = building
 					if not check_only:
 						self.source_in_building = True
@@ -263,7 +263,7 @@ class Pather(object):
 				self.cur = -1
 			self.destination_in_building = destination_in_building
 
-		if path == None:
+		if path is None:
 			return False
 		else:
 			return True
@@ -299,5 +299,11 @@ class Pather(object):
 			self.unit().show()
 
 		return Point(self.path[self.cur])
+	
+	def get_move_target(self):
+		"""Returns the point where the path leads
+		@return: Point or None if no path has been calculated"""
+		return None if self.path is None else Point(self.path[-1])
+		
 
 
