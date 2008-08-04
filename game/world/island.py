@@ -93,12 +93,15 @@ class Island(WorldObject):
 		@param y: int y coordinate
 		@return: Building class instance or None if none is found.
 		"""
-		if not self.rect.contains(Point(x, y)):
+		point = Point(x, y)
+		if not self.rect.contains(point):
 			return None
 		settlements = self.get_settlements(x, y)
 		if len(settlements) == 0:
 			for b in self.buildings:
-				if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
+				# Why use .__class__ here?
+				#if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
+				if b.building_position.contains(point):
 					return b
 			else:
 				return None
@@ -186,8 +189,8 @@ class Island(WorldObject):
 	def remove_building(self, building):
 		assert (building.island == self)
 
-		for x in xrange(building.x, building.x + building.__class__.size[0]):
-			for y in xrange(building.y, building.y + building.__class__.size[1]):
+		for x in xrange(building.building_position.left, building.building_position.right):
+			for y in xrange(building.building_position.top, building.building_position.bottom):
 				tile = self.get_tile(Point(x,y))
 				tile.blocked = False
 				tile.object = None
