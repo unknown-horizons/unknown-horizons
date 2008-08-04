@@ -49,8 +49,7 @@ class Rect(object):
 				assert False, 'Invalid rect initialisation'+str(args)
 		
 		# Convenience attributes (can be used to make code more easy to read/understand)
-		self.x = self.left
-		self.y = self.top
+		self.origin = Point(self.left, self.top)
 
 	def distance(self, other):
 		if isinstance(other, Point):

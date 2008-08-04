@@ -45,8 +45,8 @@ class World(livingObject):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
 		for i in self.islands:
-			self.min_x = i.rect.x if self.min_x is None or i.rect.x < self.min_x else self.min_x
-			self.min_y = i.rect.y if self.min_y is None or i.rect.y < self.min_y else self.min_y
+			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
+			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
 			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
 			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
 		self.min_x -= 10

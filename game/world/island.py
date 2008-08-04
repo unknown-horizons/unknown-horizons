@@ -202,3 +202,7 @@ class Island(WorldObject):
 
 	def unregisterPath(self, path):
 		del self.path_nodes[ (path.x, path.y) ]
+
+	def get_surrounding_tiles(self, point):
+		tile_offsets = ((1, 0), (-1, 0), (0, 1), (0, -1))
+		return [self.get_tile(point.offset(*offset)) for offset in tile_offsets]
