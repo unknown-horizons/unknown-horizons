@@ -60,20 +60,20 @@ class Island(WorldObject):
 
 	def save(self, db):
 		from game.dbreader import DbReader
-		
+
 		islanddb = DbReader(self.file)
 		save_x, save_y = islanddb("SELECT (? - min(x)), (? - min(y)) FROM ground", self.x, self.y)[0]
-		
+
 		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
 			self.getId(), save_x, save_y, self.file)
 		for settlement in self.settlements:
 			settlement.save(db)
 		for building in self.buildings:
 			building.save(db)
-			
+
 	def load(self, db, worldid):
-		
-		
+
+
 		super(Island, self).load(db, worldid)
 
 	def get_tile(self, point):
@@ -101,7 +101,7 @@ class Island(WorldObject):
 			for b in self.buildings:
 				# Why use .__class__ here?
 				#if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
-				if b.building_position.contains(point):
+				if b.position.contains(point):
 					return b
 			else:
 				return None
@@ -189,8 +189,8 @@ class Island(WorldObject):
 	def remove_building(self, building):
 		assert (building.island == self)
 
-		for x in xrange(building.building_position.left, building.building_position.right):
-			for y in xrange(building.building_position.top, building.building_position.bottom):
+		for x in xrange(building.position.left, building.position.right):
+			for y in xrange(building.position.top, building.position.bottom):
 				tile = self.get_tile(Point(x,y))
 				tile.blocked = False
 				tile.object = None
@@ -198,11 +198,11 @@ class Island(WorldObject):
 		assert(building not in building.settlement.buildings)
 
 	def registerPath(self, path):
-		origin = path.building_position.origin
+		origin = path.position.origin
 		self.path_nodes[ (origin.x, origin.y) ] = path.__class__.speed
 
 	def unregisterPath(self, path):
-		origin = path.building_position.origin
+		origin = path.position.origin
 		del self.path_nodes[ (origin.x, origin.y) ]
 
 	def get_surrounding_tiles(self, point):

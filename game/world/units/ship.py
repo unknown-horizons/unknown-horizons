@@ -39,12 +39,12 @@ class Ship(Unit):
 		self.setup_inventory()
 		self.inventory.alter_inventory(6, 15)
 		self.inventory.alter_inventory(5, 30)
-		self.inventory.alter_inventory(4, 50)	
-		
+		self.inventory.alter_inventory(4, 50)
+
 		self.set_name()
 
-		game.main.session.world.ship_map[self.unit_position] = self
-		
+		game.main.session.world.ship_map[self.position] = self
+
 	def setup_inventory(self):
 		## TODO: inherit from storageholder
 		self.inventory = Storage()
@@ -53,9 +53,9 @@ class Ship(Unit):
 		self.inventory.addSlot(4,50)
 
 	def move_tick(self):
-		del game.main.session.world.ship_map[self.unit_position]
+		del game.main.session.world.ship_map[self.position]
 		super(Ship, self).move_tick()
-		game.main.session.world.ship_map[self.unit_position] = self
+		game.main.session.world.ship_map[self.position] = self
 
 	def check_for_blocking_units(self, position):
 		if position in game.main.session.world.ship_map:
@@ -66,7 +66,7 @@ class Ship(Unit):
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		if self.unit_position.x != self.move_target.x or self.unit_position.y != self.move_target.y:
+		if self.position.x != self.move_target.x or self.position.y != self.move_target.y:
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
@@ -90,7 +90,7 @@ class Ship(Unit):
 		tmp()
 		x,y=int(round(x)),int(round(y))
 		self.move(Point(x,y), tmp)
-		if self.unit_position.x != x or self.unit_position.y != y:
+		if self.position.x != x or self.position.y != y:
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
 			coords = fife.ModelCoordinate(self.move_target.x, self.move_target.y)
@@ -100,24 +100,24 @@ class Ship(Unit):
 
 	def set_name(self):
 		self.name = game.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
-		
+
 	def save(self, db):
 		super(Ship, self).save(db)
-		
+
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
 		self.inventory.save(db, self.getId())
-		
+
 	def load(self, db, worldid):
 		super(Ship, self).load(db, worldid)
-		
+
 		self.inventory = Storage()
 		self.setup_inventory()
 		self.inventory.load(db, worldid)
-		
+
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
-		
-		game.main.session.world.ship_map[self.unit_position] = self
-		
+
+		game.main.session.world.ship_map[self.position] = self
+
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

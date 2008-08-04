@@ -42,8 +42,8 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		print self.__class__.__mro__
-		super(BuildingCollector, self).__init__(x=home_building.building_position.origin.x,
-												y=home_building.building_position.origin.y,
+		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
+												y=home_building.position.origin.y,
 												slots = slots,
 												size = size,
 												**kwargs)
@@ -110,7 +110,7 @@ class BuildingCollector(StorageHolder, Unit):
 		jobs.reverse()
 
 		for job in jobs:
-			job.path = self.check_move(job.object.building_position.origin)
+			job.path = self.check_move(job.object.position.origin)
 			if job.path is not None:
 				return job
 		return None
@@ -121,7 +121,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
 		self.show()
-		self.move(self.job.object.building_position.origin, self.begin_working)
+		self.move(self.job.object.position.origin, self.begin_working)
 
 	def begin_working(self):
 		""""""
@@ -194,7 +194,7 @@ class AnimalCollector(BuildingCollector):
 
 	def __init__(self, home_unit, slots = 1, size = 6, start_hidden=True, **kwargs):
 		print self.__class__.__mro__
-		super(BuildingCollector, self).__init__(x = home_unit.unit_position.x, y = home_unit.unit_position.y, slots = slots, size = size, **kwargs)
+		super(BuildingCollector, self).__init__(x = home_unit.position.x, y = home_unit.position.y, slots = slots, size = size, **kwargs)
 		print 'carriage beeing inited'
 
 		self.home_unit = weakref.ref(home_unit)

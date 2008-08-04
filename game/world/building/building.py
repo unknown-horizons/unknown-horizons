@@ -33,7 +33,7 @@ class Building(WorldObject):
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		origin = Point(x, y)
-		self.building_position = Rect(origin, self.size[0]-1, self.size[1]-1)
+		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.owner = owner
 		self.object_type = 0
 		self._instance = self.getInstance(x, y) if instance is None else instance
@@ -42,7 +42,7 @@ class Building(WorldObject):
 		self.island = game.main.session.world.get_island(origin.x, origin.y)
 		settlements = self.island.get_settlements(origin.x, origin.y)
 		if len(settlements) == 0:
-			self.settlement = self.island.add_settlement(self.building_position.left, self.building_position.top, self.building_position.right, self.building_position.bottom, self.radius, owner)
+			self.settlement = self.island.add_settlement(self.position.left, self.position.top, self.position.right, self.position.bottom, self.radius, owner)
 		else:
 			self.settlement = settlements[0]
 
@@ -52,8 +52,8 @@ class Building(WorldObject):
 		self.settlement.rem_inhabitants(self.inhabitants)
 		self.island.remove_building(self)
 
-		for x in xrange(self.building_position.left, self.building_position.right + 1):
-			for y in xrange(self.building_position.top, self.building_position.bottom + 1):
+		for x in xrange(self.position.left, self.position.right + 1):
+			for y in xrange(self.position.top, self.position.bottom + 1):
 				point = Point(x, y)
 				tile = self.island.get_tile(point)
 				tile.blocked = False
@@ -64,7 +64,7 @@ class Building(WorldObject):
 
 	def save(self, db):
 		db("INSERT INTO building (rowid, type, x, y, health, owner) VALUES (?, ?, ?, ?, ?, ?)",
-			self.getId(), self.__class__.id, self.building_position.origin.x, self.building_position.origin.y, self.health, self.owner.getId())
+			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y, self.health, self.owner.getId())
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings
@@ -72,7 +72,7 @@ class Building(WorldObject):
 		for building in buildings:
 			if building == self:
 				continue
-			if self.building_position.distance( building.building_position ) <= self.radius:
+			if self.position.distance( building.position ) <= self.radius:
 				ret_building.append( building )
 		return ret_building
 
@@ -118,7 +118,7 @@ class Selectable(object):
 		"""Runs neccesary steps to select the building."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island.grounds:
-			if tile.settlement == self.settlement and (max(self.building_position.left - tile.x, 0, tile.x - self.building_position.right) ** 2) + (max(self.building_position.top - tile.y, 0, tile.y - self.building_position.bottom) ** 2) <= self.radius ** 2 and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
+			if tile.settlement == self.settlement and (max(self.position.left - tile.x, 0, tile.x - self.position.right) ** 2) + (max(self.position.top - tile.y, 0, tile.y - self.position.bottom) ** 2) <= self.radius ** 2 and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
 				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None and True: #todo: only highlight buildings that produce something were interested in
 					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)

@@ -59,7 +59,7 @@ def check_path(path):
 			err = True
 			print 'PATH ERROR FROM', prev, 'TO', cur,' DIST: ', dist
 		prev = cur
-		
+
 	if err:
 		assert False, 'Encountered errors when testing pathfinding'
 	return True
@@ -86,9 +86,9 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 
 	# support for building
 	if isinstance(source, Building):
-		source = source.building_position
+		source = source.position
 	if isinstance(destination, Building):
-		destination = destination.building_position
+		destination = destination.position
 
 	if destination in blocked_coords:
 		return None
@@ -209,7 +209,7 @@ class Pather(object):
 		self.move_diagonal = False
 		self.blocked_coords = []
 		if unit.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT:
-			island = game.main.session.world.get_island(unit.unit_position.x, unit.unit_position.y)
+			island = game.main.session.world.get_island(unit.position.x, unit.position.y)
 			self.path_nodes = island.path_nodes
 		elif unit.__class__.movement == Movement.CARRIAGE_MOVEMENT:
 			self.move_diagonal = True
@@ -219,40 +219,40 @@ class Pather(object):
 			self.blocked_coords = game.main.session.world.ship_map
 		elif unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			# TODO
-			pass 
+			pass
 		else:
 			assert False, 'Invalid way of movement'
-			
+
 		self.unit = weakref.ref(unit)
-		
+
 		self.cur = None
-		
+
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
 		"""Calculates a path to destination
 		@param destination: a destination supported by find_path
-		@param destination_in_building: bool, wether destination is in a building. this makes the unit 
-		@param check_only: if True the path isn't saved, 
+		@param destination_in_building: bool, wether destination is in a building. this makes the unit
+		@param check_only: if True the path isn't saved,
 		@return: False if movement is impossible, else True"""
-		
+
 		# this can't be initalized at construction time
 		if self.unit().__class__.movement == Movement.CARRIAGE_MOVEMENT:
 			self.path_nodes = self.unit().home_building().radius_coords
-		
+
 		if not check_only:
 			self.source_in_building = False
-		source = self.unit().unit_position
+		source = self.unit().position
 		if self.unit().is_moving():
 			source = Point(self.path[self.cur])
 		else:
-			island = game.main.session.world.get_island(self.unit().unit_position.x, self.unit().unit_position.y)
+			island = game.main.session.world.get_island(self.unit().position.x, self.unit().position.y)
 			if island is not None:
-				building = island.get_building(self.unit().unit_position.x, self.unit().unit_position.y)
+				building = island.get_building(self.unit().position.x, self.unit().position.y)
 				if building is not None:
-					print 'SRC IN BUILDING:', building.building_position
+					print 'SRC IN BUILDING:', building.position
 					source = building
 					if not check_only:
 						self.source_in_building = True
-		
+
 		blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else self.blocked_coords.keys()
 		path = findPath(source, destination, self.path_nodes, blocked_coords, self.move_diagonal)
 		if not check_only:
@@ -262,18 +262,18 @@ class Pather(object):
 			else:
 				self.cur = -1
 			self.destination_in_building = destination_in_building
-		
+
 		if path == None:
 			return False
 		else:
 			return True
-	
+
 	def revert_path(self, destination_in_building):
 		"""Moves back to the source of last movement, using same path"""
 		self.cur = -1
 		self.destination_in_building = destination_in_building
 		self.path.reverse()
-	
+
 	def get_next_step(self):
 		"""Returns the next step in the current movement
 		@return: Point"""
@@ -281,7 +281,7 @@ class Pather(object):
 		if self.cur == len(self.path):
 			self.cur = None
 			return None
-		
+
 		if self.path[self.cur] in self.blocked_coords:
 			# path is suddenly blocked, find another path
 			blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else dict.fromkeys(self.blocked_coords, 1.0)
@@ -289,7 +289,7 @@ class Pather(object):
 			if self.path is None:
 				raise PathBlockedError
 			self.cur = 1
-		
+
 		if self.destination_in_building and self.cur == len(self.path)-1:
 			self.destination_in_building = False
 			self.unit().hide()
@@ -297,8 +297,7 @@ class Pather(object):
 			self.source_in_building = False
 			print 'SHOW AT', self.path[self.cur]
 			self.unit().show()
-			
+
 		return Point(self.path[self.cur])
-		
-	
-		
+
+

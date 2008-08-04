@@ -32,7 +32,7 @@ class Path(Building, BuildableLine):
 		"""
 		"""
 		super(Path, self).init()
-		origin = self.building_position.origin
+		origin = self.position.origin
 		self.island = game.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island.get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
@@ -42,7 +42,7 @@ class Path(Building, BuildableLine):
 
 	def remove(self):
 		super(Path, self).remove()
-		origin = self.building_position.origin
+		origin = self.position.origin
 		self.island.unregisterPath(self)
 		island = game.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island.get_surrounding_tiles(origin):
@@ -53,7 +53,7 @@ class Path(Building, BuildableLine):
 		"""
 		"""
 		action = ''
-		origin = self.building_position.origin
+		origin = self.position.origin
 		tile = self.island.get_tile(origin.offset(0, -1))
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'a'
@@ -86,7 +86,7 @@ class Bridge(Building, BuildableSingle):
 		"""
 		"""
 		super(Bridge, self).init()
-		origin = self.building_position.origin
+		origin = self.position.origin
 		self.island = game.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island.get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):

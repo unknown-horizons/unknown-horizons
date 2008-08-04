@@ -38,7 +38,7 @@ class Unit(WorldObject):
 			self.__class__._loadObject()
 		self.object_type = 1
 		self.last_unit_position = Point(x, y)
-		self.unit_position = self.last_unit_position
+		self.position = self.last_unit_position
 		self.move_target = self.last_unit_position
 		self.next_target = self.last_unit_position
 		# use for changing path while moving:
@@ -78,7 +78,7 @@ class Unit(WorldObject):
 		@param action: string representing the action that is finished.
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x + self.unit_position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x + self.position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
 		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
 
@@ -152,17 +152,17 @@ class Unit(WorldObject):
 	def move_directly(self, destination):
 		""" this is deprecated, do not use this.
 		"""
-		if self.next_target == self.unit_position:
+		if self.next_target == self.position:
 			#calculate next target
-			self.next_target = self.unit_position
-			if self.move_target.x > self.unit_position.x:
-				self.next_target = (self.unit_position.x + 1, self.next_target.y)
-			elif self.move_target.x < self.unit_position.x:
-				self.next_target = (self.unit_position.x - 1, self.next_target.y)
-			if self.move_target.y > self.unit_position.y:
-				self.next_target = (self.next_target.x, self.unit_position.y + 1)
-			elif self.move_target.y < self.unit_position.y:
-				self.next_target = (self.next_target.x, self.unit_position.y - 1)
+			self.next_target = self.position
+			if self.move_target.x > self.position.x:
+				self.next_target = (self.position.x + 1, self.next_target.y)
+			elif self.move_target.x < self.position.x:
+				self.next_target = (self.position.x - 1, self.next_target.y)
+			if self.move_target.y > self.position.y:
+				self.next_target = (self.next_target.x, self.position.y + 1)
+			elif self.move_target.y < self.position.y:
+				self.next_target = (self.next_target.x, self.position.y - 1)
 
 			self.next_target = Point(self.next_target)
 
@@ -171,7 +171,7 @@ class Unit(WorldObject):
 			location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
 			self._instance.move(self.action, location, 4.0/3.0)
 			#setup next timer (12 ticks for horizontal or vertical move, 12*sqrt(2)==17 ticks for diagonal move)
-			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else 17)
+			game.main.session.scheduler.add_new_object(self.move_tick, self, 12 if self.next_target.x == self.position.x or self.next_target.y == self.position.y else 17)
 		else:
 			self.movement_finished()
 
@@ -179,9 +179,9 @@ class Unit(WorldObject):
 		print self.id, 'MOVEMENT FINISHED'
 
 		# deprecated:
-		self.move_target = self.unit_position
+		self.move_target = self.position
 
-		self.next_target = self.unit_position
+		self.next_target = self.position
 
 		self.__is_moving = False
 
@@ -192,12 +192,12 @@ class Unit(WorldObject):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		#sync unit_position
-		self.last_unit_position = self.unit_position
+		self.last_unit_position = self.position
 
 		assert(self.next_target is not None)
-		self.unit_position = self.next_target
+		self.position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.unit_position.x, self.unit_position.y, 0))
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
 		self._instance.setLocation(location)
 
 		try:
@@ -239,7 +239,7 @@ class Unit(WorldObject):
 
 		#setup next timer
 		# diagonal_move = straight_move * sqrt(2)
-		ticks = int(time_move_straight) if self.next_target.x == self.unit_position.x or self.next_target.y == self.unit_position.y else int(time_move_straight*1.414)
+		ticks = int(time_move_straight) if self.next_target.x == self.position.x or self.next_target.y == self.position.y else int(time_move_straight*1.414)
 
 		game.main.session.scheduler.add_new_object(self.move_tick, self, ticks)
 
@@ -249,7 +249,7 @@ class Unit(WorldObject):
 		"""
 		if len(self.acceleration) > 0:
 			len_path = len(path)
-			pos_in_path = path.index(self.unit_position)
+			pos_in_path = path.index(self.position)
 			accelerations = [ accel  for step, accel in self.acceleration.items() if step == pos_in_path or step == pos_in_path - len_path ]
 			if len(accelerations) > 0:
 				return self.time_move_straight * max(accelerations)
@@ -286,10 +286,10 @@ class Unit(WorldObject):
 
 	def save(self, db):
 		super(Unit, self).save(db)
-		
+
 		# TODO: save owner
-		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)", 
-			self.getId(), self.__class__.id, self.unit_position.x, self.unit_position.y, self.health, 0)
+		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
+			self.getId(), self.__class__.id, self.position.x, self.position.y, self.health, 0)
 		# max_health was skipped because i guess it will be read from somewhere
 
 		# TODO (not necessarily necessary):
@@ -298,17 +298,17 @@ class Unit(WorldObject):
 		# - self._instance
 
 		# movement-code will be moved, don't save it here!
-		
+
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
 		# HACK: Call bloated __init__, which is not a good idea, but saves me from copying tons of code for now
 		# TODO: Implement location loading
 		(x, y, health, owner) = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
-		
+
 		Unit.__init__(self, x, y)
-		
+
 		self.health = health
-		
-		
-		
-		
+
+
+
+

@@ -50,7 +50,7 @@ class Settlement(WorldObject):
 		"""
 		point = Point(x, y)
 		for b in self.buildings:
-			if b.building_position.contains(point):
+			if b.position.contains(point):
 				return b
 		else:
 			return None
@@ -67,7 +67,7 @@ class Settlement(WorldObject):
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
 			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
-		
+
 		# TODO:
 		# self.buildings ?
 		# self._inhabitants ?

@@ -69,7 +69,7 @@ class BranchOffice(StorageBuilding):
 		if len(settlements) != 0:
 			return None
 		#ship check
-		if (max(x - ship.unit_position.x, 0, ship.unit_position.x - x - cls.size[0] + 1) ** 2) + (max(y - ship.unit_position.y, 0, ship.unit_position.y - y - cls.size[1] + 1) ** 2) > 25:
+		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
 			return None
 		return {'settlement' : None}
 

@@ -44,7 +44,7 @@ class Consumer(StorageHolder):
 
 		from game.world.building.building import Building
 		if isinstance(self, Building):
-			self.radius_coords = self.building_position.get_radius_coordinates(self.radius)
+			self.radius_coords = self.position.get_radius_coordinates(self.radius)
 
 		self.__collectors = WeakList()
 
