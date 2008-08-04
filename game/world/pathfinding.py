@@ -247,7 +247,7 @@ class Pather(object):
 		else:
 			island = game.main.session.world.get_island(self.unit().position.x, self.unit().position.y)
 			if island is not None:
-				building = island.get_building(self.unit().position.x, self.unit().position.y)
+				building = island.get_building(self.unit().position)
 				if building is not None:
 					source = building
 					if not check_only:

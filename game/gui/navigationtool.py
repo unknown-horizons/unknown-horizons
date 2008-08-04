@@ -21,6 +21,7 @@
 
 from cursortool import CursorTool
 import game.main
+from game.util import Point
 import fife
 
 class NavigationTool(CursorTool):
@@ -75,9 +76,9 @@ class NavigationTool(CursorTool):
 			self.lastmoved = current
 			island = game.main.session.world.get_island(int(round(current.x)), int(round(current.y)))
 			if island:
-				settlements = island.get_settlements(int(round(current.x)), int(round(current.y)))
-				if len(settlements) > 0:
-					game.main.session.ingame_gui.cityinfo_set(settlements.pop())
+				settlement = island.get_settlement(Point(int(round(current.x)), int(round(current.y))))
+				if settlement:
+					game.main.session.ingame_gui.cityinfo_set(settlement)
 				else:
 					game.main.session.ingame_gui.cityinfo_set(None)
 			else:

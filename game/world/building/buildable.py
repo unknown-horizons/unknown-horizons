@@ -21,7 +21,7 @@
 
 import game.main
 import math
-from game.util import Point
+from game.util import Point, Rect
 
 class BuildableSingle(object):
 	@classmethod
@@ -65,7 +65,7 @@ class BuildableSingle(object):
 
 	@classmethod
 	def isSettlementBuildRequirementSatisfied(cls, x, y, island, **state):
-		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
+		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
 		if len(settlements) != 1:
 			return None
 		return {'settlement' : settlements.pop()}

@@ -40,12 +40,8 @@ class Building(WorldObject):
 		self._instance.setId(str(self.getId()))
 
 		self.island = game.main.session.world.get_island(origin.x, origin.y)
-		settlements = self.island.get_settlements(origin.x, origin.y)
-		if len(settlements) == 0:
-			self.settlement = self.island.add_settlement(self.position.left, self.position.top, self.position.right, self.position.bottom, self.radius, owner)
-		else:
-			self.settlement = settlements[0]
-
+		self.settlement = self.island.get_settlement(origin) or self.island.add_settlement(self.position, self.radius, owner)
+		
 	def remove(self):
 		"""Removes the building"""
 		#print "BUILDING: REMOVE " + str(self)
@@ -63,8 +59,9 @@ class Building(WorldObject):
 		#self._instance.thisown = 1
 
 	def save(self, db):
-		db("INSERT INTO building (rowid, type, x, y, health, owner) VALUES (?, ?, ?, ?, ?, ?)",
-			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y, self.health, self.owner.getId())
+		db("INSERT INTO building (rowid, type, x, y, health, location) VALUES (?, ?, ?, ?, ?, ?)",
+			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y,
+			self.health, (self.settlement or self.island).getId())
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings

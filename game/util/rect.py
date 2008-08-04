@@ -78,6 +78,12 @@ class Rect(object):
 				  for y in xrange(self.top-radius, self.bottom+radius+1)
 						if (x,y) not in self_coords and \
 						self.distance( (x,y) ) <= radius ]
+						
+	def center(self):
+		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
+		
+		return Point((self.right - self.left) // 2, (self.bottom - self.top) // 2)
+		
 	
 	def contains(self, point):
 		""" Returns if this rect (self) contains the point.

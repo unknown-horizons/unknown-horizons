@@ -38,7 +38,7 @@ class World(livingObject):
 		#load islands
 		self.islands = []
 		for filename, offset_x, offset_y, islandid in db("select file, x, y, rowid from island"):
-			island = Island(offset_x, offset_y, filename)
+			island = Island(Point(offset_x, offset_y), filename)
 			island.load(db, islandid)
 			self.islands.append(island)
 

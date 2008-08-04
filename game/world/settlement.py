@@ -33,22 +33,25 @@ class Settlement(WorldObject):
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = [] # List of all the buildings belonging to the settlement
+		
+		self.setup_storage()
+		self.inventory.alter_inventory(6, 20)
+		self.inventory.alter_inventory(5, 20)
+		self.inventory.alter_inventory(4, 20)
+		
+	def setup_storage(self):
 		self.inventory = Storage()
 		self.inventory.addChangeListener(self._changed)
 		resources = game.main.db("SELECT rowid FROM data.resource")
 		for (res,) in resources:
 			self.inventory.addSlot(res, 30)
-		self.inventory.alter_inventory(6, 20)
-		self.inventory.alter_inventory(5, 20)
-		self.inventory.alter_inventory(4, 20)
+		
 
-	def get_building(self, x, y):
+	def get_building(self, point):
 		"""Returns the building at the position (x,y)
-		@param x: int x coordinate
-		@param y: int y coordinate
+		@param point: position to look at
 		@return: Building class instance or None if none is found.
 		"""
-		point = Point(x, y)
 		for b in self.buildings:
 			if b.position.contains(point):
 				return b
@@ -61,9 +64,9 @@ class Settlement(WorldObject):
 	def rem_inhabitants(self, num):
 		self._inhabitants -= num
 
-	def save(self, db):
-		db("INSERT INTO settlement (rowid, owner) VALUES(?, ?)",
-			self.getId(), self.owner.getId())
+	def save(self, db, islandid):
+		db("INSERT INTO settlement (rowid, island) VALUES(?, ?)",
+			self.getId(), islandid)
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
 			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
@@ -71,3 +74,21 @@ class Settlement(WorldObject):
 		# TODO:
 		# self.buildings ?
 		# self._inhabitants ?
+
+	@classmethod
+	def load(cls, db, worldid):
+		self = cls.__new__(cls)
+		
+		super(Settlement, self).load(db, worldid)
+		
+		(self.owner,) = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)
+		(self.name,) = db("SELECT name FROM name WHERE rowid = ?", worldid)
+		
+		self.setup_storage()
+		self.inventory.load(db, worldid)
+		
+		# TODO: Implement inhabitant save and load
+		self._inhabitants = 42
+		
+		self.buildings = []
+		

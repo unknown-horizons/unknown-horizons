@@ -24,7 +24,7 @@ from buildable import BuildableSingle
 from game.world.consumer import Consumer
 from game.world.provider import Provider
 from game.gui.tabwidget import TabWidget
-from game.util import Point
+from game.util import Point, Rect
 import game.main
 
 class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
@@ -62,7 +62,7 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 class BranchOffice(StorageBuilding):
 	@classmethod
 	def isSettlementBuildRequirementSatisfied(cls, x, y, island, ship, **state):
-		settlements = island.get_settlements(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1)
+		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
 		#if multi branch office allowed:
 		#if len(settlements) == 1:
 		#	return settlements.pop()
