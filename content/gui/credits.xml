@@ -2,7 +2,7 @@
 <Window title="Credits" base_color="40, 40, 40">
 	<Label text="These guys contributed to OpenAnno" base_color="40, 40, 40"/>
 	<ScrollArea size="400,400" vertical_scrollbar="1" base_color="40, 40, 40">
-		<TextBox name="creditText" filename="content/doc/AUTHORS"/>
+		<TextBox name="creditText" filename="doc/AUTHORS"/>
 	</ScrollArea>
 	<HBox>
 		<Spacer />
