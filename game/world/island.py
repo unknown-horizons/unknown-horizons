@@ -22,7 +22,7 @@
 import game.main
 from game.world.settlement import Settlement
 from pathfinding import findPath
-from game.util import WorldObject, Point
+from game.util import WorldObject, Point, Rect
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -43,7 +43,8 @@ class Island(WorldObject):
 		"""
 		self.file = file
 		game.main.db("attach ? as island", file)
-		self.x, self.y, self.width, self.height = game.main.db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground", x, y)[0]
+		p_x, p_y, width, height = game.main.db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from island.ground", x, y)[0]
+		self.rect = Rect(Point(p_x, p_y), width, height)
 		self.grounds = []
 		self.buildings = []
 		for (rel_x, rel_y, ground_id) in game.main.db("select x, y, ground_id from island.ground"):
@@ -58,7 +59,6 @@ class Island(WorldObject):
 		self.path_nodes = {}
 
 	def save(self, db):
-		
 		from game.dbreader import DbReader
 		
 		islanddb = DbReader(self.file)
@@ -80,7 +80,7 @@ class Island(WorldObject):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		if not (self.x <= point.x < self.x + self.width and self.y <= point.y < self.y + self.height):
+		if not self.rect.contains(point):
 			return None
 		for tile in self.grounds:
 				if tile.x == point.x and tile.y == point.y:
@@ -93,7 +93,7 @@ class Island(WorldObject):
 		@param y: int y coordinate
 		@return: Building class instance or None if none is found.
 		"""
-		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
+		if not self.rect.contains(Point(x, y)):
 			return None
 		settlements = self.get_settlements(x, y)
 		if len(settlements) == 0:
@@ -113,12 +113,15 @@ class Island(WorldObject):
 		@param max_x: int maximum x position.
 		@param max_y: int maximum y position.
 		@return: list of Settlement instances at that position."""
+		# TODO: use a rect as argument
 		if max_x is None:
 			max_x = min_x
 		if max_y is None:
 			max_y = min_y
+		rect = Rect(min_x, min_y, max_x, max_y)
 		settlements = []
-		if max_x < self.x or min_x >= self.x + self.width or max_y < self.y or min_y >= self.y + self.height:
+		# intersect returns None if the two rects do not overlap
+		if not self.rect.intersect(rect):
 			return []
 		for tile in self.grounds:
 			if min_x <= tile.x <= max_x and min_y <= tile.y <= max_y and tile.settlement is not None and tile.settlement not in settlements:

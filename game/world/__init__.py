@@ -24,7 +24,7 @@ __all__ = ['island', 'nature', 'player', 'settlement']
 import game.main
 from game.world.island import Island
 from game.world.player import Player
-from game.util import livingObject
+from game.util import livingObject, Point
 
 class World(livingObject):
 	"""
@@ -45,10 +45,10 @@ class World(livingObject):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
 		for i in self.islands:
-			self.min_x = i.x if self.min_x is None or i.x < self.min_x else self.min_x
-			self.min_y = i.y if self.min_y is None or i.y < self.min_y else self.min_y
-			self.max_x = (i.x + i.width - 1) if self.max_x is None or (i.x + i.width - 1) > self.max_x else self.max_x
-			self.max_y = (i.y + i.height - 1) if self.max_y is None or (i.y + i.width - 1) > self.max_y else self.max_y
+			self.min_x = i.rect.x if self.min_x is None or i.rect.x < self.min_x else self.min_x
+			self.min_y = i.rect.y if self.min_y is None or i.rect.y < self.min_y else self.min_y
+			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
+			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
 		self.min_x -= 10
 		self.min_y -= 10
 		self.max_x += 10
@@ -101,8 +101,9 @@ class World(livingObject):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param x: int x position.
 		@param y: int y position. """
+		point = Point(x, y)
 		for i in self.islands:
-			if not (i.x <= x < i.x + i.width and i.y <= y < i.y + i.height):
+			if not i.rect.contains(point):
 				continue
 			for tile in i.grounds:
 				if tile.x == x and tile.y == y:

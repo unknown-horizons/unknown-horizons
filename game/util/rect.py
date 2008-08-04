@@ -47,6 +47,10 @@ class Rect(object):
 				assert False, "Tried to init rect with rect"
 			else:
 				assert False, 'Invalid rect initialisation'+str(args)
+		
+		# Convenience attributes (can be used to make code more easy to read/understand)
+		self.x = self.left
+		self.y = self.top
 
 	def distance(self, other):
 		if isinstance(other, Point):
@@ -70,9 +74,25 @@ class Rect(object):
 		""" Returns a list of all coordinates, that are in the radius but are in not the building"""
 		self_coords = self.get_coordinates()
 		return  [ (x,y) for x in xrange(self.left-radius, self.right+radius+1) \
-			      for y in xrange(self.top-radius, self.bottom+radius+1)
+				  for y in xrange(self.top-radius, self.bottom+radius+1)
 						if (x,y) not in self_coords and \
 						self.distance( (x,y) ) <= radius ]
+	
+	def contains(self, point):
+		""" Returns if this rect (self) contains the point.
+		@param point: Point that is checked to be in this rect
+		@return: Returns whether the Point point is in this rect (self).
+		"""
+		return bool((self.left <= point.x < self.right) and (self.top <= point.y < self.bottom))
+
+	def intersect(self, rect):
+		""" Returns a rect that is the intersection of this rect and the rect parameter.
+		@param rect: Rect that will be intersected with this rect.
+		@return: A Rect which is the intersection of self and rect or None if the intersection is empty.
+		"""
+		if rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top:
+			return None
+		return Rect(max(self.left, rect.left), max(self.top, rect.top), min(self.right, rect.right), min(self.bottom, rect.bottom))
 
 	def __str__(self):
 		# nice representation for debugging purposes
