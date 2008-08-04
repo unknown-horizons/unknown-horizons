@@ -55,8 +55,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.object._Producer__registered_collectors.append(self)
-		if self.start_hidden:
-			self.show()
+		self.show()
 		self.move(self.job.path, self.begin_working)
 
 	def finish_working(self):
@@ -109,4 +108,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def next_animation(self):
 		# our sheep has no animation yes
 		# TODO: animation for animals
+		pass
+
+	def create_carriage(self):
 		pass

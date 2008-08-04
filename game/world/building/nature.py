@@ -26,6 +26,7 @@ from game.world.production import PrimaryProducer
 class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 	""" Class for stuff that grows, such as trees
 	"""
+
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = 1

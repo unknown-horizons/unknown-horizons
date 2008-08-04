@@ -143,6 +143,8 @@ class BuildingCollector(StorageHolder, Unit):
 	def end_job(self):
 		# he finished the job now
 		# before the new job can begin this will be executed
+		if self.start_hidden:
+			self.hide()
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
 	def reached_home(self):
@@ -157,8 +159,6 @@ class BuildingCollector(StorageHolder, Unit):
 			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 			assert(remnant == 0)
 		self.home_building()._Consumer__collectors.remove(self)
-		if self.start_hidden:
-			self.hide()
 		self.end_job()
 
 	def transfer_res(self):
