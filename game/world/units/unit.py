@@ -78,7 +78,7 @@ class Unit(WorldObject):
 		@param action: string representing the action that is finished.
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x + self.position.x - self.last_unit_position.x, self.unit_position.y + self.unit_position.y - self.last_unit_position.y, 0))
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x + self.position.x - self.last_unit_position.x, self.position.y + self.position.y - self.last_unit_position.y, 0))
 		self._instance.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
 
