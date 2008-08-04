@@ -28,7 +28,6 @@ from buildable import BuildableSingle
 class Settler(SecondaryProducer, BuildableSingle, Selectable, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, **kwargs):
-		print self.__class__.__mro__
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.inhabitants = 1 # TODE: read initial value from the db
 		self.max_inhabitants = 4 # TODO: read from db!

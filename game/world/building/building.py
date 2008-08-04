@@ -34,7 +34,6 @@ class Building(WorldObject):
 		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		origin = Point(x, y)
 		self.building_position = Rect(origin, self.size[0]-1, self.size[1]-1)
-		#print '-----------------------check dat...------------------------------'
 		self.owner = owner
 		self.object_type = 0
 		self._instance = self.getInstance(x, y) if instance is None else instance
@@ -62,7 +61,7 @@ class Building(WorldObject):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
-		
+
 	def save(self, db):
 		db("INSERT INTO building (rowid, type, x, y, health, owner) VALUES (?, ?, ?, ?, ?, ?)",
 			self.getId(), self.__class__.id, self.building_position.origin.x, self.building_position.origin.y, self.health, self.owner.getId())

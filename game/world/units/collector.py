@@ -42,10 +42,10 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		print self.__class__.__mro__
-		super(BuildingCollector, self).__init__(x=home_building.building_position.origin.x, 
-												y=home_building.building_position.origin.y, 
-												slots = slots, 
-												size = size, 
+		super(BuildingCollector, self).__init__(x=home_building.building_position.origin.x,
+												y=home_building.building_position.origin.y,
+												slots = slots,
+												size = size,
 												**kwargs)
 		print 'carriage beeing inited'
 
@@ -120,6 +120,7 @@ class BuildingCollector(StorageHolder, Unit):
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
+		self.show()
 		self.move(self.job.object.building_position.origin, self.begin_working)
 
 	def begin_working(self):
@@ -155,6 +156,8 @@ class BuildingCollector(StorageHolder, Unit):
 			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 			assert(remnant == 0)
 		self.home_building()._Consumer__collectors.remove(self)
+		if self.start_hidden:
+			self.hide()
 		self.end_job()
 
 	def transfer_res(self):
@@ -188,6 +191,22 @@ class StorageCollector(BuildingCollector):
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
+
+	def __init__(self, home_unit, slots = 1, size = 6, start_hidden=True, **kwargs):
+		print self.__class__.__mro__
+		super(BuildingCollector, self).__init__(x = home_unit.unit_position.x, y = home_unit.unit_position.y, slots = slots, size = size, **kwargs)
+		print 'carriage beeing inited'
+
+		self.home_unit = weakref.ref(home_unit)
+
+		for res in self.home_building().get_needed_res(): # NOTE: this does not work for multiple production lines yet.
+			if not self.inventory.hasSlot(res):
+				self.inventory.addSlot(res, size)
+
+		self.start_hidden = start_hidden
+		if self.start_hidden:
+			self.hide()
+		self.search_job()
 
 	def begin_current_job(self):
 		"""Executes the current job"""
