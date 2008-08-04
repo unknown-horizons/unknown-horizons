@@ -75,6 +75,7 @@ class PrimaryProducer(Provider):
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
+		print self.id
 		self._instance.act("working", self._instance.getFacingLocation(), True)
 		print self.getId(), "begin working"
 
@@ -88,13 +89,13 @@ class PrimaryProducer(Provider):
 		self._instance.act("default", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)
 		self.check_production_startable()
-		
+
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
 		game.main.db("INSERT INTO %(db)s.producer (rowid, active_production_line) VALUES(?,?)" % {'db':db}, self.getId(), self.active_production_line)
 		for prodline in self.production:
 			game.main.db("INSERT INTO %(db)s.production_line (producer, id) VALUES(?,?)" % {'db':db}, self.getId(), prodline.id)
-			
+
 
 class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""

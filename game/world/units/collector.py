@@ -42,6 +42,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		print self.__class__.__mro__
+		print home_building
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,
 												slots = slots,
@@ -191,22 +192,6 @@ class StorageCollector(BuildingCollector):
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
-
-	def __init__(self, home_unit, slots = 1, size = 6, start_hidden=True, **kwargs):
-		print self.__class__.__mro__
-		super(BuildingCollector, self).__init__(x = home_unit.position.x, y = home_unit.position.y, slots = slots, size = size, **kwargs)
-		print 'carriage beeing inited'
-
-		self.home_unit = weakref.ref(home_unit)
-
-		for res in self.home_building().get_needed_res(): # NOTE: this does not work for multiple production lines yet.
-			if not self.inventory.hasSlot(res):
-				self.inventory.addSlot(res, size)
-
-		self.start_hidden = start_hidden
-		if self.start_hidden:
-			self.hide()
-		self.search_job()
 
 	def begin_current_job(self):
 		"""Executes the current job"""
