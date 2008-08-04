@@ -239,7 +239,7 @@ def startSingle():
 
 	map_id = gui.collectData('maplist')
 	if map_id == -1:
-		# BUG: this selects the last map by defaut
+		# BUG: this selects the last map by default
 		# uncomment the following lines to fix the bug
 		#showPopup('Error','You have to select a map')
 		#return
