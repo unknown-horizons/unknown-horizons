@@ -52,6 +52,14 @@ class Point(object):
 		"""
 		return [(self.x, self.y)]
 
+	def offset(self, x_offset, y_offset):
+		"""Returns a Point with an offset of x, y relative to this Point.
+		@param x_offset: int relative x-offset of the point to return
+		@param y_offset: int relative y-offset of the point to return
+		@return: a Point with offset x, y relative to the 'self' Point
+		"""
+		return Point(self.x + x_offset, self.y + y_offset)
+
 	def __str__(self):
 		""" nice representation for debugging purposes """
 		return 'Point(%s, %s)' % (self.x, self.y)

@@ -21,6 +21,7 @@
 
 import game.main
 import math
+from game.util import Point
 
 class BuildableSingle(object):
 	@classmethod
@@ -58,7 +59,7 @@ class BuildableSingle(object):
 		if island is None:
 			return None
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			if island.get_tile(xx,yy) is None:
+			if island.get_tile(Point(xx,yy)) is None:
 				return None
 		return {'island' : island}
 
@@ -72,7 +73,7 @@ class BuildableSingle(object):
 	@classmethod
 	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			tile_classes = island.get_tile(xx,yy).__class__.classes
+			tile_classes = island.get_tile(Point(xx,yy)).__class__.classes
 			if 'constructible' not in tile_classes:
 				return None
 		return {}
@@ -83,7 +84,7 @@ class BuildableSingle(object):
 		from path import Path
 		tear = []
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			obj = island.get_tile(xx,yy).object
+			obj = island.get_tile(Point(xx,yy)).object
 			if obj is not None:
 				if isinstance(obj, (GrowingBuilding, Path)):
 					tear.append(obj)

@@ -22,7 +22,7 @@
 import game.main
 from game.world.settlement import Settlement
 from pathfinding import findPath
-from game.util import WorldObject
+from game.util import WorldObject, Point
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -76,15 +76,14 @@ class Island(WorldObject):
 		
 		super(Island, self).load(db, worldid)
 
-	def get_tile(self, x, y):
+	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
-		@param x: int x position of the tile.
-		@param y: int y position of the tile.
+		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		if not (self.x <= x < self.x + self.width and self.y <= y < self.y + self.height):
+		if not (self.x <= point.x < self.x + self.width and self.y <= point.y < self.y + self.height):
 			return None
 		for tile in self.grounds:
-				if tile.x == x and tile.y == y:
+				if tile.x == point.x and tile.y == point.y:
 					return tile
 		return None
 
@@ -172,7 +171,7 @@ class Island(WorldObject):
 		#	building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
 		for xx in xrange(x, x + building.size[0]):
 			for yy in xrange(y, y + building.size[1]):
-				tile = self.get_tile(xx, yy)
+				tile = self.get_tile(Point(xx, yy))
 				tile.blocked = True # Set tile blocked
 				tile.object = building # Set tile's object to the building
 		building.settlement.buildings.append(building)
@@ -186,7 +185,7 @@ class Island(WorldObject):
 
 		for x in xrange(building.x, building.x + building.__class__.size[0]):
 			for y in xrange(building.y, building.y + building.__class__.size[1]):
-				tile = self.get_tile(x,y)
+				tile = self.get_tile(Point(x,y))
 				tile.blocked = False
 				tile.object = None
 		building.settlement.buildings.remove(building)

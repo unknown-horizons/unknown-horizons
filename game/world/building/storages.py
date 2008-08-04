@@ -24,6 +24,7 @@ from buildable import BuildableSingle
 from game.world.consumer import Consumer
 from game.world.provider import Provider
 from game.gui.tabwidget import TabWidget
+from game.util import Point
 import game.main
 
 class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
@@ -77,7 +78,7 @@ class BranchOffice(StorageBuilding):
 		#todo: check cost line
 		coast_tile_found = False
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			tile = island.get_tile(xx,yy)
+			tile = island.get_tile(Point(xx,yy))
 			classes = tile.__class__.classes
 			if 'coastline' in classes:
 				coast_tile_found = True
