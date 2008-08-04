@@ -466,14 +466,16 @@ def quitSession():
 		showMain()
 		
 def saveGame():
-	import game
+	global session
 	# FIXME: Implement save dialog
-	game.main.session.save()
+	session.save()
+	returnGame()
 	
 def loadGame():
-	import game
+	global session
 	# FIXME: Implement save dialog
-	game.main.session.load()
+	session.load()
+	returnGame()
 	
 
 def onHelp():
