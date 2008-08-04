@@ -110,7 +110,7 @@ class BuildingCollector(StorageHolder, Unit):
 		jobs.reverse()
 
 		for job in jobs:
-			job.path = self.check_move(Point(job.object.x, job.object.y))
+			job.path = self.check_move(job.object.building_position.origin)
 			if job.path is not None:
 				return job
 		return None
@@ -120,7 +120,7 @@ class BuildingCollector(StorageHolder, Unit):
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
-		self.move(Point(self.job.object.x, self.job.object.y), self.begin_working)
+		self.move(self.job.object.building_position.origin, self.begin_working)
 
 	def begin_working(self):
 		""""""

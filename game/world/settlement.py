@@ -20,7 +20,7 @@
 # ###################################################
 import game.main
 from game.world.storage import Storage
-from game.util import WorldObject
+from game.util import WorldObject, Point
 
 class Settlement(WorldObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -48,8 +48,9 @@ class Settlement(WorldObject):
 		@param y: int y coordinate
 		@return: Building class instance or None if none is found.
 		"""
+		point = Point(x, y)
 		for b in self.buildings:
-			if b.x <= x < b.x + b.__class__.size[0] and b.y <= y < b.y + b.__class__.size[1]:
+			if b.building_position.contains(point):
 				return b
 		else:
 			return None
