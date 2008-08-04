@@ -65,10 +65,12 @@ class Rect(object):
 			except TypeError:
 				return other.distance(self)
 
+	# TODO: replace this everywhere with iteration
 	def get_coordinates(self):
 		""" Returns all coordinates, that are in the Rect """
 		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
 
+	# TODO: reimplement this with Rect.__iter__
 	def get_radius_coordinates(self, radius):
 		""" Returns a list of all coordinates, that are in the radius but are in not the building"""
 		self_coords = self.get_coordinates()
@@ -99,3 +101,8 @@ class Rect(object):
 
 	def __eq__(self, other):
 		return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
+		
+	def __iter__(self):
+		for x in xrange(self.left, self.right+1):
+			for y in xrange(self.top, self.bottom+1):
+				yield Point(x, y)
