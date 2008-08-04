@@ -55,7 +55,8 @@ class Building(WorldObject):
 
 		for x in xrange(self.building_position.left, self.building_position.right + 1):
 			for y in xrange(self.building_position.top, self.building_position.bottom + 1):
-				tile = self.island.get_tile(x,y)
+				point = Point(x, y)
+				tile = self.island.get_tile(point)
 				tile.blocked = False
 				tile.object = None
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)

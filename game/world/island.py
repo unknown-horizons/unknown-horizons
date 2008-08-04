@@ -198,10 +198,12 @@ class Island(WorldObject):
 		assert(building not in building.settlement.buildings)
 
 	def registerPath(self, path):
-		self.path_nodes[ (path.x, path.y) ] = path.__class__.speed
+		origin = path.building_position.origin
+		self.path_nodes[ (origin.x, origin.y) ] = path.__class__.speed
 
 	def unregisterPath(self, path):
-		del self.path_nodes[ (path.x, path.y) ]
+		origin = path.building_position.origin
+		del self.path_nodes[ (origin.x, origin.y) ]
 
 	def get_surrounding_tiles(self, point):
 		tile_offsets = ((1, 0), (-1, 0), (0, 1), (0, -1))

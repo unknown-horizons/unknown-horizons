@@ -42,8 +42,9 @@ class Path(Building, BuildableLine):
 
 	def remove(self):
 		super(Path, self).remove()
+		origin = self.building_position.origin
 		self.island.unregisterPath(self)
-		island = game.main.session.world.get_island(self.building_position.origin.x, self.building_position.origin.y)
+		island = game.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island.get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
