@@ -66,7 +66,7 @@ class World(livingObject):
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "Done."
 		self.water = empty
-		
+
 		# create ship position list. entries: ship_map[ship.unit_position] = ship
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
@@ -76,7 +76,7 @@ class World(livingObject):
 
 		# create shiplist
 		self.ships = []
-		
+
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
 			# workaround to distinguish between ships and other units
 			unitclass = game.main.session.entities.units[typeid]
@@ -95,7 +95,7 @@ class World(livingObject):
 		@param x,y: int coordinates.
 		@return: Building class instance if a building is found, else none."""
 		i = self.get_island(x, y)
-		return None if i is None else i.get_building(x, y)
+		return None if i is None else i.get_building(Point(x, y))
 
 	def get_island(self, x, y):
 		"""Returns the island for that coordinate, if none is found, returns None.
