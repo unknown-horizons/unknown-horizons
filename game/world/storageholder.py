@@ -28,7 +28,6 @@ class StorageHolder(object):
 		self.inventory = Storage()
 		self.inventory.addChangeListener(self._changed)
 		for (res, size) in game.main.db("select resource, size from data.storage where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
-			print res, size
 			if not self.inventory.hasSlot(res):
 				self.inventory.addSlot(res, size)
 

@@ -36,7 +36,6 @@ class PrimaryProducer(Provider):
 		self.production = {}
 
 		# Init production lines
-		print self.id, 'id'
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
@@ -75,12 +74,11 @@ class PrimaryProducer(Provider):
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
-		print self.id
 		self._instance.act("working", self._instance.getFacingLocation(), True)
-		print self.getId(), "begin working"
+		#print self.getId(), "begin working"
 
 	def production_step(self):
-		print self.getId(), "production_step"
+		#print self.getId(), "production_step"
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:

@@ -23,6 +23,7 @@ from building import Building
 import fife
 import game.main
 import math
+import weakref
 from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):
@@ -33,19 +34,19 @@ class Path(Building, BuildableLine):
 		"""
 		super(Path, self).init()
 		origin = self.position.origin
-		self.island = game.main.session.world.get_island(origin.x, origin.y)
-		for tile in self.island.get_surrounding_tiles(origin):
+		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
+		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
-		self.island.registerPath(self)
+		self.island().registerPath(self)
 
 	def remove(self):
 		super(Path, self).remove()
 		origin = self.position.origin
-		self.island.unregisterPath(self)
+		self.island().unregisterPath(self)
 		island = game.main.session.world.get_island(origin.x, origin.y)
-		for tile in self.island.get_surrounding_tiles(origin):
+		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 
@@ -54,16 +55,16 @@ class Path(Building, BuildableLine):
 		"""
 		action = ''
 		origin = self.position.origin
-		tile = self.island.get_tile(origin.offset(0, -1))
+		tile = self.island().get_tile(origin.offset(0, -1))
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'a'
-		tile = self.island.get_tile(origin.offset(1, 0))
+		tile = self.island().get_tile(origin.offset(1, 0))
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'b'
-		tile = self.island.get_tile(origin.offset(0, 1))
+		tile = self.island().get_tile(origin.offset(0, 1))
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'c'
-		tile = self.island.get_tile(origin.offset(-1, 0))
+		tile = self.island().get_tile(origin.offset(-1, 0))
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'd'
 		if action == '':
@@ -87,8 +88,8 @@ class Bridge(Building, BuildableSingle):
 		"""
 		super(Bridge, self).init()
 		origin = self.position.origin
-		self.island = game.main.session.world.get_island(origin.x, origin.y)
-		for tile in self.island.get_surrounding_tiles(origin):
+		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
+		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
 

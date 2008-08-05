@@ -32,7 +32,6 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 	Inherited eg. by branch office, storage tent
 	"""
 	def __init__(self, x, y, owner, instance = None, **kwargs):
-		print self.__class__.__mro__
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.inventory = self.settlement.inventory
 		self.inventory.addChangeListener(self._changed)

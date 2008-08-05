@@ -35,7 +35,7 @@ class Point(object):
 			self.x = args[0]
 			self.y = args[1]
 		else:
-			print args
+			print 'Point',self,'args:', args
 			assert(False)
 
 	def distance(self, other):
