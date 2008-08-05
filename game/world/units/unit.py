@@ -102,7 +102,6 @@ class Unit(WorldObject):
 		@param callback: function that gets called when the unit arrives
 		@return: True if move is possible, else False
 		"""
-
 		move_possible = self.path.calc_path(destination, destination_in_building)
 
 		if not move_possible:

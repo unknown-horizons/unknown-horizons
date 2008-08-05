@@ -255,6 +255,10 @@ class Pather(object):
 
 		blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else self.blocked_coords.keys()
 		path = findPath(source, destination, self.path_nodes, blocked_coords, self.move_diagonal)
+		
+		if path is None:
+			return False
+		
 		if not check_only:
 			self.path = path
 			if self.unit().is_moving():
@@ -262,11 +266,8 @@ class Pather(object):
 			else:
 				self.cur = -1
 			self.destination_in_building = destination_in_building
-
-		if path is None:
-			return False
-		else:
-			return True
+			
+		return True
 
 	def revert_path(self, destination_in_building):
 		"""Moves back to the source of last movement, using same path"""

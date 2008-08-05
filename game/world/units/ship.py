@@ -86,11 +86,16 @@ class Ship(Unit):
 		game.main.session.ingame_gui.show_menu(TabWidget(3, self, {'overview_ship':{'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, self)}}))
 
 	def act(self, x, y):
+		"""Moves the ship.
+		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
+		self.stop()
 		def tmp():
 			game.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 		tmp()
 		x,y=int(round(x)),int(round(y))
-		self.move(Point(x,y), tmp)
+		move_possible = self.move(Point(x,y), tmp)
+		if not move_possible:
+			return
 		if self.position.x != x or self.position.y != y:
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
