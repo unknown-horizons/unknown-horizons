@@ -39,7 +39,8 @@ class Consumer(StorageHolder):
 			self.__resources[production_line] = []
 			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self.__resources[production_line].append(res)
-
+				if not self.inventory.hasSlot(res):
+					self.inventory.addSlot(res, 30) # TODO: fix size somewher else!
 		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
 
 		from game.world.building.building import Building
