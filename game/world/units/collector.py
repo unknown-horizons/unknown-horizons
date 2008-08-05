@@ -41,8 +41,6 @@ class BuildingCollector(StorageHolder, Unit):
 	"""
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
-		print self.__class__.__mro__
-		print home_building
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,
 												slots = slots,
@@ -202,6 +200,10 @@ class AnimalCollector(BuildingCollector):
 		self.home_building()._Consumer__collectors.append(self)
 		# removes the animal from the scheduler. It does not move anymore
 		self.stop_animal()
+
+	def pickup_animal(self):
+		print self.id, 'PICKUP ANIMAL'
+		self.show()
 		self.move(self.job.object.position, self.begin_working)
 
 	def finish_working(self):
@@ -244,7 +246,7 @@ class AnimalCollector(BuildingCollector):
 	def stop_animal(self):
 		print self.id, 'STOP ANIMAL', self.job.object.id
 		#Our animal shouldn't move anymore
-		self.job.object.stop_after_job()
+		self.job.object.stop_after_job(self)
 
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
