@@ -65,7 +65,9 @@ class Point(object):
 		return 'Point(%s, %s)' % (self.x, self.y)
 
 	def __eq__(self, other):
-		if isinstance(other, Point):
+		if other is None:
+			return False
+		elif isinstance(other, Point):
 			return (self.x == other.x and self.y == other.y)
 		else: # other is tuple
 			return (self.x == other[0] and self.y == other[1])
