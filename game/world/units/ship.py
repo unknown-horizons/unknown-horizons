@@ -100,10 +100,11 @@ class Ship(Unit):
 			loc = fife.Location(game.main.session.view.layers[2])
 			loc.thisown = 0
 			move_target = self.get_move_target()
-			coords = fife.ModelCoordinate(move_target.x, move_target.y)
-			coords.thisown = 0
-			loc.setLayerCoordinates(coords)
-			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"))
+			if move_target is not None:
+				coords = fife.ModelCoordinate(move_target.x, move_target.y)
+				coords.thisown = 0
+				loc.setLayerCoordinates(coords)
+				game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"))
 
 	def set_name(self):
 		self.name = game.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
