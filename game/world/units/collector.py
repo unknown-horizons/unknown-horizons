@@ -89,6 +89,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 		print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
+		print collectable_res
 		if len(collectable_res) == 0:
 			return None
 		jobs = []
@@ -97,6 +98,7 @@ class BuildingCollector(StorageHolder, Unit):
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
 					# get sum of picked up resources for res
+					print self.id
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
 					# check how much will be delivered
 					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__collectors if carriage.job.res == res ])
@@ -242,16 +244,12 @@ class AnimalCollector(BuildingCollector):
 	def stop_animal(self):
 		print self.id, 'STOP ANIMAL', self.job.object.id
 		#Our animal shouldn't move anymore
-		animal = self.job.object
-		game.main.session.scheduler.rem_all_classinst_calls(self.job.object)
-		if animal.job is not None and animal in animal.job.object._Provider__collectors:
-			animal.job.object._Provider__collectors.remove(animal)
-			animal.job = None
+		self.job.object.stop_job()
 
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
 		#self.job.object.move(self.job.object.position)
-		self.job.object.move(self.home_building().position.origin)
+		self.job.object.move(self.home_building().position)
 
 	def release_animal(self):
 		print self.id, 'RELEASE ANIMAL'

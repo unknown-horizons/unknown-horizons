@@ -105,6 +105,14 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		print self.id, 'GET COLLECTABLE RES'
 		return self.get_needed_res()
 
+	def stop_job(self):
+		game.main.session.scheduler.rem_all_classinst_calls(self)
+		print self.id, 'STOPPING CURRENT JOB'
+		if self.job is not None:
+			self.job.object._Provider__collectors.remove(self)
+			print self.job.object._Provider__collectors
+			self.job = None
+
 	def next_animation(self):
 		# our sheep has no animation yes
 		# TODO: animation for animals
