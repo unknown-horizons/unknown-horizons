@@ -82,7 +82,8 @@ class BuildingCollector(StorageHolder, Unit):
 	def get_job(self):
 		"""Returns the next job or None"""
 
-		if (self.home_building() is None) : return None
+		if self.home_building() is None:
+			return None
 
 		print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
@@ -125,26 +126,19 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def begin_working(self):
 		""""""
-		# TODO: animation change
+		self._instance.act("stopped", self._instance.getFacingLocation(), True)
 		print self.id, 'BEGIN WORKING'
 		game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'
-		# TODO: animation change
+		self._instance.act("default", self._instance.getFacingLocation(), True)
 		# transfer res
 		self.transfer_res()
 		# deregister at the target we're at
 		self.job.object._Provider__collectors.remove(self)
 		# move back to home
 		self.move_back(self.reached_home, destination_in_building = True)
-
-	def end_job(self):
-		# he finished the job now
-		# before the new job can begin this will be executed
-		if self.start_hidden:
-			self.hide()
-		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
 	def reached_home(self):
 		""" we finished now our complete work. Let's do it again in 32 ticks
@@ -159,6 +153,13 @@ class BuildingCollector(StorageHolder, Unit):
 			assert(remnant == 0)
 		self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
+
+	def end_job(self):
+		# he finished the job now
+		# before the new job can begin this will be executed
+		if self.start_hidden:
+			self.hide()
+		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
 	def transfer_res(self):
 		print self.id, 'TRANSFER PICKUP'
