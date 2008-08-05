@@ -88,6 +88,13 @@ class Unit(WorldObject):
 	def is_moving(self):
 		"""Returns wether unit is currently moving"""
 		return self.__is_moving
+	
+	def stop(self):
+		"""Stops a unit with currently no possibility to continue the movement.
+		The unit acctally stops moving when current move is finished."""
+		if not self.is_moving():
+			return
+		self.path.end_move()
 
 	def move(self, destination, callback = None, destination_in_building = False):
 		"""Moves unit to destination

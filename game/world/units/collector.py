@@ -227,7 +227,6 @@ class AnimalCollector(BuildingCollector):
 		self.release_animal()
 		self.end_job()
 
-
 	def get_buildings_in_range(self):
 		# This is only a small workarround
 		# as long we have no Collector class
@@ -241,17 +240,23 @@ class AnimalCollector(BuildingCollector):
 		return self.home_building().animals
 
 	def stop_animal(self):
-		print self.id, 'STOP ANIMAL'
+		print self.id, 'STOP ANIMAL', self.job.object.id
 		#Our animal shouldn't move anymore
+		animal = self.job.object
 		game.main.session.scheduler.rem_all_classinst_calls(self.job.object)
+		if animal.job is not None and animal in animal.job.object._Provider__collectors:
+			animal.job.object._Provider__collectors.remove(animal)
+			animal.job = None
 
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
-		self.job.object.move(self.job.object.position)
+		#self.job.object.move(self.job.object.position)
+		self.job.object.move(self.home_building().position.origin)
 
 	def release_animal(self):
 		print self.id, 'RELEASE ANIMAL'
-		game.main.session.scheduler.add_new_object(self.search_job, self, 16)
+		#game.main.session.scheduler.add_new_object(self.search_job, self, 16)
+		self.job.object.search_job()
 
 
 class Job(object):

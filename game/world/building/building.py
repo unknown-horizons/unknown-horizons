@@ -47,12 +47,12 @@ class Building(WorldObject):
 		"""Removes the building"""
 		#print "BUILDING: REMOVE " + str(self)
 		self.settlement.rem_inhabitants(self.inhabitants)
-		self.island.remove_building(self)
+		self.island().remove_building(self)
 
 		for x in xrange(self.position.left, self.position.right + 1):
 			for y in xrange(self.position.top, self.position.bottom + 1):
 				point = Point(x, y)
-				tile = self.island.get_tile(point)
+				tile = self.island().get_tile(point)
 				tile.blocked = False
 				tile.object = None
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
@@ -115,7 +115,7 @@ class Selectable(object):
 	def select(self):
 		"""Runs neccesary steps to select the building."""
 		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		for tile in self.island.grounds:
+		for tile in self.island().grounds:
 			if tile.settlement == self.settlement and (max(self.position.left - tile.x, 0, tile.x - self.position.right) ** 2) + (max(self.position.top - tile.y, 0, tile.y - self.position.bottom) ** 2) <= self.radius ** 2 and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
 				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None and True: #todo: only highlight buildings that produce something were interested in

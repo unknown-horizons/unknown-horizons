@@ -304,6 +304,9 @@ class Pather(object):
 		"""Returns the point where the path leads
 		@return: Point or None if no path has been calculated"""
 		return None if self.path is None else Point(self.path[-1])
-		
+	
+	def end_move(self):
+		"""Pretends that the path is finished in order to make the unit stop"""
+		del self.path[self.cur+1:]
 
 
