@@ -38,7 +38,6 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		self.collector = None
 		super(Animal, self).__init__(home_building = home_building, start_hidden = start_hidden, **kwargs)
-		self.__home_building = weakref.ref(home_building)
 		print self.id, "Sheep has a storage :" , self.inventory._inventory
 
 	def save(self, db):
@@ -112,18 +111,8 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		print self.id, 'GET COLLECTABLE RES'
 		return self.get_needed_res()
 
-	def stop_job(self):
-		"""
-		NOT USED CURRENTLY
-		"""
-		game.main.session.scheduler.rem_all_classinst_calls(self)
-		print self.id, 'STOPPING CURRENT JOB'
-		if self.job is not None:
-			self.job.object._Provider__collectors.remove(self)
-			print self.job.object._Provider__collectors
-			self.job = None
-
 	def stop_after_job(self, collector):
+		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
 
 	def next_animation(self):
