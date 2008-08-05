@@ -36,16 +36,10 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	movement = Movement.CARRIAGE_MOVEMENT
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
-		self.collecter = None
+		self.collector = None
 		super(Animal, self).__init__(home_building = home_building, start_hidden = start_hidden, **kwargs)
-		self.__home_building = home_building
-		self.home_building = home_building
-		self.start_hidden = start_hidden
+		self.__home_building = weakref.ref(home_building)
 		print self.id, "Sheep has a storage :" , self.inventory._inventory
-		if self.start_hidden:
-			self.hide()
-
-		self.home_building = weakref.ref(home_building)
 
 	def save(self, db):
 		super(Animal, self).save(db)
@@ -54,15 +48,15 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
 		self.job = self.get_job()
-		if self.job is None and self.collecter is None:
+		if self.job is None and self.collector is None:
 			print self.id, 'JOB NONE'
 			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
-		elif self.collecter is None:
+		elif self.collector is None:
 			print self.id, 'EXECUTE JOB'
 			self.begin_current_job()
 		else:
-			self.collecter.pickup_animal()
-			self.collecter = None
+			self.collector.pickup_animal()
+			self.collector = None
 
 	def begin_current_job(self):
 		"""Executes the current job"""
@@ -129,8 +123,8 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 			print self.job.object._Provider__collectors
 			self.job = None
 
-	def stop_after_job(self, collecter):
-		self.collecter = collecter
+	def stop_after_job(self, collector):
+		self.collector = collector
 
 	def next_animation(self):
 		# our sheep has no animation yes
