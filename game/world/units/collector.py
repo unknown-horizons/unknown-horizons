@@ -244,7 +244,7 @@ class AnimalCollector(BuildingCollector):
 	def stop_animal(self):
 		print self.id, 'STOP ANIMAL', self.job.object.id
 		#Our animal shouldn't move anymore
-		self.job.object.stop_job()
+		self.job.object.stop_after_job()
 
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'

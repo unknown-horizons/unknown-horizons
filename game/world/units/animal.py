@@ -35,7 +35,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	grazingTime = 2
 	movement = Movement.CARRIAGE_MOVEMENT
 
-	def __init__(self, home_building, start_hidden=True, **kwargs):
+	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(Animal, self).__init__(home_building = home_building, start_hidden = start_hidden, **kwargs)
 		self.__home_building = home_building
 		self.home_building = home_building
@@ -46,10 +46,23 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 		self.home_building = weakref.ref(home_building)
 		self.search_job()
+		self.stopped = False
 
 	def save(self, db):
 		super(Animal, self).save(db)
 		# NOTE: home_building and start_hidden are also set in BuildingCollector
+
+	def search_job(self):
+		"""Search for a job, only called if the collector does not have a job."""
+		self.job = self.get_job()
+		if self.job is None:
+			print self.id, 'JOB NONE'
+			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
+		elif not self.stopped:
+			print self.id, 'EXECUTE JOB'
+			self.begin_current_job()
+		else:
+			self.stopped = False
 
 	def begin_current_job(self):
 		"""Executes the current job"""
@@ -106,12 +119,18 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		return self.get_needed_res()
 
 	def stop_job(self):
+		"""
+		NOT USED CURRENTLY
+		"""
 		game.main.session.scheduler.rem_all_classinst_calls(self)
 		print self.id, 'STOPPING CURRENT JOB'
 		if self.job is not None:
 			self.job.object._Provider__collectors.remove(self)
 			print self.job.object._Provider__collectors
 			self.job = None
+
+	def stop_after_job(self):
+		self.stopped = True
 
 	def next_animation(self):
 		# our sheep has no animation yes
