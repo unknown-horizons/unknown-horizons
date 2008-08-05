@@ -89,11 +89,14 @@ class Unit(WorldObject):
 		"""Returns wether unit is currently moving"""
 		return self.__is_moving
 	
-	def stop(self):
+	def stop(self, callback = None):
 		"""Stops a unit with currently no possibility to continue the movement.
 		The unit acctally stops moving when current move is finished."""
 		if not self.is_moving():
+			if callback is not None:
+				callback()
 			return
+		self.move_callback = None if callback is None else WeakMethod(callback)
 		self.path.end_move()
 
 	def move(self, destination, callback = None, destination_in_building = False):
@@ -111,9 +114,7 @@ class Unit(WorldObject):
 		self.move_callback = None if callback is None else WeakMethod(callback)
 
 		if not self.is_moving():
-			game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
-
-		self.__is_moving = True
+			self.move_tick()
 
 		return True
 
@@ -121,7 +122,7 @@ class Unit(WorldObject):
 		self.path.revert_path(destination_in_building)
 		self.move_callback = callback
 		self.__is_moving = True
-		game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
+		self.move_tick()
 
 	def movement_finished(self):
 		self.next_target = self.position
@@ -141,14 +142,19 @@ class Unit(WorldObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
 		self._instance.setLocation(location)
 
-		try:
-			self.next_target = self.path.get_next_step()
-		except PathBlockedError:
-			return
+		while self.next_target == self.position:
+			try:
+				self.next_target = self.path.get_next_step()
+			except PathBlockedError:
+				self.__is_moving = False
+				self.next_target = self.position
+				return
 
 		if self.next_target is None:
 			self.movement_finished()
 			return
+		else:
+			self.__is_moving = True
 
 		#setup movement
 
