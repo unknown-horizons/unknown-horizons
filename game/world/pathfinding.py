@@ -242,7 +242,7 @@ class Pather(object):
 		if not check_only:
 			self.source_in_building = False
 		source = self.unit().position
-		if self.unit().is_moving():
+		if self.unit().is_moving() and self.path is not None:
 			source = Point(self.path[self.cur])
 		else:
 			island = game.main.session.world.get_island(self.unit().position.x, self.unit().position.y)
@@ -279,7 +279,7 @@ class Pather(object):
 		"""Returns the next step in the current movement
 		@return: Point"""
 		self.cur += 1
-		if self.cur == len(self.path):
+		if self.path is None or self.cur == len(self.path):
 			self.cur = None
 			return None
 
