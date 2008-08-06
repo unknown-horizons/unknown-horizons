@@ -125,11 +125,11 @@ class Island(WorldObject):
 		@param rect: Area to search for settlements
 		@return: list of Settlement instances at that position."""
 		settlements = []
-		# intersect returns None if the two rects do not overlap
-		if not self.rect.intersect(rect):
+		# intersects returns False if the two rects do not overlap
+		if not self.rect.intersects(rect):
 			return []
 		for tile in self.grounds:
-			if Point(tile.x, tile.y) in rect and tile.settlement is not None and tile.settlement not in settlements:
+			if tile.settlement is not None and tile.settlement not in settlements and rect.contains(Point(tile.x, tile.y)):
 				settlements.append(tile.settlement)
 		return settlements
 
