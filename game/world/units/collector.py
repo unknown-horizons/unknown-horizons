@@ -125,7 +125,8 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def begin_working(self):
 		""""""
-		self._instance.act("stopped", self._instance.getFacingLocation(), True)
+		# uncomment the following line when all collectors have a "stopped" animation
+		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
 		print self.id, 'BEGIN WORKING'
 		game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 
