@@ -90,7 +90,7 @@ class Rect(object):
 		@param point: Point that is checked to be in this rect
 		@return: Returns whether the Point point is in this rect (self).
 		"""
-		return bool((self.left <= point.x < self.right) and (self.top <= point.y < self.bottom))
+		return (self.left <= point.x <= self.right) and (self.top <= point.y <= self.bottom)
 
 	def intersect(self, rect):
 		""" Returns a rect that is the intersection of this rect and the rect parameter.
@@ -100,6 +100,13 @@ class Rect(object):
 		if rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top:
 			return None
 		return Rect(max(self.left, rect.left), max(self.top, rect.top), min(self.right, rect.right), min(self.bottom, rect.bottom))
+
+	def intersects(self, rect):
+		""" Returns if the rectangle intersects with the rect parameter.
+		@param rect: Rect that will be intersected with this rect.
+		@return: A bool.
+		"""
+		return not (rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top)
 
 	def __str__(self):
 		# nice representation for debugging purposes
