@@ -113,7 +113,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 
 	source_coords = source.get_coordinates()
 	for c in source_coords:
-		source_to_dest_dist = Point(c).distance(destination)
+		source_to_dest_dist = Point(*c).distance(destination)
 		to_check[c] = [None, 0, source_to_dest_dist, source_to_dest_dist]
 		path_nodes[c] = 0
 
@@ -243,7 +243,7 @@ class Pather(object):
 			self.source_in_building = False
 		source = self.unit().position
 		if self.unit().is_moving() and self.path is not None:
-			source = Point(self.path[self.cur])
+			source = Point(*self.path[self.cur])
 		else:
 			island = game.main.session.world.get_island(self.unit().position.x, self.unit().position.y)
 			if island is not None:
