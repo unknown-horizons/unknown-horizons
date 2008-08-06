@@ -61,14 +61,13 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
-		game.main.db("INSERT INTO %(db)s.buildingcollector (rowid, start_hidden, home_building, job) VALUES (?, ?)" % {'db':db}, self.getId(), self.start_hidden, self.home_building.getId(), 0)
+		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
+		print 'savin job', (self.job is not None)
 		if self.job is not None:
-			game.main.db("UPDATE %(db)s.buildingcollector SET job = ?, job_object = ?, job_res = ?, job_amount = ? WHERE rowid = %(rowid)d" % {'db':db, 'rowid':self.getId()}, 1, self.job.object.getId(), self.job.res, self.job.amount)
-
+			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
+			
 		# TODO:
-		# home_building (weakref)
 		# state of current job
-		# job.path
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -111,8 +110,7 @@ class BuildingCollector(StorageHolder, Unit):
 		jobs.reverse()
 
 		for job in jobs:
-			job.path = self.check_move(job.object.position)
-			if job.path is not None:
+			if self.check_move(job.object.position) is not None:
 				return job
 		return None
 	
@@ -258,7 +256,6 @@ class Job(object):
 		self.object = object
 		self.res = res
 		self.amount = amount
-		self.path = []
-
+		
 		# this is rather a dummy
 		self.rating = amount

@@ -28,7 +28,6 @@ from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):
 	speed = 5.0
-
 	def init(self):
 		"""
 		"""

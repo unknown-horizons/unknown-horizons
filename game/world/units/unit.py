@@ -219,18 +219,14 @@ class Unit(WorldObject):
 
 	def save(self, db):
 		super(Unit, self).save(db)
-
-		# TODO: save owner
+		
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
 			self.getId(), self.__class__.id, self.position.x, self.position.y, self.health, 0)
-		# max_health was skipped because i guess it will be read from somewhere
+		
+		self.path.save(db, self.getId())
+		
+		# TODO: owner
 
-		# TODO (not necessarily necessary):
-		# - actionlistener
-		# - self._object
-		# - self._instance
-
-		# movement-code will be moved, don't save it here!
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)

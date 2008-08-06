@@ -113,6 +113,7 @@ class World(livingObject):
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
+		print 'STARTING SAVING'
 		for name, value in self.properties.iteritems():
 			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, value)
 		for island in self.islands:
@@ -121,3 +122,4 @@ class World(livingObject):
 			player.save(db)
 		for ship in self.ships:
 			ship.save(db)
+		print 'FINISHED SAVING'

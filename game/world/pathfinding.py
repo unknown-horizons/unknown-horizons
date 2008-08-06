@@ -305,5 +305,11 @@ class Pather(object):
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
 		del self.path[self.cur+1:]
+		
+	def save(self, db, unitid):
+		print 'savin path', (self.path is not None)
+		if self.path is not None:
+			for step in xrange(len(self.path)):
+				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", unitid, step, self.path[step][0], self.path[step][1])
 
 

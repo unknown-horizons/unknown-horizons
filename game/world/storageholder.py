@@ -33,7 +33,4 @@ class StorageHolder(object):
 
 	def save(self, db):
 		super(StorageHolder, self).save(db)
-		game.main.db("INSERT INTO %(db)s.storageholder (inventory) VALUES(?)" % {'db':db}, self.inventory.getId())
-		self.inventory.save()
-		# TODO:
-		# some kind of id
+		self.inventory.save(db, self.getId())

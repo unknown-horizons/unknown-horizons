@@ -42,6 +42,7 @@ class Building(WorldObject):
 
 		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
 		self.settlement = self.island().get_settlement(origin) or self.island().add_settlement(self.position, self.radius, owner)
+		#self.island().add_building(self, owner)
 		
 	def remove(self):
 		"""Removes the building"""
@@ -60,6 +61,7 @@ class Building(WorldObject):
 		#self._instance.thisown = 1
 
 	def save(self, db):
+		print 'savin building', self.id
 		db("INSERT INTO building (rowid, type, x, y, health, location) VALUES (?, ?, ?, ?, ?, ?)",
 			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y,
 			self.health, (self.settlement or self.island).getId())

@@ -113,14 +113,12 @@ class Storage(WorldObject):
 	
 	def save(self, db, ownerid):
 		super(Storage, self).save(db)
-		
 		for (res, (value, size)) in self._inventory.iteritems():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, res, value)
 				
 	def load(self, db, ownerid):
 		super(Storage, self).save(db)
-		
 		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
 			self.alter_inventory(res, amount)
 		
@@ -183,7 +181,19 @@ class ArbitraryStorage(WorldObject):
 
 		size += (self.slots - len(self._inventory)) * self.size
 		return size
-
+	
+	def save(self, db, ownerid):
+		super(Storage, self).save(db)
+		for slot in self._inventory:
+			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
+				ownerid, slot[0], slot[1])
+			
+	def load(self, db, ownerid):
+		super(Storage, self).save(db)
+		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
+			self.alter_inventory(res, amount)
+		
+			
 class GenericStorage(object):
 	def __init__(self, **kwargs):
 		super(GenericStorage, self).__init__(**kwargs)

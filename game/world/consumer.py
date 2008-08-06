@@ -53,8 +53,9 @@ class Consumer(StorageHolder):
 
 	def save(self, db):
 		super(Consumer, self).save(db)
-		for carriage in self.__local_carriages:
-			game.main.db("INSERT INTO %(db)s.consumer_carriages (consumer, carriage) VALUES (?, ?)" % {'db':db}, self.getId(), carriage.getId())
+		print 'savin consumer', self.id
+		for collector in self.__local_carriages:
+			collector.save(db)
 
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
