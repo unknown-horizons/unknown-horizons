@@ -299,12 +299,12 @@ class Pather(object):
 			print 'SHOW AT', self.path[self.cur]
 			self.unit().show()
 
-		return Point(self.path[self.cur])
+		return Point(*self.path[self.cur])
 	
 	def get_move_target(self):
 		"""Returns the point where the path leads
 		@return: Point or None if no path has been calculated"""
-		return None if self.path is None else Point(self.path[-1])
+		return None if self.path is None else Point(*self.path[-1])
 	
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
