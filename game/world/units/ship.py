@@ -58,7 +58,7 @@ class Ship(Unit):
 		game.main.session.world.ship_map[self.position] = self
 
 	def check_for_blocking_units(self, position):
-		if position in game.main.session.world.ship_map:
+		if position in game.main.session.world.ship_map and game.main.session.world.ship_map[position] is not self:
 			return False
 		else:
 			return True
@@ -97,10 +97,10 @@ class Ship(Unit):
 		if not move_possible:
 			return
 		if self.position.x != x or self.position.y != y:
-			loc = fife.Location(game.main.session.view.layers[2])
-			loc.thisown = 0
 			move_target = self.get_move_target()
 			if move_target is not None:
+				loc = fife.Location(game.main.session.view.layers[2])
+				loc.thisown = 0
 				coords = fife.ModelCoordinate(move_target.x, move_target.y)
 				coords.thisown = 0
 				loc.setLayerCoordinates(coords)

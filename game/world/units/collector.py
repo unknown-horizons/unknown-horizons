@@ -39,7 +39,6 @@ class BuildingCollector(StorageHolder, Unit):
 	  |-
 
 	"""
-
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,

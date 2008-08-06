@@ -56,7 +56,6 @@ class Consumer(StorageHolder):
 		for carriage in self.__local_carriages:
 			game.main.db("INSERT INTO %(db)s.consumer_carriages (consumer, carriage) VALUES (?, ?)" % {'db':db}, self.getId(), carriage.getId())
 
-
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
 		"""

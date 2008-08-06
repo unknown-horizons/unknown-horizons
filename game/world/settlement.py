@@ -46,7 +46,6 @@ class Settlement(WorldObject):
 		for (res,) in resources:
 			self.inventory.addSlot(res, 30)
 		
-
 	def get_building(self, point):
 		"""Returns the building at the position (x,y)
 		@param point: position to look at

@@ -81,7 +81,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	assert(isinstance(source, (Rect, Point, Building)))
 	assert(isinstance(destination, (Rect, Point, Building)))
 	assert(isinstance(path_nodes, (dict, list)))
-	assert(isinstance(blocked_coords, list))
+	assert(isinstance(blocked_coords, (dict, list)))
 	assert(isinstance(diagonal, (bool)))
 
 	# support for building
@@ -93,9 +93,12 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	if destination in blocked_coords:
 		return None
 
-	# if path_nodes is a list, turn it into a dict
 	if isinstance(path_nodes, list):
 		path_nodes = dict.fromkeys(path_nodes, 1.0)
+		
+	if isinstance(blocked_coords, dict):
+		blocked_coords = blocked_coords.keys()
+	
 
 	# nodes are the keys of the following dicts (x,y)
 	# the val of the keys are: [previous node, distance to this node from source, distance to destination, sum of the last two elements]
@@ -185,9 +188,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 
 			#t1 = time.time()
 			#print 'PATH FINDING TIME', t1-t0
-			print 'PATH FROM',source,'TO', destination,':', path
-			#if len(path_nodes) < 20:
-			#	print 'PATH NODES', path_nodes
+			#print 'PATH FROM',source,'TO', destination,':', path
 
 			if __debug__:
 				check_path(path)
@@ -197,10 +198,7 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	else:
 		#t1 = time.time()
 		#print 'PATH FINDING TIME', t1-t0
-		print '_NO_ PATH FROM',source,'TO', destination
-		#if len(path_nodes) < 20:
-			#	print 'PATH NODES', path_nodes
-		#sys.stdout = real_stdout
+		#print '_NO_ PATH FROM',source,'TO', destination
 		return None
 
 class Pather(object):
@@ -235,7 +233,7 @@ class Pather(object):
 		@param check_only: if True the path isn't saved,
 		@return: False if movement is impossible, else True"""
 
-		# this can't be initalized at construction time
+		# workaround, this can't be initalized at construction time
 		if self.unit().__class__.movement == Movement.CARRIAGE_MOVEMENT:
 			self.path_nodes = self.unit().home_building().radius_coords
 
@@ -253,8 +251,7 @@ class Pather(object):
 					if not check_only:
 						self.source_in_building = True
 
-		blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else self.blocked_coords.keys()
-		path = findPath(source, destination, self.path_nodes, blocked_coords, self.move_diagonal)
+		path = findPath(source, destination, self.path_nodes, self.blocked_coords, self.move_diagonal)
 		
 		if path is None:
 			return False
@@ -296,7 +293,6 @@ class Pather(object):
 			self.unit().hide()
 		elif self.source_in_building and self.cur == 2:
 			self.source_in_building = False
-			print 'SHOW AT', self.path[self.cur]
 			self.unit().show()
 
 		return Point(*self.path[self.cur])

@@ -75,6 +75,9 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 	def get_job(self):
 		"""Returns the next job or None"""
+		# FIXME: this code is mostly, if not fully, copied from collector
+		#        it's already inconsistent, so delete the double code and
+		#        make them share one implementation
 		print self.id, 'GET JOB'
 		print self.id, 'has in storage : ', self.inventory._inventory
 		collectable_res = self.get_collectable_res()
@@ -96,10 +99,8 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 						# add a new job
 						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), max_consumer_res_free)))
 
-
 		## TODO: Sort job list
 		jobs.sort(lambda x,y: random.randint(-1,1))
-
 
 		for job in jobs:
 			job.path =  self.check_move(Point(job.object.position.origin.x, job.object.position.origin.y))

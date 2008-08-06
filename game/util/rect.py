@@ -81,9 +81,7 @@ class Rect(object):
 						
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
-		
 		return Point((self.right - self.left) // 2, (self.bottom - self.top) // 2)
-		
 	
 	def contains(self, point):
 		""" Returns if this rect (self) contains the point.
@@ -97,7 +95,7 @@ class Rect(object):
 		@param rect: Rect that will be intersected with this rect.
 		@return: A Rect which is the intersection of self and rect or None if the intersection is empty.
 		"""
-		if rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top:
+		if not self.intersects(rect):
 			return None
 		return Rect(max(self.left, rect.left), max(self.top, rect.top), min(self.right, rect.right), min(self.bottom, rect.bottom))
 

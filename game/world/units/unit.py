@@ -243,5 +243,3 @@ class Unit(WorldObject):
 		self.health = health
 
 
-
-
