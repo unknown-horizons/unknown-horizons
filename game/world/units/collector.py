@@ -228,7 +228,7 @@ class AnimalCollector(BuildingCollector):
 		remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 		assert(remnant == 0)
 		self.home_building()._Consumer__collectors.remove(self)
-		self.release_animal()
+		game.main.session.scheduler.add_new_object(self.release_animal, self, 16)
 		self.end_job()
 
 	def get_buildings_in_range(self):
@@ -251,7 +251,7 @@ class AnimalCollector(BuildingCollector):
 	def get_animal(self):
 		print self.id, 'GET ANIMAL'
 		#self.job.object.move(self.job.object.position)
-		self.job.object.move(self.home_building().position)
+		self.job.object.move(self.home_building().position, destination_in_building = True)
 
 	def release_animal(self):
 		print self.id, 'RELEASE ANIMAL'
