@@ -175,6 +175,7 @@ class IngameGui(livingObject):
 				w.hide()
 		self.message_widget = None
 		self.tabwidgets = None
+		self.hide_menu()
 		super(IngameGui, self).end()
 
 	def update_gold(self):
