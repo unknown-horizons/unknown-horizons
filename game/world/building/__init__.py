@@ -72,7 +72,13 @@ class BuildingClass(type):
 		"""Loads building from the db.
 		"""
 		print 'Loading building #' + str(cls.id) + '...'
-		cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
+		try:
+			cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
+		except RuntimeError:
+			print 'already loaded...'
+			cls._object = game.main.session.view.model.getObject(str(cls.id), 'building')
+			return
+
 		for (action_id,) in game.main.db("SELECT action FROM data.action where building=? group by action", cls.id):
 			action = cls._object.createAction(action_id)
 			fife.ActionVisual.create(action)

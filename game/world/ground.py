@@ -57,7 +57,12 @@ class GroundClass(type):
 		""" Loads the ground object from the db (animations, etc)
 		"""
 		print 'Loading ground #' + str(self.id) + '...'
-		self._object = game.main.session.view.model.createObject(str(self.id), 'ground')
+		try:
+			self._object = game.main.session.view.model.createObject(str(self.id), 'ground')
+		except RuntimeError:
+			print 'already loaded...'
+			self._object = game.main.session.view.model.getObject(str(self.id), 'ground')
+			return
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 

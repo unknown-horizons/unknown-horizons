@@ -51,7 +51,12 @@ class UnitClass(type):
 		"""Loads the object with all animations.
 		"""
 		print 'Loading unit #' + str(id) + '...'
-		_object = game.main.session.view.model.createObject(str(id), 'unit')
+		try:
+			_object = game.main.session.view.model.createObject(str(id), 'unit')
+		except RuntimeError:
+			print 'already loaded...'
+			_object = game.main.session.view.model.getObject(str(id), 'unit')
+			return _object
 		_object.setPather(game.main.session.view.model.getPather('RoutePather'))
 		_object.setBlocking(False)
 		_object.setStatic(False)
