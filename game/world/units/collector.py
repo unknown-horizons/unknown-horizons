@@ -55,7 +55,9 @@ class BuildingCollector(StorageHolder, Unit):
 		self.start_hidden = start_hidden
 		if self.start_hidden:
 			self.hide()
-		self.search_job()
+			
+		# start searching jobs just when construction (of subclass) is completed
+		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
@@ -86,7 +88,6 @@ class BuildingCollector(StorageHolder, Unit):
 
 		print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
-		print collectable_res
 		if len(collectable_res) == 0:
 			return None
 		jobs = []
@@ -115,11 +116,15 @@ class BuildingCollector(StorageHolder, Unit):
 				return job
 		return None
 	
+	def setup_new_job(self):
+		"""Executes the necessary actions to begin a new job"""
+		self.job.object._Provider__collectors.append(self)
+		self.home_building()._Consumer__collectors.append(self)
+	
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.object._Provider__collectors.append(self)
-		self.home_building()._Consumer__collectors.append(self)
+		self.setup_new_job()
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
 
@@ -200,8 +205,7 @@ class AnimalCollector(BuildingCollector):
 	def begin_current_job(self):
 		"""Tell the animal to stop. First step of a job"""
 		print self.id, 'BEGIN CURRENT JOB'
-		self.job.object._Provider__collectors.append(self)
-		self.home_building()._Consumer__collectors.append(self)
+		self.setup_new_job()
 		self.stop_animal()
 
 	def pickup_animal(self):

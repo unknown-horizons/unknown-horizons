@@ -36,9 +36,8 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	movement = Movement.CARRIAGE_MOVEMENT
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
-		self.collector = None
 		super(Animal, self).__init__(home_building = home_building, start_hidden = start_hidden, **kwargs)
-		print self.id, "Sheep has a storage :" , self.inventory._inventory
+		self.collector = None
 
 	def save(self, db):
 		super(Animal, self).save(db)
@@ -46,27 +45,17 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
-		self.job = self.get_job()
-		if self.job is None and self.collector is None:
-			print self.id, 'JOB NONE'
-			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
-		elif self.collector is None:
-			print self.id, 'EXECUTE JOB'
-			self.begin_current_job()
-		else:
+		if self.collector is not None:
 			self.collector.pickup_animal()
 			self.collector = None
-
-	def begin_current_job(self):
-		"""Executes the current job"""
-		print self.id, 'BEGIN CURRENT JOB'
+		else:
+			super(Animal, self).search_job()
+			
+	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)
-		self.show()
-		self.move(self.job.object.position.origin, self.begin_working)
 
 	def finish_working(self):
 		print self.id, 'FINISH WORKING'
-		# TODO: animation change
 		# transfer ressources
 		self.transfer_res()
 		# deregister at the target we're at
@@ -79,7 +68,6 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		#        it's already inconsistent, so delete the double code and
 		#        make them share one implementation
 		print self.id, 'GET JOB'
-		print self.id, 'has in storage : ', self.inventory._inventory
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
 			return None
@@ -115,11 +103,6 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
-
-	def next_animation(self):
-		# our sheep has no animation yes
-		# TODO: animation for animals
-		pass
 
 	def create_carriage(self):
 		pass
