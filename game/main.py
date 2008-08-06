@@ -470,13 +470,25 @@ def saveGame():
 	# FIXME: Implement save dialog
 	session.save()
 	returnGame()
-	
+
 def loadGame():
-	global session
-	# FIXME: Implement save dialog
+	global session, gui, fife
+	# FIXME: Implement load dialog
+	session.end()
+	session = None
+	
+	if gui is not None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
+	gui.show()
+	fife.engine.pump()
+
+	session = Session()
+	session.begin()
 	session.load()
 	returnGame()
-	
 
 def onHelp():
 	"""
