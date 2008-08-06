@@ -20,23 +20,11 @@
 # ###################################################
 
 class Point(object):
-	def __init__(self, *args):
-		"""
-		Can be initialised with Point(1,2) or tu = (1,2); Point(tu)
-		"""
-		if len(args) == 1:
-			if isinstance(args[0], tuple):
-				self.x = args[0][0]
-				self.y = args[0][1]
-			elif isinstance(args[0], Point):
-				self.x = args[0].x
-				self.y = args[0].y
-		elif len(args) == 2:
-			self.x = args[0]
-			self.y = args[1]
-		else:
-			print 'Point',self,'args:', args
-			assert(False)
+	def __init__(self, x, y):
+		self.x, self.y = x, y
+
+	def copy(self):
+		return Point(self.x, self.y)
 
 	def distance(self, other):
 		if isinstance(other, Point):
