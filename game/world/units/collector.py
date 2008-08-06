@@ -114,7 +114,7 @@ class BuildingCollector(StorageHolder, Unit):
 			if job.path is not None:
 				return job
 		return None
-
+	
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
@@ -124,7 +124,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.move(self.job.object.position, self.begin_working)
 
 	def begin_working(self):
-		""""""
+		"""Pretends that the collector works by waiting some time"""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
 		print self.id, 'BEGIN WORKING'
@@ -189,47 +189,37 @@ class StorageCollector(BuildingCollector):
 	"""
 	movement = Movement.STORAGE_CARRIAGE_MOVEMENT
 
+	def begin_current_job(self):
+		"""Declare target of StorageCollector as building, because it always is"""
+		super(StorageCollector, self).begin_current_job()
+		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
 
 	def begin_current_job(self):
-		"""Executes the current job"""
+		"""Tell the animal to stop. First step of a job"""
 		print self.id, 'BEGIN CURRENT JOB'
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
-		# removes the animal from the scheduler. It does not move anymore
 		self.stop_animal()
 
 	def pickup_animal(self):
+		"""Moves collector to animal. Called by animal when it actually stopped"""
 		print self.id, 'PICKUP ANIMAL'
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
 
 	def finish_working(self):
-		print self.id, 'FINISH WORKING'
-		# TODO: animation change
-		# transfer res
-		self.transfer_res()
-		# deregister at the target we're at
-		self.job.object._Provider__collectors.remove(self)
-		# send the animal to home
+		"""Transfer res and such. Called when collector arrives at the animal"""
+		super(AnimalCollector, self).finish_working()
 		self.get_animal()
-		# move back to home
-		self.move_back(self.reached_home)
 
 	def reached_home(self):
-		""" we finished now our complete work. Let's do it again in 32 ticks
-			you can use this as event as after work
-		"""
-		print self.id, 'FINISHED WORK'
-		remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
-		assert(remnant == 0)
-		remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
-		assert(remnant == 0)
-		self.home_building()._Consumer__collectors.remove(self)
-		game.main.session.scheduler.add_new_object(self.release_animal, self, 16)
-		self.end_job()
+		"""Transfer res to home building and such. Called when collector arrives at it's home"""
+		super(AnimalCollector, self).reached_home()
+		# sheep and herder are inside the building now, pretending to work.  
+		self.release_animal()
 
 	def get_buildings_in_range(self):
 		# This is only a small workarround
@@ -244,19 +234,19 @@ class AnimalCollector(BuildingCollector):
 		return self.home_building().animals
 
 	def stop_animal(self):
+		"""Tell animal to stop at the next occasion"""
 		print self.id, 'STOP ANIMAL', self.job.object.id
-		#Our animal shouldn't move anymore
 		self.job.object.stop_after_job(self)
 
 	def get_animal(self):
+		"""Sends animal to collectors home building"""
 		print self.id, 'GET ANIMAL'
-		#self.job.object.move(self.job.object.position)
 		self.job.object.move(self.home_building().position, destination_in_building = True)
 
 	def release_animal(self):
-		print self.id, 'RELEASE ANIMAL'
-		#game.main.session.scheduler.add_new_object(self.search_job, self, 16)
-		self.job.object.search_job()
+		"""Let animal free after shearing"""
+		print self.id, 'RELEASE ANIMAL', self.job.object.getId()
+		game.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
 class Job(object):
