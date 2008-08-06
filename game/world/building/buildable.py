@@ -58,8 +58,9 @@ class BuildableSingle(object):
 		island = game.main.session.world.get_island(x, y)
 		if island is None:
 			return None
-		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			if island.get_tile(Point(xx,yy)) is None:
+		p = Point(0,0)
+		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
+			if island.get_tile(p) is None:
 				return None
 		return {'island' : island}
 
@@ -72,8 +73,9 @@ class BuildableSingle(object):
 
 	@classmethod
 	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
-		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			tile_classes = island.get_tile(Point(xx,yy)).__class__.classes
+		p = Point(0,0)
+		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
+			tile_classes = island.get_tile(p).__class__.classes
 			if 'constructible' not in tile_classes:
 				return None
 		return {}
@@ -83,8 +85,9 @@ class BuildableSingle(object):
 		from nature import GrowingBuilding
 		from path import Path
 		tear = []
-		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			obj = island.get_tile(Point(xx,yy)).object
+		p = Point(0,0)
+		for p.x, p.y in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			obj = island.get_tile(p).object
 			if obj is not None:
 				if isinstance(obj, (GrowingBuilding, Path)):
 					tear.append(obj)
@@ -166,9 +169,8 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
 		building = cls.areBuildRequirementsSatisfied(x, y, **kwargs)
 		if building is None:
-			buildings = []
-		else:
-			buildings = [building]
+			return []
+		buildings = [building]
 		for xx in xrange(x - cls.radius, x + cls.size[0] + cls.radius):
 			for yy in xrange(y - cls.radius, y + cls.size[1] + cls.radius):
 				if ((xx < x or xx >= x + cls.size[0]) or (yy < y or yy >= y + cls.size[1])) and ((max(x - xx, 0, xx - x - cls.size[0] + 1) ** 2) + (max(y - yy, 0, yy - y - cls.size[1] + 1) ** 2)) <= cls.radius ** 2:
