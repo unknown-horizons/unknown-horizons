@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 import game.main
 import fife
 from game.world.storage import Storage
@@ -43,7 +45,7 @@ class Ship(Unit):
 
 		self.set_name()
 
-		game.main.session.world.ship_map[self.position] = self
+		game.main.session.world.ship_map[self.position] = weakref.ref(self)
 
 	def setup_inventory(self):
 		## TODO: inherit from storageholder
@@ -55,10 +57,10 @@ class Ship(Unit):
 	def move_tick(self):
 		del game.main.session.world.ship_map[self.position]
 		super(Ship, self).move_tick()
-		game.main.session.world.ship_map[self.position] = self
+		game.main.session.world.ship_map[self.position] = weakref.ref(self)
 
 	def check_for_blocking_units(self, position):
-		if position in game.main.session.world.ship_map and game.main.session.world.ship_map[position] is not self:
+		if position in game.main.session.world.ship_map and game.main.session.world.ship_map[position]() is not self:
 			return False
 		else:
 			return True
@@ -124,7 +126,7 @@ class Ship(Unit):
 
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
-		game.main.session.world.ship_map[self.position] = self
+		game.main.session.world.ship_map[self.position] = weakref.ref(self)
 
 
 class PirateShip(Ship):

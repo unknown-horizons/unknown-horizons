@@ -57,3 +57,7 @@ class WorldObject(Changelistener):
 		
 		# Make sure that new WorldIDs are always higher than every other WorldObject
 		WorldObject.__next_id = max(self.__next_id, worldid + 1)
+
+	# for testing:
+	@classmethod
+	def get_objs(self): return self.__objects

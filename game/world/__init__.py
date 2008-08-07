@@ -77,13 +77,14 @@ class World(livingObject):
 		# create shiplist
 		self.ships = []
 
+		# old code for loading ships:
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
 			# workaround to distinguish between ships and other units
 			unitclass = game.main.session.entities.units[typeid]
 			from game.world.units.ship import Ship
 			if issubclass(unitclass, Ship):
 				self.ships.append(unitclass.load(db, worldid))
-
+				
 	def setupPlayer(self, name, color):
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)

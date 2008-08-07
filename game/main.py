@@ -33,6 +33,8 @@ from game.serverlobby import MasterServerLobby, ClientServerLobby
 from game.network import Socket, ServerConnection, ClientConnection
 from extscheduler import ExtScheduler
 
+#import gc; gc.set_debug(gc.DEBUG_LEAK | gc.DEBUG_STATS)
+
 def start():
 	"""Starts the game.
 	"""
@@ -170,7 +172,12 @@ def showQuit():
 	"""
 	global fife
 	if showDialog(fife.pychan.loadXML('content/gui/quitgame.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
-		fife.quit()
+		quit()
+		
+def quit():
+	"""Quits the game"""
+	global fife
+	fife.quit()
 
 def showMain():
 	""" shows the main menu
