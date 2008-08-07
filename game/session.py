@@ -19,12 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
-
 import math
-import fife
 import shutil
 import os.path
+
+import fife
+
+import game.main
 from game.gui.selectiontool import SelectionTool
 from game.world.building import building
 from game.world.units.ship import Ship
@@ -85,7 +86,8 @@ class Session(livingObject):
 		self.world = None
 		super(Session, self).end()
 		
-		#import pdb; 
+		#import pdb 
+		#import gc
 		#print 'WorldObject.get_objs().valuerefs()'
 		#pdb.set_trace()
 

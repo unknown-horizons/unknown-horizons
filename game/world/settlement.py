@@ -20,7 +20,7 @@
 # ###################################################
 import game.main
 from game.world.storage import Storage
-from game.util import WorldObject, Point
+from game.util import WorldObject, Point, WeakList
 
 class Settlement(WorldObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -32,7 +32,7 @@ class Settlement(WorldObject):
 		self.name = game.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 		self.owner = owner
 		self._inhabitants = 0
-		self.buildings = [] # List of all the buildings belonging to the settlement
+		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 		
 		self.setup_storage()
 		self.inventory.alter_inventory(6, 20)
