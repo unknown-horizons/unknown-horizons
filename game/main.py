@@ -474,13 +474,33 @@ def quitSession():
 		
 def saveGame():
 	global session
-	# FIXME: Implement save dialog
-	session.save()
+	
+	load_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
+	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		return
+	
+	savegamefile = load_dlg.collectData('savegamefile')
+	
+	# FIXME: other checks for validity, such as occurences of '/'
+	if len(savegamefile) == 0:
+		showPopup("Invalid filename", "You entered an invalid filename.")
+		saveGame()
+		return
+	
+	savegamefile = 'content/save/' + savegamefile + '.sqlite'
+	
+	if os.path.exists(savegamefile):
+		# TODO: ask for confirmation to overwrite existing savegame
+		pass
+	
+	session.save(savegamefile)
 	returnGame()
 
 def loadGame():
 	global session, gui, fife
-	# FIXME: Implement load dialog
+
+	# FIXME: implement load dialog
+	
 	session.end()
 	session = None
 	
