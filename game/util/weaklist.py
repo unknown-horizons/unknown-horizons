@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# This file was stolen from http://home.gna.org/meals/
+# This file was stolen from http://home.gna.org/meals/ at 2008-07-24
 
 """
 weaklist - list implementation that store objects with weakref

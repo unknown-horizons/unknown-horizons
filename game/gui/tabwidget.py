@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import weakref 
+
 import pychan
+
+import game.main
 from game.util.inventory_widget import Inventory
 
 class TabWidget(object):
@@ -28,9 +31,8 @@ class TabWidget(object):
 	@var object: instance of an object that is later used to fill the tabs with information. Can be None for widgets that don't need any external information
 	@var system_id: int id of the tab_system, used to get all the tabs for this widget from the db
 	@var callbacks: dict(dict) like this: {'widgetname1': callbackdict, 'widgetname2': callbackdict}. Does not have to be provided."""
-
 	def __init__(self, system_id, object=None, callbacks={}):
-		self.object = object
+		self.object = None if object is None else weakref.ref(object)
 		self.tabs = []
 		for name, xml, up, down, hover in game.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM data.tab_system LEFT JOIN data.tabs ON tabs.rowid = tab_system.tab WHERE tab_system.system=? ORDER BY tab_system.position", system_id):
 			self.tabs.append(Tab(name, xml, up, down, hover))
@@ -50,7 +52,7 @@ class TabWidget(object):
 			if tab.name in callbacks:
 				tab.widget.mapEvents(callbacks[tab.name])
 		self.widget.findChild(name='content').addChild(self.tabs[self.widget.active].widget)
-		self.tabs[self.widget.active].update(self.object)
+		self.tabs[self.widget.active].update(None if self.object is None else self.object())
 		self.widget.findChild(name='content').adaptLayout()
 
 	def load_tab(self, id):
@@ -59,23 +61,25 @@ class TabWidget(object):
 		tab1 = self.widget.findChild(name=str(id))
 		contentarea = self.widget.findChild(name='content')
 		contentarea.removeChild(self.tabs[self.widget.active].widget)
-		self.tabs[id].update(self.object)
+		self.tabs[id].update(None if self.object is None else self.object())
 		contentarea.addChild(self.tabs[id].widget)
 		contentarea.adaptLayout()
 		self.widget.active = id
 
 	def _update_active(self):
-		self.tabs[self.widget.active].update(self.object)
+		self.tabs[self.widget.active].update(None if self.object is None else self.object())
 
 	def show(self):
 		"""Shows the widget."""
 		self.widget.show()
-		self.object.addChangeListener(self._update_active)
+		if self.object is not None:
+			self.object().addChangeListener(self._update_active)
 
 	def hide(self):
 		"""Hides the widget."""
 		self.widget.hide()
-		self.object.removeChangeListener(self._update_active)
+		if self.object is not None:
+			self.object().removeChangeListener(self._update_active)
 
 class Tab(object):
 	"""Used to create tabs, stores the widget and needed buttons, that are used by the TabWidget, to display tabs.

@@ -19,31 +19,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import new
-import weakref
+from game.util import WeakMethod
 
-class WeakMethod(object):
-	def __init__(self, function):
-		if not callable(function):
-			raise ValueError("Function parameter not callable")
-
-		if isinstance(function, new.instancemethod) and function.im_self is not None:
-			self.function = function.im_func
-			self.instance = weakref.ref(function.im_self)
-		else:
-			self.function = function
-			self.instance = None
-
-	def __call__(self, *args, **kwargs):
-		if self.instance is None:
-			return self.function(*args, **kwargs)
-		elif self.instance() is not None:
-			return self.function(self.instance(), *args, **kwargs)
-		else:
-			raise ReferenceError
-
-	def __eq__(self, other):
-		return self.function == other.function and self.instance() == other.instance()
-
-	def __ne__(self, other):
-		return not self.__eq__(other)
+class CallbackList(object):
+	"""A class that handles zero to n callbacks."""
+	
+	def __init__(self, callbacks = None):
+		"""
+		@param callbacks: None, a function, a list of functions, or a tuple of functions
+		"""
+		#self.__instance = instance
+		self.__callbacks = []
+		self.__add(callbacks)
+		
+	def __add(self, callback):
+		"""Internal function used to add callbacks"""
+		if callback is None:
+			pass
+		elif callable(callback):
+			self.__callbacks.append(WeakMethod(callback))
+		elif isinstance(callback, list, tuple):
+			for i in callback:
+				self.__add(i)
+				
+	def append(self, elem):
+		"""Just like list.append"""
+		self.__add(elem)
+		
+	def execute(self):
+		"""Execute all callbacks. Number of callbacks may be zero to n."""
+		for callback in self.__callbacks:
+			callback()
+			
+			

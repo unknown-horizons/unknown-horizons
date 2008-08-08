@@ -22,9 +22,7 @@
 import game.main
 import fife
 from game.world.pathfinding import Pather, PathBlockedError, Movement
-from game.util import Point, Rect
-from game.util import WeakMethod
-from game.util import WorldObject
+from game.util import Point, Rect, CallbackList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
@@ -53,7 +51,7 @@ class Unit(WorldObject):
 		for (step, velocity_rate) in res:
 			self.acceleration[step] = velocity_rate
 
-		self.move_callback = None
+		self.move_callback = CallbackList()
 
 		self.path = Pather(self)
 
@@ -91,18 +89,19 @@ class Unit(WorldObject):
 	
 	def stop(self, callback = None):
 		"""Stops a unit with currently no possibility to continue the movement.
-		The unit acctally stops moving when current move is finished."""
+		The unit acctally stops moving when current move is finished.
+		@param callback: a parameter supported by CallbackList. is executed immediately if unit isn't moving
+		"""
 		if not self.is_moving():
-			if callback is not None:
-				callback()
+			CallbackList(callback).execute()
 			return
-		self.move_callback = None if callback is None else WeakMethod(callback)
+		self.move_callback = CallbackList(callback)
 		self.path.end_move()
 
 	def move(self, destination, callback = None, destination_in_building = False):
 		"""Moves unit to destination
 		@param destination: Point or Rect
-		@param callback: function that gets called when the unit arrives
+		@param callback: a parameter supported by CallbackList. Gets called when unit arrives.
 		@return: True if move is possible, else False
 		"""
 		move_possible = self.path.calc_path(destination, destination_in_building)
@@ -111,7 +110,7 @@ class Unit(WorldObject):
 			return False
 
 		print 'NEW DEST', destination
-		self.move_callback = None if callback is None else WeakMethod(callback)
+		self.move_callback = CallbackList(callback)
 
 		if not self.is_moving():
 			self.move_tick()
@@ -119,8 +118,12 @@ class Unit(WorldObject):
 		return True
 
 	def move_back(self, callback = None, destination_in_building = False):
+		"""Return to the place where last movement started. Same path is used, but in reverse order.
+		@param callback: same as callback in move()
+		@param destination_in_building: bool, wether target is in a building
+		"""
 		self.path.revert_path(destination_in_building)
-		self.move_callback = callback
+		self.move_callback = CallbackList(callback)
 		self.__is_moving = True
 		self.move_tick()
 
@@ -129,8 +132,7 @@ class Unit(WorldObject):
 
 		self.__is_moving = False
 
-		if self.move_callback is not None:
-			self.move_callback()
+		self.move_callback.execute()
 
 	def move_tick(self):
 		"""Called by the scheduler, moves the unit one step for this tick.
