@@ -22,7 +22,7 @@
 import game.main
 import fife
 from game.world.pathfinding import Pather, PathBlockedError, Movement
-from game.util import Point, Rect, CallbackList, WorldObject, WeakMethod
+from game.util import Point, Rect, WeakMethodList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
@@ -51,7 +51,7 @@ class Unit(WorldObject):
 		for (step, velocity_rate) in res:
 			self.acceleration[step] = velocity_rate
 
-		self.move_callback = CallbackList()
+		self.move_callback = WeakMethodList()
 
 		self.path = Pather(self)
 
@@ -90,18 +90,18 @@ class Unit(WorldObject):
 	def stop(self, callback = None):
 		"""Stops a unit with currently no possibility to continue the movement.
 		The unit acctally stops moving when current move is finished.
-		@param callback: a parameter supported by CallbackList. is executed immediately if unit isn't moving
+		@param callback: a parameter supported by WeakMethodList. is executed immediately if unit isn't moving
 		"""
 		if not self.is_moving():
-			CallbackList(callback).execute()
+			WeakMethodList(callback).execute()
 			return
-		self.move_callback = CallbackList(callback)
+		self.move_callback = WeakMethodList(callback)
 		self.path.end_move()
 
 	def move(self, destination, callback = None, destination_in_building = False):
 		"""Moves unit to destination
 		@param destination: Point or Rect
-		@param callback: a parameter supported by CallbackList. Gets called when unit arrives.
+		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
 		@return: True if move is possible, else False
 		"""
 		move_possible = self.path.calc_path(destination, destination_in_building)
@@ -110,7 +110,7 @@ class Unit(WorldObject):
 			return False
 
 		print 'NEW DEST', destination
-		self.move_callback = CallbackList(callback)
+		self.move_callback = WeakMethodList(callback)
 
 		if not self.is_moving():
 			self.move_tick()
@@ -123,7 +123,7 @@ class Unit(WorldObject):
 		@param destination_in_building: bool, wether target is in a building
 		"""
 		self.path.revert_path(destination_in_building)
-		self.move_callback = CallbackList(callback)
+		self.move_callback = WeakMethodList(callback)
 		self.__is_moving = True
 		self.move_tick()
 

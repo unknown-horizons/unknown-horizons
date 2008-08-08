@@ -1,0 +1,6 @@
+# format same as in database.txt
+
+unit_path:
+`unit` is the world id of the unit, `index` the id of the step and the coords
+of each step are `x` and `y`.
+i do not know the function of `location`, it might be deprecated

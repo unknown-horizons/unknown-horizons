@@ -30,4 +30,4 @@ from changelistener import Changelistener
 from weakmethod import WeakMethod
 from weaklist import WeakList
 from worldobject import WorldObject
-from callbacklist import CallbackList
+from weakmethodlist import WeakMethodList

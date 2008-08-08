@@ -21,7 +21,7 @@
 
 from game.util import WeakMethod
 
-class CallbackList(object):
+class WeakMethodList(object):
 	"""A class that handles zero to n callbacks."""
 	
 	def __init__(self, callbacks = None):
