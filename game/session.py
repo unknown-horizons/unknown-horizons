@@ -86,10 +86,10 @@ class Session(livingObject):
 		self.world = None
 		super(Session, self).end()
 		
-		#import pdb 
-		#import gc
-		#print 'WorldObject.get_objs().valuerefs()'
-		#pdb.set_trace()
+		import pdb 
+		import gc
+		print 'WorldObject.get_objs().valuerefs()'
+		pdb.set_trace()
 
 	def save(self, savegame = "content/save/quicksave.sqlite"):
 		if os.path.exists(savegame):

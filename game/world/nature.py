@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
 import math
+import weakref
+from game.util import WeakMethod
+
+import game.main
 
 class Growable(object):
 	""" Base class for everything that grows
@@ -37,8 +40,8 @@ class Growable(object):
 		@param producer: producer that determines animation change intervals and such
 		"""
 		super(Growable, self).__init__(producer=producer, **kwargs)
-		self.growing_producer = producer
-		self.growing_producer.restart_animation = self.restart_animation
+		self.growing_producer = weakref.ref(producer)
+		self.growing_producer().restart_animation = WeakMethod(self.restart_animation)
 		self.actions = []
 		self.db_actions = game.main.db("SELECT action FROM data.action WHERE %(type)s = ? AND action != 'default'" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
 		for (a,) in self.db_actions:
@@ -49,7 +52,7 @@ class Growable(object):
 	# FIXME: This ugly hack removes the cyclic reference of most Growables
 	# FIXME: Please fix this fucked up class in the first place
 	def remove(self):
-		del self.growing_producer.restart_animation
+		del self.growing_producer().restart_animation
 		del self.growing_producer
 		super(Growable, self).remove()
 
