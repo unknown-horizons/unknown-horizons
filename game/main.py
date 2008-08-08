@@ -153,13 +153,13 @@ def showPopup(windowtitle, message):
 	popup.findChild(name='popup_message').text = message
 	showDialog(popup,{'okButton' : True}, onPressEscape = True)
 
-def getMaps(showSaved = False):
+def getMaps(showOnlySaved = False):
 	""" Gets available maps both for displaying and loading.
 
-	@param showSaved: Bool wether saved games are to be shown.
+	@param showOnlySaved: Bool wether saved games are to be shown.
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
-	if showSaved:
+	if showOnlySaved:
 		files = ([f for p in ('content/save','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
 	else:
 		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
@@ -200,9 +200,9 @@ def showMain():
 	gui.show()
 	onEscape = showQuit
 
-def showSingle(showSaved = False):
+def showSingle(showOnlySaved = False):
 	"""
-	@param showSaved: Bool whether saved games are to be shown.
+	@param showOnlySaved: Bool whether saved games are to be shown.
 	"""
 	global gui, onEscape, db
 	if gui is not None:
@@ -217,22 +217,22 @@ def showSingle(showSaved = False):
 		'okay'     : startSingle,
 	}
 	gui.mapEvents(eventMap)
-	if showSaved:
+	if showOnlySaved:
 		eventMap['showNew'] = fife.pychan.tools.callbackWithArguments(showSingle, False)
 	else:
 		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, True)
 	gui.mapEvents(eventMap)
 
 	# distribute data
-	(gui.files, display) = getMaps(showSaved)
+	(gui.files, display) = getMaps(showOnlySaved)
 
 	gui.distributeInitialData({
 		'maplist' : display,
 		'playercolor' : [ i.name for i in Color ]
 	})
 	gui.distributeData({
-		'showNew' : not showSaved,
-		'showLoad' : showSaved,
+		'showNew' : not showOnlySaved,
+		'showLoad' : showOnlySaved,
 		'playercolor' : 0
 	})
 
@@ -475,14 +475,17 @@ def quitSession():
 def saveGame():
 	global session
 	
-	load_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
-	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+	save_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
+	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
 	
-	savegamefile = load_dlg.collectData('savegamefile')
+	savegamefile = save_dlg.collectData('savegamefile')
 	
-	# FIXME: other checks for validity, such as occurences of '/'
 	if len(savegamefile) == 0:
+		savegamefile = 'quicksave'
+	
+	# FIXME: checks for validity, such as occurences of '/'
+	if False:
 		showPopup("Invalid filename", "You entered an invalid filename.")
 		saveGame()
 		return
@@ -498,8 +501,19 @@ def saveGame():
 
 def loadGame():
 	global session, gui, fife
+	
+	map_files, map_file_display = getMaps(showOnlySaved = True)
 
-	# FIXME: implement load dialog
+	load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
+	
+	load_dlg.distributeInitialData({'savegamelist' : map_file_display})
+	
+	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		return
+	
+	savegamefile = map_files[ load_dlg.collectData('savegamelist') ]
+	
+	assert(os.path.exists(savegamefile))
 	
 	session.end()
 	session = None
@@ -514,7 +528,7 @@ def loadGame():
 
 	session = Session()
 	session.begin()
-	session.load()
+	session.load(savegamefile)
 	returnGame()
 
 def onHelp():

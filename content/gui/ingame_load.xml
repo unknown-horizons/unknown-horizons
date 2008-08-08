@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Window title="Load game" base_color="40, 40, 40">
+	<ListBox name="savegamelist" base_color="40, 40, 40"/>
+	<HBox>
+		<Spacer />
+		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
+		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
+	</HBox>
+</Window>
