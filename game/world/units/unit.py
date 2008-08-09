@@ -61,7 +61,9 @@ class Unit(WorldObject):
 		self.__is_moving = False
 
 	def __del__(self):
-		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+		# the layer is sometimes deleted before the unit, therefore this check
+		if self._instance.getLocationRef().getLayer() is not None:
+			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def start(self):
 		pass

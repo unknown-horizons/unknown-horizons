@@ -19,9 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import re
 import os.path
 import glob
 import shutil
+
 from game.util.color import Color
 from game.dbreader import DbReader
 from game.engine import Fife
@@ -61,7 +63,6 @@ def start():
 	session = None
 	gui = None
 
-	loadGame()
 	showMain()
 
 	fife.run()
@@ -504,8 +505,8 @@ def saveGame():
 	
 	savegamename = save_dlg.collectData('savegamefile')
 	
-	# FIXME: more checks for validity
-	if len(savegamename) == 0 or savegamename.find("/") != -1:
+	# allow only: alphanumeric, '.' and '-'
+	if re.match('^[\w\.\-]+$', savegamename) is None:
 		showPopup("Invalid filename", "You entered an invalid filename.")
 		saveGame()
 		return
@@ -526,34 +527,36 @@ def loadGame():
 	
 	map_files, map_file_display = getMaps(showOnlySaved = True)
 
-	if len(map_files) > 0:
+	if len(map_files) == 0:
+		showPopup("No saved games", "There are no saved games to load")
+		return
+	
+	load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
+	
+	load_dlg.distributeInitialData({'savegamelist' : map_file_display})
+	
+	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		return
+	
+	savegamefile = map_files[ load_dlg.collectData('savegamelist') ]
+	
+	assert(os.path.exists(savegamefile))
+	
+	session.end()
+	session = None
+	
+	if gui is not None:
+		gui.hide()
+	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
+	gui.x += int((settings.fife.screen.width - gui.width) / 2)
+	gui.y += int((settings.fife.screen.height - gui.height) / 2)
+	gui.show()
+	fife.engine.pump()
 
-		load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
-		
-		load_dlg.distributeInitialData({'savegamelist' : map_file_display})
-		
-		if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
-			return
-		
-		savegamefile = map_files[ load_dlg.collectData('savegamelist') ]
-		
-		assert(os.path.exists(savegamefile))
-		
-		session.end()
-		session = None
-		
-		if gui is not None:
-			gui.hide()
-		gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-		gui.x += int((settings.fife.screen.width - gui.width) / 2)
-		gui.y += int((settings.fife.screen.height - gui.height) / 2)
-		gui.show()
-		fife.engine.pump()
-
-		session = Session()
-		session.begin()
-		session.load(savegamefile)
-		returnGame()
+	session = Session()
+	session.begin()
+	session.load(savegamefile)
+	returnGame()
 
 def onHelp():
 	"""

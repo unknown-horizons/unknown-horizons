@@ -24,6 +24,9 @@ from game.util.color import Color
 from game.network import MPPlayer, ClientConnection, ServerConnection
 from game.packets import *
 
+
+# FIXME: update the values by using widget.capture, not by polling
+
 class ServerLobby(object):
 	"""Manages the data for the serverlobby
 
