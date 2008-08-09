@@ -70,6 +70,9 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 				for instance in game.main.session.selection_groups[num] - game.main.session.selected_instances:
 					instance.select()
 				game.main.session.selected_instances = game.main.session.selection_groups[num]
+		elif keyval == fife.Key.F5:
+			game.main.session.save()
+			game.main.showPopup('Quicksave', 'Your game has been saved') 
 		else:
 			return
 		evt.consume()

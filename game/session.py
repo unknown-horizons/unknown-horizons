@@ -92,7 +92,6 @@ class Session(livingObject):
 		#pdb.set_trace()
 
 	def save(self, savegame = "content/save/quicksave.sqlite"):
-		# NOTE: this code might should be moved to main.saveGame
 		if os.path.exists(savegame):
 			os.unlink(savegame)
 		shutil.copyfile('content/savegame_template.sqlite', savegame)
