@@ -61,6 +61,7 @@ def start():
 	session = None
 	gui = None
 
+	loadGame()
 	showMain()
 
 	fife.run()
@@ -124,19 +125,22 @@ def showSettings():
 	if changes_require_restart:
 		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
 
-def showDialog(dlg, actions, onPressEscape = None):
+def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	"""
 	@param dlg: dialog that is to be shown
 	@param actions:
 	@param onPressEscape:
 	"""
 	global onEscape
+	if event_map is not None:
+		dlg.mapEvents(event_map)
 	if onPressEscape is not None:
 		def _escape():
 			fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
 			dlg.hide()
 		tmp_escape = onEscape
 		onEscape = _escape
+	dlg.resizeToContent()
 	ret = dlg.execute(actions)
 	if onPressEscape is not None:
 		onEscape = tmp_escape
@@ -149,6 +153,7 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 	@param message: the text displayed in the popup
 	@return: True on ok, False on cancel (if no cancel button, always True)
 	"""
+		
 	if show_cancel_button:
 		popup = fife.pychan.loadXML('content/gui/popupbox_with_cancel.xml')
 	else:
@@ -483,14 +488,24 @@ def quitSession():
 def saveGame():
 	global session
 	
+	savegame_files, savegame_display = getMaps(showOnlySaved = True)
+	
 	save_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
-	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+	
+	save_dlg.distributeInitialData({'savegamelist' : savegame_display})
+	
+	def tmp_selected_changed():
+		# this fills in the name of the savegame in the textbox when selected in the list
+		save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
+	
+	save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
+	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False,):
 		return
 	
 	savegamename = save_dlg.collectData('savegamefile')
 	
-	# FIXME: more checks for validity, such as occurences of '/'
-	if len(savegamename) == 0:
+	# FIXME: more checks for validity
+	if len(savegamename) == 0 or savegamename.find("/") != -1:
 		showPopup("Invalid filename", "You entered an invalid filename.")
 		saveGame()
 		return
@@ -498,12 +513,13 @@ def saveGame():
 	savegamefile = 'content/save/%s.sqlite' % savegamename
 	
 	if os.path.exists(savegamefile):
-		if not showPopup("Confirmation for overwriting", "A savegame with the name \"%s\" already exists.\nShould i overwrite it?"%savegamename, show_cancel_button = True):
+		if not showPopup("Confirmation for overwriting", 
+										 "A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename, 
+										 show_cancel_button = True):
 			saveGame()
 			return
 	
 	session.save(savegamefile)
-	#returnGame()
 
 def loadGame():
 	global session, gui, fife

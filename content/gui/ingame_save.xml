@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
-<Window title="Save game" base_color="40, 40, 40">
-	<HBox>
-		<Label text="Enter filename:" base_color="40, 40, 40"/>
-		<TextBox name="savegamefile" min_size="200,16" base_color="40, 40, 40"/>
-	</HBox>
-	<HBox>
+<Window title="Save game" min_size="0,300"  base_color="40, 40, 40">
+		<ListBox name="savegamelist" base_color="40, 40, 40"/>
 		<Spacer />
-		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
-		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
-	</HBox>
+		<HBox>
+			<Label text="Enter filename:" base_color="40, 40, 40"/>
+			<TextBox name="savegamefile" min_size="200,16" base_color="40, 40, 40"/>
+		</HBox>
+		<HBox>
+			<Button name="delete" text="Delete" base_color="40, 40, 40"/>
+			<Spacer />
+			<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
+			<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
+		</HBox>
 </Window>
