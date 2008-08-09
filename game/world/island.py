@@ -61,7 +61,6 @@ class Island(WorldObject):
 	def save(self, db):
 		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
 			self.getId(), self.origin.x, self.origin.y, self.file)
-		print 'island buildings', self.buildings
 		for building in self.buildings:
 			building.save(db)
 		for settlement in self.settlements:

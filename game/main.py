@@ -142,16 +142,24 @@ def showDialog(dlg, actions, onPressEscape = None):
 		onEscape = tmp_escape
 	return ret
 
-def showPopup(windowtitle, message):
+def showPopup(windowtitle, message, show_cancel_button = False):
 	""" Displays a popup with the specified text
 
 	@param windowtitle: the title of the popup
 	@param message: the text displayed in the popup
+	@return: True on ok, False on cancel (if no cancel button, always True)
 	"""
-	popup = fife.pychan.loadXML('content/gui/popupbox.xml')
+	if show_cancel_button:
+		popup = fife.pychan.loadXML('content/gui/popupbox_with_cancel.xml')
+	else:
+		popup = fife.pychan.loadXML('content/gui/popupbox.xml')
 	popup.findChild(name='popup_window').title = windowtitle
 	popup.findChild(name='popup_message').text = message
-	showDialog(popup,{'okButton' : True}, onPressEscape = True)
+	if show_cancel_button:
+		# FIXME: check if onPressEscape really should be true here
+		return showDialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = True)
+	else:
+		return showDialog(popup,{'okButton' : True}, onPressEscape = True)
 
 def getMaps(showOnlySaved = False):
 	""" Gets available maps both for displaying and loading.
@@ -479,25 +487,23 @@ def saveGame():
 	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
 	
-	savegamefile = save_dlg.collectData('savegamefile')
+	savegamename = save_dlg.collectData('savegamefile')
 	
-	if len(savegamefile) == 0:
-		savegamefile = 'quicksave'
-	
-	# FIXME: checks for validity, such as occurences of '/'
-	if False:
+	# FIXME: more checks for validity, such as occurences of '/'
+	if len(savegamename) == 0:
 		showPopup("Invalid filename", "You entered an invalid filename.")
 		saveGame()
 		return
 	
-	savegamefile = 'content/save/' + savegamefile + '.sqlite'
+	savegamefile = 'content/save/%s.sqlite' % savegamename
 	
 	if os.path.exists(savegamefile):
-		# TODO: ask for confirmation to overwrite existing savegame
-		pass
+		if not showPopup("Confirmation for overwriting", "A savegame with the name \"%s\" already exists.\nShould i overwrite it?"%savegamename, show_cancel_button = True):
+			saveGame()
+			return
 	
 	session.save(savegamefile)
-	returnGame()
+	#returnGame()
 
 def loadGame():
 	global session, gui, fife
