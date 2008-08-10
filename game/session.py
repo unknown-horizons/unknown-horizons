@@ -21,7 +21,10 @@
 
 import math
 import shutil
+import glob
+import os
 import os.path
+import time
 
 import fife
 
@@ -84,21 +87,41 @@ class Session(livingObject):
 		self.manager = None
 		self.timer = None
 		self.world = None
-		
+
 		self.selected_instances = None
 		self.selection_groups = None
 		super(Session, self).end()
-		
+
 		#import pdb 
 		#import gc
 		#print 'WorldObject.get_objs().valuerefs()'
 		#pdb.set_trace()
 
+	def autosave(self):
+		"""Called automatically in an interval"""
+		pass
+
+	def quicksave(self):
+		"""Called when user presses a hotkey"""
+		quicksavedir = 'content/save/quicksave'
+		savegame = '%s/quicksave-%.2f.sqlite' % (quicksavedir, time.time())
+		self.save(savegame)
+
+		# delete old quicksaves
+		files = glob.glob('%s/quicksave-*.sqlite' % quicksavedir)
+		if len(files) > game.main.settings.savegame.savedquicksaves:
+			files.sort()
+			for i in xrange(0, len(files) - game.main.settings.savegame.savedquicksaves):
+				os.unlink(files[i])
+
 	def save(self, savegame = "content/save/quicksave.sqlite"):
+		"""
+		@param savegame: the file, where the game will be saved
+		"""
 		if os.path.exists(savegame):
 			os.unlink(savegame)
 		shutil.copyfile('content/savegame_template.sqlite', savegame)
-		
+
 		db = DbReader(savegame)
 		try:
 			db("BEGIN")

@@ -51,6 +51,8 @@ def start():
 	settings.sound.setDefaults(enabled = True)
 	settings.addCategorys('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
+	settings.addCategorys('savegame')
+	settings.savegame.setDefaults(savedquicksaves = 10)
 
 	fife = Fife()
 	ext_scheduler = ExtScheduler(fife.pump)
@@ -92,21 +94,28 @@ def showSettings():
 		resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 	dlg = fife.pychan.loadXML('content/gui/settings.xml')
 	dlg.distributeInitialData({
+		'savedquicksaves' : range(1,30),
 		'screen_resolution' : resolutions,
 		'screen_renderer' : ["OpenGL", "SDL"],
 		'screen_bpp' : ["Desktop", "16", "24", "32"]
 	})
 	dlg.distributeData({
+		'savedquicksaves' : settings.savegame.savedquicksaves-1,
 		'screen_resolution' : resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height)),
 		'screen_renderer' : 0 if settings.fife.renderer.backend == 'OpenGL' else 1,
 		'screen_bpp' : int(settings.fife.screen.bpp / 10), # 0:0 16:1 24:2 32:3 :)
 		'screen_fullscreen' : settings.fife.screen.fullscreen,
 		'sound_enable_opt' : settings.sound.enabled
 	})
+	
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
-	screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
+	
+	savedquicksaves, screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
 	changes_require_restart = False
+	
+	if savedquicksaves != settings.savegame.savedquicksaves:
+		settings.savegame.savedquicksaves = savedquicksaves+1
 	if screen_fullscreen != settings.fife.screen.fullscreen:
 		settings.fife.screen.fullscreen = screen_fullscreen
 		changes_require_restart = True
@@ -123,6 +132,7 @@ def showSettings():
 		settings.fife.screen.width = int(resolutions[screen_resolution].partition('x')[0])
 		settings.fife.screen.height = int(resolutions[screen_resolution].partition('x')[2])
 		changes_require_restart = True
+		
 	if changes_require_restart:
 		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
 
@@ -174,7 +184,7 @@ def getMaps(showOnlySaved = False):
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
 	if showOnlySaved:
-		files = ([f for p in ('content/save','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
+		files = ([f for p in ('content/save/quicksave','content/save','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
 	else:
 		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 

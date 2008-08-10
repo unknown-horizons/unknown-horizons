@@ -3,11 +3,13 @@
 	<Label text="This is the OpenAnno settings dialog. Please make sure that you know, what you do."  wrap_text="1" max_size="420,340" base_color="40, 40, 40"/>
 	<HBox>
 		<VBox>
+			<Label text="Number of saved quicksaves" base_color="40, 40, 40"/>
 			<Label text="Screen resolution:" base_color="40, 40, 40"/>
 			<Label text="Used renderer:" base_color="40, 40, 40"/>
 			<Label text="Color depth:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
+			<DropDown min_size="120,0" name="savedquicksaves" base_color="40, 40, 40" />
 			<DropDown min_size="120,0" name="screen_resolution" base_color="40, 40, 40" />
 			<DropDown min_size="120,0" name="screen_renderer" base_color="40, 40, 40"/>
 			<DropDown min_size="120,0" name="screen_bpp" base_color="40, 40, 40"/>
