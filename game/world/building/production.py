@@ -21,7 +21,7 @@
 
 from building import Building, Selectable
 from game.world.production import SecondaryProducer
-from buildable import BuildableSingleWithSurrounding
+from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from game.gui.tabwidget import TabWidget
 import game.main
 
@@ -42,3 +42,6 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
+
+class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
+	pass

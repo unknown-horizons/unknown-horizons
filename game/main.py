@@ -114,7 +114,7 @@ def showSettings():
 	savedquicksaves, screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
 	changes_require_restart = False
 	
-	if savedquicksaves != settings.savegame.savedquicksaves:
+	if savedquicksaves+1 != settings.savegame.savedquicksaves:
 		settings.savegame.savedquicksaves = savedquicksaves+1
 	if screen_fullscreen != settings.fife.screen.fullscreen:
 		settings.fife.screen.fullscreen = screen_fullscreen
