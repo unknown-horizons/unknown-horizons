@@ -61,3 +61,7 @@ class Settler(SecondaryProducer, BuildableSingle, Selectable, Building):
 
 				#debug:
 				#if res[1] >0: print "PRODUCING", res[0], "IN", self.id
+
+	def create_carriage(self):
+		# SecondaryProducer is also a consumer. Consumers create carriages by default. Settler shouldn't.
+		pass
