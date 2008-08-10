@@ -35,6 +35,8 @@ climate:
 colors:
 colors in the RGB model with values from 0 to 255, additionally an `alpha` value used for transparency.
 
+ground:
+
 ground_class:
 
 message:

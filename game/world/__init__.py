@@ -56,16 +56,15 @@ class World(livingObject):
 
 		#add water
 		print "Filling world with water..."
-		empty = [ (x,y) for x in xrange(self.min_x, self.max_x) for y in xrange(self.min_y, self.max_y) ]
+		self.water = [ (x,y) for x in xrange(self.min_x, self.max_x) for y in xrange(self.min_y, self.max_y) ]
 		for i in self.islands:
 			for g in i.grounds:
-				empty.remove((g.x,g.y))
-		print "Adding %d water tiles..." % (len(empty),)
+				self.water.remove((g.x,g.y))
+		print "Adding %d water tiles..." % (len(self.water),)
 		self.grounds = []
-		for x, y in empty:
+		for x, y in self.water:
 			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
 		print "Done."
-		self.water = empty
 
 		# create ship position list. entries: ship_map[ship.unit_position] = ship
 		self.ship_map = {}
@@ -90,6 +89,20 @@ class World(livingObject):
 		self.players.append(self.player)
 		game.main.session.ingame_gui.update_gold()
 		self.player.inventory.addChangeListener(game.main.session.ingame_gui.update_gold)
+		
+	def get_tile(self, point):
+		"""Returns the ground at x, y. 
+		@param point: coords as Point
+		@return: instance of Ground at x, y
+		"""
+		i = self.get_island(point.x, point.y)
+		if i is None:
+			# FIXME: change data structure to allow fast lookup
+			for tile in self.grounds:
+				if tile.x == point.x and tile.y == point.y:
+					return tile
+			assert False, 'ground must be in water'
+		return i.get_tile(point)
 
 	def get_building(self, x, y):
 		"""Returns the building at the position x,y.

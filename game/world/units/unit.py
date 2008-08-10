@@ -45,12 +45,6 @@ class Unit(WorldObject):
 		self._instance.act(self.action, self._instance.getLocation(), True)
 		self._instance.addActionListener(self.InstanceActionListener)
 
-		self.time_move_straight = game.main.db("SELECT time_move_straight FROM data.unit WHERE rowid = ?", self.id)[0]
-		self.acceleration = {}
-		res = game.main.db("SELECT step, velocity_rate from data.unit_acceleration WHERE unit = ?", self.id)
-		for (step, velocity_rate) in res:
-			self.acceleration[step] = velocity_rate
-
 		self.move_callback = WeakMethodList()
 
 		self.path = Pather(self)
@@ -163,31 +157,21 @@ class Unit(WorldObject):
 		#setup movement
 
 		# WORK IN PROGRESS
-		#time_move_straight = self.get_unit_speed()
-		time_move_straight = 12.0
+		move_time = self.get_unit_velocity()
 
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
-		self._instance.move(self.action, location, 16.0 / time_move_straight)
+		self._instance.move(self.action, location, 16.0 / move_time[0])
 		# coords pro sec
 
-		#setup next timer
-		# diagonal_move = straight_move * sqrt(2)
-		ticks = int(time_move_straight) if self.next_target.x == self.position.x or self.next_target.y == self.position.y else int(time_move_straight*1.414)
+		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y
+		game.main.session.scheduler.add_new_object(self.move_tick, self, move_time[int(diagonal)])
 
-		game.main.session.scheduler.add_new_object(self.move_tick, self, ticks)
-
-	def get_unit_speed(self):
-		"""Returns number of ticks that it takes to do a vertical/horizontal movement
-		@return: float
+	def get_unit_velocity(self):
+		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
+		@return: int
 		"""
-		if len(self.acceleration) > 0:
-			len_path = len(path)
-			pos_in_path = path.index(self.position)
-			accelerations = [ accel  for step, accel in self.acceleration.items() if step == pos_in_path or step == pos_in_path - len_path ]
-			if len(accelerations) > 0:
-				return self.time_move_straight * max(accelerations)
-		return self.time_move_straight
+		return game.main.session.world.get_tile(self.position).velocity[self.id]
 
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit

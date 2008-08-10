@@ -43,6 +43,9 @@ class GroundClass(type):
 	def __init__(self, id):
 		self.id = id
 		self._object = None
+		self.velocity = {}
+		for unit, straight, diagonal in game.main.db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
+			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in game.main.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
 			self.classes.append(name)

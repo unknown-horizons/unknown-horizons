@@ -44,7 +44,7 @@ def start():
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
-
+	
 	#init settings
 	settings = Settings()
 	settings.addCategorys('sound')
