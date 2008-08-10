@@ -55,7 +55,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.start_hidden = start_hidden
 		if self.start_hidden:
 			self.hide()
-			
+
 		# start searching jobs just when construction (of subclass) is completed
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
@@ -65,7 +65,7 @@ class BuildingCollector(StorageHolder, Unit):
 		print 'savin job', (self.job is not None)
 		if self.job is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
-			
+
 		# TODO:
 		# state of current job
 
@@ -91,6 +91,8 @@ class BuildingCollector(StorageHolder, Unit):
 			return None
 		jobs = []
 		for building in self.get_buildings_in_range():
+			if building.inventory is self.home_building().inventory:
+				continue
 			for res in collectable_res:
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
@@ -113,12 +115,12 @@ class BuildingCollector(StorageHolder, Unit):
 			if self.check_move(job.object.position) is not None:
 				return job
 		return None
-	
+
 	def setup_new_job(self):
 		"""Executes the necessary actions to begin a new job"""
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
-	
+
 	def begin_current_job(self):
 		"""Executes the current job"""
 		print self.id, 'BEGIN CURRENT JOB'
@@ -220,7 +222,7 @@ class AnimalCollector(BuildingCollector):
 	def reached_home(self):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
 		super(AnimalCollector, self).reached_home()
-		# sheep and herder are inside the building now, pretending to work.  
+		# sheep and herder are inside the building now, pretending to work.
 		self.release_animal()
 
 	def get_buildings_in_range(self):
@@ -256,6 +258,6 @@ class Job(object):
 		self.object = object
 		self.res = res
 		self.amount = amount
-		
+
 		# this is rather a dummy
 		self.rating = amount
