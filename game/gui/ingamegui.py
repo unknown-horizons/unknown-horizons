@@ -276,7 +276,7 @@ class IngameGui(livingObject):
 		cls = game.main.session.entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		game.main.session.cursor = BuildingTool(cls, unit())
+		game.main.session.cursor = BuildingTool(cls, None if unit is None else unit())
 
 	def show_menu(self, menu):
 		"""Shows a menu
