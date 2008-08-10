@@ -269,13 +269,14 @@ class IngameGui(livingObject):
 
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.
-		@param building_id: int with the building id that is to be built."""
+		@param building_id: int with the building id that is to be built.
+		@param unit: weakref to the unit, that builds (e.g. ship for branch office)"""
 		self.hide_menu()
 		self.deselect_all()
 		cls = game.main.session.entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		game.main.session.cursor = BuildingTool(cls, unit)
+		game.main.session.cursor = BuildingTool(cls, unit())
 
 	def show_menu(self, menu):
 		"""Shows a menu

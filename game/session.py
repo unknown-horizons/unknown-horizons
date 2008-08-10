@@ -84,6 +84,9 @@ class Session(livingObject):
 		self.manager = None
 		self.timer = None
 		self.world = None
+		
+		self.selected_instances = None
+		self.selection_groups = None
 		super(Session, self).end()
 		
 		#import pdb 

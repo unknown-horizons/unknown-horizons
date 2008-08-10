@@ -85,7 +85,7 @@ class Ship(Unit):
 		game.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(3, self, {'overview_ship':{'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, self)}}))
+		game.main.session.ingame_gui.show_menu(TabWidget(3, self, {'overview_ship':{'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, weakref.ref(self))}}))
 
 	def act(self, x, y):
 		"""Moves the ship.
