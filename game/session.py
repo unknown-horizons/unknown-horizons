@@ -142,6 +142,7 @@ class Session(livingObject):
 		db = DbReader(savegame)
 		try:
 			db("BEGIN")
+			db("INSERT INTO metadata(name, value) VALUES(\"timestamp\", ?)", time.time())
 			self.world.save(db)
 			#self.manager.save(db)
 			#self.view.save(db)

@@ -20,6 +20,7 @@
 # ###################################################
 
 import re
+import time
 import os.path
 import glob
 import shutil
@@ -198,7 +199,7 @@ def getMaps(showOnlySaved = False):
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
 	if showOnlySaved:
-		files = ([f for p in ('content/save/quicksave','content/save','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
+		files = ([f for p in ('content/save/','content/save/quicksave','content/save/autosave','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
 	else:
 		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 
@@ -245,7 +246,7 @@ def showSingle(showOnlySaved = False):
 	global gui, onEscape, db
 	if gui is not None:
 		gui.hide()
-	gui = fife.pychan.loadXML('content/gui/loadmap.xml')
+	gui = fife.pychan.loadXML('content/gui/singleplayermenu.xml')
 	gui.x += int((settings.fife.screen.width - gui.width) / 2)
 	gui.y += int((settings.fife.screen.height - gui.height) / 2)
 	gui.stylize('menu')
@@ -520,7 +521,7 @@ def saveGame():
 	save_dlg.distributeInitialData({'savegamelist' : savegame_display})
 	
 	def tmp_selected_changed():
-		# this fills in the name of the savegame in the textbox when selected in the list
+		"""Fills in the name of the savegame in the textbox when selected in the list"""
 		save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
 	
 	save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
@@ -559,6 +560,22 @@ def loadGame():
 	
 	load_dlg.distributeInitialData({'savegamelist' : map_file_display})
 	
+	def tmp_show_details():
+		"""Fetches details of selected savegame and displays it"""
+		box = load_dlg.findChild(name="savegamedetails_box")
+		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
+		details_label.name="savegamedetails_lbl"
+		db = DbReader(map_files[load_dlg.collectData("savegamelist")])
+		timestamp = db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")[0][0]
+		timestamp = float(timestamp)
+		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(timestamp))
+		old_label = load_dlg.findChild(name="savegamedetails_lbl")
+		if old_label is not None:
+			box.removeChild(old_label)
+		box.addChild( details_label )
+		load_dlg.adaptLayout()
+	
+	load_dlg.findChild(name="savegamelist").capture(tmp_show_details)
 	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
 	
