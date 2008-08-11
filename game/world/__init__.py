@@ -21,6 +21,8 @@
 
 __all__ = ['island', 'nature', 'player', 'settlement']
 
+import weakref
+
 import game.main
 from game.world.island import Island
 from game.world.player import Player
@@ -62,8 +64,11 @@ class World(livingObject):
 				self.water.remove((g.x,g.y))
 		print "Adding %d water tiles..." % (len(self.water),)
 		self.grounds = []
+		self.ground_map = {}
 		for x, y in self.water:
-			self.grounds.append(game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y))
+			ground = game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y)
+			self.grounds.append(ground)
+			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
 
 		# create ship position list. entries: ship_map[ship.unit_position] = ship
@@ -96,13 +101,10 @@ class World(livingObject):
 		@return: instance of Ground at x, y
 		"""
 		i = self.get_island(point.x, point.y)
-		if i is None:
-			# FIXME: change data structure to allow fast lookup
-			for tile in self.grounds:
-				if tile.x == point.x and tile.y == point.y:
-					return tile
-			assert False, 'ground must be in water'
-		return i.get_tile(point)
+		if i is not None:
+			return i.get_tile(point)
+		assert (point.x, point.y) in self.ground_map, 'ground must be in water'
+		return self.ground_map[(point.x, point.y)]()
 
 	def get_building(self, x, y):
 		"""Returns the building at the position x,y.

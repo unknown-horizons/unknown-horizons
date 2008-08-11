@@ -172,10 +172,12 @@ class Unit(WorldObject):
 		@return: int
 		"""
 		tile = game.main.session.world.get_tile(self.position)
-		if tile.object is None:
-			return tile.velocity[self.id]
-		else:
+		# this is faster than control flow via if-query 
+		# (an if would have to include hasattr(object) and object not None)
+		try:
 			return tile.object.velocity[self.id]
+		except AttributeError:
+			return tile.velocity[self.id]
 
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit

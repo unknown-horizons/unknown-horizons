@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 import game.main
 from game.dbreader import DbReader
 from game.world.settlement import Settlement
@@ -46,6 +48,7 @@ class Island(WorldObject):
 		p_x, p_y, width, height = db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from ground", x, y)[0]
 		self.rect = Rect(Point(p_x, p_y), width, height)
 		self.grounds = []
+		self.ground_map = {}
 		self.buildings = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"):
 			ground = game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y)
@@ -53,6 +56,7 @@ class Island(WorldObject):
 			ground.blocked = False
 			ground.object = None
 			self.grounds.append(ground)
+			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
 		
 		self.settlements = []
 
@@ -84,13 +88,12 @@ class Island(WorldObject):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		# TODO: Reimplement this horribly slow linear search with a better container, like dict
 		if not self.rect.contains(point):
 			return None
-		for tile in self.grounds:
-				if tile.x == point.x and tile.y == point.y:
-					return tile
-		return None
+		try:
+			return self.ground_map[(point.x, point.y)]()
+		except KeyError:
+			return None
 
 	def get_building(self, point):
 		"""Returns the building at the point
