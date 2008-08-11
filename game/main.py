@@ -52,7 +52,7 @@ def start():
 	settings.addCategorys('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 	settings.addCategorys('savegame')
-	settings.savegame.setDefaults(savedquicksaves = 10)
+	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
 
 	fife = Fife()
 	ext_scheduler = ExtScheduler(fife.pump)
@@ -94,12 +94,16 @@ def showSettings():
 		resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 	dlg = fife.pychan.loadXML('content/gui/settings.xml')
 	dlg.distributeInitialData({
+		'autosaveinterval' : range(0, 60, 2),
+		'savedautosaves' : range(1,30),
 		'savedquicksaves' : range(1,30),
 		'screen_resolution' : resolutions,
 		'screen_renderer' : ["OpenGL", "SDL"],
 		'screen_bpp' : ["Desktop", "16", "24", "32"]
 	})
 	dlg.distributeData({
+		'autosaveinterval' : settings.savegame.autosaveinterval/2,
+		'savedautosaves' : settings.savegame.savedautosaves-1,
 		'savedquicksaves' : settings.savegame.savedquicksaves-1,
 		'screen_resolution' : resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height)),
 		'screen_renderer' : 0 if settings.fife.renderer.backend == 'OpenGL' else 1,
@@ -110,10 +114,20 @@ def showSettings():
 	
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
+
+	# the following lines prevent typos
+	setting_keys = ['autosaveinterval', 'savedautosaves', 'savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt']
+	for key in setting_keys:
+		globals()[key] = dlg.collectData(key) 
 	
-	savedquicksaves, screen_resolution, screen_renderer, screen_bpp, screen_fullscreen, sound_enable_opt = dlg.collectData('savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt')
 	changes_require_restart = False
 	
+	if (autosaveinterval)*2 != settings.savegame.autosaveinterval:
+		print settings.savegame.autosaveinterval 
+		settings.savegame.autosaveinterval = (autosaveinterval)*2
+		print settings.savegame.autosaveinterval 
+	if savedautosaves+1 != settings.savegame.savedautosaves:
+		settings.savegame.savedautosaves = savedautosaves+1
 	if savedquicksaves+1 != settings.savegame.savedquicksaves:
 		settings.savegame.savedquicksaves = savedquicksaves+1
 	if screen_fullscreen != settings.fife.screen.fullscreen:

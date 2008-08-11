@@ -47,6 +47,9 @@ from game.util import livingObject, livingProperty, WorldObject
 
 class Session(livingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading."""
+	autosavedir = 'content/save/autosave'
+	quicksavedir = 'content/save/quicksave'
+	
 	timer = livingProperty()
 	manager = livingProperty()
 	scheduler = livingProperty()
@@ -76,8 +79,14 @@ class Session(livingObject):
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10
+		
+		#autosave
+		if game.main.settings.savegame.autosaveinterval != 0:
+			self.scheduler.add_new_object(self.autosave, self, game.main.settings.savegame.autosaveinterval*self.timer.ticks_per_second*60, -1)
 
 	def end(self):
+		self.scheduler.rem_all_classinst_calls(self)
+		
 		self.cursor = None
 		self.keylistener = None
 		self.ingame_gui = None
@@ -99,19 +108,27 @@ class Session(livingObject):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
-		pass
+		savegame = '%s/autosave-%d.sqlite' % (self.__class__.autosavedir, time.time())
+		self.save(savegame)
+		self.delete_dispensable_savegames('%s/autosave-*.sqlite' % self.__class__.autosavedir, 
+																			game.main.settings.savegame.savedquicksaves)
 
 	def quicksave(self):
 		"""Called when user presses a hotkey"""
-		quicksavedir = 'content/save/quicksave'
-		savegame = '%s/quicksave-%.2f.sqlite' % (quicksavedir, time.time())
+		savegame = '%s/quicksave-%.2f.sqlite' % (self.__class__.quicksavedir, time.time())
 		self.save(savegame)
+		self.delete_dispensable_savegames('%s/quicksave-*.sqlite' % self.__class__.quicksavedir,
+																			game.main.settings.savegame.savedquicksaves)
 
-		# delete old quicksaves
-		files = glob.glob('%s/quicksave-*.sqlite' % quicksavedir)
-		if len(files) > game.main.settings.savegame.savedquicksaves:
+	def delete_dispensable_savegames(self, pattern, limit):
+		"""Delete savegames that are no longer needed
+		@param pattern: globbing pattern that all savegames conform to
+		@param limit: number of savegames to keep
+		"""
+		files = glob.glob(pattern)
+		if len(files) > limit:
 			files.sort()
-			for i in xrange(0, len(files) - game.main.settings.savegame.savedquicksaves):
+			for i in xrange(0, len(files) - limit):
 				os.unlink(files[i])
 
 	def save(self, savegame = "content/save/quicksave.sqlite"):

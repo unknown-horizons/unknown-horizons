@@ -171,7 +171,11 @@ class Unit(WorldObject):
 		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
 		@return: int
 		"""
-		return game.main.session.world.get_tile(self.position).velocity[self.id]
+		tile = game.main.session.world.get_tile(self.position)
+		if tile.object is None:
+			return tile.velocity[self.id]
+		else:
+			return tile.object.velocity[self.id]
 
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit
