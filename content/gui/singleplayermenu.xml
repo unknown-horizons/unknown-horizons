@@ -9,11 +9,14 @@
 			<Label text="Player:" base_color="40, 40, 40"/>
 			<Label text="Color:" base_color="40, 40, 40"/>
 		</VBox>
-		<VBox min_size="500,500"> <!-- size has to be defined here, so that the dropdown has enough space -->
+		<VBox min_size="300,300" background_color="200, 200, 200"> <!-- size has to be defined here, so that the dropdown has enough space -->
 			<TextBox name="playername" text="unknown player" size="150,16" base_color="40, 40, 40"/>
 			<DropDown name="playercolor" base_color="40, 40, 40"/>
 		</VBox>
 	</HBox>
+	<VBox name="savegamedetails_box" position="300,420" min_size="170,0">
+	</VBox>
+
 	<ScrollArea size="400,500"  horizontal_scrollbar="0" position="500,150">
 		<ListBox name="maplist" min_size="100,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
 	</ScrollArea>

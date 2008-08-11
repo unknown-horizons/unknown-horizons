@@ -206,6 +206,23 @@ def getMaps(showOnlySaved = False):
 	display = ['Random Map' if i is None else os.path.split(i)[1].rpartition('.')[0] for i in files]
 	return (files, display)
 
+def create_show_savegame_details(gui, map_files, savegamelist):
+	def tmp_show_details():
+		"""Fetches details of selected savegame and displays it"""
+		box = gui.findChild(name="savegamedetails_box")
+		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
+		details_label.name="savegamedetails_lbl"
+		db = DbReader(map_files[gui.collectData(savegamelist)])
+		timestamp = db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")[0][0]
+		timestamp = float(timestamp)
+		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(timestamp))
+		old_label = gui.findChild(name="savegamedetails_lbl")
+		if old_label is not None:
+			box.removeChild(old_label)
+		box.addChild( details_label )
+		gui.adaptLayout()
+	return tmp_show_details
+	
 def showQuit():
 	"""Shows the quit dialog
 	"""
@@ -274,6 +291,11 @@ def showSingle(showOnlySaved = False):
 		'showLoad' : showOnlySaved,
 		'playercolor' : 0
 	})
+	
+	if showOnlySaved:
+		gui.findChild(name="maplist").capture(create_show_savegame_details(gui, gui.files, 'maplist'))
+	else:
+		gui.findChild(name="maplist").capture(None)
 
 	gui.show()
 	onEscape = showMain
@@ -560,22 +582,7 @@ def loadGame():
 	
 	load_dlg.distributeInitialData({'savegamelist' : map_file_display})
 	
-	def tmp_show_details():
-		"""Fetches details of selected savegame and displays it"""
-		box = load_dlg.findChild(name="savegamedetails_box")
-		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
-		details_label.name="savegamedetails_lbl"
-		db = DbReader(map_files[load_dlg.collectData("savegamelist")])
-		timestamp = db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")[0][0]
-		timestamp = float(timestamp)
-		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(timestamp))
-		old_label = load_dlg.findChild(name="savegamedetails_lbl")
-		if old_label is not None:
-			box.removeChild(old_label)
-		box.addChild( details_label )
-		load_dlg.adaptLayout()
-	
-	load_dlg.findChild(name="savegamelist").capture(tmp_show_details)
+	load_dlg.findChild(name="savegamelist").capture(create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
 	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
 	
