@@ -598,34 +598,37 @@ def saveGame():
 	
 	session.save(savegamefile)
 
-def loadGame():
+def loadGame(savegame = None):
 	global session, gui, fife
 	
-	map_files, map_file_display = getMaps(showOnlySaved = True)
-
-	if len(map_files) == 0:
-		showPopup("No saved games", "There are no saved games to load")
-		return
-	
-	load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
-	
-	load_dlg.distributeInitialData({'savegamelist' : map_file_display})
-	
-	def tmp_delete_savegame():
-		if delete_savegame(load_dlg, map_files):
-			load_dlg.hide()
-			loadGame()
+	if savegame is None:
+		map_files, map_file_display = getMaps(showOnlySaved = True)
 		
-	load_dlg.findChild(name="savegamelist").capture(create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
-	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
-										onPressEscape = False, 
-										event_map={'deleteButton' : tmp_delete_savegame}): 
-		return
-	
-	selected_savegame = load_dlg.collectData('savegamelist') 
-	if selected_savegame == -1:
-		return
-	savegamefile = map_files[ selected_savegame ]
+		if len(map_files) == 0:
+			showPopup("No saved games", "There are no saved games to load")
+			return
+		
+		load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
+		
+		load_dlg.distributeInitialData({'savegamelist' : map_file_display})
+		
+		def tmp_delete_savegame():
+			if delete_savegame(load_dlg, map_files):
+				load_dlg.hide()
+				loadGame()
+			
+		load_dlg.findChild(name="savegamelist").capture(create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
+		if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
+											onPressEscape = False, 
+											event_map={'deleteButton' : tmp_delete_savegame}): 
+			return
+		
+		selected_savegame = load_dlg.collectData('savegamelist') 
+		if selected_savegame == -1:
+			return
+		savegamefile = map_files[ selected_savegame ]
+	else:
+		savegamefile = savegame
 	
 	assert(os.path.exists(savegamefile))
 	

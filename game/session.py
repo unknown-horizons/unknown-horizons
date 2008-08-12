@@ -49,6 +49,8 @@ class Session(livingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading."""
 	autosavedir = 'content/save/autosave'
 	quicksavedir = 'content/save/quicksave'
+	autosave_filenamepattern = '%(dir)s/autosave-%(timestamp)d.sqlite'
+	quicksave_filenamepattern = '%(dir)s/quicksave-%(timestamp).2f.sqlite'
 	
 	timer = livingProperty()
 	manager = livingProperty()
@@ -108,17 +110,27 @@ class Session(livingObject):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
-		savegame = '%s/autosave-%d.sqlite' % (self.__class__.autosavedir, time.time())
+		savegame = self.__class__.autosave_filenamepattern % {'dir' : self.__class__.autosavedir,'timestamp' : time.time()}
 		self.save(savegame)
 		self.delete_dispensable_savegames('%s/autosave-*.sqlite' % self.__class__.autosavedir, 
 																			game.main.settings.savegame.savedquicksaves)
 
 	def quicksave(self):
 		"""Called when user presses a hotkey"""
-		savegame = '%s/quicksave-%.2f.sqlite' % (self.__class__.quicksavedir, time.time())
+		savegame = self.__class__.quicksave_filenamepattern % {'dir' : self.__class__.quicksavedir, 'timestamp' : time.time()}
 		self.save(savegame)
 		self.delete_dispensable_savegames('%s/quicksave-*.sqlite' % self.__class__.quicksavedir,
 																			game.main.settings.savegame.savedquicksaves)
+		
+	def quickload(self):
+		"""Loads last quicksave"""
+		files = glob.glob("%s/*" % self.__class__.quicksavedir)
+		if len(files) == 0:
+			# FIXME: I'm not sure if such gui-code should be placed here
+			game.main.showPopup("No quicksaves found", "You need to quicksave before you can quickload.")
+			return 
+		files.sort()
+		game.main.loadGame(files[-1])
 
 	def delete_dispensable_savegames(self, pattern, limit):
 		"""Delete savegames that are no longer needed
