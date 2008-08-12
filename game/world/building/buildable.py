@@ -90,7 +90,7 @@ class BuildableSingle(object):
 			obj = island.get_tile(p).object
 			if obj is not None:
 				if isinstance(obj, (GrowingBuilding, Path)):
-					tear.append(obj)
+					tear.append(obj.getId())
 				else:
 					return None
 		return {} if len(tear) == 0 else {'tear' : tear}

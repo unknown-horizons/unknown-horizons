@@ -131,16 +131,14 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time"""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
-		if self.job.object.removed:
-			self.reroute()
-		else:
+		if self.job.object:
 			print self.getId(), 'BEGIN WORKING'
 			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
+		else:
+			self.reroute()
 
 	def finish_working(self):
-		if self.job.object.removed:
-			self.reroute()
-		else:
+		if self.job.object:
 			print self.getId(), 'FINISH WORKING'
 			self._instance.act("default", self._instance.getFacingLocation(), True)
 			# transfer res
@@ -149,6 +147,8 @@ class BuildingCollector(StorageHolder, Unit):
 			self.job.object._Provider__collectors.remove(self)
 			# move back to home
 			self.move_home(callback=self.reached_home)
+		else:
+			self.reroute()
 
 	def reroute(self):
 		print self.getId(), 'Rerouting from', self.position
@@ -206,8 +206,7 @@ class BuildingCollector(StorageHolder, Unit):
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		from game.world.provider import Provider
-		return [building for building in self.home_building().get_buildings_in_range() \
-				if (not building.removed and isinstance(building, Provider))]
+		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None):
 		self.move(self.home_building().position, callback=callback, destination_in_building=True)
@@ -280,9 +279,13 @@ class AnimalCollector(BuildingCollector):
 
 class Job(object):
 	def __init__(self, object, res, amount):
-		self.object = object
+		self._object = weakref.ref(object)
 		self.res = res
 		self.amount = amount
 
 		# this is rather a dummy
 		self.rating = amount
+
+	@property
+	def object(self):
+		return self._object()

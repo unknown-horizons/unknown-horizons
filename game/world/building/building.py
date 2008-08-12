@@ -31,9 +31,6 @@ class Building(WorldObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
-
-	removed = False
-
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		origin = Point(x, y)
@@ -49,11 +46,7 @@ class Building(WorldObject):
 		
 	def remove(self):
 		"""Removes the building"""
-		if self.removed:
-			print "WARNING: attempting double remove"
-			return
 		print "BUILDING: REMOVE %s" % self.getId()
-		self.removed = True
 		self.settlement.rem_inhabitants(self.inhabitants)
 		self.island().remove_building(self)
 

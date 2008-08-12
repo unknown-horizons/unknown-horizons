@@ -24,7 +24,7 @@ import game.main
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, instance = None, ship = None, tear = [], **trash):
+	def __init__(self, building, x, y, instance = None, ship = None, tear = None, **trash):
 		"""Create the command
 		@param building: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
@@ -35,9 +35,7 @@ class Build(object):
 		self.building_class = building.id
 		self.instance = None if instance is None else instance.getId()
 		self.layer = 2 if instance is None else int(instance.getLocationRef().getLayer().getId())
-		self.tear = []
-		for obj in tear:
-			self.tear.append(obj.getId())
+		self.tear = tear or []
 		self.ship = None if ship is None else ship.getId()
 		self.x = int(x)
 		self.y = int(y)
@@ -47,7 +45,8 @@ class Build(object):
 		@param issuer: the issuer of the command
 		"""
 		for id in self.tear:
-			WorldObject.getObjectById(id).remove()
+			building = WorldObject.getObjectById(id)
+			game.main.session.manager.execute(Tear(building))
 
 		island = game.main.session.world.get_island(self.x, self.y)
 		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, owner=issuer, instance=game.main.session.view.layers[self.layer].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
@@ -72,4 +71,8 @@ class Tear(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		WorldObject.getObjectById(self.building).remove()
+		building = WorldObject.getObjectById(self.building)
+		building.remove()
+		# Note: this is weak - if there is a memleak, this del will not work...
+		del building
+

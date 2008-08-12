@@ -58,4 +58,7 @@ class Point(object):
 		elif isinstance(other, Point):
 			return (self.x == other.x and self.y == other.y)
 		else: # other is tuple
-			return (self.x == other[0] and self.y == other[1])
+			try:
+				return (self.x == other[0] and self.y == other[1])
+			except TypeError:
+				return False

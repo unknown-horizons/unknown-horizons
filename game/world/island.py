@@ -193,12 +193,17 @@ class Island(WorldObject):
 	def remove_building(self, building):
 		assert (building.island() == self)
 
+		# Reset the tiles this building was covering
 		for point in building.position:
-				tile = self.get_tile(point)
-				tile.blocked = False
-				tile.object = None
+			tile = self.get_tile(point)
+			tile.blocked = False
+			tile.object = None
+
 		building.settlement.buildings.remove(building)
 		assert(building not in building.settlement.buildings)
+
+		# Remove this building from the buildings list
+		self.buildings.remove(building)
 
 	def registerPath(self, path):
 		origin = path.position.origin

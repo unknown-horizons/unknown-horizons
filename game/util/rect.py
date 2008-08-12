@@ -111,7 +111,9 @@ class Rect(object):
 		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)
 
 	def __eq__(self, other):
-		return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
+		if isinstance(other, Rect):
+			return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
+		return False
 		
 	def __iter__(self):
 		for x in xrange(self.left, self.right+1):
