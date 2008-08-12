@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<Window title="Load game" min_size="0,260" base_color="40, 40, 40">
+<Window title="Load game" min_size="0,300" max_size="10000,300" base_color="40, 40, 40">
 	<HBox>
-		<ListBox name="savegamelist" min_size="120,0" base_color="40, 40, 40"/>
-		<VBox name="savegamedetails_box" min_size="170,0" border_size="1" opaque='0'>
+		<ListBox name="savegamelist" min_size="160,0" max_size="10000,210" base_color="40, 40, 40"/>
+		<VBox name="savegamedetails_box" min_size="170,200" border_size="1" opaque='0'>
 			<HBox border_size="0">
 				<Spacer/>
 				<Label text=" Details:" border_size="0" min_size="140,0" base_color="40, 40, 40"/>
@@ -11,7 +11,7 @@
 	</HBox>
 	<Spacer />
 	<HBox>
-		<Button name="deleteButton" text="Delete (NYI)" base_color="40, 40, 40"/>
+		<Button name="deleteButton" text="Delete" base_color="40, 40, 40"/>
 		<Spacer />
 		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
 		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>

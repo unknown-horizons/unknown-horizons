@@ -21,6 +21,7 @@
 
 import re
 import time
+import os
 import os.path
 import glob
 import shutil
@@ -35,8 +36,6 @@ from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 from game.serverlobby import MasterServerLobby, ClientServerLobby
 from game.network import Socket, ServerConnection, ClientConnection
 from extscheduler import ExtScheduler
-
-#import gc; gc.set_debug(gc.DEBUG_LEAK | gc.DEBUG_STATS)
 
 def start():
 	"""Starts the game.
@@ -188,18 +187,22 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 	popup.findChild(name='popup_message').text = message
 	if show_cancel_button:
 		# FIXME: check if onPressEscape really should be true here
-		return showDialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = True)
+		return showDialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 	else:
 		return showDialog(popup,{'okButton' : True}, onPressEscape = True)
 
-def getMaps(showOnlySaved = False):
+def getMaps(showOnlySaved = False, showOnlyRegularSaves = False):
 	""" Gets available maps both for displaying and loading.
 
-	@param showOnlySaved: Bool wether saved games are to be shown.
+	@param showOnlySaved: Bool, wether saved games are to be shown.
+	@param showOnlyRegular saves: Bool, wether to hide auto- and quicksaves
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
 	if showOnlySaved:
-		files = ([f for p in ('content/save/','content/save/quicksave','content/save/autosave','content/demo') for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
+		save_dirs = ['content/save/']
+		if not showOnlyRegularSaves:
+			save_dirs.extend(['content/save/quicksave','content/save/autosave','content/demo'])
+		files = ([f for p in save_dirs for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
 	else:
 		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 
@@ -222,7 +225,26 @@ def create_show_savegame_details(gui, map_files, savegamelist):
 		box.addChild( details_label )
 		gui.adaptLayout()
 	return tmp_show_details
-	
+
+def delete_savegame(gui, map_files):
+	"""Deletes the selected savegame if the user confirms
+	@param gui: handle for pychan gui, that includes the widget 'savegamelist'
+	@param map_files: list of files that corresponds to the entries of 'savegamelist'
+	@return: True if something was deleted, else False
+	"""
+	selected_item = gui.collectData("savegamelist")
+	if selected_item == -1:
+		showPopup("No file selected", "You need to select a savegame to delete")
+		return False
+	selected_file = map_files[selected_item]
+	if showPopup("Confirm deletiom", 
+							 "Do you really want to delete the savegame \"%s\"?" % os.path.basename(selected_file), 
+							 show_cancel_button = True):
+		os.unlink(selected_file)
+		return True
+	else:
+		return False
+		
 def showQuit():
 	"""Shows the quit dialog
 	"""
@@ -536,7 +558,7 @@ def quitSession():
 def saveGame():
 	global session
 	
-	savegame_files, savegame_display = getMaps(showOnlySaved = True)
+	savegame_files, savegame_display = getMaps(showOnlySaved = True, showOnlyRegularSaves = True)
 	
 	save_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
 	
@@ -545,9 +567,16 @@ def saveGame():
 	def tmp_selected_changed():
 		"""Fills in the name of the savegame in the textbox when selected in the list"""
 		save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
+		
+	def tmp_delete_savegame():
+		if delete_savegame(save_dlg, savegame_files):
+			save_dlg.hide()
+			saveGame()
 	
 	save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
-	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False,):
+	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, 
+										onPressEscape = False,
+										event_map={'deleteButton' : tmp_delete_savegame}):
 		return
 	
 	savegamename = save_dlg.collectData('savegamefile')
@@ -582,11 +611,21 @@ def loadGame():
 	
 	load_dlg.distributeInitialData({'savegamelist' : map_file_display})
 	
+	def tmp_delete_savegame():
+		if delete_savegame(load_dlg, map_files):
+			load_dlg.hide()
+			loadGame()
+		
 	load_dlg.findChild(name="savegamelist").capture(create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
-	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+	if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
+										onPressEscape = False, 
+										event_map={'deleteButton' : tmp_delete_savegame}): 
 		return
 	
-	savegamefile = map_files[ load_dlg.collectData('savegamelist') ]
+	selected_savegame = load_dlg.collectData('savegamelist') 
+	if selected_savegame == -1:
+		return
+	savegamefile = map_files[ selected_savegame ]
 	
 	assert(os.path.exists(savegamefile))
 	
