@@ -97,7 +97,6 @@ class BuildingCollector(StorageHolder, Unit):
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
 					# get sum of picked up resources for res
-					print self.id
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
 					# check how much will be delivered
 					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__collectors if carriage.job.res == res ])
@@ -132,18 +131,40 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time"""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
-		print self.id, 'BEGIN WORKING'
-		game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
+		if self.job.object.removed:
+			self.reroute()
+		else:
+			print self.getId(), 'BEGIN WORKING'
+			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 
 	def finish_working(self):
-		print self.id, 'FINISH WORKING'
-		self._instance.act("default", self._instance.getFacingLocation(), True)
-		# transfer res
-		self.transfer_res()
-		# deregister at the target we're at
-		self.job.object._Provider__collectors.remove(self)
-		# move back to home
-		self.move_back(self.reached_home, destination_in_building = True)
+		if self.job.object.removed:
+			self.reroute()
+		else:
+			print self.getId(), 'FINISH WORKING'
+			self._instance.act("default", self._instance.getFacingLocation(), True)
+			# transfer res
+			self.transfer_res()
+			# deregister at the target we're at
+			self.job.object._Provider__collectors.remove(self)
+			# move back to home
+			self.move_home(callback=self.reached_home)
+
+	def reroute(self):
+		print self.getId(), 'Rerouting from', self.position
+		# Get a new job
+		print "Old job %s" % self.job
+		job = self.get_job()
+		# Check if there is a new job
+		if job:
+			# There is a new job!
+			self.job = job
+			print "New job %s" % self.job
+			self.begin_current_job()
+		else:
+			# There is no new job...
+			# Return home and end job
+			self.move_home(callback=self.reached_home)
 
 	def reached_home(self):
 		""" we finished now our complete work. Let's do it again in 32 ticks
@@ -156,7 +177,7 @@ class BuildingCollector(StorageHolder, Unit):
 			assert(remnant == 0)
 			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
 			assert(remnant == 0)
-		self.home_building()._Consumer__collectors.remove(self)
+			self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
 
 	def end_job(self):
@@ -185,7 +206,11 @@ class BuildingCollector(StorageHolder, Unit):
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		from game.world.provider import Provider
-		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
+		return [building for building in self.home_building().get_buildings_in_range() \
+				if (not building.removed and isinstance(building, Provider))]
+
+	def move_home(self, callback=None):
+		self.move(self.home_building().position, callback=callback, destination_in_building=True)
 
 
 class StorageCollector(BuildingCollector):
