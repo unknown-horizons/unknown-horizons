@@ -21,7 +21,6 @@
 
 import math
 import shutil
-import glob
 import os
 import os.path
 import time
@@ -47,11 +46,6 @@ from game.util import livingObject, livingProperty, WorldObject
 
 class Session(livingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading."""
-	autosavedir = 'content/save/autosave'
-	quicksavedir = 'content/save/quicksave'
-	autosave_filenamepattern = '%(dir)s/autosave-%(timestamp)d.sqlite'
-	quicksave_filenamepattern = '%(dir)s/quicksave-%(timestamp).2f.sqlite'
-	
 	timer = livingProperty()
 	manager = livingProperty()
 	scheduler = livingProperty()
@@ -110,40 +104,24 @@ class Session(livingObject):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
-		savegame = self.__class__.autosave_filenamepattern % {'dir' : self.__class__.autosavedir,'timestamp' : time.time()}
-		self.save(savegame)
-		self.delete_dispensable_savegames('%s/autosave-*.sqlite' % self.__class__.autosavedir, 
-																			game.main.settings.savegame.savedquicksaves)
+		self.save(game.main.savegamemanager.create_autosave_filename())
+		game.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
 
 	def quicksave(self):
 		"""Called when user presses a hotkey"""
-		savegame = self.__class__.quicksave_filenamepattern % {'dir' : self.__class__.quicksavedir, 'timestamp' : time.time()}
-		self.save(savegame)
-		self.delete_dispensable_savegames('%s/quicksave-*.sqlite' % self.__class__.quicksavedir,
-																			game.main.settings.savegame.savedquicksaves)
+		self.save(game.main.savegamemanager.create_quicksave_filename())
+		game.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
 		
 	def quickload(self):
 		"""Loads last quicksave"""
-		files = glob.glob("%s/*" % self.__class__.quicksavedir)
+		files = game.main.savegamemanager.get_quicksaves()[0]
 		if len(files) == 0:
-			# FIXME: I'm not sure if such gui-code should be placed here
 			game.main.showPopup("No quicksaves found", "You need to quicksave before you can quickload.")
 			return 
 		files.sort()
 		game.main.loadGame(files[-1])
 
-	def delete_dispensable_savegames(self, pattern, limit):
-		"""Delete savegames that are no longer needed
-		@param pattern: globbing pattern that all savegames conform to
-		@param limit: number of savegames to keep
-		"""
-		files = glob.glob(pattern)
-		if len(files) > limit:
-			files.sort()
-			for i in xrange(0, len(files) - limit):
-				os.unlink(files[i])
-
-	def save(self, savegame = "content/save/quicksave.sqlite"):
+	def save(self, savegame):
 		"""
 		@param savegame: the file, where the game will be saved
 		"""
@@ -154,14 +132,14 @@ class Session(livingObject):
 		db = DbReader(savegame)
 		try:
 			db("BEGIN")
-			db("INSERT INTO metadata(name, value) VALUES(\"timestamp\", ?)", time.time())
 			self.world.save(db)
 			#self.manager.save(db)
 			self.view.save(db)
+			game.main.savegamemanager.write_metadata(db)
 		finally:
 			db("COMMIT")
 
-	def load(self, savegame = "content/save/quicksave.sqlite"):
+	def load(self, savegame):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		"""

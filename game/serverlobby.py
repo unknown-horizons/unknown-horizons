@@ -75,7 +75,7 @@ class MasterServerLobby(ServerLobby):
 	def __init__(self,gui):
 		super(MasterServerLobby, self).__init__(gui)
 		o = game.main.connection.mpoptions
-		o['maps'] = game.main.getMaps(False)
+		o['maps'] = game.main.getMaps(showOnlySaved = False)
 		o['bots'] = 0
 		self.gui.distributeInitialData({
 			'server_slots' : range(2,9),

@@ -36,11 +36,12 @@ from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 from game.serverlobby import MasterServerLobby, ClientServerLobby
 from game.network import Socket, ServerConnection, ClientConnection
 from extscheduler import ExtScheduler
+from game.savegamemanager import SavegameManager, InvalidSavegamenameException
 
 def start():
 	"""Starts the game.
 	"""
-	global db, settings, fife, gui, session, connection, ext_timer, ext_scheduler
+	global db, settings, fife, gui, session, connection, ext_timer, ext_scheduler, savegamemanager
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -53,6 +54,8 @@ def start():
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 	settings.addCategorys('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
+	
+	savegamemanager = SavegameManager()
 
 	fife = Fife()
 	ext_scheduler = ExtScheduler(fife.pump)
@@ -191,34 +194,30 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 	else:
 		return showDialog(popup,{'okButton' : True}, onPressEscape = True)
 
-def getMaps(showOnlySaved = False, showOnlyRegularSaves = False):
+def getMaps(showOnlySaved = False):
 	""" Gets available maps both for displaying and loading.
 
 	@param showOnlySaved: Bool, wether saved games are to be shown.
 	@param showOnlyRegular saves: Bool, wether to hide auto- and quicksaves
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
+	global savegamemanager
 	if showOnlySaved:
-		save_dirs = ['content/save/']
-		if not showOnlyRegularSaves:
-			save_dirs.extend(['content/save/quicksave','content/save/autosave','content/demo'])
-		files = ([f for p in save_dirs for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)])
+		return savegamemanager.get_saves()
 	else:
 		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
-
-	display = ['Random Map' if i is None else os.path.split(i)[1].rpartition('.')[0] for i in files]
-	return (files, display)
+		display = ['Random Map' if i is None else os.path.split(i)[1].rpartition('.')[0] for i in files]
+		return (files, display)
 
 def create_show_savegame_details(gui, map_files, savegamelist):
+	global savegamemanager
 	def tmp_show_details():
 		"""Fetches details of selected savegame and displays it"""
 		box = gui.findChild(name="savegamedetails_box")
 		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
 		details_label.name="savegamedetails_lbl"
-		db = DbReader(map_files[gui.collectData(savegamelist)])
-		timestamp = db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")[0][0]
-		timestamp = float(timestamp)
-		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(timestamp))
+		savegame_info = savegamemanager.get_savegame_info(map_files[gui.collectData(savegamelist)])
+		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 		old_label = gui.findChild(name="savegamedetails_lbl")
 		if old_label is not None:
 			box.removeChild(old_label)
@@ -282,7 +281,7 @@ def showSingle(showOnlySaved = False):
 	"""
 	@param showOnlySaved: Bool whether saved games are to be shown.
 	"""
-	global gui, onEscape, db
+	global gui, onEscape, db, savegamemanager
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/singleplayermenu.xml')
@@ -556,9 +555,9 @@ def quitSession():
 		showMain()
 		
 def saveGame():
-	global session
+	global session, savegamemanager
 	
-	savegame_files, savegame_display = getMaps(showOnlySaved = True, showOnlyRegularSaves = True)
+	savegame_files, savegame_display = savegamemanager.get_regular_saves()
 	
 	save_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
 	
@@ -581,13 +580,13 @@ def saveGame():
 	
 	savegamename = save_dlg.collectData('savegamefile')
 	
-	# allow only: alphanumeric, '.' and '-'
-	if re.match('^[\w\.\-]+$', savegamename) is None:
+	try:
+		savegamefile = savegamemanager.create_filename(savegamename)
+	except InvalidSavegamenameException:
 		showPopup("Invalid filename", "You entered an invalid filename.")
+		save_dlg.hide()
 		saveGame()
 		return
-	
-	savegamefile = 'content/save/%s.sqlite' % savegamename
 	
 	if os.path.exists(savegamefile):
 		if not showPopup("Confirmation for overwriting", 
@@ -599,10 +598,10 @@ def saveGame():
 	session.save(savegamefile)
 
 def loadGame(savegame = None):
-	global session, gui, fife
+	global session, gui, fife, savegamemanager
 	
 	if savegame is None:
-		map_files, map_file_display = getMaps(showOnlySaved = True)
+		map_files, map_file_display = savegamemanager.get_saves()
 		
 		if len(map_files) == 0:
 			showPopup("No saved games", "There are no saved games to load")

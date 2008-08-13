@@ -5,6 +5,8 @@ Welcome to the OpenAnno Alpha 2008.01, Keybindings:
 - UP = Scroll Up
 - DOWN = Scroll Down
 - F1 = Display Help
+- F5 = Quicksave
+- F9 = Quickload
 - F10 = Toggle console on / off
 - ESC = Show Pause menu
 - T = Toggles grid on / off
