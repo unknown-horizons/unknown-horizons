@@ -173,10 +173,10 @@ class View(livingObject):
 	
 	def load(self, db):
 		# NOTE: this is no class function, since view is initated before loading
+		# FIXME: dirty check if view exists
 		try:
 			db("SELECT EXISTS ( SELECT NULL FROM view )")
 		except sqlite3.OperationalError:
-			# no view information -- leave default
 			return
 		
 		zoom, rotation, loc_x, loc_y = db("SELECT zoom, rotation, location_x, location_y FROM view")[0]

@@ -91,13 +91,7 @@ class SelectionTool(NavigationTool):
 
 	def mouseReleased(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
-			if len(game.main.session.selected_instances) > 1:
-				pass #todo: show multi select menu
-			elif len(game.main.session.selected_instances) == 1:
-				for i in game.main.session.selected_instances:
-					if hasattr(i, 'show_menu'):
-						i.show_menu()
-
+			self.apply_select()
 			del self.select_begin, self.select_old
 			game.main.session.view.renderer['GenericRenderer'].removeAll("select")
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
@@ -107,6 +101,15 @@ class SelectionTool(NavigationTool):
 			return
 		evt.consume()
 
+	def apply_select(self):
+		if len(game.main.session.selected_instances) > 1:
+			pass #todo: show multi select menu
+		elif len(game.main.session.selected_instances) == 1:
+			for i in game.main.session.selected_instances:
+				if hasattr(i, 'show_menu'):
+					i.show_menu()
+		
+		
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mousePressed(evt)

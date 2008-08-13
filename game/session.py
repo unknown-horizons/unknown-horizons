@@ -135,6 +135,13 @@ class Session(livingObject):
 			self.world.save(db)
 			#self.manager.save(db)
 			self.view.save(db)
+			
+			for instance in self.selected_instances:
+				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.getId())
+			for group in xrange(len(self.selection_groups)):
+				for instance in self.selection_groups[group]:
+					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
+			
 			game.main.savegamemanager.write_metadata(db)
 		finally:
 			db("COMMIT")
@@ -149,6 +156,23 @@ class Session(livingObject):
 		self.view.load(db)
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
+		
+		# FIXME: dirty check if table selected exists
+		import sqlite3
+		try:
+		
+			for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"):
+				obj = WorldObject.getObjectById(instance_id[0])
+				self.selected_instances.add(obj)
+				obj.select()
+			for group in xrange(len(self.selection_groups)):
+				for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
+					self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
+				
+		except sqlite3.OperationalError:
+			pass
+			
+		self.cursor.apply_select() 
 
 	def generateMap(self):
 		"""Generates a map."""
