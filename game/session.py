@@ -157,7 +157,7 @@ class Session(livingObject):
 			db("INSERT INTO metadata(name, value) VALUES(\"timestamp\", ?)", time.time())
 			self.world.save(db)
 			#self.manager.save(db)
-			#self.view.save(db)
+			self.view.save(db)
 		finally:
 			db("COMMIT")
 
@@ -168,6 +168,7 @@ class Session(livingObject):
 
 		db = DbReader(savegame)
 		self.world = World(db)
+		self.view.load(db)
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
