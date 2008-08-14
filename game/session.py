@@ -157,20 +157,13 @@ class Session(livingObject):
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 		
-		# FIXME: dirty check if table selected exists
-		import sqlite3
-		try:
-		
-			for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"):
-				obj = WorldObject.getObjectById(instance_id[0])
-				self.selected_instances.add(obj)
-				obj.select()
-			for group in xrange(len(self.selection_groups)):
-				for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
-					self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
-				
-		except sqlite3.OperationalError:
-			pass
+		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"):
+			obj = WorldObject.getObjectById(instance_id[0])
+			self.selected_instances.add(obj)
+			obj.select()
+		for group in xrange(len(self.selection_groups)):
+			for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
+				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
 			
 		self.cursor.apply_select() 
 

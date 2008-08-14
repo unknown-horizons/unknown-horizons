@@ -81,14 +81,18 @@ class World(livingObject):
 		# create shiplist
 		self.ships = []
 
-		# old code for loading ships:
+		# load units
+		from game.world.units.ship import Ship
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
-			# workaround to distinguish between ships and other units
-			unitclass = game.main.session.entities.units[typeid]
-			from game.world.units.ship import Ship
-			if issubclass(unitclass, Ship):
-				self.ships.append(unitclass.load(db, worldid))
+			print 'unit', worldid, typeid
+			obj = game.main.session.entities.units[typeid].load(db, worldid)
+			if isinstance(obj, Ship):
+				self.ships.append(obj)
 				
+		# reconstruct shipmap
+		for ship in self.ships:
+			self.ship_map[ship.position] = weakref.ref(ship)
+			
 	def setupPlayer(self, name, color):
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)
@@ -121,9 +125,8 @@ class World(livingObject):
 		for i in self.islands:
 			if not i.rect.contains(point):
 				continue
-			for tile in i.grounds:
-				if tile.x == x and tile.y == y:
-					return i
+			if point.get_coordinates()[0] in i.ground_map:
+				return i
 		return None
 
 	def save(self, db):

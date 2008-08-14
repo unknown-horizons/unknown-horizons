@@ -29,6 +29,9 @@ class Unit(WorldObject):
 
 	def __init__(self, x, y, **kwargs):
 		super(Unit, self).__init__(**kwargs)
+		self.__init(x, y)
+		
+	def __init(self, x, y, health = 60.0):
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
@@ -49,14 +52,13 @@ class Unit(WorldObject):
 
 		self.path = Pather(self)
 
-		self.health = 60.0
+		self.health = health
 		self.max_health = 100.0
 
 		self.__is_moving = False
-
+		
 	def __del__(self):
-		# the layer is sometimes deleted before the unit, therefore this check
-		if self._instance.getLocationRef().getLayer() is not None:
+		if hasattr(self, "_instance") and self._instance.getLocationRef().getLayer() is not None:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def start(self):
@@ -221,15 +223,14 @@ class Unit(WorldObject):
 		
 		# TODO: owner
 
-
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
-		# HACK: Call bloated __init__, which is not a good idea, but saves me from copying tons of code for now
-		# TODO: Implement location loading
-		(x, y, health, owner) = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
-
-		Unit.__init__(self, x, y)
-
-		self.health = health
-
-
+		
+		x, y, health = db("SELECT x, y, health FROM unit WHERE rowid = ?", worldid)[0]
+		self.__init(x, y, health)
+		
+		path_loaded = self.path.load(db, worldid)
+		if path_loaded:
+			self.__is_moving = True
+			game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
+		return self

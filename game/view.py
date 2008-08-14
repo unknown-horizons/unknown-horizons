@@ -22,7 +22,6 @@
 import fife
 import math
 import game.main
-import sqlite3
 from game.util import livingObject
 
 class View(livingObject):
@@ -173,13 +172,11 @@ class View(livingObject):
 	
 	def load(self, db):
 		# NOTE: this is no class function, since view is initated before loading
-		# FIXME: dirty check if view exists
-		try:
-			db("SELECT EXISTS ( SELECT NULL FROM view )")
-		except sqlite3.OperationalError:
+		res = db("SELECT zoom, rotation, location_x, location_y FROM view")
+		if len(res) == 0 :
+			# no view info
 			return
-		
-		zoom, rotation, loc_x, loc_y = db("SELECT zoom, rotation, location_x, location_y FROM view")[0]
+		zoom, rotation, loc_x, loc_y = res[0]
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
 		self.set_location((loc_x, loc_y))

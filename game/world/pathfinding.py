@@ -20,16 +20,15 @@
 # ###################################################
 
 
-from game.util import Rect, Point
+from game.util import Rect, Point, WorldObject
 from game.world.building.building import Building
 import game.main
 import weakref
-import exceptions
 
 # for speed testing:
 import time
 
-class PathBlockedError(exceptions.Exception):
+class PathBlockedError(Exception):
 	pass
 
 class Movement:
@@ -222,6 +221,9 @@ class Pather(object):
 			assert False, 'Invalid way of movement'
 
 		self.unit = weakref.ref(unit)
+		
+		self.destination_in_building = False
+		self.source_in_building = False
 
 		self.path = None
 		self.cur = None
@@ -310,5 +312,21 @@ class Pather(object):
 		if self.path is not None:
 			for step in xrange(len(self.path)):
 				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", unitid, step, self.path[step][0], self.path[step][1])
+				
+	def load(self, db, worldid):
+		"""
+		@return: Bool, wether a path was loaded
+		"""
+		path_steps = db("SELECT x, y FROM unit_path WHERE unit = ? ORDER BY `index`", worldid)
+		if len(path_steps) == 0:
+			return False
+		else:
+			self.path = []
+			for step in path_steps:
+				self.path.append(step) # the sql statement orders the steps
+			self.cur = self.path.index(self.unit().position.get_coordinates()[0])	
+			return True
+			
+		
 
 

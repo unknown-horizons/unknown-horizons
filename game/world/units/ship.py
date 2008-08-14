@@ -45,8 +45,13 @@ class Ship(Unit):
 
 		self.set_name()
 
+		game.main.session.world.ships.append(self)
 		game.main.session.world.ship_map[self.position] = weakref.ref(self)
-
+		
+	def remove(self):
+		super(Ship, self).remove()
+		game.main.session.world.ships.remove(self)
+		
 	def setup_inventory(self):
 		## TODO: inherit from storageholder
 		self.inventory = Storage()
@@ -130,7 +135,7 @@ class Ship(Unit):
 
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
-		game.main.session.world.ship_map[self.position] = weakref.ref(self)
+		return self
 
 
 class PirateShip(Ship):
