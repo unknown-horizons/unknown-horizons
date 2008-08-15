@@ -119,3 +119,6 @@ class Rect(object):
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield Point(x, y)
+
+from game.util.encoder import register_classes
+register_classes(Rect)

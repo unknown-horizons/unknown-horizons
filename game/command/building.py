@@ -76,3 +76,5 @@ class Tear(object):
 		# Note: this is weak - if there is a memleak, this del will not work...
 		del building
 
+from game.util.encoder import register_classes
+register_classes(Build, Tear)

@@ -64,3 +64,6 @@ class Color(object):
 			self.name, self.id = game.main.db('SELECT name,rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
 		except:
 			pass
+
+from game.util.encoder import register_classes
+register_classes(Color)

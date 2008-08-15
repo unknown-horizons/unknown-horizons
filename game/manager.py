@@ -23,6 +23,7 @@ import game.timer
 import game.main
 from game.packets import TickPacket
 from game.util import livingObject
+from game.util import encode, decode
 
 class SPManager(livingObject):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets

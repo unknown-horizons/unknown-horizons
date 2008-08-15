@@ -62,3 +62,6 @@ class Point(object):
 				return (self.x == other[0] and self.y == other[1])
 			except TypeError:
 				return False
+
+from game.util.encoder import register_classes
+register_classes(Point)
