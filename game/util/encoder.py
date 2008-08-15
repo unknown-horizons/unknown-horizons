@@ -21,6 +21,11 @@
 
 classes=[]
 
+def register_classes(*classes_):
+	global classes
+	for c in classes_:
+		classes.append(c)
+
 def encode(obj):
 	if obj is None:
 		return 'n'
@@ -30,6 +35,8 @@ def encode(obj):
 		return 'i' + str(obj)
 	if type(obj) == long:
 		return 'I' + str(obj)
+	if type(obj) == float:
+		return 'f' + str(obj)
 	if type(obj) == str:
 		return 's' + str(len(obj)) + ':' + obj
 	if type(obj) == list:
@@ -39,12 +46,12 @@ def encode(obj):
 	if type(obj) == set:
 		return 'z' + str(len(obj)) + ''.join(encode(i) for i in obj)
 	if type(obj) == frozenset:
-		return 'f' + str(len(obj)) + ''.join(encode(i) for i in obj)
+		return 'Z' + str(len(obj)) + ''.join(encode(i) for i in obj)
 	if type(obj) == dict:
 		return 'd' + str(len(obj)) + ''.join(encode(i) + encode(j) for i, j in obj.items())
 	if obj.__class__ in classes:
 		attrs = [i for i in dir(obj) if type(i) != str or i[0] != '_']
-		return 'o' + encode(obj.__class__.__name__) + str(len(attrs)) + ':' + ''.join(encode(i) + encode(getattr(obj,i)) for i in attrs)
+		return 'o' + encode(obj.__class__.__name__) + str(len(attrs)) + ''.join(encode(i) + encode(getattr(obj,i)) for i in attrs)
 	raise NotImplementedError("Cant handle object " + repr(obj.__class__))
 
 def decode(text):
@@ -52,7 +59,7 @@ def decode(text):
 
 def __read_number(text, pos):
 	for p in xrange(pos, len(text)):
-		if text[p] not in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9') and (p != pos or text[p] not in ('+', '-')):
+		if text[p] not in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.') and (p != pos or text[p] not in ('+', '-')):
 			return text[pos:p]
 	return text[pos:]
 
@@ -67,6 +74,9 @@ def __decode(text, pos):
 	if text[pos] == 'I':
 		i = __read_number(text, 1 + pos)
 		return (1 + len(i), long(i))
+	if text[pos] == 'f':
+		i = __read_number(text, 1 + pos)
+		return (1 + len(i), float(i))
 	if text[pos] == 's':
 		i = __read_number(text, 1 + pos)
 		return (2 + len(i) + int(i), text[2 + len(i) + pos:2 + len(i) + int(i) + pos])
@@ -79,7 +89,7 @@ def __decode(text, pos):
 			length += l
 			r.append(o)
 		return (length, tuple(r) if text[pos] == 't' else r)
-	if text[pos] in ('z', 'f'):
+	if text[pos] in ('z', 'Z'):
 		i = __read_number(text, 1 + pos)
 		length = 1 + len(i)
 		r = set()
