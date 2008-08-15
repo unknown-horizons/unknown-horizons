@@ -156,13 +156,14 @@ class Session(livingObject):
 		self.manager.recording = False
 		game.main.db("DETACH demo")
 
-	def load(self, savegame):
+	def load(self, savegame, playername = "", playercolor = None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		"""
 
 		db = DbReader(savegame)
 		self.world = World(db)
+		self.world.setupPlayer(playername, playercolor)
 		self.view.load(db)
 		self.manager.load(db)
 		#setup view
@@ -176,7 +177,7 @@ class Session(livingObject):
 			for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
 			
-		self.cursor.apply_select() 
+		self.cursor.apply_select()
 
 	def generateMap(self):
 		"""Generates a map."""

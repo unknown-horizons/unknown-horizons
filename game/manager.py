@@ -48,17 +48,21 @@ class SPManager(livingObject):
 	def load(self, db):
 		self.commands = []
 		for tick, issuer, data in db("SELECT tick, issuer, data from command"):
-			self.commands.append((int(tick), WorldObject.getObjectById(issuer), decode(data)))
+			self.commands.append((int(tick), game.main.session.world.player, decode(data))) #TODO: just until we have correct player saving
+			#self.commands.append((int(tick), WorldObject.getObjectById(issuer), decode(data)))
 		if len(self.commands) > 0:
-			game.timer.add_call(this.tick)
+			game.main.session.timer.add_call(self.tick)
 
 	def tick(self, tick):
+		remove = []
 		for cmd in self.commands:
 			if tick == cmd[0]:
 				cmd[2](issuer = cmd[1])
-				self.commands.remove(cmd)
+				remove.append(cmd)
+		for cmd in remove:
+			self.commands.remove(cmd)
 		if len(self.commands) == 0:
-			game.timer.remove_call(this.tick)
+			game.main.session.timer.remove_call(self.tick)
 
 class MPManager(livingObject):
 	COMMAND_RATE = 1

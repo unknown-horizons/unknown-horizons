@@ -353,8 +353,7 @@ def startSingle():
 	if map_file is None:
 		session.generateMap()
 	else:
-		session.load(map_file)
-	session.world.setupPlayer(playername, playercolor)
+		session.load(map_file, playername, playercolor)
 
 def showMulti():
 	global gui, onEscape, showMain, connection

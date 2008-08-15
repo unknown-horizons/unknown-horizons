@@ -33,8 +33,7 @@ class Build(object):
 		@param ship: ship instance
 		"""
 		self.building_class = building.id
-		self.instance = None if instance is None else instance.getId()
-		self.layer = 2 if instance is None else int(instance.getLocationRef().getLayer().getId())
+		self._instance = instance
 		self.tear = tear or []
 		self.ship = None if ship is None else ship.getId()
 		self.x = int(x)
@@ -49,7 +48,7 @@ class Build(object):
 			game.main.session.manager.execute(Tear(building))
 
 		island = game.main.session.world.get_island(self.x, self.y)
-		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, owner=issuer, instance=game.main.session.view.layers[self.layer].getInstance(self.instance) if self.instance is not None and issuer == game.main.session.world.player else None)
+		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, owner=issuer, instance=(self._instance if hasattr(self, '_instance') and issuer == game.main.session.world.player else None))
 
 		island.add_building(building, issuer)
 		secondary_resource_source = island.get_settlement(Point(self.x, self.y)) if self.ship is None else WorldObject.getObjectById(self.ship)
