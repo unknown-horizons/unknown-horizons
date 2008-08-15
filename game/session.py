@@ -146,6 +146,16 @@ class Session(livingObject):
 		finally:
 			db("COMMIT")
 
+	def record(self, savegame):
+		self.save(savegame)
+		game.main.db("ATTACH ? AS demo", savegame)
+		self.manager.recording = True
+
+	def stop_record(self):
+		assert(self.manager.recording)
+		self.manager.recording = False
+		game.main.db("DETACH demo")
+
 	def load(self, savegame):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
@@ -154,6 +164,7 @@ class Session(livingObject):
 		db = DbReader(savegame)
 		self.world = World(db)
 		self.view.load(db)
+		self.manager.load(db)
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 		

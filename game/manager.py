@@ -24,16 +24,41 @@ import game.main
 from game.packets import TickPacket
 from game.util import livingObject
 from game.util import encode, decode
+from game.util import WorldObject
 
 class SPManager(livingObject):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
 	over the network, and syncronisation of network games."""
 
+	def begin(self):
+		self.recording = False
+		self.commands = []
+
 	def execute(self, command):
 		"""Executes a command
 		@param command: Command the command to be executed
 		"""
+		# if we are in demo playback mode, every incoming command has to be thrown away. 
+		if len(self.commands) > 0:
+			return
+		if self.recording:
+			game.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", game.main.session.timer.tick_next_id, game.main.session.world.player.getId(), game.util.encode(command))
 		command(issuer = game.main.session.world.player)
+
+	def load(self, db):
+		self.commands = []
+		for tick, issuer, data in db("SELECT tick, issuer, data from command"):
+			self.commands.append((int(tick), WorldObject.getObjectById(issuer), decode(data)))
+		if len(self.commands) > 0:
+			game.timer.add_call(this.tick)
+
+	def tick(self, tick):
+		for cmd in self.commands:
+			if tick == cmd[0]:
+				cmd[2](issuer = cmd[1])
+				self.commands.remove(cmd)
+		if len(self.commands) == 0:
+			game.timer.remove_call(this.tick)
 
 class MPManager(livingObject):
 	COMMAND_RATE = 1
