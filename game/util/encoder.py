@@ -22,10 +22,10 @@ def encode(obj, *classes):
 	if obj.__class__ in classes:
 		attrs = [i for i in dir(obj) if type(i) != str or i[0] != '_']
 		return 'o' + encode(obj.__class__.__name__, *classes) + str(len(attrs)) + ':' + ''.join(encode(i, *classes) + encode(getattr(obj,i), *classes) for i in attrs)
-	raise "Cant handle object " + repr(obj.__class__) + " " + repr(classes)
+	raise NotImplementedError("Cant handle object " + repr(obj.__class__))
 
-def decode(text, pos = 0, *classes):
-	return __decode(text, pos, classes)[1]
+def decode(text, *classes):
+	return __decode(text, 0, classes)[1]
 
 def __read_number(text, pos):
 	for p in xrange(pos, len(text)):
@@ -90,5 +90,5 @@ def __decode(text, pos, classes):
 					length += l
 					setattr(r, k, v)
 				return (length, r)
-		raise "Cant handle object " + repr(class_name)
+		raise NotImplementedError("Cant handle object " + repr(class_name))
 	return (0, None)
