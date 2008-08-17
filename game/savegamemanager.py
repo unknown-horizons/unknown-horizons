@@ -53,6 +53,12 @@ class SavegameManager(object):
 	autosave_filenamepattern = autosave_basename+'%(timestamp)d.'+savegame_extension
 	quicksave_filenamepattern = quicksave_basename+'%(timestamp).2f.'+savegame_extension
 	
+	_shared_state = {}
+	
+	def __init__(self):
+		# share members across all instances
+		self.__dict__ = self._shared_state
+	
 	def __get_displaynames(self, files):
 		"""Returns list of names files, that should be displayed to the user."""
 		displaynames = []

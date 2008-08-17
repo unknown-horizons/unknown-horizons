@@ -339,6 +339,9 @@ def startSingle():
 
 	map_file = gui.files[map_id]
 	playername = gui.collectData('playername')
+	if len(playername) == 0:
+		showPopup("Invalid player name", "You entered an invalid playername")
+		return
 	playercolor = Color[gui.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
 
 	if gui is not None:

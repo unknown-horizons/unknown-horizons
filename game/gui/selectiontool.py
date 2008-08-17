@@ -109,7 +109,6 @@ class SelectionTool(NavigationTool):
 				if hasattr(i, 'show_menu'):
 					i.show_menu()
 		
-		
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mousePressed(evt)

@@ -163,7 +163,8 @@ class Session(livingObject):
 
 		db = DbReader(savegame)
 		self.world = World(db)
-		self.world.setupPlayer(playername, playercolor)
+		if playername != "": 
+			self.world.setupPlayer(playername, playercolor)
 		self.view.load(db)
 		self.manager.load(db)
 		#setup view

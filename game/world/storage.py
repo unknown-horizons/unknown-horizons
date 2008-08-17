@@ -189,7 +189,7 @@ class ArbitraryStorage(WorldObject):
 				ownerid, slot[0], slot[1])
 			
 	def load(self, db, ownerid):
-		super(Storage, self).save(db)
+		super(Storage, self).load(db)
 		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
 			self.alter_inventory(res, amount)
 		

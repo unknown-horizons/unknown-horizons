@@ -81,10 +81,16 @@ class World(livingObject):
 		# create shiplist
 		self.ships = []
 
+		# load player
+		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
+			player = Player.load(db, player_id)
+			self.players.append(player)
+			if client_id == game.main.settings.client_id:
+				self.player = player
+			
 		# load units
 		from game.world.units.ship import Ship
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
-			print 'unit', worldid, typeid
 			obj = game.main.session.entities.units[typeid].load(db, worldid)
 			if isinstance(obj, Ship):
 				self.ships.append(obj)
