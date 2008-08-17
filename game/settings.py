@@ -90,7 +90,7 @@ class Setting(object):
 		for name in defaults:
 			assert(not name.startswith('_'))
 			assert(name not in self._categorys)
-			if not self.__dict__.has_key(name):
+			if not name in self.__dict__:
 				self.__dict__[name] = defaults[name]
 				for listener in self._listener:
 					listener(self, name, defaults[name])
