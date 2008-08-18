@@ -217,13 +217,17 @@ def create_show_savegame_details(gui, map_files, savegamelist):
 	def tmp_show_details():
 		"""Fetches details of selected savegame and displays it"""
 		box = gui.findChild(name="savegamedetails_box")
-		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
-		details_label.name="savegamedetails_lbl"
-		savegame_info = savegamemanager.get_savegame_info(map_files[gui.collectData(savegamelist)])
-		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
-		old_label = gui.findChild(name="savegamedetails_lbl")
+		old_label = box.findChild(name="savegamedetails_lbl")
 		if old_label is not None:
 			box.removeChild(old_label)
+		try:
+			savegame_info = savegamemanager.get_savegame_info(map_files[gui.collectData(savegamelist)])
+		except:
+			gui.adaptLayout()
+			return
+		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
+		details_label.name="savegamedetails_lbl"
+		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 		box.addChild( details_label )
 		gui.adaptLayout()
 	return tmp_show_details
@@ -312,10 +316,11 @@ def showSingle(showRandom = False, showCampaign = True, showLoad = False):
 		gui.distributeInitialData({
 			'maplist' : display,
 		})
-		gui.distributeData({
-			'maplist' : 0
-		})
-		eventMap["maplist"] = create_show_savegame_details(gui, gui.files, 'maplist')
+		if len(display) > 0:
+			gui.distributeData({
+				'maplist' : 0
+			})
+			eventMap["maplist"] = create_show_savegame_details(gui, gui.files, 'maplist')
 		if showCampaign:
 			eventMap['showRandom'] = fife.pychan.tools.callbackWithArguments(showSingle, True, False, False)
 			eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, False, False, True)
@@ -354,7 +359,7 @@ def startSingle():
 	else:
 		map_id = gui.collectData('maplist')
 		if map_id == -1:
-			map_id = 0
+			return
 		map_file = gui.files[map_id]
 
 		if gui is not None:
