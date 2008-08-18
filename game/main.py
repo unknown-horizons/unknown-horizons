@@ -297,6 +297,7 @@ def showSingle(showRandom = False, showCampaign = True, showLoad = False):
 		'okay'     : startSingle,
 	}
 	if showRandom:
+		gui.findChild(name="load")._parent.removeChild(gui.findChild(name="load"))
 		eventMap['showCampaign'] = fife.pychan.tools.callbackWithArguments(showSingle, False, True, False)
 		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, False, False, True)
 		gui.distributeInitialData({
@@ -305,20 +306,22 @@ def showSingle(showRandom = False, showCampaign = True, showLoad = False):
 		gui.distributeData({
 			'playercolor' : 0
 		})
-		gui.findChild(name="load")._parent.removeChild(gui.findChild(name="load"))
 	else:
+		gui.findChild(name="random")._parent.removeChild(gui.findChild(name="random"))
 		gui.files, display = getMaps(showCampaign, showLoad)
 		gui.distributeInitialData({
 			'maplist' : display,
 		})
+		gui.distributeData({
+			'maplist' : 0
+		})
+		eventMap["maplist"] = create_show_savegame_details(gui, gui.files, 'maplist')
 		if showCampaign:
 			eventMap['showRandom'] = fife.pychan.tools.callbackWithArguments(showSingle, True, False, False)
 			eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, False, False, True)
 		elif showLoad:
 			eventMap['showRandom'] = fife.pychan.tools.callbackWithArguments(showSingle, True, False, False)
 			eventMap['showCampaign'] = fife.pychan.tools.callbackWithArguments(showSingle, False, True, False)
-		gui.findChild(name="maplist").capture(create_show_savegame_details(gui, gui.files, 'maplist'))
-		gui.findChild(name="random")._parent.removeChild(gui.findChild(name="random"))
 	gui.mapEvents(eventMap)
 
 	gui.distributeData({
