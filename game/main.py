@@ -197,7 +197,7 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 	else:
 		return showDialog(popup,{'okButton' : True}, onPressEscape = True)
 
-def getMaps(showOnlySaved = False):
+def getMaps(showCampaign = True, showLoad = False):
 	""" Gets available maps both for displaying and loading.
 
 	@param showOnlySaved: Bool, wether saved games are to be shown.
@@ -205,11 +205,11 @@ def getMaps(showOnlySaved = False):
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
 	global savegamemanager
-	if showOnlySaved:
+	if showLoad:
 		return savegamemanager.get_saves()
-	else:
-		files = [None] + [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
-		display = ['Random Map' if i is None else os.path.split(i)[1].rpartition('.')[0] for i in files]
+	elif showCampaign:
+		files = [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
+		display = [os.path.split(i)[1].rpartition('.')[0] for i in files]
 		return (files, display)
 
 def create_show_savegame_details(gui, map_files, savegamelist):
@@ -280,7 +280,7 @@ def showMain():
 	gui.show()
 	onEscape = showQuit
 
-def showSingle(showOnlySaved = False):
+def showSingle(showRandom = False, showCampaign = True, showLoad = False):
 	"""
 	@param showOnlySaved: Bool whether saved games are to be shown.
 	"""
@@ -296,30 +296,36 @@ def showSingle(showOnlySaved = False):
 		'cancel'   : showMain,
 		'okay'     : startSingle,
 	}
-	gui.mapEvents(eventMap)
-	if showOnlySaved:
-		eventMap['showNew'] = fife.pychan.tools.callbackWithArguments(showSingle, False)
+	if showRandom:
+		eventMap['showCampaign'] = fife.pychan.tools.callbackWithArguments(showSingle, False, True, False)
+		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, False, False, True)
+		gui.distributeInitialData({
+			'playercolor' : [ i.name for i in Color ]
+		})
+		gui.distributeData({
+			'playercolor' : 0
+		})
+		gui.findChild(name="load")._parent.removeChild(gui.findChild(name="load"))
 	else:
-		eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, True)
-	gui.mapEvents(eventMap)
-
-	# distribute data
-	(gui.files, display) = getMaps(showOnlySaved)
-
-	gui.distributeInitialData({
-		'maplist' : display,
-		'playercolor' : [ i.name for i in Color ]
-	})
-	gui.distributeData({
-		'showNew' : not showOnlySaved,
-		'showLoad' : showOnlySaved,
-		'playercolor' : 0
-	})
-	
-	if showOnlySaved:
+		gui.files, display = getMaps(showCampaign, showLoad)
+		gui.distributeInitialData({
+			'maplist' : display,
+		})
+		if showCampaign:
+			eventMap['showRandom'] = fife.pychan.tools.callbackWithArguments(showSingle, True, False, False)
+			eventMap['showLoad'] = fife.pychan.tools.callbackWithArguments(showSingle, False, False, True)
+		elif showLoad:
+			eventMap['showRandom'] = fife.pychan.tools.callbackWithArguments(showSingle, True, False, False)
+			eventMap['showCampaign'] = fife.pychan.tools.callbackWithArguments(showSingle, False, True, False)
 		gui.findChild(name="maplist").capture(create_show_savegame_details(gui, gui.files, 'maplist'))
-	else:
-		gui.findChild(name="maplist").capture(None)
+		gui.findChild(name="random")._parent.removeChild(gui.findChild(name="random"))
+	gui.mapEvents(eventMap)
+
+	gui.distributeData({
+		'showRandom' : showRandom,
+		'showCampaign' : showCampaign,
+		'showLoad' : showLoad,
+	})
 
 	gui.show()
 	onEscape = showMain
@@ -329,37 +335,38 @@ def startSingle():
 	"""
 	global gui, fife, session, onEscape, showPause
 
-	map_id = gui.collectData('maplist')
-	if map_id == -1:
-		# BUG: this selects the last map by default
-		# uncomment the following lines to fix the bug
-		#showPopup('Error','You have to select a map')
-		#return
-		pass
+	showRandom = gui.collectData('showRandom')
+	showCampaign = gui.collectData('showCampaign')
+	showLoad = gui.collectData('showLoad')
 
-	map_file = gui.files[map_id]
-	playername = gui.collectData('playername')
-	if len(playername) == 0:
-		showPopup("Invalid player name", "You entered an invalid playername")
+	if showRandom:
+		playername = gui.collectData('playername')
+		if len(playername) == 0:
+			showPopup("Invalid player name", "You entered an invalid playername")
+			return
+		playercolor = Color[gui.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
+		showPopup("Not implemented", "Sorry, random map creation is not implemented at the moment.")
 		return
-	playercolor = Color[gui.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-
-	if gui is not None:
-		gui.hide()
-	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-	gui.x += int((settings.fife.screen.width - gui.width) / 2)
-	gui.y += int((settings.fife.screen.height - gui.height) / 2)
-	gui.show()
-	fife.engine.pump()
-	gui.hide()
-	gui = None
-
-	session = Session()
-	session.begin()
-	if map_file is None:
 		session.generateMap()
 	else:
-		session.load(map_file, playername, playercolor)
+		map_id = gui.collectData('maplist')
+		if map_id == -1:
+			map_id = 0
+		map_file = gui.files[map_id]
+
+		if gui is not None:
+			gui.hide()
+		gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
+		gui.x += int((settings.fife.screen.width - gui.width) / 2)
+		gui.y += int((settings.fife.screen.height - gui.height) / 2)
+		gui.show()
+		fife.engine.pump()
+		gui.hide()
+		gui = None
+
+		session = Session()
+		session.begin()
+		session.load(map_file)
 
 def showMulti():
 	global gui, onEscape, showMain, connection
