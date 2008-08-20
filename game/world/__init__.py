@@ -85,9 +85,9 @@ class World(livingObject):
 		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
 			player = Player.load(db, player_id)
 			self.players.append(player)
-			if client_id == game.main.settings.client_id:
+			if client_id == game.main.settings.client_id or client_id == "":
 				self.player = player
-			
+
 		# load units
 		from game.world.units.ship import Ship
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
@@ -98,13 +98,13 @@ class World(livingObject):
 		# reconstruct shipmap
 		for ship in self.ships:
 			self.ship_map[ship.position] = weakref.ref(ship)
-			
+
 	def setupPlayer(self, name, color):
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)
 		game.main.session.ingame_gui.update_gold()
 		self.player.inventory.addChangeListener(game.main.session.ingame_gui.update_gold)
-		
+
 	def get_tile(self, point):
 		"""Returns the ground at x, y. 
 		@param point: coords as Point
