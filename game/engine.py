@@ -179,31 +179,31 @@ class Fife(object):
 		@param value:
 		"""
 		setting = settingObject._name + settingName
-		if setting == 'fife_defaultFont_path':
+		if setting == 'fife.defaultFont.path':
 			self.settings.setDefaultFontPath(value)
-		elif setting == 'fife_defaultFont_size':
+		elif setting == 'fife.defaultFont.size':
 			self.settings.setDefaultFontSize(value)
-		elif setting == 'fife_defaultFont_glyphs':
+		elif setting == 'fife.defaultFont.glyphs':
 			self.settings.setDefaultFontGlyphs(value)
-		elif setting == 'fife_screen_fullscreen':
+		elif setting == 'fife.screen.fullscreen':
 			self.settings.setFullScreen(1 if value else 0)
-		elif setting == 'fife_screen_width':
+		elif setting == 'fife.screen.width':
 			self.settings.setScreenWidth(value)
-		elif setting == 'fife_screen_height':
+		elif setting == 'fife.screen.height':
 			self.settings.setScreenHeight(value)
-		elif setting == 'fife_screen_bpp':
+		elif setting == 'fife.screen.bpp':
 			self.settings.setBitsPerPixel(1 if value else 0)
-		elif setting == 'fife_renderer_backend':
+		elif setting == 'fife.renderer.backend':
 			self.settings.setRenderBackend(value)
-		elif setting == 'fife_renderer_SDLRemoveFakeAlpha':
+		elif setting == 'fife.renderer.SDLRemoveFakeAlpha':
 			self.settings.setSDLRemoveFakeAlpha(value)
-		elif setting == 'fife_renderer_imageChunkingSize':
+		elif setting == 'fife.renderer.imageChunkingSize':
 			self.settings.setImageChunkingSize(value)
-		elif setting == 'fife_sound_initialVolume':
+		elif setting == 'fife.sound.initialVolume':
 			self.settings.setInitialVolume(value)
-		elif setting == 'fife_screen_title':
+		elif setting == 'fife.screen.title':
 			self.settings.setWindowTitle(value)
-		elif setting == 'fife_screen_icon':
+		elif setting == 'fife.screen.icon':
 			self.settings.setWindowIcon(value)
 
 	def init(self):
