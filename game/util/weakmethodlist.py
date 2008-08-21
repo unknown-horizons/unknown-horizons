@@ -50,5 +50,3 @@ class WeakMethodList(object):
 		"""Execute all callbacks. Number of callbacks may be zero to n."""
 		for callback in self.__callbacks:
 			callback()
-
-

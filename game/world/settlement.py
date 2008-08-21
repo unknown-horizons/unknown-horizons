@@ -90,4 +90,3 @@ class Settlement(WorldObject):
 		self._inhabitants = 42
 
 		self.buildings = []
-

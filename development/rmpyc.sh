@@ -4,4 +4,3 @@ if [ $# -gt 0 ]; then
 else
 	find . -type f -name '*.pyc' -o -name '*.pyo' -exec rm {} \;
 fi
-

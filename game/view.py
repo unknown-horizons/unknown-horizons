@@ -180,4 +180,3 @@ class View(livingObject):
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
 		self.set_location((loc_x, loc_y))
-

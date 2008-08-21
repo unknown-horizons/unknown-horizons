@@ -18,6 +18,3 @@ The FIFE and OpenAnno teams
 
 http://www.openanno.org
 http://www.fifengine.de
-
-
-

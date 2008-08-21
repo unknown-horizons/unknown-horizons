@@ -109,4 +109,3 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 
 	else:
 		print usage
-

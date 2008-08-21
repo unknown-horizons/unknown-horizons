@@ -66,5 +66,3 @@ class Player(WorldObject):
 		self.setup_inventory()
 		self.inventory.load(db, worldid)
 		return self
-
-
