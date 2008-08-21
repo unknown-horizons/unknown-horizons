@@ -67,10 +67,12 @@ class SavegameManager(object):
 		displaynames = []
 		for f in files:
 			if f.startswith(self.autosave_dir):
-				timestr = time.strftime("%y/%m/%d %H:%M", time.localtime(self.get_savegame_info(f)['timestamp']))
+				savegameinfo = self.get_savegame_info(f)
+				timestr = "" if savegameinfo['timestamp'] == -1 else time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
 				name = "Autosave %s" % timestr
 			elif f.startswith(self.quicksave_dir):
-				timestr = time.strftime("%y/%m/%d %H:%M", time.localtime(self.get_savegame_info(f)['timestamp']))
+				savegameinfo = self.get_savegame_info(f)
+				timestr = "" if savegameinfo['timestamp'] == -1 else time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
 				name = "Quicksave %s" % timestr
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
@@ -132,9 +134,11 @@ class SavegameManager(object):
 		See last line of this function for reference of infos.
 		"""
 		db = DbReader(savegamefile)
-		timestamp = float(db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")[0][0])
-
-		return {'timestamp' : timestamp}
+		result = db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")
+		if len(result) == 0: # no metadata in savegame
+			return {'timestamp' : -1}
+		else:
+			return {'timestamp' : float(result[0][0]) }
 
 	def write_metadata(self, db):
 		"""Writes metadata to db.

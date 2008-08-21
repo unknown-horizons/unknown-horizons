@@ -228,7 +228,7 @@ def create_show_savegame_details(gui, map_files, savegamelist):
 			return
 		details_label = fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
 		details_label.name="savegamedetails_lbl"
-		details_label.text="Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
+		details_label.text= "Unknown savedate" if savegame_info['timestamp'] == -1 else "Saved at "+time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 		box.addChild( details_label )
 		gui.adaptLayout()
 	return tmp_show_details
