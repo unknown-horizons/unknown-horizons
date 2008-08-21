@@ -77,10 +77,13 @@ class SavegameManager(object):
 			displaynames.append(name)
 		return displaynames
 
-	def __get_saves_from_dirs(self, dirs):
+	def __get_saves_from_dirs(self, dirs, include_displaynames = True):
 		"""Internal function, that returns the saves of a dir"""
 		files = [f for p in dirs for f in glob.glob(p+'/*.'+self.savegame_extension) if os.path.isfile(f)]
-		return (files, self.__get_displaynames(files))
+		if include_displaynames:
+			return (files, self.__get_displaynames(files))
+		else:
+			return (files,)
 
 	def check_savegame_name(self, name):
 		"""Checks if a user-entered name is possible for a savegame.
@@ -138,14 +141,14 @@ class SavegameManager(object):
 		@param db: DbReader"""
 		db("INSERT INTO metadata(name, value) VALUES(\"timestamp\", ?)", time.time())
 
-	def get_regular_saves(self):
+	def get_regular_saves(self, include_displaynames = True):
 		"""Returns the savegames, that were saved via the ingame save dialog"""
-		return self.__get_saves_from_dirs([self.savegame_dir])
+		return self.__get_saves_from_dirs([self.savegame_dir], include_displaynames = include_displaynames)
 
-	def get_saves(self):
+	def get_saves(self, include_displaynames = True):
 		"""Returns all savegames"""
-		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir, self.quicksave_dir, self.demo_dir])
+		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir, self.quicksave_dir, self.demo_dir], include_displaynames = include_displaynames)
 
-	def get_quicksaves(self):
-		return self.__get_saves_from_dirs([self.quicksave_dir])
+	def get_quicksaves(self, include_displaynames = True):
+		return self.__get_saves_from_dirs([self.quicksave_dir], include_displaynames = include_displaynames)
 

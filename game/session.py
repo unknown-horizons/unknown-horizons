@@ -75,14 +75,14 @@ class Session(livingObject):
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10
-		
+
 		#autosave
 		if game.main.settings.savegame.autosaveinterval != 0:
 			self.scheduler.add_new_object(self.autosave, self, game.main.settings.savegame.autosaveinterval*self.timer.ticks_per_second*60, -1)
 
 	def end(self):
 		self.scheduler.rem_all_classinst_calls(self)
-		
+
 		self.cursor = None
 		self.keylistener = None
 		self.ingame_gui = None
@@ -97,7 +97,7 @@ class Session(livingObject):
 		self.selection_groups = None
 		super(Session, self).end()
 
-		#import pdb 
+		#import pdb
 		#import gc
 		#print 'WorldObject.get_objs().valuerefs()'
 		#pdb.set_trace()
@@ -111,13 +111,13 @@ class Session(livingObject):
 		"""Called when user presses a hotkey"""
 		self.save(game.main.savegamemanager.create_quicksave_filename())
 		game.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
-		
+
 	def quickload(self):
 		"""Loads last quicksave"""
-		files = game.main.savegamemanager.get_quicksaves()[0]
+		files = game.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
 			game.main.showPopup("No quicksaves found", "You need to quicksave before you can quickload.")
-			return 
+			return
 		files.sort()
 		game.main.loadGame(files[-1])
 
@@ -131,20 +131,23 @@ class Session(livingObject):
 
 		db = DbReader(savegame)
 		try:
+			print 'STARTING SAVING'
 			db("BEGIN")
 			self.world.save(db)
 			#self.manager.save(db)
 			self.view.save(db)
-			
+
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.getId())
 			for group in xrange(len(self.selection_groups)):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
-			
+
+			print 'writing metadata'
 			game.main.savegamemanager.write_metadata(db)
 		finally:
 			db("COMMIT")
+			print 'FINISHED SAVING'
 
 	def record(self, savegame):
 		self.save(savegame)
@@ -160,16 +163,15 @@ class Session(livingObject):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		"""
-
 		db = DbReader(savegame)
 		self.world = World(db)
-		if playername != "": 
+		if playername != "":
 			self.world.setupPlayer(playername, playercolor)
 		self.view.load(db)
 		self.manager.load(db)
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
-		
+
 		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"):
 			obj = WorldObject.getObjectById(instance_id[0])
 			self.selected_instances.add(obj)
@@ -177,7 +179,7 @@ class Session(livingObject):
 		for group in xrange(len(self.selection_groups)):
 			for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
-			
+
 		self.cursor.apply_select()
 
 	def generateMap(self):
