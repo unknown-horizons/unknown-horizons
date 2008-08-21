@@ -23,7 +23,7 @@ from game.util import WeakMethod
 
 class WeakMethodList(object):
 	"""A class that handles zero to n callbacks."""
-	
+
 	def __init__(self, callbacks = None):
 		"""
 		@param callbacks: None, a function, a list of functions, or a tuple of functions
@@ -31,7 +31,7 @@ class WeakMethodList(object):
 		#self.__instance = instance
 		self.__callbacks = []
 		self.__add(callbacks)
-		
+
 	def __add(self, callback):
 		"""Internal function used to add callbacks"""
 		if callback is None:
@@ -41,14 +41,14 @@ class WeakMethodList(object):
 		elif isinstance(callback, list, tuple):
 			for i in callback:
 				self.__add(i)
-				
+
 	def append(self, elem):
 		"""Just like list.append"""
 		self.__add(elem)
-		
+
 	def execute(self):
 		"""Execute all callbacks. Number of callbacks may be zero to n."""
 		for callback in self.__callbacks:
 			callback()
-			
-			
+
+

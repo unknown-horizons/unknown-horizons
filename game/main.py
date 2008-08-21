@@ -55,7 +55,7 @@ def start():
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 	settings.addCategorys('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
-	
+
 	if settings.client_id is None:
 		settings.client_id = "".join("-" if c in (8,13,18,23) else random.choice("0123456789abcdef") for c in xrange(0,36))
 
@@ -118,21 +118,21 @@ def showSettings():
 		'screen_fullscreen' : settings.fife.screen.fullscreen,
 		'sound_enable_opt' : settings.sound.enabled
 	})
-	
+
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
 
 	# the following lines prevent typos
 	setting_keys = ['autosaveinterval', 'savedautosaves', 'savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt']
 	for key in setting_keys:
-		globals()[key] = dlg.collectData(key) 
-	
+		globals()[key] = dlg.collectData(key)
+
 	changes_require_restart = False
-	
+
 	if (autosaveinterval)*2 != settings.savegame.autosaveinterval:
-		print settings.savegame.autosaveinterval 
+		print settings.savegame.autosaveinterval
 		settings.savegame.autosaveinterval = (autosaveinterval)*2
-		print settings.savegame.autosaveinterval 
+		print settings.savegame.autosaveinterval
 	if savedautosaves+1 != settings.savegame.savedautosaves:
 		settings.savegame.savedautosaves = savedautosaves+1
 	if savedquicksaves+1 != settings.savegame.savedquicksaves:
@@ -153,7 +153,7 @@ def showSettings():
 		settings.fife.screen.width = int(resolutions[screen_resolution].partition('x')[0])
 		settings.fife.screen.height = int(resolutions[screen_resolution].partition('x')[2])
 		changes_require_restart = True
-		
+
 	if changes_require_restart:
 		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
 
@@ -185,7 +185,7 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 	@param message: the text displayed in the popup
 	@return: True on ok, False on cancel (if no cancel button, always True)
 	"""
-		
+
 	if show_cancel_button:
 		popup = fife.pychan.loadXML('content/gui/popupbox_with_cancel.xml')
 	else:
@@ -244,21 +244,21 @@ def delete_savegame(gui, map_files):
 		showPopup("No file selected", "You need to select a savegame to delete")
 		return False
 	selected_file = map_files[selected_item]
-	if showPopup("Confirm deletiom", 
-							 "Do you really want to delete the savegame \"%s\"?" % os.path.basename(selected_file), 
+	if showPopup("Confirm deletiom",
+							 "Do you really want to delete the savegame \"%s\"?" % os.path.basename(selected_file),
 							 show_cancel_button = True):
 		os.unlink(selected_file)
 		return True
 	else:
 		return False
-		
+
 def showQuit():
 	"""Shows the quit dialog
 	"""
 	global fife
 	if showDialog(fife.pychan.loadXML('content/gui/quitgame.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		quit()
-		
+
 def quit():
 	"""Quits the game"""
 	global fife
@@ -574,33 +574,33 @@ def quitSession():
 		session.end()
 		session = None
 		showMain()
-		
+
 def saveGame():
 	global session, savegamemanager
-	
+
 	savegame_files, savegame_display = savegamemanager.get_regular_saves()
-	
+
 	save_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
-	
+
 	save_dlg.distributeInitialData({'savegamelist' : savegame_display})
-	
+
 	def tmp_selected_changed():
 		"""Fills in the name of the savegame in the textbox when selected in the list"""
 		save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
-		
+
 	def tmp_delete_savegame():
 		if delete_savegame(save_dlg, savegame_files):
 			save_dlg.hide()
 			saveGame()
-	
+
 	save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
-	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False}, 
+	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False},
 										onPressEscape = False,
 										event_map={'deleteButton' : tmp_delete_savegame}):
 		return
-	
+
 	savegamename = save_dlg.collectData('savegamefile')
-	
+
 	try:
 		savegamefile = savegamemanager.create_filename(savegamename)
 	except InvalidSavegamenameException:
@@ -608,53 +608,53 @@ def saveGame():
 		save_dlg.hide()
 		saveGame()
 		return
-	
+
 	if os.path.exists(savegamefile):
-		if not showPopup("Confirmation for overwriting", 
-										 "A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename, 
+		if not showPopup("Confirmation for overwriting",
+										 "A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
 										 show_cancel_button = True):
 			saveGame()
 			return
-	
+
 	session.save(savegamefile)
 
 def loadGame(savegame = None):
 	global session, gui, fife, savegamemanager
-	
+
 	if savegame is None:
 		map_files, map_file_display = savegamemanager.get_saves()
-		
+
 		if len(map_files) == 0:
 			showPopup("No saved games", "There are no saved games to load")
 			return
-		
+
 		load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
-		
+
 		load_dlg.distributeInitialData({'savegamelist' : map_file_display})
-		
+
 		def tmp_delete_savegame():
 			if delete_savegame(load_dlg, map_files):
 				load_dlg.hide()
 				loadGame()
-			
+
 		load_dlg.findChild(name="savegamelist").capture(create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
 		if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
-											onPressEscape = False, 
-											event_map={'deleteButton' : tmp_delete_savegame}): 
+											onPressEscape = False,
+											event_map={'deleteButton' : tmp_delete_savegame}):
 			return
-		
-		selected_savegame = load_dlg.collectData('savegamelist') 
+
+		selected_savegame = load_dlg.collectData('savegamelist')
 		if selected_savegame == -1:
 			return
 		savegamefile = map_files[ selected_savegame ]
 	else:
 		savegamefile = savegame
-	
+
 	assert(os.path.exists(savegamefile))
-	
+
 	session.end()
 	session = None
-	
+
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')

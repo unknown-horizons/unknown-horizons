@@ -94,7 +94,7 @@ class World(livingObject):
 			obj = game.main.session.entities.units[typeid].load(db, worldid)
 			if isinstance(obj, Ship):
 				self.ships.append(obj)
-				
+
 		# reconstruct shipmap
 		for ship in self.ships:
 			self.ship_map[ship.position] = weakref.ref(ship)
@@ -106,7 +106,7 @@ class World(livingObject):
 		self.player.inventory.addChangeListener(game.main.session.ingame_gui.update_gold)
 
 	def get_tile(self, point):
-		"""Returns the ground at x, y. 
+		"""Returns the ground at x, y.
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""

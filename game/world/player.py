@@ -36,11 +36,11 @@ class Player(WorldObject):
 		self.name = name
 		self.color = color
 		assert hasattr(self.color, "id"), "Player color has to be a default color"
-		
+
 		self.setup_inventory()
 
 		self.inventory.alter_inventory(1, 9999)
-		
+
 	def setup_inventory(self):
 		self.inventory = Storage()
 		self.inventory.addSlot(1, -1)
@@ -53,18 +53,18 @@ class Player(WorldObject):
 		# saving and loading implementation will have to be changed
 		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", self.getId(), self.name, self.color.id, "NULL" if self is not game.main.session.world.player else game.main.settings.client_id)
 		self.inventory.save(db, self.getId())
-		
+
 	@classmethod
 	def load(cls, db, worldid):
 		self = Player.__new__(Player)
 		super(Player, self).load(db, worldid)
-		
+
 		color, self.name = db("SELECT color, name FROM player WHERE rowid = ?", worldid)[0]
 		self.color = Color[color]
 		assert hasattr(self.color, "id"), "Player color has to be a default color"
-		
+
 		self.setup_inventory()
-		self.inventory.load(db, worldid) 
+		self.inventory.load(db, worldid)
 		return self
-		
-		
+
+

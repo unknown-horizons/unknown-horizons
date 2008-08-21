@@ -30,14 +30,14 @@ class BuildingClass(type):
 	def __new__(self, id):
 		class_package, class_name = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
 		__import__('game.world.building.'+class_package)
-		
-		
+
+
 		@classmethod
 		def load(cls, db, worldid):
 			self = cls.__new__(cls)
 			super(cls, self).load(db, worldid)
 			return self
-		
+
 		return type.__new__(self, 'Building[' + str(id) + ']',
 			(getattr(globals()[class_package], class_name),),
 			{"load": load})

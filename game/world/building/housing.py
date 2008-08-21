@@ -23,6 +23,6 @@ from building import Building, Selectable
 from buildable import BuildableSingle
 
 class Housing(Building, Selectable, BuildableSingle):
-	
+
 	def save(self, db):
 		super(Housing, self).save(db)

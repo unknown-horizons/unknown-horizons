@@ -108,7 +108,7 @@ class SelectionTool(NavigationTool):
 			for i in game.main.session.selected_instances:
 				if hasattr(i, 'show_menu'):
 					i.show_menu()
-		
+
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
 			super(SelectionTool, self).mousePressed(evt)

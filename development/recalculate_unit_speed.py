@@ -34,11 +34,11 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 
 
 	dbfile = 'content/openanno.sqlite'
-	
+
 	if not os.path.exists(dbfile):
 		print 'Please execute from openanno root directory.'
 		sys.exit(1)
-		
+
 	# copied from dbreader.py:
 	con = sqlite3.connect(dbfile)
 	con.isolation_level = None
@@ -94,7 +94,7 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 	if sys.argv[1] == '-u':
 		unit = int(sys.argv[2])
 		print 'Recalculating for unit', unit
-		for base_vel, in db("select base_velocity from unit where rowid = %d;"%unit): 
+		for base_vel, in db("select base_velocity from unit where rowid = %d;"%unit):
 			for groundid, vel_mod in db("select rowid, velocity_modifier from ground"):
 				update(unit, groundid, base_vel, vel_mod)
 		print 'Done. If no warnings occured, then you chose good values'

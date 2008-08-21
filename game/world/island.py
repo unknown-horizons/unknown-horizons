@@ -37,11 +37,11 @@ class Island(WorldObject):
 	@param origin: Position of the (0, 0) ground tile.
 	@param filename: file from which the island is loaded.
 	"""
-	
+
 	def __init__(self, origin, filename):
-	
+
 		x, y = origin.x, origin.y
-		
+
 		self.file = filename
 		self.origin = origin
 		db = DbReader(filename)
@@ -57,7 +57,7 @@ class Island(WorldObject):
 			ground.object = None
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
-		
+
 		self.settlements = []
 
 		self.path_nodes = {}
@@ -72,14 +72,14 @@ class Island(WorldObject):
 
 	def load(self, db, worldid):
 		super(Island, self).load(db, worldid)
-		
+
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
 			self.settlements.append(settlement)
-		
+
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-				
+
 			buildingclass = game.main.session.entities[building_typeid]
 			building = buildingclass.load(db, building_worldid)
 			self.add_building(building)
@@ -115,9 +115,9 @@ class Island(WorldObject):
 		"""Look for a settlement on a specific tile
 		@param point: Point to look on
 		@return: Settlement at point, or None"""
-		
+
 		settlements = self.get_settlements(Rect(point, 1, 1))
-		
+
 		if settlements:
 			assert len(settlements) == 1
 			return settlements[0]
@@ -176,7 +176,7 @@ class Island(WorldObject):
 			break
 		#else:
 		#	building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
-		
+
 		x, y = building.position.left, building.position.top
 		for xx in xrange(x, x + building.size[0]):
 			for yy in xrange(y, y + building.size[1]):

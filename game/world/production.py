@@ -92,13 +92,13 @@ class PrimaryProducer(Provider):
 		super(PrimaryProducer, self).save(db)
 		db("INSERT INTO producer (rowid, active_production_line) VALUES(?,?)", self.getId(), self.active_production_line)
 
-		
+
 class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
-		
+
 
 class ProductionLine(object):
 	def __init__(self, id):

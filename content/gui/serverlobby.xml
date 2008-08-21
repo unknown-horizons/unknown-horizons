@@ -35,16 +35,16 @@ We should probably keep it synchronised, for consistency.
 	<ScrollArea name="playerarea" size="350,200"  horizontal_scrollbar="0" position="60,140">
 		<ListBox name="playerlist" min_size="100,200" />
 	</ScrollArea>
-	
+
 	<ScrollArea name="chatarea" size="350,250" horizontal_scrollbar="0" position="60,370">
 		<ListBox name="chatlounge" min_size="350,800"/>
 	</ScrollArea>
-	
+
 	<HBox position="60,650" background_color="200,0,0">
 		<TextBox name="chatinput" text="chat" min_size="300,16" base_color="40, 40, 40"/>
 		<Button name="chatbutton" text="chat" base_color="40, 40, 40"/>
 	</HBox>
-	
+
 
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startMulti" position="900,700" />

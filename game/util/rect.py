@@ -47,7 +47,7 @@ class Rect(object):
 				assert False, "Tried to init rect with rect"
 			else:
 				assert False, 'Invalid rect initialisation'+str(args)
-		
+
 		# Convenience attributes (can be used to make code more easy to read/understand)
 		self.origin = Point(self.left, self.top)
 
@@ -78,11 +78,11 @@ class Rect(object):
 				  for y in xrange(self.top-radius, self.bottom+radius+1)
 						if (x,y) not in self_coords and \
 						self.distance( (x,y) ) <= radius ]
-						
+
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
 		return Point((self.right - self.left) // 2, (self.bottom - self.top) // 2)
-	
+
 	def contains(self, point):
 		""" Returns if this rect (self) contains the point.
 		@param point: Point that is checked to be in this rect
@@ -114,7 +114,7 @@ class Rect(object):
 		if isinstance(other, Rect):
 			return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
 		return False
-		
+
 	def __iter__(self):
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):

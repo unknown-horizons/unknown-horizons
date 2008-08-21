@@ -38,7 +38,7 @@ class SPManager(livingObject):
 		"""Executes a command
 		@param command: Command the command to be executed
 		"""
-		# if we are in demo playback mode, every incoming command has to be thrown away. 
+		# if we are in demo playback mode, every incoming command has to be thrown away.
 		if len(self.commands) > 0:
 			return
 		if self.recording:

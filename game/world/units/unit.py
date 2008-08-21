@@ -30,7 +30,7 @@ class Unit(WorldObject):
 	def __init__(self, x, y, **kwargs):
 		super(Unit, self).__init__(**kwargs)
 		self.__init(x, y)
-		
+
 	def __init(self, x, y, health = 60.0):
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
@@ -56,7 +56,7 @@ class Unit(WorldObject):
 		self.max_health = 100.0
 
 		self.__is_moving = False
-		
+
 	def __del__(self):
 		if hasattr(self, "_instance") and self._instance.getLocationRef().getLayer() is not None:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
@@ -80,11 +80,11 @@ class Unit(WorldObject):
 		@param destination_in_building: bool, wether unit should enter building
 		"""
 		return self.path.calc_path(destination, check_only = True)
-	
+
 	def is_moving(self):
 		"""Returns wether unit is currently moving"""
 		return self.__is_moving
-	
+
 	def stop(self, callback = None):
 		"""Stops a unit with currently no possibility to continue the movement.
 		The unit acctally stops moving when current move is finished.
@@ -174,7 +174,7 @@ class Unit(WorldObject):
 		@return: int
 		"""
 		tile = game.main.session.world.get_tile(self.position)
-		# this is faster than control flow via if-query 
+		# this is faster than control flow via if-query
 		# (an if would have to include hasattr(object) and object not None)
 		try:
 			return tile.object.velocity[self.id]
@@ -187,10 +187,10 @@ class Unit(WorldObject):
 		@return: True if position is clear, False if blocked
 		"""
 		return True
-	
+
 	def get_move_target(self):
 		return self.path.get_move_target()
-	
+
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
 		renderer = game.main.session.view.renderer['GenericRenderer']
@@ -215,20 +215,20 @@ class Unit(WorldObject):
 
 	def save(self, db):
 		super(Unit, self).save(db)
-		
+
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
 			self.getId(), self.__class__.id, self.position.x, self.position.y, self.health, 0)
-		
+
 		self.path.save(db, self.getId())
-		
+
 		# TODO: owner
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
-		
+
 		x, y, health = db("SELECT x, y, health FROM unit WHERE rowid = ?", worldid)[0]
 		self.__init(x, y, health)
-		
+
 		path_loaded = self.path.load(db, worldid)
 		if path_loaded:
 			self.__is_moving = True

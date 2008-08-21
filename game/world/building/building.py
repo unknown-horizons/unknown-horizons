@@ -42,7 +42,7 @@ class Building(WorldObject):
 
 		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
 		self.settlement = self.island().get_settlement(origin) or self.island().add_settlement(self.position, self.radius, owner)
-		
+
 	def remove(self):
 		"""Removes the building"""
 		print "BUILDING: REMOVE %s" % self.getId()

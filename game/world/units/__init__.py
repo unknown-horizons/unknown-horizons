@@ -29,23 +29,23 @@ class UnitClass(type):
 		"""
 		@param id: unit id
 		"""
-		
+
 		@classmethod
 		def load(cls, db, worldid):
 			self = cls.__new__(cls)
 			super(cls, self).load(db, worldid)
 			return self
-		
+
 		attributes = {'load': load, 'id': id, '_object': self._loadObject(id)}
 		attributes.update(game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)))
-		
+
 		class_package,  class_name = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
 		__import__('game.world.units.'+class_package)
-		
+
 		return type.__new__(self, 'Unit[' + str(id) + ']',
 			(getattr(globals()[class_package], class_name),),
 			attributes)
-	
+
 	@staticmethod
 	def _loadObject(id):
 		"""Loads the object with all animations.

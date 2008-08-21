@@ -94,10 +94,10 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 
 	if isinstance(path_nodes, list):
 		path_nodes = dict.fromkeys(path_nodes, 1.0)
-		
+
 	if isinstance(blocked_coords, dict):
 		blocked_coords = blocked_coords.keys()
-	
+
 
 	# nodes are the keys of the following dicts (x,y)
 	# the val of the keys are: [previous node, distance to this node from source, distance to destination, sum of the last two elements]
@@ -221,7 +221,7 @@ class Pather(object):
 			assert False, 'Invalid way of movement'
 
 		self.unit = weakref.ref(unit)
-		
+
 		self.destination_in_building = False
 		self.source_in_building = False
 
@@ -254,10 +254,10 @@ class Pather(object):
 						self.source_in_building = True
 
 		path = findPath(source, destination, self.path_nodes, self.blocked_coords, self.move_diagonal)
-		
+
 		if path is None:
 			return False
-		
+
 		if not check_only:
 			self.path = path
 			if self.unit().is_moving():
@@ -265,7 +265,7 @@ class Pather(object):
 			else:
 				self.cur = -1
 			self.destination_in_building = destination_in_building
-			
+
 		return True
 
 	def revert_path(self, destination_in_building):
@@ -298,21 +298,21 @@ class Pather(object):
 			self.unit().show()
 
 		return Point(*self.path[self.cur])
-	
+
 	def get_move_target(self):
 		"""Returns the point where the path leads
 		@return: Point or None if no path has been calculated"""
 		return None if self.path is None else Point(*self.path[-1])
-	
+
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
 		del self.path[self.cur+1:]
-		
+
 	def save(self, db, unitid):
 		if self.path is not None:
 			for step in xrange(len(self.path)):
 				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", unitid, step, self.path[step][0], self.path[step][1])
-				
+
 	def load(self, db, worldid):
 		"""
 		@return: Bool, wether a path was loaded
@@ -324,9 +324,9 @@ class Pather(object):
 			self.path = []
 			for step in path_steps:
 				self.path.append(step) # the sql statement orders the steps
-			self.cur = self.path.index(self.unit().position.get_coordinates()[0])	
+			self.cur = self.path.index(self.unit().position.get_coordinates()[0])
 			return True
-			
-		
+
+
 
 

@@ -8,6 +8,6 @@
 	<HBox position="5,165" size="190,30">
 		<TextField name="message" text="Enter your message" />
 		<Spacer />
-		<Button name="sendButton" text="Send" />  
+		<Button name="sendButton" text="Send" />
 	</HBox>
 </Container>

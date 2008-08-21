@@ -133,7 +133,7 @@ class View(livingObject):
 
 		self.cam.setLocation(loc)
 		self.cam.refresh()
-		
+
 	def set_location(self, location):
 		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
@@ -152,7 +152,7 @@ class View(livingObject):
 		if(zoom > game.main.settings.view.zoom.max):
 			zoom = game.main.settings.view.zoom.max
 		self.cam.setZoom(zoom)
-		
+
 	def set_zoom(self, zoom):
 		self.cam.setZoom(zoom)
 
@@ -161,15 +161,15 @@ class View(livingObject):
 
 	def rotate_left(self):
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
-		
+
 	def set_rotation(self, rotation):
 		self.cam.setRotation(rotation)
 
 	def save(self, db):
 		loc = self.cam.getLocation().getExactLayerCoordinates()
-		db("INSERT INTO view(zoom, rotation, location_x, location_y) VALUES(?, ?, ?, ?)", 
+		db("INSERT INTO view(zoom, rotation, location_x, location_y) VALUES(?, ?, ?, ?)",
 			 self.cam.getZoom(), self.cam.getRotation(), loc.x, loc.y)
-	
+
 	def load(self, db):
 		# NOTE: this is no class function, since view is initated before loading
 		res = db("SELECT zoom, rotation, location_x, location_y FROM view")
@@ -180,4 +180,4 @@ class View(livingObject):
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
 		self.set_location((loc_x, loc_y))
-		
+

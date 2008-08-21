@@ -47,11 +47,11 @@ class Ship(Unit):
 
 		game.main.session.world.ships.append(self)
 		game.main.session.world.ship_map[self.position] = weakref.ref(self)
-		
+
 	def remove(self):
 		super(Ship, self).remove()
 		game.main.session.world.ships.remove(self)
-		
+
 	def setup_inventory(self):
 		## TODO: inherit from storageholder
 		self.inventory = Storage()
@@ -96,8 +96,8 @@ class Ship(Unit):
 		"""Moves the ship.
 		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
 		self.stop()
-		ship_id = self.getId() # this has to happen here, 
-		# cause a reference to self in a temporary function is implemented 
+		ship_id = self.getId() # this has to happen here,
+		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
 		def tmp():
 			game.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))

@@ -50,7 +50,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 			self.collector = None
 		else:
 			super(Animal, self).search_job()
-			
+
 	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)
 

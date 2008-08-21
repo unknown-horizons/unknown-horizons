@@ -9,7 +9,7 @@
 		</ScrollArea>
 		<Spacer />
 		<VBox>
-			<Label text="Tiles:" />    
+			<Label text="Tiles:" />
 		</VBox>
 		<VBox>
 			<Label name="tilesInfo" text="10x10" />
