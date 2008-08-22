@@ -332,3 +332,9 @@ class IngameGui(livingObject):
 				self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name).size[0]/2,
 				48
 			)
+
+	def save(self, db):
+		self.message_widget.save(db)
+
+	def load(self, db):
+		self.message_widget.load(db)

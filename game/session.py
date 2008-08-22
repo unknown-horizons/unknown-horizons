@@ -136,6 +136,7 @@ class Session(livingObject):
 			self.world.save(db)
 			#self.manager.save(db)
 			self.view.save(db)
+			self.ingame_gui.save(db)
 
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.getId())
@@ -169,6 +170,7 @@ class Session(livingObject):
 			self.world.setupPlayer(playername, playercolor)
 		self.view.load(db)
 		self.manager.load(db)
+		self.ingame_gui.load(db)
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 

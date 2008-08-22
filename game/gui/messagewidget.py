@@ -37,7 +37,7 @@ class MessageWidget(object):
 		self.text_widget = game.main.fife.pychan.loadXML('content/gui/hud_messages_text.xml')
 		self.text_widget.position = (x,y+self.widget.height)
 		self.widget.show()
-		self.current_tick = None
+		self.current_tick = 0
 		self.position = 0
 		game.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
 		button_next = self.widget.findChild(name='next')
@@ -114,11 +114,25 @@ class MessageWidget(object):
 		self.active_messages = []
 		self.archive = []
 
+	def save(self, db):
+		for message in self.active_messages:
+			db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, 1 if message.read else 0, message.created, message.display, message.message)
+		for message in self.archive:
+			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, 1 if message.read else 0, message.created, message.display, message.message)
+
+	def load(self, db):
+		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_active"):
+			self.active_messages.append(Message(x, y, id, created, True if read==1 else False, display, message))
+		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_archive"):
+			self.archive.append(Message(x, y, id, created, True if read==1 else False, display, message))
+		self.draw_widget()
+
+
 class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string.Template, meaning it can contain placeholders
 	like the following: $player, ${gold}. The second version is recommendet, as the word
-	can then be followed by other characters without a whitespace (e.g. "${player}'s home").
+	can then be followed by other characters without a whitespace (e.g. "${player}'s home").aa
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 
 	@param x,y: int position on the map where the action took place.
@@ -126,11 +140,11 @@ class Message(object):
 	@param created: tickid when the message was created.
 	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}
 	"""
-	def __init__(self, x, y, id, created, message_dict=None):
+	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None):
 		self.x, self.y = x, y
 		self.id = id
-		self.read = False
+		self.read = read
 		self.created = created
-		self.display = int(game.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
+		self.display = display if display is not None else int(game.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
 		self.image = game.main.db('SELECT file from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where rowid = ?)', 1, id).rows[0][0]
-		self.message = Template(game.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0]).safe_substitute(message_dict if message_dict is not None else {})
+		self.message = str(message) if message is not None else Template(game.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0]).safe_substitute(message_dict if message_dict is not None else {})
