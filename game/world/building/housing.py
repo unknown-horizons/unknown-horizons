@@ -26,3 +26,6 @@ class Housing(Building, Selectable, BuildableSingle):
 
 	def save(self, db):
 		super(Housing, self).save(db)
+
+	def load(self, db, worldid):
+		super(Housing, self).load(self, db, worldid)

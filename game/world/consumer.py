@@ -56,7 +56,7 @@ class Consumer(StorageHolder):
 		print 'savin consumer', self.id
 		for collector in self.__local_carriages:
 			collector.save(db)
-
+			
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
 		"""

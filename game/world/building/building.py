@@ -75,22 +75,24 @@ class Building(WorldObject):
 			db("SELECT x, y, health, location FROM building WHERE rowid = ?", worldid)[0]
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		if len(owner) == 0:
-			owner = None
+			self.owner = None
 		else:
-			owner = WorldObject.getObjectById(owner[0][0])
+			self.owner = WorldObject.getObjectById(owner[0][0])
 		
 		self.__init(Point(x,y), owner, None)
 		
 		loc = WorldObject.getObjectById(location)
 		if isinstance(loc, Settlement):
 			self.settlement = loc
-			self.island = None
-		else:
+			# workaround: island can't be fetched from world, because it 
+			# isn't fully constructed, when this code is executed
+			island_id = db("SELECT island FROM settlement WHERE rowid = ?", self.settlement.getId())[0][0]
+			self.island = weakref.ref(WorldObject.getObjectById(island_id))
+		else: # loc is island
 			self.island = weakref.ref(loc)
 			self.settlement = self.island().get_settlement(Point(x,y))
+		self.island().add_building(self, self.owner)
 		
-		return self
-
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings
 		ret_building = []

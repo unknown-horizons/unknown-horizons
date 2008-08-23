@@ -65,7 +65,6 @@ class Island(WorldObject):
 
 		self.path_nodes = {}
 		
-
 	def save(self, db):
 		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
 			self.getId(), self.origin.x, self.origin.y, self.file)
@@ -89,8 +88,6 @@ class Island(WorldObject):
 
 			buildingclass = game.main.session.entities.buildings[building_typeid]
 			building = buildingclass.load(db, building_worldid)
-			if building.island is None:
-				building.island = weakref.ref(self)
 			self.add_building(building)
 
 	def get_tile(self, point):

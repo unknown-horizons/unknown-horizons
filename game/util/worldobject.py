@@ -51,6 +51,7 @@ class WorldObject(Changelistener):
 	def load(self, db, worldid):
 		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
+		print 'loading worldobject', worldid, self
 
 		self.__id = worldid
 		WorldObject.__objects[worldid] = self

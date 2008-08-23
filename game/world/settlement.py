@@ -91,7 +91,6 @@ class Settlement(WorldObject):
 		self._inhabitants = 42
 
 		self.buildings = []
-		
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			buildingclass = game.main.session.entities.buildings[building_type]

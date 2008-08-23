@@ -27,7 +27,6 @@ import weakref
 from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):
-	speed = 42.0 # currently not used
 	def init(self):
 		"""
 		"""
@@ -39,7 +38,12 @@ class Path(Building, BuildableLine):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
 		self.island().registerPath(self)
-
+		
+	def load(self, db, worldid):
+		super(Path, self).load(db, worldid)
+		self.recalculateOrientation()
+		self.island().registerPath(self)
+		
 	def remove(self):
 		super(Path, self).remove()
 		origin = self.position.origin

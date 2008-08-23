@@ -121,6 +121,7 @@ class MessageWidget(object):
 			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, 1 if message.read else 0, message.created, message.display, message.message)
 
 	def load(self, db):
+		return # function disabled for now cause it crashes
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_active"):
 			self.active_messages.append(Message(x, y, id, created, True if read==1 else False, display, message))
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_archive"):

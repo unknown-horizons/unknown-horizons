@@ -64,7 +64,6 @@ class BuildingClass(type):
 		self._loadObject()
 
 	def load(cls, db, worldid):
-		print 'TRIVIAL BCLASS LOAD'
 		self = cls.__new__(cls)
 		self.load(db, worlid)
 		return self

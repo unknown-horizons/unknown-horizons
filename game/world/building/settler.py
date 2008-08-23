@@ -65,3 +65,5 @@ class Settler(SecondaryProducer, BuildableSingle, Selectable, Building):
 	def create_carriage(self):
 		# SecondaryProducer is also a consumer. Consumers create carriages by default. Settler shouldn't.
 		pass
+
+	# TODO: saving and loading

@@ -37,9 +37,11 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		self.inventory.addChangeListener(self._changed)
 		
 	def load(self, db, worldid):
+		print 'stor1', self
 		super(StorageBuilding, self).load(db, worldid)
 		self.inventory = self.settlement.inventory
 		self.inventory.addChangeListener(self._changed)
+		print 'stor2', self
 
 	def create_carriage(self):
 		#self._Consumer__local_carriages.append(game.main.session.entities.units[8](self))
