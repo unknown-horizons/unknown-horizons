@@ -24,7 +24,6 @@ import weakref
 import game.main
 from game.dbreader import DbReader
 from game.world.settlement import Settlement
-from pathfinding import findPath
 from game.util import WorldObject, Point, Rect
 
 class Island(WorldObject):
@@ -39,19 +38,23 @@ class Island(WorldObject):
 	"""
 
 	def __init__(self, origin, filename):
+		self.init(origin, filename)
 
-		x, y = origin.x, origin.y
-
+	def init(self, origin, filename):
+		"""
+		@param origin: Point
+		@param filename: String
+		"""
 		self.file = filename
 		self.origin = origin
 		db = DbReader(filename)
-		p_x, p_y, width, height = db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from ground", x, y)[0]
+		p_x, p_y, width, height = db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from ground", self.origin.x, self.origin.y)[0]
 		self.rect = Rect(Point(p_x, p_y), width, height)
 		self.grounds = []
 		self.ground_map = {}
 		self.buildings = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"):
-			ground = game.main.session.entities.grounds[ground_id](x + rel_x, y + rel_y)
+			ground = game.main.session.entities.grounds[ground_id](self.origin.x + rel_x, self.origin.y + rel_y)
 			ground.settlement = None
 			ground.blocked = False
 			ground.object = None
@@ -61,6 +64,7 @@ class Island(WorldObject):
 		self.settlements = []
 
 		self.path_nodes = {}
+		
 
 	def save(self, db):
 		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
@@ -72,6 +76,9 @@ class Island(WorldObject):
 
 	def load(self, db, worldid):
 		super(Island, self).load(db, worldid)
+		
+		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", worldid)[0]
+		self.init(Point(x, y), filename)
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
@@ -80,8 +87,10 @@ class Island(WorldObject):
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 
-			buildingclass = game.main.session.entities[building_typeid]
+			buildingclass = game.main.session.entities.buildings[building_typeid]
 			building = buildingclass.load(db, building_worldid)
+			if building.island is None:
+				building.island = weakref.ref(self)
 			self.add_building(building)
 
 	def get_tile(self, point):

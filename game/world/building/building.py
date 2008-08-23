@@ -21,10 +21,12 @@
 
 import math
 import weakref
+
 import fife
+
 import game.main
-from game.util import Rect,Point
-from game.util import WorldObject
+from game.world.settlement import Settlement
+from game.util import Rect,Point, WorldObject
 
 class Building(WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -33,15 +35,17 @@ class Building(WorldObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
-		origin = Point(x, y)
+		self.__init(Point(x,y), owner, instance)
+		
+		self.island = weakref.ref(game.main.session.world.get_island(x, y))
+		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
+		
+	def __init(self, origin, owner, instance):
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.owner = owner
 		self.object_type = 0
-		self._instance = self.getInstance(x, y) if instance is None else instance
+		self._instance = self.getInstance(origin.x, origin.y) if instance is None else instance
 		self._instance.setId(str(self.getId()))
-
-		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
-		self.settlement = self.island().get_settlement(origin) or self.island().add_settlement(self.position, self.radius, owner)
 
 	def remove(self):
 		"""Removes the building"""
@@ -60,10 +64,32 @@ class Building(WorldObject):
 		#self._instance.thisown = 1
 
 	def save(self, db):
-		print 'savin building', self.id
-		db("INSERT INTO building (rowid, type, x, y, health, location) VALUES (?, ?, ?, ?, ?, ?)",
+		super(Building, self).save(db)
+		db("INSERT INTO building (rowid, type, x, y, health, location) VALUES (?, ?, ?, ?, ?, ?)", \
 			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y,
 			self.health, (self.settlement or self.island).getId())
+
+	def load(self, db, worldid):
+		super(Building, self).load(db, worldid)
+		x, y, health, location = \
+			db("SELECT x, y, health, location FROM building WHERE rowid = ?", worldid)[0]
+		owner = db("SELECT owner FROM settlement WHERE rowid = ?", location)
+		if len(owner) == 0:
+			owner = None
+		else:
+			owner = WorldObject.getObjectById(owner[0][0])
+		
+		self.__init(Point(x,y), owner, None)
+		
+		loc = WorldObject.getObjectById(location)
+		if isinstance(loc, Settlement):
+			self.settlement = loc
+			self.island = None
+		else:
+			self.island = weakref.ref(loc)
+			self.settlement = self.island().get_settlement(Point(x,y))
+		
+		return self
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings

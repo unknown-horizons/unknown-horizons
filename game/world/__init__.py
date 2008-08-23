@@ -37,6 +37,16 @@ class World(livingObject):
 		for (name, value) in db("select name, value from map_properties"):
 			self.properties[name] = value
 
+		# create playerlist
+		self.players = []
+
+		# load player
+		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
+			player = Player.load(db, player_id)
+			self.players.append(player)
+			if client_id == game.main.settings.client_id or client_id == "":
+				self.player = player
+
 		#load islands
 		self.islands = []
 		for filename, offset_x, offset_y, islandid in db("select file, x, y, rowid from island"):
@@ -75,18 +85,8 @@ class World(livingObject):
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
 
-		# create playerlist
-		self.players = []
-
 		# create shiplist
 		self.ships = []
-
-		# load player
-		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
-			player = Player.load(db, player_id)
-			self.players.append(player)
-			if client_id == game.main.settings.client_id or client_id == "":
-				self.player = player
 
 		# load units
 		from game.world.units.ship import Ship
@@ -138,7 +138,6 @@ class World(livingObject):
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
-		print 'STARTING SAVING'
 		for name, value in self.properties.iteritems():
 			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, value)
 		for island in self.islands:
@@ -147,4 +146,3 @@ class World(livingObject):
 			player.save(db)
 		for ship in self.ships:
 			ship.save(db)
-		print 'FINISHED SAVING'
