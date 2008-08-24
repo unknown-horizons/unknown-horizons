@@ -12,5 +12,5 @@
 	-->
 	<ImageButton name="tower-1" position="58,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Lookout" />
 
-	<ImageButton name="wall-1" position="111,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
+	<ImageButton name="wall-1" position="111,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Wall" />
 </Container>
