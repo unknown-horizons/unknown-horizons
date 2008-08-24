@@ -15,7 +15,7 @@
 
 	<ImageButton name="market_place-1" position="159,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Town square" />
 
-	<ImageButton name="church-1" position="212,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Chapel" />
+	<ImageButton name="church-1" position="212,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Awing" />
 
 	<ImageButton name="lighthouse-1" position="265,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Signal fire" />
 </Container>
