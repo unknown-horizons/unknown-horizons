@@ -115,6 +115,9 @@ class IngameGui(livingObject):
 		callbacks_build = {'build1': {
 			'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
 		},
+			'build1': {
+				'church-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 5),
+		},
 			'build2': {
 				'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
 		},
