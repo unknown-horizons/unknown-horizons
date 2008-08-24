@@ -2,7 +2,7 @@
 <!-- Services tab -->
 <Container name="tab0" size="533,190">
 	<Label position="5,5" text="Services" />
-	<Icon position="5,53" image="content/gui/images/icons/hud/common/class1.png" />
+	<Icon position="5,58" image="content/gui/images/icons/hud/common/class1.png" />
 	<!-- Uncomment if implented
 	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
 	<Icon position="5,149" image="content/gui/images/icons/hud/common/class3.png" />
@@ -10,12 +10,12 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="branch_office-1" position="58,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Outpost" />
-	<ImageButton name="store-1" position="106,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Storage tent" />
+	<ImageButton name="branch_office-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Outpost" />
+	<ImageButton name="store-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Storage tent" />
 
-	<ImageButton name="market_place-1" position="159,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Town square" />
+	<ImageButton name="market_place-1" position="162,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Main Square" />
 
-	<ImageButton name="church-1" position="212,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Awing" />
+	<ImageButton name="church-1" position="214,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Awing" />
 
-	<ImageButton name="lighthouse-1" position="265,53" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Signal fire" />
+	<ImageButton name="lighthouse-1" position="266,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Signal fire" />
 </Container>
