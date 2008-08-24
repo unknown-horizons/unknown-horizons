@@ -27,6 +27,7 @@ import weakref
 from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):
+	speed = 42 # probably obsolete
 	def init(self):
 		"""
 		"""
