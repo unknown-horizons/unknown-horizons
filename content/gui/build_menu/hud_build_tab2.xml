@@ -19,7 +19,7 @@
 
 	<ImageButton name="fisher-1" position="58,103" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Fisherman's Tent " />
 
-	<ImageButton name="boatyard-1" position="106,103" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="?" />
+	<ImageButton name="boatyard-1" position="106,103" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Raft Builder" />
 
 	<ImageButton name="hunter-1" position="106,103" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Hunter's Tent " />
 </Container>
