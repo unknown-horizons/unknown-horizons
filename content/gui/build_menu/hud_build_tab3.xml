@@ -10,7 +10,7 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="tower-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Lookout" />
+	<ImageButton name="tower-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Lookout" />
 
-	<ImageButton name="wall-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Rampart" />
+	<ImageButton name="wall-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Rampart" />
 </Container>

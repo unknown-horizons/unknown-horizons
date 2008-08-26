@@ -10,11 +10,11 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="store-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Storage" />
+	<ImageButton name="store-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Storage" />
 
-	<ImageButton name="market_place-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Main Square" />
+	<ImageButton name="market_place-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Main Square" />
 
-	<ImageButton name="church-1" position="162,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Sunsail" />
+	<ImageButton name="church-1" position="162,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Sunsail" />
 
-	<ImageButton name="lighthouse-1" position="214,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Signal fire" />
+	<ImageButton name="lighthouse-1" position="214,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Signal fire" />
 </Container>
