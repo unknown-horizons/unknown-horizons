@@ -10,19 +10,19 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="hunter-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Hunter's Tent" />
+	<ImageButton name="hunter-1" position="58,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Hunter" />
 
-	<ImageButton name="fisher-1" position="58,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Fisherman's Tent" />
+	<ImageButton name="fisher-1" position="58,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Fisher" />
 
 	<ImageButton name="weaver-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Weaver" />
 
-	<ImageButton name="boatyard-1" position="110,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Raft Builder" />
+	<ImageButton name="boatyard-1" position="110,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Raft" />
 
-	<ImageButton name="lumberjack-1" position="162,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Lumberjack Camp" />
+	<ImageButton name="lumberjack-1" position="162,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="LJ" />
 
 	<ImageButton name="tree-1" position="162,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Tree" />
 
-	<ImageButton name="herder-1" position="214,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Herdsman's Tent" />
+	<ImageButton name="herder-1" position="214,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Herder" />
 
 	<ImageButton name="field-1" position="214,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" text="Field" />
 </Container>
