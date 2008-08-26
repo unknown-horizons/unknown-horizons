@@ -112,20 +112,29 @@ class IngameGui(livingObject):
 		self.gui['status_gold'].show()
 
 
-		callbacks_build = {'build1': {
-			'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
-		},
+		callbacks_build = {
 			'build1': {
+				'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
 				'church-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 5),
+				'market_place-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 4),
+				'lighthouse-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 6),
 		},
 			'build2': {
 				'resident-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
 		},
 			'build3': {
-				'tree' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
+				'hunter-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 9),
+				'fisher-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 11),
 				'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
+				'boatyard-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 12),
 				'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
-				'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10)
+				'tree-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
+				'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10),
+				'field-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 18),
+		},
+			'build4': {
+				'tower-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 13),
+				'wall-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 14),
 		},
 			'build5': {
 				'street-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
