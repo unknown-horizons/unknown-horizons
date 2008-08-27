@@ -14,15 +14,15 @@
 
 	<ImageButton name="fisher-1" position="58,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Fisher" />
 
-	<ImageButton name="weaver-1" position="110,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Weaver" />
+	<ImageButton name="weaver-1" position="110,58" up_image="content/gui/images/icons/hud/build/weaver.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Weaver" />
 
 	<ImageButton name="boatyard-1" position="110,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Raft" />
 
-	<ImageButton name="lumberjack-1" position="162,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="LJ" />
+	<ImageButton name="lumberjack-1" position="162,58" up_image="content/gui/images/icons/hud/build/lumberjack.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="LJ" />
 
 	<ImageButton name="tree-1" position="162,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Tree" />
 
-	<ImageButton name="herder-1" position="214,58" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Herder" />
+	<ImageButton name="herder-1" position="214,58" up_image="content/gui/images/icons/hud/build/herdsman.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Herder" />
 
 	<ImageButton name="field-1" position="214,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Field" />
 </Container>
