@@ -70,6 +70,7 @@ class Building(WorldObject):
 			self.health, (self.settlement or self.island).getId())
 
 	def load(self, db, worldid):
+		print 'loading building', worldid
 		super(Building, self).load(db, worldid)
 		x, y, health, location = \
 			db("SELECT x, y, health, location FROM building WHERE rowid = ?", worldid)[0]

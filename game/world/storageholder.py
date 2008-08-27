@@ -25,6 +25,9 @@ import game.main
 class StorageHolder(object):
 	def __init__(self, **kwargs):
 		super(StorageHolder, self).__init__(**kwargs)
+		self.__init()
+		
+	def __init(self):
 		self.inventory = Storage()
 		self.inventory.addChangeListener(self._changed)
 		for (res, size) in game.main.db("select resource, size from data.storage where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
@@ -34,3 +37,8 @@ class StorageHolder(object):
 	def save(self, db):
 		super(StorageHolder, self).save(db)
 		self.inventory.save(db, self.getId())
+
+	def load(self, db, worldid):
+		super(StorageHolder, self).load(db, worldid)
+		self.__init()
+		self.inventory.load(db, worldid)

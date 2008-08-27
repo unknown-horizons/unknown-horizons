@@ -97,11 +97,6 @@ class Session(livingObject):
 		self.selection_groups = None
 		super(Session, self).end()
 
-		#import pdb
-		#import gc
-		#print 'WorldObject.get_objs().valuerefs()'
-		#pdb.set_trace()
-
 	def autosave(self):
 		"""Called automatically in an interval"""
 		self.save(game.main.savegamemanager.create_autosave_filename())

@@ -25,11 +25,16 @@ from game.util import WeakList
 class Provider(StorageHolder):
 	def __init__(self, **kwargs):
 		super(Provider, self).__init__(**kwargs)
+		self.__init()
 
+	def __init(self):
 		# save references to collectors that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this collector
 		self.__collectors = WeakList()
+		
+	def load(self, db, worldid):
+		super(Provider, self).load(db, worldid)
 
 	def pickup_resources(self, res, max_amount):
 		"""Return the resources of id res that are in stock and removes them from the stock.

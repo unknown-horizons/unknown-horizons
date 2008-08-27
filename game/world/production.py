@@ -32,20 +32,39 @@ class PrimaryProducer(Provider):
 		"""
 		"""
 		super(PrimaryProducer, self).__init__(**kwargs)
-		# infos about production
-		self.production = {}
+		self.active_production_line = None
+		self.__init()
 
-		# Init production lines
+	def __init(self):
+		self.production = {}
+		
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
-		self.active_production_line = None if len(self.production) == 0 else min(self.production.keys())
-
-		self.__used_resources = {}
-
+		if self.active_production_line is None and len(self.production) > 0:
+			self.active_production_line = min(self.production.keys())
+			
 		if self.active_production_line is not None:
 			self.addChangeListener(self.check_production_startable)
 			self.check_production_startable()
+			
+		self.__used_resources = {}
+			
+	def save(self, db):
+		super(PrimaryProducer, self).save(db)
+		# insert active prodline if it isn't in the db
+		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", self.getId())) == 0:
+			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", self.getId(), self.active_production_line)
+		
+	def load(self, db, worldid):
+		super(PrimaryProducer, self).load(db, worldid)
+		active_production_line = db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)
+		assert(0 <= len(active_production_line) <= 1)
+		if len(active_production_line) == 0:
+			self.active_production_line = None
+		else:
+			self.active_production_line = active_production_line[0][0]
+		self.__init()
 
 	def check_production_startable(self):
 		for res, amount in self.production[self.active_production_line].production.items():

@@ -88,19 +88,26 @@ class SavegameManager(object):
 			return (files,)
 
 	def check_savegame_name(self, name):
-		"""Checks if a user-entered name is possible for a savegame.
+		"""OBSOLETE: currently no checking is done, just IOErrors from low level functions are caught and interpreted as invalid filenames
+		
+		Checks if a user-entered name is possible for a savegame.
 		Currently, we only allow alphanumeric, '.' and '-'.
 		@return: Bool
 		"""
+		return True
+	"""
 		if re.match('^[\w\.\-]+$', name) is None:
 			return False
 		else:
 			return True
+	"""
 
 	def create_filename(self, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
+		"""
 		if not self.check_savegame_name(savegamename):
 			raise InvalidSavegamenameException
+		"""
 		return "%s/%s.%s" % (self.savegame_dir, savegamename, self.savegame_extension)
 
 	def create_autosave_filename(self):

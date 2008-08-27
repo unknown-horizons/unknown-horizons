@@ -32,6 +32,12 @@ class Consumer(StorageHolder):
 		"""
 		"""
 		super(Consumer, self).__init__(**kwargs)
+		self.__init()
+		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
+		self.create_carriage()
+		
+	def __init(self):
+		"""Part of initiation that __init__() and load() share"""
 		self.__resources = {}
 		self.__local_carriages = []
 
@@ -40,8 +46,7 @@ class Consumer(StorageHolder):
 			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self.__resources[production_line].append(res)
 				if not self.inventory.hasSlot(res):
-					self.inventory.addSlot(res, 30) # TODO: fix size somewher else!
-		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
+					self.inventory.addSlot(res, 30) # TODO: fix size somewhere else!
 
 		from game.world.building.building import Building
 		if isinstance(self, Building):
@@ -49,13 +54,18 @@ class Consumer(StorageHolder):
 
 		self.__collectors = WeakList()
 
-		self.create_carriage()
-
 	def save(self, db):
 		super(Consumer, self).save(db)
-		print 'savin consumer', self.id
+		# insert active prodline if it isn't in the db
+		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", self.getId())) == 0:
+			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", self.getId(), self.active_production_line)
 		for collector in self.__local_carriages:
 			collector.save(db)
+			
+	def load(self, db, worldid):
+		super(Consumer, self).load(db, worldid)
+		self.active_production_line = db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)[0][0]
+		self.__init()
 			
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)

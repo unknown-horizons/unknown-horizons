@@ -73,6 +73,7 @@ def start():
 	gui = None
 
 	showMain()
+	#loadGame('content/save/LJ.sqlite')
 
 	fife.run()
 
@@ -604,9 +605,6 @@ def saveGame():
 	try:
 		savegamefile = savegamemanager.create_filename(savegamename)
 	except InvalidSavegamenameException:
-		showPopup("Invalid filename", "You entered an invalid filename.")
-		save_dlg.hide()
-		saveGame()
 		return
 
 	if os.path.exists(savegamefile):
@@ -616,7 +614,12 @@ def saveGame():
 			saveGame()
 			return
 
-	session.save(savegamefile)
+	try:
+		session.save(savegamefile)
+	except IOError: # invalid filename
+		showPopup("Invalid filename", "You entered an invalid filename.")
+		save_dlg.hide()
+		saveGame()
 
 def loadGame(savegame = None):
 	global session, gui, fife, savegamemanager
