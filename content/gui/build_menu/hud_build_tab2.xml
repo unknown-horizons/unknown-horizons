@@ -20,9 +20,9 @@
 
 	<ImageButton name="lumberjack-1" position="162,58" up_image="content/gui/images/icons/hud/build/lumberjack.png" hover_image="content/gui/images/icons/hud/build/lumberjack_h.png" text="LJ" />
 
-	<ImageButton name="tree-1" position="162,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Tree" />
+	<ImageButton name="tree-1" position="162,110" up_image="content/gui/images/icons/hud/build/tree.png" hover_image="content/gui/images/icons/hud/build/tree_h.png" text="Tree" />
 
 	<ImageButton name="herder-1" position="214,58" up_image="content/gui/images/icons/hud/build/herdsman.png" hover_image="content/gui/images/icons/hud/build/herdsman_h.png" text="Herder" />
 
-	<ImageButton name="field-1" position="214,110" up_image="content/gui/images/icons/hud/build/dummy_btn.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Field" />
+	<ImageButton name="field-1" position="214,110" up_image="content/gui/images/icons/hud/build/field.png" hover_image="content/gui/images/icons/hud/build/field_h.png" text="Field" />
 </Container>
