@@ -10,5 +10,5 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="resident-1" position="58,58" up_image="content/gui/images/icons/hud/build/tent.png" hover_image="content/gui/images/icons/hud/build/dummy_btn1.png" text="Tent" />
+	<ImageButton name="resident-1" position="58,58" up_image="content/gui/images/icons/hud/build/tent.png" hover_image="content/gui/images/icons/hud/build/tent_h.png" text="Tent" />
 </Container>
