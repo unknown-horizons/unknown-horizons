@@ -237,7 +237,7 @@ class IngameGui(livingObject):
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
 
-		self.status_set('wool', str(self.settlement.inventory.get_value(2)))
+		self.status_set('wool', str(self.settlement.inventory.get_value(10)))
 		self.set_status_position('wool')
 		self.status_set('wood', str(self.settlement.inventory.get_value(4)))
 		self.set_status_position('wood')
