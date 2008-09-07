@@ -36,9 +36,27 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", level)[0][0]
 		print "Settler debug, tax_income:", self.tax_income
 
+		self.consumation = {}
+		for (res, speed) in game.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
+			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 } # consume state will use a 0-9 scale, the ressource is used on 0, on 9 the time ends, and a new ressource has to be available, else the contentment will drop
+
+	def consume(self, res):
+		if self.consumation[res]['consume_state'] < 9:
+			self.consumation[res]['consume_state'] += 1
+		if self.consumation[res]['consume_state'] is 9:
+			if self.inventory.get_value(res) > 0:
+				self.consumation[res]['consume_state'] = 0
+				self.inventory.alter_inventory(res, -1)
+				self.consumation[res]['consume_contentment'] = 10
+			else:
+				if self.consumation[res]['consume_contentment'] > 0:
+					self.consumation[res]['consume_contentment'] -= 1
+
 
 	def _init(self):
-		"""Part of initiation that __init__() and load() share"""
+		"""Part of initiation that __init__() and load() share
+		NOTE: This function is only for the consumer class, the settler class needs to be a consumer,
+		but without production lines, which is why this has to be overwritten."""
 		self._Consumer__resources = {0: []} #ugly work arround to work with current consumer implementation
 		self.local_carriages = []
 

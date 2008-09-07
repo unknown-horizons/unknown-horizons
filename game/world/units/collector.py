@@ -45,7 +45,7 @@ class BuildingCollector(StorageHolder, Unit):
 												slots = slots,
 												size = size,
 												**kwargs)
-		print 'carriage beeing inited'
+		#print 'carriage beeing inited'
 		self.home_building = weakref.ref(home_building)
 
 		for res in home_building.get_consumed_res(): # NOTE: this does not work for multiple production lines yet.
@@ -62,7 +62,7 @@ class BuildingCollector(StorageHolder, Unit):
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
-		print 'savin job', (self.job is not None)
+		#print 'savin job', (self.job is not None)
 		if self.job is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
@@ -73,10 +73,10 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Search for a job, only called if the collector does not have a job."""
 		self.job = self.get_job()
 		if self.job is None:
-			print self.id, 'JOB NONE'
+			#print self.id, 'JOB NONE'
 			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
 		else:
-			print self.id, 'EXECUTE JOB'
+			#print self.id, 'EXECUTE JOB'
 			self.begin_current_job()
 
 	def get_job(self):
@@ -85,7 +85,7 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.home_building() is None:
 			return None
 
-		print self.id, 'GET JOB'
+		#print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
 			return None
@@ -122,7 +122,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def begin_current_job(self):
 		"""Executes the current job"""
-		print self.id, 'BEGIN CURRENT JOB'
+		#print self.id, 'BEGIN CURRENT JOB'
 		self.setup_new_job()
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
@@ -132,14 +132,14 @@ class BuildingCollector(StorageHolder, Unit):
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
 		if self.job.object:
-			print self.getId(), 'BEGIN WORKING'
+			#print self.getId(), 'BEGIN WORKING'
 			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 		else:
 			self.reroute()
 
 	def finish_working(self):
 		if self.job.object:
-			print self.getId(), 'FINISH WORKING'
+			#print self.getId(), 'FINISH WORKING'
 			self._instance.act("default", self._instance.getFacingLocation(), True)
 			# transfer res
 			self.transfer_res()
@@ -151,15 +151,15 @@ class BuildingCollector(StorageHolder, Unit):
 			self.reroute()
 
 	def reroute(self):
-		print self.getId(), 'Rerouting from', self.position
+		#print self.getId(), 'Rerouting from', self.position
 		# Get a new job
-		print "Old job %s" % self.job
+		#print "Old job %s" % self.job
 		job = self.get_job()
 		# Check if there is a new job
 		if job:
 			# There is a new job!
 			self.job = job
-			print "New job %s" % self.job
+			#print "New job %s" % self.job
 			self.begin_current_job()
 		else:
 			# There is no new job...
@@ -170,7 +170,7 @@ class BuildingCollector(StorageHolder, Unit):
 		""" we finished now our complete work. Let's do it again in 32 ticks
 			you can use this as event as after work
 		"""
-		print self.id, 'FINISHED WORK'
+		#print self.id, 'FINISHED WORK'
 
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
@@ -188,21 +188,21 @@ class BuildingCollector(StorageHolder, Unit):
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
 	def transfer_res(self):
-		print self.id, 'TRANSFER PICKUP'
+		#print self.id, 'TRANSFER PICKUP'
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
-		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
+		#print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
 		assert(res_amount == self.job.amount)
 		self.inventory.alter_inventory(self.job.res, res_amount)
 
 	def get_collectable_res(self):
 		"""Gets all resources the Collector can collect"""
-		print self.id, 'GET COLLECTABLE RES'
+		#print self.id, 'GET COLLECTABLE RES'
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building().get_needed_res()
 
 	def get_buildings_in_range(self):
-		print self.id, 'GET BUILDINGS IN RANGE'
+		#print self.id, 'GET BUILDINGS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		from game.world.provider import Provider
@@ -228,13 +228,13 @@ class AnimalCollector(BuildingCollector):
 
 	def begin_current_job(self):
 		"""Tell the animal to stop. First step of a job"""
-		print self.id, 'BEGIN CURRENT JOB'
+		#print self.id, 'BEGIN CURRENT JOB'
 		self.setup_new_job()
 		self.stop_animal()
 
 	def pickup_animal(self):
 		"""Moves collector to animal. Called by animal when it actually stopped"""
-		print self.id, 'PICKUP ANIMAL'
+		#print self.id, 'PICKUP ANIMAL'
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
 
@@ -256,24 +256,24 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animals_in_range(self):
 		# TODO: use the Collector class instead of BuildCollector
-		print self.id, 'GET ANIMALS IN RANGE'
+		#print self.id, 'GET ANIMALS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		return self.home_building().animals
 
 	def stop_animal(self):
 		"""Tell animal to stop at the next occasion"""
-		print self.id, 'STOP ANIMAL', self.job.object.id
+		#print self.id, 'STOP ANIMAL', self.job.object.id
 		self.job.object.stop_after_job(self)
 
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
-		print self.id, 'GET ANIMAL'
+		#print self.id, 'GET ANIMAL'
 		self.job.object.move(self.home_building().position, destination_in_building = True)
 
 	def release_animal(self):
 		"""Let animal free after shearing"""
-		print self.id, 'RELEASE ANIMAL', self.job.object.getId()
+		#print self.id, 'RELEASE ANIMAL', self.job.object.getId()
 		game.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
 
 

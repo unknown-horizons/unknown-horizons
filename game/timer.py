@@ -71,6 +71,12 @@ class Timer(livingObject):
 		"""
 		self.tick_func_call.remove(call)
 
+	def get_ticks(self, seconds):
+		"""Returnes the number of ticks for the specified number of seconds.
+		@param seconds: number of seconds that are to be converted into ticks
+		"""
+		return seconds*self.ticks_per_second
+
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""
 		while time.time() >= self.tick_next_time:
