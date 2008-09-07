@@ -35,7 +35,7 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.inventory = self.settlement.inventory
 		self.inventory.addChangeListener(self._changed)
-		
+
 	def load(self, db, worldid):
 		print 'stor1', self
 		super(StorageBuilding, self).load(db, worldid)
@@ -44,9 +44,9 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		print 'stor2', self
 
 	def create_carriage(self):
-		#self._Consumer__local_carriages.append(game.main.session.entities.units[8](self))
+		#self.local_carriages.append(game.main.session.entities.units[8](self))
 		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		self._Consumer__local_carriages.append(game.main.session.entities.units[2](self))
+		self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

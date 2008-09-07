@@ -48,7 +48,7 @@ class BuildingCollector(StorageHolder, Unit):
 		print 'carriage beeing inited'
 		self.home_building = weakref.ref(home_building)
 
-		for res in home_building.get_needed_res(): # NOTE: this does not work for multiple production lines yet.
+		for res in home_building.get_consumed_res(): # NOTE: this does not work for multiple production lines yet.
 			if not self.inventory.hasSlot(res):
 				self.inventory.addSlot(res, size)
 

@@ -37,7 +37,7 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
-		self._Consumer__local_carriages.append(game.main.session.entities.units[7](self))
+		self.local_carriages.append(game.main.session.entities.units[7](self))
 
 class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17

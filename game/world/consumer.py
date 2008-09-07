@@ -32,14 +32,14 @@ class Consumer(StorageHolder):
 		"""
 		"""
 		super(Consumer, self).__init__(**kwargs)
-		self.__init()
+		self._init()
 		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
 		self.create_carriage()
-		
-	def __init(self):
+
+	def _init(self):
 		"""Part of initiation that __init__() and load() share"""
 		self.__resources = {}
-		self.__local_carriages = []
+		self.local_carriages = []
 
 		for (production_line,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.__resources[production_line] = []
@@ -59,18 +59,18 @@ class Consumer(StorageHolder):
 		# insert active prodline if it isn't in the db
 		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", self.getId())) == 0:
 			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", self.getId(), self.active_production_line)
-		for collector in self.__local_carriages:
+		for collector in self.local_carriages:
 			collector.save(db)
-			
+
 	def load(self, db, worldid):
 		super(Consumer, self).load(db, worldid)
 		self.active_production_line = db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)[0][0]
-		self.__init()
-			
+		self._init()
+
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
 		"""
-		self.__local_carriages.append(game.main.session.entities.units[2](self))
+		self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def get_needed_res(self):
 		"""Returns list of resources, where free space in the inventory exists,
