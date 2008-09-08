@@ -55,7 +55,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		self.job.object._Provider__collectors.append(self)
 
 	def finish_working(self):
-		print self.id, 'FINISH WORKING'
+		#print self.id, 'FINISH WORKING'
 		# transfer ressources
 		self.transfer_res()
 		# deregister at the target we're at
@@ -67,7 +67,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		# FIXME: this code is mostly, if not fully, copied from collector
 		#        it's already inconsistent, so delete the double code and
 		#        make them share one implementation
-		print self.id, 'GET JOB'
+		#print self.id, 'GET JOB'
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
 			return None
@@ -97,7 +97,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		return None
 
 	def get_collectable_res(self):
-		print self.id, 'GET COLLECTABLE RES'
+		#print self.id, 'GET COLLECTABLE RES'
 		return self.get_needed_res()
 
 	def stop_after_job(self, collector):

@@ -32,25 +32,32 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
 		self.max_inhabitants = game.main.db("SELECT max_inhabitants FROM settler_level WHERE level=?", level)[0][0]
-		print "Settler debug, max_inhabitants:", self.max_inhabitants
+		print self.id, "Settler debug, max_inhabitants:", self.max_inhabitants
 		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", level)[0][0]
-		print "Settler debug, tax_income:", self.tax_income
+		print self.id, "Settler debug, tax_income:", self.tax_income
 
 		self.consumation = {}
 		for (res, speed) in game.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
-			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 } # consume state will use a 0-9 scale, the ressource is used on 0, on 9 the time ends, and a new ressource has to be available, else the contentment will drop
+			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': game.main.session.timer.get_ticks(speed)/10} # consume state will use a 0-9 scale, the ressource is used on 0, on 9 the time ends, and a new ressource has to be available, else the contentment will drop
+		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1)
 
-	def consume(self, res):
-		if self.consumation[res]['consume_state'] < 9:
-			self.consumation[res]['consume_state'] += 1
-		if self.consumation[res]['consume_state'] is 9:
-			if self.inventory.get_value(res) > 0:
-				self.consumation[res]['consume_state'] = 0
-				self.inventory.alter_inventory(res, -1)
-				self.consumation[res]['consume_contentment'] = 10
+	def consume(self):
+		for (res, row) in self.consumation.iteritems():
+			if row['next_consume'] > 0:
+				row['next_consume'] -= 1
 			else:
-				if self.consumation[res]['consume_contentment'] > 0:
-					self.consumation[res]['consume_contentment'] -= 1
+				if row['consume_state'] < 10:
+					row['consume_state'] += 1
+				if row['consume_state'] == 10:
+					if self.inventory.get_value(res) > 0:
+						print self.id, 'Consuming:', res
+						row['consume_state'] = 0
+						self.inventory.alter_inventory(res, -1)
+						row['consume_contentment'] = 10
+					else:
+						if row['consume_contentment'] > 0:
+							row['consume_contentment'] -= 1
+				row['next_consume'] = game.main.session.timer.get_ticks(row["consume_speed"])/10
 
 
 	def _init(self):
@@ -73,7 +80,6 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 
 		#create a carriage to collect the needed ressources
 		print self.local_carriages
-		self.create_carriage()
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
