@@ -376,7 +376,7 @@ def startSingle():
 
 		session = Session()
 		session.begin()
-		session.load(map_file)
+		session.load(map_file, 'Arthur', Color()) # temp fix to display gold
 
 def showMulti():
 	global gui, onEscape, showMain, connection

@@ -38,10 +38,16 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 
 		self.consumation = {}
 		for (res, speed) in game.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
-			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': game.main.session.timer.get_ticks(speed)/10} # consume state will use a 0-9 scale, the ressource is used on 0, on 9 the time ends, and a new ressource has to be available, else the contentment will drop
+			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': game.main.session.timer.get_ticks(speed)/10}
+			"""consume_speed: generel time a consumed good lasts, until a new ton has to be consumed. In seconds.
+			consume_state: 0-10 state, on 10 a new good is consumed or contentment drops, if no new good is in the inventory.
+			consume_contentment: 0-10 state, showing how fullfilled the wish for the specified good is.
+			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
 		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1)
+		game.main.session.scheduler.add_new_object(self.pay_tax, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 
 	def consume(self):
+		"""Methode that handles the building's consumation. It is called every tick."""
 		for (res, row) in self.consumation.iteritems():
 			if row['next_consume'] > 0:
 				row['next_consume'] -= 1
@@ -50,7 +56,7 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 					row['consume_state'] += 1
 				if row['consume_state'] == 10:
 					if self.inventory.get_value(res) > 0:
-						print self.id, 'Consuming:', res
+						print self.id, 'Settler debug: consuming res:', res
 						row['consume_state'] = 0
 						self.inventory.alter_inventory(res, -1)
 						row['consume_contentment'] = 10
@@ -59,6 +65,9 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 							row['consume_contentment'] -= 1
 				row['next_consume'] = game.main.session.timer.get_ticks(row["consume_speed"])/10
 
+	def pay_tax(self):
+		self.settlement.owner.inventory.alter_inventory(1,self.tax_income)
+		print self.id, 'Settler debug: payed tax:', self.tax_income, 'new player gold:', self.settlement.owner.inventory.get_value(1)
 
 	def _init(self):
 		"""Part of initiation that __init__() and load() share
@@ -78,9 +87,6 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 			if not self.inventory.hasSlot(res):
 				self.inventory.addSlot(res, 1) # TODO: fix size somewhere else!
 
-		#create a carriage to collect the needed ressources
-		print self.local_carriages
-
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
 
@@ -89,4 +95,5 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 		considering, if it currently needs them
 		"""
 		return self._Consumer__resources[0]
+
 	# TODO: saving and loading
