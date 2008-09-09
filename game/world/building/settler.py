@@ -25,14 +25,14 @@ from game.gui.tabwidget import TabWidget
 import game.main
 from buildable import BuildableSingle
 from game.util import WeakList
+from random import randint
 
 class Settler(Consumer, BuildableSingle, Selectable, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
-		self.max_inhabitants = game.main.db("SELECT max_inhabitants FROM settler_level WHERE level=?", level)[0][0]
-		print self.id, "Settler debug, max_inhabitants:", self.max_inhabitants
+		print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
 		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", level)[0][0]
 		print self.id, "Settler debug, tax_income:", self.tax_income
 
@@ -45,6 +45,8 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
 		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1)
 		game.main.session.scheduler.add_new_object(self.pay_tax, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
+		game.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
+		self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
 
 	def consume(self):
 		"""Methode that handles the building's consumation. It is called every tick."""
@@ -66,8 +68,20 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 				row['next_consume'] = game.main.session.timer.get_ticks(row["consume_speed"])/10
 
 	def pay_tax(self):
-		self.settlement.owner.inventory.alter_inventory(1,self.tax_income)
-		print self.id, 'Settler debug: payed tax:', self.tax_income, 'new player gold:', self.settlement.owner.inventory.get_value(1)
+		self.settlement.owner.inventory.alter_inventory(1,self.tax_income*self.inhabitants)
+		print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory.get_value(1)
+
+	def inhabitant_check(self):
+		if sum([self.consumation[i]['consume_contentment'] for i in self.consumation]) == self.contentment_max:
+			content = 1
+		else:
+			content = 0
+		if self.inhabitants < self.inhabitants_max:
+			addition = randint(-1,1) + content
+			if self.inhabitants + addition > self.inhabitants_max:
+				addition = self.inhabitants_max-self.inhabitants
+			self.inhabitants = self.inhabitants + addition
+			self.settlement.add_inhabitants(addition)
 
 	def _init(self):
 		"""Part of initiation that __init__() and load() share
