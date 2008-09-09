@@ -80,6 +80,8 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 			addition = randint(-1,1) + content
 			if self.inhabitants + addition > self.inhabitants_max:
 				addition = self.inhabitants_max-self.inhabitants
+			elif self.inhabitants + addition <= 0:
+				addition = -(self.inhabitants - 1)
 			self.inhabitants = self.inhabitants + addition
 			self.settlement.add_inhabitants(addition)
 
