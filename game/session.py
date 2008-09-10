@@ -195,7 +195,10 @@ class Session(livingObject):
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
 		self.view.map.setTimeMultiplier(float(ticks) / float(game.main.settings.ticks.default))
-		self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
+		if ticks == 0 or self.timer.tick_next_time is None:
+			self.timer.tick_next_time = None
+		else:
+			self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
 
 	def speed_up(self):
 		if self.timer.ticks_per_second in game.main.settings.ticks.steps:

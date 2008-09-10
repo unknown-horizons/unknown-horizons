@@ -81,6 +81,8 @@ class Timer(livingObject):
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""
+		if self.ticks_per_second == 0:
+			return
 		while time.time() >= self.tick_next_time:
 			for f in self.tick_func_test:
 				r = f(self.tick_next_id)
