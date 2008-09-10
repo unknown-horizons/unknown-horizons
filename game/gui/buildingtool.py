@@ -93,6 +93,7 @@ class BuildingTool(NavigationTool):
 				for resource in neededResources:
 					if ( game.main.session.world.player.inventory.get_value(resource) if resource == 1 else 0 ) + (self.ship.inventory.get_value(resource) if self.ship is not None else building['settlement'].inventory.get_value(resource) if building['settlement'] is not None else 0) < neededResources[resource]:
 						game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
+						building['buildable'] = False
 						break
 				else:
 					building['buildable'] = True
