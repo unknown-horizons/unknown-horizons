@@ -62,7 +62,7 @@ class Session(livingObject):
 		WorldObject.reset()
 
 		#game
-		self.timer = Timer(16)
+		self.timer = Timer()
 		self.manager = SPManager()
 		self.scheduler = Scheduler(self.timer)
 		self.view = View((15, 15))
@@ -190,3 +190,32 @@ class Session(livingObject):
 
 		#setup view
 		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
+
+	def speed_set(self, ticks):
+		old = self.timer.ticks_per_second
+		self.timer.ticks_per_second = ticks
+		self.view.map.setTimeMultiplier(float(ticks) / float(game.main.settings.ticks.default))
+		self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
+
+	def speed_up(self):
+		if self.timer.ticks_per_second in game.main.settings.ticks.steps:
+			i = game.main.settings.ticks.steps.index(self.timer.ticks_per_second)
+			if i + 1 < len(game.main.settings.ticks.steps):
+				self.speed_set(game.main.settings.ticks.steps[i + 1])
+		else:
+			self.speed_set(game.main.settings.ticks.steps[0])
+
+	def speed_down(self):
+		if self.timer.ticks_per_second in game.main.settings.ticks.steps:
+			i = game.main.settings.ticks.steps.index(self.timer.ticks_per_second)
+			if i > 0:
+				self.speed_set(game.main.settings.ticks.steps[i - 1])
+		else:
+			self.speed_set(game.main.settings.ticks.steps[0])
+
+	def speed_pause(self):
+		if self.timer.ticks_per_second == 0:
+			self.speed_set(self.paused_ticks_per_second)
+		else:
+			self.paused_ticks_per_second = self.timer.ticks_per_second
+			self.speed_set(0)

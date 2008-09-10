@@ -30,13 +30,15 @@ class Timer(livingObject):
 	"""
 	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 
-	def begin(self, ticks_per_second, tick_next_id = 0):
+	def begin(self, tick_next_id = 0):
 		"""
 		@param ticks_per_second: int times per second the timer is to tick
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).begin()
-		self.ticks_per_second = ticks_per_second
+		game.main.settings.addCategorys('ticks')
+		game.main.settings.ticks.setDefaults(default = 16, steps = [4, 8, 16, 32, 64])
+		self.ticks_per_second = game.main.settings.ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
 		self.tick_func_test = []
