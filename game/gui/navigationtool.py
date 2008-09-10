@@ -78,11 +78,11 @@ class NavigationTool(CursorTool):
 			if island:
 				settlement = island.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 				if settlement:
-					game.main.session.ingame_gui.cityinfo_set(settlement)
+					game.main.session.ingame_gui.resourceinfo_set(settlement)
 				else:
-					game.main.session.ingame_gui.cityinfo_set(None)
+					game.main.session.ingame_gui.resourceinfo_set(None)
 			else:
-				game.main.session.ingame_gui.cityinfo_set(None)
+				game.main.session.ingame_gui.resourceinfo_set(None)
 		# Mouse scrolling
 		old = self.lastScroll
 		new = [0, 0]

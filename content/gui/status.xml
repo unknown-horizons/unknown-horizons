@@ -1,13 +1,23 @@
 <?xml version="1.0"?>
-<Container size="250,80">
+<Container size="250,120">
 	<Icon name="food_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="0,0" /><Icon image="content/gui/images/icons/hud/main/food.png" position="8,8" />
-	<Label name="food" text="" />
+	<Label name="food_1" text="" />
+	<Label name="food_2" text="" />
+	<Label name="food_3" text="" />
 	<Icon name="tools_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="50,0" /><Icon image="content/gui/images/icons/hud/main/tools.png" position="58,8" />
-	<Label name="tools" text="" />
+	<Label name="tools_1" text="" />
+	<Label name="tools_2" text="" />
+	<Label name="tools_3" text="" />
 	<Icon name="wood_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="100,0" /><Icon image="content/gui/images/icons/hud/main/wood.png" position="108,8" />
-	<Label name="wood" text=""  />
+	<Label name="wood_1" text="" />
+	<Label name="wood_2" text="" />
+	<Label name="wood_3" text="" />
 	<Icon name="bricks_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="150,0" /><Icon image="content/gui/images/icons/hud/main/bricks.png" position="158,8" />
-	<Label name="bricks" text="" />
+	<Label name="bricks_1" text="" />
+	<Label name="bricks_2" text="" />
+	<Label name="bricks_3" text="" />
 	<Icon name="wool_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" /><Icon image="content/gui/images/icons/hud/main/wool.png" position="208,8" />
-	<Label name="wool" text="" />
+	<Label name="wool_1" text="" />
+	<Label name="wool_2" text="" />
+	<Label name="wool_3" text="" />
 </Container>

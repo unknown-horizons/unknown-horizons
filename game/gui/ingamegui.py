@@ -25,6 +25,7 @@ import fife
 from game.util import livingObject
 from messagewidget import MessageWidget
 from tabwidget import TabWidget
+from game.world.settlement import Settlement
 
 class IngameGui(livingObject):
 	"""Class handling all the ingame gui events."""
@@ -33,6 +34,8 @@ class IngameGui(livingObject):
 		self.gui = {}
 		self.tabwidgets = {}
 		self.settlement = None
+		self.resource_source = None
+		self.resources_needed, self.resource_usable = {}, {}
 		self._old_menu = None
 
 		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
@@ -191,7 +194,13 @@ class IngameGui(livingObject):
 		super(IngameGui, self).end()
 
 	def update_gold(self):
-		self.status_set('gold', str(game.main.session.world.player.inventory.get_value(1)))
+		res_id = 1
+		lines = [str(game.main.session.world.player.inventory.get_value(res_id))]
+		if self.resource_source is not None and self.resources_needed.get(res_id, 0) != 0:
+			lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
+			if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
+				lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
+		self.status_set('gold', lines)
 		self.set_status_position('gold')
 
 	def status_set(self, label, value):
@@ -199,9 +208,14 @@ class IngameGui(livingObject):
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
-		foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label)
-		foundlabel._setText(value)
-		foundlabel.resizeToContent()
+		if isinstance(value, str):
+			value = [value]
+		for i in xrange(len(value), 3):
+			value.append("")
+		for i in xrange(0, len(value)):
+			foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label + '_' + str(i + 1))
+			foundlabel._setText(value[i])
+			foundlabel.resizeToContent()
 		if label == 'gold':
 			self.gui['status_gold'].resizeToContent()
 		else:
@@ -214,19 +228,35 @@ class IngameGui(livingObject):
 		To hide cityname, set name to ''
 		@param settlement: Settlement class providing the information needed
 		"""
-		if settlement == self.settlement:
+		if settlement is self.settlement:
 			return
 		if self.settlement is not None:
 			self.settlement.removeChangeListener(self.update_settlement)
 		self.settlement = settlement
-		if(settlement == None):
+		if settlement is None:
 			self.gui['topmain'].hide()
-			self.gui['status'].hide()
 		else:
 			self.gui['topmain'].show()
-			self.gui['status'].show()
 			self.update_settlement()
 			settlement.addChangeListener(self.update_settlement)
+
+	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}):
+		self.cityinfo_set(source if isinstance(source, Settlement) else None)
+		if source is not self.resource_source:
+			if self.resource_source is not None:
+				self.resource_source.removeChangeListener(self.update_resource_source)
+			if source is None:
+				self.gui['status'].hide()
+				self.resource_source = None
+				self.update_gold()
+		if source is not None:
+			if source is not self.resource_source:
+				source.addChangeListener(self.update_resource_source)
+			self.resource_source = source
+			self.resources_needed = res_needed
+			self.resources_usable = res_usable
+			self.gui['status'].show()
+			self.update_resource_source()
 
 	def update_settlement(self):
 		foundlabel = self.gui['topmain'].findChild(name='city_name')
@@ -237,16 +267,16 @@ class IngameGui(livingObject):
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
 
-		self.status_set('wool', str(self.settlement.inventory.get_value(10)))
-		self.set_status_position('wool')
-		self.status_set('wood', str(self.settlement.inventory.get_value(4)))
-		self.set_status_position('wood')
-		self.status_set('food', str(self.settlement.inventory.get_value(5)))
-		self.set_status_position('food')
-		self.status_set('tools', str(self.settlement.inventory.get_value(6)))
-		self.set_status_position('tools')
-		self.status_set('bricks', str(self.settlement.inventory.get_value(7)))
-		self.set_status_position('bricks')
+	def update_resource_source(self):
+		self.update_gold()
+		for res_id, res_name in {10 : 'wool', 4 : 'wood', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
+			lines = [str(self.resource_source.inventory.get_value(res_id))]
+			if self.resources_needed.get(res_id, 0) != 0:
+				lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
+				if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
+					lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
+			self.status_set(res_name, lines)
+			self.set_status_position(res_name)
 
 	def ship_build(self, ship):
 		"""Calls the Games build_object class."""
@@ -333,17 +363,18 @@ class IngameGui(livingObject):
 			self.gui['camTools'].show()
 
 	def set_status_position(self, resource_name):
-		icon_name = resource_name + '_icon'
-		if resource_name == 'gold':
-					self.gui['status_gold'].findChild(name = resource_name).position = (
-				self.gui['status_gold'].findChild(name = icon_name).position[0] + 24 - self.gui['status_gold'].findChild(name = resource_name).size[0]/2,
-				48
-			)
-		else:
-			self.gui['status'].findChild(name = resource_name).position = (
-				self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name).size[0]/2,
-				48
-			)
+		for i in xrange(1, 4):
+			icon_name = resource_name + '_icon'
+			if resource_name == 'gold':
+				self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).position = (
+					self.gui['status_gold'].findChild(name = icon_name).position[0] + 24 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+					20 + 20 * i
+				)
+			else:
+				self.gui['status'].findChild(name = resource_name + '_' + str(i)).position = (
+					self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+					20 + 20 * i
+				)
 
 	def save(self, db):
 		self.message_widget.save(db)

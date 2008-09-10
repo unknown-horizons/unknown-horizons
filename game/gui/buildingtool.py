@@ -80,7 +80,9 @@ class BuildingTool(NavigationTool):
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.buildings = self._class.getBuildList(point1, point2, ship = self.ship)
 		neededResources, usableResources = {}, {}
+		settlement = None
 		for building in self.buildings:
+			settlement = building.get('settlement', None) if settlement is None else settlement
 			building['instance'] = self._class.getInstance(**building)
 			resources = self._class.getBuildCosts(**building)
 			if not building.get('buildable', True):
@@ -89,18 +91,18 @@ class BuildingTool(NavigationTool):
 				for resource in resources:
 					neededResources[resource] = neededResources.get(resource, 0) + resources[resource]
 				for resource in neededResources:
-					available = ( game.main.session.world.player.inventory.get_value(resource) if resource == 1 else 0 ) + (self.ship.inventory.get_value(resource) if self.ship is not None else building['settlement'].inventory.get_value(resource) if building['settlement'] is not None else 0)
-					building['buildable'] = available >= neededResources[resource]
-					if not building['buildable']:
+					if ( game.main.session.world.player.inventory.get_value(resource) if resource == 1 else 0 ) + (self.ship.inventory.get_value(resource) if self.ship is not None else building['settlement'].inventory.get_value(resource) if building['settlement'] is not None else 0) < neededResources[resource]:
 						game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
 						break
 				else:
 					building['buildable'] = True
 					for resource in resources:
-						usableResources[resource] = neededResources.get(resource, 0) + resources[resource]
+						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
+		game.main.session.ingame_gui.resourceinfo_set(self.ship if self.ship is not None else settlement, neededResources, usableResources)
 
 	def onEscape(self):
+		game.main.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
 			game.main.session.ingame_gui.show_menu('build')
 		else:
