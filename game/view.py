@@ -21,6 +21,7 @@
 
 import fife
 import math
+import time
 import game.main
 from game.util import livingObject
 
@@ -97,15 +98,17 @@ class View(livingObject):
 		new = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
 		if old != new:
 			if old:
-				game.main.session.timer.remove_test(self.tick)
+				game.main.fife.pump.remove(self.do_autoscroll)
 			if new:
-				game.main.session.timer.add_test(self.tick)
+				self.time_last_autoscroll = time.time()
+				game.main.fife.pump.append(self.do_autoscroll)
 
-	def tick(self, tick):
+	def do_autoscroll(self):
 		"""
-		@param tick:
 		"""
-		self.scroll(self._autoscroll[0], self._autoscroll[1])
+		t = time.time()
+		self.scroll(self._autoscroll[0] * 16 * (t - self.time_last_autoscroll), self._autoscroll[1] * 16 * (t - self.time_last_autoscroll))
+		self.time_last_autoscroll = t
 
 	def scroll(self, x, y):
 		"""Moves the camera across the screen

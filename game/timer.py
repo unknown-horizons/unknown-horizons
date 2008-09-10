@@ -32,12 +32,11 @@ class Timer(livingObject):
 
 	def begin(self, tick_next_id = 0):
 		"""
-		@param ticks_per_second: int times per second the timer is to tick
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).begin()
 		game.main.settings.addCategorys('ticks')
-		game.main.settings.ticks.setDefaults(default = 16, steps = [4, 8, 16, 32, 64])
+		game.main.settings.ticks.setDefaults(default = 16, steps = [1, 2, 4, 8, 16, 32, 64, 128, 256])
 		self.ticks_per_second = game.main.settings.ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
@@ -77,7 +76,7 @@ class Timer(livingObject):
 		"""Returnes the number of ticks for the specified number of seconds.
 		@param seconds: number of seconds that are to be converted into ticks
 		"""
-		return seconds*self.ticks_per_second
+		return seconds*game.main.settings.ticks.default
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

@@ -42,7 +42,7 @@ from game.savegamemanager import SavegameManager, InvalidSavegamenameException
 def start():
 	"""Starts the game.
 	"""
-	global db, settings, fife, gui, session, connection, ext_timer, ext_scheduler, savegamemanager
+	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
