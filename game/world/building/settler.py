@@ -32,8 +32,13 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
+		self.__init()
+		self.run()
+
+
+	def __init(self):
 		print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
-		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", level)[0][0]
+		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
 		print self.id, "Settler debug, tax_income:", self.tax_income
 
 		self.consumation = {}
@@ -43,6 +48,8 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 			consume_state: 0-10 state, on 10 a new good is consumed or contentment drops, if no new good is in the inventory.
 			consume_contentment: 0-10 state, showing how fullfilled the wish for the specified good is.
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
+
+	def run(self):
 		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1)
 		game.main.session.scheduler.add_new_object(self.pay_tax, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 		game.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
@@ -78,14 +85,10 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 			content = 0
 		if self.inhabitants < self.inhabitants_max:
 			addition = randint(-1,1) + content
-			if self.inhabitants + addition > self.inhabitants_max:
-				addition = self.inhabitants_max-self.inhabitants
-			elif self.inhabitants + addition <= 0:
-				addition = -(self.inhabitants - 1)
-			self.inhabitants = self.inhabitants + addition
+			addition = min(self.inhabitants_max, max(1, self.inhabitants + addition)) - self.inhabitants
 			self.settlement.add_inhabitants(addition)
 
-	def _init(self):
+	def _Consumer__init(self):
 		"""Part of initiation that __init__() and load() share
 		NOTE: This function is only for the consumer class, the settler class needs to be a consumer,
 		but without production lines, which is why this has to be overwritten."""
@@ -112,4 +115,16 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 		"""
 		return self._Consumer__resources[0]
 
-	# TODO: saving and loading
+	def save(self, db):
+		db("INSERT INTO settler(rowid, level) VALUES (?, ?)", self.getId(), self.level)
+		for (res, row) in self.consumation.iteritems():
+			db("INSERT INTO settler_consume(settler_id, res, contentment, next_consume, consume_state) VALUES (?, ?, ?, ?, ?)", self.getId(), res, row['consume_contentment'], row['next_consume'], row['consume_state'])
+
+	def load(self, db):
+		self.level = db("SELECT level FROM settler WHERE rowid=?", self.getId())[0][0]
+		self.__init()
+		for (res, contentment, next_consume, consume_state) in db("SELECT res, contentment, next_consume, consume_state FROM settler_consume WHERE settler_id=?", self.getId()):
+			self.consumation[res]['consume_contentment'] = contentment
+			self.consumation[res]['next_consume'] = next_consume
+			self.consumation[res]['consume_state'] = consume_state
+		self.run()

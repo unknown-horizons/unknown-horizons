@@ -32,11 +32,11 @@ class Consumer(StorageHolder):
 		"""
 		"""
 		super(Consumer, self).__init__(**kwargs)
-		self._init()
+		self.__init()
 		self.active_production_line = None if len(self.__resources) == 0 else min(self.__resources.keys())
 		self.create_carriage()
 
-	def _init(self):
+	def __init(self):
 		"""Part of initiation that __init__() and load() share"""
 		self.__resources = {}
 		self.local_carriages = []
@@ -65,7 +65,7 @@ class Consumer(StorageHolder):
 	def load(self, db, worldid):
 		super(Consumer, self).load(db, worldid)
 		self.active_production_line = db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)[0][0]
-		self._init()
+		self.__init()
 
 	def create_carriage(self):
 		""" Creates carriage according to building type (chosen by polymorphism)
