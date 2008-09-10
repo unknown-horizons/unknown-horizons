@@ -195,7 +195,10 @@ class Session(livingObject):
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
 		self.view.map.setTimeMultiplier(float(ticks) / float(game.main.settings.ticks.default))
-		if ticks == 0 or self.timer.tick_next_time is None:
+		if old == 0 and self.timer.tick_next_time is None: #back from paused state
+			self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
+		elif ticks == 0 or self.timer.tick_next_time is None: #go into paused state or very early speed change (before any tick)
+			self.paused_time_missing = ((self.timer.tick_next_time - time.time()) * old) if self.timer.tick_next_time is not None else None
 			self.timer.tick_next_time = None
 		else:
 			self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
