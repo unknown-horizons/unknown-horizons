@@ -78,7 +78,7 @@ class Session(livingObject):
 
 		#autosave
 		if game.main.settings.savegame.autosaveinterval != 0:
-			self.scheduler.add_new_object(self.autosave, self, game.main.settings.savegame.autosaveinterval*self.timer.ticks_per_second*60, -1)
+			game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def end(self):
 		self.scheduler.rem_all_classinst_calls(self)
