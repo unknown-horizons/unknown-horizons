@@ -118,8 +118,6 @@ class Storage(WorldObject):
 				ownerid, res, value)
 
 	def load(self, db, ownerid):
-		# HERE HERE HERE : loading id or not loading id? (also below)
-		# super(Storage, self).load(db, ownerid)
 		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
 			self.alter_inventory(res, amount)
 
