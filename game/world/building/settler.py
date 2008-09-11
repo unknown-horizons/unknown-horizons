@@ -116,11 +116,13 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 		return self._Consumer__resources[0]
 
 	def save(self, db):
+		super(Settler, self).save(db)
 		db("INSERT INTO settler(rowid, level) VALUES (?, ?)", self.getId(), self.level)
 		for (res, row) in self.consumation.iteritems():
 			db("INSERT INTO settler_consume(settler_id, res, contentment, next_consume, consume_state) VALUES (?, ?, ?, ?, ?)", self.getId(), res, row['consume_contentment'], row['next_consume'], row['consume_state'])
 
 	def load(self, db):
+		super(Settler, self).load(db)
 		self.level = db("SELECT level FROM settler WHERE rowid=?", self.getId())[0][0]
 		self.__init()
 		for (res, contentment, next_consume, consume_state) in db("SELECT res, contentment, next_consume, consume_state FROM settler_consume WHERE settler_id=?", self.getId()):

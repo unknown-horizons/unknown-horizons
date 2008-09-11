@@ -141,6 +141,8 @@ class Session(livingObject):
 
 			print 'writing metadata'
 			game.main.savegamemanager.write_metadata(db)
+		except Exception, e:
+			print "Save exception", e
 		finally:
 			db("COMMIT")
 			print 'FINISHED SAVING'
