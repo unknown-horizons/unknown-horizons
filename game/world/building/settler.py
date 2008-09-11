@@ -27,7 +27,7 @@ from buildable import BuildableSingle
 from game.util import WeakList
 from random import randint
 
-class Settler(Consumer, BuildableSingle, Selectable, Building):
+class Settler(Selectable, BuildableSingle, Consumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
 		self.level = level
@@ -121,9 +121,9 @@ class Settler(Consumer, BuildableSingle, Selectable, Building):
 		for (res, row) in self.consumation.iteritems():
 			db("INSERT INTO settler_consume(settler_id, res, contentment, next_consume, consume_state) VALUES (?, ?, ?, ?, ?)", self.getId(), res, row['consume_contentment'], row['next_consume'], row['consume_state'])
 
-	def load(self, db):
-		super(Settler, self).load(db)
-		self.level = db("SELECT level FROM settler WHERE rowid=?", self.getId())[0][0]
+	def load(self, db, building_id):
+		self.level = db("SELECT level FROM settler WHERE rowid=?", building_id)[0][0]
+		super(Settler, self).load(db, building_id)
 		self.__init()
 		for (res, contentment, next_consume, consume_state) in db("SELECT res, contentment, next_consume, consume_state FROM settler_consume WHERE settler_id=?", self.getId()):
 			self.consumation[res]['consume_contentment'] = contentment
