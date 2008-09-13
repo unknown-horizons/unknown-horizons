@@ -40,7 +40,6 @@ class IngameGui(livingObject):
 
 		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
 		self.gui['encyclopedia'].show()
-
 		self.gui['topmain'] = game.main.fife.pychan.loadXML('content/gui/top_main.xml')
 		self.gui['topmain'].position = (
 			game.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2,

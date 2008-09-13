@@ -28,6 +28,7 @@ from unit import Unit
 from game.world.pathfinding import Movement
 from game.util import Point
 from game.gui.tabwidget import TabWidget
+from game.gui.tradewidget import TradeWidget
 
 class Ship(Unit):
 	movement = Movement.SHIP_MOVEMENT
@@ -90,7 +91,15 @@ class Ship(Unit):
 		game.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(3, self, {'overview_ship':{'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, weakref.ref(self))}}))
+		callbacks = {
+			'overview_ship':{
+				'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, weakref.ref(self))
+			},
+			'stock': {
+				'trade': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui.show_menu, TradeWidget(self))
+			}
+		}
+		game.main.session.ingame_gui.show_menu(TabWidget(3, self, callbacks))
 
 	def act(self, x, y):
 		"""Moves the ship.

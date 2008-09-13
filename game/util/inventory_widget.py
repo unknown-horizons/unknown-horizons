@@ -61,7 +61,7 @@ class Inventory(pychan.widgets.Container):
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		for index, resid in enumerate(self._inventory._inventory.iteritems()):
 			icon = game.main.db('SELECT icon from data.resource WHERE rowid=?', resid[0])[0][0]
-			button = ImageFillStatusButton(up_image=icon, down_image=icon, hover_image=icon, text=str(resid[1][0]), size=(50,50), opaque=False)
+			button = ImageFillStatusButton(up_image=icon, down_image=icon, hover_image=icon, text=str(resid[1][0]), size=(50,50),res_id = resid[0], opaque=False)
 			button.filled = int(float(resid[1][0])/float(resid[1][1])*100.0)
 			current_hbox.addChild(button)
 			if index % (vbox.width/(self.__class__.icon_width+10)) == 0 and  index is not 0:
@@ -73,7 +73,7 @@ class Inventory(pychan.widgets.Container):
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
-	def __init__(self, up_image, down_image, hover_image, text, **kwargs):
+	def __init__(self, up_image, down_image, hover_image, text, res_id, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
@@ -81,6 +81,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
 		self._filled = 0
+		self.res_id = res_id
 
 	def _set_filled(self, percent):
 		""""@var percent: int percent that fillstatus will be green"""
@@ -94,8 +95,8 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the icon + bar."""
-		button = pychan.widgets.ImageButton(text=self.text, up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
-		button.size = (50,50)
+		self.button = pychan.widgets.ImageButton(text=self.text, up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
+		self.button.size = (50,50)
 		bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
-		bar.position = (button.width-bar.width-1, button.height-int(button.height/100.0*self._filled))
-		self.addChildren(button, bar)
+		bar.position = (self.button.width-bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))
+		self.addChildren(self.button, bar)
