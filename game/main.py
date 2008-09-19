@@ -540,7 +540,7 @@ def showJoinServer():
 def showPause():
 	"""
 	"""
-	global gui, onEscape, quitSession
+	global gui, onEscape, quitSession, session
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/gamemenu.xml')
@@ -555,14 +555,16 @@ def showPause():
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
+	session.speed_pause()
 	onEscape = returnGame
 
 def returnGame():
 	"""
 	"""
-	global gui, onEscape, showPause
+	global gui, onEscape, showPause, session
 	gui.hide()
 	gui = None
+	session.speed_pause()
 	onEscape = showPause
 
 def quitSession():
