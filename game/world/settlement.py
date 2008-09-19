@@ -35,9 +35,6 @@ class Settlement(WorldObject):
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 
 		self.setup_storage()
-		self.inventory.alter_inventory(6, 20)
-		self.inventory.alter_inventory(5, 20)
-		self.inventory.alter_inventory(4, 20)
 
 	def setup_storage(self):
 		self.inventory = Storage()

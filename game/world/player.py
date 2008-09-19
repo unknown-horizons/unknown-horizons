@@ -39,7 +39,7 @@ class Player(WorldObject):
 
 		self.setup_inventory()
 
-		self.inventory.alter_inventory(1, 9999)
+		self.inventory.alter_inventory(1, 20000)
 
 	def setup_inventory(self):
 		self.inventory = Storage()

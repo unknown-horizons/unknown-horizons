@@ -40,8 +40,8 @@ class Ship(Unit):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 
 		self.setup_inventory()
-		self.inventory.alter_inventory(6, 15)
-		self.inventory.alter_inventory(5, 30)
+		self.inventory.alter_inventory(6, 50)
+		self.inventory.alter_inventory(5, 50)
 		self.inventory.alter_inventory(4, 50)
 
 		self.set_name()
