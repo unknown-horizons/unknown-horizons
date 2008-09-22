@@ -20,7 +20,7 @@
 # ###################################################
 
 from building import Building, Selectable
-from game.world.production import SecondaryProducer
+from game.world.production import SecondaryProducer, PrimaryProducer
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from game.gui.tabwidget import TabWidget
 import game.main
@@ -44,4 +44,7 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 	"""Class representing a Lumberjack."""
 
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
+	pass
+
+class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 	pass
