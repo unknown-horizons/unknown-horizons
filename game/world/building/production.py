@@ -23,6 +23,7 @@ from building import Building, Selectable
 from game.world.production import SecondaryProducer, PrimaryProducer
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from game.gui.tabwidget import TabWidget
+from game.util.point import Point
 import game.main
 
 class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
@@ -47,4 +48,17 @@ class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 	pass
 
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
-	pass
+
+	@classmethod
+	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
+		#todo: check cost line
+		coast_tile_found = False
+		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			tile = island.get_tile(Point(xx,yy))
+			classes = tile.__class__.classes
+			if 'coastline' in classes:
+				coast_tile_found = True
+			elif 'constructible' not in classes:
+				return None
+
+		return {} if coast_tile_found else None
