@@ -59,7 +59,7 @@ class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 			evt.consume()
 		elif keyval == fife.Key.F1:
 			game.main.onHelp()
-		elif keystr == 'p':
+		elif keystr == 's':
 			game.main.fife.engine.getRenderBackend().captureScreen("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png")
 
 	def keyReleased(self, evt):

@@ -11,7 +11,11 @@ Welcome to the OpenAnno Alpha 2008.01, Keybindings:
 - ESC = Show Pause menu
 - T = Toggles grid on / off
 - X = enable destruct mode
-- P = Screenshot
+- P = Pause
+- "+" = Speed Up
+- "-" = Speed Down
+- S = Screenshot
+
 
 Have fun.
 The FIFE and OpenAnno teams
