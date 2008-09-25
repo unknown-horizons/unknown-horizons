@@ -111,7 +111,7 @@ class BuildingCollector(StorageHolder, Unit):
 		jobs.reverse()
 
 		for job in jobs:
-			if self.check_move(job.object.position) is not None:
+			if self.check_move(job.object.position):
 				return job
 		return None
 

@@ -54,8 +54,10 @@ class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 		#todo: check cost line
 		coast_tile_found = False
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			print "x y:", xx, yy
 			tile = island.get_tile(Point(xx,yy))
 			classes = tile.__class__.classes
+			print classes
 			if 'coastline' in classes:
 				coast_tile_found = True
 			elif 'constructible' not in classes:

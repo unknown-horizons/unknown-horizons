@@ -44,9 +44,9 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		print 'stor2', self
 
 	def create_carriage(self):
-		#self.local_carriages.append(game.main.session.entities.units[8](self))
+		self.local_carriages.append(game.main.session.entities.units[8](self))
 		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		self.local_carriages.append(game.main.session.entities.units[2](self))
+		#self.local_carriages.append(game.main.session.entities.units[2](self))
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
@@ -84,8 +84,10 @@ class BranchOffice(StorageBuilding):
 		#todo: check cost line
 		coast_tile_found = False
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			print "x y:", xx, yy
 			tile = island.get_tile(Point(xx,yy))
 			classes = tile.__class__.classes
+			print classes
 			if 'coastline' in classes:
 				coast_tile_found = True
 			elif 'constructible' not in classes:
