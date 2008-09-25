@@ -95,7 +95,7 @@ class Ship(Unit):
 			'overview_ship':{
 				'foundSettelment': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui._build, 1, weakref.ref(self))
 			},
-			'stock': {
+			'stock_ship': {
 				'trade': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui.show_menu, TradeWidget(self))
 			}
 		}
