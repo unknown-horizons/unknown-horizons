@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Container size="336,192" background_image="content/gui/images/background/hud/build_bg.png">
+	<Label position="20,5" text="Inventory:" />
+	<Inventory name="inventory" size="316,157" position="20,35"/>
+	<ImageButton name="trade" up_image="content/gui/images/icons/hud/ship/civil_32.png" position="300,158" border_size="0"/>
+</Container>
