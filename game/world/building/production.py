@@ -49,6 +49,9 @@ class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 
+	def show_menu(self):
+		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
+
 	@classmethod
 	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
 		#todo: check cost line
@@ -64,3 +67,6 @@ class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 				return None
 
 		return {} if coast_tile_found else None
+
+class Church(Selectable, PrimaryProducer, BuildableSingle, Building):
+	pass
