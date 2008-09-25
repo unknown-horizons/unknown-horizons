@@ -14,7 +14,7 @@
 
 	<ImageButton name="market_place-1" position="110,58" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" text="Main Square" />
 
-	<ImageButton name="church-1" position="162,58" up_image="content/gui/images/icons/hud/build/sunsail.png" hover_image="content/gui/images/icons/hud/build/sunsail_h.png" down_image="content/gui/images/icons/hud/build/sunsail_h.png" text="Sunsail" />
+	<ImageButton name="church-1" position="162,58" up_image="content/gui/images/icons/hud/build/sunsail.png" hover_image="content/gui/images/icons/hud/build/sunsail_h.png" down_image="content/gui/images/icons/hud/build/sunsail_h.png" text="Church" />
 
 	<ImageButton name="lighthouse-1" position="214,58" up_image="content/gui/images/icons/hud/build/signalfire.png" hover_image="content/gui/images/icons/hud/build/signalfire_h.png" down_image="content/gui/images/icons/hud/build/signalfire_h.png" text="Signal fire" />
 </Container>
