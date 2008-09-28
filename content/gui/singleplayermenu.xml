@@ -3,9 +3,9 @@
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
 	<!-- <Icon image="content/gui/menu/m_serverlobby.png" position="0,0"/> Für besseres Verständnis wie man es besser rüber bringen könnte -->
 
-	<RadioButton position="100,100" size="32,32" name="showRandom" text="Random" />
-	<RadioButton position="100,150" size="32,32" name="showCampaign" text="Campaign" />
-	<RadioButton position="100,200" size="32,32" name="showLoad" text="Load" />
+	<RadioButton position="100,100" size="32,32" name="showRandom" text="Random  " />
+	<RadioButton position="100,150" size="32,32" name="showCampaign" text="Campaign  " />
+	<RadioButton position="100,200" size="32,32" name="showLoad" text="Load  " />
 
 	<HBox position="250,100" name="random" base_color="60,60,60" background_color="60,60,60" opaque="1" border_size="1">
 		<VBox>
