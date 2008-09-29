@@ -268,7 +268,7 @@ def quit():
 def showMain():
 	""" shows the main menu
 	"""
-	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits
+	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits, onHelp, loadGame
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')
@@ -281,6 +281,8 @@ def showMain():
 		'settingsLink' : showSettings,
 		'creditsLink'  : showCredits,
 		'closeButton'  : showQuit,
+		'helpLink'     : onHelp,
+		'loadgameButton' : loadGame,
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
@@ -540,7 +542,7 @@ def showJoinServer():
 def showPause():
 	"""
 	"""
-	global gui, onEscape, quitSession, session
+	global gui, onEscape, quitSession, session, onHelp
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/gamemenu.xml')
@@ -551,7 +553,8 @@ def showPause():
 		'startGame'    : returnGame,
 		'closeButton'  : quitSession,
 		'savegameButton' : saveGame,
-		'loadgameButton' : loadGame
+		'loadgameButton' : loadGame,
+		'helpLink'	 : onHelp
 	}
 	gui.mapEvents(eventMap)
 	gui.show()

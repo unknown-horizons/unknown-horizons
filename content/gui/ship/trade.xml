@@ -4,10 +4,10 @@
 	<Label text="Trade with:" position="5,165"/>
 	<DropDown min_size="170, 0" position="90, 165" name="partners"/>
 	<Label text="Exchange:" position="5,207"/>
-	<ImageButton name="size_1" text="1t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" position="90, 210" />
-	<ImageButton name="size_2" text="5t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" position="125, 210" />
-	<ImageButton name="size_3" text="10t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" position="160, 210" />
-	<ImageButton name="size_4" text="20t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" position="195, 210" />
-	<ImageButton name="size_5" text="50t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" position="230, 210" />
+	<ImageButton name="size_1" text="1t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="90, 210" />
+	<ImageButton name="size_2" text="5t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="125, 210" />
+	<ImageButton name="size_3" text="10t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="160, 210" />
+	<ImageButton name="size_4" text="20t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="195, 210" />
+	<ImageButton name="size_5" text="50t" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="230, 210" />
 	<Inventory name="inventory_ship" size="255,150" position="10,245"/>
 </Container>

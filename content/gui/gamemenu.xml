@@ -16,11 +16,13 @@
 
 	<VBox position="225,305"><Label name="savegame" text=" Save Game "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="savegameButton" position="329,321" />
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_save_gray.png" down_image="content/gui/images/icons/oa_startmenu_save.png" hover_image="content/gui/images/icons/oa_startmenu_save.png" name="savegameButton" position="329,321" />
 
 	<VBox position="740,365"><Label name="loadgame" text=" Load Game "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="629,315"/>
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="loadgameButton" position="637,323"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_load_gray.png" down_image="content/gui/images/icons/oa_startmenu_load.png" hover_image="content/gui/images/icons/oa_startmenu_load.png" name="loadgameButton" position="637,323"/>
 
-
+	<VBox position="619,518"><Label name="help" text=" Help " /></VBox>
+	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="585,423"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_help_gray.png" down_image="content/gui/images/icons/oa_startmenu_help.png" hover_image="content/gui/images/icons/oa_startmenu_help.png" name="helpLink" position="593,431"/>
 </Container>

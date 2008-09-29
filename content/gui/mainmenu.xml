@@ -18,11 +18,19 @@
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_log_gray.png" down_image="content/gui/images/icons/oa_startmenu_log.png" hover_image="content/gui/images/icons/oa_startmenu_log.png" name="creditsLink" position="329,321" />
 
-	<VBox position="420,565"><Label name="quit" text=" Quit "/></VBox>
+	<VBox position="440,565"><Label name="quit" text=" Quit "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,469"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="closeButton" position="484,477" />
 
 	<VBox position="740,365"><Label name="settings" text=" Settings "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="629,315"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears_gray.png" down_image="content/gui/images/icons/oa_startmenu_gears.png" hover_image="content/gui/images/icons/oa_startmenu_gears.png" name="settingsLink" position="637,323"/>
+
+	<VBox position="619,518"><Label name="help" text=" Help " /></VBox>
+	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="585,423"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_help_gray.png" down_image="content/gui/images/icons/oa_startmenu_help.png" hover_image="content/gui/images/icons/oa_startmenu_help.png" name="helpLink" position="593,431"/>
+
+	<VBox position="345,130"><Label name="loadgame" text=" Continue Game "/></VBox>
+	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="369,203"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_continue_gray.png" down_image="content/gui/images/icons/oa_startmenu_continue.png" hover_image="content/gui/images/icons/oa_startmenu_continue.png" name="loadgameButton" position="376,210"/>
 </Container>

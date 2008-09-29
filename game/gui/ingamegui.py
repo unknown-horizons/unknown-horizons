@@ -52,7 +52,8 @@ class IngameGui(livingObject):
 			5
 		)
 		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : game.main.showPause
+			'gameMenuButton' : game.main.showPause,
+			'helpLink'	 : game.main.onHelp
 		})
 		self.gui['gamemenu'].show()
 
