@@ -174,9 +174,9 @@ class BuildingCollector(StorageHolder, Unit):
 
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
-			assert(remnant == 0, "Home building could not take all ressources from carriage.")
+			#assert(remnant == 0, "Home building could not take all ressources from carriage.")
 			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
-			assert(remnant == 0, "Carriage did not pick up amount of ressources specified by the job.")
+			#assert(remnant == 0, "Carriage did not pick up amount of ressources specified by the job.")
 			self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
 
@@ -192,7 +192,7 @@ class BuildingCollector(StorageHolder, Unit):
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
 		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
-		assert(res_amount == self.job.amount)
+		#assert(res_amount == self.job.amount, "Carriage could not pickup amount of ressources, that was planned for the current job.")
 		self.inventory.alter_inventory(self.job.res, res_amount)
 
 	def get_collectable_res(self):
