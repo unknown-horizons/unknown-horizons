@@ -222,8 +222,17 @@ class Session(livingObject):
 			self.speed_set(game.main.settings.ticks.steps[0])
 
 	def speed_pause(self):
-		if self.timer.ticks_per_second == 0:
-			self.speed_set(self.paused_ticks_per_second)
-		else:
+		if self.timer.ticks_per_second != 0:
 			self.paused_ticks_per_second = self.timer.ticks_per_second
 			self.speed_set(0)
+
+	def speed_unpause(self):
+		if self.timer.ticks_per_second == 0:
+			self.speed_set(self.paused_ticks_per_second)
+
+
+	def speed_toggle_pause(self):
+		if self.timer.ticks_per_second == 0:
+			self.speed_unpause()
+		else:
+			self.speed_pause()

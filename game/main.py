@@ -569,7 +569,7 @@ def returnGame():
 	global gui, onEscape, showPause, session
 	gui.hide()
 	gui = None
-	session.speed_pause()
+	session.speed_unpause()
 	onEscape = showPause
 
 def quitSession():
@@ -662,8 +662,9 @@ def loadGame(savegame = None):
 
 	assert(os.path.exists(savegamefile))
 
-	session.end()
-	session = None
+	if session is not None:
+		session.end()
+		session = None
 
 	if gui is not None:
 		gui.hide()
