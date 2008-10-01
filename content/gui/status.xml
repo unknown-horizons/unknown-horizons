@@ -16,7 +16,7 @@
 	<Label name="bricks_1" text="" />
 	<Label name="bricks_2" text="" />
 	<Label name="bricks_3" text="" />
-	<Icon name="textiles_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" /><Icon image="content/gui/images/icons/hud/ship/civil_32_h.png" position="208,8" />
+	<Icon name="textiles_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" /><Icon image="content/gui/images/icons/hud/main/cloth.png" position="200,0" />
 	<Label name="textiles_1" text="" />
 	<Label name="textiles_2" text="" />
 	<Label name="textiles_3" text="" />
