@@ -2,7 +2,7 @@
 
 type: truetype
 source: content/fonts/Essays1743-Italic.ttf
-size: 17
+size: 16
 color: 255,255,255
 antialias: 1
 #row_spacing: 50
@@ -22,6 +22,6 @@ antialias: 1
 
 type: truetype
 source: content/fonts/Essays1743-Italic.ttf
-size: 27
+size: 28
 color: 120,100,65
 antialias: 1

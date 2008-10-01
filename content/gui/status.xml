@@ -8,7 +8,7 @@
 	<Label name="tools_1" text="" />
 	<Label name="tools_2" text="" />
 	<Label name="tools_3" text="" />
-	<Icon name="wood_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="100,0" /><Icon image="content/gui/images/icons/hud/main/wood.png" position="108,8" />
+	<Icon name="wood_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="100,0" /><Icon image="content/gui/images/icons/hud/main/boards.png" position="108,8" />
 	<Label name="wood_1" text="" />
 	<Label name="wood_2" text="" />
 	<Label name="wood_3" text="" />
