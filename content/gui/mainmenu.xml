@@ -12,7 +12,7 @@
 
 	<VBox position="680,200"><Label name="start" text="Multiplayer"/></VBox>
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="586,204"/>
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startMulti" position="598,212"  />
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_multiplayer_gray.png" down_image="content/gui/images/icons/oa_startmenu_multiplayer.png" hover_image="content/gui/images/icons/oa_startmenu_multiplayer.png" name="startMulti" position="593,211"  />
 
 	<VBox position="225,305"><Label name="credits" text=" Credits "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="322,315"/>
