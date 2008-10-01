@@ -269,7 +269,7 @@ class IngameGui(livingObject):
 
 	def update_resource_source(self):
 		self.update_gold()
-		for res_id, res_name in {3 : 'textiles', 4 : 'wood', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
+		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
 			lines = [str(self.resource_source.inventory.get_value(res_id))]
 			if self.resources_needed.get(res_id, 0) != 0:
 				lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
