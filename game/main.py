@@ -268,7 +268,7 @@ def quit():
 def showMain():
 	""" shows the main menu
 	"""
-	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits, onHelp, loadGame
+	global gui, onEscape, showQuit, showSingle, showMulti, showSettings, showCredits, onHelp, loadGame, onChime
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/mainmenu.xml')
@@ -283,6 +283,7 @@ def showMain():
 		'closeButton'  : showQuit,
 		'helpLink'     : onHelp,
 		'loadgameButton' : loadGame,
+		'dead_link'	 : onChime
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
@@ -542,7 +543,7 @@ def showJoinServer():
 def showPause():
 	"""
 	"""
-	global gui, onEscape, quitSession, session, onHelp
+	global gui, onEscape, quitSession, session, onHelp, onChime
 	if gui is not None:
 		gui.hide()
 	gui = fife.pychan.loadXML('content/gui/gamemenu.xml')
@@ -554,7 +555,8 @@ def showPause():
 		'closeButton'  : quitSession,
 		'savegameButton' : saveGame,
 		'loadgameButton' : loadGame,
-		'helpLink'	 : onHelp
+		'helpLink'	 : onHelp,
+		'dead_link'	 : onChime
 	}
 	gui.mapEvents(eventMap)
 	gui.show()
@@ -681,3 +683,10 @@ def onHelp():
 	"""
 	global fife
 	showDialog(fife.pychan.loadXML('content/gui/help.xml'), {'okButton' : True}, onPressEscape = True)
+
+# This function is for dead link in start/gamemenu.
+def onChime():
+	"""
+	"""
+	global fife
+	showDialog(fife.pychan.loadXML('content/gui/chime.xml'), {'okButton' : True}, onPressEscape = True)

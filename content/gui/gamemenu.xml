@@ -26,7 +26,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="585,423"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_help_gray.png" down_image="content/gui/images/icons/oa_startmenu_help.png" hover_image="content/gui/images/icons/oa_startmenu_help.png" name="helpLink" position="593,431"/>
 	
-	<VBox position="222,478"><Label name="dead_link" text=" Chime The Bell "/></VBox>
+	<VBox position="222,478"><Label name="chimebell" text=" Chime The Bell "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="368,422"/>
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_bell_gray.png" down_image="content/gui/images/icons/oa_startmenu_bell.png" hover_image="content/gui/images/icons/oa_startmenu_bell.png" name="loadgameButton" position="376,433"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_bell_gray.png" down_image="content/gui/images/icons/oa_startmenu_bell.png" hover_image="content/gui/images/icons/oa_startmenu_bell.png" name="dead_link" position="376,433"/>
 </Container>
