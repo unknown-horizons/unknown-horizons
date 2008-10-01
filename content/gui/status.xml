@@ -16,8 +16,8 @@
 	<Label name="bricks_1" text="" />
 	<Label name="bricks_2" text="" />
 	<Label name="bricks_3" text="" />
-	<Icon name="wool_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" /><Icon image="content/gui/images/icons/hud/main/wool.png" position="208,8" />
-	<Label name="wool_1" text="" />
-	<Label name="wool_2" text="" />
-	<Label name="wool_3" text="" />
+	<Icon name="textiles_icon" image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="200,0" /><Icon image="content/gui/images/icons/hud/ship/civil_32_h.png" position="208,8" />
+	<Label name="textiles_1" text="" />
+	<Label name="textiles_2" text="" />
+	<Label name="textiles_3" text="" />
 </Container>
