@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Window title="Oh noes" base_color="40, 40, 40">
+	<Label text="We're sorry, but the save function is not yet working." base_color="40, 40, 40"/>
+	<HBox>
+		<Spacer />
+		<Button name="okButton" text= "OK" base_color="40, 40, 40"/>
+	</HBox>
+</Window>
