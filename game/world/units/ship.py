@@ -40,9 +40,13 @@ class Ship(Unit):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 
 		self.setup_inventory()
-		self.inventory.alter_inventory(6, 50)
 		self.inventory.alter_inventory(5, 50)
+		self.inventory.alter_inventory(6, 50)
+		self.inventory.alter_inventory(8, 50)
 		self.inventory.alter_inventory(4, 50)
+		self.inventory.alter_inventory(2, 50)
+		self.inventory.alter_inventory(10, 50)
+		self.inventory.alter_inventory(3, 50)
 
 		self.set_name()
 
@@ -56,9 +60,13 @@ class Ship(Unit):
 	def setup_inventory(self):
 		## TODO: inherit from storageholder
 		self.inventory = Storage()
-		self.inventory.addSlot(6,50)
 		self.inventory.addSlot(5,50)
+		self.inventory.addSlot(6,50)
+		self.inventory.addSlot(8,50)
 		self.inventory.addSlot(4,50)
+		self.inventory.addSlot(2,50)
+		self.inventory.addSlot(10,50)
+		self.inventory.addSlot(3,50)
 
 	def move_tick(self):
 		del game.main.session.world.ship_map[self.position]
