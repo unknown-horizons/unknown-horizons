@@ -147,6 +147,10 @@ class IngameGui(livingObject):
 
 		self.tabwidgets['build'] = TabWidget(1, callbacks=callbacks_build)
 		self.gui['build'] = self.tabwidgets['build'].widget
+		self.gui['build'].position = (
+		5,
+			game.main.fife.settings.getScreenHeight()/1 - self.gui['minimap'].size[1]/1
+		)
 
 		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
 		self.gui['chat'] = game.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
