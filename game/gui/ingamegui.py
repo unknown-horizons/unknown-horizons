@@ -95,7 +95,7 @@ class IngameGui(livingObject):
 		self.gui['leftPanel'] = game.main.fife.pychan.loadXML('content/gui/left_panel.xml')
 		self.gui['leftPanel'].position = (
 			5,
-			game.main.fife.settings.getScreenHeight()/2 - self.gui['minimap'].size[1]/2
+			game.main.fife.settings.getScreenHeight()/3 - self.gui['minimap'].size[1]/3
 		)
 		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
