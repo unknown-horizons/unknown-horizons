@@ -176,3 +176,12 @@ class BuildingTool(NavigationTool):
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
+
+
+	def rotate_right(self):
+		for building in self.buildings:
+			building['instance'].setRotation((building['instance'].getRotation()-90)%360)
+
+	def rotate_left(self):
+		for building in self.buildings:
+			building['instance'].setRotation((building['instance'].getRotation()+90)%360)
