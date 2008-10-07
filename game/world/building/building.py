@@ -36,10 +36,10 @@ class Building(WorldObject):
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.__init(Point(x,y), owner, instance)
-		
+
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
-		
+
 	def __init(self, origin, owner, instance):
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.owner = owner
@@ -79,13 +79,13 @@ class Building(WorldObject):
 			self.owner = None
 		else:
 			self.owner = WorldObject.getObjectById(owner[0][0])
-		
+
 		self.__init(Point(x,y), owner, None)
-		
+
 		loc = WorldObject.getObjectById(location)
 		if isinstance(loc, Settlement):
 			self.settlement = loc
-			# workaround: island can't be fetched from world, because it 
+			# workaround: island can't be fetched from world, because it
 			# isn't fully constructed, when this code is executed
 			island_id = db("SELECT island FROM settlement WHERE rowid = ?", self.settlement.getId())[0][0]
 			self.island = weakref.ref(WorldObject.getObjectById(island_id))
@@ -93,7 +93,7 @@ class Building(WorldObject):
 			self.island = weakref.ref(loc)
 			self.settlement = self.island().get_settlement(Point(x,y))
 		self.island().add_building(self, self.owner)
-		
+
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings
 		ret_building = []
@@ -105,7 +105,7 @@ class Building(WorldObject):
 		return ret_building
 
 	@classmethod
-	def getInstance(cls, x, y, action='default', building=None, layer=2, **trash):
+	def getInstance(cls, x, y, action='default', building=None, layer=2, rotation=0, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'default'
@@ -113,13 +113,30 @@ class Building(WorldObject):
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
 		if building is not None:
-			return building.getInstance(x = x, y = y, action=action, layer=layer, **trash)
+			return building.getInstance(x = x, y = y, action=action, layer=layer,rotation=rotation, **trash)
 		else:
 			instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
 			fife.InstanceVisual.create(instance)
-			location = fife.Location(game.main.session.view.layers[layer])
-			location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
-			instance.act(action, location, True)
+			facing_loc = fife.Location(game.main.session.view.layers[layer])
+			if rotation == 45:
+				game.main.fife.console.println("rotation 45")
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-1), int(y), 0))
+			elif rotation == 135:
+				game.main.fife.console.println("rotation 135")
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+1), 0))
+			elif rotation == 225:
+				game.main.fife.console.println("rotation 225")
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+1), int(y), 0))
+			elif rotation == 315:
+				game.main.fife.console.println("rotation 315")
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-1), 0))
+			else:
+				print "Wrong rotation:", rotation
+			#instance.setFacingLocation(facing_loc)
+			instance.act(action, facing_loc, True)
+			#location = fife.Location(game.main.session.view.layers[layer])
+			#location.setLayerCoordinates(fife.ModelCoordinate(int(x + 1), int(y), 0))
+			#instance.act(action, location, True)
 			return instance
 
 	@classmethod

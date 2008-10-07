@@ -44,6 +44,7 @@ class BuildingTool(NavigationTool):
 		self.ship = ship
 		self._class = building
 		self.buildings = []
+		self.rotation = int(game.main.session.view.cam.getRotation())
 		self.startPoint, self.endPoint = None, None
 
 		game.main.onEscape = self.onEscape
@@ -83,7 +84,7 @@ class BuildingTool(NavigationTool):
 		settlement = None
 		for building in self.buildings:
 			settlement = building.get('settlement', None) if settlement is None else settlement
-			building['instance'] = self._class.getInstance(**building)
+			building['instance'] = self._class.getInstance(rotation=self.rotation, **building)
 			resources = self._class.getBuildCosts(**building)
 			if not building.get('buildable', True):
 				game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
@@ -179,9 +180,7 @@ class BuildingTool(NavigationTool):
 
 
 	def rotate_right(self):
-		for building in self.buildings:
-			building['instance'].setRotation((building['instance'].getRotation()-90)%360)
+		self.rotation = (self.rotation-90)%360
 
 	def rotate_left(self):
-		for building in self.buildings:
-			building['instance'].setRotation((building['instance'].getRotation()+90)%360)
+		self.rotation = (self.rotation+90)%360
