@@ -37,25 +37,38 @@ class PrimaryProducer(Provider):
 
 	def __init(self):
 		self.production = {}
-		
+
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
 		if self.active_production_line is None and len(self.production) > 0:
 			self.active_production_line = min(self.production.keys())
-			
+
 		if self.active_production_line is not None:
 			self.addChangeListener(self.check_production_startable)
 			self.check_production_startable()
-			
+
+		production_costs = game.main.db("SELECT cost_active FROM data.production_costs WHERE building=?", self.id)
+		if len(production_costs) > 0:
+			self.production_costs = production_costs[0][0]
+			print "Production costs:", self.production_costs
+		else:
+			self.production_costs = 0
+			print "Production costs:", self.production_costs
+
+		if self.production_costs != 0:
+			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 		self.__used_resources = {}
-			
+
+	def get_payout(self):
+		self.settlement.owner.inventory.alter_inventory(1, -self.production_costs)
+
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
 		# insert active prodline if it isn't in the db
 		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", self.getId())) == 0:
 			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", self.getId(), self.active_production_line)
-		
+
 	def load(self, db, worldid):
 		super(PrimaryProducer, self).load(db, worldid)
 		active_production_line = db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)
