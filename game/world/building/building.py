@@ -120,16 +120,16 @@ class Building(WorldObject):
 			facing_loc = fife.Location(game.main.session.view.layers[layer])
 			if rotation == 45:
 				game.main.fife.console.println("rotation 45")
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-1), int(y), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+1), int(y), 0))
 			elif rotation == 135:
 				game.main.fife.console.println("rotation 135")
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+1), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-1), 0))
 			elif rotation == 225:
 				game.main.fife.console.println("rotation 225")
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+1), int(y), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-1), int(y), 0))
 			elif rotation == 315:
 				game.main.fife.console.println("rotation 315")
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-1), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+1), 0))
 			else:
 				print "Wrong rotation:", rotation
 			#instance.setFacingLocation(facing_loc)
