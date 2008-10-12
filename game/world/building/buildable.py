@@ -128,6 +128,7 @@ class BuildableLine(BuildableSingle):
 		@param point2:
 		"""
 		buildings = []
+		kwargs['rotation'] = 45
 		y = int(round(point1[1]))
 		for x in xrange(int(round(point1[0])), int(round(point2[0])), (1 if int(round(point2[0])) > int(round(point1[0])) else -1)):
 			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
