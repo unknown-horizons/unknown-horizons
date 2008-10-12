@@ -4,6 +4,8 @@ Welcome to the OpenAnno Alpha 2008.01, Keybindings:
 - RIGHT = Scroll Right
 - UP = Scroll Up
 - DOWN = Scroll Down
+- "," = Rotate Building Left
+- "." = Rotate Building Right
 - F1 = Display Help
 - F5 = Quicksave
 - F9 = Quickload
