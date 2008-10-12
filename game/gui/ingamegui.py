@@ -158,10 +158,6 @@ class IngameGui(livingObject):
 		self.gui['res'] = game.main.fife.pychan.loadXML('content/gui/hud_res.xml')
 		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
 		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
-		self.gui['ship'].position = (
-			game.main.fife.settings.getScreenWidth() - self.gui['build'].size[0] - 450,
-			game.main.fife.settings.getScreenHeight() - self.gui['build'].size[1] - 35,
-		)
 
 	def end(self):
 		self.gui['gamemenu'].mapEvents({
