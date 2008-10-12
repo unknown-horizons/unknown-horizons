@@ -128,7 +128,7 @@ class Building(WorldObject):
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y + cls.size[1] - 1), 0))
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-1), int(y), 0))
 			elif rotation == 315:
-				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y + cls.size[1] - 1), 0))
+				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y), 0))
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+1), 0))
 			else:
 				return None
