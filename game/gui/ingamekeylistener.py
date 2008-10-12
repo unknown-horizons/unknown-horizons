@@ -22,6 +22,7 @@
 import fife
 import game.main
 from tearingtool import TearingTool
+from buildingtool import BuildingTool
 from game.util import livingObject
 
 class IngameKeyListener(livingObject, fife.IKeyListener):
@@ -63,6 +64,12 @@ class IngameKeyListener(livingObject, fife.IKeyListener):
 			game.main.session.speed_down()
 		elif keystr == 'p':
 			game.main.session.speed_toggle_pause()
+		elif keystr == '.':
+			if isinstance(game.main.session.cursor, BuildingTool):
+				game.main.session.cursor.rotate_right()
+		elif keystr == ',':
+			if isinstance(game.main.session.cursor, BuildingTool):
+				game.main.session.cursor.rotate_left()
 		elif keyval in (fife.Key.NUM_0,fife.Key.NUM_1,fife.Key.NUM_2,fife.Key.NUM_3,fife.Key.NUM_4,fife.Key.NUM_5,fife.Key.NUM_6,fife.Key.NUM_7,fife.Key.NUM_8,fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
 			if evt.isControlPressed():

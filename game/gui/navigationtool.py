@@ -47,6 +47,7 @@ class NavigationTool(CursorTool):
 		super(NavigationTool, self).end()
 
 	def mousePressed(self, evt):
+		print game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).x, game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).y
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 			self.lastScroll = [evt.getX(), evt.getY()]
