@@ -181,6 +181,10 @@ class BuildingTool(NavigationTool):
 
 	def rotate_right(self):
 		self.rotation = (self.rotation-90)%360
+		if self.startPoint is not None:
+			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
 
 	def rotate_left(self):
 		self.rotation = (self.rotation+90)%360
+		if self.startPoint is not None:
+			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
