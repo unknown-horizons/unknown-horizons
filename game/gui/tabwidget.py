@@ -39,8 +39,8 @@ class TabWidget(object):
 		self.widget = game.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
 		self.widget.stylize('menu')
 		self.widget.position = (
-			game.main.session.ingame_gui.gui['minimap'].position[0] - self.widget.size[1]/1 - 500 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			game.main.fife.settings.getScreenHeight()/1 - self.widget.size[1] -35
+			game.main.session.ingame_gui.gui['minimap'].position[1] - self.widget.size[0] - 130 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0] > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
 		self.widget.active = 0 # index of the currently active tab
 		for index, tab in enumerate(self.tabs):

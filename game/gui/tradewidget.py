@@ -26,8 +26,8 @@ class TradeWidget(object):
 	def __init__(self, main_instance):
 		self.widget = game.main.fife.pychan.loadXML('content/gui/ship/trade.xml')
 		self.widget.position = (
-			game.main.session.ingame_gui.gui['minimap'].position[0] - self.widget.size[0] - 50 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 30
+			game.main.session.ingame_gui.gui['minimap'].position[1] - self.widget.size[0] -250 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0] > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
 		self.widget.stylize('menu')
 		self.widget.mapEvents({
