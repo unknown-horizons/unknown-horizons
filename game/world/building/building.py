@@ -33,15 +33,16 @@ class Building(WorldObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
-	def __init__(self, x, y, owner, instance = None, **kwargs):
-		super(Building, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
-		self.__init(Point(x,y), owner, instance)
+	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
+		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
+		self.__init(Point(x,y), rotation, owner, instance)
 
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
 
-	def __init(self, origin, owner, instance):
+	def __init(self, origin, rotation, owner, instance):
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
+		self.rotation = rotation
 		self.owner = owner
 		self.object_type = 0
 		self._instance = self.getInstance(origin.x, origin.y) if instance is None else instance
@@ -65,22 +66,22 @@ class Building(WorldObject):
 
 	def save(self, db):
 		super(Building, self).save(db)
-		db("INSERT INTO building (rowid, type, x, y, health, location) VALUES (?, ?, ?, ?, ?, ?)", \
-			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y,
+		db("INSERT INTO building (rowid, type, x, y, rotation, health, location) VALUES (?, ?, ?, ?, ?, ?, ?)", \
+			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y, self.rotation,
 			self.health, (self.settlement or self.island).getId())
 
 	def load(self, db, worldid):
 		print 'loading building', worldid
 		super(Building, self).load(db, worldid)
-		x, y, health, location = \
-			db("SELECT x, y, health, location FROM building WHERE rowid = ?", worldid)[0]
+		x, y, health, location, rotation = \
+			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		if len(owner) == 0:
 			self.owner = None
 		else:
 			self.owner = WorldObject.getObjectById(owner[0][0])
 
-		self.__init(Point(x,y), owner, None)
+		self.__init(Point(x,y), rotation, owner, None)
 
 		loc = WorldObject.getObjectById(location)
 		if isinstance(loc, Settlement):

@@ -24,7 +24,7 @@ import game.main
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, instance = None, ship = None, tear = None, **trash):
+	def __init__(self, building, x, y, rotation, instance = None, ship = None, tear = None, **trash):
 		"""Create the command
 		@param building: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
@@ -38,6 +38,7 @@ class Build(object):
 		self.ship = None if ship is None else ship.getId()
 		self.x = int(x)
 		self.y = int(y)
+		self.rotation = int(rotation)
 
 	def __call__(self, issuer):
 		"""Execute the command
@@ -48,7 +49,7 @@ class Build(object):
 			game.main.session.manager.execute(Tear(building))
 
 		island = game.main.session.world.get_island(self.x, self.y)
-		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, owner=issuer, instance=(self._instance if hasattr(self, '_instance') and issuer == game.main.session.world.player else None))
+		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, rotation=self.rotation, owner=issuer, instance=(self._instance if hasattr(self, '_instance') and issuer == game.main.session.world.player else None))
 
 		island.add_building(building, issuer)
 		secondary_resource_source = island.get_settlement(Point(self.x, self.y)) if self.ship is None else WorldObject.getObjectById(self.ship)
