@@ -50,7 +50,8 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
 		for file,frame_end in game.main.db("SELECT file, frame_end from data.animation where animation_id = ?", id):
-			img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromFile(file))
+			idx = game.main.fife.imagepool.addResourceFromFile(file)
+			img = game.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -120,8 +121,9 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					loc.setWidth(w)
 					loc.setHeight(h)
 
-					img = game.main.fife.imagepool.getImage(game.main.fife.imagepool.addResourceFromLocation(loc))
-			ani.addFrame(img, max(1,int((float(frame_end) - frame_start)*1000)))
+					idx = game.main.fife.imagepool.addResourceFromLocation(loc)
+					img = game.main.fife.imagepool.getImage(idx)
+			ani.addFrame(fife.ResourcePtr(game.main.fife.imagepool,idx), max(1,int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		ani.thisown = 0
