@@ -60,8 +60,8 @@ class Inventory(pychan.widgets.Container):
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		for index, resid in enumerate(self._inventory._inventory.iteritems()):
-			icon = game.main.db('SELECT icon from data.resource WHERE rowid=?', resid[0])[0][0]
-			button = ImageFillStatusButton(up_image=icon, down_image=icon, hover_image=icon, text=str(resid[1][0]), size=(50,50),res_id = resid[0], opaque=False)
+			icon, icon_disabled = game.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid[0])[0]
+			button = ImageFillStatusButton(up_image=icon_disabled if resid[1][0] == 0 else icon, down_image=icon_disabled if resid[1][0] == 0 else icon, hover_image=icon_disabled if resid[1][0] == 0 else icon, text=str(resid[1][0]), size=(50,50),res_id = resid[0], opaque=False)
 			button.filled = int(float(resid[1][0])/float(resid[1][1])*100.0)
 			current_hbox.addChild(button)
 			if index % (vbox.width/(self.__class__.icon_width+10)) == 0 and  index is not 0:

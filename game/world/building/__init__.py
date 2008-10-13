@@ -83,6 +83,8 @@ class BuildingClass(type):
 			action = cls._object.createAction(action_id)
 			fife.ActionVisual.create(action)
 			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where building=? and action=?", cls.id, action_id):
+				if cls.id == 1:
+					print "HALLO",cls.size,action_id, rotation, animation_id
 				if rotation == 45:
 					command = 'left-16,bottom+' + str(cls.size[0] * 8)
 				elif rotation == 135:
@@ -92,7 +94,11 @@ class BuildingClass(type):
 				elif rotation == 315:
 					command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
 				else:
+					print "ERROR"
+					continue
 					command = 'left-16,bottom+8'
+				if cls.id == 1:
+					print command
 				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())

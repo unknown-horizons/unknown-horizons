@@ -113,6 +113,7 @@ class Building(WorldObject):
 		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
+		print "x,y,action,building,layer,rotation,**trash", x, y, action, building, layer, rotation, trash
 		if building is not None:
 			return building.getInstance(x = x, y = y, action=action, layer=layer,rotation=rotation, **trash)
 		else:
