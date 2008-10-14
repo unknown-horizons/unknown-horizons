@@ -73,10 +73,10 @@ class BranchOffice(StorageBuilding):
 		#if len(settlements) == 1:
 		#	return settlements.pop()
 		if len(settlements) != 0:
-			return None
+			return {'buildable' : False}
 		#ship check
 		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
-			return None
+			return {'buildable' : False}
 		return {'settlement' : None}
 
 	@classmethod
@@ -91,6 +91,6 @@ class BranchOffice(StorageBuilding):
 			if 'coastline' in classes:
 				coast_tile_found = True
 			elif 'constructible' not in classes:
-				return None
+				return {'buildable' : False}
 
-		return {} if coast_tile_found else None
+		return {} if coast_tile_found else {'buildable' : False}

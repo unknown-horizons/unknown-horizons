@@ -31,17 +31,19 @@ class BuildableSingle(object):
 		for check in (cls.isIslandBuildRequirementSatisfied, cls.isSettlementBuildRequirementSatisfied, cls.isGroundBuildRequirementSatisfied, cls.isBuildingBuildRequirementSatisfied, cls.isUnitBuildRequirementSatisfied):
 			update = check(**state)
 			if update is None:
-				state.update({'buildable' : False})
-				return state
+				return None
 			else:
 				state.update(update)
+				if not update.get('buildable', True):
+					return state
 		if before is not None:
 			update = cls.isMultiBuildRequirementSatisfied(*before, **state)
 			if update is None:
-				state.update({'buildable' : False})
-				return state
+				return None
 			else:
 				state.update(update)
+				if not update.get('buildable', True):
+					return state
 		return state
 
 	@classmethod
@@ -50,25 +52,25 @@ class BuildableSingle(object):
 			if not i.get('buildable', True):
 				continue
 			if i['island'] != state['island']:
-				return None
+				return {'buildable' : False}
 		return {}
 
 	@classmethod
 	def isIslandBuildRequirementSatisfied(cls, x, y, **state):
 		island = game.main.session.world.get_island(x, y)
 		if island is None:
-			return None
+			return {'buildable' : False}
 		p = Point(0,0)
 		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			if island.get_tile(p) is None:
-				return None
+				return {'buildable' : False}
 		return {'island' : island}
 
 	@classmethod
 	def isSettlementBuildRequirementSatisfied(cls, x, y, island, **state):
 		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
 		if len(settlements) != 1:
-			return None
+			return {'buildable' : False}
 		return {'settlement' : settlements.pop()}
 
 	@classmethod
@@ -77,7 +79,7 @@ class BuildableSingle(object):
 		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			tile_classes = island.get_tile(p).__class__.classes
 			if 'constructible' not in tile_classes:
-				return None
+				return {'buildable' : False}
 		return {}
 
 	@classmethod
@@ -89,10 +91,12 @@ class BuildableSingle(object):
 		for p.x, p.y in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
 			obj = island.get_tile(p).object
 			if obj is not None:
-				if isinstance(obj, (GrowingBuilding, Path)):
+				if isinstance(obj, GrowingBuilding):
+					if obj.__class__ is cls:
+						return None
 					tear.append(obj.getId())
 				else:
-					return None
+					return {'buildable' : False}
 		return {} if len(tear) == 0 else {'tear' : tear}
 
 	@classmethod
