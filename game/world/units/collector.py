@@ -91,12 +91,12 @@ class BuildingCollector(StorageHolder, Unit):
 			return None
 		jobs = []
 		for building in self.get_buildings_in_range():
-			if building.inventory is self.home_building().inventory:
+			if building.inventory is self.home_building().inventory: # Continue if own inventory is same as building in range
 				continue
 			for res in collectable_res:
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
-					# get sum of picked up resources for res
+					# get sum of picked up resources by other collectors for res
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
 					# check how much will be delivered
 					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__collectors if carriage.job.res == res ])
@@ -192,7 +192,7 @@ class BuildingCollector(StorageHolder, Unit):
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
 		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
-		#assert(res_amount == self.job.amount, "Carriage could not pickup amount of ressources, that was planned for the current job.")
+		assert(res_amount == self.job.amount, "Carriage could not pickup amount of ressources, that was planned for the current job.")
 		self.inventory.alter_inventory(self.job.res, res_amount)
 
 	def get_collectable_res(self):
