@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Container size="260,230">
+	<Icon image="content/gui/images/misc/minimap_placeholder.png" position="24,0" />
+	<Label text="Do you want to remove this building?" />
+	<VBox position="0,0"><Label name="accept-1" text="yes"/></VBox>
+	<VBox position="0,40"><Label name="abort-1" text="no"/></VBox>
+</Container>
