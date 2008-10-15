@@ -27,7 +27,7 @@ class Settlement(WorldObject):
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
 		"""
-		@param owner: player that owns the settlement
+		@param owner: Player object that owns the settlement
 		"""
 		self.name = game.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 		self.owner = owner

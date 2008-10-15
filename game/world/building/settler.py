@@ -54,24 +54,24 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
 
 	def run(self):
-		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1)
-		game.main.session.scheduler.add_new_object(self.pay_tax, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
-		game.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
+		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
+		game.main.session.scheduler.add_new_object(self.pay_tax, self, runin=game.main.session.timer.get_ticks(30), loops=-1) # pay tax every 30 seconds
+		game.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=game.main.session.timer.get_ticks(30), loops=-1) # Check if inhabitants in/de-crease
 		self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
 
 	def consume(self):
 		"""Methode that handles the building's consumation. It is called every tick."""
 		for (res, row) in self.consumation.iteritems():
-			if row['next_consume'] > 0:
+			if row['next_consume'] > 0: # count down till next consume is scheduled
 				row['next_consume'] -= 1
 			else:
 				if row['consume_state'] < 10:
-					row['consume_state'] += 1
-				if row['consume_state'] == 10:
+					row['consume_state'] += 1 # count to 10 to simulate partly consuming a resource over time
+				if row['consume_state'] == 10: # consume a resource if available
 					if self.inventory.get_value(res) > 0:
 						print self.id, 'Settler debug: consuming res:', res
 						row['consume_state'] = 0
-						self.inventory.alter_inventory(res, -1)
+						self.inventory.alter_inventory(res, -1) # consume resource
 						row['consume_contentment'] = 10
 					else:
 						if row['consume_contentment'] > 0:
@@ -79,10 +79,12 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 				row['next_consume'] = game.main.session.timer.get_ticks(row["consume_speed"])/10
 
 	def pay_tax(self):
+		"""Pays the tax for this settler"""
 		self.settlement.owner.inventory.alter_inventory(1,self.tax_income*self.inhabitants)
 		print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory.get_value(1)
 
 	def inhabitant_check(self):
+		"""Checks weather or not the population of this settler should increase or decrease or stay the same."""
 		if sum([self.consumation[i]['consume_contentment'] for i in self.consumation]) == self.contentment_max:
 			content = 1
 		else:

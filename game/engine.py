@@ -37,7 +37,15 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 
 	def loadResource(self, location):
 		"""
-		@param location:
+		@param location: String with the location. See below for details:
+		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16,bottom-8)
+		Available commands:
+		- shift:
+		Shift the image using the params left, right, center, middle for x shifting and
+		y-shifting with the params: top, bottom, center, middle.
+		A param looks like this: "param_x(+/-)value,param_y(+/-)value" (e.g.: left-16,bottom+8)
+		- cut:
+		#TODO: complete documentation
 		"""
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
