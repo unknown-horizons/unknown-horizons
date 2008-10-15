@@ -36,7 +36,7 @@ class Timer(livingObject):
 		"""
 		super(Timer, self).begin()
 		game.main.settings.addCategorys('ticks')
-		game.main.settings.ticks.setDefaults(default = 16, steps = [1, 2, 4, 8, 16, 32, 64, 128, 256])
+		game.main.settings.ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
 		self.ticks_per_second = game.main.settings.ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
