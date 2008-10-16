@@ -585,8 +585,8 @@ def quitSession():
 
 def saveGame():
 	# Saving is disabled for now
-	showDialog(fife.pychan.loadXML('content/gui/save_disabled.xml'), {'okButton' : True}, onPressEscape = True)
-	return
+	#showDialog(fife.pychan.loadXML('content/gui/save_disabled.xml'), {'okButton' : True}, onPressEscape = True)
+	#return
 
 	global session, savegamemanager
 
@@ -634,8 +634,8 @@ def saveGame():
 
 def loadGame(savegame = None):
 	# Loading is disabled for now
-	showDialog(fife.pychan.loadXML('content/gui/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
-	return
+	#showDialog(fife.pychan.loadXML('content/gui/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
+	#return
 	global session, gui, fife, savegamemanager
 
 	if savegame is None:
