@@ -68,8 +68,7 @@ class Settlement(WorldObject):
 		self.inventory.save(db, self.getId())
 
 		# TODO:
-		# self.buildings ?
-		# self._inhabitants ?
+		# Tiles
 
 	@classmethod
 	def load(cls, db, worldid):
@@ -86,15 +85,13 @@ class Settlement(WorldObject):
 		self.setup_storage()
 		self.inventory.load(db, worldid)
 
-		# TODO: Implement inhabitant save and load
-		self._inhabitants = 42
-
-		self.buildings = []
+		self.buildings = WeakList()
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			buildingclass = game.main.session.entities.buildings[building_type]
 			building = buildingclass.load(db, building_id)
 			building.settlement = self
+			game.main.session.world.get_island(building.position.origin.x,building.position.origin.y).add_building(building, self.owner)
 			self.buildings.append(building)
 
 		return self
