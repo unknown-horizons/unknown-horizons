@@ -61,8 +61,8 @@ class Settlement(WorldObject):
 		self._inhabitants -= num
 
 	def save(self, db, islandid):
-		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
-			self.getId(), islandid, self.owner.getId())
+		db("INSERT INTO settlement (rowid, island, owner, inhabitants) VALUES(?, ?, ?, ?)",
+			self.getId(), islandid, self.owner.getId(), self._inhabitants)
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
 			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
@@ -79,6 +79,8 @@ class Settlement(WorldObject):
 
 		self.owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		self.owner = WorldObject.getObjectById(self.owner)
+
+		self._inhabitants = int(db("SELECT inhabitants FROM settlement WHERE rowid = ?", worldid)[0][0])
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
 		self.setup_storage()
