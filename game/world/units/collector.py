@@ -91,7 +91,7 @@ class BuildingCollector(StorageHolder, Unit):
 			return None
 		jobs = []
 		for building in self.get_buildings_in_range():
-			if building.inventory is self.home_building().inventory: # Continue if own inventory is same as building in range
+			if isinstance(building, self.home_building().__class__): # Continue if building is of the same class as the home building, to prevent e.g. weaver picking up from weaver.
 				continue
 			for res in collectable_res:
 				res_amount = building.inventory.get_value(res)
