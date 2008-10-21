@@ -23,6 +23,7 @@ from game.world.units.unit import Unit
 from game.world.storageholder import StorageHolder
 from game.util import Rect, Point
 from game.world.pathfinding import Movement
+from game.world.production import PrimaryProducer
 import game.main
 import operator
 import weakref
@@ -91,9 +92,11 @@ class BuildingCollector(StorageHolder, Unit):
 			return None
 		jobs = []
 		for building in self.get_buildings_in_range():
-			if isinstance(building, self.home_building().__class__): # Continue if building is of the same class as the home building, to prevent e.g. weaver picking up from weaver.
-				continue
+			#if isinstance(building, self.home_building().__class__): # Continue if building is of the same class as the home building, to prevent e.g. weaver picking up from weaver.
+			#	continue
 			for res in collectable_res:
+				if isinstance(building, PrimaryProducer) and building.production[building.active_production_line].production.has_key(res) and building.production[building.active_production_line].production[res] <= 0:
+					break
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
 					# get sum of picked up resources by other collectors for res
