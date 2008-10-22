@@ -74,7 +74,7 @@ class PrimaryProducer(Provider):
 		if self.active:
 			self.settlement.owner.inventory.alter_inventory(1, -self.production_costs)
 		else:
-			self.settlement.owner.inventory.alter_inventory(1, -self.production_costs)
+			self.settlement.owner.inventory.alter_inventory(1, -self.production_costs_inactive)
 
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
