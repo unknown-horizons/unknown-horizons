@@ -95,7 +95,7 @@ class BuildingCollector(StorageHolder, Unit):
 			#if isinstance(building, self.home_building().__class__): # Continue if building is of the same class as the home building, to prevent e.g. weaver picking up from weaver.
 			#	continue
 			for res in collectable_res:
-				if isinstance(building, PrimaryProducer) and building.production[building.active_production_line].production.get(res,1) < 0:
+				if isinstance(building, PrimaryProducer) and building.active_production_line is not None and building.production[building.active_production_line].production.get(res,1) < 0:
 					break
 				res_amount = building.inventory.get_value(res)
 				if res_amount > 0:
