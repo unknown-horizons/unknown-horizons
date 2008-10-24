@@ -42,18 +42,10 @@ class PrimaryProducer(Provider):
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
-		self.toggle_active() # start production
-
-		production_costs = game.main.db("SELECT cost_active, cost_inactive FROM data.production_costs WHERE building=?", self.id)
-		if len(production_costs) > 0:
-			self.production_costs = production_costs[0][0]
-			self.production_costs_inactive = production_costs[0][1]
-		else:
-			self.production_costs = 0
-
-		if self.production_costs != 0:
+		if self.running_costs != 0:
 			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 		self.__used_resources = {}
+		self.toggle_active() # start production
 
 
 	def toggle_active(self):
@@ -61,6 +53,7 @@ class PrimaryProducer(Provider):
 			print "Toggled inactive"
 			self.active_production_line = None
 			self.removeChangeListener(self.check_production_startable)
+			self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
 		else:
 			print "Toggled active"
 			if self.active_production_line is None and len(self.production) > 0:
@@ -68,13 +61,11 @@ class PrimaryProducer(Provider):
 			if self.active_production_line is not None:
 				self.addChangeListener(self.check_production_startable)
 				self.check_production_startable()
+			self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
 		self.active = (not self.active)
 
 	def get_payout(self):
-		if self.active:
-			self.settlement.owner.inventory.alter_inventory(1, -self.production_costs)
-		else:
-			self.settlement.owner.inventory.alter_inventory(1, -self.production_costs_inactive)
+			self.settlement.owner.inventory.alter_inventory(1, -self.running_costs)
 
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)

@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<!-- Services tab -->
-<Container name="tab0" size="530,190">
-	<Label position="5,5" text="overview" />
+<!-- Overview tab for buildings -->
+<Container size="336,192">
+	<Label position="10,5" text="Overview" />
+	<Label position="10,25" text="Name:" /><Label name='name' position="60,25" text="" />
+	<Label position="10,45" text="Health:" /><Label name='health' position="60,45" text="" />
+	<Label position="10,65" text="Running Costs:" /><Label name="running_costs" position="100,65" text=""/>
 </Container>

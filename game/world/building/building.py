@@ -48,6 +48,14 @@ class Building(WorldObject):
 		self._instance = self.getInstance(origin.x, origin.y) if instance is None else instance
 		self._instance.setId(str(self.getId()))
 
+		running_costs = game.main.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
+		if len(running_costs) > 0:
+			self.running_costs = running_costs[0][0]
+			self.running_costs_inactive = running_costs[0][1]
+		else:
+			self.running_costs = 0
+			self.running_costs_inactive = 0
+
 	def remove(self):
 		"""Removes the building"""
 		print "BUILDING: REMOVE %s" % self.getId()
