@@ -26,6 +26,7 @@ import game.main
 from game.util import WeakList
 from game.gui.tabwidget import TabWidget
 from game.world.building.building import Building
+import weakref
 
 class PrimaryProducer(Provider):
 	"""Class used for production buildings"""
@@ -130,7 +131,12 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(4, self))
+		callbacks = {
+			'buildig_production_overview':{
+				'toggle_active': self.toggle_active
+			}
+		}
+		game.main.session.ingame_gui.show_menu(TabWidget(4, self, callbacks))
 
 
 class ProductionLine(object):
