@@ -25,6 +25,7 @@ from game.world.units.unit import Unit
 import game.main
 from game.util import WeakList
 from game.gui.tabwidget import TabWidget
+from game.world.building.building import Building
 
 class PrimaryProducer(Provider):
 	"""Class used for production buildings"""
@@ -42,7 +43,7 @@ class PrimaryProducer(Provider):
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
-		if self.running_costs != 0:
+		if isinstance(self, Building) and self.running_costs != 0:
 			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 		self.__used_resources = {}
 		self.toggle_active() # start production
@@ -53,7 +54,8 @@ class PrimaryProducer(Provider):
 			print "Toggled inactive"
 			self.active_production_line = None
 			self.removeChangeListener(self.check_production_startable)
-			self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
+			if isinstance(self, Building):
+				self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
 		else:
 			print "Toggled active"
 			if self.active_production_line is None and len(self.production) > 0:
@@ -61,7 +63,8 @@ class PrimaryProducer(Provider):
 			if self.active_production_line is not None:
 				self.addChangeListener(self.check_production_startable)
 				self.check_production_startable()
-			self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
+			if isinstance(self, Building):
+				self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
 		self.active = (not self.active)
 
 	def get_payout(self):
@@ -133,7 +136,7 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
+		game.main.session.ingame_gui.show_menu(TabWidget(4, self))
 
 
 class ProductionLine(object):
