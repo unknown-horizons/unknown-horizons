@@ -46,7 +46,23 @@ class PrimaryProducer(Provider):
 		self.__used_resources = {}
 		self.toggle_active() # start production
 
-
+	def toggle_active(self):
+		if self.active:
+			print "Toggled inactive"
+			self.active_production_line = None
+			self.removeChangeListener(self.check_production_startable)
+			if isinstance(self, Building):
+				self.toggle_costs
+		else:
+			print "Toggled active"
+			if self.active_production_line is None and len(self.production) > 0:
+				self.active_production_line = min(self.production.keys())
+			if self.active_production_line is not None:
+				self.addChangeListener(self.check_production_startable)
+				self.check_production_startable()
+			if isinstance(self, Building):
+				self.toggle_costs
+		self.active = (not self.active)
 
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
