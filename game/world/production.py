@@ -43,32 +43,10 @@ class PrimaryProducer(Provider):
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
-		if isinstance(self, Building) and self.running_costs != 0:
-			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 		self.__used_resources = {}
 		self.toggle_active() # start production
 
 
-	def toggle_active(self):
-		if self.active:
-			print "Toggled inactive"
-			self.active_production_line = None
-			self.removeChangeListener(self.check_production_startable)
-			if isinstance(self, Building):
-				self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
-		else:
-			print "Toggled active"
-			if self.active_production_line is None and len(self.production) > 0:
-				self.active_production_line = min(self.production.keys())
-			if self.active_production_line is not None:
-				self.addChangeListener(self.check_production_startable)
-				self.check_production_startable()
-			if isinstance(self, Building):
-				self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
-		self.active = (not self.active)
-
-	def get_payout(self):
-			self.settlement.owner.inventory.alter_inventory(1, -self.running_costs)
 
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
