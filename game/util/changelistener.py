@@ -39,7 +39,7 @@ class Changelistener(object):
 		self.__listeners.remove(WeakMethod(listener))
 
 	def hasChangeListener(self, listener):
-		if listener in self.__listeners:
+		if WeakMethod(listener) in self.__listeners:
 			return True
 		else:
 			return False
