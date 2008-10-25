@@ -46,14 +46,18 @@ class PrimaryProducer(Provider):
 
 		self.__used_resources = {}
 		self.toggle_active() # start production
+		if isinstance(self, Building):
+				self.toggle_costs()  # needed to get toggle to the right position
 
 	def toggle_active(self):
+
 		if self.active:
 			print "Toggled inactive"
 			self.active_production_line = None
-			self.removeChangeListener(self.check_production_startable)
+			if self.hasChangeListener(self.check_production_startable):
+				self.removeChangeListener(self.check_production_startable)
 			if isinstance(self, Building):
-				self.toggle_costs
+				self.toggle_costs()
 		else:
 			print "Toggled active"
 			if self.active_production_line is None and len(self.production) > 0:
@@ -62,8 +66,9 @@ class PrimaryProducer(Provider):
 				self.addChangeListener(self.check_production_startable)
 				self.check_production_startable()
 			if isinstance(self, Building):
-				self.toggle_costs
+				self.toggle_costs()
 		self.active = (not self.active)
+		self._changed()
 
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
@@ -132,7 +137,7 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 
 	def show_menu(self):
 		callbacks = {
-			'buildig_production_overview':{
+			'building_production_overview': {
 				'toggle_active': self.toggle_active
 			}
 		}

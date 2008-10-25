@@ -49,6 +49,7 @@ class TabWidget(object):
 			button.down_image = tab.hover_image
 			button.hover_image = tab.hover_image
 			button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.load_tab, index))
+			print tab.name
 			if tab.name in callbacks:
 				tab.widget.mapEvents(callbacks[tab.name])
 		self.widget.findChild(name='content').addChild(self.tabs[self.widget.active].widget)

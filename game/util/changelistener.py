@@ -38,6 +38,12 @@ class Changelistener(object):
 			self.__listeners = []
 		self.__listeners.remove(WeakMethod(listener))
 
+	def hasChangeListener(self, listener):
+		if listener in self.__listeners:
+			return True
+		else:
+			return False
+
 	def _changed(self):
 		if not hasattr(self, '_Changelistener__listeners'):
 			self.__listeners = []
