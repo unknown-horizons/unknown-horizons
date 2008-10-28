@@ -93,7 +93,7 @@ class Scheduler(livingObject):
 		"""
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is instance and callback_obj.callback == callback:
+				if callback_obj.class_instance() is instance and callback_obj.callback == WeakMethod(callback):
 					self.schedule[key].remove(callback_obj)
 
 	def end(self):

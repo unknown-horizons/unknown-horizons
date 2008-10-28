@@ -50,12 +50,12 @@ class PrimaryProducer(Provider):
 				self.toggle_costs()  # needed to get toggle to the right position
 
 	def toggle_active(self):
-
 		if self.active:
 			print "Toggled inactive"
 			self.active_production_line = None
 			if self.hasChangeListener(self.check_production_startable):
 				self.removeChangeListener(self.check_production_startable)
+			game.main.session.scheduler.rem_call(self, self.production_step)
 			if isinstance(self, Building):
 				self.toggle_costs()
 		else:
