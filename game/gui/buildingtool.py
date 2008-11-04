@@ -27,6 +27,7 @@ from game.command.building import Build
 import fife
 import game.main
 import math
+import pychan
 
 """
 Represents a dangling tool after a building was selected from the list.
@@ -46,6 +47,9 @@ class BuildingTool(NavigationTool):
 		self.buildings = []
 		self.rotation = 45
 		self.startPoint, self.endPoint = None, None
+		self.load_gui()
+		self.gui.show()
+
 
 		game.main.onEscape = self.onEscape
 
@@ -75,6 +79,19 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		super(BuildingTool, self).end()
+
+	def load_gui(self):
+		self.gui = game.main.fife.pychan.loadXML("content/gui/build_menu/hud_builddetail.xml")
+		self.gui.mapEvents( { "rotate_left": self.rotate_left,
+							  "rotate_right": self.rotate_right }
+							)
+		self.gui.position = (game.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, game.main.fife.settings.getScreenHeight()/1 - game.main.session.ingame_gui.gui['minimap'].size[1]/1)
+		self.draw_gui()
+
+	def draw_gui(self):
+		image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation WHERE action.building=? AND action.action='default' AND action.rotation=?", self._class.id, self.rotation)
+		self.gui.findChild(name='building').image = image[0][0]
+		self.gui.resizeToContent()
 
 	def previewBuild(self, point1, point2):
 		for building in self.buildings:
@@ -111,6 +128,7 @@ class BuildingTool(NavigationTool):
 			game.main.session.selected_instances = set([self.ship])
 			self.ship.select()
 			self.ship.show_menu()
+		self.gui.hide()
 		game.main.session.cursor = SelectionTool()
 
 	def mouseMoved(self, evt):
@@ -166,6 +184,7 @@ class BuildingTool(NavigationTool):
 					args = default_args.copy()
 					args.update(building)
 					game.main.session.manager.execute(Build(**args))
+					self.gui.hide()
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			self.buildings = []
@@ -183,8 +202,10 @@ class BuildingTool(NavigationTool):
 		self.rotation = (self.rotation + 270) % 360
 		if self.startPoint is not None:
 			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+		self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
 		if self.startPoint is not None:
 			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+		self.draw_gui()
