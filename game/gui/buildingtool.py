@@ -90,7 +90,15 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation WHERE action.building=? AND action.action='default' AND action.rotation=?", self._class.id, self.rotation)
-		self.gui.findChild(name='building').image = image[0][0]
+		if len(image) > 0:
+			self.gui.findChild(name='building').image = image[0][0]
+		else:
+			image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation WHERE action.building=? AND action.action='default' AND action.rotation=?", self._class.id, 45)
+			if len(image) > 0:
+				print "WARNING: no rotation for building id:", self._class.id, "and rotation:", self.rotation
+				self.gui.findChild(name='building').image = image[0][0]
+			else:
+				assert(False, "No image for building id:", self._class.id, "in the db!")
 		self.gui.resizeToContent()
 
 	def previewBuild(self, point1, point2):
