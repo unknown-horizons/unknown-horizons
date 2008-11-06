@@ -78,6 +78,7 @@ class BuildingTool(NavigationTool):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
+		self.gui.hide()
 		super(BuildingTool, self).end()
 
 	def load_gui(self):
