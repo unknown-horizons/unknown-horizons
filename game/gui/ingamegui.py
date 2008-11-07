@@ -148,7 +148,7 @@ class IngameGui(livingObject):
 		self.tabwidgets['build'] = TabWidget(1, callbacks=callbacks_build)
 		self.gui['build'] = self.tabwidgets['build'].widget
 		self.gui['build'].position = (
-		5,
+			game.main.session.ingame_gui.gui['minimap'].position[1] - self.gui['build'].size[0] - 130 if game.main.fife.settings.getScreenWidth()/2 + self.gui['build'].size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.gui['build'].size[0]/2,
 			game.main.fife.settings.getScreenHeight()/1 - self.gui['minimap'].size[1]/1
 		)
 
