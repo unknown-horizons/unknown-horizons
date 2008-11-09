@@ -22,6 +22,7 @@
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from game.world.building.building import *
+from game.world.building.path import Path
 from game.command.building import Build
 
 import fife
@@ -48,7 +49,8 @@ class BuildingTool(NavigationTool):
 		self.rotation = 45
 		self.startPoint, self.endPoint = None, None
 		self.load_gui()
-		self.gui.show()
+		if not isinstance(self._class, Path):
+			self.gui.show()
 
 
 		game.main.onEscape = self.onEscape
@@ -87,6 +89,7 @@ class BuildingTool(NavigationTool):
 							  "rotate_right": self.rotate_right }
 							)
 		self.gui.position = (game.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, game.main.fife.settings.getScreenHeight()/1 - game.main.session.ingame_gui.gui['minimap'].size[1]/1)
+		self.gui.findChild(name='running_costs').text = str(self._class.running_costs)
 		self.draw_gui()
 
 	def draw_gui(self):

@@ -48,14 +48,6 @@ class Building(WorldObject):
 		self._instance = self.getInstance(origin.x, origin.y) if instance is None else instance
 		self._instance.setId(str(self.getId()))
 
-		running_costs = game.main.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
-		if len(running_costs) > 0:
-			self.running_costs = running_costs[0][0]
-			self.running_costs_inactive = running_costs[0][1]
-		else:
-			self.running_costs = 0
-			self.running_costs_inactive = 0
-
 		if self.running_costs != 0:
 			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 

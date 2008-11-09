@@ -1,8 +1,16 @@
 <?xml version="1.0"?>
 <Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png">
-	<HBox>
-		<ImageButton name="rotate_left" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
-		<Icon name="building"/>
-		<ImageButton name="rotate_right" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
-	</HBox>
+	<Container position="10,10" size="247,180" padding="5">
+	<VBox>
+		<HBox>
+			<ImageButton name="rotate_left" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
+			<Icon name="building"/>
+			<ImageButton name="rotate_right" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
+		</HBox>
+		<HBox>
+			<Label text="Running costs:"/>
+			<Label name="running_costs" text=""/>
+		</HBox>
+	</VBox>
+	</Container>
 </Container>

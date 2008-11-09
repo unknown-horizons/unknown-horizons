@@ -62,6 +62,13 @@ class BuildingClass(type):
 		for (name, value) in game.main.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
+		running_costs = game.main.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
+		if len(running_costs) > 0:
+			self.running_costs = running_costs[0][0]
+			self.running_costs_inactive = running_costs[0][1]
+		else:
+			self.running_costs = 0
+			self.running_costs_inactive = 0
 
 	def load(cls, db, worldid):
 		self = cls.__new__(cls)
