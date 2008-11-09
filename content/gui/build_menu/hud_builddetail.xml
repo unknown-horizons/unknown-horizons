@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="220,165" background_image="content/gui/images/background/hud/ingame250x150.png">
+<Container size="220,165" background_image="content/gui/images/background/hud/ingame220x165.png">
 	<Container position="10,10" size="200,145" padding="5">
 	<VBox>
 		<HBox>
