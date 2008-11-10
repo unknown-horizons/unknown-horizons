@@ -130,17 +130,21 @@ class Building(WorldObject):
 			facing_loc = fife.Location(game.main.session.view.layers[layer])
 			game.main.fife.console.println("rotation " + str(rotation))
 			if rotation == 45:
+				print '45'
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+1), int(y), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+3), int(y), 0))
 			elif rotation == 135:
+				print '135'
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y + cls.size[1] - 1), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-1), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-3), 0))
 			elif rotation == 225:
+				print '225'
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y + cls.size[1] - 1), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-1), int(y), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-3), int(y), 0))
 			elif rotation == 315:
+				print '315'
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+1), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+3), 0))
 			else:
 				return None
 			fife.InstanceVisual.create(instance)
