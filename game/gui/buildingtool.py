@@ -49,7 +49,7 @@ class BuildingTool(NavigationTool):
 		self.rotation = 45
 		self.startPoint, self.endPoint = None, None
 		self.load_gui()
-		if not isinstance(self._class, Path):
+		if not self._class.class_package == 'path':
 			self.gui.show()
 
 
