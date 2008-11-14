@@ -42,11 +42,13 @@ class BuildingTool(NavigationTool):
 	"""
 
 	def begin(self, building, ship = None):
+		import random
+		
 		super(BuildingTool, self).begin()
 		self.ship = ship
 		self._class = building
 		self.buildings = []
-		self.rotation = 45
+		self.rotation = 45 + random.randint(0,3)*90
 		self.startPoint, self.endPoint = None, None
 		self.load_gui()
 		if not self._class.class_package == 'path':
