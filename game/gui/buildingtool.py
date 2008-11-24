@@ -166,6 +166,7 @@ class BuildingTool(NavigationTool):
 			if self.startPoint != point:
 				self.startPoint = point
 				self.previewBuild(point, point)
+				self.startPoint = None
 		else:
 			super(BuildingTool, self).mousePressed(evt)
 			return
@@ -189,6 +190,7 @@ class BuildingTool(NavigationTool):
 			if self.endPoint != point:
 				self.endPoint = point
 				self.previewBuild(self.startPoint, point)
+				self.endPoint = None
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
 			for building in self.buildings:
