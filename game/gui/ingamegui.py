@@ -20,6 +20,7 @@
 # ###################################################
 
 from buildingtool import BuildingTool
+from selectiontool import SelectionTool
 import game.main
 import fife
 from game.util import livingObject
@@ -296,6 +297,7 @@ class IngameGui(livingObject):
 		self.show_menu('ship')
 
 	def show_build_menu(self):
+		game.main.session.cursor = SelectionTool()
 		self.deselect_all()
 		self.show_menu('build')
 
