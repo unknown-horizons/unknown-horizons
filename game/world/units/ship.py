@@ -23,7 +23,7 @@ import weakref
 
 import game.main
 import fife
-from game.world.storage import Storage
+from game.world.storage import PositiveTotalStorage
 from unit import Unit
 from game.world.pathfinding import Movement
 from game.util import Point
@@ -40,9 +40,9 @@ class Ship(Unit):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 
 		self.setup_inventory()
-		self.inventory.alter_inventory(5, 50) 	#res:food 	50t
-		self.inventory.alter_inventory(6, 50) 	#res:tools 	50t
-		self.inventory.alter_inventory(4, 50) 	#res:boards	50t
+		self.inventory.alter(5, 50) 	#res:food 	50t
+		self.inventory.alter(6, 50) 	#res:tools 	50t
+		self.inventory.alter(4, 50) 	#res:boards	50t
 
 		self.set_name()
 
@@ -55,14 +55,7 @@ class Ship(Unit):
 
 	def setup_inventory(self):
 		## TODO: inherit from storageholder
-		self.inventory = Storage()
-		self.inventory.addSlot(5,50)	#res:food	maxStorage 50t	
-		self.inventory.addSlot(6,50)	#res:tools	maxStorage 50t
-		self.inventory.addSlot(8,50)	#res:wood	maxStorage 50t
-		self.inventory.addSlot(4,50)	#res:boards	maxStorage 50t
-		self.inventory.addSlot(2,50)	#res:lamb wool	maxStorage 50t
-		self.inventory.addSlot(10,50)   #res:wool	maxStorage 50t
-		self.inventory.addSlot(3,50)	#res:textiles	maxStorage 50t
+		self.inventory = PositiveTotalStorage(200)
 
 	def move_tick(self):
 		del game.main.session.world.ship_map[self.position]
@@ -142,7 +135,7 @@ class Ship(Unit):
 	def load(self, db, worldid):
 		super(Ship, self).load(db, worldid)
 
-		self.inventory = Storage()
+		self.setup_inventory()
 		self.setup_inventory()
 		self.inventory.load(db, worldid)
 

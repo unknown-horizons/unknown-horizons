@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import game.main
-from game.world.storage import Storage
+from game.world.storage import SizedSlotStorage
 from game.util import WorldObject, Point, WeakList
 
 class Settlement(WorldObject):
@@ -37,11 +37,9 @@ class Settlement(WorldObject):
 		self.setup_storage()
 
 	def setup_storage(self):
-		self.inventory = Storage()
+		self.inventory = SizedSlotStorage(30)
 		self.inventory.addChangeListener(self._changed)
 		resources = game.main.db("SELECT rowid FROM data.resource")
-		for (res,) in resources:
-			self.inventory.addSlot(res, 30)
 
 	def get_building(self, point):
 		"""Returns the building at the position (x,y)

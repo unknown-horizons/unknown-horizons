@@ -32,7 +32,7 @@ class Provider(StorageHolder):
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this collector
 		self.__collectors = WeakList()
-		
+
 	def load(self, db, worldid):
 		super(Provider, self).load(db, worldid)
 
@@ -41,8 +41,8 @@ class Provider(StorageHolder):
 		@param res: int ressouce id.
 		@param max_amount: int maximum resources that are picked up
 		@return: int number of resources."""
-		picked_up = self.inventory.get_value(res)
+		picked_up = self.inventory[res]
 		if picked_up > max_amount:
 			picked_up = max_amount
-		self.inventory.alter_inventory(res, -picked_up)
+		self.inventory.alter(res, -picked_up)
 		return picked_up

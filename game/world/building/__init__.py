@@ -46,7 +46,7 @@ class BuildingClass(type):
 		"""
 		@param id: building id.
 		"""
-		super(BuildingClass, self).__init__(**kwargs)
+		super(BuildingClass, self).__init__(self, **kwargs)
 		self.id = id
 		self._object = None
 		self.class_package = game.main.db("SELECT class_package FROM data.building WHERE rowid = ?", id)[0][0]

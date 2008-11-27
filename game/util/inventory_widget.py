@@ -20,7 +20,7 @@
 # ###################################################
 
 import pychan
-from game.world.storage import Storage
+from game.world.storage import GenericStorage
 import game.main
 
 class Inventory(pychan.widgets.Container):
@@ -39,7 +39,8 @@ class Inventory(pychan.widgets.Container):
 	def _set_inventory(self, inv):
 		"""Sets the inventory
 		@var inventory: Storage class inventory"""
-		assert(isinstance(inv, Storage))
+		print "\n\nInventory:", inv, "\n\n"
+		assert(isinstance(inv, GenericStorage))
 		self._inventory = inv
 		self._draw()
 
@@ -59,14 +60,16 @@ class Inventory(pychan.widgets.Container):
 		vbox = pychan.widgets.VBox(padding = 0)
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding = 0)
-		for index, resid in enumerate(self._inventory._inventory.iteritems()):
-			icon, icon_disabled = game.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid[0])[0]
-			button = ImageFillStatusButton(up_image=icon_disabled if resid[1][0] == 0 else icon, down_image=icon_disabled if resid[1][0] == 0 else icon, hover_image=icon_disabled if resid[1][0] == 0 else icon, text=str(resid[1][0]), size=(50,50),res_id = resid[0], opaque=False)
-			button.filled = int(float(resid[1][0])/float(resid[1][1])*100.0)
+		index = 0
+		for resid, amount in self._inventory._storage.iteritems():
+			icon, icon_disabled = game.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
+			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon, down_image=icon_disabled if amount == 0 else icon, hover_image=icon_disabled if amount == 0 else icon, text=str(amount), size=(50,50),res_id = resid, opaque=False)
+			button.filled = int(float(amount)/float(self._inventory.limit)*100.0)
 			current_hbox.addChild(button)
 			if index % (vbox.width/(self.__class__.icon_width+10)) == 0 and  index is not 0:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding=0)
+			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		self.stylize('menu')

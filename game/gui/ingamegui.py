@@ -192,7 +192,7 @@ class IngameGui(livingObject):
 
 	def update_gold(self):
 		res_id = 1
-		lines = [str(game.main.session.world.player.inventory.get_value(res_id))]
+		lines = [str(game.main.session.world.player.inventory[res_id])]
 		if self.resource_source is not None and self.resources_needed.get(res_id, 0) != 0:
 			lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
 			if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
@@ -267,7 +267,7 @@ class IngameGui(livingObject):
 	def update_resource_source(self):
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
-			lines = [str(self.resource_source.inventory.get_value(res_id))]
+			lines = [str(self.resource_source.inventory[res_id])]
 			if self.resources_needed.get(res_id, 0) != 0:
 				lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
 				if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):

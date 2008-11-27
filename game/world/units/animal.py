@@ -74,7 +74,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		jobs = []
 		for building in self.get_buildings_in_range():
 			for res in collectable_res:
-				res_amount = building.inventory.get_value(res)
+				res_amount = building.inventory[res]
 				if res_amount > 0:
 					# get sum of picked up ressources for res
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
@@ -82,10 +82,10 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 					# this is a animal. It delivers to himself. So it can get only one item at time
 					total_registered_amount_consumer = 0
 					# check if there are ressources left to pickup
-					max_consumer_res_free = self.inventory.get_size(res) - self.inventory.get_value(res)
+					max_consumer_res_free = self.inventory.get_limit(res) - self.inventory[res]
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
 						# add a new job
-						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), max_consumer_res_free)))
+						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_limit(res), max_consumer_res_free)))
 
 		## TODO: Sort job list
 		jobs.sort(lambda x,y: random.randint(-1,1))

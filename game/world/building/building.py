@@ -56,7 +56,7 @@ class Building(WorldObject):
 
 	def get_payout(self):
 		# gets the payout from the settlement in form of it's running costs
-		self.settlement.owner.inventory.alter_inventory(1, -self.running_costs)
+		self.settlement.owner.inventory.alter(1, -self.running_costs)
 
 	def remove(self):
 		"""Removes the building"""

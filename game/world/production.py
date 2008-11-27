@@ -88,13 +88,13 @@ class PrimaryProducer(Provider):
 
 	def check_production_startable(self):
 		for res, amount in self.production[self.active_production_line].production.items():
-			if amount > 0 and self.inventory.get_value(res) + amount > self.inventory.get_size(res):
+			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
 				return
 		usable_resources = {}
 		if min(self.production[self.active_production_line].production.values()) < 0:
 			for res, amount in self.production[self.active_production_line].production.items():
 				#we have something to work with, if the res is needed, we have something in the inv and we dont already have used everything we need from that resource
-				if amount < 0 and self.inventory.get_value(res) > 0 and self.__used_resources.get(res, 0) < -amount:
+				if amount < 0 and self.inventory[res] > 0 and self.__used_resources.get(res, 0) < -amount:
 					usable_resources[res] = -amount - self.__used_resources.get(res, 0)
 			if len(usable_resources) == 0:
 				return
@@ -108,7 +108,7 @@ class PrimaryProducer(Provider):
 			else:
 				self.__used_resources[res] = amount
 		for res, amount in usable_resources.items():
-			assert(self.inventory.alter_inventory(res, -amount) == 0)
+			assert(self.inventory.alter(res, -amount) == 0)
 		game.main.session.scheduler.add_new_object(self.production_step, self, 16 *
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
@@ -121,7 +121,7 @@ class PrimaryProducer(Provider):
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
-					self.inventory.alter_inventory(res, amount)
+					self.inventory.alter(res, amount)
 			self.__used_resources = {}
 		self._instance.act("default", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)

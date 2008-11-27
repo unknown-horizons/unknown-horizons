@@ -45,8 +45,6 @@ class Consumer(StorageHolder):
 			self.__resources[production_line] = []
 			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self.__resources[production_line].append(res)
-				if not self.inventory.hasSlot(res):
-					self.inventory.addSlot(res, 30) # TODO: fix size somewhere else!
 
 		from game.world.building.building import Building
 		if isinstance(self, Building):
@@ -76,7 +74,7 @@ class Consumer(StorageHolder):
 		"""Returns list of resources, where free space in the inventory exists,
 		because a building doesn't need resources, that it can't store
 		"""
-		return [res for res in self.get_consumed_res() if self.inventory.get_value(res) < self.inventory.get_size(res)]
+		return [res for res in self.get_consumed_res() if self.inventory[res] < self.inventory.limit]
 
 	def get_consumed_res(self):
 		"""Returns list of resources, that the building uses, without

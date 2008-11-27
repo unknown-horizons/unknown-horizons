@@ -44,7 +44,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
 		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
 		print self.id, "Settler debug, tax_income:", self.tax_income
-
+		self.inventory.limit = 1
 		self.consumation = {}
 		for (res, speed) in game.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
 			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': game.main.session.timer.get_ticks(speed)/10}
@@ -68,10 +68,10 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 				if row['consume_state'] < 10:
 					row['consume_state'] += 1 # count to 10 to simulate partly consuming a resource over time
 				if row['consume_state'] == 10: # consume a resource if available
-					if self.inventory.get_value(res) > 0:
+					if self.inventory[res] > 0:
 						print self.id, 'Settler debug: consuming res:', res
 						row['consume_state'] = 0
-						self.inventory.alter_inventory(res, -1) # consume resource
+						self.inventory.alter(res, -1) # consume resource
 						row['consume_contentment'] = 10
 					else:
 						if row['consume_contentment'] > 0:
@@ -80,8 +80,8 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
-		self.settlement.owner.inventory.alter_inventory(1,self.tax_income*self.inhabitants)
-		print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory.get_value(1)
+		self.settlement.owner.inventory.alter(1,self.tax_income*self.inhabitants)
+		print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
 
 	def inhabitant_check(self):
 		"""Checks weather or not the population of this settler should increase or decrease or stay the same."""
@@ -110,8 +110,6 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		for (res,) in game.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
 			print "Settler debug, res:", res
 			self._Consumer__resources[0].append(res)
-			if not self.inventory.hasSlot(res):
-				self.inventory.addSlot(res, 1) # TODO: fix size somewhere else!
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, self))

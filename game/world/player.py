@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.storage import Storage
+from game.world.storage import PositiveStorage
 from game.util import WorldObject, Color
 import game.main
 
@@ -39,11 +39,10 @@ class Player(WorldObject):
 
 		self.setup_inventory()
 
-		self.inventory.alter_inventory(1, 20000)
+		self.inventory.alter(1, 20000)
 
 	def setup_inventory(self):
-		self.inventory = Storage()
-		self.inventory.addSlot(1, -1)
+		self.inventory = PositiveStorage()
 
 	def save(self, db):
 		"""

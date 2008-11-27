@@ -48,10 +48,10 @@ class BuildingCollector(StorageHolder, Unit):
 												**kwargs)
 		#print 'carriage beeing inited'
 		self.home_building = weakref.ref(home_building)
-
-		for res in home_building.get_consumed_res(): # NOTE: this does not work for multiple production lines yet.
-			if not self.inventory.hasSlot(res):
-				self.inventory.addSlot(res, size)
+		self.inventory.limit = size;
+		#for res in home_building.get_consumed_res(): # NOTE: this does not work for multiple production lines yet.
+		#	if not self.inventory.hasSlot(res):
+		#		self.inventory.addSlot(res, size)
 
 		self.start_hidden = start_hidden
 		if self.start_hidden:
@@ -97,17 +97,17 @@ class BuildingCollector(StorageHolder, Unit):
 			for res in collectable_res:
 				if isinstance(building, PrimaryProducer) and building.active_production_line is not None and building.production[building.active_production_line].production.get(res,1) < 0:
 					break
-				res_amount = building.inventory.get_value(res)
+				res_amount = building.inventory[res]
 				if res_amount > 0:
 					# get sum of picked up resources by other collectors for res
 					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
 					# check how much will be delivered
 					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__collectors if carriage.job.res == res ])
 					# check if there are resources left to pickup
-					max_consumer_res_free = self.home_building().inventory.get_size(res)-(total_registered_amount_consumer+self.home_building().inventory.get_value(res))
+					max_consumer_res_free = self.home_building().inventory.get_limit(res)-(total_registered_amount_consumer+self.home_building().inventory[res])
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
 						# add a new job
-						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_size(res), max_consumer_res_free)))
+						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_limit(res), max_consumer_res_free)))
 
 		# sort job list
 		jobs.sort(key=operator.attrgetter('rating') )
@@ -176,9 +176,9 @@ class BuildingCollector(StorageHolder, Unit):
 		#print self.id, 'FINISHED WORK'
 
 		if self.home_building() is not None:
-			remnant = self.home_building().inventory.alter_inventory(self.job.res, self.job.amount)
+			remnant = self.home_building().inventory.alter(self.job.res, self.job.amount)
 			#assert(remnant == 0, "Home building could not take all ressources from carriage.")
-			remnant = self.inventory.alter_inventory(self.job.res, -self.job.amount)
+			remnant = self.inventory.alter(self.job.res, -self.job.amount)
 			#assert(remnant == 0, "Carriage did not pick up amount of ressources specified by the job.")
 			self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
@@ -196,7 +196,7 @@ class BuildingCollector(StorageHolder, Unit):
 		# should not to be. register_collector function at the building should prevent it
 		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
 		assert(res_amount == self.job.amount, "Carriage could not pickup amount of ressources, that was planned for the current job.")
-		self.inventory.alter_inventory(self.job.res, res_amount)
+		self.inventory.alter(self.job.res, res_amount)
 
 	def get_collectable_res(self):
 		"""Gets all resources the Collector can collect"""

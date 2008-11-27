@@ -25,7 +25,7 @@ from weakmethod import WeakMethod
 
 class Changelistener(object):
 	def __init__(self, *args, **kwargs):
-		super(Changelistener, self).__init__(**kwargs)
+		super(Changelistener, self).__init__()
 		self.__listeners = []
 
 	def addChangeListener(self, listener):

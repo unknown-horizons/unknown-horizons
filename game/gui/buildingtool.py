@@ -43,7 +43,7 @@ class BuildingTool(NavigationTool):
 
 	def begin(self, building, ship = None):
 		import random
-		
+
 		super(BuildingTool, self).begin()
 		self.ship = ship
 		self._class = building
@@ -123,7 +123,7 @@ class BuildingTool(NavigationTool):
 				for resource in resources:
 					neededResources[resource] = neededResources.get(resource, 0) + resources[resource]
 				for resource in neededResources:
-					if ( game.main.session.world.player.inventory.get_value(resource) if resource == 1 else 0 ) + (self.ship.inventory.get_value(resource) if self.ship is not None else building['settlement'].inventory.get_value(resource) if building['settlement'] is not None else 0) < neededResources[resource]:
+					if ( game.main.session.world.player.inventory[resource] if resource == 1 else 0 ) + (self.ship.inventory[resource] if self.ship is not None else building['settlement'].inventory[resource] if building['settlement'] is not None else 0) < neededResources[resource]:
 						game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
 						building['buildable'] = False
 						break

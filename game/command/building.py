@@ -54,8 +54,9 @@ class Build(object):
 		island.add_building(building, issuer)
 		secondary_resource_source = island.get_settlement(Point(self.x, self.y)) if self.ship is None else WorldObject.getObjectById(self.ship)
 		for (resource, value) in building.costs.items():
-			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
-			remnant = secondary_resource_source.inventory.alter_inventory(resource, issuer.inventory.alter_inventory(resource, -value))
+			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)y
+			remnant = secondary_resource_source.inventory.alter(resource, issuer.inventory.alter(resource, -value))
+			print remnant
 			assert(remnant == 0)
 		building.start()
 
