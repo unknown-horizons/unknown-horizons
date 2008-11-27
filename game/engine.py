@@ -258,6 +258,11 @@ class Fife(object):
 		self.animationloader = SQLiteAnimationLoader()
 		self.animationpool.addResourceLoader(self.animationloader)
 
+		#Set game cursor
+		cursor = self.engine.getCursor()
+		cursor_image = self.imagepool.addResourceFromFile('content/gui/images/misc/cursor.png')
+		cursor.set(fife.CURSOR_IMAGE, cursor_image)
+
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
