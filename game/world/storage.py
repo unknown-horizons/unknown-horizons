@@ -40,6 +40,7 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 			self.alter(res, amount)
 
 	def alter(self, res, amount):
+		self._changed()
 		print "beeing called gs",res,  amount
 		if res in self._storage:
 			self._storage[res] += amount
