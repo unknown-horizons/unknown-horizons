@@ -377,7 +377,7 @@ def startSingle():
 
 		cursor = fife.engine.getCursor()
 		cursor_image = fife.engine.getImagePool().addResourceFromFile('content/gui/images/misc/cursor.png')
-		cursor.set(game.engine.fife.CURSOR_NONE, cursor_image)
+		cursor.set(game.engine.fife.CURSOR_NONE)
 
 		fife.engine.pump()
 
