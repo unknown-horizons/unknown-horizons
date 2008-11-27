@@ -375,13 +375,12 @@ def startSingle():
 		gui.y += int((settings.fife.screen.height - gui.height) / 2)
 		gui.show()
 
-		cursor = fife.engine.getCursor()
-		cursor_image = fife.engine.getImagePool().addResourceFromFile('content/gui/images/misc/cursor.png')
-		cursor.set(game.engine.fife.CURSOR_NONE)
+		fife.cursor.set(game.engine.fife.CURSOR_NONE)
 
 		fife.engine.pump()
 
-		cursor.set(game.engine.fife.CURSOR_IMAGE, cursor_image)
+		cursor_image = fife.engine.getImagePool().addResourceFromFile('content/gui/images/misc/cursor.png')
+		fife.cursor.set(game.engine.fife.CURSOR_IMAGE, cursor_image)
 
 		gui.hide()
 		gui = None
