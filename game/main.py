@@ -264,6 +264,7 @@ def showQuit():
 def quit():
 	"""Quits the game"""
 	global fife
+	fife.cursor.set(game.engine.fife.CURSOR_NATIVE) #hack to get system cursor back
 	fife.quit()
 
 def showMain():
@@ -379,7 +380,7 @@ def startSingle():
 
 		fife.engine.pump()
 
-		cursor_image = fife.engine.getImagePool().addResourceFromFile('content/gui/images/misc/cursor.png')
+		cursor_image = fife.imagepool.addResourceFromFile('content/gui/images/misc/cursor.png')
 		fife.cursor.set(game.engine.fife.CURSOR_IMAGE, cursor_image)
 
 		gui.hide()
