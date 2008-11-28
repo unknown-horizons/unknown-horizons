@@ -260,8 +260,8 @@ class Fife(object):
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
-		cursor_image = self.imagepool.addResourceFromFile('content/gui/images/misc/cursor.png')
-		self.cursor.set(fife.CURSOR_IMAGE, cursor_image)
+		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/misc/cursor.png')
+		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
 
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)

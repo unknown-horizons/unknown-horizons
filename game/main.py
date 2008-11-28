@@ -380,8 +380,7 @@ def startSingle():
 
 		fife.engine.pump()
 
-		cursor_image = fife.imagepool.addResourceFromFile('content/gui/images/misc/cursor.png')
-		fife.cursor.set(game.engine.fife.CURSOR_IMAGE, cursor_image)
+		fife.cursor.set(game.engine.fife.CURSOR_IMAGE, fife.default_cursor_image)
 
 		gui.hide()
 		gui = None

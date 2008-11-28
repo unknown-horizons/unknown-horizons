@@ -45,10 +45,13 @@ class TearingTool(NavigationTool):
 		self.selected = []
 		self.oldedges = None
 		game.main.onEscape = self.onEscape
+		cursor_image = game.main.fife.imagepool.addResourceFromFile('content/gui/images/misc/cursor_tear.png')
+		game.main.fife.cursor.set(fife.CURSOR_IMAGE, cursor_image)
 
 	def end(self):
 		game.main.onEscape = lambda : None
 		super(TearingTool, self).end()
+		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.default_cursor_image)
 
 	def mouseDragged(self, evt):
 		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
