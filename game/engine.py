@@ -160,17 +160,17 @@ class Fife(object):
 		game.main.settings.fife.defaultFont.setDefaults(
 			path = 'content/gfx/fonts/Essays1743-Italic.ttf',
 			size = 18,
-			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\"",
+			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
 		)
 
 		game.main.settings.fife.sound.setDefaults(
-			initialVolume = 5.0,
+			initialVolume = self.settings.getMaxVolume()
 		)
 
 		game.main.settings.fife.renderer.setDefaults(
 			backend = 'OpenGL',
 			SDLRemoveFakeAlpha = False,
-			imageChunkingSize = 256,
+			imageChunkingSize = 256
 		)
 
 		game.main.settings.fife.screen.setDefaults(
