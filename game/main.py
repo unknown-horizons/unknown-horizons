@@ -129,7 +129,7 @@ def showSettings():
 	volume = dlg.findChild(name='volume')
 	volume.setValue(settings.sound.volume)
 	volume_value =  dlg.findChild(name='volume_value')
-	volume_value.text = str(volume.getValue())
+	volume_value.text = str(volume.getValue() * 100) + '%'
 
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
@@ -173,9 +173,10 @@ def showSettings():
 
 def set_volume():
 	global volume, volume_value
-	volume_value.text = str(volume.getValue())
-	print fife.bgsound.getGain()
-	fife.bgsound.setGain(volume.getValue())
+	volume_value.text = str(volume.getValue() * 100) + '%'
+	print volume_value.text
+	if settings.sound.enabled:
+		fife.bgsound.setGain(volume.getValue())
 
 def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	"""
