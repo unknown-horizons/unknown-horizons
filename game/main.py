@@ -52,6 +52,7 @@ def start():
 	settings = Settings()
 	settings.addCategorys('sound')
 	settings.sound.setDefaults(enabled = True)
+	settings.sound.setDefaults(volume = 1.0)
 	settings.addCategorys('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 	settings.addCategorys('savegame')
@@ -90,7 +91,7 @@ def showCredits():
 def showSettings():
 	"""Shows the settings.
 	"""
-	global fife, settings, onEscape
+	global fife, settings, onEscape, volume, volume_value
 	resolutions = [str(w) + "x" + str(h) for w, h in fife.settings.getPossibleResolutions() if w >= 1024 and h >= 768]
 	if len(resolutions) == 0:
 		old = fife.settings.isFullScreen()
@@ -121,6 +122,15 @@ def showSettings():
 		'sound_enable_opt' : settings.sound.enabled
 	})
 
+	dlg.mapEvents({
+		'volume' : set_volume
+	})
+
+	volume = dlg.findChild(name='volume')
+	volume.setValue(settings.sound.volume)
+	volume_value =  dlg.findChild(name='volume_value')
+	volume_value.text = str(volume.getValue())
+
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
 
@@ -145,6 +155,8 @@ def showSettings():
 	if sound_enable_opt != settings.sound.enabled:
 		settings.sound.enabled = sound_enable_opt
 		changes_require_restart = True
+	if volume.getValue() != settings.sound.volume:
+		settings.sound.volume = volume.getValue()
 	if screen_bpp != int(settings.fife.screen.bpp / 10):
 		settings.fife.screen.bpp = 0 if screen_bpp == 0 else ((screen_bpp + 1) * 8)
 		changes_require_restart = True
@@ -158,6 +170,12 @@ def showSettings():
 
 	if changes_require_restart:
 		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
+
+def set_volume():
+	global volume, volume_value
+	volume_value.text = str(volume.getValue())
+	print fife.bgsound.getGain()
+	fife.bgsound.setGain(volume.getValue())
 
 def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	"""

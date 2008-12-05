@@ -9,6 +9,7 @@
 			<Label text="Screen resolution:" base_color="40, 40, 40"/>
 			<Label text="Used renderer:" base_color="40, 40, 40"/>
 			<Label text="Color depth:" base_color="40, 40, 40"/>
+			<Label text="Volume:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
 			<HBox>
@@ -20,6 +21,10 @@
 			<DropDown min_size="120,0" name="screen_resolution" base_color="40, 40, 40" />
 			<DropDown min_size="120,0" name="screen_renderer" base_color="40, 40, 40"/>
 			<DropDown min_size="120,0" name="screen_bpp" base_color="40, 40, 40"/>
+			<HBox>
+				<Slider size="120,20" name="volume" orientation="0" scale_start="0.0" scale_end="1.0" base_color="40, 40, 40" />
+				<TextBox name="volume_value" text="" base_color="40,40,40"/>
+			</HBox>
 		</VBox>
 	</HBox>
 	<CheckBox size="32,32" name="screen_fullscreen" text="Use the full screen mode" base_color="40, 40, 40"/>
