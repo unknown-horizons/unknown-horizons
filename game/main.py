@@ -582,6 +582,7 @@ def showPause():
 		'savegameButton' : saveGame,
 		'loadgameButton' : loadGame,
 		'helpLink'	 : onHelp,
+		'settingsLink'   : showSettings,
 		'dead_link'	 : onChime
 	}
 	gui.mapEvents(eventMap)

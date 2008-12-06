@@ -29,4 +29,9 @@
 	<VBox position="222,478"><Label name="chimebell" text=" Chime The Bell "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="368,422"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_bell_gray.png" down_image="content/gui/images/icons/oa_startmenu_bell.png" hover_image="content/gui/images/icons/oa_startmenu_bell.png" name="dead_link" position="376,433"/>
+
+	<VBox position="680,200"><Label name="settings" text=" Settings "/></VBox>
+	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="586,204"/>
+	<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears_gray.png" down_image="content/gui/images/icons/oa_startmenu_gears.png" hover_image="content/gui/images/icons/oa_startmenu_gears.png" name="settingsLink" position="593,211"/>
+
 </Container>
