@@ -725,6 +725,7 @@ def onChime():
 	"""
 	global fife
 	if settings.sound.enabled:
+		fife.effect_sound.reset()
 		fife.effect_sound.setSoundClip(fife.soundclippool.addResourceFromFile('content/audio/sounds/ships_bell.ogg'))
 		fife.effect_sound.play()
 	showDialog(fife.pychan.loadXML('content/gui/chime.xml'), {'okButton' : True}, onPressEscape = True)
