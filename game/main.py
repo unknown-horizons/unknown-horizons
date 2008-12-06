@@ -128,6 +128,9 @@ def showSettings():
 		'volume_effects' : set_volume_effects
 	})
 
+	volume_music_intial = settings.sound.volume_music
+	volume_effects_intial = settings.sound.volume_effects
+
 	volume_music = dlg.findChild(name='volume_music')
 	volume_music.setValue(settings.sound.volume_music)
 	volume_music_value =  dlg.findChild(name='volume_music_value')
@@ -139,6 +142,9 @@ def showSettings():
 	volume_effects_value.text = str(int(volume_effects.getValue() * 100)) + '%'
 
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		if settings.sound.enabled:
+			fife.bgsound.setGain(volume_music_intial)
+			fife.effect_sound.setGain(volume_effects_intial)
 		return
 
 	# the following lines prevent typos
