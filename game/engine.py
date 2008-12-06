@@ -241,10 +241,10 @@ class Fife(object):
 		if game.main.settings.sound.enabled:
 			self.soundclippool = self.engine.getSoundClipPool()
 			self.bgsound = self.soundmanager.createEmitter()
-			self.bgsound.setGain(game.main.settings.sound.volume)
+			self.bgsound.setGain(game.main.settings.sound.volume_music)
 			self.bgsound.setLooping(False)
 			self.effect_sound = self.soundmanager.createEmitter()
-			self.effect_sound.setGain(game.main.settings.sound.volume)
+			self.effect_sound.setGain(game.main.settings.sound.volume_effects)
 			self.effect_sound.setLooping(False)
 			self.music_rand_element = random.randint(0, len(self.music) - 1)
 			self.bgsound.setSoundClip(self.soundclippool.addResourceFromFile(self.music[self.music_rand_element]))

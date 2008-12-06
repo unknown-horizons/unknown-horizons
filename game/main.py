@@ -52,7 +52,8 @@ def start():
 	settings = Settings()
 	settings.addCategorys('sound')
 	settings.sound.setDefaults(enabled = True)
-	settings.sound.setDefaults(volume = 1.0)
+	settings.sound.setDefaults(volume_music = 1.0)
+	settings.sound.setDefaults(volume_effects = 1.0)
 	settings.addCategorys('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
 	settings.addCategorys('savegame')
@@ -91,7 +92,7 @@ def showCredits():
 def showSettings():
 	"""Shows the settings.
 	"""
-	global fife, settings, onEscape, volume, volume_value
+	global fife, settings, onEscape, volume_music, volume_music_value, volume_effects, volume_effects_value
 	resolutions = [str(w) + "x" + str(h) for w, h in fife.settings.getPossibleResolutions() if w >= 1024 and h >= 768]
 	if len(resolutions) == 0:
 		old = fife.settings.isFullScreen()
@@ -123,13 +124,19 @@ def showSettings():
 	})
 
 	dlg.mapEvents({
-		'volume' : set_volume
+		'volume_music' : set_volume_music,
+		'volume_effects' : set_volume_effects
 	})
 
-	volume = dlg.findChild(name='volume')
-	volume.setValue(settings.sound.volume)
-	volume_value =  dlg.findChild(name='volume_value')
-	volume_value.text = str(int(volume.getValue() * 100)) + '%'
+	volume_music = dlg.findChild(name='volume_music')
+	volume_music.setValue(settings.sound.volume_music)
+	volume_music_value =  dlg.findChild(name='volume_music_value')
+	volume_music_value.text = str(int(volume_music.getValue() * 100)) + '%'
+
+	volume_effects = dlg.findChild(name='volume_effects')
+	volume_effects.setValue(settings.sound.volume_effects)
+	volume_effects_value =  dlg.findChild(name='volume_effects_value')
+	volume_effects_value.text = str(int(volume_effects.getValue() * 100)) + '%'
 
 	if not showDialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		return
@@ -155,8 +162,10 @@ def showSettings():
 	if sound_enable_opt != settings.sound.enabled:
 		settings.sound.enabled = sound_enable_opt
 		changes_require_restart = True
-	if volume.getValue() != settings.sound.volume:
-		settings.sound.volume = volume.getValue()
+	if volume_music.getValue() != settings.sound.volume_music:
+		settings.sound.volume_music = volume_music.getValue()
+	if volume_effects.getValue() != settings.sound.volume_effects:
+		settings.sound.volume_effects = volume_effects.getValue()
 	if screen_bpp != int(settings.fife.screen.bpp / 10):
 		settings.fife.screen.bpp = 0 if screen_bpp == 0 else ((screen_bpp + 1) * 8)
 		changes_require_restart = True
@@ -171,11 +180,17 @@ def showSettings():
 	if changes_require_restart:
 		showDialog(fife.pychan.loadXML('content/gui/changes_require_restart.xml'), {'okButton' : True}, onPressEscape = True)
 
-def set_volume():
-	global volume, volume_value
-	volume_value.text = str(int(volume.getValue() * 100)) + '%'
+def set_volume_music():
+	global volume_music, volume_music_value
+	volume_music_value.text = str(int(volume_music.getValue() * 100)) + '%'
 	if settings.sound.enabled:
-		fife.bgsound.setGain(volume.getValue())
+		fife.bgsound.setGain(volume_music.getValue())
+
+def set_volume_effects():
+	global volume_effects, volume_effects_value
+	volume_effects_value.text = str(int(volume_effects.getValue() * 100)) + '%'
+	if settings.sound.enabled:
+		fife.effect_sound.setGain(volume_effects.getValue())
 
 def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	"""
