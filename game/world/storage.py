@@ -92,7 +92,10 @@ class TotalStorage(GenericStorage): # TESTED AND WORKING
 class PositiveStorage(GenericStorage): # TESTED AND WORKING
 	def alter(self, res, amount):
 		print "PS:", amount, "ret:", min(0, amount + self[res])
-		return min(0, amount + self[res]) + super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
+		ret = min(0, amount + self[res]) + super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
+		if res in self._storage and self._storage[res] <= 0:
+			del self._storage[res]
+		return ret
 
 class PositiveTotalStorage(PositiveStorage, TotalStorage): # TESTED AND WORKING
 	def __init__(self, space, **kwargs):

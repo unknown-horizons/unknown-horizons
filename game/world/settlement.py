@@ -39,7 +39,6 @@ class Settlement(WorldObject):
 	def setup_storage(self):
 		self.inventory = SizedSlotStorage(30)
 		self.inventory.addChangeListener(self._changed)
-		resources = game.main.db("SELECT rowid FROM data.resource")
 
 	def get_building(self, point):
 		"""Returns the building at the position (x,y)
