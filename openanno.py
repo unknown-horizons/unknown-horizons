@@ -25,6 +25,13 @@ import sys
 import os
 
 def findFIFE():
+	# check if fife is already in python-path
+	try:
+		import fife
+		return
+	except (ImportError):
+		pass
+
 	global fife_path
 	try:
 		import config
