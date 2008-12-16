@@ -3,7 +3,7 @@
 	<Label text="Yeah, you made it..." base_color="40, 40, 40"/>
 	<HBox>
 		<Label text="But this is a deadlink, sorry."/>
-	</HBox>		
+	</HBox>
 	<HBox>
 		<Spacer />
 		<Button name="okButton" text= "Back to business..." base_color="40, 40, 40"/>

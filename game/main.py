@@ -204,7 +204,9 @@ def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	@param actions:
 	@param onPressEscape:
 	"""
-	global onEscape
+	global onEscape, gui
+	# Uncomment if detach Segfault is resolved.
+	# gui.deepApply(lambda x: x.event_mapper.detach())
 	if event_map is not None:
 		dlg.mapEvents(event_map)
 	if onPressEscape is not None:
@@ -217,6 +219,8 @@ def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	ret = dlg.execute(actions)
 	if onPressEscape is not None:
 		onEscape = tmp_escape
+	# Uncomment if detach Segfault is resolved.
+	#gui.deepApply(lambda x: x.event_mapper.attach())
 	return ret
 
 def showPopup(windowtitle, message, show_cancel_button = False):
