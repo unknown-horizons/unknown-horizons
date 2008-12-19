@@ -82,6 +82,7 @@ class BuildingTool(NavigationTool):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
+		game.main.session.view.removeChangeListener(self.draw_gui)
 		self.gui.hide()
 		super(BuildingTool, self).end()
 
@@ -93,6 +94,7 @@ class BuildingTool(NavigationTool):
 		self.gui.position = (game.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, game.main.fife.settings.getScreenHeight()/1 - game.main.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = str(self._class.running_costs)
 		self.draw_gui()
+		game.main.session.view.addChangeListener(self.draw_gui)
 
 	def draw_gui(self):
 		print (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360

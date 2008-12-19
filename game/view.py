@@ -24,13 +24,15 @@ import math
 import time
 import game.main
 from game.util import livingObject
+from game.util import Changelistener
 
-class View(livingObject):
+class View(livingObject, Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
 	def begin(self, center = (0, 0)):
 		"""
 		@param center: center position for the main camera
 		"""
+		super(View, self).__init__()
 		self.model = game.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -161,9 +163,11 @@ class View(livingObject):
 
 	def rotate_right(self):
 		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
+		self._changed()
 
 	def rotate_left(self):
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
+		self._changed()
 
 	def set_rotation(self, rotation):
 		self.cam.setRotation(rotation)
