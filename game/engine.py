@@ -57,7 +57,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		print "Loading animation #%s..." % (id)
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file,frame_end in game.main.db("SELECT file, frame_end from data.animation where animation_id = ?", id):
+		for file,frame_end in game.main.db("SELECT file, frame_length from data.animation where animation_id = ?", id):
 			idx = game.main.fife.imagepool.addResourceFromFile(file)
 			img = game.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:

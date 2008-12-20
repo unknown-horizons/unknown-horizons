@@ -60,10 +60,10 @@ class UnitClass(type):
 		_object.setPather(game.main.session.view.model.getPather('RoutePather'))
 		_object.setBlocking(False)
 		_object.setStatic(False)
-		for (action_id,) in game.main.db("SELECT action FROM data.action where unit=? group by action", id):
+		for (action_id,) in game.main.db("SELECT action FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE unit_id=? group by action", id):
 			action = _object.createAction(action_id)
 			fife.ActionVisual.create(action)
-			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where unit=? and action=?", id, action_id):
+			for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE unit_id=? and action=?", id, action_id):
 				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:center+0,bottom+8')
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())

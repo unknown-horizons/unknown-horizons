@@ -43,7 +43,7 @@ class Growable(object):
 		self.growing_producer = weakref.ref(producer)
 		self.growing_producer().restart_animation = WeakMethod(self.restart_animation)
 		self.actions = []
-		self.db_actions = game.main.db("SELECT action FROM data.action WHERE %(type)s = ? AND action != 'default'" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id)
+		self.db_actions = game.main.db("SELECT action FROM data.action LEFT JOIN action_set ON action_set.action_set_id=action.action_set_id WHERE %(type)s = ? AND action != 'default'" % {'type' : 'building_id' if self.object_type == 0 else 'unit_id'}, self.id)
 		for (a,) in self.db_actions:
 			self.actions.append(a)
 		self.actions.sort()

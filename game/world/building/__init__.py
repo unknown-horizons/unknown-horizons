@@ -87,10 +87,10 @@ class BuildingClass(type):
 			cls._object = game.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 
-		for (action_id,) in game.main.db("SELECT action FROM data.action where building=? group by action", cls.id):
+		for (action_id,) in game.main.db("SELECT action FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE building_id=? group by action", cls.id):
 			action = cls._object.createAction(action_id)
 			fife.ActionVisual.create(action)
-			for rotation, animation_id in game.main.db("SELECT rotation, animation FROM data.action where building=? and action=?", cls.id, action_id):
+			for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE building_id=? and action=?", cls.id, action_id):
 				if cls.id == 1:
 					print "HALLO",cls.size,action_id, rotation, animation_id
 				if rotation == 45:
