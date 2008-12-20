@@ -36,7 +36,7 @@ class UnitClass(type):
 			super(cls, self).load(db, worldid)
 			return self
 
-		attributes = {'load': load, 'id': id, '_object': self._loadObject(id)}
+		attributes = {'load': load}
 		attributes.update(game.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)))
 
 		class_package,  class_name = game.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
@@ -46,25 +46,34 @@ class UnitClass(type):
 			(getattr(globals()[class_package], class_name),),
 			attributes)
 
-	@staticmethod
-	def _loadObject(id):
+	def __init__(self, id, **kwargs):
+		"""
+		@param id: building id.
+		"""
+		super(UnitClass, self).__init__(self, **kwargs)
+		self.id = id
+		self._object = None
+		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0])
+		print self._action_set_id
+		self._loadObject()
+
+	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
-		print 'Loading unit #' + str(id) + '...'
+		print 'Loading unit #' + str(cls.id) + '...'
 		try:
-			_object = game.main.session.view.model.createObject(str(id), 'unit')
+			cls._object = game.main.session.view.model.createObject(str(cls.id), 'unit')
 		except RuntimeError:
 			print 'already loaded...'
-			_object = game.main.session.view.model.getObject(str(id), 'unit')
-			return _object
-		_object.setPather(game.main.session.view.model.getPather('RoutePather'))
-		_object.setBlocking(False)
-		_object.setStatic(False)
-		for (action_id,) in game.main.db("SELECT action FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE unit_id=? group by action", id):
-			action = _object.createAction(action_id)
+			cls._object = game.main.session.view.model.getObject(str(cls.id), 'unit')
+			return
+		cls._object.setPather(game.main.session.view.model.getPather('RoutePather'))
+		cls._object.setBlocking(False)
+		cls._object.setStatic(False)
+		for (action_id,) in game.main.db("SELECT action FROM data.action WHERE action_set_id=? group by action", cls._action_set_id):
+			action = cls._object.createAction(action_id)
 			fife.ActionVisual.create(action)
-			for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE unit_id=? and action=?", id, action_id):
+			for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action WHERE action_set_id=? and action=?", cls._action_set_id, action_id):
 				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:center+0,bottom+8')
 				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
-		return _object

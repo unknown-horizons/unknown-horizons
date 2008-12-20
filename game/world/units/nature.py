@@ -27,5 +27,5 @@ class GrowingUnit(Growable):
 	""" Class for units that grow, such as animals
 	"""
 	def __init__(self, **kwargs):
-		self.db_actions = game.main.db("SELECT action FROM data.action LEFT JOIN action_set ON action_set.action_set_id=action.action_set_id WHERE unit_id = ? AND action != \"default\"", self.id)
+		self.db_actions = game.main.db("SELECT action FROM data.action WHERE action_set_id= ? AND action != \"default\"", self._action_set_id)
 		super(GrowingUnit, self).__init__(self, **kwargs)

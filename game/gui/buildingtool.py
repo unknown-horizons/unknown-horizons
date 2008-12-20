@@ -98,11 +98,11 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		print (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360
-		image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation_id LEFT JOIN action_set ON action_set.action_set_id=action.action_set_id WHERE building_id=? AND action.action='default' AND action.rotation=?", self._class.id, (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360)
+		image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation_id WHERE action_set_id=? AND action.action='default' AND action.rotation=?", self._class._action_set_id, (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360)
 		if len(image) > 0:
 			self.gui.findChild(name='building').image = image[0][0]
 		else:
-			image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation LEFT JOIN action_set ON action_set.action_set_id=action.action_set_id WHERE action.building=? AND action.action='default' AND action.rotation=?", self._class.id, 45)
+			image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation WHERE action.action_set_id=? AND action.action='default' AND action.rotation=?", self._class._action_set_id, 45)
 			if len(image) > 0:
 				print "WARNING: no rotation for building id:", self._class.id, "and rotation:", self.rotation
 				self.gui.findChild(name='building').image = image[0][0]
