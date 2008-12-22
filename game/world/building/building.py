@@ -35,8 +35,9 @@ class Building(WorldObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
+		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0])
+		print "ACTION SET:",self._action_set_id
 		self.__init(Point(x,y), rotation, owner, instance)
-
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
 
@@ -124,7 +125,6 @@ class Building(WorldObject):
 		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
-		print "x,y,action,building,layer,rotation,**trash", x, y, action, building, layer, rotation, trash
 		if building is not None:
 			return building.getInstance(x = x, y = y, action=action, layer=layer,rotation=rotation, **trash)
 		else:
