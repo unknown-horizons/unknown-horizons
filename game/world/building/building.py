@@ -63,6 +63,7 @@ class Building(WorldObject):
 		print "BUILDING: REMOVE %s" % self.getId()
 		self.settlement.rem_inhabitants(self.inhabitants)
 		self.island().remove_building(self)
+		game.main.session.ingame_gui.hide_menu()
 
 		for x in xrange(self.position.left, self.position.right + 1):
 			for y in xrange(self.position.top, self.position.bottom + 1):
