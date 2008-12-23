@@ -45,7 +45,7 @@ class Unit(WorldObject):
 		self._instance = game.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'default'
-		self._instance.act(self.action, self._instance.getLocation(), True)
+		self.act(self.action, self._instance.getLocation(), True)
 		self._instance.addActionListener(self.InstanceActionListener)
 
 		self.move_callback = WeakMethodList()
@@ -61,6 +61,9 @@ class Unit(WorldObject):
 		if hasattr(self, "_instance") and self._instance.getLocationRef().getLayer() is not None:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
+	def act(self, action, facing_loc, repeating=False):
+		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+
 	def start(self):
 		pass
 
@@ -71,7 +74,7 @@ class Unit(WorldObject):
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x + self.position.x - self.last_position.x, self.position.y + self.position.y - self.last_position.y, 0))
-		self._instance.act(self.action, location, True)
+		self.act(self.action, location, True)
 		game.main.session.view.cam.refresh()
 
 	def check_move(self, destination):
@@ -163,7 +166,7 @@ class Unit(WorldObject):
 
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
-		self._instance.move(self.action, location, 16.0 / move_time[0])
+		self._instance.move(self.action+"_"+str(self._action_set_id), location, 16.0 / move_time[0])
 		# coords pro sec
 
 		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y

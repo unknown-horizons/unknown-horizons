@@ -26,6 +26,9 @@ from game.world.production import PrimaryProducer
 class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 	""" Class for stuff that grows, such as trees
 	"""
+	def __init__(self, **kwargs):
+		super(GrowingBuilding, self).__init__(**kwargs)
+		self.inventory.limit = 1 # this should be done by database query later on
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):

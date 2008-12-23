@@ -59,6 +59,9 @@ class Building(WorldObject):
 		# gets the payout from the settlement in form of it's running costs
 		self.settlement.owner.inventory.alter(1, -self.running_costs)
 
+	def act(self, action, facing_loc, repeating=False):
+		self._instance.act(action+"_"+str(self._action_set_id),facing_loc,repeating)
+
 	def remove(self):
 		"""Removes the building"""
 		print "BUILDING: REMOVE %s" % self.getId()
@@ -143,8 +146,9 @@ class Building(WorldObject):
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+3), 0))
 			else:
 				return None
+			action_set_id  = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
-			instance.act(action, facing_loc, True)
+			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance
 
 	@classmethod

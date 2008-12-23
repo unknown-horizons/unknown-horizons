@@ -98,7 +98,7 @@ class Ship(Unit):
 		}
 		game.main.session.ingame_gui.show_menu(TabWidget(3, self, callbacks))
 
-	def act(self, x, y):
+	def go(self, x, y):
 		"""Moves the ship.
 		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
 		self.stop()

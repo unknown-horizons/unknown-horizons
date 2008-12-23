@@ -38,7 +38,7 @@ class Act(object):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		WorldObject.getObjectById(self.unit).act(self.x, self.y)
+		WorldObject.getObjectById(self.unit).go(self.x, self.y)
 
 from game.util.encoder import register_classes
 register_classes(Act)

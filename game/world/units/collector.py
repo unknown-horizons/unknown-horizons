@@ -143,7 +143,7 @@ class BuildingCollector(StorageHolder, Unit):
 	def finish_working(self):
 		if self.job.object:
 			#print self.getId(), 'FINISH WORKING'
-			self._instance.act("default", self._instance.getFacingLocation(), True)
+			self.act("default", self._instance.getFacingLocation(), True)
 			# transfer res
 			self.transfer_res()
 			# deregister at the target we're at

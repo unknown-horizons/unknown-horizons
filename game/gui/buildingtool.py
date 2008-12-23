@@ -97,7 +97,6 @@ class BuildingTool(NavigationTool):
 		game.main.session.view.addChangeListener(self.draw_gui)
 
 	def draw_gui(self):
-		print (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360
 		image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation_id LEFT JOIN action_set ON action_set.action_set_id=action.action_set_id WHERE building_id=? AND action.action='default' AND action.rotation=?", self._class.id, (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360)
 		if len(image) > 0:
 			self.gui.findChild(name='building').image = image[0][0]

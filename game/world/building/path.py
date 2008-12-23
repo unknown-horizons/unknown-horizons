@@ -39,12 +39,12 @@ class Path(Building, BuildableLine):
 				tile.object.recalculateOrientation()
 		self.recalculateOrientation()
 		self.island().registerPath(self)
-		
+
 	def load(self, db, worldid):
 		super(Path, self).load(db, worldid)
 		self.recalculateOrientation()
 		self.island().registerPath(self)
-		
+
 	def remove(self):
 		super(Path, self).remove()
 		origin = self.position.origin
@@ -75,7 +75,7 @@ class Path(Building, BuildableLine):
 			action = 'default'
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
-		self._instance.act(action, location, True)
+		self.act(action, location, True)
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):

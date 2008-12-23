@@ -113,7 +113,7 @@ class PrimaryProducer(Provider):
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
-		self._instance.act("working", self._instance.getFacingLocation(), True)
+		self.act("working", self._instance.getFacingLocation(), True)
 		#print self.getId(), "begin working"
 
 	def production_step(self):
@@ -123,7 +123,7 @@ class PrimaryProducer(Provider):
 				if amount > 0:
 					self.inventory.alter(res, amount)
 			self.__used_resources = {}
-		self._instance.act("default", self._instance.getFacingLocation(), True)
+		self.act("default", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)
 		self.check_production_startable()
 

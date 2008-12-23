@@ -86,30 +86,32 @@ class BuildingClass(type):
 			print 'already loaded...'
 			cls._object = game.main.session.view.model.getObject(str(cls.id), 'building')
 			return
-
-		for (action_id,) in game.main.db("SELECT action FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE building_id=? group by action ", cls.id):
-			action = cls._object.createAction(action_id)
-			fife.ActionVisual.create(action)
-			for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action LEFT JOIN data.action_set ON data.action_set.action_set_id = data.action.action_set_id WHERE building_id=? and action=?", cls.id, action_id):
-				if cls.id == 1:
-					print "HALLO",cls.size,action_id, rotation, animation_id
-				if rotation == 45:
-					command = 'left-16,bottom+' + str(cls.size[0] * 8)
-				elif rotation == 135:
-					command = 'left-' + str(cls.size[1] * 16) + ',bottom+8'
-				elif rotation == 225:
-					command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 16) + ',bottom+' + str(cls.size[1] * 8)
-				elif rotation == 315:
-					command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
-				else:
-					print "ERROR"
-					continue
-					command = 'left-16,bottom+8'
-				if cls.id == 1:
-					print command
-				anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
-				action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
-				action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
+		action_sets = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
+		print action_sets
+		for (action_set_id,) in action_sets:
+			for (action_id,) in game.main.db("SELECT action FROM data.action WHERE action_set_id=? group by action", action_set_id):
+				print "DEBUG:", action_id, action_set_id
+				action = cls._object.createAction(action_id+"_"+str(action_set_id))
+				fife.ActionVisual.create(action)
+				for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action WHERE action_set_id=? and action=?", action_set_id, action_id):
+					if cls.id == 1:
+						print "HALLO",cls.size,action_id, rotation, animation_id
+					if rotation == 45:
+						command = 'left-16,bottom+' + str(cls.size[0] * 8)
+					elif rotation == 135:
+						command = 'left-' + str(cls.size[1] * 16) + ',bottom+8'
+					elif rotation == 225:
+						command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 16) + ',bottom+' + str(cls.size[1] * 8)
+					elif rotation == 315:
+						command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
+					else:
+						print "ERROR"
+						continue
+					if cls.id == 1:
+						print command
+					anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
+					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
+					action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
 
 		#old code, but with "correcter" image positioning
 		"""for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", cls.id):
