@@ -194,7 +194,7 @@ class BuildingCollector(StorageHolder, Unit):
 		#print self.id, 'TRANSFER PICKUP'
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
-		print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
+		#print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
 		assert(res_amount == self.job.amount, "Carriage could not pickup amount of ressources, that was planned for the current job.")
 		self.inventory.alter(self.job.res, res_amount)
 

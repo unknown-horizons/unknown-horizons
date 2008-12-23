@@ -87,15 +87,11 @@ class BuildingClass(type):
 			cls._object = game.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 		action_sets = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
-		print action_sets
 		for (action_set_id,) in action_sets:
 			for (action_id,) in game.main.db("SELECT action FROM data.action WHERE action_set_id=? group by action", action_set_id):
-				print "DEBUG:", action_id, action_set_id
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action WHERE action_set_id=? and action=?", action_set_id, action_id):
-					if cls.id == 1:
-						print "HALLO",cls.size,action_id, rotation, animation_id
 					if rotation == 45:
 						command = 'left-16,bottom+' + str(cls.size[0] * 8)
 					elif rotation == 135:
@@ -107,8 +103,6 @@ class BuildingClass(type):
 					else:
 						print "ERROR"
 						continue
-					if cls.id == 1:
-						print command
 					anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 					action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())

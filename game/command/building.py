@@ -56,7 +56,6 @@ class Build(object):
 		for (resource, value) in building.costs.items():
 			# remove from issuer, and remove remaining rest from secondary source (settlement or ship)y
 			remnant = secondary_resource_source.inventory.alter(resource, issuer.inventory.alter(resource, -value))
-			print remnant
 			assert(remnant == 0)
 		building.start()
 

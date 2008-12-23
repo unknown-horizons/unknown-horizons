@@ -41,7 +41,6 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 
 	def alter(self, res, amount):
 		self._changed()
-		print "beeing called gs",res,  amount
 		if res in self._storage:
 			self._storage[res] += amount
 		else:
@@ -85,13 +84,11 @@ class TotalStorage(GenericStorage): # TESTED AND WORKING
 		self.limit = space
 
 	def alter(self, res, amount):
-		print "TS", amount, "ret:", max(0, amount + sum(self._storage.values()) - self.limit)
 		check =  max(0, amount + sum(self._storage.values()) - self.limit)
 		return check + super(TotalStorage, self).alter(res, amount - check)
 
 class PositiveStorage(GenericStorage): # TESTED AND WORKING
 	def alter(self, res, amount):
-		print "PS:", amount, "ret:", min(0, amount + self[res])
 		ret = min(0, amount + self[res]) + super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
 		if res in self._storage and self._storage[res] <= 0:
 			del self._storage[res]
@@ -110,7 +107,6 @@ class SizedSlotStorage(PositiveStorage): # TESTED AND WORKING
 		self.limit = limit
 
 	def alter(self, res, amount):
-		print "SSS", amount, "ret:", max(0, amount + self[res] - self.limit)
 		check = max(0, amount + self[res] - self.limit)
 		return check + super(SizedSlotStorage, self).alter(res, amount - check)
 

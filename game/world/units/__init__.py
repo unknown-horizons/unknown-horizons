@@ -53,8 +53,6 @@ class UnitClass(type):
 		super(UnitClass, self).__init__(self, **kwargs)
 		self.id = id
 		self._object = None
-		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0])
-		print self._action_set_id
 		self._loadObject()
 
 	def _loadObject(cls):

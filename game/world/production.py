@@ -51,7 +51,6 @@ class PrimaryProducer(Provider):
 
 	def toggle_active(self):
 		if self.active:
-			print "Toggled inactive"
 			self.active_production_line = None
 			if self.hasChangeListener(self.check_production_startable):
 				self.removeChangeListener(self.check_production_startable)
@@ -59,7 +58,6 @@ class PrimaryProducer(Provider):
 			if isinstance(self, Building):
 				self.toggle_costs()
 		else:
-			print "Toggled active"
 			if self.active_production_line is None and len(self.production) > 0:
 				self.active_production_line = min(self.production.keys())
 			if self.active_production_line is not None:

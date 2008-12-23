@@ -32,6 +32,7 @@ class Unit(WorldObject):
 		self.__init(x, y)
 
 	def __init(self, x, y, health = 60.0):
+		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0])
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
@@ -110,7 +111,7 @@ class Unit(WorldObject):
 		if not move_possible:
 			return False
 
-		print 'NEW DEST', destination
+		#print 'NEW DEST', destination
 		self.move_callback = WeakMethodList(callback)
 
 		if not self.is_moving():

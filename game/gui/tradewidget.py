@@ -73,17 +73,17 @@ class TradeWidget(object):
 
 	def set_exchange(self, size):
 		self.exchange = size
-		print 'TradeWidget debug: Exchange size now:', self.exchange
+		#print 'TradeWidget debug: Exchange size now:', self.exchange
 
 	def transfer(self, res_id, transfer_from, transfer_to):
 		if transfer_to is not None and transfer_from is not None:
-			print 'TradeWidget debug: Transfering', self.exchange, 't of resource', res_id, 'from', transfer_from.name, 'to', transfer_to.name
+			#print 'TradeWidget debug: Transfering', self.exchange, 't of resource', res_id, 'from', transfer_from.name, 'to', transfer_to.name
 			ret = transfer_from.inventory.alter(res_id, -self.exchange) #take ressources, ret = difference to exchange(might not have hat exchange number of res in store)
-			print 'ret1:', ret
+			#print 'ret1:', ret
 			ret = self.exchange if self.exchange < abs(ret) else abs(ret)
-			print 'ret2:', ret
+			#print 'ret2:', ret
 			ret = transfer_to.inventory.alter(res_id, self.exchange-ret) # give ressources
-			print 'ret3:', ret
+			#print 'ret3:', ret
 			transfer_from.inventory.alter(res_id, ret) #return ressources that did not fit
 			self.draw_widget()
 

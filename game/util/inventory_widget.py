@@ -39,7 +39,6 @@ class Inventory(pychan.widgets.Container):
 	def _set_inventory(self, inv):
 		"""Sets the inventory
 		@var inventory: Storage class inventory"""
-		print "\n\nInventory:", inv, "\n\n"
 		assert(isinstance(inv, GenericStorage))
 		self._inventory = inv
 		self._draw()
