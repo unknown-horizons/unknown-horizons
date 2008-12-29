@@ -32,39 +32,61 @@ class Island(WorldObject):
 	to an island, making it easy to determine to which island the instance belongs, when
 	selected.
 	An Island instance is created at map creation, when all tiles are added to the map.
-	@param id: island id.
-	@param origin: Position of the (0, 0) ground tile.
+	@param origin: Point instance - Position of the (0, 0) ground tile.
 	@param filename: file from which the island is loaded.
+
+	Each island holds some important attributes:
+	* grounds - All grounds that belong to the island are referenced here.
+	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
+	                  { (x,y): tileref, ...}
+					  This is important for pathfinding and quick tile fetching.
+	* buildings - a list of all Building instances that are present on the island.
+	* settlements - a list of all Settlement instances that are present on the island.
+	* path_nodes - a special dictionary used by the pather to save paths.
+
+	TUTORIAL:
+	Why do we use a seperate __init() function, and do not use the __init__() function?
+	Simple, if we load the game, the class is not loaded as new instance, so the __init__
+	function is not called. Rather the load function is called. So everything that new
+	classes and loaded classes share to initialize, comes into the __init() function.
+	This is the common way of doing this in OpenAnno, so better get used to it :)
+
+	To continue hacking, check out the __init() function now.
 	"""
 
 	def __init__(self, origin, filename):
-		self.init(origin, filename)
+		self._init(origin, filename)
 
-	def init(self, origin, filename):
+	def __init(self, origin, filename):
 		"""
 		@param origin: Point
 		@param filename: String
 		"""
 		self.file = filename
 		self.origin = origin
-		db = DbReader(filename)
+		db = DbReader(filename) # Create a new DbReader instance to load the maps file.
 		p_x, p_y, width, height = db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from ground", self.origin.x, self.origin.y)[0]
 		self.rect = Rect(Point(p_x, p_y), width, height)
 		self.grounds = []
 		self.ground_map = {}
 		self.buildings = []
-		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"):
+		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
 			ground = game.main.session.entities.grounds[ground_id](self.origin.x + rel_x, self.origin.y + rel_y)
+			# Each ground has a set of attributes:
 			ground.settlement = None
 			ground.blocked = False
 			ground.object = None
+			# These are important for pathfinding and building to check if the ground tile is blocked in any way.
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
 
-		self.settlements = []
+		self.settlements = [] # List of settlements
 
-		self.path_nodes = {}
-		
+		self.path_nodes = {} # Important for the pather, check the pather for it's use.
+		"""TUTORIAL:
+		To continue hacking, you should now take of to the real fun stuff and check out game/world/building/__init__.py.
+		"""
+
 	def save(self, db):
 		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
 			self.getId(), self.origin.x, self.origin.y, self.file)
@@ -75,9 +97,9 @@ class Island(WorldObject):
 
 	def load(self, db, worldid):
 		super(Island, self).load(db, worldid)
-		
+
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", worldid)[0]
-		self.init(Point(x, y), filename)
+		self.__init(Point(x, y), filename)
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
