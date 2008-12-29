@@ -245,7 +245,7 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 
 	@param windowtitle: the title of the popup
 	@param message: the text displayed in the popup
-	@pàram show_cancel_button: boolean, show cancel button or not
+	@param show_cancel_button: boolean, show cancel button or not
 	@return: True on ok, False on cancel (if no cancel button, always True)
 	"""
 
