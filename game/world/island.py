@@ -55,7 +55,7 @@ class Island(WorldObject):
 	"""
 
 	def __init__(self, origin, filename):
-		self._init(origin, filename)
+		self.__init(origin, filename)
 
 	def __init(self, origin, filename):
 		"""
