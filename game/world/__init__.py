@@ -29,9 +29,22 @@ from game.world.player import Player
 from game.util import livingObject, Point
 
 class World(livingObject):
-	"""
+	"""The World class represents an OpenAnno map with all its units, grounds, buildings, etc.
+	   It's derived from livingObject, check out game.util.living for more information on that.
+	   A World instance holds a lot of important lists:
+	   * players - a list of all the sessios's players - Player instances
+	   * islands - a list of all the map's islands - Island instances
+	   * grounds - a list of all the map's groundtiles
+	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
+	                  { (x,y): tileref, ...}
+					  This is important for pathfinding and quick tile fetching.
+	   * ships - a list of all the ships ingame - game.world.units.ship.Ship instances
+	   * ship_map - same as ground_map, but for ships
+
 	"""
 	def begin(self, db):
+		"""@param db: DbReader instance with the map/savegame that is to be loaded
+		"""
 		#load properties
 		self.properties = {}
 		for (name, value) in db("select name, value from map_properties"):
@@ -99,7 +112,12 @@ class World(livingObject):
 		for ship in self.ships:
 			self.ship_map[ship.position] = weakref.ref(ship)
 
+		"""TUTORIAL:
+		To digg deaper, you should have taken a look at the livingObject class and should now continue to game/world/island.py,
+		to check out how buildings and settlements are added to the map"""
+
 	def setupPlayer(self, name, color):
+		"""Sets up a new Player instance and adds him to the active world."""
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)
 		game.main.session.ingame_gui.update_gold()
