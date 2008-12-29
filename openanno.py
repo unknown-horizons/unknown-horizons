@@ -21,6 +21,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""This is the OpenAnno launcher, it looks for fife and tries to start the game. If you want to digg
+into the game, continue to game/main.py. Read all docstrings and get familiar with the functions and
+attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)"""
+
 import sys
 import os
 

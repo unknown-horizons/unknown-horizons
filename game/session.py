@@ -45,7 +45,26 @@ from game.entities import Entities
 from game.util import livingObject, livingProperty, WorldObject
 
 class Session(livingObject):
-	"""Session class represents the games main ingame view and controls cameras and map loading."""
+	"""Session class represents the games main ingame view and controls cameras and map loading.
+
+	This is the most important class if you are going to hack on OpenAnno, it provides most of
+	the important ingame variables that you will be constantly accessing by game.main.session.x
+	Here's a small list of commonly used attributes:
+	* manager - game.manager instance. Used to execute commands that need to be tick,
+				synchronized check the class for more information.
+	* scheduler - game.scheduler instance. Used to execute timed events that do not effect
+	              network game.
+	* view - game.view instance. Used to control the ingame camera.
+	* entities - game.entities instance. used to hold preconstructed dummy classes from the db
+	             for later initialization.
+	* ingame_gui - game.gui.ingame_gui instance. Used to controll the ingame gui.
+	* cursor - game.gui.{navigation/cursor/selection/building}tool instance. Used to controll
+			   mouse events, check the classes for more info.
+	* selected_instances - Set that holds the currently selected instances (building, units).
+
+	TUTORIAL:
+	For further digging you should now be checking out the load() function.
+	"""
 	timer = livingProperty()
 	manager = livingProperty()
 	scheduler = livingProperty()
@@ -74,7 +93,7 @@ class Session(livingObject):
 		self.cursor = SelectionTool()
 
 		self.selected_instances = set()
-		self.selection_groups = [set()] * 10
+		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		#autosave
 		if game.main.settings.savegame.autosaveinterval != 0:
@@ -160,27 +179,34 @@ class Session(livingObject):
 	def load(self, savegame, playername = "", playercolor = None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
+		@param playername: string with the playername
+		@param playercolor: game.util.color instance with the player's color
 		"""
-		db = DbReader(savegame)
-		self.world = World(db)
-		print 'playername:', playername
+		db = DbReader(savegame) # Initialize new dbreader
+		self.world = World(db) # Load game.world module (check game/world/__init__.py)
 		if playername != "":
-			self.world.setupPlayer(playername, playercolor)
-		self.view.load(db)
-		self.manager.load(db)
-		self.ingame_gui.load(db)
+			self.world.setupPlayer(playername, playercolor) # setup new player
+		self.view.load(db) # load view
+		self.manager.load(db) # load the manager (there might me old scheduled ticks.
+		self.ingame_gui.load(db) # load the old gui positions and stuff
 		#setup view
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
-		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"):
+		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.getObjectById(instance_id[0])
 			self.selected_instances.add(obj)
 			obj.select()
-		for group in xrange(len(self.selection_groups)):
+		for group in xrange(len(self.selection_groups)): # load user defined unit groups
 			for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
 
-		self.cursor.apply_select()
+		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
+
+		"""
+		TUTORIAL:
+		From here on you should digg into the classes that are loaded above, especially the world class.
+		(game/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
+		"""
 
 	def generateMap(self):
 		"""Generates a map."""

@@ -19,6 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""This is the main game file, it used to store some global information and to handle
+   the main menu, as well as to initialize new gamesessions. game.main provides some globals
+   that can be used throughout the code just by importing 'game.main'. These are the
+   globals:
+   * db - the game.dbreader instance, used to retrieve data from the database.
+   * settings - game.settings instance.
+   * fife - if a game is running. game.fife provides the running engine instance.
+   * gui - provides the currently active gui (only non ingame menus)
+   * session - game.session instance - check game/session.py for more information
+   * connection - multiplayer game connection (not used yet)
+   * ext_scheduler - game.extscheduler instance, used for non ingame timed events.
+   * savegamemanager - game.savegamemanager instance.
+
+   TUTORIAL:
+   Continue to game.session for further ingame digging.
+   """
+
 import re
 import time
 import os
@@ -76,7 +93,6 @@ def start():
 	gui = None
 
 	showMain()
-	#loadGame('content/save/LJ.sqlite')
 
 	fife.run()
 
@@ -201,8 +217,9 @@ def set_volume_effects():
 def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	"""
 	@param dlg: dialog that is to be shown
-	@param actions:
-	@param onPressEscape:
+	@param actions: actions that are executed by the dialog { 'ok': callback, 'cancel': callback }
+	@param onPressEscape: callback that is to be called if the escape button is pressed.
+	@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 	"""
 	global onEscape, gui
 	# Uncomment if detach Segfault is resolved.
@@ -228,6 +245,7 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 
 	@param windowtitle: the title of the popup
 	@param message: the text displayed in the popup
+	@pàram show_cancel_button: boolean, show cancel button or not
 	@return: True on ok, False on cancel (if no cancel button, always True)
 	"""
 
@@ -246,8 +264,8 @@ def showPopup(windowtitle, message, show_cancel_button = False):
 def getMaps(showCampaign = True, showLoad = False):
 	""" Gets available maps both for displaying and loading.
 
-	@param showOnlySaved: Bool, wether saved games are to be shown.
-	@param showOnlyRegular saves: Bool, wether to hide auto- and quicksaves
+	@param showCampaign: Bool, show campaign games true/false
+	@param showLoad saves: Bool, show saved games yes/no
 	@return: Tuple of two lists; first: files with path; second: files for displaying
 	"""
 	global savegamemanager
@@ -336,7 +354,9 @@ def showMain():
 
 def showSingle(showRandom = False, showCampaign = True, showLoad = False):
 	"""
-	@param showOnlySaved: Bool whether saved games are to be shown.
+	@param showRandom: Bool if random games menu is to be shown.
+	@param showCampaign: Bool if  campaigngame menu is to be shown.
+	@param showLoad: Bool if saved games menu is to be shown.
 	"""
 	global gui, onEscape, db, savegamemanager
 	if gui is not None:
@@ -470,7 +490,7 @@ def showMulti():
 def startMulti():
 	"""Starts a multiplayer game server (dummy)
 
-	This also starts the game for the game mater
+	This also starts the game for the game master
 	"""
 	pass
 
@@ -593,6 +613,7 @@ def showJoinServer():
 
 def showPause():
 	"""
+	Show Pause menu
 	"""
 	global gui, onEscape, quitSession, session, onHelp, onChime
 	if gui is not None:
@@ -617,6 +638,7 @@ def showPause():
 
 def returnGame():
 	"""
+	Return to the game.
 	"""
 	global gui, onEscape, showPause, session
 	gui.hide()
@@ -626,6 +648,7 @@ def returnGame():
 
 def quitSession():
 	"""
+	Quits the current session
 	"""
 	global gui, fife, session
 	if showDialog(fife.pychan.loadXML('content/gui/quitsession.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
@@ -740,6 +763,7 @@ def loadGame(savegame = None):
 
 def onHelp():
 	"""
+	Called on help action
 	"""
 	global fife
 	showDialog(fife.pychan.loadXML('content/gui/help.xml'), {'okButton' : True}, onPressEscape = True)
@@ -747,6 +771,7 @@ def onHelp():
 # This function is for dead link in start/gamemenu.
 def onChime():
 	"""
+	Called chime action.
 	"""
 	global fife
 	if settings.sound.enabled:
