@@ -26,7 +26,17 @@ import fife
 
 class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.
-	@param id: int - building id in the database."""
+	@param id: int - building id in the database.
+
+	Note this creates classes, not instances. These are classes are created at the beginning of a session
+	and are later used to create instances, when buildings are built.
+	The __new__() function uses quite some python magic to construct the new class. Basically this is just cool
+	and doesn't have a real benefit quite yet except for saving a litte loading time.
+
+	TUTORIAL:
+	Check out the __new__() function if you feel your pretty good with python and are interested in how it all works,
+	otherwise, continue to the __init__() function.
+	"""
 	def __new__(self, id):
 		class_package, class_name = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
 		__import__('game.world.building.'+class_package)
@@ -37,13 +47,14 @@ class BuildingClass(type):
 			self = cls.__new__(cls)
 			super(cls, self).load(db, worldid)
 			return self
-
+		# Return the new type for this building, including it's attributes, like the previously defined load function.
 		return type.__new__(self, 'Building[' + str(id) + ']',
 			(getattr(globals()[class_package], class_name),),
 			{"load": load})
 
 	def __init__(self, id, **kwargs):
 		"""
+		Final loading for the building.
 		@param id: building id.
 		"""
 		super(BuildingClass, self).__init__(self, **kwargs)
@@ -70,6 +81,14 @@ class BuildingClass(type):
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
+		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
+		             buildings you should check out the seperate classes in game/world/buildings/*.
+					 Unit creation is very simular, you could check it out though and see which attributes a unit
+					 always has.
+					 As most of the buildings are derived from the production/provider/consumer classes, which are
+					 derived from the storageholder, i suggest you start digging deaper there.
+					 game/world/storageholder.py is the next place to go.
+					 """
 
 	def load(cls, db, worldid):
 		self = cls.__new__(cls)

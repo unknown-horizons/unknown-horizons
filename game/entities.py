@@ -26,7 +26,8 @@ import game.main
 from game.util import livingObject
 
 class Entities(livingObject):
-	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances."""
+	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances.
+	Loads everything from the db"""
 	def begin(self):
 		super(Entities, self).begin()
 
