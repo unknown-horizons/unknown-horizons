@@ -26,7 +26,7 @@ import weakref
 import game.main
 from game.world.island import Island
 from game.world.player import Player
-from game.util import livingObject, Point
+from game.util import livingObject, Point, Color
 
 class World(livingObject):
 	"""The World class represents an OpenAnno map with all its units, grounds, buildings, etc.
@@ -111,6 +111,11 @@ class World(livingObject):
 		# reconstruct shipmap
 		for ship in self.ships:
 			self.ship_map[ship.position] = weakref.ref(ship)
+
+
+		# add free trader
+		from game.ai.trader import Trader
+		self.trader = Trader(99999, "Free Trader", Color())
 
 		"""TUTORIAL:
 		To digg deaper, you should have taken a look at the livingObject class and should now continue to game/world/island.py,
