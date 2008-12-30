@@ -27,7 +27,6 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 
 import sys
 import os
-
 def findFIFE():
 	# check if fife is already in python-path
 	try:
@@ -91,6 +90,43 @@ def findFIFE():
 		print 'Reason: ' + e.message
 		print "Please create a config.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
 		exit()
+
+
+def getFifePath():
+	global fife_path
+	try:
+		import config
+		_paths = [config.fife_path]
+	except (ImportError, AttributeError):
+		_paths = []
+	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
+
+	fife_path = None
+	for p in _paths:
+		if p not in sys.path:
+			# check if we are in a fife dir...
+			for pe in [ os.path.abspath(p + '/' + a) for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
+				if not os.path.exists(pe):
+					break
+			else:
+				fife_path = p
+				print "Found FIFE in:", fife_path
+
+				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
+				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
+					if os.path.exists(pe):
+						sys.path.append(pe)
+				os.environ['PYTHONPATH'] = os.path.pathsep.join(os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ])
+
+				#add windows paths (<fife>/.)
+				os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				break
+	else:
+		print 'FIFE was not found.'
+		print "Please create a config.py file and add a line with: fife_path = '<path to fife>' eg. fife_path = '../../fife/trunk/'"
+		exit()
+	return fife_path
 
 if __name__ == '__main__':
 	#chdir to openanno root

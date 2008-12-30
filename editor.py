@@ -30,12 +30,12 @@ if __name__ == '__main__':
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
 	#find fife and setup search paths
-	openanno.findFIFE()
+	fife_path = openanno.getFifePath()
 
 	#for some external libraries distributed with openanno
 	os.environ['PYTHONPATH'] = os.path.pathsep.join((os.path.abspath('editor'), os.path.abspath('game'), os.path.abspath('game/ext'), os.environ['PYTHONPATH']))
 
-	os.chdir(openanno.fife_path + '/clients/editor')
+	os.chdir(fife_path + '/clients/editor')
 	#start editor
 	args = [sys.executable, './run.py']
 	os.execvp(args[0], args)
