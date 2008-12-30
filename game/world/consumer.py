@@ -23,10 +23,14 @@ from game.util import Rect, Point, WeakList
 import game.main
 
 class Consumer(StorageHolder):
-	"""Class used for buildings that need some resource
+	"""Class used for buildings that need resources. A branch office is a Consumer, it collects
+	resources and provides them to other classes(this is done by the Provider class).
 
 	Has to be inherited by a building that also inherits from producer
-	This includes e.g. lumberjack, weaver, storages
+	This includes e.g. lumberjack, weaver, storage
+
+	TUTORIAL:
+	Check out the __init() function now.
 	"""
 	def __init__(self, **kwargs):
 		"""
@@ -38,19 +42,28 @@ class Consumer(StorageHolder):
 
 	def __init(self):
 		"""Part of initiation that __init__() and load() share"""
-		self.__resources = {}
+		self.__resources = {} # dict of productionline ids as keys and resources as values
+
+		# list of local carriages that holds the collectors that belong to this building.
 		self.local_carriages = []
 
+		#Select all production lines for this building from the databas
 		for (production_line,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.__resources[production_line] = []
+			# Now only add ressources whos value is <= 0 (keep or consume)
 			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self.__resources[production_line].append(res)
 
+		# In case the class derived from this class is a Building, set it's radius
 		from game.world.building.building import Building
 		if isinstance(self, Building):
 			self.radius_coords = self.position.get_radius_coordinates(self.radius)
 
 		self.__collectors = WeakList()
+
+		"""TUTORIAL:
+		Check out the PrimaryProducer class now in game/world/production.py for further digging
+		"""
 
 	def save(self, db):
 		super(Consumer, self).save(db)

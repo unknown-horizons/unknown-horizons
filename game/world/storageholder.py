@@ -23,6 +23,16 @@ from game.world.storage import SizedSlotStorage
 import game.main
 
 class StorageHolder(object):
+	"""The StorageHolder class is used as as a parent class for everything that
+	has an inventory. Examples for these classes are ships, settlements,
+	buildings, etc. Basically it just add's an inventory, nothing more, nothing
+	less.
+	If you want something different than a SizedSlotStorage, you'll have to
+	overwrite that in the subclass.
+
+	TUTORIAL:
+	Continue to game/world/provider.py for further digging.
+	"""
 	def __init__(self, **kwargs):
 		super(StorageHolder, self).__init__(**kwargs)
 		self.__init()

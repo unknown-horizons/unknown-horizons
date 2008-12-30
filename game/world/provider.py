@@ -23,6 +23,19 @@ from game.world.storageholder import StorageHolder
 from game.util import WeakList
 
 class Provider(StorageHolder):
+	"""The Provider class provides an interface for Collectors to pickup goods from a class that is
+	derived from this Class. A Branchoffice is a provider for example, every producer is a provider
+	, too.
+	There are 3 basic classes that are used for almost every building in a way or another:
+	- Provider (this class)
+	- Consumer (we will be looking at that next)
+	- Producer (we'll get to that later)
+	By combining these three classes, you are able to 'produce' pretty much everything you will ever
+	need.
+
+	TUTORIAL:
+	Check out the Consumer class now in game/world/consumer.py
+	"""
 	def __init__(self, **kwargs):
 		super(Provider, self).__init__(**kwargs)
 		self.__init()

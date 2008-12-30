@@ -29,10 +29,13 @@ from game.world.building.building import Building
 import weakref
 
 class PrimaryProducer(Provider):
-	"""Class used for production buildings"""
+	"""Class used for primary production classes. These types do not need other ressources to
+	produce something. A tree is a primary producer for example, it 'just grows' and there by
+	produces wood.
+
+	TUTORIAL:
+	Check out the __init() function now."""
 	def __init__(self, **kwargs):
-		"""
-		"""
 		super(PrimaryProducer, self).__init__(**kwargs)
 		self.active_production_line = None
 		self.__init()
@@ -41,6 +44,11 @@ class PrimaryProducer(Provider):
 		self.production = {}
 		self.active = False
 
+		# The PrimaryProducer uses a simular way of ProductionLines as the Consumer, the only
+		# difference is, that is uses a seperate class for ProductionLines as some more details
+		# need to be stored.
+		# TUTORIAL:
+		# Check that class out now and then come back here.
 		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
@@ -49,7 +57,14 @@ class PrimaryProducer(Provider):
 		if isinstance(self, Building):
 				self.toggle_costs()  # needed to get toggle to the right position
 
+		"""TUTORIAL:
+		You can check out the further functions in this class if you like, they are rather messy
+		and not too import for now, you can look at them if you need them. Continue to the
+		SecondaryProducer below now.
+		"""
+
 	def toggle_active(self):
+		"""Toggles the production of this instance active/inactive."""
 		if self.active:
 			self.active_production_line = None
 			if self.hasChangeListener(self.check_production_startable):
@@ -131,7 +146,23 @@ class PrimaryProducer(Provider):
 
 
 class SecondaryProducer(Consumer, PrimaryProducer):
-	"""Represents a producer, that consumes ressources for production of other ressources (e.g. blacksmith)"""
+	"""Represents a producer, that consumes ressources for production of other ressources
+	(e.g. blacksmith).
+
+	TUTORIAL:
+	As you may notice through the detailed distinction of Consumer and Producer classes, it's now
+	very simple to create new classes with the wanted behavior. You will notice that we love this
+	way of doing things and tend to abstract as much as somehow possible.
+
+	By now you should have a fair overview of how OpenAnno works. The tutorial ends here. From now
+	you might want to take a look into the game/gui and game/util folders to checkout the workings
+	of the gui and some extra stuff we use. Since you came all the way here, you are now ready to
+	get your hands dirty and start working. So check out the bugtracker at www.openanno.org/trac/
+	and see if there's a nice ticket for you :) For further questions just visit us on irc:
+	#openanno @ irc.freenode.net. We'll be happy to answer any questions.
+
+	Have fun with OpenAnno!
+	"""
 
 	def show_menu(self):
 		callbacks = {
