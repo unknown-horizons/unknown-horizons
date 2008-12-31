@@ -123,7 +123,7 @@ def _save(file, engine, map):
 		coord = instance.getLocation().getLayerCoordinates()
 		x,y = int(coord.x), int(coord.y)
 		if (int(x), int(y)) not in already:
-			ground_id = int(instance.getObject().getId())
+			ground_id = int(instance.getObject().getId().split(':')[0])
 			rotation = instance.getRotation()
 			if rotation != 0:
 				ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
@@ -159,8 +159,8 @@ def _init(engine):
 
 	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground"):
 		print 'Loading ground #%i ...' % (ground_id)
-		name = os.sep.join(animation_45.split(os.sep)[-3:])
-		object = engine.getModel().createObject(str(name), 'ground')
+		name = os.path.basename(animation_45)
+		object = engine.getModel().createObject(str(ground_id) + ":" +str(name), 'ground')
 		object.thisown = 0
 		fife.ObjectVisual.create(object)
 		visual = object.get2dGfxVisual()
