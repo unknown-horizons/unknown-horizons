@@ -52,13 +52,47 @@ class Trader(Player, StorageHolder):
 		print "sending ship to", x,y
 		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
 
+
+	def send_ship_random_branch(self, ship):
+		"""Sends a ship to a random branch office on the map
+		@param ship: Ship instance that is to be used"""
+		branchoffices = [] # maybe this kind of list should be saved somewhere, as this is pretty performance intense
+		for island in game.main.session.world.islands: # find all branch offices
+			for settlement in island.settlements:
+				for building in settlement.buildings:
+					if isinstance(building,game.world.building.storages.BranchOffice):
+						branchoffices.append(building)
+		if len(branchoffices) > 1: # select a branch office to go to
+			rand = random.randint(0,len(branchoffices)-1)
+			office = branchoffices[rand]
+		elif len(branchoffices) == 1:
+			office = branchoffices[0]
+		else: # if no branchoffices where found, go random
+			self.send_ship_random(ship)
+		for water in game.main.session.world.water: # get a position near the branch office
+			if Point(water[0],water[1]).distance(office.position) < 3:
+				ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
+				break
+		else:
+			self.send_ship_random(ship)
+
+	def reached_branch(self, id):
+		"""Actions that need to be taken when reaching a branch office
+		@param id: ships id"""
+		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
+
 	def ship_idle(self, id):
 		cur_ship = None
 		for ship in self.ships:
 			if ship.id == id:
 				cur_ship = ship
 		if cur_ship is not None:
-			game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self)
+			if random.randint(0,100) < 66:
+				game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self) # delay one tick, to allow old movement calls to completely finish
+			else:
+				game.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
+
+
 
 
 
