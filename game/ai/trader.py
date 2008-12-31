@@ -58,7 +58,7 @@ class Trader(Player, StorageHolder):
 			if ship.id == id:
 				cur_ship = ship
 		if cur_ship is not None:
-			self.send_ship_random(ship)
+			game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self)
 
 
 
