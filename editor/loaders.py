@@ -159,7 +159,8 @@ def _init(engine):
 
 	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground"):
 		print 'Loading ground #%i ...' % (ground_id)
-		object = engine.getModel().createObject(str(ground_id), 'ground')
+		name = os.sep.join(animation_45.split(os.sep)[-3:])
+		object = engine.getModel().createObject(str(name), 'ground')
 		object.thisown = 0
 		fife.ObjectVisual.create(object)
 		visual = object.get2dGfxVisual()
