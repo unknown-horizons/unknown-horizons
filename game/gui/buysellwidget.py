@@ -20,6 +20,7 @@
 # ###################################################
 
 import game.main
+import pychan
 class BuySellWidget(object):
 
 	def __init__(self, slots):
@@ -28,12 +29,14 @@ class BuySellWidget(object):
 		self.widget.position=(200,200)
 		self.add_slots(slots)
 		self.add_ressource(4, 1)
+		self.show_ressource_menu(1)
 
 	def hide(self):
 		self.widget.hide()
 
 	def show(self):
 		self.widget.show()
+		self.hide()
 
 
 	def add_slots(self, num):
@@ -59,7 +62,30 @@ class BuySellWidget(object):
 		slider = self.slots[slot].findChild(name="slider")
 		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slider))
 
-
 	def slider_adjust(self, res_id, slider):
 		print "Ajusting slider to", slider.getValue()
 
+
+	def show_ressource_menu(self, slot_id):
+		resources = game.main.fife.pychan.loadXML('content/gui/buysellmenu/resources.xml')
+		resources.position = self.widget.position
+		button_width = 50
+		vbox = pychan.widgets.VBox(padding = 0)
+		vbox.width = resources.width
+
+		current_hbox = pychan.widgets.HBox(padding = 2)
+		index = 1
+		for (res_id,icon) in game.main.db("SELECT rowid, icon FROM resource"):
+			if res_id == 1:
+				continue
+			print res_id, icon
+			button = pychan.widgets.ImageButton(size=(50,50))
+			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			current_hbox.addChild(button)
+			if index % (vbox.width/(button_width)) == 0 and  index is not 0:
+				vbox.addChild(current_hbox)
+				current_hbox = pychan.widgets.HBox(padding=0)
+			index += 1
+		vbox.addChild(current_hbox)
+		resources.addChild(vbox)
+		resources.show()
