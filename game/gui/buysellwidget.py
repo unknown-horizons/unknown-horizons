@@ -49,6 +49,17 @@ class BuySellWidget(object):
 		self.widget._recursiveResizeToContent()
 
 	def add_ressource(self, res_id, slot):
-		icon = self.slots[slot].findChild(name="icon")
-		icon.image = game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0][0]
+		"""Adds a ressource to the specified slot
+		@param res_id: int - resource id
+		@param slot: int - slot number of the slot that is to be set"""
+		button = self.slots[slot].findChild(name="button")
+		button.up_image, button.down_image, = (game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
+		button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
 		self.slots[slot].findChild(name="amount").text = "0t"
+		slider = self.slots[slot].findChild(name="slider")
+		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slider))
+
+
+	def slider_adjust(self, res_id, slider):
+		print "Ajusting slider to", slider.getValue()
+
