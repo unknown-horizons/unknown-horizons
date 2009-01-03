@@ -34,6 +34,9 @@ class Settlement(WorldObject):
 		self._inhabitants = 0
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 
+		self.buy_list = {} # dict of resources that are to be bought. { res_id: limit, .. }
+		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
+
 		self.setup_storage()
 
 	def setup_storage(self):

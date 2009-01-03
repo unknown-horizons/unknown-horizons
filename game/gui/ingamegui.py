@@ -41,8 +41,6 @@ class IngameGui(livingObject):
 		self._old_menu = None
 
 
-		self.gui['test'] = BuySellWidget(3)
-		self.gui['test'].show()
 		self.gui['encyclopedia'] = game.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
 		self.gui['encyclopedia'].show()
 		self.gui['topmain'] = game.main.fife.pychan.loadXML('content/gui/top_main.xml')

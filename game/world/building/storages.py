@@ -24,6 +24,7 @@ from buildable import BuildableSingle
 from game.world.consumer import Consumer
 from game.world.provider import Provider
 from game.gui.tabwidget import TabWidget
+from game.gui.buysellwidget import BuySellWidget
 from game.util import Point, Rect
 import game.main
 
@@ -58,7 +59,12 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
+		callbacks = {
+			'building_overview': {
+				'buysell': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui.show_menu, BuySellWidget(3,self.settlement))
+			}
+		}
+		game.main.session.ingame_gui.show_menu(TabWidget(2, self,callbacks))
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
