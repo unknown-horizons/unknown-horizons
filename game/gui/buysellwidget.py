@@ -27,16 +27,14 @@ class BuySellWidget(object):
 		self.slots = {}
 		self.widget = game.main.fife.pychan.loadXML('content/gui/buysellmenu/buysellmenu.xml')
 		self.widget.position=(200,200)
+		self.resources = None
 		self.add_slots(slots)
-		self.add_ressource(4, 1)
-		self.show_ressource_menu(1)
 
 	def hide(self):
 		self.widget.hide()
 
 	def show(self):
 		self.widget.show()
-		self.hide()
 
 
 	def add_slots(self, num):
@@ -48,6 +46,7 @@ class BuySellWidget(object):
 			slot = game.main.fife.pychan.loadXML('content/gui/buysellmenu/single_slot.xml')
 			self.slots[num] = slot
 			slot.name = num
+			slot.findChild(name='button').capture(game.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
 			content.addChild(slot)
 		self.widget._recursiveResizeToContent()
 
@@ -55,6 +54,8 @@ class BuySellWidget(object):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
+		self.resources.hide()
+		self.show()
 		button = self.slots[slot].findChild(name="button")
 		button.up_image, button.down_image, = (game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
 		button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
@@ -67,11 +68,11 @@ class BuySellWidget(object):
 
 
 	def show_ressource_menu(self, slot_id):
-		resources = game.main.fife.pychan.loadXML('content/gui/buysellmenu/resources.xml')
-		resources.position = self.widget.position
+		self.resources = game.main.fife.pychan.loadXML('content/gui/buysellmenu/resources.xml')
+		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = pychan.widgets.VBox(padding = 0)
-		vbox.width = resources.width
+		vbox.width = self.resources.width
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
 		for (res_id,icon) in game.main.db("SELECT rowid, icon FROM resource"):
@@ -79,11 +80,14 @@ class BuySellWidget(object):
 				continue # don't show coins
 			button = pychan.widgets.ImageButton(size=(50,50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.add_ressource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1
 		vbox.addChild(current_hbox)
-		resources.addChild(vbox)
-		resources.show()
+		self.resources.addChild(vbox)
+		self.hide()
+		self.resources.show()
+
