@@ -72,17 +72,15 @@ class BuySellWidget(object):
 		button_width = 50
 		vbox = pychan.widgets.VBox(padding = 0)
 		vbox.width = resources.width
-
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
 		for (res_id,icon) in game.main.db("SELECT rowid, icon FROM resource"):
 			if res_id == 1:
-				continue
-			print res_id, icon
+				continue # don't show coins
 			button = pychan.widgets.ImageButton(size=(50,50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			current_hbox.addChild(button)
-			if index % (vbox.width/(button_width)) == 0 and  index is not 0:
+			if index % (vbox.width/(button_width)) == 0 and index is not 0:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1

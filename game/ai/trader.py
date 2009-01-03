@@ -62,19 +62,20 @@ class Trader(Player, StorageHolder):
 				for building in settlement.buildings:
 					if isinstance(building,game.world.building.storages.BranchOffice):
 						branchoffices.append(building)
-		if len(branchoffices) > 1: # select a branch office to go to
-			rand = random.randint(0,len(branchoffices)-1)
-			office = branchoffices[rand]
-		elif len(branchoffices) == 1:
-			office = branchoffices[0]
-		else: # if no branchoffices where found, go random
+		if len(branchoffices) == 0:
 			self.send_ship_random(ship)
-		for water in game.main.session.world.water: # get a position near the branch office
-			if Point(water[0],water[1]).distance(office.position) < 3:
-				ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
-				break
 		else:
-			self.send_ship_random(ship)
+			if len(branchoffices) == 1: # select a branch office
+				office = branchoffices[0]
+			else:
+				rand = random.randint(0,len(branchoffices)-1)
+				office = branchoffices[rand]
+			for water in game.main.session.world.water: # get a position near the branch office
+				if Point(water[0],water[1]).distance(office.position) < 3:
+					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
+					break
+			else:
+				self.send_ship_random(ship)
 
 	def reached_branch(self, id):
 		"""Actions that need to be taken when reaching a branch office
