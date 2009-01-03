@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png" >
+	<Label position="10,5" text="Buy/Sell:"/>
+	<HBox size="200, 100" position="10,40" name="content" padding="10"/>
+</Container>
