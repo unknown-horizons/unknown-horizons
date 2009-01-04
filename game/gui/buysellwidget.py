@@ -31,7 +31,7 @@ class BuySellWidget(object):
 			game.main.session.ingame_gui.gui['minimap'].position[1] - game.main.session.ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
 			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
-		self.resources = None
+		self.resources = None # placeholder for the resources gui
 		self.add_slots(slots)
 
 	def hide(self):
@@ -50,7 +50,7 @@ class BuySellWidget(object):
 		for num in range(0,num):
 			slot = game.main.fife.pychan.loadXML('content/gui/buysellmenu/single_slot.xml')
 			self.slots[num] = slot
-			slot.name = num
+			slot.id = num
 			slot.action = None
 			slot.res = None
 			slot.findChild(name='button').capture(game.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
@@ -76,9 +76,9 @@ class BuySellWidget(object):
 		button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
 		slot.findChild(name="amount").text = str(self.settlement.inventory.limit/2)+"t"
 		slider = slot.findChild(name="slider")
-		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.name))
+		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 		slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
-		self.add_buy_to_settlement(res_id, self.settlement.inventory.limit/2, slot.name)
+		self.add_buy_to_settlement(res_id, self.settlement.inventory.limit/2, slot.id)
 		slot._recursiveResizeToContent()
 		print self.settlement.buy_list
 
