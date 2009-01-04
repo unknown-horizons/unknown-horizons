@@ -27,7 +27,10 @@ class BuySellWidget(object):
 		self.settlement = settlement
 		self.slots = {}
 		self.widget = game.main.fife.pychan.loadXML('content/gui/buysellmenu/buysellmenu.xml')
-		self.widget.position=(200,200)
+		self.widget.position = (
+			game.main.session.ingame_gui.gui['minimap'].position[1] - game.main.session.ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+		)
 		self.resources = None
 		self.add_slots(slots)
 
