@@ -33,6 +33,18 @@ class BuySellWidget(object):
 		)
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
+		i = 0
+		for res in self.settlement.buy_list:
+			if i<self.slots:
+				self.add_ressource(res, i, self.settlement.buy_list[res])
+				i += 1
+		for res in self.settlement.sell_list:
+			if i<self.slots:
+				self.add_ressource(res, i, self.settlement.sell_list[res])
+				self.toggle_buysell(i)
+				i += 1
+		self.hide()
+
 
 	def hide(self):
 		self.widget.hide()
@@ -60,26 +72,31 @@ class BuySellWidget(object):
 			content.addChild(slot)
 		self.widget._recursiveResizeToContent()
 
-	def add_ressource(self, res_id, slot):
+	def add_ressource(self, res_id, slot, value=None):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
 		slot = self.slots[slot]
-		if slot.action is "buy":
-			del self.settlement.buy_list[slot.res]
-		elif slot.action is "sell":
-			del self.settlement.sell_list[slot.res]
-		self.resources.hide()
-		self.show()
+		if self.resources is not None:
+			self.resources.hide()
+			self.show()
+		if value is None:
+			value = self.settlement.inventory.limit/2
 		button = slot.findChild(name="button")
 		button.up_image, button.down_image, = (game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
 		button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
-		slot.findChild(name="amount").text = str(self.settlement.inventory.limit/2)+"t"
+		slot.findChild(name="amount").text = str(value)+"t"
 		slider = slot.findChild(name="slider")
-		slider.setValue(float(self.settlement.inventory.limit/2)) # set first value to half inventory size
+		slider.setValue(float(value)) # set first value to half inventory size
 		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
+		if slot.action is "sell":
+			del self.settlement.sell_list[slot.res]
+			self.add_sell_to_settlement(res_id, value, slot.id)
+		else:
+			if slot.action is "buy":
+				del self.settlement.buy_list[slot.res]
+			self.add_buy_to_settlement(res_id, value, slot.id)
 		slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
-		self.add_buy_to_settlement(res_id, self.settlement.inventory.limit/2, slot.id)
 		slot._recursiveResizeToContent()
 
 	def toggle_buysell(self, slot):
