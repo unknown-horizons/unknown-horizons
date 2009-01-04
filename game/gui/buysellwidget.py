@@ -31,7 +31,7 @@ class BuySellWidget(object):
 			game.main.session.ingame_gui.gui['minimap'].position[1] - game.main.session.ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
 			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
-		self.resources = None # placeholder for the resources gui
+		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
 
 	def hide(self):
@@ -56,7 +56,7 @@ class BuySellWidget(object):
 			slot.findChild(name='button').capture(game.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
 			slider = slot.findChild(name="slider")
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
-			slider.setValue(float(self.settlement.inventory.limit/2)) # set first value to half inventory size
+			slot.findChild(name="buysell").capture(game.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			content.addChild(slot)
 		self.widget._recursiveResizeToContent()
 
@@ -76,23 +76,53 @@ class BuySellWidget(object):
 		button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
 		slot.findChild(name="amount").text = str(self.settlement.inventory.limit/2)+"t"
 		slider = slot.findChild(name="slider")
+		slider.setValue(float(self.settlement.inventory.limit/2)) # set first value to half inventory size
 		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 		slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 		self.add_buy_to_settlement(res_id, self.settlement.inventory.limit/2, slot.id)
 		slot._recursiveResizeToContent()
-		print self.settlement.buy_list
+
+	def toggle_buysell(self, slot):
+		slot = self.slots[slot]
+		button = slot.findChild(name="buysell")
+		limit = int(slot.findChild(name="slider").getValue())
+		if slot.action is "buy":
+			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
+			slot.action="sell"
+			if slot.res in self.settlement.buy_list:
+				del self.settlement.buy_list[slot.res]
+			self.add_sell_to_settlement(slot.res, limit, slot.id)
+		elif slot.action is "sell":
+			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
+			slot.action="buy"
+			if slot.res in self.settlement.sell_list:
+				del self.settlement.sell_list[slot.res]
+			self.add_buy_to_settlement(slot.res, limit, slot.id)
+		print "Buylist:", self.settlement.buy_list
+		print "Selllist:", self.settlement.sell_list
+
 
 
 	def add_buy_to_settlement(self, res_id, limit, slot):
+		print "limit:", limit
 		self.slots[slot].action = "buy"
 		self.settlement.buy_list[res_id] = limit
 		print self.settlement.buy_list
+
+
+	def add_sell_to_settlement(self, res_id, limit, slot):
+		print "limit:", limit
+		self.slots[slot].action = "sell"
+		self.settlement.sell_list[res_id] = limit
+		print self.settlement.sell_list
 
 	def slider_adjust(self, res_id, slot):
 		slider = self.slots[slot].findChild(name="slider")
 		print "Ajusting slider to", slider.getValue()
 		if self.slots[slot].action is "buy":
 			self.add_buy_to_settlement(res_id, int(slider.getValue()), slot)
+		elif self.slots[slot].action is "sell":
+			self.add_sell_to_settlement(res_id, int(slider.getValue()), slot)
 		self.slots[slot].findChild(name="amount").text = str(int(slider.getValue()))+'t'
 
 

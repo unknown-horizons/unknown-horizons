@@ -2,6 +2,7 @@
 <Container size="60,50" opaque="0">
 	<Icon name="icon" image="content/gui/images/icons/hud/build/dummy_btn.png" size="50,50" position="0,0"/>
 	<ImageButton up_image="content/gui/images/icons/hud/build/dummy_btn.png" name="button" size="50,50" position="0,0" />
+	<ImageButton up_image="content/gui/images/icons/hud/main/buysell_buy.png" name="buysell" size="10,10" position="0,0" />
 	<Label name="amount" text="" position="2,20"/>
 	<Slider name="slider" orientation="1" size="10,50" position="50,0" scale_start="1"/>
 </Container>
