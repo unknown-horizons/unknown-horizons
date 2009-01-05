@@ -40,7 +40,7 @@ class SavegameManager(object):
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
 	"""
-	savegame_dir = "%s/.openanno/content/save" % user.home
+	savegame_dir = "%s/.openanno/save" % user.home
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"
