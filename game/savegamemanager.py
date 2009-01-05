@@ -62,10 +62,10 @@ class SavegameManager(object):
 		self.__dict__ = self._shared_state
 		
 		# create savegame directory if it does not exist
-		if not os.path.exists(autosave_dir):
-			os.makedirs(autosave_dir)
-		if not os.path.exists(quicksave_dir):
-			os.makedirs(quicksave_dir)
+		if not os.path.exists(self.autosave_dir):
+			os.makedirs(self.autosave_dir)
+		if not os.path.exists(self.quicksave_dir):
+			os.makedirs(self.quicksave_dir)
 
 	def __get_displaynames(self, files):
 		"""Returns list of names files, that should be displayed to the user.
