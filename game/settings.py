@@ -23,6 +23,7 @@ import game.main
 import shutil
 import os.path
 import simplejson
+import user
 
 class Setting(object):
 	""" Class to store settings
@@ -114,8 +115,10 @@ class Settings(Setting):
 	"""
 	@param config:
 	"""
-	def __init__(self, config = 'config.sqlite'):
+	def __init__(self, config = '%s/.openanno/config.sqlite' % user.home):
 		if not os.path.exists(config):
+			if not os.path.exists(os.path.dirname(config)):
+				os.makedirs(os.path.dirname(config))
 			shutil.copyfile('content/config.sqlite', config)
 		game.main.db("ATTACH ? AS config", config)
 		version = game.main.db("PRAGMA config.user_version")[0][0]

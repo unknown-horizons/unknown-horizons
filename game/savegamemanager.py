@@ -25,7 +25,7 @@ import os.path
 import re
 import glob
 import time
-
+import user
 import game.main
 from dbreader import DbReader
 
@@ -40,7 +40,7 @@ class SavegameManager(object):
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
 	"""
-	savegame_dir = "content/save"
+	savegame_dir = "%s/.openanno/content/save" % user.home
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"
@@ -60,6 +60,12 @@ class SavegameManager(object):
 	def __init__(self):
 		# share members across all instances
 		self.__dict__ = self._shared_state
+		
+		# create savegame directory if it does not exist
+		if not os.path.exists(autosave_dir):
+			os.makedirs(autosave_dir)
+		if not os.path.exists(quicksave_dir):
+			os.makedirs(quicksave_dir)
 
 	def __get_displaynames(self, files):
 		"""Returns list of names files, that should be displayed to the user.
