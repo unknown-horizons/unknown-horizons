@@ -21,21 +21,20 @@
 import game.main
 from game.world.storage import SizedSlotStorage
 from game.util import WorldObject, Point, WeakList
+from game.world.tradepost import TradePost
 
-class Settlement(WorldObject):
+class Settlement(WorldObject, TradePost):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
+		super(Settlement, self).__init__()
 		self.name = game.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 		self.owner = owner
 		self._inhabitants = 0
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
-
-		self.buy_list = {} # dict of resources that are to be bought. { res_id: limit, .. }
-		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
 
 		self.setup_storage()
 
