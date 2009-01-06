@@ -101,7 +101,9 @@ class Trader(Player, StorageHolder):
 				alter = -rand if settlement.inventory[res]-key >= rand else settlement.inventory[res]-key
 				settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9)) # pay for bought resources
 				settlement.inventory.alter(res, alter)
+		self.office = None
 		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
+
 
 	def ship_idle(self, id):
 		cur_ship = None
