@@ -117,6 +117,7 @@ class World(livingObject):
 		from game.ai.trader import Trader
 		self.trader = Trader(99999, "Free Trader", Color())
 
+		game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
 		To digg deaper, you should have taken a look at the livingObject class and should now continue to game/world/island.py,
 		to check out how buildings and settlements are added to the map"""
