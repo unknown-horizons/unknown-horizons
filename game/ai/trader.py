@@ -82,18 +82,25 @@ class Trader(Player, StorageHolder):
 		"""Actions that need to be taken when reaching a branch office
 		@param id: ships id"""
 		settlement = self.office.settlement
-		for res, key in settlement.buy_list.iteritems():
-			rand = random.randint(0,key)
+		for res, key in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
+			rand = random.randint(0,4) # select a random amount to sell
 			if settlement.inventory[res] >= key:
-				continue # continue if there are more resources in the inventory then the settlement wants to buy
+				continue # continue if there are more resources in the inventory than the settlement wants to buy
 			else:
-				settlement.inventory.alter(res, rand if key-settlement.inventory[res] >= rand else key-settlement.inventory[res])
+				alter = rand if key-settlement.inventory[res] >= rand else key-settlement.inventory[res]
+				ret = settlement.owner.inventory.alter(1, -alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
+				if ret == 0: # check if enough money was in the inventory
+					settlement.inventory.alter(res, alter)
+				else: # if not, return the money taken
+					settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
 		for res, key in settlement.sell_list.iteritems():
-			rand = random.randint(0,key)
+			rand = random.randint(0,4) # select a random amount to buy from the settlement
 			if settlement.inventory[res] <= key:
-				continue # continue if there are more resources in the inventory then the settlement wants to buy
+				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
-				settlement.inventory.alter(res, -rand if settlement.inventory[res]-key >= rand else settlement.inventory[res]-key)
+				alter = -rand if settlement.inventory[res]-key >= rand else settlement.inventory[res]-key
+				settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9)) # pay for bought resources
+				settlement.inventory.alter(res, alter)
 		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
 
 	def ship_idle(self, id):
