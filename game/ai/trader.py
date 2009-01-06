@@ -30,6 +30,7 @@ class Trader(Player, StorageHolder):
 		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
 		print "Initing Trader..."
 		self.ships = [] # Put all the traders ships in here
+		self.office = None # This is used to store the branchoffice the trader is currently heading to
 		while True:
 			x = random.randint(game.main.session.world.min_x, game.main.session.world.max_x)
 			y = random.randint(game.main.session.world.min_y, game.main.session.world.max_y)
@@ -66,12 +67,12 @@ class Trader(Player, StorageHolder):
 			self.send_ship_random(ship)
 		else:
 			if len(branchoffices) == 1: # select a branch office
-				office = branchoffices[0]
+				self.office = branchoffices[0]
 			else:
 				rand = random.randint(0,len(branchoffices)-1)
-				office = branchoffices[rand]
+				self.office = branchoffices[rand]
 			for water in game.main.session.world.water: # get a position near the branch office
-				if Point(water[0],water[1]).distance(office.position) < 3:
+				if Point(water[0],water[1]).distance(self.office.position) < 3:
 					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
 					break
 			else:
@@ -80,6 +81,19 @@ class Trader(Player, StorageHolder):
 	def reached_branch(self, id):
 		"""Actions that need to be taken when reaching a branch office
 		@param id: ships id"""
+		settlement = self.office.settlement
+		for res, key in settlement.buy_list.iteritems():
+			rand = random.randint(0,key)
+			if settlement.inventory[res] >= key:
+				continue # continue if there are more resources in the inventory then the settlement wants to buy
+			else:
+				settlement.inventory.alter(res, rand if key-settlement.inventory[res] >= rand else key-settlement.inventory[res])
+		for res, key in settlement.sell_list.iteritems():
+			rand = random.randint(0,key)
+			if settlement.inventory[res] <= key:
+				continue # continue if there are more resources in the inventory then the settlement wants to buy
+			else:
+				settlement.inventory.alter(res, -rand if settlement.inventory[res]-key >= rand else settlement.inventory[res]-key)
 		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
 
 	def ship_idle(self, id):
