@@ -31,11 +31,8 @@ class Trader(Player, StorageHolder):
 		print "Initing Trader..."
 		self.ships = [] # Put all the traders ships in here
 		self.office = None # This is used to store the branchoffice the trader is currently heading to
-		while True:
-			x = random.randint(game.main.session.world.min_x, game.main.session.world.max_x)
-			y = random.randint(game.main.session.world.min_y, game.main.session.world.max_y)
-			if (x,y) in game.main.session.world.water:
-				break
+		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
+		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water))]
 		self.ships.append(game.main.session.entities.units[6](x, y))
 		game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships[0]),self)
 
@@ -45,11 +42,8 @@ class Trader(Player, StorageHolder):
 		@param ship: Ship instance that is to be used"""
 		print "min:", game.main.session.world.min_x
 		print "max:", game.main.session.world.max_x
-		while True:
-			x = random.randint(game.main.session.world.min_x, game.main.session.world.max_x)
-			y = random.randint(game.main.session.world.min_y, game.main.session.world.max_y)
-			if (x,y) in game.main.session.world.water:
-				break
+		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
+		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water))]
 		print "sending ship to", x,y
 		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
 
