@@ -213,6 +213,7 @@ def set_volume_effects():
 	volume_effects_value.text = str(int(volume_effects.getValue() * 100)) + '%'
 	if settings.sound.enabled:
 		fife.effect_sound.setGain(volume_effects.getValue())
+		fife.speech_emitter.setGain(volume_effects.getValue())
 
 def showDialog(dlg, actions, onPressEscape = None, event_map = None):
 	"""
