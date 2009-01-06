@@ -238,7 +238,7 @@ class Fife(object):
 		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
-		if game.main.settings.sound.enabled:
+		if game.main.settings.sound.enabled: # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
 			self.bgsound = self.soundmanager.createEmitter()
 			self.bgsound.setGain(game.main.settings.sound.volume_music)

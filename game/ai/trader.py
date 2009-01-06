@@ -25,6 +25,13 @@ from game.util import Point
 import game.main
 import random
 class Trader(Player, StorageHolder):
+	"""A trader represents the free trader that travels arround the map with his trading ship(s) and
+	sells resources to players and buys resources from them. This is a very simple form of AI, as it
+	doesn't do any more then drive to a place on water or a branchoffice randomly and then buys and
+	sells resources. A game should not have more then one free trader (it could though)
+	@param id: int - player id, every Player needs a unique id, as the freetrader is a Player instance, he also does.
+	@param name: Traders name, also needed for the Player class.
+	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
 
 	def __init__(self, id, name, color, **kwargs):
 		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
@@ -100,6 +107,8 @@ class Trader(Player, StorageHolder):
 
 
 	def ship_idle(self, id):
+		"""Called if a ship is idle
+		@param id: int with the ships key for self.ships"""
 		cur_ship = None
 		for ship in self.ships:
 			if ship.id == id:
