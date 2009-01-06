@@ -53,9 +53,11 @@ class MessageWidget(object):
 		"""
 		self.active_messages.insert(0, Message(x,y,id, self.current_tick, message_dict))
 		sound = game.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
-		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.rowid=? ORDER BY random() LIMIT 1",id)[0][0]
+		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.rowid=? ORDER BY random() LIMIT 1",id)
+		sound = sound[0][0] if len(sound)>0 else None
 		print sound
-		game.main.fife.play_sound(game.main.fife.speech_emitter, sound)
+		if sound is not None:
+			game.main.fife.play_sound(game.main.fife.speech_emitter, sound)
 		self.draw_widget()
 
 	def draw_widget(self):
