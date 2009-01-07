@@ -66,7 +66,6 @@ def findFIFE():
 				break
 	else:
 		print 'FIFE was not found.'
-		print "Please create a config.py file and add a line with: fife_path = '<path to fife>' eg. fife_path = '../../fife/trunk/'"
 		exit()
 
 	try:
@@ -88,7 +87,6 @@ def findFIFE():
 	except ImportError, e:
 		print 'FIFE was not found or failed to load.'
 		print 'Reason: ' + e.message
-		print "Please create a config.py file and add a line with: path = '<path to fife>' eg. path = '../../fife/trunk/'"
 		exit()
 
 
@@ -124,7 +122,6 @@ def getFifePath():
 				break
 	else:
 		print 'FIFE was not found.'
-		print "Please create a config.py file and add a line with: fife_path = '<path to fife>' eg. fife_path = '../../fife/trunk/'"
 		exit()
 	return fife_path
 
