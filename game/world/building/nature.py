@@ -32,5 +32,5 @@ class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 1
+		kwargs['layer'] = 2
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
