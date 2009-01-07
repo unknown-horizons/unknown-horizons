@@ -283,11 +283,12 @@ class Fife(object):
 		"""Plays a soundfile on the given emitter.
 		@param emitter: fife.Emitter instance that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
-		assert emitter is not None, "You need to supply a initialised emitter"
-		assert soundfile is not None, "You need to supply a soundfile"
-		emitter.reset()
-		emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
-		emitter.play()
+		if game.main.settings.sound.enabled: # Set up sound if it is enabled
+			assert emitter is not None, "You need to supply a initialised emitter"
+			assert soundfile is not None, "You need to supply a soundfile"
+			emitter.reset()
+			emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
+			emitter.play()
 
 	def run(self):
 		"""
