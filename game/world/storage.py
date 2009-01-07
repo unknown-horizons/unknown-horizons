@@ -40,11 +40,11 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 			self.alter(res, amount)
 
 	def alter(self, res, amount):
-		self._changed()
 		if res in self._storage:
 			self._storage[res] += amount
 		else:
 			self._storage[res] = amount
+		self._changed()
 		return 0
 
 	def get_limit(self, res):
@@ -52,6 +52,9 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 
 	def __getitem__(self, res):
 		return self._storage[res] if res in self._storage else 0
+
+	def __str__(self):
+		return str(self._storage)
 
 class SpecializedStorage(GenericStorage): # NOT TESTED! NEEDS WORK!
 	def alter(self, res, amount):
