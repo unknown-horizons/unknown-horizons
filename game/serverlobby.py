@@ -120,7 +120,7 @@ class ClientServerLobby(ServerLobby):
 		self.gui.distributeInitialData({
 			'bots' : [] if o['bots'] is None else [o['bots']],
 			'server_slots' : [] if o['slots'] is None else [o['slots']],
-			'maplist' : [] if len(o['maps']) is 0 else o['maps'][1]
+			'maplist' : [] if len(o['maps']) == 0 else o['maps'][1]
 		})
 
 		self.gui.distributeData({

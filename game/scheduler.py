@@ -44,7 +44,7 @@ class Scheduler(livingObject):
 			for callback in self.schedule[self.cur_tick]:
 				callback.callback()
 				assert callback.loops >= -1
-				if callback.loops is not 0:
+				if callback.loops != 0:
 					self.add_object(callback) # readd object
 			del self.schedule[self.cur_tick]
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
@@ -119,7 +119,7 @@ class CallbackObject(object):
 		if runin < 1:
 			raise ValueError("Can't schedule callbacks in the past, runin must be a positive number")
 
-		if (loops < -1) or (loops is 0):
+		if (loops < -1) or (loops == 0):
 			raise ValueError("Loop count must be a positive number or -1 for infinite repeat")
 
 		self.callback = WeakMethod(callback)
