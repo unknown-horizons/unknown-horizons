@@ -238,24 +238,25 @@ class Fife(object):
 		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
+		self.emitter = {}
 		if game.main.settings.sound.enabled: # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
-			self.bgsound = self.soundmanager.createEmitter()
-			self.bgsound.setGain(game.main.settings.sound.volume_music)
-			self.bgsound.setLooping(False)
-			self.effect_sound = self.soundmanager.createEmitter()
-			self.effect_sound.setGain(game.main.settings.sound.volume_effects)
-			self.effect_sound.setLooping(False)
-			self.speech_emitter = self.soundmanager.createEmitter()
-			self.speech_emitter.setGain(game.main.settings.sound.volume_effects)
-			self.speech_emitter.setLooping(False)
+			self.emitter['bgsound'] = self.soundmanager.createEmitter()
+			self.emitter['bgsound'].setGain(game.main.settings.sound.volume_music)
+			self.emitter['bgsound'].setLooping(False)
+			self.emitter['effects'] = self.soundmanager.createEmitter()
+			self.emitter['effects'].setGain(game.main.settings.sound.volume_effects)
+			self.emitter['effects'].setLooping(False)
+			self.emitter['speech'] = self.soundmanager.createEmitter()
+			self.emitter['speech'].setGain(game.main.settings.sound.volume_effects)
+			self.emitter['speech'].setLooping(False)
 			self.music_rand_element = random.randint(0, len(self.music) - 1)
 			def check_music():
 				if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
-					if self._bgsound_old_byte_pos == game.main.fife.bgsound.getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == game.main.fife.bgsound.getCursor(fife.SD_SAMPLE_POS):
+					if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
 						self.music_rand_element = self.music_rand_element + 1 if self.music_rand_element + 1 < len(self.music) else 0
-						self.play_sound(self.bgsound, self.music[self.music_rand_element])
-				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = game.main.fife.bgsound.getCursor(fife.SD_BYTE_POS), game.main.fife.bgsound.getCursor(fife.SD_SAMPLE_POS)
+						self.play_sound('bgsound', self.music[self.music_rand_element])
+				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 			check_music() # Start background music
 			game.main.ext_scheduler.add_new_object(check_music, self, loops=-1)
 		self.imagepool = self.engine.getImagePool()
@@ -281,9 +282,10 @@ class Fife(object):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: fife.Emitter instance that is to play the  sound
+		@param emitter: string with the emitters name in game.main.fife.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
 		if game.main.settings.sound.enabled: # Set up sound if it is enabled
+			emitter = game.main.fife.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
