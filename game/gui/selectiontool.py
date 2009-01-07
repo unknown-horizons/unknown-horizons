@@ -21,6 +21,7 @@
 
 from navigationtool import NavigationTool
 from game.world.units import UnitClass
+from game.world.units.unit import Unit
 from game.world.units.ship import Ship
 from game.command.unit import Act
 from game.util import WeakList
@@ -140,7 +141,8 @@ class SelectionTool(NavigationTool):
 			if len(game.main.session.selected_instances) == 1 and any(hasattr(i, 'act') for i in game.main.session.selected_instances):
 				target_mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 				for i in game.main.session.selected_instances:
-					game.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
+					if isinstance(i, Unit):
+						game.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
 		else:
 			super(SelectionTool, self).mousePressed(evt)
 			return
