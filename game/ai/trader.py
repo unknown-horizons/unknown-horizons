@@ -95,11 +95,12 @@ class Trader(Player, StorageHolder):
 				else: # if not, return the money taken
 					settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
 		for res, key in settlement.sell_list.iteritems():
-			rand = random.randint(0,4) # select a random amount to buy from the settlement
+			rand = random.randint(0,settlement.inventory.limit-key) # select a random amount to buy from the settlement
 			if settlement.inventory[res] <= key:
 				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
-				alter = -rand if settlement.inventory[res]-key >= rand else settlement.inventory[res]-key
+				alter = -rand if settlement.inventory[res]-key >= rand else -(settlement.inventory[res]-key)
+				print "Altering:", alter
 				settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9)) # pay for bought resources
 				settlement.inventory.alter(res, alter)
 		self.office = None
