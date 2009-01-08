@@ -44,6 +44,11 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
 
+	def create_carriage(self):
+		"""Add a FieldCollector"""
+		self.local_carriages.append(game.main.session.entities.units[9](self))
+
+
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 	pass
 

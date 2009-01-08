@@ -110,8 +110,7 @@ class BuildingCollector(StorageHolder, Unit):
 						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_limit(res), max_consumer_res_free)))
 
 		# sort job list
-		jobs.sort(key=operator.attrgetter('rating') )
-		jobs.reverse()
+		jobs = self.sort_jobs(jobs)
 
 		for job in jobs:
 			if self.check_move(job.object.position):
@@ -122,6 +121,17 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Executes the necessary actions to begin a new job"""
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
+
+
+	def sort_jobs(self, jobs):
+		"""Sorts the jobs for further processing. This has been moved to a seperate function so it
+		can be overwritten by subclasses. A building collector might sort after a specific rating,
+		a lumberjack might just take a random tree.
+		@param jobs: list of Job instances that should be sorted an then returned.
+		@return: sorted list of Job instances."""
+		jobs.sort(key=operator.attrgetter('rating') )
+		jobs.reverse()
+		return jobs
 
 	def begin_current_job(self):
 		"""Executes the current job"""
@@ -225,6 +235,22 @@ class StorageCollector(BuildingCollector):
 		"""Declare target of StorageCollector as building, because it always is"""
 		super(StorageCollector, self).begin_current_job()
 		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
+
+class FieldCollector(BuildingCollector):
+	""" Simular to the BuildingCollector but used on farms for example.
+	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
+	look of farm using."""
+
+	def sort_jobs(self, jobs):
+		"""Sorts the jobs for further processing. This has been moved to a seperate function so it
+		can be overwritten by subclasses. A building collector might sort after a specific rating,
+		a lumberjack might just take a random tree.
+		@param jobs: list of Job instances that should be sorted an then returned.
+		@return: sorted list of Job instances."""
+		from random import shuffle
+		shuffle(jobs)
+		return jobs
+
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
