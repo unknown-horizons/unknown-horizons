@@ -180,6 +180,7 @@ class BuildingTool(NavigationTool):
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.endPoint != point:
 			self.endPoint = point
+			assert self.startPoint is not None, "startPoint is None"
 			self.previewBuild(self.startPoint, point)
 		evt.consume()
 

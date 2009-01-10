@@ -92,22 +92,37 @@ class BuildingCollector(StorageHolder, Unit):
 			return None
 		jobs = []
 		for building in self.get_buildings_in_range():
-			#if isinstance(building, self.home_building().__class__): # Continue if building is of the same class as the home building, to prevent e.g. weaver picking up from weaver.
-			#	continue
+			# Continue if building is of the same class as the home building or
+			# they have the same inventory, to prevent e.g. weaver picking up from weaver.
+			if isinstance(building, self.home_building().__class__) or \
+			   building.inventory is self.home_building().inventory:
+				continue
 			for res in collectable_res:
-				if isinstance(building, PrimaryProducer) and building.active_production_line is not None and building.production[building.active_production_line].production.get(res,1) < 0:
+				if isinstance(building, PrimaryProducer) and \
+				   building.active_production_line is not None and \
+				   building.production[building.active_production_line].production.get(res,1) < 0:
 					break
 				res_amount = building.inventory[res]
 				if res_amount > 0:
 					# get sum of picked up resources by other collectors for res
-					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
+					total_pickup_amount = sum([ carriage.job.amount for carriage in \
+												building._Provider__collectors if \
+												carriage.job.res == res ])
 					# check how much will be delivered
-					total_registered_amount_consumer = sum([ carriage.job.amount for carriage in self.home_building()._Consumer__collectors if carriage.job.res == res ])
+					total_registered_amount_consumer = sum([ carriage.job.amount for \
+															 carriage in \
+															 self.home_building()._Consumer__collectors if \
+															 carriage.job.res == res ])
 					# check if there are resources left to pickup
-					max_consumer_res_free = self.home_building().inventory.get_limit(res)-(total_registered_amount_consumer+self.home_building().inventory[res])
+					max_consumer_res_free = self.home_building().inventory.get_limit(res)-\
+										  (total_registered_amount_consumer+\
+										   self.home_building().inventory[res])
 					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
 						# add a new job
-						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_limit(res), max_consumer_res_free)))
+						jobs.append(Job(building, res, min(res_amount - \
+														   total_pickup_amount,\
+														   self.inventory.get_limit(res), \
+														   max_consumer_res_free)))
 
 		# sort job list
 		jobs = self.sort_jobs(jobs)
