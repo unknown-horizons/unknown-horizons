@@ -72,31 +72,44 @@ class BuySellWidget(object):
 			content.addChild(slot)
 		self.widget._recursiveResizeToContent()
 
-	def add_ressource(self, res_id, slot, value=None):
+	def add_ressource(self, res_id, slot_id, value=None):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
-		slot = self.slots[slot]
+		slot = self.slots[slot_id]
+		if slot.action is "sell":
+			if slot.res is not None:
+				del self.settlement.sell_list[slot.res]
+			if res_id != 0:
+				self.add_sell_to_settlement(res_id, value, slot.id)
+			print "Settement sell", self.settlement.sell_list
+		else:
+			if slot.action is "buy" and slot.res is not None:
+				del self.settlement.buy_list[slot.res]
+			if res_id != 0:
+				self.add_buy_to_settlement(res_id, value, slot.id)
+			print "Settlement buy", self.settlement.buy_list
 		if self.resources is not None:
 			self.resources.hide()
 			self.show()
 		if value is None:
 			value = self.settlement.inventory.limit/2
-		button = slot.findChild(name="button")
-		button.up_image, button.down_image, = (game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
-		button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
-		slot.findChild(name="amount").text = str(value)+"t"
 		slider = slot.findChild(name="slider")
 		slider.setValue(float(value)) # set first value to half inventory size
-		slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
-		if slot.action is "sell":
-			del self.settlement.sell_list[slot.res]
-			self.add_sell_to_settlement(res_id, value, slot.id)
+		if res_id == 0:
+			icon = "content/gui/images/icons/hud/build/dummy_btn.png"
+			button = slot.findChild(name="button")
+			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			slot.findChild(name="amount").text = ""
+			slot.res = None
+			slider.capture(None)
 		else:
-			if slot.action is "buy":
-				del self.settlement.buy_list[slot.res]
-			self.add_buy_to_settlement(res_id, value, slot.id)
-		slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
+			button = slot.findChild(name="button")
+			button.up_image, button.down_image, = (game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
+			button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
+			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
+			slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
+			slot.findChild(name="amount").text = str(value)+"t"
 		slot._recursiveResizeToContent()
 
 	def toggle_buysell(self, slot):
@@ -141,6 +154,7 @@ class BuySellWidget(object):
 		elif self.slots[slot].action is "sell":
 			self.add_sell_to_settlement(res_id, int(slider.getValue()), slot)
 		self.slots[slot].findChild(name="amount").text = str(int(slider.getValue()))+'t'
+		self.slots[slot]._recursiveResizeToContent()
 
 
 
@@ -152,7 +166,12 @@ class BuySellWidget(object):
 		vbox.width = self.resources.width
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
-		for (res_id,icon) in game.main.db("SELECT rowid, icon FROM resource"):
+		resources = game.main.db("SELECT rowid, icon FROM resource")
+		# Add the zero element to the beginnig that allows to remove the currently sold
+		# or bought resource
+		if self.slots[slot_id].res is not None:
+			resources.insert(0,(0,"content/gui/images/icons/hud/build/dummy_btn.png"))
+		for (res_id,icon) in resources:
 			if res_id == 1:
 				continue # don't show coins
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
