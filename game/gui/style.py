@@ -101,7 +101,7 @@ STYLES= {
 		},
 		'Label' : {
 			'border_size': 0,
-			'font' : 'Essays1743-Italic_13'
+			'font' : 'Essays1743-Italic_14'
 		}
 	}
 }
