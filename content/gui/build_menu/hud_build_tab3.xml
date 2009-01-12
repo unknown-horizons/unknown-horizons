@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!-- Military tab -->
 <Container name="tab0" size="533,190">
-	<Label position="5,5" text="Military" />
-	<Icon position="5,58" image="content/gui/images/icons/hud/common/class1.png" />
+	<Label position="10,5" text="Military" />
+	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
 	<!-- Uncomment if implented
 	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
 	<Icon position="5,149" image="content/gui/images/icons/hud/common/class3.png" />
@@ -10,7 +10,9 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="tower-1" position="58,58" up_image="content/gui/images/icons/hud/build/lookout.png" hover_image="content/gui/images/icons/hud/build/lookout_h.png" down_image="content/gui/images/icons/hud/build/lookout_h.png" text="Lookout" />
+	<ImageButton name="tower-1" position="48,25" up_image="content/gui/images/icons/hud/build/lookout.png" hover_image="content/gui/images/icons/hud/build/lookout_h.png" down_image="content/gui/images/icons/hud/build/lookout_h.png" text="" />
+	<Label position="61,83" text="Lookout" />
 
-	<ImageButton name="wall-1" position="110,58" up_image="content/gui/images/icons/hud/build/rampart.png" hover_image="content/gui/images/icons/hud/build/rampart_h.png" down_image="content/gui/images/icons/hud/build/rampart_h.png" text="Rampart" />
+	<ImageButton name="wall-1" position="113,25" up_image="content/gui/images/icons/hud/build/rampart.png" hover_image="content/gui/images/icons/hud/build/rampart_h.png" down_image="content/gui/images/icons/hud/build/rampart_h.png" text="" />
+	 <Label position="122,83" text="Rampart" />
 </Container>

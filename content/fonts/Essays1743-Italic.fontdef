@@ -1,3 +1,14 @@
+[Font/Essays1743-Italic_13]
+
+type: truetype
+source: content/fonts/Essays1743-Italic.ttf
+size: 14
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+
 [Font/Essays1743-Italic_small]
 
 type: truetype
