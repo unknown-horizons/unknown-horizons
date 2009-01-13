@@ -50,10 +50,10 @@ class BuildingTool(NavigationTool):
 		self.buildings = []
 		self.rotation = 45 + random.randint(0,3)*90
 		self.startPoint, self.endPoint = None, None
+		self.last_change_listener = None
 		self.load_gui()
 		if not self._class.class_package == 'path':
 			self.gui.show()
-
 
 		game.main.onEscape = self.onEscape
 
@@ -83,6 +83,8 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		game.main.session.view.removeChangeListener(self.draw_gui)
+		if self.last_change_listener is not None:
+			self.last_change_listener.removeChangeListener(self.update_preview)
 		self.gui.hide()
 		super(BuildingTool, self).end()
 
@@ -135,6 +137,12 @@ class BuildingTool(NavigationTool):
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
 		game.main.session.ingame_gui.resourceinfo_set(self.ship if self.ship is not None else settlement, neededResources, usableResources)
+		if self.last_change_listener != self.ship if self.ship is not None else settlement:
+			if self.last_change_listener is not None:
+				self.last_change_listener.removeChangeListener(self.update_preview)
+			self.last_change_listener = self.ship if self.ship is not None else settlement
+			if self.last_change_listener is not None:
+				self.last_change_listener.addChangeListener(self.update_preview)
 
 	def onEscape(self):
 		game.main.session.ingame_gui.resourceinfo_set(None)
@@ -215,16 +223,17 @@ class BuildingTool(NavigationTool):
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
-
+	
+	def update_preview(self):
+		if self.startPoint is not None:
+			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
-		if self.startPoint is not None:
-			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+		self.update_preview()
 		self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
-		if self.startPoint is not None:
-			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+		self.update_preview()
 		self.draw_gui()
