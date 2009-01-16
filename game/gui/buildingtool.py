@@ -83,9 +83,8 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		game.main.session.view.removeChangeListener(self.draw_gui)
-		if self.last_change_listener is not None and self.last_change_listener.hasChangeListener(self.update_preview):
-			self.last_change_listener.removeChangeListener(self.update_preview)
 		self.gui.hide()
+		self.reset_listeners()
 		super(BuildingTool, self).end()
 
 	def load_gui(self):
@@ -138,9 +137,8 @@ class BuildingTool(NavigationTool):
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 					game.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
 		game.main.session.ingame_gui.resourceinfo_set(self.ship if self.ship is not None else settlement, neededResources, usableResources)
+		self.reset_listeners()
 		if self.last_change_listener != self.ship if self.ship is not None else settlement:
-			if self.last_change_listener is not None:
-				self.last_change_listener.removeChangeListener(self.update_preview)
 			self.last_change_listener = self.ship if self.ship is not None else settlement
 			if self.last_change_listener is not None:
 				self.last_change_listener.addChangeListener(self.update_preview)
@@ -205,12 +203,11 @@ class BuildingTool(NavigationTool):
 				self.endPoint = None
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
-			if self.last_change_listener is not None:
-				self.last_change_listener.removeChangeListener(self.update_preview)
 			print "Building...."
 
 			for building in self.buildings:
 				if building['buildable']:
+					self.reset_listeners() # Remove changelisteners for update_preview
 					found_buildable = True
 					game.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
 					args = default_args.copy()
@@ -228,6 +225,13 @@ class BuildingTool(NavigationTool):
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
+
+	def reset_listeners(self):
+		"""Resets the ChangeListener for update_preview."""
+		if self.last_change_listener is not None and \
+		   self.last_change_listener.hasChangeListener(self.update_preview):
+			self.last_change_listener.removeChangeListener(self.update_preview)
+		self.last_change_listener = None
 
 	def update_preview(self):
 		if self.startPoint is not None:
