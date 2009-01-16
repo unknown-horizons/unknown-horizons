@@ -83,7 +83,7 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		game.main.session.view.removeChangeListener(self.draw_gui)
-		if self.last_change_listener is not None:
+		if self.last_change_listener is not None and self.last_change_listener.hasChangeListener(self.update_preview):
 			self.last_change_listener.removeChangeListener(self.update_preview)
 		self.gui.hide()
 		super(BuildingTool, self).end()
@@ -112,6 +112,7 @@ class BuildingTool(NavigationTool):
 		self.gui.resizeToContent()
 
 	def previewBuild(self, point1, point2):
+		print "PREVIEW BUILD"
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.buildings = self._class.getBuildList(point1, point2, ship = self.ship, rotation = self.rotation)
@@ -204,6 +205,10 @@ class BuildingTool(NavigationTool):
 				self.endPoint = None
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
+			if self.last_change_listener is not None:
+				self.last_change_listener.removeChangeListener(self.update_preview)
+			print "Building...."
+
 			for building in self.buildings:
 				if building['buildable']:
 					found_buildable = True
@@ -223,7 +228,7 @@ class BuildingTool(NavigationTool):
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
-	
+
 	def update_preview(self):
 		if self.startPoint is not None:
 			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
