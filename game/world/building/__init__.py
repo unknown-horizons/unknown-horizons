@@ -112,13 +112,13 @@ class BuildingClass(type):
 				fife.ActionVisual.create(action)
 				for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action WHERE action_set_id=? and action=?", action_set_id, action_id):
 					if rotation == 45:
-						command = 'left-16,bottom+' + str(cls.size[0] * 8)
+						command = 'left-32,bottom+' + str(cls.size[0] * 16)
 					elif rotation == 135:
-						command = 'left-' + str(cls.size[1] * 16) + ',bottom+8'
+						command = 'left-' + str(cls.size[1] * 32) + ',bottom+16'
 					elif rotation == 225:
-						command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 16) + ',bottom+' + str(cls.size[1] * 8)
+						command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 32) + ',bottom+' + str(cls.size[1] * 16)
 					elif rotation == 315:
-						command = 'left-' + str(cls.size[0] * 16) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 8)
+						command = 'left-' + str(cls.size[0] * 32) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 16)
 					else:
 						print "ERROR"
 						continue
