@@ -21,17 +21,15 @@
 
 import fife
 import game.main
-from game.util import livingObject
 
-class CursorTool(livingObject, fife.IMouseListener):
+class CursorTool(fife.IMouseListener):
 	"""Basic tool for cursors."""
-	def begin(self):
-		super(CursorTool, self).begin()
+	def __init__(self):
+		super(CursorTool, self).__init__()
 		game.main.fife.eventmanager.addMouseListener(self)
 
-	def end(self):
+	def __del__(self):
 		game.main.fife.eventmanager.removeMouseListener(self)
-		super(CursorTool, self).end()
 
 	def mousePressed(self, evt):
 		pass

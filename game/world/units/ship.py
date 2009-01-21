@@ -96,7 +96,7 @@ class Ship(Unit):
 				'trade': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui.show_menu, TradeWidget(self))
 			}
 		}
-		game.main.session.ingame_gui.show_menu(TabWidget(3, self, callbacks))
+		game.main.session.ingame_gui.show_menu(TabWidget(3, object=self, callbacks=callbacks))
 
 	def go(self, x, y):
 		"""Moves the ship.

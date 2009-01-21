@@ -23,12 +23,12 @@ import fife
 import math
 import time
 import game.main
-from game.util import livingObject
+
 from game.util import Changelistener
 
-class View(livingObject, Changelistener):
+class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
-	def begin(self, center = (0, 0)):
+	def __init__(self, center = (0, 0)):
 		"""
 		@param center: center position for the main camera
 		"""
@@ -72,12 +72,12 @@ class View(livingObject, Changelistener):
 		game.main.settings.view.zoom.max = 4
 		game.main.settings.view.zoom.min = 0.25
 
-	def end(self):
+	def __del__(self):
 		"""
 		"""
 		self.model.deleteMaps()
 		self.view.clearCameras()
-		super(View, self).end()
+		super(View, self).__del__()
 
 	def center(self, x, y):
 		"""Sets the camera position

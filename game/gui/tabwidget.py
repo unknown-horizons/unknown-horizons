@@ -22,16 +22,18 @@
 import weakref
 
 import pychan
-
 import game.main
 from game.util.inventory_widget import Inventory
 
 class TabWidget(object):
 	"""Used to create menus for buildings, ships, etc. Uses multiple tabs.
-	@var object: instance of an object that is later used to fill the tabs with information. Can be None for widgets that don't need any external information
-	@var system_id: int id of the tab_system, used to get all the tabs for this widget from the db
-	@var callbacks: dict(dict) like this: {'widgetname1': callbackdict, 'widgetname2': callbackdict}. Does not have to be provided."""
-	def __init__(self, system_id, object=None, callbacks={}):
+	@param object: instance of an object that is later used to fill the tabs with information. Can be None for widgets that don't need any external information
+	@param system_id: int id of the tab_system, used to get all the tabs for this widget from the db
+	@param callbacks: dict(dict) like this: {'widgetname1': callbackdict, 'widgetname2': callbackdict}. Does not have to be provided.
+	@param ingame_gui: IngameGui instance, needs to be provided only if the session has not been fully inited
+	"""
+	def __init__(self, system_id, ingamegui=None, object=None, callbacks={}):
+		ingame_gui = ingamegui if ingamegui is not None else game.main.session.ingame_gui
 		self.object = None if object is None else weakref.ref(object)
 		self.tabs = []
 		for name, xml, up, down, hover in game.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM data.tab_system LEFT JOIN data.tabs ON tabs.rowid = tab_system.tab WHERE tab_system.system=? ORDER BY tab_system.position", system_id):
@@ -39,7 +41,7 @@ class TabWidget(object):
 		self.widget = game.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
 		self.widget.stylize('menu')
 		self.widget.position = (
-			game.main.session.ingame_gui.gui['minimap'].position[1] - game.main.session.ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			ingame_gui.gui['minimap'].position[1] - ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
 			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
 		self.widget.active = 0 # index of the currently active tab
@@ -69,6 +71,9 @@ class TabWidget(object):
 
 	def _update_active(self):
 		self.tabs[self.widget.active].update(None if self.object is None else self.object())
+
+	def set_position(x,y):
+		self.widget.position = (x,y)
 
 	def show(self):
 		"""Shows the widget."""

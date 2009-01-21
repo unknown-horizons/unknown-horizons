@@ -87,7 +87,6 @@ def start():
 	fife.init()
 
 	mainlistener = MainListener()
-	mainlistener.begin()
 	connection = None
 	session = None
 	gui = None
@@ -451,7 +450,7 @@ def startSingle():
 		gui = None
 
 		session = Session()
-		session.begin()
+		session.init_session()
 		session.load(map_file, 'Arthur', Color()) # temp fix to display gold
 
 def showMulti():
@@ -656,7 +655,6 @@ def quitSession():
 	if showDialog(fife.pychan.loadXML('content/gui/quitsession.xml'), {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 		gui.hide()
 		gui = None
-		session.end()
 		session = None
 		showMain()
 
@@ -747,7 +745,6 @@ def loadGame(savegame = None):
 	assert(os.path.exists(savegamefile))
 
 	if session is not None:
-		session.end()
 		session = None
 
 	if gui is not None:
@@ -759,7 +756,6 @@ def loadGame(savegame = None):
 	fife.engine.pump()
 
 	session = Session()
-	session.begin()
 	session.load(savegamefile)
 	returnGame()
 

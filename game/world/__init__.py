@@ -26,11 +26,10 @@ import weakref
 import game.main
 from game.world.island import Island
 from game.world.player import Player
-from game.util import livingObject, Point, Color
+from game.util import Point, Color
 
-class World(livingObject):
+class World(object):
 	"""The World class represents an OpenAnno map with all its units, grounds, buildings, etc.
-	   It's derived from livingObject, check out game.util.living for more information on that.
 	   A World instance holds a lot of important lists:
 	   * players - a list of all the sessios's players - Player instances
 	   * islands - a list of all the map's islands - Island instances
@@ -42,9 +41,12 @@ class World(livingObject):
 	   * ship_map - same as ground_map, but for ships
 
 	"""
-	def begin(self, db):
+	def __init__(self, **kwargs):
 		"""@param db: DbReader instance with the map/savegame that is to be loaded
 		"""
+		super(World, self).__init__()
+
+	def _init(self, db):
 		#load properties
 		self.properties = {}
 		for (name, value) in db("select name, value from map_properties"):
@@ -120,7 +122,7 @@ class World(livingObject):
 		# Fire a message for new world creation
 		game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
-		To digg deaper, you should have taken a look at the livingObject class and should now continue to game/world/island.py,
+		To digg deaper, you should now continue to game/world/island.py,
 		to check out how buildings and settlements are added to the map"""
 
 	def setupPlayer(self, name, color):

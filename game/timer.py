@@ -21,20 +21,20 @@
 
 import time
 import game.main
-from game.util import livingObject
 
-class Timer(livingObject):
+
+class Timer(object):
 	"""
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is especially important for multiplayer, to allow synchronous play.
 	"""
 	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 
-	def begin(self, tick_next_id = 0):
+	def __init__(self, tick_next_id = 0):
 		"""
 		@param tick_next_id: int next tick id
 		"""
-		super(Timer, self).begin()
+		super(Timer, self).__init__()
 		game.main.settings.addCategorys('ticks')
 		game.main.settings.ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
 		self.ticks_per_second = game.main.settings.ticks.default
@@ -44,9 +44,9 @@ class Timer(livingObject):
 		self.tick_func_call = []
 		game.main.fife.pump.append(self.check_tick)
 
-	def end(self):
+	def __del__(self):
 		game.main.fife.pump.remove(self.check_tick)
-		super(Timer, self).end()
+		super(Timer, self).__del__()
 
 	def add_test(self, call):
 		"""Adds a call to the test list

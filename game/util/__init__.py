@@ -21,7 +21,7 @@
 
 __all__ = []
 
-from living import livingProperty, livingObject
+from living import livingProperty
 from stablelist import stablelist
 from color import Color
 from point import Point

@@ -22,15 +22,15 @@
 import game.timer
 import game.main
 from game.packets import TickPacket
-from game.util import livingObject
+
 from game.util import encode, decode
 from game.util import WorldObject
 
-class SPManager(livingObject):
+class SPManager(object):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
 	over the network, and syncronisation of network games."""
 
-	def begin(self):
+	def __init__(self):
 		self.recording = False
 		self.commands = []
 
@@ -64,11 +64,11 @@ class SPManager(livingObject):
 		if len(self.commands) == 0:
 			game.main.session.timer.remove_call(self.tick)
 
-class MPManager(livingObject):
+class MPManager(object):
 	COMMAND_RATE = 1
-	def begin(self):
+	def __init__(self):
 		"""Initialize the Multiplayer Manager"""
-		super(MPManager, self).begin()
+		super(MPManager, self).__init__()
 		game.timer.add_test(this.can_tick)
 		game.timer.add_call(this.tick)
 		self.commands = []

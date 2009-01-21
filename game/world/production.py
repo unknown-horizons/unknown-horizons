@@ -170,7 +170,7 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 				'toggle_active': self.toggle_active
 			}
 		}
-		game.main.session.ingame_gui.show_menu(TabWidget(4, self, callbacks))
+		game.main.session.ingame_gui.show_menu(TabWidget(4, object=self, callbacks=callbacks))
 
 
 class ProductionLine(object):

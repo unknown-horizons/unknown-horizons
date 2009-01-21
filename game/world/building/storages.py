@@ -61,10 +61,11 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 	def show_menu(self):
 		callbacks = {
 			'building_overview': {
-				'buysell': game.main.fife.pychan.tools.callbackWithArguments(game.main.session.ingame_gui.show_menu, BuySellWidget(3,self.settlement))
+				'buysell': game.main.fife.pychan.tools.callbackWithArguments(\
+					game.main.session.ingame_gui.show_menu, BuySellWidget(3,self.settlement))
 			}
 		}
-		game.main.session.ingame_gui.show_menu(TabWidget(2, self,callbacks))
+		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self,callbacks=callbacks))
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
@@ -81,7 +82,8 @@ class BranchOffice(StorageBuilding):
 		if len(settlements) != 0:
 			return {'buildable' : False}
 		#ship check
-		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
+		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + \
+		   (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
 			return {'buildable' : False}
 		return {'settlement' : None}
 

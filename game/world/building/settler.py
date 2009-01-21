@@ -112,7 +112,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 			self._Consumer__resources[0].append(res)
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(2, self))
+		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
 
 	def get_consumed_res(self):
 		"""Returns list of resources, that the building uses, without

@@ -39,8 +39,8 @@ class TearingTool(NavigationTool):
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False
 	"""
 
-	def begin(self):
-		super(TearingTool, self).begin()
+	def __init__(self):
+		super(TearingTool, self).__init__()
 		self.coords = None
 		self.selected = []
 		self.oldedges = None
@@ -48,9 +48,9 @@ class TearingTool(NavigationTool):
 		cursor_image = game.main.fife.imagepool.addResourceFromFile('content/gui/images/misc/cursor_tear.png')
 		game.main.fife.cursor.set(fife.CURSOR_IMAGE, cursor_image)
 
-	def end(self):
+	def __del__(self):
 		game.main.onEscape = lambda : None
-		super(TearingTool, self).end()
+		super(TearingTool, self).__del__()
 		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.default_cursor_image)
 
 	def mouseDragged(self, evt):

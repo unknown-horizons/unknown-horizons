@@ -35,13 +35,13 @@ class SelectionTool(NavigationTool):
 	"""The Selectiontool is used to select instances on the game screen.
 	@param game: the main game Instance
 	"""
-	def begin(self):
-		super(SelectionTool, self).begin()
+	def __init__(self):
+		super(SelectionTool, self).__init__()
 		game.main.onEscape = game.main.showPause
 
-	def end(self):
+	def __del__(self):
 		game.main.onEscape = lambda : None
-		super(SelectionTool, self).end()
+		super(SelectionTool, self).__del__()
 
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):

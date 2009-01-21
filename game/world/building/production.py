@@ -55,7 +55,7 @@ class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(4, self))
+		game.main.session.ingame_gui.show_menu(TabWidget(4, object=self))
 
 	@classmethod
 	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):

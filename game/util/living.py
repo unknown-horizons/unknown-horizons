@@ -21,43 +21,19 @@
 
 class livingProperty(object):
 	def __init__(self):
-		self.values = {}
+		self.__value = None
 
 	def __get__(self, obj, cls=None):
-		return self.values.get(obj, None)
+		return self.__value
 
 	def __set__(self, obj, value):
-		if obj in self.values and hasattr(self.values[obj], 'end'):
-			self.values[obj].end()
-		if value is None:
-			del self.values[obj]
-		else:
-			self.values[obj] = value
-			if hasattr(value, 'begin'):
-				print 'Beginning:', value
-				tmp1, tmp2 = value._livingObject_args, value._livingObject_kwargs
-				del value._livingObject_args
-				del value._livingObject_kwargs
-				value.begin(*tmp1, **tmp2)
+		print "Setting:", obj, value
+		if hasattr(self.__value, '__del__'):
+			self.__value.__del__()
+		self.__value = value
 
 	def __delete__(self, obj):
 		self.__set__(obj, None)
 
-class livingObject(object):
-	def __init__(self, *args, **kwargs):
-		print 'Initing:', self
-		super(livingObject, self).__init__()
-		self._livingObject_args = args
-		self._livingObject_kwargs = kwargs
-
-	def begin(self):
-		pass
-
-	def end(self):
-		for p in self.__dict__.keys()[:]:
-			delattr(self, p)
-		self._is_ended = True
-
 	def __del__(self):
-		if not (hasattr(self, '_is_ended') and self._is_ended):
-			print "Warning: Object %s is not ended but no reference is left." % (repr(self),)
+		self.__value = None

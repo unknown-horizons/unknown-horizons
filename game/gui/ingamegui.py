@@ -23,16 +23,15 @@ from buildingtool import BuildingTool
 from selectiontool import SelectionTool
 import game.main
 import fife
-from game.util import livingObject
 from messagewidget import MessageWidget
 from tabwidget import TabWidget
 from game.world.settlement import Settlement
 from buysellwidget import BuySellWidget
 
-class IngameGui(livingObject):
+class IngameGui(object):
 	"""Class handling all the ingame gui events."""
-	def begin(self):
-		super(IngameGui, self).begin()
+	def __init__(self):
+		super(IngameGui, self).__init__()
 		self.gui = {}
 		self.tabwidgets = {}
 		self.settlement = None
@@ -148,7 +147,7 @@ class IngameGui(livingObject):
 		}
 		}
 
-		self.tabwidgets['build'] = TabWidget(1, callbacks=callbacks_build)
+		self.tabwidgets['build'] = TabWidget(1, ingamegui=self, callbacks=callbacks_build)
 		self.gui['build'] = self.tabwidgets['build'].widget
 
 		self.gui['buildinfo'] = game.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
@@ -158,7 +157,7 @@ class IngameGui(livingObject):
 		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
 		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
 
-	def end(self):
+	def __del__(self):
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : None
 		})
@@ -190,7 +189,7 @@ class IngameGui(livingObject):
 		self.message_widget = None
 		self.tabwidgets = None
 		self.hide_menu()
-		super(IngameGui, self).end()
+		super(IngameGui, self).__del__()
 
 	def update_gold(self):
 		res_id = 1

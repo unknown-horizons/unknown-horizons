@@ -28,8 +28,8 @@ class NavigationTool(CursorTool):
 	"""The Selectiontool is used to select instances on the game screen.
 	@param game: the main game Instance
 	"""
-	def begin(self):
-		super(NavigationTool, self).begin()
+	def __init__(self):
+		super(NavigationTool, self).__init__()
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.debug = False
@@ -41,10 +41,10 @@ class NavigationTool(CursorTool):
 		game.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
-	def end(self):
+	def __del__(self):
 		game.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		super(NavigationTool, self).end()
+		super(NavigationTool, self).__del__()
 
 	def mousePressed(self, evt):
 		#print game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).x, game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).y

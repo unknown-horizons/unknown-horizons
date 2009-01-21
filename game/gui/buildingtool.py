@@ -41,10 +41,10 @@ class BuildingTool(NavigationTool):
 	@param ship: If building from a ship, restrict to range of ship
 	"""
 
-	def begin(self, building, ship = None):
+	def __init__(self, building, ship = None):
 		import random
 
-		super(BuildingTool, self).begin()
+		super(BuildingTool, self).__init__()
 		self.ship = ship
 		self._class = building
 		self.buildings = []
@@ -78,14 +78,14 @@ class BuildingTool(NavigationTool):
 			if not found_free:
 				self.onEscape()
 
-	def end(self):
+	def __del__(self):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		game.main.session.view.removeChangeListener(self.draw_gui)
 		self.gui.hide()
 		self.reset_listeners()
-		super(BuildingTool, self).end()
+		super(BuildingTool, self).__del__()
 
 	def load_gui(self):
 		self.gui = game.main.fife.pychan.loadXML("content/gui/build_menu/hud_builddetail.xml")

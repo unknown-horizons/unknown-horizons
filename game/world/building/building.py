@@ -63,7 +63,7 @@ class Building(WorldObject):
 
 	def remove(self):
 		"""Removes the building"""
-		#print "BUILDING: REMOVE %s" % self.getId()
+		print "BUILDING: REMOVE %s" % self.getId()
 		self.settlement.rem_inhabitants(self.inhabitants)
 		self.island().remove_building(self)
 		game.main.session.ingame_gui.hide_menu()

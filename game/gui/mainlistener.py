@@ -24,13 +24,12 @@ import game.main
 import code
 import sys
 import datetime
-from game.util import livingObject
 
-class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
+class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 	"""MainListener Class to process events of main window"""
 
-	def begin(self):
-		super(MainListener, self).begin()
+	def __init__(self):
+		super(MainListener, self).__init__()
 		fife.IKeyListener.__init__(self)
 		fife.ConsoleExecuter.__init__(self)
 		game.main.fife.eventmanager.addKeyListener(self)
@@ -44,9 +43,9 @@ class MainListener(livingObject, fife.IKeyListener, fife.ConsoleExecuter):
 
 		self.commandbuffer = ''
 
-	def end(self):
+	def __del__(self):
 		game.main.fife.eventmanager.removeKeyListener(self)
-		super(MainListener, self).end()
+		super(MainListener, self).__del__()
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()

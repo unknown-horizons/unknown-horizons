@@ -42,9 +42,9 @@ from game.manager import SPManager
 from game.view import View
 from game.world import World
 from game.entities import Entities
-from game.util import livingObject, livingProperty, WorldObject
+from game.util import livingProperty, WorldObject
 
-class Session(livingObject):
+class Session(object):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
 
 	This is the most important class if you are going to hack on OpenAnno, it provides most of
@@ -77,8 +77,10 @@ class Session(livingObject):
 	cursor = livingProperty()
 	world = livingProperty()
 
-	def begin(self):
-		super(Session, self).begin()
+	def __init__(self):
+		super(Session, self).__init__()
+
+	def init_session(self):
 
 		WorldObject.reset()
 
@@ -101,7 +103,7 @@ class Session(livingObject):
 		#if game.main.settings.savegame.autosaveinterval != 0:
 		#game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
 
-	def end(self):
+	def __del__(self):
 		self.scheduler.rem_all_classinst_calls(self)
 
 		self.cursor = None
@@ -116,7 +118,7 @@ class Session(livingObject):
 
 		self.selected_instances = None
 		self.selection_groups = None
-		super(Session, self).end()
+		super(Session, self).__del__()
 
 	def autosave(self):
 		"""Called automatically in an interval"""
@@ -185,7 +187,8 @@ class Session(livingObject):
 		@param playercolor: game.util.color instance with the player's color
 		"""
 		db = DbReader(savegame) # Initialize new dbreader
-		self.world = World(db) # Load game.world module (check game/world/__init__.py)
+		self.world = World() # Load game.world module (check game/world/__init__.py)
+		self.world._init(db)
 		if playername != "":
 			self.world.setupPlayer(playername, playercolor) # setup new player
 		self.view.load(db) # load view
@@ -217,6 +220,7 @@ class Session(livingObject):
 		game.main.db("attach ':memory:' as map")
 		#...
 		self.world = World()
+		self.world._init(game.main.db)
 
 		#setup view
 		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
