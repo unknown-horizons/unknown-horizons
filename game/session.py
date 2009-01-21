@@ -61,6 +61,8 @@ class Session(livingObject):
 	* cursor - game.gui.{navigation/cursor/selection/building}tool instance. Used to controll
 			   mouse events, check the classes for more info.
 	* selected_instances - Set that holds the currently selected instances (building, units).
+	* world - game.world instance of the currently running game. Stores islands, players,
+	          for later access.
 
 	TUTORIAL:
 	For further digging you should now be checking out the load() function.

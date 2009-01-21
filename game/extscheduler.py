@@ -21,13 +21,14 @@
 
 import time
 
-class ExtScheduler():
+class ExtScheduler(object):
 	"""The ExtScheduler ist used for time based events that are not part of the simulation(gui, menu, scrolling).
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	@param pump: pump list the schedular registers itself with.
 	"""
 
 	def __init__(self, pump):
+		super(self, ExtScheduler)__init__()
 		self.schedule = []
 		self.pump = pump
 		self.pump.append(self.tick)
