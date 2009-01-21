@@ -29,7 +29,7 @@ class Scheduler(livingObject):
 	@param timer: Timer instance the schedular registers itself with.
 	"""
 	def begin(self, timer):
-		super(self, Scheduler).begin()
+		super(Scheduler,self).begin()
 		self.schedule = {}
 		self.cur_tick = 0
 		self.timer = timer

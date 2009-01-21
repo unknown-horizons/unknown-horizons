@@ -28,7 +28,7 @@ class ExtScheduler(object):
 	"""
 
 	def __init__(self, pump):
-		super(self, ExtScheduler)__init__()
+		super(ExtScheduler, self).__init__()
 		self.schedule = []
 		self.pump = pump
 		self.pump.append(self.tick)
