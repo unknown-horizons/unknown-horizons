@@ -51,6 +51,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
 		if keyval == fife.Key.ESCAPE:
+			print "ESCAPE PRESSED"
 			game.main.onEscape()
 			evt.consume()
 		elif keyval == fife.Key.F10:

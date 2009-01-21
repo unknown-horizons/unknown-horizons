@@ -40,7 +40,6 @@ class SelectionTool(NavigationTool):
 		game.main.onEscape = game.main.showPause
 
 	def __del__(self):
-		game.main.onEscape = lambda : None
 		super(SelectionTool, self).__del__()
 
 	def mouseDragged(self, evt):

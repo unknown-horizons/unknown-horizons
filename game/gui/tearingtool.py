@@ -27,13 +27,11 @@ from game.world.building.storages import StorageBuilding
 import fife
 import game.main
 
-"""
-Represents a dangling tool after a building was selected from the list.
-Builder visualizes if and why a building can not be built under the cursor position.
-"""
-
 class TearingTool(NavigationTool):
-	"""@param building_id: rowid of the selected building type"
+	"""
+	Represents a dangling tool after a building was selected from the list.
+	Builder visualizes if and why a building can not be built under the cursor position.
+	@param building_id: rowid of the selected building type"
 	@param player_id: player id of the player that builds the building
 	@param ship: If building from a ship, restrict to range of ship
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False
@@ -45,13 +43,11 @@ class TearingTool(NavigationTool):
 		self.selected = []
 		self.oldedges = None
 		game.main.onEscape = self.onEscape
-		cursor_image = game.main.fife.imagepool.addResourceFromFile('content/gui/images/misc/cursor_tear.png')
-		game.main.fife.cursor.set(fife.CURSOR_IMAGE, cursor_image)
+		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.tearing_cursor_image)
 
 	def __del__(self):
-		game.main.onEscape = lambda : None
-		super(TearingTool, self).__del__()
 		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.default_cursor_image)
+		super(TearingTool, self).__del__()
 
 	def mouseDragged(self, evt):
 		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
@@ -96,7 +92,8 @@ class TearingTool(NavigationTool):
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
 		elif len(edges) == 2:
-			edges = ((min(edges[0][0], edges[1][0]), min(edges[0][1], edges[1][1])), (max(edges[0][0], edges[1][0]), max(edges[0][1], edges[1][1])))
+			edges = ((min(edges[0][0], edges[1][0]), min(edges[0][1], edges[1][1])),\
+					 (max(edges[0][0], edges[1][0]), max(edges[0][1], edges[1][1])))
 		else:
 			edges = None
 		if self.oldedges != edges or edges is None:
