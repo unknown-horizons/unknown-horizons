@@ -47,21 +47,37 @@ class SelectionTool(NavigationTool):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
 			game.main.session.view.renderer['GenericRenderer'].removeAll("select")
 			if do_multi:
-				a = fife.Point(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()))
-				b = fife.Point(max(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()))
-				c = fife.Point(max(self.select_begin[0], evt.getX()), max(self.select_begin[1], evt.getY()))
-				d = fife.Point(min(self.select_begin[0], evt.getX()), max(self.select_begin[1], evt.getY()))
-				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
-				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
-				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
-				game.main.session.view.renderer['GenericRenderer'].addLine("select", fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
+				a = fife.Point(min(self.select_begin[0], evt.getX()), \
+							   min(self.select_begin[1], evt.getY()))
+				b = fife.Point(max(self.select_begin[0], evt.getX()), \
+							   min(self.select_begin[1], evt.getY()))
+				c = fife.Point(max(self.select_begin[0], evt.getX()), \
+							   max(self.select_begin[1], evt.getY()))
+				d = fife.Point(min(self.select_begin[0], evt.getX()), \
+							   max(self.select_begin[1], evt.getY()))
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", \
+					fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", \
+					fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", \
+					fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
+				game.main.session.view.renderer['GenericRenderer'].addLine("select", \
+					fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
 			selectable = []
-			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
+			instances = game.main.session.view.cam.getMatchingInstances(\
+				fife.Rect(min(self.select_begin[0], evt.getX()), \
+						  min(self.select_begin[1], evt.getY()), \
+						  abs(evt.getX() - self.select_begin[0]), \
+						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
-			instances = game.main.session.view.cam.getMatchingInstances(fife.Rect(min(self.select_begin[0], evt.getX()), min(self.select_begin[1], evt.getY()), abs(evt.getX() - self.select_begin[0]), abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
+			instances = game.main.session.view.cam.getMatchingInstances(\
+				fife.Rect(min(self.select_begin[0], evt.getX()), \
+						  min(self.select_begin[1], evt.getY()), \
+						  abs(evt.getX() - self.select_begin[0]), \
+						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
 				if hasattr(instance, 'select'):
@@ -115,12 +131,14 @@ class SelectionTool(NavigationTool):
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			selectable = []
-			instances = game.main.session.view.cam.getMatchingInstances(fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
+			instances = game.main.session.view.cam.getMatchingInstances(\
+				fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[1])
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
-			instances = game.main.session.view.cam.getMatchingInstances(fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
+			instances = game.main.session.view.cam.getMatchingInstances(\
+				fife.ScreenPoint(evt.getX(), evt.getY()), game.main.session.view.layers[2])
 			for i in instances:
 				instance = WorldObject.getObjectById(int(i.getId()))
 				if hasattr(instance, 'select'):
@@ -137,8 +155,10 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			game.main.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			if len(game.main.session.selected_instances) == 1 and any(hasattr(i, 'act') for i in game.main.session.selected_instances):
-				target_mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			if len(game.main.session.selected_instances) == 1 and \
+			   any(hasattr(i, 'act') for i in game.main.session.selected_instances):
+				target_mapcoord = game.main.session.view.cam.toMapCoordinates(\
+					fife.ScreenPoint(evt.getX(), evt.getY()), False)
 				for i in game.main.session.selected_instances:
 					if isinstance(i, Unit):
 						game.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
