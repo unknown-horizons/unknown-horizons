@@ -610,7 +610,7 @@ class Menus(object):
 		#return
 
 		if savegame is None:
-			map_files, map_file_display = savegamemanager.get_saves()
+			map_files, map_file_display = game.main.savegamemanager.get_saves()
 
 			if len(map_files) == 0:
 				gui.show_popup("No saved games", "There are no saved games to load")
@@ -625,7 +625,7 @@ class Menus(object):
 					load_dlg.hide()
 					self.load_game()
 
-			load_dlg.findChild(name="savegamelist").capture(gui.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
+			load_dlg.findChild(name="savegamelist").capture(self.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
 			if not gui.show_dialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
 												onPressEscape = False,
 												event_map={'deleteButton' : tmp_delete_savegame}):
