@@ -31,6 +31,16 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
 
+	def __init__(self, **kwargs):
+		super(AnimalFarm, self).__init__(**kwargs)
+		self.emitter = game.main.fife.soundmanager.createEmitter()
+		self.emitter.setGain(1.0)
+		self.emitter.setLooping(True)
+		self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
+		self.emitter.setSoundClip(game.main.fife.engine.getSoundClipPool().addResourceFromFile('content/audio/sounds/sheepfield.ogg'))
+		print "Stereo?:", self.emitter.isStereo()
+		self.emitter.play()
+
 	def create_carriage(self):
 		self.animals = []
 		animals = game.main.db("SELECT unit_id, count from data.animals where building_id = ?", self.id)

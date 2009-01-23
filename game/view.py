@@ -137,6 +137,7 @@ class View(Changelistener):
 			pos.y = game.main.session.world.min_y
 
 		self.cam.setLocation(loc)
+		game.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self.cam.refresh()
 
 	def set_location(self, location):

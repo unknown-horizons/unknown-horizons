@@ -71,6 +71,7 @@ class NavigationTool(CursorTool):
 
 	def mouseMoved(self, evt):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
+
 		# Status menu update
 		current = game.main.session.view.cam.toMapCoordinates(mousepoint, False)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
