@@ -1,0 +1,163 @@
+# Deutsche Übersetzung für Openanno
+# Copyright (C) 2009 OpenAnno Team
+# Christoph Egger <openanno@christoph-egger.org>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-01-23 21:14+CET\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ./debug.py:90
+msgid "Debuging tools usage:"
+msgstr "Verwendung des Debug Tools:"
+
+#: ./debug.py:91
+msgid "import debug (already done): load the tools"
+msgstr "import debug (bereits erledigt): lade Tools"
+
+#: ./debug.py:92
+msgid "debug.printTree(<object>):   print a tree of an object (the properties, recursive)"
+msgstr "debug.printTree(<object>):   gib ein Objekt in Baumstruktur aus (Eigenschaften, Rekursiv)"
+
+#: ./debug.py:93
+msgid "debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
+msgstr "debug.cmd('name', *args):    Erzeuge ein Kommando und führe es durch den Manager aus. Beispiel: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
+
+#: ./game/dbreader.py:51
+msgid "Error, no complete sql statement provided by \"%s.\""
+msgstr "Fehler, kein vollständiger SQL Ausdruck von \"%s\" übergeben."
+
+#: ./game/engine.py:57
+msgid "Loading animation #%s..."
+msgstr "Lade Animation #%s..."
+
+#: ./game/menus.py:504
+msgid "Error"
+msgstr "Fehler"
+
+#: ./game/menus.py:504
+msgid "You have to select a server"
+msgstr "Sie müssen einen Server auswählen"
+
+#: ./game/menus.py:539
+msgid "No file selected"
+msgstr "Keine Dateien ausgewählt"
+
+#: ./game/menus.py:539
+msgid "You need to select a savegame to delete"
+msgstr "Sie müssen einen Speicherstand auswählen um ihn zu löschen"
+
+#: ./game/menus.py:542
+msgid "Confirm deletiom"
+msgstr "Entfernen Bestätigen"
+
+#: ./game/menus.py:543
+msgid "Do you really want to delete the savegame \"%s\"?"
+msgstr "Wollen Sie wirklich den Speicherstand \"%s\" löschen?"
+
+#: ./game/menus.py:564
+msgid "Saved at %s"
+msgstr "Gespeichert am %s"
+
+#: ./game/menus.py:564
+msgid "Unknown savedate"
+msgstr "Unbekanntes Speicherdatum"
+
+#: ./game/menus.py:588
+msgid "Invalid player name"
+msgstr "Ungültiger Spielername"
+
+#: ./game/menus.py:588
+msgid "You entered an invalid playername"
+msgstr "Sie haben einen ungültigen Spielernamen eingegeben"
+
+#: ./game/menus.py:591
+msgid "Not implemented"
+msgstr "Nicht implementiert"
+
+#: ./game/menus.py:591
+msgid "Sorry, random map creation is not implemented at the moment."
+msgstr "Erzeugen von Zufallskarten ist noch nicht implementiert."
+
+#: ./game/menus.py:616
+msgid "No saved games"
+msgstr "Keine Speicherstände"
+
+#: ./game/menus.py:616
+msgid "There are no saved games to load"
+msgstr "Es gibt keine Speicherstände zum laden"
+
+#: ./game/network.py:303
+msgid "PLAYER TIMEOUT"
+msgstr "SPIELER TIMEOUT"
+
+#: ./game/packets.py:102
+msgid "JOIN BY"
+msgstr "BEITRITT VON"
+
+#: ./game/packets.py:114
+msgid "LEAVE BY"
+msgstr "VERLASSEN VON"
+
+#: ./game/settings.py:126
+msgid "Error: Config version not supported, creating empty config which wont be saved."
+msgstr "Fehler: Config Version nicht unterstützt, erzeuge leere Konfiguration, die nicht gespeichert werden wird"
+
+#: ./game/settings.py:131
+msgid "Upgrading Config from Version %d to Version %d ..."
+msgstr "Aktualisiere Config von Version %d zu Version %d ..."
+
+#: ./openanno.py:57 ./openanno.py:113
+msgid "Found FIFE in:"
+msgstr "FIFE gefunden in:"
+
+#: ./openanno.py:70 ./openanno.py:126
+msgid "FIFE was not found."
+msgstr "FIFE konnte nicht gefunden werden."
+
+#: ./openanno.py:90
+msgid "FIFE was not found or failed to load."
+msgstr "FIFE wurde nicht gefunden oder konnte nicht geladen werden."
+
+#: ./openanno.py:91
+msgid "Reason: %s"
+msgstr "Grund: %s"
+
+#: ./openanno.py:136
+msgid "Launching OpenAnno"
+msgstr "Starte OpenAnno"
+
+#: ./run_tests.py:55
+msgid ""
+"\n"
+"RESULTS:\n"
+msgstr "\nERGEBNISSE:\n"
+
+#: ./run_tests.py:57
+msgid "tests were run"
+msgstr "gelaufene Tests:"
+
+#: ./run_tests.py:58
+msgid "All successful:"
+msgstr "Alle erfolgreich:"
+
+#: ./run_tests.py:64
+msgid "Failures:"
+msgstr "Fehler"
+
+#: ./run_tests.py:66 ./run_tests.py:74
+msgid "Case:"
+msgstr "Fall:"
+
+#: ./run_tests.py:72
+msgid "Errors:"
+msgstr "Fehler:"
+
