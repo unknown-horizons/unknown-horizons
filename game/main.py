@@ -196,7 +196,7 @@ def loadGame(savegame = None):
 				load_dlg.hide()
 				loadGame()
 
-		load_dlg.findChild(name="savegamelist").capture(create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
+		load_dlg.findChild(name="savegamelist").capture(gui.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
 		if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
 											onPressEscape = False,
 											event_map={'deleteButton' : tmp_delete_savegame}):

@@ -48,7 +48,7 @@ class Menus(object):
 		self.widgets['gamemenu'].stylize('menu')
 		self.widgets['chime'] = fife.pychan.loadXML('content/gui/chime.xml')
 		self.widgets['help'] = fife.pychan.loadXML('content/gui/help.xml')
-		self.widgets['quitsession'] = fife.pychan.loadXML('content/gui/quitsession.xml'),
+		self.widgets['quitsession'] = fife.pychan.loadXML('content/gui/quitsession.xml')
 		self.widgets['singleplayermenu'] = fife.pychan.loadXML('content/gui/singleplayermenu.xml')
 		self.widgets['singleplayermenu'].stylize('menu')
 		self.widgets['serverlist'] = fife.pychan.loadXML('content/gui/serverlist.xml')
@@ -292,7 +292,7 @@ class Menus(object):
 		"""
 		Quits the current session
 		"""
-		if showDialog( {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		if self.show_dialog(self.widgets['quitsession'],  {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			self.current.hide()
 			self.current = None
 			game.main.session = None
