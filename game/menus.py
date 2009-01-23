@@ -56,7 +56,7 @@ class Menus(object):
 		self.widgets['serverlobby'] = fife.pychan.loadXML('content/gui/serverlobby.xml')
 		self.widgets['serverlobby'].stylize('menu')
 		self.widgets['loadingscreen'] = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-
+		self.widgets['ingame_load'] = fife.pychan.loadXML('content/gui/ingame_load.xml')
 
 	def show_main(self):
 		""" shows the main menu
@@ -616,7 +616,7 @@ class Menus(object):
 				gui.show_popup("No saved games", "There are no saved games to load")
 				return
 
-			load_dlg = game.main.fife.pychan.loadXML('content/gui/ingame_load.xml')
+			load_dlg = self.widgets['ingame_load']
 
 			load_dlg.distributeInitialData({'savegamelist' : map_file_display})
 
@@ -626,7 +626,7 @@ class Menus(object):
 					self.load_game()
 
 			load_dlg.findChild(name="savegamelist").capture(self.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
-			if not gui.show_dialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
+			if not self.show_dialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
 												onPressEscape = False,
 												event_map={'deleteButton' : tmp_delete_savegame}):
 				return
