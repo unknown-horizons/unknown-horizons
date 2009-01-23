@@ -137,7 +137,7 @@ class Session(object):
 			game.main.showPopup("No quicksaves found", "You need to quicksave before you can quickload.")
 			return
 		files.sort()
-		game.main.loadGame(files[-1])
+		game.main.gui.load_game(files[-1])
 
 	def save(self, savegame):
 		"""

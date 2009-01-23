@@ -174,56 +174,15 @@ def saveGame():
 		save_dlg.hide()
 		saveGame()
 
-def loadGame(savegame = None):
-	# Loading is disabled for now
-	#showDialog(fife.pychan.loadXML('content/gui/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
-	#return
-	global session, gui, fife, savegamemanager
-
-	if savegame is None:
-		map_files, map_file_display = savegamemanager.get_saves()
-
-		if len(map_files) == 0:
-			gui.show_popup("No saved games", "There are no saved games to load")
-			return
-
-		load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
-
-		load_dlg.distributeInitialData({'savegamelist' : map_file_display})
-
-		def tmp_delete_savegame():
-			if delete_savegame(load_dlg, map_files):
-				load_dlg.hide()
-				loadGame()
-
-		load_dlg.findChild(name="savegamelist").capture(gui.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
-		if not showDialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
-											onPressEscape = False,
-											event_map={'deleteButton' : tmp_delete_savegame}):
-			return
-
-		selected_savegame = load_dlg.collectData('savegamelist')
-		if selected_savegame == -1:
-			return
-		savegamefile = map_files[ selected_savegame ]
-	else:
-		savegamefile = savegame
-
-	assert(os.path.exists(savegamefile))
-
-	if session is not None:
-		session = None
-
-	if gui is not None:
-		gui.hide()
-	gui = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-	gui.x += int((settings.fife.screen.width - gui.width) / 2)
-	gui.y += int((settings.fife.screen.height - gui.height) / 2)
+def start_multiplayer(savegamefile):
+	"""Starts a new multiplayer game
+	@param savegamefile: sqlite database file containing the savegame
+	"""
+	global gui, fife
 	gui.show()
 	fife.engine.pump()
 
 	session = Session()
 	session.load(savegamefile)
 	returnGame()
-
 

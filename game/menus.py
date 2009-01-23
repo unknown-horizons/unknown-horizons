@@ -72,7 +72,7 @@ class Menus(object):
 			'creditsLink'  : self.show_credits,
 			'closeButton'  : self.show_quit,
 			'helpLink'     : self.on_help,
-			'loadgameButton' : game.main.loadGame,
+			'loadgameButton' : self.load_game,
 			'dead_link'	 : self.on_chime
 		}
 		self.current.mapEvents(eventMap)
@@ -258,7 +258,7 @@ class Menus(object):
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
 			'savegameButton' : game.main.saveGame,
-			'loadgameButton' : game.main.loadGame,
+			'loadgameButton' : self.load_game,
 			'helpLink'	 : self.on_help,
 			'settingsLink'   : self.show_settings,
 			'dead_link'	 : self.on_chime
@@ -602,3 +602,47 @@ class Menus(object):
 			self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
 
 			game.main.start_singleplayer(map_file)
+
+
+	def load_game(self, savegame = None):
+		# Loading is disabled for now
+		#showDialog(fife.pychan.loadXML('content/gui/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
+		#return
+
+		if savegame is None:
+			map_files, map_file_display = savegamemanager.get_saves()
+
+			if len(map_files) == 0:
+				gui.show_popup("No saved games", "There are no saved games to load")
+				return
+
+			load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
+
+			load_dlg.distributeInitialData({'savegamelist' : map_file_display})
+
+			def tmp_delete_savegame():
+				if delete_savegame(load_dlg, map_files):
+					load_dlg.hide()
+					self.load_game()
+
+			load_dlg.findChild(name="savegamelist").capture(gui.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
+			if not gui.show_dialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
+												onPressEscape = False,
+												event_map={'deleteButton' : tmp_delete_savegame}):
+				return
+
+			selected_savegame = load_dlg.collectData('savegamelist')
+			if selected_savegame == -1:
+				return
+			savegamefile = map_files[ selected_savegame ]
+		else:
+			savegamefile = savegame
+
+		assert(os.path.exists(savegamefile))
+
+		self.hide()
+		self.current = self.widget['loadingscreen']
+		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.show()
+		game.main.start_multiplayer(savegamefile)
