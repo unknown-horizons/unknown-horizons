@@ -501,7 +501,7 @@ class Menus(object):
 
 		server_id = self.current.collectData('list')
 		if server_id == -1: # no server selected
-			self.show_popup(_('Error'),_('You have to select a server'))
+			self.show_popup('Error','You have to select a server')
 			return
 		server = self.current.serverList[server_id]
 		self.current.serverList.end()
@@ -536,11 +536,11 @@ class Menus(object):
 		"""
 		selected_item = self.current.collectData("savegamelist")
 		if selected_item == -1:
-			showPopup(_("No file selected"), _("You need to select a savegame to delete"))
+			showPopup("No file selected", "You need to select a savegame to delete")
 			return False
 		selected_file = map_files[selected_item]
-		if showPopup(_("Confirm deletiom"),
-								 _('Do you really want to delete the savegame "%s"?') % os.path.basename(selected_file),
+		if showPopup("Confirm deletiom",
+								 'Do you really want to delete the savegame "%s"?' % os.path.basename(selected_file),
 								 show_cancel_button = True):
 			os.unlink(selected_file)
 			return True
@@ -585,10 +585,10 @@ class Menus(object):
 		if showRandom:
 			playername = self.current.collectData('playername')
 			if len(playername) == 0:
-				showPopup(_("Invalid player name"), _("You entered an invalid playername"))
+				showPopup("Invalid player name", "You entered an invalid playername")
 				return
 			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-			showPopup(_("Not implemented"), _("Sorry, random map creation is not implemented at the moment."))
+			showPopup("Not implemented", "Sorry, random map creation is not implemented at the moment.")
 			return
 		else:
 			map_id = self.current.collectData('maplist')
@@ -613,7 +613,7 @@ class Menus(object):
 			map_files, map_file_display = game.main.savegamemanager.get_saves()
 
 			if len(map_files) == 0:
-				self.show_popup(_("No saved games"), _("There are no saved games to load"))
+				self.show_popup("No saved games", "There are no saved games to load")
 				return
 
 			load_dlg = self.widgets['ingame_load']
