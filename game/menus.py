@@ -616,12 +616,12 @@ class Menus(object):
 				gui.show_popup("No saved games", "There are no saved games to load")
 				return
 
-			load_dlg = fife.pychan.loadXML('content/gui/ingame_load.xml')
+			load_dlg = game.main.fife.pychan.loadXML('content/gui/ingame_load.xml')
 
 			load_dlg.distributeInitialData({'savegamelist' : map_file_display})
 
 			def tmp_delete_savegame():
-				if delete_savegame(load_dlg, map_files):
+				if self.delete_savegame(load_dlg, map_files):
 					load_dlg.hide()
 					self.load_game()
 
