@@ -613,7 +613,7 @@ class Menus(object):
 			map_files, map_file_display = game.main.savegamemanager.get_saves()
 
 			if len(map_files) == 0:
-				gui.show_popup("No saved games", "There are no saved games to load")
+				self.show_popup("No saved games", "There are no saved games to load")
 				return
 
 			load_dlg = self.widgets['ingame_load']
