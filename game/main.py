@@ -45,6 +45,7 @@ import shutil
 import random
 import game.engine
 
+from game.util import Color
 from game.menus import Menus
 from game.dbreader import DbReader
 from game.engine import Fife
