@@ -37,7 +37,7 @@ class SelectionTool(NavigationTool):
 	"""
 	def __init__(self):
 		super(SelectionTool, self).__init__()
-		game.main.onEscape = game.main.showPause
+		game.main.gui.on_escape = game.main.gui.show_pause
 
 	def __del__(self):
 		super(SelectionTool, self).__del__()

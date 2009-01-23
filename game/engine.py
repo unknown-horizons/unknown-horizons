@@ -286,12 +286,21 @@ class Fife(object):
 		@param emitter: string with the emitters name in game.main.fife.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
 		if game.main.settings.sound.enabled: # Set up sound if it is enabled
-			emitter = game.main.fife.emitter[emitter]
+			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
 			emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
 			emitter.play()
+
+	def set_volume(self, emitter_name, value):
+		"""Sets the volume on the emitter specified by emitter_name.
+		@param emitter_name: string with the emitters name, used as key for the self.emitter dict
+		@param value: double which value the emitter is to be set to range[0,1]
+		"""
+		if game.main.settings.sound.enabled:
+			self.emitter[emitter_name].setGain(value)
+
 
 	def run(self):
 		"""

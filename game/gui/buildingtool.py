@@ -55,7 +55,7 @@ class BuildingTool(NavigationTool):
 		if not self._class.class_package == 'path':
 			self.gui.show()
 
-		game.main.onEscape = self.onEscape
+		game.main.gui.on_escape = self.onEscape
 
 		if ship is None:
 			for island in game.main.session.world.islands:

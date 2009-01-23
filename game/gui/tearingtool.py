@@ -42,7 +42,7 @@ class TearingTool(NavigationTool):
 		self.coords = None
 		self.selected = []
 		self.oldedges = None
-		game.main.onEscape = self.onEscape
+		game.main.gui.on_escape = self.onEscape
 		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.tearing_cursor_image)
 
 	def __del__(self):
