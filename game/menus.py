@@ -561,7 +561,7 @@ class Menus(object):
 				return
 			details_label = game.main.fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
 			details_label.name="savegamedetails_lbl"
-			details_label.text= _("Unknown savedate") if savegame_info['timestamp'] == -1 else _("Saved at %s") % time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
+			details_label.text="Unknown savedate" if savegame_info['timestamp'] == -1 else "Saved at %s" % time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 			box.addChild( details_label )
 			gui.adaptLayout()
 		return tmp_show_details
