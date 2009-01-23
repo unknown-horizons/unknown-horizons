@@ -104,7 +104,7 @@ class Menus(object):
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
 			def _escape():
-				fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
+				game.main.fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
 				dlg.hide()
 			tmp_escape = self.on_escape
 			self.on_escape = _escape
