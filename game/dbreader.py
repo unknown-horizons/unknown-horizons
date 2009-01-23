@@ -48,7 +48,7 @@ class DbReader(object):
 			if sqlite3.complete_statement(command + ';'):
 				command = command + ';'
 			else:
-				raise 'Error, no complete sql statement provided by "' + command + '".'
+				raise _('Error, no complete sql statement provided by "%s."') % command
 		self.cur.execute(command, args)
 		return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
 

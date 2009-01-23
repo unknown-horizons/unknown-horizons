@@ -27,6 +27,8 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 
 import sys
 import os
+import gettext
+
 def findFIFE():
 	# check if fife is already in python-path
 	try:
@@ -52,7 +54,7 @@ def findFIFE():
 					break
 			else:
 				fife_path = p
-				print "Found FIFE in:", fife_path
+				print _("Found FIFE in:"), fife_path
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
@@ -65,7 +67,7 @@ def findFIFE():
 				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
 				break
 	else:
-		print 'FIFE was not found.'
+		print _('FIFE was not found.')
 		exit()
 
 	try:
@@ -85,8 +87,8 @@ def findFIFE():
 		else:
 			import fife
 	except ImportError, e:
-		print 'FIFE was not found or failed to load.'
-		print 'Reason: ' + e.message
+		print _('FIFE was not found or failed to load.')
+		print _('Reason: %s') % e.message
 		exit()
 
 
@@ -108,7 +110,7 @@ def getFifePath():
 					break
 			else:
 				fife_path = p
-				print "Found FIFE in:", fife_path
+				print _("Found FIFE in:"), fife_path
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
@@ -121,13 +123,17 @@ def getFifePath():
 				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
 				break
 	else:
-		print 'FIFE was not found.'
+		print _('FIFE was not found.')
 		exit()
 	return fife_path
 
 if __name__ == '__main__':
 	#chdir to openanno root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
+	
+	gettext.install("openanno", "po", unicode=1)
+	
+	print _("Launching OpenAnno")
 
 	#find fife and setup search paths
 	findFIFE()

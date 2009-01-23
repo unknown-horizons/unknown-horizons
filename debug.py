@@ -31,6 +31,9 @@ if __name__ == '__main__':
 else:
 	import inspect
 	import game.main
+	
+	import gettext
+	gettext.install("openanno", "po", unicode=1)
 
 	already = []
 	def printTree(obj, deep = 0):
@@ -84,8 +87,8 @@ else:
 	def cmd(name, *pargs, **kargs):
 		game.main.session.manager.execute(eval(name)(*pargs, **kargs))
 
-	print 'Debuging tools usage:'
-	print 'import debug (already done): load the tools'
-	print 'debug.printTree(<object>):   print a tree of an object (the properties, recursive)'
-	print "debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
+	print _('Debuging tools usage:')
+	print _('import debug (already done): load the tools')
+	print _('debug.printTree(<object>):   print a tree of an object (the properties, recursive)')
+	print _("debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)")
 	print ''

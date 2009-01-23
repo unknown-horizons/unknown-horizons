@@ -99,7 +99,7 @@ class LobbyJoinPacket(Packet):
 		self.player.address, self.player.port = self.address, self.port
 		game.main.connection.mpoptions['players'].append(self.player)
 		game.main.connection.last_client_message[(self.player.address, self.player.port)] = time.time()
-		print 'JOIN BY', self.player.address, self.player.port
+		print _('JOIN BY'), self.player.address, self.player.port
 		game.main.connection.notifyClients()
 
 class LeaveServerPacket(Packet):
@@ -111,7 +111,7 @@ class LeaveServerPacket(Packet):
 	def handleOnServer(self):
 		for player in game.main.connection.mpoptions['players']:
 			if player.address == self.address and player.port == self.port:
-				print 'LEAVE BY', self.address, self.port
+				print _('LEAVE BY'), self.address, self.port
 				game.main.connection.mpoptions['players'].remove(player)
 
 class LobbyPlayerModifiedPacket(Packet):

@@ -123,12 +123,12 @@ class Settings(Setting):
 		game.main.db("ATTACH ? AS config", config)
 		version = game.main.db("PRAGMA config.user_version")[0][0]
 		if version > Settings.VERSION:
-			print "Error: Config version not supported, creating empty config which wont be saved."
+			print _("Error: Config version not supported, creating empty config which wont be saved.")
 			game.main.db("DETACH config")
 			game.main.db("ATTACH ':memory:' AS config")
 			game.main.db("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 		elif version < Settings.VERSION:
-			print "Upgrading Config from Version " + str(version) + " to Version " + str(Settings.VERSION) + "..."
+			print _("Upgrading Config from Version %d to Version %d ...") % (version, Settings.VERSION)
 			if version == 1:
 				game.main.db("UPDATE config.config SET name = REPLACE(name, '_', '.') WHERE name != 'client_id'")
 				version = 2

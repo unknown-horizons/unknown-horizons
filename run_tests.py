@@ -32,6 +32,10 @@ if __name__ == '__main__':
 	openanno.findFIFE()
 	sys.path.append('game/ext')
 	import game.main
+	
+	import gettext
+	
+	gettext.install("openanno", "po", unicode=1)
 
 	loader = unittest.TestLoader()
 	result = unittest.TestResult()
@@ -48,25 +52,25 @@ if __name__ == '__main__':
 	suite.run(result)
 
 
-	print "\nRESULTS:\n"
+	print _("\nRESULTS:\n")
 
-	print result.testsRun, 'tests were run'
-	print 'All successful:', result.wasSuccessful()
+	print result.testsRun, _('tests were run')
+	print _('All successful:'), result.wasSuccessful()
 
 	if not result.wasSuccessful():
 
 		print
 
-		print len(result.failures),'Failures:'
+		print len(result.failures),_('Failures:')
 		for (case, error) in result.failures:
-			print 'Case:', case
+			print _('Case:'), case
 			print error
 			print
 
 		print
 
-		print len(result.errors),'Errors:'
+		print len(result.errors),_('Errors:')
 		for (case, error) in result.errors:
-			print 'Case:', case
+			print _('Case:'), case
 			print error
 			print

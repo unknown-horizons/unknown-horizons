@@ -112,7 +112,7 @@ class MPPlayer(object):
 	"""
 	def __init__(self, address = None, port = None):
 		self.address, self.port = address, port
-		self.name, self.color, self.team = "unknown player", None, None
+		self.name, self.color, self.team = "unknown player", None, None #TODO: unknown player transplateable?
 		self.ready = False
 
 	def __str__(self):
@@ -300,7 +300,7 @@ class ServerConnection(Connection):
 			if last_reception + self.clientTimeout < time.time():
 				for player in self.mpoptions['players']:
 					if player.address == client[0] and player.port == client[1]:
-						print "PLAYER TIMEOUT", client[0], client[1]
+						print _("PLAYER TIMEOUT"), client[0], client[1]
 						self.remove_player(player)
 						self.notifyClients()
 						break
