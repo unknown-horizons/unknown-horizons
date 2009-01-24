@@ -649,7 +649,7 @@ class Menus(object):
 		game.main.start_multiplayer(savegamefile)
 
 	def save_game(self):
-		savegame_files, savegame_display = savegamemanager.get_regular_saves()
+		savegame_files, savegame_display = game.main.savegamemanager.get_regular_saves()
 
 		save_dlg = self.widgets['savegame']
 
