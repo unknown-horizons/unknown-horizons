@@ -128,25 +128,25 @@ def startMulti():
 def saveGame(savegamename):
 	"""Saves a game
 	@param savegamename: string with the name of the file that is to be used"""
-	global savegamemanager, session
+	global savegamemanager, session, gui
 	try:
 		savegamefile = savegamemanager.create_filename(savegamename)
 	except InvalidSavegamenameException:
 		return
 
 	if os.path.exists(savegamefile):
-		if not showPopup("Confirmation for overwriting",
+		if not gui.show_popup("Confirmation for overwriting",
 										 "A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
 										 show_cancel_button = True):
-			self.gui.save_game()
+			gui.save_game()
 			return
 
 	try:
 		session.save(savegamefile)
 	except IOError: # invalid filename
-		showPopup("Invalid filename", "You entered an invalid filename.")
-		save_dlg.hide()
-		self.gui.save_game()
+		gui.show_popup("Invalid filename", "You entered an invalid filename.")
+		gui.hide()
+		gui.save_game()
 
 def start_multiplayer(savegamefile):
 	"""Starts a new multiplayer game
