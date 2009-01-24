@@ -57,6 +57,7 @@ class Menus(object):
 		self.widgets['serverlobby'].stylize('menu')
 		self.widgets['loadingscreen'] = fife.pychan.loadXML('content/gui/loadingscreen.xml')
 		self.widgets['ingame_load'] = fife.pychan.loadXML('content/gui/ingame_load.xml')
+		self.widgets['savegame'] = fife.pychan.loadXML('content/gui/ingame_save.xml')
 
 	def show_main(self):
 		""" shows the main menu
@@ -646,3 +647,28 @@ class Menus(object):
 		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		self.show()
 		game.main.start_multiplayer(savegamefile)
+
+	def save_game(self):
+		savegame_files, savegame_display = savegamemanager.get_regular_saves()
+
+		save_dlg = self.widgets['savegame']
+
+		save_dlg.distributeInitialData({'savegamelist' : savegame_display})
+
+		def tmp_selected_changed():
+			"""Fills in the name of the savegame in the textbox when selected in the list"""
+			save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
+
+		def tmp_delete_savegame():
+			if delete_savegame(save_dlg, savegame_files):
+				save_dlg.hide()
+				self.save_game()
+
+		save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
+		if not self.show_dialog(save_dlg, {'okButton' : True, 'cancelButton' : False},
+											onPressEscape = False,
+											event_map={'deleteButton' : tmp_delete_savegame}):
+			return
+
+		savegamename = save_dlg.collectData('savegamefile')
+		game.main.saveGame(savegamename)

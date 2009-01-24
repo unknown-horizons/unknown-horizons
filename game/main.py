@@ -125,36 +125,10 @@ def startMulti():
 	"""
 	pass
 
-def saveGame():
-	# Saving is disabled for now
-	#showDialog(fife.pychan.loadXML('content/gui/save_disabled.xml'), {'okButton' : True}, onPressEscape = True)
-	#return
-
-	global session, savegamemanager
-
-	savegame_files, savegame_display = savegamemanager.get_regular_saves()
-
-	save_dlg = fife.pychan.loadXML('content/gui/ingame_save.xml')
-
-	save_dlg.distributeInitialData({'savegamelist' : savegame_display})
-
-	def tmp_selected_changed():
-		"""Fills in the name of the savegame in the textbox when selected in the list"""
-		save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
-
-	def tmp_delete_savegame():
-		if delete_savegame(save_dlg, savegame_files):
-			save_dlg.hide()
-			saveGame()
-
-	save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
-	if not showDialog(save_dlg, {'okButton' : True, 'cancelButton' : False},
-										onPressEscape = False,
-										event_map={'deleteButton' : tmp_delete_savegame}):
-		return
-
-	savegamename = save_dlg.collectData('savegamefile')
-
+def saveGame(savegamename):
+	"""Saves a game
+	@param savegamename: string with the name of the file that is to be used"""
+	global savegamemanager, session
 	try:
 		savegamefile = savegamemanager.create_filename(savegamename)
 	except InvalidSavegamenameException:
