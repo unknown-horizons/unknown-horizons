@@ -144,3 +144,6 @@ if __name__ == '__main__':
 	#start openanno
 	import game.main
 	game.main.start()
+else:
+	# gettext support will have to wait so make it an no-op for everything not calling openanno directly
+	_ = lambda x: x
