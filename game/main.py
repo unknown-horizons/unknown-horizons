@@ -138,7 +138,7 @@ def saveGame(savegamename):
 		if not showPopup("Confirmation for overwriting",
 										 "A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
 										 show_cancel_button = True):
-			saveGame()
+			self.gui.save_game()
 			return
 
 	try:
@@ -146,7 +146,7 @@ def saveGame(savegamename):
 	except IOError: # invalid filename
 		showPopup("Invalid filename", "You entered an invalid filename.")
 		save_dlg.hide()
-		saveGame()
+		self.gui.save_game()
 
 def start_multiplayer(savegamefile):
 	"""Starts a new multiplayer game

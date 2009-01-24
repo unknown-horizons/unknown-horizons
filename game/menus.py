@@ -258,7 +258,7 @@ class Menus(object):
 		eventMap = {
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
-			'savegameButton' : game.main.saveGame,
+			'savegameButton' : self.save_game,
 			'loadgameButton' : self.load_game,
 			'helpLink'	 : self.on_help,
 			'settingsLink'   : self.show_settings,
