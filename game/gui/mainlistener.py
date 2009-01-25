@@ -58,7 +58,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 			game.main.fife.console.toggleShowHide()
 			evt.consume()
 		elif keyval == fife.Key.F1:
-			game.main.onHelp()
+			game.main.gui.on_help()
 		elif keystr == 's':
 			game.main.fife.engine.getRenderBackend().captureScreen("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png")
 
