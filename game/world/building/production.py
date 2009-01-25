@@ -36,6 +36,7 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 		self.emitter = game.main.fife.soundmanager.createEmitter()
 		self.emitter.setGain(1.0)
 		self.emitter.setLooping(True)
+		self.emitter.setRolloff(1.9)
 		self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
 		self.emitter.setSoundClip(game.main.fife.engine.getSoundClipPool().addResourceFromFile('content/audio/sounds/sheepfield.ogg'))
 		print "Stereo?:", self.emitter.isStereo()
