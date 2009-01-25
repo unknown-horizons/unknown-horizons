@@ -46,7 +46,6 @@ class Timer(object):
 
 	def __del__(self):
 		game.main.fife.pump.remove(self.check_tick)
-		super(Timer, self).__del__()
 
 	def add_test(self, call):
 		"""Adds a call to the test list
