@@ -220,8 +220,8 @@ class Menus(object):
 			settings.fife.renderer.backend = 'OpenGL' if new_settings['screen_renderer'] == 0 else 'SDL'
 			changes_require_restart = True
 		if new_settings['screen_resolution'] != resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height)):
-			settings.fife.screen.width = int(resolutions[screen_resolution].partition('x')[0])
-			settings.fife.screen.height = int(resolutions[screen_resolution].partition('x')[2])
+			settings.fife.screen.width = int(resolutions['screen_resolution'].partition('x')[0])
+			settings.fife.screen.height = int(resolutions['screen_resolution'].partition('x')[2])
 			changes_require_restart = True
 
 		if changes_require_restart:
