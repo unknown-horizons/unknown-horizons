@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png" >
-		<Label text="Buy" position="10,5"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="35,15"/>
-		<Label text="Sell" position="55,5"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="80,15"/>
+	<Label text="Buy" position="10,5"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="35,15"/>
+	<Label text="Sell" position="55,5"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="80,15"/>
 	<HBox size="200, 100" position="10,40" name="content" padding="10"/>
 </Container>

@@ -108,7 +108,7 @@ class BuildingTool(NavigationTool):
 				self.gui.findChild(name='building').image = image[0][0]
 			else:
 				assert(False, "No image for building id:", self._class.id, "in the db!")
-		self.gui.resizeToContent()
+		self.gui._recursiveResizeToContent()
 
 	def previewBuild(self, point1, point2):
 		print "PREVIEW BUILD"

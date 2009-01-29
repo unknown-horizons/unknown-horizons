@@ -4,13 +4,11 @@
 	<VBox>
 		<HBox>
 			<ImageButton name="rotate_left" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
-			<Icon name="building"/>
-			<ImageButton name="rotate_right" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
-		</HBox>
-		<HBox>
 			<Label text="Running costs:"/>
 			<Label name="running_costs" text=""/>
+			<ImageButton name="rotate_right" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
 		</HBox>
+		<Icon name="building"/>
 	</VBox>
 	</Container>
 </Container>
