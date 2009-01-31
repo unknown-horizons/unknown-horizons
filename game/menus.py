@@ -80,7 +80,6 @@ class Menus(object):
 		self.current.show()
 		self.on_escape = self.show_quit
 
-
 	def show_quit(self):
 		"""Shows the quit dialog
 		"""
@@ -282,6 +281,7 @@ class Menus(object):
 		label.text = str(int(slider.getValue() * 100)) + '%'
 		game.main.fife.set_volume(emitter, slider.getValue())
 
+		
 	def on_help(self):
 		"""
 		Called on help action
@@ -528,10 +528,9 @@ class Menus(object):
 		self.current.show()
 		self.on_escape = self.show_multi
 
-
-	def delete_savegame(self, gui, map_files):
+	def delete_savegame(self, map_files):
 		"""Deletes the selected savegame if the user confirms
-		@param gui: handle for pychan gui, that includes the widget 'savegamelist'
+		self.current has to contain the widget "savegamelist"
 		@param map_files: list of files that corresponds to the entries of 'savegamelist'
 		@return: True if something was deleted, else False
 		"""
@@ -540,7 +539,7 @@ class Menus(object):
 			showPopup("No file selected", "You need to select a savegame to delete")
 			return False
 		selected_file = map_files[selected_item]
-		if showPopup("Confirm deletiom",
+		if self.show_popup("Confirm deletiom",
 								 'Do you really want to delete the savegame "%s"?' % os.path.basename(selected_file),
 								 show_cancel_button = True):
 			os.unlink(selected_file)
@@ -575,7 +574,6 @@ class Menus(object):
 		if self.current is not None:
 			self.current.show()
 
-
 	def start_single(self):
 		""" Starts a single player game.
 		"""
@@ -604,9 +602,8 @@ class Menus(object):
 
 			game.main.start_singleplayer(map_file)
 
-
 	def load_game(self, savegame = None):
-		# Loading is disabled for now
+		# To disable load for now:
 		#showDialog(fife.pychan.loadXML('content/gui/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
 		#return
 
@@ -617,32 +614,35 @@ class Menus(object):
 				self.show_popup("No saved games", "There are no saved games to load")
 				return
 
-			load_dlg = self.widgets['ingame_load']
+			old_current = self.current
+			self.current = self.widgets['ingame_load']
 
-			load_dlg.distributeInitialData({'savegamelist' : map_file_display})
+			self.current.distributeInitialData({'savegamelist' : map_file_display})
 
 			def tmp_delete_savegame():
-				if self.delete_savegame(load_dlg, map_files):
-					load_dlg.hide()
+				if self.delete_savegame(map_files):
+					self.current.hide()
 					self.load_game()
 
-			load_dlg.findChild(name="savegamelist").capture(self.create_show_savegame_details(load_dlg, map_files, 'savegamelist'))
-			if not self.show_dialog(load_dlg, {'okButton' : True, 'cancelButton' : False},
+			self.current.findChild(name="savegamelist").capture(self.create_show_savegame_details(self.current, map_files, 'savegamelist'))
+			if not self.show_dialog(self.current, {'okButton' : True, 'cancelButton' : False},
 												onPressEscape = False,
 												event_map={'deleteButton' : tmp_delete_savegame}):
+				self.current = old_current
 				return
 
-			selected_savegame = load_dlg.collectData('savegamelist')
+			selected_savegame = self.current.collectData('savegamelist')
+			self.current = old_current
 			if selected_savegame == -1:
 				return
 			savegamefile = map_files[ selected_savegame ]
-		else:
+		else: # savegame already specified as function parameter
 			savegamefile = savegame
 
 		assert(os.path.exists(savegamefile))
 
 		self.hide()
-		self.current = self.widget['loadingscreen']
+		self.current = self.widgets['loadingscreen']
 		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
 		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		self.show()
@@ -651,24 +651,27 @@ class Menus(object):
 	def save_game(self):
 		savegame_files, savegame_display = game.main.savegamemanager.get_regular_saves()
 
-		save_dlg = self.widgets['savegame']
+		old_current = self.current
+		self.current = self.widgets['savegame']
 
-		save_dlg.distributeInitialData({'savegamelist' : savegame_display})
+		self.current.distributeInitialData({'savegamelist' : savegame_display})
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			save_dlg.distributeData({'savegamefile' : savegame_display[save_dlg.collectData('savegamelist')]})
+			self.current.distributeData({'savegamefile' : savegame_display[self.current.collectData('savegamelist')]})
 
 		def tmp_delete_savegame():
-			if delete_savegame(save_dlg, savegame_files):
-				save_dlg.hide()
+			if self.delete_savegame(savegame_files):
+				self.current.hide()
 				self.save_game()
 
-		save_dlg.findChild(name='savegamelist').capture(tmp_selected_changed)
-		if not self.show_dialog(save_dlg, {'okButton' : True, 'cancelButton' : False},
+		self.current.findChild(name='savegamelist').capture(tmp_selected_changed)
+		if not self.show_dialog(self.current, {'okButton' : True, 'cancelButton' : False},
 											onPressEscape = False,
 											event_map={'deleteButton' : tmp_delete_savegame}):
+			self.current = old_current
 			return
 
-		savegamename = save_dlg.collectData('savegamefile')
+		savegamename = self.current.collectData('savegamefile')
+		self.current = old_current
 		game.main.saveGame(savegamename)
