@@ -35,8 +35,11 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.inventory = self.settlement.inventory
-		self.inventory.increase_slots(30)
+		self.inventory.adjust_limits(30)
 		self.inventory.addChangeListener(self._changed)
+
+	def __del__(self):
+		self.inventory.adjust_limit(-30)
 
 	def load(self, db, worldid):
 		print 'stor1', self
