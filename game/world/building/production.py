@@ -21,20 +21,18 @@
 
 from building import Building, Selectable
 from game.world.production import SecondaryProducer, PrimaryProducer
-from game.world.ambientsound import AmbientSound
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from game.gui.tabwidget import TabWidget
 from game.util.point import Point
 import game.main
 
-class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building, AmbientSound):
+class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
 
 	def __init__(self, **kwargs):
 		super(AnimalFarm, self).__init__(**kwargs)
-		self.play_ambient('content/audio/sounds/sheepfield.ogg', True)
 
 	def create_carriage(self):
 		self.animals = []

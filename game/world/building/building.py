@@ -26,9 +26,10 @@ import fife
 
 import game.main
 from game.world.settlement import Settlement
+from game.world.ambientsound import AmbientSound
 from game.util import Rect,Point, WorldObject
 
-class Building(WorldObject):
+class Building(WorldObject, AmbientSound):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
@@ -38,6 +39,9 @@ class Building(WorldObject):
 		self.__init(Point(x,y), rotation, owner, instance)
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
+		
+		for sound in game.main.db("SELECT sound FROM building_sounds WHERE building = ?", self.id):
+			self.play_ambient(game.main.fife.soundpool[sound[0]], True)
 
 	def __init(self, origin, rotation, owner, instance):
 		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0])

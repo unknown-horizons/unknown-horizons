@@ -32,3 +32,4 @@ from weaklist import WeakList
 from worldobject import WorldObject
 from weakmethodlist import WeakMethodList
 from encoder import encode, decode
+from soundpool import SoundPool
