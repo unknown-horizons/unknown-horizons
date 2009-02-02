@@ -113,5 +113,8 @@ class SizedSlotStorage(PositiveStorage): # TESTED AND WORKING
 		check = max(0, amount + self[res] - self.limit)
 		return check + super(SizedSlotStorage, self).alter(res, amount - check)
 
+	def increase_slots(self, amount):
+		self.limit += amount
+
 class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass
