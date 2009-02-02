@@ -21,26 +21,20 @@
 
 from building import Building, Selectable
 from game.world.production import SecondaryProducer, PrimaryProducer
+from game.world.ambientsound import AmbientSound
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from game.gui.tabwidget import TabWidget
 from game.util.point import Point
 import game.main
 
-class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
+class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building, AmbientSound):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
 
 	def __init__(self, **kwargs):
 		super(AnimalFarm, self).__init__(**kwargs)
-		self.emitter = game.main.fife.soundmanager.createEmitter()
-		self.emitter.setGain(1.0)
-		self.emitter.setLooping(True)
-		self.emitter.setRolloff(1.9)
-		self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
-		self.emitter.setSoundClip(game.main.fife.engine.getSoundClipPool().addResourceFromFile('content/audio/sounds/sheepfield.ogg'))
-		print "Stereo?:", self.emitter.isStereo()
-		self.emitter.play()
+		self.play_ambient('content/audio/sounds/sheepfield.ogg', True)
 
 	def create_carriage(self):
 		self.animals = []

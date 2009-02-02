@@ -184,6 +184,8 @@ class Menus(object):
 				fife.emitter['bgsound'].setGain(volume_music_intial)
 				fife.emitter['effects'].setGain(volume_effects_intial)
 				fife.emitter['speech'].setGain(volume_effects_intial)
+				for e in fife.emitter['ambient']: 
+					e.setGain(volume_effects_intial)
 			return
 
 		# the following lines prevent typos

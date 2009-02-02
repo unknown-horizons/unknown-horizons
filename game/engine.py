@@ -250,6 +250,7 @@ class Fife(object):
 			self.emitter['speech'] = self.soundmanager.createEmitter()
 			self.emitter['speech'].setGain(game.main.settings.sound.volume_effects)
 			self.emitter['speech'].setLooping(False)
+			self.emitter['ambient'] = []
 			self.music_rand_element = random.randint(0, len(self.music) - 1)
 			def check_music():
 				if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):

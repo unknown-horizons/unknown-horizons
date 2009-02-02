@@ -39,6 +39,11 @@ class Point(object):
 		This is useful, because Rect supports this too.
 		"""
 		return [(self.x, self.y)]
+	
+	def center(self):
+		"""Returns the center of the point (this makes Point interface more coherent with Rect).
+		"""
+		return self
 
 	def offset(self, x_offset, y_offset):
 		"""Returns a Point with an offset of x, y relative to this Point.
