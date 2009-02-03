@@ -27,8 +27,6 @@ import game.main
 import new
 import glob, random
 from game.util.inventory_widget import Inventory, ImageFillStatusButton
-from game.util import SoundPool, livingProperty
-
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -142,8 +140,6 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 class Fife(object):
 	"""
 	"""
-	soundpool = livingProperty()
-	
 	def __init__(self):
 		self.pump = []
 
@@ -245,7 +241,6 @@ class Fife(object):
 		self.emitter = {}
 		if game.main.settings.sound.enabled: # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
-			self.soundpool = SoundPool()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
 			self.emitter['bgsound'].setGain(game.main.settings.sound.volume_music)
 			self.emitter['bgsound'].setLooping(False)

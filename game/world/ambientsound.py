@@ -34,16 +34,16 @@ class AmbientSound(object):
 			self.emitter.setRolloff(1.9)
 			game.main.fife.emitter['ambient'].append(self.emitter)
 		
-	def play_ambient(self, soundid, looping):
+	def play_ambient(self, soundfile, looping):
 		"""Starts playing an ambient soundn
-		@param soundid: fife sound id. get it from soundpool.
+		@param soundfile: path to audio file
 		@param looping: bool, wether sound should loop for forever
 		"""
 		if game.main.settings.sound.enabled:
 			# set to current position
 			self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
 			self.emitter.setLooping(looping)
-			self.emitter.setSoundClip(soundid)
+			self.emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
 			self.emitter.play()
 		
 

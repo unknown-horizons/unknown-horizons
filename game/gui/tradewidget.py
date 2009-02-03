@@ -63,7 +63,7 @@ class TradeWidget(object):
 
 
 	def set_partner(self, partner_id):
-		self.partner = self.partners(partner_id)
+		self.partner = self.partners[partner_id]
 
 	def hide(self):
 		self.widget.hide()

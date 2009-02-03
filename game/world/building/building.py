@@ -40,8 +40,8 @@ class Building(WorldObject, AmbientSound):
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
 		
-		for sound in game.main.db("SELECT sound FROM building_sounds WHERE building = ?", self.id):
-			self.play_ambient(game.main.fife.soundpool[sound[0]], True)
+		for (soundfile,) in game.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
+			self.play_ambient(soundfile, True)
 
 	def __init(self, origin, rotation, owner, instance):
 		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0])
