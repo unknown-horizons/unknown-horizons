@@ -35,16 +35,28 @@ class AmbientSound(object):
 			game.main.fife.emitter['ambient'].append(self.emitter)
 		
 	def play_ambient(self, soundfile, looping):
-		"""Starts playing an ambient soundn
+		"""Starts playing an ambient sound
 		@param soundfile: path to audio file
 		@param looping: bool, wether sound should loop for forever
 		"""
 		if game.main.settings.sound.enabled:
 			# set to current position
-			self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
+			if(hasattr(self, 'position') and self.position != None):
+				self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
 			self.emitter.setLooping(looping)
 			self.emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
 			self.emitter.play()
 		
+	@classmethod
+	def play_special(cls, sound, position = None):
+		"""Plays a special sound listed in the db table sounds_special 
+		from anywhere in the code and without an instance of AmbientSound.
+		@param sound: string, key in table sounds_special
+		@param position: optional, source of sound on map
+		"""
+		a = AmbientSound()
+		a.position = position
+		soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
+		a.play_ambient(soundfile, looping = False)
 
 
