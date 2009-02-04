@@ -134,7 +134,7 @@ class Session(object):
 		"""Loads last quicksave"""
 		files = game.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
-			game.main.showPopup("No quicksaves found", "You need to quicksave before you can quickload.")
+			game.main.gui.show_popup("No quicksaves found", "You need to quicksave before you can quickload.")
 			return
 		files.sort()
 		game.main.gui.load_game(files[-1])

@@ -55,9 +55,11 @@ class AmbientSound(object):
 		@param sound: string, key in table sounds_special
 		@param position: optional, source of sound on map
 		"""
-		a = AmbientSound()
-		a.position = position
-		soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
-		a.play_ambient(soundfile, looping = False)
+		if game.main.settings.sound.enabled:
+			a = AmbientSound()
+			a.position = position
+			soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
+			a.play_ambient(soundfile, looping = False)
+			game.main.fife.emitter['ambient'].remove(a.emitter)
 
 

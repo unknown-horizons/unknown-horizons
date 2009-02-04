@@ -67,8 +67,6 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.job is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
-		# TODO:
-		# state of current job
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""

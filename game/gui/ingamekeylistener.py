@@ -85,7 +85,7 @@ class IngameKeyListener(fife.IKeyListener):
 		elif keyval == fife.Key.F5:
 			game.main.session.quicksave()
 			# not sure if gui-code should be here
-			game.main.showPopup('Quicksave', 'Your game has been saved')
+			game.main.gui.show_popup('Quicksave', 'Your game has been saved')
 		elif keyval == fife.Key.F9:
 			game.main.session.quickload()
 		else:

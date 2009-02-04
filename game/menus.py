@@ -538,7 +538,7 @@ class Menus(object):
 		"""
 		selected_item = self.current.collectData("savegamelist")
 		if selected_item == -1:
-			showPopup("No file selected", "You need to select a savegame to delete")
+			show_popup("No file selected", "You need to select a savegame to delete")
 			return False
 		selected_file = map_files[selected_item]
 		if self.show_popup("Confirm deletiom",
@@ -586,10 +586,10 @@ class Menus(object):
 		if showRandom:
 			playername = self.current.collectData('playername')
 			if len(playername) == 0:
-				showPopup("Invalid player name", "You entered an invalid playername")
+				show_popup("Invalid player name", "You entered an invalid playername")
 				return
 			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-			showPopup("Not implemented", "Sorry, random map creation is not implemented at the moment.")
+			show_popup("Not implemented", "Sorry, random map creation is not implemented at the moment.")
 			return
 		else:
 			map_id = self.current.collectData('maplist')

@@ -179,7 +179,7 @@ class WANServerList(ServerList):
 		try:
 			wan_servers = (urllib.urlopen(game.main.settings.network.url_servers))
 		except IOError,e:
-			game.main.showPopup("Network Error", "Error: "+e.strerror[1])
+			game.main.gui.show_popup("Network Error", "Error: "+e.strerror[1])
 
 		for server in wan_servers:
 			match = Server.re_ip_port.match(server)
