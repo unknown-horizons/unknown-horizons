@@ -125,26 +125,3 @@ class BuildingClass(type):
 					anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 					action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
-
-		#old code, but with "correcter" image positioning
-		"""for rotation, file in game.main.db("SELECT rotation, (select file from data.animation where data.animation.animation_id = data.action.animation order by frame_end limit 1) FROM data.action where object=?", cls.id):
-			img = game.main.fife.imagepool.addResourceFromFile(str(file))
-			visual.addStaticImage(int(rotation), img)
-			img = game.main.fife.imagepool.getImage(img)
-			shift_x = 1 + img.getWidth() / 2 //left
-			shift_y = img.getHeight() / -2 //bottom
-			#currently a bit useless
-			if rotation == 45:
-				shift_x = shift_x - 15
-				shift_y = shift_y + cls.size[0] * 8
-			elif rotation == 135:
-				shift_x = shift_x - cls.size[1] * 16
-				shift_y = shift_y + 8
-			elif rotation == 225:
-				shift_x = shift_x - (cls.size[0] + cls.size[1] - 1) * 16
-				shift_y = shift_y + cls.size[1] * 8
-			elif rotation == 315:
-				shift_x = shift_x - cls.size[0] * 16
-				shift_y = shift_y + (cls.size[0] + cls.size[1] - 1) * 8
-			img.setXShift(shift_x)
-			img.setYShift(shift_y)"""

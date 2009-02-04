@@ -22,7 +22,8 @@ import game.main
 
 class AmbientSound(object):
 	"""Support for playing ambient sounds, such as animal noise.
-	It relies on the subclass having an attribute "position", which must be a class from game.util
+	It relies on the subclass having an attribute "position", which must be either a
+	game.util.Point or game.util.Rect.
 	"""
 	def __init__(self, **kwargs):
 		"""
@@ -33,7 +34,7 @@ class AmbientSound(object):
 			self.emitter.setGain(game.main.settings.sound.volume_effects)
 			self.emitter.setRolloff(1.9)
 			game.main.fife.emitter['ambient'].append(self.emitter)
-		
+
 	def play_ambient(self, soundfile, looping):
 		"""Starts playing an ambient sound
 		@param soundfile: path to audio file
@@ -46,10 +47,10 @@ class AmbientSound(object):
 			self.emitter.setLooping(looping)
 			self.emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
 			self.emitter.play()
-		
+
 	@classmethod
 	def play_special(cls, sound, position = None):
-		"""Plays a special sound listed in the db table sounds_special 
+		"""Plays a special sound listed in the db table sounds_special
 		from anywhere in the code and without an instance of AmbientSound.
 		@param sound: string, key in table sounds_special
 		@param position: optional, source of sound on map
