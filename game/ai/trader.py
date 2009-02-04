@@ -49,7 +49,8 @@ class Trader(Player, StorageHolder):
 		@param ship: Ship instance that is to be used"""
 		print "min:", game.main.session.world.min_x
 		print "max:", game.main.session.world.max_x
-		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
+		assert len(game.main.session.world.water)>0, \
+			   "You're doing it wrong, this is not allowed to happen."
 		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water))]
 		print "sending ship to", x,y
 		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
@@ -58,7 +59,8 @@ class Trader(Player, StorageHolder):
 	def send_ship_random_branch(self, ship):
 		"""Sends a ship to a random branch office on the map
 		@param ship: Ship instance that is to be used"""
-		branchoffices = [] # maybe this kind of list should be saved somewhere, as this is pretty performance intense
+		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
+		branchoffices = []
 		for island in game.main.session.world.islands: # find all branch offices
 			for settlement in island.settlements:
 				for building in settlement.buildings:
@@ -89,11 +91,13 @@ class Trader(Player, StorageHolder):
 				continue # continue if there are more resources in the inventory than the settlement wants to buy
 			else:
 				alter = rand if key-settlement.inventory[res] >= rand else key-settlement.inventory[res]
-				ret = settlement.owner.inventory.alter(1, -alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
+				ret = settlement.owner.inventory.alter(1, -alter*\
+					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
 				if ret == 0: # check if enough money was in the inventory
 					settlement.inventory.alter(res, alter)
 				else: # if not, return the money taken
-					settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
+					settlement.owner.inventory.alter(1, alter*\
+						int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
 		for res, key in settlement.sell_list.iteritems():
 			rand = random.randint(0,settlement.inventory.limit-key) # select a random amount to buy from the settlement
 			if settlement.inventory[res] <= key:
@@ -101,9 +105,12 @@ class Trader(Player, StorageHolder):
 			else:
 				alter = -rand if settlement.inventory[res]-key >= rand else -(settlement.inventory[res]-key)
 				print "Altering:", alter
-				settlement.owner.inventory.alter(1, alter*int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9)) # pay for bought resources
+				# Pay for bought resources
+				settlement.owner.inventory.alter(1, alter*\
+					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
 				settlement.inventory.alter(res, alter)
 		self.office = None
+		# wait 2 seconds before going on to the next island
 		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
 
 

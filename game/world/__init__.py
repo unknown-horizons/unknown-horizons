@@ -146,7 +146,7 @@ class World(object):
 	def get_building(self, x, y):
 		"""Returns the building at the position x,y.
 		@param x,y: int coordinates.
-		@return: Building class instance if a building is found, else none."""
+		@return: Building class instance if a building is found, else None."""
 		i = self.get_island(x, y)
 		return None if i is None else i.get_building(Point(x, y))
 

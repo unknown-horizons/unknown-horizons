@@ -183,7 +183,8 @@ class Island(WorldObject):
 		inherits = []
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			# TODO: make this readable
-			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
+			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
+			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
 				if tile.settlement is None:
 					tile.settlement = settlement
 				elif tile.settlement.owner == settlement.owner:
