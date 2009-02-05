@@ -280,9 +280,7 @@ class Menus(object):
 
 
 	def set_volume(self, label, slider, emitter):
-		print label.name
 		if label.name == 'volume_music_value':
-			print 'foo'
 			label.text = str(int(slider.getValue() * 100* 2)) + '%'
 		else:
 			label.text = str(int(slider.getValue() * 100)) + '%'
