@@ -171,7 +171,7 @@ class Menus(object):
 		volume_music = dlg.findChild(name='volume_music')
 		volume_music.setValue(settings.sound.volume_music)
 		volume_music_value =  dlg.findChild(name='volume_music_value')
-		volume_music_value.text = str(int(volume_music.getValue() * 100)) + '%'
+		volume_music_value.text = str(int(volume_music.getValue() * 100 * 2)) + '%'
 
 		# Set effects volume display and slider correctly
 		volume_effects = dlg.findChild(name='volume_effects')
@@ -184,7 +184,7 @@ class Menus(object):
 				fife.emitter['bgsound'].setGain(volume_music_intial)
 				fife.emitter['effects'].setGain(volume_effects_intial)
 				fife.emitter['speech'].setGain(volume_effects_intial)
-				for e in fife.emitter['ambient']: 
+				for e in fife.emitter['ambient']:
 					e.setGain(volume_effects_intial)
 			return
 
@@ -280,10 +280,15 @@ class Menus(object):
 
 
 	def set_volume(self, label, slider, emitter):
-		label.text = str(int(slider.getValue() * 100)) + '%'
+		print label.name
+		if label.name == 'volume_music_value':
+			print 'foo'
+			label.text = str(int(slider.getValue() * 100* 2)) + '%'
+		else:
+			label.text = str(int(slider.getValue() * 100)) + '%'
 		game.main.fife.set_volume(emitter, slider.getValue())
 
-		
+
 	def on_help(self):
 		"""
 		Called on help action
