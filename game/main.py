@@ -114,6 +114,8 @@ def start_singleplayer(map_file):
 
 	gui.hide()
 
+	if session is not None:
+		session.__del__()
 	session = Session()
 	session.init_session()
 	session.load(map_file, 'Arthur', Color()) # temp fix to display gold
