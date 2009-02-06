@@ -28,6 +28,7 @@ class livingProperty(object):
 
 	def __set__(self, obj, value):
 		print "Setting:", obj, value
+		print "Value:", self.__value
 		if hasattr(self.__value, '__del__'):
 			self.__value.__del__()
 		self.__value = value

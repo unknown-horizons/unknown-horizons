@@ -118,7 +118,6 @@ class Session(object):
 
 		self.selected_instances = None
 		self.selection_groups = None
-		super(Session, self).__del__()
 
 	def autosave(self):
 		"""Called automatically in an interval"""

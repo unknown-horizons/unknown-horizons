@@ -24,12 +24,18 @@ from selectiontool import SelectionTool
 import game.main
 import fife
 from messagewidget import MessageWidget
+from game.util import livingProperty
 from tabwidget import TabWidget
 from game.world.settlement import Settlement
 from buysellwidget import BuySellWidget
 
 class IngameGui(object):
 	"""Class handling all the ingame gui events."""
+
+	gui = livingProperty()
+	tabwidgets = livingProperty()
+	message_widget = livingProperty()
+
 	def __init__(self):
 		super(IngameGui, self).__init__()
 		self.gui = {}
@@ -189,7 +195,6 @@ class IngameGui(object):
 		self.message_widget = None
 		self.tabwidgets = None
 		self.hide_menu()
-		super(IngameGui, self).__del__()
 
 	def update_gold(self):
 		res_id = 1

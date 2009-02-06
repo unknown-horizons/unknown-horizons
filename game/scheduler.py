@@ -97,8 +97,7 @@ class Scheduler(object):
 					self.schedule[key].remove(callback_obj)
 
 	def __del__(self):
-		self.schedule = {}
-		self._is_ended = True
+		self.schedule = None
 		self.timer.remove_call(self.tick)
 		self.timer = None
 

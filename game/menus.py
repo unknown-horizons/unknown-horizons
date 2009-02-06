@@ -301,6 +301,7 @@ class Menus(object):
 		if self.show_dialog(self.widgets['quitsession'],  {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			self.current.hide()
 			self.current = None
+			game.main.session.__del__()
 			game.main.session = None
 			self.show_main()
 

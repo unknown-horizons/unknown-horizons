@@ -55,6 +55,7 @@ from game.gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
 from game.savegamemanager import SavegameManager, InvalidSavegamenameException
 
+
 def start():
 	"""Starts the game.
 	"""
@@ -148,7 +149,7 @@ def saveGame(savegamename):
 		gui.hide()
 		gui.save_game()
 
-		
+
 # NOTE: this code wasn't maintained and is broken now.
 #def start_multiplayer(savegamefile):
 #	"""Starts a new multiplayer game

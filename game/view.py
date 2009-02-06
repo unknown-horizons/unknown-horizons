@@ -77,7 +77,6 @@ class View(Changelistener):
 		"""
 		self.model.deleteMaps()
 		self.view.clearCameras()
-		super(View, self).__del__()
 
 	def center(self, x, y):
 		"""Sets the camera position
