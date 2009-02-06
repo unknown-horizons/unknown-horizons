@@ -148,15 +148,17 @@ def saveGame(savegamename):
 		gui.hide()
 		gui.save_game()
 
-def start_multiplayer(savegamefile):
-	"""Starts a new multiplayer game
-	@param savegamefile: sqlite database file containing the savegame
-	"""
-	global gui, fife
-	gui.show()
-	fife.engine.pump()
-
-	session = Session()
-	session.load(savegamefile)
-	returnGame()
+		
+# NOTE: this code wasn't maintained and is broken now.
+#def start_multiplayer(savegamefile):
+#	"""Starts a new multiplayer game
+#	@param savegamefile: sqlite database file containing the savegame
+#	"""
+#	global gui, fife
+#	gui.show()
+#	fife.engine.pump()
+#
+#	session = Session()
+#	session.load(savegamefile)
+#	returnGame()
 

@@ -100,8 +100,8 @@ class Session(object):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		#autosave
-		#if game.main.settings.savegame.autosaveinterval != 0:
-		#game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
+		if game.main.settings.savegame.autosaveinterval != 0:
+			game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def __del__(self):
 		self.scheduler.rem_all_classinst_calls(self)

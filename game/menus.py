@@ -651,7 +651,7 @@ class Menus(object):
 		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
 		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		self.show()
-		game.main.start_multiplayer(savegamefile)
+		game.main.start_singleplayer(savegamefile)
 
 	def save_game(self):
 		savegame_files, savegame_display = game.main.savegamemanager.get_regular_saves()
