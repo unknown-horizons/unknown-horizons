@@ -154,9 +154,7 @@ def save_game(savegamename):
 		gui.hide()
 		gui.save_game()
 		return False
-	except Exception, e: 
-		game.main.gui.show_popup("Save failed", "Save Error: %s" % e)
-		return False
+	
 	return True
 
 
