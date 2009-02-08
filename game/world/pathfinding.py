@@ -63,7 +63,7 @@ def check_path(path):
 		assert False, 'Encountered errors when testing pathfinding'
 	return True
 
-def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = False):
+def findPath(source, destination, path_nodes_arg, blocked_coords = [], diagonal = False):
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which
 	is not necessarily the shortest path (cause roads have different speeds)
@@ -76,13 +76,18 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	"""
 	#t0 = time.time()
 
+
+
+
+
 	# assurce correct call
 	assert(isinstance(source, (Rect, Point, Building)))
 	assert(isinstance(destination, (Rect, Point, Building)))
-	assert(isinstance(path_nodes, (dict, list)))
+	assert(isinstance(path_nodes_arg, (dict, list)))
 	assert(isinstance(blocked_coords, (dict, list)))
 	assert(isinstance(diagonal, (bool)))
 
+	
 	# support for building
 	if isinstance(source, Building):
 		source = source.position
@@ -92,12 +97,15 @@ def findPath(source, destination, path_nodes, blocked_coords = [], diagonal = Fa
 	if destination in blocked_coords:
 		return None
 
-	if isinstance(path_nodes, list):
-		path_nodes = dict.fromkeys(path_nodes, 1.0)
+	if isinstance(path_nodes_arg, list):
+		path_nodes_arg = dict.fromkeys(path_nodes_arg, 1.0)
 
 	if isinstance(blocked_coords, dict):
 		blocked_coords = blocked_coords.keys()
-
+	path_nodes = {}
+	
+	for k, v in path_nodes_arg.iteritems():
+		path_nodes[k] = v
 
 	# nodes are the keys of the following dicts (x,y)
 	# the val of the keys are: [previous node, distance to this node from source, distance to destination, sum of the last two elements]

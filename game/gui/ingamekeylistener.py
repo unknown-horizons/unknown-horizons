@@ -63,6 +63,8 @@ class IngameKeyListener(fife.IKeyListener):
 			game.main.session.speed_down()
 		elif keystr == 'p':
 			game.main.session.speed_toggle_pause()
+		elif keystr == 'b' :
+			import pdb; pdb.set_trace()			
 		elif keystr == '.':
 			if isinstance(game.main.session.cursor, BuildingTool):
 				game.main.session.cursor.rotate_right()
