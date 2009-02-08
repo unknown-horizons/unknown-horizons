@@ -680,4 +680,4 @@ class Menus(object):
 
 		savegamename = self.current.collectData('savegamefile')
 		self.current = old_current
-		game.main.saveGame(savegamename)
+		game.main.save_game(savegamename)

@@ -121,12 +121,16 @@ class Session(object):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
-		self.save(game.main.savegamemanager.create_autosave_filename())
+		# call saving through game.main and not directly through session, so that save errors are handled
+		success = game.main.save_game(game.main.savegamemanager.create_autosave_filename())
 		game.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
 
 	def quicksave(self):
-		"""Called when user presses a hotkey"""
-		self.save(game.main.savegamemanager.create_quicksave_filename())
+		"""Called when user presses the quicksave hotkey"""
+		# call saving through game.main and not directly through session, so that save errors are handled
+		success = game.main.save_game(game.main.savegamemanager.create_quicksave_filename())
+		if success:
+			game.main.gui.show_popup('Quicksave', 'Your game has been saved')
 		game.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
 
 	def quickload(self):
@@ -141,6 +145,7 @@ class Session(object):
 	def save(self, savegame):
 		"""
 		@param savegame: the file, where the game will be saved
+		@return: bool, wether save was successful or not
 		"""
 		if os.path.exists(savegame):
 			os.unlink(savegame)
@@ -148,7 +153,6 @@ class Session(object):
 
 		db = DbReader(savegame)
 		try:
-			print 'STARTING SAVING'
 			db("BEGIN")
 			self.world.save(db)
 			#self.manager.save(db)
@@ -161,13 +165,14 @@ class Session(object):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
 
-			print 'writing metadata'
 			game.main.savegamemanager.write_metadata(db)
 		except Exception, e:
+			# remove invalid savegamefile
+			os.unlink(savegame)
 			print "Save exception", e
+			raise e
 		finally:
 			db("COMMIT")
-			print 'FINISHED SAVING'
 
 	def record(self, savegame):
 		self.save(savegame)

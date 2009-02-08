@@ -29,8 +29,8 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		self.limit = None
 
 	def save(self, db, ownerid):
-		super(Storage, self).save(db)
-		for slot in self._storage:
+		super(GenericStorage, self).save(db)
+		for slot in self._storage.iteritems():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, slot[0], slot[1])
 

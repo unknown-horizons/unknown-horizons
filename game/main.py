@@ -53,7 +53,7 @@ from game.settings import Settings
 from game.session import Session
 from game.gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
-from game.savegamemanager import SavegameManager, InvalidSavegamenameException
+from game.savegamemanager import SavegameManager
 
 
 def start():
@@ -128,28 +128,36 @@ def startMulti():
 	"""
 	pass
 
-def saveGame(savegamename):
+def save_game(savegamename):
 	"""Saves a game
-	@param savegamename: string with the name of the file that is to be used"""
+	@param savegamename: string with the filename or full path of the savegame file
+	@return: bool, wether save was successfull
+	"""
 	global savegamemanager, session, gui
-	try:
+	
+	if savegamename.startswith("/"):
+		savegamefile = savegamename
+	else:
 		savegamefile = savegamemanager.create_filename(savegamename)
-	except InvalidSavegamenameException:
-		return
 
 	if os.path.exists(savegamefile):
 		if not gui.show_popup("Confirmation for overwriting",
-										 "A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
-										 show_cancel_button = True):
+													"A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
+													show_cancel_button = True):
 			gui.save_game()
-			return
+			return 
 
 	try:
 		session.save(savegamefile)
-	except IOError: # invalid filename
+	except IOError, e: # invalid filename
 		gui.show_popup("Invalid filename", "You entered an invalid filename.")
 		gui.hide()
 		gui.save_game()
+		return False
+	except Exception, e: 
+		game.main.gui.show_popup("Save failed", "Save Error: %s" % e)
+		return False
+	return True
 
 
 # NOTE: this code wasn't maintained and is broken now.
