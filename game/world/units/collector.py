@@ -32,7 +32,8 @@ import weakref
 class BuildingCollector(StorageHolder, Unit):
 	movement = Movement.CARRIAGE_MOVEMENT
 	"""
-	How does this class work ?
+	Gets resources for e.g. a weaver, that needs wool
+	
 	Timeline:
 	init
 	|-search_job()
@@ -63,8 +64,7 @@ class BuildingCollector(StorageHolder, Unit):
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
-		#print 'savin job', (self.job is not None)
-		if self.job is not None:
+		if self.job is not None and self.job.object is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
 	def search_job(self):
@@ -155,14 +155,16 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time"""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
-		if self.job.object:
+		if self.job.object is not None:
 			#print self.getId(), 'BEGIN WORKING'
 			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 		else:
 			self.reroute()
 
 	def finish_working(self):
-		if self.job.object:
+		"""Called when collector is stayed at the target for a while.
+		Picks up the resources and sends collector home."""
+		if self.job.object is not None:
 			#print self.getId(), 'FINISH WORKING'
 			self.act("default", self._instance.getFacingLocation(), True)
 			# transfer res
@@ -180,7 +182,7 @@ class BuildingCollector(StorageHolder, Unit):
 		#print "Old job %s" % self.job
 		job = self.get_job()
 		# Check if there is a new job
-		if job:
+		if job is not None:
 			# There is a new job!
 			self.job = job
 			#print "New job %s" % self.job
@@ -191,8 +193,7 @@ class BuildingCollector(StorageHolder, Unit):
 			self.move_home(callback=self.reached_home)
 
 	def reached_home(self):
-		""" we finished now our complete work. Let's do it again in 32 ticks
-			you can use this as event as after work
+		"""We finished now our complete work. You can use this as event as after work.
 		"""
 		#print self.id, 'FINISHED WORK'
 
@@ -205,6 +206,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.end_job()
 
 	def end_job(self):
+		"""Contrary to setup_new_job"""
 		# he finished the job now
 		# before the new job can begin this will be executed
 		if self.start_hidden:
@@ -212,6 +214,7 @@ class BuildingCollector(StorageHolder, Unit):
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
 
 	def transfer_res(self):
+		"""Transfers resources from target to collector inventory"""
 		#print self.id, 'TRANSFER PICKUP'
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
@@ -220,15 +223,15 @@ class BuildingCollector(StorageHolder, Unit):
 		self.inventory.alter(self.job.res, res_amount)
 
 	def get_collectable_res(self):
-		"""Gets all resources the Collector can collect"""
+		"""Return all resources the Collector can collect (depends on its home building)"""
 		#print self.id, 'GET COLLECTABLE RES'
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building().get_needed_res()
 
 	def get_buildings_in_range(self):
-		#print self.id, 'GET BUILDINGS IN RANGE'
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
+		#print self.id, 'GET BUILDINGS IN RANGE'
 		from game.world.provider import Provider
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
