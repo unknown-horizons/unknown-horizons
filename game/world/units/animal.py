@@ -41,7 +41,6 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 	def save(self, db):
 		super(Animal, self).save(db)
-		# NOTE: home_building and start_hidden are also set in BuildingCollector
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -62,40 +61,6 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		self.job.object._Provider__collectors.remove(self)
 		self.end_job()
 
-	def get_job(self):
-		"""Returns the next job or None"""
-		# FIXME: this code is mostly, if not fully, copied from collector
-		#        it's already inconsistent, so delete the double code and
-		#        make them share one implementation
-		#print self.id, 'GET JOB'
-		collectable_res = self.get_collectable_res()
-		if len(collectable_res) == 0:
-			return None
-		jobs = []
-		for building in self.get_buildings_in_range():
-			for res in collectable_res:
-				res_amount = building.inventory[res]
-				if res_amount > 0:
-					# get sum of picked up ressources for res
-					total_pickup_amount = sum([ carriage.job.amount for carriage in building._Provider__collectors if carriage.job.res == res ])
-					# check how much will be delivered
-					# this is a animal. It delivers to himself. So it can get only one item at time
-					total_registered_amount_consumer = 0
-					# check if there are ressources left to pickup
-					max_consumer_res_free = self.inventory.get_limit(res) - self.inventory[res]
-					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
-						# add a new job
-						jobs.append(Job(building, res, min(res_amount - total_pickup_amount, self.inventory.get_limit(res), max_consumer_res_free)))
-
-		## TODO: Sort job list
-		jobs.sort(lambda x,y: random.randint(-1,1))
-
-		for job in jobs:
-			job.path =  self.check_move(Point(job.object.position.origin.x, job.object.position.origin.y))
-			if job.path is not None:
-				return job
-		return None
-
 	def get_collectable_res(self):
 		#print self.id, 'GET COLLECTABLE RES'
 		return self.get_needed_res()
@@ -106,3 +71,8 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 
 	def create_carriage(self):
 		pass
+
+	def sort_jobs(self, jobs):
+		from random import shuffle
+		shuffle(jobs)
+		return jobs

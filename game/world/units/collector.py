@@ -67,7 +67,6 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.job is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
-
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
 		self.job = self.get_job()
@@ -134,7 +133,6 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Executes the necessary actions to begin a new job"""
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
-
 
 	def sort_jobs(self, jobs):
 		"""Sorts the jobs for further processing. This has been moved to a seperate function so it
