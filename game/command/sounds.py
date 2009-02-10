@@ -19,4 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'unit', 'sounds']
+import game.main
+from game.world.ambientsound import AmbientSound
+from game.util import Point
+
+class PlaySound(object):
+	"""Command class that plays the build sound. This has been moved to a seperate
+	class, inorder to be able to play only one sound for 20 buildings(like a group of
+	trees)
+	@param x,y: int coordinates where the sound is to be played."""
+
+	def __init__(self, sound ,x, y, **trash):
+		self.sound = sound
+		self.x = x
+		self.y = y
+
+	def __call__(self, issuer):
+		"""Execute the command
+		@param issuer: the issuer of the command
+		"""
+		AmbientSound.play_special(self.sound, Point(self.x, self.y))

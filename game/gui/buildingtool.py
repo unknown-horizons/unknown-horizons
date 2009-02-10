@@ -24,6 +24,7 @@ from selectiontool import SelectionTool
 from game.world.building.building import *
 from game.world.building.path import Path
 from game.command.building import Build
+from game.command.sounds import PlaySound
 
 import fife
 import game.main
@@ -204,9 +205,12 @@ class BuildingTool(NavigationTool):
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
 			print "Building...."
-
+			# used to check if a building was built with this click
+			# Later used to play a sound
+			built = False
 			for building in self.buildings:
 				if building['buildable']:
+					built = True
 					self.reset_listeners() # Remove changelisteners for update_preview
 					found_buildable = True
 					game.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
@@ -216,6 +220,8 @@ class BuildingTool(NavigationTool):
 					self.gui.hide()
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
+			if built:
+				game.main.session.manager.execute(PlaySound("build", self.startPoint[0], self.startPoint[1]))
 			self.buildings = []
 			if evt.isShiftPressed() or not found_buildable:
 				self.startPoint = point

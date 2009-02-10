@@ -48,8 +48,7 @@ class Build(object):
 			building = WorldObject.getObjectById(id)
 			game.main.session.manager.execute(Tear(building))
 
-		AmbientSound.play_special("build", Point(self.x, self.y))
-		
+
 		island = game.main.session.world.get_island(self.x, self.y)
 		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, rotation=self.rotation, owner=issuer, instance=(self._instance if hasattr(self, '_instance') and issuer == game.main.session.world.player else None))
 
