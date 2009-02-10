@@ -153,14 +153,8 @@ class Menus(object):
 		})
 
 		dlg.mapEvents({
-			'volume_music' : game.main.fife.pychan.tools.callbackWithArguments(self.set_volume, \
-				dlg.findChild(name='volume_music_value'), \
-				dlg.findChild(name='volume_music'), \
-				'bgsound'),
-			'volume_effects' : game.main.fife.pychan.tools.callbackWithArguments(self.set_volume, \
-				dlg.findChild(name='volume_effects_value'), \
-				dlg.findChild(name='volume_effects'), \
-				'effects')
+			'volume_music' : game.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_music_value'), dlg.findChild(name='volume_music')),
+			'volume_effects' : game.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_effects_value'), dlg.findChild(name='volume_effects'))
 		})
 
 		# Save old musik volumes incase the user presses cancel
@@ -171,13 +165,13 @@ class Menus(object):
 		volume_music = dlg.findChild(name='volume_music')
 		volume_music.setValue(settings.sound.volume_music)
 		volume_music_value =  dlg.findChild(name='volume_music_value')
-		volume_music_value.text = str(int(volume_music.getValue() * 100 * 2)) + '%'
+		volume_music_value.text = str(int(volume_music.getValue() * 100 * 5)) + '%'
 
 		# Set effects volume display and slider correctly
 		volume_effects = dlg.findChild(name='volume_effects')
 		volume_effects.setValue(settings.sound.volume_effects)
 		volume_effects_value =  dlg.findChild(name='volume_effects_value')
-		volume_effects_value.text = str(int(volume_effects.getValue() * 100)) + '%'
+		volume_effects_value.text = str(int(volume_effects.getValue() * 100 * 2)) + '%'
 
 		if not self.show_dialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			if settings.sound.enabled:
@@ -279,12 +273,13 @@ class Menus(object):
 		self.show_dialog(self.widgets['chime'], {'okButton' : True}, onPressEscape = True)
 
 
-	def set_volume(self, label, slider, emitter):
+	def set_volume(self, label, slider):
 		if label.name == 'volume_music_value':
-			label.text = str(int(slider.getValue() * 100* 2)) + '%'
+			label.text = str(int(slider.getValue() * 100 * 5)) + '%'
+			game.main.fife.set_volume_music(slider.getValue())
 		else:
-			label.text = str(int(slider.getValue() * 100)) + '%'
-		game.main.fife.set_volume(emitter, slider.getValue())
+			label.text = str(int(slider.getValue() * 100 * 2)) + '%'
+			game.main.fife.set_volume_effects(slider.getValue())
 
 
 	def on_help(self):

@@ -23,11 +23,11 @@
 			<DropDown min_size="120,0" name="screen_renderer" base_color="40, 40, 40"/>
 			<DropDown min_size="120,0" name="screen_bpp" base_color="40, 40, 40"/>
 			<HBox>
-				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.5" base_color="40, 40, 40" />
+				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" base_color="40, 40, 40" />
 				<TextBox name="volume_music_value" text="" base_color="40,40,40"/>
 			</HBox>
 			<HBox>
-				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="1.0" base_color="40, 40, 40" />
+				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" base_color="40, 40, 40" />
 				<TextBox name="volume_effects_value" text="" base_color="40,40,40"/>
 			</HBox>
 		</VBox>

@@ -302,6 +302,23 @@ class Fife(object):
 		if game.main.settings.sound.enabled:
 			self.emitter[emitter_name].setGain(value)
 
+	def set_volume_music(self, value):
+		"""Sets the volume of the music emitters to 'value'.
+		@param value: double - value that's used to set the emitters gain.
+		"""
+		if game.main.settings.sound.enabled:
+				self.emitter['bgsound'].setGain(value)
+
+
+	def set_volume_effects(self, value):
+		"""Sets the volume of effects, speech and ambient emitters.
+		@param value: double - value that's used to set the emitters gain.
+		"""
+		if game.main.settings.sound.enabled:
+			self.emitter['effects'].setGain(value)
+			self.emitter['speech'].setGain(value)
+			for e in self.emitter['ambient']:
+				e.setGain(value*2)
 
 	def run(self):
 		"""
