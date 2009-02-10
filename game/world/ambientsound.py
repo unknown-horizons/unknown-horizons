@@ -25,14 +25,14 @@ class AmbientSound(object):
 	It relies on the subclass having an attribute "position", which must be either a
 	game.util.Point or game.util.Rect.
 	"""
-	def __init__(self, **kwargs):
-		"""
-		"""
+	def __init__(self, positioning=True, **kwargs):
 		super(AmbientSound, self).__init__(**kwargs)
+		self.positioning = positioning
 		if game.main.settings.sound.enabled:
 			self.emitter = game.main.fife.soundmanager.createEmitter()
-			self.emitter.setGain(game.main.settings.sound.volume_effects)
-			self.emitter.setRolloff(1.9)
+			self.emitter.setGain(game.main.settings.sound.volume_effects*2)
+			if self.positioning:
+				self.emitter.setRolloff(1.9)
 			game.main.fife.emitter['ambient'].append(self.emitter)
 
 	def play_ambient(self, soundfile, looping):
@@ -42,7 +42,7 @@ class AmbientSound(object):
 		"""
 		if game.main.settings.sound.enabled:
 			# set to current position
-			if(hasattr(self, 'position') and self.position != None):
+			if(hasattr(self, 'position') and self.position != None and self.positioning):
 				self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
 			self.emitter.setLooping(looping)
 			self.emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
@@ -56,8 +56,11 @@ class AmbientSound(object):
 		@param position: optional, source of sound on map
 		"""
 		if game.main.settings.sound.enabled:
-			a = AmbientSound()
-			a.position = position
+			if position is None:
+				a = AmbientSound(positioning=False)
+			else:
+				a = AmbientSound()
+				a.position = position
 			soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
 			a.play_ambient(soundfile, looping = False)
 			game.main.fife.emitter['ambient'].remove(a.emitter)

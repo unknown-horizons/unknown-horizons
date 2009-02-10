@@ -221,7 +221,7 @@ class BuildingTool(NavigationTool):
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			if built:
-				game.main.session.manager.execute(PlaySound("build", self.startPoint[0], self.startPoint[1]))
+				game.main.session.manager.execute(PlaySound("build"))
 			self.buildings = []
 			if evt.isShiftPressed() or not found_buildable:
 				self.startPoint = point

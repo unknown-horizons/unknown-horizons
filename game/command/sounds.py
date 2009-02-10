@@ -27,15 +27,18 @@ class PlaySound(object):
 	"""Command class that plays the build sound. This has been moved to a seperate
 	class, inorder to be able to play only one sound for 20 buildings(like a group of
 	trees)
-	@param x,y: int coordinates where the sound is to be played."""
+	@param sound: sound id that is to be played
+	@param position: tuple of int coordinates where the sound is to be played."""
 
-	def __init__(self, sound ,x, y, **trash):
+	def __init__(self, sound, position=None, **trash):
 		self.sound = sound
-		self.x = x
-		self.y = y
+		self.position = position
 
 	def __call__(self, issuer):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		AmbientSound.play_special(self.sound, Point(self.x, self.y))
+		if self.position is None:
+			AmbientSound.play_special(self.sound)
+		else:
+			AmbientSound.play_special(self.sound, Point(self.position[0], self.position[1]))
