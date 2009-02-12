@@ -40,6 +40,10 @@ class Point(object):
 		"""
 		return [(self.x, self.y)]
 	
+	def to_tuple(self):
+		"""Returns point as a tuple"""
+		return (self.x, self.y)
+	
 	def center(self):
 		"""Returns the center of the point (this makes Point interface more coherent with Rect).
 		"""

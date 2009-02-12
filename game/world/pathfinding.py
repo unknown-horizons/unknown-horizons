@@ -24,9 +24,11 @@ from game.util import Rect, Point, WorldObject
 from game.world.building.building import Building
 import game.main
 import weakref
+import copy
+import sys
 
 # for speed testing:
-import time
+#import time
 
 class PathBlockedError(Exception):
 	pass
@@ -40,7 +42,7 @@ class Movement:
 	"""
 	(SOLDIER_MOVEMENT, STORAGE_CARRIAGE_MOVEMENT, SHIP_MOVEMENT, CARRIAGE_MOVEMENT) = xrange(0,4)
 
-def check_path(path):
+def check_path(path, blocked_coords):
 	""" debug function to check if a path is valid """
 	i = iter(path)
 	prev = i.next()
@@ -50,10 +52,14 @@ def check_path(path):
 		try: cur = i.next()
 		except StopIteration: break
 
+		if cur in blocked_coords:
+			print 'PATH ERROR: node', cur, ' is blocked'
+			err = True
+		
 		dist = Point(cur[0], cur[1]).distance(Point(prev[0], prev[1]))
 
 		# check if it's a horizontal or vertical or diagonal movement
-		# (all else is an error)
+		# (everything else is an error)
 		if dist != 1 and int((dist)*100) != 141:
 			err = True
 			print 'PATH ERROR FROM', prev, 'TO', cur,' DIST: ', dist
@@ -63,153 +69,189 @@ def check_path(path):
 		assert False, 'Encountered errors when testing pathfinding'
 	return True
 
-def findPath(source, destination, path_nodes_arg, blocked_coords = [], diagonal = False):
+
+class FindPath(object): 
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which
 	is not necessarily the shortest path (cause roads have different speeds)
-	@param source: Rect, Point or Building
-	@param destination: Rect, Point or Building
-	@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
-	@param blocked_coords: temporarily blocked coords (e.g. by a unit)
-	@param diagonal: wether the unit is able to move diagonally
-	@return: list of coords that are part of the best path (from first coord after source to last coord before destination) or None if no path is found
 	"""
-	#t0 = time.time()
-
-
-
-
-
-	# assurce correct call
-	assert(isinstance(source, (Rect, Point, Building)))
-	assert(isinstance(destination, (Rect, Point, Building)))
-	assert(isinstance(path_nodes_arg, (dict, list)))
-	assert(isinstance(blocked_coords, (dict, list)))
-	assert(isinstance(diagonal, (bool)))
-
 	
-	# support for building
-	if isinstance(source, Building):
-		source = source.position
-	if isinstance(destination, Building):
-		destination = destination.position
-
-	if destination in blocked_coords:
-		return None
-
-	if isinstance(path_nodes_arg, list):
-		path_nodes_arg = dict.fromkeys(path_nodes_arg, 1.0)
-
-	if isinstance(blocked_coords, dict):
-		blocked_coords = blocked_coords.keys()
-	path_nodes = {}
-	
-	for k, v in path_nodes_arg.iteritems():
-		path_nodes[k] = v
-
-	# nodes are the keys of the following dicts (x,y)
-	# the val of the keys are: [previous node, distance to this node from source, distance to destination, sum of the last two elements]
-
-	# values of distance is usually measured in speed
-	# since you can't calculate the speed to the destination,
-	# these distances are measured in space
-	# this might become a problem, but i (totycro) won't fix it, until
-	# the values of speed or slowness and such is defined
-
-	# nodes that weren't processed but will be processed:
-	to_check = {}
-	# nodes that have been processed:
-	checked = {}
-
-	source_coords = source.get_coordinates()
-	for c in source_coords:
-		source_to_dest_dist = Point(*c).distance(destination)
-		to_check[c] = [None, 0, source_to_dest_dist, source_to_dest_dist]
-		path_nodes[c] = 0
-
-	# if one of the dest_coords is in checked, a good path is found
-	dest_coords = destination.get_coordinates()
-
-	# make source and target walkable
-	for c in dest_coords:
-		if not c in path_nodes:
-			path_nodes[c] = 0
-
-	while to_check:
-
-		min = 99999
-		cur_node_coords = None
-		cur_node_data = None
-
-		# find next node to check, which is the one with best rating
-
-		for (node_coords, node_data) in to_check.items():
-			if node_data[3] < min:
-				min = node_data[3]
-				cur_node_coords = node_coords
-				cur_node_data = node_data
-
-		#print 'NEXT_NODE', cur_node_coords, ":", cur_node_data
-
-		# shortcuts:
-		x = cur_node_coords[0]
-		y = cur_node_coords[1]
-
-		if diagonal:
-			neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) if (xx,yy) in path_nodes and not (xx,yy) in checked and (xx,yy) != (x,y) and (xx,yy) not in blocked_coords ]
+	def __call__(self, source, destination, path_nodes, blocked_coords = [], diagonal = False):
+		"""
+		@param source: Rect, Point or Building
+		@param destination: Rect, Point or Building
+		@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
+		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of
+		@param diagonal: wether the unit is able to move diagonally
+		@return: list of coords as tuples that are part of the best path (from first coord after source to first coord in destination) or None if no path is found
+		"""
+		# assurce correct call
+		assert(isinstance(source, (Rect, Point, Building)))
+		assert(isinstance(destination, (Rect, Point, Building)))
+		assert(isinstance(path_nodes, (dict, list)))
+		assert(isinstance(blocked_coords, (dict, list)))
+		assert(isinstance(diagonal, (bool)))
+		
+		# save args
+		self.source = source
+		self.destination = destination
+		self.path_nodes = path_nodes
+		self.blocked_coords = blocked_coords
+		self.diagonal = diagonal
+		
+		if __debug__:
+			print 'SEARCHING path from',source,'to',destination,'. blocked: ',blocked_coords
+		
+		# prepare args
+		if not self.setup():
+			return None
+		
+		# execute algorithm on the args
+		if not __debug__:
+			return self.execute()
 		else:
-			neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if i in path_nodes and not i in checked and i not in blocked_coords ]
-
-		for neighbor_node in neighbors:
-			#print 'NEW NODE', neighbor_node
-
-			if not neighbor_node in to_check:
-				# save previous, calc distance to neighbor_node and from neighbor_node to destination
-				to_check[neighbor_node] = [cur_node_coords, cur_node_data[1]+path_nodes[cur_node_coords], destination.distance(neighbor_node) ]
-				to_check[neighbor_node].append(to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
-				#print 'NEW',neighbor_node, ':', to_check[neighbor_node]
+			p = self.execute()
+			print 'FOUND PATH', p
+			return p
+		
+	def setup(self):
+		"""Sets up variables for execution of algorithm
+		@return: bool, wether setup was successful"""
+		# support for building
+		if isinstance(self.source, Building):
+			self.source = self.source.position
+		if isinstance(self.destination, Building):
+			self.destination = self.destination.position
+	
+		if self.destination in self.blocked_coords:
+			return False
+	
+		if isinstance(self.path_nodes, list):
+			self.path_nodes = dict.fromkeys(self.path_nodes, 1.0)
+	
+		if isinstance(self.blocked_coords, dict):
+			self.blocked_coords = self.blocked_coords.keys()
+			
+		return True
+		
+	def execute(self):
+		"""Executes algorithm"""
+		# create copy that can be written to
+		path_nodes = copy.deepcopy(self.path_nodes)
+		
+		# nodes are the keys of the following dicts (x,y)
+		# the val of the keys are: [previous node, distance to this node from source, distance to destination, sum of the last two elements]
+	
+		# values of distance is usually measured in speed
+		# since you can't calculate the speed to the destination,
+		# these distances are measured in space
+		# this might become a problem, but this can just be fixed when
+		# the values of speed or slowness and such are defined
+	
+		# nodes that weren't processed but will be processed:
+		to_check = {}
+		# nodes that have been processed:
+		checked = {}
+	
+		source_coords = self.source.get_coordinates()
+		for c in source_coords:
+			source_to_dest_dist = Point(*c).distance(self.destination)
+			to_check[c] = [None, 0, source_to_dest_dist, source_to_dest_dist]
+			path_nodes[c] = 0
+	
+		# if one of the dest_coords is in checked, a good path is found
+		dest_coords = self.destination.get_coordinates()
+	
+		# make source and target walkable
+		for c in dest_coords:
+			if not c in path_nodes:
+				path_nodes[c] = 0
+	
+		while to_check:
+	
+			min = sys.maxint
+			cur_node_coords = None
+			cur_node_data = None
+	
+			# find next node to check, which is the one with best rating
+			for (node_coords, node_data) in to_check.items():
+				if node_data[3] < min:
+					min = node_data[3]
+					cur_node_coords = node_coords
+					cur_node_data = node_data
+	
+			# shortcuts:
+			x = cur_node_coords[0]
+			y = cur_node_coords[1]
+	
+			# find possible neighbors
+			if self.diagonal:
+				# all relevant diagnal neighbors
+				neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) \
+											if (xx,yy) in path_nodes  \
+											and not (xx,yy) in checked \
+											and (xx,yy) != (x,y) \
+											and (xx,yy) not in self.blocked_coords ] 
 			else:
-				distance_to_neighbor = cur_node_data[1]+path_nodes[cur_node_coords]
-
-				# shortcut:
-				neighbor = to_check[neighbor_node]
-
-				# if cur_node provides a better path to neighbor_node, use it
-				if neighbor[1] > distance_to_neighbor:
-					neighbor[0] = cur_node_coords
-					neighbor[1] = distance_to_neighbor
-					neighbor[3] = distance_to_neighbor + neighbor[2]
-					#print 'OLD',neighbor_node,':', to_check[neighbor_node]
-
-		checked[cur_node_coords] = cur_node_data
-		del to_check[cur_node_coords]
-
-		if cur_node_coords in dest_coords:
-			# found best path
-			path = [ cur_node_coords ]
-			previous_node = cur_node_data[0]
-			while previous_node is not None:
-				# maybe always append here and call list.reverse afterwards (depends on speed test results)
-				path.insert(0, previous_node)
-				previous_node = checked[previous_node][0]
-
-			#t1 = time.time()
-			#print 'PATH FINDING TIME', t1-t0
-			#print 'PATH FROM',source,'TO', destination,':', path
-
-			if __debug__:
-				check_path(path)
-
-			return path
-
-	else:
-		#t1 = time.time()
-		#print 'PATH FINDING TIME', t1-t0
-		#print '_NO_ PATH FROM',source,'TO', destination
-		return None
+				# all relevant vertical and horizontal neighbors
+				neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] \
+											if i in path_nodes \
+											and not i in checked \
+											and i not in self.blocked_coords ]
+	
+			for neighbor_node in neighbors:
+	
+				if not neighbor_node in to_check:
+					# add neighbor to list of reachable nodes to check
+				
+					# save previous node , calc distance to neighbor_node 
+					# and estimate from neighbor_node to destination
+					to_check[neighbor_node] = [cur_node_coords, \
+																		 cur_node_data[1]+path_nodes[cur_node_coords], \
+																		 self.destination.distance(neighbor_node) ]
+					# append sum of last to values  (i.e. complete path duration estimation) as cache 
+					to_check[neighbor_node].append(to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
+					
+				else:
+					# neighbor has been processed,
+					# check if current node provides a better path to this neighbor
+					
+					distance_to_neighbor = cur_node_data[1]+path_nodes[cur_node_coords]
+	
+					neighbor = to_check[neighbor_node]
+	
+					if neighbor[1] > distance_to_neighbor:
+						# found better path to neighbor, update values
+						neighbor[0] = cur_node_coords
+						neighbor[1] = distance_to_neighbor
+						neighbor[3] = distance_to_neighbor + neighbor[2]
+	
+			# done processing cur_node
+			checked[cur_node_coords] = cur_node_data
+			del to_check[cur_node_coords]
+	
+			# check if cur_node is at the destination
+			if cur_node_coords in dest_coords:
+				# we're done.
+				# insert steps of past to a list and return it
+				path = [ cur_node_coords ]
+				previous_node = cur_node_data[0]
+				while previous_node is not None:
+					path.insert(0, previous_node)
+					previous_node = checked[previous_node][0]
+	
+				if __debug__:
+					check_path(path, self.blocked_coords)
+	
+				return path
+	
+		else:
+			return None
+	
 
 class Pather(object):
-	"""Interface for pathfinding. To be inherited by Unit"""
+	"""Interface for pathfinding for use by Unit.
+	"""
 	def __init__(self, unit):
 		self.move_diagonal = False
 		self.blocked_coords = []
@@ -238,9 +280,9 @@ class Pather(object):
 
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
 		"""Calculates a path to destination
-		@param destination: a destination supported by find_path
+		@param destination: a destination supported by pathfinding
 		@param destination_in_building: bool, wether destination is in a building. this makes the unit
-		@param check_only: if True the path isn't saved,
+		@param check_only: if True the path isn't saved
 		@return: False if movement is impossible, else True"""
 
 		# workaround, this can't be initalized at construction time
@@ -261,7 +303,7 @@ class Pather(object):
 					if not check_only:
 						self.source_in_building = True
 
-		path = findPath(source, destination, self.path_nodes, self.blocked_coords, self.move_diagonal)
+		path = FindPath()(source, destination, self.path_nodes, self.blocked_coords, self.move_diagonal)
 
 		if path is None:
 			return False
@@ -289,14 +331,19 @@ class Pather(object):
 		if self.path is None or self.cur == len(self.path):
 			self.cur = None
 			return None
+		
+		path_blocked_by_unit = False
+		
+		if self.unit().__class__.movement == Movement.SHIP_MOVEMENT:
+			# for ship: check if another ship is blocking the way
+			path_blocked_by_unit = self.path[self.cur] in game.main.session.world.ship_map \
+														 and game.main.session.world.ship_map[self.path[self.cur]]() is not self
 
-		if self.path[self.cur] in self.blocked_coords:
+		if self.path[self.cur] in self.blocked_coords or path_blocked_by_unit:
 			# path is suddenly blocked, find another path
-			blocked_coords = self.blocked_coords if isinstance(self.blocked_coords, list) else dict.fromkeys(self.blocked_coords, 1.0)
-			self.path = findPath(self.path[self.cur-1], self.path[-1], self.path_nodes, blocked_coords, self.move_diagonal)
-			if self.path is None:
+			self.cur -= 1 # reset, since move is not possible
+			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
 				raise PathBlockedError
-			self.cur = 1
 
 		if self.destination_in_building and self.cur == len(self.path)-1:
 			self.destination_in_building = False

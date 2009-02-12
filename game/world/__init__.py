@@ -96,7 +96,7 @@ class World(object):
 			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
 
-		# create ship position list. entries: ship_map[ship.unit_position] = ship
+		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
 
@@ -112,8 +112,7 @@ class World(object):
 
 		# reconstruct shipmap
 		for ship in self.ships:
-			self.ship_map[ship.position] = weakref.ref(ship)
-
+			self.ship_map[ship.position.to_tuple()] = weakref.ref(ship)
 
 		# add free trader
 		from game.ai.trader import Trader

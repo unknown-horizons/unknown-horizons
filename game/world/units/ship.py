@@ -47,7 +47,7 @@ class Ship(Unit):
 		self.set_name()
 
 		game.main.session.world.ships.append(self)
-		game.main.session.world.ship_map[self.position] = weakref.ref(self)
+		game.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
 		super(Ship, self).remove()
@@ -58,15 +58,19 @@ class Ship(Unit):
 		self.inventory = PositiveTotalStorage(200)
 
 	def move_tick(self):
-		del game.main.session.world.ship_map[self.position]
+		print "SHIP %d: del: %d %d" % (self.getId(), self.position.x, self.position.y)
+		
+		del game.main.session.world.ship_map[self.position.to_tuple()]
+			
 		super(Ship, self).move_tick()
-		game.main.session.world.ship_map[self.position] = weakref.ref(self)
-
-	def check_for_blocking_units(self, position):
-		if position in game.main.session.world.ship_map and game.main.session.world.ship_map[position]() is not self:
-			return False
-		else:
-			return True
+		
+		# save current and next position for ship, since it will be between them
+		game.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		game.main.session.world.ship_map[self.next_target.to_tuple()] = weakref.ref(self)
+	
+		print "SHIP %d: set: %d %d" % (self.getId(), self.position.x, self.position.y)
+		print "SHIP %d: set: %d %d" % (self.getId(), self.next_target.x, self.next_target.y)
+		print "SHIP: -------------"
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

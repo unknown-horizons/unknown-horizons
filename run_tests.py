@@ -45,7 +45,9 @@ if __name__ == '__main__':
 
 
 	# add tests here:
-	suite.addTest(loader.loadTestsFromModule(pathfinding))
+	
+	# this test isn't maintained any more:
+	# suite.addTest(loader.loadTestsFromModule(pathfinding))
 
 
 
