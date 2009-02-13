@@ -42,11 +42,12 @@ class ActionSetLoader(object):
 		@return: dict containing 'file: anim_end' entries
 		"""
 		fl = {}
-		for root, dirs, files in os.walk(dir):
-			i = 1
-			for file in sorted(files):
-				fl[root+os.path.sep+file] = ((float(time)/1000)/len(files))*i
-				i += 1
+		dirs = os.listdir(dir)
+		dirs.remove('.svn')
+		i = 1
+		for file in dirs:
+			fl[dir+os.path.sep+file] = ((float(time)/1000)/len(dirs))*i
+			i += 1
 		return fl
 
 	def _load_rotation(self, dir):
@@ -58,14 +59,13 @@ class ActionSetLoader(object):
 		rotations = {}
 		time = 1000
 		dirs = os.listdir(dir)
+		dirs.remove('.svn')
 		for dirname in dirs:
 			if "tm_" in dirname:
 				time = dirname.split('_')[1]
-				print time
 				dirs.remove(dirname)
 				break
 		for dirname in dirs:
-			if dirname[0] is not '.':
 				rotations[int(dirname)] = self._load_files(os.path.join(dir, dirname),time)
 		return rotations
 
@@ -77,7 +77,9 @@ class ActionSetLoader(object):
 		@return: dict containing 'action: rotationdict' entries. See _load_rotation for example.
 		"""
 		actions = {}
-		for dirname in os.listdir(dir):
+		dirs = os.listdir(dir)
+		dirs.remove(".svn")
+		for dirname in dirs:
 			actions[dirname] = {}
 			actions[dirname] = self._load_rotation(os.path.join(dir, dirname))
 		return actions
