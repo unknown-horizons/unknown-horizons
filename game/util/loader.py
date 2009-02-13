@@ -65,7 +65,8 @@ class ActionSetLoader(object):
 				dirs.remove(dirname)
 				break
 		for dirname in dirs:
-			rotations[int(dirname)] = self._load_files(os.path.join(dir, dirname),time)
+			if dirname[0] is not '.':
+				rotations[int(dirname)] = self._load_files(os.path.join(dir, dirname),time)
 		return rotations
 
 
