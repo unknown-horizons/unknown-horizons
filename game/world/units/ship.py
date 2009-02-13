@@ -59,15 +59,15 @@ class Ship(Unit):
 
 	def move_tick(self):
 		print "SHIP %d: del: %d %d" % (self.getId(), self.position.x, self.position.y)
-		
+
 		del game.main.session.world.ship_map[self.position.to_tuple()]
-			
+
 		super(Ship, self).move_tick()
-		
+
 		# save current and next position for ship, since it will be between them
 		game.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 		game.main.session.world.ship_map[self.next_target.to_tuple()] = weakref.ref(self)
-	
+
 		print "SHIP %d: set: %d %d" % (self.getId(), self.position.x, self.position.y)
 		print "SHIP %d: set: %d %d" % (self.getId(), self.next_target.x, self.next_target.y)
 		print "SHIP: -------------"
@@ -82,7 +82,7 @@ class Ship(Unit):
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"))
+			game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45"))
 		self.draw_health()
 
 	def deselect(self):
@@ -125,7 +125,7 @@ class Ship(Unit):
 				coords = fife.ModelCoordinate(move_target.x, move_target.y)
 				coords.thisown = 0
 				loc.setLayerCoordinates(coords)
-				game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("0"))
+				game.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), game.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45"))
 
 	def set_name(self):
 		self.name = game.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]

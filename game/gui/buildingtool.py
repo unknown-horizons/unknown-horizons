@@ -99,16 +99,12 @@ class BuildingTool(NavigationTool):
 		game.main.session.view.addChangeListener(self.draw_gui)
 
 	def draw_gui(self):
-		image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation_id LEFT JOIN action_set ON action_set.action_set_id=action.action_set_id WHERE building_id=? AND action.action='default' AND action.rotation=?", self._class.id, (self.rotation+int(game.main.session.view.cam.getRotation())-45)%360)
-		if len(image) > 0:
-			self.gui.findChild(name='building').image = image[0][0]
+		action_set = game.main.db("SELECT action_set_id FROM action_set WHERE building_id=?", self._class.id)[0][0]
+		if 'idle' in game.main.action_sets[action_set].keys():
+			image = sorted(game.main.action_sets[action_set]['idle'][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
 		else:
-			image = game.main.db("SELECT file FROM animation INNER JOIN action ON animation.animation_id=action.animation WHERE action.action_set_id=? AND action.action='default' AND action.rotation=?", self._class._action_set_id, 45)
-			if len(image) > 0:
-				print "WARNING: no rotation for building id:", self._class.id, "and rotation:", self.rotation
-				self.gui.findChild(name='building').image = image[0][0]
-			else:
-				assert(False, "No image for building id:", self._class.id, "in the db!")
+			image = sorted(game.main.action_sets[action_set]['idle_full'][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
+		self.gui.findChild(name='building').image = image
 		self.gui._recursiveResizeToContent()
 
 	def previewBuild(self, point1, point2):

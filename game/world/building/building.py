@@ -39,12 +39,12 @@ class Building(WorldObject, AmbientSound):
 		self.__init(Point(x,y), rotation, owner, instance)
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
-		
+
 		for (soundfile,) in game.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
 			self.play_ambient(soundfile, True)
 
 	def __init(self, origin, rotation, owner, instance):
-		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0])
+		self._action_set_id = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
@@ -124,10 +124,10 @@ class Building(WorldObject, AmbientSound):
 		return ret_building
 
 	@classmethod
-	def getInstance(cls, x, y, action='default', building=None, layer=2, rotation=0, **trash):
+	def getInstance(cls, x, y, action='idle', building=None, layer=2, rotation=0, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
-		@param action: The action, defaults to 'default'
+		@param action: The action, defaults to 'idle'
 		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
@@ -151,7 +151,10 @@ class Building(WorldObject, AmbientSound):
 				return None
 			action_set_id  = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
-			instance.act(action+"_"+str(action_set_id), facing_loc, True)
+			if action in game.main.action_sets[action_set_id].keys():
+				instance.act(action+"_"+str(action_set_id), facing_loc, True)
+			else:
+				instance.act("idle_full_"+str(action_set_id), facing_loc, True)
 			return instance
 
 	@classmethod

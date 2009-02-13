@@ -45,7 +45,7 @@ import shutil
 import random
 import game.engine
 
-from game.util import Color
+from game.util import Color, ActionSetLoader
 from game.menus import Menus
 from game.dbreader import DbReader
 from game.engine import Fife
@@ -59,7 +59,8 @@ from game.savegamemanager import SavegameManager
 def start():
 	"""Starts the game.
 	"""
-	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager
+	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
+		   action_sets
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/openanno.sqlite')
@@ -84,7 +85,8 @@ def start():
 	ext_scheduler = ExtScheduler(fife.pump)
 
 	fife.init()
-
+	loader = ActionSetLoader('content/gfx/')
+	action_sets = loader.load()
 	mainlistener = MainListener()
 	connection = None
 	session = None
@@ -134,7 +136,7 @@ def save_game(savegamename):
 	@return: bool, wether save was successfull
 	"""
 	global savegamemanager, session, gui
-	
+
 	if savegamename.startswith("/"):
 		savegamefile = savegamename
 	else:
@@ -145,7 +147,7 @@ def save_game(savegamename):
 													"A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
 													show_cancel_button = True):
 			gui.save_game()
-			return 
+			return
 
 	try:
 		session.save(savegamefile)
@@ -154,7 +156,7 @@ def save_game(savegamename):
 		gui.hide()
 		gui.save_game()
 		return False
-	
+
 	return True
 
 

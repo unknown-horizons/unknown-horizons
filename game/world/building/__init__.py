@@ -107,10 +107,10 @@ class BuildingClass(type):
 			return
 		action_sets = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
 		for (action_set_id,) in action_sets:
-			for (action_id,) in game.main.db("SELECT action FROM data.action WHERE action_set_id=? group by action", action_set_id):
+			for action_id in game.main.action_sets[action_set_id].keys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
-				for rotation, animation_id in game.main.db("SELECT rotation, animation_id FROM data.action WHERE action_set_id=? and action=?", action_set_id, action_id):
+				for rotation in game.main.action_sets[action_set_id][action_id].keys():
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(cls.size[0] * 16)
 					elif rotation == 135:
@@ -122,6 +122,6 @@ class BuildingClass(type):
 					else:
 						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for animation %(animation)s" % \
 							   { 'id':action_set_id, 'rotation': rotation, 'animation': animation_id }
-					anim_id = game.main.fife.animationpool.addResourceFromFile(str(animation_id) + ':shift:' + command)
+					anim_id = game.main.fife.animationpool.addResourceFromFile(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 					action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())

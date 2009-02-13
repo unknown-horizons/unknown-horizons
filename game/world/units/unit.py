@@ -32,7 +32,7 @@ class Unit(WorldObject):
 		self.__init(x, y)
 
 	def __init(self, x, y, health = 60.0):
-		self._action_set_id = int(game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0])
+		self._action_set_id = game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0]
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
@@ -45,7 +45,7 @@ class Unit(WorldObject):
 
 		self._instance = game.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
-		self.action = 'default'
+		self.action = 'idle'
 		self.act(self.action, self._instance.getLocation(), True)
 		self._instance.addActionListener(self.InstanceActionListener)
 

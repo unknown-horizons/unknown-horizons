@@ -126,7 +126,10 @@ class PrimaryProducer(Provider):
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
-		self.act("working", self._instance.getFacingLocation(), True)
+		if "work" in game.main.action_sets[self._action_set_id].keys():
+			self.act("work", self._instance.getFacingLocation(), True)
+		else:
+			self.act("idle", self._instance.getFacingLocation(), True)
 		#print self.getId(), "begin working"
 
 	def production_step(self):
@@ -136,7 +139,10 @@ class PrimaryProducer(Provider):
 				if amount > 0:
 					self.inventory.alter(res, amount)
 			self.__used_resources = {}
-		self.act("default", self._instance.getFacingLocation(), True)
+		if "idle_full" in game.main.action_sets[self._action_set_id].keys():
+			self.act("idle_full", self._instance.getFacingLocation(), True)
+		else:
+			self.act("idle", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)
 		self.check_production_startable()
 

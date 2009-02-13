@@ -33,7 +33,7 @@ class BuildingCollector(StorageHolder, Unit):
 	movement = Movement.CARRIAGE_MOVEMENT
 	"""
 	Gets resources for e.g. a weaver, that needs wool
-	
+
 	Timeline:
 	init
 	|-search_job()
@@ -166,7 +166,7 @@ class BuildingCollector(StorageHolder, Unit):
 		Picks up the resources and sends collector home."""
 		if self.job.object is not None:
 			#print self.getId(), 'FINISH WORKING'
-			self.act("default", self._instance.getFacingLocation(), True)
+			self.act("idle", self._instance.getFacingLocation(), True)
 			# transfer res
 			self.transfer_res()
 			# deregister at the target we're at
