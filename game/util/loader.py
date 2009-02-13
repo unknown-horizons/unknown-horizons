@@ -43,7 +43,8 @@ class ActionSetLoader(object):
 		"""
 		fl = {}
 		dirs = os.listdir(dir)
-		dirs.remove('.svn')
+		if '.svn' in dirs:
+			dirs.remove('.svn')
 		i = 1
 		for file in dirs:
 			fl[dir+os.path.sep+file] = ((float(time)/1000)/len(dirs))*i
@@ -59,7 +60,8 @@ class ActionSetLoader(object):
 		rotations = {}
 		time = 1000
 		dirs = os.listdir(dir)
-		dirs.remove('.svn')
+		if '.svn' in dirs:
+			dirs.remove('.svn')
 		for dirname in dirs:
 			if "tm_" in dirname:
 				time = dirname.split('_')[1]
@@ -78,7 +80,8 @@ class ActionSetLoader(object):
 		"""
 		actions = {}
 		dirs = os.listdir(dir)
-		dirs.remove(".svn")
+		if '.svn' in dirs:
+			dirs.remove('.svn')
 		for dirname in dirs:
 			actions[dirname] = {}
 			actions[dirname] = self._load_rotation(os.path.join(dir, dirname))

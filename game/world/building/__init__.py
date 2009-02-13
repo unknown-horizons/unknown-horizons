@@ -111,6 +111,7 @@ class BuildingClass(type):
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in game.main.action_sets[action_set_id][action_id].keys():
+					print "rotation:", rotation
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(cls.size[0] * 16)
 					elif rotation == 135:
@@ -121,7 +122,7 @@ class BuildingClass(type):
 						command = 'left-' + str(cls.size[0] * 32) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 16)
 					else:
 						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for animation %(animation)s" % \
-							   { 'id':action_set_id, 'rotation': rotation, 'animation': animation_id }
+							   { 'id':action_set_id, 'rotation': rotation, 'action_id': action_id }
 					anim_id = game.main.fife.animationpool.addResourceFromFile(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
 					action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
