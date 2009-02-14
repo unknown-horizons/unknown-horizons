@@ -121,7 +121,7 @@ class BuildingClass(type):
 					elif rotation == 315:
 						command = 'left-' + str(cls.size[0] * 32) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 16)
 					else:
-						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for animation %(animation)s" % \
+						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
 							   { 'id':action_set_id, 'rotation': rotation, 'action_id': action_id }
 					anim_id = game.main.fife.animationpool.addResourceFromFile(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
