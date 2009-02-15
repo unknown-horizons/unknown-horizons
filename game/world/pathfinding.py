@@ -35,12 +35,14 @@ class PathBlockedError(Exception):
 
 class Movement:
 	"""Saves walkable tiles according to unit in a seperate namespace
-	SOLDIER_MOVEMENT: move directly on any walkable tile (except water, buildings, natural obstacles such as mountains
-	STORAGE_CARRIAGE_MOVEMENT: move on roads
-	CARRIAGE_MOVEMENT: move within the radius of a building
+	SOLDIER_MOVEMENT: move directly on any walkable tile
+	                  (except water, buildings, natural obstacles such as mountains)
+	STORAGE_COLLECTOR_MOVEMENT: move on roads
+	COLLECTOR_MOVEMENT: move within the radius of a building
 	SHIP_MOVEMENT: move on water
 	"""
-	(SOLDIER_MOVEMENT, STORAGE_CARRIAGE_MOVEMENT, SHIP_MOVEMENT, CARRIAGE_MOVEMENT) = xrange(0,4)
+	(SOLDIER_MOVEMENT, STORAGE_COLLECTOR_MOVEMENT, \
+	 SHIP_MOVEMENT, COLLECTOR_MOVEMENT) = xrange(0,4)
 
 def check_path(path, blocked_coords):
 	""" debug function to check if a path is valid """
@@ -83,7 +85,9 @@ class FindPath(object):
 		@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
 		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of
 		@param diagonal: wether the unit is able to move diagonally
-		@return: list of coords as tuples that are part of the best path (from first coord after source to first coord in destination) or None if no path is found
+		@return: list of coords as tuples that are part of the best path
+		         (from first coord after source to first coord in destination)
+						 or None if no path is found
 		"""
 		# assurce correct call
 		assert(isinstance(source, (Rect, Point, Building)))
@@ -133,14 +137,12 @@ class FindPath(object):
 			self.blocked_coords = self.blocked_coords.keys()
 			
 		return True
-		
+	
 	def execute(self):
 		"""Executes algorithm"""
-		# create copy that can be written to
-		path_nodes = copy.deepcopy(self.path_nodes)
-		
 		# nodes are the keys of the following dicts (x,y)
-		# the val of the keys are: [previous node, distance to this node from source, distance to destination, sum of the last two elements]
+		# the val of the keys are: [previous node, distance to this node from source,
+		# distance to destination, sum of the last two elements]
 	
 		# values of distance is usually measured in speed
 		# since you can't calculate the speed to the destination,
@@ -157,15 +159,10 @@ class FindPath(object):
 		for c in source_coords:
 			source_to_dest_dist = Point(*c).distance(self.destination)
 			to_check[c] = [None, 0, source_to_dest_dist, source_to_dest_dist]
-			path_nodes[c] = 0
 	
-		# if one of the dest_coords is in checked, a good path is found
+		# if one of the dest_coords has been processed
+		# (i.e. is in checked), a good path is found
 		dest_coords = self.destination.get_coordinates()
-	
-		# make source and target walkable
-		for c in dest_coords:
-			if not c in path_nodes:
-				path_nodes[c] = 0
 	
 		while to_check:
 	
@@ -186,37 +183,43 @@ class FindPath(object):
 	
 			# find possible neighbors
 			if self.diagonal:
-				# all relevant diagnal neighbors
-				neighbors = [ (xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2) \
-											if (xx,yy) in path_nodes  \
-											and not (xx,yy) in checked \
-											and (xx,yy) != (x,y) \
-											and (xx,yy) not in self.blocked_coords ] 
+				# all relevant ajacent neighbors
+				neighbors = [ i for i in [(xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2)] if \
+											(i in self.path_nodes or \
+											 i in source_coords or \
+											 i in dest_coords) and\
+											i not in checked and \
+											i != (x,y) and \
+											i not in self.blocked_coords ] 
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] \
-											if i in path_nodes \
-											and not i in checked \
-											and i not in self.blocked_coords ]
+				neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if \
+											(i in self.path_nodes  or \
+											 i in source_coords or \
+											 i in dest_coords ) and \
+											i not in checked and \
+											i not in self.blocked_coords ]
 	
 			for neighbor_node in neighbors:
 	
 				if not neighbor_node in to_check:
 					# add neighbor to list of reachable nodes to check
 				
-					# save previous node , calc distance to neighbor_node 
+					# save previous node, calc distance to neighbor_node 
 					# and estimate from neighbor_node to destination
 					to_check[neighbor_node] = [cur_node_coords, \
-																		 cur_node_data[1]+path_nodes[cur_node_coords], \
+																		 cur_node_data[1] + \
+																		 self.path_nodes.get(cur_node_coords, 0), \
 																		 self.destination.distance(neighbor_node) ]
 					# append sum of last to values  (i.e. complete path duration estimation) as cache 
-					to_check[neighbor_node].append(to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
+					to_check[neighbor_node].append( \
+						to_check[(neighbor_node)][1] + to_check[(neighbor_node)][2])
 					
 				else:
 					# neighbor has been processed,
 					# check if current node provides a better path to this neighbor
 					
-					distance_to_neighbor = cur_node_data[1]+path_nodes[cur_node_coords]
+					distance_to_neighbor = cur_node_data[1]+self.path_nodes.get(cur_node_coords, 0)
 	
 					neighbor = to_check[neighbor_node]
 	
@@ -255,10 +258,10 @@ class Pather(object):
 	def __init__(self, unit):
 		self.move_diagonal = False
 		self.blocked_coords = []
-		if unit.__class__.movement == Movement.STORAGE_CARRIAGE_MOVEMENT:
+		if unit.__class__.movement == Movement.STORAGE_COLLECTOR_MOVEMENT:
 			island = game.main.session.world.get_island(unit.position.x, unit.position.y)
 			self.path_nodes = island.path_nodes
-		elif unit.__class__.movement == Movement.CARRIAGE_MOVEMENT:
+		elif unit.__class__.movement == Movement.COLLECTOR_MOVEMENT:
 			self.move_diagonal = True
 		elif unit.__class__.movement == Movement.SHIP_MOVEMENT:
 			self.move_diagonal = True
@@ -281,12 +284,13 @@ class Pather(object):
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
 		"""Calculates a path to destination
 		@param destination: a destination supported by pathfinding
-		@param destination_in_building: bool, wether destination is in a building. this makes the unit
+		@param destination_in_building: bool, wether destination is in a building.
+		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
 		@return: False if movement is impossible, else True"""
 
 		# workaround, this can't be initalized at construction time
-		if self.unit().__class__.movement == Movement.CARRIAGE_MOVEMENT:
+		if self.unit().__class__.movement == Movement.COLLECTOR_MOVEMENT:
 			self.path_nodes = self.unit().home_building().radius_coords
 
 		if not check_only:
@@ -336,8 +340,8 @@ class Pather(object):
 		
 		if self.unit().__class__.movement == Movement.SHIP_MOVEMENT:
 			# for ship: check if another ship is blocking the way
-			path_blocked_by_unit = self.path[self.cur] in game.main.session.world.ship_map \
-														 and game.main.session.world.ship_map[self.path[self.cur]]() is not self
+			path_blocked_by_unit = self.path[self.cur] in game.main.session.world.ship_map and \
+														 game.main.session.world.ship_map[self.path[self.cur]]() is not self
 
 		if self.path[self.cur] in self.blocked_coords or path_blocked_by_unit:
 			# path is suddenly blocked, find another path
@@ -366,7 +370,8 @@ class Pather(object):
 	def save(self, db, unitid):
 		if self.path is not None:
 			for step in xrange(len(self.path)):
-				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", unitid, step, self.path[step][0], self.path[step][1])
+				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", \
+					 unitid, step, self.path[step][0], self.path[step][1])
 
 	def load(self, db, worldid):
 		"""

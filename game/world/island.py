@@ -82,7 +82,7 @@ class Island(WorldObject):
 
 		self.settlements = [] # List of settlements
 
-		self.path_nodes = {} # Important for the pather, check the pather for it's use.
+		self.path_nodes = {} # Paths are saved here for usage by the pather.
 		"""TUTORIAL:
 		To continue hacking, you should now take of to the real fun stuff and check out game/world/building/__init__.py.
 		"""

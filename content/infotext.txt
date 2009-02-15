@@ -6,17 +6,19 @@ Welcome to the OpenAnno Alpha 2008.01, Keybindings:
 - DOWN = Scroll Down
 - "," = Rotate Building Left
 - "." = Rotate Building Right
+- U = Show Build Menu
 - F1 = Display Help
 - F5 = Quicksave
 - F9 = Quickload
 - F10 = Toggle console on / off
 - ESC = Show Pause menu
 - T = Toggles grid on / off
-- X = enable destruct mode
+- X = Enable destruct mode
 - P = Pause
 - "+" = Speed Up
 - "-" = Speed Down
 - S = Screenshot
+- B = Launch Python Debugger
 
 
 Have fun.

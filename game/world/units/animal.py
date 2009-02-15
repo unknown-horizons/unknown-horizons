@@ -33,7 +33,7 @@ import weakref
 
 class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	grazingTime = 2
-	movement = Movement.CARRIAGE_MOVEMENT
+	movement = Movement.COLLECTOR_MOVEMENT
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(Animal, self).__init__(home_building = home_building, start_hidden = start_hidden, **kwargs)

@@ -30,7 +30,7 @@ import weakref
 
 
 class BuildingCollector(StorageHolder, Unit):
-	movement = Movement.CARRIAGE_MOVEMENT
+	movement = Movement.COLLECTOR_MOVEMENT
 	"""
 	Gets resources for e.g. a weaver, that needs wool
 
@@ -243,7 +243,7 @@ class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
 	Used in storage facilities.
 	"""
-	movement = Movement.STORAGE_CARRIAGE_MOVEMENT
+	movement = Movement.STORAGE_COLLECTOR_MOVEMENT
 
 	def begin_current_job(self):
 		"""Declare target of StorageCollector as building, because it always is"""
