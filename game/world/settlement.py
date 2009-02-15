@@ -23,7 +23,7 @@ from game.world.storage import SizedSlotStorage
 from game.util import WorldObject, Point, WeakList
 from game.world.tradepost import TradePost
 
-class Settlement(WorldObject, TradePost):
+class Settlement(TradePost, WorldObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
@@ -60,6 +60,8 @@ class Settlement(WorldObject, TradePost):
 		self._inhabitants -= num
 
 	def save(self, db, islandid):
+		super(Settlement, self).save(db)
+		
 		db("INSERT INTO settlement (rowid, island, owner, inhabitants) VALUES(?, ?, ?, ?)",
 			self.getId(), islandid, self.owner.getId(), self._inhabitants)
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
@@ -90,7 +92,6 @@ class Settlement(WorldObject, TradePost):
 			buildingclass = game.main.session.entities.buildings[building_type]
 			building = buildingclass.load(db, building_id)
 			building.settlement = self
-			game.main.session.world.get_island(building.position.origin.x,building.position.origin.y).add_building(building, self.owner)
 			self.buildings.append(building)
 
 		return self
