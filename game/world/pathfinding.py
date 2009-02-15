@@ -269,7 +269,7 @@ class Pather(object):
 			self.blocked_coords = game.main.session.world.ship_map
 		elif unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			# TODO
-			pass
+			assert False, 'Pathfinding for soldiers isn\'t implemented yet'
 		else:
 			assert False, 'Invalid way of movement'
 

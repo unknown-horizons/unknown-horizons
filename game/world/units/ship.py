@@ -40,9 +40,6 @@ class Ship(Unit):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 
 		self.setup_inventory()
-		self.inventory.alter(5, 50) 	#res:food 	50t
-		self.inventory.alter(6, 50) 	#res:tools 	50t
-		self.inventory.alter(4, 50) 	#res:boards	50t
 
 		self.set_name()
 
@@ -114,7 +111,6 @@ class Ship(Unit):
 		tmp()
 		x,y=int(round(x)),int(round(y))
 		move_possible = self.move(Point(x,y), tmp)
-		#move_possible = self.move(Point(x,y))
 		if not move_possible:
 			return
 		if self.position.x != x or self.position.y != y:
@@ -139,7 +135,6 @@ class Ship(Unit):
 	def load(self, db, worldid):
 		super(Ship, self).load(db, worldid)
 
-		self.setup_inventory()
 		self.setup_inventory()
 		self.inventory.load(db, worldid)
 

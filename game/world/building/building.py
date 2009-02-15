@@ -49,7 +49,7 @@ class Building(WorldObject, AmbientSound):
 		self.rotation = rotation
 		self.owner = owner
 		self.object_type = 0
-		self._instance = self.getInstance(origin.x, origin.y) if instance is None else instance
+		self._instance = self.getInstance(origin.x, origin.y, rotation = rotation) if instance is None else instance
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0:
