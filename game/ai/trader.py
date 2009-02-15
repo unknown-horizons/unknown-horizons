@@ -24,6 +24,7 @@ from game.world.storageholder import StorageHolder
 from game.util import Point
 import game.main
 import random
+
 class Trader(Player, StorageHolder):
 	"""A trader represents the free trader that travels arround the map with his trading ship(s) and
 	sells resources to players and buys resources from them. This is a very simple form of AI, as it
@@ -39,7 +40,7 @@ class Trader(Player, StorageHolder):
 		self.ships = [] # Put all the traders ships in here
 		self.office = None # This is used to store the branchoffice the trader is currently heading to
 		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
-		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water))]
+		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
 		self.ships.append(game.main.session.entities.units[6](x, y))
 		game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships[0]),self)
 
@@ -51,7 +52,7 @@ class Trader(Player, StorageHolder):
 		print "max:", game.main.session.world.max_x
 		assert len(game.main.session.world.water)>0, \
 			   "You're doing it wrong, this is not allowed to happen."
-		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water))]
+		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
 		print "sending ship to", x,y
 		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
 
