@@ -31,7 +31,6 @@ class TradePost(object):
 		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
 
 	def save(self, db):
-		#import pdb ; pdb.set_trace()
 		super(TradePost, self).save(db)
 		
 		for resource, limit in self.buy_list.iteritems():
@@ -45,7 +44,6 @@ class TradePost(object):
 				 self.getId(), resource, limit)
 	
 	def load(self, db, worldid):
-		#import pdb ; pdb.set_trace()
 		super(TradePost, self).load(db, worldid)
 		
 		self.__init()

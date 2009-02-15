@@ -48,7 +48,7 @@ class SavegameManager(object):
 	quicksave_basename = "quicksave-"
 
 	autosave_filenamepattern = autosave_basename+'%(timestamp)d.'+savegame_extension
-	quicksave_filenamepattern = quicksave_basename+'%(timestamp).2f.'+savegame_extension
+	quicksave_filenamepattern = quicksave_basename+'%(timestamp).4f.'+savegame_extension
 
 	display_timeformat = "%y/%m/%d %H:%M"
 

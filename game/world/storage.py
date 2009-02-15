@@ -33,11 +33,23 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		for slot in self._storage.iteritems():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, slot[0], slot[1])
+		db("INSERT INTO storage_properties(object, name, value) VALUES(?, ?, ?)", 
+			 ownerid, "limit", self.limit)
 
 	def load(self, db, ownerid):
 		#super(Storage, self).load(db)
 		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
 			self.alter(res, amount)
+		
+		# load a limit, if we have one
+		# this is only useful for limits, that have been changed after construction,
+		# all static limits will be set on storage construction, which happens before load
+		result = db("SELECT value FROM storage_properties WHERE object = ? AND name = ?", \
+										ownerid, "limit")
+		if(len(result) != 0):
+			self.limit = result[0][0]
+			if self.limit is not None:
+				self.limit = int(self.limit)
 
 	def alter(self, res, amount):
 		if res in self._storage:
@@ -80,6 +92,15 @@ class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
 	def addResourceSlot(self, res, size, **kwargs):
 		super(SpecializedStorage, self).addResourceSlot(res = res, size = size, **kwargs)
 		self.__size[res] = size
+		
+	def save(self, db, ownerid):
+		super(SizedSpecializedStorage, self).save(db, ownerid)
+		assert False, "Saving of SizedSpecializedStorage hasn't been implemented"
+		
+	def load(self, db, ownerid):
+		super(SizedSpecializedStorage, self).save(db, ownerid)
+		assert False, "Loading of SizedSpecializedStorage hasn't been implemented"
+
 
 class TotalStorage(GenericStorage): # TESTED AND WORKING
 	def __init__(self, space, **kwargs):

@@ -105,10 +105,6 @@ class Island(WorldObject):
 			settlement = Settlement.load(db, settlement_id)
 			self.settlements.append(settlement)
 			
-			for settlement_building in settlement.buildings:
-				print "found ",settlement_building, "for island in settlement"
-				self.add_building(settlement_building, settlement.owner)
-
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 
