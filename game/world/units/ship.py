@@ -150,11 +150,18 @@ class PirateShip(Ship):
 
 	def show_menu(self):
 		pass
+	
+	def go(self, x, y):
+		pass
 
+	
 class TradeShip(Ship):
 	"""Represents a trade ship."""
 
 	def show_menu(self):
+		pass
+	
+	def go(self, x, y):
 		pass
 
 class FisherShip(Ship):
