@@ -21,7 +21,9 @@
 import game.main
 from game.util.inventory_widget import ImageFillStatusButton
 from game.world.building.storages import BranchOffice
+
 class TradeWidget(object):
+	radius = 4 # objects within this radius can be traded with
 
 	def __init__(self, main_instance):
 		self.widget = game.main.fife.pychan.loadXML('content/gui/ship/trade.xml')
@@ -76,7 +78,8 @@ class TradeWidget(object):
 		#print 'TradeWidget debug: Exchange size now:', self.exchange
 
 	def transfer(self, res_id, transfer_from, transfer_to):
-		if transfer_to is not None and transfer_from is not None:
+		if self.main_instance.position.distance(transfer_to.position) <= self.radius and \
+			 transfer_to is not None and transfer_from is not None:
 			#print 'TradeWidget debug: Transfering', self.exchange, 't of resource', res_id, 'from', transfer_from.name, 'to', transfer_to.name
 			ret = transfer_from.inventory.alter(res_id, -self.exchange) #take ressources, ret = difference to exchange(might not have hat exchange number of res in store)
 			#print 'ret1:', ret
@@ -101,7 +104,7 @@ class TradeWidget(object):
 		partners = []
 		for island in game.main.session.world.islands:
 			for building in island.buildings:
-				if isinstance(building, BranchOffice) and building.position.distance(self.main_instance.position) <= 4:
+				if isinstance(building, BranchOffice) and building.position.distance(self.main_instance.position) <= self.radius:
 					partners.append(building)
 		#TODO: Add ships
 		return partners
