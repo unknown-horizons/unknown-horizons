@@ -90,14 +90,23 @@ class ActionSetLoader(object):
 			
 		return actions
 
+	def _find_action_sets(self, dir):
+		"""Traverses recursively starting from dir to find action sets.
+		It is similar to os.walk, but more optimized for this use case."""
+		for entry in os.listdir(dir):
+			full_path = os.path.join(dir, entry)
+			if entry.startswith("as_"):
+				self.action_sets[entry] = self._load_action(full_path)
+			else:
+				if os.path.isdir(full_path) and entry != ".svn":
+					self._find_action_sets(full_path)
+						
 	def load(self):
 		print "Loading action_sets..."
 		self.action_sets = {}
-		# NOTE: os.walk is used here, which traverses all subdirectories recursively,
-		#       which isn't necessary.
-		for root, dirs, files in os.walk(self.start_dir):
-			if os.path.basename(root).startswith("as_"):
-				self.action_sets[os.path.basename(root)] = self._load_action(root)
+
+		self._find_action_sets(self.start_dir)
+		
 		print "Done!"
 
 		#for key, value in self.action_sets.iteritems():
