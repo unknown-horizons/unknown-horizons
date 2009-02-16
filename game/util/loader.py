@@ -43,11 +43,12 @@ class ActionSetLoader(object):
 		"""
 		fl = {}
 		dirs = os.listdir(dir)
-		if '.svn' in dirs:
-			dirs.remove('.svn')
+		try: dirs.remove('.svn')
+		except ValueError: pass
+		
 		i = 1
 		for file in dirs:
-			fl[dir+os.path.sep+file] = ((float(time)/1000)/len(dirs))*i
+			fl[os.path.join(dir,file)] = ((float(time)/1000)/len(dirs))*i
 			i += 1
 		return fl
 
@@ -60,10 +61,11 @@ class ActionSetLoader(object):
 		rotations = {}
 		time = 1000
 		dirs = os.listdir(dir)
-		if '.svn' in dirs:
-			dirs.remove('.svn')
+		try: dirs.remove('.svn')
+		except ValueError: pass
+		
 		for dirname in dirs:
-			if "tm_" in dirname:
+			if dirname.startswith("tm_"):
 				time = dirname.split('_')[1]
 				dirs.remove(dirname)
 				break
@@ -80,18 +82,21 @@ class ActionSetLoader(object):
 		"""
 		actions = {}
 		dirs = os.listdir(dir)
-		if '.svn' in dirs:
-			dirs.remove('.svn')
+		try: dirs.remove('.svn')
+		except ValueError: pass
+		
 		for dirname in dirs:
-			actions[dirname] = {}
 			actions[dirname] = self._load_rotation(os.path.join(dir, dirname))
+			
 		return actions
 
 	def load(self):
 		print "Loading action_sets..."
 		self.action_sets = {}
+		# NOTE: os.walk is used here, which traverses all subdirectories recursively,
+		#       which isn't necessary.
 		for root, dirs, files in os.walk(self.start_dir):
-			if "as_" in os.path.basename(root):
+			if os.path.basename(root).startswith("as_"):
 				self.action_sets[os.path.basename(root)] = self._load_action(root)
 		print "Done!"
 

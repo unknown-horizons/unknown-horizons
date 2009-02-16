@@ -111,7 +111,7 @@ class BuildingClass(type):
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in game.main.action_sets[action_set_id][action_id].keys():
-					print "rotation:", rotation
+					#print "rotation:", rotation
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(cls.size[0] * 16)
 					elif rotation == 135:

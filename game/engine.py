@@ -47,17 +47,17 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		- cut:
 		#TODO: complete documentation
 		"""
-		print location.getFilename()
+		#print location.getFilename()
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('-')
-		print "AS, action, rotation", actionset, action, rotation
+		#print "AS, action, rotation", actionset, action, rotation
 		if ',' in id:
 			id, shift_x, shift_y = id.split(',')
 		else:
 			shift_x, shift_y = None, None
 		commands = zip(commands[0::2], commands[1::2])
-		print _("Loading animation #%s...") % (id)
+		#print _("Loading animation #%s...") % (id)
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
 		for file,frame_end in sorted(game.main.action_sets[actionset][action][int(rotation)].iteritems()):
