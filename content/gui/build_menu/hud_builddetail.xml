@@ -8,7 +8,9 @@
 			<Label name="running_costs" text=""/>
 			<ImageButton name="rotate_right" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
 		</HBox>
-		<Icon name="building"/>
 	</VBox>
 	</Container>
+
+<Icon position="60,40" name="building"/>
+
 </Container>
