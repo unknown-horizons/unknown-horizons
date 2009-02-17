@@ -45,7 +45,7 @@ class ActionSetLoader(object):
 		dirs = os.listdir(dir)
 		try: dirs.remove('.svn')
 		except ValueError: pass
-		
+
 		i = 1
 		for file in dirs:
 			fl[os.path.join(dir,file)] = ((float(time)/1000)/len(dirs))*i
@@ -59,11 +59,11 @@ class ActionSetLoader(object):
 		@return: dict containing 'rotation: filedict' entries. See _load_files for example.
 		"""
 		rotations = {}
-		time = 1000
+		time = 700
 		dirs = os.listdir(dir)
 		try: dirs.remove('.svn')
 		except ValueError: pass
-		
+
 		for dirname in dirs:
 			if dirname.startswith("tm_"):
 				time = dirname.split('_')[1]
@@ -84,10 +84,10 @@ class ActionSetLoader(object):
 		dirs = os.listdir(dir)
 		try: dirs.remove('.svn')
 		except ValueError: pass
-		
+
 		for dirname in dirs:
 			actions[dirname] = self._load_rotation(os.path.join(dir, dirname))
-			
+
 		return actions
 
 	def _find_action_sets(self, dir):
@@ -100,13 +100,13 @@ class ActionSetLoader(object):
 			else:
 				if os.path.isdir(full_path) and entry != ".svn":
 					self._find_action_sets(full_path)
-						
+
 	def load(self):
 		print "Loading action_sets..."
 		self.action_sets = {}
 
 		self._find_action_sets(self.start_dir)
-		
+
 		print "Done!"
 
 		#for key, value in self.action_sets.iteritems():
