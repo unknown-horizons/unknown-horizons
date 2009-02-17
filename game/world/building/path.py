@@ -72,7 +72,7 @@ class Path(Building, BuildableLine):
 		if tile is not None and isinstance(tile.object, (Path, Bridge)):
 			action += 'd'
 		if action == '':
-			action = 'default'
+			action = 'ac' # default
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)

@@ -101,9 +101,12 @@ class BuildingTool(NavigationTool):
 	def draw_gui(self):
 		action_set = game.main.db("SELECT action_set_id FROM action_set WHERE building_id=?", self._class.id)[0][0]
 		if 'idle' in game.main.action_sets[action_set].keys():
-			image = sorted(game.main.action_sets[action_set]['idle'][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
-		else:
-			image = sorted(game.main.action_sets[action_set]['idle_full'][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
+			self.action = 'idle'
+		elif 'idle_full' in game.main.action_sets[action_set].keys():
+			self.action = 'idle_full'
+		else: # If no idle animation found, use the first you find
+			self.action = game.main.action_sets[action_set].keys()[0]
+		image = sorted(game.main.action_sets[action_set][self.action][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
 		self.gui.findChild(name='building').image = image
 		self.gui._recursiveResizeToContent()
 

@@ -144,7 +144,7 @@ class BuildableLine(BuildableSingle):
 		for y in xrange(int(round(point1[1])), int(round(point2[1])) + (1 if int(round(point2[1])) > int(round(point1[1])) else -1), (1 if int(round(point2[1])) > int(round(point1[1])) else -1)):
 			if len(buildings) == 0: #first tile
 				if y == int(round(point2[1])): #only tile
-					action = 'default'
+					action = 'ac'
 				else:
 					action = 'c' if int(round(point2[1])) > int(round(point1[1])) else 'a'
 			elif y == int(round(point2[1])): #last tile
@@ -158,7 +158,7 @@ class BuildableLine(BuildableSingle):
 				else:
 					action = 'bc' if int(round(point2[1])) > int(round(point1[1])) else 'ab'
 			else:
-				action = 'ac'
+				action = 'ac' #default
 			is_first = False
 
 			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
