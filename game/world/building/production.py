@@ -49,7 +49,7 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 	def create_carriage(self):
 		"""Add a FieldCollector"""
-		self.local_carriages.append(game.main.session.entities.units[9](self))
+		self.local_carriages.append(game.main.session.entities.units[10](self))
 
 
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):

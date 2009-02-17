@@ -236,7 +236,7 @@ class BuildingCollector(StorageHolder, Unit):
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None):
-		self.move(self.home_building().position, callback=callback, destination_in_building=True)
+		self.move(self.home_building().position, callback=callback, destination_in_building=True, action='move_full')
 
 
 class StorageCollector(BuildingCollector):
@@ -312,7 +312,7 @@ class AnimalCollector(BuildingCollector):
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
 		#print self.id, 'GET ANIMAL'
-		self.job.object.move(self.home_building().position, destination_in_building = True)
+		self.job.object.move(self.home_building().position, destination_in_building = True, action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing"""

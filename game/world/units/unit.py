@@ -100,7 +100,7 @@ class Unit(WorldObject):
 		self.move_callback = WeakMethodList(callback)
 		self.path.end_move()
 
-	def move(self, destination, callback = None, destination_in_building = False):
+	def move(self, destination, callback = None, destination_in_building = False, action='move'):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
@@ -113,6 +113,10 @@ class Unit(WorldObject):
 
 		#print 'NEW DEST', destination
 		self.move_callback = WeakMethodList(callback)
+		if action not in game.main.action_sets[self._action_set_id].keys():
+			self._move_action = self.action
+		else:
+			self._move_action = action
 
 		if not self.is_moving():
 			self.move_tick()
@@ -167,7 +171,7 @@ class Unit(WorldObject):
 
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
-		self._instance.move(self.action+"_"+str(self._action_set_id), location, 16.0 / move_time[0])
+		self._instance.move(self._move_action+"_"+str(self._action_set_id), location, 16.0 / move_time[0])
 		# coords pro sec
 
 		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y
@@ -180,10 +184,10 @@ class Unit(WorldObject):
 		tile = game.main.session.world.get_tile(self.position)
 		# this is faster than control flow via if-query
 		# (an if would have to include hasattr(object) and object not None)
-		try:
-			return tile.object.velocity[self.id]
-		except AttributeError:
+		if self.id in tile.velocity:
 			return tile.velocity[self.id]
+		else:
+			return (12, 17) # Standart values
 
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit
