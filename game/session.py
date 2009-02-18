@@ -106,6 +106,11 @@ class Session(object):
 	def __del__(self):
 		self.scheduler.rem_all_classinst_calls(self)
 
+		for emitter in game.main.fife.emitter['ambient']:
+			emitter.stop()
+			game.main.fife.emitter['ambient'].remove(emitter)
+		game.main.fife.emitter['effects'].stop()
+		game.main.fife.emitter['speech'].stop()
 		self.cursor = None
 		self.keylistener = None
 		self.ingame_gui = None
