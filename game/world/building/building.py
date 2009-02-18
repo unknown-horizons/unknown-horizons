@@ -81,6 +81,10 @@ class Building(WorldObject, AmbientSound):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
+		self.__del__()
+
+	def __del__(self):
+		super(Building, self).__del__()
 
 	def save(self, db):
 		super(Building, self).save(db)

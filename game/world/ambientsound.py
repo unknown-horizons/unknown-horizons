@@ -35,6 +35,10 @@ class AmbientSound(object):
 				self.emitter.setRolloff(1.9)
 			game.main.fife.emitter['ambient'].append(self.emitter)
 
+	def __del__(self):
+		self.emitter = None
+		self.positioning = None
+
 	def play_ambient(self, soundfile, looping):
 		"""Starts playing an ambient sound
 		@param soundfile: path to audio file

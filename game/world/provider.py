@@ -46,6 +46,13 @@ class Provider(StorageHolder):
 		# by anything else but this collector
 		self.__collectors = WeakList()
 
+	def __del__(self):
+		for col in self.__collectors:
+			col().cancel()
+		self.__collectors = None
+		super(StorageHolder, self).__del__()
+
+
 	def load(self, db, worldid):
 		super(Provider, self).load(db, worldid)
 

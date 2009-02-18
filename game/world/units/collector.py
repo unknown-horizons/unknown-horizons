@@ -235,8 +235,12 @@ class BuildingCollector(StorageHolder, Unit):
 		from game.world.provider import Provider
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
-	def move_home(self, callback=None):
-		self.move(self.home_building().position, callback=callback, destination_in_building=True, action='move_full')
+	def move_home(self, callback=None, action='move_full'):
+		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
+
+	def cancel(self):
+		game.main.session.scheduler.rem_all_classinst_calls(self)
+		self.move_home(callback=self.search_job, action='move')
 
 
 class StorageCollector(BuildingCollector):
