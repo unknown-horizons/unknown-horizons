@@ -113,10 +113,12 @@ class Unit(WorldObject):
 
 		#print 'NEW DEST', destination
 		self.move_callback = WeakMethodList(callback)
-		if action not in game.main.action_sets[self._action_set_id].keys():
-			self._move_action = self.action
-		else:
+		if action in game.main.action_sets[self._action_set_id].keys():
 			self._move_action = action
+		elif 'move' in game.main.action_sets[self._action_set_id].keys():
+			self._move_action = 'move'
+		else:
+			self._move_action = self.action
 
 		if not self.is_moving():
 			self.move_tick()
