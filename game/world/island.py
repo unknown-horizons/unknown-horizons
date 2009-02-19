@@ -103,7 +103,6 @@ class Island(WorldObject):
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
-			self.settlements.append(settlement)
 			
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
@@ -168,12 +167,16 @@ class Island(WorldObject):
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(player)
-		self.settlements.append(settlement)
-		self.assign_settlement(position, radius, settlement)
+		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
 		game.main.session.ingame_gui.message_widget.add(position.center().x, position.center().y, 1, {'player':player.name})
 		return settlement
-
+	
+	def add_existing_settlement(self, position, radius, settlement):
+		"""Same as add_settlement, but uses settlement from parameter"""
+		self.settlements.append(settlement)
+		self.assign_settlement(position, radius, settlement)
+		
 	def assign_settlement(self, position, radius, settlement):
 		"""
 		@param position: Rect

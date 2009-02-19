@@ -85,6 +85,7 @@ class SavegameManager(object):
 	def __get_saves_from_dirs(self, dirs, include_displaynames = True):
 		"""Internal function, that returns the saves of a dir"""
 		files = [f for p in dirs for f in glob.glob(p+'/*.'+self.savegame_extension) if os.path.isfile(f)]
+		files.sort()
 		if include_displaynames:
 			return (files, self.__get_displaynames(files))
 		else:

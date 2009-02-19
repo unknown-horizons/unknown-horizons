@@ -40,7 +40,11 @@ class Building(WorldObject, AmbientSound):
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
 
-		for (soundfile,) in game.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
+		# play ambient sound, if available 
+		for (soundfile,) in game.main.db("SELECT file FROM sounds \
+		INNER JOIN building_sounds ON \
+		sounds.rowid = building_sounds.sound AND \
+		building_sounds.building = ?", self.id):
 			self.play_ambient(soundfile, True)
 
 	def __init(self, origin, rotation, owner, instance):
@@ -97,24 +101,27 @@ class Building(WorldObject, AmbientSound):
 		super(Building, self).load(db, worldid)
 		x, y, health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
-		owner = db("SELECT owner FROM settlement WHERE rowid = ?", location)
-		if len(owner) == 0:
-			self.owner = None
-		else:
-			self.owner = WorldObject.getObjectById(owner[0][0])
+		
+		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
+		owner = None if len(owner_db) == 0 else WorldObject.getObjectById(owner_db[0][0])
 
 		self.__init(Point(x,y), rotation, owner, None)
 
-		loc = WorldObject.getObjectById(location)
-		if isinstance(loc, Settlement):
-			self.settlement = loc
+		location_obj = WorldObject.getObjectById(location)
+		if isinstance(location_obj, Settlement):
 			# workaround: island can't be fetched from world, because it
 			# isn't fully constructed, when this code is executed
-			island_id = db("SELECT island FROM settlement WHERE rowid = ?", self.settlement.getId())[0][0]
+			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
 			self.island = weakref.ref(WorldObject.getObjectById(island_id))
+			
+			self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_existing_settlement(self.position, self.radius, location_obj)
+			
 		else: # loc is island
-			self.island = weakref.ref(loc)
-			self.settlement = self.island().get_settlement(Point(x,y))
+			from game.world.island import Island 
+			assert(isinstance(location_obj, Island))
+						 
+			self.island = weakref.ref(location_obj)
+			
 		self.island().add_building(self, self.owner)
 
 	def get_buildings_in_range(self):

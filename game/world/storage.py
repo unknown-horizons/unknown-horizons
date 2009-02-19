@@ -37,10 +37,6 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 			 ownerid, "limit", self.limit)
 
 	def load(self, db, ownerid):
-		#super(Storage, self).load(db)
-		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
-			self.alter(res, amount)
-		
 		# load a limit, if we have one
 		# this is only useful for limits, that have been changed after construction,
 		# all static limits will be set on storage construction, which happens before load
@@ -51,6 +47,9 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 			if self.limit is not None:
 				self.limit = int(self.limit)
 
+		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
+			self.alter(res, amount)
+		
 	def alter(self, res, amount):
 		if res in self._storage:
 			self._storage[res] += amount

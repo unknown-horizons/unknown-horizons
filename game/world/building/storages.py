@@ -25,7 +25,7 @@ from game.world.consumer import Consumer
 from game.world.provider import Provider
 from game.gui.tabwidget import TabWidget
 from game.gui.buysellwidget import BuySellWidget
-from game.util import Point, Rect
+from game.util import Point, Rect, WorldObject
 import game.main
 
 class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
@@ -42,11 +42,11 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		self.inventory.adjust_limit(-30)
 
 	def load(self, db, worldid):
-		print 'stor1', self
 		super(StorageBuilding, self).load(db, worldid)
-		self.inventory = self.settlement.inventory
+		# workaround to get settlement (self.settlement is assigned just after loading)
+		settlement_id = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
+		self.inventory = WorldObject.getObjectById(int(settlement_id)).inventory
 		self.inventory.addChangeListener(self._changed)
-		print 'stor2', self
 
 	def create_carriage(self):
 		self.local_carriages.append(game.main.session.entities.units[8](self))
