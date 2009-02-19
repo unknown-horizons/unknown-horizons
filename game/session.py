@@ -172,11 +172,14 @@ class Session(object):
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
 
 			game.main.savegamemanager.write_metadata(db)
+			"""
+			# Savegame integrity ensurance disabled for save testing:
 		except Exception, e:
 			# remove invalid savegamefile
 			os.unlink(savegame)
 			print "Save exception", e
 			raise e
+			"""
 		finally:
 			db("COMMIT")
 
