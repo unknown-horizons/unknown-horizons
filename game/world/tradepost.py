@@ -35,12 +35,12 @@ class TradePost(object):
 		
 		for resource, limit in self.buy_list.iteritems():
 			assert limit is not None, "limit must not be none"
-			db("INSERT INTO trade_buy(rowid, resource, trade_limit) VALUES(?, ?, ?)",
+			db("INSERT INTO trade_buy(object, resource, trade_limit) VALUES(?, ?, ?)",
 				 self.getId(), resource, limit)
 			
 		for resource, limit in self.sell_list.iteritems():
 			assert limit is not None, "limit must not be none"
-			db("INSERT INTO trade_sell(rowid, resource, trade_limit) VALUES(?, ?, ?)",
+			db("INSERT INTO trade_sell(object, resource, trade_limit) VALUES(?, ?, ?)",
 				 self.getId(), resource, limit)
 	
 	def load(self, db, worldid):
@@ -48,10 +48,10 @@ class TradePost(object):
 		
 		self.__init()
 	
-		for (res, limit) in db("SELECT resource, trade_limit FROM trade_buy WHERE rowid = ?", worldid):
+		for (res, limit) in db("SELECT resource, trade_limit FROM trade_buy WHERE object = ?", worldid):
 			self.buy_list[res] = limit
 			
-		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE rowid = ?", worldid):
+		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
 			self.sell_list[res] = limit
 	
 		
