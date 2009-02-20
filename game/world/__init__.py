@@ -67,7 +67,6 @@ class World(object):
 		for filename, offset_x, offset_y, islandid in db("select file, x, y, rowid from island"):
 			island = Island(Point(offset_x, offset_y), filename)
 			island.load(db, islandid)
-			self.islands.append(island)
 
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None

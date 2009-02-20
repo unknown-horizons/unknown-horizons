@@ -163,9 +163,15 @@ class Building(WorldObject, AmbientSound):
 			action_set_id  = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
 			if action in game.main.action_sets[action_set_id].keys():
-				instance.act(action+"_"+str(action_set_id), facing_loc, True)
+				pass
+			elif 'idle' in game.main.action_sets[action_set_id].keys():
+				action='idle'
+			elif 'idle_full' in game.main.action_sets[action_set_id].keys():
+				action='idle_full'
 			else:
-				instance.act("idle_full_"+str(action_set_id), facing_loc, True)
+				action=game.main.action_sets[action_set_id].keys()[0]
+				
+			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance
 
 	@classmethod

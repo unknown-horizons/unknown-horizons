@@ -38,14 +38,23 @@ class StorageHolder(object):
 		self.__init()
 
 	def __init(self):
-		self.inventory = SizedSlotStorage(30)
-		self.inventory.addChangeListener(self._changed)
+		# FIXME: StorageBuildings inherit this indirectly via Consumer/Provider,
+		#       but since they don't have an own storage, these methods shouldn't be applied,
+		#       which is currently handled by isinstance, a rather dirty solution.
+		from game.world.building.storages import StorageBuilding
+		if not isinstance(self, StorageBuilding):
+			self.inventory = SizedSlotStorage(30)
+			self.inventory.addChangeListener(self._changed)
 
 	def save(self, db):
 		super(StorageHolder, self).save(db)
-		self.inventory.save(db, self.getId())
+		from game.world.building.storages import StorageBuilding
+		if not isinstance(self, StorageBuilding):
+			self.inventory.save(db, self.getId())
 
 	def load(self, db, worldid):
 		super(StorageHolder, self).load(db, worldid)
 		self.__init()
-		self.inventory.load(db, worldid)
+		from game.world.building.storages import StorageBuilding
+		if not isinstance(self, StorageBuilding):
+			self.inventory.load(db, worldid)

@@ -28,4 +28,4 @@ class Housing(Building, Selectable, BuildableSingle):
 		super(Housing, self).save(db)
 
 	def load(self, db, worldid):
-		super(Housing, self).load(self, db, worldid)
+		super(Housing, self).load(db, worldid)

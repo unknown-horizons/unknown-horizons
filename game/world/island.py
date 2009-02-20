@@ -100,6 +100,8 @@ class Island(WorldObject):
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", worldid)[0]
 		self.__init(Point(x, y), filename)
+		
+		game.main.session.world.islands.append(self)
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
@@ -239,7 +241,9 @@ class Island(WorldObject):
 
 	def registerPath(self, path):
 		origin = path.position.origin
-		self.path_nodes[ (origin.x, origin.y) ] = path.__class__.speed
+		# TODO: currently all paths have speed 1, since we don't have a real velocity-system yet.
+		#       this value here is only used for pathfinding.
+		self.path_nodes[ (origin.x, origin.y) ] = 1
 
 	def unregisterPath(self, path):
 		origin = path.position.origin

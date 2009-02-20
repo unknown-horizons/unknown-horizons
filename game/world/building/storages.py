@@ -29,8 +29,9 @@ from game.util import Point, Rect, WorldObject
 import game.main
 
 class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
-	"""Building that gets pickups and provides them for anyone
-	Inherited eg. by branch office, storage tent
+	"""Building that gets pickups and provides them for anyone.
+	Inherited eg. by branch office, storage tent.
+	These objects don't have a storage themselves, but use the settlement storage.
 	"""
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)

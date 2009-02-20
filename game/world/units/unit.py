@@ -173,8 +173,12 @@ class Unit(WorldObject):
 
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.next_target.x, self.next_target.y, 0))
+		
+		# FIXME: on loading, move() isn't called, and therefore _move_action isn't defined,
+		#        which leads to a crash here. please fix this asap and remove following line!
+		if not hasattr(self, "_move_action"): self._move_action = 'move'
 		self._instance.move(self._move_action+"_"+str(self._action_set_id), location, 16.0 / move_time[0])
-		# coords pro sec
+		# coords per sec
 
 		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y
 		game.main.session.scheduler.add_new_object(self.move_tick, self, move_time[int(diagonal)])
@@ -184,12 +188,10 @@ class Unit(WorldObject):
 		@return: int
 		"""
 		tile = game.main.session.world.get_tile(self.position)
-		# this is faster than control flow via if-query
-		# (an if would have to include hasattr(object) and object not None)
 		if self.id in tile.velocity:
 			return tile.velocity[self.id]
 		else:
-			return (12, 17) # Standart values
+			return (12, 17) # standard values
 
 	def check_for_blocking_units(self, position):
 		"""Returns wether position is blocked by a unit
