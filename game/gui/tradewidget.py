@@ -45,11 +45,11 @@ class TradeWidget(object):
 		self.draw_widget()
 
 	def draw_widget(self):
-		dropdown = self.widget.findChild(name='partners')
 		self.partners = self.find_partner()
-		dropdown.setInitialData([item.settlement.name for item in self.partners])
-		dropdown.capture(game.main.fife.pychan.tools.callbackWithArguments(self.set_partner, dropdown.getData()))
 		if len(self.partners) > 0:
+			dropdown = self.widget.findChild(name='partners')
+			dropdown.setInitialData([item.settlement.name for item in self.partners])
+			dropdown.capture(game.main.fife.pychan.tools.callbackWithArguments(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			dropdown.setData(nearest_partner)
 			self.partner = self.partners[nearest_partner]
@@ -57,11 +57,11 @@ class TradeWidget(object):
 			inv_partner.inventory = self.partner.inventory
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
 				button.button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.main_instance))
-		inv = self.widget.findChild(name='inventory_ship')
-		inv.inventory = self.main_instance.inventory
-		for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
-			button.button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id,self.main_instance, self.partner))
-		self.widget._recursiveResizeToContent()
+			inv = self.widget.findChild(name='inventory_ship')
+			inv.inventory = self.main_instance.inventory
+			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
+				button.button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id,self.main_instance, self.partner))
+			self.widget._recursiveResizeToContent()
 
 
 	def set_partner(self, partner_id):
