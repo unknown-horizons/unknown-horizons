@@ -66,7 +66,7 @@ class IngameKeyListener(fife.IKeyListener):
 		elif keystr == 'b':
 			import pdb; pdb.set_trace()			
 		elif keystr == 'u':
-			game.main.session.ingame_gui.show_build_menu()
+			game.main.session.ingame_gui.toggle_menu('build')
 		elif keystr == '.':
 			if isinstance(game.main.session.cursor, BuildingTool):
 				game.main.session.cursor.rotate_right()

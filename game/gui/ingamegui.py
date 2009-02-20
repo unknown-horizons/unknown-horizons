@@ -324,21 +324,41 @@ class IngameGui(object):
 			cls.show_build_menu()
 		game.main.session.cursor = BuildingTool(cls, None if unit is None else unit())
 
+		
+	def _get_menu_object(self, menu):
+		"""Returns pychan object if menu is a string, else returns menu
+		@param menu: str with the guiname or pychan object.
+		"""
+		if isinstance(menu, str):
+			menu = self.gui[menu]
+		return menu
+	
+	def get_cur_menu(self):
+		"""Returns menu that is currently displayed"""
+		return self._old_menu
+		
 	def show_menu(self, menu):
 		"""Shows a menu
 		@param menu: str with the guiname or pychan object.
 		"""
 		if self._old_menu is not None:
 			self._old_menu.hide()
-		if isinstance(menu, str):
-			self._old_menu = self.gui[menu]
-		else:
-			self._old_menu = menu
+			
+		self._old_menu = self._get_menu_object(menu)
 		if self._old_menu is not None:
 			self._old_menu.show()
 
 	def hide_menu(self):
 		self.show_menu(None)
+		
+	def toggle_menu(self, menu):
+		"""Shows a menu or hides it if it is already displayed.
+		@param menu: parameter supported by show_menu().
+		"""
+		if self.get_cur_menu() == self._get_menu_object(menu):
+			self.hide_menu()
+		else:
+			self.show_menu(menu)
 
 	def build_load_tab(self, num):
 		"""Loads a subcontainer into the build menu and changes the tabs background.
