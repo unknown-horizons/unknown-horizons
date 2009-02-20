@@ -195,7 +195,7 @@ class Menus(object):
 			settings.savegame.autosaveinterval = (new_settings['autosaveinterval'])*2
 			print settings.savegame.autosaveinterval
 		if new_settings['savedautosaves']+1 != settings.savegame.savedautosaves:
-			settings.savegame.savedautosaves =new_settings[' savedautosaves']+1
+			settings.savegame.savedautosaves =new_settings['savedautosaves']+1
 		if new_settings['savedquicksaves']+1 != settings.savegame.savedquicksaves:
 			settings.savegame.savedquicksaves = new_settings['savedquicksaves']+1
 		if new_settings['screen_fullscreen'] != settings.fife.screen.fullscreen:
