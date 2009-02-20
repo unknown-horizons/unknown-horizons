@@ -55,6 +55,7 @@ class Provider(StorageHolder):
 
 	def load(self, db, worldid):
 		super(Provider, self).load(db, worldid)
+		self.__init()
 
 	def pickup_resources(self, res, max_amount):
 		"""Return the resources of id res that are in stock and removes them from the stock.

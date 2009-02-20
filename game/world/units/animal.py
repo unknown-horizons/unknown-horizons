@@ -69,7 +69,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
 
-	def create_carriage(self):
+	def create_collector(self):
 		pass
 
 	def sort_jobs(self, jobs):

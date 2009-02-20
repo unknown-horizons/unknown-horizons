@@ -35,10 +35,10 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		self.__init()
 		self.run()
 
-	def create_carriage(self):
-		self.local_carriages.append(game.main.session.entities.units[8](self))
+	def create_collector(self):
+		self.local_collectors.append(game.main.session.entities.units[8](self))
 		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		#self.local_carriages.append(game.main.session.entities.units[2](self))
+		#self.local_collectors.append(game.main.session.entities.units[2](self))
 
 	def __init(self):
 		print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
@@ -100,7 +100,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		NOTE: This function is only for the consumer class, the settler class needs to be a consumer,
 		but without production lines, which is why this has to be overwritten."""
 		self._Consumer__resources = {0: []} #ugly work arround to work with current consumer implementation
-		self.local_carriages = []
+		self.local_collectors = []
 
 		from game.world.building.building import Building
 		if isinstance(self, Building):

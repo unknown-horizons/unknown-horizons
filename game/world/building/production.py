@@ -34,22 +34,22 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 	def __init__(self, **kwargs):
 		super(AnimalFarm, self).__init__(**kwargs)
 
-	def create_carriage(self):
+	def create_collector(self):
 		self.animals = []
 		animals = game.main.db("SELECT unit_id, count from data.animals where building_id = ?", self.id)
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
-		self.local_carriages.append(game.main.session.entities.units[7](self))
+		self.local_collectors.append(game.main.session.entities.units[7](self))
 
 class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
 
-	def create_carriage(self):
+	def create_collector(self):
 		"""Add a FieldCollector"""
-		self.local_carriages.append(game.main.session.entities.units[10](self))
+		self.local_collectors.append(game.main.session.entities.units[10](self))
 
 
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
