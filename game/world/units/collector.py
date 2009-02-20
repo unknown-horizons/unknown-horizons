@@ -47,7 +47,7 @@ class BuildingCollector(StorageHolder, Unit):
 												slots = slots,
 												size = size,
 												**kwargs)
-		#print 'carriage beeing inited'
+		#print 'collector beeing inited'
 		self.home_building = weakref.ref(home_building)
 		self.inventory.limit = size;
 		#for res in home_building.get_consumed_res(): # NOTE: this does not work for multiple production lines yet.
@@ -102,14 +102,14 @@ class BuildingCollector(StorageHolder, Unit):
 				res_amount = building.inventory[res]
 				if res_amount > 0:
 					# get sum of picked up resources by other collectors for res
-					total_pickup_amount = sum([ carriage.job.amount for carriage in \
+					total_pickup_amount = sum([ collector.job.amount for collector in \
 												building._Provider__collectors if \
-												carriage.job.res == res ])
+												collector.job.res == res ])
 					# check how much will be delivered
-					total_registered_amount_consumer = sum([ carriage.job.amount for \
-															 carriage in \
+					total_registered_amount_consumer = sum([ collector.job.amount for \
+															 collector in \
 															 self.home_building()._Consumer__collectors if \
-															 carriage.job.res == res ])
+															 collector.job.res == res ])
 					# check if there are resources left to pickup
 					max_consumer_res_free = self.home_building().inventory.get_limit(res)-\
 										  (total_registered_amount_consumer+\
@@ -199,9 +199,9 @@ class BuildingCollector(StorageHolder, Unit):
 
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter(self.job.res, self.job.amount)
-			#assert(remnant == 0, "Home building could not take all ressources from carriage.")
+			#assert(remnant == 0, "Home building could not take all ressources from collector.")
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
-			#assert(remnant == 0, "Carriage did not pick up amount of ressources specified by the job.")
+			#assert(remnant == 0, "collector did not pick up amount of ressources specified by the job.")
 			self.home_building()._Consumer__collectors.remove(self)
 		self.end_job()
 
@@ -219,7 +219,7 @@ class BuildingCollector(StorageHolder, Unit):
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
 		#print self.id, 'TRANSFERED res:', self.job.res,' amount: ', res_amount,' we should :', self.job.amount
-		assert(res_amount == self.job.amount, "Carriage could not pickup amount of ressources, that was planned for the current job.")
+		assert(res_amount == self.job.amount, "collector could not pickup amount of ressources, that was planned for the current job.")
 		self.inventory.alter(self.job.res, res_amount)
 
 	def get_collectable_res(self):
