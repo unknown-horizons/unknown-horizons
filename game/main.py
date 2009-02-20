@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -63,7 +63,7 @@ def start():
 		   action_sets
 	#init db
 	db = DbReader(':memory:')
-	db("attach ? AS data", 'content/openanno.sqlite')
+	db("attach ? AS data", 'content/game.sqlite')
 
 	#init settings
 	settings = Settings()
@@ -72,7 +72,7 @@ def start():
 	settings.sound.setDefaults(volume_music = 1.0)
 	settings.sound.setDefaults(volume_effects = 1.0)
 	settings.addCategorys('network')
-	settings.network.setDefaults(port = 62666, url_servers = 'http://master.openanno.org/servers', url_master = 'master.openanno.org', favorites = [])
+	settings.network.setDefaults(port = 62666, url_servers = 'http://master.unknown-horizons.org/servers', url_master = 'master.unknown-horizons.org', favorites = [])
 	settings.addCategorys('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
 

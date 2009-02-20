@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -28,7 +28,7 @@ args = sys.argv[1:]
 
 if len(args) == 0:
 	print "USAGE: "+sys.argv[0]+" map1.sqlite map2.sqlite ... mapx.sqlite"
-	print 
+	print
 	print "maps will be saved as \"mapx.map\""
 	print "to convert all maps, use \""+sys.argv[0]+" content/maps/*sqlite\""
 	sys.exit()
@@ -47,6 +47,6 @@ for filename in args:
 	outfile = open(filename.replace('.sqlite','.map'),'w')
 	outfile.write( bz2.compress( infile.read() ) )
 
-	
+
 
 

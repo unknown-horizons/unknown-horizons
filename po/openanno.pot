@@ -115,24 +115,24 @@ msgstr ""
 msgid "Upgrading Config from Version %d to Version %d ..."
 msgstr ""
 
-#: ./openanno.py:57 ./openanno.py:113
+#: ./run_uh.py:57 ./run_uh.py:113
 msgid "Found FIFE in:"
 msgstr ""
 
-#: ./openanno.py:70 ./openanno.py:126
+#: ./run_uh.py:70 ./run_uh.py:126
 msgid "FIFE was not found."
 msgstr ""
 
-#: ./openanno.py:90
+#: ./run_uh.py:90
 msgid "FIFE was not found or failed to load."
 msgstr ""
 
-#: ./openanno.py:91
+#: ./run_uh.py:91
 msgid "Reason: %s"
 msgstr ""
 
-#: ./openanno.py:136
-msgid "Launching OpenAnno"
+#: ./run_uh.py:136
+msgid "Launching Unknown Horizons"
 msgstr ""
 
 #: ./run_tests.py:55

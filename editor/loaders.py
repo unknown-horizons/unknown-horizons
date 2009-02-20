@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -155,7 +155,7 @@ def relpath(p1, p2):
 def _init(engine):
 	global db
 	db = DbReader(':memory:')
-	db("attach ? AS data", os.path.abspath(os.path.dirname(__file__) + '/../content/openanno.sqlite'))
+	db("attach ? AS data", os.path.abspath(os.path.dirname(__file__) + '/../content/game.sqlite'))
 
 	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground"):
 		print 'Loading ground #%i ...' % (ground_id)

@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -47,7 +47,7 @@ from game.util import livingProperty, WorldObject
 class Session(object):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
 
-	This is the most important class if you are going to hack on OpenAnno, it provides most of
+	This is the most important class if you are going to hack on Unknown Horizons, it provides most of
 	the important ingame variables that you will be constantly accessing by game.main.session.x
 	Here's a small list of commonly used attributes:
 	* manager - game.manager instance. Used to execute commands that need to be tick,
@@ -106,7 +106,7 @@ class Session(object):
 	def __del__(self):
 		self.scheduler.rem_all_classinst_calls(self)
 
-		if game.main.settings.sound.enabled: 
+		if game.main.settings.sound.enabled:
 			for emitter in game.main.fife.emitter['ambient']:
 				emitter.stop()
 				game.main.fife.emitter['ambient'].remove(emitter)

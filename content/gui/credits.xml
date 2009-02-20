@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Window title="Credits" base_color="40, 40, 40">
-	<Label text="These guys contributed to OpenAnno" base_color="40, 40, 40"/>
+	<Label text="These guys contributed to Unknown Horizons" base_color="40, 40, 40"/>
 	<ScrollArea size="400,400" vertical_scrollbar="1" base_color="40, 40, 40">
 		<TextBox name="creditText" filename="doc/AUTHORS"/>
 	</ScrollArea>

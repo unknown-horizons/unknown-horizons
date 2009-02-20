@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -37,7 +37,7 @@ class SavegameManager(object):
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
 	"""
-	savegame_dir = "%s/.openanno/save" % user.home
+	savegame_dir = "%s/.unknown-horizons/save" % user.home
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"
@@ -57,7 +57,7 @@ class SavegameManager(object):
 	def __init__(self):
 		# share members across all instances
 		self.__dict__ = self._shared_state
-		
+
 		# create savegame directory if it does not exist
 		if not os.path.exists(self.autosave_dir):
 			os.makedirs(self.autosave_dir)

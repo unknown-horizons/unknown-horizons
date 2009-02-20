@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -29,7 +29,7 @@ from game.world.player import Player
 from game.util import Point, Color
 
 class World(object):
-	"""The World class represents an OpenAnno map with all its units, grounds, buildings, etc.
+	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 	   A World instance holds a lot of important lists:
 	   * players - a list of all the sessios's players - Player instances
 	   * islands - a list of all the map's islands - Island instances

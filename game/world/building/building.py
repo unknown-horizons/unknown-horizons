@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -40,7 +40,7 @@ class Building(WorldObject, AmbientSound):
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
 
-		# play ambient sound, if available 
+		# play ambient sound, if available
 		for (soundfile,) in game.main.db("SELECT file FROM sounds \
 		INNER JOIN building_sounds ON \
 		sounds.rowid = building_sounds.sound AND \
@@ -101,7 +101,7 @@ class Building(WorldObject, AmbientSound):
 		super(Building, self).load(db, worldid)
 		x, y, health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
-		
+
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		owner = None if len(owner_db) == 0 else WorldObject.getObjectById(owner_db[0][0])
 
@@ -113,15 +113,15 @@ class Building(WorldObject, AmbientSound):
 			# isn't fully constructed, when this code is executed
 			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
 			self.island = weakref.ref(WorldObject.getObjectById(island_id))
-			
+
 			self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_existing_settlement(self.position, self.radius, location_obj)
-			
+
 		else: # loc is island
-			from game.world.island import Island 
+			from game.world.island import Island
 			assert(isinstance(location_obj, Island))
-						 
+
 			self.island = weakref.ref(location_obj)
-			
+
 		self.island().add_building(self, self.owner)
 
 	def get_buildings_in_range(self):
@@ -170,7 +170,7 @@ class Building(WorldObject, AmbientSound):
 				action='idle_full'
 			else:
 				action=game.main.action_sets[action_set_id].keys()[0]
-				
+
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance
 

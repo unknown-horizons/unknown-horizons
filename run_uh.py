@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""This is the OpenAnno launcher, it looks for fife and tries to start the game. If you want to digg
+"""This is the Unknown Horizons launcher, it looks for fife and tries to start the game. If you want to digg
 into the game, continue to game/main.py. Read all docstrings and get familiar with the functions and
 attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)"""
 
@@ -78,7 +78,7 @@ def findFIFE():
 				os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join([ os.path.abspath(p + '/' + a) for a in ('ext/minizip', 'ext/install/lib') ] + (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if os.environ.has_key('LD_LIBRARY_PATH') else []))
 				print "Restarting with proper LD_LIBRARY_PATH..."
 				args = [sys.executable] + sys.argv
-				#we are already in openanno root, so just exec local executeable
+				#we are already in Unknown Horizons root, so just exec local executeable
 				args[1] = os.path.split(os.path.realpath(args[1]))[1]
 				# support for python -O flag (disables __debug__)
 				if not __debug__:
@@ -128,22 +128,22 @@ def getFifePath():
 	return fife_path
 
 if __name__ == '__main__':
-	#chdir to openanno root
+	#chdir to Unknown Horizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
-	
-	gettext.install("openanno", "po", unicode=1)
-	
-	print _("Launching OpenAnno")
+
+	gettext.install("unknownhorizons", "po", unicode=1)
+
+	print _("Launching Unknown Horizons")
 
 	#find fife and setup search paths
 	findFIFE()
 
-	#for some external libraries distributed with openanno
+	#for some external libraries distributed with unknownhorizons
 	sys.path.append('game/ext')
 
-	#start openanno
+	#start unknownhorizons
 	import game.main
 	game.main.start()
 else:
-	# gettext support will have to wait so make it an no-op for everything not calling openanno directly
+	# gettext support will have to wait so make it an no-op for everything not calling unknownhorizons directly
 	_ = lambda x: x

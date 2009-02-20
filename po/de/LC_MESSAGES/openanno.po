@@ -1,6 +1,6 @@
-# Deutsche Übersetzung für Openanno
-# Copyright (C) 2009 OpenAnno Team
-# Christoph Egger <openanno@christoph-egger.org>
+# Deutsche Übersetzung für Unknown Horizons
+# Copyright (C) 2009 Unknown Horizons Team
+# Christoph Egger <unknown-horizons@christoph-egger.org>
 #
 msgid ""
 msgstr ""
@@ -115,25 +115,25 @@ msgstr "Fehler: Config Version nicht unterstützt, erzeuge leere Konfiguration, 
 msgid "Upgrading Config from Version %d to Version %d ..."
 msgstr "Aktualisiere Config von Version %d zu Version %d ..."
 
-#: ./openanno.py:57 ./openanno.py:113
+#: ./run_uh.py:57 ./run_uh.py:113
 msgid "Found FIFE in:"
 msgstr "FIFE gefunden in:"
 
-#: ./openanno.py:70 ./openanno.py:126
+#: ./run_uh.py:70 ./run_uh.py:126
 msgid "FIFE was not found."
 msgstr "FIFE konnte nicht gefunden werden."
 
-#: ./openanno.py:90
+#: ./run_uh.py:90
 msgid "FIFE was not found or failed to load."
 msgstr "FIFE wurde nicht gefunden oder konnte nicht geladen werden."
 
-#: ./openanno.py:91
+#: ./run_uh.py:91
 msgid "Reason: %s"
 msgstr "Grund: %s"
 
-#: ./openanno.py:136
-msgid "Launching OpenAnno"
-msgstr "Starte OpenAnno"
+#: ./run_uh.py:136
+msgid "Launching Unknown Horizons"
+msgstr "Starte Unknown Horizons"
 
 #: ./run_tests.py:55
 msgid ""

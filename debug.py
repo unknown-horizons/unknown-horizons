@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -22,18 +22,18 @@
 # ###################################################
 
 if __name__ == '__main__':
-	import openanno
+	import run_uh
 	import sys
 	import os
 	#find fife and setup search paths
-	openanno.findFIFE()
+	run_uh.findFIFE()
 	os.execvp(sys.argv[1], sys.argv[1:])
 else:
 	import inspect
 	import game.main
-	
+
 	import gettext
-	gettext.install("openanno", "po", unicode=1)
+	gettext.install("unknownhorizons", "po", unicode=1)
 
 	already = []
 	def printTree(obj, deep = 0):

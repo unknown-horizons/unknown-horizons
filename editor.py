@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -23,16 +23,16 @@
 
 import os
 import sys
-import openanno
+import run_uh
 
 if __name__ == '__main__':
-	#chdir to openanno root
+	#chdir to unknownhorizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
 	#find fife and setup search paths
-	fife_path = openanno.getFifePath()
+	fife_path = run_uh.getFifePath()
 
-	#for some external libraries distributed with openanno
+	#for some external libraries distributed with Unknown Horizons
 	os.environ['PYTHONPATH'] = os.path.pathsep.join((os.path.abspath('editor'), os.path.abspath('game'), os.path.abspath('game/ext'), os.environ['PYTHONPATH']))
 
 	os.chdir(fife_path + '/clients/editor')

@@ -1,4 +1,4 @@
-Welcome to the OpenAnno Alpha 2008.01, Keybindings:
+Welcome to the Unknown Horizons Alpha 2009.01, Keybindings:
 --------------
 - LEFT = Scroll Left
 - RIGHT = Scroll Right
@@ -22,7 +22,7 @@ Welcome to the OpenAnno Alpha 2008.01, Keybindings:
 
 
 Have fun.
-The FIFE and OpenAnno teams
+The FIFE and Unknown Horizons teams
 
-http://www.openanno.org
+http://www.unknown-horizons.org
 http://www.fifengine.de

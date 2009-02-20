@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -160,14 +160,14 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 	very simple to create new classes with the wanted behavior. You will notice that we love this
 	way of doing things and tend to abstract as much as somehow possible.
 
-	By now you should have a fair overview of how OpenAnno works. The tutorial ends here. From now
+	By now you should have a fair overview of how Unknown Horizons works. The tutorial ends here. From now
 	you might want to take a look into the game/gui and game/util folders to checkout the workings
 	of the gui and some extra stuff we use. Since you came all the way here, you are now ready to
-	get your hands dirty and start working. So check out the bugtracker at www.openanno.org/trac/
+	get your hands dirty and start working. So check out the bugtracker at www.unknown-horizons.org/trac/
 	and see if there's a nice ticket for you :) For further questions just visit us on irc:
 	#openanno @ irc.freenode.net. We'll be happy to answer any questions.
 
-	Have fun with OpenAnno!
+	Have fun with Unknown Horizons!
 	"""
 
 	def show_menu(self):

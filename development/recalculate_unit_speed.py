@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.orgk
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.orgk
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -33,10 +33,10 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 		'''
 
 
-	dbfile = 'content/openanno.sqlite'
+	dbfile = 'content/game.sqlite'
 
 	if not os.path.exists(dbfile):
-		print 'Please execute from openanno root directory.'
+		print 'Please execute from unknown-horizons root directory.'
 		sys.exit(1)
 
 	# copied from dbreader.py:

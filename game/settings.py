@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -115,7 +115,7 @@ class Settings(Setting):
 	"""
 	@param config:
 	"""
-	def __init__(self, config = '%s/.openanno/config.sqlite' % user.home):
+	def __init__(self, config = '%s/.unknown-horizons/config.sqlite' % user.home):
 		if not os.path.exists(config):
 			if not os.path.exists(os.path.dirname(config)):
 				os.makedirs(os.path.dirname(config))

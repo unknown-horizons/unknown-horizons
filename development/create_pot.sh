@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pygettext -d openanno -p po .
+pygettext -d unknownhorizons -p po .

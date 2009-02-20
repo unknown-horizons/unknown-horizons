@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -324,7 +324,7 @@ class IngameGui(object):
 			cls.show_build_menu()
 		game.main.session.cursor = BuildingTool(cls, None if unit is None else unit())
 
-		
+
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu
 		@param menu: str with the guiname or pychan object.
@@ -332,25 +332,25 @@ class IngameGui(object):
 		if isinstance(menu, str):
 			menu = self.gui[menu]
 		return menu
-	
+
 	def get_cur_menu(self):
 		"""Returns menu that is currently displayed"""
 		return self._old_menu
-		
+
 	def show_menu(self, menu):
 		"""Shows a menu
 		@param menu: str with the guiname or pychan object.
 		"""
 		if self._old_menu is not None:
 			self._old_menu.hide()
-			
+
 		self._old_menu = self._get_menu_object(menu)
 		if self._old_menu is not None:
 			self._old_menu.show()
 
 	def hide_menu(self):
 		self.show_menu(None)
-		
+
 	def toggle_menu(self, menu):
 		"""Shows a menu or hides it if it is already displayed.
 		@param menu: parameter supported by show_menu().

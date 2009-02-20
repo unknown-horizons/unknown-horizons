@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -49,7 +49,7 @@ class Island(WorldObject):
 	Simple, if we load the game, the class is not loaded as new instance, so the __init__
 	function is not called. Rather the load function is called. So everything that new
 	classes and loaded classes share to initialize, comes into the __init() function.
-	This is the common way of doing this in OpenAnno, so better get used to it :)
+	This is the common way of doing this in Unknown Horizons, so better get used to it :)
 
 	To continue hacking, check out the __init() function now.
 	"""
@@ -100,12 +100,12 @@ class Island(WorldObject):
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", worldid)[0]
 		self.__init(Point(x, y), filename)
-		
+
 		game.main.session.world.islands.append(self)
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
-			
+
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 
@@ -173,12 +173,12 @@ class Island(WorldObject):
 		# TODO: Move this to command, this message should not appear while loading
 		game.main.session.ingame_gui.message_widget.add(position.center().x, position.center().y, 1, {'player':player.name})
 		return settlement
-	
+
 	def add_existing_settlement(self, position, radius, settlement):
 		"""Same as add_settlement, but uses settlement from parameter"""
 		self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
-		
+
 	def assign_settlement(self, position, radius, settlement):
 		"""
 		@param position: Rect

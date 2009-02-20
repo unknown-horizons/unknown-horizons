@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -33,7 +33,7 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		for slot in self._storage.iteritems():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, slot[0], slot[1])
-		db("INSERT INTO storage_properties(object, name, value) VALUES(?, ?, ?)", 
+		db("INSERT INTO storage_properties(object, name, value) VALUES(?, ?, ?)",
 			 ownerid, "limit", self.limit)
 
 	def load(self, db, ownerid):
@@ -49,7 +49,7 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 
 		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
 			self.alter(res, amount)
-		
+
 	def alter(self, res, amount):
 		if res in self._storage:
 			self._storage[res] += amount
@@ -91,11 +91,11 @@ class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
 	def addResourceSlot(self, res, size, **kwargs):
 		super(SpecializedStorage, self).addResourceSlot(res = res, size = size, **kwargs)
 		self.__size[res] = size
-		
+
 	def save(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
 		assert False, "Saving of SizedSpecializedStorage hasn't been implemented"
-		
+
 	def load(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
 		assert False, "Loading of SizedSpecializedStorage hasn't been implemented"

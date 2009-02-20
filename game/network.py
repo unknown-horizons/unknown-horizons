@@ -1,9 +1,9 @@
 # ###################################################
-# Copyright (C) 2008 The OpenAnno Team
-# team@openanno.org
-# This file is part of OpenAnno.
+# Copyright (C) 2008 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
 #
-# OpenAnno is free software; you can redistribute it and/or modify
+# Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
@@ -30,7 +30,7 @@ from game.packets import *
 # TODO: make networking robust
 #       (i.e. GUI freezes sometimes when waiting for timeout)
 
-if sys.argv[0].lower().endswith('openanno.py'):
+if sys.argv[0].lower().endswith('run_uh.py'):
 	import game.main
 
 class Socket(object):
@@ -39,7 +39,7 @@ class Socket(object):
 	"""
 	def __init__(self, port = 0):
 		## TODO: use ext_scheduler for socket
-		if sys.argv[0].lower().endswith('openanno.py'):
+		if sys.argv[0].lower().endswith('run_uh.py'):
 			game.main.fife.pump.append(self._pump)
 		self._socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_UDP)
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -52,7 +52,7 @@ class Socket(object):
 		self._socket.close()
 
 	def end(self):
-		if sys.argv[0].lower().endswith('openanno.py'):
+		if sys.argv[0].lower().endswith('run_uh.py'):
 			game.main.fife.pump.remove(self._pump)
 
 	def _pump(self, forever = False):
