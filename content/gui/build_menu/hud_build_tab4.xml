@@ -10,7 +10,7 @@
 	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
-	<ImageButton name="street-1" position="48,25" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" text="" />
+	<ImageButton name="street-1" position="48,56" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" text="" />
 	<Label position="65,83" text="Trail" />
 
 	<ImageButton name="bridge-1" position="113,25" up_image="content/gui/images/icons/hud/build/bridge.png" hover_image="content/gui/images/icons/hud/build/bridge_h.png" down_image="content/gui/images/icons/hud/build/bridge_h.png" text="" />
