@@ -72,7 +72,9 @@ class IngameGui(object):
 		)
 		self.gui['minimap_toggle'].show()
 		self.gui['minimap_toggle'].mapEvents({
-			'minimapToggle' : self.toggle_minmap
+			'minimapToggle' : self.toggle_minmap,
+			'speedUp' : game.main.session.speed_up,
+			'speedDown' : game.main.session.speed_down
 		})
 
 		self.gui['minimap'] = game.main.fife.pychan.loadXML('content/gui/minimap.xml')
@@ -180,7 +182,9 @@ class IngameGui(object):
 		})
 
 		self.gui['minimap_toggle'].mapEvents({
-			'minimapToggle' : None
+			'minimapToggle' : None,
+			'speedUp' : None, 
+			'speedDown' : None
 		})
 
 		self.gui['camTools'].mapEvents({
