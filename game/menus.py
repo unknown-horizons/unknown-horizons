@@ -574,7 +574,6 @@ class Menus(object):
 				details_label.text += "Saved 1 time\n" 
 			elif savegame_info['savecounter'] > 1:
 				details_label.text += "Saved %d times\n" % savegame_info['savecounter']
-			print 'savegamedetails: ', details_label.text
 			box.addChild( details_label )
 			gui.adaptLayout()
 		return tmp_show_details

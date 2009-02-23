@@ -225,7 +225,6 @@ class Session(object):
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
 
-		import pdb; pdb.set_trace()
 		try: 
 			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
 		except KeyError:
