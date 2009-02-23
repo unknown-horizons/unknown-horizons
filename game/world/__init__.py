@@ -118,7 +118,8 @@ class World(object):
 		self.trader = Trader(99999, "Free Trader", Color())
 
 		# Fire a message for new world creation
-		game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
+		if game.main.session.savecounter == 0: # check if it's a new game
+			game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
 		To digg deaper, you should now continue to game/world/island.py,
 		to check out how buildings and settlements are added to the map"""

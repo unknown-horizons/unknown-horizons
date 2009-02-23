@@ -205,6 +205,10 @@ class Session(object):
 		@param playercolor: game.util.color instance with the player's color
 		"""
 		db = DbReader(savegame) # Initialize new dbreader
+		try: 
+			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
+		except KeyError:
+			self.savecounter = 0
 		self.world = World() # Load game.world module (check game/world/__init__.py)
 		self.world._init(db)
 		if playername != "":
@@ -224,11 +228,6 @@ class Session(object):
 				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
-
-		try: 
-			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
-		except KeyError:
-			self.savecounter = 0
 			
 		"""
 		TUTORIAL:
