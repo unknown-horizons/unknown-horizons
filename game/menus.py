@@ -29,6 +29,8 @@ from game.util.color import Color
 from game.serverlist import WANServerList, LANServerList, FavoriteServerList
 from game.serverlobby import MasterServerLobby, ClientServerLobby
 from game.network import Socket, ServerConnection, ClientConnection
+from game.savegamemanager import SavegameManager
+
 class Menus(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
@@ -556,13 +558,23 @@ class Menus(object):
 			if old_label is not None:
 				box.removeChild(old_label)
 			try:
-				savegame_info = game.main.savegamemanager.get_savegame_info(map_files[gui.collectData(savegamelist)])
+				savegame_info = SavegameManager.get_metadata(map_files[gui.collectData(savegamelist)])
 			except:
 				gui.adaptLayout()
 				return
-			details_label = game.main.fife.pychan.widgets.Label(max_size=(140,290), wrap_text=True)
-			details_label.name="savegamedetails_lbl"
-			details_label.text="Unknown savedate" if savegame_info['timestamp'] == -1 else "Saved at %s" % time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
+			details_label = game.main.fife.pychan.widgets.Label(min_size=(140,0),max_size=(140,290), wrap_text=True)
+			details_label.name = "savegamedetails_lbl"
+			details_label.text = ""
+			if savegame_info['timestamp'] == -1:
+				details_label.text += "Unknown savedate\n"
+			else:
+				details_label.text += "Saved at %s\n" % \
+						time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
+			if savegame_info['savecounter'] == 1:
+				details_label.text += "Saved 1 time\n" 
+			elif savegame_info['savecounter'] > 1:
+				details_label.text += "Saved %d times\n" % savegame_info['savecounter']
+			print 'savegamedetails: ', details_label.text
 			box.addChild( details_label )
 			gui.adaptLayout()
 		return tmp_show_details

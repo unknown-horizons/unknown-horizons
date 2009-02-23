@@ -43,6 +43,7 @@ from game.view import View
 from game.world import World
 from game.entities import Entities
 from game.util import livingProperty, WorldObject
+from game.savegamemanager import SavegameManager
 
 class Session(object):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -79,6 +80,8 @@ class Session(object):
 
 	def __init__(self):
 		super(Session, self).__init__()
+		# this saves how often the current game has been saved
+		self.savecounter = 0
 
 	def init_session(self):
 
@@ -156,6 +159,8 @@ class Session(object):
 		if os.path.exists(savegame):
 			os.unlink(savegame)
 		shutil.copyfile('content/savegame_template.sqlite', savegame)
+		
+		self.savecounter += 1
 
 		db = DbReader(savegame)
 		try:
@@ -220,6 +225,12 @@ class Session(object):
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
 
+		import pdb; pdb.set_trace()
+		try: 
+			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
+		except KeyError:
+			self.savecounter = 0
+			
 		"""
 		TUTORIAL:
 		From here on you should digg into the classes that are loaded above, especially the world class.

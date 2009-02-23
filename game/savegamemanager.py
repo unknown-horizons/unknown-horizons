@@ -28,6 +28,7 @@ import time
 import user
 import game.main
 from dbreader import DbReader
+import copy
 
 class SavegameManager(object):
 	"""Controls savegamefiles.
@@ -51,6 +52,12 @@ class SavegameManager(object):
 	quicksave_filenamepattern = quicksave_basename+'%(timestamp).4f.'+savegame_extension
 
 	display_timeformat = "%y/%m/%d %H:%M"
+	
+	# metadata of a savegame with default values
+	savegame_metadata = { 'timestamp' : -1,
+												'savecounter' : 0 }
+	savegame_metadata_types = { 'timestamp' : float, 
+															'savecounter' : int }
 
 	_shared_state = {}
 
@@ -68,15 +75,16 @@ class SavegameManager(object):
 		"""Returns list of names files, that should be displayed to the user.
 		@param files: iterable object containing strings"""
 		displaynames = []
+		def get_timestamp_string(savegameinfo):
+			if savegameinfo['timestamp'] == -1: return ""
+			else:
+				return time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
+			
 		for f in files:
 			if f.startswith(self.autosave_dir):
-				savegameinfo = self.get_savegame_info(f)
-				timestr = "" if savegameinfo['timestamp'] == -1 else time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
-				name = "Autosave %s" % timestr
+				name = "Autosave %s" % get_timestamp_string(self.get_metadata(f))
 			elif f.startswith(self.quicksave_dir):
-				savegameinfo = self.get_savegame_info(f)
-				timestr = "" if savegameinfo['timestamp'] == -1 else time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
-				name = "Quicksave %s" % timestr
+				name = "Quicksave %s" % get_timestamp_string(self.get_metadata(f))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
 			displaynames.append(name)
@@ -84,7 +92,8 @@ class SavegameManager(object):
 
 	def __get_saves_from_dirs(self, dirs, include_displaynames = True):
 		"""Internal function, that returns the saves of a dir"""
-		files = [f for p in dirs for f in glob.glob(p+'/*.'+self.savegame_extension) if os.path.isfile(f)]
+		files = [f for p in dirs for f in glob.glob(p+'/*.'+self.savegame_extension) if \
+						 os.path.isfile(f)]
 		files.sort()
 		if include_displaynames:
 			return (files, self.__get_displaynames(files))
@@ -97,11 +106,15 @@ class SavegameManager(object):
 
 	def create_autosave_filename(self):
 		"""Returns the filename for an autosave"""
-		return "%s/%s.%s" % (self.autosave_dir, self.autosave_filenamepattern % {'timestamp':time.time()}, self.savegame_extension)
+		return "%s/%s.%s" % (self.autosave_dir, \
+												 self.autosave_filenamepattern % {'timestamp':time.time()}, \
+												 self.savegame_extension)
 
 	def create_quicksave_filename(self):
 		"""Returns the filename for a quicksave"""
-		return "%s/%s.%s" % (self.quicksave_dir, self.quicksave_filenamepattern % {'timestamp':time.time()}, self.savegame_extension)
+		return "%s/%s.%s" % (self.quicksave_dir, \
+												 self.quicksave_filenamepattern % {'timestamp':time.time()}, \
+												 self.savegame_extension)
 
 	def delete_dispensable_savegames(self, autosaves = False, quicksaves = False):
 		"""Delete savegames that are no longer needed
@@ -121,29 +134,42 @@ class SavegameManager(object):
 			tmp_del("%s/*.%s" % (self.quicksave_dir, self.savegame_extension),
 							game.main.settings.savegame.savedquicksaves)
 
-	def get_savegame_info(self, savegamefile):
+	@classmethod
+	def get_metadata(cls, savegamefile):
 		"""Returns metainfo of a savegame as dict.
-		See last line of this function for reference of infos.
 		"""
 		db = DbReader(savegamefile)
-		result = db("SELECT `value` FROM `metadata` WHERE `name` = \"timestamp\"")
-		if len(result) == 0: # no metadata in savegame
-			return {'timestamp' : -1}
-		else:
-			return {'timestamp' : float(result[0][0]) }
-
-	def write_metadata(self, db):
+		metadata = cls.savegame_metadata.copy()
+		
+		for key in metadata.iterkeys():
+			result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
+			if len(result) > 0:
+				assert(len(result) == 1)
+				metadata[key] = cls.savegame_metadata_types[key](result[0][0])
+		return metadata
+	
+	@classmethod
+	def write_metadata(cls, db):
 		"""Writes metadata to db.
 		@param db: DbReader"""
-		db("INSERT INTO metadata(name, value) VALUES(\"timestamp\", ?)", time.time())
+		metadata = cls.savegame_metadata.copy()
+		metadata['timestamp'] = time.time()
+		metadata['savecounter'] = game.main.session.savecounter
+		
+		for key, value in metadata.iteritems():
+			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
 	def get_regular_saves(self, include_displaynames = True):
 		"""Returns the savegames, that were saved via the ingame save dialog"""
-		return self.__get_saves_from_dirs([self.savegame_dir], include_displaynames = include_displaynames)
+		return self.__get_saves_from_dirs([self.savegame_dir],\
+																			include_displaynames = include_displaynames)
 
 	def get_saves(self, include_displaynames = True):
 		"""Returns all savegames"""
-		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir, self.quicksave_dir, self.demo_dir], include_displaynames = include_displaynames)
+		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir,\
+																			 self.quicksave_dir, self.demo_dir],\
+																			include_displaynames = include_displaynames)
 
 	def get_quicksaves(self, include_displaynames = True):
-		return self.__get_saves_from_dirs([self.quicksave_dir], include_displaynames = include_displaynames)
+		return self.__get_saves_from_dirs([self.quicksave_dir],\
+																			include_displaynames = include_displaynames)

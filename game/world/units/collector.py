@@ -50,9 +50,6 @@ class BuildingCollector(StorageHolder, Unit):
 		#print 'collector beeing inited'
 		self.home_building = weakref.ref(home_building)
 		self.inventory.limit = size;
-		#for res in home_building.get_consumed_res(): # NOTE: this does not work for multiple production lines yet.
-		#	if not self.inventory.hasSlot(res):
-		#		self.inventory.addSlot(res, size)
 
 		self.start_hidden = start_hidden
 		if self.start_hidden:
@@ -65,8 +62,18 @@ class BuildingCollector(StorageHolder, Unit):
 		super(BuildingCollector, self).save(db)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
 		if self.job is not None and self.job.object is not None:
-			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
+			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
+				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
+		
+		# TODO: 
+		# register collector at target/source
+		# show/hide
+		# save exact number of ticks, 
+		# states: moving to target, working, moving back
 
+	def load(self, db, worldid):
+		super(BuildingCollector, self).load(db, worldid)
+		
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
 		self.job = self.get_job()

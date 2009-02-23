@@ -48,10 +48,14 @@ class Consumer(StorageHolder):
 		self.local_collectors = []
 
 		#Select all production lines for this building from the databas
-		for (production_line,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
+		for (production_line,) in \
+				game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % \
+										 {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.__resources[production_line] = []
 			# Now only add ressources whos value is <= 0 (keep or consume)
-			for (res,) in game.main.db("SELECT resource FROM data.production WHERE production_line = ? AND amount <= 0 GROUP BY resource", production_line):
+			for (res,) in \
+					game.main.db("SELECT resource FROM data.production WHERE \
+					production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self.__resources[production_line].append(res)
 
 		# In case the class derived from this class is a Building, set it's radius
@@ -75,8 +79,9 @@ class Consumer(StorageHolder):
 
 	def load(self, db, worldid):
 		super(Consumer, self).load(db, worldid)
-		self.active_production_line = db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)[0][0]
 		self.__init()
+		self.active_production_line = \
+				db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)[0][0]
 
 	def create_collector(self):
 		""" Creates collector according to building type (chosen by polymorphism)
@@ -93,4 +98,5 @@ class Consumer(StorageHolder):
 		"""Returns list of resources, that the building uses, without
 		considering, if it currently needs them
 		"""
-		return [] if self.active_production_line is None else self.__resources[self.active_production_line]
+		return [] if self.active_production_line is None else \
+					 self.__resources[self.active_production_line]
