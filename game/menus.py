@@ -543,7 +543,8 @@ class Menus(object):
 			return False
 		selected_file = map_files[selected_item]
 		if self.show_popup("Confirm deletiom",
-								 'Do you really want to delete the savegame "%s"?' % os.path.basename(selected_file),
+								 'Do you really want to delete the savegame "%s"?' % \
+								 SavegameManager.get_savegamename_from_filename(selected_file), \
 								 show_cancel_button = True):
 			os.unlink(selected_file)
 			return True

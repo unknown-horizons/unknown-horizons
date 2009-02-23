@@ -135,6 +135,7 @@ class BuySellWidget(object):
 
 	def add_buy_to_settlement(self, res_id, limit, slot):
 		print "limit:", limit
+		assert res_id is not None, "Resource to buy is None"
 		self.slots[slot].action = "buy"
 		self.settlement.buy_list[res_id] = limit
 		print self.settlement.buy_list
@@ -142,6 +143,7 @@ class BuySellWidget(object):
 
 	def add_sell_to_settlement(self, res_id, limit, slot):
 		print "limit:", limit
+		assert res_id is not None, "Resource to sell is None"
 		self.slots[slot].action = "sell"
 		self.settlement.sell_list[res_id] = limit
 		print self.settlement.sell_list
