@@ -307,14 +307,14 @@ class IngameGui(object):
 		self.show_menu('ship')
 
 	def show_build_menu(self):
-		game.main.session.cursor = SelectionTool()
+		game.main.session.cursor = SelectionTool() # set cursor for build menu
 		self.deselect_all()
-		self.show_menu('build')
+		self.toggle_menu('build')
 
 	def deselect_all(self):
 		for instance in game.main.session.selected_instances:
 			instance.deselect()
-		self.hide_menu()
+		#self.hide_menu() # with this line, toggle_menu doesn't work. it's not necessary, imo.
 		game.main.session.selected_instances = set()
 
 	def _build(self, building_id, unit = None):
