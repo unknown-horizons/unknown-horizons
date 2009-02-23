@@ -2,6 +2,6 @@
 <Container size="1024,768" border_size="0">
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
 	<Icon image="content/gui/images/misc/load.png" position="387,316"/>
-	<Label text="Loading..." position="470,360" font="Gentium_large_load" min_size="100,70"/>
+	<Label text="Loading..." position="470,360" font="Essays1743-Italic_large_load" min_size="100,70"/>
 	<Label text="Unknown Horizons Alpha 2009.0" position="800,720"/>
 </Container>
