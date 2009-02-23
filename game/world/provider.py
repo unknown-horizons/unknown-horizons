@@ -48,7 +48,7 @@ class Provider(StorageHolder):
 
 	def __del__(self):
 		for col in self.__collectors:
-			col().cancel()
+			col.cancel()
 		self.__collectors = None
 		super(StorageHolder, self).__del__()
 

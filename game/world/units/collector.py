@@ -246,6 +246,8 @@ class BuildingCollector(StorageHolder, Unit):
 		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
 
 	def cancel(self):
+		if job.object is not None:
+			self.job.object._Provider__collectors.remove(self)
 		game.main.session.scheduler.rem_all_classinst_calls(self)
 		self.move_home(callback=self.search_job, action='move')
 
