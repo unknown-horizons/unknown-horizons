@@ -95,6 +95,18 @@ class World(object):
 			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
 
+
+		print "Adding trees to the world..."
+		import random
+		from game.command.building import Build
+		for island in self.islands:
+			for tile in island.ground_map.keys():
+				if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
+					game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True))
+			for building in island.buildings:
+				building.production_step()
+		print "Done."
+
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented

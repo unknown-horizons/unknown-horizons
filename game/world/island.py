@@ -146,8 +146,7 @@ class Island(WorldObject):
 		@return: Settlement at point, or None"""
 
 		settlements = self.get_settlements(Rect(point, 1, 1))
-
-		if settlements:
+		if len(settlements)>0:
 			assert len(settlements) == 1
 			return settlements[0]
 		return None
@@ -197,6 +196,10 @@ class Island(WorldObject):
 		for tile in self.grounds:
 			if tile.settlement in inherits:
 				tile.settlement = settlement
+		for building in self.buildings:
+			if building.settlement is None:
+				building.settlement = settlement
+				settlement.buildings.append(building)
 		#TODO: inherit resources etc
 
 	def add_building(self, building, player):
@@ -218,7 +221,8 @@ class Island(WorldObject):
 				tile.blocked = True # Set tile blocked
 				tile.object = building # Set tile's object to the building
 		self.buildings.append(building)
-		building.settlement.buildings.append(building)
+		if building.settlement is not None:
+			building.settlement.buildings.append(building)
 		building.init()
 		building.start()
 		#print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)
@@ -233,8 +237,9 @@ class Island(WorldObject):
 			tile.blocked = False
 			tile.object = None
 
-		building.settlement.buildings.remove(building)
-		assert(building not in building.settlement.buildings)
+		if building.settlement is not None:
+			building.settlement.buildings.remove(building)
+			assert(building not in building.settlement.buildings)
 
 		# Remove this building from the buildings list
 		self.buildings.remove(building)

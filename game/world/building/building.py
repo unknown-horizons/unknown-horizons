@@ -38,8 +38,8 @@ class Building(WorldObject, AmbientSound):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
 		self.__init(Point(x,y), rotation, owner, instance)
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
-		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner)
-
+		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner) if owner is not None else None
+		print self.settlement
 		# play ambient sound, if available
 		for (soundfile,) in game.main.db("SELECT file FROM sounds \
 		INNER JOIN building_sounds ON \
@@ -72,7 +72,8 @@ class Building(WorldObject, AmbientSound):
 	def remove(self):
 		"""Removes the building"""
 		print "BUILDING: REMOVE %s" % self.getId()
-		self.settlement.rem_inhabitants(self.inhabitants)
+		if self.settlement is not None:
+			self.settlement.rem_inhabitants(self.inhabitants)
 		self.island().remove_building(self)
 		game.main.session.ingame_gui.hide_menu()
 
@@ -187,7 +188,8 @@ class Building(WorldObject, AmbientSound):
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
 		"""
-		self.settlement.add_inhabitants(self.inhabitants)
+		if self.settlement:
+			self.settlement.add_inhabitants(self.inhabitants)
 
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
