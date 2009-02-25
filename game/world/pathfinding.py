@@ -103,7 +103,7 @@ class FindPath(object):
 		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
 
-		if __debug__:
+		if game.main.debug:
 			print 'SEARCHING path from',source,'to',destination,'. blocked: ',blocked_coords
 
 		# prepare args

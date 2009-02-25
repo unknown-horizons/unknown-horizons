@@ -38,8 +38,9 @@ class Building(WorldObject, AmbientSound):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
 		self.__init(Point(x,y), rotation, owner, instance)
 		self.island = weakref.ref(game.main.session.world.get_island(x, y))
-		self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_settlement(self.position, self.radius, owner) if owner is not None else None
-		print self.settlement
+		self.settlement = self.island().get_settlement(Point(x,y)) or \
+			self.island().add_settlement(self.position, self.radius, owner) if \
+			owner is not None else None
 		# play ambient sound, if available
 		for (soundfile,) in game.main.db("SELECT file FROM sounds \
 		INNER JOIN building_sounds ON \
@@ -71,7 +72,8 @@ class Building(WorldObject, AmbientSound):
 
 	def remove(self):
 		"""Removes the building"""
-		print "BUILDING: REMOVE %s" % self.getId()
+		if game.main.debug:
+			print "BUILDING: REMOVE %s" % self.getId()
 		if self.settlement is not None:
 			self.settlement.rem_inhabitants(self.inhabitants)
 		self.island().remove_building(self)
@@ -98,7 +100,8 @@ class Building(WorldObject, AmbientSound):
 			self.health, (self.settlement or self.island).getId())
 
 	def load(self, db, worldid):
-		print 'loading building', worldid
+		if game.main.debug:
+			print 'loading building', worldid
 		super(Building, self).load(db, worldid)
 		x, y, health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]

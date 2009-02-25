@@ -128,6 +128,14 @@ def getFifePath():
 	return fife_path
 
 if __name__ == '__main__':
+	if "--help" in sys.argv or "-h" in sys.argv:
+		print "Unknown Horizons usage:"
+		print "run_uh.py [-d] [-h]"
+		print ""
+		print "Options:"
+		print "-d --debug - Debug, enables debug output, useful for testing."
+		print "-h --help  - This help message."
+		exit(0)
 	#chdir to Unknown Horizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
@@ -143,7 +151,10 @@ if __name__ == '__main__':
 
 	#start unknownhorizons
 	import game.main
+	if "-d" in sys.argv or "--debug" in sys.argv:
+		game.main.debug = True
+	else:
+		game.main.debug = False
 	game.main.start()
-else:
 	# gettext support will have to wait so make it an no-op for everything not calling unknownhorizons directly
 	_ = lambda x: x
