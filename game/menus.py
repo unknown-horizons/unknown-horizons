@@ -669,6 +669,8 @@ class Menus(object):
 		game.main.start_singleplayer(savegamefile)
 
 	def save_game(self):
+		self.show_popup("Not implemented", "Sadly, saving and loading did not make it to the release.")
+		return
 		savegame_files, savegame_display = game.main.savegamemanager.get_regular_saves()
 
 		old_current = self.current
