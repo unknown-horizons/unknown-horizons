@@ -8,6 +8,6 @@
 
 	<HBox position="165,140">
 		<Label text="Buy/Sell Resources:"/>
-		<ImageButton name="buysell" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build_h.png" hover_image="content/gui/images/icons/hud/main/build_h.png" border_size="0"/>
+		<ImageButton name="buysell" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 	</HBox>
 </Container>
