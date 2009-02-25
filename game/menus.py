@@ -333,7 +333,8 @@ class Menus(object):
 			#print self.current.findChild(name='load')
 			self.current.removeChild(self.current.findChild(name="load"))
 			eventMap['showCampaign'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
-			eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
+			# Reenable if loading works
+			#eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
 			self.current.distributeInitialData({
 				'playercolor' : [ i.name for i in Color ]
 			})
@@ -352,10 +353,13 @@ class Menus(object):
 				})
 				eventMap["maplist"] = self.create_show_savegame_details(self.current, self.current.files, 'maplist')
 			if showCampaign:
-				eventMap['showRandom'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
-				eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
+				pass
+				# Reenable if loading works
+				#eventMap['showRandom'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
+				#eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
 			elif showLoad:
-				eventMap['showRandom'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
+				# Reenable if loading works
+				#eventMap['showRandom'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
 				eventMap['showCampaign'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
 		self.current.mapEvents(eventMap)
 
