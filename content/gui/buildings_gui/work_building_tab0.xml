@@ -6,7 +6,7 @@
 	<Label position="10,45" text="Health:" /><Label name='health' position="60,45" text="" />
 	<Label position="10,65" text="Running Costs:" /><Label name="running_costs" position="105,65" text=""/>
 
-	<HBox position="165,140">
+	<HBox position="165,150">
 		<Label text="Buy/Sell Resources:"/>
 		<ImageButton name="buysell" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 	</HBox>

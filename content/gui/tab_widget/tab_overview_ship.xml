@@ -8,8 +8,8 @@
 	<!-- Picture -->
 	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="120,5" />
 
-	<HBox position="135,137">
+	<HBox position="140,150">
 		<Label text="Found new settlement:"/>
-		<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build_h.png" hover_image="content/gui/images/icons/hud/main/build_h.png" border_size="0"/>
+		<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/settle.png" down_image="content/gui/images/icons/hud/ship/settle_h.png" hover_image="content/gui/images/icons/hud/ship/settle_h.png" border_size="0"/>
 	</HBox>
 </Container>
