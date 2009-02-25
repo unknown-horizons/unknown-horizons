@@ -387,6 +387,9 @@ class Menus(object):
 		pass
 
 	def show_multi(self):
+		# Remove this after it has been implemented.
+		self.show_popup("Not implemnted", "Sorry, multiplayer has not been implemented yet.")
+		return
 		if self.current is not None:
 			# delete serverlobby and (Server|Client)Connection
 			try:
@@ -572,7 +575,7 @@ class Menus(object):
 				details_label.text += "Saved at %s\n" % \
 						time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 			if savegame_info['savecounter'] == 1:
-				details_label.text += "Saved 1 time\n" 
+				details_label.text += "Saved 1 time\n"
 			elif savegame_info['savecounter'] > 1:
 				details_label.text += "Saved %d times\n" % savegame_info['savecounter']
 			box.addChild( details_label )
