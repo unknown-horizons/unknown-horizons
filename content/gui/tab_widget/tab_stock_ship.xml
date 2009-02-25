@@ -2,6 +2,6 @@
 <Container size="336,192" background_image="content/gui/images/background/hud/build_bg.png">
 	<Label position="20,5" text="Inventory:" />
 	<Inventory name="inventory" size="316,157" position="20,35"/>
-	<Label position="200, 158" text="Load/Unload:" />
-	<ImageButton name="trade" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="300,158" border_size="0"/>
+	<Label position="165, 150" text="Load/Unload:" />
+	<ImageButton name="trade" position="265,150" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 </Container>

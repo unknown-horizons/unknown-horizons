@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Container size="300,80">
-	<Icon name="CoA" image="content/gui/images/icons/hud/main/coa.png" />
+<Container size="300,80" position="1000,234">
+	<Icon name="CoA" image="content/gui/images/icons/hud/main/coa.png" position="180,0" />
 	<Label name="city_name" text="" position="80,0"/>
 	<Label name="city_inhabitants" position="80,20" text=""/>
 </Container>
