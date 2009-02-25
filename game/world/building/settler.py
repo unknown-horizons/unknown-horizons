@@ -41,9 +41,9 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		#self.local_collectors.append(game.main.session.entities.units[2](self))
 
 	def __init(self):
-		print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
+		#print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
 		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
-		print self.id, "Settler debug, tax_income:", self.tax_income
+		#print self.id, "Settler debug, tax_income:", self.tax_income
 		self.inventory.limit = 1
 		self.consumation = {}
 		for (res, speed) in game.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
@@ -69,7 +69,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 					row['consume_state'] += 1 # count to 10 to simulate partly consuming a resource over time
 				if row['consume_state'] == 10: # consume a resource if available
 					if self.inventory[res] > 0:
-						print self.id, 'Settler debug: consuming res:', res
+						#print self.id, 'Settler debug: consuming res:', res
 						row['consume_state'] = 0
 						self.inventory.alter(res, -1) # consume resource
 						row['consume_contentment'] = 10
@@ -81,7 +81,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
 		self.settlement.owner.inventory.alter(1,self.tax_income*self.inhabitants)
-		print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
+		#print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
 
 	def inhabitant_check(self):
 		"""Checks weather or not the population of this settler should increase or decrease or stay the same."""
@@ -108,7 +108,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 
 		self._Consumer__collectors = WeakList()
 		for (res,) in game.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
-			print "Settler debug, res:", res
+			#print "Settler debug, res:", res
 			self._Consumer__resources[0].append(res)
 
 	def show_menu(self):

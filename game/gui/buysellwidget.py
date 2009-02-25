@@ -82,13 +82,11 @@ class BuySellWidget(object):
 				del self.settlement.sell_list[slot.res]
 			if res_id != 0:
 				self.add_sell_to_settlement(res_id, value, slot.id)
-			print "Settement sell", self.settlement.sell_list
 		else:
 			if slot.action is "buy" and slot.res is not None:
 				del self.settlement.buy_list[slot.res]
 			if res_id != 0:
 				self.add_buy_to_settlement(res_id, value, slot.id)
-			print "Settlement buy", self.settlement.buy_list
 		if self.resources is not None:
 			self.resources.hide()
 			self.show()
@@ -128,29 +126,29 @@ class BuySellWidget(object):
 			if slot.res in self.settlement.sell_list:
 				del self.settlement.sell_list[slot.res]
 			self.add_buy_to_settlement(slot.res, limit, slot.id)
-		print "Buylist:", self.settlement.buy_list
-		print "Selllist:", self.settlement.sell_list
+		#print "Buylist:", self.settlement.buy_list
+		#print "Selllist:", self.settlement.sell_list
 
 
 
 	def add_buy_to_settlement(self, res_id, limit, slot):
-		print "limit:", limit
+		#print "limit:", limit
 		assert res_id is not None, "Resource to buy is None"
 		self.slots[slot].action = "buy"
 		self.settlement.buy_list[res_id] = limit
-		print self.settlement.buy_list
+		#print self.settlement.buy_list
 
 
 	def add_sell_to_settlement(self, res_id, limit, slot):
-		print "limit:", limit
+		#print "limit:", limit
 		assert res_id is not None, "Resource to sell is None"
 		self.slots[slot].action = "sell"
 		self.settlement.sell_list[res_id] = limit
-		print self.settlement.sell_list
+		#print self.settlement.sell_list
 
 	def slider_adjust(self, res_id, slot):
 		slider = self.slots[slot].findChild(name="slider")
-		print "Ajusting slider to", slider.getValue()
+		#print "Ajusting slider to", slider.getValue()
 		if self.slots[slot].action is "buy":
 			self.add_buy_to_settlement(res_id, int(slider.getValue()), slot)
 		elif self.slots[slot].action is "sell":

@@ -193,9 +193,9 @@ class Menus(object):
 		changes_require_restart = False
 
 		if (new_settings['autosaveinterval'])*2 != settings.savegame.autosaveinterval:
-			print settings.savegame.autosaveinterval
+			#print settings.savegame.autosaveinterval
 			settings.savegame.autosaveinterval = (new_settings['autosaveinterval'])*2
-			print settings.savegame.autosaveinterval
+			#print settings.savegame.autosaveinterval
 		if new_settings['savedautosaves']+1 != settings.savegame.savedautosaves:
 			settings.savegame.savedautosaves =new_settings['savedautosaves']+1
 		if new_settings['savedquicksaves']+1 != settings.savegame.savedquicksaves:
@@ -329,8 +329,8 @@ class Menus(object):
 			'okay'     : self.start_single,
 		}
 		if showRandom:
-			print self.current
-			print self.current.findChild(name='load')
+			#print self.current
+			#print self.current.findChild(name='load')
 			self.current.removeChild(self.current.findChild(name="load"))
 			eventMap['showCampaign'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
 			eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)

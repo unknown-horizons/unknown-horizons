@@ -36,7 +36,7 @@ class Trader(Player, StorageHolder):
 
 	def __init__(self, id, name, color, **kwargs):
 		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
-		print "Initing Trader..."
+		#print "Initing Trader..."
 		self.ships = [] # Put all the traders ships in here
 		self.office = None # This is used to store the branchoffice the trader is currently heading to
 		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
@@ -48,12 +48,12 @@ class Trader(Player, StorageHolder):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		print "min:", game.main.session.world.min_x
-		print "max:", game.main.session.world.max_x
+		#print "min:", game.main.session.world.min_x
+		#print "max:", game.main.session.world.max_x
 		assert len(game.main.session.world.water)>0, \
 			   "You're doing it wrong, this is not allowed to happen."
 		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
-		print "sending ship to", x,y
+		#print "sending ship to", x,y
 		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
 
 
@@ -105,7 +105,7 @@ class Trader(Player, StorageHolder):
 				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
 				alter = -rand if settlement.inventory[res]-key >= rand else -(settlement.inventory[res]-key)
-				print "Altering:", alter
+				#print "Altering:", alter
 				# Pay for bought resources
 				settlement.owner.inventory.alter(1, alter*\
 					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))

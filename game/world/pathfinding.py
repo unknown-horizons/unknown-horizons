@@ -55,7 +55,7 @@ def check_path(path, blocked_coords):
 		except StopIteration: break
 
 		if cur in blocked_coords:
-			print 'PATH ERROR: node', cur, ' is blocked'
+			#print 'PATH ERROR: node', cur, ' is blocked'
 			err = True
 
 		dist = Point(cur[0], cur[1]).distance(Point(prev[0], prev[1]))
@@ -64,7 +64,7 @@ def check_path(path, blocked_coords):
 		# (everything else is an error)
 		if dist != 1 and int((dist)*100) != 141:
 			err = True
-			print 'PATH ERROR FROM', prev, 'TO', cur,' DIST: ', dist
+			#print 'PATH ERROR FROM', prev, 'TO', cur,' DIST: ', dist
 		prev = cur
 
 	if err:
@@ -115,7 +115,7 @@ class FindPath(object):
 			return self.execute()
 		else:
 			p = self.execute()
-			print 'FOUND PATH', p
+			#print 'FOUND PATH', p
 			return p
 
 	def setup(self):

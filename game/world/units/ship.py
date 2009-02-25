@@ -55,7 +55,7 @@ class Ship(Unit):
 		self.inventory = PositiveTotalStorage(200)
 
 	def move_tick(self):
-		print "SHIP %d: del: %d %d" % (self.getId(), self.position.x, self.position.y)
+		#print "SHIP %d: del: %d %d" % (self.getId(), self.position.x, self.position.y)
 
 		del game.main.session.world.ship_map[self.position.to_tuple()]
 
@@ -65,9 +65,9 @@ class Ship(Unit):
 		game.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 		game.main.session.world.ship_map[self.next_target.to_tuple()] = weakref.ref(self)
 
-		print "SHIP %d: set: %d %d" % (self.getId(), self.position.x, self.position.y)
-		print "SHIP %d: set: %d %d" % (self.getId(), self.next_target.x, self.next_target.y)
-		print "SHIP: -------------"
+		#print "SHIP %d: set: %d %d" % (self.getId(), self.position.x, self.position.y)
+		#print "SHIP %d: set: %d %d" % (self.getId(), self.next_target.x, self.next_target.y)
+		#print "SHIP: -------------"
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

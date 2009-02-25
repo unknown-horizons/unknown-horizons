@@ -111,7 +111,6 @@ class BuildingTool(NavigationTool):
 		self.gui._recursiveResizeToContent()
 
 	def previewBuild(self, point1, point2):
-		print "PREVIEW BUILD"
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.buildings = self._class.getBuildList(point1, point2, ship = self.ship, rotation = self.rotation)
