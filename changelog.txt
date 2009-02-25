@@ -1,0 +1,53 @@
+CHANGELOG 
+Unknown Horizons
+-----------------------------------------------------
+
+2009-03-01: Milestone 2009.0
+* General
+  * New: Added a free trader that sells and buys the players goods
+  * New: Buildings are now rotatable
+  * New: Buy/Sell menu
+  * New: Add running costs and an option to decomission buildings to the game
+  * New: Started basic work on Gettext support for adding different languages to the game
+  * Change: Changed name from OpenAnno to Unknown Horizons
+  * Change: Rebuilt ship inventory
+  * Change: Random tree/building on build
+  * Change: Lumberjack cuts trees randomly
+  * Change: Massive changes in the content directory structure to allow easier implementation of animations
+  * Fix: Crash in build mode
+  * Fix: Collectors use tents as path
+  * Fix: Crash in Destruction mode - mouse drag
+  * Fix: Trees being build over existing sreets and trees autotearing them down
+  * Fix: Herder goes backwards and his sheeps are all at the same place
+  * Fix: Turning menu: picture and building are asynchron
+  * Fix: Stock don't increase after building a storage tent
+  * Fix: Weater steal in other weater's tent.
+  * Fix: Resource Transfer crashes game when out of range
+  * Fix: Buildable status only updated on mouse move
+  
+* Graphics and GUI
+  * New: Icons for switching game speed 
+  * New: New model for signal fire
+  * New: New models for different types of trees
+  * Change: Resized buildings and units
+  * Change: Added new graphics for units
+  * Change: New graphics for main ship and trader
+  * Change: Redesign of build menu, added icons of buildable objects
+  * Change: New tileset
+  * Change: Unified lighting on renderings
+  * Change: Updated Buildings: Softened shadows, added some grass, texture work
+  * Fix: ship-trademenu and mainmenu are overlapping
+  * Fix: Unified lighting in renderings 
+  
+* Sound
+  * New: Implemented build sound
+  * New: Added ambient sounds for lumberjack, herder and branch office
+  * New: Rolloff function for sound, which fades ambient sounds depending on the position on the map
+  * New: New Song Beware the Ship's Kobold!
+  * New: Functionality to adjust volume level for music and effects
+  * New: Implemented event based speech output
+  * New: Added four different sounds to welcome you on the map
+  
+... and a lot more smaller bugfixes.
+
+Many thanks go to all developers, contributors, testers and supporters.
