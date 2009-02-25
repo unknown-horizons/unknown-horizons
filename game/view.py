@@ -69,7 +69,7 @@ class View(Changelistener):
 
 		game.main.settings.addCategorys('view')
 		game.main.settings.view.addCategorys('zoom')
-		game.main.settings.view.zoom.max = 4
+		game.main.settings.view.zoom.max = 1
 		game.main.settings.view.zoom.min = 0.25
 
 	def __del__(self):
