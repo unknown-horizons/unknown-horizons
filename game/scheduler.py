@@ -99,23 +99,26 @@ class Scheduler(object):
 		"""
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance() is instance and callback_obj.callback == WeakMethod(callback):
+				if callback_obj.class_instance() is instance and callback_obj.callback == callback:
 					self.schedule[key].remove(callback_obj)
 
 	def get_classinst_calls(self, instance, callback = None):
 		"""Returns all CallbackObjects of instance.
 		Optionally, a specific callback can be specified.
 		@param instance: the instance to execute the call
-		@param callback: None to get all calls of instance, else only calls that execute callback
+		@param callback: None to get all calls of instance,
+		                 else only calls that execute callback.
+		                 Value can be a method or a weakmethod.
+		@return: dict, entries: { CallbackObject: remaining_ticks_to_executing }
 		"""
-		calls = []
+		calls = {}
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
 				if callback_obj.class_instance() is instance:
 					if callback is None:
-						calls.append(callback_obj)
-					elif callback == callback_obj.callback:
-						calls.append(callback_obj)
+						calls[callback_obj] = key - self.cur_tick
+					elif callback_obj.callback == callback:
+						calls[callback_obj] = key - self.cur_tick
 		return calls
 
 

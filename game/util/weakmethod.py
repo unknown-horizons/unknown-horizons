@@ -43,7 +43,12 @@ class WeakMethod(object):
 			raise ReferenceError
 
 	def __eq__(self, other):
-		return self.function == other.function and self.instance() == other.instance()
+		if isinstance(other, WeakMethod):
+			return self.function == other.function and self.instance() == other.instance()
+		elif callable(other):
+			return self == WeakMethod(other)
+		else:
+			raise ValueError("Can't compare to a non-function")
 
 	def __ne__(self, other):
 		return not self.__eq__(other)

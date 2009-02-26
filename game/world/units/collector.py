@@ -28,6 +28,7 @@ from game.ext.enum import Enum
 import game.main
 import operator
 import weakref
+import new
 
 
 class BuildingCollector(StorageHolder, Unit):
@@ -42,7 +43,9 @@ class BuildingCollector(StorageHolder, Unit):
 	  |-
 
 	"""
-	States = Enum('idle', 'moving_to_target', 'working', 'moving_home')
+	states = Enum('idle', 'moving_to_target', 'working', 'moving_home')
+
+	# NOTE: see bottom class for further class variables
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
@@ -59,19 +62,32 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 
-		self.state = self.States.idle
+		self.state = self.states.idle
 
 		# start searching jobs just when construction (of subclass) is completed
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
+		# set owner to home_building (is set to player by unit)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
+
+		# save state and remaining ticks for next callback
+		current_callback = new.instancemethod(self.callbacks_for_state[self.state], self)
+		calls = game.main.session.scheduler.get_classinst_calls(self, current_callback)
+		assert(len(calls) == 1)
+		remaining_ticks = calls.values()[0]
+		db("INSERT INTO collector(rowid, state, remaining_ticks) VALUES(?, ?, ?)", \
+			 self.getId(), self.state.index, remaining_ticks)
+
+		# save the job
 		if self.job is not None and self.job.object is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
 				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
-		# TODO:
+
+
+		# checklist:
 		# register collector at target/source
 		# show/hide
 		# save exact number of ticks,
@@ -169,7 +185,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.setup_new_job()
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
-		self.state = self.States.moving_to_target
+		self.state = self.states.moving_to_target
 
 	def begin_working(self):
 		"""Pretends that the collector works by waiting some time"""
@@ -179,7 +195,7 @@ class BuildingCollector(StorageHolder, Unit):
 			print "Collector begin_working", self.id
 		if self.job.object is not None:
 			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
-			self.state = self.States.working
+			self.state = self.states.working
 		else:
 			self.reroute()
 
@@ -238,7 +254,7 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
-		self.state = self.States.idle
+		self.state = self.states.idle
 
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
@@ -268,7 +284,7 @@ class BuildingCollector(StorageHolder, Unit):
 		if game.main.debug:
 			print "Collector move_home", self.id
 		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
-		self.state = self.States.moving_home
+		self.state = self.states.moving_home
 
 	def cancel(self):
 		if game.main.debug:
@@ -277,6 +293,13 @@ class BuildingCollector(StorageHolder, Unit):
 			self.job.object._Provider__collectors.remove(self)
 		game.main.session.scheduler.rem_all_classinst_calls(self)
 		self.move_home(callback=self.search_job, action='move')
+
+	callbacks_for_state = { \
+		states.idle: search_job, \
+		states.moving_to_target: begin_working, \
+		states.working: finish_working, \
+		states.moving_home: reached_home \
+		}
 
 
 class StorageCollector(BuildingCollector):
