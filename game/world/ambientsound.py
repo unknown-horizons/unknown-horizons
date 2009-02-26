@@ -31,9 +31,12 @@ class AmbientSound(object):
 		"""
 		super(AmbientSound, self).__init__(**kwargs)
 		self.__init(positioning)
-		
+
 	def __init(self, positioning):
 		self.positioning = positioning
+		self.emitter = None
+
+	def create_emitter(self):
 		if game.main.settings.sound.enabled:
 			self.emitter = game.main.fife.soundmanager.createEmitter()
 			self.emitter.setGain(game.main.settings.sound.volume_effects*2)
@@ -43,20 +46,22 @@ class AmbientSound(object):
 
 	def load(self, db, worldid):
 		super(AmbientSound, self).load(db, worldid)
-		# set positioning per default to true, since only special sounds have this 
+		# set positioning per default to true, since only special sounds have this
 		# set to false, which are nonrecurring
 		self.__init(positioning=True)
 
 	def __del__(self):
 		self.emitter = None
 		self.positioning = None
-		
+
 	def play_ambient(self, soundfile, looping):
 		"""Starts playing an ambient sound
 		@param soundfile: path to audio file
 		@param looping: bool, wether sound should loop for forever
 		"""
 		if game.main.settings.sound.enabled:
+			if self.emitter is None:
+				self.create_emitter()
 			# set to current position
 			if(hasattr(self, 'position') and self.position != None and self.positioning):
 				self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
