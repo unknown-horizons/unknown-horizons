@@ -21,6 +21,7 @@
 
 from game.world.storageholder import StorageHolder
 from game.util import WeakList
+import game.main
 
 class Provider(StorageHolder):
 	"""The Provider class provides an interface for Collectors to pickup goods from a class that is
@@ -38,13 +39,17 @@ class Provider(StorageHolder):
 	"""
 	def __init__(self, **kwargs):
 		super(Provider, self).__init__(**kwargs)
+		if game.main.debug:
+			print "Initing Provider", self.id
 		self.__init()
 
 	def __init(self):
 		# save references to collectors that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this collector
+		print "INITING"
 		self.__collectors = WeakList()
+		print self.__collectors
 
 	def __del__(self):
 		if self.__collectors is not None:

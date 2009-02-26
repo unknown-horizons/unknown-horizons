@@ -23,11 +23,15 @@ from building import Building
 from buildable import BuildableRect
 from game.world.production import PrimaryProducer
 
+import game.main
+
 class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 	""" Class for stuff that grows, such as trees
 	"""
 	def __init__(self, **kwargs):
 		super(GrowingBuilding, self).__init__(**kwargs)
+		if game.main.debug:
+			print "Initing GrowingBuilding", self.id
 		self.inventory.limit = 1 # this should be done by database query later on
 
 	@classmethod

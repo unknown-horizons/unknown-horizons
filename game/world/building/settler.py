@@ -30,6 +30,8 @@ from random import randint
 class Settler(Selectable, BuildableSingle, Consumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
+		if game.main.debug:
+			print "Initing Settler"
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
 		self.__init()

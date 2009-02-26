@@ -37,6 +37,8 @@ class PrimaryProducer(Provider):
 	Check out the __init() function now."""
 	def __init__(self, **kwargs):
 		super(PrimaryProducer, self).__init__(**kwargs)
+		if game.main.debug:
+			print "Initing PrimaryProducer", self.id
 		self.active_production_line = None
 		self.__init()
 

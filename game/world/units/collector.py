@@ -50,6 +50,8 @@ class BuildingCollector(StorageHolder, Unit):
 												slots = slots,
 												size = size,
 												**kwargs)
+		if game.main.debug:
+			print "Initing BuildingCollector", self.id
 		self.home_building = weakref.ref(home_building)
 		self.inventory.limit = size;
 
@@ -58,7 +60,7 @@ class BuildingCollector(StorageHolder, Unit):
 			self.hide()
 
 		self.state = self.States.idle
-		
+
 		# start searching jobs just when construction (of subclass) is completed
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
@@ -68,18 +70,20 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.job is not None and self.job.object is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
 				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
-		
-		# TODO: 
+
+		# TODO:
 		# register collector at target/source
 		# show/hide
-		# save exact number of ticks, 
+		# save exact number of ticks,
 		# states: moving to target, working, moving back
 
 	def load(self, db, worldid):
 		super(BuildingCollector, self).load(db, worldid)
-		
+
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
+		if game.main.debug:
+			print "Collector seach_job", self.id
 		self.job = self.get_job()
 		if self.job is None:
 			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
@@ -88,6 +92,8 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def get_job(self):
 		"""Returns the next job or None"""
+		if game.main.debug:
+			print "Collector get_job", self.id
 
 		if self.home_building() is None:
 			return None
@@ -139,6 +145,8 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def setup_new_job(self):
 		"""Executes the necessary actions to begin a new job"""
+		if game.main.debug:
+			print "Collector setup_new_job", self.id
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._Consumer__collectors.append(self)
 
@@ -148,12 +156,16 @@ class BuildingCollector(StorageHolder, Unit):
 		a lumberjack might just take a random tree.
 		@param jobs: list of Job instances that should be sorted an then returned.
 		@return: sorted list of Job instances."""
+		if game.main.debug:
+			print "Collector sort_jobs", self.id
 		jobs.sort(key=operator.attrgetter('rating') )
 		jobs.reverse()
 		return jobs
 
 	def begin_current_job(self):
 		"""Executes the current job"""
+		if game.main.debug:
+			print "Collector begin_current_job", self.id
 		self.setup_new_job()
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
@@ -163,6 +175,8 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time"""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
+		if game.main.debug:
+			print "Collector begin_working", self.id
 		if self.job.object is not None:
 			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 			self.state = self.States.working
@@ -172,6 +186,8 @@ class BuildingCollector(StorageHolder, Unit):
 	def finish_working(self):
 		"""Called when collector is stayed at the target for a while.
 		Picks up the resources and sends collector home."""
+		if game.main.debug:
+			print "Collector finish_working", self.id
 		if self.job.object is not None:
 			self.act("idle", self._instance.getFacingLocation(), True)
 			# transfer res
@@ -184,6 +200,8 @@ class BuildingCollector(StorageHolder, Unit):
 			self.reroute()
 
 	def reroute(self):
+		if game.main.debug:
+			print "Collector reroute", self.id
 		#print self.getId(), 'Rerouting from', self.position
 		# Get a new job
 		job = self.get_job()
@@ -200,6 +218,8 @@ class BuildingCollector(StorageHolder, Unit):
 	def reached_home(self):
 		"""We finished now our complete work. You can use this as event as after work.
 		"""
+		if game.main.debug:
+			print "Collector reached_home", self.id
 
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter(self.job.res, self.job.amount)
@@ -213,6 +233,8 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Contrary to setup_new_job"""
 		# he finished the job now
 		# before the new job can begin this will be executed
+		if game.main.debug:
+			print "Collector end_job", self.id
 		if self.start_hidden:
 			self.hide()
 		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
@@ -220,6 +242,8 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
+		if game.main.debug:
+			print "Collector transfer_res", self.id
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
 		assert(res_amount == self.job.amount, "collector could not pickup amount of ressources, that was planned for the current job.")
@@ -227,20 +251,28 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def get_collectable_res(self):
 		"""Return all resources the Collector can collect (depends on its home building)"""
+		if game.main.debug:
+			print "Collector get_collectable_res", self.id
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building().get_needed_res()
 
 	def get_buildings_in_range(self):
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
+		if game.main.debug:
+			print "Collector get_buildings_in_range", self.id
 		from game.world.provider import Provider
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None, action='move_full'):
+		if game.main.debug:
+			print "Collector move_home", self.id
 		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
 		self.state = self.States.moving_home
 
 	def cancel(self):
+		if game.main.debug:
+			print "Collector cancel", self.id
 		if job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
 		game.main.session.scheduler.rem_all_classinst_calls(self)

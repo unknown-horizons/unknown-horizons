@@ -65,7 +65,10 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		return self._storage[res] if res in self._storage else 0
 
 	def __str__(self):
-		return str(self._storage)
+		if hasattr(self, "_storage"):
+			return str(self._storage)
+		else:
+			return "Not inited"
 
 class SpecializedStorage(GenericStorage): # NOT TESTED! NEEDS WORK!
 	def alter(self, res, amount):
