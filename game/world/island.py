@@ -185,7 +185,6 @@ class Island(WorldObject):
 		@param radius:
 		@param settlement:
 		"""
-		inherits = []
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			# TODO: make this readable
 			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
@@ -194,7 +193,7 @@ class Island(WorldObject):
 					tile.settlement = settlement
 				elif tile.settlement.owner == settlement.owner:
 					tile.settlement = settlement
-		for building in self.buildings:
+		for building in self.buildings: # Check if any buildings come into range, like unknowned trees
 			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
 			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
 				if building.settlement is None:
