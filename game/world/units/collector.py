@@ -41,6 +41,9 @@ class BuildingCollector(StorageHolder, Unit):
 	  |-
 
 	"""
+	class State:
+		(IDLE, MOVING_TO_TARGET, WORKING, MOVING_HOME) = xrange(0, 4)
+
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,
@@ -55,6 +58,9 @@ class BuildingCollector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 
+		import pdb ; pdb.set_trace()
+		self.state = State.IDLE
+		
 		# start searching jobs just when construction (of subclass) is completed
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
@@ -157,6 +163,7 @@ class BuildingCollector(StorageHolder, Unit):
 		self.setup_new_job()
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
+		self.state = State.MOVING_TO_TARGET
 
 	def begin_working(self):
 		"""Pretends that the collector works by waiting some time"""

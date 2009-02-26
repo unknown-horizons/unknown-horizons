@@ -26,7 +26,13 @@ class AmbientSound(object):
 	game.util.Point or game.util.Rect.
 	"""
 	def __init__(self, positioning=True, **kwargs):
+		"""
+		@param positioning: bool, wether sound should play from a certain position.
+		"""
 		super(AmbientSound, self).__init__(**kwargs)
+		self.__init(positioning)
+		
+	def __init(self, positioning):
 		self.positioning = positioning
 		if game.main.settings.sound.enabled:
 			self.emitter = game.main.fife.soundmanager.createEmitter()
@@ -35,10 +41,16 @@ class AmbientSound(object):
 				self.emitter.setRolloff(1.9)
 			game.main.fife.emitter['ambient'].append(self.emitter)
 
+	def load(self, db, worldid):
+		super(AmbientSound, self).load(db, worldid)
+		# set positioning per default to true, since only special sounds have this 
+		# set to false, which are nonrecurring
+		self.__init(positioning=True)
+
 	def __del__(self):
 		self.emitter = None
 		self.positioning = None
-
+		
 	def play_ambient(self, soundfile, looping):
 		"""Starts playing an ambient sound
 		@param soundfile: path to audio file
@@ -68,5 +80,4 @@ class AmbientSound(object):
 			soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
 			a.play_ambient(soundfile, looping = False)
 			game.main.fife.emitter['ambient'].remove(a.emitter)
-
 

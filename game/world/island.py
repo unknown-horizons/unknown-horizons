@@ -179,7 +179,8 @@ class Island(WorldObject):
 		self.assign_settlement(position, radius, settlement)
 
 	def assign_settlement(self, position, radius, settlement):
-		"""
+		"""Assigns the settlement property to tiles within the circle defined by \
+		position and radius.
 		@param position: Rect
 		@param radius:
 		@param settlement:

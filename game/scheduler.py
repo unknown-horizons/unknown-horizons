@@ -35,6 +35,11 @@ class Scheduler(object):
 		self.timer = timer
 		self.timer.add_call(self.tick)
 
+	def __del__(self):
+		self.schedule = None
+		self.timer.remove_call(self.tick)
+		self.timer = None
+		
 	def tick(self, tick_id):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
@@ -65,7 +70,6 @@ class Scheduler(object):
 		@param class_instance: class instance the function belongs to.
 		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
-
 		callback_obj = CallbackObject(self, callback, class_instance, runin, loops)
 		self.add_object(callback_obj)
 
@@ -83,7 +87,7 @@ class Scheduler(object):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is class_instance:
+				if callback_obj.class_instance() is class_instance:
 					self.schedule[key].remove(callback_obj)
 
 	def rem_call(self, instance, callback):
@@ -95,11 +99,23 @@ class Scheduler(object):
 			for callback_obj in self.schedule[key]:
 				if callback_obj.class_instance() is instance and callback_obj.callback == WeakMethod(callback):
 					self.schedule[key].remove(callback_obj)
+					
+	def get_classinst_calls(self, instance, callback = None):
+		"""Returns all CallbackObjects of instance.
+		Optionally, a specific callback can be specified.
+		@param instance: the instance to execute the call
+		@param callback: None to get all calls of instance, else only calls that execute callback
+		"""
+		calls = []
+		for key in self.schedule:
+			for callback_obj in self.schedule[key]:
+				if callback_obj.class_instance() is instance:
+					if callback is None:
+						calls.append(callback_obj)
+					elif callback == callback_obj.callback:
+						calls.append(callback_obj)
+		return calls
 
-	def __del__(self):
-		self.schedule = None
-		self.timer.remove_call(self.tick)
-		self.timer = None
 
 class CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
@@ -112,14 +128,9 @@ class CallbackObject(object):
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
 		@param weakref_aciton: A callback to register with the weak reference
 		"""
-
-		# Do some input validation, otherwise errors occure long after wrong data was added
-
-		if runin < 1:
-			raise ValueError("Can't schedule callbacks in the past, runin must be a positive number")
-
-		if (loops < -1) or (loops == 0):
-			raise ValueError("Loop count must be a positive number or -1 for infinite repeat")
+		assert runin > 0, "Can't schedule callbacks in the past, runin must be a positive number"
+		assert (loops > 0) or (loops == -1), \
+			"Loop count must be a positive number or -1 for infinite repeat"
 
 		self.callback = WeakMethod(callback)
 

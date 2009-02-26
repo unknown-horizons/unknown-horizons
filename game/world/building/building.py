@@ -41,13 +41,6 @@ class Building(WorldObject, AmbientSound):
 		self.settlement = self.island().get_settlement(Point(x,y)) or \
 			self.island().add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
-		# play ambient sound, if available
-		for (soundfile,) in game.main.db("SELECT file FROM sounds \
-		INNER JOIN building_sounds ON \
-		sounds.rowid = building_sounds.sound AND \
-		building_sounds.building = ?", self.id):
-			self.play_ambient(soundfile, True)
-
 	def __init(self, origin, rotation, owner, instance):
 		self._action_set_id = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
@@ -59,6 +52,12 @@ class Building(WorldObject, AmbientSound):
 
 		if self.running_costs != 0:
 			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
+			
+		# play ambient sound, if available
+		#import pdb ; pdb.set_trace()
+		for (soundfile,) in game.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
+		sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
+			self.play_ambient(soundfile, True)
 
 	def toggle_costs(self):
 			self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
