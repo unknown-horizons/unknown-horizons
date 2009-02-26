@@ -47,9 +47,7 @@ class Provider(StorageHolder):
 		# save references to collectors that are on the way
 		# this ensures that the resources, that it will get, won't be taken
 		# by anything else but this collector
-		print "INITING"
 		self.__collectors = WeakList()
-		print self.__collectors
 
 	def __del__(self):
 		if self.__collectors is not None:

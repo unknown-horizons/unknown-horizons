@@ -54,7 +54,7 @@ def findFIFE():
 					break
 			else:
 				fife_path = p
-				print _("Found FIFE in:"), fife_path
+				print "Found FIFE in:", fife_path
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
