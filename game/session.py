@@ -103,8 +103,8 @@ class Session(object):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		#autosave
-		if game.main.settings.savegame.autosaveinterval != 0:
-			game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
+		#if game.main.settings.savegame.autosaveinterval != 0:
+		#	game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def __del__(self):
 		self.scheduler.rem_all_classinst_calls(self)
@@ -159,7 +159,7 @@ class Session(object):
 		if os.path.exists(savegame):
 			os.unlink(savegame)
 		shutil.copyfile('content/savegame_template.sqlite', savegame)
-		
+
 		self.savecounter += 1
 
 		db = DbReader(savegame)
@@ -205,7 +205,7 @@ class Session(object):
 		@param playercolor: game.util.color instance with the player's color
 		"""
 		db = DbReader(savegame) # Initialize new dbreader
-		try: 
+		try:
 			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
 		except KeyError:
 			self.savecounter = 0
@@ -228,7 +228,7 @@ class Session(object):
 				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
-			
+
 		"""
 		TUTORIAL:
 		From here on you should digg into the classes that are loaded above, especially the world class.
