@@ -21,6 +21,7 @@
 
 
 import os
+import glob
 
 class ActionSetLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -42,13 +43,12 @@ class ActionSetLoader(object):
 		@return: dict containing 'file: anim_end' entries
 		"""
 		fl = {}
-		dirs = os.listdir(dir)
-		try: dirs.remove('.svn')
-		except ValueError: pass
+		
+		entries = glob.glob(os.path.join(dir, "*.png"))
 
 		i = 1
-		for file in dirs:
-			fl[os.path.join(dir,file)] = ((float(time)/1000)/len(dirs))*i
+		for file in entries:
+			fl[file] = ((float(time)/1000)/len(entries))*i
 			i += 1
 		return fl
 
