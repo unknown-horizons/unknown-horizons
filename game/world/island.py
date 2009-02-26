@@ -192,14 +192,15 @@ class Island(WorldObject):
 				if tile.settlement is None:
 					tile.settlement = settlement
 				elif tile.settlement.owner == settlement.owner:
-					inherits.append(tile.settlement)
-		for tile in self.grounds:
-			if tile.settlement in inherits:
-				tile.settlement = settlement
+					tile.settlement = settlement
 		for building in self.buildings:
-			if building.settlement is None:
-				building.settlement = settlement
-				settlement.buildings.append(building)
+			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
+			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
+				if building.settlement is None:
+					building.settlement = settlement
+					settlement.buildings.append(building)
+				elif building.settlement.owner == settlement.owner:
+					building.settlement = settlement
 		#TODO: inherit resources etc
 
 	def add_building(self, building, player):
