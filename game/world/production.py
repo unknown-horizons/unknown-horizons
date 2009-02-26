@@ -102,6 +102,8 @@ class PrimaryProducer(Provider):
 		self.__init()
 
 	def check_production_startable(self):
+		if game.main.debug:
+			print "PrimaryProducer check_production_startable", self.id
 		for res, amount in self.production[self.active_production_line].production.items():
 			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
 				return
@@ -135,6 +137,8 @@ class PrimaryProducer(Provider):
 		#print self.getId(), "begin working"
 
 	def production_step(self):
+		if game.main.debug:
+			print "PrimaryProducer production_step", self.id
 		#print self.getId(), "production_step"
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():

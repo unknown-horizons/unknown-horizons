@@ -300,7 +300,10 @@ class FieldCollector(BuildingCollector):
 		can be overwritten by subclasses. A building collector might sort after a specific rating,
 		a lumberjack might just take a random tree.
 		@param jobs: list of Job instances that should be sorted an then returned.
-		@return: sorted list of Job instances."""
+		@return: sorted list of Job instances.
+		"""
+		if game.main.debug:
+			print "FieldCollector sort_jobs", self.id
 		from random import shuffle
 		shuffle(jobs)
 		return jobs

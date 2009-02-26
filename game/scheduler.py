@@ -39,7 +39,7 @@ class Scheduler(object):
 		self.schedule = None
 		self.timer.remove_call(self.tick)
 		self.timer = None
-		
+
 	def tick(self, tick_id):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
@@ -47,6 +47,8 @@ class Scheduler(object):
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			for callback in self.schedule[self.cur_tick]:
+				if game.main.debug:
+					"Scheduler tick"
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
@@ -99,7 +101,7 @@ class Scheduler(object):
 			for callback_obj in self.schedule[key]:
 				if callback_obj.class_instance() is instance and callback_obj.callback == WeakMethod(callback):
 					self.schedule[key].remove(callback_obj)
-					
+
 	def get_classinst_calls(self, instance, callback = None):
 		"""Returns all CallbackObjects of instance.
 		Optionally, a specific callback can be specified.

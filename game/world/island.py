@@ -117,6 +117,8 @@ class Island(WorldObject):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
+		if game.main.debug:
+			print "Island get_tile"
 		if not self.rect.contains(point):
 			return None
 		try:
@@ -129,6 +131,8 @@ class Island(WorldObject):
 		@param point: position of the tile to look on
 		@return: Building class instance or None if none is found.
 		"""
+		if game.main.debug:
+			print "Island get_building"
 		if not self.rect.contains(point):
 			return None
 		settlement = self.get_settlement(point)
@@ -145,6 +149,8 @@ class Island(WorldObject):
 		@param point: Point to look on
 		@return: Settlement at point, or None"""
 
+		if game.main.debug:
+			print "Island get_settlement"
 		settlements = self.get_settlements(Rect(point, 1, 1))
 		if len(settlements)>0:
 			assert len(settlements) == 1

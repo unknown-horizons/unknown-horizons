@@ -158,6 +158,8 @@ class World(object):
 		"""Returns the building at the position x,y.
 		@param x,y: int coordinates.
 		@return: Building class instance if a building is found, else None."""
+		if game.main.debug:
+			print "World get_building"
 		i = self.get_island(x, y)
 		return None if i is None else i.get_building(Point(x, y))
 
