@@ -87,9 +87,8 @@ class PrimaryProducer(Provider):
 
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
-		# insert active prodline if it isn't in the db
-		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", self.getId())) == 0:
-			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", self.getId(), self.active_production_line)
+		db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", \
+			 self.getId(), self.active_production_line)
 
 	def load(self, db, worldid):
 		super(PrimaryProducer, self).load(db, worldid)
@@ -151,10 +150,6 @@ class PrimaryProducer(Provider):
 			self.act("idle", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)
 		self.check_production_startable()
-
-	def save(self, db):
-		super(PrimaryProducer, self).save(db)
-		db("INSERT INTO producer (rowid, active_production_line) VALUES(?,?)", self.getId(), self.active_production_line)
 
 
 class SecondaryProducer(Consumer, PrimaryProducer):

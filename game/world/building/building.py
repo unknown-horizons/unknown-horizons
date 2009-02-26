@@ -99,7 +99,7 @@ class Building(WorldObject, AmbientSound):
 		super(Building, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, health, location) VALUES (?, ?, ?, ?, ?, ?, ?)", \
 			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y, self.rotation,
-			self.health, (self.settlement or self.island).getId())
+			self.health, (self.settlement or self.island()).getId())
 
 	def load(self, db, worldid):
 		if game.main.debug:
