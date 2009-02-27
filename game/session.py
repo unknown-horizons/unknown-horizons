@@ -290,3 +290,9 @@ class Session(object):
 			self.speed_unpause()
 		else:
 			self.speed_pause()
+
+	def is_game_loaded(self):
+		"""Checks if the current game is a new one, or a loaded one.
+		@return: True if game is loaded, else False
+		"""
+		return (self.savecounter > 0)

@@ -96,16 +96,17 @@ class World(object):
 		print "Done."
 
 
-		print "Adding trees to the world..."
-		import random
-		from game.command.building import Build
-		for island in self.islands:
-			for tile in island.ground_map.keys():
-				if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
-					game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True))
-			for building in island.buildings:
-				building.production_step()
-		print "Done."
+		if not game.main.session.is_game_loaded():
+			print "Adding trees to the world..."
+			import random
+			from game.command.building import Build
+			for island in self.islands:
+				for tile in island.ground_map.keys():
+					if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
+						game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True))
+				for building in island.buildings:
+					building.production_step()
+			print "Done."
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
@@ -130,7 +131,7 @@ class World(object):
 		self.trader = Trader(99999, "Free Trader", Color())
 
 		# Fire a message for new world creation
-		if game.main.session.savecounter == 0: # check if it's a new game
+		if not game.main.session.is_game_loaded():
 			game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
 		To digg deaper, you should now continue to game/world/island.py,
