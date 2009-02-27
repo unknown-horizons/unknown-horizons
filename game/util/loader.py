@@ -43,7 +43,7 @@ class ActionSetLoader(object):
 		@return: dict containing 'file: anim_end' entries
 		"""
 		fl = {}
-		
+
 		entries = glob.glob(os.path.join(dir, "*.png"))
 
 		i = 1
@@ -59,7 +59,7 @@ class ActionSetLoader(object):
 		@return: dict containing 'rotation: filedict' entries. See _load_files for example.
 		"""
 		rotations = {}
-		time = 700
+		time = 500
 		dirs = os.listdir(dir)
 		try: dirs.remove('.svn')
 		except ValueError: pass
