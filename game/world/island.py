@@ -111,7 +111,6 @@ class Island(WorldObject):
 
 			buildingclass = game.main.session.entities.buildings[building_typeid]
 			building = buildingclass.load(db, building_worldid)
-			self.add_building(building)
 
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.

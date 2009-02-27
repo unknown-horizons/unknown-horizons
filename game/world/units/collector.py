@@ -21,7 +21,7 @@
 
 from game.world.units.unit import Unit
 from game.world.storageholder import StorageHolder
-from game.util import Rect, Point
+from game.util import Rect, Point, WorldObject
 from game.world.pathfinding import Movement
 from game.world.production import PrimaryProducer
 from game.ext.enum import Enum
@@ -44,8 +44,6 @@ class BuildingCollector(StorageHolder, Unit):
 
 	"""
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home')
-
-	# NOTE: see bottom class for further class variables
 
 	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
@@ -72,29 +70,67 @@ class BuildingCollector(StorageHolder, Unit):
 		# set owner to home_building (is set to player by unit)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
 
+		import pdb  ; pdb.set_trace()
 		# save state and remaining ticks for next callback
-		current_callback = new.instancemethod(self.callbacks_for_state[self.state], self)
-		calls = game.main.session.scheduler.get_classinst_calls(self, current_callback)
-		assert(len(calls) == 1)
-		remaining_ticks = calls.values()[0]
-		db("INSERT INTO collector(rowid, state, remaining_ticks) VALUES(?, ?, ?)", \
-			 self.getId(), self.state.index, remaining_ticks)
+		# retrieve remaining ticks according to state
+		current_callback = None
+		remaining_ticks = None
+		if self.state == self.states.idle:
+			current_callback = self.search_job
+		elif self.state == self.states.working:
+			current_callback = self.finish_working
+		if current_callback is not None:
+			calls = game.main.session.scheduler.get_classinst_calls(self, current_callback)
+			assert(len(calls) == 1)
+			remaining_ticks = calls.values()[0]
+
+		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)", \
+			 self.getId(), self.state.index, remaining_ticks, self.start_hidden)
 
 		# save the job
 		if self.job is not None and self.job.object is not None:
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
 				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
-
-
 		# checklist:
 		# register collector at target/source
 		# show/hide
-		# save exact number of ticks,
 		# states: moving to target, working, moving back
 
 	def load(self, db, worldid):
+		# self.homebuilding + other atributes
 		super(BuildingCollector, self).load(db, worldid)
+		import pdb ; pdb.set_trace()
+
+		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)
+		self.home_building = weakref.ref(WorldObject.getObjectById(home_building_id))
+
+		# load collector properties
+		state_id, remaining_ticks, self.start_hidden = \
+						db("SELECT state, remaining_ticks, start_hidden FROM COLLECTOR \
+						   WHERE rowid = ?", worldid)
+		self.state = self.states[state_id]
+		print 'check if starthidden is bool and not int'
+
+		# load job
+		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", \
+						 self.getId())
+		if(len(job_db) > 0):
+			self.job = Job(WorldObject.getObjectById(job_db[0]), job_db[1], job_db[2])
+
+		# apply loaded state
+		if self.state == self.states.idle:
+			if self.start_hidden:
+				self.hide()
+			game.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
+		elif self.state == self.states.moving_to_target:
+			self.setup_new_job()
+		elif self.state == self.states.working:
+			self.setup_new_job()
+			self.hide()
+			game.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
+		elif self.state == self.states.moving_home:
+			self.home_building()._Consumer__collectors.append(self)
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -293,13 +329,6 @@ class BuildingCollector(StorageHolder, Unit):
 			self.job.object._Provider__collectors.remove(self)
 		game.main.session.scheduler.rem_all_classinst_calls(self)
 		self.move_home(callback=self.search_job, action='move')
-
-	callbacks_for_state = { \
-		states.idle: search_job, \
-		states.moving_to_target: begin_working, \
-		states.working: finish_working, \
-		states.moving_home: reached_home \
-		}
 
 
 class StorageCollector(BuildingCollector):

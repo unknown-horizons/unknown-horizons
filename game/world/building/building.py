@@ -29,7 +29,7 @@ from game.world.settlement import Settlement
 from game.world.ambientsound import AmbientSound
 from game.util import Rect,Point, WorldObject
 
-class Building(WorldObject, AmbientSound):
+class Building(AmbientSound, WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
@@ -57,7 +57,6 @@ class Building(WorldObject, AmbientSound):
 			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
 
 		# play ambient sound, if available
-		#import pdb ; pdb.set_trace()
 		for (soundfile,) in game.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
 		sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
 			self.play_ambient(soundfile, True)
@@ -127,6 +126,7 @@ class Building(WorldObject, AmbientSound):
 			assert(isinstance(location_obj, Island))
 
 			self.island = weakref.ref(location_obj)
+			self.settlement = None
 
 		self.island().add_building(self, self.owner)
 
