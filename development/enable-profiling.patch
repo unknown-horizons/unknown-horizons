@@ -1,0 +1,15 @@
+diff --git a/run_uh.py b/run_uh.py
+index 669524b..69c5835 100755
+--- a/run_uh.py
++++ b/run_uh.py
+@@ -155,9 +155,6 @@ if __name__ == '__main__':
+ 		game.main.debug = True
+ 	else:
+ 		game.main.debug = False
+-	import profile
+-	import time
+-	profile.run("game.main.start()", "openanno_profile_%s" % (time.strftime('%Y-%m-%d')))
+-	
++	game.main.start()
+ 	# gettext support will have to wait so make it an no-op for everything not calling unknownhorizons directly
+ 	_ = lambda x: x
