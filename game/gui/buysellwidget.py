@@ -63,7 +63,7 @@ class BuySellWidget(object):
 			slot = game.main.fife.pychan.loadXML('content/gui/buysellmenu/single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
-			slot.action = None
+			slot.action = 'buy'
 			slot.res = None
 			slot.findChild(name='button').capture(game.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
 			slider = slot.findChild(name="slider")
@@ -117,15 +117,17 @@ class BuySellWidget(object):
 		if slot.action is "buy":
 			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
 			slot.action="sell"
-			if slot.res in self.settlement.buy_list:
-				del self.settlement.buy_list[slot.res]
-			self.add_sell_to_settlement(slot.res, limit, slot.id)
+			if slot.res is not None:
+				if slot.res in self.settlement.buy_list:
+					del self.settlement.buy_list[slot.res]
+				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
 			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
 			slot.action="buy"
-			if slot.res in self.settlement.sell_list:
-				del self.settlement.sell_list[slot.res]
-			self.add_buy_to_settlement(slot.res, limit, slot.id)
+			if slot.res is not None:
+				if slot.res in self.settlement.sell_list:
+					del self.settlement.sell_list[slot.res]
+				self.add_buy_to_settlement(slot.res, limit, slot.id)
 		#print "Buylist:", self.settlement.buy_list
 		#print "Selllist:", self.settlement.sell_list
 
