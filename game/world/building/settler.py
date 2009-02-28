@@ -38,7 +38,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		self.run()
 
 	def create_collector(self):
-		self.local_collectors.append(game.main.session.entities.units[8](self))
+		self.local_collectors.append(game.main.session.entities.units[11](self))
 		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
 		#self.local_collectors.append(game.main.session.entities.units[2](self))
 
