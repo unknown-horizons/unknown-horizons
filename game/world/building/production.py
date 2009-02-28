@@ -53,7 +53,11 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
-	pass
+
+	def create_collector(self):
+		"""Add a FieldCollector"""
+		self.local_collectors.append(game.main.session.entities.units[12](self))
+
 
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 
