@@ -140,7 +140,7 @@ class Island(WorldObject):
 		else:
 			for building in self.buildings:
 				if building.position.contains(point):
-					return b
+					return building
 		return None
 
 	def get_settlement(self, point):
@@ -182,6 +182,7 @@ class Island(WorldObject):
 		"""Same as add_settlement, but uses settlement from parameter"""
 		self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
+		return settlement
 
 	def assign_settlement(self, position, radius, settlement):
 		"""Assigns the settlement property to tiles within the circle defined by \
@@ -249,6 +250,7 @@ class Island(WorldObject):
 
 		# Remove this building from the buildings list
 		self.buildings.remove(building)
+		assert building not in self.buildings
 
 	def registerPath(self, path):
 		origin = path.position.origin
