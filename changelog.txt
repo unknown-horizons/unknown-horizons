@@ -10,6 +10,7 @@ Unknown Horizons
   * New: Add running costs and an option to decomission buildings to the game
   * New: Started basic work on Gettext support for adding different languages to the game
   * New: Isles get filled randomly with trees on startup
+  * New: New Map
   * Change: Changed name from OpenAnno to Unknown Horizons
   * Change: Rebuilt ship inventory
   * Change: Random tree/building on build
