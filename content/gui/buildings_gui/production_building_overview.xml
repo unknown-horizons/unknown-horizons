@@ -8,6 +8,6 @@
 
 	<HBox position="185,147">
 		<Label text="Toggle active:"/>
-		<ImageButton name="toggle_active" up_image="content/gui/images/icons/hud/main/build.png" down_image="content/gui/images/icons/hud/main/build_h.png" hover_image="content/gui/images/icons/hud/main/build_h.png" border_size="0"/>
+		<ImageButton name="toggle_active" up_image="content/gui/images/icons/hud/main/toggle_active.png" down_image="content/gui/images/icons/hud/main/toggle_active_h.png" hover_image="content/gui/images/icons/hud/main/toggle_active_h.png" border_size="0"/>
 	</HBox>
 </Container>
