@@ -87,7 +87,7 @@ class Trader(Player, StorageHolder):
 		@param id: ships id"""
 		settlement = self.office.settlement
 		for res, key in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
-			rand = random.randint(0,4) # select a random amount to sell
+			rand = random.randint(1,4) # select a random amount to sell
 			if settlement.inventory[res] >= key:
 				continue # continue if there are more resources in the inventory than the settlement wants to buy
 			else:
