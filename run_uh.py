@@ -30,13 +30,6 @@ import os
 import gettext
 
 def findFIFE():
-	# check if fife is already in python-path
-	try:
-		import fife
-		return
-	except (ImportError):
-		pass
-
 	global fife_path
 	try:
 		import config
@@ -67,8 +60,13 @@ def findFIFE():
 				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
 				break
 	else:
-		print _('FIFE was not found.')
-		exit()
+		# check if fife is already in python-path
+		try:
+			import fife
+			return
+		except:
+			print _('FIFE was not found.')
+			exit()
 
 	try:
 		if not os.environ.get('LD_LIBRARY_PATH', '').startswith(os.path.abspath(fife_path)):
