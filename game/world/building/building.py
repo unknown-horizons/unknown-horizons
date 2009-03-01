@@ -118,9 +118,8 @@ class Building(AmbientSound, WorldObject):
 			# isn't fully constructed, when this code is executed
 			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
 			self.island = weakref.ref(WorldObject.getObjectById(island_id))
-
-			self.settlement = self.island().get_settlement(Point(x,y)) or self.island().add_existing_settlement(self.position, self.radius, location_obj)
-
+			self.settlement = self.island().get_settlement(Point(x,y)) or \
+					self.island().add_existing_settlement(self.position, self.radius, location_obj)
 		else: # loc is island
 			from game.world.island import Island
 			assert(isinstance(location_obj, Island))

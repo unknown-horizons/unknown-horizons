@@ -20,6 +20,7 @@
 # ###################################################
 
 import weakref
+import game.main
 from changelistener import Changelistener
 
 class WorldObject(Changelistener):
@@ -51,7 +52,8 @@ class WorldObject(Changelistener):
 	def load(self, db, worldid):
 		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
-		print 'loading worldobject', worldid, self
+		if game.main.debug:
+			print 'loading worldobject', worldid, self
 
 		self.__id = worldid
 		WorldObject.__objects[worldid] = self

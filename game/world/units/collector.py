@@ -21,7 +21,7 @@
 
 from game.world.units.unit import Unit
 from game.world.storageholder import StorageHolder
-from game.util import Rect, Point, WorldObject
+from game.util import Rect, Point, WorldObject, WeakMethodList
 from game.world.pathfinding import Movement
 from game.world.production import PrimaryProducer
 from game.ext.enum import Enum
@@ -66,11 +66,11 @@ class BuildingCollector(StorageHolder, Unit):
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
 	def save(self, db):
+		import pdb  ; pdb.set_trace()
 		super(BuildingCollector, self).save(db)
 		# set owner to home_building (is set to player by unit)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
 
-		import pdb  ; pdb.set_trace()
 		# save state and remaining ticks for next callback
 		# retrieve remaining ticks according to state
 		current_callback = None
@@ -98,24 +98,26 @@ class BuildingCollector(StorageHolder, Unit):
 		# states: moving to target, working, moving back
 
 	def load(self, db, worldid):
-		# self.homebuilding + other atributes
-		super(BuildingCollector, self).load(db, worldid)
 		import pdb ; pdb.set_trace()
+		super(BuildingCollector, self).load(db, worldid)
 
-		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)
+		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
 		self.home_building = weakref.ref(WorldObject.getObjectById(home_building_id))
 
+		self.home_building().local_collectors.append(self)
+
 		# load collector properties
-		state_id, remaining_ticks, self.start_hidden = \
+		state_id, remaining_ticks, start_hidden_int = \
 						db("SELECT state, remaining_ticks, start_hidden FROM COLLECTOR \
-						   WHERE rowid = ?", worldid)
+						   WHERE rowid = ?", worldid)[0]
 		self.state = self.states[state_id]
-		print 'check if starthidden is bool and not int'
+		self.start_hidden = bool(start_hidden_int)
 
 		# load job
 		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", \
-						 self.getId())
+								worldid)
 		if(len(job_db) > 0):
+			job_db = job_db[0]
 			self.job = Job(WorldObject.getObjectById(job_db[0]), job_db[1], job_db[2])
 
 		# apply loaded state
@@ -125,12 +127,16 @@ class BuildingCollector(StorageHolder, Unit):
 			game.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
 		elif self.state == self.states.moving_to_target:
 			self.setup_new_job()
+			self.move_callback.append(self.begin_working)
+			self.show()
 		elif self.state == self.states.working:
 			self.setup_new_job()
 			self.hide()
 			game.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
 		elif self.state == self.states.moving_home:
 			self.home_building()._Consumer__collectors.append(self)
+			self.move_callback.append(self.reached_home)
+			self.show()
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -427,3 +433,4 @@ class Job(object):
 	@property
 	def object(self):
 		return self._object()
+

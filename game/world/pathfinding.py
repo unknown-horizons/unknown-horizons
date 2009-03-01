@@ -111,11 +111,11 @@ class FindPath(object):
 			return None
 
 		# execute algorithm on the args
-		if not __debug__:
+		if not game.main.debug:
 			return self.execute()
 		else:
 			p = self.execute()
-			#print 'FOUND PATH', p
+			print 'FOUND PATH', p
 			return p
 
 	def setup(self):
@@ -243,7 +243,7 @@ class FindPath(object):
 					path.insert(0, previous_node)
 					previous_node = checked[previous_node][0]
 
-				if __debug__:
+				if game.main.debug:
 					check_path(path, self.blocked_coords)
 
 				return path

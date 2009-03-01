@@ -193,13 +193,6 @@ class Unit(WorldObject):
 		else:
 			return (12, 17) # standard values
 
-	def check_for_blocking_units(self, position):
-		"""Returns wether position is blocked by a unit
-		@param position: instance of Point
-		@return: True if position is clear, False if blocked
-		"""
-		return True
-
 	def get_move_target(self):
 		return self.path.get_move_target()
 

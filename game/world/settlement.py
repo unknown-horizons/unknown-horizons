@@ -91,8 +91,6 @@ class Settlement(TradePost, WorldObject):
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			buildingclass = game.main.session.entities.buildings[building_type]
 			building = buildingclass.load(db, building_id)
-			building.settlement = self
-			self.buildings.append(building)
 
 		return self
 
