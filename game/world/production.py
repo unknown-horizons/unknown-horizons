@@ -39,12 +39,14 @@ class PrimaryProducer(Provider):
 		super(PrimaryProducer, self).__init__(**kwargs)
 		if game.main.debug:
 			print "Initing PrimaryProducer", self.id
-		self.active_production_line = None
 		self.__init()
 
 	def __init(self):
 		self.production = {}
+		self.active_production_line = None
 		self.active = False
+		self.inventory.limit = 4
+
 
 		# The PrimaryProducer uses a simular way of ProductionLines as the Consumer, the only
 		# difference is, that is uses a seperate class for ProductionLines as some more details

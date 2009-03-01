@@ -45,7 +45,7 @@ class BuildingCollector(StorageHolder, Unit):
 	"""
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home')
 
-	def __init__(self, home_building, slots = 1, size = 6, start_hidden=True, **kwargs):
+	def __init__(self, home_building, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,
 												slots = slots,
