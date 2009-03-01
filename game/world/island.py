@@ -200,8 +200,8 @@ class Island(WorldObject):
 				elif tile.settlement.owner == settlement.owner:
 					tile.settlement = settlement
 		for building in self.buildings: # Check if any buildings come into range, like unknowned trees
-			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
-			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
+			if (max(position.left - building.position.center().x, 0, building.position.center().x - position.right) ** 2) + \
+			   (max(position.top - building.position.center().y, 0, building.position.center().y - position.bottom) ** 2) <= radius ** 2:
 				if building.settlement is None:
 					building.settlement = settlement
 					settlement.buildings.append(building)
