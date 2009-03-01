@@ -21,7 +21,7 @@
 
 from game.world.units.unit import Unit
 from game.world.storageholder import StorageHolder
-from game.util import Rect, Point, WorldObject, WeakMethodList
+from game.util import Rect, Point, WorldObject
 from game.world.pathfinding import Movement
 from game.world.production import PrimaryProducer
 from game.ext.enum import Enum
@@ -43,7 +43,11 @@ class BuildingCollector(StorageHolder, Unit):
 	  |-
 
 	"""
-	states = Enum('idle', 'moving_to_target', 'working', 'moving_home')
+	# all states, any (subclass) instance may have. Keeping a list in one place
+	# is important, because every state must have a distinct number.
+	# Handling of subclass specific states is done by subclass.
+	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
+									'waiting_for_animal_to_stop', 'animal_stopped')
 
 	def __init__(self, home_building, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
@@ -66,7 +70,7 @@ class BuildingCollector(StorageHolder, Unit):
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
 	def save(self, db):
-		import pdb  ; pdb.set_trace()
+		#import pdb  ; pdb.set_trace()
 		super(BuildingCollector, self).save(db)
 		# set owner to home_building (is set to player by unit)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
@@ -92,13 +96,8 @@ class BuildingCollector(StorageHolder, Unit):
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
 				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
-		# checklist:
-		# register collector at target/source
-		# show/hide
-		# states: moving to target, working, moving back
-
 	def load(self, db, worldid):
-		import pdb ; pdb.set_trace()
+		#import pdb ; pdb.set_trace()
 		super(BuildingCollector, self).load(db, worldid)
 
 		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
@@ -190,7 +189,6 @@ class BuildingCollector(StorageHolder, Unit):
 						# add a new job
 						jobs.append(Job(building, res, min(res_amount - \
 														   total_pickup_amount,\
-														   self.inventory.get_limit(res), \
 														   max_consumer_res_free)))
 
 		# sort job list
@@ -375,6 +373,7 @@ class AnimalCollector(BuildingCollector):
 		#print self.id, 'BEGIN CURRENT JOB'
 		self.setup_new_job()
 		self.stop_animal()
+		self.state = self.states.waiting_for_animal_to_stop
 
 	def pickup_animal(self):
 		"""Moves collector to animal. Called by animal when it actually stopped"""

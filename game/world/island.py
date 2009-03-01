@@ -179,8 +179,11 @@ class Island(WorldObject):
 		return settlement
 
 	def add_existing_settlement(self, position, radius, settlement):
-		"""Same as add_settlement, but uses settlement from parameter"""
-		self.settlements.append(settlement)
+		"""Same as add_settlement, but uses settlement from parameter.
+		May also be called for extension of an existing settlement by a new building. (this
+		is useful for loading, where every loaded buiding extends the radius of its settlement) """
+		if settlement not in self.settlements:
+			self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
 		return settlement
 

@@ -47,6 +47,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 		if self.collector is not None:
 			self.collector.pickup_animal()
 			self.collector = None
+			self.state = self.states.stopped
 		else:
 			super(Animal, self).search_job()
 
