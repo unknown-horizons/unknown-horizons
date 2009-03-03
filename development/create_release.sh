@@ -36,57 +36,83 @@ if [ -z $1 ]; then
 	exit 1
 fi
 
-if ! [ -d "$1" ]; then 
-	echo "You must specify a FIFE dir!"
+if ! [ -d "$1" ] && [ -e "$1/test_fife.py"] ; then 
+	echo "You must specify a FIFE dir (must contain test_fife.py)!"
 	exit 1
 fi
-if ! [ -d "$2" ]; then 
-	echo "You must specify a Unknown Horizons dir!"
+if ! [ -d "$2" ] && [ -e "$2/run_uh.py"]; then 
+	echo "You must specify a Unknown Horizons dir (must contain run_uh.py)!"
 	exit  1
 fi
 
+startdir=$(pwd)
 
+fife=$(pwd)/fife_export_$(date +"%m%d%y")
+echo "Creating a clean FIFE checkout in ${fife}..."
+svn export $1 $fife
+echo "Done."
 
+uhfolder=uh_export_$(date +"%m%d%y")
+echo $uhfolder
+uh="$(pwd)/${uhfolder}"
+echo $uh
+echo "Creating a clean Unknown Horizons checkout in ${uh}..."
+svn export $2 ${uh}
+mkdir ${uh}/fife
+echo "Done."
 
-fife=$1
-echo "Using ${fife} as FIFE dir."
-uh=$2
-echo "Using ${uh} as Unknown Horizons dir."
+# Go into fife dir
+cd ${fife}
+
+echo "Compiling FIFE..."
+scons ext=1
+scons debug=0 log=0
+echo "Done..."
 
 # Find all .so files
 echo "Searching for .so FIFE files..."
-files=$(find ${fife} -type f -name *.so)
+files=$(find . -type f -name \*.so)
 echo "Done. Copying files to Unknown Horizons dir..."
-cp --parents ${files}  -t ${uh}
+cp --parents ${files}  -t ${uh}/fife/
+rm -r ${uh}/fife/ext/openal-soft/
 echo "Done."
 
 echo "Copying ext/ to Unknown Horizons dir..."
-cp --parents -r ${fife}/ext/install/ -t ${uh}
+cp --parents -r ext/install/ -t ${uh}/fife/
 echo "Done."
 
 # Find all engine .py files
 echo "Searching for engine .py FIFE files..."
-files=$(find ${fife}/engine/ -type f -name *.py)
+files=$(find engine/ -type f -name \*.py)
 echo "Done. Copying files to Unknown Horizons dir..."
-cp --parents ${files}  -t ${uh}
+cp --parents ${files}  -t ${uh}/fife/
 echo "Done."
 
 echo "Adding editor..."
-cp -r --parents ${fife}/clients/editor -t ${uh}
+cp -r --parents clients/editor -t ${uh}/fife/
 echo "Done."
 
 echo "Adding docs..."
-cp -r --parents ${fife}/doc/AUTHORS -t ${uh}
-cp -r --parents ${fife}/doc/README -t ${uh}
-cp -r --parents ${fife}/doc/COPYING -t ${uh}
+cp -r --parents doc/AUTHORS -t ${uh}/fife/
+cp -r --parents doc/README -t ${uh}/fife/
+cp -r --parents doc/COPYING -t ${uh}/fife/
 echo "Done."
+
+# Go back to startdir
+cd ${startdir}
 
 echo "Creating Tarball ${3}..."
 if ! [ -z $3 ]; then 
-	tar -cf ${3} ${uh}
+	tar -cf ${3} ${uhfolder}
 else
-	tar -cf unknown-horizonz$(date +"%m%d%y").tar ${uh}
+	tar -cf unknown-horizonz$(date +"%m%d%y").tar ${uhfolder}
+
 fi
 echo "Done."
 
+echo "Cleaning up..."
+rm -r ${uh}
+rm -r ${fife}
+
 echo "Release tarball is ready for deployment."
+
