@@ -103,9 +103,9 @@ cd ${startdir}
 
 echo "Creating Tarball ${3}..."
 if ! [ -z $3 ]; then 
-	tar -cf ${3} ${uhfolder}
+	tar -xcf ${3} ${uhfolder}
 else
-	tar -cf unknown-horizonz$(date +"%m%d%y").tar ${uhfolder}
+	tar -xcf unknown-horizonz$(date +"%m%d%y").tar.gz ${uhfolder}
 
 fi
 echo "Done."
