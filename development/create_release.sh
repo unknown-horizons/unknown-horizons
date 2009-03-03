@@ -52,7 +52,7 @@ echo "Creating a clean FIFE checkout in ${fife}..."
 svn export $1 $fife
 echo "Done."
 
-uhfolder=uh_export_$(date +"%m%d%y")
+uhfolder=uh_release_$(date +"%m%d%y")
 echo $uhfolder
 uh="$(pwd)/${uhfolder}"
 echo $uh
@@ -103,9 +103,9 @@ cd ${startdir}
 
 echo "Creating Tarball ${3}..."
 if ! [ -z $3 ]; then 
-	tar -xcf ${3} ${uhfolder}
+	tar -pczf ${3} ${uhfolder}
 else
-	tar -xcf unknown-horizonz$(date +"%m%d%y").tar.gz ${uhfolder}
+	tar -pczf unknown-horizonz$(date +"%m%d%y").tar.gz ${uhfolder}
 
 fi
 echo "Done."
