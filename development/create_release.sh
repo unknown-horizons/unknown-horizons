@@ -29,6 +29,7 @@
 # containing the the FIFE svn trunk and the unknown-horizons/ folder containing the 
 # Unknown Horizons folder. So you would find: fife/test_fife.py and unknown-horizons/run_uh.py
 
+set -x
 
 if [ -z $1 ]; then 
 	echo "Usage:"
@@ -49,20 +50,20 @@ startdir=$(pwd)
 
 fife=$(pwd)/fife_export_$(date +"%m%d%y")
 echo "Creating a clean FIFE checkout in ${fife}..."
-svn export $1 $fife
+svn export "$1" "$fife"
 echo "Done."
 
 uhfolder=uh_release_$(date +"%m%d%y")
 echo $uhfolder
 uh="$(pwd)/${uhfolder}"
-echo $uh
-echo "Creating a clean Unknown Horizons checkout in ${uh}..."
-svn export $2 ${uh}
-mkdir ${uh}/fife
+echo "$uh"
+echo "Creating a clean Unknown Horizons checkout in $uh..."
+svn export "$2" "$uh"
+mkdir "$uh/fife"
 echo "Done."
 
 # Go into fife dir
-cd ${fife}
+cd "$fife"
 
 echo "Compiling FIFE..."
 scons ext=1
@@ -73,46 +74,46 @@ echo "Done..."
 echo "Searching for .so FIFE files..."
 files=$(find . -type f -name \*.so)
 echo "Done. Copying files to Unknown Horizons dir..."
-cp --parents ${files}  -t ${uh}/fife/
-rm -r ${uh}/fife/ext/openal-soft/
+cp --parents ${files}  -t "$uh/fife/"
+rm -r "${uh}/fife/ext/openal-soft/"
 echo "Done."
 
 echo "Copying ext/ to Unknown Horizons dir..."
-cp --parents -r ext/install/ -t ${uh}/fife/
+cp --parents -r ext/install/ -t "${uh}/fife/"
 echo "Done."
 
 # Find all engine .py files
 echo "Searching for engine .py FIFE files..."
 files=$(find engine/ -type f -name \*.py)
 echo "Done. Copying files to Unknown Horizons dir..."
-cp --parents ${files}  -t ${uh}/fife/
+cp --parents ${files}  -t "${uh}/fife/"
 echo "Done."
 
 echo "Adding editor..."
-cp -r --parents clients/editor -t ${uh}/fife/
+cp -r --parents clients/editor -t "${uh}/fife/"
 echo "Done."
 
 echo "Adding docs..."
-cp -r --parents doc/AUTHORS -t ${uh}/fife/
-cp -r --parents doc/README -t ${uh}/fife/
-cp -r --parents doc/COPYING -t ${uh}/fife/
+cp -r --parents doc/AUTHORS -t "${uh}/fife/"
+cp -r --parents doc/README -t "${uh}/fife/"
+cp -r --parents doc/COPYING -t "${uh}/fife/"
 echo "Done."
 
 # Go back to startdir
-cd ${startdir}
+cd "${startdir}"
 
 echo "Creating Tarball ${3}..."
 if ! [ -z $3 ]; then 
-	tar -pczf ${3} ${uhfolder}
+	tar -pczf "${3}" "${uhfolder}"
 else
-	tar -pczf unknown-horizonz$(date +"%m%d%y").tar.gz ${uhfolder}
+	tar -pczf unknown-horizons-$(date +"%m%d%y").tar.gz "${uhfolder}"
 
 fi
 echo "Done."
 
 echo "Cleaning up..."
-rm -r ${uh}
-rm -r ${fife}
+rm -r "${uh}"
+rm -r "${fife}"
 
 echo "Release tarball is ready for deployment."
 
