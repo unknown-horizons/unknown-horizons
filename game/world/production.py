@@ -39,9 +39,9 @@ class PrimaryProducer(Provider):
 		super(PrimaryProducer, self).__init__(**kwargs)
 		if game.main.debug:
 			print "Initing PrimaryProducer", self.id
-		self._init()
+		self.__init()
 
-	def _init(self):
+	def __init(self):
 		self.production = {}
 		self.active_production_line = None
 		self.active = False
@@ -100,16 +100,14 @@ class PrimaryProducer(Provider):
 			self.active_production_line = None
 		else:
 			self.active_production_line = active_production_line[0][0]
-		self._init()
+		self.__init()
 
 	def check_production_startable(self):
-		if self.active_production_line is None: # Don't do anything, we're not producing
-			return
 		if game.main.debug:
 			print "PrimaryProducer check_production_startable", self.id
 		for res, amount in self.production[self.active_production_line].production.items():
-			assert(amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res),\
-				   "Resource res can never be produced here")
+			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
+				return
 		usable_resources = {}
 		if min(self.production[self.active_production_line].production.values()) < 0:
 			for res, amount in self.production[self.active_production_line].production.items():
@@ -127,13 +125,12 @@ class PrimaryProducer(Provider):
 				self.__used_resources[res] += amount
 			else:
 				self.__used_resources[res] = amount
+		for res, amount in usable_resources.items():
 			assert(self.inventory.alter(res, -amount) == 0)
-		game.main.session.scheduler.add_new_object(self.production_step, self, 16 * \
-		(self.production[self.active_production_line].time if \
-		min(self.production[self.active_production_line].production.values()) >= 0 \
-		else (int(round(self.production[self.active_production_line].time *\
-			sum(self.__used_resources.values()) / -sum(\
-				p for p in self.production[self.active_production_line].production.values() if p < 0))) - time)))
+		game.main.session.scheduler.add_new_object(self.production_step, self, 16 *
+		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
+		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
+				) - time)))
 		if "work" in game.main.action_sets[self._action_set_id].keys():
 			self.act("work", self._instance.getFacingLocation(), True)
 		else:
@@ -142,7 +139,8 @@ class PrimaryProducer(Provider):
 
 	def production_step(self):
 		if game.main.debug:
-			print "PrimaryProducer production_step", self.getId()
+			print "PrimaryProducer production_step", self.id
+		#print self.getId(), "production_step"
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
