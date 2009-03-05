@@ -27,11 +27,12 @@ from game.util import Point, Rect, WeakMethodList, WorldObject, WeakMethod
 class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
 
-	def __init__(self, x, y, **kwargs):
+	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(**kwargs)
-		self.__init(x, y)
+		self.__init(x, y, owner)
 
-	def __init(self, x, y, health = 60.0):
+	def __init(self, x, y, owner, health = 100.0):
+		self.owner = owner
 		self._action_set_id = game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0]
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()

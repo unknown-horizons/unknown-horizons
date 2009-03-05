@@ -40,5 +40,22 @@ class Act(object):
 		"""
 		WorldObject.getObjectById(self.unit).go(self.x, self.y)
 
+class CreateUnit(object):
+	"""Command class that creates a unit.
+	@param id: Unit id that is to be created.
+	@param x,y: Units initial position
+	"""
+	def __init__(self, id, x, y):
+		self.id = id
+		self.x = x
+		self.y = y
+
+	def __call__(self, issuer):
+		"""__call__() gets called by the manager.
+		@param issuer: the issuer of the command
+		"""
+		self.local_collectors.append(game.main.session.entities.units[id](self.x, self.y, self))
+
 from game.util.encoder import register_classes
 register_classes(Act)
+register_classes(CreateUnit)
