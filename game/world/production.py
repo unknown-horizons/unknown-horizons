@@ -39,9 +39,9 @@ class PrimaryProducer(Provider):
 		super(PrimaryProducer, self).__init__(**kwargs)
 		if game.main.debug:
 			print "Initing PrimaryProducer", self.id
-		self.__init()
+		self._init()
 
-	def __init(self):
+	def _init(self):
 		self.production = {}
 		self.active_production_line = None
 		self.active = False
@@ -100,9 +100,11 @@ class PrimaryProducer(Provider):
 			self.active_production_line = None
 		else:
 			self.active_production_line = active_production_line[0][0]
-		self.__init()
+		self._init()
 
 	def check_production_startable(self):
+		if self.active_production_line is None:
+			return
 		if game.main.debug:
 			print "PrimaryProducer check_production_startable", self.id
 		for res, amount in self.production[self.active_production_line].production.items():
@@ -139,8 +141,7 @@ class PrimaryProducer(Provider):
 
 	def production_step(self):
 		if game.main.debug:
-			print "PrimaryProducer production_step", self.id
-		#print self.getId(), "production_step"
+			print "PrimaryProducer production_step", self.getId()
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
