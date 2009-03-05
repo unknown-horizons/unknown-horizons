@@ -36,11 +36,9 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	movement = Movement.COLLECTOR_MOVEMENT
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
-		super(Animal, self).__init__(home_building = home_building, start_hidden = start_hidden, **kwargs)
+		super(Animal, self).__init__(home_building = home_building, \
+																 start_hidden = start_hidden, **kwargs)
 		self.collector = None
-
-	def save(self, db):
-		super(Animal, self).save(db)
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -69,6 +67,7 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
+		self.state = self.states.stop_after_job
 
 	def create_collector(self):
 		pass

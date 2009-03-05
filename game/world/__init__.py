@@ -115,9 +115,9 @@ class World(object):
 		# create shiplist
 		self.ships = []
 
-		# load units
+		# load units that are not owned, such as trader (and currently also playerships)
 		from game.world.units.ship import Ship
-		for (worldid, typeid) in db("SELECT rowid, type FROM unit"):
+		for (worldid, typeid) in db("SELECT rowid, type FROM unit WHERE owner = 0"):
 			obj = game.main.session.entities.units[typeid].load(db, worldid)
 			if isinstance(obj, Ship):
 				self.ships.append(obj)

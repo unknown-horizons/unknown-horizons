@@ -47,7 +47,7 @@ class BuildingCollector(StorageHolder, Unit):
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
-									'waiting_for_animal_to_stop', 'animal_stopped')
+									'waiting_for_animal_to_stop', 'stopped', 'stop_after_job')
 
 	def __init__(self, home_building, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
@@ -119,20 +119,26 @@ class BuildingCollector(StorageHolder, Unit):
 			job_db = job_db[0]
 			self.job = Job(WorldObject.getObjectById(job_db[0]), job_db[1], job_db[2])
 
+		apply_state(self.state)
+
 		# apply loaded state
-		if self.state == self.states.idle:
+	def apply_state(self, state):
+		"""Takes actions to set collector to a state. Useful after loading.
+		@param state: EnumValue from states
+		"""
+		if state == self.states.idle:
 			if self.start_hidden:
 				self.hide()
 			game.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
-		elif self.state == self.states.moving_to_target:
+		elif state == self.states.moving_to_target:
 			self.setup_new_job()
 			self.move_callback.append(self.begin_working)
 			self.show()
-		elif self.state == self.states.working:
+		elif state == self.states.working:
 			self.setup_new_job()
 			self.hide()
 			game.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
-		elif self.state == self.states.moving_home:
+		elif state == self.states.moving_home:
 			self.home_building()._Consumer__collectors.append(self)
 			self.move_callback.append(self.reached_home)
 			self.show()
@@ -329,7 +335,7 @@ class BuildingCollector(StorageHolder, Unit):
 	def cancel(self):
 		if game.main.debug:
 			print "Collector cancel", self.id
-		if job.object is not None:
+		if self.job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
 		game.main.session.scheduler.rem_all_classinst_calls(self)
 		self.move_home(callback=self.search_job, action='move')

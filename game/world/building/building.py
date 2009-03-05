@@ -62,10 +62,11 @@ class Building(AmbientSound, WorldObject):
 			self.play_ambient(soundfile, True)
 
 	def toggle_costs(self):
-			self.running_costs , self.running_costs_inactive = self.running_costs_inactive, self.running_costs
+			self.running_costs , self.running_costs_inactive = \
+					self.running_costs_inactive, self.running_costs
 
 	def get_payout(self):
-		# gets the payout from the settlement in form of it's running costs
+		"""gets the payout from the settlement in form of it's running costs"""
 		self.settlement.owner.inventory.alter(1, -self.running_costs)
 
 	def act(self, action, facing_loc, repeating=False):

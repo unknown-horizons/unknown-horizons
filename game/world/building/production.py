@@ -37,11 +37,21 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 	def create_collector(self):
 		self.animals = []
 		animals = game.main.db("SELECT unit_id, count from data.animals where building_id = ?", self.id)
+		# NOTE: animals have to be created before the AnimalCollector
 		for (animal,number) in animals:
 			for i in xrange(0,number):
 				self.animals.append(game.main.session.entities.units[animal](self))
 
 		self.local_collectors.append(game.main.session.entities.units[7](self))
+
+	def save(self, db):
+		super(AnimalFarm, self).save(db)
+		for animal in self.animals:
+			animal.save(db)
+
+	def load(self, db, worldid):
+		super(AnimalFarm, self).save(db)
+
 
 class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17

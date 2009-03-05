@@ -72,8 +72,10 @@ class Consumer(StorageHolder):
 	def save(self, db):
 		super(Consumer, self).save(db)
 		# insert active prodline if it isn't in the db
-		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", self.getId())) == 0:
-			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", self.getId(), self.active_production_line)
+		if len(db("SELECT active_production_line FROM production WHERE rowid = ?", \
+							self.getId())) == 0:
+			db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", \
+				 self.getId(), self.active_production_line)
 		for collector in self.local_collectors:
 			collector.save(db)
 
