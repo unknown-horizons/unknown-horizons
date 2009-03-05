@@ -129,7 +129,7 @@ class IngameGui(object):
 			'build1': {
 				'store-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
 				'church-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 5),
-				#'market_place-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 4),
+				'market_place-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 4),
 				'lighthouse-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 6),
 		},
 			'build2': {
@@ -183,7 +183,7 @@ class IngameGui(object):
 
 		self.gui['minimap_toggle'].mapEvents({
 			'minimapToggle' : None,
-			'speedUp' : None, 
+			'speedUp' : None,
 			'speedDown' : None
 		})
 
