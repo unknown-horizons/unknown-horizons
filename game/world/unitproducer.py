@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  U
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
 
@@ -88,8 +88,7 @@ class UnitProducer(SecondaryProducer):
 
 		# Create the new units at the output_point
 		for unit, amount in self.production[self.active_production_line].unit:
-			for num in range(amount):
-				game.main.session.manager.execute(CreateUnit(unit, self.output_point[0],self.output_point[1]))
+			game.main.session.entities.units[id](self.x, self.y, self.owner)
 
 
 	def produce(self, prod_line):

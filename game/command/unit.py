@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -45,16 +45,17 @@ class CreateUnit(object):
 	@param id: Unit id that is to be created.
 	@param x,y: Units initial position
 	"""
-	def __init__(self, id, x, y):
-		self.id = id
-		self.x = x
-		self.y = y
+	def __init__(self, building_id, prodline_id):
+		self.building_id = building_id
+		self.prodline_id = prodline_id
 
 	def __call__(self, issuer):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		self.local_collectors.append(game.main.session.entities.units[id](self.x, self.y, self))
+		from game.util import WorldObject
+		building = WorldObject.getObjectById(self.building_id)
+		building.produce(self.prodline_id)
 
 from game.util.encoder import register_classes
 register_classes(Act)
