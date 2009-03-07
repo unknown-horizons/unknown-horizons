@@ -97,8 +97,10 @@ class Building(AmbientSound, WorldObject):
 
 	def save(self, db):
 		super(Building, self).save(db)
-		db("INSERT INTO building (rowid, type, x, y, rotation, health, location) VALUES (?, ?, ?, ?, ?, ?, ?)", \
-			self.getId(), self.__class__.id, self.position.origin.x, self.position.origin.y, self.rotation,
+		db("INSERT INTO building (rowid, type, x, y, rotation, health, location) \
+		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
+			self.getId(), self.__class__.id, self.position.origin.x, \
+			self.position.origin.y, self.rotation, \
 			self.health, (self.settlement or self.island()).getId())
 
 	def load(self, db, worldid):

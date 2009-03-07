@@ -126,12 +126,15 @@ class World(object):
 		for ship in self.ships:
 			self.ship_map[ship.position.to_tuple()] = weakref.ref(ship)
 
-		# add free trader
-		from game.ai.trader import Trader
-		self.trader = Trader(99999, "Free Trader", Color())
 
-		# Fire a message for new world creation
 		if not game.main.session.is_game_loaded():
+			# for initiateing a new game:
+
+			# add free trader
+			from game.ai.trader import Trader
+			self.trader = Trader(99999, "Free Trader", Color())
+
+			# Fire a message for new world creation
 			game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
 		To digg deaper, you should now continue to game/world/island.py,

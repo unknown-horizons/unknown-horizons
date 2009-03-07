@@ -34,6 +34,8 @@ class SavegameManager(object):
 	"""Controls savegamefiles.
 
 	This class is rather a namespace than a "real" object, since it has no members.
+	The instance in game.main is nevertheless important, since it creates
+	the savegame directories
 
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
@@ -52,11 +54,11 @@ class SavegameManager(object):
 	quicksave_filenamepattern = quicksave_basename+'%(timestamp).4f.'+savegame_extension
 
 	display_timeformat = "%y/%m/%d %H:%M"
-	
+
 	# metadata of a savegame with default values
 	savegame_metadata = { 'timestamp' : -1,
 												'savecounter' : 0 }
-	savegame_metadata_types = { 'timestamp' : float, 
+	savegame_metadata_types = { 'timestamp' : float,
 															'savecounter' : int }
 
 	_shared_state = {}
@@ -79,7 +81,7 @@ class SavegameManager(object):
 			if savegameinfo['timestamp'] == -1: return ""
 			else:
 				return time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
-			
+
 		for f in files:
 			if f.startswith(self.autosave_dir):
 				name = "Autosave %s" % get_timestamp_string(self.get_metadata(f))
@@ -140,14 +142,14 @@ class SavegameManager(object):
 		"""
 		db = DbReader(savegamefile)
 		metadata = cls.savegame_metadata.copy()
-		
+
 		for key in metadata.iterkeys():
 			result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
 			if len(result) > 0:
 				assert(len(result) == 1)
 				metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		return metadata
-	
+
 	@classmethod
 	def write_metadata(cls, db):
 		"""Writes metadata to db.
@@ -155,7 +157,7 @@ class SavegameManager(object):
 		metadata = cls.savegame_metadata.copy()
 		metadata['timestamp'] = time.time()
 		metadata['savecounter'] = game.main.session.savecounter
-		
+
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
@@ -174,7 +176,7 @@ class SavegameManager(object):
 		return self.__get_saves_from_dirs([self.quicksave_dir],\
 																			include_displaynames = include_displaynames)
 
-	
+
 	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):
 		"""Returns a displayable name, extracted from a filename"""

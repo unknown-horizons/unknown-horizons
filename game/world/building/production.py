@@ -50,7 +50,7 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 			animal.save(db)
 
 	def load(self, db, worldid):
-		super(AnimalFarm, self).save(db)
+		super(AnimalFarm, self).load(db, worldid)
 
 
 class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
