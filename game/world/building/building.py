@@ -154,16 +154,16 @@ class Building(AmbientSound, WorldObject):
 			facing_loc = fife.Location(game.main.session.view.layers[layer])
 			if rotation == 45:
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+3), int(y), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+cls.size[0]+3), int(y), 0))
 			elif rotation == 135:
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y + cls.size[1] - 1), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-3), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-cls.size[1]-3), 0))
 			elif rotation == 225:
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y + cls.size[1] - 1), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-3), int(y), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-cls.size[0]-3), int(y), 0))
 			elif rotation == 315:
 				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+3), 0))
+				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+cls.size[1]+3), 0))
 			else:
 				return None
 			action_set_id  = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]

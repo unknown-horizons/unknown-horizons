@@ -243,10 +243,14 @@ class BuildingTool(NavigationTool):
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
+		if game.main.debug:
+			print "BuildingTool: Building rotation now:", self.rotation
 		self.update_preview()
 		self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
+		if game.main.debug:
+			print "BuildingTool: Building rotation now:", self.rotation
 		self.update_preview()
 		self.draw_gui()
