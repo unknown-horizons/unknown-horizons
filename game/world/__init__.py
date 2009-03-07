@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -82,19 +83,23 @@ class World(object):
 
 		#add water
 		print "Filling world with water..."
-		self.water = [ (x,y) for x in xrange(self.min_x, self.max_x) for y in xrange(self.min_y, self.max_y) ]
+		self.water = {}
+		for x in xrange(self.min_x, self.max_x):
+			for y in xrange(self.min_y, self.max_y):
+				self.water[(x,y)] = 1
 		for i in self.islands:
 			for g in i.grounds:
-				self.water.remove((g.x,g.y))
+				del self.water[(g.x,g.y)]
+		self.water = self.water.keys()
 		print "Adding %d water tiles..." % (len(self.water),)
 		self.grounds = []
 		self.ground_map = {}
+		default_grounds = game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
 		for x, y in self.water:
-			ground = game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))](x, y)
+			ground = default_grounds(x, y)
 			self.grounds.append(ground)
 			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
-
 
 		if not game.main.session.is_game_loaded():
 			print "Adding trees to the world..."

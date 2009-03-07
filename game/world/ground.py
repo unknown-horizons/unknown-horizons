@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -73,6 +74,8 @@ class GroundClass(type):
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = game.main.fife.imagepool.addResourceFromFile(file)
 			visual.addStaticImage(int(rotation), img)
-			img = game.main.fife.imagepool.getImage(img)
-			img.setXShift(0)
-			img.setYShift(0)
+			# Get Image call unecessarily triggers loading of the actual image.
+			#img = game.main.fife.imagepool.getImage(img)
+			#img.setXShift(0)
+			#img.setYShift(0)
+

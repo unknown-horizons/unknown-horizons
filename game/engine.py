@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -133,7 +134,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					loc.setHeight(h)
 
 					idx = game.main.fife.imagepool.addResourceFromLocation(loc)
-					img = game.main.fife.imagepool.getImage(idx)
+					#img = game.main.fife.imagepool.getImage(idx)
 			ani.addFrame(fife.ResourcePtr(game.main.fife.imagepool,idx), max(1,int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
