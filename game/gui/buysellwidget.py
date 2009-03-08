@@ -76,7 +76,20 @@ class BuySellWidget(object):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
+		if game.main.debug:
+			print "BuySellWidget add_ressource() resid:", res_id, "slot_id", slot_id, \
+			  "value", value
+
+		if self.resources is not None: # Hide resource menu
+			self.resources.hide()
+			self.show()
 		slot = self.slots[slot_id]
+		slider = slot.findChild(name="slider")
+		if value is None:
+			value=int(slider.getValue()) # If no value is provided, take current slider value
+		else:
+			slider.setValue(float(value)) # set slider correctly
+
 		if slot.action is "sell":
 			if slot.res is not None:
 				del self.settlement.sell_list[slot.res]
@@ -87,13 +100,7 @@ class BuySellWidget(object):
 				del self.settlement.buy_list[slot.res]
 			if res_id != 0:
 				self.add_buy_to_settlement(res_id, value, slot.id)
-		if self.resources is not None:
-			self.resources.hide()
-			self.show()
-		if value is None:
-			value = self.settlement.inventory.limit/2
-		slider = slot.findChild(name="slider")
-		slider.setValue(float(value)) # set first value to half inventory size
+
 		if res_id == 0:
 			icon = "content/gui/images/icons/hud/build/dummy_btn.png"
 			button = slot.findChild(name="button")

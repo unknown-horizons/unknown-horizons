@@ -86,12 +86,12 @@ class Trader(Player, StorageHolder):
 		"""Actions that need to be taken when reaching a branch office
 		@param id: ships id"""
 		settlement = self.office.settlement
-		for res, key in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
+		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
 			rand = random.randint(1,4) # select a random amount to sell
-			if settlement.inventory[res] >= key:
+			if settlement.inventory[res] >= limit:
 				continue # continue if there are more resources in the inventory than the settlement wants to buy
 			else:
-				alter = rand if key-settlement.inventory[res] >= rand else key-settlement.inventory[res]
+				alter = rand if limit-settlement.inventory[res] >= rand else limit-settlement.inventory[res]
 				ret = settlement.owner.inventory.alter(1, -alter*\
 					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
 				if ret == 0: # check if enough money was in the inventory
@@ -99,12 +99,12 @@ class Trader(Player, StorageHolder):
 				else: # if not, return the money taken
 					settlement.owner.inventory.alter(1, alter*\
 						int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
-		for res, key in settlement.sell_list.iteritems():
-			rand = random.randint(0,settlement.inventory.limit-key) # select a random amount to buy from the settlement
-			if settlement.inventory[res] <= key:
+		for res, limit in settlement.sell_list.iteritems():
+			rand = random.randint(0,settlement.inventory.limit-limit) # select a random amount to buy from the settlement
+			if settlement.inventory[res] <= limit:
 				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
-				alter = -rand if settlement.inventory[res]-key >= rand else -(settlement.inventory[res]-key)
+				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
 				#print "Altering:", alter
 				# Pay for bought resources
 				settlement.owner.inventory.alter(1, alter*\
