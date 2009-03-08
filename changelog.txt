@@ -2,7 +2,7 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
-2009-03-01: Milestone 2009.0
+2009-03-08: Milestone 2009.0
 * General
   * New: Added a free trader that sells and buys the players goods
   * New: Buildings are now rotatable
@@ -28,6 +28,7 @@ Unknown Horizons
   * Fix: Buildable status only updated on mouse move
   
 * Graphics and GUI
+  * New: New building main square, where inhabitants get their ressources
   * New: Icons for switching game speed 
   * New: New model for signal fire
   * New: New models for different types of trees
@@ -43,7 +44,7 @@ Unknown Horizons
   
 * Sound
   * New: Implemented build sound
-  * New: Added ambient sounds for lumberjack, herder and branch office
+  * New: Added ambient sounds for lumberjack, herder, main square and branch office
   * New: Rolloff function for sound, which fades ambient sounds depending on the position on the map
   * New: New Song Beware the Ship's Kobold!
   * New: Functionality to adjust volume level for music and effects
