@@ -1,6 +1,7 @@
 @echo off
 set datetime=%date%_%time%
-set datetime=%datetime: =0%
+set datetime=%datetime:/=_%
+set datetime=%datetime: =_%
 set datetime=%datetime:.=-%
 set datetime=%datetime:,=-%
 set datetime=%datetime::=-%
