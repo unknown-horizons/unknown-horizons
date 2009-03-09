@@ -66,8 +66,8 @@ class Menus(object):
 		"""
 		self.hide() # Hide old gui
 		self.current = self.widgets['mainmenu']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		eventMap = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
@@ -250,8 +250,8 @@ class Menus(object):
 		"""
 		self.hide() # Hide old gui
 		self.current = self.widgets['gamemenu']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		eventMap = {
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
@@ -265,7 +265,6 @@ class Menus(object):
 		self.current.show()
 		game.main.session.speed_pause()
 		self.on_escape = self.return_to_game
-
 
 	def on_chime(self):
 		"""
@@ -307,7 +306,7 @@ class Menus(object):
 		"""
 		Return to the game.
 		"""
-		self.hide() # Hide olo gui
+		self.hide() # Hide old gui
 		self.current = None
 		game.main.session.speed_unpause()
 		self.on_escape = self.show_pause
@@ -319,11 +318,11 @@ class Menus(object):
 		@param showLoad: Bool if saved games menu is to be shown.
 		"""
 		self.hide() # Hide old gui
-		self.widgets['singleplayermenu'] = game.main.fife.pychan.loadXML('content/gui/singleplayermenu.xml') # reload because parts are beeing removed on each show
+		self.widgets['singleplayermenu'] = game.main.fife.pychan.loadXML('content/gui/singleplayermenu.xml') # reload because parts are being removed on each show
 		self.widgets['singleplayermenu'].stylize('menu')
 		self.current = self.widgets['singleplayermenu']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		eventMap = {
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
@@ -405,8 +404,8 @@ class Menus(object):
 			self.current.hide()
 
 		self.current = self.widgets['serverlist']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		self.current.server = []
 		def _close():
 			"""
@@ -476,8 +475,8 @@ class Menus(object):
 			self.current.serverList.end()
 			self.current.hide()
 		self.current = self.widgets['serverlobby']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 
 		game.main.connection = ServerConnection(game.main.settings.network.port)
 
@@ -521,8 +520,8 @@ class Menus(object):
 		game.main.connection = ClientConnection()
 		game.main.connection.join(server.address, server.port)
 		self.current = self.widgets['serverlobby']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		self.current.serverlobby = ClientServerLobby(self.current)
 
 		def _cancel():
@@ -617,8 +616,8 @@ class Menus(object):
 
 			self.hide()
 			self.current = self.widgets['loadingscreen']
-			self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-			self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+			self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+			self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 
 			game.main.start_singleplayer(map_file)
 
@@ -663,8 +662,8 @@ class Menus(object):
 
 		self.hide()
 		self.current = self.widgets['loadingscreen']
-		self.current.x += int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y += int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
 		self.show()
 		game.main.start_singleplayer(savegamefile)
 
