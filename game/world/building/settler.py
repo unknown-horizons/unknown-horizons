@@ -20,14 +20,14 @@
 # ###################################################
 
 from building import Building, Selectable
-from game.world.consumer import Consumer
+from game.world.abstractconsumer import AbstractConsumer
 from game.gui.tabwidget import TabWidget
 import game.main
 from buildable import BuildableSingle
 from game.util import WeakList
 from random import randint
 
-class Settler(Selectable, BuildableSingle, Consumer, Building):
+class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
 		if game.main.debug:
@@ -54,6 +54,16 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 			consume_state: 0-10 state, on 10 a new good is consumed or contentment drops, if no new good is in the inventory.
 			consume_contentment: 0-10 state, showing how fullfilled the wish for the specified good is.
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
+		self._resources = {0: []} #ugly work arround to work with current consumer implementation
+
+		from game.world.building.building import Building
+		if isinstance(self, Building):
+			self.radius_coords = self.position.get_radius_coordinates(self.radius)
+
+		self._AbstractConsumer__collectors = WeakList()
+		for (res,) in game.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
+			#print "Settler debug, res:", res
+			self._resources[0].append(res)
 
 	def run(self):
 		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
@@ -96,21 +106,6 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 			addition = min(self.inhabitants_max, max(1, self.inhabitants + addition)) - self.inhabitants
 			self.inhabitants += addition
 			self.settlement.add_inhabitants(addition)
-
-	def _Consumer__init(self):
-		"""Part of initiation that __init__() and load() share
-		NOTE: This function is only for the consumer class, the settler class needs to be a consumer,
-		but without production lines, which is why this has to be overwritten."""
-		self._resources = {0: []} #ugly work arround to work with current consumer implementation
-
-		from game.world.building.building import Building
-		if isinstance(self, Building):
-			self.radius_coords = self.position.get_radius_coordinates(self.radius)
-
-		self._AbstractConsumer__collectors = WeakList()
-		for (res,) in game.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
-			#print "Settler debug, res:", res
-			self._resources[0].append(res)
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
