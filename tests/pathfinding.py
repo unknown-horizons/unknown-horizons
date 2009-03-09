@@ -21,6 +21,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
+"""
+NOT MAINTAINED
+
 import unittest
 
 from game.world.pathfinding import findPath
@@ -47,3 +51,5 @@ class TestPathfinding(unittest.TestCase):
 		# missing:
 		# - different source/target formats
 		# - blocked_choords
+
+"""
