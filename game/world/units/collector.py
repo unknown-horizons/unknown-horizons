@@ -47,7 +47,7 @@ class BuildingCollector(StorageHolder, Unit):
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
-									'waiting_for_animal_to_stop', 'stopped', 'stop_after_job')
+									'waiting_for_animal_to_stop', 'stopped')
 
 	def __init__(self, home_building, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
@@ -57,19 +57,22 @@ class BuildingCollector(StorageHolder, Unit):
 												**kwargs)
 		if game.main.debug:
 			print "Initing BuildingCollector", self.id
-		self.home_building = weakref.ref(home_building)
 		self.inventory.limit = size;
 
+		self.__init(self.states.idle, start_hidden, home_building)
+
+		# start searching jobs just when construction (of subclass) is completed
+		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
+
+	def __init(self, state, start_hidden, home_building):
+		self.state = state
 		self.start_hidden = start_hidden
 		if self.start_hidden:
 			self.hide()
+		self.home_building = weakref.ref(home_building)
+		self.job = None
 
-		self.state = self.states.idle
-
-		if game.main.debug:
-			print "BuildingCollector adding to scheduler", self.id
-		# start searching jobs just when construction (of subclass) is completed
-		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
+		self.register_at_home_building()
 
 	def save(self, db):
 		#import pdb  ; pdb.set_trace()
@@ -99,20 +102,16 @@ class BuildingCollector(StorageHolder, Unit):
 				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
 
 	def load(self, db, worldid):
-		#import pdb ; pdb.set_trace()
 		super(BuildingCollector, self).load(db, worldid)
 
-		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
-		self.home_building = weakref.ref(WorldObject.getObjectById(home_building_id))
-
-		self.home_building().local_collectors.append(self)
-
 		# load collector properties
-		state_id, remaining_ticks, start_hidden_int = \
+		state_id, remaining_ticks, start_hidden = \
 						db("SELECT state, remaining_ticks, start_hidden FROM COLLECTOR \
 						   WHERE rowid = ?", worldid)[0]
-		self.state = self.states[state_id]
-		self.start_hidden = bool(start_hidden_int)
+		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
+
+		self.__init(self.states[state_id], bool(start_hidden), \
+								WorldObject.getObjectById(home_building_id))
 
 		# load job
 		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", \
@@ -121,16 +120,17 @@ class BuildingCollector(StorageHolder, Unit):
 			job_db = job_db[0]
 			self.job = Job(WorldObject.getObjectById(job_db[0]), job_db[1], job_db[2])
 
-		apply_state(self.state)
+		self.apply_state(self.state, remaining_ticks)
 
-		# apply loaded state
-	def apply_state(self, state):
+	def register_at_home_building(self):
+		self.home_building().local_collectors.append(self)
+
+	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
 		@param state: EnumValue from states
+		@param remaining_ticks: ticks after which current state is finished
 		"""
 		if state == self.states.idle:
-			if self.start_hidden:
-				self.hide()
 			game.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
 		elif state == self.states.moving_to_target:
 			self.setup_new_job()
@@ -138,7 +138,6 @@ class BuildingCollector(StorageHolder, Unit):
 			self.show()
 		elif state == self.states.working:
 			self.setup_new_job()
-			self.hide()
 			game.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
 		elif state == self.states.moving_home:
 			self.home_building()._AbstractConsumer__collectors.append(self)
@@ -351,8 +350,6 @@ class StorageCollector(BuildingCollector):
 
 	def begin_current_job(self):
 		"""Declare target of StorageCollector as building, because it always is"""
-		if game.main.debug:
-			print "StorageCollector begin_current_job", self.id
 		super(StorageCollector, self).begin_current_job()
 		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
 
@@ -378,6 +375,14 @@ class FieldCollector(BuildingCollector):
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
 
+	def load(self, db, worldid):
+		print 'loading animal coll', worldid
+		import pdb ; pdb.set_trace()
+		super(AnimalCollector, self).load(db, worldid)
+		if self.job is not None:
+			# register at target
+			self.job.object.stop_after_job(self)
+
 	def begin_current_job(self):
 		"""Tell the animal to stop. First step of a job"""
 		#print self.id, 'BEGIN CURRENT JOB'
@@ -390,6 +395,7 @@ class AnimalCollector(BuildingCollector):
 		#print self.id, 'PICKUP ANIMAL'
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
+		self.state = self.states.moving_to_target
 
 	def finish_working(self):
 		"""Transfer res and such. Called when collector arrives at the animal"""

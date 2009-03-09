@@ -23,8 +23,7 @@ import random
 from game.world.units.unit import Unit
 from game.world.units.collector import BuildingCollector
 from game.world.units.nature import GrowingUnit
-from game.util.rect import Rect
-from game.util.point import Point
+from game.util import Rect, Point, WorldObject
 from collector import Job
 from game.world.production import SecondaryProducer
 from game.world.pathfinding import Movement
@@ -38,7 +37,20 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(Animal, self).__init__(home_building = home_building, \
 																 start_hidden = start_hidden, **kwargs)
+		self.__init()
+
+	def __init(self):
 		self.collector = None
+
+	def register_at_home_building(self):
+		self.home_building().animals.append(self)
+
+	def save(self, db):
+		super(Animal, self).save(db)
+
+	def load(self, db, worldid):
+		super(Animal, self).load(db, worldid)
+		self.__init()
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
@@ -67,7 +79,6 @@ class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
-		self.state = self.states.stop_after_job
 
 	def create_collector(self):
 		pass

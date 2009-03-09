@@ -382,6 +382,7 @@ class Menus(object):
 			return game.main.savegamemanager.get_saves()
 		elif showCampaign:
 			files = [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
+			files.sort()
 			display = [os.path.split(i)[1].rpartition('.')[0] for i in files]
 			return (files, display)
 

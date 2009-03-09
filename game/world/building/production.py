@@ -36,13 +36,16 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 	def create_collector(self):
 		self.animals = []
-		animals = game.main.db("SELECT unit_id, count from data.animals where building_id = ?", self.id)
-		# NOTE: animals have to be created before the AnimalCollector
-		for (animal,number) in animals:
-			for i in xrange(0,number):
-				self.animals.append(game.main.session.entities.units[animal](self))
 
-		self.local_collectors.append(game.main.session.entities.units[7](self))
+		# NOTE: animals have to be created before the AnimalCollector
+		for (animal,number) in game.main.db("SELECT unit_id, count FROM data.animals \
+		                                    WHERE building_id = ?", self.id):
+			for i in xrange(0,number):
+				game.main.session.entities.units[animal](self)
+				# animal appends itself to self.animals
+
+		# AnimalCollector:
+		game.main.session.entities.units[7](self)
 
 	def save(self, db):
 		super(AnimalFarm, self).save(db)
@@ -51,6 +54,7 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 	def load(self, db, worldid):
 		super(AnimalFarm, self).load(db, worldid)
+		self.animals = []
 
 
 class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
@@ -59,14 +63,14 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
-		self.local_collectors.append(game.main.session.entities.units[10](self))
+		game.main.session.entities.units[10](self)
 
 
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
-		self.local_collectors.append(game.main.session.entities.units[12](self))
+		game.main.session.entities.units[12](self)
 
 
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):

@@ -57,7 +57,7 @@ class AbstractConsumer(StorageHolder):
 	def create_collector(self):
 		""" Creates collector according to building type (chosen by polymorphism)
 		"""
-		self.local_collectors.append(game.main.session.entities.units[2](self))
+		game.main.session.entities.units[2](self)
 
 	def get_needed_res(self):
 		"""Returns list of resources, where free space in the inventory exists,

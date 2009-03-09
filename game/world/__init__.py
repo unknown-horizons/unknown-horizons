@@ -117,20 +117,13 @@ class World(object):
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
 
-		# create shiplist
+		# create shiplist, which is currently used for saving ships
+		# and having at least one reference to them
 		self.ships = []
 
-		# load units that are not owned, such as trader (and currently also playerships)
-		from game.world.units.ship import Ship
-		for (worldid, typeid) in db("SELECT rowid, type FROM unit WHERE owner = 0"):
-			obj = game.main.session.entities.units[typeid].load(db, worldid)
-			if isinstance(obj, Ship):
-				self.ships.append(obj)
-
-		# reconstruct shipmap
-		for ship in self.ships:
-			self.ship_map[ship.position.to_tuple()] = weakref.ref(ship)
-
+		# load all units (we do it here cause all buildings are loaded by now)
+		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
+			game.main.session.entities.units[typeid].load(db, worldid)
 
 		if not game.main.session.is_game_loaded():
 			# for initiateing a new game:
