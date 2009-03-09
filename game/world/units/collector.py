@@ -66,6 +66,8 @@ class BuildingCollector(StorageHolder, Unit):
 
 		self.state = self.states.idle
 
+		if game.main.debug:
+			print "BuildingCollector adding to scheduler", self.id
 		# start searching jobs just when construction (of subclass) is completed
 		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
@@ -349,6 +351,8 @@ class StorageCollector(BuildingCollector):
 
 	def begin_current_job(self):
 		"""Declare target of StorageCollector as building, because it always is"""
+		if game.main.debug:
+			print "StorageCollector begin_current_job", self.id
 		super(StorageCollector, self).begin_current_job()
 		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
 

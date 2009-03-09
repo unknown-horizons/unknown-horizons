@@ -101,17 +101,16 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		"""Part of initiation that __init__() and load() share
 		NOTE: This function is only for the consumer class, the settler class needs to be a consumer,
 		but without production lines, which is why this has to be overwritten."""
-		self._Consumer__resources = {0: []} #ugly work arround to work with current consumer implementation
-		self.local_collectors = []
+		self._resources = {0: []} #ugly work arround to work with current consumer implementation
 
 		from game.world.building.building import Building
 		if isinstance(self, Building):
 			self.radius_coords = self.position.get_radius_coordinates(self.radius)
 
-		self._Consumer__collectors = WeakList()
+		self._AbstractConsumer__collectors = WeakList()
 		for (res,) in game.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
 			#print "Settler debug, res:", res
-			self._Consumer__resources[0].append(res)
+			self._resources[0].append(res)
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
@@ -120,7 +119,7 @@ class Settler(Selectable, BuildableSingle, Consumer, Building):
 		"""Returns list of resources, that the building uses, without
 		considering, if it currently needs them
 		"""
-		return self._Consumer__resources[0]
+		return self._resources[0]
 
 	def save(self, db):
 		super(Settler, self).save(db)
