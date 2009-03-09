@@ -139,7 +139,7 @@ class BuildingCollector(StorageHolder, Unit):
 			self.hide()
 			game.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
 		elif state == self.states.moving_home:
-			self.home_building()._Consumer__collectors.append(self)
+			self.home_building()._AbstractConsumer__collectors.append(self)
 			self.move_callback.append(self.reached_home)
 			self.show()
 
@@ -185,7 +185,7 @@ class BuildingCollector(StorageHolder, Unit):
 					# check how much will be delivered
 					total_registered_amount_consumer = sum([ collector.job.amount for \
 															 collector in \
-															 self.home_building()._Consumer__collectors if \
+															 self.home_building()._AbstractConsumer__collectors if \
 															 collector.job.res == res ])
 					# check if there are resources left to pickup
 					max_consumer_res_free = self.home_building().inventory.get_limit(res)-\
@@ -210,7 +210,7 @@ class BuildingCollector(StorageHolder, Unit):
 		if game.main.debug:
 			print "Collector setup_new_job", self.id
 		self.job.object._Provider__collectors.append(self)
-		self.home_building()._Consumer__collectors.append(self)
+		self.home_building()._AbstractConsumer__collectors.append(self)
 
 	def sort_jobs(self, jobs):
 		"""Sorts the jobs for further processing. This has been moved to a seperate function so it
@@ -288,7 +288,7 @@ class BuildingCollector(StorageHolder, Unit):
 			#assert(remnant == 0, "Home building could not take all ressources from collector.")
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
 			#assert(remnant == 0, "collector did not pick up amount of ressources specified by the job.")
-			self.home_building()._Consumer__collectors.remove(self)
+			self.home_building()._AbstractConsumer__collectors.remove(self)
 		self.end_job()
 
 	def end_job(self):
