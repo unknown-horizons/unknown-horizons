@@ -193,7 +193,6 @@ class BuildingTool(NavigationTool):
 		if self.endPoint != point and self.startPoint is not None:
 			# Check if startPoint is set because it might be null if the user started dragging on a pychan widget
 			self.endPoint = point
-			assert self.startPoint is not None, "startPoint is None"
 			self.previewBuild(self.startPoint, point)
 		evt.consume()
 
