@@ -154,6 +154,8 @@ class BuildingTool(NavigationTool):
 		game.main.session.cursor = SelectionTool()
 
 	def mouseMoved(self, evt):
+		if game.main.debug:
+			print "BuildingTool mouseMoved"
 		super(BuildingTool, self).mouseMoved(evt)
 		mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
@@ -163,6 +165,8 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mousePressed(self, evt):
+		if game.main.debug:
+			print "BuildingTool mousePressed"
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mousePressed(evt)
 			return
@@ -181,16 +185,21 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mouseDragged(self, evt):
+		if game.main.debug:
+			print "BuildingTool mouseDragged"
 		super(BuildingTool, self).mouseDragged(evt)
 		mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
-		if self.endPoint != point:
+		if self.endPoint != point and self.startPoint is not None:
+			# Check if startPoint is set because it might be null if the user started dragging on a pychan widget
 			self.endPoint = point
 			assert self.startPoint is not None, "startPoint is None"
 			self.previewBuild(self.startPoint, point)
 		evt.consume()
 
 	def mouseReleased(self, evt):
+		if game.main.debug:
+			print "BuildingTool mouseReleased"
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
 		elif fife.MouseEvent.LEFT == evt.getButton():
