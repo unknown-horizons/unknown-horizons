@@ -24,6 +24,7 @@ import game.main
 import code
 import sys
 import datetime
+import string
 
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 	"""MainListener Class to process events of main window"""
@@ -60,7 +61,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter):
 		elif keyval == fife.Key.F1:
 			game.main.gui.on_help()
 		elif keystr == 's':
-			game.main.fife.engine.getRenderBackend().captureScreen("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png")
+			game.main.fife.engine.getRenderBackend().captureScreen(string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
 
 	def keyReleased(self, evt):
 		pass
