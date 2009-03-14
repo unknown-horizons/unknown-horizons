@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png">
+	<Icon name="building"/>
 	<Container size="220,52" padding="5" name="top_bar">
 	<VBox>
 		<HBox>
@@ -10,7 +11,4 @@
 		</HBox>
 	</VBox>
 	</Container>
-
-<Icon name="building"/>
-
 </Container>
