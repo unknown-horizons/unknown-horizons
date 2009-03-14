@@ -181,8 +181,8 @@ class BuySellWidget(object):
 		if self.slots[slot_id].res is not None:
 			resources.insert(0,(0,"content/gui/images/icons/hud/build/dummy_btn.png"))
 		for (res_id,icon) in resources:
-			if res_id == 1:
-				continue # don't show coins
+			if res_id in [1, 2, 7, 8, 9, 10, 11]:
+				continue # don't show coins, lamb wool, wood etc. Temp hack. Should be replaced by resource groups
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
 			button = pychan.widgets.ImageButton(size=(50,50))
