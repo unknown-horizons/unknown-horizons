@@ -95,6 +95,8 @@ class BuildingTool(NavigationTool):
 							)
 		self.gui.position = (game.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, game.main.fife.settings.getScreenHeight()/1 - game.main.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = str(self._class.running_costs)
+		top_bar = self.gui.findChild(name='top_bar')
+		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2, 10)
 		self.draw_gui()
 		game.main.session.view.addChangeListener(self.draw_gui)
 
@@ -109,7 +111,7 @@ class BuildingTool(NavigationTool):
 		image = sorted(game.main.action_sets[action_set][self.action][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
-		building_icon.position = (260/2 - building_icon.size[0]/2, 180/2 - building_icon.size[1]/2)
+		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2)
 		self.gui._recursiveResizeToContent()
 
 	def previewBuild(self, point1, point2):
