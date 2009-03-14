@@ -11,6 +11,6 @@
 	</VBox>
 	</Container>
 
-<Icon position="60,40" name="building"/>
+<Icon name="building"/>
 
 </Container>

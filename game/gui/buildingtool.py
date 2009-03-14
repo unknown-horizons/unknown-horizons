@@ -107,7 +107,9 @@ class BuildingTool(NavigationTool):
 		else: # If no idle animation found, use the first you find
 			self.action = game.main.action_sets[action_set].keys()[0]
 		image = sorted(game.main.action_sets[action_set][self.action][(self.rotation+int(game.main.session.view.cam.getRotation())-45)%360].keys())[0]
-		self.gui.findChild(name='building').image = image
+		building_icon = self.gui.findChild(name='building')
+		building_icon.image = image
+		building_icon.position = (260/2 - building_icon.size[0]/2, 180/2 - building_icon.size[1]/2)
 		self.gui._recursiveResizeToContent()
 
 	def previewBuild(self, point1, point2):
