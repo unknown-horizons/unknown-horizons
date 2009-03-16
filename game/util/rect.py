@@ -52,18 +52,30 @@ class Rect(object):
 		self.origin = Point(self.left, self.top)
 
 	def distance(self, other):
+		"""Calculates distance to another object"""
 		if isinstance(other, Point):
-			return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
+			return self.distance_to_point(other)
 		elif isinstance(other, Rect):
-			return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
+			return self.distance_to_rect(other)
 		else:
-			try:
-				## TODO: other = (x,y, width, height)
-				# is other tuple: (x,y)?
-				if isinstance(other[0], int) and isinstance(other[1], int):
-					return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
-			except TypeError:
+			## TODO: other = (x,y, width, height)
+			# is other tuple: (x,y)?
+			if isinstance(other[0], int) and isinstance(other[1], int):
+				return self.distance_to_point_tuple(other)
+			else:
 				return other.distance(self)
+
+	def distance_to_point(self, other):
+		"""Calculates distance to an instance of Point."""
+		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
+
+	def distance_to_tuple(self, other):
+		"""Calculates distance to a coordinate as tuple (x,y)"""
+		return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
+
+	def distance_to_rect(self, other):
+		"""Calculates distance to an instance of Rect."""
+		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
 	# TODO: replace this everywhere with iteration
 	def get_coordinates(self):
@@ -77,7 +89,7 @@ class Rect(object):
 		return  [ (x,y) for x in xrange(self.left-radius, self.right+radius+1) \
 				  for y in xrange(self.top-radius, self.bottom+radius+1)
 						if (x,y) not in self_coords and \
-						self.distance( (x,y) ) <= radius ]
+						self.distance_to_tuple( (x,y) ) <= radius ]
 
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
