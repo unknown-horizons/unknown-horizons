@@ -19,17 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from navigationtool import NavigationTool
-from selectiontool import SelectionTool
+import math
+import pychan
+import fife
+
+import game.main
+
 from game.world.building.building import *
 from game.world.building.path import Path
 from game.command.building import Build
 from game.command.sounds import PlaySound
+from navigationtool import NavigationTool
+from selectiontool import SelectionTool
 
-import fife
-import game.main
-import math
-import pychan
 
 """
 Represents a dangling tool after a building was selected from the list.

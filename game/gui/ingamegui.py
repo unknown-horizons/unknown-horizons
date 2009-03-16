@@ -19,15 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import fife
+
+import game.main
+
+from game.util.living import livingProperty, LivingObject
+from game.world.settlement import Settlement
 from buildingtool import BuildingTool
 from selectiontool import SelectionTool
-import game.main
-import fife
 from messagewidget import MessageWidget
-from game.util.living import livingProperty, LivingObject
-from tabwidget import TabWidget
-from game.world.settlement import Settlement
 from buysellwidget import BuySellWidget
+from tabwidget import TabWidget
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""

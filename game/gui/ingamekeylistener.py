@@ -21,9 +21,10 @@
 
 import fife
 import game.main
+
+from game.util.living import LivingObject
 from tearingtool import TearingTool
 from buildingtool import BuildingTool
-from game.util.living import LivingObject
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
