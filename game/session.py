@@ -26,25 +26,25 @@ import os.path
 import time
 
 import fife
-
 import game.main
-from game.gui.selectiontool import SelectionTool
-from game.world.building import building
-from game.world.units.ship import Ship
-from game.world.player import Player
-from game.gui.ingamegui import IngameGui
-from game.gui.ingamekeylistener import IngameKeyListener
-from game.world.island import Island
-from game.dbreader import DbReader
-from game.timer import Timer
-from game.scheduler import Scheduler
-from game.manager import SPManager
-from game.view import View
-from game.world import World
-from game.entities import Entities
-from game.util import livingProperty, WorldObject
-from game.util.living import LivingObject
-from game.savegamemanager import SavegameManager
+
+from gui.selectiontool import SelectionTool
+from world.building import building
+from world.units.ship import Ship
+from world.player import Player
+from gui.ingamegui import IngameGui
+from gui.ingamekeylistener import IngameKeyListener
+from world.island import Island
+from dbreader import DbReader
+from timer import Timer
+from scheduler import Scheduler
+from manager import SPManager
+from view import View
+from world import World
+from entities import Entities
+from util.living import livingProperty, LivingObject
+from util.worldobject import WorldObject
+from savegamemanager import SavegameManager
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.

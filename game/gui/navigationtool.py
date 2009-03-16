@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from cursortool import CursorTool
-import game.main
-from game.util import Point
 import fife
+import game.main
+
+from cursortool import CursorTool
+from game.util.point import Point
 
 class NavigationTool(CursorTool):
 	"""The Selectiontool is used to select instances on the game screen.

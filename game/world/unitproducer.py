@@ -21,8 +21,8 @@
 
 
 from production import SecondaryProducer
-from game.main.util import Point
-from game.main.command.unit import CreateUnit
+from game.util.point import Point
+from game.command.unit import CreateUnit
 
 class UnitProducer(SecondaryProducer):
 

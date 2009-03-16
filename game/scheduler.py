@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
-from game.util import WeakMethod
-from game.util.living import LivingObject
 import weakref
+import game.main
+from util.weakmethod import WeakMethod
+from util.living import LivingObject
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
@@ -37,13 +37,7 @@ class Scheduler(LivingObject):
 		self.timer.add_call(self.tick)
 
 	def end(self):
-		if game.main.debug:
-			print "Scheduler end"
-		keys = []
-		keys.extend(self.schedule.iterkeys())
-		for key in keys:
-			print "deleting"
-			del self.schedule[key]
+		print "Scheduler len:", len(self.schedule)
 		self.schedule = None
 		self.timer.remove_call(self.tick)
 		self.timer = None
@@ -88,9 +82,12 @@ class Scheduler(LivingObject):
 		"""Removes a CallbackObject from all callback lists
 		@param callback_obj: CallbackObject to remove
 		"""
-		for key in self.schedule:
-			for i in xrange(0, self.schedule[key].count(callback_obj)):
-				self.schedule[key].remove(callback_obj)
+		if game.main.debug:
+			print "Scheduler rem_object", callback_obj
+		if self.schedule is not None:
+			for key in self.schedule:
+				for i in xrange(0, self.schedule[key].count(callback_obj)):
+					self.schedule[key].remove(callback_obj)
 
 
 	#TODO: Check if this is still necessary for weak referenced objects

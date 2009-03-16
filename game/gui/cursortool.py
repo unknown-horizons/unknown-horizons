@@ -20,6 +20,7 @@
 # ###################################################
 import fife
 import game.main
+
 from game.util.living import LivingObject
 
 class CursorTool(fife.IMouseListener, LivingObject):

@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
 import pychan
+import game.main
+
 class BuySellWidget(object):
 
 	def __init__(self, slots, settlement):
