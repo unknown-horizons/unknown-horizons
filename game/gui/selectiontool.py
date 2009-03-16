@@ -19,17 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from navigationtool import NavigationTool
+import time
+import math
+import fife
+
+import game.main
+
 from game.world.units import UnitClass
 from game.world.units.unit import Unit
 from game.world.units.ship import Ship
 from game.command.unit import Act
 from game.util import WeakList
 from game.util import WorldObject
-import time
-import fife
-import math
-import game.main
+from navigationtool import NavigationTool
 
 class SelectionTool(NavigationTool):
 	"""The Selectiontool is used to select instances on the game screen.

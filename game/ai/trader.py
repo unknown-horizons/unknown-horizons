@@ -19,11 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import random
+
+import game.main
+
+from game.util import Point
 from game.world.player import Player
 from game.world.storageholder import StorageHolder
-from game.util import Point
-import game.main
-import random
 
 class Trader(Player, StorageHolder):
 	"""A trader represents the free trader that travels arround the map with his trading ship(s) and

@@ -19,9 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
-import fife
 from string import Template
+import fife
+
+import game.main
+
 from game.util.living import LivingObject
 
 class MessageWidget(LivingObject):

@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import game.main
+
 from game.util.inventory_widget import ImageFillStatusButton
 from game.world.building.storages import BranchOffice
 

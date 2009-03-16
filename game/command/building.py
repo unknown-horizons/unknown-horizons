@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.building.building import *
 import game.main
+from game.world.building.building import *
 
 class Build(object):
 	"""Command class that builds an object."""

@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import fife
+
+import game.main
+
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from game.command.building import Tear
 from game.world.building.storages import StorageBuilding
-
-import fife
-import game.main
 
 class TearingTool(NavigationTool):
 	"""
