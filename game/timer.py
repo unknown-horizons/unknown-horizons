@@ -21,9 +21,10 @@
 
 import time
 import game.main
+from game.util.living import LivingObject
 
 
-class Timer(object):
+class Timer(LivingObject):
 	"""
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is especially important for multiplayer, to allow synchronous play.
@@ -44,8 +45,9 @@ class Timer(object):
 		self.tick_func_call = []
 		game.main.fife.pump.append(self.check_tick)
 
-	def __del__(self):
+	def end(self):
 		game.main.fife.pump.remove(self.check_tick)
+		super(Timer, self).end()
 
 	def add_test(self, call):
 		"""Adds a call to the test list

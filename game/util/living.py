@@ -29,8 +29,8 @@ class livingProperty(object):
 	def __set__(self, obj, value):
 		#print "Setting:", obj, value
 		#print "Value:", self.__value
-		if hasattr(self.__value, '__del__'):
-			self.__value.__del__()
+		if hasattr(self.__value, 'end'):
+			self.__value.end()
 		self.__value = value
 
 	def __delete__(self, obj):
@@ -38,3 +38,16 @@ class livingProperty(object):
 
 	def __del__(self):
 		self.__value = None
+
+class LivingObject(object):
+	"""This class is intended to be used with the livingProperty to ensure all variables
+	are safely deinited when intended by the programmer. The livingProperty calls the
+	livingObject's end() function to deinit the object. This mostly replacing the __del__
+	function, as it's behaviour is not well behaved."""
+
+	def end(self):
+		"""Put all the code the object needs to end safely here. Make sure it always
+		contains the super(YOUROBJECT, self).end() call, to ensure all parentobjects are
+		deinited correctly."""
+		pass
+

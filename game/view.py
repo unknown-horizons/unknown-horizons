@@ -72,11 +72,10 @@ class View(Changelistener):
 		game.main.settings.view.zoom.max = 1
 		game.main.settings.view.zoom.min = 0.25
 
-	def __del__(self):
-		"""
-		"""
+	def end(self):
 		self.model.deleteMaps()
 		self.view.clearCameras()
+		super(View, self).end()
 
 	def center(self, x, y):
 		"""Sets the camera position

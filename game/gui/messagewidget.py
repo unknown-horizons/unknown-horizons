@@ -22,8 +22,9 @@
 import game.main
 import fife
 from string import Template
+from game.util.living import LivingObject
 
-class MessageWidget(object):
+class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
 	It uses Message Class instances to store messages and manages the
 	archive.
@@ -114,10 +115,11 @@ class MessageWidget(object):
 		if changed:
 			self.draw_widget()
 
-	def __del__(self):
+	def end(self):
 		game.main.ext_scheduler.rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
+		super(MessageWidget, self).end()
 
 	def save(self, db):
 		for message in self.active_messages:

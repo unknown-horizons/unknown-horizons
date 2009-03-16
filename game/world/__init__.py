@@ -28,8 +28,9 @@ import game.main
 from game.world.island import Island
 from game.world.player import Player
 from game.util import Point, Color
+from game.util.living import LivingObject
 
-class World(object):
+class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 	   A World instance holds a lot of important lists:
 	   * players - a list of all the sessios's players - Player instances
@@ -46,6 +47,19 @@ class World(object):
 		"""@param db: DbReader instance with the map/savegame that is to be loaded
 		"""
 		super(World, self).__init__()
+
+	def end(self):
+		self.properties = None
+		self.players = None
+		self.player = None
+		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
+		self.grounds = None
+		self.ground_map = None
+		self.water = None
+		self.ship_map = None
+		self.ships = None
+		self.trader = None
+		super(World, self).end()
 
 	def _init(self, db):
 		#load properties

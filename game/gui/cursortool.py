@@ -18,18 +18,19 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
 import fife
 import game.main
+from game.util.living import LivingObject
 
-class CursorTool(fife.IMouseListener):
+class CursorTool(fife.IMouseListener, LivingObject):
 	"""Basic tool for cursors."""
 	def __init__(self):
 		super(CursorTool, self).__init__()
 		game.main.fife.eventmanager.addMouseListener(self)
 
-	def __del__(self):
+	def end(self):
 		game.main.fife.eventmanager.removeMouseListener(self)
+		super(CursorTool, self).end()
 
 	def mousePressed(self, evt):
 		pass

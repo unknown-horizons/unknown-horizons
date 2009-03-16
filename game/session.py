@@ -43,9 +43,10 @@ from game.view import View
 from game.world import World
 from game.entities import Entities
 from game.util import livingProperty, WorldObject
+from game.util.living import LivingObject
 from game.savegamemanager import SavegameManager
 
-class Session(object):
+class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
 
 	This is the most important class if you are going to hack on Unknown Horizons, it provides most of
@@ -106,7 +107,7 @@ class Session(object):
 		#if game.main.settings.savegame.autosaveinterval != 0:
 		#	game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
 
-	def __del__(self):
+	def end(self):
 		self.scheduler.rem_all_classinst_calls(self)
 
 		if game.main.settings.sound.enabled:

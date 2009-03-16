@@ -41,10 +41,10 @@ class NavigationTool(CursorTool):
 		game.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
-	def __del__(self):
+	def end(self):
 		game.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		game.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		super(NavigationTool, self).__del__()
+		super(NavigationTool, self).end()
 
 	def mousePressed(self, evt):
 		#print game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).x, game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).y

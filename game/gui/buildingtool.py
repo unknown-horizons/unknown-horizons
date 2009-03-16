@@ -79,14 +79,14 @@ class BuildingTool(NavigationTool):
 			if not found_free:
 				self.onEscape()
 
-	def __del__(self):
+	def end(self):
 		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		game.main.session.view.removeChangeListener(self.draw_gui)
 		self.gui.hide()
 		self.reset_listeners()
-		super(BuildingTool, self).__del__()
+		super(BuildingTool, self).end()
 
 	def load_gui(self):
 		self.gui = game.main.fife.pychan.loadXML("content/gui/build_menu/hud_builddetail.xml")

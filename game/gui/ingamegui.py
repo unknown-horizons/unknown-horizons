@@ -24,12 +24,12 @@ from selectiontool import SelectionTool
 import game.main
 import fife
 from messagewidget import MessageWidget
-from game.util import livingProperty
+from game.util.living import livingProperty, LivingObject
 from tabwidget import TabWidget
 from game.world.settlement import Settlement
 from buysellwidget import BuySellWidget
 
-class IngameGui(object):
+class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""
 
 	gui = livingProperty()
@@ -165,7 +165,7 @@ class IngameGui(object):
 		self.gui['fertility'] = game.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
 		self.gui['ship'] = game.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
 
-	def __del__(self):
+	def end(self):
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : None
 		})
@@ -199,6 +199,7 @@ class IngameGui(object):
 		self.message_widget = None
 		self.tabwidgets = None
 		self.hide_menu()
+		super(IngameGui, self).end()
 
 	def update_gold(self):
 		res_id = 1

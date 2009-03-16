@@ -22,9 +22,10 @@
 from game.world.building import BuildingClass
 from game.world.units import UnitClass
 from game.world.ground import GroundClass
+from game.util.living import LivingObject
 import game.main
 
-class Entities(object):
+class Entities(LivingObject):
 	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances.
 	Loads everything from the db"""
 	def __init__(self):
@@ -41,7 +42,8 @@ class Entities(object):
 		for (unit_id,) in game.main.db("SELECT rowid FROM data.unit"):
 			self.units[unit_id] = UnitClass(unit_id)
 
-	def __del__(self):
+	def end(self):
 		self.grounds = None
 		self.buildings = None
 		self.units = None
+		super(Entities, self).end()

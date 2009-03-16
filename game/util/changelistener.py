@@ -23,8 +23,9 @@
 
 from weakmethod import WeakMethod
 import game.main
+from living import LivingObject
 
-class Changelistener(object):
+class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):
 		super(Changelistener, self).__init__()
 		if game.main.debug:
@@ -52,3 +53,6 @@ class Changelistener(object):
 			self.__listeners = []
 		for listener in self.__listeners:
 			listener()
+
+	def end(self):
+		self.__listeners = None

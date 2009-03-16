@@ -21,9 +21,10 @@
 
 import game.main
 from game.util import WeakMethod
+from game.util.living import LivingObject
 import weakref
 
-class Scheduler(object):
+class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	@param timer: Timer instance the schedular registers itself with.
@@ -35,10 +36,18 @@ class Scheduler(object):
 		self.timer = timer
 		self.timer.add_call(self.tick)
 
-	def __del__(self):
+	def end(self):
+		if game.main.debug:
+			print "Scheduler end"
+		keys = []
+		keys.extend(self.schedule.iterkeys())
+		for key in keys:
+			print "deleting"
+			del self.schedule[key]
 		self.schedule = None
 		self.timer.remove_call(self.tick)
 		self.timer = None
+		super(Scheduler, self).end()
 
 	def tick(self, tick_id):
 		"""Threads main loop

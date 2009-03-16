@@ -39,8 +39,8 @@ class SelectionTool(NavigationTool):
 		super(SelectionTool, self).__init__()
 		game.main.gui.on_escape = game.main.gui.show_pause
 
-	def __del__(self):
-		super(SelectionTool, self).__del__()
+	def end(self):
+		super(SelectionTool, self).end()
 
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):

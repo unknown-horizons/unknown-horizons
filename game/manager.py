@@ -23,10 +23,12 @@ import game.timer
 import game.main
 from game.packets import TickPacket
 
+
 from game.util import encode, decode
 from game.util import WorldObject
+from game.util.living import LivingObject
 
-class SPManager(object):
+class SPManager(LivingObject):
 	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
 	over the network, and syncronisation of network games."""
 
@@ -64,7 +66,11 @@ class SPManager(object):
 		if len(self.commands) == 0:
 			game.main.session.timer.remove_call(self.tick)
 
-class MPManager(object):
+	def end(self):
+		self.commands = None
+		super(SPManager, self).end()
+
+class MPManager(LivingObject):
 	COMMAND_RATE = 1
 	def __init__(self):
 		"""Initialize the Multiplayer Manager"""
@@ -73,6 +79,11 @@ class MPManager(object):
 		game.timer.add_call(this.tick)
 		self.commands = []
 		self.packets = {}
+
+	def end(self):
+		self.commands = None
+		self.packets = None
+		super(MPManager, self).end()
 
 	def tick(self, tick):
 		"""Executes a tick
