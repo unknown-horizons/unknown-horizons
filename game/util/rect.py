@@ -61,20 +61,23 @@ class Rect(object):
 			## TODO: other = (x,y, width, height)
 			# is other tuple: (x,y)?
 			if isinstance(other[0], int) and isinstance(other[1], int):
-				return self.distance_to_point_tuple(other)
+				return self.distance_to_tuple(other)
 			else:
 				return other.distance(self)
 
 	def distance_to_point(self, other):
-		"""Calculates distance to an instance of Point."""
+		"""Calculates distance to an instance of Point.
+		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_tuple(self, other):
-		"""Calculates distance to a coordinate as tuple (x,y)"""
+		"""Calculates distance to a coordinate as tuple (x,y)
+		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_rect(self, other):
-		"""Calculates distance to an instance of Rect."""
+		"""Calculates distance to an instance of Rect.
+		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
 	# TODO: replace this everywhere with iteration

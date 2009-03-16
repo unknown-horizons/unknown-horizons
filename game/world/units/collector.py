@@ -378,12 +378,15 @@ class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals """
 
 	def load(self, db, worldid):
-		print 'loading animal coll', worldid
-		import pdb ; pdb.set_trace()
 		super(AnimalCollector, self).load(db, worldid)
 		if self.job is not None:
 			# register at target
 			self.job.object.stop_after_job(self)
+
+	def apply_state(self, state, remaining_ticks=None):
+		super(AnimalCollector, self).apply_state(state, remaining_ticks)
+		if self.state == self.states.waiting_for_animal_to_stop:
+			self.setup_new_job()
 
 	def begin_current_job(self):
 		"""Tell the animal to stop. First step of a job"""

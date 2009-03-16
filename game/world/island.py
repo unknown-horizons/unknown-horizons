@@ -197,6 +197,8 @@ class Island(WorldObject):
 		"""
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
 			# TODO: make this readable
+			#       check if it's faster to calcuate the coords in radius and use
+			#       settlement.get_tile() on large maps
 			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
 			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
 				if tile.settlement is None:
