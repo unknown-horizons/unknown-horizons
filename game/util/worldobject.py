@@ -20,7 +20,9 @@
 # ###################################################
 
 import weakref
+
 import game.main
+
 from changelistener import Changelistener
 
 class WorldObject(Changelistener):

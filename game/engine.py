@@ -20,14 +20,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import new
+import glob, random
+
 import fife
 import fifelog
 import pychan
-import game.gui.style
+
+import gui.style
 import game.main
-import new
-import glob, random
-from game.util.inventory_widget import Inventory, ImageFillStatusButton
+
+from util.inventory_widget import Inventory, ImageFillStatusButton
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.

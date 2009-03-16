@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.util import WeakMethod
+from weakmethod import WeakMethod
 
 class WeakMethodList(object):
 	"""A class that handles zero to n callbacks."""

@@ -19,14 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
+import game.main
+
 from provider import Provider
 from consumer import Consumer
-from game.world.units.unit import Unit
-import game.main
+from units.unit import Unit
+from building.building import Building
 from game.util import WeakList
 from game.gui.tabwidget import TabWidget
-from game.world.building.building import Building
-import weakref
 
 class PrimaryProducer(Provider):
 	"""Class used for primary production classes. These types do not need other ressources to

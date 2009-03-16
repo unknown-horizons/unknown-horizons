@@ -20,8 +20,10 @@
 # ###################################################
 
 import pychan
-from game.world.storage import GenericStorage
+
 import game.main
+
+from game.world.storage import GenericStorage
 
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.

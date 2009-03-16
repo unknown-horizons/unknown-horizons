@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from storageholder import StorageHolder
-from game.util import WeakList
 import game.main
+
+from game.util import WeakList
+from storageholder import StorageHolder
 
 class AbstractConsumer(StorageHolder):
 

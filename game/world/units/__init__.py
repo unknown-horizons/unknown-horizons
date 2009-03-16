@@ -21,8 +21,9 @@
 
 __all__ = ['animal','collector','nature','ship','unit']
 
-import game.main
 import fife
+
+import game.main
 
 class UnitClass(type):
 	def __new__(self, id):

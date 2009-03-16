@@ -20,15 +20,17 @@
 # ###################################################
 
 import random
-from game.world.units.unit import Unit
-from game.world.units.collector import BuildingCollector
-from game.world.units.nature import GrowingUnit
-from game.util import Rect, Point, WorldObject
-from collector import Job
+import weakref
+
+import game.main
+
 from game.world.production import SecondaryProducer
 from game.world.pathfinding import Movement
-import game.main
-import weakref
+from game.util import Rect, Point, WorldObject
+from unit import Unit
+from collector import BuildingCollector
+from nature import GrowingUnit
+from collector import Job
 
 class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	grazingTime = 2

@@ -19,13 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-from game.util import Rect, Point, WorldObject
-from game.world.building.building import Building
-import game.main
 import weakref
 import copy
 import sys
+
+import game.main
+from game.util import Rect, Point, WorldObject
+from building.building import Building
 
 # for speed testing:
 #import time

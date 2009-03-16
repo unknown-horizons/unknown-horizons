@@ -21,9 +21,10 @@
 
 #because of unclean inheritance, bad usage of parameters and bad use of super in most world object, i cant trust that the init constructor is called.
 
-from weakmethod import WeakMethod
 import game.main
+
 from living import LivingObject
+from weakmethod import WeakMethod
 
 class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):

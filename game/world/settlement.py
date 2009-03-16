@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import game.main
-from game.world.storage import SizedSlotStorage
+from storage import SizedSlotStorage
 from game.util import WorldObject, Point, WeakList
-from game.world.tradepost import TradePost
+from tradepost import TradePost
 
 class Settlement(TradePost, WorldObject):
 	"""The Settlement class describes a settlement and stores all the necessary information

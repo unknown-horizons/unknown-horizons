@@ -19,11 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building
-import fife
-import game.main
 import math
 import weakref
+import fife
+
+import game.main
+
+from building import Building
 from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):

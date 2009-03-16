@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.building import BuildingClass
-from game.world.units import UnitClass
-from game.world.ground import GroundClass
-from game.util.living import LivingObject
+from world.building import BuildingClass
+from world.units import UnitClass
+from world.ground import GroundClass
+from util.living import LivingObject
 import game.main
 
 class Entities(LivingObject):

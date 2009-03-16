@@ -25,6 +25,7 @@ import weakref
 import fife
 
 import game.main
+
 from game.world.settlement import Settlement
 from game.world.ambientsound import AmbientSound
 from game.util import Rect,Point, WorldObject

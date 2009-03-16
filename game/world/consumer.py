@@ -18,10 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from game.world.storageholder import StorageHolder
-from game.util import Rect, Point, WeakList
-from abstractconsumer import AbstractConsumer
+
 import game.main
+
+from game.util import Rect, Point, WeakList
+from storageholder import StorageHolder
+from abstractconsumer import AbstractConsumer
 
 class Consumer(AbstractConsumer):
 	"""Class used for buildings that need resources. A branch office is a Consumer, it collects

@@ -19,14 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building, Selectable
-from buildable import BuildableSingle
+import game.main
+
 from game.world.consumer import Consumer
 from game.world.provider import Provider
 from game.gui.tabwidget import TabWidget
 from game.gui.buysellwidget import BuySellWidget
 from game.util import Point, Rect, WorldObject
-import game.main
+from building import Building, Selectable
+from buildable import BuildableSingle
 
 class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
 	"""Building that gets pickups and provides them for anyone.

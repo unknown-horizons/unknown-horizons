@@ -22,9 +22,10 @@
 import fife
 import math
 import time
+
 import game.main
 
-from game.util import Changelistener
+from util.changelistener import Changelistener
 
 class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""

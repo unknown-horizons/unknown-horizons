@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.storage import SizedSlotStorage
+from storage import SizedSlotStorage
 import game.main
 
 class StorageHolder(object):

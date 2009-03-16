@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.storage import PositiveStorage
+from storage import PositiveStorage
 from game.util import WorldObject, Color
 import game.main
 

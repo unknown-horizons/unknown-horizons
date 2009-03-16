@@ -43,17 +43,17 @@ import os.path
 import glob
 import shutil
 import random
-import game.engine
 
-from game.util import Color, ActionSetLoader
-from game.menus import Menus
-from game.dbreader import DbReader
-from game.engine import Fife
-from game.settings import Settings
-from game.session import Session
-from game.gui.mainlistener import MainListener
+import engine
+from util import Color, ActionSetLoader
+from menus import Menus
+from dbreader import DbReader
+from engine import Fife
+from settings import Settings
+from session import Session
+from gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
-from game.savegamemanager import SavegameManager
+from savegamemanager import SavegameManager
 
 
 def start():
@@ -99,7 +99,7 @@ def start():
 def quit():
 	"""Quits the game"""
 	global fife
-	fife.cursor.set(game.engine.fife.CURSOR_NATIVE) #hack to get system cursor back
+	fife.cursor.set(engine.fife.CURSOR_NATIVE) #hack to get system cursor back
 	fife.quit()
 
 
@@ -108,11 +108,11 @@ def start_singleplayer(map_file):
 	global gui, session
 	gui.show()
 
-	fife.cursor.set(game.engine.fife.CURSOR_NONE)
+	fife.cursor.set(engine.fife.CURSOR_NONE)
 
 	fife.engine.pump()
 
-	fife.cursor.set(game.engine.fife.CURSOR_IMAGE, fife.default_cursor_image)
+	fife.cursor.set(engine.fife.CURSOR_IMAGE, fife.default_cursor_image)
 
 	gui.hide()
 

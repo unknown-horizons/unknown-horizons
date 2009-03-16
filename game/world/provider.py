@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.storageholder import StorageHolder
+from storageholder import StorageHolder
 from game.util import WeakList
 import game.main
 

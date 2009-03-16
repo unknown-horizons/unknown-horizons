@@ -25,8 +25,9 @@ __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 import weakref
 
 import game.main
-from game.world.island import Island
-from game.world.player import Player
+
+from island import Island
+from player import Player
 from game.util import Point, Color
 from game.util.living import LivingObject
 

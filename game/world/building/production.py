@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building, Selectable
+import game.main
+
 from game.world.production import SecondaryProducer, PrimaryProducer
-from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from game.gui.tabwidget import TabWidget
 from game.util.point import Point
-import game.main
+from building import Building, Selectable
+from buildable import BuildableSingleWithSurrounding, BuildableSingle
+
 
 class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 18

@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
 import fife
+
+import game.main
+
 from game.world.pathfinding import Pather, PathBlockedError, Movement
 from game.util import Point, Rect, WeakMethodList, WorldObject, WeakMethod
 

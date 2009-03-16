@@ -21,9 +21,11 @@
 
 import math
 import weakref
-from game.util import WeakMethod
 
 import game.main
+
+from game.util import WeakMethod
+
 
 class Growable(object):
 	""" Base class for everything that grows

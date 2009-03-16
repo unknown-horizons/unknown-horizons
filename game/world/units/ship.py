@@ -20,15 +20,16 @@
 # ###################################################
 
 import weakref
+import fife
 
 import game.main
-import fife
+
 from game.world.storage import PositiveTotalStorage
-from unit import Unit
 from game.world.pathfinding import Movement
 from game.util import Point
 from game.gui.tabwidget import TabWidget
 from game.gui.tradewidget import TradeWidget
+from unit import Unit
 
 class Ship(Unit):
 	movement = Movement.SHIP_MOVEMENT

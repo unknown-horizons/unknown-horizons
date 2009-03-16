@@ -19,13 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building, Selectable
-from game.world.abstractconsumer import AbstractConsumer
-from game.gui.tabwidget import TabWidget
-import game.main
-from buildable import BuildableSingle
-from game.util import WeakList
 from random import randint
+
+import game.main
+
+from game.gui.tabwidget import TabWidget
+from game.util import WeakList
+from game.world.abstractconsumer import AbstractConsumer
+from building import Building, Selectable
+from buildable import BuildableSingle
 
 class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""

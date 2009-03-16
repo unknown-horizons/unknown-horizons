@@ -22,9 +22,10 @@
 import weakref
 
 import game.main
+
 from game.dbreader import DbReader
-from game.world.settlement import Settlement
 from game.util import WorldObject, Point, Rect
+from settlement import Settlement
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,

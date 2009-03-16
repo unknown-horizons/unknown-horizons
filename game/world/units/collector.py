@@ -19,16 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.world.units.unit import Unit
+import operator
+import weakref
+import new
+
+import game.main
+
 from game.world.storageholder import StorageHolder
 from game.util import Rect, Point, WorldObject
 from game.world.pathfinding import Movement
 from game.world.production import PrimaryProducer
 from game.ext.enum import Enum
-import game.main
-import operator
-import weakref
-import new
+from unit import Unit
 
 
 class BuildingCollector(StorageHolder, Unit):
