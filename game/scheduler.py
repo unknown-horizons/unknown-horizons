@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -37,7 +37,8 @@ class Scheduler(LivingObject):
 		self.timer.add_call(self.tick)
 
 	def end(self):
-		print "Scheduler len:", len(self.schedule)
+		if game.main.debug:
+			print "Scheduler len:", len(self.schedule)
 		self.schedule = None
 		self.timer.remove_call(self.tick)
 		self.timer = None

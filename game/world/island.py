@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -163,9 +163,13 @@ class Island(WorldObject):
 		@return: list of Settlement instances at that position."""
 		settlements = []
 		if self.rect.intersects(rect):
-			for tile in self.grounds:
-				if rect.contains(tile) and tile.settlement is not None and tile.settlement not in settlements:
+			for x,y in rect.get_coordinates():
+				tile = self.get_tile(Point(x,y))
+				if tile is not None and tile.settlement is not None and tile.settlement not in settlements:
 					settlements.append(tile.settlement)
+			#for tile in self.grounds:
+			#	if rect.contains(tile) and tile.settlement is not None and tile.settlement not in settlements:
+			#		settlements.append(tile.settlement)
 		return settlements
 
 	def add_settlement(self, position, radius, player):
@@ -196,16 +200,16 @@ class Island(WorldObject):
 		@param settlement:
 		"""
 		for tile in self.grounds: # Set settlement var for all tiles in the radius.
+			if tile.settlement == settlement:
+				continue
 			# TODO: make this readable
 			#       check if it's faster to calcuate the coords in radius and use
 			#       settlement.get_tile() on large maps
 			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
 			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
-				if tile.settlement is None:
+				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
 					tile.settlement = settlement
-				elif tile.settlement.owner == settlement.owner:
-					tile.settlement = settlement
-		for building in self.buildings: # Check if any buildings come into range, like unknowned trees
+		for building in self.buildings: # Check if any buildings come into range, like unowned trees
 			if (max(position.left - building.position.center().x, 0, building.position.center().x - position.right) ** 2) + \
 			   (max(position.top - building.position.center().y, 0, building.position.center().y - position.bottom) ** 2) <= radius ** 2:
 				if building.settlement is None:

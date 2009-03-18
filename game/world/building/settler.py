@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #

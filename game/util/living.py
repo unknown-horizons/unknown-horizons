@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,8 +18,41 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import game.main
 
 class livingProperty(object):
+	"""livingProperty's are used to assign propertys to a class, simular to python properties.
+	The extra benefit with livingPropertys is, that they will call the previously assigned
+	instances' end() function one beeing replaced. Note that all classes that are assigned
+	to a livingProperty should subclass the LivingObject class, to ensure the existance of
+	the end() methode.
+	The main purpose of the livingProperty is to ensure the correct deletion of objects,
+	so Classes that derive from the LivingObject class will usually have all their __del__
+	code in the end() methode, to ensure it get's called apon beeing overwritten, even if
+	other references to it exist (which should not!).
+	Here is a small example on the usage:
+
+	class Livetest(object):
+	    prop1 = new livingProperty()
+
+	    def __init__(self):
+	        prop1 = new TestObj()
+			prop1 = new Test2Obj() // TestObj().end() is called
+			prop1 = new TestObj()  // Testobj2().end() is called
+
+	class TestObj(LivingProperty):
+	    def end():
+		    print "TestObj end"
+
+	class Testobj2(LivingProperty):
+	    def end():
+		    print "TestObj2 end"
+
+	This would result in the following output:
+	TestObj end
+	TestObj2 end
+	"""
+
 	def __init__(self):
 		self.__value = None
 
@@ -27,8 +60,9 @@ class livingProperty(object):
 		return self.__value
 
 	def __set__(self, obj, value):
-		#print "Setting:", obj, value
-		#print "Value:", self.__value
+		if game.main.debug:
+			print "Setting:", obj, value
+			print "Value:", self.__value
 		if hasattr(self.__value, 'end'):
 			self.__value.end()
 		self.__value = value

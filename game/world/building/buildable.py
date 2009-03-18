@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -88,7 +88,7 @@ class BuildableSingle(object):
 		from path import Path
 		tear = []
 		p = Point(0,0)
-		for p.x, p.y in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			obj = island.get_tile(p).object
 			if obj is not None:
 				if isinstance(obj, GrowingBuilding):
@@ -117,7 +117,7 @@ class BuildableRect(BuildableSingle):
 	@classmethod
 	def getBuildList(cls, point1, point2, **kwargs):
 		buildings = []
-		for x, y in [ (x, y) for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))) for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1])))) ]:
+		for x, y in ((x, y) for x in xrange(int(min(round(point1[0]), round(point2[0]))), 1 + int(max(round(point1[0]), round(point2[0])))) for y in xrange(int(min(round(point1[1]), round(point2[1]))), 1 + int(max(round(point1[1]), round(point2[1]))))):
 			building = cls.areBuildRequirementsSatisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				buildings.append(building)

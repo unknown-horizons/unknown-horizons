@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -54,6 +54,10 @@ class Consumer(AbstractConsumer):
 					game.main.db("SELECT resource FROM data.production WHERE \
 					production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self._resources[production_line].append(res)
+		"""TUTORIAL:
+		Check out the PrimaryProducer class now in game/world/production.py for further digging
+		"""
+
 
 
 	def save(self, db):

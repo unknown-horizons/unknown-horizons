@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,7 +35,7 @@ class Provider(StorageHolder):
 	need.
 
 	TUTORIAL:
-	Check out the Consumer class now in game/world/consumer.py
+	Check out the AbstractConsumer class now in game/world/abstractconsumer.py
 	"""
 	def __init__(self, **kwargs):
 		super(Provider, self).__init__(**kwargs)

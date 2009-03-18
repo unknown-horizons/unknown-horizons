@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,13 +24,14 @@ from game.world.building.building import *
 
 class Build(object):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, rotation, instance = None, ship = None, tear = None, ownerless=False, **trash):
+	def __init__(self, building, x, y, rotation, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
 		@param building: building class that is to be built.
 		@param x,y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		@param tear: list of buildings to be teared
 		@param ship: ship instance
+		@param island: island worldid
 		"""
 		self.building_class = building.id
 		self._instance = instance
@@ -40,6 +41,8 @@ class Build(object):
 		self.y = int(y)
 		self.rotation = int(rotation)
 		self.ownerless = ownerless
+		self.island = island.getId() if island is not None else None
+		self.settlement = settlement.getId() if settlement is not None else None
 
 	def __call__(self, issuer):
 		"""Execute the command
@@ -50,13 +53,21 @@ class Build(object):
 			game.main.session.manager.execute(Tear(building))
 
 
-		island = game.main.session.world.get_island(self.x, self.y)
+		if self.island is not None:
+			island = WorldObject.getObjectById(self.island)
+		else:
+			island = game.main.session.world.get_island(self.x, self.y)
 		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y,\
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			instance=(self._instance if hasattr(self, '_instance') and issuer == game.main.session.world.player else None))
 
 		island.add_building(building, issuer)
-		secondary_resource_source = island.get_settlement(Point(self.x, self.y)) if self.ship is None else WorldObject.getObjectById(self.ship)
+		if self.settlement is not None:
+			secondary_resource_source = WorldObject.getObjectById(self.settlement)
+		elif self.ship is not None:
+			secondary_resource_source = WorldObject.getObjectById(self.ship)
+		else:
+			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 		if secondary_resource_source is not None:
 			for (resource, value) in building.costs.items():
 				# remove from issuer, and remove remaining rest from secondary source (settlement or ship)y

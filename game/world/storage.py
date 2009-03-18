@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,11 @@ from game.util import WorldObject
 import game.main
 
 class GenericStorage(WorldObject): # TESTED, WORKS
+	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
+	resources. The GenericStorage is the general form and is mostly used as baseclass to
+	derive storages with special function from it. Normally there should be no need to
+	use the GenericStorage. Rather use a specialized version that is suitable for the job.
+	"""
 	def __init__(self, **kwargs):
 		super(GenericStorage, self).__init__(**kwargs)
 		self._storage = {}
@@ -51,6 +56,14 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 			self.alter(res, amount)
 
 	def alter(self, res, amount):
+		"""alter() will return the amount of resources that did not fit into the storage or
+		if altering in a negative way to remove resources, the amount of resources that was
+		not available in the storage. The totalstorage always returns 0 as there are not
+		limits as to what can be in the storage.
+		@param res: int res id that is to be altered
+		@param amount: int amount that is to be changed. Can be negative to remove resources.
+		@return: int - amount that did not fit or was not available, depending on context.
+		"""
 		if res in self._storage:
 			self._storage[res] += amount
 		else:
@@ -59,7 +72,21 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		return 0
 
 	def get_limit(self, res):
+		"""Returns the current limit of the storage. Please not that this value can have
+		different meanings depending on the context. See the storage descriptions on what
+		the value does.
+		@param res: int res that the limit should be returned for.
+		@return: int
+		"""
 		return self.limit # should not be used for generic storage
+
+	def adjust_limits(self, amount):
+		"""Adjusts the limit of the storage by amount
+		@param amount: int - value of how much is to be adjusted
+		"""
+		self.limit += amount
+		if self.limit < 0:
+			self.limit = 0
 
 	def __getitem__(self, res):
 		return self._storage[res] if res in self._storage else 0
@@ -72,6 +99,7 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 
 class SpecializedStorage(GenericStorage): # NOT TESTED! NEEDS WORK!
 	def alter(self, res, amount):
+		assert False, "Test this before using, it hasn't been correctly implemented"
 		return super(SpecializedStorage, self).alter(res, amount) if res in self._storage else amount
 
 	def addResourceSlot(res):
@@ -82,6 +110,7 @@ class SpecializedStorage(GenericStorage): # NOT TESTED! NEEDS WORK!
 
 class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
 	def __init__(self, **kwargs):
+		assert False, "Test this before using, it hasn't been correlty implemented"
 		super(SizedSpecializedStorage, self).__init__(**kwargs)
 		self.__size = {}
 
@@ -105,6 +134,11 @@ class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
 
 
 class TotalStorage(GenericStorage): # TESTED AND WORKING
+	"""The TotalStorage represents a storage with a general limit to the amount of resources
+	that can be stored in it. The limit is a general limit, not specialized to one resource.
+	So with a limit of 200 you could have 199 resource A and 1 resource or any other
+	combination totaling 200.
+	"""
 	def __init__(self, space, **kwargs):
 		super(TotalStorage, self).__init__(space = space, **kwargs)
 		self.limit = space
@@ -114,6 +148,7 @@ class TotalStorage(GenericStorage): # TESTED AND WORKING
 		return check + super(TotalStorage, self).alter(res, amount - check)
 
 class PositiveStorage(GenericStorage): # TESTED AND WORKING
+	"""The positive storage doesn't allow to have negative values for resources."""
 	def alter(self, res, amount):
 		ret = min(0, amount + self[res]) + super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
 		if res in self._storage and self._storage[res] <= 0:
@@ -121,13 +156,16 @@ class PositiveStorage(GenericStorage): # TESTED AND WORKING
 		return ret
 
 class PositiveTotalStorage(PositiveStorage, TotalStorage): # TESTED AND WORKING
+	"""A combination of the Total and Positive storage. Used to set a limit and ensure
+	there are no negative amounts in the storage."""
 	def __init__(self, space, **kwargs):
 		super(TotalStorage, self).__init__(space = space, **kwargs)
 		self.limit = space
 
 class SizedSlotStorage(PositiveStorage): # TESTED AND WORKING
 	"""A storage consisting of a slot for each ressource, all slots have the same size 'limit'
-	Used by the branch office for example."""
+	Used by the branch office for example. So with a limit of 30 you could have a max of
+	30 from each resource."""
 	def __init__(self, limit, **kwargs):
 		super(SizedSlotStorage, self).__init__(**kwargs)
 		self.limit = limit
@@ -136,10 +174,6 @@ class SizedSlotStorage(PositiveStorage): # TESTED AND WORKING
 		check = max(0, amount + self[res] - self.limit)
 		return check + super(SizedSlotStorage, self).alter(res, amount - check)
 
-	def adjust_limits(self, amount):
-		self.limit += amount
-		if self.limit < 0:
-			self.limit = 0
 
 class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass

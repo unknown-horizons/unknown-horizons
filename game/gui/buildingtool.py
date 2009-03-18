@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -179,12 +179,13 @@ class BuildingTool(NavigationTool):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
-			if self.startPoint != point:
-				self.startPoint = point
-				self.previewBuild(point, point)
-				self.startPoint = None
+			pass
+			#mapcoord = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			#point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
+			#if self.startPoint != point:
+			#	self.startPoint = point
+			#	self.previewBuild(point, point)
+			#	self.startPoint = None
 		else:
 			super(BuildingTool, self).mousePressed(evt)
 			return

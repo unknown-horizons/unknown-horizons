@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,24 +24,24 @@
 # This script is used to create Unknown Horizons release tarballs for linux
 # It will copy all needed fife files to a 'fife' folder in the Unknown Horizons folder
 #
-# Please note, in order for a successful run of this script we assume you are in a directory 
+# Please note, in order for a successful run of this script we assume you are in a directory
 # that has two childern fife/ and unknown-horizons/ that you will specifiy. The fife/ folder
-# containing the the FIFE svn trunk and the unknown-horizons/ folder containing the 
+# containing the the FIFE svn trunk and the unknown-horizons/ folder containing the
 # Unknown Horizons folder. So you would find: fife/test_fife.py and unknown-horizons/run_uh.py
 
 set -x
 
-if [ -z $1 ]; then 
+if [ -z $1 ]; then
 	echo "Usage:"
-	echo "${0} <fife dir> <unknown-horizons dir> [tarballname]" 
+	echo "${0} <fife dir> <unknown-horizons dir> [tarballname]"
 	exit 1
 fi
 
-if ! [ -d "$1" ] && [ -e "$1/test_fife.py"] ; then 
+if ! [ -d "$1" ] && [ -e "$1/test_fife.py"] ; then
 	echo "You must specify a FIFE dir (must contain test_fife.py)!"
 	exit 1
 fi
-if ! [ -d "$2" ] && [ -e "$2/run_uh.py"]; then 
+if ! [ -d "$2" ] && [ -e "$2/run_uh.py"]; then
 	echo "You must specify a Unknown Horizons dir (must contain run_uh.py)!"
 	exit  1
 fi
@@ -103,7 +103,7 @@ echo "Done."
 cd "${startdir}"
 
 echo "Creating Tarball ${3}..."
-if ! [ -z $3 ]; then 
+if ! [ -z $3 ]; then
 	tar -pczf "${3}" "${uhfolder}"
 else
 	tar -pczf unknown-horizons-$(date +"%m%d%y").tar.gz "${uhfolder}"

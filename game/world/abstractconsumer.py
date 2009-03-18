@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,11 +25,17 @@ from game.util import WeakList
 from storageholder import StorageHolder
 
 class AbstractConsumer(StorageHolder):
+	"""The AbstractConsumer represents things that consume resources, as buildings and settlers.
+	This AbstractConsumer does not offer any automatic loading from the database or
+	productionlines. In order to use the AbstractConsumer you have add the needed resources
+	by hand. See the Consumer or Settler class for an implementation.
 
+
+	TUTORIAL: You should now check out the Consumer(consumer.py) class to see how a real
+	implementation of this class works.
+	"""
 
 	def __init__(self, **kwargs):
-		"""
-		"""
 		super(AbstractConsumer, self).__init__(**kwargs)
 		if game.main.debug:
 			print "AbstractConsumer __init__"
@@ -51,9 +57,6 @@ class AbstractConsumer(StorageHolder):
 
 		self.__collectors = WeakList()
 
-		"""TUTORIAL:
-		Check out the PrimaryProducer class now in game/world/production.py for further digging
-		"""
 
 	def create_collector(self):
 		""" Creates collector according to building type (chosen by polymorphism)

@@ -32,8 +32,8 @@ from game.gui.tabwidget import TabWidget
 
 class PrimaryProducer(Provider):
 	"""Class used for primary production classes. These types do not need other ressources to
-	produce something. A tree is a primary producer for example, it 'just grows' and there by
-	produces wood.
+	produce something. A tree is a primary producer for example, it 'just grows' and produces
+	wood.
 
 	TUTORIAL:
 	Check out the __init() function now."""
@@ -164,14 +164,14 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 	TUTORIAL:
 	As you may notice through the detailed distinction of Consumer and Producer classes, it's now
 	very simple to create new classes with the wanted behavior. You will notice that we love this
-	way of doing things and tend to abstract as much as somehow possible.
+	way of doing things and tend to abstract as much as possible.
 
 	By now you should have a fair overview of how Unknown Horizons works. The tutorial ends here. From now
 	you might want to take a look into the game/gui and game/util folders to checkout the workings
 	of the gui and some extra stuff we use. Since you came all the way here, you are now ready to
 	get your hands dirty and start working. So check out the bugtracker at www.unknown-horizons.org/trac/
 	and see if there's a nice ticket for you :) For further questions just visit us on irc:
-	#openanno @ irc.freenode.net. We'll be happy to answer any questions.
+	#unknown-horizons @ irc.freenode.net. We'll be happy to answer any questions.
 
 	Have fun with Unknown Horizons!
 	"""

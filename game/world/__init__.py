@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008 The Unknown Horizons Team
+# Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,7 +33,7 @@ from game.util.living import LivingObject
 
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
-	   A World instance holds a lot of important lists:
+
 	   * players - a list of all the sessios's players - Player instances
 	   * islands - a list of all the map's islands - Island instances
 	   * grounds - a list of all the map's groundtiles
@@ -42,7 +42,7 @@ class World(LivingObject):
 					  This is important for pathfinding and quick tile fetching.
 	   * ships - a list of all the ships ingame - game.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
-
+	   TUTORIAL: You should now check out the _init() function.
 	"""
 	def __init__(self, **kwargs):
 		"""@param db: DbReader instance with the map/savegame that is to be loaded
@@ -123,7 +123,7 @@ class World(LivingObject):
 			for island in self.islands:
 				for tile in island.ground_map.keys():
 					if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True))
+						game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
 				for building in island.buildings:
 					building.production_step()
 			print "Done."
