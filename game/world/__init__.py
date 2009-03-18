@@ -118,16 +118,17 @@ class World(LivingObject):
 
 		# Add a random number of trees to the gameworld
 		if not game.main.session.is_game_loaded():
-			print "Adding trees to the world..."
-			import random
-			from game.command.building import Build
-			for island in self.islands:
-				for tile in island.ground_map.keys():
-					if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
-				for building in island.buildings:
-					building.production_step()
-			print "Done."
+			if int(self.properties.get('RandomTrees', 1)) == 1:
+				print "Adding trees to the world..."
+				import random
+				from game.command.building import Build
+				for island in self.islands:
+					for tile in island.ground_map.keys():
+						if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
+							game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
+					for building in island.buildings:
+						building.production_step()
+				print "Done."
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
