@@ -80,7 +80,6 @@ class Island(WorldObject):
 			# These are important for pathfinding and building to check if the ground tile is blocked in any way.
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
-
 		self.settlements = [] # List of settlements
 
 		self.path_nodes = {} # Paths are saved here for usage by the pather.
@@ -199,16 +198,23 @@ class Island(WorldObject):
 		@param radius:
 		@param settlement:
 		"""
-		for tile in self.grounds: # Set settlement var for all tiles in the radius.
-			if tile.settlement == settlement:
-				continue
-			# TODO: make this readable
-			#       check if it's faster to calcuate the coords in radius and use
-			#       settlement.get_tile() on large maps
-			if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
-			   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
+		for coord in position.get_radius_coordinates(radius):
+			tile = self.get_tile(Point(coord[0], coord[1]))
+			if tile is not None:
+				if tile.settlement == settlement:
+					continue
 				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
 					tile.settlement = settlement
+		#for tile in self.grounds: # Set settlement var for all tiles in the radius.
+		#	if tile.settlement == settlement:
+		#		continue
+			## TODO: make this readable
+			##       check if it's faster to calcuate the coords in radius and use
+			##       settlement.get_tile() on large maps
+			#if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
+			#   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
+			#	if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
+			#		tile.settlement = settlement
 		for building in self.buildings: # Check if any buildings come into range, like unowned trees
 			if (max(position.left - building.position.center().x, 0, building.position.center().x - position.right) ** 2) + \
 			   (max(position.top - building.position.center().y, 0, building.position.center().y - position.bottom) ** 2) <= radius ** 2:

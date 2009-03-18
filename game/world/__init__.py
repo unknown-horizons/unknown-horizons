@@ -116,6 +116,7 @@ class World(LivingObject):
 			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
 
+		# Add a random number of trees to the gameworld
 		if not game.main.session.is_game_loaded():
 			print "Adding trees to the world..."
 			import random
