@@ -89,6 +89,8 @@ class Building(AmbientSound, WorldObject):
 				tile.blocked = False
 				tile.object = None
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+		self._instance = None
+		game.main.session.scheduler.rem_all_classinst_calls(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		self.__del__()
