@@ -44,4 +44,3 @@ class Tree(GrowingBuilding):
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = 2
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
-

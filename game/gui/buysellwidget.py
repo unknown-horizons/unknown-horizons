@@ -198,4 +198,3 @@ class BuySellWidget(object):
 		self.resources.addChild(vbox)
 		self.hide()
 		self.resources.show()
-

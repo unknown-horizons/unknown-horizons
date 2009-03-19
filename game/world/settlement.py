@@ -93,4 +93,3 @@ class Settlement(TradePost, WorldObject):
 			building = buildingclass.load(db, building_id)
 
 		return self
-

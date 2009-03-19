@@ -84,4 +84,3 @@ class LivingObject(object):
 		contains the super(YOUROBJECT, self).end() call, to ensure all parentobjects are
 		deinited correctly."""
 		pass
-

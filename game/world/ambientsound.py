@@ -86,4 +86,3 @@ class AmbientSound(object):
 			soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
 			a.play_ambient(soundfile, looping = False)
 			game.main.fife.emitter['ambient'].remove(a.emitter)
-

@@ -120,5 +120,3 @@ class UnitProductionLine(object):
 		for res, amount in \
 			game.main.db("SELECT resource, amount FROM data.production WHERE production_line=?", id):
 			self.production[amount] = amount
-
-

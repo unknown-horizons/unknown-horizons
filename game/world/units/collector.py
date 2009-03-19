@@ -453,4 +453,3 @@ class Job(object):
 	@property
 	def object(self):
 		return self._object()
-

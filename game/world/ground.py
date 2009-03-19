@@ -80,4 +80,3 @@ class GroundClass(type):
 			#img = game.main.fife.imagepool.getImage(img)
 			#img.setXShift(0)
 			#img.setYShift(0)
-

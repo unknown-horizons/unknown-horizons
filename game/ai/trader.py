@@ -129,9 +129,3 @@ class Trader(Player, StorageHolder):
 				game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self) # delay one tick, to allow old movement calls to completely finish
 			else:
 				game.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
-
-
-
-
-
-

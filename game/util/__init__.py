@@ -33,4 +33,3 @@ from worldobject import WorldObject
 from weakmethodlist import WeakMethodList
 from encoder import encode, decode
 from loader import ActionSetLoader
-

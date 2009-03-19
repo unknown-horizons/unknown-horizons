@@ -53,4 +53,3 @@ class TradePost(object):
 
 		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
 			self.sell_list[res] = limit
-
