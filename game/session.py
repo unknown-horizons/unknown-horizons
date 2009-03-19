@@ -116,6 +116,7 @@ class Session(LivingObject):
 				game.main.fife.emitter['ambient'].remove(emitter)
 			game.main.fife.emitter['effects'].stop()
 			game.main.fife.emitter['speech'].stop()
+		self.world = None
 		self.cursor = None
 		self.keylistener = None
 		self.ingame_gui = None
@@ -124,7 +125,6 @@ class Session(LivingObject):
 		self.scheduler = None
 		self.manager = None
 		self.timer = None
-		self.world = None
 
 		self.selected_instances = None
 		self.selection_groups = None
