@@ -19,8 +19,8 @@
 	<ImageButton name="weaver-1" position="113,25" up_image="content/gui/images/icons/hud/build/weaver.png" hover_image="content/gui/images/icons/hud/build/weaver_h.png" down_image="content/gui/images/icons/hud/build/weaver_h.png" text="" />
 	 <Label position="124,83" text="Weaver" />
 
-	<ImageButton name="boatyard-1" position="113,100" up_image="content/gui/images/icons/hud/build/raftbuilder.png" hover_image="content/gui/images/icons/hud/build/raftbuilder_h.png" down_image="content/gui/images/icons/hud/build/raftbuilder_h.png" text="" />
-	 <Label position="133,155" text="Raft" />
+	<ImageButton name="boat_builder-1" position="116,100" up_image="content/gui/images/icons/hud/build/boat_builder.png" hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" text="" />
+	 <Label position="116,155" text="Boat Builder" />
 
 	<ImageButton name="lumberjack-1" position="182,25" up_image="content/gui/images/icons/hud/build/lumberjack.png" hover_image="content/gui/images/icons/hud/build/lumberjack_h.png" down_image="content/gui/images/icons/hud/build/lumberjack_h.png" text="" />
 	 <Label position="184,83" text="Lumberjack" />

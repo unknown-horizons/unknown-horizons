@@ -141,7 +141,7 @@ class IngameGui(LivingObject):
 				#'hunter-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 9),
 				'fisher-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 11),
 				'weaver-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
-				#'boatyard-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 12),
+				'boat_builder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 12),
 				'lumberjack-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
 				'tree-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
 				'herder-1' : game.main.fife.pychan.tools.callbackWithArguments(self._build, 10),
