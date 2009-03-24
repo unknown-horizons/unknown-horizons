@@ -72,9 +72,9 @@ class Trader(Player, StorageHolder):
 		else:
 			# select a branch office
 			rand = random.randint(0,len(branchoffices)-1)
-			self.office[ship.getId()] = branchoffices[rand]
+			self.office[ship.id] = branchoffices[rand]
 			for water in game.main.session.world.water: # get a position near the branch office
-				if Point(water[0],water[1]).distance(self.office[ship.getId()].position) < 3:
+				if Point(water[0],water[1]).distance(self.office[ship.id].position) < 3:
 					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
 					break
 			else:
@@ -83,7 +83,7 @@ class Trader(Player, StorageHolder):
 	def reached_branch(self, id):
 		"""Actions that need to be taken when reaching a branch office
 		@param id: ships id"""
-		settlement = self.office.settlement
+		settlement = self.office[id].settlement
 		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
 			rand = random.randint(1,4) # select a random amount to sell
 			if settlement.inventory[res] >= limit:
@@ -108,7 +108,7 @@ class Trader(Player, StorageHolder):
 				settlement.owner.inventory.alter(1, alter*\
 					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
 				settlement.inventory.alter(res, alter)
-		del self.office[self.getId()]
+		del self.office[id]
 		# wait 2 seconds before going on to the next island
 		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
 
