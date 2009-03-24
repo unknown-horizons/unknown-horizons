@@ -194,6 +194,16 @@ class World(LivingObject):
 				return i
 		return None
 
+	def get_branch_offices(self):
+		"""Returns all branch offices on the map."""
+		branchoffices = []
+		for island in game.main.session.world.islands:
+			for settlement in island.settlements:
+				for building in settlement.buildings:
+					if isinstance(building,game.world.building.storages.BranchOffice):
+						branchoffices.append(building)
+		return branchoffices
+
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""

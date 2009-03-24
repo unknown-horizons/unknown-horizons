@@ -155,6 +155,7 @@ class Unit(WorldObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
 		self._instance.setLocation(location)
 
+		# try to get next step, handle a blocked path
 		while self.next_target == self.position:
 			try:
 				self.next_target = self.path.get_next_step()

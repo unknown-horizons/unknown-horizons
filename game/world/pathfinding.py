@@ -273,13 +273,17 @@ class Pather(object):
 		else:
 			assert False, 'Invalid way of movement'
 
-		self.unit = weakref.ref(unit)
+		self._unit = weakref.ref(unit)
 
 		self.destination_in_building = False
 		self.source_in_building = False
 
 		self.path = None
 		self.cur = None
+
+	@property
+	def unit(self):
+		return self._unit()
 
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
 		"""Calculates a path to destination
@@ -290,18 +294,18 @@ class Pather(object):
 		@return: False if movement is impossible, else True"""
 
 		# workaround, this can't be initalized at construction time
-		if self.unit().__class__.movement == Movement.COLLECTOR_MOVEMENT:
-			self.path_nodes = self.unit().home_building().radius_coords
+		if self.unit.__class__.movement == Movement.COLLECTOR_MOVEMENT:
+			self.path_nodes = self.unit.home_building().radius_coords
 
 		if not check_only:
 			self.source_in_building = False
-		source = self.unit().position
-		if self.unit().is_moving() and self.path is not None:
+		source = self.unit.position
+		if self.unit.is_moving() and self.path is not None:
 			source = Point(*self.path[self.cur])
 		else:
-			island = game.main.session.world.get_island(self.unit().position.x, self.unit().position.y)
+			island = game.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 			if island is not None:
-				building = island.get_building(self.unit().position)
+				building = island.get_building(self.unit.position)
 				if building is not None:
 					source = building
 					if not check_only:
@@ -314,7 +318,7 @@ class Pather(object):
 
 		if not check_only:
 			self.path = path
-			if self.unit().is_moving():
+			if self.unit.is_moving():
 				self.cur = 0
 			else:
 				self.cur = -1
@@ -338,7 +342,7 @@ class Pather(object):
 
 		path_blocked_by_unit = False
 
-		if self.unit().__class__.movement == Movement.SHIP_MOVEMENT:
+		if self.unit.__class__.movement == Movement.SHIP_MOVEMENT:
 			# for ship: check if another ship is blocking the way
 			path_blocked_by_unit = self.path[self.cur] in game.main.session.world.ship_map and \
 														 game.main.session.world.ship_map[self.path[self.cur]]() is not self
@@ -351,10 +355,10 @@ class Pather(object):
 
 		if self.destination_in_building and self.cur == len(self.path)-1:
 			self.destination_in_building = False
-			self.unit().hide()
+			self.unit.hide()
 		elif self.source_in_building and self.cur == 2:
 			self.source_in_building = False
-			self.unit().show()
+			self.unit.show()
 
 		return Point(*self.path[self.cur])
 
@@ -384,5 +388,9 @@ class Pather(object):
 			self.path = []
 			for step in path_steps:
 				self.path.append(step) # the sql statement orders the steps
-			self.cur = self.path.index(self.unit().position.get_coordinates()[0])
+			cur_position = self.unit.position.get_coordinates()[0]
+			if cur_position in self.path:
+				self.cur = self.path.index(cur_position)
+			else:
+				self.cur = -1
 			return True

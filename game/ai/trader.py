@@ -40,18 +40,21 @@ class Trader(Player, StorageHolder):
 		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
 		#print "Initing Trader..."
 		self.ships = [] # Put all the traders ships in here
-		self.office = None # This is used to store the branchoffice the trader is currently heading to
+		self.office = {} # This is used to store the branchoffice the ships are currently heading to
 		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
+
+		# create a ship and place it randomly (temporary hack)
 		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
 		self.ships.append(game.main.session.entities.units[6](x, y))
 		game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships[0]),self)
 
+	def save(self, db):
+		# office, ships, timer
+		pass
 
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		#print "min:", game.main.session.world.min_x
-		#print "max:", game.main.session.world.max_x
 		assert len(game.main.session.world.water)>0, \
 			   "You're doing it wrong, this is not allowed to happen."
 		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
@@ -63,22 +66,15 @@ class Trader(Player, StorageHolder):
 		"""Sends a ship to a random branch office on the map
 		@param ship: Ship instance that is to be used"""
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
-		branchoffices = []
-		for island in game.main.session.world.islands: # find all branch offices
-			for settlement in island.settlements:
-				for building in settlement.buildings:
-					if isinstance(building,game.world.building.storages.BranchOffice):
-						branchoffices.append(building)
+		branchoffices = game.main.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
 			self.send_ship_random(ship)
 		else:
-			if len(branchoffices) == 1: # select a branch office
-				self.office = branchoffices[0]
-			else:
-				rand = random.randint(0,len(branchoffices)-1)
-				self.office = branchoffices[rand]
+			# select a branch office
+			rand = random.randint(0,len(branchoffices)-1)
+			self.office[ship.getId()] = branchoffices[rand]
 			for water in game.main.session.world.water: # get a position near the branch office
-				if Point(water[0],water[1]).distance(self.office.position) < 3:
+				if Point(water[0],water[1]).distance(self.office[ship.getId()].position) < 3:
 					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
 					break
 			else:
@@ -112,7 +108,7 @@ class Trader(Player, StorageHolder):
 				settlement.owner.inventory.alter(1, alter*\
 					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
 				settlement.inventory.alter(res, alter)
-		self.office = None
+		del self.office[self.getId()]
 		# wait 2 seconds before going on to the next island
 		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
 

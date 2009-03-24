@@ -77,7 +77,6 @@ class BuildingCollector(StorageHolder, Unit):
 		self.register_at_home_building()
 
 	def save(self, db):
-		#import pdb  ; pdb.set_trace()
 		super(BuildingCollector, self).save(db)
 		# set owner to home_building (is set to player by unit)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
@@ -147,7 +146,8 @@ class BuildingCollector(StorageHolder, Unit):
 			self.show()
 
 	def search_job(self):
-		"""Search for a job, only called if the collector does not have a job."""
+		"""Search for a job, only called if the collector does not have a job.
+		If no job is found, a new search will be scheduled in 32 ticks."""
 		if game.main.debug:
 			print "Collector seach_job", self.id
 		self.job = self.get_job()
@@ -203,6 +203,7 @@ class BuildingCollector(StorageHolder, Unit):
 		# sort job list
 		jobs = self.sort_jobs(jobs)
 
+		# check if we can move to that targets
 		for job in jobs:
 			if self.check_move(job.object.position):
 				return job
@@ -228,16 +229,18 @@ class BuildingCollector(StorageHolder, Unit):
 		return jobs
 
 	def begin_current_job(self):
-		"""Executes the current job"""
+		"""Starts executing the current job by registering itself and moving to target."""
 		if game.main.debug:
 			print "Collector begin_current_job", self.id
 		self.setup_new_job()
 		self.show()
+		assert self.check_move(self.job.object.position)
 		self.move(self.job.object.position, self.begin_working)
 		self.state = self.states.moving_to_target
 
 	def begin_working(self):
-		"""Pretends that the collector works by waiting some time"""
+		"""Pretends that the collector works by waiting some time. finish_working is
+		called after that time."""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
 		if game.main.debug:
@@ -249,7 +252,7 @@ class BuildingCollector(StorageHolder, Unit):
 			self.reroute()
 
 	def finish_working(self):
-		"""Called when collector is stayed at the target for a while.
+		"""Called when collector has stayed at the target for a while.
 		Picks up the resources and sends collector home."""
 		if game.main.debug:
 			print "Collector finish_working", self.id
@@ -265,6 +268,8 @@ class BuildingCollector(StorageHolder, Unit):
 			self.reroute()
 
 	def reroute(self):
+		"""Reroutes the collector to a different job, or home if no job is found.
+		Can be called the current job can't be executed any more"""
 		if game.main.debug:
 			print "Collector reroute", self.id
 		#print self.getId(), 'Rerouting from', self.position
@@ -281,8 +286,7 @@ class BuildingCollector(StorageHolder, Unit):
 			self.move_home(callback=self.reached_home)
 
 	def reached_home(self):
-		"""We finished now our complete work. You can use this as event as after work.
-		"""
+		"""Exchanges resources with home and 'ends' the job"""
 		if game.main.debug:
 			print "Collector reached_home", self.id
 
@@ -322,7 +326,7 @@ class BuildingCollector(StorageHolder, Unit):
 		return self.home_building().get_needed_res()
 
 	def get_buildings_in_range(self):
-		"""returns all buildings in range
+		"""Returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		if game.main.debug:
 			print "Collector get_buildings_in_range", self.id
@@ -330,12 +334,14 @@ class BuildingCollector(StorageHolder, Unit):
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None, action='move_full'):
+		"""Moves collector back to its home building"""
 		if game.main.debug:
 			print "Collector move_home", self.id
 		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
 	def cancel(self):
+		"""Cancels current job and moves back home"""
 		if game.main.debug:
 			print "Collector cancel", self.id
 		if self.job.object is not None:
@@ -379,9 +385,10 @@ class AnimalCollector(BuildingCollector):
 
 	def load(self, db, worldid):
 		super(AnimalCollector, self).load(db, worldid)
-		if self.job is not None:
-			# register at target
-			self.job.object.stop_after_job(self)
+		if self.state == self.states.waiting_for_animal_to_stop:
+			if self.job is not None:
+				# register at target
+				self.job.object.stop_after_job(self)
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(AnimalCollector, self).apply_state(state, remaining_ticks)
@@ -389,7 +396,7 @@ class AnimalCollector(BuildingCollector):
 			self.setup_new_job()
 
 	def begin_current_job(self):
-		"""Tell the animal to stop. First step of a job"""
+		"""Tell the animal to stop."""
 		#print self.id, 'BEGIN CURRENT JOB'
 		self.setup_new_job()
 		self.stop_animal()
@@ -436,12 +443,13 @@ class AnimalCollector(BuildingCollector):
 		self.job.object.move(self.home_building().position, destination_in_building = True, action='move_full')
 
 	def release_animal(self):
-		"""Let animal free after shearing"""
+		"""Let animal free after shearing and schedules search for a new job for animal."""
 		#print self.id, 'RELEASE ANIMAL', self.job.object.getId()
 		game.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
 class Job(object):
+	"""Data structure for storing information of collector jobs"""
 	def __init__(self, object, res, amount):
 		self._object = weakref.ref(object)
 		self.res = res
