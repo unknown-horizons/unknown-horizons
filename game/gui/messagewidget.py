@@ -30,19 +30,26 @@ class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
 	It uses Message Class instances to store messages and manages the
 	archive.
-	@param x,y: int position where the widget ist placed on the screen."""
+	@param x,y: int position where the widget is placed on the screen."""
 	def __init__(self, x, y):
 		self.x, self.y = x, y
-		self.active_messages = []
-		self.archive = []
+		self.active_messages = [] # for displayed messages
+		self.archive = [] # mesages, that aren'y displayed any more
 		self.widget = game.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
 		self.widget.position = (x,y)
+
+		# the widget will be changed over time and have to be reset, when a message
+		# gets moved to the archive. to get info about the original state, you can use this:
+		self.original_widget = game.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
+		self.original_widget.position = (x,y)
+
 		self.text_widget = game.main.fife.pychan.loadXML('content/gui/hud_messages_text.xml')
 		self.text_widget.position = (x,y+self.widget.height)
 		self.widget.show()
 		self.current_tick = 0
-		self.position = 0
+		self.position = 0 # number of current mesage
 		game.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
+		# buttons to toggle through messages
 		button_next = self.widget.findChild(name='next')
 		button_next.capture(self.forward)
 		button_back = self.widget.findChild(name='back')
@@ -55,29 +62,40 @@ class MessageWidget(LivingObject):
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
 		self.active_messages.insert(0, Message(x,y,id, self.current_tick, message_dict))
+		# play a message sound, if one is specified in the database
 		sound = game.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
 		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.rowid=? ORDER BY random() LIMIT 1",id)
-		sound = sound[0][0] if len(sound)>0 else None
-		if sound is not None:
-			game.main.fife.play_sound('speech', sound)
+		if len(sound) > 0 and sound[0][0] is not None:
+			game.main.fife.play_sound('speech', sound[0][0])
 		self.draw_widget()
 
 	def draw_widget(self):
 		"""Updates the widget."""
+		# iterate all 4 message buttons
 		for i in range(1,5):
-			if self.position + i-1 < len(self.active_messages):
-				w = self.widget.findChild(name=str(i))
-				w.up_image = self.active_messages[self.position + i-1].image
-				w.hover_image = self.active_messages[self.position + i-1].image
-				w.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, self.active_messages[self.position + i-1].x,self.active_messages[self.position + i-1].y))
+			w = self.widget.findChild(name=str(i))
+
+			# check if this widget should display a message right now
+			if (self.position + i-1) < len(self.active_messages):
+				# set properties of this widget according to message
+				cur_message = self.active_messages[self.position + i-1]
+				w.up_image = cur_message.image
+				w.hover_image = cur_message.image
+				w.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, cur_message.x, cur_message.y))
+				# the following function are marked as deprecated, can probably be replaced by capture()
 				w.setEnterCallback(self.show_text)
 				w.setExitCallback(self.hide_text)
-			else:
-				w = self.widget.findChild(name=str(i))
-				w.up_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
-				w.hover_image = 'content/gui/images/background/oa_ingame_buttonbg_48.png'
+				# this lines won't work, in show_text, w is always button 4
+				#w.capture(lambda : self.show_text(w), "mouseEntered")
+				#w.capture(self.hide_text, "mouseExited")
+			else: # no current message
+				original_w = self.original_widget.findChild(name=str(i))
+				w.up_image = original_w.up_image
+				w.hover_image = original_w.hover_image
 				w.capture(None)
-				w.setEnterCallback(None)
+				w.capture(None, "mouseEntered")
+				w.capture(None, "mouseExited")
+				#w.setEnterCallback(None)
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -92,7 +110,8 @@ class MessageWidget(LivingObject):
 			self.draw_widget()
 
 	def show_text(self, button):
-		"""Shows the text for the button."""
+		"""Shows the text for a button."""
+		print 'showtext for ', str(button)
 		label = self.text_widget.findChild(name='text')
 		label.text = self.active_messages[self.position+int(button.name)-1].message
 		label.resizeToContent()
@@ -100,7 +119,7 @@ class MessageWidget(LivingObject):
 		self.text_widget.position = (self.widget.x + self.widget.width/2-self.text_widget.width/2, self.text_widget.y)
 		self.text_widget.show()
 
-	def hide_text(self, button):
+	def hide_text(self, *args):
 		"""Hides the text."""
 		self.text_widget.hide()
 
@@ -110,9 +129,10 @@ class MessageWidget(LivingObject):
 		for item in self.active_messages:
 			item.display -= 1
 			if item.display == 0:
+				# item not displayed any more -- put it in archive
 				self.archive.append(item)
 				self.active_messages.remove(item)
-				self.hide_text('thiswouldnormallybeabutton')
+				self.hide_text()
 				changed = True
 		if changed:
 			self.draw_widget()
