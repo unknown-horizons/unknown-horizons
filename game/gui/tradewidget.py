@@ -53,7 +53,7 @@ class TradeWidget(object):
 			#dropdown.capture(game.main.fife.pychan.tools.callbackWithArguments(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
-			dropdown.text = self.partners[nearest_partner].settlement.name # label fix for release use only
+			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
 			self.partner = self.partners[nearest_partner]
 			inv_partner = self.widget.findChild(name='inventory_partner')
 			inv_partner.inventory = self.partner.inventory

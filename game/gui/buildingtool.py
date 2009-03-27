@@ -96,7 +96,7 @@ class BuildingTool(NavigationTool):
 							  "rotate_right": self.rotate_right }
 							)
 		self.gui.position = (game.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, game.main.fife.settings.getScreenHeight()/1 - game.main.session.ingame_gui.gui['minimap'].size[1]/1)
-		self.gui.findChild(name='running_costs').text = str(self._class.running_costs)
+		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		top_bar = self.gui.findChild(name='top_bar')
 		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2, 10)
 		self.draw_gui()

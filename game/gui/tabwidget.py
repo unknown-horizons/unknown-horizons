@@ -108,7 +108,7 @@ class Tab(object):
 			labels = self.get_named_widgets(pychan.widgets.Label)
 			for label in labels:
 				if hasattr(instance, label.name):
-					label.text = str(getattr(instance, label.name))
+					label.text = unicode(getattr(instance, label.name))
 			inventorys = self.get_named_widgets(Inventory)
 			for inv in inventorys:
 				if hasattr(instance, inv.name):

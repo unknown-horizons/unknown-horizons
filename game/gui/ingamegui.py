@@ -224,7 +224,7 @@ class IngameGui(LivingObject):
 			value.append("")
 		for i in xrange(0, len(value)):
 			foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label + '_' + str(i + 1))
-			foundlabel._setText(value[i])
+			foundlabel._setText(unicode(value[i]))
 			foundlabel.resizeToContent()
 		if label == 'gold':
 			self.gui['status_gold'].resizeToContent()
@@ -270,10 +270,10 @@ class IngameGui(LivingObject):
 
 	def update_settlement(self):
 		foundlabel = self.gui['topmain'].findChild(name='city_name')
-		foundlabel._setText(self.settlement.name)
+		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
 		foundlabel = self.gui['topmain'].findChild(name='city_inhabitants')
-		foundlabel.text = 'Inhabitants: '+str(self.settlement._inhabitants)
+		foundlabel.text = unicode('Inhabitants: '+str(self.settlement._inhabitants))
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
 
@@ -293,7 +293,8 @@ class IngameGui(LivingObject):
 		self._build(1, ship)
 
 	def show_ship(self, ship):
-		self.gui['ship'].findChild(name='buildingNameLabel').text = ship.name+" (Ship type)"
+		self.gui['ship'].findChild(name='buildingNameLabel').text = \
+				unicode(ship.name+" (Ship type)")
 
 		size = self.gui['ship'].findChild(name='chargeBar').size
 		size = (size[0] - 2, size[1] - 2)

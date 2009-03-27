@@ -99,7 +99,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the icon + bar."""
-		self.button = pychan.widgets.ImageButton(text=self.text, up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
+		self.button = pychan.widgets.ImageButton(text=unicode(self.text), up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
 		self.button.size = (50,50)
 		bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
 		bar.position = (self.button.width-bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))

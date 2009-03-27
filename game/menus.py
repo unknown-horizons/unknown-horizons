@@ -167,13 +167,13 @@ class Menus(object):
 		volume_music = dlg.findChild(name='volume_music')
 		volume_music.setValue(settings.sound.volume_music)
 		volume_music_value =  dlg.findChild(name='volume_music_value')
-		volume_music_value.text = str(int(volume_music.getValue() * 100 * 5)) + '%'
+		volume_music_value.text = unicode(int(volume_music.getValue() * 100 * 5)) + '%'
 
 		# Set effects volume display and slider correctly
 		volume_effects = dlg.findChild(name='volume_effects')
 		volume_effects.setValue(settings.sound.volume_effects)
 		volume_effects_value =  dlg.findChild(name='volume_effects_value')
-		volume_effects_value.text = str(int(volume_effects.getValue() * 100 * 2)) + '%'
+		volume_effects_value.text = unicode(int(volume_effects.getValue() * 100 * 2)) + '%'
 
 		if not self.show_dialog(dlg, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			if settings.sound.enabled:
@@ -238,7 +238,7 @@ class Menus(object):
 		else:
 			popup = self.widgets['popup']
 		popup.findChild(name='popup_window').title = windowtitle
-		popup.findChild(name='popup_message').text = message
+		popup.findChild(name='popup_message').text = unicode(message)
 		if show_cancel_button:
 			return self.show_dialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:
@@ -276,10 +276,10 @@ class Menus(object):
 
 	def set_volume(self, label, slider):
 		if label.name == 'volume_music_value':
-			label.text = str(int(slider.getValue() * 100 * 5)) + '%'
+			label.text = unicode(int(slider.getValue() * 100 * 5)) + '%'
 			game.main.fife.set_volume_music(slider.getValue())
 		else:
-			label.text = str(int(slider.getValue() * 100 * 2)) + '%'
+			label.text = unicode(int(slider.getValue() * 100 * 2)) + '%'
 			game.main.fife.set_volume_effects(slider.getValue())
 
 
@@ -572,7 +572,7 @@ class Menus(object):
 				return
 			details_label = game.main.fife.pychan.widgets.Label(min_size=(140,0),max_size=(140,290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
-			details_label.text = ""
+			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
 				details_label.text += "Unknown savedate\n"
 			else:

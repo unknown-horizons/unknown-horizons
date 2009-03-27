@@ -111,9 +111,8 @@ class MessageWidget(LivingObject):
 
 	def show_text(self, button):
 		"""Shows the text for a button."""
-		print 'showtext for ', str(button)
 		label = self.text_widget.findChild(name='text')
-		label.text = self.active_messages[self.position+int(button.name)-1].message
+		label.text = unicode(self.active_messages[self.position+int(button.name)-1].message)
 		label.resizeToContent()
 		self.text_widget.size = (self.text_widget.getMaxChildrenWidth(), self.text_widget.height)
 		self.text_widget.position = (self.widget.x + self.widget.width/2-self.text_widget.width/2, self.text_widget.y)
