@@ -33,10 +33,13 @@ class Settlement(TradePost, WorldObject):
 		super(Settlement, self).__init__()
 		self.name = game.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 		self.owner = owner
-		self._inhabitants = 0
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 
 		self.setup_storage()
+
+	@property
+	def inhabitants(self):
+		return sum([i.inhabitants for i in self.buildings])
 
 	def setup_storage(self):
 		self.inventory = SizedSlotStorage(0)
@@ -53,17 +56,11 @@ class Settlement(TradePost, WorldObject):
 		else:
 			return None
 
-	def add_inhabitants(self, num):
-		self._inhabitants += num
-
-	def rem_inhabitants(self, num):
-		self._inhabitants -= num
-
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
 
-		db("INSERT INTO settlement (rowid, island, owner, inhabitants) VALUES(?, ?, ?, ?)",
-			self.getId(), islandid, self.owner.getId(), self._inhabitants)
+		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
+			self.getId(), islandid, self.owner.getId())
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
 			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
@@ -80,7 +77,6 @@ class Settlement(TradePost, WorldObject):
 		self.owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		self.owner = WorldObject.getObjectById(self.owner)
 
-		self._inhabitants = int(db("SELECT inhabitants FROM settlement WHERE rowid = ?", worldid)[0][0])
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
 		self.setup_storage()

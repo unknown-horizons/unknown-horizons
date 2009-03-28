@@ -107,7 +107,6 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 			addition = randint(-1,1) + content
 			addition = min(self.inhabitants_max, max(1, self.inhabitants + addition)) - self.inhabitants
 			self.inhabitants += addition
-			self.settlement.add_inhabitants(addition)
 
 	def show_menu(self):
 		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
@@ -120,16 +119,19 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 
 	def save(self, db):
 		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, level) VALUES (?, ?)", self.getId(), self.level)
+		db("INSERT INTO settler(rowid, level, inhabitants) VALUES (?, ?, ?)", self.getId(), self.level, self.inhabitants)
 		for (res, row) in self.consumation.iteritems():
 			db("INSERT INTO settler_consume(settler_id, res, contentment, next_consume, consume_state) VALUES (?, ?, ?, ?, ?)", self.getId(), res, row['consume_contentment'], row['next_consume'], row['consume_state'])
 
 	def load(self, db, building_id):
-		self.level = db("SELECT level FROM settler WHERE rowid=?", building_id)[0][0]
 		super(Settler, self).load(db, building_id)
+		self.level, self.inhabitants = \
+				db("SELECT level FROM settler WHERE rowid=?", building_id)[0][0]
+		print  'loaded inhabi1 ', self.inhabitants
 		self.__init()
 		for (res, contentment, next_consume, consume_state) in db("SELECT res, contentment, next_consume, consume_state FROM settler_consume WHERE settler_id=?", self.getId()):
 			self.consumation[res]['consume_contentment'] = contentment
 			self.consumation[res]['next_consume'] = next_consume
 			self.consumation[res]['consume_state'] = consume_state
 		self.run()
+		print  'loaded inhabi2 ', self.inhabitants

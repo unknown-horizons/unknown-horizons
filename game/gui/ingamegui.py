@@ -273,7 +273,7 @@ class IngameGui(LivingObject):
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
 		foundlabel = self.gui['topmain'].findChild(name='city_inhabitants')
-		foundlabel.text = unicode('Inhabitants: '+str(self.settlement._inhabitants))
+		foundlabel.text = unicode('Inhabitants: '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
 

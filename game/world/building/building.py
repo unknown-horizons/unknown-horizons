@@ -77,8 +77,6 @@ class Building(AmbientSound, WorldObject):
 		"""Removes the building"""
 		if game.main.debug:
 			print "BUILDING: REMOVE %s" % self.getId()
-		if self.settlement is not None:
-			self.settlement.rem_inhabitants(self.inhabitants)
 		self.island().remove_building(self)
 		game.main.session.ingame_gui.hide_menu()
 
@@ -198,8 +196,7 @@ class Building(AmbientSound, WorldObject):
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
 		"""
-		if self.settlement:
-			self.settlement.add_inhabitants(self.inhabitants)
+		pass
 
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
