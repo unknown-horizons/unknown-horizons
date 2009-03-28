@@ -36,6 +36,10 @@ class Trader(Player, StorageHolder):
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
 
+	# amount range to buy/sell from settlement per resource
+	buy_amount = (0, 4)
+	sell_amount = (1, 4)
+
 	def __init__(self, id, name, color, **kwargs):
 		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
 		#print "Initing Trader..."
@@ -83,9 +87,10 @@ class Trader(Player, StorageHolder):
 	def reached_branch(self, id):
 		"""Actions that need to be taken when reaching a branch office
 		@param id: ships id"""
+		import pdb ; pdb.set_trace()
 		settlement = self.office[id].settlement
 		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
-			rand = random.randint(1,4) # select a random amount to sell
+			rand = random.randint(*self.sell_amount) # select a random amount to sell
 			if settlement.inventory[res] >= limit:
 				continue # continue if there are more resources in the inventory than the settlement wants to buy
 			else:
@@ -98,14 +103,16 @@ class Trader(Player, StorageHolder):
 					settlement.owner.inventory.alter(1, alter*\
 						int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
 		for res, limit in settlement.sell_list.iteritems():
-			rand = random.randint(0,settlement.inventory.limit-limit) # select a random amount to buy from the settlement
+			# select a random amount to buy from the settlement
+			rand = random.randint(self.buy_amount[0], \
+														min(settlement.inventory.limit-limit, self.buy_amount[1]))
 			if settlement.inventory[res] <= limit:
 				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
 				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
 				#print "Altering:", alter
 				# Pay for bought resources
-				settlement.owner.inventory.alter(1, alter*\
+				settlement.owner.inventory.alter(1, -alter*\
 					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
 				settlement.inventory.alter(res, alter)
 		del self.office[id]
