@@ -207,13 +207,16 @@ class Session(LivingObject):
 		"""
 		db = DbReader(savegame) # Initialize new dbreader
 		try:
+			# load how often the game has been saved (used to know the difference between
+			# a loaded and a new game)
 			self.savecounter = SavegameManager.get_metadata(savegame)['savecounter']
 		except KeyError:
 			self.savecounter = 0
+
 		self.world = World() # Load game.world module (check game/world/__init__.py)
 		self.world._init(db)
-		if playername != "":
-			self.world.setupPlayer(playername, playercolor) # setup new player
+		if not self.is_game_loaded(): # setup new player
+			self.world.setupPlayer(playername, playercolor)
 		self.view.load(db) # load view
 		self.manager.load(db) # load the manager (there might me old scheduled ticks.
 		self.ingame_gui.load(db) # load the old gui positions and stuff

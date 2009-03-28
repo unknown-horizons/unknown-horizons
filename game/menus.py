@@ -237,7 +237,7 @@ class Menus(object):
 			popup = self.widgets['popup_with_cancel']
 		else:
 			popup = self.widgets['popup']
-		popup.findChild(name='popup_window').title = windowtitle
+		popup.findChild(name='popup_window').title = unicode(windowtitle)
 		popup.findChild(name='popup_message').text = unicode(message)
 		if show_cancel_button:
 			return self.show_dialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
