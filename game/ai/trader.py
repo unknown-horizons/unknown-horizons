@@ -87,7 +87,6 @@ class Trader(Player, StorageHolder):
 	def reached_branch(self, id):
 		"""Actions that need to be taken when reaching a branch office
 		@param id: ships id"""
-		import pdb ; pdb.set_trace()
 		settlement = self.office[id].settlement
 		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
 			rand = random.randint(*self.sell_amount) # select a random amount to sell
