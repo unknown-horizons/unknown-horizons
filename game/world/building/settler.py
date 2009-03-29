@@ -126,12 +126,10 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	def load(self, db, building_id):
 		super(Settler, self).load(db, building_id)
 		self.level, self.inhabitants = \
-				db("SELECT level FROM settler WHERE rowid=?", building_id)[0][0]
-		print  'loaded inhabi1 ', self.inhabitants
+				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
 		self.__init()
 		for (res, contentment, next_consume, consume_state) in db("SELECT res, contentment, next_consume, consume_state FROM settler_consume WHERE settler_id=?", self.getId()):
 			self.consumation[res]['consume_contentment'] = contentment
 			self.consumation[res]['next_consume'] = next_consume
 			self.consumation[res]['consume_state'] = consume_state
 		self.run()
-		print  'loaded inhabi2 ', self.inhabitants
