@@ -21,7 +21,7 @@
 
 import weakref
 
-import game.main
+import horizons.main
 
 from changelistener import Changelistener
 
@@ -54,7 +54,7 @@ class WorldObject(Changelistener):
 	def load(self, db, worldid):
 		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
-		if game.main.debug:
+		if horizons.main.debug:
 			print 'loading worldobject', worldid, self
 
 		self.__id = worldid

@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
-from game.util import WeakList
+from horizons.util import WeakList
 from storageholder import StorageHolder
 
 class AbstractConsumer(StorageHolder):
@@ -37,7 +37,7 @@ class AbstractConsumer(StorageHolder):
 
 	def __init__(self, **kwargs):
 		super(AbstractConsumer, self).__init__(**kwargs)
-		if game.main.debug:
+		if horizons.main.debug:
 			print "AbstractConsumer __init__"
 		self.__init()
 		self.create_collector()
@@ -51,7 +51,7 @@ class AbstractConsumer(StorageHolder):
 		self.local_collectors = []
 
 		# In case the class derived from this class is a Building, set it's radius
-		from game.world.building.building import Building
+		from horizons.world.building.building import Building
 		if isinstance(self, Building):
 			self.radius_coords = self.position.get_radius_coordinates(self.radius)
 
@@ -61,7 +61,7 @@ class AbstractConsumer(StorageHolder):
 	def create_collector(self):
 		""" Creates collector according to building type (chosen by polymorphism)
 		"""
-		game.main.session.entities.units[2](self)
+		horizons.main.session.entities.units[2](self)
 
 	def get_needed_res(self):
 		"""Returns list of resources, where free space in the inventory exists,

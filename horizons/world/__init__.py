@@ -24,12 +24,12 @@ __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
 import weakref
 
-import game.main
+import horizons.main
 
 from island import Island
 from player import Player
-from game.util import Point, Color
-from game.util.living import LivingObject
+from horizons.util import Point, Color
+from horizons.util.living import LivingObject
 
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -40,7 +40,7 @@ class World(LivingObject):
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x,y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
-	   * ships - a list of all the ships ingame - game.world.units.ship.Ship instances
+	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
 	   TUTORIAL: You should now check out the _init() function.
 	"""
@@ -75,7 +75,7 @@ class World(LivingObject):
 		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
 			player = Player.load(db, player_id)
 			self.players.append(player)
-			if client_id == game.main.settings.client_id or client_id == "":
+			if client_id == horizons.main.settings.client_id or client_id == "":
 				self.player = player
 
 		#load islands
@@ -109,7 +109,7 @@ class World(LivingObject):
 		print "Adding %d water tiles..." % (len(self.water),)
 		self.grounds = []
 		self.ground_map = {}
-		default_grounds = game.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
+		default_grounds = horizons.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
 		for x, y in self.water:
 			ground = default_grounds(x, y)
 			self.grounds.append(ground)
@@ -117,15 +117,15 @@ class World(LivingObject):
 		print "Done."
 
 		# Add a random number of trees to the gameworld
-		if not game.main.session.is_game_loaded():
+		if not horizons.main.session.is_game_loaded():
 			if int(self.properties.get('RandomTrees', 1)) == 1:
 				print "Adding trees to the world..."
 				import random
-				from game.command.building import Build
+				from horizons.command.building import Build
 				for island in self.islands:
 					for tile in island.ground_map.keys():
 						if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
-							game.main.session.manager.execute(Build(game.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
+							horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
 					for building in island.buildings:
 						building.production_step()
 				print "Done."
@@ -140,17 +140,17 @@ class World(LivingObject):
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
-			game.main.session.entities.units[typeid].load(db, worldid)
+			horizons.main.session.entities.units[typeid].load(db, worldid)
 
-		if not game.main.session.is_game_loaded():
+		if not horizons.main.session.is_game_loaded():
 			# for initiateing a new game:
 
 			# add free trader
-			from game.ai.trader import Trader
+			from horizons.ai.trader import Trader
 			self.trader = Trader(99999, "Free Trader", Color())
 
 			# Fire a message for new world creation
-			game.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
+			horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
 		To digg deaper, you should now continue to game/world/island.py,
 		to check out how buildings and settlements are added to the map"""
@@ -159,8 +159,8 @@ class World(LivingObject):
 		"""Sets up a new Player instance and adds him to the active world."""
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)
-		game.main.session.ingame_gui.update_gold()
-		self.player.inventory.addChangeListener(game.main.session.ingame_gui.update_gold)
+		horizons.main.session.ingame_gui.update_gold()
+		self.player.inventory.addChangeListener(horizons.main.session.ingame_gui.update_gold)
 
 	def get_tile(self, point):
 		"""Returns the ground at x, y.
@@ -177,7 +177,7 @@ class World(LivingObject):
 		"""Returns the building at the position x,y.
 		@param x,y: int coordinates.
 		@return: Building class instance if a building is found, else None."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "World get_building"
 		i = self.get_island(x, y)
 		return None if i is None else i.get_building(Point(x, y))
@@ -197,10 +197,10 @@ class World(LivingObject):
 	def get_branch_offices(self):
 		"""Returns all branch offices on the map."""
 		branchoffices = []
-		for island in game.main.session.world.islands:
+		for island in horizons.main.session.world.islands:
 			for settlement in island.settlements:
 				for building in settlement.buildings:
-					if isinstance(building,game.world.building.storages.BranchOffice):
+					if isinstance(building,horizons.world.building.storages.BranchOffice):
 						branchoffices.append(building)
 		return branchoffices
 

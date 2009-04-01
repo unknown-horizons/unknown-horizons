@@ -18,27 +18,27 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import game.main
+import horizons.main
 
-from game.util.inventory_widget import ImageFillStatusButton
-from game.world.building.storages import BranchOffice
+from horizons.util.inventory_widget import ImageFillStatusButton
+from horizons.world.building.storages import BranchOffice
 
 class TradeWidget(object):
 	radius = 4 # objects within this radius can be traded with
 
 	def __init__(self, main_instance):
-		self.widget = game.main.fife.pychan.loadXML('content/gui/ship/trade.xml')
+		self.widget = horizons.main.fife.pychan.loadXML('content/gui/ship/trade.xml')
 		self.widget.position = (
-			game.main.session.ingame_gui.gui['minimap'].position[1] - game.main.session.ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+			horizons.main.session.ingame_gui.gui['minimap'].position[1] - horizons.main.session.ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > horizons.main.session.ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
 		self.widget.stylize('menu')
 		self.widget.mapEvents({
-				'size_1' : game.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 1),
-				'size_2' : game.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 5),
-				'size_3' : game.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 10),
-				'size_4' : game.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 20),
-				'size_5' : game.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 50),
+				'size_1' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 1),
+				'size_2' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 5),
+				'size_3' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 10),
+				'size_4' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 20),
+				'size_5' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 50),
 		})
 		self.main_instance = main_instance
 		self.partner = None
@@ -50,7 +50,7 @@ class TradeWidget(object):
 		if len(self.partners) > 0:
 			dropdown = self.widget.findChild(name='partners')
 			#dropdown.setInitialData([item.settlement.name for item in self.partners])
-			#dropdown.capture(game.main.fife.pychan.tools.callbackWithArguments(self.set_partner, dropdown.getData()))
+			#dropdown.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
 			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
@@ -58,11 +58,11 @@ class TradeWidget(object):
 			inv_partner = self.widget.findChild(name='inventory_partner')
 			inv_partner.inventory = self.partner.inventory
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
-				button.button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.main_instance))
+				button.button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.main_instance))
 			inv = self.widget.findChild(name='inventory_ship')
 			inv.inventory = self.main_instance.inventory
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
-				button.button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id,self.main_instance, self.partner))
+				button.button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id,self.main_instance, self.partner))
 			self.widget._recursiveResizeToContent()
 
 
@@ -104,7 +104,7 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		for island in game.main.session.world.islands:
+		for island in horizons.main.session.world.islands:
 			for building in island.buildings:
 				if isinstance(building, BranchOffice) and building.position.distance(self.main_instance.position) <= self.radius:
 					partners.append(building)

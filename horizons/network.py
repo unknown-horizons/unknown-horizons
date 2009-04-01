@@ -25,13 +25,13 @@ import select
 import pickle
 import struct
 import sys
-from game.packets import *
+from horizons.packets import *
 
 # TODO: make networking robust
 #       (i.e. GUI freezes sometimes when waiting for timeout)
 
 if sys.argv[0].lower().endswith('run_uh.py'):
-	import game.main
+	import horizons.main
 
 class Socket(object):
 	"""A socket which handles network communication, it sends and receives packets (packets=Objects of (sub)type Packet)
@@ -40,7 +40,7 @@ class Socket(object):
 	def __init__(self, port = 0):
 		## TODO: use ext_scheduler for socket
 		if sys.argv[0].lower().endswith('run_uh.py'):
-			game.main.fife.pump.append(self._pump)
+			horizons.main.fife.pump.append(self._pump)
 		self._socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_UDP)
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
@@ -53,7 +53,7 @@ class Socket(object):
 
 	def end(self):
 		if sys.argv[0].lower().endswith('run_uh.py'):
-			game.main.fife.pump.remove(self._pump)
+			horizons.main.fife.pump.remove(self._pump)
 
 	def _pump(self, forever = False):
 		"""internal function which gets regularly called and checks for incoming packets
@@ -157,7 +157,7 @@ class ClientConnection(Connection):
 	""" Connection for a client
 
 	Use an instance of this class for
-	game.main.connectin on a client machine
+	horizons.main.connectin on a client machine
 	"""
 
 	keepAliveInterval = 1.5
@@ -175,7 +175,7 @@ class ClientConnection(Connection):
 		self.address, self.port = address, port
 		self.sendToServer(LobbyJoinPacket(self.address, self.port, self.local_player))
 
-		game.main.ext_scheduler.add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
+		horizons.main.ext_scheduler.add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
 
 	def onPacket(self, packet):
 		#print 'RECV', packet,'FROM',packet.address,packet.port
@@ -188,8 +188,8 @@ class ClientConnection(Connection):
 	def reconnect(self):
 		if self.state not in (self.__class__.STATE_CONNECTING, self.__class__.STATE_DISCONNECTED):
 			self.doDisconnect()
-		if self._pump not in game.main.fife.pump:
-			game.main.fife.pump.append(self._pump)
+		if self._pump not in horizons.main.fife.pump:
+			horizons.main.fife.pump.append(self._pump)
 		self.send(ConnectPacket(self.address, self.port))
 		self.connectTime = time.time()
 		self.state = self.__class__.STATE_CONNECTING
@@ -200,7 +200,7 @@ class ClientConnection(Connection):
 
 	def end(self):
 		self._socket.receive = lambda a: None
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		self.sendToServer(LeaveServerPacket())
 
 	def doChat(self, text):
@@ -266,7 +266,7 @@ class ServerConnection(Connection):
 	""" Connection on a server
 
 	Use an instance of this class for
-	game.main.connectin on a game server
+	horizons.main.connectin on a game server
 	"""
 
 	clientUpdateInterval = 2
@@ -274,7 +274,7 @@ class ServerConnection(Connection):
 	registerTimeout = 120
 
 	def __init__(self, port = None):
-		super(ServerConnection, self).__init__(game.main.settings.network.port)
+		super(ServerConnection, self).__init__(horizons.main.settings.network.port)
 
 		self.local_player = MPPlayer("127.0.0.1", port)
 
@@ -284,12 +284,12 @@ class ServerConnection(Connection):
 
 		self.register()
 
-		game.main.ext_scheduler.add_new_object(self.register, self, self.registerTimeout, -1)
-		game.main.ext_scheduler.add_new_object(self.check_client_timeout, self, self.clientTimeout, -1)
-		game.main.ext_scheduler.add_new_object(self.notifyClients, self, self.clientUpdateInterval, -1)
+		horizons.main.ext_scheduler.add_new_object(self.register, self, self.registerTimeout, -1)
+		horizons.main.ext_scheduler.add_new_object(self.check_client_timeout, self, self.clientTimeout, -1)
+		horizons.main.ext_scheduler.add_new_object(self.notifyClients, self, self.clientUpdateInterval, -1)
 
 	def end(self):
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		self._socket.receive = lambda a: None
 
 	def notifyClients(self):

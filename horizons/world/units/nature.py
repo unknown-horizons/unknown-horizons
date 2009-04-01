@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
-from game.world.nature import Growable
+from horizons.world.nature import Growable
 
 
 class GrowingUnit(Growable):
@@ -29,4 +29,4 @@ class GrowingUnit(Growable):
 	"""
 	def __init__(self, **kwargs):
 		super(GrowingUnit, self).__init__(self, **kwargs)
-		self.db_actions = game.main.db("SELECT action FROM data.action WHERE action_set_id= ? AND action != \"default\"", self._action_set_id)
+		self.db_actions = horizons.main.db("SELECT action FROM data.action WHERE action_set_id= ? AND action != \"default\"", self._action_set_id)

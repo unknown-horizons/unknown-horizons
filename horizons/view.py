@@ -23,7 +23,7 @@ import fife
 import math
 import time
 
-import game.main
+import horizons.main
 
 from util.changelistener import Changelistener
 
@@ -34,7 +34,7 @@ class View(Changelistener):
 		@param center: center position for the main camera
 		"""
 		super(View, self).__init__()
-		self.model = game.main.fife.engine.getModel()
+		self.model = horizons.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
 		cellgrid = self.model.getCellGrid('square')
@@ -49,9 +49,9 @@ class View(Changelistener):
 		for i in xrange(0,3):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
-		self.view = game.main.fife.engine.getView()
+		self.view = horizons.main.fife.engine.getView()
 
-		self.cam = self.view.addCamera("main", self.layers[len(self.layers) - 1], fife.Rect(0, 0, game.main.fife.settings.getScreenWidth(), game.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
+		self.cam = self.view.addCamera("main", self.layers[len(self.layers) - 1], fife.Rect(0, 0, horizons.main.fife.settings.getScreenWidth(), horizons.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
 		self.cam.setCellImageDimensions(64, 32)
 		self.cam.setRotation(45.0)
 		self.cam.setTilt(-60)
@@ -68,10 +68,10 @@ class View(Changelistener):
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[2])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[0])
 
-		game.main.settings.addCategorys('view')
-		game.main.settings.view.addCategorys('zoom')
-		game.main.settings.view.zoom.max = 1
-		game.main.settings.view.zoom.min = 0.25
+		horizons.main.settings.addCategorys('view')
+		horizons.main.settings.view.addCategorys('zoom')
+		horizons.main.settings.view.zoom.max = 1
+		horizons.main.settings.view.zoom.min = 0.25
 
 	def end(self):
 		self.model.deleteMaps()
@@ -99,10 +99,10 @@ class View(Changelistener):
 		new = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
 		if old != new:
 			if old:
-				game.main.fife.pump.remove(self.do_autoscroll)
+				horizons.main.fife.pump.remove(self.do_autoscroll)
 			if new:
 				self.time_last_autoscroll = time.time()
-				game.main.fife.pump.append(self.do_autoscroll)
+				horizons.main.fife.pump.append(self.do_autoscroll)
 
 	def do_autoscroll(self):
 		"""
@@ -125,18 +125,18 @@ class View(Changelistener):
 			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
 			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
 
-		if pos.x > game.main.session.world.max_x:
-			pos.x = game.main.session.world.max_x
-		elif pos.x < game.main.session.world.min_x:
-			pos.x = game.main.session.world.min_x
+		if pos.x > horizons.main.session.world.max_x:
+			pos.x = horizons.main.session.world.max_x
+		elif pos.x < horizons.main.session.world.min_x:
+			pos.x = horizons.main.session.world.min_x
 
-		if pos.y > game.main.session.world.max_y:
-			pos.y = game.main.session.world.max_y
-		elif pos.y < game.main.session.world.min_y:
-			pos.y = game.main.session.world.min_y
+		if pos.y > horizons.main.session.world.max_y:
+			pos.y = horizons.main.session.world.max_y
+		elif pos.y < horizons.main.session.world.min_y:
+			pos.y = horizons.main.session.world.min_y
 
 		self.cam.setLocation(loc)
-		game.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self.cam.refresh()
 
 	def set_location(self, location):
@@ -148,14 +148,14 @@ class View(Changelistener):
 
 	def zoom_out(self):
 		zoom = self.cam.getZoom() * 0.875
-		if(zoom < game.main.settings.view.zoom.min):
-			zoom = game.main.settings.view.zoom.min
+		if(zoom < horizons.main.settings.view.zoom.min):
+			zoom = horizons.main.settings.view.zoom.min
 		self.cam.setZoom(zoom)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / 0.875
-		if(zoom > game.main.settings.view.zoom.max):
-			zoom = game.main.settings.view.zoom.max
+		if(zoom > horizons.main.settings.view.zoom.max):
+			zoom = horizons.main.settings.view.zoom.max
 		self.cam.setZoom(zoom)
 
 	def set_zoom(self, zoom):

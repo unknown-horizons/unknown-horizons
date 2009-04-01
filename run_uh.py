@@ -148,11 +148,11 @@ if __name__ == '__main__':
 	sys.path.append('game/ext')
 
 	#start unknownhorizons
-	import game.main
+	import horizons.main
 	if "-d" in sys.argv or "--debug" in sys.argv:
-		game.main.debug = True
+		horizons.main.debug = True
 	else:
-		game.main.debug = False
-	game.main.start()
+		horizons.main.debug = False
+	horizons.main.start()
 	# gettext support will have to wait so make it an no-op for everything not calling unknownhorizons directly
 	_ = lambda x: x

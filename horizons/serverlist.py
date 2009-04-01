@@ -21,9 +21,9 @@
 
 import urllib
 import re
-import game.main
-from game.network import Socket
-from game.packets import QueryPacket, InfoPacket
+import horizons.main
+from horizons.network import Socket
+from horizons.packets import QueryPacket, InfoPacket
 import time
 
 class Server(object):
@@ -38,9 +38,9 @@ class Server(object):
 			match = Server.re_ip_port.match(address)
 			if match:
 				address = match.group(1)
-				port = match.group(2) or game.main.settings.network.port
+				port = match.group(2) or horizons.main.settings.network.port
 			else:
-				port = game.main.settings.network.port
+				port = horizons.main.settings.network.port
 		self.address = address
 		self.port = int(port)
 		self.ping, self.map, self.players, self.bots, self.maxplayers, self.timeLastQuery, self.timeLastResponse = None, None, None, None, None, None, None
@@ -71,12 +71,12 @@ class ServerList(object):
 		self._servers = []
 		self._socket = Socket()
 		self._socket.receive = self._response
-		game.main.ext_scheduler.add_new_object(self._pump, self, self.queryIntervall, -1)
+		horizons.main.ext_scheduler.add_new_object(self._pump, self, self.queryIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		self._socket.receive = lambda x : None
 		self._socket.end()
 
@@ -162,12 +162,12 @@ class WANServerList(ServerList):
 		super(WANServerList, self).__init__()
 		self.update()
 		if self.__class__.updateIntervall > 0:
-			game.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
+			horizons.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		super(WANServerList, self).end()
 
 	def update(self):
@@ -177,14 +177,14 @@ class WANServerList(ServerList):
 
 		wan_servers = []
 		try:
-			wan_servers = (urllib.urlopen(game.main.settings.network.url_servers))
+			wan_servers = (urllib.urlopen(horizons.main.settings.network.url_servers))
 		except IOError,e:
-			game.main.gui.show_popup("Network Error", "Error: "+e.strerror[1])
+			horizons.main.gui.show_popup("Network Error", "Error: "+e.strerror[1])
 
 		for server in wan_servers:
 			match = Server.re_ip_port.match(server)
 			if match:
-				server = Server(match.group(1), match.group(2) or game.main.settings.network.port)
+				server = Server(match.group(1), match.group(2) or horizons.main.settings.network.port)
 				if not server in self:
 					self._add(server)
 					self._query(server.address, server.port)
@@ -198,12 +198,12 @@ class LANServerList(ServerList):
 		super(LANServerList, self).__init__()
 		self.update()
 		if self.__class__.updateIntervall > 0:
-			game.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
+			horizons.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		super(LANServerList, self).end()
 
 	def update(self):
@@ -211,8 +211,8 @@ class LANServerList(ServerList):
 		"""
 		for server in self:
 			server.timeLastQuery = time.time()
-		self._request('255.255.255.255', game.main.settings.network.port)
-		#self._request('192.168.2.255', game.main.settings.network.port)
+		self._request('255.255.255.255', horizons.main.settings.network.port)
+		#self._request('192.168.2.255', horizons.main.settings.network.port)
 
 	def _response(self, packet):
 		"""overwritten function of the base class, ensures that the server is in the list when a packet is received
@@ -233,7 +233,7 @@ class FavoriteServerList(ServerList):
 	"""
 	def __init__(self):
 		super(FavoriteServerList, self).__init__()
-		for serverstr in game.main.settings.network.favorites:
+		for serverstr in horizons.main.settings.network.favorites:
 			server = Server(serverstr)
 			self._add(server)
 			self._query(server.address, server.port)
@@ -251,19 +251,19 @@ class FavoriteServerList(ServerList):
 		server = Server(serverstr)
 		self._add(server)
 		self._query(server.address, server.port)
-		game.main.settings.network.favorites = game.main.settings.network.favorites + [serverstr]
+		horizons.main.settings.network.favorites = horizons.main.settings.network.favorites + [serverstr]
 
 	def remove(self, serverstr):
 		"""remove a server
 		@param serverstr: a string in "address[:port]" notion
 		"""
 		self._remove(Server(serverstr))
-		favorites = game.main.settings.network.favorites
+		favorites = horizons.main.settings.network.favorites
 		favorites.remove(serverstr)
-		game.main.settings.network.favorites = favorites
+		horizons.main.settings.network.favorites = favorites
 
 	def clear(self):
 		"""make the list empty
 		"""
 		self._clear()
-		game.main.settings.network.favorites = []
+		horizons.main.settings.network.favorites = []

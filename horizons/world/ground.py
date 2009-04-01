@@ -22,9 +22,9 @@
 
 import fife
 
-import game.main
+import horizons.main
 
-from game.util import WorldObject
+from horizons.util import WorldObject
 
 class Ground(WorldObject):
 	def __init__(self, x, y):
@@ -36,7 +36,7 @@ class Ground(WorldObject):
 			self.__class__._loadObject()
 		self.x = x
 		self.y = y
-		self._instance = game.main.session.view.layers[0].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
+		self._instance = horizons.main.session.view.layers[0].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
 
 class GroundClass(type):
@@ -47,10 +47,10 @@ class GroundClass(type):
 		self.id = id
 		self._object = None
 		self.velocity = {}
-		for unit, straight, diagonal in game.main.db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
+		for unit, straight, diagonal in horizons.main.db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
 			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
-		for (name,) in game.main.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
+		for (name,) in horizons.main.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
 			self.classes.append(name)
 
 	def __new__(self, id):
@@ -64,19 +64,19 @@ class GroundClass(type):
 		"""
 		print 'Loading ground #' + str(self.id) + '...'
 		try:
-			self._object = game.main.session.view.model.createObject(str(self.id), 'ground')
+			self._object = horizons.main.session.view.model.createObject(str(self.id), 'ground')
 		except RuntimeError:
 			print 'already loaded...'
-			self._object = game.main.session.view.model.getObject(str(self.id), 'ground')
+			self._object = horizons.main.session.view.model.getObject(str(self.id), 'ground')
 			return
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 
-		animation_45, animation_135, animation_225, animation_315 = game.main.db("SELECT (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground WHERE rowid = ?", self.id)[0]
+		animation_45, animation_135, animation_225, animation_315 = horizons.main.db("SELECT (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground WHERE rowid = ?", self.id)[0]
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
-			img = game.main.fife.imagepool.addResourceFromFile(file)
+			img = horizons.main.fife.imagepool.addResourceFromFile(file)
 			visual.addStaticImage(int(rotation), img)
 			# Get Image call unecessarily triggers loading of the actual image.
-			#img = game.main.fife.imagepool.getImage(img)
+			#img = horizons.main.fife.imagepool.getImage(img)
 			#img.setXShift(0)
 			#img.setYShift(0)

@@ -19,11 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
-from game.world.production import SecondaryProducer, PrimaryProducer
-from game.gui.tabwidget import TabWidget
-from game.util.point import Point
+from horizons.world.production import SecondaryProducer, PrimaryProducer
+from horizons.gui.tabwidget import TabWidget
+from horizons.util.point import Point
 from building import Building, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 
@@ -40,14 +40,14 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 		self.animals = []
 
 		# NOTE: animals have to be created before the AnimalCollector
-		for (animal,number) in game.main.db("SELECT unit_id, count FROM data.animals \
+		for (animal,number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0,number):
-				game.main.session.entities.units[animal](self)
+				horizons.main.session.entities.units[animal](self)
 				# animal appends itself to self.animals
 
 		# AnimalCollector:
-		game.main.session.entities.units[7](self)
+		horizons.main.session.entities.units[7](self)
 
 	def save(self, db):
 		super(AnimalFarm, self).save(db)
@@ -65,20 +65,20 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
-		game.main.session.entities.units[10](self)
+		horizons.main.session.entities.units[10](self)
 
 
 class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
-		game.main.session.entities.units[12](self)
+		horizons.main.session.entities.units[12](self)
 
 
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(4, object=self))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(4, object=self))
 
 	@classmethod
 	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):

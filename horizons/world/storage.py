@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.util import WorldObject
-import game.main
+from horizons.util import WorldObject
+import horizons.main
 
 class GenericStorage(WorldObject): # TESTED, WORKS
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing

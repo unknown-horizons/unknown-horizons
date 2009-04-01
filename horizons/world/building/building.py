@@ -24,11 +24,11 @@ import weakref
 
 import fife
 
-import game.main
+import horizons.main
 
-from game.world.settlement import Settlement
-from game.world.ambientsound import AmbientSound
-from game.util import Rect,Point, WorldObject
+from horizons.world.settlement import Settlement
+from horizons.world.ambientsound import AmbientSound
+from horizons.util import Rect,Point, WorldObject
 
 class Building(AmbientSound, WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -37,16 +37,16 @@ class Building(AmbientSound, WorldObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Initing Building", self.id
 		self.__init(Point(x,y), rotation, owner, instance)
-		self.island = weakref.ref(game.main.session.world.get_island(x, y))
+		self.island = weakref.ref(horizons.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or \
 			self.island().add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
 
 	def __init(self, origin, rotation, owner, instance):
-		self._action_set_id = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0]
+		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
@@ -55,10 +55,10 @@ class Building(AmbientSound, WorldObject):
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0:
-			game.main.session.scheduler.add_new_object(self.get_payout, self, runin=game.main.session.timer.get_ticks(30), loops=-1)
+			horizons.main.session.scheduler.add_new_object(self.get_payout, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1)
 
 		# play ambient sound, if available
-		for (soundfile,) in game.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
+		for (soundfile,) in horizons.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
 		sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
 			self.play_ambient(soundfile, True)
 
@@ -75,10 +75,10 @@ class Building(AmbientSound, WorldObject):
 
 	def remove(self):
 		"""Removes the building"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "BUILDING: REMOVE %s" % self.getId()
 		self.island().remove_building(self)
-		game.main.session.ingame_gui.hide_menu()
+		horizons.main.session.ingame_gui.hide_menu()
 
 		for x in xrange(self.position.left, self.position.right + 1):
 			for y in xrange(self.position.top, self.position.bottom + 1):
@@ -88,7 +88,7 @@ class Building(AmbientSound, WorldObject):
 				tile.object = None
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
-		game.main.session.scheduler.rem_all_classinst_calls(self)
+		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		self.__del__()
@@ -105,7 +105,7 @@ class Building(AmbientSound, WorldObject):
 			self.health, (self.settlement or self.island()).getId())
 
 	def load(self, db, worldid):
-		if game.main.debug:
+		if horizons.main.debug:
 			print 'loading building', worldid
 		super(Building, self).load(db, worldid)
 		x, y, health, location, rotation = \
@@ -125,7 +125,7 @@ class Building(AmbientSound, WorldObject):
 			self.settlement = self.island().get_settlement(Point(x,y)) or \
 					self.island().add_existing_settlement(self.position, self.radius, location_obj)
 		else: # loc is island
-			from game.world.island import Island
+			from horizons.world.island import Island
 			assert(isinstance(location_obj, Island))
 
 			self.island = weakref.ref(location_obj)
@@ -154,31 +154,31 @@ class Building(AmbientSound, WorldObject):
 		if building is not None:
 			return building.getInstance(x = x, y = y, action=action, layer=layer,rotation=rotation, **trash)
 		else:
-			facing_loc = fife.Location(game.main.session.view.layers[layer])
+			facing_loc = fife.Location(horizons.main.session.view.layers[layer])
 			if rotation == 45:
-				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
+				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+cls.size[0]+3), int(y), 0))
 			elif rotation == 135:
-				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y + cls.size[1] - 1), 0))
+				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y + cls.size[1] - 1), 0))
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-cls.size[1]-3), 0))
 			elif rotation == 225:
-				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y + cls.size[1] - 1), 0))
+				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y + cls.size[1] - 1), 0))
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-cls.size[0]-3), int(y), 0))
 			elif rotation == 315:
-				instance = game.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y), 0))
+				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y), 0))
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+cls.size[1]+3), 0))
 			else:
 				return None
-			action_set_id  = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
+			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
-			if action in game.main.action_sets[action_set_id].keys():
+			if action in horizons.main.action_sets[action_set_id].keys():
 				pass
-			elif 'idle' in game.main.action_sets[action_set_id].keys():
+			elif 'idle' in horizons.main.action_sets[action_set_id].keys():
 				action='idle'
-			elif 'idle_full' in game.main.action_sets[action_set_id].keys():
+			elif 'idle_full' in horizons.main.action_sets[action_set_id].keys():
 				action='idle_full'
 			else:
-				action=game.main.action_sets[action_set_id].keys()[0]
+				action=horizons.main.action_sets[action_set_id].keys()[0]
 
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance
@@ -205,14 +205,14 @@ class Building(AmbientSound, WorldObject):
 class Selectable(object):
 	def select(self):
 		"""Runs neccesary steps to select the building."""
-		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
 			if tile.settlement == self.settlement and (max(self.position.left - tile.x, 0, tile.x - self.position.right) ** 2) + (max(self.position.top - tile.y, 0, tile.y - self.position.bottom) ** 2) <= self.radius ** 2 and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+				horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None and True: #todo: only highlight buildings that produce something were interested in
-					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
-		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()

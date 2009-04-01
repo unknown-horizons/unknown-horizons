@@ -21,10 +21,10 @@
 
 import fife
 
-import game.main
+import horizons.main
 
-from game.world.pathfinding import Pather, PathBlockedError, Movement
-from game.util import Point, Rect, WeakMethodList, WorldObject, WeakMethod
+from horizons.world.pathfinding import Pather, PathBlockedError, Movement
+from horizons.util import Point, Rect, WeakMethodList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
@@ -35,7 +35,7 @@ class Unit(WorldObject):
 
 	def __init(self, x, y, owner, health = 100.0):
 		self.owner = owner
-		self._action_set_id = game.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0]
+		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0]
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
@@ -46,7 +46,7 @@ class Unit(WorldObject):
 		self.last_position = Point(x, y)
 		self.next_target = Point(x, y)
 
-		self._instance = game.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
+		self._instance = horizons.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'idle'
 		self.act(self.action, self._instance.getLocation(), True)
@@ -79,7 +79,7 @@ class Unit(WorldObject):
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x + self.position.x - self.last_position.x, self.position.y + self.position.y - self.last_position.y, 0))
 		self.act(self.action, location, True)
-		game.main.session.view.cam.refresh()
+		horizons.main.session.view.cam.refresh()
 
 	def check_move(self, destination):
 		"""Tries to find a path to destination
@@ -116,9 +116,9 @@ class Unit(WorldObject):
 
 		#print 'NEW DEST', destination
 		self.move_callback = WeakMethodList(callback)
-		if action in game.main.action_sets[self._action_set_id].keys():
+		if action in horizons.main.action_sets[self._action_set_id].keys():
 			self._move_action = action
-		elif 'move' in game.main.action_sets[self._action_set_id].keys():
+		elif 'move' in horizons.main.action_sets[self._action_set_id].keys():
 			self._move_action = 'move'
 		else:
 			self._move_action = self.action
@@ -185,13 +185,13 @@ class Unit(WorldObject):
 		# coords per sec
 
 		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y
-		game.main.session.scheduler.add_new_object(self.move_tick, self, move_time[int(diagonal)])
+		horizons.main.session.scheduler.add_new_object(self.move_tick, self, move_time[int(diagonal)])
 
 	def get_unit_velocity(self):
 		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
 		@return: int
 		"""
-		tile = game.main.session.world.get_tile(self.position)
+		tile = horizons.main.session.world.get_tile(self.position)
 		if self.id in tile.velocity:
 			return tile.velocity[self.id]
 		else:
@@ -202,7 +202,7 @@ class Unit(WorldObject):
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
-		renderer = game.main.session.view.renderer['GenericRenderer']
+		renderer = horizons.main.session.view.renderer['GenericRenderer']
 		width = 50
 		height = 5
 		y_pos = -30
@@ -241,5 +241,5 @@ class Unit(WorldObject):
 		path_loaded = self.path.load(db, worldid)
 		if path_loaded:
 			self.__is_moving = True
-			game.main.session.scheduler.add_new_object(self.move_tick, self, 1)
+			horizons.main.session.scheduler.add_new_object(self.move_tick, self, 1)
 		return self

@@ -22,7 +22,7 @@
 
 __all__ = ['building', 'housing', 'nature', 'path', 'production', 'storages', 'settler']
 
-import game.main
+import horizons.main
 import fife
 
 class BuildingClass(type):
@@ -39,8 +39,8 @@ class BuildingClass(type):
 	otherwise, continue to the __init__() function.
 	"""
 	def __new__(self, id):
-		class_package, class_name = game.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
-		__import__('game.world.building.'+class_package)
+		class_package, class_name = horizons.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
+		__import__('horizons.world.building.'+class_package)
 
 
 		@classmethod
@@ -61,21 +61,21 @@ class BuildingClass(type):
 		super(BuildingClass, self).__init__(self, **kwargs)
 		self.id = id
 		self._object = None
-		self.class_package = game.main.db("SELECT class_package FROM data.building WHERE rowid = ?", id)[0][0]
-		(size_x,  size_y) = game.main.db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
-		self.name = game.main.db("SELECT name FROM data.building WHERE rowid = ?", id)[0][0]
+		self.class_package = horizons.main.db("SELECT class_package FROM data.building WHERE rowid = ?", id)[0][0]
+		(size_x,  size_y) = horizons.main.db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
+		self.name = horizons.main.db("SELECT name FROM data.building WHERE rowid = ?", id)[0][0]
 		self.size = (int(size_x), int(size_y))
-		self.radius = game.main.db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
-		self.health = int(game.main.db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])
-		self.inhabitants = int(game.main.db("SELECT inhabitants_start FROM data.building WHERE rowid = ?", id)[0][0])
-		self.inhabitants_max = int(game.main.db("SELECT inhabitants_max FROM data.building WHERE rowid = ?", id)[0][0])
-		for (name,  value) in game.main.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
+		self.radius = horizons.main.db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
+		self.health = int(horizons.main.db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])
+		self.inhabitants = int(horizons.main.db("SELECT inhabitants_start FROM data.building WHERE rowid = ?", id)[0][0])
+		self.inhabitants_max = int(horizons.main.db("SELECT inhabitants_max FROM data.building WHERE rowid = ?", id)[0][0])
+		for (name,  value) in horizons.main.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in game.main.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
+		for (name, value) in horizons.main.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
-		running_costs = game.main.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
+		running_costs = horizons.main.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
 		if len(running_costs) > 0:
 			self.running_costs = running_costs[0][0]
 			self.running_costs_inactive = running_costs[0][1]
@@ -101,17 +101,17 @@ class BuildingClass(type):
 		"""
 		print 'Loading building #' + str(cls.id) + '...'
 		try:
-			cls._object = game.main.session.view.model.createObject(str(cls.id), 'building')
+			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
 		except RuntimeError:
 			print 'already loaded...'
-			cls._object = game.main.session.view.model.getObject(str(cls.id), 'building')
+			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
-		action_sets = game.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
+		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
 		for (action_set_id,) in action_sets:
-			for action_id in game.main.action_sets[action_set_id].keys():
+			for action_id in horizons.main.action_sets[action_set_id].keys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
-				for rotation in game.main.action_sets[action_set_id][action_id].keys():
+				for rotation in horizons.main.action_sets[action_set_id][action_id].keys():
 					#print "rotation:", rotation
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(cls.size[0] * 16)
@@ -124,6 +124,6 @@ class BuildingClass(type):
 					else:
 						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
 							   { 'id':action_set_id, 'rotation': rotation, 'action_id': action_id }
-					anim_id = game.main.fife.animationpool.addResourceFromFile(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
+					anim_id = horizons.main.fife.animationpool.addResourceFromFile(str(action_set_id)+"-"+str(action_id)+"-"+str(rotation) + ':shift:' + command)
 					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
-					action.setDuration(game.main.fife.animationpool.getAnimation(anim_id).getDuration())
+					action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())

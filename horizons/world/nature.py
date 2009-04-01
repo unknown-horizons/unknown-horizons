@@ -22,9 +22,9 @@
 import math
 import weakref
 
-import game.main
+import horizons.main
 
-from game.util import WeakMethod
+from horizons.util import WeakMethod
 
 
 class Growable(object):
@@ -45,7 +45,7 @@ class Growable(object):
 		self.growing_producer = weakref.ref(producer)
 		self.growing_producer().restart_animation = WeakMethod(self.restart_animation)
 		self.actions = []
-		self.db_actions = game.main.db("SELECT action FROM data.action WHERE action_set_id = ? AND action != 'default'", self._action_set_id)
+		self.db_actions = horizons.main.db("SELECT action FROM data.action WHERE action_set_id = ? AND action != 'default'", self._action_set_id)
 		for (a,) in self.db_actions:
 			self.actions.append(a)
 		self.actions.sort()
@@ -92,7 +92,7 @@ class Growable(object):
 			#print 'ITER ', iter_pos
 			#print 'LOOPS', loops
 			if loops > 0:
-				game.main.session.scheduler.add_new_object(self.next_animation, self, interval, loops)
+				horizons.main.session.scheduler.add_new_object(self.next_animation, self, interval, loops)
 
 	def restart_animation(self):
 		""" Starts animation from the beginning

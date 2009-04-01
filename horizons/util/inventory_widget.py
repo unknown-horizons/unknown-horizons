@@ -21,9 +21,9 @@
 
 import pychan
 
-import game.main
+import horizons.main
 
-from game.world.storage import GenericStorage
+from horizons.world.storage import GenericStorage
 
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
@@ -63,7 +63,7 @@ class Inventory(pychan.widgets.Container):
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		index = 0
 		for resid, amount in self._inventory._storage.iteritems():
-			icon, icon_disabled = game.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
+			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
 			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon, down_image=icon_disabled if amount == 0 else icon, hover_image=icon_disabled if amount == 0 else icon, text=str(amount), size=(50,50),res_id = resid, opaque=False)
 			button.filled = int(float(amount)/float(self._inventory.limit)*100.0)
 			current_hbox.addChild(button)

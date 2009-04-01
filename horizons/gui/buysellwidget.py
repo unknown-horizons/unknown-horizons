@@ -20,17 +20,17 @@
 # ###################################################
 
 import pychan
-import game.main
+import horizons.main
 
 class BuySellWidget(object):
 
 	def __init__(self, slots, settlement):
 		self.settlement = settlement
 		self.slots = {}
-		self.widget = game.main.fife.pychan.loadXML('content/gui/buysellmenu/buysellmenu.xml')
+		self.widget = horizons.main.fife.pychan.loadXML('content/gui/buysellmenu/buysellmenu.xml')
 		self.widget.position = (
-			game.main.session.ingame_gui.gui['minimap'].position[1] - game.main.session.ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > game.main.session.ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+			horizons.main.session.ingame_gui.gui['minimap'].position[1] - horizons.main.session.ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > horizons.main.session.ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
@@ -61,15 +61,15 @@ class BuySellWidget(object):
 		content = self.widget.findChild(name="content")
 		assert(content is not None)
 		for num in range(0,num):
-			slot = game.main.fife.pychan.loadXML('content/gui/buysellmenu/single_slot.xml')
+			slot = horizons.main.fife.pychan.loadXML('content/gui/buysellmenu/single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(game.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
+			slot.findChild(name='button').capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
 			slider = slot.findChild(name="slider")
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
-			slot.findChild(name="buysell").capture(game.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
+			slot.findChild(name="buysell").capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			content.addChild(slot)
 		self.widget._recursiveResizeToContent()
 
@@ -77,7 +77,7 @@ class BuySellWidget(object):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "BuySellWidget add_ressource() resid:", res_id, "slot_id", slot_id, \
 			  "value", value
 
@@ -111,10 +111,10 @@ class BuySellWidget(object):
 			slider.capture(None)
 		else:
 			button = slot.findChild(name="button")
-			button.up_image, button.down_image, = (game.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
-			button.hover_image = game.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
+			button.up_image, button.down_image, = (horizons.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
+			button.hover_image = horizons.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
-			slider.capture(game.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
+			slider.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
 		slot._recursiveResizeToContent()
 
@@ -169,14 +169,14 @@ class BuySellWidget(object):
 
 
 	def show_ressource_menu(self, slot_id):
-		self.resources = game.main.fife.pychan.loadXML('content/gui/buysellmenu/resources.xml')
+		self.resources = horizons.main.fife.pychan.loadXML('content/gui/buysellmenu/resources.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = pychan.widgets.VBox(padding = 0)
 		vbox.width = self.resources.width
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
-		resources = game.main.db("SELECT rowid, icon FROM resource")
+		resources = horizons.main.db("SELECT rowid, icon FROM resource")
 		# Add the zero element to the beginnig that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:
@@ -188,7 +188,7 @@ class BuySellWidget(object):
 				continue # don't show resources that are already in the list
 			button = pychan.widgets.ImageButton(size=(50,50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.add_ressource, res_id, slot_id))
+			button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.add_ressource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:
 				vbox.addChild(current_hbox)

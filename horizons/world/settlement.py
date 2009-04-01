@@ -18,9 +18,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import game.main
+import horizons.main
 from storage import SizedSlotStorage
-from game.util import WorldObject, Point, WeakList
+from horizons.util import WorldObject, Point, WeakList
 from tradepost import TradePost
 
 class Settlement(TradePost, WorldObject):
@@ -31,7 +31,7 @@ class Settlement(TradePost, WorldObject):
 		@param owner: Player object that owns the settlement
 		"""
 		super(Settlement, self).__init__()
-		self.name = game.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
+		self.name = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 		self.owner = owner
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 
@@ -85,7 +85,7 @@ class Settlement(TradePost, WorldObject):
 		self.buildings = WeakList()
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-			buildingclass = game.main.session.entities.buildings[building_type]
+			buildingclass = horizons.main.session.entities.buildings[building_type]
 			building = buildingclass.load(db, building_id)
 
 		return self

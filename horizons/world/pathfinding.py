@@ -23,8 +23,8 @@ import weakref
 import copy
 import sys
 
-import game.main
-from game.util import Rect, Point, WorldObject
+import horizons.main
+from horizons.util import Rect, Point, WorldObject
 from building.building import Building
 
 # for speed testing:
@@ -103,7 +103,7 @@ class FindPath(object):
 		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
 
-		if game.main.debug:
+		if horizons.main.debug:
 			print 'SEARCHING path from',source,'to',destination,'. blocked: ',blocked_coords
 
 		# prepare args
@@ -111,7 +111,7 @@ class FindPath(object):
 			return None
 
 		# execute algorithm on the args
-		if not game.main.debug:
+		if not horizons.main.debug:
 			return self.execute()
 		else:
 			p = self.execute()
@@ -243,7 +243,7 @@ class FindPath(object):
 					path.insert(0, previous_node)
 					previous_node = checked[previous_node][0]
 
-				if game.main.debug:
+				if horizons.main.debug:
 					check_path(path, self.blocked_coords)
 
 				return path
@@ -259,14 +259,14 @@ class Pather(object):
 		self.move_diagonal = False
 		self.blocked_coords = []
 		if unit.__class__.movement == Movement.STORAGE_COLLECTOR_MOVEMENT:
-			island = game.main.session.world.get_island(unit.position.x, unit.position.y)
+			island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
 			self.path_nodes = island.path_nodes
 		elif unit.__class__.movement == Movement.COLLECTOR_MOVEMENT:
 			self.move_diagonal = True
 		elif unit.__class__.movement == Movement.SHIP_MOVEMENT:
 			self.move_diagonal = True
-			self.path_nodes = game.main.session.world.water
-			self.blocked_coords = game.main.session.world.ship_map
+			self.path_nodes = horizons.main.session.world.water
+			self.blocked_coords = horizons.main.session.world.ship_map
 		elif unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			# TODO
 			assert False, 'Pathfinding for soldiers isn\'t implemented yet'
@@ -303,7 +303,7 @@ class Pather(object):
 		if self.unit.is_moving() and self.path is not None:
 			source = Point(*self.path[self.cur])
 		else:
-			island = game.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 			if island is not None:
 				building = island.get_building(self.unit.position)
 				if building is not None:
@@ -344,8 +344,8 @@ class Pather(object):
 
 		if self.unit.__class__.movement == Movement.SHIP_MOVEMENT:
 			# for ship: check if another ship is blocking the way
-			path_blocked_by_unit = self.path[self.cur] in game.main.session.world.ship_map and \
-														 game.main.session.world.ship_map[self.path[self.cur]]() is not self
+			path_blocked_by_unit = self.path[self.cur] in horizons.main.session.world.ship_map and \
+														 horizons.main.session.world.ship_map[self.path[self.cur]]() is not self
 
 		if self.path[self.cur] in self.blocked_coords or path_blocked_by_unit:
 			# path is suddenly blocked, find another path

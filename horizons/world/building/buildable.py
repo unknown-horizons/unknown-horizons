@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 import math
-from game.util import Point, Rect
+from horizons.util import Point, Rect
 
 class BuildableSingle(object):
 	@classmethod
@@ -57,7 +57,7 @@ class BuildableSingle(object):
 
 	@classmethod
 	def isIslandBuildRequirementSatisfied(cls, x, y, **state):
-		island = game.main.session.world.get_island(x, y)
+		island = horizons.main.session.world.get_island(x, y)
 		if island is None:
 			return {'buildable' : False}
 		p = Point(0,0)
@@ -179,8 +179,8 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 		for xx in xrange(x - cls.radius, x + cls.size[0] + cls.radius):
 			for yy in xrange(y - cls.radius, y + cls.size[1] + cls.radius):
 				if ((xx < x or xx >= x + cls.size[0]) or (yy < y or yy >= y + cls.size[1])) and ((max(x - xx, 0, xx - x - cls.size[0] + 1) ** 2) + (max(y - yy, 0, yy - y - cls.size[1] + 1) ** 2)) <= cls.radius ** 2:
-					building = game.main.session.entities.buildings[cls._surroundingBuildingClass].areBuildRequirementsSatisfied(xx, yy, **kwargs)
+					building = horizons.main.session.entities.buildings[cls._surroundingBuildingClass].areBuildRequirementsSatisfied(xx, yy, **kwargs)
 					if building is not None:
-						building.update(building = game.main.session.entities.buildings[cls._surroundingBuildingClass], **kwargs)
+						building.update(building = horizons.main.session.entities.buildings[cls._surroundingBuildingClass], **kwargs)
 						buildings.append(building)
 		return buildings

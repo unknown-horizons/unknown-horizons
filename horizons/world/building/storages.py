@@ -19,13 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
-from game.world.consumer import Consumer
-from game.world.provider import Provider
-from game.gui.tabwidget import TabWidget
-from game.gui.buysellwidget import BuySellWidget
-from game.util import Point, Rect, WorldObject
+from horizons.world.consumer import Consumer
+from horizons.world.provider import Provider
+from horizons.gui.tabwidget import TabWidget
+from horizons.gui.buysellwidget import BuySellWidget
+from horizons.util import Point, Rect, WorldObject
 from building import Building, Selectable
 from buildable import BuildableSingle
 
@@ -51,32 +51,32 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		self.inventory.addChangeListener(self._changed)
 
 	def create_collector(self):
-		game.main.session.entities.units[8](self)
+		horizons.main.session.entities.units[8](self)
 		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		#game.main.session.entities.units[2](self)
+		#horizons.main.session.entities.units[2](self)
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
-		game.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
 			if tile.settlement == self.settlement and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-				game.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+				horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None:
-					game.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def show_menu(self):
 		callbacks = {
 			'building_overview': {
-				'buysell': game.main.fife.pychan.tools.callbackWithArguments(\
-					game.main.session.ingame_gui.show_menu, BuySellWidget(3,self.settlement))
+				'buysell': horizons.main.fife.pychan.tools.callbackWithArguments(\
+					horizons.main.session.ingame_gui.show_menu, BuySellWidget(3,self.settlement))
 			}
 		}
-		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self,callbacks=callbacks))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(2, object=self,callbacks=callbacks))
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
-		game.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		game.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 
 class BranchOffice(StorageBuilding):
 	@classmethod

@@ -20,7 +20,7 @@
 # ###################################################
 
 import time
-import game.main
+import horizons.main
 
 from util.living import LivingObject
 
@@ -37,17 +37,17 @@ class Timer(LivingObject):
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).__init__()
-		game.main.settings.addCategorys('ticks')
-		game.main.settings.ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
-		self.ticks_per_second = game.main.settings.ticks.default
+		horizons.main.settings.addCategorys('ticks')
+		horizons.main.settings.ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
+		self.ticks_per_second = horizons.main.settings.ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
 		self.tick_func_test = []
 		self.tick_func_call = []
-		game.main.fife.pump.append(self.check_tick)
+		horizons.main.fife.pump.append(self.check_tick)
 
 	def end(self):
-		game.main.fife.pump.remove(self.check_tick)
+		horizons.main.fife.pump.remove(self.check_tick)
 		super(Timer, self).end()
 
 	def add_test(self, call):
@@ -78,7 +78,7 @@ class Timer(LivingObject):
 		"""Returnes the number of ticks for the specified number of seconds.
 		@param seconds: number of seconds that are to be converted into ticks
 		"""
-		return seconds*game.main.settings.ticks.default
+		return seconds*horizons.main.settings.ticks.default
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

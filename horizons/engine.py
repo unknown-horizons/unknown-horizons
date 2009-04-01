@@ -28,7 +28,7 @@ import fifelog
 import pychan
 
 import gui.style
-import game.main
+import horizons.main
 
 from util.inventory_widget import Inventory, ImageFillStatusButton
 
@@ -64,9 +64,9 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		#print _("Loading animation #%s...") % (id)
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file,frame_end in sorted(game.main.action_sets[actionset][action][int(rotation)].iteritems()):
-			idx = game.main.fife.imagepool.addResourceFromFile(file)
-			img = game.main.fife.imagepool.getImage(idx)
+		for file,frame_end in sorted(horizons.main.action_sets[actionset][action][int(rotation)].iteritems()):
+			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
+			img = horizons.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -136,9 +136,9 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					loc.setWidth(w)
 					loc.setHeight(h)
 
-					idx = game.main.fife.imagepool.addResourceFromLocation(loc)
-					#img = game.main.fife.imagepool.getImage(idx)
-			ani.addFrame(fife.ResourcePtr(game.main.fife.imagepool,idx), max(1,int((float(frame_end) - frame_start)*1000)))
+					idx = horizons.main.fife.imagepool.addResourceFromLocation(loc)
+					#img = horizons.main.fife.imagepool.getImage(idx)
+			ani.addFrame(fife.ResourcePtr(horizons.main.fife.imagepool,idx), max(1,int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		ani.thisown = 0
@@ -160,27 +160,27 @@ class Fife(object):
 		self._gotInited = False
 
 		#init settings
-		game.main.settings.addCategorys('fife')
-		game.main.settings.fife.addChangeListener(self._setSetting)
-		game.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
+		horizons.main.settings.addCategorys('fife')
+		horizons.main.settings.fife.addChangeListener(self._setSetting)
+		horizons.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
-		game.main.settings.fife.defaultFont.setDefaults(
+		horizons.main.settings.fife.defaultFont.setDefaults(
 			path = 'content/gfx/fonts/Essays1743-Italic.ttf',
 			size = 18,
 			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
 		)
 
-		game.main.settings.fife.sound.setDefaults(
+		horizons.main.settings.fife.sound.setDefaults(
 			initialVolume = self.settings.getMaxVolume()
 		)
 
-		game.main.settings.fife.renderer.setDefaults(
+		horizons.main.settings.fife.renderer.setDefaults(
 			backend = 'OpenGL',
 			SDLRemoveFakeAlpha = False,
 			imageChunkingSize = 256
 		)
 
-		game.main.settings.fife.screen.setDefaults(
+		horizons.main.settings.fife.screen.setDefaults(
 			fullscreen = False,
 			width = 1024,
 			height = 768,
@@ -246,16 +246,16 @@ class Fife(object):
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.emitter = {}
-		if game.main.settings.sound.enabled: # Set up sound if it is enabled
+		if horizons.main.settings.sound.enabled: # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
-			self.emitter['bgsound'].setGain(game.main.settings.sound.volume_music)
+			self.emitter['bgsound'].setGain(horizons.main.settings.sound.volume_music)
 			self.emitter['bgsound'].setLooping(False)
 			self.emitter['effects'] = self.soundmanager.createEmitter()
-			self.emitter['effects'].setGain(game.main.settings.sound.volume_effects)
+			self.emitter['effects'].setGain(horizons.main.settings.sound.volume_effects)
 			self.emitter['effects'].setLooping(False)
 			self.emitter['speech'] = self.soundmanager.createEmitter()
-			self.emitter['speech'].setGain(game.main.settings.sound.volume_effects)
+			self.emitter['speech'].setGain(horizons.main.settings.sound.volume_effects)
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
 			self.music_rand_element = random.randint(0, len(self.music) - 1)
@@ -266,7 +266,7 @@ class Fife(object):
 						self.play_sound('bgsound', self.music[self.music_rand_element])
 				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 			check_music() # Start background music
-			game.main.ext_scheduler.add_new_object(check_music, self, loops=-1)
+			horizons.main.ext_scheduler.add_new_object(check_music, self, loops=-1)
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
 		self.animationloader = SQLiteAnimationLoader()
@@ -281,7 +281,7 @@ class Fife(object):
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
-		for name, stylepart in game.gui.style.STYLES.items():
+		for name, stylepart in horizons.gui.style.STYLES.items():
 			self.pychan.manager.addStyle(name, stylepart)
 		self.pychan.loadFonts("content/fonts/Essays1743-Italic.fontdef")
 		pychan.widgets.registerWidget(Inventory)
@@ -291,14 +291,14 @@ class Fife(object):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in game.main.fife.emitter that is to play the  sound
+		@param emitter: string with the emitters name in horizons.main.fife.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
-		if game.main.settings.sound.enabled: # Set up sound if it is enabled
+		if horizons.main.settings.sound.enabled: # Set up sound if it is enabled
 			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
+			emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
 			emitter.play()
 
 	def set_volume(self, emitter_name, value):
@@ -306,14 +306,14 @@ class Fife(object):
 		@param emitter_name: string with the emitters name, used as key for the self.emitter dict
 		@param value: double which value the emitter is to be set to range[0,1]
 		"""
-		if game.main.settings.sound.enabled:
+		if horizons.main.settings.sound.enabled:
 			self.emitter[emitter_name].setGain(value)
 
 	def set_volume_music(self, value):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if game.main.settings.sound.enabled:
+		if horizons.main.settings.sound.enabled:
 				self.emitter['bgsound'].setGain(value)
 
 
@@ -321,7 +321,7 @@ class Fife(object):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if game.main.settings.sound.enabled:
+		if horizons.main.settings.sound.enabled:
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:

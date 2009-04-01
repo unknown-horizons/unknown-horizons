@@ -21,14 +21,14 @@
 
 import weakref
 
-import game.main
+import horizons.main
 
 from provider import Provider
 from consumer import Consumer
 from units.unit import Unit
 from building.building import Building
-from game.util import WeakList
-from game.gui.tabwidget import TabWidget
+from horizons.util import WeakList
+from horizons.gui.tabwidget import TabWidget
 
 class PrimaryProducer(Provider):
 	"""Class used for primary production classes. These types do not need other ressources to
@@ -39,7 +39,7 @@ class PrimaryProducer(Provider):
 	Check out the __init() function now."""
 	def __init__(self, **kwargs):
 		super(PrimaryProducer, self).__init__(**kwargs)
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Initing PrimaryProducer", self.id
 		self._init()
 
@@ -55,7 +55,7 @@ class PrimaryProducer(Provider):
 		# need to be stored.
 		# TUTORIAL:
 		# Check that class out now and then come back here.
-		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
+		for (id,) in horizons.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = ProductionLine(id)
 
 		self.__used_resources = {}
@@ -75,7 +75,7 @@ class PrimaryProducer(Provider):
 			self.active_production_line = None
 			if self.hasChangeListener(self.check_production_startable):
 				self.removeChangeListener(self.check_production_startable)
-			game.main.session.scheduler.rem_call(self, self.production_step)
+			horizons.main.session.scheduler.rem_call(self, self.production_step)
 			if isinstance(self, Building):
 				self.toggle_costs()
 		else:
@@ -107,7 +107,7 @@ class PrimaryProducer(Provider):
 	def check_production_startable(self):
 		if self.active_production_line is None:
 			return
-		if game.main.debug:
+		if horizons.main.debug:
 			print "PrimaryProducer check_production_startable", self.id
 		for res, amount in self.production[self.active_production_line].production.items():
 			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
@@ -131,25 +131,25 @@ class PrimaryProducer(Provider):
 				self.__used_resources[res] = amount
 		for res, amount in usable_resources.items():
 			assert(self.inventory.alter(res, -amount) == 0)
-		game.main.session.scheduler.add_new_object(self.production_step, self, 16 *
+		horizons.main.session.scheduler.add_new_object(self.production_step, self, 16 *
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
-		if "work" in game.main.action_sets[self._action_set_id].keys():
+		if "work" in horizons.main.action_sets[self._action_set_id].keys():
 			self.act("work", self._instance.getFacingLocation(), True)
 		else:
 			self.act("idle", self._instance.getFacingLocation(), True)
 		#print self.getId(), "begin working"
 
 	def production_step(self):
-		if game.main.debug:
+		if horizons.main.debug:
 			print "PrimaryProducer production_step", self.getId()
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
 					self.inventory.alter(res, amount)
 			self.__used_resources = {}
-		if "idle_full" in game.main.action_sets[self._action_set_id].keys():
+		if "idle_full" in horizons.main.action_sets[self._action_set_id].keys():
 			self.act("idle_full", self._instance.getFacingLocation(), True)
 		else:
 			self.act("idle", self._instance.getFacingLocation(), True)
@@ -182,13 +182,13 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 				'toggle_active': self.toggle_active
 			}
 		}
-		game.main.session.ingame_gui.show_menu(TabWidget(4, object=self, callbacks=callbacks))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(4, object=self, callbacks=callbacks))
 
 
 class ProductionLine(object):
 	def __init__(self, id):
 		self.id = id
-		self.time = game.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
+		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
 		self.production = {}
-		for res, amount in game.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
+		for res, amount in horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
 			self.production[res] = amount

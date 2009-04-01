@@ -20,12 +20,12 @@
 # ###################################################
 
 import fife
-import game.main
+import horizons.main
 import code
 import sys
 import datetime
 import string
-from game.util.living import LivingObject
+from horizons.util.living import LivingObject
 
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 	"""MainListener Class to process events of main window"""
@@ -34,19 +34,19 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		super(MainListener, self).__init__()
 		fife.IKeyListener.__init__(self)
 		fife.ConsoleExecuter.__init__(self)
-		game.main.fife.eventmanager.addKeyListener(self)
-		game.main.fife.console.setConsoleExecuter(self)
+		horizons.main.fife.eventmanager.addKeyListener(self)
+		horizons.main.fife.console.setConsoleExecuter(self)
 
 		#ugly but works o_O
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
-		game.main.fife.eventmanager.addCommandListener(self.cmdlist)
+		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
 		self.commandbuffer = ''
 
 	def end(self):
-		game.main.fife.eventmanager.removeKeyListener(self)
+		horizons.main.fife.eventmanager.removeKeyListener(self)
 		super(MainListener, self).end()
 
 	def keyPressed(self, evt):
@@ -54,22 +54,22 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		keystr = evt.getKey().getAsString().lower()
 		if keyval == fife.Key.ESCAPE:
 			print "ESCAPE PRESSED"
-			game.main.gui.on_escape()
+			horizons.main.gui.on_escape()
 			evt.consume()
 		elif keyval == fife.Key.F10:
-			game.main.fife.console.toggleShowHide()
+			horizons.main.fife.console.toggleShowHide()
 			evt.consume()
 		elif keyval == fife.Key.F1:
-			game.main.gui.on_help()
+			horizons.main.gui.on_help()
 		elif keystr == 's':
-			game.main.fife.engine.getRenderBackend().captureScreen(string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
+			horizons.main.fife.engine.getRenderBackend().captureScreen(string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
 
 	def keyReleased(self, evt):
 		pass
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			game.main.fife.quit()
+			horizons.main.fife.quit()
 			command.consume()
 
 	def onConsoleCommand(self, command):
@@ -93,7 +93,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 				parts = (self.buffer + string).split("\n")
 				self.buffer = parts.pop()
 				for p in parts:
-					game.main.fife.console.println(p)
+					horizons.main.fife.console.println(p)
 				self.copy.write(string)
 			def __del__(self):
 				if len(self.buffer) > 0:

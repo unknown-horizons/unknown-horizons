@@ -18,7 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import game.main
+import horizons.main
 
 class livingProperty(object):
 	"""livingProperty's are used to assign propertys to a class, simular to python properties.
@@ -60,7 +60,7 @@ class livingProperty(object):
 		return self.__value
 
 	def __set__(self, obj, value):
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Setting:", obj, value
 			print "Value:", self.__value
 		if hasattr(self.__value, 'end'):

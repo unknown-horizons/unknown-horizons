@@ -21,7 +21,7 @@
 
 #because of unclean inheritance, bad usage of parameters and bad use of super in most world object, i cant trust that the init constructor is called.
 
-import game.main
+import horizons.main
 
 from living import LivingObject
 from weakmethod import WeakMethod
@@ -29,7 +29,7 @@ from weakmethod import WeakMethod
 class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):
 		super(Changelistener, self).__init__()
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Initing Changelistener"
 		self.__listeners = []
 

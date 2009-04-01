@@ -21,12 +21,12 @@
 
 import fife
 
-import game.main
+import horizons.main
 
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
-from game.command.building import Tear
-from game.world.building.storages import StorageBuilding
+from horizons.command.building import Tear
+from horizons.world.building.storages import StorageBuilding
 
 class TearingTool(NavigationTool):
 	"""
@@ -43,15 +43,15 @@ class TearingTool(NavigationTool):
 		self.coords = None
 		self.selected = []
 		self.oldedges = None
-		game.main.gui.on_escape = self.onEscape
-		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.tearing_cursor_image)
+		horizons.main.gui.on_escape = self.onEscape
+		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
 
 	def end(self):
-		game.main.fife.cursor.set(fife.CURSOR_IMAGE, game.main.fife.default_cursor_image)
+		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
 		super(TearingTool, self).end()
 
 	def mouseDragged(self, evt):
-		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		coords = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		if self.coords is None:
 			self.coords = (int(round(coords.x)), int(round(coords.y)))
 		self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
@@ -59,30 +59,30 @@ class TearingTool(NavigationTool):
 
 	def mouseMoved(self,  evt):
 		super(TearingTool, self).mouseMoved(evt)
-		coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		coords = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		self._mark((int(round(coords.x)), int(round(coords.y))))
 		evt.consume()
 
 	def onEscape(self):
 		self._mark()
-		game.main.session.cursor = SelectionTool()
+		horizons.main.session.cursor = SelectionTool()
 
 	def mouseReleased(self,  evt):
 		if fife.MouseEvent.LEFT == evt.getButton():
-			coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			coords = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			if self.coords is None:
 				self.coords = (int(round(coords.x)), int(round(coords.y)))
 			self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
 			for i in self.selected:
-				game.main.session.manager.execute(Tear(i))
-			game.main.session.cursor = SelectionTool()
+				horizons.main.session.manager.execute(Tear(i))
+			horizons.main.session.cursor = SelectionTool()
 			evt.consume()
 
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.onEscape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			coords = game.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			coords = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			self.coords = (int(round(coords.x)), int(round(coords.y)))
 			self._mark(self.coords)
 		else:
@@ -99,14 +99,14 @@ class TearingTool(NavigationTool):
 			edges = None
 		if self.oldedges != edges or edges is None:
 			for i in self.selected:
-				game.main.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
+				horizons.main.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 			self.selected = []
 			self.oldedges = edges
 		if edges is not None:
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
-					b = game.main.session.world.get_building(x,y)
+					b = horizons.main.session.world.get_building(x,y)
 					if b is not None and b not in self.selected and not isinstance(b, StorageBuilding):
 						self.selected.append(b)
 			for i in self.selected:
-				game.main.session.view.renderer['InstanceRenderer'].addColored(i._instance, 255, 255, 255)
+				horizons.main.session.view.renderer['InstanceRenderer'].addColored(i._instance, 255, 255, 255)

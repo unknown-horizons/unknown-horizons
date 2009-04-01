@@ -20,20 +20,20 @@
 # ###################################################
 
 """This is the main game file, it used to store some global information and to handle
-   the main menu, as well as to initialize new gamesessions. game.main provides some globals
-   that can be used throughout the code just by importing 'game.main'. These are the
+   the main menu, as well as to initialize new gamesessions. horizons.main provides some globals
+   that can be used throughout the code just by importing 'horizons.main'. These are the
    globals:
-   * db - the game.dbreader instance, used to retrieve data from the database.
-   * settings - game.settings instance.
-   * fife - if a game is running. game.fife provides the running engine instance.
+   * db - the horizons.dbreader instance, used to retrieve data from the database.
+   * settings - horizons.settings instance.
+   * fife - if a game is running. horizons.fife provides the running engine instance.
    * gui - provides the currently active gui (only non ingame menus)
-   * session - game.session instance - check game/session.py for more information
+   * session - horizons.session instance - check game/session.py for more information
    * connection - multiplayer game connection (not used yet)
-   * ext_scheduler - game.extscheduler instance, used for non ingame timed events.
-   * savegamemanager - game.savegamemanager instance.
+   * ext_scheduler - horizons.extscheduler instance, used for non ingame timed events.
+   * savegamemanager - horizons.savegamemanager instance.
 
    TUTORIAL:
-   Continue to game.session for further ingame digging.
+   Continue to horizons.session for further ingame digging.
    """
 
 import re
@@ -57,7 +57,7 @@ from savegamemanager import SavegameManager
 
 
 def start():
-	"""Starts the game.
+	"""Starts the horizons.
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets

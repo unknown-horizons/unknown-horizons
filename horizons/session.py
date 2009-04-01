@@ -26,7 +26,7 @@ import os.path
 import time
 
 import fife
-import game.main
+import horizons.main
 
 from gui.selectiontool import SelectionTool
 from world.building import building
@@ -50,20 +50,20 @@ class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
 
 	This is the most important class if you are going to hack on Unknown Horizons, it provides most of
-	the important ingame variables that you will be constantly accessing by game.main.session.x
+	the important ingame variables that you will be constantly accessing by horizons.main.session.x
 	Here's a small list of commonly used attributes:
-	* manager - game.manager instance. Used to execute commands that need to be tick,
+	* manager - horizons.manager instance. Used to execute commands that need to be tick,
 				synchronized check the class for more information.
-	* scheduler - game.scheduler instance. Used to execute timed events that do not effect
-	              network game.
-	* view - game.view instance. Used to control the ingame camera.
-	* entities - game.entities instance. used to hold preconstructed dummy classes from the db
+	* scheduler - horizons.scheduler instance. Used to execute timed events that do not effect
+	              network horizons.
+	* view - horizons.view instance. Used to control the ingame camera.
+	* entities - horizons.entities instance. used to hold preconstructed dummy classes from the db
 	             for later initialization.
-	* ingame_gui - game.gui.ingame_gui instance. Used to controll the ingame gui.
-	* cursor - game.gui.{navigation/cursor/selection/building}tool instance. Used to controll
+	* ingame_gui - horizons.gui.ingame_gui instance. Used to controll the ingame gui.
+	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to controll
 			   mouse events, check the classes for more info.
 	* selected_instances - Set that holds the currently selected instances (building, units).
-	* world - game.world instance of the currently running game. Stores islands, players,
+	* world - horizons.world instance of the currently running horizons. Stores islands, players,
 	          for later access.
 
 	TUTORIAL:
@@ -104,18 +104,18 @@ class Session(LivingObject):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		#autosave
-		#if game.main.settings.savegame.autosaveinterval != 0:
-		#	game.main.ext_scheduler.add_new_object(self.autosave, self.autosave, game.main.settings.savegame.autosaveinterval * 60, -1)
+		#if horizons.main.settings.savegame.autosaveinterval != 0:
+		#	horizons.main.ext_scheduler.add_new_object(self.autosave, self.autosave, horizons.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def end(self):
 		self.scheduler.rem_all_classinst_calls(self)
 
-		if game.main.settings.sound.enabled:
-			for emitter in game.main.fife.emitter['ambient']:
+		if horizons.main.settings.sound.enabled:
+			for emitter in horizons.main.fife.emitter['ambient']:
 				emitter.stop()
-				game.main.fife.emitter['ambient'].remove(emitter)
-			game.main.fife.emitter['effects'].stop()
-			game.main.fife.emitter['speech'].stop()
+				horizons.main.fife.emitter['ambient'].remove(emitter)
+			horizons.main.fife.emitter['effects'].stop()
+			horizons.main.fife.emitter['speech'].stop()
 		self.world = None
 		self.cursor = None
 		self.keylistener = None
@@ -131,26 +131,26 @@ class Session(LivingObject):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
-		# call saving through game.main and not directly through session, so that save errors are handled
-		success = game.main.save_game(game.main.savegamemanager.create_autosave_filename())
-		game.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
+		# call saving through horizons.main and not directly through session, so that save errors are handled
+		success = horizons.main.save_game(horizons.main.savegamemanager.create_autosave_filename())
+		horizons.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
-		# call saving through game.main and not directly through session, so that save errors are handled
-		success = game.main.save_game(game.main.savegamemanager.create_quicksave_filename())
+		# call saving through horizons.main and not directly through session, so that save errors are handled
+		success = horizons.main.save_game(horizons.main.savegamemanager.create_quicksave_filename())
 		if success:
-			game.main.gui.show_popup('Quicksave', 'Your game has been saved')
-		game.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
+			horizons.main.gui.show_popup('Quicksave', 'Your game has been saved')
+		horizons.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
 
 	def quickload(self):
 		"""Loads last quicksave"""
-		files = game.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
+		files = horizons.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
-			game.main.gui.show_popup("No quicksaves found", "You need to quicksave before you can quickload.")
+			horizons.main.gui.show_popup("No quicksaves found", "You need to quicksave before you can quickload.")
 			return
 		files.sort()
-		game.main.gui.load_game(files[-1])
+		horizons.main.gui.load_game(files[-1])
 
 	def save(self, savegame):
 		"""
@@ -177,7 +177,7 @@ class Session(LivingObject):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
 
-			game.main.savegamemanager.write_metadata(db)
+			horizons.main.savegamemanager.write_metadata(db)
 			"""
 			# Savegame integrity ensurance disabled for save testing:
 		except Exception, e:
@@ -191,19 +191,19 @@ class Session(LivingObject):
 
 	def record(self, savegame):
 		self.save(savegame)
-		game.main.db("ATTACH ? AS demo", savegame)
+		horizons.main.db("ATTACH ? AS demo", savegame)
 		self.manager.recording = True
 
 	def stop_record(self):
 		assert(self.manager.recording)
 		self.manager.recording = False
-		game.main.db("DETACH demo")
+		horizons.main.db("DETACH demo")
 
 	def load(self, savegame, playername = "", playercolor = None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param playername: string with the playername
-		@param playercolor: game.util.color instance with the player's color
+		@param playercolor: horizons.util.color instance with the player's color
 		"""
 		db = DbReader(savegame) # Initialize new dbreader
 		try:
@@ -213,7 +213,7 @@ class Session(LivingObject):
 		except KeyError:
 			self.savecounter = 0
 
-		self.world = World() # Load game.world module (check game/world/__init__.py)
+		self.world = World() # Load horizons.world module (check game/world/__init__.py)
 		self.world._init(db)
 		if not self.is_game_loaded(): # setup new player
 			self.world.setupPlayer(playername, playercolor)
@@ -243,10 +243,10 @@ class Session(LivingObject):
 		"""Generates a map."""
 
 		#load map
-		game.main.db("attach ':memory:' as map")
+		horizons.main.db("attach ':memory:' as map")
 		#...
 		self.world = World()
-		self.world._init(game.main.db)
+		self.world._init(horizons.main.db)
 
 		#setup view
 		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
@@ -254,7 +254,7 @@ class Session(LivingObject):
 	def speed_set(self, ticks):
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
-		self.view.map.setTimeMultiplier(float(ticks) / float(game.main.settings.ticks.default))
+		self.view.map.setTimeMultiplier(float(ticks) / float(horizons.main.settings.ticks.default))
 		if old == 0 and self.timer.tick_next_time is None: #back from paused state
 			self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
 		elif ticks == 0 or self.timer.tick_next_time is None: #go into paused state or very early speed change (before any tick)
@@ -264,20 +264,20 @@ class Session(LivingObject):
 			self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
 
 	def speed_up(self):
-		if self.timer.ticks_per_second in game.main.settings.ticks.steps:
-			i = game.main.settings.ticks.steps.index(self.timer.ticks_per_second)
-			if i + 1 < len(game.main.settings.ticks.steps):
-				self.speed_set(game.main.settings.ticks.steps[i + 1])
+		if self.timer.ticks_per_second in horizons.main.settings.ticks.steps:
+			i = horizons.main.settings.ticks.steps.index(self.timer.ticks_per_second)
+			if i + 1 < len(horizons.main.settings.ticks.steps):
+				self.speed_set(horizons.main.settings.ticks.steps[i + 1])
 		else:
-			self.speed_set(game.main.settings.ticks.steps[0])
+			self.speed_set(horizons.main.settings.ticks.steps[0])
 
 	def speed_down(self):
-		if self.timer.ticks_per_second in game.main.settings.ticks.steps:
-			i = game.main.settings.ticks.steps.index(self.timer.ticks_per_second)
+		if self.timer.ticks_per_second in horizons.main.settings.ticks.steps:
+			i = horizons.main.settings.ticks.steps.index(self.timer.ticks_per_second)
 			if i > 0:
-				self.speed_set(game.main.settings.ticks.steps[i - 1])
+				self.speed_set(horizons.main.settings.ticks.steps[i - 1])
 		else:
-			self.speed_set(game.main.settings.ticks.steps[0])
+			self.speed_set(horizons.main.settings.ticks.steps[0])
 
 	def speed_pause(self):
 		if self.timer.ticks_per_second != 0:

@@ -21,10 +21,10 @@
 
 import weakref
 
-import game.main
+import horizons.main
 
-from game.dbreader import DbReader
-from game.util import WorldObject, Point, Rect
+from horizons.dbreader import DbReader
+from horizons.util import WorldObject, Point, Rect
 from settlement import Settlement
 
 class Island(WorldObject):
@@ -72,7 +72,7 @@ class Island(WorldObject):
 		self.ground_map = {}
 		self.buildings = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
-			ground = game.main.session.entities.grounds[ground_id](self.origin.x + rel_x, self.origin.y + rel_y)
+			ground = horizons.main.session.entities.grounds[ground_id](self.origin.x + rel_x, self.origin.y + rel_y)
 			# Each ground has a set of attributes:
 			ground.settlement = None
 			ground.blocked = False
@@ -101,7 +101,7 @@ class Island(WorldObject):
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", worldid)[0]
 		self.__init(Point(x, y), filename)
 
-		game.main.session.world.islands.append(self)
+		horizons.main.session.world.islands.append(self)
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
 			settlement = Settlement.load(db, settlement_id)
@@ -109,14 +109,14 @@ class Island(WorldObject):
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 
-			buildingclass = game.main.session.entities.buildings[building_typeid]
+			buildingclass = horizons.main.session.entities.buildings[building_typeid]
 			building = buildingclass.load(db, building_worldid)
 
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Island get_tile"
 		if not self.rect.contains(point):
 			return None
@@ -130,7 +130,7 @@ class Island(WorldObject):
 		@param point: position of the tile to look on
 		@return: Building class instance or None if none is found.
 		"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Island get_building"
 		if not self.rect.contains(point):
 			return None
@@ -148,7 +148,7 @@ class Island(WorldObject):
 		@param point: Point to look on
 		@return: Settlement at point, or None"""
 
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Island get_settlement"
 		settlements = self.get_settlements(Rect(point, 1, 1))
 		if len(settlements)>0:
@@ -179,7 +179,7 @@ class Island(WorldObject):
 		settlement = Settlement(player)
 		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
-		game.main.session.ingame_gui.message_widget.add(position.center().x, position.center().y, 1, {'player':player.name})
+		horizons.main.session.ingame_gui.message_widget.add(position.center().x, position.center().y, 1, {'player':player.name})
 		return settlement
 
 	def add_existing_settlement(self, position, radius, settlement):

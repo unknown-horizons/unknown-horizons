@@ -19,18 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import fife
-import game.main
+import horizons.main
 
-from game.util.living import LivingObject
+from horizons.util.living import LivingObject
 
 class CursorTool(fife.IMouseListener, LivingObject):
 	"""Basic tool for cursors."""
 	def __init__(self):
 		super(CursorTool, self).__init__()
-		game.main.fife.eventmanager.addMouseListener(self)
+		horizons.main.fife.eventmanager.addMouseListener(self)
 
 	def end(self):
-		game.main.fife.eventmanager.removeMouseListener(self)
+		horizons.main.fife.eventmanager.removeMouseListener(self)
 		super(CursorTool, self).end()
 
 	def mousePressed(self, evt):

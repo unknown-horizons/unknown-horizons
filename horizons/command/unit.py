@@ -20,8 +20,8 @@
 # ###################################################
 
 import fife
-import game.main
-from game.util import Point, WorldObject
+import horizons.main
+from horizons.util import Point, WorldObject
 
 class Act(object):
 	"""Command class that moves a unit.
@@ -53,10 +53,10 @@ class CreateUnit(object):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		from game.util import WorldObject
+		from horizons.util import WorldObject
 		building = WorldObject.getObjectById(self.building_id)
 		building.produce(self.prodline_id)
 
-from game.util.encoder import register_classes
+from horizons.util.encoder import register_classes
 register_classes(Act)
 register_classes(CreateUnit)

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
 class ColorIter(object):
 	def __iter__(self):
@@ -28,9 +28,9 @@ class ColorIter(object):
 	def next(self):
 		try:
 			if hasattr(self, 'last'):
-				id = game.main.db('SELECT rowid from data.colors where rowid > ? order by rowid limit 1', self.last)[0][0]
+				id = horizons.main.db('SELECT rowid from data.colors where rowid > ? order by rowid limit 1', self.last)[0][0]
 			else:
-				id = game.main.db('SELECT rowid from data.colors order by rowid limit 1')[0][0]
+				id = horizons.main.db('SELECT rowid from data.colors order by rowid limit 1')[0][0]
 		except:
 			raise StopIteration
 		self.last = id
@@ -40,7 +40,7 @@ class ColorMeta(type):
 	def __getitem__(cls, key):
 		if key == 0:
 			return None
-		r,g,b = game.main.db('SELECT red,green,blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
+		r,g,b = horizons.main.db('SELECT red,green,blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
 		c = Color(r, g, b)
 		return c
 
@@ -61,9 +61,9 @@ class Color(object):
 		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
 		try:
-			self.name, self.id = game.main.db('SELECT name,rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
+			self.name, self.id = horizons.main.db('SELECT name,rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
 		except:
 			pass
 
-from game.util.encoder import register_classes
+from horizons.util.encoder import register_classes
 register_classes(Color)

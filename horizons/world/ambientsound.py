@@ -19,12 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
 class AmbientSound(object):
 	"""Support for playing ambient sounds, such as animal noise.
 	It relies on the subclass having an attribute "position", which must be either a
-	game.util.Point or game.util.Rect.
+	horizons.util.Point or horizons.util.Rect.
 	"""
 	def __init__(self, positioning=True, **kwargs):
 		"""
@@ -38,12 +38,12 @@ class AmbientSound(object):
 		self.emitter = None
 
 	def create_emitter(self):
-		if game.main.settings.sound.enabled:
-			self.emitter = game.main.fife.soundmanager.createEmitter()
-			self.emitter.setGain(game.main.settings.sound.volume_effects*2)
+		if horizons.main.settings.sound.enabled:
+			self.emitter = horizons.main.fife.soundmanager.createEmitter()
+			self.emitter.setGain(horizons.main.settings.sound.volume_effects*2)
 			if self.positioning:
 				self.emitter.setRolloff(1.9)
-			game.main.fife.emitter['ambient'].append(self.emitter)
+			horizons.main.fife.emitter['ambient'].append(self.emitter)
 
 	def load(self, db, worldid):
 		super(AmbientSound, self).load(db, worldid)
@@ -60,14 +60,14 @@ class AmbientSound(object):
 		@param soundfile: path to audio file
 		@param looping: bool, wether sound should loop for forever
 		"""
-		if game.main.settings.sound.enabled:
+		if horizons.main.settings.sound.enabled:
 			if self.emitter is None:
 				self.create_emitter()
 			# set to current position
 			if(hasattr(self, 'position') and self.position != None and self.positioning):
 				self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
 			self.emitter.setLooping(looping)
-			self.emitter.setSoundClip(game.main.fife.soundclippool.addResourceFromFile(soundfile))
+			self.emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
 			self.emitter.play()
 
 	@classmethod
@@ -77,12 +77,12 @@ class AmbientSound(object):
 		@param sound: string, key in table sounds_special
 		@param position: optional, source of sound on map
 		"""
-		if game.main.settings.sound.enabled:
+		if horizons.main.settings.sound.enabled:
 			if position is None:
 				a = AmbientSound(positioning=False)
 			else:
 				a = AmbientSound()
 				a.position = position
-			soundfile = game.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
+			soundfile = horizons.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
 			a.play_ambient(soundfile, looping = False)
-			game.main.fife.emitter['ambient'].remove(a.emitter)
+			horizons.main.fife.emitter['ambient'].remove(a.emitter)

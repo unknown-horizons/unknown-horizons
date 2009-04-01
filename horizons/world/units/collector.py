@@ -23,13 +23,13 @@ import operator
 import weakref
 import new
 
-import game.main
+import horizons.main
 
-from game.world.storageholder import StorageHolder
-from game.util import Rect, Point, WorldObject
-from game.world.pathfinding import Movement
-from game.world.production import PrimaryProducer
-from game.ext.enum import Enum
+from horizons.world.storageholder import StorageHolder
+from horizons.util import Rect, Point, WorldObject
+from horizons.world.pathfinding import Movement
+from horizons.world.production import PrimaryProducer
+from horizons.ext.enum import Enum
 from unit import Unit
 
 
@@ -57,14 +57,14 @@ class BuildingCollector(StorageHolder, Unit):
 												slots = slots,
 												size = size,
 												**kwargs)
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Initing BuildingCollector", self.id
 		self.inventory.limit = size;
 
 		self.__init(self.states.idle, start_hidden, home_building)
 
 		# start searching jobs just when construction (of subclass) is completed
-		game.main.session.scheduler.add_new_object(self.search_job, self, 1)
+		horizons.main.session.scheduler.add_new_object(self.search_job, self, 1)
 
 	def __init(self, state, start_hidden, home_building):
 		self.state = state
@@ -90,7 +90,7 @@ class BuildingCollector(StorageHolder, Unit):
 		elif self.state == self.states.working:
 			current_callback = self.finish_working
 		if current_callback is not None:
-			calls = game.main.session.scheduler.get_classinst_calls(self, current_callback)
+			calls = horizons.main.session.scheduler.get_classinst_calls(self, current_callback)
 			assert(len(calls) == 1)
 			remaining_ticks = calls.values()[0]
 
@@ -132,14 +132,14 @@ class BuildingCollector(StorageHolder, Unit):
 		@param remaining_ticks: ticks after which current state is finished
 		"""
 		if state == self.states.idle:
-			game.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
+			horizons.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
 		elif state == self.states.moving_to_target:
 			self.setup_new_job()
 			self.move_callback.append(self.begin_working)
 			self.show()
 		elif state == self.states.working:
 			self.setup_new_job()
-			game.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
+			horizons.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
 		elif state == self.states.moving_home:
 			self.home_building()._AbstractConsumer__collectors.append(self)
 			self.move_callback.append(self.reached_home)
@@ -148,17 +148,17 @@ class BuildingCollector(StorageHolder, Unit):
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in 32 ticks."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector seach_job", self.id
 		self.job = self.get_job()
 		if self.job is None:
-			game.main.session.scheduler.add_new_object(self.search_job, self, 32)
+			horizons.main.session.scheduler.add_new_object(self.search_job, self, 32)
 		else:
 			self.begin_current_job()
 
 	def get_job(self):
 		"""Returns the next job or None"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector get_job", self.id
 
 		if self.home_building() is None:
@@ -211,7 +211,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def setup_new_job(self):
 		"""Executes the necessary actions to begin a new job"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector setup_new_job", self.id
 		self.job.object._Provider__collectors.append(self)
 		self.home_building()._AbstractConsumer__collectors.append(self)
@@ -222,7 +222,7 @@ class BuildingCollector(StorageHolder, Unit):
 		a lumberjack might just take a random tree.
 		@param jobs: list of Job instances that should be sorted an then returned.
 		@return: sorted list of Job instances."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector sort_jobs", self.id
 		jobs.sort(key=operator.attrgetter('rating') )
 		jobs.reverse()
@@ -230,7 +230,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector begin_current_job", self.id
 		self.setup_new_job()
 		self.show()
@@ -243,10 +243,10 @@ class BuildingCollector(StorageHolder, Unit):
 		called after that time."""
 		# uncomment the following line when all collectors have a "stopped" animation
 		#self._instance.act("stopped", self._instance.getFacingLocation(), True)
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector begin_working", self.id
 		if self.job.object is not None:
-			game.main.session.scheduler.add_new_object(self.finish_working, self, 16)
+			horizons.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 			self.state = self.states.working
 		else:
 			self.reroute()
@@ -254,7 +254,7 @@ class BuildingCollector(StorageHolder, Unit):
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources and sends collector home."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector finish_working", self.id
 		if self.job.object is not None:
 			self.act("idle", self._instance.getFacingLocation(), True)
@@ -270,7 +270,7 @@ class BuildingCollector(StorageHolder, Unit):
 	def reroute(self):
 		"""Reroutes the collector to a different job, or home if no job is found.
 		Can be called the current job can't be executed any more"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector reroute", self.id
 		#print self.getId(), 'Rerouting from', self.position
 		# Get a new job
@@ -287,7 +287,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def reached_home(self):
 		"""Exchanges resources with home and 'ends' the job"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector reached_home", self.id
 
 		if self.home_building() is not None:
@@ -302,16 +302,16 @@ class BuildingCollector(StorageHolder, Unit):
 		"""Contrary to setup_new_job"""
 		# he finished the job now
 		# before the new job can begin this will be executed
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector end_job", self.id
 		if self.start_hidden:
 			self.hide()
-		game.main.session.scheduler.add_new_object(self.search_job , self, 32)
+		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)
 		self.state = self.states.idle
 
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector transfer_res", self.id
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		# should not to be. register_collector function at the building should prevent it
@@ -320,7 +320,7 @@ class BuildingCollector(StorageHolder, Unit):
 
 	def get_collectable_res(self):
 		"""Return all resources the Collector can collect (depends on its home building)"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector get_collectable_res", self.id
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building().get_needed_res()
@@ -328,25 +328,25 @@ class BuildingCollector(StorageHolder, Unit):
 	def get_buildings_in_range(self):
 		"""Returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector get_buildings_in_range", self.id
-		from game.world.provider import Provider
+		from horizons.world.provider import Provider
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector move_home", self.id
 		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
 	def cancel(self):
 		"""Cancels current job and moves back home"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Collector cancel", self.id
 		if self.job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
-		game.main.session.scheduler.rem_all_classinst_calls(self)
+		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		self.move_home(callback=self.search_job, action='move')
 
 
@@ -373,7 +373,7 @@ class FieldCollector(BuildingCollector):
 		@param jobs: list of Job instances that should be sorted an then returned.
 		@return: sorted list of Job instances.
 		"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "FieldCollector sort_jobs", self.id
 		from random import shuffle
 		shuffle(jobs)
@@ -445,7 +445,7 @@ class AnimalCollector(BuildingCollector):
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
 		#print self.id, 'RELEASE ANIMAL', self.job.object.getId()
-		game.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
+		horizons.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
 class Job(object):

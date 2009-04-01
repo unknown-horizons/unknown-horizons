@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 import time
 
 # There are two ways of sending packets without specifing target ip/port:
@@ -44,7 +44,7 @@ class Packet(object):
 
 		Gets overwritten in every packet subclass, that has to be
 		handled on a server
-		TIP: you can access (Server|Client)connection via game.main.connection
+		TIP: you can access (Server|Client)connection via horizons.main.connection
 		"""
 		print "Warning: unhandled packet on server:",self
 
@@ -72,8 +72,8 @@ class QueryPacket(Packet):
 	"""Client sends this to discover servers
 	"""
 	def handleOnServer(self):
-		o = game.main.connection.mpoptions
-		game.main.connection.send(InfoPacket(self.address, self.port, 'unknown map' if o['selected_map'] == -1 else o['maps'][1][o['selected_map']], len(o['players']), 0 if o['bots'] is None else o['bots'], 0 if o['slots'] is None else o['slots']))
+		o = horizons.main.connection.mpoptions
+		horizons.main.connection.send(InfoPacket(self.address, self.port, 'unknown map' if o['selected_map'] == -1 else o['maps'][1][o['selected_map']], len(o['players']), 0 if o['bots'] is None else o['bots'], 0 if o['slots'] is None else o['slots']))
 
 class LobbyChatPacket(Packet):
 	"""
@@ -97,10 +97,10 @@ class LobbyJoinPacket(Packet):
 
 	def handleOnServer(self):
 		self.player.address, self.player.port = self.address, self.port
-		game.main.connection.mpoptions['players'].append(self.player)
-		game.main.connection.last_client_message[(self.player.address, self.player.port)] = time.time()
+		horizons.main.connection.mpoptions['players'].append(self.player)
+		horizons.main.connection.last_client_message[(self.player.address, self.player.port)] = time.time()
 		print _('JOIN BY'), self.player.address, self.player.port
-		game.main.connection.notifyClients()
+		horizons.main.connection.notifyClients()
 
 class LeaveServerPacket(Packet):
 	"""Use this to leave a server
@@ -109,10 +109,10 @@ class LeaveServerPacket(Packet):
 		pass
 
 	def handleOnServer(self):
-		for player in game.main.connection.mpoptions['players']:
+		for player in horizons.main.connection.mpoptions['players']:
 			if player.address == self.address and player.port == self.port:
 				print _('LEAVE BY'), self.address, self.port
-				game.main.connection.mpoptions['players'].remove(player)
+				horizons.main.connection.mpoptions['players'].remove(player)
 
 class LobbyPlayerModifiedPacket(Packet):
 	"""Notifes server about changes to the local player
@@ -123,12 +123,12 @@ class LobbyPlayerModifiedPacket(Packet):
 
 	def handleOnServer(self):
 		self.player.address, self.player.port = self.address, self.port
-		players = game.main.connection.mpoptions['players']
+		players = horizons.main.connection.mpoptions['players']
 		for i in xrange(0, len(players)):
 			if players[i].address == self.address and players[i].port == self.port:
 				players[i] = self.player
 				break
-		game.main.connection.notifyClients()
+		horizons.main.connection.notifyClients()
 
 class LobbyKeepAlivePacket(Packet):
 	"""Sent regularly to master server to tell it that we are still there"""
@@ -136,7 +136,7 @@ class LobbyKeepAlivePacket(Packet):
 		pass
 
 	def handleOnServer(self):
-		game.main.connection.last_client_message[(self.address, self.port)] = time.time()
+		horizons.main.connection.last_client_message[(self.address, self.port)] = time.time()
 
 # MAYBE:
 # try to tell client when he got disconnected
@@ -163,7 +163,7 @@ class MasterRegisterPacket(Packet):
 	@param port: port on which local game server runs
 	"""
 	def __init__(self, port):
-		super(MasterRegisterPacket, self).__init__(game.main.settings.network.url_master, game.main.settings.network.port)
+		super(MasterRegisterPacket, self).__init__(horizons.main.settings.network.url_master, horizons.main.settings.network.port)
 		self.myport = port
 
 class InfoPacket(Packet):
@@ -191,7 +191,7 @@ class LobbyServerInfoPacket(Packet):
 		self.mpoptions = mpoptions
 
 	def handleOnClient(self):
-		game.main.connection.mpoptions = self.mpoptions
+		horizons.main.connection.mpoptions = self.mpoptions
 
 	def handleOnServer(self):
 		# server sent this, so it can ignore it

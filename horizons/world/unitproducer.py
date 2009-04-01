@@ -21,8 +21,8 @@
 
 
 from production import SecondaryProducer
-from game.util.point import Point
-from game.command.unit import CreateUnit
+from horizons.util.point import Point
+from horizons.command.unit import CreateUnit
 
 class UnitProducer(SecondaryProducer):
 
@@ -40,7 +40,7 @@ class UnitProducer(SecondaryProducer):
 
 		# Load production lines
 		self.production = {}
-		for (id,) in game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?"\
+		for (id,) in horizons.main.db("SELECT rowid FROM data.production_line where %(type)s = ?"\
 								  % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self.production[id] = UnitProductionLine(id)
 
@@ -53,7 +53,7 @@ class UnitProducer(SecondaryProducer):
 
 
 	def production_step(self):
-		if game.main.debug:
+		if horizons.main.debug:
 			print "UnitProducer production_step", self.getId()
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
@@ -62,7 +62,7 @@ class UnitProducer(SecondaryProducer):
 			self.__used_resources = {}
 			# ONLY DIFFERENCE TO PRIMARY PRODUCER HERE
 			self._create_unit()
-		if "idle_full" in game.main.action_sets[self._action_set_id].keys():
+		if "idle_full" in horizons.main.action_sets[self._action_set_id].keys():
 			self.act("idle_full", self._instance.getFacingLocation(), True)
 		else:
 			self.act("idle", self._instance.getFacingLocation(), True)
@@ -82,13 +82,13 @@ class UnitProducer(SecondaryProducer):
 		if self.output_point is None:
 			for point in self.position.get_radius_coordinates(2):
 				tile = self.island.get_tile(Point(point[0],point[1]))
-				if isinstance(tile, game.main.session.entities.grounds[3]) or isinstance(tile, game.main.session.entities.grounds[2]):
+				if isinstance(tile, horizons.main.session.entities.grounds[3]) or isinstance(tile, horizons.main.session.entities.grounds[2]):
 					self.output_point = point
 					break
 
 		# Create the new units at the output_point
 		for unit, amount in self.production[self.active_production_line].unit:
-			game.main.session.entities.units[id](self.x, self.y, self.owner)
+			horizons.main.session.entities.units[id](self.x, self.y, self.owner)
 
 
 	def produce(self, prod_line):
@@ -110,13 +110,13 @@ class UnitProductionLine(object):
 	def __init__(self, id):
 		super(UnitProductionLine, self).__init__()
 		self.id = id
-		self.time = game.main.db("SELECT time FROM data.unit_production_line WHERE id=?", id)
-		self.unit = game.main.db("SELECT unit FROM data.unit_production_line WHERE id=?", id)
+		self.time = horizons.main.db("SELECT time FROM data.unit_production_line WHERE id=?", id)
+		self.unit = horizons.main.db("SELECT unit FROM data.unit_production_line WHERE id=?", id)
 		self.production = {}
 		self.unit = {}
 		for unit, amount in \
-			game.main.db("SELECT unit, amount FROM data.production WHERE production_line=?", id):
+			horizons.main.db("SELECT unit, amount FROM data.production WHERE production_line=?", id):
 			self.unit[unit] = amount
 		for res, amount in \
-			game.main.db("SELECT resource, amount FROM data.production WHERE production_line=?", id):
+			horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line=?", id):
 			self.production[amount] = amount

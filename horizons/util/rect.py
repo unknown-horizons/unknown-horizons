@@ -135,5 +135,5 @@ class Rect(object):
 			for y in xrange(self.top, self.bottom+1):
 				yield Point(x, y)
 
-from game.util.encoder import register_classes
+from horizons.util.encoder import register_classes
 register_classes(Rect)

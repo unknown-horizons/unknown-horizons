@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
+import horizons.main
 
-from game.util import Rect, Point, WeakList
+from horizons.util import Rect, Point, WeakList
 from storageholder import StorageHolder
 from abstractconsumer import AbstractConsumer
 
@@ -46,12 +46,12 @@ class Consumer(AbstractConsumer):
 		"""Part of initiation that __init__() and load() share"""
 		#Select all production lines for this building from the databas
 		for (production_line,) in \
-				game.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % \
+				horizons.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % \
 										 {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
 			self._resources[production_line] = []
 			# Now only add ressources whos value is <= 0 (keep or consume)
 			for (res,) in \
-					game.main.db("SELECT resource FROM data.production WHERE \
+					horizons.main.db("SELECT resource FROM data.production WHERE \
 					production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self._resources[production_line].append(res)
 		"""TUTORIAL:

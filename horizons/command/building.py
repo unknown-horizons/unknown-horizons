@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
-from game.world.building.building import *
+import horizons.main
+from horizons.world.building.building import *
 
 class Build(object):
 	"""Command class that builds an object."""
@@ -50,16 +50,16 @@ class Build(object):
 		"""
 		for id in self.tear:
 			building = WorldObject.getObjectById(id)
-			game.main.session.manager.execute(Tear(building))
+			horizons.main.session.manager.execute(Tear(building))
 
 
 		if self.island is not None:
 			island = WorldObject.getObjectById(self.island)
 		else:
-			island = game.main.session.world.get_island(self.x, self.y)
-		building = game.main.session.entities.buildings[self.building_class](x=self.x, y=self.y,\
+			island = horizons.main.session.world.get_island(self.x, self.y)
+		building = horizons.main.session.entities.buildings[self.building_class](x=self.x, y=self.y,\
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
-			instance=(self._instance if hasattr(self, '_instance') and issuer == game.main.session.world.player else None))
+			instance=(self._instance if hasattr(self, '_instance') and issuer == horizons.main.session.world.player else None))
 
 		island.add_building(building, issuer)
 		if self.settlement is not None:
@@ -92,5 +92,5 @@ class Tear(object):
 		# Note: this is weak - if there is a memleak, this del will not work...
 		del building
 
-from game.util.encoder import register_classes
+from horizons.util.encoder import register_classes
 register_classes(Build, Tear)

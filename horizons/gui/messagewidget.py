@@ -22,9 +22,9 @@
 from string import Template
 import fife
 
-import game.main
+import horizons.main
 
-from game.util.living import LivingObject
+from horizons.util.living import LivingObject
 
 class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
@@ -35,20 +35,20 @@ class MessageWidget(LivingObject):
 		self.x, self.y = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # mesages, that aren'y displayed any more
-		self.widget = game.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
+		self.widget = horizons.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
 		self.widget.position = (x,y)
 
 		# the widget will be changed over time and have to be reset, when a message
 		# gets moved to the archive. to get info about the original state, you can use this:
-		self.original_widget = game.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
+		self.original_widget = horizons.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
 		self.original_widget.position = (x,y)
 
-		self.text_widget = game.main.fife.pychan.loadXML('content/gui/hud_messages_text.xml')
+		self.text_widget = horizons.main.fife.pychan.loadXML('content/gui/hud_messages_text.xml')
 		self.text_widget.position = (x,y+self.widget.height)
 		self.widget.show()
 		self.current_tick = 0
 		self.position = 0 # number of current mesage
-		game.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
+		horizons.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 		button_next = self.widget.findChild(name='next')
 		button_next.capture(self.forward)
@@ -63,10 +63,10 @@ class MessageWidget(LivingObject):
 		"""
 		self.active_messages.insert(0, Message(x,y,id, self.current_tick, message_dict))
 		# play a message sound, if one is specified in the database
-		sound = game.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
+		sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
 		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.rowid=? ORDER BY random() LIMIT 1",id)
 		if len(sound) > 0 and sound[0][0] is not None:
-			game.main.fife.play_sound('speech', sound[0][0])
+			horizons.main.fife.play_sound('speech', sound[0][0])
 		self.draw_widget()
 
 	def draw_widget(self):
@@ -81,7 +81,7 @@ class MessageWidget(LivingObject):
 				cur_message = self.active_messages[self.position + i-1]
 				w.up_image = cur_message.image
 				w.hover_image = cur_message.image
-				w.capture(game.main.fife.pychan.tools.callbackWithArguments(game.main.session.view.center, cur_message.x, cur_message.y))
+				w.capture(horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.view.center, cur_message.x, cur_message.y))
 				# the following function are marked as deprecated, can probably be replaced by capture()
 				w.setEnterCallback(self.show_text)
 				w.setExitCallback(self.hide_text)
@@ -137,7 +137,7 @@ class MessageWidget(LivingObject):
 			self.draw_widget()
 
 	def end(self):
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
 		super(MessageWidget, self).end()
@@ -174,6 +174,6 @@ class Message(object):
 		self.id = id
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else int(game.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
-		self.image = game.main.db('SELECT file from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where rowid = ?)', 1, id).rows[0][0]
-		self.message = str(message) if message is not None else Template(game.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0]).safe_substitute(message_dict if message_dict is not None else {})
+		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
+		self.image = horizons.main.db('SELECT file from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where rowid = ?)', 1, id).rows[0][0]
+		self.message = str(message) if message is not None else Template(horizons.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0]).safe_substitute(message_dict if message_dict is not None else {})

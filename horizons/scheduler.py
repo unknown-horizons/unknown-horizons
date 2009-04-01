@@ -20,7 +20,7 @@
 # ###################################################
 
 import weakref
-import game.main
+import horizons.main
 from util.weakmethod import WeakMethod
 from util.living import LivingObject
 
@@ -37,7 +37,7 @@ class Scheduler(LivingObject):
 		self.timer.add_call(self.tick)
 
 	def end(self):
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Scheduler len:", len(self.schedule)
 		self.schedule = None
 		self.timer.remove_call(self.tick)
@@ -51,7 +51,7 @@ class Scheduler(LivingObject):
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			for callback in self.schedule[self.cur_tick]:
-				if game.main.debug:
+				if horizons.main.debug:
 					"Scheduler tick"
 				callback.callback()
 				assert callback.loops >= -1
@@ -83,7 +83,7 @@ class Scheduler(LivingObject):
 		"""Removes a CallbackObject from all callback lists
 		@param callback_obj: CallbackObject to remove
 		"""
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Scheduler rem_object", callback_obj
 		if self.schedule is not None:
 			for key in self.schedule:

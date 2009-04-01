@@ -20,8 +20,8 @@
 # ###################################################
 
 from storage import PositiveStorage
-from game.util import WorldObject, Color
-import game.main
+from horizons.util import WorldObject, Color
+import horizons.main
 
 class Player(WorldObject):
 	"""Class representing a player"""
@@ -50,7 +50,7 @@ class Player(WorldObject):
 		"""
 		# Since the player isn't implemented fully by now,
 		# saving and loading implementation will have to be changed
-		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", self.getId(), self.name, self.color.id, "NULL" if self is not game.main.session.world.player else game.main.settings.client_id)
+		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", self.getId(), self.name, self.color.id, "NULL" if self is not horizons.main.session.world.player else horizons.main.settings.client_id)
 		self.inventory.save(db, self.getId())
 
 	@classmethod

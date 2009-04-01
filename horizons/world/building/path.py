@@ -23,7 +23,7 @@ import math
 import weakref
 import fife
 
-import game.main
+import horizons.main
 
 from building import Building
 from buildable import BuildableLine, BuildableSingle
@@ -34,7 +34,7 @@ class Path(Building, BuildableLine):
 		"""
 		super(Path, self).init()
 		origin = self.position.origin
-		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
+		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
@@ -50,7 +50,7 @@ class Path(Building, BuildableLine):
 		super(Path, self).remove()
 		origin = self.position.origin
 		self.island().unregisterPath(self)
-		island = game.main.session.world.get_island(origin.x, origin.y)
+		island = horizons.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()
@@ -93,7 +93,7 @@ class Bridge(Building, BuildableSingle):
 		"""
 		super(Bridge, self).init()
 		origin = self.position.origin
-		self.island = weakref.ref(game.main.session.world.get_island(origin.x, origin.y))
+		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculateOrientation()

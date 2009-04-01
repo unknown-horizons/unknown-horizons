@@ -72,5 +72,5 @@ class Point(object):
 			except TypeError:
 				return False
 
-from game.util.encoder import register_classes
+from horizons.util.encoder import register_classes
 register_classes(Point)

@@ -26,7 +26,7 @@ import re
 import glob
 import time
 import user
-import game.main
+import horizons.main
 from dbreader import DbReader
 import copy
 
@@ -34,7 +34,7 @@ class SavegameManager(object):
 	"""Controls savegamefiles.
 
 	This class is rather a namespace than a "real" object, since it has no members.
-	The instance in game.main is nevertheless important, since it creates
+	The instance in horizons.main is nevertheless important, since it creates
 	the savegame directories
 
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
@@ -131,10 +131,10 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (self.autosave_dir, self.savegame_extension),
-							game.main.settings.savegame.savedautosaves)
+							horizons.main.settings.savegame.savedautosaves)
 		if quicksaves:
 			tmp_del("%s/*.%s" % (self.quicksave_dir, self.savegame_extension),
-							game.main.settings.savegame.savedquicksaves)
+							horizons.main.settings.savegame.savedquicksaves)
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
@@ -156,7 +156,7 @@ class SavegameManager(object):
 		@param db: DbReader"""
 		metadata = cls.savegame_metadata.copy()
 		metadata['timestamp'] = time.time()
-		metadata['savecounter'] = game.main.session.savecounter
+		metadata['savecounter'] = horizons.main.session.savecounter
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)

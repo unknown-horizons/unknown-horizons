@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import game.main
-from game.util.color import Color
-from game.network import MPPlayer, ClientConnection, ServerConnection
-from game.packets import *
+import horizons.main
+from horizons.util.color import Color
+from horizons.network import MPPlayer, ClientConnection, ServerConnection
+from horizons.packets import *
 
 
 # FIXME: update the values by using widget.capture, not by polling
@@ -39,12 +39,12 @@ class ServerLobby(object):
 	def __init__(self, gui):
 		self.gui = gui
 
-		game.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
-		#game.main.fife.pump.append(self._update_gui)
+		horizons.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
+		#horizons.main.fife.pump.append(self._update_gui)
 
 	def end(self):
-		game.main.ext_scheduler.rem_all_classinst_calls(self)
-		#game.main.fife.pump.remove(self._update_gui)
+		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		#horizons.main.fife.pump.remove(self._update_gui)
 
 	def _update_gui(self):
 		""" Updates elements that are common for every lobby and
@@ -52,7 +52,7 @@ class ServerLobby(object):
 		"""
 		self.update_gui()
 
-		o = game.main.connection.mpoptions
+		o = horizons.main.connection.mpoptions
 
 		self.gui.distributeInitialData({
 			'playerlist' : o['players'],
@@ -74,8 +74,8 @@ class MasterServerLobby(ServerLobby):
 	"""
 	def __init__(self,gui):
 		super(MasterServerLobby, self).__init__(gui)
-		o = game.main.connection.mpoptions
-		o['maps'] = game.main.getMaps(showOnlySaved = False)
+		o = horizons.main.connection.mpoptions
+		o['maps'] = horizons.main.getMaps(showOnlySaved = False)
 		o['bots'] = 0
 		self.gui.distributeInitialData({
 			'server_slots' : range(2,9),
@@ -86,14 +86,14 @@ class MasterServerLobby(ServerLobby):
 			'server_slots' : 2, # 2 means 4 slots
 			'bots' : o['bots']
 		})
-		o['players'].append(game.main.connection.local_player)
+		o['players'].append(horizons.main.connection.local_player)
 
 	def update_gui(self):
-		o = game.main.connection.mpoptions
+		o = horizons.main.connection.mpoptions
 		o['slots'] = self.gui.collectData('server_slots')+2
 
-		game.main.connection.local_player.name = self.gui.collectData('playername')
-		game.main.connection.local_player.color = Color[self.gui.collectData('playercolor')+1]
+		horizons.main.connection.local_player.name = self.gui.collectData('playername')
+		horizons.main.connection.local_player.color = Color[self.gui.collectData('playercolor')+1]
 		o['bots'] = self.gui.collectData('bots')
 
 		# sanity check for bot count
@@ -116,7 +116,7 @@ class ClientServerLobby(ServerLobby):
 		super(ClientServerLobby, self).__init__(gui)
 
 	def update_gui(self):
-		o = game.main.connection.mpoptions
+		o = horizons.main.connection.mpoptions
 		self.gui.distributeInitialData({
 			'bots' : [] if o['bots'] is None else [o['bots']],
 			'server_slots' : [] if o['slots'] is None else [o['slots']],
@@ -132,8 +132,8 @@ class ClientServerLobby(ServerLobby):
 		newName = self.gui.collectData('playername')
 		newColor = Color[self.gui.collectData('playercolor')+1]
 
-		if game.main.connection.local_player.name != newName or \
-			game.main.connection.local_player.color != newColor:
-				game.main.connection.local_player.name = newName
-				game.main.connection.local_player.color = newColor
-				game.main.connection.sendToServer(LobbyPlayerModifiedPacket(None, None, game.main.connection.local_player))
+		if horizons.main.connection.local_player.name != newName or \
+			horizons.main.connection.local_player.color != newColor:
+				horizons.main.connection.local_player.name = newName
+				horizons.main.connection.local_player.color = newColor
+				horizons.main.connection.sendToServer(LobbyPlayerModifiedPacket(None, None, horizons.main.connection.local_player))

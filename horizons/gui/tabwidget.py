@@ -22,8 +22,8 @@
 import weakref
 
 import pychan
-import game.main
-from game.util.inventory_widget import Inventory
+import horizons.main
+from horizons.util.inventory_widget import Inventory
 
 class TabWidget(object):
 	"""Used to create menus for buildings, ships, etc. Uses multiple tabs.
@@ -33,16 +33,16 @@ class TabWidget(object):
 	@param ingame_gui: IngameGui instance, needs to be provided only if the session has not been fully inited
 	"""
 	def __init__(self, system_id, ingamegui=None, object=None, callbacks={}):
-		ingame_gui = ingamegui if ingamegui is not None else game.main.session.ingame_gui
+		ingame_gui = ingamegui if ingamegui is not None else horizons.main.session.ingame_gui
 		self.object = None if object is None else weakref.ref(object)
 		self.tabs = []
-		for name, xml, up, down, hover in game.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM data.tab_system LEFT JOIN data.tabs ON tabs.rowid = tab_system.tab WHERE tab_system.system=? ORDER BY tab_system.position", system_id):
+		for name, xml, up, down, hover in horizons.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM data.tab_system LEFT JOIN data.tabs ON tabs.rowid = tab_system.tab WHERE tab_system.system=? ORDER BY tab_system.position", system_id):
 			self.tabs.append(Tab(name, xml, up, down, hover))
-		self.widget = game.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
+		self.widget = horizons.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
 		self.widget.stylize('menu')
 		self.widget.position = (
-			ingame_gui.gui['minimap'].position[1] - ingame_gui.gui['minimap'].size[0] - 30 if game.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > ingame_gui.gui['minimap'].position[0] else game.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			game.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+			ingame_gui.gui['minimap'].position[1] - ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
+			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
 		)
 		self.widget.active = 0 # index of the currently active tab
 		for index, tab in enumerate(self.tabs):
@@ -50,7 +50,7 @@ class TabWidget(object):
 			button.up_image = tab.up_image
 			button.down_image = tab.hover_image
 			button.hover_image = tab.hover_image
-			button.capture(game.main.fife.pychan.tools.callbackWithArguments(self.load_tab, index))
+			button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.load_tab, index))
 			print tab.name
 			if tab.name in callbacks:
 				tab.widget.mapEvents(callbacks[tab.name])
@@ -94,7 +94,7 @@ class Tab(object):
 	@var xml: str xml that is to be loaded."""
 	def __init__(self, name, xml, button_up_image, button_down_image, button_hover_image):
 		self.name = name
-		self.widget = game.main.fife.pychan.loadXML(xml)
+		self.widget = horizons.main.fife.pychan.loadXML(xml)
 		self.widget.stylize('menu')
 		self.up_image = button_up_image
 		self.down_image = button_down_image

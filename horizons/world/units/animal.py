@@ -22,11 +22,11 @@
 import random
 import weakref
 
-import game.main
+import horizons.main
 
-from game.world.production import SecondaryProducer
-from game.world.pathfinding import Movement
-from game.util import Rect, Point, WorldObject
+from horizons.world.production import SecondaryProducer
+from horizons.world.pathfinding import Movement
+from horizons.util import Rect, Point, WorldObject
 from unit import Unit
 from collector import BuildingCollector
 from nature import GrowingUnit

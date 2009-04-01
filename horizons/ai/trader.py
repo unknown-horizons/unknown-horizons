@@ -21,11 +21,11 @@
 
 import random
 
-import game.main
+import horizons.main
 
-from game.util import Point
-from game.world.player import Player
-from game.world.storageholder import StorageHolder
+from horizons.util import Point
+from horizons.world.player import Player
+from horizons.world.storageholder import StorageHolder
 
 class Trader(Player, StorageHolder):
 	"""A trader represents the free trader that travels arround the map with his trading ship(s) and
@@ -45,12 +45,12 @@ class Trader(Player, StorageHolder):
 		#print "Initing Trader..."
 		self.ships = [] # Put all the traders ships in here
 		self.office = {} # This is used to store the branchoffice the ships are currently heading to
-		assert len(game.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
+		assert len(horizons.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
 
 		# create a ship and place it randomly (temporary hack)
-		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
-		self.ships.append(game.main.session.entities.units[6](x, y))
-		game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships[0]),self)
+		(x, y) = horizons.main.session.world.water[random.randint(0,len(horizons.main.session.world.water)-1)]
+		self.ships.append(horizons.main.session.entities.units[6](x, y))
+		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships[0]),self)
 
 	def save(self, db):
 		# office, ships, timer
@@ -59,9 +59,9 @@ class Trader(Player, StorageHolder):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		assert len(game.main.session.world.water)>0, \
+		assert len(horizons.main.session.world.water)>0, \
 			   "You're doing it wrong, this is not allowed to happen."
-		(x, y) = game.main.session.world.water[random.randint(0,len(game.main.session.world.water)-1)]
+		(x, y) = horizons.main.session.world.water[random.randint(0,len(horizons.main.session.world.water)-1)]
 		#print "sending ship to", x,y
 		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
 
@@ -70,14 +70,14 @@ class Trader(Player, StorageHolder):
 		"""Sends a ship to a random branch office on the map
 		@param ship: Ship instance that is to be used"""
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
-		branchoffices = game.main.session.world.get_branch_offices()
+		branchoffices = horizons.main.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
 			self.send_ship_random(ship)
 		else:
 			# select a branch office
 			rand = random.randint(0,len(branchoffices)-1)
 			self.office[ship.id] = branchoffices[rand]
-			for water in game.main.session.world.water: # get a position near the branch office
+			for water in horizons.main.session.world.water: # get a position near the branch office
 				if Point(water[0],water[1]).distance(self.office[ship.id].position) < 3:
 					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
 					break
@@ -95,12 +95,12 @@ class Trader(Player, StorageHolder):
 			else:
 				alter = rand if limit-settlement.inventory[res] >= rand else limit-settlement.inventory[res]
 				ret = settlement.owner.inventory.alter(1, -alter*\
-					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
+					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
 				if ret == 0: # check if enough money was in the inventory
 					settlement.inventory.alter(res, alter)
 				else: # if not, return the money taken
 					settlement.owner.inventory.alter(1, alter*\
-						int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
+						int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
 		for res, limit in settlement.sell_list.iteritems():
 			# select a random amount to buy from the settlement
 			rand = random.randint(self.buy_amount[0], \
@@ -112,11 +112,11 @@ class Trader(Player, StorageHolder):
 				#print "Altering:", alter
 				# Pay for bought resources
 				settlement.owner.inventory.alter(1, -alter*\
-					int(float(game.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
+					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
 				settlement.inventory.alter(res, alter)
 		del self.office[id]
 		# wait 2 seconds before going on to the next island
-		game.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
+		horizons.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
 
 
 	def ship_idle(self, id):
@@ -128,6 +128,6 @@ class Trader(Player, StorageHolder):
 				cur_ship = ship
 		if cur_ship is not None:
 			if random.randint(0,100) < 66:
-				game.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self) # delay one tick, to allow old movement calls to completely finish
+				horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self) # delay one tick, to allow old movement calls to completely finish
 			else:
-				game.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
+				horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)

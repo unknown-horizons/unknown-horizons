@@ -21,18 +21,18 @@
 
 from random import randint
 
-import game.main
+import horizons.main
 
-from game.gui.tabwidget import TabWidget
-from game.util import WeakList
-from game.world.abstractconsumer import AbstractConsumer
+from horizons.gui.tabwidget import TabWidget
+from horizons.util import WeakList
+from horizons.world.abstractconsumer import AbstractConsumer
 from building import Building, Selectable
 from buildable import BuildableSingle
 
 class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
-		if game.main.debug:
+		if horizons.main.debug:
 			print "Initing Settler"
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
@@ -40,37 +40,37 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 		self.run()
 
 	def create_collector(self):
-		game.main.session.entities.units[11](self)
+		horizons.main.session.entities.units[11](self)
 		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		#game.main.session.entities.units[2](self)
+		#horizons.main.session.entities.units[2](self)
 
 	def __init(self):
 		#print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
-		self.tax_income = game.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+		self.tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
 		#print self.id, "Settler debug, tax_income:", self.tax_income
 		self.inventory.limit = 1
 		self.consumation = {}
-		for (res, speed) in game.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
-			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': game.main.session.timer.get_ticks(speed)/10}
+		for (res, speed) in horizons.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
+			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': horizons.main.session.timer.get_ticks(speed)/10}
 			"""consume_speed: generel time a consumed good lasts, until a new ton has to be consumed. In seconds.
 			consume_state: 0-10 state, on 10 a new good is consumed or contentment drops, if no new good is in the inventory.
 			consume_contentment: 0-10 state, showing how fullfilled the wish for the specified good is.
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
 		self._resources = {0: []} #ugly work arround to work with current consumer implementation
 
-		from game.world.building.building import Building
+		from horizons.world.building.building import Building
 		if isinstance(self, Building):
 			self.radius_coords = self.position.get_radius_coordinates(self.radius)
 
 		self._AbstractConsumer__collectors = WeakList()
-		for (res,) in game.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
+		for (res,) in horizons.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
 			#print "Settler debug, res:", res
 			self._resources[0].append(res)
 
 	def run(self):
-		game.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
-		game.main.session.scheduler.add_new_object(self.pay_tax, self, runin=game.main.session.timer.get_ticks(30), loops=-1) # pay tax every 30 seconds
-		game.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=game.main.session.timer.get_ticks(30), loops=-1) # Check if inhabitants in/de-crease
+		horizons.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
+		horizons.main.session.scheduler.add_new_object(self.pay_tax, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # pay tax every 30 seconds
+		horizons.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # Check if inhabitants in/de-crease
 		self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
 
 	def consume(self):
@@ -90,7 +90,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 					else:
 						if row['consume_contentment'] > 0:
 							row['consume_contentment'] -= 1
-				row['next_consume'] = game.main.session.timer.get_ticks(row["consume_speed"])/10
+				row['next_consume'] = horizons.main.session.timer.get_ticks(row["consume_speed"])/10
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
@@ -109,7 +109,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 			self.inhabitants += addition
 
 	def show_menu(self):
-		game.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
 
 	def get_consumed_res(self):
 		"""Returns list of resources, that the building uses, without

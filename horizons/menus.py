@@ -18,24 +18,24 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import game.main
+import horizons.main
 import fife
 import os
 import os.path
 import glob
 import time
 
-from game.util.color import Color
-from game.serverlist import WANServerList, LANServerList, FavoriteServerList
-from game.serverlobby import MasterServerLobby, ClientServerLobby
-from game.network import Socket, ServerConnection, ClientConnection
-from game.savegamemanager import SavegameManager
+from horizons.util.color import Color
+from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
+from horizons.serverlobby import MasterServerLobby, ClientServerLobby
+from horizons.network import Socket, ServerConnection, ClientConnection
+from horizons.savegamemanager import SavegameManager
 
 class Menus(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
 	def __init__(self):
-		fife = game.main.fife
+		fife = horizons.main.fife
 		self.current = None # currently active window
 		self.widgets = {} # Stores all the widgets, to prevent double loading
 		self.widgets['mainmenu'] = fife.pychan.loadXML('content/gui/mainmenu.xml')
@@ -66,8 +66,8 @@ class Menus(object):
 		"""
 		self.hide() # Hide old gui
 		self.current = self.widgets['mainmenu']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		eventMap = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
@@ -86,7 +86,7 @@ class Menus(object):
 		"""Shows the quit dialog
 		"""
 		if self.show_dialog(self.widgets['quitgame'], {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
-			game.main.quit()
+			horizons.main.quit()
 
 	def show_credits(self):
 		"""Shows the credits dialog.
@@ -106,7 +106,7 @@ class Menus(object):
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
 			def _escape():
-				game.main.fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
+				horizons.main.fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
 				dlg.hide()
 			tmp_escape = self.on_escape
 			self.on_escape = _escape
@@ -121,8 +121,8 @@ class Menus(object):
 	def show_settings(self):
 		"""Shows the settings.
 		"""
-		fife = game.main.fife
-		settings = game.main.settings
+		fife = horizons.main.fife
+		settings = horizons.main.settings
 
 		resolutions = [str(w) + "x" + str(h) for w, h in fife.settings.getPossibleResolutions() if w >= 1024 and h >= 768]
 		if len(resolutions) == 0:
@@ -155,8 +155,8 @@ class Menus(object):
 		})
 
 		dlg.mapEvents({
-			'volume_music' : game.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_music_value'), dlg.findChild(name='volume_music')),
-			'volume_effects' : game.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_effects_value'), dlg.findChild(name='volume_effects'))
+			'volume_music' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_music_value'), dlg.findChild(name='volume_music')),
+			'volume_effects' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_effects_value'), dlg.findChild(name='volume_effects'))
 		})
 
 		# Save old musik volumes incase the user presses cancel
@@ -250,8 +250,8 @@ class Menus(object):
 		"""
 		self.hide() # Hide old gui
 		self.current = self.widgets['gamemenu']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		eventMap = {
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
@@ -263,24 +263,24 @@ class Menus(object):
 		}
 		self.current.mapEvents(eventMap)
 		self.current.show()
-		game.main.session.speed_pause()
+		horizons.main.session.speed_pause()
 		self.on_escape = self.return_to_game
 
 	def on_chime(self):
 		"""
 		Called chime action.
 		"""
-		game.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
+		horizons.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
 		self.show_dialog(self.widgets['chime'], {'okButton' : True}, onPressEscape = True)
 
 
 	def set_volume(self, label, slider):
 		if label.name == 'volume_music_value':
 			label.text = unicode(int(slider.getValue() * 100 * 5)) + '%'
-			game.main.fife.set_volume_music(slider.getValue())
+			horizons.main.fife.set_volume_music(slider.getValue())
 		else:
 			label.text = unicode(int(slider.getValue() * 100 * 2)) + '%'
-			game.main.fife.set_volume_effects(slider.getValue())
+			horizons.main.fife.set_volume_effects(slider.getValue())
 
 
 	def on_help(self):
@@ -297,18 +297,18 @@ class Menus(object):
 		if self.show_dialog(self.widgets['quitsession'],  {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			self.current.hide()
 			self.current = None
-			game.main.session.end()
-			game.main.session = None
+			horizons.main.session.end()
+			horizons.main.session = None
 			self.show_main()
 
 
 	def return_to_game(self):
 		"""
-		Return to the game.
+		Return to the horizons.
 		"""
 		self.hide() # Hide old gui
 		self.current = None
-		game.main.session.speed_unpause()
+		horizons.main.session.speed_unpause()
 		self.on_escape = self.show_pause
 
 	def show_single(self, showRandom = False, showCampaign = True, showLoad = False):
@@ -318,11 +318,11 @@ class Menus(object):
 		@param showLoad: Bool if saved games menu is to be shown.
 		"""
 		self.hide() # Hide old gui
-		self.widgets['singleplayermenu'] = game.main.fife.pychan.loadXML('content/gui/singleplayermenu.xml') # reload because parts are being removed on each show
+		self.widgets['singleplayermenu'] = horizons.main.fife.pychan.loadXML('content/gui/singleplayermenu.xml') # reload because parts are being removed on each show
 		self.widgets['singleplayermenu'].stylize('menu')
 		self.current = self.widgets['singleplayermenu']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		eventMap = {
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
@@ -331,9 +331,9 @@ class Menus(object):
 			#print self.current
 			#print self.current.findChild(name='load')
 			self.current.removeChild(self.current.findChild(name="load"))
-			eventMap['showCampaign'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
+			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
 			# Reenable if loading works
-			#eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
+			#eventMap['showLoad'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
 			self.current.distributeInitialData({
 				'playercolor' : [ i.name for i in Color ]
 			})
@@ -354,12 +354,12 @@ class Menus(object):
 			if showCampaign:
 				pass
 				# Reenable if loading works
-				#eventMap['showRandom'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
-				#eventMap['showLoad'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
+				#eventMap['showRandom'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
+				#eventMap['showLoad'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
 			elif showLoad:
 				# Reenable if loading works
-				#eventMap['showRandom'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
-				eventMap['showCampaign'] = game.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
+				#eventMap['showRandom'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
+				eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
 		self.current.mapEvents(eventMap)
 
 		self.current.distributeData({
@@ -379,7 +379,7 @@ class Menus(object):
 		@return: Tuple of two lists; first: files with path; second: files for displaying
 		"""
 		if showLoad:
-			return game.main.savegamemanager.get_saves()
+			return horizons.main.savegamemanager.get_saves()
 		elif showCampaign:
 			files = [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 			files.sort()
@@ -401,12 +401,12 @@ class Menus(object):
 			except AttributeError:
 				pass
 			self.current.serverlobby = None
-			game.main.connection = None
+			horizons.main.connection = None
 			self.current.hide()
 
 		self.current = self.widgets['serverlist']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		self.current.server = []
 		def _close():
 			"""
@@ -430,10 +430,10 @@ class Menus(object):
 		@param serverType:
 		"""
 		self.current.mapEvents({
-			'refresh'       : game.main.fife.pychan.tools.callbackWithArguments(self.list_servers, serverType),
-			'showLAN'       : game.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'lan') if serverType != 'lan' else lambda : None,
-			'showInternet'  : game.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'internet') if serverType != 'internet' else lambda : None,
-			'showFavorites' : game.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'favorites') if serverType != 'favorites' else lambda : None
+			'refresh'       : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, serverType),
+			'showLAN'       : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'lan') if serverType != 'lan' else lambda : None,
+			'showInternet'  : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'internet') if serverType != 'internet' else lambda : None,
+			'showFavorites' : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'favorites') if serverType != 'favorites' else lambda : None
 		})
 		self.current.distributeData({
 			'showLAN'       : serverType == 'lan',
@@ -470,29 +470,29 @@ class Menus(object):
 	def show_create_server(self):
 		"""Interface for creating a server
 
-		Here, the game master can set details about a multiplayer game.
+		Here, the game master can set details about a multiplayer horizons.
 		"""
 		if self.current is not None:
 			self.current.serverList.end()
 			self.current.hide()
 		self.current = self.widgets['serverlobby']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 
-		game.main.connection = ServerConnection(game.main.settings.network.port)
+		horizons.main.connection = ServerConnection(horizons.main.settings.network.port)
 
 		self.current.serverlobby = MasterServerLobby(self.current)
 		self.current.serverlobby.update_gui()
 
 		def _cancel():
-			game.main.connection.end()
+			horizons.main.connection.end()
 			self.current.serverlobby.end()
-			game.main.connection = None
+			horizons.main.connection = None
 			self.current.serverlobby = None
 			self.show_multi()
 
 		self.current.mapEvents({
-			'startMulti' : game.main.startMulti,
+			'startMulti' : horizons.main.startMulti,
 			'cancel' : _cancel
 		})
 
@@ -518,17 +518,17 @@ class Menus(object):
 		self.current.serverList.end()
 		self.current.hide()
 
-		game.main.connection = ClientConnection()
-		game.main.connection.join(server.address, server.port)
+		horizons.main.connection = ClientConnection()
+		horizons.main.connection.join(server.address, server.port)
 		self.current = self.widgets['serverlobby']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		self.current.serverlobby = ClientServerLobby(self.current)
 
 		def _cancel():
-			game.main.connection.end()
+			horizons.main.connection.end()
 			self.current.serverlobby.end()
-			game.main.connection = None
+			horizons.main.connection = None
 			self.current.serverlobby = None
 			showMulti()
 
@@ -570,7 +570,7 @@ class Menus(object):
 			except:
 				gui.adaptLayout()
 				return
-			details_label = game.main.fife.pychan.widgets.Label(min_size=(140,0),max_size=(140,290), wrap_text=True)
+			details_label = horizons.main.fife.pychan.widgets.Label(min_size=(140,0),max_size=(140,290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
@@ -595,7 +595,7 @@ class Menus(object):
 			self.current.show()
 
 	def start_single(self):
-		""" Starts a single player game.
+		""" Starts a single player horizons.
 		"""
 		showRandom = self.current.collectData('showRandom')
 		showCampaign = self.current.collectData('showCampaign')
@@ -617,10 +617,10 @@ class Menus(object):
 
 			self.hide()
 			self.current = self.widgets['loadingscreen']
-			self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-			self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+			self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+			self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 
-			game.main.start_singleplayer(map_file)
+			horizons.main.start_singleplayer(map_file)
 
 	def load_game(self, savegame = None):
 		# To disable load for now:
@@ -628,7 +628,7 @@ class Menus(object):
 		#return
 
 		if savegame is None:
-			map_files, map_file_display = game.main.savegamemanager.get_saves()
+			map_files, map_file_display = horizons.main.savegamemanager.get_saves()
 
 			if len(map_files) == 0:
 				self.show_popup("No saved games", "There are no saved games to load")
@@ -663,17 +663,17 @@ class Menus(object):
 
 		self.hide()
 		self.current = self.widgets['loadingscreen']
-		self.current.x = int((game.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((game.main.settings.fife.screen.height - self.current.height) / 2)
+		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
+		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		self.show()
-		game.main.start_singleplayer(savegamefile)
+		horizons.main.start_singleplayer(savegamefile)
 
 	def save_game(self):
 		# to disable load for release
 		#self.show_popup("Not implemented", "Sadly, saving and loading did not make it to the release.")
 		#return
 
-		savegame_files, savegame_display = game.main.savegamemanager.get_regular_saves()
+		savegame_files, savegame_display = horizons.main.savegamemanager.get_regular_saves()
 
 		old_current = self.current
 		self.current = self.widgets['savegame']
@@ -698,4 +698,4 @@ class Menus(object):
 
 		savegamename = self.current.collectData('savegamefile')
 		self.current = old_current
-		game.main.save_game(savegamename)
+		horizons.main.save_game(savegamename)
