@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+import os
+from horizons import main
+
+positions = ['/usr/share/games',
+	  '/usr/share',
+	  '/usr/local/share/games',
+	  '/usr/local/share',
+	  ]
+
+pos = ''
+
+for i in positions:
+    if os.path.exists('%s/unknown-horizons' % i):
+       pos = i
+       break
+
+os.chdir('%s/unknown-horizons' % pos)
+
+import gettext
+
+gettext.install("unknownhorizons", "po", unicode=1)
+
+main.debug = False
+
+main.start()
