@@ -39,6 +39,7 @@ class Settlement(TradePost, WorldObject):
 
 	@property
 	def inhabitants(self):
+		"""Returns number of inhabitants (sum of inhabitants of its buildings)"""
 		return sum([i.inhabitants for i in self.buildings])
 
 	def setup_storage(self):
@@ -82,6 +83,9 @@ class Settlement(TradePost, WorldObject):
 		self.setup_storage()
 		self.inventory.load(db, worldid)
 
+		# load all buildings from this settlement
+		# the buildings will expand the area of the settlement by adding everything,
+		# that is in the radius of the building, to the settlement.
 		self.buildings = WeakList()
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):

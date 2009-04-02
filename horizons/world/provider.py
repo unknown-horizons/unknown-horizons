@@ -24,18 +24,18 @@ from horizons.util import WeakList
 import horizons.main
 
 class Provider(StorageHolder):
-	"""The Provider class provides an interface for Collectors to pickup goods from a class that is
-	derived from this Class. A Branchoffice is a provider for example, every producer is a provider
-	, too.
+	"""The Provider class provides an interface for Collectors to pickup goods
+	from a class that is derived from this Class. A Branchoffice is a provider
+	for example, and every producer is a provider, too.
 	There are 3 basic classes that are used for almost every building in a way or another:
 	- Provider (this class)
 	- Consumer (we will be looking at that next)
 	- Producer (we'll get to that later)
-	By combining these three classes, you are able to 'produce' pretty much everything you will ever
-	need.
+	By combining these three classes, you are able to 'produce' pretty much
+	everything you will ever need.
 
 	TUTORIAL:
-	Check out the AbstractConsumer class now in game/world/abstractconsumer.py
+	Check out the AbstractConsumer class now in horizons/world/abstractconsumer.py
 	"""
 	def __init__(self, **kwargs):
 		super(Provider, self).__init__(**kwargs)
@@ -50,6 +50,7 @@ class Provider(StorageHolder):
 		self.__collectors = WeakList()
 
 	def __del__(self):
+		# send all collectors home, that target this building
 		if self.__collectors is not None:
 			for col in self.__collectors:
 				col.cancel()

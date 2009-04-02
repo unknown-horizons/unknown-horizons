@@ -70,19 +70,36 @@ class World(LivingObject):
 
 		# create playerlist
 		self.players = []
+		self.player = None
 
 		# load player
+		human_players = []
 		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
 			player = Player.load(db, player_id)
 			self.players.append(player)
-			if client_id == horizons.main.settings.client_id or client_id == "":
+			if client_id == horizons.main.settings.client_id:
 				self.player = player
+			elif client_id is not None:
+				human_players.append(player)
+
+		if self.player is None:
+			# we have no human player.
+			# check if there is only one player with an id (i.e. human player)
+			# this would be the case if the savegame originates from a different installation.
+			# if there's more than one of this kind, we can't be sure what to select.
+			# TODO: create interface for selecting player, if we want this
+			if(len(human_players) == 1):
+				# exactly one player, we can quite savely use this one
+				self.player = human_players[0]
+
+		if self.player is None: # still..
+			print 'WARNING: Cannot autoselect a player because there are multiple candidates.'
 
 		#load islands
 		self.islands = []
 		for filename, offset_x, offset_y, islandid in db("select file, x, y, rowid from island"):
 			island = Island(Point(offset_x, offset_y), filename)
-			island.load(db, islandid)
+			island.load(db, islandid) # island registers itself in world
 
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
@@ -116,8 +133,8 @@ class World(LivingObject):
 			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
 
-		# Add a random number of trees to the gameworld
 		if not horizons.main.session.is_game_loaded():
+			# Add a random number of trees to the gameworld
 			if int(self.properties.get('RandomTrees', 1)) == 1:
 				print "Adding trees to the world..."
 				import random

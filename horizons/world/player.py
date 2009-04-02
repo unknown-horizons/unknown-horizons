@@ -39,17 +39,13 @@ class Player(WorldObject):
 
 		self.setup_inventory()
 
+		# give a new player 20k coins
 		self.inventory.alter(1, 20000)
 
 	def setup_inventory(self):
 		self.inventory = PositiveStorage()
 
 	def save(self, db):
-		"""
-		@param db: db that the player is saved to.
-		"""
-		# Since the player isn't implemented fully by now,
-		# saving and loading implementation will have to be changed
 		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", self.getId(), self.name, self.color.id, "NULL" if self is not horizons.main.session.world.player else horizons.main.settings.client_id)
 		self.inventory.save(db, self.getId())
 

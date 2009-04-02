@@ -30,10 +30,25 @@ from building.building import Building
 from horizons.util import WeakList
 from horizons.gui.tabwidget import TabWidget
 
+
+class ProductionLine(object):
+	"""Data structur for handling production lines of Producers. A production line
+	is a way of producing something (contains needed and produced resources for this line,
+	as well as the time, that it takes to complete the product."""
+	def __init__(self, id):
+		self.id = id
+		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
+		# here we store all resource information.
+		# needed resources have a negative amount, produced ones are positive.
+		self.production = {}
+		for res, amount in horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
+			self.production[res] = amount
+
+
 class PrimaryProducer(Provider):
 	"""Class used for primary production classes. These types do not need other ressources to
 	produce something. A tree is a primary producer for example, it 'just grows' and produces
-	wood.
+	wood out of nowhere.
 
 	TUTORIAL:
 	Check out the __init() function now."""
@@ -80,6 +95,7 @@ class PrimaryProducer(Provider):
 				self.toggle_costs()
 		else:
 			if self.active_production_line is None and len(self.production) > 0:
+				# more than one production line => select first one
 				self.active_production_line = min(self.production.keys())
 			if self.active_production_line is not None:
 				self.addChangeListener(self.check_production_startable)
@@ -105,13 +121,20 @@ class PrimaryProducer(Provider):
 		self._init()
 
 	def check_production_startable(self):
+		"""Do the production of resources according to the selected production line.
+		Checks if resources, that are needed for production, are in inventory first."""
 		if self.active_production_line is None:
+			# no production line selected, so we don't know what to produce
 			return
 		if horizons.main.debug:
 			print "PrimaryProducer check_production_startable", self.id
+
+		# check if we have space for the items we want to produce
 		for res, amount in self.production[self.active_production_line].production.items():
 			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
 				return
+
+		# TODO: document useable and used resources (what are they, when do we need them)
 		usable_resources = {}
 		if min(self.production[self.active_production_line].production.values()) < 0:
 			for res, amount in self.production[self.active_production_line].production.items():
@@ -129,17 +152,24 @@ class PrimaryProducer(Provider):
 				self.__used_resources[res] += amount
 			else:
 				self.__used_resources[res] = amount
+
 		for res, amount in usable_resources.items():
-			assert(self.inventory.alter(res, -amount) == 0)
+			# remove the needed resources from the inventory
+			remnant = self.inventory.alter(res, -amount)
+			assert(remnant == 0)
+
+		# TODO: make following lines readable and document them.
 		horizons.main.session.scheduler.add_new_object(self.production_step, self, 16 *
 		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 				) - time)))
+
+		# change animation to working.
+		# this starts e.g. the growing of trees.
 		if "work" in horizons.main.action_sets[self._action_set_id].keys():
 			self.act("work", self._instance.getFacingLocation(), True)
 		else:
 			self.act("idle", self._instance.getFacingLocation(), True)
-		#print self.getId(), "begin working"
 
 	def production_step(self):
 		if horizons.main.debug:
@@ -185,10 +215,3 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(4, object=self, callbacks=callbacks))
 
 
-class ProductionLine(object):
-	def __init__(self, id):
-		self.id = id
-		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
-		self.production = {}
-		for res, amount in horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
-			self.production[res] = amount

@@ -233,6 +233,8 @@ class Session(LivingObject):
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
 
+		assert hasattr(horizons.main.session.world, "player"), 'Error: there is no human player'
+
 		"""
 		TUTORIAL:
 		From here on you should digg into the classes that are loaded above, especially the world class.
