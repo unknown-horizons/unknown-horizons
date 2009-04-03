@@ -133,20 +133,6 @@ class World(LivingObject):
 			self.ground_map[(x,y)] = weakref.ref(ground)
 		print "Done."
 
-		if not horizons.main.session.is_game_loaded():
-			# Add a random number of trees to the gameworld
-			if int(self.properties.get('RandomTrees', 1)) == 1:
-				print "Adding trees to the world..."
-				import random
-				from horizons.command.building import Build
-				for island in self.islands:
-					for tile in island.ground_map.keys():
-						if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
-							horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
-					for building in island.buildings:
-						building.production_step()
-				print "Done."
-
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
 		## TODO same for blocking units on island, as soon as such are implemented
@@ -159,8 +145,21 @@ class World(LivingObject):
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
 			horizons.main.session.entities.units[typeid].load(db, worldid)
 
-		if not horizons.main.session.is_game_loaded():
-			# for initiateing a new game:
+
+		if not horizons.main.session.is_game_loaded(): # for initiateing a new game:
+
+			# add a random number of trees to the gameworld
+			if int(self.properties.get('RandomTrees', 1)) == 1:
+				print "Adding trees to the world..."
+				import random
+				from horizons.command.building import Build
+				for island in self.islands:
+					for tile in island.ground_map.keys():
+						if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
+							horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
+					for building in island.buildings:
+						building.production_step()
+				print "Done."
 
 			# add free trader
 			from horizons.ai.trader import Trader
