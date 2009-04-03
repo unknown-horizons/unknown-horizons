@@ -31,7 +31,7 @@ class StorageHolder(object):
 	overwrite that in the subclass.
 
 	TUTORIAL:
-	Continue to game/world/provider.py for further digging.
+	Continue to horizons/world/provider.py for further digging.
 	"""
 	def __init__(self, **kwargs):
 		super(StorageHolder, self).__init__(**kwargs)

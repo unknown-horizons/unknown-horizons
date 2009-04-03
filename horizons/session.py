@@ -213,7 +213,7 @@ class Session(LivingObject):
 		except KeyError:
 			self.savecounter = 0
 
-		self.world = World() # Load horizons.world module (check game/world/__init__.py)
+		self.world = World() # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(db)
 		if not self.is_game_loaded(): # setup new player
 			self.world.setupPlayer(playername, playercolor)
@@ -238,7 +238,7 @@ class Session(LivingObject):
 		"""
 		TUTORIAL:
 		From here on you should digg into the classes that are loaded above, especially the world class.
-		(game/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
+		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
 
 	def generateMap(self):

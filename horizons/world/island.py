@@ -84,7 +84,7 @@ class Island(WorldObject):
 
 		self.path_nodes = {} # Paths are saved here for usage by the pather.
 		"""TUTORIAL:
-		To continue hacking, you should now take of to the real fun stuff and check out game/world/building/__init__.py.
+		To continue hacking, you should now take of to the real fun stuff and check out horizons/world/building/__init__.py.
 		"""
 
 	def save(self, db):

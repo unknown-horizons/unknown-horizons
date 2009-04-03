@@ -22,7 +22,7 @@
 # ###################################################
 
 """This is the Unknown Horizons launcher, it looks for fife and tries to start the game. If you want to digg
-into the game, continue to game/main.py. Read all docstrings and get familiar with the functions and
+into the game, continue to horizons/main.py. Read all docstrings and get familiar with the functions and
 attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)"""
 
 import sys
@@ -145,7 +145,7 @@ if __name__ == '__main__':
 	findFIFE()
 
 	#for some external libraries distributed with unknownhorizons
-	sys.path.append('game/ext')
+	sys.path.append('horizons/ext')
 
 	#start unknownhorizons
 	import horizons.main

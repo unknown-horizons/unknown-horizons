@@ -27,7 +27,7 @@
    * settings - horizons.settings instance.
    * fife - if a game is running. horizons.fife provides the running engine instance.
    * gui - provides the currently active gui (only non ingame menus)
-   * session - horizons.session instance - check game/session.py for more information
+   * session - horizons.session instance - check horizons/session.py for more information
    * connection - multiplayer game connection (not used yet)
    * ext_scheduler - horizons.extscheduler instance, used for non ingame timed events.
    * savegamemanager - horizons.savegamemanager instance.

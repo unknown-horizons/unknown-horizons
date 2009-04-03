@@ -55,7 +55,7 @@ class Consumer(AbstractConsumer):
 					production_line = ? AND amount <= 0 GROUP BY resource", production_line):
 				self._resources[production_line].append(res)
 		"""TUTORIAL:
-		Check out the PrimaryProducer class now in game/world/production.py for further digging
+		Check out the PrimaryProducer class now in horizons/world/production.py for further digging
 		"""
 
 

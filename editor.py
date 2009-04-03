@@ -33,7 +33,7 @@ if __name__ == '__main__':
 	fife_path = run_uh.getFifePath()
 
 	#for some external libraries distributed with Unknown Horizons
-	os.environ['PYTHONPATH'] = os.path.pathsep.join((os.path.abspath('editor'), os.path.abspath('game'), os.path.abspath('game/ext'), os.environ['PYTHONPATH']))
+	os.environ['PYTHONPATH'] = os.path.pathsep.join((os.path.abspath('editor'), os.path.abspath('game'), os.path.abspath('horizons/ext'), os.environ['PYTHONPATH']))
 
 	os.chdir(fife_path + '/clients/editor')
 	#start editor

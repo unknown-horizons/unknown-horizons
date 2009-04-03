@@ -169,7 +169,7 @@ class World(LivingObject):
 			# Fire a message for new world creation
 			horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
-		To digg deaper, you should now continue to game/world/island.py,
+		To digg deaper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
 
 	def setupPlayer(self, name, color):

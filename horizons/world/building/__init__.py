@@ -83,12 +83,12 @@ class BuildingClass(type):
 			self.running_costs = 0
 			self.running_costs_inactive = 0
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
-		             buildings you should check out the separate classes in game/world/buildings/*.
+		             buildings you should check out the separate classes in horizons/world/buildings/*.
 					 Unit creation is very simular, you could check it out though and see which attributes a unit
 					 always has.
 					 As most of the buildings are derived from the production/provider/consumer classes, which are
 					 derived from the storageholder, i suggest you start digging deeper there.
-					 game/world/storageholder.py is the next place to go.
+					 horizons/world/storageholder.py is the next place to go.
 					 """
 
 	def load(cls, db, worldid):

@@ -30,7 +30,7 @@ import unittest
 if __name__ == '__main__':
 	# the usual setup:
 	run_uh.findFIFE()
-	sys.path.append('game/ext')
+	sys.path.append('horizons/ext')
 	import game.main
 
 	import gettext
