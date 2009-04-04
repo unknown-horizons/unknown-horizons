@@ -82,7 +82,7 @@ class BuildingCollector(StorageHolder, Unit):
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
 
 		# save state and remaining ticks for next callback
-		# retrieve remaining ticks according to state
+		# retrieve remaining ticks according current callback according to state
 		current_callback = None
 		remaining_ticks = None
 		if self.state == self.states.idle:

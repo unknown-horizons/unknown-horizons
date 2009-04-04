@@ -115,7 +115,7 @@ class Scheduler(LivingObject):
 		@param instance: the instance to execute the call
 		@param callback: None to get all calls of instance,
 		                 else only calls that execute callback.
-		                 Value can be a method or a weakmethod.
+		                 Value has to be comparable to WeakMethod.
 		@return: dict, entries: { CallbackObject: remaining_ticks_to_executing }
 		"""
 		calls = {}
@@ -147,7 +147,7 @@ class CallbackObject(object):
 		self.callback = WeakMethod(callback)
 
 		# Check for persisting strong references
-		if __debug__:
+		if horizons.main.debug:
 			import gc
 			if (class_instance in gc.get_referents(self.callback)):
 				del self.callback

@@ -23,7 +23,8 @@ import random
 
 import horizons.main
 
-from horizons.util import Point
+from horizons.util import Point, Callback
+from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
 
@@ -35,6 +36,7 @@ class Trader(Player, StorageHolder):
 	@param id: int - player id, every Player needs a unique id, as the freetrader is a Player instance, he also does.
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
+	shipStates = Enum('moving_random', 'moving_to_branch', 'idle', 'reached_branch')
 
 	# amount range to buy/sell from settlement per resource
 	buy_amount = (0, 4)
@@ -42,29 +44,46 @@ class Trader(Player, StorageHolder):
 
 	def __init__(self, id, name, color, **kwargs):
 		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
-		#print "Initing Trader..."
-		self.ships = [] # Put all the traders ships in here
-		self.office = {} # This is used to store the branchoffice the ships are currently heading to
-		assert len(horizons.main.session.world.water)>0, "You're doing it wrong, this is not allowed to happen."
+		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
+		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
 
 		# create a ship and place it randomly (temporary hack)
 		(x, y) = horizons.main.session.world.water[random.randint(0,len(horizons.main.session.world.water)-1)]
-		self.ships.append(horizons.main.session.entities.units[6](x, y))
-		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships[0]),self)
+		self.ships[horizons.main.session.entities.units[6](x, y)] = self.shipStates.idle
+		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]),self)
 
 	def save(self, db):
-		# office, ships, timer
-		pass
+		for ship in self.ships:
+			# prepare values
+			ship_state = self.ships[ship]
+
+			remaining_ticks = None
+			# get current callback in scheduler, according to ship state, to retrieve
+			# the number of ticks, when the call will acctually be done
+			current_callback = None
+			if ship_state == self.shipStates.reached_branch:
+				current_callback = Callback(self.ship_idle, ship)
+			if current_callback is not None:
+				# current state has a callback
+				calls = horizons.main.session.scheduler.get_classinst_calls(self, current_callback)
+				assert(len(calls) == 1)
+				remaining_ticks = calls.values()[0]
+
+			targeted_branch = None if ship.id not in self.office else self.office[ship.id].getId()
+
+			# put them in the database
+			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_branch) \
+			   VALUES(?, ?, ?, ?)", ship.getId(), ship_state.index, remaining_ticks, targeted_branch)
 
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		assert len(horizons.main.session.world.water)>0, \
-			   "You're doing it wrong, this is not allowed to happen."
-		(x, y) = horizons.main.session.world.water[random.randint(0,len(horizons.main.session.world.water)-1)]
-		#print "sending ship to", x,y
-		ship.move(Point(x, y), lambda: self.ship_idle(ship.id))
-
+		# find random position
+		rand_water_id = random.randint(0,len(horizons.main.session.world.water)-1)
+		(x, y) = horizons.main.session.world.water[rand_water_id]
+		# move ship there:
+		ship.move(Point(x, y), lambda: self.ship_idle(ship))
+		self.ships[ship] = self.shipStates.moving_random
 
 	def send_ship_random_branch(self, ship):
 		"""Sends a ship to a random branch office on the map
@@ -72,6 +91,7 @@ class Trader(Player, StorageHolder):
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		branchoffices = horizons.main.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
+			# there aren't any branch offices, so move randomly
 			self.send_ship_random(ship)
 		else:
 			# select a branch office
@@ -79,15 +99,16 @@ class Trader(Player, StorageHolder):
 			self.office[ship.id] = branchoffices[rand]
 			for water in horizons.main.session.world.water: # get a position near the branch office
 				if Point(water[0],water[1]).distance(self.office[ship.id].position) < 3:
-					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship.id))
+					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship))
+					self.ships[ship] = self.shipStates.moving_to_branch
 					break
 			else:
 				self.send_ship_random(ship)
 
-	def reached_branch(self, id):
+	def reached_branch(self, ship):
 		"""Actions that need to be taken when reaching a branch office
-		@param id: ships id"""
-		settlement = self.office[id].settlement
+		@param ship: ship instance"""
+		settlement = self.office[ship.id].settlement
 		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
 			rand = random.randint(*self.sell_amount) # select a random amount to sell
 			if settlement.inventory[res] >= limit:
@@ -109,25 +130,21 @@ class Trader(Player, StorageHolder):
 				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
 				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
-				#print "Altering:", alter
 				# Pay for bought resources
 				settlement.owner.inventory.alter(1, -alter*\
 					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
 				settlement.inventory.alter(res, alter)
-		del self.office[id]
+		del self.office[ship.id]
 		# wait 2 seconds before going on to the next island
-		horizons.main.session.scheduler.add_new_object(lambda: self.ship_idle(id), self, 32) # wait 2 seconds before going on to the next island
+		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, ship), self, 32)
+		self.ships[ship] = self.shipStates.reached_branch
 
-
-	def ship_idle(self, id):
-		"""Called if a ship is idle
-		@param id: int with the ships key for self.ships"""
-		cur_ship = None
-		for ship in self.ships:
-			if ship.id == id:
-				cur_ship = ship
-		if cur_ship is not None:
-			if random.randint(0,100) < 66:
-				horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self) # delay one tick, to allow old movement calls to completely finish
-			else:
-				horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
+	def ship_idle(self, ship):
+		"""Called if a ship is idle. Sends ship to a branch office or a random place (which target
+		to use is decided by chance, probability for branch office is 2/3)
+		@param ship: ship instance"""
+		if random.randint(0,100) < 66:
+			# delay one tick, to allow old movement calls to completely finish
+			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self)
+		else:
+			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)

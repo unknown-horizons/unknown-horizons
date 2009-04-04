@@ -71,6 +71,7 @@ class World(LivingObject):
 		# create playerlist
 		self.players = []
 		self.player = None
+		self.trader = None
 
 		# load player
 		human_players = []
@@ -229,5 +230,7 @@ class World(LivingObject):
 			island.save(db)
 		for player in self.players:
 			player.save(db)
+		if self.trader is not None:
+			self.trader.save(db)
 		for ship in self.ships:
 			ship.save(db)

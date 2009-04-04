@@ -19,18 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
 
-from living import livingProperty
-from stablelist import stablelist
-from color import Color
-from point import Point
-from rect import Rect
-from changelistener import Changelistener
-from weakmethod import WeakMethod
-from weaklist import WeakList
-from worldobject import WorldObject
-from weakmethodlist import WeakMethodList
-from encoder import encode, decode
-from loader import ActionSetLoader
-from callback import Callback
+class Callback(object):
+	"""This class basically provides just callbacks with arguments.
+	The same can be achieved via 'lambda: f(arg1, arg2)', but this class has
+	more flexibility; e.g. you can compare callbacks, which can't be done with lambda functions.
+	"""
+	def __init__(self, callback, *args, **kwargs):
+		assert callable(callback)
+		self.callback = callback
+		self.args = args
+		self.kwargs = kwargs
+
+	def __call__(self):
+		self.callback(*self.args, **self.kwargs)
+
+	def __eq__(self, other):
+		if isinstance(other, Callback):
+			if other.callback == self.callback and \
+				 other.args == self.args and \
+				 other.kwargs == self.kwargs:
+				return True
+		return False
+
+	def __ne__(self, other):
+		return not self.__eq__(other)
