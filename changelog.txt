@@ -1,6 +1,25 @@
 CHANGELOG 
 Unknown Horizons
 -----------------------------------------------------
+2009-XX-XX: Milestone 2009.1 (to be released)
+* General
+  * Fix: Building speed has been improved, lumberjack preview is now almost lagfree.
+  * Fix: Loading speed has been improved
+  * Fix: Tearing buildings no longer crashes the game
+  * Fix: All exceptions when ending a session have been taken care of
+  * Fix: Fixed trading bug; selling resources now gives you money
+
+* Graphics and GUI
+  * New: Graphics for boat builder
+  * New: Graphics for hunter
+  * New: Two new variations for inhabitants
+  * New: Second model for inhabitants tent
+  * Change: Little update on main square
+  * Change: Slightly retouched cursor graphics
+
+... and a lot more smaller bugfixes.
+
+-----------------------------------------------------
 
 2009-03-08: Milestone 2009.0
 * General
