@@ -75,7 +75,7 @@ class World(LivingObject):
 
 		# load player
 		human_players = []
-		for player_id, client_id in db("SELECT rowid, client_id FROM player"):
+		for player_id, client_id in db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
 			player = Player.load(db, player_id)
 			self.players.append(player)
 			if client_id == horizons.main.settings.client_id:
@@ -98,7 +98,7 @@ class World(LivingObject):
 
 		#load islands
 		self.islands = []
-		for filename, offset_x, offset_y, islandid in db("select file, x, y, rowid from island"):
+		for filename, offset_x, offset_y, islandid in db("SELECT file, x, y, rowid FROM island"):
 			island = Island(Point(offset_x, offset_y), filename)
 			island.load(db, islandid) # island registers itself in world
 
@@ -145,6 +145,13 @@ class World(LivingObject):
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
 			horizons.main.session.entities.units[typeid].load(db, worldid)
+
+
+		if horizons.main.session.is_game_loaded():
+			# for now, we have one trader in everygame, so this is safe:
+			from horizons.ai.trader import Trader
+			trader_id = db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
+			self.trader = Trader.load(db, trader_id)
 
 
 		if not horizons.main.session.is_game_loaded(): # for initiateing a new game:

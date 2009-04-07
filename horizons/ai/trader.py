@@ -23,7 +23,7 @@ import random
 
 import horizons.main
 
-from horizons.util import Point, Callback
+from horizons.util import Point, Callback, WorldObject
 from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
@@ -36,23 +36,31 @@ class Trader(Player, StorageHolder):
 	@param id: int - player id, every Player needs a unique id, as the freetrader is a Player instance, he also does.
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
-	shipStates = Enum('moving_random', 'moving_to_branch', 'idle', 'reached_branch')
+	shipStates = Enum('moving_random', 'moving_to_branch', 'reached_branch')
 
 	# amount range to buy/sell from settlement per resource
 	buy_amount = (0, 4)
 	sell_amount = (1, 4)
 
 	def __init__(self, id, name, color, **kwargs):
-		super(Trader, self).__init__(id=id, name=name, color=color, **kwargs)
-		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
-		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
+		self._init(id, name, color)
 
 		# create a ship and place it randomly (temporary hack)
 		(x, y) = horizons.main.session.world.water[random.randint(0,len(horizons.main.session.world.water)-1)]
-		self.ships[horizons.main.session.entities.units[6](x, y)] = self.shipStates.idle
+		self.ships[horizons.main.session.entities.units[6](x, y)] = self.shipStates.reached_branch
 		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]),self)
 
+	def _init(self, id, name, color):
+		super(Trader, self)._init(id=id, name=name, color=color)
+		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
+		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
+
 	def save(self, db):
+		super(Trader, self).save(db)
+
+		# mark self as a trader
+		db("UPDATE player SET is_trader = 1 WHERE rowid = ?", self.getId())
+
 		for ship in self.ships:
 			# prepare values
 			ship_state = self.ships[ship]
@@ -74,6 +82,35 @@ class Trader(Player, StorageHolder):
 			# put them in the database
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_branch) \
 			   VALUES(?, ?, ?, ?)", ship.getId(), ship_state.index, remaining_ticks, targeted_branch)
+
+	@classmethod
+	def load(cls, db, worldid):
+		self = Trader.__new__(Trader)
+		self._load(db, worldid)
+		return self
+
+	def _load(self, db, worldid):
+		super(Trader, self)._load(db, worldid)
+
+		# load ships one by one from db (ship instances themselves are loaded already, but
+		# we have to use them here)
+		for ship_id, state_id, remaining_ticks, targeted_branch in \
+				db("SELECT rowid, state, remaining_ticks, targeted_branch FROM trader_ships"):
+			state = self.shipStates[state_id]
+			ship = WorldObject.getObjectById(ship_id)
+
+			self.ships[ship] = state
+
+			if state == self.shipStates.moving_random:
+				ship.add_move_callback(lambda: self.ship_idle(ship))
+			elif state == self.shipStates.moving_to_branch:
+				ship.add_move_callback(lambda: self.reached_branch(ship))
+				assert targeted_branch is not None
+				self.office[ship.id] = WorldObject.getObjectById(targeted_branch)
+			elif state == self.shipStates.reached_branch:
+				assert remaining_ticks is not None
+				horizons.main.session.scheduler.add_new_object( \
+					Callback(self.ship_idle, ship), self, remaining_ticks)
 
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.

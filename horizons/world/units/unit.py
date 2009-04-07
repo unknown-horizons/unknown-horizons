@@ -187,6 +187,12 @@ class Unit(WorldObject):
 		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y
 		horizons.main.session.scheduler.add_new_object(self.move_tick, self, move_time[int(diagonal)])
 
+	def add_move_callback(self, callback):
+		"""Registers callback to be executed when movement of unit finishes.
+		This has no effect if the unit isn't moving."""
+		if self.is_moving():
+			self.move_callback.append(callback)
+
 	def get_unit_velocity(self):
 		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
 		@return: int

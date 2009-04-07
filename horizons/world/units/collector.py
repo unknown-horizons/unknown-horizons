@@ -135,14 +135,14 @@ class BuildingCollector(StorageHolder, Unit):
 			horizons.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
 		elif state == self.states.moving_to_target:
 			self.setup_new_job()
-			self.move_callback.append(self.begin_working)
+			self.add_move_callback(self.begin_working)
 			self.show()
 		elif state == self.states.working:
 			self.setup_new_job()
 			horizons.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
 		elif state == self.states.moving_home:
 			self.home_building()._AbstractConsumer__collectors.append(self)
-			self.move_callback.append(self.reached_home)
+			self.add_move_callback(self.reached_home)
 			self.show()
 
 	def search_job(self):

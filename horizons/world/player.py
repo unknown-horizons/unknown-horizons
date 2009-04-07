@@ -32,6 +32,12 @@ class Player(WorldObject):
 		@param name: user-chosen name
 		@param color: color of player (as Color)
 		"""
+		self._init(id, name,color)
+
+		# give a new player 20k coins
+		self.inventory.alter(1, 20000)
+
+	def _init(self, id, name, color):
 		self.id = id
 		self.name = name
 		self.color = color
@@ -39,25 +45,28 @@ class Player(WorldObject):
 
 		self.setup_inventory()
 
-		# give a new player 20k coins
-		self.inventory.alter(1, 20000)
-
 	def setup_inventory(self):
 		self.inventory = PositiveStorage()
 
 	def save(self, db):
-		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", self.getId(), self.name, self.color.id, "NULL" if self is not horizons.main.session.world.player else horizons.main.settings.client_id)
+		client_id = None if self is not horizons.main.session.world.player \
+							else horizons.main.settings.client_id
+		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", \
+			 self.getId(), self.name, self.color.id, client_id)
 		self.inventory.save(db, self.getId())
 
 	@classmethod
 	def load(cls, db, worldid):
 		self = Player.__new__(Player)
+		self._load(db, worldid)
+		return self
+
+	def _load(self, db, worldid):
+		"""This function makes it possible to load playerdata into an already allocated
+		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, self.name = db("SELECT color, name FROM player WHERE rowid = ?", worldid)[0]
-		self.color = Color[color]
-		assert hasattr(self.color, "id"), "Player color has to be a default color"
+		color, name = db("SELECT color, name FROM player WHERE rowid = ?", worldid)[0]
+		self._init(worldid, name, Color[color])
 
-		self.setup_inventory()
 		self.inventory.load(db, worldid)
-		return self
