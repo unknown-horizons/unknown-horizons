@@ -28,6 +28,7 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 import sys
 import os
 import gettext
+import getopt
 
 def findFIFE():
 	global fife_path
@@ -125,15 +126,35 @@ def getFifePath():
 		exit()
 	return fife_path
 
+def print_help():
+	print "Unknown Horizons usage:"
+	print "run_uh.py [-d] [-h]"
+	print ""
+	print "Options:"
+	print "-d --debug - Debug, enables debug output, useful for testing."
+	print "-h --help  - This help message."
+
+
 if __name__ == '__main__':
-	if "--help" in sys.argv or "-h" in sys.argv:
-		print "Unknown Horizons usage:"
-		print "run_uh.py [-d] [-h]"
-		print ""
-		print "Options:"
-		print "-d --debug - Debug, enables debug output, useful for testing."
-		print "-h --help  - This help message."
-		exit(0)
+
+	# parse arguments
+	try:
+		opts, args = getopt.getopt(sys.argv[1:], "hd", ["help", "debug"])
+	except getopt.GetoptError, err:
+		print str(err)
+		print_help()
+		exit(1)
+
+	debug = False
+
+	# apply arguments
+	for o, a in opts:
+		if o in ("-h", "--help"):
+			print_help()
+			exit(1)
+		elif o in ("-d", "--debug"):
+			debug = True
+
 	#chdir to Unknown Horizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
@@ -147,12 +168,11 @@ if __name__ == '__main__':
 	#for some external libraries distributed with unknownhorizons
 	sys.path.append('horizons/ext')
 
-	#start unknownhorizons
 	import horizons.main
-	if "-d" in sys.argv or "--debug" in sys.argv:
-		horizons.main.debug = True
-	else:
-		horizons.main.debug = False
+	horizons.main.debug = debug
+
+	#start unknownhorizons
 	horizons.main.start()
+
 	# gettext support will have to wait so make it an no-op for everything not calling unknownhorizons directly
 	_ = lambda x: x
