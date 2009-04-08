@@ -49,12 +49,12 @@ class Build(object):
 		@param issuer: the issuer of the command
 		"""
 		for id in self.tear:
-			building = WorldObject.getObjectById(id)
+			building = WorldObject.get_object_by_id(id)
 			horizons.main.session.manager.execute(Tear(building))
 
 
 		if self.island is not None:
-			island = WorldObject.getObjectById(self.island)
+			island = WorldObject.get_object_by_id(self.island)
 		else:
 			island = horizons.main.session.world.get_island(self.x, self.y)
 		building = horizons.main.session.entities.buildings[self.building_class](x=self.x, y=self.y,\
@@ -63,9 +63,9 @@ class Build(object):
 
 		island.add_building(building, issuer)
 		if self.settlement is not None:
-			secondary_resource_source = WorldObject.getObjectById(self.settlement)
+			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)
 		elif self.ship is not None:
-			secondary_resource_source = WorldObject.getObjectById(self.ship)
+			secondary_resource_source = WorldObject.get_object_by_id(self.ship)
 		else:
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 		if secondary_resource_source is not None:
@@ -87,7 +87,7 @@ class Tear(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		building = WorldObject.getObjectById(self.building)
+		building = WorldObject.get_object_by_id(self.building)
 		building.remove()
 		# Note: this is weak - if there is a memleak, this del will not work...
 		del building

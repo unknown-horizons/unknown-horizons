@@ -112,14 +112,14 @@ class BuildingCollector(StorageHolder, Unit):
 		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
 
 		self.__init(self.states[state_id], bool(start_hidden), \
-								WorldObject.getObjectById(home_building_id))
+								WorldObject.get_object_by_id(home_building_id))
 
 		# load job
 		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", \
 								worldid)
 		if(len(job_db) > 0):
 			job_db = job_db[0]
-			self.job = Job(WorldObject.getObjectById(job_db[0]), job_db[1], job_db[2])
+			self.job = Job(WorldObject.get_object_by_id(job_db[0]), job_db[1], job_db[2])
 
 		self.apply_state(self.state, remaining_ticks)
 

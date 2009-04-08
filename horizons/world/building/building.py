@@ -112,16 +112,16 @@ class Building(AmbientSound, WorldObject):
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
 
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
-		owner = None if len(owner_db) == 0 else WorldObject.getObjectById(owner_db[0][0])
+		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
 
 		self.__init(Point(x,y), rotation, owner, None)
 
-		location_obj = WorldObject.getObjectById(location)
+		location_obj = WorldObject.get_object_by_id(location)
 		if isinstance(location_obj, Settlement):
 			# workaround: island can't be fetched from world, because it
 			# isn't fully constructed, when this code is executed
 			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
-			self.island = weakref.ref(WorldObject.getObjectById(island_id))
+			self.island = weakref.ref(WorldObject.get_object_by_id(island_id))
 			self.settlement = self.island().get_settlement(Point(x,y)) or \
 					self.island().add_existing_settlement(self.position, self.radius, location_obj)
 		else: # loc is island
@@ -184,12 +184,12 @@ class Building(AmbientSound, WorldObject):
 			return instance
 
 	@classmethod
-	def getBuildCosts(self, building=None, **trash):
+	def get_build_costs(self, building=None, **trash):
 		"""Get the costs for the building
 		@param **trash: we normally dont need any parameter, but we get the same as the getInstance function
 		"""
 		if building is not None:
-			return building.getBuildCosts(**trash)
+			return building.get_build_costs(**trash)
 		else:
 			return self.costs
 

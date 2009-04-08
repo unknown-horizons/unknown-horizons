@@ -28,8 +28,12 @@ import run_uh
 import unittest
 
 if __name__ == '__main__':
+
+	print 'No tests available.'
+	sys.exit(0)
+
 	# the usual setup:
-	run_uh.findFIFE()
+	run_uh.find_FIFE()
 	sys.path.append('horizons/ext')
 	import game.main
 

@@ -58,12 +58,12 @@ class BuildingTool(NavigationTool):
 		if not self._class.class_package == 'path':
 			self.gui.show()
 
-		horizons.main.gui.on_escape = self.onEscape
+		horizons.main.gui.on_escape = self.on_escape
 
 		if ship is None:
 			for island in horizons.main.session.world.islands:
 				for tile in island.grounds:
-					if tile.settlement is not None and tile.settlement.owner == horizons.main.session.world.player and self._class.isGroundBuildRequirementSatisfied(tile.x, tile.y, island) is not None:
+					if tile.settlement is not None and tile.settlement.owner == horizons.main.session.world.player and self._class.is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
 						horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 						if tile.object is not None:
 							horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
@@ -79,7 +79,7 @@ class BuildingTool(NavigationTool):
 								horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 							found_free = found_free or free
 			if not found_free:
-				self.onEscape()
+				self.on_escape()
 
 	def end(self):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
@@ -116,16 +116,16 @@ class BuildingTool(NavigationTool):
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2)
 		self.gui._recursiveResizeToContent()
 
-	def previewBuild(self, point1, point2):
+	def preview_build(self, point1, point2):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
-		self.buildings = self._class.getBuildList(point1, point2, ship = self.ship, rotation = self.rotation)
+		self.buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
 		neededResources, usableResources = {}, {}
 		settlement = None
 		for building in self.buildings:
 			settlement = building.get('settlement', None) if settlement is None else settlement
 			building['instance'] = self._class.getInstance(**building)
-			resources = self._class.getBuildCosts(**building)
+			resources = self._class.get_build_costs(**building)
 			if not building.get('buildable', True):
 				horizons.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
 			else:
@@ -148,7 +148,7 @@ class BuildingTool(NavigationTool):
 			if self.last_change_listener is not None:
 				self.last_change_listener.addChangeListener(self.update_preview)
 
-	def onEscape(self):
+	def on_escape(self):
 		horizons.main.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
 			horizons.main.session.ingame_gui.show_menu('build')
@@ -167,7 +167,7 @@ class BuildingTool(NavigationTool):
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.startPoint != point:
 			self.startPoint = point
-			self.previewBuild(point, point)
+			self.preview_build(point, point)
 		evt.consume()
 
 	def mousePressed(self, evt):
@@ -177,14 +177,14 @@ class BuildingTool(NavigationTool):
 			super(BuildingTool, self).mousePressed(evt)
 			return
 		if fife.MouseEvent.RIGHT == evt.getButton():
-			self.onEscape()
+			self.on_escape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pass
 			#mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			#point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 			#if self.startPoint != point:
 			#	self.startPoint = point
-			#	self.previewBuild(point, point)
+			#	self.preview_build(point, point)
 			#	self.startPoint = None
 		else:
 			super(BuildingTool, self).mousePressed(evt)
@@ -200,7 +200,7 @@ class BuildingTool(NavigationTool):
 		if self.endPoint != point and self.startPoint is not None:
 			# Check if startPoint is set because it might be null if the user started dragging on a pychan widget
 			self.endPoint = point
-			self.previewBuild(self.startPoint, point)
+			self.preview_build(self.startPoint, point)
 		evt.consume()
 
 	def mouseReleased(self, evt):
@@ -213,7 +213,7 @@ class BuildingTool(NavigationTool):
 			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 			if self.endPoint != point:
 				self.endPoint = point
-				self.previewBuild(self.startPoint, point)
+				self.preview_build(self.startPoint, point)
 				self.endPoint = None
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
@@ -238,9 +238,9 @@ class BuildingTool(NavigationTool):
 			self.buildings = []
 			if evt.isShiftPressed() or not found_buildable:
 				self.startPoint = point
-				self.previewBuild(point, point)
+				self.preview_build(point, point)
 			else:
-				self.onEscape()
+				self.on_escape()
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
@@ -254,7 +254,7 @@ class BuildingTool(NavigationTool):
 
 	def update_preview(self):
 		if self.startPoint is not None:
-			self.previewBuild(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+			self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360

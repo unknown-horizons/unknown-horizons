@@ -38,7 +38,7 @@ class Act(object):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		WorldObject.getObjectById(self.unit).go(self.x, self.y)
+		WorldObject.get_object_by_id(self.unit).go(self.x, self.y)
 
 class CreateUnit(object):
 	"""Command class that creates a unit.
@@ -54,7 +54,7 @@ class CreateUnit(object):
 		@param issuer: the issuer of the command
 		"""
 		from horizons.util import WorldObject
-		building = WorldObject.getObjectById(self.building_id)
+		building = WorldObject.get_object_by_id(self.building_id)
 		building.produce(self.prodline_id)
 
 from horizons.util.encoder import register_classes

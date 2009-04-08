@@ -40,7 +40,7 @@ class WorldObject(Changelistener):
 		return self.__id
 
 	@classmethod
-	def getObjectById(cls, id):
+	def get_object_by_id(cls, id):
 		return cls.__objects[id]
 
 	@classmethod

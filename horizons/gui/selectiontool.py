@@ -72,7 +72,7 @@ class SelectionTool(NavigationTool):
 						  abs(evt.getX() - self.select_begin[0]), \
 						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[1])
 			for i in instances:
-				instance = WorldObject.getObjectById(int(i.getId()))
+				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
@@ -81,7 +81,7 @@ class SelectionTool(NavigationTool):
 						  abs(evt.getX() - self.select_begin[0]), \
 						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[2])
 			for i in instances:
-				instance = WorldObject.getObjectById(int(i.getId()))
+				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:
@@ -136,13 +136,13 @@ class SelectionTool(NavigationTool):
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[1])
 			for i in instances:
-				instance = WorldObject.getObjectById(int(i.getId()))
+				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[2])
 			for i in instances:
-				instance = WorldObject.getObjectById(int(i.getId()))
+				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:

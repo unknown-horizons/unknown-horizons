@@ -47,7 +47,7 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		super(StorageBuilding, self).load(db, worldid)
 		# workaround to get settlement (self.settlement is assigned just after loading)
 		settlement_id = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
-		self.inventory = WorldObject.getObjectById(int(settlement_id)).inventory
+		self.inventory = WorldObject.get_object_by_id(int(settlement_id)).inventory
 		self.inventory.addChangeListener(self._changed)
 
 	def create_collector(self):
@@ -80,7 +80,7 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 
 class BranchOffice(StorageBuilding):
 	@classmethod
-	def isSettlementBuildRequirementSatisfied(cls, x, y, island, ship, **state):
+	def is_settlement_build_requirement_satisfied(cls, x, y, island, ship, **state):
 		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
 		#if multi branch office allowed:
 		#if len(settlements) == 1:
@@ -94,7 +94,7 @@ class BranchOffice(StorageBuilding):
 		return {'settlement' : None}
 
 	@classmethod
-	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
+	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		#todo: check cost line
 		coast_tile_found = False
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:

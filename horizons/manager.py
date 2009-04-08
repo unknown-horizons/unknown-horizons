@@ -51,7 +51,7 @@ class SPManager(LivingObject):
 		self.commands = []
 		for tick, issuer, data in db("SELECT tick, issuer, data from command"):
 			self.commands.append((int(tick), horizons.main.session.world.player, decode(data))) #TODO: just until we have correct player saving
-			#self.commands.append((int(tick), WorldObject.getObjectById(issuer), decode(data)))
+			#self.commands.append((int(tick), WorldObject.get_object_by_id(issuer), decode(data)))
 		if len(self.commands) > 0:
 			horizons.main.session.timer.add_call(self.tick)
 

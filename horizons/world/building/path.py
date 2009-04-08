@@ -37,13 +37,13 @@ class Path(Building, BuildableLine):
 		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
-				tile.object.recalculateOrientation()
-		self.recalculateOrientation()
+				tile.object.recalculate_orientation()
+		self.recalculate_orientation()
 		self.island().registerPath(self)
 
 	def load(self, db, worldid):
 		super(Path, self).load(db, worldid)
-		self.recalculateOrientation()
+		self.recalculate_orientation()
 		self.island().registerPath(self)
 
 	def remove(self):
@@ -53,9 +53,9 @@ class Path(Building, BuildableLine):
 		island = horizons.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
-				tile.object.recalculateOrientation()
+				tile.object.recalculate_orientation()
 
-	def recalculateOrientation(self):
+	def recalculate_orientation(self):
 		"""
 		"""
 		action = ''
@@ -96,7 +96,7 @@ class Bridge(Building, BuildableSingle):
 		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
-				tile.object.recalculateOrientation()
+				tile.object.recalculate_orientation()
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):

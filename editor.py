@@ -30,7 +30,7 @@ if __name__ == '__main__':
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
 	#find fife and setup search paths
-	fife_path = run_uh.getFifePath()
+	fife_path = run_uh.get_fife_path()
 
 	#for some external libraries distributed with Unknown Horizons
 	os.environ['PYTHONPATH'] = os.path.pathsep.join((os.path.abspath('editor'), os.path.abspath('game'), os.path.abspath('horizons/ext'), os.environ['PYTHONPATH']))

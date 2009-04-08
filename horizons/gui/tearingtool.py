@@ -43,7 +43,7 @@ class TearingTool(NavigationTool):
 		self.coords = None
 		self.selected = []
 		self.oldedges = None
-		horizons.main.gui.on_escape = self.onEscape
+		horizons.main.gui.on_escape = self.on_escape
 		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
 
 	def end(self):
@@ -63,7 +63,7 @@ class TearingTool(NavigationTool):
 		self._mark((int(round(coords.x)), int(round(coords.y))))
 		evt.consume()
 
-	def onEscape(self):
+	def on_escape(self):
 		self._mark()
 		horizons.main.session.cursor = SelectionTool()
 
@@ -80,7 +80,7 @@ class TearingTool(NavigationTool):
 
 	def mousePressed(self,  evt):
 		if fife.MouseEvent.RIGHT == evt.getButton():
-			self.onEscape()
+			self.on_escape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			coords = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			self.coords = (int(round(coords.x)), int(round(coords.y)))

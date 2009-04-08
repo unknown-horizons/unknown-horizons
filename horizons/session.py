@@ -224,12 +224,12 @@ class Session(LivingObject):
 		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
 		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
-			obj = WorldObject.getObjectById(instance_id[0])
+			obj = WorldObject.get_object_by_id(instance_id[0])
 			self.selected_instances.add(obj)
 			obj.select()
 		for group in xrange(len(self.selection_groups)): # load user defined unit groups
 			for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
-				self.selection_groups[group].add(WorldObject.getObjectById(instance_id[0]))
+				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
 
@@ -241,7 +241,7 @@ class Session(LivingObject):
 		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
 
-	def generateMap(self):
+	def generate_map(self):
 		"""Generates a map."""
 
 		#load map

@@ -26,7 +26,7 @@ if __name__ == '__main__':
 	import sys
 	import os
 	#find fife and setup search paths
-	run_uh.findFIFE()
+	run_uh.find_FIFE()
 	os.execvp(sys.argv[1], sys.argv[1:])
 else:
 	import inspect

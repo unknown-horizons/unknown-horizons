@@ -97,7 +97,7 @@ class Trader(Player, StorageHolder):
 		for ship_id, state_id, remaining_ticks, targeted_branch in \
 				db("SELECT rowid, state, remaining_ticks, targeted_branch FROM trader_ships"):
 			state = self.shipStates[state_id]
-			ship = WorldObject.getObjectById(ship_id)
+			ship = WorldObject.get_object_by_id(ship_id)
 
 			self.ships[ship] = state
 
@@ -106,7 +106,7 @@ class Trader(Player, StorageHolder):
 			elif state == self.shipStates.moving_to_branch:
 				ship.add_move_callback(lambda: self.reached_branch(ship))
 				assert targeted_branch is not None
-				self.office[ship.id] = WorldObject.getObjectById(targeted_branch)
+				self.office[ship.id] = WorldObject.get_object_by_id(targeted_branch)
 			elif state == self.shipStates.reached_branch:
 				assert remaining_ticks is not None
 				horizons.main.session.scheduler.add_new_object( \

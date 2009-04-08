@@ -76,7 +76,7 @@ class Settlement(TradePost, WorldObject):
 		super(Settlement, self).load(db, worldid)
 
 		self.owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
-		self.owner = WorldObject.getObjectById(self.owner)
+		self.owner = WorldObject.get_object_by_id(self.owner)
 
 		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
