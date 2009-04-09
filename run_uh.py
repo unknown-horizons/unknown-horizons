@@ -30,10 +30,10 @@ import os
 import gettext
 import getopt
 
-
 def get_fife_path():
 	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
-	global fife_path
+	global debug
+
 	try:
 		import config
 		_paths = [config.fife_path]
@@ -50,7 +50,8 @@ def get_fife_path():
 					break
 			else:
 				fife_path = p
-				print "Found FIFE in", fife_path
+
+				if debug: print "Found FIFE in", fife_path
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
@@ -71,37 +72,24 @@ def find_FIFE():
 	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).
 	If it's already there, the function will return, else
 	it will restart uh with correct $LD_LIBRARY_PATH. """
-	global fife_path
+	global debug
 
-	if fife_path is None:
-		fife_path = get_fife_path() # terminates program if fife can't be found
+	fife_path = get_fife_path() # terminates program if fife can't be found
 
-	try:
-		if not os.environ.get('LD_LIBRARY_PATH', '').startswith(os.path.abspath(fife_path)):
-			try:
-				import fife
-			except ImportError, e:
-				os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
-					[ os.path.abspath(fife_path + '/' + a) for  \
-						a in ('ext/minizip', 'ext/install/lib') ] + \
-					  (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
-						 os.environ.has_key('LD_LIBRARY_PATH') else []))
+	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
+		[ os.path.abspath(fife_path + '/' + a) for  \
+			a in ('ext/minizip', 'ext/install/lib') ] + \
+		  (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
+			 os.environ.has_key('LD_LIBRARY_PATH') else []))
 
-				print "Restarting with proper LD_LIBRARY_PATH..."
-				args = [sys.executable] + sys.argv + [ "--fife-path", fife_path ]
-				#we are already in Unknown Horizons root, so just exec local executeable
-				args[1] = os.path.split(os.path.realpath(args[1]))[1]
-				# support for python -O flag (disables __debug__)
-				if not __debug__:
-					args.insert(1, '-O')
-				os.execvp(args[0], args)
-		else:
-			import fife
-	except ImportError, e:
-		print _('FIFE was not found or failed to load.')
-		print _('Reason: %s') % e.message
-		exit()
+	if debug:
+		print "Restarting with proper LD_LIBRARY_PATH..."
 
+	# assemble args (python run_uh.py ..)
+	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
+	#we are already in Unknown Horizons root, so just exec local executeable
+	args[1] = os.path.split(os.path.realpath(args[1]))[1]
+	os.execvp(args[0], args)
 
 def print_help():
 	print "Unknown Horizons usage:"
@@ -115,18 +103,18 @@ def print_help():
 
 
 if __name__ == '__main__':
-	global fife_path
+	global debug
 
 	# parse arguments
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], "hd", ["help", "debug", "fife-path="])
+		opts, args = getopt.getopt(sys.argv[1:], "hd", ["help", "debug", "fife-in-library-path"])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
 		exit(1)
 
 	debug = False
-	fife_path = None
+	fife_in_library_path = False
 
 	# apply arguments
 	for o, a in opts:
@@ -135,9 +123,9 @@ if __name__ == '__main__':
 			exit(1)
 		elif o in ("-d", "--debug"):
 			debug = True
-		elif o == ("--fife-path"):
+		elif o == ("--fife-in-library-path"):
 			# this is currently only for internal use, therefore not in the help message
-			fife_path = a
+			fife_in_library_path = True
 
 	#chdir to Unknown Horizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
@@ -147,8 +135,12 @@ if __name__ == '__main__':
 	#find fife and setup search paths, if it can't be imported yet
 	try:
 		import fife
-	except:
-		print 'Searching for FIFE'
+	except ImportError, e:
+		if fife_in_library_path:
+			# fife should already be in LD_LIBRARY_PATH
+			print 'Failed to load fife:', e
+			exit(1)
+		if debug: print 'Searching for FIFE'
 		find_FIFE()
 
 	print _("Launching Unknown Horizons")
