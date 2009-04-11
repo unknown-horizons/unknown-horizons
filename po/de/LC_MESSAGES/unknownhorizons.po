@@ -4,15 +4,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Unknown Horizons 2009.0\n"
 "POT-Creation-Date: 2009-04-11 13:55+CEST\n"
-"PO-Revision-Date: 2009-04-10 23:30+0100\n"
+"PO-Revision-Date: 2009-04-11 16:24+0100\n"
 "Last-Translator: André Reichelt <andre-r@online.de>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Unknown Horizons German Translation Team <team@unknown-horizons.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
 
 #: debug.py:90
 msgid "Debuging tools usage:"
@@ -23,21 +25,12 @@ msgid "import debug (already done): load the tools"
 msgstr "import debug (bereits erledigt): lade Tools"
 
 #: debug.py:92
-msgid ""
-"debug.printTree(<object>):   print a tree of an object (the properties, "
-"recursive)"
-msgstr ""
-"debug.printTree(<object>):   gib ein Objekt in Baumstruktur aus "
-"(Eigenschaften, Rekursiv)"
+msgid "debug.printTree(<object>):   print a tree of an object (the properties, recursive)"
+msgstr "debug.printTree(<object>):   gib ein Objekt in Baumstruktur aus (Eigenschaften, Rekursiv)"
 
 #: debug.py:93
-msgid ""
-"debug.cmd('name', *args):    create a command and execute it throught the "
-"manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
-msgstr ""
-"debug.cmd('name', *args):    Erzeuge ein Kommando und führe es durch den "
-"Manager aus. Beispiel: debug.cmd('unit.Move', game.main.session."
-"selected_instance, x, y)"
+msgid "debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
+msgstr "debug.cmd('name', *args):    Erzeuge ein Kommando und führe es durch den Manager aus. Beispiel: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
 
 #: horizons/dbreader.py:51
 msgid "Error, no complete sql statement provided by \"%s.\""
@@ -45,23 +38,31 @@ msgstr "Fehler, kein vollständiger SQL Ausdruck von \"%s\" übergeben."
 
 #: horizons/i18n/__init__.py:48
 msgid "No translation for file %s"
-msgstr ""
+msgstr "Keine Übersetzung für die Datei %s"
 
 #: horizons/i18n/guitranslations.py:24
 msgid "Branch office (Branch class ROMAN)"
 msgstr "Zweigstellenbüro"
 
-#: horizons/i18n/guitranslations.py:26 horizons/i18n/guitranslations.py:29
-#: horizons/i18n/guitranslations.py:80 horizons/i18n/guitranslations.py:108
-#: horizons/i18n/guitranslations.py:110 horizons/i18n/guitranslations.py:128
-#: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:180
-#: horizons/i18n/guitranslations.py:184 horizons/i18n/guitranslations.py:189
+#: horizons/i18n/guitranslations.py:26
+#: horizons/i18n/guitranslations.py:29
+#: horizons/i18n/guitranslations.py:80
+#: horizons/i18n/guitranslations.py:108
+#: horizons/i18n/guitranslations.py:110
+#: horizons/i18n/guitranslations.py:128
+#: horizons/i18n/guitranslations.py:131
+#: horizons/i18n/guitranslations.py:180
+#: horizons/i18n/guitranslations.py:184
+#: horizons/i18n/guitranslations.py:189
 msgid "Ok"
 msgstr "Ok"
 
-#: horizons/i18n/guitranslations.py:28 horizons/i18n/guitranslations.py:79
-#: horizons/i18n/guitranslations.py:111 horizons/i18n/guitranslations.py:127
-#: horizons/i18n/guitranslations.py:183 horizons/i18n/guitranslations.py:188
+#: horizons/i18n/guitranslations.py:28
+#: horizons/i18n/guitranslations.py:79
+#: horizons/i18n/guitranslations.py:111
+#: horizons/i18n/guitranslations.py:127
+#: horizons/i18n/guitranslations.py:183
+#: horizons/i18n/guitranslations.py:188
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -74,7 +75,8 @@ msgstr "Diese Jungs haben zu Unknown Horizons beigetragen"
 msgid "You guys rock!"
 msgstr "Ihr Typen habt's drauf!"
 
-#: horizons/i18n/guitranslations.py:34 horizons/i18n/guitranslations.py:206
+#: horizons/i18n/guitranslations.py:34
+#: horizons/i18n/guitranslations.py:206
 msgid "Close"
 msgstr "Schließen"
 
@@ -200,8 +202,7 @@ msgstr "Spezialbauten und Geschenke"
 
 #: horizons/i18n/guitranslations.py:70
 msgid "You can not build specials or gifts in this class"
-msgstr ""
-"In dieser Klasse stehen Euch keine Spezialbauten oder Geschenke zur Verfügung"
+msgstr "In dieser Klasse stehen Euch keine Spezialbauten oder Geschenke zur Verfügung"
 
 #: horizons/i18n/guitranslations.py:72
 msgid "Do you want to remove this building?"
@@ -223,22 +224,28 @@ msgstr "Laufende Kosten"
 msgid "Are you sure you want to abort the running session?"
 msgstr "Wollt Ihr wirklich die Partie beenden?"
 
-#: horizons/i18n/guitranslations.py:82 horizons/i18n/guitranslations.py:98
+#: horizons/i18n/guitranslations.py:82
+#: horizons/i18n/guitranslations.py:98
 msgid "Overview:"
 msgstr "Übersicht:"
 
-#: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:99
-#: horizons/i18n/guitranslations.py:142 horizons/i18n/guitranslations.py:147
+#: horizons/i18n/guitranslations.py:83
+#: horizons/i18n/guitranslations.py:99
+#: horizons/i18n/guitranslations.py:142
+#: horizons/i18n/guitranslations.py:147
 msgid "Name:"
 msgstr "Name:"
 
-#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:100
-#: horizons/i18n/guitranslations.py:143 horizons/i18n/guitranslations.py:148
+#: horizons/i18n/guitranslations.py:84
+#: horizons/i18n/guitranslations.py:100
+#: horizons/i18n/guitranslations.py:143
+#: horizons/i18n/guitranslations.py:148
 #, fuzzy
 msgid "Health:"
 msgstr "Gesundheit:"
 
-#: horizons/i18n/guitranslations.py:85 horizons/i18n/guitranslations.py:101
+#: horizons/i18n/guitranslations.py:85
+#: horizons/i18n/guitranslations.py:101
 msgid "Running Costs:"
 msgstr "Laufende Kosten:"
 
@@ -285,9 +292,7 @@ msgstr "Neu"
 
 #: horizons/i18n/guitranslations.py:107
 msgid "We're sorry, but the load function is not yet working."
-msgstr ""
-"Entschuldigt, aber die Speicher- und Ladefunktion ist noch nicht "
-"fertiggestellt."
+msgstr "Entschuldigt, aber die Speicher- und Ladefunktion ist noch nicht fertiggestellt."
 
 #: horizons/i18n/guitranslations.py:112
 #, fuzzy
@@ -299,9 +304,7 @@ msgid "Use the fullscreen mode"
 msgstr "Im Vollbildmodus spielen"
 
 #: horizons/i18n/guitranslations.py:114
-msgid ""
-"This is the Unknown Horizons settings dialog. Please make sure that you "
-"know, what you do."
+msgid "This is the Unknown Horizons settings dialog. Please make sure that you know, what you do."
 msgstr "Dies ist der Einstellungsdialog von Unknown Horizons. Handelt weise!"
 
 #: horizons/i18n/guitranslations.py:115
@@ -347,7 +350,8 @@ msgstr "Minuten"
 msgid "Enter filename:"
 msgstr "Dateiname eingeben:"
 
-#: horizons/i18n/guitranslations.py:126 horizons/i18n/guitranslations.py:187
+#: horizons/i18n/guitranslations.py:126
+#: horizons/i18n/guitranslations.py:187
 msgid "Delete"
 msgstr "Löschen"
 
@@ -356,7 +360,8 @@ msgstr "Löschen"
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr "Wollt Ihr Unknown Horizons wirklich beenden?"
 
-#: horizons/i18n/guitranslations.py:133 horizons/i18n/guitranslations.py:156
+#: horizons/i18n/guitranslations.py:133
+#: horizons/i18n/guitranslations.py:156
 msgid "Unknown Horizons Alpha 2009.0"
 msgstr "Unknown Horizons Alpha 2009.0"
 
@@ -373,11 +378,13 @@ msgstr "Gebäudename (Gebäudeklasse RÖMISCH)"
 msgid "Tiles:"
 msgstr "Bodenfließen:"
 
-#: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:151
+#: horizons/i18n/guitranslations.py:139
+#: horizons/i18n/guitranslations.py:151
 msgid "Inventory:"
 msgstr "Inventar:"
 
-#: horizons/i18n/guitranslations.py:141 horizons/i18n/guitranslations.py:146
+#: horizons/i18n/guitranslations.py:141
+#: horizons/i18n/guitranslations.py:146
 msgid "Overview"
 msgstr "Übersicht"
 
@@ -414,11 +421,13 @@ msgstr "Credits"
 msgid " Quit "
 msgstr "Verlassen"
 
-#: horizons/i18n/guitranslations.py:161 horizons/i18n/guitranslations.py:197
+#: horizons/i18n/guitranslations.py:161
+#: horizons/i18n/guitranslations.py:197
 msgid " Settings "
 msgstr "Einstellungen"
 
-#: horizons/i18n/guitranslations.py:162 horizons/i18n/guitranslations.py:195
+#: horizons/i18n/guitranslations.py:162
+#: horizons/i18n/guitranslations.py:195
 msgid " Help "
 msgstr "Hilfe"
 
@@ -426,7 +435,8 @@ msgstr "Hilfe"
 msgid " Continue Game "
 msgstr "Weiterspielen"
 
-#: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:196
+#: horizons/i18n/guitranslations.py:164
+#: horizons/i18n/guitranslations.py:196
 msgid " Chime The Bell "
 msgstr "Die Glocke läuten"
 
@@ -443,15 +453,18 @@ msgstr "Kampagne"
 msgid "Load "
 msgstr "Laden"
 
-#: horizons/i18n/guitranslations.py:169 horizons/i18n/guitranslations.py:216
+#: horizons/i18n/guitranslations.py:169
+#: horizons/i18n/guitranslations.py:216
 msgid "Player:"
 msgstr "Spieler:"
 
-#: horizons/i18n/guitranslations.py:170 horizons/i18n/guitranslations.py:217
+#: horizons/i18n/guitranslations.py:170
+#: horizons/i18n/guitranslations.py:217
 msgid "Color:"
 msgstr "Farbe:"
 
-#: horizons/i18n/guitranslations.py:171 horizons/i18n/guitranslations.py:218
+#: horizons/i18n/guitranslations.py:171
+#: horizons/i18n/guitranslations.py:218
 msgid "unknown player"
 msgstr "Unbekannter Spieler"
 
@@ -491,7 +504,7 @@ msgstr "Stoffe:"
 
 #: horizons/i18n/guitranslations.py:191
 msgid "Return to Game"
-msgstr ""
+msgstr "Zurück zum Spiel"
 
 #: horizons/i18n/guitranslations.py:192
 #, fuzzy
@@ -514,45 +527,48 @@ msgid "Internet games"
 msgstr "Spiel starten:"
 
 #: horizons/i18n/guitranslations.py:200
+#, fuzzy
 msgid "LAN games"
-msgstr ""
+msgstr "LAN spiele"
 
 #: horizons/i18n/guitranslations.py:201
 msgid "Favorites"
-msgstr ""
+msgstr "Favoriten"
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Buy"
-msgstr ""
+msgstr "Kaufen"
 
 #: horizons/i18n/guitranslations.py:204
 msgid "Sell"
-msgstr ""
+msgstr "Verkaufen"
 
 #: horizons/i18n/guitranslations.py:208
 msgid "City Name"
-msgstr ""
+msgstr "Stadtname"
 
 #: horizons/i18n/guitranslations.py:209
 msgid "Class ROMAN"
-msgstr ""
+msgstr "Klasse RÖMISCH"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Inhabitants"
-msgstr ""
+msgstr "Einwohner"
 
-#: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:221
+#: horizons/i18n/guitranslations.py:212
+#: horizons/i18n/guitranslations.py:221
 #: horizons/i18n/guitranslations.py:222
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: horizons/i18n/guitranslations.py:213
+#, fuzzy
 msgid "Enter your message"
-msgstr ""
+msgstr "Gebt Eure Nachricht ein"
 
 #: horizons/i18n/guitranslations.py:214
 msgid "Send"
-msgstr ""
+msgstr "Senden"
 
 #: horizons/i18n/guitranslations.py:219
 #, fuzzy
@@ -577,12 +593,8 @@ msgid "LEAVE BY"
 msgstr "VERLASSEN VON"
 
 #: horizons/settings.py:126
-msgid ""
-"Error: Config version not supported, creating empty config which wont be "
-"saved."
-msgstr ""
-"Fehler: Config Version nicht unterstützt, erzeuge leere Konfiguration, die "
-"nicht gespeichert werden wird"
+msgid "Error: Config version not supported, creating empty config which wont be saved."
+msgstr "Fehler: Config Version nicht unterstützt, erzeuge leere Konfiguration, die nicht gespeichert werden wird"
 
 #: horizons/settings.py:131
 msgid "Upgrading Config from Version %d to Version %d ..."
@@ -608,7 +620,8 @@ msgstr "Alle erfolgreich:"
 msgid "Failures:"
 msgstr "Fehler"
 
-#: run_tests.py:72 run_tests.py:80
+#: run_tests.py:72
+#: run_tests.py:80
 msgid "Case:"
 msgstr "Fall:"
 
@@ -626,42 +639,30 @@ msgstr "Starte Unknown Horizons"
 
 #~ msgid "Error"
 #~ msgstr "Fehler"
-
 #~ msgid "You have to select a server"
 #~ msgstr "Sie müssen einen Server auswählen"
-
 #~ msgid "No file selected"
 #~ msgstr "Keine Dateien ausgewählt"
-
 #~ msgid "You need to select a savegame to delete"
 #~ msgstr "Sie müssen einen Speicherstand auswählen um ihn zu löschen"
-
 #~ msgid "Confirm deletiom"
 #~ msgstr "Entfernen Bestätigen"
-
 #~ msgid "Do you really want to delete the savegame \"%s\"?"
 #~ msgstr "Wollen Sie wirklich den Speicherstand \"%s\" löschen?"
-
 #~ msgid "Invalid player name"
 #~ msgstr "Ungültiger Spielername"
-
 #~ msgid "You entered an invalid playername"
 #~ msgstr "Sie haben einen ungültigen Spielernamen eingegeben"
-
 #~ msgid "Not implemented"
 #~ msgstr "Nicht implementiert"
-
 #~ msgid "Sorry, random map creation is not implemented at the moment."
 #~ msgstr "Erzeugen von Zufallskarten ist noch nicht implementiert."
-
 #~ msgid "There are no saved games to load"
 #~ msgstr "Es gibt keine Speicherstände zum laden"
-
 #~ msgid "Found FIFE in:"
 #~ msgstr "FIFE gefunden in:"
-
 #~ msgid "FIFE was not found or failed to load."
 #~ msgstr "FIFE wurde nicht gefunden oder konnte nicht geladen werden."
-
 #~ msgid "Reason: %s"
 #~ msgstr "Grund: %s"
+
