@@ -415,7 +415,7 @@ msgstr "Merhspieler"
 #: horizons/i18n/guitranslations.py:159
 #, fuzzy
 msgid " Credits "
-msgstr "Credits"
+msgstr "Abspann"
 
 #: horizons/i18n/guitranslations.py:160
 msgid " Quit "
@@ -478,7 +478,7 @@ msgstr "Spiel starten:"
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Yeah, you made it ..."
-msgstr "Ja, Ihr habt es getan…"
+msgstr "Ja, Ihr habt es getan ..."
 
 #: horizons/i18n/guitranslations.py:176
 msgid "But this is a deadlink, sorry."
@@ -507,14 +507,12 @@ msgid "Return to Game"
 msgstr "Zurück zum Spiel"
 
 #: horizons/i18n/guitranslations.py:192
-#, fuzzy
 msgid " Cancel Game "
-msgstr "Weiterspielen"
+msgstr "Spiel beenden"
 
 #: horizons/i18n/guitranslations.py:193
-#, fuzzy
 msgid " Save Game "
-msgstr "Gespeichert am %s"
+msgstr "Spiel speichern"
 
 #: horizons/i18n/guitranslations.py:194
 #, fuzzy
@@ -522,14 +520,12 @@ msgid " Load Game "
 msgstr "Laden"
 
 #: horizons/i18n/guitranslations.py:199
-#, fuzzy
 msgid "Internet games"
-msgstr "Spiel starten:"
+msgstr "Internet Spiele"
 
 #: horizons/i18n/guitranslations.py:200
-#, fuzzy
 msgid "LAN games"
-msgstr "LAN spiele"
+msgstr "Netzwerk Spiele"
 
 #: horizons/i18n/guitranslations.py:201
 msgid "Favorites"
@@ -571,14 +567,12 @@ msgid "Send"
 msgstr "Senden"
 
 #: horizons/i18n/guitranslations.py:219
-#, fuzzy
 msgid "Slots"
-msgstr "Schließen"
+msgstr "Spalten"
 
 #: horizons/i18n/guitranslations.py:220
-#, fuzzy
 msgid "Bots:"
-msgstr "Bretter:"
+msgstr "Computergesteuerte Spieler:"
 
 #: horizons/network.py:303
 msgid "PLAYER TIMEOUT"
