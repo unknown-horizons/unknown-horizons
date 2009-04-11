@@ -104,7 +104,7 @@ class BuySellWidget(object):
 				self.add_buy_to_settlement(res_id, value, slot.id)
 
 		if res_id == 0:
-			icon = "images/icons/hud/build/dummy_btn.png"
+			icon = "content/gui/images/icons/hud/build/dummy_btn.png"
 			button = slot.findChild(name="button")
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			slot.findChild(name="amount").text = u""
@@ -124,14 +124,14 @@ class BuySellWidget(object):
 		button = slot.findChild(name="buysell")
 		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
-			button.up_image="images/icons/hud/main/buysell_sell.png"
+			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
 			slot.action="sell"
 			if slot.res is not None:
 				if slot.res in self.settlement.buy_list:
 					del self.settlement.buy_list[slot.res]
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
-			button.up_image="images/icons/hud/main/buysell_buy.png"
+			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
 			slot.action="buy"
 			if slot.res is not None:
 				if slot.res in self.settlement.sell_list:
@@ -181,7 +181,7 @@ class BuySellWidget(object):
 		# Add the zero element to the beginnig that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:
-			resources.insert(0,(0,"images/icons/hud/build/dummy_btn.png"))
+			resources.insert(0,(0,"content/gui/images/icons/hud/build/dummy_btn.png"))
 		for (res_id,icon) in resources:
 			if res_id in [1, 2, 7, 8, 9, 10, 11]:
 				continue # don't show coins, lamb wool, wood etc. Temp hack. Should be replaced by resource groups
