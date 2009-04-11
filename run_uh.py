@@ -153,6 +153,3 @@ if __name__ == '__main__':
 
 	#start unknownhorizons
 	horizons.main.start()
-
-	# gettext support will have to wait so make it an no-op for everything not calling unknownhorizons directly
-	_ = lambda x: x
