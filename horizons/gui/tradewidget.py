@@ -22,12 +22,13 @@ import horizons.main
 
 from horizons.util.inventory_widget import ImageFillStatusButton
 from horizons.world.building.storages import BranchOffice
+from horizons.i18n import load_xml_translated
 
 class TradeWidget(object):
 	radius = 4 # objects within this radius can be traded with
 
 	def __init__(self, main_instance):
-		self.widget = horizons.main.fife.pychan.loadXML('content/gui/ship/trade.xml')
+		self.widget = load_xml_translated('ship/trade.xml')
 		self.widget.position = (
 			horizons.main.session.ingame_gui.gui['minimap'].position[1] - horizons.main.session.ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > horizons.main.session.ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
 			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35

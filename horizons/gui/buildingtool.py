@@ -31,7 +31,7 @@ from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
-
+from horizons.i18n import load_xml_translated
 
 """
 Represents a dangling tool after a building was selected from the list.
@@ -91,7 +91,7 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).end()
 
 	def load_gui(self):
-		self.gui = horizons.main.fife.pychan.loadXML("content/gui/build_menu/hud_builddetail.xml")
+		self.gui = load_xml_translated("build_menu/hud_builddetail.xml")
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,
 							  "rotate_right": self.rotate_right }
 							)

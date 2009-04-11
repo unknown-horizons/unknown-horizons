@@ -21,13 +21,14 @@
 
 import pychan
 import horizons.main
+from horizons.i18n import load_xml_translated
 
 class BuySellWidget(object):
 
 	def __init__(self, slots, settlement):
 		self.settlement = settlement
 		self.slots = {}
-		self.widget = horizons.main.fife.pychan.loadXML('content/gui/buysellmenu/buysellmenu.xml')
+		self.widget = load_xml_translated('buysellmenu/buysellmenu.xml')
 		self.widget.position = (
 			horizons.main.session.ingame_gui.gui['minimap'].position[1] - horizons.main.session.ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > horizons.main.session.ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
 			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
@@ -61,7 +62,7 @@ class BuySellWidget(object):
 		content = self.widget.findChild(name="content")
 		assert(content is not None)
 		for num in range(0,num):
-			slot = horizons.main.fife.pychan.loadXML('content/gui/buysellmenu/single_slot.xml')
+			slot = load_xml_translated('buysellmenu/single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
 			slot.action = 'buy'
@@ -103,7 +104,7 @@ class BuySellWidget(object):
 				self.add_buy_to_settlement(res_id, value, slot.id)
 
 		if res_id == 0:
-			icon = "content/gui/images/icons/hud/build/dummy_btn.png"
+			icon = "images/icons/hud/build/dummy_btn.png"
 			button = slot.findChild(name="button")
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			slot.findChild(name="amount").text = u""
@@ -123,14 +124,14 @@ class BuySellWidget(object):
 		button = slot.findChild(name="buysell")
 		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
-			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
+			button.up_image="images/icons/hud/main/buysell_sell.png"
 			slot.action="sell"
 			if slot.res is not None:
 				if slot.res in self.settlement.buy_list:
 					del self.settlement.buy_list[slot.res]
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
-			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
+			button.up_image="images/icons/hud/main/buysell_buy.png"
 			slot.action="buy"
 			if slot.res is not None:
 				if slot.res in self.settlement.sell_list:
@@ -169,7 +170,7 @@ class BuySellWidget(object):
 
 
 	def show_ressource_menu(self, slot_id):
-		self.resources = horizons.main.fife.pychan.loadXML('content/gui/buysellmenu/resources.xml')
+		self.resources = load_xml_translated('buysellmenu/resources.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = pychan.widgets.VBox(padding = 0)
@@ -180,7 +181,7 @@ class BuySellWidget(object):
 		# Add the zero element to the beginnig that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:
-			resources.insert(0,(0,"content/gui/images/icons/hud/build/dummy_btn.png"))
+			resources.insert(0,(0,"images/icons/hud/build/dummy_btn.png"))
 		for (res_id,icon) in resources:
 			if res_id in [1, 2, 7, 8, 9, 10, 11]:
 				continue # don't show coins, lamb wool, wood etc. Temp hack. Should be replaced by resource groups

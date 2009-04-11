@@ -25,6 +25,7 @@ import fife
 import horizons.main
 
 from horizons.util.living import LivingObject
+from horizons.i18n import load_xml_translated
 
 class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
@@ -35,15 +36,15 @@ class MessageWidget(LivingObject):
 		self.x, self.y = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # mesages, that aren'y displayed any more
-		self.widget = horizons.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
+		self.widget = load_xml_translated('hud_messages.xml')
 		self.widget.position = (x,y)
 
 		# the widget will be changed over time and have to be reset, when a message
 		# gets moved to the archive. to get info about the original state, you can use this:
-		self.original_widget = horizons.main.fife.pychan.loadXML('content/gui/hud_messages.xml')
+		self.original_widget = load_xml_translated('hud_messages.xml')
 		self.original_widget.position = (x,y)
 
-		self.text_widget = horizons.main.fife.pychan.loadXML('content/gui/hud_messages_text.xml')
+		self.text_widget = load_xml_translated('hud_messages_text.xml')
 		self.text_widget.position = (x,y+self.widget.height)
 		self.widget.show()
 		self.current_tick = 0

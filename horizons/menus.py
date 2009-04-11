@@ -30,7 +30,7 @@ from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import Socket, ServerConnection, ClientConnection
 from horizons.savegamemanager import SavegameManager
-
+from i18n import load_xml_translated
 class Menus(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
@@ -38,28 +38,28 @@ class Menus(object):
 		fife = horizons.main.fife
 		self.current = None # currently active window
 		self.widgets = {} # Stores all the widgets, to prevent double loading
-		self.widgets['mainmenu'] = fife.pychan.loadXML('content/gui/mainmenu.xml')
+		self.widgets['mainmenu'] = load_xml_translated('mainmenu.xml')
 		self.widgets['mainmenu'].stylize('menu')
-		self.widgets['quitgame'] = fife.pychan.loadXML('content/gui/quitgame.xml')
-		self.widgets['credits'] = fife.pychan.loadXML('content/gui/credits.xml')
-		self.widgets['settings'] = fife.pychan.loadXML('content/gui/settings.xml')
-		self.widgets['requirerestart'] = fife.pychan.loadXML('content/gui/changes_require_restart.xml')
-		self.widgets['popup_with_cancel'] = fife.pychan.loadXML('content/gui/popupbox_with_cancel.xml')
-		self.widgets['popup'] = fife.pychan.loadXML('content/gui/popupbox.xml')
-		self.widgets['gamemenu'] = fife.pychan.loadXML('content/gui/gamemenu.xml')
+		self.widgets['quitgame'] = load_xml_translated('quitgame.xml')
+		self.widgets['credits'] = load_xml_translated('credits.xml')
+		self.widgets['settings'] = load_xml_translated('settings.xml')
+		self.widgets['requirerestart'] = load_xml_translated('changes_require_restart.xml')
+		self.widgets['popup_with_cancel'] = load_xml_translated('popupbox_with_cancel.xml')
+		self.widgets['popup'] = load_xml_translated('popupbox.xml')
+		self.widgets['gamemenu'] = load_xml_translated('gamemenu.xml')
 		self.widgets['gamemenu'].stylize('menu')
-		self.widgets['chime'] = fife.pychan.loadXML('content/gui/chime.xml')
-		self.widgets['help'] = fife.pychan.loadXML('content/gui/help.xml')
-		self.widgets['quitsession'] = fife.pychan.loadXML('content/gui/quitsession.xml')
-		self.widgets['singleplayermenu'] = fife.pychan.loadXML('content/gui/singleplayermenu.xml')
+		self.widgets['chime'] = load_xml_translated('chime.xml')
+		self.widgets['help'] = load_xml_translated('help.xml')
+		self.widgets['quitsession'] = load_xml_translated('quitsession.xml')
+		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml')
 		self.widgets['singleplayermenu'].stylize('menu')
-		self.widgets['serverlist'] = fife.pychan.loadXML('content/gui/serverlist.xml')
+		self.widgets['serverlist'] = load_xml_translated('serverlist.xml')
 		self.widgets['serverlist'].stylize('menu')
-		self.widgets['serverlobby'] = fife.pychan.loadXML('content/gui/serverlobby.xml')
+		self.widgets['serverlobby'] = load_xml_translated('serverlobby.xml')
 		self.widgets['serverlobby'].stylize('menu')
-		self.widgets['loadingscreen'] = fife.pychan.loadXML('content/gui/loadingscreen.xml')
-		self.widgets['ingame_load'] = fife.pychan.loadXML('content/gui/ingame_load.xml')
-		self.widgets['savegame'] = fife.pychan.loadXML('content/gui/ingame_save.xml')
+		self.widgets['loadingscreen'] = load_xml_translated('loadingscreen.xml')
+		self.widgets['ingame_load'] = load_xml_translated('ingame_load.xml')
+		self.widgets['savegame'] = load_xml_translated('ingame_save.xml')
 
 	def show_main(self):
 		""" shows the main menu
@@ -318,7 +318,7 @@ class Menus(object):
 		@param showLoad: Bool if saved games menu is to be shown.
 		"""
 		self.hide() # Hide old gui
-		self.widgets['singleplayermenu'] = horizons.main.fife.pychan.loadXML('content/gui/singleplayermenu.xml') # reload because parts are being removed on each show
+		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
 		self.widgets['singleplayermenu'].stylize('menu')
 		self.current = self.widgets['singleplayermenu']
 		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
@@ -624,7 +624,7 @@ class Menus(object):
 
 	def load_game(self, savegame = None):
 		# To disable load for now:
-		#showDialog(fife.pychan.loadXML('content/gui/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
+		#showDialog(load_xml_translated('/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
 		#return
 
 		if savegame is None:

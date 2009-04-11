@@ -55,7 +55,6 @@ from gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
 
-
 def start():
 	"""Starts the horizons.
 	"""

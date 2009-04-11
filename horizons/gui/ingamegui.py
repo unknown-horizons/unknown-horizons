@@ -23,6 +23,7 @@ import fife
 
 import horizons.main
 
+from horizons.i18n import load_xml_translated
 from horizons.util.living import livingProperty, LivingObject
 from horizons.world.settlement import Settlement
 from buildingtool import BuildingTool
@@ -48,15 +49,15 @@ class IngameGui(LivingObject):
 		self._old_menu = None
 
 
-		self.gui['encyclopedia'] = horizons.main.fife.pychan.loadXML('content/gui/encyclopedia_button.xml')
+		self.gui['encyclopedia'] = load_xml_translated('encyclopedia_button.xml')
 		self.gui['encyclopedia'].show()
-		self.gui['topmain'] = horizons.main.fife.pychan.loadXML('content/gui/top_main.xml')
+		self.gui['topmain'] = load_xml_translated('top_main.xml')
 		self.gui['topmain'].position = (
 			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2,
 			5
 		)
 		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
-		self.gui['gamemenu'] = horizons.main.fife.pychan.loadXML('content/gui/gamemenu_button.xml')
+		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
 		self.gui['gamemenu'].position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 5,
 			5
@@ -67,7 +68,7 @@ class IngameGui(LivingObject):
 		})
 		self.gui['gamemenu'].show()
 
-		self.gui['minimap_toggle'] = horizons.main.fife.pychan.loadXML('content/gui/minimap_toggle_button.xml')
+		self.gui['minimap_toggle'] = load_xml_translated('minimap_toggle_button.xml')
 		self.gui['minimap_toggle'].position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui['minimap_toggle'].size[0] - 15,
 			horizons.main.fife.settings.getScreenHeight() - self.gui['minimap_toggle'].size[1] -15,
@@ -79,7 +80,7 @@ class IngameGui(LivingObject):
 			'speedDown' : horizons.main.session.speed_down
 		})
 
-		self.gui['minimap'] = horizons.main.fife.pychan.loadXML('content/gui/minimap.xml')
+		self.gui['minimap'] = load_xml_translated('minimap.xml')
 		self.gui['minimap'].position = (
 				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] - self.gui['minimap_toggle'].size[0],
 				horizons.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1],
@@ -92,7 +93,7 @@ class IngameGui(LivingObject):
 			'rotateLeft' : horizons.main.session.view.rotate_left
 		})
 
-		self.gui['camTools'] = horizons.main.fife.pychan.loadXML('content/gui/cam_tools.xml')
+		self.gui['camTools'] = load_xml_translated('cam_tools.xml')
 		self.gui['camTools'].position = (
 				horizons.main.fife.settings.getScreenWidth() - self.gui['camTools'].size[0] - self.gui['minimap_toggle'].size[0] -15,
 				horizons.main.fife.settings.getScreenHeight() - self.gui['camTools'].size[1] -15,
@@ -104,7 +105,7 @@ class IngameGui(LivingObject):
 			'rotateLeft' : horizons.main.session.view.rotate_left
 		})
 
-		self.gui['leftPanel'] = horizons.main.fife.pychan.loadXML('content/gui/left_panel.xml')
+		self.gui['leftPanel'] = load_xml_translated('left_panel.xml')
 		self.gui['leftPanel'].position = (
 			5,
 			horizons.main.fife.settings.getScreenHeight()/3 - self.gui['minimap'].size[1]/3
@@ -114,12 +115,12 @@ class IngameGui(LivingObject):
 			'build' : self.show_build_menu
 		})
 
-		self.gui['status'] = horizons.main.fife.pychan.loadXML('content/gui/status.xml')
+		self.gui['status'] = load_xml_translated('status.xml')
 		self.gui['status'].position = (
 			self.gui['topmain'].position[0] - self.gui['status'].size[0],
 			5
 		)
-		self.gui['status_gold'] = horizons.main.fife.pychan.loadXML('content/gui/status_gold.xml')
+		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
 		self.gui['status_gold'].position = (
 			self.gui['status'].position[0] - 48,
 			5
@@ -160,12 +161,12 @@ class IngameGui(LivingObject):
 		self.tabwidgets['build'] = TabWidget(1, ingamegui=self, callbacks=callbacks_build)
 		self.gui['build'] = self.tabwidgets['build'].widget
 
-		self.gui['buildinfo'] = horizons.main.fife.pychan.loadXML('content/gui/hud_buildinfo.xml')
-		self.gui['chat'] = horizons.main.fife.pychan.loadXML('content/gui/hud_chat.xml')
-		self.gui['cityinfo'] = horizons.main.fife.pychan.loadXML('content/gui/hud_cityinfo.xml')
-		self.gui['res'] = horizons.main.fife.pychan.loadXML('content/gui/hud_res.xml')
-		self.gui['fertility'] = horizons.main.fife.pychan.loadXML('content/gui/hud_fertility.xml')
-		self.gui['ship'] = horizons.main.fife.pychan.loadXML('content/gui/hud_ship.xml')
+		self.gui['buildinfo'] = load_xml_translated('hud_buildinfo.xml')
+		self.gui['chat'] = load_xml_translated('hud_chat.xml')
+		self.gui['cityinfo'] = load_xml_translated('hud_cityinfo.xml')
+		self.gui['res'] = load_xml_translated('hud_res.xml')
+		self.gui['fertility'] = load_xml_translated('hud_fertility.xml')
+		self.gui['ship'] = load_xml_translated('hud_ship.xml')
 
 	def end(self):
 		self.gui['gamemenu'].mapEvents({

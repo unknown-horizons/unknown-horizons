@@ -24,6 +24,7 @@ import weakref
 import pychan
 import horizons.main
 from horizons.util.inventory_widget import Inventory
+from horizons.i18n import load_xml_translated
 
 class TabWidget(object):
 	"""Used to create menus for buildings, ships, etc. Uses multiple tabs.
@@ -38,7 +39,7 @@ class TabWidget(object):
 		self.tabs = []
 		for name, xml, up, down, hover in horizons.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM data.tab_system LEFT JOIN data.tabs ON tabs.rowid = tab_system.tab WHERE tab_system.system=? ORDER BY tab_system.position", system_id):
 			self.tabs.append(Tab(name, xml, up, down, hover))
-		self.widget = horizons.main.fife.pychan.loadXML('content/gui/tab_widget/tab_main.xml')
+		self.widget = load_xml_translated('tab_widget/tab_main.xml')
 		self.widget.stylize('menu')
 		self.widget.position = (
 			ingame_gui.gui['minimap'].position[1] - ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
@@ -94,7 +95,7 @@ class Tab(object):
 	@var xml: str xml that is to be loaded."""
 	def __init__(self, name, xml, button_up_image, button_down_image, button_hover_image):
 		self.name = name
-		self.widget = horizons.main.fife.pychan.loadXML(xml)
+		self.widget = load_xml_translated(xml)
 		self.widget.stylize('menu')
 		self.up_image = button_up_image
 		self.down_image = button_down_image
