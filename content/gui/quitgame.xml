@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Window title="Quit Unknown Horizons" base_color="40, 40, 40">
-	<Label text="Are you sure you want to Quit Unknown Horizons?" base_color="40, 40, 40"/>
+	<Label name="quit_game_caption" text="Are you sure you want to Quit Unknown Horizons?" base_color="40, 40, 40"/>
 	<HBox>
 		<Spacer />
 		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>

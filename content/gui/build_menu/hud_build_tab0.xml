@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Services tab -->
 <Container name="tab0" size="533,190">
-	<Label position="10,5" text="Services" />
+	<Label position="10,5" text="Services" name="ServicesLabel" />
 	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
 	<!-- Uncomment if implented
 	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
@@ -11,15 +11,15 @@
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
 	<ImageButton name="store-1" position="48,25" up_image="content/gui/images/icons/hud/build/storagetent.png" hover_image="content/gui/images/icons/hud/build/storagetent_h.png" down_image="content/gui/images/icons/hud/build/storagetent_h.png" text="" />
-	<Label position="63,83" text="Storage" />
+	<Label position="63,83" text="Storage" name="StorageLabel" />
 
 	<ImageButton name="main_square-1" position="113,25" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" text="" />
-	<Label position="112,83" text="Main Square" />
+	<Label position="112,83" text="Main Square" name="MainSquareLabel" />
 
 	<ImageButton name="church-1" position="185,25" up_image="content/gui/images/icons/hud/build/sunsail.png" hover_image="content/gui/images/icons/hud/build/sunsail_h.png" down_image="content/gui/images/icons/hud/build/sunsail_h.png" text="" />
-	 <Label position="198,84" text="Church" />
+	 <Label position="198,84" text="Church" name="ChurchLabel"/>
 
 	<ImageButton name="lighthouse-1" position="254,25" up_image="content/gui/images/icons/hud/build/signalfire.png" hover_image="content/gui/images/icons/hud/build/signalfire_h.png" down_image="content/gui/images/icons/hud/build/signalfire_h.png" text="" />
-	 <Label position="258,83" text="Signal fire" />
+	 <Label position="258,83" text="Signal fire" name="SignalFireLabel" />
 
 </Container>

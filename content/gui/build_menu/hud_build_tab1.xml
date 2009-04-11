@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Residents tab -->
 <Container name="tab0" size="533,190">
-	<Label position="10,5" text="Residents" />
+	<Label position="10,5" text="Residents" name="HudBuildTab1Residents" />
 	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
 	<!-- Uncomment if implented
 	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
@@ -11,5 +11,5 @@
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
 	<ImageButton name="resident-1" position="48,25" up_image="content/gui/images/icons/hud/build/tent.png" hover_image="content/gui/images/icons/hud/build/tent_h.png" down_image="content/gui/images/icons/hud/build/tent_h.png" text="" />
-	<Label position="66,83" text="Tent" />
+	<Label position="66,83" text="Tent" name="HudBuildTab1Tent" />
 </Container>

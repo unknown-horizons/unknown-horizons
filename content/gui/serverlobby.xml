@@ -8,8 +8,8 @@ We should probably keep it synchronised, for consistency.
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
 	<HBox position="100,40" min_size="0,400">
 		<VBox>
-			<Label text="Player:" base_color="40, 40, 40"/>
-			<Label text="Color:" base_color="40, 40, 40"/>
+			<Label name="player_label" text="Player:" base_color="40, 40, 40"/>
+			<Label name="color_label" text="Color:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
 			<TextBox name="playername" text="unknown player" size="150,16" base_color="40, 40, 40"/>
@@ -20,11 +20,11 @@ We should probably keep it synchronised, for consistency.
 	</HBox>
 
 	<HBox position="400,40" min_size="0,150">
-		<Label text="Slots:" base_color="40, 40, 40"/>
+		<Label name="slots_label" text="Slots:" base_color="40, 40, 40"/>
 		<DropDown name="server_slots" min_size="120,0" base_color="40, 40, 40"/>
 	</HBox>
 	<HBox position="650,40" min_size="0,150">
-		<Label text="Bots:" base_color="40, 40, 40"/>
+		<Label name="bots_label" text="Bots:" base_color="40, 40, 40"/>
 		<DropDown name="bots" min_size="120,0" base_color="40, 40, 40"/>
 	</HBox>
 

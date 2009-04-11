@@ -3,7 +3,7 @@
 		<ListBox name="savegamelist" min_size="160,0" base_color="40, 40, 40"/>
 		<Spacer />
 		<HBox>
-			<Label text="Enter filename:" base_color="40, 40, 40"/>
+			<Label name="enter_filename_label" text="Enter filename:" base_color="40, 40, 40"/>
 			<TextField name="savegamefile" min_size="200,16" base_color="40, 40, 40"/>
 		</HBox>
 		<HBox>

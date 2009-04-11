@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <Window title="Settings" base_color="40, 40, 40">
-	<Label text="This is the Unknown Horizons settings dialog. Please make sure that you know, what you do."  wrap_text="1" max_size="420,340" base_color="40, 40, 40"/>
+	<Label text="This is the Unknown Horizons settings dialog. Please make sure that you know, what you do." name="settings_dialog_title" wrap_text="1" max_size="420,340" base_color="40, 40, 40"/>
 	<HBox>
 		<VBox>
-			<Label text="Autosave interval" base_color="40, 40, 40"/>
-			<Label text="Number of saved autosaves:" base_color="40, 40, 40"/>
-			<Label text="Number of saved quicksaves:" base_color="40, 40, 40"/>
-			<Label text="Screen resolution:" base_color="40, 40, 40"/>
-			<Label text="Used renderer:" base_color="40, 40, 40"/>
-			<Label text="Color depth:" base_color="40, 40, 40"/>
-			<Label text="Music volume:" base_color="40, 40, 40"/>
-			<Label text="Effects volume:" base_color="40, 40, 40"/>
+			<Label name="autosave_interval_label" text="Autosave interval" base_color="40, 40, 40"/>
+			<Label name="number_of_autosaves_label" text="Number of saved autosaves:" base_color="40, 40, 40"/>
+			<Label name="number_of_quicksaves_label" text="Number of saved quicksaves:" base_color="40, 40, 40"/>
+			<Label name="screen_resolution_label" text="Screen resolution:" base_color="40, 40, 40"/>
+			<Label name="use_renderer_label" text="Used renderer:" base_color="40, 40, 40"/>
+			<Label name="color_depth_label" text="Color depth:" base_color="40, 40, 40"/>
+			<Label name="music_volume_label" text="Music volume:" base_color="40, 40, 40"/>
+			<Label name="effect_volume_label" text="Effects volume:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
 			<HBox>
 				<DropDown min_size="120,0" name="autosaveinterval" base_color="40, 40, 40" />
-				<Label text="minutes" base_color="40, 40, 40"/>
+				<Label text="minutes" name="minutes_label" base_color="40, 40, 40"/>
 			</HBox>
 			<DropDown min_size="120,0" name="savedautosaves" base_color="40, 40, 40" />
 			<DropDown min_size="120,0" name="savedquicksaves" base_color="40, 40, 40" />

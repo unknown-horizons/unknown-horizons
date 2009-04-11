@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container size="336,192" background_image="content/gui/images/background/hud/build_bg.png">
-	<Label position="20,5" text="Inventory:" />
+	<Label position="20,5" name="inventory_label" text="Inventory:" />
 	<Inventory name="inventory" size="316,157" position="20,35"/>
-	<Label position="165, 150" text="Load/Unload:" />
+	<Label position="165, 150" name="load_unload_label" text="Load/Unload:" />
 	<ImageButton name="trade" position="265,150" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 </Container>

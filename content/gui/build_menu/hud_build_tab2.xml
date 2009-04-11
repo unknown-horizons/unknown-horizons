@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Companies tab -->
 <Container name="tab0" size="533,190">
-	<Label position="10,5" text="Companies" />
+	<Label position="10,5" text="Companies" name="CompaniesLabel" />
 	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
 	<!-- Uncomment if implented
 	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
@@ -11,28 +11,28 @@
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
 	<ImageButton name="hunter-1" position="48,25" up_image="content/gui/images/icons/hud/build/hunter.png" hover_image="content/gui/images/icons/hud/build/hunter_h.png" down_image="content/gui/images/icons/hud/build/hunter_h.png" text="" />
-	 <Label position="63,83" text="Hunter" />
+	 <Label position="63,83" text="Hunter" name="HunterLabel" />
 
 	<ImageButton name="fisher-1" position="48,100" up_image="content/gui/images/icons/hud/build/fisherman.png" hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" text="" />
-	 <Label position="68,155" text="Fisher" />
+	 <Label position="68,155" text="Fisher" name="FisherLabel" />
 
 	<ImageButton name="weaver-1" position="113,25" up_image="content/gui/images/icons/hud/build/weaver.png" hover_image="content/gui/images/icons/hud/build/weaver_h.png" down_image="content/gui/images/icons/hud/build/weaver_h.png" text="" />
-	 <Label position="124,83" text="Weaver" />
+	 <Label position="124,83" text="Weaver" name="WeaverLabel" />
 
 	<ImageButton name="boat_builder-1" position="116,100" up_image="content/gui/images/icons/hud/build/boat_builder.png" hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" text="" />
-	 <Label position="116,155" text="Boat Builder" />
+	 <Label position="116,155" text="Boat Builder" name="BoatBuilderLabel" />
 
 	<ImageButton name="lumberjack-1" position="182,25" up_image="content/gui/images/icons/hud/build/lumberjack.png" hover_image="content/gui/images/icons/hud/build/lumberjack_h.png" down_image="content/gui/images/icons/hud/build/lumberjack_h.png" text="" />
-	 <Label position="184,83" text="Lumberjack" />
+	 <Label position="184,83" text="Lumberjack" name="LumberjackLabel" />
 
 	<ImageButton name="tree-1" position="182,100" up_image="content/gui/images/icons/hud/build/tree.png" hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" text="" />
-	 <Label position="202,155" text="Tree" />
+	 <Label position="202,155" text="Tree" name="TreeLabel" />
 
 	<ImageButton name="herder-1" position="252,25" up_image="content/gui/images/icons/hud/build/herdsman.png" hover_image="content/gui/images/icons/hud/build/herdsman_h.png" down_image="content/gui/images/icons/hud/build/herdsman_h.png" text="" />
-	 <Label position="264,83" text="Herder" />
+	 <Label position="264,83" text="Herder" name="HerderLabel" />
 
 
 	<ImageButton name="field-1" position="249,100" up_image="content/gui/images/icons/hud/build/field.png" hover_image="content/gui/images/icons/hud/build/field_h.png" down_image="content/gui/images/icons/hud/build/field_h.png" text="" />
-	 <Label position="267,155" text="Field" />
+	 <Label position="267,155" text="Field" name="FieldLabel" />
 
 </Container>

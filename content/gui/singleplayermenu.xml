@@ -9,8 +9,8 @@
 
 	<HBox position="250,100" name="random" base_color="60,60,60" background_color="60,60,60" opaque="1" border_size="1">
 		<VBox>
-			<Label text="Player:" base_color="40, 40, 40"/>
-			<Label text="Color:" base_color="40, 40, 40"/>
+			<Label name="player_label" text="Player:" base_color="40, 40, 40"/>
+			<Label name="color_label" text="Color:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox min_size="300,300" background_color="200, 200, 200"> <!-- size has to be defined here, so that the dropdown has enough space -->
 			<TextBox name="playername" text="unknown player" size="150,16" base_color="40, 40, 40"/>
@@ -25,8 +25,8 @@
 		<VBox name="savegamedetails_box" position="250,500" min_size="600,0">
 		</VBox>
 	</VBox>
-	<Label text="Main menu:" position="420,700" />
+	<Label name="main_menu_label" text="Main menu:" position="420,700" />
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
-	<Label text="Start game:" position="720,700" />
+	<Label name="start_game_label" text="Start game:" position="720,700" />
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="okay" position="800,700" />
 </Container>

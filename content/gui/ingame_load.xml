@@ -5,7 +5,7 @@
 		<VBox name="savegamedetails_box" min_size="170,200" border_size="1" opaque='0'>
 			<HBox border_size="0">
 				<Spacer/>
-				<Label text=" Details:" border_size="0" min_size="140,0" base_color="40, 40, 40"/>
+				<Label name="details_label" text=" Details:" border_size="0" min_size="140,0" base_color="40, 40, 40"/>
 			</HBox>
 		</VBox>
 	</HBox>

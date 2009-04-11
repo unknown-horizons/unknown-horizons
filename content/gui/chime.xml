@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Window title="Chime The Bell" base_color="40, 40, 40">
-	<Label text="Yeah, you made it..." base_color="40, 40, 40"/>
+	<Label name="made_it_label" text="Yeah, you made it..." base_color="40, 40, 40"/>
 	<HBox>
-		<Label text="But this is a deadlink, sorry."/>
+		<Label name="deadlink_label" text="But this is a deadlink, sorry."/>
 	</HBox>
 	<HBox>
 		<Spacer />

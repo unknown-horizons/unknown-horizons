@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Window title="Changes require restart" base_color="40, 40, 40">
-	<Label text="Some of your changes require a restart of Unknown Horizons." base_color="40, 40, 40"/>
+	<Label text="Some of your changes require a restart of Unknown Horizons." name="require_restart_label" base_color="40, 40, 40"/>
 	<HBox>
 		<Spacer />
 		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>

@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!-- Overview tab for buildings -->
 <Container size="336,192">
-	<Label position="10,5" text="Overview" />
-	<Label position="10,25" text="Name:" /><Label name='name' position="60,25" text="" />
-	<Label position="10,45" text="Health:" /><Label name='health' position="60,45" text="" />
-	<Label position="10,65" text="Running Costs:" /><Label name="running_costs" position="105,65" text=""/>
+	<Label position="10,5" name="OverviewLabel" text="Overview" />
+	<Label position="10,25" name="NameLabel" text="Name:" /><Label name='name' position="60,25" text="" />
+	<Label position="10,45" name="HealthLabel" text="Health:" /><Label name='health' position="60,45" text="" />
+	<Label position="10,65" name="CostsLabel" text="Running Costs:" /><Label name="running_costs" position="105,65" text=""/>
 
 	<HBox position="165,150">
-		<Label text="Buy/Sell Resources:"/>
+		<Label name="BuySellLabel" text="Buy/Sell Resources:"/>
 		<ImageButton name="buysell" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 	</HBox>
 </Container>

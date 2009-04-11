@@ -3,11 +3,11 @@
 	<Label name="islandInventoryLabel" text="That's your island-wide inventory."  wrap_text="1" max_size="320,240" base_color="40, 40, 40"/>
 	<HBox>
 		<VBox>
-			<Label text="Coins:" base_color="40, 40, 40"/>
-			<Label text="Lamb wool:" base_color="40, 40, 40"/>
-			<Label text="Textiles:" base_color="40, 40, 40"/>
-			<Label text="Boards:" base_color="40, 40, 40"/>
-			<Label text="Food:" base_color="40, 40, 40"/>
+			<Label name="CoinsLabel" text="Coins:" base_color="40, 40, 40"/>
+			<Label name="LambWoolLabel" text="Lamb wool:" base_color="40, 40, 40"/>
+			<Label name="TextileLabel" text="Textiles:" base_color="40, 40, 40"/>
+			<Label name="BoardsLabel" text="Boards:" base_color="40, 40, 40"/>
+			<Label name="FoodLabel" text="Food:" base_color="40, 40, 40"/>
 		</VBox>
 		<VBox>
 			<Label text="n/a" name="1" base_color="40, 40, 40"/>

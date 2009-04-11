@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <Container size="336,192" background_image="content/gui/images/background/hud/ingame2.png">
 	<!-- Names -->
-	<Label position="10,5" text="Overview" />
-	<Label position="10,25" text="Name:" /><Label name='name' position="60,25" text="" />
-	<Label position="10,45" text="Health:" /><Label name='health' position="60,45" text="" />
+	<Label position="10,5" name="overview_label" text="Overview" />
+	<Label position="10,25" name="name_label" text="Name:" /><Label name='name' position="60,25" text="" />
+	<Label position="10,45" name="health_label" text="Health:" /><Label name='health' position="60,45" text="" />
 
 	<!-- Picture -->
 	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="120,5" />
 
 	<HBox position="140,150">
-		<Label text="Found new settlement:"/>
+		<Label name="new_settlement_label" text="Found new settlement:"/>
 		<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/settle.png" down_image="content/gui/images/icons/hud/ship/settle_h.png" hover_image="content/gui/images/icons/hud/ship/settle_h.png" border_size="0"/>
 	</HBox>
 </Container>

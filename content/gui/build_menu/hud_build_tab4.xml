@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Infrastructural tab -->
 <Container name="tab0" size="533,190">
-	<Label position="10,5" text="Infrastructural" />
+	<Label position="10,5" text="Infrastructural" name="InfrastructureLabel" />
 	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
 	<!-- Uncomment if implented
 	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
@@ -11,9 +11,9 @@
 	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
 	-->
 	<ImageButton name="street-1" position="48,56" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" text="" />
-	<Label position="65,83" text="Trail" />
+	<Label position="65,83" text="Trail" name="TrailLabel" />
 
 	<ImageButton name="bridge-1" position="113,25" up_image="content/gui/images/icons/hud/build/bridge.png" hover_image="content/gui/images/icons/hud/build/bridge_h.png" down_image="content/gui/images/icons/hud/build/bridge_h.png" text="" />
-	 <Label position="127,83" text="Bridge" />
+	 <Label position="127,83" text="Bridge" name="BridgeLabel" />
 
 </Container>

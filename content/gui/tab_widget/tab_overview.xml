@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
 <Container size="336,192">
-	<Label position="10,5" text="Overview" />
-	<Label position="10,25" text="Name:" /><Label name='name' position="60,25" text="" />
-	<Label position="10,45" text="Health:" /><Label name='health' position="60,45" text="" />
+	<Label position="10,5" name="overview_label" text="Overview" />
+	<Label position="10,25" name="name_label" text="Name:" /><Label name='name' position="60,25" text="" />
+	<Label position="10,45" name="health_label" text="Health:" /><Label name='health' position="60,45" text="" />
 </Container>
