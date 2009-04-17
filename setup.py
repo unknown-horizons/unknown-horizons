@@ -12,7 +12,7 @@ for i in filter(lambda x: len(x[2])  , os.walk('content')):
 for i in os.listdir('po'):
 	if os.path.isdir('po/%s' % i):
 		if os.path.exists('po/%s/LC_MESSAGES/unknownhorizons.mo' % i):
-			data.append( ('share/locale/%s/LC_MESSAGES' % i, ('po/%s/LC_MESSAGES/unknownhorizons.mo' % i)))
+			data.append( ('share/locale/%s/LC_MESSAGES' % i, ('po/%s/LC_MESSAGES/unknownhorizons.mo' % i,)))
 #trans = glob('po/*/LC_MESSAGES/unknownhorizons.mo')
 
 setup(name='UnknownHorizons',
