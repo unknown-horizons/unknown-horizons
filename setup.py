@@ -16,7 +16,7 @@ for i in os.listdir('po'):
 #trans = glob('po/*/LC_MESSAGES/unknownhorizons.mo')
 
 setup(name='UnknownHorizons',
-	  version='2009.0+svn1989',
+	  version='2009.0+svn2050',
 	  description='Realtime Economy Simulation and Strategy Game',
 	  author='The Unknown Horizons Team',
 	  author_email='team@unknown-horizons.org',
