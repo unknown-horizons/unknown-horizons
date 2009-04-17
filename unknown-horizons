@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+import gettext
+
+gettext.install("unknownhorizons", unicode=1)
+
 import os
 from horizons import main
 
@@ -18,9 +22,9 @@ for i in positions:
 
 os.chdir('%s/unknown-horizons' % pos)
 
-import gettext
 
-gettext.install("unknownhorizons", "po", unicode=1)
+
+print _("Launching Unknown Horizons")
 
 main.debug = False
 
