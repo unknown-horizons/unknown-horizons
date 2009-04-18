@@ -24,7 +24,7 @@ from buildable import BuildableSingle
 from horizons.world.unitproducer import UnitProducer
 from horizons.world.consumer import Consumer
 
-class BoatBuilder(Building, Selectable, BuildableSingle, Consumer, UnitProducer):
+class BoatBuilder(Selectable, BuildableSingle, UnitProducer, Building):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)

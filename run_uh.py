@@ -84,6 +84,9 @@ def find_FIFE():
 
 	if debug:
 		print "Restarting with proper LD_LIBRARY_PATH..."
+		print "LD_LIBRARY_PATH:", os.environ['LD_LIBRARY_PATH']
+		print "PATH:", os.environ['PATH']
+		print "PYTHONPATH", os.environ['PYTHONPATH']
 
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]

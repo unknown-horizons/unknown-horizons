@@ -23,6 +23,8 @@
 from production import SecondaryProducer
 from horizons.util.point import Point
 from horizons.command.unit import CreateUnit
+from building.building import Building
+import horizons.main
 
 class UnitProducer(SecondaryProducer):
 
@@ -110,12 +112,12 @@ class UnitProductionLine(object):
 	def __init__(self, id):
 		super(UnitProductionLine, self).__init__()
 		self.id = id
-		self.time = horizons.main.db("SELECT time FROM data.unit_production_line WHERE id=?", id)
-		self.unit = horizons.main.db("SELECT unit FROM data.unit_production_line WHERE id=?", id)
+		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid=?", id)
+		self.unit = horizons.main.db("SELECT unit FROM data.unit_production WHERE production_line=?", id)
 		self.production = {}
 		self.unit = {}
 		for unit, amount in \
-			horizons.main.db("SELECT unit, amount FROM data.production WHERE production_line=?", id):
+			horizons.main.db("SELECT unit, amount FROM data.unit_production WHERE production_line=?", id):
 			self.unit[unit] = amount
 		for res, amount in \
 			horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line=?", id):
