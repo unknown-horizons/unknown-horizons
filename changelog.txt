@@ -3,6 +3,7 @@ Unknown Horizons
 -----------------------------------------------------
 2009-XX-XX: Milestone 2009.1 (to be released)
 * General
+  * New: Boadbuilder class
   * Fix: Building speed has been improved, lumberjack preview is now almost lagfree.
   * Fix: Loading speed has been improved
   * Fix: Tearing buildings no longer crashes the game
