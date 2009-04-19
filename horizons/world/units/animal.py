@@ -27,10 +27,11 @@ import horizons.main
 from horizons.world.production import SecondaryProducer
 from horizons.world.pathfinding import Movement
 from horizons.util import Rect, Point, WorldObject
-from unit import Unit
-from collector import BuildingCollector
-from nature import GrowingUnit
-from collector import Job
+from horizons.world.units.unit import Unit
+from horizons.world.units.nature import GrowingUnit
+
+from collectors import BuildingCollector
+from collectors.collector import Job
 
 class Animal(BuildingCollector, GrowingUnit, SecondaryProducer):
 	grazingTime = 2
