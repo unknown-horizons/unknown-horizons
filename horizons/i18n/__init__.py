@@ -31,7 +31,7 @@ def set_title(widget, title):
 def load_xml_translated(filename):
     try:
         untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
-    except IOError, e:
+    except (IOError,ValueError), e:
         print e
         untranslated = horizons.main.fife.pychan.loadXML(filename)
     
