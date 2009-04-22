@@ -3,6 +3,7 @@
 	<Label text="This is the Unknown Horizons settings dialog. Please make sure that you know, what you do." name="settings_dialog_title" wrap_text="1" max_size="420,340" base_color="40, 40, 40"/>
 	<HBox>
 		<VBox>
+                        <Label name="language_label" text="Language:" base_color="40, 40, 40"/>
 			<Label name="autosave_interval_label" text="Autosave interval" base_color="40, 40, 40"/>
 			<Label name="number_of_autosaves_label" text="Number of saved autosaves:" base_color="40, 40, 40"/>
 			<Label name="number_of_quicksaves_label" text="Number of saved quicksaves:" base_color="40, 40, 40"/>
@@ -10,9 +11,10 @@
 			<Label name="use_renderer_label" text="Used renderer:" base_color="40, 40, 40"/>
 			<Label name="color_depth_label" text="Color depth:" base_color="40, 40, 40"/>
 			<Label name="music_volume_label" text="Music volume:" base_color="40, 40, 40"/>
-			<Label name="effect_volume_label" text="Effects volume:" base_color="40, 40, 40"/>
+			<Label name="effect_volume_label" text="Effects volume:" base_color="40, 40, 40"/>                        
 		</VBox>
 		<VBox>
+                        <DropDown min_size="120,0" name="language" base_color="40, 40, 40"/>
 			<HBox>
 				<DropDown min_size="120,0" name="autosaveinterval" base_color="40, 40, 40" />
 				<Label text="minutes" name="minutes_label" base_color="40, 40, 40"/>
