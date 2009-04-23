@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Window title="Wert" base_color="40, 40, 40">
+<Container size="800,600" >
+             <Icon size="100,100" image="path"/>
+             <Icon size="50,50" up_image="path"/>
+             <ImageButton size="50,50" up_image="path"/>
+             <ImageButton size="50,50" up_image="path"/>
+             <ImageButton size="50,50" up_image="path"/>
+             <ImageButton size="50,50" up_image="path"/>
+<Slider size="120,20" name="" orientation="0" scale_start="0.0" scale_end="0.5" base_color="40, 40, 40" />
+<Label text="Ship_name"/>
+<ScrollArea size="400,200">
+</ScrollArea>
+
+        </Container>
+        <HBox name="hbox1">
+        <Button text="Boatbuilder"/>
+        </HBox>
+        <HBox name="hbox2">
+        <Button text="Build ship"/>
+        </HBox>
+        <HBox name="hbox3">
+        <Button text=""/>
+        </HBox>
+        <HBox name="hbox4">
+        <Button text=""/>
+        </HBox>
+        <HBox name="hbox5">
+        <Button text=""/>
+        </HBox>
+        <HBox name="hbox6">
+        <Button text=""/>
+        </HBox>
+</Window>
