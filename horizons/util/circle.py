@@ -19,19 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
 
-from living import livingProperty
-from stablelist import stablelist
-from color import Color
 from point import Point
-from rect import Rect
-from circle import Circle
-from changelistener import Changelistener
-from weakmethod import WeakMethod
-from weaklist import WeakList
-from worldobject import WorldObject
-from weakmethodlist import WeakMethodList
-from encoder import encode, decode
-from loader import ActionSetLoader
-from callback import Callback
+
+class Circle(object):
+	def __init__(self, center, radius):
+		assert isinstance(center, Point)
+		self.center = center
+		self.radius = radius
+
+	def get_coordinates(self):
+		"""Returns all coordinates, that are in the circle"""
+		return [ (x,y) for \
+						 x in range(self.center.x-self.radius, self.center.x+self.radius+1) for \
+						 y in range(self.center.y-self.radius, self.center.y+self.radius+1) if \
+						 self.center.distance((x,y)) <= self.radius ]
+
+from encoder import register_classes
+register_classes(Circle)

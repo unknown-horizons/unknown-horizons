@@ -26,7 +26,7 @@ import horizons.main
 
 from horizons.world.production import SecondaryProducer
 from horizons.world.pathfinding import Movement
-from horizons.util import Rect, Point, WorldObject
+from horizons.util import Rect, Point, WorldObject, Circle
 from unit import Unit
 from collectors import Collector, BuildingCollector, Job
 from nature import GrowingUnit
@@ -51,7 +51,43 @@ class Animal(GrowingUnit, SecondaryProducer):
 class WildAnimal(Animal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
 	These animals can be hunted."""
-	pass
+	walking_range = 5
+
+	def __init__(self, island, start_hidden=False, **kwargs):
+		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
+		self.__init(island)
+
+	def __init(island):
+		self._home_island = weakref.ref(island)
+		self.home_island.wild_animals.append(self)
+
+	@property
+	def home_island(self):
+		return self._home_island()
+
+	def get_home_inventory(self):
+		return self.inventory
+
+	def get_buildings_in_range(self):
+		buildings = []
+		from horizons.world.provider import Provider
+		# collect all providers in the surrounding circle (=animal range)
+		for tile in self.home_island.get_surrounding_tiles(self.position, self.walking_range):
+			if isinstance(tile.object, Provider):
+				buildings.append(tile.object)
+		return buildings
+
+
+	def get_job(self):
+		pass
+
+
+
+	def reroute(self):
+		# when target is gone, just search another job
+		self.search_job()
+
+
 
 class FarmAnimal(Animal, BuildingCollector):
 	"""Animals that are bred and live in the surrounding area of a farm, such as sheep.

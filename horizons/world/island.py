@@ -24,7 +24,7 @@ import weakref
 import horizons.main
 
 from horizons.dbreader import DbReader
-from horizons.util import WorldObject, Point, Rect
+from horizons.util import WorldObject, Point, Rect, Circle
 from settlement import Settlement
 
 class Island(WorldObject):
@@ -71,6 +71,7 @@ class Island(WorldObject):
 		self.grounds = []
 		self.ground_map = {}
 		self.buildings = []
+		self.wild_animals = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
 			ground = horizons.main.session.entities.grounds[ground_id](self.origin.x + rel_x, self.origin.y + rel_y)
 			# Each ground has a set of attributes:
@@ -278,6 +279,10 @@ class Island(WorldObject):
 		origin = path.position.origin
 		del self.path_nodes[ (origin.x, origin.y) ]
 
-	def get_surrounding_tiles(self, point):
-		tile_offsets = ((1, 0), (-1, 0), (0, 1), (0, -1))
-		return [self.get_tile(point.offset(*offset)) for offset in tile_offsets]
+	def get_surrounding_tiles(self, point, radius = 1):
+		tiles = []
+		for position in Circle(point, radius).get_coordinates():
+			tile = self.get_tile(Point(position))
+			if tile is not None:
+				tiles.append(tile)
+		return tiles

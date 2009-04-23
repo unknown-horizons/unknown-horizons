@@ -158,13 +158,17 @@ class World(LivingObject):
 
 			# add a random number of trees to the gameworld
 			if int(self.properties.get('RandomTrees', 1)) == 1:
-				print "Adding trees to the world..."
+				print "Adding trees and animals to the world..."
 				import random
 				from horizons.command.building import Build
 				for island in self.islands:
 					for tile in island.ground_map.keys():
 						if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
 							horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
+						"""
+						if random.randint(0, 10) < 2:
+							horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
+						"""
 					for building in island.buildings:
 						building.production_step()
 				print "Done."

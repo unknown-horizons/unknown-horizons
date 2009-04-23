@@ -74,6 +74,12 @@ class BuildingCollector(Collector):
 			self.add_move_callback(self.reached_home)
 			self.show()
 
+	def get_home_inventory(self):
+		return self.home_building().inventory
+
+	def get_colleague_collectors(self):
+		return self.home_building()._AbstractConsumer__collectors
+
 	def get_job(self):
 		"""Returns the next job or None"""
 		if horizons.main.debug:
@@ -93,30 +99,15 @@ class BuildingCollector(Collector):
 			   building.inventory is self.home_building().inventory:
 				continue
 			for res in collectable_res:
+				""" it is unknown what this code does, so i commented it out:
 				if isinstance(building, PrimaryProducer) and \
-				   building.active_production_line is not None and \
-				   building.production[building.active_production_line].production.get(res,1) < 0:
+					 building.active_production_line is not None and \
+					 building.production[building.active_production_line].production.get(res,1) < 0:
 					break
-				res_amount = building.inventory[res]
-				if res_amount > 0:
-					# get sum of picked up resources by other collectors for res
-					total_pickup_amount = sum([ collector.job.amount for collector in \
-												building._Provider__collectors if \
-												collector.job.res == res ])
-					# check how much will be delivered
-					total_registered_amount_consumer = sum([ collector.job.amount for \
-															 collector in \
-															 self.home_building()._AbstractConsumer__collectors if \
-															 collector.job.res == res ])
-					# check if there are resources left to pickup
-					max_consumer_res_free = self.home_building().inventory.get_limit(res)-\
-										  (total_registered_amount_consumer+\
-										   self.home_building().inventory[res])
-					if res_amount > total_pickup_amount and max_consumer_res_free > 0:
-						# add a new job
-						jobs.append(Job(building, res, min(res_amount - \
-														   total_pickup_amount,\
-														   max_consumer_res_free)))
+				"""
+				job = self.check_possible_job_target(building, res)
+				if job is not None:
+						jobs.append(job)
 
 		# sort job list
 		jobs = self.sort_jobs(jobs)

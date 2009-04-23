@@ -146,9 +146,51 @@ class Collector(StorageHolder, Unit):
 		else:
 			self.begin_current_job()
 
+	def get_home_inventory(self):
+		"""Returns inventory where collected res will be stored.
+		This could be the inventory of a home_building, or it's own.
+		"""
+		raise NotImplementedError
+
+	def get_colleague_collectors(self):
+		"""Returns a list of collectors, that work for the same "inventory"."""
+		return []
+
 	def get_job(self):
 		"""Returns the next job or None"""
 		raise NotImplementedError
+
+	def check_possible_job_target(self, target, res):
+		"""Checks out if we could get res from target.
+		@param target: possible target. buildings are supported, support for more can be added.
+		@param res: resource id
+		@return: instance of Job or None, if we can't collect anything
+		"""
+		res_amount = target.inventory[res]
+		if res_amount <= 0:
+			return None
+
+		inventory = self.get_home_inventory()
+
+		# get sum of picked up resources by other collectors for this res
+		total_pickup_amount = sum([ collector.job.amount for collector in \
+									target._Provider__collectors if \
+									collector.job.res == res ])
+		if total_pickup_amount > res_amount:
+			return None
+
+		# check if other collectors get this resource, because our inventory could
+		# get full if they arrive.
+		total_registered_amount_consumer = sum([ collector.job.amount for collector in \
+												 self.get_colleague_collectors() if collector.job.res == res ])
+		# check if there are resources left to pickup
+		inventory_space_for_res = inventory.get_limit(res) - \
+														(total_registered_amount_consumer + inventory[res])
+		if inventory_space_for_res <= 0:
+			return None
+
+		# create a new job
+		return Job(target, res, min(res_amount - total_pickup_amount, inventory_space_for_res))
 
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""

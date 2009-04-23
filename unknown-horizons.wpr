@@ -4,13 +4,7 @@
 # Wing IDE project file                                          #
 ##################################################################
 [project attributes]
-proj.directory-list = [{'dirloc': loc('game'),
-                        'excludes': [u'ext/simplejson'],
-                        'filter': 'Python Files',
-                        'include_hidden': 0,
-                        'recursive': 1,
-                        'watch_for_changes': 1},
-                       {'dirloc': loc('content/gui'),
+proj.directory-list = [{'dirloc': loc('content/gui'),
                         'excludes': (),
                         'filter': '*',
                         'include_hidden': 0,
