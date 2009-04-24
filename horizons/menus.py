@@ -31,6 +31,7 @@ from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import Socket, ServerConnection, ClientConnection
 from horizons.savegamemanager import SavegameManager
 from i18n import load_xml_translated
+
 class Menus(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
@@ -311,11 +312,10 @@ class Menus(object):
 		horizons.main.session.speed_unpause()
 		self.on_escape = self.show_pause
 
-	def show_single(self, showRandom = False, showCampaign = True, showLoad = False):
+	def show_single(self, showRandom = False, showCampaign = True):
 		"""
 		@param showRandom: Bool if random games menu is to be shown.
 		@param showCampaign: Bool if  campaigngame menu is to be shown.
-		@param showLoad: Bool if saved games menu is to be shown.
 		"""
 		self.hide() # Hide old gui
 		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
@@ -331,7 +331,7 @@ class Menus(object):
 			#print self.current
 			#print self.current.findChild(name='load')
 			self.current.removeChild(self.current.findChild(name="load"))
-			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
+			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True)
 			# Reenable if loading works
 			#eventMap['showLoad'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
 			self.current.distributeInitialData({
@@ -342,15 +342,21 @@ class Menus(object):
 			})
 		else:
 			self.current.findChild(name="random")._parent.removeChild(self.current.findChild(name="random"))
-			self.current.files, display = self.get_maps(showCampaign, showLoad)
+			eventMap['showRandom'] = lambda: self.show_popup('Not yet Implemented',"Sorry, the random map feature isn't yet implemented")
+
+			# get the map files and their display names
+			self.current.files, maps_display = self.get_maps(showCampaign, showLoad=False)
 			self.current.distributeInitialData({
-				'maplist' : display,
+				'maplist' : maps_display,
 			})
-			if len(display) > 0:
+			if len(maps_display) > 0:
+				# select first entry
 				self.current.distributeData({
 					'maplist' : 0
 				})
 				eventMap["maplist"] = self.create_show_savegame_details(self.current, self.current.files, 'maplist')
+			"""
+			NOTE: the following code is probably deprecated. showLoad doesn't exist here any more
 			if showCampaign:
 				pass
 				# Reenable if loading works
@@ -360,12 +366,12 @@ class Menus(object):
 				# Reenable if loading works
 				#eventMap['showRandom'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
 				eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
+			"""
 		self.current.mapEvents(eventMap)
 
 		self.current.distributeData({
 			'showRandom' : showRandom,
 			'showCampaign' : showCampaign,
-			'showLoad' : showLoad,
 		})
 
 		self.current.show()
