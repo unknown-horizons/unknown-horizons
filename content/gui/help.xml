@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Window title="Help" base_color="40, 40, 40">
-	<ScrollArea size="400,400" vertical_scrollbar="1" base_color="40, 40, 40">
+	<ScrollArea size="410,400" horizontal_scrollbar="0" base_color="40, 40, 40">
 		<TextBox name="helpBox" filename="content/infotext.txt"/>
 	</ScrollArea>
 	<HBox>
