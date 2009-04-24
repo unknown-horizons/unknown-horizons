@@ -332,8 +332,6 @@ class Menus(object):
 			#print self.current.findChild(name='load')
 			self.current.removeChild(self.current.findChild(name="load"))
 			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True)
-			# Reenable if loading works
-			#eventMap['showLoad'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
 			self.current.distributeInitialData({
 				'playercolor' : [ i.name for i in Color ]
 			})
@@ -605,7 +603,6 @@ class Menus(object):
 		"""
 		showRandom = self.current.collectData('showRandom')
 		showCampaign = self.current.collectData('showCampaign')
-		showLoad = self.current.collectData('showLoad')
 
 		if showRandom:
 			playername = self.current.collectData('playername')
