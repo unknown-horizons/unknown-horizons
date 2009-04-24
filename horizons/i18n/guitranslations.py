@@ -165,7 +165,6 @@ text_translations = {
     'singleplayermenu.xml' :
         {'showRandom'                : _('Random '),
          'showCampaign'              : _('Campaign '),
-         'showLoad'                  : _('Load '),
          'player_label'              : _('Player:'),
          'color_label'               : _('Color:'),
          'playername'               : _('unknown player'),
