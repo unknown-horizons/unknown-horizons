@@ -1,34 +1,30 @@
 <?xml version="1.0"?>
-<Window title="Wert" base_color="40, 40, 40">
-<Container size="800,600" >
-             <Icon size="100,100" image="path"/>
-             <Icon size="50,50" up_image="path"/>
-             <ImageButton size="50,50" up_image="path"/>
-             <ImageButton size="50,50" up_image="path"/>
-             <ImageButton size="50,50" up_image="path"/>
-             <ImageButton size="50,50" up_image="path"/>
-<Slider size="120,20" name="" orientation="0" scale_start="0.0" scale_end="0.5" base_color="40, 40, 40" />
-<Label text="Ship_name"/>
-<ScrollArea size="400,200">
-</ScrollArea>
+<Window title="Werft">
+<Container  border_size="0" size="320,285">   
+ <!-- <VBox>
+    <ImageButton name="image of ship" up_image="/content/gui/images/icons/oa_startmenu_bell_grey.png" size="70,70" position="50,50"/>
+    <ImageButton name="wood" up_image="/content/gui/images/icons/oa_startmenu_bell.png" position="150,100"/>
+    <ImageButton name="clothes" up_image="/content/gui/images/icons/oa_startmenu_bell.png" position="150,125"/>
+    <ImageButton name="canons" up_image="/content/gui/images/icons/oa_startmenu_bell.png" position="150,150"/>
+    <ImageButton name="" up_image="/content/gui/images/icons/oa_startmenu_bell.png" position="150,175"/>
+  </VBox> -->
+  <VBox>
+    <ScrollArea horizontal_scrollbar="0">
+      <TextBox name="ship_description" min_size="150,75" color="99,FF,00"/>
+    </ScrollArea>
+  </VBox>
+  <HBox position="5,190">
+    <VBox>
+      <ImageButton up_image="/content/gui/images/icons/oa_startmenu_bell.png"/>
+      <ImageButton up_image="/content/gui/images/icons/oa_startmenu_bell.png"/>
+    </VBox>
+    <VBox>
+      <Slider size="125,20" name="persons"  orientation="0" scale_start="0.0" scale_end="1.0"/>
+      <Spacer/>
+      <Slider size="125,20" name="canons"  orientation="0" scale_start="0.0" scale_end="1.0"/>
+    </VBox>
+  </HBox>
+  <ImageButton name="build" up_image="/content/gui/images/icons/oa_startmenu_log.png" position="250,210"/>
+</Container>
+</Window>       
 
-        </Container>
-        <HBox name="hbox1">
-        <Button text="Boatbuilder"/>
-        </HBox>
-        <HBox name="hbox2">
-        <Button text="Build ship"/>
-        </HBox>
-        <HBox name="hbox3">
-        <Button text=""/>
-        </HBox>
-        <HBox name="hbox4">
-        <Button text=""/>
-        </HBox>
-        <HBox name="hbox5">
-        <Button text=""/>
-        </HBox>
-        <HBox name="hbox6">
-        <Button text=""/>
-        </HBox>
-</Window>
