@@ -55,8 +55,11 @@ from gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
 
-def start():
+
+def start(command_line_arguments):
 	"""Starts the horizons.
+	@param command_line_arguments: dict with command line arguments. possible values:
+									start_dev_map: (bool), if True, don't show menu but start the development map
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets
@@ -91,7 +94,11 @@ def start():
 	session = None
 	gui = Menus()
 
-	gui.show_main()
+	if command_line_arguments['start_dev_map']:
+		first_map = gui.get_maps()[0][0]
+		start_singleplayer(first_map)
+	else:
+		gui.show_main()
 
 	fife.run()
 

@@ -110,7 +110,8 @@ if __name__ == '__main__':
 
 	# parse arguments
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], "hd", ["help", "debug", "fife-in-library-path"])
+		opts, args = getopt.getopt(sys.argv[1:], "hd", \
+															 ["help", "debug", "fife-in-library-path", "start-dev-map"])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
@@ -119,6 +120,8 @@ if __name__ == '__main__':
 	debug = False
 	fife_in_library_path = False
 
+	command_line_arguments = { "start_dev_map": False }
+
 	# apply arguments
 	for o, a in opts:
 		if o in ("-h", "--help"):
@@ -126,9 +129,13 @@ if __name__ == '__main__':
 			exit(1)
 		elif o in ("-d", "--debug"):
 			debug = True
-		elif o == ("--fife-in-library-path"):
+		elif o == "--fife-in-library-path":
 			# this is currently only for internal use, therefore not in the help message
 			fife_in_library_path = True
+		elif o == "--start-dev-map":
+			# automatically starts development map, also not in help message
+			command_line_arguments['start_dev_map'] = True
+
 
 	#chdir to Unknown Horizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
@@ -155,4 +162,4 @@ if __name__ == '__main__':
 	horizons.main.debug = debug
 
 	#start unknownhorizons
-	horizons.main.start()
+	horizons.main.start(command_line_arguments)
