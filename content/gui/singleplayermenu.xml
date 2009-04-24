@@ -5,7 +5,7 @@
 
 	<RadioButton position="100,100" size="32,32" name="showRandom" text="Random  " />
 	<RadioButton position="100,150" size="32,32" name="showCampaign" text="Campaign  " />
-	<RadioButton position="100,200" size="32,32" name="showLoad" text="Load  " />
+	<!--<RadioButton position="100,200" size="32,32" name="showLoad" text="Load  " /> does no need here anymore-->
 
 	<HBox position="250,100" name="random" base_color="60,60,60" background_color="60,60,60" opaque="1" border_size="1">
 		<VBox>
@@ -18,13 +18,13 @@
 		</VBox>
 	</HBox>
 
-	<VBox position="250,100" name="load">
+	<!-- <VBox position="250,100" name="load">
 		<ScrollArea size="600,400"  horizontal_scrollbar="0" position="250,100">
-			<ListBox name="maplist" min_size="600,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
-		</ScrollArea>
+			<ListBox name="maplist" min_size="600,600" /> --> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
+		<!-- </ScrollArea>
 		<VBox name="savegamedetails_box" position="250,500" min_size="600,0">
 		</VBox>
-	</VBox>
+	</VBox> -->
 	<Label name="main_menu_label" text="Main menu:" position="420,700" />
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
 	<Label name="start_game_label" text="Start game:" position="720,700" />
