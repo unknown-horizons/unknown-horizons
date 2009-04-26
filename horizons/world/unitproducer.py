@@ -31,7 +31,7 @@ class UnitProducer(SecondaryProducer):
 	def __init__(self, **kwargs):
 		super(UnitProducer, self).__init__(**kwargs)
 		self.output_point = None
-		self._init()
+		# _init is autocalled by the primary producer
 
 	def _init(self):
 		# production_queue holds the ids of the production_lines
@@ -56,11 +56,8 @@ class UnitProducer(SecondaryProducer):
 
 
 	def production_step(self):
-		print "UnitProducer production_step", self.getId()
 		if horizons.main.debug:
 			print "UnitProducer production_step", self.getId()
-		print sum(self._PrimaryProducer__used_resources.values())
-		print -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)
 		if sum(self._PrimaryProducer__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
@@ -116,7 +113,6 @@ class UnitProductionLine(object):
 
 	def __init__(self, id):
 		super(UnitProductionLine, self).__init__()
-		print "Adding production line:", id
 		self.id = id
 		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid=?", id)[0][0]
 		self.production = {}

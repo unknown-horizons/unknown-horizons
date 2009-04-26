@@ -99,7 +99,7 @@ class BuildingCollector(Collector):
 			   building.inventory is self.home_building().inventory:
 				continue
 			for res in collectable_res:
-				#it is unknown what this code does, so i commented it out:
+				# Prevent the collector from picking up resources from building needing it's resources for production
 				if isinstance(building, PrimaryProducer) and \
 					 building.active_production_line is not None and \
 					 building.production[building.active_production_line].production.get(res,1) < 0:

@@ -163,7 +163,9 @@ class PrimaryProducer(Provider):
 
 		# Make sure we bail out if we have not yet collected everything
 		for res, amount in self.production[self.active_production_line].production.items():
-			if amount < 0 and res in self.__used_resources and self.__used_resources[res] < -amount:
+			if amount < 0 and (
+				(res in self.__used_resources and self.__used_resources[res] < -amount) or
+				res not in self.__used_resources):
 				return
 		self.removeChangeListener(self.check_production_startable)
 
