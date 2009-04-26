@@ -28,7 +28,7 @@ import horizons.main
 from horizons.world.storageholder import StorageHolder
 from horizons.util import Rect, Point, WorldObject
 from horizons.world.pathfinding import Movement
-from horizons.world.production import PrimaryProducer
+from horizons.world.production import PrimaryProducer, SecondaryProducer
 from horizons.ext.enum import Enum
 
 from collector import Collector, Job
@@ -99,12 +99,11 @@ class BuildingCollector(Collector):
 			   building.inventory is self.home_building().inventory:
 				continue
 			for res in collectable_res:
-				""" it is unknown what this code does, so i commented it out:
+				#it is unknown what this code does, so i commented it out:
 				if isinstance(building, PrimaryProducer) and \
 					 building.active_production_line is not None and \
 					 building.production[building.active_production_line].production.get(res,1) < 0:
 					break
-				"""
 				job = self.check_possible_job_target(building, res)
 				if job is not None:
 						jobs.append(job)

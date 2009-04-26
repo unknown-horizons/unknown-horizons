@@ -140,13 +140,16 @@ class PrimaryProducer(Provider):
 			for res, amount in self.production[self.active_production_line].production.items():
 				#we have something to work with, if the res is needed, we have something in the inv and we dont already have used everything we need from that resource
 				if amount < 0 and self.inventory[res] > 0 and self.__used_resources.get(res, 0) < -amount:
-					usable_resources[res] = -amount - self.__used_resources.get(res, 0)
+					# Make sure there are enough resources in the inventory
+					if self.inventory[res] > -amount - self.__used_resources.get(res, 0):
+						usable_resources[res] = -amount - self.__used_resources.get(res, 0)
+					else:
+						usable_resources[res] = self.inventory[res]
 			if len(usable_resources) == 0:
 				return
 			time = int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)))
 		else:
 			time = 0
-		self.removeChangeListener(self.check_production_startable)
 		for res, amount in usable_resources.items():
 			if res in self.__used_resources:
 				self.__used_resources[res] += amount
@@ -157,6 +160,12 @@ class PrimaryProducer(Provider):
 			# remove the needed resources from the inventory
 			remnant = self.inventory.alter(res, -amount)
 			assert(remnant == 0)
+
+		# Make sure we bail out if we have not yet collected everything
+		for res, amount in self.production[self.active_production_line].production.items():
+			if amount < 0 and res in self.__used_resources and self.__used_resources[res] < -amount:
+				return
+		self.removeChangeListener(self.check_production_startable)
 
 		# TODO: make following lines readable and document them.
 		horizons.main.session.scheduler.add_new_object(self.production_step, self, 16 *

@@ -34,12 +34,11 @@ class UnitProducer(SecondaryProducer):
 		self._init()
 
 	def _init(self):
-		# Make sure the unitproducer can't store to many resources
-		self.inventory.limit = 6
 		# production_queue holds the ids of the production_lines
 		# currently waiting for construction.
 		self.production_queue = []
 
+		self._PrimaryProducer__used_resources = {}
 		# Load production lines
 		self.production = {}
 		for (id,) in horizons.main.db("SELECT rowid FROM data.production_line where %(type)s = ?"\
@@ -53,17 +52,22 @@ class UnitProducer(SecondaryProducer):
 		if isinstance(self, Building):
 			self.toggle_costs()  # needed to get toggle to the right position
 
+		self.produce(15)
+
 
 	def production_step(self):
+		print "UnitProducer production_step", self.getId()
 		if horizons.main.debug:
 			print "UnitProducer production_step", self.getId()
-		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
+		print sum(self._PrimaryProducer__used_resources.values())
+		print -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)
+		if sum(self._PrimaryProducer__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
 					self.inventory.alter(res, amount)
-			self.__used_resources = {}
+			self._PrimaryProducer__used_resources = {}
 			# ONLY DIFFERENCE TO PRIMARY PRODUCER HERE
-			self._create_unit()
+			self.create_unit()
 		if "idle_full" in horizons.main.action_sets[self._action_set_id].keys():
 			self.act("idle_full", self._instance.getFacingLocation(), True)
 		else:
@@ -81,21 +85,22 @@ class UnitProducer(SecondaryProducer):
 
 	def create_unit(self):
 		"""Creates the specified unit at the buildings output point."""
+		if horizons.main.debug:
+			print "CREATING UNIT!", id
 		if self.output_point is None:
-			for point in self.position.get_radius_coordinates(2):
-				tile = self.island.get_tile(Point(point[0],point[1]))
-				if isinstance(tile, horizons.main.session.entities.grounds[3]) or isinstance(tile, horizons.main.session.entities.grounds[2]):
+			for point in self.position.get_radius_coordinates(3):
+				if point in horizons.main.session.world.water:
 					self.output_point = point
 					break
 
 		# Create the new units at the output_point
-		for unit, amount in self.production[self.active_production_line].unit:
-			horizons.main.session.entities.units[id](self.x, self.y, self.owner)
+		for unit in self.production[self.active_production_line].unit.values():
+			horizons.main.session.entities.units[unit](x=self.output_point[0], y=self.output_point[1], owner=self.owner)
 
 
 	def produce(self, prod_line):
 		"""Called to start the UnitProducer's unit creation process.
-		This should be used to start a production after the user has specified it.
+		This should be used to start a production after the user has specified it.\n
 		@param prod_line: id of the production line that is to be used.
 		"""
 		assert(prod_line in self.production.keys(), "ERROR: You specified an invalid production line!")
@@ -111,14 +116,14 @@ class UnitProductionLine(object):
 
 	def __init__(self, id):
 		super(UnitProductionLine, self).__init__()
+		print "Adding production line:", id
 		self.id = id
-		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid=?", id)
-		self.unit = horizons.main.db("SELECT unit FROM data.unit_production WHERE production_line=?", id)
+		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid=?", id)[0][0]
 		self.production = {}
 		self.unit = {}
-		for unit, amount in \
+		for unit_id, amount in \
 			horizons.main.db("SELECT unit, amount FROM data.unit_production WHERE production_line=?", id):
-			self.unit[unit] = amount
+			self.unit[unit_id] = amount
 		for res, amount in \
 			horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line=?", id):
-			self.production[amount] = amount
+			self.production[res] = amount

@@ -23,39 +23,29 @@ from building import Building, Selectable
 from buildable import BuildableSingle
 from horizons.world.unitproducer import UnitProducer
 from horizons.world.consumer import Consumer
+from horizons.util.point import Point
+import horizons.main
 
 class BoatBuilder(Selectable, BuildableSingle, UnitProducer, Building):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
-
-
-	@classmethod
-	def isSettlementBuildRequirementSatisfied(cls, x, y, island, ship, **state):
-		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
-		#if multi branch office allowed:
-		#if len(settlements) == 1:
-		#	return settlements.pop()
-		if len(settlements) != 0:
-			return {'buildable' : False}
-		#ship check
-		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + \
-		   (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
-			return {'buildable' : False}
-		return {'settlement' : None}
+		self.inventory.limit = 10
 
 	@classmethod
-	def isGroundBuildRequirementSatisfied(cls, x, y, island, **state):
+	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		#todo: check cost line
 		coast_tile_found = False
 		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			#print "x y:", xx, yy
 			tile = island.get_tile(Point(xx,yy))
 			classes = tile.__class__.classes
-			#print classes
 			if 'coastline' in classes:
 				coast_tile_found = True
 			elif 'constructible' not in classes:
-				return {'buildable' : False}
+				return None
 
-		return {} if coast_tile_found else {'buildable' : False}
+		return {} if coast_tile_found else None
+
+	def create_collector(self):
+		"""Add a FieldCollector"""
+		horizons.main.session.entities.units[8](self)
