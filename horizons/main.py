@@ -75,8 +75,19 @@ def start(command_line_arguments):
 	settings.sound.setDefaults(volume_effects = 1.0)
 	settings.addCategorys('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.unknown-horizons.org/servers', url_master = 'master.unknown-horizons.org', favorites = [])
+	settings.addCategorys('language')
+	settings.language.setDefaults(position='po', name='')
 	settings.addCategorys('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
+
+	from gettext import translation
+	if settings.language.name != '':
+		trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
+	else:
+		trans = translation('unknownhorizons')
+	trans.install(unicode=1)
+	from i18n import update_all_translations
+	update_all_translations()
 
 	if settings.client_id is None:
 		settings.client_id = "".join("-" if c in (8,13,18,23) else random.choice("0123456789abcdef") for c in xrange(0,36))

@@ -19,7 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-text_translations = {
+text_translations = dict()
+
+def set_translations():
+    global text_translations
+    text_translations = {
     'hud_branch.xml' :
         {'buildingNameLabel'         : _('Branch office (Branch class ROMAN)')},
     'popupbox.xml' :
@@ -120,7 +124,8 @@ text_translations = {
          'color_depth_label'         : _('Color depth:'),
          'music_volume_label'        : _('Music volume:'),
          'effect_volume_label'       : _('Effects volume'),
-         'minutes_label'             : _('minutes')},
+         'minutes_label'             : _('minutes'),
+         'language_label'            : _('Language:')},
     'ingame_save.xml' :
         {'enter_filename_label'      : _('Enter filename:'),
          'deleteButton'              : _('Delete'),

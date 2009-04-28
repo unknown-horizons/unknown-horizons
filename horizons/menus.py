@@ -135,8 +135,16 @@ class Menus(object):
 			resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 		except:
 			resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
+
+		from i18n.utils import find_available_languages
+
+		languages_map = dict(reversed(find_available_languages()))
+		languages_map[_('System default')] = ''
+		#languages_map['C'] = ''
+
 		dlg = self.widgets['settings']
 		dlg.distributeInitialData({
+			'language' : languages_map.keys(),
 			'autosaveinterval' : range(0, 60, 2),
 			'savedautosaves' : range(1,30),
 			'savedquicksaves' : range(1,30),
@@ -186,7 +194,7 @@ class Menus(object):
 			return
 
 		# the following lines prevent typos
-		setting_keys = ['autosaveinterval', 'savedautosaves', 'savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt']
+		setting_keys = ['autosaveinterval', 'savedautosaves', 'savedquicksaves', 'screen_resolution', 'screen_renderer', 'screen_bpp', 'screen_fullscreen', 'sound_enable_opt', 'language']
 		new_settings = {}
 		for key in setting_keys:
 			new_settings[key] = dlg.collectData(key)
@@ -221,6 +229,19 @@ class Menus(object):
 			settings.fife.screen.width = int(resolutions[new_settings['screen_resolution']].partition('x')[0])
 			settings.fife.screen.height = int(resolutions[new_settings['screen_resolution']].partition('x')[2])
 			changes_require_restart = True
+		if languages_map.items()[new_settings['language']][0] != settings.language.name:
+			print settings.language.name
+			import gettext
+			settings.language.name, settings.language.position = languages_map.items()[new_settings['language']]
+			print settings.language
+			if settings.language.name != _('System default'):
+				trans = gettext.translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
+				trans.install(unicode=1)
+			else:
+				gettext.translation('unknownhorizons').install(unicode=1)
+				settings.language.name=''
+			from i18n import update_all_translations
+			update_all_translations()
 
 		if changes_require_restart:
 			self.show_dialog(self.widgets['requirerestart'], {'okButton' : True}, onPressEscape = True)
