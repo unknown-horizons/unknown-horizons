@@ -24,6 +24,7 @@ from buildable import BuildableSingle
 from horizons.world.unitproducer import UnitProducer
 from horizons.world.consumer import Consumer
 from horizons.util.point import Point
+from horizons.gui.tabwidget import TabWidget
 import horizons.main
 
 class BoatBuilder(Selectable, BuildableSingle, UnitProducer, Building):
@@ -45,6 +46,13 @@ class BoatBuilder(Selectable, BuildableSingle, UnitProducer, Building):
 				return None
 
 		return {} if coast_tile_found else None
+	def show_menu(self):
+		callbacks = {
+			'boatbuilder_create':{
+				'createUnit': horizons.main.fife.pychan.tools.callbackWithArguments(self.produce, 15)
+			}
+		}
+		horizons.main.session.ingame_gui.show_menu(TabWidget(5, object=self, callbacks=callbacks))
 
 	def create_collector(self):
 		"""Add a FieldCollector"""

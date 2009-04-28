@@ -10,7 +10,7 @@
 	</VBox> -->
 	<VBox>
 		<ScrollArea horizontal_scrollbar="0">
-			<TextBox name="ship_description" min_size="150,75" color="99,FF,00"/>
+			<TextBox name="ship_description" min_size="150,75"/>
 		</ScrollArea>
 	</VBox>
 	<HBox position="5,190">

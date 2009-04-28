@@ -52,8 +52,6 @@ class UnitProducer(SecondaryProducer):
 		if isinstance(self, Building):
 			self.toggle_costs()  # needed to get toggle to the right position
 
-		self.produce(15)
-
 
 	def production_step(self):
 		if horizons.main.debug:
