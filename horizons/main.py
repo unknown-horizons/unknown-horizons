@@ -80,12 +80,12 @@ def start(command_line_arguments):
 	settings.addCategorys('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
 
-	from gettext import translation
+	from gettext import translation, install
 	if settings.language.name != '':
 		trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
+		trans.install(unicode=1)
 	else:
-		trans = translation('unknownhorizons')
-	trans.install(unicode=1)
+		install('unknownhorizons', 'po', unicode=1)
 	from i18n import update_all_translations
 	update_all_translations()
 

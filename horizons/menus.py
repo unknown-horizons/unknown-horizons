@@ -238,7 +238,7 @@ class Menus(object):
 				trans = gettext.translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
 				trans.install(unicode=1)
 			else:
-				gettext.translation('unknownhorizons').install(unicode=1)
+				gettext.install('unknownhorizons', 'po', unicode=1)
 				settings.language.name=''
 			from i18n import update_all_translations
 			update_all_translations()
