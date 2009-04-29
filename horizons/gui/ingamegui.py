@@ -49,8 +49,8 @@ class IngameGui(LivingObject):
 		self._old_menu = None
 
 		# Loading code for kilian to work on the boatbuilder
-		self.boatbuilder = load_xml_translated('boatbuilder.xml')
-		self.boatbuilder.show()
+		#self.boatbuilder = load_xml_translated('boatbuilder.xml')
+		#self.boatbuilder.show()
 
 
 		self.gui['encyclopedia'] = load_xml_translated('encyclopedia_button.xml')
