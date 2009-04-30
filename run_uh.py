@@ -95,18 +95,24 @@ def find_FIFE():
 	os.execvp(args[0], args)
 
 def print_help():
-	print "Unknown Horizons usage:"
+	print _("Unknown Horizons usage:")
 	print "run_uh.py [-d] [-h]"
 	print ""
-	print "Options:"
-	print "-d --debug   - Debug, enables debug output, useful for testing."
-	print "-h --help    - Print this help message."
+	print _("Options:")
+	print "-d --debug   -", _("Debug, enables debug output, useful for testing.")
+	print "-h --help    -", _("Print this help message.")
 	print ""
-	print "Have fun playing, and if you do, help us developing!"
+	print _("Have fun playing, and if you do, help us developing!")
 
 
 if __name__ == '__main__':
 	global debug
+
+
+	#chdir to Unknown Horizons root
+	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
+
+	gettext.install("unknownhorizons", "po", unicode=1)
 
 	# parse arguments
 	try:
@@ -135,12 +141,6 @@ if __name__ == '__main__':
 		elif o == "--start-dev-map":
 			# automatically starts development map, also not in help message
 			command_line_arguments['start_dev_map'] = True
-
-
-	#chdir to Unknown Horizons root
-	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
-
-	gettext.install("unknownhorizons", "po", unicode=1)
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
