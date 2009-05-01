@@ -108,6 +108,17 @@ def start(command_line_arguments):
 	if command_line_arguments['start_dev_map']:
 		first_map = gui.get_maps()[0][0]
 		start_singleplayer(first_map)
+	elif command_line_arguments['start_map'] is not None:
+		map_name = command_line_arguments['start_map']
+		maps = gui.get_maps()
+		try:
+			map_id = maps[1].index(map_name)
+			start_singleplayer(maps[0][map_id])
+		except ValueError:
+			print "Error: Cannot find map \"%s\"." % map_name
+			import sys
+			sys.exit(1)
+
 	else:
 		gui.show_main()
 

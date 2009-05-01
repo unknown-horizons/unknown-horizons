@@ -99,8 +99,12 @@ def print_help():
 	print "run_uh.py [-d] [-h]"
 	print ""
 	print _("Options:")
-	print "-d --debug   -", _("Debug, enables debug output, useful for testing.")
-	print "-h --help    -", _("Print this help message.")
+	print "-d --debug   - ", _("Debug, enables debug output, useful for testing.")
+	print "-h --help    - ", _("Print this help message.")
+	print ""
+	print "--start-dev-map   - ", _("Starts the development map without displaying the main menu")
+	print "                    ", _("Useful for testing during development)")
+	print "--start-map <map> - ", _("Starts <map>. <map> is the filename of the map, without '.sqlite'")
 	print ""
 	print _("Have fun playing, and if you do, help us developing!")
 
@@ -108,16 +112,15 @@ def print_help():
 if __name__ == '__main__':
 	global debug
 
-
 	#chdir to Unknown Horizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
-
 	gettext.install("unknownhorizons", "po", unicode=1)
 
 	# parse arguments
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hd", \
-															 ["help", "debug", "fife-in-library-path", "start-dev-map"])
+															 ["help", "debug", "fife-in-library-path", "start-dev-map", \
+																"start-map="])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
@@ -126,7 +129,8 @@ if __name__ == '__main__':
 	debug = False
 	fife_in_library_path = False
 
-	command_line_arguments = { "start_dev_map": False }
+	command_line_arguments = { "start_dev_map": False, \
+														 "start_map": None}
 
 	# apply arguments
 	for o, a in opts:
@@ -139,8 +143,11 @@ if __name__ == '__main__':
 			# this is currently only for internal use, therefore not in the help message
 			fife_in_library_path = True
 		elif o == "--start-dev-map":
-			# automatically starts development map, also not in help message
+			# automatically starts development map
 			command_line_arguments['start_dev_map'] = True
+		elif o == "--start-map":
+			# start map selected by commandline arg
+			command_line_arguments['start_map'] = a
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
