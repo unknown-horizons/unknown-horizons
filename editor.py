@@ -24,6 +24,7 @@
 import os
 import sys
 import run_uh
+run_uh.debug = False
 
 if __name__ == '__main__':
 	#chdir to unknownhorizons root

@@ -30,9 +30,6 @@ import os
 import gettext
 import getopt
 
-# set global variable debug
-debug = False
-
 def get_fife_path():
 	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
 	global debug
