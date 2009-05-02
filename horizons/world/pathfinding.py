@@ -268,8 +268,11 @@ class Pather(object):
 			self.path_nodes = horizons.main.session.world.water
 			self.blocked_coords = horizons.main.session.world.ship_map
 		elif unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
-			# TODO
-			assert False, 'Pathfinding for soldiers isn\'t implemented yet'
+			self.move_diagonal = True
+			# path nodes will be reloaded on every call, since island might change when transported
+			# via ship
+			island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
+			self.path_nodes = island.get_coordinates()
 		else:
 			assert False, 'Invalid way of movement'
 
@@ -296,6 +299,10 @@ class Pather(object):
 		# workaround, this can't be initalized at construction time
 		if self.unit.__class__.movement == Movement.COLLECTOR_MOVEMENT:
 			self.path_nodes = self.unit.home_building().radius_coords
+
+		if self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
+			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+			self.path_nodes = island.get_coordinates()
 
 		if not check_only:
 			self.source_in_building = False

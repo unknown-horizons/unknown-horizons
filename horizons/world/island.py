@@ -113,12 +113,16 @@ class Island(WorldObject):
 			buildingclass = horizons.main.session.entities.buildings[building_typeid]
 			building = buildingclass.load(db, building_worldid)
 
+	def get_coordinates(self):
+		"""Returns list of coordinates, that are on the island."""
+		return self.ground_map.keys()
+
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		if horizons.main.debug:
-			print "Island get_tile"
+		# this creates too much output, uncomment if you need this message:
+		#if horizons.main.debug: print "Island get_tile"
 		if not self.rect.contains(point):
 			return None
 		try:

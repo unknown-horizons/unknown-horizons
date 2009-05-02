@@ -120,7 +120,7 @@ if __name__ == '__main__':
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hd", \
 															 ["help", "debug", "fife-in-library-path", "start-dev-map", \
-																"start-map="])
+																"start-map=", "enable-unstable-features"])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
@@ -130,7 +130,8 @@ if __name__ == '__main__':
 	fife_in_library_path = False
 
 	command_line_arguments = { "start_dev_map": False, \
-														 "start_map": None}
+														 "start_map": None, \
+														 "unstable_features": False}
 
 	# apply arguments
 	for o, a in opts:
@@ -148,6 +149,8 @@ if __name__ == '__main__':
 		elif o == "--start-map":
 			# start map selected by commandline arg
 			command_line_arguments['start_map'] = a
+		elif o == "--enable-unstable-features":
+			command_line_arguments["unstable_features"] = True
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:

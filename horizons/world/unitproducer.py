@@ -98,7 +98,7 @@ class UnitProducer(SecondaryProducer):
 		This should be used to start a production after the user has specified it.\n
 		@param prod_line: id of the production line that is to be used.
 		"""
-		assert(prod_line in self.production.keys(), "ERROR: You specified an invalid production line!")
+		assert prod_line in self.production.keys(), "ERROR: You specified an invalid production line!"
 		if self.active:
 			#Enqueue the new production, we are still producing.
 			self.production_queue.append(prod_line)

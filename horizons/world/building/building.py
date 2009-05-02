@@ -37,8 +37,8 @@ class Building(AmbientSound, WorldObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
-		if horizons.main.debug:
-			print "Initing Building", self.id
+		# this creates too much output, uncomment if you need this message:
+		#if horizons.main.debug: print "Initing Building", self.id
 		self.__init(Point(x,y), rotation, owner, instance)
 		self.island = weakref.ref(horizons.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x,y)) or \

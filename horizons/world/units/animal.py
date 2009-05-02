@@ -51,13 +51,14 @@ class Animal(GrowingUnit, SecondaryProducer):
 class WildAnimal(Animal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
 	These animals can be hunted."""
+	movement = Movement.SOLDIER_MOVEMENT
 	walking_range = 5
 
 	def __init__(self, island, start_hidden=False, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
 		self.__init(island)
 
-	def __init(island):
+	def __init(self, island):
 		self._home_island = weakref.ref(island)
 		self.home_island.wild_animals.append(self)
 
@@ -77,16 +78,30 @@ class WildAnimal(Animal, Collector):
 				buildings.append(tile.object)
 		return buildings
 
+	def handle_no_possible_job(self):
+		if horizons.main.debug: print 'WildAnimal %s: no possible job' % self.getId()
+		# if we have a job, we walk to a random location near us and search there
+		target = None
+		found_possible_target = False
+		endless_loop_prevention = 20 # if this var reaches 0, we give up searching for a path
+		while not found_possible_target and endless_loop_prevention > 0:
+			endless_loop_prevention -= 1
+			possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
+			target = Point(*possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)])
+			found_possible_target = self.check_move(target)
+		if found_possible_target:
+			self.move(target, callback=self.search_job)
+		else:
+			# we couldn't find a target, just try again 3 secs later
+			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
 
 	def get_job(self):
-		pass
-
-
+		if horizons.main.debug: print 'WildAnimal %s: get_job' % self.getId()
+		return None
 
 	def reroute(self):
-		# when target is gone, just search another job
+		# when target is gone, search another one
 		self.search_job()
-
 
 
 class FarmAnimal(Animal, BuildingCollector):

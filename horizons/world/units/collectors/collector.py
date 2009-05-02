@@ -142,9 +142,13 @@ class Collector(StorageHolder, Unit):
 			print "Collector seach_job", self.id
 		self.job = self.get_job()
 		if self.job is None:
-			horizons.main.session.scheduler.add_new_object(self.search_job, self, 32)
+			self.handle_no_possible_job()
 		else:
 			self.begin_current_job()
+
+	def handle_no_possible_job(self):
+		"""Called when we can't find a job. default is to wait and try again in 2 secs"""
+		horizons.main.session.scheduler.add_new_object(self.search_job, self, 32)
 
 	def get_home_inventory(self):
 		"""Returns inventory where collected res will be stored.
