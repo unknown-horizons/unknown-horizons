@@ -30,11 +30,12 @@ if __name__ == '__main__':
 	gettext.install("unknownhorizons", "po", unicode=1)
 
 	#find fife and setup search paths
+	run_uh.debug = False
 	run_uh.find_FIFE()
 	os.execvp(sys.argv[1], sys.argv[1:])
 else:
 	import inspect
-	import game.main
+	import horizons.main
 
 	already = []
 	def printTree(obj, deep = 0):
