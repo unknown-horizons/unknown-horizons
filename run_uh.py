@@ -163,7 +163,7 @@ if __name__ == '__main__':
 		if debug: print 'Searching for FIFE'
 		find_FIFE()
 
-	print _("Launching Unknown Horizons")
+	#print _("Launching Unknown Horizons")
 
 	#for some external libraries distributed with unknownhorizons
 	sys.path.append('horizons/ext')
