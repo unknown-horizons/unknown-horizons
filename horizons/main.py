@@ -60,6 +60,8 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: dict with command line arguments. possible values:
 									start_dev_map: (bool), if True, don't show menu but start the development map
+									start_map: (string), start map with specified map name
+									unstable_features: (bool), wether unstable features should be enabled
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets, unstable_features
@@ -105,12 +107,16 @@ def start(command_line_arguments):
 	session = None
 	gui = Menus()
 
-	# start something according to commandline parameters
+	# set flag wether to enable unstable features
 	unstable_features = command_line_arguments['unstable_features']
+
+	# start something according to commandline parameters
 	if command_line_arguments['start_dev_map']:
+		# start the development map (it's the first one)
 		first_map = gui.get_maps()[0][0]
 		start_singleplayer(first_map)
 	elif command_line_arguments['start_map'] is not None:
+		# start a map specified by user
 		map_name = command_line_arguments['start_map']
 		maps = gui.get_maps()
 		try:
@@ -121,7 +127,7 @@ def start(command_line_arguments):
 			import sys
 			sys.exit(1)
 
-	else:
+	else: # no commandline parameter, show main screen
 		gui.show_main()
 
 	fife.run()

@@ -27,9 +27,6 @@ import horizons.main
 from horizons.util import Rect, Point, WorldObject
 from building.building import Building
 
-# for speed testing:
-#import time
-
 class PathBlockedError(Exception):
 	pass
 

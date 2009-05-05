@@ -48,6 +48,7 @@ class Animal(GrowingUnit, SecondaryProducer):
 	def get_collectable_res(self):
 		return self.get_needed_res()
 
+
 class WildAnimal(Animal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
 	These animals can be hunted."""
@@ -79,16 +80,21 @@ class WildAnimal(Animal, Collector):
 		return buildings
 
 	def handle_no_possible_job(self):
+		"""Just walk to a random location nearby and search there for food, when we arrive"""
 		if horizons.main.debug: print 'WildAnimal %s: no possible job' % self.getId()
 		# if we have a job, we walk to a random location near us and search there
 		target = None
 		found_possible_target = False
+		possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
 		endless_loop_prevention = 20 # if this var reaches 0, we give up searching for a path
 		while not found_possible_target and endless_loop_prevention > 0:
 			endless_loop_prevention -= 1
-			possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
 			target = Point(*possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)])
 			found_possible_target = self.check_move(target)
+			# temporary hack to make sure that animal doesn't leave island (necessary until
+			# SOLDIER_MOVEMENT is fully implemented and working)
+			if horizons.main.session.world.get_island(target.x, target.y) is None:
+				found_possible_target = False
 		if found_possible_target:
 			self.move(target, callback=self.search_job)
 		else:
