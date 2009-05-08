@@ -45,7 +45,9 @@ except getopt.GetoptError, err:
 debug = False
 fife_in_library_path = False
 
-command_line_arguments = { "start_dev_map": False }
+command_line_arguments = { "start_dev_map": False, \
+                               "start_map": None, \
+                               "unstable_features": False}
 
 # apply arguments
 for o, a in opts:
@@ -58,8 +60,13 @@ for o, a in opts:
         # this is currently only for internal use, therefore not in the help message
         fife_in_library_path = True
     elif o == "--start-dev-map":
-        # automatically starts development map, also not in help message
+        # automatically starts development map
         command_line_arguments['start_dev_map'] = True
+    elif o == "--start-map":
+        # start map selected by commandline arg
+        command_line_arguments['start_map'] = a
+    elif o == "--enable-unstable-features":
+        command_line_arguments["unstable_features"] = True
 
 print _("Launching Unknown Horizons")
 
