@@ -53,7 +53,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			if not was: horizons.main.session.view.autoscroll(0, -25)
 		elif keyval == fife.Key.DOWN:
 			if not was: horizons.main.session.view.autoscroll(0, 25)
-		elif keystr == 't':
+		elif keystr == 'g':
 			horizons.main.session.view.renderer['GridRenderer'].setEnabled(not horizons.main.session.view.renderer['GridRenderer'].isEnabled())
 		elif keystr == 'x':
 			horizons.main.session.cursor = TearingTool()
@@ -65,9 +65,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			horizons.main.session.speed_down()
 		elif keystr == 'p':
 			horizons.main.session.speed_toggle_pause()
-		elif keystr == 'b':
+		elif keystr == 'd':
 			import pdb; pdb.set_trace()
-		elif keystr == 'u':
+		elif keystr == 'b':
 			horizons.main.session.ingame_gui.show_build_menu()
 		elif keystr == '.':
 			if isinstance(horizons.main.session.cursor, BuildingTool):
