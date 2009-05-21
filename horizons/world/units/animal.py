@@ -24,7 +24,7 @@ import weakref
 
 import horizons.main
 
-from horizons.world.production import SecondaryProducer
+from horizons.world.production import SecondaryProducer, Provider
 from horizons.world.pathfinding import Movement
 from horizons.util import Rect, Point, WorldObject, Circle
 from unit import Unit
@@ -51,7 +51,11 @@ class Animal(GrowingUnit, SecondaryProducer):
 
 class WildAnimal(Animal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
-	These animals can be hunted."""
+	These animals can be hunted.
+
+	They produce wild animal meat and feed on wild animal food x, which is produced by
+	e.g. a tree.
+	"""
 	movement = Movement.SOLDIER_MOVEMENT
 	walking_range = 5
 
@@ -69,15 +73,6 @@ class WildAnimal(Animal, Collector):
 
 	def get_home_inventory(self):
 		return self.inventory
-
-	def get_buildings_in_range(self):
-		buildings = []
-		from horizons.world.provider import Provider
-		# collect all providers in the surrounding circle (=animal range)
-		for tile in self.home_island.get_surrounding_tiles(self.position, self.walking_range):
-			if isinstance(tile.object, Provider):
-				buildings.append(tile.object)
-		return buildings
 
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
@@ -103,11 +98,29 @@ class WildAnimal(Animal, Collector):
 
 	def get_job(self):
 		if horizons.main.debug: print 'WildAnimal %s: get_job' % self.getId()
-		return None
+
+		jobs = [] # list of possible jobs
+		needed_resources = self.get_needed_res()
+
+		# iterate over all possible providers and needed resources
+		# and save possible job targets
+		for provider in self.get_providers_in_range():
+			for res in needed_resources:
+				job = self.check_possible_job_target(provider, res)
+				if job is not None:
+					jobs.append(job)
+
+		return self.get_best_possible_job(jobs)
 
 	def reroute(self):
 		# when target is gone, search another one
 		self.search_job()
+
+	def get_providers_in_range(self):
+		"""Returns all producers in the range of the animal. Useful when searching for food"""
+		return [ b for b in self.home_island.buildings if \
+						 isinstance(b, Provider) and \
+						 self.position.distance(b.position) <= self.walking_range ]
 
 
 class FarmAnimal(Animal, BuildingCollector):

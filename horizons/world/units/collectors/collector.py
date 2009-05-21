@@ -166,6 +166,7 @@ class Collector(StorageHolder, Unit):
 
 	def check_possible_job_target(self, target, res):
 		"""Checks out if we could get res from target.
+		Does _not_ check for anything else (e.g. if we are able to walk there).
 		@param target: possible target. buildings are supported, support for more can be added.
 		@param res: resource id
 		@return: instance of Job or None, if we can't collect anything
@@ -255,6 +256,21 @@ class Collector(StorageHolder, Unit):
 			self.hide()
 		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)
 		self.state = self.states.idle
+
+	def get_best_possible_job(self, jobs):
+		"""Return best possible job from jobs.
+		"Best" means that the job is highest when the job list was sorted.
+		"Possible" means that we can find a path there.
+		@param jobs: unsorted list of Job instances
+		@return: selected Job instance from list or None if no jobs are possible."""
+		# sort job list
+		jobs = self.sort_jobs(jobs)
+
+		# check if we can move to that targets
+		for job in jobs:
+			if self.check_move(job.object.position):
+				return job
+		return None
 
 	def sort_jobs(self, jobs):
 		"""Sorts the jobs for further processing. This has been moved to a seperate function so it

@@ -75,7 +75,7 @@ class Consumer(AbstractConsumer):
 				db("SELECT active_production_line FROM production WHERE rowid = ?", worldid)[0][0]
 
 	def get_consumed_res(self):
-		"""Returns list of resources, that the building uses, without
+		"""Returns list of resources, that the consumer uses, without
 		considering, if it currently needs them
 		"""
 		return [] if self.active_production_line is None else \

@@ -108,14 +108,7 @@ class BuildingCollector(Collector):
 				if job is not None:
 						jobs.append(job)
 
-		# sort job list
-		jobs = self.sort_jobs(jobs)
-
-		# check if we can move to that targets
-		for job in jobs:
-			if self.check_move(job.object.position):
-				return job
-		return None
+		return self.get_best_possible_job(jobs)
 
 	def setup_new_job(self):
 		super(BuildingCollector, self).setup_new_job()
