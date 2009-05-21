@@ -259,8 +259,10 @@ class Menus(object):
 			popup = self.widgets['popup_with_cancel']
 		else:
 			popup = self.widgets['popup']
-		popup.findChild(name='popup_window').title = unicode(windowtitle)
-		popup.findChild(name='popup_message').text = unicode(message)
+		# just to be save, the gettext-function is used twice,
+		# once on the original, once on the unicode string.
+		popup.findChild(name='popup_window').title = _(unicode(_(windowtitle)))
+		popup.findChild(name='popup_message').text = _(unicode(_(message)))
 		if show_cancel_button:
 			return self.show_dialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:
@@ -417,7 +419,7 @@ class Menus(object):
 
 	def show_multi(self):
 		# Remove this after it has been implemented.
-		self.show_popup("Not implemnted", "Sorry, multiplayer has not been implemented yet.")
+		self.show_popup("Not implemented", "Sorry, multiplayer has not been implemented yet.")
 		return
 		if self.current is not None:
 			# delete serverlobby and (Server|Client)Connection
