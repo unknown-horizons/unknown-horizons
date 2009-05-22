@@ -42,6 +42,7 @@ import os
 import os.path
 import glob
 import shutil
+import logging
 import random
 
 import engine
@@ -62,9 +63,17 @@ def start(command_line_arguments):
 									start_dev_map: (bool), if True, don't show menu but start the development map
 									start_map: (string), start map with specified map name
 									unstable_features: (bool), wether unstable features should be enabled
+									debug: (bool), wether to enable debug messages
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
-		   action_sets, unstable_features
+		   action_sets, unstable_features, debug
+
+	# set debugging level
+	debug = command_line_arguments['debug']
+	if debug:
+		# basic logging setup (for now)
+		logging.basicConfig(filename="/tmp/uh.log", level=logging.DEBUG, filemode="w")
+
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/game.sqlite')

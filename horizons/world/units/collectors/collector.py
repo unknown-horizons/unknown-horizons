@@ -23,6 +23,7 @@ import operator
 import weakref
 import new
 import random
+import logging
 
 import horizons.main
 
@@ -33,6 +34,10 @@ from horizons.world.production import PrimaryProducer
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
+#
+# logging is tested here, so don't complain about ugly code ;)
+log = logging.getLogger("world.units.collector")
+log.setLevel(logging.CRITICAL)
 
 class Collector(StorageHolder, Unit):
 	"""Base class for every collector. Does not depend on any home building.
@@ -140,6 +145,7 @@ class Collector(StorageHolder, Unit):
 		If no job is found, a new search will be scheduled in 32 ticks."""
 		if horizons.main.debug:
 			print "Collector seach_job", self.id
+		log.debug("Collector %s search job", self.getId())
 		self.job = self.get_job()
 		if self.job is None:
 			self.handle_no_possible_job()
@@ -201,6 +207,7 @@ class Collector(StorageHolder, Unit):
 		"""Starts executing the current job by registering itself and moving to target."""
 		if horizons.main.debug:
 			print "Collector begin_current_job", self.id
+		log.debug("Collector %s begins job at "+str(self.job.object.position), self.getId())
 		self.setup_new_job()
 		self.show()
 		assert self.check_move(self.job.object.position)
@@ -212,6 +219,7 @@ class Collector(StorageHolder, Unit):
 		called after that time."""
 		if horizons.main.debug:
 			print "Collector begin_working", self.id
+		log.debug("Collector %s begins working", self.getId())
 		if self.job.object is not None:
 			horizons.main.session.scheduler.add_new_object(self.finish_working, self, 16)
 			self.state = self.states.working
@@ -223,6 +231,7 @@ class Collector(StorageHolder, Unit):
 		Picks up the resources."""
 		if horizons.main.debug:
 			print "Collector finish_working", self.id
+		log.debug("Collector %s finished working", self.getId())
 		if self.job.object is not None:
 			self.act("idle", self._instance.getFacingLocation(), True)
 			# transfer res
@@ -252,6 +261,7 @@ class Collector(StorageHolder, Unit):
 		# before the new job can begin this will be executed
 		if horizons.main.debug:
 			print "Collector end_job", self.id
+		log.debug("Collector %s end_job - waiting for new search_job", self.getId())
 		if self.start_hidden:
 			self.hide()
 		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)

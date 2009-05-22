@@ -21,6 +21,7 @@
 
 import random
 import weakref
+import logging
 
 import horizons.main
 
@@ -30,6 +31,11 @@ from horizons.util import Rect, Point, WorldObject, Circle
 from unit import Unit
 from collectors import Collector, BuildingCollector, Job
 from nature import GrowingUnit
+
+#
+# logging is tested in this module, so ugly code like this global var will disappear soon ;)
+log = logging.getLogger('world.units.animal')
+log.setLevel(logging.DEBUG)
 
 class Animal(GrowingUnit, SecondaryProducer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -48,6 +54,12 @@ class Animal(GrowingUnit, SecondaryProducer):
 	def get_collectable_res(self):
 		return self.get_needed_res()
 
+	def finish_working(self):
+		# animal is done when it has eaten, and
+		# doesn't have to get home, so end job right now
+		super(Animal, self).finish_working()
+		self.end_job()
+
 
 class WildAnimal(Animal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
@@ -55,15 +67,29 @@ class WildAnimal(Animal, Collector):
 
 	They produce wild animal meat and feed on wild animal food x, which is produced by
 	e.g. a tree.
+
+	It is assumed, that they need all resources, that they use, for reproduction. If they have
+	gathered all resources, and their inventory is full, they reproduce.
 	"""
 	movement = Movement.SOLDIER_MOVEMENT
 	walking_range = 5
 
+	# see documentation of self.health
+	HEALTH_INIT_VALUE = 10
+	HEALTH_INCREASE_ON_FEEDING = 1
+	HEALTH_DECREASE_ON_NO_JOB = 2
+	HEALTH_LEVEL_TO_REPRODUCE = 30
+
 	def __init__(self, island, start_hidden=False, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
 		self.__init(island)
+		log.debug("Wild animal %s created at "+str(self.position), self.getId())
 
 	def __init(self, island):
+		# good health is the main target of an animal. it increases when they it and decreases, when
+		# they have no food. if it reaches 0, they die, and if it reaches REPRODUCE_ON_HEALTH_LEVEL,
+		# they reproduce
+		self.health = self.HEALTH_INIT_VALUE
 		self._home_island = weakref.ref(island)
 		self.home_island.wild_animals.append(self)
 
@@ -77,6 +103,11 @@ class WildAnimal(Animal, Collector):
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
 		if horizons.main.debug: print 'WildAnimal %s: no possible job' % self.getId()
+		log.debug('WildAnimal %s: no possible job', self.getId())
+
+		# decrease health because of lack of food
+		self.health -= self.HEALTH_DECREASE_ON_NO_JOB
+
 		# if we have a job, we walk to a random location near us and search there
 		target = None
 		found_possible_target = False
@@ -98,6 +129,7 @@ class WildAnimal(Animal, Collector):
 
 	def get_job(self):
 		if horizons.main.debug: print 'WildAnimal %s: get_job' % self.getId()
+		log.debug('WildAnimal %s: get_job' % self.getId())
 
 		jobs = [] # list of possible jobs
 		needed_resources = self.get_needed_res()
@@ -121,6 +153,32 @@ class WildAnimal(Animal, Collector):
 		return [ b for b in self.home_island.buildings if \
 						 isinstance(b, Provider) and \
 						 self.position.distance(b.position) <= self.walking_range ]
+
+	def end_job(self):
+		super(WildAnimal, self).end_job()
+		# check if we can reproduce
+		log.debug("Wild animal %s health: %s", self.getId(), self.health)
+		self.health += self.HEALTH_INCREASE_ON_FEEDING
+		if self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
+			self.reproduce()
+			self.health = self.HEALTH_INIT_VALUE
+		elif self.health <= 0:
+			self.die()
+
+	def reproduce(self):
+		"""Create another animal of our type on the place where we stand"""
+		log.debug("Wild animal %s REPRODUCING", self.getId())
+		# create offspring
+		horizons.main.session.entities.units[self.id](self.home_island, x=self.position.x, y=self.position.y)
+		# reset resources
+		for res in self.get_consumed_res():
+			self.inventory.reset(res)
+
+	def die(self):
+		"""Makes animal die, e.g. because of starvation"""
+		log.debug("Wild animal %s dying", self.getId())
+		self.home_island.wild_animals.remove(self)
+		del self
 
 
 class FarmAnimal(Animal, BuildingCollector):
@@ -160,6 +218,7 @@ class FarmAnimal(Animal, BuildingCollector):
 	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)
 
+		""" moved to Animal
 	def finish_working(self):
 		#print self.id, 'FINISH WORKING'
 		# transfer ressources
@@ -167,6 +226,7 @@ class FarmAnimal(Animal, BuildingCollector):
 		# deregister at the target we're at
 		self.job.object._Provider__collectors.remove(self)
 		self.end_job()
+		"""
 
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""

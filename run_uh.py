@@ -131,7 +131,8 @@ if __name__ == '__main__':
 
 	command_line_arguments = { "start_dev_map": False, \
 														 "start_map": None, \
-														 "unstable_features": False}
+														 "unstable_features": False, \
+														 "debug": False}
 
 	# apply arguments
 	for o, a in opts:
@@ -140,6 +141,7 @@ if __name__ == '__main__':
 			exit(1)
 		elif o in ("-d", "--debug"):
 			debug = True
+			command_line_arguments['debug'] = True
 		elif o == "--fife-in-library-path":
 			# this is currently only for internal use, therefore not in the help message
 			fife_in_library_path = True
@@ -168,8 +170,6 @@ if __name__ == '__main__':
 	#for some external libraries distributed with unknownhorizons
 	sys.path.append('horizons/ext')
 
-	import horizons.main
-	horizons.main.debug = debug
-
 	#start unknownhorizons
+	import horizons.main
 	horizons.main.start(command_line_arguments)

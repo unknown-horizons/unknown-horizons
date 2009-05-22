@@ -71,6 +71,12 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		self._changed()
 		return 0
 
+	def reset(self, res):
+		"""Resets a resource slot to zero, removing all it's contents."""
+		if res in self._storage:
+			self._storage[res] = 0
+			self._changed()
+
 	def get_limit(self, res):
 		"""Returns the current limit of the storage. Please not that this value can have
 		different meanings depending on the context. See the storage descriptions on what
