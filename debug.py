@@ -31,8 +31,17 @@ if __name__ == '__main__':
 
 	#find fife and setup search paths
 	run_uh.debug = False
-	run_uh.find_FIFE()
-	os.execvp(sys.argv[1], sys.argv[1:])
+	try:
+		import fife
+	except ImportError, e:
+		if "--fife-in-library-path" in sys.argv:
+			print 'Failed to load FIFE:', e
+			exit(1)
+		run_uh.find_FIFE()
+	
+	args = sys.argv[1:]
+	args.remove("--fife-in-library-path")
+	os.execvp(sys.argv[1], args)
 else:
 	import inspect
 	import horizons.main
