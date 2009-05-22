@@ -83,7 +83,8 @@ class WildAnimal(Animal, Collector):
 	def __init__(self, island, start_hidden=False, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
 		self.__init(island)
-		log.debug("Wild animal %s created at "+str(self.position), self.getId())
+		log.debug("Wild animal %s created at "+str(self.position)+"; population now: %s", \
+				self.getId(), len(self.home_island.wild_animals))
 
 	def __init(self, island):
 		# good health is the main target of an animal. it increases when they it and decreases, when
@@ -103,10 +104,12 @@ class WildAnimal(Animal, Collector):
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
 		if horizons.main.debug: print 'WildAnimal %s: no possible job' % self.getId()
-		log.debug('WildAnimal %s: no possible job', self.getId())
+		log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
 
 		# decrease health because of lack of food
 		self.health -= self.HEALTH_DECREASE_ON_NO_JOB
+		if self.health <= 0:
+			self.die()
 
 		# if we have a job, we walk to a random location near us and search there
 		target = None
@@ -162,8 +165,6 @@ class WildAnimal(Animal, Collector):
 		if self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
 			self.reproduce()
 			self.health = self.HEALTH_INIT_VALUE
-		elif self.health <= 0:
-			self.die()
 
 	def reproduce(self):
 		"""Create another animal of our type on the place where we stand"""
