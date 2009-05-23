@@ -140,14 +140,18 @@ class Session(LivingObject):
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = horizons.main.save_game(horizons.main.savegamemanager.create_quicksave_filename())
 		if success:
-			horizons.main.gui.show_popup('Quicksave', 'Your game has been saved')
+			# TODO: replace this with something, that notifies the user but
+			#       doesn't force him to click an ok-button
+			horizons.main.gui.show_popup(_('Quicksave'), _('Your game has been saved'))
 		horizons.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
 
 	def quickload(self):
 		"""Loads last quicksave"""
 		files = horizons.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
-			horizons.main.gui.show_popup("No quicksaves found", "You need to quicksave before you can quickload.")
+			# TODO: replace this with something, that notifies the user but
+			#       doesn't force him to click an ok-button
+			horizons.main.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
 		files.sort()
 		horizons.main.gui.load_game(files[-1])

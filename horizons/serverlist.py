@@ -179,7 +179,7 @@ class WANServerList(ServerList):
 		try:
 			wan_servers = (urllib.urlopen(horizons.main.settings.network.url_servers))
 		except IOError,e:
-			horizons.main.gui.show_popup("Network Error", "Error: "+e.strerror[1])
+			horizons.main.gui.show_popup(_("Network Error"), _("Error: ")+e.strerror[1])
 
 		for server in wan_servers:
 			match = Server.re_ip_port.match(server)

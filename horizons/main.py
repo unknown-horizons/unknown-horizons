@@ -73,6 +73,8 @@ def start(command_line_arguments):
 	if debug:
 		# basic logging setup (for now)
 		logging.basicConfig(filename="/tmp/uh.log", level=logging.DEBUG, filemode="w")
+	else:
+		logging.basicConfig(level=logging.CRITICAL)
 
 	#init db
 	db = DbReader(':memory:')
@@ -188,8 +190,9 @@ def save_game(savegamename):
 		savegamefile = savegamemanager.create_filename(savegamename)
 
 	if os.path.exists(savegamefile):
-		if not gui.show_popup("Confirmation for overwriting",
-													"A savegame with the name \"%s\" already exists. Should i overwrite it?"%savegamename,
+		if not gui.show_popup(_("Confirmation for overwriting"),
+													_("A savegame with the name \"%s\" already exists."+\
+														"Should i overwrite it?")%savegamename,
 													show_cancel_button = True):
 			gui.save_game()
 			return
@@ -197,7 +200,7 @@ def save_game(savegamename):
 	try:
 		session.save(savegamefile)
 	except IOError, e: # invalid filename
-		gui.show_popup("Invalid filename", "You entered an invalid filename.")
+		gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
 		gui.hide()
 		gui.save_game()
 		return False

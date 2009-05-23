@@ -248,6 +248,8 @@ class Menus(object):
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):
 		""" Displays a popup with the specified text
+		NOTE: Often plain strings in code are used here. Please surround them
+		      with _() for gettext support.
 
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
@@ -363,7 +365,7 @@ class Menus(object):
 			})
 		else:
 			self.current.findChild(name="random")._parent.removeChild(self.current.findChild(name="random"))
-			eventMap['showRandom'] = lambda: self.show_popup('Not yet Implemented',"Sorry, the random map feature isn't yet implemented.")
+			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet Implemented'),_("Sorry, the random map feature isn't yet implemented."))
 
 			# get the map files and their display names
 			self.current.files, maps_display = self.get_maps(showCampaign, showLoad=False)
@@ -419,7 +421,7 @@ class Menus(object):
 
 	def show_multi(self):
 		# Remove this after it has been implemented.
-		self.show_popup("Not implemented", "Sorry, multiplayer has not been implemented yet.")
+		self.show_popup(_("Not yet implemented"), _("Sorry, multiplayer has not been implemented yet."))
 		return
 		if self.current is not None:
 			# delete serverlobby and (Server|Client)Connection
@@ -539,7 +541,7 @@ class Menus(object):
 
 		server_id = self.current.collectData('list')
 		if server_id == -1: # no server selected
-			self.show_popup('Error','You have to select a server')
+			self.show_popup(_('Error'),_('You have to select a server'))
 			return
 		server = self.current.serverList[server_id]
 		self.current.serverList.end()
@@ -573,11 +575,11 @@ class Menus(object):
 		"""
 		selected_item = self.current.collectData("savegamelist")
 		if selected_item == -1:
-			show_popup("No file selected", "You need to select a savegame to delete")
+			show_popup(_("No file selected"), _("You need to select a savegame to delete"))
 			return False
 		selected_file = map_files[selected_item]
-		if self.show_popup("Confirm deletiom",
-								 'Do you really want to delete the savegame "%s"?' % \
+		if self.show_popup(_("Confirm deletion"),
+								 _('Do you really want to delete the savegame "%s"?') % \
 								 SavegameManager.get_savegamename_from_filename(selected_file), \
 								 show_cancel_button = True):
 			os.unlink(selected_file)
@@ -630,10 +632,10 @@ class Menus(object):
 		if showRandom:
 			playername = self.current.collectData('playername')
 			if len(playername) == 0:
-				show_popup("Invalid player name", "You entered an invalid playername")
+				show_popup(_("Invalid player name"), _("You entered an invalid playername"))
 				return
 			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-			show_popup("Not implemented", "Sorry, random map creation is not implemented at the moment.")
+			show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
 			return
 		else:
 			map_id = self.current.collectData('maplist')
@@ -657,7 +659,7 @@ class Menus(object):
 			map_files, map_file_display = horizons.main.savegamemanager.get_saves()
 
 			if len(map_files) == 0:
-				self.show_popup("No saved games", "There are no saved games to load")
+				self.show_popup(_("No saved games"), _("There are no saved games to load"))
 				return
 
 			old_current = self.current
