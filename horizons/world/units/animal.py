@@ -32,14 +32,11 @@ from unit import Unit
 from collectors import Collector, BuildingCollector, Job
 from nature import GrowingUnit
 
-#
-# logging is tested in this module, so ugly code like this global var will disappear soon ;)
-log = logging.getLogger('world.units.animal')
-log.setLevel(logging.DEBUG)
-
 class Animal(GrowingUnit, SecondaryProducer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
 	and usually produce something (e.g. wool)."""
+	log = logging.getLogger('world.units.animal')
+
 	def __init__(self, **kwargs):
 		super(Animal, self).__init__(**kwargs)
 
@@ -83,7 +80,7 @@ class WildAnimal(Animal, Collector):
 	def __init__(self, island, start_hidden=False, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
 		self.__init(island)
-		log.debug("Wild animal %s created at "+str(self.position)+"; population now: %s", \
+		self.log.debug("Wild animal %s created at "+str(self.position)+"; population now: %s", \
 				self.getId(), len(self.home_island.wild_animals))
 
 	def __init(self, island):
@@ -104,7 +101,7 @@ class WildAnimal(Animal, Collector):
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
 		if horizons.main.debug: print 'WildAnimal %s: no possible job' % self.getId()
-		log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
+		self.log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
 
 		# decrease health because of lack of food
 		self.health -= self.HEALTH_DECREASE_ON_NO_JOB
@@ -132,7 +129,7 @@ class WildAnimal(Animal, Collector):
 
 	def get_job(self):
 		if horizons.main.debug: print 'WildAnimal %s: get_job' % self.getId()
-		log.debug('WildAnimal %s: get_job' % self.getId())
+		self.log.debug('WildAnimal %s: get_job' % self.getId())
 
 		jobs = [] # list of possible jobs
 		needed_resources = self.get_needed_res()
@@ -160,7 +157,7 @@ class WildAnimal(Animal, Collector):
 	def end_job(self):
 		super(WildAnimal, self).end_job()
 		# check if we can reproduce
-		log.debug("Wild animal %s health: %s", self.getId(), self.health)
+		self.log.debug("Wild animal %s health: %s", self.getId(), self.health)
 		self.health += self.HEALTH_INCREASE_ON_FEEDING
 		if self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
 			self.reproduce()
@@ -168,7 +165,7 @@ class WildAnimal(Animal, Collector):
 
 	def reproduce(self):
 		"""Create another animal of our type on the place where we stand"""
-		log.debug("Wild animal %s REPRODUCING", self.getId())
+		self.log.debug("Wild animal %s REPRODUCING", self.getId())
 		# create offspring
 		horizons.main.session.entities.units[self.id](self.home_island, x=self.position.x, y=self.position.y)
 		# reset resources
@@ -177,7 +174,7 @@ class WildAnimal(Animal, Collector):
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation"""
-		log.debug("Wild animal %s dying", self.getId())
+		self.log.debug("Wild animal %s dying", self.getId())
 		self.home_island.wild_animals.remove(self)
 		del self
 

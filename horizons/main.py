@@ -43,6 +43,7 @@ import os.path
 import glob
 import shutil
 import logging
+import logging.config
 import random
 
 import engine
@@ -55,6 +56,7 @@ from session import Session
 from gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
+
 
 
 def start(command_line_arguments):
@@ -70,11 +72,10 @@ def start(command_line_arguments):
 
 	# set debugging level
 	debug = command_line_arguments['debug']
+	logging.config.fileConfig('horizons/logging.conf')
 	if debug:
-		# basic logging setup (for now)
-		logging.basicConfig(filename="/tmp/uh.log", level=logging.DEBUG, filemode="w")
-	else:
-		logging.basicConfig(level=logging.CRITICAL)
+		logging.getLogger().setLevel(logging.DEBUG)
+
 
 	#init db
 	db = DbReader(':memory:')
