@@ -22,6 +22,7 @@
 import weakref
 import copy
 import sys
+import logging
 
 import horizons.main
 from horizons.util import Rect, Point, WorldObject
@@ -74,6 +75,7 @@ class FindPath(object):
 	"best path" means path with shortest travel time, which
 	is not necessarily the shortest path (cause roads have different speeds)
 	"""
+	log = logging.getLogger("world.pathfinding")
 
 	def __call__(self, source, destination, path_nodes, blocked_coords = [], diagonal = False):
 		"""
@@ -100,20 +102,17 @@ class FindPath(object):
 		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
 
-		if horizons.main.debug:
-			print 'SEARCHING path from',source,'to',destination,'. blocked: ',blocked_coords
+		self.log.debug('SEARCHING path from %s to %s. blocked: %s', \
+									 source, destination, blocked_coords)
 
 		# prepare args
 		if not self.setup():
 			return None
 
 		# execute algorithm on the args
-		if not horizons.main.debug:
-			return self.execute()
-		else:
-			p = self.execute()
-			print 'FOUND PATH', p
-			return p
+		p = self.execute()
+		self.log.debug('FOUND PATH: %s',p)
+		return p
 
 	def setup(self):
 		"""Sets up variables for execution of algorithm
@@ -252,6 +251,7 @@ class FindPath(object):
 class Pather(object):
 	"""Interface for pathfinding for use by Unit.
 	"""
+	log = logging.getLogger("world.pathfinding")
 	def __init__(self, unit):
 		self.move_diagonal = False
 		self.blocked_coords = []
@@ -269,7 +269,7 @@ class Pather(object):
 			# path nodes will be reloaded on every call, since island might change when transported
 			# via ship
 			island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
-			self.path_nodes = island.get_coordinates()
+			self.path_nodes = island.get_walkable_coordinates()
 		else:
 			assert False, 'Invalid way of movement'
 
@@ -299,7 +299,7 @@ class Pather(object):
 
 		if self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
-			self.path_nodes = island.get_coordinates()
+			self.path_nodes = island.get_walkable_coordinates()
 
 		if not check_only:
 			self.source_in_building = False
@@ -344,17 +344,29 @@ class Pather(object):
 			self.cur = None
 			return None
 
-		path_blocked_by_unit = False
+		# check if the path is suddenly blocked and set this var in case
+		path_blocked = False
 
-		if self.unit.__class__.movement == Movement.SHIP_MOVEMENT:
+		if not path_blocked and self.unit.__class__.movement == Movement.SHIP_MOVEMENT:
 			# for ship: check if another ship is blocking the way
-			path_blocked_by_unit = self.path[self.cur] in horizons.main.session.world.ship_map and \
+			path_blocked = self.path[self.cur] in horizons.main.session.world.ship_map and \
 														 horizons.main.session.world.ship_map[self.path[self.cur]]() is not self
+			self.log.debug("tile blocked for unit %s by another ship", self.unit.getId())
 
-		if self.path[self.cur] in self.blocked_coords or path_blocked_by_unit:
+		if not path_blocked and self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
+			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+			path_blocked = not island.is_walkable(self.path[self.cur])
+			self.log.debug("tile blocked for unit %s by another unit", self.unit.getId())
+
+		if not path_blocked and self.path[self.cur] in self.blocked_coords:
+			path_blocked = True
+
+		if path_blocked:
 			# path is suddenly blocked, find another path
 			self.cur -= 1 # reset, since move is not possible
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
+				self.log.info("tile %s %s blocked for unit %s by another unit", \
+											self.unit.getId(), self.cur[0], self.cur[1])
 				raise PathBlockedError
 
 		if self.destination_in_building and self.cur == len(self.path)-1:
