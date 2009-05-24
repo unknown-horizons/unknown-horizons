@@ -20,6 +20,7 @@
 # ###################################################
 
 import weakref
+import logging
 
 import horizons.main
 
@@ -54,6 +55,7 @@ class Island(WorldObject):
 
 	To continue hacking, check out the __init() function now.
 	"""
+	log = logging.getLogger("world.island")
 
 	def __init__(self, origin, filename):
 		self.__init(origin, filename)
@@ -146,8 +148,6 @@ class Island(WorldObject):
 		@param point: position of the tile to look on
 		@return: Building class instance or None if none is found.
 		"""
-		if horizons.main.debug:
-			print "Island get_building"
 		if not self.rect.contains(point):
 			return None
 		settlement = self.get_settlement(point)
@@ -163,9 +163,6 @@ class Island(WorldObject):
 		"""Look for a settlement on a specific tile
 		@param point: Point to look on
 		@return: Settlement at point, or None"""
-
-		if horizons.main.debug:
-			print "Island get_settlement"
 		settlements = self.get_settlements(Rect(point, 1, 1))
 		if len(settlements)>0:
 			assert len(settlements) == 1
@@ -313,18 +310,22 @@ class Island(WorldObject):
 		@param coord: tuple: (x,y)
 		@param check_coord_is_on_island: bool, wether to check if coord is on this island
 		"""
+		self.log.debug("is_walkable 0")
 		if check_coord_is_on_island:
 			if not coord in self.get_coordinates():
 				return False
 
+		self.log.debug("is_walkable 1")
 		tile_object = self.ground_map[coord]()
 		# if it's not constructible, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
 			return False
+		self.log.debug("is_walkable 2")
 		if tile_object.blocked:
 			return False
+		self.log.debug("is_walkable 3")
 		return True
 
 	def reset_tile_walkability(self, coord):

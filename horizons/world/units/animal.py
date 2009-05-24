@@ -70,24 +70,27 @@ class WildAnimal(Animal, Collector):
 	"""
 	movement = Movement.SOLDIER_MOVEMENT
 	walking_range = 5
+	WORK_DURATION = 48
 
 	# see documentation of self.health
 	HEALTH_INIT_VALUE = 10
-	HEALTH_INCREASE_ON_FEEDING = 1
+	HEALTH_INCREASE_ON_FEEDING = 2
 	HEALTH_DECREASE_ON_NO_JOB = 2
 	HEALTH_LEVEL_TO_REPRODUCE = 30
 
-	def __init__(self, island, start_hidden=False, **kwargs):
+	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
-		self.__init(island)
-		self.log.debug("Wild animal %s created at "+str(self.position)+"; population now: %s", \
-				self.getId(), len(self.home_island.wild_animals))
+		self.__init(island, can_reproduce)
+		self.log.debug("Wild animal %s created at "+str(self.position)+\
+									 "; can_reproduce: %s; population now: %s", \
+				self.getId(), can_reproduce, len(self.home_island.wild_animals))
 
-	def __init(self, island):
+	def __init(self, island, can_reproduce):
 		# good health is the main target of an animal. it increases when they it and decreases, when
 		# they have no food. if it reaches 0, they die, and if it reaches REPRODUCE_ON_HEALTH_LEVEL,
 		# they reproduce
 		self.health = self.HEALTH_INIT_VALUE
+		self.can_reproduce = can_reproduce
 		self._home_island = weakref.ref(island)
 		self.home_island.wild_animals.append(self)
 
@@ -165,12 +168,22 @@ class WildAnimal(Animal, Collector):
 
 	def reproduce(self):
 		"""Create another animal of our type on the place where we stand"""
+		if not self.can_reproduce:
+			return
+
 		self.log.debug("Wild animal %s REPRODUCING", self.getId())
 		# create offspring
-		horizons.main.session.entities.units[self.id](self.home_island, x=self.position.x, y=self.position.y)
+		horizons.main.session.entities.units[self.id](self.home_island, x=self.position.x, y=self.position.y, can_reproduce = self.next_clone_can_reproduce())
 		# reset resources
 		for res in self.get_consumed_res():
 			self.inventory.reset(res)
+
+	def next_clone_can_reproduce(self):
+		"""Returns, wether the next child will be able to reproduce himself.
+		Some animal can't reproduce, which makes population growth easier to control."""
+		while True:
+			yield True
+			yield False
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation"""

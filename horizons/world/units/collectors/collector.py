@@ -41,6 +41,8 @@ class Collector(StorageHolder, Unit):
 
 	movement = Movement.COLLECTOR_MOVEMENT
 
+	WORK_DURATION = 16 # time how long a collector predends to work at target in ticks
+
 	# all states, any (subclass) instance may have. Keeping a list in one place
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
@@ -212,7 +214,8 @@ class Collector(StorageHolder, Unit):
 		called after that time."""
 		self.log.debug("Collector %s begins working", self.getId())
 		if self.job.object is not None:
-			horizons.main.session.scheduler.add_new_object(self.finish_working, self, 16)
+			horizons.main.session.scheduler.add_new_object(self.finish_working, self, \
+																										 self.WORK_DURATION)
 			self.state = self.states.working
 		else:
 			self.reroute()

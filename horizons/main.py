@@ -71,7 +71,7 @@ def start(command_line_arguments):
 		   action_sets, unstable_features, debug
 
 	# set debugging level
-	debug = command_line_arguments['debug']
+	debug = command_line_arguments['debug'] or command_line_arguments['unstable_features']
 	logging.config.fileConfig('horizons/logging.conf')
 	if debug:
 		logging.getLogger().setLevel(logging.DEBUG)
