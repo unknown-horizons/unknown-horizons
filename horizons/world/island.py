@@ -84,12 +84,14 @@ class Island(WorldObject):
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
 
+		self.a = False
 		# generate list of walkable tiles
 		self.walkable_tiles = []
 		for i in self.get_coordinates():
 			if self.is_walkable(i, False):
 				self.walkable_tiles.append(i)
 
+		self.a = True
 		self.settlements = [] # List of settlements
 
 		self.path_nodes = {} # Paths are saved here for usage by the pather.
@@ -273,7 +275,7 @@ class Island(WorldObject):
 			tile = self.get_tile(point)
 			tile.blocked = False
 			tile.object = None
-			self.reset_tile_walkability((xx, yy))
+			self.reset_tile_walkability(point.to_tuple())
 
 		if building.settlement is not None:
 			building.settlement.buildings.remove(building)
@@ -310,22 +312,22 @@ class Island(WorldObject):
 		@param coord: tuple: (x,y)
 		@param check_coord_is_on_island: bool, wether to check if coord is on this island
 		"""
-		self.log.debug("is_walkable 0")
+		if self.a:self.log.debug("is_walkable 0")
 		if check_coord_is_on_island:
 			if not coord in self.get_coordinates():
 				return False
 
-		self.log.debug("is_walkable 1")
+		if self.a:self.log.debug("is_walkable 1")
 		tile_object = self.ground_map[coord]()
 		# if it's not constructible, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
 			return False
-		self.log.debug("is_walkable 2")
+		if self.a:self.log.debug("is_walkable 2")
 		if tile_object.blocked:
 			return False
-		self.log.debug("is_walkable 3")
+		if self.a:self.log.debug("is_walkable 3")
 		return True
 
 	def reset_tile_walkability(self, coord):
@@ -334,6 +336,7 @@ class Island(WorldObject):
 		You need to call this when a tile changes, e.g. when a building is built on it. this
 		is currently done in add/remove_building
 		@param coord: tuple: (x,y)"""
+		self.log.debug("reset tile walkability on %s %s", coord[0], coord[1])
 		acctually_walkable = self.is_walkable(coord)
 		in_list = (coord in self.walkable_tiles)
 		if not in_list and acctually_walkable:

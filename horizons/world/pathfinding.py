@@ -301,8 +301,8 @@ class Pather(object):
 			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 			self.path_nodes = island.get_walkable_coordinates()
 
-			for i in self.path_nodes:
-				assert island.is_walkable(i)
+			#for i in self.path_nodes:
+				#assert island.is_walkable(i)
 
 		if not check_only:
 			self.source_in_building = False
@@ -369,8 +369,8 @@ class Pather(object):
 			# path is suddenly blocked, find another path
 			self.cur -= 1 # reset, since move is not possible
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
-				self.log.info("tile %s %s blocked for unit %s by another unit", \
-											self.unit.getId(), self.cur[0], self.cur[1])
+				self.log.info("tile %s %s blocked for %s %s by another unit", \
+											self.cur[0], self.cur[1], self.unit, self.unit.getId())
 				raise PathBlockedError
 
 		if self.destination_in_building and self.cur == len(self.path)-1:
