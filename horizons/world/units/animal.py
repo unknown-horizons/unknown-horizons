@@ -116,10 +116,10 @@ class WildAnimal(Animal, Collector):
 		found_possible_target = False
 		possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
 		possible_walk_targets.remove(self.position.to_tuple())
-		endless_loop_prevention = 20 # if this var reaches 0, we give up searching for a path
-		while not found_possible_target and endless_loop_prevention > 0:
-			endless_loop_prevention -= 1
-			target = Point(*possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)])
+		while not found_possible_target and len(possible_walk_targets) > 0:
+			target_tuple = possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)]
+			possible_walk_targets.remove(target_tuple)
+			target = Point(*target_tuple)
 			found_possible_target = self.check_move(target)
 			# temporary hack to make sure that animal doesn't leave island (necessary until
 			# SOLDIER_MOVEMENT is fully implemented and working)
