@@ -115,6 +115,7 @@ class WildAnimal(Animal, Collector):
 		target = None
 		found_possible_target = False
 		possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
+		possible_walk_targets.remove(self.position.to_tuple())
 		endless_loop_prevention = 20 # if this var reaches 0, we give up searching for a path
 		while not found_possible_target and endless_loop_prevention > 0:
 			endless_loop_prevention -= 1

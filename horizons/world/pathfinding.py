@@ -355,12 +355,16 @@ class Pather(object):
 			path_blocked = self.path[self.cur] in horizons.main.session.world.ship_map and \
 											 horizons.main.session.world.ship_map[self.path[self.cur]]() is not \
 											 self.unit
-			self.log.debug("tile blocked for %s %s by another ship", self.unit, self.unit.getId())
+			if path_blocked:
+				other = horizons.main.session.world.ship_map[self.path[self.cur]]()
+				self.log.debug("tile blocked for %s %s by another ship %s", \
+											 self.unit, self.unit.getId(), other)
 
 		if not path_blocked and self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 			path_blocked = not island.is_walkable(self.path[self.cur])
-			self.log.debug("tile blocked for %s %s", self.unit, self.unit.getId())
+
+			if path_blocked: self.log.debug("tile blocked for %s %s on island", self.unit, self.unit.getId())
 
 		if not path_blocked and self.path[self.cur] in self.blocked_coords:
 			path_blocked = True
@@ -369,7 +373,7 @@ class Pather(object):
 			# path is suddenly blocked, find another path
 			self.cur -= 1 # reset, since move is not possible
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
-				self.log.info("tile %s %s blocked for %s %s by another unit", \
+				self.log.info("tile suddenly %s %s blocked for %s %s", \
 											self.cur[0], self.cur[1], self.unit, self.unit.getId())
 				raise PathBlockedError
 
