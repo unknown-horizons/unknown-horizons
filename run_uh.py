@@ -109,18 +109,34 @@ def print_help():
 	print _("Have fun playing, and if you do, help us developing!")
 
 
+def find_uh_position():
+	first_guess = os.path.split( os.path.realpath( sys.argv[0]) )[0]
+	if os.path.exists('%s/content' % first_guess):
+		return first_guess
+	else:
+		positions = ['/usr/share/games',
+			     '/usr/share',
+			     '/usr/local/share/games',
+			     '/usr/local/share',
+			     ]
+		
+		for i in positions:
+			if os.path.exists('%s/unknown-horizons' % i):
+				return '%s/unknown-horizons' % i
+
+
 if __name__ == '__main__':
 	global debug
 
 	#chdir to Unknown Horizons root
-	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
+	os.chdir( find_uh_position() )
 	gettext.install("unknownhorizons", "po", unicode=1)
 
 	# parse arguments
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hd", \
-															 ["help", "debug", "fife-in-library-path", "start-dev-map", \
-																"start-map=", "enable-unstable-features"])
+						   ["help", "debug", "fife-in-library-path", "start-dev-map", \
+							    "start-map=", "enable-unstable-features"])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
@@ -130,9 +146,9 @@ if __name__ == '__main__':
 	fife_in_library_path = False
 
 	command_line_arguments = { "start_dev_map": False, \
-														 "start_map": None, \
-														 "unstable_features": False, \
-														 "debug": False}
+					   "start_map": None, \
+					   "unstable_features": False, \
+					   "debug": False}
 
 	# apply arguments
 	for o, a in opts:
