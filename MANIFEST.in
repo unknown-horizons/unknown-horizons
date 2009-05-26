@@ -1,3 +1,4 @@
 include unknown-horizons
+include run_uh.py
 recursive-include content *
 recursive-include po *.po *.mo *.pot
