@@ -70,8 +70,8 @@ class SqlResult(object):
 	@param affected: int number of rows affected by the sql query
 	@param id: int id of the sqlresult(lastrowid of the curser)
 	"""
-	def __init__(self, rows, affected, id):
-		self.success, self.error, self.rows, self.affected, self.id = True, None, rows, affected, id
+	def __init__(self, rows, affected, ident):
+		self.success, self.error, self.rows, self.affected, self.id = True, None, rows, affected, ident
 
 	def __getattr__(self, name):
 		"""

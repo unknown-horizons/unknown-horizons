@@ -36,7 +36,6 @@ class Menus(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
 	def __init__(self):
-		fife = horizons.main.fife
 		self.current = None # currently active window
 		self.widgets = {} # Stores all the widgets, to prevent double loading
 		self.widgets['mainmenu'] = load_xml_translated('mainmenu.xml')
@@ -220,7 +219,7 @@ class Menus(object):
 		if volume_effects.getValue() != settings.sound.volume_effects:
 			settings.sound.volume_effects = volume_effects.getValue()
 		if new_settings['screen_bpp'] != int(settings.fife.screen.bpp / 10):
-			settings.fife.screen.bpp = 0 if screen_bpp == 0 else ((screen_bpp + 1) * 8)
+			settings.fife.screen.bpp = 0 if new_settings['screen_bpp'] == 0 else ((new_settings['screen_bpp'] + 1) * 8)
 			changes_require_restart = True
 		if new_settings['screen_renderer'] != (0 if settings.fife.renderer.backend == 'OpenGL' else 1):
 			settings.fife.renderer.backend = 'OpenGL' if new_settings['screen_renderer'] == 0 else 'SDL'
@@ -559,7 +558,7 @@ class Menus(object):
 			self.current.serverlobby.end()
 			horizons.main.connection = None
 			self.current.serverlobby = None
-			showMulti()
+			self.show_multi()
 
 		self.current.mapEvents({
 			'cancel' : _cancel
@@ -575,7 +574,7 @@ class Menus(object):
 		"""
 		selected_item = self.current.collectData("savegamelist")
 		if selected_item == -1:
-			show_popup(_("No file selected"), _("You need to select a savegame to delete"))
+			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
 			return False
 		selected_file = map_files[selected_item]
 		if self.show_popup(_("Confirm deletion"),
@@ -632,10 +631,10 @@ class Menus(object):
 		if showRandom:
 			playername = self.current.collectData('playername')
 			if len(playername) == 0:
-				show_popup(_("Invalid player name"), _("You entered an invalid playername"))
+				self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
 				return
 			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-			show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
+			self.show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
 			return
 		else:
 			map_id = self.current.collectData('maplist')

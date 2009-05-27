@@ -75,8 +75,8 @@ class MPManager(LivingObject):
 	def __init__(self):
 		"""Initialize the Multiplayer Manager"""
 		super(MPManager, self).__init__()
-		horizons.timer.add_test(this.can_tick)
-		horizons.timer.add_call(this.tick)
+		horizons.timer.add_test(self.can_tick)
+		horizons.timer.add_call(self.tick)
 		self.commands = []
 		self.packets = {}
 

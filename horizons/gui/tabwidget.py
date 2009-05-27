@@ -73,8 +73,8 @@ class TabWidget(object):
 	def _update_active(self):
 		self.tabs[self.widget.active].update(None if self.object is None else self.object())
 
-	def set_position(x,y):
-		self.widget.position = (x,y)
+	def set_position(self, x, y):
+		self.widget.position = (x, y)
 
 	def show(self):
 		"""Shows the widget."""

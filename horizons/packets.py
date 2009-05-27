@@ -82,7 +82,7 @@ class LobbyChatPacket(Packet):
 	@param text:
 	"""
 	def __init__(self, address, port, text):
-		super(ChatPacket, self).__init__(address, port)
+		super(LobbyChatPacket, self).__init__(address, port)
 		self.text = text
 
 class ConnectPacket(Packet):
@@ -145,9 +145,6 @@ class LobbyKeepAlivePacket(Packet):
 # so include a parameter in the packet which tells the client why he got disconnected
 
 # packet when server is closed. probably packet above can be used
-
-class MasterRegisterPacket(Packet):
-	pass
 
 class MasterServerListQueryPacket(Packet):
 	pass

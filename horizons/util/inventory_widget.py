@@ -50,10 +50,6 @@ class Inventory(pychan.widgets.Container):
 
 	inventory = property(_get_inventory, _set_inventory)
 
-	def isset_inventory(self):
-		"""Returns whether the inventory is set or not"""
-		return True if inventory is not None else False
-
 	def _draw(self):
 		"""Draws the inventory."""
 		if len(self.children) is not 0:

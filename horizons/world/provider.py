@@ -55,7 +55,7 @@ class Provider(StorageHolder):
 			for col in self.__collectors:
 				col.cancel()
 		self.__collectors = None
-		super(StorageHolder, self).__del__()
+		super(Provider, self).__del__()
 
 
 	def load(self, db, worldid):

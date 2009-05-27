@@ -27,45 +27,45 @@ set_translations()
 all_translated_widgets = dict()
 
 def set_text(widget, text):
-    gui.find_child(name=widget).text = text
+	gui.find_child(name=widget).text = text
 
 def set_title(widget, title):
-    gui.findChild(name=widget).title = title
+	gui.findChild(name=widget).title = title
 
 def load_xml_translated(filename):
-    from guitranslations import text_translations
-    #print text_translations
-    global all_translated_widgets
-    try:
-        untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
-    except (IOError,ValueError), e:
-        print e
-        untranslated = horizons.main.fife.pychan.loadXML(filename)
-    
-    from os.path import basename
-    filename = basename(filename)
-    if text_translations.has_key(filename):
-        for i in text_translations[filename].items():
-            try:
-                untranslated.findChild(name=i[0]).text = i[1]
-            except AttributeError, e:
-                print e
-                print i, ' in ', filename
-    elif horizons.main.debug:
-        print _('No translation for file %s') % filename
+	from guitranslations import text_translations
+	#print text_translations
+	global all_translated_widgets
+	try:
+		untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
+	except (IOError,ValueError), e:
+		print e
+		untranslated = horizons.main.fife.pychan.loadXML(filename)
 
-    all_translated_widgets[filename] = untranslated
+	from os.path import basename
+	filename = basename(filename)
+	if text_translations.has_key(filename):
+		for i in text_translations[filename].items():
+			try:
+				untranslated.findChild(name=i[0]).text = i[1]
+			except AttributeError, e:
+				print e
+				print i, ' in ', filename
+	elif horizons.main.debug:
+		print _('No translation for file %s') % filename
 
-    return untranslated
+	all_translated_widgets[filename] = untranslated
+
+	return untranslated
 
 def update_all_translations():
-    set_translations()
-    from guitranslations import text_translations
-    global all_translated_widgets
-    for pair in all_translated_widgets.items():
-        for i in text_translations[pair[0]].items():
-            try:
-                pair[1].findChild(name=i[0]).text = i[1]
-            except AttributeError, e:
-                print e
-                print i, ' in ', pair[0]
+	set_translations()
+	from guitranslations import text_translations
+	global all_translated_widgets
+	for pair in all_translated_widgets.items():
+		for i in text_translations[pair[0]].items():
+			try:
+				pair[1].findChild(name=i[0]).text = i[1]
+			except AttributeError, e:
+				print e
+				print i, ' in ', pair[0]

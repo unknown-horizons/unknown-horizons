@@ -52,7 +52,7 @@ class Scheduler(LivingObject):
 		if self.cur_tick in self.schedule:
 			for callback in self.schedule[self.cur_tick]:
 				if horizons.main.debug:
-					"Scheduler tick"
+					print "Scheduler tick"
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:

@@ -39,20 +39,20 @@ class ExtScheduler(object):
 		"""
 		for tup in self.schedule:
 			if tup[0] <= time.time():
-				object = self.schedule.pop(0)[1]
-				object.callback()
-				if object.loops > 0 or object.loops is -1:
-					self.add_object(object) # re-add object
+				obj = self.schedule.pop(0)[1]
+				obj.callback()
+				if obj.loops > 0 or obj.loops is -1:
+					self.add_object(obj) # re-add object
 			else:
 				break
 
-	def add_object(self, object):
+	def add_object(self, obj):
 		"""Adds a new CallbackObject instance to the callbacks list
 		@param object: CallbackObject type object, containing all neccessary  information
 		"""
-		if object.loops > 0:
-			object.loops -= 1
-		self.schedule.append(((time.time() + object.runin), object))
+		if obj.loops > 0:
+			obj.loops -= 1
+		self.schedule.append(((time.time() + obj.runin), obj))
 		self.schedule.sort()
 
 	def add_new_object(self, callback, class_instance, runin=1, loops=1):
@@ -61,8 +61,8 @@ class ExtScheduler(object):
 		@param class_instance: class instance the function belongs to.
 		@param runin: float number of seconds after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
-		object = CallbackObject(callback, class_instance, runin, loops)
-		self.add_object(object)
+		obj = CallbackObject(callback, class_instance, runin, loops)
+		self.add_object(obj)
 
 	def rem_all_classinst_calls(self, class_instance):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""

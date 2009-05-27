@@ -152,9 +152,9 @@ class MessageWidget(LivingObject):
 	def load(self, db):
 		return # function disabled for now cause it crashes
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_active"):
-			self.active_messages.append(Message(x, y, id, created, True if read==1 else False, display, message))
+			self.active_messages.append(Message(self.x, self.y, id, created, True if read==1 else False, display, message))
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_archive"):
-			self.archive.append(Message(x, y, id, created, True if read==1 else False, display, message))
+			self.archive.append(Message(self.x, self.y, id, created, True if read==1 else False, display, message))
 		self.draw_widget()
 
 

@@ -83,7 +83,7 @@ class stablelist(object):
 		if index is None:
 			index = self._last
 		else:
-			assert(isinstance(key, int) and key >= 0)
+			assert(isinstance(index, int) and index >= 0)
 		#index can be 0 if no item exists... -> error
 		ret = self[index]
 		del self[index]

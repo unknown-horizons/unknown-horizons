@@ -93,7 +93,7 @@ class BuildingClass(type):
 
 	def load(cls, db, worldid):
 		self = cls.__new__(cls)
-		self.load(db, worlid)
+		self.load(db, worldid)
 		return self
 
 	def _loadObject(cls):

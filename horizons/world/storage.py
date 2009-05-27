@@ -108,10 +108,10 @@ class SpecializedStorage(GenericStorage): # NOT TESTED! NEEDS WORK!
 		assert False, "Test this before using, it hasn't been correctly implemented"
 		return super(SpecializedStorage, self).alter(res, amount) if res in self._storage else amount
 
-	def addResourceSlot(res):
+	def addResourceSlot(self, res):
 		super(SpecializedStorage, self).alter(res, 0)
 
-	def hasResourceSlot(res):
+	def hasResourceSlot(self, res):
 		return res in self._storage
 
 class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
@@ -127,7 +127,7 @@ class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
 		return self.__size[res]
 
 	def addResourceSlot(self, res, size, **kwargs):
-		super(SpecializedStorage, self).addResourceSlot(res = res, size = size, **kwargs)
+		super(SizedSpecializedStorage, self).addResourceSlot(res = res, size = size, **kwargs)
 		self.__size[res] = size
 
 	def save(self, db, ownerid):
@@ -165,7 +165,7 @@ class PositiveTotalStorage(PositiveStorage, TotalStorage): # TESTED AND WORKING
 	"""A combination of the Total and Positive storage. Used to set a limit and ensure
 	there are no negative amounts in the storage."""
 	def __init__(self, space, **kwargs):
-		super(TotalStorage, self).__init__(space = space, **kwargs)
+		super(PositiveTotalStorage, self).__init__(space = space, **kwargs)
 		self.limit = space
 
 class SizedSlotStorage(PositiveStorage): # TESTED AND WORKING
