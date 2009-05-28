@@ -35,7 +35,7 @@ class Inventory(pychan.widgets.Container):
 	icon_width = 50 # pixels a resource icon is wide
 
 	def __init__(self, **kwargs):
-		super(Inventory,self).__init__(**kwargs)
+		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
 
 	def _set_inventory(self, inv):
@@ -60,7 +60,13 @@ class Inventory(pychan.widgets.Container):
 		index = 0
 		for resid, amount in self._inventory._storage.iteritems():
 			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
-			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon, down_image=icon_disabled if amount == 0 else icon, hover_image=icon_disabled if amount == 0 else icon, text=str(amount), size=(50,50),res_id = resid, opaque=False)
+			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon,
+										   down_image=icon_disabled if amount == 0 else icon,
+										   hover_image=icon_disabled if amount == 0 else icon,
+										   text=str(amount),
+										   size=(50, 50),
+										   res_id = resid,
+										   opaque=False)
 			button.filled = int(float(amount)/float(self._inventory.limit)*100.0)
 			current_hbox.addChild(button)
 			if index % (vbox.width/(self.__class__.icon_width+10)) == 0 and  index is not 0:
@@ -95,8 +101,11 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the icon + bar."""
-		self.button = pychan.widgets.ImageButton(text=unicode(self.text), up_image=self.up_image, down_image=self.down_image, hover_image=self.hover_image)
-		self.button.size = (50,50)
+		self.button = pychan.widgets.ImageButton(text=unicode(self.text),
+												 up_image=self.up_image,
+												 down_image=self.down_image,
+												 hover_image=self.hover_image)
+		self.button.size = (50, 50)
 		bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
 		bar.position = (self.button.width-bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))
 		self.addChildren(self.button, bar)

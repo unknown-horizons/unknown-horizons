@@ -32,14 +32,13 @@ from horizons.gui.tradewidget import TradeWidget
 from unit import Unit
 
 class Ship(Unit):
-	movement = Movement.SHIP_MOVEMENT
 	"""Class representing a ship
-		@param x: int x position
-		@param y: int y position
+	@param x: int x position
+	@param y: int y position
 	"""
+	movement = Movement.SHIP_MOVEMENT
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-
 		self.setup_inventory()
 
 		self.set_name()
@@ -76,7 +75,10 @@ class Ship(Unit):
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			horizons.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45"))
+			horizons.main.session.view.renderer['GenericRenderer'].addAnimation(
+				"buoy_" + str(self.getId()), fife.GenericRendererNode(loc),
+				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
+			)
 		self.draw_health()
 
 	def deselect(self):
@@ -106,8 +108,8 @@ class Ship(Unit):
 		def tmp():
 			horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
 		tmp()
-		x,y=int(round(x)),int(round(y))
-		move_possible = self.move(Point(x,y), tmp)
+		x, y = int(round(x)), int(round(y))
+		move_possible = self.move(Point(x, y), tmp)
 		if not move_possible:
 			return
 		if self.position.x != x or self.position.y != y:
@@ -118,7 +120,10 @@ class Ship(Unit):
 				coords = fife.ModelCoordinate(move_target.x, move_target.y)
 				coords.thisown = 0
 				loc.setLayerCoordinates(coords)
-				horizons.main.session.view.renderer['GenericRenderer'].addAnimation("buoy_" + str(self.getId()), fife.GenericRendererNode(loc), horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45"))
+				horizons.main.session.view.renderer['GenericRenderer'].addAnimation(
+					"buoy_" + str(self.getId()), fife.GenericRendererNode(loc),
+					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
+				)
 
 	def set_name(self):
 		self.name = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]

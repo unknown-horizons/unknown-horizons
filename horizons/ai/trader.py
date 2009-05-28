@@ -46,9 +46,9 @@ class Trader(Player, StorageHolder):
 		self._init(id, name, color)
 
 		# create a ship and place it randomly (temporary hack)
-		(x, y) = horizons.main.session.world.water[random.randint(0,len(horizons.main.session.world.water)-1)]
+		(x, y) = horizons.main.session.world.water[random.randint(0, len(horizons.main.session.world.water)-1)]
 		self.ships[horizons.main.session.entities.units[6](x, y)] = self.shipStates.reached_branch
-		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]),self)
+		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
 
 	def _init(self, id, name, color):
 		super(Trader, self)._init(id=id, name=name, color=color)
@@ -180,7 +180,7 @@ class Trader(Player, StorageHolder):
 		"""Called if a ship is idle. Sends ship to a branch office or a random place (which target
 		to use is decided by chance, probability for branch office is 2/3)
 		@param ship: ship instance"""
-		if random.randint(0,100) < 66:
+		if random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
 			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self)
 		else:

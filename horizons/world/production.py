@@ -19,15 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
-
 import horizons.main
 
 from provider import Provider
 from consumer import Consumer
-from units.unit import Unit
 from building.building import Building
-from horizons.util import WeakList
 from horizons.gui.tabwidget import TabWidget
 
 
@@ -35,8 +31,8 @@ class ProductionLine(object):
 	"""Data structur for handling production lines of Producers. A production line
 	is a way of producing something (contains needed and produced resources for this line,
 	as well as the time, that it takes to complete the product."""
-	def __init__(self, id):
-		self.id = id
+	def __init__(self, ident):
+		self.id = ident
 		self.time = horizons.main.db("SELECT time FROM data.production_line WHERE rowid = ?", self.id)[0][0]
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
@@ -70,13 +66,13 @@ class PrimaryProducer(Provider):
 		# need to be stored.
 		# TUTORIAL:
 		# Check that class out now and then come back here.
-		for (id,) in horizons.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
-			self.production[id] = ProductionLine(id)
+		for (ident,) in horizons.main.db("SELECT rowid FROM data.production_line where %(type)s = ?" % {'type' : 'building' if self.object_type == 0 else 'unit'}, self.id):
+			self.production[ident] = ProductionLine(ident)
 
 		self.__used_resources = {}
 		self.toggle_active() # start production
 		if isinstance(self, Building):
-				self.toggle_costs()  # needed to get toggle to the right position
+			self.toggle_costs()  # needed to get toggle to the right position
 
 		"""TUTORIAL:
 		You can check out the further functions in this class if you like, they are rather messy
@@ -108,7 +104,7 @@ class PrimaryProducer(Provider):
 	def save(self, db):
 		super(PrimaryProducer, self).save(db)
 		db("INSERT INTO production(rowid, active_production_line) VALUES(?, ?)", \
-			 self.getId(), self.active_production_line)
+		   self.getId(), self.active_production_line)
 
 	def load(self, db, worldid):
 		super(PrimaryProducer, self).load(db, worldid)
@@ -147,7 +143,9 @@ class PrimaryProducer(Provider):
 						usable_resources[res] = self.inventory[res]
 			if len(usable_resources) == 0:
 				return
-			time = int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)))
+			time = int(round(self.production[self.active_production_line].time *
+							 sum(self.__used_resources.values()) /
+							 -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)))
 		else:
 			time = 0
 		for res, amount in usable_resources.items():
@@ -171,9 +169,9 @@ class PrimaryProducer(Provider):
 
 		# TODO: make following lines readable and document them.
 		horizons.main.session.scheduler.add_new_object(self.production_step, self, 16 *
-		(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
-		else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
-				) - time)))
+			(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
+			else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
+					  ) - time)))
 
 		# change animation to working.
 		# this starts e.g. the growing of trees.

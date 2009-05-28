@@ -20,26 +20,20 @@
 # ###################################################
 
 import math
-import pychan
 import fife
 
 import horizons.main
 
 from horizons.world.building.building import *
-from horizons.world.building.path import Path
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from horizons.i18n import load_xml_translated
 
-"""
-Represents a dangling tool after a building was selected from the list.
-Builder visualizes if and why a building can not be built under the cursor position.
-"""
-
 class BuildingTool(NavigationTool):
-	"""
+	"""Represents a dangling tool after a building was selected from the list.
+	Builder visualizes if and why a building can not be built under the cursor position.
 	@param building: selected building type"
 	@param ship: If building from a ship, restrict to range of ship
 	"""
@@ -51,7 +45,7 @@ class BuildingTool(NavigationTool):
 		self.ship = ship
 		self._class = building
 		self.buildings = []
-		self.rotation = 45 + random.randint(0,3)*90
+		self.rotation = 45 + random.randint(0, 3)*90
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
 		self.load_gui()
@@ -74,7 +68,7 @@ class BuildingTool(NavigationTool):
 					for tile in island.grounds:
 						if ((tile.x - self.ship.position.x) ** 2 + (tile.y - self.ship.position.y) ** 2) <= 25:
 							free = (tile.settlement is None or tile.settlement.owner == horizons.main.session.world.player)
-							horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255,255,255) if free else (0,0,0)))
+							horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
 							if free and tile.object is not None:
 								horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 							found_free = found_free or free

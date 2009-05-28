@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.util import WorldObject
-import horizons.main
 
 class GenericStorage(WorldObject): # TESTED, WORKS
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
@@ -121,7 +120,7 @@ class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
 		self.__size = {}
 
 	def alter(self, res, amount):
-		return amount - super(SizedSpecializedStorage, self).alter(res, amount - max(0, amount + self[res] - self.__size.get(res,0)))
+		return amount - super(SizedSpecializedStorage, self).alter(res, amount - max(0, amount + self[res] - self.__size.get(res, 0)))
 
 	def get_limit(self, res):
 		return self.__size[res]
