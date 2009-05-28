@@ -90,6 +90,6 @@ class Settlement(TradePost, WorldObject):
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			buildingclass = horizons.main.session.entities.buildings[building_type]
-			building = buildingclass.load(db, building_id)
+			buildingclass.load(db, building_id)
 
 		return self

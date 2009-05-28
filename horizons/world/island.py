@@ -58,6 +58,7 @@ class Island(WorldObject):
 	log = logging.getLogger("world.island")
 
 	def __init__(self, origin, filename):
+		super(WorldObject, self).__init__()
 		self.__init(origin, filename)
 
 	def __init(self, origin, filename):
@@ -116,13 +117,13 @@ class Island(WorldObject):
 		horizons.main.session.world.islands.append(self)
 
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
-			settlement = Settlement.load(db, settlement_id)
+			Settlement.load(db, settlement_id)
 
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 
 			buildingclass = horizons.main.session.entities.buildings[building_typeid]
-			building = buildingclass.load(db, building_worldid)
+			buildingclass.load(db, building_worldid)
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""
@@ -244,13 +245,9 @@ class Island(WorldObject):
 		"""Adds a building to the island at the posititon x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
-		# the lines that are commented out, were moved to UnselectableBuilding.__init__()
-		#building.island = self
 		for building.settlement in self.get_settlements(building.position):
 			self.assign_settlement(building.position, building.radius, building.settlement)
 			break
-		#else:
-		#	building.settlement = self.add_settlement(x, y, x + building.size[0] - 1, y + building.size[1] - 1, building.radius, player)
 
 		x, y = building.position.left, building.position.top
 		for xx in xrange(x, x + building.size[0]):

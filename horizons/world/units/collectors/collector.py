@@ -293,8 +293,8 @@ class Collector(StorageHolder, Unit):
 
 class Job(object):
 	"""Data structure for storing information of collector jobs"""
-	def __init__(self, object, res, amount):
-		self._object = weakref.ref(object)
+	def __init__(self, obj, res, amount):
+		self._object = weakref.ref(obj)
 		self.res = res
 		self.amount = amount
 

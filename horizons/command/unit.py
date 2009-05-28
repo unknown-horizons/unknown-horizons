@@ -53,7 +53,6 @@ class CreateUnit(object):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		from horizons.util import WorldObject
 		building = WorldObject.get_object_by_id(self.building_id)
 		building.produce(self.prodline_id)
 

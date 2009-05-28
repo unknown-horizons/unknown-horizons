@@ -30,6 +30,7 @@ from island import Island
 from player import Player
 from horizons.util import Point, Color
 from horizons.util.living import LivingObject
+from horizons.ai.trader import Trader
 
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -149,7 +150,6 @@ class World(LivingObject):
 
 		if horizons.main.session.is_game_loaded():
 			# for now, we have one trader in everygame, so this is safe:
-			from horizons.ai.trader import Trader
 			trader_id = db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(db, trader_id)
 
@@ -176,7 +176,6 @@ class World(LivingObject):
 				print "Done."
 
 			# add free trader
-			from horizons.ai.trader import Trader
 			self.trader = Trader(99999, "Free Trader", Color())
 
 			# Fire a message for new world creation

@@ -32,6 +32,7 @@ class Ground(WorldObject):
 		@param x: int x position the ground is created.
 		@param y: int y position the ground is created.
 		"""
+		super(Ground, self).__init__()
 		if self._object is None:
 			self.__class__._loadObject()
 		self.x = x

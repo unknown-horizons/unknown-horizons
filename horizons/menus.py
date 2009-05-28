@@ -30,7 +30,8 @@ from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import Socket, ServerConnection, ClientConnection
 from horizons.savegamemanager import SavegameManager
-from i18n import load_xml_translated
+from horizons.i18n import load_xml_translated, update_all_translations
+from horizons.i18n.utils import find_available_languages
 
 class Menus(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
@@ -106,7 +107,7 @@ class Menus(object):
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
 			def _escape():
-				horizons.main.fife.pychan.get_manager().breakFromMainLoop(onPressEscape)
+				horizons.main.fife.pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 				dlg.hide()
 			tmp_escape = self.on_escape
 			self.on_escape = _escape
@@ -135,7 +136,6 @@ class Menus(object):
 		except:
 			resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 
-		from i18n.utils import find_available_languages
 
 		languages_map = dict(reversed(find_available_languages()))
 		languages_map[_('System default')] = ''
@@ -239,7 +239,6 @@ class Menus(object):
 			else:
 				gettext.install('unknownhorizons', 'po', unicode=1)
 				settings.language.name=''
-			from i18n import update_all_translations
 			update_all_translations()
 
 		if changes_require_restart:

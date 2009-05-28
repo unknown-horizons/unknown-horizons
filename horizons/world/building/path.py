@@ -50,7 +50,6 @@ class Path(Building, BuildableLine):
 		super(Path, self).remove()
 		origin = self.position.origin
 		self.island().unregisterPath(self)
-		island = horizons.main.session.world.get_island(origin.x, origin.y)
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculate_orientation()

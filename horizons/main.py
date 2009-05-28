@@ -56,6 +56,7 @@ from session import Session
 from gui.mainlistener import MainListener
 from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
+from i18n import update_all_translations
 
 
 
@@ -100,7 +101,6 @@ def start(command_line_arguments):
 		trans.install(unicode=1)
 	else:
 		install('unknownhorizons', 'po', unicode=1)
-	from i18n import update_all_translations
 	update_all_translations()
 
 	if settings.client_id is None:

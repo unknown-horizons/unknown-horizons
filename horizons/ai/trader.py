@@ -50,8 +50,8 @@ class Trader(Player, StorageHolder):
 		self.ships[horizons.main.session.entities.units[6](x, y)] = self.shipStates.reached_branch
 		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
 
-	def _init(self, id, name, color):
-		super(Trader, self)._init(id=id, name=name, color=color)
+	def _init(self, ident, name, color):
+		super(Trader, self)._init(id=ident, name=name, color=color)
 		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
 		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
 

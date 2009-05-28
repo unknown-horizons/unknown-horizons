@@ -48,8 +48,8 @@ class Build(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
-		for id in self.tear:
-			building = WorldObject.get_object_by_id(id)
+		for ident in self.tear:
+			building = WorldObject.get_object_by_id(ident)
 			horizons.main.session.manager.execute(Tear(building))
 
 

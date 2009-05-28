@@ -33,6 +33,7 @@ class MessageWidget(LivingObject):
 	archive.
 	@param x,y: int position where the widget is placed on the screen."""
 	def __init__(self, x, y):
+		super(LivingObject, self).__init__()
 		self.x, self.y = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # mesages, that aren'y displayed any more

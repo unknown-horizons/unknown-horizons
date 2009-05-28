@@ -25,8 +25,8 @@ import re
 class DbReader(object):
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
-	def __init__(self, file):
-		self.connection = sqlite3.connect(file)
+	def __init__(self, dbfile):
+		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
 		self.connection.text_factory = str
 		def regexp(expr, item):

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from guitranslations import set_translations
+from guitranslations import set_translations, text_translations
 import horizons.main
 
 set_translations()
@@ -33,7 +33,6 @@ def set_title(widget, title):
 	gui.findChild(name=widget).title = title
 
 def load_xml_translated(filename):
-	from guitranslations import text_translations
 	#print text_translations
 	global all_translated_widgets
 	try:
@@ -60,7 +59,6 @@ def load_xml_translated(filename):
 
 def update_all_translations():
 	set_translations()
-	from guitranslations import text_translations
 	global all_translated_widgets
 	for pair in all_translated_widgets.items():
 		for i in text_translations[pair[0]].items():
