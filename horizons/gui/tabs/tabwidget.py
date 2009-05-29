@@ -23,7 +23,9 @@ import pychan
 from horizons.i18n import load_xml_translated
 
 class TabWidget(object):
-
+	"""The TabWidget class handles widgets which consist of many different tabs(subpanels,
+	switchable via buttons(TabButtons).
+	"""
 
 	def __init__(self, tabs=[], position=None):
 		super(TabWidget, self).__init__()
@@ -34,11 +36,11 @@ class TabWidget(object):
 			self.position = position
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_xml_translated("content/gui/tab_base.xml") # TODO create this widget
+		self.content = self.widget.findChild(name='content')
 		self.init_tabs()
 
 	def init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
-		content = self.widget.findChild(name='content')
 		# Load buttons
 		for index, tab in enumerate(_tabs):
 			button = ImageButton()
@@ -50,15 +52,19 @@ class TabWidget(object):
 			button.down_image = tab.button_down_image
 			button.hover_image = tab.button_hover_image
 			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
-			content.addChild(button)
+			self.content.addChild(button)
 
 	def show_tab(self, number):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
 		self.current_tab.hide()
-		self.widget.findChild(name='content').findChild() # TODO: add button image switching
-		self.current_tab = self._tabs[number]
+		new_tab = self._tabs[number]
+		old_button = self.content.findChild(name=str(self._tabs.index(self.current_tab)))
+		old_button.up_image = self.current_tab.button_up_image
+		new_button = self.content.findChild(name=str(number))
+		new_button.up_image = new_tab.button_active_image
+		self.current_tab = new_tab
 		self.show()
 
 	def draw_widget(self):
