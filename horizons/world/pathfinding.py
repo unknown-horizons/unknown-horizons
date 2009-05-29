@@ -40,7 +40,7 @@ class Movement:
 	SHIP_MOVEMENT: move on water
 	"""
 	(SOLDIER_MOVEMENT, STORAGE_COLLECTOR_MOVEMENT, \
-	 SHIP_MOVEMENT, COLLECTOR_MOVEMENT) = xrange(0,4)
+	 SHIP_MOVEMENT, COLLECTOR_MOVEMENT) = xrange(0, 4)
 
 def check_path(path, blocked_coords):
 	""" debug function to check if a path is valid """
@@ -81,7 +81,7 @@ class FindPath(object):
 		"""
 		@param source: Rect, Point or Building
 		@param destination: Rect, Point or Building
-		@param path_nodes: dict { (x,y) = speed_on_coords }  or list [(x,y), ..]
+		@param path_nodes: dict { (x, y) = speed_on_coords }  or list [(x, y), ..]
 		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of
 		@param diagonal: wether the unit is able to move diagonally
 		@return: list of coords as tuples that are part of the best path
@@ -136,7 +136,7 @@ class FindPath(object):
 
 	def execute(self):
 		"""Executes algorithm"""
-		# nodes are the keys of the following dicts (x,y)
+		# nodes are the keys of the following dicts (x, y)
 		# the val of the keys are: [previous node, distance to this node from source,
 		# distance to destination, sum of the last two elements]
 
@@ -180,16 +180,16 @@ class FindPath(object):
 			# find possible neighbors
 			if self.diagonal:
 				# all relevant ajacent neighbors
-				neighbors = [ i for i in [(xx,yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2)] if \
+				neighbors = [ i for i in [(xx, yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2)] if \
 											(i in self.path_nodes or \
 											 i in source_coords or \
 											 i in dest_coords) and\
 											i not in checked and \
-											i != (x,y) and \
+											i != (x, y) and \
 											i not in self.blocked_coords ]
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = [ i for i in [(x-1,y), (x+1,y), (x,y-1), (x,y+1) ] if \
+				neighbors = [ i for i in [(x-1, y), (x+1, y), (x, y-1), (x, y+1) ] if \
 											(i in self.path_nodes  or \
 											 i in source_coords or \
 											 i in dest_coords ) and \

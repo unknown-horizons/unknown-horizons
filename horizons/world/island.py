@@ -40,7 +40,7 @@ class Island(WorldObject):
 	Each island holds some important attributes:
 	* grounds - All grounds that belong to the island are referenced here.
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
-	                  { (x,y): tileref, ...}
+	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
 	* buildings - a list of all Building instances that are present on the island.
 	* settlements - a list of all Settlement instances that are present on the island.
@@ -178,8 +178,8 @@ class Island(WorldObject):
 		@return: list of Settlement instances at that position."""
 		settlements = []
 		if self.rect.intersects(rect):
-			for x,y in rect.get_coordinates():
-				tile = self.get_tile(Point(x,y))
+			for x, y in rect.get_coordinates():
+				tile = self.get_tile(Point(x, y))
 				if tile is not None and tile.settlement is not None and tile.settlement not in settlements:
 					settlements.append(tile.settlement)
 			#for tile in self.grounds:
@@ -306,7 +306,7 @@ class Island(WorldObject):
 
 	def is_walkable(self, coord, check_coord_is_on_island = True):
 		"""Check if a unit make walk on the tile specified by coord
-		@param coord: tuple: (x,y)
+		@param coord: tuple: (x, y)
 		@param check_coord_is_on_island: bool, wether to check if coord is on this island
 		"""
 		#if self.a:self.log.debug("is_walkable 0")
@@ -332,7 +332,7 @@ class Island(WorldObject):
 		of the island. Does not change the tile itself.
 		You need to call this when a tile changes, e.g. when a building is built on it. this
 		is currently done in add/remove_building
-		@param coord: tuple: (x,y)"""
+		@param coord: tuple: (x, y)"""
 		self.log.debug("reset tile walkability on %s %s", coord[0], coord[1])
 		acctually_walkable = self.is_walkable(coord)
 		in_list = (coord in self.walkable_tiles)

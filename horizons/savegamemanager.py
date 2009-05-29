@@ -78,7 +78,8 @@ class SavegameManager(object):
 		@param files: iterable object containing strings"""
 		displaynames = []
 		def get_timestamp_string(savegameinfo):
-			if savegameinfo['timestamp'] == -1: return ""
+			if savegameinfo['timestamp'] == -1:
+				return ""
 			else:
 				return time.strftime("%y/%m/%d %H:%M", time.localtime(savegameinfo['timestamp']))
 
@@ -163,18 +164,18 @@ class SavegameManager(object):
 
 	def get_regular_saves(self, include_displaynames = True):
 		"""Returns the savegames, that were saved via the ingame save dialog"""
-		return self.__get_saves_from_dirs([self.savegame_dir],\
-																			include_displaynames = include_displaynames)
+		return self.__get_saves_from_dirs([self.savegame_dir], \
+										  include_displaynames = include_displaynames)
 
 	def get_saves(self, include_displaynames = True):
 		"""Returns all savegames"""
-		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir,\
-																			 self.quicksave_dir, self.demo_dir],\
-																			include_displaynames = include_displaynames)
+		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir, \
+										   self.quicksave_dir, self.demo_dir], \
+										  include_displaynames = include_displaynames)
 
 	def get_quicksaves(self, include_displaynames = True):
-		return self.__get_saves_from_dirs([self.quicksave_dir],\
-																			include_displaynames = include_displaynames)
+		return self.__get_saves_from_dirs([self.quicksave_dir], \
+										  include_displaynames = include_displaynames)
 
 
 	@classmethod

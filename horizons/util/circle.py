@@ -30,10 +30,10 @@ class Circle(object):
 
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the circle"""
-		return [ (x,y) for \
+		return [ (x, y) for \
 						 x in range(self.center.x-self.radius, self.center.x+self.radius+1) for \
 						 y in range(self.center.y-self.radius, self.center.y+self.radius+1) if \
-						 self.center.distance((x,y)) <= self.radius ]
+						 self.center.distance((x, y)) <= self.radius ]
 
 from encoder import register_classes
 register_classes(Circle)

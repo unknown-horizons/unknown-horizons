@@ -64,7 +64,7 @@ class Growable(object):
 		return
 		""" Executes next action """
 		import time
-		#print 'CALLED NEXT_ANI, id',self.id,self, "AT", time.time()
+		#print 'CALLED NEXT_ANI, id',self.id, self, "AT", time.time()
 		try:
 			self.action = self.action_iter.next()
 		except StopIteration:
@@ -99,7 +99,7 @@ class Growable(object):
 
 		Useful if e.g. a tree is cut down
 		"""
-		#print 'RESTARTING ANI, id',self.id,self
+		#print 'RESTARTING ANI, id',self.id, self
 		self.action_iter = iter(self.actions)
 		self.loop_until = -1 # force recalculation
 		self.next_animation()

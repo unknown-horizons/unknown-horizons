@@ -27,7 +27,7 @@ from horizons.packets import QueryPacket, InfoPacket
 import time
 
 class Server(object):
-	re_ip_port = re.compile("^((?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1,2}|2(?:[0-4][0-9]|5[0-5])))(?::((?:[0-5]?[0-9]{1,4}|6(?:[0-4][0-9]{3}|5(?:[0-4][0-9]{2}|5(?:[0-2][0-9]|3[0-5]))))))?$")
+	re_ip_port = re.compile("^((?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5])))(?::((?:[0-5]?[0-9]{1, 4}|6(?:[0-4][0-9]{3}|5(?:[0-4][0-9]{2}|5(?:[0-2][0-9]|3[0-5]))))))?$")
 
 	"""This represents a server in the serverlist
 	@param address: the address
@@ -178,7 +178,7 @@ class WANServerList(ServerList):
 		wan_servers = []
 		try:
 			wan_servers = (urllib.urlopen(horizons.main.settings.network.url_servers))
-		except IOError,e:
+		except IOError, e:
 			horizons.main.gui.show_popup(_("Network Error"), _("Error: ")+e.strerror[1])
 
 		for server in wan_servers:

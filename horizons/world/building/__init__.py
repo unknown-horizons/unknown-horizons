@@ -114,7 +114,7 @@ class BuildingClass(type):
 				for rotation in horizons.main.action_sets[action_set_id][action_id].keys():
 					#print "rotation:", rotation
 					if rotation == 45:
-						command = 'left-32,bottom+' + str(cls.size[0] * 16)
+						command = 'left-32, bottom+' + str(cls.size[0] * 16)
 					elif rotation == 135:
 						command = 'left-' + str(cls.size[1] * 32) + ',bottom+16'
 					elif rotation == 225:

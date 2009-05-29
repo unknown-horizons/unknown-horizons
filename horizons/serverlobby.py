@@ -72,15 +72,15 @@ class MasterServerLobby(ServerLobby):
 
 	This class has the privileges to change important game settings
 	"""
-	def __init__(self,gui):
+	def __init__(self, gui):
 		super(MasterServerLobby, self).__init__(gui)
 		o = horizons.main.connection.mpoptions
 		o['maps'] = horizons.main.getMaps(showOnlySaved = False)
 		o['bots'] = 0
 		self.gui.distributeInitialData({
-			'server_slots' : range(2,9),
+			'server_slots' : range(2, 9),
 			'maplist' : o['maps'][1],
-			'bots' : range(0,1)
+			'bots' : range(0, 1)
 		})
 		self.gui.distributeData({
 			'server_slots' : 2, # 2 means 4 slots

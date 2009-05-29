@@ -51,7 +51,7 @@ def encode(obj):
 		return 'd' + str(len(obj)) + ''.join(encode(i) + encode(j) for i, j in obj.items())
 	if obj.__class__ in classes:
 		attrs = [i for i in dir(obj) if type(i) != str or i[0] != '_']
-		return 'o' + encode(obj.__class__.__name__) + str(len(attrs)) + ''.join(encode(i) + encode(getattr(obj,i)) for i in attrs)
+		return 'o' + encode(obj.__class__.__name__) + str(len(attrs)) + ''.join(encode(i) + encode(getattr(obj, i)) for i in attrs)
 	raise NotImplementedError("Cant handle object " + repr(obj.__class__))
 
 def decode(text):

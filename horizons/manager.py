@@ -29,7 +29,7 @@ from util.worldobject import WorldObject
 from util.living import LivingObject
 
 class SPManager(LivingObject):
-	"""The manager class takes care of command issuing to the timermanager,sends tick-packets
+	"""The manager class takes care of command issuing to the timermanager, sends tick-packets
 	over the network, and syncronisation of network games."""
 
 	def __init__(self):

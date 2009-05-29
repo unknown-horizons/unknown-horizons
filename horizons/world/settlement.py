@@ -47,7 +47,7 @@ class Settlement(TradePost, WorldObject):
 		self.inventory.addChangeListener(self._changed)
 
 	def get_building(self, point):
-		"""Returns the building at the position (x,y)
+		"""Returns the building at the position (x, y)
 		@param point: position to look at
 		@return: Building class instance or None if none is found.
 		"""

@@ -32,7 +32,7 @@ class Player(WorldObject):
 		@param name: user-chosen name
 		@param color: color of player (as Color)
 		"""
-		self._init(id, name,color)
+		self._init(id, name, color)
 
 		# give a new player 20k coins
 		self.inventory.alter(1, 20000)

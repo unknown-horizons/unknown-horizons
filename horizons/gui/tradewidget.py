@@ -63,7 +63,7 @@ class TradeWidget(object):
 			inv = self.widget.findChild(name='inventory_ship')
 			inv.inventory = self.main_instance.inventory
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
-				button.button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id,self.main_instance, self.partner))
+				button.button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.main_instance, self.partner))
 			self.widget._recursiveResizeToContent()
 
 

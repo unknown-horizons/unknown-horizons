@@ -26,7 +26,7 @@ from horizons.util import Point, WorldObject
 class Act(object):
 	"""Command class that moves a unit.
 	@param unit_fife_id: int FifeId of the unit that is to be moved.
-	@param x,y: float coordinates where the unit is to be moved.
+	@param x, y: float coordinates where the unit is to be moved.
 	@param layer: the layer the unit is present on.
 	"""
 	def __init__(self, unit, x, y):
@@ -43,7 +43,7 @@ class Act(object):
 class CreateUnit(object):
 	"""Command class that creates a unit.
 	@param id: Unit id that is to be created.
-	@param x,y: Units initial position
+	@param x, y: Units initial position
 	"""
 	def __init__(self, building_id, prodline_id):
 		self.building_id = building_id

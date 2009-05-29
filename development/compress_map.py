@@ -40,7 +40,7 @@ for filename in args:
 	infile = None
 	try:
 		infile = open(filename, "r")
-	except IOError,e:
+	except IOError, e:
 		print "Error:",e.message
 		continue
 

@@ -93,7 +93,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
-		self.settlement.owner.inventory.alter(1,self.tax_income*self.inhabitants)
+		self.settlement.owner.inventory.alter(1, self.tax_income*self.inhabitants)
 		#print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
 
 	def inhabitant_check(self):
@@ -103,7 +103,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 		else:
 			content = 0
 		if self.inhabitants < self.inhabitants_max:
-			addition = randint(-1,1) + content
+			addition = randint(-1, 1) + content
 			addition = min(self.inhabitants_max, max(1, self.inhabitants + addition)) - self.inhabitants
 			self.inhabitants += addition
 

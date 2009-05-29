@@ -40,9 +40,9 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 		self.animals = []
 
 		# NOTE: animals have to be created before the AnimalCollector
-		for (animal,number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
+		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
 		                                    WHERE building_id = ?", self.id):
-			for i in xrange(0,number):
+			for i in xrange(0, number):
 				horizons.main.session.entities.units[animal](self)
 				# animal appends itself to self.animals
 
@@ -84,8 +84,8 @@ class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		#todo: check cost line
 		coast_tile_found = False
-		for xx,yy in [ (xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			tile = island.get_tile(Point(xx,yy))
+		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			tile = island.get_tile(Point(xx, yy))
 			classes = tile.__class__.classes
 			if 'coastline' in classes:
 				coast_tile_found = True

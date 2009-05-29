@@ -61,7 +61,7 @@ class BuySellWidget(object):
 		@param num: amount of slots that are to be added."""
 		content = self.widget.findChild(name="content")
 		assert(content is not None)
-		for num in range(0,num):
+		for num in range(0, num):
 			slot = load_xml_translated('buysellmenu/single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
@@ -182,12 +182,12 @@ class BuySellWidget(object):
 		# or bought resource
 		if self.slots[slot_id].res is not None:
 			resources.insert(0,(0,"content/gui/images/icons/hud/build/dummy_btn.png"))
-		for (res_id,icon) in resources:
+		for (res_id, icon) in resources:
 			if res_id in [1, 2, 7, 8, 9, 10, 11]:
 				continue # don't show coins, lamb wool, wood etc. Temp hack. Should be replaced by resource groups
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
-			button = pychan.widgets.ImageButton(size=(50,50))
+			button = pychan.widgets.ImageButton(size=(50, 50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.add_ressource, res_id, slot_id))
 			current_hbox.addChild(button)

@@ -121,19 +121,19 @@ def _save(file, engine, map):
 	already = []
 	for instance in instances:
 		coord = instance.getLocation().getLayerCoordinates()
-		x,y = int(coord.x), int(coord.y)
+		x, y = int(coord.x), int(coord.y)
 		if (int(x), int(y)) not in already:
 			ground_id = int(instance.getObject().getId().split(':')[0])
 			rotation = instance.getRotation()
 			if rotation != 0:
 				ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
-			db('insert into island.ground (x,y,ground_id) values (?, ?, ?)',x,y,ground_id)
+			db('insert into island.ground (x, y, ground_id) values (?, ?, ?)',x, y, ground_id)
 			already.append((int(x), int(y)))
 
 	db("detach island")
 
 def pathsplit(p, rest=[]):
-	(h,t) = os.path.split(p)
+	(h, t) = os.path.split(p)
 	if len(h) < 1: return [t]+rest
 	if len(t) < 1: return [h]+rest
 	return pathsplit(h,[t]+rest)
@@ -145,7 +145,7 @@ def commonpath(l1, l2, common=[]):
 	return commonpath(l1[1:], l2[1:], common+[l1[0]])
 
 def relpath(p1, p2):
-	(common,l1,l2) = commonpath(pathsplit(p1), pathsplit(p2))
+	(common, l1, l2) = commonpath(pathsplit(p1), pathsplit(p2))
 	p = []
 	if len(l1) > 0:
 		p = [ '../' * len(l1) ]

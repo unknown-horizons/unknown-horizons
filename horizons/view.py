@@ -46,7 +46,7 @@ class View(Changelistener):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(0,3):
+		for i in xrange(0, 3):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 		self.view = horizons.main.fife.engine.getView()
@@ -60,7 +60,7 @@ class View(Changelistener):
 
 		self.view.resetRenderers()
 		self.renderer = {}
-		for r in ('CameraZoneRenderer','InstanceRenderer','GridRenderer','CellSelectionRenderer','BlockingInfoRenderer','FloatingTextRenderer','QuadTreeRenderer','CoordinateRenderer','GenericRenderer'):
+		for r in ('CameraZoneRenderer', 'InstanceRenderer', 'GridRenderer', 'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer', 'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))
@@ -105,8 +105,6 @@ class View(Changelistener):
 				horizons.main.fife.pump.append(self.do_autoscroll)
 
 	def do_autoscroll(self):
-		"""
-		"""
 		t = time.time()
 		self.scroll(self._autoscroll[0] * 16 * (t - self.time_last_autoscroll), self._autoscroll[1] * 16 * (t - self.time_last_autoscroll))
 		self.time_last_autoscroll = t

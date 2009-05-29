@@ -105,7 +105,7 @@ class TearingTool(NavigationTool):
 		if edges is not None:
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
-					b = horizons.main.session.world.get_building(x,y)
+					b = horizons.main.session.world.get_building(x, y)
 					if b is not None and b not in self.selected and not isinstance(b, StorageBuilding):
 						self.selected.append(b)
 			for i in self.selected:

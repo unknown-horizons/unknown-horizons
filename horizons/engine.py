@@ -42,12 +42,12 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 	def loadResource(self, location):
 		"""
 		@param location: String with the location. See below for details:
-		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16,bottom-8)
+		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
 		Available commands:
 		- shift:
 		Shift the image using the params left, right, center, middle for x shifting and
 		y-shifting with the params: top, bottom, center, middle.
-		A param looks like this: "param_x(+/-)value,param_y(+/-)value" (e.g.: left-16,bottom+8)
+		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
 		- cut:
 		#TODO: complete documentation
 		"""
@@ -64,7 +64,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		#print _("Loading animation #%s...") % (id)
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file,frame_end in sorted(horizons.main.action_sets[actionset][action][int(rotation)].iteritems()):
+		for file, frame_end in sorted(horizons.main.action_sets[actionset][action][int(rotation)].iteritems()):
 			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
 			img = horizons.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:
@@ -138,7 +138,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 
 					idx = horizons.main.fife.imagepool.addResourceFromLocation(loc)
 					#img = horizons.main.fife.imagepool.getImage(idx)
-			ani.addFrame(fife.ResourcePtr(horizons.main.fife.imagepool,idx), max(1,int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(fife.ResourcePtr(horizons.main.fife.imagepool, idx), max(1, int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		ani.thisown = 0
@@ -304,7 +304,7 @@ class Fife(object):
 	def set_volume(self, emitter_name, value):
 		"""Sets the volume on the emitter specified by emitter_name.
 		@param emitter_name: string with the emitters name, used as key for the self.emitter dict
-		@param value: double which value the emitter is to be set to range[0,1]
+		@param value: double which value the emitter is to be set to range[0, 1]
 		"""
 		if horizons.main.settings.sound.enabled:
 			self.emitter[emitter_name].setGain(value)

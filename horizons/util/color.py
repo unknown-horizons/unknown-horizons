@@ -40,7 +40,7 @@ class ColorMeta(type):
 	def __getitem__(cls, key):
 		if key == 0:
 			return None
-		r,g,b = horizons.main.db('SELECT red,green,blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
+		r, g, b = horizons.main.db('SELECT red, green, blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
 		c = Color(r, g, b)
 		return c
 
@@ -61,7 +61,7 @@ class Color(object):
 		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
 		try:
-			self.name, self.id = horizons.main.db('SELECT name,rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
+			self.name, self.id = horizons.main.db('SELECT name, rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
 		except:
 			pass
 

@@ -69,7 +69,7 @@ class Menus(object):
 		self.current = self.widgets['mainmenu']
 		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
 		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
-		eventMap = {
+		event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
 			'settingsLink' : self.show_settings,
@@ -79,7 +79,7 @@ class Menus(object):
 			'loadgameButton' : self.load_game,
 			'dead_link'	 : self.on_chime
 		}
-		self.current.mapEvents(eventMap)
+		self.current.mapEvents(event_map)
 		self.current.show()
 		self.on_escape = self.show_quit
 
@@ -145,8 +145,8 @@ class Menus(object):
 		dlg.distributeInitialData({
 			'language' : languages_map.keys(),
 			'autosaveinterval' : range(0, 60, 2),
-			'savedautosaves' : range(1,30),
-			'savedquicksaves' : range(1,30),
+			'savedautosaves' : range(1, 30),
+			'savedquicksaves' : range(1, 30),
 			'screen_resolution' : resolutions,
 			'screen_renderer' : ["OpenGL", "SDL"],
 			'screen_bpp' : ["Desktop", "16", "24", "32"]
@@ -205,7 +205,7 @@ class Menus(object):
 			settings.savegame.autosaveinterval = (new_settings['autosaveinterval'])*2
 			#print settings.savegame.autosaveinterval
 		if new_settings['savedautosaves']+1 != settings.savegame.savedautosaves:
-			settings.savegame.savedautosaves =new_settings['savedautosaves']+1
+			settings.savegame.savedautosaves = new_settings['savedautosaves']+1
 		if new_settings['savedquicksaves']+1 != settings.savegame.savedquicksaves:
 			settings.savegame.savedquicksaves = new_settings['savedquicksaves']+1
 		if new_settings['screen_fullscreen'] != settings.fife.screen.fullscreen:
@@ -238,7 +238,7 @@ class Menus(object):
 				trans.install(unicode=1)
 			else:
 				gettext.install('unknownhorizons', 'po', unicode=1)
-				settings.language.name=''
+				settings.language.name = ''
 			update_all_translations()
 
 		if changes_require_restart:
@@ -264,9 +264,9 @@ class Menus(object):
 		popup.findChild(name='popup_window').title = _(unicode(_(windowtitle)))
 		popup.findChild(name='popup_message').text = _(unicode(_(message)))
 		if show_cancel_button:
-			return self.show_dialog(popup,{'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
+			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:
-			return self.show_dialog(popup,{'okButton' : True}, onPressEscape = True)
+			return self.show_dialog(popup, {'okButton' : True}, onPressEscape = True)
 
 	def show_pause(self):
 		"""
@@ -276,7 +276,7 @@ class Menus(object):
 		self.current = self.widgets['gamemenu']
 		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
 		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
-		eventMap = {
+		event_map = {
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
 			'savegameButton' : self.save_game,
@@ -285,7 +285,7 @@ class Menus(object):
 			'settingsLink'   : self.show_settings,
 			'dead_link'	 : self.on_chime
 		}
-		self.current.mapEvents(eventMap)
+		self.current.mapEvents(event_map)
 		self.current.show()
 		horizons.main.session.speed_pause()
 		self.on_escape = self.return_to_game
@@ -363,7 +363,7 @@ class Menus(object):
 			})
 		else:
 			self.current.findChild(name="random")._parent.removeChild(self.current.findChild(name="random"))
-			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet Implemented'),_("Sorry, the random map feature isn't yet implemented."))
+			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet Implemented'), _("Sorry, the random map feature isn't yet implemented."))
 
 			# get the map files and their display names
 			self.current.files, maps_display = self.get_maps(showCampaign, showLoad=False)
@@ -436,17 +436,15 @@ class Menus(object):
 		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
 		self.current.server = []
 		def _close():
-			"""
-			"""
 			self.current.serverList.end()
 			self.current.serverList = None
 			self.show_main()
-		eventMap = {
+		event_map = {
 			'cancel'  : _close,
 			'create'  : self.show_create_server,
 			'join'    : self.show_join_server
 		}
-		self.current.mapEvents(eventMap)
+		self.current.mapEvents(event_map)
 		self.current.show()
 		self.on_escape = _close
 		self.current.oldServerType = None
@@ -483,8 +481,6 @@ class Menus(object):
 			self.current.serverList.changed = lambda : None
 			self.current.serverList.update()
 		def _changed():
-			"""
-			"""
 			servers = []
 			for server in self.current.serverList:
 				servers.append(str(server))
@@ -539,7 +535,7 @@ class Menus(object):
 
 		server_id = self.current.collectData('list')
 		if server_id == -1: # no server selected
-			self.show_popup(_('Error'),_('You have to select a server'))
+			self.show_popup(_('Error'), _('You have to select a server'))
 			return
 		server = self.current.serverList[server_id]
 		self.current.serverList.end()
@@ -597,7 +593,7 @@ class Menus(object):
 			except:
 				gui.adaptLayout()
 				return
-			details_label = horizons.main.fife.pychan.widgets.Label(min_size=(140,0),max_size=(140,290), wrap_text=True)
+			details_label = horizons.main.fife.pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:

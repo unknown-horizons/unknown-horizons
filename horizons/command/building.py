@@ -27,7 +27,7 @@ class Build(object):
 	def __init__(self, building, x, y, rotation, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
 		@param building: building class that is to be built.
-		@param x,y: int coordinates where the object is to be built.
+		@param x, y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		@param tear: list of buildings to be teared
 		@param ship: ship instance

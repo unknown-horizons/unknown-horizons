@@ -27,7 +27,7 @@ storage = Storage(5, 40)
 
 print "Test1 - Adding 4 ressources with various amounts"
 test = True
-for i in range(1,5):
+for i in range(1, 5):
 	res = storage.alter_inventory(i, i*10)
 	print res
 	if res == 0:

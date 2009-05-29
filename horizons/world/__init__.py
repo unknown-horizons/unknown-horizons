@@ -39,7 +39,7 @@ class World(LivingObject):
 	   * islands - a list of all the map's islands - Island instances
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
-	                  { (x,y): tileref, ...}
+	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
@@ -120,10 +120,10 @@ class World(LivingObject):
 		self.water = {}
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
-				self.water[(x,y)] = 1
+				self.water[(x, y)] = 1
 		for i in self.islands:
 			for g in i.grounds:
-				del self.water[(g.x,g.y)]
+				del self.water[(g.x, g.y)]
 		self.water = self.water.keys()
 		print "Adding %d water tiles..." % (len(self.water),)
 		self.grounds = []
@@ -132,7 +132,7 @@ class World(LivingObject):
 		for x, y in self.water:
 			ground = default_grounds(x, y)
 			self.grounds.append(ground)
-			self.ground_map[(x,y)] = weakref.ref(ground)
+			self.ground_map[(x, y)] = weakref.ref(ground)
 		print "Done."
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
@@ -163,7 +163,7 @@ class World(LivingObject):
 				from horizons.command.building import Build
 				for island in self.islands:
 					for tile in island.ground_map.keys():
-						if random.randint(0,10) < 3 and "constructible" in island.ground_map[tile]().classes:
+						if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
 							horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
 							"""
 						elif random.randint(0, 20) < 1:
@@ -209,8 +209,8 @@ class World(LivingObject):
 		return self.ground_map[(point.x, point.y)]()
 
 	def get_building(self, x, y):
-		"""Returns the building at the position x,y.
-		@param x,y: int coordinates.
+		"""Returns the building at the position x, y.
+		@param x, y: int coordinates.
 		@return: Building class instance if a building is found, else None."""
 		if horizons.main.debug:
 			print "World get_building"
@@ -235,7 +235,7 @@ class World(LivingObject):
 		for island in horizons.main.session.world.islands:
 			for settlement in island.settlements:
 				for building in settlement.buildings:
-					if isinstance(building,horizons.world.building.storages.BranchOffice):
+					if isinstance(building, horizons.world.building.storages.BranchOffice):
 						branchoffices.append(building)
 		return branchoffices
 

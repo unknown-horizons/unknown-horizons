@@ -37,7 +37,7 @@ def load_xml_translated(filename):
 	global all_translated_widgets
 	try:
 		untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
-	except (IOError,ValueError), e:
+	except (IOError, ValueError), e:
 		print e
 		untranslated = horizons.main.fife.pychan.loadXML(filename)
 

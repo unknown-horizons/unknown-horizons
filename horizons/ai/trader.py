@@ -116,7 +116,7 @@ class Trader(Player, StorageHolder):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
 		# find random position
-		rand_water_id = random.randint(0,len(horizons.main.session.world.water)-1)
+		rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
 		(x, y) = horizons.main.session.world.water[rand_water_id]
 		# move ship there:
 		ship.move(Point(x, y), lambda: self.ship_idle(ship))
@@ -132,7 +132,7 @@ class Trader(Player, StorageHolder):
 			self.send_ship_random(ship)
 		else:
 			# select a branch office
-			rand = random.randint(0,len(branchoffices)-1)
+			rand = random.randint(0, len(branchoffices)-1)
 			self.office[ship.id] = branchoffices[rand]
 			for water in horizons.main.session.world.water: # get a position near the branch office
 				if Point(water[0],water[1]).distance(self.office[ship.id].position) < 3:

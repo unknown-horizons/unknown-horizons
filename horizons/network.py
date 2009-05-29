@@ -98,7 +98,7 @@ class Socket(object):
 		"""
 		data = pickle.dumps(packet)
 		#print 'SEND', packet, 'TO', packet.address, packet.port
-		self._socket.sendto('OA' + struct.pack('I',len(data)) + data, (packet.address, packet.port))
+		self._socket.sendto('OA' + struct.pack('I', len(data)) + data, (packet.address, packet.port))
 
 	def receive(self, packet):
 		"""Hook this function to receive packets
@@ -162,7 +162,7 @@ class ClientConnection(Connection):
 
 	keepAliveInterval = 1.5
 
-	STATE_DISCONNECTED, STATE_CONNECTING, STATE_CONNECTED = range(0,3)
+	STATE_DISCONNECTED, STATE_CONNECTING, STATE_CONNECTED = range(0, 3)
 
 	def __init__(self):
 		super(ClientConnection, self).__init__()
@@ -178,7 +178,7 @@ class ClientConnection(Connection):
 		horizons.main.ext_scheduler.add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
 
 	def onPacket(self, packet):
-		#print 'RECV', packet,'FROM',packet.address,packet.port
+		#print 'RECV', packet,'FROM',packet.address, packet.port
 		packet.handleOnClient()
 
 	def sendKeepAlive(self):
@@ -316,5 +316,5 @@ class ServerConnection(Connection):
 		self.registerTime = time.time()
 
 	def onPacket(self, packet):
-		#print 'RECV', packet,'FROM',packet.address,packet.port
+		#print 'RECV', packet,'FROM',packet.address, packet.port
 		packet.handleOnServer()

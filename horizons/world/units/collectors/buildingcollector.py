@@ -102,7 +102,7 @@ class BuildingCollector(Collector):
 				# Prevent the collector from picking up resources from building needing it's resources for production
 				if isinstance(building, PrimaryProducer) and \
 					 building.active_production_line is not None and \
-					 building.production[building.active_production_line].production.get(res,1) < 0:
+					 building.production[building.active_production_line].production.get(res, 1) < 0:
 					break
 				job = self.check_possible_job_target(building, res)
 				if job is not None:

@@ -31,22 +31,22 @@ class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
 	It uses Message Class instances to store messages and manages the
 	archive.
-	@param x,y: int position where the widget is placed on the screen."""
+	@param x, y: int position where the widget is placed on the screen."""
 	def __init__(self, x, y):
 		super(LivingObject, self).__init__()
 		self.x, self.y = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # mesages, that aren'y displayed any more
 		self.widget = load_xml_translated('hud_messages.xml')
-		self.widget.position = (x,y)
+		self.widget.position = (x, y)
 
 		# the widget will be changed over time and have to be reset, when a message
 		# gets moved to the archive. to get info about the original state, you can use this:
 		self.original_widget = load_xml_translated('hud_messages.xml')
-		self.original_widget.position = (x,y)
+		self.original_widget.position = (x, y)
 
 		self.text_widget = load_xml_translated('hud_messages_text.xml')
-		self.text_widget.position = (x,y+self.widget.height)
+		self.text_widget.position = (x, y+self.widget.height)
 		self.widget.show()
 		self.current_tick = 0
 		self.position = 0 # number of current mesage
@@ -63,7 +63,7 @@ class MessageWidget(LivingObject):
 		@param id: message id, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
-		self.active_messages.insert(0, Message(x,y,id, self.current_tick, message_dict))
+		self.active_messages.insert(0, Message(x, y, id, self.current_tick, message_dict))
 		# play a message sound, if one is specified in the database
 		sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
 		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.rowid=? ORDER BY random() LIMIT 1",id)
@@ -74,7 +74,7 @@ class MessageWidget(LivingObject):
 	def draw_widget(self):
 		"""Updates the widget."""
 		# iterate all 4 message buttons
-		for i in range(1,5):
+		for i in range(1, 5):
 			w = self.widget.findChild(name=str(i))
 
 			# check if this widget should display a message right now
@@ -166,7 +166,7 @@ class Message(object):
 	can then be followed by other characters without a whitespace (e.g. "${player}'s home").aa
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 
-	@param x,y: int position on the map where the action took place.
+	@param x, y: int position on the map where the action took place.
 	@param id: message id, needed to retrieve the message from the database.
 	@param created: tickid when the message was created.
 	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}

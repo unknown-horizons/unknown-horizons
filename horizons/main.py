@@ -104,7 +104,7 @@ def start(command_line_arguments):
 	update_all_translations()
 
 	if settings.client_id is None:
-		settings.client_id = "".join("-" if c in (8,13,18,23) else random.choice("0123456789abcdef") for c in xrange(0,36))
+		settings.client_id = "".join("-" if c in (8, 13, 18, 23) else random.choice("0123456789abcdef") for c in xrange(0, 36))
 
 	savegamemanager = SavegameManager()
 
@@ -171,7 +171,7 @@ def start_singleplayer(map_file):
 	session.load(map_file, 'Arthur', Color()) # temp fix to display gold
 
 
-def startMulti():
+def start_multi():
 	"""Starts a multiplayer game server (dummy)
 
 	This also starts the game for the game master

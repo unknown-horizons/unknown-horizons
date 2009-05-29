@@ -58,8 +58,8 @@ class Rect(object):
 		elif isinstance(other, Rect):
 			return self.distance_to_rect(other)
 		else:
-			## TODO: other = (x,y, width, height)
-			# is other tuple: (x,y)?
+			## TODO: other = (x, y, width, height)
+			# is other tuple: (x, y)?
 			if isinstance(other[0], int) and isinstance(other[1], int):
 				return self.distance_to_tuple(other)
 			else:
@@ -71,7 +71,7 @@ class Rect(object):
 		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_tuple(self, other):
-		"""Calculates distance to a coordinate as tuple (x,y)
+		"""Calculates distance to a coordinate as tuple (x, y)
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
 
@@ -83,16 +83,16 @@ class Rect(object):
 	# TODO: replace this everywhere with iteration
 	def get_coordinates(self):
 		""" Returns all coordinates, that are in the Rect """
-		return [ (x,y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
+		return [ (x, y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
 
 	# TODO: reimplement this with Rect.__iter__
 	def get_radius_coordinates(self, radius):
 		""" Returns a list of all coordinates, that are in the radius but are in not the building"""
 		self_coords = self.get_coordinates()
-		return  [ (x,y) for x in xrange(self.left-radius, self.right+radius+1) \
+		return  [ (x, y) for x in xrange(self.left-radius, self.right+radius+1) \
 				  for y in xrange(self.top-radius, self.bottom+radius+1)
-						if (x,y) not in self_coords and \
-						self.distance_to_tuple( (x,y) ) <= radius ]
+						if (x, y) not in self_coords and \
+						self.distance_to_tuple( (x, y) ) <= radius ]
 
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """

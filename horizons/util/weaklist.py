@@ -132,11 +132,11 @@ class WeakList(list):
 		return list.index(self, weakref.ref(value), *args)
 
 	def pop(self, index=-1):
-		return list.pop(self,index)()
+		return list.pop(self, index)()
 
 	def sort(self, cmp=None,  key=None,  reverse=False):
 		sortable = list(self)
-		sortable.sort(cmp,key,reverse)
+		sortable.sort(cmp, key, reverse)
 		del self[:]
 		self.extend(sortable)
 
@@ -150,7 +150,7 @@ class WeakList(list):
 		return list.__getitem__(self, index)()
 
 	def __setitem__(self, index, value):
-		if isinstance(index,slice):
+		if isinstance(index, slice):
 			list.__setitem__(self, index, self.__iter_over_weakref(value))
 		else:
 			list.__setitem__(self, index, self.__new_weekref(value))
@@ -160,7 +160,7 @@ class WeakList(list):
 	def __contains__(self, item):
 		return list.__contains__(self, weakref.ref(item))
 
-	def __getslice__(self,i,j):
+	def __getslice__(self, i, j):
 		return WeakList(list(self)[i:j])
 
 	def __setslice__(self, i, j, iterable):
@@ -183,35 +183,35 @@ class WeakList(list):
 	## Rich comparison
 
 	def __eq__(self, other):
-		if isinstance(other,WeakList):
+		if isinstance(other, WeakList):
 			other = list(other)
 		return list.__eq__(list(self), other)
 
 	def __ge__(self, other):
-		if isinstance(other,WeakList):
+		if isinstance(other, WeakList):
 			other = list(other)
 		return list.__ge__(list(self), other)
 
 	def __le__(self, other):
-		if isinstance(other,WeakList):
+		if isinstance(other, WeakList):
 			other = list(other)
 
 		return list.__le__(list(self), other)
 
 	def __gt__(self, other):
-		if isinstance(other,WeakList):
+		if isinstance(other, WeakList):
 			other = list(other)
 
 		return list.__gt__(list(self), other)
 
 	def __ne__(self, other):
-		if isinstance(other,WeakList):
+		if isinstance(other, WeakList):
 			other = list(other)
 
 		return list.__ne__(list(self), other)
 
 	def __lt__(self, other):
-		if isinstance(other,WeakList):
+		if isinstance(other, WeakList):
 			other = list(other)
 
 		return list.__lt__(list(self), other)

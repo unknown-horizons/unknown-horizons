@@ -28,7 +28,7 @@ def receive(packet):
 	if isinstance(packet, MasterRegisterPacket):
 		pass
 	elif isinstance(packet, MasterServerListQueryPacket):
-		socket.send(MasterServerListAnswerPacket(packet.address,packet.port))
+		socket.send(MasterServerListAnswerPacket(packet.address, packet.port))
 	elif isinstance(packet, MasterVersionPacket):
 		pass
 

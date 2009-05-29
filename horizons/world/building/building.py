@@ -28,7 +28,7 @@ import horizons.main
 
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
-from horizons.util import Rect,Point, WorldObject
+from horizons.util import Rect, Point, WorldObject
 
 class Building(AmbientSound, WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -39,9 +39,9 @@ class Building(AmbientSound, WorldObject):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
 		# this creates too much output, uncomment if you need this message:
 		#if horizons.main.debug: print "Initing Building", self.id
-		self.__init(Point(x,y), rotation, owner, instance)
+		self.__init(Point(x, y), rotation, owner, instance)
 		self.island = weakref.ref(horizons.main.session.world.get_island(x, y))
-		self.settlement = self.island().get_settlement(Point(x,y)) or \
+		self.settlement = self.island().get_settlement(Point(x, y)) or \
 			self.island().add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
 
@@ -71,7 +71,7 @@ class Building(AmbientSound, WorldObject):
 		self.settlement.owner.inventory.alter(1, -self.running_costs)
 
 	def act(self, action, facing_loc, repeating=False):
-		self._instance.act(action+"_"+str(self._action_set_id),facing_loc,repeating)
+		self._instance.act(action+"_"+str(self._action_set_id),facing_loc, repeating)
 
 	def remove(self):
 		"""Removes the building"""
@@ -114,7 +114,7 @@ class Building(AmbientSound, WorldObject):
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
 
-		self.__init(Point(x,y), rotation, owner, None)
+		self.__init(Point(x, y), rotation, owner, None)
 
 		location_obj = WorldObject.get_object_by_id(location)
 		if isinstance(location_obj, Settlement):
@@ -122,7 +122,7 @@ class Building(AmbientSound, WorldObject):
 			# isn't fully constructed, when this code is executed
 			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
 			self.island = weakref.ref(WorldObject.get_object_by_id(island_id))
-			self.settlement = self.island().get_settlement(Point(x,y)) or \
+			self.settlement = self.island().get_settlement(Point(x, y)) or \
 					self.island().add_existing_settlement(self.position, self.radius, location_obj)
 		else: # loc is island
 			from horizons.world.island import Island
@@ -152,7 +152,7 @@ class Building(AmbientSound, WorldObject):
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
 		if building is not None:
-			return building.getInstance(x = x, y = y, action=action, layer=layer,rotation=rotation, **trash)
+			return building.getInstance(x = x, y = y, action=action, layer=layer, rotation=rotation, **trash)
 		else:
 			facing_loc = fife.Location(horizons.main.session.view.layers[layer])
 			if rotation == 45:

@@ -25,24 +25,24 @@ STYLES= {
 	'default': {
 		'default' : {
 			'border_size': 2,
-			'margins': (0,0),
-			'base_color' : fife.Color(40,40,40),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(40,40,40),
-			'selection_color' : fife.Color(80,80,80),
+			'margins': (0, 0),
+			'base_color' : fife.Color(40, 40, 40),
+			'foreground_color' : fife.Color(255, 255, 255),
+			'background_color' : fife.Color(40, 40, 40),
+			'selection_color' : fife.Color(80, 80, 80),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
 			'border_size': 1,
-			'margins' : (10,5)
+			'margins' : (10, 5)
 		},
 		'CheckBox' : {
 			'border_size': 0,
-			'background_color' : fife.Color(0,0,0)
+			'background_color' : fife.Color(0, 0, 0)
 		},
 		'RadioButton' : {
 			'border_size': 0,
-			'background_color' : fife.Color(0,0,0)
+			'background_color' : fife.Color(0, 0, 0)
 		},
 		'Label' : {
 			'border_size': 0,
@@ -58,10 +58,10 @@ STYLES= {
 		},
 		'Window' : {
 			'border_size': 1,
-			'margins': (10,10),
+			'margins': (10, 10),
 			'titlebar_height' : 30,
 			'font' : 'Essays1743-Italic_large',
-			'base_color' : fife.Color(60,60,60)
+			'base_color' : fife.Color(60, 60, 60)
 		},
 		'TextBox' : {
 			'font' : 'Essays1743-Italic_small'
@@ -76,28 +76,28 @@ STYLES= {
 		'ScrollArea' : {
 			'border_size': 0,
 			'horizontal_scrollbar' : 1,
-			'base_color' : fife.Color(60,60,60),
-			'background_color' : fife.Color(60,60,60)
+			'base_color' : fife.Color(60, 60, 60),
+			'background_color' : fife.Color(60, 60, 60)
 		},
 		'TextField' : {
-			'base_color' : fife.Color(60,60,60),
-			'background_color' : fife.Color(60,60,60)
+			'base_color' : fife.Color(60, 60, 60),
+			'background_color' : fife.Color(60, 60, 60)
 		}
 	},
 	'menu': { #Used in the main menu and game menu
 		'default' : {
 			'border_size': 0,
-			'margins': (0,0),
+			'margins': (0, 0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(60,60,60),
-			'selection_color' : fife.Color(0,0,0),
+			'base_color' : fife.Color(0, 0, 0),
+			'foreground_color' : fife.Color(255, 255, 255),
+			'background_color' : fife.Color(60, 60, 60),
+			'selection_color' : fife.Color(0, 0, 0),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
 			'border_size': 0,
-			'margins' : (10,5)
+			'margins' : (10, 5)
 		},
 		'Label' : {
 			'border_size': 0,

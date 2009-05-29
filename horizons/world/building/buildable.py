@@ -60,8 +60,8 @@ class BuildableSingle(object):
 		island = horizons.main.session.world.get_island(x, y)
 		if island is None:
 			return {'buildable' : False}
-		p = Point(0,0)
-		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
+		p = Point(0, 0)
+		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			if island.get_tile(p) is None:
 				return {'buildable' : False}
 		return {'island' : island}
@@ -75,8 +75,8 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
-		p = Point(0,0)
-		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
+		p = Point(0, 0)
+		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			tile_classes = island.get_tile(p).__class__.classes
 			if 'constructible' not in tile_classes:
 				return {'buildable' : False}
@@ -87,8 +87,8 @@ class BuildableSingle(object):
 		from nature import GrowingBuilding
 		from path import Path
 		tear = []
-		p = Point(0,0)
-		for p.x, p.y in ((xx,yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
+		p = Point(0, 0)
+		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			obj = island.get_tile(p).object
 			if obj is not None:
 				if isinstance(obj, GrowingBuilding):
