@@ -35,15 +35,16 @@ class InventoryTab(TabInterface):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		print "Refresh..."
-		if hasattr(self.instance, 'inventory'):
-			self.widget.findChild(name='inventory').inventory = self.instance.inventory
+		self.widget.findChild(name='inventory').inventory = self.instance.inventory
 
 	def show(self):
-		self.instance.inventory.addChangeListener(self.refresh)
+		if not self.instance.inventory.hasChangeListener(self.refresh):
+			self.instance.inventory.addChangeListener(self.refresh)
 		super(InventoryTab, self).show()
 
 	def hide(self):
-		self.instance.inventory.removeChangeListener(self.refresh)
+		if self.instance.inventory.hasChangeListener(self.refresh):
+			self.instance.inventory.removeChangeListener(self.refresh)
 		super(InventoryTab, self).hide()
 
 class ShipInventoryTab(InventoryTab):

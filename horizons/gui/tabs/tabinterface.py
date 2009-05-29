@@ -21,28 +21,34 @@
 
 class TabInterface(object):
 	"""
-	The TabInterface should be used by all classes that represent Tabs for the TabWidget.
+	The TabInterface should be used by all classes that represent Tabs for the
+	TabWidget.
 
-	It is important that the currently used widget by the tab is always set to self.widget,
-	to ensure proper functionality.
-	If you want to override the TabButton image used for the tab, you also have to set the
-	button_image_{up,down,hover} variables.
+	It is important that the currently used widget by the tab is always set to
+	self.widget, to ensure proper functionality.
+	If you want to override the TabButton image used for the tab, you also have
+	to set the button_image_{up,down,hover} variables.
 
-	Use the refresh() method to implement any redrawing of the widget. The TabWidget will
-	call this method based on callbacks. If you set any callbacks yourself, make sure you
-	get them removed when the widget is deleted.
+	Use the refresh() method to implement any redrawing of the widget. The
+	TabWidget will call this method based on callbacks. If you set any callbacks
+	yourself, make sure you	get them removed when the widget is deleted.
 
-	Make sure to call the init_values() function after you set self.widget, to ensure
-	proper initialization of needed properties.
+	Make sure to call the init_values() function after you set self.widget, to
+	ensure proper initialization of needed properties.
 	"""
 
-	def __init__(self, widget = None, button_up_image='content/gui/tab_widget/tab.png', button_down_image='content/gui/tab_widget/tab.png', button_hover_image='content/gui/tab_widget/tab2.png', button_active_image='content/gui/tab_widget/tab.png', **kwargs):
+	def __init__(self, widget = None,
+				 button_up_image='content/gui/tab_widget/tab.png',
+				 button_down_image='content/gui/tab_widget/tab.png',
+				 button_hover_image='content/gui/tab_widget/tab2.png',
+				 button_active_image='content/gui/tab_widget/tab.png',
+				 **kwargs):
 		super(TabInterface, self).__init__()
 		self.widget = widget
-		self.button_up_image = button_up_image # Used for the TabButtons upimage
-		self.button_down_image = button_down_image # Used for the TabButtons downimage
-		self.button_hover_image = button_hover_image # Used for the TabButtons hoverimage
-		self.button_active_image = button_active_image # Used for the TabButtons active image
+		self.button_up_image = button_up_image # TabButtons upimage
+		self.button_down_image = button_down_image # TabButtons downimage
+		self.button_hover_image = button_hover_image # TabButtons hoverimage
+		self.button_active_image = button_active_image # TabButtons active image
 
 	def init_values(self):
 		"""Call this methode after the widget has been initialised."""
@@ -63,18 +69,33 @@ class TabInterface(object):
 		pass
 
 	def get_x(self):
+		"""Returs the widget's x position"""
 		return self.widget.position[0]
 
 	def set_x(self, value):
+		"""Sets the widget's x position"""
 		self.widget.position = (value, self.widget.position[1])
 
 	# Shortcut to set and retrieve the widget's current x position.
 	x = property(get_x, set_x)
 
+	def get_y(self):
+		"""Returns the widget's y position"""
+		return self.widget.position[1]
+
+	def set_y(self, value):
+		"""Sets the widget's y position"""
+		self.widget.position = (self.widget.position[0], value)
+
+	# Shortcut to set and retrieve the widget's current y position.
+	y = property(get_y, set_y)
+
 	def get_position(self):
+		"""Returns the widget's position as"""
 		return self.widget.position
 
 	def set_position(self, value):
+		"""Sets the widgets position"""
 		self.widget.position = value
 
 	# Shortcut to set and retrieve the widget's current y position.
