@@ -34,6 +34,7 @@ class TabWidget(object):
 			self.position = position
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_xml_translated("content/gui/tab_base.xml") # TODO create this widget
+		self.init_tabs()
 
 	def init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
@@ -41,16 +42,22 @@ class TabWidget(object):
 		# Load buttons
 		for index, tab in enumerate(_tabs):
 			button = ImageButton()
-			button.up_image = tab.button_up_image
+			button.name = index
+			if self.current_tab is tab:
+				button.up_image = tab.button_active_image
+			else:
+				button.up_image = tab.button_up_image
 			button.down_image = tab.button_down_image
 			button.hover_image = tab.button_hover_image
 			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
+			content.addChild(button)
 
 	def show_tab(self, number):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
 		self.current_tab.hide()
+		self.widget.findChild(name='content').findChild() # TODO: add button image switching
 		self.current_tab = self._tabs[number]
 		self.show()
 
