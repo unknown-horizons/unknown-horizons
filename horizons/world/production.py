@@ -26,6 +26,7 @@ from consumer import Consumer
 from building.building import Building
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.gui.tabs.overviewtab import ProductionOverviewTab
+from horizons.gui.tabs.inventorytab import InventoryTab
 
 
 class ProductionLine(object):
@@ -217,6 +218,6 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 	"""
 
 	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self)]))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
 
 

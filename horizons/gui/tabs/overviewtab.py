@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import horizons.main
+import pychan
 import weakref
 from tabinterface import TabInterface
 from horizons.i18n import load_xml_translated
@@ -48,25 +49,15 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).hide()
 
 
-class ShipOverviewTab(TabInterface):
+class ShipOverviewTab(OverviewTab):
 
 	def __init__(self, instance = None):
-		super(ShipOverviewTab, self).__init__()
-		self.instance = instance
-		self.widget = load_xml_translated('tab_widget/tab_overview_ship.xml')
-		self.init_values()
-		events = { 'foundSettelment': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(instance) )}
+		super(ShipOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_ship.xml',
+			instance = instance
+		)
+		events = { 'foundSettelment': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(instance) )}
 		self.widget.mapEvents(events)
-
-	def refresh(self):
-		"""This function is called by the TabWidget to redraw the widget."""
-		if hasattr(self.instance, 'name'):
-			self.widget.findChild(name='name').text = unicode(self.instance.name)
-		if hasattr(self.instance, 'health'):
-			self.widget.findChild(name='health').text = unicode(self.instance.health)
-		self.widget._recursiveResizeToContent()
-
-
 
 class ProductionOverviewTab(OverviewTab):
 

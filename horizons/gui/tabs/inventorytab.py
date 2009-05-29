@@ -27,30 +27,33 @@ from horizons.gui.tradewidget import TradeWidget
 
 class InventoryTab(TabInterface):
 
-	def __init__(self, instance = None):
-		super(InventoryTab, self).__init__()
-		self.widget = load_xml_translated('tab_widget/tab_stock.xml')
+	def __init__(self, instance = None, widget = 'tab_widget/tab_stock.xml'):
+		super(InventoryTab, self).__init__(widget = load_xml_translated(widget))
 		self.instance = instance
 		self.init_values()
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
+		print "Refresh..."
 		if hasattr(self.instance, 'inventory'):
 			self.widget.findChild(name='inventory').inventory = self.instance.inventory
 
-class ShipInventoryTab(TabInterface):
+	def show(self):
+		self.instance.inventory.addChangeListener(self.refresh)
+		super(InventoryTab, self).show()
+
+	def hide(self):
+		self.instance.inventory.removeChangeListener(self.refresh)
+		super(InventoryTab, self).hide()
+
+class ShipInventoryTab(InventoryTab):
 
 	def __init__(self, instance = None):
-		super(ShipInventoryTab, self).__init__()
-		self.widget = load_xml_translated('tab_widget/tab_stock_ship.xml')
+		super(ShipInventoryTab, self).__init__(
+			widget = 'tab_widget/tab_stock_ship.xml',
+			instance = instance
+		)
 		events = {
 			'trade': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(instance))
 		}
 		self.widget.mapEvents(events)
-		self.instance = instance
-		self.init_values()
-
-	def refresh(self):
-		"""This function is called by the TabWidget to redraw the widget."""
-		if hasattr(self.instance, 'inventory'):
-			self.widget.findChild(name='inventory').inventory = self.instance.inventory
