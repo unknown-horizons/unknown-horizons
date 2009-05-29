@@ -35,11 +35,15 @@ class TabInterface(object):
 	Make sure to call the init_values() function after you set self.widget, to ensure
 	proper initialization of needed properties.
 	"""
-	def __init__(self, **kwargs):
+	default_button_upimage = ''
+	default_button_downimage = ''
+	default_button_hoverimage = ''
+
+	def __init__(self, button_up_image='', button_down_image='', button_hover_image='',**kwargs):
 		self.widget = None
-		self.button_image_up = None # Used for the TabButtons upimage
-		self.button_image_down = None # Used for the TabButtons downimage
-		self.button_image_hover = None # Used for the TabButtons hoverimage
+		self.button_up_image = button_up_image # Used for the TabButtons upimage
+		self.button_down_image = button_down_image # Used for the TabButtons downimage
+		self.button_hover_image = button_hover_image # Used for the TabButtons hoverimage
 		pass
 
 	def init_values(self):

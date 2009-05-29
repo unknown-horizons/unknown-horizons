@@ -18,13 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import pychan
+
 from horizons.i18n import load_xml_translated
 
 class TabWidget(object):
 
-	default_button_upimage = ''
-	default_button_downimage = ''
-	default_button_hoverimage = ''
 
 	def __init__(self, tabs=[], position=None):
 		super(TabWidget, self).__init__()
@@ -34,12 +33,18 @@ class TabWidget(object):
 		else:
 			self.position = position
 		self.current_tab = self._tabs[0] # Start with the first tab
-		self.widget = load_xml_translated("content/gui/tabwidget_base.xml") # TODO create this widget
+		self.widget = load_xml_translated("content/gui/tab_base.xml") # TODO create this widget
 
 	def init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
-		# Check if the button_image_{up,down,hover} are set and use them if set.
-		pass
+		content = self.widget.findChild(name='content')
+		# Load buttons
+		for index, tab in enumerate(_tabs):
+			button = ImageButton()
+			button.up_image = tab.button_up_image
+			button.down_image = tab.button_down_image
+			button.hover_image = tab.button_hover_image
+			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
 
 	def show_tab(self, number):
 		"""Used as callback function for the TabButtons.
