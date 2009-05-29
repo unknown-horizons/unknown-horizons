@@ -28,7 +28,7 @@ from horizons.gui.tradewidget import TradeWidget
 class InventoryTab(TabInterface):
 
 	def __init__(self, instance = None, widget = 'tab_widget/tab_stock.xml'):
-		super(InventoryTab, self).__init__(widget = load_xml_translated(widget))
+		super(InventoryTab, self).__init__(widget = widget)
 		self.instance = instance
 		self.init_values()
 

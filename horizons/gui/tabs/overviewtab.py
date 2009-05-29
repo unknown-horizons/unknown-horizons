@@ -27,7 +27,7 @@ from horizons.i18n import load_xml_translated
 class OverviewTab(TabInterface):
 
 	def __init__(self, instance = None, widget = 'tab_widget/tab_overview.xml'):
-		super(OverviewTab, self).__init__(load_xml_translated(widget))
+		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		instance.addChangeListener(self.refresh)
 		self.init_values()
@@ -41,12 +41,12 @@ class OverviewTab(TabInterface):
 		self.widget._recursiveResizeToContent()
 
 	def show(self):
-		self.instance.addChangeListener(self.refresh)
 		super(OverviewTab, self).show()
+		self.instance.addChangeListener(self.refresh)
 
 	def hide(self):
-		self.instance.removeChangeListener(self.refresh)
 		super(OverviewTab, self).hide()
+		self.instance.removeChangeListener(self.refresh)
 
 
 class ShipOverviewTab(OverviewTab):

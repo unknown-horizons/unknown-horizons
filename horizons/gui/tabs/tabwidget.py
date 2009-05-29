@@ -20,6 +20,7 @@
 # ###################################################
 import pychan
 
+import horizons.main
 from horizons.i18n import load_xml_translated
 
 class TabWidget(object):
@@ -34,7 +35,16 @@ class TabWidget(object):
 		self.widget = load_xml_translated("tab_widget/tab_base.xml")
 		if position is None:
 			# add positioning here
-			self.widget.position = (100, 100)
+			size_x = self.widget.size[0]+self.current_tab.widget.size[0]
+			size_y = self.current_tab.widget.size[1]
+			self.widget.position = (
+				horizons.main.session.ingame_gui.gui['minimap'].position[0] -
+				    size_x - 35 if
+					horizons.main.fife.settings.getScreenWidth()/2 + size_x/2 >
+					horizons.main.session.ingame_gui.gui['minimap'].position[0] else
+					horizons.main.fife.settings.getScreenWidth()/2 - size_x/2,
+				horizons.main.fife.settings.getScreenHeight() - size_y - 35
+			)
 		else:
 			self.widget.position = position
 		self.content = self.widget.findChild(name='content')

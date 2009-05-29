@@ -24,6 +24,9 @@ import fife
 
 import horizons.main
 
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.gui.tabs.overviewtab import ShipOverviewTab
+from horizons.gui.tabs.inventorytab import ShipInventoryTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding import Movement
 from horizons.util import Point
@@ -88,9 +91,6 @@ class Ship(Unit):
 		horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 
 	def show_menu(self):
-		from horizons.gui.tabs.tabwidget import TabWidget
-		from horizons.gui.tabs.overviewtab import ShipOverviewTab
-		from horizons.gui.tabs.inventorytab import ShipInventoryTab
 		tab = TabWidget(tabs=[ShipOverviewTab(self), ShipInventoryTab(self)])
 			#'stock_ship': {
 			#	'trade': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(self))
