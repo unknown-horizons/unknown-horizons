@@ -18,4 +18,19 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-__all__ = ['tabs']
+
+from tabinterface import TabInterface
+from horizons.i18n import load_xml_translated
+
+class InventoryTab(TabInterface):
+
+	def __init__(self, instance = None):
+		super(InventoryTab, self).__init__()
+		self.widget = load_xml_translated('tab_widget/tab_stock.xml')
+		self.instance = instance
+		self.init_values()
+
+	def refresh(self):
+		"""This function is called by the TabWidget to redraw the widget."""
+		if hasattr(self.instance, 'inventory'):
+			self.widget.findChild(name='inventory').inventory = self.instance.inventory

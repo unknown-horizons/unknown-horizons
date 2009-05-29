@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
-<Container>
-	<VBox name="content"/>
+<Container size="50,50">
+	<VBox name="content">
+	</VBox>
 </Container>

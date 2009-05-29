@@ -37,17 +37,18 @@ class TabInterface(object):
 	"""
 
 	def __init__(self, button_up_image='content/gui/tab_widget/tab.png', button_down_image='content/gui/tab_widget/tab.png', button_hover_image='content/gui/tab_widget/tab2.png', button_active_image='content/gui/tab_widget/tab.png', **kwargs):
+		super(TabInterface, self).__init__()
 		self.widget = None
 		self.button_up_image = button_up_image # Used for the TabButtons upimage
 		self.button_down_image = button_down_image # Used for the TabButtons downimage
 		self.button_hover_image = button_hover_image # Used for the TabButtons hoverimage
 		self.button_active_image = button_active_image # Used for the TabButtons active image
-		pass
 
 	def init_values(self):
 		"""Call this methode after the widget has been initialised."""
 		self.x = self.widget.position[0]
 		self.y = self.widget.position[1]
+		self.widget.stylize("menu")
 
 	def show(self):
 		"""Shows the current widget"""
@@ -65,19 +66,19 @@ class TabInterface(object):
 		return self.widget.position[0]
 
 	def set_x(self, value):
-		self.widget.position[0] = value
+		self.widget.position = (value, self.widget.position[1])
 
 	# Shortcut to set and retrieve the widget's current x position.
 	x = property(get_x, set_x)
 
-	def get_y(self):
-		return self.widget.position[1]
+	def get_position(self):
+		return self.widget.position
 
-	def set_y(self, value):
-		self.widget.position[1] = value
+	def set_position(self, value):
+		self.widget.position = value
 
 	# Shortcut to set and retrieve the widget's current y position.
-	y = property(get_y, set_y)
+	position = property(get_position, set_position)
 
 	def __del__(self):
 		"""Do cleanup work here."""

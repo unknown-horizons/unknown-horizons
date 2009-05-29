@@ -30,20 +30,20 @@ class TabWidget(object):
 	def __init__(self, tabs=[], position=None):
 		super(TabWidget, self).__init__()
 		self._tabs = tabs
-		if position is None:
-			self.position = (10,10) #TODO: add positioning here
-		else:
-			self.position = position
 		self.current_tab = self._tabs[0] # Start with the first tab
-		self.widget = load_xml_translated("content/gui/tab_base.xml") # TODO create this widget
+		self.widget = load_xml_translated("tab_widget/tab_base.xml") # TODO create this widget
+		if position is None:
+			self.widget.position = (100,100) #TODO: add positioning here
+		else:
+			self.widget.position = position
 		self.content = self.widget.findChild(name='content')
 		self.init_tabs()
 
 	def init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
 		# Load buttons
-		for index, tab in enumerate(_tabs):
-			button = ImageButton()
+		for index, tab in enumerate(self._tabs):
+			button = pychan.ImageButton()
 			button.name = index
 			if self.current_tab is tab:
 				button.up_image = tab.button_active_image
@@ -51,8 +51,15 @@ class TabWidget(object):
 				button.up_image = tab.button_up_image
 			button.down_image = tab.button_down_image
 			button.hover_image = tab.button_hover_image
+			button.size = (50,50)
 			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
 			self.content.addChild(button)
+			self.content._recursiveResizeToContent()
+
+		self.widget.size = (50,50*len(self._tabs))
+
+		self.content.adaptLayout()
+		self.widget._recursiveResizeToContent()
 
 	def show_tab(self, number):
 		"""Used as callback function for the TabButtons.
@@ -60,16 +67,16 @@ class TabWidget(object):
 		"""
 		self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_button = self.content.findChild(name=str(self._tabs.index(self.current_tab)))
+		old_button = self.content.findChild(name=self._tabs.index(self.current_tab))
 		old_button.up_image = self.current_tab.button_up_image
-		new_button = self.content.findChild(name=str(number))
+		new_button = self.content.findChild(name=number)
 		new_button.up_image = new_tab.button_active_image
 		self.current_tab = new_tab
 		self.show()
 
 	def draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""
-		self.current_tab.position = (self.wigdet.position[0]+self.widget.size[0], self.widget.position[1]+self.widget.size[1])
+		self.current_tab.position = (self.widget.position[0]+self.widget.size[0], self.widget.position[1])
 		self.current_tab.refresh()
 
 	def show(self):
@@ -82,6 +89,23 @@ class TabWidget(object):
 		self.current_tab.hide()
 		self.widget.hide()
 
+	def get_x(self):
+		return self.widget.position[0]
+
+	def set_x(self, value):
+		self.widget.position = (value, self.widget.position[1])
+
+	# Shortcut to set and retrieve the widget's current x position.
+	x = property(get_x, set_x)
+
+	def get_y(self):
+		return self.widget.position[1]
+
+	def set_y(self, value):
+		self.widget.position = (self.widget.position[0], value)
+
+	# Shortcut to set and retrieve the widget's current y position.
+	y = property(get_y, set_y)
 
 
 

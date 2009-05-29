@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <Container size="336,192" background_image="content/gui/images/background/hud/ingame2.png">
+
+	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
 	<!-- Names -->
 	<Label position="10,5" name="overview_label" text="Overview" />
 	<Label position="10,25" name="name_label" text="Name:" /><Label name='name' position="60,25" text="" />
