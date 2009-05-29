@@ -36,9 +36,9 @@ class TabInterface(object):
 	proper initialization of needed properties.
 	"""
 
-	def __init__(self, button_up_image='content/gui/tab_widget/tab.png', button_down_image='content/gui/tab_widget/tab.png', button_hover_image='content/gui/tab_widget/tab2.png', button_active_image='content/gui/tab_widget/tab.png', **kwargs):
+	def __init__(self, widget = None, button_up_image='content/gui/tab_widget/tab.png', button_down_image='content/gui/tab_widget/tab.png', button_hover_image='content/gui/tab_widget/tab2.png', button_active_image='content/gui/tab_widget/tab.png', **kwargs):
 		super(TabInterface, self).__init__()
-		self.widget = None
+		self.widget = widget
 		self.button_up_image = button_up_image # Used for the TabButtons upimage
 		self.button_down_image = button_down_image # Used for the TabButtons downimage
 		self.button_hover_image = button_hover_image # Used for the TabButtons hoverimage

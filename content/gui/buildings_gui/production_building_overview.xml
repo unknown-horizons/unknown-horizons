@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab for buildings -->
 <Container size="336,192">
+	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
 	<Label position="10,5" name="OverviewLabel" text="Overview" />
 	<Label position="10,25" name="NameLabel" text="Name:" /><Label name='name' position="60,25" text="" />
 	<Label position="10,45" name="HealthLabel" text="Health:" /><Label name='health' position="60,45" text="" />

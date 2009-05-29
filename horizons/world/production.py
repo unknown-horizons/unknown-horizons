@@ -24,7 +24,8 @@ import horizons.main
 from provider import Provider
 from consumer import Consumer
 from building.building import Building
-from horizons.gui.tabwidget import TabWidget
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.gui.tabs.overviewtab import ProductionOverviewTab
 
 
 class ProductionLine(object):
@@ -216,11 +217,6 @@ class SecondaryProducer(Consumer, PrimaryProducer):
 	"""
 
 	def show_menu(self):
-		callbacks = {
-			'building_production_overview': {
-				'toggle_active': self.toggle_active
-			}
-		}
-		horizons.main.session.ingame_gui.show_menu(TabWidget(4, object=self, callbacks=callbacks))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self)]))
 
 

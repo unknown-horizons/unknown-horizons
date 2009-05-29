@@ -88,15 +88,14 @@ class Ship(Unit):
 		horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 
 	def show_menu(self):
-		callbacks = {
-			'overview_ship':{
-				'foundSettelment': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(self))
-			},
-			'stock_ship': {
-				'trade': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(self))
-			}
-		}
-		horizons.main.session.ingame_gui.show_menu(TabWidget(3, object=self, callbacks=callbacks))
+		from horizons.gui.tabs.tabwidget import TabWidget
+		from horizons.gui.tabs.overviewtab import ShipOverviewTab
+		from horizons.gui.tabs.inventorytab import ShipInventoryTab
+		tab = TabWidget(tabs=[ShipOverviewTab(self), ShipInventoryTab(self)])
+			#'stock_ship': {
+			#	'trade': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(self))
+			#}
+		horizons.main.session.ingame_gui.show_menu(tab)
 
 	def go(self, x, y):
 		"""Moves the ship.

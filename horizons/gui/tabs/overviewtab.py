@@ -25,10 +25,10 @@ from horizons.i18n import load_xml_translated
 
 class OverviewTab(TabInterface):
 
-	def __init__(self, instance = None):
-		super(OverviewTab, self).__init__()
-		self.widget = load_xml_translated('tab_widget/tab_overview.xml')
+	def __init__(self, instance = None, widget = 'tab_widget/tab_overview.xml'):
+		super(OverviewTab, self).__init__(load_xml_translated(widget))
 		self.instance = instance
+		instance.addChangeListener(self.refresh)
 		self.init_values()
 
 	def refresh(self):
@@ -39,15 +39,23 @@ class OverviewTab(TabInterface):
 			self.widget.findChild(name='health').text = unicode(self.instance.health)
 		self.widget._recursiveResizeToContent()
 
+	def show(self):
+		self.instance.addChangeListener(self.refresh)
+		super(OverviewTab, self).show()
+
+	def hide(self):
+		self.instance.removeChangeListener(self.refresh)
+		super(OverviewTab, self).hide()
+
 
 class ShipOverviewTab(TabInterface):
 
 	def __init__(self, instance = None):
-		super(ShipOverviewTab, self).__init__(instance)
+		super(ShipOverviewTab, self).__init__()
 		self.instance = instance
 		self.widget = load_xml_translated('tab_widget/tab_overview_ship.xml')
 		self.init_values()
-		events = { 'foundSettelment': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(self) )}
+		events = { 'foundSettelment': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(instance) )}
 		self.widget.mapEvents(events)
 
 	def refresh(self):
@@ -57,6 +65,25 @@ class ShipOverviewTab(TabInterface):
 		if hasattr(self.instance, 'health'):
 			self.widget.findChild(name='health').text = unicode(self.instance.health)
 		self.widget._recursiveResizeToContent()
+
+
+
+class ProductionOverviewTab(OverviewTab):
+
+	def  __init__(self, instance = None):
+		super(ProductionOverviewTab, self).__init__(
+			widget = 'buildings_gui/production_building_overview.xml',
+			instance = instance
+		)
+		events = { 'toggle_active': self.instance.toggle_active }
+		self.widget.mapEvents(events)
+
+
+	def refresh(self):
+		"""This function is called by the TabWidget to redraw the widget."""
+		if hasattr(self.instance, 'running_costs'):
+			self.widget.findChild(name='running_costs').text = unicode(self.instance.running_costs)
+		super(ProductionOverviewTab, self).refresh()
 
 
 

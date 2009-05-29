@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container size="336,192" background_image="content/gui/images/background/hud/build_bg.png">
+<Container size="336,192">
 	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
 	<Label position="10,5" name="overview_label" text="Overview" />
 	<Label position="10,25" name="name_label" text="Name:" /><Label name='name' position="60,25" text="" />

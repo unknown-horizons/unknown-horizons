@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="336,192" background_image="content/gui/images/background/hud/build_bg.png">
+<Container size="336,192">
 	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
 	<Label position="20,5" name="inventory_label" text="Inventory:" />
 	<Inventory name="inventory" size="316,157" position="20,35"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="336,192" background_image="content/gui/images/background/hud/ingame2.png">
+<Container size="336,192">
 
 	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
 	<!-- Names -->
@@ -10,7 +10,7 @@
 	<!-- Picture -->
 	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="120,5" />
 
-	<HBox position="140,150">
+	<HBox position="150,150">
 		<Label name="new_settlement_label" text="Found new settlement:"/>
 		<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/settle.png" down_image="content/gui/images/icons/hud/ship/settle_h.png" hover_image="content/gui/images/icons/hud/ship/settle_h.png" border_size="0"/>
 	</HBox>

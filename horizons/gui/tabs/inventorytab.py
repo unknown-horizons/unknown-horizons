@@ -18,15 +18,35 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
+import weakref
+import pychan
+import horizons.main
 from tabinterface import TabInterface
 from horizons.i18n import load_xml_translated
+from horizons.gui.tradewidget import TradeWidget
 
 class InventoryTab(TabInterface):
 
 	def __init__(self, instance = None):
 		super(InventoryTab, self).__init__()
 		self.widget = load_xml_translated('tab_widget/tab_stock.xml')
+		self.instance = instance
+		self.init_values()
+
+	def refresh(self):
+		"""This function is called by the TabWidget to redraw the widget."""
+		if hasattr(self.instance, 'inventory'):
+			self.widget.findChild(name='inventory').inventory = self.instance.inventory
+
+class ShipInventoryTab(TabInterface):
+
+	def __init__(self, instance = None):
+		super(ShipInventoryTab, self).__init__()
+		self.widget = load_xml_translated('tab_widget/tab_stock_ship.xml')
+		events = {
+			'trade': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(instance))
+		}
+		self.widget.mapEvents(events)
 		self.instance = instance
 		self.init_values()
 
