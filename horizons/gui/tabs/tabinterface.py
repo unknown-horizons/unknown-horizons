@@ -23,8 +23,10 @@ class TabInterface(object):
 	"""
 	The TabInterface should be used by all classes that represent Tabs for the TabWidget.
 
-	It is important the currently should widget by the tab is always set to self.widget,
+	It is important that the currently used widget by the tab is always set to self.widget,
 	to ensure proper functionality.
+	If you want to override the TabButton image used for the tab, you also have to set the
+	button_image_{up,down,hover} variables.
 
 	Use the refresh() method to implement any redrawing of the widget. The TabWidget will
 	call this method based on callbacks. If you set any callbacks yourself, make sure you
@@ -35,6 +37,9 @@ class TabInterface(object):
 	"""
 	def __init__(self, **kwargs):
 		self.widget = None
+		self.button_image_up = None # Used for the TabButtons upimage
+		self.button_image_down = None # Used for the TabButtons downimage
+		self.button_image_hover = None # Used for the TabButtons hoverimage
 		pass
 
 	def init_values(self):
