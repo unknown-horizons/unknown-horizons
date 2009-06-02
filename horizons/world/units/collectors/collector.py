@@ -205,7 +205,7 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s begins job at "+str(self.job.object.position), self.getId())
 		self.setup_new_job()
 		self.show()
-		assert self.check_move(self.job.object.position)
+		#assert self.check_move(self.job.object.position)
 		self.move(self.job.object.position, self.begin_working)
 		self.state = self.states.moving_to_target
 

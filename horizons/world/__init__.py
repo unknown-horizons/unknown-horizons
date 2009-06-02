@@ -172,7 +172,7 @@ class World(LivingObject):
 					for building in island.buildings:
 						building.production_step()
 					if horizons.main.unstable_features:
-						horizons.main.session.entities.units[13](island, x=-4, y=-28)
+						horizons.main.session.entities.units[13](island, x=-2, y=-23)
 				print "Done."
 
 			# add free trader

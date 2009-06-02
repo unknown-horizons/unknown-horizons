@@ -28,6 +28,8 @@ import horizons.main
 class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 	""" Class for stuff that grows, such as trees
 	"""
+	part_of_nature = True
+
 	def __init__(self, **kwargs):
 		super(GrowingBuilding, self).__init__(**kwargs)
 		if horizons.main.debug:

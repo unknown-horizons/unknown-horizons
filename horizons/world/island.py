@@ -309,22 +309,22 @@ class Island(WorldObject):
 		@param coord: tuple: (x, y)
 		@param check_coord_is_on_island: bool, wether to check if coord is on this island
 		"""
-		#if self.a:self.log.debug("is_walkable 0")
 		if check_coord_is_on_island:
 			if not coord in self.get_coordinates():
+				#if self.a:self.log.debug("is_walkable not cause not on island")
 				return False
 
-		#if self.a:self.log.debug("is_walkable 1")
 		tile_object = self.ground_map[coord]()
 		# if it's not constructible, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
+			#if self.a: self.log.debug("is walkable not because not constructible")
 			return False
-		#if self.a:self.log.debug("is_walkable 2")
-		if tile_object.blocked:
+		if tile_object.blocked and not tile_object.object.is_part_of_nature():
+			#if self.a: self.log.debug("is walkable not because blocked by %s", tile_object.object)
 			return False
-		#if self.a:self.log.debug("is_walkable 3")
+		#if self.a:self.log.debug("is_walkable yes")
 		return True
 
 	def reset_tile_walkability(self, coord):

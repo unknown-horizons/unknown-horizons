@@ -120,11 +120,15 @@ class WildAnimal(Animal, Collector):
 			target_tuple = possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)]
 			possible_walk_targets.remove(target_tuple)
 			target = Point(*target_tuple)
+			self.log.debug('WildAnimal %s: checking random loc: %s %s', \
+										 self.getId(), target_tuple[0], target_tuple[1])
 			found_possible_target = self.check_move(target)
 			# temporary hack to make sure that animal doesn't leave island (necessary until
 			# SOLDIER_MOVEMENT is fully implemented and working)
-			if horizons.main.session.world.get_island(target.x, target.y) is None:
-				found_possible_target = False
+			if found_possible_target:
+				#assert horizons.main.session.world.get_island(target.x, target.y) is not None
+				if horizons.main.session.world.get_island(target.x, target.y) is None:
+					found_possible_target = False
 		if found_possible_target:
 			self.move(target, callback=self.search_job)
 		else:

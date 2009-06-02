@@ -35,6 +35,8 @@ class Building(AmbientSound, WorldObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
+	part_of_nature = False # wether this is part of nature (free units can walk through it)
+
 	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
 		# this creates too much output, uncomment if you need this message:
@@ -132,6 +134,9 @@ class Building(AmbientSound, WorldObject):
 			self.settlement = None
 
 		self.island().add_building(self, self.owner)
+
+	def is_part_of_nature(self):
+		return self.part_of_nature
 
 	def get_buildings_in_range(self):
 		buildings = self.settlement.buildings

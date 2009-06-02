@@ -301,9 +301,6 @@ class Pather(object):
 			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 			self.path_nodes = island.get_walkable_coordinates()
 
-			#for i in self.path_nodes:
-				#assert island.is_walkable(i)
-
 		if not check_only:
 			self.source_in_building = False
 		source = self.unit.position
@@ -357,14 +354,17 @@ class Pather(object):
 											 self.unit
 			if path_blocked:
 				other = horizons.main.session.world.ship_map[self.path[self.cur]]()
-				self.log.debug("tile blocked for %s %s by another ship %s", \
+				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
+											 self.path[self.cur][0], self.path[self.cur][1], \
 											 self.unit, self.unit.getId(), other)
 
 		if not path_blocked and self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
 			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 			path_blocked = not island.is_walkable(self.path[self.cur])
 
-			if path_blocked: self.log.debug("tile blocked for %s %s on island", self.unit, self.unit.getId())
+			if path_blocked: self.log.debug("tile %s %s blocked for %s %s on island", \
+																			self.path[self.cur][0], self.path[self.cur][1], \
+																			self.unit, self.unit.getId())
 
 		if not path_blocked and self.path[self.cur] in self.blocked_coords:
 			path_blocked = True
