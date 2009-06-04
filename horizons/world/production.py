@@ -130,6 +130,8 @@ class PrimaryProducer(Provider):
 		# check if we have space for the items we want to produce
 		for res, amount in self.production[self.active_production_line].production.items():
 			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
+				# TODO: fix this: This is the problem why the trees do not grow, it will bail out because
+				# there is to much deerfood in the trees
 				return
 
 		# TODO: document useable and used resources (what are they, when do we need them)
@@ -174,7 +176,6 @@ class PrimaryProducer(Provider):
 			(self.production[self.active_production_line].time if min(self.production[self.active_production_line].production.values()) >= 0
 			else (int(round(self.production[self.active_production_line].time * sum(self.__used_resources.values()) / -sum(p for p in self.production[self.active_production_line].production.values() if p < 0))
 					  ) - time)))
-
 		# change animation to working.
 		# this starts e.g. the growing of trees.
 		if "work" in horizons.main.action_sets[self._action_set_id].keys():
