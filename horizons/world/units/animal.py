@@ -27,14 +27,14 @@ import horizons.main
 
 from horizons.world.production import SecondaryProducer, Provider
 from horizons.world.pathfinding import Movement
-from horizons.util import Rect, Point, WorldObject, Circle
-from unit import Unit
-from collectors import Collector, BuildingCollector, Job
-from nature import GrowingUnit
+from horizons.util import Point, Circle
+from collectors import Collector, BuildingCollector
 
-class Animal(GrowingUnit, SecondaryProducer):
+class Animal(SecondaryProducer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
-	and usually produce something (e.g. wool)."""
+	and usually produce something (e.g. wool).
+
+	Subclasses should inherit from Collector."""
 	log = logging.getLogger('world.units.animal')
 
 	def __init__(self, **kwargs):

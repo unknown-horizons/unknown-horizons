@@ -162,14 +162,14 @@ class FindPath(object):
 
 		while to_check:
 
-			min = sys.maxint
+			minimum = sys.maxint
 			cur_node_coords = None
 			cur_node_data = None
 
 			# find next node to check, which is the one with best rating
 			for (node_coords, node_data) in to_check.items():
-				if node_data[3] < min:
-					min = node_data[3]
+				if node_data[3] < minimum:
+					minimum = node_data[3]
 					cur_node_coords = node_coords
 					cur_node_data = node_data
 

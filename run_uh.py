@@ -57,11 +57,17 @@ def get_fife_path():
 				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
 					if os.path.exists(pe):
 						sys.path.append(pe)
-				os.environ['PYTHONPATH'] = os.path.pathsep.join(os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ])
+				os.environ['PYTHONPATH'] = os.path.pathsep.join(\
+					os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + \
+					[ os.path.abspath(fife_path + '/' + a) for a in \
+						('engine/extensions', 'engine/swigwrappers/python') ])
 
 				#add windows paths (<fife>/.)
-				os.environ['PATH'] = os.path.pathsep.join(os.environ.get('PATH', '').split(os.path.pathsep) + [ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
-				os.path.defpath += os.path.pathsep + os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				os.environ['PATH'] = os.path.pathsep.join( \
+					os.environ.get('PATH', '').split(os.path.pathsep) + \
+					[ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				os.path.defpath += os.path.pathsep + \
+					os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
 				break
 	else:
 		print _('FIFE was not found.')
@@ -119,7 +125,7 @@ def find_uh_position():
 			     '/usr/local/share/games',
 			     '/usr/local/share',
 			     ]
-		
+
 		for i in positions:
 			if os.path.exists('%s/unknown-horizons' % i):
 				return '%s/unknown-horizons' % i

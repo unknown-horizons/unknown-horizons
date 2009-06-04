@@ -146,9 +146,9 @@ class BuildingCollector(Collector):
 
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter(self.job.res, self.job.amount)
-			#assert(remnant == 0, "Home building could not take all ressources from collector.")
+			#assert remnant == 0, "Home building could not take all ressources from collector."
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
-			#assert(remnant == 0, "collector did not pick up amount of ressources specified by the job.")
+			#assert remnant == 0, "collector did not pick up amount of ressources specified by the job."
 			self.home_building()._AbstractConsumer__collectors.remove(self)
 		self.end_job()
 

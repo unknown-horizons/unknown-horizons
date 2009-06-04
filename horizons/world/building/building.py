@@ -110,7 +110,7 @@ class Building(AmbientSound, WorldObject):
 		if horizons.main.debug:
 			print 'loading building', worldid
 		super(Building, self).load(db, worldid)
-		x, y, health, location, rotation = \
+		x, y, self.health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
 
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
