@@ -81,12 +81,9 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 class BranchOffice(StorageBuilding):
 	@classmethod
 	def is_settlement_build_requirement_satisfied(cls, x, y, island, ship, **state):
-		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
-		#if multi branch office allowed:
-		#if len(settlements) == 1:
-		#	return settlements.pop()
-		if len(settlements) != 0:
-			return {'buildable' : False}
+		for settlement in island.settlements:
+			if settlement.owner.id == ship.owner.id:
+				return {'buildable' : False}
 		#ship check
 		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + \
 		   (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
