@@ -241,7 +241,10 @@ class Unit(WorldObject):
 		super(Unit, self).load(db, worldid)
 
 		x, y, health, owner_id = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
-		owner = WorldObject.get_object_by_id(owner_id)
+		if (owner_id == 0):
+			owner = None
+		else:
+			owner = WorldObject.get_object_by_id(owner_id)
 		self.__init(x, y, owner, health)
 
 		path_loaded = self.path.load(db, worldid)
