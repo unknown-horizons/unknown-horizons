@@ -232,17 +232,17 @@ class Unit(WorldObject):
 		super(Unit, self).save(db)
 
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
-			self.getId(), self.__class__.id, self.position.x, self.position.y, self.health, 0)
+			self.getId(), self.__class__.id, self.position.x, self.position.y, \
+					self.health, self.owner.getId())
 
 		self.path.save(db, self.getId())
-
-		# TODO: owner
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
 
-		x, y, health = db("SELECT x, y, health FROM unit WHERE rowid = ?", worldid)[0]
-		self.__init(x, y, health)
+		x, y, health, owner_id = db("SELECT x, y, health, owner FROM unit WHERE rowid = ?", worldid)[0]
+		owner = WorldObject.get_object_by_id(owner_id)
+		self.__init(x, y, owner, health)
 
 		path_loaded = self.path.load(db, worldid)
 		if path_loaded:
