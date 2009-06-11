@@ -201,7 +201,7 @@ class IngameGui(LivingObject):
 			'rotateLeft' : None
 		})
 		for w in self.gui.values():
-			if w._parent is None:
+			if w.parent is None:
 				w.hide()
 		self.message_widget = None
 		self.tabwidgets = None
