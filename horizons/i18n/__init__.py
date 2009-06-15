@@ -43,8 +43,8 @@ def load_xml_translated(filename):
 
 	from os.path import basename
 	filename = basename(filename)
-	if text_translations.has_key(filename):
-		for i in text_translations[filename].items():
+	if guitranslations.text_translations.has_key(filename):
+		for i in guitranslations.text_translations[filename].items():
 			try:
 				untranslated.findChild(name=i[0]).text = i[1]
 			except AttributeError, e:
@@ -61,7 +61,7 @@ def update_all_translations():
 	set_translations()
 	global all_translated_widgets
 	for pair in all_translated_widgets.items():
-		for i in text_translations.get(pair[0],{}).items():
+		for i in guitranslations.text_translations.get(pair[0],{}).items():
 			try:
 				pair[1].findChild(name=i[0]).text = i[1]
 			except AttributeError, e:
