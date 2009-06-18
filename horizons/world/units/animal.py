@@ -54,7 +54,6 @@ class Animal(SecondaryProducer):
 	def finish_working(self):
 		# animal is done when it has eaten, and
 		# doesn't have to get home, so end job right now
-		super(Animal, self).finish_working()
 		self.end_job()
 
 

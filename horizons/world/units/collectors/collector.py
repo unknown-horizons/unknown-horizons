@@ -145,7 +145,6 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s search job", self.getId())
 
 		self.job = self.get_job()
-		print 'Collector %s %s job = %s'%(self, self.getId(), self.job)
 		if self.job is None:
 			self.handle_no_possible_job()
 		else:
