@@ -56,6 +56,9 @@ class TabWidget(object):
 		"""Add enough tabbuttons for all widgets."""
 		# Load buttons
 		for index, tab in enumerate(self._tabs):
+			container = pychan.Container()
+			background = pychan.Icon()
+			background.image = tab.button_background_image
 			button = pychan.ImageButton()
 			button.name = index
 			if self.current_tab is tab:
@@ -66,7 +69,10 @@ class TabWidget(object):
 			button.hover_image = tab.button_hover_image
 			button.size = (50, 50)
 			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
-			self.content.addChild(button)
+			container.add(background)
+			container.add(button)
+			container.size = background.size
+			self.content.addChild(container)
 		self.content._recursiveResizeToContent()
 
 		self.widget.size = (50, 200*len(self._tabs))

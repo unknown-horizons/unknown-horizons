@@ -49,6 +49,7 @@ class TabInterface(object):
 		self.button_down_image = 'content/gui/tab_widget/tab.png' # TabButtons downimage
 		self.button_hover_image = 'content/gui/tab_widget/tab2.png' # TabButtons hoverimage
 		self.button_active_image = 'content/gui/tab_widget/tab.png' # TabButtons active image
+		self.button_background_image = 'content/gui/tab_widget/tab.png' # TabButtons background image
 
 	def init_values(self):
 		"""Call this methode after the widget has been initialised."""
