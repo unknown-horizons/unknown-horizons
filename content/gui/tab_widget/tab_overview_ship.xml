@@ -1,17 +1,34 @@
 <?xml version="1.0"?>
-<Container size="336,192">
-
-	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
-	<!-- Names -->
-	<Label position="10,5" name="overview_label" text="Overview" />
-	<Label position="10,25" name="name_label" text="Name:" /><Label name='name' position="60,25" text="" />
-	<Label position="10,45" name="health_label" text="Health:" /><Label name='health' position="60,45" text="" />
-
-	<!-- Picture -->
-	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="120,5" />
-
-	<HBox position="150,150">
-		<Label name="new_settlement_label" text="Found new settlement:"/>
-		<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/settle.png" down_image="content/gui/images/icons/hud/ship/settle_h.png" hover_image="content/gui/images/icons/hud/ship/settle_h.png" border_size="0"/>
-	</HBox>
+<Container size="295,600">
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />				 	
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
+			
+	<Container position="0,70" size="600,400" >	
+		<!-- Name of Ship -->
+		<Label name='name' position="95,0" text="" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	
+		<!-- Picture -->
+		<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,30" />
+		<Icon image="content/gui/images/background/hr.png" position="20,180" />
+	
+		<HBox position="20,200">
+			<Label text="Health:" /><Label name='health' text="" />
+		</HBox>
+		
+		<!--<Icon image="content/gui/images/background/msg_button.png" position="170,170" />				 	-->
+		<HBox position="180,190">
+			<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
+		</HBox>
+	
+		<HBox position="190,200">
+			<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/settle_h.png" down_image="content/gui/images/icons/hud/ship/settle_h.png" hover_image="content/gui/images/icons/hud/ship/settle_h.png"  />
+		</HBox>
+	
+	</Container>
 </Container>

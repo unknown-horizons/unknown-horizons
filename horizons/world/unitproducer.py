@@ -37,6 +37,7 @@ class UnitProducer(SecondaryProducer):
 		# production_queue holds the ids of the production_lines
 		# currently waiting for construction.
 		self.production_queue = []
+		self.progress = 0
 
 		self._PrimaryProducer__used_resources = {}
 		# Load production lines

@@ -135,8 +135,8 @@ class Trader(Player, StorageHolder):
 			rand = random.randint(0, len(branchoffices)-1)
 			self.office[ship.id] = branchoffices[rand]
 			for water in horizons.main.session.world.water: # get a position near the branch office
-				if Point(water[0],water[1]).distance(self.office[ship.id].position) < 3:
-					ship.move(Point(water[0],water[1]), lambda: self.reached_branch(ship))
+				if Point(water[0], water[1]).distance(self.office[ship.id].position) < 3:
+					ship.move(Point(water[0], water[1]), lambda: self.reached_branch(ship))
 					self.ships[ship] = self.shipStates.moving_to_branch
 					break
 			else:

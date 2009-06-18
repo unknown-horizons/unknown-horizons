@@ -1,9 +1,25 @@
 <?xml version="1.0"?>
-<Container size="240,48">
+<Container size="64,250">
+<!--<Icon name="msg_left" image="content/gui/images/background/msg_left_bg.png" position="0,0" />
+<Icon name="msg_bg" image="content/gui/images/background/msg_bar_bg.png" position="15,0" />
+<Icon name="msg_bg" image="content/gui/images/background/msg_bar_bg.png" position="70,0" />
+<Icon name="msg_bg" image="content/gui/images/background/msg_bar_bg.png" position="125,0" />
+<Icon name="msg_bg" image="content/gui/images/background/msg_bar_bg.png" position="180,0" />
+<Icon name="msg_right" image="content/gui/images/background/msg_right_bg.png" position="235,0" />-->
+
+
+<ImageButton name="back" up_image="" position="0,0" size="16,16" />
+	<ImageButton name="1" up_image="" hover_image="" position="0,29" size="48,48" />
+	<ImageButton name="2" up_image="" hover_image="" position="0,70" size="48,48" />
+	<ImageButton name="3" up_image="" hover_image="" position="0,120" size="48,48" />
+	<ImageButton name="4" up_image="" hover_image="" position="0,170" size="48,48" />
+	<ImageButton name="next" up_image="" position="220,0" size="16,16" />
+	
+	<!--
 	<ImageButton name="back" up_image="content/gui/images/background/oa_ingame_buttonbg_16.png" position="0,0" size="16,16" />
 	<ImageButton name="1" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="20,0" size="48,48" />
 	<ImageButton name="2" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="70,0" size="48,48" />
 	<ImageButton name="3" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="120,0" size="48,48" />
 	<ImageButton name="4" up_image="content/gui/images/background/oa_ingame_buttonbg_48.png" hover_image="content/gui/images/background/oa_ingame_buttonbg_48.png" position="170,0" size="48,48" />
-	<ImageButton name="next" up_image="content/gui/images/background/oa_ingame_buttonbg_16.png" position="220,0" size="16,16" />
+	<ImageButton name="next" up_image="content/gui/images/background/oa_ingame_buttonbg_16.png" position="220,0" size="16,16" />-->
 </Container>

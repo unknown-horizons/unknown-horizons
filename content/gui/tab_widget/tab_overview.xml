@@ -1,8 +1,17 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container size="336,192">
-	<Icon image="content/gui/images/background/hud/ingame3.png" position="0,0" />
-	<Label position="10,5" name="overview_label" text="Overview" />
-	<Label position="10,25" name="name_label" text="Name:" /><Label name='name' position="60,25" text="" />
-	<Label position="10,45" name="health_label" text="Health:" /><Label name='health' position="60,45" text="" />
+<Container  size="295,600">
+<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,200" />
+		 	
+	<Container position="0,70" size="600,400" >
+
+		<Label name="headline" position="85,0" text="Overview" />
+
+		<Label position="20,25" text="Name:" /><Label name='name' position="60,25" text="" />
+		<Label position="20,45" text="Health:" /><Label name='health' position="60,45" text="" />
+	</Container>
 </Container>

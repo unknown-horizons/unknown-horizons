@@ -1,14 +1,23 @@
 <?xml version="1.0"?>
-<Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png">
-	<Icon name="building"/>
-	<Container size="220,52" padding="5" name="top_bar">
-	<VBox>
-		<HBox>
-			<ImageButton name="rotate_left" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
-			<Label text="Running costs:" name="RunningCostsLabel"/>
-			<Label name="running_costs" text=""/>
-			<ImageButton name="rotate_right" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
-		</HBox>
-	</VBox>
+<Container size="264,430" border_size="0">
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
+
+	<Container position="0,70" size="250,400" >
+		<Label name="headline" text="Build" position="100,0"/>
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<Icon name="building" position="0,70"/>
+	</Container>
+	
+	<Container size="220,150" padding="5" name="top_bar">
+		<ImageButton name="rotate_left" position="15,60" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
+		<ImageButton name="rotate_right" position="175,60" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
+		<Label position="70,68" text="Running costs:"/>
+		<Label position="150,68" name="running_costs" text=""/>
 	</Container>
 </Container>

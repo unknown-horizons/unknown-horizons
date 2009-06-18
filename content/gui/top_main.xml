@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
-<Container size="300,80" position="1000,234">
-	<Icon name="CoA" image="content/gui/images/icons/hud/main/coa.png" position="180,0" />
-	<Label name="city_name" text="" position="80,0"/>
-	<Label name="city_inhabitants" position="80,20" text=""/>
+<Container size="260,150">
+<!-- Top middle widget: Include coat of arms, city name and number of inhabitants -->
+	<Icon image="content/gui/images/background/city_name_bg.png" position="58,17" />
+	<Icon name="CoA" image="content/gui/images/icons/hud/main/coa.png" position="25,10" />
+	<Icon name="city_info_inhabitants" image="content/gui/images/icons/hud/main/icon_inhabitants.png"  position="190,17" />
+	<Label name="city_name" text="" position="75,14"/>
+	<Label name="city_inhabitants" position="220,14" text=""/>
 </Container>

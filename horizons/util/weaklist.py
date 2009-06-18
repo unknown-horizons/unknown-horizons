@@ -119,11 +119,15 @@ class WeakList(list):
 		iterable = self.__iter_over_weakref(list(iterable))
 		list.extend(self, iterable)
 
-	def append(self, object):
-		list.append(self, weakref.ref(object, self.__remove_ref))
+	def append(self, obj):
+		list.append(self, weakref.ref(obj, self.__remove_ref))
 
-	def remove(self, object):
-		list.remove(self, weakref.ref(object))
+	def remove(self, obj):
+		try:
+			list.remove(self, weakref.ref(obj))
+		except ValueError:
+			print obj, "not in", self
+			raise ValueError
 
 	def count(self, value):
 		return list.count(self, weakref.ref(value))
@@ -140,8 +144,8 @@ class WeakList(list):
 		del self[:]
 		self.extend(sortable)
 
-	def insert(self,  index,  object):
-		list.insert(self, index, self.__new_weekref(object))
+	def insert(self,  index,  obj):
+		list.insert(self, index, self.__new_weekref(obj))
 
 
 	## Emulating container types

@@ -89,15 +89,24 @@ class BuildingTool(NavigationTool):
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,
 							  "rotate_right": self.rotate_right }
 							)
-		self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - horizons.main.session.ingame_gui.gui['minimap'].size[1]/1)
+		self.gui.stylize('menu_black')
+		self.gui.findChild(name='headline').stylize('headline') # style definition for headline
+		self.gui.position = (
+			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0],
+			160
+		)	
+		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - horizons.main.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		top_bar = self.gui.findChild(name='top_bar')
-		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2, 10)
+		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 		self.draw_gui()
 		horizons.main.session.view.addChangeListener(self.draw_gui)
 
 	def draw_gui(self):
-		action_set = horizons.main.db("SELECT action_set_id FROM action_set WHERE building_id=?", self._class.id)[0][0]
+		queryresult = horizons.main.db("SELECT action_set_id,preview_action_set_id FROM action_set WHERE building_id=?", self._class.id)[0]
+		action_set,preview_action_set = queryresult
+		if preview_action_set in horizons.main.action_sets.keys():
+			action_set = preview_action_set
 		if 'idle' in horizons.main.action_sets[action_set].keys():
 			self.action = 'idle'
 		elif 'idle_full' in horizons.main.action_sets[action_set].keys():
@@ -107,7 +116,7 @@ class BuildingTool(NavigationTool):
 		image = sorted(horizons.main.action_sets[action_set][self.action][(self.rotation+int(horizons.main.session.view.cam.getRotation())-45)%360].keys())[0]
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
-		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2)
+		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2 -13, self.gui.size[1]/2 - building_icon.size[1]/2 - 50)
 		self.gui._recursiveResizeToContent()
 
 	def preview_build(self, point1, point2):
@@ -145,7 +154,7 @@ class BuildingTool(NavigationTool):
 	def on_escape(self):
 		horizons.main.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
-			horizons.main.session.ingame_gui.show_menu('build')
+			horizons.main.session.ingame_gui.show_build_menu()
 		else:
 			horizons.main.session.selected_instances = set([self.ship])
 			self.ship.select()

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="260,230">
+<Container size="250,600" >
 	<ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left_h.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" size="48,48" position="0,0" />
 	<Icon image="content/gui/images/misc/minimap_placeholder.png" position="24,0" />
 	<ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right_h.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" size="48,48" position="0,40" />

@@ -178,7 +178,6 @@ class SavegameManager(object):
 		return self.__get_saves_from_dirs([self.quicksave_dir], \
 										  include_displaynames = include_displaynames)
 
-
 	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):
 		"""Returns a displayable name, extracted from a filename"""

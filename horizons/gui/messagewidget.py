@@ -38,18 +38,18 @@ class MessageWidget(LivingObject):
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # mesages, that aren'y displayed any more
 		self.widget = load_xml_translated('hud_messages.xml')
-		self.widget.position = (x, y)
 
 		# the widget will be changed over time and have to be reset, when a message
 		# gets moved to the archive. to get info about the original state, you can use this:
 		self.original_widget = load_xml_translated('hud_messages.xml')
 		self.original_widget.position = (x, y)
 
+		self.widget.position = (
+			 5,	horizons.main.fife.settings.getScreenHeight()/2 - self.widget.size[0] - 50)
 		self.text_widget = load_xml_translated('hud_messages_text.xml')
-		self.text_widget.position = (x, y+self.widget.height)
 		self.widget.show()
 		self.current_tick = 0
-		self.position = 0 # number of current mesage
+		self.position = 0 # number of current message
 		horizons.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 		button_next = self.widget.findChild(name='next')
@@ -63,7 +63,7 @@ class MessageWidget(LivingObject):
 		@param id: message id, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
-		self.active_messages.insert(0, Message(x, y, id, self.current_tick, message_dict))
+		self.active_messages.insert(0, Message(x, y, id, self.current_tick, message_dict=message_dict))
 		# play a message sound, if one is specified in the database
 		sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
 		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.rowid=? ORDER BY random() LIMIT 1",id)
@@ -92,8 +92,8 @@ class MessageWidget(LivingObject):
 				#w.capture(self.hide_text, "mouseExited")
 			else: # no current message
 				original_w = self.original_widget.findChild(name=str(i))
-				w.up_image = original_w.up_image
-				w.hover_image = original_w.hover_image
+				#w.up_image = original_w.up_image #uncomment for visible buttons
+				#w.hover_image = original_w.hover_image #uncomment for visible buttons
 				w.capture(None)
 				w.capture(None, "mouseEntered")
 				w.capture(None, "mouseExited")
@@ -117,7 +117,7 @@ class MessageWidget(LivingObject):
 		label.text = unicode(self.active_messages[self.position+int(button.name)-1].message)
 		label.resizeToContent()
 		self.text_widget.size = (self.text_widget.getMaxChildrenWidth(), self.text_widget.height)
-		self.text_widget.position = (self.widget.x + self.widget.width/2-self.text_widget.width/2, self.text_widget.y)
+		self.text_widget.position = (self.widget.x + self.widget.width-self.text_widget.width + 230, self.text_widget.y)
 		self.text_widget.show()
 
 	def hide_text(self, *args):

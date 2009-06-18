@@ -38,12 +38,14 @@ class TabWidget(object):
 			size_x = self.widget.size[0]+self.current_tab.widget.size[0]
 			size_y = self.current_tab.widget.size[1]
 			self.widget.position = (
-				horizons.main.session.ingame_gui.gui['minimap'].position[0] -
-				    size_x - 35 if
-					horizons.main.fife.settings.getScreenWidth()/2 + size_x/2 >
-					horizons.main.session.ingame_gui.gui['minimap'].position[0] else
-					horizons.main.fife.settings.getScreenWidth()/2 - size_x/2,
-				horizons.main.fife.settings.getScreenHeight() - size_y - 35
+				horizons.main.fife.settings.getScreenWidth() - 303,
+				220
+				#horizons.main.session.ingame_gui.gui['minimap'].position[0] -
+				#    size_x - 35 if
+				#	horizons.main.fife.settings.getScreenWidth()/2 + size_x/2 >
+				#	horizons.main.session.ingame_gui.gui['minimap'].position[0] else
+				#	horizons.main.fife.settings.getScreenWidth()/2 - size_x/2,
+				#horizons.main.fife.settings.getScreenHeight() - size_y - 35
 			)
 		else:
 			self.widget.position = position
@@ -67,7 +69,7 @@ class TabWidget(object):
 			self.content.addChild(button)
 		self.content._recursiveResizeToContent()
 
-		self.widget.size = (50, 50*len(self._tabs))
+		self.widget.size = (50, 200*len(self._tabs))
 
 		self.content.adaptLayout()
 		self.widget._recursiveResizeToContent()
@@ -87,20 +89,24 @@ class TabWidget(object):
 
 	def draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""
-		self.current_tab.position = (self.widget.position[0]+self.widget.size[0],
-									 self.widget.position[1])
+		self.current_tab.position = (self.widget.position[0]+self.widget.size[0]-11,
+									 self.widget.position[1]-60)
 		self.current_tab.refresh()
 
 	def show(self):
 		"""Show the current widget"""
 		self.draw_widget()
-		self.widget.show()
 		self.current_tab.show()
+		self.widget.show()
+		# TODO: Very hackish, think of something better..
+		horizons.main.session.ingame_gui.minimap_to_front()
+		#print "Showing..."
 
 	def hide(self):
 		"""Hide the current widget"""
 		self.current_tab.hide()
 		self.widget.hide()
+		#print "Hiding..."
 
 	def get_x(self):
 		"""Returs the widget's x position"""

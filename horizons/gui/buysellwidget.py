@@ -29,9 +29,10 @@ class BuySellWidget(object):
 		self.settlement = settlement
 		self.slots = {}
 		self.widget = load_xml_translated('buysellmenu/buysellmenu.xml')
+		self.widget.stylize('menu_black')
 		self.widget.position = (
-			horizons.main.session.ingame_gui.gui['minimap'].position[1] - horizons.main.session.ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > horizons.main.session.ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0],
+			160
 		)
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)

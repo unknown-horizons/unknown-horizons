@@ -1,6 +1,22 @@
 <?xml version="1.0"?>
-<Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png" >
-	<Label name="buy_label" text="Buy" position="10,5"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="35,15"/>
-	<Label name="sell_label" text="Sell" position="55,5"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="80,15"/>
-	<HBox size="200, 100" position="10,40" name="content" padding="10"/>
+<Container size="264,600">
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
+	
+	<Container position="0,70" size="600,400" >
+		<Label name="headline" position="70,0" text="Buy or sell ressources" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		
+		<Label text="Legend:" position="20,37"/>
+			<Label text="Buy ressources" position="88,37"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="65,45"/>
+			<Label text="Sell ressources" position="88,60"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="65,67"/>
+		<Icon image="content/gui/images/background/hr.png" position="20,88" />
+		<HBox size="250, 100" position="20,120" name="content" padding="10"/>
+	</Container>
+	
 </Container>

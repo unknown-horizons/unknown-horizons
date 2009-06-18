@@ -30,7 +30,8 @@ import pychan
 import gui.style
 import horizons.main
 
-from util.inventory_widget import Inventory, ImageFillStatusButton
+from gui.widgets.inventory import Inventory, ImageFillStatusButton
+from gui.widgets.progressbar import ProgressBar
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -286,6 +287,7 @@ class Fife(object):
 		self.pychan.loadFonts("content/fonts/Essays1743-Italic.fontdef")
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
+		pychan.widgets.registerWidget(ProgressBar)
 
 		self._gotInited = True
 

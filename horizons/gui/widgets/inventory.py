@@ -64,7 +64,7 @@ class Inventory(pychan.widgets.Container):
 										   down_image=icon_disabled if amount == 0 else icon,
 										   hover_image=icon_disabled if amount == 0 else icon,
 										   text=str(amount),
-										   size=(50, 50),
+										   size=(55, 60),
 										   res_id = resid,
 										   opaque=False)
 			button.filled = int(float(amount)/float(self._inventory.limit)*100.0)
@@ -75,7 +75,7 @@ class Inventory(pychan.widgets.Container):
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
-		self.stylize('menu')
+		self.stylize('menu_black')
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
@@ -85,12 +85,14 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		in order to display the image. The container is only used, because ImageButtons can't have children.
 		This is ment to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
-		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
+		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
 		self._filled = 0
+		# res_id is used by the TradeWidget for example to determine the ressource this button represents
 		self.res_id = res_id
+		self.text_position = (15, 33)
 
 	def _set_filled(self, percent):
-		""""@var percent: int percent that fillstatus will be green"""
+		""""@param percent: int percent that fillstatus will be green"""
 		self._filled = percent
 		self._draw()
 
@@ -101,11 +103,11 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the icon + bar."""
-		self.button = pychan.widgets.ImageButton(text=unicode(self.text),
-												 up_image=self.up_image,
+		self.button = pychan.widgets.ImageButton(up_image=self.up_image,
 												 down_image=self.down_image,
 												 hover_image=self.hover_image)
-		self.button.size = (50, 50)
+		label = pychan.widgets.Label(text=self.text)
+		label.position = self.text_position
 		bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
 		bar.position = (self.button.width-bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))
-		self.addChildren(self.button, bar)
+		self.addChildren(self.button, bar, label)

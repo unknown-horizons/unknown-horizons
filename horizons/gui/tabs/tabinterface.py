@@ -28,7 +28,7 @@ class TabInterface(object):
 	It is important that the currently used widget by the tab is always set to
 	self.widget, to ensure proper functionality.
 	If you want to override the TabButton image used for the tab, you also have
-	to set the button_image_{up, down, hover} variables.
+	to set the button_image_{up,down,hover} variables.
 
 	Use the refresh() method to implement any redrawing of the widget. The
 	TabWidget will call this method based on callbacks. If you set any callbacks
@@ -54,7 +54,7 @@ class TabInterface(object):
 		"""Call this methode after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
-		self.widget.stylize("menu")
+		self.widget.stylize('menu_black')
 
 	def show(self):
 		"""Shows the current widget"""

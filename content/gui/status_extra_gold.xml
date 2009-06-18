@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- Widget for displaying needed gold-->
+<Container size="150,120" position="0,0">
+	<Icon image="content/gui/images/background/res_mon_extra_bg.png" position="14,83" />
+
+		<Label name="gold_2" text=""  position="20,76"/>
+		<Label name="gold_3" text="" />
+</Container>

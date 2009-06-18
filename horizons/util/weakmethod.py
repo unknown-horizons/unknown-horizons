@@ -40,7 +40,7 @@ class WeakMethod(object):
 		elif self.instance() is not None:
 			return self.function(self.instance(), *args, **kwargs)
 		else:
-			raise ReferenceError
+			raise ReferenceError("Instance: " + str(self.instance()) + " Function: "+ str(self.function) + " Function from module: " + str(self.function.__module__))
 
 	def __eq__(self, other):
 		if isinstance(other, WeakMethod):

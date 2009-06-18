@@ -1,3 +1,15 @@
 <?xml version="1.0"?>
-<Container size="267,200" background_image="content/gui/images/background/hud/ingame1.png" >
+<Container size="260,600">
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />		
+	
+	<Container position="0,70" size="600,400" >
+		<Label name="headline" text="Select ressources to buy/sell:" position="0,37"/>
+	</Container>
+	
 </Container>

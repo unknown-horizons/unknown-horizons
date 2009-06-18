@@ -1,14 +1,5 @@
 <?xml version="1.0"?>
-<!-- Specials tab -->
 <Container name="tab0" size="533,190">
-	<Label position="10,5" text="Specials and Gifts" name="SpecialsLabel" />
-	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
-	<!--<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
-	<Icon position="5,149" image="content/gui/images/icons/hud/common/class3.png" />
-	<Icon position="5,197" image="content/gui/images/icons/hud/common/class4.png" />
-	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
-	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />-->
 
-	<Label position="55,57" text="You can not build specials or gifts in this class" name="CannotLabel" />
 
 </Container>

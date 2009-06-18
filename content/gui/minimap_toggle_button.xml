@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <Container size="60,230">
-	<ImageButton name="minimapToggle" up_image="content/gui/images/misc/minimap_toggle_button.png" down_image="content/gui/images/misc/minimap_toggle_button_h.png" hover_image="content/gui/images/misc/minimap_toggle_button_h.png" size="60,110" position="0,120" />
+	<ImageButton name="minimapToggle"  size="60,110" position="0,120" />
+	<ImageButton name="speedUp"  size="48,48" position="6,20"/>
+	<ImageButton name="speedDown"  size="48,48" position="6,70"/>
+
+	<!--<ImageButton name="minimapToggle" up_image="content/gui/images/misc/minimap_toggle_button.png" down_image="content/gui/images/misc/minimap_toggle_button_h.png" hover_image="content/gui/images/misc/minimap_toggle_button_h.png" size="60,110" position="0,120" />
 	<ImageButton name="speedUp" up_image="content/gui/images/icons/hud/main/speed_up.png" down_image="content/gui/images/icons/hud/main/speed_up_h.png" hover_image="content/gui/images/icons/hud/main/speed_up_h.png" size="48,48" position="6,20"/>
-	<ImageButton name="speedDown" up_image="content/gui/images/icons/hud/main/speed_down.png" down_image="content/gui/images/icons/hud/main/speed_down_h.png" hover_image="content/gui/images/icons/hud/main/speed_down_h.png" size="48,48" position="6,70"/>
+	<ImageButton name="speedDown" up_image="content/gui/images/icons/hud/main/speed_down.png" down_image="content/gui/images/icons/hud/main/speed_down_h.png" hover_image="content/gui/images/icons/hud/main/speed_down_h.png" size="48,48" position="6,70"/>-->
 </Container>

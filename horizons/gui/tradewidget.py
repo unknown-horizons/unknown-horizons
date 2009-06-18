@@ -20,7 +20,7 @@
 # ###################################################
 import horizons.main
 
-from horizons.util.inventory_widget import ImageFillStatusButton
+from horizons.gui.widgets.inventory import ImageFillStatusButton
 from horizons.world.building.storages import BranchOffice
 from horizons.i18n import load_xml_translated
 
@@ -30,10 +30,12 @@ class TradeWidget(object):
 	def __init__(self, main_instance):
 		self.widget = load_xml_translated('ship/trade.xml')
 		self.widget.position = (
-			horizons.main.session.ingame_gui.gui['minimap'].position[1] - horizons.main.session.ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > horizons.main.session.ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0],
+			160
+
 		)
-		self.widget.stylize('menu')
+		self.widget.stylize('menu_black')
+		self.widget.findChild(name='headline').stylize('headline') # style definition for headline
 		self.widget.mapEvents({
 				'size_1' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 1),
 				'size_2' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 5),
@@ -65,7 +67,6 @@ class TradeWidget(object):
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
 				button.button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.main_instance, self.partner))
 			self.widget._recursiveResizeToContent()
-
 
 	def set_partner(self, partner_id):
 		self.partner = self.partners[partner_id]

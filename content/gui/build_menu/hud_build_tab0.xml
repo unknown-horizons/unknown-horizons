@@ -1,25 +1,77 @@
 <?xml version="1.0"?>
 <!-- Services tab -->
-<Container name="tab0" size="533,190">
-	<Label position="10,5" text="Services" name="ServicesLabel" />
-	<Icon position="5,46" image="content/gui/images/icons/hud/common/class1.png" />
-	<!-- Uncomment if implented
-	<Icon position="5,101" image="content/gui/images/icons/hud/common/class2.png" />
-	<Icon position="5,149" image="content/gui/images/icons/hud/common/class3.png" />
-	<Icon position="5,197" image="content/gui/images/icons/hud/common/class4.png" />
-	<Icon position="5,245" image="content/gui/images/icons/hud/common/class5.png" />
-	<Icon position="5,293" image="content/gui/images/icons/hud/common/class6.png" />
-	-->
-	<ImageButton name="store-1" position="48,25" up_image="content/gui/images/icons/hud/build/storagetent.png" hover_image="content/gui/images/icons/hud/build/storagetent_h.png" down_image="content/gui/images/icons/hud/build/storagetent_h.png" text="" />
-	<Label position="63,83" text="Storage" name="StorageLabel" />
+<Container name="tab0" size="295,600" >
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,400" />
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,450" />		 	
 
-	<ImageButton name="main_square-1" position="113,25" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" text="" />
-	<Label position="112,83" text="Main Square" name="MainSquareLabel" />
+	<Container position="0,70" size="600,400" >
+		<Label name="headline" position="85,0" text="Build menu" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	
+		<Container position="20,30" size="600,400" >		
+	 		<Label position="0,0" text="Residents and Infrastructural" />
 
-	<ImageButton name="church-1" position="185,25" up_image="content/gui/images/icons/hud/build/sunsail.png" hover_image="content/gui/images/icons/hud/build/sunsail_h.png" down_image="content/gui/images/icons/hud/build/sunsail_h.png" text="" />
-	 <Label position="198,84" text="Church" name="ChurchLabel"/>
+			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="55,30" />
+			
+			<ImageButton name="resident-1" position="0,15" up_image="content/gui/images/icons/hud/build/tent.png" hover_image="content/gui/images/icons/hud/build/tent_h.png" down_image="content/gui/images/icons/hud/build/tent_h.png" text="" />
+			<ImageButton name="street-1" position="56,33" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" text="" />
+	<!--<ImageButton name="bridge-1" position="77,25" up_image="content/gui/images/icons/hud/build/bridge.png" hover_image="content/gui/images/icons/hud/build/bridge_h.png" down_image="content/gui/images/icons/hud/build/bridge_h.png" text="" />
+	 <Label position="87,86" text="Bridge" />-->
+		</Container>
 
-	<ImageButton name="lighthouse-1" position="254,25" up_image="content/gui/images/icons/hud/build/signalfire.png" hover_image="content/gui/images/icons/hud/build/signalfire_h.png" down_image="content/gui/images/icons/hud/build/signalfire_h.png" text="" />
-	 <Label position="258,83" text="Signal fire" name="SignalFireLabel" />
 
+		<Container position="20,105" size="600,400" >
+			<Label position="0,0" text="Services" />
+			
+			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="163,30" />
+			
+			<ImageButton name="store-1" position="0,15" up_image="content/gui/images/icons/hud/build/storagetent.png" hover_image="content/gui/images/icons/hud/build/storagetent_h.png" down_image="content/gui/images/icons/hud/build/storagetent_h.png" text="" />
+			<ImageButton name="main_square-1" position="45,15" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" text="" />
+			<ImageButton name="church-1" position="109,30" up_image="content/gui/images/icons/hud/build/church_i.png" hover_image="content/gui/images/icons/hud/build/church_i_h.png" down_image="ccontent/gui/images/icons/hud/build/church_i.png" text="" />
+			<ImageButton name="lighthouse-1" position="155,15" up_image="content/gui/images/icons/hud/build/signalfire.png" hover_image="content/gui/images/icons/hud/build/signalfire_h.png" down_image="content/gui/images/icons/hud/build/signalfire_h.png" text="" />
+		</Container>
+
+		<Container position="20,185" size="600,400" >
+			<Label position="0,0" text="Companies" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="163,30" />
+
+			<Icon image="content/gui/images/background/build_button_bg.png" position="0,85" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="54,85" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="108,85" />
+				
+			<ImageButton name="hunter-1" position="0,15" up_image="content/gui/images/icons/hud/build/hunter.png" hover_image="content/gui/images/icons/hud/build/hunter_h.png" down_image="content/gui/images/icons/hud/build/hunter_h.png" text="" />
+			<ImageButton name="weaver-1" position="53,31" up_image="content/gui/images/icons/hud/inventory/cloth.png" hover_image="content/gui/images/icons/hud/inventory/cloth.png" down_image="content/gui/images/icons/hud/inventory/cloth.png" text="" />
+			<ImageButton name="lumberjack-1" position="110,30" up_image="content/gui/images/icons/hud/inventory/boards.png" hover_image="content/gui/images/icons/hud/inventory/boards.png" down_image="content/gui/images/icons/hud/inventory/boards.png" text="" />		
+			<ImageButton name="herder-1" position="163,32" up_image="content/gui/images/icons/hud/inventory/wool.png" hover_image="content/gui/images/icons/hud/inventory/wool.png" down_image="content/gui/images/icons/hud/inventory/wool.png" text="" />
+			<ImageButton name="fisher-1" position="0,65" up_image="content/gui/images/icons/hud/build/fisherman.png" hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" text="" />
+			<ImageButton name="boat_builder-1" position="55,65" up_image="content/gui/images/icons/hud/build/boat_builder.png" hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" text="" />		
+			<ImageButton name="tree-1" position="109,87" up_image="content/gui/images/icons/hud/build/tree.png" hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" text="" /> 
+		</Container>
+ 
+ 		<Container position="20,320" size="600,400" >
+			<Label position="0,0" text="Military" />
+			
+			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+
+			<ImageButton name="tower-1" position="0,15" up_image="content/gui/images/icons/hud/build/lookout.png" hover_image="content/gui/images/icons/hud/build/lookout_h.png" down_image="content/gui/images/icons/hud/build/lookout_h.png" text="" />
+			<!--<ImageButton name="wall-1" position="77,25" up_image="content/gui/images/icons/hud/build/rampart.png" hover_image="content/gui/images/icons/hud/build/rampart_h.png" down_image="content/gui/images/icons/hud/build/rampart_h.png" text="" />
+			<Label position="82,86" text="Rampart" />-->
+		</Container>
+	 
+	</Container>
 </Container>

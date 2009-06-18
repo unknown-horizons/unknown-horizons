@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Window title="Credits" base_color="40, 40, 40">
 	<Label name="creditsIntroText" text="These guys contributed to Unknown Horizons" base_color="40, 40, 40"/>
-	<ScrollArea size="410,400" horizontal_scrollbar="0" base_color="40, 40, 40">
+	<ScrollArea min_size="410,400" horizontal_scrollbar="0" base_color="40, 40, 40">
 		<TextBox name="creditText" filename="doc/AUTHORS"/>
 	</ScrollArea>
 	<HBox>

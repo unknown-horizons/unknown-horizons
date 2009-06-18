@@ -61,7 +61,8 @@ class PrimaryProducer(Provider):
 		self.active_production_line = None
 		self.active = False
 		self.inventory.limit = 4
-
+		# Stores the current production's progress
+		self.progress = 0
 
 		# The PrimaryProducer uses a simular way of ProductionLines as the Consumer, the only
 		# difference is, that is uses a seperate class for ProductionLines as some more details
@@ -157,6 +158,7 @@ class PrimaryProducer(Provider):
 				self.__used_resources[res] += amount
 			else:
 				self.__used_resources[res] = amount
+			self._set_progress()
 
 		for res, amount in usable_resources.items():
 			# remove the needed resources from the inventory
@@ -197,6 +199,19 @@ class PrimaryProducer(Provider):
 			self.act("idle", self._instance.getFacingLocation(), True)
 		self.addChangeListener(self.check_production_startable)
 		self.check_production_startable()
+
+
+	def _set_progress(self):
+		"""Sets the current progress correctly.
+		This method can be overriden in case subclasses calculate differently.
+		"""
+		self.progress = int(float(len(self.__used_resources.values()))/
+			float(
+				-sum(product for product in
+					self.production[self.active_production_line].production.values() if product < 0
+				)
+			)*100)
+		print self.progress
 
 
 class SecondaryProducer(Consumer, PrimaryProducer):

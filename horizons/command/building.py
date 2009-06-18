@@ -57,7 +57,7 @@ class Build(object):
 			island = WorldObject.get_object_by_id(self.island)
 		else:
 			island = horizons.main.session.world.get_island(self.x, self.y)
-		building = horizons.main.session.entities.buildings[self.building_class](x=self.x, y=self.y,\
+		building = horizons.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			instance=(self._instance if hasattr(self, '_instance') and issuer == horizons.main.session.world.player else None))
 

@@ -42,7 +42,8 @@ class OverviewTab(TabInterface):
 
 	def show(self):
 		super(OverviewTab, self).show()
-		self.instance.addChangeListener(self.refresh)
+		if not self.instance.hasChangeListener(self.refresh):
+			self.instance.addChangeListener(self.refresh)
 
 	def hide(self):
 		super(OverviewTab, self).hide()

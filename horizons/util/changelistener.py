@@ -29,9 +29,6 @@ from weakmethod import WeakMethod
 class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):
 		super(Changelistener, self).__init__()
-		# this creates too much output, uncomment if you need this message:
-		#if horizons.main.debug:
-		#	print "Initing Changelistener"
 		self.__listeners = []
 
 	def addChangeListener(self, listener):

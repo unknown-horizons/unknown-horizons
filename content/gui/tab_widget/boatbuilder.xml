@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Overview tab -->
+<Container  size="295,250">
+<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,200" />
+
+	<Container position="0,70" size="295,200" >
+		<Label position="20,0" text="Current construction progress:" />
+		<ProgressBar position="25,25" max_size="80,10" name='progress'/>
+		<HBox position="180,130">
+			<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
+		</HBox>
+
+		<ImageButton name="createUnit" position="190,140" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
+
+	</Container>
+</Container>

@@ -30,7 +30,8 @@ from buildingtool import BuildingTool
 from selectiontool import SelectionTool
 from messagewidget import MessageWidget
 from buysellwidget import BuySellWidget
-from tabwidget import TabWidget
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.gui.tabs.buildtabs import BuildTab
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""
@@ -48,29 +49,24 @@ class IngameGui(LivingObject):
 		self.resources_needed, self.resource_usable = {}, {}
 		self._old_menu = None
 
-		# Loading code for kilian to work on the boatbuilder
-		#self.boatbuilder = load_xml_translated('boatbuilder.xml')
-		#self.boatbuilder.show()
-
-
 		self.gui['encyclopedia'] = load_xml_translated('encyclopedia_button.xml')
+		self.gui['encyclopedia'].position = (5,	40)
 		self.gui['encyclopedia'].show()
 		self.gui['topmain'] = load_xml_translated('top_main.xml')
+		self.gui['topmain'].stylize('topmain')
 		self.gui['topmain'].position = (
-			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2,
+			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2 - 10,
 			5
 		)
-		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
-		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
-		self.gui['gamemenu'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 5,
-			5
-		)
-		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : horizons.main.gui.show_pause,
-			'helpLink'	 : horizons.main.gui.on_help
+
+		self.gui['camTools'] = load_xml_translated('cam_tools.xml')
+		self.gui['camTools'].position = (0,0)
+		self.gui['camTools'].mapEvents({
+			'zoomIn' : horizons.main.session.view.zoom_in,
+			'zoomOut' : horizons.main.session.view.zoom_out,
+			'rotateRight' : horizons.main.session.view.rotate_right,
+			'rotateLeft' : horizons.main.session.view.rotate_left
 		})
-		self.gui['gamemenu'].show()
 
 		self.gui['minimap_toggle'] = load_xml_translated('minimap_toggle_button.xml')
 		self.gui['minimap_toggle'].position = (
@@ -86,9 +82,10 @@ class IngameGui(LivingObject):
 
 		self.gui['minimap'] = load_xml_translated('minimap.xml')
 		self.gui['minimap'].position = (
-				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] - self.gui['minimap_toggle'].size[0],
-				horizons.main.fife.settings.getScreenHeight() - self.gui['minimap'].size[1],
+				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0],
+			10
 		)
+
 		self.gui['minimap'].show()
 		self.gui['minimap'].mapEvents({
 			'zoomIn' : horizons.main.session.view.zoom_in,
@@ -97,52 +94,45 @@ class IngameGui(LivingObject):
 			'rotateLeft' : horizons.main.session.view.rotate_left
 		})
 
-		self.gui['camTools'] = load_xml_translated('cam_tools.xml')
-		self.gui['camTools'].position = (
-				horizons.main.fife.settings.getScreenWidth() - self.gui['camTools'].size[0] - self.gui['minimap_toggle'].size[0] -15,
-				horizons.main.fife.settings.getScreenHeight() - self.gui['camTools'].size[1] -15,
-		)
-		self.gui['camTools'].mapEvents({
-			'zoomIn' : horizons.main.session.view.zoom_in,
-			'zoomOut' : horizons.main.session.view.zoom_out,
-			'rotateRight' : horizons.main.session.view.rotate_right,
-			'rotateLeft' : horizons.main.session.view.rotate_left
-		})
-
 		self.gui['leftPanel'] = load_xml_translated('left_panel.xml')
 		self.gui['leftPanel'].position = (
-			5,
-			horizons.main.fife.settings.getScreenHeight()/3 - self.gui['minimap'].size[1]/3
-		)
+			horizons.main.fife.settings.getScreenWidth() - self.gui['leftPanel'].size[0] - 15,
+			147)
 		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
 			'build' : self.show_build_menu
 		})
 
 		self.gui['status'] = load_xml_translated('status.xml')
-		self.gui['status'].position = (
-			self.gui['topmain'].position[0] - self.gui['status'].size[0],
+		self.gui['status'].stylize('menu_black')
+		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
+		self.gui['status_extra'].stylize('menu_black')
+
+		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
+		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
+		self.gui['gamemenu'].position = (
+			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 3,
 			5
 		)
+		self.gui['gamemenu'].mapEvents({
+			'gameMenuButton' : horizons.main.gui.show_pause,
+			'helpLink'	 : horizons.main.gui.on_help
+		})
+		self.gui['gamemenu'].show()
+
 		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
-		self.gui['status_gold'].position = (
-			self.gui['status'].position[0] - 48,
-			5
-		)
+		self.gui['status_gold'].stylize('menu_black')
 		self.gui['status_gold'].show()
+		self.gui['status_extra_gold'] = load_xml_translated('status_extra_gold.xml')
+		self.gui['status_extra_gold'].stylize('menu_black')
 
-
-		callbacks_build = {
-			'build1': {
+		self.callbacks_build = {
+			0: {
 				'store-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
 				'church-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 5),
 				'main_square-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 4),
 				'lighthouse-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 6),
-		},
-			'build2': {
 				'resident-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
-		},
-			'build3': {
 				'hunter-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 9),
 				'fisher-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 11),
 				'weaver-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
@@ -150,20 +140,27 @@ class IngameGui(LivingObject):
 				'lumberjack-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
 				'tree-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
 				'herder-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 10),
-				'field-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 18),
-		},
-			'build4': {
+				#'field-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 18),
 				'tower-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 13),
 				#'wall-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 14),
-		},
-			'build5': {
 				'street-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
 				#'bridge-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
+		},
+			1: {
+		},
+			2: {
+		},
+			3: {
+		},
+			4: {
 		}
 		}
+		# Ported Buildmenu to new tabwidget
 
-		self.tabwidgets['build'] = TabWidget(1, ingamegui=self, callbacks=callbacks_build)
-		self.gui['build'] = self.tabwidgets['build'].widget
+		#self.tabwidgets['build'] = TabWidget(1, ingamegui=self, callbacks=callbacks_build)
+		#self.gui['build'] = self.tabwidgets['build'].widget
+		#self.gui['build'].findChild(name='headline').stylize('headline') # style definition for headline
+
 
 		self.gui['buildinfo'] = load_xml_translated('hud_buildinfo.xml')
 		self.gui['chat'] = load_xml_translated('hud_chat.xml')
@@ -210,31 +207,55 @@ class IngameGui(LivingObject):
 
 	def update_gold(self):
 		res_id = 1
-		lines = [str(horizons.main.session.world.player.inventory[res_id])]
+		first = str(horizons.main.session.world.player.inventory[res_id])
+		lines = []
+		show = False
 		if self.resource_source is not None and self.resources_needed.get(res_id, 0) != 0:
+			show = True
 			lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
 			if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
 				lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
-		self.status_set('gold', lines)
+		self.status_set('gold', first)
+		self.status_set_extra('gold',lines)
 		self.set_status_position('gold')
+		if show:
+			self.gui['status_extra_gold'].show()
+		else:
+			self.gui['status_extra_gold'].hide()
 
 	def status_set(self, label, value):
 		"""Sets a value on the status bar.
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
-		if isinstance(value, str):
-			value = [value]
-		for i in xrange(len(value), 3):
-			value.append("")
-		for i in xrange(0, len(value)):
-			foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label + '_' + str(i + 1))
-			foundlabel._setText(unicode(value[i]))
-			foundlabel.resizeToContent()
+		if isinstance(value,list):
+			value = value[0]
+		foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label + '_' + str(1))
+		foundlabel._setText(unicode(value))
+		foundlabel.resizeToContent()
 		if label == 'gold':
 			self.gui['status_gold'].resizeToContent()
 		else:
 			self.gui['status'].resizeToContent()
+	def status_set_extra(self,label,value):
+		"""Sets a value on the extra status bar. (below normal status bar)
+		@param label: str containing the name of the label to be set.
+		@param value: value the Label is to be set to.
+		"""
+		if not value:
+			return
+		if isinstance(value, str):
+			value = [value]
+		#for i in xrange(len(value), 3):
+		#	value.append("")
+		for i in xrange(0,len(value)):
+			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).findChild(name=label + '_' + str(i+2))
+			foundlabel._setText(unicode(value[i]))
+			foundlabel.resizeToContent()
+		if label == 'gold':
+			self.gui['status_extra_gold'].resizeToContent()
+		else:
+			self.gui['status_extra'].resizeToContent()
 
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center
@@ -262,6 +283,7 @@ class IngameGui(LivingObject):
 				self.resource_source.removeChangeListener(self.update_resource_source)
 			if source is None:
 				self.gui['status'].hide()
+				self.gui['status_extra'].hide()
 				self.resource_source = None
 				self.update_gold()
 		if source is not None:
@@ -270,32 +292,48 @@ class IngameGui(LivingObject):
 			self.resource_source = source
 			self.resources_needed = res_needed
 			self.resources_usable = res_usable
-			self.gui['status'].show()
 			self.update_resource_source()
+			self.gui['status'].show()
 
 	def update_settlement(self):
 		foundlabel = self.gui['topmain'].findChild(name='city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
 		foundlabel = self.gui['topmain'].findChild(name='city_inhabitants')
-		foundlabel.text = unicode('Inhabitants: '+str(self.settlement.inhabitants))
+		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
 		self.gui['topmain'].resizeToContent()
 
 	def update_resource_source(self):
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
-			lines = [str(self.resource_source.inventory[res_id])]
+			first = str(self.resource_source.inventory[res_id])
+			lines = []
+			show = False
 			if self.resources_needed.get(res_id, 0) != 0:
+				show = True
 				lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
 				if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
 					lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
-			self.status_set(res_name, lines)
+			#else:
+			#	self.gui['status_extra'].hide()
+			self.status_set(res_name, first)
+			self.status_set_extra(res_name,lines)
 			self.set_status_position(res_name)
+			if show:
+				self.gui['status_extra'].show()
 
 	def ship_build(self, ship):
 		"""Calls the Games build_object class."""
 		self._build(1, ship)
+
+	def minimap_to_front(self):
+		self.gui['minimap'].hide()
+		self.gui['minimap'].show()
+		self.gui['leftPanel'].hide()
+		self.gui['leftPanel'].show()
+		self.gui['gamemenu'].hide()
+		self.gui['gamemenu'].show()
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = \
@@ -318,7 +356,12 @@ class IngameGui(LivingObject):
 	def show_build_menu(self):
 		horizons.main.session.cursor = SelectionTool() # set cursor for build menu
 		self.deselect_all()
-		self.toggle_menu('build')
+		# Ported build menu to new tabwidget
+		##self.toggle_menu('build')
+		btabs = [BuildTab(index, self.callbacks_build[index]) for index in
+			range(0, horizons.main.session.world.player.settler_level)]
+		tab = TabWidget(tabs=btabs)
+		self.show_menu(tab)
 
 	def deselect_all(self):
 		for instance in horizons.main.session.selected_instances:
@@ -360,6 +403,7 @@ class IngameGui(LivingObject):
 		self._old_menu = self._get_menu_object(menu)
 		if self._old_menu is not None:
 			self._old_menu.show()
+			self.minimap_to_front()
 
 	def hide_menu(self):
 		self.show_menu(None)
@@ -402,15 +446,19 @@ class IngameGui(LivingObject):
 	def set_status_position(self, resource_name):
 		for i in xrange(1, 4):
 			icon_name = resource_name + '_icon'
+			plusx = 0
+			if i > 1:
+				# increase x position for lines greater the 1
+				plusx = 20
 			if resource_name == 'gold':
 				self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).position = (
-					self.gui['status_gold'].findChild(name = icon_name).position[0] + 24 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
-					20 + 20 * i
+					self.gui['status_gold'].findChild(name = icon_name).position[0] + 33 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+					35 + 10 * i + plusx
 				)
 			else:
 				self.gui['status'].findChild(name = resource_name + '_' + str(i)).position = (
-					self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
-					20 + 20 * i
+					self.gui['status'].findChild(name = icon_name).position[0] + 25 - self.gui['status'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+					35 + 10 * i + plusx
 				)
 
 	def save(self, db):

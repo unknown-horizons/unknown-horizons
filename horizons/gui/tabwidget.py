@@ -23,7 +23,7 @@ import weakref
 
 import pychan
 import horizons.main
-from horizons.util.inventory_widget import Inventory
+from horizons.gui.widgets.inventory import Inventory
 from horizons.i18n import load_xml_translated
 
 class TabWidget(object):
@@ -40,10 +40,11 @@ class TabWidget(object):
 		for name, xml, up, down, hover in horizons.main.db(" SELECT tabs.name, tabs.xml, tabs.button_up_image, tabs.button_down_image, tabs.button_hover_image FROM data.tab_system LEFT JOIN data.tabs ON tabs.rowid = tab_system.tab WHERE tab_system.system=? ORDER BY tab_system.position", system_id):
 			self.tabs.append(Tab(name, xml, up, down, hover))
 		self.widget = load_xml_translated('tab_widget/tab_main.xml')
-		self.widget.stylize('menu')
+		self.widget.stylize('menu_black')
+
 		self.widget.position = (
-			ingame_gui.gui['minimap'].position[1] - ingame_gui.gui['minimap'].size[0] - 30 if horizons.main.fife.settings.getScreenWidth()/2 + self.widget.size[0]/2 > ingame_gui.gui['minimap'].position[0] else horizons.main.fife.settings.getScreenWidth()/2 - self.widget.size[0]/2,
-			horizons.main.fife.settings.getScreenHeight() - self.widget.size[1] - 35
+			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0] -5,
+			160
 		)
 		self.widget.active = 0 # index of the currently active tab
 		for index, tab in enumerate(self.tabs):
@@ -82,6 +83,7 @@ class TabWidget(object):
 		if self.object is not None:
 			self.object().addChangeListener(self._update_active)
 
+
 	def hide(self):
 		"""Hides the widget."""
 		self.widget.hide()
@@ -96,7 +98,7 @@ class Tab(object):
 	def __init__(self, name, xml, button_up_image, button_down_image, button_hover_image):
 		self.name = name
 		self.widget = load_xml_translated(xml)
-		self.widget.stylize('menu')
+		self.widget.stylize('menu_black')
 		self.up_image = button_up_image
 		self.down_image = button_down_image
 		self.hover_image = button_hover_image

@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
-<Container size="48,48" position="5,5">
-	<Icon image="content/gui/images/background/oa_ingame_buttonbg_48.png" />
+<Container size="61,60">
+
+
 </Container>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="60,50" opaque="0">
+<Container size="60,50" opaque="0" >
 	<Icon name="icon" image="content/gui/images/icons/hud/build/dummy_btn.png" size="50,50" position="0,0"/>
 	<ImageButton up_image="content/gui/images/icons/hud/build/dummy_btn.png" name="button" size="50,50" position="0,0" />
 	<ImageButton up_image="content/gui/images/icons/hud/main/buysell_buy.png" name="buysell" size="10,10" position="0,0" />

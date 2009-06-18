@@ -5,7 +5,7 @@
 	<RadioButton position="150,150" size="32,32" name="showInternet" text="Internet games" />
 	<RadioButton position="150,200" size="32,32" name="showLAN" text="LAN games" />
 	<RadioButton position="150,250" size="32,32" name="showFavorites" text="Favorites" />
-	<ScrollArea size="400,500"  horizontal_scrollbar="0" position="500,150">
+	<ScrollArea min_size="400,500"  horizontal_scrollbar="0" position="500,150">
 		<ListBox name="list" min_size="100,600" /> <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
 	</ScrollArea>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_gears_gray.png" down_image="content/gui/images/icons/oa_startmenu_gears.png" hover_image="content/gui/images/icons/oa_startmenu_gears.png" name="refresh" position="300,700" />

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Window title="Load game" min_size="375,300" max_size="15000,500" base_color="40, 40, 40">
 	<HBox>
-                <ScrollArea size="225,210" horizontal_scrollbar="0">
+                <ScrollArea min_size="225,210" horizontal_scrollbar="0">
 		<ListBox name="savegamelist" min_size="160,0" max_size="10500,210" base_color="40, 40, 40"/>
                 </ScrollArea>
 		<VBox name="savegamedetails_box" min_size="150,200" border_size="1" opaque='0'>

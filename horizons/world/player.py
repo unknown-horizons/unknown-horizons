@@ -37,14 +37,15 @@ class Player(WorldObject):
 		# give a new player 20k coins
 		self.inventory.alter(1, 20000)
 
-	def _init(self, id, name, color):
+	def _init(self, id, name, color, settlerlevel = 1):
 		self.id = id
 		self.name = name
 		self.color = color
+		self.settler_level = settlerlevel
 		assert hasattr(self.color, "id"), "Player color has to be a default color"
 
 		self.setup_inventory()
-
+	
 	def setup_inventory(self):
 		self.inventory = PositiveStorage()
 

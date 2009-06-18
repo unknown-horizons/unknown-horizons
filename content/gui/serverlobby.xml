@@ -28,15 +28,15 @@ We should probably keep it synchronised, for consistency.
 		<DropDown name="bots" min_size="120,0" base_color="40, 40, 40"/>
 	</HBox>
 
-	<ScrollArea name="maparea" size="350,500"  horizontal_scrollbar="0" position="500,150">
+	<ScrollArea name="maparea" min_size="350,500"  horizontal_scrollbar="0" position="500,150">
 		<ListBox name="maplist" min_size="350,600" />
 	</ScrollArea>
 
-	<ScrollArea name="playerarea" size="350,200"  horizontal_scrollbar="0" position="60,140">
+	<ScrollArea name="playerarea" min_size="350,200"  horizontal_scrollbar="0" position="60,140">
 		<ListBox name="playerlist" min_size="100,200" />
 	</ScrollArea>
 
-	<ScrollArea name="chatarea" size="350,250" horizontal_scrollbar="0" position="60,370">
+	<ScrollArea name="chatarea" min_size="350,250" horizontal_scrollbar="0" position="60,370">
 		<ListBox name="chatlounge" min_size="350,800"/>
 	</ScrollArea>
 
