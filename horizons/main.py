@@ -65,8 +65,10 @@ def start(command_line_arguments):
 	@param command_line_arguments: dict with command line arguments. possible values:
 									start_dev_map: (bool), if True, don't show menu but start the development map
 									start_map: (string), start map with specified map name
+									load_map: (string), load map with specified savegamename
 									unstable_features: (bool), wether unstable features should be enabled
 									debug: (bool), wether to enable debug messages
+									debug_modules: (list of strings), modules, where debugging is enabled
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets, unstable_features, debug
@@ -76,7 +78,8 @@ def start(command_line_arguments):
 	logging.config.fileConfig('content/logging.conf')
 	if debug:
 		logging.getLogger().setLevel(logging.DEBUG)
-
+	for m in command_line_arguments["debug_modules"]:
+		logging.getLogger(m).setLevel(logging.DEBUG)
 
 	#init db
 	db = DbReader(':memory:')
@@ -95,6 +98,7 @@ def start(command_line_arguments):
 	settings.addCategorys('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
 
+	# init gettext
 	from gettext import translation, install
 	if settings.language.name != '':
 		trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
@@ -103,21 +107,24 @@ def start(command_line_arguments):
 		install('unknownhorizons', 'po', unicode=1)
 	update_all_translations()
 
+	# create client_id if necessary
 	if settings.client_id is None:
 		settings.client_id = "".join("-" if c in (8, 13, 18, 23) else random.choice("0123456789abcdef") for c in xrange(0, 36))
 
-	savegamemanager = SavegameManager()
 
+	# init game parts
 	fife = Fife()
 	ext_scheduler = ExtScheduler(fife.pump)
-
 	fife.init()
 	loader = ActionSetLoader('content/gfx/')
 	action_sets = loader.load()
 	mainlistener = MainListener()
 	connection = None
 	session = None
+	savegamemanager = SavegameManager()
 	gui = Menus()
+
+	# parse command line:
 
 	# set flag wether to enable unstable features
 	unstable_features = command_line_arguments['unstable_features']
@@ -136,8 +143,18 @@ def start(command_line_arguments):
 			start_singleplayer(maps[0][map_id])
 		except ValueError:
 			print "Error: Cannot find map \"%s\"." % map_name
-			import sys
-			sys.exit(1)
+			import sys; sys.exit(1)
+	elif command_line_arguments['load_map'] is not None:
+		# load a game specified by user
+		savegamename = command_line_arguments['load_map']
+		saves = savegamemanager.get_saves()
+		try:
+			save_id = saves[1].index(savegamename)
+			start_singleplayer(saves[0][save_id])
+		except ValueError:
+			print "Error: Cannot find savegame \"%s\"." % savegamename
+			import sys; sys.exit(1)
+
 
 	else: # no commandline parameter, show main screen
 		gui.show_main()

@@ -103,7 +103,6 @@ class WildAnimal(Animal, Collector):
 
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
-		if horizons.main.debug: print 'WildAnimal %s: no possible job' % self.getId()
 		self.log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
 
 		# decrease health because of lack of food
@@ -130,9 +129,11 @@ class WildAnimal(Animal, Collector):
 				if horizons.main.session.world.get_island(target.x, target.y) is None:
 					found_possible_target = False
 		if found_possible_target:
+			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
 			self.move(target, callback=self.search_job)
 		else:
 			# we couldn't find a target, just try again 3 secs later
+			self.log.debug('WildAnimal %s: no possible job, no possible new loc', self.getId())
 			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
 
 	def get_job(self):
@@ -222,27 +223,18 @@ class FarmAnimal(Animal, BuildingCollector):
 	def load(self, db, worldid):
 		super(FarmAnimal, self).load(db, worldid)
 
+	def setup_new_job(self):
+		self.job.object._Provider__collectors.append(self)
+
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job."""
+		self.log.debug("FarmAnimal %s search job", self.getId())
 		if self.collector is not None:
 			self.collector.pickup_animal()
 			self.collector = None
 			self.state = self.states.stopped
 		else:
 			super(FarmAnimal, self).search_job()
-
-	def setup_new_job(self):
-		self.job.object._Provider__collectors.append(self)
-
-		""" moved to Animal
-	def finish_working(self):
-		#print self.id, 'FINISH WORKING'
-		# transfer ressources
-		self.transfer_res()
-		# deregister at the target we're at
-		self.job.object._Provider__collectors.remove(self)
-		self.end_job()
-		"""
 
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""

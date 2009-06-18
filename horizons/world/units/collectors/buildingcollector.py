@@ -42,9 +42,6 @@ class BuildingCollector(Collector):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,
 												**kwargs)
-		if horizons.main.debug:
-			print "Initing BuildingCollector", self.id
-
 		self.__init(home_building)
 
 	def __init(self, home_building):
@@ -82,8 +79,7 @@ class BuildingCollector(Collector):
 
 	def get_job(self):
 		"""Returns the next job or None"""
-		if horizons.main.debug:
-			print "Collector get_job", self.id
+		self.log.debug("Collector %s get_job", self.getId())
 
 		if self.home_building() is None:
 			return None
@@ -124,9 +120,7 @@ class BuildingCollector(Collector):
 	def reroute(self):
 		"""Reroutes the collector to a different job, or home if no job is found.
 		Can be called the current job can't be executed any more"""
-		if horizons.main.debug:
-			print "Collector reroute", self.id
-		#print self.getId(), 'Rerouting from', self.position
+		self.log.debug("Collector %s reroute", self.getId())
 		# Get a new job
 		job = self.get_job()
 		# Check if there is a new job
@@ -140,9 +134,8 @@ class BuildingCollector(Collector):
 			self.move_home(callback=self.reached_home)
 
 	def reached_home(self):
-		"""Exchanges resources with home and 'ends' the job"""
-		if horizons.main.debug:
-			print "Collector reached_home", self.id
+		"""Exchanges resources with home and calss end_job"""
+		self.log.debug("Collector %s reached home", self.getId())
 
 		if self.home_building() is not None:
 			remnant = self.home_building().inventory.alter(self.job.res, self.job.amount)
@@ -154,30 +147,24 @@ class BuildingCollector(Collector):
 
 	def get_collectable_res(self):
 		"""Return all resources the Collector can collect (depends on its home building)"""
-		if horizons.main.debug:
-			print "Collector get_collectable_res", self.id
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building().get_needed_res()
 
 	def get_buildings_in_range(self):
 		"""Returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		if horizons.main.debug:
-			print "Collector get_buildings_in_range", self.id
 		from horizons.world.provider import Provider
 		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
-		if horizons.main.debug:
-			print "Collector move_home", self.id
+		self.log.debug("Collector %s move_home", self.getId())
 		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
 	def cancel(self):
 		"""Cancels current job and moves back home"""
-		if horizons.main.debug:
-			print "Collector cancel", self.id
+		self.log.debug("Collector %s cancel", self.getId())
 		if self.job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
 		horizons.main.session.scheduler.rem_all_classinst_calls(self)

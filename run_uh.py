@@ -109,8 +109,12 @@ def print_help():
 	print "-h --help    - ", _("Print this help message.")
 	print ""
 	print "--start-dev-map   - ", _("Starts the development map without displaying the main menu")
-	print "                    ", _("Useful for testing during development)")
+	print "                    ", _("Useful for testing during development")
 	print "--start-map <map> - ", _("Starts <map>. <map> is the filename of the map, without '.sqlite'")
+	print "--load-map <save> - ", _("Loads a saved game. Specify the savegamename.")
+	print ""
+	print _("Debugging options:")
+	print "--debug-module <module> -", _("Enable logging for a certain logging module.")
 	print ""
 	print _("Have fun playing, and if you do, help us developing!")
 
@@ -142,7 +146,8 @@ if __name__ == '__main__':
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hd", \
 						   ["help", "debug", "fife-in-library-path", "start-dev-map", \
-							    "start-map=", "enable-unstable-features"])
+							    "start-map=", "enable-unstable-features", "debug-module=", \
+									"load-map="])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
@@ -151,10 +156,13 @@ if __name__ == '__main__':
 	debug = False
 	fife_in_library_path = False
 
-	command_line_arguments = { "start_dev_map": False, \
+	command_line_arguments = { \
+		         "start_dev_map": False, \
 					   "start_map": None, \
+						 "load_map": None,
 					   "unstable_features": False, \
-					   "debug": False}
+					   "debug": False,
+	           "debug_modules": []}
 
 	# apply arguments
 	for o, a in opts:
@@ -173,8 +181,15 @@ if __name__ == '__main__':
 		elif o == "--start-map":
 			# start map selected by commandline arg
 			command_line_arguments['start_map'] = a
+		elif o == "--load-map":
+			# load map selected by commandline arg
+			command_line_arguments['load_map'] = a
 		elif o == "--enable-unstable-features":
 			command_line_arguments["unstable_features"] = True
+		elif o == "--debug-module":
+			# add a module to the list of modules, where debugging is enabled
+			command_line_arguments["debug_modules"].append(a)
+
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:

@@ -22,6 +22,7 @@
 
 import os
 import glob
+import logging
 
 class ActionSetLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -32,6 +33,8 @@ class ActionSetLoader(object):
 	must not include additional action sets.
 	@param start_dir: directory that is used to begin search in
 	"""
+	log = logging.getLogger("util.loader")
+
 	def __init__(self, start_dir):
 		self.start_dir = start_dir
 		self.action_sets = None # will later store the action sets
@@ -102,12 +105,12 @@ class ActionSetLoader(object):
 					self._find_action_sets(full_path)
 
 	def load(self):
-		print "Loading action_sets..."
+		self.log.debug("Loading action_sets...")
 		self.action_sets = {}
 
 		self._find_action_sets(self.start_dir)
 
-		print "Done!"
+		self.log.debug("Done!")
 
 		#for key, value in self.action_sets.iteritems():
 		#	print "Action_set:" , key

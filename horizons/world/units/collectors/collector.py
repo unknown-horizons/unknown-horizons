@@ -143,7 +143,9 @@ class Collector(StorageHolder, Unit):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in 32 ticks."""
 		self.log.debug("Collector %s search job", self.getId())
+
 		self.job = self.get_job()
+		print 'Collector %s %s job = %s'%(self, self.getId(), self.job)
 		if self.job is None:
 			self.handle_no_possible_job()
 		else:
@@ -151,6 +153,7 @@ class Collector(StorageHolder, Unit):
 
 	def handle_no_possible_job(self):
 		"""Called when we can't find a job. default is to wait and try again in 2 secs"""
+		self.log.debug("Collector %s: no possible job, retry in 2 secs", self.getId())
 		horizons.main.session.scheduler.add_new_object(self.search_job, self, 32)
 
 	def get_home_inventory(self):
@@ -190,7 +193,10 @@ class Collector(StorageHolder, Unit):
 		# check if other collectors get this resource, because our inventory could
 		# get full if they arrive.
 		total_registered_amount_consumer = sum([ collector.job.amount for collector in \
-												 self.get_colleague_collectors() if collector.job.res == res ])
+												 self.get_colleague_collectors() if \
+												 collector.job is not None and \
+												 collector.job.res == res ])
+
 		# check if there are resources left to pickup
 		inventory_space_for_res = inventory.get_limit(res) - \
 														(total_registered_amount_consumer + inventory[res])
@@ -203,9 +209,10 @@ class Collector(StorageHolder, Unit):
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""
 		self.log.debug("Collector %s begins job at "+str(self.job.object.position), self.getId())
+		print 'collector %s %s begin_job'%(self, self.getId())
 		self.setup_new_job()
 		self.show()
-		#assert self.check_move(self.job.object.position)
+		assert self.check_move(self.job.object.position)
 		self.move(self.job.object.position, self.begin_working)
 		self.state = self.states.moving_to_target
 

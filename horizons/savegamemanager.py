@@ -163,7 +163,7 @@ class SavegameManager(object):
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
 	def get_regular_saves(self, include_displaynames = True):
-		"""Returns the savegames, that were saved via the ingame save dialog"""
+		"""Returns all savegames, that were saved via the ingame save dialog"""
 		return self.__get_saves_from_dirs([self.savegame_dir], \
 										  include_displaynames = include_displaynames)
 
@@ -174,6 +174,7 @@ class SavegameManager(object):
 										  include_displaynames = include_displaynames)
 
 	def get_quicksaves(self, include_displaynames = True):
+		"""Returns all savegames, that were saved via quicksave"""
 		return self.__get_saves_from_dirs([self.quicksave_dir], \
 										  include_displaynames = include_displaynames)
 
