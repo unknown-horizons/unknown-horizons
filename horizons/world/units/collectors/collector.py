@@ -208,7 +208,6 @@ class Collector(StorageHolder, Unit):
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""
 		self.log.debug("Collector %s begins job at "+str(self.job.object.position), self.getId())
-		print 'collector %s %s begin_job'%(self, self.getId())
 		self.setup_new_job()
 		self.show()
 		assert self.check_move(self.job.object.position)

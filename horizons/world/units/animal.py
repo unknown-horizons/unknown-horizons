@@ -54,6 +54,7 @@ class Animal(SecondaryProducer):
 	def finish_working(self):
 		# animal is done when it has eaten, and
 		# doesn't have to get home, so end job right now
+		Collector.finish_working(self)
 		self.end_job()
 
 
