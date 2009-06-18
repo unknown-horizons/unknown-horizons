@@ -307,11 +307,19 @@ class Menus(object):
 			horizons.main.fife.set_volume_effects(slider.getValue())
 
 
+	help_is_displayed = False
 	def on_help(self):
 		"""
 		Called on help action
+		Toggles help screen via static variable help_is_displayed
 		"""
-		self.show_dialog(self.widgets['help'], {'okButton' : True}, onPressEscape = True)
+		help_dlg = self.widgets['help']
+		if not self.help_is_displayed:
+			self.help_is_displayed = True
+			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
+		else:
+			self.help_is_displayed = False
+			help_dlg.hide()
 
 
 	def quit_session(self):
