@@ -51,6 +51,7 @@ class BuildingTool(NavigationTool):
 		self.load_gui()
 		if not self._class.class_package == 'path':
 			self.gui.show()
+			horizons.main.session.ingame_gui.minimap_to_front()
 
 		horizons.main.gui.on_escape = self.on_escape
 
@@ -94,7 +95,7 @@ class BuildingTool(NavigationTool):
 		self.gui.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0],
 			160
-		)	
+		)
 		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - horizons.main.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		top_bar = self.gui.findChild(name='top_bar')
