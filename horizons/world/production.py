@@ -129,12 +129,8 @@ class PrimaryProducer(Provider):
 		#if horizons.main.debug: print "PrimaryProducer check_production_startable", self.id
 
 		# check if we have space for the items we want to produce
-		enough_room = False # used to check if there is enough room to produce at least one item
-		for res, amount in self.production[self.active_production_line].production.items():
-			if amount > 0 and self.inventory[res] + amount <= self.inventory.get_limit(res):
-				enough_room = True
-		if not enough_room:
-				return
+		if not self._can_produce():
+			return
 
 		# TODO: document useable and used resources (what are they, when do we need them)
 		usable_resources = {}
@@ -214,6 +210,15 @@ class PrimaryProducer(Provider):
 			)*100)
 		#print self.progress
 
+
+	def _can_produce(self):
+		"""This function checks whether the producer is ready to start production.
+		Can be overriden to implement buildingspecific behaviour.
+		"""
+		for res, amount in self.production[self.active_production_line].production.items():
+			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
+				return False
+		return True
 
 class SecondaryProducer(Consumer, PrimaryProducer):
 	"""Represents a producer, that consumes ressources for production of other ressources

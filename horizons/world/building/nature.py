@@ -46,3 +46,15 @@ class Tree(GrowingBuilding):
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = 2
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+
+	def _can_produce(self):
+		"""This function checks whether the producer is ready to start production.
+		Can be overriden to implement buildingspecific behaviour.
+		"""
+		enough_room = False # used to check if there is enough room to produce at least one item
+		for res, amount in self.production[self.active_production_line].production.items():
+			if amount > 0 and self.inventory[res] + amount <= self.inventory.get_limit(res):
+				enough_room = True
+		return enough_room
+
+
