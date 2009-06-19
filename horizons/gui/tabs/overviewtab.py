@@ -59,10 +59,10 @@ class ShipOverviewTab(OverviewTab):
 		)
 		events = { 'foundSettelment': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(instance) )}
 		self.widget.mapEvents(events)
-		self.button_up_image = 'content/gui/images/icons/hud/main/build.png'
-		self.button_active_image = 'content/gui/images/icons/hud/main/build_h.png'
-		self.button_down_image = 'content/gui/images/icons/hud/main/build_i.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/main/build_l_h.png'
+		self.button_up_image = 'content/gui/images/icons/hud/common/dummy_40_u.png '
+		self.button_active_image = 'content/gui/images/icons/hud/common/dummy_40_a.png '
+		self.button_down_image = 'content/gui/images/icons/hud/common/dummy_40_d.png '
+		self.button_hover_image = 'content/gui/images/icons/hud/common/dummy_40_h.png '
 
 class ProductionOverviewTab(OverviewTab):
 

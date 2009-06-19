@@ -59,3 +59,7 @@ class ShipInventoryTab(InventoryTab):
 			'trade': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(instance))
 		}
 		self.widget.mapEvents(events)
+		self.button_up_image = 'content/gui/images/icons/hud/common/dummy_40_u.png '
+		self.button_active_image = 'content/gui/images/icons/hud/common/dummy_40_a.png '
+		self.button_down_image = 'content/gui/images/icons/hud/common/dummy_40_d.png '
+		self.button_hover_image = 'content/gui/images/icons/hud/common/dummy_40_h.png '
