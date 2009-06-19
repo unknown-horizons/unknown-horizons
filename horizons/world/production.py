@@ -211,7 +211,7 @@ class PrimaryProducer(Provider):
 					self.production[self.active_production_line].production.values() if product < 0
 				)
 			)*100)
-		print self.progress
+		#print self.progress
 
 
 class SecondaryProducer(Consumer, PrimaryProducer):

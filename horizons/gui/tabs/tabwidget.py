@@ -69,9 +69,9 @@ class TabWidget(object):
 			button.hover_image = tab.button_hover_image
 			button.size = (50, 50)
 			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
-			container.add(background)
-			container.add(button)
 			container.size = background.size
+			container.addChild(background)
+			container.addChild(button)
 			self.content.addChild(container)
 		self.content._recursiveResizeToContent()
 
