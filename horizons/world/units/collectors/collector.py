@@ -213,6 +213,7 @@ class Collector(StorageHolder, Unit):
 		assert self.check_move(self.job.object.position)
 		self.move(self.job.object.position, self.begin_working)
 		self.state = self.states.moving_to_target
+		self.log.debug("Collector %s began job", self.getId())
 
 	def begin_working(self):
 		"""Pretends that the collector works by waiting some time. finish_working is

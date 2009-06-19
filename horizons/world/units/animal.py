@@ -197,13 +197,16 @@ class WildAnimal(Animal, Collector):
 	def die(self):
 		"""Makes animal die, e.g. because of starvation"""
 		self.log.debug("Wild animal %s dying", self.getId())
+		# remove reference and leave animal as is - gc will do the rest
 		self.home_island.wild_animals.remove(self)
-		self.__del__()
+		#self.__del__()
 
+		""" old code, kept for now:
 	def __del__(self):
 		del self.health
 		del self.can_reproduce
 		super(WildAnimal, self).__del__()
+		"""
 
 
 class FarmAnimal(Animal, BuildingCollector):
