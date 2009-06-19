@@ -129,10 +129,11 @@ class PrimaryProducer(Provider):
 		#if horizons.main.debug: print "PrimaryProducer check_production_startable", self.id
 
 		# check if we have space for the items we want to produce
+		enough_room = False # used to check if there is enough room to produce at least one item
 		for res, amount in self.production[self.active_production_line].production.items():
-			if amount > 0 and self.inventory[res] + amount > self.inventory.get_limit(res):
-				# TODO: fix this: This is the problem why the trees do not grow, it will bail out because
-				# there is to much deerfood in the trees
+			if amount > 0 and self.inventory[res] + amount <= self.inventory.get_limit(res):
+				enough_room = True
+		if not enough_room:
 				return
 
 		# TODO: document useable and used resources (what are they, when do we need them)
