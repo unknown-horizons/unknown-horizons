@@ -109,6 +109,7 @@ class WildAnimal(Animal, Collector):
 		self.health -= self.HEALTH_DECREASE_ON_NO_JOB
 		if self.health <= 0:
 			self.die()
+			return
 
 		# if we have a job, we walk to a random location near us and search there
 		target = None
@@ -179,7 +180,9 @@ class WildAnimal(Animal, Collector):
 
 		self.log.debug("Wild animal %s REPRODUCING", self.getId())
 		# create offspring
-		horizons.main.session.entities.units[self.id](self.home_island, x=self.position.x, y=self.position.y, can_reproduce = self.next_clone_can_reproduce())
+		horizons.main.session.entities.units[self.id](self.home_island, \
+																	x=self.position.x, y=self.position.y, \
+																	can_reproduce = self.next_clone_can_reproduce())
 		# reset resources
 		for res in self.get_consumed_res():
 			self.inventory.reset(res)
@@ -196,6 +199,14 @@ class WildAnimal(Animal, Collector):
 		self.log.debug("Wild animal %s dying", self.getId())
 		self.home_island.wild_animals.remove(self)
 		del self
+		#self.__del__()
+
+		"""
+	def __del__(self):
+		del self.health
+		del self.can_reproduce
+		super(WildAnimal, self).__del__()
+		"""
 
 
 class FarmAnimal(Animal, BuildingCollector):
