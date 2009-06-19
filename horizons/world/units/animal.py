@@ -198,15 +198,12 @@ class WildAnimal(Animal, Collector):
 		"""Makes animal die, e.g. because of starvation"""
 		self.log.debug("Wild animal %s dying", self.getId())
 		self.home_island.wild_animals.remove(self)
-		del self
-		#self.__del__()
+		self.__del__()
 
-		"""
 	def __del__(self):
 		del self.health
 		del self.can_reproduce
 		super(WildAnimal, self).__del__()
-		"""
 
 
 class FarmAnimal(Animal, BuildingCollector):
