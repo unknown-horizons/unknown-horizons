@@ -28,7 +28,7 @@ STYLES= {
 			'margins': (0, 0),
 			'base_color' : fife.Color(40, 40, 40),
 			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(0, 0, 0, 0),
+			'background_color' : fife.Color(40, 40, 40),
 			'selection_color' : fife.Color(80, 80, 80),
 			'font' : 'Essays1743-Italic_small'
 		},
@@ -76,8 +76,8 @@ STYLES= {
 		'ScrollArea' : {
 			'border_size': 0,
 			'horizontal_scrollbar' : 1,
-			'base_color' : fife.Color(60, 60, 60),
-			'background_color' : fife.Color(60, 60, 60)
+			'base_color' : fife.Color(60, 60, 60, 100),
+			'background_color' : fife.Color(60, 60, 60, 100)
 		},
 		'TextField' : {
 			'base_color' : fife.Color(60, 60, 60),
