@@ -297,6 +297,11 @@ class Collector(StorageHolder, Unit):
 		random.shuffle(jobs)
 		return jobs
 
+	def sort_jobs_amount(self, jobs):
+		"""Sorts the jobs by the amount of resources available"""
+		jobs.sort(key=operator.attrgetter('amount'), reverse=True)
+		return jobs
+
 
 class Job(object):
 	"""Data structure for storing information of collector jobs"""

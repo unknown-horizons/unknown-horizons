@@ -170,6 +170,10 @@ class BuildingCollector(Collector):
 		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		self.move_home(callback=self.search_job, action='move')
 
+	def sort_jobs(self, jobs):
+		return self.sort_jobs_amount(jobs)
+
+
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.

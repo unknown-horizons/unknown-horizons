@@ -34,10 +34,9 @@ class InventoryTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
-		
+
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		print "Refresh..."
 		self.widget.findChild(name='inventory').inventory = self.instance.inventory
 		self.widget.findChild(name='headline').stylize('headline') # style definition for headline
 
