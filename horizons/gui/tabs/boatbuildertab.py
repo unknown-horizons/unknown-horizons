@@ -33,6 +33,10 @@ class BoatbuilderTab(TabInterface):
 			'createUnit': pychan.tools.callbackWithArguments(self.instance.produce, 15)
 		}
 		self.widget.mapEvents(events)
+		self.button_up_image = 'content/gui/images/icons/hud/common/work_u.png'
+		self.button_active_image = 'content/gui/images/icons/hud/common/work_a.png'
+		self.button_down_image = 'content/gui/images/icons/hud/common/work_d.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/common/work_h.png'
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
