@@ -242,7 +242,7 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s transfer_res", self.id)
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		if res_amount != self.job.amount:
-			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planed was %s",  \
+			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planned was %s",  \
 											 self.getId(), res_amount, self.job.res, \
 											 self.job.target.getId(), self.job.target, \
 											 self.job.amount)

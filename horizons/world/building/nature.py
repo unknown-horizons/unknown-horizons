@@ -32,8 +32,6 @@ class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 
 	def __init__(self, **kwargs):
 		super(GrowingBuilding, self).__init__(**kwargs)
-		if horizons.main.debug:
-			print "Initing GrowingBuilding", self.id
 		self.inventory.limit = 1 # this should be done by database query later on
 
 	@classmethod

@@ -60,9 +60,6 @@ class livingProperty(object):
 		return self.__value
 
 	def __set__(self, obj, value):
-		if horizons.main.debug:
-			print "Setting:", obj, value
-			print "Value:", self.__value
 		if hasattr(self.__value, 'end'):
 			self.__value.end()
 		self.__value = value

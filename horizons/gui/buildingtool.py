@@ -21,6 +21,7 @@
 
 import math
 import fife
+import logging
 
 import horizons.main
 
@@ -37,6 +38,7 @@ class BuildingTool(NavigationTool):
 	@param building: selected building type"
 	@param ship: If building from a ship, restrict to range of ship
 	"""
+	log = logging.getLogger("gui.buildingtool")
 
 	def __init__(self, building, ship = None):
 		import random
@@ -164,8 +166,7 @@ class BuildingTool(NavigationTool):
 		horizons.main.session.cursor = SelectionTool()
 
 	def mouseMoved(self, evt):
-		if horizons.main.debug:
-			print "BuildingTool mouseMoved"
+		self.log.debug("BuildingTool mouseMoved")
 		super(BuildingTool, self).mouseMoved(evt)
 		mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
@@ -175,8 +176,7 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mousePressed(self, evt):
-		if horizons.main.debug:
-			print "BuildingTool mousePressed"
+		self.log.debug("BuildingTool mousePressed")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mousePressed(evt)
 			return
@@ -196,8 +196,7 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mouseDragged(self, evt):
-		if horizons.main.debug:
-			print "BuildingTool mouseDragged"
+		self.log.debug("BuildingTool mouseDragged")
 		super(BuildingTool, self).mouseDragged(evt)
 		mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
@@ -208,8 +207,7 @@ class BuildingTool(NavigationTool):
 		evt.consume()
 
 	def mouseReleased(self, evt):
-		if horizons.main.debug:
-			print "BuildingTool mouseReleased"
+		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
 		elif fife.MouseEvent.LEFT == evt.getButton():
@@ -262,14 +260,12 @@ class BuildingTool(NavigationTool):
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
-		if horizons.main.debug:
-			print "BuildingTool: Building rotation now:", self.rotation
+		self.debug.log("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
 		self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
-		if horizons.main.debug:
-			print "BuildingTool: Building rotation now:", self.rotation
+		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
 		self.draw_gui()

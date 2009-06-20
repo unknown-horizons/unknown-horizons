@@ -32,8 +32,6 @@ from buildable import BuildableSingle
 class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
-		if horizons.main.debug:
-			print "Initing Settler"
 		self.level_max = 1
 		self.level = level if (level <= self.level_max) else self.level_max
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
@@ -74,7 +72,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 		self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
 
 	def consume(self):
-		"""Methode that handles the building's consumation. It is called every tick."""
+		"""Method that handles the building's consumation. It is called every tick."""
 		for (res, row) in self.consumation.iteritems():
 			if row['next_consume'] > 0: # count down till next consume is scheduled
 				row['next_consume'] -= 1
@@ -107,17 +105,17 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 			addition = randint(-1, 1) + content
 			addition = min(self.inhabitants_max, max(1, self.inhabitants + addition)) - self.inhabitants
 			self.inhabitants += addition
-		# reached max inhabitants, go a level up (TODO!)	
+		# reached max inhabitants, go a level up (TODO!)
 		if self.inhabitants == 	self.inhabitants_max:
 			self.level_up()
-		#TODO: level_down(), if no consume_content there	
-			
+		#TODO: level_down(), if no consume_content there
+
 	def level_up(self):
 		#TODO: implement leveling of settlers
 		if (self.level+1) <= self.level_max:
 			self.level += 1
 			self.update_world_level()
-			
+
 	def level_down(self):
 		#TODO: implement leveling of settlers
 		if (self.level-1) > 0:

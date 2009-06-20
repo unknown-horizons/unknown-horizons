@@ -20,7 +20,10 @@
 # ###################################################
 
 import weakref
+import logging
+
 import horizons.main
+
 from util.weakmethod import WeakMethod
 from util.living import LivingObject
 
@@ -29,6 +32,7 @@ class Scheduler(LivingObject):
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	@param timer: Timer instance the schedular registers itself with.
 	"""
+	log = logging.getLogger("scheduler")
 	def __init__(self, timer):
 		super(Scheduler, self).__init__()
 		self.schedule = {}
@@ -37,8 +41,7 @@ class Scheduler(LivingObject):
 		self.timer.add_call(self.tick)
 
 	def end(self):
-		if horizons.main.debug:
-			print "Scheduler len:", len(self.schedule)
+		self.log.debug("Scheduler end; len: %s", len(self.schedule))
 		self.schedule = None
 		self.timer.remove_call(self.tick)
 		self.timer = None
@@ -51,8 +54,7 @@ class Scheduler(LivingObject):
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			for callback in self.schedule[self.cur_tick]:
-				if horizons.main.debug:
-					print "Scheduler tick"
+				self.log.debug("Scheduler calling %s", str(callback))
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
@@ -83,8 +85,6 @@ class Scheduler(LivingObject):
 		"""Removes a CallbackObject from all callback lists
 		@param callback_obj: CallbackObject to remove
 		"""
-		if horizons.main.debug:
-			print "Scheduler rem_object", callback_obj
 		if self.schedule is not None:
 			for key in self.schedule:
 				for i in xrange(0, self.schedule[key].count(callback_obj)):
@@ -157,3 +157,7 @@ class CallbackObject(object):
 		self.runin = runin
 		self.loops = loops
 		self.class_instance = weakref.ref(class_instance, lambda ref: self.scheduler.rem_object(self))
+
+	def __str__(self):
+		# for debugging
+		return "Callback("+str(self.callback)+" on "+str(self.class_instance())+")"

@@ -137,8 +137,6 @@ class Island(WorldObject):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		# this creates too much output, uncomment if you need this message:
-		#if horizons.main.debug: print "Island get_tile"
 		if not self.rect.contains(point):
 			return None
 		try:

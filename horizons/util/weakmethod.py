@@ -55,3 +55,7 @@ class WeakMethod(object):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
+
+	def __str__(self):
+		# for debugging:
+		return str(self.function)

@@ -56,8 +56,7 @@ class WorldObject(Changelistener):
 	def load(self, db, worldid):
 		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
-		if horizons.main.debug:
-			self.log.debug('loading worldobject %s %s', worldid, self)
+		self.log.debug('loading worldobject %s %s', worldid, self)
 
 		self.__id = worldid
 		WorldObject.__objects[worldid] = self

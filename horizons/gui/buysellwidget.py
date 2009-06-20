@@ -20,10 +20,14 @@
 # ###################################################
 
 import pychan
+import logging
+
 import horizons.main
 from horizons.i18n import load_xml_translated
 
 class BuySellWidget(object):
+
+	log = logging.getLogger("gui")
 
 	def __init__(self, slots, settlement):
 		self.settlement = settlement
@@ -79,9 +83,8 @@ class BuySellWidget(object):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
-		if horizons.main.debug:
-			print "BuySellWidget add_ressource() resid:", res_id, "slot_id", slot_id, \
-			  "value", value
+		self.log.debug("BuySellWidget add_ressource() resid: %s; slot_id %s; value: %s",  \
+									 res_id, slot_id, value)
 
 		if self.resources is not None: # Hide resource menu
 			self.resources.hide()

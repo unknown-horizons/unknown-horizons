@@ -39,8 +39,6 @@ class Provider(StorageHolder):
 	"""
 	def __init__(self, **kwargs):
 		super(Provider, self).__init__(**kwargs)
-		if horizons.main.debug:
-			print "Initing Provider", self.id
 		self.__init()
 
 	def __init(self):
