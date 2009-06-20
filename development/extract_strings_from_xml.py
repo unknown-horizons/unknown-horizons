@@ -58,7 +58,7 @@ import sys
 
 def print_n_no_name(n, text):
     print '\tWarning: ',
-    print '%s without name found, please consider adding an uniq name, text=("%s")' % (n, text)
+    print '%s without name found, please consider adding an unique name, text=("%s")' % (n, text)
 
 print_label_no_name = lambda x: print_n_no_name('Label', x)
 print_window_no_name = lambda x: print_n_no_name('Window', x)
