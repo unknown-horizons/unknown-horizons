@@ -231,9 +231,10 @@ class Unit(WorldObject):
 	def save(self, db):
 		super(Unit, self).save(db)
 
+		owner_id = 0 if self.owner is None else self.owner.getId()
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
 			self.getId(), self.__class__.id, self.position.x, self.position.y, \
-					self.health, self.owner.getId())
+					self.health, owner_id)
 
 		self.path.save(db, self.getId())
 
