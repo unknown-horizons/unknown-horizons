@@ -138,7 +138,6 @@ class WildAnimal(Animal, Collector):
 			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
 
 	def get_job(self):
-		if horizons.main.debug: print 'WildAnimal %s: get_job' % self.getId()
 		self.log.debug('WildAnimal %s: get_job' % self.getId())
 
 		jobs = [] # list of possible jobs

@@ -22,7 +22,6 @@ import horizons.main
 import pychan
 import weakref
 from tabinterface import TabInterface
-from horizons.i18n import load_xml_translated
 
 class OverviewTab(TabInterface):
 

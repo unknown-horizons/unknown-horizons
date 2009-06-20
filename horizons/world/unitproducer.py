@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 
 from production import SecondaryProducer
 from horizons.util.point import Point
@@ -27,6 +28,8 @@ from building.building import Building
 import horizons.main
 
 class UnitProducer(SecondaryProducer):
+
+	log = logging.getLogger("world.unitproducer")
 
 	def __init__(self, **kwargs):
 		super(UnitProducer, self).__init__(**kwargs)
@@ -55,8 +58,7 @@ class UnitProducer(SecondaryProducer):
 
 
 	def production_step(self):
-		if horizons.main.debug:
-			print "UnitProducer production_step", self.getId()
+		self.log.debug("UnitProducer production_step %s", self.getId())
 		if sum(self._PrimaryProducer__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:
@@ -81,8 +83,7 @@ class UnitProducer(SecondaryProducer):
 
 	def create_unit(self):
 		"""Creates the specified unit at the buildings output point."""
-		if horizons.main.debug:
-			print "CREATING UNIT!", id
+		self.log.debug("CREATING UNIT! %s", id)
 		if self.output_point is None:
 			for point in self.position.get_radius_coordinates(3):
 				if point in horizons.main.session.world.water:

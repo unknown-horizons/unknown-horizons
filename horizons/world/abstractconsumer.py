@@ -37,8 +37,6 @@ class AbstractConsumer(StorageHolder):
 
 	def __init__(self, **kwargs):
 		super(AbstractConsumer, self).__init__(**kwargs)
-		if horizons.main.debug:
-			print "AbstractConsumer __init__"
 		self.__init()
 		self.create_collector()
 

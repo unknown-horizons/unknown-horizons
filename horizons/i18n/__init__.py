@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 from guitranslations import set_translations, text_translations
 import horizons.main
+
+log = logging.getLogger("i18n")
 
 set_translations()
 
@@ -33,7 +36,6 @@ def set_title(widget, title):
 	gui.findChild(name=widget).title = title
 
 def load_xml_translated(filename):
-	#print text_translations
 	global all_translated_widgets
 	try:
 		untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
@@ -50,8 +52,8 @@ def load_xml_translated(filename):
 			except AttributeError, e:
 				print e
 				print i, ' in ', filename
-	elif horizons.main.debug:
-		print _('No translation for file %s') % filename
+	else:
+		log.debug('No translation for file %s', filename)
 
 	all_translated_widgets[filename] = untranslated
 

@@ -123,11 +123,7 @@ class WeakList(list):
 		list.append(self, weakref.ref(obj, self.__remove_ref))
 
 	def remove(self, obj):
-		try:
-			list.remove(self, weakref.ref(obj))
-		except ValueError:
-			print obj, "not in", self
-			raise ValueError
+		list.remove(self, weakref.ref(obj))
 
 	def count(self, value):
 		return list.count(self, weakref.ref(value))

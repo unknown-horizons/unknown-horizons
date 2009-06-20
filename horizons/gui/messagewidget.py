@@ -20,7 +20,6 @@
 # ###################################################
 
 from string import Template
-import fife
 
 import horizons.main
 

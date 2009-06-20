@@ -20,6 +20,7 @@
 # ###################################################
 
 import weakref
+import logging
 
 import horizons.main
 
@@ -28,6 +29,7 @@ from changelistener import Changelistener
 class WorldObject(Changelistener):
 	__next_id = 1
 	__objects = weakref.WeakValueDictionary()
+	log = logging.getLogger("util.worldobject")
 	def __init__(self, **kwargs):
 		super(WorldObject, self).__init__(**kwargs)
 
@@ -55,7 +57,7 @@ class WorldObject(Changelistener):
 		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
 		if horizons.main.debug:
-			print 'loading worldobject', worldid, self
+			self.log.debug('loading worldobject %s %s', worldid, self)
 
 		self.__id = worldid
 		WorldObject.__objects[worldid] = self

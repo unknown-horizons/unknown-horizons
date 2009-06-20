@@ -52,8 +52,6 @@ class PrimaryProducer(Provider):
 	Check out the __init() function now."""
 	def __init__(self, **kwargs):
 		super(PrimaryProducer, self).__init__(**kwargs)
-		# this creates too much output, uncomment if you need this message:
-		#if horizons.main.debug: print "Initing PrimaryProducer", self.id
 		self._init()
 
 	def _init(self):
@@ -125,8 +123,6 @@ class PrimaryProducer(Provider):
 		if self.active_production_line is None:
 			# no production line selected, so we don't know what to produce
 			return
-		# this creates too much output, uncomment if you need this message:
-		#if horizons.main.debug: print "PrimaryProducer check_production_startable", self.id
 
 		# check if we have space for the items we want to produce
 		if not self._can_produce():
@@ -183,8 +179,6 @@ class PrimaryProducer(Provider):
 			self.act("idle", self._instance.getFacingLocation(), True)
 
 	def production_step(self):
-		# this creates too much output, uncomment if you need this message:
-		# if horizons.main.debug: print "PrimaryProducer production_step", self.getId()
 		if sum(self.__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
 			for res, amount in self.production[self.active_production_line].production.items():
 				if amount > 0:

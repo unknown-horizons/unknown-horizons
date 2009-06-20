@@ -21,6 +21,7 @@
 
 import math
 import weakref
+import logging
 
 import fife
 
@@ -37,10 +38,10 @@ class Building(AmbientSound, WorldObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	part_of_nature = False # wether this is part of nature (free units can walk through it)
 
+	log = logging.getLogger("world.building")
+
 	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
-		# this creates too much output, uncomment if you need this message:
-		#if horizons.main.debug: print "Initing Building", self.id
 		self.__init(Point(x, y), rotation, owner, instance)
 		self.island = weakref.ref(horizons.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x, y)) or \
@@ -77,8 +78,7 @@ class Building(AmbientSound, WorldObject):
 
 	def remove(self):
 		"""Removes the building"""
-		if horizons.main.debug:
-			print "BUILDING: REMOVE %s" % self.getId()
+		self.log.debug("BUILDING: REMOVE %s", self.getId())
 		self.island().remove_building(self)
 		horizons.main.session.ingame_gui.hide_menu()
 
@@ -107,8 +107,7 @@ class Building(AmbientSound, WorldObject):
 			self.health, (self.settlement or self.island()).getId())
 
 	def load(self, db, worldid):
-		if horizons.main.debug:
-			print 'loading building', worldid
+		self.log.debug('loading building %s', worldid)
 		super(Building, self).load(db, worldid)
 		x, y, self.health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
