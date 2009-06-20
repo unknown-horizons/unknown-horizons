@@ -1,4 +1,25 @@
 #!/usr/bin/python
+# ###################################################
+# Copyright (C) 2009 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
+#
+# Unknown Horizons is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
+
 
 header = '''# ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
@@ -51,7 +72,7 @@ def list_all_files():
 def content_from_file(filename):
     print '@ %s' % filename
     parsed = xml.dom.minidom.parse(filename)
-    labels = parsed.getElementsByTagName('Label')
+    labels = parsed.getElementsByTagName('Label') + parsed.getElementsByTagName('Button')
     for label in labels:
         if not len(label.getAttribute('text')):
             labels.remove(label)
@@ -62,7 +83,7 @@ def content_from_file(filename):
             label.getAttribute('text')) for label in labels if len(label.getAttribute('text')) and len(label.getAttribute('name'))
                       ]
     if len(label_strings):
-        return '\t\t%s : {\n\t\t\t%s},' % (os.path.basename(filename), ',\n\t\t\t'.join(label_strings))
+        return '\t\t"%s" : {\n\t\t\t%s},' % (os.path.basename(filename), ',\n\t\t\t'.join(label_strings))
     else: 
         return ''
 
