@@ -26,10 +26,10 @@ STYLES= {
 		'default' : {
 			'border_size': 2,
 			'margins': (0, 0),
-			'base_color' : fife.Color(40, 40, 40),
+			'base_color' : fife.Color(40, 40, 40, 0),
 			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(40, 40, 40),
-			'selection_color' : fife.Color(80, 80, 80),
+			'background_color' : fife.Color(40, 40, 40, 255),
+			'selection_color' : fife.Color(80, 80, 80, 255),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
@@ -46,6 +46,7 @@ STYLES= {
 		},
 		'Label' : {
 			'border_size': 0,
+			'background_color' : fife.Color(40, 40, 40, 0),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'ClickLabel' : {

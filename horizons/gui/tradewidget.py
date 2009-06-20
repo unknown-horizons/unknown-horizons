@@ -32,7 +32,6 @@ class TradeWidget(object):
 		self.widget.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0],
 			160
-
 		)
 		self.widget.stylize('menu_black')
 		self.widget.findChild(name='headline').stylize('headline') # style definition for headline

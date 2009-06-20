@@ -3,7 +3,7 @@
 	<Label text="This is the Unknown Horizons settings dialog. Please make sure that you know, what you do." name="settings_dialog_title" wrap_text="1" max_size="420,340" base_color="40, 40, 40"/>
 	<HBox>
 		<VBox>
-                        <Label name="language_label" text="Language:" base_color="40, 40, 40"/>
+            <Label name="language_label" text="Language:" base_color="40, 40, 40"/>
 			<Label name="autosave_interval_label" text="Autosave interval" base_color="40, 40, 40"/>
 			<Label name="number_of_autosaves_label" text="Number of saved autosaves:" base_color="40, 40, 40"/>
 			<Label name="number_of_quicksaves_label" text="Number of saved quicksaves:" base_color="40, 40, 40"/>
