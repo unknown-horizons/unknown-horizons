@@ -178,12 +178,6 @@ class World(LivingObject):
 			# add free trader
 			self.trader = Trader(99999, "Free Trader", Color())
 
-			#from horizons.gui.tabs.tabwidget import TabWidget
-			#from horizons.gui.tabs.overviewtab import ShipOverviewTab
-			#from horizons.gui.tabs.inventorytab import InventoryTab
-			#tab = TabWidget(tabs=[ShipOverviewTab(self.ships[0]), InventoryTab(self.ships[0])],)
-			#tab.show()
-
 			# Fire a message for new world creation
 			horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:

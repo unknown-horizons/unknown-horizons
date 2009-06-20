@@ -23,7 +23,8 @@ from random import randint
 
 import horizons.main
 
-from horizons.gui.tabwidget import TabWidget
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.gui.tabs.overviewtab import OverviewTab
 from horizons.util import WeakList
 from horizons.world.abstractconsumer import AbstractConsumer
 from building import Building, Selectable
@@ -123,8 +124,9 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 			self.update_world_level()
 	def update_world_level(self):
 		horizons.main.session.world.player.settler_level = max(horizons.main.session.world.player.settler_level,self.level)
+
 	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(2, object=self))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [OverviewTab(self)]))
 
 	def get_consumed_res(self):
 		"""Returns list of resources, that the building uses, without

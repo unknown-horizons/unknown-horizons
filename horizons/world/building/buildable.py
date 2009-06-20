@@ -140,7 +140,6 @@ class BuildableLine(BuildableSingle):
 				building.update({'action' : ('d' if int(round(point2[0])) < int(round(point1[0])) else 'b') if len(buildings) == 0 else 'bd'})
 				buildings.append(building)
 		x = int(round(point2[0]))
-		is_first = True
 		for y in xrange(int(round(point1[1])), int(round(point2[1])) + (1 if int(round(point2[1])) > int(round(point1[1])) else -1), (1 if int(round(point2[1])) > int(round(point1[1])) else -1)):
 			if len(buildings) == 0: #first tile
 				if y == int(round(point2[1])): #only tile
@@ -159,7 +158,6 @@ class BuildableLine(BuildableSingle):
 					action = 'bc' if int(round(point2[1])) > int(round(point1[1])) else 'ab'
 			else:
 				action = 'ac' #default
-			is_first = False
 
 			building = cls.are_build_requirements_satisfied(x, y, buildings, **kwargs)
 			if building is not None:

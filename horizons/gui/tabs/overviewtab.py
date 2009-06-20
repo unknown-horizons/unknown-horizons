@@ -22,6 +22,7 @@ import horizons.main
 import pychan
 import weakref
 from tabinterface import TabInterface
+from horizons.gui.buysellwidget import BuySellWidget
 
 class OverviewTab(TabInterface):
 
@@ -30,7 +31,7 @@ class OverviewTab(TabInterface):
 		self.instance = instance
 		instance.addChangeListener(self.refresh)
 		self.init_values()
-		
+
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		if hasattr(self.instance, 'name'):
@@ -47,6 +48,19 @@ class OverviewTab(TabInterface):
 	def hide(self):
 		super(OverviewTab, self).hide()
 		self.instance.removeChangeListener(self.refresh)
+
+
+class BranchOfficeOverviewTab(OverviewTab):
+
+	def __init__(self, instance = None):
+		super(BranchOfficeOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_branch_overview.xml',
+			instance = instance
+		)
+		events = { 'buysell': horizons.main.fife.pychan.tools.callbackWithArguments(\
+			horizons.main.session.ingame_gui.show_menu, BuySellWidget(3, self.instance.settlement))
+		}
+		self.widget.mapEvents(events)
 
 
 class ShipOverviewTab(OverviewTab):

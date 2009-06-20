@@ -23,7 +23,8 @@ import horizons.main
 
 from horizons.world.consumer import Consumer
 from horizons.world.provider import Provider
-from horizons.gui.tabwidget import TabWidget
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.gui.tabs.overviewtab import BranchOfficeOverviewTab
 from horizons.gui.buysellwidget import BuySellWidget
 from horizons.util import Point, Rect, WorldObject
 from building import Building, Selectable
@@ -65,13 +66,8 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def show_menu(self):
-		callbacks = {
-			'building_overview': {
-				'buysell': horizons.main.fife.pychan.tools.callbackWithArguments(\
-					horizons.main.session.ingame_gui.show_menu, BuySellWidget(3, self.settlement))
-			}
-		}
-		horizons.main.session.ingame_gui.show_menu(TabWidget(2, object=self, callbacks=callbacks))
+		from horizons.gui.tabs.inventorytab import InventoryTab
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [BranchOfficeOverviewTab(self), InventoryTab(self)]))
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
