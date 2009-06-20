@@ -56,9 +56,12 @@ import xml.dom.minidom
 import os
 import sys
 
-def print_no_name(text):
+def print_n_no_name(n, text):
     print '\tWarning: ',
-    print 'Label without name found, please consider adding an uniq name, text=("%s")' % text
+    print '%s without name found, please consider adding an uniq name, text=("%s")' % (n, text)
+
+print_label_no_name = lambda x: print_n_no_name('Label', x)
+print_window_no_name = lambda x: print_n_no_name('Window', x)
 
 def list_all_files():
     result = []
@@ -69,21 +72,29 @@ def list_all_files():
                result.append('%s/%s' % (entry[0], filename))
     return result
 
+def content_from_element(element_name, parse_tree, text_name='text'):
+    element_list = parse_tree.getElementsByTagName(element_name)
+    for element in element_list:
+        if not len(element.getAttribute('name')):
+            print_n_no_name(element_name, element.getAttribute(text_name))
+
+    element_strings = [ '%s: _("%s")' % (
+            ('"%s"' % element.getAttribute('name')).ljust(30),
+            element.getAttribute(text_name)) for element in element_list
+                      if len(element.getAttribute(text_name)) and len(element.getAttribute('name'))
+                      ]
+    return element_strings
+
 def content_from_file(filename):
     print '@ %s' % filename
     parsed = xml.dom.minidom.parse(filename)
-    labels = parsed.getElementsByTagName('Label') + parsed.getElementsByTagName('Button')
-    for label in labels:
-        if not len(label.getAttribute('text')):
-            labels.remove(label)
-        elif not len(label.getAttribute('name')):
-            print_no_name(label.getAttribute('text'))
-    label_strings = [ '%s: _("%s")' % (
-            ('"%s"' % label.getAttribute('name')).ljust(30),
-            label.getAttribute('text')) for label in labels if len(label.getAttribute('text')) and len(label.getAttribute('name'))
-                      ]
-    if len(label_strings):
-        return '\t\t"%s" : {\n\t\t\t%s},' % (os.path.basename(filename), ',\n\t\t\t'.join(label_strings))
+
+    strings = content_from_element('Label', parsed) + \
+        content_from_element('Button', parsed) + \
+        content_from_element('Window', parsed, 'title')
+
+    if len(strings):
+        return '\t\t"%s" : {\n\t\t\t%s},' % (os.path.basename(filename), ',\n\t\t\t'.join(strings))
     else: 
         return ''
 
