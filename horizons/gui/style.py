@@ -76,8 +76,8 @@ STYLES= {
 		'ScrollArea' : {
 			'border_size': 0,
 			'horizontal_scrollbar' : 1,
-			'base_color' : fife.Color(60, 60, 60, 100),
-			'background_color' : fife.Color(60, 60, 60, 100)
+			'base_color' : fife.Color(60, 60, 60),
+			'background_color' : fife.Color(60, 60, 60)
 		},
 		'TextField' : {
 			'base_color' : fife.Color(60, 60, 60),
