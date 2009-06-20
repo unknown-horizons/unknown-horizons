@@ -241,8 +241,8 @@ class Collector(StorageHolder, Unit):
 		"""Transfers resources from target to collector inventory"""
 		self.log.debug("Collector %s transfer_res", self.id)
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
-		assert res_amount == self.job.amount, \
-					 "collector could not pickup amount of ressources, that was planned for the current job."
+		if res_amount != self.job.amount:
+			sefl.log.warning("collector %s picked up %s of res %s at (%s, %s), planed was %s", self.getId(), res_amount, self.job.res, self.job.target.getId(), self.job.target, self.job.amount)
 		self.inventory.alter(self.job.res, res_amount)
 
 	def reroute(self):
