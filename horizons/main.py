@@ -74,8 +74,8 @@ def start(command_line_arguments):
 	logging.config.fileConfig('content/logging.conf')
 	if debug:
 		logging.getLogger().setLevel(logging.DEBUG)
-	for m in command_line_arguments["debug_modules"]:
-		logging.getLogger(m).setLevel(logging.DEBUG)
+	for module in command_line_arguments["debug_modules"]:
+		logging.getLogger(module).setLevel(logging.DEBUG)
 
 	#init db
 	db = DbReader(':memory:')
@@ -204,9 +204,9 @@ def save_game(savegamename):
 
 	if os.path.exists(savegamefile):
 		if not gui.show_popup(_("Confirmation for overwriting"),
-													_("A savegame with the name \"%s\" already exists."+\
-														"Should i overwrite it?")%savegamename,
-													show_cancel_button = True):
+				_("A savegame with the name \"%s\" already exists."+\
+				"Should i overwrite it?")%savegamename,
+				show_cancel_button = True):
 			gui.save_game()
 			return
 
