@@ -98,7 +98,7 @@ def set_translations():
 			"restart_required_window"     : _("Changes require restart")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading..."),
-			"version_label"               : _("Unknown Horizons Alpha 2009.0")},
+			"version_label"               : _("Unknown Horizons Alpha 2009.1")},
 		"hud_buildinfo.xml" : {
 			"buildingNameLabel"           : _("Building name (Building Class ROMAN)"),
 			"tiles_label"                 : _("Tiles:"),
@@ -109,7 +109,7 @@ def set_translations():
 			"resTextiles"                 : _("?"),
 			"resTools"                    : _("?")},
 		"mainmenu.xml" : {
-			"version_label"               : _("Unknown Horizons Alpha 2009.0"),
+			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
 			"start"                       : _("Singleplayer"),
 			"start_multi"                 : _("Multiplayer"),
 			"credits"                     : _(" Credits "),
@@ -146,6 +146,7 @@ def set_translations():
 			"okButton"                    : _("Ok"),
 			"load_game_window"            : _("Load game")},
 		"gamemenu.xml" : {
+			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),
