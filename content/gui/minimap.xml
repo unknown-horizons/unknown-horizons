@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <Container size="275,260">
 	<Icon image="content/gui/images/background/map_bg.png" position="40,0" />
-		<ImageButton name="speedUp" up_image="content/gui/images/icons/hud/main/speed_up.png" down_image="content/gui/images/icons/hud/main/speed_up_h.png" hover_image="content/gui/images/icons/hud/main/speed_up_h.png" size="28,28" position="62,16"/>
+	<ImageButton name="speedUp" up_image="content/gui/images/icons/hud/main/speed_up.png" down_image="content/gui/images/icons/hud/main/speed_up_h.png" hover_image="content/gui/images/icons/hud/main/speed_up_h.png" size="28,28" position="62,16"/>
 	<ImageButton name="speedDown" up_image="content/gui/images/icons/hud/main/speed_down.png" down_image="content/gui/images/icons/hud/main/speed_down_h.png" hover_image="content/gui/images/icons/hud/main/speed_down_h.png" size="28,28" position="43,38"/>
 	<ImageButton name="rotateLeft" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left_h.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" size="28,28" position="91,5" />
 	<ImageButton name="rotateRight" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right_h.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" size="28,28" position="155,5" />
 	<ImageButton name="zoomOut" up_image="content/gui/images/icons/hud/main/zoom_out.png" down_image="content/gui/images/icons/hud/main/zoom_out_h.png" hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" size="28,28" position="181,16" />
-	<ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" down_image="content/gui/images/icons/hud/main/zoom_in_h.png" hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" size="28,28" position="201,36" />		
+	<ImageButton name="zoomIn" up_image="content/gui/images/icons/hud/main/zoom_in.png" down_image="content/gui/images/icons/hud/main/zoom_in_h.png" hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" size="28,28" position="201,36" />
 </Container>

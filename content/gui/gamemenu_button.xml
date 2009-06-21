@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Container size="116,220">
-	<ImageButton name="gameMenuButton" up_image="content/gui/images/icons/hud/main/gamemenu.png" down_image="content/gui/images/icons/hud/main/gamemenu_h.png" hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" size="32,32" position="48,143" />
-	
-	
-	<ImageButton name="helpLink" up_image="content/gui/images/icons/hud/main/help.png" down_image="content/gui/images/icons/hud/main/help_h.png" hover_image="content/gui/images/icons/hud/main/help_h.png" size="32,32" position="13,173" />
-</Container>

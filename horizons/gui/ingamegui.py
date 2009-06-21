@@ -47,36 +47,12 @@ class IngameGui(LivingObject):
 		self.resources_needed, self.resource_usable = {}, {}
 		self._old_menu = None
 
-		self.gui['encyclopedia'] = load_xml_translated('encyclopedia_button.xml')
-		self.gui['encyclopedia'].position = (5,	40)
-		self.gui['encyclopedia'].show()
 		self.gui['topmain'] = load_xml_translated('top_main.xml')
 		self.gui['topmain'].stylize('topmain')
 		self.gui['topmain'].position = (
 			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2 - 10,
 			5
 		)
-
-		self.gui['camTools'] = load_xml_translated('cam_tools.xml')
-		self.gui['camTools'].position = (0,0)
-		self.gui['camTools'].mapEvents({
-			'zoomIn' : horizons.main.session.view.zoom_in,
-			'zoomOut' : horizons.main.session.view.zoom_out,
-			'rotateRight' : horizons.main.session.view.rotate_right,
-			'rotateLeft' : horizons.main.session.view.rotate_left
-		})
-
-		self.gui['minimap_toggle'] = load_xml_translated('minimap_toggle_button.xml')
-		self.gui['minimap_toggle'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['minimap_toggle'].size[0] - 15,
-			horizons.main.fife.settings.getScreenHeight() - self.gui['minimap_toggle'].size[1] -15,
-		)
-		self.gui['minimap_toggle'].show()
-		self.gui['minimap_toggle'].mapEvents({
-			'minimapToggle' : self.toggle_minmap,
-			'speedUp' : horizons.main.session.speed_up,
-			'speedDown' : horizons.main.session.speed_down
-		})
 
 		self.gui['minimap'] = load_xml_translated('minimap.xml')
 		self.gui['minimap'].position = (
@@ -109,16 +85,6 @@ class IngameGui(LivingObject):
 		self.gui['status_extra'].stylize('menu_black')
 
 		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
-		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
-		self.gui['gamemenu'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 3,
-			10
-		)
-		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : horizons.main.gui.show_pause,
-			'helpLink'	 : horizons.main.gui.on_help
-		})
-		self.gui['gamemenu'].show()
 
 		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
 		self.gui['status_gold'].stylize('menu_black')
@@ -170,10 +136,6 @@ class IngameGui(LivingObject):
 		self.gui['ship'] = load_xml_translated('hud_ship.xml')
 
 	def end(self):
-		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : None
-		})
-
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : None
 		})
@@ -185,18 +147,6 @@ class IngameGui(LivingObject):
 			'rotateLeft' : None
 		})
 
-		self.gui['minimap_toggle'].mapEvents({
-			'minimapToggle' : None,
-			'speedUp' : None,
-			'speedDown' : None
-		})
-
-		self.gui['camTools'].mapEvents({
-			'zoomIn' : None,
-			'zoomOut' : None,
-			'rotateRight' : None,
-			'rotateLeft' : None
-		})
 		for w in self.gui.values():
 			if w.parent is None:
 				w.hide()
@@ -332,8 +282,6 @@ class IngameGui(LivingObject):
 		self.gui['minimap'].show()
 		self.gui['leftPanel'].hide()
 		self.gui['leftPanel'].show()
-		self.gui['gamemenu'].hide()
-		self.gui['gamemenu'].show()
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = \
@@ -437,11 +385,6 @@ class IngameGui(LivingObject):
 			self.gui['minimap'].hide()
 		else:
 			self.gui['minimap'].show()
-
-		if self.gui['camTools'].isVisible():
-			self.gui['camTools'].hide()
-		else:
-			self.gui['camTools'].show()
 
 	def set_status_position(self, resource_name):
 		for i in xrange(1, 4):
