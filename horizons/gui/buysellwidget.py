@@ -36,7 +36,7 @@ class BuySellWidget(object):
 		self.widget.stylize('menu_black')
 		self.widget.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0],
-			160
+			168
 		)
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)

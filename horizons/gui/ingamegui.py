@@ -81,7 +81,7 @@ class IngameGui(LivingObject):
 		self.gui['minimap'] = load_xml_translated('minimap.xml')
 		self.gui['minimap'].position = (
 				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0],
-			10
+			4
 		)
 
 		self.gui['minimap'].show()
@@ -89,13 +89,15 @@ class IngameGui(LivingObject):
 			'zoomIn' : horizons.main.session.view.zoom_in,
 			'zoomOut' : horizons.main.session.view.zoom_out,
 			'rotateRight' : horizons.main.session.view.rotate_right,
-			'rotateLeft' : horizons.main.session.view.rotate_left
+			'rotateLeft' : horizons.main.session.view.rotate_left,
+			'speedUp' : horizons.main.session.speed_up,
+			'speedDown' : horizons.main.session.speed_down
 		})
 
 		self.gui['leftPanel'] = load_xml_translated('left_panel.xml')
 		self.gui['leftPanel'].position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui['leftPanel'].size[0] - 15,
-			147)
+			152)
 		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
 			'build' : self.show_build_menu
@@ -110,7 +112,7 @@ class IngameGui(LivingObject):
 		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
 		self.gui['gamemenu'].position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 3,
-			5
+			10
 		)
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : horizons.main.gui.show_pause,

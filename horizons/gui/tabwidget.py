@@ -44,7 +44,7 @@ class TabWidget(object):
 
 		self.widget.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0] -5,
-			160
+			168
 		)
 		self.widget.active = 0 # index of the currently active tab
 		for index, tab in enumerate(self.tabs):

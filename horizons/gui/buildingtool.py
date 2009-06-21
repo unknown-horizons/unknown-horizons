@@ -96,7 +96,7 @@ class BuildingTool(NavigationTool):
 		self.gui.findChild(name='headline').stylize('headline') # style definition for headline
 		self.gui.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0],
-			160
+			168
 		)
 		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - horizons.main.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
