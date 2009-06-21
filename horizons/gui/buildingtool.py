@@ -237,9 +237,9 @@ class BuildingTool(NavigationTool):
 			if built:
 				horizons.main.session.manager.execute(PlaySound("build"))
 			self.buildings = []
-			if evt.isShiftPressed() or not found_buildable:
+			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':
 				self.startPoint = point
-				self.preview_build(point, point)
+				self.preview_build(point, point)	
 			else:
 				self.on_escape()
 			evt.consume()

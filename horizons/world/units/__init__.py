@@ -40,11 +40,11 @@ class UnitClass(type):
 		attributes = {'load': load}
 		attributes.update(horizons.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)))
 
-		class_package,  class_name = horizons.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
-		__import__('horizons.world.units.'+class_package)
-
+		self.class_package,  self.class_name = horizons.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
+		__import__('horizons.world.units.'+self.class_package)
+		
 		return type.__new__(self, 'Unit[' + str(id) + ']',
-			(getattr(globals()[class_package], class_name),),
+			(getattr(globals()[self.class_package], self.class_name),),
 			attributes)
 
 	def __init__(self, id, **kwargs):
