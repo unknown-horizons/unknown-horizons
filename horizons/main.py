@@ -160,7 +160,7 @@ def start(command_line_arguments):
 def quit():
 	"""Quits the game"""
 	global fife
-	fife.cursor.set(engine.fife.CURSOR_NATIVE) #hack to get system cursor back
+	#fife.cursor.set(engine.fife.CURSOR_NATIVE) #hack to get system cursor back
 	fife.quit()
 
 
