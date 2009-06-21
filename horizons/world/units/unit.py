@@ -49,7 +49,11 @@ class Unit(WorldObject):
 		self._instance = horizons.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'idle'
-		self.act(self.action, self._instance.getLocation(), True)
+		location = fife.Location(self._instance.getLocation().getLayer())
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
+			self.position.x + self.position.x, \
+			self.position.y + self.position.y, 0))
+		self.act(self.action, location, True)
 		self._instance.addActionListener(self.InstanceActionListener)
 
 		self.move_callback = WeakMethodList()
