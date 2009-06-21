@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="64,250">
+<Container size="64,250" is_focusable="0">
 <!--<Icon name="msg_left" image="content/gui/images/background/msg_left_bg.png" position="0,0" />
 <Icon name="msg_bg" image="content/gui/images/background/msg_bar_bg.png" position="15,0" />
 <Icon name="msg_bg" image="content/gui/images/background/msg_bar_bg.png" position="70,0" />

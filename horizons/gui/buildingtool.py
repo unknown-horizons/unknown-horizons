@@ -219,7 +219,6 @@ class BuildingTool(NavigationTool):
 				self.endPoint = None
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
-			print "Building...."
 			# used to check if a building was built with this click
 			# Later used to play a sound
 			built = False

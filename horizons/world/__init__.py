@@ -95,7 +95,7 @@ class World(LivingObject):
 				self.player = human_players[0]
 
 		if self.player is None: # still..
-			print 'WARNING: Cannot autoselect a player because there are multiple candidates.'
+			print 'WARNING: Cannot autoselect a player because there are no or multiple candidates.'
 
 		#load islands
 		self.islands = []
@@ -194,6 +194,7 @@ class World(LivingObject):
 			ship.inventory.alter(5,30)
 			if player is self.player:
 				ret_coords = (x,y)
+			print "Done"
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		assert(ret_coords is not None, "Return coordes are none. No players loaded?")

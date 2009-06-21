@@ -74,7 +74,7 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.position + index-1) < len(self.active_messages):
+			if (self.position + index) < len(self.active_messages):
 				button = pychan.widgets.ImageButton()
 				button.name = str(index)
 				button.up_image = message.up_image
@@ -88,6 +88,7 @@ class MessageWidget(LivingObject):
 				button.mapEvents(events)
 				button_space.addChild(button)
 		button_space.resizeToContent()
+		self.widget.size = button_space.size
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -104,7 +105,7 @@ class MessageWidget(LivingObject):
 	def show_text(self, button):
 		"""Shows the text for a button."""
 		label = self.text_widget.findChild(name='text')
-		label.text = unicode(self.active_messages[self.position+int(button.name)-1].message)
+		label.text = unicode(self.active_messages[self.position+int(button.name)].message)
 		self.text_widget.resizeToContent()
 		self.text_widget.show()
 
