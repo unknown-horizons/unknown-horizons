@@ -85,6 +85,16 @@ class IngameGui(LivingObject):
 		self.gui['status_extra'].stylize('menu_black')
 
 		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
+		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
+		self.gui['gamemenu'].position = (
+			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 3,
+			10
+		)
+		self.gui['gamemenu'].mapEvents({
+			'gameMenuButton' : horizons.main.gui.show_pause,
+			'helpLink'	 : horizons.main.gui.on_help
+		})
+		self.gui['gamemenu'].show()
 
 		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
 		self.gui['status_gold'].stylize('menu_black')
@@ -136,6 +146,10 @@ class IngameGui(LivingObject):
 		self.gui['ship'] = load_xml_translated('hud_ship.xml')
 
 	def end(self):
+		self.gui['gamemenu'].mapEvents({
+			'gameMenuButton' : None
+		})
+
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : None
 		})
@@ -282,6 +296,8 @@ class IngameGui(LivingObject):
 		self.gui['minimap'].show()
 		self.gui['leftPanel'].hide()
 		self.gui['leftPanel'].show()
+		self.gui['gamemenu'].hide()
+		self.gui['gamemenu'].show()
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = \
