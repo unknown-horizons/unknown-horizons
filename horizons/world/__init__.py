@@ -23,7 +23,7 @@
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
 import weakref
-
+import random
 import horizons.main
 
 from island import Island
@@ -166,7 +166,6 @@ class World(LivingObject):
 		# add a random number of trees to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			print "Adding trees and animals to the world..."
-			import random
 			from horizons.command.building import Build
 			for island in self.islands:
 				for tile in island.ground_map.keys():
