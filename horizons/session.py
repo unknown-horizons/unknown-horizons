@@ -215,7 +215,6 @@ class Session(LivingObject):
 		self.world._init(db)
 		self.view.load(db) # load view
 		if not self.is_game_loaded():
-			print "foo"
 			self.world.setupPlayer(playername, playercolor)
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])

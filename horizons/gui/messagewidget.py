@@ -77,8 +77,9 @@ class MessageWidget(LivingObject):
 			if (self.position + index-1) < len(self.active_messages):
 				button = pychan.widgets.ImageButton()
 				button.name = str(index)
-				button.up_image = message.image
-				button.hover_image = message.image
+				button.up_image = message.up_image
+				button.hover_image = message.hover_image
+				button.down_image = message.down_image
 				events = {
 					button.name: pychan.tools.callbackWithArguments(horizons.main.session.view.center, message.x, message.y),
 					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, button),
@@ -164,5 +165,5 @@ class Message(object):
 		self.read = read
 		self.created = created
 		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
-		self.image = horizons.main.db('SELECT file from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where rowid = ?)', 1, id).rows[0][0]
+		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where rowid = ?)', 1, id)[0]
 		self.message = str(message) if message is not None else Template(horizons.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0]).safe_substitute(message_dict if message_dict is not None else {})

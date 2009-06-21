@@ -356,7 +356,7 @@ class Fife(object):
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""
-		self.cursor.set(engine.fife.CURSOR_NATIVE) #hack to get system cursor back
+		self.cursor.set(fife.CURSOR_NATIVE) #hack to get system cursor back
 		self.engine.destroy()
 
 	def breakLoop(self, returnValue = None):
