@@ -259,7 +259,7 @@ class BuildingTool(NavigationTool):
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
-		self.debug.log("BuildingTool: Building rotation now: %s", self.rotation)
+		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
 		self.draw_gui()
 
