@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Window title="City infos">
+<Window title="City infos" name="city_info_label">
 	<!-- Tabs -->
 	<HBox margins="0,0">
 		<ImageButton name="shipsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="48,48" />

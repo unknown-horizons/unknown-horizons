@@ -11,7 +11,7 @@
 
 		<Label name="headline" position="85,0" text="Overview" />
 
-		<Label position="20,25" text="Name:" /><Label name='name' position="60,25" text="" />
-		<Label position="20,45" text="Health:" /><Label name='health' position="60,45" text="" />
+		<Label name="name_label" position="20,25" text="Name:" /><Label name='name' position="60,25" text="" />
+		<Label position="20,45" name="health_label" text="Health:" /><Label name='health' position="60,45" text="" />
 	</Container>
 </Container>

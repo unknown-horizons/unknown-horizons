@@ -17,7 +17,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	
 		<Container position="20,30" size="600,400" >		
-	 		<Label position="0,0" text="Residents and Infrastructural" />
+	 		<Label position="0,0" name="residental_label" text="Residents and Infrastructural" />
 
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="55,30" />
@@ -30,7 +30,7 @@
 
 
 		<Container position="20,105" size="600,400" >
-			<Label position="0,0" text="Services" />
+			<Label position="0,0" text="Services" name="service_label" />
 			
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
@@ -44,7 +44,7 @@
 		</Container>
 
 		<Container position="20,185" size="600,400" >
-			<Label position="0,0" text="Companies" />
+			<Label position="0,0" text="Companies" name="companies_label" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
@@ -64,7 +64,7 @@
 		</Container>
  
  		<Container position="20,320" size="600,400" >
-			<Label position="0,0" text="Military" />
+			<Label position="0,0" text="Military" name="military_label" />
 			
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 

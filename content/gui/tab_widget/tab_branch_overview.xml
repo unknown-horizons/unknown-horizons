@@ -13,9 +13,9 @@
 		<Label name="headline" position="70,0" text="Building overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Container size="260,600" position="25,40">
-			<Label position="0,0" text="Name:" /><Label name='name' position="55,0" text="" />
-			<Label position="0,25" text="Health:" /><Label name='health' position="55,25" text="" />
-			<Label position="0,50" text="Running Costs:" /><Label name="running_costs" position="85,50" text=""/>
+			<Label position="0,0" name="name_label" text="Name:" /><Label name='name' position="55,0" text="" />
+			<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />
+			<Label position="0,50" name="running_cost_label" text="Running Costs:" /><Label name="running_costs" position="85,50" text=""/>
 		</Container>
 		<Icon image="content/gui/images/background/hr.png" position="20,125" />
 
@@ -24,7 +24,7 @@
 				<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
 			</HBox>
 
-			<Label text="Buy/Sell Resources:" position="50,10"/>
+			<Label text="Buy/Sell Resources:" name="buy_sell_resource_label" position="50,10"/>
 			<ImageButton name="buysell" position="170,10" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 		</Container>
 	</Container>

@@ -17,7 +17,7 @@
 	<Container size="220,150" padding="5" name="top_bar">
 		<ImageButton name="rotate_left" position="15,60" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
 		<ImageButton name="rotate_right" position="175,60" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
-		<Label position="70,68" text="Running costs:"/>
+		<Label position="70,68" name="running_cost_label" text="Running costs:"/>
 		<Label position="150,68" name="running_costs" text=""/>
 	</Container>
 </Container>

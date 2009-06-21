@@ -5,7 +5,7 @@
 	<Icon image="content/gui/images/logos/fife.png" position="22,100" />
 	<Icon image="content/gui/images/logos/sdl.gif" position="22,20" />
 	<Icon image="content/gui/images/logos/ogl.jpg" position="775,15" />
-	<Label name="version_label" text="Unknown Horizons Alpha 2009.0" position="800,720"/>
+	<Label name="version_label" text="Unknown Horizons Alpha 2009.1" position="800,720"/>
 
 	<VBox position="530,100"><Label name="start" text="Singleplayer"/></VBox>
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,161"/>

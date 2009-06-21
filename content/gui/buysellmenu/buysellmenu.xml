@@ -12,9 +12,9 @@
 		<Label name="headline" position="70,0" text="Buy or sell ressources" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		
-		<Label text="Legend:" position="20,37"/>
-			<Label text="Buy ressources" position="88,37"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="65,45"/>
-			<Label text="Sell ressources" position="88,60"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="65,67"/>
+		<Label name="legend_label" text="Legend:" position="20,37"/>
+			<Label name="buy_label" text="Buy ressources" position="88,37"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="65,45"/>
+			<Label name="sell_label" text="Sell ressources" position="88,60"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="65,67"/>
 		<Icon image="content/gui/images/background/hr.png" position="20,88" />
 		<HBox size="250, 100" position="20,120" name="content" padding="10"/>
 	</Container>

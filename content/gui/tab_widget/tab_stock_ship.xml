@@ -23,7 +23,7 @@
 
 		<Inventory name="inventory" size="316,157" position="15,46"/>
 
-		<Label position="100, 140" text="Load/Unload:" />
+		<Label name="load_unload_label" position="100, 140" text="Load/Unload:" />
 
 		<Icon image="content/gui/images/background/hr.png" position="20,110" />
 

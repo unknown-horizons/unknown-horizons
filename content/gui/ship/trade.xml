@@ -19,7 +19,7 @@
 	
 	<!-- Invenatory of ship -->
 	<Container size="260,600" position="20,40">
-		<Label text="Ship:" position="0,0"/>
+		<Label name="ship_label" text="Ship:" position="0,0"/>
 
 		<Icon image="content/gui/images/background/inv_bg.png" position="0,35" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="55,35" />
@@ -36,7 +36,7 @@
 
 	<!-- Exchange selectors -->
 	<Container size="260,600" position="20,150">
-	<Label text="Exchange:" />
+	<Label text="Exchange:" name="exchange_label" />
 	<ImageButton name="size_1" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="10, 30" />
 	<Label position="14, 50" text="1t" />
 	

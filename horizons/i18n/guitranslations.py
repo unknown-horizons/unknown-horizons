@@ -39,7 +39,8 @@ def set_translations():
 			"cancelButton"                : _("Cancel")},
 		"credits.xml" : {
 			"creditsIntroText"            : _("These guys contributed to Unknown Horizons"),
-			"okButton"                    : _("You guys rock!")},
+			"okButton"                    : _("You guys rock!"),
+			"credits_window"              : _("Credits")},
 		"inventory.xml" : {
 			"islandInventoryLabel"        : _("That's your island-wide inventory."),
 			"CoinsLabel"                  : _("Coins:"),
@@ -52,11 +53,15 @@ def set_translations():
 			"3"                           : _("n/a"),
 			"4"                           : _("n/a"),
 			"5"                           : _("n/a"),
-			"closeButton"                 : _("Close")},
+			"closeButton"                 : _("Close"),
+			"inventory_window"            : _("Inventory")},
 		"quitsession.xml" : {
 			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?"),
 			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"quit_session_window"         : _("Quit Unknown Horizons")},
+		"hud_window_cityinfo.xml" : {
+			"city_info_label"             : _("City infos")},
 		"hud_ship.xml" : {
 			"buildingNameLabel"           : _("Ship name (Ship type)"),
 			"shipCanons"                  : _("0/0"),
@@ -64,7 +69,8 @@ def set_translations():
 			"shipSpeed"                   : _("0/0")},
 		"load_disabled.xml" : {
 			"SorryLabel"                  : _("We're sorry, but the load function is not yet working."),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"load_disabled_window"        : _("Oh noes")},
 		"settings.xml" : {
 			"settings_dialog_title"       : _("This is the Unknown Horizons settings dialog. Please make sure that you know, what you do."),
 			"language_label"              : _("Language:"),
@@ -78,15 +84,18 @@ def set_translations():
 			"effect_volume_label"         : _("Effects volume:"),
 			"minutes_label"               : _("minutes"),
 			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"settings_window"             : _("Settings")},
 		"ingame_save.xml" : {
 			"enter_filename_label"        : _("Enter filename:"),
 			"deleteButton"                : _("Delete"),
 			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"ingame_save_window"          : _("Save game")},
 		"changes_require_restart.xml" : {
 			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons."),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"restart_required_window"     : _("Changes require restart")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading..."),
 			"version_label"               : _("Unknown Horizons Alpha 2009.0")},
@@ -117,19 +126,25 @@ def set_translations():
 		"chime.xml" : {
 			"made_it_label"               : _("Yeah, you made it..."),
 			"deadlink_label"              : _("But this is a deadlink, sorry."),
-			"okButton"                    : _("Back to business...")},
+			"okButton"                    : _("Back to business..."),
+			"chime_window"                : _("Chime The Bell")},
 		"save_disabled.xml" : {
 			"save_disabled"               : _("We're sorry, but the save function is not yet working."),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"save_disabled_window"        : _("Oh noes")},
 		"quitgame.xml" : {
 			"quit_game_caption"           : _("Are you sure you want to Quit Unknown Horizons?"),
 			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"quitgame_window"             : _("Quit Unknown Horizons")},
+		"boatbuilder.xml" : {
+			"boat_builder_window"         : _("boatbuilder")},
 		"ingame_load.xml" : {
 			"details_label"               : _(" Details:"),
 			"deleteButton"                : _("Delete"),
 			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok")},
+			"okButton"                    : _("Ok"),
+			"load_game_window"            : _("Load game")},
 		"gamemenu.xml" : {
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
@@ -146,7 +161,8 @@ def set_translations():
 			"chat_label"                  : _("Chat"),
 			"sendButton"                  : _("Send")},
 		"help.xml" : {
-			"okButton"                    : _("Close")},
+			"okButton"                    : _("Close"),
+			"help_window"                 : _("Help")},
 		"hud_fertility.xml" : {
 			"fertility1"                  : _("?"),
 			"fertility2"                  : _("?")},
@@ -175,9 +191,17 @@ def set_translations():
 		"work_building_tab4.xml" : {
 			"ProductionLabel"             : _("production")},
 		"work_building_tab0.xml" : {
-			"headline"                    : _("Building overview")},
+			"headline"                    : _("Building overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:"),
+			"running_cost_label"          : _("Running Costs:"),
+			"buy_sell_label"              : _("Buy/Sell Resources:")},
 		"production_building_overview.xml" : {
-			"headline"                    : _("Building overview")},
+			"headline"                    : _("Building overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:"),
+			"running_costs_label"         : _("Running Costs:"),
+			"toggle_label"                : _("Toggle active:")},
 		"work_building_tab5.xml" : {
 			"ResearchLabel"               : _("research")},
 		"work_building_tab3.xml" : {
@@ -186,24 +210,47 @@ def set_translations():
 			"CombatLabel"                 : _("combat")},
 		"tab_stock.xml" : {
 			"headline"                    : _("Inventory of")},
+		"tab_branch_overview.xml" : {
+			"headline"                    : _("Building overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:"),
+			"running_cost_label"          : _("Running Costs:"),
+			"buy_sell_resource_label"     : _("Buy/Sell Resources:")},
+		"tab_overview_ship.xml" : {
+			"health_label"                : _("Health:")},
+		"boatbuilder.xml" : {
+			"current_construction_label"  : _("Current construction progress:")},
 		"tab_boatbuilder_create.xml" : {
 			"overview_label"              : _("Select a boat to build:"),
 			"new_settlement_label"        : _("Build selected:")},
 		"tab_stock_ship.xml" : {
-			"headline"                    : _("Inventory")},
+			"headline"                    : _("Inventory"),
+			"load_unload_label"           : _("Load/Unload:")},
 		"tab_overview.xml" : {
-			"headline"                    : _("Overview")},
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:")},
 		"trade.xml" : {
 			"headline"                    : _("Trade"),
+			"ship_label"                  : _("Ship:"),
+			"exchange_label"              : _("Exchange:"),
 			"trade_with_label"            : _("Trade partner:")},
 		"buysellmenu.xml" : {
-			"headline"                    : _("Buy or sell ressources")},
+			"headline"                    : _("Buy or sell ressources"),
+			"legend_label"                : _("Legend:"),
+			"buy_label"                   : _("Buy ressources"),
+			"sell_label"                  : _("Sell ressources")},
 		"resources.xml" : {
 			"headline"                    : _("Select ressources to buy/sell:")},
 		"hud_build_tab0.xml" : {
-			"headline"                    : _("Build menu")},
+			"headline"                    : _("Build menu"),
+			"residental_label"            : _("Residents and Infrastructural"),
+			"service_label"               : _("Services"),
+			"companies_label"             : _("Companies"),
+			"military_label"              : _("Military")},
 		"hud_builddetail.xml" : {
-			"headline"                    : _("Build")},
+			"headline"                    : _("Build"),
+			"running_cost_label"          : _("Running costs:")},
 		"hud_tears_menu.xml" : {
 			"ConfirmTearLabel"            : _("Do you want to remove this building?"),
 			"accept-1"                    : _("yes"),
