@@ -213,9 +213,12 @@ class Session(LivingObject):
 
 		self.world = World() # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(db)
-		if not self.is_game_loaded(): # setup new player
-			self.world.setupPlayer(playername, playercolor)
 		self.view.load(db) # load view
+		if not self.is_game_loaded():
+			print "foo"
+			self.world.setupPlayer(playername, playercolor)
+			center = self.world.init_new_world()
+			self.view.center(center[0], center[1])
 		self.manager.load(db) # load the manager (there might me old scheduled ticks.
 		self.ingame_gui.load(db) # load the old gui positions and stuff
 		#setup view

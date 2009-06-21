@@ -153,36 +153,53 @@ class World(LivingObject):
 			trader_id = db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(db, trader_id)
 
-
-		if not horizons.main.session.is_game_loaded(): # for initiateing a new game:
-
-			# add a random number of trees to the gameworld
-			if int(self.properties.get('RandomTrees', 1)) == 1:
-				print "Adding trees and animals to the world..."
-				import random
-				from horizons.command.building import Build
-				for island in self.islands:
-					for tile in island.ground_map.keys():
-						if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
-							horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
-							"""
-						elif random.randint(0, 20) < 1:
-							horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
-							"""
-					for building in island.buildings:
-						building.production_step()
-					if horizons.main.unstable_features:
-						horizons.main.session.entities.units[13](island, x=-2, y=-23)
-				print "Done."
-
-			# add free trader
-			self.trader = Trader(99999, "Free Trader", Color())
-
-			# Fire a message for new world creation
-			horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		"""TUTORIAL:
 		To digg deaper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
+
+	def init_new_world(self):
+		"""This should be called if a new map is loaded (not a savegame, a fresh
+		map). In other words when it is loaded for the first time.
+
+		@return: Returs the coordinates of the players first ship
+		"""
+		# add a random number of trees to the gameworld
+		if int(self.properties.get('RandomTrees', 1)) == 1:
+			print "Adding trees and animals to the world..."
+			import random
+			from horizons.command.building import Build
+			for island in self.islands:
+				for tile in island.ground_map.keys():
+					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
+						horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
+						"""
+						elif random.randint(0, 20) < 1:
+						horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
+						"""
+				for building in island.buildings:
+					building.production_step()
+				if horizons.main.unstable_features:
+					horizons.main.session.entities.units[13](island, x=-2, y=-23)
+			print "Done."
+
+		# add free trader
+		self.trader = Trader(99999, "Free Trader", Color())
+		ret_coords = None
+		for player in self.players:
+			print "Adding ships for the players..."
+			rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
+			(x, y) = horizons.main.session.world.water[rand_water_id]
+			ship = horizons.main.session.entities.units[1](x=x, y=y, owner=player)
+			ship.inventory.alter(6,30)
+			ship.inventory.alter(4,30)
+			ship.inventory.alter(5,30)
+			if player is self.player:
+				ret_coords = (x,y)
+		# Fire a message for new world creation
+		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
+		assert(ret_coords is not None, "Return coordes are none. No players loaded?")
+		return ret_coords
+
 
 	def setupPlayer(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""

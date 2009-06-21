@@ -40,7 +40,8 @@ class MessageWidget(LivingObject):
 		self.archive = [] # mesages, that aren'y displayed any more
 		self.widget = load_xml_translated('hud_messages.xml')
 		self.widget.position = (
-			 5,	horizons.main.fife.settings.getScreenHeight()/2 - self.widget.size[0] - 50)
+			 5,
+			 horizons.main.fife.settings.getScreenHeight()/2 - self.widget.size[1]/2)
 
 		self.text_widget = load_xml_translated('hud_messages_text.xml')
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
