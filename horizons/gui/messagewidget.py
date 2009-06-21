@@ -21,6 +21,8 @@
 
 from string import Template
 
+import pychan
+
 import horizons.main
 
 from horizons.util.living import LivingObject
@@ -33,19 +35,15 @@ class MessageWidget(LivingObject):
 	@param x, y: int position where the widget is placed on the screen."""
 	def __init__(self, x, y):
 		super(LivingObject, self).__init__()
-		self.x, self.y = x, y
+		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # mesages, that aren'y displayed any more
 		self.widget = load_xml_translated('hud_messages.xml')
-
-		# the widget will be changed over time and have to be reset, when a message
-		# gets moved to the archive. to get info about the original state, you can use this:
-		self.original_widget = load_xml_translated('hud_messages.xml')
-		self.original_widget.position = (x, y)
-
 		self.widget.position = (
 			 5,	horizons.main.fife.settings.getScreenHeight()/2 - self.widget.size[0] - 50)
+
 		self.text_widget = load_xml_translated('hud_messages_text.xml')
+		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
 		self.widget.show()
 		self.current_tick = 0
 		self.position = 0 # number of current message
@@ -72,31 +70,22 @@ class MessageWidget(LivingObject):
 
 	def draw_widget(self):
 		"""Updates the widget."""
-		# iterate all 4 message buttons
-		for i in range(1, 5):
-			w = self.widget.findChild(name=str(i))
-
-			# check if this widget should display a message right now
-			if (self.position + i-1) < len(self.active_messages):
-				# set properties of this widget according to message
-				cur_message = self.active_messages[self.position + i-1]
-				w.up_image = cur_message.image
-				w.hover_image = cur_message.image
-				w.capture(horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.view.center, cur_message.x, cur_message.y))
-				# the following function are marked as deprecated, can probably be replaced by capture()
-				w.setEnterCallback(self.show_text)
-				w.setExitCallback(self.hide_text)
-				# this lines won't work, in show_text, w is always button 4
-				#w.capture(lambda : self.show_text(w), "mouseEntered")
-				#w.capture(self.hide_text, "mouseExited")
-			else: # no current message
-				original_w = self.original_widget.findChild(name=str(i))
-				#w.up_image = original_w.up_image #uncomment for visible buttons
-				#w.hover_image = original_w.hover_image #uncomment for visible buttons
-				w.capture(None)
-				w.capture(None, "mouseEntered")
-				w.capture(None, "mouseExited")
-				#w.setEnterCallback(None)
+		button_space = self.widget.findChild(name="button_space")
+		button_space.removeAllChildren() # Remove old buttons
+		for index, message in enumerate(self.active_messages):
+			if (self.position + index-1) < len(self.active_messages):
+				button = pychan.widgets.ImageButton()
+				button.name = str(index)
+				button.up_image = message.image
+				button.hover_image = message.image
+				events = {
+					button.name: pychan.tools.callbackWithArguments(horizons.main.session.view.center, message.x, message.y),
+					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, button),
+					button.name + "/mouseExited": self.hide_text
+				}
+				button.mapEvents(events)
+				button_space.addChild(button)
+		button_space.resizeToContent()
 
 	def forward(self):
 		"""Sets the widget to the next icon."""
@@ -114,9 +103,7 @@ class MessageWidget(LivingObject):
 		"""Shows the text for a button."""
 		label = self.text_widget.findChild(name='text')
 		label.text = unicode(self.active_messages[self.position+int(button.name)-1].message)
-		label.resizeToContent()
-		self.text_widget.size = (self.text_widget.getMaxChildrenWidth(), self.text_widget.height)
-		self.text_widget.position = (self.widget.x + self.widget.width-self.text_widget.width + 230, self.text_widget.y)
+		self.text_widget.resizeToContent()
 		self.text_widget.show()
 
 	def hide_text(self, *args):
@@ -152,7 +139,7 @@ class MessageWidget(LivingObject):
 	def load(self, db):
 		return # function disabled for now cause it crashes
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_active"):
-			self.active_messages.append(Message(self.x, self.y, id, created, True if read==1 else False, display, message))
+			self.active_messages.append(Message(x, y, id, created, True if read==1 else False, display, message))
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_archive"):
 			self.archive.append(Message(self.x, self.y, id, created, True if read==1 else False, display, message))
 		self.draw_widget()
