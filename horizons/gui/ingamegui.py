@@ -396,12 +396,6 @@ class IngameGui(LivingObject):
 		contentarea.adaptLayout()
 		self.active_build = num
 
-	def toggle_minmap(self):
-		if self.gui['minimap'].isVisible():
-			self.gui['minimap'].hide()
-		else:
-			self.gui['minimap'].show()
-
 	def set_status_position(self, resource_name):
 		for i in xrange(1, 4):
 			icon_name = resource_name + '_icon'
