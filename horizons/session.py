@@ -19,22 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import shutil
 import os
 import os.path
 import time
 
-import fife
 import horizons.main
 
 from gui.selectiontool import SelectionTool
-from world.building import building
-from world.units.ship import Ship
-from world.player import Player
 from gui.ingamegui import IngameGui
 from gui.ingamekeylistener import IngameKeyListener
-from world.island import Island
 from dbreader import DbReader
 from timer import Timer
 from scheduler import Scheduler

@@ -19,20 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import operator
-import weakref
-import new
-
 import horizons.main
 
 from horizons.world.storageholder import StorageHolder
-from horizons.util import Rect, Point, WorldObject
-from horizons.world.pathfinding import Movement
-from horizons.world.production import PrimaryProducer
-from horizons.ext.enum import Enum
+from horizons.util import Point
 
 from buildingcollector import BuildingCollector
-from collector import Job
 
 
 class AnimalCollector(BuildingCollector):

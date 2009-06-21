@@ -19,9 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from storageholder import StorageHolder
+from horizons.world.storageholder import StorageHolder
 from horizons.util import WeakList
-import horizons.main
 
 class Provider(StorageHolder):
 	"""The Provider class provides an interface for Collectors to pickup goods

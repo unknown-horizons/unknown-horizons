@@ -21,8 +21,6 @@
 
 import horizons.main
 
-from horizons.util import Rect, Point, WeakList
-from storageholder import StorageHolder
 from abstractconsumer import AbstractConsumer
 
 class Consumer(AbstractConsumer):

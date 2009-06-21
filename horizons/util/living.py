@@ -18,7 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import horizons.main
 
 class livingProperty(object):
 	"""livingProperty's are used to assign propertys to a class, simular to python properties.

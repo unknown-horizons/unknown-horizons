@@ -30,7 +30,6 @@ from horizons.gui.tabs.inventorytab import ShipInventoryTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding import Movement
 from horizons.util import Point
-from horizons.gui.tradewidget import TradeWidget
 from unit import Unit
 
 class Ship(Unit):

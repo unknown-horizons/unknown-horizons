@@ -20,7 +20,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import new
 import glob, random
 
 import fife
@@ -52,17 +51,15 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		- cut:
 		#TODO: complete documentation
 		"""
-		#print location.getFilename()
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('-')
-		#print "AS, action, rotation", actionset, action, rotation
 		if ',' in id:
 			id, shift_x, shift_y = id.split(',')
 		else:
 			shift_x, shift_y = None, None
 		commands = zip(commands[0::2], commands[1::2])
-		#print _("Loading animation #%s...") % (id)
+
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
 		for file, frame_end in sorted(horizons.main.action_sets[actionset][action][int(rotation)].iteritems()):
@@ -263,9 +260,12 @@ class Fife(object):
 			def check_music():
 				if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
 					if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
-						self.music_rand_element = self.music_rand_element + 1 if self.music_rand_element + 1 < len(self.music) else 0
+						self.music_rand_element = self.music_rand_element + 1 if \
+								self.music_rand_element + 1 < len(self.music) else 0
 						self.play_sound('bgsound', self.music[self.music_rand_element])
-				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \
+						self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
+						self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 			check_music() # Start background music
 			horizons.main.ext_scheduler.add_new_object(check_music, self, loops=-1)
 		self.imagepool = self.engine.getImagePool()

@@ -24,7 +24,7 @@ import fife
 import horizons.main
 
 from horizons.world.pathfinding import Pather, PathBlockedError, Movement
-from horizons.util import Point, Rect, WeakMethodList, WorldObject, WeakMethod
+from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
 	movement = Movement.SOLDIER_MOVEMENT
@@ -77,7 +77,9 @@ class Unit(WorldObject):
 		@param action: string representing the action that is finished.
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x + self.position.x - self.last_position.x, self.position.y + self.position.y - self.last_position.y, 0))
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
+			self.position.x + self.position.x - self.last_position.x, \
+			self.position.y + self.position.y - self.last_position.y, 0))
 		self.act(self.action, location, True)
 		horizons.main.session.view.cam.refresh()
 
@@ -212,8 +214,11 @@ class Unit(WorldObject):
 		width = 50
 		height = 5
 		y_pos = -30
-		mid_node_up = fife.GenericRendererNode(self._instance, fife.Point(-width/2+int(((self.health/self.max_health)*width)),y_pos-height))
-		mid_node_down = fife.GenericRendererNode(self._instance, fife.Point(-width/2+int(((self.health/self.max_health)*width)),y_pos))
+		mid_node_up = fife.GenericRendererNode(self._instance, \
+									fife.Point(-width/2+int(((self.health/self.max_health)*width)),\
+														 y_pos-height))
+		mid_node_down = fife.GenericRendererNode(self._instance, \
+									fife.Point(-width/2+int(((self.health/self.max_health)*width)),y_pos))
 		if self.health != 0:
 			renderer.addQuad("health_" + str(self.getId()), fife.GenericRendererNode(self._instance, fife.Point(-width/2, y_pos-height)), mid_node_up, mid_node_down, fife.GenericRendererNode(self._instance, fife.Point(-width/2, y_pos)), 0, 255, 0)
 		if self.health != self.max_health:

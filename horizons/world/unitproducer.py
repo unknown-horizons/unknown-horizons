@@ -22,8 +22,6 @@
 import logging
 
 from production import SecondaryProducer
-from horizons.util.point import Point
-from horizons.command.unit import CreateUnit
 from building.building import Building
 import horizons.main
 

@@ -20,7 +20,6 @@
 # ###################################################
 
 from storage import SizedSlotStorage
-import horizons.main
 
 class StorageHolder(object):
 	"""The StorageHolder class is used as as a parent class for everything that

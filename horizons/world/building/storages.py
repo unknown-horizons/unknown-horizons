@@ -21,12 +21,11 @@
 
 import horizons.main
 
-from horizons.world.consumer import Consumer
 from horizons.world.provider import Provider
+from horizons.world.consumer import Consumer
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.gui.tabs.overviewtab import BranchOfficeOverviewTab
-from horizons.gui.buysellwidget import BuySellWidget
-from horizons.util import Point, Rect, WorldObject
+from horizons.util import Point, WorldObject
 from building import Building, Selectable
 from buildable import BuildableSingle
 

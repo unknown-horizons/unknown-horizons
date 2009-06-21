@@ -23,8 +23,6 @@ from building import Building
 from buildable import BuildableRect
 from horizons.world.production import PrimaryProducer
 
-import horizons.main
-
 class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
 	""" Class for stuff that grows, such as trees
 	"""

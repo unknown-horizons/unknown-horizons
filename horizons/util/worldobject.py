@@ -22,8 +22,6 @@
 import weakref
 import logging
 
-import horizons.main
-
 from changelistener import Changelistener
 
 class WorldObject(Changelistener):

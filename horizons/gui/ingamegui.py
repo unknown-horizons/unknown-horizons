@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
 
 import horizons.main
 
@@ -29,7 +28,6 @@ from horizons.world.settlement import Settlement
 from buildingtool import BuildingTool
 from selectiontool import SelectionTool
 from messagewidget import MessageWidget
-from buysellwidget import BuySellWidget
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.gui.tabs.buildtabs import BuildTab
 

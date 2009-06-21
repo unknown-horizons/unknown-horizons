@@ -20,13 +20,12 @@
 # ###################################################
 
 import weakref
-import copy
 import sys
 import logging
 
 import horizons.main
-from horizons.util import Rect, Point, WorldObject
-from building.building import Building
+from horizons.util import Rect, Point
+from horizons.world.building.building import Building
 
 class PathBlockedError(Exception):
 	pass
@@ -102,7 +101,7 @@ class FindPath(object):
 		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
 
-		self.log.debug('SEARCHING path from %s to %s. blocked: %s', \
+		self.log.debug('searching path from %s to %s. blocked: %s', \
 									 source, destination, blocked_coords)
 
 		# prepare args
@@ -110,9 +109,9 @@ class FindPath(object):
 			return None
 
 		# execute algorithm on the args
-		p = self.execute()
-		self.log.debug('FOUND PATH: %s',p)
-		return p
+		path = self.execute()
+		self.log.debug('found path: %s', path)
+		return path
 
 	def setup(self):
 		"""Sets up variables for execution of algorithm
@@ -232,7 +231,7 @@ class FindPath(object):
 			# check if cur_node is at the destination
 			if cur_node_coords in dest_coords:
 				# we're done.
-				# insert steps of past to a list and return it
+				# insert steps of path to a list and return it
 				path = [ cur_node_coords ]
 				previous_node = cur_node_data[0]
 				while previous_node is not None:

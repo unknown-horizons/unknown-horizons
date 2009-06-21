@@ -19,9 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
-import horizons.main
-from horizons.util import Point, WorldObject
+from horizons.util import WorldObject
 
 class Act(object):
 	"""Command class that moves a unit.

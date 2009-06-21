@@ -36,12 +36,8 @@
    Continue to horizons.session for further ingame digging.
    """
 
-import re
-import time
 import os
 import os.path
-import glob
-import shutil
 import logging
 import logging.config
 import random
@@ -217,7 +213,7 @@ def save_game(savegamename):
 
 	try:
 		session.save(savegamefile)
-	except IOError, e: # invalid filename
+	except IOError: # invalid filename
 		gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
 		gui.hide()
 		gui.save_game()

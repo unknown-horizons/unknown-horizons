@@ -22,13 +22,11 @@
 
 import os
 import os.path
-import re
 import glob
 import time
 import user
 import horizons.main
 from dbreader import DbReader
-import copy
 
 class SavegameManager(object):
 	"""Controls savegamefiles.

@@ -24,8 +24,7 @@ import horizons.main
 from horizons.packets import TickPacket
 
 
-from util import encode, decode
-from util.worldobject import WorldObject
+from util import decode
 from util.living import LivingObject
 
 class SPManager(LivingObject):

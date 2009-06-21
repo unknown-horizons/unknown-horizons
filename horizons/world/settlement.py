@@ -20,7 +20,7 @@
 # ###################################################
 import horizons.main
 from storage import SizedSlotStorage
-from horizons.util import WorldObject, Point, WeakList
+from horizons.util import WorldObject, WeakList
 from tradepost import TradePost
 
 class Settlement(TradePost, WorldObject):

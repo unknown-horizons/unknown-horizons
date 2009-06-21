@@ -19,17 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import time
-import math
 import fife
 
 import horizons.main
 
-from horizons.world.units import UnitClass
 from horizons.world.units.unit import Unit
-from horizons.world.units.ship import Ship
 from horizons.command.unit import Act
-from horizons.util import WeakList
 from horizons.util import WorldObject
 from navigationtool import NavigationTool
 
