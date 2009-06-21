@@ -49,11 +49,13 @@ def load_xml_translated(filename):
 	if guitranslations.text_translations.has_key(filename):
 		for i in guitranslations.text_translations[filename].items():
 			try:
-				if isinstance(untranslated.findChild(name=i[0]), pychan.widgets.Label)\
-						or isinstance(untranslated.findChild(name=i[0]), pychan.widgets.Button):
-					untranslated.findChild(name=i[0]).text = i[1]
-				elif isinstance(untranslated.findChild(name=i[0]), pychan.widgets.Window):
-					untranslated.findChild(name=i[0]).title = i[1]
+				widget = untranslated.findChild(name=i[0])
+				if isinstance(widget, pychan.widgets.Label)\
+						or isinstance(widget, pychan.widgets.Button):
+					widget.text = i[1]
+					widget.adaptLayout()
+				elif isinstance(widget, pychan.widgets.Window):
+					widget.title = i[1]
 			except AttributeError, e:
 				print e
 				print i, ' in ', filename
