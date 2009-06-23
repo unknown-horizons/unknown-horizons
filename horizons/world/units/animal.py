@@ -26,8 +26,8 @@ import logging
 import horizons.main
 
 from horizons.world.production import SecondaryProducer, Provider
-from horizons.world.pathfinding import Movement
 from horizons.util import Point, Circle
+from horizons.world.pathfinding import SoldierPather, CollectorPather
 from collectors import Collector, BuildingCollector
 
 class Animal(SecondaryProducer):
@@ -68,7 +68,6 @@ class WildAnimal(Animal, Collector):
 	It is assumed, that they need all resources, that they use, for reproduction. If they have
 	gathered all resources, and their inventory is full, they reproduce.
 	"""
-	movement = Movement.SOLDIER_MOVEMENT
 	walking_range = 5
 	WORK_DURATION = 48
 
@@ -86,9 +85,9 @@ class WildAnimal(Animal, Collector):
 				self.getId(), can_reproduce, len(self.home_island.wild_animals))
 
 	def __init(self, island, can_reproduce):
-		# good health is the main target of an animal. it increases when they it and decreases, when
-		# they have no food. if it reaches 0, they die, and if it reaches REPRODUCE_ON_HEALTH_LEVEL,
-		# they reproduce
+		# good health is the main target of an animal. it increases when they eat and
+		# decreases, when they have no food. if it reaches 0, they die, and
+		# if it reaches REPRODUCE_ON_HEALTH_LEVEL, they reproduce
 		self.health = self.HEALTH_INIT_VALUE
 		self.can_reproduce = can_reproduce
 		self._home_island = weakref.ref(island)
@@ -111,11 +110,26 @@ class WildAnimal(Animal, Collector):
 			self.die()
 			return
 
-		# if we have a job, we walk to a random location near us and search there
+		# if can't find a job, we walk to a random location near us and search there
+		self.log.debug('WildAnimal %s: get_rand_loc start',self.getId())
+		target = self.get_random_location_in_range()
+		self.log.debug('WildAnimal %s: get_rand_loc end',self.getId())
+		if target is not None:
+			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
+			self.move(target, callback=self.search_job)
+		else:
+			# we couldn't find a target, just try again 3 secs later
+			self.log.debug('WildAnimal %s: no possible job, no possible new loc', self.getId())
+			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
+
+	def get_random_location_in_range(self):
+		"""Returns a random location in walking_range, that we can find a path to
+		@return: Instance of Point or None"""
 		target = None
 		found_possible_target = False
 		possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
 		possible_walk_targets.remove(self.position.to_tuple())
+
 		while not found_possible_target and len(possible_walk_targets) > 0:
 			target_tuple = possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)]
 			possible_walk_targets.remove(target_tuple)
@@ -128,14 +142,13 @@ class WildAnimal(Animal, Collector):
 			if found_possible_target:
 				#assert horizons.main.session.world.get_island(target.x, target.y) is not None
 				if horizons.main.session.world.get_island(target.x, target.y) is None:
+					self.log.warning("WildAnimal %s tried to walk on a tile, that is not on an island!", self.getId())
 					found_possible_target = False
+
 		if found_possible_target:
-			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
-			self.move(target, callback=self.search_job)
+			return target
 		else:
-			# we couldn't find a target, just try again 3 secs later
-			self.log.debug('WildAnimal %s: no possible job, no possible new loc', self.getId())
-			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
+			return None
 
 	def get_job(self):
 		self.log.debug('WildAnimal %s: get_job' % self.getId())
@@ -166,7 +179,7 @@ class WildAnimal(Animal, Collector):
 	def end_job(self):
 		super(WildAnimal, self).end_job()
 		# check if we can reproduce
-		self.log.debug("Wild animal %s health: %s", self.getId(), self.health)
+		self.log.debug("Wild animal %s end_job; health: %s", self.getId(), self.health)
 		self.health += self.HEALTH_INCREASE_ON_FEEDING
 		if self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
 			self.reproduce()
@@ -196,16 +209,12 @@ class WildAnimal(Animal, Collector):
 	def die(self):
 		"""Makes animal die, e.g. because of starvation"""
 		self.log.debug("Wild animal %s dying", self.getId())
-		# remove reference and leave animal as is - gc will do the rest
+		# we don't do anything here, just remove reference and
+		# leave animal as is - garbage collection will do the rest
 		self.home_island.wild_animals.remove(self)
-		#self.__del__()
 
-		""" old code, kept for now:
-	def __del__(self):
-		del self.health
-		del self.can_reproduce
-		super(WildAnimal, self).__del__()
-		"""
+	def create_pather(self):
+		return SoldierPather(self)
 
 
 class FarmAnimal(Animal, BuildingCollector):
@@ -214,8 +223,6 @@ class FarmAnimal(Animal, BuildingCollector):
 	the farm grows, and collectors from the farm can collect their produced resources.
 	"""
 	grazingTime = 2
-	movement = Movement.COLLECTOR_MOVEMENT
-
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(FarmAnimal, self).__init__(home_building = home_building, \
 																 start_hidden = start_hidden, **kwargs)
@@ -251,3 +258,5 @@ class FarmAnimal(Animal, BuildingCollector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
 
+	def create_pather(self):
+		return CollectorPather(self)

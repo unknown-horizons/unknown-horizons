@@ -28,7 +28,7 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import WorldObject
-from horizons.world.pathfinding import Movement
+from horizons.world.pathfinding import CollectorPather
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
@@ -36,8 +36,6 @@ class Collector(StorageHolder, Unit):
 	"""Base class for every collector. Does not depend on any home building.
 	"""
 	log = logging.getLogger("world.units.collector")
-
-	movement = Movement.COLLECTOR_MOVEMENT
 
 	WORK_DURATION = 16 # time how long a collector predends to work at target in ticks
 
@@ -301,6 +299,9 @@ class Collector(StorageHolder, Unit):
 		"""Sorts the jobs by the amount of resources available"""
 		jobs.sort(key=operator.attrgetter('amount'), reverse=True)
 		return jobs
+
+	def create_pather(self):
+		return CollectorPather(self)
 
 
 class Job(object):

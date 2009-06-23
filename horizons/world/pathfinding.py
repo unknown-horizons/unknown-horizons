@@ -30,17 +30,6 @@ from horizons.world.building.building import Building
 class PathBlockedError(Exception):
 	pass
 
-class Movement:
-	"""Saves walkable tiles according to unit in a seperate namespace
-	SOLDIER_MOVEMENT: move directly on any walkable tile
-	                  (except water, buildings, natural obstacles such as mountains)
-	STORAGE_COLLECTOR_MOVEMENT: move on roads
-	COLLECTOR_MOVEMENT: move within the radius of a building
-	SHIP_MOVEMENT: move on water
-	"""
-	(SOLDIER_MOVEMENT, STORAGE_COLLECTOR_MOVEMENT, \
-	 SHIP_MOVEMENT, COLLECTOR_MOVEMENT) = xrange(0, 4)
-
 def check_path(path, blocked_coords):
 	""" debug function to check if a path is valid """
 	i = iter(path)
@@ -247,30 +236,12 @@ class FindPath(object):
 			return None
 
 
-class Pather(object):
+class AbstractPather(object):
 	"""Interface for pathfinding for use by Unit.
 	"""
 	log = logging.getLogger("world.pathfinding")
-	def __init__(self, unit):
-		self.move_diagonal = False
-		self.blocked_coords = []
-		if unit.__class__.movement == Movement.STORAGE_COLLECTOR_MOVEMENT:
-			island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
-			self.path_nodes = island.path_nodes
-		elif unit.__class__.movement == Movement.COLLECTOR_MOVEMENT:
-			self.move_diagonal = True
-		elif unit.__class__.movement == Movement.SHIP_MOVEMENT:
-			self.move_diagonal = True
-			self.path_nodes = horizons.main.session.world.water
-			self.blocked_coords = horizons.main.session.world.ship_map
-		elif unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
-			self.move_diagonal = True
-			# path nodes will be reloaded on every call, since island might change when transported
-			# via ship
-			island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
-			self.path_nodes = island.get_walkable_coordinates()
-		else:
-			assert False, 'Invalid way of movement'
+	def __init__(self, unit, move_diagonal):
+		self.move_diagonal = move_diagonal
 
 		self._unit = weakref.ref(unit)
 
@@ -284,6 +255,22 @@ class Pather(object):
 	def unit(self):
 		return self._unit()
 
+	def _get_path_nodes(self):
+		"""Returns nodes, where unit can walk on.
+		Return value type must be supported by FindPath"""
+		raise NotImplementedError
+
+	def _get_blocked_coords(self):
+		"""Returns blocked coordinates
+		Return value type must be supported by FindPath"""
+		return []
+
+	def _check_for_obstacles(self, point):
+		"""Check if the path is suddenly blocked by e.g. a unit
+		@param point: tuple: (x, y)
+		@return: bool, true if path is blocked"""
+		return (point in self._get_blocked_coords())
+
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
 		"""Calculates a path to destination
 		@param destination: a destination supported by pathfinding
@@ -291,30 +278,18 @@ class Pather(object):
 		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
 		@return: False if movement is impossible, else True"""
-
-		# workaround, this can't be initalized at construction time
-		if self.unit.__class__.movement == Movement.COLLECTOR_MOVEMENT:
-			self.path_nodes = self.unit.home_building().radius_coords
-
-		if self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
-			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
-			self.path_nodes = island.get_walkable_coordinates()
-
-		if not check_only:
-			self.source_in_building = False
 		source = self.unit.position
 		if self.unit.is_moving() and self.path is not None:
 			source = Point(*self.path[self.cur])
 		else:
-			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
-			if island is not None:
-				building = island.get_building(self.unit.position)
-				if building is not None:
-					source = building
-					if not check_only:
-						self.source_in_building = True
+			# check if source is in a building
+			building = horizons.main.session.world.get_building( \
+				self.unit.position.x, self.unit.position.y)
+			if building is not None:
+				source = building
 
-		path = FindPath()(source, destination, self.path_nodes, self.blocked_coords, self.move_diagonal)
+		path = FindPath()(source, destination, self._get_path_nodes(), \
+											self._get_blocked_coords(), self.move_diagonal)
 
 		if path is None:
 			return False
@@ -325,6 +300,7 @@ class Pather(object):
 				self.cur = 0
 			else:
 				self.cur = -1
+			self.source_in_building = isinstance(source, Building)
 			self.destination_in_building = destination_in_building
 
 		return True
@@ -343,32 +319,7 @@ class Pather(object):
 			self.cur = None
 			return None
 
-		# check if the path is suddenly blocked and set this var in case
-		path_blocked = False
-
-		if not path_blocked and self.unit.__class__.movement == Movement.SHIP_MOVEMENT:
-			# for ship: check if another ship is blocking the way
-			path_blocked = self.path[self.cur] in horizons.main.session.world.ship_map and \
-											 horizons.main.session.world.ship_map[self.path[self.cur]]() is not \
-											 self.unit
-			if path_blocked:
-				other = horizons.main.session.world.ship_map[self.path[self.cur]]()
-				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
-											 self.path[self.cur][0], self.path[self.cur][1], \
-											 self.unit, self.unit.getId(), other)
-
-		if not path_blocked and self.unit.__class__.movement == Movement.SOLDIER_MOVEMENT:
-			island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
-			path_blocked = not island.is_walkable(self.path[self.cur])
-
-			if path_blocked: self.log.debug("tile %s %s blocked for %s %s on island", \
-																			self.path[self.cur][0], self.path[self.cur][1], \
-																			self.unit, self.unit.getId())
-
-		if not path_blocked and self.path[self.cur] in self.blocked_coords:
-			path_blocked = True
-
-		if path_blocked:
+		if self._check_for_obstacles(self.path[self.cur]):
 			# path is suddenly blocked, find another path
 			self.cur -= 1 # reset, since move is not possible
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
@@ -417,3 +368,70 @@ class Pather(object):
 			else:
 				self.cur = -1
 			return True
+
+
+class ShipPather(AbstractPather):
+	"""Pather for ships (units that move on water tiles)"""
+	def __init__(self, unit):
+		super(ShipPather, self).__init__(unit, move_diagonal=True)
+
+	def _get_path_nodes(self):
+		return horizons.main.session.world.water
+
+	def _get_blocked_coords(self):
+		return horizons.main.session.world.ship_map
+
+	def _check_for_obstacles(self, point):
+			#check if another ship is blocking the way
+			if point in horizons.main.session.world.ship_map and \
+				 horizons.main.session.world.ship_map[self.path[self.cur]]() is not self.unit:
+				other = horizons.main.session.world.ship_map[self.path[self.cur]]()
+				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
+											 point[0], point[1], \
+											 self.unit, self.unit.getId(), other)
+				return True
+			else:
+				return super(ShipPather, self)._check_for_obstacles(point)
+
+class CollectorPather(AbstractPather):
+	"""Pather for collectors, that move freely (without depending on roads)
+	such as farm animals."""
+	def __init__(self, unit):
+		super(CollectorPather, self).__init__(unit, move_diagonal=True)
+
+	def _get_path_nodes(self):
+			return self.unit.home_building().radius_coords
+
+class StorageCollectorPather(AbstractPather):
+	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
+	def __init__(self, unit):
+		super(StorageCollectorPather, self).__init__(unit, move_diagonal=False)
+		island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
+		self.island = weakref.ref(island)
+
+	def _get_path_nodes(self):
+		return self.island().path_nodes
+
+class SoldierPather(AbstractPather):
+	"""Pather for units, that move absolutely freely (such as soldiers)"""
+	def __init__(self, unit):
+		super(SoldierPather, self).__init__(unit, move_diagonal=True)
+
+	def _get_path_nodes(self):
+		# island might change (e.g. when transported via ship), so reload every time
+		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+		return island.get_walkable_coordinates()
+
+	def _get_blocked_coords(self):
+		# TODO
+		return []
+
+	def _check_for_obstacles(self, point):
+		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+		path_blocked = not island.is_walkable(self.path[self.cur])
+		if path_blocked:
+			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1], \
+										 self.unit, self.unit.getId());
+			return path_blocked
+		else:
+			return super(SoldierPather, self)._check_for_obstacles(point)

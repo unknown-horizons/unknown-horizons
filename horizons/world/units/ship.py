@@ -28,7 +28,7 @@ from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.gui.tabs.overviewtab import ShipOverviewTab
 from horizons.gui.tabs.inventorytab import ShipInventoryTab
 from horizons.world.storage import PositiveTotalStorage
-from horizons.world.pathfinding import Movement
+from horizons.world.pathfinding import ShipPather
 from horizons.util import Point
 from unit import Unit
 
@@ -37,7 +37,6 @@ class Ship(Unit):
 	@param x: int x position
 	@param y: int y position
 	"""
-	movement = Movement.SHIP_MOVEMENT
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.setup_inventory()
@@ -144,6 +143,9 @@ class Ship(Unit):
 		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 		return self
+
+	def create_pather(self):
+		return ShipPather(self)
 
 
 class PirateShip(Ship):

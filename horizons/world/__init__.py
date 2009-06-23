@@ -24,6 +24,8 @@ __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
 import weakref
 import random
+import logging
+
 import horizons.main
 
 from island import Island
@@ -45,6 +47,7 @@ class World(LivingObject):
 	   * ship_map - same as ground_map, but for ships
 	   TUTORIAL: You should now check out the _init() function.
 	"""
+	log = logging.getLogger("world")
 	def __init__(self, **kwargs):
 		"""@param db: DbReader instance with the map/savegame that is to be loaded
 		"""
@@ -95,7 +98,8 @@ class World(LivingObject):
 				self.player = human_players[0]
 
 		if self.player is None: # still..
-			print 'WARNING: Cannot autoselect a player because there are no or multiple candidates.'
+			self.log.warning('WARNING: Cannot autoselect a player because there are no \
+			or multiple candidates.')
 
 		#load islands
 		self.islands = []
@@ -171,14 +175,11 @@ class World(LivingObject):
 				for tile in island.ground_map.keys():
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
 						horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
-						"""
-						elif random.randint(0, 20) < 1:
-						horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
-						"""
+						if random.randint(0, 28) < 1: # add animal to evey nth tree
+							if horizons.main.unstable_features:
+								horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
 				for building in island.buildings:
 					building.production_step()
-				if horizons.main.unstable_features:
-					horizons.main.session.entities.units[13](island, x=-2, y=-23)
 			print "Done."
 
 		# add free trader

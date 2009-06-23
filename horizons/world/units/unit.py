@@ -23,12 +23,10 @@ import fife
 
 import horizons.main
 
-from horizons.world.pathfinding import Pather, PathBlockedError, Movement
+from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
-	movement = Movement.SOLDIER_MOVEMENT
-
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(**kwargs)
 		self.__init(x, y, owner)
@@ -58,12 +56,12 @@ class Unit(WorldObject):
 
 		self.move_callback = WeakMethodList()
 
-		self.path = Pather(self)
-
 		self.health = health
 		self.max_health = 100.0
 
 		self.__is_moving = False
+
+		self.path = self.create_pather()
 
 	def __del__(self):
 		if hasattr(self, "_instance") and self._instance.getLocationRef().getLayer() is not None:
@@ -262,3 +260,6 @@ class Unit(WorldObject):
 			self.__is_moving = True
 			horizons.main.session.scheduler.add_new_object(self.move_tick, self, 1)
 		return self
+
+	def create_pather(self):
+		raise NotImplementedError

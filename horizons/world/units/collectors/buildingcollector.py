@@ -24,7 +24,7 @@ import weakref
 import horizons.main
 
 from horizons.util import WorldObject
-from horizons.world.pathfinding import Movement
+from horizons.world.pathfinding import StorageCollectorPather
 from horizons.world.production import PrimaryProducer
 
 from collector import Collector
@@ -173,17 +173,17 @@ class BuildingCollector(Collector):
 		return self.sort_jobs_amount(jobs)
 
 
-
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
 	Used in storage facilities.
 	"""
-	movement = Movement.STORAGE_COLLECTOR_MOVEMENT
-
 	def begin_current_job(self):
 		"""Declare target of StorageCollector as building, because it always is"""
 		super(StorageCollector, self).begin_current_job()
 		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
+
+	def create_pather(self):
+		return StorageCollectorPather(self)
 
 class FieldCollector(BuildingCollector):
 	""" Simular to the BuildingCollector but used on farms for example.
