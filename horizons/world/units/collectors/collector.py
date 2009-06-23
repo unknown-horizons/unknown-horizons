@@ -241,9 +241,9 @@ class Collector(StorageHolder, Unit):
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		if res_amount != self.job.amount:
 			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planned was %s",  \
-											 self.getId(), res_amount, self.job.res, \
-											 self.job.target.getId(), self.job.target, \
-											 self.job.amount)
+				self.getId(), res_amount, self.job.res, \
+				self.job.target.getId(), self.job.target, \
+				self.job.amount)
 		self.inventory.alter(self.job.res, res_amount)
 
 	def reroute(self):
@@ -317,3 +317,6 @@ class Job(object):
 	@property
 	def object(self):
 		return self._object()
+
+	def __str__(self):
+		return "Job res: %i amount: %i" % (self.res, self.amount)
