@@ -33,8 +33,8 @@ from buildable import BuildableSingle
 class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
-		self.level_max = 1
-		self.level = level if (level <= self.level_max) else self.level_max
+		
+		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
 		self.__init()
 		self.run()
@@ -45,6 +45,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 		#horizons.main.session.entities.units[2](self)
 
 	def __init(self):
+		self.level_max = 1
 		#print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
 		self.tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
 		#print self.id, "Settler debug, tax_income:", self.tax_income
