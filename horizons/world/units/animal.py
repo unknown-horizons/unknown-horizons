@@ -232,6 +232,7 @@ class FarmAnimal(Animal, BuildingCollector):
 
 	def load(self, db, worldid):
 		super(FarmAnimal, self).load(db, worldid)
+		self.__init()
 
 	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)

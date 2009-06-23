@@ -50,11 +50,14 @@ class BuildingCollector(Collector):
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
 
 	def load(self, db, worldid):
-		super(BuildingCollector, self).load(db, worldid)
+		# we have to call __init here before super().load, because a superclass uses a method,
+		# which is overwritten here, that uses a member, which has to be initialised via __init.
 
 		# load home_building
 		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
 		self.__init(WorldObject.get_object_by_id(home_building_id))
+
+		super(BuildingCollector, self).load(db, worldid)
 
 	def register_at_home_building(self):
 		self.home_building().local_collectors.append(self)

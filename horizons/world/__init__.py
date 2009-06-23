@@ -197,7 +197,7 @@ class World(LivingObject):
 			print "Done"
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
-		assert(ret_coords is not None, "Return coordes are none. No players loaded?")
+		assert ret_coords is not None, "Return coordes are none. No players loaded?"
 		return ret_coords
 
 
