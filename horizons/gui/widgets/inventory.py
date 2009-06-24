@@ -75,6 +75,7 @@ class Inventory(pychan.widgets.Container):
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
+		self.adaptLayout()
 		self.stylize('menu_black')
 
 class ImageFillStatusButton(pychan.widgets.Container):
