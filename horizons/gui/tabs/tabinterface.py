@@ -56,7 +56,10 @@ class TabInterface(object):
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
 		#self.widget.stylize('menu_black')
-		self.widget.stylize('headline')
+		self.widget.stylize('menu_black')
+		children = self.widget.findChildren(name='headline')
+		for child in children:
+			child.stylize('headline') # style definition for headline
 
 	def show(self):
 		"""Shows the current widget"""
