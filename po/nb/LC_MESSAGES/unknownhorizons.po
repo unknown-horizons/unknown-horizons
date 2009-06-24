@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-06-21 13:25+CEST\n"
+"POT-Creation-Date: 2009-06-24 14:18+CEST\n"
 "PO-Revision-Date: Y2009-04-15 12:30+CEST\n"
 "Last-Translator: Frode Woldsund <frodus86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,801 +13,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/dbreader.py:51
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/dbreader.py:51
-#: horizons/dbreader.py:51
-msgid "Error, no complete sql statement provided by \"%s.\""
-msgstr "Error, ingen fullstendig sql setning forutsatt av \"%s.\""
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/__init__.py:48
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/__init__.py:48
-msgid "No translation for file %s"
-msgstr "Ingen oversettelse for filen %s"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:24
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:24
-#: horizons/i18n/guitranslations.py:28
-msgid "Branch office (Branch class ROMAN)"
-msgstr "Avdelingskontor (Avdelings klassen ROMAN)"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:26
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:29
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:80
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:108
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:110
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:128
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:131
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:180
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:184
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:189
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:26
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:29
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:80
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:108
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:110
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:128
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:131
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:180
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:184
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:189
-#: horizons/i18n/guitranslations.py:36 horizons/i18n/guitranslations.py:38
-#: horizons/i18n/guitranslations.py:61 horizons/i18n/guitranslations.py:72
-#: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:93
-#: horizons/i18n/guitranslations.py:97 horizons/i18n/guitranslations.py:133
-#: horizons/i18n/guitranslations.py:138 horizons/i18n/guitranslations.py:146
-#: horizons/i18n/guitranslations.py:181
-msgid "Ok"
-msgstr "Ok"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:28
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:79
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:111
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:127
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:183
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:188
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:28
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:79
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:111
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:127
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:183
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:188
-#: horizons/i18n/guitranslations.py:39 horizons/i18n/guitranslations.py:60
-#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:92
-#: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:145
-#: horizons/i18n/guitranslations.py:180
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:31
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:31
-#: horizons/i18n/guitranslations.py:41
-msgid "These guys contributed to Unknown Horizons"
-msgstr "Disse folkene bidro i Unknown Horizons"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:32
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:32
-#: horizons/i18n/guitranslations.py:42
-msgid "You guys rock!"
-msgstr "Dere rokker!"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:34
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:206
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:34
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:206
-#: horizons/i18n/guitranslations.py:56 horizons/i18n/guitranslations.py:164
-msgid "Close"
-msgstr "Lukk"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:35
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:35
-#: horizons/i18n/guitranslations.py:45
-msgid "That's your island-wide inventory."
-msgstr "Dette er varelageret på øyen din."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:36
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:36
-#: horizons/i18n/guitranslations.py:46
-msgid "Coins:"
-msgstr "Penger"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:37
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:37
-#: horizons/i18n/guitranslations.py:47
-msgid "Lamb wool:"
-msgstr "Ull"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:38
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:38
-#: horizons/i18n/guitranslations.py:48
-msgid "Textiles:"
-msgstr "Tekstiler"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:39
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:39
-#: horizons/i18n/guitranslations.py:49
-msgid "Boards:"
-msgstr "Brett:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:40
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:40
-#: horizons/i18n/guitranslations.py:50
-msgid "Food:"
-msgstr "Mat"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:42
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:42
-#: horizons/i18n/guitranslations.py:248
-msgid "Services"
-msgstr "Tjenester"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:43
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:43
-msgid "Storage"
-msgstr "Lager"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:44
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:44
-msgid "Main Square"
-msgstr "Marked"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:45
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:45
-msgid "Church"
-msgstr "Kirke"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:46
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:46
-msgid "Signal Fire"
-msgstr "Signal bål"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:48
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:48
-msgid "Residents"
-msgstr "Boliger"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:49
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:49
-msgid "Tent"
-msgstr "Telt"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:51
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:51
-#: horizons/i18n/guitranslations.py:249
-msgid "Companies"
-msgstr "Selskaper"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:52
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:52
-msgid "Hunter"
-msgstr "Jeger"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:53
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:53
-msgid "Fisher"
-msgstr "Fisker"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:54
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:54
-msgid "Weaver"
-msgstr "Vever"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:55
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:55
-msgid "Boat Builder"
-msgstr "Båt Bygger"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:56
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:56
-msgid "Lumberjack"
-msgstr "Tømrer"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:57
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:57
-msgid "Tree"
-msgstr "Tre"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:58
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:58
-msgid "Herder"
-msgstr "Sau-Bonde"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:59
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:59
-msgid "Field"
-msgstr "Jorde"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:61
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:61
-#: horizons/i18n/guitranslations.py:250
-msgid "Military"
-msgstr "Militær"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:62
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:62
-msgid "Lookout"
-msgstr "Utsikt tårn"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:63
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:63
-msgid "Rampart"
-msgstr "Rampart"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:65
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:65
-msgid "Infrastructure"
-msgstr "Infrastruktur"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:66
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:66
-msgid "Trail"
-msgstr "Sti/Vei"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:67
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:67
-msgid "Bridge"
-msgstr "Bro"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:69
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:69
-msgid "Specials and Gifts"
-msgstr "Spesial ting og Gaver"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:70
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:70
-msgid "You can not build specials or gifts in this class"
-msgstr "Du kan ikke bygge spesial ting eller gaver i denne klassen"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:72
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:72
-#: horizons/i18n/guitranslations.py:255
-msgid "Do you want to remove this building?"
-msgstr "Vil du fjerne denne bygningen?"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:73
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:73
-#: horizons/i18n/guitranslations.py:256
-msgid "yes"
-msgstr "ja"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:74
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:74
-#: horizons/i18n/guitranslations.py:257
-msgid "no"
-msgstr "nei"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:76
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:76
-msgid "Running Costs"
-msgstr "Drifts kostnader"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:78
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:78
-#: horizons/i18n/guitranslations.py:59
-msgid "Are you sure you want to abort the running session?"
-msgstr "Er du sikker på du vil avbryte denne omgangen?"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:82
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:98
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:82
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:98
-msgid "Overview:"
-msgstr "Oversikt:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:83
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:99
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:142
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:147
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:83
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:99
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:142
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:147
-#: horizons/i18n/guitranslations.py:195 horizons/i18n/guitranslations.py:201
-#: horizons/i18n/guitranslations.py:215 horizons/i18n/guitranslations.py:231
-msgid "Name:"
-msgstr "Navn: "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:84
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:100
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:143
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:148
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:84
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:100
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:143
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:148
-#: horizons/i18n/guitranslations.py:196 horizons/i18n/guitranslations.py:202
-#: horizons/i18n/guitranslations.py:216 horizons/i18n/guitranslations.py:220
-#: horizons/i18n/guitranslations.py:232
-msgid "Health:"
-msgstr "Helse: "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:85
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:101
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:85
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:101
-#: horizons/i18n/guitranslations.py:197 horizons/i18n/guitranslations.py:203
-#: horizons/i18n/guitranslations.py:217
-msgid "Running Costs:"
-msgstr "Drifts kostnader:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:86
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:86
-#: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:218
-msgid "Buy/Sell Resources:"
-msgstr "Kjøp/Salg av resurser"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:88
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:88
-#: horizons/i18n/guitranslations.py:190
-msgid "stock"
-msgstr "lager"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:90
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:90
-#: horizons/i18n/guitranslations.py:210
-msgid "combat"
-msgstr "krig"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:92
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:92
-#: horizons/i18n/guitranslations.py:208
-msgid "route"
-msgstr "rute"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:94
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:94
-#: horizons/i18n/guitranslations.py:192
-msgid "production"
-msgstr "produksjon"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:96
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:96
-#: horizons/i18n/guitranslations.py:206
-msgid "research"
-msgstr "forskning"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:102
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:102
-#: horizons/i18n/guitranslations.py:204
-msgid "Toggle active:"
-msgstr "Aktiver/Deaktiver"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:104
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:104
-#: horizons/i18n/guitranslations.py:66
-msgid "Ship name (Ship type)"
-msgstr "Skips navn (Skips type)"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:105
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:105
-msgid "New"
-msgstr "Ny"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:107
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:107
-#: horizons/i18n/guitranslations.py:71
-msgid "We're sorry, but the load function is not yet working."
-msgstr "Vi beklager, Laste funksjonen fungerer ikke ennå."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:112
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:112
-msgid "Enable Sound"
-msgstr "Aktiver Lyd"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:113
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:113
-msgid "Use the fullscreen mode"
-msgstr "Bruk fullskjerms modus"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:114
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:114
-#: horizons/i18n/guitranslations.py:75 horizons/i18n/guitranslations.py:176
-msgid ""
-"This is the Unknown Horizons settings dialog. Please make sure that you "
-"know, what you do."
-msgstr ""
-"Detter er Unknown Horizons instillings dialog. Vær sikker på at du vet hva "
-"du gjør."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:115
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:115
-msgid "Autosave interval:"
-msgstr "Auto-Lagring intervall:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:116
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:116
-#: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:172
-msgid "Number of saved autosaves:"
-msgstr "Antall lagrede Auto-Lagringer"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:117
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:117
-msgid "Number of saves quicksaves:"
-msgstr "Antall lagrede Hurtig-Lagringer"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:118
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:118
-#: horizons/i18n/guitranslations.py:80 horizons/i18n/guitranslations.py:183
-msgid "Screen resolution:"
-msgstr "Skjerm oppløsning"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:119
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:119
-msgid "Use renderer:"
-msgstr "Bruke Rendrer:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:120
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:120
-#: horizons/i18n/guitranslations.py:82 horizons/i18n/guitranslations.py:185
-msgid "Color depth:"
-msgstr "Farge dybde:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:121
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:121
-#: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:187
-msgid "Music volume:"
-msgstr "Musikk volum:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:122
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:122
-msgid "Effects volume"
-msgstr "Effekt volum"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:123
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:123
-#: horizons/i18n/guitranslations.py:85 horizons/i18n/guitranslations.py:174
-msgid "minutes"
-msgstr "minutter"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:125
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:125
-#: horizons/i18n/guitranslations.py:90
-msgid "Enter filename:"
-msgstr "Skriv filnavn:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:126
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:187
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:126
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:187
-#: horizons/i18n/guitranslations.py:91 horizons/i18n/guitranslations.py:144
-msgid "Delete"
-msgstr "Slett"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:130
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:130
-#: horizons/i18n/guitranslations.py:96
-msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Noen forandringer krever en omstart av Unknown Horizons"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:133
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:156
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:133
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:156
-#: horizons/i18n/guitranslations.py:101 horizons/i18n/guitranslations.py:112
-msgid "Unknown Horizons Alpha 2009.0"
-msgstr "Unknown Horizons Alpha 2009.0"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:134
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:134
-msgid "Loading ..."
-msgstr "Laster ..."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:136
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:136
-#: horizons/i18n/guitranslations.py:103
-msgid "Building name (Building Class ROMAN)"
-msgstr "Byggnings navn (Bygning klasse ROMAN)"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:137
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:137
-#: horizons/i18n/guitranslations.py:104
-msgid "Tiles:"
-msgstr "Fliser"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:139
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:151
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:139
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:151
-msgid "Inventory:"
-msgstr "Innhold:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:141
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:146
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:141
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:146
-#: horizons/i18n/guitranslations.py:230
-msgid "Overview"
-msgstr "Oversikt"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:144
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:144
-msgid "Found new settlement"
-msgstr "Grunnlegg en ny koloni"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:150
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:150
-#: horizons/i18n/guitranslations.py:228
-msgid "Load/Unload:"
-msgstr "Last på/av:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:153
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:153
-msgid "Trade with:"
-msgstr "Bytt med:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:154
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:154
-msgid "Excange:"
-msgstr "Utveksle:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:157
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:157
-#: horizons/i18n/guitranslations.py:113
-msgid "Singleplayer"
-msgstr "Singelspiller"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:158
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:158
-#: horizons/i18n/guitranslations.py:114
-msgid "Multiplayer"
-msgstr "Multispiller"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:159
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:159
-#: horizons/i18n/guitranslations.py:115
-msgid " Credits "
-msgstr " Kreditt "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:160
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:160
-#: horizons/i18n/guitranslations.py:116
-msgid " Quit "
-msgstr "Avslutt"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:161
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:197
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:161
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:197
-#: horizons/i18n/guitranslations.py:117 horizons/i18n/guitranslations.py:155
-msgid " Settings "
-msgstr " Innstillinger "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:162
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:195
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:162
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:195
-#: horizons/i18n/guitranslations.py:118 horizons/i18n/guitranslations.py:153
-msgid " Help "
-msgstr " Hjelp "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:163
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:163
-#: horizons/i18n/guitranslations.py:119
-msgid " Continue Game "
-msgstr " Fortsett spillet "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:164
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:196
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:164
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:196
-#: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:154
-msgid " Chime The Bell "
-msgstr " Ring med bjella "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:166
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:166
-msgid "Random "
-msgstr "Tilfeldig"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:167
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:167
-msgid "Campaign "
-msgstr "Kapanje"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:168
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:168
-msgid "Load "
-msgstr "Last"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:169
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:216
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:169
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:216
-#: horizons/i18n/guitranslations.py:30 horizons/i18n/guitranslations.py:122
-msgid "Player:"
-msgstr "Spiller:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:170
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:217
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:170
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:217
-#: horizons/i18n/guitranslations.py:31 horizons/i18n/guitranslations.py:123
-msgid "Color:"
-msgstr "Farge:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:171
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:218
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:171
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:218
-msgid "unknown player"
-msgstr "ukjent spiller"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:172
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:172
-#: horizons/i18n/guitranslations.py:124
-msgid "Main menu:"
-msgstr "Hoved meny:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:173
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:173
-#: horizons/i18n/guitranslations.py:125
-msgid "Start game:"
-msgstr "Start spillet:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:175
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:175
-msgid "Yeah, you made it ..."
-msgstr "Yeah, du klarte det ..."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:176
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:176
-#: horizons/i18n/guitranslations.py:128
-msgid "But this is a deadlink, sorry."
-msgstr "Men dette er en dødlenke, beklager."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:177
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:177
-msgid "Back to business ..."
-msgstr "Tilbake til arbeid ..."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:179
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:179
-#: horizons/i18n/guitranslations.py:132
-msgid "We're sorry, but the save function is not yet working."
-msgstr "Vi beklager, men lagre funksjonen virker inne ennå"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:182
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:182
-#: horizons/i18n/guitranslations.py:136
-msgid "Are you sure you want to Quit Unknown Horizons?"
-msgstr "Er du sikker på du vil avslutte Unknown Horizons?"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:186
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:186
-msgid "Details:"
-msgstr "Dataljer:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:191
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:191
-#: horizons/i18n/guitranslations.py:149
-msgid "Return to Game"
-msgstr "Tilbake til spillet"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:192
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:192
-#: horizons/i18n/guitranslations.py:150
-msgid " Cancel Game "
-msgstr " Avbryt Spillet "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:193
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:193
-#: horizons/i18n/guitranslations.py:151
-msgid " Save Game "
-msgstr " Lagre spillet "
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:194
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:194
-#: horizons/i18n/guitranslations.py:152
-msgid " Load Game "
-msgstr " Laste spillet"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:199
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:199
-msgid "Internet games"
-msgstr "Internet spill"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:200
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:200
-msgid "LAN games"
-msgstr "LAN spill"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:201
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:201
-msgid "Favorites"
-msgstr "Favoritter"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:203
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:203
-msgid "Buy"
-msgstr "Kjøp"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:204
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:204
-msgid "Sell"
-msgstr "Selg"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:208
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:208
-msgid "City Name"
-msgstr "By Navn"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:209
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:209
-#: horizons/i18n/guitranslations.py:158
-msgid "Class ROMAN"
-msgstr "Klassen ROMAN"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:210
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:210
-#: horizons/i18n/guitranslations.py:159
-msgid "Inhabitants"
-msgstr "Innbyggere"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:212
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:221
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:222
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:212
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:221
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:222
-#: horizons/i18n/guitranslations.py:161
-msgid "Chat"
-msgstr "Chat"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:213
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:213
-msgid "Enter your message"
-msgstr "Skriv din melding"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:214
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:214
-#: horizons/i18n/guitranslations.py:162
-msgid "Send"
-msgstr "Send"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:219
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:219
-msgid "Slots"
-msgstr "Spalter"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/i18n/guitranslations.py:220
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/i18n/guitranslations.py:220
-#: horizons/i18n/guitranslations.py:33
-msgid "Bots:"
-msgstr "Motstandere:"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/network.py:303
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/network.py:303
-#: horizons/network.py:303
-msgid "PLAYER TIMEOUT"
-msgstr "SPILLER TIMEOUT"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/packets.py:102
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/packets.py:102
-#: horizons/packets.py:102
-msgid "JOIN BY"
-msgstr "ANNKOMMET AV"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/packets.py:114
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/packets.py:114
-#: horizons/packets.py:114
-msgid "LEAVE BY"
-msgstr "FORLATT AV"
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/settings.py:126
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/settings.py:126
-#: horizons/settings.py:126
-msgid ""
-"Error: Config version not supported, creating empty config which wont be "
-"saved."
-msgstr ""
-"Error: Konfigurasjon versjon støttes ikke, lager en ny konfigurasjon som "
-"ikke blir lagret."
-
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/build/lib/horizons/settings.py:131
-#: build/bdist.linux-i686/rpm/BUILD/UnknownHorizons-2009.0+svn2050/horizons/settings.py:131
-#: horizons/settings.py:131
-msgid "Upgrading Config from Version %d to Version %d ..."
-msgstr "Oppgrader konfigurasjonen fra Versjon %d til Versjon %d ..."
 
 #: debug.py:101
 msgid "Debuging tools usage:"
@@ -833,20 +38,88 @@ msgstr ""
 "debug.cmd('name', *args):    lager en komando og kjører den gjennom ex-"
 "manageren: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
 
+#: horizons/dbreader.py:51
+msgid "Error, no complete sql statement provided by \"%s.\""
+msgstr "Error, ingen fullstendig sql setning forutsatt av \"%s.\""
+
+#: horizons/i18n/guitranslations.py:28
+msgid "Branch office (Branch class ROMAN)"
+msgstr "Avdelingskontor (Avdelings klassen ROMAN)"
+
+#: horizons/i18n/guitranslations.py:30 horizons/i18n/guitranslations.py:122
+msgid "Player:"
+msgstr "Spiller:"
+
+#: horizons/i18n/guitranslations.py:31 horizons/i18n/guitranslations.py:123
+msgid "Color:"
+msgstr "Farge:"
+
 #: horizons/i18n/guitranslations.py:32
 #, fuzzy
 msgid "Slots:"
 msgstr "Spalter"
+
+#: horizons/i18n/guitranslations.py:33
+msgid "Bots:"
+msgstr "Motstandere:"
 
 #: horizons/i18n/guitranslations.py:34
 #, fuzzy
 msgid "chat"
 msgstr "Chat"
 
+#: horizons/i18n/guitranslations.py:36 horizons/i18n/guitranslations.py:38
+#: horizons/i18n/guitranslations.py:61 horizons/i18n/guitranslations.py:72
+#: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:93
+#: horizons/i18n/guitranslations.py:97 horizons/i18n/guitranslations.py:133
+#: horizons/i18n/guitranslations.py:138 horizons/i18n/guitranslations.py:146
+#: horizons/i18n/guitranslations.py:182
+msgid "Ok"
+msgstr "Ok"
+
+#: horizons/i18n/guitranslations.py:39 horizons/i18n/guitranslations.py:60
+#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:92
+#: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:145
+#: horizons/i18n/guitranslations.py:181
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: horizons/i18n/guitranslations.py:41
+msgid "These guys contributed to Unknown Horizons"
+msgstr "Disse folkene bidro i Unknown Horizons"
+
+#: horizons/i18n/guitranslations.py:42
+msgid "You guys rock!"
+msgstr "Dere rokker!"
+
 #: horizons/i18n/guitranslations.py:43
 #, fuzzy
 msgid "Credits"
 msgstr " Kreditt "
+
+#: horizons/i18n/guitranslations.py:45
+msgid "That's your island-wide inventory."
+msgstr "Dette er varelageret på øyen din."
+
+#: horizons/i18n/guitranslations.py:46
+msgid "Coins:"
+msgstr "Penger"
+
+#: horizons/i18n/guitranslations.py:47
+msgid "Lamb wool:"
+msgstr "Ull"
+
+#: horizons/i18n/guitranslations.py:48
+msgid "Textiles:"
+msgstr "Tekstiler"
+
+#: horizons/i18n/guitranslations.py:49
+msgid "Boards:"
+msgstr "Brett:"
+
+#: horizons/i18n/guitranslations.py:50
+msgid "Food:"
+msgstr "Mat"
 
 #: horizons/i18n/guitranslations.py:51 horizons/i18n/guitranslations.py:52
 #: horizons/i18n/guitranslations.py:53 horizons/i18n/guitranslations.py:54
@@ -854,10 +127,18 @@ msgstr " Kreditt "
 msgid "n/a"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:57 horizons/i18n/guitranslations.py:227
+#: horizons/i18n/guitranslations.py:56 horizons/i18n/guitranslations.py:165
+msgid "Close"
+msgstr "Lukk"
+
+#: horizons/i18n/guitranslations.py:57 horizons/i18n/guitranslations.py:228
 #, fuzzy
 msgid "Inventory"
 msgstr "Innhold:"
+
+#: horizons/i18n/guitranslations.py:59
+msgid "Are you sure you want to abort the running session?"
+msgstr "Er du sikker på du vil avbryte denne omgangen?"
 
 #: horizons/i18n/guitranslations.py:62 horizons/i18n/guitranslations.py:139
 #, fuzzy
@@ -868,48 +149,96 @@ msgstr "Starter Unknown Horizons"
 msgid "City infos"
 msgstr ""
 
+#: horizons/i18n/guitranslations.py:66
+msgid "Ship name (Ship type)"
+msgstr "Skips navn (Skips type)"
+
 #: horizons/i18n/guitranslations.py:67 horizons/i18n/guitranslations.py:68
 #: horizons/i18n/guitranslations.py:69
 msgid "0/0"
 msgstr ""
 
+#: horizons/i18n/guitranslations.py:71
+msgid "We're sorry, but the load function is not yet working."
+msgstr "Vi beklager, Laste funksjonen fungerer ikke ennå."
+
 #: horizons/i18n/guitranslations.py:73 horizons/i18n/guitranslations.py:134
 msgid "Oh noes"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:76 horizons/i18n/guitranslations.py:170
+#: horizons/i18n/guitranslations.py:75 horizons/i18n/guitranslations.py:177
+msgid ""
+"This is the Unknown Horizons settings dialog. Please make sure that you "
+"know, what you do."
+msgstr ""
+"Detter er Unknown Horizons instillings dialog. Vær sikker på at du vet hva "
+"du gjør."
+
+#: horizons/i18n/guitranslations.py:76 horizons/i18n/guitranslations.py:171
 msgid "Language:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:77 horizons/i18n/guitranslations.py:171
+#: horizons/i18n/guitranslations.py:77 horizons/i18n/guitranslations.py:172
 #, fuzzy
 msgid "Autosave interval"
 msgstr "Auto-Lagring intervall:"
 
-#: horizons/i18n/guitranslations.py:79 horizons/i18n/guitranslations.py:173
+#: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:173
+msgid "Number of saved autosaves:"
+msgstr "Antall lagrede Auto-Lagringer"
+
+#: horizons/i18n/guitranslations.py:79 horizons/i18n/guitranslations.py:174
 #, fuzzy
 msgid "Number of saved quicksaves:"
 msgstr "Antall lagrede Hurtig-Lagringer"
 
-#: horizons/i18n/guitranslations.py:81 horizons/i18n/guitranslations.py:184
+#: horizons/i18n/guitranslations.py:80 horizons/i18n/guitranslations.py:184
+msgid "Screen resolution:"
+msgstr "Skjerm oppløsning"
+
+#: horizons/i18n/guitranslations.py:81 horizons/i18n/guitranslations.py:185
 #, fuzzy
 msgid "Used renderer:"
 msgstr "Bruke Rendrer:"
 
-#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:188
+#: horizons/i18n/guitranslations.py:82 horizons/i18n/guitranslations.py:186
+msgid "Color depth:"
+msgstr "Farge dybde:"
+
+#: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:188
+msgid "Music volume:"
+msgstr "Musikk volum:"
+
+#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:189
 #, fuzzy
 msgid "Effects volume:"
 msgstr "Effekt volum"
+
+#: horizons/i18n/guitranslations.py:85 horizons/i18n/guitranslations.py:175
+msgid "minutes"
+msgstr "minutter"
 
 #: horizons/i18n/guitranslations.py:88
 #, fuzzy
 msgid "Settings"
 msgstr " Innstillinger "
 
+#: horizons/i18n/guitranslations.py:90
+msgid "Enter filename:"
+msgstr "Skriv filnavn:"
+
+#: horizons/i18n/guitranslations.py:91 horizons/i18n/guitranslations.py:144
+msgid "Delete"
+msgstr "Slett"
+
 #: horizons/i18n/guitranslations.py:94
 #, fuzzy
 msgid "Save game"
 msgstr " Lagre spillet "
+
+#: horizons/i18n/guitranslations.py:96
+msgid "Some of your changes require a restart of Unknown Horizons."
+msgstr "Noen forandringer krever en omstart av Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Changes require restart"
@@ -920,20 +249,78 @@ msgstr ""
 msgid "Loading..."
 msgstr "Laster ..."
 
+#: horizons/i18n/guitranslations.py:101 horizons/i18n/guitranslations.py:112
+#: horizons/i18n/guitranslations.py:149
+#, fuzzy
+msgid "Unknown Horizons Alpha 2009.1"
+msgstr "Unknown Horizons Alpha 2009.0"
+
+#: horizons/i18n/guitranslations.py:103
+msgid "Building name (Building Class ROMAN)"
+msgstr "Byggnings navn (Bygning klasse ROMAN)"
+
+#: horizons/i18n/guitranslations.py:104
+msgid "Tiles:"
+msgstr "Fliser"
+
 #: horizons/i18n/guitranslations.py:105
 msgid "10x10"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:107 horizons/i18n/guitranslations.py:108
 #: horizons/i18n/guitranslations.py:109 horizons/i18n/guitranslations.py:110
-#: horizons/i18n/guitranslations.py:167 horizons/i18n/guitranslations.py:168
+#: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:169
 msgid "?"
 msgstr ""
+
+#: horizons/i18n/guitranslations.py:113
+msgid "Singleplayer"
+msgstr "Singelspiller"
+
+#: horizons/i18n/guitranslations.py:114
+msgid "Multiplayer"
+msgstr "Multispiller"
+
+#: horizons/i18n/guitranslations.py:115
+msgid " Credits "
+msgstr " Kreditt "
+
+#: horizons/i18n/guitranslations.py:116
+msgid " Quit "
+msgstr "Avslutt"
+
+#: horizons/i18n/guitranslations.py:117 horizons/i18n/guitranslations.py:156
+msgid " Settings "
+msgstr " Innstillinger "
+
+#: horizons/i18n/guitranslations.py:118 horizons/i18n/guitranslations.py:154
+msgid " Help "
+msgstr " Hjelp "
+
+#: horizons/i18n/guitranslations.py:119
+msgid " Continue Game "
+msgstr " Fortsett spillet "
+
+#: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:155
+msgid " Chime The Bell "
+msgstr " Ring med bjella "
+
+#: horizons/i18n/guitranslations.py:124
+msgid "Main menu:"
+msgstr "Hoved meny:"
+
+#: horizons/i18n/guitranslations.py:125
+msgid "Start game:"
+msgstr "Start spillet:"
 
 #: horizons/i18n/guitranslations.py:127
 #, fuzzy
 msgid "Yeah, you made it..."
 msgstr "Yeah, du klarte det ..."
+
+#: horizons/i18n/guitranslations.py:128
+msgid "But this is a deadlink, sorry."
+msgstr "Men dette er en dødlenke, beklager."
 
 #: horizons/i18n/guitranslations.py:129
 #, fuzzy
@@ -944,6 +331,14 @@ msgstr "Tilbake til arbeid ..."
 #, fuzzy
 msgid "Chime The Bell"
 msgstr " Ring med bjella "
+
+#: horizons/i18n/guitranslations.py:132
+msgid "We're sorry, but the save function is not yet working."
+msgstr "Vi beklager, men lagre funksjonen virker inne ennå"
+
+#: horizons/i18n/guitranslations.py:136
+msgid "Are you sure you want to Quit Unknown Horizons?"
+msgstr "Er du sikker på du vil avslutte Unknown Horizons?"
 
 #: horizons/i18n/guitranslations.py:141
 #, fuzzy
@@ -960,122 +355,230 @@ msgstr "Dataljer:"
 msgid "Load game"
 msgstr " Laste spillet"
 
-#: horizons/i18n/guitranslations.py:157
+#: horizons/i18n/guitranslations.py:150
+msgid "Return to Game"
+msgstr "Tilbake til spillet"
+
+#: horizons/i18n/guitranslations.py:151
+msgid " Cancel Game "
+msgstr " Avbryt Spillet "
+
+#: horizons/i18n/guitranslations.py:152
+msgid " Save Game "
+msgstr " Lagre spillet "
+
+#: horizons/i18n/guitranslations.py:153
+msgid " Load Game "
+msgstr " Laste spillet"
+
+#: horizons/i18n/guitranslations.py:158
 #, fuzzy
 msgid "City name"
 msgstr "By Navn"
 
-#: horizons/i18n/guitranslations.py:165
+#: horizons/i18n/guitranslations.py:159
+msgid "Class ROMAN"
+msgstr "Klassen ROMAN"
+
+#: horizons/i18n/guitranslations.py:160
+msgid "Inhabitants"
+msgstr "Innbyggere"
+
+#: horizons/i18n/guitranslations.py:162
+msgid "Chat"
+msgstr "Chat"
+
+#: horizons/i18n/guitranslations.py:163
+msgid "Send"
+msgstr "Send"
+
+#: horizons/i18n/guitranslations.py:166
 #, fuzzy
 msgid "Help"
 msgstr " Hjelp "
 
-#: horizons/i18n/guitranslations.py:177
+#: horizons/i18n/guitranslations.py:178
 msgid "General"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:178
+#: horizons/i18n/guitranslations.py:179
 msgid "Graphic"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:179
+#: horizons/i18n/guitranslations.py:180
 msgid "Audio"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:194 horizons/i18n/guitranslations.py:200
-#: horizons/i18n/guitranslations.py:214
+#: horizons/i18n/guitranslations.py:191
+msgid "stock"
+msgstr "lager"
+
+#: horizons/i18n/guitranslations.py:193
+msgid "production"
+msgstr "produksjon"
+
+#: horizons/i18n/guitranslations.py:195 horizons/i18n/guitranslations.py:201
+#: horizons/i18n/guitranslations.py:215
 msgid "Building overview"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:212
+#: horizons/i18n/guitranslations.py:196 horizons/i18n/guitranslations.py:202
+#: horizons/i18n/guitranslations.py:216 horizons/i18n/guitranslations.py:232
+msgid "Name:"
+msgstr "Navn: "
+
+#: horizons/i18n/guitranslations.py:197 horizons/i18n/guitranslations.py:203
+#: horizons/i18n/guitranslations.py:217 horizons/i18n/guitranslations.py:221
+#: horizons/i18n/guitranslations.py:233
+msgid "Health:"
+msgstr "Helse: "
+
+#: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:204
+#: horizons/i18n/guitranslations.py:218
+msgid "Running Costs:"
+msgstr "Drifts kostnader:"
+
+#: horizons/i18n/guitranslations.py:199 horizons/i18n/guitranslations.py:219
+msgid "Buy/Sell Resources:"
+msgstr "Kjøp/Salg av resurser"
+
+#: horizons/i18n/guitranslations.py:205
+msgid "Toggle active:"
+msgstr "Aktiver/Deaktiver"
+
+#: horizons/i18n/guitranslations.py:207
+msgid "research"
+msgstr "forskning"
+
+#: horizons/i18n/guitranslations.py:209
+msgid "route"
+msgstr "rute"
+
+#: horizons/i18n/guitranslations.py:211
+msgid "combat"
+msgstr "krig"
+
+#: horizons/i18n/guitranslations.py:213
 #, fuzzy
 msgid "Inventory of"
 msgstr "Innhold:"
 
-#: horizons/i18n/guitranslations.py:222
+#: horizons/i18n/guitranslations.py:223
 msgid "Current construction progress:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:224
+#: horizons/i18n/guitranslations.py:225
 msgid "Select a boat to build:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:225
+#: horizons/i18n/guitranslations.py:226
 msgid "Build selected:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:234
+#: horizons/i18n/guitranslations.py:229
+msgid "Load/Unload:"
+msgstr "Last på/av:"
+
+#: horizons/i18n/guitranslations.py:231
+msgid "Overview"
+msgstr "Oversikt"
+
+#: horizons/i18n/guitranslations.py:235
 #, fuzzy
 msgid "Trade"
 msgstr "Tre"
 
-#: horizons/i18n/guitranslations.py:235
+#: horizons/i18n/guitranslations.py:236
 msgid "Ship:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:236
+#: horizons/i18n/guitranslations.py:237
 #, fuzzy
 msgid "Exchange:"
 msgstr "Utveksle:"
 
-#: horizons/i18n/guitranslations.py:237
+#: horizons/i18n/guitranslations.py:238
 #, fuzzy
 msgid "Trade partner:"
 msgstr "Bytt med:"
 
-#: horizons/i18n/guitranslations.py:239
+#: horizons/i18n/guitranslations.py:240
 #, fuzzy
 msgid "Buy or sell ressources"
 msgstr "Kjøp/Salg av resurser"
 
-#: horizons/i18n/guitranslations.py:240
+#: horizons/i18n/guitranslations.py:241
 msgid "Legend:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:241
+#: horizons/i18n/guitranslations.py:242
 #, fuzzy
 msgid "Buy ressources"
 msgstr "Kjøp/Salg av resurser"
 
-#: horizons/i18n/guitranslations.py:242
+#: horizons/i18n/guitranslations.py:243
 #, fuzzy
 msgid "Sell ressources"
 msgstr "Kjøp/Salg av resurser"
 
-#: horizons/i18n/guitranslations.py:244
+#: horizons/i18n/guitranslations.py:245
 msgid "Select ressources to buy/sell:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:246
+#: horizons/i18n/guitranslations.py:247
 #, fuzzy
 msgid "Build menu"
 msgstr "Hoved meny:"
 
-#: horizons/i18n/guitranslations.py:247
+#: horizons/i18n/guitranslations.py:248
 #, fuzzy
 msgid "Residents and Infrastructural"
 msgstr "Infrastruktur"
 
-#: horizons/i18n/guitranslations.py:252
+#: horizons/i18n/guitranslations.py:249
+msgid "Services"
+msgstr "Tjenester"
+
+#: horizons/i18n/guitranslations.py:250
+msgid "Companies"
+msgstr "Selskaper"
+
+#: horizons/i18n/guitranslations.py:251
+msgid "Military"
+msgstr "Militær"
+
+#: horizons/i18n/guitranslations.py:253
 #, fuzzy
 msgid "Build"
 msgstr "Jorde"
 
-#: horizons/i18n/guitranslations.py:253
+#: horizons/i18n/guitranslations.py:254
 #, fuzzy
 msgid "Running costs:"
 msgstr "Drifts kostnader:"
 
-#: horizons/main.py:207
+#: horizons/i18n/guitranslations.py:256
+msgid "Do you want to remove this building?"
+msgstr "Vil du fjerne denne bygningen?"
+
+#: horizons/i18n/guitranslations.py:257
+msgid "yes"
+msgstr "ja"
+
+#: horizons/i18n/guitranslations.py:258
+msgid "no"
+msgstr "nei"
+
+#: horizons/main.py:206
 msgid "Confirmation for overwriting"
 msgstr ""
 
-#: horizons/main.py:217
+#: horizons/main.py:216
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Skriv filnavn:"
 
-#: horizons/main.py:217
+#: horizons/main.py:216
 msgid "You entered an invalid filename."
 msgstr ""
 
@@ -1145,6 +648,18 @@ msgstr " Lagre spillet "
 msgid "There are no saved games to load"
 msgstr ""
 
+#: horizons/network.py:303
+msgid "PLAYER TIMEOUT"
+msgstr "SPILLER TIMEOUT"
+
+#: horizons/packets.py:102
+msgid "JOIN BY"
+msgstr "ANNKOMMET AV"
+
+#: horizons/packets.py:114
+msgid "LEAVE BY"
+msgstr "FORLATT AV"
+
 #: horizons/serverlist.py:182
 #, fuzzy
 msgid "Error: "
@@ -1169,6 +684,18 @@ msgstr ""
 #: horizons/session.py:148
 msgid "You need to quicksave before you can quickload."
 msgstr ""
+
+#: horizons/settings.py:126
+msgid ""
+"Error: Config version not supported, creating empty config which wont be "
+"saved."
+msgstr ""
+"Error: Konfigurasjon versjon støttes ikke, lager en ny konfigurasjon som "
+"ikke blir lagret."
+
+#: horizons/settings.py:131
+msgid "Upgrading Config from Version %d to Version %d ..."
+msgstr "Oppgrader konfigurasjonen fra Versjon %d til Versjon %d ..."
 
 #: run_tests.py:61
 msgid ""
@@ -1245,3 +772,156 @@ msgstr ""
 #: run_uh.py:119
 msgid "Have fun playing, and if you do, help us developing!"
 msgstr ""
+
+#~ msgid "No translation for file %s"
+#~ msgstr "Ingen oversettelse for filen %s"
+
+#~ msgid "Storage"
+#~ msgstr "Lager"
+
+#~ msgid "Main Square"
+#~ msgstr "Marked"
+
+#~ msgid "Church"
+#~ msgstr "Kirke"
+
+#~ msgid "Signal Fire"
+#~ msgstr "Signal bål"
+
+#~ msgid "Residents"
+#~ msgstr "Boliger"
+
+#~ msgid "Tent"
+#~ msgstr "Telt"
+
+#~ msgid "Hunter"
+#~ msgstr "Jeger"
+
+#~ msgid "Fisher"
+#~ msgstr "Fisker"
+
+#~ msgid "Weaver"
+#~ msgstr "Vever"
+
+#~ msgid "Boat Builder"
+#~ msgstr "Båt Bygger"
+
+#~ msgid "Lumberjack"
+#~ msgstr "Tømrer"
+
+#~ msgid "Tree"
+#~ msgstr "Tre"
+
+#~ msgid "Herder"
+#~ msgstr "Sau-Bonde"
+
+#~ msgid "Field"
+#~ msgstr "Jorde"
+
+#~ msgid "Lookout"
+#~ msgstr "Utsikt tårn"
+
+#~ msgid "Rampart"
+#~ msgstr "Rampart"
+
+#~ msgid "Infrastructure"
+#~ msgstr "Infrastruktur"
+
+#~ msgid "Trail"
+#~ msgstr "Sti/Vei"
+
+#~ msgid "Bridge"
+#~ msgstr "Bro"
+
+#~ msgid "Specials and Gifts"
+#~ msgstr "Spesial ting og Gaver"
+
+#~ msgid "You can not build specials or gifts in this class"
+#~ msgstr "Du kan ikke bygge spesial ting eller gaver i denne klassen"
+
+#~ msgid "Running Costs"
+#~ msgstr "Drifts kostnader"
+
+#~ msgid "Overview:"
+#~ msgstr "Oversikt:"
+
+#~ msgid "New"
+#~ msgstr "Ny"
+
+#~ msgid "Enable Sound"
+#~ msgstr "Aktiver Lyd"
+
+#~ msgid "Use the fullscreen mode"
+#~ msgstr "Bruk fullskjerms modus"
+
+#~ msgid "Autosave interval:"
+#~ msgstr "Auto-Lagring intervall:"
+
+#~ msgid "Number of saves quicksaves:"
+#~ msgstr "Antall lagrede Hurtig-Lagringer"
+
+#~ msgid "Use renderer:"
+#~ msgstr "Bruke Rendrer:"
+
+#~ msgid "Effects volume"
+#~ msgstr "Effekt volum"
+
+#~ msgid "Loading ..."
+#~ msgstr "Laster ..."
+
+#~ msgid "Inventory:"
+#~ msgstr "Innhold:"
+
+#~ msgid "Found new settlement"
+#~ msgstr "Grunnlegg en ny koloni"
+
+#~ msgid "Trade with:"
+#~ msgstr "Bytt med:"
+
+#~ msgid "Excange:"
+#~ msgstr "Utveksle:"
+
+#~ msgid "Random "
+#~ msgstr "Tilfeldig"
+
+#~ msgid "Campaign "
+#~ msgstr "Kapanje"
+
+#~ msgid "Load "
+#~ msgstr "Last"
+
+#~ msgid "unknown player"
+#~ msgstr "ukjent spiller"
+
+#~ msgid "Yeah, you made it ..."
+#~ msgstr "Yeah, du klarte det ..."
+
+#~ msgid "Back to business ..."
+#~ msgstr "Tilbake til arbeid ..."
+
+#~ msgid "Details:"
+#~ msgstr "Dataljer:"
+
+#~ msgid "Internet games"
+#~ msgstr "Internet spill"
+
+#~ msgid "LAN games"
+#~ msgstr "LAN spill"
+
+#~ msgid "Favorites"
+#~ msgstr "Favoritter"
+
+#~ msgid "Buy"
+#~ msgstr "Kjøp"
+
+#~ msgid "Sell"
+#~ msgstr "Selg"
+
+#~ msgid "City Name"
+#~ msgstr "By Navn"
+
+#~ msgid "Enter your message"
+#~ msgstr "Skriv din melding"
+
+#~ msgid "Slots"
+#~ msgstr "Spalter"
