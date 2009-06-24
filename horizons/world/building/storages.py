@@ -25,6 +25,7 @@ from horizons.world.provider import Provider
 from horizons.world.consumer import Consumer
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.gui.tabs.overviewtab import BranchOfficeOverviewTab
+from horizons.gui.tabs.buyselltab import BuySellTab
 from horizons.util import Point, WorldObject
 from building import Building, Selectable
 from buildable import BuildableSingle
@@ -66,7 +67,7 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 
 	def show_menu(self):
 		from horizons.gui.tabs.inventorytab import InventoryTab
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [BranchOfficeOverviewTab(self), InventoryTab(self)]))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [BranchOfficeOverviewTab(self), InventoryTab(self), BuySellTab(self.settlement)]))
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
