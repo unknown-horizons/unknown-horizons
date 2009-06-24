@@ -26,8 +26,8 @@
 			<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
 		</HBox>
 	
-		<HBox position="190,200">
-			<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/settle_h.png" down_image="content/gui/images/icons/hud/ship/settle_h.png" hover_image="content/gui/images/icons/hud/ship/settle_h.png"  />
+		<HBox position="186,195">
+			<ImageButton name="foundSettelment" up_image="content/gui/images/icons/hud/ship/anchor.png" down_image="content/gui/images/icons/hud/ship/anchor_a.png" hover_image="content/gui/images/icons/hud/ship/anchor_h.png"  />
 		</HBox>
 	
 	</Container>
