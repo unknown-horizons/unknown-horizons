@@ -23,7 +23,7 @@ msgstr "Verwendung des Debug Tools:"
 
 #: debug.py:102
 msgid "import debug (already done): load the tools"
-msgstr "import debug (bereits erledigt): lade Tools"
+msgstr "importiere Debug-Module (bereits erledigt): lade Tools"
 
 #: debug.py:103
 msgid ""
@@ -45,9 +45,10 @@ msgstr ""
 #: horizons/dbreader.py:51
 #, fuzzy
 msgid "Error, no complete sql statement provided by \"%s\"."
-msgstr "Fehler, kein vollständiger SQL Ausdruck von \"%s\" übergeben."
+msgstr "Fehler, es wurde kein vollständiger SQL Ausdruck von \"%s\" übergeben."
 
 #: horizons/i18n/guitranslations.py:28
+#, fuzzy
 msgid "Branch office (Branch class ROMAN)"
 msgstr "Zweigstellenbüro"
 
@@ -130,7 +131,7 @@ msgstr "Nahrungsmittel:"
 #: horizons/i18n/guitranslations.py:53 horizons/i18n/guitranslations.py:54
 #: horizons/i18n/guitranslations.py:55
 msgid "n/a"
-msgstr ""
+msgstr "Nicht verfügbar"
 
 #: horizons/i18n/guitranslations.py:56 horizons/i18n/guitranslations.py:165
 msgid "Close"
@@ -142,7 +143,7 @@ msgstr "Inventar:"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Are you sure you want to abort the running session?"
-msgstr "Wollt Ihr wirklich die Partie beenden?"
+msgstr "Wollt Ihr  die Partie wirklich beenden?"
 
 #: horizons/i18n/guitranslations.py:62 horizons/i18n/guitranslations.py:139
 msgid "Quit Unknown Horizons"
@@ -160,7 +161,7 @@ msgstr "Schiffsname (Schiffstyp)"
 #: horizons/i18n/guitranslations.py:67 horizons/i18n/guitranslations.py:68
 #: horizons/i18n/guitranslations.py:69
 msgid "0/0"
-msgstr ""
+msgstr "0/0"
 
 #: horizons/i18n/guitranslations.py:71
 msgid "We're sorry, but the load function is not yet working."
@@ -170,7 +171,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:73 horizons/i18n/guitranslations.py:134
 msgid "Oh noes"
-msgstr ""
+msgstr "Oh Nein"
 
 #: horizons/i18n/guitranslations.py:75 horizons/i18n/guitranslations.py:177
 msgid ""
@@ -240,11 +241,11 @@ msgstr "Spiel speichern"
 #: horizons/i18n/guitranslations.py:96
 #, fuzzy
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Wollt Ihr Unknown Horizons wirklich beenden?"
+msgstr "Einige Eurer Änderungen erfordern einen Neustart von Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Changes require restart"
-msgstr "Änderungen erforderne einen Neustart"
+msgstr "Änderungen erfordern einen Neustart"
 
 #: horizons/i18n/guitranslations.py:100
 msgid "Loading ..."
@@ -254,7 +255,7 @@ msgstr "Lade ..."
 #: horizons/i18n/guitranslations.py:149
 #, fuzzy
 msgid "Unknown Horizons Alpha 2009.1"
-msgstr "Unknown Horizons Alpha 2009.0"
+msgstr "Unknown Horizons Alpha 2009.1"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Building name (Building Class ROMAN)"
@@ -266,13 +267,13 @@ msgstr "Bodenfließen:"
 
 #: horizons/i18n/guitranslations.py:105
 msgid "10x10"
-msgstr ""
+msgstr "10x10"
 
 #: horizons/i18n/guitranslations.py:107 horizons/i18n/guitranslations.py:108
 #: horizons/i18n/guitranslations.py:109 horizons/i18n/guitranslations.py:110
 #: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:169
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Singleplayer"
@@ -280,7 +281,7 @@ msgstr "Einzelspieler"
 
 #: horizons/i18n/guitranslations.py:114
 msgid "Multiplayer"
-msgstr "Merhspieler"
+msgstr "Mehrspieler"
 
 #: horizons/i18n/guitranslations.py:115
 #, fuzzy
@@ -301,7 +302,7 @@ msgstr "Hilfe"
 
 #: horizons/i18n/guitranslations.py:119
 msgid " Continue Game "
-msgstr "Weiterspielen"
+msgstr "Spiel fortsetzen"
 
 #: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:155
 msgid " Chime The Bell "
@@ -322,7 +323,7 @@ msgstr "Ja, Ihr habt es getan ..."
 
 #: horizons/i18n/guitranslations.py:128
 msgid "But this is a deadlink, sorry."
-msgstr "aber dies ist ein Platzhalter, Entschuldigt bitte."
+msgstr "Dies ist ein Platzhalter, Entschuldigt bitte."
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Back to business ..."
@@ -402,7 +403,7 @@ msgstr "Graphik"
 
 #: horizons/i18n/guitranslations.py:180
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: horizons/i18n/guitranslations.py:191
 #, fuzzy
@@ -468,12 +469,12 @@ msgstr "Aktueller Baufortschritt:"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Select a boat to build:"
-msgstr "Wähle das zu bauende Boot aus:"
+msgstr "Wähle das zu bauendes Boot aus:"
 
 #: horizons/i18n/guitranslations.py:226
 #, fuzzy
 msgid "Build selected:"
-msgstr "Bau ausgewählt"
+msgstr "Gebäude ausgewählt"
 
 #: horizons/i18n/guitranslations.py:229
 msgid "Load/Unload:"
@@ -540,7 +541,7 @@ msgstr "Betriebe"
 
 #: horizons/i18n/guitranslations.py:251
 msgid "Military"
-msgstr "Militärisch"
+msgstr "Militär"
 
 #: horizons/i18n/guitranslations.py:253
 #, fuzzy
@@ -573,7 +574,7 @@ msgstr "Sie haben einen ungültigen Dateinamen eingegeben"
 
 #: horizons/menus.py:141 horizons/menus.py:236
 msgid "System default"
-msgstr ""
+msgstr "Systemvorgabe"
 
 #: horizons/menus.py:374
 #, fuzzy
@@ -664,7 +665,7 @@ msgstr "Dein Spiel wurde gespeichert"
 
 #: horizons/session.py:148
 msgid "No quicksaves found"
-msgstr "Keine Schnellspeicher Spielstände gefunden"
+msgstr "Keine automatisch gespeicherten Spielstände gefunden"
 
 #: horizons/session.py:148
 msgid "You need to quicksave before you can quickload."
@@ -743,7 +744,7 @@ msgstr "Nützlich für Tests während der Entwicklung"
 #: run_uh.py:113
 msgid "Starts <map>. <map> is the filename of the map, without '.sqlite'"
 msgstr ""
-"Startet <karte>. <karte> ist der dateiname der Karte ohne die Dateiendung '."
+"Startet <karte>. <karte> ist der Dateiname der Karte ohne die Dateiendung '."
 "sqlite'"
 
 #: run_uh.py:114
@@ -761,7 +762,7 @@ msgstr "Aktiviere Logging für ein bestimmtes Logging Modul"
 
 #: run_uh.py:119
 msgid "Have fun playing, and if you do, help us developing!"
-msgstr "Viel Spass beim Spielen! Wenn du Spass dabi hast, helf' doch mit!"
+msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 
 #~ msgid "Loading..."
 #~ msgstr "Lade ..."
