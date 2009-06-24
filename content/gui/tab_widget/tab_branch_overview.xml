@@ -24,8 +24,6 @@
 				<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
 			</HBox>
 
-			<Label text="Buy/Sell Resources:" name="buy_sell_resource_label" position="3,10"/>
-			<ImageButton name="buysell" position="170,10" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 		</Container>
 	</Container>
 </Container>

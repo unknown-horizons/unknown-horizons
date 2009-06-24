@@ -57,11 +57,6 @@ class BranchOfficeOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_branch_overview.xml',
 			instance = instance
 		)
-		events = { 'buysell': horizons.main.fife.pychan.tools.callbackWithArguments(\
-			horizons.main.session.ingame_gui.show_menu, BuySellWidget(3, self.instance.settlement))
-		}
-		self.widget.mapEvents(events)
-
 
 class ShipOverviewTab(OverviewTab):
 

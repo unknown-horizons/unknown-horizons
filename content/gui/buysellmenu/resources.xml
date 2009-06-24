@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
-<Container size="260,550" position="0,70">
+<Container size="260,550">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
-	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />		
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />
 
-	<Container position="0,70" size="500,400" >
-		<Label name="headline" text="Select ressources to buy/sell:" position="0,37"/>
+	<Container name="content" position="0,70" size="500,400" >
+		<Label name="headline" text="Select ressources to buy/sell:" position="20,0"/>
+		<VBox name="resources" size="200,0" position="30,100"/>
 	</Container>
 
 </Container>

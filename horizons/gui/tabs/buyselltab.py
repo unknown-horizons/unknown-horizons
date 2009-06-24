@@ -30,7 +30,7 @@ class BuySellTab(TabInterface):
 
 	log = logging.getLogger("gui")
 
-	def __init__(self, settlement, slots = 4):
+	def __init__(self, settlement, slots = 3):
 		super(BuySellTab, self).__init__(widget = 'buysellmenu/buysellmenu.xml')
 		self.settlement = settlement
 		self.init_values()
@@ -57,6 +57,7 @@ class BuySellTab(TabInterface):
 
 	def show(self):
 		self.widget.show()
+		horizons.main.session.ingame_gui.minimap_to_front()
 
 	def refresh(self):
 		"""We don't need to refresh"""
@@ -130,6 +131,7 @@ class BuySellTab(TabInterface):
 		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
 			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
+			button.hover_image="content/gui/images/icons/hud/main/buysell_sell.png"
 			slot.action="sell"
 			if slot.res is not None:
 				if slot.res in self.settlement.buy_list:
@@ -137,6 +139,7 @@ class BuySellTab(TabInterface):
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
 			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
+			button.hover_image="content/gui/images/icons/hud/main/buysell_buy.png"
 			slot.action="buy"
 			if slot.res is not None:
 				if slot.res in self.settlement.sell_list:
@@ -178,8 +181,7 @@ class BuySellTab(TabInterface):
 		self.resources = load_xml_translated('buysellmenu/resources.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
-		vbox = pychan.widgets.VBox(padding = 0)
-		vbox.width = self.resources.width
+		vbox = self.resources.findChild(name="resources")
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
 		resources = horizons.main.db("SELECT rowid, icon FROM resource")
@@ -201,6 +203,9 @@ class BuySellTab(TabInterface):
 				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1
 		vbox.addChild(current_hbox)
+		vbox.adaptLayout()
 		self.resources.addChild(vbox)
 		self.hide()
 		self.resources.show()
+		horizons.main.session.ingame_gui.minimap_to_front()
+
