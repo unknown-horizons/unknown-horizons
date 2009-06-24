@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-06-24 14:18+CEST\n"
+"POT-Creation-Date: 2009-06-24 14:43+CEST\n"
 "PO-Revision-Date: 2009-06-24 13:31+CEST\n"
 "Last-Translator: LiveWire74 (Vincent HERILIER) <vherilier@gmail.com>\n"
 "Language-Team: French <FR@li.org>\n"
@@ -40,7 +40,8 @@ msgstr ""
 "x, y)"
 
 #: horizons/dbreader.py:51
-msgid "Error, no complete sql statement provided by \"%s.\""
+#, fuzzy
+msgid "Error, no complete sql statement provided by \"%s\"."
 msgstr "Erreur, aucun énoncé sql complet fournit par \"%s\"."
 
 #: horizons/i18n/guitranslations.py:28
@@ -237,8 +238,8 @@ msgid "Changes require restart"
 msgstr "Les modifications nécessitent un redémarrage"
 
 #: horizons/i18n/guitranslations.py:100
-msgid "Loading..."
-msgstr "Chargement..."
+msgid "Loading ..."
+msgstr "Chargement ..."
 
 #: horizons/i18n/guitranslations.py:101 horizons/i18n/guitranslations.py:112
 #: horizons/i18n/guitranslations.py:149
@@ -313,8 +314,8 @@ msgid "But this is a deadlink, sorry."
 msgstr "Mais c'est un lien mort, désolé."
 
 #: horizons/i18n/guitranslations.py:129
-msgid "Back to business..."
-msgstr "Retour aux affaires..."
+msgid "Back to business ..."
+msgstr "Retour aux affaires ..."
 
 #: horizons/i18n/guitranslations.py:130
 msgid "Chime The Bell"
@@ -418,7 +419,7 @@ msgid "Health:"
 msgstr "Santé :"
 
 #: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:204
-#: horizons/i18n/guitranslations.py:218
+#: horizons/i18n/guitranslations.py:218 horizons/i18n/guitranslations.py:254
 msgid "Running Costs:"
 msgstr "Coûts de fonctionnement :"
 
@@ -526,10 +527,6 @@ msgstr "Militaire"
 msgid "Build"
 msgstr "Construction"
 
-#: horizons/i18n/guitranslations.py:254
-msgid "Running costs:"
-msgstr "Coûts de fonctionnement :"
-
 #: horizons/i18n/guitranslations.py:256
 msgid "Do you want to remove this building?"
 msgstr "Voulez vous enlever ce bâtiment ?"
@@ -559,20 +556,16 @@ msgid "System default"
 msgstr "Paramètres par défaut"
 
 #: horizons/menus.py:374
-msgid "Not yet Implemented"
-msgstr "Non implémenté encore"
-
-#: horizons/menus.py:374
 msgid "Sorry, the random map feature isn't yet implemented."
 msgstr "Désolé, la fonction carte aléatoire n'est pas encore implémentée."
+
+#: horizons/menus.py:374 horizons/menus.py:430 horizons/menus.py:640
+msgid "Not yet implemented"
+msgstr "Non implémenté encore"
 
 #: horizons/menus.py:430
 msgid "Sorry, multiplayer has not been implemented yet."
 msgstr "Désolé, le mode joueurs multiples n'a pas encore été implémenté."
-
-#: horizons/menus.py:430 horizons/menus.py:640
-msgid "Not yet implemented"
-msgstr "Non implémenté encore"
 
 #: horizons/menus.py:546
 msgid "Error"
@@ -745,6 +738,18 @@ msgstr "Activer l'enregistrement pour un module de logging en pariculier"
 msgid "Have fun playing, and if you do, help us developing!"
 msgstr "Amusez vous bien, et si vous le pouvez, aidez nous à développer !"
 
+#~ msgid "Loading..."
+#~ msgstr "Chargement..."
+
+#~ msgid "Back to business..."
+#~ msgstr "Retour aux affaires..."
+
+#~ msgid "Running costs:"
+#~ msgstr "Coûts de fonctionnement :"
+
+#~ msgid "Not yet Implemented"
+#~ msgstr "Non implémenté encore"
+
 #~ msgid "No translation for file %s"
 #~ msgstr "Aucune traduction pour le fichier %s"
 
@@ -838,9 +843,6 @@ msgstr "Amusez vous bien, et si vous le pouvez, aidez nous à développer !"
 #~ msgid "Effects volume"
 #~ msgstr "Volume des effets"
 
-#~ msgid "Loading ..."
-#~ msgstr "Chargement ..."
-
 #~ msgid "Inventory:"
 #~ msgstr "Inventaire :"
 
@@ -867,9 +869,6 @@ msgstr "Amusez vous bien, et si vous le pouvez, aidez nous à développer !"
 
 #~ msgid "Yeah, you made it ..."
 #~ msgstr "Oui, vous l'avez fait ..."
-
-#~ msgid "Back to business ..."
-#~ msgstr "Retour aux affaires ..."
 
 #~ msgid "Details:"
 #~ msgstr "Détails :"

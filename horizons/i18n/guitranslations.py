@@ -97,7 +97,7 @@ def set_translations():
 			"okButton"                    : _("Ok"),
 			"restart_required_window"     : _("Changes require restart")},
 		"loadingscreen.xml" : {
-			"loading_label"               : _("Loading..."),
+			"loading_label"               : _("Loading ..."),
 			"version_label"               : _("Unknown Horizons Alpha 2009.1")},
 		"hud_buildinfo.xml" : {
 			"buildingNameLabel"           : _("Building name (Building Class ROMAN)"),
@@ -126,7 +126,7 @@ def set_translations():
 		"chime.xml" : {
 			"made_it_label"               : _("Yeah, you made it..."),
 			"deadlink_label"              : _("But this is a deadlink, sorry."),
-			"okButton"                    : _("Back to business..."),
+			"okButton"                    : _("Back to business ..."),
 			"chime_window"                : _("Chime The Bell")},
 		"save_disabled.xml" : {
 			"save_disabled"               : _("We're sorry, but the save function is not yet working."),
@@ -251,7 +251,7 @@ def set_translations():
 			"military_label"              : _("Military")},
 		"hud_builddetail.xml" : {
 			"headline"                    : _("Build"),
-			"running_cost_label"          : _("Running costs:")},
+			"running_cost_label"          : _("Running Costs:")},
 		"hud_tears_menu.xml" : {
 			"ConfirmTearLabel"            : _("Do you want to remove this building?"),
 			"accept-1"                    : _("yes"),

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2009-06-24 14:18+CEST\n"
+"POT-Creation-Date: 2009-06-24 14:43+CEST\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nuno 'MadMonk' Alves <nunodpalves@gmail.com>\n"
 "Language-Team: \n"
@@ -36,7 +36,8 @@ msgstr ""
 "debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
 
 #: horizons/dbreader.py:51
-msgid "Error, no complete sql statement provided by \"%s.\""
+#, fuzzy
+msgid "Error, no complete sql statement provided by \"%s\"."
 msgstr "Erro, nenhum sql statement completo disponibilizado pelo \"%s.\""
 
 #: horizons/i18n/guitranslations.py:28
@@ -245,8 +246,7 @@ msgid "Changes require restart"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:100
-#, fuzzy
-msgid "Loading..."
+msgid "Loading ..."
 msgstr "A carregar ..."
 
 #: horizons/i18n/guitranslations.py:101 horizons/i18n/guitranslations.py:112
@@ -324,8 +324,7 @@ msgid "But this is a deadlink, sorry."
 msgstr "Mas este link está morto, desculpa."
 
 #: horizons/i18n/guitranslations.py:129
-#, fuzzy
-msgid "Back to business..."
+msgid "Back to business ..."
 msgstr "De volta ao negócio ..."
 
 #: horizons/i18n/guitranslations.py:130
@@ -436,7 +435,7 @@ msgid "Health:"
 msgstr "Saúde:"
 
 #: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:204
-#: horizons/i18n/guitranslations.py:218
+#: horizons/i18n/guitranslations.py:218 horizons/i18n/guitranslations.py:254
 msgid "Running Costs:"
 msgstr "Custos de Manutenção:"
 
@@ -554,11 +553,6 @@ msgstr "Militar"
 msgid "Build"
 msgstr "Campo"
 
-#: horizons/i18n/guitranslations.py:254
-#, fuzzy
-msgid "Running costs:"
-msgstr "Custos de Manutenção:"
-
 #: horizons/i18n/guitranslations.py:256
 msgid "Do you want to remove this building?"
 msgstr "Queres remover esta construção?"
@@ -590,19 +584,15 @@ msgid "System default"
 msgstr "System default"
 
 #: horizons/menus.py:374
-msgid "Not yet Implemented"
+msgid "Sorry, the random map feature isn't yet implemented."
 msgstr ""
 
-#: horizons/menus.py:374
-msgid "Sorry, the random map feature isn't yet implemented."
+#: horizons/menus.py:374 horizons/menus.py:430 horizons/menus.py:640
+msgid "Not yet implemented"
 msgstr ""
 
 #: horizons/menus.py:430
 msgid "Sorry, multiplayer has not been implemented yet."
-msgstr ""
-
-#: horizons/menus.py:430 horizons/menus.py:640
-msgid "Not yet implemented"
 msgstr ""
 
 #: horizons/menus.py:546
@@ -778,6 +768,18 @@ msgstr ""
 msgid "Have fun playing, and if you do, help us developing!"
 msgstr "Diverte-te a jogar, e se o fizeres, ajuda-nos a desenvolver!"
 
+#, fuzzy
+#~ msgid "Loading..."
+#~ msgstr "A carregar ..."
+
+#, fuzzy
+#~ msgid "Back to business..."
+#~ msgstr "De volta ao negócio ..."
+
+#, fuzzy
+#~ msgid "Running costs:"
+#~ msgstr "Custos de Manutenção:"
+
 #~ msgid "No translation for file %s"
 #~ msgstr "Nenhuma tradução para o ficheiro %s"
 
@@ -871,9 +873,6 @@ msgstr "Diverte-te a jogar, e se o fizeres, ajuda-nos a desenvolver!"
 #~ msgid "Effects volume"
 #~ msgstr "Volume dos efeitos sonoros:"
 
-#~ msgid "Loading ..."
-#~ msgstr "A carregar ..."
-
 #~ msgid "Inventory:"
 #~ msgstr "Inventório:"
 
@@ -900,9 +899,6 @@ msgstr "Diverte-te a jogar, e se o fizeres, ajuda-nos a desenvolver!"
 
 #~ msgid "Yeah, you made it ..."
 #~ msgstr "Sim, conseguiste ..."
-
-#~ msgid "Back to business ..."
-#~ msgstr "De volta ao negócio ..."
 
 #~ msgid "Details:"
 #~ msgstr "Detalhes:"

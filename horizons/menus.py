@@ -371,7 +371,7 @@ class Menus(object):
 			})
 		else:
 			self.current.findChild(name="random").parent.removeChild(self.current.findChild(name="random"))
-			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet Implemented'), _("Sorry, the random map feature isn't yet implemented."))
+			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
 
 			# get the map files and their display names
 			self.current.files, maps_display = self.get_maps(showCampaign, showLoad=False)
