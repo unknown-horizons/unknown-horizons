@@ -193,8 +193,8 @@ class WildAnimal(Animal, Collector):
 		self.log.debug("Wild animal %s REPRODUCING", self.getId())
 		# create offspring
 		horizons.main.session.entities.units[self.id](self.home_island, \
-																	x=self.position.x, y=self.position.y, \
-																	can_reproduce = self.next_clone_can_reproduce())
+			x=self.position.x, y=self.position.y, \
+			can_reproduce = self.next_clone_can_reproduce())
 		# reset resources
 		for res in self.get_consumed_res():
 			self.inventory.reset(res)
@@ -215,6 +215,9 @@ class WildAnimal(Animal, Collector):
 
 	def create_pather(self):
 		return SoldierPather(self)
+
+	def cancel(self):
+		self.get_job()
 
 
 class FarmAnimal(Animal, BuildingCollector):
