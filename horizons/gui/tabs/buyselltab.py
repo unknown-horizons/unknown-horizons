@@ -205,6 +205,7 @@ class BuySellTab(TabInterface):
 		vbox.addChild(current_hbox)
 		vbox.adaptLayout()
 		self.resources.addChild(vbox)
+		self.resources.stylize('headline')
 		self.hide()
 		self.resources.show()
 		horizons.main.session.ingame_gui.minimap_to_front()
