@@ -22,7 +22,6 @@ import horizons.main
 import pychan
 import weakref
 from tabinterface import TabInterface
-from horizons.gui.buysellwidget import BuySellWidget
 
 class OverviewTab(TabInterface):
 

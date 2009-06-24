@@ -20,7 +20,7 @@
 # ###################################################
 
 class TradePost(object):
-	"""This Class has to be inherited by every class that wishes to use BuySellWidget and trade with
+	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
 	"""
 	def __init__(self):

@@ -85,7 +85,7 @@ class BuySellTab(TabInterface):
 		"""Adds a ressource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
-		self.log.debug("BuySellWidget add_ressource() resid: %s; slot_id %s; value: %s",  \
+		self.log.debug("BuySellTab add_ressource() resid: %s; slot_id %s; value: %s",  \
 									 res_id, slot_id, value)
 
 		if self.resources is not None: # Hide resource menu
