@@ -36,8 +36,9 @@ class BuySellWidget(object):
 		self.widget.stylize('menu_black')
 		self.widget.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0],
-			168
+			157
 		)
+		
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
 		i = 0
@@ -129,6 +130,7 @@ class BuySellWidget(object):
 		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
 			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
+			button.hover_image="content/gui/images/icons/hud/main/buysell_sell.png"
 			slot.action="sell"
 			if slot.res is not None:
 				if slot.res in self.settlement.buy_list:
@@ -136,6 +138,7 @@ class BuySellWidget(object):
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
 			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
+			button.hover_image="content/gui/images/icons/hud/main/buysell_buy.png"
 			slot.action="buy"
 			if slot.res is not None:
 				if slot.res in self.settlement.sell_list:

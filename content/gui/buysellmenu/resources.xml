@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="260,600">
+<Container size="260,550" position="0,70">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
@@ -7,9 +7,9 @@
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />		
-	
-	<Container position="0,70" size="600,400" >
+
+	<Container position="0,70" size="500,400" >
 		<Label name="headline" text="Select ressources to buy/sell:" position="0,37"/>
 	</Container>
-	
+
 </Container>

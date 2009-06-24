@@ -39,7 +39,7 @@ class TabWidget(object):
 			size_y = self.current_tab.widget.size[1]
 			self.widget.position = (
 				horizons.main.fife.settings.getScreenWidth() - 303,
-				220
+				209
 				#horizons.main.session.ingame_gui.gui['minimap'].position[0] -
 				#    size_x - 35 if
 				#	horizons.main.fife.settings.getScreenWidth()/2 + size_x/2 >

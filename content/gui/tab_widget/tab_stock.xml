@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="295,350">
+<Container size="250,500">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
@@ -9,7 +9,7 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
 	
 	<Container position="0,70" size="600,400" >
-		<Label name="headline" position="50,0" text="Inventory of" /><Label name='name' position="120,0" text="" />
+		<Label name="headline" position="80,0" text="Inventory" />
 			<Icon image="content/gui/images/background/hr.png" position="20,30" />
 			
 			<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />

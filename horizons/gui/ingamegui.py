@@ -56,7 +56,7 @@ class IngameGui(LivingObject):
 
 		self.gui['minimap'] = load_xml_translated('minimap.xml')
 		self.gui['minimap'].position = (
-				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0],
+				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] -20,
 			4
 		)
 
@@ -72,8 +72,8 @@ class IngameGui(LivingObject):
 
 		self.gui['leftPanel'] = load_xml_translated('left_panel.xml')
 		self.gui['leftPanel'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['leftPanel'].size[0] - 15,
-			152)
+			horizons.main.fife.settings.getScreenWidth() - self.gui['leftPanel'].size[0] +15,
+			149)
 		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
 			'build' : self.show_build_menu
@@ -88,7 +88,7 @@ class IngameGui(LivingObject):
 		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
 		self.gui['gamemenu'].position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 3,
-			10
+			148
 		)
 		self.gui['gamemenu'].mapEvents({
 			'gameMenuButton' : horizons.main.gui.show_pause,

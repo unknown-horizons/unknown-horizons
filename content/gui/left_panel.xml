@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<Container size="270,80">
+<Container size="250,100">
 <!-- Main buttons that are under minimap, including build menu, diplomacy etc-->
-	<Icon image="content/gui/images/background/button_glass_small.png" position="50,0" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_small.png" position="85,28" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_big.png" position="127,38" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_small.png" position="176,28" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_small.png" position="210,0" size="64,64" />
+	<Icon image="content/gui/images/background/button_glass_small.png" position="2,0" size="64,64" />
+	<Icon image="content/gui/images/background/button_glass_small.png" position="35,28" size="64,64" />
+	<Icon image="content/gui/images/background/button_glass_big.png" position="77,38" size="64,64" />
+	<Icon image="content/gui/images/background/button_glass_small.png" position="126,28" size="64,64" />
+	<Icon image="content/gui/images/background/button_glass_small.png" position="157,0" size="64,64" />
 
-	<ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy_l.png" down_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" hover_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" size="30,30" position="88,31" />
-	<ImageButton name="build" up_image="content/gui/images/icons/hud/main/build_l.png" down_image="content/gui/images/icons/hud/main/build_l_h.png" hover_image="content/gui/images/icons/hud/main/build_l_h.png" size="30,30" position="134,44" />
+	<ImageButton name="diplomacy" up_image="content/gui/images/icons/hud/main/diplomacy_l.png" down_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" hover_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" size="30,30" position="39,32" />
+	<ImageButton name="build" up_image="content/gui/images/icons/hud/main/build_l.png" down_image="content/gui/images/icons/hud/main/build_l_h.png" hover_image="content/gui/images/icons/hud/main/build_l_h.png" size="30,30" position="84,45" />
 	
 </Container>

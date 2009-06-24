@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="370,600" border_size="0" >
+<Container size="370,400" border_size="0" >
 	<Icon name="tab0" image="content/gui/images/background/hud/tab_bg.png" position="0,4" /><ImageButton name="servicesTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,4" />
 	<Icon name="tab1" image="content/gui/images/background/hud/tab_bg.png" position="0,36" /><ImageButton name="residentsTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,36" />
 	<Icon name="tab2" image="content/gui/images/background/hud/tab_bg.png" position="0,68" /><ImageButton name="companiesTab" up_image="content/gui/images/icons/hud/build/dummy.png" size="64,32" position="0,68" />
