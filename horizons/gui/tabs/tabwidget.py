@@ -35,24 +35,16 @@ class TabWidget(object):
 		self.widget = load_xml_translated("tab_widget/tab_base.xml")
 		if position is None:
 			# add positioning here
-			size_x = self.widget.size[0]+self.current_tab.widget.size[0]
-			size_y = self.current_tab.widget.size[1]
 			self.widget.position = (
 				horizons.main.fife.settings.getScreenWidth() - 303,
 				209
-				#horizons.main.session.ingame_gui.gui['minimap'].position[0] -
-				#    size_x - 35 if
-				#	horizons.main.fife.settings.getScreenWidth()/2 + size_x/2 >
-				#	horizons.main.session.ingame_gui.gui['minimap'].position[0] else
-				#	horizons.main.fife.settings.getScreenWidth()/2 - size_x/2,
-				#horizons.main.fife.settings.getScreenHeight() - size_y - 35
 			)
 		else:
 			self.widget.position = position
 		self.content = self.widget.findChild(name='content')
-		self.init_tabs()
+		self._init_tabs()
 
-	def init_tabs(self):
+	def _init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
 		# Load buttons
 		for index, tab in enumerate(self._tabs):
@@ -68,19 +60,15 @@ class TabWidget(object):
 			button.down_image = tab.button_down_image
 			button.hover_image = tab.button_hover_image
 			button.size = (50, 50)
-			button.capture(pychan.tools.callbackWithArguments(self.show_tab, index))
+			button.capture(pychan.tools.callbackWithArguments(self._show_tab, index))
 			container.size = background.size
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.content._recursiveResizeToContent()
-
 		self.widget.size = (50, 200*len(self._tabs))
+		self.widget.adaptLayout()
 
-		self.content.adaptLayout()
-		self.widget._recursiveResizeToContent()
-
-	def show_tab(self, number):
+	def _show_tab(self, number):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
@@ -93,48 +81,45 @@ class TabWidget(object):
 		self.current_tab = new_tab
 		self.show()
 
-	def draw_widget(self):
+	def _draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""
-		self.current_tab.position = (self.widget.position[0]+self.widget.size[0]-11,
-									 self.widget.position[1]-52)
+		self.current_tab.position = (self.widget.position[0] + self.widget.size[0] - 11,
+			self.widget.position[1] - 52)
 		self.current_tab.refresh()
 
 	def show(self):
 		"""Show the current widget"""
-		self.draw_widget()
+		self._draw_widget()
 		self.current_tab.show()
 		self.widget.show()
-		# TODO: Very hackish, think of something better..
 		horizons.main.session.ingame_gui.minimap_to_front()
-		#print "Showing..."
 
 	def hide(self):
 		"""Hide the current widget"""
 		self.current_tab.hide()
 		self.widget.hide()
-		#print "Hiding..."
 
-	def get_x(self):
+	def _get_x(self):
 		"""Returs the widget's x position"""
 		return self.widget.position[0]
 
-	def set_x(self, value):
+	def _set_x(self, value):
 		"""Sets the widget's x position"""
 		self.widget.position = (value, self.widget.position[1])
 
 	# Shortcut to set and retrieve the widget's current x position.
-	x = property(get_x, set_x)
+	x = property(_get_x, _set_x)
 
-	def get_y(self):
+	def _get_y(self):
 		"""Returns the widget's y position"""
 		return self.widget.position[1]
 
-	def set_y(self, value):
+	def _set_y(self, value):
 		"""Sets the widget's y position"""
 		self.widget.position = (self.widget.position[0], value)
 
 	# Shortcut to set and retrieve the widget's current y position.
-	y = property(get_y, set_y)
+	y = property(_get_y, _set_y)
 
 
 

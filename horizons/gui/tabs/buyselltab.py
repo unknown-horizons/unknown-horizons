@@ -39,11 +39,11 @@ class BuySellTab(TabInterface):
 		self.add_slots(slots)
 		i = 0
 		for res in self.settlement.buy_list:
-			if i<self.slots:
+			if i < self.slots:
 				self.add_ressource(res, i, self.settlement.buy_list[res])
 				i += 1
 		for res in self.settlement.sell_list:
-			if i<self.slots:
+			if i < self.slots:
 				self.add_ressource(res, i, self.settlement.sell_list[res])
 				self.toggle_buysell(i)
 				i += 1
@@ -79,7 +79,7 @@ class BuySellTab(TabInterface):
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
 			slot.findChild(name="buysell").capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			content.addChild(slot)
-		self.widget._recursiveResizeToContent()
+		self.widget.adaptLayout()
 
 	def add_ressource(self, res_id, slot_id, value=None):
 		"""Adds a ressource to the specified slot
@@ -94,7 +94,7 @@ class BuySellTab(TabInterface):
 		slot = self.slots[slot_id]
 		slider = slot.findChild(name="slider")
 		if value is None:
-			value=int(slider.getValue()) # If no value is provided, take current slider value
+			value = int(slider.getValue()) # If no value is provided, take current slider value
 		else:
 			slider.setValue(float(value)) # set slider correctly
 
@@ -123,24 +123,24 @@ class BuySellTab(TabInterface):
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 			slider.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
-		slot._recursiveResizeToContent()
+		slot.adaptLayout()
 
 	def toggle_buysell(self, slot):
 		slot = self.slots[slot]
 		button = slot.findChild(name="buysell")
 		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
-			button.up_image="content/gui/images/icons/hud/main/buysell_sell.png"
-			button.hover_image="content/gui/images/icons/hud/main/buysell_sell.png"
-			slot.action="sell"
+			button.up_image = "content/gui/images/icons/hud/main/buysell_sell.png"
+			button.hover_image = "content/gui/images/icons/hud/main/buysell_sell.png"
+			slot.action = "sell"
 			if slot.res is not None:
 				if slot.res in self.settlement.buy_list:
 					del self.settlement.buy_list[slot.res]
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
-			button.up_image="content/gui/images/icons/hud/main/buysell_buy.png"
-			button.hover_image="content/gui/images/icons/hud/main/buysell_buy.png"
-			slot.action="buy"
+			button.up_image = "content/gui/images/icons/hud/main/buysell_buy.png"
+			button.hover_image = "content/gui/images/icons/hud/main/buysell_buy.png"
+			slot.action = "buy"
 			if slot.res is not None:
 				if slot.res in self.settlement.sell_list:
 					del self.settlement.sell_list[slot.res]
@@ -173,7 +173,7 @@ class BuySellTab(TabInterface):
 		elif self.slots[slot].action is "sell":
 			self.add_sell_to_settlement(res_id, int(slider.getValue()), slot)
 		self.slots[slot].findChild(name="amount").text = unicode(int(slider.getValue()))+'t'
-		self.slots[slot]._recursiveResizeToContent()
+		self.slots[slot].adaptLayout()
 
 
 
@@ -188,7 +188,7 @@ class BuySellTab(TabInterface):
 		# Add the zero element to the beginnig that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:
-			resources.insert(0,(0,"content/gui/images/icons/hud/build/dummy_btn.png"))
+			resources.insert(0, (0, "content/gui/images/icons/hud/build/dummy_btn.png"))
 		for (res_id, icon) in resources:
 			if res_id in [1, 2, 7, 8, 9, 10, 11]:
 				continue # don't show coins, lamb wool, wood etc. Temp hack. Should be replaced by resource groups

@@ -36,7 +36,7 @@ class OverviewTab(TabInterface):
 			self.widget.findChild(name='name').text = unicode(self.instance.name)
 		if hasattr(self.instance, 'health'):
 			self.widget.findChild(name='health').text = unicode(self.instance.health)
-		self.widget._recursiveResizeToContent()
+		self.widget.adaptLayout()
 
 	def show(self):
 		super(OverviewTab, self).show()
