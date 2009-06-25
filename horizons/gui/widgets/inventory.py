@@ -23,8 +23,6 @@ import pychan
 
 import horizons.main
 
-from horizons.world.storage import GenericStorage
-
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
 	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
@@ -41,7 +39,7 @@ class Inventory(pychan.widgets.Container):
 	def _set_inventory(self, inv):
 		"""Sets the inventory
 		@var inventory: Storage class inventory"""
-		assert(isinstance(inv, GenericStorage))
+		assert(isinstance(inv, horizons.world.storage.GenericStorage))
 		self._inventory = inv
 		self._draw()
 
@@ -58,7 +56,7 @@ class Inventory(pychan.widgets.Container):
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		index = 0
-		for resid, amount in self._inventory._storage.iteritems():
+		for resid, amount in self.inventory:
 			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
 			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon,
 										   down_image=icon_disabled if amount == 0 else icon,
@@ -67,11 +65,11 @@ class Inventory(pychan.widgets.Container):
 										   size=(55, 60),
 										   res_id = resid,
 										   opaque=False)
-			button.filled = int(float(amount)/float(self._inventory.limit)*100.0)
+			button.filled = int(float(amount) / float(self._inventory.limit) * 100.0)
 			current_hbox.addChild(button)
-			if index % (vbox.width/(self.__class__.icon_width+10)) == 0 and  index is not 0:
+			if index % (vbox.width/(self.__class__.icon_width + 10)) == 0 and  index is not 0:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(padding=0)
+				current_hbox = pychan.widgets.HBox(padding = 0)
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
@@ -87,7 +85,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		This is ment to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self._filled = 0
+		self.filled = 0
 		# res_id is used by the TradeWidget for example to determine the ressource this button represents
 		self.res_id = res_id
 		self.text_position = (15, 33)
@@ -109,6 +107,6 @@ class ImageFillStatusButton(pychan.widgets.Container):
 												 hover_image=self.hover_image)
 		label = pychan.widgets.Label(text=self.text)
 		label.position = self.text_position
-		bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
-		bar.position = (self.button.width-bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))
-		self.addChildren(self.button, bar, label)
+		fill_bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
+		fill_bar.position = (self.button.width-fill_bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))
+		self.addChildren(self.button, fill_bar, label)

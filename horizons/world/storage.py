@@ -96,6 +96,9 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 	def __getitem__(self, res):
 		return self._storage[res] if res in self._storage else 0
 
+	def __iter__(self):
+		return self._storage.iteritems()
+
 	def __str__(self):
 		if hasattr(self, "_storage"):
 			return str(self._storage)

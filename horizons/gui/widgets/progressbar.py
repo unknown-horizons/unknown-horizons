@@ -22,23 +22,27 @@
 import pychan
 
 class ProgressBar(pychan.widgets.Container):
+	"""The ProgressBar is a pychan widget. It can be used in xml files like this:
+	<ProgressBar />
+	It is used to display a ProgressBar with a certain progress ;). Set the
+	widgtes progress attribute to set the progress. Pretty straight forward.
+	"""
 
 	def __init__(self, progress=0, **kwargs):
 		super(ProgressBar, self).__init__(**kwargs)
-		self.size = (100,10)
+		self.size = (100, 10)
 		self.__progress = progress
 		self.icon = None
 		self._init_gui()
 
 	def _init_gui(self):
-		self.icon = pychan.widgets.Icon("content/gui/images/misc/progressbar_bg.png")
+		self.icon = pychan.widgets.Icon(image = "content/gui/images/misc/progressbar_bg.png")
 		self.icon.min_size = (0, 0)
 		self.addChild(self.icon)
 		self._draw()
 
 	def _draw(self):
-		print "Redrawing ProgressBar:", self.progress, self.size[0]
-		print int(self.progress/100.0*self.size[0])
+		print "Redrawing ProgressBar:", self.progress
 		self.icon.size = (int(self.progress/100.0*self.size[0]), self.size[1])
 
 	def _set_progress(self, progress):
