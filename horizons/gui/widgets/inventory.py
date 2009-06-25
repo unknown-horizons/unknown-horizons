@@ -85,10 +85,10 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		This is ment to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self.filled = 0
 		# res_id is used by the TradeWidget for example to determine the ressource this button represents
 		self.res_id = res_id
 		self.text_position = (15, 33)
+		self.filled = 0
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""

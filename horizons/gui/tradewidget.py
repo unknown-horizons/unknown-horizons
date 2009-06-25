@@ -64,7 +64,7 @@ class TradeWidget(object):
 			inv.inventory = self.main_instance.inventory
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
 				button.button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.main_instance, self.partner))
-			self.widget._recursiveResizeToContent()
+			self.widget.adaptLayout()
 
 	def set_partner(self, partner_id):
 		self.partner = self.partners[partner_id]

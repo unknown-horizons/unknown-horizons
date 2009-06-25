@@ -232,12 +232,23 @@ class World(LivingObject):
 		@param x: int x position.
 		@param y: int y position. """
 		point = Point(x, y)
-		for i in self.islands:
-			if not i.rect.contains(point):
+		for island in self.islands:
+			if not island.rect.contains(point):
 				continue
-			if point.get_coordinates()[0] in i.ground_map:
-				return i
+			if point.get_coordinates()[0] in island.ground_map:
+				return island
 		return None
+
+	def get_islands_in_radius(self, point, radius):
+		"""Returns all islands in a certain radius arround a point.
+		NOTE: This is an approximation, as it uses the island's rect. Might
+		return islands that are not really in range.
+		@return List of islands in radius"""
+		islands = []
+		for island in self.islands:
+			if radius is not None and island.rect.distance(point) <= radius:
+				islands.append(island)
+		return islands
 
 	def get_branch_offices(self, position=None, radius=None):
 		"""Returns all branch offices on the map. Optionally only those in range

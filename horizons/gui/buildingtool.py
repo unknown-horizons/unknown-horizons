@@ -65,18 +65,24 @@ class BuildingTool(NavigationTool):
 						if tile.object is not None:
 							horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 		else:
-			found_free = False
-			for island in horizons.main.session.world.islands:
-				if True:#todo: check if radius in island rect
-					for tile in island.grounds:
-						if ((tile.x - self.ship.position.x) ** 2 + (tile.y - self.ship.position.y) ** 2) <= 25:
-							free = (tile.settlement is None or tile.settlement.owner == horizons.main.session.world.player)
-							horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
-							if free and tile.object is not None:
-								horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
-							found_free = found_free or free
-			if not found_free:
+			if not self.highlight_ship_radius():
 				self.on_escape()
+
+	def highlight_ship_radius(self):
+		"""Colors everything in the radius of the ship. Also checks whether
+		there is a tile in the ships radius"""
+		found_free = False
+		radius = 5
+		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		for island in horizons.main.session.world.get_islands_in_radius(self.ship.position, radius):
+				for tile in island.get_surrounding_tiles(self.ship.position, radius):
+					free = (tile.settlement is None or tile.settlement.owner == horizons.main.session.world.player)
+					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
+					if free and tile.object is not None:
+						horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+					found_free = found_free or free
+		return found_free
+
 
 	def end(self):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
@@ -84,7 +90,7 @@ class BuildingTool(NavigationTool):
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		horizons.main.session.view.removeChangeListener(self.draw_gui)
 		self.gui.hide()
-		self.reset_listeners()
+		self._remove_listeners()
 		super(BuildingTool, self).end()
 
 	def load_gui(self):
@@ -106,8 +112,7 @@ class BuildingTool(NavigationTool):
 		horizons.main.session.view.addChangeListener(self.draw_gui)
 
 	def draw_gui(self):
-		queryresult = horizons.main.db("SELECT action_set_id,preview_action_set_id FROM action_set WHERE building_id=?", self._class.id)[0]
-		action_set,preview_action_set = queryresult
+		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE building_id=?", self._class.id)[0]
 		if preview_action_set in horizons.main.action_sets.keys():
 			action_set = preview_action_set
 		if 'idle' in horizons.main.action_sets[action_set].keys():
@@ -120,7 +125,7 @@ class BuildingTool(NavigationTool):
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2 -13, self.gui.size[1]/2 - building_icon.size[1]/2 - 50)
-		self.gui._recursiveResizeToContent()
+		self.gui.adaptLayout()
 
 	def preview_build(self, point1, point2):
 		for building in self.buildings:
@@ -148,11 +153,7 @@ class BuildingTool(NavigationTool):
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
 		horizons.main.session.ingame_gui.resourceinfo_set(self.ship if self.ship is not None else settlement, neededResources, usableResources)
-		self.reset_listeners()
-		if self.last_change_listener != self.ship if self.ship is not None else settlement:
-			self.last_change_listener = self.ship if self.ship is not None else settlement
-			if self.last_change_listener is not None:
-				self.last_change_listener.addChangeListener(self.update_preview)
+		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def on_escape(self):
 		horizons.main.session.ingame_gui.resourceinfo_set(None)
@@ -225,7 +226,7 @@ class BuildingTool(NavigationTool):
 			for building in self.buildings:
 				if building['buildable']:
 					built = True
-					self.reset_listeners() # Remove changelisteners for update_preview
+					self._remove_listeners() # Remove changelisteners for update_preview
 					found_buildable = True
 					horizons.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
 					args = default_args.copy()
@@ -239,19 +240,32 @@ class BuildingTool(NavigationTool):
 			self.buildings = []
 			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':
 				self.startPoint = point
-				self.preview_build(point, point)	
+				self.preview_build(point, point)
 			else:
 				self.on_escape()
 			evt.consume()
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
 
-	def reset_listeners(self):
+	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
-		if self.last_change_listener is not None and \
-		   self.last_change_listener.hasChangeListener(self.update_preview):
-			self.last_change_listener.removeChangeListener(self.update_preview)
+		if self.last_change_listener is not None:
+			if self.last_change_listener.hasChangeListener(self.update_preview):
+				self.last_change_listener.removeChangeListener(self.update_preview)
+			if self.last_change_listener.hasChangeListener(self.highlight_ship_radius):
+				self.last_change_listener.removeChangeListener(self.highlight_ship_radius)
+
+
 		self.last_change_listener = None
+
+	def _add_listeners(self, instance):
+		if self.last_change_listener != instance:
+			self._remove_listeners()
+			self.last_change_listener = instance
+			if self.last_change_listener is not None:
+				self.last_change_listener.addChangeListener(self.update_preview)
+				if self.last_change_listener is self.ship:
+					self.last_change_listener.addChangeListener(self.highlight_ship_radius)
 
 	def update_preview(self):
 		if self.startPoint is not None:

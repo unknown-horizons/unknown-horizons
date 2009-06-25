@@ -158,6 +158,7 @@ class Unit(WorldObject):
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
 		self._instance.setLocation(location)
+		self._changed()
 
 		# try to get next step, handle a blocked path
 		while self.next_target == self.position:
