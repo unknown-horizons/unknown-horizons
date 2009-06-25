@@ -28,7 +28,6 @@ class OverviewTab(TabInterface):
 	def __init__(self, instance = None, widget = 'tab_widget/tab_overview.xml'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
-		instance.addChangeListener(self.refresh)
 		self.init_values()
 
 	def refresh(self):
