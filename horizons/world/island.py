@@ -95,7 +95,7 @@ class Island(WorldObject):
 		#self.a = True
 		self.settlements = [] # List of settlements
 
-		self.path_nodes = {} # Paths are saved here for usage by the pather.
+		self.path_nodes = {} # Paths (roads) are saved here for usage by the pather.
 		"""TUTORIAL:
 		To continue hacking, you should now take of to the real fun stuff and check out horizons/world/building/__init__.py.
 		"""
@@ -331,8 +331,9 @@ class Island(WorldObject):
 		You need to call this when a tile changes, e.g. when a building is built on it. this
 		is currently done in add/remove_building
 		@param coord: tuple: (x, y)"""
-		self.log.debug("reset tile walkability on %s %s", coord[0], coord[1])
 		acctually_walkable = self.is_walkable(coord)
+		self.log.debug("reset tile walkability on %s %s to %s", \
+									 coord[0], coord[1], acctually_walkable)
 		in_list = (coord in self.walkable_tiles)
 		if not in_list and acctually_walkable:
 			self.walkable_tiles.append(coord)

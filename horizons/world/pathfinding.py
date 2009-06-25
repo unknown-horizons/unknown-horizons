@@ -30,8 +30,9 @@ from horizons.world.building.building import Building
 class PathBlockedError(Exception):
 	pass
 
+"""
 def check_path(path, blocked_coords):
-	""" debug function to check if a path is valid """
+	"" debug function to check if a path is valid ""
 	i = iter(path)
 	prev = i.next()
 
@@ -56,6 +57,7 @@ def check_path(path, blocked_coords):
 	if err:
 		assert False, 'Encountered errors when testing pathfinding'
 	return True
+"""
 
 
 class FindPath(object):
@@ -65,13 +67,16 @@ class FindPath(object):
 	"""
 	log = logging.getLogger("world.pathfinding")
 
-	def __call__(self, source, destination, path_nodes, blocked_coords = [], diagonal = False):
+	def __call__(self, source, destination, path_nodes, blocked_coords = [], \
+							 diagonal = False, make_target_walkable = True):
 		"""
 		@param source: Rect, Point or Building
 		@param destination: Rect, Point or Building
 		@param path_nodes: dict { (x, y) = speed_on_coords }  or list [(x, y), ..]
 		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of
 		@param diagonal: wether the unit is able to move diagonally
+		@param make_target_walkable: wether we force the tiles of the target to be walkable,
+		       even if they acctually aren't (used e.g. when walking to a building)
 		@return: list of coords as tuples that are part of the best path
 		         (from first coord after source to first coord in destination)
 						 or None if no path is found
@@ -81,7 +86,6 @@ class FindPath(object):
 		assert(isinstance(destination, (Rect, Point, Building)))
 		assert(isinstance(path_nodes, (dict, list)))
 		assert(isinstance(blocked_coords, (dict, list)))
-		assert(isinstance(diagonal, (bool)))
 
 		# save args
 		self.source = source
@@ -89,6 +93,7 @@ class FindPath(object):
 		self.path_nodes = path_nodes
 		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
+		self.make_target_walkable = make_target_walkable
 
 		self.log.debug('searching path from %s to %s. blocked: %s', \
 									 source, destination, blocked_coords)
@@ -111,14 +116,31 @@ class FindPath(object):
 		if isinstance(self.destination, Building):
 			self.destination = self.destination.position
 
-		if self.destination in self.blocked_coords:
-			return False
-
 		if isinstance(self.path_nodes, list):
 			self.path_nodes = dict.fromkeys(self.path_nodes, 1.0)
 
 		if isinstance(self.blocked_coords, dict):
 			self.blocked_coords = self.blocked_coords.keys()
+
+		# check if target is blocked
+		target_is_blocked = True
+		for coord in self.destination.get_coordinates():
+			if not coord in self.blocked_coords:
+				target_is_blocked = False
+		if target_is_blocked:
+			self.log.debug("FindPath: target is blocked")
+			return False
+
+		# check if target is walkable
+		if not self.make_target_walkable:
+			target_is_walkable = False
+			for coord in self.destination.get_coordinates():
+				if coord in self.path_nodes:
+					target_is_walkable = True
+					break;
+			if not target_is_walkable:
+				self.log.debug("FindPath: target is not walkable")
+				return False
 
 		return True
 
@@ -127,6 +149,8 @@ class FindPath(object):
 		# nodes are the keys of the following dicts (x, y)
 		# the val of the keys are: [previous node, distance to this node from source,
 		# distance to destination, sum of the last two elements]
+		# we use this data structure out of speed consideration,
+		# using a class would admittedly be more readable
 
 		# values of distance is usually measured in speed
 		# since you can't calculate the speed to the destination,
@@ -148,6 +172,7 @@ class FindPath(object):
 		# (i.e. is in checked), a good path is found
 		dest_coords = self.destination.get_coordinates()
 
+		# loop until we have no more nodes to check
 		while to_check:
 
 			minimum = sys.maxint
@@ -227,9 +252,6 @@ class FindPath(object):
 					path.insert(0, previous_node)
 					previous_node = checked[previous_node][0]
 
-				if horizons.main.debug:
-					check_path(path, self.blocked_coords)
-
 				return path
 
 		else:
@@ -240,8 +262,9 @@ class AbstractPather(object):
 	"""Interface for pathfinding for use by Unit.
 	"""
 	log = logging.getLogger("world.pathfinding")
-	def __init__(self, unit, move_diagonal):
+	def __init__(self, unit, move_diagonal, make_target_walkable = True):
 		self.move_diagonal = move_diagonal
+		self.make_target_walkable = make_target_walkable
 
 		self._unit = weakref.ref(unit)
 
@@ -288,8 +311,9 @@ class AbstractPather(object):
 			if building is not None:
 				source = building
 
-		path = FindPath()(source, destination, self._get_path_nodes(), \
-											self._get_blocked_coords(), self.move_diagonal)
+		path = FindPath()(source, destination, self._get_path_nodes(),
+											self._get_blocked_coords(), self.move_diagonal, \
+											self.make_target_walkable)
 
 		if path is None:
 			return False
@@ -391,6 +415,7 @@ class ShipPather(AbstractPather):
 											 self.unit, self.unit.getId(), other)
 				return True
 			else:
+				# also check in super class
 				return super(ShipPather, self)._check_for_obstacles(point)
 
 class CollectorPather(AbstractPather):
@@ -415,7 +440,8 @@ class StorageCollectorPather(AbstractPather):
 class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)"""
 	def __init__(self, unit):
-		super(SoldierPather, self).__init__(unit, move_diagonal=True)
+		super(SoldierPather, self).__init__(unit, move_diagonal=True, \
+																				make_target_walkable=False)
 
 	def _get_path_nodes(self):
 		# island might change (e.g. when transported via ship), so reload every time
@@ -430,8 +456,11 @@ class SoldierPather(AbstractPather):
 		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
 		path_blocked = not island.is_walkable(self.path[self.cur])
 		if path_blocked:
+			# update list in island, so that new path calculations consider this obstacle
+			island.reset_tile_walkability(point)
 			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1], \
 										 self.unit, self.unit.getId());
 			return path_blocked
 		else:
+			# also check in super class
 			return super(SoldierPather, self)._check_for_obstacles(point)

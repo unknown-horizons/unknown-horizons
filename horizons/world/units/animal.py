@@ -74,8 +74,8 @@ class WildAnimal(Animal, Collector):
 	# see documentation of self.health
 	HEALTH_INIT_VALUE = 10
 	HEALTH_INCREASE_ON_FEEDING = 2
-	HEALTH_DECREASE_ON_NO_JOB = 2
-	HEALTH_LEVEL_TO_REPRODUCE = 30
+	HEALTH_DECREASE_ON_NO_JOB = 3
+	HEALTH_LEVEL_TO_REPRODUCE = 50
 
 	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)

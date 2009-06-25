@@ -175,7 +175,7 @@ class World(LivingObject):
 				for tile in island.ground_map.keys():
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
 						horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
-						if random.randint(0, 28) < 1: # add animal to evey nth tree
+						if random.randint(0, 40) < 1: # add animal to evey nth tree
 							if horizons.main.unstable_features:
 								horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
 				for building in island.buildings:
