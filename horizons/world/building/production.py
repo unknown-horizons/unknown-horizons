@@ -22,7 +22,10 @@
 import horizons.main
 
 from horizons.world.production import SecondaryProducer, PrimaryProducer
-from horizons.gui.tabwidget import TabWidget
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.gui.tabs.overviewtab import ProductionOverviewTab
+from horizons.gui.tabs.inventorytab import InventoryTab
+
 from horizons.util.point import Point
 from building import Building, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
@@ -78,7 +81,7 @@ class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
 class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 
 	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(4, object=self))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
 
 	@classmethod
 	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
