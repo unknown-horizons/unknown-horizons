@@ -19,9 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import pychan
-import horizons.main
+
 from tabinterface import TabInterface
-from horizons.i18n import load_xml_translated
 
 class BoatbuilderTab(TabInterface):
 

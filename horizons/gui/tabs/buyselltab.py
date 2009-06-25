@@ -23,6 +23,7 @@ import pychan
 import logging
 
 import horizons.main
+
 from horizons.i18n import load_xml_translated
 from tabinterface import TabInterface
 
@@ -109,15 +110,14 @@ class BuySellTab(TabInterface):
 			if res_id != 0:
 				self.add_buy_to_settlement(res_id, value, slot.id)
 
+		button = slot.findChild(name="button")
 		if res_id == 0:
 			icon = "content/gui/images/icons/hud/build/dummy_btn.png"
-			button = slot.findChild(name="button")
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			slot.findChild(name="amount").text = u""
 			slot.res = None
 			slider.capture(None)
 		else:
-			button = slot.findChild(name="button")
 			button.up_image, button.down_image, = (horizons.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
 			button.hover_image = horizons.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores

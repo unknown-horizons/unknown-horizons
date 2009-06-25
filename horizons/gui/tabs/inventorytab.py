@@ -21,6 +21,7 @@
 
 import pychan
 import horizons.main
+
 from tabinterface import TabInterface
 from horizons.gui.tradewidget import TradeWidget
 

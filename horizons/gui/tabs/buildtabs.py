@@ -18,12 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import weakref
-import pychan
-import horizons.main
+
 from tabinterface import TabInterface
-from horizons.i18n import load_xml_translated
-from horizons.gui.tradewidget import TradeWidget
 
 class BuildTab(TabInterface):
 	def __init__(self, tabindex = 0, events = {}):

@@ -73,38 +73,38 @@ class TabInterface(object):
 		"""This function is called by the TabWidget to redraw the widget."""
 		pass
 
-	def get_x(self):
+	def _get_x(self):
 		"""Returs the widget's x position"""
 		return self.widget.position[0]
 
-	def set_x(self, value):
+	def __set_x(self, value):
 		"""Sets the widget's x position"""
 		self.widget.position = (value, self.widget.position[1])
 
 	# Shortcut to set and retrieve the widget's current x position.
-	x_pos = property(get_x, set_x)
+	x_pos = property(_get_x, __set_x)
 
-	def get_y(self):
+	def _get_y(self):
 		"""Returns the widget's y position"""
 		return self.widget.position[1]
 
-	def set_y(self, value):
+	def _set_y(self, value):
 		"""Sets the widget's y position"""
 		self.widget.position = (self.widget.position[0], value)
 
 	# Shortcut to set and retrieve the widget's current y position.
-	y_pos = property(get_y, set_y)
+	y_pos = property(_get_y, _set_y)
 
-	def get_position(self):
+	def _get_position(self):
 		"""Returns the widget's position as"""
 		return self.widget.position
 
-	def set_position(self, value):
+	def _set_position(self, value):
 		"""Sets the widgets position"""
 		self.widget.position = value
 
 	# Shortcut to set and retrieve the widget's current y position.
-	position = property(get_position, set_position)
+	position = property(_get_position, _set_position)
 
 	def __del__(self):
 		"""Do cleanup work here."""
