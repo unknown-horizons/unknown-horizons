@@ -23,9 +23,7 @@ import horizons.main
 
 from horizons.world.provider import Provider
 from horizons.world.consumer import Consumer
-from horizons.gui.tabs.tabwidget import TabWidget
-from horizons.gui.tabs.overviewtab import BranchOfficeOverviewTab
-from horizons.gui.tabs.buyselltab import BuySellTab
+from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, InventoryTab
 from horizons.util import Point, WorldObject
 from building import Building, Selectable
 from buildable import BuildableSingle
@@ -66,7 +64,6 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def show_menu(self):
-		from horizons.gui.tabs.inventorytab import InventoryTab
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [BranchOfficeOverviewTab(self), InventoryTab(self), BuySellTab(self.settlement)]))
 
 	def deselect(self):

@@ -23,8 +23,7 @@ from random import randint
 
 import horizons.main
 
-from horizons.gui.tabs.tabwidget import TabWidget
-from horizons.gui.tabs.overviewtab import OverviewTab
+from horizons.gui.tabs import TabWidget, OverviewTab
 from horizons.util import WeakList
 from horizons.world.abstractconsumer import AbstractConsumer
 from building import Building, Selectable
@@ -33,7 +32,7 @@ from buildable import BuildableSingle
 class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
-		
+
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
 		self.__init()

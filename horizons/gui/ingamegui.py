@@ -23,13 +23,12 @@
 import horizons.main
 
 from horizons.i18n import load_xml_translated
-from horizons.util.living import livingProperty, LivingObject
+from horizons.util import livingProperty, LivingObject
 from horizons.world.settlement import Settlement
 from buildingtool import BuildingTool
 from selectiontool import SelectionTool
 from messagewidget import MessageWidget
-from horizons.gui.tabs.tabwidget import TabWidget
-from horizons.gui.tabs.buildtabs import BuildTab
+from horizons.gui.tabs import TabWidget, BuildTab
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""

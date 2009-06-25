@@ -239,14 +239,16 @@ class World(LivingObject):
 				return i
 		return None
 
-	def get_branch_offices(self):
+	def get_branch_offices(self, position=None, radius=None):
 		"""Returns all branch offices on the map."""
 		branchoffices = []
 		for island in horizons.main.session.world.islands:
 			for settlement in island.settlements:
 				for building in settlement.buildings:
 					if isinstance(building, horizons.world.building.storages.BranchOffice):
-						branchoffices.append(building)
+						if radius is None or position is None or \
+						   building.position.distance(position) <= radius:
+							branchoffices.append(building)
 		return branchoffices
 
 	def save(self, db):

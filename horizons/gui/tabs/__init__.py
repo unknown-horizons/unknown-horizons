@@ -18,3 +18,10 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+from inventorytab import InventoryTab, ShipInventoryTab
+from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab
+from buyselltab import BuySellTab
+from buildtabs import BuildTab
+from tabwidget import TabWidget
+from boatbuildertab import BoatbuilderTab

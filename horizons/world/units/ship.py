@@ -24,9 +24,7 @@ import fife
 
 import horizons.main
 
-from horizons.gui.tabs.tabwidget import TabWidget
-from horizons.gui.tabs.overviewtab import ShipOverviewTab
-from horizons.gui.tabs.inventorytab import ShipInventoryTab
+from horizons.gui.tabs import TabWidget, ShipInventoryTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding import ShipPather
 from horizons.util import Point

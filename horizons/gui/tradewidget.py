@@ -21,7 +21,6 @@
 import horizons.main
 
 from horizons.gui.widgets.inventory import ImageFillStatusButton
-from horizons.world.building.storages import BranchOffice
 from horizons.i18n import load_xml_translated
 
 class TradeWidget(object):
@@ -105,10 +104,9 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		for island in horizons.main.session.world.islands:
-			for building in island.buildings:
-				if isinstance(building, BranchOffice) and building.position.distance(self.main_instance.position) <= self.radius:
-					partners.append(building)
+		branch_offices = horizons.main.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius)
+		if branch_offices is not None:
+			partners.extend(branch_offices)
 		#TODO: Add ships
 		return partners
 

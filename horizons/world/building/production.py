@@ -22,10 +22,7 @@
 import horizons.main
 
 from horizons.world.production import SecondaryProducer, PrimaryProducer
-from horizons.gui.tabs.tabwidget import TabWidget
-from horizons.gui.tabs.overviewtab import ProductionOverviewTab
-from horizons.gui.tabs.inventorytab import InventoryTab
-
+from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util.point import Point
 from building import Building, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle

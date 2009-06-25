@@ -24,9 +24,7 @@ import horizons.main
 from provider import Provider
 from consumer import Consumer
 from building.building import Building
-from horizons.gui.tabs.tabwidget import TabWidget
-from horizons.gui.tabs.overviewtab import ProductionOverviewTab
-from horizons.gui.tabs.inventorytab import InventoryTab
+from horizons.gui.tabs import TabWidget, ProductionOverviewTab, InventoryTab
 
 
 class ProductionLine(object):

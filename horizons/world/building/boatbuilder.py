@@ -22,12 +22,8 @@
 from building import Building, Selectable
 from buildable import BuildableSingle
 from horizons.world.unitproducer import UnitProducer
-from horizons.world.consumer import Consumer
-from horizons.util.point import Point
-from horizons.gui.tabs.overviewtab import ProductionOverviewTab
-from horizons.gui.tabs.inventorytab import InventoryTab
-from horizons.gui.tabs.boatbuildertab import BoatbuilderTab
-from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.util import Point
+from horizons.gui.tabs import ProductionOverviewTab, InventoryTab, BoatbuilderTab, TabWidget
 import horizons.main
 
 class BoatBuilder(Selectable, BuildableSingle, UnitProducer, Building):
