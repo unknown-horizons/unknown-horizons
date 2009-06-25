@@ -240,7 +240,12 @@ class World(LivingObject):
 		return None
 
 	def get_branch_offices(self, position=None, radius=None):
-		"""Returns all branch offices on the map."""
+		"""Returns all branch offices on the map. Optionally only those in range
+		arround the specified position.
+		@param position: Point or Rect instance.
+		@param radius: int radius to use.
+		@return: List of branch offices.
+		"""
 		branchoffices = []
 		for island in horizons.main.session.world.islands:
 			for settlement in island.settlements:
