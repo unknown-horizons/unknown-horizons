@@ -128,7 +128,11 @@ class Rect(object):
 	def __eq__(self, other):
 		if isinstance(other, Rect):
 			return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
-		return False
+		else:
+			return False
+
+	def __ne__(self, other):
+		return not self.__eq__(other)
 
 	def __iter__(self):
 		for x in xrange(self.left, self.right+1):

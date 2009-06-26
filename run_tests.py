@@ -29,17 +29,21 @@ import unittest
 
 if __name__ == '__main__':
 
-	print 'No tests available.'
-	sys.exit(0)
-
 	# the usual setup:
-	run_uh.find_FIFE()
+	try:
+		import fife
+	except ImportError:
+		run_uh.debug = False
+		run_uh.find_FIFE()
+
+
 	sys.path.append('horizons/ext')
-	import game.main
 
 	import gettext
-
 	gettext.install("unknownhorizons", "po", unicode=1)
+
+	import horizons.main
+
 
 	loader = unittest.TestLoader()
 	result = unittest.TestResult()
@@ -53,6 +57,7 @@ if __name__ == '__main__':
 	# this test isn't maintained any more:
 	# suite.addTest(loader.loadTestsFromModule(pathfinding))
 
+	suite.addTest(loader.loadTestsFromModule(shapes))
 
 
 	suite.run(result)

@@ -23,6 +23,8 @@
 from point import Point
 
 class Circle(object):
+	"""Class for the shape of a circle
+	You can access center and radius of the circle as public members."""
 	def __init__(self, center, radius):
 		assert isinstance(center, Point)
 		self.center = center
@@ -30,10 +32,38 @@ class Circle(object):
 
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the circle"""
-		return [ (x, y) for \
-						 x in range(self.center.x-self.radius, self.center.x+self.radius+1) for \
-						 y in range(self.center.y-self.radius, self.center.y+self.radius+1) if \
-						 self.center.distance((x, y)) <= self.radius ]
+		coords = []
+		for i in self:
+			coords.append(i)
+		return coords
+
+	def contains(self, point):
+		assert isinstance(point, Point)
+		if point.distance(self.center) <= self.radius:
+			return True
+		else:
+			return False
+
+	def __str__(self):
+		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
+
+	def __eq__(self, other):
+		assert isinstance(other, Circle)
+		if self.center == other.center and \
+				self.radius == other.radius:
+			return True
+		else:
+			return False
+
+	def __ne__(self, other):
+		return not self.__eq__(other)
+
+	def __iter__(self):
+		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
+			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
+				if self.center.distance((x, y)) <= self.radius:
+					yield (x, y)
+
 
 from encoder import register_classes
 register_classes(Circle)
