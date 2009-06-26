@@ -177,7 +177,6 @@ class BuildingTool(NavigationTool):
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.startPoint != point:
 			self.startPoint = point
-			self.preview_build(point, point)
 		self._check_update_preview(point)
 		evt.consume()
 
@@ -242,11 +241,11 @@ class BuildingTool(NavigationTool):
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
 
-	def _check_update_preview(self, point):
-		if self.endPoint != point:
-			self.endPoint = point
-			self.preview_build(self.startPoint, point)
-			self.endPoint = None
+	def _check_update_preview(self, endpoint):
+		"""Used internally if the endpoint changes"""
+		if self.endPoint != endpoint:
+			self.endPoint = endpoint
+			self.update_preview()
 
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
@@ -267,6 +266,7 @@ class BuildingTool(NavigationTool):
 					self.last_change_listener.addChangeListener(self.highlight_ship_radius)
 
 	def update_preview(self):
+		"""Used as callback method"""
 		if self.startPoint is not None:
 			self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
 
