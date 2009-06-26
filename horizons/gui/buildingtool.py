@@ -178,6 +178,7 @@ class BuildingTool(NavigationTool):
 		if self.startPoint != point:
 			self.startPoint = point
 			self.preview_build(point, point)
+		self._check_update_preview(point)
 		evt.consume()
 
 	def mousePressed(self, evt):
@@ -189,12 +190,6 @@ class BuildingTool(NavigationTool):
 			self.on_escape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			pass
-			#mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			#point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
-			#if self.startPoint != point:
-			#	self.startPoint = point
-			#	self.preview_build(point, point)
-			#	self.startPoint = None
 		else:
 			super(BuildingTool, self).mousePressed(evt)
 			return
@@ -205,10 +200,8 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).mouseDragged(evt)
 		mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
-		if self.endPoint != point and self.startPoint is not None:
-			# Check if startPoint is set because it might be null if the user started dragging on a pychan widget
-			self.endPoint = point
-			self.preview_build(self.startPoint, point)
+		if self.startPoint is not None:
+			self._check_update_preview(point)
 		evt.consume()
 
 	def mouseReleased(self, evt):
@@ -218,10 +211,8 @@ class BuildingTool(NavigationTool):
 		elif fife.MouseEvent.LEFT == evt.getButton():
 			mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
-			if self.endPoint != point:
-				self.endPoint = point
-				self.preview_build(self.startPoint, point)
-				self.endPoint = None
+
+			self._check_update_preview(point)
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
 			# used to check if a building was built with this click
@@ -251,6 +242,12 @@ class BuildingTool(NavigationTool):
 		elif fife.MouseEvent.RIGHT != evt.getButton():
 			super(BuildingTool, self).mouseReleased(evt)
 
+	def _check_update_preview(self, point):
+		if self.endPoint != point:
+			self.endPoint = point
+			self.preview_build(self.startPoint, point)
+			self.endPoint = None
+
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
 		if self.last_change_listener is not None:
@@ -258,8 +255,6 @@ class BuildingTool(NavigationTool):
 				self.last_change_listener.removeChangeListener(self.update_preview)
 			if self.last_change_listener.hasChangeListener(self.highlight_ship_radius):
 				self.last_change_listener.removeChangeListener(self.highlight_ship_radius)
-
-
 		self.last_change_listener = None
 
 	def _add_listeners(self, instance):
