@@ -49,7 +49,7 @@ def set_translations():
 \ttext_translations = {
 '''
 
-footer = '''\n\t}'''
+footer = '''\n\t}\n'''
 
 import glob
 import xml.dom.minidom
