@@ -85,6 +85,8 @@ def set_translations():
 			"minutes_label"               : _("minutes"),
 			"cancelButton"                : _("Cancel"),
 			"okButton"                    : _("Ok"),
+			"screen_fullscreen"           : _("Use the full screen mode"),
+			"sound_enable_opt"            : _("Enable sound"),
 			"settings_window"             : _("Settings")},
 		"ingame_save.xml" : {
 			"enter_filename_label"        : _("Enter filename:"),
@@ -176,10 +178,12 @@ def set_translations():
 		"graphics.xml" : {
 			"screen_resolution_label"     : _("Screen resolution:"),
 			"use_renderer_label"          : _("Used renderer:"),
-			"color_depth_label"           : _("Color depth:")},
+			"color_depth_label"           : _("Color depth:"),
+			"screen_fullscreen"           : _("Use the full screen mode")},
 		"audio.xml" : {
 			"music_volume_label"          : _("Music volume:"),
-			"effect_volume_label"         : _("Effects volume:")},
+			"effect_volume_label"         : _("Effects volume:"),
+			"sound_enable_opt"            : _("Enable sound")},
 		"work_building_tab1.xml" : {
 			"StockLabel"                  : _("stock")},
 		"work_building_tab4.xml" : {
@@ -203,13 +207,12 @@ def set_translations():
 		"work_building_tab2.xml" : {
 			"CombatLabel"                 : _("combat")},
 		"tab_stock.xml" : {
-			"headline"                    : _("Inventory of")},
+			"headline"                    : _("Inventory")},
 		"tab_branch_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
 			"health_label"                : _("Health:"),
-			"running_cost_label"          : _("Running Costs:"),
-			"buy_sell_resource_label"     : _("Buy/Sell Resources:")},
+			"running_cost_label"          : _("Running Costs:")},
 		"tab_overview_ship.xml" : {
 			"health_label"                : _("Health:")},
 		"boatbuilder.xml" : {
