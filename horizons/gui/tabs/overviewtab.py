@@ -31,6 +31,10 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()
+		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
+		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
+		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -57,6 +61,10 @@ class BranchOfficeOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_branch_overview.xml',
 			instance = instance
 		)
+		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
+		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
+		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 
 class ShipOverviewTab(OverviewTab):
 
