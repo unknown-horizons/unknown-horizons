@@ -26,7 +26,7 @@ import horizons.main
 
 from horizons.gui.tabs import TabWidget, ShipInventoryTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
-from horizons.world.pathfinding import ShipPather
+from horizons.world.pathfinding.pather import ShipPather
 from horizons.util import Point
 from unit import Unit
 

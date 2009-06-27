@@ -27,7 +27,7 @@ import horizons.main
 
 from horizons.world.production import SecondaryProducer, Provider
 from horizons.util import Point, Circle
-from horizons.world.pathfinding import SoldierPather, CollectorPather
+from horizons.world.pathfinding.pather import SoldierPather, CollectorPather
 from collectors import Collector, BuildingCollector
 
 class Animal(SecondaryProducer):

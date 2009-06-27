@@ -85,14 +85,14 @@ class Island(WorldObject):
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
 
-		#self.a = False
 		# generate list of walkable tiles
+		# we keep this up to date, so that path finding can use it and we don't have
+		# to calculate it every time (rather expensive!).
 		self.walkable_tiles = []
 		for i in self.get_coordinates():
 			if self.is_walkable(i, False):
 				self.walkable_tiles.append(i)
 
-		#self.a = True
 		self.settlements = [] # List of settlements
 
 		self.path_nodes = {} # Paths (roads) are saved here for usage by the pather.
@@ -309,7 +309,6 @@ class Island(WorldObject):
 		"""
 		if check_coord_is_on_island:
 			if not coord in self.get_coordinates():
-				#if self.a:self.log.debug("is_walkable not cause not on island")
 				return False
 
 		tile_object = self.ground_map[coord]()
@@ -317,12 +316,9 @@ class Island(WorldObject):
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
-			#if self.a: self.log.debug("is walkable not because not constructible")
 			return False
 		if tile_object.blocked and not tile_object.object.is_part_of_nature():
-			#if self.a: self.log.debug("is walkable not because blocked by %s", tile_object.object)
 			return False
-		#if self.a:self.log.debug("is_walkable yes")
 		return True
 
 	def reset_tile_walkability(self, coord):

@@ -28,7 +28,7 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import WorldObject
-from horizons.world.pathfinding import CollectorPather
+from horizons.world.pathfinding.pather import CollectorPather
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 

@@ -24,7 +24,7 @@ import weakref
 import horizons.main
 
 from horizons.util import WorldObject
-from horizons.world.pathfinding import StorageCollectorPather
+from horizons.world.pathfinding.pather import StorageCollectorPather
 from horizons.world.production import PrimaryProducer
 
 from collector import Collector
