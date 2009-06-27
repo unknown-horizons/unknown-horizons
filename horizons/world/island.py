@@ -27,6 +27,7 @@ import horizons.main
 from horizons.dbreader import DbReader
 from horizons.util import WorldObject, Point, Rect, Circle
 from settlement import Settlement
+from horizons.world.pathfinding.pathnodes import IslandPathNodes
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -76,26 +77,20 @@ class Island(WorldObject):
 		self.buildings = []
 		self.wild_animals = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
-			ground = horizons.main.session.entities.grounds[ground_id](self.origin.x + rel_x, self.origin.y + rel_y)
+			ground = horizons.main.session.entities.grounds[ground_id]( \
+				self.origin.x + rel_x, self.origin.y + rel_y)
 			# Each ground has a set of attributes:
 			ground.settlement = None
 			ground.blocked = False
 			ground.object = None
-			# These are important for pathfinding and building to check if the ground tile is blocked in any way.
+			# These are important for pathfinding and building to check if the ground tile
+			# is blocked in any way.
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
 
-		# generate list of walkable tiles
-		# we keep this up to date, so that path finding can use it and we don't have
-		# to calculate it every time (rather expensive!).
-		self.walkable_tiles = []
-		for i in self.get_coordinates():
-			if self.is_walkable(i, False):
-				self.walkable_tiles.append(i)
-
 		self.settlements = [] # List of settlements
 
-		self.path_nodes = {} # Paths (roads) are saved here for usage by the pather.
+		self.path_nodes = IslandPathNodes(self)
 		"""TUTORIAL:
 		To continue hacking, you should now take of to the real fun stuff and check out horizons/world/building/__init__.py.
 		"""
@@ -253,7 +248,7 @@ class Island(WorldObject):
 				tile = self.get_tile(Point(xx, yy))
 				tile.blocked = True # Set tile blocked
 				tile.object = building # Set tile's object to the building
-				self.reset_tile_walkability((xx, yy))
+				self.path_nodes.reset_tile_walkability((xx, yy))
 		self.buildings.append(building)
 		if building.settlement is not None:
 			building.settlement.buildings.append(building)
@@ -270,7 +265,7 @@ class Island(WorldObject):
 			tile = self.get_tile(point)
 			tile.blocked = False
 			tile.object = None
-			self.reset_tile_walkability(point.to_tuple())
+			self.path_nodes.reset_tile_walkability(point.to_tuple())
 
 		if building.settlement is not None:
 			building.settlement.buildings.remove(building)
@@ -279,18 +274,6 @@ class Island(WorldObject):
 		# Remove this building from the buildings list
 		self.buildings.remove(building)
 		assert building not in self.buildings
-
-	def registerPath(self, path):
-		"""Tell the island that there is a new street, where street-walkers can move on"""
-		origin = path.position.origin
-		# TODO: currently all paths have speed 1, since we don't have a real velocity-system yet.
-		#       this value here is only used for pathfinding.
-		self.path_nodes[ (origin.x, origin.y) ] = 1
-
-	def unregisterPath(self, path):
-		"""Opposite of registerPath"""
-		origin = path.position.origin
-		del self.path_nodes[ (origin.x, origin.y) ]
 
 	def get_surrounding_tiles(self, point, radius = 1):
 		"""Returns tiles arround point with specified radius
@@ -302,37 +285,6 @@ class Island(WorldObject):
 				tiles.append(tile)
 		return tiles
 
-	def is_walkable(self, coord, check_coord_is_on_island = True):
-		"""Check if a unit make walk on the tile specified by coord
-		@param coord: tuple: (x, y)
-		@param check_coord_is_on_island: bool, wether to check if coord is on this island
-		"""
-		if check_coord_is_on_island:
-			if not coord in self.get_coordinates():
-				return False
-
-		tile_object = self.ground_map[coord]()
-		# if it's not constructible, it is usually also not walkable
-		# NOTE: this isn't really a clean implementation, but it works for now
-		# it eliminates e.g. water and beaches, that shouldn't be walked on
-		if not "constructible" in tile_object.classes:
-			return False
-		if tile_object.blocked and not tile_object.object.is_part_of_nature():
-			return False
-		return True
-
-	def reset_tile_walkability(self, coord):
-		"""Reset the status of the walkability of a coordinate in the list of walkable tiles
-		of the island. Does not change the tile itself.
-		You need to call this when a tile changes, e.g. when a building is built on it. this
-		is currently done in add/remove_building
-		@param coord: tuple: (x, y)"""
-		acctually_walkable = self.is_walkable(coord)
-		self.log.debug("reset tile walkability on %s %s to %s", \
-									 coord[0], coord[1], acctually_walkable)
-		in_list = (coord in self.walkable_tiles)
-		if not in_list and acctually_walkable:
-			self.walkable_tiles.append(coord)
-		if in_list and not acctually_walkable:
-			self.walkable_tiles.remove(coord)
-
+	def __iter__(self):
+		for i in self.get_coordinates():
+			yield i

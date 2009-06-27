@@ -203,17 +203,17 @@ class CollectorPather(AbstractPather):
 		super(CollectorPather, self).__init__(unit, move_diagonal=True)
 
 	def _get_path_nodes(self):
-			return self.unit.home_building().radius_coords
+			return self.unit.home_building().path_nodes.nodes
 
-class StorageCollectorPather(AbstractPather):
+class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
 	def __init__(self, unit):
-		super(StorageCollectorPather, self).__init__(unit, move_diagonal=False)
+		super(RoadPather, self).__init__(unit, move_diagonal=False)
 		island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
 		self.island = weakref.ref(island)
 
 	def _get_path_nodes(self):
-		return self.island().path_nodes
+		return self.island().path_nodes.road_nodes
 
 class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)"""
@@ -224,7 +224,7 @@ class SoldierPather(AbstractPather):
 	def _get_path_nodes(self):
 		# island might change (e.g. when transported via ship), so reload every time
 		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
-		return island.get_walkable_coordinates()
+		return island.path_nodes.nodes
 
 	def _get_blocked_coords(self):
 		# TODO
@@ -232,10 +232,10 @@ class SoldierPather(AbstractPather):
 
 	def _check_for_obstacles(self, point):
 		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
-		path_blocked = not island.is_walkable(self.path[self.cur])
+		path_blocked = not island.path_nodes.is_walkable(self.path[self.cur])
 		if path_blocked:
 			# update list in island, so that new path calculations consider this obstacle
-			island.reset_tile_walkability(point)
+			island.path_nodes.reset_tile_walkability(point)
 			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1], \
 										 self.unit, self.unit.getId());
 			return path_blocked

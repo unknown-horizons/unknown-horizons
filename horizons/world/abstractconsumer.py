@@ -22,7 +22,8 @@
 import horizons.main
 
 from horizons.util import WeakList
-from storageholder import StorageHolder
+from horizons.world.storageholder import StorageHolder
+from horizons.world.pathfinding.pathnodes import ConsumerBuildingPathNodes
 
 class AbstractConsumer(StorageHolder):
 	"""The AbstractConsumer represents things that consume resources, as buildings and settlers.
@@ -40,7 +41,6 @@ class AbstractConsumer(StorageHolder):
 		self.__init()
 		self.create_collector()
 
-
 	def __init(self):
 		"""Part of initiation that __init__() and load() share"""
 		self._resources = {} # dict of productionline ids as keys and resources as values
@@ -48,10 +48,10 @@ class AbstractConsumer(StorageHolder):
 		# list of local collectors that holds the collectors that belong to this building.
 		self.local_collectors = []
 
-		# In case the class derived from this class is a Building, set it's radius
+		# In case the class derived from this class is a Building, set it's path_nodes
 		from horizons.world.building.building import Building
 		if isinstance(self, Building):
-			self.radius_coords = self.position.get_radius_coordinates(self.radius)
+			self.path_nodes = ConsumerBuildingPathNodes(self)
 
 		self.__collectors = WeakList()
 

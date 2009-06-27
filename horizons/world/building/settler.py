@@ -58,9 +58,6 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
 		self._resources = {0: []} #ugly work arround to work with current consumer implementation
 
-		if isinstance(self, Building):
-			self.radius_coords = self.position.get_radius_coordinates(self.radius)
-
 		self._AbstractConsumer__collectors = WeakList()
 		for (res,) in horizons.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
 			#print "Settler debug, res:", res

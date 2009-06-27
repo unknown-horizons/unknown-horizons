@@ -72,5 +72,10 @@ class Point(object):
 			except TypeError:
 				return False
 
+	def __iter__(self):
+		"""For interface-sharing with Rect"""
+		yield self
+
+
 from horizons.util.encoder import register_classes
 register_classes(Point)

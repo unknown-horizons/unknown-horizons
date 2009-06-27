@@ -24,7 +24,7 @@ import weakref
 import horizons.main
 
 from horizons.util import WorldObject
-from horizons.world.pathfinding.pather import StorageCollectorPather
+from horizons.world.pathfinding.pather import RoadPather
 from horizons.world.production import PrimaryProducer
 
 from collector import Collector
@@ -182,7 +182,7 @@ class StorageCollector(BuildingCollector):
 		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
 
 	def create_pather(self):
-		return StorageCollectorPather(self)
+		return RoadPather(self)
 
 class FieldCollector(BuildingCollector):
 	""" Simular to the BuildingCollector but used on farms for example.

@@ -37,18 +37,20 @@ class Path(Building, BuildableLine):
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculate_orientation()
+		self.__init()
+
+	def __init(self):
 		self.recalculate_orientation()
-		self.island().registerPath(self)
+		self.island().path_nodes.register_road(self)
 
 	def load(self, db, worldid):
 		super(Path, self).load(db, worldid)
-		self.recalculate_orientation()
-		self.island().registerPath(self)
+		self.__init()
 
 	def remove(self):
 		super(Path, self).remove()
 		origin = self.position.origin
-		self.island().unregisterPath(self)
+		self.island().path_nodes.unregister_road(self)
 		for tile in self.island().get_surrounding_tiles(origin):
 			if tile is not None and isinstance(tile.object, Path):
 				tile.object.recalculate_orientation()
