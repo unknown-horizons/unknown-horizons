@@ -36,9 +36,9 @@
 			<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="163,30" />
-			
-			<ImageButton name="store-1" position="0,15" up_image="content/gui/images/icons/hud/build/storagetent.png" hover_image="content/gui/images/icons/hud/build/storagetent_h.png" down_image="content/gui/images/icons/hud/build/storagetent_h.png" text="" />
-			<ImageButton name="main_square-1" position="45,15" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" text="" />
+
+			<ImageButton name="main_square-1" position="0,15" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" text="" />
+			<ImageButton name="store-1" position="45,15" up_image="content/gui/images/icons/hud/build/storagetent.png" hover_image="content/gui/images/icons/hud/build/storagetent_h.png" down_image="content/gui/images/icons/hud/build/storagetent_h.png" text="" />
 			<ImageButton name="church-1" position="109,30" up_image="content/gui/images/icons/hud/build/church_i.png" hover_image="content/gui/images/icons/hud/build/church_i_h.png" down_image="ccontent/gui/images/icons/hud/build/church_i.png" text="" />
 			<ImageButton name="lighthouse-1" position="155,15" up_image="content/gui/images/icons/hud/build/signalfire.png" hover_image="content/gui/images/icons/hud/build/signalfire_h.png" down_image="content/gui/images/icons/hud/build/signalfire_h.png" text="" />
 		</Container>
@@ -54,12 +54,12 @@
 			<Icon image="content/gui/images/background/build_button_bg.png" position="54,85" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="108,85" />
 				
-			<ImageButton name="hunter-1" position="0,15" up_image="content/gui/images/icons/hud/build/hunter.png" hover_image="content/gui/images/icons/hud/build/hunter_h.png" down_image="content/gui/images/icons/hud/build/hunter_h.png" text="" />
-			<ImageButton name="weaver-1" position="53,31" up_image="content/gui/images/icons/hud/inventory/cloth.png" hover_image="content/gui/images/icons/hud/inventory/cloth.png" down_image="content/gui/images/icons/hud/inventory/cloth.png" text="" />
-			<ImageButton name="lumberjack-1" position="110,30" up_image="content/gui/images/icons/hud/inventory/boards.png" hover_image="content/gui/images/icons/hud/inventory/boards.png" down_image="content/gui/images/icons/hud/inventory/boards.png" text="" />		
-			<ImageButton name="herder-1" position="163,32" up_image="content/gui/images/icons/hud/inventory/wool.png" hover_image="content/gui/images/icons/hud/inventory/wool.png" down_image="content/gui/images/icons/hud/inventory/wool.png" text="" />
-			<ImageButton name="fisher-1" position="0,65" up_image="content/gui/images/icons/hud/build/fisherman.png" hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" text="" />
-			<ImageButton name="boat_builder-1" position="55,65" up_image="content/gui/images/icons/hud/build/boat_builder.png" hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" text="" />		
+			<ImageButton name="lumberjack-1" position="0,30" up_image="content/gui/images/icons/hud/inventory/boards.png" hover_image="content/gui/images/icons/hud/inventory/boards.png" down_image="content/gui/images/icons/hud/inventory/boards.png" text="" />	
+			<ImageButton name="herder-1" position="52,31" up_image="content/gui/images/icons/hud/inventory/wool.png" hover_image="content/gui/images/icons/hud/inventory/wool.png" down_image="content/gui/images/icons/hud/inventory/wool.png" text="" />
+			<ImageButton name="weaver-1" position="107,30" up_image="content/gui/images/icons/hud/inventory/cloth.png" hover_image="content/gui/images/icons/hud/inventory/cloth.png" down_image="content/gui/images/icons/hud/inventory/cloth.png" text="" />
+			<ImageButton name="hunter-1" position="157,15" up_image="content/gui/images/icons/hud/build/hunter.png" hover_image="content/gui/images/icons/hud/build/hunter_h.png" down_image="content/gui/images/icons/hud/build/hunter_h.png" text="" />
+			<ImageButton name="fisher-1" position="0,69" up_image="content/gui/images/icons/hud/build/fisherman.png" hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" text="" />
+			<ImageButton name="boat_builder-1" position="55,69" up_image="content/gui/images/icons/hud/build/boat_builder.png" hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" text="" />		
 			<ImageButton name="tree-1" position="109,87" up_image="content/gui/images/icons/hud/build/tree.png" hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" text="" /> 
 		</Container>
  

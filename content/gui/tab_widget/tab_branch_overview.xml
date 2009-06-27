@@ -17,13 +17,5 @@
 			<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />
 			<Label position="0,50" name="running_cost_label" text="Running Costs:" /><Label name="running_costs" position="85,50" text=""/>
 		</Container>
-		<Icon image="content/gui/images/background/hr.png" position="20,125" />
-
-		<Container size="240,200" position="20,150">
-			<HBox position="160,0">
-				<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
-			</HBox>
-
-		</Container>
 	</Container>
 </Container>
