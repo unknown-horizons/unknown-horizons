@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="260,150">
+<Container size="260,50">
 <!-- Top middle widget: Include coat of arms, city name and number of inhabitants -->
 	<Icon image="content/gui/images/background/city_name_bg.png" position="19,17" />
 
