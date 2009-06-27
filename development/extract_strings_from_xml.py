@@ -91,6 +91,7 @@ def content_from_file(filename):
 
     strings = content_from_element('Label', parsed) + \
         content_from_element('Button', parsed) + \
+        content_from_element('CheckBox', parsed) + \
         content_from_element('Window', parsed, 'title')
 
     if len(strings):
