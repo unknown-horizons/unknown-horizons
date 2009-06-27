@@ -42,6 +42,7 @@ class Building(AmbientSound, WorldObject):
 	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
 		self.__init(Point(x, y), rotation, owner, instance)
+		# TODO: Add island as parameter, it's not the buildings responsibility to find it's island
 		self.island = weakref.ref(horizons.main.session.world.get_island(x, y))
 		self.settlement = self.island().get_settlement(Point(x, y)) or \
 			self.island().add_settlement(self.position, self.radius, owner) if \
@@ -56,7 +57,7 @@ class Building(AmbientSound, WorldObject):
 		self._instance = self.getInstance(origin.x, origin.y, rotation = rotation) if instance is None else instance
 		self._instance.setId(str(self.getId()))
 
-		if self.running_costs != 0:
+		if self.running_costs != 0: # Get payout every 30 seconds
 			horizons.main.session.scheduler.add_new_object(self.get_payout, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1)
 
 		# play ambient sound, if available
@@ -65,11 +66,12 @@ class Building(AmbientSound, WorldObject):
 			self.play_ambient(soundfile, True)
 
 	def toggle_costs(self):
-			self.running_costs , self.running_costs_inactive = \
-					self.running_costs_inactive, self.running_costs
+		self.running_costs , self.running_costs_inactive = \
+			self.running_costs_inactive, self.running_costs
 
 	def get_payout(self):
-		"""gets the payout from the settlement in form of it's running costs"""
+		"""gets the payout from the settlement in form of it's running costs
+		1 = gold ressource id"""
 		self.settlement.owner.inventory.alter(1, -self.running_costs)
 
 	def act(self, action, facing_loc, repeating=False):
@@ -79,14 +81,6 @@ class Building(AmbientSound, WorldObject):
 		"""Removes the building"""
 		self.log.debug("BUILDING: REMOVE %s", self.getId())
 		self.island().remove_building(self)
-		horizons.main.session.ingame_gui.hide_menu()
-
-		for x in xrange(self.position.left, self.position.right + 1):
-			for y in xrange(self.position.top, self.position.bottom + 1):
-				point = Point(x, y)
-				tile = self.island().get_tile(point)
-				tile.blocked = False
-				tile.object = None
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		horizons.main.session.scheduler.rem_all_classinst_calls(self)
@@ -137,6 +131,7 @@ class Building(AmbientSound, WorldObject):
 		return self.part_of_nature
 
 	def get_buildings_in_range(self):
+		# TODO Think about moving this to the Settlement class
 		buildings = self.settlement.buildings
 		ret_building = []
 		for building in buildings:
@@ -210,7 +205,7 @@ class Selectable(object):
 		"""Runs neccesary steps to select the building."""
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
-			if tile.settlement == self.settlement and (max(self.position.left - tile.x, 0, tile.x - self.position.right) ** 2) + (max(self.position.top - tile.y, 0, tile.y - self.position.bottom) ** 2) <= self.radius ** 2 and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
+			if tile.settlement == self.settlement and self.position.distance(Point(tile.x, tile.y)) <= self.radius and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
 				horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None and True: #todo: only highlight buildings that produce something were interested in
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)

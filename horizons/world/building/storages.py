@@ -51,11 +51,10 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 
 	def create_collector(self):
 		horizons.main.session.entities.units[8](self)
-		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		#horizons.main.session.entities.units[2](self)
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
+		# TODO Think about if this should go somewhere else (island, world)
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
 			if tile.settlement == self.settlement and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):

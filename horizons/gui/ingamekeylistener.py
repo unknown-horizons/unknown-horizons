@@ -57,6 +57,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			horizons.main.session.view.renderer['GridRenderer'].setEnabled(not horizons.main.session.view.renderer['GridRenderer'].isEnabled())
 		elif keystr == 'x':
 			horizons.main.session.cursor = TearingTool()
+			horizons.main.session.ingame_gui.hide_menu()
 		elif keystr == 'd':
 			horizons.main.session.cursor.debug = True
 		elif keystr == '+':
