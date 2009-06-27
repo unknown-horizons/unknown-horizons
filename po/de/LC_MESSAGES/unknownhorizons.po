@@ -941,3 +941,9 @@ msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 
 #~ msgid "Reason: %s"
 #~ msgstr "Grund: %s"
+
+msgid "Use the full screen mode"
+msgstr ""
+
+msgid "Enable sound"
+msgstr ""

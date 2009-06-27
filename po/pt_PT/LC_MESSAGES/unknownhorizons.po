@@ -926,3 +926,9 @@ msgstr "Diverte-te a jogar, e se o fizeres, ajuda-nos a desenvolver!"
 
 #~ msgid "Slots"
 #~ msgstr "Vagas"
+
+msgid "Use the full screen mode"
+msgstr ""
+
+msgid "Enable sound"
+msgstr ""

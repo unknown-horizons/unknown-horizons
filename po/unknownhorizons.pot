@@ -748,3 +748,9 @@ msgstr ""
 msgid "Have fun playing, and if you do, help us developing!"
 msgstr ""
 
+msgid "Use the full screen mode"
+msgstr ""
+
+msgid "Enable sound"
+msgstr ""
+

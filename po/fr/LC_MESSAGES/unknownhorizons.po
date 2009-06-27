@@ -738,3 +738,9 @@ msgstr "Active l'enregistrement pour un module de log en particulier."
 #: run_uh.py:119
 msgid "Have fun playing, and if you do, help us developing!"
 msgstr "Amusez vous bien, et si vous le pouvez, aidez nous à développer ! "
+
+msgid "Use the full screen mode"
+msgstr ""
+
+msgid "Enable sound"
+msgstr ""
