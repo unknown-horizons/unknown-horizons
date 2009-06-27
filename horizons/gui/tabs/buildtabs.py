@@ -24,6 +24,7 @@ from tabinterface import TabInterface
 class BuildTab(TabInterface):
 	def __init__(self, tabindex = 0, events = {}):
 		super(BuildTab, self).__init__(widget = 'build_menu/hud_build_tab' + str(tabindex) + '.xml')
+		self.init_values()
 		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/level1_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/level1_a.png'
