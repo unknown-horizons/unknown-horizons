@@ -173,13 +173,6 @@ def set_translations():
 			"number_of_autosaves_label"   : _("Number of saved autosaves:"),
 			"number_of_quicksaves_label"  : _("Number of saved quicksaves:"),
 			"minutes_label"               : _("minutes")},
-		"settings.xml" : {
-			"settings_dialog_title"       : _("This is the Unknown Horizons settings dialog. Please make sure that you know, what you do."),
-			"showGeneral"                 : _("General"),
-			"showGraphic"                 : _("Graphic"),
-			"showAudio"                   : _("Audio"),
-			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok")},
 		"graphics.xml" : {
 			"screen_resolution_label"     : _("Screen resolution:"),
 			"use_renderer_label"          : _("Used renderer:"),
