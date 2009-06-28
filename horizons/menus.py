@@ -43,6 +43,7 @@ class Menus(object):
 		self.widgets['mainmenu'].stylize('menu')
 		self.widgets['quitgame'] = load_xml_translated('quitgame.xml')
 		self.widgets['credits'] = load_xml_translated('credits.xml')
+		self.widgets['credits'].stylize('menu_black')
 		self.widgets['settings'] = load_xml_translated('settings.xml')
 		self.widgets['requirerestart'] = load_xml_translated('changes_require_restart.xml')
 		self.widgets['popup_with_cancel'] = load_xml_translated('popupbox_with_cancel.xml')
