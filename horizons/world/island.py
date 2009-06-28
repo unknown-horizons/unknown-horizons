@@ -214,19 +214,8 @@ class Island(WorldObject):
 					continue
 				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
 					tile.settlement = settlement
-		#for tile in self.grounds: # Set settlement var for all tiles in the radius.
-		#	if tile.settlement == settlement:
-		#		continue
-			## TODO: make this readable
-			##       check if it's faster to calcuate the coords in radius and use
-			##       settlement.get_tile() on large maps
-			#if (max(position.left - tile.x, 0, tile.x - position.right) ** 2) + \
-			#   (max(position.top - tile.y, 0, tile.y - position.bottom) ** 2) <= radius ** 2:
-			#	if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
-			#		tile.settlement = settlement
 		for building in self.buildings: # Check if any buildings come into range, like unowned trees
-			if (max(position.left - building.position.center().x, 0, building.position.center().x - position.right) ** 2) + \
-			   (max(position.top - building.position.center().y, 0, building.position.center().y - position.bottom) ** 2) <= radius ** 2:
+			if position.distance(building.position) <= radius:
 				if building.settlement is None:
 					building.settlement = settlement
 					settlement.buildings.append(building)
@@ -242,13 +231,12 @@ class Island(WorldObject):
 			self.assign_settlement(building.position, building.radius, building.settlement)
 			break
 
-		x, y = building.position.left, building.position.top
-		for xx in xrange(x, x + building.size[0]):
-			for yy in xrange(y, y + building.size[1]):
-				tile = self.get_tile(Point(xx, yy))
-				tile.blocked = True # Set tile blocked
-				tile.object = building # Set tile's object to the building
-				self.path_nodes.reset_tile_walkability((xx, yy))
+		# Set all tiles in the buildings position(rect)
+		for point in building.position:
+			tile = self.get_tile(point)
+			tile.blocked = True # Set tile blocked
+			tile.object = building # Set tile's object to the building
+			self.path_nodes.reset_tile_walkability(point.to_tuple())
 		self.buildings.append(building)
 		if building.settlement is not None:
 			building.settlement.buildings.append(building)
@@ -276,14 +264,12 @@ class Island(WorldObject):
 		assert building not in self.buildings
 
 	def get_surrounding_tiles(self, point, radius = 1):
-		"""Returns tiles arround point with specified radius
+		"""Returns tiles arround point with specified radius.
 		@param point: instance of Point"""
-		tiles = []
 		for position in Circle(point, radius).get_coordinates():
 			tile = self.get_tile(Point(*position))
 			if tile is not None:
-				tiles.append(tile)
-		return tiles
+				yield tile
 
 	def __iter__(self):
 		for i in self.get_coordinates():
