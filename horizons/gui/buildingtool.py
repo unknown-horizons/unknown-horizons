@@ -261,9 +261,9 @@ class BuildingTool(NavigationTool):
 			self._remove_listeners()
 			self.last_change_listener = instance
 			if self.last_change_listener is not None:
-				self.last_change_listener.addChangeListener(self.update_preview)
 				if self.last_change_listener is self.ship:
 					self.last_change_listener.addChangeListener(self.highlight_ship_radius)
+				self.last_change_listener.addChangeListener(self.update_preview)
 
 	def update_preview(self):
 		"""Used as callback method"""

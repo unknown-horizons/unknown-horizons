@@ -52,10 +52,10 @@ class IslandPathNodes(PathNodes):
 		# generate list of walkable tiles
 		# we keep this up to date, so that path finding can use it and we don't have
 		# to calculate it every time (rather expensive!).
-		self.walkable_nodes = []
+		self.nodes = []
 		for i in self.island():
 			if self.is_walkable(i, False):
-				self.walkable_nodes.append(i)
+				self.nodes.append(i)
 
 		# nodes where a real road is built on.
 		self.road_nodes = {}
@@ -98,8 +98,8 @@ class IslandPathNodes(PathNodes):
 		acctually_walkable = self.is_walkable(coord)
 		self.log.debug("reset tile walkability on %s %s to %s", \
 									 coord[0], coord[1], acctually_walkable)
-		in_list = (coord in self.walkable_nodes)
+		in_list = (coord in self.nodes)
 		if not in_list and acctually_walkable:
-			self.walkable_nodes.append(coord)
+			self.nodes.append(coord)
 		if in_list and not acctually_walkable:
-			self.walkable_nodes.remove(coord)
+			self.nodes.remove(coord)
