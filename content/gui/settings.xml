@@ -10,51 +10,51 @@
 		<Container size="320,240" position="0,60" name="graphic_settings">
 			<Label text="GRAPHICS" position="12,0"/>
 			<Label name="screen_resolution_label" text="Screen resolution:" position="22,40"/>
-			<DropDown min_size="120,0" name="screen_resolution" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="150,40" />
+			<DropDown min_size="120,0" name="screen_resolution" position="150,40" />
 			<Label name="color_depth_label" text="Color depth:" position="22,80"/>
-			<DropDown min_size="120,0" name="screen_bpp" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="150,80"/>
+			<DropDown min_size="120,0" name="screen_bpp" position="150,80"/>
 			<Label name="use_renderer_label" text="Used renderer:" position="22,120"/>
-			<DropDown min_size="120,0" name="screen_renderer" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="150,120"/>
-			<CheckBox min_size="160,32" name="screen_fullscreen" text="Full screen" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="22,160"/>
+			<DropDown min_size="120,0" name="screen_renderer" position="150,120"/>
+			<CheckBox min_size="160,32" name="screen_fullscreen" text="Full screen" position="22,160"/>
 		</Container>
 
 		<Container size="320,200" position="0,300" name="sound_settings">
 			<Label text="SOUND" position="12,0"/>
 			<Label name="music_volume_label" text="Music volume:" position="22,40"/>
 			<Container size="180,30" position="150,40">
-				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" base_color="255,255,255,120" foreground_color="0,0,0" background_color="0,0,0,0"/>
-				<TextBox name="volume_music_value" text="" background_color="0,0,0,0" position="130,-6"/>
+				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" />
+				<TextBox name="volume_music_value" text="" position="130,-6"/>
 			</Container>
 			<Label name="effect_volume_label" text="Effects volume:" position="22,80"/> 
 			<Container size="180,30" position="150,80"> 
-				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" base_color="255,255,255,120" foreground_color="0,0,0" background_color="255,255,255,50" />
-				<TextBox name="volume_effects_value" text="" background_color="0,0,0,0" position="130,-6"/>
+				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" />
+				<TextBox name="volume_effects_value" text=""  position="130,-6"/>
 			</Container>
-			<CheckBox min_size="160,32" name="sound_enable_opt" text="Enable sound" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="22,120"/>   	
+			<CheckBox min_size="160,32" name="sound_enable_opt" text="Enable sound" position="22,120"/>   	
 		</Container>
 	</Container>
 	
 	<Container size="320,500" position="420,32" name="right_page">
 		<Container size="320,240" position="0,60" name="graphic_settings">
 			<Label text="SAVING" position="12,0"/>			
-			<Label name="autosave_interval_label" text="Autosave interval" position="22,40"/>
-			<DropDown min_size="120,0" name="autosaveinterval" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="150,40" />
-			<Label text="minutes" name="minutes_label" base_color="0,0,0,0" foreground_color="0,0,0,0" background_color="0,0,0,0" position="180,40"/>
-			<Label name="number_of_autosaves_label" text="Number of autosaves:" position="22,80"/>
-			<DropDown min_size="120,0" name="savedautosaves" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="150,80"/>
-			<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="22,120"/>
-			<DropDown min_size="120,0" name="savedquicksaves" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="150,120" />
+			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40"/>
+			<DropDown min_size="120,0" name="autosaveinterval" position="150,70" />
+			<Label text="minutes" name="minutes_label" position="180,70"/>
+			<Label name="number_of_autosaves_label" text="Number of autosaves:" position="22,100"/>
+			<DropDown min_size="120,0" name="savedautosaves" position="150,130"/>
+			<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="22,155"/>
+			<DropDown min_size="120,0" name="savedquicksaves" position="150,180" />
 		</Container>
 
 		<Container size="320,140" position="0,300">
 			<Label text="LANGUAGE" position="12,0"/>
 			<Label name="language_label" text="Language:" position="22,40"/> 
-			<DropDown min_size="120,0" name="language" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position=" 150,40"/>   
+			<DropDown min_size="120,0" name="language" position=" 150,40"/>   
 		</Container>
 
 		<Container size="320,40" position="160,460">
-			<Button name="cancelButton" text="Cancel" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="0,0"/>
-			<Button name="okButton" text="Ok" base_color="0,0,0,0" foreground_color="0,0,0" background_color="255,255,255,50" position="70,0"/>
+			<Button name="cancelButton" text="Cancel" position="0,0"/>
+			<Button name="okButton" text="Ok" position="70,0"/>
 		</Container>
 	</Container>
 </Container>

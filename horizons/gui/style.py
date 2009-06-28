@@ -207,8 +207,37 @@ STYLES= {
 		'Label' : {
 			'font' : 'Essays1743-Italic_headline'
 		}
-	}   
+	},   
 
+    'book': { # style for book widgets    
+	    'default' : {
+			'border_size': 0,
+			'margins': (0,0),
+			'opaque': 0,
+			'font' : 'Essays1743-Italic_small_black'
+		},
+		'Label' : {
+			'font' : 'Essays1743-Italic_14_black'
+		},
+		'CheckBox' : {
+			'selection_color' : fife.Color(255,255,255,200),
+			'background_color' : fife.Color(255,255,255,128),
+			'base_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+		},
+		'DropDown' : {
+			'selection_color' : fife.Color(255,255,255,200),
+			'background_color' : fife.Color(255,255,255,128),
+			'base_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+			'font' : 'Essays1743-Italic_14_black',
+		},
+		'Slider' : {
+			'base_color' : fife.Color(80,80,40,128),
+		},
+		'TextBox' : {
+			'font' : 'Essays1743-Italic_14_black',
+		},
+	},
 	
 }
-
