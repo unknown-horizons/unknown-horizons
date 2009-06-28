@@ -51,6 +51,7 @@ class Menus(object):
 		self.widgets['gamemenu'].stylize('menu')
 		self.widgets['chime'] = load_xml_translated('chime.xml')
 		self.widgets['help'] = load_xml_translated('help.xml')
+		self.widgets['help'].stylize('menu_black')
 		self.widgets['quitsession'] = load_xml_translated('quitsession.xml')
 		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml')
 		self.widgets['singleplayermenu'].stylize('menu')
