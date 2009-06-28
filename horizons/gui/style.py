@@ -90,10 +90,10 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0, 0),
 			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0),
+			'base_color' : fife.Color(0, 0, 0, 0),
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0),
+			'selection_color' : fife.Color(0, 0, 0, 0),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
@@ -132,10 +132,10 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0),
+			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0),
+			'selection_color' : fife.Color(0,0,0,0),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
@@ -153,10 +153,10 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0),
+			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0),
+			'selection_color' : fife.Color(0,0,0,0),
 			'font' : 'Essays1743-Italic_small'
 		},
 		'Button' : {
@@ -174,10 +174,10 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0),
+			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0),
+			'selection_color' : fife.Color(0,0,0,0),
 			'font' : 'Essays1743-Italic_large'
 		},
 		'Button' : {
@@ -194,10 +194,10 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0),
+			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0),
+			'selection_color' : fife.Color(0,0,0,0),
 			'font' : 'Essays1743-Italic_headline'
 		},
 		'Button' : {

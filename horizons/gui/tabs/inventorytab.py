@@ -75,3 +75,13 @@ class ShipInventoryTab(InventoryTab):
 			self.widget.findChild(name='bg_button').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
 		super(ShipInventoryTab, self).refresh()
+
+	def show(self):
+		if not self.instance.hasChangeListener(self.refresh):
+			self.instance.addChangeListener(self.refresh)
+		super(ShipInventoryTab, self).show()
+
+	def hide(self):
+		if self.instance.hasChangeListener(self.refresh):
+			self.instance.removeChangeListener(self.refresh)
+		super(ShipInventoryTab, self).hide()
