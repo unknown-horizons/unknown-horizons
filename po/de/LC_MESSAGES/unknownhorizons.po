@@ -6,13 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
 "POT-Creation-Date: 2009-06-24 14:43+CEST\n"
-"PO-Revision-Date: 2009-06-21 23:04+0100\n"
-"Last-Translator: Christoph Egger <horizons@christoph-egger.org>\n"
+"PO-Revision-Date: 2009-06-27 17:23+0000\n"
+"Last-Translator: André Reichelt <andre-r@online.de>\n"
 "Language-Team: Unknown Horizons German Translation Team <team@unknown-"
 "horizons.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.1\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
@@ -48,9 +51,8 @@ msgid "Error, no complete sql statement provided by \"%s\"."
 msgstr "Fehler, es wurde kein vollständiger SQL Ausdruck von \"%s\" übergeben."
 
 #: horizons/i18n/guitranslations.py:28
-#, fuzzy
 msgid "Branch office (Branch class ROMAN)"
-msgstr "Zweigstellenbüro"
+msgstr "Kontor (Kontorklasse RÖMISCH)"
 
 #: horizons/i18n/guitranslations.py:30 horizons/i18n/guitranslations.py:122
 msgid "Player:"
@@ -143,7 +145,7 @@ msgstr "Inventar:"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Are you sure you want to abort the running session?"
-msgstr "Wollt Ihr  die Partie wirklich beenden?"
+msgstr "Wollt Ihr diese Partie wirklich beenden?"
 
 #: horizons/i18n/guitranslations.py:62 horizons/i18n/guitranslations.py:139
 msgid "Quit Unknown Horizons"
@@ -429,7 +431,7 @@ msgstr "Name:"
 #: horizons/i18n/guitranslations.py:233
 #, fuzzy
 msgid "Health:"
-msgstr "Gesundheit:"
+msgstr "Zustand:"
 
 #: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:204
 #: horizons/i18n/guitranslations.py:218 horizons/i18n/guitranslations.py:254
@@ -526,9 +528,8 @@ msgid "Build menu"
 msgstr "Baumenü:"
 
 #: horizons/i18n/guitranslations.py:248
-#, fuzzy
 msgid "Residents and Infrastructural"
-msgstr "Infrastruktur"
+msgstr "Wohnbauten & Infrastruktur"
 
 #: horizons/i18n/guitranslations.py:249
 #, fuzzy
@@ -577,14 +578,13 @@ msgid "System default"
 msgstr "Systemvorgabe"
 
 #: horizons/menus.py:374
-#, fuzzy
 msgid "Sorry, the random map feature isn't yet implemented."
-msgstr "Erzeugen von Zufallskarten ist noch nicht implementiert."
+msgstr "Das Erzeugen von Zufallskarten ist leider noch nicht implementiert."
 
 #: horizons/menus.py:374 horizons/menus.py:430 horizons/menus.py:640
 #, fuzzy
 msgid "Not yet implemented"
-msgstr "Nicht implementiert"
+msgstr "Noch nicht implementiert"
 
 #: horizons/menus.py:430
 msgid "Sorry, multiplayer has not been implemented yet."
@@ -943,7 +943,7 @@ msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 #~ msgstr "Grund: %s"
 
 msgid "Use the full screen mode"
-msgstr ""
+msgstr "Im Vollbildmodus spielen"
 
 msgid "Enable sound"
-msgstr ""
+msgstr "Ton einschalten"
