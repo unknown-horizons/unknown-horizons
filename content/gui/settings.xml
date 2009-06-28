@@ -2,7 +2,7 @@
 <Container name="settings_window" size="800,800" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	
-	<Container size="320,500" position="55,32" name="left_page">
+	<Container size="320,500" position="55,32">
 		<Label text="This is the Unknown Horizons settings dialog." name="settings_dialog_title" position="22,0"/>
 		<Label text="Please make sure that you know, what you do." name="settings_dialog_title_2" position="22,20"/>
 		<Icon image="content/gui/images/background/hr.png" position="52,50" />
@@ -34,7 +34,7 @@
 		</Container>
 	</Container>
 	
-	<Container size="320,500" position="420,32" name="right_page">
+	<Container size="320,500" position="420,32">
 		<Container size="320,240" position="0,60" name="graphic_settings">
 			<Label text="SAVING" position="12,0"/>			
 			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40"/>

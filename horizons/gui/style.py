@@ -80,10 +80,10 @@ STYLES= {
 			'base_color' : fife.Color(60, 60, 60),
 			'background_color' : fife.Color(60, 60, 60)
 		},
-		'TextField' : {
-			'base_color' : fife.Color(60, 60, 60),
-			'background_color' : fife.Color(0, 0, 0, 0)
-		}
+		#'TextField' : {
+		#	'base_color' : fife.Color(60, 60, 60),
+		#	'background_color' : fife.Color(0, 0, 0)
+		#}
 	},
 	'menu': { #Used in the main menu and game menu
 		'default' : {
@@ -214,7 +214,8 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'font' : 'Essays1743-Italic_small_black'
+			'font' : 'Essays1743-Italic_14_black',
+			'foreground_color' : fife.Color(80,80,40),
 		},
 		'Label' : {
 			'font' : 'Essays1743-Italic_14_black'
@@ -238,6 +239,28 @@ STYLES= {
 		'TextBox' : {
 			'font' : 'Essays1743-Italic_14_black',
 		},
+		'ListBox' : {
+			'background_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fife.Color(255,255,255,128),
+			'font' : 'Essays1743-Italic_14_black',
+		},
+		'ScrollArea' : {
+			'background_color' : fife.Color(255,255,255,64),
+			'foreground_color' : fife.Color(80,80,40),
+			'font' : 'Essays1743-Italic_14_black',
+		},
+		'HBox' : {
+			'font' : 'Essays1743-Italic_14_black',
+			'foreground_color' : fife.Color(80,80,40),
+		},
+		'TextField' : {
+			'selection_color' : fife.Color(255,255,255),
+			'background_color' : fife.Color(255,255,255),
+			'base_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+			'font' : 'Essays1743-Italic_14_black',
+		}
 	},
 
 }

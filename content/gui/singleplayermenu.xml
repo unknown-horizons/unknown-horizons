@@ -1,33 +1,39 @@
 <?xml version="1.0"?>
 <Container size="1024,768">
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
-	<!-- <Icon image="content/gui/menu/m_serverlobby.png" position="0,0"/> Für besseres Verständnis wie man es besser rüber bringen könnte -->
-
-	<RadioButton position="100,100" size="32,32" name="showRandom" text="Random  " />
-	<RadioButton position="100,150" size="32,32" name="showCampaign" text="Campaign  " />
-	<!--<RadioButton position="100,200" size="32,32" name="showLoad" text="Load  " /> does no need here anymore-->
-
-	<HBox position="250,100" name="random" base_color="60,60,60" background_color="60,60,60" opaque="1" border_size="1">
+	<Container size="800,800" position="100,100">
+	<Icon image="content/gui/images/background/book.png" position="0,0" />
+	
+	<Container size="320,500" position="55,32">
+	<Label text="NEW GAME - SINGLEPLAYER" position="60,10" />
+	<Icon image="content/gui/images/background/hr.png" position="52,30" />
+	<RadioButton position="62,60" size="32,32" name="showRandom" text="Random  " />
+	<RadioButton position="62,100" size="32,32" name="showCampaign" text="Campaign  " />
+	<Label name="main_menu_label" text="Main menu:" position="42,470" />
+	<ImageButton position="120,445" up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" />
+	</Container>
+	
+	<!-- What's that?! -->
+	<HBox position="250,100" name="random" base_color="60,60,60" background_color="60,60,60" border_size="1">
 		<VBox>
 			<Label name="player_label" text="Player:" base_color="40, 40, 40"/>
 			<Label name="color_label" text="Color:" base_color="40, 40, 40"/>
 		</VBox>
-		<VBox min_size="300,300" background_color="200, 200, 200"> <!-- size has to be defined here, so that the dropdown has enough space -->
+		<VBox min_size="300,300" background_color="200, 200, 200"> <!--size has to be defined here, so that the dropdown has enough space!-->
 			<TextBox name="playername" text="unknown player" size="150,16" base_color="40, 40, 40"/>
 			<DropDown name="playercolor" base_color="40, 40, 40"/>
 		</VBox>
 	</HBox>
 
-	<VBox position="250,100" name="load">
-		<ScrollArea min_size="600,400"  horizontal_scrollbar="0" position="250,100">
-			<ListBox name="maplist" min_size="600,600" />  <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
+	<Container size="320,500" position="420,32" name="load">
+		<ScrollArea min_size="300,340"  horizontal_scrollbar="0" position="0,40">
+			<ListBox name="maplist" min_size="300,340" />  <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
 
 		</ScrollArea>
-		<VBox name="savegamedetails_box" position="250,500" min_size="600,0">
-		</VBox>
-	</VBox>
-	<Label name="main_menu_label" text="Main menu:" position="420,700" />
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="500,700" />
-	<Label name="start_game_label" text="Start game:" position="720,700" />
-	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="okay" position="800,700" />
+		<HBox name="savegamedetails_box" position="80,380" min_size="300,50"/>
+		<Label name="start_game_label" text="Start game:" position="170,470" />
+		<ImageButton position="250,452" up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="okay" />
+	</Container>
+
+	</Container>
 </Container>

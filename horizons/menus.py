@@ -56,14 +56,16 @@ class Menus(object):
 		self.widgets['help'].stylize('book')
 		self.widgets['quitsession'] = load_xml_translated('quitsession.xml')
 		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml')
-		self.widgets['singleplayermenu'].stylize('menu')
+		self.widgets['singleplayermenu'].stylize('book')
 		self.widgets['serverlist'] = load_xml_translated('serverlist.xml')
 		self.widgets['serverlist'].stylize('menu')
 		self.widgets['serverlobby'] = load_xml_translated('serverlobby.xml')
 		self.widgets['serverlobby'].stylize('menu')
 		self.widgets['loadingscreen'] = load_xml_translated('loadingscreen.xml')
 		self.widgets['ingame_load'] = load_xml_translated('ingame_load.xml')
+		self.widgets['ingame_load'].stylize('book')
 		self.widgets['savegame'] = load_xml_translated('ingame_save.xml')
+		"""self.widgets['savegame'].stylize('book')""" #The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
 	def show_main(self):
 		""" shows the main menu
@@ -353,7 +355,7 @@ class Menus(object):
 		"""
 		self.hide() # Hide old gui
 		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
-		self.widgets['singleplayermenu'].stylize('menu')
+		self.widgets['singleplayermenu'].stylize('book')
 		self.current = self.widgets['singleplayermenu']
 		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
 		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
