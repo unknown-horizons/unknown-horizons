@@ -57,11 +57,21 @@ class ShipInventoryTab(InventoryTab):
 			widget = 'tab_widget/tab_stock_ship.xml',
 			instance = instance
 		)
-		events = {
-			'trade': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(instance))
-		}
-		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/inventory_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
+
+	def refresh(self):
+		branches = horizons.main.session.world.get_branch_offices(self.instance.position, self.instance.radius)
+		if len(branches) > 0:
+			events = { 'trade': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
+			self.widget.mapEvents(events)
+			self.widget.findChild(name='bg_button').set_active()
+			self.widget.findChild(name='trade').set_active()
+		else:
+			events = { 'trade': None }
+			self.widget.mapEvents(events)
+			self.widget.findChild(name='bg_button').set_inactive()
+			self.widget.findChild(name='trade').set_inactive()
+		super(ShipInventoryTab, self).refresh()

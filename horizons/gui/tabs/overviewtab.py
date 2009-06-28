@@ -27,7 +27,7 @@ from tabinterface import TabInterface
 
 class OverviewTab(TabInterface):
 
-	def __init__(self, instance = None, widget = 'tab_widget/tab_overview.xml'):
+	def __init__(self, instance, widget = 'tab_widget/tab_overview.xml'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()
@@ -56,7 +56,7 @@ class OverviewTab(TabInterface):
 
 class BranchOfficeOverviewTab(OverviewTab):
 
-	def __init__(self, instance = None):
+	def __init__(self, instance):
 		super(BranchOfficeOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_branch_overview.xml',
 			instance = instance
@@ -68,22 +68,34 @@ class BranchOfficeOverviewTab(OverviewTab):
 
 class ShipOverviewTab(OverviewTab):
 
-	def __init__(self, instance = None):
+	def __init__(self, instance):
 		super(ShipOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_overview_ship.xml',
 			instance = instance
 		)
-		events = { 'foundSettelment': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(instance) )}
-		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 
+	def refresh(self):
+		islands = horizons.main.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
+		if len(islands) > 0:
+			events = { 'foundSettelment': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(self.instance) )}
+			self.widget.mapEvents(events)
+			self.widget.findChild(name='bg_button').set_active()
+			self.widget.findChild(name='foundSettelment').set_active()
+		else:
+			events = { 'foundSettelment': None }
+			self.widget.mapEvents(events)
+			self.widget.findChild(name='bg_button').set_inactive()
+			self.widget.findChild(name='foundSettelment').set_inactive()
+		super(ShipOverviewTab, self).refresh()
+
 
 class ProductionOverviewTab(OverviewTab):
 
-	def  __init__(self, instance = None):
+	def  __init__(self, instance):
 		super(ProductionOverviewTab, self).__init__(
 			widget = 'buildings_gui/production_building_overview.xml',
 			instance = instance

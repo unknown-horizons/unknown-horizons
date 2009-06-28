@@ -41,7 +41,6 @@ class AnimalCollector(BuildingCollector):
 				self.job.object.stop_after_job(self)
 
 	def cancel(self):
-		print "foooooooobaaaaaaaaaar"
 		assert False
 
 	def apply_state(self, state, remaining_ticks=None):

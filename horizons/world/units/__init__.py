@@ -42,7 +42,7 @@ class UnitClass(type):
 
 		self.class_package,  self.class_name = horizons.main.db("SELECT class_package, class_type FROM data.unit WHERE rowid = ?", id)[0]
 		__import__('horizons.world.units.'+self.class_package)
-		
+
 		return type.__new__(self, 'Unit[' + str(id) + ']',
 			(getattr(globals()[self.class_package], self.class_name),),
 			attributes)
@@ -55,6 +55,7 @@ class UnitClass(type):
 		self.id = id
 		self._object = None
 		self._loadObject()
+		self.radius = int(horizons.main.db("SELECT radius FROM data.unit WHERE rowid=?", id)[0][0])
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.

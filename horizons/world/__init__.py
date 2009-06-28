@@ -241,13 +241,12 @@ class World(LivingObject):
 
 	def get_islands_in_radius(self, point, radius):
 		"""Returns all islands in a certain radius arround a point.
-		NOTE: This is an approximation, as it uses the island's rect. Might
-		return islands that are not really in range.
 		@return List of islands in radius"""
 		islands = []
 		for island in self.islands:
-			if radius is not None and island.rect.distance(point) <= radius:
+			for tile in island.get_surrounding_tiles(point, radius):
 				islands.append(island)
+				break
 		return islands
 
 	def get_branch_offices(self, position=None, radius=None):

@@ -60,8 +60,7 @@ class BuildingTool(NavigationTool):
 		if ship is None:
 			self.highlight_buildable()
 		else:
-			if not self.highlight_ship_radius():
-				self.on_escape()
+			self.highlight_ship_radius()
 
 	def highlight_buildable(self):
 		"""Highlights all buildable tiles."""
@@ -75,18 +74,13 @@ class BuildingTool(NavigationTool):
 	def highlight_ship_radius(self):
 		"""Colors everything in the radius of the ship. Also checks whether
 		there is a tile in the ships radius."""
-		found_free = False
-		radius = 5
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
-		for island in horizons.main.session.world.get_islands_in_radius(self.ship.position, radius):
-				for tile in island.get_surrounding_tiles(self.ship.position, radius):
+		for island in horizons.main.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
+				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
 					free = (tile.settlement is None or tile.settlement.owner == horizons.main.session.world.player)
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
 					if free and tile.object is not None:
 						horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
-					found_free = found_free or free
-		return found_free
-
 
 	def end(self):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
@@ -160,7 +154,6 @@ class BuildingTool(NavigationTool):
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def on_escape(self):
-		print "foobar on_escape"
 		horizons.main.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
 			horizons.main.session.ingame_gui.show_build_menu()

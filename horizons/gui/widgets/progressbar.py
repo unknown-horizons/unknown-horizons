@@ -42,7 +42,7 @@ class ProgressBar(pychan.widgets.Container):
 		self._draw()
 
 	def _draw(self):
-		print "Redrawing ProgressBar:", self.progress
+		#print "Redrawing ProgressBar:", self.progress
 		self.icon.size = (int(self.progress/100.0*self.size[0]), self.size[1])
 
 	def _set_progress(self, progress):

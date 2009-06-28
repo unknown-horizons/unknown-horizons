@@ -24,7 +24,9 @@ from horizons.gui.widgets.inventory import ImageFillStatusButton
 from horizons.i18n import load_xml_translated
 
 class TradeWidget(object):
-	radius = 4 # objects within this radius can be traded with
+	# objects within this radius can be traded with, only used if the
+	# main instance does not have a radius attribute
+	radius = 5
 
 	def __init__(self, main_instance):
 		self.widget = load_xml_translated('ship/trade.xml')
@@ -45,6 +47,8 @@ class TradeWidget(object):
 		self.partner = None
 		self.exchange = 10
 		self.draw_widget()
+		if hasattr(self.main_instance, 'radius'):
+			self.radius = self.main_instance.radius
 
 	def draw_widget(self):
 		self.partners = self.find_partner()
