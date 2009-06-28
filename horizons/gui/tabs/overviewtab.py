@@ -77,6 +77,7 @@ class ShipOverviewTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
+		self.widget.findChild(name='name').stylize("headline")
 
 	def refresh(self):
 		islands = horizons.main.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
