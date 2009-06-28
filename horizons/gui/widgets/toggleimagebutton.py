@@ -23,8 +23,18 @@ import pychan
 from pychan.widgets.common import Attr
 
 class ToggleImageButton(pychan.widgets.ImageButton):
+	"""The ToggleImageButton is an extendet ImageButton (Think decorator pattern).
+	It add one extra attribute inactive_image. You can then set the button active
+	or inactive (only in code for now). Setting the ToggleImageButton to inactive
+	will change all images (up, down and hover) to the inactive image. If you
+	set it active again, everything will be reset.
+
+	@param inactive_image The image that is to be used as inactive image.
+	"""
 
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [Attr('inactive_image')]
+
+	# These to constants are used to describe the state of the widget.
 	ACTIVE = 0
 	INACTIVE = 1
 
