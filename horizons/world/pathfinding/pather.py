@@ -126,7 +126,7 @@ class AbstractPather(object):
 			self.cur -= 1 # reset, since move is not possible
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
 				self.log.info("tile suddenly %s %s blocked for %s %s", \
-											self.cur[0], self.cur[1], self.unit, self.unit.getId())
+											self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.getId())
 				raise PathBlockedError
 
 		if self.destination_in_building and self.cur == len(self.path)-1:

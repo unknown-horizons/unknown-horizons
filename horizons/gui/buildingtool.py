@@ -160,6 +160,7 @@ class BuildingTool(NavigationTool):
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def on_escape(self):
+		print "foobar on_escape"
 		horizons.main.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
 			horizons.main.session.ingame_gui.show_build_menu()

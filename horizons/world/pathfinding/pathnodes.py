@@ -53,9 +53,9 @@ class IslandPathNodes(PathNodes):
 		# we keep this up to date, so that path finding can use it and we don't have
 		# to calculate it every time (rather expensive!).
 		self.nodes = []
-		for i in self.island():
-			if self.is_walkable(i, False):
-				self.nodes.append(i)
+		for coord in self.island():
+			if self.is_walkable(coord, False):
+				self.nodes.append(coord)
 
 		# nodes where a real road is built on.
 		self.road_nodes = {}
