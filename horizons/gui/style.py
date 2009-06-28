@@ -106,15 +106,15 @@ STYLES= {
 		}
 	},
 
-    'menu_black': { # style for build menu etc. 
+    'menu_black': { # style for build menu etc.
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0),
+			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0),
+			'selection_color' : fife.Color(0,0,0,0),
 			'font' : 'Essays1743-Italic_small_black'
 		},
 		'Button' : {
@@ -125,9 +125,9 @@ STYLES= {
             'margins': (0,0),
 			'font' : 'Essays1743-Italic_14_black'
 		}
-	},     
-    
-    'resource_bar': { 
+	},
+
+    'resource_bar': {
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -148,7 +148,7 @@ STYLES= {
 		}
 	},
 
-    'message_text': { 
+    'message_text': {
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -167,9 +167,9 @@ STYLES= {
             'margins': (0,0),
 			'font' : 'Essays1743-Italic_small'
 		}
-	},    
+	},
 
-    'topmain': { # style for city info 
+    'topmain': { # style for city info
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -187,8 +187,8 @@ STYLES= {
 		'Label' : {
 			'font' : 'Essays1743-Italic_18'
 		}
-	},   
-	
+	},
+
     'headline': { # style for headlines
 		'default' : {
 			'border_size': 0,
@@ -207,9 +207,9 @@ STYLES= {
 		'Label' : {
 			'font' : 'Essays1743-Italic_headline'
 		}
-	},   
+	},
 
-    'book': { # style for book widgets    
+    'book': { # style for book widgets
 	    'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -239,5 +239,5 @@ STYLES= {
 			'font' : 'Essays1743-Italic_14_black',
 		},
 	},
-	
+
 }
