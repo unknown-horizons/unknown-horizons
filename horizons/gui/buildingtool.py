@@ -97,7 +97,14 @@ class BuildingTool(NavigationTool):
 							  "rotate_right": self.rotate_right }
 							)
 		self.gui.stylize('menu_black')
-		self.gui.findChild(name='headline').stylize('headline') # style definition for headline
+		headline = self.gui.findChild(name='headline')
+		headline.stylize('headline') # style definition for headline
+		headline.text = 'Build: ' + self._class.name
+		headline.adaptLayout()
+		headline.position = (
+			self.gui.size[0]/2 - headline.size[0]/2,
+			headline.position[1]
+			)
 		self.gui.position = (
 			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0],
 			157

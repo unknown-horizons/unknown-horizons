@@ -48,7 +48,6 @@ class ToggleImageButton(pychan.widgets.ImageButton):
 		"""Sets the button active. Restores up, down and hover image to
 		previous state."""
 		if self.state != self.ACTIVE:
-			print "active"
 			self.up_image, self.down_image, self.hover_image = self.old_images
 			self.state = self.ACTIVE
 
@@ -56,7 +55,6 @@ class ToggleImageButton(pychan.widgets.ImageButton):
 		"""Sets the button inactive. Overrides up, down and hover image with
 		inactive image."""
 		if self.state != self.INACTIVE:
-			print "inactive"
 			self.old_images = (self.up_image, self.down_image, self.hover_image)
 			self.up_image = self.inactive_image
 			self.down_image = self.inactive_image
