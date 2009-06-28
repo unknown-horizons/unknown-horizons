@@ -1,11 +1,64 @@
 <?xml version="1.0"?>
-<Window name="credits_window" title="Credits" base_color="40, 40, 40">
-	<Label name="creditsIntroText" text="These guys contributed to Unknown Horizons" base_color="40, 40, 40"/>
-	<ScrollArea min_size="410,400" horizontal_scrollbar="0" base_color="40, 40, 40">
-		<TextBox name="creditText" filename="doc/AUTHORS"/>
-	</ScrollArea>
-	<HBox>
-		<Spacer />
-		<Button name="okButton" text="You guys rock!" base_color="40, 40, 40"/>
-	</HBox>
-</Window>
+<Container name="credits_window" size="800,800" position="100,100">
+	<Icon image="content/gui/images/background/book.png" position="0,0" />
+	<Container position="55,32" size="500,500">
+		<Label text="These guys contributed to Unknown Horizons:" position="22,0"/>
+		<Icon image="content/gui/images/background/hr.png" position="52,30" />	
+	
+		<Label text="PROJECT COORDINATION" position="32,40"/>
+		<Label text="Nihathrael (Thomas Kinnen)" position="62,60"/>
+		<Label text="Nightraven (Tobias Schroefel)" position="62,80"/>
+	
+		<Label text="GAME-PLAY DESIGN" position="32,120"/>
+		<Label text="dauerflucher (Andreas Lis)" position="62,140"/>
+		<Label text="Andre_Re (Andre Reichelt) " position="62, 160"/>
+		<Label text="Kilian (Kilian K.)" position="62,180"/>
+	
+		<Label text="PROGRAMMING" position="32,220"/>
+		<Label text="lynxis (Alexander Couzens)" position="62,240"/>
+		<Label text="yonibear (Jonathan Sieber)" position="62,260"/>
+		<Label text="Nihathrael (Thomas Kinnen)" position="62,280"/>
+		<Label text="phiker (Philipp Kerling)" position="62,300"/>
+		<Label text="spq (Kristoffer Janke)" position="62,320"/>
+		<Label text="totycro (Bernhard Mallinger)" position="62,340"/>
+		<Label text="christoph_debian (Christoph Eggern)" position="62,360"/>
+	
+		<Label text="GRAPHIC ARTIST" position="32,400"/>
+		<Label text="dauerflucher (Andreas Lis)" position="62,420"/>
+		<Label text="egore (Christoph Bill)" position="62,440"/>
+		<Label text="kaschte (Fabian Riedel)" position="62,460"/>
+	
+		<!--<ScrollArea min_size="410,400" horizontal_scrollbar="0">
+			<TextBox name="creditText" filename="doc/AUTHORS"/>
+	
+		</ScrollArea>-->
+	
+	</Container>
+	
+	<Container position="430,32" size="500,500">
+	
+		<Label text="SOUND and MUSIC ARTISTS" position="22,40"/>
+		<Label text="draikon (Sebastian Ahlen)" position="62,60"/>
+		<Label text="novatlan (Tobias Escher)" position="62,80"/>
+	
+		<Label text="TRANSLATION" position="22,120"/>
+		<Label text="French - LiveWire" position="62,140"/>
+		<Label text="Norwegian - frodus" position="62,160"/>
+		<Label text="Portuguese - Mad_Monk" position="62,180"/>
+	
+		<Label text="SPECIAL THANKS to:" position="22,220"/>
+		<Label text="mvBarracuda (Martin Vohland)" position="62,240"/>
+		<Label text="lamoot (Matjaz Lamut" position="62,260"/>
+		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,280"/>
+		<Label text="dreimer (Daniel Reimer)" position="62,300"/>
+		<Label text="hoehrer (Werner Hoehrer)" position="62,320"/>
+		<Label text="mattn (Martin Gerhardry)" position="62,340"/>
+		<Label text="GrayGhost (Tushar Sawant)" position="62,360"/>
+		<Label text="Reiner Prokein " position="62,400"/>
+		<Label text="(http://reinerstileset.4players.de)" position="62,420"/>
+	</Container>
+	
+	<Container position="695,500" size="100,100">
+		<ImageButton name="okButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0"/>
+	</Container>
+</Container>
