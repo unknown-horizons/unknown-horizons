@@ -21,10 +21,10 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,110" />
 
 		<HBox position="180,130">
-			<ToggleImageButton name="bg_button" inactive_image="content/gui/images/background/msg_button_normal.png" up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
+			<ToggleImageButton name="bg_button" inactive_image="content/gui/images/background/msg_button_normal_bw.png" up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
 		</HBox>
 
-		<ToggleImageButton name="trade" position="190,140" inactive_image="content/gui/images/icons/hud/ship/civil_32.png" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
+		<ToggleImageButton name="trade" position="190,140" inactive_image="content/gui/images/icons/hud/ship/civil_32_bw.png" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 
 	</Container>
 </Container>

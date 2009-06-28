@@ -23,11 +23,11 @@
 
 		<!--<Icon image="content/gui/images/background/msg_button.png" position="170,170" />				 	-->
 		<HBox position="180,190">
-			<ToggleImageButton name='bg_button' inactive_image="content/gui/images/background/msg_button_normal.png" up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
+			<ToggleImageButton name='bg_button' inactive_image="content/gui/images/background/msg_button_normal_bw.png" up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
 		</HBox>
 
 		<HBox position="186,195">
-			<ToggleImageButton name="foundSettelment" inactive_image="icons/hud/ship/anchor_bw.png" up_image="content/gui/images/icons/hud/ship/anchor.png" down_image="content/gui/images/icons/hud/ship/anchor_a.png" hover_image="content/gui/images/icons/hud/ship/anchor_h.png"  />
+			<ToggleImageButton name="foundSettelment" inactive_image="content/gui/images/icons/hud/ship/anchor_bw.png" up_image="content/gui/images/icons/hud/ship/anchor.png" down_image="content/gui/images/icons/hud/ship/anchor_a.png" hover_image="content/gui/images/icons/hud/ship/anchor_h.png"  />
 		</HBox>
 
 	</Container>
