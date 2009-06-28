@@ -786,38 +786,38 @@ msgstr "Diverte-te a jogar, e se o fizeres, ajuda-nos a desenvolver!"
 #~ msgid "Storage"
 #~ msgstr "Armazém"
 
-#~ msgid "Main Square"
-#~ msgstr "Praça Principal"
+msgid "Main Square"
+msgstr "Praça Principal"
 
 #~ msgid "Church"
 #~ msgstr "Igreja"
 
-#~ msgid "Signal Fire"
-#~ msgstr "Sinal de Fogo"
+msgid "Signal Fire"
+msgstr "Sinal de Fogo"
 
 #~ msgid "Residents"
 #~ msgstr "Residentes"
 
-#~ msgid "Tent"
-#~ msgstr "Tenda"
+msgid "Tent"
+msgstr "Tenda"
 
 #~ msgid "Hunter"
 #~ msgstr "Caçador"
 
-#~ msgid "Fisher"
-#~ msgstr "Pescador"
+msgid "Fisher"
+msgstr "Pescador"
 
 #~ msgid "Weaver"
 #~ msgstr "Tecelão"
 
-#~ msgid "Boat Builder"
-#~ msgstr "Constructor de Barcos"
+msgid "Boat Builder"
+msgstr "Constructor de Barcos"
 
 #~ msgid "Lumberjack"
 #~ msgstr "Lenhador"
 
-#~ msgid "Tree"
-#~ msgstr "Árvore"
+msgid "Tree"
+msgstr "Árvore"
 
 #~ msgid "Herder"
 #~ msgstr "Pastor"
@@ -825,17 +825,17 @@ msgstr "Diverte-te a jogar, e se o fizeres, ajuda-nos a desenvolver!"
 #~ msgid "Field"
 #~ msgstr "Campo"
 
-#~ msgid "Lookout"
-#~ msgstr "Vigia"
+msgid "Lookout"
+msgstr "Vigia"
 
-#~ msgid "Rampart"
-#~ msgstr "Plataforma"
+msgid "Rampart"
+msgstr "Plataforma"
 
 #~ msgid "Infrastructure"
 #~ msgstr "Infra-estrutura"
 
-#~ msgid "Trail"
-#~ msgstr "Caminho"
+msgid "Trail"
+msgstr "Caminho"
 
 #~ msgid "Bridge"
 #~ msgstr "Ponte"
@@ -932,3 +932,142 @@ msgstr ""
 
 msgid "Enable sound"
 msgstr ""
+
+msgid "Branch Office"
+msgstr ""
+
+msgid "Storage Tent"
+msgstr ""
+
+msgid "Sunsail"
+msgstr ""
+
+msgid "Weaver's Tent"
+msgstr ""
+
+msgid "Lumberjack Camp"
+msgstr ""
+
+msgid "Hunter's Tent"
+msgstr ""
+
+msgid "Herdsman's Tent"
+msgstr ""
+
+msgid "Fisherman's Tent"
+msgstr ""
+
+msgid "Log"
+msgstr ""
+
+msgid "Pasture"
+msgstr ""
+
+msgid "Ship"
+msgstr ""
+
+msgid "BuildingCollector"
+msgstr ""
+
+msgid "Sheep"
+msgstr ""
+
+msgid "Pirate Ship"
+msgstr ""
+
+msgid "Trader"
+msgstr ""
+
+msgid "AnimalCarriage"
+msgstr ""
+
+msgid "StorageCollector"
+msgstr ""
+
+msgid "FieldCollector"
+msgstr ""
+
+msgid "LumberjackCollector"
+msgstr ""
+
+msgid "SettlerCollector"
+msgstr ""
+
+msgid "FarmerCollector"
+msgstr ""
+
+msgid "Deer"
+msgstr ""
+
+msgid "pioneer"
+msgstr ""
+
+msgid "red"
+msgstr ""
+
+msgid "blue"
+msgstr ""
+
+msgid "green"
+msgstr ""
+
+msgid "yellow"
+msgstr ""
+
+msgid "pink"
+msgstr ""
+
+msgid "cyan"
+msgstr ""
+
+msgid "black"
+msgstr ""
+
+msgid "white"
+msgstr ""
+
+msgid "A new settlement has been created by $player."
+msgstr ""
+
+msgid "A new world has been created."
+msgstr ""
+
+msgid "coins"
+msgstr ""
+
+msgid "lamb wool"
+msgstr ""
+
+msgid "textile"
+msgstr ""
+
+msgid "boards"
+msgstr ""
+
+msgid "food"
+msgstr ""
+
+msgid "tools"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "wood"
+msgstr ""
+
+msgid "grass"
+msgstr ""
+
+msgid "wool"
+msgstr ""
+
+msgid "church"
+msgstr ""
+
+msgid "wild animal food 1"
+msgstr ""
+
+msgid "wild animal meat"
+msgstr ""
+

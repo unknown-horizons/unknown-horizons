@@ -744,3 +744,169 @@ msgstr "Utiliser le mode plein-écran"
 
 msgid "Enable sound"
 msgstr "Activer le son"
+
+msgid "Branch Office"
+msgstr ""
+
+msgid "Storage Tent"
+msgstr ""
+
+msgid "Tent"
+msgstr ""
+
+msgid "Main Square"
+msgstr ""
+
+msgid "Sunsail"
+msgstr ""
+
+msgid "Signal Fire"
+msgstr ""
+
+msgid "Weaver's Tent"
+msgstr ""
+
+msgid "Lumberjack Camp"
+msgstr ""
+
+msgid "Hunter's Tent"
+msgstr ""
+
+msgid "Herdsman's Tent"
+msgstr ""
+
+msgid "Fisherman's Tent"
+msgstr ""
+
+msgid "Boat Builder"
+msgstr ""
+
+msgid "Lookout"
+msgstr ""
+
+msgid "Rampart"
+msgstr ""
+
+msgid "Trail"
+msgstr ""
+
+msgid "Log"
+msgstr ""
+
+msgid "Tree"
+msgstr ""
+
+msgid "Pasture"
+msgstr ""
+
+msgid "Ship"
+msgstr ""
+
+msgid "BuildingCollector"
+msgstr ""
+
+msgid "Sheep"
+msgstr ""
+
+msgid "Fisher"
+msgstr ""
+
+msgid "Pirate Ship"
+msgstr ""
+
+msgid "Trader"
+msgstr ""
+
+msgid "AnimalCarriage"
+msgstr ""
+
+msgid "StorageCollector"
+msgstr ""
+
+msgid "FieldCollector"
+msgstr ""
+
+msgid "LumberjackCollector"
+msgstr ""
+
+msgid "SettlerCollector"
+msgstr ""
+
+msgid "FarmerCollector"
+msgstr ""
+
+msgid "Deer"
+msgstr ""
+
+msgid "pioneer"
+msgstr ""
+
+msgid "red"
+msgstr ""
+
+msgid "blue"
+msgstr ""
+
+msgid "green"
+msgstr ""
+
+msgid "yellow"
+msgstr ""
+
+msgid "pink"
+msgstr ""
+
+msgid "cyan"
+msgstr ""
+
+msgid "black"
+msgstr ""
+
+msgid "white"
+msgstr ""
+
+msgid "A new settlement has been created by $player."
+msgstr ""
+
+msgid "A new world has been created."
+msgstr ""
+
+msgid "coins"
+msgstr ""
+
+msgid "lamb wool"
+msgstr ""
+
+msgid "textile"
+msgstr ""
+
+msgid "boards"
+msgstr ""
+
+msgid "food"
+msgstr ""
+
+msgid "tools"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "wood"
+msgstr ""
+
+msgid "grass"
+msgstr ""
+
+msgid "wool"
+msgstr ""
+
+msgid "church"
+msgstr ""
+
+msgid "wild animal food 1"
+msgstr ""
+
+msgid "wild animal meat"
+msgstr ""
+
