@@ -40,7 +40,7 @@ class Settlement(TradePost, WorldObject):
 	@property
 	def inhabitants(self):
 		"""Returns number of inhabitants (sum of inhabitants of its buildings)"""
-		return sum([i.inhabitants for i in self.buildings])
+		return sum([building.inhabitants for building in self.buildings])
 
 	def setup_storage(self):
 		self.inventory = SizedSlotStorage(0)

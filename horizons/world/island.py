@@ -171,13 +171,10 @@ class Island(WorldObject):
 		@return: list of Settlement instances at that position."""
 		settlements = []
 		if self.rect.intersects(rect):
-			for x, y in rect.get_coordinates():
-				tile = self.get_tile(Point(x, y))
+			for point in rect:
+				tile = self.get_tile(point)
 				if tile is not None and tile.settlement is not None and tile.settlement not in settlements:
 					settlements.append(tile.settlement)
-			#for tile in self.grounds:
-			#	if rect.contains(tile) and tile.settlement is not None and tile.settlement not in settlements:
-			#		settlements.append(tile.settlement)
 		return settlements
 
 	def add_settlement(self, position, radius, player):
