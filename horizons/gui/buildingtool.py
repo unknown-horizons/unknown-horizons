@@ -100,7 +100,7 @@ class BuildingTool(NavigationTool):
 		headline = self.gui.findChild(name='headline').stylize('headline')
 		name_label = self.gui.findChild(name='building_name')
 		name_label.stylize('headline')
-		name_label.text = self._class.name
+		name_label.text = unicode(self._class.name)
 		head_box = self.gui.findChild(name='head_box')
 		head_box.adaptLayout()
 		head_box.position = (
