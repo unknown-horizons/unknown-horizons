@@ -126,6 +126,7 @@ class SavegameManager(object):
 												 self.quicksave_filenamepattern % {'timestamp':time.time()}, \
 												 self.savegame_extension)
 		self.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
+		return name
 
 	def delete_dispensable_savegames(self, autosaves = False, quicksaves = False):
 		"""Delete savegames that are no longer needed
