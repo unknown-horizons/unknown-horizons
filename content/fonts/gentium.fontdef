@@ -1,0 +1,92 @@
+[Font/gentium_13]
+
+type: truetype
+source: content/fonts/GenBasBI.ttf
+size: 14
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+
+[Font/gentium_14]
+
+type: truetype
+source: content/fonts/GenBasBI.ttf
+size: 15
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+[Font/gentium_mainmenu]
+
+type: truetype
+source: content/fonts/GenBasBI.ttf
+size: 17
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+[Font/gentium_18]
+
+type: truetype
+source: content/fonts/GenBasBI.ttf
+size: 19
+color: 255,255,255
+antialias: 1
+
+
+[Font/gentium_small]
+
+type: truetype
+source: content/fonts/GenBasR.ttf
+size: 17
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+[Font/gentium_14_black]
+
+type: truetype
+source: content/fonts/GenBasR.ttf
+size: 15
+color: 80,80,60
+antialias: 1
+
+[Font/gentium_small_black]
+
+type: truetype
+source: content/fonts/GenBasR.ttf
+size: 17
+color: 80,80,60
+antialias: 1
+
+
+[Font/gentium_large]
+
+type: truetype
+source: content/fonts/GenBasR.ttf
+size: 24
+color: 255,255,255
+antialias: 1
+
+
+[Font/gentium_large_load]
+
+type: truetype
+source: content/fonts/GenBasBI.ttf
+size: 34
+color: 120,100,65
+antialias: 1
+
+
+[Font/gentium_headline]
+
+type: truetype
+source: content/fonts/GenBasBI.ttf
+size: 18
+color: 68,42,2
+antialias: 1

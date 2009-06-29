@@ -163,7 +163,7 @@ class Fife(object):
 		horizons.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
 		horizons.main.settings.fife.defaultFont.setDefaults(
-			path = 'content/gfx/fonts/Essays1743-Italic.ttf',
+			path = 'content/gfx/fonts/GenBasR.ttf',
 			size = 18,
 			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
 		)
@@ -284,7 +284,7 @@ class Fife(object):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		for name, stylepart in horizons.gui.style.STYLES.items():
 			self.pychan.manager.addStyle(name, stylepart)
-		self.pychan.loadFonts("content/fonts/Essays1743-Italic.fontdef")
+		self.pychan.loadFonts("content/fonts/gentium.fontdef")
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
 		pychan.widgets.registerWidget(ProgressBar)
