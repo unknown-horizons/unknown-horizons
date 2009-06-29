@@ -38,6 +38,8 @@ class Trader(Player, StorageHolder):
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
 	shipStates = Enum('moving_random', 'moving_to_branch', 'reached_branch')
 
+	log = logging.getLogger("ai.trader")
+
 	# amount range to buy/sell from settlement per resource
 	buy_amount = (0, 4)
 	sell_amount = (1, 4)
@@ -115,6 +117,7 @@ class Trader(Player, StorageHolder):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
+		self.log.debug("Trader %s: moving to random location", self.getId())
 		# find random position
 		rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
 		(x, y) = horizons.main.session.world.water[rand_water_id]
@@ -125,6 +128,7 @@ class Trader(Player, StorageHolder):
 	def send_ship_random_branch(self, ship):
 		"""Sends a ship to a random branch office on the map
 		@param ship: Ship instance that is to be used"""
+		self.log.debug("Trader %s: moving to random bo", self.getId())
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		branchoffices = horizons.main.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
@@ -145,6 +149,7 @@ class Trader(Player, StorageHolder):
 	def reached_branch(self, ship):
 		"""Actions that need to be taken when reaching a branch office
 		@param ship: ship instance"""
+		self.log.debug("Trader %s: reached bo", self.getId())
 		settlement = self.office[ship.id].settlement
 		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
 			rand = random.randint(*self.sell_amount) # select a random amount to sell
@@ -152,6 +157,7 @@ class Trader(Player, StorageHolder):
 				continue # continue if there are more resources in the inventory than the settlement wants to buy
 			else:
 				alter = rand if limit-settlement.inventory[res] >= rand else limit-settlement.inventory[res]
+				self.log.debug("Trader %s: buying %s tons of res %s", self.getId(), alter, res)
 				ret = settlement.owner.inventory.alter(1, -alter*\
 					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
 				if ret == 0: # check if enough money was in the inventory
@@ -167,6 +173,7 @@ class Trader(Player, StorageHolder):
 				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
 			else:
 				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
+				self.log.debug("Trader %s: selling %s tons of res %s", self.getId(), alter, res)
 				# Pay for bought resources
 				settlement.owner.inventory.alter(1, -alter*\
 					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
@@ -182,6 +189,8 @@ class Trader(Player, StorageHolder):
 		@param ship: ship instance"""
 		if random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
+			self.log.debug("Trader %s: idle, moving to random location", self.getId())
 			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self)
 		else:
+			self.log.debug("Trader %s: idle, moving to random bo", self.getId())
 			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
