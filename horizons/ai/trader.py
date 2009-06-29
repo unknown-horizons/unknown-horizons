@@ -20,6 +20,7 @@
 # ###################################################
 
 import random
+import logging
 
 import horizons.main
 
