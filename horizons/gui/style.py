@@ -84,6 +84,9 @@ STYLES= {
 		#	'base_color' : fife.Color(60, 60, 60),
 		#	'background_color' : fife.Color(0, 0, 0)
 		#}
+		'Slider' : {
+			'base_color' : fife.Color(80,80,40,50),
+		},
 	},
 	'menu': { #Used in the main menu and game menu
 		'default' : {
