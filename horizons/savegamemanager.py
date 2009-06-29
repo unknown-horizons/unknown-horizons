@@ -20,12 +20,15 @@
 # ###################################################
 
 
+import logging
 import os
 import os.path
 import glob
 import time
 import user
+
 import horizons.main
+
 from dbreader import DbReader
 
 class SavegameManager(object):
@@ -38,6 +41,8 @@ class SavegameManager(object):
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
 	"""
+	log = logging.getLogger("savegamemanager")
+
 	savegame_dir = "%s/.unknown-horizons/save" % user.home
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
@@ -103,19 +108,24 @@ class SavegameManager(object):
 
 	def create_filename(self, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
-		return "%s/%s.%s" % (self.savegame_dir, savegamename, self.savegame_extension)
+		name = "%s/%s.%s" % (self.savegame_dir, savegamename, self.savegame_extension)
+		self.log.debug("Savegamemanager: creating save-filename: %s", name)
+		return name
 
 	def create_autosave_filename(self):
 		"""Returns the filename for an autosave"""
-		return "%s/%s.%s" % (self.autosave_dir, \
+		name = "%s/%s.%s" % (self.autosave_dir, \
 												 self.autosave_filenamepattern % {'timestamp':time.time()}, \
 												 self.savegame_extension)
+		self.log.debug("Savegamemanager: creating autosave-filename: %s", name)
+		return name
 
 	def create_quicksave_filename(self):
 		"""Returns the filename for a quicksave"""
-		return "%s/%s.%s" % (self.quicksave_dir, \
+		name = "%s/%s.%s" % (self.quicksave_dir, \
 												 self.quicksave_filenamepattern % {'timestamp':time.time()}, \
 												 self.savegame_extension)
+		self.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 
 	def delete_dispensable_savegames(self, autosaves = False, quicksaves = False):
 		"""Delete savegames that are no longer needed
@@ -162,17 +172,21 @@ class SavegameManager(object):
 
 	def get_regular_saves(self, include_displaynames = True):
 		"""Returns all savegames, that were saved via the ingame save dialog"""
+		self.log.debug("Savegamemanager: regular saves from: %s", self.savegame_dir)
 		return self.__get_saves_from_dirs([self.savegame_dir], \
 										  include_displaynames = include_displaynames)
 
 	def get_saves(self, include_displaynames = True):
 		"""Returns all savegames"""
+		self.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", self.savegame_dir, \
+									 self.autosave_dir, self.quicksave_dir, self.demo_dir)
 		return self.__get_saves_from_dirs([self.savegame_dir, self.autosave_dir, \
 										   self.quicksave_dir, self.demo_dir], \
 										  include_displaynames = include_displaynames)
 
 	def get_quicksaves(self, include_displaynames = True):
 		"""Returns all savegames, that were saved via quicksave"""
+		self.log.debug("Savegamemanager: quicksaves from: %s", self.quicksave_dir)
 		return self.__get_saves_from_dirs([self.quicksave_dir], \
 										  include_displaynames = include_displaynames)
 
@@ -181,4 +195,5 @@ class SavegameManager(object):
 		"""Returns a displayable name, extracted from a filename"""
 		name = os.path.basename(savegamefile)
 		name = name.rsplit(".%s"%cls.savegame_extension, 1)[0]
+		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
