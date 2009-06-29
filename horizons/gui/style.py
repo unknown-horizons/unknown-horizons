@@ -80,10 +80,10 @@ STYLES= {
 			'base_color' : fife.Color(60, 60, 60),
 			'background_color' : fife.Color(60, 60, 60)
 		},
-		#'TextField' : {
-		#	'base_color' : fife.Color(60, 60, 60),
-		#	'background_color' : fife.Color(0, 0, 0)
-		#}
+		'TextField' : {
+			'base_color' : fife.Color(60, 60, 60),
+			'background_color' : fife.Color(0, 0, 0)
+		},
 	},
 	'menu': { #Used in the main menu and game menu
 		'default' : {
@@ -226,6 +226,17 @@ STYLES= {
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 		},
+		'ListBox' : {
+			'background_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fife.Color(255,255,255,128),
+			'font' : 'Essays1743-Italic_14_black',
+		},
+		'ScrollArea' : {
+			'background_color' : fife.Color(255,255,255,64),
+			'foreground_color' : fife.Color(80,80,40),
+			'font' : 'Essays1743-Italic_14_black',
+		},
 		'DropDown' : {
 			'selection_color' : fife.Color(255,255,255,200),
 			'background_color' : fife.Color(255,255,255,128),
@@ -237,17 +248,6 @@ STYLES= {
 			'base_color' : fife.Color(80,80,40,128),
 		},
 		'TextBox' : {
-			'font' : 'Essays1743-Italic_14_black',
-		},
-		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
-			'font' : 'Essays1743-Italic_14_black',
-		},
-		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
 			'font' : 'Essays1743-Italic_14_black',
 		},
 		'HBox' : {

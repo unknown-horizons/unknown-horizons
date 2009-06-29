@@ -37,6 +37,6 @@
 	</Container>
 
 	<Container position="695,500" size="100,100">
-		<ImageButton name="okButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0"/>
+		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="0,0"/>
 	</Container>
 </Container>

@@ -7,13 +7,15 @@
 		<ScrollArea min_size="300,340" horizontal_scrollbar="0" position="22,60">
 			<ListBox name="savegamelist" min_size="300,340"/>
                 </ScrollArea>
-		<Button name="deleteButton" text="Delete" position="32,470"/>
+		<ImageButton name="deleteButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="32,460"/>
 	</Container>
 	<Container size="320,500" position="420,32" name="right_page">
 		<Label name="enter_filename_label" text="Enter filename:" position="32,50"/>
 		<TextField name="savegamefile" min_size="200,16" position="52,90" />		
 		<HBox name="savegamedetails_box" min_size="300,50" position="52,200" />
-		<Button name="cancelButton" text="Cancel" position="180,470"/>
-		<Button name="okButton" text="Ok" position="250,470"/>
+		<Container size="320,40" position="200,460">
+			<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0"/>
+			<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
+		</Container>
 	</Container>
 </Container>

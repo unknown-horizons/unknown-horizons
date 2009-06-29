@@ -52,9 +52,9 @@
 			<DropDown min_size="120,0" name="language" position=" 150,40"/>   
 		</Container>
 
-		<Container size="320,40" position="160,460">
-			<Button name="cancelButton" text="Cancel" position="0,0"/>
-			<Button name="okButton" text="Ok" position="70,0"/>
+		<Container size="320,40" position="200,460">
+		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0"/>
+		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
 		</Container>
 	</Container>
 </Container>
