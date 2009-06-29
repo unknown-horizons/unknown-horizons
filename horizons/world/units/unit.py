@@ -20,6 +20,7 @@
 # ###################################################
 
 import fife
+import logging
 
 import horizons.main
 
@@ -27,6 +28,7 @@ from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
+	log = logging.getLogger("world.units")
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(**kwargs)
 		self.__init(x, y, owner)
@@ -167,6 +169,8 @@ class Unit(WorldObject):
 			except PathBlockedError:
 				self.__is_moving = False
 				self.next_target = self.position
+				self.owner.notify_unit_path_blocked(self)
+				self.log.debug("Unit %s: path is blocked, no way around", self.getId())
 				return
 
 		if self.next_target is None:

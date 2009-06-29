@@ -45,7 +45,7 @@ class Player(WorldObject):
 		assert hasattr(self.color, "id"), "Player color has to be a default color"
 
 		self.setup_inventory()
-	
+
 	def setup_inventory(self):
 		self.inventory = PositiveStorage()
 
@@ -71,3 +71,11 @@ class Player(WorldObject):
 		self._init(worldid, name, Color[color])
 
 		self.inventory.load(db, worldid)
+
+
+	def notify_unit_path_blocked(self, unit):
+		"""Notify the user that a unit stopped moving
+		NOTE: this is just a quick fix for a release
+		      a signaling concept for such events is planned.
+		"""
+		pass

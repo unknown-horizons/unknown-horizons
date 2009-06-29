@@ -50,7 +50,7 @@ class Trader(Player, StorageHolder):
 
 		# create a ship and place it randomly (temporary hack)
 		(x, y) = horizons.main.session.world.water[random.randint(0, len(horizons.main.session.world.water)-1)]
-		self.ships[horizons.main.session.entities.units[6](x, y)] = self.shipStates.reached_branch
+		self.ships[horizons.main.session.entities.units[6](x, y, owner=self)] = self.shipStates.reached_branch
 		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
 
 	def _init(self, ident, name, color):
@@ -195,3 +195,9 @@ class Trader(Player, StorageHolder):
 		else:
 			self.log.debug("Trader %s: idle, moving to random bo", self.getId())
 			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
+
+
+	def notify_unit_path_blocked(self, unit):
+		self.log.debug("Trader %s: ship blocked", self.getId())
+		# retry moving ship in 2 secs
+		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, ship), self, 32)
