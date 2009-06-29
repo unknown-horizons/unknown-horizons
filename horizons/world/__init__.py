@@ -141,7 +141,6 @@ class World(LivingObject):
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
-		## TODO same for blocking units on island, as soon as such are implemented
 
 		# create shiplist, which is currently used for saving ships
 		# and having at least one reference to them

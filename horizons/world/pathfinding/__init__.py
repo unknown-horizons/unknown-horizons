@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['pathnodes', 'pather']
+__all__ = ['pathnodes', 'pather', 'pathfinding']
 
 class PathBlockedError(Exception):
 	"""Exception to be thrown when a path is unexpectedly blocked"""

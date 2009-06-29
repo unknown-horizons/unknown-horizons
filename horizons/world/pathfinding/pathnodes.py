@@ -36,14 +36,25 @@ class PathNodes(object):
 		pass
 
 class ConsumerBuildingPathNodes(PathNodes):
-	"""List of path nodes for a consumer, that is a building"""
+	"""List of path nodes for a consumer, that is a building
+	Interface:
+	self.nodes: list of coordinates of the home_building, where collector can walk
+	"""
 	def __init__(self, consumerbuilding):
 		super(ConsumerBuildingPathNodes, self).__init__()
-		self.nodes = consumerbuilding.position.get_radius_coordinates( \
-			consumerbuilding.radius)
+		self.nodes = consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius)
 
 class IslandPathNodes(PathNodes):
-	"""List of path nodes for island"""
+	"""List of path nodes for island
+	Interface:
+	self.nodes: List of nodes on island, where the terrain allows to be walked on
+	self.road_nodes: dictionary of nodes, where a road is built on
+
+	(un)register_road has to be called for each coord, where a road is built on (destroyed)
+	reset_tile_walkablity has to be called when the terrain changes the walkability
+	(e.g. building construction, a flood, or whatever)
+	is_walkable rechecks the walkability status of a coordinate
+	"""
 	def __init__(self, island):
 		super(IslandPathNodes, self).__init__()
 
@@ -54,15 +65,14 @@ class IslandPathNodes(PathNodes):
 		# to calculate it every time (rather expensive!).
 		self.nodes = []
 		for coord in self.island():
-			if self.is_walkable(coord, False):
+			if self.is_walkable(coord):
 				self.nodes.append(coord)
 
 		# nodes where a real road is built on.
 		self.road_nodes = {}
 
 	def register_road(self, road):
-		# TODO: currently all paths have speed 1, since we don't have a real
-		# velocity-system yet.
+		# TODO: currently all paths have speed 1, since we don't have a real velocity-system yet.
 		for i in road.position:
 			self.road_nodes[ (i.x, i.y) ] = 1
 
@@ -70,16 +80,17 @@ class IslandPathNodes(PathNodes):
 		for i in road.position:
 			del self.road_nodes[ (i.x, i.y) ]
 
-	def is_walkable(self, coord, check_coord_is_on_island = True):
+	def is_walkable(self, coord):
 		"""Check if a unit may walk on the tile specified by coord
+		NOTE: nature tiles (trees..) are considered to be walkable (or else they could be used as
+		      walls against enemies)
 		@param coord: tuple: (x, y)
-		@param check_coord_is_on_island: bool, wether to check if coord is on this island
 		"""
-		if check_coord_is_on_island:
-			if not coord in self.island().get_coordinates():
-				return False
-
 		tile_object = self.island().get_tile(Point(*coord))
+
+		if tile_object is None:
+			return False
+
 		# if it's not constructible, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on

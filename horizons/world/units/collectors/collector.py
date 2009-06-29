@@ -28,7 +28,7 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import WorldObject
-from horizons.world.pathfinding.pather import CollectorPather
+from horizons.world.pathfinding.pather import BuildingCollectorPather
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
@@ -301,7 +301,7 @@ class Collector(StorageHolder, Unit):
 		return jobs
 
 	def create_pather(self):
-		return CollectorPather(self)
+		return BuildingCollectorPather(self)
 
 
 class Job(object):

@@ -97,7 +97,7 @@ class FindPath(object):
 
 		# check if target is blocked
 		target_is_blocked = True
-		for coord in self.destination.get_coordinates():
+		for coord in self.destination:
 			if not coord in self.blocked_coords:
 				target_is_blocked = False
 		if target_is_blocked:
@@ -107,7 +107,7 @@ class FindPath(object):
 		# check if target is walkable
 		if not self.make_target_walkable:
 			target_is_walkable = False
-			for coord in self.destination.get_coordinates():
+			for coord in self.destination:
 				if coord in self.path_nodes:
 					target_is_walkable = True
 					break

@@ -58,7 +58,6 @@ class Rect(object):
 		elif isinstance(other, Rect):
 			return self.distance_to_rect(other)
 		else:
-			## TODO: other = (x, y, width, height)
 			# is other tuple: (x, y)?
 			if isinstance(other[0], int) and isinstance(other[1], int):
 				return self.distance_to_tuple(other)

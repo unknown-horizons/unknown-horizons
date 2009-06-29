@@ -38,7 +38,7 @@ class Point(object):
 		""" Returns point as coordinate
 		This is useful, because Rect supports this too.
 		"""
-		return [(self.x, self.y)]
+		return [self.to_tuple()]
 
 	def to_tuple(self):
 		"""Returns point as a tuple"""

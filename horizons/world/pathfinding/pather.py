@@ -37,10 +37,16 @@ of the pathfinding algorithm.
 """
 
 class AbstractPather(object):
-	"""Interface for pathfinding for use by Unit.
-	"""
+	"""Abstract Interface for pathfinding for use by Unit.
+	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
 	def __init__(self, unit, move_diagonal, make_target_walkable = True):
+		"""
+		@param unit: instance of unit, to which the pather belongs
+		@param move_diagonal: wether the unit may walk diagonally
+		@param make_target_walkable: wether we should assume, that we can walk on
+		                             the tiles that make up the target
+		"""
 		self.move_diagonal = move_diagonal
 		self.make_target_walkable = make_target_walkable
 
@@ -67,7 +73,7 @@ class AbstractPather(object):
 		return []
 
 	def _check_for_obstacles(self, point):
-		"""Check if the path is suddenly blocked by e.g. a unit
+		"""Check if the path is unexpectedly blocked by e.g. a unit
 		@param point: tuple: (x, y)
 		@return: bool, true if path is blocked"""
 		return (point in self._get_blocked_coords())
@@ -78,17 +84,21 @@ class AbstractPather(object):
 		@param destination_in_building: bool, wether destination is in a building.
 		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
-		@return: False if movement is impossible, else True"""
+		@return: True iff movement is possible"""
+		# calculate our source
 		source = self.unit.position
 		if self.unit.is_moving() and self.path is not None:
+			# we are moving, use next step as source
 			source = Point(*self.path[self.cur])
 		else:
-			# check if source is in a building
+			# check if we are in a building
 			building = horizons.main.session.world.get_building( \
 				self.unit.position.x, self.unit.position.y)
 			if building is not None:
 				source = building
 
+		# call algorithm
+		# to use a different pathfinding code, just change the following line
 		path = FindPath()(source, destination, self._get_path_nodes(),
 											self._get_blocked_coords(), self.move_diagonal, \
 											self.make_target_walkable)
@@ -97,6 +107,7 @@ class AbstractPather(object):
 			return False
 
 		if not check_only:
+			# prepare movement
 			self.path = path
 			if self.unit.is_moving():
 				self.cur = 0
@@ -119,16 +130,21 @@ class AbstractPather(object):
 		self.cur += 1
 		if self.path is None or self.cur == len(self.path):
 			self.cur = None
+			# movement finished
 			return None
 
 		if self._check_for_obstacles(self.path[self.cur]):
 			# path is suddenly blocked, find another path
 			self.cur -= 1 # reset, since move is not possible
+			# try to calculate another path
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
 				self.log.info("tile suddenly %s %s blocked for %s %s", \
 											self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.getId())
+				# no other path can be found. since the problem cannot be fixed here,
+				# we raise an exception
 				raise PathBlockedError
 
+		# check if we have to change visibility because of entering or leaving a building
 		if self.destination_in_building and self.cur == len(self.path)-1:
 			self.destination_in_building = False
 			self.unit.hide()
@@ -148,6 +164,8 @@ class AbstractPather(object):
 		del self.path[self.cur+1:]
 
 	def save(self, db, unitid):
+		# just save each step of the path
+		# current position is calculated on loading through unit position
 		if self.path is not None:
 			for step in xrange(len(self.path)):
 				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", \
@@ -164,7 +182,7 @@ class AbstractPather(object):
 			self.path = []
 			for step in path_steps:
 				self.path.append(step) # the sql statement orders the steps
-			cur_position = self.unit.position.get_coordinates()[0]
+			cur_position = self.unit.position.to_tuple()
 			if cur_position in self.path:
 				self.cur = self.path.index(cur_position)
 			else:
@@ -184,9 +202,10 @@ class ShipPather(AbstractPather):
 		return horizons.main.session.world.ship_map
 
 	def _check_for_obstacles(self, point):
-			#check if another ship is blocking the way
+			#check if another ship is blocking the way (and other ship is not self)
 			if point in horizons.main.session.world.ship_map and \
 				 horizons.main.session.world.ship_map[self.path[self.cur]]() is not self.unit:
+				# issue a short debug message (no code execution here)
 				other = horizons.main.session.world.ship_map[self.path[self.cur]]()
 				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
 											 point[0], point[1], \
@@ -196,11 +215,11 @@ class ShipPather(AbstractPather):
 				# also check in super class
 				return super(ShipPather, self)._check_for_obstacles(point)
 
-class CollectorPather(AbstractPather):
+class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)
-	such as farm animals."""
+	within the radius of their home building such as farm animals."""
 	def __init__(self, unit):
-		super(CollectorPather, self).__init__(unit, move_diagonal=True)
+		super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True)
 
 	def _get_path_nodes(self):
 			return self.unit.home_building().path_nodes.nodes
@@ -216,7 +235,8 @@ class RoadPather(AbstractPather):
 		return self.island().path_nodes.road_nodes
 
 class SoldierPather(AbstractPather):
-	"""Pather for units, that move absolutely freely (such as soldiers)"""
+	"""Pather for units, that move absolutely freely (such as soldiers)
+	Their path list is maintained by IslandPathNodes"""
 	def __init__(self, unit):
 		super(SoldierPather, self).__init__(unit, move_diagonal=True, \
 																				make_target_walkable=False)
@@ -227,7 +247,7 @@ class SoldierPather(AbstractPather):
 		return island.path_nodes.nodes
 
 	def _get_blocked_coords(self):
-		# TODO
+		# TODO: think of concept for blocking land units
 		return []
 
 	def _check_for_obstacles(self, point):

@@ -124,10 +124,6 @@ class Island(WorldObject):
 		"""Returns list of coordinates, that are on the island."""
 		return self.ground_map.keys()
 
-	def get_walkable_coordinates(self):
-		"""Get list of tiles, which are acctually walkable right now."""
-		return self.walkable_tiles
-
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
 		@param point: Point containt position of the tile.
