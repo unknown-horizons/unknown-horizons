@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <Container name="chime_window" size="374,230" position="325,235">
 	<Icon image="content/gui/images/background/notice.png" position="0,0" />
-	<Label text="CHIME THE BELL" position="140,30" />
+	<Label text="CHIME THE BELL" position="125,30" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" position="80,50" />
-	<Label name="made_it_label" text="Yeah, you made it..." position="102,82"/>
-	<Label name="deadlink_label" text="But this is a deadlink, sorry." position="102,132"/>
+	<Label name="made_it_label" text="Yeah, you made it..." position="102,82" />
+	<Label name="deadlink_label" text="But this is a deadlink, sorry." position="102,132" />
 	<Container size="400,60" position="235,170">
-		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
+		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0" />
 	</Container>
 </Container>

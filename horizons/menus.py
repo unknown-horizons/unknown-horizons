@@ -43,26 +43,36 @@ class Menus(object):
 		self.widgets['mainmenu'].stylize('menu')
 		self.widgets['quitgame'] = load_xml_translated('quitgame.xml')
 		self.widgets['quitgame'].stylize('book')
+		self.widgets['quitgame'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['credits'] = load_xml_translated('credits.xml')
 		self.widgets['credits'].stylize('book')
+		self.widgets['credits'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['settings'] = load_xml_translated('settings.xml')
 		self.widgets['settings'].stylize('book')
+		self.widgets['settings'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['requirerestart'] = load_xml_translated('changes_require_restart.xml')
 		self.widgets['requirerestart'].stylize('book')
+		self.widgets['requirerestart'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['popup_with_cancel'] = load_xml_translated('popupbox_with_cancel.xml')
 		self.widgets['popup_with_cancel'].stylize('book')
+		self.widgets['popup_with_cancel'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['popup'] = load_xml_translated('popupbox.xml')
 		self.widgets['popup'].stylize('book')
+		self.widgets['popup'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['gamemenu'] = load_xml_translated('gamemenu.xml')
 		self.widgets['gamemenu'].stylize('menu')
 		self.widgets['chime'] = load_xml_translated('chime.xml')
 		self.widgets['chime'].stylize('book')
+		self.widgets['chime'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['help'] = load_xml_translated('help.xml')
 		self.widgets['help'].stylize('book')
+		self.widgets['help'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['quitsession'] = load_xml_translated('quitsession.xml')
 		self.widgets['quitsession'].stylize('book')
+		self.widgets['quitsession'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml')
 		self.widgets['singleplayermenu'].stylize('book')
+		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['serverlist'] = load_xml_translated('serverlist.xml')
 		self.widgets['serverlist'].stylize('menu')
 		self.widgets['serverlobby'] = load_xml_translated('serverlobby.xml')
@@ -70,7 +80,9 @@ class Menus(object):
 		self.widgets['loadingscreen'] = load_xml_translated('loadingscreen.xml')
 		self.widgets['ingame_load'] = load_xml_translated('ingame_load.xml')
 		self.widgets['ingame_load'].stylize('book')
+		self.widgets['ingame_load'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['savegame'] = load_xml_translated('ingame_save.xml')
+		self.widgets['savegame'].findChild(name='headline').stylize('headline') # style definition for headline
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
 	def show_main(self):
@@ -362,6 +374,7 @@ class Menus(object):
 		self.hide() # Hide old gui
 		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
 		self.widgets['singleplayermenu'].stylize('book')
+		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline')
 		self.current = self.widgets['singleplayermenu']
 		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
 		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)

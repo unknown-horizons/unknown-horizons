@@ -2,19 +2,19 @@
 <Container name="load_game_window" size="800,800" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	<Container size="320,500" position="55,32">
-		<Label text="LOAD GAME" position="120,10" />
+		<Label text="LOAD GAME" position="115,10" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" position="52,30" />
 		<ScrollArea min_size="300,340" horizontal_scrollbar="0" position="22,60">
-			<ListBox name="savegamelist" min_size="300,340"/>
+			<ListBox name="savegamelist" min_size="300,340" />
                 </ScrollArea>
-		<ImageButton name="deleteButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="32,460"/>
+		<ImageButton name="deleteButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="32,460" />
 	</Container>
 	<Container size="320,500" position="420,32" name="right_page">
 		<Label name="details_label" text="Details:" position="32,60" />		
 		<HBox name="savegamedetails_box" min_size="300,50" position="52,80" />
 		<Container size="320,40" position="200,460">
-			<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0"/>
-			<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
+			<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0" />
+			<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0" />
 		</Container>
 	</Container>
 </Container>
