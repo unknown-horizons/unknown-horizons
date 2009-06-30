@@ -513,11 +513,11 @@ msgstr "Legende:"
 
 #: horizons/i18n/guitranslations.py:242
 msgid "Buy ressources"
-msgstr "Waren Einkaufen:"
+msgstr "Waren einkaufen"
 
 #: horizons/i18n/guitranslations.py:243
 msgid "Sell ressources"
-msgstr "Waren Verkaufen:"
+msgstr "Waren verkaufen"
 
 #: horizons/i18n/guitranslations.py:245
 msgid "Select ressources to buy/sell:"
