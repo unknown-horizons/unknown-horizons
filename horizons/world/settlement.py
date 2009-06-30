@@ -66,9 +66,6 @@ class Settlement(TradePost, WorldObject):
 			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
 
-		# TODO:
-		# Tiles
-
 	@classmethod
 	def load(cls, db, worldid):
 		self = cls.__new__(cls)

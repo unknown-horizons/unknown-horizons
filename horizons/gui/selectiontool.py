@@ -152,6 +152,12 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			horizons.main.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
+			target_mapcoord = horizons.main.session.view.cam.toMapCoordinates(\
+				fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			for i in horizons.main.session.selected_instances:
+				if isinstance(i, Unit):
+					horizons.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
+			""" old code for moving just one unit (kept for reference):
 			if len(horizons.main.session.selected_instances) == 1 and \
 			   any(hasattr(i, 'act') for i in horizons.main.session.selected_instances):
 				target_mapcoord = horizons.main.session.view.cam.toMapCoordinates(\
@@ -159,6 +165,7 @@ class SelectionTool(NavigationTool):
 				for i in horizons.main.session.selected_instances:
 					if isinstance(i, Unit):
 						horizons.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
+			"""
 		else:
 			super(SelectionTool, self).mousePressed(evt)
 			return
