@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Window name="chime_window" title="Chime The Bell" base_color="40, 40, 40">
-	<Label name="made_it_label" text="Yeah, you made it..." base_color="40, 40, 40"/>
-	<HBox>
-		<Label name="deadlink_label" text="But this is a deadlink, sorry."/>
-	</HBox>
-	<HBox>
-		<Spacer />
-		<Button name="okButton" text="Back to business ..." base_color="40, 40, 40"/>
-	</HBox>
-</Window>
+<Container name="chime_window" size="374,230" position="325,235">
+	<Icon image="content/gui/images/background/notice.png" position="0,0" />
+	<Label text="CHIME THE BELL" position="140,30" />
+	<Icon image="content/gui/images/background/hr.png" position="80,50" />
+	<Label name="made_it_label" text="Yeah, you made it..." position="102,82"/>
+	<Label name="deadlink_label" text="But this is a deadlink, sorry." position="102,132"/>
+	<Container size="400,60" position="235,170">
+		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
+	</Container>
+</Container>

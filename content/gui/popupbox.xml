@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
-<Window name="popup_window" base_color="40, 40, 40">
-	<Label name="popup_message" base_color="40, 40, 40"/>
-	<HBox>
-		<Spacer />
-		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
-	</HBox>
-</Window>
+<Container name="popup_window" size="374,230" position="325,235">
+	<Icon image="content/gui/images/background/notice.png" position="0,0" />
+	<Label text="NOT IMPLEMENTED YET" position="112,30" />
+	<Icon image="content/gui/images/background/hr.png" position="80,50" />
+	<Label name="popup_message" position="22,82"/>
+	<Container size="400,60" position="235,170">
+		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
+	</Container>
+</Container>

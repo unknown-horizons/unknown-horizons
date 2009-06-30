@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
-<Window name="quit_session_window" title="Quit Unknown Horizons" base_color="40, 40, 40">
-	<Label text="Are you sure you want to abort the running session?" name="ConfirmQuitLabel" base_color="40, 40, 40"/>
-	<HBox>
-		<Spacer />
-		<Button name="cancelButton" text="Cancel" base_color="40, 40, 40"/>
-		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
-	</HBox>
-</Window>
+<Container name="quit_session_window" size="374,230" position="325,235">
+	<Icon image="content/gui/images/background/notice.png" position="0,0" />
+	<Label text="QUIT SESSION" position="145,30" />
+	<Icon image="content/gui/images/background/hr.png" position="80,50" />
+	<Label text="Are you sure you want to abort the running session?" name="ConfirmQuitLabel" position="22,82"/>
+	<Container size="400,60" position="235,170">
+		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0"/>
+		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0"/>
+	</Container>
+</Container>

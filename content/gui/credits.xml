@@ -2,7 +2,7 @@
 <Container name="credits_window" size="800,800" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	<Container position="55,32" size="500,500" background_color="0,0,0">
-		<Label text="These guys contributed to Unknown Horizons:" position="22,0"/>
+		<Label text="CONTRIBUTORS" position="120,10"/>
 		<Icon image="content/gui/images/background/hr.png" position="52,30" />	
 	
 		<Label text="PROJECT COORDINATION" position="32,40"/>

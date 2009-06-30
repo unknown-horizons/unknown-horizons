@@ -3,8 +3,8 @@
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	
 	<Container size="320,500" position="55,32">
-		<Label text="This is the Unknown Horizons settings dialog." name="settings_dialog_title" position="22,0"/>
-		<Label text="Please make sure that you know, what you do." name="settings_dialog_title_2" position="22,20"/>
+		<Label text="SETTINGS" position="130,10"/>
+		<Label text="Please make sure that you know, what you do." position="22,30"/>
 		<Icon image="content/gui/images/background/hr.png" position="52,50" />
 		
 		<Container size="320,240" position="0,60" name="graphic_settings">
@@ -23,12 +23,12 @@
 			<Label name="music_volume_label" text="Music volume:" position="22,40"/>
 			<Container size="180,30" position="150,40">
 				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" />
-				<TextBox name="volume_music_value" text="" position="130,-6"/>
+				<TextBox name="volume_music_value" text="" position="130,0"/>
 			</Container>
 			<Label name="effect_volume_label" text="Effects volume:" position="22,80"/> 
 			<Container size="180,30" position="150,80"> 
 				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" />
-				<TextBox name="volume_effects_value" text=""  position="130,-6"/>
+				<TextBox name="volume_effects_value" text=""  position="130,0"/>
 			</Container>
 			<CheckBox min_size="160,32" name="sound_enable_opt" text="Enable sound" position="22,120"/>   	
 		</Container>

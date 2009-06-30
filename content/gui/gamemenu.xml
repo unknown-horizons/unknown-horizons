@@ -11,7 +11,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,161"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="startGame" position="488,169"  border_size="0"/>
 
-	<VBox position="420,565"><Label name="quit" text=" Cancel Game "/></VBox>
+	<VBox position="400,565"><Label name="quit" text=" Cancel Game "/></VBox>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="476,469"/>
 	<ImageButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="closeButton" position="484,477" border_size="0"/>
 
