@@ -4,8 +4,8 @@
 	<Icon image="content/gui/images/background/city_name_bg.png" position="19,17" />
 
 	<!--<Icon name="CoA" image="content/gui/images/icons/hud/main/coa.png" position="25,10" />-->
-	<Icon image="content/gui/images/icons/hud/main/icon_settlement.png"  position="25,20" />
-	<Icon name="city_info_inhabitants" image="content/gui/images/icons/hud/main/icon_inhabitants.png"  position="174,16" />
-	<Label name="city_name" text="" position="62,12"/>
-	<Label name="city_inhabitants" position="205,12" text=""/>
+	<Icon image="content/gui/images/icons/hud/main/icon_settlement.png"  position="20,5" />
+	<Icon name="city_info_inhabitants" image="content/gui/images/icons/hud/main/icon_inhabitants.png"  position="170,8" />
+	<Label name="city_name" text="" position="62,19"/>
+	<Label name="city_inhabitants" position="205,19" text=""/>
 </Container>
