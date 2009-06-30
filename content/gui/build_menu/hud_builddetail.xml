@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="264,430" border_size="0">
+<Container size="250,430" border_size="0">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
@@ -9,7 +9,7 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />
 
 	<Container position="0,70" size="250,400" >
-		<HBox name="head_box" position="20,0">
+		<HBox name="head_box" position="0,7">
 			<Label name="headline" text="Build: "/>
 			<Label name="building_name" text="" />
 		</HBox>
@@ -17,10 +17,13 @@
 		<Icon name="building" position="0,70"/>
 	</Container>
 
-	<Container size="220,150" padding="5" name="top_bar">
-		<ImageButton name="rotate_left" position="15,60" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
-		<ImageButton name="rotate_right" position="175,60" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
-		<Label position="70,68" name="running_cost_label" text="Running Costs:"/>
-		<Label position="150,68" name="running_costs" text=""/>
+	<Container size="245,150" padding="5" name="top_bar">
+		<ImageButton name="rotate_left" position="32,60" up_image="content/gui/images/icons/hud/main/rotate_left.png" down_image="content/gui/images/icons/hud/main/rotate_left.png" hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
+		<ImageButton name="rotate_right" position="215,60" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
+	
+		<Label position="73,65" name="running_cost_label" text="Running Costs:"/>
+		<Label position="189,65" name="running_costs" text=""/>
+
+
 	</Container>
 </Container>

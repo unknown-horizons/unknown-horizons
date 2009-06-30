@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="264,550">
+<Container size="264,400">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
@@ -8,15 +8,19 @@
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
 	
-	<Container position="0,70" size="600,400" >
-		<Label name="headline" position="70,0" text="Buy or sell ressources" />
+	<Container position="0,70" size="245,300" >
+		<Label name="headline" position="40,7" text="Buy or sell ressources" />
+			
+		<Icon image="content/gui/images/background/hr.png" position="20,105" />
+		<HBox size="250, 100" position="23,47" name="content" padding="10"/>
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-		
-		<Label name="legend_label" text="Legend:" position="20,37"/>
-			<Label name="buy_label" text="Buy ressources" position="88,37"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="65,45"/>
-			<Label name="sell_label" text="Sell ressources" position="88,60"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="65,67"/>
-		<Icon image="content/gui/images/background/hr.png" position="20,88" />
-		<HBox size="250, 100" position="23,110" name="content" padding="10"/>
+
+		<Container position="0,120" size="245,300" >
+			<Label name="legend_label" text="Legend:" position="20,0"/>
+			<Label name="buy_label" text="Buy ressources" position="105,0"/><Icon image="content/gui/images/icons/hud/main/buysell_buy.png" size="10,10" position="85,0"/>
+			<Label name="sell_label" text="Sell ressources" position="105,22"/><Icon image="content/gui/images/icons/hud/main/buysell_sell.png" size="10,10" position="85,22"/>
+		</Container>
+
 	</Container>
 	
 </Container>

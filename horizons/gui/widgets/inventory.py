@@ -87,7 +87,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
 		# res_id is used by the TradeWidget for example to determine the ressource this button represents
 		self.res_id = res_id
-		self.text_position = (15, 33)
+		self.text_position = (20, 36)
 		self.filled = 0
 
 	def _set_filled(self, percent):

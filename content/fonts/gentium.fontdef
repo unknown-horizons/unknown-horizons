@@ -52,9 +52,9 @@ antialias: 1
 [Font/gentium_14_black]
 
 type: truetype
-source: content/fonts/GenBasBI.ttf
+source: content/fonts/GenBasB.ttf
 size: 14
-color: 80,80,60
+color: 68,42,2
 antialias: 1
 
 [Font/gentium_small_black]
@@ -62,7 +62,7 @@ antialias: 1
 type: truetype
 source: content/fonts/GenBasBI.ttf
 size: 16
-color: 80,80,60
+color: 68,42,2
 antialias: 1
 
 

@@ -9,7 +9,7 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
 	
 	<Container position="0,70" size="600,400" >
-		<Label name="headline" position="80,0" text="Inventory" />
+		<Label name="headline" position="80,7" text="Inventory" />
 			<Icon image="content/gui/images/background/hr.png" position="20,30" />
 			
 			<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />

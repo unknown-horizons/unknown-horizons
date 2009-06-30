@@ -108,7 +108,7 @@ class BuildingTool(NavigationTool):
 			head_box.position[1]
 			)
 		self.gui.position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0],
+			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
 			157
 		)
 		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - horizons.main.session.ingame_gui.gui['minimap'].size[1]/1)
@@ -131,7 +131,7 @@ class BuildingTool(NavigationTool):
 		image = sorted(horizons.main.action_sets[action_set][self.action][(self.rotation+int(horizons.main.session.view.cam.getRotation())-45)%360].keys())[0]
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
-		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2 -13, self.gui.size[1]/2 - building_icon.size[1]/2 - 50)
+		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)
 		self.gui.adaptLayout()
 
 	def preview_build(self, point1, point2):
