@@ -3,7 +3,7 @@ Unknown Horizons
 -----------------------------------------------------
 2009-XX-XX: Milestone 2009.1 (to be released)
 * General
-  * New: Boadbuilder class with unitcreation, it possible to build ships
+  * New: Boadbuilder class with unitcreation, it's possible to build ships
   * New: Support for translating the whole GUI was added, including
          German, French, Portuguese and Norwegian translations, add       
          language choose menu in settings

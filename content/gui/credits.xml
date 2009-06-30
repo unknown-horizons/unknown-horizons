@@ -21,7 +21,7 @@
 		<Label text="phiker (Philipp Kerling)" position="62,300"/>
 		<Label text="spq (Kristoffer Janke)" position="62,320"/>
 		<Label text="totycro (Bernhard Mallinger)" position="62,340"/>
-		<Label text="christoph_debian (Christoph Eggern)" position="62,360"/>
+		<Label text="christoph_debian (Christoph Egger)" position="62,360"/>
 	
 		<Label text="GRAPHIC ARTIST" position="32,400"/>
 		<Label text="dauerflucher (Andreas Lis)" position="62,420"/>
@@ -48,7 +48,7 @@
 	
 		<Label text="SPECIAL THANKS to:" position="22,220"/>
 		<Label text="mvBarracuda (Martin Vohland)" position="62,240"/>
-		<Label text="lamoot (Matjaz Lamut" position="62,260"/>
+		<Label text="lamoot (Matjaz Lamut)" position="62,260"/>
 		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,280"/>
 		<Label text="dreimer (Daniel Reimer)" position="62,300"/>
 		<Label text="hoehrer (Werner Hoehrer)" position="62,320"/>
