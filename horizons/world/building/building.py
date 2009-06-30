@@ -36,6 +36,7 @@ class Building(AmbientSound, WorldObject):
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	part_of_nature = False # wether this is part of nature (free units can walk through it)
+	walkable = False # wether we can walk on this building (true for e.g. streets, trees..)
 
 	log = logging.getLogger("world.building")
 
@@ -129,6 +130,9 @@ class Building(AmbientSound, WorldObject):
 
 	def is_part_of_nature(self):
 		return self.part_of_nature
+
+	def is_walkable(self):
+		return self.walkable
 
 	def get_buildings_in_range(self):
 		# TODO Think about moving this to the Settlement class

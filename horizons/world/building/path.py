@@ -28,6 +28,8 @@ from building import Building
 from buildable import BuildableLine, BuildableSingle
 
 class Path(Building, BuildableLine):
+	walkable = True
+
 	def init(self):
 		"""
 		"""

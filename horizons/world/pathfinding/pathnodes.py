@@ -96,7 +96,7 @@ class IslandPathNodes(PathNodes):
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
 			return False
-		if tile_object.blocked and not tile_object.object.is_part_of_nature():
+		if tile_object.blocked and not tile_object.object.is_walkable():
 			return False
 		return True
 
