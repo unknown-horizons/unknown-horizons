@@ -27,27 +27,35 @@ from weakmethod import WeakMethod
 class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):
 		super(Changelistener, self).__init__()
+		self.__init()
+
+	def __init(self):
 		self.__listeners = []
 
-	def addChangeListener(self, listener):
+	def __ensure_inited(self):
+		"""
+		TODO: Why does this exist? why isn't this inited always? change this.
+		"""
 		if not hasattr(self, '_Changelistener__listeners'):
-			self.__listeners = []
+			self.__init()
+
+	def addChangeListener(self, listener):
+		self.__ensure_inited()
 		self.__listeners.append(WeakMethod(listener))
 
 	def removeChangeListener(self, listener):
-		if not hasattr(self, '_Changelistener__listeners'):
-			self.__listeners = []
+		self.__ensure_inited()
 		self.__listeners.remove(WeakMethod(listener))
 
 	def hasChangeListener(self, listener):
+		self.__ensure_inited()
 		if WeakMethod(listener) in self.__listeners:
 			return True
 		else:
 			return False
 
 	def _changed(self):
-		if not hasattr(self, '_Changelistener__listeners'):
-			self.__listeners = []
+		self.__ensure_inited()
 		for listener in self.__listeners:
 			listener()
 
