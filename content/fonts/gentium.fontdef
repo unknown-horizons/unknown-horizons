@@ -48,19 +48,20 @@ antialias: 1
 #row_spacing: 50
 #glyph_spacing: 100
 
+
 [Font/gentium_14_black]
 
 type: truetype
-source: content/fonts/GenBasR.ttf
-size: 15
+source: content/fonts/GenBasBI.ttf
+size: 14
 color: 80,80,60
 antialias: 1
 
 [Font/gentium_small_black]
 
 type: truetype
-source: content/fonts/GenBasR.ttf
-size: 17
+source: content/fonts/GenBasBI.ttf
+size: 16
 color: 80,80,60
 antialias: 1
 

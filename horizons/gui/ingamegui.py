@@ -79,9 +79,9 @@ class IngameGui(LivingObject):
 		})
 
 		self.gui['status'] = load_xml_translated('status.xml')
-		self.gui['status'].stylize('menu_black')
+		self.gui['status'].stylize('resource_bar')
 		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
-		self.gui['status_extra'].stylize('menu_black')
+		self.gui['status_extra'].stylize('resource_bar')
 
 		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
 		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
@@ -96,10 +96,10 @@ class IngameGui(LivingObject):
 		self.gui['gamemenu'].show()
 
 		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
-		self.gui['status_gold'].stylize('menu_black')
+		self.gui['status_gold'].stylize('resource_bar')
 		self.gui['status_gold'].show()
 		self.gui['status_extra_gold'] = load_xml_translated('status_extra_gold.xml')
-		self.gui['status_extra_gold'].stylize('menu_black')
+		self.gui['status_extra_gold'].stylize('resource_bar')
 
 		self.callbacks_build = {
 			0: {
