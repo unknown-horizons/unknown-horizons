@@ -404,13 +404,13 @@ class IngameGui(LivingObject):
 				plusx = 20
 			if resource_name == 'gold':
 				self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).position = (
-					self.gui['status_gold'].findChild(name = icon_name).position[0] + 33 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
-					35 + 10 * i + plusx
+					self.gui['status_gold'].findChild(name = icon_name).position[0] + 34 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+					42 + 10 * i + plusx
 				)
 			else:
 				self.gui['status'].findChild(name = resource_name + '_' + str(i)).position = (
 					self.gui['status'].findChild(name = icon_name).position[0] + 25 - self.gui['status'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
-					35 + 10 * i + plusx
+					42 + 10 * i + plusx
 				)
 
 	def save(self, db):

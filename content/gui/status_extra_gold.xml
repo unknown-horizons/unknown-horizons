@@ -3,6 +3,6 @@
 <Container size="150,120" position="0,0">
 	<Icon image="content/gui/images/background/res_mon_extra_bg.png" position="14,83" />
 
-		<Label name="gold_2" text=""  position="20,76"/>
-		<Label name="gold_3" text="" />
+		<Label name="gold_2" text="" position="25,83"/>
+		<Label name="gold_3" text="" position="25,70" />
 </Container>
