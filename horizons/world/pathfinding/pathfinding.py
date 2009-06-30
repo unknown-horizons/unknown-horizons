@@ -68,8 +68,8 @@ class FindPath(object):
 		self.diagonal = diagonal
 		self.make_target_walkable = make_target_walkable
 
-		self.log.debug('searching path from %s to %s. blocked: %s', \
-									 source, destination, blocked_coords)
+		#self.log.debug('searching path from %s to %s. blocked: %s', \
+		#							 source, destination, blocked_coords)
 
 		# prepare args
 		if not self.setup():
@@ -101,18 +101,18 @@ class FindPath(object):
 			if not coord in self.blocked_coords:
 				target_is_blocked = False
 		if target_is_blocked:
-			self.log.debug("FindPath: target is blocked")
+			#self.log.debug("FindPath: target is blocked")
 			return False
 
 		# check if target is walkable
 		if not self.make_target_walkable:
 			target_is_walkable = False
 			for coord in self.destination:
-				if coord in self.path_nodes:
+				if coord.to_tuple() in self.path_nodes:
 					target_is_walkable = True
 					break
 			if not target_is_walkable:
-				self.log.debug("FindPath: target is not walkable")
+				#self.log.debug("FindPath: target is not walkable")
 				return False
 
 		return True

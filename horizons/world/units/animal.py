@@ -102,7 +102,7 @@ class WildAnimal(Animal, Collector):
 		#import pdb ; pdb.set_trace()
 		# save members
 		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)", \
-			 self.getId(), self.health, self.can_reproduce)
+			 self.getId(), self.health, int(self.can_reproduce))
 
 		# save remaining ticks when in waiting state
 		if self.state == self.states.no_job_waiting:
@@ -114,7 +114,7 @@ class WildAnimal(Animal, Collector):
 				 remaining_ticks, self.getId())
 
 	def load(self, db, worldid):
-		import pdb ; pdb.set_trace()
+		#import pdb ; pdb.set_trace()
 		super(WildAnimal, self).load(db, worldid)
 		self.health, can_reproduce = \
 				db("SELECT health, can_reproduce FROM wildanimal WHERE rowid = ?", worldid)[0]
@@ -126,7 +126,7 @@ class WildAnimal(Animal, Collector):
 		if self.state == self.states.no_job_waiting:
 			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, \
 																										 remaining_ticks)
-		elif self.state == self.states.no_job_moving_randomly:
+		elif self.state == self.states.no_job_walking_randomly:
 			self.add_move_callback(self.search_job)
 
 	def get_home_inventory(self):
