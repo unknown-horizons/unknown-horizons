@@ -102,6 +102,8 @@ class Island(WorldObject):
 			building.save(db)
 		for settlement in self.settlements:
 			settlement.save(db, self.getId())
+		for animal in self.wild_animals:
+			animal.save(db)
 
 	def load(self, db, worldid):
 		super(Island, self).load(db, worldid)

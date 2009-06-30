@@ -43,7 +43,8 @@ class Collector(StorageHolder, Unit):
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
-									'waiting_for_animal_to_stop', 'stopped')
+									'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
+									'no_job_waiting')
 
 	def __init__(self, x, y, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \

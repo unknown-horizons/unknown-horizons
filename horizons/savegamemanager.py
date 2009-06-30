@@ -114,17 +114,15 @@ class SavegameManager(object):
 
 	def create_autosave_filename(self):
 		"""Returns the filename for an autosave"""
-		name = "%s/%s.%s" % (self.autosave_dir, \
-												 self.autosave_filenamepattern % {'timestamp':time.time()}, \
-												 self.savegame_extension)
+		name = "%s/%s" % (self.autosave_dir, \
+												 self.autosave_filenamepattern % {'timestamp':time.time()})
 		self.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
 	def create_quicksave_filename(self):
 		"""Returns the filename for a quicksave"""
-		name = "%s/%s.%s" % (self.quicksave_dir, \
-												 self.quicksave_filenamepattern % {'timestamp':time.time()}, \
-												 self.savegame_extension)
+		name = "%s/%s" % (self.quicksave_dir, \
+												 self.quicksave_filenamepattern % {'timestamp':time.time()})
 		self.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 

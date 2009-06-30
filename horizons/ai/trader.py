@@ -95,6 +95,7 @@ class Trader(Player, StorageHolder):
 	def _load(self, db, worldid):
 		super(Trader, self)._load(db, worldid)
 
+	def load_ship_states(self, db):
 		# load ships one by one from db (ship instances themselves are loaded already, but
 		# we have to use them here)
 		for ship_id, state_id, remaining_ticks, targeted_branch in \

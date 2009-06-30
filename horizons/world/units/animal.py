@@ -97,6 +97,38 @@ class WildAnimal(Animal, Collector):
 	def home_island(self):
 		return self._home_island()
 
+	def save(self, db):
+		super(WildAnimal, self).save(db)
+		#import pdb ; pdb.set_trace()
+		# save members
+		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)", \
+			 self.getId(), self.health, self.can_reproduce)
+
+		# save remaining ticks when in waiting state
+		if self.state == self.states.no_job_waiting:
+			calls = horizons.main.session.scheduler.get_classinst_calls(self,  \
+																												self.handle_no_possible_job)
+			assert(len(calls) == 1)
+			remaining_ticks = calls.values()[0]
+			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?", \
+				 remaining_ticks, self.getId())
+
+	def load(self, db, worldid):
+		import pdb ; pdb.set_trace()
+		super(WildAnimal, self).load(db, worldid)
+		self.health, can_reproduce = \
+				db("SELECT health, can_reproduce FROM wildanimal WHERE rowid = ?", worldid)[0]
+		self.can_reproduce = bool(can_reproduce)
+		self.show()
+
+	def apply_state(self, state, remaining_ticks=None):
+		super(WildAnimal, self).apply_state(state, remaining_ticks)
+		if self.state == self.states.no_job_waiting:
+			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, \
+																										 remaining_ticks)
+		elif self.state == self.states.no_job_moving_randomly:
+			self.add_move_callback(self.search_job)
+
 	def get_home_inventory(self):
 		return self.inventory
 
@@ -117,10 +149,12 @@ class WildAnimal(Animal, Collector):
 		if target is not None:
 			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
 			self.move(target, callback=self.search_job)
+			self.state = self.states.no_job_walking_randomly
 		else:
 			# we couldn't find a target, just try again 3 secs later
 			self.log.debug('WildAnimal %s: no possible job, no possible new loc', self.getId())
 			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
+			self.state = self.states.no_job_waiting
 
 	def get_random_location_in_range(self):
 		"""Returns a random location in walking_range, that we can find a path to
@@ -134,8 +168,6 @@ class WildAnimal(Animal, Collector):
 			target_tuple = possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)]
 			possible_walk_targets.remove(target_tuple)
 			target = Point(*target_tuple)
-			self.log.debug('WildAnimal %s: checking random loc: %s %s', \
-										 self.getId(), target_tuple[0], target_tuple[1])
 			found_possible_target = self.check_move(target)
 			# temporary hack to make sure that animal doesn't leave island (necessary until
 			# SOLDIER_MOVEMENT is fully implemented and working)

@@ -146,15 +146,19 @@ class World(LivingObject):
 		# and having at least one reference to them
 		self.ships = []
 
-		# load all units (we do it here cause all buildings are loaded by now)
-		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
-			horizons.main.session.entities.units[typeid].load(db, worldid)
-
-
 		if horizons.main.session.is_game_loaded():
 			# for now, we have one trader in everygame, so this is safe:
 			trader_id = db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(db, trader_id)
+
+		# load all units (we do it here cause all buildings are loaded by now)
+		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
+			horizons.main.session.entities.units[typeid].load(db, worldid)
+
+		if horizons.main.session.is_game_loaded():
+			# let trader command it's ships. we have to do this here cause ships have to be
+			# initialised for this, and trader has to exist before ships are loaded.
+			self.trader.load_ship_states(db)
 
 		"""TUTORIAL:
 		To digg deaper, you should now continue to horizons/world/island.py,
