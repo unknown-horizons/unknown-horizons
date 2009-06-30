@@ -68,7 +68,6 @@ class Menus(object):
 		self.widgets['serverlobby'] = load_xml_translated('serverlobby.xml')
 		self.widgets['serverlobby'].stylize('menu')
 		self.widgets['loadingscreen'] = load_xml_translated('loadingscreen.xml')
-		self.widgets['loadingscreen'].stylize('menu')
 		self.widgets['ingame_load'] = load_xml_translated('ingame_load.xml')
 		self.widgets['ingame_load'].stylize('book')
 		self.widgets['savegame'] = load_xml_translated('ingame_save.xml')
