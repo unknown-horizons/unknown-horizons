@@ -260,7 +260,12 @@ class World(LivingObject):
 		@return: List of branch offices.
 		"""
 		branchoffices = []
-		for island in horizons.main.session.world.islands:
+		islands = []
+		if radius is not None and position is not None:
+			islands = self.get_islands_in_radius(position, radius)
+		else:
+			islands = self.islands
+		for island in islands:
 			for settlement in island.settlements:
 				for building in settlement.buildings:
 					if isinstance(building, horizons.world.building.storages.BranchOffice):
