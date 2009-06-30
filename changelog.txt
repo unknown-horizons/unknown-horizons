@@ -3,23 +3,41 @@ Unknown Horizons
 -----------------------------------------------------
 2009-XX-XX: Milestone 2009.1 (to be released)
 * General
-  * New: Boadbuilder class
+  * New: Boadbuilder class with unitcreation, it possible to build ships
   * New: Support for translating the whole GUI was added, including
-         German and Norwegian translations
-  * Fix: Building speed has been improved, lumberjack preview is now almost lagfree.
+         German, French, Portuguese and Norwegian translations, add       
+         language choose menu in settings
+  * New: Load/save function for maps
+  * New: Start work at wildanimals
+  * New: randon start position for playership
+  * New: add commandline arguments --start-map; --enable-unstable-features;
+  * New: Add logging system
+  * New: Add debug modul option for commandline --debug-module
+  * New: debug messages are now only shown by using ./run_uh.py -d
+  * New: Add new tabwidget
+  * New: Ship radius when building is now updated on the fly if the ship 
+         moves.
+  * New: Add Developermap with only one small island
+  * Change: Hotkeys: set g for grid, b for buildmenu and d for debugger 
+  * Fix: Building speed has been improved, lumberjack preview is now   
+         almost lagfree.
   * Fix: Loading speed has been improved
   * Fix: Tearing buildings no longer crashes the game
   * Fix: All exceptions when ending a session have been taken care of
   * Fix: Fixed trading bug; selling resources now gives you money
+  * Fix: building multiple streets with one click
+  * Fix: Main menu doesn't disappear when loading a game
 
 * Graphics and GUI
+  * New: Completly new ingame GUI
   * New: Graphics for boat builder
   * New: Graphics for hunter
   * New: Two new variations for inhabitants
   * New: Second model for inhabitants tent
   * Change: Little update on main square
   * Change: Slightly retouched cursor graphics
-
+  * Change: Look of help and creditsmenu
+         
 ... and a lot more smaller bugfixes.
 
 -----------------------------------------------------
