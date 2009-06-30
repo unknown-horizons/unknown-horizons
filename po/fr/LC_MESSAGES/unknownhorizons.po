@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2009-06-24 14:43+CEST\n"
-"PO-Revision-Date: 2009-06-27 20:22+0000\n"
+"PO-Revision-Date: 2009-06-29 17:05+0000\n"
 "Last-Translator: Vincent HERILIER <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -276,7 +276,7 @@ msgstr "Joueurs multiples"
 
 #: horizons/i18n/guitranslations.py:115
 msgid " Credits "
-msgstr " Crédits"
+msgstr " Crédits "
 
 #: horizons/i18n/guitranslations.py:116
 msgid " Quit "
@@ -284,11 +284,11 @@ msgstr " Quitter "
 
 #: horizons/i18n/guitranslations.py:117 horizons/i18n/guitranslations.py:156
 msgid " Settings "
-msgstr " Réglages"
+msgstr " Réglages "
 
 #: horizons/i18n/guitranslations.py:118 horizons/i18n/guitranslations.py:154
 msgid " Help "
-msgstr " Aide"
+msgstr " Aide "
 
 #: horizons/i18n/guitranslations.py:119
 msgid " Continue Game "
@@ -296,7 +296,7 @@ msgstr " Continuer la partie "
 
 #: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:155
 msgid " Chime The Bell "
-msgstr " Jeter l'éponge"
+msgstr " Jeter l'éponge "
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Main menu:"
@@ -341,7 +341,7 @@ msgstr " Détails :"
 
 #: horizons/i18n/guitranslations.py:147
 msgid "Load game"
-msgstr "Charger la partie "
+msgstr "Charger la partie"
 
 #: horizons/i18n/guitranslations.py:150
 msgid "Return to Game"
@@ -353,7 +353,7 @@ msgstr " Annuler la partie "
 
 #: horizons/i18n/guitranslations.py:152
 msgid " Save Game "
-msgstr " Sauver la partie"
+msgstr " Sauver la partie "
 
 #: horizons/i18n/guitranslations.py:153
 msgid " Load Game "
@@ -688,7 +688,7 @@ msgstr "Cas :"
 
 #: run_tests.py:78
 msgid "Errors:"
-msgstr "Erreurs : "
+msgstr "Erreurs :"
 
 #: run_uh.py:73
 msgid "FIFE was not found."
@@ -721,7 +721,7 @@ msgstr "Pratique pour tester pendant le développement"
 #: run_uh.py:113
 msgid "Starts <map>. <map> is the filename of the map, without '.sqlite'"
 msgstr ""
-"Démarre <carte>. <carte> est le nom de fichier de la carte, sans '.sqlite' "
+"Démarre <carte>. <carte> est le nom de fichier de la carte, sans '.sqlite'"
 
 #: run_uh.py:114
 msgid "Loads a saved game. Specify the savegamename."
@@ -737,7 +737,7 @@ msgstr "Active l'enregistrement pour un module de log en particulier."
 
 #: run_uh.py:119
 msgid "Have fun playing, and if you do, help us developing!"
-msgstr "Amusez vous bien, et si vous le pouvez, aidez nous à développer ! "
+msgstr "Amusez vous bien, et si vous le pouvez, aidez nous à développer !"
 
 msgid "Use the full screen mode"
 msgstr "Utiliser le mode plein-écran"
@@ -746,76 +746,76 @@ msgid "Enable sound"
 msgstr "Activer le son"
 
 msgid "Branch Office"
-msgstr ""
+msgstr "Succursale"
 
 msgid "Storage Tent"
-msgstr ""
+msgstr "Tente de stockage"
 
 msgid "Tent"
-msgstr ""
+msgstr "Tente"
 
 msgid "Main Square"
-msgstr ""
+msgstr "Place principale"
 
 msgid "Sunsail"
-msgstr ""
+msgstr "Auvent"
 
 msgid "Signal Fire"
-msgstr ""
+msgstr "Signal lumineux"
 
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Tente du tisserand"
 
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Camp de bûcherons"
 
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Tente du chasseur"
 
 msgid "Herdsman's Tent"
-msgstr ""
+msgstr "Tente du berger"
 
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Tente du pêcheur"
 
 msgid "Boat Builder"
-msgstr ""
+msgstr "constructeur de bateaux"
 
 msgid "Lookout"
-msgstr ""
+msgstr "Tour de guet"
 
 msgid "Rampart"
-msgstr ""
+msgstr "Rempart"
 
 msgid "Trail"
-msgstr ""
+msgstr "Piste"
 
 msgid "Log"
-msgstr ""
+msgstr "Tronc"
 
 msgid "Tree"
-msgstr ""
+msgstr "Arbre"
 
 msgid "Pasture"
-msgstr ""
+msgstr "Pré"
 
 msgid "Ship"
-msgstr ""
+msgstr "Navire"
 
 msgid "BuildingCollector"
 msgstr ""
 
 msgid "Sheep"
-msgstr ""
+msgstr "Mouton"
 
 msgid "Fisher"
-msgstr ""
+msgstr "Pêcheur"
 
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Navire pirate"
 
 msgid "Trader"
-msgstr ""
+msgstr "Négociant"
 
 msgid "AnimalCarriage"
 msgstr ""
@@ -836,77 +836,76 @@ msgid "FarmerCollector"
 msgstr ""
 
 msgid "Deer"
-msgstr ""
+msgstr "Cerf"
 
 msgid "pioneer"
-msgstr ""
+msgstr "pionier"
 
 msgid "red"
-msgstr ""
+msgstr "rouge"
 
 msgid "blue"
-msgstr ""
+msgstr "bleu"
 
 msgid "green"
-msgstr ""
+msgstr "vert"
 
 msgid "yellow"
-msgstr ""
+msgstr "jaune"
 
 msgid "pink"
-msgstr ""
+msgstr "rose"
 
 msgid "cyan"
-msgstr ""
+msgstr "cyan"
 
 msgid "black"
-msgstr ""
+msgstr "noir"
 
 msgid "white"
-msgstr ""
+msgstr "blanc"
 
 msgid "A new settlement has been created by $player."
-msgstr ""
+msgstr "Une nouvelle implantation a été créé par $player."
 
 msgid "A new world has been created."
-msgstr ""
+msgstr "Un nouveau monde a été créé."
 
 msgid "coins"
-msgstr ""
+msgstr "pièces"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "laine de mouton"
 
 msgid "textile"
-msgstr ""
+msgstr "tissus"
 
 msgid "boards"
-msgstr ""
+msgstr "planches"
 
 msgid "food"
-msgstr ""
+msgstr "nourriture"
 
 msgid "tools"
-msgstr ""
+msgstr "outils"
 
 msgid "bricks"
-msgstr ""
+msgstr "briques"
 
 msgid "wood"
-msgstr ""
+msgstr "bois"
 
 msgid "grass"
-msgstr ""
+msgstr "herbe"
 
 msgid "wool"
-msgstr ""
+msgstr "laine"
 
 msgid "church"
-msgstr ""
+msgstr "église"
 
 msgid "wild animal food 1"
 msgstr ""
 
 msgid "wild animal meat"
-msgstr ""
-
+msgstr "viande de gibier"
