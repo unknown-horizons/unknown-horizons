@@ -1,0 +1,93 @@
+[Font/libertine_13]
+
+type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 14
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+
+[Font/libertine_14]
+
+type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 15
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+[Font/libertine_mainmenu]
+
+type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 17
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+[Font/libertine_18]
+
+type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 19
+color: 255,255,255
+antialias: 1
+
+
+[Font/libertine_small]
+
+type: truetype
+source: content/fonts/LinLibertine_Re-4.4.1.ttf
+size: 17
+color: 255,255,255
+antialias: 1
+#row_spacing: 50
+#glyph_spacing: 100
+
+
+[Font/libertine_14_black]
+
+type: truetype
+source: content/fonts/LinLibertine_It-4.0.6.ttf
+size: 15
+color: 68,42,2
+antialias: 1
+
+[Font/libertine_small_black]
+
+type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 16
+color: 68,42,2
+antialias: 1
+
+
+[Font/libertine_large]
+
+type: truetype
+source: content/fonts/LinLibertine_Re-4.4.1.ttf
+size: 24
+color: 255,255,255
+antialias: 1
+
+
+[Font/libertine_large_load]
+
+type: truetype
+source: content/fonts/LinLibertine_BI-4.0.5.ttf
+size: 34
+color: 120,100,65
+antialias: 1
+
+
+[Font/libertine_headline]
+
+type: truetype
+source: content/fonts/LinLibertineC_Re-4.0.3.ttf
+size: 18
+color: 68,42,2
+antialias: 1
