@@ -24,6 +24,7 @@ class TradePost(object):
 	the free trader.
 	"""
 	def __init__(self):
+		super(TradePost, self).__init__()
 		self.__init()
 
 	def __init(self):
