@@ -32,9 +32,7 @@ from collectors import Collector, BuildingCollector
 
 class Animal(SecondaryProducer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
-	and usually produce something (e.g. wool).
-
-	Subclasses should inherit from Collector."""
+	and usually produce something (e.g. wool)."""
 	log = logging.getLogger('world.units.animal')
 
 	def __init__(self, **kwargs):
@@ -44,12 +42,25 @@ class Animal(SecondaryProducer):
 		# no collector for our consumed resources
 		pass
 
+	def get_collectable_res(self):
+		return self.get_needed_res()
+
+class CollectorAnimal(Animal):
+	"""Animals that will inherit from collector"""
+	def __init__(self, **kwargs):
+		super(CollectorAnimal, self).__init__(**kwargs)
+		self.__init()
+
 	def sort_jobs(self, jobs):
 		# no intelligent job selection
 		return self.sort_jobs_random(jobs)
 
-	def get_collectable_res(self):
-		return self.get_needed_res()
+	def __init(self):
+		self.collector = None
+
+	def stop_after_job(self, collector):
+		"""Tells the unit to stop after the current job and call the collector to pick it up"""
+		self.collector = collector
 
 	def finish_working(self):
 		# animal is done when it has eaten, and
@@ -57,8 +68,18 @@ class Animal(SecondaryProducer):
 		Collector.finish_working(self)
 		self.end_job()
 
+	def search_job(self):
+		"""Search for a job, only called if the collector does not have a job."""
+		self.log.debug("CollectorAnimal %s search job", self.getId())
+		if self.collector is not None:
+			self.collector.pickup_animal()
+			self.collector = None
+			self.state = self.states.stopped
+		else:
+			super(CollectorAnimal, self).search_job()
 
-class WildAnimal(Animal, Collector):
+
+class WildAnimal(CollectorAnimal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
 	These animals can be hunted.
 
@@ -252,7 +273,7 @@ class WildAnimal(Animal, Collector):
 		self.get_job()
 
 
-class FarmAnimal(Animal, BuildingCollector):
+class FarmAnimal(CollectorAnimal, BuildingCollector):
 	"""Animals that are bred and live in the surrounding area of a farm, such as sheep.
 	They have a home_building, representing their farm; they usually feed on whatever
 	the farm grows, and collectors from the farm can collect their produced resources.
@@ -261,37 +282,12 @@ class FarmAnimal(Animal, BuildingCollector):
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(FarmAnimal, self).__init__(home_building = home_building, \
 																 start_hidden = start_hidden, **kwargs)
-		self.__init()
-
-	def __init(self):
-		self.collector = None
 
 	def register_at_home_building(self):
 		self.home_building().animals.append(self)
 
-	def save(self, db):
-		super(FarmAnimal, self).save(db)
-
-	def load(self, db, worldid):
-		super(FarmAnimal, self).load(db, worldid)
-		self.__init()
-
 	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)
-
-	def search_job(self):
-		"""Search for a job, only called if the collector does not have a job."""
-		self.log.debug("FarmAnimal %s search job", self.getId())
-		if self.collector is not None:
-			self.collector.pickup_animal()
-			self.collector = None
-			self.state = self.states.stopped
-		else:
-			super(FarmAnimal, self).search_job()
-
-	def stop_after_job(self, collector):
-		"""Tells the unit to stop after the current job and call the collector to pick it up"""
-		self.collector = collector
 
 	def create_pather(self):
 		return BuildingCollectorPather(self)
