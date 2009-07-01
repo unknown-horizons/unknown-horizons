@@ -737,7 +737,6 @@ class Menus(object):
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
 			if self.current.collectData('savegamelist') != -1: # Check if it actually collected valid data
-				print "Test:", self.current.collectData('savegamelist')
 				self.current.distributeData({'savegamefile' : savegame_display[self.current.collectData('savegamelist')]})
 
 		def tmp_delete_savegame():
