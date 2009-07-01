@@ -284,7 +284,7 @@ class Fife(object):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		for name, stylepart in horizons.gui.style.STYLES.items():
 			self.pychan.manager.addStyle(name, stylepart)
-		self.pychan.loadFonts("content/fonts/gentium.fontdef")
+		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
 		pychan.widgets.registerWidget(ProgressBar)

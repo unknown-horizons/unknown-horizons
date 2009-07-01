@@ -2,7 +2,7 @@
 <Container name="ingame_save_window" size="800,800" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	<Container size="320,500" position="55,32">
-		<Label text="SAVE GAME" position="110,10" name="headline" />
+		<Label text="Save Game" position="110,10" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" position="52,30" />
 		<ScrollArea min_size="300,340" horizontal_scrollbar="0" position="22,60">
 			<ListBox name="savegamelist" min_size="300,340" />

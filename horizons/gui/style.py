@@ -30,7 +30,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(40, 40, 40, 255),
 			'selection_color' : fife.Color(80, 80, 80, 255),
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		},
 		'Button' : {
 			'border_size': 1,
@@ -47,25 +47,25 @@ STYLES= {
 		'Label' : {
 			'border_size': 0,
 			'background_color' : fife.Color(40, 40, 40, 0),
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		},
 		'ClickLabel' : {
 			'border_size': 0,
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		},
 		'ListBox' : {
 			'border_size': 0,
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		},
 		'Window' : {
 			'border_size': 1,
 			'margins': (10, 10),
 			'titlebar_height' : 30,
-			'font' : 'gentium_large',
+			'font' : 'libertine_large',
 			'base_color' : fife.Color(60, 60, 60)
 		},
 		'TextBox' : {
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		},
 		('Container','HBox','VBox') : {
 			'opaque' : 0,
@@ -97,7 +97,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'gentium_mainmenu'
+			'font' : 'libertine_mainmenu'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -105,7 +105,7 @@ STYLES= {
 		},
 		'Label' : {
 			'border_size': 0,
-			'font' : 'gentium_mainmenu'
+			'font' : 'libertine_mainmenu'
 		}
 	},
 
@@ -118,7 +118,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'gentium_small_black'
+			'font' : 'libertine_small_black'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -126,7 +126,7 @@ STYLES= {
 		},
 		'Label' : {
             'margins': (0,0),
-			'font' : 'gentium_14_black'
+			'font' : 'libertine_14_black'
 		}
 	},
 
@@ -139,7 +139,7 @@ STYLES= {
 			'foreground_color' : fife.Color(0, 0, 0, 0),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'gentium_small_black'
+			'font' : 'libertine_small_black'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -147,7 +147,7 @@ STYLES= {
 		},
 		'Label' : {
 			'alpha':0,
-			'font' : 'gentium_small_black'
+			'font' : 'libertine_small_black'
 		}
 	},
 
@@ -160,7 +160,7 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		},
 		'Button' : {
 			'border_size': 0,
@@ -168,7 +168,7 @@ STYLES= {
 		},
 		'Label' : {
             'margins': (0,0),
-			'font' : 'gentium_small'
+			'font' : 'libertine_small'
 		}
 	},
 
@@ -181,14 +181,14 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'gentium_large'
+			'font' : 'libertine_large'
 		},
 		'Button' : {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
 		'Label' : {
-			'font' : 'gentium_18'
+			'font' : 'libertine_18'
 		}
 	},
 
@@ -201,14 +201,14 @@ STYLES= {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'gentium_headline'
+			'font' : 'libertine_headline'
 		},
 		'Button' : {
 			'border_size': 0,
 			'margins' : (0,0)
 		},
 		'Label' : {
-			'font' : 'gentium_headline'
+			'font' : 'libertine_headline'
 		}
 	},
 
@@ -217,11 +217,11 @@ STYLES= {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 			'foreground_color' : fife.Color(80,80,40),
 		},
 		'Label' : {
-			'font' : 'gentium_14_black'
+			'font' : 'libertine_14_black'
 		},
 		'CheckBox' : {
 			'selection_color' : fife.Color(255,255,255,200),
@@ -234,27 +234,27 @@ STYLES= {
 			'background_color' : fife.Color(255,255,255,128),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 		},
 		'Slider' : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
 		'TextBox' : {
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 		},
 		'ListBox' : {
 			'background_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 			'selection_color' : fife.Color(255,255,255,128),
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 		},
 		'ScrollArea' : {
 			'background_color' : fife.Color(255,255,255,64),
 			'foreground_color' : fife.Color(80,80,40),
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 		},
 		'HBox' : {
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 			'foreground_color' : fife.Color(80,80,40),
 		},
 		'TextField' : {
@@ -262,7 +262,7 @@ STYLES= {
 			'background_color' : fife.Color(255,255,255),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
-			'font' : 'gentium_14_black',
+			'font' : 'libertine_14_black',
 		}
 	},
 

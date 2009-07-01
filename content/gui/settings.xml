@@ -3,7 +3,7 @@
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	
 	<Container size="320,500" position="55,32">
-		<Label text="SETTINGS" position="120,10" name="headline" />
+		<Label text="Settings" position="120,10" name="headline" />
 		<Label text="Please make sure that you know, what you do." position="22,30"/>
 		<Icon image="content/gui/images/background/hr.png" position="52,50" />
 		
