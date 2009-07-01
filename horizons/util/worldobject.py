@@ -52,6 +52,7 @@ class WorldObject(Changelistener):
 		pass
 
 	def load(self, db, worldid):
+		super(WorldObject, self).load(db, worldid)
 		assert not hasattr(self, '_WorldObject__id')
 		assert worldid not in WorldObject.__objects
 		self.log.debug('loading worldobject %s %s', worldid, self)

@@ -59,5 +59,9 @@ class Changelistener(LivingObject):
 		for listener in self.__listeners:
 			listener()
 
+	def load(self, db, world_id):
+		#super(Changelistener, self).load(db, world_id)
+		self.__listeners = []
+
 	def end(self):
 		self.__listeners = None
