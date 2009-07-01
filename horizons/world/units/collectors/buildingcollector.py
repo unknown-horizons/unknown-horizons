@@ -59,8 +59,15 @@ class BuildingCollector(Collector):
 
 		super(BuildingCollector, self).load(db, worldid)
 
-	def register_at_home_building(self):
-		self.home_building().local_collectors.append(self)
+	def register_at_home_building(self, unregister = False):
+		"""Creates reference for self at home building (only hard reference except for
+		in job.object)
+		@param unregister: wether to reverse registration
+		"""
+		if unregister:
+			self.home_building().local_collectors.remove(self)
+		else:
+			self.home_building().local_collectors.append(self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
@@ -69,6 +76,10 @@ class BuildingCollector(Collector):
 			self.home_building()._AbstractConsumer__collectors.append(self)
 			self.add_move_callback(self.reached_home)
 			self.show()
+
+	def remove(self):
+		self.register_at_home_building(unregister=True)
+		super(BuildingCollector, self).remove()
 
 	def get_home_inventory(self):
 		return self.home_building().inventory

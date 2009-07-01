@@ -51,7 +51,7 @@ class Provider(StorageHolder):
 		if self.__collectors is not None:
 			for col in self.__collectors:
 				col.cancel()
-		self.__collectors = None
+		assert len(self.__collectors) == 0
 		super(Provider, self).__del__()
 
 

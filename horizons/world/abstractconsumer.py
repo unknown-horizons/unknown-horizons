@@ -53,13 +53,19 @@ class AbstractConsumer(StorageHolder):
 		if isinstance(self, Building):
 			self.path_nodes = ConsumerBuildingPathNodes(self)
 
+		# list of collectors that are on the way here
 		self.__collectors = WeakList()
-
 
 	def create_collector(self):
 		""" Creates collector according to building type (chosen by polymorphism)
 		"""
 		horizons.main.session.entities.units[2](self)
+
+	def remove(self):
+		for c in self.local_collectors:
+			c.remove()
+		assert len(self.local_collectors) == 0
+		super(AbstractConsumer, self).remove()
 
 	def get_needed_res(self):
 		"""Returns list of resources, where free space in the inventory exists,

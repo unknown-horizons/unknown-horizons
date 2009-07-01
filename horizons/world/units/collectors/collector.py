@@ -111,6 +111,16 @@ class Collector(StorageHolder, Unit):
 
 		self.apply_state(self.state, remaining_ticks)
 
+	def remove(self):
+		"""Removes the instance. Useful when the home building is destroyed"""
+		self.log.debug("Collector %s: remove called", self.getId())
+		# remove from target collector list
+		if self.job is not None and self.job.object is not None:
+			self.job.object._Provider__collectors.remove(self)
+
+		self.hide() # now wait for gc
+
+
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
 		@param state: EnumValue from states

@@ -283,8 +283,11 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		super(FarmAnimal, self).__init__(home_building = home_building, \
 																 start_hidden = start_hidden, **kwargs)
 
-	def register_at_home_building(self):
-		self.home_building().animals.append(self)
+	def register_at_home_building(self, unregister=False):
+		if unregister:
+			self.home_building().animals.remove(self)
+		else:
+			self.home_building().animals.append(self)
 
 	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)
