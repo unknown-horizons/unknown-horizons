@@ -10,7 +10,7 @@
 	<RadioButton position="62,60" size="32,32" name="showRandom" text="Random  " />
 	<RadioButton position="62,100" size="32,32" name="showCampaign" text="Campaign  " />
 	<Label name="main_menu_label" text="Main menu:" position="42,470" />
-	<ImageButton position="120,445" up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" />
+	<ImageButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" />
 	</Container>
 	
 	<!-- What's that?! -->
@@ -32,7 +32,7 @@
 		</ScrollArea>
 		<HBox name="savegamedetails_box" position="80,380" min_size="300,50" />
 		<Label name="start_game_label" text="Start game:" position="170,470" />
-		<ImageButton position="250,452" up_image="content/gui/images/icons/oa_startmenu_compass_gray.png" down_image="content/gui/images/icons/oa_startmenu_compass.png" hover_image="content/gui/images/icons/oa_startmenu_compass.png" name="okay" />
+		<ImageButton position="250,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="okay" />
 	</Container>
 
 	</Container>
