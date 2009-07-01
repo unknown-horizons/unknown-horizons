@@ -118,8 +118,11 @@ class Collector(StorageHolder, Unit):
 		if self.job is not None and self.job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
 
-		self.hide() # now wait for gc
+		self.hide()
 
+		# remove fife instance
+		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+ 		# now wait for gc
 
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
