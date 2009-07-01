@@ -60,6 +60,7 @@ class BuySellTab(TabInterface):
 		self.widget.show()
 		horizons.main.session.ingame_gui.minimap_to_front()
 
+
 	def refresh(self):
 		"""We don't need to refresh"""
 		pass
@@ -81,6 +82,7 @@ class BuySellTab(TabInterface):
 			slot.findChild(name="buysell").capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			content.addChild(slot)
 		self.widget.adaptLayout()
+
 
 	def add_ressource(self, res_id, slot_id, value=None):
 		"""Adds a ressource to the specified slot

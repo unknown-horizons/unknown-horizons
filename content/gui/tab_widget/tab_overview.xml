@@ -9,9 +9,9 @@
 		 	
 	<Container position="0,70" size="600,400" >
 
-		<Label name="headline" position="85,0" text="Overview" />
+		<Label name="headline" position="85,7" text="Overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-		<Container size="260,550" position="25,40">
+		<Container size="260,550" position="25,43">
 			<Label name="name_label" position="0,0" text="Name:" /><Label name='name' position="55,0" text="" />
 			<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />
 		</Container>

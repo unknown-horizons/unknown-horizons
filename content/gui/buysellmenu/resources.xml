@@ -9,8 +9,9 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />
 
 	<Container name="content" position="0,70" size="500,400" >
-		<Label name="headline" text="Select ressources to buy/sell:" position="20,0"/>
-		<VBox name="resources" size="200,0" position="30,100"/>
+		<Label name="headline" text="Select ressources:" position="50,7"/>
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<VBox name="resources" size="200,0" position="20,110"/>
 	</Container>
 
 </Container>

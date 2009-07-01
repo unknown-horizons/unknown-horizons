@@ -9,9 +9,9 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />
 
 	<Container position="0,70" size="250,400" >
-		<HBox name="head_box" position="0,7">
-			<Label name="headline" text="Build: "/>
-			<Label name="building_name" text="" />
+		<HBox name="head_box" position="0,7" size="250,100">
+			<Label name="headline" text="Build "/>
+			<Label name="building_name" text=" " />
 		</HBox>
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Icon name="building" position="0,70"/>
@@ -23,7 +23,6 @@
 	
 		<Label position="73,65" name="running_cost_label" text="Running Costs:"/>
 		<Label position="189,65" name="running_costs" text=""/>
-
 
 	</Container>
 </Container>

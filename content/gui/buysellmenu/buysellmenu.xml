@@ -9,7 +9,7 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
 	
 	<Container position="0,70" size="245,300" >
-		<Label name="headline" position="40,7" text="Buy or sell ressources" />
+		<Label name="headline" position="32,7" text="Buy or sell ressources" />
 			
 		<Icon image="content/gui/images/background/hr.png" position="20,105" />
 		<HBox size="250, 100" position="23,47" name="content" padding="10"/>
