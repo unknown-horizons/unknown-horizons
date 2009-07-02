@@ -143,10 +143,8 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
 	  <varlistentry>
 		<term><option>--load-map <parameter>savegame</parameter></option></term>
 		<listitem>
-		  <para>Loads a saved game. The parameter to savegame is the
-		  filename
-		  in <filename>${HOME}/.unknown-horizons/save/</filename>
-		  without the .sqlite extension</para>
+			<para>Loads a saved game. The savegame name matches the
+				displayed string in the ingame menu</para>
 		</listitem>
 	  </varlistentry>
       <varlistentry>
