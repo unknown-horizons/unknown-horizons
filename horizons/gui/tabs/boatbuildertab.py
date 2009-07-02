@@ -40,6 +40,8 @@ class BoatbuilderTab(TabInterface):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		self.widget.findChild(name='progress').progress = self.instance.progress
+		self.widget.findChild(name='current_construction_label').text = \
+				_("Current construction progress:")+" "+str(self.instance.progress)+"%"
 
 	def show(self):
 		if not self.instance.inventory.hasChangeListener(self.refresh):

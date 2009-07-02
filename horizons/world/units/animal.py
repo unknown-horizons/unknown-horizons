@@ -26,7 +26,7 @@ import logging
 import horizons.main
 
 from horizons.world.production import SecondaryProducer, Provider
-from horizons.util import Point, Circle
+from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
 from collectors import Collector, BuildingCollector
 
@@ -57,6 +57,10 @@ class CollectorAnimal(Animal):
 
 	def __init(self):
 		self.collector = None
+
+	def load(self, db, worldid):
+		self.__init()
+		super(CollectorAnimal, self).load(db, worldid)
 
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
@@ -105,11 +109,11 @@ class WildAnimal(CollectorAnimal, Collector):
 									 "; can_reproduce: %s; population now: %s", \
 				self.getId(), can_reproduce, len(self.home_island.wild_animals))
 
-	def __init(self, island, can_reproduce):
+	def __init(self, island, can_reproduce, health = None):
 		# good health is the main target of an animal. it increases when they eat and
 		# decreases, when they have no food. if it reaches 0, they die, and
 		# if it reaches REPRODUCE_ON_HEALTH_LEVEL, they reproduce
-		self.health = self.HEALTH_INIT_VALUE
+		self.health = health if self.health is not None else self.HEALTH_INIT_VALUE
 		self.can_reproduce = can_reproduce
 		self._home_island = weakref.ref(island)
 		self.home_island.wild_animals.append(self)
@@ -124,6 +128,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		# save members
 		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)", \
 			 self.getId(), self.health, int(self.can_reproduce))
+		# set island as owner
+		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_island.getId(), self.getId())
 
 		# save remaining ticks when in waiting state
 		if self.state == self.states.no_job_waiting:
@@ -137,10 +143,13 @@ class WildAnimal(CollectorAnimal, Collector):
 	def load(self, db, worldid):
 		#import pdb ; pdb.set_trace()
 		super(WildAnimal, self).load(db, worldid)
-		self.health, can_reproduce = \
+		# get own properties
+		health, can_reproduce = \
 				db("SELECT health, can_reproduce FROM wildanimal WHERE rowid = ?", worldid)[0]
-		self.can_reproduce = bool(can_reproduce)
-		self.show()
+		# get home island
+		home_island_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0]
+		island = WorldObject.get_object_by_id(home_island_id)
+		self.__init(island, bool(can_reproduce), health)
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(WildAnimal, self).apply_state(state, remaining_ticks)
