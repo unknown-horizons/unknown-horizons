@@ -111,7 +111,6 @@ class TradeWidget(object):
 		branch_offices = horizons.main.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius)
 		if branch_offices is not None:
 			partners.extend(branch_offices)
-		#TODO: Add ships
 		return partners
 
 	def get_nearest_partner(self, partners):

@@ -77,6 +77,7 @@ class BuySellTab(TabInterface):
 			slot.action = 'buy'
 			slot.res = None
 			slot.findChild(name='button').capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
+			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
 			slot.findChild(name="buysell").capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
