@@ -31,6 +31,11 @@ class BuySellTab(TabInterface):
 
 	log = logging.getLogger("gui")
 
+	buy_button_path =  "content/gui/images/icons/hud/main/buysell_buy.png"
+	sell_button_path = "content/gui/images/icons/hud/main/buysell_sell.png"
+
+	dummy_icon_path = "content/gui/images/icons/hud/build/dummy_btn.png"
+
 	def __init__(self, settlement, slots = 3):
 		super(BuySellTab, self).__init__(widget = 'buysellmenu/buysellmenu.xml')
 		self.settlement = settlement
@@ -115,7 +120,7 @@ class BuySellTab(TabInterface):
 
 		button = slot.findChild(name="button")
 		if res_id == 0:
-			icon = "content/gui/images/icons/hud/build/dummy_btn.png"
+			icon = self.dummy_icon_path
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			slot.findChild(name="amount").text = u""
 			slot.res = None
@@ -133,19 +138,23 @@ class BuySellTab(TabInterface):
 		button = slot.findChild(name="buysell")
 		limit = int(slot.findChild(name="slider").getValue())
 		if slot.action is "buy":
-			button.up_image = "content/gui/images/icons/hud/main/buysell_sell.png"
-			button.hover_image = "content/gui/images/icons/hud/main/buysell_sell.png"
+			# setting to sell
+			button.up_image = self.sell_button_path
+			button.hover_image = self.sell_button_path
 			slot.action = "sell"
 			if slot.res is not None:
 				if slot.res in self.settlement.buy_list:
+					self.log.debug("BuySellTab: Removing res %s from buy list", slot.res)
 					del self.settlement.buy_list[slot.res]
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
 		elif slot.action is "sell":
-			button.up_image = "content/gui/images/icons/hud/main/buysell_buy.png"
-			button.hover_image = "content/gui/images/icons/hud/main/buysell_buy.png"
+			# setting to buy
+			button.up_image = self.buy_button_path
+			button.hover_image = self.buy_button_path
 			slot.action = "buy"
 			if slot.res is not None:
 				if slot.res in self.settlement.sell_list:
+					self.log.debug("BuySellTab: Removing res %s from sell list", slot.res)
 					del self.settlement.sell_list[slot.res]
 				self.add_buy_to_settlement(slot.res, limit, slot.id)
 		#print "Buylist:", self.settlement.buy_list
@@ -156,6 +165,7 @@ class BuySellTab(TabInterface):
 	def add_buy_to_settlement(self, res_id, limit, slot):
 		#print "limit:", limit
 		assert res_id is not None, "Resource to buy is None"
+		self.log.debug("BuySellTab: buying of res %s up to %s", res_id, limit)
 		self.slots[slot].action = "buy"
 		self.settlement.buy_list[res_id] = limit
 		#print self.settlement.buy_list
@@ -164,6 +174,7 @@ class BuySellTab(TabInterface):
 	def add_sell_to_settlement(self, res_id, limit, slot):
 		#print "limit:", limit
 		assert res_id is not None, "Resource to sell is None"
+		self.log.debug("BuySellTab: selling of res %s up to %s", res_id, limit)
 		self.slots[slot].action = "sell"
 		self.settlement.sell_list[res_id] = limit
 		#print self.settlement.sell_list
@@ -187,14 +198,12 @@ class BuySellTab(TabInterface):
 		vbox = self.resources.findChild(name="resources")
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
-		resources = horizons.main.db("SELECT rowid, icon FROM resource")
+		resources = horizons.main.db("SELECT rowid, icon FROM resource WHERE tradeable = 1")
 		# Add the zero element to the beginnig that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:
-			resources.insert(0, (0, "content/gui/images/icons/hud/build/dummy_btn.png"))
+			resources.insert(0, (0, self.dummy_icon_path))
 		for (res_id, icon) in resources:
-			if res_id in [1, 2, 7, 8, 9, 10, 11]:
-				continue # don't show coins, lamb wool, wood etc. Temp hack. Should be replaced by resource groups
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
 			button = pychan.widgets.ImageButton(size=(50, 50))

@@ -43,8 +43,8 @@ class Collector(StorageHolder, Unit):
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
-									'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
-									'no_job_waiting')
+								'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
+								'no_job_waiting')
 
 	def __init__(self, x, y, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
@@ -99,7 +99,7 @@ class Collector(StorageHolder, Unit):
 		# load collector properties
 		state_id, remaining_ticks, start_hidden = \
 						db("SELECT state, remaining_ticks, start_hidden FROM COLLECTOR \
-						   WHERE rowid = ?", worldid)[0]
+							 WHERE rowid = ?", worldid)[0]
 		self.__init(self.states[state_id], start_hidden)
 
 		# load job
@@ -122,7 +122,7 @@ class Collector(StorageHolder, Unit):
 
 		# remove fife instance
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
- 		# now wait for gc
+		# now wait for gc
 
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
@@ -194,17 +194,17 @@ class Collector(StorageHolder, Unit):
 
 		# get sum of picked up resources by other collectors for this res
 		total_pickup_amount = sum([ collector.job.amount for collector in \
-									target._Provider__collectors if \
-									collector.job.res == res ])
+																target._Provider__collectors if \
+																collector.job.res == res ])
 		if total_pickup_amount > res_amount:
 			return None
 
 		# check if other collectors get this resource, because our inventory could
 		# get full if they arrive.
 		total_registered_amount_consumer = sum([ collector.job.amount for collector in \
-												 self.get_colleague_collectors() if \
-												 collector.job is not None and \
-												 collector.job.res == res ])
+																						 self.get_colleague_collectors() if \
+																						 collector.job is not None and \
+																						 collector.job.res == res ])
 
 		# check if there are resources left to pickup
 		inventory_space_for_res = inventory.get_limit(res) - \
@@ -255,9 +255,9 @@ class Collector(StorageHolder, Unit):
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		if res_amount != self.job.amount:
 			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planned was %s",  \
-				self.getId(), res_amount, self.job.res, \
-				self.job.target.getId(), self.job.target, \
-				self.job.amount)
+											 self.getId(), res_amount, self.job.res, \
+											 self.job.target.getId(), self.job.target, \
+											 self.job.amount)
 		self.inventory.alter(self.job.res, res_amount)
 
 	def reroute(self):

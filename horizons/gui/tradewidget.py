@@ -18,12 +18,16 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import logging
+
 import horizons.main
 
 from horizons.gui.widgets.inventory import ImageFillStatusButton
 from horizons.i18n import load_xml_translated
 
 class TradeWidget(object):
+	log = logging.getLogger("gui.tradewidget")
+
 	# objects within this radius can be traded with, only used if the
 	# main instance does not have a radius attribute
 	radius = 5
@@ -81,19 +85,21 @@ class TradeWidget(object):
 
 	def set_exchange(self, size):
 		self.exchange = size
-		#print 'TradeWidget debug: Exchange size now:', self.exchange
+		self.log.debug("Tradewidget: exchange size now: %s", size)
 
 	def transfer(self, res_id, transfer_from, transfer_to):
+		"""Transfers self.exchange tons of resid from transfer_from to transfer_to"""
 		if self.main_instance.position.distance(transfer_to.position) <= self.radius and \
 			 transfer_to is not None and transfer_from is not None:
 			#print 'TradeWidget debug: Transfering', self.exchange, 't of resource', res_id, 'from', transfer_from.name, 'to', transfer_to.name
-			ret = transfer_from.inventory.alter(res_id, -self.exchange) #take ressources, ret = difference to exchange(might not have hat exchange number of res in store)
-			#print 'ret1:', ret
+			# take res from transfer_from
+			ret = transfer_from.inventory.alter(res_id, -self.exchange)
+			# check if we were able to get the planed amount
 			ret = self.exchange if self.exchange < abs(ret) else abs(ret)
-			#print 'ret2:', ret
-			ret = transfer_to.inventory.alter(res_id, self.exchange-ret) # give ressources
-			#print 'ret3:', ret
+			# put res to transfer_to
+			ret = transfer_to.inventory.alter(res_id, self.exchange-ret)
 			transfer_from.inventory.alter(res_id, ret) #return ressources that did not fit
+			# update gui
 			self.draw_widget()
 
 	def get_widgets_by_class(self, parent_widget, widget_class):
