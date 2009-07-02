@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+
+<!--
+
+`xsltproc -''-nonet \
+          -''-param man.charmap.use.subset "0" \
+          -''-param make.year.ranges "1" \
+          -''-param make.single.year.ranges "1" \
+          /usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl \
+          manpage.xml'
+
+A manual page <package>.<section> will be generated. You may view the
+manual page with: nroff -man <package>.<section> | less'. A typical entry
+in a Makefile or Makefile.am is:
+
+DB2MAN = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
+XP     = xsltproc -''-nonet -''-param man.charmap.use.subset "0"
+
+manpage.1: manpage.xml
+        $(XP) $(DB2MAN) $<
+
+The xsltproc binary is found in the xsltproc package. The XSL files are in
+docbook-xsl. A description of the parameters you can use can be found in the
+docbook-xsl-doc-* packages. Please remember that if you create the nroff
+version in one of the debian/rules file targets (such as build), you will need
+to include xsltproc and docbook-xsl in your Build-Depends control field.
+Alternatively use the xmlto command/package. That will also automatically
+pull in xsltproc and docbook-xsl.
+
+Notes for using docbook2x: docbook2x-man does not automatically create the
+AUTHOR(S) and COPYRIGHT sections. In this case, please add them manually as
+<refsect1> ... </refsect1>.
+
+To disable the automatic creation of the AUTHOR(S) and COPYRIGHT sections
+read /usr/share/doc/docbook-xsl/doc/manpages/authors.html. This file can be
+found in the docbook-xsl-doc-html package.
+
+Validation can be done using: `xmllint -''-noout -''-valid manpage.xml`
+
+General documentation about man-pages and man-page-formatting:
+man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
+
+-->
+
+  <!ENTITY dhfirstname "Christoph">
+  <!ENTITY dhsurname   "Egger">
+
+  <!ENTITY dhusername  "&dhfirstname; &dhsurname;">
+  <!ENTITY dhemail     "unknownhorizons@christoph-egger.org">
+
+  <!ENTITY dhsection   "6">
+
+  <!ENTITY dhtitle     "Unknown Horizons User Commands">
+  <!ENTITY dhucpackage "unknown-horizons">
+  <!ENTITY dhpackage   "unknown-horizons">
+]>
+
+<refentry>
+  <refentryinfo>
+    <title>&dhtitle;</title>
+    <productname>&dhpackage;</productname>
+    <authorgroup>
+      <author>
+		<firstname>&dhfirstname;</firstname>
+        <surname>&dhsurname;</surname>
+        <address>
+          <email>&dhemail;</email>
+        </address>
+		<personblurb>Head for translations and Contact for Distributors</personblurb>
+      </author>
+    </authorgroup>
+    <copyright>
+      <year>2009</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    <legalnotice>
+      <para>Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU General Public License,
+        Version 3 or (at your option) any later version published by
+        the Free Software Foundation.</para>
+    </legalnotice>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>&dhucpackage;</refentrytitle>
+    <manvolnum>&dhsection;</manvolnum>
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+    <refpurpose>realtime simulation game</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <!-- These are several examples, how syntaxes could look -->
+      <arg choice="opt"><option>--load-map <parameter>savegame</parameter></option></arg>
+      <arg choice="opt"><option>--start-map <parameter>mapname</parameter></option></arg>
+      <arg choice="opt"><option>--enable-unstable-features</option></arg>
+	  <arg choice="plain">
+        <group choice="req">
+          <arg choice="plain"><option>-d</option></arg>
+          <arg choice="plain"><option>--debug</option></arg>
+        </group>
+	  </arg>
+      <arg choice="opt"><option>--debug-modules <parameter>modulename</parameter></option></arg>
+    </cmdsynopsis>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <!-- Normally the help and version options make the programs stop
+           right after outputting the requested information. -->
+      <group choice="opt">
+        <arg choice="plain">
+          <group choice="req">
+            <arg choice="plain"><option>-h</option></arg>
+            <arg choice="plain"><option>--help</option></arg>
+          </group>
+        </arg>
+        <arg choice="plain">
+          <group choice="req">
+            <arg choice="plain"><option>-v</option></arg>
+            <arg choice="plain"><option>--version</option></arg>
+          </group>
+        </arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1 id="description">
+    <title>DESCRIPTION</title>
+    <para>This manual page documents briefly the
+      <command>&dhpackage;</command> commands.</para>
+    <para><command>&dhpackage;</command> is a real time simulation game</para>
+  </refsect1>
+  <refsect1 id="options">
+    <title>OPTIONS</title>
+    <para>The program follows the usual GNU command line syntax,
+      with long options starting with two dashes (`-').
+	</para>
+    <variablelist>
+      <!-- Use the variablelist.term.separator and the
+           variablelist.term.break.after parameters to
+           control the term elements. -->
+	  <varlistentry>
+		<term><option>--load-map <parameter>savegame</parameter></option></term>
+		<listitem>
+		  <para>Loads a saved game. The parameter to savegame is the
+		  filename
+		  in <filename>${HOME}/.unknown-horizons/save/</filename>
+		  without the .sqlite extension</para>
+		</listitem>
+	  </varlistentry>
+      <varlistentry>
+		<term><option>--start-map <parameter>mapname</parameter></option></term>
+		<listitem>
+		  <para>Loads a available map. The mapname matches the
+		    displayed string in the ingame menu</para>
+        </listitem>
+      </varlistentry>
+	  <varlistentry>
+        <term><option>--enable-unstable-feature</option></term>
+        <listitem>
+          <para>Activates features, that are not considered stable
+          enough for general use yet.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-d</option></term>
+        <term><option>--debug</option></term>
+        <listitem>
+          <para>Enables debug output for Unknwon Horizons</para>
+        </listitem>
+	  </varlistentry>
+	  <varlistentry>
+        <term><option>--debug-modules <parameter>modulename</parameter></option></term>
+        <listitem>
+          <para>Activates the logging for the specified submodule</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-h</option></term>
+        <term><option>--help</option></term>
+        <listitem>
+          <para>Show summary of options.</para>
+        </listitem>
+      </varlistentry>
+<!--      <varlistentry>
+        <term><option>-v</option></term>
+        <term><option>- -version</option></term>
+        <listitem>
+          <para>Show version of program.</para>
+        </listitem>
+      </varlistentry> -->
+    </variablelist>
+  </refsect1>
+  <refsect1 id="files">
+    <title>FILES</title>
+    <variablelist>
+      <varlistentry>
+        <term><filename>${HOME}/.unknown-horizons/config.sqlite</filename></term>
+        <listitem>
+          <para>SQlite Database containing all user settings.
+		  </para>
+        </listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><filename>${HOME}/.unknown-horizons/save</filename></term>
+		<listitem>
+          <para>Savegame Folder containing all saved games
+          </para>
+		</listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  <refsect1 id="bugs">
+    <!-- Or use this section to tell about upstream BTS. -->
+    <title>BUGS</title>
+    <para>The  <acronym>BTS</acronym> can be found
+      at <ulink url="https://trac.unknown-horizons.org/"/>.</para>
+  </refsect1>
+<!--  <refsect1 id="see_also">
+    <title>SEE ALSO</title>
+  </refsect1> -->
+</refentry>
+
