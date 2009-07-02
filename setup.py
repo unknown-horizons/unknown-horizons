@@ -5,6 +5,7 @@ from distutils.command.build import build
 from distutils.spawn import spawn, find_executable
 from glob import glob
 import os
+import os.path
 
 data = []
 
@@ -25,7 +26,15 @@ class build_man(build):
 			self.warn("Can't build manpage, needs xsltproc")
 			return
 
-		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, (['xsltproc', '/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl', 'doc/manpage.xml'],))
+		if os.path.exists('/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl'):
+			stylesheet = '/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl'
+		elif os.path.exists('/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl'):
+			stylesheet = '/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl'
+		else:
+			self.warn("Can't find a suitable stylesheet!")
+			return
+
+		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, (['xsltproc', stylesheet, 'doc/manpage.xml'],))
 		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
 
 build.sub_commands.append(('build_man', None))
