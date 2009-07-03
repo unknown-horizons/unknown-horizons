@@ -33,7 +33,7 @@ antialias: 1
 
 type: truetype
 source: content/fonts/LinLibertine_BI-4.0.5.ttf
-size: 19
+size: 18
 color: 255,255,255
 antialias: 1
 

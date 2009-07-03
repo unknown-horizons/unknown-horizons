@@ -23,12 +23,12 @@
 			<Label name="music_volume_label" text="Music volume:" position="22,40" />
 			<Container size="180,30" position="150,40">
 				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" />
-				<TextBox name="volume_music_value" text="" position="130,0" />
+				<TextBox min_size="40,0" name="volume_music_value" text="" position="124,0" />
 			</Container>
 			<Label name="effect_volume_label" text="Effects volume:" position="22,80" /> 
 			<Container size="180,30" position="150,80"> 
 				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" />
-				<TextBox name="volume_effects_value" text=""  position="130,0" />
+				<TextBox min_size="40,0" name="volume_effects_value" text=""  position="124,0" />
 			</Container>
 			<CheckBox min_size="160,32" name="sound_enable_opt" text="Enable sound" position="22,120" />   	
 		</Container>
@@ -38,12 +38,12 @@
 		<Container size="320,240" position="0,60" name="graphic_settings">
 			<Label text="SAVING" position="12,0"/>			
 			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40" />
-			<DropDown min_size="120,0" name="autosaveinterval" position="150,70" />
-			<Label text="minutes" name="minutes_label" position="180,70" />
+			<DropDown min_size="48,0" name="autosaveinterval" position="150,70" />
+			<Label text="minutes" name="minutes_label" position="210,70" />
 			<Label name="number_of_autosaves_label" text="Number of autosaves:" position="22,100" />
-			<DropDown min_size="120,0" name="savedautosaves" position="150,130" />
+			<DropDown min_size="48,0" name="savedautosaves" position="150,130" />
 			<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="22,155" />
-			<DropDown min_size="120,0" name="savedquicksaves" position="150,180" />
+			<DropDown min_size="48,0" name="savedquicksaves" position="150,180" />
 		</Container>
 
 		<Container size="320,140" position="0,300">
