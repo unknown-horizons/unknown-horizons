@@ -43,7 +43,7 @@ class IngameGui(LivingObject):
 		self.tabwidgets = {}
 		self.settlement = None
 		self.resource_source = None
-		self.resources_needed, self.resource_usable = {}, {}
+		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
 		self.gui['topmain'] = load_xml_translated('top_main.xml')
