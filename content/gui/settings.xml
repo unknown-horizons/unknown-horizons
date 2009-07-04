@@ -10,12 +10,18 @@
 		<Container size="320,240" position="0,60" name="graphic_settings">
 			<Label text="GRAPHICS" position="12,0"/>
 			<Label name="screen_resolution_label" text="Screen resolution:" position="22,40"/>
-			<DropDown min_size="120,0" name="screen_resolution" position="150,40" />
-			<Label name="color_depth_label" text="Color depth:" position="22,80" />
-			<DropDown min_size="120,0" name="screen_bpp" position="150,80" />
-			<Label name="use_renderer_label" text="Used renderer:" position="22,120" />
-			<DropDown min_size="120,0" name="screen_renderer" position="150,120" />
-			<CheckBox min_size="160,32" name="screen_fullscreen" text="Full screen" position="22,160" />
+			<ScrollArea min_size="100,40" position="160,40">			
+			<ListBox name="screen_resolution"/>
+			</ScrollArea>
+			<Label name="color_depth_label" text="Color depth:" position="22,95" />
+			<ScrollArea min_size="100,40" position="160,95">			
+			<ListBox name="screen_bpp"  />
+			</ScrollArea>
+			<Label name="use_renderer_label" text="Used renderer:" position="22,155" />
+			<ScrollArea min_size="100,20" position="160,155">
+			<ListBox name="screen_renderer" />
+			</ScrollArea>
+			<CheckBox min_size="160,32" name="screen_fullscreen" text="Full screen" position="22,190" />
 		</Container>
 
 		<Container size="320,200" position="0,300" name="sound_settings">
@@ -38,18 +44,26 @@
 		<Container size="320,240" position="0,60" name="graphic_settings">
 			<Label text="SAVING" position="12,0"/>			
 			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40" />
-			<DropDown min_size="48,0" name="autosaveinterval" position="150,70" />
+			<ScrollArea min_size="48,20" position="150,70">			
+			<ListBox name="autosaveinterval" />
+			</ScrollArea>
 			<Label text="minutes" name="minutes_label" position="210,70" />
 			<Label name="number_of_autosaves_label" text="Number of autosaves:" position="22,100" />
-			<DropDown min_size="48,0" name="savedautosaves" position="150,130" />
+			<ScrollArea min_size="48,20" position="150,130">
+			<ListBox name="savedautosaves" />
+			</ScrollArea>
 			<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="22,155" />
-			<DropDown min_size="48,0" name="savedquicksaves" position="150,180" />
+			<ScrollArea min_size="48,20" position="150,180">
+			<ListBox name="savedquicksaves" />
+			</ScrollArea>
 		</Container>
 
 		<Container size="320,140" position="0,300">
 			<Label text="LANGUAGE" position="12,0" />
 			<Label name="language_label" text="Language:" position="22,40" /> 
-			<DropDown min_size="120,0" name="language" position=" 150,40" />   
+			<ScrollArea min_size="120,60" position="150,40">
+			<ListBox name="language" />   
+			</ScrollArea>
 		</Container>
 
 		<Container size="320,40" position="200,460">

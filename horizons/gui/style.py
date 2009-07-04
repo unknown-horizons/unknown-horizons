@@ -251,7 +251,9 @@ STYLES= {
 		'ScrollArea' : {
 			'background_color' : fife.Color(255,255,255,64),
 			'foreground_color' : fife.Color(80,80,40),
+			'base_color' : fife.Color(0,0,0,0),
 			'font' : 'libertine_14_black',
+			'horizontal_scrollbar' : 0,
 		},
 		'HBox' : {
 			'font' : 'libertine_14_black',
