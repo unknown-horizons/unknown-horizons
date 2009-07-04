@@ -32,14 +32,14 @@ def set_translations():
 			"slots_label"                 : _("Slots:"),
 			"bots_label"                  : _("Bots:"),
 			"chatbutton"                  : _("chat")},
-		"popupbox.xml" : {
-			"okButton"                    : _("Ok")},
-		"popupbox_with_cancel.xml" : {
-			"okButton"                    : _("Ok"),
-			"cancelButton"                : _("Cancel")},
+#		"popupbox.xml" : {
+#			"okButton"                    : _("Ok")},
+#		"popupbox_with_cancel.xml" : {
+#			"okButton"                    : _("Ok"),
+#			"cancelButton"                : _("Cancel")},
 		"credits.xml" : {
 			"creditsIntroText"            : _("These guys contributed to Unknown Horizons"),
-			"okButton"                    : _("You guys rock!"),
+#			"okButton"                    : _("You guys rock!"),
 			"credits_window"              : _("Credits")},
 		"inventory.xml" : {
 			"islandInventoryLabel"        : _("That's your island-wide inventory."),
@@ -53,12 +53,12 @@ def set_translations():
 			"3"                           : _("n/a"),
 			"4"                           : _("n/a"),
 			"5"                           : _("n/a"),
-			"closeButton"                 : _("Close"),
+#			"closeButton"                 : _("Close"),
 			"inventory_window"            : _("Inventory")},
 		"quitsession.xml" : {
 			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?"),
-			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok"),
+#			"cancelButton"                : _("Cancel"),
+#			"okButton"                    : _("Ok"),
 			"quit_session_window"         : _("Quit Unknown Horizons")},
 		"hud_window_cityinfo.xml" : {
 			"city_info_label"             : _("City infos")},
@@ -69,7 +69,7 @@ def set_translations():
 			"shipSpeed"                   : _("0/0")},
 		"load_disabled.xml" : {
 			"SorryLabel"                  : _("We're sorry, but the load function is not yet working."),
-			"okButton"                    : _("Ok"),
+#			"okButton"                    : _("Ok"),
 			"load_disabled_window"        : _("Oh noes")},
 		"settings.xml" : {
 			"settings_dialog_title"       : _("This is the Unknown Horizons settings dialog. Please make sure that you know, what you do."),
@@ -83,20 +83,20 @@ def set_translations():
 			"music_volume_label"          : _("Music volume:"),
 			"effect_volume_label"         : _("Effects volume:"),
 			"minutes_label"               : _("minutes"),
-			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok"),
+#			"cancelButton"                : _("Cancel"),
+#			"okButton"                    : _("Ok"),
 			"screen_fullscreen"           : _("Use the full screen mode"),
 			"sound_enable_opt"            : _("Enable sound"),
 			"settings_window"             : _("Settings")},
 		"ingame_save.xml" : {
 			"enter_filename_label"        : _("Enter filename:"),
 			"deleteButton"                : _("Delete"),
-			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok"),
+#			"cancelButton"                : _("Cancel"),
+#			"okButton"                    : _("Ok"),
 			"ingame_save_window"          : _("Save game")},
 		"changes_require_restart.xml" : {
 			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons."),
-			"okButton"                    : _("Ok"),
+#			"okButton"                    : _("Ok"),
 			"restart_required_window"     : _("Changes require restart")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
@@ -128,24 +128,24 @@ def set_translations():
 		"chime.xml" : {
 			"made_it_label"               : _("Yeah, you made it..."),
 			"deadlink_label"              : _("But this is a deadlink, sorry."),
-			"okButton"                    : _("Back to business ..."),
+#			"okButton"                    : _("Back to business ..."),
 			"chime_window"                : _("Chime The Bell")},
 		"save_disabled.xml" : {
 			"save_disabled"               : _("We're sorry, but the save function is not yet working."),
-			"okButton"                    : _("Ok"),
+#			"okButton"                    : _("Ok"),
 			"save_disabled_window"        : _("Oh noes")},
 		"quitgame.xml" : {
 			"quit_game_caption"           : _("Are you sure you want to Quit Unknown Horizons?"),
-			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok"),
+#			"cancelButton"                : _("Cancel"),
+#			"okButton"                    : _("Ok"),
 			"quitgame_window"             : _("Quit Unknown Horizons")},
 		"boatbuilder.xml" : {
 			"boat_builder_window"         : _("boatbuilder")},
 		"ingame_load.xml" : {
 			"details_label"               : _(" Details:"),
 			"deleteButton"                : _("Delete"),
-			"cancelButton"                : _("Cancel"),
-			"okButton"                    : _("Ok"),
+#			"cancelButton"                : _("Cancel"),
+#			"okButton"                    : _("Ok"),
 			"load_game_window"            : _("Load game")},
 		"gamemenu.xml" : {
 			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
@@ -164,7 +164,7 @@ def set_translations():
 			"chat_label"                  : _("Chat"),
 			"sendButton"                  : _("Send")},
 		"help.xml" : {
-			"okButton"                    : _("Close"),
+#			"okButton"                    : _("Close"),
 			"help_window"                 : _("Help")},
 		"hud_fertility.xml" : {
 			"fertility1"                  : _("?"),
