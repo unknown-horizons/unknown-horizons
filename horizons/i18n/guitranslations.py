@@ -238,7 +238,7 @@ def set_translations():
 			"buy_label"                   : _("Buy ressources"),
 			"sell_label"                  : _("Sell ressources")},
 		"resources.xml" : {
-			"headline"                    : _("Select ressources to buy/sell:")},
+			"headline"                    : _("Select ressources:")},
 		"hud_build_tab0.xml" : {
 			"headline"                    : _("Build menu"),
 			"residental_label"            : _("Residents and Infrastructural"),
