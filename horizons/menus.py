@@ -174,6 +174,7 @@ class Menus(object):
 			'screen_renderer' : ["OpenGL", "SDL"],
 			'screen_bpp' : ["Desktop", "16", "24", "32"]
 		})
+
 		dlg.distributeData({
 			'autosaveinterval' : settings.savegame.autosaveinterval/2,
 			'savedautosaves' : settings.savegame.savedautosaves-1,
@@ -182,7 +183,8 @@ class Menus(object):
 			'screen_renderer' : 0 if settings.fife.renderer.backend == 'OpenGL' else 1,
 			'screen_bpp' : int(settings.fife.screen.bpp / 10), # 0:0 16:1 24:2 32:3 :)
 			'screen_fullscreen' : settings.fife.screen.fullscreen,
-			'sound_enable_opt' : settings.sound.enabled
+			'sound_enable_opt' : settings.sound.enabled,
+			'language' : languages_map.keys().index(u'System default' if settings.language.name == '' or settings.language.name == 'System default' else settings.language.name)
 		})
 
 		dlg.mapEvents({
