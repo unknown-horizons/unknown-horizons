@@ -1,42 +1,43 @@
 <?xml version="1.0"?>
 <Container name="help_window" size="800,800" position="100,100">
-	<Icon image="content/gui/images/background/book.png" position="0,0" />
-	<Container position="55,32" size="500,500">
-		<Label text="Key Bindings" position="110,10" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" position="52,30" />	
-		<Label text="{LEFT}	= Scroll left" position="52,50" />
-		<Label text="{RIGHT}	= Scroll right" position="52,80" />
-		<Label text="{UP}	= Scroll up" position="52,110" />
-		<Label text="{DOWN}	= Scroll down" position="52,140" />
-		<Label text="{ , } 	= Rotate building left" position="52,170" />
-		<Label text="{ . } 	= Rotate building right" position="52, 200" />
-		<Label text="{U} = Show build mennu" position="52,230" />
-		<Label text="{F1} = Display help" position="52,260"/>
-		<Label text="{F5} = Quicksave" position="52,290"/>
-		<Label text="{F9} = Quickload" position="52,320"/>
-		<Label text="{F10} = Toggle console on/off" position="52,350" />
-		<Label text="{ESC} = Show pause menu" position="52,380" />
-		<Label text="{T} = Toggle grid on/off" position="52,410" />
-		<Label text="{X} = Enable destruct mode" position="52,440" />
-		<!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
-			<TextBox name="helpBox" filename="content/infotext.txt"/>
-		</ScrollArea>-->
-	</Container>
-	
-	<Container position="425,32" size="500,500">
-		<Label text="{P} = Pause game" position="42,50" />
-		<Label text="{ + } = Increase game speed" position="42,80" />
-		<Label text="{ - } = Decrease game speed" position="42,110" />
-		<Label text="{S} = Screenshot" position="42,140"/>
-		<Label text="{B} = Launch Python debugger" position="42,170" />
-		<Label text="Have fun." position="42,260"/>
-		<Label text="The FIFE and Unknown Horizons" position="42,320" />
-		<Label text="development teams" position="42,350" />
-		<Label text="http://www.unknown-horizons.org" position="42,410" />
-		<Label text="http://www.fifengine.de" position="42,440" />
-	</Container>
+        <Icon image="content/gui/images/background/book.png" position="0,0" />
+        <Container position="55,32" size="500,500">
+                <Label text="Key Bindings" position="110,10" name="headline" />
+                <Icon image="content/gui/images/background/hr.png" position="52,30" />        
+                <Label text="{LEFT}        = Scroll left" position="52,50" />
+                <Label text="{RIGHT}        = Scroll right" position="52,80" />
+                <Label text="{UP}        = Scroll up" position="52,110" />
+                <Label text="{DOWN}        = Scroll down" position="52,140" />
+                <Label text="{ , }         = Rotate building left" position="52,170" />
+                <Label text="{ . }         = Rotate building right" position="52, 200" />
+                <Label text="{B} = Show build menu" position="52,230" />
+                <Label text="{F1} = Display help" position="52,260"/>
+                <Label text="{F5} = Quicksave" position="52,290"/>
+                <Label text="{F9} = Quickload" position="52,320"/>
+                <Label text="{F10} = Toggle console on/off" position="52,350" />
+                <Label text="{ESC} = Show pause menu" position="52,380" />
+                <Label text="{G} = Toggle grid on/off" position="52,410" />
+                <Label text="{X} = Enable destruct mode" position="52,440" />
+                <!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
+                        <TextBox name="helpBox" filename="content/infotext.txt"/>
+                </ScrollArea>-->
+        </Container>
+        
+        <Container position="425,32" size="500,500">
+                <Label text="{P} = Pause game" position="42,50" />
+                <Label text="{ + } = Increase game speed" position="42,80" />
+                <Label text="{ - } = Decrease game speed" position="42,110" />
+                <Label text="{S} = Screenshot" position="42,140"/>
+                <Label text="{D} = Launch Python debugger" position="42,170" />
+                <Label text="Have fun." position="42,260"/>
+                <Label text="The FIFE and Unknown Horizons" position="42,320" />
+                <Label text="development teams" position="42,350" />
+                <Label text="http://www.unknown-horizons.org" position="42,410" />
+                <Label text="http://www.fifengine.de" position="42,440" />
+        </Container>
 
-	<Container position="695,500" size="100,100">
-		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="0,0" />
-	</Container>
+        <Container position="695,500" size="100,100">
+                <ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="0,0" />
+        </Container>
 </Container>
+
