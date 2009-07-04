@@ -125,7 +125,7 @@ STYLES= {
 			'margins' : (0,0)
 		},
 		'Label' : {
-            'margins': (0,0),
+            		'margins': (0,0),
 			'font' : 'libertine_14_black'
 		}
 	},
