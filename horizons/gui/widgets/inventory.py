@@ -62,7 +62,7 @@ class Inventory(pychan.widgets.Container):
 										   down_image=icon_disabled if amount == 0 else icon,
 										   hover_image=icon_disabled if amount == 0 else icon,
 										   text=str(amount),
-										   size=(55, 60),
+										   size=(55, 50),
 										   res_id = resid,
 										   opaque=False)
 			button.filled = int(float(amount) / float(self._inventory.limit) * 100.0)
@@ -87,7 +87,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
 		# res_id is used by the TradeWidget for example to determine the ressource this button represents
 		self.res_id = res_id
-		self.text_position = (20, 36)
+		self.text_position = (17, 36)
 		self.filled = 0
 
 	def _set_filled(self, percent):
