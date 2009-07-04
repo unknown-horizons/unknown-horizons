@@ -113,7 +113,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		# good health is the main target of an animal. it increases when they eat and
 		# decreases, when they have no food. if it reaches 0, they die, and
 		# if it reaches REPRODUCE_ON_HEALTH_LEVEL, they reproduce
-		self.health = health if self.health is not None else self.HEALTH_INIT_VALUE
+		self.health = health if health is not None else self.HEALTH_INIT_VALUE
 		self.can_reproduce = can_reproduce
 		self._home_island = weakref.ref(island)
 		self.home_island.wild_animals.append(self)
