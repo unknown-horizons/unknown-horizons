@@ -175,9 +175,9 @@ class IngameGui(LivingObject):
 		show = False
 		if self.resource_source is not None and self.resources_needed.get(res_id, 0) != 0:
 			show = True
-			lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
-			if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
-				lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
+			lines.append('- ' + str(self.resources_needed[res_id]))
+			#if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
+				#lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
 		self.status_set('gold', first)
 		self.status_set_extra('gold',lines)
 		self.set_status_position('gold')
@@ -200,6 +200,7 @@ class IngameGui(LivingObject):
 			self.gui['status_gold'].resizeToContent()
 		else:
 			self.gui['status'].resizeToContent()
+
 	def status_set_extra(self,label,value):
 		"""Sets a value on the extra status bar. (below normal status bar)
 		@param label: str containing the name of the label to be set.
@@ -275,9 +276,9 @@ class IngameGui(LivingObject):
 			show = False
 			if self.resources_needed.get(res_id, 0) != 0:
 				show = True
-				lines.append('- ' + str(self.resources_usable.get(res_id, 0)))
-				if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
-					lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
+				lines.append('- ' + str(self.resources_needed[res_id]))
+				#if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
+					#lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
 			#else:
 			#	self.gui['status_extra'].hide()
 			self.status_set(res_name, first)
