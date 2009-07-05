@@ -279,6 +279,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		return SoldierPather(self)
 
 	def cancel(self):
+		if self.job.object is not None:
+			self.job.object._Provider__collectors.remove(self)
 		self.get_job()
 
 
