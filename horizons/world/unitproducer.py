@@ -55,6 +55,10 @@ class UnitProducer(SecondaryProducer):
 			self.toggle_costs()  # needed to get toggle to the right position
 
 
+	def toggle_active(self):
+		if len(self.production_queue) > 0:
+			super(UnitProducer, self).toggle_active()
+
 	def production_step(self):
 		self.log.debug("UnitProducer production_step %s", self.getId())
 		if sum(self._PrimaryProducer__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
