@@ -9,15 +9,18 @@ Unknown Horizons
          language choose menu in settings
   * New: Load/save function for maps
   * New: Start work at wildanimals
-  * New: randon start position for playership
+  * New: Random start position for playership
   * New: add commandline arguments --start-map; --enable-unstable-features;
   * New: Add logging system
   * New: Add debug modul option for commandline --debug-module
   * New: debug messages are now only shown by using ./run_uh.py -d
   * New: Add new tabwidget
   * New: Ship radius when building is now updated on the fly if the ship 
-         moves.
+         moves
+  * New: Manpage
+  * New: Change Style of the mainmenu and all submenus
   * New: Add Developermap with only one small island
+  * New: Translations in Portuguese Norwegian German French
   * Change: Hotkeys: set g for grid, b for buildmenu and d for debugger 
   * Fix: Building speed has been improved, lumberjack preview is now   
          almost lagfree.
@@ -37,7 +40,10 @@ Unknown Horizons
   * Change: Little update on main square
   * Change: Slightly retouched cursor graphics
   * Change: Look of help and creditsmenu
-         
+  
+* Sound
+  * New: Main theme by Tobias Escher
+
 ... and a lot more smaller bugfixes.
 
 -----------------------------------------------------
