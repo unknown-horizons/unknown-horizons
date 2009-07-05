@@ -163,8 +163,8 @@ class Fife(object):
 		horizons.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
 		horizons.main.settings.fife.defaultFont.setDefaults(
-			path = 'content/gfx/fonts/GenBasR.ttf',
-			size = 18,
+			path = 'content/fonts/LinLibertine_Re-4.4.1.ttf',
+			size = 15,
 			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
 		)
 
