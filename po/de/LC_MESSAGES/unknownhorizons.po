@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
 "POT-Creation-Date: 2009-06-24 14:43+CEST\n"
-"PO-Revision-Date: 2009-06-27 17:23+0000\n"
+"PO-Revision-Date: 2009-07-02 17:54+0000\n"
 "Last-Translator: André Reichelt <andre-r@online.de>\n"
 "Language-Team: Unknown Horizons German Translation Team <team@unknown-"
 "horizons.org>\n"
@@ -949,46 +949,46 @@ msgid "Enable sound"
 msgstr "Ton einschalten"
 
 msgid "Branch Office"
-msgstr ""
+msgstr "Kontor"
 
 msgid "Storage Tent"
-msgstr ""
+msgstr "Lagerzelt"
 
 msgid "Sunsail"
-msgstr ""
+msgstr "Sonnensegel"
 
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Weber"
 
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Holzfällerlager"
 
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Jäger"
 
 msgid "Herdsman's Tent"
-msgstr ""
+msgstr "Hirte"
 
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Fischer"
 
 msgid "Pasture"
-msgstr ""
+msgstr "Futter"
 
 msgid "Ship"
-msgstr ""
+msgstr "Schiff"
 
 msgid "BuildingCollector"
 msgstr ""
 
 msgid "Sheep"
-msgstr ""
+msgstr "Schaf"
 
 msgid "Pirate Ship"
-msgstr ""
+msgstr "Piratenschiff"
 
 msgid "Trader"
-msgstr ""
+msgstr "Händler"
 
 msgid "AnimalCarriage"
 msgstr ""
@@ -1009,73 +1009,73 @@ msgid "FarmerCollector"
 msgstr ""
 
 msgid "Deer"
-msgstr ""
+msgstr "Reh"
 
 msgid "pioneer"
-msgstr ""
+msgstr "Pionier"
 
 msgid "red"
-msgstr ""
+msgstr "rot"
 
 msgid "blue"
-msgstr ""
+msgstr "blau"
 
 msgid "green"
-msgstr ""
+msgstr "grün"
 
 msgid "yellow"
-msgstr ""
+msgstr "gelb"
 
 msgid "pink"
-msgstr ""
+msgstr "rosa"
 
 msgid "cyan"
-msgstr ""
+msgstr "cyan"
 
 msgid "black"
-msgstr ""
+msgstr "schwarz"
 
 msgid "white"
-msgstr ""
+msgstr "weiß"
 
 msgid "A new settlement has been created by $player."
-msgstr ""
+msgstr "Eine neue Siedlung wurd von $player erschaffen."
 
 msgid "A new world has been created."
-msgstr ""
+msgstr "Eine neue Welt wurde erschaffen."
 
 msgid "coins"
-msgstr ""
+msgstr "Münzen"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "Lammwolle"
 
 msgid "textile"
-msgstr ""
+msgstr "Kleidung"
 
 msgid "boards"
-msgstr ""
+msgstr "Bretter"
 
 msgid "food"
-msgstr ""
+msgstr "Nahrung"
 
 msgid "tools"
-msgstr ""
+msgstr "Werkzeuge"
 
 msgid "bricks"
-msgstr ""
+msgstr "Steine"
 
 msgid "wood"
-msgstr ""
+msgstr "Holz"
 
 msgid "grass"
-msgstr ""
+msgstr "Gras"
 
 msgid "wool"
-msgstr ""
+msgstr "Wolle"
 
 msgid "church"
-msgstr ""
+msgstr "Kirche"
 
 msgid "wild animal food 1"
 msgstr ""
