@@ -126,7 +126,7 @@ class Trader(Player, StorageHolder):
 		# move ship there:
 		move_possible = ship.move(Point(x, y), lambda: self.ship_idle(ship))
 		if not move_possible:
-			self.notify_unit_path_blocked()
+			self.notify_unit_path_blocked(ship)
 			return
 		self.ships[ship] = self.shipStates.moving_random
 
@@ -147,7 +147,7 @@ class Trader(Player, StorageHolder):
 				if Point(water[0], water[1]).distance(self.office[ship.id].position) < 3:
 					move_possible = ship.move(Point(water[0], water[1]), lambda: self.reached_branch(ship))
 					if not move_possible:
-						self.notify_unit_path_blocked()
+						self.notify_unit_path_blocked(ship)
 						return
 					self.ships[ship] = self.shipStates.moving_to_branch
 					break
