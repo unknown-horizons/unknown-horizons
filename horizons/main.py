@@ -128,7 +128,7 @@ def start(command_line_arguments):
 	# start something according to commandline parameters
 	if command_line_arguments['start_dev_map']:
 		# start the development map (it's the first one)
-		first_map = gui.get_maps()[0][0]
+		first_map = gui.get_maps()[0][1]
 		start_singleplayer(first_map)
 	elif command_line_arguments['start_map'] is not None:
 		# start a map specified by user

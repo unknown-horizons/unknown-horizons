@@ -40,7 +40,7 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		self.inventory.addChangeListener(self._changed)
 
 	def __del__(self):
-		self.inventory.adjust_limit(-30)
+		self.inventory.adjust_limits(-30)
 
 	def load(self, db, worldid):
 		super(StorageBuilding, self).load(db, worldid)
