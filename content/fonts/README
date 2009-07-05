@@ -1,13 +1,28 @@
-This is Essays 1743, a font by John Stracke, based on the typeface
-used in a 1743 English translation of Montaigne's Essays.  The font is
-released under the terms of the GNU Lesser General Public License (see
-the COPYING file).  At present (version 0.2), it contains 817
-characters: all of ASCII, Latin-1, and Latin Extended A; some of Latin
-Extended B (basically, the ones that are more or less based on Roman
-letters); and a variety of other characters, such as oddball
-punctuation, numerals, etc.
+LOFP - Libertine Open Fonts Project
 
-TrueType and PostScript forms are available.
+1. OPEN FONTS PROJECT'S AIMS
+We work on a serif font-family for practical use in documents. This project aims at creating a free alternative to the standard W*ndows Font (T*mes).
+But neveretheless Libertine is not a clone of any common font! It has been developed from scratch and it goes different ways in typography than the Times. Just the useability and the dimensions shall be similar, Libertine should be even better for typical office use! If you want a Times-clone go elsewhere! If you just need reliable and good typography give this font a chance. If you want to know more about the design of Libertine, have a look at our website.
 
-For the purposes of the LGPL, the source file is Essays1743.sfd (the
-pfaedit source), which should be included in this archive.
+2. LICENSE AND OPENSOURCE
+We publish our fonts under the terms of the GPL (see GPL.txt) and OFL (OFL.txt) 
+-> see also LICENCE.txt!
+The OpenSource-tool Fontforge is used as font editor (see http://fontforge.sf.net).
+
+3. FONT FORMATS TTF VS. OTF
+The font files are available as TTF (TrueType) and OTF (OpenType) fonts. The TTF-Family is called "LinuxLibertine" and the OTF "LinuxLibertine O" so that both types can be installed and used parallely.
+Most often TTF is the better supported format though OTF has advances in printing. Decide yourself what is better for your purpose. OpenType-features are equally available in both fonts. Note that OpenOffice doesn’t support OTFs, yet.
+
+4. HINTING
+The TrueType-hinting is a complex technique and our editor FontForge doesn't support full possibilities (but is alot better version by version)... Since version 2.7 also the normal TTFs are hinted. If you don't like this, send me a mail. You may also try the OpenTypes (which contain PS-Hintings which are quite good supported by fontforge).
+
+5. DOWNLOAD AND CONTACT
+We publish our fonts at http://linuxlibertine.sf.net.
+
+6. THE UNDERLINED VARIANT
+Please note: The underlined variant is recently not being maintained because 
+its concept doesn’t seem to be sofware-technically reliable and because of lack of interest. 
+Some people liked our idea of a real underlined. The advantage of this font is that g, commas, cedillas... are not overprinted by the line anymore. For technical reasons the space is not underlined but you can use the _ instead. In this font it has the width of the space and the line is at hight of the underline. The underlined variant uses an older font outline! Please keep this in mind!
+
+6. THE LINUX BIOLINUM FONT FACE
+Please note: The Biolinum is a very early version. While you use Libertine-Fonts without any warranty anyway, take special care with this young font face.
