@@ -56,7 +56,7 @@ class UnitProducer(SecondaryProducer):
 
 
 	def toggle_active(self):
-		if len(self.production_queue) > 0:
+		if len(self.production_queue) > 0 or self.active_production_line is not None:
 			super(UnitProducer, self).toggle_active()
 
 	def production_step(self):
@@ -95,6 +95,7 @@ class UnitProducer(SecondaryProducer):
 		# Create the new units at the output_point
 		for unit in self.production[self.active_production_line].unit.values():
 			horizons.main.session.entities.units[unit](x=self.output_point[0], y=self.output_point[1], owner=self.owner)
+		self.progress = 0
 
 
 	def produce(self, prod_line):

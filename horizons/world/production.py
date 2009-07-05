@@ -194,7 +194,7 @@ class PrimaryProducer(Provider):
 		"""Sets the current progress correctly.
 		This method can be overriden in case subclasses calculate differently.
 		"""
-		self.progress = int(float(len(self.__used_resources.values()))/
+		self.progress = int(float(sum(self.__used_resources.values()))/
 			float(
 				-sum(product for product in
 					self.production[self.active_production_line].production.values() if product < 0

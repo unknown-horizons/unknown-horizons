@@ -30,7 +30,7 @@ class ProgressBar(pychan.widgets.Container):
 
 	def __init__(self, progress=0, **kwargs):
 		super(ProgressBar, self).__init__(**kwargs)
-		self.size = (100, 10)
+		self.size = (200, 10)
 		self.__progress = progress
 		self.icon = None
 		self._init_gui()

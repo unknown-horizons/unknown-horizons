@@ -11,12 +11,12 @@
 		<Label name="current_construction_label" position="20,7" text="Current construction progress:" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<ProgressBar position="25,25" max_size="80,10" name='progress'/>
+		<ProgressBar position="25,25" name='progress'/>
 		<HBox position="180,80">
 			<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
 		</HBox>
-		
-		
+
+
 		<Label position="70,95" text="Build new ship:" />
 
 		<ImageButton name="createUnit" position="190,90" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
