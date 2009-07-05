@@ -235,6 +235,7 @@ class Fife(object):
 
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.music = glob.glob('content/audio/music/*.ogg')
+		self.music.extend(glob.glob('content/audio/music/menu/*.ogg'))
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
@@ -256,7 +257,9 @@ class Fife(object):
 			self.emitter['speech'].setGain(horizons.main.settings.sound.volume_effects)
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
-			self.music_rand_element = random.randint(0, len(self.music) - 1)
+
+			self.music_rand_element = -len(glob.glob('content/audio/music/menu/*.ogg')) - 1 #Hack to play menu music first as track changes once before start.
+
 			def check_music():
 				if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
 					if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
