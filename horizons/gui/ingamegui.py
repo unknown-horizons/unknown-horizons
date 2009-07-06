@@ -207,6 +207,10 @@ class IngameGui(LivingObject):
 		@param value: value the Label is to be set to.
 		"""
 		if not value:
+			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).findChild(name=label + '_' + str(2))
+			foundlabel.text = u''
+			foundlabel.resizeToContent()
+			self.gui['status_extra_gold'].resizeToContent() if label == 'gold' else self.gui['status_extra'].resizeToContent()
 			return
 		if isinstance(value, str):
 			value = [value]
