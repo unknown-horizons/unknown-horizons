@@ -234,8 +234,11 @@ class Fife(object):
 		self.engine.init()
 
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
-		self.music = glob.glob('content/audio/music/*.ogg')
-		self.music.extend(glob.glob('content/audio/music/menu/*.ogg'))
+		self.ingame_music = glob.glob('content/audio/music/*.ogg')
+		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
+		self.initial_menu_music_element = None
+		self.next_menu_music_element = None
+		self.menu_music_played = 0
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
@@ -258,17 +261,32 @@ class Fife(object):
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
 
-			self.music_rand_element = -len(glob.glob('content/audio/music/menu/*.ogg')) - 1 #Hack to play menu music first as track changes once before start.
+			self.music_rand_element = random.randint(0, len(self.menu_music) - 1)
+			self.initial_menu_music_element = self.music_rand_element
 
 			def check_music():
+				if self.menu_music_played == 0:
+					if self.initial_menu_music_element == self.next_menu_music_element:
+						self.ingame_music.extend(self.menu_music)
+						self.music = self.ingame_music
+						self.music_rand_element = random.randint(0, len(self.ingame_music) - 1)
+						self.menu_music_played = 1
+					else:
+						self.music = self.menu_music
+
 				if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
 					if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
 						self.music_rand_element = self.music_rand_element + 1 if \
 								self.music_rand_element + 1 < len(self.music) else 0
 						self.play_sound('bgsound', self.music[self.music_rand_element])
+						if self.menu_music_played == 0:
+							self.next_menu_music_element = self.music_rand_element
+
 				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \
 						self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
 						self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+
+
 			check_music() # Start background music
 			horizons.main.ext_scheduler.add_new_object(check_music, self, loops=-1)
 		self.imagepool = self.engine.getImagePool()
