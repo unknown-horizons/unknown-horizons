@@ -207,4 +207,4 @@ class Trader(Player, StorageHolder):
 	def notify_unit_path_blocked(self, unit):
 		self.log.debug("Trader %s: ship blocked", self.getId())
 		# retry moving ship in 2 secs
-		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, ship), self, 32)
+		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, unit), self, 32)
