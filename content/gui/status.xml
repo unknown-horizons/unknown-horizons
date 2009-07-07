@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container size="380,80" position="93,10">
-<!-- Ressource bar that are positioned on top -->
+<!-- Resource bar that are positioned on top -->
 	<Icon name="food_icon" image="content/gui/images/background/res_bg.png" position="0,7" /><Icon image="content/gui/images/icons/hud/main/small/food.png" position="12,18" />
 	<Label name="food_1" text="" />
 	<Label name="food_2" text="" />

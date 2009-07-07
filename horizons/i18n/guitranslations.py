@@ -233,12 +233,12 @@ def set_translations():
 			"exchange_label"              : _("Exchange:"),
 			"trade_with_label"            : _("Trade partner:")},
 		"buysellmenu.xml" : {
-			"headline"                    : _("Buy or sell ressources"),
+			"headline"                    : _("Buy or sell resources"),
 			"legend_label"                : _("Legend:"),
-			"buy_label"                   : _("Buy ressources"),
-			"sell_label"                  : _("Sell ressources")},
+			"buy_label"                   : _("Buy resources"),
+			"sell_label"                  : _("Sell resources")},
 		"resources.xml" : {
-			"headline"                    : _("Select ressources:")},
+			"headline"                    : _("Select resources:")},
 		"hud_build_tab0.xml" : {
 			"headline"                    : _("Build menu"),
 			"residental_label"            : _("Residents and Infrastructural"),

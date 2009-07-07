@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Widget for displaying needed ressources-->
+<!-- Widget for displaying needed resources-->
 <Container size="250,100"  position="97,77">
 	<!--<Icon image="content/gui/images/background/res_extra_bg.png" position="0,6" />-->
 	<Icon image="content/gui/images/background/res_extra_bg.png" position="52,6" />
