@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="help_window" size="800,800" position="100,100">
+<Container name="help_window" size="800,580" position="100,100">
         <Icon image="content/gui/images/background/book.png" position="0,0" />
         <Container position="55,32" size="500,500">
                 <Label text="Key Bindings" position="110,10" name="headline" />

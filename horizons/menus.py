@@ -85,6 +85,9 @@ class Menus(object):
 		self.widgets['savegame'].findChild(name='headline').stylize('headline') # style definition for headline
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
+		for x in self.widgets:
+			self.widgets[x].position = (horizons.main.settings.fife.screen.width/2 - self.widgets[x].size[0]/2 , horizons.main.settings.fife.screen.height/2 - self.widgets[x].size[1]/2)
+
 	def show_main(self):
 		""" shows the main menu
 		"""
