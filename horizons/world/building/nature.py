@@ -21,9 +21,9 @@
 
 from building import Building
 from buildable import BuildableRect
-from horizons.world.production import PrimaryProducer
+from horizons.world.production import PrimaryProduction
 
-class GrowingBuilding(PrimaryProducer, BuildableRect, Building):
+class GrowingBuilding(PrimaryProduction, BuildableRect, Building):
 	""" Class for stuff that grows, such as trees
 	"""
 	part_of_nature = True

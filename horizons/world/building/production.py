@@ -21,14 +21,14 @@
 
 import horizons.main
 
-from horizons.world.production import SecondaryProducer, PrimaryProducer
+from horizons.world.production import SecondaryProduction, PrimaryProduction
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util.point import Point
 from building import Building, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 
 
-class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
+class AnimalFarm(Selectable, SecondaryProduction, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
@@ -59,7 +59,7 @@ class AnimalFarm(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 		self.animals = []
 
 
-class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, Building):
+class Lumberjack(Selectable, SecondaryProduction, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
 
@@ -68,14 +68,14 @@ class Lumberjack(Selectable, SecondaryProducer, BuildableSingleWithSurrounding, 
 		horizons.main.session.entities.units[10](self)
 
 
-class Weaver(Selectable, SecondaryProducer, BuildableSingle, Building):
+class Weaver(Selectable, SecondaryProduction, BuildableSingle, Building):
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
 		horizons.main.session.entities.units[12](self)
 
 
-class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
+class Fisher(Selectable, PrimaryProduction, BuildableSingle, Building):
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
@@ -94,5 +94,5 @@ class Fisher(Selectable, PrimaryProducer, BuildableSingle, Building):
 
 		return {} if coast_tile_found else None
 
-class Church(Selectable, PrimaryProducer, BuildableSingle, Building):
+class Church(Selectable, PrimaryProduction, BuildableSingle, Building):
 	pass

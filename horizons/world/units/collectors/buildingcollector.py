@@ -25,7 +25,7 @@ import horizons.main
 
 from horizons.util import WorldObject
 from horizons.world.pathfinding.pather import RoadPather
-from horizons.world.production import PrimaryProducer
+from horizons.world.production import PrimaryProduction
 
 from collector import Collector
 
@@ -106,7 +106,7 @@ class BuildingCollector(Collector):
 				continue
 			for res in collectable_res:
 				# Prevent the collector from picking up resources from building needing it's resources for production
-				if isinstance(building, PrimaryProducer) and \
+				if isinstance(building, PrimaryProduction) and \
 					 building.active_production_line is not None and \
 					 building.production[building.active_production_line].production.get(res, 1) < 0:
 					break

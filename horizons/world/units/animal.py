@@ -25,12 +25,13 @@ import logging
 
 import horizons.main
 
-from horizons.world.production import SecondaryProducer, Provider
+from horizons.world.production import SecondaryProduction
+from horizons.world.provider import Provider
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
 from collectors import Collector, BuildingCollector
 
-class Animal(SecondaryProducer):
+class Animal(SecondaryProduction):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
 	and usually produce something (e.g. wool)."""
 	log = logging.getLogger('world.units.animal')
