@@ -38,6 +38,7 @@ class Menus(object):
 
 	def __init__(self):
 		self.current = None # currently active window
+
 		self.widgets = {} # Stores all the widgets, to prevent double loading
 		self.widgets['mainmenu'] = load_xml_translated('mainmenu.xml')
 		self.widgets['mainmenu'].stylize('menu')
@@ -344,9 +345,12 @@ class Menus(object):
 		help_dlg = self.widgets['help']
 		if not self.help_is_displayed:
 			self.help_is_displayed = True
+			horizons.main.session.speed_pause()
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
+			horizons.main.session.speed_unpause()
 		else:
 			self.help_is_displayed = False
+			horizons.main.session.speed_unpause()
 			help_dlg.hide()
 
 
