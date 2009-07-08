@@ -154,6 +154,11 @@ class IngameGui(LivingObject):
 			'foundSettelment' : None
 		})
 
+		self.gui['leftPanel'].mapEvents({
+			'build' : None,
+			'destroy_tool' : None
+		})
+
 		self.gui['minimap'].mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
