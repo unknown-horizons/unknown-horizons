@@ -345,13 +345,18 @@ class Menus(object):
 		help_dlg = self.widgets['help']
 		if not self.help_is_displayed:
 			self.help_is_displayed = True
-			horizons.main.session.speed_pause()
+			# make game pause if there is a game and we're not in the main menu
+			if horizons.main.session is not None and self.current != self.widgets['gamemenu']:
+				horizons.main.session.speed_pause()
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
-			horizons.main.session.speed_unpause()
+			if horizons.main.session is not None and self.current != self.widgets['gamemenu']:
+				horizons.main.session.speed_unpause()
 		else:
 			self.help_is_displayed = False
-			horizons.main.session.speed_unpause()
+			if horizons.main.session is not None and self.current != self.widgets['gamemenu']:
+				horizons.main.session.speed_unpause()
 			help_dlg.hide()
+			self.on_escape = self.show_pause
 
 
 	def quit_session(self):
