@@ -28,17 +28,23 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 import sys
 import os
 import gettext
+import logging
+import logging.config
 import getopt
+
+def log():
+	"""Returns Logger"""
+	return logging.getLogger("run_uh")
 
 def get_fife_path():
 	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
-	global debug
-
+	# check if there is a config file (has to be called config.py)
 	try:
 		import config
 		_paths = [config.fife_path]
 	except (ImportError, AttributeError):
 		_paths = []
+
 	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
 
 	fife_path = None
@@ -51,7 +57,7 @@ def get_fife_path():
 			else:
 				fife_path = p
 
-				if debug: print "Found FIFE in", fife_path
+				log().debug("Found FIFE in %s", fife_path)
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
@@ -78,8 +84,6 @@ def find_FIFE():
 	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).
 	If it's already there, the function will return, else
 	it will restart uh with correct $LD_LIBRARY_PATH. """
-	global debug
-
 	fife_path = get_fife_path() # terminates program if fife can't be found
 
 	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
@@ -88,11 +92,10 @@ def find_FIFE():
 		  (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
 			 os.environ.has_key('LD_LIBRARY_PATH') else []))
 
-	if debug:
-		print "Restarting with proper LD_LIBRARY_PATH..."
-		print "LD_LIBRARY_PATH:", os.environ['LD_LIBRARY_PATH']
-		print "PATH:", os.environ['PATH']
-		print "PYTHONPATH", os.environ['PYTHONPATH']
+	log().debug("Restarting with proper LD_LIBRARY_PATH...")
+	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
+	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
 
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
@@ -120,6 +123,7 @@ def print_help():
 
 
 def find_uh_position():
+	"""Returns path, where uh is located"""
 	first_guess = os.path.split( os.path.realpath( sys.argv[0]) )[0]
 	if os.path.exists('%s/content' % first_guess):
 		return first_guess
@@ -136,7 +140,8 @@ def find_uh_position():
 
 
 if __name__ == '__main__':
-	global debug
+
+	logging.config.fileConfig('content/logging.conf')
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
@@ -153,7 +158,6 @@ if __name__ == '__main__':
 		print_help()
 		exit(1)
 
-	debug = False
 	fife_in_library_path = False
 
 	command_line_arguments = { \
@@ -170,7 +174,7 @@ if __name__ == '__main__':
 			print_help()
 			exit(1)
 		elif o in ("-d", "--debug"):
-			debug = True
+			logging.getLogger().setLevel(logging.DEBUG)
 			command_line_arguments['debug'] = True
 		elif o == "--fife-in-library-path":
 			# this is currently only for internal use, therefore not in the help message
@@ -187,8 +191,8 @@ if __name__ == '__main__':
 		elif o == "--enable-unstable-features":
 			command_line_arguments["unstable_features"] = True
 		elif o == "--debug-module":
-			# add a module to the list of modules, where debugging is enabled
-			command_line_arguments["debug_modules"].append(a)
+			# enable logging for this module
+			logging.getLogger(a).setLevel(logging.DEBUG)
 
 
 	#find fife and setup search paths, if it can't be imported yet
@@ -199,7 +203,7 @@ if __name__ == '__main__':
 			# fife should already be in LD_LIBRARY_PATH
 			print 'Failed to load fife:', e
 			exit(1)
-		if debug: print 'Searching for FIFE'
+		log().debug('Searching for FIFE')
 		find_FIFE()
 
 	#print _("Launching Unknown Horizons")

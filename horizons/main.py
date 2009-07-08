@@ -39,7 +39,6 @@
 import os
 import os.path
 import logging
-import logging.config
 import random
 
 import engine
@@ -64,18 +63,12 @@ def start(command_line_arguments):
 									load_map: (string), load map with specified savegamename
 									unstable_features: (bool), wether unstable features should be enabled
 									debug: (bool), wether to enable debug messages
-									debug_modules: (list of strings), modules, where debugging is enabled
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets, unstable_features, debug
 
 	# set debugging level
 	debug = command_line_arguments['debug']
-	logging.config.fileConfig('content/logging.conf')
-	if debug:
-		logging.getLogger().setLevel(logging.DEBUG)
-	for module in command_line_arguments["debug_modules"]:
-		logging.getLogger(module).setLevel(logging.DEBUG)
 
 	#init db
 	db = DbReader(':memory:')
