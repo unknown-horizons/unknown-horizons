@@ -23,7 +23,6 @@ import fife
 import horizons.main
 
 from horizons.util.living import LivingObject
-from tearingtool import TearingTool
 from buildingtool import BuildingTool
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
@@ -56,8 +55,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == 'g':
 			horizons.main.session.view.renderer['GridRenderer'].setEnabled(not horizons.main.session.view.renderer['GridRenderer'].isEnabled())
 		elif keystr == 'x':
-			horizons.main.session.cursor = TearingTool()
-			horizons.main.session.ingame_gui.hide_menu()
+			horizons.main.session.destroy_tool()
 		elif keystr == 'd':
 			horizons.main.session.cursor.debug = True
 		elif keystr == '+':

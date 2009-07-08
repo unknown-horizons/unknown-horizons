@@ -75,7 +75,8 @@ class IngameGui(LivingObject):
 			149)
 		self.gui['leftPanel'].show()
 		self.gui['leftPanel'].mapEvents({
-			'build' : self.show_build_menu
+			'build' : self.show_build_menu,
+			'destroy_tool' : horizons.main.session.destroy_tool
 		})
 
 		self.gui['status'] = load_xml_translated('status.xml')

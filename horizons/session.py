@@ -29,6 +29,7 @@ import horizons.main
 from gui.selectiontool import SelectionTool
 from gui.ingamegui import IngameGui
 from gui.ingamekeylistener import IngameKeyListener
+from gui.tearingtool import TearingTool
 from dbreader import DbReader
 from timer import Timer
 from scheduler import Scheduler
@@ -122,6 +123,18 @@ class Session(LivingObject):
 
 		self.selected_instances = None
 		self.selection_groups = None
+
+	def destroy_tool(self):
+		"""Initiate the destroy tool"""
+		if not hasattr(self.cursor, 'tear_tool_active'):
+			self.cursor = TearingTool()
+			self.ingame_gui.hide_menu()
+		else:
+			if self.cursor.tear_tool_active is not True:
+				self.cursor = TearingTool()
+				self.ingame_gui.hide_menu()
+			else:
+				return
 
 	def autosave(self):
 		"""Called automatically in an interval"""

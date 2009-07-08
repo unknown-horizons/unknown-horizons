@@ -43,10 +43,12 @@ class TearingTool(NavigationTool):
 		self.coords = None
 		self.selected = []
 		self.oldedges = None
+		self.tear_tool_active = True
 		horizons.main.gui.on_escape = self.on_escape
 		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.tearing_cursor_image)
 
 	def end(self):
+		self.tear_tool_active = False
 		horizons.main.fife.cursor.set(fife.CURSOR_IMAGE, horizons.main.fife.default_cursor_image)
 		super(TearingTool, self).end()
 
@@ -65,6 +67,7 @@ class TearingTool(NavigationTool):
 
 	def on_escape(self):
 		self._mark()
+		self.tear_tool_active = False
 		horizons.main.session.cursor = SelectionTool()
 
 	def mouseReleased(self,  evt):
@@ -75,6 +78,7 @@ class TearingTool(NavigationTool):
 			self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
 			for i in self.selected:
 				horizons.main.session.manager.execute(Tear(i))
+			self.tear_tool_active = False
 			horizons.main.session.cursor = SelectionTool()
 			evt.consume()
 
@@ -87,6 +91,7 @@ class TearingTool(NavigationTool):
 			self._mark(self.coords)
 		else:
 			return
+		self.tear_tool_active = False
 		evt.consume()
 
 	def _mark(self, *edges):
