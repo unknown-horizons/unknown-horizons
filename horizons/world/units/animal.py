@@ -148,7 +148,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		health, can_reproduce = \
 				db("SELECT health, can_reproduce FROM wildanimal WHERE rowid = ?", worldid)[0]
 		# get home island
-		home_island_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0]
+		home_island_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
 		island = WorldObject.get_object_by_id(home_island_id)
 		self.__init(island, bool(can_reproduce), health)
 

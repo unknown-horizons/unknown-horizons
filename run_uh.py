@@ -180,7 +180,7 @@ if __name__ == '__main__':
 			# init the logfile handler with a dynamic filename
 			logfilename = "unkown-horizons-"+time.strftime("%y-%m-%d_%H-%M-%S")+".log"
 			file_handler = logging.FileHandler(logfilename, 'w')
-			logging.getLogger('').addHandler(file_handler)
+			logging.getLogger().addHandler(file_handler)
 		elif o == "--fife-in-library-path":
 			# this is currently only for internal use, therefore not in the help message
 			fife_in_library_path = True
