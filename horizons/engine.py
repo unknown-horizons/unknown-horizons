@@ -207,7 +207,7 @@ class Fife(object):
 		elif setting == 'fife.screen.height':
 			self.settings.setScreenHeight(value)
 		elif setting == 'fife.screen.bpp':
-			self.settings.setBitsPerPixel(1 if value else 0)
+			self.settings.setBitsPerPixel(value)
 		elif setting == 'fife.renderer.backend':
 			self.settings.setRenderBackend(value)
 		elif setting == 'fife.renderer.SDLRemoveFakeAlpha':
