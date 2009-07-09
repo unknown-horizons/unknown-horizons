@@ -272,6 +272,7 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s end_job - waiting for new search_job", self.getId())
 		if self.start_hidden:
 			self.hide()
+		self.job = None
 		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)
 		self.state = self.states.idle
 

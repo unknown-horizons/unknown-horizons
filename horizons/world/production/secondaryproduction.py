@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
+
 from primaryproduction import PrimaryProduction
 from horizons.world.consumer import Consumer
 from horizons.gui.tabs import TabWidget, ProductionOverviewTab, InventoryTab

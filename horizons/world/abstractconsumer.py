@@ -62,8 +62,8 @@ class AbstractConsumer(StorageHolder):
 		horizons.main.session.entities.units[2](self)
 
 	def remove(self):
-		for c in self.local_collectors:
-			c.remove()
+		while len(self.local_collectors) > 0:
+			self.local_collectors[0].remove()
 		assert len(self.local_collectors) == 0
 		super(AbstractConsumer, self).remove()
 

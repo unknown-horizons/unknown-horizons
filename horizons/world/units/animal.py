@@ -67,6 +67,12 @@ class CollectorAnimal(Animal):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
 		self.collector = collector
 
+	def remove_stop_after_job(self):
+		"""Let the animal continue as usual after the job. Can only be called
+		after stop_after_job"""
+		assert self.collector is not None
+		self.collector = None
+
 	def finish_working(self):
 		# animal is done when it has eaten, and
 		# doesn't have to get home, so end job right now

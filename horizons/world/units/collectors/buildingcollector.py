@@ -177,6 +177,7 @@ class BuildingCollector(Collector):
 		self.log.debug("Collector %s cancel", self.getId())
 		if self.job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
+		self.job = None
 		self.move_home(callback=self.search_job, action='move')
 
 	def sort_jobs(self, jobs):

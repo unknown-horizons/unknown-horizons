@@ -107,8 +107,6 @@ class IslandPathNodes(PathNodes):
 		is currently done in add/remove_building
 		@param coord: tuple: (x, y)"""
 		acctually_walkable = self.is_walkable(coord)
-		self.log.debug("reset tile walkability on %s %s to %s", \
-									 coord[0], coord[1], acctually_walkable)
 		in_list = (coord in self.nodes)
 		if not in_list and acctually_walkable:
 			self.nodes.append(coord)

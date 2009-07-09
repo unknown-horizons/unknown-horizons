@@ -41,7 +41,9 @@ class AnimalCollector(BuildingCollector):
 				self.job.object.stop_after_job(self)
 
 	def cancel(self):
-		assert False
+		if self.job is not None and self.job.object is not None:
+			if self.state == self.states.waiting_for_animal_to_stop:
+				self.job.object.remove_stop_after_job()
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(AnimalCollector, self).apply_state(state, remaining_ticks)
@@ -50,14 +52,12 @@ class AnimalCollector(BuildingCollector):
 
 	def begin_current_job(self):
 		"""Tell the animal to stop."""
-		#print self.id, 'BEGIN CURRENT JOB'
 		self.setup_new_job()
 		self.stop_animal()
 		self.state = self.states.waiting_for_animal_to_stop
 
 	def pickup_animal(self):
 		"""Moves collector to animal. Called by animal when it actually stopped"""
-		#print self.id, 'PICKUP ANIMAL'
 		self.show()
 		self.move(self.job.object.position, self.begin_working)
 		self.state = self.states.moving_to_target

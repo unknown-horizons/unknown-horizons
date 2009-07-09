@@ -58,6 +58,11 @@ class AnimalFarm(Selectable, SecondaryProduction, BuildableSingleWithSurrounding
 		super(AnimalFarm, self).load(db, worldid)
 		self.animals = []
 
+	def remove(self):
+		while len(self.animals) > 0:
+			self.animals[0].remove()
+		super(AnimalFarm, self).remove()
+
 
 class Lumberjack(Selectable, SecondaryProduction, BuildableSingleWithSurrounding, Building):
 	_surroundingBuildingClass = 17
