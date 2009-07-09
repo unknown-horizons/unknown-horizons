@@ -138,7 +138,7 @@ class IngameGui(LivingObject):
 		#self.gui['build'].findChild(name='headline').stylize('headline') # style definition for headline
 
 
-		self.gui['buildinfo'] = load_xml_translated('hud_buildinfo.xml')
+		#self.gui['buildinfo'] = load_xml_translated('hud_buildinfo.xml')
 		self.gui['chat'] = load_xml_translated('hud_chat.xml')
 		self.gui['cityinfo'] = load_xml_translated('hud_cityinfo.xml')
 		self.gui['res'] = load_xml_translated('hud_res.xml')
