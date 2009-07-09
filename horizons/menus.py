@@ -290,7 +290,7 @@ class Menus(object):
 			popup = self.widgets['popup']
 		# just to be save, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
-		popup.findChild(name='popup_window').title = _(unicode(_(windowtitle)))
+		popup.findChild(name='headline').text = _(unicode(_(windowtitle)))
 		popup.findChild(name='popup_message').text = _(unicode(_(message)))
 		if show_cancel_button:
 			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)

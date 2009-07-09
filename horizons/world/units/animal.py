@@ -131,7 +131,6 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def save(self, db):
 		super(WildAnimal, self).save(db)
-		#import pdb ; pdb.set_trace()
 		# save members
 		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)", \
 			 self.getId(), self.health, int(self.can_reproduce))
@@ -148,7 +147,6 @@ class WildAnimal(CollectorAnimal, Collector):
 				 remaining_ticks, self.getId())
 
 	def load(self, db, worldid):
-		#import pdb ; pdb.set_trace()
 		super(WildAnimal, self).load(db, worldid)
 		# get own properties
 		health, can_reproduce = \

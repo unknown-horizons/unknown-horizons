@@ -99,8 +99,8 @@ class Session(LivingObject):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		#autosave
-		#if horizons.main.settings.savegame.autosaveinterval != 0:
-		#	horizons.main.ext_scheduler.add_new_object(self.autosave, self.autosave, horizons.main.settings.savegame.autosaveinterval * 60, -1)
+		if horizons.main.settings.savegame.autosaveinterval != 0:
+			horizons.main.ext_scheduler.add_new_object(self.autosave, self.autosave, horizons.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def end(self):
 		self.scheduler.rem_all_classinst_calls(self)
