@@ -28,8 +28,10 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 import sys
 import os
 import gettext
+import time
 import logging
 import logging.config
+import logging.handlers
 import getopt
 
 def log():
@@ -165,8 +167,7 @@ if __name__ == '__main__':
 					   "start_map": None, \
 						 "load_map": None,
 					   "unstable_features": False, \
-					   "debug": False,
-	           "debug_modules": []}
+					   "debug": False }
 
 	# apply arguments
 	for o, a in opts:
@@ -176,6 +177,10 @@ if __name__ == '__main__':
 		elif o in ("-d", "--debug"):
 			logging.getLogger().setLevel(logging.DEBUG)
 			command_line_arguments['debug'] = True
+			# init the logfile handler with a dynamic filename
+			logfilename = "unkown-horizons-"+time.strftime("%y-%m-%d_%H-%M-%S")+".log"
+			file_handler = logging.FileHandler(logfilename, 'w')
+			logging.getLogger('').addHandler(file_handler)
 		elif o == "--fife-in-library-path":
 			# this is currently only for internal use, therefore not in the help message
 			fife_in_library_path = True
