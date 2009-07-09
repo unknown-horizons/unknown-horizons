@@ -86,16 +86,15 @@ class Menus(object):
 		self.widgets['savegame'].findChild(name='headline').stylize('headline') # style definition for headline
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
-		for x in self.widgets:
-			self.widgets[x].position = (horizons.main.settings.fife.screen.width/2 - self.widgets[x].size[0]/2 , horizons.main.settings.fife.screen.height/2 - self.widgets[x].size[1]/2)
+		for widget in self.widgets.itervalues():
+			center_widget(widget)
 
 	def show_main(self):
 		""" shows the main menu
 		"""
 		self.hide() # Hide old gui
 		self.current = self.widgets['mainmenu']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 		event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
@@ -303,8 +302,7 @@ class Menus(object):
 		"""
 		self.hide() # Hide old gui
 		self.current = self.widgets['gamemenu']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 		event_map = {
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
@@ -390,8 +388,7 @@ class Menus(object):
 		self.widgets['singleplayermenu'].stylize('book')
 		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline')
 		self.current = self.widgets['singleplayermenu']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 		eventMap = {
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
@@ -478,8 +475,7 @@ class Menus(object):
 			self.current.hide()
 
 		self.current = self.widgets['serverlist']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 		self.current.server = []
 		def _close():
 			self.current.serverList.end()
@@ -545,8 +541,7 @@ class Menus(object):
 			self.current.serverList.end()
 			self.current.hide()
 		self.current = self.widgets['serverlobby']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 
 		horizons.main.connection = ServerConnection(horizons.main.settings.network.port)
 
@@ -590,8 +585,7 @@ class Menus(object):
 		horizons.main.connection = ClientConnection()
 		horizons.main.connection.join(server.address, server.port)
 		self.current = self.widgets['serverlobby']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 		self.current.serverlobby = ClientServerLobby(self.current)
 
 		def _cancel():
@@ -685,16 +679,11 @@ class Menus(object):
 
 			self.hide()
 			self.current = self.widgets['loadingscreen']
-			self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-			self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+			center_widget(self.current)
 
 			horizons.main.start_singleplayer(map_file)
 
 	def load_game(self, savegame = None):
-		# To disable load for now:
-		#showDialog(load_xml_translated('/load_disabled.xml'), {'okButton' : True}, onPressEscape = True)
-		#return
-
 		if savegame is None:
 			map_files, map_file_display = horizons.main.savegamemanager.get_saves()
 
@@ -731,16 +720,11 @@ class Menus(object):
 
 		self.hide()
 		self.current = self.widgets['loadingscreen']
-		self.current.x = int((horizons.main.settings.fife.screen.width - self.current.width) / 2)
-		self.current.y = int((horizons.main.settings.fife.screen.height - self.current.height) / 2)
+		center_widget(self.current)
 		self.show()
 		horizons.main.start_singleplayer(savegamefile)
 
 	def save_game(self):
-		# to disable load for release
-		#self.show_popup("Not implemented", "Sadly, saving and loading did not make it to the release.")
-		#return
-
 		savegame_files, savegame_display = horizons.main.savegamemanager.get_regular_saves()
 
 		old_current = self.current
@@ -768,3 +752,10 @@ class Menus(object):
 		savegamename = self.current.collectData('savegamefile')
 		self.current = old_current
 		horizons.main.save_game(savegamename)
+
+def center_widget(widget):
+	"""Centers the widget in the parameter
+	@param widget: Widget with properties width, height, x and y
+	"""
+	widget.x = int((horizons.main.settings.fife.screen.width - widget.width) / 2)
+	widget.y = int((horizons.main.settings.fife.screen.height - widget.height) / 2)
