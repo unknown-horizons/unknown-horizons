@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<Window name="load_disabled_window" title="Oh noes" base_color="40, 40, 40">
-	<Label text="We're sorry, but the load function is not yet working." name="SorryLabel" base_color="40, 40, 40"/>
-	<HBox>
-		<Spacer />
-		<Button name="okButton" text="Ok" base_color="40, 40, 40"/>
-	</HBox>
-</Window>

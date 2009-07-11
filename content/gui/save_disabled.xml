@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<Window name="save_disabled_window" title="Oh noes" base_color="40, 40, 40">
-	<Label name="save_disabled" text="We're sorry, but the save function is not yet working." base_color="40, 40, 40"/>
-	<HBox>
-		<Spacer />
-		<Button name="okButton" text= "Ok" base_color="40, 40, 40"/>
-	</HBox>
-</Window>
