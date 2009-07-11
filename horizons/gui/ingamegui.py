@@ -129,19 +129,7 @@ class IngameGui(LivingObject):
 		#self.gui['build'] = self.tabwidgets['build'].widget
 		#self.gui['build'].findChild(name='headline').stylize('headline') # style definition for headline
 
-
-		#self.gui['buildinfo'] = load_xml_translated('hud_buildinfo.xml')
-		self.gui['chat'] = load_xml_translated('hud_chat.xml')
-		self.gui['cityinfo'] = load_xml_translated('hud_cityinfo.xml')
-		self.gui['res'] = load_xml_translated('hud_res.xml')
-		self.gui['fertility'] = load_xml_translated('hud_fertility.xml')
-		self.gui['ship'] = load_xml_translated('hud_ship.xml')
-
 	def end(self):
-		self.gui['ship'].mapEvents({
-			'foundSettelment' : None
-		})
-
 		self.gui['menuPanel'].mapEvents({
 			'destroy_tool' : None,
 			'build' : None,

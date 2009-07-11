@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<Container size="200,64" position="412,0" background_image="content/gui/images/background/hud/cityinfo_bg.png">
-	<Label name="cityName" text="City name" position="5,5" />
-	<Label name="islandClass" text="Class ROMAN" position="5,37" />
-	<Label name="islandInhabitants" text="Inhabitants" position="105,37" />
-</Container>
