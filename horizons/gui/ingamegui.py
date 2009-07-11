@@ -46,10 +46,10 @@ class IngameGui(LivingObject):
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
-		self.gui['topmain'] = load_xml_translated('top_main.xml')
-		self.gui['topmain'].stylize('topmain')
-		self.gui['topmain'].position = (
-			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['topmain'].size[0]/2 - 10,
+		self.gui['cityInfo'] = load_xml_translated('city_info.xml')
+		self.gui['cityInfo'].stylize('cityInfo')
+		self.gui['cityInfo'].position = (
+			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['cityInfo'].size[0]/2 - 10,
 			5
 		)
 
@@ -69,14 +69,16 @@ class IngameGui(LivingObject):
 			'speedDown' : horizons.main.session.speed_down
 		})
 
-		self.gui['leftPanel'] = load_xml_translated('left_panel.xml')
-		self.gui['leftPanel'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['leftPanel'].size[0] +15,
+		self.gui['menuPanel'] = load_xml_translated('menu_panel.xml')
+		self.gui['menuPanel'].position = (
+			horizons.main.fife.settings.getScreenWidth() - self.gui['menuPanel'].size[0] +15,
 			149)
-		self.gui['leftPanel'].show()
-		self.gui['leftPanel'].mapEvents({
+		self.gui['menuPanel'].show()
+		self.gui['menuPanel'].mapEvents({
+			'destroy_tool' : horizons.main.session.destroy_tool,
 			'build' : self.show_build_menu,
-			'destroy_tool' : horizons.main.session.destroy_tool
+			'helpLink' : horizons.main.gui.on_help,
+			'gameMenuButton' : horizons.main.gui.show_pause
 		})
 
 		self.gui['status'] = load_xml_translated('status.xml')
@@ -84,17 +86,7 @@ class IngameGui(LivingObject):
 		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
 		self.gui['status_extra'].stylize('resource_bar')
 
-		self.message_widget = MessageWidget(self.gui['topmain'].position[0] + self.gui['topmain'].size[0], 5)
-		self.gui['gamemenu'] = load_xml_translated('gamemenu_button.xml')
-		self.gui['gamemenu'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['gamemenu'].size[0] - 3,
-			148
-		)
-		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : horizons.main.gui.show_pause,
-			'helpLink'	 : horizons.main.gui.on_help
-		})
-		self.gui['gamemenu'].show()
+		self.message_widget = MessageWidget(self.gui['cityInfo'].position[0] + self.gui['cityInfo'].size[0], 5)
 
 		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
 		self.gui['status_gold'].stylize('resource_bar')
@@ -146,17 +138,15 @@ class IngameGui(LivingObject):
 		self.gui['ship'] = load_xml_translated('hud_ship.xml')
 
 	def end(self):
-		self.gui['gamemenu'].mapEvents({
-			'gameMenuButton' : None
-		})
-
 		self.gui['ship'].mapEvents({
 			'foundSettelment' : None
 		})
 
-		self.gui['leftPanel'].mapEvents({
+		self.gui['menuPanel'].mapEvents({
+			'destroy_tool' : None,
 			'build' : None,
-			'destroy_tool' : None
+			'helpLink' : None,
+			'gameMenuButton' : None
 		})
 
 		self.gui['minimap'].mapEvents({
@@ -244,9 +234,9 @@ class IngameGui(LivingObject):
 			self.settlement.removeChangeListener(self.update_settlement)
 		self.settlement = settlement
 		if settlement is None:
-			self.gui['topmain'].hide()
+			self.gui['cityInfo'].hide()
 		else:
-			self.gui['topmain'].show()
+			self.gui['cityInfo'].show()
 			self.update_settlement()
 			settlement.addChangeListener(self.update_settlement)
 
@@ -270,13 +260,13 @@ class IngameGui(LivingObject):
 			self.gui['status'].show()
 
 	def update_settlement(self):
-		foundlabel = self.gui['topmain'].findChild(name='city_name')
+		foundlabel = self.gui['cityInfo'].findChild(name='city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
-		foundlabel = self.gui['topmain'].findChild(name='city_inhabitants')
+		foundlabel = self.gui['cityInfo'].findChild(name='city_inhabitants')
 		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
-		self.gui['topmain'].resizeToContent()
+		self.gui['cityInfo'].resizeToContent()
 
 	def update_resource_source(self):
 		self.update_gold()
@@ -304,10 +294,8 @@ class IngameGui(LivingObject):
 	def minimap_to_front(self):
 		self.gui['minimap'].hide()
 		self.gui['minimap'].show()
-		self.gui['leftPanel'].hide()
-		self.gui['leftPanel'].show()
-		self.gui['gamemenu'].hide()
-		self.gui['gamemenu'].show()
+		self.gui['menuPanel'].hide()
+		self.gui['menuPanel'].show()
 
 	def show_ship(self, ship):
 		self.gui['ship'].findChild(name='buildingNameLabel').text = \
