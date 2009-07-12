@@ -26,7 +26,6 @@ import os.path
 import glob
 import time
 import user
-import tempfile
 
 import horizons.main
 
@@ -61,12 +60,9 @@ class SavegameManager(object):
 
 	# metadata of a savegame with default values
 	savegame_metadata = { 'timestamp' : -1,
-												'savecounter' : 0,
-												'screenshot' : ""}
-	# the db format doesn't support types, we have to convert here
+												'savecounter' : 0 }
 	savegame_metadata_types = { 'timestamp' : float,
-															'savecounter' : int,
-															'screenshot' : str }
+															'savecounter' : int }
 
 	_shared_state = {}
 
@@ -153,13 +149,12 @@ class SavegameManager(object):
 		"""Returns metainfo of a savegame as dict.
 		"""
 		db = DbReader(savegamefile)
-		metadata = cls.savegame_metadata.copy() # ensure every name exists
+		metadata = cls.savegame_metadata.copy()
 
 		for key in metadata.iterkeys():
 			result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
 			if len(result) > 0:
 				assert(len(result) == 1)
-				# cast value from db to according type
 				metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		return metadata
 
@@ -170,7 +165,6 @@ class SavegameManager(object):
 		metadata = cls.savegame_metadata.copy()
 		metadata['timestamp'] = time.time()
 		metadata['savecounter'] = horizons.main.session.savecounter
-		metadata['screenshot'] = get_screenshot()
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
@@ -202,11 +196,3 @@ class SavegameManager(object):
 		name = name.rsplit(".%s"%cls.savegame_extension, 1)[0]
 		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
-
-
-def get_screenshot():
-	"""Returns the current screenshot as binary data"""
-	screenshotfile = tempfile.NamedTemporaryFile()
-	horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfile.name)
-	return screenshotfile.read()
-
