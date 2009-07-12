@@ -143,10 +143,10 @@ def find_uh_position():
 
 if __name__ == '__main__':
 
-	logging.config.fileConfig('content/logging.conf')
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
+	logging.config.fileConfig('content/logging.conf')
 	gettext.install("unknownhorizons", "po", unicode=1)
 
 	# parse arguments
