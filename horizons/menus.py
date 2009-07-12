@@ -24,6 +24,7 @@ import os
 import os.path
 import glob
 import time
+import tempfile
 
 from horizons.util.color import Color
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
@@ -633,6 +634,19 @@ class Menus(object):
 			except:
 				gui.adaptLayout()
 				return
+
+			if savegame_info['screenshot'] != "":
+				screenshotfile = tempfile.NamedTemporaryFile()
+				screenshotfile.write(savegame_info['screenshot'])
+				screenshotfile.flush() # we need the image right away
+
+				print 'EXISTS: ',os.path.exists(screenshotfile.name)
+				#import pdb;pdb.set_trace()
+				#img = horizons.main.fife.imagepool.addResourceFromFile(screenshotfile.name)
+				details_image = horizons.main.fife.pychan.widgets.Icon(image=savegame_info['screenshot'])
+				box.addChild( details_image )
+				print 'EXISTS: ',os.path.exists(screenshotfile.name)
+
 			details_label = horizons.main.fife.pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""

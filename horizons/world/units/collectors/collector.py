@@ -256,7 +256,7 @@ class Collector(StorageHolder, Unit):
 		if res_amount != self.job.amount:
 			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planned was %s",  \
 											 self.getId(), res_amount, self.job.res, \
-											 self.job.target.getId(), self.job.target, \
+											 self.job.object.getId(), self.job.object, \
 											 self.job.amount)
 		self.inventory.alter(self.job.res, res_amount)
 
