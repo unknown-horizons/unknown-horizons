@@ -22,7 +22,7 @@
 import horizons.main
 import shutil
 import os.path
-import ext.simplejson as simplejson
+import simplejson
 import user
 
 class Setting(object):
