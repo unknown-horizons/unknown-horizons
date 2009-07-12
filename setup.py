@@ -18,6 +18,8 @@ for i in os.listdir('po'):
 			data.append( ('share/locale/%s/LC_MESSAGES' % i, ('po/%s/LC_MESSAGES/unknownhorizons.mo' % i,)))
 #trans = glob('po/*/LC_MESSAGES/unknownhorizons.mo')
 
+data = filter(lambda x: '.svn' not in os.path.split(x[0]), data)
+
 class build_man(build):
 	description = "Build the Manpage"
 	
