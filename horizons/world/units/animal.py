@@ -101,13 +101,13 @@ class WildAnimal(CollectorAnimal, Collector):
 	gathered all resources, and their inventory is full, they reproduce.
 	"""
 	walking_range = 5
-	WORK_DURATION = 48
+	WORK_DURATION = 96
 
 	# see documentation of self.health
 	HEALTH_INIT_VALUE = 10
 	HEALTH_INCREASE_ON_FEEDING = 2
 	HEALTH_DECREASE_ON_NO_JOB = 3
-	HEALTH_LEVEL_TO_REPRODUCE = 50
+	HEALTH_LEVEL_TO_REPRODUCE = 88
 
 	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
@@ -119,7 +119,7 @@ class WildAnimal(CollectorAnimal, Collector):
 	def __init(self, island, can_reproduce, health = None):
 		# good health is the main target of an animal. it increases when they eat and
 		# decreases, when they have no food. if it reaches 0, they die, and
-		# if it reaches REPRODUCE_ON_HEALTH_LEVEL, they reproduce
+		# if it reaches HEALTH_LEVEL_TO_REPRODUCE, they reproduce
 		self.health = health if health is not None else self.HEALTH_INIT_VALUE
 		self.can_reproduce = can_reproduce
 		self._home_island = weakref.ref(island)
