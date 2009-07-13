@@ -107,7 +107,7 @@ class WildAnimal(CollectorAnimal, Collector):
 	HEALTH_INIT_VALUE = 10
 	HEALTH_INCREASE_ON_FEEDING = 2
 	HEALTH_DECREASE_ON_NO_JOB = 3
-	HEALTH_LEVEL_TO_REPRODUCE = 88
+	HEALTH_LEVEL_TO_REPRODUCE = 75
 
 	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
@@ -117,6 +117,12 @@ class WildAnimal(CollectorAnimal, Collector):
 				self.getId(), can_reproduce, len(self.home_island.wild_animals))
 
 	def __init(self, island, can_reproduce, health = None):
+		"""
+		@param island: Hard reference to island
+		@param can_reproduce: bool
+		@param health: int or None
+		"""
+		assert isinstance(can_reproduce, bool)
 		# good health is the main target of an animal. it increases when they eat and
 		# decreases, when they have no food. if it reaches 0, they die, and
 		# if it reaches HEALTH_LEVEL_TO_REPRODUCE, they reproduce
@@ -268,10 +274,9 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def next_clone_can_reproduce(self):
 		"""Returns, wether the next child will be able to reproduce himself.
-		Some animal can't reproduce, which makes population growth easier to control."""
-		while True:
-			yield True
-			yield False
+		Some animal can't reproduce, which makes population growth easier to control.
+		@return: bool"""
+		return bool(random.randint(0, 1))
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation"""
