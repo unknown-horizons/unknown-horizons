@@ -66,7 +66,8 @@ class Unit(WorldObject):
 		self.path = self.create_pather()
 
 	def __del__(self):
-		if hasattr(self, "_instance") and self._instance.getLocationRef().getLayer() is not None:
+		if hasattr(self, "_instance") and \
+			 self._instance.getLocationRef().getLayer() is not None:
 			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def act(self, action, facing_loc, repeating=False):

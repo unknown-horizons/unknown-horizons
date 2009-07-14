@@ -28,8 +28,16 @@ from buildingcollector import BuildingCollector
 
 
 class AnimalCollector(BuildingCollector):
-	""" Collector that gets resources from animals """
-
+	""" Collector that gets resources from animals.
+	Behaviour (timeline):
+	 - search for an animal which has resources to pick up
+	 - tell animal to stop when its current job is done
+	 - wait for callback from this animal, notifying that we can pick it up
+	 - walk to animal
+	 - walk home (with animal walking along)
+	 - stay at home building for a while
+	 - release animal
+	 """
 	def __init__(self, *args, **kwargs):
 		super(AnimalCollector, self).__init__(*args, **kwargs)
 
@@ -69,9 +77,9 @@ class AnimalCollector(BuildingCollector):
 
 	def reached_home(self):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
-		super(AnimalCollector, self).reached_home()
 		# sheep and herder are inside the building now, pretending to work.
 		self.release_animal()
+		super(AnimalCollector, self).reached_home()
 
 	def get_buildings_in_range(self):
 		# This is only a small workarround

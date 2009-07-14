@@ -120,9 +120,7 @@ class Collector(StorageHolder, Unit):
 
 		self.hide()
 
-		# remove fife instance
-		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
-		# now wait for gc
+		# now wait for gc. fife instance (self._instance) is removed in Unit.__del__
 
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
