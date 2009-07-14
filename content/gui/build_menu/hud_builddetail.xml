@@ -10,8 +10,8 @@
 
 	<Container position="0,70" size="250,400" >
 		<HBox name="head_box" position="0,7" size="250,100">
-			<Label name="headline" text="Build "/>
-			<Label name="building_name" text=" " />
+			<Label name="headline" text="Build"/>
+			<Label name="building_name" text="" />
 		</HBox>
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Icon name="building" position="0,70"/>
