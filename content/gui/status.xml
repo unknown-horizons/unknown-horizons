@@ -21,4 +21,5 @@
 	<Label name="textiles_1" text="" />
 	<Label name="textiles_2" text="" />
 	<Label name="textiles_3" text="" />
+	<Label name="tooltip" text="" />
 </Container>

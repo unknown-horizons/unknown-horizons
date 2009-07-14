@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pychan
 
 import horizons.main
 
 from horizons.i18n import load_xml_translated
-from horizons.util import livingProperty, LivingObject
+from horizons.util import livingProperty, LivingObject, Callback
 from horizons.world.settlement import Settlement
 from buildingtool import BuildingTool
 from selectiontool import SelectionTool
@@ -83,6 +84,18 @@ class IngameGui(LivingObject):
 
 		self.gui['status'] = load_xml_translated('status.xml')
 		self.gui['status'].stylize('resource_bar')
+		if horizons.main.unstable_features:
+			# this is a test for tooltips using pychans mouseEntered/Exited events
+			tooltip = self.gui['status'].findChild(name="tooltip")
+			for res in [u'food', u'tools', u'boards', u'bricks', u'textiles']:
+				icon_name = res+"_icon"
+				icon = self.gui['status'].findChild(name=icon_name)
+				events = { \
+					icon_name+'/mouseEntered' : \
+						pychan.tools.callbackWithArguments(tooltip._setText, res) ,\
+					icon_name+'/mouseExited' : lambda : tooltip._setText(u""), \
+					}
+				icon.mapEvents(events)
 		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
 		self.gui['status_extra'].stylize('resource_bar')
 
@@ -177,13 +190,11 @@ class IngameGui(LivingObject):
 		"""
 		if isinstance(value,list):
 			value = value[0]
-		foundlabel = (self.gui['status_gold'] if label == 'gold' else self.gui['status']).findChild(name=label + '_' + str(1))
+		gui = self.gui['status_gold'] if label == 'gold' else self.gui['status']
+		foundlabel = gui.findChild(name=label + '_1')
 		foundlabel._setText(unicode(value))
 		foundlabel.resizeToContent()
-		if label == 'gold':
-			self.gui['status_gold'].resizeToContent()
-		else:
-			self.gui['status'].resizeToContent()
+		gui.resizeToContent()
 
 	def status_set_extra(self,label,value):
 		"""Sets a value on the extra status bar. (below normal status bar)
