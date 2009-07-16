@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<Container size="100,100">
+	<Label name="tooltip" text=""/>
+</Container>
