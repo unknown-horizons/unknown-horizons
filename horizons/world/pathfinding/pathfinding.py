@@ -153,7 +153,8 @@ class FindPath(object):
 			cur_node_data = None
 
 			# find next node to check, which is the one with best rating
-			for (node_coords, node_data) in to_check.items():
+			# optimization note: this is faster than min(to_check, key=lambda k : to_check[k][3])
+			for (node_coords, node_data) in to_check.iteritems():
 				if node_data[3] < minimum:
 					minimum = node_data[3]
 					cur_node_coords = node_coords
