@@ -72,8 +72,11 @@ class AnimalCollector(BuildingCollector):
 
 	def finish_working(self):
 		"""Transfer res and such. Called when collector arrives at the animal"""
+		if self.job.object is not None:
+			# if there still is an animal, continue working
+			# if not, a superclass will handle it
+			self.get_animal()
 		super(AnimalCollector, self).finish_working()
-		self.get_animal()
 
 	def reached_home(self):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""

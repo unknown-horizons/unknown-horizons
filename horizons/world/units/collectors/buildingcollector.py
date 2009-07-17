@@ -123,9 +123,9 @@ class BuildingCollector(Collector):
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources and sends collector home."""
-		super(BuildingCollector, self).finish_working()
 		if self.job.object is not None:
 			self.move_home(callback=self.reached_home)
+		super(BuildingCollector, self).finish_working()
 
 	def reroute(self):
 		"""Reroutes the collector to a different job, or home if no job is found.
