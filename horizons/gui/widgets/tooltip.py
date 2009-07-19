@@ -35,13 +35,11 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.name + '/mouseExited' : self.gui.hide
 			})
 
-	def test(self):
-		print self.name
-
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
 			self.label = self.gui.findChild(name='tooltip')
 			self.label.text = self.tooltip
+			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self._getParent().size[1])
 			self.gui.show()
 		else:
 			pass

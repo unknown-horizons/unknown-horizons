@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <Container size="380,80" position="93,10">
 <!-- Resource bar that are positioned on top -->
-	<TooltipIcon name="food_icon" image="content/gui/images/background/res_bg.png" position="0,7" tooltip="food" /><Icon image="content/gui/images/icons/hud/main/small/food.png" position="12,18" />
+	<TooltipIcon name="food_icon" image="content/gui/images/background/res_bg.png" position="0,7" tooltip="Food" /><Icon image="content/gui/images/icons/hud/main/small/food.png" position="12,18" />
 	<Label name="food_1" text="" />
 	<Label name="food_2" text="" />
 	<Label name="food_3" text="" />
-	<TooltipIcon name="tools_icon" image="content/gui/images/background/res_bg.png" position="52,7" tooltip="tools" /><Icon image="content/gui/images/icons/hud/main/small/tools.png" position="65,19" />
+	<TooltipIcon name="tools_icon" image="content/gui/images/background/res_bg.png" position="52,7" tooltip="Tools" /><Icon image="content/gui/images/icons/hud/main/small/tools.png" position="65,19" />
 	<Label name="tools_1" text="" />
 	<Label name="tools_2" text="" />
 	<Label name="tools_3" text="" />
-	<TooltipIcon name="boards_icon" image="content/gui/images/background/res_bg.png" position="104,7" tooltip="boards" /><Icon image="content/gui/images/icons/hud/main/small/boards.png" position="117,18" />
+	<TooltipIcon name="boards_icon" image="content/gui/images/background/res_bg.png" position="104,7" tooltip="Boards" /><Icon image="content/gui/images/icons/hud/main/small/boards.png" position="117,18" />
 	<Label name="boards_1" text="" />
 	<Label name="boards_2" text="" />
 	<Label name="boards_3" text="" />
-	<TooltipIcon name="bricks_icon" image="content/gui/images/background/res_bg.png" position="156,7" tooltip="bricks" /><Icon image="content/gui/images/icons/hud/main/small/bricks.png" position="168,19" />
+	<TooltipIcon name="bricks_icon" image="content/gui/images/background/res_bg.png" position="156,7" tooltip="Bricks" /><Icon image="content/gui/images/icons/hud/main/small/bricks.png" position="168,19" />
 	<Label name="bricks_1" text="" />
 	<Label name="bricks_2" text="" />
 	<Label name="bricks_3" text="" />
-	<TooltipIcon name="textiles_icon" image="content/gui/images/background/res_bg.png" position="208,7" tooltip="textiles" /><Icon image="content/gui/images/icons/hud/main/small/cloth.png" position="217,15" />
+	<TooltipIcon name="textiles_icon" image="content/gui/images/background/res_bg.png" position="208,7" tooltip="Textiles" /><Icon image="content/gui/images/icons/hud/main/small/cloth.png" position="217,15" />
 	<Label name="textiles_1" text="" />
 	<Label name="textiles_2" text="" />
 	<Label name="textiles_3" text="" />
