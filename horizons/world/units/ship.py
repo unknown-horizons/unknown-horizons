@@ -35,6 +35,8 @@ class Ship(Unit):
 	@param x: int x position
 	@param y: int y position
 	"""
+	pather_class = ShipPather
+
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.setup_inventory()
@@ -142,7 +144,6 @@ class Ship(Unit):
 
 		return self
 
-	def create_pather(self):
 		return ShipPather(self)
 
 

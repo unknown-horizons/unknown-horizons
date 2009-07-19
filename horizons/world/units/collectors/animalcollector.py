@@ -93,7 +93,7 @@ class AnimalCollector(BuildingCollector):
 		# TODO: use the Collector class instead of BuildCollector
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		return self.home_building().animals
+		return self.home_building.animals
 
 	def stop_animal(self):
 		"""Tell animal to stop at the next occasion"""
@@ -103,7 +103,7 @@ class AnimalCollector(BuildingCollector):
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
 		#print self.id, 'GET ANIMAL'
-		self.job.object.move(self.home_building().position, destination_in_building = True, action='move_full')
+		self.job.object.move(self.home_building.position, destination_in_building = True, action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""

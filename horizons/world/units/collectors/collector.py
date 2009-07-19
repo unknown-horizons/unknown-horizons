@@ -34,10 +34,25 @@ from horizons.world.units.unit import Unit
 
 class Collector(StorageHolder, Unit):
 	"""Base class for every collector. Does not depend on any home building.
+
+	Timeline:
+	 * search_job
+	 * * get_job
+	 * * handle_no_possible_job
+	 * * begin_current_job
+	 * * * setup_new_job
+	 * * * move to target
+	 on arrival there:
+	 * begin_working
+	 after some pretended working:
+	 * finish_working
+	 * * transfer_res
+	 after subclass has done actions to finish job:
+	 * end_job
 	"""
 	log = logging.getLogger("world.units.collector")
 
-	WORK_DURATION = 16 # time how long a collector predends to work at target in ticks
+	work_duration = 16 # time how long a collector predends to work at target in ticks
 
 	# all states, any (subclass) instance may have. Keeping a list in one place
 	# is important, because every state must have a distinct number.
@@ -46,6 +61,9 @@ class Collector(StorageHolder, Unit):
 								'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
 								'no_job_waiting')
 
+
+	# INIT/DESTRUCT
+
 	def __init__(self, x, y, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
 																		size = size, \
@@ -53,7 +71,7 @@ class Collector(StorageHolder, Unit):
 																		y = y, \
 																		**kwargs)
 
-		self.inventory.limit = size;
+		self.inventory.limit = size
 		# TODO: use different storage to support multiple slots. see StorageHolder
 
 		self.__init(self.states.idle, start_hidden)
@@ -68,6 +86,18 @@ class Collector(StorageHolder, Unit):
 			self.hide()
 
 		self.job = None # here we store the current job as Job object
+
+	def remove(self):
+		"""Removes the instance. Useful when the home building is destroyed"""
+		self.log.debug("Collector %s: remove called", self.getId())
+		# remove from target collector list
+		if self.job is not None and self.job.object is not None:
+			self.job.object._Provider__collectors.remove(self)
+		self.hide()
+		# now wait for gc. fife instance (self._instance) is removed in Unit.__del__
+
+
+	# SAVE/LOAD
 
 	def save(self, db):
 		super(Collector, self).save(db)
@@ -111,17 +141,6 @@ class Collector(StorageHolder, Unit):
 
 		self.apply_state(self.state, remaining_ticks)
 
-	def remove(self):
-		"""Removes the instance. Useful when the home building is destroyed"""
-		self.log.debug("Collector %s: remove called", self.getId())
-		# remove from target collector list
-		if self.job is not None and self.job.object is not None:
-			self.job.object._Provider__collectors.remove(self)
-
-		self.hide()
-
-		# now wait for gc. fife instance (self._instance) is removed in Unit.__del__
-
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
 		@param state: EnumValue from states
@@ -143,9 +162,25 @@ class Collector(StorageHolder, Unit):
 			# job finishes in remaining_ticks ticks
 			horizons.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
 
-	def setup_new_job(self):
-		"""Executes the necessary actions to begin a new job"""
-		self.job.object._Provider__collectors.append(self)
+
+	# GETTER
+
+	def get_home_inventory(self):
+		"""Returns inventory where collected res will be stored.
+		This could be the inventory of a home_building, or it's own.
+		"""
+		raise NotImplementedError
+
+	def get_colleague_collectors(self):
+		"""Returns a list of collectors, that work for the same "inventory"."""
+		return []
+
+	def get_job(self):
+		"""Returns the next job or None"""
+		raise NotImplementedError
+
+
+	# BEHAVIOUR
 
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
@@ -163,19 +198,9 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s: no possible job, retry in 2 secs", self.getId())
 		horizons.main.session.scheduler.add_new_object(self.search_job, self, 32)
 
-	def get_home_inventory(self):
-		"""Returns inventory where collected res will be stored.
-		This could be the inventory of a home_building, or it's own.
-		"""
-		raise NotImplementedError
-
-	def get_colleague_collectors(self):
-		"""Returns a list of collectors, that work for the same "inventory"."""
-		return []
-
-	def get_job(self):
-		"""Returns the next job or None"""
-		raise NotImplementedError
+	def setup_new_job(self):
+		"""Executes the necessary actions to begin a new job"""
+		self.job.object._Provider__collectors.append(self)
 
 	def check_possible_job_target(self, target, res):
 		"""Checks out if we could get res from target.
@@ -229,7 +254,7 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s begins working", self.getId())
 		if self.job.object is not None:
 			horizons.main.session.scheduler.add_new_object(self.finish_working, self, \
-																										 self.WORK_DURATION)
+																										 self.work_duration)
 			self.state = self.states.working
 		else:
 			self.reroute()
@@ -278,43 +303,14 @@ class Collector(StorageHolder, Unit):
 		"""Return best possible job from jobs.
 		"Best" means that the job is highest when the job list was sorted.
 		"Possible" means that we can find a path there.
-		@param jobs: unsorted list of Job instances
+		@param jobs: unsorted JobList instance
 		@return: selected Job instance from list or None if no jobs are possible."""
-		# sort job list
-		jobs = self.sort_jobs(jobs)
-
+		jobs.sort_jobs()
 		# check if we can move to that targets
 		for job in jobs:
 			if self.check_move(job.object.position):
 				return job
 		return None
-
-	def sort_jobs(self, jobs):
-		"""Sorts the jobs for further processing. This has been moved to a seperate function so it
-		can be overwritten by subclasses. A building collector might sort after a specific rating,
-		a lumberjack might just take a random tree.
-		@param jobs: list of Job instances that should be sorted an then returned.
-		@return: sorted list of Job instances."""
-		return self.sort_jobs_rating(jobs)
-
-	def sort_jobs_rating(self, jobs):
-		"""Sorts jobs by job rating (call this in sort_jobs if it fits to your subclass)"""
-		jobs.sort(key=operator.attrgetter('rating') )
-		jobs.reverse()
-		return jobs
-
-	def sort_jobs_random(self, jobs):
-		"""Sorts jobs randomly (call this in sort_jobs if it fits to your subclass)"""
-		random.shuffle(jobs)
-		return jobs
-
-	def sort_jobs_amount(self, jobs):
-		"""Sorts the jobs by the amount of resources available"""
-		jobs.sort(key=operator.attrgetter('amount'), reverse=True)
-		return jobs
-
-	def create_pather(self):
-		return BuildingCollectorPather(self)
 
 
 class Job(object):
@@ -333,3 +329,42 @@ class Job(object):
 
 	def __str__(self):
 		return "Job res: %i amount: %i" % (self.res, self.amount)
+
+
+class JobList(list):
+	"""Data structure for evaluating best jobs.
+	It's a list extended by specialsort functions.
+	"""
+	order_by = Enum('rating', 'amount', 'random')
+
+	def __init__(self, job_order):
+		"""
+		@param job_order: instance of order_by-Enum
+		"""
+		super(JobList, self).__init__()
+		if job_order == self.order_by.random:
+			self.sort_jobs = self._sort_jobs_random
+		elif job_order == self.order_by.amount:
+			self.sort_jobs = self._sort_jobs_amount
+		elif job_order == self.order_by.rating:
+			self.sort_jobs = self._sort_jobs_rating
+		else: # default to sorting by rating
+			self.sort_jobs = self._sort_jobs_rating
+			print 'WARNING: invalid job order: ', job_order
+
+	def sort_jobs(self):
+		"""Call this to sort jobs"""
+		raise NotImplementedError
+
+	def _sort_jobs_rating(self):
+		"""Sorts jobs by job rating (call this in sort_jobs if it fits to your subclass)"""
+		self.sort(key=operator.attrgetter('rating'), reverse=True)
+
+	def _sort_jobs_random(self):
+		"""Sorts jobs randomly (call this in sort_jobs if it fits to your subclass)"""
+		random.shuffle(self)
+
+	def _sort_jobs_amount(self):
+		"""Sorts the jobs by the amount of resources available"""
+		self.sort(key=operator.attrgetter('amount'), reverse=True)
+

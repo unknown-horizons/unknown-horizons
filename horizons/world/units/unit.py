@@ -29,6 +29,9 @@ from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod
 
 class Unit(WorldObject):
 	log = logging.getLogger("world.units")
+
+	pather_class = None
+
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(**kwargs)
 		self.__init(x, y, owner)
@@ -63,7 +66,7 @@ class Unit(WorldObject):
 
 		self.__is_moving = False
 
-		self.path = self.create_pather()
+		self.path = self.pather_class(self)
 
 	def __del__(self):
 		if hasattr(self, "_instance") and \
@@ -267,5 +270,15 @@ class Unit(WorldObject):
 			horizons.main.session.scheduler.add_new_object(self.move_tick, self, 1)
 		return self
 
-	def create_pather(self):
-		raise NotImplementedError
+	def get_random_location(self, in_range):
+		"""Returns a random location in walking_range, that we can find a path to
+		@param in_range: int, max distance to returned point from current position
+		@return: Instance of Point or None"""
+		possible_walk_targets = Circle(self.position, in_range).get_coordinates()
+		possible_walk_targets.remove(self.position.to_tuple())
+		random.shuffle(possible_walk_targets)
+		for coord in possible_walk_targets:
+			target = Point(*coord)
+			if self.check_move(target):
+				return target
+		return None

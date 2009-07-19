@@ -222,7 +222,7 @@ class BuildingCollectorPather(AbstractPather):
 		super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True)
 
 	def _get_path_nodes(self):
-			return self.unit.home_building().path_nodes.nodes
+			return self.unit.home_building.path_nodes.nodes
 
 class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""

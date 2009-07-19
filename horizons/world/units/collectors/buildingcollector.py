@@ -21,19 +21,20 @@
 
 import weakref
 
-import horizons.main
-
 from horizons.util import WorldObject
-from horizons.world.pathfinding.pather import RoadPather
+from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.world.production import PrimaryProduction
 
-from collector import Collector
+from collector import Collector, JobList
 
 
 class BuildingCollector(Collector):
 	"""Collector, that works for a building and gets its needed resources.
 	Essentially extends the Collector by a home building.
 	"""
+	job_ordering = JobList.order_by.amount
+	pather_class = BuildingCollectorPather
+
 	def __init__(self, home_building, **kwargs):
 		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
 												y=home_building.position.origin.y,
@@ -41,13 +42,17 @@ class BuildingCollector(Collector):
 		self.__init(home_building)
 
 	def __init(self, home_building):
-		self.home_building = weakref.ref(home_building)
+		self._home_building = weakref.ref(home_building)
 		self.register_at_home_building()
+
+	@property
+	def home_building(self):
+		return self._home_building()
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
 		# set owner to home_building (is set to player by unit)
-		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building().getId(), self.getId())
+		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building.getId(), self.getId())
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
@@ -65,15 +70,15 @@ class BuildingCollector(Collector):
 		@param unregister: wether to reverse registration
 		"""
 		if unregister:
-			self.home_building().local_collectors.remove(self)
+			self.home_building.local_collectors.remove(self)
 		else:
-			self.home_building().local_collectors.append(self)
+			self.home_building.local_collectors.append(self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
 		if state == self.states.moving_home:
 			# collector is on his way home
-			self.home_building()._AbstractConsumer__collectors.append(self)
+			self.home_building._AbstractConsumer__collectors.append(self)
 			self.add_move_callback(self.reached_home)
 			self.show()
 
@@ -82,27 +87,27 @@ class BuildingCollector(Collector):
 		super(BuildingCollector, self).remove()
 
 	def get_home_inventory(self):
-		return self.home_building().inventory
+		return self.home_building.inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building()._AbstractConsumer__collectors
+		return self.home_building._AbstractConsumer__collectors
 
 	def get_job(self):
 		"""Returns the next job or None"""
 		self.log.debug("Collector %s get_job", self.getId())
-
-		if self.home_building() is None:
+		if self.home_building is None:
 			return None
 
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
 			return None
-		jobs = []
+
+		jobs = JobList(self.job_ordering)
 		for building in self.get_buildings_in_range():
 			# Continue if building is of the same class as the home building or
 			# they have the same inventory, to prevent e.g. weaver picking up from weaver.
-			if isinstance(building, self.home_building().__class__) or \
-			   building.inventory is self.home_building().inventory:
+			if isinstance(building, self.home_building.__class__) or \
+			   building.inventory is self.home_building.inventory:
 				continue
 			for res in collectable_res:
 				# Prevent the collector from picking up resources from building needing it's resources for production
@@ -112,13 +117,13 @@ class BuildingCollector(Collector):
 					break
 				job = self.check_possible_job_target(building, res)
 				if job is not None:
-						jobs.append(job)
+					jobs.append(job)
 
 		return self.get_best_possible_job(jobs)
 
 	def setup_new_job(self):
 		super(BuildingCollector, self).setup_new_job()
-		self.home_building()._AbstractConsumer__collectors.append(self)
+		self.home_building._AbstractConsumer__collectors.append(self)
 
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
@@ -147,29 +152,29 @@ class BuildingCollector(Collector):
 		"""Exchanges resources with home and calss end_job"""
 		self.log.debug("Collector %s reached home", self.getId())
 
-		if self.home_building() is not None:
-			remnant = self.home_building().inventory.alter(self.job.res, self.job.amount)
+		if self.home_building is not None:
+			remnant = self.home_building.inventory.alter(self.job.res, self.job.amount)
 			#assert remnant == 0, "Home building could not take all ressources from collector."
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
 			#assert remnant == 0, "collector did not pick up amount of ressources specified by the job."
-			self.home_building()._AbstractConsumer__collectors.remove(self)
+			self.home_building._AbstractConsumer__collectors.remove(self)
 		self.end_job()
 
 	def get_collectable_res(self):
 		"""Return all resources the Collector can collect (depends on its home building)"""
 		# find needed res (only res that we have free room for) - Building function
-		return self.home_building().get_needed_res()
+		return self.home_building.get_needed_res()
 
 	def get_buildings_in_range(self):
 		"""Returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
 		from horizons.world.provider import Provider
-		return [building for building in self.home_building().get_buildings_in_range() if isinstance(building, Provider)]
+		return [building for building in self.home_building.get_buildings_in_range() if isinstance(building, Provider)]
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
 		self.log.debug("Collector %s move_home", self.getId())
-		self.move(self.home_building().position, callback=callback, destination_in_building=True, action=action)
+		self.move(self.home_building.position, callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
 	def cancel(self):
@@ -180,26 +185,19 @@ class BuildingCollector(Collector):
 		self.job = None
 		self.move_home(callback=self.search_job, action='move')
 
-	def sort_jobs(self, jobs):
-		return self.sort_jobs_amount(jobs)
-
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
 	Used in storage facilities.
 	"""
+	pather_class = RoadPather
 	def begin_current_job(self):
 		"""Declare target of StorageCollector as building, because it always is"""
 		super(StorageCollector, self).begin_current_job()
 		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
 
-	def create_pather(self):
-		return RoadPather(self)
-
 class FieldCollector(BuildingCollector):
 	""" Simular to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
-
-	def sort_jobs(self, jobs):
-		return self.sort_jobs_random(jobs)
+	job_ordering = JobList.order_by.random

@@ -29,7 +29,7 @@ from horizons.world.production import SecondaryProduction
 from horizons.world.provider import Provider
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
-from collectors import Collector, BuildingCollector
+from collectors import Collector, BuildingCollector, JobList
 
 class Animal(SecondaryProduction):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -51,10 +51,6 @@ class CollectorAnimal(Animal):
 	def __init__(self, **kwargs):
 		super(CollectorAnimal, self).__init__(**kwargs)
 		self.__init()
-
-	def sort_jobs(self, jobs):
-		# no intelligent job selection
-		return self.sort_jobs_random(jobs)
 
 	def __init(self):
 		self.collector = None
@@ -101,7 +97,8 @@ class WildAnimal(CollectorAnimal, Collector):
 	gathered all resources, and their inventory is full, they reproduce.
 	"""
 	walking_range = 5
-	WORK_DURATION = 96
+	work_duration = 96
+	pather_class = SoldierPather
 
 	# see documentation of self.health
 	HEALTH_INIT_VALUE = 10
@@ -176,7 +173,6 @@ class WildAnimal(CollectorAnimal, Collector):
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
 		self.log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
-
 		# decrease health because of lack of food
 		self.health -= self.HEALTH_DECREASE_ON_NO_JOB
 		if self.health <= 0:
@@ -184,9 +180,7 @@ class WildAnimal(CollectorAnimal, Collector):
 			return
 
 		# if can't find a job, we walk to a random location near us and search there
-		self.log.debug('WildAnimal %s: get_rand_loc start',self.getId())
-		target = self.get_random_location_in_range()
-		self.log.debug('WildAnimal %s: get_rand_loc end',self.getId())
+		target = self.get_random_location(self.walking_range)
 		if target is not None:
 			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
 			self.move(target, callback=self.search_job)
@@ -197,36 +191,10 @@ class WildAnimal(CollectorAnimal, Collector):
 			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
 			self.state = self.states.no_job_waiting
 
-	def get_random_location_in_range(self):
-		"""Returns a random location in walking_range, that we can find a path to
-		@return: Instance of Point or None"""
-		target = None
-		found_possible_target = False
-		possible_walk_targets = Circle(self.position, self.walking_range).get_coordinates()
-		possible_walk_targets.remove(self.position.to_tuple())
-
-		while not found_possible_target and len(possible_walk_targets) > 0:
-			target_tuple = possible_walk_targets[random.randint(0, len(possible_walk_targets)-1)]
-			possible_walk_targets.remove(target_tuple)
-			target = Point(*target_tuple)
-			found_possible_target = self.check_move(target)
-			# temporary hack to make sure that animal doesn't leave island (necessary until
-			# SOLDIER_MOVEMENT is fully implemented and working)
-			if found_possible_target:
-				#assert horizons.main.session.world.get_island(target.x, target.y) is not None
-				if horizons.main.session.world.get_island(target.x, target.y) is None:
-					self.log.warning("WildAnimal %s tried to walk on a tile, that is not on an island!", self.getId())
-					found_possible_target = False
-
-		if found_possible_target:
-			return target
-		else:
-			return None
-
 	def get_job(self):
 		self.log.debug('WildAnimal %s: get_job' % self.getId())
 
-		jobs = [] # list of possible jobs
+		jobs = JobList(JobList.order_by.random)
 		needed_resources = self.get_needed_res()
 
 		# iterate over all possible providers and needed resources
@@ -254,7 +222,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		# check if we can reproduce
 		self.log.debug("Wild animal %s end_job; health: %s", self.getId(), self.health)
 		self.health += self.HEALTH_INCREASE_ON_FEEDING
-		if self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
+		if self.can_reproduce and self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
 			self.reproduce()
 			self.health = self.HEALTH_INIT_VALUE
 
@@ -268,7 +236,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		horizons.main.session.entities.units[self.id](self.home_island, \
 			x=self.position.x, y=self.position.y, \
 			can_reproduce = self.next_clone_can_reproduce())
-		# reset resources
+		# reset own resources
 		for res in self.get_consumed_res():
 			self.inventory.reset(res)
 
@@ -285,9 +253,6 @@ class WildAnimal(CollectorAnimal, Collector):
 		# leave animal as is - garbage collection will do the rest
 		self.home_island.wild_animals.remove(self)
 
-	def create_pather(self):
-		return SoldierPather(self)
-
 	def cancel(self):
 		if self.job.object is not None:
 			self.job.object._Provider__collectors.remove(self)
@@ -299,19 +264,18 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 	They have a home_building, representing their farm; they usually feed on whatever
 	the farm grows, and collectors from the farm can collect their produced resources.
 	"""
+	job_ordering = JobList.order_by.random
 	grazingTime = 2
+
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(FarmAnimal, self).__init__(home_building = home_building, \
 																 start_hidden = start_hidden, **kwargs)
 
 	def register_at_home_building(self, unregister=False):
 		if unregister:
-			self.home_building().animals.remove(self)
+			self.home_building.animals.remove(self)
 		else:
-			self.home_building().animals.append(self)
+			self.home_building.animals.append(self)
 
 	def setup_new_job(self):
 		self.job.object._Provider__collectors.append(self)
-
-	def create_pather(self):
-		return BuildingCollectorPather(self)
