@@ -87,18 +87,6 @@ class IngameGui(LivingObject):
 
 		self.gui['status'] = load_xml_translated('status.xml')
 		self.gui['status'].stylize('resource_bar')
-		if horizons.main.unstable_features:
-			# this is a test for tooltips using pychans mouseEntered/Exited events
-			tooltip = self.gui['status'].findChild(name="tooltip")
-			for res in [u'food', u'tools', u'boards', u'bricks', u'textiles']:
-				icon_name = res+"_icon"
-				icon = self.gui['status'].findChild(name=icon_name)
-				icon_pos = self.gui['status'].position[0] + icon.position[0]
-				events = {
-					icon_name+'/mouseEntered' : pychan.tools.callbackWithArguments(self.tooltip_show, res, icon_pos),
-					icon_name+'/mouseExited' : self.gui['tooltip'].hide
-					}
-				icon.mapEvents(events)
 		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
 		self.gui['status_extra'].stylize('resource_bar')
 
@@ -167,13 +155,6 @@ class IngameGui(LivingObject):
 		self.tabwidgets = None
 		self.hide_menu()
 		super(IngameGui, self).end()
-
-
-	def tooltip_show(self, res=u"", position_x="0"):
-		label = self.gui['tooltip'].findChild(name="tooltip")
-		self.gui['tooltip'].position = ( position_x, self.gui['status'].position[1] + self.gui['status'].size[1])
-		label.text = unicode(res)
-		self.gui['tooltip'].show()
 
 	def update_gold(self):
 		res_id = 1
