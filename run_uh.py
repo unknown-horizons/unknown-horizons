@@ -38,14 +38,14 @@ def log():
 	"""Returns Logger"""
 	return logging.getLogger("run_uh")
 
-def get_fife_path():
+def get_fife_path(fife_custom_path=None):
 	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
 	# check if there is a config file (has to be called config.py)
 	try:
 		import config
 		_paths = [config.fife_path]
 	except (ImportError, AttributeError):
-		_paths = []
+		_paths = [] if fife_custom_path is None else [fife_custom_path]
 
 	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
 
@@ -82,11 +82,11 @@ def get_fife_path():
 		exit()
 	return fife_path
 
-def find_FIFE():
+def find_FIFE(fife_custom_path=None):
 	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).
 	If it's already there, the function will return, else
 	it will restart uh with correct $LD_LIBRARY_PATH. """
-	fife_path = get_fife_path() # terminates program if fife can't be found
+	fife_path = get_fife_path(fife_custom_path) # terminates program if fife can't be found
 
 	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
 		[ os.path.abspath(fife_path + '/' + a) for  \
@@ -117,6 +117,7 @@ def print_help():
 	print "                    ", _("Useful for testing during development")
 	print "--start-map <map> - ", _("Starts <map>. <map> is the filename of the map, without '.sqlite'")
 	print "--load-map <save> - ", _("Loads a saved game. Specify the savegamename.")
+	print "--fife-path <path> - ", _("Specify the path to FIFE engine.")
 	print ""
 	print _("Debugging options:")
 	print "--debug-module <module> -", _("Enable logging for a certain logging module.")
@@ -154,13 +155,14 @@ if __name__ == '__main__':
 		opts, args = getopt.getopt(sys.argv[1:], "hd", \
 						   ["help", "debug", "fife-in-library-path", "start-dev-map", \
 							    "start-map=", "enable-unstable-features", "debug-module=", \
-									"load-map="])
+									"load-map=", "fife-path="])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
 		exit(1)
 
 	fife_in_library_path = False
+	fife_custom_path = None
 
 	command_line_arguments = { \
 		         "start_dev_map": False, \
@@ -198,7 +200,10 @@ if __name__ == '__main__':
 		elif o == "--debug-module":
 			# enable logging for this module
 			logging.getLogger(a).setLevel(logging.DEBUG)
-
+		elif o == "--fife-path":
+			# specify custom path to FIFE engine
+			if not fife_in_library_path:
+				fife_custom_path = a
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
@@ -209,7 +214,7 @@ if __name__ == '__main__':
 			print 'Failed to load fife:', e
 			exit(1)
 		log().debug('Searching for FIFE')
-		find_FIFE()
+		find_FIFE() if fife_custom_path is None else find_FIFE(fife_custom_path)
 
 	#print _("Launching Unknown Horizons")
 
