@@ -28,22 +28,21 @@ class TooltipIcon(pychan.widgets.Icon):
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
-		self.mapEvents({
-			self.name + '/mouseEntered' : self.show_tooltip,
-			self.name + '/mouseExited' : self.hide_tooltip
-			})
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
+		self.mapEvents({
+			self.name + '/mouseEntered' : self.show_tooltip,
+			self.name + '/mouseExited' : self.gui.hide
+			})
 
 	def test(self):
 		print self.name
 
 	def show_tooltip(self):
-		self.label = self.gui.findChild(name='tooltip')
-		self.label.text = self.tooltip
-		self.gui.show()
-
-	def hide_tooltip(self):
-		self.label.text = u""
-		self.gui.hide()
+		if hasattr(self, 'tooltip'):
+			self.label = self.gui.findChild(name='tooltip')
+			self.label.text = self.tooltip
+			self.gui.show()
+		else:
+			pass
 
