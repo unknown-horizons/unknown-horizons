@@ -29,6 +29,7 @@ class TooltipIcon(pychan.widgets.Icon):
 	def __init__(self, **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
+		self.gui.stylize('resource_bar')
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.show_tooltip,
@@ -40,6 +41,27 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.label = self.gui.findChild(name='tooltip')
 			self.label.text = self.tooltip
 			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self._getParent().size[1])
+			self.gui.show()
+		else:
+			pass
+
+class TooltipButton(pychan.widgets.ImageButton):
+	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
+	def __init__(self, **kwargs):
+		super(TooltipButton, self).__init__(**kwargs)
+		self.gui = load_xml_translated('tooltip.xml')
+		self.gui.stylize('resource_bar')
+		self.gui.hide()
+		self.mapEvents({
+			self.name + '/mouseEntered' : self.show_tooltip,
+			self.name + '/mouseExited' : self.gui.hide
+			})
+
+	def show_tooltip(self):
+		if hasattr(self, 'tooltip'):
+			self.label = self.gui.findChild(name='tooltip')
+			self.label.text = self.tooltip
+			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self.position[1] + self.size[1] + 15)
 			self.gui.show()
 		else:
 			pass

@@ -117,7 +117,7 @@ def print_help():
 	print "                    ", _("Useful for testing during development")
 	print "--start-map <map> - ", _("Starts <map>. <map> is the filename of the map, without '.sqlite'")
 	print "--load-map <save> - ", _("Loads a saved game. Specify the savegamename.")
-	print "--fife-path <path> - ", _("Specify the path to FIFE engine.")
+	print "--fife-path <path> - ", _("Specify the path to FIFE root directory.")
 	print ""
 	print _("Debugging options:")
 	print "--debug-module <module> -", _("Enable logging for a certain logging module.")

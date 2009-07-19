@@ -32,7 +32,7 @@ import horizons.main
 from gui.widgets.inventory import Inventory, ImageFillStatusButton
 from gui.widgets.progressbar import ProgressBar
 from gui.widgets.toggleimagebutton import ToggleImageButton
-from gui.widgets.tooltip import TooltipIcon
+from gui.widgets.tooltip import TooltipIcon, TooltipButton
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -313,6 +313,7 @@ class Fife(object):
 		pychan.widgets.registerWidget(ProgressBar)
 		pychan.widgets.registerWidget(ToggleImageButton)
 		pychan.widgets.registerWidget(TooltipIcon)
+		pychan.widgets.registerWidget(TooltipButton)
 
 		self._gotInited = True
 
