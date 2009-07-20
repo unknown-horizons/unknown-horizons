@@ -58,7 +58,7 @@ class stablelist(object):
 		return key in self._values
 
 	def index(self, value):
-		for k, v in self._values.items():
+		for k, v in self._values.iteritems():
 			if v == value:
 				return k
 		else:

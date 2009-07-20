@@ -95,7 +95,7 @@ class Rect(object):
 
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
-		return Point((self.right - self.left) // 2, (self.bottom - self.top) // 2)
+		return Point((self.right + self.left) // 2, (self.bottom + self.top) // 2)
 
 	def contains(self, point):
 		""" Returns if this rect (self) contains the point.

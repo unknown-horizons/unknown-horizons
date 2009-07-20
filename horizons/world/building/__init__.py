@@ -49,7 +49,7 @@ class BuildingClass(type):
 			super(cls, self).load(db, worldid)
 			return self
 		# Return the new type for this building, including it's attributes, like the previously defined load function.
-		return type.__new__(self, 'Building[' + str(id) + ']',
+		return type.__new__(self, 'Building[%s]' % str(id),
 			(getattr(globals()[class_package], class_name),),
 			{"load": load})
 
@@ -61,28 +61,33 @@ class BuildingClass(type):
 		super(BuildingClass, self).__init__(self, **kwargs)
 		self.id = id
 		self._object = None
-		self.class_package = horizons.main.db("SELECT class_package FROM data.building WHERE rowid = ?", id)[0][0]
-		(size_x,  size_y) = horizons.main.db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
+
+		db = horizons.main.db
+		self.class_package = db("SELECT class_package FROM data.building WHERE rowid = ?", id)[0][0]
+		(size_x,  size_y) = db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
 		translate_this = _
-		self.name = translate_this(horizons.main.db("SELECT name FROM data.building WHERE rowid = ?", id)[0][0])
+		self.name = translate_this(db("SELECT name FROM data.building WHERE rowid = ?", id)[0][0])
 		self.size = (int(size_x), int(size_y))
-		self.radius = horizons.main.db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
-		self.health = int(horizons.main.db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])
-		self.inhabitants = int(horizons.main.db("SELECT inhabitants_start FROM data.building WHERE rowid = ?", id)[0][0])
-		self.inhabitants_max = int(horizons.main.db("SELECT inhabitants_max FROM data.building WHERE rowid = ?", id)[0][0])
-		for (name,  value) in horizons.main.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
+		self.radius = db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
+		self.health = int(db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])
+		self.inhabitants = int(db("SELECT inhabitants_start FROM data.building WHERE rowid = ?", id)[0][0])
+		self.inhabitants_max = int(db("SELECT inhabitants_max FROM data.building WHERE rowid = ?", id)[0][0])
+		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in horizons.main.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
+		for (name, value) in db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
-		running_costs = horizons.main.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
+		running_costs = db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
 		if len(running_costs) > 0:
 			self.running_costs = running_costs[0][0]
 			self.running_costs_inactive = running_costs[0][1]
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
+		soundfiles = db("SELECT file FROM sounds INNER JOIN building_sounds ON \
+			sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id)
+		self.soundfiles = [ i[0] for i in soundfiles ]
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
 		             buildings you should check out the separate classes in horizons/world/buildings/*.
 					 Unit creation is very simular, you could check it out though and see which attributes a unit
@@ -100,7 +105,7 @@ class BuildingClass(type):
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
-		print 'Loading building #' + str(cls.id) + '...'
+		print 'Loading building #%s...' % str(cls.id)
 		try:
 			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
 		except RuntimeError:
@@ -108,11 +113,13 @@ class BuildingClass(type):
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
+		cls.action_sets = [] # save list of action sets as one list (not db format)
 		for (action_set_id,) in action_sets:
-			for action_id in horizons.main.action_sets[action_set_id].keys():
+			cls.action_sets.append(action_set_id)
+			for action_id in horizons.main.action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
-				for rotation in horizons.main.action_sets[action_set_id][action_id].keys():
+				for rotation in horizons.main.action_sets[action_set_id][action_id].iterkeys():
 					#print "rotation:", rotation
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(cls.size[0] * 16)

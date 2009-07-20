@@ -148,7 +148,7 @@ class IngameGui(LivingObject):
 			'rotateLeft' : None
 		})
 
-		for w in self.gui.values():
+		for w in self.gui.itervalues():
 			if w.parent is None:
 				w.hide()
 		self.message_widget = None

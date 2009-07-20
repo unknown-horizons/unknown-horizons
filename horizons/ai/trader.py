@@ -25,6 +25,7 @@ import logging
 import horizons.main
 
 from horizons.util import Point, Callback, WorldObject
+from horizons.constants import GOLD_RES_ID
 from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
@@ -39,11 +40,16 @@ class Trader(Player, StorageHolder):
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
 	shipStates = Enum('moving_random', 'moving_to_branch', 'reached_branch')
 
+	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
+	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
+
 	log = logging.getLogger("ai.trader")
 
 	# amount range to buy/sell from settlement per resource
 	buy_amount = (0, 4)
 	sell_amount = (1, 4)
+
+	_res_values = {} # stores money value of resources. Use only get_res_value() for access
 
 	def __init__(self, id, name, color, **kwargs):
 		self._init(id, name, color)
@@ -166,13 +172,16 @@ class Trader(Player, StorageHolder):
 			else:
 				alter = rand if limit-settlement.inventory[res] >= rand else limit-settlement.inventory[res]
 				self.log.debug("Trader %s: buying %s tons of res %s", self.getId(), alter, res)
-				ret = settlement.owner.inventory.alter(1, -alter*\
-					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5))
+				ret = settlement.owner.inventory.alter(GOLD_RES_ID, -alter*\
+																							 int(self.get_res_value(res)*\
+																									 self.SELLING_ADDITIONAL_CHARGE))
 				if ret == 0: # check if enough money was in the inventory
 					settlement.inventory.alter(res, alter)
 				else: # if not, return the money taken
-					settlement.owner.inventory.alter(1, alter*\
-						int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*1.5)-ret)
+					settlement.owner.inventory.alter(GOLD_RES_ID, alter*\
+																					 int(self.get_res_value(res)*\
+																							 self.SELLING_ADDITIONAL_CHARGE)\
+																					 -ret)
 		for res, limit in settlement.sell_list.iteritems():
 			# select a random amount to buy from the settlement
 			rand = random.randint(self.buy_amount[0], \
@@ -183,8 +192,8 @@ class Trader(Player, StorageHolder):
 				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
 				self.log.debug("Trader %s: selling %s tons of res %s", self.getId(), alter, res)
 				# Pay for bought resources
-				settlement.owner.inventory.alter(1, -alter*\
-					int(float(horizons.main.db("SELECT value FROM resource WHERE rowid=?",res)[0][0])*0.9))
+				settlement.owner.inventory.alter(GOLD_RES_ID, -alter*int(self.get_res_value(res)*\
+																																 self.BUYING_CHARGE_DEDUCTION))
 				settlement.inventory.alter(res, alter)
 		del self.office[ship.id]
 		# wait 2 seconds before going on to the next island
@@ -203,8 +212,18 @@ class Trader(Player, StorageHolder):
 			self.log.debug("Trader %s: idle, moving to random bo", self.getId())
 			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
 
-
 	def notify_unit_path_blocked(self, unit):
 		self.log.debug("Trader %s: ship blocked", self.getId())
 		# retry moving ship in 2 secs
 		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, unit), self, 32)
+
+	@classmethod
+	def get_res_value(cls, res):
+		"""Returns the money value of a resource"""
+		try:
+			return cls._res_values[res]
+		except KeyError:
+			# resource value has yet to be fetched
+			cls._res_values[res] = \
+					float(horizons.main.db("SELECT value FROM resource WHERE rowid=?", res)[0][0])
+			return cls._res_values[res]

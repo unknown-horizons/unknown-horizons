@@ -49,7 +49,7 @@ class Tree(GrowingBuilding):
 		Can be overriden to implement buildingspecific behaviour.
 		"""
 		enough_room = False # used to check if there is enough room to produce at least one item
-		for res, amount in self.production[self.active_production_line].production.items():
+		for res, amount in self.production[self.active_production_line].production.iteritems():
 			if amount > 0 and self.inventory[res] + amount <= self.inventory.get_limit(res):
 				enough_room = True
 		return enough_room

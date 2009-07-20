@@ -40,19 +40,27 @@ def log():
 
 def get_fife_path(fife_custom_path=None):
 	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
+	# assemble a list of paths where fife could be located at
+	_paths = []
 	# check if there is a config file (has to be called config.py)
 	try:
 		import config
-		_paths = [config.fife_path]
+		_paths.append(config.fife_path)
 	except (ImportError, AttributeError):
-		_paths = [] if fife_custom_path is None else [fife_custom_path]
+		# no config, check for commandline arg
+		if fife_custom_path is not None:
+			_paths.append(fife_custom_path)
 
-	_paths += [ a + '/' + b + '/' + c for a in ('.', '..', '../..') for b in ('.', 'fife', 'FIFE', 'Fife') for c in ('.', 'trunk') ]
+	# try frequently used paths
+	_paths += [ a + '/' + b + '/' + c for \
+							a in ('.', '..', '../..') for \
+							b in ('.', 'fife', 'FIFE', 'Fife') for \
+							c in ('.', 'trunk') ]
 
 	fife_path = None
 	for p in _paths:
 		if p not in sys.path:
-			# check if we are in a fife dir...
+			# check if we are in a fife dir by checking for existence of fife dirs
 			for pe in [ os.path.abspath(p + '/' + a) for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
 				if not os.path.exists(pe):
 					break
@@ -62,12 +70,14 @@ def get_fife_path(fife_custom_path=None):
 				log().debug("Found FIFE in %s", fife_path)
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				for pe in [ os.path.abspath(fife_path + '/' + a) for a in ('engine/extensions', 'engine/swigwrappers/python') ]:
+				for pe in \
+						[ os.path.abspath(fife_path + os.path.sep + a) for \
+							a in ('engine/extensions', 'engine/swigwrappers/python') ]:
 					if os.path.exists(pe):
 						sys.path.append(pe)
 				os.environ['PYTHONPATH'] = os.path.pathsep.join(\
 					os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + \
-					[ os.path.abspath(fife_path + '/' + a) for a in \
+					[ os.path.abspath(fife_path + os.path.sep + a) for a in \
 						('engine/extensions', 'engine/swigwrappers/python') ])
 
 				#add windows paths (<fife>/.)
@@ -202,8 +212,7 @@ if __name__ == '__main__':
 			logging.getLogger(a).setLevel(logging.DEBUG)
 		elif o == "--fife-path":
 			# specify custom path to FIFE engine
-			if not fife_in_library_path:
-				fife_custom_path = a
+			fife_custom_path = a
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
@@ -214,7 +223,7 @@ if __name__ == '__main__':
 			print 'Failed to load fife:', e
 			exit(1)
 		log().debug('Searching for FIFE')
-		find_FIFE() if fife_custom_path is None else find_FIFE(fife_custom_path)
+		find_FIFE(fife_custom_path)
 
 	#print _("Launching Unknown Horizons")
 

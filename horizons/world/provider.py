@@ -69,3 +69,10 @@ class Provider(StorageHolder):
 			picked_up = max_amount
 		self.inventory.alter(res, -picked_up)
 		return picked_up
+
+	def get_reserved_pickup_amount(self, res):
+		"""Return amount of res, that is reserved for pickup by some collectors"""
+		for c in self.__collectors:
+			assert c.job is not None, '%s %s is registered at provider and has no job' % \
+						 (c, c.getId())
+		return sum([c.job.amount for c in self.__collectors if c.job.res == res])

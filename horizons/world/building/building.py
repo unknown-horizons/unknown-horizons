@@ -21,6 +21,7 @@
 
 import weakref
 import logging
+import random
 
 import fife
 
@@ -37,24 +38,24 @@ class Building(AmbientSound, WorldObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	part_of_nature = False # wether this is part of nature (free units can walk through it)
 	walkable = False # wether we can walk on this building (true for e.g. streets, trees..)
+	object_type = 0
 
 	log = logging.getLogger("world.building")
 
-	def __init__(self, x, y, rotation, owner, instance = None, **kwargs):
+
+	def __init__(self, x, y, rotation, owner, island, instance = None, **kwargs):
 		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
 		self.__init(Point(x, y), rotation, owner, instance)
-		# TODO: Add island as parameter, it's not the buildings responsibility to find it's island
-		self.island = weakref.ref(horizons.main.session.world.get_island(x, y))
+		self.island = weakref.ref(island)
 		self.settlement = self.island().get_settlement(Point(x, y)) or \
 			self.island().add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
 
 	def __init(self, origin, rotation, owner, instance):
-		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", self.id)[0][0]
+		self._action_set_id = self.action_sets[random.randint(0, len(self.action_sets)-1)]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
-		self.object_type = 0
 		self._instance = self.getInstance(origin.x, origin.y, rotation = rotation) if instance is None else instance
 		self._instance.setId(str(self.getId()))
 
@@ -62,8 +63,7 @@ class Building(AmbientSound, WorldObject):
 			horizons.main.session.scheduler.add_new_object(self.get_payout, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1)
 
 		# play ambient sound, if available
-		for (soundfile,) in horizons.main.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
-		sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id):
+		for soundfile in self.soundfiles:
 			self.play_ambient(soundfile, True)
 
 	def toggle_costs(self):
@@ -173,11 +173,11 @@ class Building(AmbientSound, WorldObject):
 				return None
 			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
-			if action in horizons.main.action_sets[action_set_id].keys():
+			if action in horizons.main.action_sets[action_set_id].iterkeys():
 				pass
-			elif 'idle' in horizons.main.action_sets[action_set_id].keys():
+			elif 'idle' in horizons.main.action_sets[action_set_id].iterkeys():
 				action='idle'
-			elif 'idle_full' in horizons.main.action_sets[action_set_id].keys():
+			elif 'idle_full' in horizons.main.action_sets[action_set_id].iterkeys():
 				action='idle_full'
 			else:
 				action=horizons.main.action_sets[action_set_id].keys()[0]

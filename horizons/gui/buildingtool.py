@@ -121,11 +121,11 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE building_id=?", self._class.id)[0]
-		if preview_action_set in horizons.main.action_sets.keys():
+		if preview_action_set in horizons.main.action_sets:
 			action_set = preview_action_set
-		if 'idle' in horizons.main.action_sets[action_set].keys():
+		if 'idle' in horizons.main.action_sets[action_set]:
 			self.action = 'idle'
-		elif 'idle_full' in horizons.main.action_sets[action_set].keys():
+		elif 'idle_full' in horizons.main.action_sets[action_set]:
 			self.action = 'idle_full'
 		else: # If no idle animation found, use the first you find
 			self.action = horizons.main.action_sets[action_set].keys()[0]

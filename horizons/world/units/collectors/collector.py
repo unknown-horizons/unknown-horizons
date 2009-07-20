@@ -213,13 +213,9 @@ class Collector(StorageHolder, Unit):
 		if res_amount <= 0:
 			return None
 
-		inventory = self.get_home_inventory()
-
-		# get sum of picked up resources by other collectors for this res
-		total_pickup_amount = sum([ collector.job.amount for collector in \
-																target._Provider__collectors if \
-																collector.job.res == res ])
-		if total_pickup_amount > res_amount:
+		# check if other collectors alrady pick up this res from here
+		reserved_pickup_amount = target.get_reserved_pickup_amount(res)
+		if reserved_pickup_amount >= res_amount:
 			return None
 
 		# check if other collectors get this resource, because our inventory could
@@ -229,6 +225,8 @@ class Collector(StorageHolder, Unit):
 																						 collector.job is not None and \
 																						 collector.job.res == res ])
 
+		inventory = self.get_home_inventory()
+
 		# check if there are resources left to pickup
 		inventory_space_for_res = inventory.get_limit(res) - \
 														(total_registered_amount_consumer + inventory[res])
@@ -236,7 +234,7 @@ class Collector(StorageHolder, Unit):
 			return None
 
 		# create a new job
-		return Job(target, res, min(res_amount - total_pickup_amount, inventory_space_for_res))
+		return Job(target, res, min(res_amount - reserved_pickup_amount, inventory_space_for_res))
 
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""

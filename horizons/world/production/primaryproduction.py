@@ -123,8 +123,8 @@ class PrimaryProduction(Provider):
 			if len(usable_resources) == 0:
 				return
 			time = int(round(self.production[self.active_production_line].time *
-							 sum(self.__used_resources.values()) /
-							 -sum(p for p in self.production[self.active_production_line].production.values() if p < 0)))
+							 sum(self.__used_resources.itervalues()) /
+							 -sum(p for p in self.production[self.active_production_line].production.itervalues() if p < 0)))
 		else:
 			time = 0
 		for res, amount in usable_resources.items():
@@ -154,7 +154,7 @@ class PrimaryProduction(Provider):
 					  ) - time)))
 		# change animation to working.
 		# this starts e.g. the growing of trees.
-		if "work" in horizons.main.action_sets[self._action_set_id].keys():
+		if "work" in horizons.main.action_sets[self._action_set_id]:
 			self.act("work", self._instance.getFacingLocation(), True)
 		else:
 			self.act("idle", self._instance.getFacingLocation(), True)
@@ -165,7 +165,7 @@ class PrimaryProduction(Provider):
 				if amount > 0:
 					self.inventory.alter(res, amount)
 			self.__used_resources = {}
-		if "idle_full" in horizons.main.action_sets[self._action_set_id].keys():
+		if "idle_full" in horizons.main.action_sets[self._action_set_id]:
 			self.act("idle_full", self._instance.getFacingLocation(), True)
 		else:
 			self.act("idle", self._instance.getFacingLocation(), True)
@@ -177,10 +177,10 @@ class PrimaryProduction(Provider):
 		"""Sets the current progress correctly.
 		This method can be overriden in case subclasses calculate differently.
 		"""
-		self.progress = int(float(sum(self.__used_resources.values()))/
+		self.progress = int(float(sum(self.__used_resources.itervalues()))/
 			float(
 				-sum(product for product in
-					self.production[self.active_production_line].production.values() if product < 0
+					self.production[self.active_production_line].production.itervalues() if product < 0
 				)
 			)*100)
 		#print self.progress

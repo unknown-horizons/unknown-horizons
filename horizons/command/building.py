@@ -57,9 +57,12 @@ class Build(object):
 			island = WorldObject.get_object_by_id(self.island)
 		else:
 			island = horizons.main.session.world.get_island(self.x, self.y)
-		building = horizons.main.session.entities.buildings[self.building_class](x=self.x, y=self.y, \
+
+		building = horizons.main.session.entities.buildings[self.building_class]( \
+			x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
-			instance=(self._instance if hasattr(self, '_instance') and issuer == horizons.main.session.world.player else None))
+			island=island, \
+			instance=(self._instance if issuer == horizons.main.session.world.player else None))
 
 		island.add_building(building, issuer)
 		if self.settlement is not None:
@@ -69,8 +72,8 @@ class Build(object):
 		else:
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 		if secondary_resource_source is not None:
-			for (resource, value) in building.costs.items():
-				# remove from issuer, and remove remaining rest from secondary source (settlement or ship)y
+			for (resource, value) in building.costs.iteritems():
+				# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
 				remnant = secondary_resource_source.inventory.alter(resource, issuer.inventory.alter(resource, -value))
 				assert(remnant == 0)
 		building.start()

@@ -38,7 +38,7 @@ class Consumer(AbstractConsumer):
 		"""
 		super(Consumer, self).__init__(**kwargs)
 		self.__init()
-		self.active_production_line = None if len(self._resources) == 0 else min(self._resources.keys())
+		self.active_production_line = None if len(self._resources) == 0 else min(self._resources)
 
 	def __init(self):
 		"""Part of initiation that __init__() and load() share"""

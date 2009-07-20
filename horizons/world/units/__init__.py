@@ -71,10 +71,10 @@ class UnitClass(type):
 		cls._object.setBlocking(False)
 		cls._object.setStatic(False)
 		for (action_set_id,) in horizons.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=?",cls.id):
-			for action_id in horizons.main.action_sets[action_set_id].keys():
+			for action_id in horizons.main.action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
-				for rotation in horizons.main.action_sets[action_set_id][action_id].keys():
+				for rotation in horizons.main.action_sets[action_set_id][action_id].iterkeys():
 					anim_id = horizons.main.fife.animationpool.addResourceFromFile( \
 						str(action_set_id)+"-"+str(action_id)+"-"+ \
 						str(rotation) + ':shift:center+0,bottom+8')

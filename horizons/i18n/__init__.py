@@ -47,7 +47,7 @@ def load_xml_translated(filename):
 	from os.path import basename
 	filename = basename(filename)
 	if guitranslations.text_translations.has_key(filename):
-		for i in guitranslations.text_translations[filename].items():
+		for i in guitranslations.text_translations[filename].iteritems():
 			try:
 				widget = untranslated.findChild(name=i[0])
 				if isinstance(widget, pychan.widgets.Label)\
@@ -69,10 +69,10 @@ def load_xml_translated(filename):
 def update_all_translations():
 	set_translations()
 	global all_translated_widgets
-	for pair in all_translated_widgets.items():
-		for i in guitranslations.text_translations.get(pair[0],{}).items():
+	for i in all_translated_widgets.iteritems():
+		for j in guitranslations.text_translations.get(i[0],{}).iteritems():
 			try:
-				pair[1].findChild(name=i[0]).text = i[1]
+				i[1].findChild(name=j[0]).text = j[1]
 			except AttributeError, e:
 				print e
-				print i, ' in ', pair[0]
+				print i, ' in ', i[0]

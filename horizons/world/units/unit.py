@@ -21,16 +21,18 @@
 
 import fife
 import logging
+import random
 
 import horizons.main
 
 from horizons.world.pathfinding import PathBlockedError
-from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod
+from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod, Circle
 
 class Unit(WorldObject):
 	log = logging.getLogger("world.units")
 
 	pather_class = None
+	object_type = 1
 
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(**kwargs)
@@ -44,7 +46,6 @@ class Unit(WorldObject):
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
 		if self._object is None:
 			self.__class__._loadObject()
-		self.object_type = 1
 		self.position = Point(x, y)
 		self.last_position = Point(x, y)
 		self.next_target = Point(x, y)

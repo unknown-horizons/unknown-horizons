@@ -32,6 +32,7 @@ from island import Island
 from player import Player
 from horizons.util import Point, Color
 from horizons.util.living import LivingObject
+from horizons.constants import WILD_ANIMAL_UNIT_CLASS, TREE_BUILDING_CLASS
 from horizons.ai.trader import Trader
 
 class World(LivingObject):
@@ -174,13 +175,16 @@ class World(LivingObject):
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			print "Adding trees and animals to the world..."
 			from horizons.command.building import Build
+			tree = horizons.main.session.entities.buildings[TREE_BUILDING_CLASS]
+			wild_animal = horizons.main.session.entities.units[WILD_ANIMAL_UNIT_CLASS]
 			for island in self.islands:
-				for tile in island.ground_map.keys():
+				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						horizons.main.session.manager.execute(Build(horizons.main.session.entities.buildings[17],tile[0],tile[1],45, ownerless=True, island=island))
+						horizons.main.session.manager.execute( \
+							Build(tree,tile[0],tile[1], 45, ownerless=True, island=island))
 						if random.randint(0, 40) < 1: # add animal to evey nth tree
-							horizons.main.session.entities.units[13](island, x=tile[0], y=tile[1])
+							wild_animal(island, x=tile[0], y=tile[1])
 				for building in island.buildings:
 					building.production_step()
 			print "Done."

@@ -61,8 +61,8 @@ class UnitProduction(SecondaryProduction):
 
 	def production_step(self):
 		self.log.debug("UnitProduction production_step %s", self.getId())
-		if sum(self._PrimaryProduction__used_resources.values()) >= -sum(p for p in self.production[self.active_production_line].production.values() if p < 0):
-			for res, amount in self.production[self.active_production_line].production.items():
+		if sum(self._PrimaryProduction__used_resources.itervalues()) >= -sum(p for p in self.production[self.active_production_line].production.itervalues() if p < 0):
+			for res, amount in self.production[self.active_production_line].production.iteritems():
 				if amount > 0:
 					self.inventory.alter(res, amount)
 			self._PrimaryProduction__used_resources = {}
@@ -93,7 +93,7 @@ class UnitProduction(SecondaryProduction):
 					break
 
 		# Create the new units at the output_point
-		for unit in self.production[self.active_production_line].unit.values():
+		for unit in self.production[self.active_production_line].unit.itervalues():
 			horizons.main.session.entities.units[unit](x=self.output_point[0], y=self.output_point[1], owner=self.owner)
 		self.progress = 0
 

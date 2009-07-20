@@ -152,7 +152,7 @@ class TotalStorage(GenericStorage): # TESTED AND WORKING
 		self.limit = space
 
 	def alter(self, res, amount):
-		check =  max(0, amount + sum(self._storage.values()) - self.limit)
+		check =  max(0, amount + sum(self._storage.itervalues()) - self.limit)
 		return check + super(TotalStorage, self).alter(res, amount - check)
 
 class PositiveStorage(GenericStorage): # TESTED AND WORKING
