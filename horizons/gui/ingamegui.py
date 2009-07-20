@@ -24,7 +24,7 @@ import pychan
 import horizons.main
 
 from horizons.i18n import load_xml_translated
-from horizons.util import livingProperty, LivingObject, Callback
+from horizons.util import livingProperty, LivingObject, Callback, PychanChildFinder
 from horizons.world.settlement import Settlement
 from buildingtool import BuildingTool
 from selectiontool import SelectionTool
@@ -49,6 +49,7 @@ class IngameGui(LivingObject):
 
 		self.gui['cityInfo'] = load_xml_translated('city_info.xml')
 		self.gui['cityInfo'].stylize('cityInfo')
+		self.gui['cityInfo'].child_finder = PychanChildFinder(self.gui['cityInfo'])
 		self.gui['cityInfo'].position = (
 			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['cityInfo'].size[0]/2 - 10,
 			5
@@ -87,16 +88,20 @@ class IngameGui(LivingObject):
 
 		self.gui['status'] = load_xml_translated('status.xml')
 		self.gui['status'].stylize('resource_bar')
+		self.gui['status'].child_finder = PychanChildFinder(self.gui['status'])
 		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
 		self.gui['status_extra'].stylize('resource_bar')
+		self.gui['status_extra'].child_finder = PychanChildFinder(self.gui['status_extra'])
 
 		self.message_widget = MessageWidget(self.gui['cityInfo'].position[0] + self.gui['cityInfo'].size[0], 5)
 
 		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
 		self.gui['status_gold'].stylize('resource_bar')
 		self.gui['status_gold'].show()
+		self.gui['status_gold'].child_finder = PychanChildFinder(self.gui['status_gold'])
 		self.gui['status_extra_gold'] = load_xml_translated('status_extra_gold.xml')
 		self.gui['status_extra_gold'].stylize('resource_bar')
+		self.gui['status_extra_gold'].child_finder = PychanChildFinder(self.gui['status_extra_gold'])
 
 		self.callbacks_build = {
 			0: {
@@ -182,7 +187,7 @@ class IngameGui(LivingObject):
 		if isinstance(value,list):
 			value = value[0]
 		gui = self.gui['status_gold'] if label == 'gold' else self.gui['status']
-		foundlabel = gui.findChild(name=label + '_1')
+		foundlabel = gui.child_finder(label + '_1')
 		foundlabel._setText(unicode(value))
 		foundlabel.resizeToContent()
 		gui.resizeToContent()
@@ -193,7 +198,7 @@ class IngameGui(LivingObject):
 		@param value: value the Label is to be set to.
 		"""
 		if not value:
-			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).findChild(name=label + '_' + str(2))
+			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).child_finder(label + '_' + str(2))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
 			self.gui['status_extra_gold'].resizeToContent() if label == 'gold' else self.gui['status_extra'].resizeToContent()
@@ -203,7 +208,7 @@ class IngameGui(LivingObject):
 		#for i in xrange(len(value), 3):
 		#	value.append("")
 		for i in xrange(0,len(value)):
-			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).findChild(name=label + '_' + str(i+2))
+			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).child_finder(name=label + '_' + str(i+2))
 			foundlabel._setText(unicode(value[i]))
 			foundlabel.resizeToContent()
 		if label == 'gold':
@@ -250,10 +255,10 @@ class IngameGui(LivingObject):
 			self.gui['status'].show()
 
 	def update_settlement(self):
-		foundlabel = self.gui['cityInfo'].findChild(name='city_name')
+		foundlabel = self.gui['cityInfo'].child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
-		foundlabel = self.gui['cityInfo'].findChild(name='city_inhabitants')
+		foundlabel = self.gui['cityInfo'].child_finder('city_inhabitants')
 		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
 		self.gui['cityInfo'].resizeToContent()
@@ -392,13 +397,13 @@ class IngameGui(LivingObject):
 				# increase x position for lines greater the 1
 				plusx = 20
 			if resource_name == 'gold':
-				self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).position = (
-					self.gui['status_gold'].findChild(name = icon_name).position[0] + 33 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+				self.gui['status_gold'].child_finder(resource_name + '_' + str(i)).position = (
+					self.gui['status_gold'].child_finder(icon_name).position[0] + 33 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
 					41 + 10 * i + plusx
 				)
 			else:
-				self.gui['status'].findChild(name = resource_name + '_' + str(i)).position = (
-					self.gui['status'].findChild(name = icon_name).position[0] + 24 - self.gui['status'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+				self.gui['status'].child_finder(resource_name + '_' + str(i)).position = (
+					self.gui['status'].child_finder(icon_name).position[0] + 24 - self.gui['status'].child_finder(resource_name + '_' + str(i)).size[0]/2,
 					41 + 10 * i + plusx
 				)
 

@@ -39,7 +39,7 @@ class Circle(object):
 
 	def contains(self, point):
 		assert isinstance(point, Point)
-		if point.distance(self.center) <= self.radius:
+		if point.distance_to_point(self.center) <= self.radius:
 			return True
 		else:
 			return False
@@ -61,7 +61,7 @@ class Circle(object):
 	def __iter__(self):
 		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
 			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
-				if self.center.distance((x, y)) <= self.radius:
+				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield (x, y)
 
 

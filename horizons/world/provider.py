@@ -46,6 +46,15 @@ class Provider(StorageHolder):
 		# by anything else but this collector
 		self.__collectors = WeakList()
 
+		if self.object_type == 0:
+			# register buildings at island
+			self.island().providers.append(self)
+
+	def remove(self):
+		if self.object_type == 0:
+			# register buildings at island
+			self.island().providers.remove(self)
+
 	def __del__(self):
 		# send all collectors home, that target this building
 		if self.__collectors is not None:

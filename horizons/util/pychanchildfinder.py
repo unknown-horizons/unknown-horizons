@@ -19,20 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
 
-from living import livingProperty, LivingObject
-from stablelist import stablelist
-from color import Color
-from point import Point
-from rect import Rect
-from circle import Circle
-from changelistener import Changelistener
-from weakmethod import WeakMethod
-from weaklist import WeakList
-from worldobject import WorldObject
-from weakmethodlist import WeakMethodList
-from encoder import encode, decode
-from loader import ActionSetLoader
-from callback import Callback
-from pychanchildfinder import PychanChildFinder
+class PychanChildFinder(dict):
+	"""Caches child references of a gui object, since pychan's findChild function is expensive.
+	Init it with your gui and use like a dictionary or call object directly (__call__)"""
+	def __init__(self, gui):
+		super(PychanChildFinder, self).__init__()
+		self.gui = gui
+
+	def __getitem__(self, key):
+		try:
+			return dict.__getitem__(self, key)
+		except KeyError:
+			self[key] = self.gui.findChild(name = key)
+			return self[key]
+
+	def __call__(self, name):
+		return self[name]

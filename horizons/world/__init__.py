@@ -194,20 +194,31 @@ class World(LivingObject):
 		ret_coords = None
 		for player in self.players:
 			print "Adding ships for the players..."
-			rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
-			(x, y) = horizons.main.session.world.water[rand_water_id]
-			ship = horizons.main.session.entities.units[1](x=x, y=y, owner=player)
+			point = self.get_random_possible_ship_position()
+			ship = horizons.main.session.entities.units[1](x=point.x, y=point.y, owner=player)
+			# give ship basic resources
 			ship.inventory.alter(6,30)
 			ship.inventory.alter(4,30)
 			ship.inventory.alter(5,30)
 			if player is self.player:
-				ret_coords = (x,y)
+				ret_coords = (point.x,point.y)
 			print "Done"
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
 		assert ret_coords is not None, "Return coordes are none. No players loaded?"
 		return ret_coords
 
+	def get_random_possible_ship_position(self):
+		"""Returns a position in water, that is not at the border of the world"""
+		rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
+		(x, y) = horizons.main.session.world.water[rand_water_id]
+		offset = 2
+		if x - offset < self.min_x or x + offset > self.max_x or \
+			 y - offset < self.min_y or y + offset > self.max_y:
+			# if we're to near the border try again.
+			# in theory, this might result in endless loop, but in practice, it doesn't
+			return self.get_random_possible_ship_position()
+		return Point(x, y)
 
 	def setupPlayer(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""

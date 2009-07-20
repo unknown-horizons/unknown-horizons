@@ -23,6 +23,7 @@ import logging
 from guitranslations import set_translations, text_translations
 import horizons.main
 import pychan
+from os.path import basename
 
 log = logging.getLogger("i18n")
 
@@ -44,9 +45,8 @@ def load_xml_translated(filename):
 		print e
 		untranslated = horizons.main.fife.pychan.loadXML(filename)
 
-	from os.path import basename
 	filename = basename(filename)
-	if guitranslations.text_translations.has_key(filename):
+	if filename in guitranslations.text_translations:
 		for i in guitranslations.text_translations[filename].iteritems():
 			try:
 				widget = untranslated.findChild(name=i[0])

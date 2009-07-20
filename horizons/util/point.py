@@ -28,11 +28,17 @@ class Point(object):
 
 	def distance(self, other):
 		if isinstance(other, Point):
-			return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+			return self.distance_to_point(other)
 		elif isinstance(other, tuple):
-			return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
+			return self.distance_to_tuple(other)
 		else:
 			return other.distance(self)
+
+	def distance_to_point(self, other):
+		return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+
+	def distance_to_tuple(self, other):
+		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
 
 	def get_coordinates(self):
 		""" Returns point as coordinate

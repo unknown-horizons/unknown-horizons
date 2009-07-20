@@ -21,7 +21,7 @@
 
 import weakref
 
-from horizons.util import WorldObject
+from horizons.util import WorldObject, Circle
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.world.production import PrimaryProduction
 
@@ -168,8 +168,8 @@ class BuildingCollector(Collector):
 	def get_buildings_in_range(self):
 		"""Returns all buildings in range
 		Overwrite in subclasses that need ranges arroung the pickup."""
-		from horizons.world.provider import Provider
-		return [building for building in self.home_building.get_buildings_in_range() if isinstance(building, Provider)]
+		reach = Circle(self.home_building.position.center(), self.home_building.radius)
+		return self.home_building.island().get_providers_in_range(reach)
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""

@@ -199,7 +199,8 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		# iterate over all possible providers and needed resources
 		# and save possible job targets
-		for provider in self.get_providers_in_range():
+		reach = Circle(self.position, self.walking_range)
+		for provider in self.home_island.get_providers_in_range(reach):
 			for res in needed_resources:
 				job = self.check_possible_job_target(provider, res)
 				if job is not None:
@@ -210,12 +211,6 @@ class WildAnimal(CollectorAnimal, Collector):
 	def reroute(self):
 		# when target is gone, search another one
 		self.search_job()
-
-	def get_providers_in_range(self):
-		"""Returns all producers in the range of the animal. Useful when searching for food"""
-		return [ b for b in self.home_island.buildings if \
-						 isinstance(b, Provider) and \
-						 self.position.distance(b.position) <= self.walking_range ]
 
 	def end_job(self):
 		super(WildAnimal, self).end_job()

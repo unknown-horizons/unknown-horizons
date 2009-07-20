@@ -25,7 +25,8 @@ import logging
 import horizons.main
 
 from horizons.dbreader import DbReader
-from horizons.util import WorldObject, Point, Rect, Circle
+from horizons.util import WorldObject, Point, Rect, Circle, WeakList
+from horizons.world.provider import Provider
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 
@@ -75,6 +76,7 @@ class Island(WorldObject):
 		self.grounds = []
 		self.ground_map = {}
 		self.buildings = []
+		self.providers = WeakList() # list of all buildings, that are providers
 		self.wild_animals = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
 			ground = horizons.main.session.entities.grounds[ground_id]( \
@@ -265,6 +267,17 @@ class Island(WorldObject):
 			tile = self.get_tile(Point(*position))
 			if tile is not None:
 				yield tile
+
+	def get_providers_in_range(self, circle):
+		"""Returns all instances of provider within the specified circle.
+		@param circle: instance of Circle
+		@return: list of providers"""
+		providers = []
+		for provider in self.providers:
+			for pos in provider.position:
+				if circle.contains(pos):
+					providers.append(provider)
+		return providers
 
 	def __iter__(self):
 		for i in self.get_coordinates():

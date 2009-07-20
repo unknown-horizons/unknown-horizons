@@ -24,6 +24,7 @@ import horizons.main
 import pychan
 
 from tabinterface import TabInterface
+from horizons.util import PychanChildFinder
 
 class OverviewTab(TabInterface):
 
@@ -39,9 +40,9 @@ class OverviewTab(TabInterface):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		if hasattr(self.instance, 'name'):
-			self.widget.findChild(name='name').text = unicode(self.instance.name)
+			self.widget.child_finder('name').text = unicode(self.instance.name)
 		if hasattr(self.instance, 'health'):
-			self.widget.findChild(name='health').text = unicode(self.instance.health)
+			self.widget.child_finder('health').text = unicode(self.instance.health)
 		self.widget.adaptLayout()
 
 	def show(self):
@@ -84,13 +85,13 @@ class ShipOverviewTab(OverviewTab):
 		if len(islands) > 0:
 			events = { 'foundSettelment': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(self.instance) )}
 			self.widget.mapEvents(events)
-			self.widget.findChild(name='bg_button').set_active()
-			self.widget.findChild(name='foundSettelment').set_active()
+			self.widget.child_finder('bg_button').set_active()
+			self.widget.child_finder('foundSettelment').set_active()
 		else:
 			events = { 'foundSettelment': None }
 			self.widget.mapEvents(events)
-			self.widget.findChild(name='bg_button').set_inactive()
-			self.widget.findChild(name='foundSettelment').set_inactive()
+			self.widget.child_finder('bg_button').set_inactive()
+			self.widget.child_finder('foundSettelment').set_inactive()
 		super(ShipOverviewTab, self).refresh()
 
 
@@ -112,7 +113,7 @@ class ProductionOverviewTab(OverviewTab):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		if hasattr(self.instance, 'running_costs'):
-			self.widget.findChild(name='running_costs').text = unicode(self.instance.running_costs)
+			self.widget.child_finder('running_costs').text = unicode(self.instance.running_costs)
 		super(ProductionOverviewTab, self).refresh()
 
 

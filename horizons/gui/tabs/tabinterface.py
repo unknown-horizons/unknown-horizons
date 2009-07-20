@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.i18n import load_xml_translated
+from horizons.util import PychanChildFinder
 class TabInterface(object):
 	"""
 	The TabInterface should be used by all classes that represent Tabs for the
@@ -42,6 +43,7 @@ class TabInterface(object):
 		super(TabInterface, self).__init__()
 		if widget is not None:
 			self.widget = load_xml_translated(widget)
+			self.widget.child_finder = PychanChildFinder(self.widget)
 		else:
 			self.widget = None
 		# You can override these if you want to use seperate images for your tab

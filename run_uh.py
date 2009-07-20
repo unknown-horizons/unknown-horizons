@@ -165,7 +165,7 @@ if __name__ == '__main__':
 		opts, args = getopt.getopt(sys.argv[1:], "hd", \
 						   ["help", "debug", "fife-in-library-path", "start-dev-map", \
 							    "start-map=", "enable-unstable-features", "debug-module=", \
-									"load-map=", "fife-path="])
+									"load-map=", "fife-path=", "profile"])
 	except getopt.GetoptError, err:
 		print str(err)
 		print_help()
@@ -179,7 +179,8 @@ if __name__ == '__main__':
 					   "start_map": None, \
 						 "load_map": None,
 					   "unstable_features": False, \
-					   "debug": False }
+					   "debug": False, \
+						 "profile": False}
 
 	# apply arguments
 	for o, a in opts:
@@ -213,6 +214,8 @@ if __name__ == '__main__':
 		elif o == "--fife-path":
 			# specify custom path to FIFE engine
 			fife_custom_path = a
+		elif o == "--profile":
+			command_line_arguments['profile'] = True
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
@@ -232,4 +235,14 @@ if __name__ == '__main__':
 
 	#start unknownhorizons
 	import horizons.main
-	horizons.main.start(command_line_arguments)
+	if not command_line_arguments['profile']:
+		horizons.main.start(command_line_arguments)
+	else:
+		import profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		log().warning('Starting profile mode. Writing output to: %s', outfilename)
+		profile.runctx('horizons.main.start(command_line_arguments)', globals(), locals(), \
+									 outfilename)
+		log().warning('Program ended. Profiling output: %s', outfilename)
+

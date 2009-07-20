@@ -79,6 +79,8 @@ class Weaver(Selectable, SecondaryProduction, BuildableSingle, Building):
 		"""Add a FieldCollector"""
 		horizons.main.session.entities.units[12](self)
 
+class Hunter(Selectable, SecondaryProduction, BuildableSingle, Building):
+	pass
 
 class Fisher(Selectable, PrimaryProduction, BuildableSingle, Building):
 

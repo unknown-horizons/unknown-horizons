@@ -38,7 +38,7 @@ class InventoryTab(TabInterface):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		self.widget.findChild(name='inventory').inventory = self.instance.inventory
+		self.widget.child_finder('inventory').inventory = self.instance.inventory
 
 	def show(self):
 		if not self.instance.inventory.hasChangeListener(self.refresh):
