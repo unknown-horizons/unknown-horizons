@@ -50,7 +50,7 @@ class WeakList(list):
     When objects are deleted or garbage_collected, they disapear from
     the list.
 
-    ! WARNING: du to the *magic* deletion of item, some method here
+    ! WARNING: due to the *magic* deletion of item, some method here
     are not guaranted to give the right result or even to work properly.
 
     This class is NOT thread safe and NOT GC safe.
@@ -65,7 +65,7 @@ class WeakList(list):
     - index can return too high values or forget to raise exceptions
     - __get_item__ and __set_item__ are useless
 
-    Be also carrfull that your work with weakref, so some usual
+    Be also carefull that your work with weakref, so some usual
     tips don't work:
 
     >>> weak = weaklist.WeakList(weakable_class())
@@ -96,13 +96,13 @@ class WeakList(list):
 
 	## Special method
 
-	def __new_weekref(self, item):
+	def __new_weakref(self, item):
 		"""Create a weakref with the good callback"""
 		return weakref.ref(item, self.__remove_ref)
 
 	def __iter_over_weakref(self, iterable):
 		"""For a given iterable, return an iterable generator over all weakref"""
-		return (self.__new_weekref(i) for i in iterable)
+		return (self.__new_weakref(i) for i in iterable)
 
 	def __remove_ref(self, ref):
 		"""
@@ -141,7 +141,7 @@ class WeakList(list):
 		self.extend(sortable)
 
 	def insert(self,  index,  obj):
-		list.insert(self, index, self.__new_weekref(obj))
+		list.insert(self, index, self.__new_weakref(obj))
 
 
 	## Emulating container types
@@ -153,7 +153,7 @@ class WeakList(list):
 		if isinstance(index, slice):
 			list.__setitem__(self, index, self.__iter_over_weakref(value))
 		else:
-			list.__setitem__(self, index, self.__new_weekref(value))
+			list.__setitem__(self, index, self.__new_weakref(value))
 	def __iter__(self):
 		return iter([i() for i in list.__iter__(self)])
 

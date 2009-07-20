@@ -51,6 +51,7 @@ class Provider(StorageHolder):
 			self.island().providers.append(self)
 
 	def remove(self):
+		super(Provider, self).remove()
 		if self.object_type == 0:
 			# register buildings at island
 			self.island().providers.remove(self)
