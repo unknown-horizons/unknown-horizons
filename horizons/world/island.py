@@ -277,6 +277,7 @@ class Island(WorldObject):
 			for pos in provider.position:
 				if circle.contains(pos):
 					providers.append(provider)
+					break
 		return providers
 
 	def __iter__(self):
