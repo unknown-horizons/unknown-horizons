@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
-<Container size="100,100">
-	<Label name="tooltip" text=""/>
+<Container size="150,100">
+	<Icon image="content/gui/images/background/tooltip_bg.png" position="0,0" />
+
+	<Label name="tooltip" text="" position="16,8"/>
 </Container>

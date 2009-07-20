@@ -29,7 +29,7 @@ class TooltipIcon(pychan.widgets.Icon):
 	def __init__(self, **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
-		self.gui.stylize('resource_bar')
+		self.gui.stylize('tooltip')
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.show_tooltip,
@@ -50,7 +50,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 	def __init__(self, **kwargs):
 		super(TooltipButton, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
-		self.gui.stylize('resource_bar')
+		self.gui.stylize('tooltip')
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.show_tooltip,
