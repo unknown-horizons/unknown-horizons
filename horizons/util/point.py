@@ -31,6 +31,8 @@ class Point(object):
 			return self.distance_to_point(other)
 		elif isinstance(other, tuple):
 			return self.distance_to_tuple(other)
+		# cannot test for rect or circle here cause that would either cause
+		# cirular imports or local imports
 		else:
 			return other.distance(self)
 
@@ -39,6 +41,10 @@ class Point(object):
 
 	def distance_to_tuple(self, other):
 		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
+
+	def distance_to_circle(self, other):
+		dist = self.distance(other.center) - other.radius
+		return dist if dist >= 0 else 0
 
 	def get_coordinates(self):
 		""" Returns point as coordinate

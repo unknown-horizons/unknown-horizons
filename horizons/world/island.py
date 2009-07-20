@@ -275,9 +275,8 @@ class Island(WorldObject):
 		providers = []
 		for provider in self.providers:
 			for pos in provider.position:
-				if circle.contains(pos):
+				if pos.distance_to_circle(circle) <= 0:
 					providers.append(provider)
-					break
 		return providers
 
 	def __iter__(self):

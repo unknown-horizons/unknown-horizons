@@ -236,8 +236,10 @@ if __name__ == '__main__':
 	#start unknownhorizons
 	import horizons.main
 	if not command_line_arguments['profile']:
+		# start normal
 		horizons.main.start(command_line_arguments)
 	else:
+		# start with profiling
 		import profile
 		import tempfile
 		outfilename = tempfile.mkstemp(text = True)[1]

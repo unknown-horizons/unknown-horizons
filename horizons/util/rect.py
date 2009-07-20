@@ -20,6 +20,7 @@
 # ###################################################
 
 from point import Point
+from circle import Circle
 
 class Rect(object):
 	def __init__(self, *args):
@@ -57,6 +58,8 @@ class Rect(object):
 			return self.distance_to_point(other)
 		elif isinstance(other, Rect):
 			return self.distance_to_rect(other)
+		elif isinstance(other, Circle):
+			return self.distance_to_circle(other)
 		else:
 			# is other tuple: (x, y)?
 			if isinstance(other[0], int) and isinstance(other[1], int):
@@ -78,6 +81,10 @@ class Rect(object):
 		"""Calculates distance to an instance of Rect.
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
+
+	def distance_to_circle(self, other):
+		dist = self.distance_to_point(other.center) - other.radius
+		return dist if dist >= 0 else 0
 
 	# TODO: replace this everywhere with iteration
 	def get_coordinates(self):
