@@ -40,6 +40,8 @@ from entities import Entities
 from util.living import livingProperty, LivingObject
 from util.worldobject import WorldObject
 from savegamemanager import SavegameManager
+from horizons.constants import MESSAGES
+
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -140,24 +142,23 @@ class Session(LivingObject):
 		"""Called automatically in an interval"""
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = horizons.main.save_game(horizons.main.savegamemanager.create_autosave_filename())
-		horizons.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
+		if success:
+			horizons.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = horizons.main.save_game(horizons.main.savegamemanager.create_quicksave_filename())
 		if success:
-			# TODO: replace this with something, that notifies the user but
-			#       doesn't force him to click an ok-button
-			horizons.main.gui.show_popup(_('Quicksave'), _('Your game has been saved'))
-		horizons.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
+			self.ingame_gui.message_widget.add(None, None, MESSAGES.QUICKSAVE)
+			horizons.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
+		else:
+			horizons.main.gui.show_popup(_('Error'), _('Failed to quicksave.'))
 
 	def quickload(self):
 		"""Loads last quicksave"""
 		files = horizons.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
-			# TODO: replace this with something, that notifies the user but
-			#       doesn't force him to click an ok-button
 			horizons.main.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
 		files.sort()

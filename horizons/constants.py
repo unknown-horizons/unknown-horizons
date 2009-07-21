@@ -22,7 +22,12 @@
 
 """This file keeps track of some constants, that have to be used in the code"""
 
+## WORLD
 class UNITS:
+	ANIMAL_CARRIAGE_CLASS = 7
+	LUMBERJACK_COLLECTOR_CLASS = 10
+	SETTLER_COLLECTOR_CLASS = 11
+	FARMER_COLLECTOR_CLASS = 12
 	WILD_ANIMAL_CLASS = 13
 
 class BUILDINGS:
@@ -35,6 +40,14 @@ class RES:
 	TOOLS_ID = 6
 
 
+## SYSTEM
+class MESSAGES:
+	NEW_SETTLEMENT = 1
+	NEW_WORLD = 2
+	QUICKSAVE = 3
+	SCREENSHOT = 4
+
+## ENGINE
 class LAYERS:
 	WATER = 0
 	GROUND = 1

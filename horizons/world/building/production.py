@@ -26,6 +26,7 @@ from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util.point import Point
 from building import Building, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
+from horizons.constants import UNITS
 
 
 class AnimalFarm(Selectable, SecondaryProduction, BuildableSingleWithSurrounding, Building):
@@ -47,7 +48,7 @@ class AnimalFarm(Selectable, SecondaryProduction, BuildableSingleWithSurrounding
 				# animal appends itself to self.animals
 
 		# AnimalCollector:
-		horizons.main.session.entities.units[7](self)
+		horizons.main.session.entities.units[UNITS.ANIMAL_CARRIAGE_CLASS](self)
 
 	def save(self, db):
 		super(AnimalFarm, self).save(db)
@@ -70,17 +71,19 @@ class Lumberjack(Selectable, SecondaryProduction, BuildableSingleWithSurrounding
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
-		horizons.main.session.entities.units[10](self)
+		horizons.main.session.entities.units[UNITS.LUMBERJACK_COLLECTOR_CLASS](self)
 
 
 class Weaver(Selectable, SecondaryProduction, BuildableSingle, Building):
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
-		horizons.main.session.entities.units[12](self)
+		horizons.main.session.entities.units[UNITS.FARMER_COLLECTOR_CLASS](self)
+
 
 class Hunter(Selectable, SecondaryProduction, BuildableSingle, Building):
-	pass
+	def create_collector(self):
+		horizons.main.session.entities.units[UNITS.ANIMAL_CARRIAGE_CLASS](self)
 
 class Fisher(Selectable, PrimaryProduction, BuildableSingle, Building):
 

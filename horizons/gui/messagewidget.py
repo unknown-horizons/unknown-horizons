@@ -80,11 +80,15 @@ class MessageWidget(LivingObject):
 				button.up_image = message.up_image
 				button.hover_image = message.hover_image
 				button.down_image = message.down_image
+				# show text on hover
 				events = {
-					button.name: pychan.tools.callbackWithArguments(horizons.main.session.view.center, message.x, message.y),
 					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, button),
 					button.name + "/mouseExited": self.hide_text
 				}
+				if message.x is not None and message.y is not None and False:
+					# center source of event on click, if there is a source
+					events[button.name] = pychan.tools.callbackWithArguments( \
+						horizons.main.session.view.center, message.x, message.y)
 				button.mapEvents(events)
 				button_space.addChild(button)
 		button_space.resizeToContent()

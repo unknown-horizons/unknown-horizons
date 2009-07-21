@@ -20,12 +20,16 @@
 # ###################################################
 
 import fife
-import horizons.main
 import code
 import sys
 import datetime
 import string
+
+import horizons.main
+
 from horizons.util.living import LivingObject
+from horizons.gui.messagewidget import Message
+from horizons.constants import MESSAGES
 
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 	"""MainListener Class to process events of main window"""
@@ -62,7 +66,10 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		elif keyval == fife.Key.F1:
 			horizons.main.gui.on_help()
 		elif keystr == 's':
-			horizons.main.fife.engine.getRenderBackend().captureScreen(string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
+			screenshotfilename = string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-")
+			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
+			horizons.main.session.ingame_gui.message_widget.add(None, None, MESSAGES.SCREENSHOT, \
+																													{'file': screenshotfilename})
 
 	def keyReleased(self, evt):
 		pass

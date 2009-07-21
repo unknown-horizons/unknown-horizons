@@ -29,6 +29,7 @@ from horizons.util import WorldObject, Point, Rect, Circle, WeakList
 from horizons.world.provider import Provider
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
+from horizons.constants import MESSAGES
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -185,7 +186,10 @@ class Island(WorldObject):
 		settlement = Settlement(player)
 		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
-		horizons.main.session.ingame_gui.message_widget.add(position.center().x, position.center().y, 1, {'player':player.name})
+		horizons.main.session.ingame_gui.message_widget.add(position.center().x, \
+																												position.center().y, \
+																												MESSAGES.NEW_SETTLEMENT, \
+																												{'player':player.name})
 		return settlement
 
 	def add_existing_settlement(self, position, radius, settlement):

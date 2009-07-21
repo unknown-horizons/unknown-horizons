@@ -32,7 +32,7 @@ from island import Island
 from player import Player
 from horizons.util import Point, Color
 from horizons.util.living import LivingObject
-from horizons.constants import UNITS, BUILDINGS, RES
+from horizons.constants import UNITS, BUILDINGS, RES, MESSAGES
 from horizons.ai.trader import Trader
 
 class World(LivingObject):
@@ -208,7 +208,8 @@ class World(LivingObject):
 				ret_coords = (point.x,point.y)
 			print "Done"
 		# Fire a message for new world creation
-		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 2)
+		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, \
+																												MESSAGES.NEW_WORLD)
 		assert ret_coords is not None, "Return coordes are none. No players loaded?"
 		return ret_coords
 
