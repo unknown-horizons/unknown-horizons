@@ -25,7 +25,7 @@ import logging
 import horizons.main
 
 from horizons.util import Point, Callback, WorldObject
-from horizons.constants import GOLD_RES_ID
+from horizons.constants import RES
 from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
@@ -172,13 +172,13 @@ class Trader(Player, StorageHolder):
 			else:
 				alter = rand if limit-settlement.inventory[res] >= rand else limit-settlement.inventory[res]
 				self.log.debug("Trader %s: buying %s tons of res %s", self.getId(), alter, res)
-				ret = settlement.owner.inventory.alter(GOLD_RES_ID, -alter*\
+				ret = settlement.owner.inventory.alter(RES.GOLD_ID, -alter*\
 																							 int(self.get_res_value(res)*\
 																									 self.SELLING_ADDITIONAL_CHARGE))
 				if ret == 0: # check if enough money was in the inventory
 					settlement.inventory.alter(res, alter)
 				else: # if not, return the money taken
-					settlement.owner.inventory.alter(GOLD_RES_ID, alter*\
+					settlement.owner.inventory.alter(RES.GOLD_ID, alter*\
 																					 int(self.get_res_value(res)*\
 																							 self.SELLING_ADDITIONAL_CHARGE)\
 																					 -ret)
@@ -192,7 +192,7 @@ class Trader(Player, StorageHolder):
 				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
 				self.log.debug("Trader %s: selling %s tons of res %s", self.getId(), alter, res)
 				# Pay for bought resources
-				settlement.owner.inventory.alter(GOLD_RES_ID, -alter*int(self.get_res_value(res)*\
+				settlement.owner.inventory.alter(RES.GOLD_ID, -alter*int(self.get_res_value(res)*\
 																																 self.BUYING_CHARGE_DEDUCTION))
 				settlement.inventory.alter(res, alter)
 		del self.office[ship.id]

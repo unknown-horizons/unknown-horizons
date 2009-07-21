@@ -22,9 +22,14 @@
 
 """This file keeps track of some constants, that have to be used in the code"""
 
-# building/unit classes
-WILD_ANIMAL_UNIT_CLASS = 13
-TREE_BUILDING_CLASS = 17
+class UNITS:
+	WILD_ANIMAL_CLASS = 13
 
-# resources
-GOLD_RES_ID = 1
+class BUILDINGS:
+	TREE_CLASS = 17
+
+class RES:
+	GOLD_ID = 1
+	BOARDS_ID = 4
+	FOOD_ID = 5
+	TOOLS_ID = 6

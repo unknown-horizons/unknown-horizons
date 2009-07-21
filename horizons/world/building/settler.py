@@ -28,6 +28,7 @@ from horizons.util import WeakList
 from horizons.world.abstractconsumer import AbstractConsumer
 from building import Building, Selectable
 from buildable import BuildableSingle
+from horizons.constants import RES
 
 class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
@@ -90,7 +91,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
-		self.settlement.owner.inventory.alter(1, self.tax_income*self.inhabitants)
+		self.settlement.owner.inventory.alter(RES.GOLD_ID, self.tax_income*self.inhabitants)
 		#print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
 
 	def inhabitant_check(self):

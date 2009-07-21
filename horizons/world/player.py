@@ -19,9 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
+
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
-import horizons.main
+from horizons.constants import RES
+
 
 class Player(WorldObject):
 	"""Class representing a player"""
@@ -35,7 +38,7 @@ class Player(WorldObject):
 		self._init(id, name, color)
 
 		# give a new player 20k coins
-		self.inventory.alter(1, 20000)
+		self.inventory.alter(RES.GOLD_ID, 20000)
 
 	def _init(self, id, name, color, settlerlevel = 1):
 		self.id = id

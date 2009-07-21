@@ -33,6 +33,16 @@
   </void> 
   <void method="addNode"> 
    <object id="ClassNode2" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>position</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>get_payout()</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>BasicBuilding</string> 
@@ -288,11 +298,11 @@ Collector</string>
    <object id="ClassNode16" class="com.horstmann.violet.ClassNode"> 
     <void property="methods"> 
      <void property="text"> 
-      <string>set_production_line()
-get_consumed_resources()
+      <string>get_consumed_resources()
 get_provided_resources()
 get_need_resources()
-set_production(Production) - &lt;b&gt;abstract&lt;/b&gt;
+add_production(Production) - &lt;b&gt;abstract&lt;/b&gt;
+remove_production(Production)
 set_production_line()</string> 
      </void> 
     </void> 
@@ -319,8 +329,8 @@ set_production_line()</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>425.9890980991162</double> 
-     <double>233.58101000574462</double> 
+     <double>421.2322696391053</double> 
+     <double>232.3918028907419</double> 
     </void> 
    </object> 
   </void> 
@@ -335,7 +345,10 @@ something is produced.
 &lt;br/&gt;
 Everything that uses resources
 (consume or provide) has to 
-subclass this.</string> 
+subclass this.
+&lt;br/&gt;
+Every production line, that is added,
+is active until removed.</string> 
      </void> 
     </void> 
    </object> 
@@ -378,26 +391,6 @@ subclass this.</string>
   </void> 
   <void method="addNode"> 
    <object id="ClassNode18" class="com.horstmann.violet.ClassNode"> 
-    <void property="methods"> 
-     <void property="text"> 
-      <string>set_production()</string> 
-     </void> 
-    </void> 
-    <void property="name"> 
-     <void property="text"> 
-      <string>ProductionBuilding</string> 
-     </void> 
-    </void> 
-   </object> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>782.6302080863035</double> 
-     <double>710.2264697815563</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object id="ClassNode19" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>CollectingProductionBuilding</string> 
@@ -412,7 +405,7 @@ subclass this.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode20" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode19" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>Tree</string> 
@@ -427,7 +420,7 @@ subclass this.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode21" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode20" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>Settler</string> 
@@ -442,7 +435,7 @@ subclass this.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode22" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode21" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>BranchOffice</string> 
@@ -457,7 +450,7 @@ subclass this.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode23" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode22" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>Lumberjack</string> 
@@ -483,13 +476,13 @@ production, for animation change.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>901.8519189871104</double> 
-     <double>543.9643444012636</double> 
+     <double>907.797954562124</double> 
+     <double>816.2927737368867</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode24" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode23" class="com.horstmann.violet.ClassNode"> 
     <void property="methods"> 
      <void property="text"> 
       <string>set_production()</string> 
@@ -503,13 +496,13 @@ production, for animation change.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>345.99494936611666</double> 
-     <double>531.2426406871192</double> 
+     <double>310.99494936611666</double> 
+     <double>535.2426406871192</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode25" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode24" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>WIldAnimal</string> 
@@ -518,13 +511,13 @@ production, for animation change.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>213.54624791833737</double> 
-     <double>527.0</double> 
+     <double>156.46430639820676</double> 
+     <double>528.1892071150028</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode26" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode25" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>BuildingResourceHandler</string> 
@@ -539,7 +532,7 @@ production, for animation change.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode27" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode26" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>UnitResourceHandler</string> 
@@ -554,7 +547,7 @@ production, for animation change.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode28" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode27" class="com.horstmann.violet.ClassNode"> 
     <void property="attributes"> 
      <void property="text"> 
       <string>+production
@@ -646,7 +639,7 @@ during one production cycle.</string>
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode29" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode28" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>FarmAnimal</string> 
@@ -664,7 +657,7 @@ during one production cycle.</string>
    <object id="InterfaceNode1" class="com.horstmann.violet.InterfaceNode"> 
     <void property="methods"> 
      <void property="text"> 
-      <string>Production(inventory, prod_line_ids[])
+      <string>Production(inventory, prod_line_ids)
 produce()</string> 
      </void> 
     </void> 
@@ -716,6 +709,26 @@ and controls production according to available res.</string>
     <void method="setLocation"> 
      <double>178.0</double> 
      <double>66.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode29" class="com.horstmann.violet.ClassNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>add_production(Production)</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ProductionBuilding</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>777.8733796262926</double> 
+     <double>709.0372626665535</double> 
     </void> 
    </object> 
   </void> 
@@ -922,19 +935,7 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode19"/> 
    <object idref="ClassNode18"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
-    </void> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
-    </void> 
-   </object> 
-   <object idref="ClassNode19"/> 
    <object idref="ClassNode15"/> 
   </void> 
   <void method="connect"> 
@@ -947,21 +948,16 @@ and controls production according to available res.</string>
     </void> 
    </object> 
    <object idref="ClassNode10"/> 
-   <object idref="ClassNode19"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.NoteEdge"/> 
-   <object idref="ClassNode20"/> 
    <object idref="ClassNode18"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.NoteEdge"/> 
-   <object idref="ClassNode21"/> 
+   <object idref="ClassNode20"/> 
    <object idref="ClassNode15"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.NoteEdge"/> 
-   <object idref="ClassNode22"/> 
+   <object idref="ClassNode21"/> 
    <object idref="ClassNode15"/> 
   </void> 
   <void method="connect"> 
@@ -973,13 +969,8 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode23"/> 
-   <object idref="ClassNode19"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="ClassNode22"/> 
    <object idref="ClassNode18"/> 
-   <object idref="NoteNode4"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.NoteEdge"/> 
@@ -997,7 +988,7 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode25"/> 
+   <object idref="ClassNode24"/> 
    <object idref="ClassNode13"/> 
   </void> 
   <void method="connect"> 
@@ -1009,8 +1000,8 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode25"/> 
    <object idref="ClassNode24"/> 
+   <object idref="ClassNode23"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -1022,7 +1013,7 @@ and controls production according to available res.</string>
     </void> 
    </object> 
    <object idref="ClassNode15"/> 
-   <object idref="ClassNode26"/> 
+   <object idref="ClassNode25"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -1033,8 +1024,8 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode18"/> 
-   <object idref="ClassNode26"/> 
+   <object idref="ClassNode25"/> 
+   <object idref="ClassNode16"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -1057,20 +1048,8 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode27"/> 
-   <object idref="ClassNode16"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
-    </void> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
-    </void> 
-   </object> 
-   <object idref="ClassNode24"/> 
-   <object idref="ClassNode27"/> 
+   <object idref="ClassNode23"/> 
+   <object idref="ClassNode26"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -1115,16 +1094,16 @@ and controls production according to available res.</string>
     </void> 
    </object> 
    <object idref="ClassNode0"/> 
-   <object idref="ClassNode28"/> 
+   <object idref="ClassNode27"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.NoteEdge"/> 
-   <object idref="ClassNode24"/> 
+   <object idref="ClassNode23"/> 
    <object idref="NoteNode5"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.NoteEdge"/> 
-   <object idref="ClassNode28"/> 
+   <object idref="ClassNode27"/> 
    <object idref="NoteNode6"/> 
   </void> 
   <void method="connect"> 
@@ -1136,28 +1115,7 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode23"/> 
-   <object idref="ClassNode2"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
-    </void> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="endLabel"> 
-     <string>production 1</string> 
-    </void> 
-    <void property="startArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="BLACK_DIAMOND"/> 
-    </void> 
-    <void property="startLabel"> 
-     <string>0..1 building</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode18"/> 
+   <object idref="ClassNode22"/> 
    <object idref="ClassNode2"/> 
   </void> 
   <void method="connect"> 
@@ -1198,7 +1156,7 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode29"/> 
+   <object idref="ClassNode28"/> 
    <object idref="ClassNode14"/> 
   </void> 
   <void method="connect"> 
@@ -1225,7 +1183,7 @@ and controls production according to available res.</string>
      <object class="com.horstmann.violet.ArrowHead" field="V"/> 
     </void> 
     <void property="endLabel"> 
-     <string>1</string> 
+     <string>*</string> 
     </void> 
     <void property="middleLabel"> 
      <string>has a</string> 
@@ -1246,6 +1204,40 @@ and controls production according to available res.</string>
    <object class="com.horstmann.violet.NoteEdge"/> 
    <object idref="InterfaceNode1"/> 
    <object idref="NoteNode8"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode29"/> 
+   <object idref="ClassNode25"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="ClassNode29"/> 
+   <object idref="NoteNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="ClassNode19"/> 
+   <object idref="ClassNode29"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode18"/> 
+   <object idref="ClassNode29"/> 
   </void> 
  </object> 
 </java> 

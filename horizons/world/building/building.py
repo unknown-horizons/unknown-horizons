@@ -30,6 +30,7 @@ import horizons.main
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject
+from horizons.constants import RES
 
 class Building(AmbientSound, WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -71,9 +72,8 @@ class Building(AmbientSound, WorldObject):
 			self.running_costs_inactive, self.running_costs
 
 	def get_payout(self):
-		"""gets the payout from the settlement in form of it's running costs
-		1 = gold ressource id"""
-		self.settlement.owner.inventory.alter(1, -self.running_costs)
+		"""gets the payout from the settlement in form of it's running costs"""
+		self.settlement.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
 
 	def act(self, action, facing_loc, repeating=False):
 		self._instance.act(action+"_"+str(self._action_set_id),facing_loc, repeating)

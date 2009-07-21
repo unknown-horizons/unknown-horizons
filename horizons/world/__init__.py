@@ -32,7 +32,7 @@ from island import Island
 from player import Player
 from horizons.util import Point, Color
 from horizons.util.living import LivingObject
-from horizons.constants import WILD_ANIMAL_UNIT_CLASS, TREE_BUILDING_CLASS
+from horizons.constants import UNITS, BUILDINGS, RES
 from horizons.ai.trader import Trader
 
 class World(LivingObject):
@@ -175,8 +175,8 @@ class World(LivingObject):
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			print "Adding trees and animals to the world..."
 			from horizons.command.building import Build
-			tree = horizons.main.session.entities.buildings[TREE_BUILDING_CLASS]
-			wild_animal = horizons.main.session.entities.units[WILD_ANIMAL_UNIT_CLASS]
+			tree = horizons.main.session.entities.buildings[BUILDINGS.TREE_CLASS]
+			wild_animal = horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
@@ -197,9 +197,9 @@ class World(LivingObject):
 			point = self.get_random_possible_ship_position()
 			ship = horizons.main.session.entities.units[1](x=point.x, y=point.y, owner=player)
 			# give ship basic resources
-			ship.inventory.alter(6,30)
-			ship.inventory.alter(4,30)
-			ship.inventory.alter(5,30)
+			ship.inventory.alter(RES.BOARDS_ID,30)
+			ship.inventory.alter(RES.FOOD_ID,30)
+			ship.inventory.alter(RES.TOOLS_ID,30)
 			if player is self.player:
 				ret_coords = (point.x,point.y)
 			print "Done"
