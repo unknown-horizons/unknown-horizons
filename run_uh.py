@@ -191,7 +191,7 @@ if __name__ == '__main__':
 			logging.getLogger().setLevel(logging.DEBUG)
 			command_line_arguments['debug'] = True
 			# init the logfile handler with a dynamic filename
-			logfilename = "unkown-horizons-"+time.strftime("%y-%m-%d_%H-%M-%S")+".log"
+			logfilename = "unknown-horizons-"+time.strftime("%y-%m-%d_%H-%M-%S")+".log"
 			file_handler = logging.FileHandler(logfilename, 'w')
 			logging.getLogger().addHandler(file_handler)
 		elif o == "--fife-in-library-path":
