@@ -29,6 +29,7 @@ from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding.pather import ShipPather
 from horizons.util import Point
 from unit import Unit
+from horizons.constants import LAYERS
 
 class Ship(Unit):
 	"""Class representing a ship
@@ -69,7 +70,7 @@ class Ship(Unit):
 		"""Runs neccesary steps to select the unit."""
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		if self.is_moving():
-			loc = fife.Location(horizons.main.session.view.layers[2])
+			loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])
 			loc.thisown = 0
 			move_target = self.get_move_target()
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
@@ -111,7 +112,7 @@ class Ship(Unit):
 		if self.position.x != x or self.position.y != y:
 			move_target = self.get_move_target()
 			if move_target is not None:
-				loc = fife.Location(horizons.main.session.view.layers[2])
+				loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])
 				loc.thisown = 0
 				coords = fife.ModelCoordinate(move_target.x, move_target.y)
 				coords.thisown = 0

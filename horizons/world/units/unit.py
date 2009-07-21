@@ -27,6 +27,7 @@ import horizons.main
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, WorldObject, WeakMethod, Circle
+from horizons.constants import LAYERS
 
 class Unit(WorldObject):
 	log = logging.getLogger("world.units")
@@ -50,7 +51,7 @@ class Unit(WorldObject):
 		self.last_position = Point(x, y)
 		self.next_target = Point(x, y)
 
-		self._instance = horizons.main.session.view.layers[2].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
+		self._instance = horizons.main.session.view.layers[LAYERS.OBJECTS].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		self.action = 'idle'
 		location = fife.Location(self._instance.getLocation().getLayer())

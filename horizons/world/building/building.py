@@ -30,7 +30,8 @@ import horizons.main
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject
-from horizons.constants import RES
+from horizons.constants import RES, LAYERS
+
 
 class Building(AmbientSound, WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
@@ -146,7 +147,7 @@ class Building(AmbientSound, WorldObject):
 		return ret_building
 
 	@classmethod
-	def getInstance(cls, x, y, action='idle', building=None, layer=2, rotation=0, **trash):
+	def getInstance(cls, x, y, action='idle', building=None, layer=LAYERS.OBJECTS, rotation=0, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'

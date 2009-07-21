@@ -27,6 +27,7 @@ from horizons.world.units.unit import Unit
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from navigationtool import NavigationTool
+from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
 	"""The Selectiontool is used to select instances on the game screen.
@@ -61,20 +62,20 @@ class SelectionTool(NavigationTool):
 				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
 					fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
 			selectable = []
+			#instances = horizons.main.session.view.cam.getMatchingInstances(\
+				#fife.Rect(min(self.select_begin[0], evt.getX()), \
+						  #min(self.select_begin[1], evt.getY()), \
+						  #abs(evt.getX() - self.select_begin[0]), \
+						  #abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.GROUND])
+			#for i in instances:
+				#instance = WorldObject.get_object_by_id(int(i.getId()))
+				#if hasattr(instance, 'select'):
+					#selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 						  min(self.select_begin[1], evt.getY()), \
 						  abs(evt.getX() - self.select_begin[0]), \
-						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[1])
-			for i in instances:
-				instance = WorldObject.get_object_by_id(int(i.getId()))
-				if hasattr(instance, 'select'):
-					selectable.append(instance)
-			instances = horizons.main.session.view.cam.getMatchingInstances(\
-				fife.Rect(min(self.select_begin[0], evt.getX()), \
-						  min(self.select_begin[1], evt.getY()), \
-						  abs(evt.getX() - self.select_begin[0]), \
-						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[2])
+						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
 				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
@@ -128,14 +129,14 @@ class SelectionTool(NavigationTool):
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			selectable = []
+			#instances = horizons.main.session.view.cam.getMatchingInstances(\
+				#fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.GROUND])
+			#for i in instances:
+				#instance = WorldObject.get_object_by_id(int(i.getId()))
+				#if hasattr(instance, 'select'):
+					#selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[1])
-			for i in instances:
-				instance = WorldObject.get_object_by_id(int(i.getId()))
-				if hasattr(instance, 'select'):
-					selectable.append(instance)
-			instances = horizons.main.session.view.cam.getMatchingInstances(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[2])
+				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
 				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):

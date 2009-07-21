@@ -122,22 +122,26 @@ class World(LivingObject):
 
 		#add water
 		print "Filling world with water..."
-		self.water = {}
-		for x in xrange(self.min_x, self.max_x):
-			for y in xrange(self.min_y, self.max_y):
-				self.water[(x, y)] = 1
-		for i in self.islands:
-			for g in i.grounds:
-				del self.water[(g.x, g.y)]
-		self.water = self.water.keys()
-		print "Adding %d water tiles..." % (len(self.water),)
 		self.grounds = []
 		self.ground_map = {}
+		self.water = []
 		default_grounds = horizons.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
-		for x, y in self.water:
-			ground = default_grounds(x, y)
-			self.grounds.append(ground)
-			self.ground_map[(x, y)] = weakref.ref(ground)
+		number_of_water_tiles = 0
+		for x in xrange(self.min_x, self.max_x, 10):
+			for y in xrange(self.min_y, self.max_y, 10):
+				ground = default_grounds(x, y)
+				number_of_water_tiles += 1
+				self.grounds.append(ground)
+				for x_offset in xrange(0,10):
+					for y_offset in xrange(0,10):
+						self.ground_map[(x+x_offset, y+y_offset)] = weakref.ref(ground)
+						self.water.append((x+x_offset, y+y_offset))
+		print "Adding %d water tiles..." % number_of_water_tiles
+		for i in self.islands:
+			for g in i.grounds:
+				if (g.x, g.y) in self.ground_map:
+					del self.ground_map[(g.x, g.y)]
+					self.water.remove((g.x, g.y)) # if in ground, then also in water
 		print "Done."
 
 		# create ship position list. entries: ship_map[(x, y)] = ship

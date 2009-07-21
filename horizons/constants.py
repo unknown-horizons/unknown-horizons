@@ -33,3 +33,9 @@ class RES:
 	BOARDS_ID = 4
 	FOOD_ID = 5
 	TOOLS_ID = 6
+
+
+class LAYERS:
+	WATER = 0
+	GROUND = 1
+	OBJECTS = 2

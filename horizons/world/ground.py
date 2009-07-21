@@ -25,6 +25,7 @@ import fife
 import horizons.main
 
 from horizons.util import WorldObject
+from horizons.constants import LAYERS
 
 class Ground(WorldObject):
 	def __init__(self, x, y):
@@ -37,7 +38,21 @@ class Ground(WorldObject):
 			self.__class__._loadObject()
 		self.x = x
 		self.y = y
-		self._instance = horizons.main.session.view.layers[0].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
+		self._instance = horizons.main.session.view.layers[LAYERS.GROUND].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
+		fife.InstanceVisual.create(self._instance)
+
+class Water(WorldObject):
+	def __init__(self, x ,y):
+		"""
+		@param x: int x position the water is created.
+		@param y: int y position the water is created.
+		"""
+		super(Water, self).__init__()
+		if self._object is None:
+			self.__class__._loadObject()
+		self.x = x
+		self.y = y
+		self._instance = horizons.main.session.view.layers[LAYERS.WATER].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
 
 class GroundClass(type):
@@ -58,7 +73,10 @@ class GroundClass(type):
 		"""
 		@param id: ground id.
 		"""
-		return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
+		if id == 4:
+			return type.__new__(self, 'Ground[' + str(id) + ']', (Water,), {})
+		else:
+			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
 
 	def _loadObject(self):
 		""" Loads the ground object from the db (animations, etc)

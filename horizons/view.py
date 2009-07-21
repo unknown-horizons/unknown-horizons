@@ -26,6 +26,7 @@ import fife
 import horizons.main
 
 from util.changelistener import Changelistener
+from constants import LAYERS
 
 class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -65,8 +66,8 @@ class View(Changelistener):
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
-		self.renderer['GenericRenderer'].addActiveLayer(self.layers[2])
-		self.renderer['GridRenderer'].addActiveLayer(self.layers[0])
+		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
+		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.WATER])
 
 		horizons.main.settings.addCategorys('view')
 		horizons.main.settings.view.addCategorys('zoom')
