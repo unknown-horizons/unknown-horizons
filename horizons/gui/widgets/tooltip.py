@@ -40,7 +40,7 @@ class TooltipIcon(pychan.widgets.Icon):
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
 			self.label = self.gui.findChild(name='tooltip')
-			self.label.text = self.tooltip
+			self.label.text = self.tooltip.replace(r'\n', '\n')
 			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self._getParent().size[1])
 			self.gui.show()
 		else:
@@ -65,7 +65,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
 			self.label = self.gui.findChild(name='tooltip')
-			self.label.text = self.tooltip
+			self.label.text = self.tooltip.replace(r'\n', '\n')
 			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self.position[1] + self.size[1] + 15)
 			self.gui.show()
 		else:
