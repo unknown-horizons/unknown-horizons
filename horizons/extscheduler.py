@@ -70,6 +70,15 @@ class ExtScheduler(object):
 			if tup[1].class_instance is class_instance:
 				self.schedule.remove(tup)
 
+	def rem_call(self, instance, callback):
+		"""Removes all callbacks of 'instance' that are 'callback'
+		@param instance: the instance that would execute the call
+		@param callback: the function to remove
+		"""
+		for tup in self.schedule:
+			if tup[1].class_instance is instance and tup[1].callback == callback:
+				self.schedule.remove(tup)
+
 	def __del__(self):
 		self.schedule = []
 		self.pump.remove(self.tick)
