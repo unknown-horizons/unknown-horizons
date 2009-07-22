@@ -20,6 +20,7 @@
 # ###################################################
 
 import pychan
+import horizons.main
 
 from pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
@@ -32,8 +33,8 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.gui.stylize('tooltip')
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : self.show_tooltip,
-			self.name + '/mouseExited' : self.gui.hide
+			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
+			self.name + '/mouseExited' : self.hide_tooltip
 			})
 
 	def show_tooltip(self):
@@ -45,6 +46,10 @@ class TooltipIcon(pychan.widgets.Icon):
 		else:
 			pass
 
+	def hide_tooltip(self):
+		self.gui.hide()
+		horizons.main.ext_scheduler.rem_call(self, self.show_tooltip)
+
 class TooltipButton(pychan.widgets.ImageButton):
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, **kwargs):
@@ -53,8 +58,8 @@ class TooltipButton(pychan.widgets.ImageButton):
 		self.gui.stylize('tooltip')
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : self.show_tooltip,
-			self.name + '/mouseExited' : self.gui.hide
+			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
+			self.name + '/mouseExited' : self.hide_tooltip
 			})
 
 	def show_tooltip(self):
@@ -65,4 +70,8 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.gui.show()
 		else:
 			pass
+
+	def hide_tooltip(self):
+		self.gui.hide()
+		horizons.main.ext_scheduler.rem_call(self, self.show_tooltip)
 
