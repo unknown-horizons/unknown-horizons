@@ -175,7 +175,7 @@ class Unit(WorldObject):
 			except PathBlockedError:
 				self.__is_moving = False
 				self.next_target = self.position
-				if owner is not None:
+				if self.owner is not None:
 					self.owner.notify_unit_path_blocked(self)
 				else:
 					print 'WARNING: unit %s %s has no owner and a blocked path!' % (self, self.getId())
