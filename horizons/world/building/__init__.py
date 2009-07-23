@@ -105,11 +105,11 @@ class BuildingClass(type):
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
-		print 'Loading building #%s...' % str(cls.id)
+		#print 'Loading building #%s...' % str(cls.id)
 		try:
 			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
 		except RuntimeError:
-			print 'already loaded...'
+			#print 'already loaded...'
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)

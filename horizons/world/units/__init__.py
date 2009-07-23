@@ -60,11 +60,11 @@ class UnitClass(type):
 	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
-		print 'Loading unit #' + str(cls.id) + '...'
+		#print 'Loading unit #' + str(cls.id) + '...'
 		try:
 			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'unit')
 		except RuntimeError:
-			print 'already loaded...'
+			#print 'already loaded...'
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'unit')
 			return
 		cls._object.setPather(horizons.main.session.view.model.getPather('RoutePather'))

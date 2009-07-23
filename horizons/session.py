@@ -102,10 +102,11 @@ class Session(LivingObject):
 
 		#autosave
 		if horizons.main.settings.savegame.autosaveinterval != 0:
-			horizons.main.ext_scheduler.add_new_object(self.autosave, self.autosave, horizons.main.settings.savegame.autosaveinterval * 60, -1)
+			horizons.main.ext_scheduler.add_new_object(self.autosave, self, horizons.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def end(self):
 		self.scheduler.rem_all_classinst_calls(self)
+		horizons.main.ext_scheduler.rem_call(self, self.autosave)
 
 		if horizons.main.settings.sound.enabled:
 			for emitter in horizons.main.fife.emitter['ambient']:
