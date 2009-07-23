@@ -127,7 +127,7 @@ def start(command_line_arguments):
 		maps = gui.get_maps()
 		try:
 			map_id = maps[1].index(map_name)
-			start_singleplayer(maps[0][map_id])
+			gui.load_game(maps[0][map_id])
 		except ValueError:
 			print "Error: Cannot find map \"%s\"." % map_name
 			import sys; sys.exit(1)
@@ -137,7 +137,7 @@ def start(command_line_arguments):
 		saves = savegamemanager.get_saves()
 		try:
 			save_id = saves[1].index(savegamename)
-			start_singleplayer(saves[0][save_id])
+			gui.load_game(saves[0][save_id])
 		except ValueError:
 			print "Error: Cannot find savegame \"%s\"." % savegamename
 			import sys; sys.exit(1)
@@ -189,8 +189,8 @@ def save_game(savegamename):
 	global savegamemanager, session, gui
 
 	if savegamename.startswith("/"):
-		savegamefile = savegamename
-	else:
+		savegamefile = savegamename # is already full path
+	else: # is just basename
 		savegamefile = savegamemanager.create_filename(savegamename)
 
 	if os.path.exists(savegamefile):
@@ -198,7 +198,7 @@ def save_game(savegamename):
 				_("A savegame with the name \"%s\" already exists."+\
 				"Should i overwrite it?")%savegamename,
 				show_cancel_button = True):
-			gui.save_game()
+			gui.save_game() # just reshow save screen on cancel.
 			return
 
 	try:

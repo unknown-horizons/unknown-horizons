@@ -30,7 +30,6 @@ class cached(object):
 		self.func = func
 		self.cache = {}
 	def __call__(self, *args):
-		import pdb;pdb.set_trace()
 		try:
 			return self.cache[args]
 		except KeyError:
