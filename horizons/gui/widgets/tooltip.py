@@ -26,10 +26,16 @@ from pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
 
 class TooltipIcon(pychan.widgets.Icon):
+	"""The TooltipIcon is a modified icon widget. It can be used in xml files like this:
+	<TooltipIcon tooltip=""/>
+	Used to display tooltip on hover on icons.
+	Attributes same as Icon widget with addition of tooltip="text string to display"
+	Use \\n for newline.
+	"""
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
-		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml')
+		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
@@ -50,10 +56,16 @@ class TooltipIcon(pychan.widgets.Icon):
 		horizons.main.ext_scheduler.rem_call(self, self.show_tooltip)
 
 class TooltipButton(pychan.widgets.ImageButton):
+	"""The TooltipButton is a modified image button widget. It can be used in xml files like this:
+	<TooltipButton tooltip=""/>
+	Used to display tooltip on hover on buttons.
+	Attributes same as ImageButton widget with addition of tooltip="text string to display"
+	Use \\n for newline.
+	"""
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, **kwargs):
 		super(TooltipButton, self).__init__(**kwargs)
-		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml')
+		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
