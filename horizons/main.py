@@ -53,8 +53,6 @@ from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 
-
-
 def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: dict with command line arguments. possible values:

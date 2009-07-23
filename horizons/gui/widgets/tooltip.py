@@ -29,8 +29,7 @@ class TooltipIcon(pychan.widgets.Icon):
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
-		self.gui = load_xml_translated('tooltip.xml')
-		self.gui.stylize('tooltip')
+		self.gui = horizons.main.gui.widgets['tooltip']
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
@@ -54,8 +53,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, **kwargs):
 		super(TooltipButton, self).__init__(**kwargs)
-		self.gui = load_xml_translated('tooltip.xml')
-		self.gui.stylize('tooltip')
+		self.gui = horizons.main.gui.widgets['tooltip']
 		self.gui.hide()
 		self.mapEvents({
 			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
