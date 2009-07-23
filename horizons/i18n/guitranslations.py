@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-text_translations = dict()
+text_translations = {}
 
 def set_translations():
 	global text_translations
@@ -32,11 +32,6 @@ def set_translations():
 			"slots_label"                 : _("Slots:"),
 			"bots_label"                  : _("Bots:"),
 			"chatbutton"                  : _("chat")},
-#		"popupbox.xml" : {
-#			"okButton"                    : _("Ok")},
-#		"popupbox_with_cancel.xml" : {
-#			"okButton"                    : _("Ok"),
-#			"cancelButton"                : _("Cancel")},
 		"credits.xml" : {
 			"creditsIntroText"            : _("These guys contributed to Unknown Horizons"),
 #			"okButton"                    : _("You guys rock!"),
@@ -184,68 +179,68 @@ def set_translations():
 			"music_volume_label"          : _("Music volume:"),
 			"effect_volume_label"         : _("Effects volume:"),
 			"sound_enable_opt"            : _("Enable sound")},
-		"work_building_tab1.xml" : {
+		"buildings_gui/work_building_tab1.xml" : {
 			"StockLabel"                  : _("stock")},
-		"work_building_tab4.xml" : {
+		"buildings_gui/work_building_tab4.xml" : {
 			"ProductionLabel"             : _("production")},
-		"work_building_tab0.xml" : {
+		"buildings_gui/work_building_tab0.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
 			"health_label"                : _("Health:"),
 			"running_cost_label"          : _("Running Costs:"),
 			"buy_sell_label"              : _("Buy/Sell Resources:")},
-		"production_building_overview.xml" : {
+		"buildings_gui/production_building_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
 			"health_label"                : _("Health:"),
 			"running_costs_label"         : _("Running Costs:"),
 			"toggle_label"                : _("Toggle active:")},
-		"work_building_tab5.xml" : {
+		"buildings_gui/work_building_tab5.xml" : {
 			"ResearchLabel"               : _("research")},
-		"work_building_tab3.xml" : {
+		"buildings_gui/work_building_tab3.xml" : {
 			"RouteLabel"                  : _("route")},
-		"work_building_tab2.xml" : {
+		"buildings_gui/work_building_tab2.xml" : {
 			"CombatLabel"                 : _("combat")},
-		"tab_stock.xml" : {
+		"tab_widget/tab_stock.xml" : {
 			"headline"                    : _("Inventory")},
-		"tab_branch_overview.xml" : {
+		"tab_widget/tab_branch_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
 			"health_label"                : _("Health:"),
 			"running_cost_label"          : _("Running Costs:")},
-		"tab_overview_ship.xml" : {
+		"tab_widget/tab_overview_ship.xml" : {
 			"health_label"                : _("Health:")},
 		"boatbuilder.xml" : {
 			"current_construction_label"  : _("Current construction progress:")},
-		"tab_boatbuilder_create.xml" : {
+		"tab_widget/tab_boatbuilder_create.xml" : {
 			"overview_label"              : _("Select a boat to build:"),
 			"new_settlement_label"        : _("Build selected:")},
-		"tab_stock_ship.xml" : {
+		"tab_widget/tab_stock_ship.xml" : {
 			"headline"                    : _("Inventory"),
 			"load_unload_label"           : _("Load/Unload:")},
-		"tab_overview.xml" : {
+		"tab_widget/tab_overview.xml" : {
 			"headline"                    : _("Overview"),
 			"name_label"                  : _("Name:"),
 			"health_label"                : _("Health:")},
-		"trade.xml" : {
+		"ship/trade.xml" : {
 			"headline"                    : _("Trade"),
 			"ship_label"                  : _("Ship:"),
 			"exchange_label"              : _("Exchange:"),
 			"trade_with_label"            : _("Trade partner:")},
-		"buysellmenu.xml" : {
+		"buysellmenu/buysellmenu.xml" : {
 			"headline"                    : _("Buy or sell resources"),
 			"legend_label"                : _("Legend:"),
 			"buy_label"                   : _("Buy resources"),
 			"sell_label"                  : _("Sell resources")},
-		"resources.xml" : {
+		"buysellmenu/resources.xml" : {
 			"headline"                    : _("Select resources:")},
-		"hud_build_tab0.xml" : {
+		"build_menu/hud_build_tab0.xml" : {
 			"headline"                    : _("Build menu"),
 			"residental_label"            : _("Residents and Infrastructural"),
 			"service_label"               : _("Services"),
 			"companies_label"             : _("Companies"),
 			"military_label"              : _("Military")},
-		"hud_builddetail.xml" : {
+		"build_menu/hud_builddetail.xml" : {
 			"headline"                    : _("Build"),
 			"running_cost_label"          : _("Running Costs:")},
 		"hud_tears_menu.xml" : {

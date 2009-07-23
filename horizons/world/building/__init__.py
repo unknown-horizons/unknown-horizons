@@ -113,9 +113,7 @@ class BuildingClass(type):
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
-		cls.action_sets = [] # save list of action sets as one list (not db format)
 		for (action_set_id,) in action_sets:
-			cls.action_sets.append(action_set_id)
 			for action_id in horizons.main.action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)

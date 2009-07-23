@@ -27,25 +27,31 @@ from os.path import basename
 
 log = logging.getLogger("i18n")
 
+# init translations
 set_translations()
 
-all_translated_widgets = dict()
+# save translated widgets
+translated_widgets = {}
 
+"""
 def set_text(widget, text):
 	gui.find_child(name=widget).text = text
 
 def set_title(widget, title):
 	gui.findChild(name=widget).title = title
+"""
 
 def load_xml_translated(filename):
-	global all_translated_widgets
+	"""Just like pychan's load_xml, but translates strings according to the data specified
+	in guitranslations.py"""
+	global translated_widgets
 	try:
 		untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
 	except (IOError, ValueError), e:
-		print e
+		print 'PLEASE REPORT: invalid path %s in translation!', e
 		untranslated = horizons.main.fife.pychan.loadXML(filename)
 
-	filename = basename(filename)
+
 	if filename in guitranslations.text_translations:
 		for i in guitranslations.text_translations[filename].iteritems():
 			try:
@@ -62,14 +68,14 @@ def load_xml_translated(filename):
 	else:
 		log.debug('No translation for file %s', filename)
 
-	all_translated_widgets[filename] = untranslated
+	translated_widgets[filename] = untranslated
 
 	return untranslated
 
 def update_all_translations():
 	set_translations()
-	global all_translated_widgets
-	for i in all_translated_widgets.iteritems():
+	global translated_widgets
+	for i in translated_widgets.iteritems():
 		for j in guitranslations.text_translations.get(i[0],{}).iteritems():
 			try:
 				i[1].findChild(name=j[0]).text = j[1]

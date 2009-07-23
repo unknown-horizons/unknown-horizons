@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container name="popup_window" size="374,230" position="325,235">
 	<Icon image="content/gui/images/background/notice.png" position="0,0" />
-	<Label text="Not Implemented Yet" position="102,30" name="headline" />
+	<Label text="" position="102,30" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" position="80,50" />
 	<Label name="popup_message" position="22,82" />
 	<Container size="400,60" position="235,170">

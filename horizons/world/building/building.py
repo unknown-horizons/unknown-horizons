@@ -54,7 +54,7 @@ class Building(AmbientSound, WorldObject):
 			owner is not None else None
 
 	def __init(self, origin, rotation, owner, instance):
-		self._action_set_id = self.action_sets[random.randint(0, len(self.action_sets)-1)]
+		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? ORDER BY random() LIMIT 1", self.id)[0][0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
