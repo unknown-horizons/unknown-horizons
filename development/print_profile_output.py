@@ -22,6 +22,6 @@ elif sys.argv[3] == 'callees':
 	p.print_callees()
 elif sys.argv[3] == 'callers':
 	p.print_callers()
-else
+else:
 	print 'invalid arg'
 
