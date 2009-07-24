@@ -32,7 +32,7 @@ import time
 import logging
 import logging.config
 import logging.handlers
-import getopt
+import optparse
 
 def log():
 	"""Returns Logger"""
@@ -115,26 +115,6 @@ def find_FIFE(fife_custom_path=None):
 	args[1] = os.path.split(os.path.realpath(args[1]))[1]
 	os.execvp(args[0], args)
 
-def print_help():
-	print _("Unknown Horizons usage:")
-	print "run_uh.py [-d] [-h]"
-	print ""
-	print _("Options:")
-	print "-d --debug   - ", _("Debug, enables debug output, useful for testing.")
-	print "-h --help    - ", _("Print this help message.")
-	print ""
-	print "--start-dev-map   - ", _("Starts the development map without displaying the main menu")
-	print "                    ", _("Useful for testing during development")
-	print "--start-map <map> - ", _("Starts <map>. <map> is the filename of the map, without '.sqlite'")
-	print "--load-map <save> - ", _("Loads a saved game. Specify the savegamename.")
-	print "--fife-path <path> - ", _("Specify the path to FIFE root directory.")
-	print ""
-	print _("Debugging options:")
-	print "--debug-module <module> -", _("Enable logging for a certain logging module.")
-	print ""
-	print _("Have fun playing, and if you do, help us developing!")
-
-
 def find_uh_position():
 	"""Returns path, where uh is located"""
 	first_guess = os.path.split( os.path.realpath( sys.argv[0]) )[0]
@@ -151,82 +131,70 @@ def find_uh_position():
 			if os.path.exists('%s/unknown-horizons' % i):
 				return '%s/unknown-horizons' % i
 
+def get_option_parser():
+	"""Returns inited OptionParser object"""
+	p = optparse.OptionParser()
+	p.add_option("-d", "--debug", dest="debug", action="store_true", default=False, \
+							 help=_("Enable debug output"))
+	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
+							 help=_("Specify the path to FIFE root directory."))
+
+	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
+	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
+			default=False, help=_("Starts the development map without displaying the main menu."))
+	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
+														help=_("Starts <map>. <map> is the mapname (filename without extension)"))
+	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
+														help=_("Loads a saved game. <save> is the savegamename."))
+	p.add_option_group(start_uh_group)
+
+	dev_group = optparse.OptionGroup(p, _("Development options"))
+	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
+											 metavar="<module>", default=[], \
+											 help=_("Enable logging for a certain logging module."))
+	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", \
+											 action="store_true", default=False, help=_("For internal use only."))
+	dev_group.add_option("--enable-unstable-features", dest="unstable_features", \
+											 action="store_true", default=False, help=_("Enables unstable features"))
+	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
+											 help=_("Enable profiling"))
+	p.add_option_group(dev_group)
+
+	return p
+
 
 if __name__ == '__main__':
-
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig('content/logging.conf')
 	gettext.install("unknownhorizons", "po", unicode=1)
 
-	# parse arguments
-	try:
-		opts, args = getopt.getopt(sys.argv[1:], "hd", \
-						   ["help", "debug", "fife-in-library-path", "start-dev-map", \
-							    "start-map=", "enable-unstable-features", "debug-module=", \
-									"load-map=", "fife-path=", "profile"])
-	except getopt.GetoptError, err:
-		print str(err)
-		print_help()
-		exit(1)
+	# parse options
+	parser = get_option_parser()
+	(options, args) = parser.parse_args()
 
-	fife_in_library_path = False
-	fife_custom_path = None
+	# apply options
+	if options.debug:
+		logging.getLogger().setLevel(logging.DEBUG)
+		# init the logfile handler with a dynamic filename
+		logfilename = "unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
+		file_handler = logging.FileHandler(logfilename, 'w')
+		logging.getLogger().addHandler(file_handler)
+	for module in options.debug_module:
+		logging.getLogger(module).setLevel(logging.DEBUG)
 
-	command_line_arguments = { \
-		         "start_dev_map": False, \
-					   "start_map": None, \
-						 "load_map": None,
-					   "unstable_features": False, \
-					   "debug": False, \
-						 "profile": False}
-
-	# apply arguments
-	for o, a in opts:
-		if o in ("-h", "--help"):
-			print_help()
-			exit(1)
-		elif o in ("-d", "--debug"):
-			logging.getLogger().setLevel(logging.DEBUG)
-			command_line_arguments['debug'] = True
-			# init the logfile handler with a dynamic filename
-			logfilename = "unknown-horizons-"+time.strftime("%y-%m-%d_%H-%M-%S")+".log"
-			file_handler = logging.FileHandler(logfilename, 'w')
-			logging.getLogger().addHandler(file_handler)
-		elif o == "--fife-in-library-path":
-			# this is currently only for internal use, therefore not in the help message
-			fife_in_library_path = True
-		elif o == "--start-dev-map":
-			# automatically starts development map
-			command_line_arguments['start_dev_map'] = True
-		elif o == "--start-map":
-			# start map selected by commandline arg
-			command_line_arguments['start_map'] = a
-		elif o == "--load-map":
-			# load map selected by commandline arg
-			command_line_arguments['load_map'] = a
-		elif o == "--enable-unstable-features":
-			command_line_arguments["unstable_features"] = True
-		elif o == "--debug-module":
-			# enable logging for this module
-			logging.getLogger(a).setLevel(logging.DEBUG)
-		elif o == "--fife-path":
-			# specify custom path to FIFE engine
-			fife_custom_path = a
-		elif o == "--profile":
-			command_line_arguments['profile'] = True
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
 		import fife
 	except ImportError, e:
-		if fife_in_library_path:
+		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
 			print 'Failed to load fife:', e
 			exit(1)
 		log().debug('Searching for FIFE')
-		find_FIFE(fife_custom_path)
+		find_FIFE(options.fife_path)
 
 	#print _("Launching Unknown Horizons")
 
@@ -235,16 +203,16 @@ if __name__ == '__main__':
 
 	#start unknownhorizons
 	import horizons.main
-	if not command_line_arguments['profile']:
+	if not options.profile:
 		# start normal
-		horizons.main.start(command_line_arguments)
+		horizons.main.start(options)
 	else:
 		# start with profiling
 		import profile
 		import tempfile
 		outfilename = tempfile.mkstemp(text = True)[1]
 		log().warning('Starting profile mode. Writing output to: %s', outfilename)
-		profile.runctx('horizons.main.start(command_line_arguments)', globals(), locals(), \
+		profile.runctx('horizons.main.start(options)', globals(), locals(), \
 									 outfilename)
 		log().warning('Program ended. Profiling output: %s', outfilename)
 

@@ -55,7 +55,7 @@ from i18n import update_all_translations
 
 def start(command_line_arguments):
 	"""Starts the horizons.
-	@param command_line_arguments: dict with command line arguments. possible values:
+	@param command_line_arguments: options object from optparse.OptionParser
 									start_dev_map: (bool), if True, don't show menu but start the development map
 									start_map: (string), start map with specified map name
 									load_map: (string), load map with specified savegamename
@@ -66,7 +66,7 @@ def start(command_line_arguments):
 		   action_sets, unstable_features, debug
 
 	# set debugging level
-	debug = command_line_arguments['debug']
+	debug = command_line_arguments.debug
 
 	#init db
 	db = DbReader(':memory:')
@@ -114,16 +114,16 @@ def start(command_line_arguments):
 	# parse command line:
 
 	# set flag wether to enable unstable features
-	unstable_features = command_line_arguments['unstable_features']
+	unstable_features = command_line_arguments.unstable_features
 
 	# start something according to commandline parameters
-	if command_line_arguments['start_dev_map']:
+	if command_line_arguments.start_dev_map:
 		# start the development map (it's the first one)
 		first_map = gui.get_maps()[0][1]
 		start_singleplayer(first_map)
-	elif command_line_arguments['start_map'] is not None:
+	elif command_line_arguments.start_map is not None:
 		# start a map specified by user
-		map_name = command_line_arguments['start_map']
+		map_name = command_line_arguments.start_map
 		maps = gui.get_maps()
 		try:
 			map_id = maps[1].index(map_name)
@@ -131,9 +131,9 @@ def start(command_line_arguments):
 		except ValueError:
 			print "Error: Cannot find map \"%s\"." % map_name
 			import sys; sys.exit(1)
-	elif command_line_arguments['load_map'] is not None:
+	elif command_line_arguments.load_map is not None:
 		# load a game specified by user
-		savegamename = command_line_arguments['load_map']
+		savegamename = command_line_arguments.load_map
 		saves = savegamemanager.get_saves()
 		try:
 			save_id = saves[1].index(savegamename)
