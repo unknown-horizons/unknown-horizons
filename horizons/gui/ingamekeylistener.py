@@ -63,7 +63,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '-':
 			horizons.main.session.speed_down()
 		elif keystr == 'p':
-			horizons.main.session.speed_toggle_pause()
+			horizons.main.gui.toggle_ingame_pause()
 		elif keystr == 'd':
 			import pdb; pdb.set_trace()
 		elif keystr == 'b':

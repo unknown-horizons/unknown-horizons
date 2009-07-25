@@ -21,6 +21,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
+"""
+If run as main program, debug.py will set up LD_LIBRARY_PATH for program in sys.argv[1:], i.e.
+./debug.py foo will run foo with LD_LIBRARY_PATH set for uh, so foo doesn't need to restart
+Usefull for debugging, because when run_uh.py restarts, it can't be debugged with gdb.
+"./debug.py gdb python --args ./run_uh.py" is the only known way to debug uh with gdb.
+"""
+
+
 if __name__ == '__main__':
 	import run_uh
 	import sys

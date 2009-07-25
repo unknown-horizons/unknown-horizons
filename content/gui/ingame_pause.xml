@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Container name="chime_window" size="374,230" position="325,235">
+        <Icon image="content/gui/images/background/notice.png" position="0,0" />
+        <Label text="Break" position="125,30" name="headline" />
+        <Icon image="content/gui/images/background/hr.png" position="80,50" />
+        <Label text="Hit P to continue the game!" position="102,82" />
+</Container>

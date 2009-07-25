@@ -88,6 +88,8 @@ class Menus(object):
 		self.widgets['savegame'].findChild(name='headline').stylize('headline') # style definition for headline
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
+		self.widgets['ingame_pause'] = load_xml_translated('ingame_pause.xml')
+
 		for widget in self.widgets.itervalues():
 			center_widget(widget)
 
@@ -754,6 +756,16 @@ class Menus(object):
 		savegamename = self.current.collectData('savegamefile')
 		self.current = old_current
 		horizons.main.save_game(savegamename)
+
+	def toggle_ingame_pause(self):
+		if not horizons.main.session.speed_is_paused():
+			self.widgets['ingame_pause'].show()
+			horizons.main.session.speed_pause()
+		else:
+			self.widgets['ingame_pause'].hide()
+			horizons.main.session.speed_unpause()
+
+
 
 def center_widget(widget):
 	"""Centers the widget in the parameter

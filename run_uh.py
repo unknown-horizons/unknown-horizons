@@ -177,7 +177,7 @@ if __name__ == '__main__':
 	# apply options
 	if options.debug:
 		logging.getLogger().setLevel(logging.DEBUG)
-		# init the logfile handler with a dynamic filename
+		# init a logfile handler with a dynamic filename
 		logfilename = "unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
