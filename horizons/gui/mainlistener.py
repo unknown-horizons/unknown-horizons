@@ -57,7 +57,6 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
 		if keyval == fife.Key.ESCAPE:
-			print "ESCAPE PRESSED"
 			horizons.main.gui.on_escape()
 			evt.consume()
 		elif keyval == fife.Key.F10:

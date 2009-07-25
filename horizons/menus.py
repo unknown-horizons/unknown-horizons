@@ -758,11 +758,15 @@ class Menus(object):
 		horizons.main.save_game(savegamename)
 
 	def toggle_ingame_pause(self):
+		"""Called when the hotkey for pause is pressed. Displays pause notification and does
+		the acctual (un)pausing."""
 		if not horizons.main.session.speed_is_paused():
+			horizons.main.session.speed_pause()
+			self.on_escape = self.toggle_ingame_pause
 			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
 			self.widgets['ingame_pause'].show()
-			horizons.main.session.speed_pause()
 		else:
+			self.on_escape = self.show_pause
 			self.widgets['ingame_pause'].hide()
 			horizons.main.session.speed_unpause()
 
