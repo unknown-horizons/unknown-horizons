@@ -83,7 +83,6 @@ class Menus(object):
 		self.widgets['ingame_load'].stylize('book')
 		self.widgets['ingame_load'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['tooltip'] = load_xml_translated('tooltip.xml')
-		self.widgets['tooltip'].stylize('tooltip')
 		self.widgets['savegame'] = load_xml_translated('ingame_save.xml')
 		self.widgets['savegame'].findChild(name='headline').stylize('headline') # style definition for headline
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
