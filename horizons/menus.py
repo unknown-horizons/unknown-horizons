@@ -759,6 +759,7 @@ class Menus(object):
 
 	def toggle_ingame_pause(self):
 		if not horizons.main.session.speed_is_paused():
+			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
 			self.widgets['ingame_pause'].show()
 			horizons.main.session.speed_pause()
 		else:

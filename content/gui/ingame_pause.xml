@@ -3,5 +3,6 @@
         <Icon image="content/gui/images/background/notice.png" position="0,0" />
         <Label text="Break" position="125,30" name="headline" />
         <Icon image="content/gui/images/background/hr.png" position="80,50" />
-        <Label text="Hit P to continue the game!" position="102,82" />
+        <Label text="Hit P to continue the game or click below!" position="60,82" />
+				<Button name="unpause_button" text="unpause" position="100,120"/>
 </Container>
