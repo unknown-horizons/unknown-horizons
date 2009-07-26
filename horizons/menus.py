@@ -770,8 +770,9 @@ class Menus(object):
 			self.widgets['ingame_pause'].hide()
 			horizons.main.session.speed_unpause()
 
-          def toggle_ingame_pdb_start(self):
+	def toggle_ingame_pdb_start(self):
 		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
+		pass
 		
 
 def center_widget(widget):
