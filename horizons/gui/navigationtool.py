@@ -33,7 +33,6 @@ class NavigationTool(CursorTool):
 		super(NavigationTool, self).__init__()
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
-		self.debug = False
 		self.middle_scroll_active = False
 
 		#ugly but works o_O
