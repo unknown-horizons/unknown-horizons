@@ -88,6 +88,7 @@ class Menus(object):
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
 		self.widgets['ingame_pause'] = load_xml_translated('ingame_pause.xml')
+                self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml') 
 
 		for widget in self.widgets.itervalues():
 			center_widget(widget)
@@ -769,7 +770,9 @@ class Menus(object):
 			self.widgets['ingame_pause'].hide()
 			horizons.main.session.speed_unpause()
 
-
+          def toggle_ingame_pdb_start(self):
+		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
+		
 
 def center_widget(widget):
 	"""Centers the widget in the parameter
