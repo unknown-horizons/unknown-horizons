@@ -58,14 +58,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			horizons.main.session.destroy_tool()
 		elif keystr == 'd':
 			horizons.main.session.cursor.debug = True
+			import pdb; pdb.set_trace()
 		elif keystr == '+':
 			horizons.main.session.speed_up()
 		elif keystr == '-':
 			horizons.main.session.speed_down()
 		elif keystr == 'p':
 			horizons.main.gui.toggle_ingame_pause()
-		elif keystr == 'd':
-			import pdb; pdb.set_trace()
 		elif keystr == 'b':
 			horizons.main.session.ingame_gui.show_build_menu()
 		elif keystr == '.':
