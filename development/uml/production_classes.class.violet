@@ -1130,7 +1130,7 @@ and controls production according to available res.</string>
      <string>has a </string> 
     </void> 
     <void property="startLabel"> 
-     <string>0..1</string> 
+     <string>1</string> 
     </void> 
    </object> 
    <object idref="ClassNode15"/> 
