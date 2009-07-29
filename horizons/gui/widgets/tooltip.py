@@ -38,7 +38,7 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
+			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
 			self.name + '/mouseExited' : self.hide_tooltip
 			})
 		self.tooltip_items=[]
@@ -87,7 +87,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.5, loops=0),
+			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
 			self.name + '/mouseExited' : self.hide_tooltip
 			})
 		self.tooltip_items=[]
