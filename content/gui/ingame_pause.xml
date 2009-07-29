@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <Container name="chime_window" size="374,230" position="325,235">
-        <Icon image="content/gui/images/background/notice.png" position="0,0" />
-        <Label text="Break" position="125,30" name="headline" />
-        <Icon image="content/gui/images/background/hr.png" position="80,50" />
-        <Label text="Hit P to continue the game or click below!" position="60,82" />
-				<Button name="unpause_button" text="unpause" position="100,120"/>
+    <Icon image="content/gui/images/background/notice.png" position="0,0" />
+    <Label text="Game paused" position="135,30" name="headline" />
+    <Icon image="content/gui/images/background/hr.png" position="80,50" />
+    <Label text="Hit P to continue the game or click below!" position="65,82" />
+	<!--<Button name="unpause_button" text="unpause" position="100,120"/>-->			
+	<ImageButton name="unpause_button" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="290,160" />
 </Container>

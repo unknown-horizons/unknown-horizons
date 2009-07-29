@@ -88,7 +88,10 @@ class Menus(object):
 		#self.widgets['savegame'].stylize('book') The TextField used in ingame_save.xml does not have setOpaque defined in fife.py - FIX ME!
 
 		self.widgets['ingame_pause'] = load_xml_translated('ingame_pause.xml')
+		self.widgets['ingame_pause'].stylize('book')
+		self.widgets['ingame_pause'].findChild(name='headline').stylize('headline') # style definition for headline
                 self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml') 
+
 
 		for widget in self.widgets.itervalues():
 			center_widget(widget)
