@@ -295,8 +295,8 @@ Collector</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>733.3823893388554</double> 
-     <double>579.5933426264421</double> 
+     <double>522.3823893388554</double> 
+     <double>574.5933426264421</double> 
     </void> 
    </object> 
   </void> 
@@ -371,8 +371,8 @@ subclass this.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>490.5047843084592</double> 
-     <double>531.4045383838322</double> 
+     <double>384.5047843084592</double> 
+     <double>523.4045383838322</double> 
     </void> 
    </object> 
   </void> 
@@ -416,8 +416,8 @@ subclass this.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>356.76876705182303</double> 
-     <double>1023.2317758223619</double> 
+     <double>822.768767051823</double> 
+     <double>1029.231775822362</double> 
     </void> 
    </object> 
   </void> 
@@ -431,8 +431,8 @@ subclass this.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>816.8154356707021</double> 
-     <double>1026.6641544773536</double> 
+     <double>470.8154356707021</double> 
+     <double>1025.6641544773536</double> 
     </void> 
    </object> 
   </void> 
@@ -446,8 +446,8 @@ subclass this.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>701.6242387903972</double> 
-     <double>1026.8533615923561</double> 
+     <double>356.62423879039716</double> 
+     <double>1030.8533615923561</double> 
     </void> 
    </object> 
   </void> 
@@ -481,8 +481,8 @@ subclass this.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>513.537909891484</double> 
-     <double>624.5950675872823</double> 
+     <double>732.537909891484</double> 
+     <double>567.5950675872823</double> 
     </void> 
    </object> 
   </void> 
@@ -536,8 +536,8 @@ production, for animation change.</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>637.7706407220804</double> 
-     <double>477.6658819260867</double> 
+     <double>805.7706407220804</double> 
+     <double>453.6658819260867</double> 
     </void> 
    </object> 
   </void> 
@@ -715,8 +715,8 @@ Possible diamond</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>606.0</double> 
-     <double>690.0</double> 
+     <double>904.0</double> 
+     <double>605.0</double> 
     </void> 
    </object> 
   </void> 
@@ -731,8 +731,8 @@ have collectors</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>891.2431715399891</double> 
-     <double>545.7828157898531</double> 
+     <double>635.2431715399891</double> 
+     <double>484.7828157898531</double> 
     </void> 
    </object> 
   </void> 
