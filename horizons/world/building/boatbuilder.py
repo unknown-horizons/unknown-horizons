@@ -19,14 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import Building, Selectable
+class BoatBuilder(object):pass
+
+"""
+
+DISABLED FOR NOW
+
+from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
-from horizons.world.production import UnitProduction
 from horizons.util import Point
 from horizons.gui.tabs import ProductionOverviewTab, InventoryTab, BoatbuilderTab, TabWidget
+from horizons.constants import UNITS
+
 import horizons.main
 
-class BoatBuilder(Selectable, BuildableSingle, UnitProduction, Building):
+class BoatBuilder(Selectable, BuildableSingle, UnitProduction, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
@@ -50,5 +57,6 @@ class BoatBuilder(Selectable, BuildableSingle, UnitProduction, Building):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self), BoatbuilderTab(self)]))
 
 	def create_collector(self):
-		"""Add a FieldCollector"""
-		horizons.main.session.entities.units[8](self)
+		""Add a FieldCollector""
+		horizons.main.session.entities.units[UNITS.STORAGE_COLLECTOR_CLASS](self)
+		"""

@@ -25,12 +25,12 @@ import horizons.main
 
 from horizons.gui.tabs import TabWidget, OverviewTab
 from horizons.util import WeakList
-from horizons.world.abstractconsumer import AbstractConsumer
-from building import Building, Selectable
+from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
-from horizons.constants import RES
+from horizons.constants import RES, UNITS
+from horizons.world.building.collectingbuilding import CollectingBuilding
 
-class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
+class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
 
@@ -40,9 +40,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 		self.run()
 
 	def create_collector(self):
-		horizons.main.session.entities.units[11](self)
-		## NOTE: unit 2 requires no roads, which makes testing easier. change to 8 for release.
-		#horizons.main.session.entities.units[2](self)
+		horizons.main.session.entities.units[UNITS.SETTLER_COLLECTOR_CLASS](self)
 
 	def __init(self):
 		self.level_max = 1
@@ -59,7 +57,6 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
 		self._resources = {0: []} #ugly work arround to work with current consumer implementation
 
-		self._AbstractConsumer__collectors = WeakList()
 		for (res,) in horizons.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
 			#print "Settler debug, res:", res
 			self._resources[0].append(res)
@@ -126,7 +123,7 @@ class Settler(Selectable, BuildableSingle, AbstractConsumer, Building):
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [OverviewTab(self)]))
 
-	def get_consumed_res(self):
+	def get_consumed_resources(self):
 		"""Returns list of resources, that the building uses, without
 		considering, if it currently needs them
 		"""

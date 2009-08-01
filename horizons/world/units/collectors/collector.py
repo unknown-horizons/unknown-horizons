@@ -28,7 +28,6 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import WorldObject
-from horizons.world.pathfinding.pather import BuildingCollectorPather
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
@@ -53,6 +52,7 @@ class Collector(StorageHolder, Unit):
 	log = logging.getLogger("world.units.collector")
 
 	work_duration = 16 # time how long a collector predends to work at target in ticks
+	destination_always_in_building = False
 
 	# all states, any (subclass) instance may have. Keeping a list in one place
 	# is important, because every state must have a distinct number.
@@ -92,7 +92,7 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("Collector %s: remove called", self.getId())
 		# remove from target collector list
 		if self.job is not None and self.job.object is not None:
-			self.job.object._Provider__collectors.remove(self)
+			self.job.object.remove_incoming_collector(self)
 		self.hide()
 		# now wait for gc. fife instance (self._instance) is removed in Unit.__del__
 
@@ -200,7 +200,7 @@ class Collector(StorageHolder, Unit):
 
 	def setup_new_job(self):
 		"""Executes the necessary actions to begin a new job"""
-		self.job.object._Provider__collectors.append(self)
+		self.job.object.add_incoming_collector(self)
 
 	def check_possible_job_target(self, target, res):
 		"""Checks out if we could get res from target.
@@ -209,13 +209,8 @@ class Collector(StorageHolder, Unit):
 		@param res: resource id
 		@return: instance of Job or None, if we can't collect anything
 		"""
-		res_amount = target.inventory[res]
+		res_amount = target.get_available_pickup_amount(res)
 		if res_amount <= 0:
-			return None
-
-		# check if other collectors alrady pick up this res from here
-		reserved_pickup_amount = target.get_reserved_pickup_amount(res)
-		if reserved_pickup_amount >= res_amount:
 			return None
 
 		# check if other collectors get this resource, because our inventory could
@@ -233,18 +228,19 @@ class Collector(StorageHolder, Unit):
 		if inventory_space_for_res <= 0:
 			return None
 
-		# create a new job
-		return Job(target, res, min(res_amount - reserved_pickup_amount, inventory_space_for_res))
+		# create a new job.
+		return Job(target, res, min(res_amount, inventory_space_for_res, \
+																self.inventory.get_space_for_res(res)))
 
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""
-		self.log.debug("Collector %s begins job at "+str(self.job.object.position), self.getId())
+		self.log.debug("Collector %s prepares job at "+str(self.job.object.position), self.getId())
 		self.setup_new_job()
 		self.show()
 		assert self.check_move(self.job.object.position)
-		self.move(self.job.object.position, self.begin_working)
+		self.move(self.job.object.position, self.begin_working, \
+							destination_in_building = self.destination_always_in_building)
 		self.state = self.states.moving_to_target
-		self.log.debug("Collector %s began job", self.getId())
 
 	def begin_working(self):
 		"""Pretends that the collector works by waiting some time. finish_working is
@@ -266,13 +262,13 @@ class Collector(StorageHolder, Unit):
 			# transfer res
 			self.transfer_res()
 			# deregister at the target we're at
-			self.job.object._Provider__collectors.remove(self)
+			self.job.object.remove_incoming_collector(self)
 		else:
 			self.reroute()
 
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
-		self.log.debug("Collector %s transfer_res", self.id)
+		self.log.debug("Collector %s transfer_res", self.getId())
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
 		if res_amount != self.job.amount:
 			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planned was %s",  \

@@ -20,7 +20,7 @@
 # ###################################################
 
 from living import LivingObject
-from weakmethod import WeakMethod
+from weakmethodlist import WeakMethodList
 
 class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):
@@ -28,16 +28,18 @@ class Changelistener(LivingObject):
 		self.__init()
 
 	def __init(self):
-		self.__listeners = []
+		self.__listeners = WeakMethodList()
 
-	def addChangeListener(self, listener):
-		self.__listeners.append(WeakMethod(listener))
+	def addChangeListener(self, listener, call_listener_now = False):
+		self.__listeners.append(listener)
+		if call_listener_now:
+			listener()
 
 	def removeChangeListener(self, listener):
-		self.__listeners.remove(WeakMethod(listener))
+		self.__listeners.remove(listener)
 
 	def hasChangeListener(self, listener):
-		if WeakMethod(listener) in self.__listeners:
+		if listener in self.__listeners:
 			return True
 		else:
 			return False

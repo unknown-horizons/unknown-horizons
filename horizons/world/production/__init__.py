@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -19,6 +20,5 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from primaryproduction import PrimaryProduction
-from secondaryproduction import SecondaryProduction
-from unitproduction import UnitProduction
+__all__ = ['production', 'producer']
+

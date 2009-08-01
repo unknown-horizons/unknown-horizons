@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 import sys
+import math
 
 usage = "<filename> [lower_bound] [upper_bound]"
+usage = "<filename>"
 
 if len(sys.argv) < 2:
 	print usage
@@ -57,7 +59,8 @@ for t in translations:
 
 	len_ratio = float(len(orig))/len(trans)
 
-	if len_ratio > 1.4 or len_ratio < 0.6:
+	if len_ratio > 1.4 or len_ratio < 0.6 and \
+			abs(len(orig)-len(trans)) > 2:
 		print 'string length ratio:', len_ratio
 		print orig
 		print trans

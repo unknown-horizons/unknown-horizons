@@ -37,23 +37,26 @@ class StorageHolder(object):
 		self.__init()
 
 	def __init(self):
-		# FIXME: StorageBuildings inherit this indirectly via Consumer/Provider,
-		#       but since they don't have an own storage, these methods shouldn't be applied,
-		#       which is currently handled by isinstance, a rather dirty solution.
-		from horizons.world.building.storages import StorageBuilding
-		if not isinstance(self, StorageBuilding):
-			self.inventory = SizedSlotStorage(30)
-			self.inventory.addChangeListener(self._changed)
+		self.create_inventory()
+
+	def create_inventory(self):
+		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
+		overwrite this function to do nothing. see also: save_inventory() and load_inventory()"""
+		self.inventory = SizedSlotStorage(30)
+		self.inventory.addChangeListener(self._changed)
 
 	def save(self, db):
 		super(StorageHolder, self).save(db)
-		from horizons.world.building.storages import StorageBuilding
-		if not isinstance(self, StorageBuilding):
-			self.inventory.save(db, self.getId())
+		self.save_inventory(db)
+
+	def save_inventory(self, db):
+		"""see create_inventory()"""
+		self.inventory.save(db, self.getId())
 
 	def load(self, db, worldid):
 		super(StorageHolder, self).load(db, worldid)
 		self.__init()
-		from horizons.world.building.storages import StorageBuilding
-		if not isinstance(self, StorageBuilding):
-			self.inventory.load(db, worldid)
+		self.load_inventory(db, worldid)
+
+	def load_inventory(self, db, worldid):
+		self.inventory.load(db, worldid)

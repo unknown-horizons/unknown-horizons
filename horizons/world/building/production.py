@@ -21,15 +21,16 @@
 
 import horizons.main
 
-from horizons.world.production import SecondaryProduction, PrimaryProduction
+from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
+from horizons.world.production.producer import Producer
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util.point import Point
-from building import Building, Selectable
+from building import BasicBuilding, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from horizons.constants import UNITS
 
 
-class AnimalFarm(Selectable, SecondaryProduction, BuildableSingleWithSurrounding, Building):
+class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there """
@@ -65,7 +66,7 @@ class AnimalFarm(Selectable, SecondaryProduction, BuildableSingleWithSurrounding
 		super(AnimalFarm, self).remove()
 
 
-class Lumberjack(Selectable, SecondaryProduction, BuildableSingleWithSurrounding, Building):
+class Lumberjack(Selectable, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
 
@@ -74,18 +75,18 @@ class Lumberjack(Selectable, SecondaryProduction, BuildableSingleWithSurrounding
 		horizons.main.session.entities.units[UNITS.LUMBERJACK_COLLECTOR_CLASS](self)
 
 
-class Weaver(Selectable, SecondaryProduction, BuildableSingle, Building):
+class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 
 	def create_collector(self):
 		"""Add a FieldCollector"""
 		horizons.main.session.entities.units[UNITS.FARMER_COLLECTOR_CLASS](self)
 
 
-class Hunter(Selectable, SecondaryProduction, BuildableSingle, Building):
+class Hunter(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	def create_collector(self):
-		horizons.main.session.entities.units[UNITS.ANIMAL_CARRIAGE_CLASS](self)
+		horizons.main.session.entities.units[UNITS.HUNTER_COLLECTOR_CLASS](self)
 
-class Fisher(Selectable, PrimaryProduction, BuildableSingle, Building):
+class Fisher(Selectable, Producer, BuildableSingle, BasicBuilding):
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
@@ -104,5 +105,5 @@ class Fisher(Selectable, PrimaryProduction, BuildableSingle, Building):
 
 		return {} if coast_tile_found else None
 
-class Church(Selectable, PrimaryProduction, BuildableSingle, Building):
+class Church(Selectable, Producer, BuildableSingle, BasicBuilding):
 	pass

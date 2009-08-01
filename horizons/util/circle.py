@@ -48,11 +48,13 @@ class Circle(object):
 		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
 
 	def __eq__(self, other):
-		assert isinstance(other, Circle)
-		if self.center == other.center and \
-				self.radius == other.radius:
-			return True
-		else:
+		try:
+			if self.center == other.center and \
+				 self.radius == other.radius:
+				return True
+			else:
+				return False
+		except AttributeError:
 			return False
 
 	def __ne__(self, other):

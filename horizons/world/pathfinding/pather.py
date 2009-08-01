@@ -25,7 +25,7 @@ import logging
 
 import horizons.main
 from horizons.util import Rect, Point
-from horizons.world.building.building import Building
+from horizons.world.building.building import BasicBuilding
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.pathfinding.pathfinding import FindPath
@@ -113,7 +113,7 @@ class AbstractPather(object):
 				self.cur = 0
 			else:
 				self.cur = -1
-			self.source_in_building = isinstance(source, Building)
+			self.source_in_building = isinstance(source, BasicBuilding)
 			self.destination_in_building = destination_in_building
 
 		return True
@@ -127,6 +127,9 @@ class AbstractPather(object):
 	def get_next_step(self):
 		"""Returns the next step in the current movement
 		@return: Point"""
+		if self.cur is None:
+			return None
+
 		self.cur += 1
 		if self.path is None or self.cur == len(self.path):
 			self.cur = None

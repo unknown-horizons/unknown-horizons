@@ -41,7 +41,7 @@ class Unit(WorldObject):
 
 	def __init(self, x, y, owner, health = 100.0):
 		self.owner = owner
-		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE unit_id=? order by random() LIMIT 1", self.id)[0][0]
+		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", self.id)[0][0]
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
 		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
@@ -121,12 +121,14 @@ class Unit(WorldObject):
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
 		@return: True if move is possible, else False
 		"""
+		# calculate the path
 		move_possible = self.path.calc_path(destination, destination_in_building)
+
+		self.log.debug("Unit %s: move to %s; possible: %s", self.getId(), destination, move_possible)
 
 		if not move_possible:
 			return False
 
-		#print 'NEW DEST', destination
 		self.move_callback = WeakMethodList(callback)
 		if action in horizons.main.action_sets[self._action_set_id].keys():
 			self._move_action = action
@@ -135,8 +137,12 @@ class Unit(WorldObject):
 		else:
 			self._move_action = self.action
 
+		# start moving by regular ticking (only if next tick isn't scheduled)
 		if not self.is_moving():
-			self.move_tick()
+			# start moving in 1 tick
+			# this assures that a movement takes at least 1 tick, which is sometimes subtly
+			# assumed e.g. in the collector code
+			horizons.main.session.scheduler.add_new_object(self.move_tick, self)
 
 		return True
 
@@ -145,12 +151,15 @@ class Unit(WorldObject):
 		@param callback: same as callback in move()
 		@param destination_in_building: bool, wether target is in a building
 		"""
+		self.log.debug("Unit %s: Moving back")
 		self.path.revert_path(destination_in_building)
 		self.move_callback = WeakMethodList(callback)
 		self.__is_moving = True
 		self.move_tick()
 
 	def movement_finished(self):
+		self.log.debug("Unit %s: movement finished. calling callbacks %s", self.getId(), \
+									 self.move_callback)
 		self.next_target = self.position
 
 		self.__is_moving = False
@@ -161,6 +170,7 @@ class Unit(WorldObject):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		assert(self.next_target is not None)
+		self.log.debug("Unit %s: move tick, moving to %s", self.getId(), self.next_target)
 		self.last_position = self.position
 		self.position = self.next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
@@ -287,3 +297,12 @@ class Unit(WorldObject):
 			if self.check_move(target):
 				return target
 		return None
+
+	def __str__(self): # debug
+		classname = horizons.main.db("SELECT name FROM unit where id = ?", self.id)[0][0]
+		# must not call getId if obj has no id, cause it changes the program
+		worldid = None if not hasattr(self, '_WorldObject__id') else self.getId()
+		return classname+'(id=%s;worldid=%s)' % (self.id, worldid)
+
+
+

@@ -23,7 +23,7 @@ import sys
 import logging
 
 from horizons.util import Rect, Point
-from horizons.world.building.building import Building
+from horizons.world.building.building import BasicBuilding
 
 from horizons.world.pathfinding import PathBlockedError
 
@@ -43,8 +43,8 @@ class FindPath(object):
 	def __call__(self, source, destination, path_nodes, blocked_coords = [], \
 							 diagonal = False, make_target_walkable = True):
 		"""
-		@param source: Rect, Point or Building
-		@param destination: Rect, Point or Building
+		@param source: Rect, Point or BasicBuilding
+		@param destination: Rect, Point or BasicBuilding
 		@param path_nodes: dict { (x, y) = speed_on_coords }  or list [(x, y), ..]
 		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of
 		@param diagonal: wether the unit is able to move diagonally
@@ -55,8 +55,8 @@ class FindPath(object):
 						 or None if no path is found
 		"""
 		# assurce correct call
-		assert(isinstance(source, (Rect, Point, Building)))
-		assert(isinstance(destination, (Rect, Point, Building)))
+		assert(isinstance(source, (Rect, Point, BasicBuilding)))
+		assert(isinstance(destination, (Rect, Point, BasicBuilding)))
 		assert(isinstance(path_nodes, (dict, list)))
 		assert(isinstance(blocked_coords, (dict, list)))
 
@@ -84,9 +84,9 @@ class FindPath(object):
 		"""Sets up variables for execution of algorithm
 		@return: bool, wether setup was successful"""
 		# support for building
-		if isinstance(self.source, Building):
+		if isinstance(self.source, BasicBuilding):
 			self.source = self.source.position
-		if isinstance(self.destination, Building):
+		if isinstance(self.destination, BasicBuilding):
 			self.destination = self.destination.position
 
 		if isinstance(self.path_nodes, list):

@@ -20,6 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 import fife
 
 import horizons.main
@@ -59,6 +61,8 @@ class GroundClass(type):
 	"""
 	@param id: ground id.
 	"""
+	log = logging.getLogger('world')
+
 	def __init__(self, id):
 		self.id = id
 		self._object = None
@@ -81,11 +85,11 @@ class GroundClass(type):
 	def _loadObject(self):
 		""" Loads the ground object from the db (animations, etc)
 		"""
-		#print 'Loading ground #' + str(self.id) + '...'
+		self.log.debug('Loading ground %s', self.id)
 		try:
 			self._object = horizons.main.session.view.model.createObject(str(self.id), 'ground')
 		except RuntimeError:
-			#print 'already loaded...'
+			self.log.debug('Already loaded ground %s', self.id)
 			self._object = horizons.main.session.view.model.getObject(str(self.id), 'ground')
 			return
 		fife.ObjectVisual.create(self._object)

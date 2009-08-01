@@ -21,23 +21,32 @@
 
 import horizons.main
 
-from horizons.world.provider import Provider
-from horizons.world.consumer import Consumer
+from horizons.world.resourcehandler import StorageResourceHandler
+from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, InventoryTab
 from horizons.util import Point, WorldObject
-from building import Building, Selectable
+from horizons.constants import UNITS
+from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
 
-class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building):
+class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, CollectingBuilding, \
+											BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by branch office, storage tent.
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
-		self.inventory = self.settlement.inventory
+		self.__init(self.settlement)
 		self.inventory.adjust_limits(30)
+
+	def __init(self, settlement):
+		self.inventory = settlement.inventory
 		self.inventory.addChangeListener(self._changed)
+		self.island().provider_buildings.append(self)
+
+	def remove(self):
+		self.island().provider_buildings.remove(self)
 
 	def __del__(self):
 		self.inventory.adjust_limits(-30)
@@ -46,11 +55,11 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		super(StorageBuilding, self).load(db, worldid)
 		# workaround to get settlement (self.settlement is assigned just after loading)
 		settlement_id = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
-		self.inventory = WorldObject.get_object_by_id(int(settlement_id)).inventory
-		self.inventory.addChangeListener(self._changed)
+		settlement = WorldObject.get_object_by_id(int(settlement_id))
+		self.__init(settlement)
 
 	def create_collector(self):
-		horizons.main.session.entities.units[8](self)
+		horizons.main.session.entities.units[UNITS.STORAGE_COLLECTOR_CLASS](self)
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
@@ -69,6 +78,12 @@ class StorageBuilding(Selectable, BuildableSingle, Consumer, Provider, Building)
 		"""Runs neccasary steps to deselect the unit."""
 		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+
+	# we have to overwrite these StorageHolder functions, since we have no own inventory.
+	def create_inventory(self): pass
+	def save_inventory(self, db): pass
+	def load_inventory(self, db, worldid): pass
+
 
 class BranchOffice(StorageBuilding):
 	@classmethod

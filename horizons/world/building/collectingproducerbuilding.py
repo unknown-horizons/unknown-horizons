@@ -19,13 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import BasicBuilding, Selectable
-from buildable import BuildableSingle
+from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.production.producer import Producer
 
-class Housing(BasicBuilding, Selectable, BuildableSingle):
-
-	def save(self, db):
-		super(Housing, self).save(db)
-
-	def load(self, db, worldid):
-		super(Housing, self).load(db, worldid)
+class CollectingProducerBuilding(CollectingBuilding, Producer):
+	"""Class for buildings, that collect something and produce something.
+	Examples: Lumberjack, Herder, Weaver, AnimalFarm, etc."""
+	pass

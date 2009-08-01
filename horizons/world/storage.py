@@ -85,9 +85,13 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		"""
 		return self.limit # should not be used for generic storage
 
+	def get_space_for_res(self, res):
+		"""Returns how much of res we can still store here (limit - current amount)."""
+		return self.get_limit(res) - self[res]
+
 	def adjust_limits(self, amount):
 		"""Adjusts the limit of the storage by amount
-		@param amount: int - value of how much is to be adjusted
+		@param amount: int, difference to current limit (positive or negative)
 		"""
 		self.limit += amount
 		if self.limit < 0:
@@ -158,6 +162,7 @@ class TotalStorage(GenericStorage): # TESTED AND WORKING
 class PositiveStorage(GenericStorage): # TESTED AND WORKING
 	"""The positive storage doesn't allow to have negative values for resources."""
 	def alter(self, res, amount):
+		# TODO: document this and make it readable
 		ret = min(0, amount + self[res]) + super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
 		if res in self._storage and self._storage[res] <= 0:
 			del self._storage[res]

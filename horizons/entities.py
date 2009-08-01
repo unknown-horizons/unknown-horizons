@@ -23,6 +23,7 @@ from world.building import BuildingClass
 from world.units import UnitClass
 from world.ground import GroundClass
 from util.living import LivingObject
+
 import horizons.main
 
 class Entities(LivingObject):
@@ -35,11 +36,11 @@ class Entities(LivingObject):
 			self.grounds[ground_id] = GroundClass(ground_id)
 
 		self.buildings = {}
-		for (building_id,) in horizons.main.db("SELECT rowid FROM data.building"):
+		for (building_id,) in horizons.main.db("SELECT id FROM data.building"):
 			self.buildings[building_id] = BuildingClass(building_id)
 
 		self.units = {}
-		for (unit_id,) in horizons.main.db("SELECT rowid FROM data.unit"):
+		for (unit_id,) in horizons.main.db("SELECT id FROM data.unit"):
 			self.units[unit_id] = UnitClass(unit_id)
 
 	def end(self):

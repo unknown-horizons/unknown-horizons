@@ -33,7 +33,7 @@ from horizons.util import Rect, Point, WorldObject
 from horizons.constants import RES, LAYERS
 
 
-class Building(AmbientSound, WorldObject):
+class BasicBuilding(AmbientSound, WorldObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
@@ -44,9 +44,9 @@ class Building(AmbientSound, WorldObject):
 
 	log = logging.getLogger("world.building")
 
-
 	def __init__(self, x, y, rotation, owner, island, instance = None, **kwargs):
-		super(Building, self).__init__(x=x, y=y, rotation=rotation, owner=owner, instance=instance, **kwargs)
+		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
+																				instance=instance, island=island, **kwargs)
 		self.__init(Point(x, y), rotation, owner, instance)
 		self.island = weakref.ref(island)
 		self.settlement = self.island().get_settlement(Point(x, y)) or \
@@ -54,7 +54,7 @@ class Building(AmbientSound, WorldObject):
 			owner is not None else None
 
 	def __init(self, origin, rotation, owner, instance):
-		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? ORDER BY random() LIMIT 1", self.id)[0][0]
+		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? ORDER BY random() LIMIT 1", self.id)[0][0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
@@ -91,10 +91,10 @@ class Building(AmbientSound, WorldObject):
 		self.__del__()
 
 	def __del__(self):
-		super(Building, self).__del__()
+		super(BasicBuilding, self).__del__()
 
 	def save(self, db):
-		super(Building, self).save(db)
+		super(BasicBuilding, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, health, location) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
 			self.getId(), self.__class__.id, self.position.origin.x, \
@@ -103,7 +103,7 @@ class Building(AmbientSound, WorldObject):
 
 	def load(self, db, worldid):
 		self.log.debug('loading building %s', worldid)
-		super(Building, self).load(db, worldid)
+		super(BasicBuilding, self).load(db, worldid)
 		x, y, self.health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
 
@@ -112,22 +112,28 @@ class Building(AmbientSound, WorldObject):
 
 		self.__init(Point(x, y), rotation, owner, None)
 
-		location_obj = WorldObject.get_object_by_id(location)
-		if isinstance(location_obj, Settlement):
-			# workaround: island can't be fetched from world, because it
-			# isn't fully constructed, when this code is executed
-			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
-			self.island = weakref.ref(WorldObject.get_object_by_id(island_id))
-			self.settlement = self.island().get_settlement(Point(x, y)) or \
-					self.island().add_existing_settlement(self.position, self.radius, location_obj)
-		else: # loc is island
-			from horizons.world.island import Island
-			assert(isinstance(location_obj, Island))
-
-			self.island = weakref.ref(location_obj)
-			self.settlement = None
+		island, self.settlement = self.load_location(db, worldid)
+		self.island = weakref.ref(island)
 
 		self.island().add_building(self, self.owner)
+
+	def load_location(self, db, worldid):
+		"""
+		Does not alter self, just gets island and settlement from a savegame.
+		@return: tuple: (island, settlement)
+		"""
+		location = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
+		location_obj = WorldObject.get_object_by_id(location)
+		if isinstance(location_obj, Settlement):
+			# workaround: island can't be fetched from world, because it isn't fully constructed
+			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
+			island = WorldObject.get_object_by_id(island_id)
+			settlement = island.get_settlement(self.position.center()) or \
+					island.add_existing_settlement(self.position, self.radius, location_obj)
+		else: # loc is island
+			island = location_obj
+			settlement = None
+		return (island, settlement)
 
 	def is_part_of_nature(self):
 		return self.part_of_nature
@@ -172,15 +178,16 @@ class Building(AmbientSound, WorldObject):
 				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+cls.size[1]+3), 0))
 			else:
 				return None
-			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=? order by random() LIMIT 1", cls.id)[0][0]
+			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
-			if action in horizons.main.action_sets[action_set_id].iterkeys():
+			if action in horizons.main.action_sets[action_set_id]:
 				pass
-			elif 'idle' in horizons.main.action_sets[action_set_id].iterkeys():
+			elif 'idle' in horizons.main.action_sets[action_set_id]:
 				action='idle'
-			elif 'idle_full' in horizons.main.action_sets[action_set_id].iterkeys():
+			elif 'idle_full' in horizons.main.action_sets[action_set_id]:
 				action='idle_full'
 			else:
+				# set first action
 				action=horizons.main.action_sets[action_set_id].keys()[0]
 
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)
@@ -205,17 +212,34 @@ class Building(AmbientSound, WorldObject):
 		"""This function is called when the building is built, to start production for example."""
 		pass
 
+	def production_state_changed(self):
+		"""Called when the building's production did something (i.e. start, stop, etc.)."""
+		# TODO: implement animation change when we have production states as well as toggle_costs
+		pass
+
+	def __str__(self): # debug
+		classname = horizons.main.db("SELECT name FROM building where id = ?", self.id)[0][0]
+		# must not call getId if obj has no id, cause it changes the program
+		worldid = None if not hasattr(self, '_WorldObject__id') else self.getId()
+		return classname+'(id=%s;worldid=%s)' % (self.id, worldid)
+
+
+
 class Selectable(object):
 	def select(self):
 		"""Runs neccesary steps to select the building."""
-		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		renderer = horizons.main.session.view.renderer['InstanceRenderer']
+		renderer.addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
-			if tile.settlement == self.settlement and self.position.distance(Point(tile.x, tile.y)) <= self.radius and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-				horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
-				if tile.object is not None and True: #todo: only highlight buildings that produce something were interested in
-					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+			if tile.settlement == self.settlement and \
+				 self.position.distance(Point(tile.x, tile.y)) <= self.radius and \
+				 any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
+				renderer.addColored(tile._instance, 255, 255, 255)
+				if tile.object is not None:
+					renderer.addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
-		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		renderer = horizons.main.session.view.renderer['InstanceRenderer']
+		renderer.removeOutlined(self._instance)
+		renderer.removeAllColored()

@@ -80,6 +80,10 @@ class IslandPathNodes(PathNodes):
 		for i in road.position:
 			del self.road_nodes[ (i.x, i.y) ]
 
+	def is_road(self, x, y):
+		"""Return if there is a road on (x, y)"""
+		return (x, y) in self.road_nodes
+
 	def is_walkable(self, coord):
 		"""Check if a unit may walk on the tile specified by coord
 		NOTE: nature tiles (trees..) are considered to be walkable (or else they could be used as

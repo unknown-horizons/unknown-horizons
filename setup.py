@@ -16,13 +16,14 @@ for i in os.listdir('po'):
 	if os.path.isdir('po/%s' % i):
 		if os.path.exists('po/%s/LC_MESSAGES/unknownhorizons.mo' % i):
 			data.append( ('share/locale/%s/LC_MESSAGES' % i, ('po/%s/LC_MESSAGES/unknownhorizons.mo' % i,)))
+
 #trans = glob('po/*/LC_MESSAGES/unknownhorizons.mo')
 
 data = filter(lambda x: '.svn' not in os.path.split(x[0]), data)
 
 class build_man(build):
 	description = "Build the Manpage"
-	
+
 	def run(self):
 		if not find_executable('xsltproc'):
 			self.warn("Can't build manpage, needs xsltproc")
@@ -49,13 +50,12 @@ setup(name='UnknownHorizons',
 	  author='The Unknown Horizons Team',
 	  author_email='team@unknown-horizons.org',
 	  url='http://www.unknown-horizons.org',
-	  packages=['horizons', 
-			'horizons.util', 
+	  packages=['horizons',
+			'horizons.util',
 			'horizons.world',
 			'horizons.world.building',
 			'horizons.world.units',
 			'horizons.world.units.collectors',
-			'horizons.world.production',
 			'horizons.world.pathfinding',
 			'horizons.ai',
 			'horizons.ext',

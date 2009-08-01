@@ -1219,6 +1219,16 @@ always neary every resource</string>
    <object idref="NoteNode8"/> 
   </void> 
   <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="ClassNode27"/> 
+   <object idref="NoteNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="ClassNode19"/> 
+   <object idref="ClassNode27"/> 
+  </void> 
+  <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
     <void property="bentStyle"> 
      <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
@@ -1243,7 +1253,7 @@ always neary every resource</string>
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
     <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
     </void> 
     <void property="endArrowHead"> 
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 

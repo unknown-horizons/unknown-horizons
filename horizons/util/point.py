@@ -27,13 +27,19 @@ class Point(object):
 		return Point(self.x, self.y)
 
 	def distance(self, other):
-		if isinstance(other, Point):
-			return self.distance_to_point(other)
-		elif isinstance(other, tuple):
-			return self.distance_to_tuple(other)
+		from circle import Circle
+		from rect import Rect
+		distance_functions_map = {
+			Point: self.distance_to_point,
+			tuple: self.distance_to_tuple,
+			Circle: self.distance_to_circle,
+			Rect: self.distance_to_rect
+			}
+		try:
+			return distance_functions_map[other.__class__](other)
 		# cannot test for rect or circle here cause that would either cause
 		# cirular imports or local imports
-		else:
+		except KeyError:
 			return other.distance(self)
 
 	def distance_to_point(self, other):
@@ -41,6 +47,10 @@ class Point(object):
 
 	def distance_to_tuple(self, other):
 		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
+
+	def distance_to_rect(self, other):
+		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) + \
+						(max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
 
 	def distance_to_circle(self, other):
 		dist = self.distance(other.center) - other.radius

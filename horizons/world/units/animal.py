@@ -25,13 +25,12 @@ import logging
 
 import horizons.main
 
-from horizons.world.production import SecondaryProduction
-from horizons.world.provider import Provider
+from horizons.world.production.producer import Producer
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
 from collectors import Collector, BuildingCollector, JobList
 
-class Animal(SecondaryProduction):
+class Animal(Producer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
 	and usually produce something (e.g. wool)."""
 	log = logging.getLogger('world.units.animal')
@@ -44,7 +43,7 @@ class Animal(SecondaryProduction):
 		pass
 
 	def get_collectable_res(self):
-		return self.get_needed_res()
+		return self.get_needed_resources()
 
 class CollectorAnimal(Animal):
 	"""Animals that will inherit from collector"""
@@ -101,10 +100,10 @@ class WildAnimal(CollectorAnimal, Collector):
 	pather_class = SoldierPather
 
 	# see documentation of self.health
-	HEALTH_INIT_VALUE = 10
+	HEALTH_INIT_VALUE = 40
 	HEALTH_INCREASE_ON_FEEDING = 2
-	HEALTH_DECREASE_ON_NO_JOB = 3
-	HEALTH_LEVEL_TO_REPRODUCE = 75
+	HEALTH_DECREASE_ON_NO_JOB = 2
+	HEALTH_LEVEL_TO_REPRODUCE = 100
 
 	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
@@ -195,13 +194,13 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug('WildAnimal %s: get_job' % self.getId())
 
 		jobs = JobList(JobList.order_by.random)
-		needed_resources = self.get_needed_res()
+		collectable_resources = self.get_needed_resources()
 
 		# iterate over all possible providers and needed resources
 		# and save possible job targets
 		reach = Circle(self.position, self.walking_range)
 		for provider in self.home_island.get_providers_in_range(reach):
-			for res in needed_resources:
+			for res in collectable_resources:
 				job = self.check_possible_job_target(provider, res)
 				if job is not None:
 					jobs.append(job)
@@ -232,7 +231,7 @@ class WildAnimal(CollectorAnimal, Collector):
 			x=self.position.x, y=self.position.y, \
 			can_reproduce = self.next_clone_can_reproduce())
 		# reset own resources
-		for res in self.get_consumed_res():
+		for res in self.get_consumed_resources():
 			self.inventory.reset(res)
 
 	def next_clone_can_reproduce(self):
@@ -244,13 +243,14 @@ class WildAnimal(CollectorAnimal, Collector):
 	def die(self):
 		"""Makes animal die, e.g. because of starvation"""
 		self.log.debug("Wild animal %s dying", self.getId())
+		self.hide()
 		# we don't do anything here, just remove reference and
 		# leave animal as is - garbage collection will do the rest
 		self.home_island.wild_animals.remove(self)
 
 	def cancel(self):
 		if self.job.object is not None:
-			self.job.object._Provider__collectors.remove(self)
+			self.job.object.remove_incoming_collector.remove(self)
 		self.get_job()
 
 
@@ -271,6 +271,3 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 			self.home_building.animals.remove(self)
 		else:
 			self.home_building.animals.append(self)
-
-	def setup_new_job(self):
-		self.job.object._Provider__collectors.append(self)

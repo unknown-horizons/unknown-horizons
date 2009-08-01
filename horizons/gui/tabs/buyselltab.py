@@ -202,7 +202,7 @@ class BuySellTab(TabInterface):
 		vbox = self.resources.findChild(name="resources")
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
-		resources = horizons.main.db("SELECT rowid, icon FROM resource WHERE tradeable = 1")
+		resources = horizons.main.db("SELECT id, icon FROM resource WHERE tradeable = 1")
 		# Add the zero element to the beginnig that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:

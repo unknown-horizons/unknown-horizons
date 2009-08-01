@@ -120,7 +120,7 @@ class BuildingTool(NavigationTool):
 		horizons.main.session.view.addChangeListener(self.draw_gui)
 
 	def draw_gui(self):
-		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE building_id=?", self._class.id)[0]
+		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
 		if preview_action_set in horizons.main.action_sets:
 			action_set = preview_action_set
 		if 'idle' in horizons.main.action_sets[action_set]:

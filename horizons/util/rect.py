@@ -54,23 +54,22 @@ class Rect(object):
 
 	def distance(self, other):
 		"""Calculates distance to another object"""
-		if isinstance(other, Point):
-			return self.distance_to_point(other)
-		elif isinstance(other, Rect):
-			return self.distance_to_rect(other)
-		elif isinstance(other, Circle):
-			return self.distance_to_circle(other)
-		else:
-			# is other tuple: (x, y)?
-			if isinstance(other[0], int) and isinstance(other[1], int):
-				return self.distance_to_tuple(other)
-			else:
-				return other.distance(self)
+		distance_functions_map = {
+			Point: self.distance_to_point,
+			Rect: self.distance_to_rect,
+			Circle: self.distance_to_rect,
+			tuple: self.distance_to_tuple
+			}
+		try:
+			return distance_functions_map[other.__class__](other)
+		except KeyError:
+			return other.distance(self)
 
 	def distance_to_point(self, other):
 		"""Calculates distance to an instance of Point.
 		Don't use this, unless you are sure that distance() is too slow."""
-		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + (max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
+		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + \
+						(max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_tuple(self, other):
 		"""Calculates distance to a coordinate as tuple (x, y)

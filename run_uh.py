@@ -140,12 +140,14 @@ def get_option_parser():
 							 help=_("Specify the path to FIFE root directory."))
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
-	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
-			default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
 														help=_("Starts <map>. <map> is the mapname (filename without extension)"))
+	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
+			default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
 														help=_("Loads a saved game. <save> is the savegamename."))
+	start_uh_group.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true", \
+														help=_("Loads the last quicksave."))
 	p.add_option_group(start_uh_group)
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))

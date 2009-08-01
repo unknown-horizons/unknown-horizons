@@ -189,8 +189,6 @@ class World(LivingObject):
 							Build(tree,tile[0],tile[1], 45, ownerless=True, island=island))
 						if random.randint(0, 40) < 1: # add animal to evey nth tree
 							wild_animal(island, x=tile[0], y=tile[1])
-				for building in island.buildings:
-					building.production_step()
 			print "Done."
 
 		# add free trader
@@ -199,7 +197,7 @@ class World(LivingObject):
 		for player in self.players:
 			print "Adding ships for the players..."
 			point = self.get_random_possible_ship_position()
-			ship = horizons.main.session.entities.units[1](x=point.x, y=point.y, owner=player)
+			ship = horizons.main.session.entities.units[UNITS.PLAYER_SHIP_CLASS](x=point.x, y=point.y, owner=player)
 			# give ship basic resources
 			ship.inventory.alter(RES.BOARDS_ID,30)
 			ship.inventory.alter(RES.FOOD_ID,30)

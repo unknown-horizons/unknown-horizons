@@ -109,3 +109,9 @@ class AnimalCollector(BuildingCollector):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
 		#print self.id, 'RELEASE ANIMAL', self.job.object.getId()
 		horizons.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
+
+
+class HunterCollector(AnimalCollector):
+	def get_animals_in_range(self):
+		import pdb ; pdb.set_trace()
+		return self.home_building.island().wild_animals

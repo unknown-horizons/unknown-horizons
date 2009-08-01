@@ -23,6 +23,7 @@ import shutil
 import os
 import os.path
 import time
+import logging
 
 import horizons.main
 
@@ -76,12 +77,15 @@ class Session(LivingObject):
 	cursor = livingProperty()
 	world = livingProperty()
 
+	log = logging.getLogger('session')
+
 	def __init__(self):
 		super(Session, self).__init__()
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 
 	def init_session(self):
+		self.log.debug("Initing session")
 
 		WorldObject.reset()
 
@@ -105,6 +109,8 @@ class Session(LivingObject):
 			horizons.main.ext_scheduler.add_new_object(self.autosave, self, horizons.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def end(self):
+		self.log.debug("Ending session")
+
 		self.scheduler.rem_all_classinst_calls(self)
 		horizons.main.ext_scheduler.rem_call(self, self.autosave)
 
@@ -141,6 +147,7 @@ class Session(LivingObject):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
+		self.log.debug("Session: autosaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = horizons.main.save_game(horizons.main.savegamemanager.create_autosave_filename())
 		if success:
@@ -148,6 +155,7 @@ class Session(LivingObject):
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
+		self.log.debug("Session: quicksaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = horizons.main.save_game(horizons.main.savegamemanager.create_quicksave_filename())
 		if success:
@@ -170,6 +178,7 @@ class Session(LivingObject):
 		@param savegame: the file, where the game will be saved
 		@return: bool, wether save was successful or not
 		"""
+		self.log.debug("Session: Saving to %s", savegame)
 		if os.path.exists(savegame):
 			os.unlink(savegame)
 		shutil.copyfile('content/savegame_template.sqlite', savegame)
@@ -218,6 +227,7 @@ class Session(LivingObject):
 		@param playername: string with the playername
 		@param playercolor: horizons.util.color instance with the player's color
 		"""
+		self.log.debug("Session: Loading from %s", savegame)
 		db = DbReader(savegame) # Initialize new dbreader
 		try:
 			# load how often the game has been saved (used to know the difference between
@@ -297,11 +307,13 @@ class Session(LivingObject):
 			self.speed_set(horizons.main.settings.ticks.steps[0])
 
 	def speed_pause(self):
+		self.log.debug("Session: Pausing")
 		if not self.speed_is_paused():
 			self.paused_ticks_per_second = self.timer.ticks_per_second
 			self.speed_set(0)
 
 	def speed_unpause(self):
+		self.log.debug("Session: Unpausing")
 		if self.speed_is_paused():
 			self.speed_set(self.paused_ticks_per_second)
 

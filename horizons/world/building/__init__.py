@@ -22,6 +22,8 @@
 
 __all__ = ['building', 'housing', 'nature', 'path', 'production', 'storages', 'settler', 'boatbuilder']
 
+import logging
+
 import horizons.main
 import fife
 
@@ -38,6 +40,8 @@ class BuildingClass(type):
 	Check out the __new__() function if you feel your pretty good with python and are interested in how it all works,
 	otherwise, continue to the __init__() function.
 	"""
+	log = logging.getLogger('world.building')
+
 	def __new__(self, id):
 		class_package, class_name = horizons.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
 		__import__('horizons.world.building.'+class_package)
@@ -63,15 +67,15 @@ class BuildingClass(type):
 		self._object = None
 
 		db = horizons.main.db
-		self.class_package = db("SELECT class_package FROM data.building WHERE rowid = ?", id)[0][0]
-		(size_x,  size_y) = db("SELECT size_x, size_y FROM data.building WHERE rowid = ?", id)[0]
+		self.class_package = db("SELECT class_package FROM data.building WHERE id = ?", id)[0][0]
+		(size_x,  size_y) = db("SELECT size_x, size_y FROM data.building WHERE id = ?", id)[0]
 		translate_this = _
-		self.name = translate_this(db("SELECT name FROM data.building WHERE rowid = ?", id)[0][0])
+		self.name = translate_this(db("SELECT name FROM data.building WHERE id = ?", id)[0][0])
 		self.size = (int(size_x), int(size_y))
-		self.radius = db("SELECT radius FROM data.building WHERE rowid = ?", id)[0][0]
-		self.health = int(db("SELECT health FROM data.building WHERE rowid = ?", id)[0][0])
-		self.inhabitants = int(db("SELECT inhabitants_start FROM data.building WHERE rowid = ?", id)[0][0])
-		self.inhabitants_max = int(db("SELECT inhabitants_max FROM data.building WHERE rowid = ?", id)[0][0])
+		self.radius = db("SELECT radius FROM data.building WHERE id = ?", id)[0][0]
+		self.health = int(db("SELECT health FROM data.building WHERE id = ?", id)[0][0])
+		self.inhabitants = int(db("SELECT inhabitants_start FROM data.building WHERE id = ?", id)[0][0])
+		self.inhabitants_max = int(db("SELECT inhabitants_max FROM data.building WHERE id = ?", id)[0][0])
 		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
@@ -105,14 +109,14 @@ class BuildingClass(type):
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
-		#print 'Loading building #%s...' % str(cls.id)
+		cls.log.debug("Loading building %s", cls.id)
 		try:
 			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
 		except RuntimeError:
-			#print 'already loaded...'
+			cls.log.debug("Already loaded building %s", cls.id)
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
-		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE building_id=?",cls.id)
+		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
 		for (action_set_id,) in action_sets:
 			for action_id in horizons.main.action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))

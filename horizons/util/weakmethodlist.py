@@ -21,32 +21,37 @@
 
 from weakmethod import WeakMethod
 
-class WeakMethodList(object):
+class WeakMethodList(list):
 	"""A class that handles zero to n callbacks."""
 
 	def __init__(self, callbacks = None):
 		"""
 		@param callbacks: None, a function, a list of functions, or a tuple of functions
 		"""
-		#self.__instance = instance
-		self.__callbacks = []
-		self.__add(callbacks)
+		super(WeakMethodList, self).__init__()
+		self.append(callbacks)
 
-	def __add(self, callback):
-		"""Internal function used to add callbacks"""
+	def append(self, callback):
+		"""Just like list.append, except it can also handle lists and discards None-values"""
 		if callback is None:
 			pass
 		elif callable(callback):
-			self.__callbacks.append(WeakMethod(callback))
+			list.append(self, WeakMethod(callback))
 		elif isinstance(callback, list, tuple):
 			for i in callback:
-				self.__add(i)
+				self.append(i)
+		else:
+			assert False
 
-	def append(self, elem):
-		"""Just like list.append"""
-		self.__add(elem)
+	extend = append
 
 	def execute(self):
 		"""Execute all callbacks. Number of callbacks may be zero to n."""
-		for callback in self.__callbacks:
+		for callback in self:
 			callback()
+
+	def __contains__(self, elem):
+		if isinstance(elem, WeakMethod):
+			return list.__contains__(self, elem)
+		else:
+			return WeakMethod(elem) in self

@@ -23,7 +23,6 @@ import weakref
 
 from horizons.util import WorldObject, Circle
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
-from horizons.world.production import PrimaryProduction
 
 from collector import Collector, JobList
 
@@ -70,15 +69,14 @@ class BuildingCollector(Collector):
 		@param unregister: wether to reverse registration
 		"""
 		if unregister:
-			self.home_building.local_collectors.remove(self)
+			self.home_building.remove_local_collector(self)
 		else:
-			self.home_building.local_collectors.append(self)
+			self.home_building.add_local_collector(self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
 		if state == self.states.moving_home:
 			# collector is on his way home
-			self.home_building._AbstractConsumer__collectors.append(self)
 			self.add_move_callback(self.reached_home)
 			self.show()
 
@@ -90,7 +88,7 @@ class BuildingCollector(Collector):
 		return self.home_building.inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building._AbstractConsumer__collectors
+		return self.home_building.get_local_collectors()
 
 	def get_job(self):
 		"""Returns the next job or None"""
@@ -104,26 +102,15 @@ class BuildingCollector(Collector):
 
 		jobs = JobList(self.job_ordering)
 		for building in self.get_buildings_in_range():
-			# Continue if building is of the same class as the home building or
-			# they have the same inventory, to prevent e.g. weaver picking up from weaver.
-			if isinstance(building, self.home_building.__class__) or \
-			   building.inventory is self.home_building.inventory:
+			# Discard building if it works for same inventory (happens when both are storage buildings)
+			if building.inventory.getId() == self.home_building.inventory.getId():
 				continue
 			for res in collectable_res:
-				# Prevent the collector from picking up resources from building needing it's resources for production
-				if isinstance(building, PrimaryProduction) and \
-					 building.active_production_line is not None and \
-					 building.production[building.active_production_line].production.get(res, 1) < 0:
-					break
 				job = self.check_possible_job_target(building, res)
 				if job is not None:
 					jobs.append(job)
 
 		return self.get_best_possible_job(jobs)
-
-	def setup_new_job(self):
-		super(BuildingCollector, self).setup_new_job()
-		self.home_building._AbstractConsumer__collectors.append(self)
 
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
@@ -157,13 +144,12 @@ class BuildingCollector(Collector):
 			#assert remnant == 0, "Home building could not take all ressources from collector."
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
 			#assert remnant == 0, "collector did not pick up amount of ressources specified by the job."
-			self.home_building._AbstractConsumer__collectors.remove(self)
 		self.end_job()
 
 	def get_collectable_res(self):
 		"""Return all resources the Collector can collect (depends on its home building)"""
 		# find needed res (only res that we have free room for) - Building function
-		return self.home_building.get_needed_res()
+		return self.home_building.get_needed_resources()
 
 	def get_buildings_in_range(self):
 		"""Returns all buildings in range
@@ -181,7 +167,7 @@ class BuildingCollector(Collector):
 		"""Cancels current job and moves back home"""
 		self.log.debug("Collector %s cancel", self.getId())
 		if self.job.object is not None:
-			self.job.object._Provider__collectors.remove(self)
+			self.job.object.remove_incoming_collector(self)
 		self.job = None
 		self.move_home(callback=self.search_job, action='move')
 
@@ -191,10 +177,8 @@ class StorageCollector(BuildingCollector):
 	Used in storage facilities.
 	"""
 	pather_class = RoadPather
-	def begin_current_job(self):
-		"""Declare target of StorageCollector as building, because it always is"""
-		super(StorageCollector, self).begin_current_job()
-		self.move(self.job.object.position, self.begin_working, destination_in_building = True)
+	destination_always_in_building = True
+
 
 class FieldCollector(BuildingCollector):
 	""" Simular to the BuildingCollector but used on farms for example.

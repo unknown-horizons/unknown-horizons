@@ -57,6 +57,7 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser
 									start_dev_map: (bool), if True, don't show menu but start the development map
+									load_quicksave: (bool), if True, load the latest quicksave
 									start_map: (string), start map with specified map name
 									load_map: (string), load map with specified savegamename
 									unstable_features: (bool), wether unstable features should be enabled
@@ -141,6 +142,11 @@ def start(command_line_arguments):
 		except ValueError:
 			print "Error: Cannot find savegame \"%s\"." % savegamename
 			import sys; sys.exit(1)
+	elif command_line_arguments.load_quicksave is not None:
+		# load last quicksave
+		save_files = savegamemanager.get_quicksaves()[0]
+		save = save_files[len(save_files)-1]
+		gui.load_game(save)
 
 
 	else: # no commandline parameter, show main screen

@@ -24,10 +24,10 @@ import fife
 
 import horizons.main
 
-from building import Building
+from building import BasicBuilding
 from buildable import BuildableLine, BuildableSingle
 
-class Path(Building, BuildableLine):
+class Path(BasicBuilding, BuildableLine):
 	walkable = True
 
 	def init(self):
@@ -36,14 +36,12 @@ class Path(Building, BuildableLine):
 		super(Path, self).init()
 		origin = self.position.origin
 		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
-		for tile in self.island().get_surrounding_tiles(origin):
-			if tile is not None and isinstance(tile.object, Path):
-				tile.object.recalculate_orientation()
 		self.__init()
+		self.recalculate_surrounding_tile_orientation()
 
 	def __init(self):
-		self.recalculate_orientation()
 		self.island().path_nodes.register_road(self)
+		self.recalculate_orientation()
 
 	def load(self, db, worldid):
 		super(Path, self).load(db, worldid)
@@ -53,29 +51,36 @@ class Path(Building, BuildableLine):
 		super(Path, self).remove()
 		origin = self.position.origin
 		self.island().path_nodes.unregister_road(self)
-		for tile in self.island().get_surrounding_tiles(origin):
-			if tile is not None and isinstance(tile.object, Path):
+		self.recalculate_surrounding_tile_orientation()
+
+	def recalculate_surrounding_tile_orientation(self):
+		for tile in self.island().get_surrounding_tiles(self.position.origin):
+			if tile is not None and self.island().path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
 
+	action_offset_dict = {
+		'a' : (0, -1),
+		'b' : (1, 0),
+		'c' : (0, 1),
+		'd' : (-1, 0)
+		}
 	def recalculate_orientation(self):
 		"""
 		"""
+		# orientation is a string containing a, b, c and/or d
+		# corresponding actions are saved in the db
 		action = ''
 		origin = self.position.origin
-		tile = self.island().get_tile(origin.offset(0, -1))
-		if tile is not None and isinstance(tile.object, (Path, Bridge)):
-			action += 'a'
-		tile = self.island().get_tile(origin.offset(1, 0))
-		if tile is not None and isinstance(tile.object, (Path, Bridge)):
-			action += 'b'
-		tile = self.island().get_tile(origin.offset(0, 1))
-		if tile is not None and isinstance(tile.object, (Path, Bridge)):
-			action += 'c'
-		tile = self.island().get_tile(origin.offset(-1, 0))
-		if tile is not None and isinstance(tile.object, (Path, Bridge)):
-			action += 'd'
+		path_nodes = self.island().path_nodes
+
+		for action_part in sorted(self.action_offset_dict): # order is important here
+			offset = self.action_offset_dict[action_part]
+			tile = self.island().get_tile(origin.offset(*offset))
+			if tile is not None and path_nodes.is_road(tile.x, tile.y):
+				action += action_part
 		if action == '':
 			action = 'ac' # default
+
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)
@@ -85,7 +90,7 @@ class Path(Building, BuildableLine):
 		kwargs['layer'] = 1
 		return super(Path, cls).getInstance(*args, **kwargs)
 
-class Bridge(Building, BuildableSingle):
+class Bridge(BasicBuilding, BuildableSingle):
 	#@classmethod
 	#def getInstance(cls, x, y, action=None, **trash):
 	#	super(Bridge, cls).getInstance(x = x, y = y, action = 'default', **trash)
@@ -97,7 +102,7 @@ class Bridge(Building, BuildableSingle):
 		origin = self.position.origin
 		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
 		for tile in self.island().get_surrounding_tiles(origin):
-			if tile is not None and isinstance(tile.object, Path):
+			if tile is not None and self.island().path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
 
 	@classmethod

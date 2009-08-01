@@ -35,12 +35,15 @@ class Callback(object):
 		self.callback(*self.args, **self.kwargs)
 
 	def __eq__(self, other):
-		if isinstance(other, Callback):
+		try:
 			if other.callback == self.callback and \
 				 other.args == self.args and \
 				 other.kwargs == self.kwargs:
 				return True
-		return False
+			else:
+				return False
+		except AttributeError:
+			return False
 
 	def __ne__(self, other):
 		return not self.__eq__(other)

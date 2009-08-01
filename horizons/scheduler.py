@@ -54,7 +54,7 @@ class Scheduler(LivingObject):
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			for callback in self.schedule[self.cur_tick]:
-				self.log.debug("Scheduler calling %s", str(callback))
+				self.log.debug("Scheduler(t:%s) calling %s", tick_id, str(callback))
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
@@ -127,6 +127,14 @@ class Scheduler(LivingObject):
 					elif callback_obj.callback == callback:
 						calls[callback_obj] = key - self.cur_tick
 		return calls
+
+	def get_remaining_ticks(self, instance, callback):
+		"""Returns in how many ticks a callback is executed. You must specify 1 single call.
+		@param *: just like get_classinst_calls
+		@return int."""
+		calls = self.get_classinst_calls(instance, callback)
+		assert len(calls) == 1
+		return calls.values()[0]
 
 
 class CallbackObject(object):
