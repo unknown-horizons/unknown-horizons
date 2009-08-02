@@ -112,7 +112,8 @@ def find_FIFE(fife_custom_path=None):
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
 	#we are already in Unknown Horizons root, so just exec local executeable
-	args[1] = os.path.split(os.path.realpath(args[1]))[1]
+	# NOTE: won't work with distutils install, so commented out for now
+	#args[1] = os.path.split(os.path.realpath(args[1]))[1]
 	os.execvp(args[0], args)
 
 def find_uh_position():
