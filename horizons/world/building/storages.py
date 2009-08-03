@@ -58,9 +58,6 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, Colle
 		settlement = WorldObject.get_object_by_id(int(settlement_id))
 		self.__init(settlement)
 
-	def create_collector(self):
-		horizons.main.session.entities.units[UNITS.STORAGE_COLLECTOR_CLASS](self)
-
 	def select(self):
 		"""Runs neccesary steps to select the unit."""
 		# TODO Think about if this should go somewhere else (island, world)

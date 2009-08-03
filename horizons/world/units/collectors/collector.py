@@ -209,7 +209,7 @@ class Collector(StorageHolder, Unit):
 		@param res: resource id
 		@return: instance of Job or None, if we can't collect anything
 		"""
-		res_amount = target.get_available_pickup_amount(res)
+		res_amount = target.get_available_pickup_amount(res, self)
 		if res_amount <= 0:
 			return None
 
@@ -269,12 +269,11 @@ class Collector(StorageHolder, Unit):
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
 		self.log.debug("Collector %s transfer_res", self.getId())
-		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount)
+		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
 		if res_amount != self.job.amount:
-			self.log.warning("collector %s picked up %s of res %s at (%s, %s), planned was %s",  \
+			self.log.warning("collector %s picked up %s of res %s at %s, planned was %s",  \
 											 self.getId(), res_amount, self.job.res, \
-											 self.job.object.getId(), self.job.object, \
-											 self.job.amount)
+											 self.job.object, self.job.amount)
 		self.inventory.alter(self.job.res, res_amount)
 
 	def reroute(self):

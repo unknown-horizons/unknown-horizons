@@ -39,9 +39,6 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 		self.__init()
 		self.run()
 
-	def create_collector(self):
-		horizons.main.session.entities.units[UNITS.SETTLER_COLLECTOR_CLASS](self)
-
 	def __init(self):
 		self.level_max = 1
 		#print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max

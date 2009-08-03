@@ -56,7 +56,4 @@ class BoatBuilder(Selectable, BuildableSingle, UnitProduction, BasicBuilding):
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self), BoatbuilderTab(self)]))
 
-	def create_collector(self):
-		""Add a FieldCollector""
-		horizons.main.session.entities.units[UNITS.STORAGE_COLLECTOR_CLASS](self)
 		"""

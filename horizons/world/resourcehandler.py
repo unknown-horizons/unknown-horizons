@@ -116,25 +116,27 @@ class ResourceHandler(StorageHolder):
 		else:
 			del self._inactive_productions[production.get_production_line_id()]
 
-	def pickup_resources(self, res, amount):
+	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock
 		and removes them from the stock. Will return smaller amount if not
 		enough resources are available.
 		@param res: int ressouce id
 		@param amount: int amount that is to be picked up
+		@param collector: the collector instance, that picks it up
 		@return: int number of resources that can actually be picked up"""
-		picked_up = self.get_available_pickup_amount(res)
+		picked_up = self.get_available_pickup_amount(res, collector)
 		if picked_up > amount:
 			picked_up = amount
 		remnant = self.inventory.alter(res, -picked_up)
 		assert remnant == 0
 		return picked_up
 
-	def get_available_pickup_amount(self, res):
+	def get_available_pickup_amount(self, res, collector):
 		"""Returns how much of res a collector may pick up. It's the stored amount minus the amount
 		that other collectors are getting"""
 		return self.inventory[res] - \
-					 sum([c.job.amount for c in self.__incoming_collectors if c.job.res == res])
+					 sum([c.job.amount for c in self.__incoming_collectors if \
+								c != collector and c.job.res == res])
 
 	def set_active(self, production=None, active=True):
 		"""Pause or unpause a production (aka set it active/inactive).

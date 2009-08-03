@@ -19,11 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 import shutil
 import os.path
 import simplejson
-import user
+
+import horizons.main
+
+from horizons.constants import PATHS
 
 class Setting(object):
 	""" Class to store settings
@@ -115,7 +117,7 @@ class Settings(Setting):
 	"""
 	@param config:
 	"""
-	def __init__(self, config = '%s/.unknown-horizons/config.sqlite' % user.home):
+	def __init__(self, config = PATHS.USER_DIR + '/config.sqlite'):
 		if not os.path.exists(config):
 			if not os.path.exists(os.path.dirname(config)):
 				os.makedirs(os.path.dirname(config))

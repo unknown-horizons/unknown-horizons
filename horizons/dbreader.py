@@ -22,6 +22,8 @@
 import sqlite3
 import re
 
+from horizons.util.decorators import cached
+
 class DbReader(object):
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
@@ -44,11 +46,16 @@ class DbReader(object):
 		@param command: str containing the raw sql command, with ? as placeholders for values (eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
 		@param args: tuple containing the values to add into the command.
 		"""
-		assert not command.endswith(";"), \
-					 _('Error, no complete sql statement provided by "%s".') % command
-		command = command + ';'
+		assert not command.endswith(";")
+		command = '%s;' % command
 		self.cur.execute(command, args)
 		return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
+
+	@cached
+	def cached_query(self, command, *args):
+		"""Executes a sql command and saves it's result in a dict.
+		@params, return: same as in __call__"""
+		return self(command, *args)
 
 	def execute_script(self, script):
 		"""Executes a multiline script.

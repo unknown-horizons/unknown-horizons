@@ -19,21 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import user
 
-"""This file keeps track of some constants, that have to be used in the code"""
+"""This file keeps track of some constants, that have to be used in the code.
+NOTE: Using constants is generally a bad style, so avoid where possible."""
 
 ## WORLD
 class UNITS:
 	PLAYER_SHIP_CLASS          = 1000001
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	TRADER_SHIP_CLASS          = 1000006
-	ANIMAL_CARRIAGE_CLASS      = 1000007
-	STORAGE_COLLECTOR_CLASS    = 1000008
-	LUMBERJACK_COLLECTOR_CLASS = 1000010
-	SETTLER_COLLECTOR_CLASS    = 1000011
-	FARMER_COLLECTOR_CLASS     = 1000012
+	#ANIMAL_CARRIAGE_CLASS      = 1000007
+	#STORAGE_COLLECTOR_CLASS    = 1000008
+	#LUMBERJACK_COLLECTOR_CLASS = 1000010
+	#SETTLER_COLLECTOR_CLASS    = 1000011
+	#FARMER_COLLECTOR_CLASS     = 1000012
 	WILD_ANIMAL_CLASS          = 1000013
-	HUNTER_COLLECTOR_CLASS     = 1000014
+	#HUNTER_COLLECTOR_CLASS     = 1000014
 
 class BUILDINGS:
 	TREE_CLASS = 17
@@ -57,3 +59,7 @@ class LAYERS:
 	WATER = 0
 	GROUND = 1
 	OBJECTS = 2
+
+## PATHS
+class PATHS:
+	USER_DIR = "%s/.unknown-horizons" % user.home

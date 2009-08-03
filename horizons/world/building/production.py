@@ -46,10 +46,8 @@ class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurr
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				horizons.main.session.entities.units[animal](self)
-				# animal appends itself to self.animals
 
-		# AnimalCollector:
-		horizons.main.session.entities.units[UNITS.ANIMAL_CARRIAGE_CLASS](self)
+		super(AnimalFarm, self).create_collector()
 
 	def save(self, db):
 		super(AnimalFarm, self).save(db)
@@ -70,21 +68,11 @@ class Lumberjack(Selectable, CollectingProducerBuilding, BuildableSingleWithSurr
 	_surroundingBuildingClass = 17
 	"""Class representing a Lumberjack."""
 
-	def create_collector(self):
-		"""Add a FieldCollector"""
-		horizons.main.session.entities.units[UNITS.LUMBERJACK_COLLECTOR_CLASS](self)
-
-
 class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-
-	def create_collector(self):
-		"""Add a FieldCollector"""
-		horizons.main.session.entities.units[UNITS.FARMER_COLLECTOR_CLASS](self)
-
+	pass
 
 class Hunter(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	def create_collector(self):
-		horizons.main.session.entities.units[UNITS.HUNTER_COLLECTOR_CLASS](self)
+	pass
 
 class Fisher(Selectable, Producer, BuildableSingle, BasicBuilding):
 

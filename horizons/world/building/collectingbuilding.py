@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
+
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 
 from horizons.world.pathfinding.pathnodes import ConsumerBuildingPathNodes
@@ -44,10 +46,12 @@ class CollectingBuilding(BuildingResourceHandler):
 
 		self.path_nodes = ConsumerBuildingPathNodes(self)
 
-	def create_collector(self, collector_type_id=UNITS.BUILDING_COLLECTOR_CLASS):
-		""" Creates collector according to building type (chosen by polymorphism).
-		The Collector will register itself here."""
-		horizons.main.session.entities.units[collector_type_id](self)
+	def create_collector(self):
+		""" Creates collectors for building according to db."""
+		for collector_class, count in horizons.main.db("SELECT collector_class, count FROM \
+																									collectors WHERE object_id = ?", self.id):
+			for i in xrange(0, count):
+				horizons.main.session.entities.units[collector_class](self)
 
 	def remove(self):
 		while len(self.__collectors) > 0:

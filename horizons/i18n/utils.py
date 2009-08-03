@@ -25,18 +25,18 @@ def find_available_languages():
                     '/usr/share/games/locale',
                     '/usr/local/share/locale',
                     '/usr/local/share/games/locale')
-    
+
     import os
     from glob import glob
 
-    erg = []
+    languages = []
 
     for i in alternatives:
         found = glob('%s/*/*/unknownhorizons.mo' % i)
         for j in found:
             splited = j.split(os.sep)
-            erg.append( (splited[-3], os.sep.join(splited[:-3])))
-    
-    return erg
-  
-    
+            languages.append( (splited[-3], os.sep.join(splited[:-3])))
+
+    return languages
+
+

@@ -25,10 +25,10 @@ import os
 import os.path
 import glob
 import time
-import user
 
 import horizons.main
 
+from horizons.constants import PATHS
 from dbreader import DbReader
 
 class SavegameManager(object):
@@ -43,7 +43,7 @@ class SavegameManager(object):
 	"""
 	log = logging.getLogger("savegamemanager")
 
-	savegame_dir = "%s/.unknown-horizons/save" % user.home
+	savegame_dir = PATHS.USER_DIR + "/save"
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"

@@ -38,10 +38,6 @@ class Animal(Producer):
 	def __init__(self, **kwargs):
 		super(Animal, self).__init__(**kwargs)
 
-	def create_collector(self):
-		# no collector for our consumed resources
-		pass
-
 	def get_collectable_res(self):
 		return self.get_needed_resources()
 
