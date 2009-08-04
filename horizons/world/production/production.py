@@ -108,6 +108,10 @@ class Production(WorldObject):
 		"""Res that are produced here. Returns dict {res:amount}. Interface for _prod_line."""
 		return self._prod_line.produced_res
 
+	def changes_animation(self):
+		"""Returns wether the production should change the animation"""
+		return self._prod_line.changes_animation
+
 	def toggle_pause(self):
 		if is_paused():
 			self.pause()
@@ -205,7 +209,7 @@ class Production(WorldObject):
 		"""Checks if there is enough space in the inventory for the res, we want to produce.
 		@return bool, true if everything can fit."""
 		for res, amount in self._prod_line.produced_res.iteritems():
-			if self.inventory.get_space_for_res(res) < amount:
+			if self.inventory.get_free_space_for(res) < amount:
 				return False
 		return True
 

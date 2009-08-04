@@ -230,7 +230,7 @@ class Collector(StorageHolder, Unit):
 
 		# create a new job.
 		return Job(target, res, min(res_amount, inventory_space_for_res, \
-																self.inventory.get_space_for_res(res)))
+																self.inventory.get_free_space_for(res)))
 
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""

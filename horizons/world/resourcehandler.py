@@ -88,7 +88,7 @@ class ResourceHandler(StorageHolder):
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
 		return [res for res in self.get_consumed_resources() if \
-						self.inventory.get_space_for_res(res) > 0]
+						self.inventory.get_free_space_for(res) > 0]
 
 	def add_incoming_collector(self, collector):
 		assert collector not in self.__incoming_collectors

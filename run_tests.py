@@ -59,29 +59,30 @@ if __name__ == '__main__':
 
 	suite.addTest(loader.loadTestsFromModule(shapes))
 
+	suite.addTest(loader.loadTestsFromModule(storage))
 
 	suite.run(result)
 
 
-	print _("\nRESULTS:\n")
+	print "\nRESULTS:\n"
 
-	print result.testsRun, _('tests were run')
-	print _('All successful:'), result.wasSuccessful()
+	print result.testsRun, 'tests were run'
+	print 'All successful:', result.wasSuccessful()
 
 	if not result.wasSuccessful():
 
 		print
 
-		print len(result.failures),_('Failures:')
+		print len(result.failures),'Failures:'
 		for (case, error) in result.failures:
-			print _('Case:'), case
+			print 'Case:', case
 			print error
 			print
 
 		print
 
-		print len(result.errors),_('Errors:')
+		print len(result.errors),'Errors:'
 		for (case, error) in result.errors:
-			print _('Case:'), case
+			print 'Case:', case
 			print error
 			print

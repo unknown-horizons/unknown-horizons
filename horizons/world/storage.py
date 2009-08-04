@@ -19,9 +19,29 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
+"""
+Here we define how the inventories work, that are used by WorldObjects.
+These storage classes exist:
+
+- GenericStorage (abstract): Defines general interface for storage.
+
+Storages with certain properties:
+- PositiveStorage: Doesn't allow negative values.
+- TotalStorage: Sum of all stored res must be <= a certain limit.
+- SpecializedStorage: Allows only certain resources to be stored here.
+- SizedSpecializedStorage: Like SpecializedStorage, but each res has an own limit.
+- SizedSlottedStorage: One limit, each res value must be <= the limit.
+
+Combinations:
+- PositiveTotalStorage: use case: ship inventory
+- PositiveSizedSpecializedStorage
+
+"""
+
 from horizons.util import WorldObject
 
-class GenericStorage(WorldObject): # TESTED, WORKS
+class GenericStorage(WorldObject):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
 	resources. The GenericStorage is the general form and is mostly used as baseclass to
 	derive storages with special function from it. Normally there should be no need to
@@ -76,7 +96,7 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 			self._storage[res] = 0
 			self._changed()
 
-	def get_limit(self, res):
+	def get_limit(self, res=None):
 		"""Returns the current limit of the storage. Please not that this value can have
 		different meanings depending on the context. See the storage descriptions on what
 		the value does.
@@ -85,7 +105,7 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		"""
 		return self.limit # should not be used for generic storage
 
-	def get_space_for_res(self, res):
+	def get_free_space_for(self, res):
 		"""Returns how much of res we can still store here (limit - current amount)."""
 		return self.get_limit(res) - self[res]
 
@@ -96,6 +116,10 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		self.limit += amount
 		if self.limit < 0:
 			self.limit = 0
+		self._changed()
+
+	def get_sum_of_stored_resources(self):
+		return sum(self._storage.itervalues())
 
 	def __getitem__(self, res):
 		return self._storage[res] if res in self._storage else 0
@@ -109,73 +133,96 @@ class GenericStorage(WorldObject): # TESTED, WORKS
 		else:
 			return "Not inited"
 
-class SpecializedStorage(GenericStorage): # NOT TESTED! NEEDS WORK!
+class SpecializedStorage(GenericStorage):
+	"""Storage where only certain resources can be stored. If you want to store a resource here,
+	you have to call add_resource_slot() before calling alter()."""
 	def alter(self, res, amount):
-		assert False, "Test this before using, it hasn't been correctly implemented"
-		return super(SpecializedStorage, self).alter(res, amount) if res in self._storage else amount
+		if self.has_resource_slot(res): # res can be stored, propagate call
+			return super(SpecializedStorage, self).alter(res, amount)
+		else:
+			return amount # we couldn't store any of this
 
-	def addResourceSlot(self, res):
+	def add_resource_slot(self, res):
 		super(SpecializedStorage, self).alter(res, 0)
 
-	def hasResourceSlot(self, res):
-		return res in self._storage
+	def has_resource_slot(self, res):
+		return (res in self._storage)
 
-class SizedSpecializedStorage(SpecializedStorage): # NOT TESTED, NEEDS WORK!
+class SizedSpecializedStorage(SpecializedStorage):
+	"""Just like SpecializedStorage, but each res has an own limit."""
 	def __init__(self, **kwargs):
-		assert False, "Test this before using, it hasn't been correlty implemented"
 		super(SizedSpecializedStorage, self).__init__(**kwargs)
-		self.__size = {}
+		self.__slot_limits = {}
 
 	def alter(self, res, amount):
-		return amount - super(SizedSpecializedStorage, self).alter(res, amount - max(0, amount + self[res] - self.__size.get(res, 0)))
+		if not self.has_resource_slot(res):
+			return amount
+
+		storable_amount = self.get_free_space_for(res)
+		if amount > storable_amount: # tried to store more than limit allows
+			amount = storable_amount
+			ret = super(SizedSpecializedStorage, self).alter(res, storable_amount)
+			return (amount - storable_amount ) + ret
+
+		# no limit breach, just propagate call
+		return super(SizedSpecializedStorage, self).alter(res, amount)
 
 	def get_limit(self, res):
-		return self.__size[res]
+		return self.__slot_limits[res]
 
-	def addResourceSlot(self, res, size, **kwargs):
-		super(SizedSpecializedStorage, self).addResourceSlot(res = res, size = size, **kwargs)
-		self.__size[res] = size
+	def add_resource_slot(self, res, size):
+		super(SizedSpecializedStorage, self).add_resource_slot(res = res)
+		self.__slot_limits[res] = size
 
 	def save(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
-		assert False, "Saving of SizedSpecializedStorage hasn't been implemented"
+		assert len(self._storage) == len(self.__slot_limits) # we have to have limits for each res
+		for res in self._storage:
+			assert res in self.__slot_limits
+			db("INSERT INTO storage_properties(object, name, value) VALUES(?, ?, ?)", \
+				 ownerid, 'limit_%s' % res, self.__slot_limits[res])
 
 	def load(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
-		assert False, "Loading of SizedSpecializedStorage hasn't been implemented"
+		for res in self._storage:
+			limit = db("SELECT value FROM storage_properties WHERE object = ? AND name = ?", \
+								 ownerid, 'limit_%s' % res)[0][0]
+			self.__slot_limits[res] = limit
 
-
-class TotalStorage(GenericStorage): # TESTED AND WORKING
-	"""The TotalStorage represents a storage with a general limit to the amount of resources
+class TotalStorage(GenericStorage):
+	"""The TotalStorage represents a storage with a general limit to the sum of resources
 	that can be stored in it. The limit is a general limit, not specialized to one resource.
-	So with a limit of 200 you could have 199 resource A and 1 resource or any other
-	combination totaling 200.
+	E.g. if the limit is 10, you can have 4 items of res A and 6 items of res B, then nothing
+	else can be stored here.
+
+	NOTE: Negative values will increase storage size, so consider using PositiveTotalStorage.
 	"""
 	def __init__(self, space, **kwargs):
 		super(TotalStorage, self).__init__(space = space, **kwargs)
 		self.limit = space
 
 	def alter(self, res, amount):
-		check =  max(0, amount + sum(self._storage.itervalues()) - self.limit)
+		check =  max(0, amount + self.get_sum_of_stored_resources() - self.limit)
 		return check + super(TotalStorage, self).alter(res, amount - check)
 
-class PositiveStorage(GenericStorage): # TESTED AND WORKING
+	def get_free_space_for(self, res):
+		return self.limit - self.get_sum_of_stored_resources()
+
+class PositiveStorage(GenericStorage):
 	"""The positive storage doesn't allow to have negative values for resources."""
 	def alter(self, res, amount):
-		# TODO: document this and make it readable
-		ret = min(0, amount + self[res]) + super(PositiveStorage, self).alter(res, amount - min(0, amount + self[res]))
-		if res in self._storage and self._storage[res] <= 0:
-			del self._storage[res]
-		return ret
+		subtractable_amount = amount
+		if amount < 0 and ( amount + self[res] < 0 ): # tried to subtract more than we have
+			subtractable_amount = - self[res] # only amount where we keep a positive value
+		ret = super(PositiveStorage, self).alter(res, subtractable_amount)
+		return (amount - subtractable_amount) + ret
 
-class PositiveTotalStorage(PositiveStorage, TotalStorage): # TESTED AND WORKING
+class PositiveTotalStorage(PositiveStorage, TotalStorage):
 	"""A combination of the Total and Positive storage. Used to set a limit and ensure
 	there are no negative amounts in the storage."""
-	def __init__(self, space, **kwargs):
-		super(PositiveTotalStorage, self).__init__(space = space, **kwargs)
-		self.limit = space
+	pass
 
-class SizedSlotStorage(PositiveStorage): # TESTED AND WORKING
+class SizedSlotStorage(PositiveStorage):
 	"""A storage consisting of a slot for each ressource, all slots have the same size 'limit'
 	Used by the branch office for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
