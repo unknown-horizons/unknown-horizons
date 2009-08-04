@@ -214,6 +214,11 @@ class BasicBuilding(AmbientSound, WorldObject):
 
 	def production_state_changed(self):
 		"""Called when the building's production did something (i.e. start, stop, etc.)."""
+		# TODO React to state changes
+		#if "work" in horizons.main.action_sets[self._action_set_id]:
+		#	self.act("work", self._instance.getFacingLocation(), True)
+		#else:
+		#	self.act("idle", self._instance.getFacingLocation(), True)
 		# TODO: implement animation change when we have production states as well as toggle_costs
 		pass
 

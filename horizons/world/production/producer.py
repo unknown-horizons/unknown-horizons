@@ -47,6 +47,7 @@ class Producer(ResourceHandler):
 
 	def add_production(self, production):
 		assert isinstance(production, Production)
+		# TODO Add changelistener for production that is added
 		self.log.debug('Producer %s: added production line %s', self.getId(), \
 									 production.get_production_line_id())
 		self._productions[production.get_production_line_id()] = production
