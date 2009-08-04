@@ -126,7 +126,7 @@ class Production(WorldObject):
 			elif self._pause_old_state == self.states.producing:
 				# restore scheduler call
 				horizons.main.session.scheduler.add_new_object(self._finished_producing, self, \
-																									 self._pause_remaining_ticks)
+					 self._pause_remaining_ticks)
 			else:
 				assert False
 

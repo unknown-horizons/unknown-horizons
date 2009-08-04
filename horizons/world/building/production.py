@@ -64,8 +64,7 @@ class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurr
 		super(AnimalFarm, self).remove()
 
 
-class Lumberjack(Selectable, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
-	_surroundingBuildingClass = 17
+class Lumberjack(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class representing a Lumberjack."""
 
 class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
