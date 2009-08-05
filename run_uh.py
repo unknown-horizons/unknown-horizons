@@ -204,6 +204,7 @@ if __name__ == '__main__':
 
 	#for some external libraries distributed with unknownhorizons
 	sys.path.append('horizons/ext')
+	sys.path.append('horizons/util')
 
 	#start unknownhorizons
 	import horizons.main

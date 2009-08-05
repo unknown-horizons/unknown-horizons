@@ -28,7 +28,7 @@ from horizons.dbreader import DbReader
 from horizons.util import WorldObject, Point, Rect, Circle, WeakList
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
-from horizons.constants import MESSAGES
+from horizons.constants import MESSAGES, BUILDINGS, UNITS
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -93,6 +93,10 @@ class Island(WorldObject):
 		self.settlements = [] # List of settlements
 
 		self.path_nodes = IslandPathNodes(self)
+
+		# repopulate wild animals every 2 mins if they die out.
+		horizons.main.session.scheduler.add_new_object(self.check_wild_animal_population, self, \
+																									 16*120, -1)
 		"""TUTORIAL:
 		To continue hacking, you should now take of to the real fun stuff and check out horizons/world/building/__init__.py.
 		"""
@@ -284,3 +288,17 @@ class Island(WorldObject):
 	def __iter__(self):
 		for i in self.get_coordinates():
 			yield i
+
+	def check_wild_animal_population(self):
+		"""Creates a wild animal if they died out."""
+		if len(self.wild_animals) == 0:
+			# find a tree where we can place it
+			for building in self.buildings:
+				if building.id == BUILDINGS.TREE_CLASS:
+					point = building.location.origin
+					horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS](self, x = point.x, \
+																																				y = point.y)
+					return
+		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
+		# so do nothing here.
+

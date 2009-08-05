@@ -220,7 +220,11 @@ class PositiveStorage(GenericStorage):
 class PositiveTotalStorage(PositiveStorage, TotalStorage):
 	"""A combination of the Total and Positive storage. Used to set a limit and ensure
 	there are no negative amounts in the storage."""
-	pass
+	def alter(self, res, amount):
+		super(PositiveTotalStorage, self).alter(res, amount)
+		if self[res] == 0:
+			# remove empty slots, cause else they will get displayed in the ship inventory
+			del self._storage[res]
 
 class SizedSlotStorage(PositiveStorage):
 	"""A storage consisting of a slot for each ressource, all slots have the same size 'limit'

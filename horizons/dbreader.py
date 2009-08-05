@@ -22,7 +22,7 @@
 import sqlite3
 import re
 
-from horizons.util.decorators import cached
+from decorators import cached
 
 class DbReader(object):
 	"""Class that handles connections to sqlite databases

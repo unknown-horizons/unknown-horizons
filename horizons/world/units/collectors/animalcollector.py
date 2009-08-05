@@ -113,5 +113,8 @@ class AnimalCollector(BuildingCollector):
 
 class HunterCollector(AnimalCollector):
 	def get_animals_in_range(self):
-		import pdb ; pdb.set_trace()
 		return self.home_building.island().wild_animals
+
+	def release_animal(self):
+		# we don't release it, we kill it.
+		self.job.object.die()

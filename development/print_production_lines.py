@@ -10,6 +10,7 @@ if not os.path.exists(dbfile):
 	sys.exit(1)
 
 sys.path.append("./horizons")
+sys.path.append("./horizons/util")
 
 from dbreader import DbReader
 

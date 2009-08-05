@@ -91,12 +91,12 @@ class WildAnimal(CollectorAnimal, Collector):
 	It is assumed, that they need all resources, that they use, for reproduction. If they have
 	gathered all resources, and their inventory is full, they reproduce.
 	"""
-	walking_range = 5
+	walking_range = 6
 	work_duration = 96
 	pather_class = SoldierPather
 
 	# see documentation of self.health
-	HEALTH_INIT_VALUE = 40
+	HEALTH_INIT_VALUE = 50
 	HEALTH_INCREASE_ON_FEEDING = 2
 	HEALTH_DECREASE_ON_NO_JOB = 2
 	HEALTH_LEVEL_TO_REPRODUCE = 100
@@ -237,7 +237,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		return bool(random.randint(0, 1))
 
 	def die(self):
-		"""Makes animal die, e.g. because of starvation"""
+		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
 		self.log.debug("Wild animal %s dying", self.getId())
 		self.hide()
 		# we don't do anything here, just remove reference and

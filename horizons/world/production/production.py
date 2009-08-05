@@ -183,10 +183,11 @@ class Production(WorldObject):
 
 	def _finished_producing(self):
 		"""Called when the production finishes. Puts res in inventory"""
-		self.log.debug("Production finished")
+		self.state = self.states.waiting_for_res
+		self.log.debug("%s finished", self)
 		for res, amount in self._prod_line.produced_res.iteritems():
 			self.inventory.alter(res, amount)
-		self.state = self.states.waiting_for_res
+			self.log.debug("produced %s of %s", amount, res)
 		self.inventory.addChangeListener(self._check_inventory, call_listener_now=True)
 		self._changed()
 
