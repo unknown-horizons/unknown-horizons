@@ -228,7 +228,7 @@ class World(LivingObject):
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)
 		horizons.main.session.ingame_gui.update_gold()
-		self.player.inventory.addChangeListener(horizons.main.session.ingame_gui.update_gold)
+		self.player.inventory.add_change_listener(horizons.main.session.ingame_gui.update_gold)
 
 	def get_tile(self, point):
 		"""Returns the ground at x, y.

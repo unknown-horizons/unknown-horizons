@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+r -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -50,7 +50,7 @@ class Production(WorldObject):
 	def __init__(self, inventory, prod_line_id, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self.__init(inventory, prod_line_id, self.states.waiting_for_res)
-		self.inventory.addChangeListener(self._check_inventory, call_listener_now=True)
+		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 
 	def __init(self, inventory, prod_line_id, state, pause_old_state = None):
 		"""
@@ -90,7 +90,7 @@ class Production(WorldObject):
 		elif self.state == self.states.producing:
 			horizons.main.session.scheduler.add_new_object(self._finished_producing, self, db_data[3])
 		elif self.state == self.states.waiting_for_res:
-			self.inventory.addChangeListener(self._check_inventory)
+			self.inventory.add_change_listener(self._check_inventory)
 
 		super(cls, self).load(db, worldid)
 		return self
@@ -126,7 +126,7 @@ class Production(WorldObject):
 		if not pause: # do unpause
 			if self._pause_old_state == self.states.waiting_for_res:
 				# just restore watching
-				self.inventory.addChangeListener(self._check_inventory, call_listener_now=True)
+				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			elif self._pause_old_state == self.states.producing:
 				# restore scheduler call
 				horizons.main.session.scheduler.add_new_object(self._finished_producing, self, \
@@ -141,7 +141,7 @@ class Production(WorldObject):
 		else: # do pause
 			if self.state == self.states.waiting_for_res:
 				# just stop watching for new res
-				self.inventory.removeChangeListener(self._check_inventory)
+				self.inventory.remove_change_listener(self._check_inventory)
 			elif self.state == self.states.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
@@ -162,7 +162,7 @@ class Production(WorldObject):
 		"""Called when assigned building's inventory changed in some way"""
 		if self._check_available_res() and self._check_for_space_for_produced_res():
 			# stop listening for res
-			self.inventory.removeChangeListener(self._check_inventory)
+			self.inventory.remove_change_listener(self._check_inventory)
 			self._start_production()
 
 	def _start_production(self):
@@ -188,7 +188,7 @@ class Production(WorldObject):
 		for res, amount in self._prod_line.produced_res.iteritems():
 			self.inventory.alter(res, amount)
 			self.log.debug("produced %s of %s", amount, res)
-		self.inventory.addChangeListener(self._check_inventory, call_listener_now=True)
+		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 		self._changed()
 
 	def _check_available_res(self):
@@ -272,7 +272,7 @@ class ProgressProduction(Production):
 		# check if there were res
 		if removed_res == 0:
 			# watch inventory for new res
-			self.inventory.addChangeListener(self._check_inventory, call_listener_now=True)
+			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			self.state = self.states.waiting_for_res
 			self._changed()
 			return

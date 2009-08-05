@@ -226,20 +226,20 @@ class IngameGui(LivingObject):
 		if settlement is self.settlement:
 			return
 		if self.settlement is not None:
-			self.settlement.removeChangeListener(self.update_settlement)
+			self.settlement.remove_change_listener(self.update_settlement)
 		self.settlement = settlement
 		if settlement is None:
 			self.gui['cityInfo'].hide()
 		else:
 			self.gui['cityInfo'].show()
 			self.update_settlement()
-			settlement.addChangeListener(self.update_settlement)
+			settlement.add_change_listener(self.update_settlement)
 
 	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}):
 		self.cityinfo_set(source if isinstance(source, Settlement) else None)
 		if source is not self.resource_source:
 			if self.resource_source is not None:
-				self.resource_source.removeChangeListener(self.update_resource_source)
+				self.resource_source.remove_change_listener(self.update_resource_source)
 			if source is None:
 				self.gui['status'].hide()
 				self.gui['status_extra'].hide()
@@ -247,7 +247,7 @@ class IngameGui(LivingObject):
 				self.update_gold()
 		if source is not None:
 			if source is not self.resource_source:
-				source.addChangeListener(self.update_resource_source)
+				source.add_change_listener(self.update_resource_source)
 			self.resource_source = source
 			self.resources_needed = res_needed
 			self.resources_usable = res_usable

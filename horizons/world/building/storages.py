@@ -42,7 +42,7 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, Colle
 
 	def __init(self, settlement):
 		self.inventory = settlement.inventory
-		self.inventory.addChangeListener(self._changed)
+		self.inventory.add_change_listener(self._changed)
 		self.island().provider_buildings.append(self)
 
 	def remove(self):

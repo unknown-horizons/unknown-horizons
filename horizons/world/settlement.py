@@ -44,7 +44,7 @@ class Settlement(TradePost, WorldObject):
 
 	def setup_storage(self):
 		self.inventory = SizedSlotStorage(0)
-		self.inventory.addChangeListener(self._changed)
+		self.inventory.add_change_listener(self._changed)
 
 	def get_building(self, point):
 		"""Returns the building at the position (x, y)

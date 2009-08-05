@@ -44,10 +44,10 @@ class BoatbuilderTab(TabInterface):
 				_("Current construction progress:")+" "+str(self.instance.progress)+"%"
 
 	def show(self):
-		if not self.instance.inventory.hasChangeListener(self.refresh):
-			self.instance.inventory.addChangeListener(self.refresh)
+		if not self.instance.inventory.has_change_listener(self.refresh):
+			self.instance.inventory.add_change_listener(self.refresh)
 		super(BoatbuilderTab, self).show()
 
 	def hide(self):
-		self.instance.inventory.removeChangeListener(self.refresh)
+		self.instance.inventory.remove_change_listener(self.refresh)
 		super(BoatbuilderTab, self).hide()

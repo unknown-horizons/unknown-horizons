@@ -41,13 +41,13 @@ class InventoryTab(TabInterface):
 		self.widget.child_finder('inventory').inventory = self.instance.inventory
 
 	def show(self):
-		if not self.instance.inventory.hasChangeListener(self.refresh):
-			self.instance.inventory.addChangeListener(self.refresh)
+		if not self.instance.inventory.has_change_listener(self.refresh):
+			self.instance.inventory.add_change_listener(self.refresh)
 		super(InventoryTab, self).show()
 
 	def hide(self):
-		if self.instance.inventory.hasChangeListener(self.refresh):
-			self.instance.inventory.removeChangeListener(self.refresh)
+		if self.instance.inventory.has_change_listener(self.refresh):
+			self.instance.inventory.remove_change_listener(self.refresh)
 		super(InventoryTab, self).hide()
 
 class ShipInventoryTab(InventoryTab):
@@ -77,11 +77,11 @@ class ShipInventoryTab(InventoryTab):
 		super(ShipInventoryTab, self).refresh()
 
 	def show(self):
-		if not self.instance.hasChangeListener(self.refresh):
-			self.instance.addChangeListener(self.refresh)
+		if not self.instance.has_change_listener(self.refresh):
+			self.instance.add_change_listener(self.refresh)
 		super(ShipInventoryTab, self).show()
 
 	def hide(self):
-		if self.instance.hasChangeListener(self.refresh):
-			self.instance.removeChangeListener(self.refresh)
+		if self.instance.has_change_listener(self.refresh):
+			self.instance.remove_change_listener(self.refresh)
 		super(ShipInventoryTab, self).hide()

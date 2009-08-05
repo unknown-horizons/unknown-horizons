@@ -47,12 +47,12 @@ class OverviewTab(TabInterface):
 
 	def show(self):
 		super(OverviewTab, self).show()
-		if not self.instance.hasChangeListener(self.refresh):
-			self.instance.addChangeListener(self.refresh)
+		if not self.instance.has_change_listener(self.refresh):
+			self.instance.add_change_listener(self.refresh)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
-		self.instance.removeChangeListener(self.refresh)
+		self.instance.remove_change_listener(self.refresh)
 
 
 class BranchOfficeOverviewTab(OverviewTab):

@@ -161,7 +161,7 @@ class Fife(object):
 
 		#init settings
 		horizons.main.settings.addCategorys('fife')
-		horizons.main.settings.fife.addChangeListener(self._setSetting)
+		horizons.main.settings.fife.add_change_listener(self._setSetting)
 		horizons.main.settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
 
 		horizons.main.settings.fife.defaultFont.setDefaults(

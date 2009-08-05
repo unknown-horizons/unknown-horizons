@@ -30,15 +30,15 @@ class Changelistener(LivingObject):
 	def __init(self):
 		self.__listeners = WeakMethodList()
 
-	def addChangeListener(self, listener, call_listener_now = False):
+	def add_change_listener(self, listener, call_listener_now = False):
 		self.__listeners.append(listener)
 		if call_listener_now:
 			listener()
 
-	def removeChangeListener(self, listener):
+	def remove_change_listener(self, listener):
 		self.__listeners.remove(listener)
 
-	def hasChangeListener(self, listener):
+	def has_change_listener(self, listener):
 		if listener in self.__listeners:
 			return True
 		else:

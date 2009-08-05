@@ -67,12 +67,12 @@ class Setting(object):
 			for listener in self._listener:
 				listener(self, name, value)
 
-	def addChangeListener(self, listener):
+	def add_change_listener(self, listener):
 		"""
 		@param listener:
 		"""
 		for name in self._categorys:
-			self.__dict__[name].addChangeListener(listener)
+			self.__dict__[name].add_change_listener(listener)
 		self._listener.append(listener)
 		for name in self.__dict__:
 			if not name.startswith('_'):
@@ -110,7 +110,7 @@ class Setting(object):
 			inst = Setting(self._name + category + '.')
 			self.__dict__[category] = inst
 			for listener in self._listener:
-				inst.addChangeListener(listener)
+				inst.add_change_listener(listener)
 
 class Settings(Setting):
 	VERSION = 2

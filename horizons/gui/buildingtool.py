@@ -86,7 +86,7 @@ class BuildingTool(NavigationTool):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
-		horizons.main.session.view.removeChangeListener(self.draw_gui)
+		horizons.main.session.view.remove_change_listener(self.draw_gui)
 		self.gui.hide()
 		self._remove_listeners()
 		super(BuildingTool, self).end()
@@ -117,7 +117,7 @@ class BuildingTool(NavigationTool):
 		top_bar = self.gui.findChild(name='top_bar')
 		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 		self.draw_gui()
-		horizons.main.session.view.addChangeListener(self.draw_gui)
+		horizons.main.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
 		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
@@ -254,10 +254,10 @@ class BuildingTool(NavigationTool):
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
 		if self.last_change_listener is not None:
-			if self.last_change_listener.hasChangeListener(self.update_preview):
-				self.last_change_listener.removeChangeListener(self.update_preview)
-			if self.last_change_listener.hasChangeListener(self.highlight_ship_radius):
-				self.last_change_listener.removeChangeListener(self.highlight_ship_radius)
+			if self.last_change_listener.has_change_listener(self.update_preview):
+				self.last_change_listener.remove_change_listener(self.update_preview)
+			if self.last_change_listener.has_change_listener(self.highlight_ship_radius):
+				self.last_change_listener.remove_change_listener(self.highlight_ship_radius)
 		self.last_change_listener = None
 
 	def _add_listeners(self, instance):
@@ -266,8 +266,8 @@ class BuildingTool(NavigationTool):
 			self.last_change_listener = instance
 			if self.last_change_listener is not None:
 				if self.last_change_listener is self.ship:
-					self.last_change_listener.addChangeListener(self.highlight_ship_radius)
-				self.last_change_listener.addChangeListener(self.update_preview)
+					self.last_change_listener.add_change_listener(self.highlight_ship_radius)
+				self.last_change_listener.add_change_listener(self.update_preview)
 
 	def update_preview(self):
 		"""Used as callback method"""

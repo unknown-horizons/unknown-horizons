@@ -45,7 +45,7 @@ class StorageHolder(object):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
 		overwrite this function to do nothing. see also: save_inventory() and load_inventory()"""
 		self.inventory = SizedSlotStorage(30)
-		self.inventory.addChangeListener(self._changed)
+		self.inventory.add_change_listener(self._changed)
 
 	def save(self, db):
 		super(StorageHolder, self).save(db)
