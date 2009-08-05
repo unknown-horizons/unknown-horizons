@@ -74,8 +74,11 @@ class Build(object):
 		if secondary_resource_source is not None:
 			for (resource, value) in building.costs.iteritems():
 				# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
-				remnant = secondary_resource_source.inventory.alter(resource, issuer.inventory.alter(resource, -value))
-				assert(remnant == 0)
+				first_source_remnant = issuer.inventory.alter(resource, -value)
+				second_source_remnant = secondary_resource_source.inventory.alter(resource, first_source_remnant)
+				assert second_source_remnant == 0
+
+		# building is now officially built and existent
 		building.start()
 
 class Tear(object):
