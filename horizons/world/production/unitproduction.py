@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,17 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import sys
+from horizons.world.production.production import ProgressProduction
 
-if __name__ == '__main__':
-	#chdir to unknownhorizons root
-	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
-
-	import environment
-	environment.init()
-
-	os.chdir(environment.get_fife_path() + '/clients/editor')
-	#start editor
-	args = [sys.executable, './run.py']
-	os.execvp(args[0], args)
+class UnitProduction(ProgressProduction):
+	"""Production, that produces units."""

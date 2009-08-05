@@ -29,18 +29,8 @@ import unittest
 
 if __name__ == '__main__':
 
-	# the usual setup:
-	try:
-		import fife
-	except ImportError:
-		run_uh.debug = False
-		run_uh.find_FIFE()
-
-
-	sys.path.append('horizons/ext')
-
-	import gettext
-	gettext.install("unknownhorizons", "po", unicode=1)
+	import environment
+	environment.init()
 
 	import horizons.main
 

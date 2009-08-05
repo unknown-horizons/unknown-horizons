@@ -9,8 +9,11 @@ if not os.path.exists(dbfile):
 	print 'please run from uh root dir'
 	sys.exit(1)
 
+sys.path.append(".")
 sys.path.append("./horizons")
-sys.path.append("./horizons/util")
+
+import environment
+environment.init()
 
 from dbreader import DbReader
 

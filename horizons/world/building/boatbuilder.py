@@ -19,17 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class BoatBuilder(object):pass
-
-"""
-
-DISABLED FOR NOW
 
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
 from horizons.util import Point
 from horizons.gui.tabs import ProductionOverviewTab, InventoryTab, BoatbuilderTab, TabWidget
 from horizons.constants import UNITS
+from horizons.world.production.unitproduction import UnitProduction
 
 import horizons.main
 
@@ -55,5 +51,3 @@ class BoatBuilder(Selectable, BuildableSingle, UnitProduction, BasicBuilding):
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self), BoatbuilderTab(self)]))
-
-		"""
