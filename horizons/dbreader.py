@@ -22,7 +22,7 @@
 import sqlite3
 import re
 
-from decorators import cached
+from util.decorators import cached
 
 class DbReader(object):
 	"""Class that handles connections to sqlite databases
