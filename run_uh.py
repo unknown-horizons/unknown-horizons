@@ -27,6 +27,7 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 
 import sys
 import os
+import gettext
 import time
 import logging
 import logging.config
@@ -92,12 +93,9 @@ if __name__ == '__main__':
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig('content/logging.conf')
+	gettext.install("unknownhorizons", "po", unicode=1)
 
-	import environment
-	# NOTE: this might cause a program restart
-	environment.init()
 
-	# parse options
 	parser = get_option_parser()
 	(options, args) = parser.parse_args()
 
@@ -112,6 +110,11 @@ if __name__ == '__main__':
 	for module in options.debug_module:
 		logging.getLogger(module).setLevel(logging.DEBUG)
 
+	import environment
+	# NOTE: this might cause a program restart
+	environment.init()
+
+	# parse options
 
 	#start unknownhorizons
 	import horizons.main
