@@ -129,6 +129,7 @@ def find_FIFE(fife_custom_path=None):
 
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
+	log().debug("Restarting with args %s", args)
 	os.execvp(args[0], args)
 
 
