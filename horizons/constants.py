@@ -20,6 +20,7 @@
 # ###################################################
 
 import user
+from ext.enum import Enum
 
 """This file keeps track of some constants, that have to be used in the code.
 NOTE: Using constants is generally a bad style, so avoid where possible."""
@@ -63,3 +64,7 @@ class LAYERS:
 ## PATHS
 class PATHS:
 	USER_DIR = "%s/.unknown-horizons" % user.home
+
+## The Production States available in the game sorted by importance from least
+## to most important
+PRODUCTION_STATES = Enum('waiting_for_res', 'producing', 'paused')

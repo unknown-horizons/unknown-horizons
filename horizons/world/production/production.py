@@ -26,6 +26,7 @@ import copy
 
 from horizons.ext.enum import Enum
 from horizons.util import WorldObject
+from horizons.constants import PRODUCTION_STATES
 
 import horizons.main
 
@@ -44,13 +45,12 @@ class Production(WorldObject):
 	can be observed via ChangeListener interface."""
 	log = logging.getLogger('world.production')
 
-	states = Enum('waiting_for_res', 'producing', 'paused')
 
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, **kwargs):
 		super(Production, self).__init__(**kwargs)
-		self.__init(inventory, prod_line_id, self.states.waiting_for_res)
 		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+		self.__init(inventory, prod_line_id, PRODUCTION_STATES.waiting_for_res)
 
 	def __init(self, inventory, prod_line_id, state, pause_old_state = None):
 		"""
@@ -60,20 +60,20 @@ class Production(WorldObject):
 		self.inventory = inventory
 		self._prod_line = ProductionLine(prod_line_id) # protected!
 
-		self.state = state
+		self._state = state
 
 		self._pause_remaining_ticks = None # only used in pause()
 		self._pause_old_state = pause_old_state # only used in pause()
 
 	def save(self, db):
 		remaining_ticks = None
-		if self.state == self.states.paused:
+		if self._state == PRODUCTION_STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
-		elif self.state == self.states.producing:
+		elif self._state == PRODUCTION_STATES.producing:
 			remaining_ticks = \
 						horizons.main.session.scheduler.get_remaining_ticks(self, self._finished_producing)
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
-		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.getId(), self.state.index, \
+		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.getId(), self._state.index, \
 												self._prod_line.id, remaining_ticks, \
 												None if self._pause_old_state is None else self._pause_old_state.index)
 
@@ -84,12 +84,12 @@ class Production(WorldObject):
 		db_data = db('SELECT state, owner, prod_line_id, remaining_ticks, _pause_old_state \
 								  FROM production WHERE rowid = ?', worldid)[0]
 		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], \
-								self.states[db_data[0]], None if db_data[4] is None else self.states[db_data[4]])
-		if self.state == self.states.paused:
+								PRODUCTION_STATES[db_data[0]], None if db_data[4] is None else PRODUCTION_STATES[db_data[4]])
+		if self._state == PRODUCTION_STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
-		elif self.state == self.states.producing:
+		elif self._state == PRODUCTION_STATES.producing:
 			horizons.main.session.scheduler.add_new_object(self._finished_producing, self, db_data[3])
-		elif self.state == self.states.waiting_for_res:
+		elif self._state == PRODUCTION_STATES.waiting_for_res:
 			self.inventory.add_change_listener(self._check_inventory)
 
 		super(cls, self).load(db, worldid)
@@ -112,6 +112,10 @@ class Production(WorldObject):
 		"""Returns wether the production should change the animation"""
 		return self._prod_line.changes_animation
 
+	def get_state(self):
+		"""Returns the Production's current state"""
+		return self._state
+
 	def toggle_pause(self):
 		if is_paused():
 			self.pause()
@@ -119,15 +123,15 @@ class Production(WorldObject):
 			self.pause(pause=False)
 
 	def is_paused(self):
-		return self.state == self.states.paused
+		return self._state == PRODUCTION_STATES.paused
 
 	def pause(self, pause = True):
 		self.log.debug("Production pause: %s", pause)
 		if not pause: # do unpause
-			if self._pause_old_state == self.states.waiting_for_res:
+			if self._pause_old_state == PRODUCTION_STATES.waiting_for_res:
 				# just restore watching
 				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
-			elif self._pause_old_state == self.states.producing:
+			elif self._pause_old_state == PRODUCTION_STATES.producing:
 				# restore scheduler call
 				horizons.main.session.scheduler.add_new_object(self._finished_producing, self, \
 					 self._pause_remaining_ticks)
@@ -135,14 +139,14 @@ class Production(WorldObject):
 				assert False
 
 			# switch state
-			self.state = self._pause_old_state
+			self._state = self._pause_old_state
 			self._pause_old_state = None
 
 		else: # do pause
-			if self.state == self.states.waiting_for_res:
+			if self._state == PRODUCTION_STATES.waiting_for_res:
 				# just stop watching for new res
 				self.inventory.remove_change_listener(self._check_inventory)
-			elif self.state == self.states.producing:
+			elif self._state == PRODUCTION_STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
 						horizons.main.session.scheduler.get_remaining_ticks(self, self._finished_producing)
@@ -151,8 +155,8 @@ class Production(WorldObject):
 				assert False
 
 			# switch state
-			self._pause_old_state = self.state
-			self.state = self.states.paused
+			self._pause_old_state = self._state
+			self._state = PRODUCTION_STATES.paused
 
 		self._changed()
 
@@ -167,7 +171,7 @@ class Production(WorldObject):
 
 	def _start_production(self):
 		"""Acctually start production. Sets self to producing state"""
-		self.state = self.states.producing
+		self._state = PRODUCTION_STATES.producing
 		self._produce()
 		self._changed()
 
@@ -183,7 +187,7 @@ class Production(WorldObject):
 
 	def _finished_producing(self):
 		"""Called when the production finishes. Puts res in inventory"""
-		self.state = self.states.waiting_for_res
+		self._state = PRODUCTION_STATES.waiting_for_res
 		self.log.debug("%s finished", self)
 		for res, amount in self._prod_line.produced_res.iteritems():
 			self.inventory.alter(res, amount)
@@ -215,7 +219,7 @@ class Production(WorldObject):
 		return True
 
 	def __str__(self): # debug
-		return 'Production(state=%s;prodline=%s)' % (self.state, self._prod_line)
+		return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
 
 
 class ProgressProduction(Production):
@@ -273,7 +277,7 @@ class ProgressProduction(Production):
 		if removed_res == 0:
 			# watch inventory for new res
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
-			self.state = self.states.waiting_for_res
+			self._state = PRODUCTION_STATES.waiting_for_res
 			self._changed()
 			return
 

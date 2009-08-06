@@ -24,6 +24,7 @@ import logging
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import Production
+from horizons.constants import PRODUCTION_STATES
 
 import horizons.main
 
@@ -55,6 +56,16 @@ class Producer(ResourceHandler):
 
 	def load_production(self, db, worldid):
 		return self.production_class.load(db, worldid)
+
+	def get_current_state(self):
+		"""Returns the current state of the producer. It is the most important
+		state of all productions combined. Check the PRODUCTION_STATES constant
+		for list of states and their importance."""
+		current_state = PRODUCTION_STATES.waiting_for_res
+		for production in self._get_productions:
+			if current_state < production.get_state():
+				current_state = production.get_state()
+		return current_state
 
 
 class ProducerBuilding(Producer, BuildingResourceHandler):
