@@ -104,7 +104,7 @@ if __name__ == '__main__':
 		logging.getLogger().setLevel(logging.DEBUG)
 		# init a logfile handler with a dynamic filename
 		logfilename = "unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
-		print 'Logging to stdout and %s' % logfilename
+		print 'Logging to stderr and %s' % logfilename
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
 	for module in options.debug_module:

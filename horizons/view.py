@@ -48,7 +48,6 @@ class View(Changelistener):
 
 		self.layers = []
 		for i in xrange(0, 3):
-			print 'Creating layer %s with grid %s' % (i, cellgrid)
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 		self.view = horizons.main.fife.engine.getView()

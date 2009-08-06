@@ -87,6 +87,15 @@ class Collector(StorageHolder, Unit):
 
 		self.job = None # here we store the current job as Job object
 
+		# list of class ids of buildings, where we may pick stuff up
+		# empty means pick up from everywhere
+		self.possible_target_classes = []
+		for (object_class,) in horizons.main.db("SELECT object FROM collector_restrictions WHERE \
+																					collector = ?", self.id):
+			self.possible_target_classes.append(object_class)
+		self.is_restricted = (len(self.possible_target_classes) != 0)
+
+
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
 		self.log.debug("Collector %s: remove called", self.getId())
@@ -209,6 +218,10 @@ class Collector(StorageHolder, Unit):
 		@param res: resource id
 		@return: instance of Job or None, if we can't collect anything
 		"""
+		# check if we're allowed to pick up there
+		if self.is_restricted and target.id not in self.possible_target_classes:
+			return None
+
 		res_amount = target.get_available_pickup_amount(res, self)
 		if res_amount <= 0:
 			return None

@@ -1,4 +1,4 @@
-r -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org

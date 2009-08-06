@@ -173,9 +173,13 @@ class Unit(WorldObject):
 		self.log.debug("Unit %s: move tick, moving to %s", self.getId(), self.next_target)
 		self.last_position = self.position
 		self.position = self.next_target
+		self.log.debug('CrashMonitor: will get Layer')
 		location = fife.Location(self._instance.getLocationRef().getLayer())
+		self.log.debug('CrashMonitor: Location is %s', location)
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
+		self.log.debug('CrashMonitor: setting coords on location')
 		self._instance.setLocation(location)
+		self.log.debug('CrashMonitor: setting location')
 		self._changed()
 
 		# try to get next step, handle a blocked path
