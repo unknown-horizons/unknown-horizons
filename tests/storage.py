@@ -90,7 +90,7 @@ class TestStorages(unittest.TestCase):
 		self.test_total(s)
 
 	def test_sized_slotted(self):
-		s = SizedSlotStorage(10)
+		s = PositiveSizedSlotStorage(10)
 
 		self.assertEqual(s.alter(1,6), 0)
 		self.assertEqual(s.alter(1,6), 2)

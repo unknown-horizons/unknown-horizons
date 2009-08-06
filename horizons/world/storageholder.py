@@ -21,14 +21,14 @@
 
 import horizons.main
 
-from storage import SizedSlotStorage
+from storage import PositiveSizedSlotStorage, PositiveSizedSpecializedStorage
 
 class StorageHolder(object):
 	"""The StorageHolder class is used as as a parent class for everything that
 	has an inventory. Examples for these classes are ships, settlements,
 	buildings, etc. Basically it just add's an inventory, nothing more, nothing
 	less.
-	If you want something different than a SizedSlotStorage, you'll have to
+	If you want something different than a PositiveSizedSlotStorage, you'll have to
 	overwrite that in the subclass.
 
 	TUTORIAL:
@@ -44,7 +44,17 @@ class StorageHolder(object):
 	def create_inventory(self):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
 		overwrite this function to do nothing. see also: save_inventory() and load_inventory()"""
-		self.inventory = SizedSlotStorage(30)
+		db_data = horizons.main.db("SELECT resource, size FROM storage WHERE object_id = ?", self.id)
+
+		if len(db_data) > 0:
+			# no db data about inventory. Create default inventory.
+			self.inventory = PositiveSizedSlotStorage(30)
+		else:
+			# specialised storage; each res and limit is stored in db.
+			self.inventory = PositiveSizedSpecializedStorage()
+			for res, size in db_data:
+				self.inventory.add_resource_slot(res, size)
+
 		self.inventory.add_change_listener(self._changed)
 
 	def save(self, db):

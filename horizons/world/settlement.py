@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import horizons.main
-from storage import SizedSlotStorage
+from storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList
 from tradepost import TradePost
 
@@ -43,7 +43,7 @@ class Settlement(TradePost, WorldObject):
 		return sum([building.inhabitants for building in self.buildings])
 
 	def setup_storage(self):
-		self.inventory = SizedSlotStorage(0)
+		self.inventory = PositiveSizedSlotStorage(0)
 		self.inventory.add_change_listener(self._changed)
 
 	def get_building(self, point):

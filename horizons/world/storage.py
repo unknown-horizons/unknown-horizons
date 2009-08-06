@@ -31,11 +31,12 @@ Storages with certain properties:
 - TotalStorage: Sum of all stored res must be <= a certain limit.
 - SpecializedStorage: Allows only certain resources to be stored here.
 - SizedSpecializedStorage: Like SpecializedStorage, but each res has an own limit.
-- SizedSlottedStorage: One limit, each res value must be <= the limit.
 
 Combinations:
+- SizedSlottedStorage: One limit, each res value must be <= the limit and >= 0.
 - PositiveTotalStorage: use case: ship inventory
-- PositiveSizedSpecializedStorage
+- PositiveSizedSlotStorage: every res has the same limit, only positive values (branch office)
+- PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
 
 """
 
@@ -168,10 +169,13 @@ class SizedSpecializedStorage(SpecializedStorage):
 		return super(SizedSpecializedStorage, self).alter(res, amount)
 
 	def get_limit(self, res):
-		return self.__slot_limits[res]
+		if res in self.__slot_limits:
+			self.__slot_limits[res]
+		else:
+			return 0
 
 	def add_resource_slot(self, res, size):
-		super(SizedSpecializedStorage, self).add_resource_slot(res = res)
+		super(SizedSpecializedStorage, self).add_resource_slot(res)
 		self.__slot_limits[res] = size
 
 	def save(self, db, ownerid):
@@ -227,17 +231,17 @@ class PositiveTotalStorage(PositiveStorage, TotalStorage):
 			del self._storage[res]
 		return ret
 
-class SizedSlotStorage(PositiveStorage):
+class PositiveSizedSlotStorage(PositiveStorage):
 	"""A storage consisting of a slot for each ressource, all slots have the same size 'limit'
 	Used by the branch office for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
 	def __init__(self, limit, **kwargs):
-		super(SizedSlotStorage, self).__init__(**kwargs)
+		super(PositiveSizedSlotStorage, self).__init__(**kwargs)
 		self.limit = limit
 
 	def alter(self, res, amount):
 		check = max(0, amount + self[res] - self.limit)
-		return check + super(SizedSlotStorage, self).alter(res, amount - check)
+		return check + super(PositiveSizedSlotStorage, self).alter(res, amount - check)
 
 
 class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
