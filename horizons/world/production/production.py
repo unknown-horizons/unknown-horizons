@@ -49,8 +49,8 @@ class Production(WorldObject):
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, **kwargs):
 		super(Production, self).__init__(**kwargs)
-		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 		self.__init(inventory, prod_line_id, PRODUCTION_STATES.waiting_for_res)
+		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 
 	def __init(self, inventory, prod_line_id, state, pause_old_state = None):
 		"""
@@ -117,7 +117,7 @@ class Production(WorldObject):
 		return self._state
 
 	def toggle_pause(self):
-		if is_paused():
+		if self.is_paused():
 			self.pause()
 		else:
 			self.pause(pause=False)
@@ -237,7 +237,7 @@ class ProgressProduction(Production):
 
 	def __init(self, progress = 0):
 		self.original_prod_line = copy.copy(self._prod_line)
-		self.progress = 0 # float indicating current production progress
+		self.progress = progress # float indicating current production progress
 
 	def save(self, db):
 		# TODO
@@ -247,11 +247,10 @@ class ProgressProduction(Production):
 		super(ProgressProduction, self).load(db, worldid)
 		self.__init()
 		# TODO
-		pass
 
 	## PROTECTED METHODS
 	def _check_available_res(self):
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res in self._prod_line.consumed_res.iterkeys():
 			if self.inventory[res] > 0:
 				return True
 		return False

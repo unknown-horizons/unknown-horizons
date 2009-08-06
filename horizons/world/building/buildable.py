@@ -85,7 +85,6 @@ class BuildableSingle(object):
 	@classmethod
 	def is_building_build_requirement_satisfied(cls, x, y, island, **state):
 		from nature import GrowingBuilding
-		from path import Path
 		tear = []
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):

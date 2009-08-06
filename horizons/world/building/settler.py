@@ -114,8 +114,9 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 		if (self.level-1) > 0:
 			self.level -= 1
 			self.update_world_level()
+
 	def update_world_level(self):
-		horizons.main.session.world.player.settler_level = max(horizons.main.session.world.player.settler_level,self.level)
+		horizons.main.session.world.player.settler_level = max(horizons.main.session.world.player.settler_level, self.level)
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [OverviewTab(self)]))

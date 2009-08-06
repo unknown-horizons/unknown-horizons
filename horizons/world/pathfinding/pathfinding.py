@@ -40,7 +40,7 @@ class FindPath(object):
 	"""
 	log = logging.getLogger("world.pathfinding")
 
-	def __call__(self, source, destination, path_nodes, blocked_coords = [], \
+	def __call__(self, source, destination, path_nodes, blocked_coords = list(), \
 							 diagonal = False, make_target_walkable = True):
 		"""
 		@param source: Rect, Point or BasicBuilding

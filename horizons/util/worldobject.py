@@ -25,6 +25,9 @@ import logging
 from changelistener import Changelistener
 
 class WorldObject(Changelistener):
+	"""Gives every instance a unique id.
+	NOTE: id is only provided on first getId() call
+	"""
 	__next_id = 1
 	__objects = weakref.WeakValueDictionary()
 	log = logging.getLogger("util.worldobject")

@@ -31,8 +31,6 @@ class Path(BasicBuilding, BuildableLine):
 	walkable = True
 
 	def init(self):
-		"""
-		"""
 		super(Path, self).init()
 		origin = self.position.origin
 		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
@@ -49,7 +47,6 @@ class Path(BasicBuilding, BuildableLine):
 
 	def remove(self):
 		super(Path, self).remove()
-		origin = self.position.origin
 		self.island().path_nodes.unregister_road(self)
 		self.recalculate_surrounding_tile_orientation()
 
@@ -96,8 +93,6 @@ class Bridge(BasicBuilding, BuildableSingle):
 	#	super(Bridge, cls).getInstance(x = x, y = y, action = 'default', **trash)
 
 	def init(self):
-		"""
-		"""
 		super(Bridge, self).init()
 		origin = self.position.origin
 		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))

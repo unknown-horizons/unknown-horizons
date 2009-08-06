@@ -64,28 +64,29 @@ def get_fife_path(fife_custom_path=None):
 	try:
 		import config
 		_paths.append(config.fife_path)
+		if not check_path_for_fife(config.fife_path):
+			print 'Invalid fife_path in config.py: %s' % config.fife_path
 	except (ImportError, AttributeError):
 		# no config, check for commandline arg
 		if fife_custom_path is not None:
 			_paths.append(fife_custom_path)
+			if not check_path_for_fife(fife_custom_path):
+				print 'Specified invalid fife path: %s' %  fife_custom_path
 
-	# try frequently used paths
-	_paths += [ a + '/' + b + '/' + c for \
-							a in ('.', '..', '../..') for \
-							b in ('.', 'fife', 'FIFE', 'Fife') for \
-							c in ('.', 'trunk') ]
+		else:
+			# try frequently used paths
+			_paths += [ a + '/' + b + '/' + c for \
+									a in ('.', '..', '../..') for \
+									b in ('.', 'fife', 'FIFE', 'Fife') for \
+									c in ('.', 'trunk') ]
 
 	fife_path = None
 	for p in _paths:
-		if p not in sys.path:
-			# check if we are in a fife dir by checking for existence of fife dirs
-			for pe in [ os.path.abspath(p + '/' + a) for a in ('.', 'engine', 'engine/extensions', 'engine/swigwrappers/python') ]:
-				if not os.path.exists(pe):
-					break
-			else:
-				fife_path = p
-
+		if p not in sys.path: # skip dirs where import would have found fife
+			if check_path_for_fife(p):
 				log().debug("Found FIFE in %s", fife_path)
+
+				fife_path = p
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				for pe in \
@@ -109,6 +110,14 @@ def get_fife_path(fife_custom_path=None):
 		print _('FIFE was not found.')
 		exit()
 	return fife_path
+
+def check_path_for_fife(path):
+	for pe in [ os.path.abspath(path + '/' + a) for a in ('.', 'engine',  \
+																										 'engine/extensions',  \
+																										 'engine/swigwrappers/python') ]:
+		if not os.path.exists(pe):
+			return False
+	return True
 
 def find_FIFE(fife_custom_path=None):
 	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).

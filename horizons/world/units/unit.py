@@ -73,7 +73,8 @@ class Unit(WorldObject):
 	def __del__(self):
 		if hasattr(self, "_instance") and \
 			 self._instance.getLocationRef().getLayer() is not None:
-			self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+			horizons.main.session.view.layers[LAYERS.OBJECTS].deleteInstance(self._instance)
+			#self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
 	def act(self, action, facing_loc, repeating=False):
 		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
@@ -189,7 +190,7 @@ class Unit(WorldObject):
 			except PathBlockedError:
 				self.__is_moving = False
 				self.next_target = self.position
-				if self.owner is not None:
+				if self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
 					self.owner.notify_unit_path_blocked(self)
 				else:
 					print 'WARNING: unit %s %s has no owner and a blocked path!' % (self, self.getId())

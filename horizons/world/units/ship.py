@@ -145,8 +145,6 @@ class Ship(Unit):
 
 		return self
 
-		return ShipPather(self)
-
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

@@ -98,7 +98,7 @@ class World(LivingObject):
 				# exactly one player, we can quite savely use this one
 				self.player = human_players[0]
 
-		if self.player is None: # still..
+		if self.player is None and horizons.main.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
@@ -132,8 +132,8 @@ class World(LivingObject):
 				ground = default_grounds(x, y)
 				number_of_water_tiles += 1
 				self.grounds.append(ground)
-				for x_offset in xrange(0,10):
-					for y_offset in xrange(0,10):
+				for x_offset in xrange(0, 10):
+					for y_offset in xrange(0, 10):
 						self.ground_map[(x+x_offset, y+y_offset)] = weakref.ref(ground)
 						self.water.append((x+x_offset, y+y_offset))
 		print "Adding %d water tiles..." % number_of_water_tiles
