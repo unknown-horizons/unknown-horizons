@@ -24,7 +24,9 @@ import horizons.main
 import pychan
 
 from tabinterface import TabInterface
-from horizons.util import PychanChildFinder
+from horizons.util import PychanChildFinder, Callback
+from horizons.i18n import load_xml_translated
+
 
 class OverviewTab(TabInterface):
 
@@ -81,18 +83,28 @@ class ShipOverviewTab(OverviewTab):
 		self.widget.findChild(name='name').stylize("headline")
 
 	def refresh(self):
+		# show rename when you click on name
+		events = {
+			'name': pychan.tools.callbackWithArguments(horizons.main.gui.show_change_name_dialog, self.instance)
+		}
+
+		# check if we can display the foundSettlement-anchor
 		islands = horizons.main.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
 		if len(islands) > 0:
-			events = { 'foundSettelment': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, 1, weakref.ref(self.instance) )}
-			self.widget.mapEvents(events)
+			events['foundSettelment'] = \
+						pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui._build, \
+																							 1, weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettelment').set_active()
 		else:
-			events = { 'foundSettelment': None }
-			self.widget.mapEvents(events)
+			events['foundSettelment'] = None
 			self.widget.child_finder('bg_button').set_inactive()
 			self.widget.child_finder('foundSettelment').set_inactive()
+
+		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
+
+
 
 
 class ProductionOverviewTab(OverviewTab):
@@ -115,6 +127,5 @@ class ProductionOverviewTab(OverviewTab):
 		if hasattr(self.instance, 'running_costs'):
 			self.widget.child_finder('running_costs').text = unicode(self.instance.running_costs)
 		super(ProductionOverviewTab, self).refresh()
-
 
 

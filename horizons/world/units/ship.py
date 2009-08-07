@@ -27,11 +27,11 @@ import horizons.main
 from horizons.gui.tabs import TabWidget, ShipInventoryTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding.pather import ShipPather
-from horizons.util import Point
+from horizons.util import Point, NamedObject
 from unit import Unit
 from horizons.constants import LAYERS
 
-class Ship(Unit):
+class Ship(Unit, NamedObject):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -41,8 +41,6 @@ class Ship(Unit):
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 		self.setup_inventory()
-
-		self.set_name()
 
 		horizons.main.session.world.ships.append(self)
 		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -122,13 +120,12 @@ class Ship(Unit):
 					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 				)
 
-	def set_name(self):
-		self.name = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
+	def get_default_name(self):
+		return horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 
 	def save(self, db):
 		super(Ship, self).save(db)
 
-		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
 		self.inventory.save(db, self.getId())
 
 	def load(self, db, worldid):
@@ -136,8 +133,6 @@ class Ship(Unit):
 
 		self.setup_inventory()
 		self.inventory.load(db, worldid)
-
-		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
 		# register ship in world
 		horizons.main.session.world.ships.append(self)
@@ -148,8 +143,8 @@ class Ship(Unit):
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
-	def set_name(self):
-		self.name = horizons.main.db("SELECT name FROM data.shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0]
+	def get_default_name(self):
+		return horizons.main.db("SELECT name FROM data.shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0]
 
 	def show_menu(self):
 		pass

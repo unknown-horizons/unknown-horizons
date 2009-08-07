@@ -19,21 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
+from horizons.util import WorldObject
 
-from living import livingProperty, LivingObject
-from stablelist import stablelist
-from color import Color
-from point import Point
-from rect import Rect
-from circle import Circle
-from changelistener import Changelistener
-from weakmethod import WeakMethod
-from weaklist import WeakList
-from worldobject import WorldObject
-from weakmethodlist import WeakMethodList
-from encoder import encode, decode
-from loader import ActionSetLoader
-from callback import Callback
-from pychanchildfinder import PychanChildFinder
-from named_object import NamedObject
+class NamedObject(WorldObject):
+	"""An object that has a name."""
+	def __init__(self, name=None, **kwargs):
+		super(NamedObject, self).__init__(**kwargs)
+		self.set_name(name)
+
+	def set_name(self, name=None):
+		"""Acctually sets the name."""
+		if name is None:
+			name = self.get_default_name()
+		self.name = name
+		self._changed()
+
+	def get_default_name(self):
+		return 'object_%s' % self.getId()
+
+	def save(self, db):
+		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
+
+	def load(self, db, worldid):
+		self.name = db("SELECT name FROM name WHERE rowid = ?", self.getId())[0][0]
+

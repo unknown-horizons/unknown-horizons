@@ -24,6 +24,7 @@ import os
 import os.path
 import glob
 import time
+import pychan
 
 from horizons.util.color import Color
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
@@ -90,8 +91,9 @@ class Menus(object):
 		self.widgets['ingame_pause'] = load_xml_translated('ingame_pause.xml')
 		self.widgets['ingame_pause'].stylize('book')
 		self.widgets['ingame_pause'].findChild(name='headline').stylize('headline') # style definition for headline
-                self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml') 
+		self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml')
 
+		self.widgets['change_name'] = load_xml_translated("change_name_dialog.xml")
 
 		for widget in self.widgets.itervalues():
 			center_widget(widget)
@@ -620,9 +622,9 @@ class Menus(object):
 			return False
 		selected_file = map_files[selected_item]
 		if self.show_popup(_("Confirm deletion"),
-								 _('Do you really want to delete the savegame "%s"?') % \
-								 SavegameManager.get_savegamename_from_filename(selected_file), \
-								 show_cancel_button = True):
+											 _('Do you really want to delete the savegame "%s"?') % \
+											 SavegameManager.get_savegamename_from_filename(selected_file), \
+											 show_cancel_button = True):
 			os.unlink(selected_file)
 			return True
 		else:
@@ -647,7 +649,7 @@ class Menus(object):
 				details_label.text += "Unknown savedate\n"
 			else:
 				details_label.text += "Saved at %s\n" % \
-						time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
+										 time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 			if savegame_info['savecounter'] == 1:
 				details_label.text += "Saved 1 time\n"
 			elif savegame_info['savecounter'] > 1:
@@ -710,8 +712,8 @@ class Menus(object):
 
 			self.current.findChild(name="savegamelist").capture(self.create_show_savegame_details(self.current, map_files, 'savegamelist'))
 			if not self.show_dialog(self.current, {'okButton' : True, 'cancelButton' : False},
-												onPressEscape = False,
-												event_map={'deleteButton' : tmp_delete_savegame}):
+															onPressEscape = False,
+															event_map={'deleteButton' : tmp_delete_savegame}):
 				self.current = old_current
 				return
 
@@ -751,8 +753,8 @@ class Menus(object):
 
 		self.current.findChild(name='savegamelist').capture(tmp_selected_changed)
 		if not self.show_dialog(self.current, {'okButton' : True, 'cancelButton' : False},
-											onPressEscape = False,
-											event_map={'deleteButton' : tmp_delete_savegame}):
+														onPressEscape = False,
+														event_map={'deleteButton' : tmp_delete_savegame}):
 			self.current = old_current
 			return
 
@@ -776,7 +778,32 @@ class Menus(object):
 	def toggle_ingame_pdb_start(self):
 		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
 		pass
-		
+
+
+	def show_change_name_dialog(self, instance):
+		horizons.main.session.speed_pause()
+		events = {
+			'okButton': pychan.tools.callbackWithArguments(self.change_name, instance),
+			'cancelButton': self.hide_change_name_dialog
+		}
+		self.on_escape = self.hide_change_name_dialog
+		self.widgets['change_name'].mapEvents(events)
+		self.widgets['change_name'].show()
+
+	def hide_change_name_dialog(self):
+		horizons.main.session.speed_unpause()
+		self.on_escape = self.show_pause
+		self.widgets['change_name'].hide()
+
+	def change_name(self, instance):
+		new_name = self.widgets['change_name'].collectData('new_name')
+		self.widgets['change_name'].findChild(name='new_name').text = u''
+		instance.set_name(new_name)
+		self.hide_change_name_dialog()
+
+
+
+
 
 def center_widget(widget):
 	"""Centers the widget in the parameter

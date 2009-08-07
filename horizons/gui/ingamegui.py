@@ -255,6 +255,8 @@ class IngameGui(LivingObject):
 			self.gui['status'].show()
 
 	def update_settlement(self):
+		self.gui['cityInfo'].mapEvents({'city_name': pychan.tools.callbackWithArguments( \
+			horizons.main.gui.show_change_name_dialog, self.settlement)})
 		foundlabel = self.gui['cityInfo'].child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()

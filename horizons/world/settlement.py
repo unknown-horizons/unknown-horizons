@@ -20,10 +20,10 @@
 # ###################################################
 import horizons.main
 from storage import PositiveSizedSlotStorage
-from horizons.util import WorldObject, WeakList
+from horizons.util import WorldObject, WeakList, NamedObject
 from tradepost import TradePost
 
-class Settlement(TradePost, WorldObject):
+class Settlement(TradePost, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
@@ -31,11 +31,13 @@ class Settlement(TradePost, WorldObject):
 		@param owner: Player object that owns the settlement
 		"""
 		super(Settlement, self).__init__()
-		self.name = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 		self.owner = owner
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 
 		self.setup_storage()
+
+	def get_default_name(self):
+		return horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
 
 	@property
 	def inhabitants(self):
@@ -62,8 +64,6 @@ class Settlement(TradePost, WorldObject):
 
 		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
 			self.getId(), islandid, self.owner.getId())
-		db("INSERT INTO name (rowid, name) VALUES(?, ?)",
-			self.getId(), self.name)
 		self.inventory.save(db, self.getId())
 
 	@classmethod
@@ -74,8 +74,6 @@ class Settlement(TradePost, WorldObject):
 
 		self.owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		self.owner = WorldObject.get_object_by_id(self.owner)
-
-		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 
 		self.setup_storage()
 		self.inventory.load(db, worldid)

@@ -10,7 +10,10 @@
 
 	<Container position="0,70" size="245,300" >
 		<!-- Name of Ship -->
-		<Label name='name' position="95,7" text="" />
+		<!-- <Button name='name' position="95,7" text="" /> -->
+		<!-- just a dummy button here for now; a text button doesn't seem to work, it doesn't react to click -->
+		<ImageButton name='name' up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
+	
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 		<!-- Picture -->

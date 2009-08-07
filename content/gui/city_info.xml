@@ -6,6 +6,6 @@
 	<Icon image="content/gui/images/icons/hud/main/icon_settlement.png"  position="5,5" />
 	<Icon name="city_info_inhabitants" image="content/gui/images/icons/hud/main/icon_inhabitants.png"  position="174,8" />
 
-	<Label name="city_name" text="" position="48,20"/>
+	<Button name="city_name" text="" position="48,20"/>
 	<Label name="city_inhabitants" position="204,20" text=""/>
 </Container>
