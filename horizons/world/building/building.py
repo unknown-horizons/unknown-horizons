@@ -76,8 +76,12 @@ class BasicBuilding(AmbientSound, WorldObject):
 		"""gets the payout from the settlement in form of it's running costs"""
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
 
-	def act(self, action, facing_loc, repeating=False):
-		self._instance.act(action+"_"+str(self._action_set_id),facing_loc, repeating)
+	def act(self, action, facing_loc=None, repeating=False):
+		if facing_loc is None:
+			facing_loc = self._instance.getFacingLocation()
+		if not action in horizons.main.action_sets[self._action_set_id]:
+			action = 'idle'
+		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 
 	def remove(self):
 		"""Removes the building"""

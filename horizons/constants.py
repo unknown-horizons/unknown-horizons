@@ -67,4 +67,4 @@ class PATHS:
 
 ## The Production States available in the game sorted by importance from least
 ## to most important
-PRODUCTION_STATES = Enum('waiting_for_res', 'producing', 'paused')
+PRODUCTION_STATES = Enum('waiting_for_res', 'inventory_full', 'producing', 'paused')

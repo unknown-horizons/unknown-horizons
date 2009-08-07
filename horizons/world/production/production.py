@@ -164,10 +164,17 @@ class Production(WorldObject):
 	## PROTECTED METHODS
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
-		if self._check_available_res() and self._check_for_space_for_produced_res():
+		check_space = self._check_for_space_for_produced_res()
+		if not check_space:
+			self._state = PRODUCTION_STATES.inventory_full
+			self._changed()
+		elif self._check_available_res() and check_space:
 			# stop listening for res
 			self.inventory.remove_change_listener(self._check_inventory)
 			self._start_production()
+		else:
+			self._state = PRODUCTION_STATES.waiting_for_res
+			self._changed()
 
 	def _start_production(self):
 		"""Acctually start production. Sets self to producing state"""
@@ -187,13 +194,11 @@ class Production(WorldObject):
 
 	def _finished_producing(self):
 		"""Called when the production finishes. Puts res in inventory"""
-		self._state = PRODUCTION_STATES.waiting_for_res
 		self.log.debug("%s finished", self)
 		for res, amount in self._prod_line.produced_res.iteritems():
 			self.inventory.alter(res, amount)
 			self.log.debug("produced %s of %s", amount, res)
 		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
-		self._changed()
 
 	def _check_available_res(self):
 		"""Checks if there are enough resources to start production.

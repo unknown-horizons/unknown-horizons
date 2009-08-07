@@ -76,7 +76,11 @@ class Unit(WorldObject):
 			horizons.main.session.view.layers[LAYERS.OBJECTS].deleteInstance(self._instance)
 			#self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 
-	def act(self, action, facing_loc, repeating=False):
+	def act(self, action, facing_loc=None, repeating=False):
+		if facing_loc is None:
+			facing_loc = self._instance.getFacingLocation()
+		if not action in horizons.main.action_sets[self._action_set_id]:
+			action = 'idle'
 		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 
 	def start(self):

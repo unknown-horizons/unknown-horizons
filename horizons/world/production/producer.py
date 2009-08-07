@@ -52,21 +52,38 @@ class Producer(ResourceHandler):
 		self.log.debug('Producer %s: added production line %s', self.getId(), \
 									 production.get_production_line_id())
 		self._productions[production.get_production_line_id()] = production
+		production.add_change_listener(self.on_production_change, call_listener_now=True)
 		self._changed()
 
 	def load_production(self, db, worldid):
 		return self.production_class.load(db, worldid)
 
-	def get_current_state(self):
+	def _get_current_state(self):
 		"""Returns the current state of the producer. It is the most important
 		state of all productions combined. Check the PRODUCTION_STATES constant
 		for list of states and their importance."""
 		current_state = PRODUCTION_STATES.waiting_for_res
-		for production in self._get_productions:
+		for production in self._get_productions():
 			if current_state < production.get_state():
 				current_state = production.get_state()
 		return current_state
 
+	def on_production_change(self):
+		"""Makes the instance act according to the producers
+		current state"""
+		state = self._get_current_state()
+		if (state is PRODUCTION_STATES.waiting_for_res or\
+			state is PRODUCTION_STATES.paused):
+			self.act("idle", repeating=True)
+		elif state is PRODUCTION_STATES.producing:
+			self.act("work", repeating=True)
+		elif state is PRODUCTION_STATES.inventory_full:
+			self.act("idle_full", repeating=True)
+
+	def remove_production(self, production):
+		assert isinstance(production, Production)
+		production.remove_change_listener(self.on_production_change)
+		super(Producer, self).remove_production(production)
 
 class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
