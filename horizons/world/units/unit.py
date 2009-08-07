@@ -44,7 +44,8 @@ class Unit(WorldObject):
 		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", self.id)[0][0]
 		class tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = tmp()
-		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionFinished = \
+				WeakMethod(self.onInstanceActionFinished)
 		if self._object is None:
 			self.__class__._loadObject()
 		self.position = Point(x, y)
@@ -71,10 +72,15 @@ class Unit(WorldObject):
 		self.path = self.pather_class(self)
 
 	def __del__(self):
+		self._instance.removeActionListener(self.InstanceActionListener)
 		if hasattr(self, "_instance") and \
 			 self._instance.getLocationRef().getLayer() is not None:
 			horizons.main.session.view.layers[LAYERS.OBJECTS].deleteInstance(self._instance)
 			#self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+		else:
+			# only debug output here:
+			if hasattr(self, "_instance"):
+				self.log.warning('Unit %s has _instance without layer in __del__')
 
 	def act(self, action, facing_loc=None, repeating=False):
 		if facing_loc is None:
