@@ -114,7 +114,10 @@ class Production(WorldObject):
 
 	def get_state(self):
 		"""Returns the Production's current state"""
-		return self._state
+		if self._prod_line.changes_animation:
+			return self._state
+		else:
+			return None
 
 	def toggle_pause(self):
 		if self.is_paused():

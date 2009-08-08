@@ -64,8 +64,9 @@ class Producer(ResourceHandler):
 		for list of states and their importance."""
 		current_state = PRODUCTION_STATES.waiting_for_res
 		for production in self._get_productions():
-			if current_state < production.get_state():
-				current_state = production.get_state()
+			state = production.get_state()
+			if state is not None and current_state < state:
+				current_state = state
 		return current_state
 
 	def on_production_change(self):
