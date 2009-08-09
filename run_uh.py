@@ -95,6 +95,10 @@ if __name__ == '__main__':
 	logging.config.fileConfig('content/logging.conf')
 	gettext.install("unknownhorizons", "po", unicode=1)
 
+	from horizons.constants import PATHS
+	# create userdir if not exists
+	if not os.path.isdir(PATHS.USER_DIR):
+		os.path.makedirs(PATHS.USER_DIR)
 
 	parser = get_option_parser()
 	(options, args) = parser.parse_args()
@@ -102,8 +106,12 @@ if __name__ == '__main__':
 	# apply options
 	if options.debug:
 		logging.getLogger().setLevel(logging.DEBUG)
+		log_dir = PATHS.USER_DIR + '/log'
+		# check for logging dir
+		if not os.path.isdir(log_dir):
+			os.makedirs(log_dir)
 		# init a logfile handler with a dynamic filename
-		logfilename = "unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
+		logfilename = log_dir + "/unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
 		print 'Logging to stderr and %s' % logfilename
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
@@ -159,7 +167,7 @@ def init_environment():
 
 
 def get_fife_path(fife_custom_path=None):
-	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
+	"""Returns absolute path to fife engine. Calls sys.exit() if it can't be found."""
 	# assemble a list of paths where fife could be located at
 	_paths = []
 	# check if there is a config file (has to be called config.py)
@@ -210,8 +218,8 @@ def get_fife_path(fife_custom_path=None):
 				break
 	else:
 		print _('FIFE was not found.')
-		exit()
-	return fife_path
+		sys.exit(1)
+	return os.path.abspath(fife_path)
 
 def check_path_for_fife(path):
 	for pe in [ os.path.abspath(path + '/' + a) for a in ('.', 'engine',  \
