@@ -27,6 +27,7 @@ attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 
 import sys
 import os
+import os.path
 import gettext
 import time
 import logging
@@ -88,8 +89,7 @@ def get_option_parser():
 	return p
 
 
-if __name__ == '__main__':
-
+def main():
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig('content/logging.conf')
@@ -119,7 +119,6 @@ if __name__ == '__main__':
 		logging.getLogger(module).setLevel(logging.DEBUG)
 
 	# NOTE: this might cause a program restart
-	from run_uh import init_environment # this should be a declaration of the function
 	init_environment()
 
 	#start unknownhorizons
@@ -165,7 +164,6 @@ def init_environment():
 	#for some external libraries distributed with unknownhorizons
 	sys.path.append('horizons/ext')
 
-
 def get_fife_path(fife_custom_path=None):
 	"""Returns absolute path to fife engine. Calls sys.exit() if it can't be found."""
 	# assemble a list of paths where fife could be located at
@@ -194,27 +192,25 @@ def get_fife_path(fife_custom_path=None):
 	for p in _paths:
 		if p not in sys.path: # skip dirs where import would have found fife
 			if check_path_for_fife(p):
+				fife_path = os.path.abspath(p)
+
 				log().debug("Found FIFE in %s", fife_path)
 
-				fife_path = p
-
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				for pe in \
-						[ os.path.abspath(fife_path + os.path.sep + a) for \
+				for pe in [ fife_path + os.path.sep + a for \
 							a in ('engine/extensions', 'engine/swigwrappers/python') ]:
 					if os.path.exists(pe):
 						sys.path.append(pe)
 				os.environ['PYTHONPATH'] = os.path.pathsep.join(\
 					os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + \
-					[ os.path.abspath(fife_path + os.path.sep + a) for a in \
+					[ fife_path + os.path.sep + a for a in \
 						('engine/extensions', 'engine/swigwrappers/python') ])
 
 				#add windows paths (<fife>/.)
 				os.environ['PATH'] = os.path.pathsep.join( \
 					os.environ.get('PATH', '').split(os.path.pathsep) + \
-					[ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
-				os.path.defpath += os.path.pathsep + \
-					os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+					[ fife_path + '/' + a for a in ('.') ])
+				os.path.defpath += os.path.pathsep + fife_path
 				break
 	else:
 		print _('FIFE was not found.')
@@ -222,8 +218,8 @@ def get_fife_path(fife_custom_path=None):
 	return os.path.abspath(fife_path)
 
 def check_path_for_fife(path):
-	for pe in [ os.path.abspath(path + '/' + a) for a in ('.', 'engine',  \
-																										 'engine/extensions',  \
+	absolute_path = os.path.abspath(path)
+	for pe in [ '%s/%s' % (absolute_path, a) for a in ('.', 'engine', 'engine/extensions',  \
 																										 'engine/swigwrappers/python') ]:
 		if not os.path.exists(pe):
 			return False
@@ -252,3 +248,6 @@ def find_FIFE(fife_custom_path=None):
 	os.execvp(args[0], args)
 
 
+
+if __name__ == '__main__':
+	main()

@@ -21,7 +21,7 @@
 
 import shutil
 import os.path
-import simplejson
+import ext.simplejson as simplejson
 
 import horizons.main
 

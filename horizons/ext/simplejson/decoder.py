@@ -4,7 +4,7 @@ Implementation of JSONDecoder
 import re
 import sys
 
-from simplejson.scanner import Scanner, pattern
+from scanner import Scanner, pattern
 try:
     from simplejson._speedups import scanstring as c_scanstring
 except ImportError:
@@ -248,7 +248,7 @@ class JSONDecoder(object):
     Simple JSON <http://json.org> decoder
 
     Performs the following translations in decoding by default:
-    
+
     +---------------+-------------------+
     | JSON          | Python            |
     +===============+===================+
@@ -282,7 +282,7 @@ class JSONDecoder(object):
         ``encoding`` determines the encoding used to interpret any ``str``
         objects decoded by this instance (utf-8 by default).  It has no
         effect when decoding ``unicode`` objects.
-        
+
         Note that currently only encodings that are a superset of ASCII work,
         strings of other encodings should be passed in as ``unicode``.
 
