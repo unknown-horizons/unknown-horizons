@@ -191,8 +191,10 @@ def get_fife_path(fife_custom_path=None):
 	fife_path = None
 	for p in _paths:
 		if p not in sys.path: # skip dirs where import would have found fife
+			p = os.path.abspath(p)
+			log().debug("Searching for FIFE in %s", p)
 			if check_path_for_fife(p):
-				fife_path = os.path.abspath(p)
+				fife_path = p
 
 				log().debug("Found FIFE in %s", fife_path)
 
