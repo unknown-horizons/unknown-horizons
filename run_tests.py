@@ -29,8 +29,8 @@ import unittest
 
 if __name__ == '__main__':
 
-	import environment
-	environment.init()
+	from run_uh import init_environment
+	init_environment()
 
 	import horizons.main
 

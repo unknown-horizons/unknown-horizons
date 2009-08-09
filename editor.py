@@ -28,8 +28,8 @@ if __name__ == '__main__':
 	#chdir to unknownhorizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
-	import environment
-	environment.init()
+	from run_uh import init_environment
+	init_environment()
 
 	os.chdir(environment.get_fife_path() + '/clients/editor')
 	#start editor

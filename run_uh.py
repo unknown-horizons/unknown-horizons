@@ -110,11 +110,9 @@ if __name__ == '__main__':
 	for module in options.debug_module:
 		logging.getLogger(module).setLevel(logging.DEBUG)
 
-	import environment
 	# NOTE: this might cause a program restart
-	environment.init()
-
-	# parse options
+	from run_uh import init_environment # this should be a declaration of the function
+	init_environment()
 
 	#start unknownhorizons
 	import horizons.main
@@ -130,4 +128,119 @@ if __name__ == '__main__':
 		profile.runctx('horizons.main.start(options)', globals(), locals(), \
 									 outfilename)
 		log().warning('Program ended. Profiling output: %s', outfilename)
+
+
+
+"""
+Functions controlling the program environment.
+NOTE: these are supposed to be in an extra file, but are placed here for simplifying
+			distribution
+"""
+def init_environment():
+	"""Sets up everything. Use in any program that requires access to fife and uh modules."""
+
+	gettext.install("unknownhorizons", "po", unicode=1)
+
+	(options, args) = get_option_parser().parse_args()
+
+	#find fife and setup search paths, if it can't be imported yet
+	try:
+		import fife
+	except ImportError, e:
+		if options.fife_in_library_path:
+			# fife should already be in LD_LIBRARY_PATH
+			print 'Failed to load fife:', e
+			exit(1)
+		log().debug('Searching for FIFE')
+		find_FIFE(options.fife_path)
+
+	#for some external libraries distributed with unknownhorizons
+	sys.path.append('horizons/ext')
+
+
+def get_fife_path(fife_custom_path=None):
+	"""Returns path to fife engine. Calls sys.exit() if it can't be found."""
+	# assemble a list of paths where fife could be located at
+	_paths = []
+	# check if there is a config file (has to be called config.py)
+	try:
+		import config
+		_paths.append(config.fife_path)
+		if not check_path_for_fife(config.fife_path):
+			print 'Invalid fife_path in config.py: %s' % config.fife_path
+	except (ImportError, AttributeError):
+		# no config, check for commandline arg
+		if fife_custom_path is not None:
+			_paths.append(fife_custom_path)
+			if not check_path_for_fife(fife_custom_path):
+				print 'Specified invalid fife path: %s' %  fife_custom_path
+
+		else:
+			# try frequently used paths
+			_paths += [ a + '/' + b + '/' + c for \
+									a in ('.', '..', '../..') for \
+									b in ('.', 'fife', 'FIFE', 'Fife') for \
+									c in ('.', 'trunk') ]
+
+	fife_path = None
+	for p in _paths:
+		if p not in sys.path: # skip dirs where import would have found fife
+			if check_path_for_fife(p):
+				log().debug("Found FIFE in %s", fife_path)
+
+				fife_path = p
+
+				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
+				for pe in \
+						[ os.path.abspath(fife_path + os.path.sep + a) for \
+							a in ('engine/extensions', 'engine/swigwrappers/python') ]:
+					if os.path.exists(pe):
+						sys.path.append(pe)
+				os.environ['PYTHONPATH'] = os.path.pathsep.join(\
+					os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + \
+					[ os.path.abspath(fife_path + os.path.sep + a) for a in \
+						('engine/extensions', 'engine/swigwrappers/python') ])
+
+				#add windows paths (<fife>/.)
+				os.environ['PATH'] = os.path.pathsep.join( \
+					os.environ.get('PATH', '').split(os.path.pathsep) + \
+					[ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				os.path.defpath += os.path.pathsep + \
+					os.path.pathsep.join([ os.path.abspath(fife_path + '/' + a) for a in ('.') ])
+				break
+	else:
+		print _('FIFE was not found.')
+		exit()
+	return fife_path
+
+def check_path_for_fife(path):
+	for pe in [ os.path.abspath(path + '/' + a) for a in ('.', 'engine',  \
+																										 'engine/extensions',  \
+																										 'engine/swigwrappers/python') ]:
+		if not os.path.exists(pe):
+			return False
+	return True
+
+def find_FIFE(fife_custom_path=None):
+	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).
+	If it's already there, the function will return, else
+	it will restart uh with correct $LD_LIBRARY_PATH. """
+	fife_path = get_fife_path(fife_custom_path) # terminates program if fife can't be found
+
+	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
+		[ os.path.abspath(fife_path + '/' + a) for  \
+			a in ('ext/minizip', 'ext/install/lib') ] + \
+		  (os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
+			 os.environ.has_key('LD_LIBRARY_PATH') else []))
+
+	log().debug("Restarting with proper LD_LIBRARY_PATH...")
+	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
+	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
+
+	# assemble args (python run_uh.py ..)
+	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
+	log().debug("Restarting with args %s", args)
+	os.execvp(args[0], args)
+
 

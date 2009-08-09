@@ -31,7 +31,7 @@ Usefull for debugging, because when run_uh.py restarts, it can't be debugged wit
 
 
 if __name__ == '__main__':
-	import environment
+	import run_uh
 	import sys
 	import os
 
@@ -45,8 +45,8 @@ if __name__ == '__main__':
 		if "--fife-in-library-path" in sys.argv:
 			print 'Failed to load FIFE:', e
 			exit(1)
-		environment.find_FIFE()
-	
+		run_uh.find_FIFE()
+
 	args = sys.argv[1:]
 	args.remove("--fife-in-library-path")
 	print 'Executing with proper fife path: %s with args %s' % (sys.argv[1], args)

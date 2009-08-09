@@ -53,16 +53,15 @@ class Ship(Unit, NamedObject):
 		## TODO: inherit from storageholder
 		self.inventory = PositiveTotalStorage(200)
 
-	def move_tick(self):
-		#print "SHIP %d: del: %d %d" % (self.getId(), self.position.x, self.position.y)
-
+	def _move_tick(self):
+		"""Keeps track of the ship's position in the global ship_map"""
 		del horizons.main.session.world.ship_map[self.position.to_tuple()]
 
-		super(Ship, self).move_tick()
+		super(Ship, self)._move_tick()
 
 		# save current and next position for ship, since it will be between them
 		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		horizons.main.session.world.ship_map[self.next_target.to_tuple()] = weakref.ref(self)
+		horizons.main.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def select(self):
 		"""Runs neccesary steps to select the unit."""

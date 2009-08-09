@@ -228,9 +228,8 @@ class BasicBuilding(AmbientSound, WorldObject):
 
 	def __str__(self): # debug
 		classname = horizons.main.db("SELECT name FROM building where id = ?", self.id)[0][0]
-		# must not call getId if obj has no id, cause it changes the program
-		worldid = None if not hasattr(self, '_WorldObject__id') else self.getId()
-		return classname+'(id=%s;worldid=%s)' % (self.id, worldid)
+		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
+																		 self.getId(create_if_nonexistent=False))
 
 
 

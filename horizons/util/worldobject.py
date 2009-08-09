@@ -34,12 +34,15 @@ class WorldObject(Changelistener):
 	def __init__(self, **kwargs):
 		super(WorldObject, self).__init__(**kwargs)
 
-	def getId(self):
+	def getId(self, create_if_nonexistent = True):
 		if not hasattr(self, "_WorldObject__id"):
-			assert WorldObject.__next_id not in WorldObject.__objects
-			self.__id = WorldObject.__next_id
-			WorldObject.__next_id = WorldObject.__next_id + 1
-			WorldObject.__objects[self.__id] = self
+			if not create_if_nonexistent:
+				return None
+			else:
+				assert WorldObject.__next_id not in WorldObject.__objects
+				self.__id = WorldObject.__next_id
+				WorldObject.__next_id = WorldObject.__next_id + 1
+				WorldObject.__objects[self.__id] = self
 		return self.__id
 
 	@classmethod
