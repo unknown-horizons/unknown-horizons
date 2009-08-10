@@ -88,6 +88,16 @@ class MovingObject(object):
 		self.move_callbacks = WeakMethodList(callback)
 		self.path.end_move()
 
+	def _setup_move(self, action='move'):
+		"""Executes necessary steps to begin a movement. Currently only the action is set."""
+		# try a number of actions and use first existent one
+		for a in [action, 'move', self.action]:
+			if self.has_action(a):
+				self._move_action = a
+				return
+		# this case shouldn't really happen, but no other action might be available (e.g. ships)
+		self._move_action = 'idle'
+
 	def move(self, destination, callback = None, destination_in_building = False, action='move'):
 		"""Moves unit to destination
 		@param destination: Point or Rect
@@ -103,12 +113,7 @@ class MovingObject(object):
 			return False
 
 		self.move_callbacks = WeakMethodList(callback)
-		if action in horizons.main.action_sets[self._action_set_id].keys():
-			self._move_action = action
-		elif 'move' in horizons.main.action_sets[self._action_set_id].keys():
-			self._move_action = 'move'
-		else:
-			self._move_action = self.action
+		self._setup_move(action)
 
 		# start moving by regular ticking (only if next tick isn't scheduled)
 		if not self.is_moving():
@@ -165,8 +170,8 @@ class MovingObject(object):
 				if self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
 					self.owner.notify_unit_path_blocked(self)
 				else:
-					print 'WARNING: unit %s %s has no owner and a blocked path!' % (self, self.getId())
-				self.log.debug("Unit %s: path is blocked, no way around", self.getId())
+					print 'WARNING: unit %s has no owner and a blocked path!' % self
+				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return
 
 		if self._next_target is None:
@@ -183,10 +188,6 @@ class MovingObject(object):
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self._next_target.x, self._next_target.y, 0))
 
-		# FIXME: on loading, move() isn't called, and therefore _move_action isn't defined,
-		#        which leads to a crash here. please fix this asap and remove following line!
-		if not hasattr(self, "_move_action"):
-			self._move_action = 'move'
 		self._instance.move(self._move_action+"_"+str(self._action_set_id), location, 16.0 / move_time[0])
 		# coords per sec
 
@@ -213,11 +214,13 @@ class MovingObject(object):
 		return self.path.get_move_target()
 
 	def save(self, db):
+		# NOTE: _move_action is currently not yet saved.
 		self.path.save(db, self.getId())
 
 	def load(self, db, worldid):
 		path_loaded = self.path.load(db, worldid)
 		if path_loaded:
 			self.__is_moving = True
+			self._setup_move()
 			horizons.main.session.scheduler.add_new_object(self._move_tick, self, 1)
 

@@ -56,8 +56,11 @@ class LAYERS:
 	OBJECTS = 2
 
 ## PATHS
+# workaround, so it can be used to create paths withing PATHS
+_user_dir = "%s/.unknown-horizons" % user.home
 class PATHS:
-	USER_DIR = "%s/.unknown-horizons" % user.home
+	USER_DIR = _user_dir
+	LOG_DIR = _user_dir + "/log"
 
 ## The Production States available in the game sorted by importance from least
 ## to most important

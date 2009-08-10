@@ -88,6 +88,12 @@ def get_option_parser():
 
 	return p
 
+def create_user_dirs():
+	"""Creates the userdir and subdirs. Includes from horizons."""
+	from horizons.constants import PATHS
+	for directory in [PATHS.USER_DIR, PATHS.LOG_DIR]:
+		if not os.path.isdir(directory):
+			os.path.makedirs(directory)
 
 def main():
 	#chdir to Unknown Horizons root
@@ -95,23 +101,17 @@ def main():
 	logging.config.fileConfig('content/logging.conf')
 	gettext.install("unknownhorizons", "po", unicode=1)
 
-	from horizons.constants import PATHS
-	# create userdir if not exists
-	if not os.path.isdir(PATHS.USER_DIR):
-		os.path.makedirs(PATHS.USER_DIR)
+	create_user_dirs()
 
 	parser = get_option_parser()
 	(options, args) = parser.parse_args()
 
 	# apply options
 	if options.debug:
+		from horizons.constants import PATHS
 		logging.getLogger().setLevel(logging.DEBUG)
-		log_dir = PATHS.USER_DIR + '/log'
-		# check for logging dir
-		if not os.path.isdir(log_dir):
-			os.makedirs(log_dir)
 		# init a logfile handler with a dynamic filename
-		logfilename = log_dir + "/unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
+		logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
 		print 'Logging to stderr and %s' % logfilename
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
@@ -144,7 +144,9 @@ NOTE: these are supposed to be in an extra file, but are placed here for simplif
 			distribution
 """
 def init_environment():
-	"""Sets up everything. Use in any program that requires access to fife and uh modules."""
+	"""Sets up everything. Use in any program that requires access to fife and uh modules.
+	It will parse sys.args, so this var has to contain only valid uh options."""
+	create_user_dirs()
 
 	gettext.install("unknownhorizons", "po", unicode=1)
 
@@ -210,14 +212,13 @@ def get_fife_path(fife_custom_path=None):
 
 				#add windows paths (<fife>/.)
 				os.environ['PATH'] = os.path.pathsep.join( \
-					os.environ.get('PATH', '').split(os.path.pathsep) + \
-					[ fife_path + '/' + a for a in ('.') ])
+					os.environ.get('PATH', '').split(os.path.pathsep) + [ fife_path ] )
 				os.path.defpath += os.path.pathsep + fife_path
 				break
 	else:
 		print _('FIFE was not found.')
 		sys.exit(1)
-	return os.path.abspath(fife_path)
+	return fife_path
 
 def check_path_for_fife(path):
 	absolute_path = os.path.abspath(path)
@@ -248,7 +249,6 @@ def find_FIFE(fife_custom_path=None):
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
 	log().debug("Restarting with args %s", args)
 	os.execvp(args[0], args)
-
 
 
 if __name__ == '__main__':

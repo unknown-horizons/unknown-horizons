@@ -22,6 +22,7 @@
 import math
 import fife
 import logging
+import random
 
 import horizons.main
 
@@ -41,7 +42,6 @@ class BuildingTool(NavigationTool):
 	log = logging.getLogger("gui.buildingtool")
 
 	def __init__(self, building, ship = None):
-		import random
 
 		super(BuildingTool, self).__init__()
 		self.ship = ship

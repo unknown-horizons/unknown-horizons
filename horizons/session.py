@@ -135,15 +135,10 @@ class Session(LivingObject):
 
 	def destroy_tool(self):
 		"""Initiate the destroy tool"""
-		if not hasattr(self.cursor, 'tear_tool_active'):
+		if not hasattr(self.cursor, 'tear_tool_active') or \
+			 not self.cursor.tear_tool_active:
 			self.cursor = TearingTool()
 			self.ingame_gui.hide_menu()
-		else:
-			if self.cursor.tear_tool_active is not True:
-				self.cursor = TearingTool()
-				self.ingame_gui.hide_menu()
-			else:
-				return
 
 	def autosave(self):
 		"""Called automatically in an interval"""
@@ -245,8 +240,6 @@ class Session(LivingObject):
 			self.view.center(center[0], center[1])
 		self.manager.load(db) # load the manager (there might me old scheduled ticks.
 		self.ingame_gui.load(db) # load the old gui positions and stuff
-		#setup view
-		#self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
 
 		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
