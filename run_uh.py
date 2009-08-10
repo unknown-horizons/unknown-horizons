@@ -93,7 +93,7 @@ def create_user_dirs():
 	from horizons.constants import PATHS
 	for directory in [PATHS.USER_DIR, PATHS.LOG_DIR]:
 		if not os.path.isdir(directory):
-			os.path.makedirs(directory)
+			os.makedirs(directory)
 
 def main():
 	#chdir to Unknown Horizons root
