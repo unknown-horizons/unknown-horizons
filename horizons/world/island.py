@@ -295,7 +295,7 @@ class Island(WorldObject):
 			# find a tree where we can place it
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE_CLASS:
-					point = building.location.origin
+					point = building.position.origin
 					horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS](self, x = point.x, \
 																																				y = point.y)
 					return

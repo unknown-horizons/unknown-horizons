@@ -319,7 +319,7 @@ class ProductionLine(object):
 	def __init__(self, ident):
 		self.id = ident
 		db_data = horizons.main.db("SELECT time, changes_animation FROM data.production_line WHERE id = ?", self.id)[0]
-		self.time = db_data[0] # time in ticks that production takes
+		self.time = db_data[0] # time in seconds that production takes
 		self.changes_animation = bool(db_data[1]) # wether this prodline influences animation
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
