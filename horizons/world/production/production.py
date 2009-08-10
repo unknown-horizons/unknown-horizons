@@ -114,6 +114,11 @@ class Production(WorldObject):
 
 	def get_state(self):
 		"""Returns the Production's current state"""
+		return self._state
+
+	def get_animating_state(self):
+		"""Returns the production's current state,
+		but only if it effects the animation, else None"""
 		if self._prod_line.changes_animation:
 			return self._state
 		else:
