@@ -31,7 +31,7 @@ from horizons.util import Point, NamedObject
 from unit import Unit
 from horizons.constants import LAYERS
 
-class Ship(Unit, NamedObject):
+class Ship(NamedObject, Unit):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position

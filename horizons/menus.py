@@ -266,10 +266,8 @@ class Menus(object):
 			settings.fife.screen.height = int(resolutions[new_settings['screen_resolution']].partition('x')[2])
 			changes_require_restart = True
 		if languages_map.items()[new_settings['language']][0] != settings.language.name:
-			print settings.language.name
 			import gettext
 			settings.language.name, settings.language.position = languages_map.items()[new_settings['language']]
-			print settings.language
 			if settings.language.name != _('System default'):
 				trans = gettext.translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
 				trans.install(unicode=1)
@@ -283,9 +281,6 @@ class Menus(object):
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):
 		""" Displays a popup with the specified text
-		NOTE: Often plain strings in code are used here. Please surround them
-		      with _() for gettext support.
-
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
@@ -428,18 +423,6 @@ class Menus(object):
 					'maplist' : 0
 				})
 				eventMap["maplist"] = self.create_show_savegame_details(self.current, self.current.files, 'maplist')
-			"""
-			NOTE: the following code is probably deprecated. showLoad doesn't exist here any more
-			if showCampaign:
-				pass
-				# Reenable if loading works
-				#eventMap['showRandom'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
-				#eventMap['showLoad'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, False, True)
-			elif showLoad:
-				# Reenable if loading works
-				#eventMap['showRandom'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, True, False, False)
-				eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True, False)
-			"""
 		self.current.mapEvents(eventMap)
 
 		self.current.distributeData({

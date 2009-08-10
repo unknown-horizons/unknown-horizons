@@ -170,7 +170,8 @@ class MovingObject(object):
 				if self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
 					self.owner.notify_unit_path_blocked(self)
 				else:
-					print 'WARNING: unit %s has no owner and a blocked path!' % self
+					# generic solution: retry in 2 secs
+					horizons.main.session.scheduler.add_new_object(self._move_tick, self, 32)
 				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return
 

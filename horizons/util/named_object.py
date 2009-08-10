@@ -38,8 +38,10 @@ class NamedObject(WorldObject):
 		return 'object_%s' % self.getId()
 
 	def save(self, db):
+		print >> open('/tmp/sa', 'a+'), self.getId()
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
 
 	def load(self, db, worldid):
+		print >> open('/tmp/lo', 'a+'), self.getId()
 		self.name = db("SELECT name FROM name WHERE rowid = ?", self.getId())[0][0]
 

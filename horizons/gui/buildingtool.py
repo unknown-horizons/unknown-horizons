@@ -42,7 +42,6 @@ class BuildingTool(NavigationTool):
 	log = logging.getLogger("gui.buildingtool")
 
 	def __init__(self, building, ship = None):
-
 		super(BuildingTool, self).__init__()
 		self.ship = ship
 		self._class = building
@@ -66,7 +65,9 @@ class BuildingTool(NavigationTool):
 		"""Highlights all buildable tiles."""
 		for island in horizons.main.session.world.islands:
 			for tile in island.grounds:
-				if tile.settlement is not None and tile.settlement.owner == horizons.main.session.world.player and self._class.is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
+				if tile.settlement is not None and \
+					 tile.settlement.owner == horizons.main.session.world.player and \
+					 self._class.is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 					if tile.object is not None:
 						horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
@@ -77,10 +78,14 @@ class BuildingTool(NavigationTool):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 		for island in horizons.main.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
-					free = (tile.settlement is None or tile.settlement.owner == horizons.main.session.world.player)
-					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
+					# check that there is no other player's settlement
+					free = (tile.settlement is None or \
+									tile.settlement.owner == horizons.main.session.world.player)
+					horizons.main.session.view.renderer['InstanceRenderer'].addColored( \
+						tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
 					if free and tile.object is not None:
-						horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+						horizons.main.session.view.renderer['InstanceRenderer'].addColored( \
+							tile.object._instance, 255, 255, 255)
 
 	def end(self):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
