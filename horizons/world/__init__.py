@@ -187,6 +187,10 @@ class World(LivingObject):
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
 						horizons.main.session.manager.execute( \
 							Build(tree,tile[0],tile[1], 45, ownerless=True, island=island))
+						buil = self.get_building(tile[0], tile[1])
+						for production in buil._productions.itervalues():
+							horizons.main.session.scheduler.rem_call(production._finished_producing, production)
+							production._finished_producing()
 						if random.randint(0, 40) < 1: # add animal to evey nth tree
 							wild_animal(island, x=tile[0], y=tile[1])
 			print "Done."
