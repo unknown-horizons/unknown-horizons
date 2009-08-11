@@ -168,6 +168,13 @@ class Production(WorldObject):
 
 		self._changed()
 
+	def finish_production_now(self):
+		"""Makes the production finish now"""
+		if self._state != PRODUCTION_STATES.producing:
+			return
+		horizons.main.session.scheduler.rem_call(self, self._finished_producing)
+		self._finished_producing()
+
 
 	## PROTECTED METHODS
 	def _check_inventory(self):

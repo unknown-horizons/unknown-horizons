@@ -86,6 +86,12 @@ class Producer(ResourceHandler):
 		production.remove_change_listener(self.on_production_change)
 		super(Producer, self).remove_production(production)
 
+	def finish_production_now(self):
+		"""Cheat, makes current production finish right now.
+		Usefull to make trees fully grown at game start."""
+		for production in self._productions.itervalues():
+			production.finish_production_now()
+
 class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific

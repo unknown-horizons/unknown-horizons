@@ -40,6 +40,7 @@ Combinations:
 
 """
 
+import sys
 from horizons.util import WorldObject
 
 class GenericStorage(WorldObject):
@@ -51,7 +52,7 @@ class GenericStorage(WorldObject):
 	def __init__(self, **kwargs):
 		super(GenericStorage, self).__init__(**kwargs)
 		self._storage = {}
-		self.limit = None
+		self.limit = sys.maxint
 
 	def save(self, db, ownerid):
 		super(GenericStorage, self).save(db)
@@ -129,10 +130,7 @@ class GenericStorage(WorldObject):
 		return self._storage.iteritems()
 
 	def __str__(self):
-		if hasattr(self, "_storage"):
-			return str(self._storage)
-		else:
-			return "Not inited"
+		return "%s(%s)" % (self.__class__, self._storage if hasattr(self, "_storage") else None)
 
 class SpecializedStorage(GenericStorage):
 	"""Storage where only certain resources can be stored. If you want to store a resource here,
@@ -170,12 +168,13 @@ class SizedSpecializedStorage(SpecializedStorage):
 
 	def get_limit(self, res):
 		if res in self.__slot_limits:
-			self.__slot_limits[res]
+			return self.__slot_limits[res]
 		else:
 			return 0
 
 	def add_resource_slot(self, res, size):
 		super(SizedSpecializedStorage, self).add_resource_slot(res)
+		assert size >= 0
 		self.__slot_limits[res] = size
 
 	def save(self, db, ownerid):

@@ -104,6 +104,7 @@ class Scheduler(LivingObject):
 		@param instance: the instance that would execute the call
 		@param callback: the function to remove
 		"""
+		assert callable(callback)
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
 				if callback_obj.class_instance() is instance and callback_obj.callback == callback:
