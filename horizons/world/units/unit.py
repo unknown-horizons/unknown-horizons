@@ -40,7 +40,6 @@ class Unit(MovingObject, WorldObject):
 
 	def __init(self, x, y, owner, health = 100.0):
 		self.owner = owner
-		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", self.id)[0][0]
 		class Tmp(fife.InstanceActionListener): pass
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
@@ -51,7 +50,6 @@ class Unit(MovingObject, WorldObject):
 		self._instance = horizons.main.session.view.layers[LAYERS.OBJECTS].createInstance( \
 			self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
-		self.action = 'idle'
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
 		self.act(self.action, location, True)

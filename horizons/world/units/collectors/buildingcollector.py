@@ -140,10 +140,11 @@ class BuildingCollector(Collector):
 		self.log.debug("Collector %s reached home", self.getId())
 
 		if self.home_building is not None:
+			self.log.debug("Collector %s brought home %s of %s", self.getId(), self.job.amount, self.job.res)
 			remnant = self.home_building.inventory.alter(self.job.res, self.job.amount)
 			#assert remnant == 0, "Home building could not take all ressources from collector."
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
-			#assert remnant == 0, "collector did not pick up amount of ressources specified by the job."
+			assert remnant == 0
 		self.end_job()
 
 	def get_collectable_res(self):

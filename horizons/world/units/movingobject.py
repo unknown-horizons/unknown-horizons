@@ -60,6 +60,9 @@ class MovingObject(object):
 		self.last_position = Point(x, y)
 		self._next_target = Point(x, y)
 
+		self.action = 'idle'
+		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", self.id)[0][0]
+
 		self.move_callbacks = WeakMethodList()
 
 		self.__is_moving = False
@@ -91,11 +94,11 @@ class MovingObject(object):
 	def _setup_move(self, action='move'):
 		"""Executes necessary steps to begin a movement. Currently only the action is set."""
 		# try a number of actions and use first existent one
-		for a in [action, 'move', self.action]:
-			if self.has_action(a):
-				self._move_action = a
+		for action_iter in [action, 'move', self.action]:
+			if self.has_action(action_iter):
+				self._move_action = action_iter
 				return
-		# this case shouldn't really happen, but no other action might be available (e.g. ships)
+		# this case shouldn't happen, but no other action might be available (e.g. ships)
 		self._move_action = 'idle'
 
 	def move(self, destination, callback = None, destination_in_building = False, action='move'):
@@ -219,6 +222,8 @@ class MovingObject(object):
 		self.path.save(db, self.getId())
 
 	def load(self, db, worldid):
+		x, y = db("SELECT x, y FROM unit WHERE rowid = ?", worldid)[0]
+		self.__init(x, y)
 		path_loaded = self.path.load(db, worldid)
 		if path_loaded:
 			self.__is_moving = True

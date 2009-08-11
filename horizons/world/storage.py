@@ -21,7 +21,7 @@
 
 
 """
-Here we define how the inventories work, that are used by WorldObjects.
+Here we define how the inventories work, that are used by world objects.
 These storage classes exist:
 
 - GenericStorage (abstract): Defines general interface for storage.

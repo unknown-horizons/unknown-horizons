@@ -236,18 +236,22 @@ class Collector(StorageHolder, Unit):
 		inventory = self.get_home_inventory()
 
 		# check if there are resources left to pickup
-		inventory_space_for_res = inventory.get_limit(res) - \
+		home_inventory_free_space = inventory.get_limit(res) - \
 														(total_registered_amount_consumer + inventory[res])
-		if inventory_space_for_res <= 0:
+		if home_inventory_free_space <= 0:
+			return None
+
+		collector_inventory_free_space = self.inventory.get_free_space_for(res)
+		if collector_inventory_free_space <= 0:
 			return None
 
 		# create a new job.
-		return Job(target, res, min(res_amount, inventory_space_for_res, \
-																self.inventory.get_free_space_for(res)))
+		return Job(target, res, min(res_amount, home_inventory_free_space, \
+																collector_inventory_free_space))
 
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""
-		self.log.debug("Collector %s prepares job at "+str(self.job.object.position), self.getId())
+		self.log.debug("Collector %s prepares job %s", self.getId(), self.job)
 		self.setup_new_job()
 		self.show()
 		assert self.check_move(self.job.object.position)
@@ -281,13 +285,14 @@ class Collector(StorageHolder, Unit):
 
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
-		self.log.debug("Collector %s transfer_res", self.getId())
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
 		if res_amount != self.job.amount:
 			self.log.warning("collector %s picked up %s of res %s at %s, planned was %s",  \
 											 self.getId(), res_amount, self.job.res, \
 											 self.job.object, self.job.amount)
-		self.inventory.alter(self.job.res, res_amount)
+			self.job.amount = res_amount # update job amount
+		remnant = self.inventory.alter(self.job.res, res_amount)
+		assert remnant == 0
 
 	def reroute(self):
 		"""Reroutes the collector to a different job.
@@ -322,6 +327,7 @@ class Collector(StorageHolder, Unit):
 class Job(object):
 	"""Data structure for storing information of collector jobs"""
 	def __init__(self, obj, res, amount):
+		assert amount > 0
 		self._object = weakref.ref(obj)
 		self.res = res
 		self.amount = amount

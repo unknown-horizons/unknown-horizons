@@ -46,7 +46,7 @@ class StorageHolder(object):
 		overwrite this function to do nothing. see also: save_inventory() and load_inventory()"""
 		db_data = horizons.main.db("SELECT resource, size FROM storage WHERE object_id = ?", self.id)
 
-		if len(db_data) > 0:
+		if len(db_data) == 0:
 			# no db data about inventory. Create default inventory.
 			self.inventory = PositiveSizedSlotStorage(30)
 		else:
