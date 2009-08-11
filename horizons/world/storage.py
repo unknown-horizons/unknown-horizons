@@ -190,7 +190,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 		for res in self._storage:
 			limit = db("SELECT value FROM storage_properties WHERE object = ? AND name = ?", \
 								 ownerid, 'limit_%s' % res)[0][0]
-			self.__slot_limits[res] = limit
+			self.__slot_limits[res] = int(limit)
 
 class TotalStorage(GenericStorage):
 	"""The TotalStorage represents a storage with a general limit to the sum of resources

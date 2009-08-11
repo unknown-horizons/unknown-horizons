@@ -93,7 +93,7 @@ class SavegameManager(object):
 				name = "Quicksave %s" % get_timestamp_string(self.get_metadata(f))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
-			displaynames.append(name)
+			displaynames.append( unicode(name) ) # only use unicode strings, guichan needs them
 		return displaynames
 
 	def __get_saves_from_dirs(self, dirs, include_displaynames = True):

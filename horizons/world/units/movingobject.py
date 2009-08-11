@@ -218,10 +218,12 @@ class MovingObject(object):
 		return self.path.get_move_target()
 
 	def save(self, db):
+		super(MovingObject, self).save(db)
 		# NOTE: _move_action is currently not yet saved.
 		self.path.save(db, self.getId())
 
 	def load(self, db, worldid):
+		super(MovingObject, self).load(db, worldid)
 		x, y = db("SELECT x, y FROM unit WHERE rowid = ?", worldid)[0]
 		self.__init(x, y)
 		path_loaded = self.path.load(db, worldid)

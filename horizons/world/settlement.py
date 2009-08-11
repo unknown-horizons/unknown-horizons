@@ -23,7 +23,7 @@ from storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList, NamedObject
 from tradepost import TradePost
 
-class Settlement(NamedObject, TradePost):
+class Settlement(TradePost, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 	def __init__(self, owner):
