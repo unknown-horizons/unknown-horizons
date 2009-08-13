@@ -24,8 +24,7 @@ import weakref
 
 class WeakMethod(object):
 	def __init__(self, function):
-		if not callable(function):
-			raise ValueError("Function parameter not callable")
+		assert callable(function)
 
 		if isinstance(function, new.instancemethod) and function.im_self is not None:
 			self.function = function.im_func

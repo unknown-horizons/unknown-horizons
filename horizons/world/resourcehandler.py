@@ -24,6 +24,7 @@ import horizons.main
 from horizons.util import WeakList
 from storageholder import StorageHolder
 from horizons.gui.tabs import TabWidget, ProductionOverviewTab, InventoryTab
+from horizons.world.production.production import Production
 
 
 class ResourceHandler(StorageHolder):
@@ -102,6 +103,12 @@ class ResourceHandler(StorageHolder):
 		@param production: Production instance
 		"""
 		raise NotImplementedError, "This function has to be overidden!"
+
+	def add_production_by_id(self, production_line_id, production_class = Production):
+		"""Convenience method.
+		@param production_line_id: Production line from db
+		@param production_class: Subclass of Production that does the production"""
+		self.add_production(production_class(self.inventory, production_line_id))
 
 	def load_production(self, db, production_id):
 		"""Load a saved production and return it. Needs to be implemented when add_production is.

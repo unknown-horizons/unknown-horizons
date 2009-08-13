@@ -81,6 +81,8 @@ class Build(object):
 		# building is now officially built and existent
 		building.start()
 
+		return building
+
 class Tear(object):
 	"""Command class that tears an object."""
 	def __init__(self, building):

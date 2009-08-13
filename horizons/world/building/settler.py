@@ -28,9 +28,10 @@ from horizons.util import WeakList
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
 from horizons.constants import RES, UNITS, SETTLER
-from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
+from horizons.world.production.production import Production
 
-class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
+class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
 
@@ -39,9 +40,17 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 		self.__init()
 		self.run()
 
-	def __init(self):
-		self.level_max = 1
-		self.tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+	def __init(self, level=0):
+		self.level = level
+		self._tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+
+
+		# Settler productions are specified to be disabled by default in the db.
+		# we enable them here by level
+		for prod_line in horizons.main.db("SELECT production_line FROM settler_production_line WHERE \
+																			level = ?", self.level):
+			self.add_production_by_id(prod_line[0])
+
 		""" old consume code
 		self.consumation = {}
 		for (res, speed) in horizons.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
@@ -89,7 +98,8 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
-		self.settlement.owner.inventory.alter(RES.GOLD_ID, self.tax_income*self.inhabitants)
+		taxes = self._tax_income*self.inhabitants
+		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
 		#print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
 
 	def inhabitant_check(self):

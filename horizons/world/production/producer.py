@@ -41,14 +41,13 @@ class Producer(ResourceHandler):
 		# add production lines as specified in db.
 		for prod_line in horizons.main.db("SELECT id FROM production_line WHERE object_id = ? \
 				AND enabled_by_default = 1", self.id):
-			self.add_production(self.production_class(self.inventory, prod_line[0]))
+			self.add_production_by_id(prod_line[0], self.production_class)
 
 	def __init(self):
 		pass
 
 	def add_production(self, production):
 		assert isinstance(production, Production)
-		# TODO Add changelistener for production that is added
 		self.log.debug('Producer %s: added production line %s', self.getId(), \
 									 production.get_production_line_id())
 		self._productions[production.get_production_line_id()] = production

@@ -121,7 +121,7 @@ class World(LivingObject):
 		self.max_y += 10
 
 		#add water
-		print "Filling world with water..."
+		self.log.debug("Filling world with water...")
 		self.grounds = []
 		self.ground_map = {}
 		self.water = []
@@ -136,13 +136,12 @@ class World(LivingObject):
 					for y_offset in xrange(0, 10):
 						self.ground_map[(x+x_offset, y+y_offset)] = weakref.ref(ground)
 						self.water.append((x+x_offset, y+y_offset))
-		print "Adding %d water tiles..." % number_of_water_tiles
+		self.log.debug("Adding %s water tiles...", number_of_water_tiles)
 		for i in self.islands:
 			for g in i.grounds:
 				if (g.x, g.y) in self.ground_map:
 					del self.ground_map[(g.x, g.y)]
 					self.water.remove((g.x, g.y)) # if in ground, then also in water
-		print "Done."
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
@@ -177,7 +176,7 @@ class World(LivingObject):
 		"""
 		# add a random number of trees to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
-			print "Adding trees and animals to the world..."
+			#print "Adding trees and animals to the world..."
 			from horizons.command.building import Build
 			tree = horizons.main.session.entities.buildings[BUILDINGS.TREE_CLASS]
 			wild_animal = horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS]
@@ -185,19 +184,17 @@ class World(LivingObject):
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						horizons.main.session.manager.execute( \
+						building = horizons.main.session.manager.execute( \
 							Build(tree,tile[0],tile[1], 45, ownerless=True, island=island))
-						building = self.get_building(tile[0], tile[1])
-						building.finish_production_now() # make trees big
+						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to evey nth tree
 							wild_animal(island, x=tile[0], y=tile[1])
-			print "Done."
 
 		# add free trader
 		self.trader = Trader(99999, "Free Trader", Color())
 		ret_coords = None
 		for player in self.players:
-			print "Adding ships for the players..."
+			#print "Adding ships for the players..."
 			point = self.get_random_possible_ship_position()
 			ship = horizons.main.session.entities.units[UNITS.PLAYER_SHIP_CLASS](x=point.x, y=point.y, owner=player)
 			# give ship basic resources
@@ -206,7 +203,7 @@ class World(LivingObject):
 			ship.inventory.alter(RES.TOOLS_ID,30)
 			if player is self.player:
 				ret_coords = (point.x,point.y)
-			print "Done"
+			#print "Done"
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, \
 																												MESSAGES.NEW_WORLD)

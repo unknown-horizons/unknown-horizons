@@ -58,7 +58,12 @@ class Production(WorldObject):
 		@param prod_line_id: id of production line.
 		"""
 		self.inventory = inventory
-		self._prod_line = ProductionLine(prod_line_id) # protected!
+
+		try:
+			self._prod_line = ProductionLine.data[prod_line_id]
+		except KeyError:
+			ProductionLine.load_data(prod_line_id)
+			self._prod_line = ProductionLine.data[prod_line_id]
 
 		self._state = state
 
@@ -179,15 +184,20 @@ class Production(WorldObject):
 	## PROTECTED METHODS
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
+		assert self._state in (PRODUCTION_STATES.waiting_for_res, \
+													 PRODUCTION_STATES.inventory_full) or True
 		check_space = self._check_for_space_for_produced_res()
 		if not check_space:
+			# can't produce, no space in our inventory
 			self._state = PRODUCTION_STATES.inventory_full
 			self._changed()
-		elif self._check_available_res() and check_space:
+		elif self._check_available_res():
+			# we have space in our inventory and needed res are available
 			# stop listening for res
 			self.inventory.remove_change_listener(self._check_inventory)
 			self._start_production()
 		else:
+			# we have space in our inventory, but needed res are missing
 			self._state = PRODUCTION_STATES.waiting_for_res
 			self._changed()
 
@@ -256,7 +266,7 @@ class ProgressProduction(Production):
 		self.__init()
 
 	def __init(self, progress = 0):
-		self.original_prod_line = copy.copy(self._prod_line)
+		self.original_prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
 	def save(self, db):
@@ -322,8 +332,45 @@ class ProgressProduction(Production):
 class ProductionLine(object):
 	"""Data structur for handling production lines of Producers. A production line
 	is a way of producing something (contains needed and produced resources for this line,
-	as well as the time, that it takes to complete the product."""
+	as well as the time, that it takes to complete the product.
+
+	Attributes: see _ProductionLineData.__init__
+	"""
+	# here we store templates for the prod_lines, since they are inited from db and therefore
+	# on construction, every instance is the same. a reference instance (template) is created
+	# and copied on demand.
+	data = {} # { id : ProductionLineInstance }
+
 	def __init__(self, ident):
+		# check if we already created a prodline of this id
+		if not ident in self.data:
+			self.load_data(ident)
+
+		self.__dict__ = copy.deepcopy(self.data[ident].__dict__)
+
+	@classmethod
+	def load_data(cls, ident):
+		if not ident in cls.data:
+			cls.data[ident] = _ProductionLineData(ident)
+
+	def alter_amount(self, res, amount):
+		"""Alters an amount of a res at runtime. Because of redundancy, you can only change
+		amounts here."""
+		self.production[res] += amount
+		if res in self.consumed_res:
+			self.consumed_res[res] += amount
+		if res in self.produced_res:
+			self.produced_res[res] += amount
+
+	def __str__(self): # debug
+		return 'ProductionLine(id=%s;prod=%s)' % (self.id, self.production)
+
+
+class _ProductionLineData(object):
+	"""Acctually saves the data under the hood. Internal Use Only!"""
+	def __init__(self, ident):
+		"""Inits self from db and registers itself as template"""
+		self._init_finshed = False
 		self.id = ident
 		db_data = horizons.main.db("SELECT time, changes_animation FROM data.production_line WHERE id = ?", self.id)[0]
 		self.time = db_data[0] # time in seconds that production takes
@@ -342,15 +389,11 @@ class ProductionLine(object):
 			else:
 				assert False
 
-	def alter_amount(self, res, amount):
-		"""Alters an amount of a res at runtime. Because of redundancy, you can only change
-		amounts here."""
-		self.production[res] += amount
-		if res in self.consumed_res:
-			self.consumed_res[res] += amount
-		if res in self.produced_res:
-			self.produced_res[res] += amount
+		self._init_finshed = True
 
-	def __str__(self): # debug
-		return 'ProductionLine(id=%s;prod=%s)' % (self.id, self.production)
 
+	def __setattr__(self, name, value):
+		if hasattr(self, "_init_finshed") and self._init_finshed:
+			raise TypeError, 'ProductionLineData is const, use ProductionLine'
+		else:
+			self.__dict__[name] = value
