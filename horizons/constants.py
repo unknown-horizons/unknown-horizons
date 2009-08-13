@@ -65,3 +65,21 @@ class PATHS:
 ## The Production States available in the game sorted by importance from least
 ## to most important
 PRODUCTION_STATES = Enum('waiting_for_res', 'inventory_full', 'producing', 'paused')
+
+
+## GAME-RELATED, BALANCING VALUES
+class SETTLER:
+	HAPPINESS_INIT_VALUE = 50 # settlers start with this value
+	HAPPINESS_MIN_VALUE = 0 # settlers die at this value
+	HAPPINESS_MAX_VALUE = 100
+	HAPPINESS_LEVEL_UP_REQUIREMENT = 70 # happiness has to be over this for leveling up
+	HAPPINESS_LEVEL_DOWN_LIMIT = 10 # settlers level down if below this value
+	HAPPINESS_DECREASE_ON_TAX_PAYMENT = 2
+	HAPPINESS_INCREASE_ON_TIMES_RES_VALUE = 0.3 # increase = this_value * res_value
+
+class WILD_ANIMAL:
+	HEALTH_INIT_VALUE = 50 # animals start with this value
+	HEALTH_INCREASE_ON_FEEDING = 2 # health increases by this value on feedig
+	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
+	HEALTH_LEVEL_TO_REPRODUCE = 100 # this level has to be reached for reproducing
+

@@ -186,3 +186,9 @@ class FieldCollector(BuildingCollector):
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
 	job_ordering = JobList.order_by.random
+
+
+class SettlerCollector(StorageCollector):
+	"""Collector for settlers."""
+	pass
+

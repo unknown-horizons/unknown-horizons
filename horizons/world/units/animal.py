@@ -29,6 +29,7 @@ from horizons.world.production.producer import Producer
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
 from collectors import Collector, BuildingCollector, JobList
+from horizons.constants import WILD_ANIMAL
 
 class Animal(Producer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -96,11 +97,6 @@ class WildAnimal(CollectorAnimal, Collector):
 	pather_class = SoldierPather
 
 	# see documentation of self.health
-	HEALTH_INIT_VALUE = 50
-	HEALTH_INCREASE_ON_FEEDING = 2
-	HEALTH_DECREASE_ON_NO_JOB = 2
-	HEALTH_LEVEL_TO_REPRODUCE = 100
-
 	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
 		self.__init(island, can_reproduce)
@@ -118,7 +114,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		# good health is the main target of an animal. it increases when they eat and
 		# decreases, when they have no food. if it reaches 0, they die, and
 		# if it reaches HEALTH_LEVEL_TO_REPRODUCE, they reproduce
-		self.health = health if health is not None else self.HEALTH_INIT_VALUE
+		self.health = health if health is not None else WILD_ANIMAL.HEALTH_INIT_VALUE
 		self.can_reproduce = can_reproduce
 		self._home_island = weakref.ref(island)
 		self.home_island.wild_animals.append(self)
@@ -169,7 +165,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
 		self.log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
 		# decrease health because of lack of food
-		self.health -= self.HEALTH_DECREASE_ON_NO_JOB
+		self.health -= WILD_ANIMAL.HEALTH_DECREASE_ON_NO_JOB
 		if self.health <= 0:
 			self.die()
 			return
@@ -211,10 +207,10 @@ class WildAnimal(CollectorAnimal, Collector):
 		super(WildAnimal, self).end_job()
 		# check if we can reproduce
 		self.log.debug("Wild animal %s end_job; health: %s", self.getId(), self.health)
-		self.health += self.HEALTH_INCREASE_ON_FEEDING
-		if self.can_reproduce and self.health >= self.HEALTH_LEVEL_TO_REPRODUCE:
+		self.health += WILD_ANIMAL.HEALTH_INCREASE_ON_FEEDING
+		if self.can_reproduce and self.health >= WILD_ANIMAL.HEALTH_LEVEL_TO_REPRODUCE:
 			self.reproduce()
-			self.health = self.HEALTH_INIT_VALUE
+			self.health = WILD_ANIMAL.HEALTH_INIT_VALUE
 
 	def reproduce(self):
 		"""Create another animal of our type on the place where we stand"""

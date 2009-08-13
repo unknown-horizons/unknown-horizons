@@ -27,7 +27,7 @@ from horizons.gui.tabs import TabWidget, OverviewTab
 from horizons.util import WeakList
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
-from horizons.constants import RES, UNITS
+from horizons.constants import RES, UNITS, SETTLER
 from horizons.world.building.collectingbuilding import CollectingBuilding
 
 class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
@@ -41,31 +41,35 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 
 	def __init(self):
 		self.level_max = 1
-		#print self.id, "Settler debug, inhabitants_max:", self.inhabitants_max
 		self.tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
-		#print self.id, "Settler debug, tax_income:", self.tax_income
-		self.inventory.limit = 1
+		""" old consume code
 		self.consumation = {}
 		for (res, speed) in horizons.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
 			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': horizons.main.session.timer.get_ticks(speed)/10}
-			"""consume_speed: generel time a consumed good lasts, until a new ton has to be consumed. In seconds.
+			""consume_speed: generel time a consumed good lasts, until a new ton has to be consumed. In seconds.
 			consume_state: 0-10 state, on 10 a new good is consumed or contentment drops, if no new good is in the inventory.
 			consume_contentment: 0-10 state, showing how fullfilled the wish for the specified good is.
-			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)"""
+			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)""
 		self._resources = {0: []} #ugly work arround to work with current consumer implementation
 
 		for (res,) in horizons.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
 			#print "Settler debug, res:", res
 			self._resources[0].append(res)
+		"""
+
+	def create_inventory(self):
+		super(Settler, self).create_inventory()
+		self.inventory.limit = 1
 
 	def run(self):
-		horizons.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
+		#horizons.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
 		horizons.main.session.scheduler.add_new_object(self.pay_tax, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # pay tax every 30 seconds
-		horizons.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # Check if inhabitants in/de-crease
-		self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
+		#horizons.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # Check if inhabitants in/de-crease
+		#self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
 
 	def consume(self):
 		"""Method that handles the building's consumation. It is called every tick."""
+		return # old code
 		for (res, row) in self.consumation.iteritems():
 			if row['next_consume'] > 0: # count down till next consume is scheduled
 				row['next_consume'] -= 1
@@ -90,6 +94,7 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 
 	def inhabitant_check(self):
 		"""Checks weather or not the population of this settler should increase or decrease or stay the same."""
+		return # old code
 		if sum([self.consumation[i]['consume_contentment'] for i in self.consumation]) == self.contentment_max:
 			content = 1
 		else:
@@ -125,21 +130,26 @@ class Settler(Selectable, BuildableSingle, CollectingBuilding, BasicBuilding):
 		"""Returns list of resources, that the building uses, without
 		considering, if it currently needs them
 		"""
-		return self._resources[0]
+		pass
+		# return self._resources[0]
 
 	def save(self, db):
 		super(Settler, self).save(db)
 		db("INSERT INTO settler(rowid, level, inhabitants) VALUES (?, ?, ?)", self.getId(), self.level, self.inhabitants)
+		"""
 		for (res, row) in self.consumation.iteritems():
 			db("INSERT INTO settler_consume(settler_id, res, contentment, next_consume, consume_state) VALUES (?, ?, ?, ?, ?)", self.getId(), res, row['consume_contentment'], row['next_consume'], row['consume_state'])
+			"""
 
 	def load(self, db, building_id):
 		super(Settler, self).load(db, building_id)
 		self.level, self.inhabitants = \
 				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
 		self.__init()
+		"""
 		for (res, contentment, next_consume, consume_state) in db("SELECT res, contentment, next_consume, consume_state FROM settler_consume WHERE settler_id=?", self.getId()):
 			self.consumation[res]['consume_contentment'] = contentment
 			self.consumation[res]['next_consume'] = next_consume
 			self.consumation[res]['consume_state'] = consume_state
+		"""
 		self.run()
