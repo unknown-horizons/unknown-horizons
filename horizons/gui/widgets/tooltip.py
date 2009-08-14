@@ -41,28 +41,28 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
 			self.name + '/mouseExited' : self.hide_tooltip
 			})
-		self.tooltip_items=[]
+		self.tooltip_items = []
 
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
 			line_count = self.tooltip.count(r'\n')
-			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0,0))
+			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
 			for i in range(0, line_count):
-				middle_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_middle.png', position=(top_image.position[0], top_image.position[1] + 17*(1+i)))
+				middle_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_middle.png', position=(top_image.position[0], top_image.position[1] + 17 * (1 + i)))
 				self.gui.addChild(middle_image)
 				self.tooltip_items.append(middle_image)
-			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0],top_image.position[1] + 17 + 17*(line_count)))
+			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0], top_image.position[1] + 17 + 17 * (line_count)))
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
-			label = pychan.widgets.Label(text=u"", position=(16,8))
+			label = pychan.widgets.Label(text=u"", position=(16, 8))
 			label.text = self.tooltip.replace(r'\n', '\n')
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
 			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self._getParent().size[1])
-			self.gui.size = (150, 17*(2+line_count))
+			self.gui.size = (150, 17 * (2 + line_count))
 			self.gui.show()
 		else:
 			pass
@@ -90,22 +90,22 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
 			self.name + '/mouseExited' : self.hide_tooltip
 			})
-		self.tooltip_items=[]
+		self.tooltip_items = []
 
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
 			line_count = self.tooltip.count(r'\n')
-			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0,0))
+			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
 			for i in range(0, line_count):
 				middle_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_middle.png', position=(top_image.position[0], top_image.position[1] + 17*(1+i)))
 				self.gui.addChild(middle_image)
 				self.tooltip_items.append(middle_image)
-			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0],top_image.position[1] + 17 + 17*(line_count)))
+			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0], top_image.position[1] + 17 + 17*(line_count)))
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
-			label = pychan.widgets.Label(text=u"", position=(16,8))
+			label = pychan.widgets.Label(text=u"", position=(16, 8))
 			label.text = self.tooltip.replace(r'\n', '\n')
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
