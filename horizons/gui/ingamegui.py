@@ -118,7 +118,7 @@ class IngameGui(LivingObject):
 				'tree-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
 				'potatofield-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 19),
 				'herder-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 20),
-				#'field-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 18),
+				'pasture-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 18),
 				'tower-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 13),
 				#'wall-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 14),
 				'street-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 15),

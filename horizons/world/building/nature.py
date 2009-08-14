@@ -21,8 +21,10 @@
 
 from building import BasicBuilding
 from buildable import BuildableRect
+from collectingbuilding import CollectingBuilding
 
 from horizons.world.production.producer import ProducerBuilding
+import horizons.main
 
 
 class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
@@ -46,6 +48,22 @@ class Field(GrowingBuilding):
 		kwargs['layer'] = 2
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
+class AnimalField(CollectingBuilding, GrowingBuilding):
+	@classmethod
+	def getInstance(cls, *args, **kwargs):
+		kwargs['layer'] = 2
+		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+
+	def create_collector(self):
+		self.animals = []
+
+		# NOTE: animals have to be created before the AnimalCollector
+		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
+		                                    WHERE building_id = ?", self.id):
+			for i in xrange(0, number):
+				horizons.main.session.entities.units[animal](self)
+
+		super(AnimalField, self).create_collector()
 
 class Tree(GrowingBuilding):
 	@classmethod
