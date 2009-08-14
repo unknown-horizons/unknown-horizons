@@ -30,6 +30,11 @@ from buildable import BuildableSingleWithSurrounding, BuildableSingle
 from horizons.constants import UNITS
 
 
+class Farm(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+
+	def __init__(self, **kwargs):
+		super(Farm, self).__init__(**kwargs)
+
 class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 18
 	""" This class builds pasturage in the radius automatically,

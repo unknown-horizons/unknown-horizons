@@ -24,6 +24,7 @@ from buildable import BuildableRect
 
 from horizons.world.production.producer import ProducerBuilding
 
+
 class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
 	""" Class for stuff that grows, such as trees
 	"""
@@ -38,6 +39,13 @@ class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = 1
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+
+class Field(GrowingBuilding):
+	@classmethod
+	def getInstance(cls, *args, **kwargs):
+		kwargs['layer'] = 2
+		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+
 
 class Tree(GrowingBuilding):
 	@classmethod
