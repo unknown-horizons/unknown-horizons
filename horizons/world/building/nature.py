@@ -48,11 +48,7 @@ class Field(GrowingBuilding):
 		kwargs['layer'] = 2
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
-class AnimalField(CollectingBuilding, GrowingBuilding):
-	@classmethod
-	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 2
-		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+class AnimalField(CollectingBuilding, Field):
 
 	def create_collector(self):
 		self.animals = []
