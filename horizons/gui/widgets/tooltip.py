@@ -46,7 +46,7 @@ class TooltipIcon(pychan.widgets.Icon):
 
 	def position_tooltip(self, event=0):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5)
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		self.gui.show()
 
 	def show_tooltip(self):
@@ -67,9 +67,9 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
+			self.gui.size = (140, 17 * (2 + line_count))
 			widget_position = self.getAbsolutePos()
-			self.gui.position = (widget_position[0] + self.size[0]/2, widget_position[1] + self.size[1]/2)
-			self.gui.size = (150, 17 * (2 + line_count))
+			self.gui.position = (widget_position[0] + self.size[0]/2, widget_position[1] + self.size[1]/2) if (widget_position[0] + self.size[0]/2 + self.gui.size[0]) <= horizons.main.settings.fife.screen.width else (widget_position[0] - self.gui.size[0], widget_position[1] + self.size[1]/2)
 			self.gui.show()
 		else:
 			pass
@@ -102,7 +102,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 
 	def position_tooltip(self, event=0):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5)
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		self.gui.show()
 
 	def show_tooltip(self):
@@ -123,9 +123,9 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
+			self.gui.size = (140, 17 * (2 + line_count))
 			widget_position = self.getAbsolutePos()
-			self.gui.position = (widget_position[0] + self.size[0]/2, widget_position[1] + self.size[1]/2)
-			self.gui.size = (150, 17*(2+line_count))
+			self.gui.position = (widget_position[0] + self.size[0]/2, widget_position[1] + self.size[1]/2) if (widget_position[0] + self.size[0]/2 + self.gui.size[0]) <= horizons.main.settings.fife.screen.width else (widget_position[0] - self.gui.size[0], widget_position[1] + self.size[1]/2)
 			self.gui.show()
 		else:
 			pass
