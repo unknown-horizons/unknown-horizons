@@ -34,14 +34,13 @@ from horizons.world.production.production import Production
 
 class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
-	def __init__(self, x, y, owner, instance = None, level=1, **kwargs):
+	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
 
-		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
-		self.__init(SETTLER.HAPPINESS_INIT_VALUE)
+		self.__init(SETTLER.HAPPINESS_INIT_VALUE, level)
 		self.run()
 
-	def __init(self, happiness, level=0):
+	def __init(self, happiness, level):
 		self.level = level
 		self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
@@ -49,17 +48,18 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def _update_consumation(self):
 		"""Resets the production line in case of level change, etc."""
+		#import pdb ; pdb.set_trace()
 		# Settler productions are specified to be disabled by default in the db.
 		# we enable them here by level
 		current_lines = self.get_production_lines()
-		for prod_line in horizons.main.db("SELECT production_line FROM settler_production_line WHERE \
+		for (prod_line,) in horizons.main.db("SELECT production_line FROM settler_production_line WHERE \
 																			level = ?", self.level):
-			if not self.has_production_line(prod_line[0]):
-				self.add_production_by_id(prod_line[0])
+			if not self.has_production_line(prod_line):
+				self.add_production_by_id(prod_line)
 
 			# cross out the new lines from the current lines, so only the old ones remain
 			if prod_line[0] in current_lines:
-				current_lines.remove(prod_line[0])
+				current_lines.remove(prod_line)
 
 		for line in current_lines:
 			# all lines, that were added here but are not needed due to the current level
@@ -73,6 +73,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def tick(self):
 		"""Here we collect the functions, that are called regularly."""
+		#import pdb ; pdb.set_trace()
 		self.pay_tax()
 		self.inhabitant_check()
 		self.level_check()
@@ -104,9 +105,11 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		happiness = self.inventory[RES.HAPPINESS_ID]
 		# TODO: add consumtion of construction material
 		if happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT:
-			self.level_up()
+			pass
+			#self.level_up()
 		elif happiness < SETTLER.HAPPINESS_LEVEL_DOWN_LIMIT:
-			self.level_down()
+			pass
+			#self.level_down()
 
 	def level_up(self):
 		#TODO: implement leveling of settlers

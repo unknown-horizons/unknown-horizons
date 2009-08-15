@@ -78,7 +78,7 @@ class SETTLER:
 	HAPPINESS_LEVEL_UP_REQUIREMENT = 80 # happiness has to be over this for leveling up
 	HAPPINESS_LEVEL_DOWN_LIMIT = 10 # settlers level down if below this value
 
-	TICK_INTERVAL = 30 # seconds; interval for settler to pay res, check for level up, etc.
+	TICK_INTERVAL = 5 # seconds; interval for settler to pay res, check for level up, etc.
 
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
