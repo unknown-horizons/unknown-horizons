@@ -38,10 +38,15 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
+			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip
 			})
 		self.tooltip_items = []
+
+	def position_tooltip(self, event=0):
+		widget_position = self.getAbsolutePos()
+		self.gui.position = (widget_position[0] + event.getX(), widget_position[1] + event.getY())
+		horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
@@ -61,7 +66,6 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
-			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self._getParent().size[1])
 			self.gui.size = (150, 17 * (2 + line_count))
 			self.gui.show()
 		else:
@@ -87,10 +91,15 @@ class TooltipButton(pychan.widgets.ImageButton):
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
+			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip
 			})
 		self.tooltip_items = []
+
+	def position_tooltip(self, event=0):
+		widget_position = self.getAbsolutePos()
+		self.gui.position = (widget_position[0] + event.getX(), widget_position[1] + event.getY())
+		horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
@@ -110,7 +119,6 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
-			self.gui.position = (self._getParent().position[0] + self.position[0], self._getParent().position[1] + self.position[1] + self.size[1] + 15)
 			self.gui.size = (150, 17*(2+line_count))
 			self.gui.show()
 		else:
