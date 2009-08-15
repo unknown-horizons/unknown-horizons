@@ -20,6 +20,7 @@
 # ###################################################
 
 from random import randint
+import logging
 
 import horizons.main
 
@@ -34,6 +35,7 @@ from horizons.world.production.production import Production
 
 class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
+	log = logging.getLogger("world.building.settler")
 	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
 
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
@@ -48,7 +50,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def _update_consumation(self):
 		"""Resets the production line in case of level change, etc."""
-		#import pdb ; pdb.set_trace()
+		import pdb ; pdb.set_trace()
 		# Settler productions are specified to be disabled by default in the db.
 		# we enable them here by level
 		current_lines = self.get_production_lines()
@@ -58,7 +60,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 				self.add_production_by_id(prod_line)
 
 			# cross out the new lines from the current lines, so only the old ones remain
-			if prod_line[0] in current_lines:
+			if prod_line in current_lines:
 				current_lines.remove(prod_line)
 
 		for line in current_lines:
@@ -73,7 +75,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def tick(self):
 		"""Here we collect the functions, that are called regularly."""
-		#import pdb ; pdb.set_trace()
+		import pdb ; pdb.set_trace()
 		self.pay_tax()
 		self.inhabitant_check()
 		self.level_check()

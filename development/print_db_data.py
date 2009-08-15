@@ -82,10 +82,18 @@ def print_unit():
 	for id, name, c_type, c_package in db("select id, name, class_type, class_package from unit"):
 		print "%s: %s from %s.%s" % (id, strw(name, 22), c_package, c_type)
 
+def print_storage():
+	for (obj, ) in db('select distinct object_id from storage'):
+		print get_obj_name(obj), 'can store:'
+		for res, amount in db("select resource, size from storage where object_id = ?", obj):
+			print "\t%s tons of %s" % (amount, get_res_name(res))
+	print "\nAll others can store 30 tons of each res."
+
 functions = {
 		'res' : print_res,
 		'building' : print_building,
 		'unit' : print_unit,
+		'storage' : print_storage,
 		'lines' : print_production_lines,
 		}
 
