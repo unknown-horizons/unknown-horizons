@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+"""
+This script prints misc data from the db
+in human readable form.
+
+Run without arguments for help
+"""
+
 import os.path
 import sys
 
@@ -12,8 +19,8 @@ if not os.path.exists(dbfile):
 sys.path.append(".")
 sys.path.append("./horizons")
 
-import environment
-environment.init()
+from run_uh import init_environment
+init_environment()
 
 from dbreader import DbReader
 
@@ -35,24 +42,24 @@ def print_production_lines():
 	for prod_line in db("SELECT id, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		id = prod_line[0]
 		object = prod_line[1]
-	
+
 		str = ''
 		str += 'ProdLine %s of %s (time:%s;default:%s):\t' % (id, get_obj_name(object), prod_line[2], prod_line[3])
-	
+
 		str += 'consumes: '
 		for res, amount in db("SELECT resource, amount from production where production_line = ? and amount < 0 order by amount asc", id):
 			str += '%s %s, ' % (-amount, get_res_name(res))
-	
+
 		str += ';\tproduces: '
 		for res, amount in db("SELECT resource, amount from production where production_line = ? and amount > 0 order by amount asc", id):
 			str +=  '%s %s, ' % (amount, get_res_name(res))
-	
+
 		print str
 
 def print_res():
 	print "Resources (id: resource (value))"
 	for id, name, value in db("select id, name, value from resource"):
-		print "%s: %s (%s)" % (id, name, value)
+		print "%s:\t%s (%s)" % (id, name, value)
 
 def print_building():
 	print "Buildings (id: name from class, size, radius):"
@@ -60,16 +67,15 @@ def print_building():
 			db('select id, name, class_type, class_package, size_x, size_y, radius from building'):
 		print "%s:\t%s\tfrom %s.%s, %sx%s, %s" % (id, name, c_package, c_type, x, y, radius)
 
-functions = {  
+functions = {
 		'res' : print_res,
 		'building' : print_building,
 		'lines' : print_production_lines,
 		}
 
 args = sys.argv
-args.remove('--fife-in-library-path')
 
-if len(args) == 1: 
+if len(args) == 1:
 	print 'Start with one of those args: %s' % functions.keys()
 else:
 	functions[ args[1] ]()

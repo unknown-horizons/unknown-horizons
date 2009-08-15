@@ -161,10 +161,16 @@ def init_environment():
 			print 'Failed to load fife:', e
 			exit(1)
 		log().debug('Searching for FIFE')
-		find_FIFE(options.fife_path)
+		find_FIFE(options.fife_path) # this restarts or terminates the program
+		assert False
 
 	#for some external libraries distributed with unknownhorizons
 	sys.path.append('horizons/ext')
+
+	args_to_discard_now = ['--fife-in-library-path', '--fife-path']
+	for arg in args_to_discard_now:
+		if arg in sys.argv:
+			sys.argv.remove(arg)
 
 def get_fife_path(fife_custom_path=None):
 	"""Returns absolute path to fife engine. Calls sys.exit() if it can't be found."""

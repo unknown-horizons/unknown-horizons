@@ -65,9 +65,8 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			# all lines, that were added here but are not needed due to the current level
 			self.remove_production_by_id(line)
 
-
-
 	def run(self):
+		"""Start regular tick calls"""
 		interval_in_ticks = horizons.main.session.timer.get_ticks(SETTLER.TICK_INTERVAL)
 		horizons.main.session.scheduler.add_new_object(self.tick, self, runin=interval_in_ticks, \
 																									 loops=-1)
