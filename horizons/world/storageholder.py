@@ -40,6 +40,7 @@ class StorageHolder(object):
 
 	def __init(self):
 		self.create_inventory()
+		self.inventory.add_change_listener(self._changed)
 
 	def create_inventory(self):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
@@ -54,8 +55,6 @@ class StorageHolder(object):
 			self.inventory = PositiveSizedSpecializedStorage()
 			for res, size in db_data:
 				self.inventory.add_resource_slot(res, size)
-
-		self.inventory.add_change_listener(self._changed)
 
 	def save(self, db):
 		super(StorageHolder, self).save(db)

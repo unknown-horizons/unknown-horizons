@@ -72,7 +72,6 @@ class ResourceHandler(StorageHolder):
 		"""Returns the needed resources that are used by the productions
 		currently active."""
 		needed_res = set()
-		# Now get needed res for each production and add them
 		for production in self._productions.itervalues():
 			needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
@@ -121,6 +120,30 @@ class ResourceHandler(StorageHolder):
 			del self._productions[production.get_production_line_id()]
 		else:
 			del self._inactive_productions[production.get_production_line_id()]
+
+	def remove_production_by_id(self, ident):
+		"""
+		@param ident: production line id
+		"""
+		to_remove = [] # save production to remove here for safe removal
+		for production in self._get_productions():
+			if production.get_production_line_id() == ident:
+				to_remove.append(production)
+		if len(to_remove) == 0:
+			raise ValueError, "Production %s doesn't have a production line %s" % (self, ident)
+		while len(to_remove) > 0:
+			self.remove_production(to_remove[0])
+
+	def has_production_line(self, ident):
+		"""Checks for a production line id"""
+		for production in self._get_productions():
+			if production.get_production_line_id() == ident:
+				return True
+		return False
+
+	def get_production_lines(self):
+		"""Returns all production lines that have been added"""
+		return [ production.get_production_line() for production in self._get_productions() ]
 
 	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock

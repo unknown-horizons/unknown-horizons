@@ -37,7 +37,6 @@ Combinations:
 - PositiveTotalStorage: use case: ship inventory
 - PositiveSizedSlotStorage: every res has the same limit, only positive values (branch office)
 - PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
-
 """
 
 import sys

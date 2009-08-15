@@ -181,6 +181,7 @@ class World(LivingObject):
 			tree = horizons.main.session.entities.buildings[BUILDINGS.TREE_CLASS]
 			wild_animal = horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS]
 			for island in self.islands:
+				continue
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:

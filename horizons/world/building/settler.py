@@ -28,6 +28,7 @@ from horizons.util import WeakList
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
 from horizons.constants import RES, UNITS, SETTLER
+from horizons.world.storage import PositiveSizedSpecializedStorage
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import Production
 
@@ -37,86 +38,76 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 		self.level = level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
-		self.__init()
+		self.__init(SETTLER.HAPPINESS_INIT_VALUE)
 		self.run()
 
-	def __init(self, level=0):
+	def __init(self, happiness, level=0):
 		self.level = level
+		self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._tax_income = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+		self._update_consumation()
 
-
+	def _update_consumation(self):
+		"""Resets the production line in case of level change, etc."""
 		# Settler productions are specified to be disabled by default in the db.
 		# we enable them here by level
+		current_lines = self.get_production_lines()
 		for prod_line in horizons.main.db("SELECT production_line FROM settler_production_line WHERE \
 																			level = ?", self.level):
-			self.add_production_by_id(prod_line[0])
+			if not self.has_production_line(prod_line[0]):
+				self.add_production_by_id(prod_line[0])
 
-		""" old consume code
-		self.consumation = {}
-		for (res, speed) in horizons.main.db("SELECT res_id, consume_speed FROM settler_consumation WHERE level = ?", self.level):
-			self.consumation[res] = {'consume_speed': speed, 'consume_state': 0, 'consume_contentment': 0 , 'next_consume': horizons.main.session.timer.get_ticks(speed)/10}
-			""consume_speed: generel time a consumed good lasts, until a new ton has to be consumed. In seconds.
-			consume_state: 0-10 state, on 10 a new good is consumed or contentment drops, if no new good is in the inventory.
-			consume_contentment: 0-10 state, showing how fullfilled the wish for the specified good is.
-			next_consume: nr. of ticks until the next consume state is set(speed in tps / 10)""
-		self._resources = {0: []} #ugly work arround to work with current consumer implementation
+			# cross out the new lines from the current lines, so only the old ones remain
+			if prod_line[0] in current_lines:
+				current_lines.remove(prod_line[0])
 
-		for (res,) in horizons.main.db("SELECT res_id FROM settler_consumation WHERE level = ?", self.level):
-			#print "Settler debug, res:", res
-			self._resources[0].append(res)
-		"""
+		for line in current_lines:
+			# all lines, that were added here but are not needed due to the current level
+			self.remove_production_by_id(line)
 
-	def create_inventory(self):
-		super(Settler, self).create_inventory()
-		self.inventory.limit = 1
+
 
 	def run(self):
-		#horizons.main.session.scheduler.add_new_object(self.consume, self, loops=-1) # Check consumation every tick
-		horizons.main.session.scheduler.add_new_object(self.pay_tax, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # pay tax every 30 seconds
-		#horizons.main.session.scheduler.add_new_object(self.inhabitant_check, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1) # Check if inhabitants in/de-crease
-		#self.contentment_max = len(self.consumation)*10 # TODO: different goods have to have different values
+		interval_in_ticks = horizons.main.session.timer.get_ticks(SETTLER.TICK_INTERVAL)
+		horizons.main.session.scheduler.add_new_object(self.tick, self, runin=interval_in_ticks, \
+																									 loops=-1)
 
-	def consume(self):
-		"""Method that handles the building's consumation. It is called every tick."""
-		return # old code
-		for (res, row) in self.consumation.iteritems():
-			if row['next_consume'] > 0: # count down till next consume is scheduled
-				row['next_consume'] -= 1
-			else:
-				if row['consume_state'] < 10:
-					row['consume_state'] += 1 # count to 10 to simulate partly consuming a resource over time
-				if row['consume_state'] == 10: # consume a resource if available
-					if self.inventory[res] > 0:
-						#print self.id, 'Settler debug: consuming res:', res
-						row['consume_state'] = 0
-						self.inventory.alter(res, -1) # consume resource
-						row['consume_contentment'] = 10
-					else:
-						if row['consume_contentment'] > 0:
-							row['consume_contentment'] -= 1
-				row['next_consume'] = horizons.main.session.timer.get_ticks(row["consume_speed"])/10
+	def tick(self):
+		"""Here we collect the functions, that are called regularly."""
+		self.pay_tax()
+		self.inhabitant_check()
+		self.level_check()
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
-		taxes = self._tax_income*self.inhabitants
+		# the money comes from nowhere, settlers seem to have an infinite amount of money.
+		# TODO: set the amount of tax in relation to the number of settlers
+		taxes = self._tax_income
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
-		#print self.id, 'Settler debug: payed tax:', self.tax_income*self.inhabitants, 'new player gold:', self.settlement.owner.inventory[1]
+		# decrease our happiness for the amount of the taxes
+		self.inventory.alter(RES.HAPPINESS_ID, taxes)
+		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, \
+									 self.inventory[RES.HAPPINESS_ID])
 
 	def inhabitant_check(self):
-		"""Checks weather or not the population of this settler should increase or decrease or stay the same."""
-		return # old code
-		if sum([self.consumation[i]['consume_contentment'] for i in self.consumation]) == self.contentment_max:
-			content = 1
-		else:
-			content = 0
-		if self.inhabitants < self.inhabitants_max:
-			addition = randint(-1, 1) + content
-			addition = min(self.inhabitants_max, max(1, self.inhabitants + addition)) - self.inhabitants
-			self.inhabitants += addition
-		# reached max inhabitants, go a level up (TODO!)
-		if self.inhabitants == 	self.inhabitants_max:
+		"""Checks wether or not the population of this settler should increase or decrease"""
+		happiness = self.inventory[RES.HAPPINESS_ID]
+		if happiness > SETTLER.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
+			 self.inhabitants < self.inhabitants_max:
+			self.inhabitants += 1
+			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
+		elif happiness < SETTLER.HAPPINESS_INHABITANTS_DECREASE_LIMIT and self.inhabitants > 1:
+			self.inhabitants -= 1
+			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
+
+	def level_check(self):
+		"""Checks wether we should level up or down."""
+		happiness = self.inventory[RES.HAPPINESS_ID]
+		# TODO: add consumtion of construction material
+		if happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT:
 			self.level_up()
-		#TODO: level_down(), if no consume_content there
+		elif happiness < SETTLER.HAPPINESS_LEVEL_DOWN_LIMIT:
+			self.level_down()
 
 	def level_up(self):
 		#TODO: implement leveling of settlers
@@ -135,13 +126,6 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [OverviewTab(self)]))
-
-	def get_consumed_resources(self):
-		"""Returns list of resources, that the building uses, without
-		considering, if it currently needs them
-		"""
-		pass
-		# return self._resources[0]
 
 	def save(self, db):
 		super(Settler, self).save(db)
