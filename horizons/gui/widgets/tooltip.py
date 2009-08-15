@@ -46,7 +46,7 @@ class TooltipIcon(pychan.widgets.Icon):
 
 	def position_tooltip(self, event=0):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX(), widget_position[1] + event.getY())
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5)
 		self.gui.show()
 
 	def show_tooltip(self):
@@ -102,7 +102,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 
 	def position_tooltip(self, event=0):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX(), widget_position[1] + event.getY())
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5)
 		self.gui.show()
 
 	def show_tooltip(self):
