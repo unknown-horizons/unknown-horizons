@@ -93,7 +93,6 @@ class BuildingCollector(Collector):
 	def get_job(self):
 		"""Returns the next job or None"""
 		self.log.debug("Collector %s get_job", self.getId())
-		#if self.id == 1000011: import pdb ; pdb.set_trace()
 		if self.home_building is None:
 			return None
 
@@ -103,13 +102,11 @@ class BuildingCollector(Collector):
 
 		jobs = JobList(self.job_ordering)
 		for building in self.get_buildings_in_range():
-			# Discard building if it works for same inventory (happens when both are storage buildings)
-			if building.inventory.getId() == self.home_building.inventory.getId():
-				continue
-			for res in collectable_res:
-				job = self.check_possible_job_target(building, res)
-				if job is not None:
-					jobs.append(job)
+			if self.check_possible_job_target(building): # check if we can pickup here in principle
+				for res in collectable_res:
+					job = self.check_possible_job_target_for(building, res) # check if we also get res here
+					if job is not None:
+						jobs.append(job)
 
 		return self.get_best_possible_job(jobs)
 

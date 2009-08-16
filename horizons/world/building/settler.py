@@ -129,7 +129,8 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 	def level_down(self):
 		#TODO: implement leveling of settlers
 		if self.level == 0: # can't level down any more
-			self.remove()
+			# remove when this function is done
+			horizons.main.session.scheduler.add_new_object(self.remove, self)
 		else:
 			self.level -= 1
 			self.update_world_level()

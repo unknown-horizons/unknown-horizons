@@ -161,6 +161,11 @@ class ResourceHandler(StorageHolder):
 	def get_available_pickup_amount(self, res, collector):
 		"""Returns how much of res a collector may pick up. It's the stored amount minus the amount
 		that other collectors are getting"""
+		# <debug check>
+		for c in self.__incoming_collectors:
+			if c.job is None:
+				print 'Error: %s at %s has no job!' % (c, self)
+		# </debug check>
 		return self.inventory[res] - \
 					 sum([c.job.amount for c in self.__incoming_collectors if \
 								c != collector and c.job.res == res])

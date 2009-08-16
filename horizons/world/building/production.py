@@ -22,7 +22,7 @@
 import horizons.main
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.production.producer import Producer
+from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util.point import Point
 from building import BasicBuilding, Selectable
@@ -78,7 +78,7 @@ class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuild
 class Hunter(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(Selectable, Producer, BuildableSingle, BasicBuilding):
+class Fisher(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
@@ -97,5 +97,5 @@ class Fisher(Selectable, Producer, BuildableSingle, BasicBuilding):
 
 		return {} if coast_tile_found else None
 
-class Church(Selectable, Producer, BuildableSingle, BasicBuilding):
+class Church(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
 	pass

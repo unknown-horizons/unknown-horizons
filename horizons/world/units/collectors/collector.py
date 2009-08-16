@@ -211,17 +211,27 @@ class Collector(StorageHolder, Unit):
 		"""Executes the necessary actions to begin a new job"""
 		self.job.object.add_incoming_collector(self)
 
-	def check_possible_job_target(self, target, res):
+	def check_possible_job_target(self, target):
+		"""Checks our if we "are allowed" and able to pick up from the target"""
+		# Discard building if it works for same inventory (happens when both are storage buildings
+		# or home_building is checked out)
+		if target.inventory.getId() == self.get_home_inventory().getId():
+			return None
+
+		# check if we're allowed to pick up there
+		if self.is_restricted and target.id not in self.possible_target_classes:
+			return None
+
+		# pathfinding would fit in here, but it's too expensive,
+		# we just do that at targets where we are sure to get a lot of res later on.
+
+	def check_possible_job_target_for(self, target, res):
 		"""Checks out if we could get res from target.
 		Does _not_ check for anything else (e.g. if we are able to walk there).
 		@param target: possible target. buildings are supported, support for more can be added.
 		@param res: resource id
 		@return: instance of Job or None, if we can't collect anything
 		"""
-		# check if we're allowed to pick up there
-		if self.is_restricted and target.id not in self.possible_target_classes:
-			return None
-
 		res_amount = target.get_available_pickup_amount(res, self)
 		if res_amount <= 0:
 			return None
@@ -249,6 +259,21 @@ class Collector(StorageHolder, Unit):
 		return Job(target, res, min(res_amount, home_inventory_free_space, \
 																collector_inventory_free_space))
 
+	def get_best_possible_job(self, jobs):
+		"""Return best possible job from jobs.
+		"Best" means that the job is highest when the job list was sorted.
+		"Possible" means that we can find a path there.
+		@param jobs: unsorted JobList instance
+		@return: selected Job instance from list or None if no jobs are possible."""
+		jobs.sort_jobs()
+		# check if we can move to that targets
+		for job in jobs:
+			if self.check_move(job.object.position):
+				return job
+
+		## TODO: if we need multiple res, we don't check if we need on more urgently.
+		return None
+
 	def begin_current_job(self):
 		"""Starts executing the current job by registering itself and moving to target."""
 		self.log.debug("Collector %s prepares job %s", self.getId(), self.job)
@@ -263,6 +288,7 @@ class Collector(StorageHolder, Unit):
 		"""Pretends that the collector works by waiting some time. finish_working is
 		called after that time."""
 		self.log.debug("Collector %s begins working", self.getId())
+		assert self.job is not None, '%s job is non in begin_working' % self
 		if self.job.object is not None:
 			horizons.main.session.scheduler.add_new_object(self.finish_working, self, \
 																										 self.work_duration)
@@ -309,19 +335,6 @@ class Collector(StorageHolder, Unit):
 		self.job = None
 		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)
 		self.state = self.states.idle
-
-	def get_best_possible_job(self, jobs):
-		"""Return best possible job from jobs.
-		"Best" means that the job is highest when the job list was sorted.
-		"Possible" means that we can find a path there.
-		@param jobs: unsorted JobList instance
-		@return: selected Job instance from list or None if no jobs are possible."""
-		jobs.sort_jobs()
-		# check if we can move to that targets
-		for job in jobs:
-			if self.check_move(job.object.position):
-				return job
-		return None
 
 
 class Job(object):
