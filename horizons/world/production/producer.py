@@ -86,8 +86,8 @@ class Producer(ResourceHandler):
 		super(Producer, self).remove_production(production)
 
 	def finish_production_now(self):
-		"""Cheat, makes current production finish right now.
-		Usefull to make trees fully grown at game start."""
+		"""Cheat, makes current production finish right now (and produce the resources).
+		Useful to make trees fully grown at game start."""
 		for production in self._productions.itervalues():
 			production.finish_production_now()
 

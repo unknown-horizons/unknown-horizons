@@ -26,6 +26,7 @@ import pychan
 from tabinterface import TabInterface
 from horizons.util import PychanChildFinder, Callback
 from horizons.i18n import load_xml_translated
+from horizons.constants import RES
 
 
 class OverviewTab(TabInterface):
@@ -128,4 +129,21 @@ class ProductionOverviewTab(OverviewTab):
 			self.widget.child_finder('running_costs').text = unicode(self.instance.running_costs)
 		super(ProductionOverviewTab, self).refresh()
 
+
+class SettlerOverviewTab(OverviewTab):
+
+	def  __init__(self, instance):
+		super(SettlerOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_settler.xml',
+			instance = instance
+		)
+
+	def refresh(self):
+		self.widget.child_finder('happiness').text = \
+				unicode(self.instance.inventory[RES.HAPPINESS_ID]) + u'/100'
+		self.widget.child_finder('needed_res').text = \
+				unicode(self.instance.get_consumed_resources())
+		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
+			self.instance.inhabitants, self.instance.inhabitants_max ) )
+		super(SettlerOverviewTab, self).refresh()
 

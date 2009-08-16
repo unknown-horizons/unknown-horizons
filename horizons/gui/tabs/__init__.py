@@ -20,7 +20,7 @@
 # ###################################################
 
 from inventorytab import InventoryTab, ShipInventoryTab
-from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab
+from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab, SettlerOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget

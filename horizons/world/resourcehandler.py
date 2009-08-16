@@ -25,6 +25,7 @@ from horizons.util import WeakList
 from storageholder import StorageHolder
 from horizons.gui.tabs import TabWidget, ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
+from horizons.world.production.productionline import _ProductionLineData
 
 
 class ResourceHandler(StorageHolder):
@@ -48,9 +49,6 @@ class ResourceHandler(StorageHolder):
 			self.provided_resources.append(res[0])
 		# list of collectors that are on the way here
 		self.__incoming_collectors = WeakList()
-
-	def remove(self):
-		super(ResourceHandler, self).remove()
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
@@ -166,6 +164,12 @@ class ResourceHandler(StorageHolder):
 		return self.inventory[res] - \
 					 sum([c.job.amount for c in self.__incoming_collectors if \
 								c != collector and c.job.res == res])
+
+	def alter_production_time(self, modifier):
+		"""Multiplies the original production time of all production lines by modifier
+		@param modifier: a numeric value"""
+		for production in self._get_productions():
+			production.alter_production_time(modifier)
 
 	def set_active(self, production=None, active=True):
 		"""Pause or unpause a production (aka set it active/inactive).

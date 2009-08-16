@@ -24,9 +24,9 @@ import math
 import logging
 import copy
 
-from horizons.ext.enum import Enum
 from horizons.util import WorldObject
 from horizons.constants import PRODUCTION_STATES
+from horizons.world.production.productionline import ProductionLine
 
 import horizons.main
 
@@ -58,17 +58,18 @@ class Production(WorldObject):
 		@param prod_line_id: id of production line.
 		"""
 		self.inventory = inventory
-
-		try:
-			self._prod_line = ProductionLine.data[prod_line_id]
-		except KeyError:
-			ProductionLine.load_data(prod_line_id)
-			self._prod_line = ProductionLine.data[prod_line_id]
-
 		self._state = state
-
 		self._pause_remaining_ticks = None # only used in pause()
 		self._pause_old_state = pause_old_state # only used in pause()
+
+		self._prod_line = self._create_production_line(prod_line_id)
+
+	@classmethod
+	def _create_production_line(self, prod_line_id):
+		"""Returns a non-changeable production line instance"""
+		if not prod_line_id in ProductionLine.data:
+			ProductionLine.load_data(prod_line_id)
+		return ProductionLine.data[prod_line_id]
 
 	def save(self, db):
 		remaining_ticks = None
@@ -180,6 +181,9 @@ class Production(WorldObject):
 		horizons.main.session.scheduler.rem_call(self, self._finished_producing)
 		self._finished_producing()
 
+	def alter_production_time(self, modifier):
+		"""@see ProductionLine.alter_production_time"""
+		self._prod_line.alter_production(modifier)
 
 	## PROTECTED METHODS
 	def _check_inventory(self):
@@ -214,8 +218,8 @@ class Production(WorldObject):
 		# take the res we need
 		self._remove_res_to_expend()
 		# call finished in some time
-		horizons.main.session.scheduler.add_new_object(
-			self._finished_producing, self, 16 * self._prod_line.time)
+		time = int(round( horizons.main.session.timer.get_ticks(self._prod_line.time) ))
+		horizons.main.session.scheduler.add_new_object(self._finished_producing, self, time)
 
 	def _finished_producing(self):
 		"""Called when the production finishes. Puts res in inventory"""
@@ -250,6 +254,13 @@ class Production(WorldObject):
 
 	def __str__(self): # debug
 		return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
+
+
+class ChangingProduction(Production):
+	"""Same as Production, but changes properties of the production line"""
+	def _create_production_line(self, prod_line_id):
+		"""Returns a changeable production line instance"""
+		return ProductionLine(prod_line_id)
 
 
 class ProgressProduction(Production):
@@ -314,7 +325,7 @@ class ProgressProduction(Production):
 		# and set the scheduler waiting time accordingly (e.g. half of res => wait half of prod time)
 		all_needed_res = sum(self.original_prod_line.consumed_res.itervalues())
 		part_of_whole_production = float(removed_res) / all_needed_res
-		prod_time = int(round(part_of_whole_production * self._prod_line.time * 16))
+		prod_time = int(round(horizons.main.session.timer.get_ticks( part_of_whole_production * self._prod_line.time )))
 		prod_time = min(prod_time, 1) # wait at least 1 tick
 		# do part of production and call this again when done
 		horizons.main.session.scheduler.add_new_object(self._produce, self, prod_time)
@@ -327,73 +338,3 @@ class ProgressProduction(Production):
 		self.progress = 0
 		# reset prodline
 		self._prod_line = copy.copy(self.original_prod_line)
-
-
-class ProductionLine(object):
-	"""Data structur for handling production lines of Producers. A production line
-	is a way of producing something (contains needed and produced resources for this line,
-	as well as the time, that it takes to complete the product.
-
-	Attributes: see _ProductionLineData.__init__
-	"""
-	# here we store templates for the prod_lines, since they are inited from db and therefore
-	# on construction, every instance is the same. a reference instance (template) is created
-	# and copied on demand.
-	data = {} # { id : ProductionLineInstance }
-
-	def __init__(self, ident):
-		# check if we already created a prodline of this id
-		if not ident in self.data:
-			self.load_data(ident)
-
-		self.__dict__ = copy.deepcopy(self.data[ident].__dict__)
-
-	@classmethod
-	def load_data(cls, ident):
-		if not ident in cls.data:
-			cls.data[ident] = _ProductionLineData(ident)
-
-	def alter_amount(self, res, amount):
-		"""Alters an amount of a res at runtime. Because of redundancy, you can only change
-		amounts here."""
-		self.production[res] += amount
-		if res in self.consumed_res:
-			self.consumed_res[res] += amount
-		if res in self.produced_res:
-			self.produced_res[res] += amount
-
-	def __str__(self): # debug
-		return 'ProductionLine(id=%s;prod=%s)' % (self.id, self.production)
-
-
-class _ProductionLineData(object):
-	"""Acctually saves the data under the hood. Internal Use Only!"""
-	def __init__(self, ident):
-		"""Inits self from db and registers itself as template"""
-		self._init_finshed = False
-		self.id = ident
-		db_data = horizons.main.db("SELECT time, changes_animation FROM data.production_line WHERE id = ?", self.id)[0]
-		self.time = db_data[0] # time in seconds that production takes
-		self.changes_animation = bool(db_data[1]) # wether this prodline influences animation
-		# here we store all resource information.
-		# needed resources have a negative amount, produced ones are positive.
-		self.production = {}
-		self.produced_res = {} # contains only produced
-		self.consumed_res = {} # contains only consumed
-		for res, amount in horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
-			self.production[res] = amount
-			if amount > 0:
-				self.produced_res[res] = amount
-			elif amount < 0:
-				self.consumed_res[res] = amount
-			else:
-				assert False
-
-		self._init_finshed = True
-
-
-	def __setattr__(self, name, value):
-		if hasattr(self, "_init_finshed") and self._init_finshed:
-			raise TypeError, 'ProductionLineData is const, use ProductionLine'
-		else:
-			self.__dict__[name] = value

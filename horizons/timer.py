@@ -75,8 +75,9 @@ class Timer(LivingObject):
 		self.tick_func_call.remove(call)
 
 	def get_ticks(self, seconds):
-		"""Returnes the number of ticks for the specified number of seconds.
+		"""Returns the number of ticks for the specified number of seconds.
 		@param seconds: number of seconds that are to be converted into ticks
+		@return: depends on type of seconds, float or int
 		"""
 		return seconds*horizons.main.settings.ticks.default
 
