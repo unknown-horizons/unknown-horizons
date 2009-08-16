@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="255,260">
+<Container size="255,215">
 	<Icon image="content/gui/images/background/map_bg.png" position="40,0" />
 
 	<ImageButton name="speedUp" up_image="content/gui/images/icons/hud/main/speed_up.png" down_image="content/gui/images/icons/hud/main/speed_up_h.png" hover_image="content/gui/images/icons/hud/main/speed_up_h.png" size="28,28" position="62,16"/>
