@@ -192,10 +192,11 @@ class WildAnimal(CollectorAnimal, Collector):
 		# and save possible job targets
 		reach = Circle(self.position, self.walking_range)
 		for provider in self.home_island.get_providers_in_range(reach):
-			for res in collectable_resources:
-				job = self.check_possible_job_target(provider, res)
-				if job is not None:
-					jobs.append(job)
+			if self.check_possible_job_target(provider):
+				for res in collectable_resources:
+					job = self.check_possible_job_target_for(provider, res)
+					if job is not None:
+						jobs.append(job)
 
 		return self.get_best_possible_job(jobs)
 
