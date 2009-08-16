@@ -30,6 +30,7 @@ class BuildTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/level1_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/level1_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/level1_h.png'
+		self.tooltip = u"Level I"
 
 	def refresh(self):
 		pass

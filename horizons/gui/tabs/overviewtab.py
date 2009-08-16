@@ -39,6 +39,7 @@ class OverviewTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
+		self.tooltip = u"Overview"
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -69,6 +70,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
+		self.tooltip = u"Branch Office \\n Overview"
 
 class ShipOverviewTab(OverviewTab):
 
@@ -82,6 +84,7 @@ class ShipOverviewTab(OverviewTab):
 		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 		self.widget.findChild(name='name').stylize("headline")
+		self.tooltip = u"Ship Overview"
 
 	def refresh(self):
 		# show rename when you click on name
@@ -121,7 +124,7 @@ class ProductionOverviewTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-
+		self.tooltip = u"Production Overview"
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -137,6 +140,7 @@ class SettlerOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_overview_settler.xml',
 			instance = instance
 		)
+		self.tooltip = u"Settler Overview"
 
 	def refresh(self):
 		self.widget.child_finder('happiness').text = \

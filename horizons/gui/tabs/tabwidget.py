@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import pychan
+from horizons.gui.widgets.tooltip import TooltipButton
 
 import horizons.main
 from horizons.i18n import load_xml_translated
@@ -51,7 +52,7 @@ class TabWidget(object):
 			container = pychan.Container()
 			background = pychan.Icon()
 			background.image = tab.button_background_image
-			button = pychan.ImageButton()
+			button = TooltipButton()
 			button.name = index
 			if self.current_tab is tab:
 				button.up_image = tab.button_active_image
@@ -61,6 +62,11 @@ class TabWidget(object):
 			button.hover_image = tab.button_hover_image
 			button.size = (50, 50)
 			button.capture(pychan.tools.callbackWithArguments(self._show_tab, index))
+			if hasattr(tab, 'tooltip'):
+				if tab.tooltip is not None:
+					button.tooltip = unicode(tab.tooltip)
+				else:
+					pass
 			container.size = background.size
 			container.addChild(background)
 			container.addChild(button)

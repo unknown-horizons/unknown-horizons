@@ -35,6 +35,7 @@ class InventoryTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
+		self.tooltip = u"Inventory"
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -61,6 +62,7 @@ class ShipInventoryTab(InventoryTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
+		self.tooltip = u"Ship Inventory"
 
 	def refresh(self):
 		branches = horizons.main.session.world.get_branch_offices(self.instance.position, self.instance.radius)
