@@ -22,7 +22,7 @@
 import horizons.main
 
 from horizons.world.storageholder import StorageHolder
-from horizons.util import Point
+from horizons.util import Point, Circle
 
 from buildingcollector import BuildingCollector
 
@@ -109,6 +109,16 @@ class AnimalCollector(BuildingCollector):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
 		#print self.id, 'RELEASE ANIMAL', self.job.object.getId()
 		horizons.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
+
+
+class FarmAnimalCollector(AnimalCollector):
+	def get_animals_in_range(self):
+		buildings = self.home_building.island().get_providers_in_range(Circle(self.home_building.position.center(), self.home_building.radius))
+		animals = []
+		for building in buildings:
+			if hasattr(building, 'animals'):
+				animals.extend(building.animals)
+		return animals
 
 
 class HunterCollector(AnimalCollector):
