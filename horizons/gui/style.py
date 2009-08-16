@@ -217,12 +217,11 @@ STYLES= {
 	    'default' : {
 			'border_size': 0,
 			'margins': (0,0),
-			'opaque': 0,
 			'font' : 'libertine_14_black',
 			'foreground_color' : fife.Color(80,80,40),
 		},
 		'Label' : {
-			'font' : 'libertine_14_black'
+			'font' : 'libertine_14_black',
 		},
 		'CheckBox' : {
 			'selection_color' : fife.Color(255,255,255,200),
@@ -242,6 +241,7 @@ STYLES= {
 		},
 		'TextBox' : {
 			'font' : 'libertine_14_black',
+			'opaque': 0
 		},
 		'ListBox' : {
 			'background_color' : fife.Color(0,0,0,0),
@@ -259,10 +259,11 @@ STYLES= {
 		'HBox' : {
 			'font' : 'libertine_14_black',
 			'foreground_color' : fife.Color(80,80,40),
+			'opaque': 0
 		},
 		'TextField' : {
 			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255),
+			'background_color' : fife.Color(255,255,255,64),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 			'font' : 'libertine_14_black',
