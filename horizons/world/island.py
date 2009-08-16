@@ -59,12 +59,26 @@ class Island(WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, origin, filename):
-		super(WorldObject, self).__init__()
-		self.__init(origin, filename)
+	def __init__(self, db, islandid):
+		# an island is always loaded from db, so __init__() basically is load()
+		super(Island, self).load(db, islandid)
+
+		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", islandid)[0]
+		self.__init(Point(x, y), filename)
+
+		# load settlements and buildings, if there are any
+		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
+			Settlement.load(db, settlement_id)
+
+		for (building_worldid, building_typeid) in \
+			db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+
+			buildingclass = horizons.main.session.entities.buildings[building_typeid]
+			buildingclass.load(db, building_worldid)
 
 	def __init(self, origin, filename):
 		"""
+		Load the acctual island from a file
 		@param origin: Point
 		@param filename: String
 		"""
@@ -97,6 +111,7 @@ class Island(WorldObject):
 		# repopulate wild animals every 2 mins if they die out.
 		horizons.main.session.scheduler.add_new_object(self.check_wild_animal_population, self, \
 																									 16*120, -1)
+
 		"""TUTORIAL:
 		To continue hacking, you should now take of to the real fun stuff and check out horizons/world/building/__init__.py.
 		"""
@@ -110,23 +125,6 @@ class Island(WorldObject):
 			settlement.save(db, self.getId())
 		for animal in self.wild_animals:
 			animal.save(db)
-
-	def load(self, db, worldid):
-		super(Island, self).load(db, worldid)
-
-		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", worldid)[0]
-		self.__init(Point(x, y), filename)
-
-		horizons.main.session.world.islands.append(self)
-
-		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", worldid):
-			Settlement.load(db, settlement_id)
-
-		for (building_worldid, building_typeid) in \
-			db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-
-			buildingclass = horizons.main.session.entities.buildings[building_typeid]
-			buildingclass.load(db, building_worldid)
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""
@@ -173,13 +171,17 @@ class Island(WorldObject):
 		"""Returns the list of settlements for the coordinates describing a rect.
 		@param rect: Area to search for settlements
 		@return: list of Settlement instances at that position."""
-		settlements = []
+		settlements = set()
 		if self.rect.intersects(rect):
 			for point in rect:
-				tile = self.get_tile(point)
-				if tile is not None and tile.settlement is not None and tile.settlement not in settlements:
-					settlements.append(tile.settlement)
-		return settlements
+				try:
+					settlements.add( self.get_tile(point).settlement )
+				except AttributeError:
+					# some tiles don't have settlements, we don't excplicitly check for them cause
+					# its faster this way.
+					pass
+			settlements.discard(None) # None values might have been added, we don't want them
+		return list(settlements)
 
 	def add_settlement(self, position, radius, player):
 		"""Adds a settlement to the island at the posititon x, y with radius as area of influence.

@@ -93,6 +93,7 @@ class BuildingCollector(Collector):
 	def get_job(self):
 		"""Returns the next job or None"""
 		self.log.debug("Collector %s get_job", self.getId())
+		#if self.id == 1000011: import pdb ; pdb.set_trace()
 		if self.home_building is None:
 			return None
 

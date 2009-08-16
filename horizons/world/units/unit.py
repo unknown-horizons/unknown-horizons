@@ -61,6 +61,7 @@ class Unit(MovingObject, WorldObject):
 	def __del__(self):
 		self.log.debug("Unit.__del__ for %s started", self)
 		self.log.debug("Scheduler calls: %s", horizons.main.session.scheduler.get_classinst_calls(self))
+		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
 		if hasattr(self, "_instance") and \
 			 self._instance.getLocationRef().getLayer() is not None:

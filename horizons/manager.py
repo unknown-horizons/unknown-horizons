@@ -43,8 +43,10 @@ class SPManager(LivingObject):
 		if len(self.commands) > 0:
 			return
 		if self.recording:
-			horizons.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", horizons.main.session.timer.tick_next_id, horizons.main.session.world.player.getId(), horizons.util.encode(command))
-		ret = command(issuer = horizons.main.session.world.player)
+			horizons.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", \
+					horizons.main.session.timer.tick_next_id, horizons.main.session.world.player.getId(), \
+					horizons.util.encode(command))
+		ret = command(issuer = horizons.main.session.world.player) # acctually execute the command
 		# some commands might have a return value, so forward it
 		return ret
 

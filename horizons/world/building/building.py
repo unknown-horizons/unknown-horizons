@@ -89,6 +89,7 @@ class BasicBuilding(AmbientSound, WorldObject):
 		self.island().remove_building(self)
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
+		import pdb ; pdb.set_trace()
 		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
