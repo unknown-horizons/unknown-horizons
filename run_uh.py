@@ -34,6 +34,7 @@ import logging
 import logging.config
 import logging.handlers
 import optparse
+import traceback
 
 def log():
 	"""Returns Logger"""
@@ -95,6 +96,17 @@ def create_user_dirs():
 		if not os.path.isdir(directory):
 			os.makedirs(directory)
 
+def excepthook_creator(outfilename):
+	"""Returns an excepthook function to replace sys.excepthook.
+	The returned function does the same as the default, except it also prints the traceback
+	to a file.
+	@param outfilename: a filename to append traceback to"""
+	def excepthook(exception_type, value, tb):
+		f = open(outfilename, 'a')
+		traceback.print_exception(exception_type, value, tb, file=f)
+		traceback.print_exception(exception_type, value, tb)
+	return excepthook
+
 def main():
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
@@ -115,6 +127,7 @@ def main():
 		print 'Logging to stderr and %s' % logfilename
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
+		sys.excepthook = excepthook_creator(logfilename)
 	for module in options.debug_module:
 		logging.getLogger(module).setLevel(logging.DEBUG)
 
