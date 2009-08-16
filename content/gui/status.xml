@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="380,80" position="93,10">
+<Container size="300,80" position="93,10">
 <!-- Resource bar that are positioned on top -->
 	<TooltipIcon name="food_icon" image="content/gui/images/background/res_bg.png" position="0,7" tooltip="Food" /><Icon image="content/gui/images/icons/hud/main/small/food.png" position="12,18" />
 	<Label name="food_1" text="" />
