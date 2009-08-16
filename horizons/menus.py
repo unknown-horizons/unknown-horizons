@@ -94,6 +94,8 @@ class Menus(object):
 		self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml')
 
 		self.widgets['change_name'] = load_xml_translated("change_name_dialog.xml")
+		#self.widgets['change_name'].stylize('book') ToDo: Style cannot be added cause of TextField in Change name dialog
+		self.widgets['change_name'].findChild(name='headline').stylize('headline') # style definition for headline
 
 		for widget in self.widgets.itervalues():
 			center_widget(widget)

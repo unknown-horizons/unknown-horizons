@@ -12,7 +12,7 @@
 		<!-- Name of Ship -->
 		<!-- <Button name='name' position="95,7" text="" /> -->
 		<!-- just a dummy button here for now; a text button doesn't seem to work, it doesn't react to click -->
-		<ImageButton name='name' up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
+		<ImageButton name='name' up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0" position="5,0"/>
 	
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 

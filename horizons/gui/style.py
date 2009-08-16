@@ -184,6 +184,7 @@ STYLES= {
 			'font' : 'libertine_large'
 		},
 		'Button' : {
+			'font' : 'libertine_18',
 			'border_size': 0,
 			'margins' : (0,0)
 		},
