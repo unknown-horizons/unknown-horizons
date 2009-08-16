@@ -216,14 +216,16 @@ class Collector(StorageHolder, Unit):
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
 		if target.inventory.getId() == self.get_home_inventory().getId():
-			return None
+			return False
 
 		# check if we're allowed to pick up there
 		if self.is_restricted and target.id not in self.possible_target_classes:
-			return None
+			return False
 
 		# pathfinding would fit in here, but it's too expensive,
 		# we just do that at targets where we are sure to get a lot of res later on.
+
+		return True
 
 	def check_possible_job_target_for(self, target, res):
 		"""Checks out if we could get res from target.
