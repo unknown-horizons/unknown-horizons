@@ -38,16 +38,21 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
+			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
 			self.name + '/mouseMoved': self.position_tooltip
 			})
+		self.tooltip_shown = False
 		self.tooltip_items = []
 
 	def position_tooltip(self, event=0):
 		widget_position = self.getAbsolutePos()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
-		self.gui.show()
+		if not self.tooltip_shown:
+			horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
+			self.tooltip_shown = True
+		else:
+			self.gui.show()
 
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
@@ -68,8 +73,6 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
 			self.gui.size = (140, 17 * (2 + line_count))
-			widget_position = self.getAbsolutePos()
-			self.gui.position = (widget_position[0] + self.size[0]/2, widget_position[1] + self.size[1]/2) if (widget_position[0] + self.size[0]/2 + self.gui.size[0]) <= horizons.main.settings.fife.screen.width else (widget_position[0] - self.gui.size[0], widget_position[1] + self.size[1]/2)
 			self.gui.show()
 		else:
 			pass
@@ -80,6 +83,7 @@ class TooltipIcon(pychan.widgets.Icon):
 		for i in self.tooltip_items:
 			self.gui.removeChild(i)
 		self.tooltip_items = []
+		self.tooltip_shown = False
 
 class TooltipButton(pychan.widgets.ImageButton):
 	"""The TooltipButton is a modified image button widget. It can be used in xml files like this:
@@ -94,16 +98,21 @@ class TooltipButton(pychan.widgets.ImageButton):
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		self.mapEvents({
-			self.name + '/mouseEntered' : pychan.tools.callbackWithArguments(horizons.main.ext_scheduler.add_new_object, self.show_tooltip, self, runin=0.3, loops=0),
+			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
 			self.name + '/mouseMoved': self.position_tooltip
 			})
+		self.tooltip_shown = False
 		self.tooltip_items = []
 
 	def position_tooltip(self, event=0):
 		widget_position = self.getAbsolutePos()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
-		self.gui.show()
+		if not self.tooltip_shown:
+			horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
+			self.tooltip_shown = True
+		else:
+			self.gui.show()
 
 	def show_tooltip(self):
 		if hasattr(self, 'tooltip'):
@@ -124,8 +133,6 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
 			self.gui.size = (140, 17 * (2 + line_count))
-			widget_position = self.getAbsolutePos()
-			self.gui.position = (widget_position[0] + self.size[0]/2, widget_position[1] + self.size[1]/2) if (widget_position[0] + self.size[0]/2 + self.gui.size[0]) <= horizons.main.settings.fife.screen.width else (widget_position[0] - self.gui.size[0], widget_position[1] + self.size[1]/2)
 			self.gui.show()
 		else:
 			pass
@@ -136,4 +143,5 @@ class TooltipButton(pychan.widgets.ImageButton):
 		for i in self.tooltip_items:
 			self.gui.removeChild(i)
 		self.tooltip_items = []
+		self.tooltip_shown = False
 
