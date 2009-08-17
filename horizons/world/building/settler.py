@@ -54,7 +54,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
-		self.tax_rate = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+		self.tax_base = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
 
 		# consumation:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
@@ -86,8 +86,10 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
-		# TODO: set the amount of tax in relation to the number of settlers
-		taxes = self.tax_rate
+		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
+		happiness_tax_modifier = (float(self.happiness)-50)/200 + 1
+		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants
+		taxes = int(round(taxes))
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
 		# decrease our happiness for the amount of the taxes
 		self.inventory.alter(RES.HAPPINESS_ID, -taxes)
