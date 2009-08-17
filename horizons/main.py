@@ -72,6 +72,7 @@ def start(command_line_arguments):
 	#init db
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/game.sqlite')
+	db("attach ? AS settler", 'content/settler.sqlite')
 
 	#init settings
 	settings = Settings()

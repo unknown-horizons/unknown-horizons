@@ -54,14 +54,15 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
-		self.tax_base = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+		self.tax_base = horizons.main.db("SELECT tax_income FROM settler.settler_level WHERE level=?", self.level)[0][0]
 
 		# consumation:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		current_lines = self.get_production_lines()
-		for (prod_line,) in horizons.main.db("SELECT production_line FROM \
-																					settler_production_line WHERE level = ?", self.level):
+		for (prod_line,) in \
+				horizons.main.db("SELECT production_line FROM settler.settler_production_line \
+													WHERE level = ?", self.level):
 			if not self.has_production_line(prod_line):
 				self.add_production_by_id(prod_line)
 			# cross out the new lines from the current lines, so only the old ones remain
