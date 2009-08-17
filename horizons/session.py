@@ -24,7 +24,6 @@ import os
 import os.path
 import time
 import logging
-import fife
 
 import horizons.main
 
