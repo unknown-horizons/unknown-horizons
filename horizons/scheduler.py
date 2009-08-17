@@ -84,11 +84,15 @@ class Scheduler(LivingObject):
 	def rem_object(self, callback_obj):
 		"""Removes a CallbackObject from all callback lists
 		@param callback_obj: CallbackObject to remove
+		@return: int, number of removed calls
 		"""
+		removed_objs = 0
 		if self.schedule is not None:
 			for key in self.schedule:
 				for i in xrange(0, self.schedule[key].count(callback_obj)):
 					self.schedule[key].remove(callback_obj)
+					removed_objs += 1
+		return removed_objs
 
 
 	#TODO: Check if this is still necessary for weak referenced objects
@@ -103,12 +107,16 @@ class Scheduler(LivingObject):
 		"""Removes all callbacks of 'instance' that are 'callback'
 		@param instance: the instance that would execute the call
 		@param callback: the function to remove
+		@return: int, number of removed calls
 		"""
 		assert callable(callback)
+		removed_calls = 0
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
 				if callback_obj.class_instance() is instance and callback_obj.callback == callback:
 					self.schedule[key].remove(callback_obj)
+					removed_calls += 1
+		return removed_calls
 
 	def get_classinst_calls(self, instance, callback = None):
 		"""Returns all CallbackObjects of instance.

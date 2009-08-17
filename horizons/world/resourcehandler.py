@@ -67,6 +67,8 @@ class ResourceHandler(StorageHolder):
 	def remove(self):
 		for production in self._get_productions():
 			production.remove()
+		while len(self.__incoming_collectors) > 0: # safe list remove here
+			self.__incoming_collectors[0].cancel()
 		super(ResourceHandler, self).remove()
 
 	## INTERFACE

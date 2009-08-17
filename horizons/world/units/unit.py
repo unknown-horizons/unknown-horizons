@@ -29,7 +29,7 @@ from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, Circle
 from horizons.constants import LAYERS
 
-class Unit(MovingObject, WorldObject):
+class Unit(MovingObject):
 	log = logging.getLogger("world.units")
 
 	object_type = 1
@@ -58,35 +58,10 @@ class Unit(MovingObject, WorldObject):
 		self.health = health
 		self.max_health = 100.0
 
-	def __del__(self):
-		self.log.debug("Unit.__del__ for %s started", self)
-		self.log.debug("Scheduler calls: %s", horizons.main.session.scheduler.get_classinst_calls(self))
-		horizons.main.session.scheduler.rem_all_classinst_calls(self)
+	def remove(self):
+		self.log.debug("Unit.remove for %s started", self)
 		self._instance.removeActionListener(self.InstanceActionListener)
-		if hasattr(self, "_instance") and \
-			 self._instance.getLocationRef().getLayer() is not None:
-			horizons.main.session.view.layers[LAYERS.OBJECTS].deleteInstance(self._instance)
-			#self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
-		else:
-			# only debug output here:
-			if hasattr(self, "_instance"):
-				self.log.warning('Unit %s has _instance without layer in __del__')
-		self.log.debug("Unit.__del__ for %s ended", self)
-
-	def has_action(self, action):
-		"""Checks if this unit has a certain action.
-		@param anim: animation id as string"""
-		return (action in horizons.main.action_sets[self._action_set_id])
-
-	def act(self, action, facing_loc=None, repeating=False):
-		if facing_loc is None:
-			facing_loc = self._instance.getFacingLocation()
-		if not self.has_action(action):
-			action = 'idle'
-		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
-
-	def start(self):
-		pass
+		super(Unit, self).remove()
 
 	def onInstanceActionFinished(self, instance, action):
 		"""

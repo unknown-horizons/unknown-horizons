@@ -27,13 +27,14 @@ import fife
 
 import horizons.main
 
+from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject
 from horizons.constants import RES, LAYERS
 
 
-class BasicBuilding(AmbientSound, WorldObject):
+class BasicBuilding(AmbientSound, ConcretObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings.
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
@@ -74,29 +75,16 @@ class BasicBuilding(AmbientSound, WorldObject):
 
 	def get_payout(self):
 		"""gets the payout from the settlement in form of it's running costs"""
-		self.settlement.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
+		self.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
 
-	def act(self, action, facing_loc=None, repeating=False):
-		if facing_loc is None:
-			facing_loc = self._instance.getFacingLocation()
-		if not action in horizons.main.action_sets[self._action_set_id]:
-			action = 'idle'
-		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 
 	def remove(self):
 		"""Removes the building"""
 		self.log.debug("BUILDING: REMOVE %s", self.getId())
 		self.island().remove_building(self)
-		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
-		self._instance = None
-		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
-		self.__del__()
-
-	def __del__(self):
-		super(BasicBuilding, self).__del__()
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
@@ -214,16 +202,6 @@ class BasicBuilding(AmbientSound, WorldObject):
 
 	def start(self):
 		"""This function is called when the building is built, to start production for example."""
-		pass
-
-	def production_state_changed(self):
-		"""Called when the building's production did something (i.e. start, stop, etc.)."""
-		# TODO React to state changes
-		#if "work" in horizons.main.action_sets[self._action_set_id]:
-		#	self.act("work", self._instance.getFacingLocation(), True)
-		#else:
-		#	self.act("idle", self._instance.getFacingLocation(), True)
-		# TODO: implement animation change when we have production states as well as toggle_costs
 		pass
 
 	def __str__(self): # debug

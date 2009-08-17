@@ -68,6 +68,7 @@ class CollectorAnimal(Animal):
 	def finish_working(self):
 		# animal is done when it has eaten, and
 		# doesn't have to get home, so end job right now
+		print '%s finished WORKING' % self
 		Collector.finish_working(self)
 		self.end_job()
 
@@ -236,15 +237,15 @@ class WildAnimal(CollectorAnimal, Collector):
 	def die(self):
 		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
 		self.log.debug("Wild animal %s dying", self.getId())
-		self.hide()
-		# we don't do anything here, just remove reference and
-		# leave animal as is - garbage collection will do the rest
 		self.home_island.wild_animals.remove(self)
+		self.remove()
 
 	def cancel(self):
-		if self.job.object is not None:
-			self.job.object.remove_incoming_collector.remove(self)
-		self.get_job()
+		super(WildAnimal, self).cancel(continue_action=self.search_job)
+
+	def __str__(self):
+		return "%s(health=%s)" % (super(WildAnimal, self).__str__(), \
+															self.health if hasattr(self, 'health') else None)
 
 
 class FarmAnimal(CollectorAnimal, BuildingCollector):

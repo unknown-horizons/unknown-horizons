@@ -52,6 +52,7 @@ class AnimalCollector(BuildingCollector):
 		if self.job is not None and self.job.object is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
 				self.job.object.remove_stop_after_job()
+		super(AnimalCollector, self).cancel()
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(AnimalCollector, self).apply_state(state, remaining_ticks)

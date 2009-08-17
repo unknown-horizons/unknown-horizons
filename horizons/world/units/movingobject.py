@@ -26,8 +26,9 @@ import horizons.main
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList
+from horizons.world.concreteobject import ConcretObject
 
-class MovingObject(object):
+class MovingObject(ConcretObject):
 	"""This class provides moving functionality and is to be inherited by Unit.
 	Its purpose is to provide a cleaner division of the code.
 

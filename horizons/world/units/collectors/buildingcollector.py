@@ -21,7 +21,7 @@
 
 import weakref
 
-from horizons.util import WorldObject, Circle
+from horizons.util import WorldObject, Circle, Callback
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 
 from collector import Collector, JobList
@@ -165,10 +165,8 @@ class BuildingCollector(Collector):
 	def cancel(self):
 		"""Cancels current job and moves back home"""
 		self.log.debug("Collector %s cancel", self.getId())
-		if self.job.object is not None:
-			self.job.object.remove_incoming_collector(self)
-		self.job = None
-		self.move_home(callback=self.search_job, action='move')
+		super(BuildingCollector, self).cancel(continue_action=\
+										Callback(self.move_home, callback=self.search_job, action='move'))
 
 
 class StorageCollector(BuildingCollector):

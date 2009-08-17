@@ -121,7 +121,7 @@ class Collector(StorageHolder, Unit):
 			current_callback = self.finish_working
 		if current_callback is not None:
 			calls = horizons.main.session.scheduler.get_classinst_calls(self, current_callback)
-			assert(len(calls) == 1)
+			assert len(calls) == 1, 'Collector should have callback %s, but doesn\'t' % current_callback
 			remaining_ticks = calls.values()[0]
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)", \
@@ -337,6 +337,22 @@ class Collector(StorageHolder, Unit):
 		self.job = None
 		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)
 		self.state = self.states.idle
+
+	def cancel(self, continue_action):
+		"""Aborts the current job.
+		@param continue_action: Callback, gets called after cancel. Specifies what collector
+			                      is supposed to now.
+		"""
+		if self.job is None:
+			return
+		if self.job.object is not None:
+			self.job.object.remove_incoming_collector(self)
+		if self.state == self.states.working:
+			removed_calls = horizons.main.session.scheduler.rem_call(self, self.finish_working)
+			assert removed_calls == 1
+		self.job = None
+		self.state = self.states.idle
+		continue_action()
 
 
 class Job(object):
