@@ -80,6 +80,9 @@ class SETTLER:
 
 	TICK_INTERVAL = 30 # seconds; interval for settler to pay res, check for level up, etc.
 
+	TAX_SETTINGS = Enum(u'medium',u'high')
+	TAX_SETTINGS_VALUES = [1.0, 1.3]
+
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
 	HEALTH_INCREASE_ON_FEEDING = 2 # health increases by this value on feedig

@@ -31,9 +31,11 @@ class Settlement(TradePost, NamedObject):
 		@param owner: Player object that owns the settlement
 		"""
 		super(Settlement, self).__init__()
-		self.owner = owner
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 
+	def __init(self, owner):
+		self.owner = owner
+		self.tax_setting = 1.0
 		self.setup_storage()
 
 	def get_default_name(self):
@@ -72,10 +74,9 @@ class Settlement(TradePost, NamedObject):
 
 		super(Settlement, self).load(db, worldid)
 
-		self.owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
-		self.owner = WorldObject.get_object_by_id(self.owner)
+		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
+		self.__init(WorldObject.get_object_by_id(owner))
 
-		self.setup_storage()
 		self.inventory.load(db, worldid)
 
 		# load all buildings from this settlement

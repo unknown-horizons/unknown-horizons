@@ -26,7 +26,7 @@ import pychan
 from tabinterface import TabInterface
 from horizons.util import PychanChildFinder, Callback
 from horizons.i18n import load_xml_translated
-from horizons.constants import RES
+from horizons.constants import RES, SETTLER
 
 
 class OverviewTab(TabInterface):
@@ -135,7 +135,6 @@ class ProductionOverviewTab(OverviewTab):
 
 
 class SettlerOverviewTab(OverviewTab):
-
 	def  __init__(self, instance):
 		super(SettlerOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_overview_settler.xml',
@@ -152,3 +151,20 @@ class SettlerOverviewTab(OverviewTab):
 			self.instance.inhabitants, self.instance.inhabitants_max ) )
 		super(SettlerOverviewTab, self).refresh()
 
+class MarketPlaceOverviewTab(OverviewTab):
+
+	def  __init__(self, instance):
+		super(MarketPlaceOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_marketplace.xml',
+			instance = instance
+		)
+		self.tooltip = u"Market Place Overview"
+		self.widget.distributeInitialData({'tax_list' : [ str(s) for s in SETTLER.TAX_SETTINGS ]})
+
+	def refresh(self):
+		self.widget.child_finder('tax_list').capture(self.on_tax_widget_change)
+		super(MarketPlaceOverviewTab, self).refresh()
+
+	def on_tax_widget_change(self):
+		new_tax_num = self.widget.collectData('tax_list')
+		self.instance.settlement.tax_setting = SETTLER.TAX_SETTINGS_VALUES[new_tax_num]

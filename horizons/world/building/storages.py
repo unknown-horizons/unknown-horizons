@@ -23,7 +23,8 @@ import horizons.main
 
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, InventoryTab
+from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
+		 MarketPlaceOverviewTab
 from horizons.util import Point, WorldObject
 from horizons.constants import UNITS
 from building import BasicBuilding, Selectable
@@ -109,3 +110,7 @@ class BranchOffice(StorageBuilding):
 				return {'buildable' : False}
 
 		return {} if coast_tile_found else {'buildable' : False}
+
+class MarketPlace(StorageBuilding):
+	def show_menu(self):
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [MarketPlaceOverviewTab(self)]))

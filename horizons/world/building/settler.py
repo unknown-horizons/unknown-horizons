@@ -88,12 +88,12 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
 		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
 		happiness_tax_modifier = (float(self.happiness)-50)/200 + 1
-		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants
+		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_setting
 		taxes = int(round(taxes))
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
 		# decrease our happiness
 		# NOTE: the amount hasn't been defined, so these are just my thoughts for now -totycro
-		happiness_decrease = taxes + self.tax_base
+		happiness_decrease = taxes + self.tax_base + -((self.settlement.tax_setting-1)*3)
 		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 		self._changed()
 		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, self.happiness)
