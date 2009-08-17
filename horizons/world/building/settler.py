@@ -48,6 +48,10 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data()
 
+	@property
+	def happiness(self):
+		return self.inventory[RES.HAPPINESS_ID]
+
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
 		self.tax_rate = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
@@ -88,19 +92,17 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		# decrease our happiness for the amount of the taxes
 		self.inventory.alter(RES.HAPPINESS_ID, -taxes)
 		self._changed()
-		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, \
-									 self.inventory[RES.HAPPINESS_ID])
+		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, self.happiness)
 
 	def inhabitant_check(self):
 		"""Checks wether or not the population of this settler should increase or decrease"""
-		happiness = self.inventory[RES.HAPPINESS_ID]
 		changed = False
-		if happiness > SETTLER.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
+		if self.happiness > SETTLER.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
 			 self.inhabitants < self.inhabitants_max:
 			self.inhabitants += 1
 			changed = True
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
-		elif happiness < SETTLER.HAPPINESS_INHABITANTS_DECREASE_LIMIT and self.inhabitants > 1:
+		elif self.happiness < SETTLER.HAPPINESS_INHABITANTS_DECREASE_LIMIT and self.inhabitants > 1:
 			self.inhabitants -= 1
 			changed = True
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
@@ -109,26 +111,22 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			self.alter_production_time( 1 + (float(self.inhabitants)/2))
 			self._changed()
 
-
 	def level_check(self):
 		"""Checks wether we should level up or down."""
-		happiness = self.inventory[RES.HAPPINESS_ID]
 		# TODO: add consumtion of construction material
-		if happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT:
+		if self.happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT:
 			self.level_up()
 			self._changed()
-		elif happiness < SETTLER.HAPPINESS_LEVEL_DOWN_LIMIT:
+		elif self.happiness < SETTLER.HAPPINESS_LEVEL_DOWN_LIMIT:
 			self.level_down()
 			self._changed()
 
 	def level_up(self):
-		#TODO: implement leveling of settlers
 		if self.level < self.level_max:
 			self.level += 1
 			self.update_world_level()
 
 	def level_down(self):
-		#TODO: implement leveling of settlers
 		if self.level == 0: # can't level down any more
 			# remove when this function is done
 			horizons.main.session.scheduler.add_new_object(self.remove, self)
@@ -159,4 +157,4 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def __str__(self):
 		return "%s(inhabit:%s;happy:%s)" % (super(Settler, self).__str__(), self.inhabitants, \
-																				self.inventory[RES.HAPPINESS_ID])
+																				self.happiness)

@@ -32,18 +32,16 @@ class Path(BasicBuilding, BuildableLine):
 
 	def init(self):
 		super(Path, self).init()
-		origin = self.position.origin
-		self.island = weakref.ref(horizons.main.session.world.get_island(origin.x, origin.y))
 		self.__init()
 		self.recalculate_surrounding_tile_orientation()
-
-	def __init(self):
-		self.island().path_nodes.register_road(self)
-		self.recalculate_orientation()
 
 	def load(self, db, worldid):
 		super(Path, self).load(db, worldid)
 		self.__init()
+
+	def __init(self):
+		self.island().path_nodes.register_road(self)
+		self.recalculate_orientation()
 
 	def remove(self):
 		super(Path, self).remove()
