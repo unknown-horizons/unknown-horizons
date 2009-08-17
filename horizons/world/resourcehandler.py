@@ -25,7 +25,6 @@ from horizons.util import WeakList
 from storageholder import StorageHolder
 from horizons.gui.tabs import TabWidget, ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
-from horizons.world.production.productionline import _ProductionLineData
 
 
 class ResourceHandler(StorageHolder):
@@ -104,7 +103,11 @@ class ResourceHandler(StorageHolder):
 	def add_production_by_id(self, production_line_id, production_class = Production):
 		"""Convenience method.
 		@param production_line_id: Production line from db
-		@param production_class: Subclass of Production that does the production"""
+		@param production_class: Subclass of Production that does the production. If the object
+		                         has a production_class-member, this will be used instead.
+		"""
+		if hasattr(self, "production_class"):
+			production_class = self.production_class
 		self.add_production(production_class(self.inventory, production_line_id))
 
 	def load_production(self, db, production_id):
@@ -166,7 +169,11 @@ class ResourceHandler(StorageHolder):
 			if c.job is None:
 				print 'Error: %s at %s has no job!' % (c, self)
 		# </debug check>
-		return self.inventory[res] - \
+
+		if not res in self.get_provided_resources():
+			return 0 # we don't provide this, and give nothing away because we need it ourselves.
+		else:
+			return self.inventory[res] - \
 					 sum([c.job.amount for c in self.__incoming_collectors if \
 								c != collector and c.job.res == res])
 

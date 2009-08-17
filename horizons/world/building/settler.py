@@ -19,24 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from random import randint
 import logging
 
 import horizons.main
 
 from horizons.gui.tabs import TabWidget, SettlerOverviewTab
-from horizons.util import WeakList
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
-from horizons.constants import RES, UNITS, SETTLER
-from horizons.world.storage import PositiveSizedSpecializedStorage
+from horizons.constants import RES, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.production.production import Production
+from horizons.world.production.production import SettlerProduction
 
 
 class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	log = logging.getLogger("world.building.settler")
+
+	production_class = SettlerProduction
+
 	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
 		self.__init(SETTLER.HAPPINESS_INIT_VALUE, level)
@@ -44,24 +44,25 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def __init(self, happiness, level):
 		self.level = level
+		self.level_max = 0 # for now
 		self.inventory.alter(RES.HAPPINESS_ID, happiness)
-		self.tax_rate = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
-		self._update_consumation()
+		self._update_level_data()
 
-	def _update_consumation(self):
-		"""Resets the production line in case of level change, etc."""
-		# Settler productions are specified to be disabled by default in the db.
-		# we enable them here by level
+	def _update_level_data(self):
+		"""Updates all settler-related data because of a level change"""
+		self.tax_rate = horizons.main.db("SELECT tax_income FROM settler_level WHERE level=?", self.level)[0][0]
+
+		# consumation:
+		# Settler productions are specified to be disabled by default in the db, so we can enable
+		# them here per level.
 		current_lines = self.get_production_lines()
 		for (prod_line,) in horizons.main.db("SELECT production_line FROM \
 																					settler_production_line WHERE level = ?", self.level):
 			if not self.has_production_line(prod_line):
 				self.add_production_by_id(prod_line)
-
 			# cross out the new lines from the current lines, so only the old ones remain
 			if prod_line in current_lines:
 				current_lines.remove(prod_line)
-
 		for line in current_lines:
 			# all lines, that were added here but are not used due to the current level
 			self.remove_production_by_id(line)
@@ -122,7 +123,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def level_up(self):
 		#TODO: implement leveling of settlers
-		if (self.level+1) <= self.level_max:
+		if self.level < self.level_max:
 			self.level += 1
 			self.update_world_level()
 

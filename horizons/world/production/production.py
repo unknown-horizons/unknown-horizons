@@ -183,7 +183,7 @@ class Production(WorldObject):
 
 	def alter_production_time(self, modifier):
 		"""@see ProductionLine.alter_production_time"""
-		self._prod_line.alter_production(modifier)
+		self._prod_line.alter_production_time(modifier)
 
 	## PROTECTED METHODS
 	def _check_inventory(self):
@@ -222,12 +222,16 @@ class Production(WorldObject):
 		horizons.main.session.scheduler.add_new_object(self._finished_producing, self, time)
 
 	def _finished_producing(self):
-		"""Called when the production finishes. Puts res in inventory"""
+		"""Called when the production finishes."""
 		self.log.debug("%s finished", self)
+		self._give_produced_res()
+		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+
+	def _give_produced_res(self):
+		"""Put produces goods to the inventory"""
 		for res, amount in self._prod_line.produced_res.iteritems():
 			self.inventory.alter(res, amount)
 			self.log.debug("produced %s of %s", amount, res)
-		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 
 	def _check_available_res(self):
 		"""Checks if there are enough resources to start production.
@@ -262,6 +266,17 @@ class ChangingProduction(Production):
 		"""Returns a changeable production line instance"""
 		return ProductionLine(prod_line_id)
 
+class SettlerProduction(ChangingProduction):
+	"""For settlers, production behavies different:
+	They produce happiness from the goods they get. They get happy immediately when the get
+	the resource (i.e. they produce at production start)"""
+	def _give_produced_res(self):
+		pass # don't give any resources, when they acctually should be given
+
+	def _remove_res_to_expend(self):
+		super(SettlerProduction, self)._remove_res_to_expend()
+		# give the resources when taking away the consumed goods at prod start
+		super(SettlerProduction, self)._give_produced_res()
 
 class ProgressProduction(Production):
 	"""Same as Production, but starts as soon as any needed res is available (doesn't wait

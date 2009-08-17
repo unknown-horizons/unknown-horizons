@@ -50,7 +50,7 @@ class ProductionLine(object):
 
 	def alter_production_time(self, modifier):
 		"""Sets time to original production time multiplied by modifier"""
-		self.time = _ProductionLineData[self.id].time * modifier
+		self.time = self.data[self.id].time * modifier
 
 	def alter_amount(self, res, amount):
 		"""Alters an amount of a res at runtime. Because of redundancy, you can only change
