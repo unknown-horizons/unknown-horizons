@@ -35,8 +35,6 @@ class ConcretObject(WorldObject):
 		super(ConcretObject, self).__init__(**kwargs)
 
 	def act(self, action, facing_loc=None, repeating=False):
-		print 'self: %s' % self
-		print 'instance: %s' % self._instance
 		if facing_loc is None:
 			facing_loc = self._instance.getFacingLocation()
 		if not self.has_action(action):

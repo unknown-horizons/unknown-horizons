@@ -96,3 +96,6 @@ class _ProductionLineData(object):
 			raise TypeError, 'ProductionLineData is const, use ProductionLine'
 		else:
 			self.__dict__[name] = value
+
+	def __str__(self):
+		return "ProductionLineData(lineid=%s)" % self.id

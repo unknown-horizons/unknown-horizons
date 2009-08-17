@@ -28,7 +28,7 @@ import horizons.main
 from horizons.world.production.producer import Producer
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
-from collectors import Collector, BuildingCollector, JobList
+from collectors import Collector, BuildingCollector, JobList, Job
 from horizons.constants import WILD_ANIMAL
 
 class Animal(Producer):
@@ -81,6 +81,9 @@ class CollectorAnimal(Animal):
 			self.state = self.states.stopped
 		else:
 			super(CollectorAnimal, self).search_job()
+
+	def get_home_inventory(self):
+		return self.inventory
 
 
 class WildAnimal(CollectorAnimal, Collector):
@@ -158,9 +161,6 @@ class WildAnimal(CollectorAnimal, Collector):
 																										 remaining_ticks)
 		elif self.state == self.states.no_job_walking_randomly:
 			self.add_move_callback(self.search_job)
-
-	def get_home_inventory(self):
-		return self.inventory
 
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
@@ -265,3 +265,16 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 			self.home_building.animals.remove(self)
 		else:
 			self.home_building.animals.append(self)
+
+	def get_buildings_in_range(self):
+		# we are only allowed to pick up at our pasture
+		return [self.home_building]
+
+	def begin_current_job(self):
+		# we can only move on 1 building; simulate this by chosing a random location with
+		# the building
+		coords = self.job.object.position.get_coordinates()
+		coords.remove(self.position.to_tuple())
+		target_location = coords[ random.randint(0, len(coords)-1) ]
+		target_location = Point(*target_location)
+		super(FarmAnimal, self).begin_current_job(job_location=target_location)

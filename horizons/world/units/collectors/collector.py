@@ -257,9 +257,10 @@ class Collector(StorageHolder, Unit):
 		if collector_inventory_free_space <= 0:
 			return None
 
+		possible_res_amount = min(res_amount, home_inventory_free_space, \
+															collector_inventory_free_space)
 		# create a new job.
-		return Job(target, res, min(res_amount, home_inventory_free_space, \
-																collector_inventory_free_space))
+		return Job(target, res, possible_res_amount)
 
 	def get_best_possible_job(self, jobs):
 		"""Return best possible job from jobs.
@@ -276,13 +277,16 @@ class Collector(StorageHolder, Unit):
 		## TODO: if we need multiple res, we don't check if we need on more urgently.
 		return None
 
-	def begin_current_job(self):
-		"""Starts executing the current job by registering itself and moving to target."""
+	def begin_current_job(self, job_location = None):
+		"""Starts executing the current job by registering itself and moving to target.
+		@param job_location: Where collector should work. default: job.object.position"""
 		self.log.debug("Collector %s prepares job %s", self.getId(), self.job)
 		self.setup_new_job()
 		self.show()
-		assert self.check_move(self.job.object.position)
-		self.move(self.job.object.position, self.begin_working, \
+		if job_location is None:
+			job_location = self.job.object.position
+		assert self.check_move(job_location)
+		self.move(job_location, self.begin_working, \
 							destination_in_building = self.destination_always_in_building)
 		self.state = self.states.moving_to_target
 

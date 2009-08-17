@@ -22,8 +22,9 @@
 from building import BasicBuilding
 from buildable import BuildableRect
 from collectingbuilding import CollectingBuilding
-
 from horizons.world.production.producer import ProducerBuilding
+from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
+
 import horizons.main
 
 
@@ -35,7 +36,6 @@ class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(GrowingBuilding, self).__init__(**kwargs)
-		self.inventory.limit = 1 # this should be done by database query later on
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
@@ -49,7 +49,6 @@ class Field(GrowingBuilding):
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
 class AnimalField(CollectingBuilding, Field):
-
 	def create_collector(self):
 		self.animals = []
 
@@ -60,6 +59,11 @@ class AnimalField(CollectingBuilding, Field):
 				horizons.main.session.entities.units[animal](self)
 
 		super(AnimalField, self).create_collector()
+
+	def remove(self):
+		while len(self.animals) > 0:
+			self.animals[0].cancel()
+			self.animals[0].remove()
 
 class Tree(GrowingBuilding):
 	@classmethod
