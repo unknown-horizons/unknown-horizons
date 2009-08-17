@@ -274,7 +274,11 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		# we can only move on 1 building; simulate this by chosing a random location with
 		# the building
 		coords = self.job.object.position.get_coordinates()
-		coords.remove(self.position.to_tuple())
+		# usually, the animal stands "in" the building. but when the animalcollector gets it,
+		# it's outside of it. therefore it happens, that the position isn't in the buildings coords.
+		my_position = self.position.to_tuple()
+		if my_position in coords:
+			coords.remove(my_position)
 		target_location = coords[ random.randint(0, len(coords)-1) ]
 		target_location = Point(*target_location)
 		super(FarmAnimal, self).begin_current_job(job_location=target_location)

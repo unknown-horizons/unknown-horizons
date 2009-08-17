@@ -93,7 +93,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
 		# decrease our happiness
 		# NOTE: the amount hasn't been defined, so these are just my thoughts for now -totycro
-		happiness_decrease = taxes + self.tax_base + -((self.settlement.tax_setting-1)*3)
+		happiness_decrease = taxes + self.tax_base + -((self.settlement.tax_setting-1)*9)
 		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 		self._changed()
 		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, self.happiness)
