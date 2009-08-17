@@ -60,9 +60,8 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		current_lines = self.get_production_lines()
-		for (prod_line,) in \
-				horizons.main.db("SELECT production_line FROM settler.settler_production_line \
-													WHERE level = ?", self.level):
+		for (prod_line,) in horizons.main.db.cached_query("SELECT production_line \
+							FROM settler.settler_production_line WHERE level = ?", self.level):
 			if not self.has_production_line(prod_line):
 				self.add_production_by_id(prod_line)
 			# cross out the new lines from the current lines, so only the old ones remain
@@ -92,8 +91,10 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants
 		taxes = int(round(taxes))
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
-		# decrease our happiness for the amount of the taxes
-		self.inventory.alter(RES.HAPPINESS_ID, -taxes)
+		# decrease our happiness
+		# NOTE: the amount hasn't been defined, so these are just my thoughts for now -totycro
+		happiness_decrease = taxes + self.tax_base
+		self.inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
 		self._changed()
 		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, self.happiness)
 
@@ -111,7 +112,8 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
 		if changed:
-			self.alter_production_time( 1 + (float(self.inhabitants)/2))
+			# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Supplying_citizens_with_resources
+			self.alter_production_time( 1 + (float(self.inhabitants)/10))
 			self._changed()
 
 	def level_check(self):

@@ -64,6 +64,11 @@ class ResourceHandler(StorageHolder):
 			self.log.debug('loading production %s at %s', production[0], self.getId())
 			self.add_production( self.load_production(db, production[0]) )
 
+	def remove(self):
+		for production in self._get_productions():
+			production.remove()
+		super(ResourceHandler, self).remove()
+
 	## INTERFACE
 	def get_consumed_resources(self):
 		"""Returns the needed resources that are used by the productions

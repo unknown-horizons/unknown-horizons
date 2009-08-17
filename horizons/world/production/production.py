@@ -101,6 +101,10 @@ class Production(WorldObject):
 		super(cls, self).load(db, worldid)
 		return self
 
+	def remove(self):
+		horizons.main.session.scheduler.rem_all_classinst_calls(self)
+		super(Production, self).remove()
+
 	## INTERFACE METHODS
 	def get_production_line_id(self):
 		"""Returns id of production line"""

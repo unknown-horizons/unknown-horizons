@@ -69,6 +69,9 @@ class WorldObject(Changelistener):
 		# Make sure that new WorldIDs are always higher than every other WorldObject
 		WorldObject.__next_id = max(self.__next_id, worldid + 1)
 
+	def remove(self):
+		pass # removing is done implicitly by WeakValueDict
+
 	# for testing:
 	@classmethod
 	def get_objs(self): return self.__objects

@@ -110,7 +110,6 @@ class ShipOverviewTab(OverviewTab):
 
 
 
-
 class ProductionOverviewTab(OverviewTab):
 
 	def  __init__(self, instance):
@@ -128,8 +127,10 @@ class ProductionOverviewTab(OverviewTab):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
+		costs = 0
 		if hasattr(self.instance, 'running_costs'):
-			self.widget.child_finder('running_costs').text = unicode(self.instance.running_costs)
+			costs = self.instance.running_costs
+		self.widget.child_finder('running_costs').text = unicode(costs)
 		super(ProductionOverviewTab, self).refresh()
 
 

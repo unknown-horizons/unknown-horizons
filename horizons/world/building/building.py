@@ -92,6 +92,7 @@ class BasicBuilding(AmbientSound, WorldObject):
 		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
+		super(BasicBuilding, self).remove()
 		self.__del__()
 
 	def __del__(self):
@@ -106,7 +107,6 @@ class BasicBuilding(AmbientSound, WorldObject):
 			self.health, (self.settlement or self.island()).getId())
 
 	def load(self, db, worldid):
-		self.log.debug('loading building %s', worldid)
 		super(BasicBuilding, self).load(db, worldid)
 		x, y, self.health, location, rotation = \
 			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
