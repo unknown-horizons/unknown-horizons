@@ -68,7 +68,6 @@ class CollectorAnimal(Animal):
 	def finish_working(self):
 		# animal is done when it has eaten, and
 		# doesn't have to get home, so end job right now
-		print '%s finished WORKING' % self
 		Collector.finish_working(self)
 		self.end_job()
 

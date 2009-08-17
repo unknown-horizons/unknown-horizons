@@ -32,6 +32,7 @@ class Settlement(TradePost, NamedObject):
 		"""
 		super(Settlement, self).__init__()
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
+		self.__init(owner)
 
 	def __init(self, owner):
 		self.owner = owner
