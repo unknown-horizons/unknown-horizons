@@ -24,6 +24,7 @@ import os
 import os.path
 import time
 import logging
+import fife
 
 import horizons.main
 
@@ -100,6 +101,7 @@ class Session(LivingObject):
 		self.ingame_gui = IngameGui()
 		self.keylistener = IngameKeyListener()
 		self.cursor = SelectionTool()
+		self.display_speed()
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
@@ -282,6 +284,15 @@ class Session(LivingObject):
 			self.timer.tick_next_time = None
 		else:
 			self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
+		self.display_speed()
+
+	def display_speed(self):
+		if not hasattr(self, 'speed_display'):
+			self.speed_display = self.ingame_gui.gui['minimap'].findChild(name="speed_text")
+			self.speed_display.stylize('menu')
+		self.speed_display.text = unicode(str(self.timer.ticks_per_second/16)) + 'x' if self.timer.ticks_per_second != 0 else u"II"
+		self.speed_display.resizeToContent()
+		self.ingame_gui.gui['minimap'].show()
 
 	def speed_up(self):
 		if self.timer.ticks_per_second in horizons.main.settings.ticks.steps:
