@@ -62,6 +62,7 @@ class Production(WorldObject):
 		self._pause_remaining_ticks = None # only used in pause()
 		self._pause_old_state = pause_old_state # only used in pause()
 
+		assert isinstance(prod_line_id, int)
 		self._prod_line = self._create_production_line(prod_line_id)
 
 	@classmethod
@@ -187,7 +188,15 @@ class Production(WorldObject):
 
 	def alter_production_time(self, modifier):
 		"""@see ProductionLine.alter_production_time"""
-		self._prod_line.alter_production_time(modifier)
+		try:
+			self._prod_line.alter_production_time(modifier)
+		except AttributeError: # production line doesn't have this alter method
+			pass
+
+	def on_remove(self):
+		"""Get's called when production is 'done' (mainly for SingleUseProduction)
+		Overwrite at owner!"""
+		pass
 
 	## PROTECTED METHODS
 	def _check_inventory(self):
@@ -265,7 +274,7 @@ class Production(WorldObject):
 
 
 class ChangingProduction(Production):
-	"""Same as Production, but changes properties of the production line"""
+	"""Same as Production, but can changes properties of the production line"""
 	def _create_production_line(self, prod_line_id):
 		"""Returns a changeable production line instance"""
 		return ProductionLine(prod_line_id)
@@ -281,6 +290,24 @@ class SettlerProduction(ChangingProduction):
 		super(SettlerProduction, self)._remove_res_to_expend()
 		# give the resources when taking away the consumed goods at prod start
 		super(SettlerProduction, self)._give_produced_res()
+
+class SingleUseProduction(Production):
+	"""This Production just produces one time, then calls a callback.
+	Use case: Settler getting upgrade material"""
+	def __init__(self, inventory, prod_line_id, callback=None, **kwargs):
+		"""
+		@param callback: Callable, get's called when construction is done.
+		"""
+		super(SingleUseProduction, self).__init__(inventory, prod_line_id, **kwargs)
+		assert callable(callback)
+		self.callback = callback
+
+	def _finished_producing(self):
+		self._give_produced_res()
+		self.state = PRODUCTION_STATES.done
+		self.callback()
+		self.on_remove()
+
 
 class ProgressProduction(Production):
 	"""Same as Production, but starts as soon as any needed res is available (doesn't wait

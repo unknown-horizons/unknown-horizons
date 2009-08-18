@@ -23,12 +23,12 @@ import logging
 
 import horizons.main
 
-from horizons.gui.tabs import TabWidget, SettlerOverviewTab
+from horizons.gui.tabs import TabWidget, SettlerOverviewTab, InventoryTab
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
 from horizons.constants import RES, SETTLER
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.production.production import SettlerProduction
+from horizons.world.production.production import SettlerProduction, SingleUseProduction
 
 
 class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
@@ -44,7 +44,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def __init(self, happiness, level):
 		self.level = level
-		self.level_max = 0 # for now
+		self.level_max = 1 # for now
 		self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data()
 
@@ -94,9 +94,11 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		# decrease our happiness
 		# NOTE: the amount hasn't been defined, so these are just my thoughts for now -totycro
 		happiness_decrease = taxes + self.tax_base + ((self.settlement.tax_setting-1)*10)
+		happiness_decrease = int(round(happiness_decrease))
 		self.inventory.alter(RES.HAPPINESS_ID, -happiness_decrease)
 		self._changed()
-		self.log.debug("%s: pays %s taxes, new happiness: %s", self, taxes, self.happiness)
+		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, taxes, \
+									 happiness_decrease, self.happiness)
 
 	def inhabitant_check(self):
 		"""Checks wether or not the population of this settler should increase or decrease"""
@@ -118,26 +120,39 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def level_check(self):
 		"""Checks wether we should level up or down."""
-		# TODO: add consumtion of construction material
-		if self.happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT:
-			self.level_up()
-			self._changed()
+		if self.happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT and \
+			 self.level < self.level_max:
+			# add a production line that get's the necessary upgrade material.
+			# when the production finished, it calls level_up as callback.
+			upgrade_material_prodline = horizons.main.db("SELECT production_line FROM upgrade_material \
+																									 WHERE level = ?", self.level+1)[0][0]
+			if self.has_production_line(upgrade_material_prodline):
+				return # already waiting for res
+			upgrade_material_production = SingleUseProduction(self.inventory, upgrade_material_prodline,
+																							callback = self.level_up)
+			# drive the car out of the garage to make space for the building material
+			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
+				self.inventory.add_resource_slot(res, abs(amount))
+			self.add_production(upgrade_material_production)
+			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 		elif self.happiness < SETTLER.HAPPINESS_LEVEL_DOWN_LIMIT:
 			self.level_down()
 			self._changed()
 
 	def level_up(self):
-		if self.level < self.level_max:
-			self.level += 1
-			self.update_world_level()
+		self.level += 1
+		self.update_world_level()
+		self.log.debug("%s: Leveling up to %s", self, self.level)
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
 			# remove when this function is done
 			horizons.main.session.scheduler.add_new_object(self.remove, self)
+			self.log.debug("%s: Destroyed by lack of happiness", self)
 		else:
 			self.level -= 1
 			self.update_world_level()
+			self.log.debug("%s: Level down to %s", self, self.level)
 
 	def update_world_level(self):
 		"""Sets the highest settler level of the player.
@@ -147,7 +162,8 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			horizons.main.session.world.player.settler_level = self.level
 
 	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs =[SettlerOverviewTab(self)]))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs =[SettlerOverviewTab(self), \
+																																InventoryTab(self)]))
 
 	def save(self, db):
 		super(Settler, self).save(db)
@@ -162,5 +178,5 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		self.run()
 
 	def __str__(self):
-		return "%s(inhabit:%s;happy:%s)" % (super(Settler, self).__str__(), self.inhabitants, \
-																				self.happiness)
+		return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level, \
+																				self.inhabitants, self.happiness)

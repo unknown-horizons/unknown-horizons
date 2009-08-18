@@ -21,6 +21,7 @@
 
 import logging
 
+from horizons.util import Callback
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import Production
@@ -50,6 +51,7 @@ class Producer(ResourceHandler):
 		assert isinstance(production, Production)
 		self.log.debug('Producer %s: added production line %s', self.getId(), \
 									 production.get_production_line_id())
+		production.on_remove = Callback(self.remove_production, production)
 		self._productions[production.get_production_line_id()] = production
 		production.add_change_listener(self.on_production_change, call_listener_now=True)
 		self._changed()

@@ -141,7 +141,9 @@ class SpecializedStorage(GenericStorage):
 			return amount # we couldn't store any of this
 
 	def add_resource_slot(self, res):
+		"""Creates a slot for res. Does nothing if the slot exists."""
 		super(SpecializedStorage, self).alter(res, 0)
+		self._changed()
 
 	def has_resource_slot(self, res):
 		return (res in self._storage)
@@ -172,6 +174,8 @@ class SizedSpecializedStorage(SpecializedStorage):
 			return 0
 
 	def add_resource_slot(self, res, size):
+		"""Add a resource slot for res for the size size.
+		If the slot already exists, just update it's size to size."""
 		super(SizedSpecializedStorage, self).add_resource_slot(res)
 		assert size >= 0
 		self.__slot_limits[res] = size
