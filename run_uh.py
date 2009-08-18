@@ -129,6 +129,9 @@ def main():
 		logging.getLogger().addHandler(file_handler)
 		sys.excepthook = excepthook_creator(logfilename)
 	for module in options.debug_module:
+		if not module in logging.Logger.manager.loggerDict:
+			print 'No such logger: %s' % module
+			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 
 	# NOTE: this might cause a program restart

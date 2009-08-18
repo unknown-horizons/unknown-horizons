@@ -34,9 +34,9 @@ class Settlement(TradePost, NamedObject):
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
 		self.__init(owner)
 
-	def __init(self, owner):
+	def __init(self, owner, tax_setting=1.0):
 		self.owner = owner
-		self.tax_setting = 1.0
+		self.tax_setting = tax_setting
 		self.setup_storage()
 
 	def get_default_name(self):
@@ -65,8 +65,8 @@ class Settlement(TradePost, NamedObject):
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
 
-		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
-			self.getId(), islandid, self.owner.getId())
+		db("INSERT INTO settlement (rowid, island, owner, tax_setting) VALUES(?, ?, ?, ?)",
+			self.getId(), islandid, self.owner.getId(), self.tax_setting)
 		self.inventory.save(db, self.getId())
 
 	@classmethod
@@ -75,8 +75,8 @@ class Settlement(TradePost, NamedObject):
 
 		super(Settlement, self).load(db, worldid)
 
-		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
-		self.__init(WorldObject.get_object_by_id(owner))
+		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
+		self.__init(WorldObject.get_object_by_id(owner), tax)
 
 		self.inventory.load(db, worldid)
 
