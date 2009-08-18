@@ -289,7 +289,16 @@ class Session(LivingObject):
 		if not hasattr(self, 'speed_display'):
 			self.speed_display = self.ingame_gui.gui['minimap'].findChild(name="speed_text")
 			self.speed_display.stylize('menu')
-		self.speed_display.text = unicode(str(self.timer.ticks_per_second/16)) + 'x' if self.timer.ticks_per_second != 0 else u"II"
+
+		text = u''
+		tps = self.timer.ticks_per_second
+		if tps == 0: # pause
+			text = u'II'
+		elif tps == 16: # normal speed, 1x
+			pass # display nothing
+		else:
+			text = unicode(tps/16) + 'x' # 2x, 4x, ...
+		self.speed_display.text = text
 		self.speed_display.resizeToContent()
 		self.ingame_gui.gui['minimap'].show()
 
