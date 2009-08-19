@@ -198,6 +198,7 @@ class WildAnimal(CollectorAnimal, Collector):
 					if job is not None:
 						jobs.append(job)
 
+		self.log.debug("Wildanimal %s: %s possible jobs", self.getId(), len(jobs))
 		return self.get_best_possible_job(jobs)
 
 	def reroute(self):

@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import user
+import os.path
+
 from ext.enum import Enum
 
 """This file keeps track of some constants, that have to be used in the code.
@@ -58,7 +59,7 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
-_user_dir = "%s/.unknown-horizons" % user.home
+_user_dir = "%s/.unknown-horizons" % os.path.expanduser('~')
 class PATHS:
 	USER_DIR = _user_dir
 	LOG_DIR = _user_dir + "/log"
@@ -86,7 +87,7 @@ class SETTLER:
 
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
-	HEALTH_INCREASE_ON_FEEDING = 2 # health increases by this value on feedig
+	HEALTH_INCREASE_ON_FEEDING = 3 # health increases by this value on feedig
 	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
 	HEALTH_LEVEL_TO_REPRODUCE = 100 # this level has to be reached for reproducing
 

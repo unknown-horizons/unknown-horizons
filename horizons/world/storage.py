@@ -84,6 +84,8 @@ class GenericStorage(WorldObject):
 		@param amount: int amount that is to be changed. Can be negative to remove resources.
 		@return: int - amount that did not fit or was not available, depending on context.
 		"""
+		assert isinstance(res, int)
+		assert isinstance(amount, int)
 		if res in self._storage:
 			self._storage[res] += amount
 		else:

@@ -120,19 +120,21 @@ def main():
 
 	# apply options
 	if options.debug:
-		from horizons.constants import PATHS
 		logging.getLogger().setLevel(logging.DEBUG)
+	for module in options.debug_module:
+		if not module in logging.Logger.manager.loggerDict:
+			print 'No such logger:', module
+			sys.exit(1)
+		logging.getLogger(module).setLevel(logging.DEBUG)
+	if options.debug or len(options.debug_module) > 0:
+		# also log to file
 		# init a logfile handler with a dynamic filename
+		from horizons.constants import PATHS
 		logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
 		print 'Logging to stderr and %s' % logfilename
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
 		sys.excepthook = excepthook_creator(logfilename)
-	for module in options.debug_module:
-		if not module in logging.Logger.manager.loggerDict:
-			print 'No such logger: %s' % module
-			sys.exit(1)
-		logging.getLogger(module).setLevel(logging.DEBUG)
 
 	# NOTE: this might cause a program restart
 	init_environment()

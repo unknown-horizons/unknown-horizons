@@ -72,10 +72,12 @@ def print_res():
 		print "%s:\t%s (%s)" % (id, name, value)
 
 def print_building():
-	print "Buildings (id: name from class, size, radius):"
-	for id, name, c_type, c_package, x, y, radius in \
-			db('select id, name, class_type, class_package, size_x, size_y, radius from building'):
-		print "%s: %s from %s.%s, %sx%s, %s" % (strw(id,2), strw(name, 18), c_package, c_type, x, y, radius)
+	print "Buildings (id: name running_costs from class, size, radius):"
+	for id, name, c_type, c_package, x, y, radius, cost in \
+			db('select id, name, class_type, class_package, size_x, size_y, radius, cost_active from \
+			building LEFT OUTER JOIN building_running_costs on building_running_costs.building = building.id'):
+		cost = " 0" if cost is None else cost
+		print "%s: %s %s$, from %s.%s, %sx%s, %s" % (strw(id,2), strw(name, 16), strw(cost, 2), c_package, c_type, x, y, radius)
 
 def print_unit():
 	print "Units (id: name from class)"

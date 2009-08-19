@@ -216,10 +216,12 @@ class Collector(StorageHolder, Unit):
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
 		if target.inventory.getId() == self.get_home_inventory().getId():
+			#self.log.debug("nojob: same inventory")
 			return False
 
 		# check if we're allowed to pick up there
 		if self.is_restricted and target.id not in self.possible_target_classes:
+			#self.log.debug("nojob: %s is restricted", target.id)
 			return False
 
 		# pathfinding would fit in here, but it's too expensive,
@@ -236,6 +238,7 @@ class Collector(StorageHolder, Unit):
 		"""
 		res_amount = target.get_available_pickup_amount(res, self)
 		if res_amount <= 0:
+			#self.log.debug("nojob: no pickup amount")
 			return None
 
 		# check if other collectors get this resource, because our inventory could
@@ -251,10 +254,12 @@ class Collector(StorageHolder, Unit):
 		home_inventory_free_space = inventory.get_limit(res) - \
 														(total_registered_amount_consumer + inventory[res])
 		if home_inventory_free_space <= 0:
+			#self.log.debug("nojob: no home inventory space")
 			return None
 
 		collector_inventory_free_space = self.inventory.get_free_space_for(res)
 		if collector_inventory_free_space <= 0:
+			#self.log.debug("nojob: no collector inventory space")
 			return None
 
 		possible_res_amount = min(res_amount, home_inventory_free_space, \

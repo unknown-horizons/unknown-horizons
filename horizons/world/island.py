@@ -292,6 +292,7 @@ class Island(WorldObject):
 
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""
+		self.log.debug("Checking wild animal population: %s", len(self.wild_animals))
 		if len(self.wild_animals) == 0:
 			# find a tree where we can place it
 			for building in self.buildings:

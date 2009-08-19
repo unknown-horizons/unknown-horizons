@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
 	args = sys.argv[1:]
 	args.remove("--fife-in-library-path")
-	print 'Executing with proper fife path: %s with args %s' % (sys.argv[1], args)
+	print 'Executing with proper fife path: \"%s\" with args %s' % (sys.argv[1], args)
 	os.execvp(sys.argv[1], args)
 else:
 	import inspect

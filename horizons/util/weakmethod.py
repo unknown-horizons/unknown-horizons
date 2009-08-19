@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import new
+import types
 import weakref
 
 class WeakMethod(object):
 	def __init__(self, function):
 		assert callable(function)
 
-		if isinstance(function, new.instancemethod) and function.im_self is not None:
+		if isinstance(function, types.MethodType) and function.im_self is not None:
 			self.function = function.im_func
 			self.instance = weakref.ref(function.im_self)
 		else:
@@ -39,7 +39,9 @@ class WeakMethod(object):
 		elif self.instance() is not None:
 			return self.function(self.instance(), *args, **kwargs)
 		else:
-			raise ReferenceError("Instance: " + str(self.instance()) + " Function: "+ str(self.function) + " Function from module: " + str(self.function.__module__))
+			raise ReferenceError("Instance: " + str(self.instance()) + \
+													 " Function: "+ str(self.function) + \
+													 " Function from module: " + str(self.function.__module__))
 
 	def __eq__(self, other):
 		if isinstance(other, WeakMethod):
