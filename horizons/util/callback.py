@@ -25,9 +25,9 @@ class Callback(object):
 	The same can be achieved via 'lambda: f(arg1, arg2)', but this class has
 	more flexibility; e.g. you can compare callbacks, which can't be done with lambda functions.
 	"""
-	def __init__(self, callback, *args, **kwargs):
-		assert callable(callback)
-		self.callback = callback
+	def __init__(self, callback_function, *args, **kwargs):
+		assert callable(callback_function)
+		self.callback = callback_function
 		self.args = args
 		self.kwargs = kwargs
 

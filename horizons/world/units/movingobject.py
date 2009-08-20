@@ -73,7 +73,6 @@ class MovingObject(ConcretObject):
 	def check_move(self, destination):
 		"""Tries to find a path to destination
 		@param destination: destination supported by pathfinding
-		@param destination_in_building: bool, wether unit should enter building
 		"""
 		return self.path.calc_path(destination, check_only = True)
 
