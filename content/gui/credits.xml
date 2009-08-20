@@ -43,15 +43,16 @@
 		<Label text="Portuguese - Mad_Monk" position="62,180" />
 	
 		<Label text="SPECIAL THANKS to:" position="22,220" />
-		<Label text="mvBarracuda (Martin Vohland)" position="62,240" />
-		<Label text="lamoot (Matjaz Lamut)" position="62,260" />
-		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,280" />
-		<Label text="dreimer (Daniel Reimer)" position="62,300" />
-		<Label text="hoehrer (Werner Hoehrer)" position="62,320" />
-		<Label text="mattn (Martin Gerhardry)" position="62,340" />
+		<Label text="The FIFE team (www.fifengine.de)" position="62,240" />
+		<Label text="mvBarracuda (Martin Vohland)" position="62,260" />
+		<Label text="lamoot (Matjaz Lamut)" position="62,280" />
+		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,300" />
+		<Label text="dreimer (Daniel Reimer)" position="62,320" />
+		<Label text="hoehrer (Werner Hoehrer)" position="62,340" />
+		<Label text="mattn (Martin Gerhardry)" position="62,360" />
 
-		<Label text="Reiner Prokein " position="62,380" />
-		<Label text="(http://reinerstileset.4players.de)" position="62,400" />
+		<Label text="Reiner Prokein " position="62,400" />
+		<Label text="(http://reinerstileset.4players.de)" position="62,420" />
 	</Container>
 
 	<Container position="695,500" size="100,100">
