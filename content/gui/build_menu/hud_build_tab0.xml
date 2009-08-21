@@ -21,10 +21,12 @@
 
 	<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 	<Icon image="content/gui/images/background/build_button_bg.png" position="55,30" />
+		<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
+
 
 	<TooltipButton name="resident-1" position="2,31" up_image="content/gui/images/icons/hud/build/tent.png" hover_image="content/gui/images/icons/hud/build/tent_h.png" down_image="content/gui/images/icons/hud/build/tent_h.png" tooltip="Tent"/>
 	<TooltipButton name="street-1" position="56,33" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" tooltip="Trail: \nNeeded for \ndelivering goods"/>
-	<TooltipButton name="pasture-1" position="110,33" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" tooltip="Pasture is used to grow sheep"/>
+	<TooltipButton name="pasture-1" position="110,33" up_image="content/gui/images/icons/hud/build/pasture.png" hover_image="content/gui/images/icons/hud/build/pasture_h.png" down_image="content/gui/images/icons/hud/build/pasture_h.png" tooltip="Pasture is used to grow sheep"/>
 <!--<ImageButton name="bridge-1" position="77,25" up_image="content/gui/images/icons/hud/build/bridge.png" hover_image="content/gui/images/icons/hud/build/bridge_h.png" down_image="content/gui/images/icons/hud/build/bridge_h.png" text="" />
 	<Label position="87,86" text="Bridge" />-->
 		</Container>
