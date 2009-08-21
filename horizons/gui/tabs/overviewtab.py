@@ -125,10 +125,10 @@ class ProductionOverviewTab(OverviewTab):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Production Overview"
 
-		destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,280))
-		self.widget.addChild(destruct_button)
+		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,280))
+		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents({
-			'destruct_button' : self.instance.destruct_building
+			'destruct_button' : self.destruct_building
 		})
 
 	def refresh(self):
@@ -138,6 +138,12 @@ class ProductionOverviewTab(OverviewTab):
 			costs = self.instance.running_costs
 		self.widget.child_finder('running_costs').text = unicode(costs)
 		super(ProductionOverviewTab, self).refresh()
+
+	def destruct_building(self):
+		horizons.main.session.ingame_gui.hide_menu()
+		if self.destruct_button.gui.isVisible():
+			self.destruct_button.hide_tooltip()
+		self.instance.destruct_building()
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
