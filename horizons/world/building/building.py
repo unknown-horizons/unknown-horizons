@@ -32,6 +32,7 @@ from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject
 from horizons.constants import RES, LAYERS
+from horizons.command.building import Tear
 
 
 class BasicBuilding(AmbientSound, ConcretObject):
@@ -85,6 +86,12 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
+		renderer = horizons.main.session.view.renderer['InstanceRenderer']
+		renderer.removeOutlined(self._instance)
+		renderer.removeAllColored()
+
+	def destruct_building(self):
+		horizons.main.session.manager.execute(Tear(self))
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)

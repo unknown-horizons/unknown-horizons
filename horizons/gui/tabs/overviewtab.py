@@ -27,7 +27,7 @@ from tabinterface import TabInterface
 from horizons.util import PychanChildFinder, Callback
 from horizons.i18n import load_xml_translated
 from horizons.constants import RES, SETTLER
-
+from horizons.gui.widgets.tooltip import TooltipButton
 
 class OverviewTab(TabInterface):
 
@@ -125,6 +125,12 @@ class ProductionOverviewTab(OverviewTab):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Production Overview"
 
+		destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,280))
+		self.widget.addChild(destruct_button)
+		self.widget.mapEvents({
+			'destruct_button' : self.instance.destruct_building
+		})
+
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		costs = 0
@@ -132,7 +138,6 @@ class ProductionOverviewTab(OverviewTab):
 			costs = self.instance.running_costs
 		self.widget.child_finder('running_costs').text = unicode(costs)
 		super(ProductionOverviewTab, self).refresh()
-
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
