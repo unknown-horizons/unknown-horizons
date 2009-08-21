@@ -42,7 +42,10 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
-			self.name + '/mouseMoved': self.position_tooltip
+			self.name + '/mouseMoved' : self.position_tooltip,
+			self.name + '/mousePressed' : self.hide_tooltip,
+			self.name + '/mouseReleased' : self.position_tooltip,
+			self.name + '/mouseDragged' : self.position_tooltip
 			})
 		self.tooltip_shown = False
 		self.tooltip_items = []
@@ -104,7 +107,10 @@ class TooltipButton(pychan.widgets.ImageButton):
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
-			self.name + '/mouseMoved': self.position_tooltip
+			self.name + '/mouseMoved' : self.position_tooltip,
+			self.name + '/mousePressed' : self.hide_tooltip,
+			self.name + '/mouseReleased' : self.position_tooltip,
+			self.name + '/mouseDragged' : self.position_tooltip
 			})
 		self.tooltip_shown = False
 		self.tooltip_items = []
@@ -116,6 +122,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 			horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 			self.tooltip_shown = True
 		else:
+			self.gui.hide()
 			self.gui.show()
 
 	def show_tooltip(self):
