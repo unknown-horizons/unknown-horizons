@@ -33,10 +33,12 @@ class TooltipIcon(pychan.widgets.Icon):
 	Use \\n for newline.
 	"""
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, **kwargs):
+	def __init__(self, tooltip = "", **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
+		if tooltip != "":
+			self.tooltip = unicode(tooltip)
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
@@ -93,10 +95,12 @@ class TooltipButton(pychan.widgets.ImageButton):
 	Use \\n for newline.
 	"""
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, **kwargs):
+	def __init__(self, tooltip = "", **kwargs):
 		super(TooltipButton, self).__init__(**kwargs)
 		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
+		if tooltip != "":
+			self.tooltip = unicode(tooltip)
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
