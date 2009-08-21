@@ -26,7 +26,7 @@
 
 	<TooltipButton name="resident-1" position="2,31" up_image="content/gui/images/icons/hud/build/tent.png" hover_image="content/gui/images/icons/hud/build/tent_h.png" down_image="content/gui/images/icons/hud/build/tent_h.png" tooltip="Tent"/>
 	<TooltipButton name="street-1" position="56,33" up_image="content/gui/images/icons/hud/build/path.png" hover_image="content/gui/images/icons/hud/build/path_h.png" down_image="content/gui/images/icons/hud/build/path_h.png" tooltip="Trail: \nNeeded for \ndelivering goods"/>
-	<TooltipButton name="pasture-1" position="110,33" up_image="content/gui/images/icons/hud/build/pasture.png" hover_image="content/gui/images/icons/hud/build/pasture_h.png" down_image="content/gui/images/icons/hud/build/pasture_h.png" tooltip="Pasture is used to grow sheep"/>
+	<TooltipButton name="pasture-1" position="110,33" up_image="content/gui/images/icons/hud/build/pasture.png" hover_image="content/gui/images/icons/hud/build/pasture_h.png" down_image="content/gui/images/icons/hud/build/pasture_h.png" tooltip="Pasture is used \nto grow sheep.\nProduces wool."/>
 <!--<ImageButton name="bridge-1" position="77,25" up_image="content/gui/images/icons/hud/build/bridge.png" hover_image="content/gui/images/icons/hud/build/bridge_h.png" down_image="content/gui/images/icons/hud/build/bridge_h.png" text="" />
 	<Label position="87,86" text="Bridge" />-->
 		</Container>
@@ -65,7 +65,7 @@
 	<TooltipButton name="fisher-1" position="1,88" up_image="content/gui/images/icons/hud/build/fisherman.png" hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" tooltip="Fisherman: \nFishes the sea, \ngathers food" />
 	<TooltipButton name="boat_builder-1" position="55,85" up_image="content/gui/images/icons/hud/build/boat_builder.png" hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" tooltip="Boat builder: \nBuilds boats and \nsmall ships, \nbuilt on coast" />
 	<TooltipButton name="tree-1" position="109,87" up_image="content/gui/images/icons/hud/build/tree.png" hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" tooltip="Tree" />
-	<TooltipButton name="potatofield-1" position="164,87" up_image="content/gui/images/icons/hud/build/potatos.png" hover_image="content/gui/images/icons/hud/build/potatos_h.png" down_image="content/gui/images/icons/hud/build/potatos_h.png" tooltip="Potato Field" />
+	<TooltipButton name="potatofield-1" position="164,87" up_image="content/gui/images/icons/hud/build/potatos.png" hover_image="content/gui/images/icons/hud/build/potatos_h.png" down_image="content/gui/images/icons/hud/build/potatos_h.png" tooltip="Potato Field.\nDelivers food." />
 </Container>
 
 	<Container position="20,312" size="600,400" >
