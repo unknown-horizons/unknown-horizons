@@ -19,11 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 import horizons.main
 from horizons.world.building.building import *
 
 class Build(object):
 	"""Command class that builds an object."""
+	log = logging.getLogger("command")
 	def __init__(self, building, x, y, rotation, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
 		@param building: building class that is to be built.
@@ -48,6 +51,8 @@ class Build(object):
 		"""Execute the command
 		@param issuer: the issuer of the command
 		"""
+		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, \
+									 self.x, self.y)
 		for ident in self.tear:
 			building = WorldObject.get_object_by_id(ident)
 			horizons.main.session.manager.execute(Tear(building))
@@ -85,6 +90,7 @@ class Build(object):
 
 class Tear(object):
 	"""Command class that tears an object."""
+	log = logging.getLogger("command")
 	def __init__(self, building):
 		"""Create the command
 		@param building: building that is to be teared.
@@ -96,6 +102,7 @@ class Tear(object):
 		@param issuer: the issuer of the command
 		"""
 		building = WorldObject.get_object_by_id(self.building)
+		self.log.debug("Tear: tearing down %s", building)
 		building.remove()
 		# Note: this is weak - if there is a memleak, this del will not work...
 		del building

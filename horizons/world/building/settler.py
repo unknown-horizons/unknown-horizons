@@ -142,6 +142,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 	def level_up(self):
 		self.level += 1
 		self.update_world_level()
+		self._update_level_data()
 		self.log.debug("%s: Leveling up to %s", self, self.level)
 
 	def level_down(self):
@@ -152,6 +153,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		else:
 			self.level -= 1
 			self.update_world_level()
+			self._update_level_data()
 			self.log.debug("%s: Level down to %s", self, self.level)
 
 	def update_world_level(self):

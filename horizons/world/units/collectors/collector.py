@@ -98,12 +98,14 @@ class Collector(StorageHolder, Unit):
 
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
-		self.log.debug("Collector %s: remove called", self.getId())
+		self.log.debug("Collector %s: remove called", self)
 		# remove from target collector list
-		if self.job is not None and self.job.object is not None:
+		if self.job is not None and self.job.object is not None and \
+			 self.state != self.states.moving_home:
+			# in the move_home state, there still is a job, but the collector is already deregistered
 			self.job.object.remove_incoming_collector(self)
 		self.hide()
-		# now wait for gc. fife instance (self._instance) is removed in Unit.__del__
+		super(Collector, self).remove()
 
 
 	# SAVE/LOAD
@@ -362,6 +364,9 @@ class Collector(StorageHolder, Unit):
 		self.job = None
 		self.state = self.states.idle
 		continue_action()
+
+	def __str__(self):
+		return super(Collector, self).__str__() + "(state=%s)" % self.state
 
 
 class Job(object):
