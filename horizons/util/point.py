@@ -79,6 +79,10 @@ class Point(object):
 		"""
 		return Point(self.x + x_offset, self.y + y_offset)
 
+	def contains(self, point):
+		"""For compatibility with Rect"""
+		return (self.x == point.x and self.y == point.y)
+
 	def __str__(self):
 		""" nice representation for debugging purposes """
 		return 'Point(%s, %s)' % (self.x, self.y)

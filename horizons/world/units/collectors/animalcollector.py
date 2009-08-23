@@ -117,8 +117,10 @@ class FarmAnimalCollector(AnimalCollector):
 		buildings = self.home_building.island().get_providers_in_range(Circle(self.home_building.position.center(), self.home_building.radius))
 		animals = []
 		for building in buildings:
-			if hasattr(building, 'animals'):
+			try:
 				animals.extend(building.animals)
+			except AttributeError:
+				pass # this building has no animals
 		return animals
 
 
@@ -126,6 +128,14 @@ class HunterCollector(AnimalCollector):
 	def get_animals_in_range(self):
 		return self.home_building.island().wild_animals
 
-	def release_animal(self):
-		# we don't release it, we kill it.
+	def finish_working(self):
+		super(HunterCollector, self).finish_working()
+		# kill animal when we got our res
 		self.job.object.die()
+
+	def release_animal(self):
+		# we don't release it, we already kill it.
+		pass
+
+	def get_animal(self):
+		pass

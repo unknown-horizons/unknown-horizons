@@ -91,12 +91,21 @@ def print_storage():
 			print "\t%s tons of %s" % (amount, get_res_name(res))
 	print "\nAll others can store 30 tons of each res."
 
+def print_collectors():
+	print 'Collectors: (building count collector)'
+	for b, coll, count in db("select object_id, collector_class, count from \
+			collectors order by object_id asc"):
+		print "%s %s %s" % ( strw(get_obj_name(b), 18), count, get_obj_name(coll))
+
 functions = {
 		'res' : print_res,
+		'b' : print_building,
 		'building' : print_building,
 		'unit' : print_unit,
 		'storage' : print_storage,
 		'lines' : print_production_lines,
+		'coll' : print_collectors,
+		'collectors' : print_collectors,
 		}
 
 args = sys.argv

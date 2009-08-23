@@ -196,7 +196,7 @@ class Collector(StorageHolder, Unit):
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in 32 ticks."""
-		self.log.debug("Collector %s search job", self.getId())
+		self.log.debug("%s search job", self)
 
 		self.job = self.get_job()
 		if self.job is None:
@@ -281,7 +281,7 @@ class Collector(StorageHolder, Unit):
 			if self.check_move(job.object.position):
 				return job
 
-		## TODO: if we need multiple res, we don't check if we need on more urgently.
+		## TODO: if we need multiple res, we don't check if we need one more urgently.
 		return None
 
 	def begin_current_job(self, job_location = None):
@@ -292,9 +292,9 @@ class Collector(StorageHolder, Unit):
 		self.show()
 		if job_location is None:
 			job_location = self.job.object.position
-		assert self.check_move(job_location)
-		self.move(job_location, self.begin_working, \
+		move_possible = self.move(job_location, self.begin_working, \
 							destination_in_building = self.destination_always_in_building)
+		assert move_possible
 		self.state = self.states.moving_to_target
 
 	def begin_working(self):

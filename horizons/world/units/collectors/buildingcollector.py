@@ -50,7 +50,7 @@ class BuildingCollector(Collector):
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
-		# set owner to home_building (is set to player by unit)
+		# set owner to home_building (is set to player in unit)
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building.getId(), self.getId())
 
 	def load(self, db, worldid):

@@ -201,6 +201,12 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("Wildanimal %s: %s possible jobs", self.getId(), len(jobs))
 		return self.get_best_possible_job(jobs)
 
+	def check_possible_job_target(self, provider):
+		if provider.position.contains(self.position):
+			# force animal to choose a tree where it currenlty not stanew
+			return False
+		return super(WildAnimal, self).check_possible_job_target(provider)
+
 	def reroute(self):
 		# when target is gone, search another one
 		self.search_job()
