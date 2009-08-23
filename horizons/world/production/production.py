@@ -298,7 +298,7 @@ class SingleUseProduction(Production):
 		"""
 		@param callback: Callable, get's called when construction is done.
 		"""
-		super(SingleUseProduction, self).__init__(inventory, prod_line_id, **kwargs)
+		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
 		assert callable(callback)
 		self.callback = callback
 
@@ -318,8 +318,8 @@ class ProgressProduction(Production):
 	reloaded on a new production."""
 
 	## INIT/DESTRUCT
-	def __init__(self, *args, **kwargs):
-		super(ProgressProduction, self).__init__(*args, **kwargs)
+	def __init__(self, **kwargs):
+		super(ProgressProduction, self).__init__(**kwargs)
 		self.__init()
 
 	def __init(self, progress = 0):
@@ -384,3 +384,18 @@ class ProgressProduction(Production):
 		self.progress = 0
 		# reset prodline
 		self._prod_line = copy.copy(self.original_prod_line)
+
+class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
+	"""A production that needs to have a progress and also is only used one time."""
+
+	def __init__(self, **kwargs):
+		super(SingleUseProgressProduction, self).__init__(**kwargs)
+
+	def _finished_producing(self):
+		# Mixture of the ProgressProduction and SingleUseProduction finished_producing
+		# functions
+		self.progress = 0
+		self._give_produced_res()
+		self.state = PRODUCTION_STATES.done
+		self.callback()
+		self.on_remove()

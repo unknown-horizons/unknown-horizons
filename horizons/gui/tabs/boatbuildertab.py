@@ -29,7 +29,7 @@ class BoatbuilderTab(TabInterface):
 		self.instance = instance
 		self.init_values()
 		events = {
-			'createUnit': pychan.tools.callbackWithArguments(self.instance.produce, 15)
+			'createUnit': pychan.tools.callbackWithArguments(self.instance.add_production_by_id, 15)
 		}
 		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/work_u.png'
@@ -40,9 +40,10 @@ class BoatbuilderTab(TabInterface):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		self.widget.findChild(name='progress').progress = self.instance.progress
+		progress = self.instance.get_production_progress()
+		self.widget.findChild(name='progress').progress = progress
 		self.widget.findChild(name='current_construction_label').text = \
-				_("Current construction progress:")+" "+str(self.instance.progress)+"%"
+				_("Current construction progress:")+" "+str(progress)+"%"
 
 	def show(self):
 		if not self.instance.inventory.has_change_listener(self.refresh):

@@ -25,11 +25,12 @@ from buildable import BuildableSingle
 from horizons.util import Point
 from horizons.gui.tabs import ProductionOverviewTab, InventoryTab, BoatbuilderTab, TabWidget
 from horizons.constants import UNITS
-from horizons.world.production.unitproduction import UnitProduction
+from horizons.world.production.producer import UnitProducerBuilding
+from collectingbuilding import CollectingBuilding
 
 import horizons.main
 
-class BoatBuilder(Selectable, BuildableSingle, UnitProduction, BasicBuilding):
+class BoatBuilder(Selectable, UnitProducerBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)

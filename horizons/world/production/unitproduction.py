@@ -20,7 +20,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.production.production import ProgressProduction
+from horizons.world.production.production import SingleUseProgressProduction
 
-class UnitProduction(ProgressProduction):
+class UnitProduction(SingleUseProgressProduction):
 	"""Production, that produces units."""
+	def __init__(self, **kwargs):
+		super(UnitProduction, self).__init__(**kwargs)

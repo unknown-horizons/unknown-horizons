@@ -149,6 +149,11 @@ class ResourceHandler(StorageHolder):
 				return True
 		return False
 
+	def get_production_progress(self):
+		"""Can be used to return the overall production process."""
+		raise NotImplementedError, "This function has to be overidden!"
+
+
 	def get_production_lines(self):
 		"""Returns all production lines that have been added"""
 		return [ production.get_production_line() for production in self._get_productions() ]

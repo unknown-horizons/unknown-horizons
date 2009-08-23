@@ -24,7 +24,8 @@ import logging
 from horizons.util import Callback
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.production.production import Production
+from horizons.world.production.production import Production, SingleUseProduction
+from horizons.world.production.unitproduction import UnitProduction
 from horizons.constants import PRODUCTION_STATES
 
 import horizons.main
@@ -63,7 +64,7 @@ class Producer(ResourceHandler):
 		"""Returns the current state of the producer. It is the most important
 		state of all productions combined. Check the PRODUCTION_STATES constant
 		for list of states and their importance."""
-		current_state = PRODUCTION_STATES.waiting_for_res
+		current_state = PRODUCTION_STATES.none
 		for production in self._get_productions():
 			state = production.get_animating_state()
 			if state is not None and current_state < state:
@@ -75,7 +76,8 @@ class Producer(ResourceHandler):
 		current state"""
 		state = self._get_current_state()
 		if (state is PRODUCTION_STATES.waiting_for_res or\
-			state is PRODUCTION_STATES.paused):
+			state is PRODUCTION_STATES.paused or\
+			state is PRODUCTION_STATES.none):
 			self.act("idle", repeating=True)
 		elif state is PRODUCTION_STATES.producing:
 			self.act("work", repeating=True)
@@ -98,3 +100,69 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
 	behaviour"""
 	pass
+
+
+class QueueProducer(Producer):
+	"""The QueueProducer stores all productions in a queue and runs them one
+	by one. """
+
+	production_class = SingleUseProduction
+
+	def __init__(self, **kwargs):
+		ResourceHandler.__init__(self, **kwargs)
+		self.production_queue = []
+
+	def add_production_by_id(self, production_line_id, production_class = Production):
+		"""Convenience method.
+		@param production_line_id: Production line from db
+		@param production_class: Subclass of Production that does the production. If the object
+		                         has a production_class-member, this will be used instead.
+		"""
+		print "Add production"
+		self.production_queue.append(production_line_id)
+		self.start_next_production()
+
+
+	def check_next_production_startable(self):
+		# See if we can start the next production,  this only works if the current
+		# production is done
+		print "Check production"
+		state = self._get_current_state()
+		return (state is PRODUCTION_STATES.done or\
+				state is PRODUCTION_STATES.none) and\
+			   (len(self.production_queue) > 0)
+
+
+	def on_production_finished(self):
+		"""Callback used for the SingleUseProduction"""
+		self.start_next_production()
+
+
+	def start_next_production(self):
+		"""Starts the next production that is in the queue, if there is one."""
+		print "Start next?"
+		if self.check_next_production_startable():
+			print "yes"
+			self._productions.clear() # Make sure we only have one production active
+			production_line_id = self.production_queue.pop(0)
+			self.add_production(self.production_class(inventory=self.inventory, prod_line_id=production_line_id, callback=self.on_production_finished))
+
+
+class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
+	"""Class for building that produce units.
+	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
+	building specific behaviour."""
+
+	# Use UnitProduction instead of normal Production
+	production_class = UnitProduction
+
+
+	def __init__(self, **kwargs):
+		super(UnitProducerBuilding, self).__init__(**kwargs)
+
+	def get_production_progress(self):
+		"""Returns the current progress of the active production."""
+		for production in self._productions.values():
+			# Always return first production
+			return production.progress
+		return 0 # No production available
