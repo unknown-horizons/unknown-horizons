@@ -285,6 +285,15 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		my_position = self.position.to_tuple()
 		if my_position in coords:
 			coords.remove(my_position)
-		target_location = coords[ random.randint(0, len(coords)-1) ]
-		target_location = Point(*target_location)
-		super(FarmAnimal, self).begin_current_job(job_location=target_location)
+
+		# move to first walkable target coord we find
+		while 1:
+			# job target is provenly walkable, so at least one coord of it has to be
+			# so we can safely assume, that we will find a walkable coord
+			assert len(coords) > 0
+			target_location = coords[ random.randint(0, len(coords)-1) ]
+			coords.remove(target_location)
+			target_location = Point(*target_location)
+			if self.check_move(target_location):
+				super(FarmAnimal, self).begin_current_job(job_location=target_location)
+				return
