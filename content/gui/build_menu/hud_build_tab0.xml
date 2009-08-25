@@ -42,7 +42,7 @@
 
 	<TooltipButton name="main_square-1" position="0,30" up_image="content/gui/images/icons/hud/build/mainsquare.png" hover_image="content/gui/images/icons/hud/build/mainsquare_h.png" down_image="content/gui/images/icons/hud/build/mainsquare_h.png" tooltip="Main square: \nSupplies citizens\nwith goods" />
 	<TooltipButton name="store-1" position="55,32" up_image="content/gui/images/icons/hud/build/storagetent.png" hover_image="content/gui/images/icons/hud/build/storagetent_h.png" down_image="content/gui/images/icons/hud/build/storagetent_h.png" tooltip="Storage: \nExtends settlement,\nstores goods" />
-	<TooltipButton name="church-1" position="109,30" up_image="content/gui/images/icons/hud/build/church_i.png" hover_image="content/gui/images/icons/hud/build/church_i_h.png" down_image="ccontent/gui/images/icons/hud/build/church_i.png" tooltip="Ministry: \nFullfiles religious \nneeds of citizens" />
+	<TooltipButton name="church-1" position="109,30" up_image="content/gui/images/icons/hud/build/church_i.png" hover_image="content/gui/images/icons/hud/build/church_i_h.png" down_image="content/gui/images/icons/hud/build/church_i.png" tooltip="Ministry: \nFullfiles religious \nneeds of citizens" />
 	<TooltipButton name="lighthouse-1" position="163,30" up_image="content/gui/images/icons/hud/build/signalfire.png" hover_image="content/gui/images/icons/hud/build/signalfire_h.png" down_image="content/gui/images/icons/hud/build/signalfire_h.png" tooltip="Signal fire: \nAllows the player \nto trade with \nthe free trader" />
 </Container>
 
