@@ -74,6 +74,10 @@ class _ProductionLineData(object):
 				self.consumed_res[res] = amount
 			else:
 				assert False
+		# Stores unit_id: amount entries, if units are to be produced by this production line
+		self.unit_production = {}
+		for unit, amount in horizons.main.db("SELECT unit, amount FROM data.unit_production WHERE production_line = ?", self.id):
+			self.unit_production[int(unit)-1000000] = amount # Store the correct unit id =>  -1.000.000
 
 		self._init_finshed = True
 

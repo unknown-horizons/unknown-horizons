@@ -32,6 +32,8 @@ import horizons.main
 
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
+	@param auto_init: bool. If True, the producer automatically adds one production
+					  for each production_line.
 	"""
 	log = logging.getLogger("world.production")
 
