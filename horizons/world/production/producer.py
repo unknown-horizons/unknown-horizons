@@ -37,13 +37,14 @@ class Producer(ResourceHandler):
 
 	production_class = Production
 
-	def __init__(self, **kwargs):
+	def __init__(self, auto_init=True, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__init()
 		# add production lines as specified in db.
-		for prod_line in horizons.main.db("SELECT id FROM production_line WHERE object_id = ? \
-				AND enabled_by_default = 1", self.id):
-			self.add_production_by_id(prod_line[0], self.production_class)
+		if auto_init:
+			for prod_line in horizons.main.db("SELECT id FROM production_line WHERE object_id = ? \
+			    AND enabled_by_default = 1", self.id):
+				self.add_production_by_id(prod_line[0], self.production_class)
 
 	def __init(self):
 		pass
@@ -109,7 +110,8 @@ class QueueProducer(Producer):
 	production_class = SingleUseProduction
 
 	def __init__(self, **kwargs):
-		ResourceHandler.__init__(self, **kwargs)
+		#ResourceHandler.__init__(self, **kwargs)
+		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
 		self.production_queue = []
 
 	def add_production_by_id(self, production_line_id, production_class = Production):

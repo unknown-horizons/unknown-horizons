@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import pychan
+import math
 
 from tabinterface import TabInterface
 
@@ -41,9 +42,9 @@ class BoatbuilderTab(TabInterface):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		progress = self.instance.get_production_progress()
-		self.widget.findChild(name='progress').progress = progress
+		self.widget.findChild(name='progress').progress = progress*100
 		self.widget.findChild(name='current_construction_label').text = \
-				_("Current construction progress:")+" "+str(progress)+"%"
+				_("Current construction progress:")+" "+str(math.floor(progress*100))+"%"
 
 	def show(self):
 		if not self.instance.inventory.has_change_listener(self.refresh):

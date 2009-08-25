@@ -348,7 +348,7 @@ class ProgressProduction(Production):
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			remnant = self.inventory.alter(res, amount) # try to get all
 			self._prod_line.alter_amount(res, remnant) # set how much we still need to get
-			taken += math.abs(remnant) + amount
+			taken += abs(remnant) + amount
 		return taken
 
 	def _produce(self):
