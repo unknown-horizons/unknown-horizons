@@ -119,6 +119,12 @@ class Production(WorldObject):
 		"""Res that are produced here. Returns dict {res:amount}. Interface for _prod_line."""
 		return self._prod_line.produced_res
 
+	#----------------------------------------------------------------------
+	def get_produced_units(self):
+		"""@return dict of produced units {unit_id: amount}"""
+		return self._prod_line.unit_production
+
+
 	def changes_animation(self):
 		"""Returns wether the production should change the animation"""
 		return self._prod_line.changes_animation
@@ -202,7 +208,7 @@ class Production(WorldObject):
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
 		assert self._state in (PRODUCTION_STATES.waiting_for_res, \
-													 PRODUCTION_STATES.inventory_full) or True
+		                       PRODUCTION_STATES.inventory_full) or True
 		check_space = self._check_for_space_for_produced_res()
 		if not check_space:
 			# can't produce, no space in our inventory
@@ -347,7 +353,7 @@ class ProgressProduction(Production):
 		taken = 0
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			remnant = self.inventory.alter(res, amount) # try to get all
-			self._prod_line.alter_amount(res, remnant) # set how much we still need to get
+			self._prod_line.change_amount(res, remnant) # set how much we still need to get
 			taken += abs(remnant) + amount
 		return taken
 
@@ -362,7 +368,8 @@ class ProgressProduction(Production):
 		# check if there were res
 		if removed_res == 0:
 			# watch inventory for new res
-			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+			#self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+			self.inventory.add_change_listener(self._check_inventory)
 			self._state = PRODUCTION_STATES.waiting_for_res
 			self._changed()
 			return

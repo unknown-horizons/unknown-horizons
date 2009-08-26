@@ -170,3 +170,15 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 			# Always return first production
 			return production.progress
 		return 0 # No production available
+
+	def on_production_finished(self):
+		self.__create_unit()
+
+	#----------------------------------------------------------------------
+	def __create_unit(self):
+		"""Create the produced unit now."""
+		productions = self._productions.values()
+		for production in productions:
+			assert isinstance(production, UnitProduction)
+			for unit, amount in production.get_produced_units().iteritems():
+				print "created unit", unit, "amount:", amount

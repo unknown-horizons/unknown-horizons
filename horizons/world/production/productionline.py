@@ -85,14 +85,14 @@ class _ProductionLineData(object):
 		"""Sets time to original production time multiplied by modifier"""
 		self.time = self.data[self.id].time * modifier
 
-	def alter_amount(self, res, amount):
+	def change_amount(self, res, amount):
 		"""Alters an amount of a res at runtime. Because of redundancy, you can only change
 		amounts here."""
-		self.production[res] += amount
+		self.production[res] = amount
 		if res in self.consumed_res:
-			self.consumed_res[res] += amount
+			self.consumed_res[res] = amount
 		if res in self.produced_res:
-			self.produced_res[res] += amount
+			self.produced_res[res] = amount
 
 
 	def __setattr__(self, name, value):

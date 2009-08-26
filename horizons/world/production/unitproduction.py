@@ -26,3 +26,12 @@ class UnitProduction(SingleUseProgressProduction):
 	"""Production, that produces units."""
 	def __init__(self, **kwargs):
 		super(UnitProduction, self).__init__(**kwargs)
+
+
+	def _give_produced_res(self):
+		"""This needs to be overridden as we also have to produce the unit."""
+		super(UnitProduction, self)._give_produced_res()
+		self.__create_unit()
+
+	def __create_unit(self):
+		"""Private function that creates a unit in the home_buildings radius."""
