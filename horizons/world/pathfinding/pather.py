@@ -231,7 +231,7 @@ class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
 	def __init__(self, unit):
 		super(RoadPather, self).__init__(unit, move_diagonal=False)
-		island = horizons.main.session.world.get_island(unit.position.x, unit.position.y)
+		island = horizons.main.session.world.get_island(unit.position)
 		self.island = weakref.ref(island)
 
 	def _get_path_nodes(self):
@@ -246,7 +246,7 @@ class SoldierPather(AbstractPather):
 
 	def _get_path_nodes(self):
 		# island might change (e.g. when transported via ship), so reload every time
-		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+		island = horizons.main.session.world.get_island(self.unit.position)
 		return island.path_nodes.nodes
 
 	def _get_blocked_coords(self):
@@ -254,7 +254,7 @@ class SoldierPather(AbstractPather):
 		return []
 
 	def _check_for_obstacles(self, point):
-		island = horizons.main.session.world.get_island(self.unit.position.x, self.unit.position.y)
+		island = horizons.main.session.world.get_island(self.unit.position)
 		path_blocked = not island.path_nodes.is_walkable(self.path[self.cur])
 		if path_blocked:
 			# update list in island, so that new path calculations consider this obstacle

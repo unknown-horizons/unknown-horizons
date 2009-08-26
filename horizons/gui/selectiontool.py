@@ -46,36 +46,36 @@ class SelectionTool(NavigationTool):
 			horizons.main.session.view.renderer['GenericRenderer'].removeAll("select")
 			if do_multi:
 				a = fife.Point(min(self.select_begin[0], evt.getX()), \
-							   min(self.select_begin[1], evt.getY()))
+											 min(self.select_begin[1], evt.getY()))
 				b = fife.Point(max(self.select_begin[0], evt.getX()), \
-							   min(self.select_begin[1], evt.getY()))
+											 min(self.select_begin[1], evt.getY()))
 				c = fife.Point(max(self.select_begin[0], evt.getX()), \
-							   max(self.select_begin[1], evt.getY()))
+											 max(self.select_begin[1], evt.getY()))
 				d = fife.Point(min(self.select_begin[0], evt.getX()), \
-							   max(self.select_begin[1], evt.getY()))
+											 max(self.select_begin[1], evt.getY()))
 				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
-					fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
+																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
 				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
-					fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
+																																			 fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
 				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
-					fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
+																																			 fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
 				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
-					fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
+																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
 			selectable = []
 			#instances = horizons.main.session.view.cam.getMatchingInstances(\
 				#fife.Rect(min(self.select_begin[0], evt.getX()), \
-						  #min(self.select_begin[1], evt.getY()), \
-						  #abs(evt.getX() - self.select_begin[0]), \
-						  #abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.GROUND])
+							#min(self.select_begin[1], evt.getY()), \
+							#abs(evt.getX() - self.select_begin[0]), \
+							#abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.GROUND])
 			#for i in instances:
 				#instance = WorldObject.get_object_by_id(int(i.getId()))
 				#if hasattr(instance, 'select'):
 					#selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
-						  min(self.select_begin[1], evt.getY()), \
-						  abs(evt.getX() - self.select_begin[0]), \
-						  abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
+									min(self.select_begin[1], evt.getY()), \
+									abs(evt.getX() - self.select_begin[0]), \
+									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
 				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):

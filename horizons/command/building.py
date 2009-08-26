@@ -61,7 +61,7 @@ class Build(object):
 		if self.island is not None:
 			island = WorldObject.get_object_by_id(self.island)
 		else:
-			island = horizons.main.session.world.get_island(self.x, self.y)
+			island = horizons.main.session.world.get_island(Point(self.x, self.y))
 
 		building = horizons.main.session.entities.buildings[self.building_class]( \
 			x=self.x, y=self.y, \

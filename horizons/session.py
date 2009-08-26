@@ -38,8 +38,7 @@ from manager import SPManager
 from view import View
 from world import World
 from entities import Entities
-from util.living import livingProperty, LivingObject
-from util.worldobject import WorldObject
+from util import WorldObject, LivingObject, livingProperty
 from savegamemanager import SavegameManager
 from horizons.constants import MESSAGES
 

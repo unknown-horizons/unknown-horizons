@@ -30,8 +30,7 @@ import horizons.main
 
 from island import Island
 from player import Player
-from horizons.util import Point, Color
-from horizons.util.living import LivingObject
+from horizons.util import Point, Color, Rect, LivingObject
 from horizons.constants import UNITS, BUILDINGS, RES, MESSAGES
 from horizons.ai.trader import Trader
 
@@ -119,6 +118,8 @@ class World(LivingObject):
 		self.min_y -= 10
 		self.max_x += 10
 		self.max_y += 10
+
+		self.map_dimensions = Rect(self.min_x, self.min_y, self.max_x, self.max_y)
 
 		#add water
 		self.log.debug("Filling world with water...")
@@ -234,28 +235,32 @@ class World(LivingObject):
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""
-		i = self.get_island(point.x, point.y)
+		i = self.get_island(point)
 		if i is not None:
 			return i.get_tile(point)
 		assert (point.x, point.y) in self.ground_map, 'ground must be in water'
 		return self.ground_map[(point.x, point.y)]()
 
+	def get_settlement(self, point):
+		"""Returns settlement on point.
+		@param point: instance of Point
+		@return: instance of Settlement or None"""
+		return self.get_tile(point).settlement
+
 	def get_building(self, x, y):
 		"""Returns the building at the position x, y.
 		@param x, y: int coordinates.
 		@return: Building class instance if a building is found, else None."""
-		i = self.get_island(x, y)
+		i = self.get_island(Point(x, y))
 		return None if i is None else i.get_building(Point(x, y))
 
-	def get_island(self, x, y):
+	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.
-		@param x: int x position.
-		@param y: int y position. """
-		point = Point(x, y)
+		@param point: instance of Point"""
 		for island in self.islands:
 			if not island.rect.contains(point):
 				continue
-			if point.get_coordinates()[0] in island.ground_map:
+			if point.to_tuple() in island.ground_map:
 				return island
 		return None
 

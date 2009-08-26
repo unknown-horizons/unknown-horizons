@@ -68,7 +68,7 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_island_build_requirement_satisfied(cls, x, y, **state):
-		island = horizons.main.session.world.get_island(x, y)
+		island = horizons.main.session.world.get_island(Point(x, y))
 		if island is None:
 			return {'buildable' : False}
 		p = Point(0, 0)

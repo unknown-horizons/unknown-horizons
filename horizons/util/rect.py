@@ -52,6 +52,14 @@ class Rect(object):
 		# Convenience attributes (can be used to make code more easy to read/understand)
 		self.origin = Point(self.left, self.top)
 
+	@property
+	def height(self):
+		return self.bottom - self.top
+
+	@property
+	def width(self):
+		return self.right - self.left
+
 	def distance(self, other):
 		"""Calculates distance to another object"""
 		distance_functions_map = {
@@ -127,8 +135,7 @@ class Rect(object):
 		return not (rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top)
 
 	def __str__(self):
-		# nice representation for debugging purposes
-		return "Rect(%s, %s, %s, %s)" % (self.top, self.left, self.right, self.bottom)
+		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.top, self.left, self.width, self.height)
 
 	def __eq__(self, other):
 		if isinstance(other, Rect):

@@ -76,7 +76,7 @@ class NavigationTool(CursorTool):
 		current = horizons.main.session.view.cam.toMapCoordinates(mousepoint, False)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
 			self.lastmoved = current
-			island = horizons.main.session.world.get_island(int(round(current.x)), int(round(current.y)))
+			island = horizons.main.session.world.get_island(Point(int(round(current.x)), int(round(current.y))))
 			if island:
 				settlement = island.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 				if settlement:

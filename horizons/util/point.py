@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import fife
+
 class Point(object):
 	def __init__(self, x, y):
 		self.x, self.y = x, y
@@ -65,6 +67,10 @@ class Point(object):
 	def to_tuple(self):
 		"""Returns point as a tuple"""
 		return (self.x, self.y)
+
+	def to_fife_point(self):
+		"""Returns point as fife.Point"""
+		return fife.Point(self.x, self.y)
 
 	def center(self):
 		"""Returns the center of the point (this makes Point interface more coherent with Rect).

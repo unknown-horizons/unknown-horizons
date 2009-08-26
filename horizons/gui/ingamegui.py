@@ -24,12 +24,13 @@ import pychan
 import horizons.main
 
 from horizons.i18n import load_xml_translated
-from horizons.util import livingProperty, LivingObject, Callback, PychanChildFinder
+from horizons.util import livingProperty, LivingObject, Callback, PychanChildFinder, Rect, Point
 from horizons.world.settlement import Settlement
 from buildingtool import BuildingTool
 from selectiontool import SelectionTool
 from messagewidget import MessageWidget
 from horizons.gui.tabs import TabWidget, BuildTab
+from horizons.gui.minimap import Minimap
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""
@@ -46,6 +47,9 @@ class IngameGui(LivingObject):
 		self.resource_source = None
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
+
+		self.minimap = Minimap(Rect(Point(620, 00), 120, 120), \
+													 horizons.main.session.view.renderer['GenericRenderer'])
 
 		self.gui['cityInfo'] = load_xml_translated('city_info.xml')
 		self.gui['cityInfo'].stylize('cityInfo')
@@ -415,3 +419,5 @@ class IngameGui(LivingObject):
 
 	def load(self, db):
 		self.message_widget.load(db)
+
+		self.minimap.draw() # update minimap to new world
