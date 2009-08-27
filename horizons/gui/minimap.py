@@ -56,8 +56,8 @@ class Minimap(Changelistener):
 		pixel_per_coord_x = float(world_width) / minimap_width
 		pixel_per_coord_y = float(world_height) / minimap_height
 
-		for x in xrange(0, self.location.width-1):
-			for y in xrange(0, self.location.height-1):
+		for x in xrange(0, self.location.width):
+			for y in xrange(0, self.location.height):
 				# point in the minimap covers covered_area in the real map
 				covered_area = Rect( Point(int(x * pixel_per_coord_x)+world.min_x, \
 				                           int(y * pixel_per_coord_y)+world.min_y), \

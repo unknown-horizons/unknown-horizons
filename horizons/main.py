@@ -195,8 +195,8 @@ def save_game(savegamename):
 	"""
 	global savegamemanager, session, gui
 
-	if savegamename.startswith("/"):
-		savegamefile = savegamename # is already full path
+	if os.path.isabs(savegamename):
+		savegamefile = savegamename
 	else: # is just basename
 		savegamefile = savegamemanager.create_filename(savegamename)
 
