@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.util import WorldObject
+import horizons.main
 
 class Act(object):
 	"""Command class that moves a unit.
@@ -43,16 +44,19 @@ class CreateUnit(object):
 	@param id: Unit id that is to be created.
 	@param x, y: Units initial position
 	"""
-	def __init__(self, building_id, prodline_id):
-		self.building_id = building_id
-		self.prodline_id = prodline_id
+	def __init__(self, owner_id, unit_id, x, y):
+		self.owner_id = owner_id
+		self.unit_id = unit_id
+		self.x = x
+		self.y = y
 
 	def __call__(self, issuer):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
-		building = WorldObject.get_object_by_id(self.building_id)
-		building.produce(self.prodline_id)
+		owner = WorldObject.get_object_by_id(self.owner_id)
+		horizons.main.session.entities.units[self.unit_id](owner=owner, x=self.x, y=self.y)
+
 
 from horizons.util.encoder import register_classes
 register_classes(Act)

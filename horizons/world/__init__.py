@@ -30,7 +30,7 @@ import horizons.main
 
 from island import Island
 from player import Player
-from horizons.util import Point, Color, Rect, LivingObject
+from horizons.util import Point, Color, Rect, LivingObject, Circle
 from horizons.constants import UNITS, BUILDINGS, RES, MESSAGES
 from horizons.ai.trader import Trader
 
@@ -207,14 +207,14 @@ class World(LivingObject):
 			#print "Done"
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, \
-																												MESSAGES.NEW_WORLD)
+		                                                    MESSAGES.NEW_WORLD)
 		assert ret_coords is not None, "Return coordes are none. No players loaded?"
 		return ret_coords
 
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
-		rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
-		(x, y) = horizons.main.session.world.water[rand_water_id]
+		rand_water_id = random.randint(0, len(self.water)-1)
+		(x, y) = self.water[rand_water_id]
 		offset = 2
 		if x - offset < self.min_x or x + offset > self.max_x or \
 			 y - offset < self.min_y or y + offset > self.max_y:
@@ -222,6 +222,18 @@ class World(LivingObject):
 			# in theory, this might result in endless loop, but in practice, it doesn't
 			return self.get_random_possible_ship_position()
 		return Point(x, y)
+
+	#----------------------------------------------------------------------
+	def get_tiles_in_radius(self, position, radius):
+		"""Returns a all tiles in the radius around the point.
+		This is a generator, make sure you use it appropriatly.
+		@return List of tiles in radius.
+		"""
+		assert isinstance(position, Point)
+		circle = Circle(position, radius)
+		ret = []
+		for coord in circle.get_coordinates():
+			yield self.get_tile(Point(coord[0], coord[1]))
 
 	def setupPlayer(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""

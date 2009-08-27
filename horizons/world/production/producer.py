@@ -27,6 +27,8 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.constants import PRODUCTION_STATES
+from horizons.world.ground import Water
+from horizons.command.unit import CreateUnit
 
 import horizons.main
 
@@ -178,7 +180,15 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 	def __create_unit(self):
 		"""Create the produced unit now."""
 		productions = self._productions.values()
+		radius = 3 # Radius in which the producer can  setup a new unit
 		for production in productions:
 			assert isinstance(production, UnitProduction)
 			for unit, amount in production.get_produced_units().iteritems():
-				print "created unit", unit, "amount:", amount
+				for tile in horizons.main.session.world.get_tiles_in_radius(self.position.center(), radius): #TODO Add tiles of radius here
+					if isinstance(tile, Water):
+						for bar in xrange(0, amount):
+							print "created unit", unit, "amount:", amount
+							horizons.main.session.manager.execute(CreateUnit(self.owner.getId(), unit, tile.x, tile.y))
+						break
+
+				assert False, "No tile found..., this should not happen"
