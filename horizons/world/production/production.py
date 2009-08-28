@@ -99,7 +99,10 @@ class Production(WorldObject):
 		elif self._state == PRODUCTION_STATES.waiting_for_res:
 			self.inventory.add_change_listener(self._check_inventory)
 
-		super(cls, self).load(db, worldid)
+		# BUG: the following super code only returns Production, which causes endless recursion
+		#super(cls, self).load(db, worldid)
+		# workaround:
+		WorldObject.load(self, db, worldid)
 		return self
 
 	def remove(self):
@@ -305,14 +308,16 @@ class SingleUseProduction(Production):
 		@param callback: Callable, get's called when construction is done.
 		"""
 		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
-		assert callable(callback)
+		if callback is not None:
+			assert callable(callback)
 		self.callback = callback
 
 	def _finished_producing(self):
 		self._give_produced_res()
 		self.state = PRODUCTION_STATES.done
-		self.callback()
 		self.on_remove()
+		if self.callback is not None:
+			self.callback()
 
 
 class ProgressProduction(Production):

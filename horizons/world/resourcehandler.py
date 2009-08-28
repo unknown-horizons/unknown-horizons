@@ -155,8 +155,9 @@ class ResourceHandler(StorageHolder):
 
 
 	def get_production_lines(self):
-		"""Returns all production lines that have been added"""
-		return [ production.get_production_line() for production in self._get_productions() ]
+		"""Returns all production lines that have been added.
+		@return: a list of prodline ids"""
+		return [ production.get_production_line_id() for production in self._get_productions() ]
 
 	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock

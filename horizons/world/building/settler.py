@@ -39,13 +39,14 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
-		self.__init(SETTLER.HAPPINESS_INIT_VALUE, level)
+		self.__init(level, SETTLER.HAPPINESS_INIT_VALUE)
 		self.run()
 
-	def __init(self, happiness, level):
+	def __init(self, level, happiness = None):
 		self.level = level
 		self.level_max = 1 # for now
-		self.inventory.alter(RES.HAPPINESS_ID, happiness)
+		if happiness is not None:
+			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data()
 
 	@property
@@ -174,9 +175,9 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def load(self, db, building_id):
 		super(Settler, self).load(db, building_id)
-		self.level, self.inhabitants = \
+		level, self.inhabitants = \
 				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
-		self.__init()
+		self.__init(level)
 		self.run()
 
 	def __str__(self):
