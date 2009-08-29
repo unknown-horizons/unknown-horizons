@@ -78,10 +78,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		"""gets the payout from the settlement in form of it's running costs"""
 		self.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)
 
-
 	def remove(self):
 		"""Removes the building"""
-		self.log.debug("BUILDING: REMOVE %s", self.getId())
+		self.log.debug("building: remove %s", self.getId())
 		self.island().remove_building(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1

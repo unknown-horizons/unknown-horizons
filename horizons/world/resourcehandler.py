@@ -65,10 +65,10 @@ class ResourceHandler(StorageHolder):
 			self.add_production( self.load_production(db, production[0]) )
 
 	def remove(self):
-		for production in self._get_productions():
-			production.remove()
 		# remove all res to prevent removed collectors to pick up here again
 		self.inventory.reset_all()
+		for production in self._get_productions():
+			production.remove()
 		while len(self.__incoming_collectors) > 0: # safe list remove here
 			self.__incoming_collectors[0].cancel()
 		super(ResourceHandler, self).remove()
