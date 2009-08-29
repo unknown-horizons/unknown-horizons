@@ -32,6 +32,21 @@ class TradeWidget(object):
 	# main instance does not have a radius attribute
 	radius = 5
 
+	# map the size buttons in the gui to an amount
+	exchange_size_buttons = {
+	  1: 'size_1',
+	  5: 'size_2',
+	  10: 'size_3',
+	  20: 'size_4',
+	  50: 'size_5'
+	  }
+
+	images = {
+	  #'box_highlighted': 'content/gui/images/icons/hud/ship/civil_32_h.png',
+	  'box_highlighted': 'content/gui/images/icons/hud/ship/anchor.png',
+	  'box': 'content/gui/images/icons/hud/ship/civil_32.png'
+	  }
+
 	def __init__(self, main_instance):
 		self.widget = load_xml_translated('ship/trade.xml')
 		self.widget.position = (
@@ -40,16 +55,13 @@ class TradeWidget(object):
 		)
 		self.widget.stylize('menu_black')
 		self.widget.findChild(name='headline').stylize('headline') # style definition for headline
-		self.widget.mapEvents({
-				'size_1' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 1),
-				'size_2' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 5),
-				'size_3' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 10),
-				'size_4' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 20),
-				'size_5' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, 50),
-		})
+		events = {}
+		for k, v in self.exchange_size_buttons.iteritems():
+			events[v] = horizons.main.fife.pychan.tools.callbackWithArguments(self.set_exchange, k)
+		self.widget.mapEvents(events)
 		self.main_instance = main_instance
 		self.partner = None
-		self.exchange = 10
+		self.set_exchange(10, initial=True)
 		self.draw_widget()
 		if hasattr(self.main_instance, 'radius'):
 			self.radius = self.main_instance.radius
@@ -83,9 +95,22 @@ class TradeWidget(object):
 	def show(self):
 		self.widget.show()
 
-	def set_exchange(self, size):
+	def set_exchange(self, size, initial = False):
+		"""
+		@param initial: bool, use it to set exchange size when initing the widget
+		"""
+		# highlight box with selected amount and deselect old highlighted
+		if not initial:
+			old_box = self.widget.findChild(name= self.exchange_size_buttons[self.exchange])
+			old_box.up_image = self.images['box']
+
+		box_h = self.widget.findChild(name= self.exchange_size_buttons[size])
+		box_h.up_image = self.images['box_highlighted']
+
 		self.exchange = size
 		self.log.debug("Tradewidget: exchange size now: %s", size)
+		if not initial:
+			self.draw_widget()
 
 	def transfer(self, res_id, transfer_from, transfer_to):
 		"""Transfers self.exchange tons of resid from transfer_from to transfer_to"""
