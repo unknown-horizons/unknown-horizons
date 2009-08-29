@@ -7,7 +7,8 @@ from glob import glob
 import os
 import os.path
 
-data = []
+data = [('share/applications', ('content/unknown-horizons.desktop', )),
+	('share/pixmaps', ('content/unknown-horizons.xpm', ))]
 
 for i in filter(lambda x: len(x[2])  , os.walk('content')):
 	data.append( ('share/unknown-horizons/%s' % i[0], [ '%s/%s' % (i[0], j) for j in i[2]] ) )
