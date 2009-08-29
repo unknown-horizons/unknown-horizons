@@ -57,6 +57,9 @@ class Inventory(pychan.widgets.Container):
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		index = 0
 		for resid, amount in self.inventory:
+			# check if this res should be displayed
+			if not horizons.main.db('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
+				continue
 			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
 			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon,
 										   down_image=icon_disabled if amount == 0 else icon,
