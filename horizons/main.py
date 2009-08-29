@@ -90,8 +90,13 @@ def start(command_line_arguments):
 	# init gettext
 	from gettext import translation, install
 	if settings.language.name != '':
-		trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
-		trans.install(unicode=1)
+		try:
+			trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
+			trans.install(unicode=1)
+		except IOError:
+			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': settings.language.name, 'place': settings.language.position}
+			install('unknownhorizons', 'po', unicode=1)
+			settings.language.name = ''
 	else:
 		install('unknownhorizons', 'po', unicode=1)
 	update_all_translations()
