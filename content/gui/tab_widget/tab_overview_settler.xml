@@ -19,6 +19,8 @@
 			<Label position="0,50" name="happiness_label" text="Happiness:" /><Label name='happiness' position="75,50" text="" />
 			<Label position="0,75" name="needed_res_label" text="Needed Resources:" /><Label name='needed_res' position="115,75" text="" />
 			<Label position="0,100" name="inhabitants_label" text="Inhabitants:" /><Label name='inhabitants' position="75,100" text="" />
+			<Label position="0,125" name="level_label" text="Level:" /><Label name='level' position="75,125" text="" />
+			<Label position="0,150" name="taxes_label" text="Taxes:" /><Label name='taxes' position="75,150" text="" />
 		</Container>
 	</Container>
 </Container>

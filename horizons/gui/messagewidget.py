@@ -58,7 +58,7 @@ class MessageWidget(LivingObject):
 	def add(self, x, y, id, message_dict=None):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
-		@param id: message id, needed to retrieve the message from the database.
+		@param id: message id string, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
 		self.active_messages.insert(0, Message(x, y, id, self.current_tick, message_dict=message_dict))
@@ -160,7 +160,7 @@ class Message(object):
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 
 	@param x, y: int position on the map where the action took place.
-	@param id: message id, needed to retrieve the message from the database.
+	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created.
 	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}
 	"""
@@ -169,6 +169,12 @@ class Message(object):
 		self.id = id
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for from data.message WHERE rowid=?', id).rows[0][0])
-		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where rowid = ?)', 1, id)[0]
-		self.message = str(message) if message is not None else Template(horizons.main.db('SELECT text from data.message WHERE rowid=?', id).rows[0][0]).safe_substitute(message_dict if message_dict is not None else {})
+		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for from data.message WHERE id_string=?', id).rows[0][0])
+		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where id_string = ?)', 1, id)[0]
+		if message is not None:
+			assert isinstance(message, str)
+			self.message = message
+		else:
+			text = horizons.main.db('SELECT text from data.message WHERE id_string=?', id)[0][0]
+			self.message = Template(text).safe_substitute( \
+			  message_dict if message_dict is not None else {})

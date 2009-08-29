@@ -40,7 +40,6 @@ from world import World
 from entities import Entities
 from util import WorldObject, LivingObject, livingProperty
 from savegamemanager import SavegameManager
-from horizons.constants import MESSAGES
 
 
 class Session(LivingObject):
@@ -154,7 +153,7 @@ class Session(LivingObject):
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = horizons.main.save_game(horizons.main.savegamemanager.create_quicksave_filename())
 		if success:
-			self.ingame_gui.message_widget.add(None, None, MESSAGES.QUICKSAVE)
+			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
 			horizons.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
 		else:
 			horizons.main.gui.show_popup(_('Error'), _('Failed to quicksave.'))

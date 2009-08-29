@@ -40,7 +40,7 @@ class Player(WorldObject):
 		# give a new player 20k coins
 		self.inventory.alter(RES.GOLD_ID, 20000)
 
-	def _init(self, id, name, color, settlerlevel = 1):
+	def _init(self, id, name, color, settlerlevel = 0):
 		self.id = id
 		self.name = name
 		self.color = color
@@ -75,10 +75,32 @@ class Player(WorldObject):
 
 		self.inventory.load(db, worldid)
 
-
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving
 		NOTE: this is just a quick fix for a release
 		      a signaling concept for such events is planned.
 		"""
 		pass
+
+	def notify_settler_reached_level(self, settler):
+		"""Settler calls this to notify the player
+		@param settler: instance of Settler
+		@return: bool, True if level is greater than the current maximum level"""
+		if settler.level > self.settler_level:
+			self.settler_level = settler.level
+			return True
+		return False
+
+
+class HumanPlayer(Player):
+	"""Class for players that physically sit in front of the machine where the game is run"""
+	def notify_settler_reached_level(self, settler):
+		reached_new_level = super(HumanPlayer, self).notify_settler_reached_level(settler)
+		if reached_new_level:
+			coords = (settler.position.center().x, settler.position.center().y)
+			horizons.main.session.ingame_gui.message_widget.add(coords[0], coords[1], \
+			                                                    'SETTLER_LEVEL_UP',
+			                                                    {'level': settler.level})
+
+
+

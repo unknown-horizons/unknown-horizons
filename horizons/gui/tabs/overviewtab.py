@@ -160,6 +160,8 @@ class SettlerOverviewTab(OverviewTab):
 				unicode(self.instance.get_consumed_resources())
 		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
 			self.instance.inhabitants, self.instance.inhabitants_max ) )
+		self.widget.child_finder('level').text = unicode(self.instance.level)
+		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		super(SettlerOverviewTab, self).refresh()
 
 class MarketPlaceOverviewTab(OverviewTab):

@@ -48,6 +48,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data()
+		self.last_tax_payed = 0
 
 	@property
 	def happiness(self):
@@ -55,7 +56,12 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
-		self.tax_base = horizons.main.db("SELECT tax_income FROM settler.settler_level WHERE level=?", self.level)[0][0]
+		# taxes, inhabitants
+		self.tax_base, self.inhabitants_max = \
+		    horizons.main.db("SELECT tax_income, inhabitants_max FROM settler.settler_level \
+		   									 WHERE level=?", self.level)[0]
+		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
+			self.inhabitants = self.inhabitants_max
 
 		# consumation:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
@@ -92,8 +98,9 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		taxes = self.tax_base * happiness_tax_modifier * self.inhabitants * self.settlement.tax_setting
 		taxes = int(round(taxes))
 		self.settlement.owner.inventory.alter(RES.GOLD_ID, taxes)
-		# decrease our happiness
-		# NOTE: the amount hasn't been defined, so these are just my thoughts for now -totycro
+		self.last_tax_payed = taxes
+
+		# decrease happiness
 		happiness_decrease = taxes + self.tax_base + ((self.settlement.tax_setting-1)*10)
 		happiness_decrease = int(round(happiness_decrease))
 		self.inventory.alter(RES.HAPPINESS_ID, -happiness_decrease)
@@ -142,9 +149,12 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 
 	def level_up(self):
 		self.level += 1
-		self.update_world_level()
-		self._update_level_data()
 		self.log.debug("%s: Leveling up to %s", self, self.level)
+		self._update_level_data()
+		# notify owner about new level
+		self.owner.notify_settler_reached_level(self)
+		# reset happiness value for new level
+		self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
@@ -153,16 +163,10 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 		else:
 			self.level -= 1
-			self.update_world_level()
 			self._update_level_data()
+			# reset happiness value for new level
+			self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
-
-	def update_world_level(self):
-		"""Sets the highest settler level of the player.
-		(Highest settler level influences the buildings a player can build, etc.)"""
-
-		if self.level > horizons.main.session.world.player.settler_level:
-			horizons.main.session.world.player.settler_level = self.level
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs =[SettlerOverviewTab(self), \

@@ -28,7 +28,7 @@ from horizons.dbreader import DbReader
 from horizons.util import WorldObject, Point, Rect, Circle, WeakList
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
-from horizons.constants import MESSAGES, BUILDINGS, UNITS
+from horizons.constants import BUILDINGS, UNITS
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -193,7 +193,7 @@ class Island(WorldObject):
 		# TODO: Move this to command, this message should not appear while loading
 		horizons.main.session.ingame_gui.message_widget.add(position.center().x, \
 																												position.center().y, \
-																												MESSAGES.NEW_SETTLEMENT, \
+																												'NEW_SETTLEMENT', \
 																												{'player':player.name})
 		return settlement
 

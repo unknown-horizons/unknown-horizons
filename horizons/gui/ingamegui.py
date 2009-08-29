@@ -320,10 +320,8 @@ class IngameGui(LivingObject):
 	def show_build_menu(self):
 		horizons.main.session.cursor = SelectionTool() # set cursor for build menu
 		self.deselect_all()
-		# Ported build menu to new tabwidget
-		##self.toggle_menu('build')
 		btabs = [BuildTab(index, self.callbacks_build[index]) for index in
-			range(0, horizons.main.session.world.player.settler_level)]
+			range(0, horizons.main.session.world.player.settler_level+1)]
 		tab = TabWidget(tabs=btabs)
 		self.show_menu(tab)
 

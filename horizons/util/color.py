@@ -22,6 +22,7 @@
 import horizons.main
 
 class ColorIter(object):
+	"""Makes iterating through standard colors possible"""
 	def __iter__(self):
 		return self
 
@@ -38,6 +39,7 @@ class ColorIter(object):
 
 class ColorMeta(type):
 	def __getitem__(cls, key):
+		"""Gets a color by name or rowid in the db"""
 		if key == 0:
 			return None
 		r, g, b = horizons.main.db('SELECT red, green, blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
@@ -48,8 +50,20 @@ class ColorMeta(type):
 		return ColorIter()
 
 class Color(object):
+	"""Class for saving a color.
+	Colors are saved in 32 bit rgb-format with an alpha value (for transparency).
+	32bit mean that each of the for values can only occupy 8 bit, i.e. the value is between
+	0 and 255.
+
+	Attributes:
+	 r, g, b, a: Color values + Alpha
+	 name: name of the Color or None
+	"""
 	__metaclass__ = ColorMeta
 	def __init__(self, r = 0, g = 0, b = 0, a = 255):
+		"""
+		@params: float (0.0, 1.0) or int (0, 255)
+		"""
 		if isinstance(r, float) and r >= 0.0 and r <= 1.0:
 			r = int(r * 255)
 		if isinstance(g, float) and g >= 0.0 and g <= 1.0:
@@ -60,10 +74,16 @@ class Color(object):
 			a = int(a * 255)
 		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
+		self.name = None
 		try:
+			# load name for the color, if it's a standard color
 			self.name, self.id = horizons.main.db('SELECT name, rowid from data.colors where red = ? and green = ? and blue = ?', self.r, self.g, self.b)[0]
 		except:
 			pass
+
+	def to_tuple(self):
+		"""Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""
+		return (self.r, self.g, self.b)
 
 from horizons.util.encoder import register_classes
 register_classes(Color)
