@@ -69,8 +69,7 @@ class BuildingClass(type):
 		db = horizons.main.db
 		self.class_package = db("SELECT class_package FROM data.building WHERE id = ?", id)[0][0]
 		(size_x,  size_y) = db("SELECT size_x, size_y FROM data.building WHERE id = ?", id)[0]
-		translate_this = _
-		self.name = translate_this(db("SELECT name FROM data.building WHERE id = ?", id)[0][0])
+		self.name = _(db("SELECT name FROM data.building WHERE id = ?", id)[0][0])
 		self.size = (int(size_x), int(size_y))
 		self.radius = db("SELECT radius FROM data.building WHERE id = ?", id)[0][0]
 		self.health = int(db("SELECT health FROM data.building WHERE id = ?", id)[0][0])

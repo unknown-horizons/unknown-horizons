@@ -115,7 +115,11 @@ class BuildableSingle(object):
 
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
-		# NOTE: point1 is unused here, why?
+		"""Return list of buildings between startpoint (point1) and endpoint (point2)
+		This is called when the user drags the mouse between these two points
+
+		Here, we only build at the endpoint"""
+
 		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if \
 			(cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
 		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if \
@@ -130,11 +134,14 @@ class BuildableRect(BuildableSingle):
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
 		buildings = []
+		# iterate over all coords as rect between the points
 		for x, y in ((x, y) \
 								 for x in xrange(int(min(round(point1[0]), round(point2[0]))), \
-																 1 + int(max(round(point1[0]), round(point2[0])))) \
+																 1 + int(max(round(point1[0]), round(point2[0]))), \
+		                             cls.size[0]) \
 								 for y in xrange(int(min(round(point1[1]), round(point2[1]))), \
-																 1 + int(max(round(point1[1]), round(point2[1]))))):
+																 1 + int(max(round(point1[1]), round(point2[1]))), \
+		                             cls.size[1])):
 			building = cls.are_build_requirements_satisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				buildings.append(building)
@@ -154,7 +161,8 @@ class BuildableLine(BuildableSingle):
 		point2_int = (int(round(point2[0])), int(round(point2[1])))
 		y = point1_int[1]
 		# iterate in x direction with fixed y
-		for x in xrange(point1_int[0], point2_int[0], (1 if point2_int[0] > point1_int[0] else -1)):
+		for x in xrange(point1_int[0], point2_int[0], \
+		                (1 if point2_int[0] > point1_int[0] else -1)*cls.size[0]):
 			building = cls.are_build_requirements_satisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : ('d' if point2_int[0] < point1_int[0] else 'b') if len(buildings) == 0 else 'bd'})
@@ -163,7 +171,7 @@ class BuildableLine(BuildableSingle):
 		# iterate in y direction with fixed x
 		for y in xrange(point1_int[1], \
 										point2_int[1] + (1 if point2_int[1] > point1_int[1] else -1), \
-										(1 if point2_int[1] > point1_int[1] else -1)):
+										(1 if point2_int[1] > point1_int[1] else -1)*cls.size[1]):
 			if len(buildings) == 0: #first tile
 				if y == point2_int[1]: #only tile
 					action = 'ac'
