@@ -366,7 +366,10 @@ class Collector(StorageHolder, Unit):
 		continue_action()
 
 	def __str__(self):
-		return super(Collector, self).__str__() + "(state=%s)" % self.state
+		try:
+			return super(Collector, self).__str__() + "(state=%s)" % self.state
+		except AttributeError: # state has not been set
+			return super(Collector, self).__str__()
 
 
 class Job(object):
