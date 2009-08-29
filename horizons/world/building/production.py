@@ -98,4 +98,6 @@ class Fisher(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
 		return {} if coast_tile_found else None
 
 class Church(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
+	def show_menu(self):
+		# don't show inventory, just production (i.e. running costs)
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self)]))
