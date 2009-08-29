@@ -66,7 +66,7 @@ class BuildingCollector(Collector):
 	def register_at_home_building(self, unregister = False):
 		"""Creates reference for self at home building (only hard reference except for
 		in job.object)
-		@param unregister: wether to reverse registration
+		@param unregister: whether to reverse registration
 		"""
 		if unregister:
 			self.home_building.remove_local_collector(self)
@@ -140,7 +140,7 @@ class BuildingCollector(Collector):
 		if self.home_building is not None:
 			self.log.debug("Collector %s brought home %s of %s", self.getId(), self.job.amount, self.job.res)
 			remnant = self.home_building.inventory.alter(self.job.res, self.job.amount)
-			#assert remnant == 0, "Home building could not take all ressources from collector."
+			#assert remnant == 0, "Home building could not take all resources from collector."
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
 			assert remnant == 0
 		self.end_job()

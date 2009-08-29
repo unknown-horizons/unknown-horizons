@@ -60,8 +60,8 @@ def start(command_line_arguments):
 									load_quicksave: (bool), if True, load the latest quicksave
 									start_map: (string), start map with specified map name
 									load_map: (string), load map with specified savegamename
-									unstable_features: (bool), wether unstable features should be enabled
-									debug: (bool), wether to enable debug messages
+									unstable_features: (bool), whether unstable features should be enabled
+									debug: (bool), whether to enable debug messages
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets, unstable_features, debug
@@ -120,7 +120,7 @@ def start(command_line_arguments):
 
 	# parse command line:
 
-	# set flag wether to enable unstable features
+	# set flag whether to enable unstable features
 	unstable_features = command_line_arguments.unstable_features
 
 	# start something according to commandline parameters
@@ -196,7 +196,7 @@ def start_multi():
 def save_game(savegamename):
 	"""Saves a game
 	@param savegamename: string with the filename or full path of the savegame file
-	@return: bool, wether save was successfull
+	@return: bool, whether save was successfull
 	"""
 	global savegamemanager, session, gui
 

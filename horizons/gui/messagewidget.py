@@ -37,7 +37,7 @@ class MessageWidget(LivingObject):
 		super(LivingObject, self).__init__()
 		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
-		self.archive = [] # mesages, that aren'y displayed any more
+		self.archive = [] # messages, that aren't displayed any more
 		self.widget = load_xml_translated('hud_messages.xml')
 		self.widget.position = (
 			 5,
@@ -118,7 +118,7 @@ class MessageWidget(LivingObject):
 		self.text_widget.hide()
 
 	def tick(self):
-		"""Check wether a message is old enough to be put into the archives"""
+		"""Check whether a message is old enough to be put into the archives"""
 		changed = False
 		for item in self.active_messages:
 			item.display -= 1

@@ -22,7 +22,7 @@
 import horizons.main
 import time
 
-# There are two ways of sending packets without specifing target ip/port:
+# There are two ways of sending packets without specifying target ip/port:
 # 1. Server sends with address and port == None, then it gets sent to all players
 # 2. Client uses sendToServer
 

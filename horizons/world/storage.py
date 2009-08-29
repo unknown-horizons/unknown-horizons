@@ -242,7 +242,7 @@ class PositiveTotalStorage(PositiveStorage, TotalStorage):
 		return ret
 
 class PositiveSizedSlotStorage(PositiveStorage):
-	"""A storage consisting of a slot for each ressource, all slots have the same size 'limit'
+	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
 	Used by the branch office for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
 	def __init__(self, limit, **kwargs):

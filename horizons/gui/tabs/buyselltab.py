@@ -50,11 +50,11 @@ class BuySellTab(TabInterface):
 		i = 0
 		for res in self.settlement.buy_list:
 			if i < self.slots:
-				self.add_ressource(res, i, self.settlement.buy_list[res])
+				self.add_resource(res, i, self.settlement.buy_list[res])
 				i += 1
 		for res in self.settlement.sell_list:
 			if i < self.slots:
-				self.add_ressource(res, i, self.settlement.sell_list[res])
+				self.add_resource(res, i, self.settlement.sell_list[res])
 				self.toggle_buysell(i)
 				i += 1
 		self.hide()
@@ -85,7 +85,7 @@ class BuySellTab(TabInterface):
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.show_ressource_menu, num))
+			slot.findChild(name='button').capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.show_resource_menu, num))
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
@@ -94,11 +94,11 @@ class BuySellTab(TabInterface):
 		self.widget.adaptLayout()
 
 
-	def add_ressource(self, res_id, slot_id, value=None):
-		"""Adds a ressource to the specified slot
+	def add_resource(self, res_id, slot_id, value=None):
+		"""Adds a resource to the specified slot
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
-		self.log.debug("BuySellTab add_ressource() resid: %s; slot_id %s; value: %s",  \
+		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s",  \
 									 res_id, slot_id, value)
 
 		if self.resources is not None: # Hide resource menu
@@ -185,7 +185,6 @@ class BuySellTab(TabInterface):
 
 	def slider_adjust(self, res_id, slot):
 		slider = self.slots[slot].findChild(name="slider")
-		#print "Ajusting slider to", slider.getValue()
 		if self.slots[slot].action is "buy":
 			self.add_buy_to_settlement(res_id, int(slider.getValue()), slot)
 		elif self.slots[slot].action is "sell":
@@ -195,7 +194,7 @@ class BuySellTab(TabInterface):
 
 
 
-	def show_ressource_menu(self, slot_id):
+	def show_resource_menu(self, slot_id):
 		self.resources = load_xml_translated('buysellmenu/resources.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
@@ -203,7 +202,7 @@ class BuySellTab(TabInterface):
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
 		resources = horizons.main.db("SELECT id, icon FROM resource WHERE tradeable = 1")
-		# Add the zero element to the beginnig that allows to remove the currently sold
+		# Add the zero element to the beginning that allows to remove the currently sold
 		# or bought resource
 		if self.slots[slot_id].res is not None:
 			resources.insert(0, (0, self.dummy_icon_path))
@@ -212,7 +211,7 @@ class BuySellTab(TabInterface):
 				continue # don't show resources that are already in the list
 			button = pychan.widgets.ImageButton(size=(50, 50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.add_ressource, res_id, slot_id))
+			button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.add_resource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:
 				vbox.addChild(current_hbox)

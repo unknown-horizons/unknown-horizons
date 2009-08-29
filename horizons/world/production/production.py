@@ -129,7 +129,7 @@ class Production(WorldObject):
 
 
 	def changes_animation(self):
-		"""Returns wether the production should change the animation"""
+		"""Returns whether the production should change the animation"""
 		return self._prod_line.changes_animation
 
 	def get_state(self):
@@ -228,7 +228,7 @@ class Production(WorldObject):
 			self._changed()
 
 	def _start_production(self):
-		"""Acctually start production. Sets self to producing state"""
+		"""Actually start production. Sets self to producing state"""
 		self._state = PRODUCTION_STATES.producing
 		self._produce()
 		self._changed()
@@ -293,7 +293,7 @@ class SettlerProduction(ChangingProduction):
 	They produce happiness from the goods they get. They get happy immediately when the get
 	the resource (i.e. they produce at production start)"""
 	def _give_produced_res(self):
-		pass # don't give any resources, when they acctually should be given
+		pass # don't give any resources, when they actually should be given
 
 	def _remove_res_to_expend(self):
 		super(SettlerProduction, self)._remove_res_to_expend()

@@ -177,7 +177,7 @@ class View(Changelistener):
 			 self.cam.getZoom(), self.cam.getRotation(), loc.x, loc.y)
 
 	def load(self, db):
-		# NOTE: this is no class function, since view is initated before loading
+		# NOTE: this is no class function, since view is initiated before loading
 		res = db("SELECT zoom, rotation, location_x, location_y FROM view")
 		if len(res) == 0 :
 			# no view info

@@ -46,7 +46,7 @@ class SPManager(LivingObject):
 			horizons.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", \
 					horizons.main.session.timer.tick_next_id, horizons.main.session.world.player.getId(), \
 					horizons.util.encode(command))
-		ret = command(issuer = horizons.main.session.world.player) # acctually execute the command
+		ret = command(issuer = horizons.main.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it
 		return ret
 

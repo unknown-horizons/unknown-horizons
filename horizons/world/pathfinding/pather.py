@@ -43,8 +43,8 @@ class AbstractPather(object):
 	def __init__(self, unit, move_diagonal, make_target_walkable = True):
 		"""
 		@param unit: instance of unit, to which the pather belongs
-		@param move_diagonal: wether the unit may walk diagonally
-		@param make_target_walkable: wether we should assume, that we can walk on
+		@param move_diagonal: whether the unit may walk diagonally
+		@param make_target_walkable: whether we should assume, that we can walk on
 		                             the tiles that make up the target
 		"""
 		self.move_diagonal = move_diagonal
@@ -81,7 +81,7 @@ class AbstractPather(object):
 	def calc_path(self, destination, destination_in_building = False, check_only = False):
 		"""Calculates a path to destination
 		@param destination: a destination supported by pathfinding
-		@param destination_in_building: bool, wether destination is in a building.
+		@param destination_in_building: bool, whether destination is in a building.
 		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
 		@return: True iff movement is possible"""
@@ -176,7 +176,7 @@ class AbstractPather(object):
 
 	def load(self, db, worldid):
 		"""
-		@return: Bool, wether a path was loaded
+		@return: Bool, whether a path was loaded
 		"""
 		path_steps = db("SELECT x, y FROM unit_path WHERE unit = ? ORDER BY `index`", worldid)
 		if len(path_steps) == 0:

@@ -43,7 +43,7 @@ class StorageHolder(object):
 		try:
 			self.inventory.add_change_listener(self._changed)
 		except AttributeError:
-			pass # some objects are storageholders, but don't acctually have storages.
+			pass # some objects are storageholders, but don't actually have storages.
 
 	def create_inventory(self):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just

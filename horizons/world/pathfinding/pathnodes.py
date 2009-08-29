@@ -95,7 +95,7 @@ class IslandPathNodes(PathNodes):
 		if tile_object is None:
 			return False
 
-		# if it's not constructible, it is usually also not walkable
+		# if it's not constructable, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
@@ -110,9 +110,9 @@ class IslandPathNodes(PathNodes):
 		You need to call this when a tile changes, e.g. when a building is built on it. this
 		is currently done in add/remove_building
 		@param coord: tuple: (x, y)"""
-		acctually_walkable = self.is_walkable(coord)
+		actually_walkable = self.is_walkable(coord)
 		in_list = (coord in self.nodes)
-		if not in_list and acctually_walkable:
+		if not in_list and actually_walkable:
 			self.nodes.append(coord)
-		if in_list and not acctually_walkable:
+		if in_list and not actually_walkable:
 			self.nodes.remove(coord)

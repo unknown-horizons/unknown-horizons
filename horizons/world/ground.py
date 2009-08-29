@@ -99,7 +99,7 @@ class GroundClass(type):
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = horizons.main.fife.imagepool.addResourceFromFile(file)
 			visual.addStaticImage(int(rotation), img)
-			# Get Image call unecessarily triggers loading of the actual image.
+			# Get Image call unnecessarily triggers loading of the actual image.
 			#img = horizons.main.fife.imagepool.getImage(img)
 			#img.setXShift(0)
 			#img.setYShift(0)

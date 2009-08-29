@@ -77,7 +77,7 @@ class MovingObject(ConcretObject):
 		return self.path.calc_path(destination, check_only = True)
 
 	def is_moving(self):
-		"""Returns wether unit is currently moving"""
+		"""Returns whether unit is currently moving"""
 		return self.__is_moving
 
 	def stop(self, callback = None):
@@ -130,7 +130,7 @@ class MovingObject(ConcretObject):
 	def move_back(self, callback = None, destination_in_building = False):
 		"""Return to the place where last movement started. Same path is used, but in reverse order.
 		@param callback: same as callback in move()
-		@param destination_in_building: bool, wether target is in a building
+		@param destination_in_building: bool, whether target is in a building
 		"""
 		self.log.debug("Unit %s: Moving back")
 		self.path.revert_path(destination_in_building)

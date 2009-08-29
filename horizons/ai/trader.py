@@ -76,7 +76,7 @@ class Trader(Player, StorageHolder):
 
 			remaining_ticks = None
 			# get current callback in scheduler, according to ship state, to retrieve
-			# the number of ticks, when the call will acctually be done
+			# the number of ticks, when the call will actually be done
 			current_callback = None
 			if ship_state == self.shipStates.reached_branch:
 				current_callback = Callback(self.ship_idle, ship)

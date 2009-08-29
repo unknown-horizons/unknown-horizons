@@ -202,7 +202,7 @@ class ResourceHandler(StorageHolder):
 		"""Pause or unpause a production (aka set it active/inactive).
 		see also: is_active, toggle_active
 		@param production: instance of Production. if None, we do it to all productions.
-		@param active: wether to set it active or inactive"""
+		@param active: whether to set it active or inactive"""
 		if production is None:
 			for production in self._get_productions():
 				self.set_active(production, active)

@@ -28,7 +28,7 @@ class NamedObject(WorldObject):
 		self.set_name(name)
 
 	def set_name(self, name=None):
-		"""Acctually sets the name."""
+		"""Actually sets the name."""
 		if name is None:
 			name = self.get_default_name()
 		self.name = name

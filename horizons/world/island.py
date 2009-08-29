@@ -177,7 +177,7 @@ class Island(WorldObject):
 				try:
 					settlements.add( self.get_tile(point).settlement )
 				except AttributeError:
-					# some tiles don't have settlements, we don't excplicitly check for them cause
+					# some tiles don't have settlements, we don't explicitly check for them cause
 					# its faster this way.
 					pass
 			settlements.discard(None) # None values might have been added, we don't want them

@@ -80,7 +80,7 @@ class SETTLER:
 
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
-	HEALTH_INCREASE_ON_FEEDING = 3 # health increases by this value on feedig
+	HEALTH_INCREASE_ON_FEEDING = 3 # health increases by this value on feeding
 	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
 	HEALTH_LEVEL_TO_REPRODUCE = 100 # this level has to be reached for reproducing
 

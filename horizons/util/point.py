@@ -40,7 +40,7 @@ class Point(object):
 		try:
 			return distance_functions_map[other.__class__](other)
 		# cannot test for rect or circle here cause that would either cause
-		# cirular imports or local imports
+		# circular imports or local imports
 		except KeyError:
 			return other.distance(self)
 

@@ -94,7 +94,7 @@ class World(LivingObject):
 			# if there's more than one of this kind, we can't be sure what to select.
 			# TODO: create interface for selecting player, if we want this
 			if(len(human_players) == 1):
-				# exactly one player, we can quite savely use this one
+				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
 
 		if self.player is None and horizons.main.session.is_game_loaded():
@@ -152,7 +152,7 @@ class World(LivingObject):
 		self.ships = []
 
 		if horizons.main.session.is_game_loaded():
-			# for now, we have one trader in everygame, so this is safe:
+			# for now, we have one trader in every game, so this is safe:
 			trader_id = db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(db, trader_id)
 
@@ -188,7 +188,7 @@ class World(LivingObject):
 						building = horizons.main.session.manager.execute( \
 							Build(tree,tile[0],tile[1], 45, ownerless=True, island=island))
 						building.finish_production_now() # make trees big and fill their inventory
-						if random.randint(0, 40) < 1: # add animal to evey nth tree
+						if random.randint(0, 40) < 1: # add animal to every nth tree
 							wild_animal(island, x=tile[0], y=tile[1])
 
 		# add free trader

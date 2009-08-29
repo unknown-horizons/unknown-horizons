@@ -51,7 +51,7 @@ class Collector(StorageHolder, Unit):
 	"""
 	log = logging.getLogger("world.units.collector")
 
-	work_duration = 16 # time how long a collector predends to work at target in ticks
+	work_duration = 16 # time how long a collector pretends to work at target in ticks
 	destination_always_in_building = False
 
 	# all states, any (subclass) instance may have. Keeping a list in one place

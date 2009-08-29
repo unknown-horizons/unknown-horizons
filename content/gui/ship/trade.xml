@@ -14,7 +14,7 @@
 	<Label name="headline" text="Trade" position="105,7"/>
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	
-	<!-- Invenatory of ship -->
+	<!-- Inventory of ship -->
 	<Container size="260,550" position="20,40">
 		<Label name="ship_label" text="Ship:" position="0,3"/>
 				<Icon image="content/gui/images/icons/hud/main/icon_trade_ship.png" position="160,0" />

@@ -28,7 +28,7 @@ class AmbientSound(object):
 	"""
 	def __init__(self, positioning=True, **kwargs):
 		"""
-		@param positioning: bool, wether sound should play from a certain position.
+		@param positioning: bool, whether sound should play from a certain position.
 		"""
 		super(AmbientSound, self).__init__(**kwargs)
 		self.__init(positioning)
@@ -58,7 +58,7 @@ class AmbientSound(object):
 	def play_ambient(self, soundfile, looping):
 		"""Starts playing an ambient sound
 		@param soundfile: path to audio file
-		@param looping: bool, wether sound should loop for forever
+		@param looping: bool, whether sound should loop for forever
 		"""
 		if horizons.main.settings.sound.enabled:
 			if self.emitter is None:

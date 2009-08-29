@@ -88,7 +88,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		This is ment to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		# res_id is used by the TradeWidget for example to determine the ressource this button represents
+		# res_id is used by the TradeWidget for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)
 		self.filled = 0

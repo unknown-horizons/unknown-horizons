@@ -63,7 +63,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
 			self.inhabitants = self.inhabitants_max
 
-		# consumation:
+		# consumption:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		current_lines = self.get_production_lines()
@@ -109,7 +109,7 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 									 happiness_decrease, self.happiness)
 
 	def inhabitant_check(self):
-		"""Checks wether or not the population of this settler should increase or decrease"""
+		"""Checks whether or not the population of this settler should increase or decrease"""
 		changed = False
 		if self.happiness > SETTLER.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
 			 self.inhabitants < self.inhabitants_max:
@@ -127,10 +127,10 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			self._changed()
 
 	def level_check(self):
-		"""Checks wether we should level up or down."""
+		"""Checks whether we should level up or down."""
 		if self.happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT and \
 			 self.level < self.level_max:
-			# add a production line that get's the necessary upgrade material.
+			# add a production line that gets the necessary upgrade material.
 			# when the production finished, it calls level_up as callback.
 			upgrade_material_prodline = horizons.main.db("SELECT production_line FROM upgrade_material \
 																									 WHERE level = ?", self.level+1)[0][0]

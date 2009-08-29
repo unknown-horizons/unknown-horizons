@@ -203,7 +203,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def check_possible_job_target(self, provider):
 		if provider.position.contains(self.position):
-			# force animal to choose a tree where it currenlty not stanew
+			# force animal to choose a tree where it currently not stands
 			return False
 		return super(WildAnimal, self).check_possible_job_target(provider)
 
@@ -235,7 +235,7 @@ class WildAnimal(CollectorAnimal, Collector):
 			self.inventory.reset(res)
 
 	def next_clone_can_reproduce(self):
-		"""Returns, wether the next child will be able to reproduce himself.
+		"""Returns, whether the next child will be able to reproduce himself.
 		Some animal can't reproduce, which makes population growth easier to control.
 		@return: bool"""
 		return bool(random.randint(0, 1))
@@ -277,7 +277,7 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		return [self.home_building]
 
 	def begin_current_job(self):
-		# we can only move on 1 building; simulate this by chosing a random location with
+		# we can only move on 1 building; simulate this by choosing a random location with
 		# the building
 		coords = self.job.object.position.get_coordinates()
 		# usually, the animal stands "in" the building. but when the animalcollector gets it,
@@ -288,7 +288,7 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 
 		# move to first walkable target coord we find
 		while 1:
-			# job target is provenly walkable, so at least one coord of it has to be
+			# job target is walkable, so at least one coord of it has to be
 			# so we can safely assume, that we will find a walkable coord
 			assert len(coords) > 0
 			target_location = coords[ random.randint(0, len(coords)-1) ]

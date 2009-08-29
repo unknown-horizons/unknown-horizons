@@ -206,7 +206,7 @@ class Menus(object):
 			'volume_effects' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_effects_value'), dlg.findChild(name='volume_effects'))
 		})
 
-		# Save old musik volumes incase the user presses cancel
+		# Save old music volumes in case the user presses cancel
 		volume_music_intial = settings.sound.volume_music
 		volume_effects_intial = settings.sound.volume_effects
 

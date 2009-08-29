@@ -46,7 +46,7 @@ class TabInterface(object):
 			self.widget.child_finder = PychanChildFinder(self.widget)
 		else:
 			self.widget = None
-		# You can override these if you want to use seperate images for your tab
+		# You can override these if you want to use separate images for your tab
 		self.button_up_image = 'content/gui/tab_widget/tab.png' # TabButtons upimage
 		self.button_down_image = 'content/gui/tab_widget/tab.png' # TabButtons downimage
 		self.button_hover_image = 'content/gui/tab_widget/tab2.png' # TabButtons hoverimage

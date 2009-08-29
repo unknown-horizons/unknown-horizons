@@ -170,7 +170,7 @@ class Session(LivingObject):
 	def save(self, savegame):
 		"""
 		@param savegame: the file, where the game will be saved
-		@return: bool, wether save was successful or not
+		@return: bool, whether save was successful or not
 		"""
 		self.log.debug("Session: Saving to %s", savegame)
 		if os.path.exists(savegame):
@@ -195,7 +195,7 @@ class Session(LivingObject):
 
 			horizons.main.savegamemanager.write_metadata(db)
 			"""
-			# Savegame integrity ensurance disabled for save testing:
+			# Savegame integrity assurance disabled for save testing:
 		except Exception, e:
 			# remove invalid savegamefile
 			os.unlink(savegame)

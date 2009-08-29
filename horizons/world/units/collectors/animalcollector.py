@@ -86,7 +86,7 @@ class AnimalCollector(BuildingCollector):
 		super(AnimalCollector, self).reached_home()
 
 	def get_buildings_in_range(self):
-		# This is only a small workarround
+		# This is only a small workaround
 		# as long we have no Collector class
 		return self.get_animals_in_range()
 
