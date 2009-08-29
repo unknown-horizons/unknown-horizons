@@ -99,6 +99,12 @@ class GenericStorage(WorldObject):
 			self._storage[res] = 0
 			self._changed()
 
+	def reset_all(self):
+		"""Removes every resource from this inventory"""
+		for res in self._storage:
+			self._storage[res] = 0
+		self._changed()
+
 	def get_limit(self, res=None):
 		"""Returns the current limit of the storage. Please not that this value can have
 		different meanings depending on the context. See the storage descriptions on what
