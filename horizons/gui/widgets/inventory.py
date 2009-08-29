@@ -26,7 +26,7 @@ import horizons.main
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
 	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
-	It can be used like any other widget inside of xml's, but for full functionality the inventory
+	It can be used like any other widget inside of xmls, but for full functionality the inventory
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
@@ -85,7 +85,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
-		This is ment to be used with the Inventory widget."""
+		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
 		# res_id is used by the TradeWidget for example to determine the resource this button represents

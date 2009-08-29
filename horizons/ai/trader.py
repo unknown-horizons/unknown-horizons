@@ -31,7 +31,7 @@ from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
 
 class Trader(Player, StorageHolder):
-	"""A trader represents the free trader that travels arround the map with his trading ship(s) and
+	"""A trader represents the free trader that travels around the map with his trading ship(s) and
 	sells resources to players and buys resources from them. This is a very simple form of AI, as it
 	doesn't do any more then drive to a place on water or a branchoffice randomly and then buys and
 	sells resources. A game should not have more then one free trader (it could though)

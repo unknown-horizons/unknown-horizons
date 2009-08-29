@@ -25,7 +25,7 @@
 """
 If run as main program, debug.py will set up LD_LIBRARY_PATH for program in sys.argv[1:], i.e.
 ./debug.py foo will run foo with LD_LIBRARY_PATH set for uh, so foo doesn't need to restart
-Usefull for debugging, because when run_uh.py restarts, it can't be debugged with gdb.
+Useful for debugging, because when run_uh.py restarts, it can't be debugged with gdb.
 "./debug.py gdb python --args ./run_uh.py" is the only known way to debug uh with gdb.
 """
 
@@ -107,8 +107,8 @@ else:
 	def cmd(name, *pargs, **kargs):
 		game.main.session.manager.execute(eval(name)(*pargs, **kargs))
 
-	print _('Debuging tools usage:')
+	print _('Debugging tools usage:')
 	print _('import debug (already done): load the tools')
 	print _('debug.printTree(<object>):   print a tree of an object (the properties, recursive)')
-	print _("debug.cmd('name', *args):    create a command and execute it throught the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)")
+	print _("debug.cmd('name', *args):    create a command and execute it through the manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)")
 	print ''

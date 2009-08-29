@@ -60,7 +60,7 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, Colle
 		self.__init(settlement)
 
 	def select(self):
-		"""Runs neccesary steps to select the unit."""
+		"""Runs necessary steps to select the unit."""
 		# TODO Think about if this should go somewhere else (island, world)
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
@@ -73,7 +73,7 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, Colle
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [BranchOfficeOverviewTab(self), InventoryTab(self), BuySellTab(self.settlement)]))
 
 	def deselect(self):
-		"""Runs neccasary steps to deselect the unit."""
+		"""Runs neccassary steps to deselect the unit."""
 		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
 

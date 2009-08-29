@@ -115,7 +115,7 @@ class LeaveServerPacket(Packet):
 				horizons.main.connection.mpoptions['players'].remove(player)
 
 class LobbyPlayerModifiedPacket(Packet):
-	"""Notifes server about changes to the local player
+	"""Notifies server about changes to the local player
 	"""
 	def __init__(self, address, port, player):
 		super(LobbyPlayerModifiedPacket, self).__init__(address, port)

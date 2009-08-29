@@ -155,7 +155,7 @@ class MessageWidget(LivingObject):
 class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string.Template, meaning it can contain placeholders
-	like the following: $player, ${gold}. The second version is recommendet, as the word
+	like the following: $player, ${gold}. The second version is recommended, as the word
 	can then be followed by other characters without a whitespace (e.g. "${player}'s home").aa
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 

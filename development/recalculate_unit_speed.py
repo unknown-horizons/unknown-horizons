@@ -97,7 +97,7 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 		for base_vel, in db("select base_velocity from unit where rowid = %d;"%unit):
 			for groundid, vel_mod in db("select rowid, velocity_modifier from ground"):
 				update(unit, groundid, base_vel, vel_mod)
-		print 'Done. If no warnings occured, then you chose good values'
+		print 'Done. If no warnings occurred, then you chose good values'
 
 	elif sys.argv[1] == '-g':
 		groundid = int(sys.argv[2])
@@ -105,7 +105,7 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 		for vel_mod, in db("select velocity_modifier from ground where rowid = %d"%groundid):
 			for unit, base_vel in db("select rowid, base_velocity from unit"):
 				update(unit, groundid, base_vel, vel_mod)
-		print 'Done. If no warnings occured, then you chose good values'
+		print 'Done. If no warnings occurred, then you chose good values'
 
 	else:
 		print usage

@@ -20,14 +20,14 @@
 # ###################################################
 
 class livingProperty(object):
-	"""livingProperty's are used to assign propertys to a class, simular to python properties.
+	"""livingProperty's are used to assign properties to a class, similar to python properties.
 	The extra benefit with livingPropertys is, that they will call the previously assigned
-	instances' end() function one beeing replaced. Note that all classes that are assigned
-	to a livingProperty should subclass the LivingObject class, to ensure the existance of
-	the end() methode.
+	instances' end() function one being replaced. Note that all classes that are assigned
+	to a livingProperty should subclass the LivingObject class, to ensure the existence of
+	the end() method.
 	The main purpose of the livingProperty is to ensure the correct deletion of objects,
 	so Classes that derive from the LivingObject class will usually have all their __del__
-	code in the end() methode, to ensure it get's called apon beeing overwritten, even if
+	code in the end() method, to ensure it gets called upon being overwritten, even if
 	other references to it exist (which should not!).
 	Here is a small example on the usage:
 

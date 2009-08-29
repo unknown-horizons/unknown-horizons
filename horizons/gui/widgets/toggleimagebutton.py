@@ -24,7 +24,7 @@ import tooltip
 from pychan.widgets.common import Attr, UnicodeAttr
 
 class ToggleImageButton(tooltip.TooltipButton):
-	"""The ToggleImageButton is an extendet ImageButton (Think decorator pattern).
+	"""The ToggleImageButton is an extended ImageButton (Think decorator pattern).
 	It add one extra attribute inactive_image. You can then set the button active
 	or inactive (only in code for now). Setting the ToggleImageButton to inactive
 	will change all images (up, down and hover) to the inactive image. If you

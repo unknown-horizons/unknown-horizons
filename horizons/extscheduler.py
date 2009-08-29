@@ -22,9 +22,9 @@
 import time
 
 class ExtScheduler(object):
-	"""The ExtScheduler ist used for time based events that are not part of the simulation(gui, menu, scrolling).
+	"""The ExtScheduler is used for time based events that are not part of the simulation(gui, menu, scrolling).
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
-	@param pump: pump list the schedular registers itself with.
+	@param pump: pump list the scheduler registers itself with.
 	"""
 
 	def __init__(self, pump):
@@ -48,7 +48,7 @@ class ExtScheduler(object):
 
 	def add_object(self, obj):
 		"""Adds a new CallbackObject instance to the callbacks list
-		@param object: CallbackObject type object, containing all neccessary  information
+		@param object: CallbackObject type object, containing all necessary  information
 		"""
 		if obj.loops > 0:
 			obj.loops -= 1
@@ -60,7 +60,7 @@ class ExtScheduler(object):
 		@param callback: function callback, which is called runin time.
 		@param class_instance: class instance the function belongs to.
 		@param runin: float number of seconds after which the callback is called. Standard is 1, run next tick.
-		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
+		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once."""
 		obj = CallbackObject(callback, class_instance, runin, loops)
 		self.add_object(obj)
 
@@ -92,7 +92,7 @@ class CallbackObject(object):
 		@param callback: lambda function callback, which is called runin ticks.
 		@param class_instance: class instance the original function(not the lambda function!) belongs to.
 		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
-		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
+		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once.
 		"""
 		self.callback = callback
 		self.class_instance = class_instance

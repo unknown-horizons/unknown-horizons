@@ -25,7 +25,7 @@ import copy
 import horizons.main
 
 class ProductionLine(object):
-	"""Data structur for handling production lines of Producers. A production line
+	"""Data structure for handling production lines of Producers. A production line
 	is a way of producing something (contains needed and produced resources for this line,
 	as well as the time, that it takes to complete the product.
 
@@ -56,7 +56,7 @@ class _ProductionLineData(object):
 	"""Actually saves the data under the hood. Internal Use Only!"""
 	def __init__(self, ident):
 		"""Inits self from db and registers itself as template"""
-		self._init_finshed = False
+		self._init_finished = False
 		self.id = ident
 		db_data = horizons.main.db("SELECT time, changes_animation FROM data.production_line WHERE id = ?", self.id)[0]
 		self.time = float(db_data[0]) # time in seconds that production takes
@@ -79,7 +79,7 @@ class _ProductionLineData(object):
 		for unit, amount in horizons.main.db("SELECT unit, amount FROM data.unit_production WHERE production_line = ?", self.id):
 			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
 
-		self._init_finshed = True
+		self._init_finished = True
 
 	def alter_production_time(self, modifier):
 		"""Sets time to original production time multiplied by modifier"""
@@ -96,7 +96,7 @@ class _ProductionLineData(object):
 
 
 	def __setattr__(self, name, value):
-		if hasattr(self, "_init_finshed") and self._init_finshed:
+		if hasattr(self, "_init_finished") and self._init_finished:
 			raise TypeError, 'ProductionLineData is const, use ProductionLine'
 		else:
 			self.__dict__[name] = value

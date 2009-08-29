@@ -26,7 +26,7 @@ from storage import PositiveSizedSlotStorage, PositiveSizedSpecializedStorage
 class StorageHolder(object):
 	"""The StorageHolder class is used as as a parent class for everything that
 	has an inventory. Examples for these classes are ships, settlements,
-	buildings, etc. Basically it just add's an inventory, nothing more, nothing
+	buildings, etc. Basically it just adds an inventory, nothing more, nothing
 	less.
 	If you want something different than a PositiveSizedSlotStorage, you'll have to
 	overwrite that in the subclass.

@@ -107,7 +107,7 @@ class ResourceHandler(StorageHolder):
 		Should add the provided production to the self._productions dict.
 		@param production: Production instance
 		"""
-		raise NotImplementedError, "This function has to be overidden!"
+		raise NotImplementedError, "This function has to be overridden!"
 
 	def add_production_by_id(self, production_line_id, production_class = Production):
 		"""Convenience method.
@@ -122,7 +122,7 @@ class ResourceHandler(StorageHolder):
 	def load_production(self, db, production_id):
 		"""Load a saved production and return it. Needs to be implemented when add_production is.
 		@return Production instance"""
-		raise NotImplementedError, "This function has to be overidden!"
+		raise NotImplementedError, "This function has to be overridden!"
 
 	def remove_production(self, production):
 		"""@param production: Production instance"""
@@ -153,7 +153,7 @@ class ResourceHandler(StorageHolder):
 
 	def get_production_progress(self):
 		"""Can be used to return the overall production process."""
-		raise NotImplementedError, "This function has to be overidden!"
+		raise NotImplementedError, "This function has to be overridden!"
 
 
 	def get_production_lines(self):
@@ -165,7 +165,7 @@ class ResourceHandler(StorageHolder):
 		"""Try to get amount number of resources of id res_id that are in stock
 		and removes them from the stock. Will return smaller amount if not
 		enough resources are available.
-		@param res: int ressouce id
+		@param res: int resource id
 		@param amount: int amount that is to be picked up
 		@param collector: the collector instance, that picks it up
 		@return: int number of resources that can actually be picked up"""
@@ -252,7 +252,7 @@ class ResourceHandler(StorageHolder):
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as branch offices.
-	Proides all tradeable resources."""
+	Provides all tradeable resources."""
 	def __init__(self, **kwargs):
 		super(StorageResourceHandler, self).__init__( **kwargs)
 		self.__init()

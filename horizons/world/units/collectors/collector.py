@@ -393,7 +393,7 @@ class Job(object):
 
 class JobList(list):
 	"""Data structure for evaluating best jobs.
-	It's a list extended by specialsort functions.
+	It's a list extended by special sort functions.
 	"""
 	order_by = Enum('rating', 'amount', 'random')
 

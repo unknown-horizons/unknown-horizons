@@ -166,11 +166,11 @@ class SizedSpecializedStorage(SpecializedStorage):
 		if not self.has_resource_slot(res):
 			return amount
 
-		storable_amount = self.get_free_space_for(res)
-		if amount > storable_amount: # tried to store more than limit allows
-			amount = storable_amount
-			ret = super(SizedSpecializedStorage, self).alter(res, storable_amount)
-			return (amount - storable_amount ) + ret
+		storeable_amount = self.get_free_space_for(res)
+		if amount > storeable_amount: # tried to store more than limit allows
+			amount = storeable_amount
+			ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
+			return (amount - storeable_amount ) + ret
 
 		# no limit breach, just propagate call
 		return super(SizedSpecializedStorage, self).alter(res, amount)

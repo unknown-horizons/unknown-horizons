@@ -25,7 +25,7 @@ class ProgressBar(pychan.widgets.Container):
 	"""The ProgressBar is a pychan widget. It can be used in xml files like this:
 	<ProgressBar />
 	It is used to display a ProgressBar with a certain progress ;). Set the
-	widgtes progress attribute to set the progress. Pretty straight forward.
+	widgets progress attribute to set the progress. Pretty straight forward.
 	"""
 
 	def __init__(self, progress=0, **kwargs):

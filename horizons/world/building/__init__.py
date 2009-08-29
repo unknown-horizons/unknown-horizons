@@ -34,7 +34,7 @@ class BuildingClass(type):
 	Note this creates classes, not instances. These are classes are created at the beginning of a session
 	and are later used to create instances, when buildings are built.
 	The __new__() function uses quite some python magic to construct the new class. Basically this is just cool
-	and doesn't have a real benefit quite yet except for saving a litte loading time.
+	and doesn't have a real benefit quite yet except for saving a little loading time.
 
 	TUTORIAL:
 	Check out the __new__() function if you feel your pretty good with python and are interested in how it all works,
@@ -94,7 +94,7 @@ class BuildingClass(type):
 		self.soundfiles = [ i[0] for i in soundfiles ]
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
 		             buildings you should check out the separate classes in horizons/world/buildings/*.
-					 Unit creation is very simular, you could check it out though and see which attributes a unit
+					 Unit creation is very similar, you could check it out though and see which attributes a unit
 					 always has.
 					 As most of the buildings are derived from the production/provider/consumer classes, which are
 					 derived from the storageholder, i suggest you start digging deeper there.

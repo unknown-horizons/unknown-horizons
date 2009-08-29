@@ -203,7 +203,7 @@ class Production(WorldObject):
 			pass
 
 	def on_remove(self):
-		"""Get's called when production is 'done' (mainly for SingleUseProduction)
+		"""Gets called when production is 'done' (mainly for SingleUseProduction)
 		Overwrite at owner!"""
 		pass
 
@@ -289,7 +289,7 @@ class ChangingProduction(Production):
 		return ProductionLine(prod_line_id)
 
 class SettlerProduction(ChangingProduction):
-	"""For settlers, production behavies different:
+	"""For settlers, production behaves different:
 	They produce happiness from the goods they get. They get happy immediately when the get
 	the resource (i.e. they produce at production start)"""
 	def _give_produced_res(self):
@@ -305,7 +305,7 @@ class SingleUseProduction(Production):
 	Use case: Settler getting upgrade material"""
 	def __init__(self, inventory, prod_line_id, callback=None, **kwargs):
 		"""
-		@param callback: Callable, get's called when construction is done.
+		@param callback: Callable, gets called when construction is done.
 		"""
 		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
 		if callback is not None:

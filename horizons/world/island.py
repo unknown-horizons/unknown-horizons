@@ -49,7 +49,7 @@ class Island(WorldObject):
 	* path_nodes - a special dictionary used by the pather to save paths.
 
 	TUTORIAL:
-	Why do we use a seperate __init() function, and do not use the __init__() function?
+	Why do we use a separate __init() function, and do not use the __init__() function?
 	Simple, if we load the game, the class is not loaded as new instance, so the __init__
 	function is not called. Rather the load function is called. So everything that new
 	classes and loaded classes share to initialize, comes into the __init() function.
@@ -78,7 +78,7 @@ class Island(WorldObject):
 
 	def __init(self, origin, filename):
 		"""
-		Load the acctual island from a file
+		Load the actual island from a file
 		@param origin: Point
 		@param filename: String
 		"""
@@ -132,7 +132,7 @@ class Island(WorldObject):
 
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
-		@param point: Point containt position of the tile.
+		@param point: Point contains position of the tile.
 		@return: tile instance if tile is on island, else None."""
 		if not self.rect.contains(point):
 			return None
@@ -184,7 +184,7 @@ class Island(WorldObject):
 		return list(settlements)
 
 	def add_settlement(self, position, radius, player):
-		"""Adds a settlement to the island at the posititon x, y with radius as area of influence.
+		"""Adds a settlement to the island at the position x, y with radius as area of influence.
 		@param position: Rect describing the position of the new branch office
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
@@ -200,7 +200,7 @@ class Island(WorldObject):
 	def add_existing_settlement(self, position, radius, settlement):
 		"""Same as add_settlement, but uses settlement from parameter.
 		May also be called for extension of an existing settlement by a new building. (this
-		is useful for loading, where every loaded buiding extends the radius of its settlement) """
+		is useful for loading, where every loaded building extends the radius of its settlement) """
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
@@ -231,7 +231,7 @@ class Island(WorldObject):
 		horizons.main.session.ingame_gui.minimap.draw()
 
 	def add_building(self, building, player):
-		"""Adds a building to the island at the posititon x, y with player as the owner.
+		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
 		for building.settlement in self.get_settlements(building.position):
@@ -270,7 +270,7 @@ class Island(WorldObject):
 		assert building not in self.buildings
 
 	def get_surrounding_tiles(self, point, radius = 1):
-		"""Returns tiles arround point with specified radius.
+		"""Returns tiles around point with specified radius.
 		@param point: instance of Point"""
 		for position in Circle(point, radius).get_coordinates():
 			tile = self.get_tile(Point(*position))

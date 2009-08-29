@@ -47,11 +47,11 @@ class WeakList(list):
     A Weak_list can store objects but without keeping them
     alive with references couting incrementation.
 
-    When objects are deleted or garbage_collected, they disapear from
+    When objects are deleted or garbage_collected, they disappear from
     the list.
 
     ! WARNING: due to the *magic* deletion of item, some method here
-    are not guaranted to give the right result or even to work properly.
+    are not guaranteed to give the right result or even to work properly.
 
     This class is NOT thread safe and NOT GC safe.
 
@@ -65,7 +65,7 @@ class WeakList(list):
     - index can return too high values or forget to raise exceptions
     - __get_item__ and __set_item__ are useless
 
-    Be also carefull that your work with weakref, so some usual
+    Be also careful that your work with weakref, so some usual
     tips don't work:
 
     >>> weak = weaklist.WeakList(weakable_class())

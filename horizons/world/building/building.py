@@ -194,7 +194,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	@classmethod
 	def get_build_costs(self, building=None, **trash):
 		"""Get the costs for the building
-		@param **trash: we normally dont need any parameter, but we get the same as the getInstance function
+		@param **trash: we normally don't need any parameter, but we get the same as the getInstance function
 		"""
 		if building is not None:
 			return building.get_build_costs(**trash)
@@ -219,7 +219,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 class Selectable(object):
 	def select(self):
-		"""Runs neccesary steps to select the building."""
+		"""Runs necessary steps to select the building."""
 		renderer = horizons.main.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island().grounds:
@@ -231,7 +231,7 @@ class Selectable(object):
 					renderer.addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):
-		"""Runs neccasary steps to deselect the unit."""
+		"""Runs neccassary steps to deselect the unit."""
 		renderer = horizons.main.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()

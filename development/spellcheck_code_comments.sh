@@ -8,6 +8,8 @@
 echo $#
 if [ $# -eq 1 ]; then
 	echo "Checking $1 .." 
+	aspell -l en check "$1"
+	exit 0
 	TMPFILE=`mktemp`
 	tail -n +21 "$1" | grep '#' | cut -d '#' -f 2 > "$TMPFILE"
 	TMPFILE2=`mktemp`

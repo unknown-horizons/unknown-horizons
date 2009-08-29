@@ -82,7 +82,7 @@ class MovingObject(ConcretObject):
 
 	def stop(self, callback = None):
 		"""Stops a unit with currently no possibility to continue the movement.
-		The unit acctally stops moving when current move (to the next coord) is finished.
+		The unit actually stops moving when current move (to the next coord) is finished.
 		@param callback: a parameter supported by WeakMethodList. is executed immediately if unit isn't moving
 		"""
 		if not self.is_moving():

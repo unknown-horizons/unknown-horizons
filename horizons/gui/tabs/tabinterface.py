@@ -54,7 +54,7 @@ class TabInterface(object):
 		self.button_background_image = 'content/gui/tab_widget/tab.png' # TabButtons background image
 
 	def init_values(self):
-		"""Call this methode after the widget has been initialised."""
+		"""Call this method after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
 		self.y_pos = self.widget.position[1]
 		self.widget.stylize('menu_black')
@@ -67,7 +67,7 @@ class TabInterface(object):
 		self.widget.show()
 
 	def hide(self):
-		"""Hides the current wigdet"""
+		"""Hides the current widget"""
 		self.widget.hide()
 
 	def refresh(self):

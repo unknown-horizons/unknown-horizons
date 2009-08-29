@@ -229,7 +229,7 @@ class LANServerList(ServerList):
 		super(LANServerList, self)._response(packet)
 
 class FavoriteServerList(ServerList):
-	"""a specialzed serverlist, which holds a static set of servers and just regularly updates them
+	"""a specialized serverlist, which holds a static set of servers and just regularly updates them
 	"""
 	def __init__(self):
 		super(FavoriteServerList, self).__init__()

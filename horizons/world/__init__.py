@@ -37,7 +37,7 @@ from horizons.ai.trader import Trader
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
-	   * players - a list of all the sessios's players - Player instances
+	   * players - a list of all the session's players - Player instances
 	   * islands - a list of all the map's islands - Island instances
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
@@ -166,7 +166,7 @@ class World(LivingObject):
 			self.trader.load_ship_states(db)
 
 		"""TUTORIAL:
-		To digg deaper, you should now continue to horizons/world/island.py,
+		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
 
 	def init_new_world(self):
@@ -208,7 +208,7 @@ class World(LivingObject):
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, \
 		                                                    'NEW_WORLD')
-		assert ret_coords is not None, "Return coordes are none. No players loaded?"
+		assert ret_coords is not None, "Return coords are none. No players loaded?"
 		return ret_coords
 
 	def get_random_possible_ship_position(self):
@@ -226,7 +226,7 @@ class World(LivingObject):
 	#----------------------------------------------------------------------
 	def get_tiles_in_radius(self, position, radius):
 		"""Returns a all tiles in the radius around the point.
-		This is a generator, make sure you use it appropriatly.
+		This is a generator, make sure you use it appropriately.
 		@return List of tiles in radius.
 		"""
 		assert isinstance(position, Point)
@@ -277,7 +277,7 @@ class World(LivingObject):
 		return None
 
 	def get_islands_in_radius(self, point, radius):
-		"""Returns all islands in a certain radius arround a point.
+		"""Returns all islands in a certain radius around a point.
 		@return List of islands in radius"""
 		islands = []
 		for island in self.islands:
@@ -288,7 +288,7 @@ class World(LivingObject):
 
 	def get_branch_offices(self, position=None, radius=None):
 		"""Returns all branch offices on the map. Optionally only those in range
-		arround the specified position.
+		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@return: List of branch offices.

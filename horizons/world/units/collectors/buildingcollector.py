@@ -134,7 +134,7 @@ class BuildingCollector(Collector):
 			self.move_home(callback=self.reached_home)
 
 	def reached_home(self):
-		"""Exchanges resources with home and calss end_job"""
+		"""Exchanges resources with home and calls end_job"""
 		self.log.debug("Collector %s reached home", self.getId())
 
 		if self.home_building is not None:
@@ -152,7 +152,7 @@ class BuildingCollector(Collector):
 
 	def get_buildings_in_range(self):
 		"""Returns all buildings in range
-		Overwrite in subclasses that need ranges arroung the pickup."""
+		Overwrite in subclasses that need ranges around the pickup."""
 		reach = Circle(self.home_building.position.center(), self.home_building.radius)
 		return self.home_building.island().get_providers_in_range(reach)
 
@@ -178,7 +178,7 @@ class StorageCollector(BuildingCollector):
 
 
 class FieldCollector(BuildingCollector):
-	""" Simular to the BuildingCollector but used on farms for example.
+	""" Similar to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
 	job_ordering = JobList.order_by.random

@@ -29,7 +29,7 @@ class ActionSetLoader(object):
 	begin with 'as_' to tell tell the loader that they are an action set. directory
 	structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png
 	for example that would be: fisher1/work/90/0.png
-	Note that all directories exept for the rotation dir, all dirs have to be empty and
+	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional action sets.
 	@param start_dir: directory that is used to begin search in
 	"""

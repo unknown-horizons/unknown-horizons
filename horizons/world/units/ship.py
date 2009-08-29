@@ -65,7 +65,7 @@ class Ship(NamedObject, Unit):
 		horizons.main.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def select(self):
-		"""Runs neccesary steps to select the unit."""
+		"""Runs necessary steps to select the unit."""
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		if self.is_moving():
 			loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])

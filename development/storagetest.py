@@ -22,10 +22,10 @@
 try:
 	from storage import Storage
 except ImportError:
-	print "This test has to ne run in the folder where storage.py is."
+	print "This test has to be run in the folder where storage.py is."
 storage = Storage(5, 40)
 
-print "Test1 - Adding 4 ressources with various amounts"
+print "Test1 - Adding 4 resources with various amounts"
 test = True
 for i in range(1, 5):
 	res = storage.alter_inventory(i, i*10)
@@ -37,7 +37,7 @@ for i in range(1, 5):
 		print "Adding res %i with amount %i failed" % (i, i*10)
 print "Test1 passed" if test else "Test1 failed"
 
-print "Test2 - Adding 1 ressource with an amount over maximum"
+print "Test2 - Adding 1 resource with an amount over maximum"
 test = True
 res = storage.alter_inventory(5, 50)
 if res == 10:
@@ -47,43 +47,43 @@ else:
 	print "Adding res %i with amount %i failed to return 10" % (5, 50)
 print "Test2 passed" if test else "Test2 failed"
 
-print "Test3 - Adding a ressource that is not in the inventory, but inventory is full."
+print "Test3 - Adding a resource that is not in the inventory, but inventory is full."
 test = True
 res = storage.alter_inventory(6, 30)
 if res == None:
-	print "Adding res %i with amount %i successfull returned None" % (6, 30)
+	print "Adding res %i with amount %i successful returned None" % (6, 30)
 else:
 	test = False
 	print "Adding res %i with amount %i failed to return None" % (6, 30)
 print "Test3 passed" if test else "Test3 failed"
 
-print "Test4 - Adding a ressource that is in the inventory allready."
+print "Test4 - Adding a resource that is in the inventory already."
 test = True
 res = storage.alter_inventory(1, 10)
 if res == 0:
-	print "Adding res %i with amount %i successfull." % (1, 10)
+	print "Adding res %i with amount %i successful." % (1, 10)
 else:
 	test = False
 	print "Adding res %i with amount %i failed." % (1, 10)
 res = storage.alter_inventory(2, 30)
 if res == 10:
-	print "Adding res %i with amount %i successfull." % (2, 20)
+	print "Adding res %i with amount %i successful." % (2, 20)
 else:
 	test = False
 	print "Adding res %i with amount %i failed." % (2, 20)
 print "Test4 passed" if test else "Test4 failed"
 
-print "Test5 - Adding a ressource that is in the inventory allready."
+print "Test5 - Adding a resource that is in the inventory already."
 test = True
 res = storage.alter_inventory(1, -10)
 if res == 0:
-	print "Adding res %i with amount %i successfull." % (1, -10)
+	print "Adding res %i with amount %i successful." % (1, -10)
 else:
 	test = False
 	print "Adding res %i with amount %i failed." % (1, -10)
 res = storage.alter_inventory(2, -70)
 if res == 30:
-	print "Adding res %i with amount %i successfull." % (2, -70)
+	print "Adding res %i with amount %i successful." % (2, -70)
 else:
 	test = False
 	print "Adding res %i with amount %i failed." % (2, -70)

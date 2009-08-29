@@ -93,7 +93,7 @@ class AnimalCollector(BuildingCollector):
 	def get_animals_in_range(self):
 		# TODO: use the Collector class instead of BuildCollector
 		"""returns all buildings in range
-		Overwrite in subclasses that need ranges arroung the pickup."""
+		Overwrite in subclasses that need ranges around the pickup."""
 		return self.home_building.animals
 
 	def stop_animal(self):
