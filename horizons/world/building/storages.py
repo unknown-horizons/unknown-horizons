@@ -24,7 +24,7 @@ import horizons.main
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MarketPlaceOverviewTab
+		 MarketPlaceOverviewTab, AccountTab
 from horizons.util import Point, WorldObject
 from horizons.constants import UNITS
 from building import BasicBuilding, Selectable
@@ -113,4 +113,4 @@ class BranchOffice(StorageBuilding):
 
 class MarketPlace(StorageBuilding):
 	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [MarketPlaceOverviewTab(self)]))
+		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [MarketPlaceOverviewTab(self), AccountTab(self.settlement)]))

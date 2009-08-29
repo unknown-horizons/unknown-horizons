@@ -47,6 +47,17 @@ class Settlement(TradePost, NamedObject):
 		"""Returns number of inhabitants (sum of inhabitants of its buildings)"""
 		return sum([building.inhabitants for building in self.buildings])
 
+	@property
+	def cumulative_running_costs(self):
+		"""Return sum of running costs of all buildings"""
+		return sum([building.running_costs for building in self.buildings])
+
+	@property
+	def cumulative_taxes(self):
+		"""Return sum of all taxes payed in this settlement in 1 tax round"""
+		return sum([building.last_tax_payed for building in self.buildings if \
+		            hasattr(building, 'last_tax_payed')])
+
 	def setup_storage(self):
 		self.inventory = PositiveSizedSlotStorage(0)
 		self.inventory.add_change_listener(self._changed)

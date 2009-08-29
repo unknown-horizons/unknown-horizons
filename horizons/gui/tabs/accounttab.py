@@ -19,10 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from inventorytab import InventoryTab, ShipInventoryTab
-from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab, SettlerOverviewTab, MarketPlaceOverviewTab
-from buyselltab import BuySellTab
-from buildtabs import BuildTab
-from tabwidget import TabWidget
-from boatbuildertab import BoatbuilderTab
-from accounttab import AccountTab
+from tabinterface import TabInterface
+
+class AccountTab(TabInterface):
+	"""Display basic income and expenses of a settlement"""
+
+	def __init__(self, settlement):
+		super(AccountTab, self).__init__(widget = 'tab_widget/tab_account.xml')
+		self.settlement = settlement
+		self.init_values()
+
+	def refresh(self):
+		taxes = self.settlement.cumulative_taxes
+		running_costs = self.settlement.cumulative_running_costs
+		balance = taxes - running_costs
+		sign = '+' if balance >= 0 else '-'
+		self.widget.child_finder('taxes').text = unicode(taxes)
+		self.widget.child_finder('running_costs').text = unicode(running_costs)
+		self.widget.child_finder('balance').text = unicode(sign+' '+str(balance))
+
