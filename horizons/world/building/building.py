@@ -40,8 +40,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
-	part_of_nature = False # whether this is part of nature (free units can walk through it)
 	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
+	buildable_upon = False # whether we can build upon this building
 	object_type = 0
 
 	log = logging.getLogger("world.building")
@@ -132,9 +132,6 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			island = location_obj
 			settlement = None
 		return (island, settlement)
-
-	def is_part_of_nature(self):
-		return self.part_of_nature
 
 	def is_walkable(self):
 		return self.walkable

@@ -31,7 +31,6 @@ import horizons.main
 class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
 	""" Class for stuff that grows, such as trees
 	"""
-	part_of_nature = True
 	walkable = True
 
 	def __init__(self, **kwargs):
@@ -66,6 +65,7 @@ class AnimalField(CollectingBuilding, Field):
 			self.animals[0].remove()
 
 class Tree(GrowingBuilding):
+	buildable_upon = True
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = 2

@@ -95,13 +95,12 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_building_build_requirement_satisfied(cls, x, y, island, **state):
-		from nature import GrowingBuilding
 		tear = []
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			obj = island.get_tile(p).object
 			if obj is not None:
-				if isinstance(obj, GrowingBuilding):
+				if obj.buildable_upon:
 					if obj.__class__ is cls:
 						return None
 					tear.append(obj.getId())
