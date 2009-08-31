@@ -36,6 +36,15 @@ class Minimap(Changelistener):
 		self.location = rect
 		self.renderer = renderer
 
+		# save all GenericRendererNodes here, so they don't need to be constructed multiple times
+		self.nodes = {}
+		tupel_iter = self.location.tupel_iter()
+		# pull dereferencing out of loop
+		GRN = fife.GenericRendererNode
+		FP = fife.Point
+		for t in tupel_iter:
+			self.nodes[ t ] = GRN( FP( *t ) )
+
 	def draw(self, world = None):
 		"""Draws minimap of horizons.main.session.world or world"""
 		# <DEBUG>
@@ -45,6 +54,9 @@ class Minimap(Changelistener):
 
 		if world is None:
 			world = horizons.main.session.world
+
+		if not world.inited:
+			return # don't draw while loading
 
 		# calculate which area of the real map is mapped to which pixel on the minimap
 		world_height = world.map_dimensions.height
@@ -56,29 +68,41 @@ class Minimap(Changelistener):
 		pixel_per_coord_x = float(world_width) / minimap_width
 		pixel_per_coord_y = float(world_height) / minimap_height
 
-		for x in xrange(0, self.location.width):
-			for y in xrange(0, self.location.height):
-				# point in the minimap covers covered_area in the real map
-				covered_area = Rect( Point(int(x * pixel_per_coord_x)+world.min_x, \
-				                           int(y * pixel_per_coord_y)+world.min_y), \
-				                     int(pixel_per_coord_x), int(pixel_per_coord_y))
+		# calculate values here so we don't have to do it in the loop
+		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x/2)
+		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
+
+		for x in xrange(0, self.location.width+1):
+			for y in xrange(0, self.location.height+1):
+
+				"""
+				This code should be here, but since python can't do inlining, we have to inline
+				ourselves for performance reasons (see below)
+				covered_area = Rect.init_from_topleft_and_size(
+				  int(x * pixel_per_coord_x)+world.min_x, \
+				  int(y * pixel_per_coord_y)+world.min_y), \
+				  int(pixel_per_coord_x), int(pixel_per_coord_y))
+				real_map_point = covered_area.center()
+				"""
+				real_map_point = Point(int(x*pixel_per_coord_x)+world.min_x + \
+				                            pixel_per_coord_x_half_as_int, \
+				                       int(y * pixel_per_coord_y)+world.min_y + \
+				                            pixel_per_coord_y_half_as_int)
 
 				# check what's at the covered_area
 				color = ( 150, 150, 150 )
 
-				for real_map_point in covered_area:
-					assert world.map_dimensions.contains(real_map_point)
-					if world.get_island(real_map_point) is not None:
-						# this pixel is an island
-						color = ( 255, 0, 0 )
+				#assert world.map_dimensions.contains(real_map_point)
+				island = world.get_island(real_map_point)
+				if island is not None:
+					# this pixel is an island
+					color = ( 255, 0, 0 )
 
-						settlement = world.get_settlement(real_map_point)
-						if settlement is not None:
-							# pixel belongs to a player
-							color = ( 0, 255, 0 )
-						break
+					settlement = island.get_settlement(real_map_point)
+					if settlement is not None:
+						# pixel belongs to a player
+						color = ( 0, 255, 0 )
 
 				# draw the point
-				point = Point( self.location.left + x, self.location.bottom + y)
-				node = fife.GenericRendererNode(point.to_fife_point())
+				node = self.nodes[ ( self.location.left + x, self.location.top + y) ]
 				self.renderer.addPoint("minimap", node, *color)

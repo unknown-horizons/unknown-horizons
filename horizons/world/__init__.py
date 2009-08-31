@@ -49,8 +49,9 @@ class World(LivingObject):
 	"""
 	log = logging.getLogger("world")
 	def __init__(self, **kwargs):
-		"""@param db: DbReader instance with the map/savegame that is to be loaded
 		"""
+		"""
+		self.inited = False
 		super(World, self).__init__()
 
 	def end(self):
@@ -165,6 +166,7 @@ class World(LivingObject):
 			# initialised for this, and trader has to exist before ships are loaded.
 			self.trader.load_ship_states(db)
 
+		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""

@@ -48,9 +48,32 @@ class Rect(object):
 				assert False, "Tried to init rect with rect"
 			else:
 				assert False, 'Invalid rect initialisation'+str(args)
+		else:
+			assert False
 
 		# Convenience attributes (can be used to make code more easy to read/understand)
 		self.origin = Point(self.left, self.top)
+
+
+	# NAMED CONSTRUCTORS:
+
+	@classmethod
+	def init_from_borders(cls, left, top, right, bottom):
+		self = cls.__new__(cls)
+		self.left = left
+		self.top = top
+		self.right = right
+		self.bottom = bottom
+		return self
+
+	@classmethod
+	def init_from_topleft_and_size(cls, x, y, width, height):
+		self = cls.__new__(cls)
+		self.top = x
+		self.left = y
+		self.right = self.left + width
+		self.bottom = self.top + height
+		return self
 
 	@property
 	def height(self):
@@ -147,9 +170,17 @@ class Rect(object):
 		return not self.__eq__(other)
 
 	def __iter__(self):
+		"""Generates an iterator, that returns Points"""
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield Point(x, y)
+
+	def tupel_iter(self):
+		"""Generates an iterator, that returns tuples"""
+		for x in xrange(self.left, self.right+1):
+			for y in xrange(self.top, self.bottom+1):
+				yield x, y
+
 
 from horizons.util.encoder import register_classes
 register_classes(Rect)
