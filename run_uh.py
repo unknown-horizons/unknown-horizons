@@ -145,8 +145,9 @@ def main():
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
 		sys.excepthook = excepthook_creator(logfilename)
+
 	if not options.debug_log_only:
-		# add a handler to stderr
+		# add a handler to stderr too
 		logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
 
 	# NOTE: this might cause a program restart

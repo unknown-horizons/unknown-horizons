@@ -27,7 +27,7 @@ import fife
 import horizons.main
 
 from horizons.util import WorldObject
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, GROUND
 
 class Ground(WorldObject):
 	def __init__(self, x, y):
@@ -43,6 +43,8 @@ class Ground(WorldObject):
 		self._instance = horizons.main.session.view.layers[LAYERS.GROUND].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
 
+		self.is_water = False
+
 class Water(WorldObject):
 	def __init__(self, x ,y):
 		"""
@@ -56,6 +58,8 @@ class Water(WorldObject):
 		self.y = y
 		self._instance = horizons.main.session.view.layers[LAYERS.WATER].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
+
+		self.is_water = True
 
 class GroundClass(type):
 	"""
@@ -77,7 +81,7 @@ class GroundClass(type):
 		"""
 		@param id: ground id.
 		"""
-		if id == 4:
+		if id == GROUND.WATER:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Water,), {})
 		else:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})

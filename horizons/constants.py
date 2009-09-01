@@ -43,6 +43,8 @@ class RES:
 	TOOLS_ID  = 6
 	HAPPINESS_ID = 14
 
+class GROUND:
+	WATER = 4
 
 ## ENGINE
 class LAYERS:

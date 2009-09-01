@@ -229,11 +229,11 @@ class World(LivingObject):
 	def get_tiles_in_radius(self, position, radius):
 		"""Returns a all tiles in the radius around the point.
 		This is a generator, make sure you use it appropriately.
+		@param position: Point instance
 		@return List of tiles in radius.
 		"""
 		assert isinstance(position, Point)
 		circle = Circle(position, radius)
-		ret = []
 		for coord in circle.get_coordinates():
 			yield self.get_tile(Point(coord[0], coord[1]))
 
