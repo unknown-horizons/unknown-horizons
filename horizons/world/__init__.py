@@ -265,8 +265,8 @@ class World(LivingObject):
 		"""Returns the building at the position x, y.
 		@param point: Point instance
 		@return: Building class instance if a building is found, else None."""
-		i = self.get_island(Point)
-		return None if i is None else i.get_building(Point)
+		i = self.get_island(point)
+		return None if i is None else i.get_building(point)
 
 	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.
