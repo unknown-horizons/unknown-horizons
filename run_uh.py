@@ -76,6 +76,8 @@ def get_option_parser():
 	p.add_option_group(start_uh_group)
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))
+	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
+	                     default=False, help=_("Write debug output only to logfile, not to console"))
 	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
 											 metavar="<module>", default=[], \
 											 help=_("Enable logging for a certain logging module."))
@@ -105,6 +107,13 @@ def excepthook_creator(outfilename):
 		f = open(outfilename, 'a')
 		traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
+		print
+		print _('Unknown Horizons crashed.')
+		print
+		print _('We are very sorry for this, and want to fix this error.')
+		print _('In order to do this, we need the information from the logfile:')
+		print outfilename
+		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
 	return excepthook
 
 def main():
@@ -126,15 +135,19 @@ def main():
 			print 'No such logger:', module
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
-	if options.debug or len(options.debug_module) > 0:
+	if options.debug or len(options.debug_module) > 0 or options.debug_log_only:
 		# also log to file
 		# init a logfile handler with a dynamic filename
 		from horizons.constants import PATHS
-		logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % time.strftime("%y-%m-%d_%H-%M-%S")
-		print 'Logging to stderr and %s' % logfilename
+		logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % \
+		            time.strftime("%y-%m-%d_%H-%M-%S")
+		print 'Logging to %s' % logfilename
 		file_handler = logging.FileHandler(logfilename, 'w')
 		logging.getLogger().addHandler(file_handler)
 		sys.excepthook = excepthook_creator(logfilename)
+	if not options.debug_log_only:
+		# add a handler to stderr
+		logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
 
 	# NOTE: this might cause a program restart
 	init_environment()
@@ -154,6 +167,7 @@ def main():
 									 outfilename)
 		log().warning('Program ended. Profiling output: %s', outfilename)
 
+	print _('Thank you for using Unknown Horizons!')
 
 
 """
