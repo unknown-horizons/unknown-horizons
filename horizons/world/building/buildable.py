@@ -68,6 +68,8 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_island_build_requirement_satisfied(cls, x, y, **state):
+		"""Checks if there is an island at x,y
+		Returns either {'buildable': False} or {'island': island}"""
 		island = horizons.main.session.world.get_island(Point(x, y))
 		if island is None:
 			return {'buildable' : False}
@@ -79,6 +81,8 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_settlement_build_requirement_satisfied(cls, x, y, island, **state):
+		"""Checks if there is a settlement at x, y
+		Returns either {'buildable': False} or {'settlement': settlement}"""
 		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
 		if len(settlements) != 1:
 			return {'buildable' : False}
@@ -86,6 +90,8 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
+		"""Checks if the ground at x, y is buildable.
+		Returns either {} (success) or {'buildable': False}"""
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			tile_classes = island.get_tile(p).__class__.classes
@@ -95,6 +101,9 @@ class BuildableSingle(object):
 
 	@classmethod
 	def is_building_build_requirement_satisfied(cls, x, y, island, **state):
+		"""Checks if buildings are blocking the position, and wether they can be teared.
+		Returns {'buildable': False} if we can't build, {} if we can build without tearing,
+		or {'tear': [building1id, ...]} if we have to tear building1, ... before the build"""
 		tear = []
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
@@ -115,6 +124,7 @@ class BuildableSingle(object):
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
 		"""Return list of buildings between startpoint (point1) and endpoint (point2)
+		that can be built here.
 		This is called when the user drags the mouse between these two points
 
 		Here, we only build at the endpoint"""

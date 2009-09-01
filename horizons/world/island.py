@@ -218,14 +218,15 @@ class Island(WorldObject):
 					continue
 				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
 					tile.settlement = settlement
-		for building in self.buildings: # Check if any buildings come into range, like unowned trees
-			if position.distance(building.position) <= radius:
-				if building.settlement is None:
+
+				building = tile.object
+				# assign buildings on tiles to settlement
+				if building is not None and building.settlement is None:
 					building.settlement = settlement
 					settlement.buildings.append(building)
-				elif building.settlement.owner == settlement.owner:
-					building.settlement = settlement
+
 		#TODO: inherit resources etc
+
 		horizons.main.session.ingame_gui.minimap.draw()
 
 	def add_building(self, building, player):
@@ -250,7 +251,7 @@ class Island(WorldObject):
 		return building
 
 	def remove_building(self, building):
-		assert (building.island() == self)
+		assert building.island() == self
 
 		# Reset the tiles this building was covering
 		for point in building.position:

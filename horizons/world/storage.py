@@ -65,8 +65,8 @@ class GenericStorage(WorldObject):
 		# load a limit, if we have one
 		# this is only useful for limits, that have been changed after construction,
 		# all static limits will be set on storage construction, which happens before load
-		result = db("SELECT value FROM storage_properties WHERE object = ? AND name = ?", \
-										ownerid, "limit")
+		result = db("SELECT value FROM storage_properties WHERE object = ? AND \
+		          name = \"limit\"", ownerid)
 		if(len(result) != 0):
 			self.limit = result[0][0]
 			if self.limit is not None:

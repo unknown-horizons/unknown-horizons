@@ -26,6 +26,7 @@ import horizons.main
 
 from building import BasicBuilding
 from buildable import BuildableLine, BuildableSingle
+from horizons.constants import LAYERS
 
 class Path(BasicBuilding, BuildableLine):
 	walkable = True
@@ -82,7 +83,7 @@ class Path(BasicBuilding, BuildableLine):
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 1
+		kwargs['layer'] = LAYERS.GROUND
 		return super(Path, cls).getInstance(*args, **kwargs)
 
 class Bridge(BasicBuilding, BuildableSingle):
@@ -100,5 +101,5 @@ class Bridge(BasicBuilding, BuildableSingle):
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 1
+		kwargs['layer'] = LAYERS.GROUND
 		return super(Bridge, cls).getInstance(*args, **kwargs)

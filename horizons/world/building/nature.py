@@ -24,6 +24,7 @@ from buildable import BuildableRect
 from collectingbuilding import CollectingBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
+from horizons.constants import LAYERS
 
 import horizons.main
 
@@ -38,13 +39,13 @@ class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 1
+		kwargs['layer'] = LAYERS.GROUND
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
 class Field(GrowingBuilding):
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 2
+		kwargs['layer'] = LAYERS.OBJECTS
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
 class AnimalField(CollectingBuilding, Field):
@@ -68,6 +69,6 @@ class Tree(GrowingBuilding):
 	buildable_upon = True
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = 2
+		kwargs['layer'] = LAYERS.OBJECTS
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 

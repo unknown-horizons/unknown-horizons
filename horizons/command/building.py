@@ -27,7 +27,7 @@ from horizons.world.building.building import *
 class Build(object):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
-	def __init__(self, building, x, y, rotation, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
+	def __init__(self, building, x, y, rotation = 45, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
 		@param building: building class that is to be built.
 		@param x, y: int coordinates where the object is to be built.

@@ -188,7 +188,7 @@ class World(LivingObject):
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
 						building = horizons.main.session.manager.execute( \
-							Build(tree,tile[0],tile[1], 45, ownerless=True, island=island))
+							Build(tree,tile[0],tile[1], ownerless=True, island=island))
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
 							wild_animal(island, x=tile[0], y=tile[1])

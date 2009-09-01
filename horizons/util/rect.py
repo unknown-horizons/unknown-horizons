@@ -141,6 +141,10 @@ class Rect(object):
 		"""
 		return (self.left <= point.x <= self.right) and (self.top <= point.y <= self.bottom)
 
+	def contains_tuple(self, tup):
+		"""Same as contains, but takes a tuple (x, y) as parameter (overloaded function)"""
+		return (self.left <= tup[0] <= self.right) and (self.top <= tup[1] <= self.bottom)
+
 	def intersect(self, rect):
 		""" Returns a rect that is the intersection of this rect and the rect parameter.
 		@param rect: Rect that will be intersected with this rect.

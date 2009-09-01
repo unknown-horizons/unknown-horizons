@@ -32,6 +32,7 @@ from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from horizons.i18n import load_xml_translated
+from horizons.constants import RES
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -141,6 +142,8 @@ class BuildingTool(NavigationTool):
 		self.gui.adaptLayout()
 
 	def preview_build(self, point1, point2):
+		"""Display buildings as preview if build requirements are met"""
+		InstanceRenderer = horizons.main.session.view.renderer['InstanceRenderer']
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
@@ -151,21 +154,35 @@ class BuildingTool(NavigationTool):
 			building['instance'] = self._class.getInstance(**building)
 			resources = self._class.get_build_costs(**building)
 			if not building.get('buildable', True):
-				horizons.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
+				# can't build, color it red
+				InstanceRenderer.addColored(building['instance'], 255, 0, 0)
 			else:
 				for resource in resources:
 					neededResources[resource] = neededResources.get(resource, 0) + resources[resource]
 				for resource in neededResources:
-					if ( horizons.main.session.world.player.inventory[resource] if resource == 1 else 0 ) + (self.ship.inventory[resource] if self.ship is not None else building['settlement'].inventory[resource] if building['settlement'] is not None else 0) < neededResources[resource]:
-						horizons.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 0, 0)
+					# check player, ship and settlement inventory
+					available_res = 0
+					# player
+					available_res += horizons.main.session.world.player.inventory[resource] if resource == RES.GOLD_ID else 0
+					# ship or settlement
+					if self.ship is not None:
+						available_res += self.ship.inventory[resource]
+					elif building['settlement'] is not None:
+						available_res += building['settlement'].inventory[resource]
+
+					if available_res < neededResources[resource]:
+						# can't build, not enough res
+						InstanceRenderer.addColored(building['instance'], 255, 0, 0)
 						building['buildable'] = False
 						break
 				else:
 					building['buildable'] = True
 					for resource in resources:
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
-					horizons.main.session.view.renderer['InstanceRenderer'].addColored(building['instance'], 255, 255, 255)
-		horizons.main.session.ingame_gui.resourceinfo_set(self.ship if self.ship is not None else settlement, neededResources, usableResources)
+					# draw white for buildable
+					InstanceRenderer.addColored(building['instance'], 255, 255, 255)
+		horizons.main.session.ingame_gui.resourceinfo_set( \
+		   self.ship if self.ship is not None else settlement, neededResources, usableResources)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def on_escape(self):

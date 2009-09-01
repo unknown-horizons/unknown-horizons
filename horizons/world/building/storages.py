@@ -30,8 +30,8 @@ from horizons.constants import UNITS
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
 
-class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, CollectingBuilding, \
-											BasicBuilding):
+class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
+                      CollectingBuilding, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by branch office, storage tent.
 	These objects don't have a storage themselves, but use the settlement storage.
