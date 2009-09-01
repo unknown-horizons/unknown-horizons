@@ -27,6 +27,7 @@ from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from horizons.command.building import Tear
 from horizons.world.building.storages import StorageBuilding
+from horizons.util import Point
 
 class TearingTool(NavigationTool):
 	"""
@@ -110,7 +111,7 @@ class TearingTool(NavigationTool):
 		if edges is not None:
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
-					b = horizons.main.session.world.get_building(x, y)
+					b = horizons.main.session.world.get_building(Point(x, y))
 					if b is not None and b not in self.selected and not isinstance(b, StorageBuilding):
 						self.selected.append(b)
 			for i in self.selected:

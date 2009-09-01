@@ -261,12 +261,12 @@ class World(LivingObject):
 		@return: instance of Settlement or None"""
 		return self.get_tile(point).settlement
 
-	def get_building(self, x, y):
+	def get_building(self, point):
 		"""Returns the building at the position x, y.
-		@param x, y: int coordinates.
+		@param point: Point instance
 		@return: Building class instance if a building is found, else None."""
-		i = self.get_island(Point(x, y))
-		return None if i is None else i.get_building(Point(x, y))
+		i = self.get_island(Point)
+		return None if i is None else i.get_building(Point)
 
 	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.

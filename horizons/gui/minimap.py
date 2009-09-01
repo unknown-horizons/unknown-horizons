@@ -27,6 +27,9 @@ from horizons.util import Changelistener, Rect, Point
 
 class Minimap(Changelistener):
 	"""Draws Minimap to a specified location."""
+	water_color = (0, 0, 255)
+	island_color = (0, 255, 0)
+	player_color = (255, 0, 0)
 
 	def __init__(self, rect, renderer):
 		"""
@@ -72,6 +75,8 @@ class Minimap(Changelistener):
 		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x/2)
 		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
 
+		color = None
+		real_map_point = Point(0, 0)
 		for x in xrange(0, self.location.width+1):
 			for y in xrange(0, self.location.height+1):
 
@@ -84,24 +89,25 @@ class Minimap(Changelistener):
 				  int(pixel_per_coord_x), int(pixel_per_coord_y))
 				real_map_point = covered_area.center()
 				"""
-				real_map_point = Point(int(x*pixel_per_coord_x)+world.min_x + \
-				                            pixel_per_coord_x_half_as_int, \
-				                       int(y * pixel_per_coord_y)+world.min_y + \
-				                            pixel_per_coord_y_half_as_int)
+				real_map_point.x = int(x*pixel_per_coord_x)+world.min_x + \
+				                            pixel_per_coord_x_half_as_int
+				real_map_point.y = int(y * pixel_per_coord_y)+world.min_y + \
+				                            pixel_per_coord_y_half_as_int
 
 				# check what's at the covered_area
-				color = ( 150, 150, 150 )
 
 				#assert world.map_dimensions.contains(real_map_point)
 				island = world.get_island(real_map_point)
 				if island is not None:
 					# this pixel is an island
-					color = ( 255, 0, 0 )
-
 					settlement = island.get_settlement(real_map_point)
-					if settlement is not None:
+					if settlement is None:
+						color = self.island_color
+					else:
 						# pixel belongs to a player
-						color = ( 0, 255, 0 )
+						color = self.player_color
+				else:
+					color = self.water_color
 
 				# draw the point
 				node = self.nodes[ ( self.location.left + x, self.location.top + y) ]

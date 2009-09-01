@@ -418,4 +418,6 @@ class IngameGui(LivingObject):
 	def load(self, db):
 		self.message_widget.load(db)
 
+		#import profile
+		#profile.runctx('self.minimap.draw()', globals(), locals(), '/tmp/a')
 		self.minimap.draw() # update minimap to new world

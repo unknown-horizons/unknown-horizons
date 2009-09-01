@@ -134,8 +134,6 @@ class Island(WorldObject):
 		"""Returns whether a tile is on island or not.
 		@param point: Point contains position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		if not self.rect.contains(point):
-			return None
 		try:
 			return self.ground_map[(point.x, point.y)]()
 		except KeyError:
@@ -161,11 +159,11 @@ class Island(WorldObject):
 		"""Look for a settlement on a specific tile
 		@param point: Point to look on
 		@return: Settlement at point, or None"""
-		settlements = self.get_settlements(Rect(point, 1, 1))
-		if len(settlements)>0:
-			assert len(settlements) == 1
-			return settlements[0]
-		return None
+		try:
+			return self.get_tile(point).settlement
+			# some tiles might be none, so we have to catch that error here
+		except AttributeError:
+			return None
 
 	def get_settlements(self, rect):
 		"""Returns the list of settlements for the coordinates describing a rect.

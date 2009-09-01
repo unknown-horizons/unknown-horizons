@@ -92,8 +92,7 @@ class AbstractPather(object):
 			source = Point(*self.path[self.cur])
 		else:
 			# check if we are in a building
-			building = horizons.main.session.world.get_building( \
-				self.unit.position.x, self.unit.position.y)
+			building = horizons.main.session.world.get_building(self.unit.position)
 			if building is not None:
 				source = building
 
