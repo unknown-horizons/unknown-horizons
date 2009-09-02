@@ -195,7 +195,7 @@ class AbstractPather(object):
 class ShipPather(AbstractPather):
 	"""Pather for ships (units that move on water tiles)"""
 	def __init__(self, unit):
-		super(ShipPather, self).__init__(unit, move_diagonal=True)
+		super(ShipPather, self).__init__(unit, move_diagonal=True, make_target_walkable = False)
 
 	def _get_path_nodes(self):
 		return horizons.main.session.world.water

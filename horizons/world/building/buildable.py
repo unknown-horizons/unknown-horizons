@@ -242,7 +242,11 @@ class BuildableSingleOnCoast(BuildableSingle):
 
 	@classmethod
 	def check_build_rotation(cls, rotation, x, y):
-		# array of coastline (True if is coastline)
+		"""Rotate so that the building looks out to sea"""
+		if not horizons.main.session.world.inited:
+			# while loading, skip this check
+			return rotation
+		# array of coords (points are True if is coastline)
 		coastline = {}
 		position = Rect(Point(x, y), cls.size[0]-1, cls.size[1]-1)
 		for point in position:
