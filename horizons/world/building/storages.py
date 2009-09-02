@@ -28,7 +28,7 @@ from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, In
 from horizons.util import Point, WorldObject
 from horizons.constants import UNITS
 from building import BasicBuilding, Selectable
-from buildable import BuildableSingle
+from buildable import BuildableSingle, BuildableSingleOnCoast
 
 class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
@@ -83,7 +83,7 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
 	def load_inventory(self, db, worldid): pass
 
 
-class BranchOffice(StorageBuilding):
+class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
 	@classmethod
 	def is_settlement_build_requirement_satisfied(cls, x, y, island, ship, **state):
 		for settlement in island.settlements:
@@ -95,21 +95,6 @@ class BranchOffice(StorageBuilding):
 			return {'buildable' : False}
 		return {'settlement' : None}
 
-	@classmethod
-	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
-		#todo: check cost line
-		coast_tile_found = False
-		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			#print "x y:", xx, yy
-			tile = island.get_tile(Point(xx, yy))
-			classes = tile.__class__.classes
-			#print classes
-			if 'coastline' in classes:
-				coast_tile_found = True
-			elif 'constructible' not in classes:
-				return {'buildable' : False}
-
-		return {} if coast_tile_found else {'buildable' : False}
 
 class MarketPlace(StorageBuilding):
 	def show_menu(self):

@@ -155,24 +155,32 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
+		assert isinstance(x, int)
+		assert isinstance(y, int)
 		if building is not None:
 			return building.getInstance(x = x, y = y, action=action, layer=layer, rotation=rotation, **trash)
 		else:
+			rotation = cls.check_build_rotation(rotation, x, y)
 			facing_loc = fife.Location(horizons.main.session.view.layers[layer])
+			instance_coords = list((x, y, 0))
+			layer_coords = list((x, y, 0))
 			if rotation == 45:
-				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x+cls.size[0]+3), int(y), 0))
+				layer_coords[0] = x+cls.size[0]+3
 			elif rotation == 135:
-				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x), int(y + cls.size[1] - 1), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y-cls.size[1]-3), 0))
+				instance_coords[1] = y + cls.size[1] - 1
+				layer_coords[1] = y-cls.size[1]-3
 			elif rotation == 225:
-				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y + cls.size[1] - 1), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x-cls.size[0]-3), int(y), 0))
+				instance_coords = list(( x + cls.size[0] - 1, y + cls.size[1] - 1, 0))
+				layer_coords[0] = x-cls.size[0]-3
 			elif rotation == 315:
-				instance = horizons.main.session.view.layers[layer].createInstance(cls._object, fife.ModelCoordinate(int(x + cls.size[0] - 1), int(y), 0))
-				facing_loc.setLayerCoordinates(fife.ModelCoordinate(int(x), int(y+cls.size[1]+3), 0))
+				instance_coords[0] = x + cls.size[0] - 1
+				layer_coords[1] = y+cls.size[1]+3
 			else:
 				return None
+			instance = horizons.main.session.view.layers[layer].createInstance(cls._object, \
+			                         fife.ModelCoordinate(*instance_coords))
+			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+
 			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
 			if action in horizons.main.action_sets[action_set_id]:
@@ -187,6 +195,15 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance
+
+	@classmethod
+	def check_build_rotation(cls, rotation, x, y):
+		"""Returns a possible rotation for this building.
+		Overwrite to specify rotation restrictions (e.g. water-side buildings)
+		@param rotation: The prefered rotation
+		@param x, y: int coords
+		@return: integer, rotation in degrees"""
+		return rotation
 
 	@classmethod
 	def get_build_costs(self, building=None, **trash):

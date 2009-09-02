@@ -223,3 +223,55 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 						building.update(building = horizons.main.session.entities.buildings[cls._surroundingBuildingClass], **kwargs)
 						buildings.append(building)
 		return buildings
+
+class BuildableSingleOnCoast(BuildableSingle):
+	"""BranchOffice, BoatBuilder, Fisher"""
+	@classmethod
+	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
+		#todo: check cost line
+		coast_tile_found = False
+		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
+			tile = island.get_tile(Point(xx, yy))
+			classes = tile.__class__.classes
+			if 'coastline' in classes:
+				coast_tile_found = True
+			elif 'constructible' not in classes:
+				return None
+
+		return {} if coast_tile_found else None
+
+	@classmethod
+	def check_build_rotation(cls, rotation, x, y):
+		# array of coastline (True if is coastline)
+		coastline = {}
+		position = Rect(Point(x, y), cls.size[0]-1, cls.size[1]-1)
+		for point in position:
+			is_coastline = ('coastline' in horizons.main.session.world.get_tile(point).classes)
+			coastline[point.x-x,point.y-y] = is_coastline
+
+		""" coastline looks something like this:
+		111
+		000
+		000
+		we have to rotate to the direction with most 1s
+
+		Rotations:
+		   45
+		135   315
+		   225
+		"""
+		coast_line_points_per_side = {
+		  45: sum( coastline[(x,0)] for x in xrange(0, cls.size[0]) ),
+		  135: sum( coastline[(0,y)] for y in xrange(0, cls.size[1]) ),
+		  225: sum( coastline[(x, cls.size[1]-1 )] for x in xrange(0, cls.size[0]) ),
+		  315: sum( coastline[(cls.size[0]-1,y)] for y in xrange(0, cls.size[1]) ),
+		}
+
+		# return rotation with biggest value
+		max = -1
+		rotation = -1
+		for rot, val in coast_line_points_per_side.iteritems():
+			if val > max:
+				max = val
+				rotation = rot
+		return rotation

@@ -26,7 +26,7 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util.point import Point
 from building import BasicBuilding, Selectable
-from buildable import BuildableSingleWithSurrounding, BuildableSingle
+from buildable import BuildableSingleWithSurrounding, BuildableSingle, BuildableSingleOnCoast
 from horizons.constants import UNITS
 
 
@@ -78,24 +78,11 @@ class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuild
 class Hunter(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
+class Fisher(Selectable, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
 
-	@classmethod
-	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
-		#todo: check cost line
-		coast_tile_found = False
-		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			tile = island.get_tile(Point(xx, yy))
-			classes = tile.__class__.classes
-			if 'coastline' in classes:
-				coast_tile_found = True
-			elif 'constructible' not in classes:
-				return None
-
-		return {} if coast_tile_found else None
 
 class Church(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
 	def show_menu(self):
