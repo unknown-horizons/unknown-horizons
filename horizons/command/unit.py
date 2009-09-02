@@ -20,24 +20,16 @@
 # ###################################################
 
 from horizons.util import WorldObject
+from horizons.command import GenericCommand
 import horizons.main
 
-class Act(object):
+class Act(GenericCommand):
 	"""Command class that moves a unit.
-	@param unit_fife_id: int FifeId of the unit that is to be moved.
+	@param unit: Instance of Unit
 	@param x, y: float coordinates where the unit is to be moved.
-	@param layer: the layer the unit is present on.
 	"""
 	def __init__(self, unit, x, y):
-		self.unit = unit.getId()
-		self.x = x
-		self.y = y
-
-	def __call__(self, issuer):
-		"""__call__() gets called by the manager.
-		@param issuer: the issuer of the command
-		"""
-		WorldObject.get_object_by_id(self.unit).go(self.x, self.y)
+		super(Act, self).__init__(unit, "go", x, y)
 
 class CreateUnit(object):
 	"""Command class that creates a unit.

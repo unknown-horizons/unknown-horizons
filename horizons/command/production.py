@@ -19,25 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'unit', 'sounds']
+from horizons.command import GenericCommand
 
-from horizons.util import WorldObject
-
-class GenericCommand(object):
-	"""Code generator for trivial commands on an object.
-	It saves an object's world id, and executes a method specified as string on it in __call__
-
-	Use like this to call obj.mymethod(42, 1337):
-
-	class MyCommand(GenericCommand):
-	  def __init__(self, obj):
-	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
-	 """
-	def __init__(self, obj, method, *args):
-		self.obj_id = obj.getId()
-		self.method = method
-		self.args = args
-
-	def __call__(self, issuer):
-		obj = WorldObject.get_object_by_id(self.obj_id)
-		getattr(obj, self.method)(*self.args)
+class ToggleActive(GenericCommand):
+	"""Sets a production to active/inactive."""
+	def __init__(self, obj):
+		super(ToggleActive, self).__init__(obj, "toggle_active")
