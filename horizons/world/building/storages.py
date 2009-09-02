@@ -99,3 +99,7 @@ class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
 class MarketPlace(StorageBuilding):
 	def show_menu(self):
 		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [MarketPlaceOverviewTab(self), AccountTab(self.settlement)]))
+
+	def select(self):
+		# storage buildings select whole settlement; market place should behave normally
+		return Selectable.select(self)
