@@ -55,8 +55,9 @@ class Trader(Player, StorageHolder):
 		self._init(id, name, color)
 
 		# create a ship and place it randomly (temporary hack)
-		(x, y) = horizons.main.session.world.water[random.randint(0, len(horizons.main.session.world.water)-1)]
-		self.ships[horizons.main.session.entities.units[UNITS.TRADER_SHIP_CLASS](x, y, owner=self)] = self.shipStates.reached_branch
+		point = horizons.main.session.world.get_random_possible_ship_position()
+		self.ships[horizons.main.session.entities.units[UNITS.TRADER_SHIP_CLASS] \
+		           (point.x, point.y, owner=self)] = self.shipStates.reached_branch
 		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
 
 	def _init(self, ident, name, color):
@@ -127,10 +128,9 @@ class Trader(Player, StorageHolder):
 		@param ship: Ship instance that is to be used"""
 		self.log.debug("Trader %s: moving to random location", self.getId())
 		# find random position
-		rand_water_id = random.randint(0, len(horizons.main.session.world.water)-1)
-		(x, y) = horizons.main.session.world.water[rand_water_id]
+		point = horizons.main.session.world.get_random_possible_ship_position()
 		# move ship there:
-		move_possible = ship.move(Point(x, y), lambda: self.ship_idle(ship))
+		move_possible = ship.move(point, lambda: self.ship_idle(ship))
 		if not move_possible:
 			self.notify_unit_path_blocked(ship)
 			return
@@ -149,7 +149,7 @@ class Trader(Player, StorageHolder):
 			# select a branch office
 			rand = random.randint(0, len(branchoffices)-1)
 			self.office[ship.id] = branchoffices[rand]
-			for water in horizons.main.session.world.water: # get a position near the branch office
+			for water in horizons.main.session.world.ground_map: # get a position near the branch office
 				if Point(water[0], water[1]).distance(self.office[ship.id].position) < 3:
 					move_possible = ship.move(Point(water[0], water[1]), lambda: self.reached_branch(ship))
 					if not move_possible:

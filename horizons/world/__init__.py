@@ -61,7 +61,6 @@ class World(LivingObject):
 		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
 		self.grounds = None
 		self.ground_map = None
-		self.water = None
 		self.ship_map = None
 		self.ships = None
 		self.trader = None
@@ -126,24 +125,21 @@ class World(LivingObject):
 		self.log.debug("Filling world with water...")
 		self.grounds = []
 		self.ground_map = {}
-		self.water = []
 		default_grounds = horizons.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
-		number_of_water_tiles = 0
 		for x in xrange(self.min_x, self.max_x, 10):
 			for y in xrange(self.min_y, self.max_y, 10):
 				ground = default_grounds(x, y)
-				number_of_water_tiles += 1
 				self.grounds.append(ground)
 				for x_offset in xrange(0, 10):
 					for y_offset in xrange(0, 10):
 						self.ground_map[(x+x_offset, y+y_offset)] = weakref.ref(ground)
-						self.water.append((x+x_offset, y+y_offset))
-		self.log.debug("Adding %s water tiles...", number_of_water_tiles)
 		for i in self.islands:
 			for g in i.grounds:
 				if (g.x, g.y) in self.ground_map:
 					del self.ground_map[(g.x, g.y)]
-					self.water.remove((g.x, g.y)) # if in ground, then also in water
+
+		self.num_water = len(self.ground_map)
+		self.water = list(self.ground_map)
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
@@ -215,12 +211,33 @@ class World(LivingObject):
 
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
-		rand_water_id = random.randint(0, len(self.water)-1)
-		(x, y) = self.water[rand_water_id]
+		rand_water_id = random.randint(0, self.num_water-1)
+		ground_iter = self.ground_map.iterkeys()
+		for i in xrange(0, rand_water_id-1):
+			ground_iter.next()
+		x, y = ground_iter.next()
+
 		offset = 2
+		position_possible = True
 		if x - offset < self.min_x or x + offset > self.max_x or \
 			 y - offset < self.min_y or y + offset > self.max_y:
-			# if we're to near the border try again.
+			# we're too near to the border
+			position_possible = False
+
+		if (x,y) in self.ship_map:
+			position_possible = False
+
+		# check if there is an island nearby (check only important)
+		for first_sign in (-1, 0, 1):
+			for second_sign in (-1, 0, 1):
+				point_to_check = Point( x + offset*first_sign, y + offset*second_sign )
+				if self.get_island(point_to_check) is not None:
+					position_possible = False
+					break
+			if not position_possible: # propagate break
+				break
+
+		if not position_possible:
 			# in theory, this might result in endless loop, but in practice, it doesn't
 			return self.get_random_possible_ship_position()
 		return Point(x, y)

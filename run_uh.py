@@ -160,10 +160,13 @@ def main():
 		horizons.main.start(options)
 	else:
 		# start with profiling
-		import profile
+		try:
+			import cProfile as profile
+		except ImportError:
+			import profile
 		import tempfile
 		outfilename = tempfile.mkstemp(text = True)[1]
-		log().warning('Starting profile mode. Writing output to: %s', outfilename)
+		log().warning('Starting in profile mode. Writing output to: %s', outfilename)
 		profile.runctx('horizons.main.start(options)', globals(), locals(), \
 									 outfilename)
 		log().warning('Program ended. Profiling output: %s', outfilename)
@@ -285,7 +288,7 @@ def find_FIFE(fife_custom_path=None):
 	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
 
 	# assemble args (python run_uh.py ..)
-	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
+	args = [sys.executable, '-O'] + sys.argv + [ "--fife-in-library-path"]
 	log().debug("Restarting with args %s", args)
 	os.execvp(args[0], args)
 

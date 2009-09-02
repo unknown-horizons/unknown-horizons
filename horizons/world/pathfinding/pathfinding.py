@@ -154,6 +154,8 @@ class FindPath(object):
 
 			# find next node to check, which is the one with best rating
 			# optimization note: this is faster than min(to_check, key=lambda k : to_check[k][3])
+			# optimization note2: the values could be kept in a dict, or a structure
+			#					that can easily be sorted/minimumed by a value
 			for (node_coords, node_data) in to_check.iteritems():
 				if node_data[3] < minimum:
 					minimum = node_data[3]
