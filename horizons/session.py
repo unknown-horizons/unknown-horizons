@@ -234,7 +234,7 @@ class Session(LivingObject):
 		self.world._init(db)
 		self.view.load(db) # load view
 		if not self.is_game_loaded():
-			self.world.setupPlayer(playername, playercolor)
+			self.world.setup_player(playername, playercolor)
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])
 		self.manager.load(db) # load the manager (there might me old scheduled ticks.

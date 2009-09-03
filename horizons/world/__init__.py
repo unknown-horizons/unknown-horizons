@@ -253,7 +253,7 @@ class World(LivingObject):
 		for coord in Circle(position, radius):
 			yield self.get_tile(coord[0], coord[1])
 
-	def setupPlayer(self, name, color):
+	def setup_player(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""
 		self.player =  Player(0, name, color)
 		self.players.append(self.player)
