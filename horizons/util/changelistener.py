@@ -39,10 +39,7 @@ class Changelistener(LivingObject):
 		self.__listeners.remove(listener)
 
 	def has_change_listener(self, listener):
-		if listener in self.__listeners:
-			return True
-		else:
-			return False
+		return (listener in self.__listeners)
 
 	def _changed(self):
 		for listener in self.__listeners:

@@ -25,7 +25,7 @@ import fife
 
 import horizons.main
 
-from util.changelistener import Changelistener
+from horizons.util import Changelistener, Rect
 from constants import LAYERS
 
 class View(Changelistener):
@@ -88,6 +88,7 @@ class View(Changelistener):
 		pos.x = x
 		pos.y = y
 		self.cam.setLocation(loc)
+		self._changed()
 
 	def autoscroll(self, x, y):
 		"""
@@ -109,6 +110,7 @@ class View(Changelistener):
 		t = time.time()
 		self.scroll(self._autoscroll[0] * 16 * (t - self.time_last_autoscroll), self._autoscroll[1] * 16 * (t - self.time_last_autoscroll))
 		self.time_last_autoscroll = t
+		self._changed()
 
 	def scroll(self, x, y):
 		"""Moves the camera across the screen
@@ -137,6 +139,7 @@ class View(Changelistener):
 		self.cam.setLocation(loc)
 		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self.cam.refresh()
+		self._changed()
 
 	def set_location(self, location):
 		loc = self.cam.getLocation()
@@ -144,6 +147,7 @@ class View(Changelistener):
 		pos.x, pos.y = location[0], location[1]
 		self.cam.setLocation(loc)
 		self.cam.refresh()
+		self._changed()
 
 	def zoom_out(self):
 		zoom = self.cam.getZoom() * 0.875
@@ -159,17 +163,27 @@ class View(Changelistener):
 
 	def set_zoom(self, zoom):
 		self.cam.setZoom(zoom)
+		self._changed()
 
 	def rotate_right(self):
 		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
-		self._changed()
 
 	def rotate_left(self):
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
-		self._changed()
 
 	def set_rotation(self, rotation):
 		self.cam.setRotation(rotation)
+		self._changed()
+
+	def get_displayed_area(self):
+		"""Returns the coords of what is displayed on the screen as Rect"""
+		coords = self.cam.getLocation().getLayerCoordinates()
+		"""
+		return Rect.init_from_topleft_and_size(coords.x, coords.y, \
+		            horizons.main.fife.settings.getScreenWidth(), \
+		            horizons.main.fife.settings.getScreenHeight())
+		            """
+		return Rect.init_from_topleft_and_size(coords.x, coords.y, 10, 10)
 
 	def save(self, db):
 		loc = self.cam.getLocation().getExactLayerCoordinates()

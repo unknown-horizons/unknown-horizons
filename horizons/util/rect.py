@@ -161,6 +161,12 @@ class Rect(object):
 		"""
 		return not (rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top)
 
+	def get_corners(self):
+		"""Returns corners of rect in this order: topleft topright bottomright bottomleft
+		@return: tuple of coord-tuples"""
+		return ( (self.top, self.left), (self.top, self.right),
+		         (self.bottom, self.right), (self.bottom, self.left) )
+
 	def __str__(self):
 		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.top, self.left, self.width, self.height)
 
