@@ -73,4 +73,5 @@ class StorageHolder(object):
 		self.load_inventory(db, worldid)
 
 	def load_inventory(self, db, worldid):
+		"""see create_inventory()"""
 		self.inventory.load(db, worldid)

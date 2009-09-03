@@ -96,7 +96,8 @@ class Production(WorldObject):
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION_STATES.producing:
 			horizons.main.session.scheduler.add_new_object(self._finished_producing, self, db_data[3])
-		elif self._state == PRODUCTION_STATES.waiting_for_res:
+		elif self._state == PRODUCTION_STATES.waiting_for_res or \
+		     self._state == PRODUCTION_STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
 
 		# BUG: the following super code only returns Production, which causes endless recursion

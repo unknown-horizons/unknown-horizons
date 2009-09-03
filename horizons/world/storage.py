@@ -40,9 +40,10 @@ Combinations:
 """
 
 import sys
-from horizons.util import WorldObject
 
-class GenericStorage(WorldObject):
+from horizons.util import Changelistener
+
+class GenericStorage(Changelistener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
 	resources. The GenericStorage is the general form and is mostly used as baseclass to
 	derive storages with special function from it. Normally there should be no need to
@@ -54,7 +55,6 @@ class GenericStorage(WorldObject):
 		self.limit = sys.maxint
 
 	def save(self, db, ownerid):
-		super(GenericStorage, self).save(db)
 		for slot in self._storage.iteritems():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, slot[0], slot[1])
@@ -197,7 +197,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 				 ownerid, 'limit_%s' % res, self.__slot_limits[res])
 
 	def load(self, db, ownerid):
-		super(SizedSpecializedStorage, self).save(db, ownerid)
+		super(SizedSpecializedStorage, self).load(db, ownerid)
 		for res in self._storage:
 			limit = db("SELECT value FROM storage_properties WHERE object = ? AND name = ?", \
 								 ownerid, 'limit_%s' % res)[0][0]

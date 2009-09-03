@@ -192,7 +192,6 @@ class Collector(StorageHolder, Unit):
 
 
 	# BEHAVIOUR
-
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in 32 ticks."""
@@ -215,7 +214,7 @@ class Collector(StorageHolder, Unit):
 		"""Checks our if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
-		if target.inventory.getId() == self.get_home_inventory().getId():
+		if target.inventory == self.get_home_inventory():
 			#self.log.debug("nojob: same inventory")
 			return False
 

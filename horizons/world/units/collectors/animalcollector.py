@@ -68,7 +68,11 @@ class AnimalCollector(BuildingCollector):
 	def pickup_animal(self):
 		"""Moves collector to animal. Called by animal when it actually stopped"""
 		self.show()
-		self.move(self.job.object.position, self.begin_working)
+		move_possible = self.move(self.job.object.position, self.begin_working)
+		if not move_possible:
+			# the animal is now unreachable.
+			self.job.object.search_job()
+			self.search_job()
 		self.state = self.states.moving_to_target
 
 	def finish_working(self):
@@ -134,7 +138,7 @@ class HunterCollector(AnimalCollector):
 		self.job.object.die()
 
 	def release_animal(self):
-		# we don't release it, we already kill it.
+		# we don't release it, we already killed it.
 		pass
 
 	def get_animal(self):
