@@ -151,7 +151,6 @@ class MovingObject(ConcretObject):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		assert(self._next_target is not None)
-		self.log.debug("Unit %s: move tick, moving to %s", self.getId(), self._next_target)
 		self.last_position = self.position
 		self.position = self._next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())

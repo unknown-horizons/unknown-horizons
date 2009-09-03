@@ -196,8 +196,6 @@ class Collector(StorageHolder, Unit):
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in 32 ticks."""
-		self.log.debug("%s search job", self)
-
 		self.job = self.get_job()
 		if self.job is None:
 			self.handle_no_possible_job()

@@ -183,8 +183,6 @@ class WildAnimal(CollectorAnimal, Collector):
 			self.state = self.states.no_job_waiting
 
 	def get_job(self):
-		self.log.debug('WildAnimal %s: get_job' % self.getId())
-
 		jobs = JobList(JobList.order_by.random)
 		collectable_resources = self.get_needed_resources()
 
