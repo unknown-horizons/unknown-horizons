@@ -183,6 +183,7 @@ class View(Changelistener):
 		            horizons.main.fife.settings.getScreenWidth(), \
 		            horizons.main.fife.settings.getScreenHeight())
 		            """
+		# TODO: calculate acctual screen dimensions
 		return Rect.init_from_topleft_and_size(coords.x, coords.y, 10, 10)
 
 	def save(self, db):

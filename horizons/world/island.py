@@ -198,7 +198,8 @@ class Island(WorldObject):
 	def add_existing_settlement(self, position, radius, settlement):
 		"""Same as add_settlement, but uses settlement from parameter.
 		May also be called for extension of an existing settlement by a new building. (this
-		is useful for loading, where every loaded building extends the radius of its settlement) """
+		is useful for loading, where every loaded building extends the radius of its settlement).
+		@param position: Rect"""
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
@@ -211,7 +212,7 @@ class Island(WorldObject):
 		@param radius:
 		@param settlement:
 		"""
-		for coord in position.get_radius_coordinates(radius):
+		for coord in position.get_radius_coordinates(radius, include_self=True):
 			tile = self.get_tile(Point(coord[0], coord[1]))
 			if tile is not None:
 				if tile.settlement == settlement:
