@@ -23,7 +23,8 @@ import fife
 
 class Point(object):
 	def __init__(self, x, y):
-		self.x, self.y = x, y
+		self.x = x
+		self.y = y
 
 	def copy(self):
 		return Point(self.x, self.y)
@@ -107,6 +108,9 @@ class Point(object):
 	def __iter__(self):
 		"""For interface-sharing with Rect"""
 		yield self
+
+	def tupel_iter(self):
+		yield self.to_tuple()
 
 
 from horizons.util.encoder import register_classes

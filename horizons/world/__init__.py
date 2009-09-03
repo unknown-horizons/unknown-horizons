@@ -250,9 +250,8 @@ class World(LivingObject):
 		@return List of tiles in radius.
 		"""
 		assert isinstance(position, Point)
-		circle = Circle(position, radius)
-		for coord in circle.get_coordinates():
-			yield self.get_tile(Point(coord[0], coord[1]))
+		for coord in Circle(position, radius):
+			yield self.get_tile(coord[0], coord[1])
 
 	def setupPlayer(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""

@@ -33,7 +33,7 @@ class Circle(object):
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the circle"""
 		coords = []
-		for i in self:
+		for i in self.tupel_iter():
 			coords.append(i)
 		return coords
 
@@ -61,10 +61,20 @@ class Circle(object):
 		return not self.__eq__(other)
 
 	def __iter__(self):
+		"""Iterates through all coords in circle as Point"""
+		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
+			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
+				if self.center.distance_to_tuple((x, y)) <= self.radius:
+					yield Point(x, y)
+
+	def tupel_iter(self):
+		"""Iterates through all coords in circle as tuple"""
 		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
 			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
 				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield (x, y)
+
+
 
 
 from encoder import register_classes

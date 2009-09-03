@@ -116,15 +116,13 @@ class Rect(object):
 		dist = self.distance_to_point(other.center) - other.radius
 		return dist if dist >= 0 else 0
 
-	# TODO: replace this everywhere with iteration
 	def get_coordinates(self):
-		""" Returns all coordinates, that are in the Rect """
+		"""Returns list of all coordinates, that are in the Rect """
 		return [ (x, y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
 
-	# TODO: reimplement this with Rect.__iter__
 	def get_radius_coordinates(self, radius, include_self = False):
-		""" Returns a list of all coordinates, that are in the radius but are in not the building.
-		@param include_self: also return tuples that are in self"""
+		"""Returns list of all coordinates, that are in the radius
+		@param include_self: whether to include coords in self"""
 		if not include_self:
 			self_coords = self.get_coordinates()
 			return  [ (x, y) \

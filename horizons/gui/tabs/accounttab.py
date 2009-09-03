@@ -36,5 +36,5 @@ class AccountTab(TabInterface):
 		sign = '+' if balance >= 0 else '-'
 		self.widget.child_finder('taxes').text = unicode(taxes)
 		self.widget.child_finder('running_costs').text = unicode(running_costs)
-		self.widget.child_finder('balance').text = unicode(sign+' '+str(balance))
+		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
 

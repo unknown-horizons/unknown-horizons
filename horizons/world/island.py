@@ -272,8 +272,8 @@ class Island(WorldObject):
 	def get_surrounding_tiles(self, point, radius = 1):
 		"""Returns tiles around point with specified radius.
 		@param point: instance of Point"""
-		for position in Circle(point, radius).get_coordinates():
-			tile = self.get_tile(Point(*position))
+		for position in Circle(point, radius):
+			tile = self.get_tile(position)
 			if tile is not None:
 				yield tile
 

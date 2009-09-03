@@ -23,7 +23,7 @@ import fife
 
 import horizons.main
 
-from horizons.util import Changelistener, Rect, Point
+from horizons.util import Changelistener, Point
 
 class Minimap(Changelistener):
 	"""Draws Minimap to a specified location."""
@@ -45,12 +45,11 @@ class Minimap(Changelistener):
 
 		# save all GenericRendererNodes here, so they don't need to be constructed multiple times
 		self.renderernodes = {}
-		tupel_iter = self.location.tupel_iter()
 		# pull dereferencing out of loop
 		GRN = fife.GenericRendererNode
 		FP = fife.Point
-		for t in tupel_iter:
-			self.renderernodes[ t ] = GRN( FP( *t ) )
+		for i in self.location.tupel_iter():
+			self.renderernodes[ i ] = GRN( FP( *i ) )
 
 
 	def draw(self, world = None):
@@ -111,7 +110,6 @@ class Minimap(Changelistener):
 		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x/2)
 		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
 
-		color = None
 		real_map_point = Point(0, 0)
 		location_left = self.location.left
 		location_top = self.location.top
@@ -141,12 +139,13 @@ class Minimap(Changelistener):
 
 				# check what's at the covered_area
 
-				#assert world.map_dimensions.contains(real_map_point)
+				assert self.world.map_dimensions.contains(real_map_point)
 				island = get_island(real_map_point)
 				if island is not None:
 					# this pixel is an island
 					settlement = island.get_settlement(real_map_point)
 					if settlement is None:
+						# island without settlement
 						self.coords_data[ minimap_point ] = island_id
 					else:
 						# pixel belongs to a player
