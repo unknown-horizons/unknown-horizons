@@ -79,8 +79,19 @@ class Minimap(Changelistener):
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
 		displayed_area = horizons.main.session.view.get_displayed_area()
+		# TODO: consider rotation of cam
 		minimap_corners_as_renderer_node = []
 		for corner in displayed_area.get_corners():
+			corner = list(corner)
+			if corner[0] > self.world.max_x:
+				corner[0] = self.world.max_x
+			if corner[0] < self.world.min_x:
+				corner[0] = self.world.min_x
+			if corner[1] > self.world.max_y:
+				corner[1] = self.world.max_y
+			if corner[1] < self.world.min_y:
+				corner[1] = self.world.min_y
+			corner = tuple(corner)
 			minimap_coords = self._world_coord_to_minimap_coord(corner)
 			minimap_corners_as_renderer_node.append( fife.GenericRendererNode( \
 			  fife.Point(*minimap_coords) ) )

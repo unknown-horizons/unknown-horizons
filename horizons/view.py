@@ -178,13 +178,10 @@ class View(Changelistener):
 	def get_displayed_area(self):
 		"""Returns the coords of what is displayed on the screen as Rect"""
 		coords = self.cam.getLocation().getLayerCoordinates()
-		"""
+		# TODO: check if acctual screen dimensions are calculated correctly
 		return Rect.init_from_topleft_and_size(coords.x, coords.y, \
-		            horizons.main.fife.settings.getScreenWidth(), \
-		            horizons.main.fife.settings.getScreenHeight())
-		            """
-		# TODO: calculate acctual screen dimensions
-		return Rect.init_from_topleft_and_size(coords.x, coords.y, 10, 10)
+		            horizons.main.fife.settings.getScreenHeight()/32, \
+		            horizons.main.fife.settings.getScreenWidth()/32)
 
 	def save(self, db):
 		loc = self.cam.getLocation().getExactLayerCoordinates()
