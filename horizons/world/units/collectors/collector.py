@@ -27,7 +27,7 @@ import logging
 import horizons.main
 
 from horizons.world.storageholder import StorageHolder
-from horizons.util import WorldObject
+from horizons.util import WorldObject, cachedmethod
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
@@ -89,6 +89,7 @@ class Collector(StorageHolder, Unit):
 
 		# list of class ids of buildings, where we may pick stuff up
 		# empty means pick up from everywhere
+		# NOTE: this is not allowed to change.
 		self.possible_target_classes = []
 		for (object_class,) in horizons.main.db("SELECT object FROM collector_restrictions WHERE \
 																					collector = ?", self.id):
@@ -210,6 +211,7 @@ class Collector(StorageHolder, Unit):
 		"""Executes the necessary actions to begin a new job"""
 		self.job.object.add_incoming_collector(self)
 
+	@cachedmethod
 	def check_possible_job_target(self, target):
 		"""Checks our if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings

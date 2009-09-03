@@ -37,3 +37,4 @@ from loader import ActionSetLoader
 from callback import Callback
 from pychanchildfinder import PychanChildFinder
 from named_object import NamedObject
+from decorators import cachedfunction, cachedmethod

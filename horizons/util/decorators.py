@@ -40,7 +40,7 @@ class cachedfunction(object):
 
 
 class cachedmethod(object):
-	"""Same as cachedfunction, but works also for methods"""
+	"""Same as cachedfunction, but works also for methods. Results are saved per instance"""
 	def __init__(self, func):
 		self.cache={}
 		self.func=func
@@ -50,10 +50,11 @@ class cachedmethod(object):
 		return self
 
 	def __call__(self,*args):
+		instance = self.instance
 		try:
-			return self.cache[args]
+			return self.cache[(instance, args)]
 		except KeyError:
-			self.cache[args] = value = self.func(self.instance, *args)
+			self.cache[(instance,args)] = value = self.func(instance, *args)
 			return value
 		except TypeError:
 			assert False, "Supplied invalid argument to cache decorator"
