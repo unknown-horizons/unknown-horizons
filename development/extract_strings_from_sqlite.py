@@ -44,11 +44,6 @@ class Unit(Base):
 
     name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
-class SettlerLevel(Base):
-    __tablename__ = 'settler_level'
-
-    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-
 class Colors(Base):
     __tablename__ = 'colors'
 
@@ -68,23 +63,46 @@ class Resource(Base):
 # print it
 #
 
+class MSGID_collect:
+    msgids = dict()
+
+    def __init__(self):
+        pass
+
+    def add_to_collection(self, msgid, place):
+        if self.msgids.has_key(msgid):
+            self.msgids[msgid].append(place)
+        else:
+            self.msgids[msgid] = [place]
+
+    def print_result(self):
+        for pair in self.msgids.items():
+            print '#%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])
+
+def collect_msgid(msgid, place):
+    pass
+
 def print_msgid(msgid):
     print 'msgid "%s"\nmsgstr ""\n' % msgid
 
+collector = MSGID_collect()
+
 for building in session.query(Building):
-    print_msgid(building.name)
+    collector.add_to_collection(building.name, 'Building')
 
 for unit in session.query(Unit):
-     print_msgid(unit.name)
+    collector.add_to_collection(unit.name, 'Unit')
 
-for settler_level in session.query(SettlerLevel):
-     print_msgid(settler_level.name)
+#for settler_level in session.query(SettlerLevel):
+#    print_msgid(settler_level.name)
 
 for color in session.query(Colors):
-     print_msgid(color.name)
+    collector.add_to_collection(color.name, 'Colors')
 
 for message in session.query(Message):
-     print_msgid(message.text)
+    collector.add_to_collection(message.text, 'Messages')
 
 for resource in session.query(Resource):
-     print_msgid(resource.name)
+    collector.add_to_collection(resource.name, 'Resources')
+
+collector.print_result()
