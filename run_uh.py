@@ -66,7 +66,7 @@ def get_option_parser():
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
-														help=_("Starts <map>. <map> is the mapname (filename without extension)"))
+														help=_("Starts <map>. <map> is the mapname."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
 			default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
@@ -77,16 +77,16 @@ def get_option_parser():
 
 	dev_group = optparse.OptionGroup(p, _("Development options"))
 	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
-	                     default=False, help=_("Write debug output only to logfile, not to console"))
+	                     default=False, help=_("Write debug output only to logfile, not to console. Implies -d."))
 	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
 											 metavar="<module>", default=[], \
-											 help=_("Enable logging for a certain logging module."))
+											 help=_("Enable logging for a certain logging module (for developing only)."))
 	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", \
 											 action="store_true", default=False, help=_("For internal use only."))
 	dev_group.add_option("--enable-unstable-features", dest="unstable_features", \
-											 action="store_true", default=False, help=_("Enables unstable features"))
+											 action="store_true", default=False, help=_("Enables unstable features (for developing only)."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
-											 help=_("Enable profiling"))
+											 help=_("Enable profiling (for developing only)."))
 	p.add_option_group(dev_group)
 
 	return p

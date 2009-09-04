@@ -353,15 +353,14 @@ class Collector(StorageHolder, Unit):
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
 			                      is supposed to now.
 		"""
-		if self.job is None:
-			return
-		if self.job.object is not None:
-			self.job.object.remove_incoming_collector(self)
-		if self.state == self.states.working:
-			removed_calls = horizons.main.session.scheduler.rem_call(self, self.finish_working)
-			assert removed_calls == 1
-		self.job = None
-		self.state = self.states.idle
+		if self.job is not None:
+			if self.job.object is not None:
+				self.job.object.remove_incoming_collector(self)
+				if self.state == self.states.working:
+					removed_calls = horizons.main.session.scheduler.rem_call(self, self.finish_working)
+					assert removed_calls == 1
+			self.job = None
+			self.state = self.states.idle
 		continue_action()
 
 	def __str__(self):

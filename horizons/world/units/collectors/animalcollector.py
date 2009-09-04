@@ -71,8 +71,9 @@ class AnimalCollector(BuildingCollector):
 		move_possible = self.move(self.job.object.position, self.begin_working)
 		if not move_possible:
 			# the animal is now unreachable.
+			self.job.object.remove_stop_after_job()
 			self.job.object.search_job()
-			self.search_job()
+			self.cancel()
 		self.state = self.states.moving_to_target
 
 	def finish_working(self):
@@ -90,12 +91,9 @@ class AnimalCollector(BuildingCollector):
 		super(AnimalCollector, self).reached_home()
 
 	def get_buildings_in_range(self):
-		# This is only a small workaround
-		# as long we have no Collector class
 		return self.get_animals_in_range()
 
 	def get_animals_in_range(self):
-		# TODO: use the Collector class instead of BuildCollector
 		"""returns all buildings in range
 		Overwrite in subclasses that need ranges around the pickup."""
 		return self.home_building.animals
@@ -108,7 +106,9 @@ class AnimalCollector(BuildingCollector):
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
 		#print self.id, 'GET ANIMAL'
-		self.job.object.move(self.home_building.position, destination_in_building = True, action='move_full')
+		move_possible = self.job.object.move(self.home_building.position, \
+		                                     destination_in_building = True, action='move_full')
+		assert move_possible, "Animal can't join animal collector cause he can't find a path"
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""

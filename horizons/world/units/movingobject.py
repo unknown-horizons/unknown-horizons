@@ -127,7 +127,7 @@ class MovingObject(ConcretObject):
 
 		return True
 
-	def move_back(self, callback = None, destination_in_building = False):
+	def move_back(self, callback = None, destination_in_building = False, action='move'):
 		"""Return to the place where last movement started. Same path is used, but in reverse order.
 		@param callback: same as callback in move()
 		@param destination_in_building: bool, whether target is in a building
@@ -135,8 +135,10 @@ class MovingObject(ConcretObject):
 		self.log.debug("Unit %s: Moving back")
 		self.path.revert_path(destination_in_building)
 		self.move_callbacks = WeakMethodList(callback)
-		self.__is_moving = True
-		self._move_tick()
+		self._setup_move(action)
+		if not self.is_moving():
+			horizons.main.session.scheduler.add_new_object(self._move_tick, self)
+			self._move_tick()
 
 	def _movement_finished(self):
 		self.log.debug("Unit %s: movement finished. calling callbacks %s", self.getId(), \

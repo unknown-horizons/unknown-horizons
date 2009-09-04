@@ -67,14 +67,14 @@ class BuildingClass(type):
 		self._object = None
 
 		db = horizons.main.db
-		self.class_package = db("SELECT class_package FROM data.building WHERE id = ?", id)[0][0]
-		(size_x,  size_y) = db("SELECT size_x, size_y FROM data.building WHERE id = ?", id)[0]
-		self.name = _(db("SELECT name FROM data.building WHERE id = ?", id)[0][0])
+		self.class_package, size_x, size_y, name, self.radius, health, inhabitants, inhabitants_max = \
+		    db("SELECT class_package, size_x, size_y, name, radius, health, inhabitants_start, \
+		    inhabitants_max FROM data.building WHERE id = ?", id)[0]
+		self.name = _(name)
 		self.size = (int(size_x), int(size_y))
-		self.radius = db("SELECT radius FROM data.building WHERE id = ?", id)[0][0]
-		self.health = int(db("SELECT health FROM data.building WHERE id = ?", id)[0][0])
-		self.inhabitants = int(db("SELECT inhabitants_start FROM data.building WHERE id = ?", id)[0][0])
-		self.inhabitants_max = int(db("SELECT inhabitants_max FROM data.building WHERE id = ?", id)[0][0])
+		self.health = int(health)
+		self.inhabitants = int(inhabitants)
+		self.inhabitants_max = int(inhabitants_max)
 		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
@@ -88,7 +88,7 @@ class BuildingClass(type):
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
-		soundfiles = db("SELECT file FROM sounds INNER JOIN building_sounds ON \
+		soundfiles = db.cached_query("SELECT file FROM sounds INNER JOIN building_sounds ON \
 			sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single

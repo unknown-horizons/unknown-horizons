@@ -21,7 +21,7 @@
 
 import horizons.main
 
-from horizons.util import WorldObject
+from horizons.util import WorldObject, Callback
 
 class ConcretObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -33,6 +33,21 @@ class ConcretObject(WorldObject):
 	"""
 	def __init__(self, **kwargs):
 		super(ConcretObject, self).__init__(**kwargs)
+
+	def save(self, db):
+		super(ConcretObject, self).save(db)
+		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.getId(), \
+		   self._instance.getActionRuntime())
+
+	def load(self, db, worldid):
+		super(ConcretObject, self).load(db, worldid)
+		runtime = db("SELECT action_runtime FROM concrete_object WHERE id = ?", worldid)[0][0]
+		# delay setting of runtime until load of sub/super-class has set the action
+		def set_action_runtime(self, runtime):
+			# workaround to delay resolution of self._instance, which doesn't exist yet
+			self._instance.setActionRuntime(runtime)
+		horizons.main.session.scheduler.add_new_object( Callback(set_action_runtime, \
+		                                                         self, runtime), self )
 
 	def act(self, action, facing_loc=None, repeating=False):
 		if facing_loc is None:
