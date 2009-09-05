@@ -1,4 +1,13 @@
 <?xml version="1.0"?>
-<Container name="tab0" size="533,500">
-
+<Container name="tab0" size="250,300">
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,200" />
+	
+	<Container position="0,70" size="600,400" >
+		<Label name="headline" position="70,7" text="Pioneer Buildings" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />	
+	</Container>
 </Container>

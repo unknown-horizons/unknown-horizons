@@ -13,7 +13,7 @@
 	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,450" />
 
 	<Container position="0,70" size="600,400" >
-		<Label name="headline" position="80,7" text="Build menu" />
+		<Label name="headline" position="70,7" text="Sailor Buildings" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<Container position="20,32" size="600,400" >
