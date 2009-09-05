@@ -26,6 +26,15 @@ from ext.enum import Enum
 """This file keeps track of some constants, that have to be used in the code.
 NOTE: Using constants is generally a bad style, so avoid where possible."""
 
+##Versioning
+class VERSION:
+	#RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
+	RELEASE_NAME    = _("Unknown Horizons Snapshot r%s")
+	RELEASE_VERSION = "2729"
+	def string():
+		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
+	string = staticmethod(string)
+
 ## WORLD
 class UNITS:
 	PLAYER_SHIP_CLASS          = 1000001

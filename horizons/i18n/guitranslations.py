@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constatns import VERSION
+
 text_translations = dict()
 
 def set_translations():
@@ -61,9 +63,9 @@ def set_translations():
 			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons.")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
-			"version_label"               : _("Unknown Horizons Alpha 2009.1")},
+			"version_label"               : VERSION.string()},
 		"mainmenu.xml" : {
-			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
+			"version_label"               : VERSION.string(),
 			"start"                       : _("Singleplayer"),
 			"start_multi"                 : _("Multiplayer"),
 			"credits"                     : _(" Credits "),
@@ -99,7 +101,7 @@ def set_translations():
 			"headline"                    : _("Load Game"),
 			"details_label"               : _("Details:")},
 		"gamemenu.xml" : {
-			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
+			"version_label"               : VERSION.string(),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),

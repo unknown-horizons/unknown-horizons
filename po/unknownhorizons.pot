@@ -148,7 +148,7 @@ msgstr ""
 #: ./guitranslations.py:64 ./guitranslations.py:66 ./guitranslations.py:102
 #: ./horizons/i18n/guitranslations.py:64 ./horizons/i18n/guitranslations.py:66
 #: ./horizons/i18n/guitranslations.py:102
-msgid "Unknown Horizons Alpha 2009.1"
+msgid "Unknown Horizons Snapshot r%s"
 msgstr ""
 
 #: ./guitranslations.py:67 ./horizons/i18n/guitranslations.py:67
