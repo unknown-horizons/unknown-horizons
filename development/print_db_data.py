@@ -18,6 +18,7 @@ if not os.path.exists(dbfile):
 
 sys.path.append(".")
 sys.path.append("./horizons")
+sys.path.append("./horizons/util")
 
 from run_uh import init_environment
 init_environment()

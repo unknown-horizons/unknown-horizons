@@ -29,7 +29,7 @@ import time
 import horizons.main
 
 from horizons.constants import PATHS
-from dbreader import DbReader
+from horizons.util import DbReader
 
 class SavegameManager(object):
 	"""Controls savegamefiles.

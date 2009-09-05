@@ -23,7 +23,7 @@ import fife
 import horizons.main
 
 from horizons.util.living import LivingObject
-from buildingtool import BuildingTool
+from horizons.gui.mousetools import BuildingTool
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""

@@ -305,7 +305,7 @@ class Fife(object):
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
-		for name, stylepart in horizons.gui.style.STYLES.items():
+		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
 		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 		pychan.widgets.registerWidget(Inventory)

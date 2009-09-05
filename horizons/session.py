@@ -27,18 +27,17 @@ import logging
 
 import horizons.main
 
-from gui.selectiontool import SelectionTool
-from gui.ingamegui import IngameGui
-from gui.ingamekeylistener import IngameKeyListener
-from gui.tearingtool import TearingTool
-from dbreader import DbReader
+from horizons.gui import IngameGui
+from horizons.gui.mousetools import SelectionTool
+from horizons.gui.keylisteners import IngameKeyListener
+from horizons.gui.mousetools import TearingTool
 from timer import Timer
 from scheduler import Scheduler
 from manager import SPManager
 from view import View
 from world import World
 from entities import Entities
-from util import WorldObject, LivingObject, livingProperty
+from util import WorldObject, LivingObject, livingProperty, DbReader
 from savegamemanager import SavegameManager
 
 

@@ -26,11 +26,9 @@ import horizons.main
 from horizons.i18n import load_xml_translated
 from horizons.util import livingProperty, LivingObject, Callback, PychanChildFinder, Rect, Point
 from horizons.world.settlement import Settlement
-from buildingtool import BuildingTool
-from selectiontool import SelectionTool
-from messagewidget import MessageWidget
+from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
-from horizons.gui.minimap import Minimap
+from horizons.gui.widgets import Minimap, MessageWidget
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""

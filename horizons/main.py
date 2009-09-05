@@ -42,13 +42,12 @@ import logging
 import random
 
 import engine
-from util import Color, ActionSetLoader
-from menus import Menus
-from dbreader import DbReader
+from util import Color, ActionSetLoader, DbReader
+from horizons.gui import Gui
 from engine import Fife
 from settings import Settings
 from session import Session
-from gui.mainlistener import MainListener
+from horizons.gui.keylisteners import MainListener
 from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
@@ -111,7 +110,7 @@ def start(command_line_arguments):
 	connection = None
 	session = None
 	savegamemanager = SavegameManager()
-	gui = Menus()
+	gui = Gui()
 
 	# parse command line:
 

@@ -269,7 +269,7 @@ STYLES= {
 			'font' : 'libertine_14_black',
 		}
 	},
-	
+
 	'tooltip': { # style for headlines
 		'default' : {
 			'border_size': 0,

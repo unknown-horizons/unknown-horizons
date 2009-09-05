@@ -23,7 +23,7 @@ import pychan
 import horizons.main
 
 from tabinterface import TabInterface
-from horizons.gui.tradewidget import TradeWidget
+from horizons.gui.widgets import TradeWidget
 
 class InventoryTab(TabInterface):
 

@@ -34,7 +34,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
 
-class Menus(object):
+class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
 	def __init__(self):

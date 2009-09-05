@@ -24,8 +24,7 @@ import logging
 
 import horizons.main
 
-from horizons.dbreader import DbReader
-from horizons.util import WorldObject, Point, Rect, Circle, WeakList
+from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
