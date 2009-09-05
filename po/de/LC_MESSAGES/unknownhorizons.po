@@ -1,34 +1,35 @@
 # Deutsche Übersetzung für Unknown Horizons
 # Copyright (C) 2009 Unknown Horizons Team
 # Christoph Egger <unknown-horizons@christoph-egger.org>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
-"POT-Creation-Date: 2009-06-24 14:43+CEST\n"
+"POT-Creation-Date: 2009-09-05 19:00+CEST\n"
 "PO-Revision-Date: 2009-07-02 17:54+0000\n"
 "Last-Translator: André Reichelt <andre-r@online.de>\n"
 "Language-Team: Unknown Horizons German Translation Team <team@unknown-"
 "horizons.org>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 1.2.1\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: debug.py:101
-msgid "Debuging tools usage:"
+#: debug.py:110
+#, fuzzy
+msgid "Debugging tools usage:"
 msgstr "Verwendung des Debug Tools:"
 
-#: debug.py:102
+#: debug.py:111
 msgid "import debug (already done): load the tools"
 msgstr "importiere Debug-Module (bereits erledigt): lade Tools"
 
-#: debug.py:103
+#: debug.py:112
 msgid ""
 "debug.printTree(<object>):   print a tree of an object (the properties, "
 "recursive)"
@@ -36,604 +37,680 @@ msgstr ""
 "debug.printTree(<object>):   gib ein Objekt in Baumstruktur aus "
 "(Eigenschaften, Rekursiv)"
 
-#: debug.py:104
+#: debug.py:113
+#, fuzzy
 msgid ""
-"debug.cmd('name', *args):    create a command and execute it throught the "
+"debug.cmd('name', *args):    create a command and execute it through the "
 "manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, x, y)"
 msgstr ""
 "debug.cmd('name', *args):    Erzeuge ein Kommando und führe es durch den "
 "Manager aus. Beispiel: debug.cmd('unit.Move', game.main.session."
 "selected_instance, x, y)"
 
-#: horizons/dbreader.py:51
-#, fuzzy
-msgid "Error, no complete sql statement provided by \"%s\"."
-msgstr "Fehler, es wurde kein vollständiger SQL Ausdruck von \"%s\" übergeben."
-
-#: horizons/i18n/guitranslations.py:28
-msgid "Branch office (Branch class ROMAN)"
-msgstr "Kontor (Kontorklasse RÖMISCH)"
-
-#: horizons/i18n/guitranslations.py:30 horizons/i18n/guitranslations.py:122
+#: guitranslations.py:28 guitranslations.py:78
+#: horizons/i18n/guitranslations.py:28 horizons/i18n/guitranslations.py:78
 msgid "Player:"
 msgstr "Spieler:"
 
-#: horizons/i18n/guitranslations.py:31 horizons/i18n/guitranslations.py:123
+#: guitranslations.py:29 guitranslations.py:79
+#: horizons/i18n/guitranslations.py:29 horizons/i18n/guitranslations.py:79
 msgid "Color:"
 msgstr "Farbe:"
 
-#: horizons/i18n/guitranslations.py:32
+#: guitranslations.py:30 horizons/i18n/guitranslations.py:30
 msgid "Slots:"
 msgstr "Spalten"
 
-#: horizons/i18n/guitranslations.py:33
+#: guitranslations.py:31 horizons/i18n/guitranslations.py:31
 msgid "Bots:"
 msgstr "Computergesteuerte Spieler:"
 
-#: horizons/i18n/guitranslations.py:34
+#: guitranslations.py:32 horizons/i18n/guitranslations.py:32
 #, fuzzy
 msgid "chat"
 msgstr "Chat"
 
-#: horizons/i18n/guitranslations.py:36 horizons/i18n/guitranslations.py:38
-#: horizons/i18n/guitranslations.py:61 horizons/i18n/guitranslations.py:72
-#: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:93
-#: horizons/i18n/guitranslations.py:97 horizons/i18n/guitranslations.py:133
-#: horizons/i18n/guitranslations.py:138 horizons/i18n/guitranslations.py:146
-#: horizons/i18n/guitranslations.py:182
-msgid "Ok"
-msgstr "Ok"
-
-#: horizons/i18n/guitranslations.py:39 horizons/i18n/guitranslations.py:60
-#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:92
-#: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:145
-#: horizons/i18n/guitranslations.py:181
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: horizons/i18n/guitranslations.py:41
-msgid "These guys contributed to Unknown Horizons"
-msgstr "Diese Jungs haben zu Unknown Horizons beigetragen"
-
-#: horizons/i18n/guitranslations.py:42
+#: guitranslations.py:34 horizons/i18n/guitranslations.py:34
 #, fuzzy
-msgid "You guys rock!"
-msgstr "Ihr Typen habt's drauf!"
+msgid "Not Implemented Yet"
+msgstr "Noch nicht implementiert"
 
-#: horizons/i18n/guitranslations.py:43
-#, fuzzy
-msgid "Credits"
-msgstr "Abspann"
+#: guitranslations.py:36 horizons/i18n/guitranslations.py:36
+msgid "Contributors"
+msgstr ""
 
-#: horizons/i18n/guitranslations.py:45
-msgid "That's your island-wide inventory."
-msgstr "Das ist dein Inselweites Inventar"
+#: guitranslations.py:38 horizons/i18n/guitranslations.py:38
+msgid "Quit Session"
+msgstr ""
 
-#: horizons/i18n/guitranslations.py:46
-msgid "Coins:"
-msgstr "Münzen:"
-
-#: horizons/i18n/guitranslations.py:47
-msgid "Lamb wool:"
-msgstr "Wolle:"
-
-#: horizons/i18n/guitranslations.py:48
-msgid "Textiles:"
-msgstr "Stoffe:"
-
-#: horizons/i18n/guitranslations.py:49
-msgid "Boards:"
-msgstr "Bretter:"
-
-#: horizons/i18n/guitranslations.py:50
-msgid "Food:"
-msgstr "Nahrungsmittel:"
-
-#: horizons/i18n/guitranslations.py:51 horizons/i18n/guitranslations.py:52
-#: horizons/i18n/guitranslations.py:53 horizons/i18n/guitranslations.py:54
-#: horizons/i18n/guitranslations.py:55
-msgid "n/a"
-msgstr "Nicht verfügbar"
-
-#: horizons/i18n/guitranslations.py:56 horizons/i18n/guitranslations.py:165
-msgid "Close"
-msgstr "Schließen"
-
-#: horizons/i18n/guitranslations.py:57 horizons/i18n/guitranslations.py:228
-msgid "Inventory"
-msgstr "Inventar:"
-
-#: horizons/i18n/guitranslations.py:59
+#: guitranslations.py:39 horizons/i18n/guitranslations.py:39
 msgid "Are you sure you want to abort the running session?"
 msgstr "Wollt Ihr diese Partie wirklich beenden?"
 
-#: horizons/i18n/guitranslations.py:62 horizons/i18n/guitranslations.py:139
-msgid "Quit Unknown Horizons"
-msgstr "Beende Unknown Horizons"
+#: guitranslations.py:41 horizons/i18n/guitranslations.py:41
+msgid "Settings"
+msgstr "Einstellungen"
 
-#: horizons/i18n/guitranslations.py:64
-#, fuzzy
-msgid "City infos"
-msgstr "Informationen über die Stadt"
-
-#: horizons/i18n/guitranslations.py:66
-msgid "Ship name (Ship type)"
-msgstr "Schiffsname (Schiffstyp)"
-
-#: horizons/i18n/guitranslations.py:67 horizons/i18n/guitranslations.py:68
-#: horizons/i18n/guitranslations.py:69
-msgid "0/0"
-msgstr "0/0"
-
-#: horizons/i18n/guitranslations.py:71
-msgid "We're sorry, but the load function is not yet working."
-msgstr ""
-"Entschuldigt, aber die Speicher- und Ladefunktion ist noch nicht "
-"fertiggestellt."
-
-#: horizons/i18n/guitranslations.py:73 horizons/i18n/guitranslations.py:134
-msgid "Oh noes"
-msgstr "Oh Nein"
-
-#: horizons/i18n/guitranslations.py:75 horizons/i18n/guitranslations.py:177
-msgid ""
-"This is the Unknown Horizons settings dialog. Please make sure that you "
-"know, what you do."
-msgstr "Dies ist der Einstellungsdialog von Unknown Horizons. Handelt weise!"
-
-#: horizons/i18n/guitranslations.py:76 horizons/i18n/guitranslations.py:171
-msgid "Language:"
-msgstr "Sprache:"
-
-#: horizons/i18n/guitranslations.py:77 horizons/i18n/guitranslations.py:172
-#, fuzzy
-msgid "Autosave interval"
-msgstr "Intervall der automatischen Speicherung:"
-
-#: horizons/i18n/guitranslations.py:78 horizons/i18n/guitranslations.py:173
-msgid "Number of saved autosaves:"
-msgstr "Anzahl der automatisch gespeicherten Spielstände:"
-
-#: horizons/i18n/guitranslations.py:79 horizons/i18n/guitranslations.py:174
-#, fuzzy
-msgid "Number of saved quicksaves:"
-msgstr "Anzahl der Schnellspeicherungen:"
-
-#: horizons/i18n/guitranslations.py:80 horizons/i18n/guitranslations.py:184
+#: guitranslations.py:42 horizons/i18n/guitranslations.py:42
 msgid "Screen resolution:"
 msgstr "Bildschirmauflösung:"
 
-#: horizons/i18n/guitranslations.py:81 horizons/i18n/guitranslations.py:185
+#: guitranslations.py:43 horizons/i18n/guitranslations.py:43
+msgid "Color depth:"
+msgstr "Farbtiefe:"
+
+#: guitranslations.py:44 horizons/i18n/guitranslations.py:44
 #, fuzzy
 msgid "Used renderer:"
 msgstr "Zu benutzernder Renderer:"
 
-#: horizons/i18n/guitranslations.py:82 horizons/i18n/guitranslations.py:186
-msgid "Color depth:"
-msgstr "Farbtiefe:"
-
-#: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:188
+#: guitranslations.py:45 horizons/i18n/guitranslations.py:45
 msgid "Music volume:"
 msgstr "Musiklautstärke:"
 
-#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:189
+#: guitranslations.py:46 horizons/i18n/guitranslations.py:46
 msgid "Effects volume:"
 msgstr "Effektlautstärke:"
 
-#: horizons/i18n/guitranslations.py:85 horizons/i18n/guitranslations.py:175
+#: guitranslations.py:47 horizons/i18n/guitranslations.py:47
+msgid "Autosave interval:"
+msgstr "Intervall der automatischen Speicherung:"
+
+#: guitranslations.py:48 horizons/i18n/guitranslations.py:48
 msgid "minutes"
 msgstr "Minuten"
 
-#: horizons/i18n/guitranslations.py:88
-msgid "Settings"
-msgstr "Einstellungen"
+#: guitranslations.py:49 horizons/i18n/guitranslations.py:49
+#, fuzzy
+msgid "Number of autosaves:"
+msgstr "Anzahl der automatisch gespeicherten Spielstände:"
 
-#: horizons/i18n/guitranslations.py:90
+#: guitranslations.py:50 horizons/i18n/guitranslations.py:50
+#, fuzzy
+msgid "Number of quicksaves:"
+msgstr "Anzahl der Schnellspeicherungen:"
+
+#: guitranslations.py:51 horizons/i18n/guitranslations.py:51
+msgid "Language:"
+msgstr "Sprache:"
+
+#: guitranslations.py:52 horizons/i18n/guitranslations.py:52
+msgid "Full screen"
+msgstr ""
+
+#: guitranslations.py:53 horizons/i18n/guitranslations.py:53
+msgid "Enable sound"
+msgstr "Ton einschalten"
+
+#: guitranslations.py:55 horizons/i18n/guitranslations.py:55
+msgid "Terminal debugmode"
+msgstr ""
+
+#: guitranslations.py:57 horizons/i18n/guitranslations.py:57
+#, fuzzy
+msgid "Save Game"
+msgstr "Spiel speichern"
+
+#: guitranslations.py:58 horizons/i18n/guitranslations.py:58
 msgid "Enter filename:"
 msgstr "Dateiname eingeben:"
 
-#: horizons/i18n/guitranslations.py:91 horizons/i18n/guitranslations.py:144
-msgid "Delete"
-msgstr "Löschen"
+#: guitranslations.py:60 horizons/i18n/guitranslations.py:60
+msgid "Restart Required"
+msgstr ""
 
-#: horizons/i18n/guitranslations.py:94
-msgid "Save game"
-msgstr "Spiel speichern"
-
-#: horizons/i18n/guitranslations.py:96
+#: guitranslations.py:61 horizons/i18n/guitranslations.py:61
 #, fuzzy
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr "Einige Eurer Änderungen erfordern einen Neustart von Unknown Horizons"
 
-#: horizons/i18n/guitranslations.py:98
-msgid "Changes require restart"
-msgstr "Änderungen erfordern einen Neustart"
-
-#: horizons/i18n/guitranslations.py:100
+#: guitranslations.py:63 horizons/i18n/guitranslations.py:63
 msgid "Loading ..."
 msgstr "Lade ..."
 
-#: horizons/i18n/guitranslations.py:101 horizons/i18n/guitranslations.py:112
-#: horizons/i18n/guitranslations.py:149
+#: guitranslations.py:64 guitranslations.py:66 guitranslations.py:102
+#: horizons/i18n/guitranslations.py:64 horizons/i18n/guitranslations.py:66
+#: horizons/i18n/guitranslations.py:102
 #, fuzzy
 msgid "Unknown Horizons Alpha 2009.1"
 msgstr "Unknown Horizons Alpha 2009.1"
 
-#: horizons/i18n/guitranslations.py:103
-msgid "Building name (Building Class ROMAN)"
-msgstr "Gebäudename (Gebäudeklasse RÖMISCH)"
-
-#: horizons/i18n/guitranslations.py:104
-msgid "Tiles:"
-msgstr "Bodenfließen:"
-
-#: horizons/i18n/guitranslations.py:105
-msgid "10x10"
-msgstr "10x10"
-
-#: horizons/i18n/guitranslations.py:107 horizons/i18n/guitranslations.py:108
-#: horizons/i18n/guitranslations.py:109 horizons/i18n/guitranslations.py:110
-#: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:169
-msgid "?"
-msgstr "?"
-
-#: horizons/i18n/guitranslations.py:113
+#: guitranslations.py:67 horizons/i18n/guitranslations.py:67
 msgid "Singleplayer"
 msgstr "Einzelspieler"
 
-#: horizons/i18n/guitranslations.py:114
+#: guitranslations.py:68 horizons/i18n/guitranslations.py:68
 msgid "Multiplayer"
 msgstr "Mehrspieler"
 
-#: horizons/i18n/guitranslations.py:115
+#: guitranslations.py:69 horizons/i18n/guitranslations.py:69
 #, fuzzy
 msgid " Credits "
 msgstr "Abspann"
 
-#: horizons/i18n/guitranslations.py:116
+#: guitranslations.py:70 horizons/i18n/guitranslations.py:70
 msgid " Quit "
 msgstr "Verlassen"
 
-#: horizons/i18n/guitranslations.py:117 horizons/i18n/guitranslations.py:156
+#: guitranslations.py:71 guitranslations.py:109
+#: horizons/i18n/guitranslations.py:71 horizons/i18n/guitranslations.py:109
 msgid " Settings "
 msgstr "Einstellungen"
 
-#: horizons/i18n/guitranslations.py:118 horizons/i18n/guitranslations.py:154
+#: guitranslations.py:72 guitranslations.py:107
+#: horizons/i18n/guitranslations.py:72 horizons/i18n/guitranslations.py:107
 msgid " Help "
 msgstr "Hilfe"
 
-#: horizons/i18n/guitranslations.py:119
+#: guitranslations.py:73 horizons/i18n/guitranslations.py:73
 msgid " Continue Game "
 msgstr "Spiel fortsetzen"
 
-#: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:155
+#: guitranslations.py:74 guitranslations.py:108
+#: horizons/i18n/guitranslations.py:74 horizons/i18n/guitranslations.py:108
 msgid " Chime The Bell "
 msgstr "Die Glocke läuten"
 
-#: horizons/i18n/guitranslations.py:124
+#: guitranslations.py:76 horizons/i18n/guitranslations.py:76
+msgid "NEW GAME - SINGLEPLAYER"
+msgstr ""
+
+#: guitranslations.py:77 horizons/i18n/guitranslations.py:77
 msgid "Main menu:"
 msgstr "Hauptmenü:"
 
-#: horizons/i18n/guitranslations.py:125
+#: guitranslations.py:80 horizons/i18n/guitranslations.py:80
 msgid "Start game:"
 msgstr "Spiel starten:"
 
-#: horizons/i18n/guitranslations.py:127
+#: guitranslations.py:82 horizons/i18n/guitranslations.py:82
+msgid "Chime The Bell"
+msgstr "Die Glocke läuten"
+
+#: guitranslations.py:83 horizons/i18n/guitranslations.py:83
 #, fuzzy
 msgid "Yeah, you made it..."
 msgstr "Ja, Ihr habt es getan ..."
 
-#: horizons/i18n/guitranslations.py:128
+#: guitranslations.py:84 horizons/i18n/guitranslations.py:84
 msgid "But this is a deadlink, sorry."
 msgstr "Dies ist ein Platzhalter, Entschuldigt bitte."
 
-#: horizons/i18n/guitranslations.py:129
-msgid "Back to business ..."
-msgstr "Zurück zum Geschäft…"
+#: guitranslations.py:86 horizons/i18n/guitranslations.py:86
+msgid "Destroy"
+msgstr ""
 
-#: horizons/i18n/guitranslations.py:130
-msgid "Chime The Bell"
-msgstr "Die Glocke läuten"
+#: guitranslations.py:87 horizons/i18n/guitranslations.py:87
+#, fuzzy
+msgid ""
+"Diplomacy\n"
+"(not yet \n"
+"implemented)"
+msgstr "Noch nicht implementiert"
 
-#: horizons/i18n/guitranslations.py:132
-msgid "We're sorry, but the save function is not yet working."
-msgstr "Entschuldigt bitte, doch die Speicherfunktion ist noch nicht fertig."
+#: guitranslations.py:88 horizons/i18n/guitranslations.py:88
+msgid "Build menu"
+msgstr "Baumenü:"
 
-#: horizons/i18n/guitranslations.py:136
-msgid "Are you sure you want to Quit Unknown Horizons?"
-msgstr "Wollt Ihr Unknown Horizons wirklich beenden?"
-
-#: horizons/i18n/guitranslations.py:141
-msgid "boatbuilder"
-msgstr "Bootsbauer"
-
-#: horizons/i18n/guitranslations.py:143
-msgid " Details:"
-msgstr " Details: "
-
-#: horizons/i18n/guitranslations.py:147
-msgid "Load game"
-msgstr "Lade Spiel"
-
-#: horizons/i18n/guitranslations.py:150
-msgid "Return to Game"
-msgstr "Zurück zum Spiel"
-
-#: horizons/i18n/guitranslations.py:151
-msgid " Cancel Game "
-msgstr "Spiel beenden"
-
-#: horizons/i18n/guitranslations.py:152
-msgid " Save Game "
-msgstr "Spiel speichern"
-
-#: horizons/i18n/guitranslations.py:153
-msgid " Load Game "
-msgstr " Lade Spiel "
-
-#: horizons/i18n/guitranslations.py:158
-msgid "City name"
-msgstr "Stadtname"
-
-#: horizons/i18n/guitranslations.py:159
-msgid "Class ROMAN"
-msgstr "Klasse RÖMISCH"
-
-#: horizons/i18n/guitranslations.py:160
-msgid "Inhabitants"
-msgstr "Einwohner"
-
-#: horizons/i18n/guitranslations.py:162
-msgid "Chat"
-msgstr "Chat"
-
-#: horizons/i18n/guitranslations.py:163
-msgid "Send"
-msgstr "Senden"
-
-#: horizons/i18n/guitranslations.py:166
+#: guitranslations.py:89 horizons/i18n/guitranslations.py:89
 msgid "Help"
 msgstr "Hilfe"
 
-#: horizons/i18n/guitranslations.py:178
-msgid "General"
-msgstr "Allgemein"
+#: guitranslations.py:90 horizons/i18n/guitranslations.py:90
+#, fuzzy
+msgid "Game menu"
+msgstr "Hauptmenü:"
 
-#: horizons/i18n/guitranslations.py:179
-msgid "Graphic"
-msgstr "Graphik"
+#: guitranslations.py:92 horizons/i18n/guitranslations.py:92
+#, fuzzy
+msgid "Quit Game"
+msgstr "Verlassen"
 
-#: horizons/i18n/guitranslations.py:180
-msgid "Audio"
-msgstr "Audio"
+#: guitranslations.py:93 horizons/i18n/guitranslations.py:93
+#, fuzzy
+msgid "Are you sure you want to quit Unknown Horizons?"
+msgstr "Wollt Ihr Unknown Horizons wirklich beenden?"
 
-#: horizons/i18n/guitranslations.py:191
+#: guitranslations.py:95 horizons/i18n/guitranslations.py:95
+msgid "boatbuilder"
+msgstr "Bootsbauer"
+
+#: guitranslations.py:97 horizons/i18n/guitranslations.py:97
+msgid "Game paused"
+msgstr ""
+
+#: guitranslations.py:99 horizons/i18n/guitranslations.py:99
+#, fuzzy
+msgid "Load Game"
+msgstr " Lade Spiel "
+
+#: guitranslations.py:100 horizons/i18n/guitranslations.py:100
+msgid "Details:"
+msgstr "Details:"
+
+#: guitranslations.py:103 horizons/i18n/guitranslations.py:103
+msgid "Return to Game"
+msgstr "Zurück zum Spiel"
+
+#: guitranslations.py:104 horizons/i18n/guitranslations.py:104
+msgid " Cancel Game "
+msgstr "Spiel beenden"
+
+#: guitranslations.py:105 horizons/i18n/guitranslations.py:105
+msgid " Save Game "
+msgstr "Spiel speichern"
+
+#: guitranslations.py:106 horizons/i18n/guitranslations.py:106
+msgid " Load Game "
+msgstr " Lade Spiel "
+
+#: guitranslations.py:111 horizons/i18n/guitranslations.py:111
+#, fuzzy
+msgid "Change name"
+msgstr "Spiel beenden"
+
+#: guitranslations.py:113 horizons/i18n/guitranslations.py:113
+msgid "Key Bindings"
+msgstr ""
+
+#: guitranslations.py:115 horizons/i18n/guitranslations.py:115
 #, fuzzy
 msgid "stock"
 msgstr "Lager"
 
-#: horizons/i18n/guitranslations.py:193
+#: guitranslations.py:117 horizons/i18n/guitranslations.py:117
 msgid "production"
 msgstr "Produktion"
 
-#: horizons/i18n/guitranslations.py:195 horizons/i18n/guitranslations.py:201
-#: horizons/i18n/guitranslations.py:215
+#: guitranslations.py:119 guitranslations.py:125 guitranslations.py:144
+#: horizons/i18n/guitranslations.py:119 horizons/i18n/guitranslations.py:125
+#: horizons/i18n/guitranslations.py:144
 msgid "Building overview"
 msgstr "Gebäude Übersicht"
 
-#: horizons/i18n/guitranslations.py:196 horizons/i18n/guitranslations.py:202
-#: horizons/i18n/guitranslations.py:216 horizons/i18n/guitranslations.py:232
+#: guitranslations.py:120 guitranslations.py:126 guitranslations.py:140
+#: guitranslations.py:145 guitranslations.py:159 guitranslations.py:176
+#: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:126
+#: horizons/i18n/guitranslations.py:140 horizons/i18n/guitranslations.py:145
+#: horizons/i18n/guitranslations.py:159 horizons/i18n/guitranslations.py:176
 msgid "Name:"
 msgstr "Name:"
 
-#: horizons/i18n/guitranslations.py:197 horizons/i18n/guitranslations.py:203
-#: horizons/i18n/guitranslations.py:217 horizons/i18n/guitranslations.py:221
-#: horizons/i18n/guitranslations.py:233
+#: guitranslations.py:121 guitranslations.py:127 guitranslations.py:141
+#: guitranslations.py:146 guitranslations.py:149 guitranslations.py:160
+#: guitranslations.py:177 horizons/i18n/guitranslations.py:121
+#: horizons/i18n/guitranslations.py:127 horizons/i18n/guitranslations.py:141
+#: horizons/i18n/guitranslations.py:146 horizons/i18n/guitranslations.py:149
+#: horizons/i18n/guitranslations.py:160 horizons/i18n/guitranslations.py:177
 #, fuzzy
 msgid "Health:"
 msgstr "Zustand:"
 
-#: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:204
-#: horizons/i18n/guitranslations.py:218 horizons/i18n/guitranslations.py:254
+#: guitranslations.py:122 guitranslations.py:128 guitranslations.py:147
+#: guitranslations.py:155 guitranslations.py:214
+#: horizons/i18n/guitranslations.py:122 horizons/i18n/guitranslations.py:128
+#: horizons/i18n/guitranslations.py:147 horizons/i18n/guitranslations.py:155
+#: horizons/i18n/guitranslations.py:214
 msgid "Running Costs:"
 msgstr "Laufende Kosten:"
 
-#: horizons/i18n/guitranslations.py:199 horizons/i18n/guitranslations.py:219
+#: guitranslations.py:123 horizons/i18n/guitranslations.py:123
 msgid "Buy/Sell Resources:"
 msgstr "Waren Ein-/Verkaufen:"
 
-#: horizons/i18n/guitranslations.py:205
+#: guitranslations.py:129 horizons/i18n/guitranslations.py:129
 #, fuzzy
 msgid "Toggle active:"
 msgstr "aktivieren:"
 
-#: horizons/i18n/guitranslations.py:207
+#: guitranslations.py:131 horizons/i18n/guitranslations.py:131
 msgid "research"
 msgstr "Forschung"
 
-#: horizons/i18n/guitranslations.py:209
+#: guitranslations.py:133 horizons/i18n/guitranslations.py:133
 #, fuzzy
 msgid "route"
 msgstr "Weg"
 
-#: horizons/i18n/guitranslations.py:211
+#: guitranslations.py:135 horizons/i18n/guitranslations.py:135
 #, fuzzy
 msgid "combat"
 msgstr "bekriegen"
 
-#: horizons/i18n/guitranslations.py:213
-msgid "Inventory of"
-msgstr "Inventar von"
+#: guitranslations.py:137 guitranslations.py:172
+#: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:172
+msgid "Inventory"
+msgstr "Inventar:"
 
-#: horizons/i18n/guitranslations.py:223
+#: guitranslations.py:139 guitranslations.py:158 guitranslations.py:175
+#: horizons/i18n/guitranslations.py:139 horizons/i18n/guitranslations.py:158
+#: horizons/i18n/guitranslations.py:175
+msgid "Overview"
+msgstr "Übersicht"
+
+#: guitranslations.py:142 guitranslations.py:165
+#: horizons/i18n/guitranslations.py:142 horizons/i18n/guitranslations.py:165
+#, fuzzy
+msgid "Taxes:"
+msgstr "Stoffe:"
+
+#: guitranslations.py:151 horizons/i18n/guitranslations.py:151
+msgid "Account"
+msgstr ""
+
+#: guitranslations.py:152 horizons/i18n/guitranslations.py:152
+msgid "Income:"
+msgstr ""
+
+#: guitranslations.py:153 horizons/i18n/guitranslations.py:153
+#, fuzzy
+msgid "Taxes"
+msgstr "Handel"
+
+#: guitranslations.py:154 horizons/i18n/guitranslations.py:154
+msgid "Expenses:"
+msgstr ""
+
+#: guitranslations.py:156 horizons/i18n/guitranslations.py:156
+msgid "Balance:"
+msgstr ""
+
+#: guitranslations.py:161 horizons/i18n/guitranslations.py:161
+msgid "Happiness:"
+msgstr ""
+
+#: guitranslations.py:162 horizons/i18n/guitranslations.py:162
+#, fuzzy
+msgid "Needed Resources:"
+msgstr "Waren Ein-/Verkaufen:"
+
+#: guitranslations.py:163 horizons/i18n/guitranslations.py:163
+#, fuzzy
+msgid "Inhabitants:"
+msgstr "Einwohner"
+
+#: guitranslations.py:164 horizons/i18n/guitranslations.py:164
+#, fuzzy
+msgid "Level:"
+msgstr "Legende:"
+
+#: guitranslations.py:167 horizons/gui/tabs/boatbuildertab.py:46
+#: horizons/i18n/guitranslations.py:167
 msgid "Current construction progress:"
 msgstr "Aktueller Baufortschritt:"
 
-#: horizons/i18n/guitranslations.py:225
+#: guitranslations.py:169 horizons/i18n/guitranslations.py:169
 msgid "Select a boat to build:"
 msgstr "Wähle das zu bauendes Boot aus:"
 
-#: horizons/i18n/guitranslations.py:226
+#: guitranslations.py:170 horizons/i18n/guitranslations.py:170
 #, fuzzy
 msgid "Build selected:"
 msgstr "Gebäude ausgewählt"
 
-#: horizons/i18n/guitranslations.py:229
+#: guitranslations.py:173 horizons/i18n/guitranslations.py:173
 msgid "Load/Unload:"
 msgstr "Laden/Entladen:"
 
-#: horizons/i18n/guitranslations.py:231
-msgid "Overview"
-msgstr "Übersicht"
-
-#: horizons/i18n/guitranslations.py:235
+#: guitranslations.py:179 horizons/i18n/guitranslations.py:179
 msgid "Trade"
 msgstr "Handel"
 
-#: horizons/i18n/guitranslations.py:236
+#: guitranslations.py:180 horizons/i18n/guitranslations.py:180
 msgid "Ship:"
 msgstr "Schiff:"
 
-#: horizons/i18n/guitranslations.py:237
+#: guitranslations.py:181 horizons/i18n/guitranslations.py:181
 #, fuzzy
 msgid "Exchange:"
 msgstr "Tauschen:"
 
-#: horizons/i18n/guitranslations.py:238
+#: guitranslations.py:182 horizons/i18n/guitranslations.py:182
 msgid "Trade partner:"
 msgstr "Handelspartner:"
 
-#: horizons/i18n/guitranslations.py:240
-msgid "Buy or sell ressources"
+#: guitranslations.py:184 horizons/i18n/guitranslations.py:184
+#, fuzzy
+msgid "Buy or sell resources"
 msgstr "Waren Ein-/Verkaufen:"
 
-#: horizons/i18n/guitranslations.py:241
+#: guitranslations.py:185 horizons/i18n/guitranslations.py:185
 msgid "Legend:"
 msgstr "Legende:"
 
-#: horizons/i18n/guitranslations.py:242
-msgid "Buy ressources"
+#: guitranslations.py:186 horizons/i18n/guitranslations.py:186
+#, fuzzy
+msgid "Buy resources"
 msgstr "Waren einkaufen"
 
-#: horizons/i18n/guitranslations.py:243
-msgid "Sell ressources"
+#: guitranslations.py:187 horizons/i18n/guitranslations.py:187
+#, fuzzy
+msgid "Sell resources"
 msgstr "Waren verkaufen"
 
-#: horizons/i18n/guitranslations.py:245
-msgid "Select ressources to buy/sell:"
-msgstr "Wähle Resource zum Kauf/Verkauf"
+#: guitranslations.py:189 horizons/i18n/guitranslations.py:189
+#, fuzzy
+msgid "Select resources:"
+msgstr "Waren verkaufen"
 
-#: horizons/i18n/guitranslations.py:247
-msgid "Build menu"
-msgstr "Baumenü:"
+#: guitranslations.py:191 horizons/i18n/guitranslations.py:191
+msgid "Sailor Buildings"
+msgstr ""
 
-#: horizons/i18n/guitranslations.py:248
+#: guitranslations.py:192 horizons/i18n/guitranslations.py:192
 msgid "Residents and Infrastructural"
 msgstr "Wohnbauten & Infrastruktur"
 
-#: horizons/i18n/guitranslations.py:249
+#: guitranslations.py:193 horizons/i18n/guitranslations.py:193
 #, fuzzy
 msgid "Services"
 msgstr "Versorgung"
 
-#: horizons/i18n/guitranslations.py:250
+#: guitranslations.py:194 horizons/i18n/guitranslations.py:194
 msgid "Companies"
 msgstr "Betriebe"
 
-#: horizons/i18n/guitranslations.py:251
+#: guitranslations.py:195 horizons/i18n/guitranslations.py:195
 msgid "Military"
 msgstr "Militär"
 
-#: horizons/i18n/guitranslations.py:253
+#: guitranslations.py:196 horizons/i18n/guitranslations.py:196
+msgid "Tent"
+msgstr "Zelt"
+
+#: guitranslations.py:197 horizons/i18n/guitranslations.py:197
+msgid ""
+"Trail: \n"
+"Needed for \n"
+"delivering goods"
+msgstr ""
+
+#: guitranslations.py:198 horizons/i18n/guitranslations.py:198
+msgid "Tree"
+msgstr "Baum"
+
+#: guitranslations.py:199 horizons/i18n/guitranslations.py:199
+msgid ""
+"Main square: \n"
+"Supplies citizens\n"
+"with goods"
+msgstr ""
+
+#: guitranslations.py:200 horizons/i18n/guitranslations.py:200
+msgid ""
+"Storage: \n"
+"Extends settlement,\n"
+"stores goods"
+msgstr ""
+
+#: guitranslations.py:201 horizons/i18n/guitranslations.py:201
+msgid ""
+"Ministry: \n"
+"Fullfiles religious \n"
+"needs of citizens"
+msgstr ""
+
+#: guitranslations.py:202 horizons/i18n/guitranslations.py:202
+msgid ""
+"Signal fire: \n"
+"Allows the player \n"
+"to trade with \n"
+"the free trader"
+msgstr ""
+
+#: guitranslations.py:203 horizons/i18n/guitranslations.py:203
+msgid ""
+"Lumberjack: \n"
+"Harvests wood \n"
+"and turns them \n"
+"into boards "
+msgstr ""
+
+#: guitranslations.py:204 horizons/i18n/guitranslations.py:204
+msgid ""
+"Hunter: \n"
+"Hunts wild animals, \n"
+"gathers food "
+msgstr ""
+
+#: guitranslations.py:205 horizons/i18n/guitranslations.py:205
+msgid ""
+"Weaver: \n"
+"Turns lamb wool \n"
+"into cloth"
+msgstr ""
+
+#: guitranslations.py:206 horizons/i18n/guitranslations.py:206
+msgid ""
+"Boat builder: \n"
+"Builds boats and \n"
+"small ships, \n"
+"built on coast"
+msgstr ""
+
+#: guitranslations.py:207 horizons/i18n/guitranslations.py:207
+msgid ""
+"Fisherman: \n"
+"Fishes the sea, \n"
+"gathers food"
+msgstr ""
+
+#: guitranslations.py:208 horizons/i18n/guitranslations.py:208
+msgid ""
+"Farm: \n"
+"Grows field \n"
+"crops and raises \n"
+"livestock."
+msgstr ""
+
+#: guitranslations.py:209 horizons/i18n/guitranslations.py:209
+msgid ""
+"Pasture is used \n"
+"to grow sheep.\n"
+"Produces wool. \n"
+"Needs a farm"
+msgstr ""
+
+#: guitranslations.py:210 horizons/i18n/guitranslations.py:210
+msgid ""
+"Potato Field:\n"
+"Delivers food \n"
+"Needs a farm"
+msgstr ""
+
+#: guitranslations.py:211 horizons/i18n/guitranslations.py:211
+msgid ""
+"Lookout: \n"
+"Increases the \n"
+"player's sight"
+msgstr ""
+
+#: guitranslations.py:213 horizons/i18n/guitranslations.py:213
 #, fuzzy
 msgid "Build"
 msgstr "Bau"
 
-#: horizons/i18n/guitranslations.py:256
-msgid "Do you want to remove this building?"
-msgstr "Wollt Ihr dieses Gebäude niederreißen?"
+#: guitranslations.py:216 horizons/i18n/guitranslations.py:216
+msgid "Pioneer Buildings"
+msgstr ""
 
-#: horizons/i18n/guitranslations.py:257
-msgid "yes"
-msgstr "Ja"
-
-#: horizons/i18n/guitranslations.py:258
-msgid "no"
-msgstr "Nein"
-
-#: horizons/main.py:206
-msgid "Confirmation for overwriting"
-msgstr "Bestätigung des Überschreibens"
-
-#: horizons/main.py:216
-msgid "Invalid filename"
-msgstr "Ungültiger Dateiname"
-
-#: horizons/main.py:216
-msgid "You entered an invalid filename."
-msgstr "Sie haben einen ungültigen Dateinamen eingegeben"
-
-#: horizons/menus.py:141 horizons/menus.py:236
+#: horizons/gui/gui.py:178 horizons/gui/gui.py:201 horizons/gui/gui.py:273
 msgid "System default"
 msgstr "Systemvorgabe"
 
-#: horizons/menus.py:374
+#: horizons/gui/gui.py:415
 msgid "Sorry, the random map feature isn't yet implemented."
 msgstr "Das Erzeugen von Zufallskarten ist leider noch nicht implementiert."
 
-#: horizons/menus.py:374 horizons/menus.py:430 horizons/menus.py:640
+#: horizons/gui/gui.py:415 horizons/gui/gui.py:459 horizons/gui/gui.py:666
 #, fuzzy
 msgid "Not yet implemented"
 msgstr "Noch nicht implementiert"
 
-#: horizons/menus.py:430
+#: horizons/gui/gui.py:459
 msgid "Sorry, multiplayer has not been implemented yet."
 msgstr "Entschuldige, der Mehrspielermodus wurde noch nicht implementiert"
 
-#: horizons/menus.py:546
-msgid "Error"
-msgstr "Fehler"
-
-#: horizons/menus.py:546
+#: horizons/gui/gui.py:573
 msgid "You have to select a server"
 msgstr "Sie müssen einen Server auswählen"
 
-#: horizons/menus.py:580
+#: horizons/gui/gui.py:573 horizons/session.py:158
+msgid "Error"
+msgstr "Fehler"
+
+#: horizons/gui/gui.py:606
 msgid "No file selected"
 msgstr "Keine Dateien ausgewählt"
 
-#: horizons/menus.py:580
+#: horizons/gui/gui.py:606
 msgid "You need to select a savegame to delete"
 msgstr "Sie müssen einen Speicherstand auswählen um ihn zu löschen"
 
-#: horizons/menus.py:583
+#: horizons/gui/gui.py:609
 #, fuzzy
 msgid "Confirm deletion"
 msgstr "Entfernen Bestätigen"
 
-#: horizons/menus.py:584
+#: horizons/gui/gui.py:610
 msgid "Do you really want to delete the savegame \"%s\"?"
 msgstr "Wollen Sie wirklich den Speicherstand \"%s\" löschen?"
 
-#: horizons/menus.py:637
+#: horizons/gui/gui.py:663
 msgid "Invalid player name"
 msgstr "Ungültiger Spielername"
 
-#: horizons/menus.py:637
+#: horizons/gui/gui.py:663
 msgid "You entered an invalid playername"
 msgstr "Sie haben einen ungültigen Spielernamen eingegeben"
 
-#: horizons/menus.py:640
+#: horizons/gui/gui.py:666
 msgid "Sorry, random map creation is not implemented at the moment."
 msgstr "Erzeugen von Zufallskarten ist noch nicht implementiert."
 
-#: horizons/menus.py:664
+#: horizons/gui/gui.py:685
 msgid "No saved games"
 msgstr "Keine Speicherstände"
 
-#: horizons/menus.py:664
+#: horizons/gui/gui.py:685
 msgid "There are no saved games to load"
 msgstr "Es gibt keine Speicherstände zum laden"
+
+#: horizons/main.py:91
+msgid "Configured language %(lang)s at %(place)s could not be loaded"
+msgstr ""
+
+#: horizons/main.py:203
+msgid "Confirmation for overwriting"
+msgstr "Bestätigung des Überschreibens"
+
+#: horizons/main.py:213
+msgid "Invalid filename"
+msgstr "Ungültiger Dateiname"
+
+#: horizons/main.py:213
+msgid "You entered an invalid filename."
+msgstr "Sie haben einen ungültigen Dateinamen eingegeben"
 
 #: horizons/network.py:303
 msgid "PLAYER TIMEOUT"
@@ -655,19 +732,15 @@ msgstr "Fehler:"
 msgid "Network Error"
 msgstr "Netzwerk Fehler"
 
-#: horizons/session.py:139
-msgid "Quicksave"
-msgstr "Schnellspeichern"
+#: horizons/session.py:158
+msgid "Failed to quicksave."
+msgstr ""
 
-#: horizons/session.py:139
-msgid "Your game has been saved"
-msgstr "Dein Spiel wurde gespeichert"
-
-#: horizons/session.py:148
+#: horizons/session.py:164
 msgid "No quicksaves found"
 msgstr "Keine automatisch gespeicherten Spielstände gefunden"
 
-#: horizons/session.py:148
+#: horizons/session.py:164
 msgid "You need to quicksave before you can quickload."
 msgstr ""
 "Du musst zuerst die Schnellspeicherfunktion verwenden befor du einen solchen "
@@ -685,84 +758,476 @@ msgstr ""
 msgid "Upgrading Config from Version %d to Version %d ..."
 msgstr "Aktualisiere Config von Version %d zu Version %d ..."
 
-#: run_tests.py:61
-msgid ""
-"\n"
-"RESULTS:\n"
+#: run_uh.py:63
+msgid "Enable debug output"
 msgstr ""
-"\n"
-"ERGEBNISSE:\n"
 
-#: run_tests.py:63
-msgid "tests were run"
-msgstr "gelaufene Tests:"
+#: run_uh.py:65
+msgid "Specify the path to FIFE root directory."
+msgstr ""
 
-#: run_tests.py:64
-msgid "All successful:"
-msgstr "Alle erfolgreich:"
+#: run_uh.py:67
+#, fuzzy
+msgid "Starting unknown horizons"
+msgstr "Beende Unknown Horizons"
 
-#: run_tests.py:70
-msgid "Failures:"
-msgstr "Fehler"
-
-#: run_tests.py:72 run_tests.py:80
-msgid "Case:"
-msgstr "Fall:"
-
-#: run_tests.py:78
-msgid "Errors:"
-msgstr "Fehler:"
-
-#: run_uh.py:73
-msgid "FIFE was not found."
-msgstr "FIFE konnte nicht gefunden werden."
-
-#: run_uh.py:104
-msgid "Unknown Horizons usage:"
-msgstr "Verwendung von Unknown Horizons:"
-
-#: run_uh.py:107
-msgid "Options:"
-msgstr "Optionen:"
-
-#: run_uh.py:108
-msgid "Debug, enables debug output, useful for testing."
-msgstr "Debug, aktiviert Ausgaben, die zum Suchen von Fehlern nützlich sind"
-
-#: run_uh.py:109
-msgid "Print this help message."
-msgstr "Gib diesen Hilfetext aus."
-
-#: run_uh.py:111
-msgid "Starts the development map without displaying the main menu"
-msgstr "Starte die Entwicklerkarte ohne das Hauptmenü anzuzeigen"
-
-#: run_uh.py:112
-msgid "Useful for testing during development"
-msgstr "Nützlich für Tests während der Entwicklung"
-
-#: run_uh.py:113
-msgid "Starts <map>. <map> is the filename of the map, without '.sqlite'"
+#: run_uh.py:69
+#, fuzzy
+msgid "Starts <map>. <map> is the mapname."
 msgstr ""
 "Startet <karte>. <karte> ist der Dateiname der Karte ohne die Dateiendung '."
 "sqlite'"
 
-#: run_uh.py:114
-msgid "Loads a saved game. Specify the savegamename."
+#: run_uh.py:71
+#, fuzzy
+msgid "Starts the development map without displaying the main menu."
+msgstr "Starte die Entwicklerkarte ohne das Hauptmenü anzuzeigen"
+
+#: run_uh.py:73
+#, fuzzy
+msgid "Loads a saved game. <save> is the savegamename."
 msgstr "Lade gespeicherten Spielstand. Gib den Namen des Speicherstands an"
 
-#: run_uh.py:116
-#, fuzzy
-msgid "Debugging options:"
-msgstr "Verwendung des Debug Tools:"
+#: run_uh.py:75
+msgid "Loads the last quicksave."
+msgstr ""
 
-#: run_uh.py:117
-msgid "Enable logging for a certain logging module."
+#: run_uh.py:78
+msgid "Development options"
+msgstr ""
+
+#: run_uh.py:80
+msgid "Write debug output only to logfile, not to console. Implies -d."
+msgstr ""
+
+#: run_uh.py:83
+#, fuzzy
+msgid "Enable logging for a certain logging module (for developing only)."
 msgstr "Aktiviere Logging für ein bestimmtes Logging Modul"
 
-#: run_uh.py:119
-msgid "Have fun playing, and if you do, help us developing!"
-msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
+#: run_uh.py:85
+msgid "For internal use only."
+msgstr ""
+
+#: run_uh.py:87
+msgid "Enables unstable features (for developing only)."
+msgstr ""
+
+#: run_uh.py:89
+#, fuzzy
+msgid "Enable profiling (for developing only)."
+msgstr "Aktiviere Logging für ein bestimmtes Logging Modul"
+
+#: run_uh.py:111
+#, fuzzy
+msgid "Unknown Horizons crashed."
+msgstr "Verwendung von Unknown Horizons:"
+
+#: run_uh.py:113
+msgid "We are very sorry for this, and want to fix this error."
+msgstr ""
+
+#: run_uh.py:114
+msgid "In order to do this, we need the information from the logfile:"
+msgstr ""
+
+#: run_uh.py:116
+msgid ""
+"Please give it to us via IRC or our forum, for both see unknown-horizons."
+"org ."
+msgstr ""
+
+#: run_uh.py:174
+#, fuzzy
+msgid "Thank you for using Unknown Horizons!"
+msgstr "Beende Unknown Horizons"
+
+#: run_uh.py:261
+msgid "FIFE was not found."
+msgstr "FIFE konnte nicht gefunden werden."
+
+msgid "Sheep"
+msgstr "Schaf"
+
+msgid "coins"
+msgstr "Münzen"
+
+# Building
+msgid "Log"
+msgstr ""
+
+msgid "Fisherman's Tent"
+msgstr "Fischer"
+
+msgid "food"
+msgstr "Nahrung"
+
+msgid "FarmerCollector"
+msgstr ""
+
+msgid "yellow"
+msgstr "gelb"
+
+msgid "pink"
+msgstr "rosa"
+
+msgid "church"
+msgstr "Kirche"
+
+msgid "Main Square"
+msgstr "Hauptplatz"
+
+msgid "tools"
+msgstr "Werkzeuge"
+
+# Resources
+msgid "happiness"
+msgstr ""
+
+msgid "Lookout"
+msgstr "Ausguck"
+
+msgid "textile"
+msgstr "Kleidung"
+
+# Unit
+msgid "FarmAnimalCollector"
+msgstr ""
+
+msgid "LumberjackCollector"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "Lammwolle"
+
+# Building
+msgid "Farm"
+msgstr ""
+
+msgid "Signal Fire"
+msgstr "Signalfeuer"
+
+msgid "Weaver's Tent"
+msgstr "Weber"
+
+msgid "Trail"
+msgstr "Trampelpfad"
+
+msgid "wood"
+msgstr "Holz"
+
+msgid "black"
+msgstr "schwarz"
+
+msgid "Fisher"
+msgstr "Fischer"
+
+msgid "Sunsail"
+msgstr "Sonnensegel"
+
+msgid "wool"
+msgstr "Wolle"
+
+#, fuzzy
+msgid "Tent_ruin"
+msgstr "Zelt"
+
+msgid "Hunter's Tent"
+msgstr "Jäger"
+
+# Unit
+msgid "HunterCollector"
+msgstr ""
+
+#, fuzzy
+msgid "Your game has been quicksaved."
+msgstr "Dein Spiel wurde gespeichert"
+
+msgid "Pirate Ship"
+msgstr "Piratenschiff"
+
+msgid "Trader"
+msgstr "Händler"
+
+msgid "blue"
+msgstr "blau"
+
+# Building
+msgid "Potato Field"
+msgstr ""
+
+msgid "Storage Tent"
+msgstr "Lagerzelt"
+
+msgid "StorageCollector"
+msgstr ""
+
+#, fuzzy
+msgid "A new settlement has been created by ${player}."
+msgstr "Eine neue Siedlung wurd von $player erschaffen."
+
+msgid "cyan"
+msgstr "cyan"
+
+msgid "BuildingCollector"
+msgstr ""
+
+msgid "white"
+msgstr "weiß"
+
+msgid "bricks"
+msgstr "Steine"
+
+msgid "Lumberjack Camp"
+msgstr "Holzfällerlager"
+
+msgid "AnimalCarriage"
+msgstr ""
+
+msgid "boards"
+msgstr "Bretter"
+
+msgid "SettlerCollector"
+msgstr ""
+
+# Messages
+msgid "Your settlers reached level ${level}."
+msgstr ""
+
+# Resources
+msgid "potatoes"
+msgstr ""
+
+msgid "A new world has been created."
+msgstr "Eine neue Welt wurde erschaffen."
+
+msgid "Boat Builder"
+msgstr "Bootsbauer"
+
+msgid "Deer"
+msgstr "Reh"
+
+msgid "FieldCollector"
+msgstr ""
+
+msgid "wild animal food 1"
+msgstr ""
+
+msgid "green"
+msgstr "grün"
+
+msgid "red"
+msgstr "rot"
+
+# Messages
+msgid "Screenshot has been saved to ${file}."
+msgstr ""
+
+msgid "Rampart"
+msgstr "Schutzwall"
+
+msgid "Pasture"
+msgstr "Futter"
+
+msgid "Ship"
+msgstr "Schiff"
+
+msgid "grass"
+msgstr "Gras"
+
+msgid "Branch Office"
+msgstr "Kontor"
+
+msgid "wild animal meat"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Error, no complete sql statement provided by \"%s\"."
+#~ msgstr ""
+#~ "Fehler, es wurde kein vollständiger SQL Ausdruck von \"%s\" übergeben."
+
+#~ msgid "Branch office (Branch class ROMAN)"
+#~ msgstr "Kontor (Kontorklasse RÖMISCH)"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "These guys contributed to Unknown Horizons"
+#~ msgstr "Diese Jungs haben zu Unknown Horizons beigetragen"
+
+#, fuzzy
+#~ msgid "You guys rock!"
+#~ msgstr "Ihr Typen habt's drauf!"
+
+#, fuzzy
+#~ msgid "Credits"
+#~ msgstr "Abspann"
+
+#~ msgid "That's your island-wide inventory."
+#~ msgstr "Das ist dein Inselweites Inventar"
+
+#~ msgid "Coins:"
+#~ msgstr "Münzen:"
+
+#~ msgid "Lamb wool:"
+#~ msgstr "Wolle:"
+
+#~ msgid "Boards:"
+#~ msgstr "Bretter:"
+
+#~ msgid "Food:"
+#~ msgstr "Nahrungsmittel:"
+
+#~ msgid "n/a"
+#~ msgstr "Nicht verfügbar"
+
+#~ msgid "Close"
+#~ msgstr "Schließen"
+
+#, fuzzy
+#~ msgid "City infos"
+#~ msgstr "Informationen über die Stadt"
+
+#~ msgid "Ship name (Ship type)"
+#~ msgstr "Schiffsname (Schiffstyp)"
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "We're sorry, but the load function is not yet working."
+#~ msgstr ""
+#~ "Entschuldigt, aber die Speicher- und Ladefunktion ist noch nicht "
+#~ "fertiggestellt."
+
+#~ msgid "Oh noes"
+#~ msgstr "Oh Nein"
+
+#~ msgid ""
+#~ "This is the Unknown Horizons settings dialog. Please make sure that you "
+#~ "know, what you do."
+#~ msgstr ""
+#~ "Dies ist der Einstellungsdialog von Unknown Horizons. Handelt weise!"
+
+#, fuzzy
+#~ msgid "Autosave interval"
+#~ msgstr "Intervall der automatischen Speicherung:"
+
+#~ msgid "Delete"
+#~ msgstr "Löschen"
+
+#~ msgid "Save game"
+#~ msgstr "Spiel speichern"
+
+#~ msgid "Changes require restart"
+#~ msgstr "Änderungen erfordern einen Neustart"
+
+#~ msgid "Building name (Building Class ROMAN)"
+#~ msgstr "Gebäudename (Gebäudeklasse RÖMISCH)"
+
+#~ msgid "Tiles:"
+#~ msgstr "Bodenfließen:"
+
+#~ msgid "10x10"
+#~ msgstr "10x10"
+
+#~ msgid "?"
+#~ msgstr "?"
+
+#~ msgid "Back to business ..."
+#~ msgstr "Zurück zum Geschäft…"
+
+#~ msgid "We're sorry, but the save function is not yet working."
+#~ msgstr ""
+#~ "Entschuldigt bitte, doch die Speicherfunktion ist noch nicht fertig."
+
+#~ msgid " Details:"
+#~ msgstr " Details: "
+
+#~ msgid "Load game"
+#~ msgstr "Lade Spiel"
+
+#~ msgid "City name"
+#~ msgstr "Stadtname"
+
+#~ msgid "Class ROMAN"
+#~ msgstr "Klasse RÖMISCH"
+
+#~ msgid "Chat"
+#~ msgstr "Chat"
+
+#~ msgid "Send"
+#~ msgstr "Senden"
+
+#~ msgid "General"
+#~ msgstr "Allgemein"
+
+#~ msgid "Graphic"
+#~ msgstr "Graphik"
+
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgid "Inventory of"
+#~ msgstr "Inventar von"
+
+#~ msgid "Select ressources to buy/sell:"
+#~ msgstr "Wähle Resource zum Kauf/Verkauf"
+
+#~ msgid "Do you want to remove this building?"
+#~ msgstr "Wollt Ihr dieses Gebäude niederreißen?"
+
+#~ msgid "yes"
+#~ msgstr "Ja"
+
+#~ msgid "no"
+#~ msgstr "Nein"
+
+#~ msgid "Quicksave"
+#~ msgstr "Schnellspeichern"
+
+#~ msgid ""
+#~ "\n"
+#~ "RESULTS:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "ERGEBNISSE:\n"
+
+#~ msgid "tests were run"
+#~ msgstr "gelaufene Tests:"
+
+#~ msgid "All successful:"
+#~ msgstr "Alle erfolgreich:"
+
+#~ msgid "Failures:"
+#~ msgstr "Fehler"
+
+#~ msgid "Case:"
+#~ msgstr "Fall:"
+
+#~ msgid "Errors:"
+#~ msgstr "Fehler:"
+
+#~ msgid "Options:"
+#~ msgstr "Optionen:"
+
+#~ msgid "Debug, enables debug output, useful for testing."
+#~ msgstr "Debug, aktiviert Ausgaben, die zum Suchen von Fehlern nützlich sind"
+
+#~ msgid "Print this help message."
+#~ msgstr "Gib diesen Hilfetext aus."
+
+#~ msgid "Useful for testing during development"
+#~ msgstr "Nützlich für Tests während der Entwicklung"
+
+#, fuzzy
+#~ msgid "Debugging options:"
+#~ msgstr "Verwendung des Debug Tools:"
+
+#~ msgid "Have fun playing, and if you do, help us developing!"
+#~ msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 
 #~ msgid "Loading..."
 #~ msgstr "Lade ..."
@@ -775,9 +1240,6 @@ msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 #~ msgid "Running costs:"
 #~ msgstr "Laufende Kosten:"
 
-#~ msgid "Not yet Implemented"
-#~ msgstr "Noch nicht implementiert"
-
 #~ msgid "No translation for file %s"
 #~ msgstr "Keine Übersetzung für die Datei %s"
 
@@ -785,38 +1247,20 @@ msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 #~ msgid "Storage"
 #~ msgstr "Lager"
 
-msgid "Main Square"
-msgstr "Hauptplatz"
-
 #~ msgid "Church"
 #~ msgstr "Kirche"
-
-msgid "Signal Fire"
-msgstr "Signalfeuer"
 
 #~ msgid "Residents"
 #~ msgstr "Behausungen"
 
-msgid "Tent"
-msgstr "Zelt"
-
 #~ msgid "Hunter"
 #~ msgstr "Jäger"
-
-msgid "Fisher"
-msgstr "Fischer"
 
 #~ msgid "Weaver"
 #~ msgstr "Weber"
 
-msgid "Boat Builder"
-msgstr "Bootsbauer"
-
 #~ msgid "Lumberjack"
 #~ msgstr "Holzfäller"
-
-msgid "Tree"
-msgstr "Baum"
 
 #~ msgid "Herder"
 #~ msgstr "Hirte"
@@ -825,17 +1269,8 @@ msgstr "Baum"
 #~ msgid "Field"
 #~ msgstr "Feld"
 
-msgid "Lookout"
-msgstr "Ausguck"
-
-msgid "Rampart"
-msgstr "Schutzwall"
-
 #~ msgid "Infrastructure"
 #~ msgstr "Infrastruktur"
-
-msgid "Trail"
-msgstr "Trampelpfad"
 
 #~ msgid "Bridge"
 #~ msgstr "Brücke"
@@ -863,9 +1298,6 @@ msgstr "Trampelpfad"
 
 #~ msgid "Use the fullscreen mode"
 #~ msgstr "Im Vollbildmodus spielen"
-
-#~ msgid "Autosave interval:"
-#~ msgstr "Intervall der automatischen Speicherung:"
 
 #, fuzzy
 #~ msgid "Number of saves quicksaves:"
@@ -906,9 +1338,6 @@ msgstr "Trampelpfad"
 #~ msgid "Yeah, you made it ..."
 #~ msgstr "Ja, Ihr habt es getan ..."
 
-#~ msgid "Details:"
-#~ msgstr "Details:"
-
 #~ msgid "Internet games"
 #~ msgstr "Internet Spiele"
 
@@ -942,143 +1371,11 @@ msgstr "Trampelpfad"
 #~ msgid "Reason: %s"
 #~ msgstr "Grund: %s"
 
-msgid "Use the full screen mode"
-msgstr "Im Vollbildmodus spielen"
+#~ msgid "Use the full screen mode"
+#~ msgstr "Im Vollbildmodus spielen"
 
-msgid "Enable sound"
-msgstr "Ton einschalten"
+#~ msgid "Herdsman's Tent"
+#~ msgstr "Hirte"
 
-msgid "Branch Office"
-msgstr "Kontor"
-
-msgid "Storage Tent"
-msgstr "Lagerzelt"
-
-msgid "Sunsail"
-msgstr "Sonnensegel"
-
-msgid "Weaver's Tent"
-msgstr "Weber"
-
-msgid "Lumberjack Camp"
-msgstr "Holzfällerlager"
-
-msgid "Hunter's Tent"
-msgstr "Jäger"
-
-msgid "Herdsman's Tent"
-msgstr "Hirte"
-
-msgid "Fisherman's Tent"
-msgstr "Fischer"
-
-msgid "Pasture"
-msgstr "Futter"
-
-msgid "Ship"
-msgstr "Schiff"
-
-msgid "BuildingCollector"
-msgstr ""
-
-msgid "Sheep"
-msgstr "Schaf"
-
-msgid "Pirate Ship"
-msgstr "Piratenschiff"
-
-msgid "Trader"
-msgstr "Händler"
-
-msgid "AnimalCarriage"
-msgstr ""
-
-msgid "StorageCollector"
-msgstr ""
-
-msgid "FieldCollector"
-msgstr ""
-
-msgid "LumberjackCollector"
-msgstr ""
-
-msgid "SettlerCollector"
-msgstr ""
-
-msgid "FarmerCollector"
-msgstr ""
-
-msgid "Deer"
-msgstr "Reh"
-
-msgid "pioneer"
-msgstr "Pionier"
-
-msgid "red"
-msgstr "rot"
-
-msgid "blue"
-msgstr "blau"
-
-msgid "green"
-msgstr "grün"
-
-msgid "yellow"
-msgstr "gelb"
-
-msgid "pink"
-msgstr "rosa"
-
-msgid "cyan"
-msgstr "cyan"
-
-msgid "black"
-msgstr "schwarz"
-
-msgid "white"
-msgstr "weiß"
-
-msgid "A new settlement has been created by $player."
-msgstr "Eine neue Siedlung wurd von $player erschaffen."
-
-msgid "A new world has been created."
-msgstr "Eine neue Welt wurde erschaffen."
-
-msgid "coins"
-msgstr "Münzen"
-
-msgid "lamb wool"
-msgstr "Lammwolle"
-
-msgid "textile"
-msgstr "Kleidung"
-
-msgid "boards"
-msgstr "Bretter"
-
-msgid "food"
-msgstr "Nahrung"
-
-msgid "tools"
-msgstr "Werkzeuge"
-
-msgid "bricks"
-msgstr "Steine"
-
-msgid "wood"
-msgstr "Holz"
-
-msgid "grass"
-msgstr "Gras"
-
-msgid "wool"
-msgstr "Wolle"
-
-msgid "church"
-msgstr "Kirche"
-
-msgid "wild animal food 1"
-msgstr ""
-
-msgid "wild animal meat"
-msgstr ""
+#~ msgid "pioneer"
+#~ msgstr "Pionier"

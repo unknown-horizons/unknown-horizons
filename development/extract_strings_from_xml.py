@@ -92,11 +92,13 @@ def content_from_file(filename):
     strings = content_from_element('Label', parsed) + \
         content_from_element('Button', parsed) + \
         content_from_element('CheckBox', parsed) + \
-        content_from_element('Window', parsed, 'title')
+        content_from_element('Window', parsed, 'title') + \
+        content_from_element('TooltipButton', parsed, 'tooltip')
+
 
     if len(strings):
-        return '\t\t"%s" : {\n\t\t\t%s},' % (os.path.basename(filename), ',\n\t\t\t'.join(strings))
-    else: 
+        return '\t\t"%s" : {\n\t\t\t%s},' % (filename[12:], ',\n\t\t\t'.join(strings))
+    else:
         return ''
 
 xmlfiles = list_all_files()

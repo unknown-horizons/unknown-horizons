@@ -19,92 +19,49 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-text_translations = {}
+text_translations = dict()
 
 def set_translations():
 	global text_translations
 	text_translations = {
-		"hud_branch.xml" : {
-			"buildingNameLabel"           : _("Branch office (Branch class ROMAN)")},
 		"serverlobby.xml" : {
 			"player_label"                : _("Player:"),
 			"color_label"                 : _("Color:"),
 			"slots_label"                 : _("Slots:"),
 			"bots_label"                  : _("Bots:"),
 			"chatbutton"                  : _("chat")},
+		"popupbox.xml" : {
+			"headline"                    : _("Not Implemented Yet")},
 		"credits.xml" : {
-			"creditsIntroText"            : _("These guys contributed to Unknown Horizons"),
-#			"okButton"                    : _("You guys rock!"),
-			"credits_window"              : _("Credits")},
-		"inventory.xml" : {
-			"islandInventoryLabel"        : _("That's your island-wide inventory."),
-			"CoinsLabel"                  : _("Coins:"),
-			"LambWoolLabel"               : _("Lamb wool:"),
-			"TextileLabel"                : _("Textiles:"),
-			"BoardsLabel"                 : _("Boards:"),
-			"FoodLabel"                   : _("Food:"),
-			"1"                           : _("n/a"),
-			"2"                           : _("n/a"),
-			"3"                           : _("n/a"),
-			"4"                           : _("n/a"),
-			"5"                           : _("n/a"),
-#			"closeButton"                 : _("Close"),
-			"inventory_window"            : _("Inventory")},
+			"headline"                    : _("Contributors")},
 		"quitsession.xml" : {
-			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?"),
-#			"cancelButton"                : _("Cancel"),
-#			"okButton"                    : _("Ok"),
-			"quit_session_window"         : _("Quit Unknown Horizons")},
-		"hud_window_cityinfo.xml" : {
-			"city_info_label"             : _("City infos")},
-		"hud_ship.xml" : {
-			"buildingNameLabel"           : _("Ship name (Ship type)"),
-			"shipCanons"                  : _("0/0"),
-			"shipCrew"                    : _("0/0"),
-			"shipSpeed"                   : _("0/0")},
-		"load_disabled.xml" : {
-			"SorryLabel"                  : _("We're sorry, but the load function is not yet working."),
-#			"okButton"                    : _("Ok"),
-			"load_disabled_window"        : _("Oh noes")},
+			"headline"                    : _("Quit Session"),
+			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?")},
 		"settings.xml" : {
-			"settings_dialog_title"       : _("This is the Unknown Horizons settings dialog. Please make sure that you know, what you do."),
-			"language_label"              : _("Language:"),
-			"autosave_interval_label"     : _("Autosave interval"),
-			"number_of_autosaves_label"   : _("Number of saved autosaves:"),
-			"number_of_quicksaves_label"  : _("Number of saved quicksaves:"),
+			"headline"                    : _("Settings"),
 			"screen_resolution_label"     : _("Screen resolution:"),
-			"use_renderer_label"          : _("Used renderer:"),
 			"color_depth_label"           : _("Color depth:"),
+			"use_renderer_label"          : _("Used renderer:"),
 			"music_volume_label"          : _("Music volume:"),
 			"effect_volume_label"         : _("Effects volume:"),
+			"autosave_interval_label"     : _("Autosave interval:"),
 			"minutes_label"               : _("minutes"),
-#			"cancelButton"                : _("Cancel"),
-#			"okButton"                    : _("Ok"),
-			"screen_fullscreen"           : _("Use the full screen mode"),
-			"sound_enable_opt"            : _("Enable sound"),
-			"settings_window"             : _("Settings")},
+			"number_of_autosaves_label"   : _("Number of autosaves:"),
+			"number_of_quicksaves_label"  : _("Number of quicksaves:"),
+			"language_label"              : _("Language:"),
+			"screen_fullscreen"           : _("Full screen"),
+			"sound_enable_opt"            : _("Enable sound")},
+		"ingame_pdb_start.xml" : {
+			"headline"                    : _("Terminal debugmode")},
 		"ingame_save.xml" : {
-			"enter_filename_label"        : _("Enter filename:"),
-			"deleteButton"                : _("Delete"),
-#			"cancelButton"                : _("Cancel"),
-#			"okButton"                    : _("Ok"),
-			"ingame_save_window"          : _("Save game")},
+			"headline"                    : _("Save Game"),
+			"enter_filename_label"        : _("Enter filename:")},
 		"changes_require_restart.xml" : {
-			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons."),
-#			"okButton"                    : _("Ok"),
-			"restart_required_window"     : _("Changes require restart")},
+			"headline"                    : _("Restart Required"),
+			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons.")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
 			"version_label"               : _("Unknown Horizons Alpha 2009.1")},
-		"hud_buildinfo.xml" : {
-			"buildingNameLabel"           : _("Building name (Building Class ROMAN)"),
-			"tiles_label"                 : _("Tiles:"),
-			"tilesInfo"                   : _("10x10")},
-		"hud_res.xml" : {
-			"resBoles"                    : _("?"),
-			"resBoles"                    : _("?"),
-			"resTextiles"                 : _("?"),
-			"resTools"                    : _("?")},
 		"mainmenu.xml" : {
 			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
 			"start"                       : _("Singleplayer"),
@@ -116,32 +73,31 @@ def set_translations():
 			"loadgame"                    : _(" Continue Game "),
 			"chimebell"                   : _(" Chime The Bell ")},
 		"singleplayermenu.xml" : {
+			"headline"                    : _("NEW GAME - SINGLEPLAYER"),
+			"main_menu_label"             : _("Main menu:"),
 			"player_label"                : _("Player:"),
 			"color_label"                 : _("Color:"),
-			"main_menu_label"             : _("Main menu:"),
 			"start_game_label"            : _("Start game:")},
 		"chime.xml" : {
+			"headline"                    : _("Chime The Bell"),
 			"made_it_label"               : _("Yeah, you made it..."),
-			"deadlink_label"              : _("But this is a deadlink, sorry."),
-#			"okButton"                    : _("Back to business ..."),
-			"chime_window"                : _("Chime The Bell")},
-		"save_disabled.xml" : {
-			"save_disabled"               : _("We're sorry, but the save function is not yet working."),
-#			"okButton"                    : _("Ok"),
-			"save_disabled_window"        : _("Oh noes")},
+			"deadlink_label"              : _("But this is a deadlink, sorry.")},
+		"menu_panel.xml" : {
+			"destroy_tool"                : _("Destroy"),
+			"diplomacy"                   : _("Diplomacy\n(not yet \nimplemented)"),
+			"build"                       : _("Build menu"),
+			"helpLink"                    : _("Help"),
+			"gameMenuButton"              : _("Game menu")},
 		"quitgame.xml" : {
-			"quit_game_caption"           : _("Are you sure you want to Quit Unknown Horizons?"),
-#			"cancelButton"                : _("Cancel"),
-#			"okButton"                    : _("Ok"),
-			"quitgame_window"             : _("Quit Unknown Horizons")},
+			"headline"                    : _("Quit Game"),
+			"quit_game_caption"           : _("Are you sure you want to quit Unknown Horizons?")},
 		"boatbuilder.xml" : {
 			"boat_builder_window"         : _("boatbuilder")},
+		"ingame_pause.xml" : {
+			"headline"                    : _("Game paused")},
 		"ingame_load.xml" : {
-			"details_label"               : _(" Details:"),
-			"deleteButton"                : _("Delete"),
-#			"cancelButton"                : _("Cancel"),
-#			"okButton"                    : _("Ok"),
-			"load_game_window"            : _("Load game")},
+			"headline"                    : _("Load Game"),
+			"details_label"               : _("Details:")},
 		"gamemenu.xml" : {
 			"version_label"               : _("Unknown Horizons Alpha 2009.1"),
 			"start"                       : _("Return to Game"),
@@ -151,34 +107,10 @@ def set_translations():
 			"help"                        : _(" Help "),
 			"chimebell"                   : _(" Chime The Bell "),
 			"settings"                    : _(" Settings ")},
-		"hud_cityinfo.xml" : {
-			"cityName"                    : _("City name"),
-			"islandClass"                 : _("Class ROMAN"),
-			"islandInhabitants"           : _("Inhabitants")},
-		"hud_chat.xml" : {
-			"chat_label"                  : _("Chat"),
-			"sendButton"                  : _("Send")},
+		"change_name_dialog.xml" : {
+			"headline"                    : _("Change name")},
 		"help.xml" : {
-#			"okButton"                    : _("Close"),
-			"help_window"                 : _("Help")},
-		"hud_fertility.xml" : {
-			"fertility1"                  : _("?"),
-			"fertility2"                  : _("?")},
-		"general.xml" : {
-			"language_label"              : _("Language:"),
-			"autosave_interval_label"     : _("Autosave interval"),
-			"number_of_autosaves_label"   : _("Number of saved autosaves:"),
-			"number_of_quicksaves_label"  : _("Number of saved quicksaves:"),
-			"minutes_label"               : _("minutes")},
-		"graphics.xml" : {
-			"screen_resolution_label"     : _("Screen resolution:"),
-			"use_renderer_label"          : _("Used renderer:"),
-			"color_depth_label"           : _("Color depth:"),
-			"screen_fullscreen"           : _("Use the full screen mode")},
-		"audio.xml" : {
-			"music_volume_label"          : _("Music volume:"),
-			"effect_volume_label"         : _("Effects volume:"),
-			"sound_enable_opt"            : _("Enable sound")},
+			"headline"                    : _("Key Bindings")},
 		"buildings_gui/work_building_tab1.xml" : {
 			"StockLabel"                  : _("stock")},
 		"buildings_gui/work_building_tab4.xml" : {
@@ -203,6 +135,11 @@ def set_translations():
 			"CombatLabel"                 : _("combat")},
 		"tab_widget/tab_stock.xml" : {
 			"headline"                    : _("Inventory")},
+		"tab_widget/tab_overview_marketplace.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:"),
+			"tax_label"                   : _("Taxes:")},
 		"tab_widget/tab_branch_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
@@ -210,7 +147,23 @@ def set_translations():
 			"running_cost_label"          : _("Running Costs:")},
 		"tab_widget/tab_overview_ship.xml" : {
 			"health_label"                : _("Health:")},
-		"boatbuilder.xml" : {
+		"tab_widget/tab_account.xml" : {
+			"headline"                    : _("Account"),
+			"income_label"                : _("Income:"),
+			"taxes_label"                 : _("Taxes"),
+			"expenses_label"              : _("Expenses:"),
+			"running_costs_label"         : _("Running Costs:"),
+			"balance_label"               : _("Balance:")},
+		"tab_widget/tab_overview_settler.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:"),
+			"happiness_label"             : _("Happiness:"),
+			"needed_res_label"            : _("Needed Resources:"),
+			"inhabitants_label"           : _("Inhabitants:"),
+			"level_label"                 : _("Level:"),
+			"taxes_label"                 : _("Taxes:")},
+		"tab_widget/boatbuilder.xml" : {
 			"current_construction_label"  : _("Current construction progress:")},
 		"tab_widget/tab_boatbuilder_create.xml" : {
 			"overview_label"              : _("Select a boat to build:"),
@@ -235,16 +188,30 @@ def set_translations():
 		"buysellmenu/resources.xml" : {
 			"headline"                    : _("Select resources:")},
 		"build_menu/hud_build_tab0.xml" : {
-			"headline"                    : _("Build menu"),
+			"headline"                    : _("Sailor Buildings"),
 			"residental_label"            : _("Residents and Infrastructural"),
 			"service_label"               : _("Services"),
 			"companies_label"             : _("Companies"),
-			"military_label"              : _("Military")},
+			"military_label"              : _("Military"),
+			"resident-1"                  : _("Tent"),
+			"street-1"                    : _("Trail: \nNeeded for \ndelivering goods"),
+			"tree-1"                      : _("Tree"),
+			"main_square-1"               : _("Main square: \nSupplies citizens\nwith goods"),
+			"store-1"                     : _("Storage: \nExtends settlement,\nstores goods"),
+			"church-1"                    : _("Ministry: \nFullfiles religious \nneeds of citizens"),
+			"lighthouse-1"                : _("Signal fire: \nAllows the player \nto trade with \nthe free trader"),
+			"lumberjack-1"                : _("Lumberjack: \nHarvests wood \nand turns them \ninto boards "),
+			"hunter-1"                    : _("Hunter: \nHunts wild animals, \ngathers food "),
+			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth"),
+			"boat_builder-1"              : _("Boat builder: \nBuilds boats and \nsmall ships, \nbuilt on coast"),
+			"fisher-1"                    : _("Fisherman: \nFishes the sea, \ngathers food"),
+			"herder-1"                    : _("Farm: \nGrows field \ncrops and raises \nlivestock."),
+			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm"),
+			"potatofield-1"               : _("Potato Field:\nDelivers food \nNeeds a farm"),
+			"tower-1"                     : _("Lookout: \nIncreases the \nplayer's sight")},
 		"build_menu/hud_builddetail.xml" : {
 			"headline"                    : _("Build"),
 			"running_cost_label"          : _("Running Costs:")},
-		"hud_tears_menu.xml" : {
-			"ConfirmTearLabel"            : _("Do you want to remove this building?"),
-			"accept-1"                    : _("yes"),
-			"abort-1"                     : _("no")},
+		"build_menu/hud_build_tab1.xml" : {
+			"headline"                    : _("Pioneer Buildings")},
 	}
