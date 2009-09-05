@@ -24,21 +24,21 @@ import horizons.main
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
-from horizons.util.point import Point
+from horizons.util import Point
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingleWithSurrounding, BuildableSingle, BuildableSingleOnCoast
 from horizons.constants import UNITS
 
 
 class Farm(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
 
-	def __init__(self, **kwargs):
-		super(Farm, self).__init__(**kwargs)
+""" AnimalFarm is not used for now
 
 class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 18
-	""" This class builds pasturage in the radius automatically,
-	so that farm animals can graze there """
+	"" This class builds pasturage in the radius automatically,
+	so that farm animals can graze there ""
 
 	def __init__(self, **kwargs):
 		super(AnimalFarm, self).__init__(**kwargs)
@@ -67,10 +67,11 @@ class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurr
 		while len(self.animals) > 0:
 			self.animals[0].remove()
 		super(AnimalFarm, self).remove()
+"""
 
 
 class Lumberjack(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	"""Class representing a Lumberjack."""
+	pass
 
 class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
@@ -79,10 +80,7 @@ class Hunter(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuild
 	pass
 
 class Fisher(Selectable, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
-
-	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
-
+	pass
 
 class Church(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
 	def show_menu(self):

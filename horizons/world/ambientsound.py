@@ -23,8 +23,7 @@ import horizons.main
 
 class AmbientSound(object):
 	"""Support for playing ambient sounds, such as animal noise.
-	It relies on the subclass having an attribute "position", which must be either a
-	horizons.util.Point or horizons.util.Rect.
+	It relies on the subclass having an attribute "position", which must be either a Point or Rect.
 	"""
 	def __init__(self, positioning=True, **kwargs):
 		"""

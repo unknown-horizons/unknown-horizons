@@ -117,7 +117,7 @@ class Settings(Setting):
 	"""
 	@param config:
 	"""
-	def __init__(self, config = PATHS.USER_DIR + '/config.sqlite'):
+	def __init__(self, config = PATHS.USER_CONFIG_FILE):
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)
 		horizons.main.db("ATTACH ? AS config", config)

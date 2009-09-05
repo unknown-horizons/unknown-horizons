@@ -24,9 +24,9 @@ __all__ = []
 from living import livingProperty, LivingObject
 from stablelist import stablelist
 from color import Color
-from point import Point
-from rect import Rect
-from circle import Circle
+from shapes.point import Point
+from shapes.rect import Rect
+from shapes.circle import Circle
 from changelistener import Changelistener
 from weakmethod import WeakMethod
 from weaklist import WeakList

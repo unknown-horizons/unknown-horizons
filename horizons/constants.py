@@ -58,6 +58,7 @@ _user_dir = "%s/.unknown-horizons" % os.path.expanduser('~')
 class PATHS:
 	USER_DIR = _user_dir
 	LOG_DIR = _user_dir + "/log"
+	USER_CONFIG_FILE = _user_dir + "/config.sqlite"
 
 ## The Production States available in the game sorted by importance from least
 ## to most important

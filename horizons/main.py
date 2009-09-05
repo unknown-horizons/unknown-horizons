@@ -53,15 +53,10 @@ from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 
+
 def start(command_line_arguments):
 	"""Starts the horizons.
-	@param command_line_arguments: options object from optparse.OptionParser
-									start_dev_map: (bool), if True, don't show menu but start the development map
-									load_quicksave: (bool), if True, load the latest quicksave
-									start_map: (string), start map with specified map name
-									load_map: (string), load map with specified savegamename
-									unstable_features: (bool), whether unstable features should be enabled
-									debug: (bool), whether to enable debug messages
+	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
 	global db, settings, fife, gui, session, connection, ext_scheduler, savegamemanager, \
 		   action_sets, unstable_features, debug

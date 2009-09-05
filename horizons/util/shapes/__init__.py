@@ -19,30 +19,3 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'unit', 'sounds']
-
-import horizons.main
-from horizons.util import WorldObject
-
-class GenericCommand(object):
-	"""Code generator for trivial commands on an object.
-	It saves an object's world id, and executes a method specified as string on it in __call__
-
-	Use like this to call obj.mymethod(42, 1337):
-
-	class MyCommand(GenericCommand):
-	  def __init__(self, obj):
-	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
-	 """
-	def __init__(self, obj, method, *args):
-		self.obj_id = obj.getId()
-		self.method = method
-		self.args = args
-
-	def __call__(self, issuer):
-		obj = WorldObject.get_object_by_id(self.obj_id)
-		return getattr(obj, self.method)(*self.args)
-
-	def execute(self):
-		"""Execute command via horizons.main.session.manager"""
-		return horizons.main.session.manager.execute(self)

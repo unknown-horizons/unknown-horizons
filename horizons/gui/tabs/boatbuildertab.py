@@ -22,6 +22,7 @@ import pychan
 import math
 
 from tabinterface import TabInterface
+from horizons.command.production import AddProduction
 
 class BoatbuilderTab(TabInterface):
 
@@ -29,9 +30,7 @@ class BoatbuilderTab(TabInterface):
 		super(BoatbuilderTab, self).__init__(widget = widget)
 		self.instance = instance
 		self.init_values()
-		events = {
-			'createUnit': pychan.tools.callbackWithArguments(self.instance.add_production_by_id, 15)
-		}
+		events = { 'createUnit': AddProduction(self.instance, 15).execute }
 		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/work_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/work_a.png'

@@ -23,7 +23,7 @@ import fife
 import horizons.main
 
 from cursortool import CursorTool
-from horizons.util.point import Point
+from horizons.util import Point
 
 class NavigationTool(CursorTool):
 	"""The Selectiontool is used to select instances on the game screen.

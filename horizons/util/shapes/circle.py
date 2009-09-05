@@ -77,5 +77,5 @@ class Circle(object):
 
 
 
-from encoder import register_classes
+from horizons.util.encoder import register_classes
 register_classes(Circle)
