@@ -30,20 +30,20 @@
 	<!-- Exchange selectors -->
 	<Container size="260,550" position="20,150">
 		<Label text="Exchange:" name="exchange_label" position="0,3" />
-		<ImageButton name="size_1" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="5, 30" />
-		<Label position="13, 60" text="1t" />
+		<ImageButton name="size_1" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/button_small.png" down_image="content/gui/images/icons/hud/ship/button_small_d.png" hover_image="content/gui/images/icons/hud/ship/button_small_h.png" position="5, 25" />
+		<Label position="13, 58" text="1t" />
 		
-		<ImageButton name="size_2" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="47, 30" />
-		<Label position="55, 60" text="5t" />
+		<ImageButton name="size_2" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/button_small.png" down_image="content/gui/images/icons/hud/ship/button_small_d.png" hover_image="content/gui/images/icons/hud/ship/button_small_h.png" position="47, 25" />
+		<Label position="55, 58" text="5t" />
 	
-		<ImageButton name="size_3" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="90, 30" />
-		<Label position="95, 60" text="10t" />
+		<ImageButton name="size_3" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/button_small.png" down_image="content/gui/images/icons/hud/ship/button_small_d.png" hover_image="content/gui/images/icons/hud/ship/button_small_h.png" position="90, 25" />
+		<Label position="95, 58" text="10t" />
 	
-		<ImageButton name="size_4" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="132, 30" />
-		<Label position="137, 60" text="20t" />
+		<ImageButton name="size_4" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/button_small.png" down_image="content/gui/images/icons/hud/ship/button_small_d.png" hover_image="content/gui/images/icons/hud/ship/button_small_h.png" position="132, 25" />
+		<Label position="137, 58" text="20t" />
 	
-		<ImageButton name="size_5" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" position="174, 30" />
-		<Label position="179, 60" text="50t" />
+		<ImageButton name="size_5" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/button_small.png" down_image="content/gui/images/icons/hud/ship/button_small_d.png" hover_image="content/gui/images/icons/hud/ship/button_small_h.png" position="174, 25" />
+		<Label position="179, 58" text="50t" />
 	</Container>
 	
 	<Icon image="content/gui/images/background/hr.png" position="20,235" />

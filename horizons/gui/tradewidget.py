@@ -43,8 +43,8 @@ class TradeWidget(object):
 
 	images = {
 	  #'box_highlighted': 'content/gui/images/icons/hud/ship/civil_32_h.png',
-	  'box_highlighted': 'content/gui/images/icons/hud/ship/anchor.png',
-	  'box': 'content/gui/images/icons/hud/ship/civil_32.png'
+	  'box_highlighted': 'content/gui/images/icons/hud/ship/button_small_a.png',
+	  'box': 'content/gui/images/icons/hud/ship/button_small.png'
 	  }
 
 	def __init__(self, main_instance):
