@@ -23,6 +23,8 @@ sys.path.append("./horizons/util")
 from run_uh import init_environment
 init_environment()
 
+import horizons.main
+
 from dbreader import DbReader
 
 db = DbReader(dbfile)
@@ -98,6 +100,14 @@ def print_collectors():
 			collectors order by object_id asc"):
 		print "%s %s %s" % ( strw(get_obj_name(b), 18), count, get_obj_name(coll))
 
+def print_building_costs():
+	print 'Building costs:'
+	for b, in db("select distinct building from building_costs"):
+		s = strw(get_obj_name(b), 18)
+		for res, amount in db("select resource, amount from building_costs where building = ?", b):
+			s += str(amount)+' '+get_res_name(res)+', '
+		print s
+
 functions = {
 		'res' : print_res,
 		'b' : print_building,
@@ -107,6 +117,8 @@ functions = {
 		'lines' : print_production_lines,
 		'coll' : print_collectors,
 		'collectors' : print_collectors,
+		'bc' : print_building_costs,
+		'building_costs' : print_building_costs,
 		}
 
 args = sys.argv
