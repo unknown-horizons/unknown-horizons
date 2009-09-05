@@ -135,11 +135,6 @@ class IngameGui(LivingObject):
 			4: {
 		}
 		}
-		# Ported Buildmenu to new tabwidget
-
-		#self.tabwidgets['build'] = TabWidget(1, ingamegui=self, callbacks=callbacks_build)
-		#self.gui['build'] = self.tabwidgets['build'].widget
-		#self.gui['build'].findChild(name='headline').stylize('headline') # style definition for headline
 
 	def end(self):
 		self.gui['menuPanel'].mapEvents({

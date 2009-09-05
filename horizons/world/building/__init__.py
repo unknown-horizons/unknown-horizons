@@ -43,7 +43,7 @@ class BuildingClass(type):
 	log = logging.getLogger('world.building')
 
 	def __new__(self, id):
-		class_package, class_name = horizons.main.db("SELECT class_package, class_type FROM data.building WHERE rowid = ?", id)[0]
+		class_package, class_name = horizons.main.db("SELECT class_package, class_type FROM data.building WHERE id = ?", id)[0]
 		__import__('horizons.world.building.'+class_package)
 
 

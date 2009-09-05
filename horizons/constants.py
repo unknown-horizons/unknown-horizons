@@ -34,6 +34,7 @@ class UNITS:
 	WILD_ANIMAL_CLASS          = 1000013
 
 class BUILDINGS:
+	SETTLER_RUIN_CLASS = 10
 	TREE_CLASS = 17
 
 class RES:

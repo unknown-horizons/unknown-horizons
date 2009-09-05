@@ -22,21 +22,27 @@
 import logging
 
 import horizons.main
+
+from horizons.command import Command
 from horizons.world.building.building import *
 
-class Build(object):
+class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, rotation = 45, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
-		@param building: building class that is to be built.
+		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		@param tear: list of buildings to be teared
 		@param ship: ship instance
 		@param island: island worldid
 		"""
-		self.building_class = building.id
+		if hasattr(building, 'id'):
+			self.building_class = building.id
+		else:
+			assert type(building) == int
+			self.building_class = building
 		self._instance = instance
 		self.tear = tear or []
 		self.ship = None if ship is None else ship.getId()
@@ -88,7 +94,7 @@ class Build(object):
 
 		return building
 
-class Tear(object):
+class Tear(Command):
 	"""Command class that tears an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building):

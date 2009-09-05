@@ -21,8 +21,9 @@
 
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Point
+from horizons.command import Command
 
-class PlaySound(object):
+class PlaySound(Command):
 	"""Command class that plays the build sound. This has been moved to a separate
 	class, in order to be able to play only one sound for 20 buildings(like a group of
 	trees)

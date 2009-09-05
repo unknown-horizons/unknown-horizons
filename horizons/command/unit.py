@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.util import WorldObject
-from horizons.command import GenericCommand
+from horizons.command import GenericCommand, Command
 import horizons.main
 
 class Act(GenericCommand):
@@ -31,7 +31,7 @@ class Act(GenericCommand):
 	def __init__(self, unit, x, y):
 		super(Act, self).__init__(unit, "go", x, y)
 
-class CreateUnit(object):
+class CreateUnit(Command):
 	"""Command class that creates a unit.
 	@param id: Unit id that is to be created.
 	@param x, y: Units initial position

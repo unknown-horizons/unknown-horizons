@@ -24,7 +24,13 @@ __all__ = ['building', 'unit', 'sounds']
 import horizons.main
 from horizons.util import WorldObject
 
-class GenericCommand(object):
+class Command(object):
+	"""Base class for every Command."""
+	def execute(self):
+		"""Execute command via horizons.main.session.manager"""
+		return horizons.main.session.manager.execute(self)
+
+class GenericCommand(Command):
 	"""Code generator for trivial commands on an object.
 	It saves an object's world id, and executes a method specified as string on it in __call__
 
@@ -43,6 +49,3 @@ class GenericCommand(object):
 		obj = WorldObject.get_object_by_id(self.obj_id)
 		return getattr(obj, self.method)(*self.args)
 
-	def execute(self):
-		"""Execute command via horizons.main.session.manager"""
-		return horizons.main.session.manager.execute(self)

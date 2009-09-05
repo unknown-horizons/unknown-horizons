@@ -66,11 +66,13 @@ class Scheduler(LivingObject):
 		"""Adds a new CallbackObject instance to the callbacks list
 		@param callback_obj: CallbackObject type object, containing all neccessary  information
 		"""
-		if not (self.cur_tick + callback_obj.runin) in self.schedule:
-			self.schedule[self.cur_tick + callback_obj.runin] = []
 		if callback_obj.loops > 0:
 			callback_obj.loops -= 1
-		self.schedule[self.cur_tick + callback_obj.runin].append(callback_obj)
+		try:
+			self.schedule[self.cur_tick + callback_obj.runin].append(callback_obj)
+		except KeyError:
+			self.schedule[self.cur_tick + callback_obj.runin] = []
+			self.add_object(callback_obj)
 
 	def add_new_object(self, callback, class_instance, runin=1, loops=1):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
@@ -100,7 +102,7 @@ class Scheduler(LivingObject):
 		"""Removes all callbacks from the scheduler that belong to the class instance class_inst."""
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance() is class_instance:
+				if callback_obj.class_instance is class_instance:
 					self.schedule[key].remove(callback_obj)
 
 	def rem_call(self, instance, callback):
@@ -113,7 +115,7 @@ class Scheduler(LivingObject):
 		removed_calls = 0
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance() is instance and callback_obj.callback == callback:
+				if callback_obj.class_instance is instance and callback_obj.callback == callback:
 					self.schedule[key].remove(callback_obj)
 					removed_calls += 1
 		return removed_calls
@@ -130,7 +132,7 @@ class Scheduler(LivingObject):
 		calls = {}
 		for key in self.schedule:
 			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance() is instance:
+				if callback_obj.class_instance is instance:
 					if callback is None:
 						calls[callback_obj] = key - self.cur_tick
 					elif callback_obj.callback == callback:
@@ -160,21 +162,17 @@ class CallbackObject(object):
 		assert runin > 0, "Can't schedule callbacks in the past, runin must be a positive number"
 		assert (loops > 0) or (loops == -1), \
 			"Loop count must be a positive number or -1 for infinite repeat"
+		assert callable(callback)
 
-		self.callback = WeakMethod(callback)
-
-		# Check for persisting strong references
-		if horizons.main.debug:
-			import gc
-			if (class_instance in gc.get_referents(self.callback)):
-				del self.callback
-				raise ValueError("callback has strong reference to class_instance")
+		#self.callback = WeakMethod(callback)
+		self.callback = callback
 
 		self.scheduler = scheduler
 		self.runin = runin
 		self.loops = loops
-		self.class_instance = weakref.ref(class_instance, lambda ref: self.scheduler.rem_object(self))
+		#self.class_instance = weakref.ref(class_instance, lambda ref: self.scheduler.rem_object(self))
+		self.class_instance = class_instance
 
 	def __str__(self):
 		# for debugging
-		return "Callback("+str(self.callback)+" on "+str(self.class_instance())+")"
+		return "Callback("+str(self.callback)+" on "+str(self.class_instance)+")"

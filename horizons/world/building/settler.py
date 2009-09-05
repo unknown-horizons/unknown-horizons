@@ -26,10 +26,14 @@ import horizons.main
 from horizons.gui.tabs import TabWidget, SettlerOverviewTab, InventoryTab
 from building import BasicBuilding, Selectable
 from buildable import BuildableSingle
-from horizons.constants import RES, SETTLER
+from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
+from horizons.command.building import Build
 
+class SettlerRuin(BasicBuilding):
+	"""Building that appears when a settler got unhappy. The building does nothing."""
+	buildable_upon = True
 
 class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
@@ -160,6 +164,11 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 		if self.level == 0: # can't level down any more
 			# remove when this function is done
 			horizons.main.session.scheduler.add_new_object(self.remove, self)
+			# replace this building with a ruin
+			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
+			                self.position.origin.y)
+			horizons.main.session.scheduler.add_new_object(command.execute, command, 2)
+
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 		else:
 			self.level -= 1
