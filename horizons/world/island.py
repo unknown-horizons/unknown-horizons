@@ -218,6 +218,7 @@ class Island(WorldObject):
 					continue
 				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
 					tile.settlement = settlement
+					horizons.main.session.ingame_gui.minimap.update(coord)
 
 				building = tile.object
 				# assign buildings on tiles to settlement
@@ -227,7 +228,6 @@ class Island(WorldObject):
 
 		#TODO: inherit resources etc
 
-		horizons.main.session.ingame_gui.minimap.draw()
 
 	def add_building(self, building, player):
 		"""Adds a building to the island at the position x, y with player as the owner.

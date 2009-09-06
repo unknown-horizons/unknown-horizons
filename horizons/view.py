@@ -180,8 +180,8 @@ class View(Changelistener):
 		coords = self.cam.getLocation().getLayerCoordinates()
 		# TODO: check if acctual screen dimensions are calculated correctly
 		return Rect.init_from_topleft_and_size(coords.x, coords.y, \
-		            horizons.main.fife.settings.getScreenHeight()/32, \
-		            horizons.main.fife.settings.getScreenWidth()/32)
+		            horizons.main.fife.settings.getScreenWidth()/32, \
+		            horizons.main.fife.settings.getScreenHeight()/32)
 
 	def save(self, db):
 		loc = self.cam.getLocation().getExactLayerCoordinates()

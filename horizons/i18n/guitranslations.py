@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constatns import VERSION
+from horizons.constants import VERSION
 
 text_translations = dict()
 

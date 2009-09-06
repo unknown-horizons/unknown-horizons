@@ -46,9 +46,6 @@ class IngameGui(LivingObject):
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
-		self.minimap = Minimap(Rect(Point(620, 00), 120, 120), \
-													 horizons.main.session.view.renderer['GenericRenderer'])
-
 		self.gui['cityInfo'] = load_xml_translated('city_info.xml')
 		self.gui['cityInfo'].stylize('cityInfo')
 		self.gui['cityInfo'].child_finder = PychanChildFinder(self.gui['cityInfo'])
@@ -57,12 +54,13 @@ class IngameGui(LivingObject):
 			5
 		)
 
+		# self.gui['minimap'] is the guichan gui around the acctual minimap, which is saved
+		# in self.minimap
 		self.gui['minimap'] = load_xml_translated('minimap.xml')
 		self.gui['minimap'].position = (
 				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] -20,
 			4
 		)
-
 		self.gui['minimap'].show()
 		self.gui['minimap'].mapEvents({
 			'zoomIn' : horizons.main.session.view.zoom_in,
@@ -72,6 +70,9 @@ class IngameGui(LivingObject):
 			'speedUp' : horizons.main.session.speed_up,
 			'speedDown' : horizons.main.session.speed_down
 		})
+		# -300 is debug
+		self.minimap = Minimap(Rect(Point(self.gui['minimap'].position[0]+50 -300, 48), 120, 120), \
+													 horizons.main.session.view.renderer['GenericRenderer'])
 
 		self.gui['menuPanel'] = load_xml_translated('menu_panel.xml')
 		self.gui['menuPanel'].position = (
@@ -178,7 +179,7 @@ class IngameGui(LivingObject):
 			self.gui['status_extra_gold'].hide()
 
 	def status_set(self, label, value):
-		"""Sets a value on the status bar.
+		"""Sets a value on the status bar (available res of the settlement).
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
@@ -191,7 +192,7 @@ class IngameGui(LivingObject):
 		gui.resizeToContent()
 
 	def status_set_extra(self,label,value):
-		"""Sets a value on the extra status bar. (below normal status bar)
+		"""Sets a value on the extra status bar. (below normal status bar, needed res for build)
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
@@ -264,6 +265,7 @@ class IngameGui(LivingObject):
 		self.gui['cityInfo'].resizeToContent()
 
 	def update_resource_source(self):
+		"""Sets the values for resource status bar as well as the building costs"""
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
 			first = str(self.resource_source.inventory[res_id])
@@ -411,6 +413,4 @@ class IngameGui(LivingObject):
 	def load(self, db):
 		self.message_widget.load(db)
 
-		#import profile
-		#profile.runctx('self.minimap.draw()', globals(), locals(), '/tmp/a')
 		self.minimap.draw() # update minimap to new world

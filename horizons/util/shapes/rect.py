@@ -69,8 +69,8 @@ class Rect(object):
 	@classmethod
 	def init_from_topleft_and_size(cls, x, y, width, height):
 		self = cls.__new__(cls)
-		self.top = x
-		self.left = y
+		self.left = x
+		self.top = y
 		self.right = self.left + width
 		self.bottom = self.top + height
 		return self
@@ -175,7 +175,7 @@ class Rect(object):
 		         (self.bottom, self.right), (self.bottom, self.left) )
 
 	def __str__(self):
-		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.top, self.left, self.width, self.height)
+		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.left, self.top, self.width, self.height)
 
 	def __eq__(self, other):
 		if isinstance(other, Rect):
