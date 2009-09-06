@@ -83,4 +83,4 @@ class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, Basic
 	pass
 
 class Church(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
-	tabs=(ProductionOverviewTab) # don't show inventory, just production (i.e. running costs)
+	tabs=[ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)
