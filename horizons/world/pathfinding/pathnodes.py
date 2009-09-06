@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
 
 from horizons.util import Point
@@ -58,13 +57,13 @@ class IslandPathNodes(PathNodes):
 	def __init__(self, island):
 		super(IslandPathNodes, self).__init__()
 
-		self.island = weakref.ref(island)
+		self.island = island
 
 		# generate list of walkable tiles
 		# we keep this up to date, so that path finding can use it and we don't have
 		# to calculate it every time (rather expensive!).
 		self.nodes = []
-		for coord in self.island():
+		for coord in self.island:
 			if self.is_walkable(coord):
 				self.nodes.append(coord)
 
@@ -90,7 +89,7 @@ class IslandPathNodes(PathNodes):
 		      walls against enemies)
 		@param coord: tuple: (x, y)
 		"""
-		tile_object = self.island().get_tile(Point(*coord))
+		tile_object = self.island.get_tile(Point(*coord))
 
 		if tile_object is None:
 			return False

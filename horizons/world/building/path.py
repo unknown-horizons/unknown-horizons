@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import fife
 
 import horizons.main
@@ -41,17 +40,17 @@ class Path(BasicBuilding, BuildableLine):
 		self.__init()
 
 	def __init(self):
-		self.island().path_nodes.register_road(self)
+		self.island.path_nodes.register_road(self)
 		self.recalculate_orientation()
 
 	def remove(self):
 		super(Path, self).remove()
-		self.island().path_nodes.unregister_road(self)
+		self.island.path_nodes.unregister_road(self)
 		self.recalculate_surrounding_tile_orientation()
 
 	def recalculate_surrounding_tile_orientation(self):
-		for tile in self.island().get_surrounding_tiles(self.position.origin):
-			if tile is not None and self.island().path_nodes.is_road(tile.x, tile.y):
+		for tile in self.island.get_surrounding_tiles(self.position.origin):
+			if tile is not None and self.island.path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
 
 	action_offset_dict = {
@@ -67,11 +66,11 @@ class Path(BasicBuilding, BuildableLine):
 		# corresponding actions are saved in the db
 		action = ''
 		origin = self.position.origin
-		path_nodes = self.island().path_nodes
+		path_nodes = self.island.path_nodes
 
 		for action_part in sorted(self.action_offset_dict): # order is important here
 			offset = self.action_offset_dict[action_part]
-			tile = self.island().get_tile(origin.offset(*offset))
+			tile = self.island.get_tile(origin.offset(*offset))
 			if tile is not None and path_nodes.is_road(tile.x, tile.y):
 				action += action_part
 		if action == '':
@@ -94,9 +93,9 @@ class Bridge(BasicBuilding, BuildableSingle):
 	def init(self):
 		super(Bridge, self).init()
 		origin = self.position.origin
-		self.island = weakref.ref(horizons.main.session.world.get_island(origin))
-		for tile in self.island().get_surrounding_tiles(origin):
-			if tile is not None and self.island().path_nodes.is_road(tile.x, tile.y):
+		self.island = horizons.main.session.world.get_island(origin)
+		for tile in self.island.get_surrounding_tiles(origin):
+			if tile is not None and self.island.path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
 
 	@classmethod

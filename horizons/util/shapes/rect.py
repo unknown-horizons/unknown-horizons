@@ -24,9 +24,7 @@ from circle import Circle
 
 class Rect(object):
 	def __init__(self, *args):
-		if len(args) == 1 and isinstance(args[0], Rect): #args: rect
-			self.top, self.left, self.right, self.bottom = args[0].top, args[0].left, args[0].right, args[0].bottom
-		elif len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1], Point): #args: edge1, edge2
+		if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1], Point): #args: edge1, edge2
 			self.top = min(args[0].y, args[1].y)
 			self.left = min(args[0].x, args[1].x)
 			self.right = max(args[0].x, args[1].x)
@@ -82,6 +80,9 @@ class Rect(object):
 	@property
 	def width(self):
 		return self.right - self.left
+
+	def copy(self):
+		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
 
 	def distance(self, other):
 		"""Calculates distance to another object"""

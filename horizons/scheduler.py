@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
 
 import horizons.main
@@ -157,20 +156,17 @@ class CallbackObject(object):
 		@param class_instance: class instance the original function(not the lambda function!) belongs to.
 		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
-		@param weakref_aciton: A callback to register with the weak reference
 		"""
 		assert runin > 0, "Can't schedule callbacks in the past, runin must be a positive number"
 		assert (loops > 0) or (loops == -1), \
 			"Loop count must be a positive number or -1 for infinite repeat"
 		assert callable(callback)
 
-		#self.callback = WeakMethod(callback)
 		self.callback = callback
 
 		self.scheduler = scheduler
 		self.runin = runin
 		self.loops = loops
-		#self.class_instance = weakref.ref(class_instance, lambda ref: self.scheduler.rem_object(self))
 		self.class_instance = class_instance
 
 	def __str__(self):

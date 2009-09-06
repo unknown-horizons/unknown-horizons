@@ -46,7 +46,7 @@ class BuildingResourceHandler(ResourceHandler):
 
 	def remove(self):
 		super(BuildingResourceHandler, self).remove()
-		self.island().provider_buildings.remove(self)
+		self.island.provider_buildings.remove(self)
 
 	def set_active(self, production=None, active=True):
 		super(BuildingResourceHandler, self).set_active(production, active)

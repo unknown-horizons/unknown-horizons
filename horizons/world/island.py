@@ -251,7 +251,7 @@ class Island(WorldObject):
 		return building
 
 	def remove_building(self, building):
-		assert building.island() == self
+		assert building.island == self
 
 		# Reset the tiles this building was covering
 		for point in building.position:

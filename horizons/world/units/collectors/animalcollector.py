@@ -49,7 +49,7 @@ class AnimalCollector(BuildingCollector):
 				self.job.object.stop_after_job(self)
 
 	def cancel(self):
-		if self.job is not None and self.job.object is not None:
+		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
 				self.job.object.remove_stop_after_job()
 		super(AnimalCollector, self).cancel()
@@ -78,10 +78,7 @@ class AnimalCollector(BuildingCollector):
 
 	def finish_working(self):
 		"""Transfer res and such. Called when collector arrives at the animal"""
-		if self.job.object is not None:
-			# if there still is an animal, continue working
-			# if not, a superclass will handle it
-			self.get_animal()
+		self.get_animal()
 		super(AnimalCollector, self).finish_working()
 
 	def reached_home(self):
@@ -100,7 +97,6 @@ class AnimalCollector(BuildingCollector):
 
 	def stop_animal(self):
 		"""Tell animal to stop at the next occasion"""
-		#print self.id, 'STOP ANIMAL', self.job.object.id
 		self.job.object.stop_after_job(self)
 
 	def get_animal(self):
@@ -112,13 +108,12 @@ class AnimalCollector(BuildingCollector):
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
-		#print self.id, 'RELEASE ANIMAL', self.job.object.getId()
 		horizons.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
 class FarmAnimalCollector(AnimalCollector):
 	def get_animals_in_range(self):
-		buildings = self.home_building.island().get_providers_in_range(Circle(self.home_building.position.center(), self.home_building.radius))
+		buildings = self.home_building.island.get_providers_in_range(Circle(self.home_building.position.center(), self.home_building.radius))
 		animals = []
 		for building in buildings:
 			try:
@@ -130,7 +125,7 @@ class FarmAnimalCollector(AnimalCollector):
 
 class HunterCollector(AnimalCollector):
 	def get_animals_in_range(self):
-		return self.home_building.island().wild_animals
+		return self.home_building.island.wild_animals
 
 	def finish_working(self):
 		super(HunterCollector, self).finish_working()

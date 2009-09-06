@@ -20,7 +20,6 @@
 # ###################################################
 
 import operator
-import weakref
 import random
 import logging
 
@@ -101,8 +100,7 @@ class Collector(StorageHolder, Unit):
 		"""Removes the instance. Useful when the home building is destroyed"""
 		self.log.debug("Collector %s: remove called", self)
 		# remove from target collector list
-		if self.job is not None and self.job.object is not None and \
-			 self.state != self.states.moving_home:
+		if self.job is not None and self.state != self.states.moving_home:
 			# in the move_home state, there still is a job, but the collector is already deregistered
 			self.job.object.remove_incoming_collector(self)
 		self.hide()
@@ -301,25 +299,19 @@ class Collector(StorageHolder, Unit):
 		called after that time."""
 		self.log.debug("Collector %s begins working", self.getId())
 		assert self.job is not None, '%s job is non in begin_working' % self
-		if self.job.object is not None:
-			horizons.main.session.scheduler.add_new_object(self.finish_working, self, \
+		horizons.main.session.scheduler.add_new_object(self.finish_working, self, \
 																										 self.work_duration)
-			self.state = self.states.working
-		else:
-			self.reroute()
+		self.state = self.states.working
 
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources."""
 		self.log.debug("Collector %s finished working", self.getId())
-		if self.job.object is not None:
-			self.act("idle", self._instance.getFacingLocation(), True)
-			# transfer res
-			self.transfer_res()
-			# deregister at the target we're at
-			self.job.object.remove_incoming_collector(self)
-		else:
-			self.reroute()
+		self.act("idle", self._instance.getFacingLocation(), True)
+		# transfer res
+		self.transfer_res()
+		# deregister at the target we're at
+		self.job.object.remove_incoming_collector(self)
 
 	def transfer_res(self):
 		"""Transfers resources from target to collector inventory"""
@@ -354,11 +346,10 @@ class Collector(StorageHolder, Unit):
 			                      is supposed to now.
 		"""
 		if self.job is not None:
-			if self.job.object is not None:
-				self.job.object.remove_incoming_collector(self)
-				if self.state == self.states.working:
-					removed_calls = horizons.main.session.scheduler.rem_call(self, self.finish_working)
-					assert removed_calls == 1
+			self.job.object.remove_incoming_collector(self)
+			if self.state == self.states.working:
+				removed_calls = horizons.main.session.scheduler.rem_call(self, self.finish_working)
+				assert removed_calls == 1
 			self.job = None
 			self.state = self.states.idle
 		continue_action()
@@ -374,16 +365,12 @@ class Job(object):
 	"""Data structure for storing information of collector jobs"""
 	def __init__(self, obj, res, amount):
 		assert amount > 0
-		self._object = weakref.ref(obj)
+		self.object = obj
 		self.res = res
 		self.amount = amount
 
-		# this is rather a dummy
+		# this is rather a dummy for now
 		self.rating = amount
-
-	@property
-	def object(self):
-		return self._object()
 
 	def __str__(self):
 		return "Job res: %i amount: %i" % (self.res, self.amount)

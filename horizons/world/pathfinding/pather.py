@@ -230,11 +230,10 @@ class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
 	def __init__(self, unit):
 		super(RoadPather, self).__init__(unit, move_diagonal=False)
-		island = horizons.main.session.world.get_island(unit.position)
-		self.island = weakref.ref(island)
+		self.island = horizons.main.session.world.get_island(unit.position)
 
 	def _get_path_nodes(self):
-		return self.island().path_nodes.road_nodes
+		return self.island.path_nodes.road_nodes
 
 class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)

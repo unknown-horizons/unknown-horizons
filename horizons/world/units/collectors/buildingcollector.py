@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
-
 from horizons.util import WorldObject, Circle, Callback
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 
@@ -41,12 +39,8 @@ class BuildingCollector(Collector):
 		self.__init(home_building)
 
 	def __init(self, home_building):
-		self._home_building = weakref.ref(home_building)
+		self.home_building = home_building
 		self.register_at_home_building()
-
-	@property
-	def home_building(self):
-		return self._home_building()
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
@@ -82,6 +76,7 @@ class BuildingCollector(Collector):
 
 	def remove(self):
 		self.register_at_home_building(unregister=True)
+		self.home_building = None
 		super(BuildingCollector, self).remove()
 
 	def get_home_inventory(self):
@@ -112,8 +107,7 @@ class BuildingCollector(Collector):
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources and sends collector home."""
-		if self.job.object is not None:
-			self.move_home(callback=self.reached_home)
+		self.move_home(callback=self.reached_home)
 		super(BuildingCollector, self).finish_working()
 
 	def reroute(self):
@@ -153,7 +147,7 @@ class BuildingCollector(Collector):
 		"""Returns all buildings in range
 		Overwrite in subclasses that need ranges around the pickup."""
 		reach = Circle(self.home_building.position.center(), self.home_building.radius)
-		return self.home_building.island().get_providers_in_range(reach)
+		return self.home_building.island.get_providers_in_range(reach)
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""

@@ -44,10 +44,10 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
 	def __init(self, settlement):
 		self.inventory = settlement.inventory
 		self.inventory.add_change_listener(self._changed)
-		self.island().provider_buildings.append(self)
+		self.island.provider_buildings.append(self)
 
 	def remove(self):
-		self.island().provider_buildings.remove(self)
+		self.island.provider_buildings.remove(self)
 
 	def __del__(self):
 		self.inventory.adjust_limits(-30)
@@ -63,7 +63,7 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
 		"""Runs necessary steps to select the unit."""
 		# TODO Think about if this should go somewhere else (island, world)
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		for tile in self.island().grounds:
+		for tile in self.island.grounds:
 			if tile.settlement == self.settlement and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
 				horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None:

@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
 import random
 
@@ -50,9 +49,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 																				instance=instance, island=island, **kwargs)
 		self.__init(Point(x, y), rotation, owner, instance)
-		self.island = weakref.ref(island)
-		self.settlement = self.island().get_settlement(Point(x, y)) or \
-			self.island().add_settlement(self.position, self.radius, owner) if \
+		self.island = island
+		self.settlement = self.island.get_settlement(Point(x, y)) or \
+			self.island.add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
 
 	def __init(self, origin, rotation, owner, instance):
@@ -81,7 +80,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def remove(self):
 		"""Removes the building"""
 		self.log.debug("building: remove %s", self.getId())
-		self.island().remove_building(self)
+		self.island.remove_building(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
@@ -98,7 +97,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
 			self.getId(), self.__class__.id, self.position.origin.x, \
 			self.position.origin.y, self.rotation, \
-			self.health, (self.settlement or self.island()).getId())
+			self.health, (self.settlement or self.island).getId())
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
@@ -110,10 +109,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		self.__init(Point(x, y), rotation, owner, None)
 
-		island, self.settlement = self.load_location(db, worldid)
-		self.island = weakref.ref(island)
+		self.island, self.settlement = self.load_location(db, worldid)
 
-		self.island().add_building(self, self.owner)
+		self.island.add_building(self, self.owner)
 
 	def load_location(self, db, worldid):
 		"""
@@ -236,7 +234,7 @@ class Selectable(object):
 		"""Runs necessary steps to select the building."""
 		renderer = horizons.main.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, 255, 255, 255, 1)
-		for tile in self.island().grounds:
+		for tile in self.island.grounds:
 			if tile.settlement == self.settlement and \
 				 self.position.distance(Point(tile.x, tile.y)) <= self.radius and \
 				 any(x in tile.__class__.classes for x in ('constructible', 'coastline')):

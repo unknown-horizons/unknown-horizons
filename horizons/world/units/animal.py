@@ -20,7 +20,6 @@
 # ###################################################
 
 import random
-import weakref
 import logging
 
 import horizons.main
@@ -119,12 +118,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		# if it reaches HEALTH_LEVEL_TO_REPRODUCE, they reproduce
 		self.health = health if health is not None else WILD_ANIMAL.HEALTH_INIT_VALUE
 		self.can_reproduce = can_reproduce
-		self._home_island = weakref.ref(island)
+		self.home_island = island
 		self.home_island.wild_animals.append(self)
-
-	@property
-	def home_island(self):
-		return self._home_island()
 
 	def save(self, db):
 		super(WildAnimal, self).save(db)
