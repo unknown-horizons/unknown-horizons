@@ -71,7 +71,7 @@ class IngameGui(LivingObject):
 			'speedDown' : horizons.main.session.speed_down
 		})
 		# -300 is debug
-		self.minimap = Minimap(Rect(Point(self.gui['minimap'].position[0]+50 -300, 48), 120, 120), \
+		self.minimap = Minimap(Rect(Point(self.gui['minimap'].position[0]+377 -300, 55), 120, 120), \
 													 horizons.main.session.view.renderer['GenericRenderer'])
 
 		self.gui['menuPanel'] = load_xml_translated('menu_panel.xml')

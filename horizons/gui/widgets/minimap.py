@@ -28,9 +28,9 @@ from horizons.util import Changelistener, Point, Rect
 class Minimap(Changelistener):
 	"""Draws Minimap to a specified location."""
 	water_id, island_id, player_id, cam_border = range(0, 4)
-	colors = { 0: (0,   0, 255),
-	           1: (0, 255,   0),
-	           2: (255, 0,   0),
+	colors = { 0: (190, 175, 152),
+	           1: (137, 117, 87),
+	           2: (147, 18, 18),
 	           3: (1,   1,   1) }
 
 	def __init__(self, rect, renderer):
