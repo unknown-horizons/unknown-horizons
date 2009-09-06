@@ -53,11 +53,6 @@ class Minimap(Changelistener):
 		"""Recalculates and draws the whole minimap of horizons.main.session.world or world.
 		The world you specified is reused for every operation until the next draw().
 		"""
-		# <DEBUG>
-		if not horizons.main.unstable_features:
-			return
-		# </DEBUG>
-
 		if world is None:
 			world = horizons.main.session.world
 		if not world.inited:
@@ -72,11 +67,6 @@ class Minimap(Changelistener):
 
 	def update_cam(self):
 		"""Redraw camera border."""
-		# <DEBUG>
-		if not horizons.main.unstable_features:
-			return
-		# </DEBUG>
-
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
 		displayed_area = horizons.main.session.view.get_displayed_area()
@@ -106,11 +96,6 @@ class Minimap(Changelistener):
 	def update(self, tup):
 		"""Recalculate and redraw minimap for real world coord tup
 		@param tup: (x, y)"""
-		# <DEBUG>
-		if not horizons.main.unstable_features:
-			return
-		# </DEBUG>
-
 		minimap_point = self._world_coord_to_minimap_coord(tup)
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], 1, 1)
 		self._recalculate(rect)
