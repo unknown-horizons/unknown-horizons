@@ -126,13 +126,11 @@ class World(LivingObject):
 		self.grounds = []
 		self.ground_map = {}
 		default_grounds = horizons.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
-		for x in xrange(self.min_x, self.max_x, 10):
-			for y in xrange(self.min_y, self.max_y, 10):
+		for x in xrange(self.min_x, self.max_x):
+			for y in xrange(self.min_y, self.max_y):
 				ground = default_grounds(x, y)
 				self.grounds.append(ground)
-				for x_offset in xrange(0, 10):
-					for y_offset in xrange(0, 10):
-						self.ground_map[(x+x_offset, y+y_offset)] = weakref.ref(ground)
+				self.ground_map[(x, y)] = weakref.ref(ground)
 		for i in self.islands:
 			for g in i.grounds:
 				if (g.x, g.y) in self.ground_map:
