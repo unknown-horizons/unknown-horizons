@@ -28,6 +28,7 @@ from horizons.world.production.production import Production
 
 
 class ResourceHandler(StorageHolder):
+	tabs=(ProductionOverviewTab, InventoryTab)
 
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
@@ -237,9 +238,6 @@ class ResourceHandler(StorageHolder):
 
 		active = self.is_active(production)
 		self.set_active(production, active = not active)
-
-	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self)]))
 
 	## PROTECTED METHODS
 	def _get_productions(self):

@@ -24,7 +24,7 @@ import logging
 import horizons.main
 
 from horizons.gui.tabs import TabWidget, SettlerOverviewTab, InventoryTab
-from building import BasicBuilding, Selectable
+from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
 from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
@@ -35,11 +35,13 @@ class SettlerRuin(BasicBuilding):
 	"""Building that appears when a settler got unhappy. The building does nothing."""
 	buildable_upon = True
 
-class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
+class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	log = logging.getLogger("world.building.settler")
 
 	production_class = SettlerProduction
+
+	tabs = (SettlerOverviewTab, InventoryTab)
 
 	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
@@ -176,10 +178,6 @@ class Settler(Selectable, BuildableSingle, CollectingProducerBuilding, BasicBuil
 			# reset happiness value for new level
 			self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
-
-	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs =[SettlerOverviewTab(self), \
-																																InventoryTab(self)]))
 
 	def save(self, db):
 		super(Settler, self).save(db)

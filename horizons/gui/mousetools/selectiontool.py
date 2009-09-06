@@ -62,15 +62,6 @@ class SelectionTool(NavigationTool):
 				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
 																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
 			selectable = []
-			#instances = horizons.main.session.view.cam.getMatchingInstances(\
-				#fife.Rect(min(self.select_begin[0], evt.getX()), \
-							#min(self.select_begin[1], evt.getY()), \
-							#abs(evt.getX() - self.select_begin[0]), \
-							#abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.GROUND])
-			#for i in instances:
-				#instance = WorldObject.get_object_by_id(int(i.getId()))
-				#if hasattr(instance, 'select'):
-					#selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 									min(self.select_begin[1], evt.getY()), \
@@ -116,12 +107,12 @@ class SelectionTool(NavigationTool):
 		evt.consume()
 
 	def apply_select(self):
+		"""Called when selected instances changes. (Shows their menu)"""
 		if len(horizons.main.session.selected_instances) > 1:
-			pass #todo: show multi select menu
+			pass
 		elif len(horizons.main.session.selected_instances) == 1:
 			for i in horizons.main.session.selected_instances:
-				if hasattr(i, 'show_menu'):
-					i.show_menu()
+				i.show_menu()
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
@@ -129,12 +120,6 @@ class SelectionTool(NavigationTool):
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			selectable = []
-			#instances = horizons.main.session.view.cam.getMatchingInstances(\
-				#fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.GROUND])
-			#for i in instances:
-				#instance = WorldObject.get_object_by_id(int(i.getId()))
-				#if hasattr(instance, 'select'):
-					#selectable.append(instance)
 			instances = horizons.main.session.view.cam.getMatchingInstances(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
@@ -156,7 +141,7 @@ class SelectionTool(NavigationTool):
 			target_mapcoord = horizons.main.session.view.cam.toMapCoordinates(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			for i in horizons.main.session.selected_instances:
-				if isinstance(i, Unit):
+				if i.movable:
 					horizons.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
 			""" old code for moving just one unit (kept for reference):
 			if len(horizons.main.session.selected_instances) == 1 and \

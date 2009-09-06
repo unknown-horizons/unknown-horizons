@@ -37,6 +37,7 @@ class Ship(NamedObject, Unit):
 	@param y: int y position
 	"""
 	pather_class = ShipPather
+	tabs = (ShipOverviewTab, ShipInventoryTab)
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
@@ -85,13 +86,6 @@ class Ship(NamedObject, Unit):
 		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		horizons.main.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.getId()))
 		horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
-
-	def show_menu(self):
-		tab = TabWidget(tabs=[ShipOverviewTab(self), ShipInventoryTab(self)])
-			#'stock_ship': {
-			#	'trade': horizons.main.fife.pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(self))
-			#}
-		horizons.main.session.ingame_gui.show_menu(tab)
 
 	def go(self, x, y):
 		"""Moves the ship.
@@ -143,11 +137,9 @@ class Ship(NamedObject, Unit):
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
+	tabs = ()
 	def get_default_name(self):
 		return horizons.main.db("SELECT name FROM data.shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0]
-
-	def show_menu(self):
-		pass
 
 	def go(self, x, y):
 		pass
@@ -155,15 +147,11 @@ class PirateShip(Ship):
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
-
-	def show_menu(self):
-		pass
+	tabs = ()
 
 	def go(self, x, y):
 		pass
 
 class FisherShip(Ship):
 	"""Represents a fisher ship."""
-
-	def show_menu(self):
-		pass
+	tabs = ()

@@ -20,7 +20,7 @@
 # ###################################################
 
 
-from building import BasicBuilding, Selectable
+from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleOnCoast
 from horizons.util import Point
 from horizons.gui.tabs import ProductionOverviewTab, InventoryTab, BoatbuilderTab, TabWidget
@@ -30,25 +30,9 @@ from collectingbuilding import CollectingBuilding
 
 import horizons.main
 
-class BoatBuilder(Selectable, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+	tabs = ProductionOverviewTab, BoatbuilderTab
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
 		self.inventory.limit = 10
-
-	@classmethod
-	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
-		#todo: check cost line
-		coast_tile_found = False
-		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
-			tile = island.get_tile(Point(xx, yy))
-			classes = tile.__class__.classes
-			if 'coastline' in classes:
-				coast_tile_found = True
-			elif 'constructible' not in classes:
-				return None
-
-		return {} if coast_tile_found else None
-
-	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self), InventoryTab(self), BoatbuilderTab(self)]))

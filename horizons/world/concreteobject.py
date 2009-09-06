@@ -31,6 +31,9 @@ class ConcretObject(WorldObject):
 
 	Assumes that object has a member _instance.
 	"""
+	movable = False # whether instance can move
+	tabs = [] # iterable collection of classes of tabs to show when selected
+
 	def __init__(self, **kwargs):
 		super(ConcretObject, self).__init__(**kwargs)
 
@@ -66,3 +69,9 @@ class ConcretObject(WorldObject):
 		self._instance = None
 		horizons.main.session.scheduler.rem_all_classinst_calls(self)
 		super(ConcretObject, self).remove()
+
+	def show_menu(self):
+		"""Shows tabs from self.__class__.tabs, if there are any"""
+		if len(self.tabs) > 0:
+			tabs = [ tabclass(self) for tabclass in self.tabs ]
+			horizons.main.session.ingame_gui.show_menu(TabWidget(tabs=tabs))

@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import BasicBuilding, Selectable
+from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
 
-class Housing(BasicBuilding, Selectable, BuildableSingle):
+class Housing(BasicBuilding, SelectableBuilding, BuildableSingle):
 
 	def save(self, db):
 		super(Housing, self).save(db)

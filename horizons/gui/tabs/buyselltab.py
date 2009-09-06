@@ -36,9 +36,9 @@ class BuySellTab(TabInterface):
 
 	dummy_icon_path = "content/gui/images/icons/hud/build/dummy_btn.png"
 
-	def __init__(self, settlement, slots = 3):
+	def __init__(self, instance, slots = 3):
 		super(BuySellTab, self).__init__(widget = 'buysellmenu/buysellmenu.xml')
-		self.settlement = settlement
+		self.settlement = instance.settlement
 		self.init_values()
 		self.button_up_image = 'content/gui/images/icons/hud/common/buy_sell_res_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/buy_sell_res_a.png'

@@ -25,17 +25,17 @@ from horizons.world.building.collectingproducerbuilding import CollectingProduce
 from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util import Point
-from building import BasicBuilding, Selectable
+from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleWithSurrounding, BuildableSingle, BuildableSingleOnCoast
 from horizons.constants import UNITS
 
 
-class Farm(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 """ AnimalFarm is not used for now
 
-class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
+class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 18
 	"" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there ""
@@ -70,19 +70,17 @@ class AnimalFarm(Selectable, CollectingProducerBuilding, BuildableSingleWithSurr
 """
 
 
-class Lumberjack(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Weaver(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Hunter(Selectable, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(Selectable, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
-class Church(Selectable, ProducerBuilding, BuildableSingle, BasicBuilding):
-	def show_menu(self):
-		# don't show inventory, just production (i.e. running costs)
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs= [ProductionOverviewTab(self)]))
+class Church(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
+	tabs=(ProductionOverviewTab) # don't show inventory, just production (i.e. running costs)

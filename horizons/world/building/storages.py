@@ -27,15 +27,16 @@ from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, In
 		 MarketPlaceOverviewTab, AccountTab
 from horizons.util import Point, WorldObject
 from horizons.constants import UNITS
-from building import BasicBuilding, Selectable
+from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
 
-class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
+class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by branch office, storage tent.
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
+	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab)
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.__init(self.settlement)
@@ -69,9 +70,6 @@ class StorageBuilding(Selectable, BuildableSingle, StorageResourceHandler, \
 				if tile.object is not None:
 					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
-	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [BranchOfficeOverviewTab(self), InventoryTab(self), BuySellTab(self.settlement)]))
-
 	def deselect(self):
 		"""Runs neccassary steps to deselect the unit."""
 		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
@@ -97,9 +95,8 @@ class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
 
 
 class MarketPlace(StorageBuilding):
-	def show_menu(self):
-		horizons.main.session.ingame_gui.show_menu(TabWidget(tabs = [MarketPlaceOverviewTab(self), AccountTab(self.settlement)]))
+	tabs = (MarketPlaceOverviewTab, AccountTab)
 
 	def select(self):
 		# storage buildings select whole settlement; market place should behave normally
-		return Selectable.select(self)
+		return SelectableBuilding.select(self)

@@ -48,6 +48,8 @@ class MovingObject(ConcretObject):
 	- get_move_target
 	- is_moving
 	"""
+	movable = True
+
 	log = logging.getLogger("world.units")
 
 	pather_class = None # overwrite this with a descendant of AbstractPather

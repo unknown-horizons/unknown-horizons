@@ -24,9 +24,9 @@ from tabinterface import TabInterface
 class AccountTab(TabInterface):
 	"""Display basic income and expenses of a settlement"""
 
-	def __init__(self, settlement):
+	def __init__(self, instance):
 		super(AccountTab, self).__init__(widget = 'tab_widget/tab_account.xml')
-		self.settlement = settlement
+		self.settlement = instance.settlement
 		self.init_values()
 
 	def refresh(self):

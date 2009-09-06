@@ -228,7 +228,6 @@ class BuildableSingleOnCoast(BuildableSingle):
 	"""BranchOffice, BoatBuilder, Fisher"""
 	@classmethod
 	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
-		#todo: check cost line
 		coast_tile_found = False
 		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
 			tile = island.get_tile(Point(xx, yy))

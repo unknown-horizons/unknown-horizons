@@ -229,7 +229,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 
 
-class Selectable(object):
+class SelectableBuilding(object):
 	def select(self):
 		"""Runs necessary steps to select the building."""
 		renderer = horizons.main.session.view.renderer['InstanceRenderer']
