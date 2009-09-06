@@ -74,6 +74,7 @@ class CollectorAnimal(Animal):
 		"""Search for a job, only called if the collector does not have a job."""
 		self.log.debug("CollectorAnimal %s search job", self.getId())
 		if self.collector is not None:
+			# tell the animalcollector to pick me up
 			self.collector.pickup_animal()
 			self.collector = None
 			self.state = self.states.stopped

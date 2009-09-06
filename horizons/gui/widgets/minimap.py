@@ -67,6 +67,8 @@ class Minimap(Changelistener):
 
 	def update_cam(self):
 		"""Redraw camera border."""
+		if not self.world.inited:
+			return # don't draw while loading
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
 		displayed_area = horizons.main.session.view.get_displayed_area()
@@ -96,6 +98,8 @@ class Minimap(Changelistener):
 	def update(self, tup):
 		"""Recalculate and redraw minimap for real world coord tup
 		@param tup: (x, y)"""
+		if not self.world.inited:
+			return # don't draw while loading
 		minimap_point = self._world_coord_to_minimap_coord(tup)
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], 1, 1)
 		self._recalculate(rect)
