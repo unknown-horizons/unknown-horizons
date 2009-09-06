@@ -41,8 +41,6 @@ class Minimap(Changelistener):
 		self.location = rect
 		self.renderer = renderer
 
-		self.coords_data = {} # save what should be displayed at (x,y) in self.location. (x, y) -> id.
-
 		# save all GenericRendererNodes here, so they don't need to be constructed multiple times
 		self.renderernodes = {}
 		# pull dereferencing out of loop
@@ -50,7 +48,6 @@ class Minimap(Changelistener):
 		fife_Point = fife.Point
 		for i in self.location.tupel_iter():
 			self.renderernodes[ i ] = GenericRendererNode( fife_Point( *i ) )
-		print 'MINIMAP LOC', self.location
 
 	def draw(self, world = None):
 		"""Recalculates and draws the whole minimap of horizons.main.session.world or world.
@@ -67,22 +64,25 @@ class Minimap(Changelistener):
 			return # don't draw while loading
 		self.world = world # use this from now on, until next redrawing
 
-		print 'WORLD LOC', world.map_dimensions
 		# update cam when cam updates
 		if not horizons.main.session.view.has_change_listener(self.update_cam):
 			horizons.main.session.view.add_change_listener(self.update_cam)
 
 		self._recalculate()
-		#self._redraw()
 
 	def update_cam(self):
 		"""Redraw camera border."""
+		# <DEBUG>
+		if not horizons.main.unstable_features:
+			return
+		# </DEBUG>
+
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
 		displayed_area = horizons.main.session.view.get_displayed_area()
-		# TODO: consider rotation of cam
 		minimap_corners_as_renderer_node = []
 		for corner in displayed_area.get_corners():
+			# check if the corners are outside of the screen
 			corner = list(corner)
 			if corner[0] > self.world.max_x:
 				corner[0] = self.world.max_x
@@ -106,18 +106,17 @@ class Minimap(Changelistener):
 	def update(self, tup):
 		"""Recalculate and redraw minimap for real world coord tup
 		@param tup: (x, y)"""
-		#print 'tup',tup
-		#print 'loc', self.location
-		#print 'world', self.world.map_dimensions
+		# <DEBUG>
+		if not horizons.main.unstable_features:
+			return
+		# </DEBUG>
+
 		minimap_point = self._world_coord_to_minimap_coord(tup)
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], 1, 1)
-		#print 'target',rect
-		#import pdb ; pdb.set_trace()
 		self._recalculate(rect)
-		#self._redraw(rect)
 
 	def _recalculate(self, where = None):
-		"""Calculate which pixel of the minimap should display what. This gets saved in coords_data.
+		"""Calculate which pixel of the minimap should display what and draw it
 		@param where: Rect of minimap coords. Defaults to self.location"""
 		if where is None:
 			where = self.location
@@ -135,7 +134,9 @@ class Minimap(Changelistener):
 		world_min_x = self.world.min_x
 		world_min_y = self.world.min_y
 		get_island = self.world.get_island
-		water_id, island_id, player_id = self.water_id, self.island_id, self.player_id
+		water_col, island_col, player_col = \
+		         [ self.colors[i] for i in [self.water_id, self.island_id, self.player_id ] ]
+		color = None
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
@@ -173,36 +174,14 @@ class Minimap(Changelistener):
 					settlement = island.get_settlement(real_map_point)
 					if settlement is None:
 						# island without settlement
-						self.coords_data[ minimap_point ] = island_id
+						color = island_col
 					else:
 						# pixel belongs to a player
-						self.coords_data[ minimap_point ] = player_id
+						color = player_col
 				else:
-					self.coords_data[ minimap_point ] = water_id
+					color = water_col
 
-				self.renderer.addPoint("minimap", self.renderernodes[minimap_point], \
-				                  *self.colors[ self.coords_data[ minimap_point ] ])
-
-	def _redraw(self, where = None):
-		"""Draws the data from coords_data.
-		@param where: Rect, minimap coords where to draw. None for whole minimap"""
-		colors = self.colors
-		renderer = self.renderer
-		renderer.removeAll("minimap") # remove old pixels
-
-		water_id = self.water_id
-		# draw each pixel
-		if where is None:
-			for tup, val in self.coords_data.iteritems():
-				if val == water_id: continue
-				renderer.addPoint("minimap", self.renderernodes[tup], *colors[val])
-		else:
-			for tup in where.tupel_iter():
-				color = colors[ self.coords_data[tup] ]
-				if color == water_id: continue
-				renderer.addPoint("minimap", self.renderernodes[tup], *color)
-
-		self.update_cam()
+				self.renderer.addPoint("minimap", self.renderernodes[minimap_point], *color)
 
 	def _get_world_to_minimap_ratio(self):
 		world_height = self.world.map_dimensions.height
