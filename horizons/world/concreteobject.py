@@ -22,6 +22,7 @@
 import horizons.main
 
 from horizons.util import WorldObject, Callback
+from horizons.gui.tabs import TabWidget
 
 class ConcretObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.

@@ -23,7 +23,15 @@ from horizons.util import WorldObject
 from horizons.command import GenericCommand, Command
 import horizons.main
 
-class Act(GenericCommand):
+class GenericUnitCommand(GenericCommand):
+	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
+	def __call__(self, issuer):
+		if self._get_object().owner.getId() != issuer.getId():
+			return
+		else:
+			super(GenericUnitCommand, self).__call__(issuer)
+
+class Act(GenericUnitCommand):
 	"""Command class that moves a unit.
 	@param unit: Instance of Unit
 	@param x, y: float coordinates where the unit is to be moved.

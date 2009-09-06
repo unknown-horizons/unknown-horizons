@@ -40,12 +40,15 @@ class GenericCommand(Command):
 	  def __init__(self, obj):
 	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
 	 """
-	def __init__(self, obj, method, *args):
+	def __init__(self, obj, method, *args, **kwargs):
 		self.obj_id = obj.getId()
 		self.method = method
 		self.args = args
+		self.kwargs = kwargs
 
 	def __call__(self, issuer):
-		obj = WorldObject.get_object_by_id(self.obj_id)
-		return getattr(obj, self.method)(*self.args)
+		return getattr(self._get_object(), self.method)(*self.args, **self.kwargs)
+
+	def _get_object(self):
+		return WorldObject.get_object_by_id(self.obj_id)
 

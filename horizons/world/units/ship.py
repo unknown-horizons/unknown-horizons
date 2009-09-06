@@ -141,16 +141,9 @@ class PirateShip(Ship):
 	def get_default_name(self):
 		return horizons.main.db("SELECT name FROM data.shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0]
 
-	def go(self, x, y):
-		pass
-
-
 class TradeShip(Ship):
 	"""Represents a trade ship."""
 	tabs = ()
-
-	def go(self, x, y):
-		pass
 
 class FisherShip(Ship):
 	"""Represents a fisher ship."""
