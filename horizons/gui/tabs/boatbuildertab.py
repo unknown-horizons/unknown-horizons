@@ -43,7 +43,7 @@ class BoatbuilderTab(TabInterface):
 		progress = self.instance.get_production_progress()
 		self.widget.findChild(name='progress').progress = progress*100
 		self.widget.findChild(name='current_construction_label').text = \
-				_("Current construction progress:")+" "+str(math.floor(progress*100))+"%"
+				_("Construction progress:")+" "+str(math.floor(progress*100))+"%"
 
 	def show(self):
 		if not self.instance.inventory.has_change_listener(self.refresh):

@@ -308,6 +308,8 @@ class SingleUseProduction(Production):
 	def __init__(self, inventory, prod_line_id, callback=None, **kwargs):
 		"""
 		@param callback: Callable, gets called when construction is done.
+						 Needs to take at least one parameter, the
+						 production_line instance
 		"""
 		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
 		if callback is not None:
@@ -319,7 +321,7 @@ class SingleUseProduction(Production):
 		self.state = PRODUCTION_STATES.done
 		self.on_remove()
 		if self.callback is not None:
-			self.callback()
+			self.callback(self)
 
 
 class ProgressProduction(Production):
@@ -410,6 +412,6 @@ class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
 		# functions
 		self.progress = 0
 		self._give_produced_res()
-		self.state = PRODUCTION_STATES.done
-		self.callback()
+		self._state = PRODUCTION_STATES.done
+		self.callback(self)
 		self.on_remove()

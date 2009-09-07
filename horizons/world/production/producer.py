@@ -138,9 +138,10 @@ class QueueProducer(Producer):
 			   (len(self.production_queue) > 0)
 
 
-	def on_production_finished(self):
+	def on_production_finished(self, production_line):
 		"""Callback used for the SingleUseProduction"""
-		self.start_next_production()
+		self.remove_production(production_line)
+		horizons.main.session.scheduler.add_new_object(self.start_next_production(), self)
 
 
 	def start_next_production(self):
@@ -148,9 +149,12 @@ class QueueProducer(Producer):
 		print "Start next?"
 		if self.check_next_production_startable():
 			print "yes"
+			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			self.add_production(self.production_class(inventory=self.inventory, prod_line_id=production_line_id, callback=self.on_production_finished))
+		else:
+			self.set_active(active=False)
 
 
 class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
@@ -164,6 +168,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 
 	def __init__(self, **kwargs):
 		super(UnitProducerBuilding, self).__init__(**kwargs)
+		self.set_active(active=False)
 
 	def get_production_progress(self):
 		"""Returns the current progress of the active production."""
@@ -172,8 +177,9 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 			return production.progress
 		return 0 # No production available
 
-	def on_production_finished(self):
+	def on_production_finished(self, production_line):
 		self.__create_unit()
+		super(UnitProducerBuilding, self).on_production_finished(production_line)
 
 	#----------------------------------------------------------------------
 	def __create_unit(self):
