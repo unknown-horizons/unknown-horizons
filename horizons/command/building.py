@@ -37,6 +37,7 @@ class Build(Command):
 		@param tear: list of buildings to be teared
 		@param ship: ship instance
 		@param island: island worldid
+		@param settlement: settlement worldid or None
 		"""
 		if hasattr(building, 'id'):
 			self.building_class = building.id

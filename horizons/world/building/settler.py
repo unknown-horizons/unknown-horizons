@@ -168,7 +168,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			horizons.main.session.scheduler.add_new_object(self.remove, self)
 			# replace this building with a ruin
 			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
-			                self.position.origin.y)
+			                self.position.origin.y, island=self.island, settlement=self.settlement)
 			horizons.main.session.scheduler.add_new_object(command.execute, command, 2)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)

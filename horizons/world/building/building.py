@@ -243,7 +243,11 @@ class SelectableBuilding(object):
 					renderer.addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):
-		"""Runs neccassary steps to deselect the unit."""
+		"""Runs neccassary steps to deselect the building."""
 		renderer = horizons.main.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()
+
+	def remove(self):
+		super(SelectableBuilding, self).remove()
+		self.deselect()

@@ -52,6 +52,33 @@ from extscheduler import ExtScheduler
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 
+## GETTERS
+
+def get_scheduler():
+	return session.scheduler
+
+def get_world():
+	return session.world
+
+def get_db():
+	return db
+
+def get_view():
+	return session.view
+
+def get_fife():
+	return fife
+
+def get_session():
+	return session
+
+def get_ingame_gui():
+	return session.ingame_gui
+
+def get_gui():
+	return gui
+
+##
 
 def start(command_line_arguments):
 	"""Starts the horizons.
