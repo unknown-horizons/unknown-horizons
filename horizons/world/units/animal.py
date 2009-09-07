@@ -22,12 +22,12 @@
 import random
 import logging
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.production.producer import Producer
 from horizons.util import Point, Circle, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
+from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList, Job
 from horizons.constants import WILD_ANIMAL
 
@@ -36,11 +36,6 @@ class Animal(Producer):
 	and usually produce something (e.g. wool)."""
 	log = logging.getLogger('world.units.animal')
 
-	def __init__(self, **kwargs):
-		super(Animal, self).__init__(**kwargs)
-
-	def get_collectable_res(self):
-		return self.get_needed_resources()
 
 class CollectorAnimal(Animal):
 	"""Animals that will inherit from collector"""
@@ -85,6 +80,8 @@ class CollectorAnimal(Animal):
 	def get_home_inventory(self):
 		return self.inventory
 
+	def get_collectable_res(self):
+		return self.get_needed_resources()
 
 class WildAnimal(CollectorAnimal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
@@ -100,10 +97,9 @@ class WildAnimal(CollectorAnimal, Collector):
 	work_duration = 96
 	pather_class = SoldierPather
 
-	# see documentation of self.health
-	def __init__(self, island, start_hidden=False, can_reproduce = True, **kwargs):
+	def __init__(self, owner, start_hidden=False, can_reproduce = True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
-		self.__init(island, can_reproduce)
+		self.__init(owner, can_reproduce)
 		self.log.debug("Wild animal %s created at "+str(self.position)+\
 									 "; can_reproduce: %s; population now: %s", \
 				self.getId(), can_reproduce, len(self.home_island.wild_animals))
@@ -221,9 +217,8 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		self.log.debug("Wild animal %s REPRODUCING", self.getId())
 		# create offspring
-		horizons.main.session.entities.units[self.id](self.home_island, \
-			x=self.position.x, y=self.position.y, \
-			can_reproduce = self.next_clone_can_reproduce())
+		CreateUnit(self.owner.getId(), self.id, self.position.x, self.position.y, \
+		           can_reproduce = self.next_clone_can_reproduce())
 		# reset own resources
 		for res in self.get_consumed_resources():
 			self.inventory.reset(res)

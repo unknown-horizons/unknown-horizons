@@ -42,20 +42,23 @@ class Act(GenericUnitCommand):
 class CreateUnit(Command):
 	"""Command class that creates a unit.
 	@param id: Unit id that is to be created.
-	@param x, y: Units initial position
+	@param x, y: Unit's initial position
+	@param kwargs: Additional parameters for unit creation
 	"""
-	def __init__(self, owner_id, unit_id, x, y):
+	def __init__(self, owner_id, unit_id, x, y, **kwargs):
 		self.owner_id = owner_id
 		self.unit_id = unit_id
 		self.x = x
 		self.y = y
+		self.kwargs = kwargs
 
 	def __call__(self, issuer):
 		"""__call__() gets called by the manager.
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		horizons.main.session.entities.units[self.unit_id](owner=owner, x=self.x, y=self.y)
+		horizons.main.session.entities.units[self.unit_id](owner=owner, x=self.x, y=self.y, \
+		                                                   **self.kwargs)
 
 
 from horizons.util.encoder import register_classes

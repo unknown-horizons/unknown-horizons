@@ -66,7 +66,6 @@ class Session(LivingObject):
 	"""
 	timer = livingProperty()
 	manager = livingProperty()
-	scheduler = livingProperty()
 	view = livingProperty()
 	entities = livingProperty()
 	ingame_gui = livingProperty()
@@ -124,9 +123,9 @@ class Session(LivingObject):
 		self.ingame_gui = None
 		self.entities = None
 		self.view = None
-		self.scheduler = None
 		self.manager = None
 		self.timer = None
+		Scheduler.destroy_instance()
 
 		self.selected_instances = None
 		self.selection_groups = None

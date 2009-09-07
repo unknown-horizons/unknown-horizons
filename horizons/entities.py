@@ -33,14 +33,17 @@ class Entities(LivingObject):
 		super(Entities, self).__init__()
 		self.grounds = {}
 		for (ground_id,) in horizons.main.db("SELECT rowid FROM data.ground"):
+			assert ground_id not in self.grounds
 			self.grounds[ground_id] = GroundClass(ground_id)
 
 		self.buildings = {}
 		for (building_id,) in horizons.main.db("SELECT id FROM data.building"):
+			assert building_id not in self.buildings
 			self.buildings[building_id] = BuildingClass(building_id)
 
 		self.units = {}
 		for (unit_id,) in horizons.main.db("SELECT id FROM data.unit"):
+			assert unit_id not in self.units
 			self.units[unit_id] = UnitClass(unit_id)
 
 	def end(self):

@@ -175,17 +175,17 @@ class World(LivingObject):
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			#print "Adding trees and animals to the world..."
 			from horizons.command.building import Build
+			from horizons.command.unit import CreateUnit
 			tree = horizons.main.session.entities.buildings[BUILDINGS.TREE_CLASS]
 			wild_animal = horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						building = horizons.main.session.manager.execute( \
-							Build(tree,tile[0],tile[1], ownerless=True, island=island))
+						building = Build(tree,tile[0],tile[1], ownerless=True, island=island).execute()
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
-							wild_animal(island, x=tile[0], y=tile[1])
+							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute()
 
 		# add free trader
 		self.trader = Trader(99999, "Free Trader", Color())

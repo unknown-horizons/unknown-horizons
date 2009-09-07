@@ -42,6 +42,9 @@ class Singleton(type):
 			self.instance = super(Singleton, self).__call__(*args, **kwargs)
 		return self.instance
 
+	def destroy_instance(self):
+		self.instance = None
+
 class ManualConstructionSingleton(Singleton):
 	"""Same as Singleton, but Class() never creates an instance. Only create_instances() does."""
 	def __call__(self):
