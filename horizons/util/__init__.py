@@ -41,3 +41,4 @@ from python import stablelist
 from python import WeakList
 from python import WeakMethod
 from python import WeakMethodList
+from python import Singleton, ManualConstructionSingleton

@@ -22,7 +22,7 @@
 import sqlite3
 import re
 
-from horizons.util.decorators import cachedmethod
+from horizons.util.python import decorators
 
 class DbReader(object):
 	"""Class that handles connections to sqlite databases
@@ -51,7 +51,7 @@ class DbReader(object):
 		self.cur.execute(command, args)
 		return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
 
-	@cachedmethod
+	@decorators.cachedmethod
 	def cached_query(self, command, *args):
 		"""Executes a sql command and saves it's result in a dict.
 		@params, return: same as in __call__"""

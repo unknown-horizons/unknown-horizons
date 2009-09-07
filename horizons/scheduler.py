@@ -23,14 +23,17 @@ import logging
 
 import horizons.main
 
-from horizons.util import WeakMethod, LivingObject
+from horizons.util import WeakMethod, LivingObject, ManualConstructionSingleton
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	@param timer: Timer instance the schedular registers itself with.
 	"""
+	__metaclass__ = ManualConstructionSingleton
+
 	log = logging.getLogger("scheduler")
+
 	def __init__(self, timer):
 		super(Scheduler, self).__init__()
 		self.schedule = {}
