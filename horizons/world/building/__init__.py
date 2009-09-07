@@ -27,6 +27,8 @@ import logging
 import horizons.main
 import fife
 
+from horizons.main import get_action_sets
+
 class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.
 	@param id: int - building id in the database.
@@ -116,11 +118,12 @@ class BuildingClass(type):
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
+		all_action_sets = get_action_sets()
 		for (action_set_id,) in action_sets:
-			for action_id in horizons.main.action_sets[action_set_id].iterkeys():
+			for action_id in all_action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
-				for rotation in horizons.main.action_sets[action_set_id][action_id].iterkeys():
+				for rotation in all_action_sets[action_set_id][action_id].iterkeys():
 					#print "rotation:", rotation
 					if rotation == 45:
 						command = 'left-32,bottom+' + str(cls.size[0] * 16)

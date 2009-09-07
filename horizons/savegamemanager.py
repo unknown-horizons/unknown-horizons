@@ -64,18 +64,16 @@ class SavegameManager(object):
 	savegame_metadata_types = { 'timestamp' : float,
 															'savecounter' : int }
 
-	_shared_state = {}
 
-	def __init__(self):
-		# share members across all instances
-		self.__dict__ = self._shared_state
-
+	@classmethod
+	def init(self):
 		# create savegame directory if it does not exist
 		if not os.path.isdir(self.autosave_dir):
 			os.makedirs(self.autosave_dir)
 		if not os.path.isdir(self.quicksave_dir):
 			os.makedirs(self.quicksave_dir)
 
+	@classmethod
 	def __get_displaynames(self, files):
 		"""Returns list of names files, that should be displayed to the user.
 		@param files: iterable object containing strings"""
@@ -96,6 +94,7 @@ class SavegameManager(object):
 			displaynames.append( unicode(name) ) # only use unicode strings, guichan needs them
 		return displaynames
 
+	@classmethod
 	def __get_saves_from_dirs(self, dirs, include_displaynames = True):
 		"""Internal function, that returns the saves of a dir"""
 		files = [f for p in dirs for f in glob.glob(p+'/*.'+self.savegame_extension) if \
@@ -106,12 +105,14 @@ class SavegameManager(object):
 		else:
 			return (files,)
 
+	@classmethod
 	def create_filename(self, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
 		name = "%s/%s.%s" % (self.savegame_dir, savegamename, self.savegame_extension)
 		self.log.debug("Savegamemanager: creating save-filename: %s", name)
 		return name
 
+	@classmethod
 	def create_autosave_filename(self):
 		"""Returns the filename for an autosave"""
 		name = "%s/%s" % (self.autosave_dir, \
@@ -119,6 +120,7 @@ class SavegameManager(object):
 		self.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
+	@classmethod
 	def create_quicksave_filename(self):
 		"""Returns the filename for a quicksave"""
 		name = "%s/%s" % (self.quicksave_dir, \
@@ -126,6 +128,7 @@ class SavegameManager(object):
 		self.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
+	@classmethod
 	def delete_dispensable_savegames(self, autosaves = False, quicksaves = False):
 		"""Delete savegames that are no longer needed
 		@param autosaves, quicksaves: Bool, set to true if this kind of saves should be cleaned
@@ -169,12 +172,14 @@ class SavegameManager(object):
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
+	@classmethod
 	def get_regular_saves(self, include_displaynames = True):
 		"""Returns all savegames, that were saved via the ingame save dialog"""
 		self.log.debug("Savegamemanager: regular saves from: %s", self.savegame_dir)
 		return self.__get_saves_from_dirs([self.savegame_dir], \
 										  include_displaynames = include_displaynames)
 
+	@classmethod
 	def get_saves(self, include_displaynames = True):
 		"""Returns all savegames"""
 		self.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", self.savegame_dir, \
@@ -183,6 +188,7 @@ class SavegameManager(object):
 										   self.quicksave_dir, self.demo_dir], \
 										  include_displaynames = include_displaynames)
 
+	@classmethod
 	def get_quicksaves(self, include_displaynames = True):
 		"""Returns all savegames, that were saved via quicksave"""
 		self.log.debug("Savegamemanager: quicksaves from: %s", self.quicksave_dir)

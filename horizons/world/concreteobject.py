@@ -21,6 +21,7 @@
 
 import horizons.main
 
+from horizons.main import get_action_sets
 from horizons.util import WorldObject, Callback
 from horizons.gui.tabs import TabWidget
 
@@ -63,7 +64,7 @@ class ConcretObject(WorldObject):
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
 		@param anim: animation id as string"""
-		return (action in horizons.main.action_sets[self._action_set_id])
+		return (action in get_action_sets()[self._action_set_id])
 
 	def remove(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)

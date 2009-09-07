@@ -26,6 +26,8 @@ import random
 
 import horizons.main
 
+from horizons.main import get_action_sets
+
 from horizons.world.building.building import *
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
@@ -127,15 +129,16 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
-		if preview_action_set in horizons.main.action_sets:
+		action_sets = get_action_sets()
+		if preview_action_set in action_sets:
 			action_set = preview_action_set
-		if 'idle' in horizons.main.action_sets[action_set]:
+		if 'idle' in action_sets[action_set]:
 			self.action = 'idle'
-		elif 'idle_full' in horizons.main.action_sets[action_set]:
+		elif 'idle_full' in action_sets[action_set]:
 			self.action = 'idle_full'
 		else: # If no idle animation found, use the first you find
-			self.action = horizons.main.action_sets[action_set].keys()[0]
-		image = sorted(horizons.main.action_sets[action_set][self.action][(self.rotation+int(horizons.main.session.view.cam.getRotation())-45)%360].keys())[0]
+			self.action = action_sets[action_set].keys()[0]
+		image = sorted(action_sets[action_set][self.action][(self.rotation+int(horizons.main.session.view.cam.getRotation())-45)%360].keys())[0]
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)

@@ -38,7 +38,7 @@ from view import View
 from world import World
 from entities import Entities
 from util import WorldObject, LivingObject, livingProperty, DbReader
-from savegamemanager import SavegameManager
+from horizons.savegamemanager import SavegameManager
 
 
 class Session(LivingObject):
@@ -142,24 +142,24 @@ class Session(LivingObject):
 		"""Called automatically in an interval"""
 		self.log.debug("Session: autosaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = horizons.main.save_game(horizons.main.savegamemanager.create_autosave_filename())
+		success = horizons.main.save_game(SavegameManager.create_autosave_filename())
 		if success:
-			horizons.main.savegamemanager.delete_dispensable_savegames(autosaves = True)
+			SavegameManager.delete_dispensable_savegames(autosaves = True)
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = horizons.main.save_game(horizons.main.savegamemanager.create_quicksave_filename())
+		success = horizons.main.save_game(SavegameManager.create_quicksave_filename())
 		if success:
 			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
-			horizons.main.savegamemanager.delete_dispensable_savegames(quicksaves = True)
+			SavegameManager.delete_dispensable_savegames(quicksaves = True)
 		else:
 			horizons.main.gui.show_popup(_('Error'), _('Failed to quicksave.'))
 
 	def quickload(self):
 		"""Loads last quicksave"""
-		files = horizons.main.savegamemanager.get_quicksaves(include_displaynames = False)[0]
+		files = SavegameManager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
 			horizons.main.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
@@ -192,15 +192,13 @@ class Session(LivingObject):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
 
-			horizons.main.savegamemanager.write_metadata(db)
-			"""
-			# Savegame integrity assurance disabled for save testing:
+			SavegameManager.write_metadata(db)
+			# Savegame integrity assurance
 		except Exception, e:
 			# remove invalid savegamefile
 			os.unlink(savegame)
 			print "Save exception", e
 			raise e
-			"""
 		finally:
 			db("COMMIT")
 

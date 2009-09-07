@@ -25,6 +25,7 @@ import pychan
 
 import horizons.main
 
+from horizons.main import get_ext_scheduler
 from horizons.util.living import LivingObject
 from horizons.i18n import load_xml_translated
 
@@ -48,7 +49,7 @@ class MessageWidget(LivingObject):
 		self.widget.show()
 		self.current_tick = 0
 		self.position = 0 # number of current message
-		horizons.main.ext_scheduler.add_new_object(self.tick, self, loops=-1)
+		get_ext_scheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 		button_next = self.widget.findChild(name='next')
 		button_next.capture(self.forward)
@@ -132,7 +133,7 @@ class MessageWidget(LivingObject):
 			self.draw_widget()
 
 	def end(self):
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		get_ext_scheduler().rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
 		super(MessageWidget, self).end()

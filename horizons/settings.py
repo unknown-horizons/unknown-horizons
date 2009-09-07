@@ -23,8 +23,7 @@ import shutil
 import os.path
 import ext.simplejson as simplejson
 
-import horizons.main
-
+from horizons.main import get_db
 from horizons.constants import PATHS
 
 class Setting(object):
@@ -42,7 +41,7 @@ class Setting(object):
 					self.__dict__[option[len(name):]] = getattr(config, option)
 		except ImportError:
 			pass
-		for (option, value) in horizons.main.db("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%.%'", len(name) + 1, len(name), name, len(name) + 1):
+		for (option, value) in get_db()("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%.%'", len(name) + 1, len(name), name, len(name) + 1):
 			if not option in self.__dict__:
 				self.__dict__[option] = simplejson.loads(value)
 				if isinstance(self.__dict__[option], unicode):
@@ -63,7 +62,7 @@ class Setting(object):
 		self.__dict__[name] = value
 		if not name.startswith('_'):
 			assert(name not in self._categorys)
-			horizons.main.db("replace into config.config (name, value) values (?, ?)", self._name + name, simplejson.dumps(value))
+			get_db()("replace into config.config (name, value) values (?, ?)", self._name + name, simplejson.dumps(value))
 			for listener in self._listener:
 				listener(self, name, value)
 
@@ -120,17 +119,17 @@ class Settings(Setting):
 	def __init__(self, config = PATHS.USER_CONFIG_FILE):
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)
-		horizons.main.db("ATTACH ? AS config", config)
-		version = horizons.main.db("PRAGMA config.user_version")[0][0]
+		get_db()("ATTACH ? AS config", config)
+		version = get_db()("PRAGMA config.user_version")[0][0]
 		if version > Settings.VERSION:
 			print _("Error: Config version not supported, creating empty config which wont be saved.")
-			horizons.main.db("DETACH config")
-			horizons.main.db("ATTACH ':memory:' AS config")
-			horizons.main.db("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+			get_db()("DETACH config")
+			get_db()("ATTACH ':memory:' AS config")
+			get_db()("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 		elif version < Settings.VERSION:
 			print _("Upgrading Config from Version %d to Version %d ...") % (version, Settings.VERSION)
 			if version == 1:
-				horizons.main.db("UPDATE config.config SET name = REPLACE(name, '_', '.') WHERE name != 'client_id'")
+				get_db()("UPDATE config.config SET name = REPLACE(name, '_', '.') WHERE name != 'client_id'")
 				version = 2
-			horizons.main.db("PRAGMA config.user_version = " + str(Settings.VERSION))
+			get_db()("PRAGMA config.user_version = " + str(Settings.VERSION))
 		super(Settings, self).__init__()

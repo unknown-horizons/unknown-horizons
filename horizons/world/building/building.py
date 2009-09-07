@@ -26,6 +26,7 @@ import fife
 
 import horizons.main
 
+from horizons.main import get_action_sets
 from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
@@ -181,15 +182,16 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
-			if action in horizons.main.action_sets[action_set_id]:
-				pass
-			elif 'idle' in horizons.main.action_sets[action_set_id]:
-				action='idle'
-			elif 'idle_full' in horizons.main.action_sets[action_set_id]:
-				action='idle_full'
-			else:
-				# set first action
-				action=horizons.main.action_sets[action_set_id].keys()[0]
+
+			action_sets = get_action_sets()
+			if not action in action_sets[action_set_id]:
+				if 'idle' in action_sets[action_set_id]:
+					action='idle'
+				elif 'idle_full' in action_sets[action_set_id]:
+					action='idle_full'
+				else:
+					# set first action
+					action = action_sets[action_set_id].keys()[0]
 
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance

@@ -27,6 +27,7 @@ import time
 import pychan
 
 from horizons.util.color import Color
+from horizons.savegamemanager import SavegameManager
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import Socket, ServerConnection, ClientConnection
@@ -443,7 +444,7 @@ class Gui(object):
 		@return: Tuple of two lists; first: files with path; second: files for displaying
 		"""
 		if showLoad:
-			return horizons.main.savegamemanager.get_saves()
+			return SavegameManager.get_saves()
 		elif showCampaign:
 			files = [f for p in ('content/maps',) for f in glob.glob(p + '/*.sqlite') if os.path.isfile(f)]
 			files.sort()
@@ -679,7 +680,7 @@ class Gui(object):
 
 	def load_game(self, savegame = None):
 		if savegame is None:
-			map_files, map_file_display = horizons.main.savegamemanager.get_saves()
+			map_files, map_file_display = SavegameManager.get_saves()
 
 			if len(map_files) == 0:
 				self.show_popup(_("No saved games"), _("There are no saved games to load"))
@@ -719,7 +720,7 @@ class Gui(object):
 		horizons.main.start_singleplayer(savegamefile)
 
 	def save_game(self):
-		savegame_files, savegame_display = horizons.main.savegamemanager.get_regular_saves()
+		savegame_files, savegame_display = SavegameManager.get_regular_saves()
 
 		old_current = self.current
 		self.current = self.widgets['savegame']
