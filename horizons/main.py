@@ -103,7 +103,7 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global gui, fife, db, session, connection, ext_scheduler, _action_sets, settings, session, \
+	global gui, fife, db, session, connection, ext_scheduler, _action_sets, settings, \
 	       ext_scheduler, unstable_features, debug
 
 	from horizons.gui import Gui

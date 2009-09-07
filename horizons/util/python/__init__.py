@@ -19,25 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
+"""
+Put all code here that is not directly related to the game,
+but rather a generic enhancement of the programming language.
+"""
 
-from living import livingProperty, LivingObject
-from color import Color
-from changelistener import Changelistener
-from worldobject import WorldObject
-from encoder import encode, decode
-from loader import ActionSetLoader
-from pychanchildfinder import PychanChildFinder
-from named_object import NamedObject
-from dbreader import DbReader
-
-from shapes.point import Point
-from shapes.rect import Rect
-from shapes.circle import Circle
-
-from python import Callback
-from python import decorators
-from python import stablelist
-from python import WeakList
-from python import WeakMethod
-from python import WeakMethodList
+import decorators
+from callback import Callback
+from stablelist import stablelist
+from weaklist import WeakList
+from weakmethod import WeakMethod
+from weakmethodlist import WeakMethodList

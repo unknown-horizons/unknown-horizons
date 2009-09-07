@@ -23,8 +23,7 @@ import logging
 
 import horizons.main
 
-from util.weakmethod import WeakMethod
-from util.living import LivingObject
+from horizons.util import WeakMethod, LivingObject
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.

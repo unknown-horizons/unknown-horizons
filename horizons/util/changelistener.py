@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from living import LivingObject
-from weakmethodlist import WeakMethodList
+from horizons.util import LivingObject
+from horizons.util.python import WeakMethodList
 
 class Changelistener(LivingObject):
 	def __init__(self, *args, **kwargs):
