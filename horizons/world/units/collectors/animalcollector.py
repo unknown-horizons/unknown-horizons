@@ -20,6 +20,7 @@
 # ###################################################
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import Point, Circle
@@ -108,7 +109,7 @@ class AnimalCollector(BuildingCollector):
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
-		horizons.main.session.scheduler.add_new_object(self.job.object.search_job, self.job.object, 16)
+		Scheduler().add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
 class FarmAnimalCollector(AnimalCollector):

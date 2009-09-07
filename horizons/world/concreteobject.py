@@ -20,6 +20,7 @@
 # ###################################################
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.main import get_action_sets
 from horizons.util import WorldObject, Callback
@@ -51,7 +52,7 @@ class ConcretObject(WorldObject):
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
 			self._instance.setActionRuntime(runtime)
-		horizons.main.session.scheduler.add_new_object( Callback(set_action_runtime, \
+		Scheduler().add_new_object( Callback(set_action_runtime, \
 		                                                         self, runtime), self )
 
 	def act(self, action, facing_loc=None, repeating=False):
@@ -69,7 +70,7 @@ class ConcretObject(WorldObject):
 	def remove(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
-		horizons.main.session.scheduler.rem_all_classinst_calls(self)
+		Scheduler().rem_all_classinst_calls(self)
 		super(ConcretObject, self).remove()
 
 	def show_menu(self):

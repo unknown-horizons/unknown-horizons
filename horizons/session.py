@@ -90,7 +90,6 @@ class Session(LivingObject):
 		self.timer = Timer()
 		self.manager = SPManager()
 		Scheduler.create_instance(self.timer)
-		self.scheduler = Scheduler()
 		self.view = View((15, 15))
 		self.entities = Entities()
 

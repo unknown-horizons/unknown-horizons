@@ -25,6 +25,7 @@ import random
 import fife
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.main import get_action_sets
 from horizons.world.concreteobject import ConcretObject
@@ -64,7 +65,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
-			horizons.main.session.scheduler.add_new_object(self.get_payout, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1)
+			Scheduler().add_new_object(self.get_payout, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1)
 
 		# play ambient sound, if available
 		for soundfile in self.soundfiles:

@@ -23,6 +23,7 @@ import random
 import logging
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.util import Point, Callback, WorldObject
 from horizons.constants import RES, UNITS
@@ -58,7 +59,7 @@ class Trader(Player, StorageHolder):
 		point = horizons.main.session.world.get_random_possible_ship_position()
 		self.ships[horizons.main.session.entities.units[UNITS.TRADER_SHIP_CLASS] \
 		           (point.x, point.y, owner=self)] = self.shipStates.reached_branch
-		horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
+		Scheduler().add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
 
 	def _init(self, ident, name, color):
 		super(Trader, self)._init(id=ident, name=name, color=color)
@@ -83,7 +84,7 @@ class Trader(Player, StorageHolder):
 				current_callback = Callback(self.ship_idle, ship)
 			if current_callback is not None:
 				# current state has a callback
-				calls = horizons.main.session.scheduler.get_classinst_calls(self, current_callback)
+				calls = Scheduler().get_classinst_calls(self, current_callback)
 				assert(len(calls) == 1)
 				remaining_ticks = calls.values()[0]
 
@@ -120,7 +121,7 @@ class Trader(Player, StorageHolder):
 				self.office[ship.id] = WorldObject.get_object_by_id(targeted_branch)
 			elif state == self.shipStates.reached_branch:
 				assert remaining_ticks is not None
-				horizons.main.session.scheduler.add_new_object( \
+				Scheduler().add_new_object( \
 					Callback(self.ship_idle, ship), self, remaining_ticks)
 
 	def send_ship_random(self, ship):
@@ -197,7 +198,7 @@ class Trader(Player, StorageHolder):
 				settlement.inventory.alter(res, alter)
 		del self.office[ship.id]
 		# wait 2 seconds before going on to the next island
-		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, ship), self, 32)
+		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, 32)
 		self.ships[ship] = self.shipStates.reached_branch
 
 	def ship_idle(self, ship):
@@ -207,15 +208,15 @@ class Trader(Player, StorageHolder):
 		if random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
 			self.log.debug("Trader %s: idle, moving to random location", self.getId())
-			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random(ship), self)
+			Scheduler().add_new_object(lambda: self.send_ship_random(ship), self)
 		else:
 			self.log.debug("Trader %s: idle, moving to random bo", self.getId())
-			horizons.main.session.scheduler.add_new_object(lambda: self.send_ship_random_branch(ship), self)
+			Scheduler().add_new_object(lambda: self.send_ship_random_branch(ship), self)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.debug("Trader %s: ship blocked", self.getId())
 		# retry moving ship in 2 secs
-		horizons.main.session.scheduler.add_new_object(Callback(self.ship_idle, unit), self, 32)
+		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, 32)
 
 	@classmethod
 	def get_res_value(cls, res):

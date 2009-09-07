@@ -23,6 +23,7 @@ import logging
 import fife
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList
@@ -125,7 +126,7 @@ class MovingObject(ConcretObject):
 			# start moving in 1 tick
 			# this assures that a movement takes at least 1 tick, which is sometimes subtly
 			# assumed e.g. in the collector code
-			horizons.main.session.scheduler.add_new_object(self._move_tick, self)
+			Scheduler().add_new_object(self._move_tick, self)
 
 		return True
 
@@ -139,7 +140,7 @@ class MovingObject(ConcretObject):
 		self.move_callbacks = WeakMethodList(callback)
 		self._setup_move(action)
 		if not self.is_moving():
-			horizons.main.session.scheduler.add_new_object(self._move_tick, self)
+			Scheduler().add_new_object(self._move_tick, self)
 			self._move_tick()
 
 	def _movement_finished(self):
@@ -173,7 +174,7 @@ class MovingObject(ConcretObject):
 					self.owner.notify_unit_path_blocked(self)
 				else:
 					# generic solution: retry in 2 secs
-					horizons.main.session.scheduler.add_new_object(self._move_tick, self, 32)
+					Scheduler().add_new_object(self._move_tick, self, 32)
 				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return
 
@@ -196,7 +197,7 @@ class MovingObject(ConcretObject):
 		# coords per sec
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
-		horizons.main.session.scheduler.add_new_object(self._move_tick, self, move_time[int(diagonal)])
+		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
 	def add_move_callback(self, callback):
 		"""Registers callback to be executed when movement of unit finishes.
@@ -230,5 +231,5 @@ class MovingObject(ConcretObject):
 		if path_loaded:
 			self.__is_moving = True
 			self._setup_move()
-			horizons.main.session.scheduler.add_new_object(self._move_tick, self, 1)
+			Scheduler().add_new_object(self._move_tick, self, 1)
 

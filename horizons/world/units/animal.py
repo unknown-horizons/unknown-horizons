@@ -23,6 +23,7 @@ import random
 import logging
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.world.production.producer import Producer
 from horizons.util import Point, Circle, WorldObject
@@ -132,8 +133,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		# save remaining ticks when in waiting state
 		if self.state == self.states.no_job_waiting:
-			calls = horizons.main.session.scheduler.get_classinst_calls(self,  \
-																												self.handle_no_possible_job)
+			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
 			assert(len(calls) == 1)
 			remaining_ticks = calls.values()[0]
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?", \
@@ -152,8 +152,7 @@ class WildAnimal(CollectorAnimal, Collector):
 	def apply_state(self, state, remaining_ticks=None):
 		super(WildAnimal, self).apply_state(state, remaining_ticks)
 		if self.state == self.states.no_job_waiting:
-			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, \
-																										 remaining_ticks)
+			Scheduler().add_new_object(self.handle_no_possible_job, self, remaining_ticks)
 		elif self.state == self.states.no_job_walking_randomly:
 			self.add_move_callback(self.search_job)
 
@@ -176,7 +175,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		else:
 			# we couldn't find a target, just try again 3 secs later
 			self.log.debug('WildAnimal %s: no possible job, no possible new loc', self.getId())
-			horizons.main.session.scheduler.add_new_object(self.handle_no_possible_job, self, 48)
+			Scheduler().add_new_object(self.handle_no_possible_job, self, 48)
 			self.state = self.states.no_job_waiting
 
 	def get_job(self):

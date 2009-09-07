@@ -23,6 +23,7 @@ import weakref
 import logging
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader
 from settlement import Settlement
@@ -108,7 +109,7 @@ class Island(WorldObject):
 		self.path_nodes = IslandPathNodes(self)
 
 		# repopulate wild animals every 2 mins if they die out.
-		horizons.main.session.scheduler.add_new_object(self.check_wild_animal_population, self, \
+		Scheduler().add_new_object(self.check_wild_animal_population, self, \
 																									 16*120, -1)
 
 		"""TUTORIAL:

@@ -29,6 +29,7 @@ from horizons.constants import PRODUCTION_STATES
 from horizons.world.production.productionline import ProductionLine
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 class Production(WorldObject):
 	"""Class for production to be used by ResourceHandler.
@@ -78,7 +79,7 @@ class Production(WorldObject):
 			remaining_ticks = self._pause_remaining_ticks
 		elif self._state == PRODUCTION_STATES.producing:
 			remaining_ticks = \
-						horizons.main.session.scheduler.get_remaining_ticks(self, self._finished_producing)
+						Scheduler().get_remaining_ticks(self, self._finished_producing)
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
 		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.getId(), self._state.index, \
 												self._prod_line.id, remaining_ticks, \
@@ -95,7 +96,7 @@ class Production(WorldObject):
 		if self._state == PRODUCTION_STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION_STATES.producing:
-			horizons.main.session.scheduler.add_new_object(self._finished_producing, self, db_data[3])
+			Scheduler().add_new_object(self._finished_producing, self, db_data[3])
 		elif self._state == PRODUCTION_STATES.waiting_for_res or \
 		     self._state == PRODUCTION_STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
@@ -107,7 +108,7 @@ class Production(WorldObject):
 		return self
 
 	def remove(self):
-		horizons.main.session.scheduler.rem_all_classinst_calls(self)
+		Scheduler().rem_all_classinst_calls(self)
 		super(Production, self).remove()
 
 	## INTERFACE METHODS
@@ -162,7 +163,7 @@ class Production(WorldObject):
 				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			elif self._pause_old_state == PRODUCTION_STATES.producing:
 				# restore scheduler call
-				horizons.main.session.scheduler.add_new_object(self._finished_producing, self, \
+				Scheduler().add_new_object(self._finished_producing, self, \
 					 self._pause_remaining_ticks)
 			else:
 				assert False
@@ -178,8 +179,8 @@ class Production(WorldObject):
 			elif self._state == PRODUCTION_STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
-						horizons.main.session.scheduler.get_remaining_ticks(self, self._finished_producing)
-				horizons.main.session.scheduler.rem_call(self, self._finished_producing)
+						Scheduler().get_remaining_ticks(self, self._finished_producing)
+				Scheduler().rem_call(self, self._finished_producing)
 			else:
 				assert False
 
@@ -193,7 +194,7 @@ class Production(WorldObject):
 		"""Makes the production finish now"""
 		if self._state != PRODUCTION_STATES.producing:
 			return
-		horizons.main.session.scheduler.rem_call(self, self._finished_producing)
+		Scheduler().rem_call(self, self._finished_producing)
 		self._finished_producing()
 
 	def alter_production_time(self, modifier):
@@ -242,7 +243,7 @@ class Production(WorldObject):
 		self._remove_res_to_expend()
 		# call finished in some time
 		time = int(round( horizons.main.session.timer.get_ticks(self._prod_line.time) ))
-		horizons.main.session.scheduler.add_new_object(self._finished_producing, self, time)
+		Scheduler().add_new_object(self._finished_producing, self, time)
 
 	def _finished_producing(self):
 		"""Called when the production finishes."""
@@ -387,7 +388,7 @@ class ProgressProduction(Production):
 		prod_time = int(round(horizons.main.session.timer.get_ticks( part_of_whole_production * self._prod_line.time )))
 		prod_time = min(prod_time, 1) # wait at least 1 tick
 		# do part of production and call this again when done
-		horizons.main.session.scheduler.add_new_object(self._produce, self, prod_time)
+		Scheduler().add_new_object(self._produce, self, prod_time)
 
 		# set new progress
 		self.progress += part_of_whole_production

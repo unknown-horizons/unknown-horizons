@@ -24,6 +24,7 @@ import random
 import logging
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import WorldObject, decorators
@@ -76,7 +77,7 @@ class Collector(StorageHolder, Unit):
 		self.__init(self.states.idle, start_hidden)
 
 		# start searching jobs just when construction (of subclass) is completed
-		horizons.main.session.scheduler.add_new_object(self.search_job, self, 1)
+		Scheduler().add_new_object(self.search_job, self, 1)
 
 	def __init(self, state, start_hidden):
 		self.state = state
@@ -121,7 +122,7 @@ class Collector(StorageHolder, Unit):
 		elif self.state == self.states.working:
 			current_callback = self.finish_working
 		if current_callback is not None:
-			calls = horizons.main.session.scheduler.get_classinst_calls(self, current_callback)
+			calls = Scheduler().get_classinst_calls(self, current_callback)
 			assert len(calls) == 1, 'Collector should have callback %s, but doesn\'t' % current_callback
 			remaining_ticks = calls.values()[0]
 
@@ -158,7 +159,7 @@ class Collector(StorageHolder, Unit):
 		"""
 		if state == self.states.idle:
 			# we do nothing, so schedule a new search for a job
-			horizons.main.session.scheduler.add_new_object(self.search_job, self, remaining_ticks)
+			Scheduler().add_new_object(self.search_job, self, remaining_ticks)
 		elif state == self.states.moving_to_target:
 			# we are on the way to target, so save the job
 			self.setup_new_job()
@@ -170,7 +171,7 @@ class Collector(StorageHolder, Unit):
 			# register the new job
 			self.setup_new_job()
 			# job finishes in remaining_ticks ticks
-			horizons.main.session.scheduler.add_new_object(self.finish_working, self, remaining_ticks)
+			Scheduler().add_new_object(self.finish_working, self, remaining_ticks)
 
 
 	# GETTER
@@ -203,7 +204,7 @@ class Collector(StorageHolder, Unit):
 	def handle_no_possible_job(self):
 		"""Called when we can't find a job. default is to wait and try again in 2 secs"""
 		self.log.debug("Collector %s: no possible job, retry in 2 secs", self.getId())
-		horizons.main.session.scheduler.add_new_object(self.search_job, self, 32)
+		Scheduler().add_new_object(self.search_job, self, 32)
 
 	def setup_new_job(self):
 		"""Executes the necessary actions to begin a new job"""
@@ -299,7 +300,7 @@ class Collector(StorageHolder, Unit):
 		called after that time."""
 		self.log.debug("Collector %s begins working", self.getId())
 		assert self.job is not None, '%s job is non in begin_working' % self
-		horizons.main.session.scheduler.add_new_object(self.finish_working, self, \
+		Scheduler().add_new_object(self.finish_working, self, \
 																										 self.work_duration)
 		self.state = self.states.working
 
@@ -337,7 +338,7 @@ class Collector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 		self.job = None
-		horizons.main.session.scheduler.add_new_object(self.search_job , self, 32)
+		Scheduler().add_new_object(self.search_job , self, 32)
 		self.state = self.states.idle
 
 	def cancel(self, continue_action):
@@ -348,7 +349,7 @@ class Collector(StorageHolder, Unit):
 		if self.job is not None:
 			self.job.object.remove_incoming_collector(self)
 			if self.state == self.states.working:
-				removed_calls = horizons.main.session.scheduler.rem_call(self, self.finish_working)
+				removed_calls = Scheduler().rem_call(self, self.finish_working)
 				assert removed_calls == 1
 			self.job = None
 			self.state = self.states.idle

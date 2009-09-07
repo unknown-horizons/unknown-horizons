@@ -22,6 +22,7 @@
 import logging
 
 import horizons.main
+from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import TabWidget, SettlerOverviewTab, InventoryTab
 from building import BasicBuilding, SelectableBuilding
@@ -87,7 +88,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def run(self):
 		"""Start regular tick calls"""
 		interval_in_ticks = horizons.main.session.timer.get_ticks(SETTLER.TICK_INTERVAL)
-		horizons.main.session.scheduler.add_new_object(self.tick, self, runin=interval_in_ticks, \
+		Scheduler().add_new_object(self.tick, self, runin=interval_in_ticks, \
 																									 loops=-1)
 
 	def tick(self):
@@ -165,11 +166,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def level_down(self):
 		if self.level == 0: # can't level down any more
 			# remove when this function is done
-			horizons.main.session.scheduler.add_new_object(self.remove, self)
+			Scheduler().add_new_object(self.remove, self)
 			# replace this building with a ruin
 			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
-			horizons.main.session.scheduler.add_new_object(command.execute, command, 2)
+			Scheduler().add_new_object(command.execute, command, 2)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 		else:
