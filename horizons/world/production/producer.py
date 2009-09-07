@@ -28,6 +28,7 @@ from horizons.world.production.production import Production, SingleUseProduction
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.constants import PRODUCTION_STATES
 from horizons.command.unit import CreateUnit
+from horizons.scheduler import Scheduler
 
 import horizons.main
 
@@ -141,7 +142,7 @@ class QueueProducer(Producer):
 	def on_production_finished(self, production_line):
 		"""Callback used for the SingleUseProduction"""
 		self.remove_production(production_line)
-		horizons.main.session.scheduler.add_new_object(self.start_next_production(), self)
+		Scheduler().add_new_object(self.start_next_production, self)
 
 
 	def start_next_production(self):
