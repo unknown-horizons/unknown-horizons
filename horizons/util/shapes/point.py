@@ -106,6 +106,14 @@ class Point(object):
 			except TypeError:
 				return False
 
+	def __add__(self, other):
+		assert isinstance(other, Point)
+		return Point(self.x+other.x, self.y+other.y)
+
+	def __sub__(self, other):
+		assert isinstance(other, Point)
+		return Point(self.x-other.x, self.y-other.y)
+
 	def __iter__(self):
 		"""For interface-sharing with Rect"""
 		yield self

@@ -51,7 +51,7 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.tooltip_shown = False
 		self.tooltip_items = []
 
-	def position_tooltip(self, event=0):
+	def position_tooltip(self, event):
 		widget_position = self.getAbsolutePos()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:

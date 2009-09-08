@@ -110,23 +110,20 @@ class Minimap(object):
 
 	def use_overlay_icon(self, icon):
 		"""Configures icon so that clicks get mapped here"""
-		icon.mapEvents({
-			#icon.name + '/mouseEntered' : self.mouse_moved,
-		  icon.name + '/mouseMoved' : self.mouse_moved,
-			icon.name + '/mouseDragged' : self.mouse_moved,
-			icon.name + '/mouseClicked' : self.on_click
-		  })
+		self.overlay_icon = icon
+		icon.mapEvents({ icon.name + '/mouseClicked' : self.on_click })
 
-	def on_click(self):
+	def on_click(self, event):
 		"""Scrolls screen to the point, where the cursor points to on the minimap"""
-
-	def mouse_moved(self, evt=0):
-		"""Updates mouse position to use in on_click()"""
-		"""
-		if evt != 0:
-			import pdb ; pdb.set_trace()
-			self.move_position = (evt.getX(), evt.getY())
-		"""
+		icon_pos = Point(*self.overlay_icon.getAbsolutePos())
+		mouse_position = Point(event.getX(), event.getY())
+		abs_mouse_position = icon_pos + mouse_position
+		if not self.location.contains(abs_mouse_position):
+			# mouse click was on icon but not acctually on minimap
+			return
+		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position.to_tuple())
+		horizons.main.session.view.center(*map_coord)
+		self.update_cam()
 
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
@@ -210,5 +207,15 @@ class Minimap(object):
 		@param tup: (x, y) as ints
 		@return tuple"""
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
-		return ( int(float(tup[0] - self.world.min_x)/pixel_per_coord_x) + self.location.left, \
-		         int(float(tup[1] - self.world.min_y)/pixel_per_coord_y) + self.location.top )
+		return ( \
+		  int(round(float(tup[0] - self.world.min_x)/pixel_per_coord_x))+self.location.left, \
+		  int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top \
+		)
+
+	def _minimap_coord_to_world_coord(self, tup):
+		"""Inverse to _world_coord_to_minimap_coord"""
+		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
+		return ( \
+		  int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x, \
+		  int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
+		)

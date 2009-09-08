@@ -24,6 +24,9 @@ import logging
 
 from changelistener import Changelistener
 
+class WorldObjectNotFound(KeyError):
+	pass
+
 class WorldObject(Changelistener):
 	"""Gives every instance a unique id.
 	NOTE: id is only provided on first getId() call
@@ -47,7 +50,14 @@ class WorldObject(Changelistener):
 
 	@classmethod
 	def get_object_by_id(cls, id):
-		return cls.__objects[id]
+		"""Returns the worldobject with id id
+		Throws WorldObjectNotFound with the worldid as arg.
+		"""
+		try:
+			return cls.__objects[id]
+		except KeyError, e:
+			raise WorldObjectNotFound(e.args[0])
+
 
 	@classmethod
 	def reset(cls):
