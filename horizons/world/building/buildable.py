@@ -22,6 +22,7 @@
 import horizons.main
 import math
 from horizons.util import Point, Rect
+from horizons.entities import Entities
 
 class BuildableSingle(object):
 	"""Buildings you can build single.
@@ -205,6 +206,7 @@ class BuildableLine(BuildableSingle):
 				buildings.append(building)
 		return buildings
 
+""" this is not used for now
 class BuildableSingleWithSurrounding(BuildableSingle):
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
@@ -218,11 +220,12 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 			for yy in xrange(y - cls.radius, y + cls.size[1] + cls.radius):
 				if ((xx < x or xx >= x + cls.size[0]) or (yy < y or yy >= y + cls.size[1])) and \
 					 ((max(x - xx, 0, xx - x - cls.size[0] + 1) ** 2) + (max(y - yy, 0, yy - y - cls.size[1] + 1) ** 2)) <= cls.radius ** 2:
-					building = horizons.main.session.entities.buildings[cls._surroundingBuildingClass].are_build_requirements_satisfied(xx, yy, **kwargs)
+					building = Entities.buildings[cls._surroundingBuildingClass].are_build_requirements_satisfied(xx, yy, **kwargs)
 					if building is not None:
-						building.update(building = horizons.main.session.entities.buildings[cls._surroundingBuildingClass], **kwargs)
+						building.update(building = Entities.buildings[cls._surroundingBuildingClass], **kwargs)
 						buildings.append(building)
 		return buildings
+"""
 
 class BuildableSingleOnCoast(BuildableSingle):
 	"""BranchOffice, BoatBuilder, Fisher"""

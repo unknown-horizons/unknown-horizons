@@ -67,7 +67,6 @@ class Session(LivingObject):
 	timer = livingProperty()
 	manager = livingProperty()
 	view = livingProperty()
-	entities = livingProperty()
 	ingame_gui = livingProperty()
 	keylistener = livingProperty()
 	cursor = livingProperty()
@@ -90,7 +89,7 @@ class Session(LivingObject):
 		self.manager = SPManager()
 		Scheduler.create_instance(self.timer)
 		self.view = View((15, 15))
-		self.entities = Entities()
+		Entities.load()
 
 		#GUI
 		self.ingame_gui = IngameGui()
@@ -121,11 +120,12 @@ class Session(LivingObject):
 		self.cursor = None
 		self.keylistener = None
 		self.ingame_gui = None
-		self.entities = None
 		self.view = None
 		self.manager = None
 		self.timer = None
 		Scheduler.destroy_instance()
+		Entities.destroy_instance()
+
 
 		self.selected_instances = None
 		self.selection_groups = None

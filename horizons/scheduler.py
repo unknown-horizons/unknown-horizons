@@ -21,8 +21,6 @@
 
 import logging
 
-import horizons.main
-
 from horizons.util import WeakMethod, LivingObject, ManualConstructionSingleton
 
 class Scheduler(LivingObject):

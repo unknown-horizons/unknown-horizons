@@ -22,32 +22,33 @@
 from world.building import BuildingClass
 from world.units import UnitClass
 from world.ground import GroundClass
-from util.living import LivingObject
 
 import horizons.main
 
-class Entities(LivingObject):
-	"""Class that stores all the special classes for buildings, grounds etc. Stores class objects, not instances.
-	Loads everything from the db"""
-	def __init__(self):
-		super(Entities, self).__init__()
-		self.grounds = {}
+class Entities(object):
+	"""Class that stores all the special classes for buildings, grounds etc.
+	Stores class objects, not instances.
+	Loads everything from the db."""
+	loaded = False
+
+	@classmethod
+	def load(cls):
+		if cls.loaded:
+			return
+
+		cls.grounds = {}
 		for (ground_id,) in horizons.main.db("SELECT rowid FROM data.ground"):
-			assert ground_id not in self.grounds
-			self.grounds[ground_id] = GroundClass(ground_id)
+			assert ground_id not in cls.grounds
+			cls.grounds[ground_id] = GroundClass(ground_id)
 
-		self.buildings = {}
+		cls.buildings = {}
 		for (building_id,) in horizons.main.db("SELECT id FROM data.building"):
-			assert building_id not in self.buildings
-			self.buildings[building_id] = BuildingClass(building_id)
+			assert building_id not in cls.buildings
+			cls.buildings[building_id] = BuildingClass(building_id)
 
-		self.units = {}
+		cls.units = {}
 		for (unit_id,) in horizons.main.db("SELECT id FROM data.unit"):
-			assert unit_id not in self.units
-			self.units[unit_id] = UnitClass(unit_id)
+			assert unit_id not in cls.units
+			cls.units[unit_id] = UnitClass(unit_id)
 
-	def end(self):
-		self.grounds = None
-		self.buildings = None
-		self.units = None
-		super(Entities, self).end()
+		cls.loaded = True

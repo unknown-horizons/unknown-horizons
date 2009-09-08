@@ -33,6 +33,7 @@ from player import Player
 from horizons.util import Point, Color, Rect, LivingObject, Circle
 from horizons.constants import UNITS, BUILDINGS, RES
 from horizons.ai.trader import Trader
+from horizons.entities import Entities
 
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -125,7 +126,7 @@ class World(LivingObject):
 		self.log.debug("Filling world with water...")
 		self.grounds = []
 		self.ground_map = {}
-		default_grounds = horizons.main.session.entities.grounds[int(self.properties.get('default_ground', 4))]
+		default_grounds = Entities().grounds[int(self.properties.get('default_ground', 4))]
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
 				ground = default_grounds(x, y)
@@ -153,7 +154,7 @@ class World(LivingObject):
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
-			horizons.main.session.entities.units[typeid].load(db, worldid)
+			Entities.units[typeid].load(db, worldid)
 
 		if horizons.main.session.is_game_loaded():
 			# let trader command it's ships. we have to do this here cause ships have to be
@@ -176,8 +177,7 @@ class World(LivingObject):
 			#print "Adding trees and animals to the world..."
 			from horizons.command.building import Build
 			from horizons.command.unit import CreateUnit
-			tree = horizons.main.session.entities.buildings[BUILDINGS.TREE_CLASS]
-			wild_animal = horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS]
+			tree = Entities().buildings[BUILDINGS.TREE_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
@@ -193,7 +193,7 @@ class World(LivingObject):
 		for player in self.players:
 			#print "Adding ships for the players..."
 			point = self.get_random_possible_ship_position()
-			ship = horizons.main.session.entities.units[UNITS.PLAYER_SHIP_CLASS](x=point.x, y=point.y, owner=player)
+			ship = Entities().units[UNITS.PLAYER_SHIP_CLASS](x=point.x, y=point.y, owner=player)
 			# give ship basic resources
 			ship.inventory.alter(RES.BOARDS_ID,30)
 			ship.inventory.alter(RES.FOOD_ID,30)

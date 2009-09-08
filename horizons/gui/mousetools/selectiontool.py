@@ -30,9 +30,6 @@ from navigationtool import NavigationTool
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
-	"""The Selectiontool is used to select instances on the game screen.
-	@param game: the main game Instance
-	"""
 	def __init__(self):
 		super(SelectionTool, self).__init__()
 		horizons.main.gui.on_escape = horizons.main.gui.show_pause

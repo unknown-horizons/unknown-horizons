@@ -23,6 +23,8 @@ import weakref
 import logging
 
 import horizons.main
+
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
 from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader
@@ -73,7 +75,7 @@ class Island(WorldObject):
 		for (building_worldid, building_typeid) in \
 			db("SELECT rowid, type FROM building WHERE location = ?", islandid):
 
-			buildingclass = horizons.main.session.entities.buildings[building_typeid]
+			buildingclass = Entities.buildings[building_typeid]
 			buildingclass.load(db, building_worldid)
 
 	def __init(self, origin, filename):
@@ -93,7 +95,7 @@ class Island(WorldObject):
 		self.provider_buildings = WeakList() # list of all buildings, that are providers
 		self.wild_animals = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
-			ground = horizons.main.session.entities.grounds[ground_id]( \
+			ground = Entities.grounds[ground_id]( \
 				self.origin.x + rel_x, self.origin.y + rel_y)
 			# Each ground has a set of attributes:
 			ground.settlement = None
@@ -299,7 +301,7 @@ class Island(WorldObject):
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE_CLASS:
 					point = building.position.origin
-					horizons.main.session.entities.units[UNITS.WILD_ANIMAL_CLASS](self, x = point.x, \
+					Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x = point.x, \
 																																				y = point.y)
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,

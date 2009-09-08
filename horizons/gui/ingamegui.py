@@ -22,6 +22,7 @@
 import pychan
 
 import horizons.main
+from horizons.entities import Entities
 
 from horizons.i18n import load_xml_translated
 from horizons.util import livingProperty, LivingObject, Callback, PychanChildFinder, Rect, Point
@@ -72,6 +73,8 @@ class IngameGui(LivingObject):
 		})
 		self.minimap = Minimap(Rect(Point(self.gui['minimap'].position[0]+77, 55), 120, 120), \
 													 horizons.main.session.view.renderer['GenericRenderer'])
+		minimap_overlay = self.gui['minimap'].findChild(name='minimap_overlay_image')
+		self.minimap.use_overlay_icon(minimap_overlay)
 
 		self.gui['menuPanel'] = load_xml_translated('menu_panel.xml')
 		self.gui['menuPanel'].position = (
@@ -331,7 +334,7 @@ class IngameGui(LivingObject):
 		@param unit: weakref to the unit, that builds (e.g. ship for branch office)"""
 		self.hide_menu()
 		self.deselect_all()
-		cls = horizons.main.session.entities.buildings[building_id]
+		cls = Entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
 		horizons.main.session.cursor = BuildingTool(cls, None if unit is None else unit())

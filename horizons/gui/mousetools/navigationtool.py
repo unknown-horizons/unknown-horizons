@@ -26,16 +26,12 @@ from cursortool import CursorTool
 from horizons.util import Point
 
 class NavigationTool(CursorTool):
-	"""The Selectiontool is used to select instances on the game screen.
-	@param game: the main game Instance
-	"""
 	def __init__(self):
 		super(NavigationTool, self).__init__()
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
 
-		#ugly but works o_O
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
 		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)

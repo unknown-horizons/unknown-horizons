@@ -19,9 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
+
+from horizons.entities import Entities
 from horizons.util import WorldObject
 from horizons.command import GenericCommand, Command
-import horizons.main
 
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
@@ -57,8 +59,7 @@ class CreateUnit(Command):
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		horizons.main.session.entities.units[self.unit_id](owner=owner, x=self.x, y=self.y, \
-		                                                   **self.kwargs)
+		Entities.units[self.unit_id](owner=owner, x=self.x, y=self.y, **self.kwargs)
 
 
 from horizons.util.encoder import register_classes

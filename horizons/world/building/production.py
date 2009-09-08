@@ -26,8 +26,9 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
 from horizons.util import Point
 from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingleWithSurrounding, BuildableSingle, BuildableSingleOnCoast
+from buildable import BuildableSingle, BuildableSingleOnCoast
 from horizons.constants import UNITS
+from horizons.entities import Entities
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -50,7 +51,7 @@ class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
-				horizons.main.session.entities.units[animal](self)
+				Entities.units[animal](self)
 
 		super(AnimalFarm, self).create_collector()
 

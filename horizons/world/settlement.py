@@ -18,7 +18,10 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import horizons.main
+
+from horizons.entities import Entities
 from storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList, NamedObject
 from tradepost import TradePost
@@ -97,7 +100,7 @@ class Settlement(TradePost, NamedObject):
 		self.buildings = WeakList()
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-			buildingclass = horizons.main.session.entities.buildings[building_type]
+			buildingclass = Entities.buildings[building_type]
 			buildingclass.load(db, building_id)
 
 		return self

@@ -20,10 +20,12 @@
 # ###################################################
 
 import fife
+import pychan
 
 import horizons.main
 
 from horizons.util import Changelistener, Point, Rect
+
 
 class Minimap(Changelistener):
 	"""Draws Minimap to a specified location."""
@@ -105,6 +107,26 @@ class Minimap(Changelistener):
 		minimap_point = self._world_coord_to_minimap_coord(tup)
 		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], 1, 1)
 		self._recalculate(rect)
+
+	def use_overlay_icon(self, icon):
+		"""Configures icon so that clicks get mapped here"""
+		icon.mapEvents({
+			#icon.name + '/mouseEntered' : self.mouse_moved,
+		  icon.name + '/mouseMoved' : self.mouse_moved,
+			icon.name + '/mouseDragged' : self.mouse_moved,
+			icon.name + '/mouseClicked' : self.on_click
+		  })
+
+	def on_click(self):
+		"""Scrolls screen to the point, where the cursor points to on the minimap"""
+
+	def mouse_moved(self, evt=0):
+		"""Updates mouse position to use in on_click()"""
+		"""
+		if evt != 0:
+			import pdb ; pdb.set_trace()
+			self.move_position = (evt.getX(), evt.getY())
+		"""
 
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
@@ -190,4 +212,3 @@ class Minimap(Changelistener):
 		pixel_per_coord_x, pixel_per_coord_y = self._get_world_to_minimap_ratio()
 		return ( int(float(tup[0] - self.world.min_x)/pixel_per_coord_x) + self.location.left, \
 		         int(float(tup[1] - self.world.min_y)/pixel_per_coord_y) + self.location.top )
-

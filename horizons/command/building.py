@@ -22,6 +22,7 @@
 import logging
 
 import horizons.main
+from horizons.entities import Entities
 
 from horizons.command import Command
 from horizons.world.building.building import *
@@ -70,7 +71,7 @@ class Build(Command):
 		else:
 			island = horizons.main.session.world.get_island(Point(self.x, self.y))
 
-		building = horizons.main.session.entities.buildings[self.building_class]( \
+		building = Entities.buildings[self.building_class]( \
 			x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \

@@ -35,15 +35,16 @@ class TooltipIcon(pychan.widgets.Icon):
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
-		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
+		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else \
+		    load_xml_translated('tooltip.xml') #HACK for display in main menu
 		self.gui.hide()
 		if tooltip != "":
 			self.tooltip = unicode(tooltip)
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
-			self.name + '/mouseMoved' : self.position_tooltip,
 			self.name + '/mousePressed' : self.hide_tooltip,
+		  self.name + '/mouseMoved' : self.position_tooltip,
 			self.name + '/mouseReleased' : self.position_tooltip,
 			self.name + '/mouseDragged' : self.position_tooltip
 			})
