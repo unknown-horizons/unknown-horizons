@@ -414,4 +414,3 @@ class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
 		self._give_produced_res()
 		self._state = PRODUCTION_STATES.done
 		self.callback(self)
-		self.on_remove()
