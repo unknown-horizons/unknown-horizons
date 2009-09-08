@@ -293,7 +293,7 @@ class Fife(object):
 
 
 			check_music() # Start background music
-			Ext_scheduler().add_new_object(check_music, self, loops=-1)
+			ExtScheduler().add_new_object(check_music, self, loops=-1)
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
 		self.animationloader = SQLiteAnimationLoader()
