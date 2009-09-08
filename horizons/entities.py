@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
-
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
@@ -28,7 +26,7 @@ class Entities(object):
 	loaded = False
 
 	@classmethod
-	def load(cls):
+	def load(cls, db):
 		if cls.loaded:
 			return
 
@@ -37,17 +35,17 @@ class Entities(object):
 		from world.ground import GroundClass
 
 		cls.grounds = {}
-		for (ground_id,) in horizons.main.db("SELECT rowid FROM data.ground"):
+		for (ground_id,) in db("SELECT rowid FROM data.ground"):
 			assert ground_id not in cls.grounds
 			cls.grounds[ground_id] = GroundClass(ground_id)
 
 		cls.buildings = {}
-		for (building_id,) in horizons.main.db("SELECT id FROM data.building"):
+		for (building_id,) in db("SELECT id FROM data.building"):
 			assert building_id not in cls.buildings
 			cls.buildings[building_id] = BuildingClass(building_id)
 
 		cls.units = {}
-		for (unit_id,) in horizons.main.db("SELECT id FROM data.unit"):
+		for (unit_id,) in db("SELECT id FROM data.unit"):
 			assert unit_id not in cls.units
 			cls.units[unit_id] = UnitClass(unit_id)
 

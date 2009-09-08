@@ -194,8 +194,9 @@ class AbstractPather(object):
 
 class ShipPather(AbstractPather):
 	"""Pather for ships (units that move on water tiles)"""
-	def __init__(self, unit):
-		super(ShipPather, self).__init__(unit, move_diagonal=True, make_target_walkable = False)
+	def __init__(self, unit, *args, **kwargs):
+		super(ShipPather, self).__init__(unit, move_diagonal=True,make_target_walkable = False, \
+		                                 *args, **kwargs)
 
 	def _get_path_nodes(self):
 		return horizons.main.session.world.water
@@ -220,17 +221,17 @@ class ShipPather(AbstractPather):
 class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)
 	within the radius of their home building such as farm animals."""
-	def __init__(self, unit):
-		super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True)
+	def __init__(self, unit, *args, **kwargs):
+		super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True, *args, **kwargs)
 
 	def _get_path_nodes(self):
 			return self.unit.home_building.path_nodes.nodes
 
 class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
-	def __init__(self, unit):
+	def __init__(self, unit, *args, **kwargs):
 		super(RoadPather, self).__init__(unit, move_diagonal=False)
-		self.island = horizons.main.session.world.get_island(unit.position)
+		self.island = horizons.main.session.world.get_island(unit.position, *args, **kwargs)
 
 	def _get_path_nodes(self):
 		return self.island.path_nodes.road_nodes
@@ -238,9 +239,9 @@ class RoadPather(AbstractPather):
 class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)
 	Their path list is maintained by IslandPathNodes"""
-	def __init__(self, unit):
+	def __init__(self, unit, *args, **kwargs):
 		super(SoldierPather, self).__init__(unit, move_diagonal=True, \
-																				make_target_walkable=False)
+																				make_target_walkable=False, *args, **kwargs)
 
 	def _get_path_nodes(self):
 		# island might change (e.g. when transported via ship), so reload every time

@@ -26,8 +26,8 @@ import random
 
 import horizons.main
 
-from horizons.main import get_action_sets
 
+from horizons.util import ActionSetLoader
 from horizons.world.building.building import *
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
@@ -129,7 +129,7 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
-		action_sets = get_action_sets()
+		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
 		if 'idle' in action_sets[action_set]:

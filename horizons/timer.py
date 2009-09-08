@@ -37,7 +37,7 @@ class Timer(LivingObject):
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).__init__()
-		horizons.main.settings.addCategorys('ticks')
+		horizons.main.settings.addCategories('ticks')
 		horizons.main.settings.ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
 		self.ticks_per_second = horizons.main.settings.ticks.default
 		self.tick_next_id = tick_next_id

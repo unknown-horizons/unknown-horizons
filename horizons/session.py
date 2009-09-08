@@ -89,7 +89,7 @@ class Session(LivingObject):
 		self.manager = SPManager()
 		Scheduler.create_instance(self.timer)
 		self.view = View((15, 15))
-		Entities.load()
+		Entities.load(horizons.main.db)
 
 		#GUI
 		self.ingame_gui = IngameGui()

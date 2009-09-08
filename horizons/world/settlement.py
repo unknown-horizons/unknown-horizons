@@ -21,7 +21,6 @@
 
 import horizons.main
 
-from horizons.entities import Entities
 from storage import PositiveSizedSlotStorage
 from horizons.util import WorldObject, WeakList, NamedObject
 from tradepost import TradePost
@@ -29,15 +28,16 @@ from tradepost import TradePost
 class Settlement(TradePost, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
-	def __init__(self, owner):
+	def __init__(self, owner, world):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
 		super(Settlement, self).__init__()
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
-		self.__init(owner)
+		self.__init(owner, world)
 
-	def __init(self, owner, tax_setting=1.0):
+	def __init(self, owner, world, tax_setting=1.0):
+		self.world = world
 		self.owner = owner
 		self.tax_setting = tax_setting
 		self.setup_storage()
@@ -84,13 +84,14 @@ class Settlement(TradePost, NamedObject):
 		self.inventory.save(db, self.getId())
 
 	@classmethod
-	def load(cls, db, worldid):
+	def load(cls, db, worldid, world):
 		self = cls.__new__(cls)
 
-		super(Settlement, self).load(db, worldid)
-
 		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
-		self.__init(WorldObject.get_object_by_id(owner), tax)
+		self.__init(WorldObject.get_object_by_id(owner), world, tax)
+
+		# load super cause basic stuff is just set up now
+		super(Settlement, self).load(db, worldid)
 
 		self.inventory.load(db, worldid)
 
@@ -100,7 +101,6 @@ class Settlement(TradePost, NamedObject):
 		self.buildings = WeakList()
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-			buildingclass = Entities.buildings[building_type]
-			buildingclass.load(db, building_id)
+			self.world.load_building(db, building_type, building_id)
 
 		return self

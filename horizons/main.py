@@ -78,13 +78,6 @@ def get_ingame_gui():
 def get_gui():
 	return _modules.gui
 
-def get_action_sets():
-	return _modules.action_sets
-
-def get_settings():
-	return _modules.settings
-
-
 ##
 class Modules(object):
 	db = None
@@ -93,7 +86,6 @@ class Modules(object):
 	session = None
 	connection = None
 	ext_scheduler = None
-	action_sets = None
 	gui = None
 	mainlistener = None
 
@@ -103,7 +95,7 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global gui, fife, db, session, connection, ext_scheduler, _action_sets, settings, \
+	global gui, fife, db, session, connection, ext_scheduler, settings, \
 	       ext_scheduler, unstable_features, debug
 
 	from horizons.gui import Gui
@@ -123,9 +115,8 @@ def start(command_line_arguments):
 	_modules.db = db
 
 	#init settings
-	settings = Settings()
-	_set_default_settings(settings)
-	_modules.settings = settings
+	settings = Settings(db)
+	settings.set_defaults()
 
 	# init gettext
 	_init_gettext(settings)
@@ -140,7 +131,7 @@ def start(command_line_arguments):
 	_modules.ext_scheduler = ExtScheduler(get_fife().pump)
 	ext_scheduler = _modules.ext_scheduler
 	get_fife().init()
-	_modules.action_sets = ActionSetLoader('content/gfx/').load()
+	ActionSetLoader.load('content/gfx/')
 	_modules.mainlistener = MainListener()
 	_modules.gui = Gui()
 	gui = _modules.gui
@@ -223,15 +214,15 @@ def save_game(savegamename):
 
 
 def _set_default_settings(settings):
-	settings.addCategorys('sound')
+	settings.addCategories('sound')
 	settings.sound.setDefaults(enabled = True)
 	settings.sound.setDefaults(volume_music = 0.2)
 	settings.sound.setDefaults(volume_effects = 0.5)
-	settings.addCategorys('network')
+	settings.addCategories('network')
 	settings.network.setDefaults(port = 62666, url_servers = 'http://master.unknown-horizons.org/servers', url_master = 'master.unknown-horizons.org', favorites = [])
-	settings.addCategorys('language')
+	settings.addCategories('language')
 	settings.language.setDefaults(position='po', name='')
-	settings.addCategorys('savegame')
+	settings.addCategories('savegame')
 	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
 
 

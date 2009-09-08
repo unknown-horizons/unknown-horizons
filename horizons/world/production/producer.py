@@ -166,6 +166,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 	# Use UnitProduction instead of normal Production
 	production_class = UnitProduction
 
+	unit_placement_radius = 3 # Radius in which the producer can  setup a new unit
 
 	def __init__(self, **kwargs):
 		super(UnitProducerBuilding, self).__init__(**kwargs)
@@ -186,16 +187,19 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 	def __create_unit(self):
 		"""Create the produced unit now."""
 		productions = self._productions.values()
-		radius = 3 # Radius in which the producer can  setup a new unit
 		for production in productions:
 			assert isinstance(production, UnitProduction)
 			for unit, amount in production.get_produced_units().iteritems():
 				found_tile = False
-				for tile in horizons.main.session.world.get_tiles_in_radius(self.position.center(), radius): #TODO Add tiles of radius here
-					if tile.is_water:
-						found_tile = True
-						for bar in xrange(0, amount):
-							print "created unit", unit, "amount:", amount
-							horizons.main.session.manager.execute(CreateUnit(self.owner.getId(), unit, tile.x, tile.y))
-						break
-				assert found_tile, "No tile found..., this should not happen"
+				radius = self.unit_placement_radius
+				# search for free water tile, and in increase search radius if none is found
+				while not found_tile:
+					for tile in horizons.main.session.world.get_tiles_in_radius(self.position.center(), radius):
+						if tile.is_water:
+							found_tile = True
+							for i in xrange(0, amount):
+								print "created unit", unit, "amount:", amount
+								CreateUnit(self.owner.getId(), unit, tile.x, tile.y).execute()
+							break
+					radius += 1
+

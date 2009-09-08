@@ -27,11 +27,10 @@ import fife
 import horizons.main
 from horizons.scheduler import Scheduler
 
-from horizons.main import get_action_sets
 from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
-from horizons.util import Rect, Point, WorldObject
+from horizons.util import Rect, Point, WorldObject, ActionSetLoader
 from horizons.constants import RES, LAYERS
 from horizons.command.building import Tear
 
@@ -184,7 +183,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
 
-			action_sets = get_action_sets()
+			action_sets = ActionSetLoader.get_action_sets()
 			if not action in action_sets[action_set_id]:
 				if 'idle' in action_sets[action_set_id]:
 					action='idle'

@@ -34,12 +34,11 @@ class ActionSetLoader(object):
 	@param start_dir: directory that is used to begin search in
 	"""
 	log = logging.getLogger("util.loader")
+	action_sets = {}
+	_start_dir = ""
 
-	def __init__(self, start_dir):
-		self.start_dir = start_dir
-		self.action_sets = None # will later store the action sets
-
-	def _load_files(self, dir, time):
+	@classmethod
+	def _load_files(cls, dir, time):
 		"""Loads the files for a specific rotation
 		@param dir: directory that the files are to loaded from. Example:
 		            'content/gfx/units/lumberjack/work/90/'
@@ -55,7 +54,8 @@ class ActionSetLoader(object):
 			i += 1
 		return fl
 
-	def _load_rotation(self, dir):
+	@classmethod
+	def _load_rotation(cls, dir):
 		"""Loads the rotations + files for a specific action
 		@param dir: directory that the files are to loaded from. Example:
 		            'content/gfx/units/lumberjack/work/'
@@ -73,11 +73,12 @@ class ActionSetLoader(object):
 				dirs.remove(dirname)
 				break
 		for dirname in dirs:
-				rotations[int(dirname)] = self._load_files(os.path.join(dir, dirname),time)
+				rotations[int(dirname)] = cls._load_files(os.path.join(dir, dirname),time)
 		return rotations
 
 
-	def _load_action(self, dir):
+	@classmethod
+	def _load_action(cls, dir):
 		"""Loads the actions + rotations + files for a specific action
 		@param dir: directory that the files are to loaded from. Example:
 		            'content/gfx/units/lumberjack/'
@@ -89,30 +90,30 @@ class ActionSetLoader(object):
 		except ValueError: pass
 
 		for dirname in dirs:
-			actions[dirname] = self._load_rotation(os.path.join(dir, dirname))
+			actions[dirname] = cls._load_rotation(os.path.join(dir, dirname))
 
 		return actions
 
-	def _find_action_sets(self, dir):
+	@classmethod
+	def _find_action_sets(cls, dir):
 		"""Traverses recursively starting from dir to find action sets.
 		It is similar to os.walk, but more optimized for this use case."""
 		for entry in os.listdir(dir):
 			full_path = os.path.join(dir, entry)
 			if entry.startswith("as_"):
-				self.action_sets[entry] = self._load_action(full_path)
+				cls.action_sets[entry] = cls._load_action(full_path)
 			else:
 				if os.path.isdir(full_path) and entry != ".svn":
-					self._find_action_sets(full_path)
+					cls._find_action_sets(full_path)
 
-	def load(self):
-		self.log.debug("Loading action_sets...")
-		self.action_sets = {}
+	@classmethod
+	def load(cls, start_dir):
+		if cls._start_dir != start_dir:
+			cls.log.debug("Loading action_sets...")
+			cls._find_action_sets(start_dir)
+			cls.log.debug("Done!")
 
-		self._find_action_sets(self.start_dir)
-
-		self.log.debug("Done!")
-
-		#for key, value in self.action_sets.iteritems():
+		#for key, value in cls.action_sets.iteritems():
 		#	print "Action_set:" , key
 		#	for key1, value1 in value.iteritems():
 		#		print "Action:", key1
@@ -120,4 +121,8 @@ class ActionSetLoader(object):
 		#			print "Rotation:", key2
 		#			for key3, value3 in value2.iteritems():
 		#				print "File:", key3, "length:", value3
-		return self.action_sets
+		return cls.action_sets
+
+	@classmethod
+	def get_action_sets(cls):
+		return cls.action_sets

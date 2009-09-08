@@ -27,7 +27,7 @@ import logging
 import horizons.main
 import fife
 
-from horizons.main import get_action_sets
+from horizons.util import ActionSetLoader
 
 class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.
@@ -57,7 +57,7 @@ class BuildingClass(type):
 		# Return the new type for this building, including it's attributes, like the previously defined load function.
 		return type.__new__(self, 'Building[%s]' % str(id),
 			(getattr(globals()[class_package], class_name),),
-			{"load": load})
+			{'load': load})
 
 	def __init__(self, id, **kwargs):
 		"""
@@ -102,11 +102,6 @@ class BuildingClass(type):
 					 horizons/world/storageholder.py is the next place to go.
 					 """
 
-	def load(cls, db, worldid):
-		self = cls.__new__(cls)
-		self.load(db, worldid)
-		return self
-
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""
@@ -118,7 +113,7 @@ class BuildingClass(type):
 			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
 			return
 		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
-		all_action_sets = get_action_sets()
+		all_action_sets = ActionSetLoader.get_action_sets()
 		for (action_set_id,) in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))

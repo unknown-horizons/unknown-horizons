@@ -20,6 +20,7 @@
 # ###################################################
 
 import horizons.main
+from horizons.settings import Settings
 
 class AmbientSound(object):
 	"""Support for playing ambient sounds, such as animal noise.

@@ -23,16 +23,17 @@ import shutil
 import os.path
 import ext.simplejson as simplejson
 
-from horizons.main import get_db
 from horizons.constants import PATHS
+from horizons.util.python import ManualConstructionSingleton
 
-class Setting(object):
+class _Setting(object):
 	""" Class to store settings
 	@param name:
 	"""
-	def __init__(self, name = ''):
+	def __init__(self, db, name = ''):
+		self.__dict__['db'] = db
 		self._name = name
-		self._categorys = []
+		self._categories = []
 		self._listener = []
 		try:
 			import config
@@ -41,7 +42,10 @@ class Setting(object):
 					self.__dict__[option[len(name):]] = getattr(config, option)
 		except ImportError:
 			pass
-		for (option, value) in get_db()("select substr(name, ?, length(name)), value from config.config where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%.%'", len(name) + 1, len(name), name, len(name) + 1):
+		for (option, value) in \
+		    self.db("select substr(name, ?, length(name)), value from config.config \
+		    where substr(name, 1, ?) = ? and substr(name, ?, length(name)) NOT LIKE '%.%'", \
+		                             len(name) + 1, len(name), name, len(name) + 1):
 			if not option in self.__dict__:
 				self.__dict__[option] = simplejson.loads(value)
 				if isinstance(self.__dict__[option], unicode):
@@ -61,8 +65,8 @@ class Setting(object):
 		"""
 		self.__dict__[name] = value
 		if not name.startswith('_'):
-			assert(name not in self._categorys)
-			get_db()("replace into config.config (name, value) values (?, ?)", self._name + name, simplejson.dumps(value))
+			assert(name not in self._categories)
+			self.db("replace into config.config (name, value) values (?, ?)", self._name + name, simplejson.dumps(value))
 			for listener in self._listener:
 				listener(self, name, value)
 
@@ -70,7 +74,7 @@ class Setting(object):
 		"""
 		@param listener:
 		"""
-		for name in self._categorys:
+		for name in self._categories:
 			self.__dict__[name].add_change_listener(listener)
 		self._listener.append(listener)
 		for name in self.__dict__:
@@ -81,7 +85,7 @@ class Setting(object):
 		"""
 		@param listener:
 		"""
-		for name in self._categorys:
+		for name in self._categories:
 			self.__dict__[name].delChangeListener(listener)
 		self._listener.remove(listener)
 
@@ -91,45 +95,61 @@ class Setting(object):
 		"""
 		for name in defaults:
 			assert(not name.startswith('_'))
-			assert(name not in self._categorys)
+			assert(name not in self._categories)
 			if not name in self.__dict__:
 				self.__dict__[name] = defaults[name]
 				for listener in self._listener:
 					listener(self, name, defaults[name])
 
-	def addCategorys(self, *categorys):
+	def addCategories(self, *categories):
 		"""Adds one or more setting categories
 
 		The new categories can be accessed via
 		settingsObj.NEWCATEGORY
-		@param *categorys:
+		@param *categories:
 		"""
-		for category in categorys:
-			self._categorys.append(category)
-			inst = Setting(self._name + category + '.')
+		for category in categories:
+			self._categories.append(category)
+			inst = _Setting(self.db, self._name + category + '.')
 			self.__dict__[category] = inst
 			for listener in self._listener:
 				inst.add_change_listener(listener)
 
-class Settings(Setting):
+class Settings(_Setting):
 	VERSION = 2
 	"""
 	@param config:
 	"""
-	def __init__(self, config = PATHS.USER_CONFIG_FILE):
+	def __init__(self, db, config = PATHS.USER_CONFIG_FILE):
+		self.__dict__['db'] = db # workaround for overloaded __setattr__
 		if not os.path.exists(config):
 			shutil.copyfile('content/config.sqlite', config)
-		get_db()("ATTACH ? AS config", config)
-		version = get_db()("PRAGMA config.user_version")[0][0]
-		if version > Settings.VERSION:
+		self.db("ATTACH ? AS config", config)
+		version = self.db("PRAGMA config.user_version")[0][0]
+		if version > self.VERSION:
 			print _("Error: Config version not supported, creating empty config which wont be saved.")
-			get_db()("DETACH config")
-			get_db()("ATTACH ':memory:' AS config")
-			get_db()("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
-		elif version < Settings.VERSION:
-			print _("Upgrading Config from Version %d to Version %d ...") % (version, Settings.VERSION)
+			self.db("DETACH config")
+			self.db("ATTACH ':memory:' AS config")
+			self.db("CREATE TABLE config.config (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+		elif version < self.VERSION:
+			print _("Upgrading Config from Version %d to Version %d ...") % (version, self.VERSION)
 			if version == 1:
-				get_db()("UPDATE config.config SET name = REPLACE(name, '_', '.') WHERE name != 'client_id'")
+				self.db("UPDATE config.config SET name = REPLACE(name, '_', '.') WHERE name != 'client_id'")
 				version = 2
-			get_db()("PRAGMA config.user_version = " + str(Settings.VERSION))
-		super(Settings, self).__init__()
+			self.db("PRAGMA config.user_version = " + str(self.VERSION))
+		super(Settings, self).__init__(db)
+
+	def set_defaults(self):
+		self.addCategories('sound')
+		self.sound.setDefaults(enabled = True)
+		self.sound.setDefaults(volume_music = 0.2)
+		self.sound.setDefaults(volume_effects = 0.5)
+		self.addCategories('network')
+		self.network.setDefaults(port = 62666, \
+		                         url_servers = 'http://master.unknown-horizons.org/servers', \
+		                         url_master = 'master.unknown-horizons.org', \
+		                         favorites = [])
+		self.addCategories('language')
+		self.language.setDefaults(position='po', name='')
+		self.addCategories('savegame')
+		self.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)

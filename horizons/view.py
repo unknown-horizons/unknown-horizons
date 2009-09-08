@@ -69,8 +69,8 @@ class View(Changelistener):
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.WATER])
 
-		horizons.main.settings.addCategorys('view')
-		horizons.main.settings.view.addCategorys('zoom')
+		horizons.main.settings.addCategories('view')
+		horizons.main.settings.view.addCategories('zoom')
 		horizons.main.settings.view.zoom.max = 1
 		horizons.main.settings.view.zoom.min = 0.25
 

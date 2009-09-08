@@ -105,7 +105,7 @@ class World(LivingObject):
 		#load islands
 		self.islands = []
 		for (islandid,) in db("SELECT rowid FROM island"):
-			island = Island(db, islandid)
+			island = Island(db, islandid, self)
 			self.islands.append(island)
 
 		#calculate map dimensions
@@ -337,3 +337,7 @@ class World(LivingObject):
 			self.trader.save(db)
 		for ship in self.ships:
 			ship.save(db)
+
+	def load_building(self, db, typeid, worldid):
+		"""Loads a saved building. Don't load buildings yourself in the game code."""
+		Entities.buildings[typeid].load(db, worldid)

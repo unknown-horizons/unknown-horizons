@@ -61,29 +61,34 @@ class Island(WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, islandid):
+	def __init__(self, db, islandid, world):
+		"""
+		@param db: db instance with island table
+		@param islandid: id of island in that table
+		@param world: reference to World instance
+		"""
 		# an island is always loaded from db, so __init__() basically is load()
 		super(Island, self).load(db, islandid)
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", islandid)[0]
-		self.__init(Point(x, y), filename)
+		self.__init(Point(x, y), filename, world)
 
 		# load settlements and buildings, if there are any
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
-			Settlement.load(db, settlement_id)
+			Settlement.load(db, settlement_id, self.world)
 
 		for (building_worldid, building_typeid) in \
-			db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+		    db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+			self.world.load_building(db, building_typeid, building_worldid)
 
-			buildingclass = Entities.buildings[building_typeid]
-			buildingclass.load(db, building_worldid)
-
-	def __init(self, origin, filename):
+	def __init(self, origin, filename, world):
 		"""
 		Load the actual island from a file
 		@param origin: Point
 		@param filename: String
+		@param world: World instance
 		"""
+		self.world = world
 		self.file = filename
 		self.origin = origin
 		db = DbReader(filename) # Create a new DbReader instance to load the maps file.
@@ -188,7 +193,7 @@ class Island(WorldObject):
 		@param position: Rect describing the position of the new branch office
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
-		settlement = Settlement(player)
+		settlement = Settlement(player, self.world)
 		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
 		horizons.main.session.ingame_gui.message_widget.add(position.center().x, \

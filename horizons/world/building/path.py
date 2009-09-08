@@ -93,7 +93,6 @@ class Bridge(BasicBuilding, BuildableSingle):
 	def init(self):
 		super(Bridge, self).init()
 		origin = self.position.origin
-		self.island = horizons.main.session.world.get_island(origin)
 		for tile in self.island.get_surrounding_tiles(origin):
 			if tile is not None and self.island.path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()

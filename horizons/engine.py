@@ -29,7 +29,7 @@ import pychan
 import gui.style
 import horizons.main
 
-from horizons.main import get_action_sets, get_settings
+from horizons.util import ActionSetLoader
 from gui.widgets.inventory import Inventory, ImageFillStatusButton
 from gui.widgets.progressbar import ProgressBar
 from gui.widgets.toggleimagebutton import ToggleImageButton
@@ -65,7 +65,7 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file, frame_end in sorted(get_action_sets()[actionset][action][int(rotation)].iteritems()):
+		for file, frame_end in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iteritems()):
 			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
 			img = horizons.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:
@@ -161,10 +161,10 @@ class Fife(object):
 		self._gotInited = False
 
 		#init settings
-		settings = get_settings()
-		settings.addCategorys('fife')
+		settings = horizons.main.settings
+		settings.addCategories('fife')
 		settings.fife.add_change_listener(self._setSetting)
-		settings.fife.addCategorys('defaultFont', 'sound', 'renderer', 'screen')
+		settings.fife.addCategories('defaultFont', 'sound', 'renderer', 'screen')
 
 		settings.fife.defaultFont.setDefaults(
 			path = 'content/fonts/LinLibertine_Re-4.4.1.ttf',
@@ -252,16 +252,16 @@ class Fife(object):
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.emitter = {}
-		if get_settings().sound.enabled: # Set up sound if it is enabled
+		if horizons.main.settings.sound.enabled: # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
-			self.emitter['bgsound'].setGain(get_settings().sound.volume_music)
+			self.emitter['bgsound'].setGain(horizons.main.settings.sound.volume_music)
 			self.emitter['bgsound'].setLooping(False)
 			self.emitter['effects'] = self.soundmanager.createEmitter()
-			self.emitter['effects'].setGain(get_settings().sound.volume_effects)
+			self.emitter['effects'].setGain(horizons.main.settings.sound.volume_effects)
 			self.emitter['effects'].setLooping(False)
 			self.emitter['speech'] = self.soundmanager.createEmitter()
-			self.emitter['speech'].setGain(get_settings().sound.volume_effects)
+			self.emitter['speech'].setGain(horizons.main.settings.sound.volume_effects)
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
 
@@ -323,7 +323,7 @@ class Fife(object):
 		"""Plays a soundfile on the given emitter.
 		@param emitter: string with the emitters name in horizons.main.fife.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
-		if get_settings().sound.enabled: # Set up sound if it is enabled
+		if horizons.main.settings.sound.enabled: # Set up sound if it is enabled
 			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
@@ -336,14 +336,14 @@ class Fife(object):
 		@param emitter_name: string with the emitters name, used as key for the self.emitter dict
 		@param value: double which value the emitter is to be set to range[0, 1]
 		"""
-		if get_settings().sound.enabled:
+		if horizons.main.settings.sound.enabled:
 			self.emitter[emitter_name].setGain(value)
 
 	def set_volume_music(self, value):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if get_settings().sound.enabled:
+		if horizons.main.settings.sound.enabled:
 				self.emitter['bgsound'].setGain(value)
 
 
@@ -351,7 +351,7 @@ class Fife(object):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if get_settings().sound.enabled:
+		if horizons.main.settings.sound.enabled:
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
