@@ -24,6 +24,7 @@ from buildable import BuildableRect
 from collectingbuilding import CollectingBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
+from horizons.entities import Entities
 from horizons.constants import LAYERS
 
 import horizons.main
