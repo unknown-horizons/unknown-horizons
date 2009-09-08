@@ -10,7 +10,7 @@ import os.path
 data = [('share/applications', ('content/unknown-horizons.desktop', )),
 	('share/pixmaps', ('content/unknown-horizons.xpm', ))]
 
-for i in filter(lambda x: len(x[2])  , os.walk('content')):
+for i in filter(lambda x: len(x[2]), os.walk('content')):
 	if not '.svn' in os.path.split(i[0]):
 		data.append( ('share/unknown-horizons/%s' % i[0], [ '%s/%s' % (i[0], j) for j in i[2]] ) )
 
@@ -21,7 +21,7 @@ for i in os.listdir('po'):
 
 #trans = glob('po/*/LC_MESSAGES/unknownhorizons.mo')
 
-data = filter(lambda x: '.svn' not in os.path.split(x[0]), data)
+data = filter(lambda x: '.svn' not in x[0], data)
 
 class build_man(build):
 	description = "Build the Manpage"
