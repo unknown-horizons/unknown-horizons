@@ -34,11 +34,14 @@ from horizons.network import Socket, ServerConnection, ClientConnection
 from horizons.savegamemanager import SavegameManager
 from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
+from horizons.gui.keylisteners import MainListener
 
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
 
 	def __init__(self):
+		self.mainlistener = MainListener()
+
 		self.current = None # currently active window
 
 		self.widgets = {} # Stores all the widgets, to prevent double loading

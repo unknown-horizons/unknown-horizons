@@ -290,9 +290,8 @@ class Collector(StorageHolder, Unit):
 		self.show()
 		if job_location is None:
 			job_location = self.job.object.position
-		move_possible = self.move(job_location, self.begin_working, \
+		self.move(job_location, self.begin_working, \
 							destination_in_building = self.destination_always_in_building)
-		assert move_possible
 		self.state = self.states.moving_to_target
 
 	def begin_working(self):

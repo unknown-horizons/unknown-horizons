@@ -31,7 +31,7 @@ class GenericUnitCommand(GenericCommand):
 		if self._get_object().owner.getId() != issuer.getId():
 			return
 		else:
-			super(GenericUnitCommand, self).__call__(issuer)
+			return super(GenericUnitCommand, self).__call__(issuer)
 
 class Act(GenericUnitCommand):
 	"""Command class that moves a unit.

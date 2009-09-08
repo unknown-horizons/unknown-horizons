@@ -29,6 +29,10 @@ from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList
 from horizons.world.concreteobject import ConcretObject
 
+class MoveNotPossible(Exception):
+	"""Gets thrown when the unit should move some where, but there is no possible path"""
+	pass
+
 class MovingObject(ConcretObject):
 	"""This class provides moving functionality and is to be inherited by Unit.
 	Its purpose is to provide a cleaner division of the code.
@@ -108,7 +112,6 @@ class MovingObject(ConcretObject):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
-		@return: True if move is possible, else False
 		"""
 		# calculate the path
 		move_possible = self.path.calc_path(destination, destination_in_building)
@@ -116,7 +119,7 @@ class MovingObject(ConcretObject):
 		self.log.debug("Unit %s: move to %s; possible: %s", self.getId(), destination, move_possible)
 
 		if not move_possible:
-			return False
+			raise MoveNotPossible
 
 		self.move_callbacks = WeakMethodList(callback)
 		self._setup_move(action)
@@ -127,8 +130,6 @@ class MovingObject(ConcretObject):
 			# this assures that a movement takes at least 1 tick, which is sometimes subtly
 			# assumed e.g. in the collector code
 			Scheduler().add_new_object(self._move_tick, self)
-
-		return True
 
 	def move_back(self, callback = None, destination_in_building = False, action='move'):
 		"""Return to the place where last movement started. Same path is used, but in reverse order.

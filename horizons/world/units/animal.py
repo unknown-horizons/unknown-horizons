@@ -165,8 +165,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		target = self.get_random_location(self.walking_range)
 		if target is not None:
 			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
-			move_possible = self.move(target, callback=self.search_job)
-			assert move_possible
+			self.move(target, callback=self.search_job)
 			self.state = self.states.no_job_walking_randomly
 		else:
 			# we couldn't find a target, just try again 3 secs later

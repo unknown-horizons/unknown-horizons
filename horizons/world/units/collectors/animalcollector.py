@@ -24,6 +24,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import Point, Circle
+from horizons.world.units.movingobject import MoveNotPossible
 
 from buildingcollector import BuildingCollector
 
@@ -69,8 +70,9 @@ class AnimalCollector(BuildingCollector):
 	def pickup_animal(self):
 		"""Moves collector to animal. Called by animal when it actually stopped"""
 		self.show()
-		move_possible = self.move(self.job.object.position, self.begin_working)
-		if not move_possible:
+		try:
+			self.move(self.job.object.position, self.begin_working)
+		except MoveNotPossible:
 			# the animal is now unreachable.
 			self.job.object.remove_stop_after_job()
 			self.job.object.search_job()
@@ -102,10 +104,8 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
-		#print self.id, 'GET ANIMAL'
-		move_possible = self.job.object.move(self.home_building.position, \
-		                                     destination_in_building = True, action='move_full')
-		assert move_possible, "Animal can't join animal collector cause he can't find a path"
+		self.job.object.move(self.home_building.position, destination_in_building = True, \
+		                     action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""

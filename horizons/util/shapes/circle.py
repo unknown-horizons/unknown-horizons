@@ -26,6 +26,10 @@ class Circle(object):
 	"""Class for the shape of a circle
 	You can access center and radius of the circle as public members."""
 	def __init__(self, center, radius):
+		"""
+		@param center: Point
+		@param radius: int
+		"""
 		assert isinstance(center, Point)
 		self.center = center
 		self.radius = radius

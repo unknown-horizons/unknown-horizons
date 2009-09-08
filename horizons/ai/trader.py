@@ -31,6 +31,8 @@ from horizons.constants import RES, UNITS
 from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
+from horizons.world.units.movingobject import MoveNotPossible
+
 
 class Trader(Player, StorageHolder):
 	"""A trader represents the free trader that travels around the map with his trading ship(s) and
@@ -132,8 +134,9 @@ class Trader(Player, StorageHolder):
 		# find random position
 		point = horizons.main.session.world.get_random_possible_ship_position()
 		# move ship there:
-		move_possible = ship.move(point, lambda: self.ship_idle(ship))
-		if not move_possible:
+		try:
+			move_possible = ship.move(point, lambda: self.ship_idle(ship))
+		except MoveNotPossible:
 			self.notify_unit_path_blocked(ship)
 			return
 		self.ships[ship] = self.shipStates.moving_random
@@ -153,8 +156,9 @@ class Trader(Player, StorageHolder):
 			self.office[ship.id] = branchoffices[rand]
 			for water in horizons.main.session.world.ground_map: # get a position near the branch office
 				if Point(water[0], water[1]).distance(self.office[ship.id].position) < 3:
-					move_possible = ship.move(Point(water[0], water[1]), lambda: self.reached_branch(ship))
-					if not move_possible:
+					try:
+						ship.move(Point(water[0], water[1]), lambda: self.reached_branch(ship))
+					except MoveNotPossible:
 						self.notify_unit_path_blocked(ship)
 						return
 					self.ships[ship] = self.shipStates.moving_to_branch

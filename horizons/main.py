@@ -46,32 +46,10 @@ from util import Color, ActionSetLoader, DbReader
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 
-## GETTERS
-
-def get_world():
-	return _modules.session.world
-
-def get_db():
-	return _modules.db
-
-def get_view():
-	return _modules.session.view
-
-def get_ingame_gui():
-	return _modules.session.ingame_gui
-
 def get_gui():
 	global gui
 	return gui
 
-##
-class Modules(object):
-	db = None
-	settings = None
-	connection = None
-	mainlistener = None
-
-_modules = Modules()
 
 def start(command_line_arguments):
 	"""Starts the horizons.
@@ -82,7 +60,6 @@ def start(command_line_arguments):
 
 	from horizons.gui import Gui
 	from engine import Fife
-	from horizons.gui.keylisteners import MainListener
 	from extscheduler import ExtScheduler
 	from settings import Settings
 
@@ -94,7 +71,6 @@ def start(command_line_arguments):
 	db = DbReader(':memory:')
 	db("attach ? AS data", 'content/game.sqlite')
 	db("attach ? AS settler", 'content/settler.sqlite')
-	_modules.db = db
 
 	#init settings
 	settings = Settings(db)
@@ -112,7 +88,6 @@ def start(command_line_arguments):
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
 	ActionSetLoader.load('content/gfx/')
-	_modules.mainlistener = MainListener()
 	gui = Gui()
 	SavegameManager.init()
 	session = None

@@ -27,7 +27,8 @@ import horizons.main
 from horizons.gui.tabs import TabWidget, ShipInventoryTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding.pather import ShipPather
-from horizons.util import Point, NamedObject
+from horizons.world.units.movingobject import MoveNotPossible
+from horizons.util import Point, NamedObject, Circle
 from unit import Unit
 from horizons.constants import LAYERS
 
@@ -97,11 +98,24 @@ class Ship(NamedObject, Unit):
 		def tmp():
 			horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
 		tmp()
-		x, y = int(round(x)), int(round(y))
-		move_possible = self.move(Point(x, y), tmp)
-		if not move_possible:
+		move_target = Point(int(round(x)), int(round(y)))
+		try:
+			self.move(move_target, tmp)
+		except MoveNotPossible:
+			# find a near tile to move to
+			target_found = False
+			surrounding = Circle(move_target, radius=0)
+			while not target_found and surrounding.radius < 4:
+				surrounding.radius += 1
+				for move_target in surrounding:
+					try:
+						self.move(move_target, tmp)
+					except MoveNotPossible:
+						continue
+					target_found = True
+					break
 			return
-		if self.position.x != x or self.position.y != y:
+		if self.position.x != move_target.x or self.position.y != move_target.y:
 			move_target = self.get_move_target()
 			if move_target is not None:
 				loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])
