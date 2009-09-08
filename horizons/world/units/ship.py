@@ -114,7 +114,6 @@ class Ship(NamedObject, Unit):
 						continue
 					target_found = True
 					break
-			return
 		if self.position.x != move_target.x or self.position.y != move_target.y:
 			move_target = self.get_move_target()
 			if move_target is not None:
