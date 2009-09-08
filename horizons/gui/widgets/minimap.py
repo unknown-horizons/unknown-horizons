@@ -76,6 +76,8 @@ class Minimap(object):
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
 		displayed_area = horizons.main.session.view.get_displayed_area()
+		#print 'displayed_area', displayed_area
+		#print 'displayed_area center minimap', self._world_coord_to_minimap_coord(displayed_area.center().to_tuple())
 		minimap_corners_as_renderer_node = []
 		for corner in displayed_area.get_corners():
 			# check if the corners are outside of the screen
@@ -90,6 +92,7 @@ class Minimap(object):
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
 			minimap_coords = self._world_coord_to_minimap_coord(corner)
+			#print 'minimap_coord corner', minimap_coords
 			minimap_corners_as_renderer_node.append( fife.GenericRendererNode( \
 			  fife.Point(*minimap_coords) ) )
 		for i in xrange(0, 3):
@@ -111,7 +114,10 @@ class Minimap(object):
 	def use_overlay_icon(self, icon):
 		"""Configures icon so that clicks get mapped here"""
 		self.overlay_icon = icon
-		icon.mapEvents({ icon.name + '/mouseClicked' : self.on_click })
+		icon.mapEvents({ \
+		  icon.name + '/mouseClicked' : self.on_click, \
+		  icon.name + '/mouseDragged' : self.on_click \
+		})
 
 	def on_click(self, event):
 		"""Scrolls screen to the point, where the cursor points to on the minimap"""
@@ -121,9 +127,10 @@ class Minimap(object):
 		if not self.location.contains(abs_mouse_position):
 			# mouse click was on icon but not acctually on minimap
 			return
+		print 'abs mouse', abs_mouse_position
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position.to_tuple())
+		print 'map_coord', map_coord
 		horizons.main.session.view.center(*map_coord)
-		self.update_cam()
 
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
