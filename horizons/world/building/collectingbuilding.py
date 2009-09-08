@@ -22,7 +22,7 @@
 import horizons.main
 
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-
+from horizons.entities import Entities
 from horizons.world.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons.constants import UNITS
 

@@ -107,7 +107,7 @@ class Session(LivingObject):
 	def end(self):
 		self.log.debug("Ending session")
 
-		self.scheduler.rem_all_classinst_calls(self)
+		Scheduler().rem_all_classinst_calls(self)
 		horizons.main.ext_scheduler.rem_call(self, self.autosave)
 
 		if horizons.main.settings.sound.enabled:
@@ -124,7 +124,6 @@ class Session(LivingObject):
 		self.manager = None
 		self.timer = None
 		Scheduler.destroy_instance()
-		Entities.destroy_instance()
 
 
 		self.selected_instances = None

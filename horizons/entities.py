@@ -19,10 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from world.building import BuildingClass
-from world.units import UnitClass
-from world.ground import GroundClass
-
 import horizons.main
 
 class Entities(object):
@@ -35,6 +31,10 @@ class Entities(object):
 	def load(cls):
 		if cls.loaded:
 			return
+
+		from world.building import BuildingClass
+		from world.units import UnitClass
+		from world.ground import GroundClass
 
 		cls.grounds = {}
 		for (ground_id,) in horizons.main.db("SELECT rowid FROM data.ground"):

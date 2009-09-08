@@ -24,10 +24,10 @@ import pychan
 
 import horizons.main
 
-from horizons.util import Changelistener, Point, Rect
+from horizons.util import Point, Rect
 
 
-class Minimap(Changelistener):
+class Minimap(object):
 	"""Draws Minimap to a specified location."""
 	water_id, island_id, player_id, cam_border = range(0, 4)
 	colors = { 0: (190, 175, 152),
