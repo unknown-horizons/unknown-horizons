@@ -21,11 +21,14 @@
 
 import time
 
+from horizons.util import ManualConstructionSingleton
+
 class ExtScheduler(object):
 	"""The ExtScheduler is used for time based events that are not part of the simulation(gui, menu, scrolling).
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	@param pump: pump list the scheduler registers itself with.
 	"""
+	__metaclass__ = ManualConstructionSingleton
 
 	def __init__(self, pump):
 		super(ExtScheduler, self).__init__()

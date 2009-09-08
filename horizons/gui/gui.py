@@ -94,9 +94,6 @@ class Gui(object):
 		self.widgets['ingame_pause'].findChild(name='headline').stylize('headline') # style definition for headline
 		self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml')
 
-		self.widgets['change_name'] = load_xml_translated("change_name_dialog.xml")
-		self.widgets['change_name'].stylize('book')
-		self.widgets['change_name'].findChild(name='headline').stylize('headline') # style definition for headline
 
 		for widget in self.widgets.itervalues():
 			center_widget(widget)
@@ -764,31 +761,6 @@ class Gui(object):
 	def toggle_ingame_pdb_start(self):
 		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
 		pass
-
-
-	def show_change_name_dialog(self, instance):
-		horizons.main.session.speed_pause()
-		events = {
-			'okButton': pychan.tools.callbackWithArguments(self.change_name, instance),
-			'cancelButton': self.hide_change_name_dialog
-		}
-		self.on_escape = self.hide_change_name_dialog
-		self.widgets['change_name'].mapEvents(events)
-		self.widgets['change_name'].show()
-
-	def hide_change_name_dialog(self):
-		horizons.main.session.speed_unpause()
-		self.on_escape = self.show_pause
-		self.widgets['change_name'].hide()
-
-	def change_name(self, instance):
-		new_name = self.widgets['change_name'].collectData('new_name')
-		self.widgets['change_name'].findChild(name='new_name').text = u''
-		instance.set_name(new_name)
-		self.hide_change_name_dialog()
-
-
-
 
 
 def center_widget(widget):

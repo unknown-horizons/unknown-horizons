@@ -52,7 +52,11 @@ class View(Changelistener):
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 		self.view = horizons.main.fife.engine.getView()
 
-		self.cam = self.view.addCamera("main", self.layers[len(self.layers) - 1], fife.Rect(0, 0, horizons.main.fife.settings.getScreenWidth(), horizons.main.fife.settings.getScreenHeight()), fife.ExactModelCoordinate(center[0], center[1], 0.0))
+		self.cam = self.view.addCamera("main", self.layers[len(self.layers) - 1], \
+		                               fife.Rect(0, 0, \
+		                                         horizons.main.fife.settings.getScreenWidth(), \
+		                                         horizons.main.fife.settings.getScreenHeight()), \
+		                               fife.ExactModelCoordinate(center[0], center[1], 0.0))
 		self.cam.setCellImageDimensions(64, 32)
 		self.cam.setRotation(45.0)
 		self.cam.setTilt(-60)
@@ -61,7 +65,9 @@ class View(Changelistener):
 
 		self.view.resetRenderers()
 		self.renderer = {}
-		for r in ('CameraZoneRenderer', 'InstanceRenderer', 'GridRenderer', 'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer', 'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
+		for r in ('CameraZoneRenderer', 'InstanceRenderer', 'GridRenderer', \
+		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer', \
+		          'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))

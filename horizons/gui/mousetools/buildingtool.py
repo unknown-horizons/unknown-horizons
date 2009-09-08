@@ -44,8 +44,13 @@ class BuildingTool(NavigationTool):
 	"""
 	log = logging.getLogger("gui.buildingtool")
 
-	def __init__(self, building, ship = None):
+	buildable_color = (255, 255, 255)
+	not_buildable_color = (255, 0, 0)
+
+	def __init__(self, session, building, ship = None):
 		super(BuildingTool, self).__init__()
+		self.session = session
+		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship
 		self._class = building
 		self.buildings = []
@@ -55,7 +60,7 @@ class BuildingTool(NavigationTool):
 		self.load_gui()
 		if not self._class.class_package == 'path':
 			self.gui.show()
-			horizons.main.session.ingame_gui.minimap_to_front()
+			self.session.ingame_gui.minimap_to_front()
 
 		horizons.main.gui.on_escape = self.on_escape
 
@@ -66,35 +71,34 @@ class BuildingTool(NavigationTool):
 
 	def highlight_buildable(self):
 		"""Highlights all buildable tiles."""
-		for island in horizons.main.session.world.islands:
+		for island in self.session.world.islands:
 			for tile in island.grounds:
 				if tile.settlement is not None and \
-					 tile.settlement.owner == horizons.main.session.world.player and \
+					 tile.settlement.owner == self.session.world.player and \
 					 self._class.is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
-					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+					self.renderer.addColored(tile._instance, *self.buildable_color)
 					if tile.object is not None:
-						horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+						self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def highlight_ship_radius(self):
 		"""Colors everything in the radius of the ship. Also checks whether
 		there is a tile in the ships radius."""
-		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
-		for island in horizons.main.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
+		self.renderer.removeAllColored()
+		for island in self.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
 					# check that there is no other player's settlement
 					free = (tile.settlement is None or \
-									tile.settlement.owner == horizons.main.session.world.player)
-					horizons.main.session.view.renderer['InstanceRenderer'].addColored( \
-						tile._instance, *((255, 255, 255) if free else (0, 0, 0)))
+									tile.settlement.owner == self.session.world.player)
+					self.renderer.addColored( \
+						tile._instance, *(self.buildable_color if free else (0, 0, 0)))
 					if free and tile.object is not None:
-						horizons.main.session.view.renderer['InstanceRenderer'].addColored( \
-							tile.object._instance, 255, 255, 255)
+						self.renderer.addColored(tile.object._instance, self.buildable_color)
 
 	def end(self):
-		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		self.renderer.removeAllColored()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
-		horizons.main.session.view.remove_change_listener(self.draw_gui)
+		self.session.view.remove_change_listener(self.draw_gui)
 		self.gui.hide()
 		self._remove_listeners()
 		super(BuildingTool, self).end()
@@ -120,12 +124,12 @@ class BuildingTool(NavigationTool):
 			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
 			157
 		)
-		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - horizons.main.session.ingame_gui.gui['minimap'].size[1]/1)
+		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - self.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		top_bar = self.gui.findChild(name='top_bar')
 		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 		self.draw_gui()
-		horizons.main.session.view.add_change_listener(self.draw_gui)
+		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
 		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
@@ -138,7 +142,7 @@ class BuildingTool(NavigationTool):
 			self.action = 'idle_full'
 		else: # If no idle animation found, use the first you find
 			self.action = action_sets[action_set].keys()[0]
-		image = sorted(action_sets[action_set][self.action][(self.rotation+int(horizons.main.session.view.cam.getRotation())-45)%360].keys())[0]
+		image = sorted(action_sets[action_set][self.action][(self.rotation+int(self.session.view.cam.getRotation())-45)%360].keys())[0]
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)
@@ -146,7 +150,6 @@ class BuildingTool(NavigationTool):
 
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
-		InstanceRenderer = horizons.main.session.view.renderer['InstanceRenderer']
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
@@ -158,7 +161,7 @@ class BuildingTool(NavigationTool):
 			resources = self._class.get_build_costs(**building)
 			if not building.get('buildable', True):
 				# can't build, color it red
-				InstanceRenderer.addColored(building['instance'], 255, 0, 0)
+				self.renderer.addColored(building['instance'], *self.not_buildable_color)
 			else:
 				for resource in resources:
 					neededResources[resource] = neededResources.get(resource, 0) + resources[resource]
@@ -166,7 +169,7 @@ class BuildingTool(NavigationTool):
 					# check player, ship and settlement inventory
 					available_res = 0
 					# player
-					available_res += horizons.main.session.world.player.inventory[resource] if resource == RES.GOLD_ID else 0
+					available_res += self.session.world.player.inventory[resource] if resource == RES.GOLD_ID else 0
 					# ship or settlement
 					if self.ship is not None:
 						available_res += self.ship.inventory[resource]
@@ -175,7 +178,7 @@ class BuildingTool(NavigationTool):
 
 					if available_res < neededResources[resource]:
 						# can't build, not enough res
-						InstanceRenderer.addColored(building['instance'], 255, 0, 0)
+						self.renderer.addColored(building['instance'], 255, 0, 0)
 						building['buildable'] = False
 						break
 				else:
@@ -183,26 +186,26 @@ class BuildingTool(NavigationTool):
 					for resource in resources:
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 					# draw white for buildable
-					InstanceRenderer.addColored(building['instance'], 255, 255, 255)
-		horizons.main.session.ingame_gui.resourceinfo_set( \
+					self.renderer.addColored(building['instance'], 255, 255, 255)
+		self.session.ingame_gui.resourceinfo_set( \
 		   self.ship if self.ship is not None else settlement, neededResources, usableResources)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def on_escape(self):
-		horizons.main.session.ingame_gui.resourceinfo_set(None)
+		self.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
-			horizons.main.session.ingame_gui.show_build_menu()
+			self.session.ingame_gui.show_build_menu()
 		else:
-			horizons.main.session.selected_instances = set([self.ship])
+			self.session.selected_instances = set([self.ship])
 			self.ship.select()
 			self.ship.show_menu()
 		self.gui.hide()
-		horizons.main.session.cursor = SelectionTool()
+		self.session.cursor = SelectionTool()
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
 		super(BuildingTool, self).mouseMoved(evt)
-		mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		mapcoord = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.startPoint != point:
 			self.startPoint = point
@@ -226,7 +229,7 @@ class BuildingTool(NavigationTool):
 	def mouseDragged(self, evt):
 		self.log.debug("BuildingTool mouseDragged")
 		super(BuildingTool, self).mouseDragged(evt)
-		mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+		mapcoord = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 		point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 		if self.startPoint is not None:
 			self._check_update_preview(point)
@@ -237,7 +240,7 @@ class BuildingTool(NavigationTool):
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			mapcoord = horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
+			mapcoord = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			point = (math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25, math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)
 
 			self._check_update_preview(point)
@@ -251,15 +254,15 @@ class BuildingTool(NavigationTool):
 					built = True
 					self._remove_listeners() # Remove changelisteners for update_preview
 					found_buildable = True
-					horizons.main.session.view.renderer['InstanceRenderer'].removeColored(building['instance'])
+					self.renderer.removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
-					horizons.main.session.manager.execute(Build(**args))
+					self.session.manager.execute(Build(**args))
 					self.gui.hide()
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			if built:
-				horizons.main.session.manager.execute(PlaySound("build"))
+				self.session.manager.execute(PlaySound("build"))
 			self.buildings = []
 			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':
 				self.startPoint = point

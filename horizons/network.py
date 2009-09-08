@@ -26,6 +26,7 @@ import pickle
 import struct
 import sys
 from horizons.packets import *
+from horizons.extscheduler import ExtScheduler
 
 # TODO: make networking robust
 #       (i.e. GUI freezes sometimes when waiting for timeout)
@@ -175,7 +176,7 @@ class ClientConnection(Connection):
 		self.address, self.port = address, port
 		self.sendToServer(LobbyJoinPacket(self.address, self.port, self.local_player))
 
-		horizons.main.ext_scheduler.add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
+		ExtScheduler().add_new_object(self.sendKeepAlive, self, self.keepAliveInterval, -1)
 
 	def onPacket(self, packet):
 		#print 'RECV', packet,'FROM',packet.address, packet.port
@@ -200,7 +201,7 @@ class ClientConnection(Connection):
 
 	def end(self):
 		self._socket.receive = lambda a: None
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 		self.sendToServer(LeaveServerPacket())
 
 	def doChat(self, text):
@@ -284,12 +285,12 @@ class ServerConnection(Connection):
 
 		self.register()
 
-		horizons.main.ext_scheduler.add_new_object(self.register, self, self.registerTimeout, -1)
-		horizons.main.ext_scheduler.add_new_object(self.check_client_timeout, self, self.clientTimeout, -1)
-		horizons.main.ext_scheduler.add_new_object(self.notifyClients, self, self.clientUpdateInterval, -1)
+		ExtScheduler().add_new_object(self.register, self, self.registerTimeout, -1)
+		ExtScheduler().add_new_object(self.check_client_timeout, self, self.clientTimeout, -1)
+		ExtScheduler().add_new_object(self.notifyClients, self, self.clientUpdateInterval, -1)
 
 	def end(self):
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 		self._socket.receive = lambda a: None
 
 	def notifyClients(self):

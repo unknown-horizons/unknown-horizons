@@ -22,26 +22,25 @@
 import fife
 import pychan
 
-import horizons.main
-
 from horizons.util import Point, Rect
 
 
 class Minimap(object):
-	"""Draws Minimap to a specified location."""
+	"""A basic minimap"""
 	water_id, island_id, player_id, cam_border = range(0, 4)
 	colors = { 0: (190, 175, 152),
 	           1: (137, 117, 87),
 	           2: (147, 18, 18),
 	           3: (1,   1,   1) }
 
-	def __init__(self, rect, renderer):
+	def __init__(self, rect, session, renderer):
 		"""
 		@param rect: a Rect, where we will draw to
 		@param renderer: renderer to be used. Only fife.GenericRenderer is explicitly supported.
 		"""
 		self.location = rect
 		self.renderer = renderer
+		self.session = session
 
 		# save all GenericRendererNodes here, so they don't need to be constructed multiple times
 		self.renderernodes = {}
@@ -54,18 +53,18 @@ class Minimap(object):
 		self.world = None
 
 	def draw(self, world = None):
-		"""Recalculates and draws the whole minimap of horizons.main.session.world or world.
+		"""Recalculates and draws the whole minimap of self.session.world or world.
 		The world you specified is reused for every operation until the next draw().
 		"""
 		if world is None:
-			world = horizons.main.session.world
+			world = self.session.world
 		if not world.inited:
 			return # don't draw while loading
 		self.world = world # use this from now on, until next redrawing
 
 		# update cam when cam updates
-		if not horizons.main.session.view.has_change_listener(self.update_cam):
-			horizons.main.session.view.add_change_listener(self.update_cam)
+		if not self.session.view.has_change_listener(self.update_cam):
+			self.session.view.add_change_listener(self.update_cam)
 
 		self._recalculate()
 
@@ -75,7 +74,7 @@ class Minimap(object):
 			return # don't draw while loading
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
-		displayed_area = horizons.main.session.view.get_displayed_area()
+		displayed_area = self.session.view.get_displayed_area()
 		#print 'displayed_area', displayed_area
 		#print 'displayed_area center minimap', self._world_coord_to_minimap_coord(displayed_area.center().to_tuple())
 		minimap_corners_as_renderer_node = []
@@ -112,7 +111,8 @@ class Minimap(object):
 		self._recalculate(rect)
 
 	def use_overlay_icon(self, icon):
-		"""Configures icon so that clicks get mapped here"""
+		"""Configures icon so that clicks get mapped here.
+		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({ \
 		  icon.name + '/mouseClicked' : self.on_click, \
@@ -130,7 +130,7 @@ class Minimap(object):
 		print 'abs mouse', abs_mouse_position
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position.to_tuple())
 		print 'map_coord', map_coord
-		horizons.main.session.view.center(*map_coord)
+		self.session.view.center(*map_coord)
 
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it

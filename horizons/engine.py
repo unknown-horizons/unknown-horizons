@@ -34,6 +34,7 @@ from gui.widgets.inventory import Inventory, ImageFillStatusButton
 from gui.widgets.progressbar import ProgressBar
 from gui.widgets.toggleimagebutton import ToggleImageButton
 from gui.widgets.tooltip import TooltipIcon, TooltipButton
+from horizons.extscheduler import ExtScheduler
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
@@ -292,7 +293,7 @@ class Fife(object):
 
 
 			check_music() # Start background music
-			horizons.main.ext_scheduler.add_new_object(check_music, self, loops=-1)
+			Ext_scheduler().add_new_object(check_music, self, loops=-1)
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
 		self.animationloader = SQLiteAnimationLoader()

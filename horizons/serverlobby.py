@@ -39,12 +39,13 @@ class ServerLobby(object):
 	def __init__(self, gui):
 		self.gui = gui
 
-		horizons.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
+		#horizons.main.ext_scheduler.add_new_object(self._update_gui, self, self.guiUpdateInterval, -1)
 		#horizons.main.fife.pump.append(self._update_gui)
 
 	def end(self):
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		#horizons.main.ext_scheduler.rem_all_classinst_calls(self)
 		#horizons.main.fife.pump.remove(self._update_gui)
+		pass
 
 	def _update_gui(self):
 		""" Updates elements that are common for every lobby and

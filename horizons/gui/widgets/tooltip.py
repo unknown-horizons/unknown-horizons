@@ -22,6 +22,7 @@
 import pychan
 import horizons.main
 
+from horizons.extscheduler import ExtScheduler
 from pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
 
@@ -55,7 +56,7 @@ class TooltipIcon(pychan.widgets.Icon):
 		widget_position = self.getAbsolutePos()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:
-			horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
+			ExtScheduler().add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 			self.tooltip_shown = True
 		else:
 			self.gui.show()
@@ -85,7 +86,7 @@ class TooltipIcon(pychan.widgets.Icon):
 
 	def hide_tooltip(self):
 		self.gui.hide()
-		horizons.main.ext_scheduler.rem_call(self, self.show_tooltip)
+		ExtScheduler().rem_call(self, self.show_tooltip)
 		for i in self.tooltip_items:
 			self.gui.removeChild(i)
 		self.tooltip_items = []
@@ -120,7 +121,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 		widget_position = self.getAbsolutePos()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:
-			horizons.main.ext_scheduler.add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
+			ExtScheduler().add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 			self.tooltip_shown = True
 		else:
 			self.gui.hide()
@@ -151,7 +152,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 
 	def hide_tooltip(self):
 		self.gui.hide()
-		horizons.main.ext_scheduler.rem_call(self, self.show_tooltip)
+		ExtScheduler().rem_call(self, self.show_tooltip)
 		for i in self.tooltip_items:
 			self.gui.removeChild(i)
 		self.tooltip_items = []

@@ -89,7 +89,7 @@ class ShipOverviewTab(OverviewTab):
 	def refresh(self):
 		# show rename when you click on name
 		events = {
-			'name': Callback(horizons.main.gui.show_change_name_dialog, self.instance)
+			'name': Callback(horizons.main.session.ingame_gui.show_change_name_dialog, self.instance)
 		}
 
 		# check if we can display the foundSettlement-anchor

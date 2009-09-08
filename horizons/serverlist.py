@@ -22,6 +22,8 @@
 import urllib
 import re
 import horizons.main
+
+from horizons.extscheduler import ExtScheduler
 from horizons.network import Socket
 from horizons.packets import QueryPacket, InfoPacket
 import time
@@ -71,12 +73,12 @@ class ServerList(object):
 		self._servers = []
 		self._socket = Socket()
 		self._socket.receive = self._response
-		horizons.main.ext_scheduler.add_new_object(self._pump, self, self.queryIntervall, -1)
+		ExtScheduler().add_new_object(self._pump, self, self.queryIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 		self._socket.receive = lambda x : None
 		self._socket.end()
 
@@ -162,12 +164,12 @@ class WANServerList(ServerList):
 		super(WANServerList, self).__init__()
 		self.update()
 		if self.__class__.updateIntervall > 0:
-			horizons.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
+			ExtScheduler().add_new_object(self.update, self, self.updateIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 		super(WANServerList, self).end()
 
 	def update(self):
@@ -198,12 +200,12 @@ class LANServerList(ServerList):
 		super(LANServerList, self).__init__()
 		self.update()
 		if self.__class__.updateIntervall > 0:
-			horizons.main.ext_scheduler.add_new_object(self.update, self, self.updateIntervall, -1)
+			ExtScheduler().add_new_object(self.update, self, self.updateIntervall, -1)
 
 	def end(self):
 		"""
 		"""
-		horizons.main.ext_scheduler.rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 		super(LANServerList, self).end()
 
 	def update(self):

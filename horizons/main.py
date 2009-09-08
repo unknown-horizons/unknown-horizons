@@ -48,15 +48,6 @@ from i18n import update_all_translations
 
 ## GETTERS
 
-# NOTE: use these getters to get formerly global singletons.
-#       the global vars are still available, but don't use them.
-
-def get_scheduler():
-	return _modules.session.scheduler
-
-def get_ext_scheduler():
-	return _modules.ext_scheduler
-
 def get_world():
 	return _modules.session.world
 
@@ -66,27 +57,18 @@ def get_db():
 def get_view():
 	return _modules.session.view
 
-def get_fife():
-	return _modules.fife
-
-def get_session():
-	return _modules.session
-
 def get_ingame_gui():
 	return _modules.session.ingame_gui
 
 def get_gui():
-	return _modules.gui
+	global gui
+	return gui
 
 ##
 class Modules(object):
 	db = None
 	settings = None
-	fife = None
-	session = None
 	connection = None
-	ext_scheduler = None
-	gui = None
 	mainlistener = None
 
 _modules = Modules()
@@ -96,7 +78,7 @@ def start(command_line_arguments):
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
 	global gui, fife, db, session, connection, ext_scheduler, settings, \
-	       ext_scheduler, unstable_features, debug
+	       unstable_features, debug
 
 	from horizons.gui import Gui
 	from engine import Fife
@@ -126,16 +108,14 @@ def start(command_line_arguments):
 		settings.client_id = "".join("-" if c in (8, 13, 18, 23) else random.choice("0123456789abcdef") for c in xrange(0, 36))
 
 	# init game parts
-	_modules.fife = Fife()
-	fife = _modules.fife
-	_modules.ext_scheduler = ExtScheduler(get_fife().pump)
-	ext_scheduler = _modules.ext_scheduler
-	get_fife().init()
+	fife = Fife()
+	ExtScheduler.create_instance(fife.pump)
+	fife.init()
 	ActionSetLoader.load('content/gfx/')
 	_modules.mainlistener = MainListener()
-	_modules.gui = Gui()
-	gui = _modules.gui
+	gui = Gui()
 	SavegameManager.init()
+	session = None
 
 	# start something according to commandline parameters
 	if command_line_arguments.start_dev_map:
@@ -147,36 +127,33 @@ def start(command_line_arguments):
 	elif command_line_arguments.load_quicksave is not None:
 		_load_last_quicksave()
 	else: # no commandline parameter, show main screen
-		get_gui().show_main()
+		gui.show_main()
 
-	get_fife().run()
+	fife.run()
 
 def quit():
 	"""Quits the game"""
-	get_fife().quit()
-
+	global fife
+	fife.quit()
 
 def start_singleplayer(map_file):
 	"""Starts a singleplayer game"""
-	global session
-	get_gui().show()
+	global session, gui, fife
+	gui.show()
 
 	# remove cursor while loading
-	fife = get_fife()
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
 	fife.cursor.set(fife_module.CURSOR_IMAGE, fife.default_cursor_image)
 
-	get_gui().hide()
+	gui.hide()
 
+	if session is not None:
+		session.end()
 	from session import Session
-	if get_session() is not None:
-		get_session().end()
-	_modules.session = Session()
-	session = _modules.session
-	get_session().init_session()
-	get_session().load(map_file, 'Arthur', Color()) # temp fix to display gold
-
+	session = Session(gui)
+	session.init_session()
+	session.load(map_file, 'Arthur', Color()) # temp fix to display gold
 
 def start_multi():
 	"""Starts a multiplayer game server (dummy)
@@ -190,24 +167,25 @@ def save_game(savegamename):
 	@param savegamename: string with the filename or full path of the savegame file
 	@return: bool, whether save was successfull
 	"""
+	global gui, session
 	if os.path.isabs(savegamename):
 		savegamefile = savegamename
 	else: # is just basename
 		savegamefile = SavegameManager.create_filename(savegamename)
 
 	if os.path.exists(savegamefile):
-		if not get_gui().show_popup(_("Confirmation for overwriting"),
+		if not gui.show_popup(_("Confirmation for overwriting"),
 				_("A savegame with the name \"%s\" already exists. Should i overwrite it?") % \
 		    savegamename, show_cancel_button = True):
-			get_gui().save_game() # just reshow save screen on cancel.
+			gui.save_game() # just reshow save screen on cancel.
 			return
 
 	try:
-		get_session().save(savegamefile)
+		session.save(savegamefile)
 	except IOError: # invalid filename
-		get_gui().show_popup(_("Invalid filename"), _("You entered an invalid filename."))
-		get_gui().hide()
-		get_gui().save_game() # re-show dialog
+		gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
+		gui.hide()
+		gui.save_game() # re-show dialog
 		return False
 
 	return True

@@ -30,6 +30,7 @@ from horizons.world.settlement import Settlement
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets import Minimap, MessageWidget
+from horizons.constants import RES
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""
@@ -38,8 +39,10 @@ class IngameGui(LivingObject):
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 
-	def __init__(self):
+	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
+		self.session = session
+		self.main_gui = gui
 		self.gui = {}
 		self.tabwidgets = {}
 		self.settlement = None
@@ -64,15 +67,15 @@ class IngameGui(LivingObject):
 		)
 		self.gui['minimap'].show()
 		self.gui['minimap'].mapEvents({
-			'zoomIn' : horizons.main.session.view.zoom_in,
-			'zoomOut' : horizons.main.session.view.zoom_out,
-			'rotateRight' : horizons.main.session.view.rotate_right,
-			'rotateLeft' : horizons.main.session.view.rotate_left,
-			'speedUp' : horizons.main.session.speed_up,
-			'speedDown' : horizons.main.session.speed_down
+			'zoomIn' : self.session.view.zoom_in,
+			'zoomOut' : self.session.view.zoom_out,
+			'rotateRight' : self.session.view.rotate_right,
+			'rotateLeft' : self.session.view.rotate_left,
+			'speedUp' : self.session.speed_up,
+			'speedDown' : self.session.speed_down
 		})
 		self.minimap = Minimap(Rect(Point(self.gui['minimap'].position[0]+77, 55), 120, 120), \
-													 horizons.main.session.view.renderer['GenericRenderer'])
+													 self.session, self.session.view.renderer['GenericRenderer'])
 		minimap_overlay = self.gui['minimap'].findChild(name='minimap_overlay_image')
 		self.minimap.use_overlay_icon(minimap_overlay)
 
@@ -82,10 +85,10 @@ class IngameGui(LivingObject):
 			149)
 		self.gui['menuPanel'].show()
 		self.gui['menuPanel'].mapEvents({
-			'destroy_tool' : horizons.main.session.destroy_tool,
+			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
-			'helpLink' : horizons.main.gui.on_help,
-			'gameMenuButton' : horizons.main.gui.show_pause
+			'helpLink' : self.main_gui.on_help,
+			'gameMenuButton' : self.main_gui.show_pause
 		})
 
 		self.gui['tooltip'] = load_xml_translated('tooltip.xml')
@@ -108,26 +111,32 @@ class IngameGui(LivingObject):
 		self.gui['status_extra_gold'].stylize('resource_bar')
 		self.gui['status_extra_gold'].child_finder = PychanChildFinder(self.gui['status_extra_gold'])
 
-		self.callbacks_build = {
+		self.gui['change_name'] = load_xml_translated("change_name_dialog.xml")
+		self.gui['change_name'].stylize('book')
+		self.gui['change_name'].findChild(name='headline').stylize('headline')
+
+		# map button names to build functions calls with the building id
+		callbackWithArguments = pychan.tools.callbackWithArguments
+		self.callbacks_build = { # keys are settler levels
 			0: {
-				'store-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 2),
-				'church-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 5),
-				'main_square-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 4),
-				'lighthouse-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 6),
-				'resident-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 3),
-				'hunter-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 9),
-				'fisher-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 11),
-				'weaver-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 7),
-				'boat_builder-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 12),
-				'lumberjack-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 8),
-				'tree-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 17),
-				'potatofield-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 19),
-				'herder-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 20),
-				'pasture-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 18),
-				'tower-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 13),
-				#'wall-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 14),
-				'street-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 15),
-				#'bridge-1' : horizons.main.fife.pychan.tools.callbackWithArguments(self._build, 16)
+				'store-1' : callbackWithArguments(self._build, 2),
+				'church-1' : callbackWithArguments(self._build, 5),
+				'main_square-1' : callbackWithArguments(self._build, 4),
+				'lighthouse-1' : callbackWithArguments(self._build, 6),
+				'resident-1' : callbackWithArguments(self._build, 3),
+				'hunter-1' : callbackWithArguments(self._build, 9),
+				'fisher-1' : callbackWithArguments(self._build, 11),
+				'weaver-1' : callbackWithArguments(self._build, 7),
+				'boat_builder-1' : callbackWithArguments(self._build, 12),
+				'lumberjack-1' : callbackWithArguments(self._build, 8),
+				'tree-1' : callbackWithArguments(self._build, 17),
+				'potatofield-1' : callbackWithArguments(self._build, 19),
+				'herder-1' : callbackWithArguments(self._build, 20),
+				'pasture-1' : callbackWithArguments(self._build, 18),
+				'tower-1' : callbackWithArguments(self._build, 13),
+				#'wall-1' : callbackWithArguments(self._build, 14),
+				'street-1' : callbackWithArguments(self._build, 15),
+				#'bridge-1' : callbackWithArguments(self._build, 16)
 		},
 			1: {
 		},
@@ -163,15 +172,12 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).end()
 
 	def update_gold(self):
-		res_id = 1
-		first = str(horizons.main.session.world.player.inventory[res_id])
+		first = str(self.session.world.player.inventory[RES.GOLD_ID])
 		lines = []
 		show = False
-		if self.resource_source is not None and self.resources_needed.get(res_id, 0) != 0:
+		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
 			show = True
-			lines.append('- ' + str(self.resources_needed[res_id]))
-			#if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
-				#lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
+			lines.append('- ' + str(self.resources_needed[RES.GOLD_ID]))
 		self.status_set('gold', first)
 		self.status_set_extra('gold',lines)
 		self.set_status_position('gold')
@@ -257,7 +263,7 @@ class IngameGui(LivingObject):
 
 	def update_settlement(self):
 		self.gui['cityInfo'].mapEvents({'city_name': pychan.tools.callbackWithArguments( \
-			horizons.main.gui.show_change_name_dialog, self.settlement)})
+			self.show_change_name_dialog, self.settlement)})
 		foundlabel = self.gui['cityInfo'].child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
@@ -276,10 +282,6 @@ class IngameGui(LivingObject):
 			if self.resources_needed.get(res_id, 0) != 0:
 				show = True
 				lines.append('- ' + str(self.resources_needed[res_id]))
-				#if self.resources_needed[res_id] != self.resources_usable.get(res_id, 0):
-					#lines.append('- ' + str(self.resources_needed[res_id] - self.resources_usable.get(res_id, 0)))
-			#else:
-			#	self.gui['status_extra'].hide()
 			self.status_set(res_name, first)
 			self.status_set_extra(res_name,lines)
 			self.set_status_position(res_name)
@@ -310,23 +312,22 @@ class IngameGui(LivingObject):
 		self.gui['ship'].findChild(name='chargeBarLeft').position = pos
 		self.gui['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
 		self.gui['ship'].mapEvents({
-			'foundSettelment' : horizons.main.fife.pychan.tools.callbackWithArguments(self.ship_build, ship)
+			'foundSettelment' : ychan.tools.callbackWithArguments(self.ship_build, ship)
 		})
 		self.show_menu('ship')
 
 	def show_build_menu(self):
-		horizons.main.session.cursor = SelectionTool() # set cursor for build menu
+		self.session.cursor = SelectionTool() # set cursor for build menu
 		self.deselect_all()
 		btabs = [BuildTab(index, self.callbacks_build[index]) for index in
-			range(0, horizons.main.session.world.player.settler_level+1)]
+			range(0, self.session.world.player.settler_level+1)]
 		tab = TabWidget(tabs=btabs)
 		self.show_menu(tab)
 
 	def deselect_all(self):
-		for instance in horizons.main.session.selected_instances:
+		for instance in self.session.selected_instances:
 			instance.deselect()
-		#self.hide_menu() # with this line, toggle_menu doesn't work. it's not necessary, imo.
-		horizons.main.session.selected_instances = set()
+		self.session.selected_instances = set()
 
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.
@@ -337,7 +338,7 @@ class IngameGui(LivingObject):
 		cls = Entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		horizons.main.session.cursor = BuildingTool(cls, None if unit is None else unit())
+		self.session.cursor = BuildingTool(self.session, cls, None if unit is None else unit())
 
 
 	def _get_menu_object(self, menu):
@@ -416,3 +417,30 @@ class IngameGui(LivingObject):
 		self.message_widget.load(db)
 
 		self.minimap.draw() # update minimap to new world
+
+	def show_change_name_dialog(self, instance):
+		"""Shows a dialog where the user can change the name of a NamedObject.
+		The game gets paused while the dialog is executed."""
+		self.session.speed_pause()
+		events = {
+			'okButton': pychan.tools.callbackWithArguments(self.change_name, instance),
+			'cancelButton': self.hide_change_name_dialog
+		}
+		self.on_escape = self.hide_change_name_dialog
+		self.gui['change_name'].mapEvents(events)
+		self.gui['change_name'].show()
+
+	def hide_change_name_dialog(self):
+		"""Escapes the change_name dialog"""
+		self.session.speed_unpause()
+		self.on_escape = self.show_pause
+		self.gui['change_name'].hide()
+
+	def change_name(self, instance):
+		"""Applies the change_name dialogs input and hides it"""
+		new_name = self.gui['change_name'].collectData('new_name')
+		self.gui['change_name'].findChild(name='new_name').text = u''
+		instance.set_name(new_name)
+		self.hide_change_name_dialog()
+
+

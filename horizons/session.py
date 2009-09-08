@@ -74,8 +74,9 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self):
+	def __init__(self, gui):
 		super(Session, self).__init__()
+		self.gui = gui # main gui, not ingame gui
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 
@@ -92,7 +93,7 @@ class Session(LivingObject):
 		Entities.load(horizons.main.db)
 
 		#GUI
-		self.ingame_gui = IngameGui()
+		self.ingame_gui = IngameGui(self, horizons.main.gui)
 		self.keylistener = IngameKeyListener()
 		self.cursor = SelectionTool()
 		self.display_speed()
@@ -102,13 +103,13 @@ class Session(LivingObject):
 
 		#autosave
 		if horizons.main.settings.savegame.autosaveinterval != 0:
-			horizons.main.ext_scheduler.add_new_object(self.autosave, self, horizons.main.settings.savegame.autosaveinterval * 60, -1)
+			Scheduler().add_new_object(self.autosave, self, \
+			                           horizons.main.settings.savegame.autosaveinterval * 60, -1)
 
 	def end(self):
 		self.log.debug("Ending session")
 
 		Scheduler().rem_all_classinst_calls(self)
-		horizons.main.ext_scheduler.rem_call(self, self.autosave)
 
 		if horizons.main.settings.sound.enabled:
 			for emitter in horizons.main.fife.emitter['ambient']:
