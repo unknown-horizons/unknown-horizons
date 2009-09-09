@@ -92,7 +92,7 @@ class BuildingTool(NavigationTool):
 					self.renderer.addColored( \
 						tile._instance, *(self.buildable_color if free else (0, 0, 0)))
 					if free and tile.object is not None:
-						self.renderer.addColored(tile.object._instance, self.buildable_color)
+						self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
 		self.renderer.removeAllColored()
