@@ -36,8 +36,6 @@ class Ground(WorldObject):
 		@param y: int y position the ground is created.
 		"""
 		super(Ground, self).__init__()
-		if self._object is None:
-			self.__class__._loadObject()
 		self.x = x
 		self.y = y
 		self._instance = horizons.main.session.view.layers[LAYERS.GROUND].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
@@ -52,8 +50,6 @@ class Water(WorldObject):
 		@param y: int y position the water is created.
 		"""
 		super(Water, self).__init__()
-		if self._object is None:
-			self.__class__._loadObject()
 		self.x = x
 		self.y = y
 		self._instance = horizons.main.session.view.layers[LAYERS.WATER].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
@@ -67,17 +63,23 @@ class GroundClass(type):
 	"""
 	log = logging.getLogger('world')
 
-	def __init__(self, id):
+	def __init__(self, db, id):
+		"""
+		@param id: id in db for this specific ground class
+		@param db: DbReader instance to get data from
+		"""
 		self.id = id
+		self.db = db
 		self._object = None
 		self.velocity = {}
-		for unit, straight, diagonal in horizons.main.db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
+		for unit, straight, diagonal in self.db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
 			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
-		for (name,) in horizons.main.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
+		for (name,) in self.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
 			self.classes.append(name)
+		self._loadObject()
 
-	def __new__(self, id):
+	def __new__(self, db, id):
 		"""
 		@param id: ground id.
 		"""
@@ -91,19 +93,21 @@ class GroundClass(type):
 		"""
 		self.log.debug('Loading ground %s', self.id)
 		try:
-			self._object = horizons.main.session.view.model.createObject(str(self.id), 'ground')
+			self._object = horizons.main.fife.engine.getModel().createObject(str(self.id), 'ground')
 		except RuntimeError:
 			self.log.debug('Already loaded ground %s', self.id)
-			self._object = horizons.main.session.view.model.getObject(str(self.id), 'ground')
+			self._object = horizons.main.fife.engine.getModel().getObject(str(self.id), 'ground')
 			return
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 
-		animation_45, animation_135, animation_225, animation_315 = horizons.main.db("SELECT (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground WHERE rowid = ?", self.id)[0]
+		animation_45, animation_135, animation_225, animation_315 = \
+		     self.db("SELECT \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_45 limit 1), \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_135 limit 1), \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_225 limit 1), \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_315 limit 1) \
+		     FROM data.ground WHERE rowid = ?", self.id)[0]
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = horizons.main.fife.imagepool.addResourceFromFile(file)
 			visual.addStaticImage(int(rotation), img)
-			# Get Image call unnecessarily triggers loading of the actual image.
-			#img = horizons.main.fife.imagepool.getImage(img)
-			#img.setXShift(0)
-			#img.setYShift(0)

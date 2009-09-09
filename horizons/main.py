@@ -39,6 +39,7 @@
 import os
 import os.path
 import random
+import threading
 
 import fife as fife_module
 
@@ -56,7 +57,7 @@ def start(command_line_arguments):
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
 	global gui, fife, db, session, connection, ext_scheduler, settings, \
-	       unstable_features, debug
+	       unstable_features, debug, preloading
 
 	from horizons.gui import Gui
 	from engine import Fife
@@ -68,9 +69,7 @@ def start(command_line_arguments):
 	unstable_features = command_line_arguments.unstable_features
 
 	#init db
-	db = DbReader(':memory:')
-	db("attach ? AS data", 'content/game.sqlite')
-	db("attach ? AS settler", 'content/settler.sqlite')
+	db = _create_db()
 
 	#init settings
 	settings = Settings(db)
@@ -92,6 +91,11 @@ def start(command_line_arguments):
 	SavegameManager.init()
 	session = None
 
+	# for preloading game data while in main screen
+	preload_lock = threading.Lock()
+	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
+	preloading = (preload_thread, preload_lock)
+
 	# start something according to commandline parameters
 	if command_line_arguments.start_dev_map:
 		_start_dev_map()
@@ -103,6 +107,7 @@ def start(command_line_arguments):
 		_load_last_quicksave()
 	else: # no commandline parameter, show main screen
 		gui.show_main()
+		preloading[0].start()
 
 	fife.run()
 
@@ -113,8 +118,15 @@ def quit():
 
 def start_singleplayer(map_file):
 	"""Starts a singleplayer game"""
-	global session, gui, fife
+	global session, gui, fife, preloading
 	gui.show()
+
+	# lock preloading
+	preloading[1].acquire()
+	# wait until it finished it's current action
+	if preloading[0].is_alive():
+		preloading[0].join()
+		assert not preloading[0].is_alive()
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
@@ -227,3 +239,34 @@ def _load_last_quicksave():
 	save_files = SavegameManager.get_quicksaves()[0]
 	save = save_files[len(save_files)-1]
 	get_gui().load_game(save)
+
+def _create_db():
+	_db = DbReader(':memory:')
+	_db("attach ? AS data", 'content/game.sqlite')
+	_db("attach ? AS settler", 'content/settler.sqlite')
+	return _db
+
+def preload_game_data(lock):
+	"""Preloads game data.
+	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
+	try:
+		import logging
+		from horizons.entities import Entities
+		from horizons.util import Callback
+		log = logging.getLogger("preload")
+		mydb = _create_db() # create own db reader instance, since it's not thread-safe
+		preload_functions = [ Callback(Entities.load_grounds, mydb), \
+		                      Callback(Entities.load_buildings, mydb), \
+		                      Callback(Entities.load_units, mydb) ]
+		for f in preload_functions:
+			if not lock.acquire(False):
+				break
+			log.debug("Preload: %s", f)
+			f()
+			log.debug("Preload: %s is done", f)
+			lock.release()
+		log.debug("Preloading done.")
+	finally:
+		if lock.locked():
+			lock.release()
+

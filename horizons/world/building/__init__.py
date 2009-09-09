@@ -44,8 +44,8 @@ class BuildingClass(type):
 	"""
 	log = logging.getLogger('world.building')
 
-	def __new__(self, id):
-		class_package, class_name = horizons.main.db("SELECT class_package, class_type FROM data.building WHERE id = ?", id)[0]
+	def __new__(self, db, id):
+		class_package, class_name = db("SELECT class_package, class_type FROM data.building WHERE id = ?", id)[0]
 		__import__('horizons.world.building.'+class_package)
 
 
@@ -59,38 +59,39 @@ class BuildingClass(type):
 			(getattr(globals()[class_package], class_name),),
 			{'load': load})
 
-	def __init__(self, id, **kwargs):
+	def __init__(self, db, id):
 		"""
 		Final loading for the building.
 		@param id: building id.
+		@param db: DbReader
 		"""
-		super(BuildingClass, self).__init__(self, **kwargs)
+		super(BuildingClass, self).__init__(self)
 		self.id = id
+		self.db = db
 		self._object = None
 
-		db = horizons.main.db
 		self.class_package, size_x, size_y, name, self.radius, health, inhabitants, inhabitants_max = \
-		    db("SELECT class_package, size_x, size_y, name, radius, health, inhabitants_start, \
-		    inhabitants_max FROM data.building WHERE id = ?", id)[0]
+		    self.db("SELECT class_package, size_x, size_y, name, radius, health, \
+		    inhabitants_start, inhabitants_max FROM data.building WHERE id = ?", id)[0]
 		self.name = _(name)
 		self.size = (int(size_x), int(size_y))
 		self.health = int(health)
 		self.inhabitants = int(inhabitants)
 		self.inhabitants_max = int(inhabitants_max)
-		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
+		for (name,  value) in self.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
+		for (name, value) in self.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
-		running_costs = db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
+		running_costs = self.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
 		if len(running_costs) > 0:
 			self.running_costs = running_costs[0][0]
 			self.running_costs_inactive = running_costs[0][1]
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
-		soundfiles = db.cached_query("SELECT file FROM sounds INNER JOIN building_sounds ON \
+		soundfiles = self.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
 			sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
@@ -107,12 +108,13 @@ class BuildingClass(type):
 		"""
 		cls.log.debug("Loading building %s", cls.id)
 		try:
-			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
+			#cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
+			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')
 		except RuntimeError:
 			cls.log.debug("Already loaded building %s", cls.id)
-			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'building')
+			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
-		action_sets = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
+		action_sets = cls.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
 		all_action_sets = ActionSetLoader.get_action_sets()
 		for (action_set_id,) in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():

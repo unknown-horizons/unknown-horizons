@@ -29,7 +29,7 @@ import horizons.main
 from horizons.util import ActionSetLoader
 
 class UnitClass(type):
-	def __new__(self, id):
+	def __new__(self, db, id):
 		"""
 		@param id: unit id
 		"""
@@ -42,40 +42,41 @@ class UnitClass(type):
 			return self
 
 		attributes = {'load': load}
-		attributes.update(horizons.main.db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)))
+		attributes.update(db("SELECT name, value FROM data.unit_property WHERE unit = ?", str(id)))
 
-		self.class_package,  self.class_name = horizons.main.db("SELECT class_package, class_type FROM data.unit WHERE id = ?", id)[0]
+		self.class_package,  self.class_name = db("SELECT class_package, class_type FROM data.unit WHERE id = ?", id)[0]
 		__import__('horizons.world.units.'+self.class_package)
 
 		return type.__new__(self, 'Unit[' + str(id) + ']',
 			(getattr(globals()[self.class_package], self.class_name),),
 			attributes)
 
-	def __init__(self, id, **kwargs):
+	def __init__(self, db, id, **kwargs):
 		"""
-		@param id: building id.
+		@param id: unit id.
 		"""
 		super(UnitClass, self).__init__(self, **kwargs)
 		self.id = id
+		self.db = db
 		self._object = None
 		self._loadObject()
-		self.radius = int(horizons.main.db("SELECT radius FROM data.unit WHERE id=?", id)[0][0])
+		self.radius = int(self.db("SELECT radius FROM data.unit WHERE id=?", id)[0][0])
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.
 		"""
 		cls.log.debug('Loading unit %s', cls.id)
 		try:
-			cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'unit')
+			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'unit')
 		except RuntimeError:
 			cls.log.debug('Already loaded unit %s', cls.id)
-			cls._object = horizons.main.session.view.model.getObject(str(cls.id), 'unit')
+			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'unit')
 			return
-		cls._object.setPather(horizons.main.session.view.model.getPather('RoutePather'))
+		cls._object.setPather(horizons.main.fife.engine.getModel().getPather('RoutePather'))
 		cls._object.setBlocking(False)
 		cls._object.setStatic(False)
 		action_sets = ActionSetLoader.get_action_sets()
-		for (action_set_id,) in horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id):
+		for (action_set_id,) in cls.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id):
 			for action_id in action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)
