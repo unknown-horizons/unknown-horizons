@@ -124,9 +124,9 @@ def start_singleplayer(map_file):
 	# lock preloading
 	preloading[1].acquire()
 	# wait until it finished it's current action
-	if preloading[0].is_alive():
+	if preloading[0].isAlive():
 		preloading[0].join()
-		assert not preloading[0].is_alive()
+		assert not preloading[0].isAlive()
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
