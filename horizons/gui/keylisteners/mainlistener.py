@@ -28,7 +28,6 @@ import string
 import horizons.main
 
 from horizons.util.living import LivingObject
-from horizons.gui.widgets import Message
 
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 	"""MainListener Class to process events of main window"""

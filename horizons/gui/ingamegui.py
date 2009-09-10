@@ -25,7 +25,7 @@ import horizons.main
 from horizons.entities import Entities
 
 from horizons.i18n import load_xml_translated
-from horizons.util import livingProperty, LivingObject, Callback, PychanChildFinder, Rect, Point
+from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
 from horizons.world.settlement import Settlement
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab

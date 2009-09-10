@@ -19,18 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import horizons.main
-import fife
 import os
 import os.path
 import glob
 import time
-import pychan
 
 from horizons.util.color import Color
 from horizons.savegamemanager import SavegameManager
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
-from horizons.network import Socket, ServerConnection, ClientConnection
+from horizons.network import ServerConnection, ClientConnection
 from horizons.savegamemanager import SavegameManager
 from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages

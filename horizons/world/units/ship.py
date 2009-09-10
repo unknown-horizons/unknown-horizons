@@ -24,7 +24,7 @@ import fife
 
 import horizons.main
 
-from horizons.gui.tabs import TabWidget, ShipInventoryTab, ShipOverviewTab
+from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.pathfinding.pather import ShipPather
 from horizons.world.units.movingobject import MoveNotPossible

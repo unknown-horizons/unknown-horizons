@@ -22,13 +22,9 @@
 
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleOnCoast
-from horizons.util import Point
-from horizons.gui.tabs import ProductionOverviewTab, InventoryTab, BoatbuilderTab, TabWidget
-from horizons.constants import UNITS
+from horizons.gui.tabs import ProductionOverviewTab, BoatbuilderTab
 from horizons.world.production.producer import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding
-
-import horizons.main
 
 class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 	tabs = ProductionOverviewTab, BoatbuilderTab

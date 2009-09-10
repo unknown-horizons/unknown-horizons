@@ -20,7 +20,6 @@
 # ###################################################
 
 import fife
-import pychan
 
 from horizons.util import Point, Rect
 

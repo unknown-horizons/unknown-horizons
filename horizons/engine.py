@@ -58,10 +58,6 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('-')
-		if ',' in id:
-			id, shift_x, shift_y = id.split(',')
-		else:
-			shift_x, shift_y = None, None
 		commands = zip(commands[0::2], commands[1::2])
 
 		ani = fife.Animation()

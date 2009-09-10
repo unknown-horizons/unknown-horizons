@@ -23,7 +23,7 @@ import horizons.main
 
 from horizons.util import WeakList
 from storageholder import StorageHolder
-from horizons.gui.tabs import TabWidget, ProductionOverviewTab, InventoryTab
+from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 
 

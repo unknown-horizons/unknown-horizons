@@ -23,11 +23,9 @@ import horizons.main
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.producer import ProducerBuilding
-from horizons.gui.tabs import TabWidget, InventoryTab, ProductionOverviewTab
-from horizons.util import Point
+from horizons.gui.tabs import ProductionOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
-from horizons.constants import UNITS
 from horizons.entities import Entities
 
 
@@ -84,4 +82,4 @@ class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, Basic
 	pass
 
 class Church(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
-	tabs=[ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)
+	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)

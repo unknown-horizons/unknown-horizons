@@ -60,7 +60,7 @@ def get_option_parser():
 	"""Returns inited OptionParser object"""
 	p = optparse.OptionParser()
 	p.add_option("-d", "--debug", dest="debug", action="store_true", default=False, \
-							 help=_("Enable debug output"))
+							 help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 							 help=_("Specify the path to FIFE root directory."))
 
@@ -128,7 +128,7 @@ def main():
 	(options, args) = parser.parse_args()
 
 	# apply options
-	if options.debug:
+	if options.debug or options.debug_log_only:
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
 		if not module in logging.Logger.manager.loggerDict:
@@ -142,9 +142,22 @@ def main():
 		logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % \
 		            time.strftime("%y-%m-%d_%H-%M-%S")
 		print 'Logging to %s' % logfilename
-		file_handler = logging.FileHandler(logfilename, 'w')
+		# create logfile
+		logfile = open(logfilename, 'w')
+		# log there
+		file_handler = logging.FileHandler(logfilename, 'a')
 		logging.getLogger().addHandler(file_handler)
+		# log exceptions
 		sys.excepthook = excepthook_creator(logfilename)
+		# log any other stdout output there (this happens, when fife c++ code launches some
+		# fife python code and an exception happens there). The exceptionhook only gets
+		# a director exception, but no real error message then.
+		old_stdout = sys.stdout
+		class StdOutDuplicator(object):
+			def write(self, line):
+				old_stdout.write(line)
+				logfile.write(line)
+		sys.stdout = StdOutDuplicator()
 
 	if not options.debug_log_only:
 		# add a handler to stderr too

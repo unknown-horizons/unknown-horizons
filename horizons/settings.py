@@ -24,7 +24,6 @@ import os.path
 import ext.simplejson as simplejson
 
 from horizons.constants import PATHS
-from horizons.util.python import ManualConstructionSingleton
 
 class _Setting(object):
 	""" Class to store settings

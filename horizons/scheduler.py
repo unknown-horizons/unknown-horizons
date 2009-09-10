@@ -21,7 +21,7 @@
 
 import logging
 
-from horizons.util import WeakMethod, LivingObject, ManualConstructionSingleton
+from horizons.util import LivingObject, ManualConstructionSingleton
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
@@ -125,7 +125,6 @@ class Scheduler(LivingObject):
 		@param instance: the instance to execute the call
 		@param callback: None to get all calls of instance,
 		                 else only calls that execute callback.
-		                 Value has to be comparable to WeakMethod.
 		@return: dict, entries: { CallbackObject: remaining_ticks_to_executing }
 		"""
 		calls = {}

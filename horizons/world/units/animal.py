@@ -26,9 +26,9 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.production.producer import Producer
 from horizons.util import Point, Circle, WorldObject
-from horizons.world.pathfinding.pather import SoldierPather, BuildingCollectorPather
+from horizons.world.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
-from collectors import Collector, BuildingCollector, JobList, Job
+from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import WILD_ANIMAL
 
 class Animal(Producer):

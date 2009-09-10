@@ -23,8 +23,7 @@ import weakref
 import horizons.main
 
 from tabinterface import TabInterface
-from horizons.util import PychanChildFinder, Callback
-from horizons.i18n import load_xml_translated
+from horizons.util import Callback
 from horizons.constants import RES, SETTLER
 from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.command.production import ToggleActive

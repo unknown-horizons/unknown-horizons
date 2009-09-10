@@ -20,7 +20,6 @@
 # ###################################################
 
 import logging
-import random
 
 import fife
 

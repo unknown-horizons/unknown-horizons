@@ -23,7 +23,6 @@ from building import BasicBuilding
 from buildable import BuildableRect
 from collectingbuilding import CollectingBuilding
 from horizons.world.production.producer import ProducerBuilding
-from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.entities import Entities
 from horizons.constants import LAYERS
 
@@ -64,6 +63,7 @@ class AnimalField(CollectingBuilding, Field):
 		while len(self.animals) > 0:
 			self.animals[0].cancel()
 			self.animals[0].remove()
+		super(AnimalField, self).remove()
 
 class Tree(GrowingBuilding):
 	buildable_upon = True

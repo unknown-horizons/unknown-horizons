@@ -23,10 +23,9 @@ import horizons.main
 
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.gui.tabs import TabWidget, BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
+from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
 		 MarketPlaceOverviewTab, AccountTab
-from horizons.util import Point, WorldObject
-from horizons.constants import UNITS
+from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
 

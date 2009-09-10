@@ -21,8 +21,6 @@
 
 from horizons.world.resourcehandler import ResourceHandler
 
-from horizons.util import WorldObject
-
 class BuildingResourceHandler(ResourceHandler):
 	"""A Resourcehandler that is also a building.
 	This class exists because we keep a list of all buildings, that provide something at the island.

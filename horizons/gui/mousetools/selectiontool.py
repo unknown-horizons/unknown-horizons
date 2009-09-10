@@ -23,7 +23,6 @@ import fife
 
 import horizons.main
 
-from horizons.world.units.unit import Unit
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from navigationtool import NavigationTool
@@ -139,7 +138,7 @@ class SelectionTool(NavigationTool):
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			for i in horizons.main.session.selected_instances:
 				if i.movable:
-					horizons.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
+					(Act(i, target_mapcoord.x, target_mapcoord.y)).execute()
 			""" old code for moving just one unit (kept for reference):
 			if len(horizons.main.session.selected_instances) == 1 and \
 			   any(hasattr(i, 'act') for i in horizons.main.session.selected_instances):

@@ -24,7 +24,7 @@ import logging
 import horizons.main
 from horizons.scheduler import Scheduler
 
-from horizons.gui.tabs import TabWidget, SettlerOverviewTab, InventoryTab
+from horizons.gui.tabs import SettlerOverviewTab, InventoryTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
 from horizons.constants import RES, SETTLER, BUILDINGS
