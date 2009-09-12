@@ -111,6 +111,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		self.island, self.settlement = self.load_location(db, worldid)
 
+		# island.add_building handles registration of building for island and settlement
 		self.island.add_building(self, self.owner)
 
 	def load_location(self, db, worldid):
@@ -130,9 +131,6 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			island = location_obj
 			settlement = None
 		return (island, settlement)
-
-	def is_walkable(self):
-		return self.walkable
 
 	def get_buildings_in_range(self):
 		# TODO Think about moving this to the Settlement class

@@ -152,10 +152,9 @@ def main():
 		# log any other stdout output there (this happens, when fife c++ code launches some
 		# fife python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
-		old_stdout = sys.stdout
 		class StdOutDuplicator(object):
 			def write(self, line):
-				old_stdout.write(line)
+				sys.__stdout__.write(line)
 				logfile.write(line)
 		sys.stdout = StdOutDuplicator()
 

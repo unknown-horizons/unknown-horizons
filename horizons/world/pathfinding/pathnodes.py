@@ -84,7 +84,7 @@ class IslandPathNodes(PathNodes):
 		return (x, y) in self.road_nodes
 
 	def is_walkable(self, coord):
-		"""Check if a unit may walk on the tile specified by coord
+		"""Check if a unit may walk on the tile specified by coord on land
 		NOTE: nature tiles (trees..) are considered to be walkable (or else they could be used as
 		      walls against enemies)
 		@param coord: tuple: (x, y)
@@ -92,6 +92,7 @@ class IslandPathNodes(PathNodes):
 		tile_object = self.island.get_tile(Point(*coord))
 
 		if tile_object is None:
+			# tile is water
 			return False
 
 		# if it's not constructable, it is usually also not walkable
@@ -99,8 +100,9 @@ class IslandPathNodes(PathNodes):
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
 		if not "constructible" in tile_object.classes:
 			return False
-		if tile_object.blocked and not tile_object.object.is_walkable():
+		if tile_object.blocked and not tile_object.object.walkable:
 			return False
+		# every test is passed, tile is walkable
 		return True
 
 	def reset_tile_walkability(self, coord):

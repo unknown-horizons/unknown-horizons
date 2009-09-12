@@ -61,7 +61,7 @@ class BuildingClass(type):
 
 	def __init__(self, db, id):
 		"""
-		Final loading for the building.
+		Final loading for the building class.
 		@param id: building id.
 		@param db: DbReader
 		"""
