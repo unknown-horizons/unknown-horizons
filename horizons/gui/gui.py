@@ -239,9 +239,7 @@ class Gui(object):
 		changes_require_restart = False
 
 		if (new_settings['autosaveinterval'])*2 != settings.savegame.autosaveinterval:
-			#print settings.savegame.autosaveinterval
 			settings.savegame.autosaveinterval = (new_settings['autosaveinterval'])*2
-			#print settings.savegame.autosaveinterval
 		if new_settings['savedautosaves']+1 != settings.savegame.savedautosaves:
 			settings.savegame.savedautosaves = new_settings['savedautosaves']+1
 		if new_settings['savedquicksaves']+1 != settings.savegame.savedquicksaves:

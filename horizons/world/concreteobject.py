@@ -71,6 +71,7 @@ class ConcretObject(WorldObject):
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
 		super(ConcretObject, self).remove()
+		self._removed()
 
 	def show_menu(self):
 		"""Shows tabs from self.__class__.tabs, if there are any"""

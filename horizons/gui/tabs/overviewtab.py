@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import weakref
+import pychan
 
 import horizons.main
 
@@ -52,10 +53,15 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).show()
 		if not self.instance.has_change_listener(self.refresh):
 			self.instance.add_change_listener(self.refresh)
+		if not self.instance.has_remove_listener(self.hide):
+			self.instance.add_remove_listener(self.hide)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
-		self.instance.remove_change_listener(self.refresh)
+		if self.instance.has_change_listener(self.refresh):
+			self.instance.remove_change_listener(self.refresh)
+		if self.instance.has_remove_listener(self.hide):
+			self.instance.remove_remove_listener(self.hide)
 
 
 class BranchOfficeOverviewTab(OverviewTab):
@@ -150,17 +156,34 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = u"Settler Overview"
+		self.consumed_res_icons = []
 
 	def refresh(self):
 		self.widget.child_finder('happiness').text = \
 				unicode(self.instance.inventory[RES.HAPPINESS_ID]) + u'/100'
-		self.widget.child_finder('needed_res').text = \
-				unicode(self.instance.get_consumed_resources())
 		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
 			self.instance.inhabitants, self.instance.inhabitants_max ) )
 		self.widget.child_finder('level').text = unicode(self.instance.level)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
+		self.update_consumed_res()
 		super(SettlerOverviewTab, self).refresh()
+
+	def update_consumed_res(self):
+		"""Updates the container that displays the needed resources of the settler"""
+		container = self.widget.findChild(name="needed_res")
+		# remove icons from the container
+		for icon in self.consumed_res_icons:
+			container.removeChild(icon)
+		self.consumed_res_icons = [] # clear list
+
+		# create new ones
+		for res in self.instance.get_consumed_resources():
+			icon = pychan.widgets.Icon()
+			icon.image = horizons.main.db("SELECT icon FROM resource WHERE id = ?", res)[0][0]
+			container.addChild(icon)
+			self.consumed_res_icons.append(icon)
+
+		container.adaptLayout()
 
 class MarketPlaceOverviewTab(OverviewTab):
 

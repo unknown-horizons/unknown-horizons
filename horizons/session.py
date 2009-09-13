@@ -104,7 +104,9 @@ class Session(LivingObject):
 		#autosave
 		if horizons.main.settings.savegame.autosaveinterval != 0:
 			Scheduler().add_new_object(self.autosave, self, \
-			                           horizons.main.settings.savegame.autosaveinterval * 60, -1)
+			                           self.timer.get_ticks(\
+			                             horizons.main.settings.savegame.autosaveinterval) * 60, \
+			                                                -1)
 
 	def end(self):
 		self.log.debug("Ending session")
@@ -193,11 +195,13 @@ class Session(LivingObject):
 
 			SavegameManager.write_metadata(db)
 			# Savegame integrity assurance
+			"""
 		except Exception, e:
 			# remove invalid savegamefile
 			os.unlink(savegame)
 			print "Save exception", e
 			raise e
+		"""
 		finally:
 			db("COMMIT")
 

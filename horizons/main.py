@@ -47,10 +47,6 @@ from util import Color, ActionSetLoader, DbReader
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 
-def get_gui():
-	global gui
-	return gui
-
 
 def start(command_line_arguments):
 	"""Starts the horizons.
@@ -98,13 +94,13 @@ def start(command_line_arguments):
 
 	# start something according to commandline parameters
 	if command_line_arguments.start_dev_map:
-		_start_dev_map()
+		_start_dev_map(gui)
 	elif command_line_arguments.start_map is not None:
-		_start_map(command_line_arguments.start_map)
+		_start_map(gui, command_line_arguments.start_map)
 	elif command_line_arguments.load_map is not None:
-		_load_map(command_line_arguments.load_map)
+		_load_map(gui, command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
-		_load_last_quicksave()
+		_load_last_quicksave(gui)
 	else: # no commandline parameter, show main screen
 		gui.show_main()
 		preloading[0].start()
@@ -209,36 +205,36 @@ def _init_gettext(settings):
 
 ## GAME START FUNCTIONS
 
-def _start_dev_map():
+def _start_dev_map(gui):
 	# start the development map (it's the first one)
-	first_map = get_gui().get_maps()[0][1]
+	first_map = gui.get_maps()[0][1]
 	gui.load_game(first_map)
 
-def _start_map(map_name):
+def _start_map(gui, map_name):
 	# start a map specified by user
-	maps = get_gui().get_maps()
+	maps = gui.get_maps()
 	try:
 		map_id = maps[1].index(map_name)
-		get_gui().load_game(maps[0][map_id])
+		gui.load_game(maps[0][map_id])
 	except ValueError:
 		print "Error: Cannot find map \"%s\"." % map_name
 		import sys; sys.exit(1)
 
-def _load_map(savegamename):
+def _load_map(gui, savegamename):
 	# load a game specified by user
 	saves = SavegameManager.get_saves()
 	try:
 		save_id = saves[1].index(savegamename)
-		get_gui().load_game(saves[0][save_id])
+		gui.load_game(saves[0][save_id])
 	except ValueError:
 		print "Error: Cannot find savegame \"%s\"." % savegamename
 		import sys; sys.exit(1)
 
-def _load_last_quicksave():
+def _load_last_quicksave(gui):
 	# load last quicksave
 	save_files = SavegameManager.get_quicksaves()[0]
 	save = save_files[len(save_files)-1]
-	get_gui().load_game(save)
+	gui.load_game(save)
 
 def _create_db():
 	_db = DbReader(':memory:')
