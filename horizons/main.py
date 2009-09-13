@@ -46,6 +46,7 @@ import fife as fife_module
 from util import Color, ActionSetLoader, DbReader
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
+from horizons.gui import Gui
 
 
 def start(command_line_arguments):
@@ -55,7 +56,6 @@ def start(command_line_arguments):
 	global gui, fife, db, session, connection, ext_scheduler, settings, \
 	       unstable_features, debug, preloading
 
-	from horizons.gui import Gui
 	from engine import Fife
 	from extscheduler import ExtScheduler
 	from settings import Settings
@@ -94,13 +94,13 @@ def start(command_line_arguments):
 
 	# start something according to commandline parameters
 	if command_line_arguments.start_dev_map:
-		_start_dev_map(gui)
+		_start_dev_map()
 	elif command_line_arguments.start_map is not None:
-		_start_map(gui, command_line_arguments.start_map)
+		_start_map(command_line_arguments.start_map)
 	elif command_line_arguments.load_map is not None:
-		_load_map(gui, command_line_arguments.load_map)
+		_load_map(command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
-		_load_last_quicksave(gui)
+		_load_last_quicksave()
 	else: # no commandline parameter, show main screen
 		gui.show_main()
 		preloading[0].start()
@@ -123,6 +123,7 @@ def start_singleplayer(map_file):
 	if preloading[0].isAlive():
 		preloading[0].join()
 		assert not preloading[0].isAlive()
+	preloading[1].release()
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
@@ -173,6 +174,15 @@ def save_game(savegamename):
 
 	return True
 
+def load_game(savegame = None):
+	"""Shows select savegame menu if savegame is none, then loads the game"""
+	global gui
+	if savegame is None:
+		savegame = gui.show_select_savegame()
+		if savegame is None:
+			return # user aborted dialog
+	gui.show_loading_screen()
+	start_singleplayer(savegame)
 
 def _set_default_settings(settings):
 	settings.addCategories('sound')
@@ -205,36 +215,40 @@ def _init_gettext(settings):
 
 ## GAME START FUNCTIONS
 
-def _start_dev_map(gui):
+def _start_dev_map():
 	# start the development map (it's the first one)
 	first_map = gui.get_maps()[0][1]
-	gui.load_game(first_map)
+	load_game(first_map)
 
-def _start_map(gui, map_name):
+def _start_map(map_name):
 	# start a map specified by user
-	maps = gui.get_maps()
+	maps = Gui.get_maps()
 	try:
 		map_id = maps[1].index(map_name)
-		gui.load_game(maps[0][map_id])
+		load_game(maps[0][map_id])
 	except ValueError:
 		print "Error: Cannot find map \"%s\"." % map_name
 		import sys; sys.exit(1)
 
-def _load_map(gui, savegamename):
+def _load_map(savegamename):
 	# load a game specified by user
 	saves = SavegameManager.get_saves()
 	try:
 		save_id = saves[1].index(savegamename)
-		gui.load_game(saves[0][save_id])
+		load_game(saves[0][save_id])
 	except ValueError:
 		print "Error: Cannot find savegame \"%s\"." % savegamename
 		import sys; sys.exit(1)
 
-def _load_last_quicksave(gui):
+def _load_last_quicksave():
 	# load last quicksave
 	save_files = SavegameManager.get_quicksaves()[0]
-	save = save_files[len(save_files)-1]
-	gui.load_game(save)
+	try:
+		save = save_files[len(save_files)-1]
+	except KeyError:
+		print "Error: No quicksave found."
+		import sys; sys.exit(1)
+	load_game(save)
 
 def _create_db():
 	_db = DbReader(':memory:')

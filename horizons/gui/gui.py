@@ -33,6 +33,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
+from horizons.util import Callback
 
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
@@ -112,7 +113,7 @@ class Gui(object):
 			'creditsLink'  : self.show_credits,
 			'closeButton'  : self.show_quit,
 			'helpLink'     : self.on_help,
-			'loadgameButton' : self.load_game,
+			'loadgameButton' : horizons.main.load_game,
 			'dead_link'	 : self.on_chime
 		}
 		self.current.mapEvents(event_map)
@@ -310,7 +311,7 @@ class Gui(object):
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
 			'savegameButton' : self.save_game,
-			'loadgameButton' : self.load_game,
+			'loadgameButton' : horizons.main.load_game,
 			'helpLink'	 : self.on_help,
 			'settingsLink'   : self.show_settings,
 			'dead_link'	 : self.on_chime
@@ -397,16 +398,10 @@ class Gui(object):
 			'okay'     : self.start_single,
 		}
 		if showRandom:
-			#print self.current
-			#print self.current.findChild(name='load')
 			self.current.removeChild(self.current.findChild(name="load"))
 			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True)
-			self.current.distributeInitialData({
-				'playercolor' : [ i.name for i in Color ]
-			})
-			self.current.distributeData({
-				'playercolor' : 0
-			})
+			self.current.distributeInitialData({ 'playercolor' : [ i.name for i in Color ] })
+			self.current.distributeData({ 'playercolor' : 0 })
 		else:
 			self.current.findChild(name="random").parent.removeChild(self.current.findChild(name="random"))
 			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
@@ -432,7 +427,8 @@ class Gui(object):
 		self.current.show()
 		self.on_escape = self.show_main
 
-	def get_maps(self, showCampaign = True, showLoad = False):
+	@classmethod
+	def get_maps(cls, showCampaign = True, showLoad = False):
 		""" Gets available maps both for displaying and loading.
 
 		@param showCampaign: Bool, show campaign games true/false
@@ -674,46 +670,45 @@ class Gui(object):
 
 			horizons.main.start_singleplayer(map_file)
 
-	def load_game(self, savegame = None):
-		if savegame is None:
-			map_files, map_file_display = SavegameManager.get_saves()
+	def show_select_savegame(self):
+		"""Shows menu to select a savegame.
+		@return: Path to savegamefile or None"""
+		map_files, map_file_display = SavegameManager.get_saves()
 
-			if len(map_files) == 0:
-				self.show_popup(_("No saved games"), _("There are no saved games to load"))
-				return
+		if len(map_files) == 0:
+			self.show_popup(_("No saved games"), _("There are no saved games to load"))
+			return
 
-			old_current = self.current
-			self.current = self.widgets['ingame_load']
+		old_current = self.current
+		self.current = self.widgets['ingame_load']
 
-			self.current.distributeInitialData({'savegamelist' : map_file_display})
+		self.current.distributeInitialData({'savegamelist' : map_file_display})
 
-			def tmp_delete_savegame():
-				if self.delete_savegame(map_files):
-					self.current.hide()
-					self.load_game()
+		self.current.findChild(name="savegamelist").capture(self.create_show_savegame_details(self.current, map_files, 'savegamelist'))
+		retval = self.show_dialog(self.current, \
+		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete'},
+														onPressEscape = False)
 
-			self.current.findChild(name="savegamelist").capture(self.create_show_savegame_details(self.current, map_files, 'savegamelist'))
-			if not self.show_dialog(self.current, {'okButton' : True, 'cancelButton' : False},
-															onPressEscape = False,
-															event_map={'deleteButton' : tmp_delete_savegame}):
-				self.current = old_current
-				return
-
-			selected_savegame = self.current.collectData('savegamelist')
+		if not retval:
 			self.current = old_current
-			if selected_savegame == -1:
-				return
-			savegamefile = map_files[ selected_savegame ]
-		else: # savegame already specified as function parameter
-			savegamefile = savegame
+			return
 
-		assert(os.path.exists(savegamefile))
+		if retval == 'delete':
+			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
+			self.delete_savegame(map_files)
+			return self.show_select_savegame()
 
+		selected_savegame = self.current.collectData('savegamelist')
+		self.current = old_current
+		if selected_savegame == -1: # nothing was selected
+			return
+		return map_files[ selected_savegame ]
+
+	def show_loading_screen(self):
 		self.hide()
 		self.current = self.widgets['loadingscreen']
 		center_widget(self.current)
 		self.show()
-		horizons.main.start_singleplayer(savegamefile)
 
 	def save_game(self):
 		savegame_files, savegame_display = SavegameManager.get_regular_saves()
