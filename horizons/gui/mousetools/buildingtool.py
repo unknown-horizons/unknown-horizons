@@ -26,7 +26,6 @@ import random
 
 import horizons.main
 
-
 from horizons.util import ActionSetLoader
 from horizons.world.building.building import *
 from horizons.command.building import Build
@@ -48,8 +47,7 @@ class BuildingTool(NavigationTool):
 	not_buildable_color = (255, 0, 0)
 
 	def __init__(self, session, building, ship = None):
-		super(BuildingTool, self).__init__()
-		self.session = session
+		super(BuildingTool, self).__init__(session)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship
 		self._class = building
@@ -62,7 +60,7 @@ class BuildingTool(NavigationTool):
 			self.gui.show()
 			self.session.ingame_gui.minimap_to_front()
 
-		horizons.main.gui.on_escape = self.on_escape
+		self.session.gui.on_escape = self.on_escape
 
 		if ship is None:
 			self.highlight_buildable()
@@ -132,7 +130,7 @@ class BuildingTool(NavigationTool):
 		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
-		action_set, preview_action_set = horizons.main.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
+		action_set, preview_action_set = self.session.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
 		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
@@ -200,7 +198,7 @@ class BuildingTool(NavigationTool):
 			self.ship.select()
 			self.ship.show_menu()
 		self.gui.hide()
-		self.session.cursor = SelectionTool()
+		self.session.cursor = SelectionTool(self.session)
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")

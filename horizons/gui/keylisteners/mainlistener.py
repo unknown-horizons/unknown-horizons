@@ -32,8 +32,9 @@ from horizons.util.living import LivingObject
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 	"""MainListener Class to process events of main window"""
 
-	def __init__(self):
+	def __init__(self, gui):
 		super(MainListener, self).__init__()
+		self.gui = gui
 		fife.IKeyListener.__init__(self)
 		fife.ConsoleExecuter.__init__(self)
 		horizons.main.fife.eventmanager.addKeyListener(self)
@@ -55,13 +56,13 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
 		if keyval == fife.Key.ESCAPE:
-			horizons.main.gui.on_escape()
+			self.gui.on_escape()
 			evt.consume()
 		elif keyval == fife.Key.F10:
 			horizons.main.fife.console.toggleShowHide()
 			evt.consume()
 		elif keyval == fife.Key.F1:
-			horizons.main.gui.on_help()
+			self.gui.on_help()
 		elif keystr == 's':
 			screenshotfilename = string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-")
 			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)

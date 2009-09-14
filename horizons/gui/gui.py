@@ -77,7 +77,7 @@ class Gui(object):
 	  }
 
 	def __init__(self):
-		self.mainlistener = MainListener()
+		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict() # access widgets with their filenames without '.xml'
 

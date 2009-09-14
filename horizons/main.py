@@ -48,12 +48,16 @@ from savegamemanager import SavegameManager
 from i18n import update_all_translations
 from horizons.gui import Gui
 
+# private module pointers of this module
+class Modules(object):
+	gui = None
+_modules = Modules()
 
 def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global gui, fife, db, session, connection, ext_scheduler, settings, \
+	global fife, db, session, connection, ext_scheduler, settings, \
 	       unstable_features, debug, preloading
 
 	from engine import Fife
@@ -83,7 +87,7 @@ def start(command_line_arguments):
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
 	ActionSetLoader.load('content/gfx/')
-	gui = Gui()
+	_modules.gui = Gui()
 	SavegameManager.init()
 	session = None
 
@@ -102,7 +106,7 @@ def start(command_line_arguments):
 	elif command_line_arguments.load_quicksave is not None:
 		_load_last_quicksave()
 	else: # no commandline parameter, show main screen
-		gui.show_main()
+		_modules.gui.show_main()
 		preloading[0].start()
 
 	fife.run()
@@ -114,8 +118,8 @@ def quit():
 
 def start_singleplayer(map_file):
 	"""Starts a singleplayer game"""
-	global session, gui, fife, preloading
-	gui.show()
+	global session, fife, preloading, db
+	_modules.gui.show()
 
 	# lock preloading
 	preloading[1].acquire()
@@ -131,12 +135,12 @@ def start_singleplayer(map_file):
 	fife.engine.pump()
 	fife.cursor.set(fife_module.CURSOR_IMAGE, fife.default_cursor_image)
 
-	gui.hide()
+	_modules.gui.hide()
 
 	if session is not None:
 		session.end()
 	from session import Session
-	session = Session(gui)
+	session = Session(_modules.gui, db)
 	session.init_session()
 	session.load(map_file, 'Arthur', Color()) # temp fix to display gold
 
@@ -152,9 +156,9 @@ def save_game(savegamename=None):
 	@param savegamename: string with the full path of the savegame file or None to let user pick one
 	@return: bool, whether save was successfull
 	"""
-	global gui, session
+	global session
 	if savegamename is None:
-		savegamename = gui.show_select_savegame(mode='save')
+		savegamename = _modules.gui.show_select_savegame(mode='save')
 		if savegamename is None:
 			return False # user aborted dialog
 		savegamename = SavegameManager.create_filename(savegamename)
@@ -163,20 +167,19 @@ def save_game(savegamename=None):
 	try:
 		session.save(savegamename)
 	except IOError: # usually invalid filename
-		gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
-		gui.hide()
+		_modules.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
+		_modules.gui.hide()
 		return save_game() # re-show dialog
 
 	return True
 
 def load_game(savegame = None):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
-	global gui
 	if savegame is None:
 		savegame = gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return # user aborted dialog
-	gui.show_loading_screen()
+	_modules.gui.show_loading_screen()
 	start_singleplayer(savegame)
 
 def _set_default_settings(settings):
@@ -212,7 +215,7 @@ def _init_gettext(settings):
 
 def _start_dev_map():
 	# start the development map (it's the first one)
-	first_map = gui.get_maps()[0][1]
+	first_map = _modules.gui.get_maps()[0][1]
 	load_game(first_map)
 
 def _start_map(map_name):

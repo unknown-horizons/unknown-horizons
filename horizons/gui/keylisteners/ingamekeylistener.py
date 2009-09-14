@@ -53,7 +53,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keyval == fife.Key.DOWN:
 			if not was: horizons.main.session.view.autoscroll(0, 25)
 		elif keystr == 'g':
-			horizons.main.session.view.renderer['GridRenderer'].setEnabled(not horizons.main.session.view.renderer['GridRenderer'].isEnabled())
+			# toggle gridrenderer
+			horizons.main.session.view.renderer['GridRenderer'].setEnabled( \
+			  not horizons.main.session.view.renderer['GridRenderer'].isEnabled())
 		elif keystr == 'x':
 			horizons.main.session.destroy_tool()
 		elif keystr == '+':

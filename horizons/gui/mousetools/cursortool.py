@@ -25,8 +25,9 @@ from horizons.util.living import LivingObject
 
 class CursorTool(fife.IMouseListener, LivingObject):
 	"""Basic tool for cursors."""
-	def __init__(self):
+	def __init__(self, session):
 		super(CursorTool, self).__init__()
+		self.session = session
 		horizons.main.fife.eventmanager.addMouseListener(self)
 
 	def end(self):

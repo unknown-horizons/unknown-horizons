@@ -27,7 +27,7 @@ import logging
 
 import horizons.main
 
-from horizons.gui import IngameGui
+from horizons.gui import IngameGui, Gui
 from horizons.gui.mousetools import SelectionTool
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.mousetools import TearingTool
@@ -74,9 +74,10 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, gui):
+	def __init__(self, gui, db):
 		super(Session, self).__init__()
 		self.gui = gui # main gui, not ingame gui
+		self.db = db # main db for game data (game.sqlite)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 
@@ -93,9 +94,9 @@ class Session(LivingObject):
 		Entities.load(horizons.main.db)
 
 		#GUI
-		self.ingame_gui = IngameGui(self, horizons.main.gui)
+		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener()
-		self.cursor = SelectionTool()
+		self.cursor = SelectionTool(self)
 		self.display_speed()
 
 		self.selected_instances = set()
@@ -136,7 +137,7 @@ class Session(LivingObject):
 		"""Initiate the destroy tool"""
 		if not hasattr(self.cursor, 'tear_tool_active') or \
 			 not self.cursor.tear_tool_active:
-			self.cursor = TearingTool()
+			self.cursor = TearingTool(self)
 			self.ingame_gui.hide_menu()
 
 	def autosave(self):
@@ -156,13 +157,13 @@ class Session(LivingObject):
 			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
 			SavegameManager.delete_dispensable_savegames(quicksaves = True)
 		else:
-			horizons.main.gui.show_popup(_('Error'), _('Failed to quicksave.'))
+			self.gui.show_popup(_('Error'), _('Failed to quicksave.'))
 
 	def quickload(self):
 		"""Loads last quicksave"""
 		files = SavegameManager.get_quicksaves(include_displaynames = False)[0]
 		if len(files) == 0:
-			horizons.main.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
+			self.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
 		files.sort()
 		horizons.main.load_game(files[-1])

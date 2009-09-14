@@ -317,7 +317,7 @@ class IngameGui(LivingObject):
 		self.show_menu('ship')
 
 	def show_build_menu(self):
-		self.session.cursor = SelectionTool() # set cursor for build menu
+		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
 		btabs = [BuildTab(index, self.callbacks_build[index]) for index in
 			range(0, self.session.world.player.settler_level+1)]

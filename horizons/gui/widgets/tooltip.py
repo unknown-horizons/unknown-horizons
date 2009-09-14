@@ -36,8 +36,7 @@ class TooltipIcon(pychan.widgets.Icon):
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
 		super(TooltipIcon, self).__init__(**kwargs)
-		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else \
-		    load_xml_translated('tooltip.xml') #HACK for display in main menu
+		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
 		if tooltip != "":
 			self.tooltip = unicode(tooltip)
@@ -102,7 +101,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
 		super(TooltipButton, self).__init__(**kwargs)
-		self.gui = horizons.main.gui.widgets['tooltip'] if hasattr(horizons.main, 'gui') else load_xml_translated('tooltip.xml') #HACK for display in main menu
+		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
 		if tooltip != "":
 			self.tooltip = unicode(tooltip)

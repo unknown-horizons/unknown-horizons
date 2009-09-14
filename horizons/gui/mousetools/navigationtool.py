@@ -26,8 +26,8 @@ from cursortool import CursorTool
 from horizons.util import Point
 
 class NavigationTool(CursorTool):
-	def __init__(self):
-		super(NavigationTool, self).__init__()
+	def __init__(self, session):
+		super(NavigationTool, self).__init__(session)
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
@@ -39,13 +39,12 @@ class NavigationTool(CursorTool):
 
 	def end(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
-		horizons.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
+		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).end()
 
 	def mousePressed(self, evt):
-		#print horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).x, horizons.main.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False).y
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
-			horizons.main.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
+			self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 			self.lastScroll = [evt.getX(), evt.getY()]
 			self.middle_scroll_active = True
 
@@ -57,7 +56,7 @@ class NavigationTool(CursorTool):
 
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
-			horizons.main.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
+			self.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
 			self.lastScroll = [evt.getX(), evt.getY()]
 		else:
 			# Else the event will mistakenly be delegated if the left mouse button is hit while
@@ -69,44 +68,44 @@ class NavigationTool(CursorTool):
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 
 		# Status menu update
-		current = horizons.main.session.view.cam.toMapCoordinates(mousepoint, False)
+		current = self.session.view.cam.toMapCoordinates(mousepoint, False)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2:
 			self.lastmoved = current
-			island = horizons.main.session.world.get_island(Point(int(round(current.x)), int(round(current.y))))
+			island = self.session.world.get_island(Point(int(round(current.x)), int(round(current.y))))
 			if island:
 				settlement = island.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 				if settlement:
-					horizons.main.session.ingame_gui.resourceinfo_set(settlement)
+					self.session.ingame_gui.resourceinfo_set(settlement)
 				else:
-					horizons.main.session.ingame_gui.resourceinfo_set(None)
+					self.session.ingame_gui.resourceinfo_set(None)
 			else:
-				horizons.main.session.ingame_gui.resourceinfo_set(None)
+				self.session.ingame_gui.resourceinfo_set(None)
 		# Mouse scrolling
 		old = self.lastScroll
 		new = [0, 0]
 		if mousepoint.x < 5:
 			new[0] -= 5 - mousepoint.x
-		elif mousepoint.x >= (horizons.main.session.view.cam.getViewPort().right()-5):
-			new[0] += 6 + mousepoint.x - horizons.main.session.view.cam.getViewPort().right()
+		elif mousepoint.x >= (self.session.view.cam.getViewPort().right()-5):
+			new[0] += 6 + mousepoint.x - self.session.view.cam.getViewPort().right()
 		if mousepoint.y < 5:
 			new[1] -= 5 - mousepoint.y
-		elif mousepoint.y >= (horizons.main.session.view.cam.getViewPort().bottom()-5):
-			new[1] += 6 + mousepoint.y - horizons.main.session.view.cam.getViewPort().bottom()
+		elif mousepoint.y >= (self.session.view.cam.getViewPort().bottom()-5):
+			new[1] += 6 + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		new = [new[0] * 10, new[1] * 10]
 		if new[0] != old[0] or new[1] != old[1]:
-			horizons.main.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
+			self.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
 			self.lastScroll = new
 
 	def mouseWheelMovedUp(self, evt):
-		horizons.main.session.view.zoom_in()
+		self.session.view.zoom_in()
 		evt.consume()
 
 	def mouseWheelMovedDown(self, evt):
-		horizons.main.session.view.zoom_out()
+		self.session.view.zoom_out()
 		evt.consume()
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
 			old = self.lastScroll
-			horizons.main.session.view.autoscroll(-old[0], -old[1])
+			self.session.view.autoscroll(-old[0], -old[1])
 			self.lastScroll = [0, 0]

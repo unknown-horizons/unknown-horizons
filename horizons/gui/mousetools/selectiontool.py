@@ -29,9 +29,9 @@ from navigationtool import NavigationTool
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
-	def __init__(self):
-		super(SelectionTool, self).__init__()
-		horizons.main.gui.on_escape = horizons.main.gui.show_pause
+	def __init__(self, session):
+		super(SelectionTool, self).__init__(session)
+		self.session.gui.on_escape = self.session.gui.show_pause
 
 	def end(self):
 		super(SelectionTool, self).end()
@@ -39,7 +39,7 @@ class SelectionTool(NavigationTool):
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
-			horizons.main.session.view.renderer['GenericRenderer'].removeAll("select")
+			self.session.view.renderer['GenericRenderer'].removeAll("select")
 			if do_multi:
 				a = fife.Point(min(self.select_begin[0], evt.getX()), \
 											 min(self.select_begin[1], evt.getY()))
@@ -49,20 +49,20 @@ class SelectionTool(NavigationTool):
 											 max(self.select_begin[1], evt.getY()))
 				d = fife.Point(min(self.select_begin[0], evt.getX()), \
 											 max(self.select_begin[1], evt.getY()))
-				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine("select", \
 																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(b), 0, 255, 0)
-				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine("select", \
 																																			 fife.GenericRendererNode(b), fife.GenericRendererNode(c), 0, 255, 0)
-				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine("select", \
 																																			 fife.GenericRendererNode(d), fife.GenericRendererNode(c), 0, 255, 0)
-				horizons.main.session.view.renderer['GenericRenderer'].addLine("select", \
+				self.session.view.renderer['GenericRenderer'].addLine("select", \
 																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(d), 0, 255, 0)
 			selectable = []
-			instances = horizons.main.session.view.cam.getMatchingInstances(\
+			instances = self.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 									min(self.select_begin[1], evt.getY()), \
 									abs(evt.getX() - self.select_begin[0]), \
-									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
+									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
 				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
@@ -78,11 +78,11 @@ class SelectionTool(NavigationTool):
 				selectable = set(self.select_old | frozenset(selectable))
 			else:
 				selectable = set(self.select_old ^ frozenset(selectable))
-			for instance in horizons.main.session.selected_instances - selectable:
+			for instance in self.session.selected_instances - selectable:
 				instance.deselect()
-			for instance in selectable - horizons.main.session.selected_instances:
+			for instance in selectable - self.session.selected_instances:
 				instance.select()
-			horizons.main.session.selected_instances = selectable
+			self.session.selected_instances = selectable
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
@@ -94,7 +94,7 @@ class SelectionTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			self.apply_select()
 			del self.select_begin, self.select_old
-			horizons.main.session.view.renderer['GenericRenderer'].removeAll("select")
+			self.session.view.renderer['GenericRenderer'].removeAll("select")
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
 		else:
@@ -104,10 +104,10 @@ class SelectionTool(NavigationTool):
 
 	def apply_select(self):
 		"""Called when selected instances changes. (Shows their menu)"""
-		if len(horizons.main.session.selected_instances) > 1:
+		if len(self.session.selected_instances) > 1:
 			pass
-		elif len(horizons.main.session.selected_instances) == 1:
-			for i in horizons.main.session.selected_instances:
+		elif len(self.session.selected_instances) == 1:
+			for i in self.session.selected_instances:
 				i.show_menu()
 
 	def mousePressed(self, evt):
@@ -116,37 +116,37 @@ class SelectionTool(NavigationTool):
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			selectable = []
-			instances = horizons.main.session.view.cam.getMatchingInstances(\
-				fife.ScreenPoint(evt.getX(), evt.getY()), horizons.main.session.view.layers[LAYERS.OBJECTS])
+			instances = self.session.view.cam.getMatchingInstances(\
+				fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
 				instance = WorldObject.get_object_by_id(int(i.getId()))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:
 				selectable = selectable[0:0]
-			self.select_old = frozenset(horizons.main.session.selected_instances) if evt.isControlPressed() else frozenset()
+			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 			selectable = set(self.select_old ^ frozenset(selectable))
-			for instance in horizons.main.session.selected_instances - selectable:
+			for instance in self.session.selected_instances - selectable:
 				instance.deselect()
-			for instance in selectable - horizons.main.session.selected_instances:
+			for instance in selectable - self.session.selected_instances:
 				instance.select()
-			horizons.main.session.selected_instances = selectable
+			self.session.selected_instances = selectable
 			self.select_begin = (evt.getX(), evt.getY())
-			horizons.main.session.ingame_gui.hide_menu()
+			self.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			target_mapcoord = horizons.main.session.view.cam.toMapCoordinates(\
+			target_mapcoord = self.session.view.cam.toMapCoordinates(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
-			for i in horizons.main.session.selected_instances:
+			for i in self.session.selected_instances:
 				if i.movable:
 					(Act(i, target_mapcoord.x, target_mapcoord.y)).execute()
 			""" old code for moving just one unit (kept for reference):
-			if len(horizons.main.session.selected_instances) == 1 and \
-			   any(hasattr(i, 'act') for i in horizons.main.session.selected_instances):
-				target_mapcoord = horizons.main.session.view.cam.toMapCoordinates(\
+			if len(self.session.selected_instances) == 1 and \
+			   any(hasattr(i, 'act') for i in self.session.selected_instances):
+				target_mapcoord = self.session.view.cam.toMapCoordinates(\
 					fife.ScreenPoint(evt.getX(), evt.getY()), False)
-				for i in horizons.main.session.selected_instances:
+				for i in self.session.selected_instances:
 					if isinstance(i, Unit):
-						horizons.main.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
+						self.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
 			"""
 		else:
 			super(SelectionTool, self).mousePressed(evt)
