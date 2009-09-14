@@ -300,7 +300,7 @@ def find_FIFE(fife_custom_path=None):
 	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
 
 	# assemble args (python run_uh.py ..)
-	args = [sys.executable, '-O'] + sys.argv + [ "--fife-in-library-path"]
+	args = [sys.executable, '-OO'] + sys.argv + [ "--fife-in-library-path"]
 	log().debug("Restarting with args %s", args)
 	os.execvp(args[0], args)
 

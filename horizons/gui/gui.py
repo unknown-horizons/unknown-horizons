@@ -31,7 +31,6 @@ from horizons.savegamemanager import SavegameManager
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import ServerConnection, ClientConnection
-from horizons.savegamemanager import SavegameManager
 from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
@@ -73,21 +72,17 @@ class Gui(object):
 	  'singleplayermenu': 'book',
 	  'serverlist': 'menu',
 	  'serverlobby': 'menu',
-	  'ingame_load': 'book',
-	  'savegame': 'book',
+	  'select_savegame': 'book',
 	  'ingame_pause': 'book'
 	  }
 
 	def __init__(self):
 		self.mainlistener = MainListener()
-
 		self.current = None # currently active window
-
-		self.widgets = LazyWidgetsDict()
+		self.widgets = LazyWidgetsDict() # access widgets with their filenames without '.xml'
 
 	def show_main(self):
-		""" shows the main menu
-		"""
+		""" shows the main menu """
 		self.__switch_current_widget('mainmenu', center=True, show=True, event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
@@ -148,13 +143,11 @@ class Gui(object):
 			fife.settings.setFullScreen(1 if old else 0)
 		try:
 			resolutions.index(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
-		except:
+		except ValueError:
 			resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
-
 
 		languages_map = dict(reversed(find_available_languages()))
 		languages_map[_('System default')] = ''
-		#languages_map['C'] = ''
 
 		dlg = self.widgets['settings']
 		dlg.distributeInitialData({
@@ -176,7 +169,9 @@ class Gui(object):
 			'screen_bpp' : int(settings.fife.screen.bpp / 10), # 0:0 16:1 24:2 32:3 :)
 			'screen_fullscreen' : settings.fife.screen.fullscreen,
 			'sound_enable_opt' : settings.sound.enabled,
-			'language' : languages_map.keys().index(_('System default') if settings.language.name == '' or settings.language.name == 'System default' else settings.language.name)
+			'language' : languages_map.keys().index(_('System default') if \
+		      settings.language.name == '' or settings.language.name == 'System default' else \
+		      settings.language.name)
 		})
 
 		dlg.mapEvents({
@@ -217,22 +212,17 @@ class Gui(object):
 
 		changes_require_restart = False
 
-		if (new_settings['autosaveinterval'])*2 != settings.savegame.autosaveinterval:
-			settings.savegame.autosaveinterval = (new_settings['autosaveinterval'])*2
-		if new_settings['savedautosaves']+1 != settings.savegame.savedautosaves:
-			settings.savegame.savedautosaves = new_settings['savedautosaves']+1
-		if new_settings['savedquicksaves']+1 != settings.savegame.savedquicksaves:
-			settings.savegame.savedquicksaves = new_settings['savedquicksaves']+1
+		settings.savegame.autosaveinterval = (new_settings['autosaveinterval'])*2
+		settings.savegame.savedautosaves = new_settings['savedautosaves']+1
+		settings.savegame.savedquicksaves = new_settings['savedquicksaves']+1
 		if new_settings['screen_fullscreen'] != settings.fife.screen.fullscreen:
 			settings.fife.screen.fullscreen = new_settings['screen_fullscreen']
 			changes_require_restart = True
 		if new_settings['sound_enable_opt'] != settings.sound.enabled:
 			settings.sound.enabled = new_settings['sound_enable_opt']
 			changes_require_restart = True
-		if volume_music.getValue() != settings.sound.volume_music:
-			settings.sound.volume_music = volume_music.getValue()
-		if volume_effects.getValue() != settings.sound.volume_effects:
-			settings.sound.volume_effects = volume_effects.getValue()
+		settings.sound.volume_music = volume_music.getValue()
+		settings.sound.volume_effects = volume_effects.getValue()
 		if new_settings['screen_bpp'] != int(settings.fife.screen.bpp / 10):
 			settings.fife.screen.bpp = 0 if new_settings['screen_bpp'] == 0 else ((new_settings['screen_bpp'] + 1) * 8)
 			changes_require_restart = True
@@ -284,7 +274,7 @@ class Gui(object):
 		self.__switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
-			'savegameButton' : self.save_game,
+			'savegameButton' : horizons.main.save_game,
 			'loadgameButton' : horizons.main.load_game,
 			'helpLink'	 : self.on_help,
 			'settingsLink'   : self.show_settings,
@@ -360,7 +350,6 @@ class Gui(object):
 			files.sort()
 			display = [os.path.split(i)[1].rpartition('.')[0] for i in files]
 			return (files, display)
-
 
 	def on_escape(self):
 		pass
@@ -505,7 +494,7 @@ class Gui(object):
 		self.current.show()
 		self.on_escape = self.show_multi
 
-	def delete_savegame(self, map_files):
+	def _delete_savegame(self, map_files):
 		"""Deletes the selected savegame if the user confirms
 		self.current has to contain the widget "savegamelist"
 		@param map_files: list of files that corresponds to the entries of 'savegamelist'
@@ -525,7 +514,8 @@ class Gui(object):
 		else:
 			return False
 
-	def create_show_savegame_details(self, gui, map_files, savegamelist):
+	@staticmethod
+	def _create_show_savegame_details(gui, map_files, savegamelist):
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
 			box = gui.findChild(name="savegamedetails_box")
@@ -555,74 +545,74 @@ class Gui(object):
 		if self.current is not None:
 			self.current.show()
 
-	def show_select_savegame(self):
+	def show_select_savegame(self, mode):
 		"""Shows menu to select a savegame.
+		@param mode: 'save' or 'load'
 		@return: Path to savegamefile or None"""
-		map_files, map_file_display = SavegameManager.get_saves()
+		assert mode in ('save', 'load')
+		map_files, map_file_display = None, None
+		if mode == 'load':
+			map_files, map_file_display = SavegameManager.get_saves()
+			if len(map_files) == 0:
+				self.show_popup(_("No saved games"), _("There are no saved games to load"))
+				return
+		else: # don't show autosave and quicksave on save
+			map_files, map_file_display = SavegameManager.get_regular_saves()
 
-		if len(map_files) == 0:
-			self.show_popup(_("No saved games"), _("There are no saved games to load"))
-			return
+		# Prepare widget
+		old_current = self.__switch_current_widget('select_savegame')
+		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 
-		old_current = self.current
-		self.current = self.widgets['ingame_load']
+		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
+		if mode == 'save': # only show enter_filename on save
+			self.current.findChild(name='enter_filename').show()
+		else:
+			self.current.findChild(name='enter_filename').hide()
+		"""
+
+		def tmp_selected_changed():
+			"""Fills in the name of the savegame in the textbox when selected in the list"""
+			if self.current.collectData('savegamelist') != -1: # Check if it actually collected valid data
+				self.current.distributeData({'savegamefile' : \
+				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
+		self.current.findChild(name="savegamelist").capture( Callback.ChainedCallbacks( \
+		  Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
+		  tmp_selected_changed))
 
-		self.current.findChild(name="savegamelist").capture(self.create_show_savegame_details(self.current, map_files, 'savegamelist'))
 		retval = self.show_dialog(self.current, \
 		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete'},
 														onPressEscape = False)
 
-		if not retval:
+		if not retval: # canceled
 			self.current = old_current
 			return
 
 		if retval == 'delete':
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			self.delete_savegame(map_files)
-			return self.show_select_savegame()
+			self._delete_savegame(map_files)
+			return self.show_select_savegame(mode=mode)
 
-		selected_savegame = self.current.collectData('savegamelist')
-		self.current = old_current
-		if selected_savegame == -1: # nothing was selected
-			return
-		return map_files[ selected_savegame ]
+		selected_savegame = None
+		if mode == 'save': # return from textfield
+			selected_savegame = self.current.collectData('savegamefile')
+			if selected_savegame in map_file_display: # savegamename already exists
+				if not self.show_popup(_("Confirmation for overwriting"), \
+				      _("A savegame with the name \"%s\" already exists. Should i overwrite it?") % \
+				      selected_savegame, show_cancel_button = True):
+					return self.show_select_savegame(mode=mode) # reshow dialog
+		else: # return selected item from list
+			selected_savegame = self.current.collectData('savegamelist')
+			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
+		self.current = old_current # reuse old widget
+		return selected_savegame
 
 	def show_loading_screen(self):
 		self.hide()
 		self.current = self.widgets['loadingscreen']
 		center_widget(self.current)
 		self.show()
-
-	def save_game(self):
-		savegame_files, savegame_display = SavegameManager.get_regular_saves()
-
-		old_current = self.current
-		self.current = self.widgets['savegame']
-
-		self.current.distributeInitialData({'savegamelist' : savegame_display})
-
-		def tmp_selected_changed():
-			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if self.current.collectData('savegamelist') != -1: # Check if it actually collected valid data
-				self.current.distributeData({'savegamefile' : savegame_display[self.current.collectData('savegamelist')]})
-
-		def tmp_delete_savegame():
-			if self.delete_savegame(savegame_files):
-				self.current.hide()
-				self.save_game()
-
-		self.current.findChild(name='savegamelist').capture(tmp_selected_changed)
-		if not self.show_dialog(self.current, {'okButton' : True, 'cancelButton' : False},
-														onPressEscape = False,
-														event_map={'deleteButton' : tmp_delete_savegame}):
-			self.current = old_current
-			return
-
-		savegamename = self.current.collectData('savegamefile')
-		self.current = old_current
-		horizons.main.save_game(savegamename)
 
 	def toggle_ingame_pause(self):
 		"""Called when the hotkey for pause is pressed. Displays pause notification and does
@@ -694,7 +684,7 @@ class Gui(object):
 				self.current.distributeData({
 					'maplist' : 0
 				})
-				eventMap["maplist"] = self.create_show_savegame_details(self.current, self.current.files, 'maplist')
+				eventMap["maplist"] = Gui._create_show_savegame_details(self.current, self.current.files, 'maplist')
 		self.current.mapEvents(eventMap)
 
 		self.current.distributeData({
@@ -715,7 +705,7 @@ class Gui(object):
 			if len(playername) == 0:
 				self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
 				return
-			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
+			#playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
 			self.show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
 			return
 		else:
@@ -729,7 +719,6 @@ class Gui(object):
 			center_widget(self.current)
 
 			horizons.main.start_singleplayer(map_file)
-
 
 
 def center_widget(widget):

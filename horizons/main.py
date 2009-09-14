@@ -147,31 +147,25 @@ def start_multi():
 	"""
 	pass
 
-def save_game(savegamename):
+def save_game(savegamename=None):
 	"""Saves a game
-	@param savegamename: string with the filename or full path of the savegame file
+	@param savegamename: string with the full path of the savegame file or None to let user pick one
 	@return: bool, whether save was successfull
 	"""
 	global gui, session
-	if os.path.isabs(savegamename):
-		savegamefile = savegamename
-	else: # is just basename
-		savegamefile = SavegameManager.create_filename(savegamename)
+	if savegamename is None:
+		savegamename = gui.show_select_savegame(mode='save')
+		if savegamename is None:
+			return False # user aborted dialog
+		savegamename = SavegameManager.create_filename(savegamename)
 
-	if os.path.exists(savegamefile):
-		if not gui.show_popup(_("Confirmation for overwriting"),
-				_("A savegame with the name \"%s\" already exists. Should i overwrite it?") % \
-		    savegamename, show_cancel_button = True):
-			gui.save_game() # just reshow save screen on cancel.
-			return
-
+	assert os.path.isabs(savegamename)
 	try:
-		session.save(savegamefile)
-	except IOError: # invalid filename
+		session.save(savegamename)
+	except IOError: # usually invalid filename
 		gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
 		gui.hide()
-		gui.save_game() # re-show dialog
-		return False
+		return save_game() # re-show dialog
 
 	return True
 
@@ -179,7 +173,7 @@ def load_game(savegame = None):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	global gui
 	if savegame is None:
-		savegame = gui.show_select_savegame()
+		savegame = gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return # user aborted dialog
 	gui.show_loading_screen()

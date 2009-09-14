@@ -97,8 +97,7 @@ def set_translations():
 			"boat_builder_window"         : _("boatbuilder")},
 		"ingame_pause.xml" : {
 			"headline"                    : _("Game paused")},
-		"ingame_load.xml" : {
-			"headline"                    : _("Load Game"),
+		"select_savegame.xml" : {
 			"details_label"               : _("Details:")},
 		"gamemenu.xml" : {
 			"version_label"               : VERSION.string(),
