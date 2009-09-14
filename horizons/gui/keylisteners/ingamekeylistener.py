@@ -28,9 +28,10 @@ from horizons.gui.mousetools import BuildingTool
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
-	def __init__(self):
+	def __init__(self, gui):
 		super(IngameKeyListener, self).__init__()
 		horizons.main.fife.eventmanager.addKeyListener(self)
+		self.gui = gui
 		self.keysPressed = []
 
 	def end(self):
@@ -63,7 +64,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '-':
 			horizons.main.session.speed_down()
 		elif keystr == 'p':
-			horizons.main.gui.toggle_ingame_pause()
+			self.gui.toggle_ingame_pause()
 		elif keystr == 'd':
 			import pdb; pdb.set_trace()
 		elif keystr == 'b':

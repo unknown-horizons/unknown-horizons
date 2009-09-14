@@ -176,7 +176,7 @@ def save_game(savegamename=None):
 def load_game(savegame = None):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
-		savegame = gui.show_select_savegame(mode='load')
+		savegame = _modules.gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return # user aborted dialog
 	_modules.gui.show_loading_screen()

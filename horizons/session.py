@@ -95,7 +95,7 @@ class Session(LivingObject):
 
 		#GUI
 		self.ingame_gui = IngameGui(self, self.gui)
-		self.keylistener = IngameKeyListener()
+		self.keylistener = IngameKeyListener(self.gui)
 		self.cursor = SelectionTool(self)
 		self.display_speed()
 
