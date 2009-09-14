@@ -23,7 +23,7 @@
    the main menu, as well as to initialize new gamesessions.
 	 <deprecated>horizons.main provides some globals
    that can be used throughout the code just by importing 'horizons.main'. These are the
-   globals:</deprecated>. Use getters now! (see below)
+   globals:</deprecated>.
    * db - the horizons.dbreader instance, used to retrieve data from the database.
    * settings - horizons.settings instance.
    * fife - if a game is running. horizons.fife provides the running engine instance.
@@ -123,7 +123,8 @@ def start_singleplayer(map_file):
 	if preloading[0].isAlive():
 		preloading[0].join()
 		assert not preloading[0].isAlive()
-	preloading[1].release()
+	else:
+		preloading[1].release()
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)

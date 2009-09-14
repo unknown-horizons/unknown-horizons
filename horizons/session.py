@@ -165,7 +165,7 @@ class Session(LivingObject):
 			horizons.main.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
 			return
 		files.sort()
-		horizons.main.gui.load_game(files[-1])
+		horizons.main.load_game(files[-1])
 
 	def save(self, savegame):
 		"""

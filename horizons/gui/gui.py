@@ -18,11 +18,13 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import horizons.main
 import os
 import os.path
 import glob
 import time
+import pychan
+
+import horizons.main
 
 from horizons.util.color import Color
 from horizons.savegamemanager import SavegameManager
@@ -35,78 +37,58 @@ from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
 
+class LazyWidgetsDict(dict):
+	"""Dictionary for UH widgets. Loads widget on first access."""
+	def __getitem__(self, widgetname):
+		try:
+			return dict.__getitem__(self, widgetname)
+		except KeyError:
+			widget = load_xml_translated(widgetname+'.xml')
+			center_widget(widget)
+			headline = widget.findChild(name='headline')
+			if headline:
+				headline.stylize('headline')
+			if widgetname in Gui.styles:
+				widget.stylize(Gui.styles[widgetname])
+
+			self[widgetname] = widget
+			return self[widgetname]
+
+
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc."""
+	# styles to apply to a widget
+	styles = {
+	  'mainmenu': 'menu',
+	  'quitgame': 'book',
+	  'credits': 'book',
+	  'settings': 'book',
+	  'requirerestart': 'book',
+	  'popup_with_cancel': 'book',
+	  'popup': 'book',
+	  'gamemenu': 'menu',
+	  'chime': 'book',
+	  'help': 'book',
+	  'quitsession': 'book',
+	  'singleplayermenu': 'book',
+	  'serverlist': 'menu',
+	  'serverlobby': 'menu',
+	  'ingame_load': 'book',
+	  'savegame': 'book',
+	  'ingame_pause': 'book'
+	  }
 
 	def __init__(self):
 		self.mainlistener = MainListener()
 
 		self.current = None # currently active window
 
-		self.widgets = {} # Stores all the widgets, to prevent double loading
-		self.widgets['mainmenu'] = load_xml_translated('mainmenu.xml')
-		self.widgets['mainmenu'].stylize('menu')
-		self.widgets['quitgame'] = load_xml_translated('quitgame.xml')
-		self.widgets['quitgame'].stylize('book')
-		self.widgets['quitgame'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['credits'] = load_xml_translated('credits.xml')
-		self.widgets['credits'].stylize('book')
-		self.widgets['credits'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['settings'] = load_xml_translated('settings.xml')
-		self.widgets['settings'].stylize('book')
-		self.widgets['settings'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['requirerestart'] = load_xml_translated('changes_require_restart.xml')
-		self.widgets['requirerestart'].stylize('book')
-		self.widgets['requirerestart'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['popup_with_cancel'] = load_xml_translated('popupbox_with_cancel.xml')
-		self.widgets['popup_with_cancel'].stylize('book')
-		self.widgets['popup_with_cancel'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['popup'] = load_xml_translated('popupbox.xml')
-		self.widgets['popup'].stylize('book')
-		self.widgets['popup'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['gamemenu'] = load_xml_translated('gamemenu.xml')
-		self.widgets['gamemenu'].stylize('menu')
-		self.widgets['chime'] = load_xml_translated('chime.xml')
-		self.widgets['chime'].stylize('book')
-		self.widgets['chime'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['help'] = load_xml_translated('help.xml')
-		self.widgets['help'].stylize('book')
-		self.widgets['help'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['quitsession'] = load_xml_translated('quitsession.xml')
-		self.widgets['quitsession'].stylize('book')
-		self.widgets['quitsession'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml')
-		self.widgets['singleplayermenu'].stylize('book')
-		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['serverlist'] = load_xml_translated('serverlist.xml')
-		self.widgets['serverlist'].stylize('menu')
-		self.widgets['serverlobby'] = load_xml_translated('serverlobby.xml')
-		self.widgets['serverlobby'].stylize('menu')
-		self.widgets['loadingscreen'] = load_xml_translated('loadingscreen.xml')
-		self.widgets['ingame_load'] = load_xml_translated('ingame_load.xml')
-		self.widgets['ingame_load'].stylize('book')
-		self.widgets['ingame_load'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['tooltip'] = load_xml_translated('tooltip.xml')
-		self.widgets['savegame'] = load_xml_translated('ingame_save.xml')
-		self.widgets['savegame'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['savegame'].stylize('book')
-
-		self.widgets['ingame_pause'] = load_xml_translated('ingame_pause.xml')
-		self.widgets['ingame_pause'].stylize('book')
-		self.widgets['ingame_pause'].findChild(name='headline').stylize('headline') # style definition for headline
-		self.widgets['ingame_pdb_start'] = load_xml_translated('ingame_pdb_start.xml')
-
-
-		for widget in self.widgets.itervalues():
-			center_widget(widget)
+		self.widgets = LazyWidgetsDict()
 
 	def show_main(self):
 		""" shows the main menu
 		"""
-		self.hide() # Hide old gui
-		self.current = self.widgets['mainmenu']
-		center_widget(self.current)
-		event_map = {
+		self.__switch_current_widget('mainmenu', center=True, show=True, event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
 			'settingsLink' : self.show_settings,
@@ -115,20 +97,16 @@ class Gui(object):
 			'helpLink'     : self.on_help,
 			'loadgameButton' : horizons.main.load_game,
 			'dead_link'	 : self.on_chime
-		}
-		self.current.mapEvents(event_map)
-		self.current.show()
+		})
 		self.on_escape = self.show_quit
 
 	def show_quit(self):
-		"""Shows the quit dialog
-		"""
+		"""Shows the quit dialog """
 		if self.show_dialog(self.widgets['quitgame'], {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			horizons.main.quit()
 
 	def show_credits(self):
-		"""Shows the credits dialog.
-		"""
+		"""Shows the credits dialog. """
 		self.show_dialog(self.widgets['credits'], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
@@ -286,12 +264,11 @@ class Gui(object):
 		@param show_cancel_button: boolean, show cancel button or not
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
-
 		if show_cancel_button:
 			popup = self.widgets['popup_with_cancel']
 		else:
 			popup = self.widgets['popup']
-		# just to be save, the gettext-function is used twice,
+		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
 		popup.findChild(name='headline').text = _(unicode(_(windowtitle)))
 		popup.findChild(name='popup_message').text = _(unicode(_(message)))
@@ -304,10 +281,7 @@ class Gui(object):
 		"""
 		Show Pause menu
 		"""
-		self.hide() # Hide old gui
-		self.current = self.widgets['gamemenu']
-		center_widget(self.current)
-		event_map = {
+		self.__switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
 			'savegameButton' : self.save_game,
@@ -315,9 +289,7 @@ class Gui(object):
 			'helpLink'	 : self.on_help,
 			'settingsLink'   : self.show_settings,
 			'dead_link'	 : self.on_chime
-		}
-		self.current.mapEvents(event_map)
-		self.current.show()
+		})
 		horizons.main.session.speed_pause()
 		self.on_escape = self.return_to_game
 
@@ -325,9 +297,9 @@ class Gui(object):
 		"""
 		Called chime action.
 		"""
+		# this is just for now, so hardcoded path is ok
 		horizons.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
 		self.show_dialog(self.widgets['chime'], {'okButton' : True}, onPressEscape = True)
-
 
 	def set_volume(self, label, slider):
 		if label.name == 'volume_music_value':
@@ -337,13 +309,10 @@ class Gui(object):
 			label.text = unicode(int(slider.getValue() * 100 * 2)) + '%'
 			horizons.main.fife.set_volume_effects(slider.getValue())
 
-
 	help_is_displayed = False
 	def on_help(self):
-		"""
-		Called on help action
-		Toggles help screen via static variable help_is_displayed
-		"""
+		"""Called on help action
+		Toggles help screen via static variable help_is_displayed"""
 		help_dlg = self.widgets['help']
 		if not self.help_is_displayed:
 			self.help_is_displayed = True
@@ -360,72 +329,21 @@ class Gui(object):
 			help_dlg.hide()
 			self.on_escape = self.show_pause
 
-
 	def quit_session(self):
-		"""
-		Quits the current session
-		"""
-		if self.show_dialog(self.widgets['quitsession'],  {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		"""Quits the current session"""
+		if self.show_dialog(self.widgets['quitsession'],  {'okButton': True, 'cancelButton': False}, onPressEscape=False):
 			self.current.hide()
 			self.current = None
 			horizons.main.session.end()
 			horizons.main.session = None
 			self.show_main()
 
-
 	def return_to_game(self):
-		"""
-		Return to the horizons.
-		"""
+		"""Return to the horizons."""
 		self.hide() # Hide old gui
 		self.current = None
 		horizons.main.session.speed_unpause()
 		self.on_escape = self.show_pause
-
-	def show_single(self, showRandom = False, showCampaign = True):
-		"""
-		@param showRandom: Bool if random games menu is to be shown.
-		@param showCampaign: Bool if  campaigngame menu is to be shown.
-		"""
-		self.hide() # Hide old gui
-		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
-		self.widgets['singleplayermenu'].stylize('book')
-		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline')
-		self.current = self.widgets['singleplayermenu']
-		center_widget(self.current)
-		eventMap = {
-			'cancel'   : self.show_main,
-			'okay'     : self.start_single,
-		}
-		if showRandom:
-			self.current.removeChild(self.current.findChild(name="load"))
-			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True)
-			self.current.distributeInitialData({ 'playercolor' : [ i.name for i in Color ] })
-			self.current.distributeData({ 'playercolor' : 0 })
-		else:
-			self.current.findChild(name="random").parent.removeChild(self.current.findChild(name="random"))
-			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
-
-			# get the map files and their display names
-			self.current.files, maps_display = self.get_maps(showCampaign, showLoad=False)
-			self.current.distributeInitialData({
-				'maplist' : maps_display,
-			})
-			if len(maps_display) > 0:
-				# select first entry
-				self.current.distributeData({
-					'maplist' : 0
-				})
-				eventMap["maplist"] = self.create_show_savegame_details(self.current, self.current.files, 'maplist')
-		self.current.mapEvents(eventMap)
-
-		self.current.distributeData({
-			'showRandom' : showRandom,
-			'showCampaign' : showCampaign,
-		})
-
-		self.current.show()
-		self.on_escape = self.show_main
 
 	@classmethod
 	def get_maps(cls, showCampaign = True, showLoad = False):
@@ -517,7 +435,6 @@ class Gui(object):
 		_changed()
 		self.current.serverList.changed = _changed
 		self.current.oldServerType = serverType
-
 
 	def show_create_server(self):
 		"""Interface for creating a server
@@ -615,12 +532,8 @@ class Gui(object):
 			old_label = box.findChild(name="savegamedetails_lbl")
 			if old_label is not None:
 				box.removeChild(old_label)
-			try:
-				savegame_info = SavegameManager.get_metadata(map_files[gui.collectData(savegamelist)])
-			except:
-				gui.adaptLayout()
-				return
-			details_label = horizons.main.fife.pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
+			savegame_info = SavegameManager.get_metadata(map_files[gui.collectData(savegamelist)])
+			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
@@ -628,10 +541,8 @@ class Gui(object):
 			else:
 				details_label.text += "Saved at %s\n" % \
 										 time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
-			if savegame_info['savecounter'] == 1:
-				details_label.text += "Saved 1 time\n"
-			elif savegame_info['savecounter'] > 1:
-				details_label.text += "Saved %d times\n" % savegame_info['savecounter']
+			details_label.text += "Saved %d time%s\n" % (savegame_info['savecounter'], \
+			                                             's' if savegame_info['savecounter'] > 1 else '')
 			box.addChild( details_label )
 			gui.adaptLayout()
 		return tmp_show_details
@@ -643,32 +554,6 @@ class Gui(object):
 	def show(self):
 		if self.current is not None:
 			self.current.show()
-
-	def start_single(self):
-		""" Starts a single player horizons.
-		"""
-		showRandom = self.current.collectData('showRandom')
-		showCampaign = self.current.collectData('showCampaign')
-
-		if showRandom:
-			playername = self.current.collectData('playername')
-			if len(playername) == 0:
-				self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
-				return
-			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-			self.show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
-			return
-		else:
-			map_id = self.current.collectData('maplist')
-			if map_id == -1:
-				return
-			map_file = self.current.files[map_id]
-
-			self.hide()
-			self.current = self.widgets['loadingscreen']
-			center_widget(self.current)
-
-			horizons.main.start_singleplayer(map_file)
 
 	def show_select_savegame(self):
 		"""Shows menu to select a savegame.
@@ -755,6 +640,96 @@ class Gui(object):
 	def toggle_ingame_pdb_start(self):
 		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
 		pass
+
+	def __switch_current_widget(self, new_widget, center=False, event_map=None, show=False):
+		"""Switches self.current to a new widget.
+		@param new_widget: str, widget name
+		@param center: bool, whether to center the new widget
+		@param event_map: pychan event map to apply to new widget
+		@param show: bool, if True old window gets hidden and new one shown
+		@return: instance of old widget"""
+		old = self.current
+		if show and old is not None:
+			old.hide()
+		self.current = self.widgets[new_widget]
+		if center:
+			center_widget(self.current)
+		if event_map:
+			self.current.mapEvents(event_map)
+		if show:
+			self.current.show()
+		return old
+
+	def show_single(self, showRandom = False, showCampaign = True):
+		"""
+		@param showRandom: Bool if random games menu is to be shown.
+		@param showCampaign: Bool if  campaigngame menu is to be shown.
+		"""
+		self.hide() # Hide old gui
+		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
+		self.widgets['singleplayermenu'].stylize('book')
+		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline')
+		self.current = self.widgets['singleplayermenu']
+		center_widget(self.current)
+		eventMap = {
+			'cancel'   : self.show_main,
+			'okay'     : self.start_single,
+		}
+		if showRandom:
+			self.current.removeChild(self.current.findChild(name="load"))
+			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True)
+			self.current.distributeInitialData({ 'playercolor' : [ i.name for i in Color ] })
+			self.current.distributeData({ 'playercolor' : 0 })
+		else:
+			self.current.findChild(name="random").parent.removeChild(self.current.findChild(name="random"))
+			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
+
+			# get the map files and their display names
+			self.current.files, maps_display = self.get_maps(showCampaign, showLoad=False)
+			self.current.distributeInitialData({
+				'maplist' : maps_display,
+			})
+			if len(maps_display) > 0:
+				# select first entry
+				self.current.distributeData({
+					'maplist' : 0
+				})
+				eventMap["maplist"] = self.create_show_savegame_details(self.current, self.current.files, 'maplist')
+		self.current.mapEvents(eventMap)
+
+		self.current.distributeData({
+			'showRandom' : showRandom,
+			'showCampaign' : showCampaign,
+		})
+
+		self.current.show()
+		self.on_escape = self.show_main
+
+	def start_single(self):
+		""" Starts a single player horizons. """
+		showRandom = self.current.collectData('showRandom')
+		showCampaign = self.current.collectData('showCampaign')
+
+		if showRandom:
+			playername = self.current.collectData('playername')
+			if len(playername) == 0:
+				self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
+				return
+			playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
+			self.show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
+			return
+		else:
+			map_id = self.current.collectData('maplist')
+			if map_id == -1:
+				return
+			map_file = self.current.files[map_id]
+
+			self.hide()
+			self.current = self.widgets['loadingscreen']
+			center_widget(self.current)
+
+			horizons.main.start_singleplayer(map_file)
+
 
 
 def center_widget(widget):

@@ -31,6 +31,17 @@ class Callback(object):
 		self.args = args
 		self.kwargs = kwargs
 
+	@staticmethod
+	def ChainedCallbacks(*args):
+		"""Named constructor for callbacks executed in a row.
+		Use Callback objects to pass arguments to the callbacks.
+		@param args: callables"""
+		callbacks = [ Callback(i) for i in args ]
+		def tmp():
+			for i in callbacks:
+				i()
+		return Callback(tmp)
+
 	def __call__(self):
 		self.callback(*self.args, **self.kwargs)
 
