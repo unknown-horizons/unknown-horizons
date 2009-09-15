@@ -21,12 +21,27 @@
 
 import horizons.main
 
+from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
+from horizons.ext.enum import Enum
 from horizons.constants import RES
 
+class Notification(object):
+	"""Generic notification for the player. Necessary for ai, might result in nothing
+	for human players"""
+	# non exhausting list of possible message types
+	TYPES = Enum('UNIT_PATH_BLOCKED', 'SETTLER_REACHED_LEVEL')
 
-class Player(WorldObject):
+	def __init__(self, type, object=None, *args, **kwargs):
+		"""
+		@param type: message type (see TYPES)
+		@param object: corresponding object, if any
+		@param args, kwargs: additional arguments
+		"""
+		self.type, self.object, self.args, self.kwargs = type, object, args, kwargs
+
+class Player(WorldObject, StorageHolder):
 	"""Class representing a player"""
 
 	def __init__(self, id, name, color):

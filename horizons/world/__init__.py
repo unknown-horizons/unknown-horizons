@@ -49,7 +49,7 @@ class World(LivingObject):
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
-	def __init__(self, **kwargs):
+	def __init__(self):
 		"""
 		"""
 		self.inited = False
@@ -70,22 +70,32 @@ class World(LivingObject):
 	def _init(self, db):
 		#load properties
 		self.properties = {}
-		for (name, value) in db("select name, value from map_properties"):
+		for (name, value) in db("SELECT name, value FROM map_properties"):
 			self.properties[name] = value
 
 		# create playerlist
 		self.players = []
-		self.player = None
+		self.player = None # player sitting in front of this machine
 		self.trader = None
 
 		# load player
 		human_players = []
 		for player_id, client_id in db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
-			player = Player.load(db, player_id)
+			player = None
+			ai_data = horizons.main.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
+			if len(ai_data) > 0:
+				# import ai class and call load on it
+				module = __import__('horizons.ai.'+ai_data[0][0], fromlist=[ai_data[0][1]])
+				ai_class = getattr(module, ai_data[0][1])
+				player = ai_class.load(db ,player_id)
+			else: # no ai
+				player = Player.load(db, player_id)
 			self.players.append(player)
+
 			if client_id == horizons.main.settings.client_id:
 				self.player = player
-			elif client_id is not None:
+			elif client_id is not None and len(ai_data) == 0:
+				# possible human player candidate with different client id
 				human_players.append(player)
 
 		if self.player is None:
@@ -191,16 +201,15 @@ class World(LivingObject):
 		self.trader = Trader(99999, "Free Trader", Color())
 		ret_coords = None
 		for player in self.players:
-			#print "Adding ships for the players..."
+			# Adding ships for the players
 			point = self.get_random_possible_ship_position()
-			ship = Entities().units[UNITS.PLAYER_SHIP_CLASS](x=point.x, y=point.y, owner=player)
+			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y).execute()
 			# give ship basic resources
 			ship.inventory.alter(RES.BOARDS_ID,30)
 			ship.inventory.alter(RES.FOOD_ID,30)
 			ship.inventory.alter(RES.TOOLS_ID,30)
 			if player is self.player:
 				ret_coords = (point.x,point.y)
-			#print "Done"
 		# Fire a message for new world creation
 		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, \
 		                                                    'NEW_WORLD')

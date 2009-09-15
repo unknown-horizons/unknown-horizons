@@ -143,8 +143,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 																									 WHERE level = ?", self.level+1)[0][0]
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
-			upgrade_material_production = SingleUseProduction(self.inventory, upgrade_material_prodline,
-																							callback = self.level_up)
+			upgrade_material_production = SingleUseProduction(self.inventory, \
+			                                   upgrade_material_prodline, callback = self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
 				self.inventory.add_resource_slot(res, abs(amount))

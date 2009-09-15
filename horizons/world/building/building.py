@@ -126,6 +126,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			# workaround: island can't be fetched from world, because it isn't fully constructed
 			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
 			island = WorldObject.get_object_by_id(island_id)
+			# settlement might not have been registered in island, so do it if getter fails
 			settlement = island.get_settlement(self.position.center()) or \
 					island.add_existing_settlement(self.position, self.radius, location_obj)
 		else: # loc is island

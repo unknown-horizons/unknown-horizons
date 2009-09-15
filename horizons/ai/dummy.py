@@ -19,4 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-all = ['trader', 'dummy']
+import logging
+
+import horizons.main
+
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util import Point, Callback, WorldObject
+from horizons.constants import RES, UNITS
+from horizons.ext.enum import Enum
+from horizons.world.player import Player
+from horizons.world.storageholder import StorageHolder
+from horizons.world.units.movingobject import MoveNotPossible
+
+
+class DummyAI(Player, StorageHolder):
+	"""A player that does predefined actions to make sure, that the game code supports
+	AI. It is just for developing and testing."""
