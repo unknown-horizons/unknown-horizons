@@ -25,6 +25,7 @@ from horizons.util import WeakList
 from storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
+from horizons.constants import PRODUCTION_STATES
 
 
 class ResourceHandler(StorageHolder):
@@ -90,6 +91,14 @@ class ResourceHandler(StorageHolder):
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
 		return [res for res in self.get_provided_resources() if self.inventory[res] > 0]
+
+	def get_currently_consumed_resources(self):
+		"""Returns a list of resources, that are currently consumed in a production."""
+		consumed_res = set()
+		for production in self._productions.itervalues():
+			if production.get_state() == PRODUCTION_STATES.producing:
+				consumed_res.update(production.get_consumed_resources().iterkeys())
+		return list(consumed_res)
 
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
