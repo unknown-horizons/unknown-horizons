@@ -105,7 +105,7 @@ class BuildableSingle(object):
 		"""Checks if buildings are blocking the position, and wether they can be teared.
 		Returns {'buildable': False} if we can't build, {} if we can build without tearing,
 		or {'tear': [building1id, ...]} if we have to tear building1, ... before the build"""
-		tear = []
+		tear = set()
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			obj = island.get_tile(p).object
@@ -113,10 +113,10 @@ class BuildableSingle(object):
 				if obj.buildable_upon:
 					if obj.__class__ is cls:
 						return None
-					tear.append(obj.getId())
+					tear.add(obj.getId())
 				else:
 					return {'buildable' : False}
-		return {} if len(tear) == 0 else {'tear' : tear}
+		return {} if len(tear) == 0 else {'tear' : list(tear)}
 
 	@classmethod
 	def is_unit_build_requirement_satisfied(cls, x, y, island, **state):

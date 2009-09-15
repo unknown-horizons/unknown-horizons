@@ -41,7 +41,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
 	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
-	object_type = 0
+	is_building = True
 
 	log = logging.getLogger("world.building")
 

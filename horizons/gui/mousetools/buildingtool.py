@@ -107,7 +107,7 @@ class BuildingTool(NavigationTool):
 							  "rotate_right": self.rotate_right }
 							)
 		self.gui.stylize('menu_black')
-		headline = self.gui.findChild(name='headline').stylize('headline')
+		self.gui.findChild(name='headline').stylize('headline')
 		# set building name in gui
 		name_label = self.gui.findChild(name='building_name')
 		name_label.stylize('headline')

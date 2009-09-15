@@ -35,6 +35,8 @@ class ConcretObject(WorldObject):
 	"""
 	movable = False # whether instance can move
 	tabs = [] # iterable collection of classes of tabs to show when selected
+	is_unit = False
+	is_building = False
 
 	def __init__(self, **kwargs):
 		super(ConcretObject, self).__init__(**kwargs)

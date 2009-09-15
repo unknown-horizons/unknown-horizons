@@ -21,8 +21,6 @@
 
 import fife
 
-import horizons.main
-
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from navigationtool import NavigationTool
@@ -69,8 +67,8 @@ class SelectionTool(NavigationTool):
 					selectable.append(instance)
 			if len(selectable) > 1:
 				if do_multi:
-					for instance in selectable[:]:
-						if isinstance(instance.__class__, horizons.world.building.BuildingClass):
+					for instance in selectable[:]: # iterate through copy for safe removal
+						if instance.is_building:
 							selectable.remove(instance)
 				else:
 					selectable = [selectable.pop(0)]

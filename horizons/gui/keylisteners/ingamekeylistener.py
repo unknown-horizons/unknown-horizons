@@ -28,10 +28,10 @@ from horizons.gui.mousetools import BuildingTool
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
-	def __init__(self, gui):
+	def __init__(self, session):
 		super(IngameKeyListener, self).__init__()
+		self.session = session
 		horizons.main.fife.eventmanager.addKeyListener(self)
-		self.gui = gui
 		self.keysPressed = []
 
 	def end(self):
@@ -46,52 +46,52 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		if not was:
 			self.keysPressed.append(keyval)
 		if keyval == fife.Key.LEFT:
-			if not was: horizons.main.session.view.autoscroll(-25, 0)
+			if not was: self.session.view.autoscroll(-25, 0)
 		elif keyval == fife.Key.RIGHT:
-			if not was: horizons.main.session.view.autoscroll(25, 0)
+			if not was: self.session.view.autoscroll(25, 0)
 		elif keyval == fife.Key.UP:
-			if not was: horizons.main.session.view.autoscroll(0, -25)
+			if not was: self.session.view.autoscroll(0, -25)
 		elif keyval == fife.Key.DOWN:
-			if not was: horizons.main.session.view.autoscroll(0, 25)
+			if not was: self.session.view.autoscroll(0, 25)
 		elif keystr == 'g':
 			# toggle gridrenderer
-			horizons.main.session.view.renderer['GridRenderer'].setEnabled( \
-			  not horizons.main.session.view.renderer['GridRenderer'].isEnabled())
+			self.session.view.renderer['GridRenderer'].setEnabled( \
+			  not self.session.view.renderer['GridRenderer'].isEnabled())
 		elif keystr == 'x':
-			horizons.main.session.destroy_tool()
+			self.session.destroy_tool()
 		elif keystr == '+':
-			horizons.main.session.speed_up()
+			self.session.speed_up()
 		elif keystr == '-':
-			horizons.main.session.speed_down()
+			self.session.speed_down()
 		elif keystr == 'p':
-			self.gui.toggle_ingame_pause()
+			self.session.gui.toggle_ingame_pause()
 		elif keystr == 'd':
 			import pdb; pdb.set_trace()
 		elif keystr == 'b':
-			horizons.main.session.ingame_gui.show_build_menu()
+			self.session.ingame_gui.show_build_menu()
 		elif keystr == '.':
-			if isinstance(horizons.main.session.cursor, BuildingTool):
-				horizons.main.session.cursor.rotate_right()
+			if isinstance(self.session.cursor, BuildingTool):
+				self.session.cursor.rotate_right()
 		elif keystr == ',':
-			if isinstance(horizons.main.session.cursor, BuildingTool):
-				horizons.main.session.cursor.rotate_left()
+			if isinstance(self.session.cursor, BuildingTool):
+				self.session.cursor.rotate_left()
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
 			if evt.isControlPressed():
-				horizons.main.session.selection_groups[num] = horizons.main.session.selected_instances.copy()
-				for group in horizons.main.session.selection_groups:
-					if group is not horizons.main.session.selection_groups[num]:
-						group -= horizons.main.session.selection_groups[num]
+				self.session.selection_groups[num] = self.session.selected_instances.copy()
+				for group in self.session.selection_groups:
+					if group is not self.session.selection_groups[num]:
+						group -= self.session.selection_groups[num]
 			else:
-				for instance in horizons.main.session.selected_instances - horizons.main.session.selection_groups[num]:
+				for instance in self.session.selected_instances - self.session.selection_groups[num]:
 					instance.deselect()
-				for instance in horizons.main.session.selection_groups[num] - horizons.main.session.selected_instances:
+				for instance in self.session.selection_groups[num] - self.session.selected_instances:
 					instance.select()
-				horizons.main.session.selected_instances = horizons.main.session.selection_groups[num]
+				self.session.selected_instances = self.session.selection_groups[num]
 		elif keyval == fife.Key.F5:
-			horizons.main.session.quicksave()
+			self.session.quicksave()
 		elif keyval == fife.Key.F9:
-			horizons.main.session.quickload()
+			self.session.quickload()
 		else:
 			return
 		evt.consume()
@@ -103,10 +103,10 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		except:
 			return
 		if keyval == fife.Key.LEFT:
-			horizons.main.session.view.autoscroll(25, 0)
+			self.session.view.autoscroll(25, 0)
 		elif keyval == fife.Key.RIGHT:
-			horizons.main.session.view.autoscroll(-25, 0)
+			self.session.view.autoscroll(-25, 0)
 		elif keyval == fife.Key.UP:
-			horizons.main.session.view.autoscroll(0, 25)
+			self.session.view.autoscroll(0, 25)
 		elif keyval == fife.Key.DOWN:
-			horizons.main.session.view.autoscroll(0, -25)
+			self.session.view.autoscroll(0, -25)

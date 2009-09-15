@@ -31,8 +31,7 @@ from horizons.constants import LAYERS
 
 class Unit(MovingObject):
 	log = logging.getLogger("world.units")
-
-	object_type = 1
+	is_unit = True
 
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)

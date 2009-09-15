@@ -247,7 +247,6 @@ class ResourceHandler(StorageHolder):
 		return tmp
 
 
-
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as branch offices.
 	Provides all tradeable resources."""
@@ -266,5 +265,5 @@ class StorageResourceHandler(ResourceHandler):
 		self.__init()
 
 	def get_consumed_resources(self):
-		"""We collect everything we also provide"""
+		"""We collect everything we provide"""
 		return self.provided_resources

@@ -126,9 +126,7 @@ class Minimap(object):
 		if not self.location.contains(abs_mouse_position):
 			# mouse click was on icon but not acctually on minimap
 			return
-		print 'abs mouse', abs_mouse_position
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position.to_tuple())
-		print 'map_coord', map_coord
 		self.session.view.center(*map_coord)
 
 	def _recalculate(self, where = None):

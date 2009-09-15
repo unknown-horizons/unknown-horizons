@@ -255,7 +255,6 @@ class Island(WorldObject):
 		if building.settlement is not None:
 			building.settlement.buildings.append(building)
 		building.init()
-		#print "New building created at (%i:%i) for player '%s' and settlement '%s'" % (x, y, player.name, building.settlement.name)
 		return building
 
 	def remove_building(self, building):
