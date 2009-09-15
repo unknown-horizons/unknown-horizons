@@ -46,10 +46,10 @@ def load_xml_translated(filename):
 	in guitranslations.py"""
 	global translated_widgets
 	try:
-		untranslated = horizons.main.fife.pychan.loadXML('content/gui/%s' % filename)
+		untranslated = pychan.loadXML('content/gui/%s' % filename)
 	except (IOError, ValueError), e:
 		print 'PLEASE REPORT: invalid path %s in translation!', e
-		untranslated = horizons.main.fife.pychan.loadXML(filename)
+		untranslated = pychan.loadXML(filename)
 
 
 	if filename in guitranslations.text_translations:

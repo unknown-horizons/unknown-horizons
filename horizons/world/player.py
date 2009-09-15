@@ -24,50 +24,37 @@ import horizons.main
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
-from horizons.ext.enum import Enum
-from horizons.constants import RES
 
-class Notification(object):
-	"""Generic notification for the player. Necessary for ai, might result in nothing
-	for human players"""
-	# non exhausting list of possible message types
-	TYPES = Enum('UNIT_PATH_BLOCKED', 'SETTLER_REACHED_LEVEL')
-
-	def __init__(self, type, object=None, *args, **kwargs):
-		"""
-		@param type: message type (see TYPES)
-		@param object: corresponding object, if any
-		@param args, kwargs: additional arguments
-		"""
-		self.type, self.object, self.args, self.kwargs = type, object, args, kwargs
-
-class Player(WorldObject, StorageHolder):
+class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
 
-	def __init__(self, id, name, color):
+	def __init__(self, id, name, color, inventory = {}):
 		"""
 		@param id: unique player id
 		@param name: user-chosen name
 		@param color: color of player (as Color)
+		@param inventory: {res: value} that are put in the players inventory
 		"""
-		self._init(id, name, color)
+		super(Player, self).__init__()
+		self.__init(id, name, color)
 
-		# give a new player 20k coins
-		self.inventory.alter(RES.GOLD_ID, 20000)
+		for res, value in inventory.iteritems():
+			self.inventory.alter(res, value)
 
-	def _init(self, id, name, color, settlerlevel = 0):
+	def __init(self, id, name, color, settlerlevel = 0):
+		assert isinstance(color, Color)
+		assert isinstance(name, str) and len(name) > 0
 		self.id = id
 		self.name = name
 		self.color = color
 		self.settler_level = settlerlevel
 		assert hasattr(self.color, "id"), "Player color has to be a default color"
 
-		self.setup_inventory()
-
-	def setup_inventory(self):
+	def create_inventory(self):
 		self.inventory = PositiveStorage()
 
 	def save(self, db):
+		super(Player, self).save(db)
 		client_id = None if self is not horizons.main.session.world.player \
 							else horizons.main.settings.client_id
 		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", \
@@ -86,7 +73,7 @@ class Player(WorldObject, StorageHolder):
 		super(Player, self).load(db, worldid)
 
 		color, name = db("SELECT color, name FROM player WHERE rowid = ?", worldid)[0]
-		self._init(worldid, name, Color[color])
+		self.__init(worldid, name, Color[color])
 
 		self.inventory.load(db, worldid)
 

@@ -37,7 +37,7 @@ from manager import SPManager
 from view import View
 from world import World
 from entities import Entities
-from util import WorldObject, LivingObject, livingProperty, DbReader
+from util import WorldObject, LivingObject, livingProperty, DbReader, Color
 from horizons.savegamemanager import SavegameManager
 
 
@@ -216,11 +216,11 @@ class Session(LivingObject):
 		self.manager.recording = False
 		horizons.main.db("DETACH demo")
 
-	def load(self, savegame, playername = "", playercolor = None):
+	def load(self, savegame, playername = "Default Player", playercolor = Color()):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
-		@param playername: string with the playername
-		@param playercolor: horizons.util.color instance with the player's color
+		@param playername: string with the playername (None if no player is to be created)
+		@param playercolor: Color instance, player's color or None
 		"""
 		self.log.debug("Session: Loading from %s", savegame)
 		db = DbReader(savegame) # Initialize new dbreader

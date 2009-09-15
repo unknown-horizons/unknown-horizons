@@ -42,7 +42,6 @@ class Ship(NamedObject, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-		print "Creating new ship at:", x, y
 		self.setup_inventory()
 
 		horizons.main.session.world.ships.append(self)

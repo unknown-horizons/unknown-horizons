@@ -262,7 +262,7 @@ class World(LivingObject):
 
 	def setup_player(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""
-		self.player =  Player(0, name, color)
+		self.player =  Player(0, name, color, inventory={RES.GOLD_ID: 20000})
 		self.players.append(self.player)
 		horizons.main.session.ingame_gui.update_gold()
 		self.player.inventory.add_change_listener(horizons.main.session.ingame_gui.update_gold)

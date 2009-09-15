@@ -26,7 +26,6 @@ import pychan
 
 import horizons.main
 
-from horizons.util.color import Color
 from horizons.savegamemanager import SavegameManager
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
@@ -34,7 +33,7 @@ from horizons.network import ServerConnection, ClientConnection
 from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
-from horizons.util import Callback
+from horizons.util import Callback, Color
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""
@@ -117,7 +116,7 @@ class Gui(object):
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
 			def _escape():
-				horizons.main.fife.pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
+				pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 				dlg.hide()
 			tmp_escape = self.on_escape
 			self.on_escape = _escape
@@ -175,8 +174,8 @@ class Gui(object):
 		})
 
 		dlg.mapEvents({
-			'volume_music' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_music_value'), dlg.findChild(name='volume_music')),
-			'volume_effects' : horizons.main.fife.pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_effects_value'), dlg.findChild(name='volume_effects'))
+			'volume_music' : pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_music_value'), dlg.findChild(name='volume_music')),
+			'volume_effects' : pychan.tools.callbackWithArguments(self.set_volume, dlg.findChild(name='volume_effects_value'), dlg.findChild(name='volume_effects'))
 		})
 
 		# Save old music volumes in case the user presses cancel
@@ -391,10 +390,10 @@ class Gui(object):
 		@param serverType:
 		"""
 		self.current.mapEvents({
-			'refresh'       : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, serverType),
-			'showLAN'       : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'lan') if serverType != 'lan' else lambda : None,
-			'showInternet'  : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'internet') if serverType != 'internet' else lambda : None,
-			'showFavorites' : horizons.main.fife.pychan.tools.callbackWithArguments(self.list_servers, 'favorites') if serverType != 'favorites' else lambda : None
+			'refresh'       : pychan.tools.callbackWithArguments(self.list_servers, serverType),
+			'showLAN'       : pychan.tools.callbackWithArguments(self.list_servers, 'lan') if serverType != 'lan' else lambda : None,
+			'showInternet'  : pychan.tools.callbackWithArguments(self.list_servers, 'internet') if serverType != 'internet' else lambda : None,
+			'showFavorites' : pychan.tools.callbackWithArguments(self.list_servers, 'favorites') if serverType != 'favorites' else lambda : None
 		})
 		self.current.distributeData({
 			'showLAN'       : serverType == 'lan',
@@ -656,22 +655,19 @@ class Gui(object):
 		@param showCampaign: Bool if  campaigngame menu is to be shown.
 		"""
 		self.hide() # Hide old gui
-		self.widgets['singleplayermenu'] = load_xml_translated('singleplayermenu.xml') # reload because parts are being removed on each show
-		self.widgets['singleplayermenu'].stylize('book')
-		self.widgets['singleplayermenu'].findChild(name='headline').stylize('headline')
-		self.current = self.widgets['singleplayermenu']
-		center_widget(self.current)
+		if 'singleplayermenu' in self.widgets:
+			del self.widgets['singleplayermenu'] # reload because parts are being removed on each show
+		self.__switch_current_widget('singleplayermenu', center=True)
 		eventMap = {
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
 		}
 		if showRandom:
 			self.current.removeChild(self.current.findChild(name="load"))
-			eventMap['showCampaign'] = horizons.main.fife.pychan.tools.callbackWithArguments(self.show_single, False, True)
+			eventMap['showCampaign'] = pychan.tools.callbackWithArguments(self.show_single, False, True)
 			self.current.distributeInitialData({ 'playercolor' : [ i.name for i in Color ] })
 			self.current.distributeData({ 'playercolor' : 0 })
 		else:
-			self.current.findChild(name="random").parent.removeChild(self.current.findChild(name="random"))
 			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
 
 			# get the map files and their display names
@@ -682,14 +678,19 @@ class Gui(object):
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({
-					'maplist' : 0
+					'maplist' : 0,
 				})
 				eventMap["maplist"] = Gui._create_show_savegame_details(self.current, self.current.files, 'maplist')
 		self.current.mapEvents(eventMap)
 
+		self.current.distributeInitialData({
+		  'playercolor' : [ color.name for color in Color ],
+		  })
 		self.current.distributeData({
 			'showRandom' : showRandom,
 			'showCampaign' : showCampaign,
+		  'playername': _("Unknown Player"),
+		  'playercolor': 0
 		})
 
 		self.current.show()
@@ -697,15 +698,18 @@ class Gui(object):
 
 	def start_single(self):
 		""" Starts a single player horizons. """
+		assert self.current is self.widgets['singleplayermenu']
 		showRandom = self.current.collectData('showRandom')
 		showCampaign = self.current.collectData('showCampaign')
 
+		game_data = {}
+		game_data['playername'] = self.current.collectData('playername')
+		if len(game_data['playername']) == 0:
+			self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
+			return
+		game_data['playercolor'] = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
+
 		if showRandom:
-			playername = self.current.collectData('playername')
-			if len(playername) == 0:
-				self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
-				return
-			#playercolor = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
 			self.show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
 			return
 		else:
@@ -718,7 +722,7 @@ class Gui(object):
 			self.current = self.widgets['loadingscreen']
 			center_widget(self.current)
 
-			horizons.main.start_singleplayer(map_file)
+			horizons.main.start_singleplayer(map_file, game_data)
 
 
 def center_widget(widget):

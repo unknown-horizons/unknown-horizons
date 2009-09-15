@@ -85,11 +85,11 @@ class BuySellTab(TabInterface):
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.show_resource_menu, num))
+			slot.findChild(name='button').capture(pychan.tools.callbackWithArguments(self.show_resource_menu, num))
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
-			slot.findChild(name="buysell").capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.toggle_buysell, num))
+			slot.findChild(name="buysell").capture(pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			content.addChild(slot)
 		self.widget.adaptLayout()
 
@@ -133,7 +133,7 @@ class BuySellTab(TabInterface):
 			button.up_image, button.down_image, = (horizons.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
 			button.hover_image = horizons.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
-			slider.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
+			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
 		slot.adaptLayout()
 
@@ -211,7 +211,7 @@ class BuySellTab(TabInterface):
 				continue # don't show resources that are already in the list
 			button = pychan.widgets.ImageButton(size=(50, 50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			button.capture(horizons.main.fife.pychan.tools.callbackWithArguments(self.add_resource, res_id, slot_id))
+			button.capture(pychan.tools.callbackWithArguments(self.add_resource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:
 				vbox.addChild(current_hbox)

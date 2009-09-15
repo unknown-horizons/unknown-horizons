@@ -85,5 +85,8 @@ class Color(object):
 		"""Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""
 		return (self.r, self.g, self.b)
 
+	def __str__(self):
+		return 'Color'+str(self.to_tuple())
+
 from horizons.util.encoder import register_classes
 register_classes(Color)

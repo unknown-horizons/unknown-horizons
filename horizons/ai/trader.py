@@ -34,7 +34,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.units.movingobject import MoveNotPossible
 
 
-class Trader(Player, StorageHolder):
+class Trader(Player):
 	"""A trader represents the free trader that travels around the map with his trading ship(s) and
 	sells resources to players and buys resources from them. This is a very simple form of AI, as it
 	doesn't do any more then drive to a place on water or a branchoffice randomly and then buys and
@@ -56,7 +56,8 @@ class Trader(Player, StorageHolder):
 	_res_values = {} # stores money value of resources. Use only get_res_value() for access
 
 	def __init__(self, id, name, color, **kwargs):
-		self._init(id, name, color)
+		super(Trader, self).__init__(id, name, color, **kwargs)
+		self.__init()
 
 		# create a ship and place it randomly (temporary hack)
 		point = horizons.main.session.world.get_random_possible_ship_position()
@@ -64,8 +65,7 @@ class Trader(Player, StorageHolder):
 		           (point.x, point.y, owner=self)] = self.shipStates.reached_branch
 		Scheduler().add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
 
-	def _init(self, ident, name, color):
-		super(Trader, self)._init(id=ident, name=name, color=color)
+	def __init(self):
 		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
 		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
 
@@ -105,6 +105,7 @@ class Trader(Player, StorageHolder):
 
 	def _load(self, db, worldid):
 		super(Trader, self)._load(db, worldid)
+		self.__init()
 
 	def load_ship_states(self, db):
 		# load ships one by one from db (ship instances themselves are loaded already, but

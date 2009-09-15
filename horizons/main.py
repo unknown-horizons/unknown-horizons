@@ -116,8 +116,10 @@ def quit():
 	global fife
 	fife.quit()
 
-def start_singleplayer(map_file):
-	"""Starts a singleplayer game"""
+def start_singleplayer(map_file, game_data={}):
+	"""Starts a singleplayer game
+	@param map_file: path to map file
+	@param game_data: dict, contains data about the game (playername, etc.)"""
 	global session, fife, preloading, db
 	_modules.gui.show()
 
@@ -142,7 +144,10 @@ def start_singleplayer(map_file):
 	from session import Session
 	session = Session(_modules.gui, db)
 	session.init_session()
-	session.load(map_file, 'Arthur', Color()) # temp fix to display gold
+	if ('playername' in game_data) and ('playercolor' in game_data):
+		session.load(map_file, playername, playercolor)
+	else:
+		session.load(map_file)
 
 def start_multi():
 	"""Starts a multiplayer game server (dummy)
