@@ -309,5 +309,5 @@ class Island(WorldObject):
 																																				y = point.y)
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
-		# so do nothing here.
+		# so do nothing in this case.
 

@@ -59,7 +59,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
-		self._instance = self.getInstance(origin.x, origin.y, rotation = rotation) if instance is None else instance
+		self._instance = self.getInstance(origin.x, origin.y, rotation = rotation) if \
+		    instance is None else instance
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0: # Get payout every 30 seconds

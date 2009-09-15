@@ -155,6 +155,8 @@ class BuildingTool(NavigationTool):
 		settlement = None
 		for building in self.buildings:
 			settlement = building.get('settlement', None) if settlement is None else settlement
+			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
+			                                                        building['x'], building['y'])
 			building['instance'] = self._class.getInstance(**building)
 			resources = self._class.get_build_costs(**building)
 			if not building.get('buildable', True):
