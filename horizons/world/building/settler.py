@@ -42,7 +42,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	production_class = SettlerProduction
 
-	tabs = (SettlerOverviewTab, InventoryTab)
+	tabs = (SettlerOverviewTab,)
 
 	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
