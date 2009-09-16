@@ -182,11 +182,11 @@ class World(LivingObject):
 
 		@return: Returs the coordinates of the players first ship
 		"""
+		from horizons.command.building import Build
+		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			#print "Adding trees and animals to the world..."
-			from horizons.command.building import Build
-			from horizons.command.unit import CreateUnit
 			tree = Entities().buildings[BUILDINGS.TREE_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
