@@ -26,10 +26,10 @@ class BuildTab(TabInterface):
 		super(BuildTab, self).__init__(widget = 'build_menu/hud_build_tab' + str(tabindex) + '.xml')
 		self.init_values()
 		self.widget.mapEvents(events)
-		self.button_up_image = 'content/gui/images/icons/hud/common/level1_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/level1_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/level1_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/level1_h.png'
+		self.button_up_image = 'content/gui/images/icons/hud/common/level%s_u.png' % tabindex
+		self.button_active_image = 'content/gui/images/icons/hud/common/level%s_a.png' % tabindex
+		self.button_down_image = 'content/gui/images/icons/hud/common/level%s_d.png' % tabindex
+		self.button_hover_image = 'content/gui/images/icons/hud/common/level%s_h.png' % tabindex
 		self.tooltip = u"Level I"
 
 	def refresh(self):
