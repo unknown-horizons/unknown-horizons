@@ -40,6 +40,7 @@ import os
 import os.path
 import random
 import threading
+import thread # for thread.error raised by threading.Lock.release
 
 import fife as fife_module
 
@@ -130,7 +131,11 @@ def start_singleplayer(map_file, game_data={}):
 		preloading[0].join()
 		assert not preloading[0].isAlive()
 	else:
-		preloading[1].release()
+		try:
+			preloading[1].release()
+		except thread.error:
+			pass # due to timing issues, the lock might be released already
+
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
