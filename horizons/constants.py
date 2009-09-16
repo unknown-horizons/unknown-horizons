@@ -75,6 +75,7 @@ class PATHS:
 ## to most important
 PRODUCTION_STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing', 'paused', 'done')
 # NOTE: 'done' is only for SingleUseProductions
+# NOTE: 'none' is not used by an acctual production, just for a producer
 
 
 ## GAME-RELATED, BALANCING VALUES

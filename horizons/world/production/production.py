@@ -167,7 +167,7 @@ class Production(WorldObject):
 				Scheduler().add_new_object(self._finished_producing, self, \
 					 self._pause_remaining_ticks)
 			else:
-				assert False
+				assert False, 'Unhandled production state: %s' % self._pause_old_state
 
 			# switch state
 			self._state = self._pause_old_state
@@ -184,7 +184,7 @@ class Production(WorldObject):
 						Scheduler().get_remaining_ticks(self, self._finished_producing)
 				Scheduler().rem_call(self, self._finished_producing)
 			else:
-				assert False
+				assert False, 'Unhandled production state: %s' % self._state
 
 			# switch state
 			self._pause_old_state = self._state
