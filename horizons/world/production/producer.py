@@ -114,7 +114,6 @@ class QueueProducer(Producer):
 	production_class = SingleUseProduction
 
 	def __init__(self, **kwargs):
-		#ResourceHandler.__init__(self, **kwargs)
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
 		self.production_queue = []
 

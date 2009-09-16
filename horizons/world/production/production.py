@@ -158,7 +158,8 @@ class Production(WorldObject):
 	def pause(self, pause = True):
 		self.log.debug("Production pause: %s", pause)
 		if not pause: # do unpause
-			if self._pause_old_state == PRODUCTION_STATES.waiting_for_res:
+			if self._pause_old_state in (PRODUCTION_STATES.waiting_for_res, \
+			                             PRODUCTION_STATES.inventory_full):
 				# just restore watching
 				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			elif self._pause_old_state == PRODUCTION_STATES.producing:
@@ -173,7 +174,8 @@ class Production(WorldObject):
 			self._pause_old_state = None
 
 		else: # do pause
-			if self._state == PRODUCTION_STATES.waiting_for_res:
+			if self._state in (PRODUCTION_STATES.waiting_for_res, \
+			                   self._state == PRODUCTION_STATES.inventory_full):
 				# just stop watching for new res
 				self.inventory.remove_change_listener(self._check_inventory)
 			elif self._state == PRODUCTION_STATES.producing:

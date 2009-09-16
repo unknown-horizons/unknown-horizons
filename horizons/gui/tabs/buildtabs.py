@@ -31,7 +31,7 @@ class BuildTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/level%s_a.png' % tabindex
 		self.button_down_image = 'content/gui/images/icons/hud/common/level%s_d.png' % tabindex
 		self.button_hover_image = 'content/gui/images/icons/hud/common/level%s_h.png' % tabindex
-		self.tooltip = u"Level %s" % int_to_roman(tabindex+1)
+		self.tooltip = unicode(_("Level")+" "+int_to_roman(tabindex+1))
 
 	def refresh(self):
 		pass
