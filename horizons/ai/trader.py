@@ -27,7 +27,7 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject
-from horizons.constants import RES, UNITS
+from horizons.constants import RES, UNITS, BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
@@ -63,11 +63,12 @@ class Trader(Player):
 		point = horizons.main.session.world.get_random_possible_ship_position()
 		self.ships[Entities.units[UNITS.TRADER_SHIP_CLASS] \
 		           (point.x, point.y, owner=self)] = self.shipStates.reached_branch
-		Scheduler().add_new_object(lambda: self.send_ship_random(self.ships.keys()[0]), self)
+		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
 
 	def __init(self):
 		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
 		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
+		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
 
 	def save(self, db):
 		super(Trader, self).save(db)
@@ -118,9 +119,9 @@ class Trader(Player):
 			self.ships[ship] = state
 
 			if state == self.shipStates.moving_random:
-				ship.add_move_callback(lambda: self.ship_idle(ship))
+				ship.add_move_callback(Callback(self.ship_idle, ship))
 			elif state == self.shipStates.moving_to_branch:
-				ship.add_move_callback(lambda: self.reached_branch(ship))
+				ship.add_move_callback(Callback(self.reached_branch, ship))
 				assert targeted_branch is not None
 				self.office[ship.id] = WorldObject.get_object_by_id(targeted_branch)
 			elif state == self.shipStates.reached_branch:
@@ -136,16 +137,49 @@ class Trader(Player):
 		point = horizons.main.session.world.get_random_possible_ship_position()
 		# move ship there:
 		try:
-			move_possible = ship.move(point, lambda: self.ship_idle(ship))
+			ship.move(point, Callback(self.ship_idle, ship))
 		except MoveNotPossible:
+			# select new target soon:
 			self.notify_unit_path_blocked(ship)
 			return
+		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship), \
+		                              callback=Callback(self._ship_found_signal_fire, ship))
 		self.ships[ship] = self.shipStates.moving_random
 
-	def send_ship_random_branch(self, ship):
+	def _check_for_signal_fire_in_ship_range(self, ship):
+		"""Returns the signal fire instance, if there is one in the ships range, else False"""
+		if ship in self.allured_by_signal_fire and self.allured_by_signal_fire[ship]:
+			return False # don't visit signal fire again
+		for tile in horizons.main.session.world.get_tiles_in_radius(ship.position, ship.radius):
+			try:
+				if tile.object.id == BUILDINGS.SIGNAL_FIRE_CLASS:
+					return tile.object
+			except AttributeError:
+				pass # tile has no object or object has no id
+		return False
+
+	def _ship_found_signal_fire(self, ship):
+		signal_fire = self._check_for_signal_fire_in_ship_range(ship)
+		self.log.debug("Trader %s found signal fire %s", ship.getId(), signal_fire)
+		# search a branch office in the range of the signal fire and move to it
+		branch_offices = horizons.main.session.world.get_branch_offices()
+		for bo in branch_offices:
+			if bo.position.distance(signal_fire.position) <= signal_fire.radius and \
+			   bo.owner == signal_fire.owner:
+				self.log.debug("Trader %s moving to bo %s", ship.getId(), bo)
+				self.allured_by_signal_fire[ship] = True
+				# HACK: remove allured flag in a few ticks
+				def rem_allured(self, ship): self.allured_by_signal_fire[ship] = False
+				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, 20*60*16)
+				self.send_ship_random_branch(ship, bo)
+				return
+		self.log.debug("Trader can't find bo in range of the signal fire")
+
+	def send_ship_random_branch(self, ship, branch_office=None):
 		"""Sends a ship to a random branch office on the map
-		@param ship: Ship instance that is to be used"""
-		self.log.debug("Trader %s: moving to random bo", self.getId())
+		@param ship: Ship instance that is to be used
+		@param branch_office: Branch Office instance to move to. Random one is selected on None."""
+		self.log.debug("Trader %s: moving to bo (random=%s)", self.getId(), (branch_office is None))
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		branchoffices = horizons.main.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
@@ -153,12 +187,15 @@ class Trader(Player):
 			self.send_ship_random(ship)
 		else:
 			# select a branch office
-			rand = random.randint(0, len(branchoffices)-1)
-			self.office[ship.id] = branchoffices[rand]
+			if branch_office is None:
+				rand = random.randint(0, len(branchoffices)-1)
+				self.office[ship.id] = branchoffices[rand]
+			else:
+				self.office[ship.id] = branch_office
 			for water in horizons.main.session.world.ground_map: # get a position near the branch office
 				if Point(water[0], water[1]).distance(self.office[ship.id].position) < 3:
 					try:
-						ship.move(Point(water[0], water[1]), lambda: self.reached_branch(ship))
+						ship.move(Point(water[0], water[1]), Callback(self.reached_branch, ship))
 					except MoveNotPossible:
 						self.notify_unit_path_blocked(ship)
 						return
@@ -214,10 +251,10 @@ class Trader(Player):
 		if random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
 			self.log.debug("Trader %s: idle, moving to random location", self.getId())
-			Scheduler().add_new_object(lambda: self.send_ship_random(ship), self)
+			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
 		else:
 			self.log.debug("Trader %s: idle, moving to random bo", self.getId())
-			Scheduler().add_new_object(lambda: self.send_ship_random_branch(ship), self)
+			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.debug("Trader %s: ship blocked", self.getId())

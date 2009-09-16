@@ -32,6 +32,7 @@ from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject, ActionSetLoader
 from horizons.constants import RES, LAYERS
 from horizons.command.building import Tear
+from horizons.world.building.buildable import BuildableSingle
 
 
 class BasicBuilding(AmbientSound, ConcretObject):
@@ -231,17 +232,29 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 
 class SelectableBuilding(object):
+	range_applies_only_on_island = True
+	selection_color = (255, 255, 255)
 	def select(self):
 		"""Runs necessary steps to select the building."""
 		renderer = horizons.main.session.view.renderer['InstanceRenderer']
-		renderer.addOutlined(self._instance, 255, 255, 255, 1)
-		for tile in self.island.grounds:
-			if tile.settlement == self.settlement and \
-				 self.position.distance(Point(tile.x, tile.y)) <= self.radius and \
-				 any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-				renderer.addColored(tile._instance, 255, 255, 255)
-				if tile.object is not None:
-					renderer.addColored(tile.object._instance, 255, 255, 255)
+		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
+		                     self.selection_color[2], 1)
+		if self.range_applies_only_on_island:
+			for tile in self.island.grounds:
+				if tile.settlement == self.settlement and \
+				   self.position.distance(Point(tile.x, tile.y)) <= self.radius and \
+				   any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
+					renderer.addColored(tile._instance, *self.selection_color)
+					if tile.object is not None:
+						renderer.addColored(tile.object._instance, *self.selection_color)
+		else:
+			# we have to color water too
+			for tile in horizons.main.session.world.get_tiles_in_radius(self.position.origin, self.radius):
+				if hasattr(tile, 'settlement') and tile.settlement != self.settlement:
+					continue # don't color enemy grounds
+				renderer.addColored(tile._instance, *self.selection_color)
+				if hasattr(tile, 'object') and tile.object is not None:
+					renderer.addColored(tile.object._instance, *self.selection_color)
 
 	def deselect(self):
 		"""Runs neccassary steps to deselect the building."""
@@ -252,3 +265,8 @@ class SelectableBuilding(object):
 	def remove(self):
 		super(SelectableBuilding, self).remove()
 		self.deselect()
+
+
+class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
+	"""Building with default properties, that does nothing."""
+	pass

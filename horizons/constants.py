@@ -31,9 +31,9 @@ class VERSION:
 	#RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
 	RELEASE_NAME    = _("Unknown Horizons Snapshot r%s")
 	RELEASE_VERSION = "2729"
+	@staticmethod
 	def string():
 		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
-	string = staticmethod(string)
 
 ## WORLD
 class UNITS:
@@ -45,6 +45,7 @@ class UNITS:
 class BUILDINGS:
 	SETTLER_RUIN_CLASS = 10
 	TREE_CLASS = 17
+	SIGNAL_FIRE_CLASS = 6
 
 class RES:
 	GOLD_ID   = 1

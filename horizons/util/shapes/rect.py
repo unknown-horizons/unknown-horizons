@@ -142,12 +142,19 @@ class Rect(object):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
 		return Point((self.right + self.left) // 2, (self.bottom + self.top) // 2)
 
+	def __contains__(self, point):
+		return self.contains(point)
+
 	def contains(self, point):
 		""" Returns if this rect (self) contains the point.
 		@param point: Point that is checked to be in this rect
 		@return: Returns whether the Point point is in this rect (self).
 		"""
 		return (self.left <= point.x <= self.right) and (self.top <= point.y <= self.bottom)
+
+	def contains_without_border(self, point):
+		"""Same as contains, see iter_without_border for difference"""
+		return (self.left <= point.x < self.right) and (self.top <= point.y < self.bottom)
 
 	def contains_tuple(self, tup):
 		"""Same as contains, but takes a tuple (x, y) as parameter (overloaded function)"""
@@ -198,6 +205,16 @@ class Rect(object):
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield x, y
+
+	def iter_without_border(self):
+		"""There are 2 points of view about what width means. You can eiter include the last
+		point's area, or just consider points itself without any extensions. This iter iterates over
+		the points witout extensions, default is the other in other methods."""
+		for x in xrange(self.left, self.right):
+			for y in xrange(self.top, self.bottom):
+				yield Point(x, y)
+
+
 
 
 from horizons.util.encoder import register_classes

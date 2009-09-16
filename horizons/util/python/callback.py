@@ -43,7 +43,7 @@ class Callback(object):
 		return Callback(tmp)
 
 	def __call__(self):
-		self.callback(*self.args, **self.kwargs)
+		return self.callback(*self.args, **self.kwargs)
 
 	def __eq__(self, other):
 		try:

@@ -258,7 +258,9 @@ class World(LivingObject):
 		"""
 		assert isinstance(position, Point)
 		for point in Circle(position, radius):
-			yield self.get_tile(point)
+			if self.map_dimensions.contains_without_border(point):
+				# don't yield if point is not in map, those points don't exist
+				yield self.get_tile(point)
 
 	def setup_player(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""
@@ -275,6 +277,8 @@ class World(LivingObject):
 		i = self.get_island(point)
 		if i is not None:
 			return i.get_tile(point)
+		if not (point.x, point.y) in self.ground_map:
+			print point
 		assert (point.x, point.y) in self.ground_map, 'ground must be in water'
 		return self.ground_map[(point.x, point.y)]()
 

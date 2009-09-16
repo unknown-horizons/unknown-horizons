@@ -29,3 +29,7 @@ class Housing(BasicBuilding, SelectableBuilding, BuildableSingle):
 
 	def load(self, db, worldid):
 		super(Housing, self).load(db, worldid)
+
+
+class SignalFire(Housing):
+	range_applies_only_on_island = False

@@ -72,6 +72,7 @@ class MovingObject(ConcretObject):
 		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", self.id)[0][0]
 
 		self.move_callbacks = WeakMethodList()
+		self._conditional_callbacks = {}
 
 		self.__is_moving = False
 
@@ -122,6 +123,7 @@ class MovingObject(ConcretObject):
 			raise MoveNotPossible
 
 		self.move_callbacks = WeakMethodList(callback)
+		self._conditional_callbacks = {}
 		self._setup_move(action)
 
 		# start moving by regular ticking (only if next tick isn't scheduled)
@@ -139,6 +141,7 @@ class MovingObject(ConcretObject):
 		self.log.debug("Unit %s: Moving back")
 		self.path.revert_path(destination_in_building)
 		self.move_callbacks = WeakMethodList(callback)
+		self._conditional_callbacks = {}
 		self._setup_move(action)
 		if not self.is_moving():
 			Scheduler().add_new_object(self._move_tick, self)
@@ -200,11 +203,25 @@ class MovingObject(ConcretObject):
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
+		# check if a conditional callback becomes true
+		for cond in self._conditional_callbacks.keys(): # iterate of copy of keys to be able to delete
+			if cond():
+				# start callback when this function is done
+				Scheduler().add_new_object(self._conditional_callbacks[cond], self)
+				del self._conditional_callbacks[cond]
+
 	def add_move_callback(self, callback):
 		"""Registers callback to be executed when movement of unit finishes.
 		This has no effect if the unit isn't moving."""
 		if self.is_moving():
 			self.move_callbacks.append(callback)
+
+	def add_conditional_callback(self, condition, callback):
+		"""Adds a callback, that gets called, if, at any time of the movement, the condition becomes
+		True. The condition is checked every move_tick. After calling the callback, it is removed."""
+		assert callable(condition)
+		assert callable(callback)
+		self._conditional_callbacks[condition] = callback
 
 	def get_unit_velocity(self):
 		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
