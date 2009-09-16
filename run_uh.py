@@ -120,9 +120,6 @@ def main():
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig('content/logging.conf')
-	gettext.install("unknownhorizons", "po", unicode=1)
-
-	create_user_dirs()
 
 	parser = get_option_parser()
 	(options, args) = parser.parse_args()

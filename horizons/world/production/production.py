@@ -175,7 +175,7 @@ class Production(WorldObject):
 
 		else: # do pause
 			if self._state in (PRODUCTION_STATES.waiting_for_res, \
-			                   self._state == PRODUCTION_STATES.inventory_full):
+			                   PRODUCTION_STATES.inventory_full):
 				# just stop watching for new res
 				self.inventory.remove_change_listener(self._check_inventory)
 			elif self._state == PRODUCTION_STATES.producing:
