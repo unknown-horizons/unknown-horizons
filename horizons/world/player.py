@@ -43,7 +43,7 @@ class Player(StorageHolder, WorldObject):
 
 	def __init(self, id, name, color, settlerlevel = 0):
 		assert isinstance(color, Color)
-		assert isinstance(name, str) and len(name) > 0
+		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
 		self.id = id
 		self.name = name
 		self.color = color

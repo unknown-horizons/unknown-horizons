@@ -145,7 +145,7 @@ def start_singleplayer(map_file, game_data={}):
 	session = Session(_modules.gui, db)
 	session.init_session()
 	if ('playername' in game_data) and ('playercolor' in game_data):
-		session.load(map_file, playername, playercolor)
+		session.load(map_file, game_data['playername'], game_data['playercolor'])
 	else:
 		session.load(map_file)
 
