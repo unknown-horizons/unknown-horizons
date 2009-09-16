@@ -106,7 +106,10 @@ class Minimap(object):
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
 		minimap_point = self._world_coord_to_minimap_coord(tup)
-		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], 1, 1)
+		world_to_minimap = self._get_world_to_minimap_ratio()
+		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
+		                                       int(round(1/world_to_minimap[0])), \
+		                                       int(round(1/world_to_minimap[1])))
 		self._recalculate(rect)
 
 	def use_overlay_icon(self, icon):
@@ -171,13 +174,8 @@ class Minimap(object):
 				                            pixel_per_coord_x_half_as_int
 				real_map_point.y = int(y*pixel_per_coord_y)+world_min_y + \
 				                            pixel_per_coord_y_half_as_int
-				#print 'x,y', (x,y)
-				#print 'now: ', real_map_point
-
 				# we changed the minimap coords, so change back here
 				minimap_point = ( location_left + x, location_top + y)
-
-				#print 'minim now ', minimap_point
 
 				# check what's at the covered_area
 

@@ -252,7 +252,10 @@ class BuildableSingleOnCoast(BuildableSingle):
 		coastline = {}
 		position = Rect.init_from_topleft_and_size(x, y, cls.size[0]-1, cls.size[1]-1)
 		for point in position:
-			is_coastline = ('coastline' in horizons.main.session.world.get_tile(point).classes)
+			if horizons.main.session.world.map_dimensions.contains_without_border(point):
+				is_coastline = ('coastline' in horizons.main.session.world.get_tile(point).classes)
+			else:
+				is_coastline = False
 			coastline[point.x-x,point.y-y] = is_coastline
 
 		""" coastline looks something like this:

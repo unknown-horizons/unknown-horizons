@@ -277,9 +277,7 @@ class World(LivingObject):
 		i = self.get_island(point)
 		if i is not None:
 			return i.get_tile(point)
-		if not (point.x, point.y) in self.ground_map:
-			print point
-		assert (point.x, point.y) in self.ground_map, 'ground must be in water'
+		assert (point.x, point.y) in self.ground_map, 'ground is not on island or water. invalid coord: %s'%point
 		return self.ground_map[(point.x, point.y)]()
 
 	def get_settlement(self, point):
