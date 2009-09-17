@@ -26,10 +26,9 @@ from horizons.util import Point, Rect
 
 class Minimap(object):
 	"""A basic minimap"""
-	water_id, island_id, player_id, cam_border = range(0, 4)
+	water_id, island_id, cam_border = range(0, 4)
 	colors = { 0: (190, 175, 152),
 	           1: (137, 117, 87),
-	           2: (147, 18, 18),
 	           3: (1,   1,   1) }
 
 	def __init__(self, rect, session, renderer):
@@ -151,8 +150,8 @@ class Minimap(object):
 		world_min_x = self.world.min_x
 		world_min_y = self.world.min_y
 		get_island = self.world.get_island
-		water_col, island_col, player_col = \
-		         [ self.colors[i] for i in [self.water_id, self.island_id, self.player_id ] ]
+		water_col, island_col = \
+		         [ self.colors[i] for i in [self.water_id, self.island_id] ]
 		color = None
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
@@ -189,7 +188,7 @@ class Minimap(object):
 						color = island_col
 					else:
 						# pixel belongs to a player
-						color = player_col
+						color = settlement.owner.color.to_tuple()
 				else:
 					color = water_col
 
