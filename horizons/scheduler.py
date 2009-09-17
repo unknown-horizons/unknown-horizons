@@ -145,6 +145,10 @@ class Scheduler(LivingObject):
 		assert len(calls) == 1
 		return calls.values()[0]
 
+	def get_ticks(self, seconds):
+		"""Call propagated to time instance"""
+		return self.timer.get_ticks(seconds)
+
 
 class CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""

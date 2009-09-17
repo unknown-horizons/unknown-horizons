@@ -77,9 +77,9 @@ class Timer(LivingObject):
 	def get_ticks(self, seconds):
 		"""Returns the number of ticks for the specified number of seconds.
 		@param seconds: number of seconds that are to be converted into ticks
-		@return: depends on type of seconds, float or int
+		@return: int
 		"""
-		return seconds*horizons.main.settings.ticks.default
+		return int(round( seconds*horizons.main.settings.ticks.default ))
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

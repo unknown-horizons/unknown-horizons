@@ -26,13 +26,14 @@ import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
+from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle
 from unit import Unit
 from horizons.constants import LAYERS
 
-class Ship(NamedObject, Unit):
+class Ship(NamedObject, Unit, StorageHolder):
 	"""Class representing a ship
 	@param x: int x position
 	@param y: int y position
@@ -42,7 +43,6 @@ class Ship(NamedObject, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-		self.setup_inventory()
 
 		horizons.main.session.world.ships.append(self)
 		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -50,9 +50,9 @@ class Ship(NamedObject, Unit):
 	def remove(self):
 		super(Ship, self).remove()
 		horizons.main.session.world.ships.remove(self)
+		del horizons.main.session.world.ship_map[self.position.to_tuple()]
 
-	def setup_inventory(self):
-		## TODO: inherit from storageholder
+	def create_inventory(self):
 		self.inventory = PositiveTotalStorage(200)
 
 	def _move_tick(self):
@@ -68,7 +68,8 @@ class Ship(NamedObject, Unit):
 	def select(self):
 		"""Runs necessary steps to select the unit."""
 		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		if self.is_moving():
+		# add a buoy at the ship's target if the player owns the ship
+		if self.is_moving() and horizons.main.session.world.player == self.owner:
 			loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])
 			loc.thisown = 0
 			move_target = self.get_move_target()
@@ -132,19 +133,12 @@ class Ship(NamedObject, Unit):
 	def save(self, db):
 		super(Ship, self).save(db)
 
-		self.inventory.save(db, self.getId())
-
 	def load(self, db, worldid):
 		super(Ship, self).load(db, worldid)
-
-		self.setup_inventory()
-		self.inventory.load(db, worldid)
 
 		# register ship in world
 		horizons.main.session.world.ships.append(self)
 		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-
-		return self
 
 
 class PirateShip(Ship):

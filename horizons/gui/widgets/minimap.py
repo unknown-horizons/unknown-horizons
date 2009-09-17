@@ -22,14 +22,14 @@
 import fife
 
 from horizons.util import Point, Rect
-
+from horizons.scheduler import Scheduler
 
 class Minimap(object):
 	"""A basic minimap"""
-	water_id, island_id, cam_border = range(0, 4)
+	water_id, island_id, cam_border = range(0, 3)
 	colors = { 0: (190, 175, 152),
 	           1: (137, 117, 87),
-	           3: (1,   1,   1) }
+	           2: (1,   1,   1) }
 
 	def __init__(self, rect, session, renderer):
 		"""
@@ -65,6 +65,8 @@ class Minimap(object):
 			self.session.view.add_change_listener(self.update_cam)
 
 		self._recalculate()
+
+		Scheduler().add_new_object(self._timed_update, self, Scheduler().get_ticks(0.5), -1)
 
 	def update_cam(self):
 		"""Redraw camera border."""
@@ -194,6 +196,19 @@ class Minimap(object):
 
 				self.renderer.addPoint("minimap", self.renderernodes[minimap_point], *color)
 
+	def _timed_update(self):
+		"""Regular updates for domains we can't or don't want to keep track of."""
+		# update ship dots
+		self.renderer.removeAll("minimap_ship")
+		for ship in self.world.ship_map.itervalues():
+			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
+			color = ship().owner.color.to_tuple()
+			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
+			for tup in area_to_color.tupel_iter():
+				self.renderer.addPoint("minimap_ship", self.renderernodes[tup], *color)
+
+
+	## CALC UTILITY
 	def _get_world_to_minimap_ratio(self):
 		world_height = self.world.map_dimensions.height
 		world_width = self.world.map_dimensions.width
