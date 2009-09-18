@@ -99,7 +99,7 @@ class Collector(StorageHolder, Unit):
 
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
-		self.log.debug("Collector %s: remove called", self)
+		self.log.debug("%s: remove called", self)
 		# remove from target collector list
 		if self.job is not None and self.state != self.states.moving_home:
 			# in the move_home state, there still is a job, but the collector is already deregistered
@@ -203,7 +203,7 @@ class Collector(StorageHolder, Unit):
 
 	def handle_no_possible_job(self):
 		"""Called when we can't find a job. default is to wait and try again in 2 secs"""
-		self.log.debug("Collector %s: no possible job, retry in 2 secs", self.getId())
+		self.log.debug("%s: no possible job, retry in 2 secs", self)
 		Scheduler().add_new_object(self.search_job, self, 32)
 
 	def setup_new_job(self):
@@ -285,7 +285,7 @@ class Collector(StorageHolder, Unit):
 	def begin_current_job(self, job_location = None):
 		"""Starts executing the current job by registering itself and moving to target.
 		@param job_location: Where collector should work. default: job.object.position"""
-		self.log.debug("Collector %s prepares job %s", self.getId(), self.job)
+		self.log.debug("%s prepares job %s", self, self.job)
 		self.setup_new_job()
 		self.show()
 		if job_location is None:
@@ -297,7 +297,7 @@ class Collector(StorageHolder, Unit):
 	def begin_working(self):
 		"""Pretends that the collector works by waiting some time. finish_working is
 		called after that time."""
-		self.log.debug("Collector %s begins working", self.getId())
+		self.log.debug("%s begins working", self)
 		assert self.job is not None, '%s job is non in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, \
 																										 self.work_duration)
@@ -306,7 +306,7 @@ class Collector(StorageHolder, Unit):
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources."""
-		self.log.debug("Collector %s finished working", self.getId())
+		self.log.debug("%s finished working", self)
 		self.act("idle", self._instance.getFacingLocation(), True)
 		# transfer res
 		self.transfer_res()
@@ -317,8 +317,8 @@ class Collector(StorageHolder, Unit):
 		"""Transfers resources from target to collector inventory"""
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
 		if res_amount != self.job.amount:
-			self.log.warning("collector %s picked up %s of res %s at %s, planned was %s",  \
-											 self.getId(), res_amount, self.job.res, \
+			self.log.warning("%s picked up %s of res %s at %s, planned was %s",  \
+											 self, res_amount, self.job.res, \
 											 self.job.object, self.job.amount)
 			self.job.amount = res_amount # update job amount
 		remnant = self.inventory.alter(self.job.res, res_amount)
@@ -333,7 +333,7 @@ class Collector(StorageHolder, Unit):
 		"""Contrary to setup_new_job"""
 		# he finished the job now
 		# before the new job can begin this will be executed
-		self.log.debug("Collector %s end_job - waiting for new search_job", self.getId())
+		self.log.debug("%s end_job - waiting for new search_job", self)
 		if self.start_hidden:
 			self.hide()
 		self.job = None

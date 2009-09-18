@@ -204,3 +204,4 @@ class MarketPlaceOverviewTab(OverviewTab):
 	def on_tax_widget_change(self):
 		new_tax_num = self.widget.collectData('tax_list')
 		self.instance.settlement.tax_setting = SETTLER.TAX_SETTINGS_VALUES[new_tax_num]
+

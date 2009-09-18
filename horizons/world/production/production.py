@@ -323,7 +323,7 @@ class SingleUseProduction(Production):
 		self.state = PRODUCTION_STATES.done
 		self.on_remove()
 		if self.callback is not None:
-			self.callback()
+			self.callback(self)
 
 
 class ProgressProduction(Production):

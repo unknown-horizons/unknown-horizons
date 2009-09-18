@@ -113,7 +113,7 @@ class BuildingCollector(Collector):
 	def reroute(self):
 		"""Reroutes the collector to a different job, or home if no job is found.
 		Can be called the current job can't be executed any more"""
-		self.log.debug("Collector %s reroute", self.getId())
+		self.log.debug("%s reroute", self)
 		# Get a new job
 		job = self.get_job()
 		# Check if there is a new job
@@ -128,10 +128,10 @@ class BuildingCollector(Collector):
 
 	def reached_home(self):
 		"""Exchanges resources with home and calls end_job"""
-		self.log.debug("Collector %s reached home", self.getId())
+		self.log.debug("%s reached home", self)
 
 		if self.home_building is not None:
-			self.log.debug("Collector %s brought home %s of %s", self.getId(), self.job.amount, self.job.res)
+			self.log.debug("%s brought home %s of %s", self, self.job.amount, self.job.res)
 			remnant = self.home_building.inventory.alter(self.job.res, self.job.amount)
 			#assert remnant == 0, "Home building could not take all resources from collector."
 			remnant = self.inventory.alter(self.job.res, -self.job.amount)
@@ -151,13 +151,13 @@ class BuildingCollector(Collector):
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
-		self.log.debug("Collector %s move_home", self.getId())
+		self.log.debug("%s move_home", self)
 		self.move(self.home_building.position, callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
 	def cancel(self):
 		"""Cancels current job and moves back home"""
-		self.log.debug("Collector %s cancel", self.getId())
+		self.log.debug("%s cancel", self)
 		super(BuildingCollector, self).cancel(continue_action=\
 										Callback(self.move_home, callback=self.search_job, action='move'))
 

@@ -154,7 +154,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.level_down()
 			self._changed()
 
-	def level_up(self):
+	def level_up(self, prod_line=None):
+		# NOTE: prod_line, is unused, but get's passed by the production code
 		self.level += 1
 		self.log.debug("%s: Leveling up to %s", self, self.level)
 		self._update_level_data()
@@ -162,6 +163,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self.owner.notify_settler_reached_level(self)
 		# reset happiness value for new level
 		self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
+		self._changed()
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
@@ -179,6 +181,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# reset happiness value for new level
 			self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
+			self._changed()
 
 	def save(self, db):
 		super(Settler, self).save(db)
