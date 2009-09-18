@@ -254,18 +254,21 @@ def get_fife_path(fife_custom_path=None):
 				log().debug("Found FIFE in %s", fife_path)
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				for pe in [ fife_path + os.path.sep + a for \
-							a in ('engine/extensions', 'engine/swigwrappers/python') ]:
-					if os.path.exists(pe):
-						sys.path.append(pe)
-				os.environ['PYTHONPATH'] = os.path.pathsep.join(\
-					os.environ.get('PYTHONPATH', '').split(os.path.pathsep) + \
-					[ fife_path + os.path.sep + a for a in \
-						('engine/extensions', 'engine/swigwrappers/python') ])
+				pythonpaths = [ fife_path + os.path.sep + 'engine/extensions', \
+				                fife_path + os.path.sep + 'engine/swigwrappers/python' ]
+				for path in pythonpaths:
+					if os.path.exists(path):
+						sys.path.append(path)
+					if 'PYTHONPATH' in os.environ:
+						os.environ['PYTHONPATH'] += os.path.pathsep + path
+					else:
+						os.environ['PYTHONPATH'] = path
 
 				#add windows paths (<fife>/.)
-				os.environ['PATH'] = os.path.pathsep.join( \
-					os.environ.get('PATH', '').split(os.path.pathsep) + [ fife_path ] )
+				if 'PATH' in os.environ:
+					os.environ['PATH'] += os.path.pathsep + fife_path
+				else:
+					os.environ['PATH'] = fife_path
 				os.path.defpath += os.path.pathsep + fife_path
 				break
 	else:
@@ -294,6 +297,7 @@ def find_FIFE(fife_custom_path=None):
 			 os.environ.has_key('LD_LIBRARY_PATH') else []))
 
 	log().debug("Restarting with proper LD_LIBRARY_PATH...")
+	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
 	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
 	log().debug("PATH: %s", os.environ['PATH'])
 	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
