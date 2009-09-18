@@ -36,6 +36,8 @@ import logging.handlers
 import optparse
 import traceback
 
+__all__ = ['init_environment', 'get_fife_path']
+
 def log():
 	"""Returns Logger"""
 	return logging.getLogger("run_uh")
@@ -55,6 +57,7 @@ def find_uh_position():
 		for i in positions:
 			if os.path.exists('%s/unknown-horizons' % i):
 				return '%s/unknown-horizons' % i
+	raise RuntimeError, 'Cannot find location of unknown horizons.'
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""
@@ -206,6 +209,7 @@ def init_environment():
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
 			print 'Failed to load fife:', e
+			log_paths()
 			exit(1)
 		log().debug('Searching for FIFE')
 		find_FIFE(options.fife_path) # this restarts or terminates the program
@@ -277,6 +281,8 @@ def get_fife_path(fife_custom_path=None):
 	return fife_path
 
 def check_path_for_fife(path):
+	"""Checks if typical fife directories exist in path. This does not guarantee, that it's
+	really a fife dir, but it generally works."""
 	absolute_path = os.path.abspath(path)
 	for pe in [ '%s/%s' % (absolute_path, a) for a in ('.', 'engine', 'engine/extensions',  \
 																										 'engine/swigwrappers/python') ]:
@@ -297,16 +303,21 @@ def find_FIFE(fife_custom_path=None):
 			 os.environ.has_key('LD_LIBRARY_PATH') else []))
 
 	log().debug("Restarting with proper LD_LIBRARY_PATH...")
-	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
-	log().debug("PATH: %s", os.environ['PATH'])
-	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
+	log_paths()
 
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
 	log().debug("Restarting with args %s", args)
 	os.execvp(args[0], args)
 
+def log_paths():
+	"""Prints debug info about paths to log"""
+	import sys, os
+	log().debug("SYS.PATH: %s", sys.path)
+	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
+	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
+	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
 
 if __name__ == '__main__':
 	main()

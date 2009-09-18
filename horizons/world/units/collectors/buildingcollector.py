@@ -96,7 +96,7 @@ class BuildingCollector(Collector):
 
 		jobs = JobList(self.job_ordering)
 		for building in self.get_buildings_in_range():
-			if self.check_possible_job_target(building): # check if we can pickup here in principle
+			if self.check_possible_job_target(building): # check if we can pickup here on principle
 				for res in collectable_res:
 					job = self.check_possible_job_target_for(building, res) # check if we also get res here
 					if job is not None:

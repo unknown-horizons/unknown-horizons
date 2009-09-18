@@ -28,10 +28,12 @@ if __name__ == '__main__':
 	#chdir to unknownhorizons root
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
-	from run_uh import init_environment
+	import gettext
+	gettext.install('') # necessary for init_environment
+	from run_uh import init_environment, get_fife_path
 	init_environment()
 
-	os.chdir(environment.get_fife_path() + '/clients/editor')
+	os.chdir(get_fife_path() + '/clients/editor')
 	#start editor
 	args = [sys.executable, './run.py']
 	os.execvp(args[0], args)
