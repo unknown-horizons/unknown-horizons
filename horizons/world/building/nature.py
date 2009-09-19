@@ -51,7 +51,7 @@ class Field(GrowingBuilding):
 class AnimalField(CollectingBuilding, Field):
 	def create_collector(self):
 		self.animals = []
-		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
+		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM balance.animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				Entities.units[animal](self)

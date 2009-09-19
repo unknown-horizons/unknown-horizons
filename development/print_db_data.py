@@ -28,9 +28,7 @@ init_environment()
 
 import horizons.main
 
-from dbreader import DbReader
-
-db = DbReader(dbfile)
+db = horizons.main._create_db()
 
 def get_obj_name(obj):
 	global db
@@ -52,13 +50,13 @@ def print_production_lines():
 		str = 'ProdLine %s of %s (time:%s;default:%s):\t' % (id, get_obj_name(object), prod_line[2], prod_line[3])
 		str = strw(str, 55)
 
-		consumation = db("SELECT resource, amount from production where production_line = ? and amount < 0 order by amount asc", id)
+		consumation = db("SELECT resource, amount from balance.production where production_line = ? and amount < 0 order by amount asc", id)
 		if len(consumation) > 0:
 			str += 'consumes: '
 			for res, amount in consumation:
 				str += '%s %s, ' % (-amount, get_res_name(res))
 
-		production = db("SELECT resource, amount from production where production_line = ? and amount > 0 order by amount asc", id)
+		production = db("SELECT resource, amount from balance.production where production_line = ? and amount > 0 order by amount asc", id)
 		if len(production) > 0:
 			str += '\tproduces: '
 			for res, amount in production:
@@ -85,7 +83,7 @@ def print_building():
 	print "Buildings (id: name running_costs from class, size, radius):"
 	for id, name, c_type, c_package, x, y, radius, cost in \
 			db('select id, name, class_type, class_package, size_x, size_y, radius, cost_active from \
-			building LEFT OUTER JOIN building_running_costs on building_running_costs.building = building.id'):
+			building LEFT OUTER JOIN balance.building_running_costs on balance.building_running_costs.building = building.id'):
 		cost = " 0" if cost is None else cost
 		print "%s: %s %s$, from %s.%s, %sx%s, %s" % (strw(id,2), strw(name, 16), strw(cost, 2), c_package, c_type, x, y, radius)
 
@@ -109,9 +107,9 @@ def print_collectors():
 
 def print_building_costs():
 	print 'Building costs:'
-	for b, in db("select distinct building from building_costs"):
+	for b, in db("select distinct building from balance.building_costs"):
 		s = strw(get_obj_name(b), 18)
-		for res, amount in db("select resource, amount from building_costs where building = ?", b):
+		for res, amount in db("select resource, amount from balance.building_costs where building = ?", b):
 			s += str(amount)+' '+get_res_name(res)+', '
 		print s
 

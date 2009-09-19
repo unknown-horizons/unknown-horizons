@@ -66,7 +66,7 @@ class _ProductionLineData(object):
 		self.production = {}
 		self.produced_res = {} # contains only produced
 		self.consumed_res = {} # contains only consumed
-		for res, amount in horizons.main.db("SELECT resource, amount FROM data.production WHERE production_line = ?", self.id):
+		for res, amount in horizons.main.db("SELECT resource, amount FROM balance.production WHERE production_line = ?", self.id):
 			self.production[res] = amount
 			if amount > 0:
 				self.produced_res[res] = amount
@@ -76,7 +76,7 @@ class _ProductionLineData(object):
 				assert False
 		# Stores unit_id: amount entries, if units are to be produced by this production line
 		self.unit_production = {}
-		for unit, amount in horizons.main.db("SELECT unit, amount FROM data.unit_production WHERE production_line = ?", self.id):
+		for unit, amount in horizons.main.db("SELECT unit, amount FROM balance.unit_production WHERE production_line = ?", self.id):
 			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
 
 		self._init_finished = True

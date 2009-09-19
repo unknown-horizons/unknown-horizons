@@ -44,9 +44,8 @@ class ResourceHandler(StorageHolder):
 		self._productions = {}
 		self._inactive_productions = {}
 		self.provided_resources = [] # Stores a list of resource ids this resourcehandler provides for pickup
-		for res in horizons.main.db("SELECT resource FROM production WHERE amount > 0 AND \
-		production_line IN \
-		(SELECT id FROM production_line WHERE object_id = ? )", self.id):
+		for res in horizons.main.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
+		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
 			self.provided_resources.append(res[0])
 		# list of collectors that are on the way here
 		self.__incoming_collectors = WeakList()

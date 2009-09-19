@@ -81,10 +81,10 @@ class BuildingClass(type):
 		for (name,  value) in self.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in self.db("SELECT resource, amount FROM data.building_costs WHERE building = ?", str(id)):
+		for (name, value) in self.db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
 		self._loadObject()
-		running_costs = self.db("SELECT cost_active, cost_inactive FROM data.building_running_costs WHERE building=?", self.id)
+		running_costs = self.db("SELECT cost_active, cost_inactive FROM balance.building_running_costs WHERE building=?", self.id)
 		if len(running_costs) > 0:
 			self.running_costs = running_costs[0][0]
 			self.running_costs_inactive = running_costs[0][1]

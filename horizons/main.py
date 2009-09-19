@@ -262,6 +262,7 @@ def _create_db():
 	_db = DbReader(':memory:')
 	_db("attach ? AS data", 'content/game.sqlite')
 	_db("attach ? AS settler", 'content/settler.sqlite')
+	_db("attach ? AS balance", 'content/balance.sqlite')
 	return _db
 
 def preload_game_data(lock):
