@@ -20,6 +20,7 @@
 # ###################################################
 import weakref
 import pychan
+import operator
 
 import horizons.main
 
@@ -149,7 +150,8 @@ class ProductionOverviewTab(OverviewTab):
 			parent_container.removeChild(parent_container.children[0])
 
 		# create a container for each production
-		for production in self.instance._get_productions():
+		for production in sorted(self.instance._get_productions(), \
+		                         key=operator.methodcaller("get_production_line_id")):
 			container = self._create_production_line_container()
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
@@ -158,6 +160,8 @@ class ProductionOverviewTab(OverviewTab):
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
 				out_res_container.addChild(create_resource_icon(out_res, horizons.main.db))
+			# active toggle_active button
+			container.mapEvents( { 'toggle_active': ToggleActive(self.instance, production).execute } )
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 

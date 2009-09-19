@@ -76,6 +76,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.running_costs , self.running_costs_inactive = \
 			self.running_costs_inactive, self.running_costs
 
+	def running_costs_active(self):
+		return (self.running_costs > self.running_costs_inactive)
+
 	def get_payout(self):
 		"""gets the payout from the settlement in form of it's running costs"""
 		self.owner.inventory.alter(RES.GOLD_ID, -self.running_costs)

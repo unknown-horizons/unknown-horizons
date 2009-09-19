@@ -232,10 +232,17 @@ class ResourceHandler(StorageHolder):
 
 		self._changed()
 
-	def is_active(self, production):
-		assert production.get_production_line_id() in self._productions or \
-					 production.get_production_line_id() in self._inactive_productions
-		return not production.is_paused()
+	def is_active(self, production=None):
+		"""Checks if a production, or the at least one production if production is None, is active"""
+		if production is None:
+			for production in self._get_productions():
+				if not production.is_paused():
+					return True
+			return False
+		else:
+			assert production.get_production_line_id() in self._productions or \
+			       production.get_production_line_id() in self._inactive_productions
+			return not production.is_paused()
 
 	def toggle_active(self, production=None):
 		if production is None:

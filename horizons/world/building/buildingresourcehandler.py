@@ -48,5 +48,11 @@ class BuildingResourceHandler(ResourceHandler):
 
 	def set_active(self, production=None, active=True):
 		super(BuildingResourceHandler, self).set_active(production, active)
-		self.toggle_costs()
+		# set running costs, if activity status has changed.
+		if self.running_costs_active():
+			if not self.is_active():
+				self.toggle_costs()
+		else:
+			if self.is_active():
+				self.toggle_costs()
 		self._changed()

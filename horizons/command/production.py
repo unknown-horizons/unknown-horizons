@@ -23,8 +23,8 @@ from horizons.command import GenericCommand
 
 class ToggleActive(GenericCommand):
 	"""Sets a production to active/inactive."""
-	def __init__(self, obj):
-		super(ToggleActive, self).__init__(obj, "toggle_active")
+	def __init__(self, obj, production=None):
+		super(ToggleActive, self).__init__(obj, "toggle_active", production=production)
 
 
 class AddProduction(GenericCommand):
