@@ -151,7 +151,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		for production in sorted(self.instance._get_productions(), \
-		                         key=operator.methodcaller("get_production_line_id")):
+		                         key=(lambda x: x.get_production_line_id())):
 			container = self._create_production_line_container()
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
