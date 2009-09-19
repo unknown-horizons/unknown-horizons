@@ -27,7 +27,7 @@ import horizons.main
 from tabinterface import TabInterface
 from horizons.util import Callback
 from horizons.constants import RES, SETTLER
-from horizons.gui.widgets.tooltip import TooltipButton
+from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
 from horizons.gui.utility import create_resource_icon
 
@@ -152,7 +152,7 @@ class ProductionOverviewTab(OverviewTab):
 		# create a container for each production
 		for production in sorted(self.instance._get_productions(), \
 		                         key=(lambda x: x.get_production_line_id())):
-			container = self._create_production_line_container()
+			container = self._create_production_line_container(not production.is_paused())
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
@@ -162,24 +162,29 @@ class ProductionOverviewTab(OverviewTab):
 				out_res_container.addChild(create_resource_icon(out_res, horizons.main.db))
 			# active toggle_active button
 			container.mapEvents( { 'toggle_active': ToggleActive(self.instance, production).execute } )
+			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 
 	@staticmethod
-	def _create_production_line_container():
+	def _create_production_line_container(active):
 		"""Creates a template pychan container, that displays a production line.
 		This can't be done in xml, since you can't duplicate this code."""
 		container = pychan.widgets.containers.Container(size=(240, 47), position=(20, 110))
 		vbox1 = pychan.widgets.containers.VBox(name="input_res", position=(2,0))
 		arrow_icon = pychan.widgets.Icon(image="content/gui/images/icons/hud/main/production_arrow.png", \
 		                                 position=(56, 16))
-		toggle_button = pychan.widgets.buttons.ImageButton(
+		toggle_button = pychan.widgets.ImageButton(
 		      up_image="content/gui/images/icons/hud/main/toggle_active.png",
 		      down_image="content/gui/images/icons/hud/main/toggle_active_h.png",
 		      over_image="content/gui/images/icons/hud/main/toggle_active_h.png" ,
 		      border_size="0",
 		      position=(87,10),
 		      name="toggle_active" )
+		if not active:
+			toggle_button.up_image="content/gui/images/icons/hud/main/toggle_inactive.png"
+			toggle_button.down_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
+			toggle_button.over_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
 		vbox2 = pychan.widgets.containers.VBox(name="output_res", position=(157,0))
 		container.addChildren(vbox1, arrow_icon, toggle_button, vbox2)
 		return container
