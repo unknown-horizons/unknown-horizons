@@ -208,8 +208,8 @@ def init_environment():
 	except ImportError, e:
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
-			print 'Failed to load fife:', e
 			log_paths()
+			print 'Failed to load fife:', e
 			exit(1)
 		log().debug('Searching for FIFE')
 		find_FIFE(options.fife_path) # this restarts or terminates the program
@@ -228,20 +228,23 @@ def get_fife_path(fife_custom_path=None):
 	# assemble a list of paths where fife could be located at
 	_paths = []
 	# check if there is a config file (has to be called config.py)
-	try:
-		import config
-		_paths.append(config.fife_path)
-		if not check_path_for_fife(config.fife_path):
-			print 'Invalid fife_path in config.py: %s' % config.fife_path
-	except (ImportError, AttributeError):
-		# no config, check for commandline arg
-		if fife_custom_path is not None:
-			_paths.append(fife_custom_path)
-			if not check_path_for_fife(fife_custom_path):
-				print 'Specified invalid fife path: %s' %  fife_custom_path
 
-		else:
-			# try frequently used paths
+	# first check for commandline arg
+	if fife_custom_path is not None:
+		_paths.append(fife_custom_path)
+		if not check_path_for_fife(fife_custom_path):
+			print 'Specified invalid fife path: %s' %  fife_custom_path
+			exit(1)
+	else:
+		# no command line parameter, now check for config
+		try:
+			import config
+			_paths.append(config.fife_path)
+			if not check_path_for_fife(config.fife_path):
+				print 'Invalid fife_path in config.py: %s' % config.fife_path
+				exit(1)
+		except (ImportError, AttributeError):
+		# no config, try frequently used paths
 			_paths += [ a + '/' + b + '/' + c for \
 									a in ('.', '..', '../..') for \
 									b in ('.', 'fife', 'FIFE', 'Fife') for \

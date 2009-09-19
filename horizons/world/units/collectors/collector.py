@@ -27,7 +27,7 @@ import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
-from horizons.util import WorldObject, decorators
+from horizons.util import WorldObject, decorators, Callback
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
@@ -148,9 +148,12 @@ class Collector(StorageHolder, Unit):
 								worldid)
 		if(len(job_db) > 0):
 			job_db = job_db[0]
-			self.job = Job(WorldObject.get_object_by_id(job_db[0]), job_db[1], job_db[2])
+			# create job with worldid of object as object. This is used to defer the target resolution,
+			# which might not have been loaded
+			self.job = Job(job_db[0], job_db[1], job_db[2])
 
-		self.apply_state(self.state, remaining_ticks)
+		# apply state when job object is loaded for sure
+		Scheduler().add_new_object(Callback(self.apply_state, self.state, remaining_ticks), self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
@@ -364,13 +367,26 @@ class Collector(StorageHolder, Unit):
 class Job(object):
 	"""Data structure for storing information of collector jobs"""
 	def __init__(self, obj, res, amount):
+		assert isinstance(res, int)
+		assert isinstance(amount, int)
 		assert amount > 0
-		self.object = obj
+
+		if isinstance(obj, int):
+			self._obj_id = obj
+		else:
+			self._object = obj
 		self.res = res
 		self.amount = amount
 
 		# this is rather a dummy for now
 		self.rating = amount
+
+	@property
+	def object(self):
+		try:
+			return self._object
+		except AttributeError:
+			return WorldObject.get_object_by_id(self._obj_id)
 
 	def __str__(self):
 		return "Job res: %i amount: %i" % (self.res, self.amount)

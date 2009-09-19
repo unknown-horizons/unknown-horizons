@@ -51,12 +51,10 @@ class Field(GrowingBuilding):
 class AnimalField(CollectingBuilding, Field):
 	def create_collector(self):
 		self.animals = []
-
 		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM data.animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				Entities.units[animal](self)
-
 		super(AnimalField, self).create_collector()
 
 	def remove(self):
@@ -64,6 +62,17 @@ class AnimalField(CollectingBuilding, Field):
 			self.animals[0].cancel()
 			self.animals[0].remove()
 		super(AnimalField, self).remove()
+
+	def save(self, db):
+		super(AnimalField, self).save(db)
+		for animal in self.animals:
+			animal.save(db)
+
+	def load(self, db, worldid):
+		super(AnimalField, self).load(db, worldid)
+		self.animals = []
+		# units are loaded separatly
+
 
 class Tree(GrowingBuilding):
 	buildable_upon = True

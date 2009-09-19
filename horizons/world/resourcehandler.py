@@ -63,7 +63,6 @@ class ResourceHandler(StorageHolder):
 		self.__init()
 		# load all productions
 		for production in db('SELECT rowid FROM production WHERE owner = ?', worldid):
-			self.log.debug('loading production %s at %s', production[0], self.getId())
 			self.add_production( self.load_production(db, production[0]) )
 
 	def remove(self):
