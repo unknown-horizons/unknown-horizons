@@ -27,7 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.gui.tabs import SettlerOverviewTab, InventoryTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
-from horizons.constants import RES, SETTLER, BUILDINGS
+from horizons.constants import RES, BUILDINGS, GAME
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
@@ -45,8 +45,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	tabs = (SettlerOverviewTab,)
 
 	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
+		_CONSTANTS.init(horizons.main.db)
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
-		self.__init(level, SETTLER.HAPPINESS_INIT_VALUE)
+		self.__init(level, _CONSTANTS.HAPPINESS_INIT_VALUE)
 		self.run()
 
 	def __init(self, level, happiness = None):
@@ -56,6 +57,19 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data()
 		self.last_tax_payed = 0
+
+	def save(self, db):
+		super(Settler, self).save(db)
+		db("INSERT INTO settler(rowid, level, inhabitants) VALUES (?, ?, ?)", self.getId(), \
+			 self.level, self.inhabitants)
+
+	def load(self, db, building_id):
+		_CONSTANTS.init(horizons.main.db)
+		super(Settler, self).load(db, building_id)
+		level, self.inhabitants = \
+				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
+		self.__init(level)
+		self.run()
 
 	@property
 	def happiness(self):
@@ -87,12 +101,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def run(self):
 		"""Start regular tick calls"""
-		interval_in_ticks = horizons.main.session.timer.get_ticks(SETTLER.TICK_INTERVAL)
-		Scheduler().add_new_object(self.tick, self, runin=interval_in_ticks, \
-																									 loops=-1)
+		interval_in_ticks = horizons.main.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
+		Scheduler().add_new_object(self._tick, self, runin=interval_in_ticks, loops=-1)
 
-	def tick(self):
-		"""Here we collect the functions, that are called regularly."""
+	def _tick(self):
+		"""Here we collect the functions, that are called regularly (every "month")."""
 		self.pay_tax()
 		self.inhabitant_check()
 		self.level_check()
@@ -118,12 +131,12 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
 		changed = False
-		if self.happiness > SETTLER.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
+		if self.happiness > _CONSTANTS.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
 			 self.inhabitants < self.inhabitants_max:
 			self.inhabitants += 1
 			changed = True
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
-		elif self.happiness < SETTLER.HAPPINESS_INHABITANTS_DECREASE_LIMIT and self.inhabitants > 1:
+		elif self.happiness < _CONSTANTS.HAPPINESS_INHABITANTS_DECREASE_LIMIT and self.inhabitants > 1:
 			self.inhabitants -= 1
 			changed = True
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
@@ -135,7 +148,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def level_check(self):
 		"""Checks whether we should level up or down."""
-		if self.happiness > SETTLER.HAPPINESS_LEVEL_UP_REQUIREMENT and \
+		if self.happiness > _CONSTANTS.HAPPINESS_LEVEL_UP_REQUIREMENT and \
 			 self.level < self.level_max:
 			# add a production line that gets the necessary upgrade material.
 			# when the production finished, it calls level_up as callback.
@@ -150,7 +163,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 				self.inventory.add_resource_slot(res, abs(amount))
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
-		elif self.happiness < SETTLER.HAPPINESS_LEVEL_DOWN_LIMIT:
+		elif self.happiness < _CONSTANTS.HAPPINESS_LEVEL_DOWN_LIMIT:
 			self.level_down()
 			self._changed()
 
@@ -162,7 +175,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# notify owner about new level
 		self.owner.notify_settler_reached_level(self)
 		# reset happiness value for new level
-		self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
+		self.inventory.alter(RES.HAPPINESS_ID, _CONSTANTS.HAPPINESS_INIT_VALUE - self.happiness)
 		self._changed()
 
 	def level_down(self):
@@ -170,7 +183,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# remove when this function is done
 			Scheduler().add_new_object(self.remove, self)
 			# replace this building with a ruin
-			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
+			command = Build(BUILDINGS._CONSTANTS_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
 			Scheduler().add_new_object(command.execute, command, 2)
 
@@ -179,22 +192,35 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.inventory.alter(RES.HAPPINESS_ID, SETTLER.HAPPINESS_INIT_VALUE - self.happiness)
+			self.inventory.alter(RES.HAPPINESS_ID, _CONSTANTS.HAPPINESS_INIT_VALUE - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
-	def save(self, db):
-		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, level, inhabitants) VALUES (?, ?, ?)", self.getId(), \
-			 self.level, self.inhabitants)
-
-	def load(self, db, building_id):
-		super(Settler, self).load(db, building_id)
-		level, self.inhabitants = \
-				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
-		self.__init(level)
-		self.run()
 
 	def __str__(self):
 		return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level, \
 																				self.inhabitants, self.happiness)
+
+
+class _CONSTANTS:
+	"""Settler related constants from the db. init() has to be called before first use."""
+	_inited = False
+	@classmethod
+	def init(cls, db):
+		if cls._inited:
+			return
+		for key in cls.__dict__:
+			if key.startswith('_') or key[0].islower():
+				# print no constant to init here
+				continue
+			cls.__dict__[key] = int( horizons.main.db("SELECT value from settler.balance_values \
+			                                            WHERE name = ?", key.lower())[0][0])
+		cls._inited = True
+
+	HAPPINESS_INIT_VALUE = 0 # settlers start with this value
+	HAPPINESS_MIN_VALUE = 0 # settlers die at this value
+	HAPPINESS_MAX_VALUE = 0
+	HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT = 0 # if above this, inhabitants increase
+	HAPPINESS_INHABITANTS_DECREASE_LIMIT = 0 # if below this, inhabitants decrease
+	HAPPINESS_LEVEL_UP_REQUIREMENT = 0 # happiness has to be over this for leveling up
+	HAPPINESS_LEVEL_DOWN_LIMIT = 0 # settlers level down if below this value

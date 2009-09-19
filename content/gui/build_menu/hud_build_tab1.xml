@@ -9,5 +9,8 @@
 	<Container position="0,70" size="600,400" >
 		<Label name="headline" position="70,7" text="Pioneer Buildings" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />	
+
+		<TooltipButton name="school-1" position="56,33" up_image="content/gui/images/icons/hud/build/school.png" hover_image="content/gui/images/icons/hud/build/school_h.png" down_image="content/gui/images/icons/hud/build/school_h.png" tooltip="School: \nProvides education."/>
+
 	</Container>
 </Container>

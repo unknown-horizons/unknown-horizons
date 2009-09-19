@@ -30,7 +30,7 @@ from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject, ActionSetLoader
-from horizons.constants import RES, LAYERS
+from horizons.constants import RES, LAYERS, GAME
 from horizons.command.building import Tear
 from horizons.world.building.buildable import BuildableSingle
 
@@ -65,7 +65,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
-			Scheduler().add_new_object(self.get_payout, self, runin=horizons.main.session.timer.get_ticks(30), loops=-1)
+			Scheduler().add_new_object(self.get_payout, self, \
+			     runin=horizons.main.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
 
 		# play ambient sound, if available
 		for soundfile in self.soundfiles:

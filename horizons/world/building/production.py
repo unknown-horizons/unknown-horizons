@@ -81,5 +81,6 @@ class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Ba
 class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
-class Church(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
+class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
+	"""Class for Churches, School that provide a service-type res for settlers"""
 	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)

@@ -43,12 +43,10 @@ class AccountTab(TabInterface):
 		# update self when a building of the settlement changes.
 		for building in self.settlement.buildings:
 			if not building.has_change_listener(self.refresh):
-				print 'add chanel to ', building
 				building.add_change_listener(self.refresh)
 
 	def hide(self):
 		super(AccountTab, self).hide()
 		for building in self.settlement.buildings:
 			if building.has_change_listener(self.refresh):
-				print 'rem chanel to ', building
 				building.remove_change_listener(self.refresh)

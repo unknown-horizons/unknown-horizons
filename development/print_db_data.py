@@ -49,16 +49,20 @@ def print_production_lines():
 		id = prod_line[0]
 		object = prod_line[1]
 
-		str = ''
-		str += 'ProdLine %s of %s (time:%s;default:%s):\t' % (id, get_obj_name(object), prod_line[2], prod_line[3])
+		str = 'ProdLine %s of %s (time:%s;default:%s):\t' % (id, get_obj_name(object), prod_line[2], prod_line[3])
+		str = strw(str, 55)
 
-		str += 'consumes: '
-		for res, amount in db("SELECT resource, amount from production where production_line = ? and amount < 0 order by amount asc", id):
-			str += '%s %s, ' % (-amount, get_res_name(res))
+		consumation = db("SELECT resource, amount from production where production_line = ? and amount < 0 order by amount asc", id)
+		if len(consumation) > 0:
+			str += 'consumes: '
+			for res, amount in consumation:
+				str += '%s %s, ' % (-amount, get_res_name(res))
 
-		str += ';\tproduces: '
-		for res, amount in db("SELECT resource, amount from production where production_line = ? and amount > 0 order by amount asc", id):
-			str +=  '%s %s, ' % (amount, get_res_name(res))
+		production = db("SELECT resource, amount from production where production_line = ? and amount > 0 order by amount asc", id)
+		if len(production) > 0:
+			str += '\tproduces: '
+			for res, amount in production:
+				str +=  '%s %s, ' % (amount, get_res_name(res))
 
 		print str
 

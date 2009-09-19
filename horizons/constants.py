@@ -79,17 +79,11 @@ PRODUCTION_STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing
 
 
 ## GAME-RELATED, BALANCING VALUES
+class GAME:
+	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month". running costs and taxes are
+														# payed in this interval.
+
 class SETTLER:
-	HAPPINESS_INIT_VALUE = 50 # settlers start with this value
-	HAPPINESS_MIN_VALUE = 0 # settlers die at this value
-	HAPPINESS_MAX_VALUE = 100
-	HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT = 70 # if above this, inhabitants increase
-	HAPPINESS_INHABITANTS_DECREASE_LIMIT = 30 # if below this, inhabitants decrease
-	HAPPINESS_LEVEL_UP_REQUIREMENT = 80 # happiness has to be over this for leveling up
-	HAPPINESS_LEVEL_DOWN_LIMIT = 10 # settlers level down if below this value
-
-	TICK_INTERVAL = 30 # seconds; interval for settler to pay res, check for level up, etc.
-
 	TAX_SETTINGS = Enum(u'medium', u'high')
 	TAX_SETTINGS_VALUES = [1.0, 1.5]
 
