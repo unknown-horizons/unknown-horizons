@@ -129,7 +129,6 @@ class Production(WorldObject):
 		"""@return dict of produced units {unit_id: amount}"""
 		return self._prod_line.unit_production
 
-
 	def changes_animation(self):
 		"""Returns whether the production should change the animation"""
 		return self._prod_line.changes_animation

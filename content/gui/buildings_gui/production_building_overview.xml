@@ -21,15 +21,24 @@
 
 		<!--<Icon image="content/gui/images/background/hr.png" position="20,122" />-->
 
+		<VBox name="production_lines"></VBox>
+		<!--
+		This is a template code for a production line.
+		Since it can't be copied, it has to be specified in python code.
 		<Container size="240,200" position="20,120">
-			<HBox position="80,0">
-				<ImageButton up_image="content/gui/images/background/msg_button_normal.png" down_image="content/gui/images/background/msg_button_down.png" hover_image="content/gui/images/background/msg_button_hover.png" border_size="0"/>
-			</HBox>
+			<VBox name="input_res">
+				<!- icons are added at runtime here ->
+			</VBox>
 			
 			<Icon image="content/gui/images/icons/hud/main/production_arrow.png" position="61,16" />
 
 			<ImageButton name="toggle_active" position="90,10" up_image="content/gui/images/icons/hud/main/toggle_active.png" down_image="content/gui/images/icons/hud/main/toggle_active_h.png" hover_image="content/gui/images/icons/hud/main/toggle_active_h.png" border_size="0"/>
+			<VBox name="output_res">
+				<!- icons are added at runtime here ->
+			</VBox>
+			
 		</Container>	
+		-->
 	</Container>
 </Container>
 

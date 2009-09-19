@@ -444,4 +444,3 @@ class IngameGui(LivingObject):
 		instance.set_name(new_name)
 		self.hide_change_name_dialog()
 
-

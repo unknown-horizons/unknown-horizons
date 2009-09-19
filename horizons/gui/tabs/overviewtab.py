@@ -28,6 +28,7 @@ from horizons.util import Callback
 from horizons.constants import RES, SETTLER
 from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.command.production import ToggleActive
+from horizons.gui.utility import create_resource_icon
 
 class OverviewTab(TabInterface):
 
@@ -121,8 +122,8 @@ class ProductionOverviewTab(OverviewTab):
 			widget = 'buildings_gui/production_building_overview.xml',
 			instance = instance
 		)
-		events = { 'toggle_active': ToggleActive(self.instance).execute }
-		self.widget.mapEvents(events)
+		#events = { 'toggle_active': ToggleActive(self.instance).execute }
+		#self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
@@ -141,7 +142,38 @@ class ProductionOverviewTab(OverviewTab):
 		if hasattr(self.instance, 'running_costs'):
 			costs = self.instance.running_costs
 		self.widget.child_finder('running_costs').text = unicode(costs)
+
+		parent_container = self.widget.child_finder('production_lines')
+		while len(parent_container.children) > 0:
+			parent_container.removeChild(parent_container.children[0])
+
+		for production in self.instance._get_productions():
+			container = self._create_production_line_container()
+			in_res_container = container.findChild(name="input_res")
+			for in_res in production.get_consumed_resources():
+				in_res_container.addChild(create_resource_icon(in_res, horizons.main.db))
+			out_res_container = container.findChild(name="output_res")
+			for out_res in production.get_produced_res():
+				out_res_container.addChild(create_resource_icon(out_res, horizons.main.db))
+			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
+
+	@staticmethod
+	def _create_production_line_container():
+		container = pychan.widgets.containers.Container(size=(240, 200), position=(20, 120))
+		vbox1 = pychan.widgets.containers.VBox(name="input_res")
+		arrow_icon = pychan.widgets.Icon(image="content/gui/images/icons/hud/main/production_arrow.png", \
+		                                 position=(61, 16))
+		toggle_button = pychan.widgets.buttons.ImageButton(
+		      up_image="content/gui/images/icons/hud/main/toggle_active.png",
+		      down_image="content/gui/images/icons/hud/main/toggle_active_h.png",
+		      over_image="content/gui/images/icons/hud/main/toggle_active_h.png" ,
+		      border_size="0",
+		      position=(90,10),
+		      name="toggle_active" )
+		vbox2 = pychan.widgets.containers.VBox(name="output_res")
+		container.addChildren(vbox1, arrow_icon, toggle_button, vbox2)
+		return container
 
 	def destruct_building(self):
 		horizons.main.session.ingame_gui.hide_menu()
@@ -180,8 +212,7 @@ class SettlerOverviewTab(OverviewTab):
 		currenlty_consumed = self.instance.get_currently_consumed_resources()
 		resources = [ r for r in self.instance.get_consumed_resources() if r not in currenlty_consumed ]
 		for res in resources:
-			icon = pychan.widgets.Icon()
-			icon.image = horizons.main.db("SELECT icon FROM resource WHERE id = ?", res)[0][0]
+			icon = create_resource_icon(res, horizons.main.db)
 			container.addChild(icon)
 			self.consumed_res_icons.append(icon)
 

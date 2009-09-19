@@ -34,6 +34,7 @@ from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback, Color
+from horizons.gui.utility import center_widget
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""
@@ -725,9 +726,3 @@ class Gui(object):
 			horizons.main.start_singleplayer(map_file, game_data)
 
 
-def center_widget(widget):
-	"""Centers the widget in the parameter
-	@param widget: Widget with properties width, height, x and y
-	"""
-	widget.x = int((horizons.main.settings.fife.screen.width - widget.width) / 2)
-	widget.y = int((horizons.main.settings.fife.screen.height - widget.height) / 2)
