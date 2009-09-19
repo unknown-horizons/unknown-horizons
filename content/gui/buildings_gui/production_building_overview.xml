@@ -14,14 +14,16 @@
 
 		<Container size="260,550" position="25,43">
 			<Label name='name' position="0,0" text="" />
-			<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="70,25" text="" />
+			<!--
+			Health display.
+			<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="70,25" text="" />-->
 			<Icon image="content/gui/images/icons/hud/main/running_costs.png" position="155,0" /><Label name="running_costs" position="180,00" text=""/>
 		</Container>
 
 
 		<!--<Icon image="content/gui/images/background/hr.png" position="20,122" />-->
 
-		<VBox name="production_lines"></VBox>
+		<VBox name="production_lines" position="20,80"></VBox>
 		<!--
 		This is a template code for a production line.
 		Since it can't be copied, it has to be specified in python code.

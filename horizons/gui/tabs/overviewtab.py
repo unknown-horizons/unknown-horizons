@@ -46,8 +46,8 @@ class OverviewTab(TabInterface):
 		"""This function is called by the TabWidget to redraw the widget."""
 		if hasattr(self.instance, 'name'):
 			self.widget.child_finder('name').text = unicode(self.instance.name)
-		if hasattr(self.instance, 'health'):
-			self.widget.child_finder('health').text = unicode(self.instance.health)
+		#if hasattr(self.instance, 'health'):
+		#	self.widget.child_finder('health').text = unicode(self.instance.health)
 		self.widget.adaptLayout()
 
 	def show(self):
@@ -165,18 +165,18 @@ class ProductionOverviewTab(OverviewTab):
 	def _create_production_line_container():
 		"""Creates a template pychan container, that displays a production line.
 		This can't be done in xml, since you can't duplicate this code."""
-		container = pychan.widgets.containers.Container(size=(240, 200), position=(20, 120))
-		vbox1 = pychan.widgets.containers.VBox(name="input_res")
+		container = pychan.widgets.containers.Container(size=(240, 47), position=(20, 110))
+		vbox1 = pychan.widgets.containers.VBox(name="input_res", position=(2,0))
 		arrow_icon = pychan.widgets.Icon(image="content/gui/images/icons/hud/main/production_arrow.png", \
-		                                 position=(61, 16))
+		                                 position=(56, 16))
 		toggle_button = pychan.widgets.buttons.ImageButton(
 		      up_image="content/gui/images/icons/hud/main/toggle_active.png",
 		      down_image="content/gui/images/icons/hud/main/toggle_active_h.png",
 		      over_image="content/gui/images/icons/hud/main/toggle_active_h.png" ,
 		      border_size="0",
-		      position=(90,10),
+		      position=(87,10),
 		      name="toggle_active" )
-		vbox2 = pychan.widgets.containers.VBox(name="output_res")
+		vbox2 = pychan.widgets.containers.VBox(name="output_res", position=(157,0))
 		container.addChildren(vbox1, arrow_icon, toggle_button, vbox2)
 		return container
 
