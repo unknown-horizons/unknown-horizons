@@ -240,6 +240,7 @@ def _start_map(map_name):
 
 def _load_map(savegamename):
 	# load a game specified by user
+
 	saves = SavegameManager.get_saves()
 	try:
 		save_id = saves[1].index(savegamename)

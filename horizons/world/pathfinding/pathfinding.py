@@ -22,7 +22,7 @@
 import sys
 import logging
 
-from horizons.util import Rect, Point
+from horizons.util import Rect, Point, decorators
 from horizons.world.building.building import BasicBuilding
 
 from horizons.world.pathfinding import PathBlockedError
@@ -80,6 +80,7 @@ class FindPath(object):
 		self.log.debug('found path: %s', path)
 		return path
 
+	@decorators.make_constants()
 	def setup(self):
 		"""Sets up variables for execution of algorithm
 		@return: bool, whether setup was successful"""
@@ -117,6 +118,7 @@ class FindPath(object):
 
 		return True
 
+	@decorators.make_constants()
 	def execute(self):
 		"""Executes algorithm"""
 		# nodes are the keys of the following dicts (x, y)

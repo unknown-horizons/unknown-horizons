@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WorldObject, Circle, Callback
+from horizons.util import WorldObject, Circle, Callback, decorators
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 
 from collector import Collector, JobList
@@ -85,6 +85,7 @@ class BuildingCollector(Collector):
 	def get_colleague_collectors(self):
 		return self.home_building.get_local_collectors()
 
+	@decorators.make_constants()
 	def get_job(self):
 		"""Returns the next job or None"""
 		if self.home_building is None:

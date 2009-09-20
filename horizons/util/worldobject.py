@@ -24,6 +24,8 @@ import logging
 
 from changelistener import Changelistener
 
+from horizons.util.python import decorators
+
 class WorldObjectNotFound(KeyError):
 	pass
 
@@ -37,6 +39,7 @@ class WorldObject(Changelistener):
 	def __init__(self, **kwargs):
 		super(WorldObject, self).__init__(**kwargs)
 
+	@decorators.make_constants()
 	def getId(self, create_if_nonexistent = True):
 		if not hasattr(self, "_WorldObject__id"):
 			if not create_if_nonexistent:

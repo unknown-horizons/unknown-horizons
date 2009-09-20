@@ -21,6 +21,8 @@
 
 import fife
 
+from horizons.util.python.decorators import make_constants
+
 class Point(object):
 	__slots__ = ['x', 'y']
 	def __init__(self, x, y):
@@ -30,6 +32,7 @@ class Point(object):
 	def copy(self):
 		return Point(self.x, self.y)
 
+	@make_constants()
 	def distance(self, other):
 		from circle import Circle
 		from rect import Rect
@@ -52,10 +55,12 @@ class Point(object):
 	def distance_to_tuple(self, other):
 		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
 
+	@make_constants()
 	def distance_to_rect(self, other):
 		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) + \
 						(max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
 
+	@make_constants()
 	def distance_to_circle(self, other):
 		dist = self.distance(other.center) - other.radius
 		return dist if dist >= 0 else 0
@@ -70,6 +75,7 @@ class Point(object):
 		"""Returns point as a tuple"""
 		return (self.x, self.y)
 
+	@make_constants()
 	def to_fife_point(self):
 		"""Returns point as fife.Point"""
 		return fife.Point(self.x, self.y)

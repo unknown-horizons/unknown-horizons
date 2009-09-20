@@ -22,6 +22,8 @@
 
 from point import Point
 
+from horizons.util.python.decorators import make_constants
+
 class Circle(object):
 	"""Class for the shape of a circle
 	You can access center and radius of the circle as public members."""
@@ -34,6 +36,7 @@ class Circle(object):
 		self.center = center
 		self.radius = radius
 
+	@make_constants()
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the circle"""
 		coords = []
@@ -41,6 +44,7 @@ class Circle(object):
 			coords.append(i)
 		return coords
 
+	@make_constants()
 	def contains(self, point):
 		assert isinstance(point, Point)
 		if point.distance_to_point(self.center) <= self.radius:
@@ -51,6 +55,7 @@ class Circle(object):
 	def __str__(self):
 		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
 
+	@make_constants()
 	def __eq__(self, other):
 		try:
 			if self.center == other.center and \
@@ -64,6 +69,7 @@ class Circle(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	@make_constants()
 	def __iter__(self):
 		"""Iterates through all coords in circle as Point"""
 		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
@@ -71,6 +77,7 @@ class Circle(object):
 				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield Point(x, y)
 
+	@make_constants()
 	def tupel_iter(self):
 		"""Iterates through all coords in circle as tuple"""
 		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):

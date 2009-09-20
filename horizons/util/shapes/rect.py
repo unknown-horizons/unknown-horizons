@@ -22,6 +22,8 @@
 from point import Point
 from circle import Circle
 
+from horizons.util.python.decorators import make_constants
+
 class Rect(object):
 	def __init__(self, *args):
 		if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1], Point): #args: edge1, edge2
@@ -84,6 +86,7 @@ class Rect(object):
 	def copy(self):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
 
+	@make_constants()
 	def distance(self, other):
 		"""Calculates distance to another object"""
 		distance_functions_map = {
@@ -97,22 +100,26 @@ class Rect(object):
 		except KeyError:
 			return other.distance(self)
 
+	@make_constants()
 	def distance_to_point(self, other):
 		"""Calculates distance to an instance of Point.
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) + \
 						(max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
 
+	@make_constants()
 	def distance_to_tuple(self, other):
 		"""Calculates distance to a coordinate as tuple (x, y)
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
 
+	@make_constants()
 	def distance_to_rect(self, other):
 		"""Calculates distance to an instance of Rect.
 		Don't use this, unless you are sure that distance() is too slow."""
 		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
+	@make_constants()
 	def distance_to_circle(self, other):
 		dist = self.distance_to_point(other.center) - other.radius
 		return dist if dist >= 0 else 0
@@ -121,6 +128,7 @@ class Rect(object):
 		"""Returns list of all coordinates, that are in the Rect """
 		return [ (x, y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
 
+	@make_constants()
 	def get_radius_coordinates(self, radius, include_self = False):
 		"""Returns list of all coordinates, that are in the radius
 		@param include_self: whether to include coords in self"""
@@ -160,6 +168,7 @@ class Rect(object):
 		"""Same as contains, but takes a tuple (x, y) as parameter (overloaded function)"""
 		return (self.left <= tup[0] <= self.right) and (self.top <= tup[1] <= self.bottom)
 
+	@make_constants()
 	def intersect(self, rect):
 		""" Returns a rect that is the intersection of this rect and the rect parameter.
 		@param rect: Rect that will be intersected with this rect.
@@ -194,18 +203,21 @@ class Rect(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	@make_constants()
 	def __iter__(self):
 		"""Generates an iterator, that returns Points"""
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield Point(x, y)
 
+	@make_constants()
 	def tupel_iter(self):
 		"""Generates an iterator, that returns tuples"""
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):
 				yield x, y
 
+	@make_constants()
 	def iter_without_border(self):
 		"""There are 2 points of view about what width means. You can eiter include the last
 		point's area, or just consider points itself without any extensions. This iter iterates over

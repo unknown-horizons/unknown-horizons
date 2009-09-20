@@ -26,7 +26,7 @@ import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.pathfinding import PathBlockedError
-from horizons.util import Point, WeakMethodList
+from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcretObject
 
 class MoveNotPossible(Exception):
@@ -156,6 +156,7 @@ class MovingObject(ConcretObject):
 
 		self.move_callbacks.execute()
 
+	@decorators.make_constants()
 	def _move_tick(self):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
