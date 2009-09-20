@@ -69,6 +69,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		level, self.inhabitants = \
 				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
 		self.__init(level)
+		self.owner.notify_settler_reached_level(self)
 		self.run()
 
 	@property

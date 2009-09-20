@@ -139,7 +139,8 @@ class IngameGui(LivingObject):
 				#'bridge-1' : callbackWithArguments(self._build, 16)
 		},
 			1: {
-		    'school-1' : callbackWithArguments(self._build, 21)
+		    'school-1' : callbackWithArguments(self._build, 21),
+		    'sugarfield-1' : callbackWithArguments(self._build, 22)
 		},
 			2: {
 		},

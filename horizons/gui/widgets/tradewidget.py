@@ -23,7 +23,7 @@ import pychan
 
 import horizons.main
 
-from horizons.gui.widgets.inventory import ImageFillStatusButton
+from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import load_xml_translated
 
 class TradeWidget(object):

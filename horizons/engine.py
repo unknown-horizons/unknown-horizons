@@ -30,10 +30,6 @@ import gui.style
 import horizons.main
 
 from horizons.util import ActionSetLoader
-from gui.widgets.inventory import Inventory, ImageFillStatusButton
-from gui.widgets.progressbar import ProgressBar
-from gui.widgets.toggleimagebutton import ToggleImageButton
-from gui.widgets.tooltip import TooltipIcon, TooltipButton
 from horizons.extscheduler import ExtScheduler
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
@@ -307,6 +303,13 @@ class Fife(object):
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)
 		self.pychan.loadFonts("content/fonts/libertine.fontdef")
+
+		from gui.widgets.inventory import Inventory
+		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
+		from gui.widgets.progressbar import ProgressBar
+		from gui.widgets.toggleimagebutton import ToggleImageButton
+		from gui.widgets.tooltip import TooltipIcon, TooltipButton
+
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
 		pychan.widgets.registerWidget(ProgressBar)

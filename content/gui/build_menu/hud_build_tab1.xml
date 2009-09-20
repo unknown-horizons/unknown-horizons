@@ -12,5 +12,6 @@
 
 		<TooltipButton name="school-1" position="56,33" up_image="content/gui/images/icons/hud/build/school.png" hover_image="content/gui/images/icons/hud/build/school_h.png" down_image="content/gui/images/icons/hud/build/school_h.png" tooltip="School: \nProvides education."/>
 
+		<TooltipButton name="sugarfield-1" position="56,83" up_image="content/gui/images/icons/hud/build/sugarfield.png" hover_image="content/gui/images/icons/hud/build/sugarfield_h.png" down_image="content/gui/images/icons/hud/build/sugarfield_h.png" tooltip="Sugar Field: \nProduces sugar\nfor rum."/>
 	</Container>
 </Container>

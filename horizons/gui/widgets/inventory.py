@@ -23,6 +23,8 @@ import pychan
 
 import horizons.main
 
+from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
 	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
@@ -60,11 +62,13 @@ class Inventory(pychan.widgets.Container):
 			# check if this res should be displayed
 			if not horizons.main.db('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE rowid=?', resid)[0]
+			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE id=?', resid)[0]
+			tooltip = horizons.main.db('SELECT name FROM data.resource WHERE id = ?', resid)[0][0]
 			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon,
 										   down_image=icon_disabled if amount == 0 else icon,
 										   hover_image=icon_disabled if amount == 0 else icon,
 										   text=str(amount),
+			                 tooltip=tooltip,
 										   size=(55, 50),
 										   res_id = resid,
 										   opaque=False)
@@ -79,37 +83,3 @@ class Inventory(pychan.widgets.Container):
 		self.adaptLayout()
 		self.stylize('menu_black')
 
-class ImageFillStatusButton(pychan.widgets.Container):
-
-	def __init__(self, up_image, down_image, hover_image, text, res_id, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
-		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
-		in order to display the image. The container is only used, because ImageButtons can't have children.
-		This is meant to be used with the Inventory widget."""
-		super(ImageFillStatusButton, self).__init__(**kwargs)
-		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		# res_id is used by the TradeWidget for example to determine the resource this button represents
-		self.res_id = res_id
-		self.text_position = (17, 36)
-		self.filled = 0
-
-	def _set_filled(self, percent):
-		""""@param percent: int percent that fillstatus will be green"""
-		self._filled = percent
-		self._draw()
-
-	def _get_filled(self):
-		return self._filled
-
-	filled = property(_get_filled, _set_filled)
-
-	def _draw(self):
-		"""Draws the icon + bar."""
-		self.button = pychan.widgets.ImageButton(up_image=self.up_image,
-												 down_image=self.down_image,
-												 hover_image=self.hover_image)
-		label = pychan.widgets.Label(text=self.text)
-		label.position = self.text_position
-		fill_bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
-		fill_bar.position = (self.button.width-fill_bar.width-1, self.button.height-int(self.button.height/100.0*self._filled))
-		self.addChildren(self.button, fill_bar, label)

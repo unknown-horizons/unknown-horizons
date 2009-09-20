@@ -54,7 +54,6 @@ class ToggleImageButton(tooltip.TooltipButton):
 	def set_active(self):
 		"""Sets the button active. Restores up, down and hover image to
 		previous state."""
-		print 'set_active', self
 		if self.state != self.ACTIVE:
 			self.up_image, self.down_image, self.hover_image = self.old_images
 			self.state = self.ACTIVE
@@ -62,7 +61,6 @@ class ToggleImageButton(tooltip.TooltipButton):
 	def set_inactive(self):
 		"""Sets the button inactive. Overrides up, down and hover image with
 		inactive image."""
-		print 'set_inactive', self
 		if self.state != self.INACTIVE:
 			self.old_images = (self.up_image, self.down_image, self.hover_image)
 			self.up_image = self.inactive_image

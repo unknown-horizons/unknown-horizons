@@ -38,8 +38,7 @@ class TooltipIcon(pychan.widgets.Icon):
 		super(TooltipIcon, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
-		if tooltip != "":
-			self.tooltip = unicode(tooltip)
+		self.tooltip = unicode(tooltip)
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
@@ -61,7 +60,7 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.gui.show()
 
 	def show_tooltip(self):
-		if hasattr(self, 'tooltip'):
+		if self.tooltip != "":
 			line_count = self.tooltip.count(r'\n')
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
