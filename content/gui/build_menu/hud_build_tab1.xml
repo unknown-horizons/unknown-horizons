@@ -10,8 +10,41 @@
 		<Label name="headline" position="70,7" text="Pioneer Buildings" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />	
 
-		<TooltipButton name="school-1" position="56,33" up_image="content/gui/images/icons/hud/build/school.png" hover_image="content/gui/images/icons/hud/build/school_h.png" down_image="content/gui/images/icons/hud/build/school_h.png" tooltip="School: \nProvides education."/>
+		
+	</Container>
+	<Container position="20,32" size="600,400">
+		<Label position="0,11" text="Housing" name="housing_label" />
 
-		<TooltipButton name="sugarfield-1" position="56,83" up_image="content/gui/images/icons/hud/build/sugarfield.png" hover_image="content/gui/images/icons/hud/build/sugarfield_h.png" down_image="content/gui/images/icons/hud/build/sugarfield_h.png" tooltip="Sugar Field: \nProduces sugar\nfor rum."/>
+		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+
+		<TooltipButton name="school-1" position="0,30" up_image="content/gui/images/icons/hud/build/school.png" 
+		hover_image="content/gui/images/icons/hud/build/school_h.png" down_image="content/gui/images/icons/hud/build/school_h.png" 
+		tooltip="School: \nProvides education."/>
+		
+	</Container>
+	<Container position="20,107" size="600,400">
+		<Label position="0,11" text="Production" name="production_label" />
+
+		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+
+		<TooltipButton name="sugarfield-1" position="0,30" up_image="content/gui/images/icons/hud/build/sugarfield.png" 
+		hover_image="content/gui/images/icons/hud/build/sugarfield_h.png" down_image="content/gui/images/icons/hud/build/sugarfield_h.png" 			tooltip="Sugar Field: \nProduces sugar\nfor rum."/>
+	</Container>
+	<Container position="20,182" size="600,400">
+		<Label position="0,11" text="Processing Production" name="processing_production_label" />
+
+		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+
+		<TooltipButton name="weaver-1" position="0,30" up_image="content/gui/images/icons/hud/build/weaver.png" 
+		hover_image="content/gui/images/icons/hud/build/weaver_h.png" 
+		down_image="content/gui/images/icons/hud/build/weaver_h.png" tooltip="Weaver: \nTurns lamb wool \ninto cloth" />
+	</Container>
+	<Container position="20,312" size="600,400" >
+		<Label position="0,11" text="Military" name="military_label" />
+
+		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+
+		<TooltipButton name="boat_builder-1" position="0,30" up_image="content/gui/images/icons/hud/build/boat_builder.png" 
+		hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" down_image="content/gui/images/icons/hud/build/boat_builder_h.png" 			tooltip="Boat builder: \nBuilds boats and\nsmall ships, \nbuilt on coast" />
 	</Container>
 </Container>
