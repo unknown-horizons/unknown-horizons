@@ -73,6 +73,7 @@ class GenericStorage(Changelistener):
 				self.limit = int(self.limit)
 
 		for (res, amount) in db("SELECT resource, amount FROM storage WHERE object = ?", ownerid):
+			assert self[res] == 0
 			self.alter(res, amount)
 
 	def alter(self, res, amount):

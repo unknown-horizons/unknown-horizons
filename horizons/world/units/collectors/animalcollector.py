@@ -74,9 +74,10 @@ class AnimalCollector(BuildingCollector):
 			self.move(self.job.object.position, self.begin_working)
 		except MoveNotPossible:
 			# the animal is now unreachable.
-			self.job.object.remove_stop_after_job()
 			self.job.object.search_job()
+			self.state = self.states.idle
 			self.cancel()
+			return
 		self.state = self.states.moving_to_target
 
 	def finish_working(self):

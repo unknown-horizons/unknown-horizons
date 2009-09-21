@@ -59,7 +59,6 @@ class Player(StorageHolder, WorldObject):
 							else horizons.main.settings.client_id
 		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", \
 			 self.getId(), self.name, self.color.id, client_id)
-		self.inventory.save(db, self.getId())
 
 	@classmethod
 	def load(cls, db, worldid):
@@ -74,8 +73,6 @@ class Player(StorageHolder, WorldObject):
 
 		color, name = db("SELECT color, name FROM player WHERE rowid = ?", worldid)[0]
 		self.__init(worldid, name, Color[color])
-
-		self.inventory.load(db, worldid)
 
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving

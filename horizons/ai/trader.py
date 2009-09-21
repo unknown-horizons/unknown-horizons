@@ -26,7 +26,7 @@ import horizons.main
 
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
-from horizons.util import Point, Callback, WorldObject
+from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.world.player import Player
@@ -90,7 +90,7 @@ class Trader(Player):
 				# current state has a callback
 				calls = Scheduler().get_classinst_calls(self, current_callback)
 				assert(len(calls) == 1)
-				remaining_ticks = calls.values()[0]
+				remaining_ticks = max(calls.values()[0], 1)
 
 			targeted_branch = None if ship.id not in self.office else self.office[ship.id].getId()
 
@@ -192,16 +192,17 @@ class Trader(Player):
 				self.office[ship.id] = branchoffices[rand]
 			else:
 				self.office[ship.id] = branch_office
-			for water in horizons.main.session.world.ground_map: # get a position near the branch office
-				if Point(water[0], water[1]).distance(self.office[ship.id].position) < 3:
-					try:
-						ship.move(Point(water[0], water[1]), Callback(self.reached_branch, ship))
-					except MoveNotPossible:
-						self.notify_unit_path_blocked(ship)
-						return
-					self.ships[ship] = self.shipStates.moving_to_branch
-					break
-			else:
+			found_path_to_bo = False
+			# try to find a possible position near the bo
+			for point in Circle(self.office[ship.id].position.origin, 3):
+				try:
+					ship.move(point, Callback(self.reached_branch, ship))
+				except MoveNotPossible:
+					continue
+				found_path_to_bo = True
+				self.ships[ship] = self.shipStates.moving_to_branch
+				break
+			if not found_path_to_bo:
 				self.send_ship_random(ship)
 
 	def reached_branch(self, ship):
@@ -257,7 +258,8 @@ class Trader(Player):
 			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self)
 
 	def notify_unit_path_blocked(self, unit):
-		self.log.debug("Trader %s: ship blocked", self.getId())
+		self.log.warning("Trader %s: ship blocked", self.getId())
+		import pdb ; pdb.set_trace()
 		# retry moving ship in 2 secs
 		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, 32)
 

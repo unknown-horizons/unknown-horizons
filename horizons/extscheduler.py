@@ -40,6 +40,7 @@ class ExtScheduler(object):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
+		# loop through schedule until an object doesn't match the time criteria
 		for tup in self.schedule:
 			if tup[0] <= time.time():
 				obj = self.schedule.pop(0)[1]
@@ -62,7 +63,7 @@ class ExtScheduler(object):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
 		@param callback: function callback, which is called runin time.
 		@param class_instance: class instance the function belongs to.
-		@param runin: float number of seconds after which the callback is called. Standard is 1, run next tick.
+		@param runin: float number of seconds after which the callback is called. Standard is 1, run next second.
 		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once."""
 		obj = CallbackObject(callback, class_instance, runin, loops)
 		self.add_object(obj)

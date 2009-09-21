@@ -124,7 +124,7 @@ class Collector(StorageHolder, Unit):
 		if current_callback is not None:
 			calls = Scheduler().get_classinst_calls(self, current_callback)
 			assert len(calls) == 1, 'Collector should have callback %s, but doesn\'t' % current_callback
-			remaining_ticks = calls.values()[0]
+			remaining_ticks = max(calls.values()[0], 1) # save a number > 0
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)", \
 			 self.getId(), self.state.index, remaining_ticks, self.start_hidden)

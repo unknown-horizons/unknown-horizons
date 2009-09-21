@@ -177,8 +177,10 @@ class MovingObject(ConcretObject):
 				self._next_target = self.position
 				if self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
 					self.owner.notify_unit_path_blocked(self)
+					self.log.warning('PATH FOR UNIT %s is blocked. delegating to owner %s', self, self.owner)
 				else:
 					# generic solution: retry in 2 secs
+					self.log.warning('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
 					Scheduler().add_new_object(self._move_tick, self, 32)
 				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return

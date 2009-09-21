@@ -71,7 +71,6 @@ class Changelistener(LivingObject):
 		for listener in self.__remove_listeners:
 			listener()
 
-
 	def load(self, db, world_id):
 		self.__init()
 

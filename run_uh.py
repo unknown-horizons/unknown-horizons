@@ -34,6 +34,7 @@ import logging
 import logging.config
 import logging.handlers
 import optparse
+import signal
 import traceback
 
 __all__ = ['init_environment', 'get_fife_path']
@@ -119,7 +120,25 @@ def excepthook_creator(outfilename):
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
 	return excepthook
 
+def exithandler(signum, frame):
+	"""Handles a kill quietly"""
+	signal.signal(signal.SIGINT, signal.SIG_IGN)
+	signal.signal(signal.SIGTERM, signal.SIG_IGN)
+	try:
+		import horizons.main
+		horizons.main.quit()
+	except ImportError:
+		pass
+	print
+	print 'Oh my god! They killed UH.'
+	print 'You bastards!'
+	sys.exit(1)
+
 def main():
+	# abort silently on signal
+	signal.signal(signal.SIGINT, exithandler)
+	signal.signal(signal.SIGTERM, exithandler)
+
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig('content/logging.conf')

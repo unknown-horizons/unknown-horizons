@@ -40,6 +40,7 @@ class FindPath(object):
 	"""
 	log = logging.getLogger("world.pathfinding")
 
+	@decorators.make_constants()
 	def __call__(self, source, destination, path_nodes, blocked_coords = list(), \
 							 diagonal = False, make_target_walkable = True):
 		"""

@@ -71,8 +71,9 @@ class CollectorAnimal(Animal):
 		self.log.debug("%s search job", self)
 		if self.collector is not None:
 			# tell the animalcollector to pick me up
-			self.collector.pickup_animal()
+			collector = self.collector
 			self.collector = None
+			collector.pickup_animal()
 			self.state = self.states.stopped
 		else:
 			super(CollectorAnimal, self).search_job()
@@ -131,7 +132,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		if self.state == self.states.no_job_waiting:
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
 			assert(len(calls) == 1)
-			remaining_ticks = calls.values()[0]
+			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?", \
 				 remaining_ticks, self.getId())
 

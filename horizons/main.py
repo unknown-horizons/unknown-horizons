@@ -58,7 +58,7 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, session, connection, ext_scheduler, settings, \
+	global fife, db, session, connection, settings, \
 	       unstable_features, debug, preloading
 
 	from engine import Fife
@@ -286,6 +286,9 @@ def preload_game_data(lock):
 			log.debug("Preload: %s is done", f)
 			lock.release()
 		log.debug("Preloading done.")
+	except Exception, e:
+		log.warning("Exception occured in preloading thread: %s", e)
+
 	finally:
 		if lock.locked():
 			lock.release()

@@ -33,6 +33,7 @@ from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.mousetools import TearingTool
 from timer import Timer
 from scheduler import Scheduler
+from extscheduler import ExtScheduler
 from manager import SPManager
 from view import View
 from world import World
@@ -104,7 +105,7 @@ class Session(LivingObject):
 
 		#autosave
 		if horizons.main.settings.savegame.autosaveinterval != 0:
-			Scheduler().add_new_object(self.autosave, self, \
+			ExtScheduler().add_new_object(self.autosave, self, \
 			                           self.timer.get_ticks(\
 			                             horizons.main.settings.savegame.autosaveinterval) * 60, \
 			                                                -1)
@@ -113,6 +114,7 @@ class Session(LivingObject):
 		self.log.debug("Ending session")
 
 		Scheduler().rem_all_classinst_calls(self)
+		ExtScheduler().rem_all_classinst_calls(self)
 
 		if horizons.main.settings.sound.enabled:
 			for emitter in horizons.main.fife.emitter['ambient']:

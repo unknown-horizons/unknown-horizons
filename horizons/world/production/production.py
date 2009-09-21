@@ -78,8 +78,9 @@ class Production(WorldObject):
 		if self._state == PRODUCTION_STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
 		elif self._state == PRODUCTION_STATES.producing:
-			remaining_ticks = \
-						Scheduler().get_remaining_ticks(self, self._finished_producing)
+			remaining_ticks = Scheduler().get_remaining_ticks(self, self._finished_producing)
+		# use a number > 0 for ticks
+		remaining_ticks = None if remaining_ticks is None else max(remaining_ticks, 1)
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
 		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.getId(), self._state.index, \
 												self._prod_line.id, remaining_ticks, \
