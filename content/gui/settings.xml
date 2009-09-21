@@ -4,11 +4,11 @@
 	
 	<Container size="320,500" position="55,32">
 		<Label text="Settings" position="120,10" name="headline" />
-		<Label text="Please make sure that you know, what you do." position="22,30"/>
+		<Label name="warning" text="Please make sure that you know, what you do." position="22,30"/>
 		<Icon image="content/gui/images/background/hr.png" position="52,50" />
 		
 		<Container size="320,240" position="0,60" name="graphic_settings">
-			<Label text="GRAPHICS" position="12,0"/>
+			<Label name="headline_graphics" text="GRAPHICS" position="12,0"/>
 			<Label name="screen_resolution_label" text="Screen resolution:" position="22,40"/>
 			<ScrollArea min_size="100,40" position="160,40">			
 			<ListBox name="screen_resolution"/>
@@ -25,7 +25,7 @@
 		</Container>
 
 		<Container size="320,200" position="0,300" name="sound_settings">
-			<Label text="SOUND" position="12,0"/>
+			<Label name="headline_sound" text="SOUND" position="12,0"/>
 			<Label name="music_volume_label" text="Music volume:" position="22,40" />
 			<Container size="180,30" position="150,40">
 				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" />
@@ -42,7 +42,7 @@
 	
 	<Container size="320,500" position="420,32">
 		<Container size="320,240" position="0,60" name="graphic_settings">
-			<Label text="SAVING" position="12,0"/>			
+			<Label name="headline_saving" text="SAVING" position="12,0"/>			
 			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40" />
 			<ScrollArea min_size="48,20" position="150,70">			
 			<ListBox name="autosaveinterval" />
@@ -59,7 +59,7 @@
 		</Container>
 
 		<Container size="320,140" position="0,300">
-			<Label text="LANGUAGE" position="12,0" />
+			<Label name="headline_language" text="LANGUAGE" position="12,0" />
 			<Label name="language_label" text="Language:" position="22,40" /> 
 			<ScrollArea min_size="120,60" position="150,40">
 			<ListBox name="language" />   

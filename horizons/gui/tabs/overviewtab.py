@@ -150,6 +150,7 @@ class ProductionOverviewTab(OverviewTab):
 			parent_container.removeChild(parent_container.children[0])
 
 		# create a container for each production
+		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in sorted(self.instance._get_productions(), \
 		                         key=(lambda x: x.get_production_line_id())):
 			container = self._create_production_line_container(not production.is_paused())
