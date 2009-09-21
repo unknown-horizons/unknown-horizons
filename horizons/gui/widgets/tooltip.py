@@ -61,7 +61,8 @@ class TooltipIcon(pychan.widgets.Icon):
 
 	def show_tooltip(self):
 		if self.tooltip != "":
-			line_count = self.tooltip.count(r'\n')
+			translated_tooltip = _(self.tooltip)
+			line_count = translated_tooltip.count(r'\n')
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
@@ -73,7 +74,7 @@ class TooltipIcon(pychan.widgets.Icon):
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
 			label = pychan.widgets.Label(text=u"", position=(16, 8))
-			label.text = self.tooltip.replace(r'\n', '\n')
+			label.text = translated_tooltip.replace(r'\n', '\n')
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
@@ -115,7 +116,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 		self.tooltip_shown = False
 		self.tooltip_items = []
 
-	def position_tooltip(self, event=0):
+	def position_tooltip(self, event):
 		widget_position = self.getAbsolutePos()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:
@@ -126,8 +127,9 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.gui.show()
 
 	def show_tooltip(self):
-		if hasattr(self, 'tooltip'):
-			line_count = self.tooltip.count(r'\n')
+		if self.tooltip != '':
+			translated_tooltip = _(self.tooltip)
+			line_count = translated_tooltip.count(r'\n')
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
@@ -139,7 +141,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
 			label = pychan.widgets.Label(text=u"", position=(16, 8))
-			label.text = self.tooltip.replace(r'\n', '\n')
+			label.text = translated_tooltip.replace(r'\n', '\n')
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)

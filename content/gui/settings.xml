@@ -21,7 +21,7 @@
 			<ScrollArea min_size="100,20" position="160,155">
 			<ListBox name="screen_renderer" />
 			</ScrollArea>
-			<CheckBox min_size="160,32" name="screen_fullscreen" text="Full screen" position="22,190" />
+			<CheckBox min_size="160,32" name="screen_fullscreen" position="22,190" /> <Label name="screen_fullscreen_text" text="Full screen" position="67,190" />
 		</Container>
 
 		<Container size="320,200" position="0,300" name="sound_settings">
@@ -36,7 +36,7 @@
 				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" />
 				<TextBox min_size="40,0" name="volume_effects_value" text=""  position="124,0" />
 			</Container>
-			<CheckBox min_size="160,32" name="sound_enable_opt" text="Enable sound" position="22,120" />   	
+			<CheckBox min_size="160,32" name="sound_enable_opt" position="22,120" /> <Label name="sound_enable_opt_text" text="Enable sound" position="67,120" />   	
 		</Container>
 	</Container>
 	
