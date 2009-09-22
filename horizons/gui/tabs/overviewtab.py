@@ -144,6 +144,11 @@ class ProductionOverviewTab(OverviewTab):
 			costs = self.instance.running_costs
 		self.widget.child_finder('running_costs').text = unicode(costs)
 
+		cap_util = 0
+		if hasattr(self.instance, 'capacity_utilisation'):
+			cap_util = int(round( self.instance.capacity_utilisation * 100))
+		self.widget.child_finder('capacity_utilisation').text = unicode(cap_util) + u'%'
+
 		# remove old production line data
 		parent_container = self.widget.child_finder('production_lines')
 		while len(parent_container.children) > 0:

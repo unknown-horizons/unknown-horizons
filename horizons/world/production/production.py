@@ -25,7 +25,7 @@ import logging
 import copy
 
 from horizons.util import WorldObject
-from horizons.constants import PRODUCTION_STATES
+from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
 
 import horizons.main
@@ -50,7 +50,7 @@ class Production(WorldObject):
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, **kwargs):
 		super(Production, self).__init__(**kwargs)
-		self.__init(inventory, prod_line_id, PRODUCTION_STATES.waiting_for_res)
+		self.__init(inventory, prod_line_id, PRODUCTION.STATES.waiting_for_res)
 		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 
 	def __init(self, inventory, prod_line_id, state, pause_old_state = None):
@@ -75,9 +75,9 @@ class Production(WorldObject):
 
 	def save(self, db):
 		remaining_ticks = None
-		if self._state == PRODUCTION_STATES.paused:
+		if self._state == PRODUCTION.STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
-		elif self._state == PRODUCTION_STATES.producing:
+		elif self._state == PRODUCTION.STATES.producing:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self._finished_producing)
 		# use a number > 0 for ticks
 		remaining_ticks = None if remaining_ticks is None else max(remaining_ticks, 1)
@@ -93,13 +93,13 @@ class Production(WorldObject):
 		db_data = db('SELECT state, owner, prod_line_id, remaining_ticks, _pause_old_state \
 								  FROM production WHERE rowid = ?', worldid)[0]
 		self.__init(WorldObject.get_object_by_id(db_data[1]).inventory, db_data[2], \
-								PRODUCTION_STATES[db_data[0]], None if db_data[4] is None else PRODUCTION_STATES[db_data[4]])
-		if self._state == PRODUCTION_STATES.paused:
+								PRODUCTION.STATES[db_data[0]], None if db_data[4] is None else PRODUCTION.STATES[db_data[4]])
+		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
-		elif self._state == PRODUCTION_STATES.producing:
+		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._finished_producing, self, db_data[3])
-		elif self._state == PRODUCTION_STATES.waiting_for_res or \
-		     self._state == PRODUCTION_STATES.inventory_full:
+		elif self._state == PRODUCTION.STATES.waiting_for_res or \
+		     self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
 
 		# BUG: the following super code only returns Production, which causes endless recursion
@@ -153,16 +153,16 @@ class Production(WorldObject):
 			self.pause(pause=False)
 
 	def is_paused(self):
-		return self._state == PRODUCTION_STATES.paused
+		return self._state == PRODUCTION.STATES.paused
 
 	def pause(self, pause = True):
 		self.log.debug("Production pause: %s", pause)
 		if not pause: # do unpause
-			if self._pause_old_state in (PRODUCTION_STATES.waiting_for_res, \
-			                             PRODUCTION_STATES.inventory_full):
+			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
+			                             PRODUCTION.STATES.inventory_full):
 				# just restore watching
 				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
-			elif self._pause_old_state == PRODUCTION_STATES.producing:
+			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# restore scheduler call
 				Scheduler().add_new_object(self._finished_producing, self, \
 					 self._pause_remaining_ticks)
@@ -174,11 +174,11 @@ class Production(WorldObject):
 			self._pause_old_state = None
 
 		else: # do pause
-			if self._state in (PRODUCTION_STATES.waiting_for_res, \
-			                   PRODUCTION_STATES.inventory_full):
+			if self._state in (PRODUCTION.STATES.waiting_for_res, \
+			                   PRODUCTION.STATES.inventory_full):
 				# just stop watching for new res
 				self.inventory.remove_change_listener(self._check_inventory)
-			elif self._state == PRODUCTION_STATES.producing:
+			elif self._state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
 						Scheduler().get_remaining_ticks(self, self._finished_producing)
@@ -188,13 +188,13 @@ class Production(WorldObject):
 
 			# switch state
 			self._pause_old_state = self._state
-			self._state = PRODUCTION_STATES.paused
+			self._state = PRODUCTION.STATES.paused
 
 		self._changed()
 
 	def finish_production_now(self):
 		"""Makes the production finish now"""
-		if self._state != PRODUCTION_STATES.producing:
+		if self._state != PRODUCTION.STATES.producing:
 			return
 		Scheduler().rem_call(self, self._finished_producing)
 		self._finished_producing()
@@ -214,12 +214,12 @@ class Production(WorldObject):
 	## PROTECTED METHODS
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
-		assert self._state in (PRODUCTION_STATES.waiting_for_res, \
-		                       PRODUCTION_STATES.inventory_full) or True
+		assert self._state in (PRODUCTION.STATES.waiting_for_res, \
+		                       PRODUCTION.STATES.inventory_full) or True
 		check_space = self._check_for_space_for_produced_res()
 		if not check_space:
 			# can't produce, no space in our inventory
-			self._state = PRODUCTION_STATES.inventory_full
+			self._state = PRODUCTION.STATES.inventory_full
 			self._changed()
 		elif self._check_available_res():
 			# we have space in our inventory and needed res are available
@@ -228,12 +228,12 @@ class Production(WorldObject):
 			self._start_production()
 		else:
 			# we have space in our inventory, but needed res are missing
-			self._state = PRODUCTION_STATES.waiting_for_res
+			self._state = PRODUCTION.STATES.waiting_for_res
 			self._changed()
 
 	def _start_production(self):
 		"""Actually start production. Sets self to producing state"""
-		self._state = PRODUCTION_STATES.producing
+		self._state = PRODUCTION.STATES.producing
 		self._produce()
 		self._changed()
 
@@ -320,7 +320,7 @@ class SingleUseProduction(Production):
 
 	def _finished_producing(self):
 		self._give_produced_res()
-		self.state = PRODUCTION_STATES.done
+		self.state = PRODUCTION.STATES.done
 		self.on_remove()
 		if self.callback is not None:
 			self.callback(self)
@@ -381,7 +381,7 @@ class ProgressProduction(Production):
 			# watch inventory for new res
 			#self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			self.inventory.add_change_listener(self._check_inventory)
-			self._state = PRODUCTION_STATES.waiting_for_res
+			self._state = PRODUCTION.STATES.waiting_for_res
 			self._changed()
 			return
 
@@ -414,5 +414,5 @@ class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
 		# functions
 		self.progress = 0
 		self._give_produced_res()
-		self._state = PRODUCTION_STATES.done
+		self._state = PRODUCTION.STATES.done
 		self.callback(self)

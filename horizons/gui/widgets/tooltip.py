@@ -103,8 +103,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 		super(TooltipButton, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
-		if tooltip != "":
-			self.tooltip = unicode(tooltip)
+		self.tooltip = unicode(tooltip)
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,

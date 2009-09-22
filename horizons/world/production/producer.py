@@ -26,7 +26,7 @@ from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.world.production.unitproduction import UnitProduction
-from horizons.constants import PRODUCTION_STATES
+from horizons.constants import PRODUCTION
 from horizons.command.unit import CreateUnit
 from horizons.scheduler import Scheduler
 
@@ -41,6 +41,9 @@ class Producer(ResourceHandler):
 
 	production_class = Production
 
+	_capacity_utilisation_update_interval = 3.0
+
+	# INIT
 	def __init__(self, auto_init=True, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__init()
@@ -51,47 +54,27 @@ class Producer(ResourceHandler):
 				self.add_production_by_id(prod_line[0], self.production_class)
 
 	def __init(self):
-		pass
+		self.capacity_utilisation = 0.0 # float from 0.0 to 1.0
+		# update capacity util. every 3 seconds
+		Scheduler().add_new_object(self._update_capacity_utilisation, self, \
+		                   Scheduler().get_ticks(self._capacity_utilisation_update_interval), -1)
 
+	def load_production(self, db, worldid):
+		return self.production_class.load(db, worldid)
+
+	# INTERFACE
 	def add_production(self, production):
 		assert isinstance(production, Production)
 		self.log.debug('Producer %s: added production line %s', self.getId(), \
 									 production.get_production_line_id())
 		production.on_remove = Callback(self.remove_production, production)
 		self._productions[production.get_production_line_id()] = production
-		production.add_change_listener(self.on_production_change, call_listener_now=True)
+		production.add_change_listener(self._on_production_change, call_listener_now=True)
 		self._changed()
-
-	def load_production(self, db, worldid):
-		return self.production_class.load(db, worldid)
-
-	def _get_current_state(self):
-		"""Returns the current state of the producer. It is the most important
-		state of all productions combined. Check the PRODUCTION_STATES constant
-		for list of states and their importance."""
-		current_state = PRODUCTION_STATES.none
-		for production in self._get_productions():
-			state = production.get_animating_state()
-			if state is not None and current_state < state:
-				current_state = state
-		return current_state
-
-	def on_production_change(self):
-		"""Makes the instance act according to the producers
-		current state"""
-		state = self._get_current_state()
-		if (state is PRODUCTION_STATES.waiting_for_res or\
-			state is PRODUCTION_STATES.paused or\
-			state is PRODUCTION_STATES.none):
-			self.act("idle", repeating=True)
-		elif state is PRODUCTION_STATES.producing:
-			self.act("work", repeating=True)
-		elif state is PRODUCTION_STATES.inventory_full:
-			self.act("idle_full", repeating=True)
 
 	def remove_production(self, production):
 		assert isinstance(production, Production)
-		production.remove_change_listener(self.on_production_change)
+		production.remove_change_listener(self._on_production_change)
 		super(Producer, self).remove_production(production)
 
 	def finish_production_now(self):
@@ -99,6 +82,42 @@ class Producer(ResourceHandler):
 		Useful to make trees fully grown at game start."""
 		for production in self._productions.itervalues():
 			production.finish_production_now()
+
+	# PROTECTED METHODS
+	def _get_current_state(self):
+		"""Returns the current state of the producer. It is the most important
+		state of all productions combined. Check the PRODUCTION.STATES constant
+		for list of states and their importance."""
+		current_state = PRODUCTION.STATES.none
+		for production in self._get_productions():
+			state = production.get_animating_state()
+			if state is not None and current_state < state:
+				current_state = state
+		return current_state
+
+	def _on_production_change(self):
+		"""Makes the instance act according to the producers
+		current state"""
+		state = self._get_current_state()
+		if (state is PRODUCTION.STATES.waiting_for_res or\
+			state is PRODUCTION.STATES.paused or\
+			state is PRODUCTION.STATES.none):
+			self.act("idle", repeating=True)
+		elif state is PRODUCTION.STATES.producing:
+			self.act("work", repeating=True)
+		elif state is PRODUCTION.STATES.inventory_full:
+			self.act("idle_full", repeating=True)
+
+	def _update_capacity_utilisation(self):
+		"""Update the capacity utilisation value"""
+		capacity_used = (self._get_current_state() == PRODUCTION.STATES.producing)
+		part = self._capacity_utilisation_update_interval / \
+		     PRODUCTION.CAPACITY_UTILISATION_CONSIDERED_SECONDS
+		part *= 1 if capacity_used else -1
+		self.capacity_utilisation += part
+		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
+		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
+
 
 class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
@@ -133,8 +152,8 @@ class QueueProducer(Producer):
 		# production is done
 		print "Check production"
 		state = self._get_current_state()
-		return (state is PRODUCTION_STATES.done or\
-				state is PRODUCTION_STATES.none) and\
+		return (state is PRODUCTION.STATES.done or\
+				state is PRODUCTION.STATES.none) and\
 			   (len(self.production_queue) > 0)
 
 

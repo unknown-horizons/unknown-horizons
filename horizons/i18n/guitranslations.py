@@ -137,6 +137,7 @@ def set_translations():
 		"buildings_gui/production_building_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
+	    "capacity_utilisation_label"  : _("Capacity Utilisation:"),
 			"health_label"                : _("Health:"),
 			"running_costs_label"         : _("Running Costs:"),
 			"toggle_label"                : _("Toggle active:")},

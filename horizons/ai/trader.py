@@ -259,7 +259,6 @@ class Trader(Player):
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("Trader %s: ship blocked", self.getId())
-		import pdb ; pdb.set_trace()
 		# retry moving ship in 2 secs
 		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, 32)
 

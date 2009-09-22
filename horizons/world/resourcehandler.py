@@ -25,7 +25,7 @@ from horizons.util import WeakList
 from storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
-from horizons.constants import PRODUCTION_STATES
+from horizons.constants import PRODUCTION
 
 
 class ResourceHandler(StorageHolder):
@@ -94,7 +94,7 @@ class ResourceHandler(StorageHolder):
 		"""Returns a list of resources, that are currently consumed in a production."""
 		consumed_res = set()
 		for production in self._productions.itervalues():
-			if production.get_state() == PRODUCTION_STATES.producing:
+			if production.get_state() == PRODUCTION.STATES.producing:
 				consumed_res.update(production.get_consumed_resources().iterkeys())
 		return list(consumed_res)
 
