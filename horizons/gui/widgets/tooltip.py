@@ -38,7 +38,7 @@ class TooltipIcon(pychan.widgets.Icon):
 		super(TooltipIcon, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
-		self.tooltip = unicode(tooltip)
+		self.tooltip = tooltip
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
@@ -61,7 +61,7 @@ class TooltipIcon(pychan.widgets.Icon):
 
 	def show_tooltip(self):
 		if self.tooltip != "":
-			translated_tooltip = _(self.tooltip)
+			translated_tooltip = unicode(_(self.tooltip))
 			line_count = translated_tooltip.count(r'\n')
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
@@ -103,7 +103,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 		super(TooltipButton, self).__init__(**kwargs)
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
-		self.tooltip = unicode(tooltip)
+		self.tooltip = tooltip
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
@@ -127,7 +127,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 
 	def show_tooltip(self):
 		if self.tooltip != '':
-			translated_tooltip = _(self.tooltip)
+			translated_tooltip = unicode(_(self.tooltip))
 			line_count = translated_tooltip.count(r'\n')
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)

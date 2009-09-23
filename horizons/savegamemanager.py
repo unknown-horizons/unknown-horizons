@@ -162,12 +162,13 @@ class SavegameManager(object):
 		return metadata
 
 	@classmethod
-	def write_metadata(cls, db):
+	def write_metadata(cls, db, savecounter):
 		"""Writes metadata to db.
-		@param db: DbReader"""
+		@param db: DbReader
+		@param savecounter: int"""
 		metadata = cls.savegame_metadata.copy()
 		metadata['timestamp'] = time.time()
-		metadata['savecounter'] = horizons.main.session.savecounter
+		metadata['savecounter'] = savecounter
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)

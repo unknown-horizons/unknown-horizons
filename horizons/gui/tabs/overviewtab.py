@@ -29,6 +29,7 @@ from horizons.util import Callback
 from horizons.constants import RES, SETTLER
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
+from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.utility import create_resource_icon
 
 class OverviewTab(TabInterface):
@@ -162,10 +163,13 @@ class ProductionOverviewTab(OverviewTab):
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
-				in_res_container.addChild(create_resource_icon(in_res, horizons.main.db))
+				in_res_container.addChild( ImageFillStatusButton.init_for_res(in_res, \
+				                                    self.instance.inventory[in_res], horizons.main.db) )
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
-				out_res_container.addChild(create_resource_icon(out_res, horizons.main.db))
+				out_res_container.addChild( ImageFillStatusButton.init_for_res(out_res, \
+				                                    self.instance.inventory[out_res], horizons.main.db) )
+
 			# active toggle_active button
 			container.mapEvents( { 'toggle_active': ToggleActive(self.instance, production).execute } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image

@@ -550,6 +550,7 @@ class Gui(object):
 		@param mode: 'save' or 'load'
 		@return: Path to savegamefile or None"""
 		assert mode in ('save', 'load')
+		import pdb ; pdb.set_trace()
 		map_files, map_file_display = None, None
 		if mode == 'load':
 			map_files, map_file_display = SavegameManager.get_saves()

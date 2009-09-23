@@ -167,8 +167,17 @@ def save_game(savegamename=None):
 	@return: bool, whether save was successfull
 	"""
 	global session
+	def on_invalid_filename():
+		_modules.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
+		_modules.gui.hide()
+		return save_game() # re-show dialog
+
+	import pdb ; pdb.set_trace()
 	if savegamename is None:
-		savegamename = _modules.gui.show_select_savegame(mode='save')
+		try:
+			savegamename = _modules.gui.show_select_savegame(mode='save')
+		except UnicodeDecodeError:
+			return on_invalid_filename()
 		if savegamename is None:
 			return False # user aborted dialog
 		savegamename = SavegameManager.create_filename(savegamename)
@@ -177,10 +186,7 @@ def save_game(savegamename=None):
 	try:
 		session.save(savegamename)
 	except IOError: # usually invalid filename
-		_modules.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
-		_modules.gui.hide()
-		return save_game() # re-show dialog
-
+		return on_invalid_filename()
 	return True
 
 def load_game(savegame = None):

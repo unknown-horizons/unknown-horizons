@@ -196,7 +196,7 @@ class Session(LivingObject):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
 
-			SavegameManager.write_metadata(db)
+			SavegameManager.write_metadata(db, self.savecounter)
 			# Savegame integrity assurance
 			"""
 		except Exception, e:

@@ -117,7 +117,8 @@ class TradeWidget(object):
 		"""Transfers self.exchange tons of resid from transfer_from to transfer_to"""
 		if self.main_instance.position.distance(transfer_to.position) <= self.radius and \
 			 transfer_to is not None and transfer_from is not None:
-			#print 'TradeWidget debug: Transferring', self.exchange, 't of resource', res_id, 'from', transfer_from.name, 'to', transfer_to.name
+			self.log.debug('TradeWidget : Transferring %s of res %s from %s to %s', self.exchange, \
+			               res_id, transfer_from.name, transfer_to.name)
 			# take res from transfer_from
 			ret = transfer_from.inventory.alter(res_id, -self.exchange)
 			# check if we were able to get the planed amount

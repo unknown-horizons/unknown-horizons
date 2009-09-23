@@ -40,6 +40,26 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.text_position = (17, 36)
 		self.filled = 0
 
+	@classmethod
+	def init_for_res(cls, res, amount, db):
+		"""Inites the button to display the icons for res
+		@param res: resource id
+		@param amount: amount of res that is available
+		@param db: dbreader to get info about res icon.
+		@return: ImageFillStatusButton instance"""
+		icon, icon_disabled = db('SELECT icon, \
+			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END \
+			    FROM data.resource WHERE id=?', res)[0]
+		tooltip = horizons.main.db('SELECT name FROM data.resource WHERE id = ?', res)[0][0]
+		return cls(up_image=icon_disabled if amount == 0 else icon,
+										   down_image=icon_disabled if amount == 0 else icon,
+										   hover_image=icon_disabled if amount == 0 else icon,
+										   text=str(amount),
+			                 tooltip=tooltip,
+										   size=(55, 50),
+										   res_id = res,
+										   opaque=False)
+
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
 		self._filled = percent

@@ -62,19 +62,10 @@ class Inventory(pychan.widgets.Container):
 			# check if this res should be displayed
 			if not horizons.main.db('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-			icon, icon_disabled = horizons.main.db('SELECT icon, CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END from data.resource WHERE id=?', resid)[0]
-			tooltip = horizons.main.db('SELECT name FROM data.resource WHERE id = ?', resid)[0][0]
-			button = ImageFillStatusButton(up_image=icon_disabled if amount == 0 else icon,
-										   down_image=icon_disabled if amount == 0 else icon,
-										   hover_image=icon_disabled if amount == 0 else icon,
-										   text=str(amount),
-			                 tooltip=tooltip,
-										   size=(55, 50),
-										   res_id = resid,
-										   opaque=False)
+			button = ImageFillStatusButton.init_for_res(resid, amount, horizons.main.db)
 			button.filled = int(float(amount) / float(self._inventory.limit) * 100.0)
 			current_hbox.addChild(button)
-			if index % (vbox.width/(self.__class__.icon_width + 10)) == 0 and  index is not 0:
+			if index % (vbox.width/(self.__class__.icon_width + 10)) == 0 and index != 0:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding = 0)
 			index += 1
