@@ -58,7 +58,7 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, session, connection, settings, \
+	global fife, db, session, settings, \
 	       unstable_features, debug, preloading
 
 	from engine import Fife
@@ -79,7 +79,7 @@ def start(command_line_arguments):
 	# init gettext
 	_init_gettext(settings)
 
-	# create client_id if necessary
+	# create random client_id if necessary
 	if settings.client_id is None:
 		settings.client_id = "".join("-" if c in (8, 13, 18, 23) else random.choice("0123456789abcdef") for c in xrange(0, 36))
 
@@ -98,17 +98,23 @@ def start(command_line_arguments):
 	preloading = (preload_thread, preload_lock)
 
 	# start something according to commandline parameters
+
+	startup_worked = True
 	if command_line_arguments.start_dev_map:
-		_start_dev_map()
+		startup_worked = _start_dev_map()
 	elif command_line_arguments.start_map is not None:
-		_start_map(command_line_arguments.start_map)
+		startup_worked = _start_map(command_line_arguments.start_map)
 	elif command_line_arguments.load_map is not None:
-		_load_map(command_line_arguments.load_map)
+		startup_worked = _load_map(command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
-		_load_last_quicksave()
+		startup_worked = _load_last_quicksave()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		preloading[0].start()
+
+	if not startup_worked:
+		# don't start main loop if startup failed
+		return
 
 	fife.run()
 
@@ -229,37 +235,49 @@ def _start_dev_map():
 	load_game(first_map)
 
 def _start_map(map_name):
-	# start a map specified by user
-	maps = Gui.get_maps()
+	"""Start a map specified by user
+	@return: bool, whether loading succeded"""
+	maps = SavegameManager.get_maps()
+	map_file = None
 	try:
 		map_id = maps[1].index(map_name)
-		load_game(maps[0][map_id])
+		map_file = maps[0][map_id]
 	except ValueError:
-		print "Error: Cannot find map \"%s\"." % map_name
-		import sys; sys.exit(1)
+		print _("Error: Cannot find map \"%s\".") % map_name
+		return False
+	load_game(map_file)
+	return True
 
 def _load_map(savegamename):
-	# load a game specified by user
-
+	"""Load a map specified by user
+	@return: bool, whether loading succeded"""
 	saves = SavegameManager.get_saves()
+	map_file = None
 	try:
 		save_id = saves[1].index(savegamename)
-		load_game(saves[0][save_id])
+		map_file = saves[0][save_id]
 	except ValueError:
-		print "Error: Cannot find savegame \"%s\"." % savegamename
-		import sys; sys.exit(1)
+		print _("Error: Cannot find savegame \"%s\".") % savegamename
+		return False
+	load_game(map_file)
+	return True
 
 def _load_last_quicksave():
-	# load last quicksave
+	"""Load last quicksave
+	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
+	save = None
 	try:
 		save = save_files[len(save_files)-1]
 	except KeyError:
-		print "Error: No quicksave found."
-		import sys; sys.exit(1)
+		print _("Error: No quicksave found.")
+		return False
 	load_game(save)
+	return True
 
 def _create_db():
+	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
+	NOTE: This data is read_only, so there are no concurrency issues"""
 	_db = DbReader(':memory:')
 	_db("attach ? AS data", 'content/game.sqlite')
 	_db("attach ? AS settler", 'content/settler.sqlite')
@@ -288,7 +306,6 @@ def preload_game_data(lock):
 		log.debug("Preloading done.")
 	except Exception, e:
 		log.warning("Exception occured in preloading thread: %s", e)
-
 	finally:
 		if lock.locked():
 			lock.release()

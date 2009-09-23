@@ -47,6 +47,7 @@ class SavegameManager(object):
 	autosave_dir = savegame_dir+"/autosave"
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"
+	maps_dir = "content/maps"
 
 	savegame_extension = "sqlite"
 
@@ -179,6 +180,11 @@ class SavegameManager(object):
 		self.log.debug("Savegamemanager: regular saves from: %s", self.savegame_dir)
 		return self.__get_saves_from_dirs([self.savegame_dir], \
 										  include_displaynames = include_displaynames)
+
+	@classmethod
+	def get_maps(cls, include_displaynames = True):
+		cls.log.debug("Savegamemanager: get maps from %s", cls.maps_dir)
+		return cls.__get_saves_from_dirs([cls.maps_dir], include_displaynames = include_displaynames)
 
 	@classmethod
 	def get_saves(self, include_displaynames = True):
