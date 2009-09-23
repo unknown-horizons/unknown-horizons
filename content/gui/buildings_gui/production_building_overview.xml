@@ -7,7 +7,8 @@
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
-	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />	
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,350" />	
 	<Container position="0,70" size="600,400" >
 		<Label name="headline" position="50,7" text="Building overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -25,7 +26,7 @@
 
 		<!--<Icon image="content/gui/images/background/hr.png" position="20,122" />-->
 
-		<VBox name="production_lines" position="20,80"></VBox>
+		<VBox name="production_lines" position="20,90"></VBox>
 		<!--
 		This is a template code for a production line.
 		Since it can't be copied, it has to be specified in python code.

@@ -599,7 +599,7 @@ class Gui(object):
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame in map_file_display: # savegamename already exists
 				if not self.show_popup(_("Confirmation for overwriting"), \
-				      _("A savegame with the name \"%s\" already exists. Should i overwrite it?") % \
+				      _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % \
 				      selected_savegame, show_cancel_button = True):
 					return self.show_select_savegame(mode=mode) # reshow dialog
 		else: # return selected item from list

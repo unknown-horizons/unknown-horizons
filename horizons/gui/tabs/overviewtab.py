@@ -132,7 +132,7 @@ class ProductionOverviewTab(OverviewTab):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Production Overview"
 
-		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,280))
+		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,330))
 		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents({
 			'destruct_button' : self.destruct_building
@@ -180,21 +180,21 @@ class ProductionOverviewTab(OverviewTab):
 	def _create_production_line_container(active):
 		"""Creates a template pychan container, that displays a production line.
 		This can't be done in xml, since you can't duplicate this code."""
-		container = pychan.widgets.containers.Container(size=(240, 47), position=(20, 110))
+		container = pychan.widgets.containers.Container(size=(240, 55), position=(25, 110))
 		vbox1 = pychan.widgets.containers.VBox(name="input_res", position=(2,0))
 		arrow_icon = pychan.widgets.Icon(image="content/gui/images/icons/hud/main/production_arrow.png", \
-		                                 position=(56, 16))
+		                                 position=(60, 16))
 		toggle_button = pychan.widgets.ImageButton(
-		      up_image="content/gui/images/icons/hud/main/toggle_active.png",
-		      down_image="content/gui/images/icons/hud/main/toggle_active_h.png",
-		      over_image="content/gui/images/icons/hud/main/toggle_active_h.png" ,
+		      up_image="content/gui/images/icons/hud/main/toggle_active_n.png",
+		      down_image="content/gui/images/icons/hud/main/toggle_active_d.png",
+		      hover_image="content/gui/images/icons/hud/main/toggle_active_h.png" ,
 		      border_size="0",
-		      position=(87,10),
+		      position=(80,0),
 		      name="toggle_active" )
 		if not active:
-			toggle_button.up_image="content/gui/images/icons/hud/main/toggle_inactive.png"
-			toggle_button.down_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
-			toggle_button.over_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
+			toggle_button.up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
+			toggle_button.down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
+			toggle_button.hover_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
 		vbox2 = pychan.widgets.containers.VBox(name="output_res", position=(157,0))
 		container.addChildren(vbox1, arrow_icon, toggle_button, vbox2)
 		return container
