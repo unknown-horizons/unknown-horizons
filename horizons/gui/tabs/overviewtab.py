@@ -173,6 +173,7 @@ class ProductionOverviewTab(OverviewTab):
 			# active toggle_active button
 			container.mapEvents( { 'toggle_active': ToggleActive(self.instance, production).execute } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
+			container.stylize('menu_black')
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 
