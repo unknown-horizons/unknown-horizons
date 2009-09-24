@@ -244,7 +244,7 @@ class Production(WorldObject):
 		# take the res we need
 		self._remove_res_to_expend()
 		# call finished in some time
-		time = int(round( horizons.main.session.timer.get_ticks(self._prod_line.time) ))
+		time = horizons.main.session.timer.get_ticks(self._prod_line.time)
 		Scheduler().add_new_object(self._finished_producing, self, time)
 
 	def _finished_producing(self):
@@ -389,7 +389,7 @@ class ProgressProduction(Production):
 		# and set the scheduler waiting time accordingly (e.g. half of res => wait half of prod time)
 		all_needed_res = sum(self.original_prod_line.consumed_res.itervalues())
 		part_of_whole_production = float(removed_res) / all_needed_res
-		prod_time = int(round(horizons.main.session.timer.get_ticks( part_of_whole_production * self._prod_line.time )))
+		prod_time = horizons.main.session.timer.get_ticks( part_of_whole_production * self._prod_line.time )
 		prod_time = min(prod_time, 1) # wait at least 1 tick
 		# do part of production and call this again when done
 		Scheduler().add_new_object(self._produce, self, prod_time)

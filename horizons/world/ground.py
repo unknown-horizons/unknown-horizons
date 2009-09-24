@@ -29,33 +29,44 @@ import horizons.main
 from horizons.util import WorldObject
 from horizons.constants import LAYERS, GROUND
 
-class Ground(WorldObject):
+class SurfaceTile(WorldObject):
+	def __init__(self, x, y, is_water=False):
+		"""
+		@param x: int x position the ground is created.
+		@param y: int y position the ground is created.
+		"""
+		super(SurfaceTile, self).__init__()
+		self.x = x
+		self.y = y
+		self.is_water = is_water
+
+		self.settlement = None
+		self.blocked = False
+		self.object = None
+
+		layer = LAYERS.GROUND
+		if is_water:
+			layer = LAYERS.WATER
+		self._instance = horizons.main.session.view.layers[layer].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
+		fife.InstanceVisual.create(self._instance)
+
+		self.is_water = False
+
+class Ground(SurfaceTile):
 	def __init__(self, x, y):
 		"""
 		@param x: int x position the ground is created.
 		@param y: int y position the ground is created.
 		"""
-		super(Ground, self).__init__()
-		self.x = x
-		self.y = y
-		self._instance = horizons.main.session.view.layers[LAYERS.GROUND].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
-		fife.InstanceVisual.create(self._instance)
+		super(Ground, self).__init__(x, y)
 
-		self.is_water = False
-
-class Water(WorldObject):
+class Water(SurfaceTile):
 	def __init__(self, x ,y):
 		"""
 		@param x: int x position the water is created.
 		@param y: int y position the water is created.
 		"""
-		super(Water, self).__init__()
-		self.x = x
-		self.y = y
-		self._instance = horizons.main.session.view.layers[LAYERS.WATER].createInstance(self._object, fife.ModelCoordinate(int(x), int(y), 0), "")
-		fife.InstanceVisual.create(self._instance)
-
-		self.is_water = True
+		super(Water, self).__init__(x, y, True)
 
 class GroundClass(type):
 	"""

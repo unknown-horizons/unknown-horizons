@@ -26,7 +26,7 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader
+from horizons.util import ActionSetLoader, Circle
 from horizons.world.building.building import *
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
@@ -45,6 +45,8 @@ class BuildingTool(NavigationTool):
 
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
+	nearby_objects_transparency = 180
+	nearby_objects_radius = 4
 
 	def __init__(self, session, building, ship = None):
 		super(BuildingTool, self).__init__(session)
@@ -52,6 +54,7 @@ class BuildingTool(NavigationTool):
 		self.ship = ship
 		self._class = building
 		self.buildings = []
+		self.modified_objects = set()
 		self.rotation = 45 + random.randint(0, 3)*90
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
@@ -94,6 +97,9 @@ class BuildingTool(NavigationTool):
 
 	def end(self):
 		self.renderer.removeAllColored()
+		for obj in self.modified_objects:
+			if obj.fife_instance is not None:
+				obj.fife_instance.get2dGfxVisual().setTransparency(0)
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		self.session.view.remove_change_listener(self.draw_gui)
@@ -104,8 +110,7 @@ class BuildingTool(NavigationTool):
 	def load_gui(self):
 		self.gui = load_xml_translated("build_menu/hud_builddetail.xml")
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,
-							  "rotate_right": self.rotate_right }
-							)
+							  "rotate_right": self.rotate_right } )
 		self.gui.stylize('menu_black')
 		self.gui.findChild(name='headline').stylize('headline')
 		# set building name in gui
@@ -122,7 +127,6 @@ class BuildingTool(NavigationTool):
 			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
 			157
 		)
-		#self.gui.position = (horizons.main.fife.settings.getScreenWidth()/2-self.gui.size[0]/2, horizons.main.fife.settings.getScreenHeight()/1 - self.session.ingame_gui.gui['minimap'].size[1]/1)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		top_bar = self.gui.findChild(name='top_bar')
 		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
@@ -148,12 +152,29 @@ class BuildingTool(NavigationTool):
 
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
+		# delete old building fife instances
+		for obj in self.modified_objects:
+			if obj.fife_instance is not None:
+				obj.fife_instance.get2dGfxVisual().setTransparency(0)
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
+		# get new ones
 		self.buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
+		# make buildings around the preview transparent
+
 		neededResources, usableResources = {}, {}
 		settlement = None
+		# check if the buildings are buildable and color them appropriatly
 		for building in self.buildings:
+			# make surrounding transparent
+
+			for coord in Circle( Point(building['x'], building['y']), self.nearby_objects_radius ):
+				tile = self.session.world.get_tile(coord)
+				if tile.object is not None and tile.object.buildable_upon:
+					tile.object.fife_instance.get2dGfxVisual().setTransparency( \
+					  self.nearby_objects_transparency )
+					self.modified_objects.add(tile.object)
+
 			settlement = building.get('settlement', None) if settlement is None else settlement
 			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
 			                                                        building['x'], building['y'])

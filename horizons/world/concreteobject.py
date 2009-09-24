@@ -40,6 +40,11 @@ class ConcretObject(WorldObject):
 
 	def __init__(self, **kwargs):
 		super(ConcretObject, self).__init__(**kwargs)
+		self._instance = None # overwrite in subclass __init[__]
+
+	@property
+	def fife_instance(self):
+		return self._instance
 
 	def save(self, db):
 		super(ConcretObject, self).save(db)
@@ -55,7 +60,6 @@ class ConcretObject(WorldObject):
 			self._instance.setActionRuntime(runtime)
 		Scheduler().add_new_object( Callback(set_action_runtime, \
 		                                                         self, runtime), self )
-
 	def act(self, action, facing_loc=None, repeating=False):
 		if facing_loc is None:
 			facing_loc = self._instance.getFacingLocation()
