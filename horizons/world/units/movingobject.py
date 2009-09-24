@@ -200,7 +200,7 @@ class MovingObject(ConcretObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self._next_target.x, self._next_target.y, 0))
 
 		self._instance.move(self._move_action+"_"+str(self._action_set_id), location, \
-												horizons.main.session.timer.get_ticks(1.0) / move_time[0])
+												float(horizons.main.session.timer.get_ticks(1)) / move_time[0])
 		# coords per sec
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
