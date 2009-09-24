@@ -66,6 +66,7 @@ class Minimap(object):
 
 		self._recalculate()
 
+		Scheduler().rem_all_classinst_calls(self)
 		Scheduler().add_new_object(self._timed_update, self, Scheduler().get_ticks(0.5), -1)
 
 	def update_cam(self):

@@ -19,28 +19,42 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 import math
-from horizons.util import Point, Rect
-from horizons.entities import Entities
 
-class BuildableSingle(object):
+from horizons.util import Point, Rect
+
+class Buildable(object):
+	"""Base class for every kind of buildables"""
+	@classmethod
+	def init_buildable(cls, session):
+		"""Stores a reference to the current session. Will be overwritten by next call, and
+		has to be called before any other function of this class"""
+		cls.session = session
+
+	@classmethod
+	def end_buildable(cls):
+		cls.session = None
+
+class BuildableSingle(Buildable):
 	"""Buildings you can build single.
 	The Buildable* classes are a collection of classmethods checking the building
 	requirements on a certain place, each returning None if build is not possible here.
 	In case of a possible build location, a dict is returned with related attribute (possibly empty).
 	TODO: document those return values
+
+	For general use, only get_build_list is intended.
 	"""
+
 	@classmethod
-	def are_build_requirements_satisfied(cls, x, y, before = None, **kwargs):
+	def _are_build_requirements_satisfied(cls, x, y, before = None, **kwargs):
 		state = {'x' : x, 'y' : y}
 		state.update(kwargs)
 		# apply all build checks
-		for check in (cls.is_island_build_requirement_satisfied, \
-									cls.is_settlement_build_requirement_satisfied, \
-									cls.is_ground_build_requirement_satisfied, \
-									cls.is_building_build_requirement_satisfied, \
-									cls.is_unit_build_requirement_satisfied):
+		for check in (cls._is_island_build_requirement_satisfied, \
+									cls._is_settlement_build_requirement_satisfied, \
+									cls._is_ground_build_requirement_satisfied, \
+									cls._is_building_build_requirement_satisfied, \
+									cls._is_unit_build_requirement_satisfied):
 			update = check(**state)
 			if update is None:
 				return None
@@ -49,7 +63,7 @@ class BuildableSingle(object):
 				if 'buildable' in update and update['buildable'] == False:
 					return state
 		if before is not None:
-			update = cls.is_multi_build_requirement_satisfied(*before, **state)
+			update = cls._is_multi_build_requirement_satisfied(*before, **state)
 			if update is None:
 				return None
 			else:
@@ -59,7 +73,7 @@ class BuildableSingle(object):
 		return state
 
 	@classmethod
-	def is_multi_build_requirement_satisfied(cls, *before, **state):
+	def _is_multi_build_requirement_satisfied(cls, *before, **state):
 		for i in before:
 			if not i.get('buildable', True):
 				continue
@@ -68,10 +82,10 @@ class BuildableSingle(object):
 		return {}
 
 	@classmethod
-	def is_island_build_requirement_satisfied(cls, x, y, **state):
+	def _is_island_build_requirement_satisfied(cls, x, y, **state):
 		"""Checks if there is an island at x,y
 		Returns either {'buildable': False} or {'island': island}"""
-		island = horizons.main.session.world.get_island(Point(x, y))
+		island = cls.session.world.get_island(Point(x, y))
 		if island is None:
 			return {'buildable' : False}
 		p = Point(0, 0)
@@ -81,7 +95,7 @@ class BuildableSingle(object):
 		return {'island' : island}
 
 	@classmethod
-	def is_settlement_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_settlement_build_requirement_satisfied(cls, x, y, island, **state):
 		"""Checks if there is a settlement at x, y
 		Returns either {'buildable': False} or {'settlement': settlement}"""
 		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
@@ -90,7 +104,7 @@ class BuildableSingle(object):
 		return {'settlement' : settlements.pop()}
 
 	@classmethod
-	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		"""Checks if the ground at x, y is buildable.
 		Returns either {} (success) or {'buildable': False}"""
 		p = Point(0, 0)
@@ -101,7 +115,7 @@ class BuildableSingle(object):
 		return {}
 
 	@classmethod
-	def is_building_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_building_build_requirement_satisfied(cls, x, y, island, **state):
 		"""Checks if buildings are blocking the position, and wether they can be teared.
 		Returns {'buildable': False} if we can't build, {} if we can build without tearing,
 		or {'tear': [building1id, ...]} if we have to tear building1, ... before the build"""
@@ -119,7 +133,7 @@ class BuildableSingle(object):
 		return {} if len(tear) == 0 else {'tear' : list(tear)}
 
 	@classmethod
-	def is_unit_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_unit_build_requirement_satisfied(cls, x, y, island, **state):
 		return {}
 
 	@classmethod
@@ -128,13 +142,14 @@ class BuildableSingle(object):
 		that can be built here.
 		This is called when the user drags the mouse between these two points
 
-		Here, we only build at the endpoint"""
-
+		Here, we only build at the endpoint.
+		@param session: reference to current session. is stored in class for further use,
+		and will be overwritten by next call."""
 		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if \
 			(cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
 		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if \
 			(cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
-		building = cls.are_build_requirements_satisfied(x, y, **kwargs)
+		building = cls._are_build_requirements_satisfied(x, y, **kwargs)
 		if building is None:
 			return []
 		else:
@@ -152,7 +167,7 @@ class BuildableRect(BuildableSingle):
 								 for y in xrange(int(min(round(point1[1]), round(point2[1]))), \
 																 1 + int(max(round(point1[1]), round(point2[1]))), \
 		                             cls.size[1])):
-			building = cls.are_build_requirements_satisfied(x, y, buildings, **kwargs)
+			building = cls._are_build_requirements_satisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				buildings.append(building)
 
@@ -173,7 +188,7 @@ class BuildableLine(BuildableSingle):
 		# iterate in x direction with fixed y
 		for x in xrange(point1_int[0], point2_int[0], \
 		                (1 if point2_int[0] > point1_int[0] else -1)*cls.size[0]):
-			building = cls.are_build_requirements_satisfied(x, y, buildings, **kwargs)
+			building = cls._are_build_requirements_satisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : ('d' if point2_int[0] < point1_int[0] else 'b') if len(buildings) == 0 else 'bd'})
 				buildings.append(building)
@@ -200,7 +215,7 @@ class BuildableLine(BuildableSingle):
 			else:
 				action = 'ac' #default
 
-			building = cls.are_build_requirements_satisfied(x, y, buildings, **kwargs)
+			building = cls._are_build_requirements_satisfied(x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : action})
 				buildings.append(building)
@@ -212,7 +227,7 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 	def get_build_list(cls, point1, point2, **kwargs):
 		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if (cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
 		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if (cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
-		building = cls.are_build_requirements_satisfied(x, y, **kwargs)
+		building = cls._are_build_requirements_satisfied(x, y, **kwargs)
 		if building is None:
 			return []
 		buildings = [building]
@@ -220,7 +235,7 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 			for yy in xrange(y - cls.radius, y + cls.size[1] + cls.radius):
 				if ((xx < x or xx >= x + cls.size[0]) or (yy < y or yy >= y + cls.size[1])) and \
 					 ((max(x - xx, 0, xx - x - cls.size[0] + 1) ** 2) + (max(y - yy, 0, yy - y - cls.size[1] + 1) ** 2)) <= cls.radius ** 2:
-					building = Entities.buildings[cls._surroundingBuildingClass].are_build_requirements_satisfied(xx, yy, **kwargs)
+					building = Entities.buildings[cls._surroundingBuildingClass]._are_build_requirements_satisfied(xx, yy, **kwargs)
 					if building is not None:
 						building.update(building = Entities.buildings[cls._surroundingBuildingClass], **kwargs)
 						buildings.append(building)
@@ -230,7 +245,7 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 class BuildableSingleOnCoast(BuildableSingle):
 	"""BranchOffice, BoatBuilder, Fisher"""
 	@classmethod
-	def is_ground_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		coast_tile_found = False
 		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
 			tile = island.get_tile(Point(xx, yy))
@@ -245,18 +260,18 @@ class BuildableSingleOnCoast(BuildableSingle):
 	@classmethod
 	def check_build_rotation(cls, rotation, x, y):
 		"""Rotate so that the building looks out to sea"""
-		if not horizons.main.session.world.inited:
+		if not cls.session.world.inited:
 			# while loading, skip this check
 			return rotation
 		# array of coords (points are True if is coastline)
 		coastline = {}
 		position = Rect.init_from_topleft_and_size(x, y, cls.size[0]-1, cls.size[1]-1)
 		for point in position:
-			if horizons.main.session.world.map_dimensions.contains_without_border(point):
-				is_coastline = ('coastline' in horizons.main.session.world.get_tile(point).classes)
+			if cls.session.world.map_dimensions.contains_without_border(point):
+				is_coastline = ('coastline' in cls.session.world.get_tile(point).classes)
 			else:
 				is_coastline = False
-			coastline[point.x-x,point.y-y] = is_coastline
+			coastline[point.x-x, point.y-y] = is_coastline
 
 		""" coastline looks something like this:
 		111

@@ -73,7 +73,7 @@ class BuildingTool(NavigationTool):
 			for tile in island.grounds:
 				if tile.settlement is not None and \
 					 tile.settlement.owner == self.session.world.player and \
-					 self._class.is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
+					 self._class._is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
 					self.renderer.addColored(tile._instance, *self.buildable_color)
 					if tile.object is not None:
 						self.renderer.addColored(tile.object._instance, *self.buildable_color)

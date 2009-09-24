@@ -49,9 +49,6 @@ class BUILDINGS:
 
 class RES:
 	GOLD_ID   = 1
-	BOARDS_ID = 4
-	FOOD_ID   = 5
-	TOOLS_ID  = 6
 	HAPPINESS_ID = 14
 
 class GROUND:

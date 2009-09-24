@@ -49,13 +49,16 @@ class World(LivingObject):
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
-	def __init__(self):
+	def __init__(self, session):
 		"""
+		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
+		self.session = session
 		super(World, self).__init__()
 
 	def end(self):
+		self.session = None
 		self.properties = None
 		self.players = None
 		self.player = None
@@ -67,10 +70,13 @@ class World(LivingObject):
 		self.trader = None
 		super(World, self).end()
 
-	def _init(self, db):
+	def _init(self, savegame_db):
+		"""
+		@param savegame_db: Dbreader with loaded savegame database
+		"""
 		#load properties
 		self.properties = {}
-		for (name, value) in db("SELECT name, value FROM map_properties"):
+		for (name, value) in savegame_db("SELECT name, value FROM map_properties"):
 			self.properties[name] = value
 
 		# create playerlist
@@ -80,16 +86,16 @@ class World(LivingObject):
 
 		# load player
 		human_players = []
-		for player_id, client_id in db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
+		for player_id, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
 			player = None
-			ai_data = horizons.main.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
+			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
 			if len(ai_data) > 0:
 				# import ai class and call load on it
 				module = __import__('horizons.ai.'+ai_data[0][0], fromlist=[ai_data[0][1]])
 				ai_class = getattr(module, ai_data[0][1])
-				player = ai_class.load(db ,player_id)
+				player = ai_class.load(savegame_db ,player_id)
 			else: # no ai
-				player = Player.load(db, player_id)
+				player = Player.load(savegame_db, player_id)
 			self.players.append(player)
 
 			if client_id == horizons.main.settings.client_id:
@@ -108,14 +114,14 @@ class World(LivingObject):
 				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
 
-		if self.player is None and horizons.main.session.is_game_loaded():
+		if self.player is None and self.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
 		#load islands
 		self.islands = []
-		for (islandid,) in db("SELECT rowid FROM island"):
-			island = Island(db, islandid, self)
+		for (islandid,) in savegame_db("SELECT rowid FROM island"):
+			island = Island(savegame_db, islandid, self)
 			self.islands.append(island)
 
 		#calculate map dimensions
@@ -157,19 +163,19 @@ class World(LivingObject):
 		# and having at least one reference to them
 		self.ships = []
 
-		if horizons.main.session.is_game_loaded():
+		if self.session.is_game_loaded():
 			# for now, we have one trader in every game, so this is safe:
-			trader_id = db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
-			self.trader = Trader.load(db, trader_id)
+			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
+			self.trader = Trader.load(savegame_db, trader_id)
 
 		# load all units (we do it here cause all buildings are loaded by now)
-		for (worldid, typeid) in db("SELECT rowid, type FROM unit ORDER BY rowid"):
-			Entities.units[typeid].load(db, worldid)
+		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
+			Entities.units[typeid].load(savegame_db, worldid)
 
-		if horizons.main.session.is_game_loaded():
+		if self.session.is_game_loaded():
 			# let trader command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and trader has to exist before ships are loaded.
-			self.trader.load_ship_states(db)
+			self.trader.load_ship_states(savegame_db)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -205,14 +211,12 @@ class World(LivingObject):
 			point = self.get_random_possible_ship_position()
 			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y).execute()
 			# give ship basic resources
-			ship.inventory.alter(RES.BOARDS_ID,30)
-			ship.inventory.alter(RES.FOOD_ID,30)
-			ship.inventory.alter(RES.TOOLS_ID,30)
+			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
+				ship.inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = (point.x,point.y)
 		# Fire a message for new world creation
-		horizons.main.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, \
-		                                                    'NEW_WORLD')
+		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are none. No players loaded?"
 		return ret_coords
 
@@ -266,8 +270,8 @@ class World(LivingObject):
 		"""Sets up a new Player instance and adds him to the active world."""
 		self.player =  Player(0, name, color, inventory={RES.GOLD_ID: 20000})
 		self.players.append(self.player)
-		horizons.main.session.ingame_gui.update_gold()
-		self.player.inventory.add_change_listener(horizons.main.session.ingame_gui.update_gold)
+		self.session.ingame_gui.update_gold()
+		self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)
 
 	def get_tile(self, point):
 		"""Returns the ground at x, y.

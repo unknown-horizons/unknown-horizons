@@ -82,7 +82,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 
 class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
 	@classmethod
-	def is_settlement_build_requirement_satisfied(cls, x, y, island, ship, **state):
+	def _is_settlement_build_requirement_satisfied(cls, x, y, island, ship, **state):
 		for settlement in island.settlements:
 			if settlement.owner.id == ship.owner.id:
 				return {'buildable' : False}

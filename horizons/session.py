@@ -40,13 +40,14 @@ from world import World
 from entities import Entities
 from util import WorldObject, LivingObject, livingProperty, DbReader, Color
 from horizons.savegamemanager import SavegameManager
+from horizons.world.building.buildable import Buildable
 
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
 
 	This is the most important class if you are going to hack on Unknown Horizons, it provides most of
-	the important ingame variables that you will be constantly accessing by horizons.main.session.x
+	the important ingame variables.
 	Here's a small list of commonly used attributes:
 	* manager - horizons.manager instance. Used to execute commands that need to be tick,
 				synchronized check the class for more information.
@@ -92,7 +93,7 @@ class Session(LivingObject):
 		self.manager = SPManager()
 		Scheduler.create_instance(self.timer)
 		self.view = View((15, 15))
-		Entities.load(horizons.main.db)
+		Entities.load(self.db)
 
 		#GUI
 		self.ingame_gui = IngameGui(self, self.gui)
@@ -109,9 +110,12 @@ class Session(LivingObject):
 			                           self.timer.get_ticks(\
 			                             horizons.main.settings.savegame.autosaveinterval) * 60, \
 			                                                -1)
+		Buildable.init_buildable(self)
 
 	def end(self):
 		self.log.debug("Ending session")
+
+		Buildable.end_buildable()
 
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
@@ -210,13 +214,13 @@ class Session(LivingObject):
 
 	def record(self, savegame):
 		self.save(savegame)
-		horizons.main.db("ATTACH ? AS demo", savegame)
+		self.db("ATTACH ? AS demo", savegame)
 		self.manager.recording = True
 
 	def stop_record(self):
 		assert(self.manager.recording)
 		self.manager.recording = False
-		horizons.main.db("DETACH demo")
+		self.db("DETACH demo")
 
 	def load(self, savegame, playername = "Default Player", playercolor = Color()):
 		"""Loads a map.
@@ -225,7 +229,7 @@ class Session(LivingObject):
 		@param playercolor: Color instance, player's color or None
 		"""
 		self.log.debug("Session: Loading from %s", savegame)
-		db = DbReader(savegame) # Initialize new dbreader
+		savegame_db = DbReader(savegame) # Initialize new dbreader
 		try:
 			# load how often the game has been saved (used to know the difference between
 			# a loaded and a new game)
@@ -233,27 +237,27 @@ class Session(LivingObject):
 		except KeyError:
 			self.savecounter = 0
 
-		self.world = World() # Load horizons.world module (check horizons/world/__init__.py)
-		self.world._init(db)
-		self.view.load(db) # load view
+		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
+		self.world._init(savegame_db)
+		self.view.load(savegame_db) # load view
 		if not self.is_game_loaded():
 			self.world.setup_player(playername, playercolor)
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])
-		self.manager.load(db) # load the manager (there might me old scheduled ticks.
-		self.ingame_gui.load(db) # load the old gui positions and stuff
+		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks.
+		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
-		for instance_id in db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
+		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
 			self.selected_instances.add(obj)
 			obj.select()
 		for group in xrange(len(self.selection_groups)): # load user defined unit groups
-			for instance_id in db("SELECT id FROM selected WHERE `group` = ?", group):
+			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
 
-		assert hasattr(horizons.main.session.world, "player"), 'Error: there is no human player'
+		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
 		From here on you should digg into the classes that are loaded above, especially the world class.
@@ -264,10 +268,10 @@ class Session(LivingObject):
 		"""Generates a map."""
 
 		#load map
-		horizons.main.db("attach ':memory:' as map")
+		self.db("attach ':memory:' as map")
 		#...
-		self.world = World()
-		self.world._init(horizons.main.db)
+		self.world = World(self)
+		self.world._init(self.db)
 
 		#setup view
 		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))

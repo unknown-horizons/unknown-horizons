@@ -231,8 +231,9 @@ def _init_gettext(settings):
 
 def _start_dev_map():
 	# start the development map (it's the first one)
-	first_map = _modules.gui.get_maps()[0][1]
+	first_map = SavegameManager.get_maps()[0][1]
 	load_game(first_map)
+	return True
 
 def _start_map(map_name):
 	"""Start a map specified by user
