@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org

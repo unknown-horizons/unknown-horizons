@@ -149,7 +149,7 @@ class Gui(SettingsGui):
 			'settingsLink'   : self.show_settings,
 			'dead_link'	 : self.on_chime
 		})
-		horizons.main.session.speed_pause()
+		self.session.speed_pause()
 		self.on_escape = self.return_to_game
 
 	def on_chime(self):
@@ -176,15 +176,15 @@ class Gui(SettingsGui):
 		if not self.help_is_displayed:
 			self.help_is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
-			if horizons.main.session is not None and self.current != self.widgets['gamemenu']:
-				horizons.main.session.speed_pause()
+			if self.session is not None and self.current != self.widgets['gamemenu']:
+				self.session.speed_pause()
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
-			if horizons.main.session is not None and self.current != self.widgets['gamemenu']:
-				horizons.main.session.speed_unpause()
+			if self.session is not None and self.current != self.widgets['gamemenu']:
+				self.session.speed_unpause()
 		else:
 			self.help_is_displayed = False
-			if horizons.main.session is not None and self.current != self.widgets['gamemenu']:
-				horizons.main.session.speed_unpause()
+			if self.session is not None and self.current != self.widgets['gamemenu']:
+				self.session.speed_unpause()
 			help_dlg.hide()
 			self.on_escape = self.show_pause
 
@@ -193,15 +193,15 @@ class Gui(SettingsGui):
 		if self.show_dialog(self.widgets['quitsession'],  {'okButton': True, 'cancelButton': False}, onPressEscape=False):
 			self.current.hide()
 			self.current = None
-			horizons.main.session.end()
-			horizons.main.session = None
+			self.session.end()
+			self.session = None
 			self.show_main()
 
 	def return_to_game(self):
 		"""Return to the horizons."""
 		self.hide() # Hide old gui
 		self.current = None
-		horizons.main.session.speed_unpause()
+		self.session.speed_unpause()
 		self.on_escape = self.show_pause
 
 	def on_escape(self):

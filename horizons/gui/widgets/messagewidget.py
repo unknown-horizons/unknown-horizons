@@ -34,8 +34,9 @@ class MessageWidget(LivingObject):
 	It uses Message Class instances to store messages and manages the
 	archive.
 	@param x, y: int position where the widget is placed on the screen."""
-	def __init__(self, x, y):
+	def __init__(self, session, x, y):
 		super(LivingObject, self).__init__()
+		self.session = session
 		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
@@ -89,7 +90,7 @@ class MessageWidget(LivingObject):
 				if message.x is not None and message.y is not None and False:
 					# center source of event on click, if there is a source
 					events[button.name] = pychan.tools.callbackWithArguments( \
-						horizons.main.session.view.center, message.x, message.y)
+						self.session.view.center, message.x, message.y)
 				button.mapEvents(events)
 				button_space.addChild(button)
 		button_space.resizeToContent()

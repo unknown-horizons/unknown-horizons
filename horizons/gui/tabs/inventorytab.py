@@ -65,9 +65,9 @@ class ShipInventoryTab(InventoryTab):
 		self.tooltip = u"Ship Inventory"
 
 	def refresh(self):
-		branches = horizons.main.session.world.get_branch_offices(self.instance.position, self.instance.radius)
+		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius)
 		if len(branches) > 0:
-			events = { 'trade': pychan.tools.callbackWithArguments(horizons.main.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
+			events = { 'trade': pychan.tools.callbackWithArguments(self.instance.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
 			self.widget.mapEvents(events)
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()

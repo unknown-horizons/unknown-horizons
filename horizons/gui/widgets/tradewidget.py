@@ -141,7 +141,7 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = horizons.main.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius)
+		branch_offices = self.main_instance.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius)
 		if branch_offices is not None:
 			partners.extend(branch_offices)
 		return partners

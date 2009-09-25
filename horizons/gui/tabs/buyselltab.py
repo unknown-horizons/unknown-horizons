@@ -67,11 +67,10 @@ class BuySellTab(TabInterface):
 
 	def show(self):
 		self.widget.show()
-		horizons.main.session.ingame_gui.minimap_to_front()
-
+		self.settlement.session.ingame_gui.minimap_to_front()
 
 	def refresh(self):
-		"""We don't need to refresh"""
+		# We don't need to refresh
 		pass
 
 	def add_slots(self, num):
@@ -223,5 +222,5 @@ class BuySellTab(TabInterface):
 		self.resources.stylize('headline')
 		self.hide()
 		self.resources.show()
-		horizons.main.session.ingame_gui.minimap_to_front()
+		self.settlement.session.ingame_gui.minimap_to_front()
 

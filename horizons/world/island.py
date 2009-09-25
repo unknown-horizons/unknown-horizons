@@ -188,7 +188,7 @@ class Island(WorldObject):
 		@param position: Rect describing the position of the new branch office
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
-		settlement = Settlement(player)
+		settlement = Settlement(self.session, player)
 		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(position.center().x, \
@@ -300,8 +300,7 @@ class Island(WorldObject):
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE_CLASS:
 					point = building.position.origin
-					Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x = point.x, \
-																																				y = point.y)
+					Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x=point.x, y=point.y, session=self.session)
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
 		# so do nothing in this case.
