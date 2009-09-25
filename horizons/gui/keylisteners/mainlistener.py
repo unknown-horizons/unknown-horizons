@@ -66,7 +66,9 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		elif keystr == 's':
 			screenshotfilename = string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-")
 			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
-			horizons.main.session.ingame_gui.message_widget.add(None, None, 'SCREENSHOT', \
+			if self.gui.session is not None:
+				# ingame message if there is a session
+				self.gui.session.ingame_gui.message_widget.add(None, None, 'SCREENSHOT', \
 																													{'file': screenshotfilename})
 
 	def keyReleased(self, evt):
