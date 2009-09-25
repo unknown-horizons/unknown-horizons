@@ -48,7 +48,7 @@ header = '''# ###################################################
 #          outlined below.
 #
 # * Generate a bare version using
-#     python development/extract_strings_from_xml.py \
+#     python development/extract_strings_from_xml.py \\
 #       horizons/i18n/guitranslations.py
 # * Do the manual postprocessing needed, a diff between
 #   the versions help figuring out what is needed.
