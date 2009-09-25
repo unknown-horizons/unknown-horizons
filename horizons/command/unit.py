@@ -43,11 +43,14 @@ class Act(GenericUnitCommand):
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.
-	@param id: Unit id that is to be created.
-	@param x, y: Unit's initial position
-	@param kwargs: Additional parameters for unit creation
 	"""
 	def __init__(self, owner_id, unit_id, x, y, **kwargs):
+		"""
+		@param session: Session instance
+		@param id: Unit id that is to be created.
+		@param x, y: Unit's initial position
+		@param kwargs: Additional parameters for unit creation
+		"""
 		self.owner_id = owner_id
 		self.unit_id = unit_id
 		self.x = x
@@ -59,7 +62,7 @@ class CreateUnit(Command):
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		return Entities.units[self.unit_id](session=horizons.main.session, owner=owner, \
+		return Entities.units[self.unit_id](session=owner.session, owner=owner, \
 		                                    x=self.x, y=self.y, **self.kwargs)
 
 

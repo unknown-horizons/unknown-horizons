@@ -41,6 +41,7 @@ from entities import Entities
 from util import WorldObject, LivingObject, livingProperty, DbReader, Color
 from horizons.savegamemanager import SavegameManager
 from horizons.world.building.buildable import Buildable
+from horizons.command import Command
 
 
 class Session(LivingObject):
@@ -94,6 +95,7 @@ class Session(LivingObject):
 		self.manager = SPManager(self)
 		self.view = View(self, (15, 15))
 		Entities.load(self.db)
+		Command.default_manager = self.manager
 
 		#GUI
 		self.gui.session = self

@@ -99,8 +99,7 @@ class Island(WorldObject):
 		self.provider_buildings = WeakList() # list of all buildings, that are providers
 		self.wild_animals = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
-			ground = Entities.grounds[ground_id]( \
-				self.origin.x + rel_x, self.origin.y + rel_y)
+			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.grounds.append(ground)

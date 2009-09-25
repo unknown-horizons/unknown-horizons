@@ -26,9 +26,11 @@ from horizons.util import WorldObject
 
 class Command(object):
 	"""Base class for every Command."""
+	default_manager = None
+
 	def execute(self):
-		"""Execute command via horizons.main.session.manager"""
-		return horizons.main.session.manager.execute(self)
+		"""Execute command via presetted manager (cls.default_manager)"""
+		return self.default_manager.execute(self)
 
 class GenericCommand(Command):
 	"""Code generator for trivial commands on an object.

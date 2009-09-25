@@ -31,14 +31,15 @@ from horizons.util import WorldObject
 class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
-	def __init__(self, building, x, y, rotation = 45, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
+	def __init__(self, session, building, x, y, rotation = 45, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
+		@param session: Session instance (not MP-able!)
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
 		@param tear: list of buildings to be teared
 		@param ship: ship instance
-		@param island: island worldid
+		@param island: island instance
 		@param settlement: settlement worldid or None
 		"""
 		if hasattr(building, 'id'):
@@ -46,6 +47,7 @@ class Build(Command):
 		else:
 			assert type(building) == int
 			self.building_class = building
+		self.session = session
 		self._instance = instance
 		self.tear = tear or []
 		self.ship = None if ship is None else ship.getId()
@@ -53,7 +55,7 @@ class Build(Command):
 		self.y = int(y)
 		self.rotation = int(rotation)
 		self.ownerless = ownerless
-		self.island = island.getId() if island is not None else None
+		self.island = island.getId()
 		self.settlement = settlement.getId() if settlement is not None else None
 
 	def __call__(self, issuer):
@@ -66,18 +68,14 @@ class Build(Command):
 			building = WorldObject.get_object_by_id(ident)
 			Tear(building).execute()
 
-
-		if self.island is not None:
-			island = WorldObject.get_object_by_id(self.island)
-		else:
-			island = horizons.main.session.world.get_island(Point(self.x, self.y))
+		island = WorldObject.get_object_by_id(self.island)
 
 		building = Entities.buildings[self.building_class]( \
-			session=horizons.main.session, \
+			session=self.session, \
 			x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
-			instance=(self._instance if issuer == horizons.main.session.world.player else None))
+			instance=(self._instance if issuer == self.session.world.player else None))
 
 		island.add_building(building, issuer)
 		if self.settlement is not None:

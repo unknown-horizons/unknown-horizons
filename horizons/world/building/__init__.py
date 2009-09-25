@@ -109,7 +109,6 @@ class BuildingClass(type):
 		"""
 		cls.log.debug("Loading building %s", cls.id)
 		try:
-			#cls._object = horizons.main.session.view.model.createObject(str(cls.id), 'building')
 			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')
 		except RuntimeError:
 			cls.log.debug("Already loaded building %s", cls.id)

@@ -34,6 +34,7 @@ from horizons.util import Point, Color, Rect, LivingObject, Circle
 from horizons.constants import UNITS, BUILDINGS, RES
 from horizons.ai.trader import Trader
 from horizons.entities import Entities
+from horizons.util import decorators
 
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -70,6 +71,7 @@ class World(LivingObject):
 		self.trader = None
 		super(World, self).end()
 
+	@decorators.make_constants()
 	def _init(self, savegame_db):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
@@ -142,10 +144,10 @@ class World(LivingObject):
 		self.log.debug("Filling world with water...")
 		self.grounds = []
 		self.ground_map = {}
-		default_grounds = Entities().grounds[int(self.properties.get('default_ground', 4))]
+		default_grounds = Entities.grounds[int(self.properties.get('default_ground', 4))]
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
-				ground = default_grounds(x, y)
+				ground = default_grounds(self.session, x, y)
 				self.grounds.append(ground)
 				self.ground_map[(x, y)] = weakref.ref(ground)
 		for i in self.islands:
@@ -182,6 +184,7 @@ class World(LivingObject):
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
 
+	@decorators.make_constants()
 	def init_new_world(self):
 		"""This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
@@ -192,12 +195,12 @@ class World(LivingObject):
 		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
-			tree = Entities().buildings[BUILDINGS.TREE_CLASS]
+			tree = Entities.buildings[BUILDINGS.TREE_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						building = Build(tree, tile[0], tile[1], ownerless=True, island=island).execute()
+						building = Build(self.session, tree, tile[0], tile[1], ownerless=True, island=island).execute()
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
 							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute()
@@ -219,6 +222,7 @@ class World(LivingObject):
 		assert ret_coords is not None, "Return coords are none. No players loaded?"
 		return ret_coords
 
+	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		rand_water_id = random.randint(0, self.num_water-1)
@@ -316,6 +320,7 @@ class World(LivingObject):
 				break
 		return islands
 
+	@decorators.make_constants()
 	def get_branch_offices(self, position=None, radius=None):
 		"""Returns all branch offices on the map. Optionally only those in range
 		around the specified position.
@@ -351,7 +356,6 @@ class World(LivingObject):
 			self.trader.save(db)
 		for ship in self.ships:
 			ship.save(db)
-
 
 
 def load_building(session, db, typeid, worldid):

@@ -52,13 +52,14 @@ from horizons.gui import Gui
 # private module pointers of this module
 class Modules(object):
 	gui = None
+	session = None
 _modules = Modules()
 
 def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, session, settings, \
+	global fife, db, settings, \
 	       unstable_features, debug, preloading
 
 	from engine import Fife
@@ -90,7 +91,6 @@ def start(command_line_arguments):
 	ActionSetLoader.load('content/gfx/')
 	_modules.gui = Gui()
 	SavegameManager.init()
-	session = None
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()
@@ -127,7 +127,7 @@ def start_singleplayer(map_file, game_data={}):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	@param game_data: dict, contains data about the game (playername, etc.)"""
-	global session, fife, preloading, db
+	global fife, preloading, db
 	_modules.gui.show()
 
 	# lock preloading
@@ -150,15 +150,15 @@ def start_singleplayer(map_file, game_data={}):
 
 	_modules.gui.hide()
 
-	if session is not None:
-		session.end()
+	if _modules.session is not None:
+		_modules.session.end()
 	from session import Session
-	session = Session(_modules.gui, db)
-	session.init_session()
+	_modules.session = Session(_modules.gui, db)
+	_modules.session.init_session()
 	if ('playername' in game_data) and ('playercolor' in game_data):
-		session.load(map_file, game_data['playername'], game_data['playercolor'])
+		_modules.session.load(map_file, game_data['playername'], game_data['playercolor'])
 	else:
-		session.load(map_file)
+		_modules.session.load(map_file)
 
 def start_multi():
 	"""Starts a multiplayer game server (dummy)
@@ -172,7 +172,6 @@ def save_game(savegamename=None):
 	@param savegamename: string with the full path of the savegame file or None to let user pick one
 	@return: bool, whether save was successfull
 	"""
-	global session
 	if savegamename is None:
 		savegamename = _modules.gui.show_select_savegame(mode='save')
 		if savegamename is None:
@@ -181,7 +180,7 @@ def save_game(savegamename=None):
 
 	assert os.path.isabs(savegamename)
 	try:
-		session.save(savegamename)
+		_modules.session.save(savegamename)
 	except IOError: # usually invalid filename
 		_modules.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
 		_modules.gui.hide()

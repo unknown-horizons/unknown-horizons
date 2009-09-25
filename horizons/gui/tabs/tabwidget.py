@@ -98,7 +98,6 @@ class TabWidget(object):
 		self._draw_widget()
 		self.current_tab.show()
 		self.widget.show()
-		horizons.main.session.ingame_gui.minimap_to_front()
 
 	def hide(self):
 		"""Hide the current widget"""

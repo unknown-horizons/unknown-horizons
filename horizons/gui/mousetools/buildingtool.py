@@ -280,7 +280,7 @@ class BuildingTool(NavigationTool):
 					self.renderer.removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
-					self.session.manager.execute(Build(**args))
+					self.session.manager.execute(Build(session=self.session, **args))
 					self.gui.hide()
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
