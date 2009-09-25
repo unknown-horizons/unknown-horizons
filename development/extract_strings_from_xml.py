@@ -42,6 +42,20 @@ header = '''# ###################################################
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+# ###################################################
+# WARNING: This fiile is generated automagically. If
+#          you need to update it follow the procedure
+#          outlined below.
+#
+# * Generate a bare version using
+#     python development/extract_strings_from_xml.py \
+#       horizons/i18n/guitranslations.py
+# * Do the manual postprocessing needed, a diff between
+#   the versions help figuring out what is needed.
+#   Currently you want to replace the Version strings by
+#   the magic from horizons/constants.py
+# ###################################################
+
 text_translations = dict()
 
 def set_translations():
