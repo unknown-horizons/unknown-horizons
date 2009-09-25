@@ -61,7 +61,6 @@ class LazyWidgetsDict(dict):
 	def _load_widget(self, widgetname):
 		widget = load_xml_translated(widgetname+'.xml')
 		if self.center_widgets:
-			print 'do center'
 			center_widget(widget)
 		headline = widget.findChild(name='headline')
 		if headline:

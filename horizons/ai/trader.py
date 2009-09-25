@@ -99,8 +99,9 @@ class Trader(Player):
 			   VALUES(?, ?, ?, ?)", ship.getId(), ship_state.index, remaining_ticks, targeted_branch)
 
 	@classmethod
-	def load(cls, db, worldid):
+	def load(cls, session, db, worldid):
 		self = Trader.__new__(Trader)
+		self.session = session
 		self._load(db, worldid)
 		return self
 

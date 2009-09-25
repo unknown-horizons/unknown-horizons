@@ -166,7 +166,7 @@ class World(LivingObject):
 		if self.session.is_game_loaded():
 			# for now, we have one trader in every game, so this is safe:
 			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
-			self.trader = Trader.load(savegame_db, trader_id)
+			self.trader = Trader.load(self.session, savegame_db, trader_id)
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
