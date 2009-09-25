@@ -28,16 +28,15 @@ from tradepost import TradePost
 class Settlement(TradePost, NamedObject):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
-	def __init__(self, owner, world):
+	def __init__(self, owner):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
 		super(Settlement, self).__init__()
 		self.buildings = WeakList() # List of all the buildings belonging to the settlement
-		self.__init(owner, world)
+		self.__init(owner)
 
-	def __init(self, owner, world, tax_setting=1.0):
-		self.world = world
+	def __init(self, owner, tax_setting=1.0):
 		self.owner = owner
 		self.tax_setting = tax_setting
 		self.setup_storage()
@@ -84,11 +83,11 @@ class Settlement(TradePost, NamedObject):
 		self.inventory.save(db, self.getId())
 
 	@classmethod
-	def load(cls, db, worldid, world):
+	def load(cls, db, worldid, session):
 		self = cls.__new__(cls)
 
 		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
-		self.__init(WorldObject.get_object_by_id(owner), world, tax)
+		self.__init(WorldObject.get_object_by_id(owner), tax)
 
 		# load super cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
@@ -99,8 +98,9 @@ class Settlement(TradePost, NamedObject):
 		# the buildings will expand the area of the settlement by adding everything,
 		# that is in the radius of the building, to the settlement.
 		self.buildings = WeakList()
+		from horizons.world import load_building
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
-			self.world.load_building(db, building_type, building_id)
+			load_building(session, db, building_type, building_id)
 
 		return self

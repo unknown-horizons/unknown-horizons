@@ -26,7 +26,6 @@ from horizons.entities import Entities
 
 from horizons.i18n import load_xml_translated
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
-from horizons.world.settlement import Settlement
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets import Minimap, MessageWidget
@@ -244,8 +243,9 @@ class IngameGui(LivingObject):
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
 
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}):
-		self.cityinfo_set(source if isinstance(source, Settlement) else None)
+	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
+		city = source if not res_from_ship else None
+		self.cityinfo_set(city)
 		if source is not self.resource_source:
 			if self.resource_source is not None:
 				self.resource_source.remove_change_listener(self.update_resource_source)

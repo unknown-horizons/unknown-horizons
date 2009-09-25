@@ -50,8 +50,9 @@ class BuildingClass(type):
 
 
 		@classmethod
-		def load(cls, db, worldid):
+		def load(cls, session, db, worldid):
 			self = cls.__new__(cls)
+			self.session = session
 			super(cls, self).load(db, worldid)
 			return self
 		# Return the new type for this building, including it's attributes, like the previously defined load function.

@@ -76,7 +76,7 @@ class MovingObject(ConcretObject):
 
 		self.__is_moving = False
 
-		self.path = self.pather_class(self)
+		self.path = self.pather_class(self, session=self.session)
 
 	def check_move(self, destination):
 		"""Tries to find a path to destination
@@ -200,7 +200,7 @@ class MovingObject(ConcretObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self._next_target.x, self._next_target.y, 0))
 
 		self._instance.move(self._move_action+"_"+str(self._action_set_id), location, \
-												float(horizons.main.session.timer.get_ticks(1)) / move_time[0])
+												float(self.session.timer.get_ticks(1)) / move_time[0])
 		# coords per sec
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
@@ -230,7 +230,7 @@ class MovingObject(ConcretObject):
 		"""Returns number of ticks that it takes to do a straight (i.e. vertical or horizontal) movement
 		@return: int
 		"""
-		tile = horizons.main.session.world.get_tile(self.position)
+		tile = self.session.world.get_tile(self.position)
 		if self.id in tile.velocity:
 			return tile.velocity[self.id]
 		else:

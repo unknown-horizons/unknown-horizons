@@ -102,7 +102,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def run(self):
 		"""Start regular tick calls"""
-		interval_in_ticks = horizons.main.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
+		interval_in_ticks = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 		Scheduler().add_new_object(self._tick, self, runin=interval_in_ticks, loops=-1)
 
 	def _tick(self):

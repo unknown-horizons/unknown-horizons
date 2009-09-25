@@ -29,6 +29,7 @@ from horizons.util import Callback
 from horizons.constants import RES, SETTLER
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
+from horizons.command.building import Tear
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.utility import create_resource_icon
 
@@ -134,9 +135,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,330))
 		self.widget.addChild(self.destruct_button)
-		self.widget.mapEvents({
-			'destruct_button' : self.destruct_building
-		})
+		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -204,7 +203,7 @@ class ProductionOverviewTab(OverviewTab):
 		horizons.main.session.ingame_gui.hide_menu()
 		if self.destruct_button.gui.isVisible():
 			self.destruct_button.hide_tooltip()
-		self.instance.destruct_building()
+		Tear(self.instance).execute()
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):

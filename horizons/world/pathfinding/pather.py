@@ -23,7 +23,6 @@ import weakref
 import sys
 import logging
 
-import horizons.main
 from horizons.util import Rect, Point
 from horizons.world.building.building import BasicBuilding
 
@@ -40,13 +39,14 @@ class AbstractPather(object):
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
-	def __init__(self, unit, move_diagonal, make_target_walkable = True):
+	def __init__(self, unit, move_diagonal, session, make_target_walkable = True):
 		"""
 		@param unit: instance of unit, to which the pather belongs
 		@param move_diagonal: whether the unit may walk diagonally
 		@param make_target_walkable: whether we should assume, that we can walk on
 		                             the tiles that make up the target
 		"""
+		self.session = session
 		self.move_diagonal = move_diagonal
 		self.make_target_walkable = make_target_walkable
 
@@ -92,7 +92,7 @@ class AbstractPather(object):
 			source = Point(*self.path[self.cur])
 		else:
 			# check if we are in a building
-			building = horizons.main.session.world.get_building(self.unit.position)
+			building = self.session.world.get_building(self.unit.position)
 			if building is not None:
 				source = building
 
@@ -199,17 +199,17 @@ class ShipPather(AbstractPather):
 		                                 *args, **kwargs)
 
 	def _get_path_nodes(self):
-		return horizons.main.session.world.water
+		return self.session.world.water
 
 	def _get_blocked_coords(self):
-		return horizons.main.session.world.ship_map
+		return self.session.world.ship_map
 
 	def _check_for_obstacles(self, point):
 			#check if another ship is blocking the way (and other ship is not self)
-			if point in horizons.main.session.world.ship_map and \
-				 horizons.main.session.world.ship_map[self.path[self.cur]]() is not self.unit:
+			if point in self.session.world.ship_map and \
+				 self.session.world.ship_map[self.path[self.cur]]() is not self.unit:
 				# issue a short debug message (no code execution here)
-				other = horizons.main.session.world.ship_map[self.path[self.cur]]()
+				other = self.session.world.ship_map[self.path[self.cur]]()
 				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
 											 point[0], point[1], \
 											 self.unit, self.unit.getId(), other)
@@ -230,8 +230,8 @@ class BuildingCollectorPather(AbstractPather):
 class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the branch office)"""
 	def __init__(self, unit, *args, **kwargs):
-		super(RoadPather, self).__init__(unit, move_diagonal=False)
-		self.island = horizons.main.session.world.get_island(unit.position, *args, **kwargs)
+		super(RoadPather, self).__init__(unit, move_diagonal=False, *args, **kwargs)
+		self.island = self.session.world.get_island(unit.position)
 
 	def _get_path_nodes(self):
 		return self.island.path_nodes.road_nodes
@@ -245,7 +245,7 @@ class SoldierPather(AbstractPather):
 
 	def _get_path_nodes(self):
 		# island might change (e.g. when transported via ship), so reload every time
-		island = horizons.main.session.world.get_island(self.unit.position)
+		island = self.session.world.get_island(self.unit.position)
 		return island.path_nodes.nodes
 
 	def _get_blocked_coords(self):
@@ -253,7 +253,7 @@ class SoldierPather(AbstractPather):
 		return []
 
 	def _check_for_obstacles(self, point):
-		island = horizons.main.session.world.get_island(self.unit.position)
+		island = self.session.world.get_island(self.unit.position)
 		path_blocked = not island.path_nodes.is_walkable(self.path[self.cur])
 		if path_blocked:
 			# update list in island, so that new path calculations consider this obstacle

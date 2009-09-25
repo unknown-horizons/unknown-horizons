@@ -62,17 +62,17 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def select(self):
 		"""Runs necessary steps to select the unit."""
 		# TODO Think about if this should go somewhere else (island, world)
-		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		for tile in self.island.grounds:
 			if tile.settlement == self.settlement and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-				horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
+				self.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None:
-					horizons.main.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
+					self.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
 
 	def deselect(self):
 		"""Runs neccassary steps to deselect the unit."""
-		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		horizons.main.session.view.renderer['InstanceRenderer'].removeAllColored()
+		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		self.session.view.renderer['InstanceRenderer'].removeAllColored()
 
 	# we have to overwrite these StorageHolder functions, since we have no own inventory.
 	def create_inventory(self): pass

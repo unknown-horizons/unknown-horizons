@@ -25,7 +25,8 @@ import horizons.main
 from horizons.entities import Entities
 
 from horizons.command import Command
-from horizons.world.building.building import *
+from horizons.util import Point
+from horizons.util import WorldObject
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -72,6 +73,7 @@ class Build(Command):
 			island = horizons.main.session.world.get_island(Point(self.x, self.y))
 
 		building = Entities.buildings[self.building_class]( \
+			session=horizons.main.session, \
 			x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \

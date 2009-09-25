@@ -46,7 +46,7 @@ class Unit(MovingObject):
 		if self._object is None:
 			self.__class__._loadObject()
 
-		self._instance = horizons.main.session.view.layers[LAYERS.OBJECTS].createInstance( \
+		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance( \
 			self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
@@ -72,11 +72,11 @@ class Unit(MovingObject):
 			self.position.x + self.position.x - self.last_position.x, \
 			self.position.y + self.position.y - self.last_position.y, 0))
 		self.act(self.action, location, True)
-		horizons.main.session.view.cam.refresh()
+		self.session.view.cam.refresh()
 
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
-		renderer = horizons.main.session.view.renderer['GenericRenderer']
+		renderer = self.session.view.renderer['GenericRenderer']
 		width = 50
 		height = 5
 		y_pos = -30

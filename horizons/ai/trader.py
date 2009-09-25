@@ -24,7 +24,6 @@ import logging
 
 import horizons.main
 
-from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
@@ -32,6 +31,7 @@ from horizons.ext.enum import Enum
 from horizons.world.player import Player
 from horizons.world.storageholder import StorageHolder
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.command.unit import CreateUnit
 
 
 class Trader(Player):
@@ -61,8 +61,8 @@ class Trader(Player):
 
 		# create a ship and place it randomly (temporary hack)
 		point = horizons.main.session.world.get_random_possible_ship_position()
-		self.ships[Entities.units[UNITS.TRADER_SHIP_CLASS] \
-		           (point.x, point.y, owner=self)] = self.shipStates.reached_branch
+		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y).execute()
+		self.ships[ship] = self.shipStates.reached_branch
 		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
 
 	def __init(self):

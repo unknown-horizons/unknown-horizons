@@ -26,8 +26,7 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Circle
-from horizons.world.building.building import *
+from horizons.util import ActionSetLoader, Circle, Point
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
@@ -178,7 +177,7 @@ class BuildingTool(NavigationTool):
 			settlement = building.get('settlement', None) if settlement is None else settlement
 			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
 			                                                        building['x'], building['y'])
-			building['instance'] = self._class.getInstance(**building)
+			building['instance'] = self._class.getInstance(self.session, **building)
 			resources = self._class.get_build_costs(**building)
 			if not building.get('buildable', True):
 				# can't build, color it red
@@ -199,7 +198,7 @@ class BuildingTool(NavigationTool):
 
 					if available_res < neededResources[resource]:
 						# can't build, not enough res
-						self.renderer.addColored(building['instance'], 255, 0, 0)
+						self.renderer.addColored(building['instance'], *self.not_buildable_color)
 						building['buildable'] = False
 						break
 				else:
@@ -207,9 +206,10 @@ class BuildingTool(NavigationTool):
 					for resource in resources:
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 					# draw white for buildable
-					self.renderer.addColored(building['instance'], 255, 255, 255)
+					self.renderer.addColored(building['instance'], *self.buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
-		   self.ship if self.ship is not None else settlement, neededResources, usableResources)
+		   self.ship if self.ship is not None else settlement, neededResources, usableResources, \
+		   res_from_ship = (True if self.ship is not None else False))
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def on_escape(self):

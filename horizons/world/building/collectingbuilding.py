@@ -50,7 +50,7 @@ class CollectingBuilding(BuildingResourceHandler):
 		for collector_class, count in horizons.main.db("SELECT collector_class, count FROM \
 																									balance.collectors WHERE object_id = ?", self.id):
 			for i in xrange(0, count):
-				Entities.units[collector_class](self)
+				Entities.units[collector_class](self, session=self.session)
 
 	def remove(self):
 		while len(self.__collectors) > 0:

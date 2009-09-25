@@ -59,7 +59,8 @@ class CreateUnit(Command):
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		return Entities.units[self.unit_id](owner=owner, x=self.x, y=self.y, **self.kwargs)
+		return Entities.units[self.unit_id](session=horizons.main.session, owner=owner, \
+		                                    x=self.x, y=self.y, **self.kwargs)
 
 
 from horizons.util.encoder import register_classes

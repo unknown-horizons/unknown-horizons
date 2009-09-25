@@ -22,8 +22,6 @@
 import weakref
 import logging
 
-import horizons.main
-
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
@@ -61,34 +59,35 @@ class Island(WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, islandid, world):
+	def __init__(self, db, islandid, session):
 		"""
 		@param db: db instance with island table
 		@param islandid: id of island in that table
-		@param world: reference to World instance
+		@param session: reference to Session instance
 		"""
+		self.session = session
 		# an island is always loaded from db, so __init__() basically is load()
 		super(Island, self).load(db, islandid)
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", islandid)[0]
-		self.__init(Point(x, y), filename, world)
+		self.__init(Point(x, y), filename)
 
 		# load settlements and buildings, if there are any
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
-			Settlement.load(db, settlement_id, self.world)
+			Settlement.load(db, settlement_id, self.session)
 
+
+		from horizons.world import load_building
 		for (building_worldid, building_typeid) in \
 		    db("SELECT rowid, type FROM building WHERE location = ?", islandid):
-			self.world.load_building(db, building_typeid, building_worldid)
+			load_building(self.session, db, building_typeid, building_worldid)
 
-	def __init(self, origin, filename, world):
+	def __init(self, origin, filename):
 		"""
 		Load the actual island from a file
 		@param origin: Point
 		@param filename: String
-		@param world: World instance
 		"""
-		self.world = world
 		self.file = filename
 		self.origin = origin
 		db = DbReader(filename) # Create a new DbReader instance to load the maps file.
@@ -102,10 +101,6 @@ class Island(WorldObject):
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
 			ground = Entities.grounds[ground_id]( \
 				self.origin.x + rel_x, self.origin.y + rel_y)
-			# Each ground has a set of attributes:
-			ground.settlement = None
-			ground.blocked = False
-			ground.object = None
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.grounds.append(ground)
@@ -193,10 +188,10 @@ class Island(WorldObject):
 		@param position: Rect describing the position of the new branch office
 		@param radius: int radius of the area of influence.
 		@param player: int id of the player that owns the settlement"""
-		settlement = Settlement(player, self.world)
+		settlement = Settlement(player)
 		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
-		horizons.main.session.ingame_gui.message_widget.add(position.center().x, \
+		self.session.ingame_gui.message_widget.add(position.center().x, \
 																												position.center().y, \
 																												'NEW_SETTLEMENT', \
 																												{'player':player.name})
@@ -226,7 +221,7 @@ class Island(WorldObject):
 					continue
 				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
 					tile.settlement = settlement
-					horizons.main.session.ingame_gui.minimap.update(coord)
+					self.session.ingame_gui.minimap.update(coord)
 
 				building = tile.object
 				# assign buildings on tiles to settlement

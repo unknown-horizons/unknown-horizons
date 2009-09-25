@@ -36,8 +36,9 @@ class UnitClass(type):
 		log = logging.getLogger('world.units')
 
 		@classmethod
-		def load(cls, db, worldid):
+		def load(cls, session, db, worldid):
 			self = cls.__new__(cls)
+			self.session = session
 			super(cls, self).load(db, worldid)
 			return self
 

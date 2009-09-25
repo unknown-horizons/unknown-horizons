@@ -31,7 +31,6 @@ from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
 from horizons.util import Rect, Point, WorldObject, ActionSetLoader
 from horizons.constants import RES, LAYERS, GAME
-from horizons.command.building import Tear
 from horizons.world.building.buildable import BuildableSingle
 
 
@@ -60,13 +59,13 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
-		self._instance = self.getInstance(origin.x, origin.y, rotation = rotation) if \
+		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation) if \
 		    instance is None else instance
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
 			Scheduler().add_new_object(self.get_payout, self, \
-			     runin=horizons.main.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
+			     runin=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
 
 		# play ambient sound, if available
 		for soundfile in self.soundfiles:
@@ -90,12 +89,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
-		renderer = horizons.main.session.view.renderer['InstanceRenderer']
+		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()
-
-	def destruct_building(self):
-		horizons.main.session.manager.execute(Tear(self))
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
@@ -151,7 +147,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		return ret_building
 
 	@classmethod
-	def getInstance(cls, x, y, action='idle', building=None, layer=LAYERS.OBJECTS, rotation=0, **trash):
+	def getInstance(cls, session, x, y, action='idle', building=None, layer=LAYERS.OBJECTS, rotation=0, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
@@ -161,10 +157,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		assert isinstance(x, int)
 		assert isinstance(y, int)
 		if building is not None:
-			return building.getInstance(x = x, y = y, action=action, layer=layer, rotation=rotation, **trash)
+			return building.getInstance(session = session, x = x, y = y, action=action, layer=layer, \
+			                            rotation=rotation, **trash)
 		else:
 			rotation = cls.check_build_rotation(rotation, x, y)
-			facing_loc = fife.Location(horizons.main.session.view.layers[layer])
+			facing_loc = fife.Location(session.view.layers[layer])
 			instance_coords = list((x, y, 0))
 			layer_coords = list((x, y, 0))
 			if rotation == 45:
@@ -180,7 +177,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				layer_coords[1] = y+cls.size[1]+3
 			else:
 				return None
-			instance = horizons.main.session.view.layers[layer].createInstance(cls._object, \
+			instance = session.view.layers[layer].createInstance(cls._object, \
 			                         fife.ModelCoordinate(*instance_coords))
 			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
@@ -240,7 +237,7 @@ class SelectableBuilding(object):
 	selection_color = (255, 255, 255)
 	def select(self):
 		"""Runs necessary steps to select the building."""
-		renderer = horizons.main.session.view.renderer['InstanceRenderer']
+		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 		                     self.selection_color[2], 1)
 		if self.range_applies_only_on_island:
@@ -253,7 +250,7 @@ class SelectableBuilding(object):
 						renderer.addColored(tile.object._instance, *self.selection_color)
 		else:
 			# we have to color water too
-			for tile in horizons.main.session.world.get_tiles_in_radius(self.position.origin, self.radius):
+			for tile in self.session.world.get_tiles_in_radius(self.position.origin, self.radius):
 				if hasattr(tile, 'settlement') and tile.settlement != self.settlement:
 					continue # don't color enemy grounds
 				renderer.addColored(tile._instance, *self.selection_color)
@@ -262,7 +259,7 @@ class SelectableBuilding(object):
 
 	def deselect(self):
 		"""Runs neccassary steps to deselect the building."""
-		renderer = horizons.main.session.view.renderer['InstanceRenderer']
+		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()
 

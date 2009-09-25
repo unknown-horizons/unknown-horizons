@@ -121,7 +121,7 @@ class World(LivingObject):
 		#load islands
 		self.islands = []
 		for (islandid,) in savegame_db("SELECT rowid FROM island"):
-			island = Island(savegame_db, islandid, self)
+			island = Island(savegame_db, islandid, self.session)
 			self.islands.append(island)
 
 		#calculate map dimensions
@@ -170,7 +170,7 @@ class World(LivingObject):
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
-			Entities.units[typeid].load(savegame_db, worldid)
+			Entities.units[typeid].load(self.session, savegame_db, worldid)
 
 		if self.session.is_game_loaded():
 			# let trader command it's ships. we have to do this here cause ships have to be
@@ -198,7 +198,7 @@ class World(LivingObject):
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
-						building = Build(tree,tile[0],tile[1], ownerless=True, island=island).execute()
+						building = Build(tree, tile[0], tile[1], ownerless=True, island=island).execute()
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
 							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute()
@@ -214,7 +214,7 @@ class World(LivingObject):
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.inventory.alter(res, amount)
 			if player is self.player:
-				ret_coords = (point.x,point.y)
+				ret_coords = (point.x, point.y)
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are none. No players loaded?"
@@ -235,7 +235,7 @@ class World(LivingObject):
 			# we're too near to the border
 			position_possible = False
 
-		if (x,y) in self.ship_map:
+		if (x, y) in self.ship_map:
 			position_possible = False
 
 		# check if there is an island nearby (check only important)
@@ -353,6 +353,8 @@ class World(LivingObject):
 		for ship in self.ships:
 			ship.save(db)
 
-	def load_building(self, db, typeid, worldid):
-		"""Loads a saved building. Don't load buildings yourself in the game code."""
-		Entities.buildings[typeid].load(db, worldid)
+
+
+def load_building(session, db, typeid, worldid):
+	"""Loads a saved building. Don't load buildings yourself in the game code."""
+	Entities.buildings[typeid].load(session, db, worldid)

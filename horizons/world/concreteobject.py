@@ -19,11 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.util import WorldObject, Callback, ActionSetLoader
-from horizons.gui.tabs import TabWidget
 
 class ConcretObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -38,8 +36,12 @@ class ConcretObject(WorldObject):
 	is_unit = False
 	is_building = False
 
-	def __init__(self, **kwargs):
+	def __init__(self, session, **kwargs):
+		"""
+		@param session: Session instance this obj belongs to
+		"""
 		super(ConcretObject, self).__init__(**kwargs)
+		self.session = session
 		self._instance = None # overwrite in subclass __init[__]
 
 	@property
@@ -81,6 +83,8 @@ class ConcretObject(WorldObject):
 
 	def show_menu(self):
 		"""Shows tabs from self.__class__.tabs, if there are any"""
+		# this local import prevents circular imports
+		from horizons.gui.tabs import TabWidget
 		if len(self.tabs) > 0:
 			tabs = [ tabclass(self) for tabclass in self.tabs ]
-			horizons.main.session.ingame_gui.show_menu(TabWidget(tabs=tabs))
+			self.session.ingame_gui.show_menu(TabWidget(tabs=tabs))

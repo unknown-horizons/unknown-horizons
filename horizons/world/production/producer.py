@@ -212,7 +212,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 				radius = self.unit_placement_radius
 				# search for free water tile, and in increase search radius if none is found
 				while not found_tile:
-					for tile in horizons.main.session.world.get_tiles_in_radius(self.position.center(), radius):
+					for tile in self.session.world.get_tiles_in_radius(self.position.center(), radius):
 						if tile.is_water:
 							found_tile = True
 							for i in xrange(0, amount):

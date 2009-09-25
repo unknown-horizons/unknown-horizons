@@ -44,39 +44,39 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
 
-		horizons.main.session.world.ships.append(self)
-		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		self.session.world.ships.append(self)
+		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
 		super(Ship, self).remove()
-		horizons.main.session.world.ships.remove(self)
-		del horizons.main.session.world.ship_map[self.position.to_tuple()]
+		self.session.world.ships.remove(self)
+		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalStorage(200)
 
 	def _move_tick(self):
 		"""Keeps track of the ship's position in the global ship_map"""
-		del horizons.main.session.world.ship_map[self.position.to_tuple()]
+		del self.session.world.ship_map[self.position.to_tuple()]
 
 		super(Ship, self)._move_tick()
 
 		# save current and next position for ship, since it will be between them
-		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		horizons.main.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
+		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def select(self):
 		"""Runs necessary steps to select the unit."""
-		horizons.main.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		# add a buoy at the ship's target if the player owns the ship
-		if self.is_moving() and horizons.main.session.world.player == self.owner:
-			loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])
+		if self.is_moving() and self.session.world.player == self.owner:
+			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
 			loc.thisown = 0
 			move_target = self.get_move_target()
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
-			horizons.main.session.view.renderer['GenericRenderer'].addAnimation(
+			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.getId()), fife.GenericRendererNode(loc),
 				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 			)
@@ -84,9 +84,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
-		horizons.main.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		horizons.main.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.getId()))
-		horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
+		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.getId()))
+		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
 
 	def go(self, x, y):
 		"""Moves the ship.
@@ -96,7 +96,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
 		def tmp():
-			horizons.main.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
+			self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
 		tmp()
 		move_target = Point(int(round(x)), int(round(y)))
 		try:
@@ -117,12 +117,12 @@ class Ship(NamedObject, StorageHolder, Unit):
 		if self.position.x != move_target.x or self.position.y != move_target.y:
 			move_target = self.get_move_target()
 			if move_target is not None:
-				loc = fife.Location(horizons.main.session.view.layers[LAYERS.OBJECTS])
+				loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
 				loc.thisown = 0
 				coords = fife.ModelCoordinate(move_target.x, move_target.y)
 				coords.thisown = 0
 				loc.setLayerCoordinates(coords)
-				horizons.main.session.view.renderer['GenericRenderer'].addAnimation(
+				self.session.view.renderer['GenericRenderer'].addAnimation(
 					"buoy_" + str(self.getId()), fife.GenericRendererNode(loc),
 					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 				)
@@ -137,8 +137,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 		super(Ship, self).load(db, worldid)
 
 		# register ship in world
-		horizons.main.session.world.ships.append(self)
-		horizons.main.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		self.session.world.ships.append(self)
+		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 
 class PirateShip(Ship):
