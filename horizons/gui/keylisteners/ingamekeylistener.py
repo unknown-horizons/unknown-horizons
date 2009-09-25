@@ -35,6 +35,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def end(self):
 		horizons.main.fife.eventmanager.removeKeyListener(self)
+		self.session = None
 		super(IngameKeyListener, self).end()
 
 	def keyPressed(self, evt):
@@ -53,9 +54,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keyval == fife.Key.DOWN:
 			if not was: self.session.view.autoscroll(0, 25)
 		elif keystr == 'g':
-			# toggle gridrenderer
-			self.session.view.renderer['GridRenderer'].setEnabled( \
-			  not self.session.view.renderer['GridRenderer'].isEnabled())
+			gridrenderer = self.session.view.renderer['GridRenderer']
+			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
 		elif keystr == 'x':
 			self.session.destroy_tool()
 		elif keystr == '+':
@@ -63,7 +63,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '-':
 			self.session.speed_down()
 		elif keystr == 'p':
-			self.session.gui.toggle_ingame_pause()
+			self.session.ingame_gui.toggle_ingame_pause()
 		elif keystr == 'd':
 			import pdb; pdb.set_trace()
 		elif keystr == 'b':

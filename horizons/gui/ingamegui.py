@@ -29,6 +29,7 @@ from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect,
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets import Minimap, MessageWidget
+from horizons.gui.utility import center_widget, LazyWidgetsDict
 from horizons.constants import RES
 
 class IngameGui(LivingObject):
@@ -38,34 +39,41 @@ class IngameGui(LivingObject):
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 
+	styles = {
+	  'city_info' : 'city_info',
+	  'change_name' : 'book',
+	  'status' : 'resource_bar',
+	  'status_gold' : 'resource_bar',
+	  'status_extra' : 'resource_bar',
+	  'status_extra_gold' : 'resource_bar',
+	  }
+
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
 		self.session = session
 		self.main_gui = gui
-		self.gui = {}
+		self.widgets = {}
 		self.tabwidgets = {}
 		self.settlement = None
 		self.resource_source = None
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
-		self.gui['cityInfo'] = load_xml_translated('city_info.xml')
-		self.gui['cityInfo'].stylize('cityInfo')
-		self.gui['cityInfo'].child_finder = PychanChildFinder(self.gui['cityInfo'])
-		self.gui['cityInfo'].position = (
-			horizons.main.fife.settings.getScreenWidth()/2 - self.gui['cityInfo'].size[0]/2 - 10,
-			5
+		self.widgets = LazyWidgetsDict(self.styles, center_widgets=False)
+
+		self.widgets['city_info'].child_finder = PychanChildFinder(self.widgets['city_info'])
+		self.widgets['city_info'].position = (
+			horizons.main.fife.settings.getScreenWidth()/2 - self.widgets['city_info'].size[0]/2 - 10, 5
 		)
 
-		# self.gui['minimap'] is the guichan gui around the acctual minimap, which is saved
+		# self.widgets['minimap'] is the guichan gui around the acctual minimap, which is saved
 		# in self.minimap
-		self.gui['minimap'] = load_xml_translated('minimap.xml')
-		self.gui['minimap'].position = (
-				horizons.main.fife.settings.getScreenWidth() - self.gui['minimap'].size[0] -20,
+		self.widgets['minimap'].position = (
+				horizons.main.fife.settings.getScreenWidth() - self.widgets['minimap'].size[0] -20,
 			4
 		)
-		self.gui['minimap'].show()
-		self.gui['minimap'].mapEvents({
+		self.widgets['minimap'].show()
+		self.widgets['minimap'].mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
 			'rotateRight' : self.session.view.rotate_right,
@@ -73,46 +81,34 @@ class IngameGui(LivingObject):
 			'speedUp' : self.session.speed_up,
 			'speedDown' : self.session.speed_down
 		})
-		self.minimap = Minimap(Rect(Point(self.gui['minimap'].position[0]+77, 55), 120, 120), \
+		self.widgets['minimap'].findChild(name="speed_text").stylize('menu')
+
+		self.minimap = Minimap(Rect(Point(self.widgets['minimap'].position[0]+77, 55), 120, 120), \
 													 self.session, self.session.view.renderer['GenericRenderer'])
-		minimap_overlay = self.gui['minimap'].findChild(name='minimap_overlay_image')
+		minimap_overlay = self.widgets['minimap'].findChild(name='minimap_overlay_image')
 		self.minimap.use_overlay_icon(minimap_overlay)
 
-		self.gui['menuPanel'] = load_xml_translated('menu_panel.xml')
-		self.gui['menuPanel'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui['menuPanel'].size[0] +15,
+		self.widgets['menu_panel'].position = (
+			horizons.main.fife.settings.getScreenWidth() - self.widgets['menu_panel'].size[0] +15,
 			149)
-		self.gui['menuPanel'].show()
-		self.gui['menuPanel'].mapEvents({
+		self.widgets['menu_panel'].show()
+		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
 			'helpLink' : self.main_gui.on_help,
 			'gameMenuButton' : self.main_gui.show_pause
 		})
 
-		self.gui['tooltip'] = load_xml_translated('tooltip.xml')
-		self.gui['tooltip'].hide()
+		self.widgets['tooltip'].hide()
 
-		self.gui['status'] = load_xml_translated('status.xml')
-		self.gui['status'].stylize('resource_bar')
-		self.gui['status'].child_finder = PychanChildFinder(self.gui['status'])
-		self.gui['status_extra'] = load_xml_translated('status_extra.xml')
-		self.gui['status_extra'].stylize('resource_bar')
-		self.gui['status_extra'].child_finder = PychanChildFinder(self.gui['status_extra'])
+		self.widgets['status'].child_finder = PychanChildFinder(self.widgets['status'])
+		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
-		self.message_widget = MessageWidget(self.gui['cityInfo'].position[0] + self.gui['cityInfo'].size[0], 5)
+		self.message_widget = MessageWidget(self.widgets['city_info'].position[0] + self.widgets['city_info'].size[0], 5)
 
-		self.gui['status_gold'] = load_xml_translated('status_gold.xml')
-		self.gui['status_gold'].stylize('resource_bar')
-		self.gui['status_gold'].show()
-		self.gui['status_gold'].child_finder = PychanChildFinder(self.gui['status_gold'])
-		self.gui['status_extra_gold'] = load_xml_translated('status_extra_gold.xml')
-		self.gui['status_extra_gold'].stylize('resource_bar')
-		self.gui['status_extra_gold'].child_finder = PychanChildFinder(self.gui['status_extra_gold'])
-
-		self.gui['change_name'] = load_xml_translated("change_name_dialog.xml")
-		self.gui['change_name'].stylize('book')
-		self.gui['change_name'].findChild(name='headline').stylize('headline')
+		self.widgets['status_gold'].show()
+		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
+		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
 		# map button names to build functions calls with the building id
 		callbackWithArguments = pychan.tools.callbackWithArguments
@@ -150,21 +146,21 @@ class IngameGui(LivingObject):
 		}
 
 	def end(self):
-		self.gui['menuPanel'].mapEvents({
+		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : None,
 			'build' : None,
 			'helpLink' : None,
 			'gameMenuButton' : None
 		})
 
-		self.gui['minimap'].mapEvents({
+		self.widgets['minimap'].mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
 			'rotateRight' : None,
 			'rotateLeft' : None
 		})
 
-		for w in self.gui.itervalues():
+		for w in self.widgets.itervalues():
 			if w.parent is None:
 				w.hide()
 		self.message_widget = None
@@ -183,9 +179,9 @@ class IngameGui(LivingObject):
 		self.status_set_extra('gold',lines)
 		self.set_status_position('gold')
 		if show:
-			self.gui['status_extra_gold'].show()
+			self.widgets['status_extra_gold'].show()
 		else:
-			self.gui['status_extra_gold'].hide()
+			self.widgets['status_extra_gold'].hide()
 
 	def status_set(self, label, value):
 		"""Sets a value on the status bar (available res of the settlement).
@@ -194,7 +190,7 @@ class IngameGui(LivingObject):
 		"""
 		if isinstance(value,list):
 			value = value[0]
-		gui = self.gui['status_gold'] if label == 'gold' else self.gui['status']
+		gui = self.widgets['status_gold'] if label == 'gold' else self.widgets['status']
 		foundlabel = gui.child_finder(label + '_1')
 		foundlabel._setText(unicode(value))
 		foundlabel.resizeToContent()
@@ -206,23 +202,23 @@ class IngameGui(LivingObject):
 		@param value: value the Label is to be set to.
 		"""
 		if not value:
-			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).child_finder(label + '_' + str(2))
+			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
-			self.gui['status_extra_gold'].resizeToContent() if label == 'gold' else self.gui['status_extra'].resizeToContent()
+			self.widgets['status_extra_gold'].resizeToContent() if label == 'gold' else self.widgets['status_extra'].resizeToContent()
 			return
 		if isinstance(value, str):
 			value = [value]
 		#for i in xrange(len(value), 3):
 		#	value.append("")
 		for i in xrange(0,len(value)):
-			foundlabel = (self.gui['status_extra_gold'] if label == 'gold' else self.gui['status_extra']).child_finder(name=label + '_' + str(i+2))
+			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(name=label + '_' + str(i+2))
 			foundlabel._setText(unicode(value[i]))
 			foundlabel.resizeToContent()
 		if label == 'gold':
-			self.gui['status_extra_gold'].resizeToContent()
+			self.widgets['status_extra_gold'].resizeToContent()
 		else:
-			self.gui['status_extra'].resizeToContent()
+			self.widgets['status_extra'].resizeToContent()
 
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center
@@ -237,9 +233,9 @@ class IngameGui(LivingObject):
 			self.settlement.remove_change_listener(self.update_settlement)
 		self.settlement = settlement
 		if settlement is None:
-			self.gui['cityInfo'].hide()
+			self.widgets['city_info'].hide()
 		else:
-			self.gui['cityInfo'].show()
+			self.widgets['city_info'].show()
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
 
@@ -250,8 +246,8 @@ class IngameGui(LivingObject):
 			if self.resource_source is not None:
 				self.resource_source.remove_change_listener(self.update_resource_source)
 			if source is None:
-				self.gui['status'].hide()
-				self.gui['status_extra'].hide()
+				self.widgets['status'].hide()
+				self.widgets['status_extra'].hide()
 				self.resource_source = None
 				self.update_gold()
 		if source is not None:
@@ -261,18 +257,18 @@ class IngameGui(LivingObject):
 			self.resources_needed = res_needed
 			self.resources_usable = res_usable
 			self.update_resource_source()
-			self.gui['status'].show()
+			self.widgets['status'].show()
 
 	def update_settlement(self):
-		self.gui['cityInfo'].mapEvents({'city_name': pychan.tools.callbackWithArguments( \
+		self.widgets['city_info'].mapEvents({'city_name': pychan.tools.callbackWithArguments( \
 			self.show_change_name_dialog, self.settlement)})
-		foundlabel = self.gui['cityInfo'].child_finder('city_name')
+		foundlabel = self.widgets['city_info'].child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
-		foundlabel = self.gui['cityInfo'].child_finder('city_inhabitants')
+		foundlabel = self.widgets['city_info'].child_finder('city_inhabitants')
 		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
-		self.gui['cityInfo'].resizeToContent()
+		self.widgets['city_info'].resizeToContent()
 
 	def update_resource_source(self):
 		"""Sets the values for resource status bar as well as the building costs"""
@@ -288,32 +284,32 @@ class IngameGui(LivingObject):
 			self.status_set_extra(res_name,lines)
 			self.set_status_position(res_name)
 			if show:
-				self.gui['status_extra'].show()
+				self.widgets['status_extra'].show()
 
 	def ship_build(self, ship):
 		"""Calls the Games build_object class."""
 		self._build(1, ship)
 
 	def minimap_to_front(self):
-		self.gui['minimap'].hide()
-		self.gui['minimap'].show()
-		self.gui['menuPanel'].hide()
-		self.gui['menuPanel'].show()
+		self.widgets['minimap'].hide()
+		self.widgets['minimap'].show()
+		self.widgets['menu_panel'].hide()
+		self.widgets['menu_panel'].show()
 
 	def show_ship(self, ship):
-		self.gui['ship'].findChild(name='buildingNameLabel').text = \
+		self.widgets['ship'].findChild(name='buildingNameLabel').text = \
 				unicode(ship.name+" (Ship type)")
 
-		size = self.gui['ship'].findChild(name='chargeBar').size
+		size = self.widgets['ship'].findChild(name='chargeBar').size
 		size = (size[0] - 2, size[1] - 2)
-		self.gui['ship'].findChild(name='chargeBarLeft').size = (int(0.5 + 0.75 * size[0]), size[1])
-		self.gui['ship'].findChild(name='chargeBarRight').size = (int(0.5 + size[0] - 0.75 * size[0]), size[1])
+		self.widgets['ship'].findChild(name='chargeBarLeft').size = (int(0.5 + 0.75 * size[0]), size[1])
+		self.widgets['ship'].findChild(name='chargeBarRight').size = (int(0.5 + size[0] - 0.75 * size[0]), size[1])
 
-		pos = self.gui['ship'].findChild(name='chargeBar').position
+		pos = self.widgets['ship'].findChild(name='chargeBar').position
 		pos = (pos[0] + 1, pos[1] + 1)
-		self.gui['ship'].findChild(name='chargeBarLeft').position = pos
-		self.gui['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
-		self.gui['ship'].mapEvents({
+		self.widgets['ship'].findChild(name='chargeBarLeft').position = pos
+		self.widgets['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
+		self.widgets['ship'].mapEvents({
 			'foundSettelment' : ychan.tools.callbackWithArguments(self.ship_build, ship)
 		})
 		self.show_menu('ship')
@@ -348,7 +344,7 @@ class IngameGui(LivingObject):
 		@param menu: str with the guiname or pychan object.
 		"""
 		if isinstance(menu, str):
-			menu = self.gui[menu]
+			menu = self.widgets[menu]
 		return menu
 
 	def get_cur_menu(self):
@@ -383,14 +379,14 @@ class IngameGui(LivingObject):
 		"""Loads a subcontainer into the build menu and changes the tabs background.
 		@param num: number representing the tab to load.
 		"""
-		tab1 = self.gui['build'].findChild(name=('tab'+str(self.active_build)))
-		tab2 = self.gui['build'].findChild(name=('tab'+str(num)))
+		tab1 = self.widgets['build'].findChild(name=('tab'+str(self.active_build)))
+		tab2 = self.widgets['build'].findChild(name=('tab'+str(num)))
 		activetabimg, nonactiveimg= tab1._getImage(), tab2._getImage()
 		tab1._setImage(nonactiveimg)
 		tab2._setImage(activetabimg)
-		contentarea = self.gui['build'].findChild(name='content')
-		contentarea.removeChild(self.gui['build_tab'+str(self.active_build)])
-		contentarea.addChild(self.gui['build_tab'+str(num)])
+		contentarea = self.widgets['build'].findChild(name='content')
+		contentarea.removeChild(self.widgets['build_tab'+str(self.active_build)])
+		contentarea.addChild(self.widgets['build_tab'+str(num)])
 		contentarea.adaptLayout()
 		self.active_build = num
 
@@ -402,13 +398,13 @@ class IngameGui(LivingObject):
 				# increase x position for lines greater the 1
 				plusx = 20
 			if resource_name == 'gold':
-				self.gui['status_gold'].child_finder(resource_name + '_' + str(i)).position = (
-					self.gui['status_gold'].child_finder(icon_name).position[0] + 33 - self.gui['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
+				self.widgets['status_gold'].child_finder(resource_name + '_' + str(i)).position = (
+					self.widgets['status_gold'].child_finder(icon_name).position[0] + 33 - self.widgets['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
 					41 + 10 * i + plusx
 				)
 			else:
-				self.gui['status'].child_finder(resource_name + '_' + str(i)).position = (
-					self.gui['status'].child_finder(icon_name).position[0] + 24 - self.gui['status'].child_finder(resource_name + '_' + str(i)).size[0]/2,
+				self.widgets['status'].child_finder(resource_name + '_' + str(i)).position = (
+					self.widgets['status'].child_finder(icon_name).position[0] + 24 - self.widgets['status'].child_finder(resource_name + '_' + str(i)).size[0]/2,
 					41 + 10 * i + plusx
 				)
 
@@ -428,20 +424,47 @@ class IngameGui(LivingObject):
 			'okButton': pychan.tools.callbackWithArguments(self.change_name, instance),
 			'cancelButton': self.hide_change_name_dialog
 		}
-		self.on_escape = self.hide_change_name_dialog
-		self.gui['change_name'].mapEvents(events)
-		self.gui['change_name'].show()
+		self.main_gui.on_escape = self.hide_change_name_dialog
+		self.widgets['change_name'].mapEvents(events)
+		self.widgets['change_name'].show()
 
 	def hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
 		self.session.speed_unpause()
-		self.on_escape = self.show_pause
-		self.gui['change_name'].hide()
+		self.main_gui.on_escape = self.main_gui.show_pause
+		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
 		"""Applies the change_name dialogs input and hides it"""
-		new_name = self.gui['change_name'].collectData('new_name')
-		self.gui['change_name'].findChild(name='new_name').text = u''
+		new_name = self.widgets['change_name'].collectData('new_name')
+		self.widgets['change_name'].findChild(name='new_name').text = u''
 		instance.set_name(new_name)
 		self.hide_change_name_dialog()
+
+	def toggle_ingame_pause(self):
+		"""Called when the hotkey for pause is pressed. Displays pause notification and does
+		the acctual (un)pausing."""
+		if not self.session.speed_is_paused():
+			self.session.speed_pause()
+			self.main_gui.on_escape = self.toggle_ingame_pause
+			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
+			self.widgets['ingame_pause'].show()
+		else:
+			self.main_gui.on_escape = self.show_pause
+			self.widgets['ingame_pause'].hide()
+			self.session.speed_unpause()
+
+	def toggle_ingame_pdb_start(self):
+		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
+		pass
+
+	def display_game_speed(self, text):
+		"""
+		@param text: unicode string to display as speed value
+		"""
+		wdg = self.widgets['minimap'].findChild(name="speed_text")
+		wdg.text = text
+		wdg.resizeToContent()
+		self.widgets['minimap'].show()
+
 

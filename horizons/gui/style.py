@@ -172,7 +172,7 @@ STYLES= {
 		}
 	},
 
-    'cityInfo': { # style for city info
+    'city_info': { # style for city info
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),

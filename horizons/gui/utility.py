@@ -21,6 +21,7 @@
 
 import pychan
 from horizons.gui.widgets.tooltip import TooltipIcon
+from horizons.i18n import load_xml_translated
 
 import horizons.main
 
@@ -37,3 +38,35 @@ def center_widget(widget):
 	"""
 	widget.x = int((horizons.main.settings.fife.screen.width - widget.width) / 2)
 	widget.y = int((horizons.main.settings.fife.screen.height - widget.height) / 2)
+
+
+class LazyWidgetsDict(dict):
+	"""Dictionary for UH widgets. Loads widget on first access."""
+	def __init__(self, styles, center_widgets=True, *args, **kwargs):
+		"""
+		@param styles: Dictionary, { 'widgetname' : 'stylename' }. data for stylize().
+		@param center_widgets: wheter to center the widgets via center_widget()
+		"""
+		super(LazyWidgetsDict, self).__init__(*args, **kwargs)
+		self.styles = styles
+		self.center_widgets = center_widgets
+
+	def __getitem__(self, widgetname):
+		try:
+			return dict.__getitem__(self, widgetname)
+		except KeyError:
+			self._load_widget(widgetname)
+			return dict.__getitem__(self, widgetname)
+
+	def _load_widget(self, widgetname):
+		widget = load_xml_translated(widgetname+'.xml')
+		if self.center_widgets:
+			print 'do center'
+			center_widget(widget)
+		headline = widget.findChild(name='headline')
+		if headline:
+			headline.stylize('headline')
+		if widgetname in self.styles:
+			widget.stylize(self.styles[widgetname])
+		self[widgetname] = widget
+

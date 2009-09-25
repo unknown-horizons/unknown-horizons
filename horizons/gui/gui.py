@@ -34,27 +34,9 @@ from horizons.i18n import load_xml_translated, update_all_translations
 from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback, Color
-from horizons.gui.utility import center_widget
+from horizons.gui.utility import center_widget, LazyWidgetsDict
 
 from horizons.gui.modules.settingsgui import SettingsGui
-
-class LazyWidgetsDict(dict):
-	"""Dictionary for UH widgets. Loads widget on first access."""
-	def __getitem__(self, widgetname):
-		try:
-			return dict.__getitem__(self, widgetname)
-		except KeyError:
-			widget = load_xml_translated(widgetname+'.xml')
-			center_widget(widget)
-			headline = widget.findChild(name='headline')
-			if headline:
-				headline.stylize('headline')
-			if widgetname in Gui.styles:
-				widget.stylize(Gui.styles[widgetname])
-
-			self[widgetname] = widget
-			return self[widgetname]
-
 
 class Gui(SettingsGui):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
@@ -83,7 +65,8 @@ class Gui(SettingsGui):
 	def __init__(self):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
-		self.widgets = LazyWidgetsDict() # access widgets with their filenames without '.xml'
+		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
+		self.session = None
 
 	def show_main(self):
 		""" shows the main menu """
@@ -484,23 +467,6 @@ class Gui(SettingsGui):
 		self.current = self.widgets['loadingscreen']
 		center_widget(self.current)
 		self.show()
-
-	def toggle_ingame_pause(self):
-		"""Called when the hotkey for pause is pressed. Displays pause notification and does
-		the acctual (un)pausing."""
-		if not horizons.main.session.speed_is_paused():
-			horizons.main.session.speed_pause()
-			self.on_escape = self.toggle_ingame_pause
-			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
-			self.widgets['ingame_pause'].show()
-		else:
-			self.on_escape = self.show_pause
-			self.widgets['ingame_pause'].hide()
-			horizons.main.session.speed_unpause()
-
-	def toggle_ingame_pdb_start(self):
-		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
-		pass
 
 	def __switch_current_widget(self, new_widget, center=False, event_map=None, show=False):
 		"""Switches self.current to a new widget.

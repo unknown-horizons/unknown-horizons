@@ -64,7 +64,7 @@ class Build(Command):
 									 self.x, self.y)
 		for ident in self.tear:
 			building = WorldObject.get_object_by_id(ident)
-			horizons.main.session.manager.execute(Tear(building))
+			Tear(building).execute()
 
 
 		if self.island is not None:

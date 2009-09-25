@@ -228,7 +228,7 @@ def init_environment():
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
 			log_paths()
-			print 'Failed to load fife:', e
+			print _('Failed to load fife:'), e
 			exit(1)
 		log().debug('Searching for FIFE')
 		find_FIFE(options.fife_path) # this restarts or terminates the program

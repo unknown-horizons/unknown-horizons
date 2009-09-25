@@ -90,12 +90,13 @@ class Session(LivingObject):
 
 		#game
 		self.timer = Timer()
-		self.manager = SPManager()
 		Scheduler.create_instance(self.timer)
-		self.view = View((15, 15))
+		self.manager = SPManager(self)
+		self.view = View(self, (15, 15))
 		Entities.load(self.db)
 
 		#GUI
+		self.gui.session = self
 		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
 		self.cursor = SelectionTool(self)
@@ -290,10 +291,6 @@ class Session(LivingObject):
 		self.display_speed()
 
 	def display_speed(self):
-		if not hasattr(self, 'speed_display'):
-			self.speed_display = self.ingame_gui.gui['minimap'].findChild(name="speed_text")
-			self.speed_display.stylize('menu')
-
 		text = u''
 		tps = self.timer.ticks_per_second
 		if tps == 0: # pause
@@ -302,9 +299,7 @@ class Session(LivingObject):
 			pass # display nothing
 		else:
 			text = unicode(tps/16) + 'x' # 2x, 4x, ...
-		self.speed_display.text = text
-		self.speed_display.resizeToContent()
-		self.ingame_gui.gui['minimap'].show()
+		self.ingame_gui.display_game_speed(text)
 
 	def speed_up(self):
 		if self.timer.ticks_per_second in horizons.main.settings.ticks.steps:

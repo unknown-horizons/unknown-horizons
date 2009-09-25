@@ -23,7 +23,6 @@ import horizons.timer
 import horizons.main
 from horizons.packets import TickPacket
 
-
 from util import decode
 from util.living import LivingObject
 
@@ -31,7 +30,9 @@ class SPManager(LivingObject):
 	"""The manager class takes care of command issuing to the timermanager, sends tick-packets
 	over the network, and syncronisation of network games."""
 
-	def __init__(self):
+	def __init__(self, session):
+		super(SPManager, self).__init__()
+		self.session = session
 		self.recording = False
 		self.commands = []
 
@@ -44,19 +45,19 @@ class SPManager(LivingObject):
 			return
 		if self.recording:
 			horizons.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", \
-					horizons.main.session.timer.tick_next_id, horizons.main.session.world.player.getId(), \
+					self.session.timer.tick_next_id, self.session.world.player.getId(), \
 					horizons.util.encode(command))
-		ret = command(issuer = horizons.main.session.world.player) # actually execute the command
+		ret = command(issuer = self.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it
 		return ret
 
 	def load(self, db):
 		self.commands = []
 		for tick, issuer, data in db("SELECT tick, issuer, data from command"):
-			self.commands.append((int(tick), horizons.main.session.world.player, decode(data))) #TODO: just until we have correct player saving
+			self.commands.append((int(tick), self.session.world.player, decode(data))) #TODO: just until we have correct player saving
 			#self.commands.append((int(tick), WorldObject.get_object_by_id(issuer), decode(data)))
 		if len(self.commands) > 0:
-			horizons.main.session.timer.add_call(self.tick)
+			self.session.timer.add_call(self.tick)
 
 	def tick(self, tick):
 		remove = []
@@ -67,7 +68,7 @@ class SPManager(LivingObject):
 		for cmd in remove:
 			self.commands.remove(cmd)
 		if len(self.commands) == 0:
-			horizons.main.session.timer.remove_call(self.tick)
+			self.session.timer.remove_call(self.tick)
 
 	def end(self):
 		self.commands = None
@@ -75,9 +76,10 @@ class SPManager(LivingObject):
 
 class MPManager(LivingObject):
 	COMMAND_RATE = 1
-	def __init__(self):
+	def __init__(self, session):
 		"""Initialize the Multiplayer Manager"""
 		super(MPManager, self).__init__()
+		self.session = session
 		horizons.timer.add_test(self.can_tick)
 		horizons.timer.add_call(self.tick)
 		self.commands = []
@@ -95,10 +97,10 @@ class MPManager(LivingObject):
 		if tick % self.__class__.COMMAND_RATE == 0:
 			if self.packets.has_key(tick):
 				self.packets[tick] = {}
-			self.packets[tick][horizons.main.session.players[0]] = TickPacket(tick, self.commands)
+			self.packets[tick][self.session.players[0]] = TickPacket(tick, self.commands)
 			self.commands = []
 			if self.packets.has_key(tick - 2):
-				for p in horizons.main.session.players[(tick - 2) % len(horizons.main.session.players):] + horizons.main.session.players[:((tick - 2) % len(horizons.main.session.players)) - 1]:
+				for p in self.session.players[(tick - 2) % len(self.session.players):] + self.session.players[:((tick - 2) % len(self.session.players)) - 1]:
 					for c in self.packets[tick - 2][p].commands:
 						c(issuer = p)
 
@@ -106,7 +108,7 @@ class MPManager(LivingObject):
 		"""
 		@param tick:
 		"""
-		return horizons.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(horizons.main.session.player))) else horizons.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
+		return horizons.timer.TEST_PASS if ((tick % self.__class__.COMMAND_RATE != 0) or (not self.packets.has_key(tick - 2)) or (len(self.packets[tick - 2]) == len(self.session.player))) else horizons.timer.TEST_RETRY_KEEP_NEXT_TICK_TIME
 
 	def execute(self, command):
 		"""Executes a command

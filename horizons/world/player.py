@@ -28,13 +28,15 @@ from horizons.util import WorldObject, Color
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
 
-	def __init__(self, id, name, color, inventory = {}):
+	def __init__(self, session, id, name, color, inventory = {}):
 		"""
+		@param session: Session instance
 		@param id: unique player id
 		@param name: user-chosen name
 		@param color: color of player (as Color)
 		@param inventory: {res: value} that are put in the players inventory
 		"""
+		self.session = session
 		super(Player, self).__init__()
 		self.__init(id, name, color)
 
@@ -55,14 +57,15 @@ class Player(StorageHolder, WorldObject):
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not horizons.main.session.world.player \
+		client_id = None if self is not self.session.world.player \
 							else horizons.main.settings.client_id
 		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", \
 			 self.getId(), self.name, self.color.id, client_id)
 
 	@classmethod
-	def load(cls, db, worldid):
+	def load(cls, session, db, worldid):
 		self = Player.__new__(Player)
+		self.session = session
 		self._load(db, worldid)
 		return self
 
@@ -88,7 +91,7 @@ class Player(StorageHolder, WorldObject):
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
 			coords = (settler.position.center().x, settler.position.center().y)
-			horizons.main.session.ingame_gui.message_widget.add(coords[0], coords[1], \
+			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
 			                                                    {'level': settler.level})
 			return True
@@ -102,7 +105,7 @@ class HumanPlayer(Player):
 		reached_new_level = super(HumanPlayer, self).notify_settler_reached_level(settler)
 		if reached_new_level:
 			coords = (settler.position.center().x, settler.position.center().y)
-			horizons.main.session.ingame_gui.message_widget.add(coords[0], coords[1], \
+			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
 			                                                    {'level': settler.level})
 """

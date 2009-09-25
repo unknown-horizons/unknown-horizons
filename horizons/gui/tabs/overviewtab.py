@@ -20,13 +20,12 @@
 # ###################################################
 import weakref
 import pychan
-import operator
 
 import horizons.main
 
 from tabinterface import TabInterface
 from horizons.util import Callback
-from horizons.constants import RES, SETTLER
+from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
@@ -48,7 +47,8 @@ class OverviewTab(TabInterface):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		if hasattr(self.instance, 'name'):
-			self.widget.child_finder('name').text = unicode(self.instance.name)
+			name_widget = self.widget.child_finder('name')
+			name_widget.text = unicode(self.instance.name)
 		#if hasattr(self.instance, 'health'):
 		#	self.widget.child_finder('health').text = unicode(self.instance.health)
 		self.widget.adaptLayout()
@@ -98,14 +98,15 @@ class ShipOverviewTab(OverviewTab):
 	def refresh(self):
 		# show rename when you click on name
 		events = {
-			'name': Callback(horizons.main.session.ingame_gui.show_change_name_dialog, self.instance)
+			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
 		}
 
 		# check if we can display the foundSettlement-anchor
-		islands = horizons.main.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
+		islands = self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
 		if len(islands) > 0:
-			events['foundSettelment'] = Callback(horizons.main.session.ingame_gui._build, \
-			                                     1, weakref.ref(self.instance) )
+			events['foundSettelment'] = Callback(self.instance.session.ingame_gui._build, \
+			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
+			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettelment').set_active()
 		else:
@@ -117,16 +118,12 @@ class ShipOverviewTab(OverviewTab):
 		super(ShipOverviewTab, self).refresh()
 
 
-
 class ProductionOverviewTab(OverviewTab):
-
 	def  __init__(self, instance):
 		super(ProductionOverviewTab, self).__init__(
 			widget = 'buildings_gui/production_building_overview.xml',
 			instance = instance
 		)
-		#events = { 'toggle_active': ToggleActive(self.instance).execute }
-		#self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
@@ -200,7 +197,7 @@ class ProductionOverviewTab(OverviewTab):
 		return container
 
 	def destruct_building(self):
-		horizons.main.session.ingame_gui.hide_menu()
+		self.instance.session.ingame_gui.hide_menu()
 		if self.destruct_button.gui.isVisible():
 			self.destruct_button.hide_tooltip()
 		Tear(self.instance).execute()

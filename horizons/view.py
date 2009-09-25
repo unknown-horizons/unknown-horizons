@@ -30,11 +30,13 @@ from constants import LAYERS
 
 class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
-	def __init__(self, center = (0, 0)):
+	def __init__(self, session, center = (0, 0)):
 		"""
+		@param session: Session instance
 		@param center: center position for the main camera
 		"""
 		super(View, self).__init__()
+		self.session = session
 		self.model = horizons.main.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -132,15 +134,15 @@ class View(Changelistener):
 			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
 			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
 
-		if pos.x > horizons.main.session.world.max_x:
-			pos.x = horizons.main.session.world.max_x
-		elif pos.x < horizons.main.session.world.min_x:
-			pos.x = horizons.main.session.world.min_x
+		if pos.x > self.session.world.max_x:
+			pos.x = self.session.world.max_x
+		elif pos.x < self.session.world.min_x:
+			pos.x = self.session.world.min_x
 
-		if pos.y > horizons.main.session.world.max_y:
-			pos.y = horizons.main.session.world.max_y
-		elif pos.y < horizons.main.session.world.min_y:
-			pos.y = horizons.main.session.world.min_y
+		if pos.y > self.session.world.max_y:
+			pos.y = self.session.world.max_y
+		elif pos.y < self.session.world.min_y:
+			pos.y = self.session.world.min_y
 
 		self.cam.setLocation(loc)
 		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)

@@ -93,9 +93,9 @@ class World(LivingObject):
 				# import ai class and call load on it
 				module = __import__('horizons.ai.'+ai_data[0][0], fromlist=[ai_data[0][1]])
 				ai_class = getattr(module, ai_data[0][1])
-				player = ai_class.load(savegame_db ,player_id)
+				player = ai_class.load(self.session, savegame_db ,player_id)
 			else: # no ai
-				player = Player.load(savegame_db, player_id)
+				player = Player.load(self.session, savegame_db, player_id)
 			self.players.append(player)
 
 			if client_id == horizons.main.settings.client_id:
@@ -192,7 +192,6 @@ class World(LivingObject):
 		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
-			#print "Adding trees and animals to the world..."
 			tree = Entities().buildings[BUILDINGS.TREE_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
@@ -204,7 +203,7 @@ class World(LivingObject):
 							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute()
 
 		# add free trader
-		self.trader = Trader(99999, "Free Trader", Color())
+		self.trader = Trader(self.session, 99999, "Free Trader", Color())
 		ret_coords = None
 		for player in self.players:
 			# Adding ships for the players
@@ -268,7 +267,7 @@ class World(LivingObject):
 
 	def setup_player(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""
-		self.player =  Player(0, name, color, inventory={RES.GOLD_ID: 20000})
+		self.player =  Player(self.session, 0, name, color, inventory={RES.GOLD_ID: 20000})
 		self.players.append(self.player)
 		self.session.ingame_gui.update_gold()
 		self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)

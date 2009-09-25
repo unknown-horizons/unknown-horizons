@@ -43,7 +43,7 @@
 		<Label text="Portuguese - Mad_Monk" position="62,180" />
 	
 		<Label text="SPECIAL THANKS to:" position="22,220" name="headline_thanks" />
-		<Label text="The FIFE team (www.fifengine.de)" position="62,240" />
+		<Label name="fife_team_lbl" text="The FIFE team (www.fifengine.de)" position="62,240" />
 		<Label text="mvBarracuda (Martin Vohland)" position="62,260" />
 		<Label text="lamoot (Matjaz Lamut)" position="62,280" />
 		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,300" />

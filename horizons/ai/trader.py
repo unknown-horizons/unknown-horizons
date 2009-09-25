@@ -55,12 +55,12 @@ class Trader(Player):
 
 	_res_values = {} # stores money value of resources. Use only get_res_value() for access
 
-	def __init__(self, id, name, color, **kwargs):
-		super(Trader, self).__init__(id, name, color, **kwargs)
+	def __init__(self, session, id, name, color, **kwargs):
+		super(Trader, self).__init__(session, id, name, color, **kwargs)
 		self.__init()
 
 		# create a ship and place it randomly (temporary hack)
-		point = horizons.main.session.world.get_random_possible_ship_position()
+		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y).execute()
 		self.ships[ship] = self.shipStates.reached_branch
 		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
@@ -134,7 +134,7 @@ class Trader(Player):
 		@param ship: Ship instance that is to be used"""
 		self.log.debug("Trader %s: moving to random location", self.getId())
 		# find random position
-		point = horizons.main.session.world.get_random_possible_ship_position()
+		point = self.session.world.get_random_possible_ship_position()
 		# move ship there:
 		try:
 			ship.move(point, Callback(self.ship_idle, ship))
@@ -150,7 +150,7 @@ class Trader(Player):
 		"""Returns the signal fire instance, if there is one in the ships range, else False"""
 		if ship in self.allured_by_signal_fire and self.allured_by_signal_fire[ship]:
 			return False # don't visit signal fire again
-		for tile in horizons.main.session.world.get_tiles_in_radius(ship.position, ship.radius):
+		for tile in self.session.world.get_tiles_in_radius(ship.position, ship.radius):
 			try:
 				if tile.object.id == BUILDINGS.SIGNAL_FIRE_CLASS:
 					return tile.object
@@ -162,7 +162,7 @@ class Trader(Player):
 		signal_fire = self._check_for_signal_fire_in_ship_range(ship)
 		self.log.debug("Trader %s found signal fire %s", ship.getId(), signal_fire)
 		# search a branch office in the range of the signal fire and move to it
-		branch_offices = horizons.main.session.world.get_branch_offices()
+		branch_offices = self.session.world.get_branch_offices()
 		for bo in branch_offices:
 			if bo.position.distance(signal_fire.position) <= signal_fire.radius and \
 			   bo.owner == signal_fire.owner:
@@ -181,7 +181,7 @@ class Trader(Player):
 		@param branch_office: Branch Office instance to move to. Random one is selected on None."""
 		self.log.debug("Trader %s: moving to bo (random=%s)", self.getId(), (branch_office is None))
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
-		branchoffices = horizons.main.session.world.get_branch_offices()
+		branchoffices = self.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
 			# there aren't any branch offices, so move randomly
 			self.send_ship_random(ship)

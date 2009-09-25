@@ -17,7 +17,7 @@
 		</HBox>
 
 
-		<Label position="70,95" text="Build new ship:" />
+		<Label position="70,95" name="build_new_ship_lbl" text="Build new ship:" />
 
 		<ImageButton name="createUnit" position="190,90" up_image="content/gui/images/icons/hud/ship/civil_32.png" down_image="content/gui/images/icons/hud/ship/civil_32_h.png" hover_image="content/gui/images/icons/hud/ship/civil_32_h.png" border_size="0"/>
 

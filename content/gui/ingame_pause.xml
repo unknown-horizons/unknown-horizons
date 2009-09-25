@@ -3,6 +3,6 @@
     <Icon image="content/gui/images/background/notice.png" position="0,0" />
     <Label text="Game paused" position="135,30" name="headline" />
     <Icon image="content/gui/images/background/hr.png" position="80,50" />
-    <Label text="Hit P to continue the game or click below!" position="65,82" />
+    <Label name="hit_p_to_continue_lbl" text="Hit P to continue the game or click below!" position="65,82" />
 	<ImageButton name="unpause_button" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="290,160" />
 </Container>
