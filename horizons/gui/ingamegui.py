@@ -113,9 +113,15 @@ class IngameGui(LivingObject):
 
 		# map button names to build functions calls with the building id
 		callbackWithArguments = pychan.tools.callbackWithArguments
+		def f():
+			a = self
+			import cProfile
+			cProfile.runctx('a._build(2)', globals(), locals(), filename='/tmp/prof')
+			import sys
+			sys.exit(0)
 		self.callbacks_build = { # keys are settler levels
 			0: {
-				'store-1' : callbackWithArguments(self._build, 2),
+				'store-1' : callbackWithArguments(f),
 				'church-1' : callbackWithArguments(self._build, 5),
 				'main_square-1' : callbackWithArguments(self._build, 4),
 				'lighthouse-1' : callbackWithArguments(self._build, 6),

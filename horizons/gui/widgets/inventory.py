@@ -58,7 +58,7 @@ class Inventory(pychan.widgets.Container):
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		index = 0
-		for resid, amount in self.inventory:
+		for resid, amount in sorted(self.inventory): # sort by resid for unchangeable positions
 			# check if this res should be displayed
 			if not horizons.main.db('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue

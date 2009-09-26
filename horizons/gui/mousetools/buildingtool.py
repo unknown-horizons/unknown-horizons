@@ -26,7 +26,7 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Circle, Point
+from horizons.util import ActionSetLoader, Circle, Point, decorators
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
@@ -69,17 +69,24 @@ class BuildingTool(NavigationTool):
 		else:
 			self.highlight_ship_radius()
 
+	@decorators.make_constants()
 	def highlight_buildable(self):
 		"""Highlights all buildable tiles."""
+		ground_build_satisfied_fun = self._class._is_ground_build_requirement_satisfied
+		add_colored = self.renderer.addColored
+		player = self.session.world.player
 		for island in self.session.world.islands:
 			for tile in island.grounds:
-				if tile.settlement is not None and \
-					 tile.settlement.owner == self.session.world.player and \
-					 self._class._is_ground_build_requirement_satisfied(tile.x, tile.y, island) is not None:
-					self.renderer.addColored(tile._instance, *self.buildable_color)
-					if tile.object is not None:
-						self.renderer.addColored(tile.object._instance, *self.buildable_color)
+				try:
+					if tile.settlement.owner == player and \
+					   ground_build_satisfied_fun(tile.x, tile.y, island) is not None:
+						add_colored(tile._instance, *self.buildable_color)
+						if tile.object is not None:
+							add_colored(tile.object._instance, *self.buildable_color)
+				except AttributeError:
+					pass # tile has no settlement
 
+	@decorators.make_constants()
 	def highlight_ship_radius(self):
 		"""Colors everything in the radius of the ship. Also checks whether
 		there is a tile in the ships radius."""
@@ -149,6 +156,7 @@ class BuildingTool(NavigationTool):
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)
 		self.gui.adaptLayout()
 
+	@decorators.make_constants()
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
 		# delete old building fife instances
@@ -258,6 +266,7 @@ class BuildingTool(NavigationTool):
 			self._check_update_preview(point)
 		evt.consume()
 
+	@decorators.make_constants()
 	def mouseReleased(self, evt):
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():

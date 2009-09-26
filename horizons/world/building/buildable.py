@@ -21,7 +21,7 @@
 
 import math
 
-from horizons.util import Point, Rect
+from horizons.util import Point, Rect, decorators
 
 class Buildable(object):
 	"""Base class for every kind of buildables"""
@@ -45,6 +45,7 @@ class BuildableSingle(Buildable):
 	For general use, only get_build_list is intended.
 	"""
 
+	@decorators.make_constants()
 	@classmethod
 	def _are_build_requirements_satisfied(cls, x, y, before = None, **kwargs):
 		state = {'x' : x, 'y' : y}
@@ -72,6 +73,7 @@ class BuildableSingle(Buildable):
 					return state
 		return state
 
+	@decorators.make_constants()
 	@classmethod
 	def _is_multi_build_requirement_satisfied(cls, *before, **state):
 		for i in before:
@@ -81,6 +83,7 @@ class BuildableSingle(Buildable):
 				return {'buildable' : False}
 		return {}
 
+	@decorators.make_constants()
 	@classmethod
 	def _is_island_build_requirement_satisfied(cls, x, y, **state):
 		"""Checks if there is an island at x,y
@@ -94,6 +97,7 @@ class BuildableSingle(Buildable):
 				return {'buildable' : False}
 		return {'island' : island}
 
+	@decorators.make_constants()
 	@classmethod
 	def _is_settlement_build_requirement_satisfied(cls, x, y, island, **state):
 		"""Checks if there is a settlement at x, y
@@ -103,17 +107,18 @@ class BuildableSingle(Buildable):
 			return {'buildable' : False}
 		return {'settlement' : settlements.pop()}
 
+	@decorators.make_constants()
 	@classmethod
 	def _is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		"""Checks if the ground at x, y is buildable.
 		Returns either {} (success) or {'buildable': False}"""
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
-			tile_classes = island.get_tile(p).__class__.classes
-			if 'constructible' not in tile_classes:
+			if 'constructible' not in island.get_tile(p).__class__.classes:
 				return {'buildable' : False}
 		return {}
 
+	@decorators.make_constants()
 	@classmethod
 	def _is_building_build_requirement_satisfied(cls, x, y, island, **state):
 		"""Checks if buildings are blocking the position, and wether they can be teared.
@@ -132,10 +137,12 @@ class BuildableSingle(Buildable):
 					return {'buildable' : False}
 		return {} if len(tear) == 0 else {'tear' : list(tear)}
 
+	@decorators.make_constants()
 	@classmethod
 	def _is_unit_build_requirement_satisfied(cls, x, y, island, **state):
 		return {}
 
+	@decorators.make_constants()
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
 		"""Return list of buildings between startpoint (point1) and endpoint (point2)
@@ -156,6 +163,7 @@ class BuildableSingle(Buildable):
 			return [building]
 
 class BuildableRect(BuildableSingle):
+	@decorators.make_constants()
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
 		buildings = []
@@ -174,6 +182,7 @@ class BuildableRect(BuildableSingle):
 		return buildings
 
 class BuildableLine(BuildableSingle):
+	@decorators.make_constants()
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
 		"""
@@ -244,6 +253,7 @@ class BuildableSingleWithSurrounding(BuildableSingle):
 
 class BuildableSingleOnCoast(BuildableSingle):
 	"""BranchOffice, BoatBuilder, Fisher"""
+	@decorators.make_constants()
 	@classmethod
 	def _is_ground_build_requirement_satisfied(cls, x, y, island, **state):
 		coast_tile_found = False
@@ -257,6 +267,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 
 		return {} if coast_tile_found else None
 
+	@decorators.make_constants()
 	@classmethod
 	def check_build_rotation(cls, rotation, x, y):
 		"""Rotate so that the building looks out to sea"""
