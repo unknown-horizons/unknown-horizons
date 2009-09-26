@@ -245,13 +245,13 @@ class SelectableBuilding(object):
 		if self.range_applies_only_on_island:
 			for coord in self.position.get_radius_coordinates(self.radius, include_self=True):
 				tile = self.island.get_tile_tuple(coord)
-				if tile.settlement == self.settlement and \
-				   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-					add_colored(tile._instance, *self.selection_color)
-					try:
+				try:
+					if tile.settlement == self.settlement and \
+					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						add_colored(tile._instance, *self.selection_color)
 						add_colored(tile.object._instance, *self.selection_color)
-					except AttributeError:
-						pass # no object on tile
+				except AttributeError:
+					pass # no tile or object on tile
 		else:
 			# we have to color water too
 			for tile in self.session.world.get_tiles_in_radius(self.position.center(), self.radius):
@@ -270,8 +270,6 @@ class SelectableBuilding(object):
 	def remove(self):
 		super(SelectableBuilding, self).remove()
 		self.deselect()
-
-
 
 
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
