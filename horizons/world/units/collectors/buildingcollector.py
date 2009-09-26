@@ -153,7 +153,7 @@ class BuildingCollector(Collector):
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
 		self.log.debug("%s move_home", self)
-		self.move(self.home_building.position, callback=callback, destination_in_building=True, action=action)
+		self.move_back(callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
 	def cancel(self):
