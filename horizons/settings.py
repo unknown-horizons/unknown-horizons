@@ -24,6 +24,7 @@ import os.path
 import ext.simplejson as simplejson
 
 from horizons.constants import PATHS
+from horizons.util import ManualConstructionSingleton
 
 class _Setting(object):
 	""" Class to store settings
@@ -115,6 +116,10 @@ class _Setting(object):
 				inst.add_change_listener(listener)
 
 class Settings(_Setting):
+	"""Class that enables access to dynamically created members via dot notation.
+	This means, that you can access an added category or value via settings_inst.cat.setting_name
+	"""
+	__metaclass__ = ManualConstructionSingleton
 	VERSION = 2
 	"""
 	@param config:

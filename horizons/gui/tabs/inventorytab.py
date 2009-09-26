@@ -20,7 +20,6 @@
 # ###################################################
 
 import pychan
-import horizons.main
 
 from tabinterface import TabInterface
 from horizons.gui.widgets import TradeWidget

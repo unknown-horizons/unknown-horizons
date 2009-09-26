@@ -20,6 +20,7 @@
 # ###################################################
 
 import horizons.main
+from horizons.settings import Settings
 import time
 
 # There are two ways of sending packets without specifying target ip/port:
@@ -160,7 +161,8 @@ class MasterRegisterPacket(Packet):
 	@param port: port on which local game server runs
 	"""
 	def __init__(self, port):
-		super(MasterRegisterPacket, self).__init__(horizons.main.settings.network.url_master, horizons.main.settings.network.port)
+		super(MasterRegisterPacket, self).__init__(Settings().network.url_master, \
+		                                           Settings().network.port)
 		self.myport = port
 
 class InfoPacket(Packet):

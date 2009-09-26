@@ -26,13 +26,12 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import ProductionOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
-from horizons.entities import Entities
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-""" AnimalFarm is not used for now
+""" AnimalFarm is not used for now (code may not work anymore)
 
 class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 18

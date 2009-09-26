@@ -23,6 +23,7 @@ import pychan
 
 import horizons.main
 
+from horizons.settings import Settings
 from horizons.i18n.utils import find_available_languages
 from horizons.i18n import update_all_translations
 
@@ -31,7 +32,7 @@ class SettingsGui(object):
 		"""Shows the settings.
 		"""
 		fife = horizons.main.fife
-		settings = horizons.main.settings
+		settings = Settings()
 
 		resolutions = [str(w) + "x" + str(h) for w, h in fife.settings.getPossibleResolutions() if w >= 1024 and h >= 768]
 		if len(resolutions) == 0:

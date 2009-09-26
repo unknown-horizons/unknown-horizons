@@ -27,6 +27,7 @@ import struct
 import sys
 from horizons.packets import *
 from horizons.extscheduler import ExtScheduler
+from horizons.settings import Settings
 
 # TODO: make networking robust
 #       (i.e. GUI freezes sometimes when waiting for timeout)
@@ -275,7 +276,7 @@ class ServerConnection(Connection):
 	registerTimeout = 120
 
 	def __init__(self, port = None):
-		super(ServerConnection, self).__init__(horizons.main.settings.network.port)
+		super(ServerConnection, self).__init__(Settings().network.port)
 
 		self.local_player = MPPlayer("127.0.0.1", port)
 

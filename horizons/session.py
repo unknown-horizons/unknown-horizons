@@ -27,7 +27,7 @@ import logging
 
 import horizons.main
 
-from horizons.gui import IngameGui, Gui
+from horizons.gui import IngameGui
 from horizons.gui.mousetools import SelectionTool
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.mousetools import TearingTool
@@ -42,6 +42,7 @@ from util import WorldObject, LivingObject, livingProperty, DbReader, Color
 from horizons.savegamemanager import SavegameManager
 from horizons.world.building.buildable import Buildable
 from horizons.command import Command
+from horizons.settings import Settings
 
 
 class Session(LivingObject):
@@ -108,10 +109,10 @@ class Session(LivingObject):
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
 		#autosave
-		if horizons.main.settings.savegame.autosaveinterval != 0:
+		if Settings().savegame.autosaveinterval != 0:
 			ExtScheduler().add_new_object(self.autosave, self, \
 			                           self.timer.get_ticks(\
-			                             horizons.main.settings.savegame.autosaveinterval) * 60, \
+			                             Settings().savegame.autosaveinterval) * 60, \
 			                                                -1)
 		Buildable.init_buildable(self)
 
@@ -123,7 +124,7 @@ class Session(LivingObject):
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 			for emitter in horizons.main.fife.emitter['ambient']:
 				emitter.stop()
 				horizons.main.fife.emitter['ambient'].remove(emitter)
@@ -282,7 +283,7 @@ class Session(LivingObject):
 	def speed_set(self, ticks):
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
-		self.view.map.setTimeMultiplier(float(ticks) / float(horizons.main.settings.ticks.default))
+		self.view.map.setTimeMultiplier(float(ticks) / float(Settings().ticks.default))
 		if old == 0 and self.timer.tick_next_time is None: #back from paused state
 			self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
 		elif ticks == 0 or self.timer.tick_next_time is None: #go into paused state or very early speed change (before any tick)
@@ -304,20 +305,20 @@ class Session(LivingObject):
 		self.ingame_gui.display_game_speed(text)
 
 	def speed_up(self):
-		if self.timer.ticks_per_second in horizons.main.settings.ticks.steps:
-			i = horizons.main.settings.ticks.steps.index(self.timer.ticks_per_second)
-			if i + 1 < len(horizons.main.settings.ticks.steps):
-				self.speed_set(horizons.main.settings.ticks.steps[i + 1])
+		if self.timer.ticks_per_second in Settings().ticks.steps:
+			i = Settings().ticks.steps.index(self.timer.ticks_per_second)
+			if i + 1 < len(Settings().ticks.steps):
+				self.speed_set(Settings().ticks.steps[i + 1])
 		else:
-			self.speed_set(horizons.main.settings.ticks.steps[0])
+			self.speed_set(Settings().ticks.steps[0])
 
 	def speed_down(self):
-		if self.timer.ticks_per_second in horizons.main.settings.ticks.steps:
-			i = horizons.main.settings.ticks.steps.index(self.timer.ticks_per_second)
+		if self.timer.ticks_per_second in Settings().ticks.steps:
+			i = Settings().ticks.steps.index(self.timer.ticks_per_second)
 			if i > 0:
-				self.speed_set(horizons.main.settings.ticks.steps[i - 1])
+				self.speed_set(Settings().ticks.steps[i - 1])
 		else:
-			self.speed_set(horizons.main.settings.ticks.steps[0])
+			self.speed_set(Settings().ticks.steps[0])
 
 	def speed_pause(self):
 		self.log.debug("Session: Pausing")

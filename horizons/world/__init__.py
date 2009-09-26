@@ -35,6 +35,7 @@ from horizons.constants import UNITS, BUILDINGS, RES
 from horizons.ai.trader import Trader
 from horizons.entities import Entities
 from horizons.util import decorators
+from horizons.settings import Settings
 
 class World(LivingObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -100,7 +101,7 @@ class World(LivingObject):
 				player = Player.load(self.session, savegame_db, player_id)
 			self.players.append(player)
 
-			if client_id == horizons.main.settings.client_id:
+			if client_id == Settings().client_id:
 				self.player = player
 			elif client_id is not None and len(ai_data) == 0:
 				# possible human player candidate with different client id

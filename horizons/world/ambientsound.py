@@ -21,6 +21,8 @@
 
 import horizons.main
 
+from horizons.settings import Settings
+
 class AmbientSound(object):
 	"""Support for playing ambient sounds, such as animal noise.
 	It relies on the subclass having an attribute "position", which must be either a Point or Rect.
@@ -37,9 +39,9 @@ class AmbientSound(object):
 		self.emitter = None
 
 	def create_emitter(self):
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 			self.emitter = horizons.main.fife.soundmanager.createEmitter()
-			self.emitter.setGain(horizons.main.settings.sound.volume_effects*2)
+			self.emitter.setGain(Settings().sound.volume_effects*2)
 			if self.positioning:
 				self.emitter.setRolloff(1.9)
 			horizons.main.fife.emitter['ambient'].append(self.emitter)
@@ -59,7 +61,7 @@ class AmbientSound(object):
 		@param soundfile: path to audio file
 		@param looping: bool, whether sound should loop for forever
 		"""
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 			if self.emitter is None:
 				self.create_emitter()
 			# set to current position
@@ -76,7 +78,7 @@ class AmbientSound(object):
 		@param sound: string, key in table sounds_special
 		@param position: optional, source of sound on map
 		"""
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 			if position is None:
 				a = AmbientSound(positioning=False)
 			else:

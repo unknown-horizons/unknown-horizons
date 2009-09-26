@@ -23,7 +23,7 @@ import time
 import horizons.main
 
 from util.living import LivingObject
-
+from horizons.settings import Settings
 
 class Timer(LivingObject):
 	"""
@@ -37,9 +37,9 @@ class Timer(LivingObject):
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).__init__()
-		horizons.main.settings.addCategories('ticks')
-		horizons.main.settings.ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
-		self.ticks_per_second = horizons.main.settings.ticks.default
+		Settings().addCategories('ticks')
+		Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
+		self.ticks_per_second = Settings().ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
 		self.tick_func_test = []
@@ -79,7 +79,7 @@ class Timer(LivingObject):
 		@param seconds: number of seconds that are to be converted into ticks
 		@return: int
 		"""
-		return int(round( seconds*horizons.main.settings.ticks.default ))
+		return int(round( seconds*Settings().ticks.default ))
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

@@ -44,10 +44,12 @@ import thread # for thread.error raised by threading.Lock.release
 
 import fife as fife_module
 
-from util import Color, ActionSetLoader, DbReader
+from util import ActionSetLoader, DbReader
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 from horizons.gui import Gui
+from horizons.settings import Settings
+from extscheduler import ExtScheduler
 
 # private module pointers of this module
 class Modules(object):
@@ -59,34 +61,30 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, settings, unstable_features, debug, preloading
+	global fife, db, unstable_features, debug, preloading
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
 	from engine import Fife
-	from extscheduler import ExtScheduler
-	from settings import Settings
 
 	# set commandline globals
 	debug = command_line_arguments.debug
 	unstable_features = command_line_arguments.unstable_features
 
-	#init db
 	db = _create_db()
 
-	#init settings
-	settings = Settings(db)
-	settings.set_defaults()
+	Settings.create_instance(db)
+	Settings().set_defaults()
 
-	# init gettext
-	_init_gettext(settings)
+	_init_gettext()
 
 	# create random client_id if necessary
-	if settings.client_id is None:
-		settings.client_id = "".join("-" if c in (8, 13, 18, 23) else random.choice("0123456789abcdef") for c in xrange(0, 36))
+	if Settings().client_id is None:
+		Settings().client_id = "".join("-" if c in (8, 13, 18, 23) else \
+		                               random.choice("0123456789abcdef") for c in xrange(0, 36))
 
 	# init game parts
-	fife = Fife()
+	fife = Fife(Settings())
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
 	ActionSetLoader.load('content/gfx/')
@@ -198,21 +196,10 @@ def load_game(savegame = None):
 	_modules.gui.show_loading_screen()
 	start_singleplayer(savegame)
 
-def _set_default_settings(settings):
-	settings.addCategories('sound')
-	settings.sound.setDefaults(enabled = True)
-	settings.sound.setDefaults(volume_music = 0.2)
-	settings.sound.setDefaults(volume_effects = 0.5)
-	settings.addCategories('network')
-	settings.network.setDefaults(port = 62666, url_servers = 'http://master.unknown-horizons.org/servers', url_master = 'master.unknown-horizons.org', favorites = [])
-	settings.addCategories('language')
-	settings.language.setDefaults(position='po', name='')
-	settings.addCategories('savegame')
-	settings.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)
 
-
-def _init_gettext(settings):
+def _init_gettext():
 	from gettext import translation, install
+	settings = Settings()
 	if settings.language.name != '':
 		try:
 			trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])

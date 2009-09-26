@@ -24,12 +24,11 @@ import pychan
 import horizons.main
 from horizons.entities import Entities
 
-from horizons.i18n import load_xml_translated
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets import Minimap, MessageWidget
-from horizons.gui.utility import center_widget, LazyWidgetsDict
+from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
 
 class IngameGui(LivingObject):

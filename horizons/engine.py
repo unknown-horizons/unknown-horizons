@@ -26,122 +26,17 @@ import fife
 import fifelog
 import pychan
 
-import gui.style
 import horizons.main
 
-from horizons.util import ActionSetLoader
+import horizons.gui.style
+from horizons.util import SQLiteAnimationLoader
 from horizons.extscheduler import ExtScheduler
-
-class SQLiteAnimationLoader(fife.ResourceLoader):
-	"""Loads animations from a SQLite database.
-	"""
-	def __init__(self):
-		super(SQLiteAnimationLoader, self).__init__()
-		self.thisown = 0
-
-	def loadResource(self, location):
-		"""
-		@param location: String with the location. See below for details:
-		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
-		Available commands:
-		- shift:
-		Shift the image using the params left, right, center, middle for x shifting and
-		y-shifting with the params: top, bottom, center, middle.
-		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
-		- cut:
-		#TODO: complete documentation
-		"""
-		commands = location.getFilename().split(':')
-		id = commands.pop(0)
-		actionset, action, rotation = id.split('-')
-		commands = zip(commands[0::2], commands[1::2])
-
-		ani = fife.Animation()
-		frame_start, frame_end = 0.0, 0.0
-		for file, frame_end in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iteritems()):
-			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
-			img = horizons.main.fife.imagepool.getImage(idx)
-			for command, arg in commands:
-				if command == 'shift':
-					x, y = arg.split(',')
-					if x.startswith('left'):
-						x = int(x[4:]) + int(img.getWidth() / 2)
-					elif x.startswith('right'):
-						x = int(x[5:]) - int(img.getWidth() / 2)
-					elif x.startswith(('center', 'middle')):
-						x = int(x[6:])
-					else:
-						x = int(x)
-
-					if y.startswith('top'):
-						y = int(y[3:]) + int(img.getHeight() / 2)
-					elif y.startswith('bottom'):
-						y = int(y[6:]) - int(img.getHeight() / 2)
-					elif y.startswith(('center', 'middle')):
-						y = int(y[6:])
-					else:
-						y = int(y)
-
-					img.setXShift(x)
-					img.setYShift(y)
-				elif command == 'cut':
-					loc = fife.ImageLocation('asdf')
-					loc.setParentSource(img)
-					x, y, w, h = arg.split(',')
-
-					if x.startswith('left'):
-						x = int(x[4:])
-					elif x.startswith('right'):
-						x = int(x[5:]) + img.getWidth()
-					elif x.startswith(('center', 'middle')):
-						x = int(x[6:]) + int(img.getWidth() / 2)
-					else:
-						x = int(x)
-
-					if y.startswith('top'):
-						y = int(y[3:])
-					elif y.startswith('bottom'):
-						y = int(y[6:]) - img.getHeight()
-					elif y.startswith(('center', 'middle')):
-						y = int(y[6:]) + int(img.getHeight() / 2)
-					else:
-						y = int(y)
-
-					if w.startswith('left'):
-						w = int(w[4:]) - x
-					elif w.startswith('right'):
-						w = int(w[5:]) + img.getWidth() - x
-					elif w.startswith(('center', 'middle')):
-						w = int(w[6:]) + int(img.getWidth() / 2) - x
-					else:
-						w = int(w)
-
-					if h.startswith('top'):
-						h = int(h[3:]) - y
-					elif h.startswith('bottom'):
-						h = int(h[6:]) + img.getHeight() - y
-					elif h.startswith(('center', 'middle')):
-						h = int(h[6:]) + int(img.getHeight() / 2) - y
-					else:
-						h = int(h)
-
-					loc.setXShift(x)
-					loc.setYShift(y)
-					loc.setWidth(w)
-					loc.setHeight(h)
-
-					idx = horizons.main.fife.imagepool.addResourceFromLocation(loc)
-					#img = horizons.main.fife.imagepool.getImage(idx)
-			ani.addFrame(fife.ResourcePtr(horizons.main.fife.imagepool, idx), max(1, int((float(frame_end) - frame_start)*1000)))
-			frame_start = float(frame_end)
-		ani.setActionFrame(0)
-		ani.thisown = 0
-		return ani
+from horizons.settings import Settings
 
 class Fife(object):
 	"""
 	"""
-	def __init__(self):
+	def __init__(self, settings):
 		self.pump = []
 
 		self.engine = fife.Engine()
@@ -153,8 +48,7 @@ class Fife(object):
 		self._doReturn = None
 		self._gotInited = False
 
-		#init settings
-		settings = horizons.main.settings
+		#init uh settings about fife
 		settings.addCategories('fife')
 		settings.fife.add_change_listener(self._setSetting)
 		settings.fife.addCategories('defaultFont', 'sound', 'renderer', 'screen')
@@ -245,16 +139,16 @@ class Fife(object):
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
 		self.emitter = {}
-		if horizons.main.settings.sound.enabled: # Set up sound if it is enabled
+		if Settings().sound.enabled: # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
-			self.emitter['bgsound'].setGain(horizons.main.settings.sound.volume_music)
+			self.emitter['bgsound'].setGain(Settings().sound.volume_music)
 			self.emitter['bgsound'].setLooping(False)
 			self.emitter['effects'] = self.soundmanager.createEmitter()
-			self.emitter['effects'].setGain(horizons.main.settings.sound.volume_effects)
+			self.emitter['effects'].setGain(Settings().sound.volume_effects)
 			self.emitter['effects'].setLooping(False)
 			self.emitter['speech'] = self.soundmanager.createEmitter()
-			self.emitter['speech'].setGain(horizons.main.settings.sound.volume_effects)
+			self.emitter['speech'].setGain(Settings().sound.volume_effects)
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
 
@@ -323,7 +217,7 @@ class Fife(object):
 		"""Plays a soundfile on the given emitter.
 		@param emitter: string with the emitters name in horizons.main.fife.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
-		if horizons.main.settings.sound.enabled: # Set up sound if it is enabled
+		if Settings().sound.enabled: # Set up sound if it is enabled
 			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
@@ -336,14 +230,14 @@ class Fife(object):
 		@param emitter_name: string with the emitters name, used as key for the self.emitter dict
 		@param value: double which value the emitter is to be set to range[0, 1]
 		"""
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 			self.emitter[emitter_name].setGain(value)
 
 	def set_volume_music(self, value):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 				self.emitter['bgsound'].setGain(value)
 
 
@@ -351,7 +245,7 @@ class Fife(object):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if horizons.main.settings.sound.enabled:
+		if Settings().sound.enabled:
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:

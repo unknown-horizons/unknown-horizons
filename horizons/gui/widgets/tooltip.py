@@ -25,6 +25,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
+from horizons.settings import Settings
 
 class TooltipIcon(pychan.widgets.Icon):
 	"""The TooltipIcon is a modified icon widget. It can be used in xml files like this:
@@ -52,7 +53,7 @@ class TooltipIcon(pychan.widgets.Icon):
 
 	def position_tooltip(self, event):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= Settings().fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:
 			ExtScheduler().add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 			self.tooltip_shown = True
@@ -117,7 +118,7 @@ class TooltipButton(pychan.widgets.ImageButton):
 
 	def position_tooltip(self, event):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= horizons.main.settings.fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= Settings().fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:
 			ExtScheduler().add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 			self.tooltip_shown = True

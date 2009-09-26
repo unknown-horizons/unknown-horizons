@@ -19,11 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
 from horizons.gui.widgets.tooltip import TooltipIcon
 from horizons.i18n import load_xml_translated
-
-import horizons.main
+from horizons.settings import Settings
 
 def create_resource_icon(res_id, db):
 	"""Creates a pychan icon for a resource.
@@ -36,8 +34,8 @@ def center_widget(widget):
 	"""Centers the widget in the parameter
 	@param widget: Widget with properties width, height, x and y
 	"""
-	widget.x = int((horizons.main.settings.fife.screen.width - widget.width) / 2)
-	widget.y = int((horizons.main.settings.fife.screen.height - widget.height) / 2)
+	widget.x = int((Settings().fife.screen.width - widget.width) / 2)
+	widget.y = int((Settings().fife.screen.height - widget.height) / 2)
 
 
 class LazyWidgetsDict(dict):

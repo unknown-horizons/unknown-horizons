@@ -30,6 +30,7 @@ from loader import ActionSetLoader
 from pychanchildfinder import PychanChildFinder
 from named_object import NamedObject
 from dbreader import DbReader
+from sqliteanimationloader import SQLiteAnimationLoader
 
 from shapes.point import Point
 from shapes.rect import Rect

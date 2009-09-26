@@ -20,7 +20,6 @@
 # ###################################################
 import os
 import os.path
-import glob
 import time
 import pychan
 
@@ -30,11 +29,10 @@ from horizons.savegamemanager import SavegameManager
 from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import ServerConnection, ClientConnection
-from horizons.i18n import load_xml_translated, update_all_translations
-from horizons.i18n.utils import find_available_languages
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback, Color
 from horizons.gui.utility import center_widget, LazyWidgetsDict
+from horizons.settings import Settings
 
 from horizons.gui.modules.settingsgui import SettingsGui
 
@@ -289,7 +287,7 @@ class Gui(SettingsGui):
 		self.current = self.widgets['serverlobby']
 		center_widget(self.current)
 
-		horizons.main.connection = ServerConnection(horizons.main.settings.network.port)
+		horizons.main.connection = ServerConnection(Settings().network.port)
 
 		self.current.serverlobby = MasterServerLobby(self.current)
 		self.current.serverlobby.update_gui()

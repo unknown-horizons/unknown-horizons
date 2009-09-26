@@ -26,7 +26,8 @@ import fife
 import horizons.main
 
 from horizons.util import Changelistener, Rect
-from constants import LAYERS
+from horizons.settings import Settings
+from horizons.constants import LAYERS
 
 class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -77,10 +78,10 @@ class View(Changelistener):
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.WATER])
 
-		horizons.main.settings.addCategories('view')
-		horizons.main.settings.view.addCategories('zoom')
-		horizons.main.settings.view.zoom.max = 1
-		horizons.main.settings.view.zoom.min = 0.25
+		Settings().addCategories('view')
+		Settings().view.addCategories('zoom')
+		Settings().view.zoom.max = 1
+		Settings().view.zoom.min = 0.25
 
 	def end(self):
 		self.model.deleteMaps()
@@ -159,14 +160,14 @@ class View(Changelistener):
 
 	def zoom_out(self):
 		zoom = self.cam.getZoom() * 0.875
-		if(zoom < horizons.main.settings.view.zoom.min):
-			zoom = horizons.main.settings.view.zoom.min
+		if(zoom < Settings().view.zoom.min):
+			zoom = Settings().view.zoom.min
 		self.cam.setZoom(zoom)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / 0.875
-		if(zoom > horizons.main.settings.view.zoom.max):
-			zoom = horizons.main.settings.view.zoom.max
+		if(zoom > Settings().view.zoom.max):
+			zoom = Settings().view.zoom.max
 		self.cam.setZoom(zoom)
 
 	def set_zoom(self, zoom):
