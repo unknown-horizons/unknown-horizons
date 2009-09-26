@@ -29,7 +29,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
-from horizons.util import Rect, Point, WorldObject, ActionSetLoader
+from horizons.util import Rect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 
@@ -235,27 +235,31 @@ class BasicBuilding(AmbientSound, ConcretObject):
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
 	selection_color = (255, 255, 255)
+	@decorators.make_constants()
 	def select(self):
 		"""Runs necessary steps to select the building."""
 		renderer = self.session.view.renderer['InstanceRenderer']
+		add_colored = renderer.addColored
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 		                     self.selection_color[2], 1)
 		if self.range_applies_only_on_island:
-			for tile in self.island.grounds:
+			for coord in self.position.get_radius_coordinates(self.radius, include_self=True):
+				tile = self.island.get_tile_tuple(coord)
 				if tile.settlement == self.settlement and \
-				   self.position.distance(Point(tile.x, tile.y)) <= self.radius and \
-				   any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-					renderer.addColored(tile._instance, *self.selection_color)
-					if tile.object is not None:
-						renderer.addColored(tile.object._instance, *self.selection_color)
+				   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+					add_colored(tile._instance, *self.selection_color)
+					try:
+						add_colored(tile.object._instance, *self.selection_color)
+					except AttributeError:
+						pass # no object on tile
 		else:
 			# we have to color water too
-			for tile in self.session.world.get_tiles_in_radius(self.position.origin, self.radius):
+			for tile in self.session.world.get_tiles_in_radius(self.position.center(), self.radius):
 				if hasattr(tile, 'settlement') and tile.settlement != self.settlement:
 					continue # don't color enemy grounds
-				renderer.addColored(tile._instance, *self.selection_color)
+				add_colored(tile._instance, *self.selection_color)
 				if hasattr(tile, 'object') and tile.object is not None:
-					renderer.addColored(tile.object._instance, *self.selection_color)
+					add_colored(tile.object._instance, *self.selection_color)
 
 	def deselect(self):
 		"""Runs neccassary steps to deselect the building."""
@@ -266,6 +270,8 @@ class SelectableBuilding(object):
 	def remove(self):
 		super(SelectableBuilding, self).remove()
 		self.deselect()
+
+
 
 
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):

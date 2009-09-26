@@ -140,6 +140,13 @@ class Island(WorldObject):
 		except KeyError:
 			return None
 
+	def get_tile_tuple(self, tup):
+		"""Overloaded get_tile, takes a tuple as argument"""
+		try:
+			return self.ground_map[tup]()
+		except KeyError:
+			return None
+
 	def get_building(self, point):
 		"""Returns the building at the point
 		@param point: position of the tile to look on
