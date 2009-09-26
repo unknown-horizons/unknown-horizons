@@ -321,7 +321,7 @@ class IngameGui(LivingObject):
 		self.deselect_all()
 		btabs = [BuildTab(index, self.callbacks_build[index]) for index in
 			range(0, self.session.world.player.settler_level+1)]
-		tab = TabWidget(tabs=btabs)
+		tab = TabWidget(self, tabs=btabs)
 		self.show_menu(tab)
 
 	def deselect_all(self):

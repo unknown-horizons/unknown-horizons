@@ -87,4 +87,4 @@ class ConcretObject(WorldObject):
 		from horizons.gui.tabs import TabWidget
 		if len(self.tabs) > 0:
 			tabs = [ tabclass(self) for tabclass in self.tabs ]
-			self.session.ingame_gui.show_menu(TabWidget(tabs=tabs))
+			self.session.ingame_gui.show_menu(TabWidget(self.session.ingame_gui, tabs=tabs))

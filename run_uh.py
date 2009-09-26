@@ -334,7 +334,6 @@ def find_FIFE(fife_custom_path=None):
 
 def log_paths():
 	"""Prints debug info about paths to log"""
-	import sys, os
 	log().debug("SYS.PATH: %s", sys.path)
 	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
 	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])

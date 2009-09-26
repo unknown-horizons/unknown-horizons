@@ -29,8 +29,9 @@ class TabWidget(object):
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
 
-	def __init__(self, tabs=[], position=None):
+	def __init__(self, ingame_gui, tabs=[], position=None):
 		super(TabWidget, self).__init__()
+		self.ingame_gui = ingame_gui
 		self._tabs = tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_xml_translated("tab_widget/tab_base.xml")
@@ -98,6 +99,7 @@ class TabWidget(object):
 		self._draw_widget()
 		self.current_tab.show()
 		self.widget.show()
+		self.ingame_gui.minimap_to_front()
 
 	def hide(self):
 		"""Hide the current widget"""

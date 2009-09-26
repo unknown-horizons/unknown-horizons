@@ -59,8 +59,9 @@ def start(command_line_arguments):
 	"""Starts the horizons.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, settings, \
-	       unstable_features, debug, preloading
+	global fife, db, settings, unstable_features, debug, preloading
+	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
+	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
 	from engine import Fife
 	from extscheduler import ExtScheduler
