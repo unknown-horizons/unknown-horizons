@@ -451,7 +451,7 @@ class IngameGui(LivingObject):
 			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
 			self.widgets['ingame_pause'].show()
 		else:
-			self.main_gui.on_escape = self.show_pause
+			self.main_gui.on_escape = self.main_gui.show_pause
 			self.widgets['ingame_pause'].hide()
 			self.session.speed_unpause()
 
