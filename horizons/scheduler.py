@@ -52,6 +52,7 @@ class Scheduler(LivingObject):
 		"""
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
+			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.cur_tick[self.schedule])
 			for callback in self.schedule[self.cur_tick]:
 				self.log.debug("Scheduler(t:%s) calling %s", tick_id, str(callback))
 				callback.callback()
@@ -67,11 +68,11 @@ class Scheduler(LivingObject):
 		"""
 		if callback_obj.loops > 0:
 			callback_obj.loops -= 1
-		try:
-			self.schedule[self.cur_tick + callback_obj.runin].append(callback_obj)
-		except KeyError:
-			self.schedule[self.cur_tick + callback_obj.runin] = []
-			self.add_object(callback_obj)
+		tick_key = self.cur_tick + callback_obj.runin
+		if not tick_key in self.schedule:
+			self.schedule[tick_key] = []
+		self.log.debug("Adding new object %s at tick %s", callback_obj, tick_key)
+		self.schedule[tick_key].append(callback_obj)
 
 	def add_new_object(self, callback, class_instance, runin=1, loops=1):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
@@ -142,7 +143,7 @@ class Scheduler(LivingObject):
 		@param *: just like get_classinst_calls
 		@return int."""
 		calls = self.get_classinst_calls(instance, callback)
-		assert len(calls) == 1
+		assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
 		return calls.values()[0]
 
 	def get_ticks(self, seconds):
