@@ -49,6 +49,7 @@ class Field(GrowingBuilding):
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
 
 class AnimalField(CollectingBuilding, Field):
+	walkable = False
 	def create_collector(self):
 		self.animals = []
 		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM balance.animals \
