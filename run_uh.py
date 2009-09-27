@@ -330,7 +330,16 @@ def find_FIFE(fife_custom_path=None):
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
 	log().debug("Restarting with args %s", args)
-	os.execvp(args[0], args)
+
+	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
+	import platform
+	if platform.system() != 'Windows':
+		os.execvp(args[0], args)
+	else:
+		args[1] = "\"%s\"" % args[1]
+		os.system(" ".join(args))
+		sys.exit(0)
+
 
 def log_paths():
 	"""Prints debug info about paths to log"""
