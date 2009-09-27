@@ -204,7 +204,7 @@ class MovingObject(ConcretObject):
 		# coords per sec
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
-		self.log.debug("%s registering move tick in %s ticks", move_time[int(diagonal)])
+		self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
 		# check if a conditional callback becomes true
