@@ -26,7 +26,7 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Circle, Point, decorators
+from horizons.util import ActionSetLoader, Circle, Point, decorators, Rect
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
@@ -102,6 +102,7 @@ class BuildingTool(NavigationTool):
 						self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
+		self._class.deselect_building(self.session)
 		self.renderer.removeAllColored()
 		for obj in self.modified_objects:
 			if obj.fife_instance is not None:
@@ -159,7 +160,8 @@ class BuildingTool(NavigationTool):
 	@decorators.make_constants()
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
-		# delete old building fife instances
+		# remove old fife instances and coloring
+		self._class.deselect_building(self.session)
 		for obj in self.modified_objects:
 			if obj.fife_instance is not None:
 				obj.fife_instance.get2dGfxVisual().setTransparency(0)
@@ -174,8 +176,10 @@ class BuildingTool(NavigationTool):
 		# check if the buildings are buildable and color them appropriatly
 		for building in self.buildings:
 			# make surrounding transparent
-
-			for coord in Circle( Point(building['x'], building['y']), self.nearby_objects_radius ):
+			building_position = Rect.init_from_topleft_and_size(building['x'], building['y'],
+			                                                    *self._class.size)
+			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+				continue
 				if not self.session.world.map_dimensions.contains_without_border(coord):
 					continue
 				tile = self.session.world.get_tile(coord)
@@ -185,6 +189,10 @@ class BuildingTool(NavigationTool):
 					self.modified_objects.add(tile.object)
 
 			settlement = building.get('settlement', None) if settlement is None else settlement
+
+			# color radius
+			self._class.select_building(self.session, building_position, settlement)
+
 			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
 			                                                        building['x'], building['y'])
 			building['instance'] = self._class.getInstance(self.session, **building)

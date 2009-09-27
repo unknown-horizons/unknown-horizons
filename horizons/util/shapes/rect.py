@@ -64,6 +64,7 @@ class Rect(object):
 		self.top = top
 		self.right = right
 		self.bottom = bottom
+		self.origin = Point(self.left, self.top)
 		return self
 
 	@classmethod
@@ -73,6 +74,7 @@ class Rect(object):
 		self.top = y
 		self.right = self.left + width
 		self.bottom = self.top + height
+		self.origin = Point(self.left, self.top)
 		return self
 
 	@property

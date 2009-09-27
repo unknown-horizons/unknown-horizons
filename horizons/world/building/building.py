@@ -234,32 +234,14 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
-	selection_color = (255, 255, 255)
-	@decorators.make_constants()
+	selection_color = (255, 0, 255)
+
 	def select(self):
 		"""Runs necessary steps to select the building."""
 		renderer = self.session.view.renderer['InstanceRenderer']
-		add_colored = renderer.addColored
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 		                     self.selection_color[2], 1)
-		if self.range_applies_only_on_island:
-			for coord in self.position.get_radius_coordinates(self.radius, include_self=True):
-				tile = self.island.get_tile_tuple(coord)
-				try:
-					if tile.settlement == self.settlement and \
-					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-						add_colored(tile._instance, *self.selection_color)
-						add_colored(tile.object._instance, *self.selection_color)
-				except AttributeError:
-					pass # no tile or object on tile
-		else:
-			# we have to color water too
-			for tile in self.session.world.get_tiles_in_radius(self.position.center(), self.radius):
-				if hasattr(tile, 'settlement') and tile.settlement != self.settlement:
-					continue # don't color enemy grounds
-				add_colored(tile._instance, *self.selection_color)
-				if hasattr(tile, 'object') and tile.object is not None:
-					add_colored(tile.object._instance, *self.selection_color)
+		self._do_select(renderer, self.position, self.session.world, self.settlement)
 
 	def deselect(self):
 		"""Runs neccassary steps to deselect the building."""
@@ -270,6 +252,46 @@ class SelectableBuilding(object):
 	def remove(self):
 		super(SelectableBuilding, self).remove()
 		self.deselect()
+
+	@classmethod
+	def select_building(cls, session, position, settlement):
+		"""Select a hypothecial instance of this class. Use Case: Buildingtool.
+		Only works on a subclass of BuildingClass, since it requires certain class attributes.
+		@param session: Session instance
+		@param position: Position of building, usually Rect
+		@param settlement: Settlement instance the building belongs to"""
+		renderer = session.view.renderer['InstanceRenderer']
+		cls._do_select(renderer, position, session.world, settlement)
+
+	@classmethod
+	def deselect_building(cls, session):
+		session.view.renderer['InstanceRenderer'].removeAllColored()
+
+	@classmethod
+	@decorators.make_constants()
+	def _do_select(cls, renderer, position, world, settlement):
+		add_colored = renderer.addColored
+		if cls.range_applies_only_on_island:
+			island = world.get_island(position.origin)
+			if island is None:
+				return # preview isn't on island, and therefore invalid
+			for coord in position.get_radius_coordinates(cls.radius, include_self=True):
+				tile = island.get_tile_tuple(coord)
+				try:
+					if tile.settlement == settlement and \
+					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						add_colored(tile._instance, *cls.selection_color)
+						add_colored(tile.object._instance, *cls.selection_color)
+				except AttributeError:
+					pass # no tile or object on tile
+		else:
+			# we have to color water too
+			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
+				if hasattr(tile, 'settlement') and tile.settlement != self.settlement:
+					continue # don't color enemy grounds
+				add_colored(tile._instance, *self.selection_color)
+				if hasattr(tile, 'object') and tile.object is not None:
+					add_colored(tile.object._instance, *self.selection_color)
 
 
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
