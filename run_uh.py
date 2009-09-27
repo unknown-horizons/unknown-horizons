@@ -25,6 +25,7 @@
 into the game, continue to horizons/main.py. Read all docstrings and get familiar with the functions and
 attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)"""
 
+__all__ = ['init_environment', 'get_fife_path']
 import sys
 import os
 import os.path
@@ -37,7 +38,6 @@ import optparse
 import signal
 import traceback
 
-__all__ = ['init_environment', 'get_fife_path']
 
 def log():
 	"""Returns Logger"""
@@ -339,7 +339,6 @@ def find_FIFE(fife_custom_path=None):
 		args[1] = "\"%s\"" % args[1]
 		os.system(" ".join(args))
 		sys.exit(0)
-
 
 def log_paths():
 	"""Prints debug info about paths to log"""

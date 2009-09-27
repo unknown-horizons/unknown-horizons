@@ -192,6 +192,14 @@ class World(LivingObject):
 
 		@return: Returs the coordinates of the players first ship
 		"""
+		# workaround: the creation of all the objects causes a lot of logging output, we don't need
+		#             therefore, reset the levels for now
+		loggers_to_silence = { 'world.production' : None }
+		for logger_name in loggers_to_silence:
+			logger = logging.getLogger(logger_name)
+			loggers_to_silence[logger_name] = logger.getEffectiveLevel()
+			logger.setLevel( logging.WARN )
+
 		from horizons.command.building import Build
 		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
@@ -205,6 +213,10 @@ class World(LivingObject):
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
 							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute()
+
+		# reset loggers, see above
+		for logger_name, level in loggers_to_silence.iteritems():
+			logging.getLogger(logger_name).setLevel(level)
 
 		# add free trader
 		self.trader = Trader(self.session, 99999, "Free Trader", Color())

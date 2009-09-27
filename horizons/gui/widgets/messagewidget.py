@@ -34,6 +34,7 @@ class MessageWidget(LivingObject):
 	It uses Message Class instances to store messages and manages the
 	archive.
 	@param x, y: int position where the widget is placed on the screen."""
+	SHOW_NEW_MESSAGE_TEXT = 4 # seconds
 	def __init__(self, session, x, y):
 		super(LivingObject, self).__init__()
 		self.session = session
@@ -70,6 +71,8 @@ class MessageWidget(LivingObject):
 		if len(sound) > 0 and sound[0][0] is not None:
 			horizons.main.fife.play_sound('speech', sound[0][0])
 		self.draw_widget()
+		self.show_text(0)
+		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
 
 	def draw_widget(self):
 		"""Updates the widget."""
@@ -84,7 +87,7 @@ class MessageWidget(LivingObject):
 				button.down_image = message.down_image
 				# show text on hover
 				events = {
-					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, button),
+					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, index),
 					button.name + "/mouseExited": self.hide_text
 				}
 				if message.x is not None and message.y is not None and False:
@@ -108,14 +111,17 @@ class MessageWidget(LivingObject):
 			self.position -= 1
 			self.draw_widget()
 
-	def show_text(self, button):
-		"""Shows the text for a button."""
+	def show_text(self, index):
+		"""Shows the text for a button.
+		@param index: index of button"""
+		assert isinstance(index, int)
+		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		label.text = unicode(self.active_messages[self.position+int(button.name)].message)
+		label.text = unicode(self.active_messages[self.position+index].message)
 		self.text_widget.resizeToContent()
 		self.text_widget.show()
 
-	def hide_text(self, *args):
+	def hide_text(self):
 		"""Hides the text."""
 		self.text_widget.hide()
 
