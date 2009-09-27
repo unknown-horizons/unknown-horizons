@@ -176,7 +176,7 @@ class BuildingTool(NavigationTool):
 			# make surrounding transparent
 
 			for coord in Circle( Point(building['x'], building['y']), self.nearby_objects_radius ):
-				if not self.session.world.map_dimensions.contains(coord):
+				if not self.session.world.map_dimensions.contains_without_border(coord):
 					continue
 				tile = self.session.world.get_tile(coord)
 				if tile.object is not None and tile.object.buildable_upon:

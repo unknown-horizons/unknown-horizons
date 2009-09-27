@@ -22,6 +22,7 @@
 import logging
 
 from horizons.util import LivingObject, ManualConstructionSingleton
+import copy
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
@@ -52,13 +53,17 @@ class Scheduler(LivingObject):
 		"""
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
-			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])
-			for callback in self.schedule[self.cur_tick]:
+			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, [ str(i) for i in self.schedule[self.cur_tick]])
+			# DEBUG test: check if every callback really is executed
+			num_callbacks = len(self.schedule[self.cur_tick])
+			for callback in copy.copy(self.schedule[self.cur_tick]):
 				self.log.debug("Scheduler(t:%s) calling %s", tick_id, str(callback))
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
 					self.add_object(callback) # readd object
+				num_callbacks -= 1
+			assert num_callbacks == 0
 			del self.schedule[self.cur_tick]
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
 
@@ -174,5 +179,4 @@ class CallbackObject(object):
 		self.class_instance = class_instance
 
 	def __str__(self):
-		# for debugging
 		return "Callback("+str(self.callback)+" on "+str(self.class_instance)+")"
