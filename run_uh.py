@@ -43,6 +43,8 @@ def log():
 	"""Returns Logger"""
 	return logging.getLogger("run_uh")
 
+logfilename = None
+
 def find_uh_position():
 	"""Returns path, where uh is located"""
 	first_guess = os.path.split( os.path.realpath( sys.argv[0]) )[0]
@@ -85,6 +87,8 @@ def get_option_parser():
 	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
 											 metavar="<module>", default=[], \
 											 help=_("Enable logging for a certain logging module (for developing only)."))
+	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
+	                     help=_("Writes log to <filename> instead of to the uh-userdir"))
 	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", \
 											 action="store_true", default=False, help=_("For internal use only."))
 	dev_group.add_option("--enable-unstable-features", dest="unstable_features", \
@@ -145,43 +149,7 @@ def main():
 
 	gettext.install("unknownhorizons", "po", unicode=1)
 
-	parser = get_option_parser()
-	(options, args) = parser.parse_args()
-
-	# apply options
-	if options.debug or options.debug_log_only:
-		logging.getLogger().setLevel(logging.DEBUG)
-	for module in options.debug_module:
-		if not module in logging.Logger.manager.loggerDict:
-			print 'No such logger:', module
-			sys.exit(1)
-		logging.getLogger(module).setLevel(logging.DEBUG)
-	if options.debug or len(options.debug_module) > 0 or options.debug_log_only:
-		# also log to file
-		# init a logfile handler with a dynamic filename
-		from horizons.constants import PATHS
-		logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % \
-		            time.strftime("%y-%m-%d_%H-%M-%S")
-		print 'Logging to %s' % logfilename
-		# create logfile
-		logfile = open(logfilename, 'w')
-		# log there
-		file_handler = logging.FileHandler(logfilename, 'a')
-		logging.getLogger().addHandler(file_handler)
-		# log exceptions
-		sys.excepthook = excepthook_creator(logfilename)
-		# log any other stdout output there (this happens, when fife c++ code launches some
-		# fife python code and an exception happens there). The exceptionhook only gets
-		# a director exception, but no real error message then.
-		class StdOutDuplicator(object):
-			def write(self, line):
-				sys.__stdout__.write(line)
-				logfile.write(line)
-		sys.stdout = StdOutDuplicator()
-
-	if not options.debug_log_only:
-		# add a handler to stderr too
-		logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
+	options = parse_args()
 
 	# NOTE: this might cause a program restart
 	init_environment()
@@ -207,6 +175,54 @@ def main():
 	print _('Thank you for using Unknown Horizons!')
 
 
+def parse_args():
+	"""Parses and applies options
+	@returns option object from Parser
+	"""
+	global logfilename
+	options = get_option_parser().parse_args()[0]
+
+	# apply options
+	if options.debug or options.debug_log_only:
+		logging.getLogger().setLevel(logging.DEBUG)
+	for module in options.debug_module:
+		if not module in logging.Logger.manager.loggerDict:
+			print 'No such logger:', module
+			sys.exit(1)
+		logging.getLogger(module).setLevel(logging.DEBUG)
+	if options.debug or len(options.debug_module) > 0 or options.debug_log_only:
+		# also log to file
+		# init a logfile handler with a dynamic filename
+		from horizons.constants import PATHS
+		if options.logfile:
+			logfilename = options.logfile
+		else:
+			logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % \
+			            time.strftime("%y-%m-%d_%H-%M-%S")
+		print 'Logging to %s' % logfilename
+		# create logfile
+		logfile = open(logfilename, 'w')
+		# log there
+		file_handler = logging.FileHandler(logfilename, 'a')
+		logging.getLogger().addHandler(file_handler)
+		# log exceptions
+		sys.excepthook = excepthook_creator(logfilename)
+		# log any other stdout output there (this happens, when fife c++ code launches some
+		# fife python code and an exception happens there). The exceptionhook only gets
+		# a director exception, but no real error message then.
+		class StdOutDuplicator(object):
+			def write(self, line):
+				sys.__stdout__.write(line)
+				logfile.write(line)
+		sys.stdout = StdOutDuplicator()
+
+	if not options.debug_log_only:
+		# add a handler to stderr too
+		logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
+
+	return options
+
+
 """
 Functions controlling the program environment.
 NOTE: these are supposed to be in an extra file, but are placed here for simplifying
@@ -219,7 +235,7 @@ def init_environment():
 
 	gettext.install("unknownhorizons", "po", unicode=1)
 
-	(options, args) = get_option_parser().parse_args()
+	options = get_option_parser().parse_args()[0]
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
@@ -316,6 +332,7 @@ def find_FIFE(fife_custom_path=None):
 	"""Inserts path to fife engine to $LD_LIBRARY_PATH (environment variable).
 	If it's already there, the function will return, else
 	it will restart uh with correct $LD_LIBRARY_PATH. """
+	global logfilename
 	fife_path = get_fife_path(fife_custom_path) # terminates program if fife can't be found
 
 	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
@@ -328,7 +345,9 @@ def find_FIFE(fife_custom_path=None):
 	log_paths()
 
 	# assemble args (python run_uh.py ..)
-	args = [sys.executable] + sys.argv + [ "--fife-in-library-path"]
+	args = [sys.executable] + sys.argv + [ "--fife-in-library-path" ]
+	if logfilename:
+		args += [ "--logfile", logfilename ]
 	log().debug("Restarting with args %s", args)
 
 	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
