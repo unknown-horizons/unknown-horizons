@@ -110,10 +110,9 @@ class Session(LivingObject):
 
 		#autosave
 		if Settings().savegame.autosaveinterval != 0:
+			self.log.debug("Initing autosave every %s minutes", Settings().savegame.autosaveinterval)
 			ExtScheduler().add_new_object(self.autosave, self, \
-			                           self.timer.get_ticks(\
-			                             Settings().savegame.autosaveinterval) * 60, \
-			                                                -1)
+			                             Settings().savegame.autosaveinterval * 60, -1)
 		Buildable.init_buildable(self)
 
 	def end(self):

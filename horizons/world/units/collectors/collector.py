@@ -28,6 +28,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
 from horizons.util import WorldObject, decorators, Callback
+from horizons.util.worldobject import WorldObjectNotFound
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 
@@ -130,9 +131,10 @@ class Collector(StorageHolder, Unit):
 			 self.getId(), self.state.index, remaining_ticks, self.start_hidden)
 
 		# save the job
-		if self.job is not None and self.job.object is not None:
+		if self.job is not None:
+			obj_id = -1 if self.job.object is None else self.job.object.getId()
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
-				 self.getId(), self.job.object.getId(), self.job.res, self.job.amount)
+				 self.getId(), obj_id, self.job.res, self.job.amount)
 
 	def load(self, db, worldid):
 		super(Collector, self).load(db, worldid)
@@ -395,10 +397,13 @@ class Job(object):
 		try:
 			return self._object
 		except AttributeError:
-			return WorldObject.get_object_by_id(self._obj_id)
+			try:
+				return WorldObject.get_object_by_id(self._obj_id)
+			except WorldObjectNotFound:
+				return None
 
 	def __str__(self):
-		return "Job res: %i amount: %i" % (self.res, self.amount)
+		return "Job(res: %i amount: %i)" % (self.res, self.amount)
 
 
 class JobList(list):
@@ -424,6 +429,7 @@ class JobList(list):
 
 	def sort_jobs(self):
 		"""Call this to sort jobs"""
+		# (this is overwritten in __init__)
 		raise NotImplementedError
 
 	def _sort_jobs_rating(self):
