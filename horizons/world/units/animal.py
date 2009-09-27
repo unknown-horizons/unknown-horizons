@@ -155,7 +155,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
-		self.log.debug('WildAnimal %s: no possible job; health: %s', self.getId(), self.health)
+		self.log.debug('%s: no possible job; health: %s', self, self.health)
 		# decrease health because of lack of food
 		self.health -= WILD_ANIMAL.HEALTH_DECREASE_ON_NO_JOB
 		if self.health <= 0:
@@ -165,12 +165,12 @@ class WildAnimal(CollectorAnimal, Collector):
 		# if can't find a job, we walk to a random location near us and search there
 		target = self.get_random_location(self.walking_range)
 		if target is not None:
-			self.log.debug('WildAnimal %s: no possible job, walking to %s',self.getId(),str(target))
+			self.log.debug('%s: no possible job, walking to %s', self, str(target))
 			self.move(target, callback=self.search_job)
 			self.state = self.states.no_job_walking_randomly
 		else:
 			# we couldn't find a target, just try again 3 secs later
-			self.log.debug('WildAnimal %s: no possible job, no possible new loc', self.getId())
+			self.log.debug('%s: no possible job, no possible new loc', self)
 			Scheduler().add_new_object(self.handle_no_possible_job, self, 48)
 			self.state = self.states.no_job_waiting
 
@@ -188,7 +188,7 @@ class WildAnimal(CollectorAnimal, Collector):
 					if job is not None:
 						jobs.append(job)
 
-		self.log.debug("Wildanimal %s: %s possible jobs", self.getId(), len(jobs))
+		self.log.debug("%s: %s possible jobs", self, len(jobs))
 		return self.get_best_possible_job(jobs)
 
 	def check_possible_job_target(self, provider):
@@ -204,10 +204,11 @@ class WildAnimal(CollectorAnimal, Collector):
 	def end_job(self):
 		super(WildAnimal, self).end_job()
 		# check if we can reproduce
-		self.log.debug("Wild animal %s end_job; health: %s", self.getId(), self.health)
+		self.log.debug("%s end_job; health: %s", self, self.health)
 		self.health += WILD_ANIMAL.HEALTH_INCREASE_ON_FEEDING
 		if self.can_reproduce and self.health >= WILD_ANIMAL.HEALTH_LEVEL_TO_REPRODUCE:
 			self.reproduce()
+			# reproduction costs health
 			self.health = WILD_ANIMAL.HEALTH_INIT_VALUE
 
 	def reproduce(self):
@@ -215,7 +216,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		if not self.can_reproduce:
 			return
 
-		self.log.debug("Wild animal %s REPRODUCING", self.getId())
+		self.log.debug("%s REPRODUCING", self)
 		# create offspring
 		CreateUnit(self.owner.getId(), self.id, self.position.x, self.position.y, \
 		           can_reproduce = self.next_clone_can_reproduce())
@@ -231,7 +232,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
-		self.log.debug("Wild animal %s dying", self.getId())
+		self.log.debug("%s dying", self)
 		self.home_island.wild_animals.remove(self)
 		self.remove()
 

@@ -109,18 +109,22 @@ class MovingObject(ConcretObject):
 		# this case shouldn't happen, but no other action might be available (e.g. ships)
 		self._move_action = 'idle'
 
-	def move(self, destination, callback = None, destination_in_building = False, action='move'):
+	def move(self, destination, callback = None, destination_in_building = False, action='move', \
+	         _path_calculated = False):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
+		@param action: action as string to use for movement
+		@param _path_calculated: only for internal use
 		"""
-		# calculate the path
-		move_possible = self.path.calc_path(destination, destination_in_building)
+		if not _path_calculated:
+			# calculate the path
+			move_possible = self.path.calc_path(destination, destination_in_building)
 
-		self.log.debug("Unit %s: move to %s; possible: %s", self.getId(), destination, move_possible)
+			self.log.debug("%s: move to %s; possible: %s", self, destination, move_possible)
 
-		if not move_possible:
-			raise MoveNotPossible
+			if not move_possible:
+				raise MoveNotPossible
 
 		self.move_callbacks = WeakMethodList(callback)
 		self._conditional_callbacks = {}
@@ -138,22 +142,14 @@ class MovingObject(ConcretObject):
 		@param callback: same as callback in move()
 		@param destination_in_building: bool, whether target is in a building
 		"""
-		self.log.debug("Unit %s: Moving back")
+		self.log.debug("%s: Moving back", self)
 		self.path.revert_path(destination_in_building)
-		self.move_callbacks = WeakMethodList(callback)
-		self._conditional_callbacks = {}
-		self._setup_move(action)
-		if not self.is_moving():
-			Scheduler().add_new_object(self._move_tick, self)
-			self._move_tick()
+		self.move(None, callback, destination_in_building, action, _path_calculated = True)
 
 	def _movement_finished(self):
-		self.log.debug("Unit %s: movement finished. calling callbacks %s", self.getId(), \
-									 self.move_callbacks)
+		self.log.debug("%s: movement finished. calling callbacks %s", self, self.move_callbacks)
 		self._next_target = self.position
-
 		self.__is_moving = False
-
 		self.move_callbacks.execute()
 
 	@decorators.make_constants()

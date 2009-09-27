@@ -313,19 +313,26 @@ class Collector(StorageHolder, Unit):
 		self.log.debug("%s finished working", self)
 		self.act("idle", self._instance.getFacingLocation(), True)
 		# transfer res
-		self.transfer_res()
+		self.transfer_res_from_target()
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
 
-	def transfer_res(self):
+	def transfer_res_from_target(self):
 		"""Transfers resources from target to collector inventory"""
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
 		if res_amount != self.job.amount:
-			self.log.warning("%s picked up %s of res %s at %s, planned was %s",  \
-											 self, res_amount, self.job.res, \
-											 self.job.object, self.job.amount)
+			self.log.warning("%s picked up %s of res %s at %s, planned was %s",  self, res_amount, \
+			                 self.job.res, self.job.object, self.job.amount)
 			self.job.amount = res_amount # update job amount
 		remnant = self.inventory.alter(self.job.res, res_amount)
+		assert remnant == 0
+
+	def transfer_res_to_home(self, res, amount):
+		"""Transfer resources from collector to the home inventory"""
+		self.log.debug("%s brought home %s of %s", self, amount, res)
+		remnant = self.get_home_inventory().alter(res, amount)
+		#assert remnant == 0, "Home building could not take all resources from collector."
+		remnant = self.inventory.alter(res, -amount)
 		assert remnant == 0
 
 	def reroute(self):
@@ -349,6 +356,7 @@ class Collector(StorageHolder, Unit):
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
 			                      is supposed to now.
 		"""
+		self.log.debug("%s was cancel, continue action is %s", self, continue_action)
 		if self.job is not None:
 			self.job.object.remove_incoming_collector(self)
 			if self.state == self.states.working:

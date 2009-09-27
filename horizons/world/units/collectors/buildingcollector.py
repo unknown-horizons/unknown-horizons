@@ -130,13 +130,7 @@ class BuildingCollector(Collector):
 	def reached_home(self):
 		"""Exchanges resources with home and calls end_job"""
 		self.log.debug("%s reached home", self)
-
-		if self.home_building is not None:
-			self.log.debug("%s brought home %s of %s", self, self.job.amount, self.job.res)
-			remnant = self.home_building.inventory.alter(self.job.res, self.job.amount)
-			#assert remnant == 0, "Home building could not take all resources from collector."
-			remnant = self.inventory.alter(self.job.res, -self.job.amount)
-			assert remnant == 0
+		self.transfer_res_to_home(self.job.res, self.job.amount)
 		self.end_job()
 
 	def get_collectable_res(self):
