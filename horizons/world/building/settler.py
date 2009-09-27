@@ -199,8 +199,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 
 	def __str__(self):
-		return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level, \
+		try:
+			return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level, \
 																				self.inhabitants, self.happiness)
+		except AttributeError: # an attribute hasn't been set up
+			return super(Settler, self).__str__()
 
 
 class _CONSTANTS:

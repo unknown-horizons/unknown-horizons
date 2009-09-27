@@ -156,7 +156,8 @@ class MovingObject(ConcretObject):
 	def _move_tick(self):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
-		assert(self._next_target is not None)
+		assert self._next_target is not None
+		self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
 		self.last_position = self.position
 		self.position = self._next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
@@ -168,7 +169,10 @@ class MovingObject(ConcretObject):
 		while self._next_target == self.position:
 			try:
 				self._next_target = self.path.get_next_step()
+				self.log.debug("pather gave next target %s", self._next_target)
 			except PathBlockedError:
+				self.log.debug("path is blocked")
+				self.log.debug("owner: %s", self.owner)
 				self.__is_moving = False
 				self._next_target = self.position
 				if self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):

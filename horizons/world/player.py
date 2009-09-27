@@ -82,6 +82,7 @@ class Player(StorageHolder, WorldObject):
 		NOTE: this is just a quick fix for a release
 		      a signaling concept for such events is planned.
 		"""
+		self.log.warning("ERROR: UNIT %s CANNOT MOVE ANY FURTHER!", unit)
 		pass
 
 	def notify_settler_reached_level(self, settler):
