@@ -52,7 +52,7 @@ class Scheduler(LivingObject):
 		"""
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
-			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.cur_tick[self.schedule])
+			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])
 			for callback in self.schedule[self.cur_tick]:
 				self.log.debug("Scheduler(t:%s) calling %s", tick_id, str(callback))
 				callback.callback()

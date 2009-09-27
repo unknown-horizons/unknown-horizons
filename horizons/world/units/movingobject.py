@@ -142,7 +142,7 @@ class MovingObject(ConcretObject):
 		@param callback: same as callback in move()
 		@param destination_in_building: bool, whether target is in a building
 		"""
-		self.log.debug("%s: Moving back", self)
+		self.log.debug("%s: Moving back to %s", self, self.get_move_target())
 		self.path.revert_path(destination_in_building)
 		self.move(None, callback, destination_in_building, action, _path_calculated = True)
 
