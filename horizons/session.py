@@ -118,7 +118,9 @@ class Session(LivingObject):
 	def end(self):
 		self.log.debug("Ending session")
 
+		Command.default_manager = None
 		Buildable.end_buildable()
+		self.gui.session = None
 
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)

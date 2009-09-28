@@ -42,6 +42,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
+	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
+																			# e.g. paths. the tab hides a part of the map.
 
 	log = logging.getLogger("world.building")
 
@@ -265,6 +267,7 @@ class SelectableBuilding(object):
 
 	@classmethod
 	def deselect_building(cls, session):
+		"""@see select_building"""
 		session.view.renderer['InstanceRenderer'].removeAllColored()
 
 	@classmethod
@@ -283,15 +286,16 @@ class SelectableBuilding(object):
 						add_colored(tile._instance, *cls.selection_color)
 						add_colored(tile.object._instance, *cls.selection_color)
 				except AttributeError:
-					pass # no tile or object on tile
+					pass # no tile or no object on tile
 		else:
 			# we have to color water too
 			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
-				if hasattr(tile, 'settlement') and tile.settlement != self.settlement:
-					continue # don't color enemy grounds
-				add_colored(tile._instance, *self.selection_color)
-				if hasattr(tile, 'object') and tile.object is not None:
-					add_colored(tile.object._instance, *self.selection_color)
+				try:
+					if settlement is None or tile.settlement is None or tile.settlement == settlement:
+						add_colored(tile._instance, *cls.selection_color)
+						add_colored(tile.object._instance, *cls.selection_color)
+				except AttributeError:
+					pass # no tile or no object on tile
 
 
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):

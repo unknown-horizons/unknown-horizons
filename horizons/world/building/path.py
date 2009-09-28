@@ -29,6 +29,7 @@ from horizons.constants import LAYERS
 
 class Path(BasicBuilding, BuildableLine):
 	walkable = True
+	show_buildingtool_preview_tab = False
 
 	def init(self):
 		super(Path, self).init()

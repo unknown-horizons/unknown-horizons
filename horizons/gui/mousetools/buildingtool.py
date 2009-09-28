@@ -50,6 +50,7 @@ class BuildingTool(NavigationTool):
 	def __init__(self, session, building, ship = None):
 		super(BuildingTool, self).__init__(session)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
+		self._old_cursor = self.session.cursor
 		self.ship = ship
 		self._class = building
 		self.buildings = []
@@ -57,8 +58,9 @@ class BuildingTool(NavigationTool):
 		self.rotation = 45 + random.randint(0, 3)*90
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
-		self.load_gui()
-		if not self._class.class_package == 'path':
+		self.gui = None
+		if self._class.show_buildingtool_preview_tab:
+			self.load_gui()
 			self.gui.show()
 			self.session.ingame_gui.minimap_to_front()
 
@@ -102,15 +104,17 @@ class BuildingTool(NavigationTool):
 						self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
-		self._class.deselect_building(self.session)
+		if hasattr(self._class, "deselect_building"):
+			self._class.deselect_building(self.session)
 		self.renderer.removeAllColored()
 		for obj in self.modified_objects:
 			if obj.fife_instance is not None:
 				obj.fife_instance.get2dGfxVisual().setTransparency(0)
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
-		self.session.view.remove_change_listener(self.draw_gui)
-		self.gui.hide()
+		if self.gui is not None:
+			self.session.view.remove_change_listener(self.draw_gui)
+			self.gui.hide()
 		self._remove_listeners()
 		super(BuildingTool, self).end()
 
@@ -161,7 +165,8 @@ class BuildingTool(NavigationTool):
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
 		# remove old fife instances and coloring
-		self._class.deselect_building(self.session)
+		if hasattr(self._class, "deselect_building"):
+			self._class.deselect_building(self.session)
 		for obj in self.modified_objects:
 			if obj.fife_instance is not None:
 				obj.fife_instance.get2dGfxVisual().setTransparency(0)
@@ -175,14 +180,12 @@ class BuildingTool(NavigationTool):
 		settlement = None
 		# check if the buildings are buildable and color them appropriatly
 		for building in self.buildings:
-			# make surrounding transparent
 			building_position = Rect.init_from_topleft_and_size(building['x'], building['y'],
 			                                                    *self._class.size)
-			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
-				continue
-				if not self.session.world.map_dimensions.contains_without_border(coord):
+			# make surrounding transparent
+			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):sion.world.map_dimensions.contains_without_border(coord):
 					continue
-				tile = self.session.world.get_tile(coord)
+				tile = self.session.world.get_tile(Point(*coord))
 				if tile.object is not None and tile.object.buildable_upon:
 					tile.object.fife_instance.get2dGfxVisual().setTransparency( \
 					  self.nearby_objects_transparency )
@@ -191,16 +194,15 @@ class BuildingTool(NavigationTool):
 			settlement = building.get('settlement', None) if settlement is None else settlement
 
 			# color radius
-			self._class.select_building(self.session, building_position, settlement)
+			if hasattr(self._class, "select_building"):
+				self._class.select_building(self.session, building_position, settlement)
 
 			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
 			                                                        building['x'], building['y'])
 			building['instance'] = self._class.getInstance(self.session, **building)
 			resources = self._class.get_build_costs(**building)
-			if not building.get('buildable', True):
-				# can't build, color it red
-				self.renderer.addColored(building['instance'], *self.not_buildable_color)
-			else:
+			if building.get('buildable', True):
+				# building seems to buildable, check res too now
 				for resource in resources:
 					neededResources[resource] = neededResources.get(resource, 0) + resources[resource]
 				for resource in neededResources:
@@ -223,8 +225,11 @@ class BuildingTool(NavigationTool):
 					building['buildable'] = True
 					for resource in resources:
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
-					# draw white for buildable
+
+				if building['buildable']:
 					self.renderer.addColored(building['instance'], *self.buildable_color)
+				else:
+					self.renderer.addColored(building['instance'], *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
 		   self.ship if self.ship is not None else settlement, neededResources, usableResources, \
 		   res_from_ship = (True if self.ship is not None else False))
@@ -238,8 +243,9 @@ class BuildingTool(NavigationTool):
 			self.session.selected_instances = set([self.ship])
 			self.ship.select()
 			self.ship.show_menu()
-		self.gui.hide()
-		self.session.cursor = SelectionTool(self.session)
+		if self.gui is not None:
+			self.gui.hide()
+		self.session.cursor = self._old_cursor
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
@@ -297,8 +303,9 @@ class BuildingTool(NavigationTool):
 					self.renderer.removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
-					self.session.manager.execute(Build(session=self.session, **args))
-					self.gui.hide()
+					Build(session=self.session, **args).execute()
+					if self.gui is not None:
+						self.gui.hide()
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 			if built:
