@@ -32,7 +32,7 @@ class Point(object):
 	def copy(self):
 		return Point(self.x, self.y)
 
-	@make_constants(verbose=True)
+	@make_constants()
 	def distance(self, other):
 		from circle import Circle
 		from rect import Rect

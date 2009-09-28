@@ -183,7 +183,9 @@ class BuildingTool(NavigationTool):
 			building_position = Rect.init_from_topleft_and_size(building['x'], building['y'],
 			                                                    *self._class.size)
 			# make surrounding transparent
-			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):sion.world.map_dimensions.contains_without_border(coord):
+			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+				continue
+				if self.session.world.map_dimensions.contains_without_border(coord):
 					continue
 				tile = self.session.world.get_tile(Point(*coord))
 				if tile.object is not None and tile.object.buildable_upon:
