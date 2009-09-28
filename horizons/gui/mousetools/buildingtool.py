@@ -50,7 +50,6 @@ class BuildingTool(NavigationTool):
 	def __init__(self, session, building, ship = None):
 		super(BuildingTool, self).__init__(session)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
-		self._old_cursor = self.session.cursor
 		self.ship = ship
 		self._class = building
 		self.buildings = []
@@ -247,7 +246,7 @@ class BuildingTool(NavigationTool):
 			self.ship.show_menu()
 		if self.gui is not None:
 			self.gui.hide()
-		self.session.cursor = self._old_cursor
+		self.session.cursor = SelectionTool(self.session)
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")

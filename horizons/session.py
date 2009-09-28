@@ -84,9 +84,11 @@ class Session(LivingObject):
 		self.db = db # main db for game data (game.sqlite)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
+		self.is_alive = False
 
 	def init_session(self):
 		self.log.debug("Initing session")
+		self.is_alive = True
 
 		WorldObject.reset()
 
@@ -117,6 +119,7 @@ class Session(LivingObject):
 
 	def end(self):
 		self.log.debug("Ending session")
+		self.is_alive = False
 
 		Command.default_manager = None
 		Buildable.end_buildable()

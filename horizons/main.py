@@ -149,7 +149,7 @@ def start_singleplayer(map_file, game_data={}):
 
 	_modules.gui.hide()
 
-	if _modules.session is not None:
+	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
 	from session import Session
 	_modules.session = Session(_modules.gui, db)
