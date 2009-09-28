@@ -184,10 +184,10 @@ class BuildingTool(NavigationTool):
 			                                                    *self._class.size)
 			# make surrounding transparent
 			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
-				continue
-				if self.session.world.map_dimensions.contains_without_border(coord):
+				p = Point(*coord)
+				if not self.session.world.map_dimensions.contains_without_border(p):
 					continue
-				tile = self.session.world.get_tile(Point(*coord))
+				tile = self.session.world.get_tile(p)
 				if tile.object is not None and tile.object.buildable_upon:
 					tile.object.fife_instance.get2dGfxVisual().setTransparency( \
 					  self.nearby_objects_transparency )
