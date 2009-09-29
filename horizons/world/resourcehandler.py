@@ -22,14 +22,14 @@
 import horizons.main
 
 from horizons.util import WeakList
-from storageholder import StorageHolder
+from horizons.world.storageholder import StorageHolder
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.world.production.production import Production
 from horizons.constants import PRODUCTION
 
 
 class ResourceHandler(StorageHolder):
-	tabs=(ProductionOverviewTab, InventoryTab)
+	tabs = (ProductionOverviewTab, InventoryTab)
 
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
@@ -149,8 +149,8 @@ class ResourceHandler(StorageHolder):
 				to_remove.append(production)
 		if len(to_remove) == 0:
 			raise ValueError, "Production %s doesn't have a production line %s" % (self, ident)
-		while len(to_remove) > 0:
-			self.remove_production(to_remove[0])
+		for production in to_remove: # we can safely iterate, to_remove isn't changed
+			self.remove_production(production)
 
 	def has_production_line(self, ident):
 		"""Checks for a production line id"""
