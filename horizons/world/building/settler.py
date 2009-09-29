@@ -184,7 +184,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# remove when this function is done
 			Scheduler().add_new_object(self.remove, self)
 			# replace this building with a ruin
-			command = Build(self.session, BUILDINGS._CONSTANTS_RUIN_CLASS, self.position.origin.x, \
+			command = Build(self.session, BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
 			Scheduler().add_new_object(command.execute, command, 2)
 
