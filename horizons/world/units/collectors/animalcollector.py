@@ -45,7 +45,10 @@ class AnimalCollector(BuildingCollector):
 
 	def load(self, db, worldid):
 		super(AnimalCollector, self).load(db, worldid)
-		if self.state == self.states.waiting_for_animal_to_stop:
+
+	def apply_state(self, state, remaining_ticks = None):
+		super(AnimalCollector, self).apply_state(state, remaining_ticks)
+		if state == self.states.waiting_for_animal_to_stop:
 			if self.job is not None:
 				# register at target
 				self.job.object.stop_after_job(self)
