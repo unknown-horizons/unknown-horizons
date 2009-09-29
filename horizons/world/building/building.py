@@ -236,7 +236,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
-	selection_color = (255, 0, 255)
+	selection_color = (255, 255, 255)
 
 	def select(self):
 		"""Runs necessary steps to select the building."""

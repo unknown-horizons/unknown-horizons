@@ -45,7 +45,7 @@ class BuildingTool(NavigationTool):
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
 	nearby_objects_transparency = 180
-	nearby_objects_radius = 4
+	nearby_objects_radius = 2
 
 	def __init__(self, session, building, ship = None):
 		super(BuildingTool, self).__init__(session)
