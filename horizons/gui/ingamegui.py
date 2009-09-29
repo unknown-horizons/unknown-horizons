@@ -318,9 +318,9 @@ class IngameGui(LivingObject):
 	def show_build_menu(self):
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
-		btabs = [BuildTab(index, self.callbacks_build[index]) for index in
-			range(0, self.session.world.player.settler_level+1)]
-		tab = TabWidget(self, tabs=btabs)
+		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
+		         range(0, self.session.world.player.settler_level+1)]
+		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget")
 		self.show_menu(tab)
 
 	def deselect_all(self):
@@ -338,7 +338,6 @@ class IngameGui(LivingObject):
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
 		self.session.cursor = BuildingTool(self.session, cls, None if unit is None else unit())
-
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu
@@ -417,6 +416,9 @@ class IngameGui(LivingObject):
 
 		self.minimap.draw() # update minimap to new world
 
+		# listen for player changes that affect gui
+		self.session.world.player.add_change_listener(self._player_change_listener)
+
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedObject.
 		The game gets paused while the dialog is executed."""
@@ -468,4 +470,11 @@ class IngameGui(LivingObject):
 		wdg.resizeToContent()
 		self.widgets['minimap'].show()
 
+	def _player_change_listener(self):
+		"""Gets called when the player changes"""
+		menu = self.get_cur_menu()
+		if hasattr(menu, "name"):
+			if menu.name == "build_menu_tab_widget":
+				# player changed and build menu is currently displayed
+				self.show_build_menu()
 

@@ -21,8 +21,8 @@
 
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
-
 from horizons.util import WorldObject, Color
+
 from horizons.settings import Settings
 
 class Player(StorageHolder, WorldObject):
@@ -91,6 +91,7 @@ class Player(StorageHolder, WorldObject):
 		@return: bool, True if level is greater than the current maximum level"""
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
+			self._changed()
 			coords = (settler.position.center().x, settler.position.center().y)
 			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',

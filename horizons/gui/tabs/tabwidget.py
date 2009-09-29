@@ -29,8 +29,15 @@ class TabWidget(object):
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
 
-	def __init__(self, ingame_gui, tabs=[], position=None):
+	def __init__(self, ingame_gui, tabs=[], position=None, name=None):
+		"""
+		@param ingame_gui: IngameGui instance
+		@param tabs: tab instances to show
+		@param position: position as tuple (x, y)
+		@param name: optional name for the tabwidget
+		"""
 		super(TabWidget, self).__init__()
+		self.name = name
 		self.ingame_gui = ingame_gui
 		self._tabs = tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
