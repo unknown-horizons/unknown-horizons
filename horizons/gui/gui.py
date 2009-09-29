@@ -22,6 +22,7 @@ import os
 import os.path
 import time
 import pychan
+import getpass
 
 import horizons.main
 
@@ -511,10 +512,7 @@ class Gui(SettingsGui):
 			})
 			if len(maps_display) > 0:
 				# select first entry
-				self.current.distributeData({
-					'maplist' : 0,
-				})
-				eventMap["maplist"] = Gui._create_show_savegame_details(self.current, self.current.files, 'maplist')
+				self.current.distributeData({ 'maplist' : 0, })
 		self.current.mapEvents(eventMap)
 
 		self.current.distributeInitialData({
@@ -523,7 +521,7 @@ class Gui(SettingsGui):
 		self.current.distributeData({
 			'showRandom' : showRandom,
 			'showCampaign' : showCampaign,
-		  'playername': _("Unknown Player"),
+		  'playername': unicode(getpass.getuser()),
 		  'playercolor': 0
 		})
 

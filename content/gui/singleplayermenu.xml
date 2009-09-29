@@ -34,10 +34,15 @@
 
 	<ScrollArea min_size="300,250"  horizontal_scrollbar="0" position="0,80">
 
-		<ListBox name="maplist" min_size="300,340" />  <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
+		<ListBox name="maplist" min_size="300,340" /> 
 
 	</ScrollArea>
+
+	<!--
+	box for savegameinfo 
 	<HBox name="savegamedetails_box" position="0,340" min_size="300,300" />
+	-->
+
 	<Label name="start_game_label" text="Start game:" position="170,470" />
 	<ImageButton position="250,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="okay" />
 </Container>
