@@ -108,6 +108,7 @@ class Production(WorldObject):
 		return self
 
 	def remove(self):
+		self.inventory.remove_change_listener(self._check_inventory)
 		Scheduler().rem_all_classinst_calls(self)
 		super(Production, self).remove()
 

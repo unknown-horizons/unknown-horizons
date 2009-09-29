@@ -89,7 +89,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		current_lines = self.get_production_lines()
-		for (prod_line,) in horizons.main.db.cached_query("SELECT production_line \
+		for (prod_line,) in horizons.main.db("SELECT production_line \
 							FROM settler.settler_production_line WHERE level = ?", self.level):
 			if not self.has_production_line(prod_line):
 				self.add_production_by_id(prod_line)
