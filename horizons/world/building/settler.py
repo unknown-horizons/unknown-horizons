@@ -96,7 +96,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# cross out the new lines from the current lines, so only the old ones remain
 			if prod_line in current_lines:
 				current_lines.remove(prod_line)
-		for line in current_lines:
+		for line in current_lines[:]: # iterate over copy for safe removal
 			# all lines, that were added here but are not used due to the current level
 			self.remove_production_by_id(line)
 
@@ -186,7 +186,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# replace this building with a ruin
 			command = Build(self.session, BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
-			Scheduler().add_new_object(command.execute, command, 2)
+			Scheduler().add_new_object(command.execute, coRmmand, 2)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 		else:
