@@ -120,6 +120,9 @@ def start(command_line_arguments):
 def quit():
 	"""Quits the game"""
 	global fife
+	ExtScheduler.destroy_instance()
+	if _modules.session is not None and _modules.session.is_alive:
+		_modules.session.end()
 	fife.quit()
 
 def start_singleplayer(map_file, game_data={}):

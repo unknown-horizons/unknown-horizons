@@ -501,8 +501,6 @@ class Gui(SettingsGui):
 		if showRandom:
 			self.current.removeChild(self.current.findChild(name="load"))
 			eventMap['showCampaign'] = pychan.tools.callbackWithArguments(self.show_single, False, True)
-			self.current.distributeInitialData({ 'playercolor' : [ i.name for i in Color ] })
-			self.current.distributeData({ 'playercolor' : 0 })
 		else:
 			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
 
@@ -520,7 +518,7 @@ class Gui(SettingsGui):
 		self.current.mapEvents(eventMap)
 
 		self.current.distributeInitialData({
-		  'playercolor' : [ color.name for color in Color ],
+		  'playercolor' : [ _(color.name) for color in Color ],
 		  })
 		self.current.distributeData({
 			'showRandom' : showRandom,
