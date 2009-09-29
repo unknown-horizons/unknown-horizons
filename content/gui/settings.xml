@@ -3,12 +3,12 @@
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	
 	<Container size="320,500" position="55,32">
-		<Label text="Settings" position="120,10" name="headline" />
-		<Label name="warning" text="Please make sure that you know, what you do." position="22,30"/>
-		<Icon image="content/gui/images/background/hr.png" position="52,50" />
+		<Label text="Settings" position="150,10" name="headline" />
+		<Label name="warning" text="Please make sure that you know, what you do." position="30,30"/>
+		<Icon image="content/gui/images/background/hr.png" position="55,50" />
 		
-		<Container size="320,240" position="0,60" name="graphic_settings">
-			<Label name="headline_graphics" text="GRAPHICS" position="12,0"/>
+		<Container size="320,240" position="0,50" name="graphic_settings">
+			<Label name="headline_graphics" text="GRAPHICS" position="12,15"/>
 			<Label name="screen_resolution_label" text="Screen resolution:" position="22,40"/>
 			<ScrollArea min_size="100,40" position="160,40">			
 			<ListBox name="screen_resolution"/>
@@ -42,7 +42,7 @@
 	
 	<Container size="320,500" position="420,32">
 		<Container size="320,240" position="0,60" name="graphic_settings">
-			<Label name="headline_saving" text="SAVING" position="12,0"/>			
+			<Label name="headline_saving" text="SAVING" position="12,3"/>			
 			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40" />
 			<ScrollArea min_size="48,20" position="150,70">			
 			<ListBox name="autosaveinterval" />

@@ -4,23 +4,25 @@
 	<Container size="800,800" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 	
-	<Container size="320,500" position="55,32">
-	<Label text="NEW GAME - SINGLEPLAYER" position="50,10" name="headline" />
+	<Container size="320,500" position="75,32">
+	<Label text="NEW GAME - SINGLEPLAYER" position="70,10" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" position="52,30" />
-	<RadioButton position="62,60" size="32,32" name="showRandom" text="Random  " />
-	<RadioButton position="62,100" size="32,32" name="showCampaign" text="Campaign  " />
+	<RadioButton position="22,50" size="32,32" name="showCampaign" text="Campaign  " />
+	<RadioButton position="22,80" size="32,32" name="showRandom" text="Random map " />
+	<Icon image="content/gui/images/background/hr.png" position="52,110" />
+
 	<Label name="main_menu_label" text="Main menu:" position="42,470" />
 	<ImageButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" />
 	</Container>
 
-	<HBox position="250,100" name="playerdataselection" base_color="60,60,60" background_color="60,60,60" border_size="1">
+	<HBox position="100,160" name="playerdataselection" base_color="60,60,60" background_color="60,60,60" border_size="1">
 		<VBox>
-			<Label name="player_label" text="Player:" />
+			<Label name="player_label" text="Player name:" />
 			<Label name="color_label" text="Color:" />
 		</VBox>
 		<VBox>
 			<TextBox name="playername" text="" size="150,16"/>
-			<ScrollArea min_size="80,80" >
+			<ScrollArea min_size="70,150" >
 				<ListBox name="playercolor" />
 			</ScrollArea>
 
@@ -28,11 +30,14 @@
 </HBox>
 
 <Container size="320,500" position="420,32" name="load">
-	<ScrollArea min_size="300,340"  horizontal_scrollbar="0" position="0,40">
+		<Label text="Choose a map to play:" position="0,50" />
+
+	<ScrollArea min_size="300,250"  horizontal_scrollbar="0" position="0,80">
+
 		<ListBox name="maplist" min_size="300,340" />  <!-- filename="content/gui/all_widgets.xml" Wäre eine Idee zum auslesen der Mission. Aber bei uns läuft alles über sqlite -->
 
 	</ScrollArea>
-	<HBox name="savegamedetails_box" position="80,380" min_size="300,50" />
+	<HBox name="savegamedetails_box" position="0,340" min_size="300,300" />
 	<Label name="start_game_label" text="Start game:" position="170,470" />
 	<ImageButton position="250,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="okay" />
 </Container>
