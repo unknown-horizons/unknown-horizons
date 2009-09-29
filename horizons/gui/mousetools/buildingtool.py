@@ -221,6 +221,7 @@ class BuildingTool(NavigationTool):
 						# can't build, not enough res
 						self.renderer.addColored(building['instance'], *self.not_buildable_color)
 						building['buildable'] = False
+						building['missing_res'] = resource
 						break
 				else:
 					building['buildable'] = True
@@ -309,6 +310,13 @@ class BuildingTool(NavigationTool):
 						self.gui.hide()
 				else:
 					building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
+					# check whether to issue a missing res notification
+					if 'missing_res' in building:
+						res_name = horizons.main.db("SELECT name FROM resource WHERE id = ?", \
+						                            building['missing_res'])[0][0]
+						self.session.ingame_gui.message_widget.add(building['x'], building['y'], \
+						                                           'NEED_MORE_RES', {'resource' : res_name})
+
 			if built:
 				self.session.manager.execute(PlaySound("build"))
 			self.buildings = []
