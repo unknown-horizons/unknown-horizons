@@ -28,6 +28,10 @@ class AccountTab(TabInterface):
 		super(AccountTab, self).__init__(widget = 'tab_widget/tab_account.xml')
 		self.settlement = instance.settlement
 		self.init_values()
+		self.button_up_image = 'content/gui/images/icons/hud/common/account_u.png'
+		self.button_active_image = 'content/gui/images/icons/hud/common/account_a.png'
+		self.button_down_image = 'content/gui/images/icons/hud/common/account_d.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/common/account_h.png'
 
 	def refresh(self):
 		taxes = self.settlement.cumulative_taxes
