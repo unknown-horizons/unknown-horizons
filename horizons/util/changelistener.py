@@ -50,6 +50,11 @@ class Changelistener(LivingObject):
 	def has_change_listener(self, listener):
 		return (listener in self.__listeners)
 
+	def discard_change_listener(self, listener):
+		"""Remove listener if it's there"""
+		if self.has_change_listener(listener):
+			self.remove_change_listener(listener)
+
 	def _changed(self):
 		"""Calls every listener when an object changed"""
 		for listener in self.__listeners:

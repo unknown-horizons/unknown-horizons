@@ -23,6 +23,7 @@ import os.path
 import time
 import pychan
 import getpass
+import tempfile
 
 import horizons.main
 
@@ -387,6 +388,14 @@ class Gui(SettingsGui):
 			details_label.text += "Saved %d time%s\n" % (savegame_info['savecounter'], \
 			                                             's' if savegame_info['savecounter'] > 1 else '')
 			box.addChild( details_label )
+
+			"""
+			if savegame_info['screenshot']:
+				fd, filename = tempfile.mkstemp()
+				os.fdopen(fd, "w").write(savegame_info['screenshot'])
+				box.addChild( pychan.widgets.Icon(image=filename) )
+			"""
+
 			gui.adaptLayout()
 		return tmp_show_details
 

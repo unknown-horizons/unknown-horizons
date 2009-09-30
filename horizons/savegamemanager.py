@@ -18,8 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
-
+import sqlite3
+import tempfile
 import logging
 import os
 import os.path
@@ -159,6 +159,14 @@ class SavegameManager(object):
 			if len(result) > 0:
 				assert(len(result) == 1)
 				metadata[key] = cls.savegame_metadata_types[key](result[0][0])
+
+		screenshot_data = None
+		try:
+			screenshot_data = db("SELECT value from metadata_blob where name = ?", "screen")[0][0]
+		except IndexError: pass
+		except sqlite3.OperationalError: pass
+		metadata['screenshot'] = screenshot_data
+
 		return metadata
 
 	@classmethod
@@ -172,6 +180,16 @@ class SavegameManager(object):
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
+
+		# special handling for screenshot (as blob)
+		"""
+		import horizons.main
+		screenshot_fd, screenshot_filename = tempfile.mkstemp()
+		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename)
+		screenshot_data = os.fdopen(screenshot_fd, "r").read()
+		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
+		os.unlink(screenshot_filename)
+		"""
 
 	@classmethod
 	def get_regular_saves(self, include_displaynames = True):
