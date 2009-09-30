@@ -30,7 +30,7 @@ NOTE: Using constants is generally a bad style, so avoid where possible."""
 class VERSION:
 	#RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
 	RELEASE_NAME    = _("Unknown Horizons Snapshot r%s")
-	RELEASE_VERSION = "2729"
+	RELEASE_VERSION = "2862"
 	@staticmethod
 	def string():
 		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
