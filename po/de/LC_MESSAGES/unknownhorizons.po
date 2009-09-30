@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
 "POT-Creation-Date: 2009-09-05 19:00+CEST\n"
-"PO-Revision-Date: 2009-09-15 16:11+0200\n"
+"PO-Revision-Date: 2009-09-30 19:35+0200\n"
 "Last-Translator: Michael Skiba <trans@michael-skiba.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -300,7 +300,6 @@ msgid "Key Bindings"
 msgstr "Tastenbelegung"
 
 #: guitranslations.py:115 horizons/i18n/guitranslations.py:115
-#, fuzzy
 msgid "stock"
 msgstr "Lager"
 
@@ -463,18 +462,17 @@ msgid "Buy resources"
 msgstr "Waren einkaufen"
 
 #: guitranslations.py:187 horizons/i18n/guitranslations.py:187
-#, fuzzy
 msgid "Sell resources"
 msgstr "Waren verkaufen"
 
 #: guitranslations.py:189 horizons/i18n/guitranslations.py:189
-#, fuzzy
 msgid "Select resources:"
-msgstr "Waren verkaufen"
+msgstr "Waren auswählen:"
 
+# Zelt-Bauten?
 #: guitranslations.py:191 horizons/i18n/guitranslations.py:191
 msgid "Sailor Buildings"
-msgstr ""
+msgstr "Seefahrer Gebäude"
 
 #: guitranslations.py:192 horizons/i18n/guitranslations.py:192
 msgid "Residents and Infrastructural"
@@ -522,12 +520,14 @@ msgstr ""
 "Bürger mit Gütern"
 
 #: guitranslations.py:200 horizons/i18n/guitranslations.py:200
-#, fuzzy
 msgid ""
 "Storage: \n"
 "Extends settlement,\n"
 "stores goods"
-msgstr "Lager: \n"
+msgstr ""
+"Lager: \n"
+"Erweitert die Lager- \n"
+"Kapazität der Siedlung"
 
 #: guitranslations.py:201 horizons/i18n/guitranslations.py:201
 msgid ""
@@ -649,7 +649,7 @@ msgid ""
 "Increases the \n"
 "player's sight"
 msgstr ""
-"Ausguck: \n"
+"Krähennest: \n"
 "Erweitert die\n"
 "Sicht des Spielers"
 
@@ -798,16 +798,12 @@ msgid "Starting unknown horizons"
 msgstr "Starte Unknown Horizons"
 
 #: run_uh.py:69
-#, fuzzy
 msgid "Starts <map>. <map> is the mapname."
-msgstr ""
-"Startet <karte>. <karte> ist der Dateiname der Karte ohne die Dateiendung '."
-"sqlite'"
+msgstr "Startet <karte>. <karte> ist der Kartenname."
 
 #: run_uh.py:71
-#, fuzzy
 msgid "Starts the development map without displaying the main menu."
-msgstr "Starte die Entwicklerkarte ohne das Hauptmenü anzuzeigen"
+msgstr "Starte die Entwicklungskarte ohne das Hauptmenü anzuzeigen"
 
 #: run_uh.py:73
 #, fuzzy
@@ -912,7 +908,7 @@ msgid "happiness"
 msgstr "Zufriedenheit"
 
 msgid "Lookout"
-msgstr "Ausguck"
+msgstr "Krähennest"
 
 msgid "textile"
 msgstr "Kleidung"
@@ -968,7 +964,6 @@ msgstr ""
 
 # FIXME: Formal, informal, historical?
 # Ihr, Dein, Euer Spiel wurde gespeichert.
-
 msgid "Your game has been quicksaved."
 msgstr "Schnellspeicherung abgeschlossen"
 
