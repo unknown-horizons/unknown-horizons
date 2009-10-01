@@ -213,7 +213,7 @@ class Rect(object):
 				yield Point(x, y)
 
 	@make_constants()
-	def tupel_iter(self):
+	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""
 		for x in xrange(self.left, self.right+1):
 			for y in xrange(self.top, self.bottom+1):

@@ -157,7 +157,7 @@ class MovingObject(ConcretObject):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		assert self._next_target is not None
-		self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
+		#self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
 		self.last_position = self.position
 		self.position = self._next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
@@ -204,7 +204,7 @@ class MovingObject(ConcretObject):
 		# coords per sec
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
-		self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])
+		#self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
 		# check if a conditional callback becomes true

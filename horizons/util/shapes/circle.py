@@ -40,7 +40,7 @@ class Circle(object):
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the circle"""
 		coords = []
-		for i in self.tupel_iter():
+		for i in self.tuple_iter():
 			coords.append(i)
 		return coords
 
@@ -51,6 +51,12 @@ class Circle(object):
 			return True
 		else:
 			return False
+
+	@make_constants()
+	def intersects_rect(self, rect):
+		if rect.distance_to_point(self.center) >  self.radius:
+			return True
+		return False
 
 	def __str__(self):
 		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
@@ -78,14 +84,12 @@ class Circle(object):
 					yield Point(x, y)
 
 	@make_constants()
-	def tupel_iter(self):
+	def tuple_iter(self):
 		"""Iterates through all coords in circle as tuple"""
 		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
 			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
 				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield (x, y)
-
-
 
 
 from horizons.util.encoder import register_classes

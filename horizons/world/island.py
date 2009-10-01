@@ -25,7 +25,7 @@ import logging
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader
+from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, decorators
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
@@ -221,7 +221,7 @@ class Island(WorldObject):
 		@param settlement:
 		"""
 		for coord in position.get_radius_coordinates(radius, include_self=True):
-			tile = self.get_tile(Point(coord[0], coord[1]))
+			tile = self.get_tile_tuple(coord)
 			if tile is not None:
 				if tile.settlement == settlement:
 					continue
@@ -284,14 +284,16 @@ class Island(WorldObject):
 			if tile is not None:
 				yield tile
 
+	@decorators.make_constants()
 	def get_providers_in_range(self, circle):
 		"""Returns all instances of provider within the specified circle.
 		@param circle: instance of Circle
 		@return: list of providers"""
 		providers = []
+		_providers_append = providers.append
 		for provider in self.provider_buildings:
-			if provider.position.distance_to_circle(circle) <= 0:
-				providers.append(provider)
+			if provider.position.distance_to_circle(circle) == 0:
+				_providers_append(provider)
 		return providers
 
 	def __iter__(self):

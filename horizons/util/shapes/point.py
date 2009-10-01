@@ -124,7 +124,7 @@ class Point(object):
 		"""For interface-sharing with Rect"""
 		yield self
 
-	def tupel_iter(self):
+	def tuple_iter(self):
 		yield self.to_tuple()
 
 

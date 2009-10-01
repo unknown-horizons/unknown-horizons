@@ -45,7 +45,7 @@ class Minimap(object):
 		# pull dereferencing out of loop
 		GenericRendererNode = fife.GenericRendererNode
 		fife_Point = fife.Point
-		for i in self.location.tupel_iter():
+		for i in self.location.tuple_iter():
 			self.renderernodes[ i ] = GenericRendererNode( fife_Point( *i ) )
 
 		self.world = None
@@ -205,7 +205,7 @@ class Minimap(object):
 			coord = self._world_coord_to_minimap_coord( ship().position.to_tuple() )
 			color = ship().owner.color.to_tuple()
 			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
-			for tup in area_to_color.tupel_iter():
+			for tup in area_to_color.tuple_iter():
 				self.renderer.addPoint("minimap_ship", self.renderernodes[tup], *color)
 
 

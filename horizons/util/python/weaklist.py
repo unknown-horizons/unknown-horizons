@@ -154,8 +154,10 @@ class WeakList(list):
 			list.__setitem__(self, index, self.__iter_over_weakref(value))
 		else:
 			list.__setitem__(self, index, self.__new_weakref(value))
+
 	def __iter__(self):
-		return iter([i() for i in list.__iter__(self)])
+		for i in list.__iter__(self):
+			yield i()
 
 	def __contains__(self, item):
 		return list.__contains__(self, weakref.ref(item))
