@@ -323,11 +323,10 @@ class Collector(StorageHolder, Unit):
 		"""Transfers resources from target to collector inventory"""
 		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
 		if res_amount != self.job.amount:
-			self.log.warning("%s picked up %s of res %s at %s, planned was %s",  self, res_amount, \
-			                 self.job.res, self.job.object, self.job.amount)
 			self.job.amount = res_amount # update job amount
 		remnant = self.inventory.alter(self.job.res, res_amount)
-		assert remnant == 0
+		assert remnant == 0, "%s couldn't take all of res %; remnant: %s; planned: %s; acctual %s" % \
+		       (self, res, remnant, self.job.amount, res_amount)
 
 	def transfer_res_to_home(self, res, amount):
 		"""Transfer resources from collector to the home inventory"""
@@ -335,7 +334,8 @@ class Collector(StorageHolder, Unit):
 		remnant = self.get_home_inventory().alter(res, amount)
 		#assert remnant == 0, "Home building could not take all resources from collector."
 		remnant = self.inventory.alter(res, -amount)
-		assert remnant == 0
+		assert remnant == 0, "%s couldn't give all of res %; remnant: %s; inventory: %s" % \
+		       (self, res, remnant, self.inventory)
 
 	def reroute(self):
 		"""Reroutes the collector to a different job.

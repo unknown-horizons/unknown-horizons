@@ -118,7 +118,6 @@ class MessageWidget(LivingObject):
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
 		label.text = unicode(self.active_messages[self.position+index].message)
-		self.text_widget.resizeToContent()
 		self.text_widget.show()
 
 	def hide_text(self):
