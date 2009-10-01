@@ -326,7 +326,7 @@ class Collector(StorageHolder, Unit):
 			self.job.amount = res_amount # update job amount
 		remnant = self.inventory.alter(self.job.res, res_amount)
 		assert remnant == 0, "%s couldn't take all of res %; remnant: %s; planned: %s; acctual %s" % \
-		       (self, res, remnant, self.job.amount, res_amount)
+		       (self, self.job.res, remnant, self.job.amount, res_amount)
 
 	def transfer_res_to_home(self, res, amount):
 		"""Transfer resources from collector to the home inventory"""
