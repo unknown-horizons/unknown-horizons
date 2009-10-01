@@ -90,7 +90,7 @@ class MessageWidget(LivingObject):
 					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, index),
 					button.name + "/mouseExited": self.hide_text
 				}
-				if message.x is not None and message.y is not None and False:
+				if message.x is not None and message.y is not None:
 					# center source of event on click, if there is a source
 					events[button.name] = pychan.tools.callbackWithArguments( \
 						self.session.view.center, message.x, message.y)

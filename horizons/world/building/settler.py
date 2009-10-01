@@ -49,6 +49,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
 		self.__init(level, _CONSTANTS.HAPPINESS_INIT_VALUE)
 		self.run()
+		# give the user 30 seconds to build a market place in range
+		if self.owner == self.session.world.player:
+			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks(30))
 
 	def __init(self, level, happiness = None):
 		self.level = level
@@ -196,6 +199,20 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.inventory.alter(RES.HAPPINESS_ID, _CONSTANTS.HAPPINESS_INIT_VALUE - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
+
+	def _check_market_place_in_range(self):
+		"""Notifies the user via a message in case there is no market place in range"""
+		assert self.owner == self.session.world.player # only do it for local player
+		collector = self.get_local_collectors()[0]
+		for building in collector.get_buildings_in_range():
+			if building.id == BUILDINGS.MARKET_PLACE_CLASS:
+				if collector.check_move(building):
+					# a market place is in range
+					return
+		# no market place found
+		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
+		                                           'NO_MARKET_PLACE_IN_RANGE')
+
 
 
 	def __str__(self):
