@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 import os
 import glob
 import logging
+
+from horizons.constants import PATHS
 
 class ActionSetLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -35,7 +36,7 @@ class ActionSetLoader(object):
 	"""
 	log = logging.getLogger("util.loader")
 	action_sets = {}
-	_start_dir = ""
+	_loaded = False
 
 	@classmethod
 	def _load_files(cls, dir, time):
@@ -107,11 +108,12 @@ class ActionSetLoader(object):
 					cls._find_action_sets(full_path)
 
 	@classmethod
-	def load(cls, start_dir):
-		if cls._start_dir != start_dir:
+	def load(cls):
+		if not cls._loaded:
 			cls.log.debug("Loading action_sets...")
-			cls._find_action_sets(start_dir)
+			cls._find_action_sets(PATHS.ACTION_SETS_DIRECTORY)
 			cls.log.debug("Done!")
+			cls._loaded = True
 
 		#for key, value in cls.action_sets.iteritems():
 		#	print "Action_set:" , key
@@ -121,8 +123,9 @@ class ActionSetLoader(object):
 		#			print "Rotation:", key2
 		#			for key3, value3 in value2.iteritems():
 		#				print "File:", key3, "length:", value3
-		return cls.action_sets
 
 	@classmethod
 	def get_action_sets(cls):
+		if not cls._loaded:
+			cls.load()
 		return cls.action_sets

@@ -69,6 +69,7 @@ class PATHS:
 	USER_DIR = _user_dir
 	LOG_DIR = _user_dir + "/log"
 	USER_CONFIG_FILE = _user_dir + "/config.sqlite"
+	ACTION_SETS_DIRECTORY = 'content/gfx/'
 
 ## The Production States available in the game sorted by importance from least
 ## to most important

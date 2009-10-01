@@ -21,7 +21,7 @@
 			<Label name="color_label" text="Color:" />
 		</VBox>
 		<VBox>
-			<TextBox name="playername" text="" size="150,16"/>
+			<TextField name="playername" text="" size="150,16"/>
 			<ScrollArea min_size="70,150" >
 				<ListBox name="playercolor" />
 			</ScrollArea>

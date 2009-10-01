@@ -87,7 +87,6 @@ def start(command_line_arguments):
 	fife = Fife(Settings())
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
-	ActionSetLoader.load('content/gfx/')
 	_modules.gui = Gui()
 	SavegameManager.init()
 
@@ -284,7 +283,8 @@ def preload_game_data(lock):
 		from horizons.util import Callback
 		log = logging.getLogger("preload")
 		mydb = _create_db() # create own db reader instance, since it's not thread-safe
-		preload_functions = [ Callback(Entities.load_grounds, mydb), \
+		preload_functions = [ ActionSetLoader.load, \
+		                      Callback(Entities.load_grounds, mydb), \
 		                      Callback(Entities.load_buildings, mydb), \
 		                      Callback(Entities.load_units, mydb) ]
 		for f in preload_functions:

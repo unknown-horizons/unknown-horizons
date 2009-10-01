@@ -76,7 +76,6 @@ class Scheduler(LivingObject):
 		tick_key = self.cur_tick + callback_obj.runin
 		if not tick_key in self.schedule:
 			self.schedule[tick_key] = []
-		self.log.debug("Adding new object %s at tick %s", callback_obj, tick_key)
 		self.schedule[tick_key].append(callback_obj)
 
 	def add_new_object(self, callback, class_instance, runin=1, loops=1):
