@@ -325,7 +325,7 @@ class Collector(StorageHolder, Unit):
 		if res_amount != self.job.amount:
 			self.job.amount = res_amount # update job amount
 		remnant = self.inventory.alter(self.job.res, res_amount)
-		assert remnant == 0, "%s couldn't take all of res %; remnant: %s; planned: %s; acctual %s" % \
+		assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s; acctual %s" % \
 		       (self, self.job.res, remnant, self.job.amount, res_amount)
 
 	def transfer_res_to_home(self, res, amount):
@@ -334,7 +334,7 @@ class Collector(StorageHolder, Unit):
 		remnant = self.get_home_inventory().alter(res, amount)
 		#assert remnant == 0, "Home building could not take all resources from collector."
 		remnant = self.inventory.alter(res, -amount)
-		assert remnant == 0, "%s couldn't give all of res %; remnant: %s; inventory: %s" % \
+		assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; inventory: %s" % \
 		       (self, res, remnant, self.inventory)
 
 	def reroute(self):
