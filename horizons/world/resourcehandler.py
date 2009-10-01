@@ -178,6 +178,7 @@ class ResourceHandler(StorageHolder):
 		@param collector: the collector instance, that picks it up
 		@return: int number of resources that can actually be picked up"""
 		picked_up = self.get_available_pickup_amount(res, collector)
+		assert picked_up >= 0
 		if picked_up > amount:
 			picked_up = amount
 		remnant = self.inventory.alter(res, -picked_up)

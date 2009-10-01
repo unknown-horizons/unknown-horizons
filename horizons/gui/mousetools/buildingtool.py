@@ -182,7 +182,7 @@ class BuildingTool(NavigationTool):
 			building_position = Rect.init_from_topleft_and_size(building['x'], building['y'],
 			                                                    *self._class.size)
 			# make surrounding transparent
-			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=False):
 				p = Point(*coord)
 				if not self.session.world.map_dimensions.contains_without_border(p):
 					continue
@@ -228,10 +228,10 @@ class BuildingTool(NavigationTool):
 					for resource in resources:
 						usableResources[resource] = usableResources.get(resource, 0) + resources[resource]
 
-				if building['buildable']:
-					self.renderer.addColored(building['instance'], *self.buildable_color)
-				else:
-					self.renderer.addColored(building['instance'], *self.not_buildable_color)
+			if building['buildable']:
+				self.renderer.addColored(building['instance'], *self.buildable_color)
+			else:
+				self.renderer.addColored(building['instance'], *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
 		   self.ship if self.ship is not None else settlement, neededResources, usableResources, \
 		   res_from_ship = (True if self.ship is not None else False))
