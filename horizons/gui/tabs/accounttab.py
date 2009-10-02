@@ -32,6 +32,7 @@ class AccountTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/account_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/account_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/account_h.png'
+		self.tooltip = u"Account"
 
 	def refresh(self):
 		taxes = self.settlement.cumulative_taxes
