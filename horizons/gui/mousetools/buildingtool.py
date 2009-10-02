@@ -364,9 +364,7 @@ class BuildingTool(NavigationTool):
 	def update_preview(self):
 		"""Used as callback method"""
 		if self.startPoint is not None:
-			import cProfile
-			cProfile.runctx('self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)', globals(), locals(), "/tmp/a")
-			#self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+			self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
