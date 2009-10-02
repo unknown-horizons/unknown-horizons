@@ -228,7 +228,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		pass
 
 	def __str__(self): # debug
-		classname = horizons.main.db("SELECT name FROM building where id = ?", self.id)[0][0]
+		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
 																		 self.getId(create_if_nonexistent=False))
 

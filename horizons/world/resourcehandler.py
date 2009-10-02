@@ -197,9 +197,12 @@ class ResourceHandler(StorageHolder):
 		if not res in self.get_provided_resources():
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
-			return self.inventory[res] - \
-					 sum([c.job.amount for c in self.__incoming_collectors if \
-								c != collector and c.job.res == res])
+			amount_from_collectors = sum([c.job.amount for c in self.__incoming_collectors if \
+			                              c != collector and c.job.res == res])
+			amount = self.inventory[res] - amount_from_collectors
+			# the user can take away res, even if a collector registered for them
+			# if this happens, a negative number would be returned. Use 0 instead.
+			return max(amount, 0)
 
 	def alter_production_time(self, modifier):
 		"""Multiplies the original production time of all production lines by modifier

@@ -41,7 +41,9 @@ class WorldObject(Changelistener):
 
 	@decorators.make_constants()
 	def getId(self, create_if_nonexistent = True):
-		if not hasattr(self, "_WorldObject__id"):
+		try:
+			return self.__id
+		except AttributeError:
 			if not create_if_nonexistent:
 				return None
 			else:
@@ -49,7 +51,6 @@ class WorldObject(Changelistener):
 				self.__id = WorldObject.__next_id
 				WorldObject.__next_id = WorldObject.__next_id + 1
 				WorldObject.__objects[self.__id] = self
-		return self.__id
 
 	@classmethod
 	def get_object_by_id(cls, id):
@@ -60,7 +61,6 @@ class WorldObject(Changelistener):
 			return cls.__objects[id]
 		except KeyError, e:
 			raise WorldObjectNotFound(e.args[0])
-
 
 	@classmethod
 	def reset(cls):

@@ -182,4 +182,4 @@ class CallbackObject(object):
 		self.class_instance = class_instance
 
 	def __str__(self):
-		return "Callback("+str(self.callback)+" on "+str(self.class_instance)+")"
+		return "Callback(%s on %s)" % (self.callback, self.class_instance)
