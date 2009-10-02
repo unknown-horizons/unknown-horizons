@@ -31,6 +31,7 @@ from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.utility import create_resource_icon
+from horizons.i18n import load_xml_translated
 
 class OverviewTab(TabInterface):
 
@@ -119,6 +120,8 @@ class ShipOverviewTab(OverviewTab):
 
 
 class ProductionOverviewTab(OverviewTab):
+	production_line_gui_xml = "tab_widget/tab_production_line.xml"
+
 	def  __init__(self, instance):
 		super(ProductionOverviewTab, self).__init__(
 			widget = 'buildings_gui/production_building_overview.xml',
@@ -155,7 +158,15 @@ class ProductionOverviewTab(OverviewTab):
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in sorted(self.instance._get_productions(), \
 		                         key=(lambda x: x.get_production_line_id())):
-			container = self._create_production_line_container(not production.is_paused())
+			gui = load_xml_translated(self.production_line_gui_xml)
+			container = gui.findChild(name="production_line_container")
+			if production.is_paused():
+				container.removeChild( container.findChild(name="toggle_active_active") )
+				container.findChild(name="toggle_active_inactive").name = "toggle_active"
+			else:
+				container.removeChild( container.findChild(name="toggle_active_inactive") )
+				container.findChild(name="toggle_active_active").name = "toggle_active"
+
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
@@ -172,29 +183,6 @@ class ProductionOverviewTab(OverviewTab):
 			container.stylize('menu_black')
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
-
-	@staticmethod
-	def _create_production_line_container(active):
-		"""Creates a template pychan container, that displays a production line.
-		This can't be done in xml, since you can't duplicate this code."""
-		container = pychan.widgets.containers.Container(size=(240, 55), position=(25, 110))
-		vbox1 = pychan.widgets.containers.VBox(name="input_res", position=(2,0))
-		arrow_icon = pychan.widgets.Icon(image="content/gui/images/icons/hud/main/production_arrow.png", \
-		                                 position=(60, 16))
-		toggle_button = pychan.widgets.ImageButton(
-		      up_image="content/gui/images/icons/hud/main/toggle_active_n.png",
-		      down_image="content/gui/images/icons/hud/main/toggle_active_d.png",
-		      hover_image="content/gui/images/icons/hud/main/toggle_active_h.png" ,
-		      border_size="0",
-		      position=(80,0),
-		      name="toggle_active" )
-		if not active:
-			toggle_button.up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
-			toggle_button.down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
-			toggle_button.hover_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
-		vbox2 = pychan.widgets.containers.VBox(name="output_res", position=(157,0))
-		container.addChildren(vbox1, arrow_icon, toggle_button, vbox2)
-		return container
 
 	def destruct_building(self):
 		self.instance.session.ingame_gui.hide_menu()
