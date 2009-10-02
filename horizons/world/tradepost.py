@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import RES, GAME
+from horizons.scheduler import Scheduler
+
 class TradePost(object):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
@@ -30,6 +33,8 @@ class TradePost(object):
 	def __init(self):
 		self.buy_list = {} # dict of resources that are to be bought. { res_id: limit, .. }
 		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
+		self.buy_history = {} # { tick_id: (res, amount, price) }
+		self.sell_history = {} # { tick_id: (res, amount, price) }
 
 	def save(self, db):
 		super(TradePost, self).save(db)
@@ -54,3 +59,79 @@ class TradePost(object):
 
 		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
 			self.sell_list[res] = limit
+
+	def buy(self, res, amount, price):
+		"""Check if we can buy, and process actions to our inventory
+		@param res:
+		@param amount:
+		@param price: cumulative price for whole amount of res
+		@return bool, whether we did buy it"""
+		assert price >= 0 and amount >= 0
+		if not res in self.buy_list or \
+		   self.owner.inventory[RES.GOLD_ID] < price or \
+		   self.inventory.get_free_space_for(res) < amount or \
+		   amount + self.inventory[res] > self.buy_list[res]:
+			return False
+
+		else:
+			remnant = self.owner.inventory.alter(RES.GOLD_ID, -price)
+			assert remnant == 0
+			remnant = self.inventory.alter(res, amount)
+			assert remnant == 0
+			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
+			return True
+		assert False
+
+	def sell(self, res, amount, price):
+		"""Check if we can sell, and process actions to our inventory
+		@param res:
+		@param amount:
+		@param price: cumulative price for whole amount of res
+		@return bool, whether we did sell it"""
+		assert price >= 0 and amount >= 0
+		if not res in self.sell_list or \
+			 self.inventory[res] < amount or \
+			 self.inventory[res] - amount < self.sell_list[res]:
+			return False
+
+		else:
+			remnant = self.owner.inventory.alter(RES.GOLD_ID, price)
+			assert remnant == 0
+			remnant = self.inventory.alter(res, -amount)
+			assert remnant == 0
+			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
+			return True
+		assert False
+
+	@property
+	def sell_income(self):
+		"""Returns sell income of last month."""
+		income = 0
+		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks(GAME.INGAME_TICK_INTERVAL)
+		keys_to_delete = []
+		for key, values in self.sell_history.iteritems():
+			if key < last_month_start:
+				keys_to_delete.append(key)
+			else:
+				income += values[2]
+		# remove old keys
+		for key in keys_to_delete:
+			del self.sell_history[key]
+		return income
+
+	@property
+	def buy_expenses(self):
+		"""Returns last months buy expenses"""
+		expenses = 0
+		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks(GAME.INGAME_TICK_INTERVAL)
+		keys_to_delete = []
+		for key, values in self.buy_history.iteritems():
+			if key < last_month_start:
+				keys_to_delete.append(key)
+			else:
+				expenses += values[2]
+		# remove old keys
+		for key in keys_to_delete:
+			del self.buy_history[key]
+		return expenses
+

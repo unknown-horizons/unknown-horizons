@@ -182,6 +182,7 @@ class Trader(Player):
 		@param branch_office: Branch Office instance to move to. Random one is selected on None."""
 		self.log.debug("Trader %s: moving to bo (random=%s)", self.getId(), (branch_office is None))
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
+		#import pdb ; pdb.set_trace()
 		branchoffices = self.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
 			# there aren't any branch offices, so move randomly
@@ -195,7 +196,7 @@ class Trader(Player):
 				self.office[ship.id] = branch_office
 			found_path_to_bo = False
 			# try to find a possible position near the bo
-			for point in Circle(self.office[ship.id].position.origin, 3):
+			for point in Circle(self.office[ship.id].position.center(), 3):
 				try:
 					ship.move(point, Callback(self.reached_branch, ship))
 				except MoveNotPossible:
@@ -211,36 +212,25 @@ class Trader(Player):
 		@param ship: ship instance"""
 		self.log.debug("Trader %s: reached bo", self.getId())
 		settlement = self.office[ship.id].settlement
-		for res, limit in settlement.buy_list.iteritems(): # check for resources that the settlement wants to buy
-			rand = random.randint(*self.sell_amount) # select a random amount to sell
-			if settlement.inventory[res] >= limit:
-				continue # continue if there are more resources in the inventory than the settlement wants to buy
-			else:
-				alter = rand if limit-settlement.inventory[res] >= rand else limit-settlement.inventory[res]
-				self.log.debug("Trader %s: buying %s tons of res %s", self.getId(), alter, res)
-				ret = settlement.owner.inventory.alter(RES.GOLD_ID, -alter*\
-																							 int(self.get_res_value(res)*\
-																									 self.SELLING_ADDITIONAL_CHARGE))
-				if ret == 0: # check if enough money was in the inventory
-					settlement.inventory.alter(res, alter)
-				else: # if not, return the money taken
-					settlement.owner.inventory.alter(RES.GOLD_ID, alter*\
-																					 int(self.get_res_value(res)*\
-																							 self.SELLING_ADDITIONAL_CHARGE)\
-																					 -ret)
-		for res, limit in settlement.sell_list.iteritems():
+		#import pdb ; pdb.set_trace()
+		for res in settlement.buy_list.iterkeys(): # check for resources that the settlement wants to buy
+			amount = random.randint(*self.sell_amount) # select a random amount to sell
+			if amount == 0:
+				continue
+			price = int(self.get_res_value(res) * self.SELLING_ADDITIONAL_CHARGE * amount)
+			settlement.buy(res, amount, price)
+			# don't care if he bought it. the trader just offers.
+			self.log.debug("Trader %s: offered sell %s tons of res %s", self.getId(), amount, res)
+
+		for res in settlement.sell_list.iterkeys():
 			# select a random amount to buy from the settlement
-			rand = random.randint(self.buy_amount[0], \
-														min(settlement.inventory.limit-limit, self.buy_amount[1]))
-			if settlement.inventory[res] <= limit:
-				continue # continue if there are fewer resources in the inventory than the settlement wants to sell
-			else:
-				alter = -rand if settlement.inventory[res]-limit >= rand else -(settlement.inventory[res]-limit)
-				self.log.debug("Trader %s: selling %s tons of res %s", self.getId(), alter, res)
-				# Pay for bought resources
-				settlement.owner.inventory.alter(RES.GOLD_ID, -alter*int(self.get_res_value(res)*\
-																																 self.BUYING_CHARGE_DEDUCTION))
-				settlement.inventory.alter(res, alter)
+			amount = random.randint(*self.buy_amount)
+			if amount == 0:
+				continue
+			price = int(self.get_res_value(res) * self.BUYING_CHARGE_DEDUCTION * amount)
+			settlement.sell(res, amount, price)
+			self.log.debug("Trader %s: offered buy %s tons of res %s", self.getId(), amount, res)
+
 		del self.office[ship.id]
 		# wait 2 seconds before going on to the next island
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, 32)
