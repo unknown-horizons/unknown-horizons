@@ -10,7 +10,7 @@
 
 	<Container position="0,70" size="245,300" >
 		<!-- Name of Ship -->
-		<Label name='name' border_size="0" position="80,7"/>
+		<TooltipLabel name='name' border_size="0" position="80,7" tooltip="Click to change \nthe name of this \nShip."/>
 	
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
