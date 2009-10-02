@@ -26,7 +26,7 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Circle, Point, decorators, Rect
+from horizons.util import ActionSetLoader, Circle, Point, decorators, Rect, Callback
 from horizons.command.building import Build
 from horizons.command.sounds import PlaySound
 from navigationtool import NavigationTool
@@ -220,9 +220,13 @@ class BuildingTool(NavigationTool):
 
 			if building['buildable']:
 				self.renderer.addColored(building['instance'], *self.buildable_color)
-				# color radius tiles (just if building is buildable, since it's expensive)
+
+				# draw radius in a moment, and not always immediately, since it's expensive
 				if hasattr(self._class, "select_building"):
-					self._class.select_building(self.session, building_position, settlement)
+					callback = Callback(self._class.select_building, self.session, \
+					                                      building_position, settlement)
+					ExtScheduler().rem_call(self, callback)
+					ExtScheduler().add_new_object(callback, self, 0.2)
 
 
 			else:
@@ -243,6 +247,7 @@ class BuildingTool(NavigationTool):
 				tile.object.fife_instance.get2dGfxVisual().setTransparency( \
 				  self.nearby_objects_transparency )
 				self.modified_objects.add(tile.object)
+
 	def on_escape(self):
 		self.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
