@@ -35,6 +35,8 @@ class build_man(build):
 			stylesheet = '/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl'
 		elif os.path.exists('/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl'):
 			stylesheet = '/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl'
+		elif os.path.exists('/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl'):
+			stylesheet = '/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl'
 		else:
 			self.warn("Can't find a suitable stylesheet!")
 			return
