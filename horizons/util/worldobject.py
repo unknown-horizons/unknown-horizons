@@ -51,6 +51,7 @@ class WorldObject(Changelistener):
 				self.__id = WorldObject.__next_id
 				WorldObject.__next_id = WorldObject.__next_id + 1
 				WorldObject.__objects[self.__id] = self
+				return self.__id
 
 	@classmethod
 	def get_object_by_id(cls, id):

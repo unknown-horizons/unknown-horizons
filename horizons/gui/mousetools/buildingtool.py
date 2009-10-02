@@ -339,9 +339,7 @@ class BuildingTool(NavigationTool):
 		"""Used internally if the endpoint changes"""
 		if self.endPoint != endpoint:
 			self.endPoint = endpoint
-			# just draw in 0.3 seconds
-			ExtScheduler().rem_call(self, self.update_preview)
-			ExtScheduler().add_new_object(self.update_preview, self, 0.3)
+			self.update_preview()
 
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""

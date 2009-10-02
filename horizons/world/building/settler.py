@@ -192,6 +192,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			Scheduler().add_new_object(command.execute, command, 2)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
+			self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
+			                                           'SETTLERS_MOVED_OUT')
 		else:
 			self.level -= 1
 			self._update_level_data()
