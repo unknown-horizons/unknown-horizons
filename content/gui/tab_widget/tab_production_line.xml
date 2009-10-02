@@ -8,15 +8,15 @@
 	<Icon image="content/gui/images/icons/hud/main/production_arrow.png" position="60,16"/>
 
 	<!-- one of those button gets removed at runtime -->
-	<ImageButton up_image="content/gui/images/icons/hud/main/toggle_active_n.png"
+	<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_active_n.png"
 		down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
 		hover_image="content/gui/images/icons/hud/main/toggle_active_h.png"
-		border_size="0" position="80,0" name="toggle_active_active" />
+		border_size="0" position="80,0" name="toggle_active_active" tooltip="Pause production" />
 
-	<ImageButton up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
+	<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
 		down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
 		hover_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
-		border_size="0" position="80,0" name="toggle_active_inactive" />
+		border_size="0" position="80,0" name="toggle_active_inactive" tooltip="Start production" />
 
 	<VBox name="output_res" position="157,0"></VBox>
 
