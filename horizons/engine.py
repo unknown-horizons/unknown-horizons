@@ -202,7 +202,7 @@ class Fife(object):
 		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
 		from gui.widgets.progressbar import ProgressBar
 		from gui.widgets.toggleimagebutton import ToggleImageButton
-		from gui.widgets.tooltip import TooltipIcon, TooltipButton
+		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel
 
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
@@ -210,6 +210,7 @@ class Fife(object):
 		pychan.widgets.registerWidget(ToggleImageButton)
 		pychan.widgets.registerWidget(TooltipIcon)
 		pychan.widgets.registerWidget(TooltipButton)
+		pychan.widgets.registerWidget(TooltipLabel)
 
 		self._gotInited = True
 

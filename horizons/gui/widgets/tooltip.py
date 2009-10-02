@@ -27,16 +27,9 @@ from pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
 from horizons.settings import Settings
 
-class TooltipIcon(pychan.widgets.Icon):
-	"""The TooltipIcon is a modified icon widget. It can be used in xml files like this:
-	<TooltipIcon tooltip=""/>
-	Used to display tooltip on hover on icons.
-	Attributes same as Icon widget with addition of tooltip="text string to display"
-	Use \\n for newline.
-	"""
-	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, tooltip = "", **kwargs):
-		super(TooltipIcon, self).__init__(**kwargs)
+class _Tooltip(object):
+	"""Base class for pychan widgets overloaded with tooltip functionality"""
+	def init_tooltip(self, tooltip):
 		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
 		self.tooltip = tooltip
@@ -92,7 +85,20 @@ class TooltipIcon(pychan.widgets.Icon):
 		self.tooltip_items = []
 		self.tooltip_shown = False
 
-class TooltipButton(pychan.widgets.ImageButton):
+
+class TooltipIcon(_Tooltip, pychan.widgets.Icon):
+	"""The TooltipIcon is a modified icon widget. It can be used in xml files like this:
+	<TooltipIcon tooltip=""/>
+	Used to display tooltip on hover on icons.
+	Attributes same as Icon widget with addition of tooltip="text string to display"
+	Use \\n for newline.
+	"""
+	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
+	def __init__(self, tooltip = "", **kwargs):
+		super(TooltipIcon, self).__init__(**kwargs)
+		self.init_tooltip(tooltip)
+
+class TooltipButton(_Tooltip, pychan.widgets.ImageButton):
 	"""The TooltipButton is a modified image button widget. It can be used in xml files like this:
 	<TooltipButton tooltip=""/>
 	Used to display tooltip on hover on buttons.
@@ -102,59 +108,16 @@ class TooltipButton(pychan.widgets.ImageButton):
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
 		super(TooltipButton, self).__init__(**kwargs)
-		self.gui = load_xml_translated('tooltip.xml')
-		self.gui.hide()
-		self.tooltip = tooltip
-		self.mapEvents({
-			self.name + '/mouseEntered' : self.position_tooltip,
-			self.name + '/mouseExited' : self.hide_tooltip,
-			self.name + '/mouseMoved' : self.position_tooltip,
-			self.name + '/mousePressed' : self.hide_tooltip,
-			self.name + '/mouseReleased' : self.position_tooltip,
-			self.name + '/mouseDragged' : self.position_tooltip
-			})
-		self.tooltip_shown = False
-		self.tooltip_items = []
+		self.init_tooltip(tooltip)
 
-	def position_tooltip(self, event):
-		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= Settings().fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
-		if not self.tooltip_shown:
-			ExtScheduler().add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
-			self.tooltip_shown = True
-		else:
-			self.gui.hide()
-			self.gui.show()
-
-	def show_tooltip(self):
-		if self.tooltip != '':
-			translated_tooltip = unicode(_(self.tooltip))
-			line_count = translated_tooltip.count(r'\n')
-			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
-			self.gui.addChild(top_image)
-			self.tooltip_items.append(top_image)
-			for i in range(0, line_count):
-				middle_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_middle.png', position=(top_image.position[0], top_image.position[1] + 17*(1+i)))
-				self.gui.addChild(middle_image)
-				self.tooltip_items.append(middle_image)
-			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0], top_image.position[1] + 17 + 17*(line_count)))
-			self.gui.addChild(bottom_image)
-			self.tooltip_items.append(bottom_image)
-			label = pychan.widgets.Label(text=u"", position=(16, 8))
-			label.text = translated_tooltip.replace(r'\n', '\n')
-			self.gui.addChild(label)
-			self.gui.stylize('tooltip')
-			self.tooltip_items.append(label)
-			self.gui.size = (140, 17 * (2 + line_count))
-			self.gui.show()
-		else:
-			pass
-
-	def hide_tooltip(self):
-		self.gui.hide()
-		ExtScheduler().rem_call(self, self.show_tooltip)
-		for i in self.tooltip_items:
-			self.gui.removeChild(i)
-		self.tooltip_items = []
-		self.tooltip_shown = False
+class TooltipLabel(_Tooltip, pychan.widgets.Label):
+	"""The TooltipButton is a modified label widget. It can be used in xml files like this:
+	<TooltipLabel tooltip=""/>
+	Used to display tooltip on hover on buttons.
+	Attributes same as Label widget with addition of tooltip="text string to display"
+	Use \\n for newline."""
+	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
+	def __init__(self, tooltip="", **kwargs):
+		super(TooltipLabel, self).__init__(**kwargs)
+		self.init_tooltip(tooltip)
 
