@@ -234,7 +234,7 @@ class BuildingTool(NavigationTool):
 
 	def _make_surrounding_transparent(self, building_position):
 		"""Makes the surrounding of building_position transparent"""
-		for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=False):
+		for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
 			p = Point(*coord)
 			if not self.session.world.map_dimensions.contains_without_border(p):
 				continue

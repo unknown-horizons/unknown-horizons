@@ -380,7 +380,6 @@ class ProgressProduction(Production):
 		# check if there were res
 		if removed_res == 0:
 			# watch inventory for new res
-			#self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 			self.inventory.add_change_listener(self._check_inventory)
 			self._state = PRODUCTION.STATES.waiting_for_res
 			self._changed()

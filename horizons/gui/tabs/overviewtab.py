@@ -33,8 +33,8 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.utility import create_resource_icon
 from horizons.i18n import load_xml_translated
 
-class OverviewTab(TabInterface):
 
+class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'tab_widget/tab_overview.xml'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
@@ -46,12 +46,9 @@ class OverviewTab(TabInterface):
 		self.tooltip = u"Overview"
 
 	def refresh(self):
-		"""This function is called by the TabWidget to redraw the widget."""
 		if hasattr(self.instance, 'name'):
 			name_widget = self.widget.child_finder('name')
 			name_widget.text = unicode(self.instance.name)
-		#if hasattr(self.instance, 'health'):
-		#	self.widget.child_finder('health').text = unicode(self.instance.health)
 		self.widget.adaptLayout()
 
 	def show(self):
@@ -70,7 +67,6 @@ class OverviewTab(TabInterface):
 
 
 class BranchOfficeOverviewTab(OverviewTab):
-
 	def __init__(self, instance):
 		super(BranchOfficeOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_branch_overview.xml',
@@ -82,8 +78,8 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Branch Office \\n Overview"
 
-class ShipOverviewTab(OverviewTab):
 
+class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(ShipOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_overview_ship.xml',
@@ -190,6 +186,7 @@ class ProductionOverviewTab(OverviewTab):
 			self.destruct_button.hide_tooltip()
 		Tear(self.instance).execute()
 
+
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(SettlerOverviewTab, self).__init__(
@@ -228,7 +225,6 @@ class SettlerOverviewTab(OverviewTab):
 		container.adaptLayout()
 
 class MarketPlaceOverviewTab(OverviewTab):
-
 	def  __init__(self, instance):
 		super(MarketPlaceOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_overview_marketplace.xml',
@@ -244,4 +240,3 @@ class MarketPlaceOverviewTab(OverviewTab):
 	def on_tax_widget_change(self):
 		new_tax_num = self.widget.collectData('tax_list')
 		self.instance.settlement.tax_setting = SETTLER.TAX_SETTINGS_VALUES[new_tax_num]
-

@@ -31,6 +31,7 @@ from horizons.constants import RES, BUILDINGS, GAME
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
+from horizons.world.units.collectors import BuildingCollector
 
 class SettlerRuin(BasicBuilding):
 	"""Building that appears when a settler got unhappy. The building does nothing."""
@@ -205,10 +206,17 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def _check_market_place_in_range(self):
 		"""Notifies the user via a message in case there is no market place in range"""
 		assert self.owner == self.session.world.player # only do it for local player
-		collector = self.get_local_collectors()[0]
-		for building in collector.get_buildings_in_range():
+		class _DummyUnit(BuildingCollector):
+			def __init__(_self):
+				_self.home_building = self
+				_self.position = self.position.center()
+				_self.path = None
+				_self.is_moving = lambda : False
+		dummy_unit = _DummyUnit()
+		pather = BuildingCollector.pather_class(dummy_unit, session=self.session)
+		for building in dummy_unit.get_buildings_in_range():
 			if building.id == BUILDINGS.MARKET_PLACE_CLASS:
-				if collector.check_move(building):
+				if pather.calc_path(building, destination_in_building=True, check_only =True):
 					# a market place is in range
 					return
 		# no market place found
