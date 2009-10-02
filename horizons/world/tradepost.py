@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES, GAME
+from horizons.constants import RES
 from horizons.scheduler import Scheduler
 
 class TradePost(object):
@@ -105,9 +105,10 @@ class TradePost(object):
 
 	@property
 	def sell_income(self):
-		"""Returns sell income of last month."""
+		"""Returns sell income of last month.
+		Deletes older entries of the sell list."""
 		income = 0
-		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks(GAME.INGAME_TICK_INTERVAL)
+		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks_of_month()
 		keys_to_delete = []
 		for key, values in self.sell_history.iteritems():
 			if key < last_month_start:
@@ -121,9 +122,10 @@ class TradePost(object):
 
 	@property
 	def buy_expenses(self):
-		"""Returns last months buy expenses"""
+		"""Returns last months buy expenses.
+		Deletes older entries of the buy list."""
 		expenses = 0
-		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks(GAME.INGAME_TICK_INTERVAL)
+		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks_of_month()
 		keys_to_delete = []
 		for key, values in self.buy_history.iteritems():
 			if key < last_month_start:

@@ -20,9 +20,10 @@
 # ###################################################
 
 import logging
+import copy
 
 from horizons.util import LivingObject, ManualConstructionSingleton
-import copy
+from horizons.constants import GAME
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
@@ -153,6 +154,9 @@ class Scheduler(LivingObject):
 	def get_ticks(self, seconds):
 		"""Call propagated to time instance"""
 		return self.timer.get_ticks(seconds)
+
+	def get_ticks_of_month(self):
+		return self.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 
 
 class CallbackObject(object):

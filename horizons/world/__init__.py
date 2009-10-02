@@ -150,7 +150,7 @@ class World(LivingObject):
 			for y in xrange(self.min_y, self.max_y):
 				ground = default_grounds(self.session, x, y)
 				self.grounds.append(ground)
-				self.ground_map[(x, y)] = weakref.ref(ground)
+				self.ground_map[(x, y)] = ground
 		for i in self.islands:
 			for g in i.grounds:
 				if (g.x, g.y) in self.ground_map:
@@ -208,7 +208,7 @@ class World(LivingObject):
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
-					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile]().classes:
+					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile].classes:
 						building = Build(self.session, tree, tile[0], tile[1], ownerless=True, island=island).execute()
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
@@ -298,7 +298,7 @@ class World(LivingObject):
 		if i is not None:
 			return i.get_tile(point)
 		assert (point.x, point.y) in self.ground_map, 'ground is not on island or water. invalid coord: %s'%point
-		return self.ground_map[(point.x, point.y)]()
+		return self.ground_map[(point.x, point.y)]
 
 	def get_settlement(self, point):
 		"""Returns settlement on point.

@@ -278,8 +278,8 @@ class SelectableBuilding(object):
 			island = world.get_island(position.origin)
 			if island is None:
 				return # preview isn't on island, and therefore invalid
-			for coord in position.get_radius_coordinates(cls.radius, include_self=True):
-				tile = island.get_tile_tuple(coord)
+			coords = position.get_radius_coordinates(cls.radius, include_self=True)
+			for tile in island.get_tiles_tuple(coords):
 				try:
 					if tile.settlement == settlement and \
 					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):

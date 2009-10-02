@@ -33,6 +33,7 @@ from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from horizons.i18n import load_xml_translated
 from horizons.constants import RES
+from horizons.extscheduler import ExtScheduler
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -115,6 +116,7 @@ class BuildingTool(NavigationTool):
 			self.session.view.remove_change_listener(self.draw_gui)
 			self.gui.hide()
 		self._remove_listeners()
+		ExtScheduler().rem_all_classinst_calls(self)
 		super(BuildingTool, self).end()
 
 	def load_gui(self):
@@ -182,21 +184,9 @@ class BuildingTool(NavigationTool):
 			building_position = Rect.init_from_topleft_and_size(building['x'], building['y'],
 			                                                    *self._class.size)
 			# make surrounding transparent
-			for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=False):
-				p = Point(*coord)
-				if not self.session.world.map_dimensions.contains_without_border(p):
-					continue
-				tile = self.session.world.get_tile(p)
-				if tile.object is not None and tile.object.buildable_upon:
-					tile.object.fife_instance.get2dGfxVisual().setTransparency( \
-					  self.nearby_objects_transparency )
-					self.modified_objects.add(tile.object)
+			self._make_surrounding_transparent(building_position)
 
 			settlement = building.get('settlement', None) if settlement is None else settlement
-
-			# color radius
-			if hasattr(self._class, "select_building"):
-				self._class.select_building(self.session, building_position, settlement)
 
 			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
 			                                                        building['x'], building['y'])
@@ -230,6 +220,11 @@ class BuildingTool(NavigationTool):
 
 			if building['buildable']:
 				self.renderer.addColored(building['instance'], *self.buildable_color)
+				# color radius tiles (just if building is buildable, since it's expensive)
+				if hasattr(self._class, "select_building"):
+					self._class.select_building(self.session, building_position, settlement)
+
+
 			else:
 				self.renderer.addColored(building['instance'], *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
@@ -237,6 +232,17 @@ class BuildingTool(NavigationTool):
 		   res_from_ship = (True if self.ship is not None else False))
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
+	def _make_surrounding_transparent(self, building_position):
+		"""Makes the surrounding of building_position transparent"""
+		for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=False):
+			p = Point(*coord)
+			if not self.session.world.map_dimensions.contains_without_border(p):
+				continue
+			tile = self.session.world.get_tile(p)
+			if tile.object is not None and tile.object.buildable_upon:
+				tile.object.fife_instance.get2dGfxVisual().setTransparency( \
+				  self.nearby_objects_transparency )
+				self.modified_objects.add(tile.object)
 	def on_escape(self):
 		self.session.ingame_gui.resourceinfo_set(None)
 		if self.ship is None:
@@ -333,7 +339,9 @@ class BuildingTool(NavigationTool):
 		"""Used internally if the endpoint changes"""
 		if self.endPoint != endpoint:
 			self.endPoint = endpoint
-			self.update_preview()
+			# just draw in 0.3 seconds
+			ExtScheduler().rem_call(self, self.update_preview)
+			ExtScheduler().add_new_object(self.update_preview, self, 0.3)
 
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
@@ -356,7 +364,9 @@ class BuildingTool(NavigationTool):
 	def update_preview(self):
 		"""Used as callback method"""
 		if self.startPoint is not None:
-			self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
+			import cProfile
+			cProfile.runctx('self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)', globals(), locals(), "/tmp/a")
+			#self.preview_build(self.startPoint, self.startPoint if self.endPoint is None else self.endPoint)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360

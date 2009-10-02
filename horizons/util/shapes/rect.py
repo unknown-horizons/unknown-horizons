@@ -134,18 +134,26 @@ class Rect(object):
 	def get_radius_coordinates(self, radius, include_self = False):
 		"""Returns list of all coordinates, that are in the radius
 		@param include_self: whether to include coords in self"""
+		# NOTE: this function has to be very fast, since it's blocking on building select
+		#       therefore, the distance_to_tuple function is inlined manually.
+		left = self.left
+		right = self.right
+		top = self.top
+		bottom = self.bottom
 		if not include_self:
 			self_coords = self.get_coordinates()
 			return  [ (x, y) \
 			          for x in xrange(self.left-radius, self.right+radius+1) \
-			          for y in xrange(self.top-radius, self.bottom+radius+1)
-			          if (x, y) not in self_coords and \
-			          self.distance_to_tuple( (x, y) ) <= radius ]
+			          for y in xrange(self.top-radius, self.bottom+radius+1) if \
+			          (x, y) not in self_coords and \
+			          (((max(left - x, 0, x - right) ** 2) + (max(top - y, 0, y - bottom) ** 2)) ** 0.5 ) <= radius ]
+
+
 		else:
 			return  [ (x, y) \
 			          for x in xrange(self.left-radius, self.right+radius+1) \
-			          for y in xrange(self.top-radius, self.bottom+radius+1)
-			          if self.distance_to_tuple( (x, y) ) <= radius ]
+			          for y in xrange(self.top-radius, self.bottom+radius+1) if \
+			          (((max(left - x, 0, x - right) ** 2) + (max(top - y, 0, y - bottom) ** 2)) ** 0.5 ) <= radius ]
 
 
 	def center(self):

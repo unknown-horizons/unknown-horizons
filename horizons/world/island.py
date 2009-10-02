@@ -103,7 +103,7 @@ class Island(WorldObject):
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.grounds.append(ground)
-			self.ground_map[(ground.x, ground.y)] = weakref.ref(ground)
+			self.ground_map[(ground.x, ground.y)] = ground
 
 		self.settlements = [] # List of settlements
 
@@ -136,16 +136,25 @@ class Island(WorldObject):
 		@param point: Point contains position of the tile.
 		@return: tile instance if tile is on island, else None."""
 		try:
-			return self.ground_map[(point.x, point.y)]()
+			return self.ground_map[(point.x, point.y)]
 		except KeyError:
 			return None
 
 	def get_tile_tuple(self, tup):
 		"""Overloaded get_tile, takes a tuple as argument"""
 		try:
-			return self.ground_map[tup]()
+			return self.ground_map[tup]
 		except KeyError:
 			return None
+
+	def get_tiles_tuple(self, tuples):
+		"""Same as get_tile, but takes a list of tuples.
+		@return: list of tiles"""
+		tiles = []
+		for tup in tuples:
+			if tup in self.ground_map:
+				tiles.append( self.ground_map[tup] )
+		return tiles
 
 	def get_building(self, point):
 		"""Returns the building at the point

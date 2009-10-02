@@ -51,7 +51,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self.run()
 		# give the user 30 seconds to build a market place in range
 		if self.owner == self.session.world.player:
-			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks(30))
+			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
 
 	def __init(self, level, happiness = None):
 		self.level = level
