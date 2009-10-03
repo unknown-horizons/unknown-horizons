@@ -515,17 +515,13 @@ class Gui(SettingsGui):
 
 			# get the map files and their display names
 			self.current.files, maps_display = SavegameManager.get_maps()
-			self.current.distributeInitialData({
-				'maplist' : maps_display,
-			})
+			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
 		self.current.mapEvents(eventMap)
 
-		self.current.distributeInitialData({
-		  'playercolor' : [ _(color.name) for color in Color ],
-		  })
+		self.current.distributeInitialData({ 'playercolor' : [ _(color.name) for color in Color ] })
 		self.current.distributeData({
 			'showRandom' : showRandom,
 			'showCampaign' : showCampaign,

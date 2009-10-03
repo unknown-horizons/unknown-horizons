@@ -29,7 +29,7 @@ import logging
 import horizons.main
 
 from island import Island
-from player import Player
+from player import Player, HumanPlayer
 from horizons.util import Point, Color, Rect, LivingObject, Circle
 from horizons.constants import UNITS, BUILDINGS, RES
 from horizons.ai.trader import Trader
@@ -98,7 +98,7 @@ class World(LivingObject):
 				ai_class = getattr(module, ai_data[0][1])
 				player = ai_class.load(self.session, savegame_db ,player_id)
 			else: # no ai
-				player = Player.load(self.session, savegame_db, player_id)
+				player = HumanPlayer.load(self.session, savegame_db, player_id)
 			self.players.append(player)
 
 			if client_id == Settings().client_id:
@@ -284,7 +284,10 @@ class World(LivingObject):
 
 	def setup_player(self, name, color):
 		"""Sets up a new Player instance and adds him to the active world."""
-		self.player =  Player(self.session, 0, name, color, inventory={RES.GOLD_ID: 20000})
+		inv = {}
+		for res, amount in horizons.main.db("SELECT resource, amount FROM player_start_res"):
+			inv[res] = amount
+		self.player =  HumanPlayer(self.session, 0, name, color, inventory=inv)
 		self.players.append(self.player)
 		self.session.ingame_gui.update_gold()
 		self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)

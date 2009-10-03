@@ -416,9 +416,6 @@ class IngameGui(LivingObject):
 
 		self.minimap.draw() # update minimap to new world
 
-		# listen for player changes that affect gui
-		self.session.world.player.add_change_listener(self._player_change_listener)
-
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedObject.
 		The game gets paused while the dialog is executed."""
@@ -470,7 +467,7 @@ class IngameGui(LivingObject):
 		wdg.resizeToContent()
 		self.widgets['minimap'].show()
 
-	def _player_change_listener(self):
+	def _player_settler_level_change_listener(self):
 		"""Gets called when the player changes"""
 		menu = self.get_cur_menu()
 		if hasattr(menu, "name"):

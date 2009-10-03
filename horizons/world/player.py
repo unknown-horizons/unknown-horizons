@@ -64,7 +64,7 @@ class Player(StorageHolder, WorldObject):
 
 	@classmethod
 	def load(cls, session, db, worldid):
-		self = Player.__new__(Player)
+		self = cls.__new__(cls)
 		self.session = session
 		self._load(db, worldid)
 		return self
@@ -89,6 +89,11 @@ class Player(StorageHolder, WorldObject):
 		"""Settler calls this to notify the player
 		@param settler: instance of Settler
 		@return: bool, True if level is greater than the current maximum level"""
+		return False
+
+class HumanPlayer(Player):
+	"""Class for players that physically sit in front of the machine where the game is run"""
+	def notify_settler_reached_level(self, settler):
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
 			self._changed()
@@ -96,19 +101,8 @@ class Player(StorageHolder, WorldObject):
 			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
 			                                                    {'level': settler.level})
+			self.session.ingame_gui._player_settler_level_change_listener()
 			return True
 		return False
 
-
-"""
-class HumanPlayer(Player):
-	""Class for players that physically sit in front of the machine where the game is run""
-	def notify_settler_reached_level(self, settler):
-		reached_new_level = super(HumanPlayer, self).notify_settler_reached_level(settler)
-		if reached_new_level:
-			coords = (settler.position.center().x, settler.position.center().y)
-			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
-			                                                    'SETTLER_LEVEL_UP',
-			                                                    {'level': settler.level})
-"""
 

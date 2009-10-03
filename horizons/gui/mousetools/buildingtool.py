@@ -48,6 +48,8 @@ class BuildingTool(NavigationTool):
 	nearby_objects_transparency = 180
 	nearby_objects_radius = 2
 
+	gui = None # share gui between instances
+
 	def __init__(self, session, building, ship = None):
 		super(BuildingTool, self).__init__(session)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
@@ -58,7 +60,6 @@ class BuildingTool(NavigationTool):
 		self.rotation = 45 + random.randint(0, 3)*90
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
-		self.gui = None
 		if self._class.show_buildingtool_preview_tab:
 			self.load_gui()
 			self.gui.show()
@@ -120,28 +121,28 @@ class BuildingTool(NavigationTool):
 		super(BuildingTool, self).end()
 
 	def load_gui(self):
-		self.gui = load_xml_translated("build_menu/hud_builddetail.xml")
+		if self.gui is None:
+			self.gui = load_xml_translated("build_menu/hud_builddetail.xml")
+			self.gui.stylize('menu_black')
+			self.gui.findChild(name='headline').stylize('headline')
+			self.gui.findChild(name='building_name').stylize('headline')
+			top_bar = self.gui.findChild(name='top_bar')
+			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
+			head_box = self.gui.findChild(name='head_box')
+			head_box.position = (
+		    self.gui.size[0]/2 - head_box.size[0]/2,
+		    head_box.position[1]
+		    )
+			head_box.findChild(name='head_box').adaptLayout()
+			self.gui.position = (
+				horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
+				157
+			)
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,
 							  "rotate_right": self.rotate_right } )
-		self.gui.stylize('menu_black')
-		self.gui.findChild(name='headline').stylize('headline')
 		# set building name in gui
-		name_label = self.gui.findChild(name='building_name')
-		name_label.stylize('headline')
-		name_label.text = u'  ' + unicode(self._class.name)
-		head_box = self.gui.findChild(name='head_box')
-		head_box.adaptLayout()
-		head_box.position = (
-			self.gui.size[0]/2 - head_box.size[0]/2,
-			head_box.position[1]
-			)
-		self.gui.position = (
-			horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
-			157
-		)
+		self.gui.findChild(name='building_name').text = u'  ' + unicode(self._class.name)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
-		top_bar = self.gui.findChild(name='top_bar')
-		top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 		self.draw_gui()
 		self.session.view.add_change_listener(self.draw_gui)
 
@@ -151,12 +152,12 @@ class BuildingTool(NavigationTool):
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
 		if 'idle' in action_sets[action_set]:
-			self.action = 'idle'
+			action = 'idle'
 		elif 'idle_full' in action_sets[action_set]:
-			self.action = 'idle_full'
+			action = 'idle_full'
 		else: # If no idle animation found, use the first you find
-			self.action = action_sets[action_set].keys()[0]
-		image = sorted(action_sets[action_set][self.action][(self.rotation+int(self.session.view.cam.getRotation())-45)%360].keys())[0]
+			action = action_sets[action_set].keys()[0]
+		image = sorted(action_sets[action_set][action][(self.rotation+int(self.session.view.cam.getRotation())-45)%360].keys())[0]
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)
@@ -229,7 +230,7 @@ class BuildingTool(NavigationTool):
 					ExtScheduler().add_new_object(callback, self, 0.2)
 
 
-			else:
+			else: # not buildable
 				self.renderer.addColored(building['instance'], *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
 		   self.ship if self.ship is not None else settlement, neededResources, usableResources, \
