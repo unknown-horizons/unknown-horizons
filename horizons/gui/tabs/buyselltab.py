@@ -129,8 +129,8 @@ class BuySellTab(TabInterface):
 			slot.res = None
 			slider.capture(None)
 		else:
-			button.up_image, button.down_image, = (horizons.main.db("SELECT icon FROM resource WHERE rowid=?", res_id)[0]) * 2
-			button.hover_image = horizons.main.db("SELECT icon_disabled FROM resource WHERE rowid=?", res_id)[0][0]
+			button.up_image, button.down_image, = (horizons.main.db("SELECT icon FROM resource WHERE id=?", res_id)[0]) * 2
+			button.hover_image = horizons.main.db("SELECT icon_disabled FROM resource WHERE id=?", res_id)[0][0]
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"

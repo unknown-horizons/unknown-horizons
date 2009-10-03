@@ -84,6 +84,7 @@ class AmbientSound(object):
 			else:
 				a = AmbientSound()
 				a.position = position
-			soundfile = horizons.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON sounds.rowid = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
+			soundfile = horizons.main.db("SELECT file FROM sounds INNER JOIN sounds_special ON \
+			    sounds.id = sounds_special.sound AND sounds_special.type = ?", sound)[0][0]
 			a.play_ambient(soundfile, looping = False)
 			horizons.main.fife.emitter['ambient'].remove(a.emitter)

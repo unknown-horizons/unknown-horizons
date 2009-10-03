@@ -121,7 +121,7 @@ class GroundClass(type):
 		     (SELECT file FROM data.animation WHERE animation_id = animation_135 limit 1), \
 		     (SELECT file FROM data.animation WHERE animation_id = animation_225 limit 1), \
 		     (SELECT file FROM data.animation WHERE animation_id = animation_315 limit 1) \
-		     FROM data.ground WHERE rowid = ?", self.id)[0]
+		     FROM data.ground WHERE id = ?", self.id)[0]
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = horizons.main.fife.imagepool.addResourceFromFile(file)
 			visual.addStaticImage(int(rotation), img)

@@ -29,9 +29,9 @@ class ColorIter(object):
 	def next(self):
 		try:
 			if hasattr(self, 'last'):
-				id = horizons.main.db('SELECT rowid from data.colors where rowid > ? order by rowid limit 1', self.last)[0][0]
+				id = horizons.main.db('SELECT id from data.colors where id > ? order by id limit 1', self.last)[0][0]
 			else:
-				id = horizons.main.db('SELECT rowid from data.colors order by rowid limit 1')[0][0]
+				id = horizons.main.db('SELECT id from data.colors order by id limit 1')[0][0]
 		except:
 			raise StopIteration
 		self.last = id
@@ -39,10 +39,11 @@ class ColorIter(object):
 
 class ColorMeta(type):
 	def __getitem__(cls, key):
-		"""Gets a color by name or rowid in the db"""
+		"""Gets a color by name or id in the db"""
 		if key == 0:
 			return None
-		r, g, b = horizons.main.db('SELECT red, green, blue from data.colors where %s = ?' % ('name' if isinstance(key, str) else 'rowid',), key)[0]
+		r, g, b = horizons.main.db('SELECT red, green, blue from data.colors where name = ? or id = ?', \
+		                           key, key)[0]
 		c = Color(r, g, b)
 		return c
 

@@ -33,7 +33,7 @@ class TearingTool(NavigationTool):
 	"""
 	Represents a dangling tool after a building was selected from the list.
 	Builder visualizes if and why a building can not be built under the cursor position.
-	@param building_id: rowid of the selected building type"
+	@param building_id: id of the selected building type
 	@param player_id: player id of the player that builds the building
 	@param ship: If building from a ship, restrict to range of ship
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False

@@ -39,7 +39,7 @@ def get_obj_name(obj):
 
 def get_res_name(res):
 	global db
-	return db("Select name from resource where rowid = ?", res)[0][0]
+	return db("Select name from resource where id = ?", res)[0][0]
 
 def print_production_lines():
 	print 'Production Lines:'
