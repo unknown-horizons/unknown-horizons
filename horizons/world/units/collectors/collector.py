@@ -307,6 +307,8 @@ class Collector(StorageHolder, Unit):
 		assert self.job is not None, '%s job is non in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, \
 																										 self.work_duration)
+		if len(self.soundfiles) > 0:
+			self.play_ambient(self.soundfiles[0], looping=False)
 		self.state = self.states.working
 
 	def finish_working(self):

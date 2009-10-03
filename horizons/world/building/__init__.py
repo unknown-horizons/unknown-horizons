@@ -92,8 +92,8 @@ class BuildingClass(type):
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
-		soundfiles = self.db("SELECT file FROM sounds INNER JOIN building_sounds ON \
-			sounds.rowid = building_sounds.sound AND building_sounds.building = ?", self.id)
+		soundfiles = self.db("SELECT file FROM sounds INNER JOIN object_sounds ON \
+			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
 		             buildings you should check out the separate classes in horizons/world/buildings/*.
