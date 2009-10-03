@@ -29,7 +29,7 @@ class BuildingCollector(Collector):
 	"""Collector, that works for a building and gets its needed resources.
 	Essentially extends the Collector by a home building.
 	"""
-	job_ordering = JobList.order_by.amount
+	job_ordering = JobList.order_by.fewest_available
 	pather_class = BuildingCollectorPather
 
 	def __init__(self, home_building, **kwargs):
@@ -156,14 +156,12 @@ class BuildingCollector(Collector):
 		super(BuildingCollector, self).cancel(continue_action=\
 										Callback(self.move_home, callback=self.search_job, action='move'))
 
-
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
 	Used in storage facilities.
 	"""
 	pather_class = RoadPather
 	destination_always_in_building = True
-
 
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.

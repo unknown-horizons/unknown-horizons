@@ -182,7 +182,6 @@ class Trader(Player):
 		@param branch_office: Branch Office instance to move to. Random one is selected on None."""
 		self.log.debug("Trader %s: moving to bo (random=%s)", self.getId(), (branch_office is None))
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
-		#import pdb ; pdb.set_trace()
 		branchoffices = self.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
 			# there aren't any branch offices, so move randomly
@@ -212,7 +211,6 @@ class Trader(Player):
 		@param ship: ship instance"""
 		self.log.debug("Trader %s: reached bo", self.getId())
 		settlement = self.office[ship.id].settlement
-		#import pdb ; pdb.set_trace()
 		for res in settlement.buy_list.iterkeys(): # check for resources that the settlement wants to buy
 			amount = random.randint(*self.sell_amount) # select a random amount to sell
 			if amount == 0:

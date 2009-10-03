@@ -110,6 +110,7 @@ class AbstractPather(object):
 			self.path = path
 			if self.unit.is_moving():
 				self.cur = 0
+				self.unit.show() # make sure unit is displayed
 			else:
 				self.cur = -1
 			self.source_in_building = isinstance(source, BasicBuilding)
@@ -119,8 +120,16 @@ class AbstractPather(object):
 
 	def revert_path(self, destination_in_building):
 		"""Moves back to the source of last movement, using same path"""
-		self.cur = -1
+		if self.cur is None:
+			self.cur = -1 # path has been finished
+			self.source_in_building = bool(self.session.world.get_building(self.unit.position))
+		else: # unit is somewhere in the path
+			self.cur = len(self.path) - self.cur - 1
+			self.source_in_building = False
+
+		# last destination is now source
 		self.destination_in_building = destination_in_building
+
 		self.path.reverse()
 
 	def get_next_step(self):

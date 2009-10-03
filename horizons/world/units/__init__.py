@@ -65,7 +65,6 @@ class UnitClass(type):
 		soundfiles = self.db("SELECT file FROM sounds INNER JOIN object_sounds ON \
 			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
-		print 'soundf' , self.soundfiles
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.

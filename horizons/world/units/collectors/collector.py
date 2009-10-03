@@ -279,7 +279,7 @@ class Collector(StorageHolder, Unit):
 		"Possible" means that we can find a path there.
 		@param jobs: unsorted JobList instance
 		@return: selected Job instance from list or None if no jobs are possible."""
-		jobs.sort_jobs()
+		jobs.sort_jobs(self.get_home_inventory())
 		# check if we can move to that targets
 		for job in jobs:
 			if self.check_move(job.object.position):
@@ -307,7 +307,8 @@ class Collector(StorageHolder, Unit):
 		assert self.job is not None, '%s job is non in begin_working' % self
 		Scheduler().add_new_object(self.finish_working, self, \
 																										 self.work_duration)
-		if len(self.soundfiles) > 0:
+		# play working sound
+		if self.soundfiles:
 			self.play_ambient(self.soundfiles[0], looping=False)
 		self.state = self.states.working
 
@@ -412,37 +413,39 @@ class JobList(list):
 	"""Data structure for evaluating best jobs.
 	It's a list extended by special sort functions.
 	"""
-	order_by = Enum('rating', 'amount', 'random')
+	order_by = Enum('rating', 'amount', 'random', 'fewest_available')
 
 	def __init__(self, job_order):
 		"""
 		@param job_order: instance of order_by-Enum
 		"""
 		super(JobList, self).__init__()
-		if job_order == self.order_by.random:
-			self.sort_jobs = self._sort_jobs_random
-		elif job_order == self.order_by.amount:
-			self.sort_jobs = self._sort_jobs_amount
-		elif job_order == self.order_by.rating:
-			self.sort_jobs = self._sort_jobs_rating
-		else: # default to sorting by rating
+		# choose acctual function by name of enum value
+		sort_fun_name = '_sort_jobs_' + str(job_order)
+		if not hasattr(self, sort_fun_name):
 			self.sort_jobs = self._sort_jobs_rating
 			print 'WARNING: invalid job order: ', job_order
+		else:
+			self.sort_jobs = getattr(self, sort_fun_name)
 
-	def sort_jobs(self):
+	def sort_jobs(self, obj):
 		"""Call this to sort jobs"""
 		# (this is overwritten in __init__)
 		raise NotImplementedError
 
-	def _sort_jobs_rating(self):
+	def _sort_jobs_rating(self, inventory):
 		"""Sorts jobs by job rating (call this in sort_jobs if it fits to your subclass)"""
 		self.sort(key=operator.attrgetter('rating'), reverse=True)
 
-	def _sort_jobs_random(self):
+	def _sort_jobs_random(self, inventory):
 		"""Sorts jobs randomly (call this in sort_jobs if it fits to your subclass)"""
 		random.shuffle(self)
 
-	def _sort_jobs_amount(self):
+	def _sort_jobs_amount(self, inventory):
 		"""Sorts the jobs by the amount of resources available"""
 		self.sort(key=operator.attrgetter('amount'), reverse=True)
+
+	def _sort_jobs_fewest_available(self, inventory):
+		"""Prefer jobs where least amount is available in obj's inventory"""
+		self.sort(key=lambda x: inventory[x.res], reverse=True)
 
