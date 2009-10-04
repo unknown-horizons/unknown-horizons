@@ -89,20 +89,25 @@ class Player(StorageHolder, WorldObject):
 		"""Settler calls this to notify the player
 		@param settler: instance of Settler
 		@return: bool, True if level is greater than the current maximum level"""
-		return False
+		if settler.level > self.settler_level:
+			self.settler_level = settler.level
+			self._changed()
+			return True
+		else:
+			return False
+
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, settler):
-		if settler.level > self.settler_level:
-			self.settler_level = settler.level
-			self._changed()
+		level_up = super(HumanPlayer, self).notify_settler_reached_level(settler)
+		if level_up:
+			# add message and update ingame gui
 			coords = (settler.position.center().x, settler.position.center().y)
 			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
 			                                                    {'level': settler.level})
 			self.session.ingame_gui._player_settler_level_change_listener()
-			return True
-		return False
+		return level_up
 
 

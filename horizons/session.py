@@ -43,6 +43,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.world.building.buildable import Buildable
 from horizons.command import Command
 from horizons.settings import Settings
+from horizons.constants import PATHS
 
 
 class Session(LivingObject):
@@ -190,7 +191,7 @@ class Session(LivingObject):
 		self.log.debug("Session: Saving to %s", savegame)
 		if os.path.exists(savegame):
 			os.unlink(savegame)
-		shutil.copyfile('content/savegame_template.sqlite', savegame)
+		shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
 
 		self.savecounter += 1
 

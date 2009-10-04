@@ -32,10 +32,6 @@ class DbReader(object):
 		self.connection.isolation_level = None
 		self.connection.text_factory = str
 		def regexp(expr, item):
-			"""
-			@param expr:
-			@param item:
-			"""
 			r = re.compile(expr)
 			return r.match(item) is not None
 		self.connection.create_function("regexp", 2, regexp)
@@ -54,7 +50,7 @@ class DbReader(object):
 
 	@decorators.cachedmethod
 	def cached_query(self, command, *args):
-		"""Executes a sql command and saves it's result in a dict.
+		"""Executes a sql command and saves its result in a dict.
 		@params, return: same as in __call__"""
 		return self(command, *args)
 

@@ -32,7 +32,7 @@ from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import ServerConnection, ClientConnection
 from horizons.gui.keylisteners import MainListener
-from horizons.util import Callback, Color
+from horizons.util import Callback, Color, random_map
 from horizons.gui.utility import center_widget, LazyWidgetsDict
 from horizons.settings import Settings
 
@@ -508,10 +508,12 @@ class Gui(SettingsGui):
 			'okay'     : self.start_single,
 		}
 		if showRandom:
-			self.current.removeChild(self.current.findChild(name="load"))
-			eventMap['showCampaign'] = pychan.tools.callbackWithArguments(self.show_single, False, True)
+			to_remove = self.current.findChild(name="map_list_area")
+			to_remove.parent.removeChild(to_remove)
+			eventMap['showCampaign'] = Callback(self.show_single, False, True)
+			self.show_popup(_('Not yet implemented'), _("The random map feature is a work in progress. \nThis means, that it probably won't really work."))
 		else:
-			eventMap['showRandom'] = lambda: self.show_popup(_('Not yet implemented'), _("Sorry, the random map feature isn't yet implemented."))
+			eventMap['showRandom'] = Callback(self.show_single, True, False)
 
 			# get the map files and their display names
 			self.current.files, maps_display = SavegameManager.get_maps()
@@ -546,17 +548,16 @@ class Gui(SettingsGui):
 		game_data['playercolor'] = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
 
 		if showRandom:
-			self.show_popup(_("Not yet implemented"), _("Sorry, random map creation is not implemented at the moment."))
-			return
+			map_file = random_map.generate_map()
 		else:
 			map_id = self.current.collectData('maplist')
 			if map_id == -1:
 				return
 			map_file = self.current.files[map_id]
 
-			self.hide()
-			self.current = self.widgets['loadingscreen']
-			center_widget(self.current)
+		self.hide()
+		self.current = self.widgets['loadingscreen']
+		center_widget(self.current)
 
-			horizons.main.start_singleplayer(map_file, game_data)
+		horizons.main.start_singleplayer(map_file, game_data)
 

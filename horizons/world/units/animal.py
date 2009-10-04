@@ -224,7 +224,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		for res in self.get_consumed_resources():
 			self.inventory.reset(res)
 
-	def next_clone_can_reproduce(self):
+	@staticmethod
+	def next_clone_can_reproduce():
 		"""Returns, whether the next child will be able to reproduce himself.
 		Some animal can't reproduce, which makes population growth easier to control.
 		@return: bool"""

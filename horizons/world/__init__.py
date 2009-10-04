@@ -31,7 +31,7 @@ import horizons.main
 from island import Island
 from player import Player, HumanPlayer
 from horizons.util import Point, Color, Rect, LivingObject, Circle
-from horizons.constants import UNITS, BUILDINGS, RES
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND
 from horizons.ai.trader import Trader
 from horizons.entities import Entities
 from horizons.util import decorators
@@ -91,11 +91,13 @@ class World(LivingObject):
 		human_players = []
 		for player_id, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
 			player = None
+			# check if player is an ai
 			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
 			if len(ai_data) > 0:
+				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+ai_data[0][0], fromlist=[ai_data[0][1]])
-				ai_class = getattr(module, ai_data[0][1])
+				module = __import__('horizons.ai.'+class_package, fromlist=[class_name])
+				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db ,player_id)
 			else: # no ai
 				player = HumanPlayer.load(self.session, savegame_db, player_id)
@@ -145,7 +147,7 @@ class World(LivingObject):
 		self.log.debug("Filling world with water...")
 		self.grounds = []
 		self.ground_map = {}
-		default_grounds = Entities.grounds[int(self.properties.get('default_ground', 4))]
+		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
 				ground = default_grounds(self.session, x, y)

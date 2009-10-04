@@ -21,11 +21,12 @@
 
 import weakref
 import logging
+import re
 
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, decorators
+from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, decorators, random_map
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
@@ -86,18 +87,28 @@ class Island(WorldObject):
 		"""
 		Load the actual island from a file
 		@param origin: Point
-		@param filename: String
+		@param filename: String, filename of island db or random map id
 		"""
 		self.file = filename
 		self.origin = origin
-		db = DbReader(filename) # Create a new DbReader instance to load the maps file.
+
+		#import pdb ; pdb.set_trace()
+
+		# check if filename is a random map
+		if random_map.is_random_island_id_string(filename):
+			# it's a random map id, create this map and load it
+			db = random_map.create_random_island(filename)
+		else:
+			db = DbReader(filename) # Create a new DbReader instance to load the maps file.
+
 		p_x, p_y, width, height = db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from ground", self.origin.x, self.origin.y)[0]
+
+		# rect for quick checking if a tile isn't on this island
+		# NOTE: it contains tiles, that are not on the island!
 		self.rect = Rect(Point(p_x, p_y), width, height)
+
 		self.grounds = []
 		self.ground_map = {}
-		self.buildings = []
-		self.provider_buildings = WeakList() # list of all buildings, that are providers
-		self.wild_animals = []
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
 			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
 			# These are important for pathfinding and building to check if the ground tile
@@ -105,7 +116,10 @@ class Island(WorldObject):
 			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = ground
 
-		self.settlements = [] # List of settlements
+		self.settlements = []
+		self.buildings = []
+		self.provider_buildings = WeakList() # list of all buildings, that are providers
+		self.wild_animals = []
 
 		self.path_nodes = IslandPathNodes(self)
 

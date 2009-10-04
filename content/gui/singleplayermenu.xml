@@ -2,50 +2,48 @@
 <Container size="1024,768">
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
 	<Container size="800,800" position="100,100">
-	<Icon image="content/gui/images/background/book.png" position="0,0" />
-	
-	<Container size="320,500" position="75,32">
-	<Label text="NEW GAME - SINGLEPLAYER" position="70,10" name="headline" />
-	<Icon image="content/gui/images/background/hr.png" position="52,30" />
-	<RadioButton position="22,50" size="32,32" name="showCampaign" text="Campaign  " />
-	<RadioButton position="22,80" size="32,32" name="showRandom" text="Random map " />
-	<Icon image="content/gui/images/background/hr.png" position="52,110" />
+		<Icon image="content/gui/images/background/book.png" position="0,0" />
 
-	<Label name="main_menu_label" text="Main menu:" position="42,470" />
-	<ImageButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" />
-	</Container>
+		<Container size="320,500" position="75,32">
+			<Label text="NEW GAME - SINGLEPLAYER" position="70,10" name="headline" />
+			<Icon image="content/gui/images/background/hr.png" position="52,30" />
+			<RadioButton position="22,50" size="32,32" name="showCampaign" text="Campaign  " />
+			<RadioButton position="22,80" size="32,32" name="showRandom" text="Random map " />
+			<Icon image="content/gui/images/background/hr.png" position="52,110" />
 
-	<HBox position="100,160" name="playerdataselection" base_color="60,60,60" background_color="60,60,60" border_size="1">
-		<VBox>
-			<Label name="player_label" text="Player name:" />
-			<Label name="color_label" text="Color:" />
-		</VBox>
-		<VBox>
-			<TextField name="playername" text="" size="150,16"/>
-			<ScrollArea min_size="70,150" >
-				<ListBox name="playercolor" />
+			<Label name="main_menu_label" text="Main menu:" position="42,470" />
+			<ImageButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" />
+		</Container>
+
+		<HBox position="100,160" name="playerdataselection" base_color="60,60,60" background_color="60,60,60" border_size="1">
+			<VBox>
+				<Label name="player_label" text="Player name:" />
+				<Label name="color_label" text="Color:" />
+			</VBox>
+			<VBox>
+				<TextField name="playername" text="" size="150,16"/>
+				<ScrollArea min_size="70,150" >
+					<ListBox name="playercolor" />
+				</ScrollArea>
+
+			</VBox>
+		</HBox>
+
+		<Container size="320,500" position="420,32" name="right_side">
+			<Label text="Choose a map to play:" name="choose_map_lbl" position="0,50" />
+			<ScrollArea min_size="300,250"  horizontal_scrollbar="0" position="0,80" name="map_list_area">
+				<ListBox name="maplist" min_size="300,340" />
 			</ScrollArea>
 
-	</VBox>
-</HBox>
+			<!--
+			box for savegameinfo
+			<HBox name="savegamedetails_box" position="0,340" min_size="300,300" />
+			-->
 
-<Container size="320,500" position="420,32" name="load">
-		<Label text="Choose a map to play:" position="0,50" />
 
-	<ScrollArea min_size="300,250"  horizontal_scrollbar="0" position="0,80">
+			<Label name="start_game_label" text="Start game:" position="170,470" />
+			<ImageButton position="250,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="okay" />
 
-		<ListBox name="maplist" min_size="300,340" /> 
-
-	</ScrollArea>
-
-	<!--
-	box for savegameinfo 
-	<HBox name="savegamedetails_box" position="0,340" min_size="300,300" />
-	-->
-
-	<Label name="start_game_label" text="Start game:" position="170,470" />
-	<ImageButton position="250,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="okay" />
-</Container>
-
-</Container>
+		</Container>
+	</Container>
 </Container>
