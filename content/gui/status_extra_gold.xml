@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <!-- Widget for displaying needed gold-->
-<Container size="150,120" position="0,0">
-	<Icon image="content/gui/images/background/res_mon_extra_bg.png" position="14,83" />
-
+<Container name="status_extra_gold" size="150,120" position="0,0">
 		<Label name="gold_2" text="" position="25,83"/>
 		<Label name="gold_3" text="" position="25,70" />
 </Container>

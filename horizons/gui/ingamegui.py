@@ -202,16 +202,29 @@ class IngameGui(LivingObject):
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
+		if not hasattr(self, "bg_icon_pos"):
+			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
+			self.bgs_shown = {}
+		bg_icon = pychan.widgets.Icon(image="content/gui/images/background/res_mon_extra_bg.png" if label == 'gold' else "content/gui/images/background/res_extra_bg.png", position=self.bg_icon_pos[label], name='bg_icon_' + label)
+
 		if not value:
 			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
+			if label in self.bgs_shown:
+				(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).removeChild(self.bgs_shown[label])
+				del self.bgs_shown[label]
 			self.widgets['status_extra_gold'].resizeToContent() if label == 'gold' else self.widgets['status_extra'].resizeToContent()
 			return
 		if isinstance(value, str):
 			value = [value]
 		#for i in xrange(len(value), 3):
 		#	value.append("")
+
+		if (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).findChild(name='bg_icon_' + label) is None:
+			(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).insertChild(bg_icon, 0)
+			self.bgs_shown[label] = bg_icon
+
 		for i in xrange(0,len(value)):
 			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(name=label + '_' + str(i+2))
 			foundlabel._setText(unicode(value[i]))
