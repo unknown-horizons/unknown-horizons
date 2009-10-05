@@ -167,11 +167,13 @@ class ProductionOverviewTab(OverviewTab):
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
 				in_res_container.addChild( ImageFillStatusButton.init_for_res(in_res, \
-				                                    self.instance.inventory[in_res], horizons.main.db) )
+				                                    self.instance.inventory[in_res], horizons.main.db, \
+				                                    use_inactive_icon=False) )
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
 				out_res_container.addChild( ImageFillStatusButton.init_for_res(out_res, \
-				                                    self.instance.inventory[out_res], horizons.main.db) )
+				                                    self.instance.inventory[out_res], horizons.main.db, \
+				                                    use_inactive_icon=False) )
 
 			# active toggle_active button
 			container.mapEvents( { 'toggle_active': ToggleActive(self.instance, production).execute } )

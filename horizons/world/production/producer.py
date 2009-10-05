@@ -122,7 +122,10 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
 	behaviour"""
-	pass
+
+	def add_production(self, production):
+		super(ProducerBuilding, self).add_production(production)
+		#production.on_production_finished = ...display_sth..
 
 
 class QueueProducer(Producer):

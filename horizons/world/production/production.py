@@ -68,9 +68,11 @@ class Production(WorldObject):
 	@classmethod
 	def _create_production_line(self, prod_line_id):
 		"""Returns a non-changeable production line instance"""
-		if not prod_line_id in ProductionLine.data:
+		try:
+			return ProductionLine.data[prod_line_id]
+		except KeyError:
 			ProductionLine.load_data(prod_line_id)
-		return ProductionLine.data[prod_line_id]
+			return ProductionLine.data[prod_line_id]
 
 	def save(self, db):
 		remaining_ticks = None
@@ -207,9 +209,14 @@ class Production(WorldObject):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
+	## METHODS TO OVERWRITE FOR SIGNALING
 	def on_remove(self):
 		"""Gets called when production is 'done' (mainly for SingleUseProduction)
 		Overwrite at owner!"""
+		pass
+
+	def on_production_finished(self):
+		"""Gets called when something has been produced"""
 		pass
 
 	## PROTECTED METHODS
@@ -248,11 +255,14 @@ class Production(WorldObject):
 		time = Scheduler().get_ticks(self._prod_line.time)
 		Scheduler().add_new_object(self._finished_producing, self, time)
 
-	def _finished_producing(self):
+	def _finished_producing(self, continue_producing=True):
 		"""Called when the production finishes."""
 		self.log.debug("%s finished", self)
 		self._give_produced_res()
-		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+		self.on_production_finished()
+		if continue_producing:
+			self.state = PRODUCTION.STATES.waiting_for_res
+			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
@@ -320,7 +330,7 @@ class SingleUseProduction(Production):
 		self.callback = callback
 
 	def _finished_producing(self):
-		self._give_produced_res()
+		super(SingleUseProduction, self)._finished_producing(continue_producing=False)
 		self.state = PRODUCTION.STATES.done
 		self.on_remove()
 		if self.callback is not None:
