@@ -64,7 +64,6 @@ def create_random_island(id_string):
 
 		# place shape determined by shape_id on (x, y)
 		shape_id = rand.randint(1, 4)
-
 		if shape_id == 1:
 			# use a rect
 			for shape_coord in Rect.init_from_topleft_and_size(x-2, y-2, 4, 4).tuple_iter():
@@ -79,13 +78,24 @@ def create_random_island(id_string):
 	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
 	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 	map_db("BEGIN TRANSACTION")
+
+	# assign these characters, if a coastline is found in this offset
+	offset_coastline = {
+		'a' : (0, -1),
+		'b' : (1, 0),
+		'c' : (0, 1),
+		'd' : (-1, 0)
+		}
+
 	for x, y in map_dict.iterkeys():
 		# add a coastline tile for coastline, or default land else
-		is_coastline = False
-		for tup in Rect.init_from_topleft_and_size(x-1, y-1, 2, 2).tuple_iter():
-			if tup not in map_dict:
-				is_coastline = True
-		if is_coastline:
+		coastline = ""
+		for offset_char in sorted(offset_coastline):
+			if (x+offset_coastline[offset_char][0], y+offset_coastline[offset_char][1]) not in map_dict:
+				coastline += offset_char
+
+		if coastline:
+			# TODO: use coastline tile depending on coastline
 			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, 49)
 		else:
 			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)

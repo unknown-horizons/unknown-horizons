@@ -18,7 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
 import horizons.main
 
 from horizons.util import WeakList
@@ -68,8 +67,9 @@ class ResourceHandler(StorageHolder):
 		# remove all res to prevent removed collectors to pick up here again
 		self.inventory.reset_all()
 		for production in self._get_productions():
-			production.remove()
-		while len(self.__incoming_collectors) > 0: # safe list remove here
+			self.remove_production(production)
+		assert len(self._get_productions()) == 0 , 'Failed to remove %s ' % self._get_productions()
+		while self.__incoming_collectors: # safe list remove here
 			self.__incoming_collectors[0].cancel()
 		super(ResourceHandler, self).remove()
 
@@ -82,13 +82,9 @@ class ResourceHandler(StorageHolder):
 			needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
 
-	def get_provided_resources(self):
-		"""Returns the provided resources by this building."""
-		return self.provided_resources
-
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
-		return [res for res in self.get_provided_resources() if self.inventory[res] > 0]
+		return [res for res in self.provided_resources if self.inventory[res] > 0]
 
 	def get_currently_consumed_resources(self):
 		"""Returns a list of resources, that are currently consumed in a production."""
@@ -134,6 +130,7 @@ class ResourceHandler(StorageHolder):
 
 	def remove_production(self, production):
 		"""@param production: Production instance"""
+		production.remove() # production "destructor"
 		if self.is_active(production):
 			del self._productions[production.get_production_line_id()]
 		else:
@@ -152,17 +149,13 @@ class ResourceHandler(StorageHolder):
 		for production in to_remove: # we can safely iterate, to_remove isn't changed
 			self.remove_production(production)
 
-	def has_production_line(self, ident):
+	def has_production_line(self, id):
 		"""Checks for a production line id"""
-		for production in self._get_productions():
-			if production.get_production_line_id() == ident:
-				return True
-		return False
+		return bool( [ p for p in self._get_productions() if p.get_production_line_id() == id ] )
 
 	def get_production_progress(self):
 		"""Can be used to return the overall production process."""
 		raise NotImplementedError, "This function has to be overridden!"
-
 
 	def get_production_lines(self):
 		"""Returns all production lines that have been added.
@@ -194,7 +187,7 @@ class ResourceHandler(StorageHolder):
 				print 'Error: %s at %s has no job!' % (c, self)
 		# </debug check>
 
-		if not res in self.get_provided_resources():
+		if not res in self.provided_resources:
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
 			amount_from_collectors = sum([c.job.amount for c in self.__incoming_collectors if \
@@ -260,9 +253,7 @@ class ResourceHandler(StorageHolder):
 	## PROTECTED METHODS
 	def _get_productions(self):
 		"""Returns all productions, inactive and active ones, as list"""
-		tmp = self._productions.values()
-		tmp.extend(self._inactive_productions.values())
-		return tmp
+		return self._productions.values() + self._inactive_productions.values()
 
 
 class StorageResourceHandler(ResourceHandler):
