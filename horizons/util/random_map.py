@@ -45,20 +45,19 @@ def create_random_island(id_string):
 	@param id_string: random island id string
 	@return: sqlite db reader containing island
 	"""
+	# NOTE: the tilesystem will be redone soon, so constants indicating grounds are temporary
+	# here and will have to be changed anyways.
 	match_obj = re.match(_random_island_id_regexp, id_string)
 	assert match_obj
 	creation_method, width, height, seed = [ long(i) for i in match_obj.groups() ]
 
 	assert creation_method == 0, "Only one random island creation method is supported for now"
 
-	map_db = DbReader(":memory:")
-	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
-	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
-	map_db("BEGIN TRANSACTION")
-
 	rand = random.Random(seed)
 
-	# place this number of tiles
+	map_dict = {}
+
+	# place this number of shapes
 	for i in xrange( int(float(width+height)/2 * 1.5) ):
 		x = rand.randint(4, width-4)
 		y = rand.randint(4, height -4)
@@ -69,13 +68,27 @@ def create_random_island(id_string):
 		if shape_id == 1:
 			# use a rect
 			for shape_coord in Rect.init_from_topleft_and_size(x-2, y-2, 4, 4).tuple_iter():
-				map_db("INSERT INTO ground VALUES(?, ?, ?)", shape_coord[0], shape_coord[1], \
-				       GROUND.DEFAULT_LAND)
+				map_dict[shape_coord] = 1
 		else:
 			# use a circle, where radius is determined by shape_id
 			for shape_coord in Circle(Point(x, y), shape_id).tuple_iter():
-				map_db("INSERT INTO ground VALUES(?, ?, ?)", shape_coord[0], shape_coord[1], \
-				       GROUND.DEFAULT_LAND)
+				map_dict[shape_coord] = 1
+
+	# write values to db
+	map_db = DbReader(":memory:")
+	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
+	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+	map_db("BEGIN TRANSACTION")
+	for x, y in map_dict.iterkeys():
+		# add a coastline tile for coastline, or default land else
+		is_coastline = False
+		for tup in Rect.init_from_topleft_and_size(x-1, y-1, 2, 2).tuple_iter():
+			if tup not in map_dict:
+				is_coastline = True
+		if is_coastline:
+			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, 49)
+		else:
+			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
 	map_db("COMMIT")
 	return map_db
 
@@ -92,14 +105,14 @@ def generate_map(seed = None):
 	db = DbReader(filename)
 
 	island_space = (35, 35)
-	island_min_size = (25, 25)
-	island_max_size = (30, 30)
+	island_min_size = (27, 27)
+	island_max_size = (33, 33)
 
 	# generate up to 9 islands
-	for i in Rect.init_from_topleft_and_size(0, 0, 3, 3):
+	for i in Rect.init_from_topleft_and_size(0, 0, 2, 2):
 		if rand.randint(0, 2) != 0: # 2/3 chance for an island here
-			x = i.x * island_space[0]
-			y = i.y * island_space[1]
+			x = int( i.x * island_space[0] * (rand.random()/6 + 0.90) )
+			y = int( i.y * island_space[1] *  (rand.random()/6 + 0.90) )
 			island_seed = rand.randint(-sys.maxint, sys.maxint)
 			island_params = {'creation_method': 0, 'seed': island_seed, \
 			                 'width': rand.randint(island_min_size[0], island_max_size[0]), \

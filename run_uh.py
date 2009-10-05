@@ -73,6 +73,8 @@ def get_option_parser():
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
 														help=_("Starts <map>. <map> is the mapname."))
+	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
+	                          help=_("Starts a random map."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
 			default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \

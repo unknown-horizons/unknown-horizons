@@ -100,6 +100,8 @@ def start(command_line_arguments):
 	startup_worked = True
 	if command_line_arguments.start_dev_map:
 		startup_worked = _start_dev_map()
+	elif command_line_arguments.start_random_map:
+		startup_worked = _start_random_map()
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map)
 	elif command_line_arguments.load_map is not None:
@@ -236,6 +238,11 @@ def _start_map(map_name):
 		print _("Error: Cannot find map \"%s\".") % map_name
 		return False
 	load_game(map_file)
+	return True
+
+def _start_random_map():
+	from horizons.util import random_map
+	start_singleplayer( random_map.generate_map() )
 	return True
 
 def _load_map(savegamename):
