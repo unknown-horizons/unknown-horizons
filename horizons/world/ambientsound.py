@@ -41,7 +41,7 @@ class AmbientSound(object):
 	def create_emitter(self):
 		if Settings().sound.enabled:
 			self.emitter = horizons.main.fife.soundmanager.createEmitter()
-			self.emitter.setGain(Settings().sound.volume_effects*2)
+			self.emitter.setGain(Settings().sound.volume_effects*10)
 			if self.positioning:
 				self.emitter.setRolloff(1.9)
 			horizons.main.fife.emitter['ambient'].append(self.emitter)
