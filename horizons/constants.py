@@ -22,15 +22,38 @@
 import os.path
 
 from ext.enum import Enum
+from run_uh import find_uh_position
 
 """This file keeps track of some constants, that have to be used in the code.
 NOTE: Using constants is generally a bad style, so avoid where possible."""
 
 ##Versioning
 class VERSION:
+	def _set_version(version=None):
+		"""Function gets latest revision of the working copy to display in background.
+		@param version: String to display instead of revision."""
+		if version == None:
+			rev = None
+			entries_path = find_uh_position() + '/.svn/entries'
+			if os.path.exists(entries_path):
+				import re
+				entries = open(entries_path, 'r').read()
+				if re.match('\d', entries):
+					rev = re.search('\d+\s+dir\s+(\d+)', entries).groups()[0]
+				else:
+					from xml.dom import minidom
+					rev = minidom.parse(entries_path).getElementsByTagName("entry")[0].getAttribute("revision")
+				rev = u"r" + rev
+				return unicode(rev)
+			else:
+				return u""
+		else:
+			return unicode(version)
+
 	#RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
-	RELEASE_NAME    = _("Unknown Horizons Snapshot r%s")
-	RELEASE_VERSION = "2862"
+	RELEASE_NAME    = _("Unknown Horizons Snapshot %s")
+	RELEASE_VERSION = _set_version()
+
 	@staticmethod
 	def string():
 		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
