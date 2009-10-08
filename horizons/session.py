@@ -44,6 +44,7 @@ from horizons.world.building.buildable import Buildable
 from horizons.command import Command
 from horizons.settings import Settings
 from horizons.constants import PATHS
+from horizons.campaigneventhandler import CampaignEventHandler
 
 
 class Session(LivingObject):
@@ -231,12 +232,17 @@ class Session(LivingObject):
 		self.manager.recording = False
 		self.db("DETACH demo")
 
-	def load(self, savegame, playername = "Default Player", playercolor = Color()):
+	def load(self, savegame, playername = "Default Player", playercolor = Color(), is_scenario=False):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param playername: string with the playername (None if no player is to be created)
 		@param playercolor: Color instance, player's color or None
 		"""
+		if is_scenario:
+			# savegame is a yaml file, that contains reference to acctual map file
+			self.campaign_eventhandler = CampaignEventHandler(savegame)
+			savegame = self.campaign_eventhandler.get_map_file()
+
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = DbReader(savegame) # Initialize new dbreader
 		try:

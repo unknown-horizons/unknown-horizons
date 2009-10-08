@@ -29,13 +29,16 @@ class BoatbuilderTab(TabInterface):
 		super(BoatbuilderTab, self).__init__(widget = widget)
 		self.instance = instance
 		self.init_values()
-		events = { 'createUnit': AddProduction(self.instance, 15).execute }
+		events = { 'createUnit': self.start_production }
 		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/work_u.png'
 		self.button_active_image = 'content/gui/images/icons/hud/common/work_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/work_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/work_h.png'
 		self.tooltip = u"Boat Builder"
+
+	def start_production(self):
+		AddProduction(self.instance, 15).execute()
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

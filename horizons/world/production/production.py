@@ -415,14 +415,4 @@ class ProgressProduction(Production):
 
 class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
 	"""A production that needs to have a progress and also is only used one time."""
-
-	def __init__(self, **kwargs):
-		super(SingleUseProgressProduction, self).__init__(**kwargs)
-
-	def _finished_producing(self):
-		# Mixture of the ProgressProduction and SingleUseProduction finished_producing
-		# functions
-		self.progress = 0
-		self._give_produced_res()
-		self._state = PRODUCTION.STATES.done
-		self.callback(self)
+	pass

@@ -22,8 +22,6 @@ import os
 import os.path
 import time
 import pychan
-import getpass
-import tempfile
 
 import horizons.main
 
@@ -32,13 +30,13 @@ from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
 from horizons.serverlobby import MasterServerLobby, ClientServerLobby
 from horizons.network import ServerConnection, ClientConnection
 from horizons.gui.keylisteners import MainListener
-from horizons.util import Callback, Color, random_map
+from horizons.util import Callback
 from horizons.gui.utility import center_widget, LazyWidgetsDict
 from horizons.settings import Settings
 
-from horizons.gui.modules.settingsgui import SettingsGui
+from horizons.gui.modules import SettingsGui, SingleplayerMenu
 
-class Gui(SettingsGui):
+class Gui(SettingsGui, SingleplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 
 	"""
@@ -70,7 +68,7 @@ class Gui(SettingsGui):
 
 	def show_main(self):
 		""" shows the main menu """
-		self.__switch_current_widget('mainmenu', center=True, show=True, event_map = {
+		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
 			'settingsLink' : self.show_settings,
@@ -139,7 +137,7 @@ class Gui(SettingsGui):
 		"""
 		Show Pause menu
 		"""
-		self.__switch_current_widget('gamemenu', center=True, show=True, event_map={
+		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'    : self.return_to_game,
 			'closeButton'  : self.quit_session,
 			'savegameButton' : horizons.main.save_game,
@@ -421,7 +419,7 @@ class Gui(SettingsGui):
 			map_files, map_file_display = SavegameManager.get_regular_saves()
 
 		# Prepare widget
-		old_current = self.__switch_current_widget('select_savegame')
+		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 
 		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
@@ -475,7 +473,7 @@ class Gui(SettingsGui):
 		center_widget(self.current)
 		self.show()
 
-	def __switch_current_widget(self, new_widget, center=False, event_map=None, show=False):
+	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False):
 		"""Switches self.current to a new widget.
 		@param new_widget: str, widget name
 		@param center: bool, whether to center the new widget
@@ -493,71 +491,3 @@ class Gui(SettingsGui):
 		if show:
 			self.current.show()
 		return old
-
-	def show_single(self, showRandom = False, showCampaign = True):
-		"""
-		@param showRandom: Bool if random games menu is to be shown.
-		@param showCampaign: Bool if  campaigngame menu is to be shown.
-		"""
-		self.hide() # Hide old gui
-		if 'singleplayermenu' in self.widgets:
-			del self.widgets['singleplayermenu'] # reload because parts are being removed on each show
-		self.__switch_current_widget('singleplayermenu', center=True)
-		eventMap = {
-			'cancel'   : self.show_main,
-			'okay'     : self.start_single,
-		}
-		if showRandom:
-			to_remove = self.current.findChild(name="map_list_area")
-			to_remove.parent.removeChild(to_remove)
-			eventMap['showCampaign'] = Callback(self.show_single, False, True)
-			self.show_popup(_('Not yet implemented'), _("The random map feature is a work in progress. \nThis means, that it probably won't really work."))
-		else:
-			eventMap['showRandom'] = Callback(self.show_single, True, False)
-
-			# get the map files and their display names
-			self.current.files, maps_display = SavegameManager.get_maps()
-			self.current.distributeInitialData({ 'maplist' : maps_display, })
-			if len(maps_display) > 0:
-				# select first entry
-				self.current.distributeData({ 'maplist' : 0, })
-		self.current.mapEvents(eventMap)
-
-		self.current.distributeInitialData({ 'playercolor' : [ _(color.name) for color in Color ] })
-		self.current.distributeData({
-			'showRandom' : showRandom,
-			'showCampaign' : showCampaign,
-		  'playername': unicode(getpass.getuser()),
-		  'playercolor': 0
-		})
-
-		self.current.show()
-		self.on_escape = self.show_main
-
-	def start_single(self):
-		""" Starts a single player horizons. """
-		assert self.current is self.widgets['singleplayermenu']
-		showRandom = self.current.collectData('showRandom')
-		showCampaign = self.current.collectData('showCampaign')
-
-		game_data = {}
-		game_data['playername'] = self.current.collectData('playername')
-		if len(game_data['playername']) == 0:
-			self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
-			return
-		game_data['playercolor'] = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
-
-		if showRandom:
-			map_file = random_map.generate_map()
-		else:
-			map_id = self.current.collectData('maplist')
-			if map_id == -1:
-				return
-			map_file = self.current.files[map_id]
-
-		self.hide()
-		self.current = self.widgets['loadingscreen']
-		center_widget(self.current)
-
-		horizons.main.start_singleplayer(map_file, game_data)
-

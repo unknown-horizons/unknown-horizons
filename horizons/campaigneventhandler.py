@@ -19,7 +19,32 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""Modules for gui/ingamegui"""
+import yaml
 
-from settingsgui import SettingsGui
-from singleplayermenu import SingleplayerMenu
+class CampaignEventHandler(object):
+	"""Handles event, that make up a campaign. See wiki."""
+
+	def __init__(self, campaignfile):
+		"""
+		@param campaignfile: yaml file that describes the campaign
+		@throws Exception on yaml parse error
+		"""
+		try:
+			self._data = yaml.load(campaignfile)
+		except: # catch anything yaml might throw
+			raise Exception("Invalid campaign file: %s" % campaignfile)
+
+	def get_map_file(self):
+		return self._data['mapfile']
+
+
+
+class _Event(object):
+	"""Internal data structure representing an event."""
+
+class _Action(object):
+	"""Internal data structure representing an ingame campaignaction"""
+
+class _Condition(object):
+	"""Internal data structure representing a condition"""
+

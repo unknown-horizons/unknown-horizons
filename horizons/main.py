@@ -145,7 +145,6 @@ def start_singleplayer(map_file, game_data={}):
 		except thread.error:
 			pass # due to timing issues, the lock might be released already
 
-
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
@@ -158,10 +157,7 @@ def start_singleplayer(map_file, game_data={}):
 	from session import Session
 	_modules.session = Session(_modules.gui, db)
 	_modules.session.init_session()
-	if ('playername' in game_data) and ('playercolor' in game_data):
-		_modules.session.load(map_file, game_data['playername'], game_data['playercolor'])
-	else:
-		_modules.session.load(map_file)
+	_modules.session.load(map_file, **game_data)
 
 def start_multi():
 	"""Starts a multiplayer game server (dummy)

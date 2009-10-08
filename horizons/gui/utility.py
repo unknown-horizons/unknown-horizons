@@ -67,3 +67,8 @@ class LazyWidgetsDict(dict):
 			widget.stylize(self.styles[widgetname])
 		self[widgetname] = widget
 
+	def reload(self, widgetname):
+		"""Reloads a widget"""
+		if widgetname in self:
+			del self[widgetname]
+		# loading happens automatically on next access
