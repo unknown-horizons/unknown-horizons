@@ -47,8 +47,10 @@ class SavegameManager(object):
 	quicksave_dir = savegame_dir+"/quicksave"
 	demo_dir = "content/demo"
 	maps_dir = "content/maps"
+	scenarios_dir = "content/scenarios"
 
 	savegame_extension = "sqlite"
+	scenario_extension = "yaml"
 
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
@@ -95,9 +97,11 @@ class SavegameManager(object):
 		return displaynames
 
 	@classmethod
-	def __get_saves_from_dirs(self, dirs, include_displaynames = True):
+	def __get_saves_from_dirs(self, dirs, include_displaynames = True, filename_extension = None):
 		"""Internal function, that returns the saves of a dir"""
-		files = [f for p in dirs for f in glob.glob(p+'/*.'+self.savegame_extension) if \
+		if not filename_extension:
+			filename_extension = self.savegame_extension
+		files = [f for p in dirs for f in glob.glob(p+'/*.'+filename_extension) if \
 						 os.path.isfile(f)]
 		files.sort()
 		if include_displaynames:
@@ -218,6 +222,14 @@ class SavegameManager(object):
 		self.log.debug("Savegamemanager: quicksaves from: %s", self.quicksave_dir)
 		return self.__get_saves_from_dirs([self.quicksave_dir], \
 										  include_displaynames = include_displaynames)
+
+	@classmethod
+	def get_scenarios(self, include_displaynames = True):
+		"""Returns all scenarios"""
+		self.log.debug("Savegamemanager: scenarios from: %s", self.scenarios_dir)
+		return self.__get_saves_from_dirs([self.scenarios_dir], \
+										  include_displaynames = include_displaynames,
+		                  filename_extension = self.scenario_extension)
 
 	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):

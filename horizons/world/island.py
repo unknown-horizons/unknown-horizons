@@ -92,8 +92,6 @@ class Island(WorldObject):
 		self.file = filename
 		self.origin = origin
 
-		#import pdb ; pdb.set_trace()
-
 		# check if filename is a random map
 		if random_map.is_random_island_id_string(filename):
 			# it's a random map id, create this map and load it
@@ -234,6 +232,8 @@ class Island(WorldObject):
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
+		# add delayed event check
+		Scheduler().add_new_object(self.session.campaign_eventhandler.check_events, self)
 		return settlement
 
 	def assign_settlement(self, position, radius, settlement):

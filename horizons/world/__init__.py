@@ -311,6 +311,14 @@ class World(LivingObject):
 		@return: instance of Settlement or None"""
 		return self.get_tile(point).settlement
 
+	@property
+	def settlements(self):
+		"""Returns all settlements on world"""
+		settlements = []
+		for i in self.islands:
+			settlements.extend(i.settlements)
+		return settlements
+
 	def get_building(self, point):
 		"""Returns the building at the position x, y.
 		@param point: Point instance

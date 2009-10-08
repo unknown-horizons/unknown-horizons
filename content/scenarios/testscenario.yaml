@@ -1,0 +1,10 @@
+# first draft for a yaml scenario file
+events:
+-
+  actions:
+  - {type: win} 
+  conditions:
+  - type: settlements_num_greater
+    arguments: [0]
+mapfile: development.sqlite
+

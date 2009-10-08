@@ -101,6 +101,7 @@ class Session(LivingObject):
 		self.view = View(self, (15, 15))
 		Entities.load(self.db)
 		Command.default_manager = self.manager
+		self.campaign_eventhandler = CampaignEventHandler(self) # dummy handler with no events
 
 		#GUI
 		self.gui.session = self
@@ -240,8 +241,9 @@ class Session(LivingObject):
 		"""
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to acctual map file
-			self.campaign_eventhandler = CampaignEventHandler(savegame)
-			savegame = self.campaign_eventhandler.get_map_file()
+			self.campaign_eventhandler = CampaignEventHandler(self, savegame)
+			savegame = os.path.join(SavegameManager.maps_dir, \
+			                        self.campaign_eventhandler.get_map_file())
 
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = DbReader(savegame) # Initialize new dbreader
