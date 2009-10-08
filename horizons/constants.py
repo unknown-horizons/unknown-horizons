@@ -34,15 +34,21 @@ class VERSION:
 		@param version: String to display instead of revision."""
 		if version == None:
 			rev = None
-			entries_path = find_uh_position() + '/.svn/entries'
-			if os.path.exists(entries_path):
+			uh_path = find_uh_position()
+			if os.path.exists(uh_path + '/.svn/entries'):
 				import re
-				entries = open(entries_path, 'r').read()
-				if re.match('\d', entries):
-					rev = re.search('\d+\s+dir\s+(\d+)', entries).groups()[0]
+				entries_file = open(uh_path + '/.svn/entries', 'r').read()
+				if re.match('\d', entries_file):
+					rev = re.search('\d+\s+dir\s+(\d+)', entries_file).groups()[0]
 				else:
 					from xml.dom import minidom
-					rev = minidom.parse(entries_path).getElementsByTagName("entry")[0].getAttribute("revision")
+					rev = minidom.parse(entries_file).getElementsByTagName("entry")[0].getAttribute("revision")
+				rev = u"r" + rev
+				return unicode(rev)
+			elif os.path.exists(uh_path + '/.git/logs/refs/remotes/git-svn'):
+				import re
+				log_file = open(uh_path + '/.git/logs/refs/remotes/git-svn', 'r').read()
+				rev  = re.search('\s+r+(\d+)$', log_file).groups()[0]
 				rev = u"r" + rev
 				return unicode(rev)
 			else:
