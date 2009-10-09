@@ -56,7 +56,8 @@ class Producer(ResourceHandler):
 	def __init(self):
 		self.capacity_utilisation = 0.0 # float from 0.0 to 1.0
 		# update capacity util. every 3 seconds
-		Scheduler().add_new_object(self._update_capacity_utilisation, self, \
+		if hasattr(self, 'select'): # only for selectables
+			Scheduler().add_new_object(self._update_capacity_utilisation, self, \
 		                   Scheduler().get_ticks(self._capacity_utilisation_update_interval), -1)
 
 	def load_production(self, db, worldid):

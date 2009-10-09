@@ -38,9 +38,9 @@
 				<ListBox name="maplist" min_size="300,340" />
 			</ScrollArea>
 
+			<Label name="map_description" position="10,360" wrap_text="0" max_size="300,1000"/>
 			<!--
-			box for savegameinfo
-			<HBox name="savegamedetails_box" position="0,340" min_size="300,300" />
+			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->
 
 

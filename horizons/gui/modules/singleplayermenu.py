@@ -24,7 +24,7 @@ import horizons.main
 
 from horizons.util import Callback, Color, random_map
 from horizons.savegamemanager import SavegameManager
-
+from horizons.campaigneventhandler import CampaignEventHandler
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'free_maps'):
@@ -42,6 +42,7 @@ class SingleplayerMenu(object):
 		  'showRandom' : Callback(self.show_single, show='random'),
 		  'showMaps' : Callback(self.show_single, show='free_maps')
 		}
+		# init gui for subcategory
 		if show == 'random':
 			del eventMap['showRandom']
 			self.current.findChild(name="showRandom").marked = True
@@ -53,10 +54,16 @@ class SingleplayerMenu(object):
 				del eventMap['showMaps']
 				self.current.findChild(name="showMaps").marked = True
 				self.current.files, maps_display = SavegameManager.get_maps()
-			else:
+			else: # campaign
 				del eventMap['showCampaign']
 				self.current.findChild(name="showCampaign").marked = True
 				self.current.files, maps_display = SavegameManager.get_scenarios()
+				def _update_description():
+					self.current.findChild(name="map_description").text = unicode( \
+					  CampaignEventHandler.get_description_from_file( self._get_selected_map() ))
+					self.current.findChild(name="map_description").parent.adaptLayout()
+				self.current.findChild(name="maplist").capture(_update_description)
+
 			# get the map files and their display names
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
@@ -70,7 +77,6 @@ class SingleplayerMenu(object):
 		  'playername': unicode(getpass.getuser()),
 		  'playercolor': 0
 		})
-
 		self.current.show()
 		self.on_escape = self.show_main
 
@@ -88,8 +94,12 @@ class SingleplayerMenu(object):
 			map_file = random_map.generate_map()
 		else:
 			assert self.current.collectData('maplist') != -1
-			map_file = self.current.files[ self.current.collectData('maplist') ]
+			map_file = self._get_selected_map()
 
 		game_data['is_scenario'] = bool(self.current.collectData('showCampaign'))
 		self.show_loading_screen()
 		horizons.main.start_singleplayer(map_file, game_data)
+
+	def _get_selected_map(self):
+		"""Returns map file, that is selected in the maplist widget"""
+		return self.current.files[ self.current.collectData('maplist') ]

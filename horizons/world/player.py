@@ -91,6 +91,7 @@ class Player(StorageHolder, WorldObject):
 		@return: bool, True if level is greater than the current maximum level"""
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
+			self.session.campaign_eventhandler.schedule_check()
 			self._changed()
 			return True
 		else:

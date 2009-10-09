@@ -169,7 +169,6 @@ class MovingObject(ConcretObject):
 		while self._next_target == self.position:
 			try:
 				self._next_target = self.path.get_next_step()
-				self.log.debug("pather gave next target %s", self._next_target)
 			except PathBlockedError:
 				self.log.debug("path is blocked")
 				self.log.debug("owner: %s", self.owner)

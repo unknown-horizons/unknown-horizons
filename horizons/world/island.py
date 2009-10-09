@@ -232,8 +232,7 @@ class Island(WorldObject):
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
-		# add delayed event check
-		Scheduler().add_new_object(self.session.campaign_eventhandler.check_events, self)
+		self.session.campaign_eventhandler.schedule_check()
 		return settlement
 
 	def assign_settlement(self, position, radius, settlement):

@@ -22,6 +22,8 @@
 import os.path
 import yaml
 
+from horizons.scheduler import Scheduler
+
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
@@ -41,13 +43,13 @@ class CampaignEventHandler(object):
 		self.session = session
 		self._events = []
 		if campaignfile:
-			try:
-				self._data = yaml.load( open(campaignfile, 'r') )
-			except: # catch anything yaml might throw
-				raise InvalidScenarioFileFormat()
-
+			self._data = self._parse_yaml_file(campaignfile)
 			for event_dict in self._data['events']:
 				self._events.append( _Event(self.session, event_dict) )
+
+	def schedule_check(self):
+		"""Schedules a check on the next tick. Prefer this over check_events, so that no lags appear."""
+		Scheduler().add_new_object(self.check_events, self)
 
 	def check_events(self):
 		"""Checks whether an event happened"""
@@ -62,6 +64,17 @@ class CampaignEventHandler(object):
 	def get_map_file(self):
 		return self._data['mapfile']
 
+	@classmethod
+	def get_description_from_file(cls, filename):
+		"""Returns the description from a yaml file"""
+		return cls._parse_yaml_file(filename)['description']
+
+	@staticmethod
+	def _parse_yaml_file(filename):
+		try:
+			return yaml.load( open(filename, 'r') )
+		except: # catch anything yaml might throw
+			raise InvalidScenarioFileFormat()
 
 
 ###
@@ -71,6 +84,14 @@ def show_message(session, message_id):
 	"""Shows a message on the ingame message widget"""
 	session.ingame_gui.message_widget.add(None, None, message_id)
 
+def do_win(session):
+	"""Called when player won"""
+	show_message(session, 'YOU_HAVE_WON')
+
+def do_lose(session):
+	"""Called when player lost"""
+	#session.gui.show_popup("You lost!", "You have lost. Please give us money so we can create a better 'you have lost'-message")
+	pass
 
 ###
 # Campaign Conditions
@@ -80,14 +101,9 @@ def settlements_num_greater(session, limit):
 	player_settlements = filter(lambda x: x.owner == session.world.player, session.world.settlements)
 	return len(player_settlements) > limit
 
-def do_win(session):
-	"""Called when player won"""
-	show_message(session, 'YOU_HAVE_WON')
-
-def do_lose(session):
-	"""Called when player lost"""
-	#session.gui.show_popup("You lost!", "You have lost. Please give us money so we can create a better 'you have lost'-message")
-	pass
+def settler_level_greater(session, limit):
+	"""Returns wheter the max level of settlers is greater than limit"""
+	return (session.world.player.settler_level > limit)
 
 
 ###
@@ -132,7 +148,8 @@ class _Action(object):
 class _Condition(object):
 	"""Internal data structure representing a condition"""
 	condition_types = {
-	  'settlements_num_greater' : settlements_num_greater
+	  'settlements_num_greater' : settlements_num_greater,
+	  'settler_level_greater' : settler_level_greater
 	}
 	def __init__(self, session, cond_dict):
 		self.session = session

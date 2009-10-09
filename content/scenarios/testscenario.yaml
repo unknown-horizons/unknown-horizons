@@ -7,4 +7,7 @@ events:
   - type: settlements_num_greater
     arguments: [0]
 mapfile: development.sqlite
+description: |
+ First challenge:
+ Select a nice island and found 1 settlement there.
 
