@@ -49,7 +49,7 @@ class CampaignEventHandler(object):
 			for event_dict in self._data['events']:
 				self._events.append( _Event(self.session, event_dict) )
 		# Add the check_events methode to the scheduler to be checked evrey two seconds
-		Scheduler.add_new_object(self.check_events, self, runin = Scheduler.get_ticks(2), loops = 0)
+		Scheduler().add_new_object(self.check_events, self, runin = Scheduler().get_ticks(2), loops = 0)
 
 	def schedule_check(self):
 		"""Schedules a check on the next tick. Prefer this over check_events, so that no lags appear."""
