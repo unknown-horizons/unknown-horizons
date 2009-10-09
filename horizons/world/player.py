@@ -22,8 +22,8 @@
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
-
 from horizons.settings import Settings
+from horizons.campaigneventhandler import CONDITIONS
 
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
@@ -50,7 +50,7 @@ class Player(StorageHolder, WorldObject):
 		self.name = name
 		self.color = color
 		self.settler_level = settlerlevel
-		assert hasattr(self.color, "id"), "Player color has to be a default color"
+		assert self.color.is_default_color, "Player color has to be a default color"
 
 	def create_inventory(self):
 		self.inventory = PositiveStorage()
@@ -91,7 +91,7 @@ class Player(StorageHolder, WorldObject):
 		@return: bool, True if level is greater than the current maximum level"""
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
-			self.session.campaign_eventhandler.schedule_check()
+			self.session.campaign_eventhandler.check_events(CONDITIONS.settler_level_greater)
 			self._changed()
 			return True
 		else:

@@ -194,3 +194,10 @@ class Enum(object):
 			except EnumValueCompareError, e:
 				is_member = False
 		return is_member
+
+	def get_item_for_string(self, s):
+		"""Get an enum value for a string
+		@throws ValueError on key not found"""
+		index =  self._keys.index(s)
+		return self[index]
+

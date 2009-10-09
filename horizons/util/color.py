@@ -86,6 +86,10 @@ class Color(object):
 		"""Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""
 		return (self.r, self.g, self.b)
 
+	@property
+	def is_default_color(self):
+		return hasattr(self, 'id')
+
 	def __str__(self):
 		return 'Color'+str(self.to_tuple())
 

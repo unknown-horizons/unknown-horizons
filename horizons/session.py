@@ -146,7 +146,6 @@ class Session(LivingObject):
 		self.timer = None
 		Scheduler.destroy_instance()
 
-
 		self.selected_instances = None
 		self.selection_groups = None
 

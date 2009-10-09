@@ -30,6 +30,7 @@ from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, 
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
+from horizons.campaigneventhandler import CONDITIONS
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -232,7 +233,7 @@ class Island(WorldObject):
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
 		self.assign_settlement(position, radius, settlement)
-		self.session.campaign_eventhandler.schedule_check()
+		self.session.campaign_eventhandler.check_events(CONDITIONS.settlements_num_greater)
 		return settlement
 
 	def assign_settlement(self, position, radius, settlement):

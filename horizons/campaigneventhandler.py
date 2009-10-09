@@ -19,12 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os.path
 import yaml
 
+from horizons.ext.enum import Enum
 from horizons.constants import RES
-
 from horizons.scheduler import Scheduler
+
+
+# event conditions to specify at check_events()
+CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
+                  'player_gold_greater', 'player_gold_less')
+
+# conditions that can only be checked periodically
+_scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
+                                CONDITIONS.player_gold_less)
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -44,26 +52,32 @@ class CampaignEventHandler(object):
 		"""
 		self.session = session
 		self._events = []
+		# map: condition types -> events
+		self._event_conditions = {}
+		for cond in CONDITIONS:
+			self._event_conditions[cond] = []
 		if campaignfile:
 			self._data = self._parse_yaml_file(campaignfile)
 			for event_dict in self._data['events']:
-				self._events.append( _Event(self.session, event_dict) )
-		# Add the check_events methode to the scheduler to be checked evrey two seconds
-		Scheduler().add_new_object(self.check_events, self, runin = Scheduler().get_ticks(2), loops = -1)
+				event = _Event(self.session, event_dict)
+				self._events.append( event )
+				for cond in event.conditions:
+					self._event_conditions[ cond.cond_type ].append( event )
 
-	def schedule_check(self):
-		"""Schedules a check on the next tick. Prefer this over check_events, so that no lags appear."""
-		Scheduler().add_new_object(self.check_events, self)
+		# Add the check_events method to the scheduler to be checked every few seconds
+		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
 
-	def check_events(self):
-		"""Checks whether an event happened"""
+
+	def check_events(self, condition):
+		"""Checks whether an event happened.
+		@param condition: condition from enum conditions that changed"""
 		events_to_remove = []
-		for event in self._events:
+		for event in self._event_conditions[condition]:
 			event_executed = event.check()
 			if event_executed:
 				events_to_remove.append(event)
 		for event in events_to_remove:
-			self._events.remove(event)
+			self._remove_event(event)
 
 	def get_map_file(self):
 		return self._data['mapfile']
@@ -79,6 +93,17 @@ class CampaignEventHandler(object):
 			return yaml.load( open(filename, 'r') )
 		except: # catch anything yaml might throw
 			raise InvalidScenarioFileFormat()
+
+	def _scheduled_check(self):
+		"""Check conditions that can only be checked periodically"""
+		for cond_type in _scheduled_checked_conditions:
+			self.check_events(cond_type)
+
+	def _remove_event(self, event):
+		assert isinstance(event, _Event)
+		for cond in event.conditions:
+			self._event_conditions[ cond.cond_type ].remove( event )
+		self._events.remove( event )
 
 
 ###
@@ -102,7 +127,7 @@ def do_lose(session):
 
 def settlements_num_greater(session, limit):
 	"""Returns whether the number of settlements owned by the human player is greater than limit."""
-	player_settlements = filter(lambda x: x.owner == session.world.player, session.world.settlements)
+	player_settlements = [ s for s in session.world.settlements if s.owner == session.world.player ]
 	return len(player_settlements) > limit
 
 def settler_level_greater(session, limit):
@@ -116,6 +141,7 @@ def player_gold_greater(session, limit):
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
 	return (session.world.player.inventory[RES.GOLD_ID] < limit)
+
 
 ###
 # Simple utility classes
@@ -153,22 +179,26 @@ class _Action(object):
 		self.arguments = action_dict['arguments'] if 'arguments' in action_dict else []
 
 	def __call__(self, session):
+		"""Executes action."""
 		self.callback(session, *self.arguments)
 
 
 class _Condition(object):
 	"""Internal data structure representing a condition"""
 	condition_types = {
-	  'settlements_num_greater' : settlements_num_greater,
-	  'settler_level_greater' : settler_level_greater,
-	  'player_gold_greater': player_gold_greater,
-	  'player_gold_less': player_gold_less
+	  CONDITIONS.settlements_num_greater : settlements_num_greater,
+	  CONDITIONS.settler_level_greater : settler_level_greater,
+	  CONDITIONS.player_gold_greater: player_gold_greater,
+	  CONDITIONS.player_gold_less: player_gold_less
 	}
 	def __init__(self, session, cond_dict):
 		self.session = session
-		self.callback = self.condition_types[ cond_dict['type'] ]
+		self.cond_type = CONDITIONS.get_item_for_string(cond_dict['type'])
+		self.callback = self.condition_types[ self.cond_type  ]
 		self.arguments = cond_dict['arguments'] if 'arguments' in cond_dict else []
 
 	def __call__(self):
+		"""Check for condition.
+		@return: bool"""
 		return self.callback(self.session, *self.arguments)
 
