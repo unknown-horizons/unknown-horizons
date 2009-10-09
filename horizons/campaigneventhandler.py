@@ -22,6 +22,8 @@
 import os.path
 import yaml
 
+from horizons.constants import RES
+
 from horizons.scheduler import Scheduler
 
 class InvalidScenarioFileFormat(Exception):
@@ -46,6 +48,8 @@ class CampaignEventHandler(object):
 			self._data = self._parse_yaml_file(campaignfile)
 			for event_dict in self._data['events']:
 				self._events.append( _Event(self.session, event_dict) )
+		# Add the check_events methode to the scheduler to be checked evrey two seconds
+		Scheduler.add_new_object(self.check_events, self, runin = Scheduler.get_ticks(2), loops = 0)
 
 	def schedule_check(self):
 		"""Schedules a check on the next tick. Prefer this over check_events, so that no lags appear."""
@@ -105,6 +109,13 @@ def settler_level_greater(session, limit):
 	"""Returns wheter the max level of settlers is greater than limit"""
 	return (session.world.player.settler_level > limit)
 
+def player_gold_greater(session, limit):
+	"""Returns whether the player has more gold then limit"""
+	return (session.world.player.inventory[RES.GOLD_ID] > limit)
+
+def player_gold_less(session, limit):
+	"""Returns whether the player has less gold then limit"""
+	return (session.world.player.inventory[RES.GOLD_ID] < limit)
 
 ###
 # Simple utility classes
@@ -149,7 +160,9 @@ class _Condition(object):
 	"""Internal data structure representing a condition"""
 	condition_types = {
 	  'settlements_num_greater' : settlements_num_greater,
-	  'settler_level_greater' : settler_level_greater
+	  'settler_level_greater' : settler_level_greater,
+	  'player_gold_greater': player_gold_greater,
+	  'player_gold_less': player_gold_less
 	}
 	def __init__(self, session, cond_dict):
 		self.session = session
