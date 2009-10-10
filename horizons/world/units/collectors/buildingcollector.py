@@ -29,7 +29,7 @@ class BuildingCollector(Collector):
 	"""Collector, that works for a building and gets its needed resources.
 	Essentially extends the Collector by a home building.
 	"""
-	job_ordering = JobList.order_by.fewest_available
+	job_ordering = JobList.order_by.fewest_available_and_distance
 	pather_class = BuildingCollectorPather
 
 	def __init__(self, home_building, **kwargs):
@@ -95,7 +95,7 @@ class BuildingCollector(Collector):
 		if len(collectable_res) == 0:
 			return None
 
-		jobs = JobList(self.job_ordering)
+		jobs = JobList(self, self.job_ordering)
 		for building in self.get_buildings_in_range():
 			if self.check_possible_job_target(building): # check if we can pickup here on principle
 				for res in collectable_res:

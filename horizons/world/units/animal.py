@@ -175,7 +175,7 @@ class WildAnimal(CollectorAnimal, Collector):
 			self.state = self.states.no_job_waiting
 
 	def get_job(self):
-		jobs = JobList(JobList.order_by.random)
+		jobs = JobList(self, JobList.order_by.random)
 		collectable_resources = self.get_needed_resources()
 
 		# iterate over all possible providers and needed resources

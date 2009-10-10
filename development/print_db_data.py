@@ -113,6 +113,12 @@ def print_building_costs():
 			s += str(amount)+' '+get_res_name(res)+', '
 		print s
 
+def print_collector_restrictions():
+	for c, in db("select distinct collector from collector_restrictions"):
+		print get_obj_name(c), 'is restricted to:'
+		for obj, in db("select object from collector_restrictions where collector = ?", c):
+			print '\t%s' % get_obj_name(obj)
+
 functions = {
 		'res' : print_res,
 		'building' : print_building,
@@ -122,6 +128,7 @@ functions = {
 		'collectors' : print_collectors,
 		'bc' : print_building_costs,
 		'building_costs' : print_building_costs,
+    'collector_restrictions': print_collector_restrictions,
 		}
 
 args = sys.argv
@@ -134,4 +141,4 @@ else:
 			i[1]()
 			sys.exit(0)
 	print 'Start with one of those args: %s' % functions.keys()
-	
+

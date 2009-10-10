@@ -279,7 +279,7 @@ class Collector(StorageHolder, Unit):
 		"Possible" means that we can find a path there.
 		@param jobs: unsorted JobList instance
 		@return: selected Job instance from list or None if no jobs are possible."""
-		jobs.sort_jobs(self.get_home_inventory())
+		jobs.sort_jobs()
 		# check if we can move to that targets
 		for job in jobs:
 			if self.check_move(job.object.position):
@@ -412,13 +412,15 @@ class JobList(list):
 	"""Data structure for evaluating best jobs.
 	It's a list extended by special sort functions.
 	"""
-	order_by = Enum('rating', 'amount', 'random', 'fewest_available')
+	order_by = Enum('rating', 'amount', 'random', 'fewest_available', 'fewest_available_and_distance')
 
-	def __init__(self, job_order):
+	def __init__(self, collector, job_order):
 		"""
+		@param collector: collector instance
 		@param job_order: instance of order_by-Enum
 		"""
 		super(JobList, self).__init__()
+		self.collector = collector
 		# choose acctual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
@@ -432,21 +434,29 @@ class JobList(list):
 		# (this is overwritten in __init__)
 		raise NotImplementedError
 
-	def _sort_jobs_rating(self, inventory):
+	def _sort_jobs_rating(self):
 		"""Sorts jobs by job rating (call this in sort_jobs if it fits to your subclass)"""
 		self.sort(key=operator.attrgetter('rating'), reverse=True)
 
-	def _sort_jobs_random(self, inventory):
+	def _sort_jobs_random(self):
 		"""Sorts jobs randomly (call this in sort_jobs if it fits to your subclass)"""
 		random.shuffle(self)
 
-	def _sort_jobs_amount(self, inventory):
+	def _sort_jobs_amount(self):
 		"""Sorts the jobs by the amount of resources available"""
 		self.sort(key=operator.attrgetter('amount'), reverse=True)
 
-	def _sort_jobs_fewest_available(self, inventory):
+	def _sort_jobs_fewest_available(self, shuffle_first=True):
 		"""Prefer jobs where least amount is available in obj's inventory"""
 		# shuffle list before sorting, so that jobs with same value have equal chance
-		random.shuffle(self)
-		self.sort(key=lambda x: inventory[x.res], reverse=False)
+		if shuffle_first:
+			random.shuffle(self)
+		inventory = self.collector.get_home_inventory()
+		self.sort(key=lambda job: inventory[job.res], reverse=False)
+
+	def _sort_jobs_fewest_available_and_distance(self):
+		"""Sort jobs by fewest available, but secondaryly also consider distance"""
+		# python sort is stable, so two sequenced sorts work.
+		self.sort(key=lambda job: self.collector.position.distance(job.object.position))
+		self._sort_jobs_fewest_available(shuffle_first=False)
 
