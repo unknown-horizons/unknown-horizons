@@ -460,3 +460,5 @@ class JobList(list):
 		self.sort(key=lambda job: self.collector.position.distance(job.object.position))
 		self._sort_jobs_fewest_available(shuffle_first=False)
 
+	def __str__(self):
+		return str([ str(i) for i in self ])
