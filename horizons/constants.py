@@ -22,7 +22,6 @@
 import os.path
 
 from ext.enum import Enum
-from run_uh import find_uh_position
 
 """This file keeps track of some constants, that have to be used in the code.
 NOTE: Using constants is generally a bad style, so avoid where possible."""
@@ -32,6 +31,7 @@ class VERSION:
 	def _set_version(version=None):
 		"""Function gets latest revision of the working copy to display in background.
 		@param version: String to display instead of revision."""
+		from run_uh import find_uh_position
 		if version == None:
 			rev = None
 			uh_path = find_uh_position()
