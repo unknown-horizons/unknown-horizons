@@ -39,7 +39,7 @@ class AccountTab(TabInterface):
 		running_costs = self.settlement.cumulative_running_costs
 		buy_expenses = self.settlement.buy_expenses
 		sell_income = self.settlement.sell_income
-		balance = taxes - running_costs - buy_expenses + sell_income
+		balance = self.settlement.balance
 		sign = '+' if balance >= 0 else '-'
 		self.widget.child_finder('taxes').text = unicode(taxes)
 		self.widget.child_finder('running_costs').text = unicode(running_costs)

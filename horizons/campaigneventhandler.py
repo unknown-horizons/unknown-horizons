@@ -24,15 +24,18 @@ import yaml
 from horizons.ext.enum import Enum
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
+from horizons.util import Callback
 
 
 # event conditions to specify at check_events()
 CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
-                  'player_gold_greater', 'player_gold_less')
+                  'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
+                  'building_num_of_type_greater')
 
 # conditions that can only be checked periodically
 _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
-                                CONDITIONS.player_gold_less)
+                                CONDITIONS.player_gold_less, \
+                                CONDITIONS.settlement_balance_greater)
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -67,10 +70,16 @@ class CampaignEventHandler(object):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
 
+	def schedule_check(self, condition):
+		"""Let check_events run in one tick for condition. Useful for lag prevetion."""
+		if self.session.world.inited: # don't check while loading
+			Scheduler().add_new_object(Callback(self.check_events, condition), self)
 
 	def check_events(self, condition):
 		"""Checks whether an event happened.
 		@param condition: condition from enum conditions that changed"""
+		if not self.session.world.inited: # don't check while loading
+			return
 		events_to_remove = []
 		for event in self._event_conditions[condition]:
 			event_executed = event.check()
@@ -142,6 +151,27 @@ def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
 	return (session.world.player.inventory[RES.GOLD_ID] < limit)
 
+def settlement_balance_greater(session, limit):
+	"""Returns whether at least one settlement of player has a balance > limit"""
+	for settlement in _get_player_settlements(session):
+		if settlement.balance > limit:
+			return True
+	return False
+
+def buildings_num_of_type_greater(session, building_class, limit):
+	"""Check if player has more than limit buildings on a settlement"""
+	for settlement in _get_player_settlements(session):
+		num_buildings = 0
+		for b in settlement.buildings:
+			if b.id == building_class:
+				num_buildings += 1
+		if num_buildings > limit:
+			return True
+	return False
+
+def _get_player_settlements(session):
+	"""Helper function, returns settlements of local player"""
+	return [ settlement for settlement in session.world.settlements if settlement.owner == session.world.player ]
 
 ###
 # Simple utility classes
@@ -189,7 +219,9 @@ class _Condition(object):
 	  CONDITIONS.settlements_num_greater : settlements_num_greater,
 	  CONDITIONS.settler_level_greater : settler_level_greater,
 	  CONDITIONS.player_gold_greater: player_gold_greater,
-	  CONDITIONS.player_gold_less: player_gold_less
+	  CONDITIONS.player_gold_less: player_gold_less,
+	  CONDITIONS.settlement_balance_greater: settlement_balance_greater,
+	  CONDITIONS.building_num_of_type_greater: buildings_num_of_type_greater
 	}
 	def __init__(self, session, cond_dict):
 		self.session = session

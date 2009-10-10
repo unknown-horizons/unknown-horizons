@@ -23,10 +23,9 @@ import logging
 
 import horizons.main
 from horizons.entities import Entities
-
 from horizons.command import Command
-from horizons.util import Point
-from horizons.util import WorldObject
+from horizons.util import Point, WorldObject
+from horizons.campaigneventhandler import CONDITIONS
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -93,6 +92,9 @@ class Build(Command):
 
 		# building is now officially built and existent
 		building.start()
+
+
+		self.session.campaign_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
 
 		return building
 

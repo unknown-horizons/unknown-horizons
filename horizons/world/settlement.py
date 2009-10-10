@@ -61,6 +61,13 @@ class Settlement(TradePost, NamedObject):
 		return sum([building.last_tax_payed for building in self.buildings if \
 		            hasattr(building, 'last_tax_payed')])
 
+	@property
+	def balance(self):
+		"""Returns sum(income) - sum(expenses) for settlement"""
+		return self.cumulative_taxes + self.sell_income \
+		       - self.cumulative_running_costs - self.buy_expenses
+
+
 	def setup_storage(self):
 		self.inventory = PositiveSizedSlotStorage(0)
 		self.inventory.add_change_listener(self._changed)
