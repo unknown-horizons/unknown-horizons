@@ -47,20 +47,26 @@ logfilename = None
 
 def find_uh_position():
 	"""Returns path, where uh is located"""
-	first_guess = os.path.split( os.path.realpath( sys.argv[0]) )[0]
-	if os.path.exists('%s/content' % first_guess):
-		return first_guess
+	# first check around cur dir and sys.argv[0]
+	for i in (
+	  os.path.split(sys.argv[0])[0],
+	  '.', '..'
+	  ):
+		i = os.path.realpath(i)
+		if os.path.exists('%s/content' % i):
+			return i
 	else:
-		positions = ['/usr/share/games',
-			     '/usr/share',
-			     '/usr/local/share/games',
-			     '/usr/local/share',
-			     ]
-
+		# also check system wide dirs
+		positions = (
+		  '/usr/share/games',
+		  '/usr/share',
+		  '/usr/local/share/games',
+		  '/usr/local/share'
+		)
 		for i in positions:
 			if os.path.exists('%s/unknown-horizons' % i):
 				return '%s/unknown-horizons' % i
-	raise RuntimeError, 'Cannot find location of unknown horizons.'
+	raise RuntimeError('Cannot find location of unknown horizons.')
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""

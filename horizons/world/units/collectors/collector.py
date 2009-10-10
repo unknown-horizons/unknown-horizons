@@ -285,7 +285,6 @@ class Collector(StorageHolder, Unit):
 			if self.check_move(job.object.position):
 				return job
 
-		## TODO: if we need multiple res, we don't check if we need one more urgently.
 		return None
 
 	def begin_current_job(self, job_location = None):
@@ -447,5 +446,7 @@ class JobList(list):
 
 	def _sort_jobs_fewest_available(self, inventory):
 		"""Prefer jobs where least amount is available in obj's inventory"""
+		# shuffle list before sorting, so that jobs with same value have equal chance
+		random.shuffle(self)
 		self.sort(key=lambda x: inventory[x.res], reverse=True)
 
