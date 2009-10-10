@@ -115,12 +115,10 @@ def print_building_costs():
 
 functions = {
 		'res' : print_res,
-		'b' : print_building,
 		'building' : print_building,
 		'unit' : print_unit,
 		'storage' : print_storage,
 		'lines' : print_production_lines,
-		'coll' : print_collectors,
 		'collectors' : print_collectors,
 		'bc' : print_building_costs,
 		'building_costs' : print_building_costs,
@@ -131,4 +129,9 @@ args = sys.argv
 if len(args) == 1:
 	print 'Start with one of those args: %s' % functions.keys()
 else:
-	functions[ args[1] ]()
+	for i in functions.iteritems():
+		if i[0].startswith(args[1]):
+			i[1]()
+			sys.exit(0)
+	print 'Start with one of those args: %s' % functions.keys()
+	
