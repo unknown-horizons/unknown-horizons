@@ -448,5 +448,5 @@ class JobList(list):
 		"""Prefer jobs where least amount is available in obj's inventory"""
 		# shuffle list before sorting, so that jobs with same value have equal chance
 		random.shuffle(self)
-		self.sort(key=lambda x: inventory[x.res], reverse=True)
+		self.sort(key=lambda x: inventory[x.res], reverse=False)
 
