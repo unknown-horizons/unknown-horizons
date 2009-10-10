@@ -136,10 +136,7 @@ class Rect(object):
 		@param include_self: whether to include coords in self"""
 		# NOTE: this function has to be very fast, since it's blocking on building select
 		#       therefore, the distance_to_tuple function is inlined manually.
-		left = self.left
-		right = self.right
-		top = self.top
-		bottom = self.bottom
+		left, right, top, bottom = self.left, self.right, self.top, self.bottom
 		if not include_self:
 			self_coords = self.get_coordinates()
 			return  [ (x, y) \
