@@ -13,7 +13,12 @@ o2="$2"
 
 shift
 shift
-args="$@"
+
+if [ $# -eq 0 ]; then  # no third arg, default to diff
+	args="diff [1] [2]"
+else
+	args="$@"
+fi
 
 if file -b "$f1" "$f2" | grep -i 'sqlite 3' >/dev/null; then
 	f1="`tempfile`"
