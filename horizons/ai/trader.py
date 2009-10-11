@@ -231,7 +231,7 @@ class Trader(Player):
 
 		del self.office[ship.id]
 		# wait 2 seconds before going on to the next island
-		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, 32)
+		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, Scheduler().get_ticks(4))
 		self.ships[ship] = self.shipStates.reached_branch
 
 	def ship_idle(self, ship):
