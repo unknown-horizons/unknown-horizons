@@ -50,8 +50,8 @@ class Trader(Player):
 	log = logging.getLogger("ai.trader")
 
 	# amount range to buy/sell from settlement per resource
-	buy_amount = (0, 4)
-	sell_amount = (1, 4)
+	buy_amount = (2, 6)
+	sell_amount = (2, 6)
 
 	_res_values = {} # stores money value of resources. Use only get_res_value() for access
 
