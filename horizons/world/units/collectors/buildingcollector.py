@@ -105,10 +105,12 @@ class BuildingCollector(Collector):
 
 		return self.get_best_possible_job(jobs)
 
-	def finish_working(self):
+	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
-		Picks up the resources and sends collector home."""
-		self.move_home(callback=self.reached_home)
+		Picks up the resources and sends collector home.
+		@param collector_already_home: whether collector has moved home before."""
+		if not collector_already_home:
+			self.move_home(callback=self.reached_home)
 		super(BuildingCollector, self).finish_working()
 
 	def reroute(self):

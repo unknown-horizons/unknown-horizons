@@ -30,6 +30,7 @@ from horizons.world.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import WILD_ANIMAL
+from horizons.world.units.movingobject import MoveNotPossible
 
 class Animal(Producer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -49,6 +50,11 @@ class CollectorAnimal(Animal):
 	def load(self, db, worldid):
 		self.__init()
 		super(CollectorAnimal, self).load(db, worldid)
+
+	def apply_state(self, state, remaining_ticks=None):
+		super(CollectorAnimal, self).apply_state(state, remaining_ticks)
+		if self.state == self.states.no_job_walking_randomly:
+			self.add_move_callback(self.search_job)
 
 	def stop_after_job(self, collector):
 		"""Tells the unit to stop after the current job and call the collector to pick it up"""
@@ -150,8 +156,6 @@ class WildAnimal(CollectorAnimal, Collector):
 		super(WildAnimal, self).apply_state(state, remaining_ticks)
 		if self.state == self.states.no_job_waiting:
 			Scheduler().add_new_object(self.handle_no_possible_job, self, remaining_ticks)
-		elif self.state == self.states.no_job_walking_randomly:
-			self.add_move_callback(self.search_job)
 
 	def handle_no_possible_job(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
@@ -267,24 +271,38 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		# we are only allowed to pick up at our pasture
 		return [self.home_building]
 
-	def begin_current_job(self):
-		# we can only move on 1 building; simulate this by choosing a random location with
-		# the building
-		coords = self.job.object.position.get_coordinates()
-		# usually, the animal stands "in" the building. but when the animalcollector gets it,
-		# it's outside of it. therefore it happens, that the position isn't in the buildings coords.
+	def _get_random_positions_on_object(self, obj):
+		"""Returns a shuffled list of tuples, that are in obj, but not in self.position"""
+		coords = obj.position.get_coordinates()
 		my_position = self.position.to_tuple()
 		if my_position in coords:
 			coords.remove(my_position)
+		random.shuffle(coords)
+		return coords
+
+	def begin_current_job(self):
+		# we can only move on 1 building; simulate this by choosing a random location with
+		# the building
+		coords = self._get_random_positions_on_object(self.job.object)
 
 		# move to first walkable target coord we find
-		while 1:
+		for coord in coords:
 			# job target is walkable, so at least one coord of it has to be
 			# so we can safely assume, that we will find a walkable coord
-			assert len(coords) > 0
-			target_location = coords[ random.randint(0, len(coords)-1) ]
-			coords.remove(target_location)
-			target_location = Point(*target_location)
+			target_location = Point(*coord)
 			if self.check_move(target_location):
 				super(FarmAnimal, self).begin_current_job(job_location=target_location)
 				return
+		assert False
+
+	def handle_no_possible_job(self):
+		"""Walk around on field, search again, when we arrive"""
+		for coord in self._get_random_positions_on_object(self.home_building):
+			try:
+				self.move(Point(*coord), callback=self.search_job)
+				self.state = self.states.no_job_walking_randomly
+				return
+			except MoveNotPossible:
+				pass
+		# couldn't find location, so don't move
+		super(FarmAnimal, self).handle_no_possible_job()

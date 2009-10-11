@@ -84,13 +84,14 @@ class AnimalCollector(BuildingCollector):
 		self.state = self.states.moving_to_target
 
 	def finish_working(self):
-		"""Transfer res and such. Called when collector arrives at the animal"""
+		"""Called when collector arrives at the animal. Move home with the animal"""
 		self.get_animal()
-		super(AnimalCollector, self).finish_working()
+		self.move_home(callback=self.reached_home)
 
 	def reached_home(self):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
 		# sheep and herder are inside the building now, pretending to work.
+		super(AnimalCollector, self).finish_working(collector_already_home=True)
 		self.release_animal()
 		super(AnimalCollector, self).reached_home()
 
@@ -108,11 +109,13 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
+		self.log.debug("%s getting animal %s",self, self.job.object)
 		self.job.object.move(self.home_building.position, destination_in_building = True, \
 		                     action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
+		self.log.debug("%s releasing animal %s",self, self.job.object)
 		Scheduler().add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
