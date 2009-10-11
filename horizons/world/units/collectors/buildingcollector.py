@@ -152,11 +152,12 @@ class BuildingCollector(Collector):
 		self.move_back(callback=callback, destination_in_building=True, action=action)
 		self.state = self.states.moving_home
 
-	def cancel(self):
+	def cancel(self, continue_action = None):
 		"""Cancels current job and moves back home"""
 		self.log.debug("%s cancel", self)
-		super(BuildingCollector, self).cancel(continue_action=\
-										Callback(self.move_home, callback=self.search_job, action='move'))
+		if continue_action is None:
+			continue_action = Callback(self.move_home, callback=self.search_job, action='move')
+		super(BuildingCollector, self).cancel(continue_action=continue_action)
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.

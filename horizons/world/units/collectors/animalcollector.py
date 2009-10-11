@@ -53,11 +53,11 @@ class AnimalCollector(BuildingCollector):
 				# register at target
 				self.job.object.stop_after_job(self)
 
-	def cancel(self):
+	def cancel(self, continue_action = None):
 		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
 				self.job.object.remove_stop_after_job()
-		super(AnimalCollector, self).cancel()
+		super(AnimalCollector, self).cancel(continue_action=continue_action)
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(AnimalCollector, self).apply_state(state, remaining_ticks)
@@ -79,20 +79,26 @@ class AnimalCollector(BuildingCollector):
 			# the animal is now unreachable.
 			self.job.object.search_job()
 			self.state = self.states.idle
-			self.cancel()
+			self.cancel(continue_action=self.search_job)
 			return
 		self.state = self.states.moving_to_target
 
-	def finish_working(self):
+	def finish_working(self, kill_animal=False):
 		"""Called when collector arrives at the animal. Move home with the animal"""
-		self.get_animal()
-		self.move_home(callback=self.reached_home)
+		if kill_animal:
+			# get res now, and kill animal right after
+			super(AnimalCollector, self).finish_working()
+			self.job.object.die()
+		else:
+			self.get_animal()
+			self.move_home(callback=self.reached_home)
 
-	def reached_home(self):
+	def reached_home(self, killed_animal=False):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
-		# sheep and herder are inside the building now, pretending to work.
-		super(AnimalCollector, self).finish_working(collector_already_home=True)
-		self.release_animal()
+		if not killed_animal:
+			# sheep and herder are inside the building now, pretending to work.
+			super(AnimalCollector, self).finish_working(collector_already_home=True)
+			self.release_animal()
 		super(AnimalCollector, self).reached_home()
 
 	def get_buildings_in_range(self):
@@ -121,13 +127,13 @@ class AnimalCollector(BuildingCollector):
 
 class FarmAnimalCollector(AnimalCollector):
 	def get_animals_in_range(self):
-		buildings = self.home_building.island.get_providers_in_range(Circle(self.home_building.position.center(), self.home_building.radius))
+		"""Returns animals from buildings in range"""
+		buildings = self.home_building.island.get_providers_in_range( \
+		  Circle(self.home_building.position.center(), self.home_building.radius))
 		animals = []
 		for building in buildings:
-			try:
+			if hasattr(building, 'animals'):
 				animals.extend(building.animals)
-			except AttributeError:
-				pass # this building has no animals
 		return animals
 
 
@@ -136,13 +142,13 @@ class HunterCollector(AnimalCollector):
 		return self.home_building.island.wild_animals
 
 	def finish_working(self):
-		super(HunterCollector, self).finish_working()
-		# kill animal when we got our res
-		self.job.object.die()
+		super(HunterCollector, self).finish_working(kill_animal=True)
+
+	def reached_home(self):
+		super(HunterCollector, self).reached_home(killed_animal=True)
 
 	def release_animal(self):
-		# we don't release it, we already killed it.
-		pass
+		pass # we don't release it, we already killed it.
 
 	def get_animal(self):
-		pass
+		self.job.object.die()

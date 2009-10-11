@@ -105,7 +105,7 @@ class WildAnimal(CollectorAnimal, Collector):
 	pather_class = SoldierPather
 
 	def __init__(self, owner, start_hidden=False, can_reproduce = True, **kwargs):
-		super(WildAnimal, self).__init__(start_hidden=start_hidden, **kwargs)
+		super(WildAnimal, self).__init__(start_hidden=start_hidden, owner=owner, **kwargs)
 		self.__init(owner, can_reproduce)
 		self.log.debug("Wild animal %s created at "+str(self.position)+\
 									 "; can_reproduce: %s; population now: %s", \
@@ -233,7 +233,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		"""Returns, whether the next child will be able to reproduce himself.
 		Some animal can't reproduce, which makes population growth easier to control.
 		@return: bool"""
-		return bool(random.randint(0, 1))
+		return (random.randint(0, 2) > 0) # 2/3 chance for True
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
