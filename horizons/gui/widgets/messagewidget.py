@@ -64,12 +64,22 @@ class MessageWidget(LivingObject):
 		@param id: message id string, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
-		self.active_messages.insert(0, Message(x, y, id, self.current_tick, message_dict=message_dict))
 		# play a message sound, if one is specified in the database
 		sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
 		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.id_string=? ORDER BY random() LIMIT 1",id)
-		if len(sound) > 0 and sound[0][0] is not None:
-			horizons.main.fife.play_sound('speech', sound[0][0])
+		sound = sound[0][0] if len(sound) > 0 else None
+		self._add_message(Message(x, y, id, self.current_tick, message_dict=message_dict), sound)
+
+	def add_custom(self, x, y, messagetext, visible_for=30, sound=None, icon_id=1):
+		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id), sound)
+
+	def _add_message(self, message, sound = None):
+		"""Internal function for adding messages. Do not call directly.
+		@param message: Message instance
+		@param sound: path tosoundfile"""
+		self.active_messages.insert(0, message)
+		if sound:
+			horizons.main.fife.play_sound('speech', sound)
 		self.draw_widget()
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
@@ -171,13 +181,14 @@ class Message(object):
 	@param created: tickid when the message was created.
 	@param message_dict: template dict with the neccassary values for the message. ( e.g.: {'player': 'Arthus'}
 	"""
-	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None):
+	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None, icon_id=None):
 		self.x, self.y = x, y
 		self.id = id
 		self.read = read
 		self.created = created
 		self.display = display if display is not None else int(horizons.main.db('SELECT visible_for from data.message WHERE id_string=?', id).rows[0][0])
-		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id= (SELECT icon FROM data.message where id_string = ?)', 1, id)[0]
+		icon = icon_id if icon_id else horizons.main.db('SELECT icon FROM data.message where id_string = ?', id)[0][0]
+		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id = ?', 1, icon)[0]
 		if message is not None:
 			assert isinstance(message, str)
 			self.message = message

@@ -195,9 +195,12 @@ class Enum(object):
 				is_member = False
 		return is_member
 
-	def get_item_for_string(self, s):
+	def get_item_for_string(self, key):
 		"""Get an enum value for a string
-		@throws ValueError on key not found"""
-		index =  self._keys.index(s)
+		@throws KeyError on key not found"""
+		try:
+			index =  self._keys.index(key)
+		except ValueError:
+			raise KeyError # keyerror is more natural here, since the value is a key
 		return self[index]
 

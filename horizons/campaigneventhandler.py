@@ -30,12 +30,19 @@ from horizons.util import Callback
 # event conditions to specify at check_events()
 CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
-                  'building_num_of_type_greater')
+                  'building_num_of_type_greater', 'settlement_inhabitants_greater',
+                  'player_balance_greater', 'player_inhabitants_greater',
+                  'player_res_stored_greater', 'settlement_res_stored_greater')
 
 # conditions that can only be checked periodically
 _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.player_gold_less, \
-                                CONDITIONS.settlement_balance_greater)
+                                CONDITIONS.settlement_balance_greater, \
+                                CONDITIONS.settlement_inhabitants_greater, \
+                                CONDITIONS.player_balance_greater, \
+                                CONDITIONS.player_inhabitants_greater, \
+                                CONDITIONS.player_res_stored_greater,
+                                CONDITIONS.settlement_res_stored_greater)
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -100,8 +107,8 @@ class CampaignEventHandler(object):
 	def _parse_yaml_file(filename):
 		try:
 			return yaml.load( open(filename, 'r') )
-		except: # catch anything yaml might throw
-			raise InvalidScenarioFileFormat()
+		except Exception, e: # catch anything yaml might throw
+			raise InvalidScenarioFileFormat(str(e))
 
 	def _scheduled_check(self):
 		"""Check conditions that can only be checked periodically"""
@@ -118,8 +125,12 @@ class CampaignEventHandler(object):
 ###
 # Campaign Actions
 
-def show_message(session, message_id):
-	"""Shows a message on the ingame message widget"""
+def show_message(session, message_text):
+	"""Shows a custom message in the messagewidget"""
+	session.ingame_gui.message_widget.add_custom(None, None, message_text)
+
+def show_db_message(session, message_id):
+	"""Shows a message specified in the db on the ingame message widget"""
 	session.ingame_gui.message_widget.add(None, None, message_id)
 
 def do_win(session):
@@ -136,8 +147,7 @@ def do_lose(session):
 
 def settlements_num_greater(session, limit):
 	"""Returns whether the number of settlements owned by the human player is greater than limit."""
-	player_settlements = [ s for s in session.world.settlements if s.owner == session.world.player ]
-	return len(player_settlements) > limit
+	return len(_get_player_settlements(session)) > limit
 
 def settler_level_greater(session, limit):
 	"""Returns wheter the max level of settlers is greater than limit"""
@@ -153,24 +163,41 @@ def player_gold_less(session, limit):
 
 def settlement_balance_greater(session, limit):
 	"""Returns whether at least one settlement of player has a balance > limit"""
-	for settlement in _get_player_settlements(session):
-		if settlement.balance > limit:
-			return True
-	return False
+	return any(settlement for settlement in _get_player_settlements(session) if \
+	           settlement.balance > limit)
 
-def buildings_num_of_type_greater(session, building_class, limit):
+def player_balance_greater(session, limit):
+	"""Returns whether the cumulative balance of all player settlements is > limit"""
+	return (sum(settlement.balance for settlement in _get_player_settlements(session)) > limit)
+
+def settlement_inhabitants_greater(session, limit):
+	"""Returns whether at least one settlement of player has more than limit inhabitants"""
+	return any(settlement for settlement in _get_player_settlements(session) if \
+	           settlement.inhabitants > limit)
+
+def player_inhabitants_greater(session, limit):
+	"""Returns whether all settlements of player combined have more than limit inhabitants"""
+	return (sum(settlement.inhabitants for settlement in _get_player_settlements(session)) > limit)
+
+def building_num_of_type_greater(session, building_class, limit):
 	"""Check if player has more than limit buildings on a settlement"""
 	for settlement in _get_player_settlements(session):
-		num_buildings = 0
-		for b in settlement.buildings:
-			if b.id == building_class:
-				num_buildings += 1
-		if num_buildings > limit:
+		if len([building for building in settlement.buildings if \
+		       building.id == building_class]) > limit:
 			return True
 	return False
 
+def player_res_stored_greater(session, res, limit):
+	"""Returns whether all settlements of player combined have more than limit of res"""
+	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) > limit)
+
+def settlement_res_stored_greater(session, res, limit):
+	"""Returs whether at least one settlement of player has more than limit of res"""
+	return any(settlement for settlemnent in _get_player_settlements() if \
+	           settlement.inventory[res] > limit)
+
 def _get_player_settlements(session):
-	"""Helper function, returns settlements of local player"""
+	"""Helper generator, returns settlements of local player"""
 	return [ settlement for settlement in session.world.settlements if settlement.owner == session.world.player ]
 
 ###
@@ -200,12 +227,16 @@ class _Action(object):
 	"""Internal data structure representing an ingame campaign action"""
 	action_types = {
 	  'message': show_message,
+	  'db_message': show_db_message,
 	  'win' : do_win,
 	  'lose' : do_lose
 	  }
 
 	def __init__(self, action_dict):
-		self.callback = self.action_types[ action_dict['type'] ]
+		try:
+			self.callback = self.action_types[ action_dict['type'] ]
+		except KeyError:
+			raise InvalidScenarioFileFormat('Found invalid action type: %s' % action_dict['type'])
 		self.arguments = action_dict['arguments'] if 'arguments' in action_dict else []
 
 	def __call__(self, session):
@@ -215,18 +246,20 @@ class _Action(object):
 
 class _Condition(object):
 	"""Internal data structure representing a condition"""
-	condition_types = {
-	  CONDITIONS.settlements_num_greater : settlements_num_greater,
-	  CONDITIONS.settler_level_greater : settler_level_greater,
-	  CONDITIONS.player_gold_greater: player_gold_greater,
-	  CONDITIONS.player_gold_less: player_gold_less,
-	  CONDITIONS.settlement_balance_greater: settlement_balance_greater,
-	  CONDITIONS.building_num_of_type_greater: buildings_num_of_type_greater
-	}
+	# map condition types to functions here if renaming is necessary
+	condition_types = { }
 	def __init__(self, session, cond_dict):
 		self.session = session
-		self.cond_type = CONDITIONS.get_item_for_string(cond_dict['type'])
-		self.callback = self.condition_types[ self.cond_type  ]
+		try:
+			self.cond_type = CONDITIONS.get_item_for_string(cond_dict['type'])
+		except KeyError:
+			raise InvalidScenarioFileFormat('Found invalid condition type: %s' % cond_dict['type'])
+		# first check the global namespace for a function called same as the condition.
+		# if a function has to be named differently, map the CONDITION type in self.condition_types
+		if cond_dict['type'] in globals():
+			self.callback = globals()[cond_dict['type']]
+		else:
+			self.callback = self.condition_types[ self.cond_type  ]
 		self.arguments = cond_dict['arguments'] if 'arguments' in cond_dict else []
 
 	def __call__(self):
