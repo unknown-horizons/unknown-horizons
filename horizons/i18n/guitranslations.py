@@ -40,15 +40,12 @@ text_translations = dict()
 def set_translations():
 	global text_translations
 	text_translations = {
-		"change_name.xml" : {
-			"headline"                    : _("Change name"),
-			"enter_new_name_lbl"          : _("Enter new name:")},
-		"ingame_pause.xml" : {
-			"headline"                    : _("Game paused"),
-			"hit_p_to_continue_lbl"       : _("Hit P to continue the game or click below!")},
-		"select_savegame.xml" : {
-			"details_label"               : _("Details:"),
-			"enter_filename_label"        : _("Enter filename:")},
+		"serverlobby.xml" : {
+			"player_label"                : _("Player:"),
+			"color_label"                 : _("Color:"),
+			"slots_label"                 : _("Slots:"),
+			"bots_label"                  : _("Bots:"),
+			"chatbutton"                  : _("chat")},
 		"credits.xml" : {
 			"headline"                    : _("Contributors"),
 			"headline_projectcoord"       : _("PROJECT COORDINATION"),
@@ -59,8 +56,79 @@ def set_translations():
 			"headline_translation"        : _("TRANSLATION"),
 			"headline_thanks"             : _("SPECIAL THANKS to:"),
 			"fife_team_lbl"               : _("The FIFE team (www.fifengine.de)")},
+		"change_name.xml" : {
+			"headline"                    : _("Change name"),
+			"enter_new_name_lbl"          : _("Enter new name:")},
+		"quitsession.xml" : {
+			"headline"                    : _("Quit Session"),
+			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?")},
+		"settings.xml" : {
+			"headline"                    : _("Settings"),
+			"warning"                     : _("Please make sure that you know, what you do."),
+			"headline_graphics"           : _("GRAPHICS"),
+			"screen_resolution_label"     : _("Screen resolution:"),
+			"color_depth_label"           : _("Color depth:"),
+			"use_renderer_label"          : _("Used renderer:"),
+			"screen_fullscreen_text"      : _("Full screen"),
+			"headline_sound"              : _("SOUND"),
+			"music_volume_label"          : _("Music volume:"),
+			"effect_volume_label"         : _("Effects volume:"),
+			"sound_enable_opt_text"       : _("Enable sound"),
+			"headline_saving"             : _("SAVING"),
+			"autosave_interval_label"     : _("Autosave interval:"),
+			"minutes_label"               : _("minutes"),
+			"number_of_autosaves_label"   : _("Number of autosaves:"),
+			"number_of_quicksaves_label"  : _("Number of quicksaves:"),
+			"headline_language"           : _("LANGUAGE"),
+			"language_label"              : _("Language:")},
+		"ingame_pdb_start.xml" : {
+			"headline"                    : _("Terminal debugmode"),
+			"started_pdb_lbl"             : _("You start the terminal python debugger pdb!")},
+		"requirerestart.xml" : {
+			"headline"                    : _("Restart Required"),
+			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons.")},
+		"loadingscreen.xml" : {
+			"loading_label"               : _("Loading ..."),
+			"version_label"               : VERSION.string()},
+		"select_savegame.xml" : {
+			"headline"                    : _("Your saved games:"),
+			"enter_filename_label"        : _("Enter filename:"),
+			"details_label"               : _("Details:")},
+		"mainmenu.xml" : {
+			"start"                       : _("Singleplayer"),
+			"start_multi"                 : _("Multiplayer"),
+			"credits"                     : _(" Credits "),
+			"quit"                        : _(" Quit "),
+			"settings"                    : _(" Settings "),
+			"help"                        : _(" Help "),
+			"loadgame"                    : _(" Continue Game "),
+			"chimebell"                   : _(" Chime The Bell ")},
+		"singleplayermenu.xml" : {
+			"headline"                    : _("NEW GAME - SINGLEPLAYER"),
+			"main_menu_label"             : _("Main menu:"),
+			"player_label"                : _("Player name:"),
+			"color_label"                 : _("Color:"),
+			"choose_map_lbl"              : _("Choose a map to play:"),
+			"start_game_label"            : _("Start game:")},
+		"chime.xml" : {
+			"headline"                    : _("Chime The Bell"),
+			"made_it_label"               : _("Yeah, you made it..."),
+			"deadlink_label"              : _("But this is a deadlink, sorry.")},
+		"menu_panel.xml" : {
+			"destroy_tool"                : _("Destroy"),
+			"diplomacy"                   : _("Diplomacy\n(not yet \nimplemented)"),
+			"build"                       : _("Build menu"),
+			"helpLink"                    : _("Help"),
+			"gameMenuButton"              : _("Game menu")},
+		"quitgame.xml" : {
+			"headline"                    : _("Quit Game"),
+			"quit_game_caption"           : _("Are you sure you want to quit Unknown Horizons?")},
+		"boatbuilder.xml" : {
+			"boat_builder_window"         : _("boatbuilder")},
+		"ingame_pause.xml" : {
+			"headline"                    : _("Game paused"),
+			"hit_p_to_continue_lbl"       : _("Hit P to continue the game or click below!")},
 		"gamemenu.xml" : {
-			"version_label"               : VERSION.string(),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),
@@ -92,76 +160,80 @@ def set_translations():
 			"set25"                       : _("{SHIFT} = Hold to place multible buildings"),
 			"have_fun_lbl"                : _("Have fun."),
 			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams")},
-		"menu_panel.xml" : {
-			"destroy_tool"                : _("Destroy"),
-			"diplomacy"                   : _("Diplomacy\n(not yet \nimplemented)"),
-			"build"                       : _("Build menu"),
-			"helpLink"                    : _("Help"),
-			"gameMenuButton"              : _("Game menu")},
-		"ingame_pdb_start.xml" : {
-			"headline"                    : _("Terminal debugmode"),
-			"started_pdb_lbl"             : _("You start the terminal python debugger pdb!")},
-		"popup.xml" : {
-			"headline"                    : _("Not Implemented Yet")},
-		"loadingscreen.xml" : {
-			"loading_label"               : _("Loading ..."),
-			"version_label"               : VERSION.string()},
-		"quitsession.xml" : {
-			"headline"                    : _("Quit Session"),
-			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?")},
-		"mainmenu.xml" : {
-			"version_label"               : VERSION.string(),
-			"start"                       : _("Singleplayer"),
-			"start_multi"                 : _("Multiplayer"),
-			"credits"                     : _(" Credits "),
-			"quit"                        : _(" Quit "),
-			"settings"                    : _(" Settings "),
-			"help"                        : _(" Help "),
-			"loadgame"                    : _(" Continue Game "),
-			"chimebell"                   : _(" Chime The Bell ")},
-		"requirerestart.xml" : {
-			"headline"                    : _("Restart Required"),
-			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons.")},
-		"quitgame.xml" : {
-			"headline"                    : _("Quit Game"),
-			"quit_game_caption"           : _("Are you sure you want to quit Unknown Horizons?")},
-		"serverlobby.xml" : {
-			"player_label"                : _("Player:"),
-			"color_label"                 : _("Color:"),
-			"slots_label"                 : _("Slots:"),
-			"bots_label"                  : _("Bots:"),
-			"chatbutton"                  : _("chat")},
-		"settings.xml" : {
-			"headline"                    : _("Settings"),
-			"warning"                     : _("Please make sure that you know, what you do."),
-			"headline_graphics"           : _("GRAPHICS"),
-			"screen_resolution_label"     : _("Screen resolution:"),
-			"color_depth_label"           : _("Color depth:"),
-			"use_renderer_label"          : _("Used renderer:"),
-			"screen_fullscreen_text"      : _("Full screen"),
-			"headline_sound"              : _("SOUND"),
-			"music_volume_label"          : _("Music volume:"),
-			"effect_volume_label"         : _("Effects volume:"),
-			"sound_enable_opt_text"       : _("Enable sound"),
-			"headline_saving"             : _("SAVING"),
-			"autosave_interval_label"     : _("Autosave interval:"),
-			"minutes_label"               : _("minutes"),
-			"number_of_autosaves_label"   : _("Number of autosaves:"),
-			"number_of_quicksaves_label"  : _("Number of quicksaves:"),
-			"headline_language"           : _("LANGUAGE"),
-			"language_label"              : _("Language:")},
-		"singleplayermenu.xml" : {
-			"headline"                    : _("NEW GAME - SINGLEPLAYER"),
-			"main_menu_label"             : _("Main menu:"),
-			"player_label"                : _("Player:"),
-			"color_label"                 : _("Color:"),
-			"start_game_label"            : _("Start game:")},
-		"chime.xml" : {
-			"headline"                    : _("Chime The Bell"),
-			"made_it_label"               : _("Yeah, you made it..."),
-			"deadlink_label"              : _("But this is a deadlink, sorry.")},
-		"boatbuilder.xml" : {
-			"boat_builder_window"         : _("boatbuilder")},
+		"buildings_gui/work_building_tab1.xml" : {
+			"StockLabel"                  : _("stock")},
+		"buildings_gui/work_building_tab4.xml" : {
+			"ProductionLabel"             : _("production")},
+		"buildings_gui/work_building_tab0.xml" : {
+			"headline"                    : _("Building overview"),
+			"name_label"                  : _("Name:"),
+			"health_label"                : _("Health:"),
+			"running_cost_label"          : _("Running Costs:"),
+			"buy_sell_label"              : _("Buy/Sell Resources:")},
+		"buildings_gui/production_building_overview.xml" : {
+			"headline"                    : _("Building overview")},
+		"buildings_gui/work_building_tab5.xml" : {
+			"ResearchLabel"               : _("research")},
+		"buildings_gui/work_building_tab3.xml" : {
+			"RouteLabel"                  : _("route")},
+		"buildings_gui/work_building_tab2.xml" : {
+			"CombatLabel"                 : _("combat")},
+		"tab_widget/tab_stock.xml" : {
+			"headline"                    : _("Inventory")},
+		"tab_widget/tab_overview_marketplace.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:"),
+			"tax_label"                   : _("Taxes:")},
+		"tab_widget/tab_branch_overview.xml" : {
+			"headline"                    : _("Building overview"),
+			"name_label"                  : _("Name:"),
+			"running_cost_label"          : _("Running Costs:")},
+		"tab_widget/tab_production_line.xml" : {
+			"toggle_active_active"        : _("Pause production"),
+			"toggle_active_inactive"      : _("Start production")},
+		"tab_widget/tab_overview_ship.xml" : {
+			"health_label"                : _("Health:")},
+		"tab_widget/tab_account.xml" : {
+			"headline"                    : _("Account"),
+			"income_label"                : _("Income:"),
+			"taxes_label"                 : _("Taxes"),
+			"sell_income_label"           : _("Sale"),
+			"expenses_label"              : _("Expenses:"),
+			"running_costs_label"         : _("Running Costs:"),
+			"buy_expenses_label"          : _("Buying"),
+			"balance_label"               : _("Balance:")},
+		"tab_widget/tab_overview_settler.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:"),
+			"happiness_label"             : _("Happiness:"),
+			"inhabitants_label"           : _("Inhabitants:"),
+			"level_label"                 : _("Level:"),
+			"taxes_label"                 : _("Taxes:"),
+			"needed_res_label"            : _("Needed Resources:")},
+		"tab_widget/boatbuilder.xml" : {
+			"current_construction_label"  : _("Current construction progress:"),
+			"build_new_ship_lbl"          : _("Build new ship:")},
+		"tab_widget/tab_boatbuilder_create.xml" : {
+			"overview_label"              : _("Select a boat to build:"),
+			"new_settlement_label"        : _("Build selected:")},
+		"tab_widget/tab_stock_ship.xml" : {
+			"headline"                    : _("Inventory"),
+			"load_unload_label"           : _("Load/Unload:")},
+		"tab_widget/tab_overview.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:")},
+		"ship/trade.xml" : {
+			"headline"                    : _("Trade"),
+			"ship_label"                  : _("Ship:"),
+			"exchange_label"              : _("Exchange:"),
+			"trade_with_label"            : _("Trade partner:")},
+		"buysellmenu/buysellmenu.xml" : {
+			"headline"                    : _("Buy or sell resources"),
+			"legend_label"                : _("Legend:"),
+			"buy_label"                   : _("Buy resources"),
+			"sell_label"                  : _("Sell resources")},
+		"buysellmenu/resources.xml" : {
+			"headline"                    : _("Select resources:")},
 		"build_menu/hud_build_tab0.xml" : {
 			"headline"                    : _("Sailor Buildings"),
 			"residental_label"            : _("Residents and Infrastructural"),
@@ -184,6 +256,9 @@ def set_translations():
 			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm"),
 			"potatofield-1"               : _("Potato Field:\nDelivers food \nNeeds a farm"),
 			"tower-1"                     : _("Lookout: \nIncreases the \nplayer's sight")},
+		"build_menu/hud_builddetail.xml" : {
+			"headline"                    : _("Build"),
+			"running_cost_label"          : _("Running Costs:")},
 		"build_menu/hud_build_tab1.xml" : {
 			"headline"                    : _("Pioneer Buildings"),
 			"housing_label"               : _("Housing"),
@@ -194,80 +269,4 @@ def set_translations():
 			"sugarfield-1"                : _("Sugar Field: \nProduces sugar\nfor rum."),
 			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth"),
 			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships, \nbuilt on coast")},
-		"build_menu/hud_builddetail.xml" : {
-			"headline"                    : _("Build"),
-			"running_cost_label"          : _("Running Costs:")},
-		"buildings_gui/work_building_tab0.xml" : {
-			"headline"                    : _("Building overview"),
-			"name_label"                  : _("Name:"),
-			"health_label"                : _("Health:"),
-			"running_cost_label"          : _("Running Costs:"),
-			"buy_sell_label"              : _("Buy/Sell Resources:")},
-		"buildings_gui/work_building_tab1.xml" : {
-			"StockLabel"                  : _("stock")},
-		"buildings_gui/work_building_tab2.xml" : {
-			"CombatLabel"                 : _("combat")},
-		"buildings_gui/work_building_tab3.xml" : {
-			"RouteLabel"                  : _("route")},
-		"buildings_gui/work_building_tab4.xml" : {
-			"ProductionLabel"             : _("production")},
-		"buildings_gui/work_building_tab5.xml" : {
-			"ResearchLabel"               : _("research")},
-		"buildings_gui/production_building_overview.xml" : {
-			"headline"                    : _("Building overview")},
-		"tab_widget/tab_stock.xml" : {
-			"headline"                    : _("Inventory")},
-		"tab_widget/tab_stock_ship.xml" : {
-			"headline"                    : _("Inventory"),
-			"load_unload_label"           : _("Load/Unload:")},
-		"tab_widget/tab_overview.xml" : {
-			"headline"                    : _("Overview"),
-			"name_label"                  : _("Name:"),
-			"health_label"                : _("Health:")},
-		"tab_widget/tab_overview_settler.xml" : {
-			"headline"                    : _("Overview"),
-			"name_label"                  : _("Name:"),
-			"health_label"                : _("Health:"),
-			"happiness_label"             : _("Happiness:"),
-			"inhabitants_label"           : _("Inhabitants:"),
-			"level_label"                 : _("Level:"),
-			"taxes_label"                 : _("Taxes:"),
-			"needed_res_label"            : _("Needed Resources:")},
-		"tab_widget/tab_overview_ship.xml" : {
-			"health_label"                : _("Health:")},
-		"tab_widget/tab_boatbuilder_create.xml" : {
-			"overview_label"              : _("Select a boat to build:"),
-			"new_settlement_label"        : _("Build selected:")},
-		"tab_widget/boatbuilder.xml" : {
-			"current_construction_label"  : _("Current construction progress:"),
-			"build_new_ship_lbl"          : _("Build new ship:")},
-		"tab_widget/tab_branch_overview.xml" : {
-			"headline"                    : _("Building overview"),
-			"name_label"                  : _("Name:"),
-			"health_label"                : _("Health:"),
-			"running_cost_label"          : _("Running Costs:")},
-		"tab_widget/tab_overview_marketplace.xml" : {
-			"headline"                    : _("Overview"),
-			"name_label"                  : _("Name:"),
-			"health_label"                : _("Health:"),
-			"tax_label"                   : _("Taxes:")},
-		"tab_widget/tab_account.xml" : {
-			"headline"                    : _("Account"),
-			"income_label"                : _("Income:"),
-			"taxes_label"                 : _("Taxes"),
-			"expenses_label"              : _("Expenses:"),
-			"running_costs_label"         : _("Running Costs:"),
-			"balance_label"               : _("Balance:")},
-		"buysellmenu/buysellmenu.xml" : {
-			"headline"                    : _("Buy or sell resources"),
-			"legend_label"                : _("Legend:"),
-			"buy_label"                   : _("Buy resources"),
-			"sell_label"                  : _("Sell resources")},
-		"buysellmenu/resources.xml" : {
-			"headline"                    : _("Select resources:")},
-		"ship/trade.xml" : {
-			"headline"                    : _("Trade"),
-			"ship_label"                  : _("Ship:"),
-			"exchange_label"              : _("Exchange:"),
-			"trade_with_label"            : _("Trade partner:")},
 	}
