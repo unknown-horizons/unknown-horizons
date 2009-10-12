@@ -190,7 +190,11 @@ STYLES= {
 		},
 		'Label' : {
 			'font' : 'libertine_18'
+		},
+    'TooltipLabel': {
+			'font' : 'libertine_18'
 		}
+
 	},
 
     'headline': { # style for headlines

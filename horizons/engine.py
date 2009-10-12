@@ -194,9 +194,6 @@ class Fife(object):
 		#init pychan
 		self.pychan.init(self.engine, debugPychan)
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
-		for name, stylepart in horizons.gui.style.STYLES.iteritems():
-			self.pychan.manager.addStyle(name, stylepart)
-		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 
 		from gui.widgets.inventory import Inventory
 		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
@@ -211,6 +208,10 @@ class Fife(object):
 		pychan.widgets.registerWidget(TooltipIcon)
 		pychan.widgets.registerWidget(TooltipButton)
 		pychan.widgets.registerWidget(TooltipLabel)
+
+		for name, stylepart in horizons.gui.style.STYLES.iteritems():
+			self.pychan.manager.addStyle(name, stylepart)
+		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 
 		self._gotInited = True
 
