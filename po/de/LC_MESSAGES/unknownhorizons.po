@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
 "POT-Creation-Date: 2009-10-02 13:19+CEST\n"
-"PO-Revision-Date: 2009-10-12 01:44+0100\n"
+"PO-Revision-Date: 2009-10-12 02:17+0100\n"
 "Last-Translator: André Reichelt <andre@unknown-horizons.org>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -352,7 +352,7 @@ msgstr "Mehrspieler"
 #: guitranslations.py:116
 #: horizons/i18n/guitranslations.py:116
 msgid " Credits "
-msgstr "Abspann"
+msgstr "Mitwirkende"
 
 #: guitranslations.py:117
 #: horizons/i18n/guitranslations.py:117
