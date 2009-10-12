@@ -220,6 +220,7 @@ def parse_args():
 		# a director exception, but no real error message then.
 		class StdOutDuplicator(object):
 			def write(self, line):
+				line = unicode(line)
 				sys.__stdout__.write(line)
 				logfile.write(line)
 		sys.stdout = StdOutDuplicator()
