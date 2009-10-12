@@ -40,6 +40,8 @@ class AnimalCollector(BuildingCollector):
 	 - stay at home building for a while
 	 - release animal
 	 """
+	kill_animal = False # whether we kill the animals
+
 	def __init__(self, *args, **kwargs):
 		super(AnimalCollector, self).__init__(*args, **kwargs)
 
@@ -52,17 +54,15 @@ class AnimalCollector(BuildingCollector):
 			if self.job is not None:
 				# register at target
 				self.job.object.stop_after_job(self)
+		elif state == self.states.moving_home:
+			if not self.kill_animal:
+				self.setup_new_job() # register at target if it's still alive
 
 	def cancel(self, continue_action = None):
 		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
 				self.job.object.remove_stop_after_job()
 		super(AnimalCollector, self).cancel(continue_action=continue_action)
-
-	def apply_state(self, state, remaining_ticks=None):
-		super(AnimalCollector, self).apply_state(state, remaining_ticks)
-		if self.state == self.states.waiting_for_animal_to_stop:
-			self.setup_new_job()
 
 	def begin_current_job(self):
 		"""Tell the animal to stop."""
@@ -83,19 +83,18 @@ class AnimalCollector(BuildingCollector):
 			return
 		self.state = self.states.moving_to_target
 
-	def finish_working(self, kill_animal=False):
+	def finish_working(self):
 		"""Called when collector arrives at the animal. Move home with the animal"""
-		if kill_animal:
+		if self.kill_animal:
 			# get res now, and kill animal right after
 			super(AnimalCollector, self).finish_working()
-			self.job.object.die()
 		else:
-			self.get_animal()
 			self.move_home(callback=self.reached_home)
+		self.get_animal() # get or kill animal
 
-	def reached_home(self, killed_animal=False):
+	def reached_home(self):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
-		if not killed_animal:
+		if not self.kill_animal:
 			# sheep and herder are inside the building now, pretending to work.
 			super(AnimalCollector, self).finish_working(collector_already_home=True)
 			self.release_animal()
@@ -116,13 +115,17 @@ class AnimalCollector(BuildingCollector):
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
 		self.log.debug("%s getting animal %s",self, self.job.object)
-		self.job.object.move(self.home_building.position, destination_in_building = True, \
-		                     action='move_full')
+		if self.kill_animal:
+			self.job.object.die()
+		else:
+			self.job.object.move(self.home_building.position, destination_in_building = True, \
+			                     action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
-		self.log.debug("%s releasing animal %s",self, self.job.object)
-		Scheduler().add_new_object(self.job.object.search_job, self.job.object, 16)
+		if not self.kill_animal:
+			self.log.debug("%s releasing animal %s",self, self.job.object)
+			Scheduler().add_new_object(self.job.object.search_job, self.job.object, 16)
 
 
 class FarmAnimalCollector(AnimalCollector):
@@ -138,17 +141,7 @@ class FarmAnimalCollector(AnimalCollector):
 
 
 class HunterCollector(AnimalCollector):
+	kill_animal = True
+
 	def get_animals_in_range(self):
 		return self.home_building.island.wild_animals
-
-	def finish_working(self):
-		super(HunterCollector, self).finish_working(kill_animal=True)
-
-	def reached_home(self):
-		super(HunterCollector, self).reached_home(killed_animal=True)
-
-	def release_animal(self):
-		pass # we don't release it, we already killed it.
-
-	def get_animal(self):
-		self.job.object.die()

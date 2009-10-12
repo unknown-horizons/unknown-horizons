@@ -47,7 +47,7 @@ class ResourceHandler(StorageHolder):
 		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
 			self.provided_resources.append(res[0])
 		# list of collectors that are on the way here
-		self.__incoming_collectors = WeakList()
+		self.__incoming_collectors = []
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)

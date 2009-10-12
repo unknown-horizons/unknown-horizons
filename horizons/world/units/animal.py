@@ -192,7 +192,6 @@ class WildAnimal(CollectorAnimal, Collector):
 					if job is not None:
 						jobs.append(job)
 
-		self.log.debug("%s: %s possible jobs", self, len(jobs))
 		return self.get_best_possible_job(jobs)
 
 	def check_possible_job_target(self, provider):
