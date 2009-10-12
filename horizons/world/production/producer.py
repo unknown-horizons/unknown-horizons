@@ -68,7 +68,11 @@ class Producer(ResourceHandler):
 		assert isinstance(production, Production)
 		self.log.debug('%s: added production line %s', self, production.get_production_line_id())
 		production.on_remove = Callback(self.remove_production, production)
-		self._productions[production.get_production_line_id()] = production
+		if production.is_paused():
+			pass
+			self._inactive_productions[production.get_production_line_id()] = production
+		else:
+			self._productions[production.get_production_line_id()] = production
 		production.add_change_listener(self._on_production_change, call_listener_now=True)
 		self._changed()
 

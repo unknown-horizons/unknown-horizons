@@ -51,7 +51,7 @@ class ResourceHandler(StorageHolder):
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
-		for production in self._productions.itervalues():
+		for production in self._get_productions():
 			production.save(db)
 			# set us to owner of that production
 			db("UPDATE production SET owner = ? WHERE rowid = ?", self.getId(), production.getId())

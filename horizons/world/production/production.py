@@ -180,7 +180,7 @@ class Production(WorldObject):
 			if self._state in (PRODUCTION.STATES.waiting_for_res, \
 			                   PRODUCTION.STATES.inventory_full):
 				# just stop watching for new res
-				self.inventory.remove_change_listener(self._check_inventory)
+				self.inventory.discard_change_listener(self._check_inventory)
 			elif self._state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
