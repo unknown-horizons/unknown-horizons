@@ -16,12 +16,14 @@ remf = []
 remd = []
 
 for root, dirs, files in os.walk('.'):
-    if True and '.svn' in dirs:
+    if '.svn' in dirs:
         dirs.remove('.svn')
+    if 'development' in dirs:
+        dirs.remove('development')
     if not len(files) == 0:
         rootp = root[2:]
         if rootp[:4] == 'fife':
-            files = filter(lambda s: s.split('.')[-1] in ('dll', 'py', 'png'), files)
+            files = filter(lambda s: s.split('.')[-1] in ('dll', 'py', 'png', 'pyd'), files)
             if not len(files):
                 continue
         inst.append( ('  SetOutPath "$INSTDIR/%s"' % rootp).replace('/', '\\'))
