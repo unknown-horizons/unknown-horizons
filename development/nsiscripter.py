@@ -4,6 +4,9 @@ import os
 import os.path
 import sys
 
+def remove_double(liste):
+    return [i.replace('\\\\', '\\') for i in liste]
+
 if not os.path.isdir('horizons'):
     print "This program expects to be invoked from the Unknown Horizons root directory"
     sys.exit(-1)
@@ -42,4 +45,4 @@ for f in installed_files:
 for d in installed_dirs:
       remd.append( ('  RMDir "$INSTDIR/%s"' % d).replace('/', '\\'))
 
-file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % ( '\n'.join(inst), '\n'.join(remf), '\n'.join(remd)))
+file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % ( '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(remd))))
