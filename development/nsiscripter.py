@@ -26,6 +26,8 @@ for root, dirs, files in os.walk('.'):
             files = filter(lambda s: s.split('.')[-1] in ('dll', 'py', 'png', 'pyd'), files)
             if not len(files):
                 continue
+        else:
+            files = filter(lambda s: s.split('.')[-1] not in ('pyc',), files)
         inst.append( ('  SetOutPath "$INSTDIR/%s"' % rootp).replace('/', '\\'))
         installed_dirs.append(rootp)
         for j in files:
