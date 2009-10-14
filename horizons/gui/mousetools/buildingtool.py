@@ -166,6 +166,15 @@ class BuildingTool(NavigationTool):
 	@decorators.make_constants()
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
+		new_buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
+		## TODO Fix preview: only one building in list => check position changed!
+		if len(new_buildings) == 1 and len(self.buildings) == 1:
+			single_building = new_buildings[0]
+			rec_new = Rect.init_from_topleft_and_size(new_buildings[0]['x'], new_buildings[0]['y'], self._class.size[0]-1, self._class.size[1]-1)
+			rec_old = Rect.init_from_topleft_and_size(self.buildings[0]['x'], self.buildings[0]['y'], self._class.size[0]-1, self._class.size[1]-1)
+			if rec_new == rec_old:
+				return # we don't want to redo the preview
+
 		# remove old fife instances and coloring
 		if hasattr(self._class, "deselect_building"):
 			self._class.deselect_building(self.session)
@@ -175,7 +184,7 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		# get new ones
-		self.buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
+		self.buildings = new_buildings
 		# make buildings around the preview transparent
 
 		neededResources, usableResources = {}, {}
@@ -227,7 +236,7 @@ class BuildingTool(NavigationTool):
 					callback = Callback(self._class.select_building, self.session, \
 					                                      building_position, settlement)
 					ExtScheduler().rem_call(self, callback)
-					ExtScheduler().add_new_object(callback, self, 0.2)
+					ExtScheduler().add_new_object(callback, self, 0.1)
 
 
 			else: # not buildable
