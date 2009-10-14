@@ -183,7 +183,7 @@ class BuildingTool(NavigationTool):
 		# check if the buildings are buildable and color them appropriatly
 		for building in self.buildings:
 			building_position = Rect.init_from_topleft_and_size(building['x'], building['y'],
-			                                                    *self._class.size)
+			                                                    self._class.size[0]-1, self._class.size[1]-1)
 			# make surrounding transparent
 			self._make_surrounding_transparent(building_position)
 
