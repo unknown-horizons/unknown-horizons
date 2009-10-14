@@ -60,6 +60,10 @@ class Producer(ResourceHandler):
 			Scheduler().add_new_object(self._update_capacity_utilisation, self, \
 		                   Scheduler().get_ticks(self._capacity_utilisation_update_interval), -1)
 
+	def load(self, db, worldid):
+		super(Producer, self).load(db, worldid)
+		self.__init()
+
 	def load_production(self, db, worldid):
 		return self.production_class.load(db, worldid)
 
