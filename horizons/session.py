@@ -203,6 +203,7 @@ class Session(LivingObject):
 			#self.manager.save(db)
 			self.view.save(db)
 			self.ingame_gui.save(db)
+			self.campaign_eventhandler.save(db)
 
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.getId())
@@ -260,6 +261,9 @@ class Session(LivingObject):
 			self.world.setup_player(playername, playercolor)
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])
+		else:
+			# try to load campaign data
+			self.campaign_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks.
 		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 

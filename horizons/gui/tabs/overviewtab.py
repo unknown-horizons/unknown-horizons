@@ -196,7 +196,6 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = u"Settler Overview"
-		self.consumed_res_icons = []
 
 	def refresh(self):
 		self.widget.child_finder('happiness').text = \
@@ -212,16 +211,13 @@ class SettlerOverviewTab(OverviewTab):
 		"""Updates the container that displays the needed resources of the settler"""
 		container = self.widget.findChild(name="needed_res")
 		# remove icons from the container
-		for icon in self.consumed_res_icons:
-			container.removeChild(icon)
-		self.consumed_res_icons = [] # clear list
+		container.removeChildren(*container.children)
 
 		# create new ones
 		resources = self.instance.get_currently_not_consumed_resources()
 		for res in resources:
 			icon = create_resource_icon(res, horizons.main.db)
 			container.addChild(icon)
-			self.consumed_res_icons.append(icon)
 
 		container.adaptLayout()
 

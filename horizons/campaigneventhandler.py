@@ -20,6 +20,7 @@
 # ###################################################
 
 import yaml
+import copy
 
 from horizons.ext.enum import Enum
 from horizons.constants import RES
@@ -62,20 +63,25 @@ class CampaignEventHandler(object):
 		"""
 		self.session = session
 		self._events = []
+		self.data = {}
 		# map: condition types -> events
 		self._event_conditions = {}
 		for cond in CONDITIONS:
 			self._event_conditions[cond] = []
 		if campaignfile:
-			self._data = self._parse_yaml_file(campaignfile)
-			for event_dict in self._data['events']:
-				event = _Event(self.session, event_dict)
-				self._events.append( event )
-				for cond in event.conditions:
-					self._event_conditions[ cond.cond_type ].append( event )
+			self._apply_data( self._parse_yaml( open(campaignfile, 'r') ) )
 
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
+
+	def save(self, db):
+		db("INSERT INTO metadata(name, value) VALUES(?, ?)", "campaign_events", self.to_yaml())
+
+	def load(self, db):
+		data = db("SELECT value FROM metadata where name = ?", "campaign_events")
+		if len(data) == 0:
+			return # nothing to load
+		self._apply_data( self._parse_yaml( data[0][0] ) )
 
 	def schedule_check(self, condition):
 		"""Let check_events run in one tick for condition. Useful for lag prevetion."""
@@ -101,14 +107,25 @@ class CampaignEventHandler(object):
 	@classmethod
 	def get_description_from_file(cls, filename):
 		"""Returns the description from a yaml file"""
-		return cls._parse_yaml_file(filename)['description']
+		return cls._parse_yaml( open(filename, 'r') )['description']
 
 	@staticmethod
-	def _parse_yaml_file(filename):
+	def _parse_yaml(string_or_stream):
 		try:
-			return yaml.load( open(filename, 'r') )
+			return yaml.load( string_or_stream )
 		except Exception, e: # catch anything yaml might throw
 			raise InvalidScenarioFileFormat(str(e))
+
+	def _apply_data(self, data):
+		"""Apply data to self loaded via yaml.load
+		@param data: return value of yaml.load or _parse_yaml resp.
+		"""
+		self._data = data
+		for event_dict in self._data['events']:
+				event = _Event(self.session, event_dict)
+				self._events.append( event )
+				for cond in event.conditions:
+					self._event_conditions[ cond.cond_type ].append( event )
 
 	def _scheduled_check(self):
 		"""Check conditions that can only be checked periodically"""
@@ -120,6 +137,19 @@ class CampaignEventHandler(object):
 		for cond in event.conditions:
 			self._event_conditions[ cond.cond_type ].remove( event )
 		self._events.remove( event )
+
+	def to_yaml(self):
+		"""Returns yaml representation of current state of self.
+		Another object of this type, constructed with the return value of this function, has
+		to result in the very same object."""
+		# every data except events are static, so reuse old data
+		data = copy.deepcopy(self._data)
+		del data['events']
+		yaml_code = yaml.dump(data, line_break=u'\n')
+		yaml_code = yaml_code.rstrip(u'}\n')
+		#yaml_code = yaml_code.strip('{}')
+		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
+		return yaml_code
 
 
 ###
@@ -193,7 +223,7 @@ def player_res_stored_greater(session, res, limit):
 
 def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
-	return any(settlement for settlemnent in _get_player_settlements() if \
+	return any(settlement for settlemnent in _get_player_settlements(session) if \
 	           settlement.inventory[res] > limit)
 
 def _get_player_settlements(session):
@@ -222,6 +252,12 @@ class _Event(object):
 			action(self.session)
 		return True
 
+	def to_yaml(self):
+		"""Returns yaml representation of self"""
+		return '{ actions: [ %s ] , conditions: [ %s ]  }' % \
+		       (', '.join(action.to_yaml() for action in self.actions), \
+		        ', '.join(cond.to_yaml() for cond in self.conditions))
+
 
 class _Action(object):
 	"""Internal data structure representing an ingame campaign action"""
@@ -233,6 +269,7 @@ class _Action(object):
 	  }
 
 	def __init__(self, action_dict):
+		self._action_type_str = action_dict['type']
 		try:
 			self.callback = self.action_types[ action_dict['type'] ]
 		except KeyError:
@@ -242,6 +279,11 @@ class _Action(object):
 	def __call__(self, session):
 		"""Executes action."""
 		self.callback(session, *self.arguments)
+
+	def to_yaml(self):
+		"""Returns yaml representation of self"""
+		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n').replace('\n', '')
+		return "{arguments: %s, type: %s}" % (arguments_yaml, self._action_type_str)
 
 
 class _Condition(object):
@@ -266,4 +308,9 @@ class _Condition(object):
 		"""Check for condition.
 		@return: bool"""
 		return self.callback(self.session, *self.arguments)
+
+	def to_yaml(self):
+		"""Returns yaml representation of self"""
+		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n').replace('\n', '')
+		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type.key)
 
