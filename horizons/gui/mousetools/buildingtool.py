@@ -167,7 +167,8 @@ class BuildingTool(NavigationTool):
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
 		new_buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
-		## TODO Fix preview: only one building in list => check position changed!
+		# If only one building is in the preview and the position hasn't changed => don't preview
+		# Otherwise the preview is redrawn on every mouse move
 		if len(new_buildings) == 1 and len(self.buildings) == 1:
 			single_building = new_buildings[0]
 			rec_new = Rect.init_from_topleft_and_size(new_buildings[0]['x'], new_buildings[0]['y'], self._class.size[0]-1, self._class.size[1]-1)
@@ -234,9 +235,10 @@ class BuildingTool(NavigationTool):
 				# draw radius in a moment, and not always immediately, since it's expensive
 				if hasattr(self._class, "select_building"):
 					callback = Callback(self._class.select_building, self.session, \
-					                                      building_position, settlement)
-					ExtScheduler().rem_call(self, callback)
-					ExtScheduler().add_new_object(callback, self, 0.1)
+					                    building_position, settlement)
+					ExtScheduler().rem_all_classinst_calls(self)
+					delay = 0.08 # Wait delay seconds until the area of influence is shown
+					ExtScheduler().add_new_object(callback, self, 0.08)
 
 
 			else: # not buildable
