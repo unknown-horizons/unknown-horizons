@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Unknown Horizons"
-!define PRODUCT_VERSION "2009.0"
+!define PRODUCT_VERSION "2009.2"
 !define PRODUCT_PUBLISHER "The Unknown Horizons Team"
 !define PRODUCT_WEB_SITE "http://www.unknown-horizons.org"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -52,7 +52,7 @@ BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} installer"
 
 ;--------- RUN Unknown Horizons -----
 Function run_uh
-  ExecShell "open" "$INSTDIR\run_uh.py" ;Unknown Horizons starten
+  ExecShell "open" "$INSTDIR\run_uh.bat" ;Unknown Horizons starten
 FunctionEnd
 ;---------- OnInit --------------
 Function .onInit
@@ -72,24 +72,41 @@ Section "Python (required)" Python
   SetDetailsPrint textonly
 
   DetailPrint "Downloading Python"
-  NSISdl::download http://www.python.org/ftp/python/2.5.2/python-2.5.2.msi $TEMP\pysetup.msi
+  NSISdl::download http://www.python.org/ftp/python/2.5.4/python-2.5.4.msi $TEMP\pysetup.msi
   Pop $R0 ;Get the return value
     StrCmp $R0 "success" +3
       MessageBox MB_OK "Download failed: $R0"
       Quit
 
   DetailPrint "Installing Python"
-  ExecWait '"msiexec" /i "$TEMP\pysetup.msi"'
+  ExecWait '"msiexec" /i "$TEMP\pysetup.msi" /passive'
 
   DetailPrint "Deleting Python installer"
   Delete $TEMP\pysetup.msi
+SectionEnd
+;------------ PyYAML --------------
+Section "PyYAML (required)" PyYAML
+  SetDetailsPrint textonly
+
+  SetOutPath "$SYSDIR"        ;Some Systems need this DLL to install PyYAML properly
+  SetOverwrite ifnewer
+  File "requs\msvcr71.dll"
+  SetOverwrite on
+
+  SetOutPath "$TEMP"
+  File "requs\PyYAML_setup.exe"
+  DetailPrint "Installing PyYAML"
+  ExecWait "$TEMP\PyYAML_setup.exe"
+
+  DetailPrint "Deleting PyYAML installer"
+  Delete "$TEMP\PyYAML_setup.exe"
 SectionEnd
 ;----------- OPEN AL --------------
 Section "OpenAL (required)" OpenAL
   SetDetailsPrint textonly
 
   SetOutPath "$TEMP"
-  File "oalinst\oalinst.exe"
+  File "requs\oalinst.exe"
   DetailPrint "Installing OpenAL"
   ExecWait "$TEMP\oalinst.exe"
 
@@ -99,9 +116,10 @@ SectionEnd
 ;--------- SECTION END ------------
 
 Section -AdditionalIcons
+  SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\Unknown Horizons"
-  CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\run_uh.py" "" "${UH_ICON}"
-  CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\run_uh.py" "" "${UH_ICON}"
+  CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\run_uh.bat" "" "${UH_ICON}"
+  CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\run_uh.bat" "" "${UH_ICON}"
   CreateShortCut "$SMPROGRAMS\Unknown Horizons\Uninstall.lnk" "$INSTDIR\uninst.exe"
 SectionEnd
 
@@ -118,6 +136,7 @@ SectionEnd
 Function un.onUninstSuccess
   HideWindow
   MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) wurde erfolgreich deinstalliert."
+  MessageBox MB_ICONINFORMATION|MB_OK "Bitte beachten Sie, dass die Komponenten Python, PyYAML und OpenAL manuell entfernt werden müssen, sofern diese nicht mehr gebraucht werden. Verwenden Sie dazu in Ihrer Systemsteuerung den Menüpunkt $\"Software$\" bei Windows XP beziehungsweise $\"Programme und Funktionen$\" bei Windows Vista sowie Windows 7."
 FunctionEnd
 
 Function un.onInit
@@ -143,10 +162,12 @@ SectionEnd
 ;Description
 LangString DESC_uh ${LANG_ENGLISH} "Unknown Horizons - The game (including FIFE)"
 LangString DESC_Python ${LANG_ENGLISH} "Python - Only if it's not already on your hard drive!"
+LangString DESC_PyYAML ${LANG_ENGLISH} "Select this required module for Python if it isn't already installed."
 LangString DESC_OpenAL ${LANG_ENGLISH} "OpenAL: Necessary for music and sound! Choose this one if it isn't installed already."
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${uh} $(DESC_uh)
   !insertmacro MUI_DESCRIPTION_TEXT ${Python} $(DESC_Python)
+  !insertmacro MUI_DESCRIPTION_TEXT ${PyYAML} $(DESC_PyYAML)
   !insertmacro MUI_DESCRIPTION_TEXT ${OpenAL} $(DESC_OpenAL)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
