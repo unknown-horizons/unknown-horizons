@@ -110,7 +110,7 @@ def get_option_parser():
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
 	from horizons.constants import PATHS
-	for directory in [PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.SCREENSHOT_DIR]:
+	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.SCREENSHOT_DIR):
 		if not os.path.isdir(directory):
 			os.makedirs(directory)
 
@@ -156,6 +156,8 @@ def main():
 	logging.config.fileConfig('content/logging.conf')
 
 	gettext.install("unknownhorizons", "po", unicode=1)
+
+	create_user_dirs()
 
 	options = parse_args()
 
@@ -240,7 +242,6 @@ NOTE: these are supposed to be in an extra file, but are placed here for simplif
 def init_environment():
 	"""Sets up everything. Use in any program that requires access to fife and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
-	create_user_dirs()
 
 	gettext.install("unknownhorizons", "po", unicode=1)
 
