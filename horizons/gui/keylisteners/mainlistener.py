@@ -24,10 +24,12 @@ import code
 import sys
 import datetime
 import string
+import os.path
 
 import horizons.main
 
 from horizons.util.living import LivingObject
+from horizons.constants import PATHS
 
 class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 	"""MainListener Class to process events of main window"""
@@ -64,7 +66,8 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		elif keyval == fife.Key.F1:
 			self.gui.on_help()
 		elif keystr == 's':
-			screenshotfilename = string.replace("content/screenshots/" + datetime.datetime.now().isoformat('.') + ".png", ":", "-")
+			screenshotfilename = os.path.join(PATHS.SCREENSHOT_DIR,
+			            string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
 			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
 			if self.gui.session is not None:
 				# ingame message if there is a session

@@ -25,4 +25,4 @@ from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
 from boatbuildertab import BoatbuilderTab
-from accounttab import AccountTab
+from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab

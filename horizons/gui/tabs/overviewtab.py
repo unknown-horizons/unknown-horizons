@@ -217,8 +217,7 @@ class SettlerOverviewTab(OverviewTab):
 		self.consumed_res_icons = [] # clear list
 
 		# create new ones
-		currenlty_consumed = self.instance.get_currently_consumed_resources()
-		resources = [ r for r in self.instance.get_consumed_resources() if r not in currenlty_consumed ]
+		resources = self.instance.get_currently_not_consumed_resources()
 		for res in resources:
 			icon = create_resource_icon(res, horizons.main.db)
 			container.addChild(icon)

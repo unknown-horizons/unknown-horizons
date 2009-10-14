@@ -22,7 +22,7 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MarketPlaceOverviewTab, AccountTab
+		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
@@ -92,7 +92,7 @@ class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
 
 
 class MarketPlace(StorageBuilding):
-	tabs = (MarketPlaceOverviewTab, AccountTab)
+	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab)
 
 	def select(self):
 		# storage buildings select whole settlement; market place should behave normally

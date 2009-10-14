@@ -100,6 +100,7 @@ class PATHS:
 	LOG_DIR = _user_dir + "/log"
 	USER_CONFIG_FILE = _user_dir + "/config.sqlite"
 	ACTION_SETS_DIRECTORY = 'content/gfx/'
+	SCREENSHOT_DIR = _user_dir + "/screenshots"
 	SAVEGAME_TEMPLATE = "content/savegame_template.sqlite"
 
 ## The Production States available in the game sorted by importance from least

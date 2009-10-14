@@ -94,6 +94,14 @@ class ResourceHandler(StorageHolder):
 				consumed_res.update(production.get_consumed_resources().iterkeys())
 		return list(consumed_res)
 
+	def get_currently_not_consumed_resources(self):
+		"""Needed, but not currenlty consumed resources.
+		Opposite of get_currently_consumed_resources."""
+		# use set types since they support the proper operation
+		currently_consumed = frozenset(self.get_currently_consumed_resources())
+		consumed = frozenset(self.get_consumed_resources())
+		return list( consumed - currently_consumed )
+
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
 		return [res for res in self.get_consumed_resources() if \

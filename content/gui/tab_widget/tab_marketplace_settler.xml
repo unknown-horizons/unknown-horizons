@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+Tab to be shown at the market place.
+It shows an overview over the settlers, like average happiness
+-->
+<Container  size="250,550">
+<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,250" />
+
+	<Container position="0,70" size="600,400" >
+
+		<Label name="headline" position="85,7" text="Settler overview" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<Container size="260,550" position="25,43">
+
+			<Label name="avg_happiness_lbl" position="0,0" text="Average happiness:" /><Label name="avg_happiness" position="150,0"/>
+
+			<Label name="most_needed_res_lbl" position="0,30" text="Most needed resource:" /><HBox name="most_needed_res_container" position="140,20"/>
+
+		</Container>
+	</Container>
+</Container>

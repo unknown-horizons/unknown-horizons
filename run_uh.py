@@ -110,7 +110,7 @@ def get_option_parser():
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
 	from horizons.constants import PATHS
-	for directory in [PATHS.USER_DIR, PATHS.LOG_DIR]:
+	for directory in [PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.SCREENSHOT_DIR]:
 		if not os.path.isdir(directory):
 			os.makedirs(directory)
 
