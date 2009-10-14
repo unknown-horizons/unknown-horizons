@@ -49,7 +49,7 @@ class MarketPlaceTab(TabInterface):
 
 	def _schedule_refresh(self):
 		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
-		This saves a lot of CPU time, if you have a huge island"""
+		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
 		if not self._refresh_scheduled:
 			self._refresh_scheduled = True
 			ExtScheduler().add_new_object(self.refresh, self, runin=0.3)
