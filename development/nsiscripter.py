@@ -23,6 +23,8 @@ for root, dirs, files in os.walk('.'):
         dirs.remove('.svn')
     if 'development' in dirs:
         dirs.remove('development')
+    if 'screenshots' in dirs:
+        dirs.remove('screenshots')
     if not len(files) == 0:
         rootp = root[2:]
         if rootp[:4] == 'fife':
@@ -34,7 +36,7 @@ for root, dirs, files in os.walk('.'):
         inst.append( ('  SetOutPath "$INSTDIR/%s"' % rootp).replace('/', '\\'))
         installed_dirs.append(rootp)
         for j in files:
-            inst.append( ('  File "Unknown Horizons/%s/%s"' % (rootp, j)).replace('/', '\\'))
+            inst.append( ('  File "uh\\trunk/%s/%s"' % (rootp, j)).replace('/', '\\'))
             installed_files.append('%s/%s' % (rootp, j))
             if j[-3:] == '.py':
                 installed_files.append('%s.pyc' % ('%s/%s' % (rootp, j))[:-3])
