@@ -22,6 +22,8 @@
 import yaml
 import copy
 
+import horizons.main
+
 from horizons.ext.enum import Enum
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
@@ -166,6 +168,7 @@ def show_db_message(session, message_id):
 def do_win(session):
 	"""Called when player won"""
 	show_message(session, 'YOU_HAVE_WON')
+	horizons.main.fife.play_sound(horizons.main.fife.emitter['effects'], "content/audio/sounds/events/szenario/win.ogg")
 
 def do_lose(session):
 	"""Called when player lost"""
@@ -266,7 +269,7 @@ class _Action(object):
 	  'db_message': show_db_message,
 	  'win' : do_win,
 	  'lose' : do_lose
-	  }
+	}
 
 	def __init__(self, action_dict):
 		self._action_type_str = action_dict['type']
