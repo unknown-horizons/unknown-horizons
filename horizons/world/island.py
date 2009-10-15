@@ -218,9 +218,9 @@ class Island(WorldObject):
 		self.add_existing_settlement(position, radius, settlement)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(position.center().x, \
-																												position.center().y, \
-																												'NEW_SETTLEMENT', \
-																												{'player':player.name})
+		                                           position.center().y, \
+		                                           'NEW_SETTLEMENT', \
+		                                           {'player':player.name})
 		return settlement
 
 	def add_existing_settlement(self, position, radius, settlement):

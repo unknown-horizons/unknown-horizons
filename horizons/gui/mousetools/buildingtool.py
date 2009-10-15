@@ -238,7 +238,7 @@ class BuildingTool(NavigationTool):
 					                    building_position, settlement)
 					ExtScheduler().rem_all_classinst_calls(self)
 					delay = 0.08 # Wait delay seconds until the area of influence is shown
-					ExtScheduler().add_new_object(callback, self, 0.08)
+					ExtScheduler().add_new_object(callback, self, delay)
 
 
 			else: # not buildable
