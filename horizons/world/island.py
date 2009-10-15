@@ -163,11 +163,9 @@ class Island(WorldObject):
 	def get_tiles_tuple(self, tuples):
 		"""Same as get_tile, but takes a list of tuples.
 		@return: list of tiles"""
-		tiles = []
 		for tup in tuples:
 			if tup in self.ground_map:
-				tiles.append( self.ground_map[tup] )
-		return tiles
+				yield self.ground_map[tup]
 
 	def get_building(self, point):
 		"""Returns the building at the point

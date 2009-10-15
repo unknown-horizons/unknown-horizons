@@ -230,7 +230,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-																		 self.getId(create_if_nonexistent=False))
+		                                 self.getId(create_if_nonexistent=False))
 
 
 
@@ -279,8 +279,6 @@ class SelectableBuilding(object):
 			if island is None:
 				return # preview isn't on island, and therefore invalid
 			coords = position.get_radius_coordinates(cls.radius, include_self=True)
-			tiles = island.get_tiles_tuple(coords)
-			numtiles = len(tiles)
 			for tile in island.get_tiles_tuple(coords):
 				try:
 					if tile.settlement == settlement and \
