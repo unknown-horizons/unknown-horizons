@@ -226,7 +226,7 @@ def player_res_stored_greater(session, res, limit):
 
 def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
-	return any(settlement for settlemnent in _get_player_settlements(session) if \
+	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.inventory[res] > limit)
 
 def _get_player_settlements(session):
