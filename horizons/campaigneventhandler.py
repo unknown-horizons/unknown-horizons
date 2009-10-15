@@ -168,7 +168,7 @@ def show_db_message(session, message_id):
 def do_win(session):
 	"""Called when player won"""
 	show_message(session, 'YOU_HAVE_WON')
-	horizons.main.fife.play_sound(horizons.main.fife.emitter['effects'], "content/audio/sounds/events/szenario/win.ogg")
+	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
 
 def do_lose(session):
 	"""Called when player lost"""

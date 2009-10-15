@@ -1,33 +1,33 @@
 <?xml version="1.0"?>
 <Container size="250,500">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />			 	
-	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />	
-	
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,300" />
+
 	<Container position="0,70" size="600,400" >
 		<Label name="headline" position="80,7" text="Inventory" />
 			<Icon image="content/gui/images/background/hr.png" position="20,30" />
-			
+
 			<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />
 			<Icon image="content/gui/images/background/inv_bg.png" position="75,50" />
 			<Icon image="content/gui/images/background/inv_bg.png" position="130,50" />
 			<Icon image="content/gui/images/background/inv_bg.png" position="185,50" />
-			
-			<Icon image="content/gui/images/background/inv_bg.png" position="20,110" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="75,110" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="130,110" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="185,110" />
-	
-			<Icon image="content/gui/images/background/inv_bg.png" position="20,170" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="75,170" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="130,170" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="185,170" />
-	
+
+			<Icon image="content/gui/images/background/inv_bg.png" position="20,100" />
+			<Icon image="content/gui/images/background/inv_bg.png" position="75,100" />
+			<Icon image="content/gui/images/background/inv_bg.png" position="130,100" />
+			<Icon image="content/gui/images/background/inv_bg.png" position="185,100" />
+
+			<Icon image="content/gui/images/background/inv_bg.png" position="20,150" />
+			<Icon image="content/gui/images/background/inv_bg.png" position="75,150" />
+			<Icon image="content/gui/images/background/inv_bg.png" position="130,150" />
+			<Icon image="content/gui/images/background/inv_bg.png" position="185,150" />
+
 		<Inventory name="inventory" size="316,157" position="15,46"/>
 	</Container>
-	
+
 </Container>
