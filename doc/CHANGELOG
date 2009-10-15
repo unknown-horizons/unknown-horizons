@@ -1,6 +1,66 @@
 CHANGELOG 
 Unknown Horizons
 -----------------------------------------------------
+
+2009-10-1X: Milestone 2009.2
+* General
+  * New: The game creates logfiles now; You can find them in your user folder
+         in ".unknown-horizons/log"
+  * New: Wild animals graze on the islands
+  * New: Hunter's tent which produces food from wild animals
+  * New: Added a function to load a map directly via the command line
+  * New: The free trader will only visit your settlement if you place the signal
+         fire near your branch office 
+  * New: Some new minor options in the market place menu
+  * New: Allow changeing the tax rate  
+  * New: It's now possible to change the name of your ship or settlement
+  * New: Started implementing the second settlement level: settlers
+  * New: Added potato field as food source
+  * New: Working autosave function
+  * New: Implemented autorotate for buildings on coastlines
+  * New: The ship is now placed randomly  
+  * New: If the settler's happiness falls below a specific level, the tent
+         changes to a ruin
+  * New: Implemented a player's name and color 
+  * New: Added a school
+  * New: Added shugar fields  
+  * New: Added a few messages that informs the player about different grievances
+  * New: Started work on random maps
+  * New: Started work on the scenario system                                 
+  * Change: The game uses bigger water-tiles now to improove the performance
+  * Change: Completely changed the farm system: There is only one farm building
+            which can cultivate any kind of field including sheep-runs 
+  * Change: Screenshots are now saved into the user's folder       
+  * Fix: Changing the colordepth to 32 Bit works now without a crash
+  * Fix: Optimized the code in general
+  * Fix: The savegames work properly now (small trees, …)
+  * Fix: Player's ship got stuck on the left lower side of the map in some cases
+  * Fix: Changed some stuff releating to the translation 
+  * Fix: Fixed the temporary freeze if the player tried to send a ship onto land        
+    
+* Graphics and GUI
+  * New: Added tooltips
+  * New: Button to resume a paused game in the pause menu
+  * New: Button to switch to the distruction mode
+  * New: Added a minimap      
+  * Change: Changed the style of the pause menu
+  * Change: Improoved/replaced a few building graphics
+  * Change: Rearraanged the building menu
+  * Change: Changed some other GUI-menus
+  * Fix: Fixed the size of the font of the city name      
+
+* Sound
+  * New: Added sounds for some buildings
+
+* Translations
+  * New: Added polish translation
+  * Change: Updated some translation files 
+  * Change: Changed some volume settings       
+
+... and a lot more smaller bugfixes.
+
+-----------------------------------------------------
+
 2009-07-08: Milestone 2009.1
 * General
   * New: Boadbuilder class with unitcreation, it's possible to build ships
