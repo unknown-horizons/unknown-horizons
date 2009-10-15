@@ -65,7 +65,7 @@ class CampaignEventHandler(object):
 		"""
 		self.session = session
 		self._events = []
-		self.data = {}
+		self._data = {}
 		# map: condition types -> events
 		self._event_conditions = {}
 		for cond in CONDITIONS:
