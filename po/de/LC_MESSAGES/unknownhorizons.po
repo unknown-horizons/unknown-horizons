@@ -360,7 +360,7 @@ msgstr "Baumenü:"
 msgid "Help"
 msgstr "Hilfe"
 
-# no.. it does not say main menu ...
+#: no.. it does not say main menu ...
 #: guitranslations.py:122
 #: horizons/i18n/guitranslations.py:122
 msgid "Game menu"
@@ -590,7 +590,7 @@ msgstr "Waren Ein-/Verkaufen:"
 msgid "research"
 msgstr "Forschung"
 
-# Was 'weg'
+#: Was 'weg'
 #: guitranslations.py:178
 #: horizons/i18n/guitranslations.py:178
 msgid "route"
@@ -766,7 +766,7 @@ msgstr "Waren verkaufen"
 msgid "Select resources:"
 msgstr "Waren auswählen:"
 
-# Zelt-Bauten?
+#: Zelt-Bauten?
 #: guitranslations.py:238
 #: horizons/i18n/guitranslations.py:238
 msgid "Sailor Buildings"
@@ -888,7 +888,7 @@ msgstr ""
 "Jagt wilde Tiere, \n"
 "sammelt Nahrung"
 
-# Weberei
+#: Weberei
 #: guitranslations.py:252
 #: guitranslations.py:270
 #: horizons/i18n/guitranslations.py:252
@@ -963,7 +963,7 @@ msgstr ""
 "Benötigt eine Farm"
 
 # FIXME: Erhöht?
-# Ausguck heißt eigentlich Krähennest :)
+#: Ausguck heißt eigentlich Krähennest :)
 #: guitranslations.py:258
 #: horizons/i18n/guitranslations.py:258
 msgid ""
@@ -1303,7 +1303,7 @@ msgstr "Schaf"
 msgid "coins"
 msgstr "Münzen"
 
-# Building
+#: Building
 msgid "Log"
 msgstr "Protokoll"
 
@@ -1323,7 +1323,7 @@ msgstr "gelb"
 msgid "pink"
 msgstr "rosa"
 
-# Messages
+#: Messages
 msgid "Some of your settlers just moved out."
 msgstr "Einige Eurer Siedler haben Euch den Rücken gekehrt."
 
@@ -1333,19 +1333,19 @@ msgstr "Hauptplatz"
 msgid "tools"
 msgstr "Werkzeuge"
 
-# Resources
+#: Resources
 msgid "happiness"
 msgstr "Zufriedenheit"
 
 msgid "Lookout"
 msgstr "Krähennest"
 
-# Unit
+#: Unit
 #, fuzzy
 msgid "HunterCollector"
 msgstr "HunterCollector"
 
-# Unit
+#: Unit
 #, fuzzy
 msgid "FarmAnimalCollector"
 msgstr "FarmAnimalCollector"
@@ -1361,14 +1361,14 @@ msgstr "LumberjackCollector"
 msgid "lamb wool"
 msgstr "Lammwolle"
 
-# Building
+#: Building
 msgid "Farm"
 msgstr "Farm"
 
 msgid "Signal Fire"
 msgstr "Signalfeuer"
 
-# Resources
+#: Resources
 msgid "sugar"
 msgstr "Zucker"
 
@@ -1390,7 +1390,7 @@ msgstr "Fischer"
 msgid "Sunsail"
 msgstr "Sonnensegel"
 
-# Messages
+#: Messages
 msgid "YOU HAVE WON!!!"
 msgstr "Ihr habt gesiegt!!!"
 
@@ -1410,11 +1410,11 @@ msgid "School"
 msgstr "Wolle"
 
 # FIXME: Formal, informal, historical?
-# Ihr, Dein, Euer Spiel wurde gespeichert.
+#: Ihr, Dein, Euer Spiel wurde gespeichert.
 msgid "Your game has been quicksaved."
 msgstr "Schnellspeicherung abgeschlossen"
 
-# Resources
+#: Resources
 #, fuzzy
 msgid "raw sugar"
 msgstr "Zuckerrohr"
@@ -1428,7 +1428,7 @@ msgstr "Händler"
 msgid "blue"
 msgstr "blau"
 
-# Building
+#: Building
 msgid "Potato Field"
 msgstr "Kartoffelfeld"
 
@@ -1464,7 +1464,7 @@ msgstr "Bretter"
 msgid "Lumberjack Camp"
 msgstr "Holzfällerlager"
 
-# Resources
+#: Resources
 msgid "faith"
 msgstr "Glaube"
 
@@ -1475,7 +1475,7 @@ msgstr "Wolle"
 msgid "AnimalCarriage"
 msgstr "AnimalCarriage"
 
-# Messages
+#: Messages
 msgid "One of your settler has no market place in it's range."
 msgstr "Einer Eurer Siedler hat keinen Zugang zu einem Marktplatz."
 
@@ -1483,11 +1483,11 @@ msgstr "Einer Eurer Siedler hat keinen Zugang zu einem Marktplatz."
 msgid "SettlerCollector"
 msgstr "SettlerCollector"
 
-# Messages
+#: Messages
 msgid "Your settlers reached level ${level}."
 msgstr "Ihre Siedler haben die Stufe ${level} erreicht."
 
-# Resources
+#: Resources
 msgid "potatoes"
 msgstr "Kartoffeln"
 
@@ -1514,7 +1514,7 @@ msgstr "grün"
 msgid "red"
 msgstr "rot"
 
-# Messages
+#: Messages
 msgid "Screenshot has been saved to ${file}."
 msgstr "Bildschirmfoto wurde nach ${file} gespeichert."
 
@@ -1530,7 +1530,7 @@ msgstr "Schiff"
 msgid "grass"
 msgstr "Gras"
 
-# Messages
+#: Messages
 msgid "You need more ${resource} to build this building."
 msgstr "Ihr benötigt mehr ${resource}, um dieses Gebäude errichten zu können."
 
@@ -1575,7 +1575,7 @@ msgstr "Wildtier-Fleisch"
 #~ msgid "Load Game"
 #~ msgstr " Spiel laden"
 
-# It's a flipflop-switch
+#: It's a flipflop-switch
 #~ msgid "Toggle active:"
 #~ msgstr "De-/Aktivieren:"
 #, fuzzy
