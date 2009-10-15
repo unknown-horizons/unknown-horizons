@@ -123,7 +123,6 @@ class IngameGui(LivingObject):
 				'hunter-1' : callbackWithArguments(self._build, 9),
 				'fisher-1' : callbackWithArguments(self._build, 11),
 				'weaver-1' : callbackWithArguments(self._build, 7),
-				'boat_builder-1' : callbackWithArguments(self._build, 12),
 				'lumberjack-1' : callbackWithArguments(self._build, 8),
 				'tree-1' : callbackWithArguments(self._build, 17),
 				'potatofield-1' : callbackWithArguments(self._build, 19),
@@ -136,7 +135,8 @@ class IngameGui(LivingObject):
 		},
 			1: {
 		    'school-1' : callbackWithArguments(self._build, 21),
-		    'sugarfield-1' : callbackWithArguments(self._build, 22)
+		    'sugarfield-1' : callbackWithArguments(self._build, 22),
+			'boat_builder-1' : callbackWithArguments(self._build, 12)
 		},
 			2: {
 		},

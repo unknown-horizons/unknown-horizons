@@ -38,7 +38,8 @@ class Timer(LivingObject):
 		"""
 		super(Timer, self).__init__()
 		Settings().addCategories('ticks')
-		Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
+		#Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
+		Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64])
 		self.ticks_per_second = Settings().ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
