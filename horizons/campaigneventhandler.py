@@ -69,7 +69,7 @@ class CampaignEventHandler(object):
 		# map: condition types -> events
 		self._event_conditions = {}
 		for cond in CONDITIONS:
-			self._event_conditions[cond] = []
+			self._event_conditions[cond] = set()
 		if campaignfile:
 			self._apply_data( self._parse_yaml( open(campaignfile, 'r') ) )
 
@@ -127,7 +127,7 @@ class CampaignEventHandler(object):
 				event = _Event(self.session, event_dict)
 				self._events.append( event )
 				for cond in event.conditions:
-					self._event_conditions[ cond.cond_type ].append( event )
+					self._event_conditions[ cond.cond_type ].add( event )
 
 	def _scheduled_check(self):
 		"""Check conditions that can only be checked periodically"""
@@ -137,7 +137,9 @@ class CampaignEventHandler(object):
 	def _remove_event(self, event):
 		assert isinstance(event, _Event)
 		for cond in event.conditions:
-			self._event_conditions[ cond.cond_type ].remove( event )
+			# we have to use discard here, since cond.cond_type might be the same
+			# for multiple conditions of event
+			self._event_conditions[ cond.cond_type ].discard( event )
 		self._events.remove( event )
 
 	def to_yaml(self):
