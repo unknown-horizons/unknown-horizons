@@ -128,6 +128,10 @@ class Gui(SettingsGui, SingleplayerMenu):
 		# once on the original, once on the unicode string.
 		popup.findChild(name='headline').text = _(unicode(_(windowtitle)))
 		popup.findChild(name='popup_message').text = _(unicode(_(message)))
+		popup.adaptLayout() # recalculate widths
+		headline = popup.findChild(name='headline')
+		headline.position = ( popup.width/2 - headline.width/2 , headline.position[1] )
+		popup.adaptLayout()
 		if show_cancel_button:
 			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:

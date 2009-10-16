@@ -48,7 +48,7 @@ class SingleplayerMenu(object):
 			self.current.findChild(name="showRandom").marked = True
 			to_remove = self.current.findChild(name="map_list_area")
 			to_remove.parent.removeChild(to_remove)
-			self.show_popup(_('Not yet implemented'), _("The random map feature is a work in progress. \nThis means, that it probably won't really work."))
+			self.show_popup(_('Warning'), _('The random map features is still in active development. It is to be considered a pre testing version. Problems are to be expected.'))
 		else:
 			if show == 'free_maps':
 				del eventMap['showMaps']
