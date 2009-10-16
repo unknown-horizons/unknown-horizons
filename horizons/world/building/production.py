@@ -26,10 +26,39 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.gui.tabs import ProductionOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
+from horizons.world.building.nature import Field
+from horizons.util import Circle
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	max_fields_possible = 8 # only for utilisation calculation
+	def _update_capacity_utilisation(self):
+		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
+		nearby."""
+		reach = Circle(self.position.center(), self.radius)
+		providers = self.island.get_providers_in_range(reach)
+		providers = [ p for p in providers if isinstance(p, Field) ]
+		self.capacity_utilisation = float(len(providers))/self.max_fields_possible
+		# sanity checks for theoretically impossible cases:
+		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
+		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
+
+class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
+
+class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
+class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
+class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+	pass
+
+class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
+	"""Class for Churches, School that provide a service-type res for settlers"""
+	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)
+
 
 """ AnimalFarm is not used for now (code may not work anymore)
 
@@ -67,19 +96,3 @@ class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 		super(AnimalFarm, self).remove()
 """
 
-
-class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
-	pass
-
-class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
-	"""Class for Churches, School that provide a service-type res for settlers"""
-	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)

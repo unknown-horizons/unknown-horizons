@@ -28,7 +28,8 @@ import horizons.main
 
 from horizons.util import ActionSetLoader, Point, decorators, Rect, Callback
 from horizons.command.building import Build
-from horizons.gui.mousetools import NavigationTool, SelectionTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.i18n import load_xml_translated
 from horizons.constants import RES
