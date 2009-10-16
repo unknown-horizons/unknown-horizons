@@ -383,7 +383,10 @@ class Job(object):
 	def __init__(self, obj, res, amount):
 		assert isinstance(res, int)
 		assert isinstance(amount, int)
-		assert amount > 0
+		assert amount >= 0
+		# can't assert that it's not 0, since the value is reset to the amount
+		# the collector acctually got at the target, which might be 0. yet for new jobs
+		# amount > 0 is necessary precondition.
 
 		if isinstance(obj, int):
 			self._obj_id = obj
