@@ -34,7 +34,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 
 class Animal(Producer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
-	and usually produce something (e.g. wool)."""
+	and usually produce something (e.g. wool, meat)."""
 	log = logging.getLogger('world.units.animal')
 
 

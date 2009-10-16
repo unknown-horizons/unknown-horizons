@@ -24,9 +24,9 @@ import logging
 import horizons.main
 from horizons.scheduler import Scheduler
 
-from horizons.gui.tabs import SettlerOverviewTab, InventoryTab
-from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingle
+from horizons.gui.tabs import SettlerOverviewTab
+from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.buildable import BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
@@ -244,14 +244,14 @@ class _CONSTANTS:
 			if key.startswith('_') or key[0].islower():
 				# print no constant to init here
 				continue
-			cls.__dict__[key] = int( horizons.main.db("SELECT value from settler.balance_values \
+			cls.__dict__[key] = int( db("SELECT value from settler.balance_values \
 			                                            WHERE name = ?", key.lower())[0][0])
 		cls._inited = True
 
 	HAPPINESS_INIT_VALUE = 0 # settlers start with this value
 	HAPPINESS_MIN_VALUE = 0 # settlers die at this value
 	HAPPINESS_MAX_VALUE = 0
-	HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT = 0 # if above this, inhabitants increase
-	HAPPINESS_INHABITANTS_DECREASE_LIMIT = 0 # if below this, inhabitants decrease
+	HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT = 0 # if above this, inhabitant number increases
+	HAPPINESS_INHABITANTS_DECREASE_LIMIT = 0 # if below this, inhabitant number decreases
 	HAPPINESS_LEVEL_UP_REQUIREMENT = 0 # happiness has to be over this for leveling up
 	HAPPINESS_LEVEL_DOWN_LIMIT = 0 # settlers level down if below this value

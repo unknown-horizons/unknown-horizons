@@ -35,7 +35,7 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
-                  'player_res_stored_greater', 'settlement_res_stored_greater')
+                  'player_res_stored_greater', 'settlement_res_stored_greater', 'time_passed')
 
 # conditions that can only be checked periodically
 _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
@@ -45,7 +45,8 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.player_balance_greater, \
                                 CONDITIONS.player_inhabitants_greater, \
                                 CONDITIONS.player_res_stored_greater,
-                                CONDITIONS.settlement_res_stored_greater)
+                                CONDITIONS.settlement_res_stored_greater,
+                                CONDITIONS.time_passed)
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -63,6 +64,7 @@ class CampaignEventHandler(object):
 		@param campaignfile: yaml file that describes the campaign
 		@throws Exception on yaml parse error
 		"""
+		self.inited = False
 		self.session = session
 		self._events = []
 		self._data = {}
@@ -77,7 +79,8 @@ class CampaignEventHandler(object):
 		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
 
 	def save(self, db):
-		db("INSERT INTO metadata(name, value) VALUES(?, ?)", "campaign_events", self.to_yaml())
+		if self.inited: # only save in case we have data applied
+			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "campaign_events", self.to_yaml())
 
 	def load(self, db):
 		data = db("SELECT value FROM metadata where name = ?", "campaign_events")
@@ -86,7 +89,8 @@ class CampaignEventHandler(object):
 		self._apply_data( self._parse_yaml( data[0][0] ) )
 
 	def schedule_check(self, condition):
-		"""Let check_events run in one tick for condition. Useful for lag prevetion."""
+		"""Let check_events run in one tick for condition. Useful for lag prevetion if time is a
+		critical factor, e.g. when the user has to wait for a function to return.."""
 		if self.session.world.inited: # don't check while loading
 			Scheduler().add_new_object(Callback(self.check_events, condition), self)
 
@@ -115,7 +119,7 @@ class CampaignEventHandler(object):
 	def _parse_yaml(string_or_stream):
 		try:
 			return yaml.load( string_or_stream )
-		except Exception, e: # catch anything yaml might throw
+		except Exception, e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
 	def _apply_data(self, data):
@@ -128,6 +132,7 @@ class CampaignEventHandler(object):
 				self._events.append( event )
 				for cond in event.conditions:
 					self._event_conditions[ cond.cond_type ].add( event )
+		self.inited = True
 
 	def _scheduled_check(self):
 		"""Check conditions that can only be checked periodically"""
@@ -169,7 +174,7 @@ def show_db_message(session, message_id):
 
 def do_win(session):
 	"""Called when player won"""
-	show_message(session, 'YOU_HAVE_WON')
+	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
 
 def do_lose(session):
@@ -230,6 +235,10 @@ def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
 	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.inventory[res] > limit)
+
+def time_passed(self, ticks):
+	"""Returns whether at least ticks ticks have passed since game start."""
+	return (Scheduler().cur_tick >= ticks)
 
 def _get_player_settlements(session):
 	"""Helper generator, returns settlements of local player"""

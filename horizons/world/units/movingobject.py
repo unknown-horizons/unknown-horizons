@@ -121,7 +121,8 @@ class MovingObject(ConcretObject):
 			# calculate the path
 			move_possible = self.path.calc_path(destination, destination_in_building)
 
-			self.log.debug("%s: move to %s; possible: %s", self, destination, move_possible)
+			self.log.debug("%s: move to %s; possible: %s; is_moving: %s", self, \
+			               destination, move_possible, self.is_moving())
 
 			if not move_possible:
 				raise MoveNotPossible
@@ -132,6 +133,7 @@ class MovingObject(ConcretObject):
 
 		# start moving by regular ticking (only if next tick isn't scheduled)
 		if not self.is_moving():
+			self.__is_moving = True
 			# start moving in 1 tick
 			# this assures that a movement takes at least 1 tick, which is sometimes subtly
 			# assumed e.g. in the collector code

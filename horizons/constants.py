@@ -114,8 +114,8 @@ class PRODUCTION:
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
-	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month". running costs and taxes are
-														# payed in this interval.
+	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
+														# payed in this interval).
 
 class SETTLER:
 	TAX_SETTINGS = Enum(u'medium', u'high')
