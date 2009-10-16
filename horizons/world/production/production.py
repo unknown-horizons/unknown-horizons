@@ -47,10 +47,13 @@ class Production(WorldObject):
 
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, prod_line_id, **kwargs):
+	def __init__(self, inventory, prod_line_id, auto_start=True, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self.__init(inventory, prod_line_id, PRODUCTION.STATES.waiting_for_res)
-		self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+		if auto_start:
+			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+		else:
+			self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
 
 	def __init(self, inventory, prod_line_id, state, pause_old_state = None):
 		"""
@@ -215,7 +218,7 @@ class Production(WorldObject):
 		Overwrite at owner!"""
 		pass
 
-	def on_production_finished(self, *args):
+	def on_production_finished(self):
 		"""Gets called when something has been produced"""
 		pass
 
@@ -255,7 +258,7 @@ class Production(WorldObject):
 		time = Scheduler().get_ticks(self._prod_line.time)
 		Scheduler().add_new_object(self._finished_producing, self, time)
 
-	def _finished_producing(self, continue_producing=True):
+	def _finished_producing(self, continue_producing=True, **kwargs):
 		"""Called when the production finishes."""
 		self.log.debug("%s finished", self)
 		self._give_produced_res()
@@ -329,8 +332,8 @@ class SingleUseProduction(Production):
 			assert callable(callback)
 		self.callback = callback
 
-	def _finished_producing(self):
-		super(SingleUseProduction, self)._finished_producing(continue_producing=False)
+	def _finished_producing(self, **kwargs):
+		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
 		self.state = PRODUCTION.STATES.done
 		self.on_remove()
 		if self.callback is not None:
@@ -407,13 +410,17 @@ class ProgressProduction(Production):
 		# set new progress
 		self.progress += part_of_whole_production
 
-	def _finished_producing(self):
-		super(ProgressProduction, self)._finished_producing()
+	def _finished_producing(self, **kwargs):
+		super(ProgressProduction, self)._finished_producing(**kwargs)
 		self.progress = 0
 		# reset prodline
 		self._prod_line = copy.copy(self.original_prod_line)
 
 class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
 	"""A production that needs to have a progress and also is only used one time."""
-	def _finished_producing(self):
-		super(SingleUseProgressProduction, self)._finished_producing()
+
+	def __init__(self, **kwargs):
+		super(SingleUseProgressProduction, self).__init__(**kwargs)
+
+	def _finished_producing(self, **kwargs):
+		super(SingleUseProgressProduction, self)._finished_producing(**kwargs)

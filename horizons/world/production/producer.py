@@ -81,7 +81,6 @@ class Producer(ResourceHandler):
 
 	def remove_production(self, production):
 		assert isinstance(production, Production)
-		production.remove_change_listener(self._on_production_change)
 		super(Producer, self).remove_production(production)
 
 	def finish_production_now(self):
@@ -172,8 +171,9 @@ class QueueProducer(Producer):
 				state is PRODUCTION.STATES.none) and\
 			   (len(self.production_queue) > 0)
 
-	def on_production_finished(self, *args):
+	def on_production_finished(self, production_line):
 		"""Callback used for the SingleUseProduction"""
+		self.remove_production(production_line)
 		Scheduler().add_new_object(self.start_next_production, self)
 
 	def start_next_production(self):
@@ -187,11 +187,6 @@ class QueueProducer(Producer):
 			self.add_production(self.production_class(inventory=self.inventory, prod_line_id=production_line_id, callback=self.on_production_finished))
 		else:
 			self.set_active(active=False)
-
-	def add_production(self, production):
-		super(QueueProducer, self).add_production(production)
-		production.on_production_finished = self.on_production_finished
-
 
 class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 	"""Class for building that produce units.
@@ -214,9 +209,9 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 			return production.progress
 		return 0 # No production available
 
-	def on_production_finished(self, *args):
+	def on_production_finished(self, production_line):
 		self.__create_unit()
-		super(UnitProducerBuilding, self).on_production_finished()
+		super(UnitProducerBuilding, self).on_production_finished(production_line)
 
 	#----------------------------------------------------------------------
 	def __create_unit(self):
