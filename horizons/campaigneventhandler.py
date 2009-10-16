@@ -164,9 +164,16 @@ class CampaignEventHandler(object):
 ###
 # Campaign Actions
 
-def show_message(session, message_text):
-	"""Shows a custom message in the messagewidget"""
-	session.ingame_gui.message_widget.add_custom(None, None, message_text)
+def show_message(session, *message):
+	"""Shows a custom message in the messagewidget. If you pass more than one message, they
+	will be shown after each other after a delay"""
+	delay = 6
+	delay_ticks = Scheduler().get_ticks(delay)
+	delay_iter = 1
+	for msg in reversed(message):
+		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, \
+		                                    None, None, msg), None, runin=delay_iter)
+		delay_iter += delay_ticks
 
 def show_db_message(session, message_id):
 	"""Shows a message specified in the db on the ingame message widget"""

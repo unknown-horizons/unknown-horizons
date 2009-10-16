@@ -73,7 +73,6 @@ class Producer(ResourceHandler):
 		self.log.debug('%s: added production line %s', self, production.get_production_line_id())
 		production.on_remove = Callback(self.remove_production, production)
 		if production.is_paused():
-			pass
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:
 			self._productions[production.get_production_line_id()] = production
@@ -145,7 +144,13 @@ class QueueProducer(Producer):
 
 	def __init__(self, **kwargs):
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
+
+	def __init(self):
 		self.production_queue = []
+
+	def load(self, db, worldid):
+		super(QueueProducer, self).load(db, worldid)
+		self.__init()
 
 	def add_production_by_id(self, production_line_id, production_class = Production):
 		"""Convenience method.
@@ -153,38 +158,38 @@ class QueueProducer(Producer):
 		@param production_class: Subclass of Production that does the production. If the object
 		                         has a production_class-member, this will be used instead.
 		"""
-		print "Add production"
+		#print "Add production"
 		self.production_queue.append(production_line_id)
 		self.start_next_production()
-
 
 	def check_next_production_startable(self):
 		# See if we can start the next production,  this only works if the current
 		# production is done
-		print "Check production"
+		#print "Check production"
 		state = self._get_current_state()
 		return (state is PRODUCTION.STATES.done or\
 				state is PRODUCTION.STATES.none) and\
 			   (len(self.production_queue) > 0)
 
-
-	def on_production_finished(self, production_line):
+	def on_production_finished(self, *args):
 		"""Callback used for the SingleUseProduction"""
-		self.remove_production(production_line)
 		Scheduler().add_new_object(self.start_next_production, self)
-
 
 	def start_next_production(self):
 		"""Starts the next production that is in the queue, if there is one."""
-		print "Start next?"
+		#print "Start next?"
 		if self.check_next_production_startable():
-			print "yes"
+			#print "yes"
 			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			self.add_production(self.production_class(inventory=self.inventory, prod_line_id=production_line_id, callback=self.on_production_finished))
 		else:
 			self.set_active(active=False)
+
+	def add_production(self, production):
+		super(QueueProducer, self).add_production(production)
+		production.on_production_finished = self.on_production_finished
 
 
 class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
@@ -208,9 +213,9 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 			return production.progress
 		return 0 # No production available
 
-	def on_production_finished(self, production_line):
+	def on_production_finished(self, *args):
 		self.__create_unit()
-		super(UnitProducerBuilding, self).on_production_finished(production_line)
+		super(UnitProducerBuilding, self).on_production_finished()
 
 	#----------------------------------------------------------------------
 	def __create_unit(self):

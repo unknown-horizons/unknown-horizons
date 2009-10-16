@@ -30,7 +30,9 @@ from horizons.util import WorldObject
 from horizons.constants import LAYERS, GROUND
 
 class SurfaceTile(WorldObject):
-	def __init__(self, session, x, y, is_water=False):
+	is_water = False
+	layer = LAYERS.GROUND
+	def __init__(self, session, x, y):
 		"""
 		@param session: Session instance
 		@param x: int x position the ground is created.
@@ -39,37 +41,25 @@ class SurfaceTile(WorldObject):
 		super(SurfaceTile, self).__init__()
 		self.x = x
 		self.y = y
-		self.is_water = is_water
 
 		self.settlement = None
 		self.blocked = False
 		self.object = None
 
-		layer = LAYERS.GROUND
-		if is_water:
-			layer = LAYERS.WATER
-		self._instance = session.view.layers[layer].createInstance(self._object, \
+		self._instance = session.view.layers[self.layer].createInstance(self._object, \
 		                                                fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
 
-		self.is_water = False
 
 class Ground(SurfaceTile):
-	def __init__(self, *args, **kwargs):
-		"""
-		@param x: int x position the ground is created.
-		@param y: int y position the ground is created.
-		"""
-		super(Ground, self).__init__(*args, **kwargs)
+	"""Default land surface"""
+	pass
 
 class Water(SurfaceTile):
-	def __init__(self, *args, **kwargs):
-		"""
-		@param x: int x position the water is created.
-		@param y: int y position the water is created.
-		"""
-		kwargs['is_water'] = True
-		super(Water, self).__init__(*args, **kwargs)
+	"""Default water surface"""
+	is_water = True
+	layer = LAYERS.WATER
+
 
 class GroundClass(type):
 	"""

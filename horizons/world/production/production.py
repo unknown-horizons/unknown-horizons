@@ -215,7 +215,7 @@ class Production(WorldObject):
 		Overwrite at owner!"""
 		pass
 
-	def on_production_finished(self):
+	def on_production_finished(self, *args):
 		"""Gets called when something has been produced"""
 		pass
 
@@ -415,4 +415,5 @@ class ProgressProduction(Production):
 
 class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
 	"""A production that needs to have a progress and also is only used one time."""
-	pass
+	def _finished_producing(self):
+		super(SingleUseProgressProduction, self)._finished_producing()

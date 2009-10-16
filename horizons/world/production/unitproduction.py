@@ -31,7 +31,8 @@ class UnitProduction(SingleUseProgressProduction):
 	def _give_produced_res(self):
 		"""This needs to be overridden as we also have to produce the unit."""
 		super(UnitProduction, self)._give_produced_res()
-		self.__create_unit()
+		#self.__create_unit()
+		# moved to producer.py
 
-	def __create_unit(self):
-		"""Private function that creates a unit in the home_buildings radius."""
+	#def __create_unit(self):
+	#	"""Private function that creates a unit in the home_buildings radius."""
