@@ -2,7 +2,7 @@
 events:
 -
   actions:
-  - {type: message, arguments:['a', 'b', 'c']} 
+  - {type: message, arguments:['a', 'b']} 
   conditions:
   - type: time_passed
     arguments: [2]
