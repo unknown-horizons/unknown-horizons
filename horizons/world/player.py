@@ -107,7 +107,7 @@ class HumanPlayer(Player):
 			coords = (settler.position.center().x, settler.position.center().y)
 			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
-			                                                    {'level': settler.level})
+			                                                    {'level': settler.level+1})
 			self.session.ingame_gui._player_settler_level_change_listener()
 		return level_up
 
