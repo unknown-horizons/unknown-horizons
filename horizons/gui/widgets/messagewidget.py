@@ -70,7 +70,7 @@ class MessageWidget(LivingObject):
 		sound = sound[0][0] if len(sound) > 0 else None
 		self._add_message(Message(x, y, id, self.current_tick, message_dict=message_dict), sound)
 
-	def add_custom(self, x, y, messagetext, visible_for=30, sound=None, icon_id=1):
+	def add_custom(self, x, y, messagetext, visible_for=40, sound=None, icon_id=1):
 		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id), sound)
 
 	def _add_message(self, message, sound = None):

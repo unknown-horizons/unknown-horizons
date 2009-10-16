@@ -58,17 +58,21 @@ class SingleplayerMenu(object):
 				del eventMap['showCampaign']
 				self.current.findChild(name="showCampaign").marked = True
 				self.current.files, maps_display = SavegameManager.get_scenarios()
-				def _update_description():
-					self.current.findChild(name="map_description").text = unicode( \
-					  CampaignEventHandler.get_description_from_file( self._get_selected_map() ))
-					self.current.findChild(name="map_description").parent.adaptLayout()
-				self.current.findChild(name="maplist").capture(_update_description)
 
 			# get the map files and their display names
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
+
+				if show == 'campaign': # update description for campaign
+					def _update_description():
+						self.current.findChild(name="map_description").text = unicode( \
+						  CampaignEventHandler.get_description_from_file( self._get_selected_map() ))
+						self.current.findChild(name="map_description").parent.adaptLayout()
+					self.current.findChild(name="maplist").capture(_update_description)
+					_update_description()
+
 
 		self.current.mapEvents(eventMap)
 

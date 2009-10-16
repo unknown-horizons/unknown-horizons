@@ -2,10 +2,10 @@
 events:
 -
   actions:
-  - {type: win} 
+  - {type: message, arguments:['a', 'b', 'c']} 
   conditions:
-  - type: settlements_num_greater
-    arguments: [0]
+  - type: time_passed
+    arguments: [2]
 mapfile: development.sqlite
 description: |
  First challenge:

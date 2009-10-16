@@ -115,6 +115,11 @@ class CampaignEventHandler(object):
 		"""Returns the description from a yaml file"""
 		return cls._parse_yaml( open(filename, 'r') )['description']
 
+	def drop_events(self):
+		"""Removes all events. Useful when player lost."""
+		while self._events:
+			self._remove_event(self._events[0])
+
 	@staticmethod
 	def _parse_yaml(string_or_stream):
 		try:
@@ -170,7 +175,7 @@ def show_message(session, *message):
 	delay = 6
 	delay_ticks = Scheduler().get_ticks(delay)
 	delay_iter = 1
-	for msg in reversed(message):
+	for msg in message:
 		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, \
 		                                    None, None, msg), None, runin=delay_iter)
 		delay_iter += delay_ticks
@@ -186,8 +191,10 @@ def do_win(session):
 
 def do_lose(session):
 	"""Called when player lost"""
-	#session.gui.show_popup("You lost!", "You have lost. Please give us money so we can create a better 'you have lost'-message")
-	pass
+	show_message(session, 'You failed the scenario.')
+	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/szenario/loose.ogg')
+	# drop events after this event
+	Scheduler().add_new_object(session.campaign_eventhandler.drop_events, session.campaign_eventhandler)
 
 ###
 # Campaign Conditions
