@@ -144,6 +144,7 @@ class QueueProducer(Producer):
 
 	def __init__(self, **kwargs):
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
+		self.__init()
 
 	def __init(self):
 		self.production_queue = []
