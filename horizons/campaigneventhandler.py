@@ -236,9 +236,9 @@ def settlement_res_stored_greater(session, res, limit):
 	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.inventory[res] > limit)
 
-def time_passed(self, ticks):
-	"""Returns whether at least ticks ticks have passed since game start."""
-	return (Scheduler().cur_tick >= ticks)
+def time_passed(self, secs):
+	"""Returns whether at least secs seconds have passed since game start."""
+	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
 
 def _get_player_settlements(session):
 	"""Helper generator, returns settlements of local player"""

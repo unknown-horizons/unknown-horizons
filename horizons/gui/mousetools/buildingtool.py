@@ -26,11 +26,10 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Circle, Point, decorators, Rect, Callback
+from horizons.util import ActionSetLoader, Point, decorators, Rect, Callback
 from horizons.command.building import Build
+from horizons.gui.mousetools import NavigationTool, SelectionTool
 from horizons.command.sounds import PlaySound
-from navigationtool import NavigationTool
-from selectiontool import SelectionTool
 from horizons.i18n import load_xml_translated
 from horizons.constants import RES
 from horizons.extscheduler import ExtScheduler
@@ -95,14 +94,14 @@ class BuildingTool(NavigationTool):
 		there is a tile in the ships radius."""
 		self.renderer.removeAllColored()
 		for island in self.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
-				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
-					# check that there is no other player's settlement
-					free = (tile.settlement is None or \
-									tile.settlement.owner == self.session.world.player)
-					self.renderer.addColored( \
-						tile._instance, *(self.buildable_color if free else (0, 0, 0)))
-					if free and tile.object is not None:
-						self.renderer.addColored(tile.object._instance, *self.buildable_color)
+			for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
+				# check that there is no other player's settlement
+				free = (tile.settlement is None or \
+								tile.settlement.owner == self.session.world.player)
+				self.renderer.addColored( \
+					tile._instance, *(self.buildable_color if free else (0, 0, 0)))
+				if free and tile.object is not None:
+					self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
 		if hasattr(self._class, "deselect_building"):
@@ -128,12 +127,6 @@ class BuildingTool(NavigationTool):
 			self.gui.findChild(name='building_name').stylize('headline')
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
-			head_box = self.gui.findChild(name='head_box')
-			head_box.position = (
-		    self.gui.size[0]/2 - head_box.size[0]/2,
-		    head_box.position[1]
-		    )
-			head_box.findChild(name='head_box').adaptLayout()
 			self.gui.position = (
 				horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
 				157
@@ -143,6 +136,13 @@ class BuildingTool(NavigationTool):
 		# set building name in gui
 		self.gui.findChild(name='building_name').text = u'  ' + unicode(self._class.name)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
+		head_box = self.gui.findChild(name='head_box')
+		head_box.adaptLayout() # recalculates size for new content
+		head_box.position = ( # calculate and set new center (pychan doesn't support it)
+		  self.gui.size[0]/2 - head_box.size[0]/2,
+	    head_box.position[1]
+	    )
+		head_box.adaptLayout()
 		self.draw_gui()
 		self.session.view.add_change_listener(self.draw_gui)
 
@@ -170,7 +170,6 @@ class BuildingTool(NavigationTool):
 		# If only one building is in the preview and the position hasn't changed => don't preview
 		# Otherwise the preview is redrawn on every mouse move
 		if len(new_buildings) == 1 and len(self.buildings) == 1:
-			single_building = new_buildings[0]
 			rec_new = Rect.init_from_topleft_and_size(new_buildings[0]['x'], new_buildings[0]['y'], self._class.size[0]-1, self._class.size[1]-1)
 			rec_old = Rect.init_from_topleft_and_size(self.buildings[0]['x'], self.buildings[0]['y'], self._class.size[0]-1, self._class.size[1]-1)
 			if rec_new == rec_old:
