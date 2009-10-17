@@ -52,4 +52,9 @@ for d in installed_dirs:
         pref = i if len(pref) == 0 else "%s/%s" % (pref, i)
         remd.append( ('  RMDir "$INSTDIR/%s"' % pref).replace('/', '\\'))
 
-file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % ( '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) > len(y) else -1)))))
+if len(sys.argv) > 1:
+    version = sys.argv[1]
+else:
+    version = raw_input('Version: ')
+
+file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (version, '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) > len(y) else -1)))))

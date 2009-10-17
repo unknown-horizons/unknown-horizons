@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Unknown Horizons"
-!define PRODUCT_VERSION "2009.2"
+!define PRODUCT_VERSION "%s"
 !define PRODUCT_PUBLISHER "The Unknown Horizons Team"
 !define PRODUCT_WEB_SITE "http://www.unknown-horizons.org"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
