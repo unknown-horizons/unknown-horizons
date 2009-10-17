@@ -991,7 +991,7 @@ msgid ""
 "Grows field \n"
 "crops and raises \n"
 "livestock."
-msgstr "Farma: \n"
+msgstr "Farma:"
 
 #: horizons/i18n/guitranslations.py:256
 #: test.py:178
