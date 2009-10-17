@@ -202,7 +202,7 @@ class SettlerOverviewTab(OverviewTab):
 				unicode(self.instance.inventory[RES.HAPPINESS_ID]) + u'/100'
 		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
 			self.instance.inhabitants, self.instance.inhabitants_max ) )
-		self.widget.child_finder('level').text = unicode(self.instance.level)
+		self.widget.child_finder('level').text = unicode(self.instance.level + 1)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		super(SettlerOverviewTab, self).refresh()
