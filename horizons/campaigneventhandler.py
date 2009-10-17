@@ -177,7 +177,7 @@ def show_message(session, *message):
 	delay_iter = 1
 	for msg in message:
 		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, \
-		                                    None, None, msg), None, runin=delay_iter)
+		                                    None, None, msg, visible_for=90), None, runin=delay_iter)
 		delay_iter += delay_ticks
 
 def show_db_message(session, message_id):
