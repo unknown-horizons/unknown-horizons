@@ -23,6 +23,8 @@ for root, dirs, files in os.walk('.'):
         dirs.remove('.svn')
     if 'development' in dirs:
         dirs.remove('development')
+    if '.git' in dirs:
+        dirs.remove('.git')
     if 'screenshots' in dirs:
         dirs.remove('screenshots')
     if not len(files) == 0:
@@ -45,6 +47,9 @@ for f in installed_files:
     remf.append( ('  Delete "$INSTDIR/%s"' % f).replace('/', '\\'))
 
 for d in installed_dirs:
-      remd.append( ('  RMDir "$INSTDIR/%s"' % d).replace('/', '\\'))
+    pref = ""
+    for i in d.split('/'):
+        pref = i if len(pref) == 0 else "%s/%s" % (pref, i)
+        remd.append( ('  RMDir "$INSTDIR/%s"' % pref).replace('/', '\\'))
 
-file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % ( '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(remd))))
+file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % ( '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) > len(y) else -1)))))
