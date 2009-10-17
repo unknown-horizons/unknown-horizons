@@ -192,7 +192,7 @@ class Message(object):
 		icon = icon_id if icon_id else horizons.main.db('SELECT icon FROM data.message where id_string = ?', id)[0][0]
 		self.up_image, self.down_image, self.hover_image = horizons.main.db('SELECT up_image, down_image, hover_image from data.message_icon WHERE color=? AND icon_id = ?', 1, icon)[0]
 		if message is not None:
-			assert isinstance(message, str)
+			assert isinstance(message, str) or isinstance(message, unicode)
 			self.message = message
 		else:
 			text = horizons.main.db('SELECT text from data.message WHERE id_string=?', id)[0][0]
