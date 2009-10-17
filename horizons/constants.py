@@ -56,9 +56,9 @@ class VERSION:
 		else:
 			return unicode(version)
 
-	#RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
-	RELEASE_NAME    = _("Unknown Horizons Snapshot %s")
-	RELEASE_VERSION = _set_version()
+	RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
+	#RELEASE_NAME    = _("Unknown Horizons Snapshot %s")
+	RELEASE_VERSION = '2009.2'
 
 	@staticmethod
 	def string():
