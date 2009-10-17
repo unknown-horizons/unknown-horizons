@@ -6,14 +6,14 @@ events:
   conditions:
    - type: settlements_num_greater
      arguments: [0]
-   - type: settler_level_greater
+   - type: settlement_inhabitants_greater
      arguments: [8]
    - type: building_num_of_type_greater
-     arguments: [7, 0]
+     arguments: [3, 3]
 
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Welcome to Unkown Horizons! To move the ship, select it and right click on the location you want it to go to.", "Once you're near the coast, build a Branch Office there."]}
+   - {type: message, arguments: ["Welcome to Unkown Horizons!", "To move the ship, select it and right click on the location you want it to go to.", "Once you're near the coast, build a Branch Office there."]}
   conditions: 
    - type: time_passed
      arguments: [0] 
@@ -34,7 +34,7 @@ events:
 
 - # Tell the player to build the first two buildings - lumberjack huts
   actions:
-   - {type: message, arguments: ["Now that there are some resources in your Branch Office, you can build a few buildings", "First, build two Lumberjacks. In order to do so, go to the Build Menu and select Lumberjack.", "Place the Lumberjack near some trees and build a road to his hut."]}
+   - {type: message, arguments: ["Now that there are some resources in your Branch Office,--", "--you can build a few buildings", "First, build two Lumberjacks. In order to do so,--", "--go to the Build Menu and select Lumberjacks Hut.", "Place the Lumberjack near some trees and build a road to his hut."]}
   conditions:
    - type: settlement_res_stored_greater
      arguments: [4, 9]
@@ -52,14 +52,14 @@ events:
 
 - # Tell the player to build some food supply
   actions:
-   - {type: message, arguments: ["Now, that you finished both of your lumberjack huts, it's time to supply your people with food.", "First, build one farm and connect it with a road."]}
+   - {type: message, arguments: ["Now, that you finished both of your lumberjack huts,--", "--it's time to supply your people with food.", "First, build one farm and connect it with a road."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 1]
 
 - # Farms finished, some fields now
   actions:
-   - {type: message, arguments: ["Since the farm is finished now, you can build some fields. Build 4 potato fields and 1 pasture.", "Be sure to check whether they're in the area covered by the farm."]}
+   - {type: message, arguments: ["Since the farm is finished now, you can build some fields.", "Build 4 potato fields and 1 pasture.", "Be sure to check whether they're in the area covered by the farm."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [20, 0]
@@ -79,6 +79,13 @@ events:
   conditions:
    - type: building_num_of_type_greater
      arguments: [4, 0]
+
+- # And tents for settlers
+  actions:
+   - {type: message, arguments: ["All settlers need to live somewhere, and so they need tents. Build 4 of them.", "Always remember to look at the settlers tab, to know what they require."]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [7, 0]
 
 mapfile: development.sqlite
 description: |
