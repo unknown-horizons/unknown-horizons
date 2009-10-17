@@ -15,7 +15,7 @@
 			<Label name="name_label" position="0,0" text="Name:" /><Label name='name' position="55,0" text="" />
 			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />-->
 			<Label position="0,25" name="tax_label" text="Taxes:" />
-			<ScrollArea position="55,25" min_size="100,100"><ListBox name="tax_list"/></ScrollArea>
+			<Slider position="55,25" size="140,20" name="tax_slider" orientation="0" />
 		</Container>
 	</Container>
 </Container>

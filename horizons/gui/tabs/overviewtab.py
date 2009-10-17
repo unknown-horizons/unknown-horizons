@@ -228,12 +228,18 @@ class MarketPlaceOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = u"Market Place Overview"
-		self.widget.distributeInitialData({'tax_list' : [ str(s) for s in SETTLER.TAX_SETTINGS ]})
+		self.widget.child_finder('tax_slider').setScaleStart(SETTLER.TAX_SETTINGS_MIN)
+		self.widget.child_finder('tax_slider').setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
+		self.widget.child_finder('tax_slider').setStepLength(SETTLER.TAX_SETTINGS_STEP)
+		self.widget.child_finder('tax_slider').setValue(self.instance.settlement.tax_setting)
+		self.widget.child_finder('tax_slider').stylize('book')
 
 	def refresh(self):
-		self.widget.child_finder('tax_list').capture(self.on_tax_widget_change)
+		self.widget.child_finder('tax_slider').capture(self.on_tax_widget_change)
 		super(MarketPlaceOverviewTab, self).refresh()
 
 	def on_tax_widget_change(self):
-		new_tax_num = self.widget.collectData('tax_list')
-		self.instance.settlement.tax_setting = SETTLER.TAX_SETTINGS_VALUES[new_tax_num]
+		new_tax_num = self.widget.child_finder('tax_slider').getValue()
+		new_tax_num = round(new_tax_num/0.5) * 0.5
+		self.widget.child_finder('tax_slider').setValue(new_tax_num)
+		self.instance.settlement.tax_setting = new_tax_num
