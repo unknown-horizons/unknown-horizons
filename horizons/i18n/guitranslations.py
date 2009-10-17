@@ -61,6 +61,7 @@ def set_translations():
 			"headline_thanks"             : _("SPECIAL THANKS to:"),
 			"fife_team_lbl"               : _("The FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
+			"version_label"               : VERSION.string(),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),
@@ -108,6 +109,7 @@ def set_translations():
 			"headline"                    : _("Quit Session"),
 			"ConfirmQuitLabel"            : _("Are you sure you want to abort the running session?")},
 		"mainmenu.xml" : {
+			"version_label"               : VERSION.string(),
 			"start"                       : _("Singleplayer"),
 			"start_multi"                 : _("Multiplayer"),
 			"credits"                     : _(" Credits "),

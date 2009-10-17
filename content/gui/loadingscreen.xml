@@ -3,5 +3,5 @@
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
 	<Icon image="content/gui/images/misc/load.png" position="387,316"/>
 	<Label name="loading_label" text="Loading ..." position="440,360" font="libertine_large_load" min_size="100,70"/>
-	<Label name="version_label" text="Unknown Horizons Alpha 2009.1" font="libertine_mainmenu" position="760,735"/>
+	<Label name="version_label" text="Unknown Horizons Alpha" font="libertine_mainmenu" position="760,735"/>
 </Container>
