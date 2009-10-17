@@ -2,55 +2,70 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
-2009-10-1X: Milestone 2009.2
+2009-10-18: Milestone 2009.2
 * General
   * New: The game creates logfiles now; You can find them in your user folder
          in ".unknown-horizons/log"
   * New: Wild animals graze on the islands
-  * New: Hunter's tent which produces food from wild animals
+  * New: Hunters tent which produces food from wild animals
   * New: Added a function to load a map directly via the command line
   * New: The free trader will only visit your settlement if you place the signal
          fire near your branch office 
   * New: Some new minor options in the market place menu
-  * New: Allow changeing the tax rate  
+  * New: Allow changing the tax rate  
   * New: It's now possible to change the name of your ship or settlement
   * New: Started implementing the second settlement level: settlers
   * New: Added potato field as food source
   * New: Working autosave function
   * New: Implemented autorotate for buildings on coastlines
   * New: The ship is now placed randomly  
-  * New: If the settler's happiness falls below a specific level, the tent
+  * New: If the settlers happiness falls below a specific level, the tent
          changes to a ruin
-  * New: Implemented a player's name and color 
-  * New: Added a school
-  * New: Added shugar fields  
+  * New: Implemented a players name and color 
+  * New: Added a school (no graphic at the moment)
+  * New: Added sugar fields (no graphic at the moment)
   * New: Added a few messages that informs the player about different grievances
   * New: Started work on random maps
-  * New: Started work on the scenario system                                 
-  * Change: The game uses bigger water-tiles now to improove the performance
+  * New: Started work on the scenario system   
+  * New: Implemented a mini tutorial
+  * New: Added account tab for market which shows the financial overview of the settlement  
+  * New: Fade out nearby buildings/trees while building
+  * New: System for settlers happieness, consumation and taxation 
+  * Change: The game uses bigger water-tiles now to improve the performance
   * Change: Completely changed the farm system: There is only one farm building
             which can cultivate any kind of field including sheep-runs 
-  * Change: Screenshots are now saved into the user's folder       
+  * Change: Screenshots are now saved into the users folder  
   * Fix: Changing the colordepth to 32 Bit works now without a crash
-  * Fix: Optimized the code in general
+  * Fix: Many code and speed optimizations in general
   * Fix: The savegames work properly now (small trees, …)
   * Fix: Player's ship got stuck on the left lower side of the map in some cases
-  * Fix: Changed some stuff releating to the translation 
+  * Fix: Changed some stuff relating to the translation 
   * Fix: Fixed the temporary freeze if the player tried to send a ship onto land        
     
 * Graphics and GUI
   * New: Added tooltips
   * New: Button to resume a paused game in the pause menu
-  * New: Button to switch to the distruction mode
-  * New: Added a minimap      
+  * New: Button to switch to destruction mode
+  * New: Added a clickable minimap 
+  * New: Added graphics for potato field and pasture
+  * New: Added message buttons for different kinds of messages
+  * New: Added graphic for tent ruin
+  * New: Highlight the currently selected quantity of goods in exchange menu
+  * New: Gamespeed is now displayed in the upper right corner
+  * New: Added icon for farm and potato field
+  * Change: Disabled the inventory of settlers  
   * Change: Changed the style of the pause menu
-  * Change: Improoved/replaced a few building graphics
-  * Change: Rearraanged the building menu
-  * Change: Changed some other GUI-menus
-  * Fix: Fixed the size of the font of the city name      
+  * Change: Improved building graphics of Church and Farm
+  * Change: Rearanged the building menu
+  * Change: Changed some other GUI menus
+  * Change: Added a production line with a button to disable production
+  * Change: Changed buttons for selecting quantity in exchange menu
+  * Change: Unused required ressource icons in ressource bar are now hidden
 
 * Sound
-  * New: Added sounds for some buildings
+  * New: Added ambient sounds for chapel and fisher
+  * New: Added sound when founding a new settlement
+  * New: Added sound when winning a mission
 
 * Translations
   * New: Added polish translation
