@@ -57,4 +57,4 @@ if len(sys.argv) > 1:
 else:
     version = raw_input('Version: ')
 
-file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (version, '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) > len(y) else -1)))))
+file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (version, '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) < len(y) else -1)))))
