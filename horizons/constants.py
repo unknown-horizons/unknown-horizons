@@ -56,7 +56,7 @@ class VERSION:
 		else:
 			return unicode(version)
 
-	RELEASE_NAME   = _("Unknwon Horizons Alpha %s")
+	RELEASE_NAME   = _("Unknown Horizons Alpha %s")
 	#RELEASE_NAME    = _("Unknown Horizons Snapshot %s")
 	RELEASE_VERSION = '2009.2'
 
