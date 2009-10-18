@@ -34,7 +34,7 @@ events:
 
 - # Tell the player to build the first two buildings - lumberjack huts
   actions:
-   - {type: message, arguments: ["Now that there are some resources in your Branch Office,--", "--you can build a few buildings", "First, build two Lumberjacks. In order to do so,--", "--go to the Build Menu and select Lumberjack's Hut.", "Place the Lumberjack near some trees and build a road to his hut."]}
+   - {type: message, arguments: ["Now that there are some resources in your Branch Office,…", "…you can build a few buildings", "First, build two Lumberjacks. In order to do so,…", "…go to the Build Menu and select Lumberjack's Hut.", "Place the Lumberjack near some trees and build a road to his hut."]}
   conditions:
    - type: settlement_res_stored_greater
      arguments: [4, 9]
@@ -52,7 +52,7 @@ events:
 
 - # Tell the player to build some food supply
   actions:
-   - {type: message, arguments: ["Now, that you have built both of your lumberjack huts,--", "--it is time to supply your people with food.", "First, build a farm and connect it to a road."]}
+   - {type: message, arguments: ["Now, that you have built both of your lumberjack huts,…", "…it is time to supply your people with food.", "First, build a farm and connect it to a road."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 1]
