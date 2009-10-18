@@ -2,18 +2,18 @@ events:
 - # Winning conditions
   actions:
    - {type: win} 
-   - {type: message, arguments: ["Congratulations! Now you know the basics of Unknown Horizons!"]}
+   - {type: message, arguments: ["Congratulations! Now your settlement has 50 inhabitants.", "You have reached the end of this tutorial.", "Now you are ready to meet new challenges."]}
   conditions:
    - type: settlements_num_greater
      arguments: [0]
    - type: settlement_inhabitants_greater
-     arguments: [8]
+     arguments: [50]
    - type: building_num_of_type_greater
      arguments: [3, 3]
 
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Welcome to Unkown Horizons!", "To move the ship, select it and right click on the location you want it to go to.", "Once you're near the coast, build a Branch Office there."]}
+   - {type: message, arguments: ["Welcome to Unkown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there."]}
   conditions: 
    - type: time_passed
      arguments: [0] 
@@ -27,14 +27,14 @@ events:
 
 - # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
-   - {type: message, arguments: ["Now that you built Branch Office, you need to move some of the resources to it.", "Select the ship and go into the Ship Inventory menu.", "Select Load/Unload and move the resources to the Branch Office by clicking on them."]}
+   - {type: message, arguments: ["Now that you built the Branch Office, you need to move some of the resources to it.", "Select the ship and go into the Ship Inventory menu.", "Select Load/Unload and move the resources to the Branch Office by clicking on them."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [1, 0]
 
 - # Tell the player to build the first two buildings - lumberjack huts
   actions:
-   - {type: message, arguments: ["Now that there are some resources in your Branch Office,--", "--you can build a few buildings", "First, build two Lumberjacks. In order to do so,--", "--go to the Build Menu and select Lumberjacks Hut.", "Place the Lumberjack near some trees and build a road to his hut."]}
+   - {type: message, arguments: ["Now that there are some resources in your Branch Office,--", "--you can build a few buildings", "First, build two Lumberjacks. In order to do so,--", "--go to the Build Menu and select Lumberjack's Hut.", "Place the Lumberjack near some trees and build a road to his hut."]}
   conditions:
    - type: settlement_res_stored_greater
      arguments: [4, 9]
@@ -52,21 +52,21 @@ events:
 
 - # Tell the player to build some food supply
   actions:
-   - {type: message, arguments: ["Now, that you finished both of your lumberjack huts,--", "--it's time to supply your people with food.", "First, build one farm and connect it with a road."]}
+   - {type: message, arguments: ["Now, that you have built both of your lumberjack huts,--", "--it is time to supply your people with food.", "First, build a farm and connect it to a road."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 1]
 
 - # Farms finished, some fields now
   actions:
-   - {type: message, arguments: ["Since the farm is finished now, you can build some fields.", "Build 4 potato fields and 1 pasture.", "Be sure to check whether they're in the area covered by the farm."]}
+   - {type: message, arguments: ["The farm is finished now, so you can build some fields.", "Build 4 potato fields and 1 pasture.", "Make sure they are in the area covered by the farm."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [20, 0]
 
 - # And fields are also done. Let's do something about markets
   actions:
-   - {type: message, arguments: ["Now that you finished building farms, you need to build a Main Square.", "Settlers need it for acquiring their tools and resources."]}
+   - {type: message, arguments: ["Now that you finished building farms, you need to build a Main Square.", "Settlers fetch their tools and resources from there."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [18, 0]
@@ -75,17 +75,38 @@ events:
 
 - # Weavers for processing the stuff from pastures
   actions:
-   - {type: message, arguments: ["Now that you do have some wool, you need a Weaver to make textile from it.", "Build one and ensure he's connected by road as well."]}
+   - {type: message, arguments: ["Now that you do have some wool, you need a Weaver to make fabric from it.", "Build one and ensure he is connected to a road as well."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [4, 0]
 
 - # And tents for settlers
   actions:
-   - {type: message, arguments: ["All settlers need to live somewhere, and so they need tents. Build 4 of them.", "Always remember to look at the settlers tab, to know what they require."]}
+   - {type: message, arguments: ["Settlers need to live somewhere, so they need tents. Build 4 of them.", "Always remember to look at the settler's tab, to see what they require."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [7, 0]
+     
+- # Build a signal fire
+  actions:
+   - {type: message, arguments: ["Can you see the ship passing your island from time by time?", "This is the ship of the Free Trader, he will supply your settlement with necessary goods.", "Create a beacon beside the branch office, to show him the way to your settlement."]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [3, 3]
+
+- # Trading
+  actions:
+   - {type: message, arguments: ["Fine! The Free Trader will now stop by the branch office from time by time.", "In the menu of the Branch Office you can specify which amount of goods to buy or sell.", "Buy 25 tonnes of tools now!"]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [6, 0]
+
+- # Finish
+  actions:
+   - {type: message, arguments: ["You have enough tools!", "Now, you can sell excessive goods at the Free Trader.", "Your settlement has house 50 inhabitants to finish the game."]}
+  conditions:
+   - type: settlement_res_stored_greater
+     arguments: [25, 6] 
 
 mapfile: development.sqlite
 description: |
