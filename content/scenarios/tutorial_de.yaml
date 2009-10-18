@@ -1,38 +1,38 @@
 events:
-- # Winning conditions
+- # Siegesbedingungen
   actions:
    - {type: win} 
-   - {type: message, arguments: ["Herzlichen Glückwunsch! Ihr könnt Euch nun einer echten Mission zuwenden."]}
+   - {type: message, arguments: ["Herzlichen Glückwunsch! Euer Dorf beherbergt nun 50 Einwohner!.", "Damit habt Ihr das Ende dieses Tutoriums erreicht.", "Nun könnt Ihr Euch echten Herausforderungen stellen."]}
   conditions:
    - type: settlements_num_greater
      arguments: [0]
    - type: settlement_inhabitants_greater
-     arguments: [8]
+     arguments: [50]
    - type: building_num_of_type_greater
      arguments: [3, 3]
 
-- # Show a message after starting the game (how to move)
+- # Zeige eine Nachriht nach Spielbeginn (wie man sein Schiff bewegt)
   actions:
    - {type: message, arguments: ["Herzlich Willkommen bei Unknown Horizons!", "Um Euer Schiff zu bewegen, klickt es an und wählt das Ziel mit einem Rechtsklick.", "Sobald Euer Schiff nahe der Küste ist, errichtet dort ein Kontor."]}
   conditions: 
    - type: time_passed
      arguments: [0] 
 
-- # Show a message after building the first settlement
+- # Zeige eine Nachricht nach der Gründung der ersten Siedlung
   actions:
    - {type: message, arguments: ["Gratulation! Ihr habt soeben Eure erste Siedlung gegründet!"]}
   conditions:
    - type: settlements_num_greater
      arguments: [0]
 
-- # Tell the player to exchange resources with the branch office (at least 10 of each)
+- # Fordere den Spieler auf, die Ressourcen an Land zu verladen (min. zehn von jedem)
   actions:
    - {type: message, arguments: ["Nun da Ihr Euer erstes Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen.", "Wählt das Schiff und wechselt in dessen Inventar.", "Wählt Beladen/Entladen und verladet die Waren, indem Ihr auf sie klickt."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [1, 0]
 
-- # Tell the player to build the first two buildings - lumberjack huts
+- # Sagt dem Spieler, er soll zwei Holzfällerlager errichten
   actions:
    - {type: message, arguments: ["Da Ihr nun das Baumaterial verladen habt…", "…steht es Euch frei, Gebäude zu errichten.", "Baut zunächst zwei Holzfällerlager. Um dies zu erledigen…", "…öffnet das Baumenü und wählt das Holzfällerzelt aus.", "Plaziert das Holzfällerzelt nahe einiger Bäume und verbindet es durch einen Pfad mit dem Kontor."]}
   conditions:
@@ -43,28 +43,28 @@ events:
    - type: settlement_res_stored_greater
      arguments: [6, 9]
 
-- # Congratulations after first lumberjack
+- # Glückwunsch nach dem Bauen
   actions:
    - {type: message, arguments: ["Gut gemacht! Ihr habt soeben Euere erste Produktionslinie in Betrieb genommen."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 0]
 
-- # Tell the player to build some food supply
+- # Fordert den Spieler auf, sich um die Nahrungsversorgung zu kümmern
   actions:
    - {type: message, arguments: ["Nun da Ihr beide Holzfällerlager aufgeschlagen habt…", "…ist es an der Zeit, Nahrungsmittel herzustellen.", "Errichtet zunächst einen Bauernhof und bindet Ihn an Euer Straßennetz an."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 1]
 
-- # Farms finished, some fields now
+- # Bauernhöfe sind fertig; Jetzt Kartoffeläcker anlegen
   actions:
    - {type: message, arguments: ["Nun benötigt Euer Bauernhof noch Felder, die bewirtschaftet werden können.", "Legt vier Kartoffelfelder und eine Schafweide an.", "Diese müssen sich im Einzugsbereich des Bauernhofes befinden."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [20, 0]
 
-- # And fields are also done. Let's do something about markets
+- # Nachdem die Kartoffeläcker angelegt sind, fehlt noch ein Marktplatz
   actions:
    - {type: message, arguments: ["Nun benötigen Eure Einwohner noch einen Marktplatz.", "Dort decken sie sich mit benötigten Waren ein."]}
   conditions:
@@ -73,19 +73,40 @@ events:
    - type: building_num_of_type_greater
      arguments: [19, 3]
 
-- # Weavers for processing the stuff from pastures
+- # Zur Herstellung von Stoffen wird eine Weberei benötigt
   actions:
    - {type: message, arguments: ["Um die Schafwolle zu Stoffen zu verarbeiten, müsst Ihr eine Weberei errichten.", "Plaziert also eine Weberei beim Bauernhof und verbindet sie mit eurem Kontor."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [4, 0]
 
-- # And tents for settlers
+- # Siedler benötigen Wohnzelte
   actions:
    - {type: message, arguments: ["Eure Siedler benötigen eine Behausung. Schlagt also vier Wohnzelte neben dem Marktplatz auf.", "Achtet auch immer auf den Siedler-Reiter um zu erfahren, nach was Euer Volk verlangt."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [7, 0]
+     
+- # Spieler soll ein Signalfeuer anzünden
+  actions:
+   - {type: message, arguments: ["Seht Ihr dieses Schiff, dass schon seit einiger Zeit um Euere Insel kreist?", "Dies ist ein Schiff des freien Händlers, der Eure Siedlungen mit notwendigen Waren versorgt.", "Errichtet ein Signalfeuer in der Nähe des Kontors, um ihm den Weg zu Eurer Siedlung zu weisen."]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [3, 3]
+     
+- # Spieler soll Handeln
+  action:
+   - {type: message, arguments: ["Sehr gut! Der Händler wird nun regelmäßig euren Hafen anlaufen.", "Stellt im Menü des Kontors ein, welche Waren Ihr bis zu welchem Lagerstand kaufen und verkaufen möchtet.", "Füllt nun Euer Lager mit 25 Tonnen Werkzeug."]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [6, 0]
+     
+- # Siegesbedingungen
+  action:
+   - {type: message, arguments: ["In Eurem Lager befinden sich nun genügend Werkzeuge!", "Wenn Ihr möchtet, könnt Ihr nun auch überschüssige Waren an den freien Händler verkaufen.", "Lockt nun 50 Einwohner in Eure Siedlung und der Sieg ist Euer."]}
+  conditions:
+   - type: settlement_res_stored_greater
+     arguments: [25, 6] 
 
 mapfile: development.sqlite
 description: |
