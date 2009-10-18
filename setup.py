@@ -49,7 +49,7 @@ build.sub_commands.append(('build_man', None))
 cmdclass = {'build_man': build_man}
 
 setup(name='UnknownHorizons',
-	  version='2009.1+svn2463',
+	  version='2009.2',
 	  description='Realtime Economy Simulation and Strategy Game',
 	  author='The Unknown Horizons Team',
 	  author_email='team@unknown-horizons.org',
