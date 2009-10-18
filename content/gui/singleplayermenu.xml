@@ -38,7 +38,7 @@
 				<ListBox name="maplist" min_size="300,340" />
 			</ScrollArea>
 
-			<Label name="map_description" position="10,360" wrap_text="0" max_size="300,1000"/>
+			<Label name="map_description" position="10,360" wrap_text="1" max_size="300,1000"/>
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->
