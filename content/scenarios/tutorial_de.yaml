@@ -95,14 +95,14 @@ events:
      arguments: [3, 3]
      
 - # Spieler soll Handeln
-  action:
+  actions:
    - {type: message, arguments: ["Sehr gut! Der Händler wird nun regelmäßig euren Hafen anlaufen.", "Stellt im Menü des Kontors ein, welche Waren Ihr bis zu welchem Lagerstand kaufen und verkaufen möchtet.", "Füllt nun Euer Lager mit 25 Tonnen Werkzeug."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [6, 0]
      
 - # Siegesbedingungen
-  action:
+  actions:
    - {type: message, arguments: ["In Eurem Lager befinden sich nun genügend Werkzeuge!", "Wenn Ihr möchtet, könnt Ihr nun auch überschüssige Waren an den freien Händler verkaufen.", "Lockt nun 50 Einwohner in Eure Siedlung und der Sieg ist Euer."]}
   conditions:
    - type: settlement_res_stored_greater
