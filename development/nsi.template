@@ -135,8 +135,10 @@ SectionEnd
 
 Function un.onUninstSuccess
   HideWindow
-  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) wurde erfolgreich deinstalliert."
-  MessageBox MB_ICONINFORMATION|MB_OK "Bitte beachten Sie, dass die Komponenten Python, PyYAML und OpenAL manuell entfernt werden müssen, sofern diese nicht mehr gebraucht werden. Verwenden Sie dazu in Ihrer Systemsteuerung den Menüpunkt $\"Software$\" bei Windows XP beziehungsweise $\"Programme und Funktionen$\" bei Windows Vista sowie Windows 7."
+  ;MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) wurde erfolgreich deinstalliert."
+  ;MessageBox MB_ICONINFORMATION|MB_OK "Bitte beachten Sie, dass die Komponenten Python, PyYAML und OpenAL manuell entfernt werden müssen, sofern diese nicht mehr gebraucht werden. Verwenden Sie dazu in Ihrer Systemsteuerung den Menüpunkt $\"Software$\" bei Windows XP beziehungsweise $\"Programme und Funktionen$\" bei Windows Vista sowie Windows 7."
+  MessageBox MB_ICONINFORMATION|MB_OK "Please note: Python, PyYAML and OpenAL have to be removed manually if you don't need them anymore."
+  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) has been successfully uninstalled."
 FunctionEnd
 
 Function un.onInit
