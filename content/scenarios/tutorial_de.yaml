@@ -27,7 +27,7 @@ events:
 
 - # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
-   - {type: message, arguments: ["Nun da Ihr Euer erstes Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen.", "Wählt das Schiff und wechselt in dessen Inventar.", "Wählt Be-/Entladen und verladet Euer Schiff, indem Ihr auf die Waren klickt."]}
+   - {type: message, arguments: ["Nun da Ihr Euer erstes Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen.", "Wählt das Schiff und wechselt in dessen Inventar.", "Wählt Beladen/Entladen und verladet die Waren, indem Ihr auf sie klickt."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [1, 0]
@@ -45,7 +45,7 @@ events:
 
 - # Congratulations after first lumberjack
   actions:
-   - {type: message, arguments: ["Gut gemacht! Ihr habt soeben Euere erste Produktionslinie eingeweiht."]}
+   - {type: message, arguments: ["Gut gemacht! Ihr habt soeben Euere erste Produktionslinie in Betrieb genommen."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 0]
@@ -75,14 +75,14 @@ events:
 
 - # Weavers for processing the stuff from pastures
   actions:
-   - {type: message, arguments: ["Um die Schafwolle zu Stoffen zu verarbeiten, müsst Ihr eine Weberei errichten.", "Plaziert also eine Weberei und verbindet sie mit eurem Kontor."]}
+   - {type: message, arguments: ["Um die Schafwolle zu Stoffen zu verarbeiten, müsst Ihr eine Weberei errichten.", "Plaziert also eine Weberei beim Bauernhof und verbindet sie mit eurem Kontor."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [4, 0]
 
 - # And tents for settlers
   actions:
-   - {type: message, arguments: ["Eure Siedler benötigen eine Behausung. Baut also vier Wohnzelte neben dem Marktplatz auf.", "Achtet auch immer auf den Siedler-Reiter um zu erfahren, was Euer Volk verlangt."]}
+   - {type: message, arguments: ["Eure Siedler benötigen eine Behausung. Schlagt also vier Wohnzelte neben dem Marktplatz auf.", "Achtet auch immer auf den Siedler-Reiter um zu erfahren, nach was Euer Volk verlangt."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [7, 0]
