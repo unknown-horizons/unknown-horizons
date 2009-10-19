@@ -48,6 +48,8 @@ class SingleplayerMenu(object):
 			self.current.findChild(name="showRandom").marked = True
 			to_remove = self.current.findChild(name="map_list_area")
 			to_remove.parent.removeChild(to_remove)
+			to_remove = self.current.findChild(name="choose_map_lbl")
+			to_remove.parent.removeChild(to_remove)
 			self.show_popup(_('Warning'), _('The random map features is still in active development. It is to be considered a pre testing version. Problems are to be expected.'))
 		else:
 			if show == 'free_maps':
