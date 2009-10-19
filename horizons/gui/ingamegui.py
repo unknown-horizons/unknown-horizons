@@ -113,39 +113,47 @@ class IngameGui(LivingObject):
 
 		# map button names to build functions calls with the building id
 		callbackWithArguments = pychan.tools.callbackWithArguments
-		self.callbacks_build = { # keys are settler levels
-			0: {
-				'store-1' : callbackWithArguments(self._build, 2),
-				'church-1' : callbackWithArguments(self._build, 5),
-				'main_square-1' : callbackWithArguments(self._build, 4),
-				'lighthouse-1' : callbackWithArguments(self._build, 6),
-				'resident-1' : callbackWithArguments(self._build, 3),
-				'hunter-1' : callbackWithArguments(self._build, 9),
-				'fisher-1' : callbackWithArguments(self._build, 11),
-				'weaver-1' : callbackWithArguments(self._build, 7),
-				'lumberjack-1' : callbackWithArguments(self._build, 8),
-				'tree-1' : callbackWithArguments(self._build, 17),
-				'potatofield-1' : callbackWithArguments(self._build, 19),
-				'herder-1' : callbackWithArguments(self._build, 20),
-				'pasture-1' : callbackWithArguments(self._build, 18),
-				'tower-1' : callbackWithArguments(self._build, 13),
-				#'wall-1' : callbackWithArguments(self._build, 14),
-				'street-1' : callbackWithArguments(self._build, 15),
-				#'bridge-1' : callbackWithArguments(self._build, 16)
-		},
-			1: {
-		    'school-1' : callbackWithArguments(self._build, 21),
-		    'sugarfield-1' : callbackWithArguments(self._build, 22),
-			'boat_builder-1' : callbackWithArguments(self._build, 12)
-		},
-			2: {
-		},
-			3: {
-		},
-			4: {
-		}
-		}
+		self.callbacks_build = {}
+		for id,button_name,settler_level in horizons.main.db("SELECT id,button_name,settler_level FROM building WHERE button_name IS NOT NULL"):
+			if not settler_level in self.callbacks_build:
+				self.callbacks_build[settler_level] = {}
+			self.callbacks_build[settler_level][button_name] = callbackWithArguments(self._build, id)
+		
+		# DEPRECATED
+		#self.callbacks_build = { # keys are settler levels
+		#	0: {
+		#		'store-1' : callbackWithArguments(self._build, 2),
+		#		'church-1' : callbackWithArguments(self._build, 5),
+		#		'main_square-1' : callbackWithArguments(self._build, 4),
+		#		'lighthouse-1' : callbackWithArguments(self._build, 6),
+		#		'resident-1' : callbackWithArguments(self._build, 3),
+		#		'hunter-1' : callbackWithArguments(self._build, 9),
+		#		'fisher-1' : callbackWithArguments(self._build, 11),
+		#		'weaver-1' : callbackWithArguments(self._build, 7),
+		#		'lumberjack-1' : callbackWithArguments(self._build, 8),
+		#		'tree-1' : callbackWithArguments(self._build, 17),
+		#		'potatofield-1' : callbackWithArguments(self._build, 19),
+		#		'herder-1' : callbackWithArguments(self._build, 20),
+		#		'pasture-1' : callbackWithArguments(self._build, 18),
+		#		'tower-1' : callbackWithArguments(self._build, 13),
+		#		#'wall-1' : callbackWithArguments(self._build, 14),
+		#		'street-1' : callbackWithArguments(self._build, 15),
+		#		#'bridge-1' : callbackWithArguments(self._build, 16)
+		#},
+		#	1: {
 
+		#	'boat_builder-1' : callbackWithArguments(self._build, 12)
+		#},
+		#	2: {
+		#	'villageschool-1' : callbackWithArguments(self._build, 21),
+		#    '	sugarfield-1' : callbackWithArguments(self._build, 22)
+		#},
+		#	3: {
+		#},
+		#	4: {
+		#}
+		#}
+		
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : None,

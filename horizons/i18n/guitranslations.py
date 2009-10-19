@@ -195,9 +195,12 @@ def set_translations():
 			"housing_label"               : _("Housing"),
 			"production_label"            : _("Production"),
 			"military_label"              : _("Military"),
-			"school-1"                    : _("School: \nProvides education."),
+			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships, \nbuilt on coast")
+		},
+		"build_menu/hud_build_tab2.xml" : {	
+			"villageschool-1"             : _("Village school: \nProvides education."),
 			"sugarfield-1"                : _("Sugar Field: \nProduces sugar\nfor rum."),
-			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships, \nbuilt on coast")},
+		},	
 		"build_menu/hud_builddetail.xml" : {
 			"headline"                    : _("Build"),
 			"running_cost_label"          : _("Running Costs:")},
