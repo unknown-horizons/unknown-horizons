@@ -55,3 +55,6 @@ class WeakMethodList(list):
 			return list.__contains__(self, elem)
 		else:
 			return WeakMethod(elem) in self
+
+	def __str__(self):
+		return str([str(i) for i in self])
