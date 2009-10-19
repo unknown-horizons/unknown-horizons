@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="320,1000"  position="0,0">
+<Container size="320,100"  position="0,0">
 	<Icon name="msg_left" image="content/gui/images/background/msg_bg.png" position="0,0" />
 	<Label name="text" text=""  wrap_text="1" size="250,100" max_size="250,100" position="12,5" />
 </Container>

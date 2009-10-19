@@ -3,7 +3,7 @@
 Tab to be shown at the market place.
 It shows an overview over the settlers, like average happiness
 -->
-<Container  size="250,550">
+<Container  size="250,350">
 <Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />

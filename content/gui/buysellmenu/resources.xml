@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="260,550">
+<Container size="260,400">
 	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
