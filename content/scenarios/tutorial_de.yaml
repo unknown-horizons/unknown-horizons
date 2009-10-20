@@ -13,7 +13,7 @@ events:
 
 - # Zeige eine Nachriht nach Spielbeginn (wie man sein Schiff bewegt)
   actions:
-   - {type: message, arguments: ["Herzlich Willkommen bei Unknown Horizons!", "Um Euer Schiff zu bewegen, klickt es an und wählt das Ziel mit einem Rechtsklick.", "Sobald Euer Schiff nahe der Küste ist, errichtet dort ein Kontor."]}
+   - {type: message, arguments: ["Herzlich Willkommen bei Unknown Horizons!", "Um Euer Schiff zu bewegen, klickt es an und wählt das Ziel mit einem Rechtsklick.", "Sobald Euer Schiff nahe der Küste ist, errichtet dort ein Kontor.", "Dazu klickt Ihr auf Anker-Button im Schiffsmenü."]}
   conditions: 
    - type: time_passed
      arguments: [0] 
