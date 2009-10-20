@@ -13,7 +13,7 @@ events:
 
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Welcome to Unknown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there."]}
+   - {type: message, arguments: ["Welcome to Unknown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there.", "In order to do so, press the downright button in the ship menu."]}
   conditions: 
    - type: time_passed
      arguments: [0] 
