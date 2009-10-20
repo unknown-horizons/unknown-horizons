@@ -29,12 +29,13 @@ class TabWidget(object):
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
 
-	def __init__(self, ingame_gui, tabs=[], position=None, name=None):
+	def __init__(self, ingame_gui, tabs=[], position=None, name=None, active_tab=None):
 		"""
 		@param ingame_gui: IngameGui instance
 		@param tabs: tab instances to show
 		@param position: position as tuple (x, y)
 		@param name: optional name for the tabwidget
+		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
 		super(TabWidget, self).__init__()
 		self.name = name
@@ -52,6 +53,9 @@ class TabWidget(object):
 			self.widget.position = position
 		self.content = self.widget.findChild(name='content')
 		self._init_tabs()
+		# select a tab to show (first one is default)
+		if active_tab is not None:
+			self._show_tab(active_tab)
 
 	def _init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
@@ -70,11 +74,8 @@ class TabWidget(object):
 			button.hover_image = tab.button_hover_image
 			button.size = (50, 50)
 			button.capture(pychan.tools.callbackWithArguments(self._show_tab, index))
-			if hasattr(tab, 'tooltip'):
-				if tab.tooltip is not None:
-					button.tooltip = unicode(tab.tooltip)
-				else:
-					pass
+			if hasattr(tab, 'tooltip') and tab.tooltip is not None:
+				button.tooltip = unicode(tab.tooltip)
 			container.size = background.size
 			container.addChild(background)
 			container.addChild(button)

@@ -23,6 +23,7 @@ from tabinterface import TabInterface
 from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):
+	last_active_build_tab = None
 	def __init__(self, tabindex = 0, events = {}):
 		super(BuildTab, self).__init__(widget = 'build_menu/hud_build_tab' + str(tabindex) + '.xml')
 		self.init_values()
@@ -32,11 +33,13 @@ class BuildTab(TabInterface):
 		self.button_down_image = 'content/gui/images/icons/hud/common/level%s_d.png' % tabindex
 		self.button_hover_image = 'content/gui/images/icons/hud/common/level%s_h.png' % tabindex
 		self.tooltip = unicode(_("Level")+" "+int_to_roman(tabindex+1))
+		self.tabindex = tabindex
 
 	def refresh(self):
 		pass
 
 	def show(self):
+		self.__class__.last_active_build_tab = self.tabindex
 		super(BuildTab, self).show()
 
 	def hide(self):

@@ -118,7 +118,7 @@ class IngameGui(LivingObject):
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = callbackWithArguments(self._build, id)
-		
+
 		# DEPRECATED
 		#self.callbacks_build = { # keys are settler levels
 		#	0: {
@@ -153,7 +153,7 @@ class IngameGui(LivingObject):
 		#	4: {
 		#}
 		#}
-		
+
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : None,
@@ -341,7 +341,8 @@ class IngameGui(LivingObject):
 		self.deselect_all()
 		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
 		         range(0, self.session.world.player.settler_level+1)]
-		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget")
+		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
+		                active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
