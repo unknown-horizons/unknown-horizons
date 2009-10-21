@@ -69,7 +69,7 @@ class ConcretObject(WorldObject):
 		if not self.has_action(action):
 			action = 'idle'
 		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
-		self._action = 'idle'
+		self._action = action
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.

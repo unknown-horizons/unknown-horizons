@@ -152,10 +152,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level
 		@param level: int level number"""
-		action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and levle=? order by random() LIMIT 1", cls.id, level)
-		if action_set is not None:
-			self._action_set_id = action_set[0][0] # Set the new action_set
-			self.act(self._action)
+		action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and level=? order by random() LIMIT 1", self.id, level)
+		if action_set_id is not None:
+			self._action_set_id = action_set_id[0][0] # Set the new action_set
+			self.act(self._action, repeating=True)
 
 
 
