@@ -98,21 +98,21 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
-		db("INSERT INTO building (rowid, type, x, y, rotation, health, location) \
-		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO building (rowid, type, x, y, rotation, health, location, level) \
+		   VALUES (?, ?, ?, ?, ?, ?, ?, ?)", \
 			self.getId(), self.__class__.id, self.position.origin.x, \
 			self.position.origin.y, self.rotation, \
-			self.health, (self.settlement or self.island).getId())
+			self.health, (self.settlement or self.island).getId(), self.level)
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
-		x, y, self.health, location, rotation = \
-			db("SELECT x, y, health, location, rotation FROM building WHERE rowid = ?", worldid)[0]
+		x, y, self.health, location, rotation, level= \
+			db("SELECT x, y, health, location, rotation, level FROM building WHERE rowid = ?", worldid)[0]
 
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
 
-		self.__init(Point(x, y), rotation, owner, None)
+		self.__init(Point(x, y), rotation, owner, None, level)
 
 		self.island, self.settlement = self.load_location(db, worldid)
 

@@ -63,15 +63,15 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def save(self, db):
 		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, level, inhabitants) VALUES (?, ?, ?)", self.getId(), \
-			 self.level, self.inhabitants)
+		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", self.getId(), \
+			 self.inhabitants)
 
 	def load(self, db, building_id):
 		_CONSTANTS.init(horizons.main.db)
 		super(Settler, self).load(db, building_id)
-		level, self.inhabitants = \
-				db("SELECT level, inhabitants FROM settler WHERE rowid=?", building_id)[0]
-		self.__init(level)
+		self.inhabitants = \
+				db("SELECT inhabitants FROM settler WHERE rowid=?", building_id)[0]
+		self.__init()
 		self.owner.notify_settler_reached_level(self)
 		self.run()
 
