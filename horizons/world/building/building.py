@@ -47,20 +47,21 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	log = logging.getLogger("world.building")
 
-	def __init__(self, x, y, rotation, owner, island, instance = None, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, instance = None, level=0, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 																				instance=instance, island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner, instance)
+		self.__init(Point(x, y), rotation, owner, instance, level)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
 			self.island.add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
 
-	def __init(self, origin, rotation, owner, instance):
+	def __init(self, origin, rotation, owner, instance, level):
 		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? ORDER BY random() LIMIT 1", self.id)[0][0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
+		self.level = level
 		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation) if \
 		    instance is None else instance
 		self._instance.setId(str(self.getId()))
@@ -148,6 +149,16 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				ret_building.append( building )
 		return ret_building
 
+	def update_action_set_level(self, level=0):
+		"""Updates this buildings action_set to a random actionset from the specified level
+		@param level: int level number"""
+		action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and levle=? order by random() LIMIT 1", cls.id, level)
+		if action_set is not None:
+			self._action_set_id = action_set[0][0] # Set the new action_set
+			self.act(self._action)
+
+
+
 	@classmethod
 	def getInstance(cls, session, x, y, action='idle', building=None, layer=LAYERS.OBJECTS, rotation=0, **trash):
 		"""Get a Fife instance
@@ -183,7 +194,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			                         fife.ModelCoordinate(*instance_coords))
 			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
-			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", cls.id)[0][0]
+			action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and level=0 order by random() LIMIT 1", cls.id)[0][0]
 			fife.InstanceVisual.create(instance)
 
 			action_sets = ActionSetLoader.get_action_sets()

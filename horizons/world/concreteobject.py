@@ -43,6 +43,7 @@ class ConcretObject(WorldObject):
 		super(ConcretObject, self).__init__(**kwargs)
 		self.session = session
 		self._instance = None # overwrite in subclass __init[__]
+		self._action = 'idle' # Default action is idle
 
 	@property
 	def fife_instance(self):
@@ -68,6 +69,7 @@ class ConcretObject(WorldObject):
 		if not self.has_action(action):
 			action = 'idle'
 		self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+		self._action = 'idle'
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.

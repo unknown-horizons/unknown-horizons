@@ -45,17 +45,16 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	tabs = (SettlerOverviewTab,)
 
-	def __init__(self, x, y, owner, instance = None, level=0, **kwargs):
+	def __init__(self, x, y, owner, instance = None, **kwargs):
 		_CONSTANTS.init(horizons.main.db)
-		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, level=level, **kwargs)
-		self.__init(level, _CONSTANTS.HAPPINESS_INIT_VALUE)
+		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
+		self.__init(_CONSTANTS.HAPPINESS_INIT_VALUE)
 		self.run()
 		# give the user 30 seconds to build a market place in range
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
 
-	def __init(self, level, happiness = None):
-		self.level = level
+	def __init(self, happiness = None):
 		self.level_max = 1 # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
@@ -103,6 +102,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		for line in current_lines[:]: # iterate over copy for safe removal
 			# all lines, that were added here but are not used due to the current level
 			self.remove_production_by_id(line)
+		# update instance graphics
+		self.update_action_set_level(self.level)
 
 	def run(self):
 		"""Start regular tick calls"""
