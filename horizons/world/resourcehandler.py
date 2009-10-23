@@ -64,12 +64,12 @@ class ResourceHandler(StorageHolder):
 			self.add_production( self.load_production(db, production[0]) )
 
 	def remove(self):
+		super(ResourceHandler, self).remove()
 		for production in self._get_productions():
 			self.remove_production(production)
 		assert len(self._get_productions()) == 0 , 'Failed to remove %s ' % self._get_productions()
 		while self.__incoming_collectors: # safe list remove here
 			self.__incoming_collectors[0].cancel()
-		super(ResourceHandler, self).remove()
 
 	## INTERFACE
 	def get_consumed_resources(self):
