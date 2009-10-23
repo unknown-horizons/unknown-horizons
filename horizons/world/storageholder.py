@@ -34,15 +34,23 @@ class StorageHolder(object):
 	TUTORIAL:
 	Continue to horizons/world/provider.py for further digging.
 	"""
+	has_own_inventory = True # some objs share inventory, which requires different handling here.
+
 	def __init__(self, **kwargs):
 		super(StorageHolder, self).__init__(**kwargs)
 		self.__init()
 
 	def __init(self):
-		self.create_inventory()
-		if hasattr(self, "inventory"):
-			# some objects are storageholders, but don't actually have storages.
+		if self.has_own_inventory:
+			self.create_inventory()
 			self.inventory.add_change_listener(self._changed)
+
+	def remove(self):
+		super(StorageHolder, self).remove()
+		if self.has_own_inventory:
+			#self.inventory.clear_change_listeners()
+			# remove inventory to prevent any action here in subclass remove
+			self.inventory.reset_all()
 
 	def create_inventory(self):
 		"""Some buildings don't have an own inventory (e.g. storage building). Those can just
@@ -61,17 +69,12 @@ class StorageHolder(object):
 
 	def save(self, db):
 		super(StorageHolder, self).save(db)
-		self.save_inventory(db)
-
-	def save_inventory(self, db):
-		"""see create_inventory()"""
-		self.inventory.save(db, self.getId())
+		if self.has_own_inventory:
+			self.inventory.save(db, self.getId())
 
 	def load(self, db, worldid):
 		super(StorageHolder, self).load(db, worldid)
 		self.__init()
-		self.load_inventory(db, worldid)
+		if self.has_own_inventory:
+			self.inventory.load(db, worldid)
 
-	def load_inventory(self, db, worldid):
-		"""see create_inventory()"""
-		self.inventory.load(db, worldid)

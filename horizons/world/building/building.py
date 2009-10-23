@@ -39,9 +39,12 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
+
+	# basic properties of class
 	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
+	tearable = True
 	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
 																			# e.g. paths. the tab hides a part of the map.
 

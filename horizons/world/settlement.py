@@ -39,7 +39,7 @@ class Settlement(TradePost, NamedObject):
 		self.session = session
 		self.owner = owner
 		self.tax_setting = tax_setting
-		self.buildings = WeakList() # List of all the buildings belonging to the settlement
+		self.buildings = []
 		self.setup_storage()
 
 	def get_default_name(self):

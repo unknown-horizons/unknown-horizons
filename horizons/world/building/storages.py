@@ -34,6 +34,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
 	tabs = (BranchOfficeOverviewTab, InventoryTab, BuySellTab, AccountTab)
+	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.__init(self.settlement)
@@ -45,6 +46,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		self.island.provider_buildings.append(self)
 
 	def remove(self):
+		super(StorageBuilding, self).remove()
 		self.island.provider_buildings.remove(self)
 
 	def __del__(self):
@@ -72,13 +74,8 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['InstanceRenderer'].removeAllColored()
 
-	# we have to overwrite these StorageHolder functions, since we have no own inventory.
-	def create_inventory(self): pass
-	def save_inventory(self, db): pass
-	def load_inventory(self, db, worldid): pass
-
-
 class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
+	tearable = False
 	@classmethod
 	def _is_settlement_build_requirement_satisfied(cls, x, y, island, ship, **state):
 		for settlement in island.settlements:

@@ -26,7 +26,6 @@ import horizons.main
 from navigationtool import NavigationTool
 from selectiontool import SelectionTool
 from horizons.command.building import Tear
-from horizons.world.building.storages import StorageBuilding
 from horizons.util import Point
 
 class TearingTool(NavigationTool):
@@ -38,6 +37,8 @@ class TearingTool(NavigationTool):
 	@param ship: If building from a ship, restrict to range of ship
 	@param settle: bool Tells the building tool if a new settlement is created. Default: False
 	"""
+
+	tear_selection_color = (255, 255, 255)
 
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
@@ -72,13 +73,14 @@ class TearingTool(NavigationTool):
 		self.session.cursor = SelectionTool(self.session)
 
 	def mouseReleased(self,  evt):
+		"""Tear selected instances and set selection tool as cursor"""
 		if fife.MouseEvent.LEFT == evt.getButton():
 			coords = self.session.view.cam.toMapCoordinates(fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			if self.coords is None:
 				self.coords = (int(round(coords.x)), int(round(coords.y)))
 			self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
 			for i in self.selected:
-				self.session.manager.execute(Tear(i))
+				Tear(i).execute()
 			self.tear_tool_active = False
 			self.session.cursor = SelectionTool(self.session)
 			evt.consume()
@@ -96,6 +98,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def _mark(self, *edges):
+		"""Highights building instances and keeps self.selected up to date."""
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
 		elif len(edges) == 2:
@@ -112,7 +115,8 @@ class TearingTool(NavigationTool):
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
-					if b is not None and b not in self.selected and not isinstance(b, StorageBuilding):
+					if b is not None and b not in self.selected and b.tearable:
 						self.selected.append(b)
 			for i in self.selected:
-				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, 255, 255, 255)
+				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \
+				                                                          *self.tear_selection_color)

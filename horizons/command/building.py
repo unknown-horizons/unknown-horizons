@@ -114,8 +114,6 @@ class Tear(Command):
 		building = WorldObject.get_object_by_id(self.building)
 		self.log.debug("Tear: tearing down %s", building)
 		building.remove()
-		# Note: this is weak - if there is a memleak, this del will not work...
-		del building
 
 from horizons.util.encoder import register_classes
 register_classes(Build, Tear)

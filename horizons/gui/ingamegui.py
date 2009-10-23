@@ -348,7 +348,7 @@ class IngameGui(LivingObject):
 	def deselect_all(self):
 		for instance in self.session.selected_instances:
 			instance.deselect()
-		self.session.selected_instances = set()
+		self.session.selected_instances.clear()
 
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.

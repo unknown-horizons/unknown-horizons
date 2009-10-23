@@ -55,6 +55,11 @@ class Changelistener(LivingObject):
 		if self.has_change_listener(listener):
 			self.remove_change_listener(listener)
 
+	def clear_change_listeners(self):
+		"""Removes all change listeners"""
+		while self.__listeners:
+			self.__listeners.pop()
+
 	def _changed(self):
 		"""Calls every listener when an object changed"""
 		for listener in self.__listeners:
