@@ -48,7 +48,8 @@ class StorageHolder(object):
 	def remove(self):
 		super(StorageHolder, self).remove()
 		if self.has_own_inventory:
-			#self.inventory.clear_change_listeners()
+			# no changelister calls on remove
+			self.inventory.clear_change_listeners()
 			# remove inventory to prevent any action here in subclass remove
 			self.inventory.reset_all()
 
