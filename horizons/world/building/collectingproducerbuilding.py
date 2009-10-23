@@ -20,9 +20,9 @@
 # ###################################################
 
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.production.producer import Producer
+from horizons.world.production.producer import ProducerBuilding
 
-class CollectingProducerBuilding(CollectingBuilding, Producer):
+class CollectingProducerBuilding(CollectingBuilding, ProducerBuilding):
 	"""Class for buildings, that collect something and produce something.
 	Examples: Lumberjack, Herder, Weaver, AnimalFarm, etc."""
 	pass

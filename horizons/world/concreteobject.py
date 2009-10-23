@@ -87,6 +87,6 @@ class ConcretObject(WorldObject):
 		"""Shows tabs from self.__class__.tabs, if there are any"""
 		# this local import prevents circular imports
 		from horizons.gui.tabs import TabWidget
-		if len(self.tabs) > 0:
+		if self.tabs:
 			tabs = [ tabclass(self) for tabclass in self.tabs ]
 			self.session.ingame_gui.show_menu(TabWidget(self.session.ingame_gui, tabs=tabs))

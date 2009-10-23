@@ -29,6 +29,7 @@ from horizons.world.production.unitproduction import UnitProduction
 from horizons.constants import PRODUCTION
 from horizons.command.unit import CreateUnit
 from horizons.scheduler import Scheduler
+from horizons.gui.tabs import ProductionOverviewTab
 
 import horizons.main
 
@@ -129,6 +130,7 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
 	behaviour"""
+	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)
 
 	def add_production(self, production):
 		super(ProducerBuilding, self).add_production(production)

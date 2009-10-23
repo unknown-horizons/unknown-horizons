@@ -23,7 +23,6 @@ import horizons.main
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.producer import ProducerBuilding
-from horizons.gui.tabs import ProductionOverviewTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleOnCoast
 from horizons.world.building.nature import Field
@@ -57,7 +56,7 @@ class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, Basic
 
 class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers"""
-	tabs = [ProductionOverviewTab] # don't show inventory, just production (i.e. running costs)
+	pass
 
 
 """ AnimalFarm is not used for now (code may not work anymore)
