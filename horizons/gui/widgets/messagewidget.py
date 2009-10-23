@@ -28,6 +28,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.util.living import LivingObject
 from horizons.i18n import load_xml_translated
+from horizons.world.ambientsound import AmbientSound
 
 class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.
@@ -80,6 +81,10 @@ class MessageWidget(LivingObject):
 		self.active_messages.insert(0, message)
 		if sound:
 			horizons.main.fife.play_sound('speech', sound)
+		else:
+			# play default msg sound
+			AmbientSound.play_special('message')
+
 		self.draw_widget()
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
