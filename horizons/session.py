@@ -77,6 +77,7 @@ class Session(LivingObject):
 	keylistener = livingProperty()
 	cursor = livingProperty()
 	world = livingProperty()
+	campaign_eventhandler = livingProperty()
 
 	log = logging.getLogger('session')
 
@@ -144,6 +145,7 @@ class Session(LivingObject):
 		self.view = None
 		self.manager = None
 		self.timer = None
+		self.campaign_eventhandler = None
 		Scheduler.destroy_instance()
 
 		self.selected_instances = None

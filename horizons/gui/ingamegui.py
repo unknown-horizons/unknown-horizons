@@ -37,6 +37,7 @@ class IngameGui(LivingObject):
 	gui = livingProperty()
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
+	minimap = livingProperty()
 
 	styles = {
 	  'city_info' : 'city_info',
@@ -174,6 +175,7 @@ class IngameGui(LivingObject):
 				w.hide()
 		self.message_widget = None
 		self.tabwidgets = None
+		self.minimap = None
 		self.hide_menu()
 		super(IngameGui, self).end()
 

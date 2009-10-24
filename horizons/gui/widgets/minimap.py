@@ -50,6 +50,12 @@ class Minimap(object):
 
 		self.world = None
 
+	def end(self):
+		self.world = None
+		self.renderernodes = None
+		self.session = None
+		self.renderer = None
+
 	def draw(self, world = None):
 		"""Recalculates and draws the whole minimap of self.session.world or world.
 		The world you specified is reused for every operation until the next draw().

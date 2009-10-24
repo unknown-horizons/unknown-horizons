@@ -65,12 +65,13 @@ class World(LivingObject):
 		self.properties = None
 		self.players = None
 		self.player = None
-		self.min_x, self.min_y, self.max_x, self.max_y = None, None, None, None
 		self.grounds = None
 		self.ground_map = None
+		self.water = None
 		self.ship_map = None
 		self.ships = None
 		self.trader = None
+		self.islands = None
 		super(World, self).end()
 
 	@decorators.make_constants()

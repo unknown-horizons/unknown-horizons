@@ -196,6 +196,7 @@ class Gui(SettingsGui, SingleplayerMenu):
 			self.current = None
 			self.session.end()
 			self.session = None
+
 			self.show_main()
 
 	def return_to_game(self):

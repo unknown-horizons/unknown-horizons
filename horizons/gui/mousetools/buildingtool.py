@@ -46,7 +46,7 @@ class BuildingTool(NavigationTool):
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0)
 	nearby_objects_transparency = 180
-	nearby_objects_radius = 2
+	nearby_objects_radius = 3
 
 	gui = None # share gui between instances
 
@@ -111,8 +111,10 @@ class BuildingTool(NavigationTool):
 		for obj in self.modified_objects:
 			if obj.fife_instance is not None:
 				obj.fife_instance.get2dGfxVisual().setTransparency(0)
+		self.modified_objects = None
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
+		self.buildings = None
 		if self.gui is not None:
 			self.session.view.remove_change_listener(self.draw_gui)
 			self.gui.hide()
@@ -167,6 +169,7 @@ class BuildingTool(NavigationTool):
 	@decorators.make_constants()
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
+		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
 		# If only one building is in the preview and the position hasn't changed => don't preview
 		# Otherwise the preview is redrawn on every mouse move
@@ -180,8 +183,10 @@ class BuildingTool(NavigationTool):
 		if hasattr(self._class, "deselect_building"):
 			self._class.deselect_building(self.session)
 		for obj in self.modified_objects:
-			if obj.fife_instance is not None:
-				obj.fife_instance.get2dGfxVisual().setTransparency(0)
+			fife_instance = obj.fife_instance
+			if fife_instance is not None:
+				fife_instance.get2dGfxVisual().setTransparency(0)
+		self.modified_objects.clear()
 		for building in self.buildings:
 			building['instance'].getLocationRef().getLayer().deleteInstance(building['instance'])
 		# get new ones
@@ -248,13 +253,16 @@ class BuildingTool(NavigationTool):
 		   res_from_ship = (True if self.ship is not None else False))
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
+	@decorators.make_constants()
 	def _make_surrounding_transparent(self, building_position):
 		"""Makes the surrounding of building_position transparent"""
+		world_contains = self.session.world.map_dimensions.contains_without_border
+		get_tile = self.session.world.get_tile
 		for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
 			p = Point(*coord)
-			if not self.session.world.map_dimensions.contains_without_border(p):
+			if not world_contains(p):
 				continue
-			tile = self.session.world.get_tile(p)
+			tile = get_tile(p)
 			if tile.object is not None and tile.object.buildable_upon:
 				tile.object.fife_instance.get2dGfxVisual().setTransparency( \
 				  self.nearby_objects_transparency )

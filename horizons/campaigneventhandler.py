@@ -27,7 +27,7 @@ import horizons.main
 from horizons.ext.enum import Enum
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.util import Callback, LivingObject
 
 
 # event conditions to specify at check_events()
@@ -55,7 +55,7 @@ class InvalidScenarioFileFormat(Exception):
 		super(InvalidScenarioFileFormat, self).__init__(msg)
 
 
-class CampaignEventHandler(object):
+class CampaignEventHandler(LivingObject):
 	"""Handles event, that make up a campaign. See wiki."""
 
 	def __init__(self, session, campaignfile = None):
@@ -77,6 +77,12 @@ class CampaignEventHandler(object):
 
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
+
+	def end(self):
+		Scheduler().rem_all_classinst_calls(self)
+		self.session = None
+		self._events = None
+		self._data = None
 
 	def save(self, db):
 		if self.inited: # only save in case we have data applied
