@@ -117,7 +117,7 @@ class Island(WorldObject):
 
 		self.settlements = []
 		self.buildings = []
-		self.provider_buildings = WeakList() # list of all buildings, that are providers
+		self.provider_buildings = [] # list of all buildings, that are providers
 		self.wild_animals = []
 
 		self.path_nodes = IslandPathNodes(self)

@@ -241,6 +241,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		"""This function is called when the building is built, to start production for example."""
 		pass
 
+	@decorators.release_mode(ret="Building")
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \

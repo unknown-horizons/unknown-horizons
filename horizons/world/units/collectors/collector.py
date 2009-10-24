@@ -371,6 +371,7 @@ class Collector(StorageHolder, Unit):
 			self.state = self.states.idle
 		continue_action()
 
+	@decorators.release_mode(ret="Collector")
 	def __str__(self):
 		try:
 			return super(Collector, self).__str__() + "(state=%s)" % self.state

@@ -26,7 +26,7 @@ import random
 import horizons.main
 
 from horizons.world.units.movingobject import MovingObject
-from horizons.util import Point, WorldObject, WeakMethod, Circle
+from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
 from horizons.constants import LAYERS
 from horizons.world.ambientsound import AmbientSound
 
@@ -144,6 +144,7 @@ class Unit(AmbientSound, MovingObject):
 				return target
 		return None
 
+	@decorators.release_mode(ret="Unit")
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \

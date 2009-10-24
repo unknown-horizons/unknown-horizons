@@ -22,7 +22,7 @@
 import logging
 import copy
 
-from horizons.util import LivingObject, ManualConstructionSingleton
+from horizons.util import LivingObject, ManualConstructionSingleton, decorators
 from horizons.constants import GAME
 
 class Scheduler(LivingObject):
@@ -181,5 +181,6 @@ class CallbackObject(object):
 		self.loops = loops
 		self.class_instance = class_instance
 
+	@decorators.release_mode(ret="SchedulerCallbackObject")
 	def __str__(self):
 		return "Callback(%s on %s)" % (self.callback, self.class_instance)

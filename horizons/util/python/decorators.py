@@ -21,6 +21,8 @@
 
 """Save general python function decorators here"""
 
+import horizons.main
+
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
 	If called later with the same arguments, the cached value is returned, and
@@ -206,3 +208,12 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 		raise ValueError("The bind_constants decorator must have arguments.")
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
 
+
+def release_mode(ret=None):
+	"""Decorator to skip the normal function and only print ret in release mode.
+	Useful for e.g. frequently called dynamic __str__ functions.
+	Read it like this: at release mode, only return ret"""
+	if horizons.main.debug:
+		return lambda x : x
+	else: # release mode, skip function
+		return lambda x : lambda : ret

@@ -187,12 +187,6 @@ class ResourceHandler(StorageHolder):
 	def get_available_pickup_amount(self, res, collector):
 		"""Returns how much of res a collector may pick up. It's the stored amount minus the amount
 		that other collectors are getting"""
-		# <debug check>
-		for c in self.__incoming_collectors:
-			if c.job is None:
-				print 'Error: %s at %s has no job!' % (c, self)
-		# </debug check>
-
 		if not res in self.provided_resources:
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
