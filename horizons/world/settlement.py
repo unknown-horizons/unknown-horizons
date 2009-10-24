@@ -72,17 +72,6 @@ class Settlement(TradePost, NamedObject):
 		self.inventory = PositiveSizedSlotStorage(0)
 		self.inventory.add_change_listener(self._changed)
 
-	def get_building(self, point):
-		"""Returns the building at the position (x, y)
-		@param point: position to look at
-		@return: Building class instance or None if none is found.
-		"""
-		for b in self.buildings:
-			if b.position.contains(point):
-				return b
-		else:
-			return None
-
 	def save(self, db, islandid):
 		super(Settlement, self).save(db)
 

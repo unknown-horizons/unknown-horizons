@@ -172,16 +172,10 @@ class Island(WorldObject):
 		@param point: position of the tile to look on
 		@return: Building class instance or None if none is found.
 		"""
-		if not self.rect.contains(point):
+		try:
+			return self.ground_map[point.to_tuple()].object
+		except KeyError:
 			return None
-		settlement = self.get_settlement(point)
-		if settlement:
-			return settlement.get_building(point)
-		else:
-			for building in self.buildings:
-				if building.position.contains(point):
-					return building
-		return None
 
 	def get_settlement(self, point):
 		"""Look for a settlement on a specific tile
