@@ -213,7 +213,8 @@ def release_mode(ret=None):
 	"""Decorator to skip the normal function and only print ret in release mode.
 	Useful for e.g. frequently called dynamic __str__ functions.
 	Read it like this: at release mode, only return ret"""
-	if horizons.main.debug:
+	#if horizons.main.debug:
+	if  True:
 		return lambda x : x
 	else: # release mode, skip function
 		return lambda x : lambda : ret
