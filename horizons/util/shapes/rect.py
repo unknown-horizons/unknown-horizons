@@ -113,7 +113,9 @@ class Rect(object):
 	def distance_to_tuple(self, other):
 		"""Calculates distance to a coordinate as tuple (x, y)
 		Don't use this, unless you are sure that distance() is too slow."""
-		return ((max(self.left - other[0], 0, other[0] - self.right) ** 2) + (max(self.top - other[1], 0, other[1] - self.bottom) ** 2)) ** 0.5
+		other_x = other[0]
+		other_y = other[1]
+		return ((max(self.left - other_x, 0, other_x - self.right) ** 2) + (max(self.top - other_y, 0, other_y - self.bottom) ** 2)) ** 0.5
 
 	@make_constants()
 	def distance_to_rect(self, other):

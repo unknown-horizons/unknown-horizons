@@ -60,7 +60,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			owner is not None else None
 
 	def __init(self, origin, rotation, owner, instance, level):
-		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? ORDER BY random() LIMIT 1", self.id)[0][0]
+		self._action_set_id = self.get_random_action_set_id(horizons.main.db, self.id, level)[0]
 		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
@@ -76,6 +76,24 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		# play ambient sound, if available
 		for soundfile in self.soundfiles:
 			self.play_ambient(soundfile, True)
+
+	@staticmethod
+	def get_random_action_set_id(db, object_id, level):
+		"""Returns an action set for an object of type object_id in a level <= the specified level.
+		The highest level number is preferred.
+		@param db: DbReader
+		@param object_id: type id of building
+		@param level: level to prefer. a lower level might be chosen
+		@return: tuple: (action_set_id, preview_action_set_id)"""
+		assert level >= 0
+		# search all levels for an action set, starting with highest one
+		for possible_level in reversed(xrange(level+1)):
+			db_data = db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id = ? and level = ? ORDER BY random()", object_id, level)
+			# break if we found sth in this lvl
+			if len(db_data) > 0:
+				break
+		assert len(db_data) >= 0, "Couldn't find action set for obj %s in lvl %s" % (object_id, level)
+		return db_data[0]
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \

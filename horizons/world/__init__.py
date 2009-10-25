@@ -235,7 +235,7 @@ class World(LivingObject):
 			if player is self.player:
 				ret_coords = (point.x, point.y)
 		# add a pirate ship
-		self.pirate = Pirate(self.session, 99999, "Captain Blackbeard", Color())
+		#self.pirate = Pirate(self.session, 99999, "Captain Blackbeard", Color())
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are none. No players loaded?"

@@ -150,7 +150,9 @@ class BuildingTool(NavigationTool):
 		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
-		action_set, preview_action_set = self.session.db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id=?", self._class.id)[0]
+		action_set, preview_action_set = \
+		          self._class.get_random_action_set_id(horizons.main.db, self._class.id, 0)
+
 		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
