@@ -48,7 +48,7 @@ class OverviewTab(TabInterface):
 	def refresh(self):
 		if hasattr(self.instance, 'name'):
 			name_widget = self.widget.child_finder('name')
-			name_widget.text = unicode(self.instance.name)
+			name_widget.text = _(unicode(self.instance.name))
 		self.widget.adaptLayout()
 
 	def show(self):
