@@ -100,7 +100,7 @@ class AnimalCollector(BuildingCollector):
 			self.release_animal()
 		super(AnimalCollector, self).reached_home()
 
-	def get_buildings_in_range(self):
+	def get_buildings_in_range(self, res=None):
 		return self.get_animals_in_range()
 
 	def get_animals_in_range(self):

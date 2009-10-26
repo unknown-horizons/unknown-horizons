@@ -150,6 +150,8 @@ class BuildingTool(NavigationTool):
 		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
+		# TODO: change hard-coded 0 below to a variable, as soon as building leveling concept
+		# is decided.
 		action_set, preview_action_set = \
 		          self._class.get_random_action_set_id(horizons.main.db, self._class.id, 0)
 

@@ -31,6 +31,7 @@ from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
 from horizons.campaigneventhandler import CONDITIONS
+from horizons.world.providerhandler import ProviderHandler
 
 class Island(WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
@@ -117,7 +118,7 @@ class Island(WorldObject):
 
 		self.settlements = []
 		self.buildings = []
-		self.provider_buildings = [] # list of all buildings, that are providers
+		self.provider_buildings = ProviderHandler()
 		self.wild_animals = []
 
 		self.path_nodes = IslandPathNodes(self)
@@ -300,13 +301,19 @@ class Island(WorldObject):
 				yield tile
 
 	@decorators.make_constants()
-	def get_providers_in_range(self, circle):
+	def get_providers_in_range(self, circle, res=None):
 		"""Returns all instances of provider within the specified circle.
 		@param circle: instance of Circle
+		@param res: optional; only return providers that provide res
 		@return: list of providers"""
 		providers = []
 		_providers_append = providers.append
-		for provider in self.provider_buildings:
+		if res is None:
+			provider_list = self.provider_buildings
+		else:
+			provider_list = self.provider_buildings.provider_by_resources[res]
+
+		for provider in provider_list:
 			if provider.position.distance_to_circle(circle) == 0:
 				_providers_append(provider)
 		return providers
