@@ -31,3 +31,13 @@ from weaklist import WeakList
 from weakmethod import WeakMethod
 from weakmethodlist import WeakMethodList
 from singleton import Singleton, ManualConstructionSingleton
+
+
+class Const(object):
+	"""An immutable type. Think C++-like const"""
+	def __setattr__(self, name, value):
+		"""Disallow changing an already set attribute, as an asymptote to const behaviour,
+		which is not supported by python"""
+		if name in self.__dict__:
+			raise Exception, "Can't change a ConstRect"
+		super(Const, self).__setattr__(name, value)

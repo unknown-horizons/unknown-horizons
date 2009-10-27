@@ -301,23 +301,30 @@ class Island(WorldObject):
 				yield tile
 
 	@decorators.make_constants()
-	def get_providers_in_range(self, circle, res=None):
+	def get_providers_in_range(self, circle, res=None, reslist=None):
 		"""Returns all instances of provider within the specified circle.
 		NOTE: Specifing the res parameter is usually a huge speed gain.
 		@param circle: instance of Circle
-		@param res: optional; only return providers that provide res
+		@param res: optional; only return providers that provide res.  conflicts with reslist
+		@param reslist: optionally; list of res to search providers for. conflicts with res
 		@return: list of providers"""
-		providers = []
-		_providers_append = providers.append
-		if res is None:
-			provider_list = self.provider_buildings
-		else:
+		assert not (bool(res) and bool(reslist))
+		if res is not None:
 			provider_list = self.provider_buildings.provider_by_resources[res]
+		elif reslist:
+			provider_list = set()
+			for _res in reslist:
+				provider_list.union(self.provider_buildings.provider_by_resources[_res])
+		else:
+			# worst case: search all provider buildings
+			provider_list = self.provider_buildings
 
+		possible_providers = []
+		_possible_providers_append = possible_providers.append
 		for provider in provider_list:
 			if provider.position.distance_to_circle(circle) == 0:
-				_providers_append(provider)
-		return providers
+				_possible_providers_append(provider)
+		return possible_providers
 
 	def __iter__(self):
 		for i in self.get_coordinates():

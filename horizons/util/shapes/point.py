@@ -22,6 +22,7 @@
 import fife
 
 from horizons.util.python.decorators import make_constants
+from horizons.util.python import Const
 
 class Point(object):
 	__slots__ = ['x', 'y']
@@ -125,6 +126,10 @@ class Point(object):
 	def tuple_iter(self):
 		yield self.to_tuple()
 
+
+class ConstPoint(Const, Point):
+	"""An immutable Point"""
+	pass
 
 from horizons.util.encoder import register_classes
 register_classes(Point)

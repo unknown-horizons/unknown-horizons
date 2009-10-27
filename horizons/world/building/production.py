@@ -35,7 +35,7 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
 		nearby."""
 		reach = Circle(self.position.center(), self.radius)
-		providers = self.island.get_providers_in_range(reach)
+		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		providers = [ p for p in providers if isinstance(p, Field) ]
 		self.capacity_utilisation = float(len(providers))/self.max_fields_possible
 		# sanity checks for theoretically impossible cases:

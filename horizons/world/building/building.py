@@ -29,7 +29,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
 from horizons.world.ambientsound import AmbientSound
-from horizons.util import Rect, Point, WorldObject, ActionSetLoader, decorators
+from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 
@@ -61,7 +61,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def __init(self, origin, rotation, owner, instance, level):
 		self._action_set_id = self.get_random_action_set_id(horizons.main.db, self.id, level)[0]
-		self.position = Rect(origin, self.size[0]-1, self.size[1]-1)
+		self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		self.owner = owner
 		self.level = level

@@ -96,11 +96,10 @@ class BuildingCollector(Collector):
 			return None
 
 		jobs = JobList(self, self.job_ordering)
-		for res in collectable_res:
-			for building in self.get_buildings_in_range(res):
-				# check if we can pickup here on principle (this is cached, so multiple calls for the
-				# same building don't influence really performance)
-				if self.check_possible_job_target(building):
+		# iterate all building that provide one of the resources
+		for building in self.get_buildings_in_range(reslist=collectable_res):
+			if self.check_possible_job_target(building): # check if we can pickup here on principle
+				for res in collectable_res:
 					job = self.check_possible_job_target_for(building, res) # check if we also get res here
 					if job is not None:
 						jobs.append(job)
@@ -142,12 +141,12 @@ class BuildingCollector(Collector):
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building.get_needed_resources()
 
-	def get_buildings_in_range(self, res=None):
+	def get_buildings_in_range(self, reslist=None):
 		"""Returns all buildings in range .
 		Overwrite in subclasses that need ranges around the pickup.
 		@param res: optional, only search for buildings that provide res"""
 		reach = Circle(self.home_building.position.center(), self.home_building.radius)
-		return self.home_building.island.get_providers_in_range(reach, res)
+		return self.home_building.island.get_providers_in_range(reach, reslist=reslist)
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""

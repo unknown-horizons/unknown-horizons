@@ -266,7 +266,7 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		else:
 			self.home_building.animals.append(self)
 
-	def get_buildings_in_range(self, res=None):
+	def get_buildings_in_range(self, reslist=None):
 		# we are only allowed to pick up at our pasture
 		return [self.home_building]
 

@@ -23,6 +23,7 @@ from point import Point
 from circle import Circle
 
 from horizons.util.python.decorators import make_constants
+from horizons.util.python import Const
 
 class Rect(object):
 	def __init__(self, *args):
@@ -236,7 +237,9 @@ class Rect(object):
 				yield Point(x, y)
 
 
-
+class ConstRect(Const, Rect):
+	"""An immutable Rect"""
+	pass
 
 from horizons.util.encoder import register_classes
 register_classes(Rect)

@@ -100,10 +100,10 @@ class AnimalCollector(BuildingCollector):
 			self.release_animal()
 		super(AnimalCollector, self).reached_home()
 
-	def get_buildings_in_range(self, res=None):
-		return self.get_animals_in_range(res)
+	def get_buildings_in_range(self, reslist=None):
+		return self.get_animals_in_range(reslist)
 
-	def get_animals_in_range(self, res=None):
+	def get_animals_in_range(self, reslist=None):
 		return self.home_building.animals
 
 	def stop_animal(self):
@@ -127,10 +127,10 @@ class AnimalCollector(BuildingCollector):
 
 
 class FarmAnimalCollector(AnimalCollector):
-	def get_animals_in_range(self, res=None):
+	def get_animals_in_range(self, reslist=None):
 		"""Returns animals from buildings in range"""
 		circle = Circle(self.home_building.position.center(), self.home_building.radius)
-		buildings = self.home_building.island.get_providers_in_range(circle, res)
+		buildings = self.home_building.island.get_providers_in_range(circle, reslist=reslist)
 		animals = []
 		for building in buildings:
 			if hasattr(building, 'animals'):

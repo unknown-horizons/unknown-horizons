@@ -32,8 +32,8 @@ from named_object import NamedObject
 from dbreader import DbReader
 from sqliteanimationloader import SQLiteAnimationLoader
 
-from shapes.point import Point
-from shapes.rect import Rect
+from shapes.point import Point, ConstPoint
+from shapes.rect import Rect, ConstRect
 from shapes.circle import Circle
 
 from python import Callback
