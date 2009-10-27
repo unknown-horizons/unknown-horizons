@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="250,100">
+<Container size="250,90">
 <!-- Main buttons that are under minimap, including build menu, diplomacy etc-->
 	<!--<Icon image="content/gui/images/background/button_glass_small.png" position="2,0" size="64,64" />-->
 	<Icon image="content/gui/images/background/button_glass_small.png" position="35,28" size="64,64" />
