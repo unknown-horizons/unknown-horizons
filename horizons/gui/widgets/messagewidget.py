@@ -28,7 +28,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.util.living import LivingObject
 from horizons.i18n import load_xml_translated
-from horizons.world.ambientsound import AmbientSound
+from horizons.ambientsound import AmbientSound
 
 class MessageWidget(LivingObject):
 	"""Class that organises the messages in the top right of the screen.

@@ -24,7 +24,6 @@ import horizons.main
 
 from horizons.util import Callback, Color, random_map
 from horizons.savegamemanager import SavegameManager
-from horizons.campaigneventhandler import CampaignEventHandler
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'free_maps'):
@@ -68,6 +67,7 @@ class SingleplayerMenu(object):
 				self.current.distributeData({ 'maplist' : 0, })
 
 				if show == 'campaign': # update description for campaign
+					from horizons.campaigneventhandler import CampaignEventHandler
 					def _update_description():
 						self.current.findChild(name="map_description").text = unicode( \
 						  CampaignEventHandler.get_description_from_file( self._get_selected_map() ))

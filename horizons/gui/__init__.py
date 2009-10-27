@@ -20,4 +20,3 @@
 # ###################################################
 
 from gui import Gui
-from ingamegui import IngameGui

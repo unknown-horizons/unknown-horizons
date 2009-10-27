@@ -27,7 +27,7 @@ import logging
 
 import horizons.main
 
-from horizons.gui import IngameGui
+from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.mousetools import TearingTool
