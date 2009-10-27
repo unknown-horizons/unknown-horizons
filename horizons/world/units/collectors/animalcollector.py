@@ -101,11 +101,9 @@ class AnimalCollector(BuildingCollector):
 		super(AnimalCollector, self).reached_home()
 
 	def get_buildings_in_range(self, res=None):
-		return self.get_animals_in_range()
+		return self.get_animals_in_range(res)
 
-	def get_animals_in_range(self):
-		"""returns all buildings in range
-		Overwrite in subclasses that need ranges around the pickup."""
+	def get_animals_in_range(self, res=None):
 		return self.home_building.animals
 
 	def stop_animal(self):
@@ -129,10 +127,10 @@ class AnimalCollector(BuildingCollector):
 
 
 class FarmAnimalCollector(AnimalCollector):
-	def get_animals_in_range(self):
+	def get_animals_in_range(self, res=None):
 		"""Returns animals from buildings in range"""
-		buildings = self.home_building.island.get_providers_in_range( \
-		  Circle(self.home_building.position.center(), self.home_building.radius))
+		circle = Circle(self.home_building.position.center(), self.home_building.radius)
+		buildings = self.home_building.island.get_providers_in_range(circle, res)
 		animals = []
 		for building in buildings:
 			if hasattr(building, 'animals'):
@@ -143,5 +141,5 @@ class FarmAnimalCollector(AnimalCollector):
 class HunterCollector(AnimalCollector):
 	kill_animal = True
 
-	def get_animals_in_range(self):
+	def get_animals_in_range(self, res=None):
 		return self.home_building.island.wild_animals

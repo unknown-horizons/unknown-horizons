@@ -303,6 +303,7 @@ class Island(WorldObject):
 	@decorators.make_constants()
 	def get_providers_in_range(self, circle, res=None):
 		"""Returns all instances of provider within the specified circle.
+		NOTE: Specifing the res parameter is usually a huge speed gain.
 		@param circle: instance of Circle
 		@param res: optional; only return providers that provide res
 		@return: list of providers"""
