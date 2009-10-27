@@ -182,7 +182,7 @@ def main():
 									 outfilename)
 		log().warning('Program ended. Profiling output: %s', outfilename)
 
-	print _('Thank you for using Unknown Horizons!')
+	print unicode(_('Thank you for using Unknown Horizons!'))
 
 
 def parse_args():
