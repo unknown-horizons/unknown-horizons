@@ -314,16 +314,15 @@ class Island(WorldObject):
 		elif reslist:
 			provider_list = set()
 			for _res in reslist:
-				provider_list.union(self.provider_buildings.provider_by_resources[_res])
+				"Adding providers for res:", _res
+				provider_list = provider_list.union(self.provider_buildings.provider_by_resources[_res])
 		else:
 			# worst case: search all provider buildings
 			provider_list = self.provider_buildings
-
 		possible_providers = []
-		_possible_providers_append = possible_providers.append
 		for provider in provider_list:
 			if provider.position.distance_to_circle(circle) == 0:
-				_possible_providers_append(provider)
+				possible_providers.append(provider)
 		return possible_providers
 
 	def __iter__(self):
