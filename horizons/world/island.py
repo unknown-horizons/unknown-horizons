@@ -314,7 +314,6 @@ class Island(WorldObject):
 		elif reslist:
 			provider_list = set()
 			for _res in reslist:
-				"Adding providers for res:", _res
 				provider_list = provider_list.union(self.provider_buildings.provider_by_resources[_res])
 		else:
 			# worst case: search all provider buildings
