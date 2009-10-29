@@ -28,7 +28,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.concreteobject import ConcretObject
 from horizons.world.settlement import Settlement
-from horizons.world.ambientsound import AmbientSound
+from horizons.ambientsound import AmbientSound
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle

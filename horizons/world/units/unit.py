@@ -28,7 +28,7 @@ import horizons.main
 from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, Circle, decorators
 from horizons.constants import LAYERS
-from horizons.world.ambientsound import AmbientSound
+from horizons.ambientsound import AmbientSound
 
 class Unit(AmbientSound, MovingObject):
 	log = logging.getLogger("world.units")
