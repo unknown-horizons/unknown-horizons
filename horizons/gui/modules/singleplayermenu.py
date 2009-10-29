@@ -113,7 +113,7 @@ class SingleplayerMenu(object):
 		try:
 			horizons.main.start_singleplayer(map_file, game_data)
 		except InvalidScenarioFileFormat, e:
-			self._show_invalid_scenario_file_popup()
+			self._show_invalid_scenario_file_popup(e)
 			self.show_single(show = 'campaign')
 
 	def _get_selected_map(self):
@@ -126,4 +126,4 @@ class SingleplayerMenu(object):
 		@param exception: InvalidScenarioFile exception instance"""
 		self.show_popup(_("Invalid scenario file"), \
 		                _("The selected file is not a valid scenario file.\nError message:\n") + \
-		                unicode(str(e)))
+		                unicode(str(exception)))
