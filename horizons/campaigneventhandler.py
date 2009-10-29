@@ -62,7 +62,7 @@ class CampaignEventHandler(LivingObject):
 		"""
 		@param session: Session instance
 		@param campaignfile: yaml file that describes the campaign
-		@throws Exception on yaml parse error
+		@throws InvalidScenarioFileFormat on yaml parse error
 		"""
 		self.inited = False
 		self.session = session
@@ -118,7 +118,8 @@ class CampaignEventHandler(LivingObject):
 
 	@classmethod
 	def get_description_from_file(cls, filename):
-		"""Returns the description from a yaml file"""
+		"""Returns the description from a yaml file.
+		@throws InvalidScenarioFile"""
 		return cls._parse_yaml( open(filename, 'r') )['description']
 
 	def drop_events(self):

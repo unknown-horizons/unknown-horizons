@@ -67,10 +67,15 @@ class SingleplayerMenu(object):
 				self.current.distributeData({ 'maplist' : 0, })
 
 				if show == 'campaign': # update description for campaign
-					from horizons.campaigneventhandler import CampaignEventHandler
+					from horizons.campaigneventhandler import CampaignEventHandler, InvalidScenarioFileFormat
 					def _update_description():
-						self.current.findChild(name="map_description").text = unicode( \
-						  CampaignEventHandler.get_description_from_file( self._get_selected_map() ))
+						"""Fill in description of selected scenario to label"""
+						try:
+							desc = CampaignEventHandler.get_description_from_file( self._get_selected_map() )
+						except InvalidScenarioFileFormat, e:
+							self._show_invalid_scenario_file_popup(e)
+							return
+						self.current.findChild(name="map_description").text = unicode( desc )
 						self.current.findChild(name="map_description").parent.adaptLayout()
 					self.current.findChild(name="maplist").capture(_update_description)
 					_update_description()
@@ -104,8 +109,21 @@ class SingleplayerMenu(object):
 
 		game_data['is_scenario'] = bool(self.current.collectData('showCampaign'))
 		self.show_loading_screen()
-		horizons.main.start_singleplayer(map_file, game_data)
+		from horizons.campaigneventhandler import InvalidScenarioFileFormat
+		try:
+			horizons.main.start_singleplayer(map_file, game_data)
+		except InvalidScenarioFileFormat, e:
+			self._show_invalid_scenario_file_popup()
+			self.show_single(show = 'campaign')
 
 	def _get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
 		return self.current.files[ self.current.collectData('maplist') ]
+
+
+	def _show_invalid_scenario_file_popup(self, exception):
+		"""Shows a popup complaining about invalid scenario file.
+		@param exception: InvalidScenarioFile exception instance"""
+		self.show_popup(_("Invalid scenario file"), \
+		                _("The selected file is not a valid scenario file.\nError message:\n") + \
+		                unicode(str(e)))
