@@ -116,6 +116,9 @@ class BuildableSingle(Buildable):
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			if 'constructible' not in island.get_tile(p).__class__.classes:
 				return {'buildable' : False}
+			settlement = island.get_settlement(p)	
+			if not settlement or settlement.owner.id != cls.session.world.player.id:
+				return {'buildable' : False}
 		return {}
 
 	@decorators.make_constants()
