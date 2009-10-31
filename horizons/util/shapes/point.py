@@ -36,12 +36,14 @@ class Point(object):
 	@make_constants()
 	def distance(self, other):
 		from circle import Circle
-		from rect import Rect
+		from rect import Rect, ConstRect
 		distance_functions_map = {
 			Point: self.distance_to_point,
+			ConstPoint: self.distance_to_point,
 			tuple: self.distance_to_tuple,
 			Circle: self.distance_to_circle,
-			Rect: self.distance_to_rect
+			Rect: self.distance_to_rect,
+			ConstRect: self.distance_to_rect
 			}
 		try:
 			return distance_functions_map[other.__class__](other)

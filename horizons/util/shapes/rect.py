@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from point import Point
+from point import Point, ConstPoint
 from circle import Circle
 
 from horizons.util.python.decorators import make_constants
@@ -94,7 +94,9 @@ class Rect(object):
 		"""Calculates distance to another object"""
 		distance_functions_map = {
 			Point: self.distance_to_point,
+			ConstPoint: self.distance_to_point,
 			Rect: self.distance_to_rect,
+			ConstRect: self.distance_to_rect,
 			Circle: self.distance_to_rect,
 			tuple: self.distance_to_tuple
 			}
