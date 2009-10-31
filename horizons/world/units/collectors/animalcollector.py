@@ -130,7 +130,7 @@ class FarmAnimalCollector(AnimalCollector):
 	def get_animals_in_range(self, reslist=None):
 		"""Returns animals from buildings in range"""
 		circle = Circle(self.home_building.position.center(), self.home_building.radius)
-		buildings = self.home_building.island.get_providers_in_range(circle, reslist=reslist)
+		buildings = self.home_building.island.get_providers_in_range(circle)
 		animals = []
 		for building in buildings:
 			if hasattr(building, 'animals'):
