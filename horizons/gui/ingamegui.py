@@ -340,10 +340,11 @@ class IngameGui(LivingObject):
 		self.show_menu('ship')
 
 	def show_build_menu(self):
-		# Build menu is already showed
-		if self.get_cur_menu() and self.get_cur_menu().name == "build_menu_tab_widget":
+		# check if build menu is already showed
+		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
 			self.hide_menu()
 			return
+
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
 		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
@@ -399,7 +400,6 @@ class IngameGui(LivingObject):
 		"""Shows a menu or hides it if it is already displayed.
 		@param menu: parameter supported by show_menu().
 		"""
-		print self.get_cur_menu(), self._get_menu_object(menu), self.get_cur_menu() == self._get_menu_object(menu)
 		if self.get_cur_menu() == self._get_menu_object(menu):
 			self.hide_menu()
 		else:
