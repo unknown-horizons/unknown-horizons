@@ -67,7 +67,7 @@ class Gui(SettingsGui, SingleplayerMenu):
 		self.session = None
 
 	def show_main(self):
-		""" shows the main menu """
+		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
@@ -90,7 +90,7 @@ class Gui(SettingsGui, SingleplayerMenu):
 		self.show_dialog(self.widgets['credits'], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
-		"""
+		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param actions: actions that are executed by the dialog { 'ok': callback, 'cancel': callback }
 		@param onPressEscape: callback that is to be called if the escape button is pressed.

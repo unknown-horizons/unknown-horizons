@@ -89,7 +89,7 @@ class Trader(Player):
 			if current_callback is not None:
 				# current state has a callback
 				calls = Scheduler().get_classinst_calls(self, current_callback)
-				assert(len(calls) == 1)
+				assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
 				remaining_ticks = max(calls.values()[0], 1)
 
 			targeted_branch = None if ship.id not in self.office else self.office[ship.id].getId()
