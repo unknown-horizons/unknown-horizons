@@ -32,6 +32,7 @@ class SingleplayerMenu(object):
 		"""
 		assert show in ('random', 'campaign', 'free_maps')
 		self.hide()
+		# reload since the gui is changed at runtime
 		self.widgets.reload('singleplayermenu')
 		self._switch_current_widget('singleplayermenu', center=True)
 		eventMap = {

@@ -22,6 +22,7 @@ import os
 import os.path
 import time
 import pychan
+import logging
 
 import horizons.main
 
@@ -40,6 +41,8 @@ class Gui(SettingsGui, SingleplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 
 	"""
+	log = logging.getLogger("gui")
+
 	# styles to apply to a widget
 	styles = {
 	  'mainmenu': 'menu',
@@ -402,10 +405,12 @@ class Gui(SettingsGui, SingleplayerMenu):
 		return tmp_show_details
 
 	def hide(self):
+		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
 
 	def show(self):
+		self.log.debug("Gui: showing current: %s", self.current)
 		if self.current is not None:
 			self.current.show()
 
@@ -473,10 +478,7 @@ class Gui(SettingsGui, SingleplayerMenu):
 		return selected_savegame
 
 	def show_loading_screen(self):
-		self.hide()
-		self.current = self.widgets['loadingscreen']
-		center_widget(self.current)
-		self.show()
+		self._switch_current_widget('loadingscreen', center=True, show=True)
 
 	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False):
 		"""Switches self.current to a new widget.
@@ -487,7 +489,9 @@ class Gui(SettingsGui, SingleplayerMenu):
 		@return: instance of old widget"""
 		old = self.current
 		if show and old is not None:
+			self.log.debug("Gui: hiding %s", old)
 			old.hide()
+		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
 		if center:
 			center_widget(self.current)
