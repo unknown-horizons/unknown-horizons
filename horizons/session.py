@@ -44,7 +44,7 @@ from horizons.world.building.buildable import Buildable
 from horizons.command import Command
 from horizons.settings import Settings
 from horizons.constants import PATHS
-from horizons.campaigneventhandler import CampaignEventHandler
+from horizons.campaign import CampaignEventHandler
 
 
 class Session(LivingObject):

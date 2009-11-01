@@ -30,7 +30,7 @@ from horizons.util import WorldObject, Point, Rect, Circle, WeakList, DbReader, 
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
-from horizons.campaigneventhandler import CONDITIONS
+from horizons.campaign import CONDITIONS
 from horizons.world.providerhandler import ProviderHandler
 
 class Island(WorldObject):

@@ -29,31 +29,13 @@ from horizons.constants import RES
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, LivingObject
 
-
-# event conditions to specify at check_events()
-CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
-                  'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
-                  'building_num_of_type_greater', 'settlement_inhabitants_greater',
-                  'player_balance_greater', 'player_inhabitants_greater',
-                  'player_res_stored_greater', 'settlement_res_stored_greater', 'time_passed')
-
-# conditions that can only be checked periodically
-_scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
-                                CONDITIONS.player_gold_less, \
-                                CONDITIONS.settlement_balance_greater, \
-                                CONDITIONS.settlement_inhabitants_greater, \
-                                CONDITIONS.player_balance_greater, \
-                                CONDITIONS.player_inhabitants_greater, \
-                                CONDITIONS.player_res_stored_greater,
-                                CONDITIONS.settlement_res_stored_greater,
-                                CONDITIONS.time_passed)
+from horizons.campaign.conditions import CONDITIONS, _scheduled_checked_conditions
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
 			msg = "Invalid campaign file."
 		super(InvalidScenarioFileFormat, self).__init__(msg)
-
 
 class CampaignEventHandler(LivingObject):
 	"""Handles event, that make up a campaign. See wiki."""
@@ -175,95 +157,12 @@ class CampaignEventHandler(LivingObject):
 
 ###
 # Campaign Actions
-
-def show_message(session, *message):
-	"""Shows a custom message in the messagewidget. If you pass more than one message, they
-	will be shown after each other after a delay"""
-	delay = 6
-	delay_ticks = Scheduler().get_ticks(delay)
-	delay_iter = 1
-	for msg in message:
-		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, \
-		                                    None, None, msg, visible_for=90), None, runin=delay_iter)
-		delay_iter += delay_ticks
-
-def show_db_message(session, message_id):
-	"""Shows a message specified in the db on the ingame message widget"""
-	session.ingame_gui.message_widget.add(None, None, message_id)
-
-def do_win(session):
-	"""Called when player won"""
-	show_db_message(session, 'YOU_HAVE_WON')
-	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
-
-def do_lose(session):
-	"""Called when player lost"""
-	show_message(session, 'You failed the scenario.')
-	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/szenario/loose.ogg')
-	# drop events after this event
-	Scheduler().add_new_object(session.campaign_eventhandler.drop_events, session.campaign_eventhandler)
+from horizons.campaign.actions import *
 
 ###
 # Campaign Conditions
+from horizons.campaign.conditions import *
 
-def settlements_num_greater(session, limit):
-	"""Returns whether the number of settlements owned by the human player is greater than limit."""
-	return len(_get_player_settlements(session)) > limit
-
-def settler_level_greater(session, limit):
-	"""Returns wheter the max level of settlers is greater than limit"""
-	return (session.world.player.settler_level > limit)
-
-def player_gold_greater(session, limit):
-	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.inventory[RES.GOLD_ID] > limit)
-
-def player_gold_less(session, limit):
-	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.inventory[RES.GOLD_ID] < limit)
-
-def settlement_balance_greater(session, limit):
-	"""Returns whether at least one settlement of player has a balance > limit"""
-	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.balance > limit)
-
-def player_balance_greater(session, limit):
-	"""Returns whether the cumulative balance of all player settlements is > limit"""
-	return (sum(settlement.balance for settlement in _get_player_settlements(session)) > limit)
-
-def settlement_inhabitants_greater(session, limit):
-	"""Returns whether at least one settlement of player has more than limit inhabitants"""
-	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.inhabitants > limit)
-
-def player_inhabitants_greater(session, limit):
-	"""Returns whether all settlements of player combined have more than limit inhabitants"""
-	return (sum(settlement.inhabitants for settlement in _get_player_settlements(session)) > limit)
-
-def building_num_of_type_greater(session, building_class, limit):
-	"""Check if player has more than limit buildings on a settlement"""
-	for settlement in _get_player_settlements(session):
-		if len([building for building in settlement.buildings if \
-		       building.id == building_class]) > limit:
-			return True
-	return False
-
-def player_res_stored_greater(session, res, limit):
-	"""Returns whether all settlements of player combined have more than limit of res"""
-	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) > limit)
-
-def settlement_res_stored_greater(session, res, limit):
-	"""Returs whether at least one settlement of player has more than limit of res"""
-	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.inventory[res] > limit)
-
-def time_passed(self, secs):
-	"""Returns whether at least secs seconds have passed since game start."""
-	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
-
-def _get_player_settlements(session):
-	"""Helper generator, returns settlements of local player"""
-	return [ settlement for settlement in session.world.settlements if settlement.owner == session.world.player ]
 
 ###
 # Simple utility classes
@@ -304,7 +203,10 @@ class _Action(object):
 	}
 
 	def __init__(self, action_dict):
-		self._action_type_str = action_dict['type']
+		try:
+			self._action_type_str = action_dict['type']
+		except KeyError:
+			raise InvalidScenarioFileFormat('Encountered action without type')
 		try:
 			self.callback = self.action_types[ action_dict['type'] ]
 		except KeyError:
@@ -327,6 +229,8 @@ class _Condition(object):
 	condition_types = { }
 	def __init__(self, session, cond_dict):
 		self.session = session
+		if not 'type' in cond_dict:
+			raise InvalidScenarioFileFormat("Encountered condition without type")
 		try:
 			self.cond_type = CONDITIONS.get_item_for_string(cond_dict['type'])
 		except KeyError:

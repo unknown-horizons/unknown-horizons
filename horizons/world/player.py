@@ -23,7 +23,7 @@ from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
 from horizons.settings import Settings
-from horizons.campaigneventhandler import CONDITIONS
+from horizons.campaign import CONDITIONS
 
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""

@@ -25,7 +25,7 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.command import Command
 from horizons.util import Point, WorldObject
-from horizons.campaigneventhandler import CONDITIONS
+from horizons.campaign import CONDITIONS
 
 class Build(Command):
 	"""Command class that builds an object."""

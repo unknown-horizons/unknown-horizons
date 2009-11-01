@@ -68,7 +68,7 @@ class SingleplayerMenu(object):
 				self.current.distributeData({ 'maplist' : 0, })
 
 				if show == 'campaign': # update description for campaign
-					from horizons.campaigneventhandler import CampaignEventHandler, InvalidScenarioFileFormat
+					from horizons.campaign import CampaignEventHandler, InvalidScenarioFileFormat
 					def _update_description():
 						"""Fill in description of selected scenario to label"""
 						try:
@@ -110,7 +110,7 @@ class SingleplayerMenu(object):
 
 		game_data['is_scenario'] = bool(self.current.collectData('showCampaign'))
 		self.show_loading_screen()
-		from horizons.campaigneventhandler import InvalidScenarioFileFormat
+		from horizons.campaign import InvalidScenarioFileFormat
 		try:
 			horizons.main.start_singleplayer(map_file, game_data)
 		except InvalidScenarioFileFormat, e:

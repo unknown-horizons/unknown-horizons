@@ -1,0 +1,60 @@
+# ###################################################
+# Copyright (C) 2009 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
+#
+# Unknown Horizons is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
+
+import horizons.main
+
+from horizons.scheduler import Scheduler
+from horizons.ext.enum import Enum
+from horizons.util import Callback
+
+
+###
+# Campaign Actions
+
+def show_message(session, *message):
+	"""Shows a custom message in the messagewidget. If you pass more than one message, they
+	will be shown after each other after a delay"""
+	delay = 6
+	delay_ticks = Scheduler().get_ticks(delay)
+	delay_iter = 1
+	for msg in message:
+		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, \
+		                                    None, None, msg, visible_for=90), None, runin=delay_iter)
+		delay_iter += delay_ticks
+
+def show_db_message(session, message_id):
+	"""Shows a message specified in the db on the ingame message widget"""
+	session.ingame_gui.message_widget.add(None, None, message_id)
+
+def do_win(session):
+	"""Called when player won"""
+	show_db_message(session, 'YOU_HAVE_WON')
+	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
+
+def do_lose(session):
+	"""Called when player lost"""
+	show_message(session, 'You failed the scenario.')
+	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/szenario/loose.ogg')
+	# drop events after this event
+	Scheduler().add_new_object(session.campaign_eventhandler.drop_events, session.campaign_eventhandler)
+
+###
+
