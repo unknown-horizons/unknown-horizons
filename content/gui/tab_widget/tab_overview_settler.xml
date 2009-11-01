@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container  size="250,400">
+<Container  size="250,450">
 <Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />	
@@ -17,16 +17,16 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Container size="260,550" position="25,43">
 			
-			<!-- Place small image of building here -->
-			<Icon name="building_image" position="0,70"/>
+			<Icon name="building_image" position="0,0"/>
 			
 			<Label name='name' position="90,0" text="" />
 			
 			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />-->
 			
-			<!-- Use this progress bar to show settlers happiness -->
 			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="90,25" tooltip="Happiness" />
-			<ProgressBar position="110,25" name='happiness'/>
+			<Icon position="110,25" image="content/gui/images/background/bar_bg.png" size="80,30"/>
+			
+			<ProgressBar position="111,26" size="91,20" name='happiness'/>
 			<!--<Label name='happiness' position="110,25" text="" />-->
 
 			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="90,50" tooltip="Residents" />
