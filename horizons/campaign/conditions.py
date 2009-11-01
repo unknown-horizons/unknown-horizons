@@ -19,15 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import yaml
-import copy
-
-import horizons.main
-
 from horizons.ext.enum import Enum
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, LivingObject
 
 
 # event conditions to specify at check_events()
@@ -35,7 +29,8 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
-                  'player_res_stored_greater', 'settlement_res_stored_greater', 'time_passed')
+                  'player_res_stored_greater', 'settlement_res_stored_greater', 'time_passed', \
+                  'var_eq')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -106,11 +101,19 @@ def settlement_res_stored_greater(session, res, limit):
 	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.inventory[res] > limit)
 
-def time_passed(self, secs):
+def time_passed(session, secs):
 	"""Returns whether at least secs seconds have passed since game start."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
+
+def var_eq(session, name, value):
+	if not name in _get_scenario_vars(session):
+		return False
+	return (_get_scenario_vars(session)[name] == value)
 
 def _get_player_settlements(session):
 	"""Helper generator, returns settlements of local player"""
 	return [ settlement for settlement in session.world.settlements if settlement.owner == session.world.player ]
+
+def _get_scenario_vars(session):
+	return session.campaign_eventhandler._scenario_variables
 

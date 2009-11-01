@@ -20,6 +20,5 @@
 # ###################################################
 
 
-from campaigneventhandler import CampaignEventHandler, InvalidScenarioFileFormat
-
 from conditions import CONDITIONS
+from campaigneventhandler import CampaignEventHandler, InvalidScenarioFileFormat

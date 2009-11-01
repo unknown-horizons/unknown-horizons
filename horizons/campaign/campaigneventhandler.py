@@ -38,7 +38,8 @@ class InvalidScenarioFileFormat(Exception):
 		super(InvalidScenarioFileFormat, self).__init__(msg)
 
 class CampaignEventHandler(LivingObject):
-	"""Handles event, that make up a campaign. See wiki."""
+	"""Handles event, that make up a campaign. See wiki.
+	An instance of this class is bound to a set of events. On a new scenario, you need a new instance."""
 
 	def __init__(self, session, campaignfile = None):
 		"""
@@ -52,6 +53,7 @@ class CampaignEventHandler(LivingObject):
 		self._data = {}
 		# map: condition types -> events
 		self._event_conditions = {}
+		self._scenario_variables = {} # variables for set_var, var_eq ...
 		for cond in CONDITIONS:
 			self._event_conditions[cond] = set()
 		if campaignfile:
@@ -59,6 +61,7 @@ class CampaignEventHandler(LivingObject):
 
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
+
 
 	def end(self):
 		Scheduler().rem_all_classinst_calls(self)
@@ -156,13 +159,12 @@ class CampaignEventHandler(LivingObject):
 
 
 ###
-# Campaign Actions
-from horizons.campaign.actions import *
-
-###
 # Campaign Conditions
 from horizons.campaign.conditions import *
 
+###
+# Campaign Actions
+from horizons.campaign.actions import *
 
 ###
 # Simple utility classes
@@ -199,7 +201,8 @@ class _Action(object):
 	  'message': show_message,
 	  'db_message': show_db_message,
 	  'win' : do_win,
-	  'lose' : do_lose
+	  'lose' : do_lose,
+	  'var_set' : var_set
 	}
 
 	def __init__(self, action_dict):

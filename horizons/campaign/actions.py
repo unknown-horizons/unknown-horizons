@@ -22,8 +22,8 @@
 import horizons.main
 
 from horizons.scheduler import Scheduler
-from horizons.ext.enum import Enum
 from horizons.util import Callback
+from horizons.campaign import CONDITIONS
 
 
 ###
@@ -56,5 +56,8 @@ def do_lose(session):
 	# drop events after this event
 	Scheduler().add_new_object(session.campaign_eventhandler.drop_events, session.campaign_eventhandler)
 
-###
+def var_set(session, name, value):
+	session.campaign_eventhandler._scenario_variables[name] = value
+	session.campaign_eventhandler.check_events(CONDITIONS.var_eq)
+
 
