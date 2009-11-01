@@ -199,7 +199,7 @@ class Fife(object):
 		from gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
 		from gui.widgets.progressbar import ProgressBar
 		from gui.widgets.toggleimagebutton import ToggleImageButton
-		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel
+		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
 
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
@@ -208,6 +208,7 @@ class Fife(object):
 		pychan.widgets.registerWidget(TooltipIcon)
 		pychan.widgets.registerWidget(TooltipButton)
 		pychan.widgets.registerWidget(TooltipLabel)
+		pychan.widgets.registerWidget(TooltipProgressBar)
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)

@@ -26,6 +26,7 @@ from horizons.extscheduler import ExtScheduler
 from pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
 from horizons.settings import Settings
+from horizons.gui.widgets import ProgressBar
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -119,5 +120,16 @@ class TooltipLabel(_Tooltip, pychan.widgets.Label):
 	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip="", **kwargs):
 		super(TooltipLabel, self).__init__(**kwargs)
+		self.init_tooltip(tooltip)
+
+class TooltipProgressBar(_Tooltip, ProgressBar):
+	"""The TooltipProgressBar is a modified progress bar widget. It can be used in xml files like this:
+	<TooltipProgressbar tooltip=""/>
+	Used to display tooltip on hover on buttons.
+	Attributes same as Label widget with addition of tooltip="text string to display"
+	Use \\n for newline."""
+	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
+	def __init__(self, tooltip="", **kwargs):
+		super(TooltipProgressBar, self).__init__(**kwargs)
 		self.init_tooltip(tooltip)
 
