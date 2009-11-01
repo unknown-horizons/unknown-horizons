@@ -1,46 +1,43 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container  size="250,450">
+<Container  size="250,500">
 <Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />		 	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 		 	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />		 	
-		 	
-<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,350" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,400" />
 		 	
 	<Container position="0,70" size="600,400" >
 
 		<Label name="headline" position="85,7" text="Overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-		<Container size="260,550" position="25,43">
+		<Container size="260,550" position="22,20">
 			
-			<Icon name="building_image" position="0,0"/>
+			<!-- Building image -->
+			<Icon name="building_image" position="30,0"/>
+		
+			<!-- happiness and residents -->
+			<Label name='name' position="0,140" text="" />
+			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="0,166" tooltip="Happiness" />
+			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,170"/>			
+			<ProgressBar position="21,166" size="91,120" name='happiness'/>
+			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="140,166" tooltip="Residents" />
+			<Label name='inhabitants' position="160,165" text="" />	
 			
-			<Label name='name' position="90,0" text="" />
-			
-			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />-->
-			
-			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="90,25" tooltip="Happiness" />
-			<Icon position="110,25" image="content/gui/images/background/bar_bg.png" size="80,30"/>
-			
-			<ProgressBar position="111,26" size="91,20" name='happiness'/>
-			<!--<Label name='happiness' position="110,25" text="" />-->
+			<!-- Taxes -->
+			<Icon image="content/gui/images/background/hr.png" position="0,190" />		
+			<Label position="0,205" name="tax_label" text="Taxes:" /><Label name='taxes' position="55,205" text="" /><TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="72,205" tooltip="Paid taxes" />
+			<Slider position="2,230" size="200,20" name="tax_slider" orientation="0" />		
+				
+			<!-- Ressources -->
+			<Icon image="content/gui/images/background/hr.png" position="0,255" />
+			<Label position="0,265" name="needed_res_label" text="Needed Resources:" />
+			<HBox name='needed_res' position="0,280" />
 
-			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="90,50" tooltip="Residents" />
-			<Label name='inhabitants' position="110,50" text="" />
-			
-			<Icon image="content/gui/images/background/hr.png" position="0,72" />
-
-			<Label position="0,85" name="tax_label" text="Taxes:" /><Label name='taxes' position="55,85" text="" /><TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="72,85" tooltip="Paid taxes" />
-			<Slider position="2,110" size="200,20" name="tax_slider" orientation="0" />
-			
-			<Icon image="content/gui/images/background/hr.png" position="0,140" />
-			
-			<Label position="0,155" name="needed_res_label" text="Needed Resources:" />
-			<HBox name='needed_res' position="0,170" />
 		</Container>
 	</Container>
 </Container>
