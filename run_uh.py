@@ -357,16 +357,18 @@ def find_FIFE(fife_custom_path=None):
 
 	# assemble args (python run_uh.py ..)
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path" ]
-	if logfilename:
-		args += [ "--logfile", logfilename ]
-	log().debug("Restarting with args %s", args)
 
 	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
 	import platform
 	if platform.system() != 'Windows':
+		if logfilename:
+			args += [ "--logfile", logfilename ]
+		log().debug("Restarting with args %s", args)
 		os.execvp(args[0], args)
 	else:
 		args[1] = "\"%s\"" % args[1]
+		args += [ "--logfile", "\"%s\"" % logfilename ]
+		log().debug("Restarting using windows workaround with args %s", args)
 		os.system(" ".join(args))
 		sys.exit(0)
 
