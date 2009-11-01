@@ -74,7 +74,7 @@ class BuildingClass(type):
 		self.class_package, size_x, size_y, name, self.radius, health, inhabitants, inhabitants_max = \
 		    self.db("SELECT class_package, size_x, size_y, name, radius, health, \
 		    inhabitants_start, inhabitants_max FROM data.building WHERE id = ?", id)[0]
-		self.name = name
+		self._name = name
 		self.size = (int(size_x), int(size_y))
 		self.health = int(health)
 		self.inhabitants = int(inhabitants)

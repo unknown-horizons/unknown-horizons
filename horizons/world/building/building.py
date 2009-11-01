@@ -77,6 +77,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		for soundfile in self.soundfiles:
 			self.play_ambient(soundfile, True)
 
+	@property
+	def name(self):
+		return self._name
+
 	@staticmethod
 	def get_random_action_set_id(db, object_id, level):
 		"""Returns an action set for an object of type object_id in a level <= the specified level.

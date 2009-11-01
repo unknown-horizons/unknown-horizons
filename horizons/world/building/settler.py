@@ -79,6 +79,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def happiness(self):
 		return self.inventory[RES.HAPPINESS_ID]
 
+	@property
+	def name(self):
+		level_name = horizons.main.db("SELECT name FROM settler_level WHERE level = ?", self.level)[0][0]
+		return (_(level_name)+' '+_(self._name)).title()
+
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
 		# taxes, inhabitants

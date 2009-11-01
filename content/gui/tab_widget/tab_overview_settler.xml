@@ -18,7 +18,6 @@
 			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />-->
 			<Label position="0,25" name="happiness_label" text="Happiness:" /><Label name='happiness' position="75,25" text="" />
 			<Label position="0,50" name="inhabitants_label" text="Inhabitants:" /><Label name='inhabitants' position="75,50" text="" />
-			<Label position="0,75" name="level_label" text="Level:" /><Label name='level' position="75,75" text="" />
 			<Label position="0,100" name="taxes_label" text="Taxes:" /><Label name='taxes' position="75,100" text="" />
 			<Label position="0,125" name="needed_res_label" text="Needed Resources:" />
 			<HBox name='needed_res' position="0,150" />
