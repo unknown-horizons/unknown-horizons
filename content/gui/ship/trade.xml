@@ -7,28 +7,34 @@
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />		 	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />	
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />		 	 	
-<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,400" />	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,400" />	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,450" />		 	 	
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,500" />	
 
-<Container position="0,70" size="600,350" >
+<Container position="0,70" size="600,500" >
 	<Label name="headline" text="Trade" position="105,7"/>
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	
 	<!-- Inventory of ship -->
-	<Container size="260,550" position="20,40">
+	<Container size="520,550" position="20,40">
 		<Label name="ship_label" text="Ship:" position="0,3"/>
 				<Icon image="content/gui/images/icons/hud/main/icon_trade_ship.png" position="160,0" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="0,35" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="55,35" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="110,35" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="165,35" />
-		<Inventory name="inventory_ship" size="300,150" position="0,30"/>
+		<Icon image="content/gui/images/background/inv_bg.png" position="0,90" />
+		<Icon image="content/gui/images/background/inv_bg.png" position="55,90" />
+		<Icon image="content/gui/images/background/inv_bg.png" position="110,90" />
+		<Icon image="content/gui/images/background/inv_bg.png" position="165,90" />
+		<Inventory name="inventory_ship" size="300,300" position="0,30"/>
 	</Container>
 	
-	<Icon image="content/gui/images/background/hr.png" position="20,140" />
+	<Icon image="content/gui/images/background/hr.png" position="20,190" />
 
 	<!-- Exchange selectors -->
-	<Container size="260,550" position="20,150">
+	<Container size="260,550" position="20,200">
 		<Label text="Exchange:" name="exchange_label" position="0,3" />
 		<ImageButton name="size_1" text="" size="32,32" up_image="content/gui/images/icons/hud/ship/button_small.png" down_image="content/gui/images/icons/hud/ship/button_small_d.png" hover_image="content/gui/images/icons/hud/ship/button_small_h.png" position="5, 25" />
 		<Label position="13, 58" text="1t" />
@@ -46,13 +52,13 @@
 		<Label position="179, 58" text="50t" />
 	</Container>
 	
-	<Icon image="content/gui/images/background/hr.png" position="20,235" />
+	<Icon image="content/gui/images/background/hr.png" position="20,285" />
 
 
 
 
 	<!-- Inventory of Settlement -->
-	<Container size="260,550" position="20,245">
+	<Container size="520,550" position="20,295">
 	<Label name="trade_with_label" text="Trade partner:" position="0,3"/>
 	<Icon image="content/gui/images/icons/hud/main/icon_trade_settlement.png" position="160,0" />
 
@@ -63,8 +69,11 @@
 		<Icon image="content/gui/images/background/inv_bg.png" position="55,35" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="110,35" />
 		<Icon image="content/gui/images/background/inv_bg.png" position="165,35" />
-
-		<Inventory name="inventory_partner" size="300,150" position="0,35"/>
+		<Icon image="content/gui/images/background/inv_bg.png" position="0,90" />
+		<Icon image="content/gui/images/background/inv_bg.png" position="55,90" />
+		<Icon image="content/gui/images/background/inv_bg.png" position="110,90" />
+		<Icon image="content/gui/images/background/inv_bg.png" position="165,90" />
+		<Inventory name="inventory_partner" size="300,300" position="0,30"/>
 		<!--<DropDown min_size="170, 0" position="90, 165" name="partners"/>-->
 	</Container>
 
