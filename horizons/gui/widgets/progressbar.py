@@ -26,6 +26,7 @@ class ProgressBar(pychan.widgets.Container):
 	<ProgressBar />
 	It is used to display a ProgressBar with a certain progress ;). Set the
 	widgets progress attribute to set the progress. Pretty straight forward.
+	The progress is a value from 0 to 100. Think of it as percent.
 	"""
 
 	def __init__(self, progress=0, **kwargs):

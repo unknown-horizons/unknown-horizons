@@ -196,10 +196,10 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = u"Settler Overview"
+		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 
 	def refresh(self):
-		self.widget.child_finder('happiness').text = \
-				unicode(self.instance.inventory[RES.HAPPINESS_ID]) + u'/100'
+		self.widget.child_finder('happiness').progress = self.instance.happiness
 		self.widget.child_finder('inhabitants').text = unicode( "%s/%s" % ( \
 			self.instance.inhabitants, self.instance.inhabitants_max ) )
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
@@ -226,19 +226,26 @@ class MarketPlaceOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_overview_marketplace.xml',
 			instance = instance
 		)
+		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 		self.tooltip = u"Market Place Overview"
-		self.widget.child_finder('tax_slider').setScaleStart(SETTLER.TAX_SETTINGS_MIN)
-		self.widget.child_finder('tax_slider').setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
-		self.widget.child_finder('tax_slider').setStepLength(SETTLER.TAX_SETTINGS_STEP)
-		self.widget.child_finder('tax_slider').setValue(self.instance.settlement.tax_setting)
-		self.widget.child_finder('tax_slider').stylize('book')
 
 	def refresh(self):
-		self.widget.child_finder('tax_slider').capture(self.on_tax_widget_change)
 		super(MarketPlaceOverviewTab, self).refresh()
 
-	def on_tax_widget_change(self):
-		new_tax_num = self.widget.child_finder('tax_slider').getValue()
-		new_tax_num = round(new_tax_num/0.5) * 0.5
-		self.widget.child_finder('tax_slider').setValue(new_tax_num)
-		self.instance.settlement.tax_setting = new_tax_num
+
+
+###
+# Minor utility functions
+
+def _setup_tax_slider(slider, settlement):
+	"""Set up a slider to work as tax slider"""
+	slider.setScaleStart(SETTLER.TAX_SETTINGS_MIN)
+	slider.setScaleEnd(SETTLER.TAX_SETTINGS_MAX)
+	slider.setStepLength(SETTLER.TAX_SETTINGS_STEP)
+	slider.setValue(settlement.tax_setting)
+	slider.stylize('book')
+	def on_slider_change():
+		tax = round( slider.getValue() / 0.5 ) * 0.5
+		slider.setValue(tax)
+		settlement.tax_setting = tax
+	slider.capture(on_slider_change)
