@@ -24,7 +24,7 @@ import pychan
 import horizons.main
 
 from tabinterface import TabInterface
-from horizons.util import Callback
+from horizons.util import Callback, ActionSetLoader
 from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
@@ -197,6 +197,11 @@ class SettlerOverviewTab(OverviewTab):
 		)
 		self.tooltip = u"Settler Overview"
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
+
+		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_gfx = action_set.items()[0][1]
+		image = action_gfx[45].keys()[0]
+		self.widget.findChild(name="building_image").image = image
 
 	def refresh(self):
 		self.widget.child_finder('happiness').progress = self.instance.happiness

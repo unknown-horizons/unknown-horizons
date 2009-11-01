@@ -18,7 +18,7 @@
 		<Container size="260,550" position="25,43">
 			
 			<!-- Place small image of building here -->
-			<Icon name="building" position="0,70"/>
+			<Icon name="building_image" position="0,70"/>
 			
 			<Label name='name' position="90,0" text="" />
 			
