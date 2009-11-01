@@ -43,11 +43,9 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def __init(self, settlement):
 		self.inventory = settlement.inventory
 		self.inventory.add_change_listener(self._changed)
-		self.island.provider_buildings.append(self)
 
 	def remove(self):
 		super(StorageBuilding, self).remove()
-		self.island.provider_buildings.remove(self)
 
 	def __del__(self):
 		self.inventory.adjust_limits(-30)

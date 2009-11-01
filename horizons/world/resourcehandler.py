@@ -42,10 +42,9 @@ class ResourceHandler(StorageHolder):
 		# production lines)
 		self._productions = {}
 		self._inactive_productions = {}
-		self.provided_resources = [] # Stores a list of resource ids this resourcehandler provides for pickup
-		for res in horizons.main.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
-		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
-			self.provided_resources.append(res[0])
+		# Stores a set of resource ids this resourcehandler provides for pickup
+		self.provided_resources = self._load_provided_resources()
+
 		# list of collectors that are on the way here
 		self.__incoming_collectors = []
 
@@ -255,24 +254,24 @@ class ResourceHandler(StorageHolder):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
 
+	def _load_provided_resources(self):
+		provided_res = set()
+		for res in horizons.main.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
+		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
+			provided_res.add(res[0])
+		return provided_res
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as branch offices.
 	Provides all tradeable resources."""
-	def __init__(self, **kwargs):
-		super(StorageResourceHandler, self).__init__( **kwargs)
-		self.__init()
-
-	def __init(self):
-		# we provide every tradeable res here.
-		self.provided_resources = []
-		for res in horizons.main.db("SELECT id FROM resource WHERE tradeable = 1"):
-			self.provided_resources.append(res[0])
-
-	def load(self, db, worldid):
-		super(StorageResourceHandler, self).load(db, worldid)
-		self.__init()
 
 	def get_consumed_resources(self):
 		"""We collect everything we provide"""
 		return self.provided_resources
+
+	def _load_provided_resources(self):
+		# we provide every tradeable res here.
+		provided_resources = []
+		for res in horizons.main.db("SELECT id FROM resource WHERE tradeable = 1"):
+			provided_resources.append(res[0])
+		return provided_resources

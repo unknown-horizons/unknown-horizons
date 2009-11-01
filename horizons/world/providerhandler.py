@@ -38,6 +38,7 @@ class ProviderHandler(list):
 	def append(self, provider):
 		# NOTE: appended elements need to be removed, else there will be a memory leak
 		for res in provider.provided_resources:
+			assert provider not in self.provider_by_resources[res]
 			self.provider_by_resources[res].append(provider)
 		super(ProviderHandler, self).append(provider)
 
