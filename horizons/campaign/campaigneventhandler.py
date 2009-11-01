@@ -202,7 +202,7 @@ class _Action(object):
 	  'db_message': show_db_message,
 	  'win' : do_win,
 	  'lose' : do_lose,
-	  'var_set' : var_set
+	  'set_var' : set_var
 	}
 
 	def __init__(self, action_dict):
