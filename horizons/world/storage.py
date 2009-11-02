@@ -257,3 +257,22 @@ class PositiveSizedSlotStorage(PositiveStorage):
 
 class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass
+
+class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
+	"""A storage consisting of a number of slots, all slots have the same size 'limit'
+	Used by ship (huker) for example. So with a limit of 50 and a slot num of 4 yoz could have a max of 50
+	from each resource and only slotnum resources."""
+	def __init__(self, limit, slotnum ):
+		super(PositiveSizedNumSlotStorage, self).__init__(limit)
+		self.slotnum = slotnum
+
+	def alter(self, res, amount):
+		if amount == 0:
+			return 0
+		if not res in self._storage and len(self._storage) >= self.slotnum:
+			return amount
+		result = super(PositiveSizedNumSlotStorage, self).alter(res, amount)
+		#if resource zero, then remove it from storage
+		if self._storage[res] == 0:
+			del self._storage[res]
+		return result	

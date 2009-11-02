@@ -69,8 +69,11 @@ class Inventory(pychan.widgets.Container):
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding = 0)
 			index += 1
+		if (index <= 4): # Hide/Remove second line
+			icons = self.parent.findChildren(name='slot')
+			if len(icons) > 4:
+				self.parent.removeChildren(icons[3:])	
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		self.adaptLayout()
 		self.stylize('menu_black')
-
