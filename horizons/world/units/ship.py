@@ -25,7 +25,7 @@ import fife
 import horizons.main
 
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab
-from horizons.world.storage import PositiveSizedNumSlotStorage
+from horizons.world.storage import PositiveTotalStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather
 from horizons.world.units.movingobject import MoveNotPossible
@@ -53,7 +53,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
-		self.inventory = PositiveSizedNumSlotStorage(50,4)
+		self.inventory = PositiveTotalStorage(200)
 
 	def _move_tick(self):
 		"""Keeps track of the ship's position in the global ship_map"""
