@@ -29,8 +29,8 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
-                  'player_res_stored_greater', 'settlement_res_stored_greater', 'time_passed', \
-                  'var_eq')
+                  'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater', 'time_passed', \
+                  'var_eq', 'var_gt')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -44,6 +44,7 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.player_balance_greater, \
                                 CONDITIONS.player_inhabitants_greater, \
                                 CONDITIONS.player_res_stored_greater,
+				CONDITIONS.player_res_stored_less,
                                 CONDITIONS.settlement_res_stored_greater,
                                 CONDITIONS.time_passed)
 
@@ -106,7 +107,7 @@ def settlement_res_stored_greater(session, res, limit):
 	           settlement.inventory[res] > limit)
 
 def time_passed(session, secs):
-	"""Returns whether at least secs seconds have passed since game start."""
+	"""Returns whether at least secs seconds have passed since gplayer_res_stored_lessame start."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
 
 def var_eq(session, name, value):
