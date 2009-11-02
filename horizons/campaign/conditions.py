@@ -96,6 +96,10 @@ def player_res_stored_greater(session, res, limit):
 	"""Returns whether all settlements of player combined have more than limit of res"""
 	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) > limit)
 
+def player_res_stored_less(session, res, limit):
+	"""Returns whether all settlements of player combined have less than limit of res"""
+	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) < limit)
+
 def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
 	return any(settlement for settlement in _get_player_settlements(session) if \
@@ -109,6 +113,12 @@ def var_eq(session, name, value):
 	if not name in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[name] == value)
+
+def var_gt(session, name, value):
+	"""Variable greater then..."""
+	if not name in _get_scenario_vars(session):
+		return False
+	return (_get_scenario_vars(session)[name] > value)
 
 def _get_player_settlements(session):
 	"""Helper generator, returns settlements of local player"""
