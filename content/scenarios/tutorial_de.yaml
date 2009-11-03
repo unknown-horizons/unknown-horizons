@@ -169,6 +169,8 @@ events:
    - {type: settlement_res_stored_greater, arguments: [6, 24]}
 
 mapfile: development.sqlite
+difficulty: easy
+author: unknown
 description: |
  Das Tutorium:
  Errichtet Euere erste Siedlung und lernt, wie man Unknown Horizons spielt!

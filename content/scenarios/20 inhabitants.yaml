@@ -1,0 +1,15 @@
+events:
+- # Win condition
+  actions:
+   - {type: win}
+   - {type: message, arguments: ["Good job you did it!"]}
+   
+  conditions:
+   - {type: settlement_inhabitants_greater, arguments: [20]}
+   
+mapfile: development.sqlite
+difficulty: easy
+author: Nightraven
+description: |
+ Small settlement
+ Create a small settlement with just 20 inhabitants.

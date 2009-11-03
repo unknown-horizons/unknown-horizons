@@ -7,6 +7,8 @@ events:
   - type: time_passed
     arguments: [2]
 mapfile: development.sqlite
+difficulty: easy
+author: unknown
 description: |
  First challenge:
  Select a nice island and found 1 settlement there.

@@ -109,6 +109,8 @@ events:
      arguments: [25, 6] 
 
 mapfile: development.sqlite
+difficulty: easy
+author: unknown
 description: |
  The tutorial:
  Build your first settlement and learn how to play!

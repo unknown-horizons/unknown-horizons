@@ -107,6 +107,18 @@ class CampaignEventHandler(LivingObject):
 		@throws InvalidScenarioFile"""
 		return cls._parse_yaml( open(filename, 'r') )['description']
 
+	@classmethod
+	def get_difficulty_from_file(cls, filename):
+		"""Returns the difficulty from a yaml file.
+		@throws InvalidScenarioFile"""
+		return cls._parse_yaml( open(filename, 'r') )['difficulty']
+		
+	@classmethod
+	def get_author_from_file(cls, filename):
+		"""Returns the authos from a yaml file.
+		@throws InvalidScenarioFile"""
+		return cls._parse_yaml( open(filename, 'r') )['author']
+
 	def drop_events(self):
 		"""Removes all events. Useful when player lost."""
 		while self._events:

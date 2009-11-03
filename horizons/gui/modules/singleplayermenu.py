@@ -67,19 +67,34 @@ class SingleplayerMenu(object):
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
 
-				if show == 'campaign': # update description for campaign
+				if show == 'campaign': # update infos for campaign
 					from horizons.campaign import CampaignEventHandler, InvalidScenarioFileFormat
-					def _update_description():
-						"""Fill in description of selected scenario to label"""
+					def _update_infos():
+						"""Fill in infos of selected scenario to label"""
 						try:
+							difficulty = CampaignEventHandler.get_difficulty_from_file( self._get_selected_map() )
 							desc = CampaignEventHandler.get_description_from_file( self._get_selected_map() )
+							author = CampaignEventHandler.get_author_from_file( self._get_selected_map() )
 						except InvalidScenarioFileFormat, e:
 							self._show_invalid_scenario_file_popup(e)
 							return
-						self.current.findChild(name="map_description").text = unicode( desc )
-						self.current.findChild(name="map_description").parent.adaptLayout()
-					self.current.findChild(name="maplist").capture(_update_description)
-					_update_description()
+						self.current.findChild(name="map_difficulty").text = "Difficulty: " + unicode( difficulty )
+						self.current.findChild(name="map_author").text = "Author: " + unicode( author )
+						self.current.findChild(name="map_desc").text =  "Description: " + unicode( desc )
+						#self.current.findChild(name="map_difficulty").parent.adaptLayout()
+						#self.current.findChild(name="map_desc").parent.adaptLayout()						
+						
+					
+					#def _update_description():
+					#	"""Fill in description of selected scenario to label"""
+					#	try:
+					#	except InvalidScenarioFileFormat, e:
+					#		self._show_invalid_scenario_file_popup(e)
+					#		return
+					#_update_description()
+						
+					self.current.findChild(name="maplist").capture(_update_infos)
+					_update_infos()
 
 
 		self.current.mapEvents(eventMap)

@@ -34,11 +34,13 @@
 
 		<Container size="320,500" position="420,32" name="right_side">
 			<Label text="Choose a map to play:" name="choose_map_lbl" position="0,50" />
-			<ScrollArea min_size="300,250"  horizontal_scrollbar="0" position="0,80" name="map_list_area">
-				<ListBox name="maplist" min_size="300,340" />
+			<ScrollArea min_size="290,250"  horizontal_scrollbar="0" position="0,80" name="map_list_area">
+				<ListBox name="maplist" min_size="290,330" />
 			</ScrollArea>
-
-			<Label name="map_description" position="10,360" wrap_text="1" max_size="300,1000"/>
+			
+			<Label name="map_author" position="10,330" wrap_text="1" max_size="300,1000"/>
+			<Label name="map_difficulty" position="10,350" wrap_text="1" max_size="300,1000" />
+			<Label name="map_desc" position="10,370" wrap_text="1" max_size="300,1000"/>
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->
