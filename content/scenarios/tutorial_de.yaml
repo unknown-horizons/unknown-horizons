@@ -13,7 +13,7 @@ events:
 
 - # Zeige eine Nachriht nach Spielbeginn (wie man sein Schiff bewegt)
   actions:
-   - {type: message, arguments: ["Herzlich Willkommen bei Unknown Horizons!","Ziel dieses Tutoriums ist es, Euch in die Spielweise von Unknown Horizons einzuführen.", "Dabei werdet Ihr lernen eine Insel zu besiedeln, sodass eine stattliche Siedlung mit blühendem Handel entsteht." "Ihr beginnt das Spiel mit einem einfachen Schiff, welches mit Waren beladen ist.", "Um es zu bewegen, klickt es an und wählt das Ziel mit einem Rechtsklick. Die Schiffsbewegung könnt Ihr ebenfalls indirekt auf der Minimap, oben rechts im Bild, nachvollziehen.", "Sobald Ihr Euer Schiff in die Nähe der Küste navigiert habt, errichtet dort ein Kontor.", "Dazu klickt Ihr auf den Anker-Button im Menü des Schiffes, welches rechts zu sehen ist.", "Der Kontor kann nur an der Küste plaziert werden, da es neben der Warenlagerung, auch die Aufgabe des Handelspostens inne hat, Ihr plaziert ihn mit einem Linksklick."]}
+   - {type: message, arguments: ["Herzlich Willkommen bei Unknown Horizons!","Ziel dieses Tutoriums ist es, Euch in die Spielweise von Unknown Horizons einzuführen.", "Dabei werdet Ihr lernen eine Insel zu besiedeln, sodass eine stattliche Siedlung mit blühendem Handel entsteht.", "Ihr beginnt das Spiel mit einem einfachen Schiff, welches mit Waren beladen ist.", "Um es zu bewegen, klickt es an und wählt das Ziel mit einem Rechtsklick. Die Schiffsbewegung könnt Ihr ebenfalls indirekt auf der Minimap, oben rechts im Bild, nachvollziehen.", "Sobald Ihr Euer Schiff in die Nähe der Küste navigiert habt, errichtet dort ein Kontor.", "Dazu klickt Ihr auf den Anker-Button im Menü des Schiffes, welches rechts zu sehen ist.", "Der Kontor kann nur an der Küste plaziert werden, da es neben der Warenlagerung, auch die Aufgabe des Handelspostens inne hat, Ihr plaziert ihn mit einem Linksklick."]}
   conditions: 
    - type: time_passed
      arguments: [0] 
@@ -27,7 +27,7 @@ events:
 
 - # Fordere den Spieler auf, die Ressourcen an Land zu verladen (min. zehn von jedem)
   actions:
-   - {type: message, arguments: ["Nun da Ihr Euer erstes Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen, um Zugriff auf die Waren für das Bauen von Gebäuden zu haben.", "Wählt das Schiff und wechselt in dessen Inventar.", "Wählt Beladen/Entladen und verladet die Waren, indem Ihr auf sie klickt."; "In der Mitte des Menüs kann die Kapazität der zu transferierenden Waren ausgewählt werden."]}
+   - {type: message, arguments: ["Nun da Ihr Euer erstes Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen, um Zugriff auf die Waren für das Bauen von Gebäuden zu haben.", "Wählt das Schiff und wechselt in dessen Inventar.", "Wählt Beladen/Entladen und verladet die Waren, indem Ihr auf sie klickt.", "In der Mitte des Menüs kann die Kapazität der zu transferierenden Waren ausgewählt werden."]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [1, 0]
