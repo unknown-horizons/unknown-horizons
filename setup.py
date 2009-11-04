@@ -23,6 +23,10 @@ for i in os.listdir('po'):
 
 data = filter(lambda x: '.svn' not in x[0], data)
 
+packages = []
+for i in os.walk('horizons'):
+	packages.append(i[0])
+
 class build_man(build):
 	description = "Build the Manpage"
 
@@ -54,27 +58,7 @@ setup(name='UnknownHorizons',
 	  author='The Unknown Horizons Team',
 	  author_email='team@unknown-horizons.org',
 	  url='http://www.unknown-horizons.org',
-	  packages=['horizons',
-			'horizons.util',
-			'horizons.util.shapes',
-			'horizons.util.python',
-			'horizons.world',
-			'horizons.world.building',
-			'horizons.world.production',
-			'horizons.world.units',
-			'horizons.world.units.collectors',
-			'horizons.world.pathfinding',
-			'horizons.ai',
-			'horizons.ext',
-			'horizons.ext.simplejson',
-			'horizons.i18n',
-			'horizons.gui',
-			'horizons.gui.widgets',
-			'horizons.gui.tabs',
-			'horizons.gui.keylisteners',
-			'horizons.gui.mousetools',
-			'horizons.gui.modules',
-			'horizons.command',],
+	  packages=packages,
 	data_files=data,
 	cmdclass=cmdclass,
 	scripts=['unknown-horizons']
