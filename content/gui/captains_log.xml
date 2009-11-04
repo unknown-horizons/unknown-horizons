@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Container name="settings_window" size="800,580" position="0,0">
+	<Icon image="content/gui/images/background/book.png" position="0,0" />
+
+	<!-- left side -->
+	<Container size="320,500" position="80,40">
+	<ImageButton name="backwards" up_image="content/gui/images/background/parrow_left.png" position="25,25" />
+	<ImageButton name="forwards" up_image="content/gui/images/background/parrow_right.png" position="50,25" />	
+	</Container>
+
+	<!-- right side -->
+	<Container size="320,500" position="440,40">
+	<ImageButton name="deleteButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="750,25" />
+	<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="775,25" />
+	</Container>
+
+</Container>
