@@ -82,16 +82,7 @@ class SingleplayerMenu(object):
 						self.current.findChild(name="map_author").text = "Author: " + unicode( author )
 						self.current.findChild(name="map_desc").text =  "Description: " + unicode( desc )
 						#self.current.findChild(name="map_difficulty").parent.adaptLayout()
-						#self.current.findChild(name="map_desc").parent.adaptLayout()						
-						
-					
-					#def _update_description():
-					#	"""Fill in description of selected scenario to label"""
-					#	try:
-					#	except InvalidScenarioFileFormat, e:
-					#		self._show_invalid_scenario_file_popup(e)
-					#		return
-					#_update_description()
+						#self.current.findChild(name="map_desc").parent.adaptLayout()
 						
 					self.current.findChild(name="maplist").capture(_update_infos)
 					_update_infos()
