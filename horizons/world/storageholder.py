@@ -22,6 +22,7 @@
 import horizons.main
 
 from storage import PositiveSizedSlotStorage, PositiveSizedSpecializedStorage
+from horizons.constants import STORAGE
 
 class StorageHolder(object):
 	"""The StorageHolder class is used as as a parent class for everything that
@@ -61,7 +62,7 @@ class StorageHolder(object):
 
 		if len(db_data) == 0:
 			# no db data about inventory. Create default inventory.
-			self.inventory = PositiveSizedSlotStorage(30)
+			self.inventory = PositiveSizedSlotStorage(STORAGE.DEFAULT_STORAGE_SIZE)
 		else:
 			# specialised storage; each res and limit is stored in db.
 			self.inventory = PositiveSizedSpecializedStorage()

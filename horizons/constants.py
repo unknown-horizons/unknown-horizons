@@ -132,3 +132,5 @@ class WILD_ANIMAL:
 	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
 	HEALTH_LEVEL_TO_REPRODUCE = 70 # this level has to be reached for reproducing
 
+class STORAGE:
+	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big

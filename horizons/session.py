@@ -56,10 +56,8 @@ class Session(LivingObject):
 	* manager - horizons.manager instance. Used to execute commands that need to be tick,
 				synchronized check the class for more information.
 	* scheduler - horizons.scheduler instance. Used to execute timed events that do not effect
-	              network horizons.
+	              network games but rather control the local simulation.
 	* view - horizons.view instance. Used to control the ingame camera.
-	* entities - horizons.entities instance. used to hold preconstructed dummy classes from the db
-	             for later initialization.
 	* ingame_gui - horizons.gui.ingame_gui instance. Used to controll the ingame gui.
 	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to controll
 			   mouse events, check the classes for more info.
@@ -240,9 +238,10 @@ class Session(LivingObject):
 		@param savegame: path to the savegame database.
 		@param playername: string with the playername (None if no player is to be created)
 		@param playercolor: Color instance, player's color or None
+		@param is_scenario: Bool whether the loaded map is a scenario or not
 		"""
 		if is_scenario:
-			# savegame is a yaml file, that contains reference to acctual map file
+			# savegame is a yaml file, that contains reference to actual map file
 			self.campaign_eventhandler = CampaignEventHandler(self, savegame)
 			savegame = os.path.join(SavegameManager.maps_dir, \
 			                        self.campaign_eventhandler.get_map_file())

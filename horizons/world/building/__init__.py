@@ -33,7 +33,7 @@ class BuildingClass(type):
 	"""Class that is used to create Building-Classes from the database.
 	@param id: int - building id in the database.
 
-	Note this creates classes, not instances. These are classes are created at the beginning of a session
+	Note this creates classes, NOT instances. These are classes are created at the beginning of a session
 	and are later used to create instances, when buildings are built.
 	The __new__() function uses quite some python magic to construct the new class. Basically this is just cool
 	and doesn't have a real benefit quite yet except for saving a little loading time.
@@ -62,7 +62,7 @@ class BuildingClass(type):
 
 	def __init__(self, db, id):
 		"""
-		Final loading for the building class.
+		Final loading for the building class. Load a lot of attributes for the building classes
 		@param id: building id.
 		@param db: DbReader
 		"""
@@ -100,7 +100,7 @@ class BuildingClass(type):
 					 Unit creation is very similar, you could check it out though and see which attributes a unit
 					 always has.
 					 As most of the buildings are derived from the production/provider/consumer classes, which are
-					 derived from the storageholder, i suggest you start digging deeper there.
+					 derived from the storageholder, I suggest you start digging deeper there.
 					 horizons/world/storageholder.py is the next place to go.
 					 """
 

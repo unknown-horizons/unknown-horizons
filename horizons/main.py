@@ -25,12 +25,8 @@
    that can be used throughout the code just by importing 'horizons.main'. These are the
    globals:</deprecated>.
    * db - the horizons.dbreader instance, used to retrieve data from the database.
-   * settings - horizons.settings instance.
    * fife - if a game is running. horizons.fife provides the running engine instance.
-   * gui - provides the currently active gui (only non ingame menus)
    * session - horizons.session instance - check horizons/session.py for more information
-   * connection - multiplayer game connection (not used yet)
-   * ext_scheduler - horizons.extscheduler instance, used for non ingame timed events.
 
    TUTORIAL:
    Continue to horizons.session for further ingame digging.

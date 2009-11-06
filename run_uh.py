@@ -21,9 +21,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""This is the Unknown Horizons launcher, it looks for fife and tries to start the game. If you want to dig
-into the game, continue to horizons/main.py. Read all docstrings and get familiar with the functions and
-attributes. I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)"""
+"""TUTORIAL: This is the Unknown Horizons launcher, it looks for fife and tries
+to start the game. 
+Read all docstrings and get familiar with the functions and attributes. 
+I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
+If you want to dig into the game, continue to horizons/main.py. """
 
 __all__ = ['init_environment', 'get_fife_path']
 import sys

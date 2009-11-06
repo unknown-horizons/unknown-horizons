@@ -47,8 +47,11 @@ class World(LivingObject):
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
-	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
-	   * ship_map - same as ground_map, but for ships
+	   * ships 		- a list of all the ships ingame - horizons.world.units.ship.Ship instances
+	   * ship_map 	- same as ground_map, but for ships
+	   * session 	- reference to horizons.session.Session instance of the current game
+	   * water 		- List of coordinates that are water
+	   * trader 	- The worlds ingame free trader player instance
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")

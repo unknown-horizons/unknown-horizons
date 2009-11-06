@@ -124,11 +124,10 @@ class Island(WorldObject):
 		self.path_nodes = IslandPathNodes(self)
 
 		# repopulate wild animals every 2 mins if they die out.
-		Scheduler().add_new_object(self.check_wild_animal_population, self, \
-																									 16*120, -1)
+		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 
 		"""TUTORIAL:
-		To continue hacking, you should now take of to the real fun stuff and check out horizons/world/building/__init__.py.
+		To continue hacking, you should now take off to the real fun stuff and check out horizons/world/building/__init__.py.
 		"""
 
 	def save(self, db):
