@@ -28,6 +28,16 @@ from horizons.constants import PRODUCTION
 
 
 class ResourceHandler(StorageHolder):
+	"""The ResourceHandler class acts as a basic class for describing objects
+	that handle resources. This means the objects can provide resources for 
+	Collectors and have multiple productions. This is a base class, meaning 
+	you have to override a lot of functions in subclasses before you can actually
+	use it. You can maybe understand our idea about the ResourceHandler if you 
+	look at the uml digramm: development/uml/production_classes.png
+	TUTORIAL:
+	You should now look at some of the implementations of the ResourceHandler.
+	You will find some in world/production/producer.py
+	"""
 	tabs = (ProductionOverviewTab, InventoryTab)
 
 	## INIT/DESTRUCT
