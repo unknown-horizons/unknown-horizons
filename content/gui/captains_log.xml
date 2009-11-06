@@ -4,8 +4,8 @@
 
 	<!-- left side -->
 	<Container size="320,500" position="80,40">
-	<ImageButton name="backwards" up_image="content/gui/images/background/parrow_left.png" position="25,25" />
-	<ImageButton name="forwards" up_image="content/gui/images/background/parrow_right.png" position="50,25" />	
+	<ImageButton name="backwards" up_image="content/gui/images/background/parrow_left.png" hover_image="content/gui/images/background/parrow_left_h.png" down_image="content/gui/images/background/parrow_left_d.png" position="25,25" />
+	<ImageButton name="forwards" up_image="content/gui/images/background/parrow_right.png" hover_image="content/gui/images/background/parrow_right_h.png" down_image="content/gui/images/background/parrow_right_d.png" position="50,25" />	
 	</Container>
 
 	<!-- right side -->
