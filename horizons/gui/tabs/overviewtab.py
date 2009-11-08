@@ -186,7 +186,7 @@ class ProductionOverviewTab(OverviewTab):
 		self.instance.session.ingame_gui.hide_menu()
 		if self.destruct_button.gui.isVisible():
 			self.destruct_button.hide_tooltip()
-		Tear(self.instance).execute()
+		Tear(self.instance).execute(self.instance.session)
 
 
 class SettlerOverviewTab(OverviewTab):

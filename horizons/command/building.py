@@ -65,7 +65,7 @@ class Build(Command):
 									 self.x, self.y)
 		for ident in self.tear:
 			building = WorldObject.get_object_by_id(ident)
-			Tear(building).execute()
+			Tear(building).execute(self.session)
 
 		island = WorldObject.get_object_by_id(self.island)
 

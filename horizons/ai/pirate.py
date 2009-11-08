@@ -36,14 +36,14 @@ from horizons.command.unit import CreateUnit
 
 class Pirate(Player):
 	"""A pirate ship moving randomly around if another ship came into the reach of it, it will  be followed for a short time"""
-	
+
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Pirate, self).__init__(session, id, name, color, **kwargs)
-		
+
 
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y).execute()
+		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y).execute(self.session)
 
 	@classmethod
 	def send_ship_random(self, ship):
@@ -63,7 +63,7 @@ class Pirate(Player):
 
 
 
-	
+
 
 
 

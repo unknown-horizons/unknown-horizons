@@ -216,10 +216,11 @@ class World(LivingObject):
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
 					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile].classes:
-						building = Build(self.session, tree, tile[0], tile[1], ownerless=True, island=island).execute()
+						cmd = Build(self.session, tree, tile[0], tile[1], ownerless=True, island=island)
+						building = cmd.execute(self.session)
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) < 1: # add animal to every nth tree
-							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute()
+							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute(self.session)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
@@ -231,7 +232,7 @@ class World(LivingObject):
 		for player in self.players:
 			# Adding ships for the players
 			point = self.get_random_possible_ship_position()
-			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y).execute()
+			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y).execute(self.session)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.inventory.alter(res, amount)

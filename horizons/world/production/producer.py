@@ -231,7 +231,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 							found_tile = True
 							for i in xrange(0, amount):
 								print "created unit", unit, "amount:", amount
-								CreateUnit(self.owner.getId(), unit, tile.x, tile.y).execute()
+								CreateUnit(self.owner.getId(), unit, tile.x, tile.y).execute(self.session)
 							break
 					radius += 1
 

@@ -38,7 +38,7 @@ class BoatbuilderTab(TabInterface):
 		self.tooltip = u"Boat Builder"
 
 	def start_production(self):
-		AddProduction(self.instance, 15).execute()
+		AddProduction(self.instance, 15).execute(self.instance.session)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

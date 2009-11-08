@@ -136,16 +136,7 @@ class SelectionTool(NavigationTool):
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 			for i in self.session.selected_instances:
 				if i.movable:
-					(Act(i, target_mapcoord.x, target_mapcoord.y)).execute()
-			""" old code for moving just one unit (kept for reference):
-			if len(self.session.selected_instances) == 1 and \
-			   any(hasattr(i, 'act') for i in self.session.selected_instances):
-				target_mapcoord = self.session.view.cam.toMapCoordinates(\
-					fife.ScreenPoint(evt.getX(), evt.getY()), False)
-				for i in self.session.selected_instances:
-					if isinstance(i, Unit):
-						self.session.manager.execute(Act(i, target_mapcoord.x, target_mapcoord.y))
-			"""
+					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
 		else:
 			super(SelectionTool, self).mousePressed(evt)
 			return

@@ -80,7 +80,7 @@ class TearingTool(NavigationTool):
 				self.coords = (int(round(coords.x)), int(round(coords.y)))
 			self._mark(self.coords, (int(round(coords.x)), int(round(coords.y))))
 			for i in self.selected:
-				Tear(i).execute()
+				Tear(i).execute(self.session)
 			self.tear_tool_active = False
 			self.session.cursor = SelectionTool(self.session)
 			evt.consume()

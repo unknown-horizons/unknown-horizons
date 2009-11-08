@@ -340,7 +340,7 @@ class BuildingTool(NavigationTool):
 					self.renderer.removeColored(building['instance'])
 					args = default_args.copy()
 					args.update(building)
-					Build(session=self.session, **args).execute()
+					Build(session=self.session, **args).execute(self.session)
 					if self.gui is not None:
 						self.gui.hide()
 				else:
@@ -353,7 +353,7 @@ class BuildingTool(NavigationTool):
 						                                           'NEED_MORE_RES', {'resource' : res_name})
 
 			if built:
-				self.session.manager.execute(PlaySound("build"))
+				PlaySound("build").execute(self.session)
 			self.buildings = []
 			if evt.isShiftPressed() or not found_buildable or self._class.class_package == 'path':
 				self.startPoint = point

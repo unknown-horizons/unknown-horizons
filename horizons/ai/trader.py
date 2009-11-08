@@ -61,7 +61,7 @@ class Trader(Player):
 
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y).execute()
+		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y).execute(self.session)
 		self.ships[ship] = self.shipStates.reached_branch
 		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
 

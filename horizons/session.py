@@ -99,7 +99,6 @@ class Session(LivingObject):
 		self.manager = SPManager(self)
 		self.view = View(self, (15, 15))
 		Entities.load(self.db)
-		Command.default_manager = self.manager
 		self.campaign_eventhandler = CampaignEventHandler(self) # dummy handler with no events
 
 		#GUI
@@ -123,7 +122,6 @@ class Session(LivingObject):
 		self.log.debug("Ending session")
 		self.is_alive = False
 
-		Command.default_manager = None
 		Buildable.end_buildable()
 		self.gui.session = None
 
