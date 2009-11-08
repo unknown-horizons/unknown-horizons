@@ -25,15 +25,6 @@ from horizons.util import Point, Rect, decorators
 
 class Buildable(object):
 	"""Base class for every kind of buildables"""
-	@classmethod
-	def init_buildable(cls, session):
-		"""Stores a reference to the current session. Will be overwritten by next call, and
-		has to be called before any other function of this class"""
-		cls.session = session
-
-	@classmethod
-	def end_buildable(cls):
-		cls.session = None
 
 class BuildableSingle(Buildable):
 	"""Buildings you can build single.
@@ -47,7 +38,7 @@ class BuildableSingle(Buildable):
 
 	@decorators.make_constants()
 	@classmethod
-	def _are_build_requirements_satisfied(cls, x, y, before = None, **kwargs):
+	def _are_build_requirements_satisfied(cls, session, x, y, before = None, **kwargs):
 		state = {'x' : x, 'y' : y}
 		state.update(kwargs)
 		# apply all build checks
@@ -56,7 +47,7 @@ class BuildableSingle(Buildable):
 									cls._is_ground_build_requirement_satisfied, \
 									cls._is_building_build_requirement_satisfied, \
 									cls._is_unit_build_requirement_satisfied):
-			update = check(**state)
+			update = check(session, **state)
 			if update is None:
 				return None
 			else:
@@ -64,7 +55,7 @@ class BuildableSingle(Buildable):
 				if 'buildable' in update and update['buildable'] == False:
 					return state
 		if before is not None:
-			update = cls._is_multi_build_requirement_satisfied(*before, **state)
+			update = cls._is_multi_build_requirement_satisfied(session, *before, **state)
 			if update is None:
 				return None
 			else:
@@ -75,7 +66,7 @@ class BuildableSingle(Buildable):
 
 	@decorators.make_constants()
 	@classmethod
-	def _is_multi_build_requirement_satisfied(cls, *before, **state):
+	def _is_multi_build_requirement_satisfied(cls, session, *before, **state):
 		for i in before:
 			if not i.get('buildable', True):
 				continue
@@ -85,10 +76,10 @@ class BuildableSingle(Buildable):
 
 	@decorators.make_constants()
 	@classmethod
-	def _is_island_build_requirement_satisfied(cls, x, y, **state):
+	def _is_island_build_requirement_satisfied(cls, session, x, y, **state):
 		"""Checks if there is an island at x,y
 		Returns either {'buildable': False} or {'island': island}"""
-		island = cls.session.world.get_island(Point(x, y))
+		island = session.world.get_island(Point(x, y))
 		if island is None:
 			return {'buildable' : False}
 		p = Point(0, 0)
@@ -99,7 +90,7 @@ class BuildableSingle(Buildable):
 
 	@decorators.make_constants()
 	@classmethod
-	def _is_settlement_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_settlement_build_requirement_satisfied(cls, session, x, y, island, **state):
 		"""Checks if there is a settlement at x, y
 		Returns either {'buildable': False} or {'settlement': settlement}"""
 		settlements = island.get_settlements(Rect(x, y, x + cls.size[0] - 1, y + cls.size[1] - 1))
@@ -109,21 +100,21 @@ class BuildableSingle(Buildable):
 
 	@decorators.make_constants()
 	@classmethod
-	def _is_ground_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_ground_build_requirement_satisfied(cls, session, x, y, island, **state):
 		"""Checks if the ground at x, y is buildable.
 		Returns either {} (success) or {'buildable': False}"""
 		p = Point(0, 0)
 		for p.x, p.y in ((xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1])):
 			if 'constructible' not in island.get_tile(p).__class__.classes:
 				return {'buildable' : False}
-			settlement = island.get_settlement(p)	
-			if not settlement or settlement.owner.id != cls.session.world.player.id:
+			settlement = island.get_settlement(p)
+			if not settlement or settlement.owner.id != session.world.player.id:
 				return {'buildable' : False}
 		return {}
 
 	@decorators.make_constants()
 	@classmethod
-	def _is_building_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_building_build_requirement_satisfied(cls, session, x, y, island, **state):
 		"""Checks if buildings are blocking the position, and wether they can be teared.
 		Returns {'buildable': False} if we can't build, {} if we can build without tearing,
 		or {'tear': [building1id, ...]} if we have to tear building1, ... before the build"""
@@ -142,24 +133,23 @@ class BuildableSingle(Buildable):
 
 	@decorators.make_constants()
 	@classmethod
-	def _is_unit_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_unit_build_requirement_satisfied(cls, session, x, y, island, **state):
 		return {}
 
 	@decorators.make_constants()
 	@classmethod
-	def get_build_list(cls, point1, point2, **kwargs):
+	def get_build_list(cls, session, point1, point2, **kwargs):
 		"""Return list of buildings between startpoint (point1) and endpoint (point2)
 		that can be built here.
 		This is called when the user drags the mouse between these two points
 
 		Here, we only build at the endpoint.
-		@param session: reference to current session. is stored in class for further use,
-		and will be overwritten by next call."""
+    """
 		x = int(round(point2[0])) - (cls.size[0] - 1) / 2 if \
 			(cls.size[0] % 2) == 1 else int(math.ceil(point2[0])) - (cls.size[0]) / 2
 		y = int(round(point2[1])) - (cls.size[1] - 1) / 2 if \
 			(cls.size[1] % 2) == 1 else int(math.ceil(point2[1])) - (cls.size[1]) / 2
-		building = cls._are_build_requirements_satisfied(x, y, **kwargs)
+		building = cls._are_build_requirements_satisfied(session, x, y, **kwargs)
 		if building is None:
 			return []
 		else:
@@ -168,7 +158,7 @@ class BuildableSingle(Buildable):
 class BuildableRect(BuildableSingle):
 	@decorators.make_constants()
 	@classmethod
-	def get_build_list(cls, point1, point2, **kwargs):
+	def get_build_list(cls, session, point1, point2, **kwargs):
 		buildings = []
 		# iterate over all coords as rect between the points
 		for x, y in ((x, y) \
@@ -178,7 +168,7 @@ class BuildableRect(BuildableSingle):
 								 for y in xrange(int(min(round(point1[1]), round(point2[1]))), \
 																 1 + int(max(round(point1[1]), round(point2[1]))), \
 		                             cls.size[1])):
-			building = cls._are_build_requirements_satisfied(x, y, buildings, **kwargs)
+			building = cls._are_build_requirements_satisfied(session, x, y, buildings, **kwargs)
 			if building is not None:
 				buildings.append(building)
 
@@ -187,11 +177,7 @@ class BuildableRect(BuildableSingle):
 class BuildableLine(BuildableSingle):
 	@decorators.make_constants()
 	@classmethod
-	def get_build_list(cls, point1, point2, **kwargs):
-		"""
-		@param point1:
-		@param point2:
-		"""
+	def get_build_list(cls, session, point1, point2, **kwargs):
 		buildings = []
 		kwargs['rotation'] = 45
 		point1_int = (int(round(point1[0])), int(round(point1[1])))
@@ -200,7 +186,7 @@ class BuildableLine(BuildableSingle):
 		# iterate in x direction with fixed y
 		for x in xrange(point1_int[0], point2_int[0], \
 		                (1 if point2_int[0] > point1_int[0] else -1)*cls.size[0]):
-			building = cls._are_build_requirements_satisfied(x, y, buildings, **kwargs)
+			building = cls._are_build_requirements_satisfied(session, x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : ('d' if point2_int[0] < point1_int[0] else 'b') if len(buildings) == 0 else 'bd'})
 				buildings.append(building)
@@ -227,13 +213,13 @@ class BuildableLine(BuildableSingle):
 			else:
 				action = 'ac' #default
 
-			building = cls._are_build_requirements_satisfied(x, y, buildings, **kwargs)
+			building = cls._are_build_requirements_satisfied(session, x, y, buildings, **kwargs)
 			if building is not None:
 				building.update({'action' : action})
 				buildings.append(building)
 		return buildings
 
-""" this is not used for now
+""" this is not used for now, and might be defunct
 class BuildableSingleWithSurrounding(BuildableSingle):
 	@classmethod
 	def get_build_list(cls, point1, point2, **kwargs):
@@ -258,7 +244,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 	"""BranchOffice, BoatBuilder, Fisher"""
 	@decorators.make_constants()
 	@classmethod
-	def _is_ground_build_requirement_satisfied(cls, x, y, island, **state):
+	def _is_ground_build_requirement_satisfied(cls, session, x, y, island, **state):
 		coast_tile_found = False
 		for xx, yy in [ (xx, yy) for xx in xrange(x, x + cls.size[0]) for yy in xrange(y, y + cls.size[1]) ]:
 			tile = island.get_tile(Point(xx, yy))
@@ -272,17 +258,17 @@ class BuildableSingleOnCoast(BuildableSingle):
 
 	@decorators.make_constants()
 	@classmethod
-	def check_build_rotation(cls, rotation, x, y):
+	def check_build_rotation(cls, session, rotation, x, y):
 		"""Rotate so that the building looks out to sea"""
-		if not cls.session.world.inited:
+		if not session.world.inited:
 			# while loading, skip this check
 			return rotation
 		# array of coords (points are True if is coastline)
 		coastline = {}
 		position = Rect.init_from_topleft_and_size(x, y, cls.size[0]-1, cls.size[1]-1)
 		for point in position:
-			if cls.session.world.map_dimensions.contains_without_border(point):
-				is_coastline = ('coastline' in cls.session.world.get_tile(point).classes)
+			if session.world.map_dimensions.contains_without_border(point):
+				is_coastline = ('coastline' in session.world.get_tile(point).classes)
 			else:
 				is_coastline = False
 			coastline[point.x-x, point.y-y] = is_coastline

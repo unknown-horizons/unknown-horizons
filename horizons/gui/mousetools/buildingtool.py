@@ -82,7 +82,7 @@ class BuildingTool(NavigationTool):
 			for tile in island.grounds:
 				try:
 					if tile.settlement.owner == player and \
-					   ground_build_satisfied_fun(tile.x, tile.y, island) is not None:
+					   ground_build_satisfied_fun(self.session, tile.x, tile.y, island) is not None:
 						add_colored(tile._instance, *self.buildable_color)
 						if tile.object is not None:
 							add_colored(tile.object._instance, *self.buildable_color)
@@ -174,7 +174,7 @@ class BuildingTool(NavigationTool):
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
-		new_buildings = self._class.get_build_list(point1, point2, ship = self.ship, rotation = self.rotation)
+		new_buildings = self._class.get_build_list(self.session, point1, point2, ship = self.ship, rotation = self.rotation)
 		# If only one building is in the preview and the position hasn't changed => don't preview
 		# Otherwise the preview is redrawn on every mouse move
 		if len(new_buildings) == 1 and len(self.buildings) == 1:
@@ -208,7 +208,7 @@ class BuildingTool(NavigationTool):
 
 			settlement = building.get('settlement', None) if settlement is None else settlement
 
-			building['rotation'] = self._class.check_build_rotation(building['rotation'], \
+			building['rotation'] = self._class.check_build_rotation(self.session, building['rotation'], \
 			                                                        building['x'], building['y'])
 			building['instance'] = self._class.getInstance(self.session, **building)
 			resources = self._class.get_build_costs(**building)

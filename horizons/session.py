@@ -40,7 +40,6 @@ from world import World
 from entities import Entities
 from util import WorldObject, LivingObject, livingProperty, DbReader, Color
 from horizons.savegamemanager import SavegameManager
-from horizons.world.building.buildable import Buildable
 from horizons.command import Command
 from horizons.settings import Settings
 from horizons.constants import PATHS
@@ -116,13 +115,11 @@ class Session(LivingObject):
 			self.log.debug("Initing autosave every %s minutes", Settings().savegame.autosaveinterval)
 			ExtScheduler().add_new_object(self.autosave, self, \
 			                             Settings().savegame.autosaveinterval * 60, -1)
-		Buildable.init_buildable(self)
 
 	def end(self):
 		self.log.debug("Ending session")
 		self.is_alive = False
 
-		Buildable.end_buildable()
 		self.gui.session = None
 
 		Scheduler().rem_all_classinst_calls(self)

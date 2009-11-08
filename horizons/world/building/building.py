@@ -198,7 +198,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			return building.getInstance(session = session, x = x, y = y, action=action, layer=layer, \
 			                            rotation=rotation, **trash)
 		else:
-			rotation = cls.check_build_rotation(rotation, x, y)
+			rotation = cls.check_build_rotation(session, rotation, x, y)
 			facing_loc = fife.Location(session.view.layers[layer])
 			instance_coords = list((x, y, 0))
 			layer_coords = list((x, y, 0))
@@ -236,7 +236,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			return instance
 
 	@classmethod
-	def check_build_rotation(cls, rotation, x, y):
+	def check_build_rotation(cls, session, rotation, x, y):
 		"""Returns a possible rotation for this building.
 		Overwrite to specify rotation restrictions (e.g. water-side buildings)
 		@param rotation: The prefered rotation
