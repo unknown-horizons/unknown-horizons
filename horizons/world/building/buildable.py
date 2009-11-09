@@ -292,10 +292,10 @@ class BuildableSingleOnCoast(BuildableSingle):
 		}
 
 		# return rotation with biggest value
-		max = -1
+		maximum = -1
 		rotation = -1
 		for rot, val in coast_line_points_per_side.iteritems():
-			if val > max:
-				max = val
+			if val > maximum:
+				maximum = val
 				rotation = rot
 		return rotation
