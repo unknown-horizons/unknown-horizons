@@ -58,7 +58,6 @@ class LogBook(object):
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""
-		import pdb ; pdb.set_trace()
 		assert direction in (-1, 1)
 		new_cur = self._cur_message + direction
 		if new_cur < 0 or new_cur >= len(self._messages):
