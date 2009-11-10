@@ -104,7 +104,6 @@ class Session(LivingObject):
 		self.gui.session = self
 		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
-		self.cursor = SelectionTool(self)
 		self.display_speed()
 
 		self.selected_instances = set()
@@ -271,6 +270,8 @@ class Session(LivingObject):
 			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
+		# cursor has to be inited last, else player interacts with a not inited world with it.
+		self.cursor = SelectionTool(self)
 		self.cursor.apply_select() # Set cursor correctly, menus might need to be opened.
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'

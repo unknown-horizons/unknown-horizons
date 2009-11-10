@@ -65,6 +65,9 @@ class NavigationTool(CursorTool):
 				NavigationTool.mouseMoved(self, evt)
 
 	def mouseMoved(self, evt):
+		if not self.session.world.inited:
+			return
+
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
 
 		# Status menu update

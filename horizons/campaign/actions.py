@@ -44,6 +44,11 @@ def show_db_message(session, message_id):
 	"""Shows a message specified in the db on the ingame message widget"""
 	session.ingame_gui.message_widget.add(None, None, message_id)
 
+def show_logbook_entry(session, message):
+	"""Adds an entry to the logbook and displays it."""
+	session.ingame_gui.logbook.add_entry(message)
+	session.ingame_gui.logbook.show()
+
 def do_win(session):
 	"""Called when player won"""
 	show_db_message(session, 'YOU_HAVE_WON')

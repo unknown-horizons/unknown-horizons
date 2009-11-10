@@ -110,14 +110,22 @@ class CampaignEventHandler(LivingObject):
 	@classmethod
 	def get_difficulty_from_file(cls, filename):
 		"""Returns the difficulty from a yaml file.
+		Returns _("unknown") if difficulty isn't specified.
 		@throws InvalidScenarioFile"""
-		return cls._parse_yaml( open(filename, 'r') )['difficulty']
-		
+		try:
+			return cls._parse_yaml( open(filename, 'r') )['difficulty']
+		except KeyError:
+			return _("unknown")
+
 	@classmethod
 	def get_author_from_file(cls, filename):
 		"""Returns the authos from a yaml file.
+		Returns _("unknown") if difficulty isn't specified.
 		@throws InvalidScenarioFile"""
-		return cls._parse_yaml( open(filename, 'r') )['author']
+		try:
+			return cls._parse_yaml( open(filename, 'r') )['author']
+		except KeyError:
+			return _("unknown")
 
 	def drop_events(self):
 		"""Removes all events. Useful when player lost."""
@@ -214,7 +222,8 @@ class _Action(object):
 	  'db_message': show_db_message,
 	  'win' : do_win,
 	  'lose' : do_lose,
-	  'set_var' : set_var
+	  'set_var' : set_var,
+	  'logbook': show_logbook_entry
 	}
 
 	def __init__(self, action_dict):

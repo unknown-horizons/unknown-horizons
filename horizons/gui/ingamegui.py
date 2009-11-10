@@ -29,6 +29,7 @@ from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
 
@@ -39,6 +40,7 @@ class IngameGui(LivingObject):
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 	minimap = livingProperty()
+
 
 	styles = {
 	  'city_info' : 'city_info',
@@ -121,40 +123,7 @@ class IngameGui(LivingObject):
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = callbackWithArguments(self._build, id)
 
-		# DEPRECATED
-		#self.callbacks_build = { # keys are settler levels
-		#	0: {
-		#		'store-1' : callbackWithArguments(self._build, 2),
-		#		'church-1' : callbackWithArguments(self._build, 5),
-		#		'main_square-1' : callbackWithArguments(self._build, 4),
-		#		'lighthouse-1' : callbackWithArguments(self._build, 6),
-		#		'resident-1' : callbackWithArguments(self._build, 3),
-		#		'hunter-1' : callbackWithArguments(self._build, 9),
-		#		'fisher-1' : callbackWithArguments(self._build, 11),
-		#		'weaver-1' : callbackWithArguments(self._build, 7),
-		#		'lumberjack-1' : callbackWithArguments(self._build, 8),
-		#		'tree-1' : callbackWithArguments(self._build, 17),
-		#		'potatofield-1' : callbackWithArguments(self._build, 19),
-		#		'herder-1' : callbackWithArguments(self._build, 20),
-		#		'pasture-1' : callbackWithArguments(self._build, 18),
-		#		'tower-1' : callbackWithArguments(self._build, 13),
-		#		#'wall-1' : callbackWithArguments(self._build, 14),
-		#		'street-1' : callbackWithArguments(self._build, 15),
-		#		#'bridge-1' : callbackWithArguments(self._build, 16)
-		#},
-		#	1: {
-
-		#	'boat_builder-1' : callbackWithArguments(self._build, 12)
-		#},
-		#	2: {
-		#	'villageschool-1' : callbackWithArguments(self._build, 21),
-		#    '	sugarfield-1' : callbackWithArguments(self._build, 22)
-		#},
-		#	3: {
-		#},
-		#	4: {
-		#}
-		#}
+		self.logbook = LogBook()
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
