@@ -57,6 +57,15 @@ size: 15
 color: 68,42,2
 antialias: 1
 
+[Font/libertine_18_black]
+
+type: truetype
+source: content/fonts/LinLibertine_It-4.0.6.ttf
+size: 19
+color: 68,42,2
+antialias: 1
+
+
 [Font/libertine_small_black]
 
 type: truetype

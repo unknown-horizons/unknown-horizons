@@ -3,17 +3,19 @@
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 
 	<!-- left side -->
-	<Container size="320,500" position="80,40">
-		<Label wrap_text="1" max_size="300,400" name="lbl_left"/>
-		<ImageButton name="backwardButton" up_image="content/gui/images/background/parrow_left.png" hover_image="content/gui/images/background/parrow_left_h.png" down_image="content/gui/images/background/parrow_left_d.png" position="25,25" />
-		<ImageButton name="forwardButton" up_image="content/gui/images/background/parrow_right.png" hover_image="content/gui/images/background/parrow_right_h.png" down_image="content/gui/images/background/parrow_right_d.png" position="50,25" />
+	<Container size="320, 25" position="80,40">
+		<Label wrap_text="0" max_size="300, 25" name="lbl_log" text="Captains Log" font="libertine_18_black" />
+	</Container>
+	<Container size="320,530" position="80,75">
+		
+		<Label wrap_text="1" max_size="300,420" name="lbl_left" font="libertine_14_black" />
+		<ImageButton name="backwardButton" up_image="content/gui/images/background/parrow_left.png" hover_image="content/gui/images/background/parrow_left_h.png" down_image="content/gui/images/background/parrow_left_d.png" position="0,425" />
+		<ImageButton name="forwardButton" up_image="content/gui/images/background/parrow_right.png" hover_image="content/gui/images/background/parrow_right_h.png" down_image="content/gui/images/background/parrow_right_d.png" position="35,425" />
 	</Container>
 
 	<!-- right side -->
-	<Container size="320,500" position="440,40">
-		<Label wrap_text="1" max_size="300,400" name="lbl_right"/>
-		<ImageButton name="deleteButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="750,25" />
-		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="775,25" />
+	<Container size="320,530" position="440,75">
+		<Label wrap_text="1" max_size="300,440" name="lbl_right" font="libertine_14_black" />
+		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="250,425" />
 	</Container>
-
 </Container>
