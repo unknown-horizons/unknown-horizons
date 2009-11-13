@@ -31,7 +31,7 @@ class LogBook(object):
 	"""
 	def __init__(self):
 		self._messages = [] # list of all messages
-		self._cur_message = 0 # remember current location; 0 to len(messages)-1
+		self._cur_message = None # remember current location; 0 to len(messages)-1
 
 		self._init_gui()
 
@@ -78,10 +78,13 @@ class LogBook(object):
 		"""Redraws gui. Necessary when current message has changed."""
 		texts = [u'', u'']
 		if len(self._messages) != 0: # there is a current message if there is a message
-			texts[0] = self._messages[self._cur_message]
-
-		if len(self._messages) > self._cur_message+1:
-			texts[1] = self._messages[self._cur_message+1]
+			if self._cur_message == 0: # special case, current one is left since there are no older messages
+				texts[0] = self._messages[self._cur_message]
+				if self._cur_message+1 in self._messages: # maybe also right one
+					texts[1] = self._messages[self._cur_message+1]
+			else: # default case; current message on right side
+				texts[0] = self._messages[self._cur_message-1]
+				texts[1] = self._messages[self._cur_message]
 
 		self._gui.findChild(name="lbl_left").text = texts[0]
 		self._gui.findChild(name="lbl_right").text = texts[1]
