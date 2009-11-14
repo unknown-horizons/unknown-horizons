@@ -21,6 +21,7 @@
 
 from horizons.i18n import load_xml_translated
 from horizons.util import Callback
+from horizons.gui.utility import center_widget
 
 
 class LogBook(object):
@@ -35,13 +36,13 @@ class LogBook(object):
 
 		self._init_gui()
 
-		""" logbook test code
+		""" logbook test code""
 		self.add_entry(u"Welcome to the 1337 logbook!")
 		self.add_entry(u"It's also known as 'Captains log'")
 		self.add_entry(u"But mostly freaks prefer this term")
 		self.add_entry(u"Well, that's nonsense")
 		self.show()
-		"""
+		"" """
 
 	def add_entry(self, message):
 		"""Adds a message to the logbook"""
@@ -73,6 +74,7 @@ class LogBook(object):
 		  'forwardButton' : Callback(self._scroll, 1),
 		  'cancelButton' : self._gui.hide
 		  })
+		center_widget(self._gui)
 
 	def _redraw(self):
 		"""Redraws gui. Necessary when current message has changed."""
@@ -80,7 +82,7 @@ class LogBook(object):
 		if len(self._messages) != 0: # there is a current message if there is a message
 			if self._cur_message == 0: # special case, current one is left since there are no older messages
 				texts[0] = self._messages[self._cur_message]
-				if self._cur_message+1 in self._messages: # maybe also right one
+				if self._cur_message+1 < len(self._messages): # maybe also right one
 					texts[1] = self._messages[self._cur_message+1]
 			else: # default case; current message on right side
 				texts[0] = self._messages[self._cur_message-1]

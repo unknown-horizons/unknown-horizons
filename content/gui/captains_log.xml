@@ -15,7 +15,7 @@
 
 	<!-- right side -->
 	<Container size="320,530" position="440,75">
-		<Label wrap_text="1" max_size="300,440" name="lbl_right" font="libertine_14_black" />
+		<Label wrap_text="1" max_size="300,420" name="lbl_right" font="libertine_14_black" />
 		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="250,425" />
 	</Container>
 </Container>
