@@ -46,7 +46,7 @@ def show_db_message(session, message_id):
 
 def show_logbook_entry(session, message):
 	"""Adds an entry to the logbook and displays it."""
-	session.ingame_gui.logbook.add_entry(message)
+	session.ingame_gui.logbook.add_entry(unicode(message))
 	session.ingame_gui.logbook.show()
 
 def do_win(session):

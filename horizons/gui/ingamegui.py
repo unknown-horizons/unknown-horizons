@@ -69,6 +69,8 @@ class IngameGui(LivingObject):
 			horizons.main.fife.settings.getScreenWidth()/2 - self.widgets['city_info'].size[0]/2 - 10, 5
 		)
 
+		self.logbook = LogBook()
+
 		# self.widgets['minimap'] is the guichan gui around the acctual minimap, which is saved
 		# in self.minimap
 		self.widgets['minimap'].position = (
@@ -99,7 +101,8 @@ class IngameGui(LivingObject):
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
 			'helpLink' : self.main_gui.on_help,
-			'gameMenuButton' : self.main_gui.show_pause
+			'gameMenuButton' : self.main_gui.show_pause,
+		  'logbook' : self.logbook.show
 		})
 
 		self.widgets['tooltip'].hide()
@@ -122,8 +125,6 @@ class IngameGui(LivingObject):
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = callbackWithArguments(self._build, id)
-
-		self.logbook = LogBook()
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({

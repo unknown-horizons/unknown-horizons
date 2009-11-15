@@ -46,11 +46,16 @@ class LogBook(object):
 
 	def add_entry(self, message):
 		"""Adds a message to the logbook"""
+		print 'add'
+		message = unicode(message)
 		self._messages.append(message)
 		self._cur_message = len(self._messages) - 1
 		self._redraw()
 
 	def show(self):
+		# don't show if there are no messages
+		if len(self._messages) == 0:
+			return
 		self._gui.show()
 
 	def hide(self):
@@ -79,6 +84,7 @@ class LogBook(object):
 	def _redraw(self):
 		"""Redraws gui. Necessary when current message has changed."""
 		texts = [u'', u'']
+		print 'redraw'
 		if len(self._messages) != 0: # there is a current message if there is a message
 			if self._cur_message == 0: # special case, current one is left since there are no older messages
 				texts[0] = self._messages[self._cur_message]
@@ -87,8 +93,15 @@ class LogBook(object):
 			else: # default case; current message on right side
 				texts[0] = self._messages[self._cur_message-1]
 				texts[1] = self._messages[self._cur_message]
+		#import pdb ; pdb.set_trace()
+		#texts = ['default0', 'default1']
 
+		print '0: ', texts[0]
+		print '1: ', texts[1]
 		self._gui.findChild(name="lbl_left").text = texts[0]
+		print 'set left'
 		self._gui.findChild(name="lbl_right").text = texts[1]
-
+		print 'set right'
+		self._gui.adaptLayout()
+		print 'layaout adapted'
 
