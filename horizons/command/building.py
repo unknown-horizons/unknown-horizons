@@ -30,7 +30,8 @@ from horizons.campaign import CONDITIONS
 class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
-	def __init__(self, session, building, x, y, rotation = 45, instance = None, ship = None, tear = None, ownerless=False, island=None, settlement=None,**trash):
+	def __init__(self, session, building, x, y, rotation = 45, instance = None, \
+	             ship = None, ownerless=False, island=None, settlement=None,**trash):
 		"""Create the command
 		@param session: Session instance (not MP-able!)
 		@param building: building class that is to be built or the id of the building class.
@@ -48,7 +49,6 @@ class Build(Command):
 			self.building_class = building
 		self.session = session
 		self._instance = instance
-		self.tear = tear or []
 		self.ship = None if ship is None else ship.getId()
 		self.x = int(x)
 		self.y = int(y)
@@ -63,9 +63,6 @@ class Build(Command):
 		"""
 		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, \
 									 self.x, self.y)
-		for ident in self.tear:
-			building = WorldObject.get_object_by_id(ident)
-			Tear(building).execute(self.session)
 
 		island = WorldObject.get_object_by_id(self.island)
 

@@ -26,8 +26,8 @@ import random
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, Point, decorators, Rect, Callback
-from horizons.command.building import Build
+from horizons.util import ActionSetLoader, Point, decorators, Rect, Callback, WorldObject
+from horizons.command.building import Build, Tear
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
@@ -319,6 +319,7 @@ class BuildingTool(NavigationTool):
 
 	@decorators.make_constants()
 	def mouseReleased(self, evt):
+		"""Acctually build."""
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
@@ -329,9 +330,26 @@ class BuildingTool(NavigationTool):
 			self._check_update_preview(point)
 			default_args = {'building' : self._class, 'ship' : self.ship}
 			found_buildable = False
-			# used to check if a building was built with this click
-			# Later used to play a sound
+
+			# first, tear down all buildings that are in the way
+			# we have to check for multiple occurences of the same building to tear
+
+			to_tears = set()
+			for building_tears in \
+			    (building['tear'] for building in self.buildings if 'tear' in building):
+				to_tears.update(building_tears)
+			# to_tears now contains every building id to tear
+			for to_tear in to_tears:
+				Tear( WorldObject.get_object_by_id(to_tear) ).execute(self.session)
+			# remove tear data
+			for building in self.buildings:
+				if 'tear' in building:
+					del building['tear']
+
+			# used to check if a building was built with this click, later used to play a sound
 			built = False
+
+			# acctually do the build and build preparations
 			for building in self.buildings:
 				if building['buildable']:
 					built = True
