@@ -59,7 +59,7 @@ class Build(Command):
 
 	def __call__(self, issuer):
 		"""Execute the command
-		@param issuer: the issuer of the command
+		@param issuer: the issuer (player, owner of building) of the command
 		"""
 		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, \
 									 self.x, self.y)

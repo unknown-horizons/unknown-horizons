@@ -32,6 +32,7 @@ from horizons.world.building.collectingproducerbuilding import CollectingProduce
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
 from horizons.world.units.collectors import BuildingCollector
+from horizons.util import Callback
 
 class SettlerRuin(BasicBuilding):
 	"""Building that appears when a settler got unhappy. The building does nothing."""
@@ -196,7 +197,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# replace this building with a ruin
 			command = Build(self.session, BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
-			Scheduler().add_new_object(command.execute, command, 2)
+			callback = Callback(command.execute, self.session)
+			Scheduler().add_new_object(callback, command, 2)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
@@ -212,6 +214,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def _check_market_place_in_range(self):
 		"""Notifies the user via a message in case there is no market place in range"""
 		assert self.owner == self.session.world.player # only do it for local player
+		# FIXME: this implementation is really ugly and will break sooner or later
 		class _DummyUnit(BuildingCollector):
 			def __init__(_self):
 				_self.home_building = self
