@@ -67,6 +67,11 @@ class Settlement(TradePost, NamedObject):
 		return self.cumulative_taxes + self.sell_income \
 		       - self.cumulative_running_costs - self.buy_expenses
 
+	def level_upgrade(self, lvl):
+		"""Upgrades settlement to a new increment.
+		It only delegates the upgrade to its buildings."""
+		for building in self.buildings:
+			building.level_upgrade(lvl)
 
 	def setup_storage(self):
 		self.inventory = PositiveSizedSlotStorage(0)

@@ -52,6 +52,12 @@ class Player(StorageHolder, WorldObject):
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
 
+	@property
+	def settlements(self):
+		"""Calculate settlements dynamically to save having a redundant list here"""
+		return [ settlement for settlement in self.session.world.settlements if \
+		         settlement.owner == self ]
+
 	def create_inventory(self):
 		self.inventory = PositiveStorage()
 
@@ -92,6 +98,8 @@ class Player(StorageHolder, WorldObject):
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
 			self.session.campaign_eventhandler.check_events(CONDITIONS.settler_level_greater)
+			for settlement in self.settlements:
+				settlement.level_upgrade(self.settler_level)
 			self._changed()
 			return True
 		else:

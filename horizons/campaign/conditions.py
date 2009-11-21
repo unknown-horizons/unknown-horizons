@@ -123,7 +123,7 @@ def var_gt(session, name, value):
 
 def _get_player_settlements(session):
 	"""Helper generator, returns settlements of local player"""
-	return [ settlement for settlement in session.world.settlements if settlement.owner == session.world.player ]
+	return session.world.player.settlements
 
 def _get_scenario_vars(session):
 	return session.campaign_eventhandler._scenario_variables

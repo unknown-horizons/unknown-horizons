@@ -232,7 +232,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		self.session.ingame_gui.message_widget.add(self.position.origin.x, self.position.origin.y, \
 		                                           'NO_MARKET_PLACE_IN_RANGE')
 
-
+	def level_upgrade(self, lvl):
+		"""Settlers only level up by themselves"""
+		pass
 
 	def __str__(self):
 		try:

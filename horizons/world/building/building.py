@@ -95,9 +95,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			db_data = db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id = ? and level = ? ORDER BY random()", object_id, level)
 			# break if we found sth in this lvl
 			if len(db_data) > 0:
-				break
-		assert len(db_data) >= 0, "Couldn't find action set for obj %s in lvl %s" % (object_id, level)
-		return db_data[0]
+				return db_data[0]
+		assert False, "Couldn't find action set for obj %s in lvl %s" % (object_id, level)
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \
@@ -176,13 +175,20 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level
+		(if an action set exists in that level).
+		It's different to get_random_action_set_id is, that it just checks one lvl, and doesn't
+		search for an action set everywhere, which makes it alot more effective, if you're
+		just updating.
 		@param level: int level number"""
-		action_set_id  = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and level=? order by random() LIMIT 1", self.id, level)
+		action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and level=? order by random() LIMIT 1", self.id, level)
 		if action_set_id is not None:
 			self._action_set_id = action_set_id[0][0] # Set the new action_set
 			self.act(self._action, repeating=True)
 
-
+	def level_upgrade(self, lvl):
+		"""Upgrades building to another increment"""
+		self.level = lvl
+		self.update_action_set_level(lvl)
 
 	@classmethod
 	def getInstance(cls, session, x, y, action='idle', building=None, layer=LAYERS.OBJECTS, rotation=0, **trash):
