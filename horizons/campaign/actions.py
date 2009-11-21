@@ -63,6 +63,7 @@ def do_lose(session):
 
 def set_var(session, name, value):
 	session.campaign_eventhandler._scenario_variables[name] = value
-	session.campaign_eventhandler.check_events(CONDITIONS.var_eq)
+	check_callback = Callback(session.campaign_eventhandler.check_events, CONDITIONS.var_eq)
+	Scheduler().add_new_object(check_callback, session.campaign_eventhandler)
 
 
