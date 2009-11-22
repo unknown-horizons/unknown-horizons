@@ -180,9 +180,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		search for an action set everywhere, which makes it alot more effective, if you're
 		just updating.
 		@param level: int level number"""
-		action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and level=? order by random() LIMIT 1", self.id, level)
-		if action_set_id is not None:
-			self._action_set_id = action_set_id[0][0] # Set the new action_set
+		db_data = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? and level=? order by random() LIMIT 1", self.id, level)
+		if len(db_data) > 0:
+			self._action_set_id = db_data[0][0] # Set the new action_set
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):
