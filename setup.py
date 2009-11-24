@@ -25,7 +25,9 @@ data = filter(lambda x: '.svn' not in x[0], data)
 
 packages = []
 for i in os.walk('horizons'):
-	packages.append(i[0])
+	if not '.svn' in os.path.split(i[0]):
+		packages.append(i[0])
+
 
 class build_man(build):
 	description = "Build the Manpage"
