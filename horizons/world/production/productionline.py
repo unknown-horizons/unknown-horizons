@@ -94,7 +94,6 @@ class _ProductionLineData(object):
 		if res in self.produced_res:
 			self.produced_res[res] = amount
 
-
 	def __setattr__(self, name, value):
 		if hasattr(self, "_init_finished") and self._init_finished:
 			raise TypeError, 'ProductionLineData is const, use ProductionLine'

@@ -167,6 +167,7 @@ class StorageCollector(BuildingCollector):
 	"""
 	pather_class = RoadPather
 	destination_always_in_building = True
+	job_ordering = JobList.order_by.for_storage_collector
 
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.

@@ -271,8 +271,11 @@ class Collector(StorageHolder, Unit):
 
 		possible_res_amount = min(res_amount, home_inventory_free_space, \
 															collector_inventory_free_space)
+
+		target_inventory_full = (target.inventory.get_free_space_for(res) == 0)
+
 		# create a new job.
-		return Job(target, res, possible_res_amount)
+		return Job(target, res, possible_res_amount, target_inventory_full)
 
 	def get_best_possible_job(self, jobs):
 		"""Return best possible job from jobs.
@@ -381,13 +384,19 @@ class Collector(StorageHolder, Unit):
 
 class Job(object):
 	"""Data structure for storing information of collector jobs"""
-	def __init__(self, obj, res, amount):
+	def __init__(self, obj, res, amount, target_inventory_full=False):
+		"""
+		@param obj: ResourceHandler that provides res
+		@param res: resource to get
+		@param amount: amount of resource to get
+		@param target_inventory_full: whether target inventory can't store any more of this res.
+		"""
 		assert isinstance(res, int)
 		assert isinstance(amount, int)
 		assert amount >= 0
 		# can't assert that it's not 0, since the value is reset to the amount
 		# the collector acctually got at the target, which might be 0. yet for new jobs
-		# amount > 0 is necessary precondition.
+		# amount > 0 is a necessary precondition.
 
 		if isinstance(obj, int):
 			self._obj_id = obj
@@ -395,6 +404,8 @@ class Job(object):
 			self._object = obj
 		self.res = res
 		self.amount = amount
+
+		self.target_inventory_full = target_inventory_full
 
 		# this is rather a dummy for now
 		self.rating = amount
@@ -417,7 +428,7 @@ class JobList(list):
 	"""Data structure for evaluating best jobs.
 	It's a list extended by special sort functions.
 	"""
-	order_by = Enum('rating', 'amount', 'random', 'fewest_available', 'fewest_available_and_distance')
+	order_by = Enum('rating', 'amount', 'random', 'fewest_available', 'fewest_available_and_distance', 'for_storage_collector')
 
 	def __init__(self, collector, job_order):
 		"""
@@ -440,11 +451,11 @@ class JobList(list):
 		raise NotImplementedError
 
 	def _sort_jobs_rating(self):
-		"""Sorts jobs by job rating (call this in sort_jobs if it fits to your subclass)"""
+		"""Sorts jobs by job rating"""
 		self.sort(key=operator.attrgetter('rating'), reverse=True)
 
 	def _sort_jobs_random(self):
-		"""Sorts jobs randomly (call this in sort_jobs if it fits to your subclass)"""
+		"""Sorts jobs randomly"""
 		random.shuffle(self)
 
 	def _sort_jobs_amount(self):
@@ -462,8 +473,22 @@ class JobList(list):
 	def _sort_jobs_fewest_available_and_distance(self):
 		"""Sort jobs by fewest available, but secondaryly also consider distance"""
 		# python sort is stable, so two sequenced sorts work.
-		self.sort(key=lambda job: self.collector.position.distance(job.object.position))
+		self._sort_distance()
 		self._sort_jobs_fewest_available(shuffle_first=False)
+
+	def _sort_jobs_for_storage_collector(self):
+		"""Special sophisticated sorting routing for storage collectors.
+		Same as fewest_available_and_distance_, but also considers whether target inv is full."""
+		self._sort_jobs_fewest_available_and_distance()
+		self._sort_target_inventory_full()
+
+	def _sort_distance(self):
+		"""Prefer targets that are nearer"""
+		self.sort(key=lambda job: self.collector.position.distance(job.object.position))
+
+	def _sort_target_inventory_full(self):
+		"""Prefer targets with full inventory"""
+		self.sort(key=operator.attrgetter('target_inventory_full'), reverse=True)
 
 	def __str__(self):
 		return str([ str(i) for i in self ])
