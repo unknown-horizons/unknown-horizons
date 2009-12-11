@@ -29,11 +29,13 @@ from horizons.constants import PRODUCTION
 
 class ResourceHandler(StorageHolder):
 	"""The ResourceHandler class acts as a basic class for describing objects
-	that handle resources. This means the objects can provide resources for 
-	Collectors and have multiple productions. This is a base class, meaning 
+	that handle resources. This means the objects can provide resources for
+	Collectors and have multiple productions. This is a base class, meaning
 	you have to override a lot of functions in subclasses before you can actually
-	use it. You can maybe understand our idea about the ResourceHandler if you 
+	use it. You can maybe understand our idea about the ResourceHandler if you
 	look at the uml digramm: development/uml/production_classes.png
+
+	A ResourceHandler must not have more than 1 production with the same prod line id.
 	TUTORIAL:
 	You should now look at some of the implementations of the ResourceHandler.
 	You will find some in world/production/producer.py
@@ -144,29 +146,24 @@ class ResourceHandler(StorageHolder):
 		raise NotImplementedError, "This function has to be overridden!"
 
 	def remove_production(self, production):
-		"""@param production: Production instance"""
+		"""Removes a production instance.
+		@param production: Production instance"""
 		production.remove() # production "destructor"
 		if self.is_active(production):
 			del self._productions[production.get_production_line_id()]
 		else:
 			del self._inactive_productions[production.get_production_line_id()]
 
-	def remove_production_by_id(self, ident):
+	def remove_production_by_id(self, prod_line_id):
 		"""
-		@param ident: production line id
+		Convenience method. Assumes, that this production line id has been added to this instance.
+		@param prod_line_id: production line id to remove
 		"""
-		to_remove = [] # save production to remove here for safe removal
-		for production in self._get_productions():
-			if production.get_production_line_id() == ident:
-				to_remove.append(production)
-		if len(to_remove) == 0:
-			raise ValueError, "Production %s doesn't have a production line %s" % (self, ident)
-		for production in to_remove: # we can safely iterate, to_remove isn't changed
-			self.remove_production(production)
+		self.remove_production( self._get_production(prod_line_id) )
 
-	def has_production_line(self, id):
-		"""Checks for a production line id"""
-		return bool( [ p for p in self._get_productions() if p.get_production_line_id() == id ] )
+	def has_production_line(self, prod_line_id):
+		"""Checks if this instance has a production with a certain production line id"""
+		return bool( self._get_production(prod_line_id) )
 
 	def get_production_progress(self):
 		"""Can be used to return the overall production process."""
@@ -175,7 +172,7 @@ class ResourceHandler(StorageHolder):
 	def get_production_lines(self):
 		"""Returns all production lines that have been added.
 		@return: a list of prodline ids"""
-		return [ production.get_production_line_id() for production in self._get_productions() ]
+		return self._productions.keys() + self._inactive_productions.keys()
 
 	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock
@@ -205,12 +202,6 @@ class ResourceHandler(StorageHolder):
 			# the user can take away res, even if a collector registered for them
 			# if this happens, a negative number would be returned. Use 0 instead.
 			return max(amount, 0)
-
-	def alter_production_time(self, modifier):
-		"""Multiplies the original production time of all production lines by modifier
-		@param modifier: a numeric value"""
-		for production in self._get_productions():
-			production.alter_production_time(modifier)
 
 	def set_active(self, production=None, active=True):
 		"""Pause or unpause a production (aka set it active/inactive).
@@ -264,7 +255,19 @@ class ResourceHandler(StorageHolder):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
 
+	def _get_production(self, prod_line_id):
+		"""Returns a production of this producer by a production line id.
+		@return: instance of Production or None"""
+		if prod_line_id in self._productions:
+			return self._productions[prod_line_id]
+		elif prod_line_id in self._inactive_productions:
+			return self._inactive_productions[prod_line_id]
+		else:
+			return None
+
 	def _load_provided_resources(self):
+		"""Returns a iterable obj containing all resources this building provides.
+		This is outsourced from initiation to an extra function for the possiblity of overwriting it"""
 		provided_res = set()
 		for res in horizons.main.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
 		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
@@ -280,7 +283,9 @@ class StorageResourceHandler(ResourceHandler):
 		return self.provided_resources
 
 	def _load_provided_resources(self):
-		# we provide every tradeable res here.
+		"""Storages provide every res.
+		@see superclass doc
+		"""
 		provided_resources = []
 		for res in horizons.main.db("SELECT id FROM resource WHERE tradeable = 1"):
 			provided_resources.append(res[0])

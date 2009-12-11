@@ -46,11 +46,17 @@ class CollectingBuilding(BuildingResourceHandler):
 		self.path_nodes = ConsumerBuildingPathNodes(self)
 
 	def create_collector(self):
-		""" Creates collectors for building according to db."""
+		"""Creates collectors for building according to db."""
 		for collector_class, count in horizons.main.db("SELECT collector_class, count FROM \
 																									balance.collectors WHERE object_id = ?", self.id):
 			for i in xrange(0, count):
-				Entities.units[collector_class](self, session=self.session)
+				self.add_collector(collector_class)
+
+	def add_collector(self, collector_class):
+		"""Creates a collector and adds it to this building.
+		@param collector_class: unit class of collector to create
+		"""
+		Entities.units[collector_class](self, session=self.session)
 
 	def remove(self):
 		while len(self.__collectors) > 0:

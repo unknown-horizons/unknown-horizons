@@ -189,6 +189,14 @@ class SizedSpecializedStorage(SpecializedStorage):
 		assert size >= 0
 		self.__slot_limits[res] = size
 
+	def change_resource_slot_size(self, res, size_diff):
+		"""Changes the amount that can be stored of a certain res slot.
+		A slot for the specified resource has to exist.
+		@param res: resource id
+		@param size_diff: difference to new slot size"""
+		self.__slot_limits[res] += size_diff
+		assert self.__slot_limits[res] >= 0
+
 	def save(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
 		assert len(self._storage) == len(self.__slot_limits) # we have to have limits for each res
@@ -275,4 +283,4 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 		#if resource zero, then remove it from storage
 		if self._storage[res] == 0:
 			del self._storage[res]
-		return result	
+		return result

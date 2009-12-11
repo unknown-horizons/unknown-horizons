@@ -84,7 +84,8 @@ class Production(WorldObject):
 		elif self._state == PRODUCTION.STATES.producing:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self._finished_producing)
 		# use a number > 0 for ticks
-		remaining_ticks = None if remaining_ticks is None else max(remaining_ticks, 1)
+		if remaining_ticks < 1:
+			remaining_ticks = 1
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
 		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.getId(), self._state.index, \
 												self._prod_line.id, remaining_ticks, \

@@ -90,6 +90,16 @@ class Producer(ResourceHandler):
 		for production in self._productions.itervalues():
 			production.finish_production_now()
 
+	def alter_production_time(self, modifier, prod_line_id=None):
+		"""Multiplies the original production time of all production lines by modifier
+		@param modifier: a numeric value
+		@param prod_line_id: id of production line to alter. None means every production line"""
+		if prod_line_id is None:
+			for production in self._get_productions():
+				production.alter_production_time(modifier)
+		else:
+			self._get_production(prod_line_id).alter_production_time(modifier)
+
 	# PROTECTED METHODS
 	def _get_current_state(self):
 		"""Returns the current state of the producer. It is the most important
