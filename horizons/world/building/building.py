@@ -92,7 +92,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		assert level >= 0
 		# search all levels for an action set, starting with highest one
 		for possible_level in reversed(xrange(level+1)):
-			db_data = db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id = ? and level = ? ORDER BY random()", object_id, level)
+			db_data = db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id = ? and level = ? ORDER BY random()", object_id, possible_level)
 			# break if we found sth in this lvl
 			if len(db_data) > 0:
 				return db_data[0]
