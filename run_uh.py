@@ -22,8 +22,8 @@
 # ###################################################
 
 """TUTORIAL: This is the Unknown Horizons launcher, it looks for fife and tries
-to start the game. 
-Read all docstrings and get familiar with the functions and attributes. 
+to start the game.
+Read all docstrings and get familiar with the functions and attributes.
 I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
 If you want to dig into the game, continue to horizons/main.py. """
 
@@ -55,7 +55,7 @@ def find_uh_position():
 	  '.', '..'
 	  ):
 		i = os.path.realpath(i)
-		if os.path.exists('%s/content' % i):
+		if os.path.exists( os.path.join('content', i)):
 			return i
 	else:
 		# also check system wide dirs
@@ -66,8 +66,9 @@ def find_uh_position():
 		  '/usr/local/share'
 		)
 		for i in positions:
-			if os.path.exists('%s/unknown-horizons' % i):
-				return '%s/unknown-horizons' % i
+			pos = os.path.join('unknown-horizons', i)
+			if os.path.exists( pos ):
+				return pos
 	raise RuntimeError('Cannot find location of unknown horizons.')
 
 def get_option_parser():
@@ -155,7 +156,7 @@ def main():
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
-	logging.config.fileConfig('content/logging.conf')
+	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 
 	gettext.install("unknownhorizons", "po", unicode=1)
 
@@ -210,8 +211,8 @@ def parse_args():
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = PATHS.LOG_DIR + "/unknown-horizons-%s.log" % \
-			            time.strftime("%y-%m-%d_%H-%M-%S")
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
+			                                          time.strftime("%y-%m-%d_%H-%M-%S"))
 		print 'Logging to %s' % logfilename
 		# create logfile
 		logfile = open(logfilename, 'w')
@@ -264,7 +265,7 @@ def init_environment():
 		assert False
 
 	#for some external libraries distributed with unknownhorizons
-	sys.path.append('horizons/ext')
+	sys.path.append( os.path.join('horizons', 'ext') )
 
 	args_to_discard_now = ['--fife-in-library-path', '--fife-path']
 	for arg in args_to_discard_now:
@@ -293,7 +294,7 @@ def get_fife_path(fife_custom_path=None):
 				exit(1)
 		except (ImportError, AttributeError):
 		# no config, try frequently used paths
-			_paths += [ a + '/' + b + '/' + c for \
+			_paths += [ os.path.join(a, b, c) for \
 									a in ('.', '..', '../..') for \
 									b in ('.', 'fife', 'FIFE', 'Fife') for \
 									c in ('.', 'trunk') ]
@@ -309,8 +310,8 @@ def get_fife_path(fife_custom_path=None):
 				log().debug("Found FIFE in %s", fife_path)
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				pythonpaths = [ fife_path + os.path.sep + 'engine/extensions', \
-				                fife_path + os.path.sep + 'engine/swigwrappers/python' ]
+				pythonpaths = [ os.path.join( fife_path, 'engine/extensions'),
+				                os.path.join( fife_path, 'engine/swigwrappers/python' ) ]
 				for path in pythonpaths:
 					if os.path.exists(path):
 						sys.path.append(path)
@@ -335,7 +336,7 @@ def check_path_for_fife(path):
 	"""Checks if typical fife directories exist in path. This does not guarantee, that it's
 	really a fife dir, but it generally works."""
 	absolute_path = os.path.abspath(path)
-	for pe in [ '%s/%s' % (absolute_path, a) for a in ('.', 'engine', 'engine/extensions',  \
+	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/extensions',  \
 																										 'engine/swigwrappers/python') ]:
 		if not os.path.exists(pe):
 			return False

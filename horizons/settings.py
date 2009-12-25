@@ -127,7 +127,7 @@ class Settings(_Setting):
 	def __init__(self, db, config = PATHS.USER_CONFIG_FILE):
 		self.__dict__['db'] = db # workaround for overloaded __setattr__
 		if not os.path.exists(config):
-			shutil.copyfile('content/config.sqlite', config)
+			shutil.copyfile( os.path.join('content', 'config.sqlite'), config)
 		self.db("ATTACH \"%s\" AS config" % config)
 		version = self.db("PRAGMA config.user_version")[0][0]
 		if version > self.VERSION:

@@ -35,9 +35,11 @@ class VERSION:
 		if version == None:
 			rev = None
 			uh_path = find_uh_position()
-			if os.path.exists(uh_path + '/.svn/entries'):
+			svn_entries_path = os.path.join(uh_path, '.svn', 'entries')
+			git_svn_path = os.path.join(uh_path, '.git', 'logs', 'refs', 'remotes', 'git-svn')
+			if os.path.exists(svn_entries_path):
 				import re
-				entries_file = open(uh_path + '/.svn/entries', 'r').read()
+				entries_file = open(svn_entries_path).read()
 				if re.match('\d', entries_file):
 					rev = re.search('\d+\s+dir\s+(\d+)', entries_file).groups()[0]
 				else:
@@ -45,9 +47,9 @@ class VERSION:
 					rev = minidom.parse(entries_file).getElementsByTagName("entry")[0].getAttribute("revision")
 				rev = u"r" + rev
 				return unicode(rev)
-			elif os.path.exists(uh_path + '/.git/logs/refs/remotes/git-svn'):
+			elif os.path.exists(git_svn_path):
 				import re
-				log_file = open(uh_path + '/.git/logs/refs/remotes/git-svn', 'r').read()
+				log_file = open(git_svn_path, 'r').read()
 				rev  = re.search('\s+r+(\d+)$', log_file).groups()[0]
 				rev = u"r" + rev
 				return unicode(rev)
@@ -96,14 +98,17 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
-_user_dir = "%s/.unknown-horizons" % os.path.expanduser('~')
+_user_dir = os.path.join('.unknown-horizons', os.path.expanduser('~'))
 class PATHS:
+	# paths in user dir
 	USER_DIR = _user_dir
-	LOG_DIR = _user_dir + "/log"
-	USER_CONFIG_FILE = _user_dir + "/config.sqlite"
-	ACTION_SETS_DIRECTORY = 'content/gfx/'
-	SCREENSHOT_DIR = _user_dir + "/screenshots"
-	SAVEGAME_TEMPLATE = "content/savegame_template.sqlite"
+	LOG_DIR = os.path.join(_user_dir, "log")
+	USER_CONFIG_FILE = os.path.join(_user_dir, "config.sqlite")
+	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
+
+	# paths relative to uh dir
+	ACTION_SETS_DIRECTORY = os.path.join('content', 'gfx')
+	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
 ## The Production States available in the game sorted by importance from least
 ## to most important
