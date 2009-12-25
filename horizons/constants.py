@@ -20,6 +20,7 @@
 # ###################################################
 
 import os.path
+import locale
 
 from ext.enum import Enum
 
@@ -99,6 +100,7 @@ class LAYERS:
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
 _user_dir = os.path.join('.unknown-horizons', os.path.expanduser('~'))
+_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
@@ -107,7 +109,7 @@ class PATHS:
 	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
 
 	# paths relative to uh dir
-	ACTION_SETS_DIRECTORY = os.path.join('content', 'gfx')
+	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
 ## The Production States available in the game sorted by importance from least
