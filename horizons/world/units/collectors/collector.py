@@ -308,8 +308,7 @@ class Collector(StorageHolder, Unit):
 		called after that time."""
 		self.log.debug("%s begins working", self)
 		assert self.job is not None, '%s job is non in begin_working' % self
-		Scheduler().add_new_object(self.finish_working, self, \
-																										 self.work_duration)
+		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
 		if self.soundfiles:
 			self.play_ambient(self.soundfiles[0], looping=False)
@@ -317,7 +316,8 @@ class Collector(StorageHolder, Unit):
 
 	def finish_working(self):
 		"""Called when collector has stayed at the target for a while.
-		Picks up the resources."""
+		Picks up the resources.
+		Should be overridden to specify what the collector should do after this."""
 		self.log.debug("%s finished working", self)
 		self.act("idle", self._instance.getFacingLocation(), True)
 		# transfer res
@@ -369,7 +369,7 @@ class Collector(StorageHolder, Unit):
 			self.job.object.remove_incoming_collector(self)
 			if self.state == self.states.working:
 				removed_calls = Scheduler().rem_call(self, self.finish_working)
-				assert removed_calls == 1
+				assert removed_calls == 1, 'removed %s calls instead of one' % removed_calls
 			self.job = None
 			self.state = self.states.idle
 		continue_action()
