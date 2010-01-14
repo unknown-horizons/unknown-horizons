@@ -22,7 +22,7 @@
 
 import logging
 
-import fife
+from fife import fife
 
 import horizons.main
 

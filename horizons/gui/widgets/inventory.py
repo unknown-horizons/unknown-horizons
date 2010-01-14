@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
+from fife.extensions import pychan
 
 import horizons.main
 
@@ -72,7 +72,7 @@ class Inventory(pychan.widgets.Container):
 		if (index <= 4): # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
 			if len(icons) > 4:
-				self.parent.removeChildren(icons[3:])	
+				self.parent.removeChildren(icons[3:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		self.adaptLayout()

@@ -21,7 +21,7 @@
 
 from string import Template
 
-import pychan
+from fife.extensions import pychan
 
 import horizons.main
 

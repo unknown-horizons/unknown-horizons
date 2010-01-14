@@ -20,7 +20,7 @@
 # ###################################################
 
 import weakref
-import fife
+from fife import fife
 
 import horizons.main
 

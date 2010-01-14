@@ -19,11 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
+from fife.extensions import pychan
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from pychan.widgets.common import UnicodeAttr
+from fife.extensions.pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
 from horizons.settings import Settings
 from horizons.gui.widgets import ProgressBar

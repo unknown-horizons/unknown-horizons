@@ -38,7 +38,7 @@ import random
 import threading
 import thread # for thread.error raised by threading.Lock.release
 
-import fife as fife_module
+from fife import fife as fife_module
 
 from util import ActionSetLoader, DbReader
 from savegamemanager import SavegameManager

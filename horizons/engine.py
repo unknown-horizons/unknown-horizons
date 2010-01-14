@@ -22,9 +22,9 @@
 
 import glob, random
 
-import fife
-import fifelog
-import pychan
+from fife import fife
+from fife.extensions import fifelog
+from fife.extensions import pychan
 
 import horizons.main
 

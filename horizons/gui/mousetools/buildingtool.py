@@ -20,7 +20,7 @@
 # ###################################################
 
 import math
-import fife
+from fife import fife
 import logging
 import random
 

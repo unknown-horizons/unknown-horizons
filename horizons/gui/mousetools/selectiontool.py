@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
+from fife import fife
 
 from horizons.command.unit import Act
 from horizons.util import WorldObject

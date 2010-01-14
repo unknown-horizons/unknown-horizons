@@ -18,7 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import fife
+from fife import fife
 import horizons.main
 
 from horizons.util.living import LivingObject

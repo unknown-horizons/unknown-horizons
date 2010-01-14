@@ -22,7 +22,7 @@
 import logging
 from horizons.i18n.guitranslations import set_translations, text_translations
 import horizons.main
-import pychan
+from fife.extensions import pychan
 from os.path import basename
 
 log = logging.getLogger("i18n")

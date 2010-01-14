@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 	#find fife and setup search paths
 	try:
-		import fife
+		from fife import fife
 	except ImportError, e:
 		if "--fife-in-library-path" in sys.argv:
 			print 'Failed to load FIFE:', e

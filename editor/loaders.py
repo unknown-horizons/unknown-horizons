@@ -20,7 +20,7 @@
 # ###################################################
 
 from dbreader import DbReader
-import fife
+from fife import fife
 from serializers import WrongFileType
 import os.path
 

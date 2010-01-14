@@ -253,7 +253,7 @@ def init_environment():
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
-		import fife
+		from fife import fife
 	except ImportError, e:
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
@@ -310,8 +310,7 @@ def get_fife_path(fife_custom_path=None):
 				log().debug("Found FIFE in %s", fife_path)
 
 				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				pythonpaths = [ os.path.join( fife_path, 'engine/extensions'),
-				                os.path.join( fife_path, 'engine/swigwrappers/python' ) ]
+				pythonpaths = [ os.path.join( fife_path, 'engine/python') ]
 				for path in pythonpaths:
 					if os.path.exists(path):
 						sys.path.append(path)
@@ -336,8 +335,8 @@ def check_path_for_fife(path):
 	"""Checks if typical fife directories exist in path. This does not guarantee, that it's
 	really a fife dir, but it generally works."""
 	absolute_path = os.path.abspath(path)
-	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/extensions',  \
-																										 'engine/swigwrappers/python') ]:
+	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',  \
+	                                                     'engine/python/fife/extensions') ]:
 		if not os.path.exists(pe):
 			return False
 	return True

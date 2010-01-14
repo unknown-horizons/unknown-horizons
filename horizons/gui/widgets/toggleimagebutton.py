@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
+from fife.extensions import pychan
 import tooltip
-from pychan.widgets.common import Attr, UnicodeAttr
+from fife.extensions.pychan.widgets.common import Attr, UnicodeAttr
 
 class ToggleImageButton(tooltip.TooltipButton):
 	"""The ToggleImageButton is an extended ImageButton (Think decorator pattern).

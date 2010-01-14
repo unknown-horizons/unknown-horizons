@@ -21,7 +21,7 @@
 import os
 import os.path
 import time
-import pychan
+from fife.extensions import pychan
 import logging
 
 import horizons.main

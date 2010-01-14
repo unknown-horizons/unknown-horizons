@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
+from fife import fife
 
 from horizons.util import Point, Rect
 from horizons.scheduler import Scheduler

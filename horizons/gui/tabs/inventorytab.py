@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
+from fife.extensions import pychan
 
 from tabinterface import TabInterface
 from horizons.gui.widgets import TradeWidget

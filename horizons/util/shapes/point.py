@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife
+from fife import fife
 
 from horizons.util.python.decorators import make_constants
 from horizons.util.python import Const

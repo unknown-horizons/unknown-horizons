@@ -25,7 +25,7 @@ __all__ = ['building', 'housing', 'nature', 'path', 'production', 'storages', 's
 import logging
 
 import horizons.main
-import fife
+from fife import fife
 
 from horizons.util import ActionSetLoader
 

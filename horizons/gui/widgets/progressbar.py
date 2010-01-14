@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pychan
+from fife.extensions import pychan
 
 class ProgressBar(pychan.widgets.Container):
 	"""The ProgressBar is a pychan widget. It can be used in xml files like this:

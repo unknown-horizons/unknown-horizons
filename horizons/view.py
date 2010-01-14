@@ -21,7 +21,7 @@
 
 import math
 import time
-import fife
+from fife import fife
 
 import horizons.main
 

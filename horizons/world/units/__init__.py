@@ -23,7 +23,7 @@ __all__ = ['animal','nature','ship','unit']
 
 import logging
 
-import fife
+from fife import fife
 
 import horizons.main
 from horizons.util import ActionSetLoader

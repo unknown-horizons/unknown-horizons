@@ -20,7 +20,7 @@
 # ###################################################
 
 import logging
-import fife
+from fife import fife
 
 import horizons.main
 from horizons.scheduler import Scheduler
