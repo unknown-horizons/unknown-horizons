@@ -24,7 +24,7 @@
 			<Label name='name' position="0,140" text="" />
 			<TooltipIcon image="content/gui/images/icons/hud/main/running_costs.png" position="0,166" tooltip="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,170"/>			
-			<TooltipProgressBar tooltip="Happiness" position="21,166" size="91,120" name='happiness'/>
+			<TooltipProgressBar tooltip="Happiness" position="21,166" size="91,20" name='happiness'/>
 			<TooltipIcon image="content/gui/images/icons/hud/main/icon_inhabitants_small.png" position="140,166" tooltip="Residents" />
 			<Label name='inhabitants' position="160,165" text="" />	
 			
