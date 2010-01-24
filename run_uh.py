@@ -40,7 +40,6 @@ import optparse
 import signal
 import traceback
 
-
 def log():
 	"""Returns Logger"""
 	return logging.getLogger("run_uh")
@@ -73,11 +72,12 @@ def find_uh_position():
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""
-	p = optparse.OptionParser()
+	p = optparse.OptionParser(usage="%prog [options]", version="Unknown Horizons Alpha 2009.2")
 	p.add_option("-d", "--debug", dest="debug", action="store_true", default=False, \
 							 help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 							 help=_("Specify the path to FIFE root directory."))
+	
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
