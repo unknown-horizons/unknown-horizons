@@ -127,8 +127,6 @@ class GAME:
 														# payed in this interval).
 
 class SETTLER:
-	#TAX_SETTINGS = Enum(u'medium', u'high')
-	#TAX_SETTINGS_VALUES = [1.0, 1.5]
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5
 	TAX_SETTINGS_STEP = 0.1

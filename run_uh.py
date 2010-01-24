@@ -72,7 +72,8 @@ def find_uh_position():
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""
-	p = optparse.OptionParser(usage="%prog [options]", version="Unknown Horizons Alpha 2009.2")
+	from horizons.constants import VERSION
+	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
 	p.add_option("-d", "--debug", dest="debug", action="store_true", default=False, \
 							 help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
