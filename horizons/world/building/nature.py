@@ -28,19 +28,22 @@ from horizons.constants import LAYERS
 
 import horizons.main
 
-
-class GrowingBuilding(ProducerBuilding, BuildableRect, BasicBuilding):
-	""" Class for stuff that grows, such as trees
-	"""
+class NatureBuilding(BuildableRect, BasicBuilding):
+	"""Class for objects that are part of the environment, the nature"""
 	walkable = True
 
 	def __init__(self, **kwargs):
-		super(GrowingBuilding, self).__init__(**kwargs)
+		super(NatureBuilding, self).__init__(**kwargs)
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = LAYERS.GROUND
-		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+		return super(NatureBuilding, cls).getInstance(*args, **kwargs)
+
+class GrowingBuilding(ProducerBuilding, NatureBuilding):
+	""" Class for stuff that grows, such as trees
+	"""
+	pass
 
 class Field(GrowingBuilding):
 	@classmethod
@@ -74,10 +77,13 @@ class AnimalField(CollectingBuilding, Field):
 		self.animals = []
 		# units are loaded separatly
 
-
 class Tree(GrowingBuilding):
 	buildable_upon = True
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = LAYERS.OBJECTS
 		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+
+class ResourceDeposit(NatureBuilding):
+	"""Class for stuff like clay deposits."""
+	pass
