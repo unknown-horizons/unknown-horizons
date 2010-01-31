@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 	from run_uh import init_environment, get_fife_path
 	init_environment()
 
-	os.chdir(get_fife_path() + '/clients/editor')
+	os.chdir(get_fife_path() + '/tools/editor')
 	#start editor
 	args = [sys.executable, './run.py']
 	os.execvp(args[0], args)
