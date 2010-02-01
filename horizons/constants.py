@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -59,7 +59,7 @@ class VERSION:
 		else:
 			return unicode(version)
 
-	RELEASE_NAME    = _("Unknown Horizons Snapshot %s")
+	RELEASE_NAME    = _("Unknown Horizons Version %s")
 	RELEASE_VERSION = _set_version()
 	#RELEASE_NAME   = _("Unknown Horizons Alpha %s")
 	#RELEASE_VERSION = '2009.2'
@@ -100,8 +100,11 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
-_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
-_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+if os.name != "nt":
+	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+else:
+	_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
