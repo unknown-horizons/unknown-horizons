@@ -100,10 +100,8 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS
-if os.name != "nt":
-	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
-else:
-	_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
 class PATHS:
 	# paths in user dir

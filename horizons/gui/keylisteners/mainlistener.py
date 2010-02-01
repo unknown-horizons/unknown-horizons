@@ -68,6 +68,12 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		elif keystr == 's':
 			screenshotfilename = os.path.join(PATHS.SCREENSHOT_DIR,
 			            string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
+
+			''' the filename is changed into a string, cause it looks like FIFE can't handle unicode strings yet
+			it's only a workaround to prevent a crash ...
+			this should be changed later to unicode(string.replace(datetime... '''
+
+			screenshotfilename = str(screenshotfilename)
 			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
 			if self.gui.session is not None:
 				# ingame message if there is a session
