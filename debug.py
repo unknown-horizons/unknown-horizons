@@ -48,7 +48,8 @@ if __name__ == '__main__':
 		run_uh.find_FIFE()
 
 	args = sys.argv[1:]
-	args.remove("--fife-in-library-path")
+	if "--fife-in-library-path" in args:
+		args.remove("--fife-in-library-path")
 	print 'Executing with proper fife path: \"%s\" with args %s' % (sys.argv[1], args)
 	os.execvp(sys.argv[1], args)
 else:
