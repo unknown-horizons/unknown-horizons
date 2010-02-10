@@ -385,8 +385,7 @@ class BuildingTool(NavigationTool):
 				# check whether to issue a missing res notification
 				if building in self.buildings_missing_resources:
 					res_id = self.buildings_missing_resources[building]
-					res_name = horizons.main.db("SELECT name FROM resource WHERE id = ?", \
-					                            res_id)
+					res_name = horizons.main.db.get_res_name(res_id)
 					self.session.ingame_gui.message_widget.add(building['x'], building['y'], \
 					                                           'NEED_MORE_RES', {'resource' : res_name})
 
