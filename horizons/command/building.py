@@ -30,14 +30,13 @@ from horizons.campaign import CONDITIONS
 class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
-	def __init__(self, session, building, x, y, rotation = 45, instance = None, \
-	             ship = None, ownerless=False, island=None, settlement=None,**trash):
+	def __init__(self, session, building, x, y, island, rotation = 45, instance = None, \
+	             ship = None, ownerless=False, settlement=None,**trash):
 		"""Create the command
 		@param session: Session instance (not MP-able!)
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param instance: preview instance, can then be reused for the final building (only singleplayer)
-		@param tear: list of buildings to be teared
 		@param ship: ship instance
 		@param island: island instance
 		@param settlement: settlement worldid or None
@@ -80,16 +79,18 @@ class Build(Command):
 			secondary_resource_source = WorldObject.get_object_by_id(self.ship)
 		else:
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
-		if secondary_resource_source is not None:
-			for (resource, value) in building.costs.iteritems():
-				# remove from issuer, and remove remaining rest from secondary source (settlement or ship)
-				first_source_remnant = issuer.inventory.alter(resource, -value)
+
+		for (resource, value) in building.costs.iteritems():
+			# remove from issuer, and remove rest from secondary source (settlement or ship)
+			first_source_remnant = issuer.inventory.alter(resource, -value)
+			if secondary_resource_source is not None:
 				second_source_remnant = secondary_resource_source.inventory.alter(resource, first_source_remnant)
 				assert second_source_remnant == 0
+			else: # first source must have covered everything
+				assert first_source_remnant == 0
 
 		# building is now officially built and existent
 		building.start()
-
 
 		self.session.campaign_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
 

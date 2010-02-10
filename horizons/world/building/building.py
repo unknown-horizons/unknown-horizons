@@ -65,8 +65,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.rotation = rotation
 		self.owner = owner
 		self.level = level
-		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation) if \
-		    instance is None else instance
+		if instance is None: # generate an instance if we don't have one
+			self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation)
+		else:
+			self._instance = instance
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
@@ -204,7 +206,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			return building.getInstance(session = session, x = x, y = y, action=action, layer=layer, \
 			                            rotation=rotation, **trash)
 		else:
-			rotation = cls.check_build_rotation(session, rotation, x, y)
+			#rotation = cls.check_build_rotation(session, rotation, x, y)
+			# TODO: replace this with new buildable api
+			# IDEA: save rotation in savegame
 			facing_loc = fife.Location(session.view.layers[layer])
 			instance_coords = list((x, y, 0))
 			layer_coords = list((x, y, 0))
@@ -241,25 +245,6 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 			return instance
 
-	@classmethod
-	def check_build_rotation(cls, session, rotation, x, y):
-		"""Returns a possible rotation for this building.
-		Overwrite to specify rotation restrictions (e.g. water-side buildings)
-		@param rotation: The prefered rotation
-		@param x, y: int coords
-		@return: integer, rotation in degrees"""
-		return rotation
-
-	@classmethod
-	def get_build_costs(self, building=None, **trash):
-		"""Get the costs for the building
-		@param **trash: we normally don't need any parameter, but we get the same as the getInstance function
-		"""
-		if building is not None:
-			return building.get_build_costs(**trash)
-		else:
-			return self.costs
-
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
 		"""
@@ -279,7 +264,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
-	selection_color = (255, 255, 255)
+	selection_color = (255, 255, 0)
+	_selected_tiles = [] # tiles that are selected. used for clean deselect.
 
 	def select(self):
 		"""Runs necessary steps to select the building."""
@@ -310,12 +296,22 @@ class SelectableBuilding(object):
 
 	@classmethod
 	def deselect_building(cls, session):
-		"""@see select_building"""
-		session.view.renderer['InstanceRenderer'].removeAllColored()
+		"""@see select_building,
+		@return list of tiles that were deselected."""
+		#session.view.renderer['InstanceRenderer'].removeAllColored()
+		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
+		for tile in cls._selected_tiles:
+			remove_colored(tile._instance)
+			if tile.object is not None:
+				remove_colored(tile.object._instance)
+		selected_tiles = cls._selected_tiles
+		cls._selected_tiles = []
+		return selected_tiles
 
 	@classmethod
 	@decorators.make_constants()
 	def _do_select(cls, renderer, position, world, settlement):
+		selected_tiles_append = cls._selected_tiles.append
 		add_colored = renderer.addColored
 		if cls.range_applies_only_on_island:
 			island = world.get_island(position.origin)
@@ -326,6 +322,7 @@ class SelectableBuilding(object):
 				try:
 					if tile.settlement == settlement and \
 					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						selected_tiles_append(tile)
 						add_colored(tile._instance, *cls.selection_color)
 						add_colored(tile.object._instance, *cls.selection_color)
 				except AttributeError:
@@ -335,6 +332,7 @@ class SelectableBuilding(object):
 			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
 				try:
 					if settlement is None or tile.settlement is None or tile.settlement == settlement:
+						selected_tiles_append(tile)
 						add_colored(tile._instance, *cls.selection_color)
 						add_colored(tile.object._instance, *cls.selection_color)
 				except AttributeError:

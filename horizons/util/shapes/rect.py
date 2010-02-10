@@ -78,6 +78,20 @@ class Rect(object):
 		self.origin = Point(self.left, self.top)
 		return self
 
+	@classmethod
+	def init_from_corners(cls, point1, point2):
+		"""Init rect with 2 points interpreted as 2 corner points"""
+		self = cls.__new__(cls)
+		x_coords = [ round(point1.x), round(point2.x) ]
+		x_coords.sort()
+		self.left = x_coords[0]
+		self.right = x_coords[1]
+		y_coords = [ round(point1.y), round(point2.y) ]
+		y_coords.sort()
+		self.top = y_coords[0]
+		self.bottom = y_coords[1]
+		return self
+
 	@property
 	def height(self):
 		return self.bottom - self.top

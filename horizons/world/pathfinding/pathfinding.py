@@ -23,7 +23,6 @@ import sys
 import logging
 
 from horizons.util import Rect, Point, decorators
-from horizons.world.building.building import BasicBuilding
 
 from horizons.world.pathfinding import PathBlockedError
 
@@ -56,8 +55,9 @@ class FindPath(object):
 						 or None if no path is found
 		"""
 		# assure correct call
-		assert(isinstance(source, (Rect, Point, BasicBuilding)))
-		assert(isinstance(destination, (Rect, Point, BasicBuilding)))
+		# commented out checks since BasicBuilding can't be imported here
+		#assert(isinstance(source, (Rect, Point, BasicBuilding)))
+		#assert(isinstance(destination, (Rect, Point, BasicBuilding)))
 		assert(isinstance(path_nodes, (dict, list)))
 		assert(isinstance(blocked_coords, (dict, list)))
 
@@ -86,9 +86,9 @@ class FindPath(object):
 		"""Sets up variables for execution of algorithm
 		@return: bool, whether setup was successful"""
 		# support for building
-		if isinstance(self.source, BasicBuilding):
+		if hasattr(self.source, 'position'):
 			self.source = self.source.position
-		if isinstance(self.destination, BasicBuilding):
+		if hasattr(self.destination, 'position'):
 			self.destination = self.destination.position
 
 		if isinstance(self.path_nodes, list):

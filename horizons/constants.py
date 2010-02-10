@@ -20,6 +20,7 @@
 # ###################################################
 
 import os.path
+import re
 import locale
 
 from ext.enum import Enum
@@ -39,7 +40,6 @@ class VERSION:
 			svn_entries_path = os.path.join(uh_path, '.svn', 'entries')
 			git_svn_path = os.path.join(uh_path, '.git', 'logs', 'refs', 'remotes', 'git-svn')
 			if os.path.exists(svn_entries_path):
-				import re
 				entries_file = open(svn_entries_path).read()
 				if re.match('\d', entries_file):
 					rev = re.search('\d+\s+dir\s+(\d+)', entries_file).groups()[0]
@@ -49,7 +49,6 @@ class VERSION:
 				rev = u"r" + rev
 				return unicode(rev)
 			elif os.path.exists(git_svn_path):
-				import re
 				log_file = open(git_svn_path, 'r').read()
 				rev  = re.search('\s+r+(\d+)$', log_file).groups()[0]
 				rev = u"r" + rev
@@ -84,6 +83,20 @@ class BUILDINGS:
 	SIGNAL_FIRE_CLASS = 6
 	CLAY_DEPOSIT_CLASS = 23
 
+	class ACTION:
+		# data for calculating gfx for paths.
+		# think: animation contains key, if there is a path at offset value
+		# you need sort this before iterating via sorted, since order is important here
+		action_offset_dict = {
+		'a' : (0, -1),
+		'b' : (1, 0),
+		'c' : (0, 1),
+		'd' : (-1, 0)
+		}
+
+	class BUILD:
+		MAX_BUILDING_SHIP_DISTANCE = 5 # max distance ship-building when building from ship
+
 class RES:
 	GOLD_ID   = 1
 	HAPPINESS_ID = 14
@@ -91,28 +104,6 @@ class RES:
 class GROUND:
 	WATER = 4
 	DEFAULT_LAND = 1
-
-## ENGINE
-class LAYERS:
-	WATER = 0
-	GROUND = 1
-	OBJECTS = 2
-
-## PATHS
-# workaround, so it can be used to create paths withing PATHS
-_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
-_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
-
-class PATHS:
-	# paths in user dir
-	USER_DIR = _user_dir
-	LOG_DIR = os.path.join(_user_dir, "log")
-	USER_CONFIG_FILE = os.path.join(_user_dir, "config.sqlite")
-	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
-
-	# paths relative to uh dir
-	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
-	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
 ## The Production States available in the game sorted by importance from least
 ## to most important
@@ -141,3 +132,26 @@ class WILD_ANIMAL:
 
 class STORAGE:
 	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big
+
+## ENGINE
+class LAYERS:
+	WATER = 0
+	GROUND = 1
+	OBJECTS = 2
+
+## PATHS
+# workaround, so it can be used to create paths withing PATHS
+_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
+_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+
+class PATHS:
+	# paths in user dir
+	USER_DIR = _user_dir
+	LOG_DIR = os.path.join(_user_dir, "log")
+	USER_CONFIG_FILE = os.path.join(_user_dir, "config.sqlite")
+	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
+
+	# paths relative to uh dir
+	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
+	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
+

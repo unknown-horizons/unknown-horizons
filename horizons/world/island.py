@@ -162,6 +162,7 @@ class Island(WorldObject):
 
 	def get_tiles_tuple(self, tuples):
 		"""Same as get_tile, but takes a list of tuples.
+		@param tuples: iterable of tuples
 		@return: list of tiles"""
 		for tup in tuples:
 			if tup in self.ground_map:

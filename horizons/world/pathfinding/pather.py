@@ -24,7 +24,6 @@ import sys
 import logging
 
 from horizons.util import Rect, Point
-from horizons.world.building.building import BasicBuilding
 
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.pathfinding.pathfinding import FindPath
@@ -78,23 +77,26 @@ class AbstractPather(object):
 		@return: bool, true if path is blocked"""
 		return (point in self._get_blocked_coords())
 
-	def calc_path(self, destination, destination_in_building = False, check_only = False):
+	def calc_path(self, destination, destination_in_building = False, check_only = False,
+	              source = None):
 		"""Calculates a path to destination
 		@param destination: a destination supported by pathfinding
 		@param destination_in_building: bool, whether destination is in a building.
 		                                this makes the unit "enter the building"
 		@param check_only: if True the path isn't saved
+		@param source: use this as source of movement instead of self.unit.position
 		@return: True iff movement is possible"""
 		# calculate our source
-		source = self.unit.position
-		if self.unit.is_moving() and self.path is not None:
-			# we are moving, use next step as source
-			source = Point(*self.path[self.cur])
-		else:
-			# check if we are in a building
-			building = self.session.world.get_building(self.unit.position)
-			if building is not None:
-				source = building
+		if source is None:
+			source = self.unit.position
+			if self.unit.is_moving() and self.path is not None:
+				# we are moving, use next step as source
+				source = Point(*self.path[self.cur])
+			else:
+				# check if we are in a building
+				building = self.session.world.get_building(self.unit.position)
+				if building is not None:
+					source = building
 
 		# call algorithm
 		# to use a different pathfinding code, just change the following line
@@ -113,7 +115,7 @@ class AbstractPather(object):
 				self.unit.show() # make sure unit is displayed
 			else:
 				self.cur = -1
-			self.source_in_building = isinstance(source, BasicBuilding)
+			self.source_in_building = hasattr(source, 'is_building') and source.is_building
 			self.destination_in_building = destination_in_building
 
 		return True
@@ -273,3 +275,18 @@ class SoldierPather(AbstractPather):
 		else:
 			# also check in super class
 			return super(SoldierPather, self)._check_for_obstacles(point)
+
+
+class RoadBuilderPather(object):
+	"""Pather for building roads. Searches possible road from A to B.
+	Does not use AbstractPather Interface"""
+	@staticmethod
+	def get_path(session, source, destination):
+		"""Returns a path from source to destination, if one exists.
+		@param source, destination: Point or anything supported by FindPath
+		@return: list of tuples or None in case no path is found"""
+		island = session.world.get_island(source)
+		if island is None:
+			return None
+		return FindPath()(source, destination, island.path_nodes.nodes)
+

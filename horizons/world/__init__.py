@@ -210,17 +210,23 @@ class World(LivingObject):
 		from horizons.command.building import Build
 		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
-		if int(self.properties.get('RandomTrees', 1)) == 1:
+		if int(self.properties.get('RandomTrees', 1)) == 1 and False:
 			tree = Entities.buildings[BUILDINGS.TREE_CLASS]
+			#clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
 			for island in self.islands:
 				for tile in island.ground_map.iterkeys():
 					# add tree to about every third tile
-					if random.randint(0, 10) < 3 and "constructible" in island.ground_map[tile].classes:
+					if random.randint(0, 2) == 0 and "constructible" in island.ground_map[tile].classes:
 						cmd = Build(self.session, tree, tile[0], tile[1], ownerless=True, island=island)
 						building = cmd.execute(self.session)
 						building.finish_production_now() # make trees big and fill their inventory
-						if random.randint(0, 40) < 1: # add animal to every nth tree
+						if random.randint(0, 40) == 0: # add animal to every nth tree
 							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute(self.session)
+					elif False and random.randint(0, 3) == 0 and clay.build_possible(self.session, tile):
+						# TODO: implement clay as soon as buildable is refactored
+						print 'build clay'
+						cmd = Build(self.session, clay, tile[0], tile[1], ownerless=True, island=island)
+						cmd.execute(self.session)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
@@ -314,7 +320,7 @@ class World(LivingObject):
 		return self.ground_map[(point.x, point.y)]
 
 	def get_settlement(self, point):
-		"""Returns settlement on point.
+		"""Returns settlement on point. Very fast (O(1)).
 		@param point: instance of Point
 		@return: instance of Settlement or None"""
 		return self.get_tile(point).settlement
@@ -338,6 +344,8 @@ class World(LivingObject):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param point: instance of Point"""
 		for island in self.islands:
+			# TODO: check if this optimisation check acctually slows the function down
+			# the dict lookup below should be very fast anyways
 			if not island.rect.contains(point):
 				continue
 			if point.to_tuple() in island.ground_map:

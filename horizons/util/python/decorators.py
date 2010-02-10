@@ -23,6 +23,8 @@
 
 import horizons.main
 
+from types import FunctionType, ClassType
+
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
 	If called later with the same arguments, the cached value is returned, and

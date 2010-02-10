@@ -25,7 +25,8 @@ from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab,
 		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingle, BuildableSingleOnCoast
+from buildable import BuildableSingle, BuildableSingleFromShip
+from horizons.constants import STORAGE
 
 class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
@@ -38,7 +39,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 		self.__init(self.settlement)
-		self.inventory.adjust_limits(30)
+		self.inventory.adjust_limits(STORAGE.DEFAULT_STORAGE_SIZE)
 
 	def __init(self, settlement):
 		self.inventory = settlement.inventory
@@ -48,7 +49,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		super(StorageBuilding, self).remove()
 
 	def __del__(self):
-		self.inventory.adjust_limits(-30)
+		self.inventory.adjust_limits(-STORAGE.DEFAULT_STORAGE_SIZE)
 
 	def load(self, db, worldid):
 		super(StorageBuilding, self).load(db, worldid)
@@ -72,10 +73,11 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['InstanceRenderer'].removeAllColored()
 
-class BranchOffice(StorageBuilding, BuildableSingleOnCoast):
+class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
 	@classmethod
 	def _is_settlement_build_requirement_satisfied(cls, session, x, y, island, ship, **state):
+		# TODO: move to buildable
 		for settlement in island.settlements:
 			if settlement.owner.id == ship.owner.id:
 				return {'buildable' : False}

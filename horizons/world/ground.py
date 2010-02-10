@@ -47,9 +47,12 @@ class SurfaceTile(WorldObject):
 		self.object = None
 
 		self._instance = session.view.layers[self.layer].createInstance(self._object, \
-		                                                fife.ModelCoordinate(int(x), int(y), 0), "")
+		                    fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
 
+	def __str__(self):
+		return "SurfaceTile(x=%s, y=%s, water=%s, obj=%s)" % \
+		       (self.x, self.y, self.is_water, self.object)
 
 class Ground(SurfaceTile):
 	"""Default land surface"""

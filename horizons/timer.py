@@ -32,6 +32,9 @@ class Timer(LivingObject):
 	"""
 	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 
+	possible_ticks_per_second = [16, 32, 48, 64]
+	default_ticks_per_second = 16
+
 	def __init__(self, tick_next_id = 0):
 		"""
 		@param tick_next_id: int next tick id
@@ -39,7 +42,8 @@ class Timer(LivingObject):
 		super(Timer, self).__init__()
 		Settings().addCategories('ticks')
 		#Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
-		Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64])
+		Settings().ticks.setDefaults(default = self.default_ticks_per_second, \
+		                             steps = self.possible_ticks_per_second)
 		self.ticks_per_second = Settings().ticks.default
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None

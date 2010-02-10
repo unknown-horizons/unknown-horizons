@@ -25,7 +25,7 @@ import horizons.main
 
 from building import BasicBuilding
 from buildable import BuildableLine, BuildableSingle
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, BUILDINGS
 
 class Path(BasicBuilding, BuildableLine):
 	walkable = True
@@ -54,12 +54,6 @@ class Path(BasicBuilding, BuildableLine):
 			if tile is not None and self.island.path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
 
-	action_offset_dict = {
-		'a' : (0, -1),
-		'b' : (1, 0),
-		'c' : (0, 1),
-		'd' : (-1, 0)
-		}
 	def recalculate_orientation(self):
 		"""
 		"""
@@ -69,8 +63,8 @@ class Path(BasicBuilding, BuildableLine):
 		origin = self.position.origin
 		path_nodes = self.island.path_nodes
 
-		for action_part in sorted(self.action_offset_dict): # order is important here
-			offset = self.action_offset_dict[action_part]
+		for action_part in sorted(BUILDINGS.ACTION.action_offset_dict): # order is important here
+			offset = BUILDINGS.ACTION.action_offset_dict[action_part]
 			tile = self.island.get_tile(origin.offset(*offset))
 			if tile is not None and path_nodes.is_road(tile.x, tile.y):
 				action += action_part
