@@ -40,7 +40,8 @@ import thread # for thread.error raised by threading.Lock.release
 
 from fife import fife as fife_module
 
-from util import ActionSetLoader, DbReader
+from util import ActionSetLoader
+from util.uhdbaccessor import UhDbAccessor
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
 from horizons.gui import Gui
@@ -267,7 +268,7 @@ def _load_last_quicksave():
 def _create_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
-	_db = DbReader(':memory:')
+	_db = UhDbAccessor(':memory:')
 	_db("attach ? AS data", 'content/game.sqlite')
 	_db("attach ? AS settler", 'content/settler.sqlite')
 	_db("attach ? AS balance", 'content/balance.sqlite')

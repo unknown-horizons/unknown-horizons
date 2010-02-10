@@ -28,8 +28,37 @@ class UhDbAccessor(DbReader):
 	maintainable."""
 
 	def __init__(self, dbfile):
-		super(self, UhDbAccessor).__init__(dbfile=dbfile)
+		super(UhDbAccessor, self).__init__(dbfile=dbfile)
 
 
+	# ------------------------------------------------------------------
+	# Db Access Functions start here
+	# ------------------------------------------------------------------
 
+	# Resource table
+
+	"""
+	Returns the name to a specific resource id.
+	@param id: int resource's id, of which the name is returned
+	"""
+	def get_res_name(self, id):
+		return self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
+
+
+	# Sound table
+
+	"""
+	Returns the soundfile to the related sound name.
+	@param sound: string, key in table sounds_special
+	"""
+	def get_sound_file(self, soundname):
+		return self.cached_query("SELECT file FROM sounds INNER JOIN sounds_special ON \
+			    sounds.id = sounds_special.sound AND sounds_special.type = ?", soundname)[0][0]
+
+
+	def get_random_action_set(self, object_id, level):
+		return self.cached_query("SELECT action_set_id, preview_action_set_id \
+		FROM action_set WHERE object_id = ? and level = ? ORDER BY random()",
+		                        object_id,
+		                        level)
 

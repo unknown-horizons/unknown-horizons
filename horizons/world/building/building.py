@@ -87,14 +87,14 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def get_random_action_set_id(db, object_id, level):
 		"""Returns an action set for an object of type object_id in a level <= the specified level.
 		The highest level number is preferred.
-		@param db: DbReader
+		@param db: UhDbAccessor
 		@param object_id: type id of building
 		@param level: level to prefer. a lower level might be chosen
 		@return: tuple: (action_set_id, preview_action_set_id)"""
 		assert level >= 0
 		# search all levels for an action set, starting with highest one
 		for possible_level in reversed(xrange(level+1)):
-			db_data = db("SELECT action_set_id, preview_action_set_id FROM action_set WHERE object_id = ? and level = ? ORDER BY random()", object_id, possible_level)
+			db_data = db.get_random_action_set(object_id, possible_level)
 			# break if we found sth in this lvl
 			if len(db_data) > 0:
 				return db_data[0]
