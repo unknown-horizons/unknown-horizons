@@ -91,7 +91,7 @@ class Settlement(TradePost, NamedObject):
 		owner, tax = db("SELECT owner, tax_setting FROM settlement WHERE rowid = ?", worldid)[0]
 		self.__init(session, WorldObject.get_object_by_id(owner), tax)
 
-		# load super cause basic stuff is just set up now
+		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
 
 		self.inventory.load(db, worldid)

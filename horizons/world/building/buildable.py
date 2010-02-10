@@ -85,14 +85,14 @@ class Buildable(object):
 		raise NotImplementedError
 
 	@classmethod
-	def is_tile_buildable(cls, session, tile):
+	def is_tile_buildable(cls, session, tile, ship):
 		"""Check a tile for buildability
 		@param tile: Ground object
 		@return bool, True for "is buildable" """
 		position = Point(tile.x, tile.y)
 		try:
 			cls._check_island(session, position)
-			cls._check_settlement(session, position)
+			cls._check_settlement(session, position, ship=ship)
 			cls._check_buildings(session, position)
 		except _NotBuildableError:
 			return False

@@ -83,34 +83,41 @@ class BuildingTool(NavigationTool):
 		player = self.session.world.player
 		session = self.session
 		buildable_tiles_append = self._buildable_tiles.append
+		ship = self.ship
+		buildable_color = self.buildable_color
 
-		if tiles_to_check is not None: # only check this tiles
+		if tiles_to_check is not None: # only check these tiles
 			for tile in tiles_to_check:
-				if is_tile_buildable(session, tile):
+				if is_tile_buildable(session, tile, ship):
 					buildable_tiles_append(tile)
-					add_colored(tile._instance, *self.buildable_color)
+					add_colored(tile._instance, *buildable_color)
 					if tile.object is not None:
-						add_colored(tile.object._instance, *self.buildable_color)
+						add_colored(tile.object._instance, *buildable_color)
 
 		elif self.ship is None: # default build on island
 			for island in self.session.world.islands:
+				# small optimisation: check only islands with player settlements
+				for settlement in island.settlements:
+					if settlement.owner == player:
+						break
+				else:
+					continue
 				for tile in island.grounds:
-					if is_tile_buildable(session, tile):
+					if is_tile_buildable(session, tile, ship):
 						buildable_tiles_append(tile)
-						add_colored(tile._instance, *self.buildable_color)
+						add_colored(tile._instance, *buildable_color)
 						if tile.object is not None:
-							add_colored(tile.object._instance, *self.buildable_color)
+							add_colored(tile.object._instance, *buildable_color)
 
 		else: # build from ship
-			#self._remove_coloring() # TODO: check if we need this
 			for island in self.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
 					buildable_tiles_append(tile)
 					# check that there is no other player's settlement
 					if tile.settlement is None or tile.settlement.owner == player:
-						add_colored(tile._instance, *self.buildable_color)
+						add_colored(tile._instance, *buildable_color)
 						if tile.object is not None: # color obj on tile too
-							add_colored(tile.object._instance, *self.buildable_color)
+							add_colored(tile.object._instance, *buildable_color)
 
 	def end(self):
 		self._remove_building_instances()
