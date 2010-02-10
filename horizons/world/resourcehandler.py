@@ -287,6 +287,6 @@ class StorageResourceHandler(ResourceHandler):
 		@see superclass doc
 		"""
 		provided_resources = []
-		for res in horizons.main.db("SELECT id FROM resource WHERE tradeable = 1"):
+		for res in self.session.db.get_res(only_tradeable=True):
 			provided_resources.append(res[0])
 		return provided_resources

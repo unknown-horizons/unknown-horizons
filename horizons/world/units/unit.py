@@ -52,7 +52,7 @@ class Unit(AmbientSound, MovingObject):
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
-		self.act(self.action, location, True)
+		self.act(self._action, location, True)
 		self._instance.addActionListener(self.InstanceActionListener)
 
 		self.health = health
@@ -72,7 +72,7 @@ class Unit(AmbientSound, MovingObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
 			self.position.x + self.position.x - self.last_position.x, \
 			self.position.y + self.position.y - self.last_position.y, 0))
-		self.act(self.action, location, True)
+		self.act(self._action, location, True)
 		self.session.view.cam.refresh()
 
 	def draw_health(self):

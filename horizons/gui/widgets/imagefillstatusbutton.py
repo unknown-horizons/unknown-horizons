@@ -48,12 +48,10 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param db: dbreader to get info about res icon.
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@return: ImageFillStatusButton instance"""
-		icon, icon_disabled = db('SELECT icon, \
-			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END \
-			    FROM data.resource WHERE id=?', res)[0]
+		icon, icon_disabled = db.get_res_icon(res)
 		if not use_inactive_icon:
 			icon_disabled = icon
-		tooltip = horizons.main.db('SELECT name FROM data.resource WHERE id = ?', res)[0][0]
+		tooltip = db.get_res_name(res)
 		return cls(up_image=icon_disabled if amount == 0 else icon,
 										   down_image=icon_disabled if amount == 0 else icon,
 										   hover_image=icon_disabled if amount == 0 else icon,

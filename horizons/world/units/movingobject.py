@@ -68,9 +68,6 @@ class MovingObject(ConcretObject):
 		self.last_position = Point(x, y)
 		self._next_target = Point(x, y)
 
-		self.action = 'idle'
-		self._action_set_id = horizons.main.db("SELECT action_set_id FROM data.action_set WHERE object_id=? order by random() LIMIT 1", self.id)[0][0]
-
 		self.move_callbacks = WeakMethodList()
 		self._conditional_callbacks = {}
 
@@ -102,7 +99,7 @@ class MovingObject(ConcretObject):
 	def _setup_move(self, action='move'):
 		"""Executes necessary steps to begin a movement. Currently only the action is set."""
 		# try a number of actions and use first existent one
-		for action_iter in [action, 'move', self.action]:
+		for action_iter in (action, 'move', self._action):
 			if self.has_action(action_iter):
 				self._move_action = action_iter
 				return

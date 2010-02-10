@@ -32,7 +32,7 @@ class ProviderHandler(list):
 	def __init__(self):
 		super(ProviderHandler, self).__init__()
 		self.provider_by_resources = {}
-		for res in horizons.main.db("SELECT id FROM resource"):
+		for res in horizons.main.db.get_res():
 			self.provider_by_resources[res[0]] = []
 
 	def append(self, provider):

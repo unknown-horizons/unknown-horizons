@@ -155,9 +155,7 @@ class BuildingTool(NavigationTool):
 	def draw_gui(self):
 		# TODO: change hard-coded 0 below to a variable, as soon as building leveling concept
 		# is decided.
-		action_set, preview_action_set = \
-		          self._class.get_random_action_set_id(horizons.main.db, self._class.id, 0)
-
+		action_set, preview_action_set = self.session.db.get_random_action_set(self._class.id, 0)
 		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
@@ -384,8 +382,7 @@ class BuildingTool(NavigationTool):
 				fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 				# check whether to issue a missing res notification
 				if building in self.buildings_missing_resources:
-					res_id = self.buildings_missing_resources[building]
-					res_name = horizons.main.db.get_res_name(res_id)
+					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
 					self.session.ingame_gui.message_widget.add(building['x'], building['y'], \
 					                                           'NEED_MORE_RES', {'resource' : res_name})
 

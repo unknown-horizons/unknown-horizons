@@ -80,7 +80,7 @@ class UnitClass(type):
 		cls._object.setBlocking(False)
 		cls._object.setStatic(False)
 		action_sets = ActionSetLoader.get_action_sets()
-		for (action_set_id,) in cls.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id):
+		for (action_set_id,) in cls.db("SELECT action_set_id FROM data.action_set WHERE object_id=?", cls.id):
 			for action_id in action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))
 				fife.ActionVisual.create(action)

@@ -129,8 +129,9 @@ class BuySellTab(TabInterface):
 			slot.res = None
 			slider.capture(None)
 		else:
-			button.up_image, button.down_image, = (horizons.main.db("SELECT icon FROM resource WHERE id=?", res_id)[0]) * 2
-			button.hover_image = horizons.main.db("SELECT icon_disabled FROM resource WHERE id=?", res_id)[0][0]
+			icons = horizons.main.db.get_res_icon(res_id)
+			button.up_image, button.down_image = icons[0] * 2 # both normal icon
+			button.hover_image = icons[1] # disabled icon
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
@@ -190,7 +191,6 @@ class BuySellTab(TabInterface):
 			self.add_sell_to_settlement(res_id, int(slider.getValue()), slot)
 		self.slots[slot].findChild(name="amount").text = unicode(int(slider.getValue()))+'t'
 		self.slots[slot].adaptLayout()
-
 
 
 	def show_resource_menu(self, slot_id):

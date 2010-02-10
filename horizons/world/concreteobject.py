@@ -42,8 +42,12 @@ class ConcretObject(WorldObject):
 		"""
 		super(ConcretObject, self).__init__(**kwargs)
 		self.session = session
+		self.__init()
+
+	def __init(self):
 		self._instance = None # overwrite in subclass __init[__]
 		self._action = 'idle' # Default action is idle
+		self._action_set_id = self.session.db.get_random_action_set(self.id)[0]
 
 	@property
 	def fife_instance(self):
@@ -56,6 +60,7 @@ class ConcretObject(WorldObject):
 
 	def load(self, db, worldid):
 		super(ConcretObject, self).load(db, worldid)
+		self.__init()
 		runtime = db("SELECT action_runtime FROM concrete_object WHERE id = ?", worldid)[0][0]
 		# delay setting of runtime until load of sub/super-class has set the action
 		def set_action_runtime(self, runtime):

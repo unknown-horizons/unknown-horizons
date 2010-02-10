@@ -60,7 +60,7 @@ class Inventory(pychan.widgets.Container):
 		index = 0
 		for resid, amount in sorted(self.inventory): # sort by resid for unchangeable positions
 			# check if this res should be displayed
-			if not horizons.main.db('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
+			if not horizons.main.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
 			button = ImageFillStatusButton.init_for_res(resid, amount, horizons.main.db)
 			button.filled = int(float(amount) / float(self._inventory.limit) * 100.0)
