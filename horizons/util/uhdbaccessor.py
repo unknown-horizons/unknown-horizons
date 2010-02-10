@@ -51,9 +51,9 @@ class UhDbAccessor(DbReader):
 		"""
 		return self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
 
-	def get_res_icon(self, id):
+	def get_res_icon(self, res):
 		"""Returns icons of a resource
-		@param id: resource id
+		@param res: resource id
 		@return: tuple: (icon_path, icon_disabled_path)"""
 		return self.cached_query('SELECT icon, \
 			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END \
