@@ -210,7 +210,6 @@ class BuildingTool(NavigationTool):
 			# make surrounding transparent
 			self._make_surrounding_transparent(building.position)
 
-			print 'fife instance at ', building.position.origin
 			self.buildings_fife_instances[building] = \
 			    self._class.getInstance(self.session, building.position.origin.x, \
 			                            building.position.origin.y, rotation=building.rotation,
@@ -236,7 +235,8 @@ class BuildingTool(NavigationTool):
 
 					if available_res < neededResources[resource]:
 						# can't build, not enough res
-						self.renderer.addColored(building.fife_instance, *self.not_buildable_color)
+						self.renderer.addColored(self.buildings_fife_instances[building], \
+						                         *self.not_buildable_color)
 						building.buildable = False
 						self.buildings_missing_resources[building] = resource
 						break
@@ -427,7 +427,6 @@ class BuildingTool(NavigationTool):
 
 	def update_preview(self):
 		"""Used as callback method"""
-		print 'update_preview at', self.startPoint, ' ', self.endPoint
 		if self.startPoint is not None:
 			self.preview_build(self.startPoint,
 			                   self.startPoint if self.endPoint is None else self.endPoint)

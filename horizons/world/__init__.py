@@ -210,7 +210,7 @@ class World(LivingObject):
 		from horizons.command.building import Build
 		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
-		if int(self.properties.get('RandomTrees', 1)) == 1 and False:
+		if int(self.properties.get('RandomTrees', 1)) == 1:
 			tree = Entities.buildings[BUILDINGS.TREE_CLASS]
 			#clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
 			for island in self.islands:

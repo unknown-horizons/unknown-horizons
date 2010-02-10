@@ -59,7 +59,6 @@ class Buildable(object):
 		@param ship: ship instance if building from ship
 		@return instance of _BuildPosition"""
 		position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
-		print 'checking build at ', position, ' w/h: ', position.width, ' ', position.height
 		buildable = True
 		tearset = []
 		try:
@@ -106,13 +105,11 @@ class Buildable(object):
 		Throws _NotBuildableError if building can't be built"""
 		island = session.world.get_island(position.center())
 		if island is None:
-			print 'not buildable, no island'
 			raise _NotBuildableError()
 		for tup in position.tuple_iter():
 			# can't use get_tile_tuples since it discards None's
 			tile = island.get_tile_tuple(tup)
 			if tile is None or 'constructible' not in tile.classes:
-				print 'not c: tile not construtibele: ', tile, tile.classes if tile is not None else ""
 				raise _NotBuildableError()
 
 	@classmethod
@@ -128,7 +125,6 @@ class Buildable(object):
 		"""Check if there is a settlement and if it belongs to the human player"""
 		settlement = session.world.get_settlement(position.center())
 		if settlement is None or session.world.player.id != settlement.owner.id:
-			print 'not c: no settlement ', position
 			raise _NotBuildableError()
 
 	@classmethod
@@ -142,13 +138,11 @@ class Buildable(object):
 				if obj.buildable_upon:
 					if obj.__class__ is cls:
 						# don't tear trees to build trees over them
-						print 'not c: same obj below'
 						raise _NotBuildableError()
 					# tear it so we can build over it
 					tearset.add(obj.getId())
 				else:
 					# building is blocking the build
-					print 'not c: building blocks: ', obj, tile
 					raise _NotBuildableError()
 		return tearset
 
@@ -192,7 +186,6 @@ class BuildableLine(Buildable):
 		# use pathfinding to get a path, then try to build along it
 		path = RoadBuilderPather.get_path(session, point1, point2)
 		if path is None: # can't find a path between these points
-			print 'not buildable: cant find path'
 			return [] # TODO: check alternative strategy
 
 		possible_builds = []
@@ -222,21 +215,17 @@ class BuildableSingleOnCoast(BuildableSingle):
 		coastline_found = False
 		island = session.world.get_island(position.center())
 		if island is None:
-			print 'not buildable: no island'
 			raise _NotBuildableError()
 		for tup in position.tuple_iter():
 			# can't use get_tile_tuples since it discards None's
 			tile = island.get_tile_tuple(tup)
 			if tile is None:
-				print 'not buildable: no tile', tup
 				raise _NotBuildableError()
 			if 'coastline' in tile.classes:
 				coastline_found = True
 			elif 'constructible' not in tile.classes: # neither coastline, nor constructible
-				print 'not buildable: no coastline or constructible:', tile
 				raise _NotBuildableError()
 		if not coastline_found:
-			print 'not buildable: no coastline found'
 			raise _NotBuildableError()
 
 	@classmethod
@@ -287,20 +276,17 @@ class BuildableSingleFromShip(BuildableSingleOnCoast):
 		# building from ship doesn't require settlements
 		# but a ship nearby:
 		if ship.position.distance(position) > BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE:
-			print 'not buildable: no ship nearby; distance: ', ship.position.distance(position)
 			raise _NotBuildableError()
 
 		# and the island mustn't be owned by anyone else
 		settlement = session.world.get_settlement(position.center())
 		if settlement is not None:
-			print 'not buildable: settlement is blocking'
 			raise _NotBuildableError()
 
 		# and player mustn't have a settlement here already
 		island = session.world.get_island(position.center())
 		for s in island.settlements:
 			if s.owner.id == session.world.player.id:
-				print 'not buildable: player already has a settlement there'
 				raise _NotBuildableError()
 
 # apply make_constant to classes
