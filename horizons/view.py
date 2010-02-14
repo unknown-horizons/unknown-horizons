@@ -53,9 +53,8 @@ class View(Changelistener):
 		for i in xrange(0, 3):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
-		self.view = horizons.main.fife.engine.getView()
 
-		self.cam = self.view.addCamera("main", self.layers[len(self.layers) - 1], \
+		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1], \
 		                               fife.Rect(0, 0, \
 		                                         horizons.main.fife.settings.getScreenWidth(), \
 		                                         horizons.main.fife.settings.getScreenHeight()), \
@@ -66,7 +65,7 @@ class View(Changelistener):
 		self.cam.setZoom(1)
 		self._autoscroll = [0, 0]
 
-		self.view.resetRenderers()
+		self.cam.resetRenderers()
 		self.renderer = {}
 		for r in ('CameraZoneRenderer', 'InstanceRenderer', 'GridRenderer', \
 		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer', \
@@ -85,7 +84,6 @@ class View(Changelistener):
 
 	def end(self):
 		self.model.deleteMaps()
-		self.view.clearCameras()
 		super(View, self).end()
 
 	def center(self, x, y):
