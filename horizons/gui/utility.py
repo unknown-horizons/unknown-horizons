@@ -28,7 +28,7 @@ def create_resource_icon(res_id, db):
 	@param res_id:
 	@param db: dbreader for main db"""
 	return TooltipIcon(tooltip=db.get_res_name(res_id), \
-	                   image=db.get_res_icon(res_id))
+	                   image=db.get_res_icon(res_id)[0])
 
 def center_widget(widget):
 	"""Centers the widget in the parameter
