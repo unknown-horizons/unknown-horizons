@@ -70,8 +70,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def load(self, db, building_id):
 		_CONSTANTS.init(horizons.main.db)
 		super(Settler, self).load(db, building_id)
-		self.inhabitants = \
-				db("SELECT inhabitants FROM settler WHERE rowid=?", building_id)[0]
+		self.inhabitants = horizons.main.db.get_settler_inhabitants(building_id)
 		self.__init()
 		self.owner.notify_settler_reached_level(self)
 		self.run()
@@ -82,15 +81,14 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	@property
 	def name(self):
-		level_name = horizons.main.db("SELECT name FROM settler_level WHERE level = ?", self.level)[0][0]
+		level_name = horizons.main.db.get_settler_name(self.level)
 		return (_(level_name)+' '+_(self._name)).title()
 
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
 		# taxes, inhabitants
-		self.tax_base, self.inhabitants_max = \
-		    horizons.main.db("SELECT tax_income, inhabitants_max FROM settler.settler_level \
-		   									 WHERE level=?", self.level)[0]
+		self.tax_base = horizons.main.db.get_settler_tax_income(self.level)
+		self.inhabitants_max = horizons.main.db.get_settler_inhabitants_max(self.level)
 		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
 			self.inhabitants = self.inhabitants_max
 
@@ -98,8 +96,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		current_lines = self.get_production_lines()
-		for (prod_line,) in horizons.main.db("SELECT production_line \
-							FROM settler.settler_production_line WHERE level = ?", self.level):
+		for (prod_line,) in horizons.main.db.get_settler_production_lines(self.level):
 			if not self.has_production_line(prod_line):
 				self.add_production_by_id(prod_line)
 			# cross out the new lines from the current lines, so only the old ones remain
@@ -164,8 +161,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			 self.level < self.level_max:
 			# add a production line that gets the necessary upgrade material.
 			# when the production finished, it calls level_up as callback.
-			upgrade_material_prodline = horizons.main.db("SELECT production_line FROM upgrade_material \
-																									 WHERE level = ?", self.level+1)[0][0]
+			upgrade_material_prodline = horizons.main.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
 			upgrade_material_production = SingleUseProduction(self.inventory, \

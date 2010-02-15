@@ -259,5 +259,5 @@ class Trader(Player):
 		except KeyError:
 			# resource value has yet to be fetched
 			cls._res_values[res] = \
-					float(horizons.main.db("SELECT value FROM resource WHERE id=?", res)[0][0])
+					float(horizons.main.db.get_res_value(res))
 			return cls._res_values[res]

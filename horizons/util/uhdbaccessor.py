@@ -59,6 +59,12 @@ class UhDbAccessor(DbReader):
 			    CASE WHEN (icon_disabled is null) THEN icon ELSE icon_disabled END \
 			    FROM data.resource WHERE id = ?', res)[0]
 
+	def get_res_value(self, id):
+		"""Returns the resource's value
+		@param id: resource id
+		@return: float value"""
+		return self.cached_query("SELECT value FROM resource WHERE id=?", id)[0][0]
+
 	def get_res(self, only_tradeable=False):
 		"""Returns a list of all resources.
 		@param only_tradeable: return only those you can trade.
@@ -115,3 +121,44 @@ class UhDbAccessor(DbReader):
 		@return: tuple: (class_package, class_name)"""
 		sql = "SELECT class_package, class_type FROM data.building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
+
+
+	#
+	#
+	# Settler DATABASE
+	#
+	#
+
+	# production_line table
+
+	def get_settler_production_lines(self, level):
+		"""Returns a list of settler's production lines for a specific level
+		@param level: int level for which to return the production lines
+		@return: list of production lines"""
+		return self.cached_query("SELECT production_line \
+							FROM settler.settler_production_line \
+		                    WHERE level = ?", level)
+
+	def get_settler_name(self, level):
+		"""Returns the name for a specific settler level
+		@param level: int settler's level
+		@return: string settler's level name"""
+		return self.cached_query("SELECT name FROM settler_level WHERE level = ?",
+		                         level)[0][0]
+
+	def get_settler_tax_income(self, level):
+		return self.cached_query("SELECT tax_income FROM settler.settler_level \
+		   									 WHERE level=?", level)[0][0]
+
+	def get_settler_inhabitants_max(self, level):
+		return self.cached_query("SELECT inhabitants_max FROM settler.settler_level \
+		   									 WHERE level=?", level)[0][0]
+
+	def get_settler_inhabitants(self, building_id):
+		return self.cached_query("SELECT inhabitants FROM settler WHERE rowid=?",
+		                         building_id)[0][0]
+
+	def get_settler_upgrade_material_prodline(self, level):
+		return self.cached_query("SELECT production_line FROM upgrade_material WHERE level = ?",
+		                         level)[0][0]
+
