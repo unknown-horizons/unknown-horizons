@@ -74,6 +74,15 @@ class UhDbAccessor(DbReader):
 			sql += " WHERE tradeable = 1"
 		return self.cached_query(sql)
 
+	def get_res_id_and_icon(self, only_tradeable=False):
+		"""Returns a list of all resources and the matching icons.
+		@param only_tradeable: return only those you can trade.
+		@return: list of tuples: (resource ids, resource icon)"""
+		sql = "SELECT id, icon FROM resource "
+		if only_tradeable:
+			sql += " WHERE tradeable = 1"
+		return self.cached_query(sql)
+
 
 	# Sound table
 
@@ -122,6 +131,11 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT class_package, class_type FROM data.building WHERE id = ?"
 		return self.cached_query(sql, building_class_id)[0]
 
+
+	def get_building_id_buttonname_settlerlvl(self):
+		"""Returns a list of id, button_name and settler_level"""
+		return self.cached_query("SELECT id, button_name, settler_level FROM \
+		                          building WHERE button_name IS NOT NULL")
 
 	#
 	#

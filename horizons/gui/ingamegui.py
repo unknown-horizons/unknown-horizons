@@ -121,7 +121,7 @@ class IngameGui(LivingObject):
 		# map button names to build functions calls with the building id
 		callbackWithArguments = pychan.tools.callbackWithArguments
 		self.callbacks_build = {}
-		for id,button_name,settler_level in horizons.main.db("SELECT id,button_name,settler_level FROM building WHERE button_name IS NOT NULL"):
+		for id,button_name,settler_level in horizons.main.db.get_building_id_buttonname_settlerlvl():
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = callbackWithArguments(self._build, id)
