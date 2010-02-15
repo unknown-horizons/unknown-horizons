@@ -99,8 +99,6 @@ class Gui(SettingsGui, SingleplayerMenu):
 		@param onPressEscape: callback that is to be called if the escape button is pressed.
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
-		# Uncomment if detach Segfault is resolved.
-		# gui.deepApply(lambda x: x.event_mapper.detach())
 		if event_map is not None:
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
@@ -112,8 +110,6 @@ class Gui(SettingsGui, SingleplayerMenu):
 		ret = dlg.execute(actions)
 		if onPressEscape is not None:
 			self.on_escape = tmp_escape
-		# Uncomment if detach Segfault is resolved.
-		#gui.deepApply(lambda x: x.event_mapper.attach())
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):
