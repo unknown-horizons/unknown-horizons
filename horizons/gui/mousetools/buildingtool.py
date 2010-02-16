@@ -435,13 +435,15 @@ class BuildingTool(NavigationTool):
 		self.rotation = (self.rotation + 270) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
-		self.draw_gui()
+		if self.gui is not None: # Only update if a preview gui is available
+			self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
-		self.draw_gui()
+		if self.gui is not None: # Only update if a preview gui is available
+			self.draw_gui()
 
 	def _remove_building_instances(self):
 		"""Deletes fife instances of buildings"""
