@@ -180,14 +180,15 @@ class BuildingTool(NavigationTool):
 		self.gui.adaptLayout()
 
 	@decorators.make_constants()
-	def preview_build(self, point1, point2):
-		"""Display buildings as preview if build requirements are met"""
+	def preview_build(self, point1, point2, force=False):
+		"""Display buildings as preview if build requirements are met
+		@param force: force the redrawing of the preview."""
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
 		                                             rotation = self.rotation, ship=self.ship)
 		# optimisation: If only one building is in the preview and the position hasn't changed
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
-		if len(new_buildings) == 1 and len(self.buildings) == 1:
+		if len(new_buildings) == 1 and len(self.buildings) == 1 and not force:
 			if new_buildings[0].position == self.buildings[0].position:
 				return # we don't want to redo the preview
 
@@ -425,23 +426,23 @@ class BuildingTool(NavigationTool):
 					self.last_change_listener.add_change_listener(self.highlight_buildable)
 				self.last_change_listener.add_change_listener(self.update_preview)
 
-	def update_preview(self):
+	def update_preview(self, force=False):
 		"""Used as callback method"""
 		if self.startPoint is not None:
 			self.preview_build(self.startPoint,
-			                   self.startPoint if self.endPoint is None else self.endPoint)
+			                   self.startPoint if self.endPoint is None else self.endPoint, force=force)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
-		self.update_preview()
+		self.update_preview(force=True)
 		if self.gui is not None: # Only update if a preview gui is available
 			self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
-		self.update_preview()
+		self.update_preview(force=True)
 		if self.gui is not None: # Only update if a preview gui is available
 			self.draw_gui()
 
