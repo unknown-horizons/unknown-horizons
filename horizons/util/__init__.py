@@ -26,7 +26,7 @@ from color import Color
 from changelistener import Changelistener
 from worldobject import WorldObject
 from encoder import encode, decode
-from loader import ActionSetLoader
+from loaders.actionsetloader import ActionSetLoader
 from pychanchildfinder import PychanChildFinder
 from named_object import NamedObject
 from dbreader import DbReader
