@@ -1,0 +1,46 @@
+UH:Conversion pattern for old tile sets to new tile system dir tree
+===================================================================
+
+land/grass-beach/	to	moderate/ts_grass-beach/
+land/beach-shallow/	to	moderate/ts_beach-shallow/
+water/shallow-deep/	to	moderate/ts_shallow-deep/
+
+
+old		new
+---		---
+
+_05.png		straight/135/0.png
+_06.png		straight/225/0.png
+_07.png		straight/315/0.png
+_08.png		straight/45/0.png
+
+_13.png		curve_in/135/0.png
+_14.png		curve_in/45/0.png
+_15.png		curve_in/315/0.png
+_16.png		curve_in/225/0.png
+
+_21.png		curve_out/315/0.png
+_22.png		curve_out/225/0.png
+_23.png		curve_out/135/0.png
+_24.png		curve_out/45/0.png
+
+
+simplified
+----------
+
+05	-->	straight 135
+06	-->	straight 225
+07	-->	straight 315
+08	-->	straight  45
+
+13	-->	curve_in 135
+14	-->	curve_in  45
+15	-->	curve_in 315
+16	-->	curve_in 225
+
+21	-->	curve_out 315
+22	-->	curve_out 225
+23	-->	curve_out 135
+24	-->	curve_out  45
+
+Good luck!
