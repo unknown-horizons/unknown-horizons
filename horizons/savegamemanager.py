@@ -93,10 +93,10 @@ class SavegameManager(object):
 				name = "Quicksave %s" % get_timestamp_string(self.get_metadata(f))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
-			
+
 			if not isinstance(name, unicode):
 				name = unicode(name, errors='replace') # only use unicode strings, guichan needs them
-			displaynames.append( name ) 
+			displaynames.append( name )
 		return displaynames
 
 	@classmethod
