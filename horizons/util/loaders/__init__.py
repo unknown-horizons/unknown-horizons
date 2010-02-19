@@ -20,3 +20,4 @@
 # ###################################################
 
 from actionsetloader import ActionSetLoader
+from tilesetloader import TileSetLoader

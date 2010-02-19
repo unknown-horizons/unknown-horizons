@@ -40,7 +40,7 @@ import thread # for thread.error raised by threading.Lock.release
 
 from fife import fife as fife_module
 
-from util import ActionSetLoader
+from util import ActionSetLoader, TileSetLoader
 from util.uhdbaccessor import UhDbAccessor
 from savegamemanager import SavegameManager
 from i18n import update_all_translations
@@ -284,6 +284,7 @@ def preload_game_data(lock):
 		log = logging.getLogger("preload")
 		mydb = _create_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \
+		                      TileSetLoader.load,
 		                      Callback(Entities.load_grounds, mydb), \
 		                      Callback(Entities.load_buildings, mydb), \
 		                      Callback(Entities.load_units, mydb) ]
