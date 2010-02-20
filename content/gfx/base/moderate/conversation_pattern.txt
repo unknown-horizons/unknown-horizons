@@ -9,38 +9,38 @@ water/shallow-deep/	to	moderate/ts_shallow-deep/
 old		new
 ---		---
 
-_05.png		straight/135/0.png
-_06.png		straight/225/0.png
-_07.png		straight/315/0.png
-_08.png		straight/45/0.png
+_05.png		straight/45/0.png
+_06.png		straight/135/0.png
+_07.png		straight/225/0.png
+_08.png		straight/315/0.png
 
-_13.png		curve_in/135/0.png
-_14.png		curve_in/45/0.png
-_15.png		curve_in/315/0.png
-_16.png		curve_in/225/0.png
+_13.png		curve_in/45/0.png
+_14.png		curve_in/315/0.png
+_15.png		curve_in/225/0.png
+_16.png		curve_in/315/0.png
 
-_21.png		curve_out/315/0.png
-_22.png		curve_out/225/0.png
-_23.png		curve_out/135/0.png
-_24.png		curve_out/45/0.png
+_21.png		curve_out/225/0.png
+_22.png		curve_out/135/0.png
+_23.png		curve_out/45/0.png
+_24.png		curve_out/315/0.png
 
 
 simplified
 ----------
 
-05	-->	straight 135
-06	-->	straight 225
-07	-->	straight 315
-08	-->	straight  45
+05	-->	straight  45
+06	-->	straight 135
+07	-->	straight 225
+08	-->	straight 315	
 
-13	-->	curve_in 135
-14	-->	curve_in  45
-15	-->	curve_in 315
-16	-->	curve_in 225
+13	-->	curve_in  45
+14	-->	curve_in 315
+15	-->	curve_in 225
+16	-->	curve_in 135
 
-21	-->	curve_out 315
-22	-->	curve_out 225
-23	-->	curve_out 135
-24	-->	curve_out  45
+21	-->	curve_out 225
+22	-->	curve_out 135
+23	-->	curve_out  45
+24	-->	curve_out 315
 
 Good luck!
