@@ -209,7 +209,7 @@ class World(LivingObject):
 
 		from horizons.command.building import Build
 		from horizons.command.unit import CreateUnit
-		# add a random number of trees to the gameworld
+		# add a random number of environmental objects to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
 			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
@@ -320,14 +320,17 @@ class World(LivingObject):
 		i = self.get_island(point)
 		if i is not None:
 			return i.get_tile(point)
-		assert (point.x, point.y) in self.ground_map, 'ground is not on island or water. invalid coord: %s'%point
 		return self.ground_map[(point.x, point.y)]
 
 	def get_settlement(self, point):
 		"""Returns settlement on point. Very fast (O(1)).
+		Returns None if point isn't on world.
 		@param point: instance of Point
 		@return: instance of Settlement or None"""
-		return self.get_tile(point).settlement
+		try:
+			return self.get_tile(point).settlement
+		except KeyError:
+			return None
 
 	@property
 	def settlements(self):

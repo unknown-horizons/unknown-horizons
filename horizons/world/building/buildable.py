@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import math
 
 from horizons.util import Point, Rect, decorators
 from horizons.world.pathfinding.pather import RoadBuilderPather
@@ -43,6 +44,17 @@ class _BuildPosition(object):
 	def __nonzero__(self):
 		"""Returns buildable value. This enables code such as "if cls.check_build()"""
 		return self.buildable
+
+	def __eq__(self, other):
+		if not isinstance(other, _BuildPosition):
+			return False
+		return self.position == other.position and \
+		       self.rotation == other.rotation and \
+		       self.action == other.action and \
+		       self.tearset == other.tearset
+
+	def __ne__(self, other):
+		return not self.__eq__(other)
 
 class _NotBuildableError(Exception):
 	"""Internal exception."""
@@ -156,13 +168,9 @@ class BuildableSingle(Buildable):
 	@classmethod
 	def check_build_line(cls, session, point1, point2, rotation=45, ship=None):
 		# only build 1 building at endpoint
-		"""
-		# some cryptic unreadable legacy formula to calculate acctual point from point2
-		x = int(round(point2.x)) - (cls.size[0] - 1) / 2 if \
-			(cls.size[0] % 2) == 1 else int(math.ceil(point2.x)) - (cls.size[0]) / 2
-		y = int(round(point2.y)) - (cls.size[1] - 1) / 2 if \
-			(cls.size[1] % 2) == 1 else int(math.ceil(point2.y)) - (cls.size[1]) / 2
-		"""
+		# correct placement for large buildings (mouse should be at center of building)
+		point2.x -= (cls.size[0] - 1) / 2
+		point2.y -= (cls.size[1] - 1) / 2
 		return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
 
 
@@ -172,6 +180,12 @@ class BuildableRect(Buildable):
 	def check_build_line(cls, session, point1, point2, rotation=45, ship=None):
 		possible_builds = []
 		area = Rect.init_from_corners(point1, point2)
+		# correct placement for large buildings (mouse should be at center of building)
+		area.left -= (cls.size[0] - 1) / 2
+		area.right -= (cls.size[0] - 1) / 2
+		area.top -= (cls.size[1] - 1) / 2
+		area.bottom -= (cls.size[1] - 1) / 2
+
 		for x in xrange(area.left, area.right+1, cls.size[0]):
 			for y in xrange(area.top, area.bottom+1, cls.size[1]):
 				possible_builds.append( \

@@ -250,7 +250,7 @@ class _CONSTANTS:
 			return
 		for key in cls.__dict__:
 			if key.startswith('_') or key[0].islower():
-				# print no constant to init here
+				# no constant to init here
 				continue
 			cls.__dict__[key] = int( db("SELECT value from settler.balance_values \
 			                                            WHERE name = ?", key.lower())[0][0])
