@@ -211,21 +211,25 @@ class World(LivingObject):
 		from horizons.command.unit import CreateUnit
 		# add a random number of trees to the gameworld
 		if int(self.properties.get('RandomTrees', 1)) == 1:
-			tree = Entities.buildings[BUILDINGS.TREE_CLASS]
-			#clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
+			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
+			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
+			max_clay_deposits = random.randint(2, 3)
 			for island in self.islands:
-				for tile in island.ground_map.iterkeys():
-					# add tree to about every third tile
-					if random.randint(0, 2) == 0 and "constructible" in island.ground_map[tile].classes:
-						cmd = Build(self.session, tree, tile[0], tile[1], ownerless=True, island=island)
+				num_clay_deposits = 0
+				for coords, tile in island.ground_map.iteritems():
+					# add tree to every nth tile
+					if random.randint(0, 2) == 0 and Tree.check_build(self.session, tile, \
+					                                                  check_settlement=False):
+						cmd = Build(self.session, Tree, coords[0], coords[1], ownerless=True,island=island)
 						building = cmd.execute(self.session)
 						building.finish_production_now() # make trees big and fill their inventory
 						if random.randint(0, 40) == 0: # add animal to every nth tree
-							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *tile).execute(self.session)
-					elif False and random.randint(0, 3) == 0 and clay.build_possible(self.session, tile):
-						# TODO: implement clay as soon as buildable is refactored
-						print 'build clay'
-						cmd = Build(self.session, clay, tile[0], tile[1], ownerless=True, island=island)
+							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *coords).execute(self.session)
+					elif num_clay_deposits < max_clay_deposits and \
+					     random.randint(0, 30) == 0 and \
+					     Clay.check_build(self.session, tile, check_settlement=False):
+						num_clay_deposits += 1
+						cmd = Build(self.session, Clay, coords[0], coords[1], ownerless=True, island=island)
 						cmd.execute(self.session)
 
 		# reset loggers, see above

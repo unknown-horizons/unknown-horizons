@@ -40,6 +40,10 @@ class _BuildPosition(object):
 		self.buildable = buildable
 		self.action = action
 
+	def __nonzero__(self):
+		"""Returns buildable value. This enables code such as "if cls.check_build()"""
+		return self.buildable
+
 class _NotBuildableError(Exception):
 	"""Internal exception."""
 
@@ -52,7 +56,8 @@ class Buildable(object):
 
 	@classmethod
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None):
-		"""Check if a building is buildable here
+		"""Check if a building is buildable here.
+		All tiles, that the building occupies are checked.
 		@param point: Point instance, coords
 		@param rotation: prefered rotation of building
 		@param check_settlement: whether to check for a settlement (for settlementless buildings)
@@ -67,7 +72,6 @@ class Buildable(object):
 			tearset = cls._check_buildings(session, position)
 			if check_settlement:
 				cls._check_settlement(session, position, ship=ship)
-
 		except _NotBuildableError:
 			buildable = False
 		return _BuildPosition(position, rotation, tearset, buildable)
@@ -85,7 +89,7 @@ class Buildable(object):
 
 	@classmethod
 	def is_tile_buildable(cls, session, tile, ship):
-		"""Check a tile for buildability
+		"""Checks a tile for buildability.
 		@param tile: Ground object
 		@return bool, True for "is buildable" """
 		position = Point(tile.x, tile.y)

@@ -18,9 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import math
+
 from fife import fife
 import horizons.main
 
+from horizons.util import Point
 from horizons.util.living import LivingObject
 
 class CursorTool(fife.IMouseListener, LivingObject):
@@ -52,3 +55,13 @@ class CursorTool(fife.IMouseListener, LivingObject):
 		pass
 	def mouseDragged(self, evt):
 		pass
+
+	def _get_world_location_from_event(self, evt):
+		"""Returns the coordinates of an event at the map.
+		@return Point with int coordinates"""
+		screenpoint = fife.ScreenPoint(evt.getX(), evt.getY())
+		mapcoord = self.session.view.cam.toMapCoordinates(screenpoint, False)
+		# undocumented legacy formula to correct coords, probably
+		return Point(int(round(math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25)), \
+		             int(round(math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)))
+

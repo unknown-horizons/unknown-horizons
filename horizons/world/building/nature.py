@@ -82,8 +82,8 @@ class Tree(GrowingBuilding):
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
 		kwargs['layer'] = LAYERS.OBJECTS
-		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+		return super(Tree, cls).getInstance(*args, **kwargs)
 
 class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
-	pass
+	tearable = False

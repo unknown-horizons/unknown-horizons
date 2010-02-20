@@ -30,12 +30,7 @@ from horizons.util import Point
 
 class TearingTool(NavigationTool):
 	"""
-	Represents a dangling tool after a building was selected from the list.
-	Builder visualizes if and why a building can not be built under the cursor position.
-	@param building_id: id of the selected building type
-	@param player_id: player id of the player that builds the building
-	@param ship: If building from a ship, restrict to range of ship
-	@param settle: bool Tells the building tool if a new settlement is created. Default: False
+	Represents a dangling tool to remove (tear) buildings.
 	"""
 
 	tear_selection_color = (255, 255, 255)
@@ -43,7 +38,7 @@ class TearingTool(NavigationTool):
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
 		self.coords = None
-		self.selected = []
+		self.selected = set()
 		self.oldedges = None
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
@@ -109,14 +104,14 @@ class TearingTool(NavigationTool):
 		if self.oldedges != edges or edges is None:
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
-			self.selected = []
+			self.selected = set()
 			self.oldedges = edges
 		if edges is not None:
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
-					if b is not None and b not in self.selected and b.tearable:
-						self.selected.append(b)
+					if b is not None and b.tearable:
+						self.selected.add(b)
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \
 				                                                          *self.tear_selection_color)

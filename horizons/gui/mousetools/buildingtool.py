@@ -470,13 +470,3 @@ class BuildingTool(NavigationTool):
 			if tile.object is not None:
 				removeColored(tile.object._instance)
 		self._buildable_tiles = []
-
-	def _get_world_location_from_event(self, evt):
-		"""Returns the coordinates of an event at the map.
-		@return Point with int coordinates"""
-		screenpoint = fife.ScreenPoint(evt.getX(), evt.getY())
-		mapcoord = self.session.view.cam.toMapCoordinates(screenpoint, False)
-		# undocumented legacy formula to correct coords, probably:
-		return Point(int(round(math.floor(mapcoord.x + mapcoord.x) / 2.0 + 0.25)), \
-		             int(round(math.floor(mapcoord.y + mapcoord.y) / 2.0 + 0.25)))
-

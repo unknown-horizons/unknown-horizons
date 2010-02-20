@@ -67,10 +67,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", self.getId(), \
 			 self.inhabitants)
 
-	def load(self, db, building_id):
+	def load(self, db, worldid):
 		_CONSTANTS.init(horizons.main.db)
-		super(Settler, self).load(db, building_id)
-		self.inhabitants = horizons.main.db.get_settler_inhabitants(building_id)
+		super(Settler, self).load(db, worldid)
+		self.inhabitants = db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
+
 		self.__init()
 		self.owner.notify_settler_reached_level(self)
 		self.run()

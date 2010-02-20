@@ -42,7 +42,7 @@ class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""
 	def __init__(self, styles, center_widgets=True, *args, **kwargs):
 		"""
-		@param styles: Dictionary, { 'widgetname' : 'stylename' }. data for stylize().
+		@param styles: Dictionary, { 'widgetname' : 'stylename' }. parameter for stylize().
 		@param center_widgets: wheter to center the widgets via center_widget()
 		"""
 		super(LazyWidgetsDict, self).__init__(*args, **kwargs)
