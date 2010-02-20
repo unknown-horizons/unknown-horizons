@@ -387,7 +387,8 @@ class BuildingTool(NavigationTool):
 				# check whether to issue a missing res notification
 				if building in self.buildings_missing_resources:
 					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
-					self.session.ingame_gui.message_widget.add(building['x'], building['y'], \
+					self.session.ingame_gui.message_widget.add(building.position.origin.x, \
+					                                           building.position.origin.y, \
 					                                           'NEED_MORE_RES', {'resource' : res_name})
 
 		if built:
