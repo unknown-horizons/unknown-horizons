@@ -290,14 +290,18 @@ class World(LivingObject):
 		return Point(x, y)
 
 	#----------------------------------------------------------------------
-	def get_tiles_in_radius(self, position, radius):
+	def get_tiles_in_radius(self, position, radius, shuffle=False):
 		"""Returns a all tiles in the radius around the point.
 		This is a generator, make sure you use it appropriately.
 		@param position: Point instance
 		@return List of tiles in radius.
 		"""
 		assert isinstance(position, Point)
-		for point in Circle(position, radius):
+		points = Circle(position, radius)
+		if shuffle:
+		    points = list(points)
+		    random.shuffle(points)
+		for point in points:
 			if self.map_dimensions.contains_without_border(point):
 				# don't yield if point is not in map, those points don't exist
 				yield self.get_tile(point)

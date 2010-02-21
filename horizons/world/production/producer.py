@@ -233,16 +233,14 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 		for production in productions:
 			assert isinstance(production, UnitProduction)
 			for unit, amount in production.get_produced_units().iteritems():
-				found_tile = False
-				radius = self.unit_placement_radius
-				# search for free water tile, and in increase search radius if none is found
-				while not found_tile:
-					for tile in self.session.world.get_tiles_in_radius(self.position.center(), radius):
-						if tile.is_water:
-							found_tile = True
-							for i in xrange(0, amount):
-								print "created unit", unit, "amount:", amount
+				for i in xrange(0, amount):
+					radius = self.unit_placement_radius
+					found_tile = False
+					# search for free water tile, and increase search radius if none is found
+					while not found_tile:
+						for tile in self.session.world.get_tiles_in_radius(self.position.center(), radius, shuffle=True):
+							if tile.is_water and (tile.x, tile.y) not in self.session.world.ship_map:
 								CreateUnit(self.owner.getId(), unit, tile.x, tile.y).execute(self.session)
-							break
-					radius += 1
-
+								found_tile = True
+								break
+						radius += 1
