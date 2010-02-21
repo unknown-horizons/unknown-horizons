@@ -145,7 +145,7 @@ class BuildingTool(NavigationTool):
 				157
 			)
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,
-							  "rotate_right": self.rotate_right } )
+		                      "rotate_right": self.rotate_right } )
 		# set building name in gui
 		self.gui.findChild(name='building_name').text = u'  ' + unicode(self._class._name)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)

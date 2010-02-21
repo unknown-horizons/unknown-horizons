@@ -24,10 +24,10 @@ for i in os.listdir('po'):
 data = filter(lambda x: '.svn' not in x[0], data)
 
 packages = []
-for i in os.walk('horizons'):
-	if not '.svn' in os.path.split(i[0]):
-		packages.append(i[0])
-
+for root, dirs, files in os.walk('horizons'):
+	if '.svn' in dirs:
+		dirs.remove('.svn')
+	packages.append(root)
 
 class build_man(build):
 	description = "Build the Manpage"
@@ -37,12 +37,12 @@ class build_man(build):
 			self.warn("Can't build manpage, needs xsltproc")
 			return
 
-		if os.path.exists('/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl'):
-			stylesheet = '/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl'
-		elif os.path.exists('/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl'):
-			stylesheet = '/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl'
-		elif os.path.exists('/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl'):
-			stylesheet = '/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl'
+		for p in ('/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl', \
+							'/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl', \
+							'/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl'):
+			if os.path.exists(p):
+				stylesheet = p
+				break
 		else:
 			self.warn("Can't find a suitable stylesheet!")
 			return
