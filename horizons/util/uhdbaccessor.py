@@ -110,7 +110,7 @@ class UhDbAccessor(DbReader):
 		if exact_level:
 			db_data = self(sql, object_id, level)
 			if db_data:
-				return db_data[0]
+				return db_data[ randint(0, len(db_data)-1) ]
 			else:
 				return None
 
