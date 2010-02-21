@@ -130,7 +130,8 @@ class BuySellTab(TabInterface):
 			slider.capture(None)
 		else:
 			icons = horizons.main.db.get_res_icon(res_id)
-			button.up_image, button.down_image = icons[0] * 2 # both normal icon
+			button.up_image = icons[0]
+			button.down_image = icons[0]
 			button.hover_image = icons[1] # disabled icon
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
