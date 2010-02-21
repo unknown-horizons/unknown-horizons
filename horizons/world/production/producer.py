@@ -172,7 +172,8 @@ class QueueProducer(Producer):
 		"""
 		#print "Add production"
 		self.production_queue.append(production_line_id)
-		self.start_next_production()
+		if not self.is_active():
+			self.start_next_production()
 
 	def check_next_production_startable(self):
 		# See if we can start the next production,  this only works if the current
