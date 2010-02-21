@@ -43,12 +43,13 @@ class IngameGui(LivingObject):
 
 
 	styles = {
-	  'city_info' : 'city_info',
-	  'change_name' : 'book',
-	  'status' : 'resource_bar',
-	  'status_gold' : 'resource_bar',
-	  'status_extra' : 'resource_bar',
-	  'status_extra_gold' : 'resource_bar',
+		'city_info' : 'city_info',
+		'change_name' : 'book',
+		'status' : 'resource_bar',
+		'status_gold' : 'resource_bar',
+		'status_extra' : 'resource_bar',
+		'status_extra_gold' : 'resource_bar',
+		'ingame_pause' : 'book'
 	  }
 
 	def __init__(self, session, gui):
