@@ -439,8 +439,11 @@ class IngameGui(LivingObject):
 		"""Applies the change_name dialogs input and hides it"""
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
-		instance.set_name(new_name)
-		self.hide_change_name_dialog()
+		if len(new_name) == 0 or new_name.isspace():
+			self.hide_change_name_dialog()
+		else:
+			instance.set_name(new_name)
+			self.hide_change_name_dialog()
 
 	def toggle_ingame_pause(self):
 		"""Called when the hotkey for pause is pressed. Displays pause notification and does
