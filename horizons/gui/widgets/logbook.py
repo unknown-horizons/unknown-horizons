@@ -61,6 +61,15 @@ class LogBook(object):
 	def hide(self):
 		self._gui.hide()
 
+	def is_visible(self):
+		return self._gui.isVisible()
+
+	def toggle_visibility(self):
+		if self.is_visible():
+			self.hide()
+		else:
+			self.show()
+
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""

@@ -105,11 +105,8 @@ class Gui(SettingsGui, SingleplayerMenu):
 			def _escape():
 				pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 				dlg.hide()
-			tmp_escape = self.on_escape
-			self.on_escape = _escape
+			dlg.capture(_escape, event_name="keyPressed")
 		ret = dlg.execute(actions)
-		if onPressEscape is not None:
-			self.on_escape = tmp_escape
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button = False):

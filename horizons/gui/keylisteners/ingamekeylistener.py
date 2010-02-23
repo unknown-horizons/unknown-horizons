@@ -30,7 +30,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	def __init__(self, session):
 		super(IngameKeyListener, self).__init__()
 		self.session = session
-		horizons.main.fife.eventmanager.addKeyListener(self)
+		horizons.main.fife.eventmanager.addKeyListenerFront(self)
 		self.keysPressed = []
 
 	def end(self):
@@ -53,6 +53,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			if not was: self.session.view.autoscroll(0, -25)
 		elif keyval == fife.Key.DOWN:
 			if not was: self.session.view.autoscroll(0, 25)
+		elif keyval == fife.Key.ESCAPE:
+			if not self.session.ingame_gui.on_escape():
+				return # let the MainListener handle this
 		elif keystr == 'g':
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )

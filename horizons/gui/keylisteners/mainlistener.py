@@ -55,6 +55,8 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		super(MainListener, self).end()
 
 	def keyPressed(self, evt):
+		if evt.isConsumed():
+			return
 		keyval = evt.getKey().getValue()
 		keystr = evt.getKey().getAsString().lower()
 		if keyval == fife.Key.ESCAPE:
