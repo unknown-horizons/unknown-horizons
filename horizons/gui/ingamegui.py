@@ -62,7 +62,6 @@ class IngameGui(LivingObject):
 		self.resource_source = None
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
-		self.on_escape_action = None
 
 		self.widgets = LazyWidgetsDict(self.styles, center_widgets=False)
 
@@ -433,7 +432,7 @@ class IngameGui(LivingObject):
 	def hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
 		self.session.speed_unpause()
-		self.main_gui.on_escape_action = self.main_gui.show_pause
+		self.main_gui.on_escape = self.main_gui.show_pause
 		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
@@ -449,11 +448,11 @@ class IngameGui(LivingObject):
 		the acctual (un)pausing."""
 		if not self.session.speed_is_paused():
 			self.session.speed_pause()
-			self.main_gui.on_escape_action = self.toggle_ingame_pause
+			self.main_gui.on_escape = self.toggle_ingame_pause
 			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
 			self.widgets['ingame_pause'].show()
 		else:
-			self.main_gui.on_escape_action = self.main_gui.show_pause
+			self.main_gui.on_escape = self.main_gui.show_pause
 			self.widgets['ingame_pause'].hide()
 			self.session.speed_unpause()
 
@@ -464,8 +463,6 @@ class IngameGui(LivingObject):
 	def on_escape(self):
 		if self.logbook.is_visible():
 			self.logbook.hide()
-		elif self.on_escape_action:
-			self.on_escape_action()
 		else:
 			return False
 		return True
