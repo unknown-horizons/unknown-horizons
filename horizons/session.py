@@ -125,7 +125,7 @@ class Session(LivingObject):
 		ExtScheduler().rem_all_classinst_calls(self)
 
 		if Settings().sound.enabled:
-			for emitter in horizons.main.fife.emitter['ambient']:
+			for emitter in horizons.main.fife.emitter['ambient'][:]:
 				emitter.stop()
 				horizons.main.fife.emitter['ambient'].remove(emitter)
 			horizons.main.fife.emitter['effects'].stop()
