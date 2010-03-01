@@ -54,7 +54,7 @@ def find_uh_position():
 	  '.', '..'
 	  ):
 		i = os.path.realpath(i)
-		if os.path.exists( os.path.join('content', i)):
+		if os.path.exists( os.path.join(i, 'content')):
 			return i
 	else:
 		# also check system wide dirs
@@ -78,7 +78,7 @@ def get_option_parser():
 							 help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 							 help=_("Specify the path to FIFE root directory."))
-	
+
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
 	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
