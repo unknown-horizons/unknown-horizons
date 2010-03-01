@@ -65,7 +65,7 @@ def find_uh_position():
 		  '/usr/local/share'
 		)
 		for i in positions:
-			pos = os.path.join('unknown-horizons', i)
+			pos = os.path.join(i, 'unknown-horizons')
 			if os.path.exists( pos ):
 				return pos
 	raise RuntimeError('Cannot find location of unknown horizons.')
