@@ -30,11 +30,15 @@ NOTE: Using constants is generally a bad style, so avoid where possible."""
 
 ##Versioning
 class VERSION:
-	def _set_version(version=None):
+	def _set_version(version="SVN"):
 		"""Function gets latest revision of the working copy to display in background.
 		@param version: String to display instead of revision."""
-		from run_uh import find_uh_position
 		if version == None:
+			try:
+				from run_uh import find_uh_position
+			except ImportError:
+				return unicode(version)
+
 			rev = None
 			uh_path = find_uh_position()
 			svn_entries_path = os.path.join(uh_path, '.svn', 'entries')
