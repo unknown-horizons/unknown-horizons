@@ -20,7 +20,7 @@
 # ###################################################
 
 def find_available_languages():
-    alternatives = ('po',
+    alternatives = ('build/mo',
                     '/usr/share/locale',
                     '/usr/share/games/locale',
                     '/usr/local/share/locale',

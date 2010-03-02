@@ -154,6 +154,6 @@ class Settings(_Setting):
 		                         url_master = 'master.unknown-horizons.org', \
 		                         favorites = [])
 		self.addCategories('language')
-		self.language.setDefaults(position='po', name='')
+		self.language.setDefaults(position='build/mo', name='')
 		self.addCategories('savegame')
 		self.savegame.setDefaults(savedquicksaves = 10, autosaveinterval = 10, savedautosaves = 10)

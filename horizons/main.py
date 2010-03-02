@@ -203,10 +203,10 @@ def _init_gettext():
 			trans.install(unicode=1)
 		except IOError:
 			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': settings.language.name, 'place': settings.language.position}
-			install('unknownhorizons', 'po', unicode=1)
+			install('unknownhorizons', 'build/mo', unicode=1)
 			settings.language.name = ''
 	else:
-		install('unknownhorizons', 'po', unicode=1)
+		install('unknownhorizons', 'build/mo', unicode=1)
 	update_all_translations()
 
 

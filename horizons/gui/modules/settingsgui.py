@@ -139,7 +139,7 @@ class SettingsGui(object):
 				trans = gettext.translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
 				trans.install(unicode=1)
 			else:
-				gettext.install('unknownhorizons', 'po', unicode=1)
+				gettext.install('unknownhorizons', 'build/mo', unicode=1)
 				settings.language.name = ''
 			update_all_translations()
 

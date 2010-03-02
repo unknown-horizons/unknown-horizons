@@ -159,7 +159,7 @@ def main():
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 
-	gettext.install("unknownhorizons", "po", unicode=1)
+	gettext.install("unknownhorizons", "build/mo", unicode=1)
 
 	create_user_dirs()
 

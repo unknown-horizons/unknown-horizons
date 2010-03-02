@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Unknown Horizons
-Comment=A 2D real time strategy simulation with an emphasis on economy and city building
+_Name=Unknown Horizons
+_Comment=A 2D real time strategy simulation with an emphasis on economy and city building
 Icon=unknown-horizons
 Exec=unknown-horizons
 Terminal=false
