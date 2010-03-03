@@ -39,7 +39,7 @@ events:
 
 - # Fordere den Spieler auf, die Ressourcen an Land zu verladen (min. zehn von jedem)
   actions:
-- {type: logbook, arguments: ["Gratulation!\nIhr habt soeben Eure erste Siedlung gegründet!\n\nNun da Ihr Euer Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen, um Zugriff auf die Waren für das Bauen von Gebäuden zu haben.\n\nWählt das Schiff und wechselt in dessen Inventar.\nWählt nun Laden/Entladen und verladet die Waren, indem Ihr auf sie klickt.\n\nIn der Mitte des Menüs kann die Kapazität der zu transferierenden Waren ausgewählt werden. xx"]}
+   - {type: logbook, arguments: ["Gratulation!\nIhr habt soeben Eure erste Siedlung gegründet!\n\nNun da Ihr Euer Kontor errichtet habt, müsst Ihr die mitgebrachte Fracht dort verstauen, um Zugriff auf die Waren für das Bauen von Gebäuden zu haben.\n\nWählt das Schiff und wechselt in dessen Inventar.\nWählt nun Laden/Entladen und verladet die Waren, indem Ihr auf sie klickt.\n\nIn der Mitte des Menüs kann die Kapazität der zu transferierenden Waren ausgewählt werden. xx"]}
   conditions:
    - {type: building_num_of_type_greater, arguments: [1, 0]}
 
