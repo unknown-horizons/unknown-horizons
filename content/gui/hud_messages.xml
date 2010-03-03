@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
 <Container size="64,250" is_focusable="0">
-<ImageButton name="back" up_image="" position="0,0" size="16,16" />
 	<VBox name="button_space"></VBox>
-	<ImageButton name="next" up_image="" position="220,0" size="16,16" />
 </Container>

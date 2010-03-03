@@ -35,7 +35,10 @@ class MessageWidget(LivingObject):
 	It uses Message Class instances to store messages and manages the
 	archive.
 	@param x, y: int position where the widget is placed on the screen."""
+
 	SHOW_NEW_MESSAGE_TEXT = 4 # seconds
+	MAX_MESSAGES = 5
+
 	def __init__(self, session, x, y):
 		super(LivingObject, self).__init__()
 		self.session = session
@@ -54,10 +57,6 @@ class MessageWidget(LivingObject):
 		self.position = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
-		button_next = self.widget.findChild(name='next')
-		button_next.capture(self.forward)
-		button_back = self.widget.findChild(name='back')
-		button_back.capture(self.back)
 
 	def add(self, x, y, id, message_dict=None):
 		"""Adds a message to the MessageWidget.
@@ -79,6 +78,10 @@ class MessageWidget(LivingObject):
 		@param message: Message instance
 		@param sound: path tosoundfile"""
 		self.active_messages.insert(0, message)
+
+		if len(self.active_messages) > self.MAX_MESSAGES:
+			self.active_messages.remove(self.active_messages[4])
+
 		if sound:
 			horizons.main.fife.play_sound('speech', sound)
 		else:
@@ -113,18 +116,6 @@ class MessageWidget(LivingObject):
 				button_space.addChild(button)
 		button_space.resizeToContent()
 		self.widget.size = button_space.size
-
-	def forward(self):
-		"""Sets the widget to the next icon."""
-		if len(self.active_messages) > 4 and self.position < len(self.active_messages)-1:
-			self.position += 1
-			self.draw_widget()
-
-	def back(self):
-		"""Sets the widget to the previous icon."""
-		if self.position > 0:
-			self.position -= 1
-			self.draw_widget()
 
 	def show_text(self, index):
 		"""Shows the text for a button.
@@ -181,7 +172,7 @@ class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string.Template, meaning it can contain placeholders
 	like the following: $player, ${gold}. The second version is recommended, as the word
-	can then be followed by other characters without a whitespace (e.g. "${player}'s home").aa
+	can then be followed by other characters without a whitespace (e.g. "${player}'s home").
 	The dict needed to fill these placeholders needs to be provided when creating the Message.
 
 	@param x, y: int position on the map where the action took place.
