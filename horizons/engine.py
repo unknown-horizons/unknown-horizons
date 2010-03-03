@@ -78,6 +78,11 @@ class Fife(object):
 			icon = 'content/gui/images/icon.png'
 		)
 
+		self.emitter = {}
+		self.emitter['bgsound'] = None
+		self.emitter['effects'] = None
+		self.emitter['speech'] = None
+
 	def _setSetting(self, settingObject, settingName, value):
 		"""
 		@param settingObject:
@@ -138,48 +143,8 @@ class Fife(object):
 		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
-		self.emitter = {}
 		if Settings().sound.enabled: # Set up sound if it is enabled
-			self.soundclippool = self.engine.getSoundClipPool()
-			self.emitter['bgsound'] = self.soundmanager.createEmitter()
-			self.emitter['bgsound'].setGain(Settings().sound.volume_music)
-			self.emitter['bgsound'].setLooping(False)
-			self.emitter['effects'] = self.soundmanager.createEmitter()
-			self.emitter['effects'].setGain(Settings().sound.volume_effects)
-			self.emitter['effects'].setLooping(False)
-			self.emitter['speech'] = self.soundmanager.createEmitter()
-			self.emitter['speech'].setGain(Settings().sound.volume_effects)
-			self.emitter['speech'].setLooping(False)
-			self.emitter['ambient'] = []
-
-			self.music_rand_element = random.randint(0, len(self.menu_music) - 1)
-			self.initial_menu_music_element = self.music_rand_element
-
-			def check_music():
-				if self.menu_music_played == 0:
-					if self.initial_menu_music_element == self.next_menu_music_element:
-						self.ingame_music.extend(self.menu_music)
-						self.music = self.ingame_music
-						self.music_rand_element = random.randint(0, len(self.ingame_music) - 1)
-						self.menu_music_played = 1
-					else:
-						self.music = self.menu_music
-
-				if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
-					if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
-						self.music_rand_element = self.music_rand_element + 1 if \
-								self.music_rand_element + 1 < len(self.music) else 0
-						self.play_sound('bgsound', self.music[self.music_rand_element])
-						if self.menu_music_played == 0:
-							self.next_menu_music_element = self.music_rand_element
-
-				self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \
-						self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
-						self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
-
-
-			check_music() # Start background music
-			ExtScheduler().add_new_object(check_music, self, loops=-1)
+			self.setup_sound()
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
 		self.animationloader = SQLiteAnimationLoader()
@@ -215,6 +180,59 @@ class Fife(object):
 		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 
 		self._gotInited = True
+
+
+	def setup_sound(self):
+		"""Enable all sound and start playing music."""
+		if Settings().sound.enabled: # Set up sound if it is enabled
+			self.soundclippool = self.engine.getSoundClipPool()
+			self.emitter['bgsound'] = self.soundmanager.createEmitter()
+			self.emitter['bgsound'].setGain(Settings().sound.volume_music)
+			self.emitter['bgsound'].setLooping(False)
+			self.emitter['effects'] = self.soundmanager.createEmitter()
+			self.emitter['effects'].setGain(Settings().sound.volume_effects)
+			self.emitter['effects'].setLooping(False)
+			self.emitter['speech'] = self.soundmanager.createEmitter()
+			self.emitter['speech'].setGain(Settings().sound.volume_effects)
+			self.emitter['speech'].setLooping(False)
+			self.emitter['ambient'] = []
+			self.music_rand_element = random.randint(0, len(self.menu_music) - 1)
+			self.initial_menu_music_element = self.music_rand_element
+
+			self.check_music() # Start background music
+			ExtScheduler().add_new_object(self.check_music, self, loops=-1)
+
+	def disable_sound(self):
+		"""Disable all sound outputs."""
+		self.emitter['bgsound'].reset()
+		self.emitter['effects'].reset()
+		self.emitter['speech'].reset()
+		ExtScheduler().rem_call(self, self.check_music)
+
+	def check_music(self):
+		"""Used as callback to check if music is still running or if we have
+		to load the next song."""
+		if self.menu_music_played == 0:
+			if self.initial_menu_music_element == self.next_menu_music_element:
+				self.ingame_music.extend(self.menu_music)
+				self.music = self.ingame_music
+				self.music_rand_element = random.randint(0, len(self.ingame_music) - 1)
+				self.menu_music_played = 1
+			else:
+				self.music = self.menu_music
+
+		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
+			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
+				self.music_rand_element = self.music_rand_element + 1 if \
+					    self.music_rand_element + 1 < len(self.music) else 0
+				self.play_sound('bgsound', self.music[self.music_rand_element])
+				if self.menu_music_played == 0:
+					self.next_menu_music_element = self.music_rand_element
+
+		self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \
+			    self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
+			    self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.

@@ -119,7 +119,10 @@ class SettingsGui(object):
 			changes_require_restart = True
 		if new_settings['sound_enable_opt'] != settings.sound.enabled:
 			settings.sound.enabled = new_settings['sound_enable_opt']
-			changes_require_restart = True
+			if settings.sound.enabled:
+				fife.setup_sound()
+			else:
+				fife.disable_sound()
 		settings.sound.volume_music = volume_music.getValue()
 		settings.sound.volume_effects = volume_effects.getValue()
 		if new_settings['screen_bpp'] != int(settings.fife.screen.bpp / 10):
