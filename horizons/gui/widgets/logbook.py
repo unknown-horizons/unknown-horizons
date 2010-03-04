@@ -30,10 +30,11 @@ class LogBook(object):
 
 	It displays longer messages, that are essential for campaigns.
 	"""
-	def __init__(self):
+	def __init__(self, session):
 		self._messages = [] # list of all messages
 		self._cur_message = None # remember current location; 0 to len(messages)-1
 
+		self._session = session
 		self._init_gui()
 
 		""" logbook test code""
@@ -46,7 +47,6 @@ class LogBook(object):
 
 	def add_entry(self, message):
 		"""Adds a message to the logbook"""
-		print 'add'
 		message = unicode(message)
 		self._messages.append(message)
 		self._cur_message = len(self._messages) - 1
@@ -57,9 +57,11 @@ class LogBook(object):
 		if len(self._messages) == 0:
 			return
 		self._gui.show()
+		self._session.speed_pause()
 
 	def hide(self):
 		self._gui.hide()
+		self._session.speed_unpause()
 
 	def is_visible(self):
 		return self._gui.isVisible()
@@ -86,7 +88,7 @@ class LogBook(object):
 		self._gui.mapEvents({
 		  'backwardButton' : Callback(self._scroll, -1),
 		  'forwardButton' : Callback(self._scroll, 1),
-		  'cancelButton' : self._gui.hide
+		  'cancelButton' : self.hide
 		  })
 		center_widget(self._gui)
 

@@ -70,7 +70,7 @@ class IngameGui(LivingObject):
 			horizons.main.fife.settings.getScreenWidth()/2 - self.widgets['city_info'].size[0]/2 - 10, 5
 		)
 
-		self.logbook = LogBook()
+		self.logbook = LogBook(session)
 
 		# self.widgets['minimap'] is the guichan gui around the acctual minimap, which is saved
 		# in self.minimap

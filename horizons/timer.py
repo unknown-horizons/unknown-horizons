@@ -102,5 +102,8 @@ class Timer(LivingObject):
 				return
 			for f in self.tick_func_call:
 				f(self.tick_next_id)
+			if self.ticks_per_second == 0:
+				# If a callback changed the speed to zero, we have to exit
+				return
 			self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
 			self.tick_next_id += 1
