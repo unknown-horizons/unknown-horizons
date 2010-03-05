@@ -37,7 +37,7 @@ class NatureBuilding(BuildableRect, BasicBuilding):
 
 	@classmethod
 	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = LAYERS.GROUND
+		kwargs['layer'] = LAYERS.OBJECTS
 		return super(NatureBuilding, cls).getInstance(*args, **kwargs)
 
 class GrowingBuilding(ProducerBuilding, NatureBuilding):

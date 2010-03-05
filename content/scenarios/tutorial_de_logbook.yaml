@@ -1,7 +1,7 @@
 events:
 - # Siegesbedingungen
   actions:
-   - {type: win} 
+   - {type: win}
    - {type: logbook, arguments: ["Herzlichen Glückwunsch!\n\nEuer Dorf beherbergt nun 50 Einwohner!\nDamit habt Ihr das Ende dieses Tutoriums erreicht. Nun könnt Ihr Euch echten Herausforderungen stellen. xx"]}
   conditions:
    - {type: settler_level_greater, arguments: [0]}
@@ -33,14 +33,14 @@ events:
 
 - # Zeige eine Nachricht nach Spielbeginn (Über das Logbuch)
   actions:
-   - {type: logbook, arguments: ["Herzlich Willkommen bei Unknown Horizons!\n\nZiel dieses Tutoriums ist es, Euch in die Spielweise von Unknown Horizons einzuführen.\nDabei werdet Ihr lernen eine Insel zu besiedeln, sodass eine stattliche Siedlung mit blühendem Handel entsteht.\n\nDies ist Euer Logbuch, wichtige Nachrichten werden hier festgehalten.\n\nMit den beiden Pistolen könnt Ihr in alten Nachrichten stöbern, mit dem Kreuz schließt ihr es.\n\nUm das Buch erneuet zu öffnen, klickt auf das Symbol mit Brief und Feder neben der Karte. willgetcutted"]}
-  conditions: 
+   - {type: logbook, arguments: ["Herzlich Willkommen bei Unknown Horizons!\n\nZiel dieses Tutoriums ist es, Euch in die Spielweise von Unknown Horizons einzuführen.\nDabei werdet Ihr lernen eine Insel zu besiedeln, sodass eine stattliche Siedlung mit blühendem Handel entsteht.\n\nDies ist Euer Logbuch, wichtige Nachrichten werden hier festgehalten.\n\nMit den beiden Pistolen könnt Ihr in alten Nachrichten stöbern, mit dem Kreuz schließt ihr es.\n\nUm das Buch erneuet zu öffnen, klickt auf das Symbol mit Brief und Feder neben der Karte. willget cutted"]}
+  conditions:
    - {type: time_passed, arguments: [1]}
 
 - # Zeige eine Nachricht nach Spielbeginn (wie man sein Schiff bewegt)
   actions:
    - {type: logbook, arguments: ["Ihr beginnt das Spiel mit einem einfachen Schiff, welches mit Waren beladen ist. Um es zu bewegen, klickt es an und wählt das Ziel mit einem Rechtsklick.\n\nSobald Ihr Euer Schiff in die Nähe der Küste navigiert habt, errichtet dort ein Kontor.\nDazu klickt Ihr auf den Anker-Button im Menü des Schiffes.\n\nDas Kontor kann nur an der Küste plaziert werden.\nEs hat neben der Warenlagerung auch die Aufgabe des Handelspostens."]}
-  conditions: 
+  conditions:
    - {type: time_passed, arguments: [4]}
 
 - # Fordere den Spieler auf, die Ressourcen an Land zu verladen (min. zehn von jedem)
@@ -107,7 +107,7 @@ events:
 - # Lagerzelt gebaut
   actions:
    - {type: logbook, arguments: ["Sehr gut.\n\nStellt immer sicher, dass alle Gebäude an die Straße angebunden sind.\n\nBaut beruhigt noch zwei weitere Wohnzelte und spielt nun solange weiter, bis Eure Siedler die nächste Stufe erreichen.\n\nUm dies zu erreichen, kann es helfen, kurzzeitig die Steuern zu senken.\nDies könnt ihr in Kontor oder Markplatz tun."]}
-   - {type: set_var, arguments: ["tutStepDone", 8]}  
+   - {type: set_var, arguments: ["tutStepDone", 8]}
   conditions:
    - {type: var_eq , arguments: ["tutStepDone", 7]}
    - {type: building_num_of_type_greater, arguments: [2, 0]}
@@ -144,15 +144,15 @@ events:
   conditions:
    - {type: var_eq , arguments: ["tutStepDone", 23]}
    - {type: building_num_of_type_greater, arguments: [7, 0]}
-     
+
 - # Spieler soll Handeln
   actions:
    - {type: logbook, arguments: ["Sehr gut!\nDer Händler wird nun häufiger Euren Hafen anlaufen.\n\nIm Menü des Kontors könnt ihr bestimmen, welche Waren Ihr bis zu welchem Lagerstand kaufen und verkaufen möchtet.\n\nFüllt nun Euer Lager mit 25 Tonnen Werkzeug, indem ihr einen der freien Plätze auswählt, das Werkzeug markiert und den Regler rechts der gewählten Ware auf 25 Tonnen stellt.\n\nWenn Ihr auf die Kiste mit dem grünen Pfeil klickt, verkauft Ihr Waren bis zu dem eingestellten Wert. willgetcutted"]}
    - {type: set_var, arguments: ["tutStepDone", 25]}
   conditions:
-   - {type: var_eq , arguments: ["tutStepDone", 24]} 
+   - {type: var_eq , arguments: ["tutStepDone", 24]}
    - {type: building_num_of_type_greater, arguments: [6, 0]}
-     
+
 - # 25 Werkzeuge gesammelt
   actions:
    - {type: logbook, arguments: ["In Eurem Lager befinden sich nun genügend Werkzeuge!\n\nWenn Ihr möchtet, könnt Ihr nun auch überschüssige Waren an den freien Händler verkaufen.\n\nLockt nun 50 Einwohner in Eure Siedlung und der Sieg ist Euer."]}

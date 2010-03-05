@@ -75,7 +75,7 @@ class View(Changelistener):
 			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
-		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.WATER])
+		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])
 
 		Settings().addCategories('view')
 		Settings().view.addCategories('zoom')
