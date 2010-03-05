@@ -91,6 +91,10 @@ class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 		self.settlement = instance.settlement
 		self.init_values()
 		self.tooltip = u"Settler overview"
+		self.button_up_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
+		self.button_active_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
+		self.button_down_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
 
 		self._old_most_needed_res_icon = None
 
