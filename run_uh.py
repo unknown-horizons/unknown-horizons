@@ -103,8 +103,6 @@ def get_option_parser():
 	                     help=_("Writes log to <filename> instead of to the uh-userdir"))
 	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", \
 											 action="store_true", default=False, help=_("For internal use only."))
-	dev_group.add_option("--enable-unstable-features", dest="unstable_features", \
-											 action="store_true", default=False, help=_("Enables unstable features (for developing only)."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
 											 help=_("Enable profiling (for developing only)."))
 	p.add_option_group(dev_group)
