@@ -96,7 +96,6 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
       <!-- These are several examples, how syntaxes could look -->
       <arg choice="opt"><option>--load-map <parameter>savegame</parameter></option></arg>
       <arg choice="opt"><option>--start-map <parameter>mapname</parameter></option></arg>
-      <arg choice="opt"><option>--enable-unstable-features</option></arg>
 	  <arg choice="plain">
         <group choice="req">
           <arg choice="plain"><option>-d</option></arg>
@@ -152,13 +151,6 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
 		<listitem>
 		  <para>Loads a available map. The mapname matches the
 		    displayed string in the ingame menu</para>
-        </listitem>
-      </varlistentry>
-	  <varlistentry>
-        <term><option>--enable-unstable-feature</option></term>
-        <listitem>
-          <para>Activates features, that are not considered stable
-          enough for general use yet.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
