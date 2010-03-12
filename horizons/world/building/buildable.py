@@ -186,15 +186,6 @@ class BuildableRect(Buildable):
 		area.top -= (cls.size[1] - 1) / 2
 		area.bottom -= (cls.size[1] - 1) / 2
 
-		print area
-		assert isinstance(area.left, int)
-		assert isinstance(area.right, int)
-		assert isinstance(area.top, int)
-		assert isinstance(area.bottom, int)
-		assert isinstance(cls.size[0], int)
-		assert isinstance(cls.size[1], int)
-
-
 		for x in xrange(area.left, area.right+1, cls.size[0]):
 			for y in xrange(area.top, area.bottom+1, cls.size[1]):
 				possible_builds.append( \
