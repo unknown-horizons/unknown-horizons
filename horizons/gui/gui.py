@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from fife import fife
 import os
 import os.path
 import time
@@ -102,9 +103,10 @@ class Gui(SettingsGui, SingleplayerMenu):
 		if event_map is not None:
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
-			def _escape():
-				pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
-				dlg.hide()
+			def _escape(event):
+				if event.getKey().getValue() == fife.Key.ESCAPE:
+					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
+					dlg.hide()
 			dlg.capture(_escape, event_name="keyPressed")
 		ret = dlg.execute(actions)
 		return ret
