@@ -1,3 +1,4 @@
+# -.- coding: utf-8 -.-
 # ###################################################
 # Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -160,3 +161,15 @@ class PATHS:
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
+class _LanguageNameDict(dict):
+	def __getitem__(self, key):
+		return self.get(key, key)
+LANGUAGENAMES = _LanguageNameDict(
+	ca = u'Català',
+	de = u'Deutsch',
+	en = u'English',
+	fr = u'Français',
+	nb = u'Norwegian Bokmål',
+	pl = u'Polski',
+	pt_PT = u'Português'
+)

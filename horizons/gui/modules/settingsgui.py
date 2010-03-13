@@ -24,6 +24,7 @@ from fife.extensions import pychan
 import horizons.main
 
 from horizons.settings import Settings
+from horizons.constants import LANGUAGENAMES
 from horizons.i18n.utils import find_available_languages
 from horizons.i18n import update_all_translations
 
@@ -50,7 +51,7 @@ class SettingsGui(object):
 
 		dlg = self.widgets['settings']
 		dlg.distributeInitialData({
-			'language' : sorted(languages_map.keys()),
+			'language' : [LANGUAGENAMES[x] for x in sorted(languages_map.keys())],
 			'autosaveinterval' : range(0, 60, 2),
 			'savedautosaves' : range(1, 30),
 			'savedquicksaves' : range(1, 30),
