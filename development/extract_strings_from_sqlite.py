@@ -75,9 +75,11 @@ class MSGID_collect:
         else:
             self.msgids[msgid] = [place]
 
-    def print_result(self):
+    def __str__(self):
+    	s = []
         for pair in self.msgids.items():
-            print '#%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])
+            s += ['#%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
+        return '\n'.join(s).strip()
 
 def collect_msgid(msgid, place):
     pass
@@ -85,24 +87,28 @@ def collect_msgid(msgid, place):
 def print_msgid(msgid):
     print 'msgid "%s"\nmsgstr ""\n' % msgid
 
-collector = MSGID_collect()
+def collect_all():
+	collector = MSGID_collect()
 
-for building in session.query(Building):
-    collector.add_to_collection(building.name, 'Building')
+	for building in session.query(Building):
+	    collector.add_to_collection(building.name, 'Building')
 
-for unit in session.query(Unit):
-    collector.add_to_collection(unit.name, 'Unit')
+	for unit in session.query(Unit):
+	    collector.add_to_collection(unit.name, 'Unit')
 
-#for settler_level in session.query(SettlerLevel):
-#    print_msgid(settler_level.name)
+	#for settler_level in session.query(SettlerLevel):
+	#    print_msgid(settler_level.name)
 
-for color in session.query(Colors):
-    collector.add_to_collection(color.name, 'Colors')
+	for color in session.query(Colors):
+	    collector.add_to_collection(color.name, 'Colors')
 
-for message in session.query(Message):
-    collector.add_to_collection(message.text, 'Messages')
+	for message in session.query(Message):
+	    collector.add_to_collection(message.text, 'Messages')
 
-for resource in session.query(Resource):
-    collector.add_to_collection(resource.name, 'Resources')
+	for resource in session.query(Resource):
+	    collector.add_to_collection(resource.name, 'Resources')
+	
+	return collector
 
-collector.print_result()
+if __name__ == '__main__':
+	print collect_all()
