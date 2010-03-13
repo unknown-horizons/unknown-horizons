@@ -45,12 +45,12 @@ class SettingsGui(object):
 		except ValueError:
 			resolutions.append(str(settings.fife.screen.width) + 'x' + str(settings.fife.screen.height))
 
-		languages_map = dict(reversed(find_available_languages()))
+		languages_map = dict(find_available_languages())
 		languages_map[_('System default')] = ''
 
 		dlg = self.widgets['settings']
 		dlg.distributeInitialData({
-			'language' : languages_map.keys(),
+			'language' : sorted(languages_map.keys()),
 			'autosaveinterval' : range(0, 60, 2),
 			'savedautosaves' : range(1, 30),
 			'savedquicksaves' : range(1, 30),
@@ -68,7 +68,7 @@ class SettingsGui(object):
 			'screen_bpp' : int(settings.fife.screen.bpp / 10), # 0:0 16:1 24:2 32:3 :)
 			'screen_fullscreen' : settings.fife.screen.fullscreen,
 			'sound_enable_opt' : settings.sound.enabled,
-			'language' : languages_map.keys().index(_('System default') if \
+			'language' : sorted(languages_map.keys()).index(_('System default') if \
 		      settings.language.name == '' or settings.language.name == 'System default' else \
 		      settings.language.name)
 		})

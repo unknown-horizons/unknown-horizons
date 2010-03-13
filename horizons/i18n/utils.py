@@ -32,11 +32,8 @@ def find_available_languages():
     languages = []
 
     for i in alternatives:
-        found = glob('%s/*/*/unknownhorizons.mo' % i)
-        for j in found:
+        for j in glob('%s/*/*/unknownhorizons.mo' % i):
             splited = j.split(os.sep)
-            languages.append( (splited[-3], os.sep.join(splited[:-3])))
+            languages.append((splited[-3], os.sep.join(splited[:-3])))
 
     return languages
-
-
