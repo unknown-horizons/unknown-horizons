@@ -94,6 +94,11 @@ class Production(WorldObject):
 	@classmethod
 	def load(cls, db, worldid):
 		self = cls.__new__(cls)
+		self._load(db, worldid)
+		return self
+
+	def _load(self, db, worldid):
+		super(Production, self).load(db, worldid)
 
 		db_data = db('SELECT state, owner, prod_line_id, remaining_ticks, _pause_old_state \
 								  FROM production WHERE rowid = ?', worldid)[0]
@@ -110,8 +115,7 @@ class Production(WorldObject):
 		# BUG: the following super code only returns Production, which causes endless recursion
 		#super(cls, self).load(db, worldid)
 		# workaround:
-		WorldObject.load(self, db, worldid)
-		return self
+		#WorldObject.load(self, db, worldid)
 
 	def remove(self):
 		# depending on state, a check_inventory listener might be active
@@ -362,7 +366,7 @@ class ProgressProduction(Production):
 		# TODO
 		pass
 
-	def load(self, db, worldid):
+	def _load(self, db, worldid):
 		super(ProgressProduction, self).load(db, worldid)
 		self.__init()
 		# TODO

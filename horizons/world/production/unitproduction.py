@@ -32,7 +32,7 @@ class UnitProduction(Production):
 		if callback is not None:
 			assert callable(callback)
 		self.callback = callback
-		self.__init() 
+		self.__init()
 		# We have to check manually now after initing because we set auto_start to false
 		self._check_inventory()
 
@@ -41,8 +41,8 @@ class UnitProduction(Production):
 		self._prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
-	def load(self, db, worldid):
-		super(UnitProduction, self).load(db, worldid)
+	def _load(self, db, worldid):
+		super(UnitProduction, self)._load(db, worldid)
 		self.__init()
 
 	## PROTECTED METHODS
@@ -64,7 +64,7 @@ class UnitProduction(Production):
 			remnant = self.inventory.alter(res, amount) # try to get all
 			self._prod_line.change_amount(res, remnant) # set how much we still need to get
 			taken += abs(remnant) + amount
-		return taken	
+		return taken
 
 	def _produce(self):
 		# check if we're done
