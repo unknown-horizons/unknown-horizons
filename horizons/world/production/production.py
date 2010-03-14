@@ -112,11 +112,6 @@ class Production(WorldObject):
 		     self._state == PRODUCTION.STATES.inventory_full:
 			self.inventory.add_change_listener(self._check_inventory)
 
-		# BUG: the following super code only returns Production, which causes endless recursion
-		#super(cls, self).load(db, worldid)
-		# workaround:
-		#WorldObject.load(self, db, worldid)
-
 	def remove(self):
 		# depending on state, a check_inventory listener might be active
 		self.inventory.discard_change_listener(self._check_inventory)
