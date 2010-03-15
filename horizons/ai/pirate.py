@@ -28,49 +28,22 @@ from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
 from horizons.ext.enum import Enum
-from horizons.world.player import Player
+from horizons.ai.generic import AIPlayer
 from horizons.world.storageholder import StorageHolder
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
 
 
-class Pirate(Player):
-	"""A pirate ship moving randomly around if another ship came into the reach of it, it will  be followed for a short time"""
+class Pirate(AIPlayer):
+	"""A pirate ship moving randomly around. If another ship comes into the reach
+	of it, it will be followed for a short time."""
+
+	log = logging.getLogger("ai.pirate")
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Pirate, self).__init__(session, id, name, color, **kwargs)
 
-
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y).execute(self.session)
-
-	@classmethod
-	def send_ship_random(self, ship):
-		"""Sends a ship to a random position on the map.
-		@param ship: Ship instance that is to be used"""
-		self.log.debug("Pirate %s: moving to random location", self.getId())
-		# find random position
-		point = self.session.world.get_random_possible_ship_position()
-		# move ship there:
-		try:
-			ship.move(point)
-		except MoveNotPossible:
-			# select new target soon:
-			self.notify_unit_path_blocked(ship)
-			return
-		self.ships[ship] = self.shipStates.moving_random
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		self.ships[ship] = self.shipStates.idle
+		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)

@@ -27,14 +27,13 @@ import horizons.main
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
-from horizons.ext.enum import Enum
-from horizons.world.player import Player
+from horizons.ai.generic import AIPlayer
 from horizons.world.storageholder import StorageHolder
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
 
 
-class Trader(Player):
+class Trader(AIPlayer):
 	"""A trader represents the free trader that travels around the map with his trading ship(s) and
 	sells resources to players and buys resources from them. This is a very simple form of AI, as it
 	doesn't do any more then drive to a place on water or a branchoffice randomly and then buys and
@@ -42,7 +41,6 @@ class Trader(Player):
 	@param id: int - player id, every Player needs a unique id, as the freetrader is a Player instance, he also does.
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
-	shipStates = Enum('moving_random', 'moving_to_branch', 'reached_branch')
 
 	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
 	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
@@ -66,7 +64,6 @@ class Trader(Player):
 		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
 
 	def __init(self):
-		self.ships = {} # { ship : state}. used as list of ships and structure to know their state
 		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
 		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
 
@@ -133,19 +130,9 @@ class Trader(Player):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		self.log.debug("Trader %s: moving to random location", self.getId())
-		# find random position
-		point = self.session.world.get_random_possible_ship_position()
-		# move ship there:
-		try:
-			ship.move(point, Callback(self.ship_idle, ship))
-		except MoveNotPossible:
-			# select new target soon:
-			self.notify_unit_path_blocked(ship)
-			return
+		super(Trader, self).send_ship_random(ship)
 		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship), \
 		                              callback=Callback(self._ship_found_signal_fire, ship))
-		self.ships[ship] = self.shipStates.moving_random
 
 	def _check_for_signal_fire_in_ship_range(self, ship):
 		"""Returns the signal fire instance, if there is one in the ships range, else False"""

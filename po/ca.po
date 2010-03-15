@@ -476,7 +476,7 @@ msgstr " Surt"
 
 #: ../horizons/i18n/guitranslations.py:119
 msgid " Continue Game "
-msgstr "Continua la partida"
+msgstr "Continua una partida"
 
 #: ../horizons/i18n/guitranslations.py:122
 msgid "Restart Required"
