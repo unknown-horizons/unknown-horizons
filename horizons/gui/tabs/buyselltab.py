@@ -202,11 +202,8 @@ class BuySellTab(TabInterface):
 		current_hbox = pychan.widgets.HBox(padding = 2)
 		index = 1
 		resources = horizons.main.db.get_res_id_and_icon(True)
-		# Add the zero element to the beginning that allows to remove the currently sold
-		# or bought resource
-		if self.slots[slot_id].res is not None:
-			resources.insert(0, (0, self.dummy_icon_path))
-		for (res_id, icon) in resources:
+		# Add the zero element to the beginning that allows to remove the currently sold/bought resource
+		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
 			button = pychan.widgets.ImageButton(size=(50, 50))

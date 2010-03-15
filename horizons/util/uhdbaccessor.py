@@ -83,7 +83,6 @@ class UhDbAccessor(DbReader):
 			sql += " WHERE tradeable = 1"
 		return self.cached_query(sql)
 
-
 	# Sound table
 
 	def get_sound_file(self, soundname):
