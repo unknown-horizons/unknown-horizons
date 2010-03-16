@@ -47,3 +47,22 @@ class Pirate(AIPlayer):
 		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y).execute(self.session)
 		self.ships[ship] = self.shipStates.idle
 		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
+	
+	def save(self, db):
+		super(Pirate, self).save(db)
+		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.getId())
+
+		for ship in self.ships:
+			ship_state = self.ships[ship]
+
+			db("INSERT INTO pirate_ships(rowid, state) VALUES(?, ?)",
+				ship.getId(), ship_state.index) #, remaining_ticks)
+
+	def load_ship_states(self, db):
+		# load ships one by one from db (ship instances themselves are loaded already, but
+		# we have to use them here)
+		for ship_id, state_id, remaining_ticks in \
+				db("SELECT rowid, state, remaining_ticks FROM pirate_ships"):
+			state = self.shipStates[state_id]
+			ship = WorldObject.get_object_by_id(ship_id)
+			self.ships[ship] = state

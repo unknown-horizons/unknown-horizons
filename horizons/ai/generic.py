@@ -27,7 +27,7 @@ from horizons.util import Callback
 class AIPlayer(Player):
 	"""Class for AI players implementing generic stuff."""
 	
-	shipStates = Enum('idle', 'moving_random', 'moving_to_branch', 'reached_branch')
+	shipStates = Enum('idle', 'moving_random')
 	
 	def __init__(self, *args, **kwargs):
 		super(AIPlayer, self).__init__(*args, **kwargs)

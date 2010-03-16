@@ -163,6 +163,11 @@ class Enum(object):
 		super(Enum, self).__setattr__('_keys', keys)
 		super(Enum, self).__setattr__('_values', values)
 
+	@classmethod
+	def get_extended(cls, base_enum, *keys, **kwargs):
+		keys = base_enum._keys + keys
+		return cls(*keys, **kwargs)
+	
 	def __setattr__(self, name, value):
 		raise EnumImmutableError(name)
 

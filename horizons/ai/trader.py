@@ -28,6 +28,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
 from horizons.constants import RES, UNITS, BUILDINGS
 from horizons.ai.generic import AIPlayer
+from horizons.ext.enum import Enum
 from horizons.world.storageholder import StorageHolder
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
@@ -41,6 +42,8 @@ class Trader(AIPlayer):
 	@param id: int - player id, every Player needs a unique id, as the freetrader is a Player instance, he also does.
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
+
+	shipStates = Enum.get_extended(AIPlayer.shipStates, 'moving_to_branch', 'reached_branch')
 
 	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
 	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price

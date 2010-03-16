@@ -250,7 +250,7 @@ class World(LivingObject):
 				ret_coords = (point.x, point.y)
 		
 		# add a pirate ship
-		#self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 		
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
@@ -409,6 +409,8 @@ class World(LivingObject):
 			player.save(db)
 		if self.trader is not None:
 			self.trader.save(db)
+		if self.pirate is not None:
+			self.pirate.save(db)
 		for ship in self.ships:
 			ship.save(db)
 
