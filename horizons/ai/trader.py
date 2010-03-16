@@ -95,13 +95,6 @@ class Trader(AIPlayer):
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_branch) \
 			   VALUES(?, ?, ?, ?)", ship.getId(), ship_state.index, remaining_ticks, targeted_branch)
 
-	@classmethod
-	def load(cls, session, db, worldid):
-		self = Trader.__new__(Trader)
-		self.session = session
-		self._load(db, worldid)
-		return self
-
 	def _load(self, db, worldid):
 		super(Trader, self)._load(db, worldid)
 		self.__init()
