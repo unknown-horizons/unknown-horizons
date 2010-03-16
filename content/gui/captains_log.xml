@@ -4,7 +4,7 @@
 
 	<!-- left side -->
 	<Container size="320, 25" position="80,40">
-		<Label wrap_text="0" max_size="300, 25" name="lbl_log" text="Captains Log" font="libertine_18_black" />
+		<Label wrap_text="0" max_size="300, 25" name="lbl_log" text="Captain's Log" font="libertine_18_black" />
 	</Container>
 	<Container size="320,530" position="80,75">
 

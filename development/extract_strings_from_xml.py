@@ -84,7 +84,7 @@ def list_all_files():
         for filename in entry[2]:
             if filename.endswith('.xml'):
                result.append('%s/%s' % (entry[0], filename))
-    return result
+    return sorted(result)
 
 def content_from_element(element_name, parse_tree, text_name='text'):
     element_list = parse_tree.getElementsByTagName(element_name)
@@ -110,26 +110,20 @@ def content_from_file(filename):
         content_from_element('Window', parsed, 'title') + \
         content_from_element('TooltipButton', parsed, 'tooltip')
 
-
     if len(strings):
         return '\t\t"%s" : {\n\t\t\t%s},' % (filename[12:], ',\n\t\t\t'.join(strings))
     else:
         return ''
 
-xmlfiles = list_all_files()
+filesnippets = (content_from_file(filename) for filename in list_all_files())
+filesnippets = (content for content in filesnippets if content != '')
 
-filesnipets = [ content_from_file(filename) for filename in xmlfiles ]
-
-while True:
-    try:
-        filesnipets.remove('')
-    except ValueError:
-        break
+output = '%s%s%s' % (header, '\n'.join(filesnippets), footer)
 
 if len(sys.argv) > 1:
-    file(sys.argv[1], 'w').write('%s%s%s' % ( header, '\n'.join(filesnipets), footer ))
+    file(sys.argv[1], 'w').write(output)
 else:
     print
     print 'Copy ==========>'
-    print '%s%s%s' % ( header, '\n'.join(filesnipets), footer )
+    print output
     print '<=========='
