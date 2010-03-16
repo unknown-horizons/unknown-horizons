@@ -56,7 +56,7 @@
 			<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="163,30" />
 
-			
+
 
 			<TooltipButton name="lumberjack-1" position="0,31" up_image="content/gui/images/icons/hud/build/lumberjack.png" 			hover_image="content/gui/images/icons/hud/build/lumberjack_h.png" down_image="content/gui/images/icons/hud/build/lumberjack_h.png" 				tooltip="Lumberjack: \nHarvests wood \nand turns them \ninto boards " />
 			<TooltipButton name="hunter-1" position="55,30" up_image="content/gui/images/icons/hud/build/hunter.png"
@@ -64,6 +64,8 @@
 			<TooltipButton name="fisher-1" position="109,32" up_image="content/gui/images/icons/hud/build/fisherman.png"
 			hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" 				tooltip="Fisherman: \nFishes the sea, \ngathers food" />
 			<TooltipButton name="tree-1" position="164,30" up_image="content/gui/images/icons/hud/build/tree.png"
+			hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" 				tooltip="Tree" />
+			<TooltipButton name="brickyard-1" position="164,30" up_image="content/gui/images/icons/hud/build/tree.png"
 			hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" 				tooltip="Tree" />
 		</Container>
 

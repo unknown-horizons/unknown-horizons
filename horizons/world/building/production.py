@@ -54,6 +54,9 @@ class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Ba
 class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
+class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
 class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers"""
 	pass
