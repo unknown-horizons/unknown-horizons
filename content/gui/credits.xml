@@ -2,14 +2,14 @@
 <!-- Syncd with "doc/AUTHORS" -->
 <Container name="credits_window" size="800,580" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
-	<Container position="55,32" size="500,500" background_color="0,0,0">
+	<Container position="55,32" size="500,510" background_color="0,0,0">
 		<Label text="Contributors" position="100,10" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" position="52,30" />	
+		<Icon image="content/gui/images/background/hr.png" position="52,30" />
 
 		<Label text="PROJECT COORDINATION" position="32,40" name="headline_projectcoord" />
 		<Label text="Nihathrael (Thomas Kinnen)" position="62,60" />
 		<Label text="Nightraven (Tobias Schroefel)" position="62,80" />
-	
+
 		<Label text="GAME-PLAY DESIGN" position="32,110" name="headline_gamedesign" />
 		<Label text="dauerflucher (Andreas Lis)" position="62,130" />
 		<Label text="Andre_Re (Andre Reichelt) " position="62, 150" />
@@ -24,25 +24,26 @@
 		<Label text="totycro (Bernhard Mallinger)" position="62,320" />
 		<Label text="christoph_debian (Christoph Egger)" position="62,340" />
 		<Label text="GreyGhost (Tushar Sawant)" position="62,360" />
-	
-		<Label text="GRAPHIC ARTIST" position="32,390" name="headline_gfx" />
-		<Label text="dauerflucher (Andreas Lis)" position="62,410" />
-		<Label text="egore (Christoph Bill)" position="62,430" />
-		<Label text="kaschte (Fabian Riedel)" position="62,450" />
-        <Label text="terwarf (Alexander Breidenbroich)" position="62,470" />
+		<Label text="RainCT (Siegfried Gevatter)" position="62,380" />
+
+		<Label text="GRAPHIC ARTIST" position="32,410" name="headline_gfx" />
+		<Label text="dauerflucher (Andreas Lis)" position="62,430" />
+		<Label text="egore (Christoph Bill)" position="62,450" />
+		<Label text="kaschte (Fabian Riedel)" position="62,470" />
+		<Label text="terwarf (Alexander Breidenbroich)" position="62,490" />
 	</Container>
 
 	<Container position="430,32" size="500,500">
-	
+
 		<Label text="SOUND and MUSIC ARTISTS" position="22,40" name="headline_sfx" />
 		<Label text="draikon (Sebastian Ahlen)" position="62,60" />
 		<Label text="novatlan (Tobias Escher)" position="62,80" />
-	
+
 		<Label text="TRANSLATION" position="22,110" name="headline_translation" />
 		<Label text="French - LiveWire" position="62,130" />
 		<Label text="Norwegian - frodus" position="62,150" />
 		<Label text="Portuguese - Mad_Monk" position="62,170" />
-	
+
 		<Label text="SPECIAL THANKS to:" position="22,200" name="headline_thanks" />
 		<Label name="fife_team_lbl" text="The FIFE team (www.fifengine.de)" position="62,220" />
 		<Label text="mvBarracuda (Martin Vohland)" position="62,240" />
