@@ -20,15 +20,16 @@
 # ###################################################
 
 from horizons.world.player import Player
+from horizons.scheduler import Scheduler
 from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Callback
 
 class AIPlayer(Player):
 	"""Class for AI players implementing generic stuff."""
-	
+
 	shipStates = Enum('idle', 'moving_random')
-	
+
 	def __init__(self, *args, **kwargs):
 		super(AIPlayer, self).__init__(*args, **kwargs)
 		self.__init()
@@ -54,7 +55,7 @@ class AIPlayer(Player):
 			self.notify_unit_path_blocked(ship)
 			return
 		self.ships[ship] = self.shipStates.moving_random
-	
+
 	def ship_idle(self, ship):
 		"""Called if a ship is idle. Sends ship to a random place.
 		@param ship: ship instance"""
