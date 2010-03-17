@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
-<Container size="60,60" opaque="0" >
+<Container size="60,50" opaque="0" >
 	<Icon name="icon" image="content/gui/images/background/inv_bg.png" size="50,50" position="0,0"/>
 	<ImageButton up_image="content/gui/images/background/inv_bg.png" name="button" size="50,50" position="0,0" />
 	<ImageButton up_image="content/gui/images/icons/hud/main/buysell_buy.png" hover_image="content/gui/images/icons/hud/main/buysell_buy.png" name="buysell" size="10,10" position="3,3" />
 	<!-- Label that displays the amount that is beeing sold or bought -->
-	<Label name="amount" text="" position="15,35"/>
+	<Label name="amount" text="" position="13,35"/>
+	<!-- icon to show how much is in the inventory. size and position are set at runtime -->
+	<Icon name="fillbar" image="content/gui/tab_widget/green_line.png" position="0,0" size="0,0"/> 
 	<Slider name="slider" orientation="1" size="10,50" position="50,0" scale_start="1"/>
 </Container>
