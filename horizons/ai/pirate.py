@@ -46,7 +46,24 @@ class Pirate(AIPlayer):
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y).execute(self.session)
 		self.ships[ship] = self.shipStates.idle
-		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
+		for ship in self.ships.keys():
+			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
+			Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
+	
+	@staticmethod
+	def get_nearest_ship(base_ship):
+		lowest_distance = None
+		nearest_ship = None
+		for ship in base_ship.find_nearby_ships():
+			distance = base_ship.position.distance_to_point(ship.position)
+			if lowest_distance is None or distance < lowest_distance:
+				nearest_ship = ship
+		return nearest_ship
+	
+	def lookout(self, pirate_ship):
+		ship = self.get_nearest_ship(pirate_ship)
+		if ship:
+			self.log.debug("Pirate: Scout found ship: %s" % ship.name)
 	
 	def save(self, db):
 		super(Pirate, self).save(db)

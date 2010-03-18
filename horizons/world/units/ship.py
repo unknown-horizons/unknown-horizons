@@ -140,6 +140,12 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
+	def find_nearby_ships(self):
+		# TODO: Replace 20 with a distance dependant on the ship type and any
+		# other conditions.
+		ships = self.session.world.get_ships(self.position, 15)
+		ships.remove(self)
+		return ships
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""

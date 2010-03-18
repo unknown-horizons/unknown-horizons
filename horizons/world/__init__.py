@@ -398,6 +398,24 @@ class World(LivingObject):
 							branchoffices.append(building)
 		return branchoffices
 
+	@decorators.make_constants()
+	def get_ships(self, position=None, radius=None):
+		"""Returns all ships on the map. Optionally only those in range
+		around the specified position.
+		@param position: Point or Rect instance.
+		@param radius: int radius to use.
+		@return: List of ships.
+		"""
+		if position is not None and radius is not None:
+			circle = Circle(position, radius)
+			ships = []
+			for ship in self.ships:
+				if circle.contains(ship.position):
+					ships.append(ship)
+			return ships
+		else:
+			return self.ships
+
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""

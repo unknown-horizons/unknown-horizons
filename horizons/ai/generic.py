@@ -41,6 +41,9 @@ class AIPlayer(Player):
 		super(AIPlayer, self)._load(db, worldid)
 		self.__init()
 
+	def send_ship(self, ship):
+		self.send_ship_random(ship)
+
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used."""
@@ -60,7 +63,7 @@ class AIPlayer(Player):
 		"""Called if a ship is idle. Sends ship to a random place.
 		@param ship: ship instance"""
 		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.getId())
-		Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
+		Scheduler().add_new_object(Callback(self.send_ship, ship), self)
 
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.getId())
