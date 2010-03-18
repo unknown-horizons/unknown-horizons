@@ -61,3 +61,8 @@ class AIPlayer(Player):
 		@param ship: ship instance"""
 		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.getId())
 		Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
+
+	def notify_unit_path_blocked(self, unit):
+		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.getId())
+		# retry moving ship in 2 secs
+		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, 32)
