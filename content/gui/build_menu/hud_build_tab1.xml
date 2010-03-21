@@ -30,7 +30,7 @@
 
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,80" />
 			<TooltipButton name="brickyard-1" position="2,81" up_image="content/gui/images/icons/hud/build/brickmaker.png"
-			hover_image="content/gui/images/icons/hud/build/weaver_h.png" down_image="content/gui/images/icons/hud/build/brickmaker_h.png" 				tooltip="Brickyard: \nTurns clay \ninto bricks" />
+			hover_image="content/gui/images/icons/hud/build/brickmaker_h.png" down_image="content/gui/images/icons/hud/build/brickmaker_h.png" 				tooltip="Brickyard: \nTurns clay \ninto bricks" />
 
 		</Container>
 
