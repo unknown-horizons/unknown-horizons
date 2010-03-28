@@ -21,7 +21,6 @@
 
 from fife import fife
 import logging
-import random
 
 import horizons.main
 
@@ -137,7 +136,7 @@ class Unit(AmbientSound, MovingObject):
 		@return: Instance of Point or None"""
 		possible_walk_targets = Circle(self.position, in_range).get_coordinates()
 		possible_walk_targets.remove(self.position.to_tuple())
-		random.shuffle(possible_walk_targets)
+		self.session.random.shuffle(possible_walk_targets)
 		for coord in possible_walk_targets:
 			target = Point(*coord)
 			if self.check_move(target):

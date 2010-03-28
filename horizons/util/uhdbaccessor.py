@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from dbreader import DbReader
 from random import randint
+
+from dbreader import DbReader
 
 ########################################################################
 class UhDbAccessor(DbReader):

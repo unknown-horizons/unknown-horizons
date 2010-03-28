@@ -24,6 +24,7 @@ import os
 import os.path
 import time
 import logging
+import random
 
 import horizons.main
 
@@ -93,6 +94,7 @@ class Session(LivingObject):
 		WorldObject.reset()
 
 		#game
+		self.random = random.Random() # random number generator instance to use for synchronisation critical situations
 		self.timer = Timer()
 		Scheduler.create_instance(self.timer)
 		self.manager = SPManager(self)
@@ -136,7 +138,7 @@ class Session(LivingObject):
 		self.ingame_gui = None
 		self.view = None
 		self.manager = None
-		self.timer = None
+		self.timer =None
 		self.campaign_eventhandler = None
 		Scheduler.destroy_instance()
 

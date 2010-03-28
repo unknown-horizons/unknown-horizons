@@ -213,21 +213,21 @@ class World(LivingObject):
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
 			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
-			max_clay_deposits = random.randint(2, 3)
+			max_clay_deposits = self.session.random.randint(2, 3)
 			for island in self.islands:
 				num_clay_deposits = 0
 				for coords, tile in island.ground_map.iteritems():
 					# add tree to every nth tile
-					if random.randint(0, 2) == 0 and Tree.check_build(self.session, tile, \
-					                                                  check_settlement=False):
+					if self.session.random.randint(0, 2) == 0 and Tree.check_build(self.session, tile, \
+																				                    check_settlement=False):
 						cmd = Build(self.session, Tree, coords[0], coords[1], ownerless=True,island=island)
 						building = cmd.execute(self.session)
 						building.finish_production_now() # make trees big and fill their inventory
-						if random.randint(0, 40) == 0: # add animal to every nth tree
+						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
 							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *coords).execute(self.session)
 					elif num_clay_deposits < max_clay_deposits and \
-					     random.randint(0, 30) == 0 and \
-					     Clay.check_build(self.session, tile, check_settlement=False):
+							 self.session.random.randint(0, 30) == 0 and \
+							 Clay.check_build(self.session, tile, check_settlement=False):
 						num_clay_deposits += 1
 						cmd = Build(self.session, Clay, coords[0], coords[1], ownerless=True, island=island)
 						cmd.execute(self.session)
@@ -248,10 +248,10 @@ class World(LivingObject):
 				ship.inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = (point.x, point.y)
-		
+
 		# add a pirate ship
 		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
-		
+
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
 		assert ret_coords is not None, "Return coords are none. No players loaded?"
@@ -260,7 +260,7 @@ class World(LivingObject):
 	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
-		rand_water_id = random.randint(0, self.num_water-1)
+		rand_water_id = self.session.random.randint(0, self.num_water-1)
 		ground_iter = self.ground_map.iterkeys()
 		for i in xrange(0, rand_water_id-1):
 			ground_iter.next()
@@ -301,8 +301,8 @@ class World(LivingObject):
 		assert isinstance(position, Point)
 		points = Circle(position, radius)
 		if shuffle:
-		    points = list(points)
-		    random.shuffle(points)
+			points = list(points)
+			self.session.random.shuffle(points)
 		for point in points:
 			if self.map_dimensions.contains_without_border(point):
 				# don't yield if point is not in map, those points don't exist
@@ -394,7 +394,7 @@ class World(LivingObject):
 				for building in settlement.buildings:
 					if isinstance(building, horizons.world.building.storages.BranchOffice):
 						if radius is None or position is None or \
-						   building.position.distance(position) <= radius:
+							 building.position.distance(position) <= radius:
 							branchoffices.append(building)
 		return branchoffices
 

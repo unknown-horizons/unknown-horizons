@@ -227,12 +227,11 @@ class WildAnimal(CollectorAnimal, Collector):
 		for res in self.get_consumed_resources():
 			self.inventory.reset(res)
 
-	@staticmethod
-	def next_clone_can_reproduce():
+	def next_clone_can_reproduce(self):
 		"""Returns, whether the next child will be able to reproduce himself.
 		Some animal can't reproduce, which makes population growth easier to control.
 		@return: bool"""
-		return (random.randint(0, 2) > 0) # 2/3 chance for True
+		return (self.session.random.randint(0, 2) > 0) # 2/3 chance for True
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
@@ -276,7 +275,7 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 		my_position = self.position.to_tuple()
 		if my_position in coords:
 			coords.remove(my_position)
-		random.shuffle(coords)
+		self.session.random.shuffle(coords)
 		return coords
 
 	def begin_current_job(self):

@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
 import logging
 
 import horizons.main
@@ -172,7 +171,7 @@ class Trader(AIPlayer):
 		else:
 			# select a branch office
 			if branch_office is None:
-				rand = random.randint(0, len(branchoffices)-1)
+				rand = self.session.random.randint(0, len(branchoffices)-1)
 				self.office[ship.id] = branchoffices[rand]
 			else:
 				self.office[ship.id] = branch_office
@@ -195,7 +194,7 @@ class Trader(AIPlayer):
 		self.log.debug("Trader %s: reached bo", self.getId())
 		settlement = self.office[ship.id].settlement
 		for res in settlement.buy_list.iterkeys(): # check for resources that the settlement wants to buy
-			amount = random.randint(*self.sell_amount) # select a random amount to sell
+			amount = self.session.random.randint(*self.sell_amount) # select a random amount to sell
 			if amount == 0:
 				continue
 			price = int(self.get_res_value(res) * self.SELLING_ADDITIONAL_CHARGE * amount)
@@ -205,7 +204,7 @@ class Trader(AIPlayer):
 
 		for res in settlement.sell_list.iterkeys():
 			# select a random amount to buy from the settlement
-			amount = random.randint(*self.buy_amount)
+			amount = self.session.random.randint(*self.buy_amount)
 			if amount == 0:
 				continue
 			price = int(self.get_res_value(res) * self.BUYING_CHARGE_DEDUCTION * amount)
@@ -221,7 +220,7 @@ class Trader(AIPlayer):
 		"""Called if a ship is idle. Sends ship to a branch office or a random place (which target
 		to use is decided by chance, probability for branch office is 2/3)
 		@param ship: ship instance"""
-		if random.randint(0, 100) < 66:
+		if self.session.random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
 			self.log.debug("Trader %s: idle, moving to random location", self.getId())
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)

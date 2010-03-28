@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
 import logging
 
 import horizons.main
@@ -49,7 +48,7 @@ class Pirate(AIPlayer):
 		for ship in self.ships.keys():
 			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
 			Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
-	
+
 	@staticmethod
 	def get_nearest_ship(base_ship):
 		lowest_distance = None
@@ -59,12 +58,12 @@ class Pirate(AIPlayer):
 			if lowest_distance is None or distance < lowest_distance:
 				nearest_ship = ship
 		return nearest_ship
-	
+
 	def lookout(self, pirate_ship):
 		ship = self.get_nearest_ship(pirate_ship)
 		if ship:
 			self.log.debug("Pirate: Scout found ship: %s" % ship.name)
-	
+
 	def save(self, db):
 		super(Pirate, self).save(db)
 		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.getId())
