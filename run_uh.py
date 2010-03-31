@@ -39,6 +39,7 @@ import logging.handlers
 import optparse
 import signal
 import traceback
+import platform
 
 def log():
 	"""Returns Logger"""
@@ -105,6 +106,8 @@ def get_option_parser():
 											 action="store_true", default=False, help=_("For internal use only."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
 											 help=_("Enable profiling (for developing only)."))
+	dev_group.add_option("--info", dest="info", action="store_true", default=False, \
+	                     help=_("Print information about this install and machine to tackle problems."))
 	p.add_option_group(dev_group)
 
 	return p
@@ -168,7 +171,9 @@ def main():
 
 	#start unknownhorizons
 	import horizons.main
-	if not options.profile:
+	if options.info:
+		print_info()
+	elif not options.profile:
 		# start normal
 		horizons.main.start(options)
 	else:
@@ -230,9 +235,11 @@ def parse_args():
 				logfile.write(line)
 		sys.stdout = StdOutDuplicator()
 
-	if not options.debug_log_only:
-		# add a handler to stderr too
-		logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
+		if not options.debug_log_only:
+			# add a handler to stderr too
+			logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
+
+		log_sys_info()
 
 	return options
 
@@ -380,6 +387,12 @@ def log_paths():
 	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
 	log().debug("PATH: %s", os.environ['PATH'])
 	log().debug("PYTHONPATH %s", os.environ['PYTHONPATH'])
+
+def log_sys_info():
+	"""Prints debug info about the current system to log"""
+	log().debug("Python version: %s", sys.version_info)
+	log().debug("Plattform: %s", platform.platform())
+
 
 if __name__ == '__main__':
 	main()
