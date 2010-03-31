@@ -106,8 +106,6 @@ def get_option_parser():
 											 action="store_true", default=False, help=_("For internal use only."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
 											 help=_("Enable profiling (for developing only)."))
-	dev_group.add_option("--info", dest="info", action="store_true", default=False, \
-	                     help=_("Print information about this install and machine to tackle problems."))
 	p.add_option_group(dev_group)
 
 	return p
@@ -171,9 +169,7 @@ def main():
 
 	#start unknownhorizons
 	import horizons.main
-	if options.info:
-		print_info()
-	elif not options.profile:
+	if not options.profile:
 		# start normal
 		horizons.main.start(options)
 	else:
@@ -367,7 +363,6 @@ def find_FIFE(fife_custom_path=None):
 	args = [sys.executable] + sys.argv + [ "--fife-in-library-path" ]
 
 	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
-	import platform
 	if platform.system() != 'Windows':
 		if logfilename:
 			args += [ "--logfile", logfilename ]
