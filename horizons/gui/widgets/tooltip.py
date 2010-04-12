@@ -38,7 +38,7 @@ class _Tooltip(object):
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
 			self.name + '/mousePressed' : self.hide_tooltip,
-		  self.name + '/mouseMoved' : self.position_tooltip,
+			self.name + '/mouseMoved' : self.position_tooltip,
 			self.name + '/mouseReleased' : self.position_tooltip,
 			self.name + '/mouseDragged' : self.position_tooltip
 			})
