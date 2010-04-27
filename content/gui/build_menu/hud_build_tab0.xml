@@ -7,8 +7,7 @@
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
 	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />
-	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,400" />
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,350" />
 
 	<Container position="0,70" size="250,400" >
 		<Label name="headline" position="60,7" text="Sailor Buildings" />
@@ -56,7 +55,6 @@
 			<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
 			<Icon image="content/gui/images/background/build_button_bg.png" position="163,30" />
-			<Icon image="content/gui/images/background/build_button_bg.png" position="0,80" />
 
 
 
@@ -67,8 +65,6 @@
 			hover_image="content/gui/images/icons/hud/build/fisherman_h.png" down_image="content/gui/images/icons/hud/build/fisherman_h.png" 				tooltip="Fisherman: \nFishes the sea, \ngathers food" />
 			<TooltipButton name="tree-1" position="164,30" up_image="content/gui/images/icons/hud/build/tree.png"
 			hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" 				tooltip="Tree" />
-			<TooltipButton name="brickyard-1" position="0,80" up_image="content/gui/images/icons/hud/build/tree.png"
-			hover_image="content/gui/images/icons/hud/build/tree_h.png" down_image="content/gui/images/icons/hud/build/tree_h.png" 				tooltip="Brickyard" />
 		</Container>
 
 		<!--<Container position="20,312" size="600,400" >
