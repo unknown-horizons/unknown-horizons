@@ -262,6 +262,7 @@ def init_environment():
 			log_paths()
 			print _('Failed to load fife:'), e
 			exit(1)
+		log().debug('Failed to load fife from default paths: %s', e)
 		log().debug('Searching for FIFE')
 		find_FIFE(options.fife_path) # this restarts or terminates the program
 		assert False
