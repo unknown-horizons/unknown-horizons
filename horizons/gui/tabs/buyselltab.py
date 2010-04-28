@@ -156,7 +156,7 @@ class BuySellTab(TabInterface):
 		slot = self.slots[slot]
 		button = slot.findChild(name="buysell")
 		limit = int(slot.findChild(name="slider").getValue())
-		if slot.action is "buy":
+		if slot.action == "buy":
 			# setting to sell
 			button.up_image = self.sell_button_path
 			button.hover_image = self.sell_button_path
@@ -166,7 +166,7 @@ class BuySellTab(TabInterface):
 					self.log.debug("BuySellTab: Removing res %s from buy list", slot.res)
 					del self.settlement.buy_list[slot.res]
 				self.add_sell_to_settlement(slot.res, limit, slot.id)
-		elif slot.action is "sell":
+		elif slot.action == "sell":
 			# setting to buy
 			button.up_image = self.buy_button_path
 			button.hover_image = self.buy_button_path
