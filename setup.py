@@ -37,13 +37,11 @@ for root, dirs, files in os.walk('horizons'):
 	packages.append(root)
 
 class _build_i18n(build_i18n.build_i18n):
- 
 	def run(self):
-		
 		# Include strings from the SQLite DB in the resulting POT file
 		getoutput('python ./development/extract_strings_from_sqlite.py ' \
 			'> build/sqlite_strings.pot')
-		
+
 		# Generate POTFILES.in from POTFILES.in.in
 		if os.path.isfile('po/POTFILES.in.in'):
 			lines = []
@@ -52,7 +50,7 @@ class _build_i18n(build_i18n.build_i18n):
 					lines.extend(glob(line.strip()))
 			with open("po/POTFILES.in", "w") as f:
 				f.write("\n".join(lines) + "\nbuild/sqlite_strings.pot\n")
-		
+
 		build_i18n.build_i18n.run(self)
 
 class _build_man(build):
@@ -63,17 +61,7 @@ class _build_man(build):
 			self.warn("Can't build manpage, needs xsltproc")
 			return
 
-		for p in ('/usr/share/sgml/docbook/xsl-ns-stylesheets/manpages/docbook.xsl', \
-							'/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl', \
-							'/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl'):
-			if os.path.exists(p):
-				stylesheet = p
-				break
-		else:
-			self.warn("Can't find a suitable stylesheet!")
-			return
-
-		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, (['xsltproc', stylesheet, 'doc/manpage.xml'],))
+		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, (['xsltproc', 'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl', 'doc/manpage.xml'],))
 		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
 
 build.sub_commands.append(('build_man', None))
