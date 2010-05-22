@@ -79,6 +79,8 @@ def get_option_parser():
 							 help=_("Enable debug output to stderr and a logfile."))
 	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
 							 help=_("Specify the path to FIFE root directory."))
+	p.add_option("--restore-settings", dest="restore_settings", action="store_true", default=False, \
+							 help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
 
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))

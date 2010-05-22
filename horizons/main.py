@@ -40,13 +40,15 @@ import thread # for thread.error raised by threading.Lock.release
 
 from fife import fife as fife_module
 
-from util import ActionSetLoader, TileSetLoader
-from util.uhdbaccessor import UhDbAccessor
-from savegamemanager import SavegameManager
-from i18n import update_all_translations
+from horizons.util import ActionSetLoader, TileSetLoader
+from horizons.util.uhdbaccessor import UhDbAccessor
+from horizons.savegamemanager import SavegameManager
+from horizons.i18n import update_all_translations
 from horizons.gui import Gui
 from horizons.settings import Settings
-from extscheduler import ExtScheduler
+from horizons.extscheduler import ExtScheduler
+from horizons.constants import PATHS
+
 
 # private module pointers of this module
 class Modules(object):
@@ -64,8 +66,12 @@ def start(command_line_arguments):
 
 	from engine import Fife
 
-	# set commandline globals
+	# handle commandline globals
 	debug = command_line_arguments.debug
+
+	if command_line_arguments.restore_settings:
+		# just delete the file, Settings ctor will create a new one
+		os.remove( PATHS.USER_CONFIG_FILE )
 
 	db = _create_db()
 
