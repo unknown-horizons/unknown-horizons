@@ -427,6 +427,9 @@ class IngameGui(LivingObject):
 		}
 		self.main_gui.on_escape = self.hide_change_name_dialog
 		self.widgets['change_name'].mapEvents(events)
+		self.widgets['change_name'].findChild(name='new_name').capture( \
+			pychan.tools.callbackWithArguments(self.change_name, instance)
+		 )
 		self.widgets['change_name'].show()
 
 	def hide_change_name_dialog(self):
