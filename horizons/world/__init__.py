@@ -91,6 +91,7 @@ class World(LivingObject):
 		self.players = []
 		self.player = None # player sitting in front of this machine
 		self.trader = None
+		self.pirate = None
 
 		# load player
 		human_players = []
