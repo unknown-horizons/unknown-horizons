@@ -138,7 +138,7 @@ class SettingsGui(object):
 			changes_require_restart = True
 		if languages_map.items()[new_settings['language']][0] != settings.language.name:
 			import gettext
-			settings.language.name, settings.language.position = languages_map.items()[new_settings['language']]
+			settings.language.name, settings.language.position = sorted(languages_map.items())[new_settings['language']]
 			if settings.language.name != _('System default'):
 				trans = gettext.translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
 				trans.install(unicode=1)
