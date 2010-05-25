@@ -251,7 +251,9 @@ class World(LivingObject):
 				ret_coords = (point.x, point.y)
 
 		# add a pirate ship
-		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+		# TODO: enable pirate as soon as save/load for it is fixed
+		#       currently, it breaks human player selection on load
+		#self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
