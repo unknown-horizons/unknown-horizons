@@ -44,7 +44,7 @@ class NavigationTool(CursorTool):
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
-			self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
+			self.session.view.scroll(-self.lastScroll[0], -self.lastScroll[1])
 			self.lastScroll = [evt.getX(), evt.getY()]
 			self.middle_scroll_active = True
 
