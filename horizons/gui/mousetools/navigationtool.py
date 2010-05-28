@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,6 +27,7 @@ from cursortool import CursorTool
 from horizons.util import Point
 
 class NavigationTool(CursorTool):
+	"""Navigation Class to process mouse actions ingame"""
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
 		self.lastScroll = [0, 0]
@@ -42,18 +44,21 @@ class NavigationTool(CursorTool):
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).end()
 
+	# press MIDDLE mouse button
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			self.session.view.scroll(-self.lastScroll[0], -self.lastScroll[1])
 			self.lastScroll = [evt.getX(), evt.getY()]
 			self.middle_scroll_active = True
 
+	# release MIDDLE mouse button after scrolling
 	def mouseReleased(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			self.lastScroll = [0, 0]
 			CursorTool.mouseMoved(self, evt)
 			self.middle_scroll_active = False
 
+	# drag ingamemap via MIDDLE mouse button
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
 			self.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
@@ -64,6 +69,7 @@ class NavigationTool(CursorTool):
 			if not self.middle_scroll_active:
 				NavigationTool.mouseMoved(self, evt)
 
+	# return new mouse position after moving
 	def mouseMoved(self, evt):
 		if not self.session.world.inited:
 			return
@@ -99,10 +105,12 @@ class NavigationTool(CursorTool):
 			self.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
 			self.lastScroll = new
 
+	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
 		self.session.view.zoom_in()
 		evt.consume()
 
+	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
 		self.session.view.zoom_out()
 		evt.consume()
