@@ -36,7 +36,7 @@ _random_island_id_regexp = r"random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+)"
 
 
 def is_random_island_id_string(id_string):
-	"""Returns wheter id_string is an instance of a random island id string"""
+	"""Returns whether id_string is an instance of a random island id string"""
 	return bool(re.match(_random_island_id_regexp, id_string))
 
 def create_random_island(id_string):
@@ -63,10 +63,10 @@ def create_random_island(id_string):
 		y = rand.randint(4, height -4)
 
 		# place shape determined by shape_id on (x, y)
-		shape_id = rand.randint(1, 4)
+		shape_id = rand.randint(3, 5)
 		if shape_id == 1:
 			# use a rect
-			for shape_coord in Rect.init_from_topleft_and_size(x-2, y-2, 4, 4).tuple_iter():
+			for shape_coord in Rect.init_from_topleft_and_size(x-3, y-3, 5, 5).tuple_iter():
 				map_dict[shape_coord] = 1
 		else:
 			# use a circle, where radius is determined by shape_id
@@ -115,8 +115,8 @@ def generate_map(seed = None):
 	db = DbReader(filename)
 
 	island_space = (35, 35)
-	island_min_size = (27, 27)
-	island_max_size = (33, 33)
+	island_min_size = (24, 24)
+	island_max_size = (28, 28)
 
 	# generate up to 9 islands
 	for i in Rect.init_from_topleft_and_size(0, 0, 2, 2):
