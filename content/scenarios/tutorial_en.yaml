@@ -2,7 +2,7 @@ events:
 - # Winning conditions
   actions:
    - {type: win} 
-   - {type: message, arguments: ["Congratulations! Now your settlement has 50 inhabitants.", "You have reached the end of this tutorial.", "Now you are ready to meet new challenges."]}
+   - {type: message, arguments: ["Congratulations! More than 50 people call your settlement their home.", "You have reached the end of this tutorial…", "… and are ready to meet new challenges!"]}
   conditions:
    - type: settlements_num_greater
      arguments: [0]
@@ -10,31 +10,43 @@ events:
      arguments: [50]
    - type: building_num_of_type_greater
      arguments: [3, 3]
+   - type: settler_level_greater
+     arguments: [0]
+   - type: var_eq
+     arguments: ["tutStepDone", 16]
 
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Welcome to Unknown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there.", "In order to do so, press the downright button in the ship menu."]}
+   - {type: message, arguments: ["Welcome to Unknown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there…", "… by pressing the 'Build Settlement' anchor-like button.", "Click where you want to place your first building."]}
+   - {type: set_var, arguments: ["tutStepDone", 1]}
   conditions: 
    - type: time_passed
      arguments: [0] 
 
 - # Show a message after building the first settlement
   actions:
-   - {type: message, arguments: ["Congratulations! You just built your first settlement!"]}
+   - {type: message, arguments: ["Congratulations! You just founded your first settlement!"]}
+   - {type: set_var, arguments: ["tutStepDone", 2]}
   conditions:
+   - type: var_gt
+     arguments: ["tutStepDone", 0]
    - type: settlements_num_greater
      arguments: [0]
 
 - # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
-   - {type: message, arguments: ["Now that you built the Branch Office, you need to move some of the resources to it.", "Select the ship and go into the Ship Inventory menu.", "Select Load/Unload and move the resources to the Branch Office by clicking on them."]}
+   - {type: message, arguments: ["Now that you built the Branch Office, you need to move some of the resources to it's stock.", "Select the ship and go into the Ship Inventory menu.", "Select Load/Unload and move the resources to the Branch Office by clicking on them."]}
+   - {type: set_var, arguments: ["tutStepDone", 3]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [1, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 1]
 
 - # Tell the player to build the first two buildings - lumberjack huts
   actions:
-   - {type: message, arguments: ["Now that there are some resources in your Branch Office,…", "…you can build a few buildings", "First, build two Lumberjacks. In order to do so,…", "…go to the Build Menu and select Lumberjack's Hut.", "Place the Lumberjack near some trees and build a road to his hut."]}
+   - {type: message, arguments: ["Now that there is construction material in your Branch Office,…", "… you can build some buildings.", "First, build two Lumberjacks. In order to do so, go to the Build Menu…", "… below the mini map and select Lumberjack there.", "Place the Lumberjack near some trees and build a road…", "… between the branch office and his tent.", "TIP: Hold Shift Key to build multiple buildings of the same kind."]}
+   - {type: set_var, arguments: ["tutStepDone", 4]}
   conditions:
    - type: settlement_res_stored_greater
      arguments: [4, 9]
@@ -42,75 +54,139 @@ events:
      arguments: [5, 9]
    - type: settlement_res_stored_greater
      arguments: [6, 9]
+   - type: var_gt
+     arguments: ["tutStepDone", 2]
 
-- # Congratulations after first lumberjack
-  actions:
-   - {type: message, arguments: ["Congratulations, you just built your first production building!"]}
-  conditions:
-   - type: building_num_of_type_greater
-     arguments: [8, 0]
+#- # Congratulations after first lumberjack
+#  actions:
+#   - {type: message, arguments: ["Congratulations, you just built your first production building!"]}
+#   - {type: set_var, arguments: ["tutStepDone", 5]}
+#  conditions:
+#   - type: building_num_of_type_greater
+#     arguments: [8, 0]
+#   - type: building_num_of_type_less
+#     arguments: [8, 2]
+#   - type: var_gt
+#     arguments: ["tutStepDone", 3]
 
 - # Tell the player to build some food supply
   actions:
-   - {type: message, arguments: ["Now, that you have built both of your lumberjack huts,…", "…it is time to supply your people with food.", "First, build a farm and connect it to a road."]}
+   - {type: message, arguments: ["Now it is time to supply your people with food.", "You can build Hunter and Fisher at this increment.", "The Hunter hunts animals in the forest, so he needs trees…", "… and the fisher needs a coastal building site.", "Build both of them and roads to the branch office."]}
+   - {type: set_var, arguments: ["tutStepDone", 6]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [8, 1]
+   - type: building_num_of_type_greater
+     arguments: [15, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 3]
 
-- # Farms finished, some fields now
+- # main square
   actions:
-   - {type: message, arguments: ["The farm is finished now, so you can build some fields.", "Build 4 potato fields and 1 pasture.", "Make sure they are in the area covered by the farm."]}
+   - {type: message, arguments: ["You need to build a Main Square where Settlers fetch their tools and resources from.","Choose an area without many economy buildings for your Main Square…", "… because you should keep your housing together at start and need space for this."]}
+   - {type: set_var, arguments: ["tutStepDone", 7]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [20, 0]
-
-- # And fields are also done. Let's do something about markets
-  actions:
-   - {type: message, arguments: ["Now that you finished building farms, you need to build a Main Square.", "Settlers fetch their tools and resources from there."]}
-  conditions:
+     arguments: [9, 0]
    - type: building_num_of_type_greater
-     arguments: [18, 0]
-   - type: building_num_of_type_greater
-     arguments: [19, 3]
-
-- # Weavers for processing the stuff from pastures
-  actions:
-   - {type: message, arguments: ["Now that you do have some wool, you need a Weaver to make fabric from it.", "Build one and ensure he is connected to a road as well."]}
-  conditions:
-   - type: building_num_of_type_greater
-     arguments: [4, 0]
+     arguments: [11, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 5] 
 
 - # And tents for settlers
   actions:
-   - {type: message, arguments: ["Settlers need to live somewhere, so they need tents. Build 4 of them.", "Always remember to look at the settler's tab, to see what they require."]}
+   - {type: message, arguments: ["Settlers want to have a roof over their heads, so they need…", "… tents! Build 4 tents connected to the Main Square.", "Always remember to look at the settler's tab to see demanded resources.", "If their demands get fulfilled, Settler happiness and thus your tax income increase."]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [7, 0]
+     arguments: [4, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 6]
      
 - # Build a signal fire
   actions:
-   - {type: message, arguments: ["Can you see the ship passing your island from time by time?", "This is the ship of the Free Trader, he will supply your settlement with necessary goods.", "Create a beacon beside the branch office, to show him the way to your settlement."]}
+   - {type: message, arguments: ["Can you see the ship passing your island from time by time?", "This is the ship of the Free Trader, he will supply your settlement with necessary goods.", "Build a signal fire at the coast near the branch office…", "… to show his ship the way to your settlement."]}
+   - {type: set_var, arguments: ["tutStepDone", 9]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [3, 3]
+   - type: var_gt
+     arguments: ["tutStepDone", 7]
 
 - # Trading
   actions:
-   - {type: message, arguments: ["Fine! The Free Trader will now stop by the branch office from time by time.", "In the menu of the Branch Office you can specify which amount of goods to buy or sell.", "Buy 25 tonnes of tools now!"]}
+   - {type: message, arguments: ["Fine! The Free Trader will now stop by the branch office from time to time.", "You can specify the amount of goods to buy or sell in the corresponding tab…", "… of the Branch Office.\nTry to get a total of 25 tons tools!"]}
+   - {type: set_var, arguments: ["tutStepDone", 10]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [6, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 8]
 
-- # Finish
+- # build chapel
   actions:
-   - {type: message, arguments: ["You have enough tools!", "Now, you can sell excessive goods at the Free Trader.", "Your settlement has house 50 inhabitants to finish the game."]}
+   - {type: message, arguments: ["Those tools will be enough for the moment. Well done!", "You can sell surpluses of your production to the Free Trader now, too.", "Build a ministry/chapel with a connection to the tents…", "… in order to fulfill your sailors' need for faith!"]}
+   - {type: set_var, arguments: ["tutStepDone", 11]}
   conditions:
    - type: settlement_res_stored_greater
-     arguments: [25, 6] 
+     arguments: [6, 25]
+   - type: building_num_of_type_greater
+     arguments: [6, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 9]
+
+- # Upgrade housing
+  actions:
+   - {type: message, arguments: ["All demands are fulfilled now if your inhabitants can regularly step by.", "If you set taxes to level Low, you can expect to reach the next increment soon!"]}
+   - {type: set_var, arguments: ["tutStepDone", 12]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [5, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 10]
+     
+- # build farm
+  actions:
+   - {type: message, arguments: ["Look! Your inhabitants have reached increment 2!", "Now you have access to some new buildings via a new tab in the Build menu.", "Pioneers will demand cloth, so you need to set up a production…", "… starting with sheep wool which is produced at the farm.", "Build a farm and, as usual, ensure the road connection…", "…to either your branch office or a storage tent."]}
+   - {type: set_var, arguments: ["tutStepDone", 13]}
+  conditions:
+   - type: settler_level_greater
+     arguments: [0]
+   - type: var_gt
+     arguments: ["tutStepDone", 11]
+
+- # farm finished, build fields now (pasture)
+  actions:
+   - {type: message, arguments: ["The farm is finished now, so you can build some fields.", "Build one pasture and add potato fields if you like.", "The farm produces food with potato fields so you can nourish more inhabitants.", "Make sure all fields are in the area covered by the farm…", "… and that the farm itself is connected to a storage."]}
+   - {type: set_var, arguments: ["tutStepDone", 14]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [20, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 12]
+
+- # Weavers for processing the stuff from pastures
+  actions:
+   - {type: message, arguments: ["Now that you do have some wool, you need a Weaver…", "… to produce cloth. Build one close to the farm…", "… and ensure he is connected to a road as well."]}
+   - {type: set_var, arguments: ["tutStepDone", 15]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [18, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 13]
+
+- # how to win
+  actions:
+   - {type: message, arguments: ["Try to house a total of 50 or more inhabitants in your city.", "Once you reach this, you are ready to enjoy Unknown Horizons!"]}
+   - {type: set_var, arguments: ["tutStepDone", 16]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [7, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 14]
 
 mapfile: development.sqlite
-difficulty: easy
-author: unknown
+difficulty: Tutorial
+author: The UH team
 description: |
  The tutorial:
  Build your first settlement and learn how to play!
