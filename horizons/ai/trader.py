@@ -153,7 +153,7 @@ class Trader(AIPlayer):
 				self.allured_by_signal_fire[ship] = True
 				# HACK: remove allured flag in a few ticks
 				def rem_allured(self, ship): self.allured_by_signal_fire[ship] = False
-				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, 20*60*16)
+				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))
 				self.send_ship_random_branch(ship, bo)
 				return
 		self.log.debug("Trader can't find bo in range of the signal fire")
@@ -177,7 +177,7 @@ class Trader(AIPlayer):
 				self.office[ship.id] = branch_office
 			found_path_to_bo = False
 			# try to find a possible position near the bo
-			for point in Circle(self.office[ship.id].position.center(), 3):
+			for point in Circle(self.office[ship.id].position.center(), ship.radius):
 				try:
 					ship.move(point, Callback(self.reached_branch, ship))
 				except MoveNotPossible:
