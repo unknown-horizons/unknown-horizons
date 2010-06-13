@@ -18,6 +18,7 @@ events:
 - # Show a message after starting the game (how to move)
   actions:
    - {type: message, arguments: ["Welcome to Unknown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there…", "… by pressing the 'Build Settlement' anchor-like button.", "Click where you want to place your first building."]}
+#   - {type: logbook, arguments: ["Welcome to Unknown Horizons! To move your ship, select it and right click on the location you want it to go to. Once you are near the coast, build a Branch Office there by pressing the 'Build Settlement' anchor-like button. Click where you want to place your first building.\n\nBuild a branch office at the coast."]}
    - {type: set_var, arguments: ["tutStepDone", 1]}
   conditions: 
    - type: time_passed
@@ -35,6 +36,7 @@ events:
 
 - # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
+#   - {type: logbook, arguments: ["Done.\n\n\nNow that you built the Branch Office, you need to move some of the resources to its stock. Select the ship and go into the Ship Inventory menu. Select Load/Unload and move the resources to the Branch Office by clicking on them.\n\nUnload at least 10 tons of each resource.\nCUT ME OFF!"]}
    - {type: message, arguments: ["Now that you built the Branch Office, you need to move some of the resources to it's stock.", "Select the ship and go into the Ship Inventory menu.", "Select Load/Unload and move the resources to the Branch Office by clicking on them."]}
    - {type: set_var, arguments: ["tutStepDone", 3]}
   conditions:
@@ -46,6 +48,7 @@ events:
 - # Tell the player to build the first two buildings - lumberjack huts
   actions:
    - {type: message, arguments: ["Now that there is construction material in your Branch Office,…", "… you can build some buildings.", "First, build two Lumberjacks. In order to do so, go to the Build Menu…", "… below the mini map and select Lumberjack there.", "Place the Lumberjack near some trees and build a road…", "… between the branch office and his tent.", "TIP: Hold Shift Key to build multiple buildings of the same kind."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nNow that there is construction material in your Branch Office, you can build some buildings. First, build two Lumberjacks. In order to do so, go to the Build Menu below the mini map and select Lumberjack there. Place the Lumberjack near some trees and build a road between the branch office and his tent.\n\nTIP: Hold Shift Key to build multiple buildings of the same kind.\n\nBuild two lumberjacks."]}
    - {type: set_var, arguments: ["tutStepDone", 4]}
   conditions:
    - type: settlement_res_stored_greater
@@ -72,6 +75,7 @@ events:
 - # Tell the player to build some food supply
   actions:
    - {type: message, arguments: ["Now it is time to supply your people with food.", "You can build Hunter and Fisher at this increment.", "The Hunter hunts animals in the forest, so he needs trees…", "… and the fisher needs a coastal building site.", "Build both of them and roads to the branch office."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nNow it is time to supply your people with food. You can build Hunter and Fisher at this increment. The Hunter hunts animals in the forest, so he needs trees and the fisher needs a coastal building site. Build both of them and roads to the branch office.\n\nBuild a hunter and a fisher."]}
    - {type: set_var, arguments: ["tutStepDone", 6]}
   conditions:
    - type: building_num_of_type_greater
@@ -84,6 +88,7 @@ events:
 - # main square
   actions:
    - {type: message, arguments: ["You need to build a Main Square where Settlers fetch their tools and resources from.","Choose an area without many economy buildings for your Main Square…", "… because you should keep your housing together at start and need space for this."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nYou need to build a Main Square where Settlers fetch their tools and resources from. Choose an area without many economy buildings for your Main Square because you should keep your housing together at start and need space for this.\n\nBuild a Main Square."]}
    - {type: set_var, arguments: ["tutStepDone", 7]}
   conditions:
    - type: building_num_of_type_greater
@@ -96,6 +101,8 @@ events:
 - # And tents for settlers
   actions:
    - {type: message, arguments: ["Settlers want to have a roof over their heads, so they need…", "… tents! Build 4 tents connected to the Main Square.", "Always remember to look at the settler's tab to see demanded resources.", "If their demands get fulfilled, Settler happiness and thus your tax income increase."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nSettlers want to have a roof over their heads, so they need tents! Build 4 tents connected to the Main Square. Always remember to look at the settler's tab to see demanded resources. If their demands get fulfilled, Settler happiness and thus your tax income increase.\n\nBuild at least four tents."]}
+   - {type: set_var, arguments: ["tutStepDone", 8]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [4, 0]
@@ -105,6 +112,7 @@ events:
 - # Build a signal fire
   actions:
    - {type: message, arguments: ["Can you see the ship passing your island from time by time?", "This is the ship of the Free Trader, he will supply your settlement with necessary goods.", "Build a signal fire at the coast near the branch office…", "… to show his ship the way to your settlement."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nCan you see the ship passing your island from time by time? This is the ship of the Free Trader, he will supply your settlement with necessary goods. Build a signal fire at the coast near the branch office to show his ship the way to your settlement.\n\nBuild a signal fire near your branch office."]}
    - {type: set_var, arguments: ["tutStepDone", 9]}
   conditions:
    - type: building_num_of_type_greater
@@ -115,6 +123,7 @@ events:
 - # Trading
   actions:
    - {type: message, arguments: ["Fine! The Free Trader will now stop by the branch office from time to time.", "You can specify the amount of goods to buy or sell in the corresponding tab…", "… of the Branch Office.\nTry to get a total of 25 tons tools!"]}
+#   - {type: logbook, arguments: ["Done.\n\n\nFine! The Free Trader will now stop by the branch office from time to time. You can specify the amount of goods to buy or sell in the corresponding tab of the Branch Office.\nTry to get a total of 25 tons tools!\n\n\nBuy at least up to 25 tools."]}
    - {type: set_var, arguments: ["tutStepDone", 10]}
   conditions:
    - type: building_num_of_type_greater
@@ -125,6 +134,7 @@ events:
 - # build chapel
   actions:
    - {type: message, arguments: ["Those tools will be enough for the moment. Well done!", "You can sell surpluses of your production to the Free Trader now, too.", "Build a ministry/chapel with a connection to the tents…", "… in order to fulfill your sailors' need for faith!"]}
+#   - {type: logbook, arguments: ["Done.\n\n\nThose tools will be enough for the moment. Well done!\n\nYou can sell surpluses of your production to the Free Trader now, too.\n\nBuild a ministry/chapel with a connection to the tents in order to fulfill your sailors' need for faith!\n\n\nBuild a ministry."]}
    - {type: set_var, arguments: ["tutStepDone", 11]}
   conditions:
    - type: settlement_res_stored_greater
@@ -137,6 +147,7 @@ events:
 - # Upgrade housing
   actions:
    - {type: message, arguments: ["All demands are fulfilled now if your inhabitants can regularly step by.", "If you set taxes to level Low, you can expect to reach the next increment soon!"]}
+#   - {type: logbook, arguments: ["Done.\n\n\nAll demands are fulfilled now if your inhabitants can regularly step by. f you set taxes to level Low, you can expect to reach the next increment soon!\n\n\nSet taxes to low (left end)."]}
    - {type: set_var, arguments: ["tutStepDone", 12]}
   conditions:
    - type: building_num_of_type_greater
@@ -147,6 +158,7 @@ events:
 - # build farm
   actions:
    - {type: message, arguments: ["Look! Your inhabitants have reached increment 2!", "Now you have access to some new buildings via a new tab in the Build menu.", "Pioneers will demand cloth, so you need to set up a production…", "… starting with sheep wool which is produced at the farm.", "Build a farm and, as usual, ensure the road connection…", "…to either your branch office or a storage tent."]}
+#   - {type: logbook, arguments: ["Look! Your inhabitants have reached increment 2! Now you have access to some new buildings via a new tab in the Build menu. Pioneers will demand cloth, so you need to set up a production starting with sheep wool which is produced at the farm. Build a farm and, as usual, ensure the road connection to either your branch office or a storage tent.\n\n\nBuild a farm."]}
    - {type: set_var, arguments: ["tutStepDone", 13]}
   conditions:
    - type: settler_level_greater
@@ -157,6 +169,7 @@ events:
 - # farm finished, build fields now (pasture)
   actions:
    - {type: message, arguments: ["The farm is finished now, so you can build some fields.", "Build one pasture and add potato fields if you like.", "The farm produces food with potato fields so you can nourish more inhabitants.", "Make sure all fields are in the area covered by the farm…", "… and that the farm itself is connected to a storage."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nThe farm is finished now, so you can build some fields. Build one pasture and add potato fields if you like. The farm produces food with potato fields so you can nourish more inhabitants. Make sure all fields are in the area covered by the farm and that the farm itself is connected to a storage.\n\n\nBuild a pasture at least."]}
    - {type: set_var, arguments: ["tutStepDone", 14]}
   conditions:
    - type: building_num_of_type_greater
@@ -167,6 +180,7 @@ events:
 - # Weavers for processing the stuff from pastures
   actions:
    - {type: message, arguments: ["Now that you do have some wool, you need a Weaver…", "… to produce cloth. Build one close to the farm…", "… and ensure he is connected to a road as well."]}
+#   - {type: logbook, arguments: ["Done.\n\n\nNow that you do have some wool, you need a Weaver to produce cloth. Build one close to the farm and ensure he is connected to a road as well.\n\n\nBuild a weaver."]}
    - {type: set_var, arguments: ["tutStepDone", 15]}
   conditions:
    - type: building_num_of_type_greater
@@ -177,6 +191,7 @@ events:
 - # how to win
   actions:
    - {type: message, arguments: ["Try to house a total of 50 or more inhabitants in your city.", "Once you reach this, you are ready to enjoy Unknown Horizons!"]}
+#   - {type: logbook, arguments: ["Done.\n\n\nTry to house a total of 50 or more inhabitants in your city.", "Once you reach this, you are ready to enjoy Unknown Horizons!\n\n\nReach a number of 50 inhabitants to win."]}
    - {type: set_var, arguments: ["tutStepDone", 16]}
   conditions:
    - type: building_num_of_type_greater
