@@ -62,7 +62,7 @@ def _empty(engine):
 	view = engine.getView()
 
 	view.clearCameras()
-	cam = view.addCamera("main", layer, fife.Rect(0, 0, 1024, 768), fife.ExactModelCoordinate(0.0, 0.0, 0.0))
+	cam = view.addCamera("main", layer, fife.Rect(0, 0, 1024, 768))
 	cam.setCellImageDimensions(64, 32)
 	cam.setRotation(315.0)
 	cam.setTilt(-60)

@@ -57,8 +57,8 @@ class View(Changelistener):
 		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1], \
 		                               fife.Rect(0, 0, \
 		                                         horizons.main.fife.settings.getScreenWidth(), \
-		                                         horizons.main.fife.settings.getScreenHeight()), \
-		                               fife.ExactModelCoordinate(center[0], center[1], 0.0))
+		                                         horizons.main.fife.settings.getScreenHeight()) \
+		                               )
 		self.cam.setCellImageDimensions(64, 32)
 		self.cam.setRotation(45.0)
 		self.cam.setTilt(-60)
