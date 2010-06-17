@@ -122,8 +122,8 @@ events:
 
 - # Trading
   actions:
-   - {type: message, arguments: ["Fine! The Free Trader will now stop by the branch office from time to time.", "You can specify the amount of goods to buy or sell in the corresponding tab…", "… of the Branch Office.\nTry to get a total of 25 tons tools!"]}
-#   - {type: logbook, arguments: ["Done.\n\n\nFine! The Free Trader will now stop by the branch office from time to time. You can specify the amount of goods to buy or sell in the corresponding tab of the Branch Office.\nTry to get a total of 25 tons tools!\n\n\nBuy at least up to 25 tools."]}
+   - {type: message, arguments: ["Fine! The Free Trader will now stop by at your branch office from time to time.", "In the Buy/Sell tab of the Branch Office you can specify the stock amount…", "… until which you want to sell or buy this good by dragging the slider on the right.", "Example: 5 tons in stock, slider positioned at 9 will buy 4 additional tons at most.", "Selling works similarly. 8 tons in stock and slider at 3 will sell up to 5 tons.", "Buy as much tools now as you need to have 25 tools in stock!"]}
+#   - {type: logbook, arguments: ["Done.\n\n\nFine! The Free Trader will now stop by at your branch office from time to time. In the Buy/Sell tab of the Branch Office you can specify the stock amount until which you want to sell or buy this good by dragging the slider on the right. Example: 5 tons in stock, slider positioned at 9 will buy 4 additional tons at most. Selling works similarly. 8 tons in stock and slider at 3 will sell up to 5 tons. Buy as much tools now as you need to have 25 tools in stock!\n\nReach a tools stock of 25."]}
    - {type: set_var, arguments: ["tutStepDone", 10]}
   conditions:
    - type: building_num_of_type_greater
@@ -138,7 +138,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 11]}
   conditions:
    - type: settlement_res_stored_greater
-     arguments: [6, 25]
+     arguments: [6, 24]
    - type: building_num_of_type_greater
      arguments: [6, 0]
    - type: var_gt
