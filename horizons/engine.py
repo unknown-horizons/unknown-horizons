@@ -98,14 +98,14 @@ class Fife(ApplicationBase):
 		languages_map = dict(find_available_languages())
 		languages_map['System default'] = ''
 		symbol = None
-		if data == 'System default':
+		if data == unicode('System default'):
 			symbol = 'System default'
 		else:
 			for key, value in LANGUAGENAMES.iteritems():
 				if value == data:
 					symbol = key
 		assert symbol is not None, "Something went badly wrong with the translation update!" + \
-		       " Searching for: " + data + " in " + str(LANGUAGENAMES)
+		       " Searching for: " + str(data) + " in " + str(LANGUAGENAMES)
 
 		index = sorted(languages_map.keys()).index(symbol)
 		name, position = sorted(languages_map.items())[index]
