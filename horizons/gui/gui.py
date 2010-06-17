@@ -144,7 +144,7 @@ class Gui(SingleplayerMenu):
 			'savegameButton' : horizons.main.save_game,
 			'loadgameButton' : horizons.main.load_game,
 			'helpLink'	 : self.on_help,
-			'settingsLink'   : self.show_settings,
+		    'settingsLink' : horizons.main.fife._setting.onOptionsPress,
 			'dead_link'	 : self.on_chime
 		})
 		self.session.speed_pause()
