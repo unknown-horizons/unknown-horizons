@@ -67,7 +67,10 @@ class Fife(ApplicationBase):
 
 
 	def _setup_settings(self):
-		self._setting =  Setting(app_name="unknownhorizons", settings_file=PATHS.USER_DIR + os.sep + "settings.xml", settings_gui_xml="content/gui/settings.xml" )
+		self._setting =  Setting(app_name="unknownhorizons",
+		                         settings_file=PATHS.USER_DIR + os.sep + "settings.xml",
+		                         settings_gui_xml="content/gui/settings.xml",
+		                         changes_gui_xml="content/gui/requirerestart.xml")
 		self._setting.setGuiStyle("book")
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)

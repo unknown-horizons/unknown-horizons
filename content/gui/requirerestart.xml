@@ -4,7 +4,5 @@
 	<Label text="Restart Required" position="110,30" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" position="80,50" />
 	<Label text="Some of your changes require a restart of Unknown Horizons." max_size="330,200" name="require_restart_label" position="22,82" wrap_text="1" />
-	<Container size="400,60" position="235,170">
-		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0" />
-	</Container>
+	<ImageButton name="closeButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="300, 170" />
 </Container>
