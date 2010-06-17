@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Settings>
+	<Module name="FIFE">
+		<Setting name="FullScreen" type="bool"> False </Setting>
+		<Setting name="PlaySounds" type="bool"> True </Setting>
+		<Setting name="RenderBackend" type="str"> OpenGL </Setting>
+		<Setting name="ScreenResolution" type="str">1024x768</Setting>
+		<Setting name="BitsPerPixel" type="int"> 0 </Setting>
+		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
+		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
+		<Setting name="WindowTitle" type="str"> Unknown Horizons Alpha </Setting>
+		<Setting name="WindowIcon" type="str">content/gui/images/icon.png</Setting>
+		<Setting name="Font" type="str"> content/fonts/LinLibertine_Re-4.4.1.ttf </Setting>
+		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
+		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
+		<Setting name="LogModules" type="list"> controller ; audio ; vfs ; script ; loaders ; pool ; view ; video ; model ; metamodel ; event_channel ; xml </Setting>
+		<Setting name="PychanDebug" type="bool"> True </Setting>
+		<Setting name="LogToPrompt" type="int"> 1 </Setting>
+		<Setting name="LogToFile" type="int"> 0 </Setting>
+	</Module>
+	<Module name="unknownhorizons">
+		<Setting name="VolumeMusic" type="float">0.20</Setting>
+		<Setting name="VolumeEffects" type="float">0.5</Setting>
+		<Setting name="AutosaveInterval" type="int">10</Setting>
+		<Setting name="AutosaveMaxCount" type="int">10</Setting>
+		<Setting name="QuicksaveMaxCount" type="int">10</Setting>
+		<Setting name="Language" type="unicode">System default</Setting>
+		<Setting name="ClientID" type="str"></Setting>
+	</Module>
+</Settings>
