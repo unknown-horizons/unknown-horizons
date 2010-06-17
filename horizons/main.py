@@ -45,7 +45,6 @@ from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.i18n import update_all_translations
 from horizons.gui import Gui
-from horizons.settings import Settings
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import PATHS
 
@@ -75,18 +74,20 @@ def start(command_line_arguments):
 
 	db = _create_db()
 
-	Settings.create_instance(db)
-	Settings().set_defaults()
-
-	_init_gettext()
-
-	# create random client_id if necessary
-	if Settings().client_id is None:
-		Settings().client_id = "".join("-" if c in (8, 13, 18, 23) else \
-		                               random.choice("0123456789abcdef") for c in xrange(0, 36))
-
 	# init game parts
-	fife = Fife(Settings())
+	fife = Fife()
+
+	_init_gettext(fife)
+
+	client_id = fife.get_uh_setting("ClientID")
+	if client_id is None or len(client_id) == 0:
+		# We need a new client id
+		client_id = "".join("-" if c in (8, 13, 18, 23) else \
+		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
+		from engine import UH_MODULE
+		fife.settings.set(UH_MODULE, "ClientID", client_id)
+		fife.settings.saveSettings()
+
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
 	_modules.gui = Gui()
@@ -199,20 +200,10 @@ def load_game(savegame = None):
 	start_singleplayer(savegame)
 
 
-def _init_gettext():
+def _init_gettext(fife):
 	from gettext import translation, install
-	settings = Settings()
-	if settings.language.name != '':
-		try:
-			trans = translation('unknownhorizons', settings.language.position, languages=[settings.language.name])
-			trans.install(unicode=1)
-		except IOError:
-			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': settings.language.name, 'place': settings.language.position}
-			install('unknownhorizons', 'build/mo', unicode=1)
-			settings.language.name = ''
-	else:
-		install('unknownhorizons', 'build/mo', unicode=1)
-	update_all_translations()
+	install('unknownhorizons', 'build/mo', unicode=1)
+	fife.update_languages()
 
 
 

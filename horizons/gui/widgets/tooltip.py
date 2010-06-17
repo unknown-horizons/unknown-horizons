@@ -25,7 +25,6 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from fife.extensions.pychan.widgets.common import UnicodeAttr
 from horizons.i18n import load_xml_translated
-from horizons.settings import Settings
 from horizons.gui.widgets import ProgressBar
 
 class _Tooltip(object):
@@ -47,7 +46,8 @@ class _Tooltip(object):
 
 	def position_tooltip(self, event):
 		widget_position = self.getAbsolutePos()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= Settings().fife.screen.width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
+		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
+		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= screen_width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
 		if not self.tooltip_shown:
 			ExtScheduler().add_new_object(self.show_tooltip, self, runin=0.3, loops=0)
 			self.tooltip_shown = True

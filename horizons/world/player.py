@@ -22,7 +22,6 @@
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
-from horizons.settings import Settings
 from horizons.campaign import CONDITIONS
 
 class Player(StorageHolder, WorldObject):

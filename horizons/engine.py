@@ -21,26 +21,37 @@
 # ###################################################
 
 import glob, random
+import gettext
 
 from fife import fife
+from fife.extensions.basicapplication import ApplicationBase
 from fife.extensions import fifelog
 from fife.extensions import pychan
+from fife.extensions.fife_settings import Setting, FIFE_MODULE
 
 import horizons.main
 
 import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader
 from horizons.extscheduler import ExtScheduler
-from horizons.settings import Settings
+from horizons.i18n import update_all_translations
+from horizons.i18n.utils import find_available_languages
+from horizons.constants import LANGUAGENAMES
 
-class Fife(object):
+UH_MODULE="unknownhorizons"
+
+class Fife(ApplicationBase):
 	"""
 	"""
-	def __init__(self, settings):
+	def __init__(self):
 		self.pump = []
 
+		self._setup_settings()
+
 		self.engine = fife.Engine()
-		self.settings = self.engine.getSettings()
+		self.loadSettings()
+
+		self.engine_settings = self.engine.getSettings()
 		self.pychan = pychan
 
 		self._doQuit = False
@@ -48,74 +59,69 @@ class Fife(object):
 		self._doReturn = None
 		self._gotInited = False
 
-		#init uh settings about fife
-		settings.addCategories('fife')
-		settings.fife.add_change_listener(self._setSetting)
-		settings.fife.addCategories('defaultFont', 'sound', 'renderer', 'screen')
-
-		settings.fife.defaultFont.setDefaults(
-			path = 'content/fonts/LinLibertine_Re-4.4.1.ttf',
-			size = 15,
-			glyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""
-		)
-
-		settings.fife.sound.setDefaults(
-			initialVolume = self.settings.getMaxVolume()
-		)
-
-		settings.fife.renderer.setDefaults(
-			backend = 'OpenGL',
-			SDLRemoveFakeAlpha = False,
-			imageChunkingSize = 256
-		)
-
-		settings.fife.screen.setDefaults(
-			fullscreen = False,
-			width = 1024,
-			height = 768,
-			bpp = 0,
-			title = 'Unknown Horizons',
-			icon = 'content/gui/images/icon.png'
-		)
-
 		self.emitter = {}
 		self.emitter['bgsound'] = None
 		self.emitter['effects'] = None
 		self.emitter['speech'] = None
 
-	def _setSetting(self, settingObject, settingName, value):
-		"""
-		@param settingObject:
-		@param settingName:
-		@param value:
-		"""
-		setting = settingObject._name + settingName
-		if setting == 'fife.defaultFont.path':
-			self.settings.setDefaultFontPath(value)
-		elif setting == 'fife.defaultFont.size':
-			self.settings.setDefaultFontSize(value)
-		elif setting == 'fife.defaultFont.glyphs':
-			self.settings.setDefaultFontGlyphs(value)
-		elif setting == 'fife.screen.fullscreen':
-			self.settings.setFullScreen(1 if value else 0)
-		elif setting == 'fife.screen.width':
-			self.settings.setScreenWidth(value)
-		elif setting == 'fife.screen.height':
-			self.settings.setScreenHeight(value)
-		elif setting == 'fife.screen.bpp':
-			self.settings.setBitsPerPixel(value)
-		elif setting == 'fife.renderer.backend':
-			self.settings.setRenderBackend(value)
-		elif setting == 'fife.renderer.SDLRemoveFakeAlpha':
-			self.settings.setSDLRemoveFakeAlpha(value)
-		elif setting == 'fife.renderer.imageChunkingSize':
-			self.settings.setImageChunkingSize(value)
-		elif setting == 'fife.sound.initialVolume':
-			self.settings.setInitialVolume(value)
-		elif setting == 'fife.screen.title':
-			self.settings.setWindowTitle(value)
-		elif setting == 'fife.screen.icon':
-			self.settings.setWindowIcon(value)
+
+	def _setup_settings(self):
+		self._setting =  Setting(app_name="unknownhorizons", settings_file="settings.xml", settings_gui_xml="content/gui/settings.xml" )
+		self._setting.setGuiStyle("book")
+
+		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
+		                                initialdata=range(0, 60, 2))
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount",
+		                                initialdata=range(1, 30))
+		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount",
+		                                initialdata=range(1, 30))
+
+		languages_map = dict(find_available_languages())
+		languages_map[_('System default')] = ''
+
+		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
+		                                applyfunction=self.update_languages,
+		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
+		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
+		                                applyfunction=lambda x: self.set_volume_music(x))
+		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
+		                                applyfunction=lambda x: self.set_volume_effects(x))
+
+		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
+		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
+
+	def update_languages(self, data=None):
+		if data is None:
+			data = self._setting.get(UH_MODULE, "Language")
+		languages_map = dict(find_available_languages())
+		languages_map['System default'] = ''
+		symbol = None
+		if data == 'System default':
+			symbol = 'System default'
+		else:
+			for key, value in LANGUAGENAMES.iteritems():
+				if value == data:
+					symbol = key
+		assert symbol is not None, "Something went badly wrong with the translation update!" + \
+		       " Searching for: " + data + " in " + str(LANGUAGENAMES)
+
+		index = sorted(languages_map.keys()).index(symbol)
+		name, position = sorted(languages_map.items())[index]
+		try:
+			if name != 'System default':
+				trans = gettext.translation('unknownhorizons', position, languages=[name])
+				trans.install(unicode=1)
+			else:
+				gettext.install('unknownhorizons', 'build/mo', unicode=1)
+				name = ''
+
+		except IOError:
+			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': settings.language.name, 'place': settings.language.position}
+			install('unknownhorizons', 'build/mo', unicode=1)
+			self._setting.set(UH_MODULE, "Language", 'System default')
+		update_all_translations()
+
 
 	def init(self):
 		"""
@@ -143,8 +149,7 @@ class Fife(object):
 		self.console = self.guimanager.getConsole()
 		self.soundmanager = self.engine.getSoundManager()
 		self.soundmanager.init()
-		if Settings().sound.enabled: # Set up sound if it is enabled
-			self.setup_sound()
+		self.setup_sound()
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
 		self.animationloader = SQLiteAnimationLoader()
@@ -181,19 +186,30 @@ class Fife(object):
 
 		self._gotInited = True
 
-
 	def setup_sound(self):
+		if self._setting.get(FIFE_MODULE, "PlaySounds"):
+			self.enable_sound()
+		else:
+			self.disable_sound()
+
+	def get_fife_setting(self, settingname):
+		return self._setting.get(FIFE_MODULE, settingname)
+
+	def get_uh_setting(self, settingname):
+		return self._setting.get(UH_MODULE, settingname)
+
+	def enable_sound(self):
 		"""Enable all sound and start playing music."""
-		if Settings().sound.enabled: # Set up sound if it is enabled
+		if self._setting.get(FIFE_MODULE, "PlaySounds"): # Set up sound if it is enabled
 			self.soundclippool = self.engine.getSoundClipPool()
 			self.emitter['bgsound'] = self.soundmanager.createEmitter()
-			self.emitter['bgsound'].setGain(Settings().sound.volume_music)
+			self.emitter['bgsound'].setGain(self._setting.get(UH_MODULE, "VolumeMusic"))
 			self.emitter['bgsound'].setLooping(False)
 			self.emitter['effects'] = self.soundmanager.createEmitter()
-			self.emitter['effects'].setGain(Settings().sound.volume_effects)
+			self.emitter['effects'].setGain(self._setting.get(UH_MODULE, "VolumeEffects"))
 			self.emitter['effects'].setLooping(False)
 			self.emitter['speech'] = self.soundmanager.createEmitter()
-			self.emitter['speech'].setGain(Settings().sound.volume_effects)
+			self.emitter['speech'].setGain(self._setting.get(UH_MODULE, "VolumeEffects"))
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
 			self.music_rand_element = random.randint(0, len(self.menu_music) - 1)
@@ -204,9 +220,12 @@ class Fife(object):
 
 	def disable_sound(self):
 		"""Disable all sound outputs."""
-		self.emitter['bgsound'].reset()
-		self.emitter['effects'].reset()
-		self.emitter['speech'].reset()
+		if self.emitter['bgsound'] is not None:
+			self.emitter['bgsound'].reset()
+		if self.emitter['effects'] is not None:
+			self.emitter['effects'].reset()
+		if self.emitter['speech'] is not None:
+			self.emitter['speech'].reset()
 		ExtScheduler().rem_call(self, self.check_music)
 
 	def check_music(self):
@@ -233,12 +252,11 @@ class Fife(object):
 			    self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
 			    self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 
-
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
 		@param emitter: string with the emitters name in horizons.main.fife.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
-		if Settings().sound.enabled: # Set up sound if it is enabled
+		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
@@ -251,22 +269,22 @@ class Fife(object):
 		@param emitter_name: string with the emitters name, used as key for the self.emitter dict
 		@param value: double which value the emitter is to be set to range[0, 1]
 		"""
-		if Settings().sound.enabled:
+		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter[emitter_name].setGain(value)
 
 	def set_volume_music(self, value):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if Settings().sound.enabled:
-				self.emitter['bgsound'].setGain(value)
+		if self._setting.get(FIFE_MODULE, "PlaySounds"):
+			self.emitter['bgsound'].setGain(value)
 
 
 	def set_volume_effects(self, value):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
-		if Settings().sound.enabled:
+		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
@@ -313,3 +331,8 @@ class Fife(object):
 		""" Quits the engine.
 		"""
 		self._doQuit = True
+
+	def _get_setting(self):
+		return self._setting
+
+	settings = property(_get_setting)

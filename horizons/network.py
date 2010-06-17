@@ -27,7 +27,6 @@ import struct
 import sys
 from horizons.packets import *
 from horizons.extscheduler import ExtScheduler
-from horizons.settings import Settings
 
 # TODO: make networking robust
 #       (i.e. GUI freezes sometimes when waiting for timeout)

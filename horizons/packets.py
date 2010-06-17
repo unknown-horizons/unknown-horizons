@@ -20,7 +20,6 @@
 # ###################################################
 
 import horizons.main
-from horizons.settings import Settings
 import time
 
 # There are two ways of sending packets without specifying target ip/port:

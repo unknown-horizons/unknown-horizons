@@ -28,7 +28,6 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.network import Socket
 from horizons.packets import QueryPacket, InfoPacket
-from horizons.settings import Settings
 
 class Server(object):
 	re_ip_port = re.compile("^((?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5]))[.](?:[0-1]?[0-9]{1, 2}|2(?:[0-4][0-9]|5[0-5])))(?::((?:[0-5]?[0-9]{1, 4}|6(?:[0-4][0-9]{3}|5(?:[0-4][0-9]{2}|5(?:[0-2][0-9]|3[0-5]))))))?$")

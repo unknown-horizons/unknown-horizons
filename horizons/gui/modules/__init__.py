@@ -21,5 +21,4 @@
 
 """Modules for gui/ingamegui"""
 
-from settingsgui import SettingsGui
 from singleplayermenu import SingleplayerMenu

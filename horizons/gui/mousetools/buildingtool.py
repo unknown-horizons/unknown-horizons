@@ -141,7 +141,7 @@ class BuildingTool(NavigationTool):
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 			self.gui.position = (
-				horizons.main.fife.settings.getScreenWidth() - self.gui.size[0] - 14,
+				horizons.main.fife.engine_settings.getScreenWidth() - self.gui.size[0] - 14,
 				157
 			)
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,

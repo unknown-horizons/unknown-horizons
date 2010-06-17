@@ -21,7 +21,7 @@
 
 from horizons.gui.widgets.tooltip import TooltipIcon
 from horizons.i18n import load_xml_translated
-from horizons.settings import Settings
+import horizons.main
 
 def create_resource_icon(res_id, db):
 	"""Creates a pychan icon for a resource.
@@ -34,8 +34,8 @@ def center_widget(widget):
 	"""Centers the widget in the parameter
 	@param widget: Widget with properties width, height, x and y
 	"""
-	widget.x = int((Settings().fife.screen.width - widget.width) / 2)
-	widget.y = int((Settings().fife.screen.height - widget.height) / 2)
+	widget.x = int((horizons.main.fife.engine_settings.getScreenWidth() - widget.width) / 2)
+	widget.y = int((horizons.main.fife.engine_settings.getScreenHeight() - widget.height) / 2)
 
 
 class LazyWidgetsDict(dict):

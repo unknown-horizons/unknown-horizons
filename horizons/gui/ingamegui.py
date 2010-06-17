@@ -67,7 +67,7 @@ class IngameGui(LivingObject):
 
 		self.widgets['city_info'].child_finder = PychanChildFinder(self.widgets['city_info'])
 		self.widgets['city_info'].position = (
-			horizons.main.fife.settings.getScreenWidth()/2 - self.widgets['city_info'].size[0]/2 - 10, 5
+			horizons.main.fife.engine_settings.getScreenWidth()/2 - self.widgets['city_info'].size[0]/2 - 10, 5
 		)
 
 		self.logbook = LogBook(session)
@@ -75,7 +75,7 @@ class IngameGui(LivingObject):
 		# self.widgets['minimap'] is the guichan gui around the acctual minimap, which is saved
 		# in self.minimap
 		self.widgets['minimap'].position = (
-				horizons.main.fife.settings.getScreenWidth() - self.widgets['minimap'].size[0] -20,
+				horizons.main.fife.engine_settings.getScreenWidth() - self.widgets['minimap'].size[0] -20,
 			4
 		)
 		self.widgets['minimap'].show()
@@ -95,7 +95,7 @@ class IngameGui(LivingObject):
 		self.minimap.use_overlay_icon(minimap_overlay)
 
 		self.widgets['menu_panel'].position = (
-			horizons.main.fife.settings.getScreenWidth() - self.widgets['menu_panel'].size[0] +15,
+			horizons.main.fife.engine_settings.getScreenWidth() - self.widgets['menu_panel'].size[0] +15,
 			149)
 		self.widgets['menu_panel'].show()
 		self.widgets['menu_panel'].mapEvents({

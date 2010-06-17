@@ -110,6 +110,15 @@ class GROUND:
 	WATER = 4
 	DEFAULT_LAND = 1
 
+class GAME_SPEED:
+	TICKS_PER_SECOND = 16
+	TICK_RATES = [16, 32, 48, 64]
+
+class VIEW:
+	ZOOM_MAX = 1
+	ZOOM_MIN = 0.25
+
+
 ## The Production States available in the game sorted by importance from least
 ## to most important
 class PRODUCTION:
@@ -122,7 +131,8 @@ class PRODUCTION:
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
 	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
-														# payed in this interval).
+	# payed in this interval).
+
 
 class SETTLER:
 	TAX_SETTINGS_MIN = 0.5

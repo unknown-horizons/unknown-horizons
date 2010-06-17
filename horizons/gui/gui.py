@@ -34,11 +34,10 @@ from horizons.network import ServerConnection, ClientConnection
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
 from horizons.gui.utility import center_widget, LazyWidgetsDict
-from horizons.settings import Settings
 
-from horizons.gui.modules import SettingsGui, SingleplayerMenu
+from horizons.gui.modules import SingleplayerMenu
 
-class Gui(SettingsGui, SingleplayerMenu):
+class Gui(SingleplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 
 	"""
@@ -75,7 +74,7 @@ class Gui(SettingsGui, SingleplayerMenu):
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
 			'startSingle'  : self.show_single,
 			'startMulti'   : self.show_multi,
-			'settingsLink' : self.show_settings,
+		    'settingsLink' : horizons.main.fife._setting.onOptionsPress,
 			'creditsLink'  : self.show_credits,
 			'closeButton'  : self.show_quit,
 			'helpLink'     : self.on_help,

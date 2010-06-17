@@ -26,8 +26,7 @@ from fife import fife
 import horizons.main
 
 from horizons.util import Changelistener, Rect
-from horizons.settings import Settings
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, VIEW
 
 class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -56,8 +55,8 @@ class View(Changelistener):
 
 		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1], \
 		                               fife.Rect(0, 0, \
-		                                         horizons.main.fife.settings.getScreenWidth(), \
-		                                         horizons.main.fife.settings.getScreenHeight()) \
+		                                         horizons.main.fife.engine_settings.getScreenWidth(), \
+		                                         horizons.main.fife.engine_settings.getScreenHeight()) \
 		                               )
 		self.cam.setCellImageDimensions(64, 32)
 		self.cam.setRotation(45.0)
@@ -76,11 +75,6 @@ class View(Changelistener):
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])
-
-		Settings().addCategories('view')
-		Settings().view.addCategories('zoom')
-		Settings().view.zoom.max = 1
-		Settings().view.zoom.min = 0.25
 
 	def end(self):
 		self.model.deleteMaps()
@@ -158,14 +152,14 @@ class View(Changelistener):
 
 	def zoom_out(self):
 		zoom = self.cam.getZoom() * 0.875
-		if(zoom < Settings().view.zoom.min):
-			zoom = Settings().view.zoom.min
+		if(zoom < VIEW.ZOOM_MIN):
+			zoom = VIEW.ZOOM_MIN
 		self.cam.setZoom(zoom)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / 0.875
-		if(zoom > Settings().view.zoom.max):
-			zoom = Settings().view.zoom.max
+		if(zoom > VIEW.ZOOM_MAX):
+			zoom = VIEW.ZOOM_MAX
 		self.cam.setZoom(zoom)
 
 	def set_zoom(self, zoom):
@@ -186,9 +180,9 @@ class View(Changelistener):
 		"""Returns the coords of what is displayed on the screen as Rect"""
 		coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
-		screen_width_as_coords = (horizons.main.fife.settings.getScreenWidth()/cell_dim.x \
+		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x \
 		                          , \
-		                          horizons.main.fife.settings.getScreenHeight()/cell_dim.y)
+		                          horizons.main.fife.engine_settings.getScreenHeight()/cell_dim.y)
 		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2), \
 		                                       coords.y - (screen_width_as_coords[1]/2),
 		                                       *screen_width_as_coords)

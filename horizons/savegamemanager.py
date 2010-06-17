@@ -27,8 +27,9 @@ import glob
 import time
 
 from horizons.constants import PATHS
-from horizons.settings import Settings
 from horizons.util import DbReader
+
+import horizons.main
 
 class SavegameManager(object):
 	"""Controls savegamefiles.
@@ -149,10 +150,10 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (self.autosave_dir, self.savegame_extension),
-							Settings().savegame.savedautosaves)
+							horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
 		if quicksaves:
 			tmp_del("%s/*.%s" % (self.quicksave_dir, self.savegame_extension),
-							Settings().savegame.savedquicksaves)
+							horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
 	def get_metadata(cls, savegamefile):

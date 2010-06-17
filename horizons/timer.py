@@ -23,7 +23,7 @@ import time
 import horizons.main
 
 from util.living import LivingObject
-from horizons.settings import Settings
+from constants import GAME_SPEED
 
 class Timer(LivingObject):
 	"""
@@ -32,19 +32,15 @@ class Timer(LivingObject):
 	"""
 	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
 
-	possible_ticks_per_second = [16, 32, 48, 64]
-	default_ticks_per_second = 16
+	possible_ticks_per_second = GAME_SPEED.TICK_RATES
+	default_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
 	def __init__(self, tick_next_id = 0):
 		"""
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).__init__()
-		Settings().addCategories('ticks')
-		#Settings().ticks.setDefaults(default = 16, steps = [16, 32, 48, 64, 256])
-		Settings().ticks.setDefaults(default = self.default_ticks_per_second, \
-		                             steps = self.possible_ticks_per_second)
-		self.ticks_per_second = Settings().ticks.default
+		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
 		self.tick_func_test = []
@@ -84,7 +80,7 @@ class Timer(LivingObject):
 		@param seconds: number of seconds that are to be converted into ticks
 		@return: int
 		"""
-		return int(round( seconds*Settings().ticks.default ))
+		return int(round( seconds*GAME_SPEED.TICKS_PER_SECOND))
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

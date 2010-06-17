@@ -51,7 +51,7 @@ class TradeWidget(object):
 	def __init__(self, main_instance):
 		self.widget = load_xml_translated('ship/trade.xml')
 		self.widget.position = (
-			horizons.main.fife.settings.getScreenWidth() - self.widget.size[0],
+			horizons.main.fife.engine_settings.getScreenWidth() - self.widget.size[0],
 			157
 		)
 		self.widget.stylize('menu_black')
