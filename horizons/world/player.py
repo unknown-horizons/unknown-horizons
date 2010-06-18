@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
+
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
@@ -62,8 +64,8 @@ class Player(StorageHolder, WorldObject):
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not self.session.world.player \
-							else Settings().client_id
+		client_id = None if self is not self.session.world.player else \
+		          horizons.main.fife.get_uh_setting("ClientID")
 		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", \
 			 self.getId(), self.name, self.color.id, client_id)
 
