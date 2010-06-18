@@ -80,6 +80,8 @@ class Fife(ApplicationBase):
 		                                initialdata=range(1, 30))
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount",
 		                                initialdata=range(1, 30))
+		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
+		                                initialdata=[0, 16, 32], requiresrestart=True)
 
 		languages_map = dict(find_available_languages())
 		languages_map[_('System default')] = ''
