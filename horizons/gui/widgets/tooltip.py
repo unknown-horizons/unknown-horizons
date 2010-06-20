@@ -46,7 +46,6 @@ class _Tooltip(object):
 
 	def position_tooltip(self, event):
 		if (event.getButton() == fife.MouseEvent.MIDDLE):
-			self.hide_tooltip()
 			return
 		widget_position = self.getAbsolutePos()
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
