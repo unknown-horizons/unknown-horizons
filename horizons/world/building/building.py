@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from random import randint
 
 from fife import fife
 
@@ -75,9 +76,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			Scheduler().add_new_object(self.get_payout, self, \
 			     runin=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
 
-		# play ambient sound, if available
+		# play ambient sound, if available every 30 seconds
+		play_every = 15 + randint(0, 15)
 		for soundfile in self.soundfiles:
-			self.play_ambient(soundfile, True)
+			self.play_ambient(soundfile, True, play_every)
 
 	@property
 	def name(self):

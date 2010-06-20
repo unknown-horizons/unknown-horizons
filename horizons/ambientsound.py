@@ -20,6 +20,7 @@
 # ###################################################
 
 import horizons.main
+from fife.extensions.fife_timer import repeatCall
 
 class AmbientSound(object):
 	"""Support for playing ambient sounds, such as animal noise.
@@ -35,6 +36,7 @@ class AmbientSound(object):
 	def __init(self, positioning):
 		self.positioning = positioning
 		self.emitter = None
+		self.timer = None
 
 	def create_emitter(self):
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
@@ -53,11 +55,13 @@ class AmbientSound(object):
 	def __del__(self):
 		self.emitter = None
 		self.positioning = None
+		self.timer = None
 
-	def play_ambient(self, soundfile, looping):
+	def play_ambient(self, soundfile, looping, play_every=None):
 		"""Starts playing an ambient sound
 		@param soundfile: path to audio file
 		@param looping: bool, whether sound should loop for forever
+		@param play_every: play the sound every x seconds if looping is true
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			if self.emitter is None:
@@ -65,8 +69,12 @@ class AmbientSound(object):
 			# set to current position
 			if(hasattr(self, 'position') and self.position != None and self.positioning):
 				self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
-			self.emitter.setLooping(looping)
 			self.emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
+			if play_every is None:
+				self.emitter.setLooping(looping)
+			elif looping and play_every is not None:
+				duration = play_every + self.emitter.getDuration()*1000
+				self.timer = repeatCall(duration, self.emitter.play)
 			self.emitter.play()
 
 	@classmethod
