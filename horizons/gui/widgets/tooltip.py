@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
 from fife.extensions import pychan
 import horizons.main
 
@@ -44,6 +45,9 @@ class _Tooltip(object):
 		self.tooltip_items = []
 
 	def position_tooltip(self, event):
+		if (event.getButton() == fife.MouseEvent.MIDDLE):
+			self.hide_tooltip()
+			return
 		widget_position = self.getAbsolutePos()
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
 		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= screen_width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
@@ -56,7 +60,8 @@ class _Tooltip(object):
 	def show_tooltip(self):
 		if self.tooltip != "":
 			translated_tooltip = unicode(_(self.tooltip))
-			line_count = translated_tooltip.count(r'\n')
+			line_count = len(translated_tooltip.splitlines())-1
+			print line_count
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
