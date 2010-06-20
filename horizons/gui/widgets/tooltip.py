@@ -61,7 +61,6 @@ class _Tooltip(object):
 		if self.tooltip != "":
 			translated_tooltip = unicode(_(self.tooltip))
 			line_count = len(translated_tooltip.splitlines())-1
-			print line_count
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
