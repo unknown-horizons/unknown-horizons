@@ -27,7 +27,7 @@ from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
-from horizons.gui.widgets import MessageWidget
+from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.utility import LazyWidgetsDict

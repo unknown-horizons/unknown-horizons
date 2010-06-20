@@ -21,6 +21,4 @@
 
 from progressbar import ProgressBar
 from toggleimagebutton import ToggleImageButton
-from tradewidget import TradeWidget
 from tooltip import TooltipButton, TooltipIcon
-from messagewidget import Message, MessageWidget

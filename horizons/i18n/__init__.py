@@ -22,6 +22,8 @@
 import logging
 from horizons.i18n.guitranslations import set_translations, text_translations
 import horizons.main
+from  horizons.gui.widgets.tooltip import _Tooltip
+
 from fife.extensions import pychan
 from os.path import basename
 
@@ -48,7 +50,7 @@ def load_xml_translated(filename):
 	try:
 		untranslated = pychan.loadXML('content/gui/%s' % filename)
 	except (IOError, ValueError), e:
-		print 'PLEASE REPORT: invalid path %s in translation!', e
+		print 'PLEASE REPORT: invalid path', filename , 'in translation!', e
 		untranslated = pychan.loadXML(filename)
 
 
@@ -56,7 +58,11 @@ def load_xml_translated(filename):
 		for i in guitranslations.text_translations[filename].iteritems():
 			try:
 				widget = untranslated.findChild(name=i[0])
-				if isinstance(widget, pychan.widgets.Label)\
+				# TODO FIX! import loop
+				if isinstance(widget, _Tooltip):
+					widget.tooltip = i[1]
+					widget.adaptLayout()
+				elif isinstance(widget, pychan.widgets.Label)\
 						or isinstance(widget, pychan.widgets.Button):
 					widget.text = i[1]
 					widget.adaptLayout()
@@ -78,7 +84,12 @@ def update_all_translations():
 	for i in translated_widgets.iteritems():
 		for j in guitranslations.text_translations.get(i[0],{}).iteritems():
 			try:
-				i[1].findChild(name=j[0]).text = j[1]
+				widget = i[1].findChild(name=j[0])
+				if isinstance(widget, _Tooltip):
+					widget.tooltip = j[1]
+				else:
+					widget.text = j[1]
+				i[1].adaptLayout()
 			except AttributeError, e:
 				print e
 				print i, ' in ', i[0]

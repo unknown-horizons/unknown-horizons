@@ -20,20 +20,20 @@
 # ###################################################
 
 def find_available_languages():
-    alternatives = ('build/mo',
-                    '/usr/share/locale',
-                    '/usr/share/games/locale',
-                    '/usr/local/share/locale',
-                    '/usr/local/share/games/locale')
+	alternatives = ('build/mo',
+		            '/usr/share/locale',
+		            '/usr/share/games/locale',
+		            '/usr/local/share/locale',
+		            '/usr/local/share/games/locale')
 
-    import os
-    from glob import glob
+	import os
+	from glob import glob
 
-    languages = []
+	languages = []
 
-    for i in alternatives:
-        for j in glob('%s/*/*/unknownhorizons.mo' % i):
-            splited = j.split(os.sep)
-            languages.append((splited[-3], os.sep.join(splited[:-3])))
+	for i in alternatives:
+		for j in glob('%s/*/*/unknownhorizons.mo' % i):
+			splited = j.split(os.sep)
+			languages.append((splited[-3], os.sep.join(splited[:-3])))
 
-    return languages
+	return languages

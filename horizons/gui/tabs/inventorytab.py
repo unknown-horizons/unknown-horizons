@@ -22,7 +22,7 @@
 from fife.extensions import pychan
 
 from tabinterface import TabInterface
-from horizons.gui.widgets import TradeWidget
+from horizons.gui.widgets.tradewidget import TradeWidget
 
 class InventoryTab(TabInterface):
 

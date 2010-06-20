@@ -43,7 +43,6 @@ from fife import fife as fife_module
 from horizons.util import ActionSetLoader, TileSetLoader
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
-from horizons.i18n import update_all_translations
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import PATHS
