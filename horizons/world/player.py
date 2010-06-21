@@ -66,8 +66,8 @@ class Player(StorageHolder, WorldObject):
 		super(Player, self).save(db)
 		client_id = None if self is not self.session.world.player else \
 		          horizons.main.fife.get_uh_setting("ClientID")
-		db("INSERT INTO player(rowid, name, color, client_id) VALUES(?, ?, ?, ?)", \
-			 self.getId(), self.name, self.color.id, client_id)
+		db("INSERT INTO player(rowid, name, color, client_id, settler_level) VALUES(?, ?, ?, ?, ?)", \
+			 self.getId(), self.name, self.color.id, client_id, self.settler_level)
 
 	@classmethod
 	def load(cls, session, db, worldid):
@@ -81,8 +81,8 @@ class Player(StorageHolder, WorldObject):
 		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, name = db("SELECT color, name FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(worldid, name, Color[color])
+		color, name, settlerlevel = db("SELECT color, name, settler_level FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(worldid, name, Color[color], settlerlevel=settlerlevel)
 
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving

@@ -330,7 +330,7 @@ class Session(LivingObject):
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
 			if i > 0:
-				self.speed_set(GAME_SPEED.TICK_RATES.steps[i - 1])
+				self.speed_set(GAME_SPEED.TICK_RATES[i - 1])
 		else:
 			self.speed_set(GAME_SPEED.TICK_RATES[0])
 
