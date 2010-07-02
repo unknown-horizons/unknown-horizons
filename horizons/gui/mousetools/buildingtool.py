@@ -84,15 +84,11 @@ class BuildingTool(NavigationTool):
 		session = self.session
 		buildable_tiles_append = self._buildable_tiles.append
 		ship = self.ship
-		buildable_color = self.buildable_color
 
 		if tiles_to_check is not None: # only check these tiles
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, ship):
-					buildable_tiles_append(tile)
-					add_colored(tile._instance, *buildable_color)
-					if tile.object is not None:
-						add_colored(tile.object._instance, *buildable_color)
+					self.__color_buildable_tile(tile)
 
 		elif self.ship is None: # default build on island
 			for island in self.session.world.islands:
@@ -104,10 +100,7 @@ class BuildingTool(NavigationTool):
 					continue # no settlement found, continue outer loop
 				for tile in island.grounds:
 					if is_tile_buildable(session, tile, ship):
-						buildable_tiles_append(tile)
-						add_colored(tile._instance, *buildable_color)
-						if tile.object is not None:
-							add_colored(tile.object._instance, *buildable_color)
+						self.__color_buildable_tile(tile)
 
 		else: # build from ship
 			for island in self.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
@@ -115,9 +108,17 @@ class BuildingTool(NavigationTool):
 					buildable_tiles_append(tile)
 					# check that there is no other player's settlement
 					if tile.settlement is None or tile.settlement.owner == player:
-						add_colored(tile._instance, *buildable_color)
+						add_colored(tile._instance, *self.buildable_color)
 						if tile.object is not None: # color obj on tile too
-							add_colored(tile.object._instance, *buildable_color)
+							add_colored(tile.object._instance, *self.buildable_color)
+
+
+	def __color_buildable_tile(self, tile):
+		if tile not in self._buildable_tiles:
+			self._buildable_tiles.append(tile)
+		self.renderer.addColored(tile._instance, *self.buildable_color)
+		if tile.object is not None:
+			self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
 		self._remove_building_instances()
@@ -182,6 +183,7 @@ class BuildingTool(NavigationTool):
 	@decorators.make_constants()
 	def preview_build(self, point1, point2):
 		"""Display buildings as preview if build requirements are met"""
+		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
 		                                             rotation = self.rotation, ship=self.ship)

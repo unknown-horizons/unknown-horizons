@@ -283,7 +283,6 @@ class SelectableBuilding(object):
 	def deselect_building(cls, session):
 		"""@see select_building,
 		@return list of tiles that were deselected."""
-		#session.view.renderer['InstanceRenderer'].removeAllColored()
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
 		for tile in cls._selected_tiles:
 			remove_colored(tile._instance)
@@ -309,6 +308,7 @@ class SelectableBuilding(object):
 					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
 						selected_tiles_append(tile)
 						add_colored(tile._instance, *cls.selection_color)
+						# Add color to a building or tree that is present on the tile
 						add_colored(tile.object._instance, *cls.selection_color)
 				except AttributeError:
 					pass # no tile or no object on tile

@@ -27,6 +27,7 @@ from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.constants import STORAGE
+from horizons.world.production.producer import ProducerBuilding
 
 class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
@@ -88,7 +89,7 @@ class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 		return {'settlement' : None}
 
 
-class MarketPlace(StorageBuilding):
+class MarketPlace(ProducerBuilding, StorageBuilding):
 	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab)
 
 	def select(self):
