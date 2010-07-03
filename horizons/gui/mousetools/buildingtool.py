@@ -61,6 +61,9 @@ class BuildingTool(NavigationTool):
 		self.rotation = 45 + random.randint(0, 3)*90
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
+		self._modified_objects = set() # fife instances modified for transparency
+		self._buildable_tiles = [] # tiles marked as buildable
+
 		if self._class.show_buildingtool_preview_tab:
 			self.load_gui()
 			self.gui.show()
@@ -68,8 +71,6 @@ class BuildingTool(NavigationTool):
 
 		self.session.gui.on_escape = self.on_escape
 
-		self._modified_objects = set() # fife instances modified for transparency
-		self._buildable_tiles = [] # tiles marked as buildable
 
 		self.highlight_buildable()
 
@@ -121,6 +122,7 @@ class BuildingTool(NavigationTool):
 			self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
+		self._remove_listeners()
 		self._remove_building_instances()
 		self._remove_coloring()
 		self._buildable_tiles = None
@@ -129,7 +131,6 @@ class BuildingTool(NavigationTool):
 		if self.gui is not None:
 			self.session.view.remove_change_listener(self.draw_gui)
 			self.gui.hide()
-		self._remove_listeners()
 		ExtScheduler().rem_all_classinst_calls(self)
 		super(BuildingTool, self).end()
 
@@ -181,7 +182,7 @@ class BuildingTool(NavigationTool):
 		self.gui.adaptLayout()
 
 	@decorators.make_constants()
-	def preview_build(self, point1, point2):
+	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
 		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
@@ -189,7 +190,7 @@ class BuildingTool(NavigationTool):
 		                                             rotation = self.rotation, ship=self.ship)
 		# optimisation: If only one building is in the preview and the position hasn't changed
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
-		if len(new_buildings) == len(self.buildings) == 1 and \
+		if not force and len(new_buildings) == len(self.buildings) == 1 and \
 		   new_buildings[0] == self.buildings[0]:
 			return # we don't want to redo the preview
 
@@ -252,7 +253,7 @@ class BuildingTool(NavigationTool):
 					callback = Callback(self._class.select_building, self.session, \
 					                    building.position, settlement)
 					ExtScheduler().rem_all_classinst_calls(self)
-					delay = 0.08 # Wait delay seconds
+					delay = 0.10 # Wait delay seconds
 					ExtScheduler().add_new_object(callback, self, delay)
 
 			else: # not buildable
@@ -409,8 +410,8 @@ class BuildingTool(NavigationTool):
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
 		if self.last_change_listener is not None:
-			if self.last_change_listener.has_change_listener(self.update_preview):
-				self.last_change_listener.remove_change_listener(self.update_preview)
+			if self.last_change_listener.has_change_listener(self.force_update):
+				self.last_change_listener.remove_change_listener(self.force_update)
 			if self.last_change_listener.has_change_listener(self.highlight_buildable):
 				self.last_change_listener.remove_change_listener(self.highlight_buildable)
 
@@ -423,13 +424,18 @@ class BuildingTool(NavigationTool):
 			if self.last_change_listener is not None:
 				if self.last_change_listener is self.ship:
 					self.last_change_listener.add_change_listener(self.highlight_buildable)
-				self.last_change_listener.add_change_listener(self.update_preview)
+				# Settlement changelistener
+				self.last_change_listener.add_change_listener(self.force_update)
 
-	def update_preview(self):
+
+	def force_update(self):
+		self.update_preview(force=True)
+
+	def update_preview(self, force=False):
 		"""Used as callback method"""
 		if self.startPoint is not None:
 			self.preview_build(self.startPoint,
-			                   self.startPoint if self.endPoint is None else self.endPoint)
+			                   self.startPoint if self.endPoint is None else self.endPoint, force=force)
 
 	def rotate_right(self):
 		self.rotation = (self.rotation + 270) % 360
