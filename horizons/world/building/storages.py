@@ -95,3 +95,12 @@ class MarketPlace(ProducerBuilding, StorageBuilding):
 	def select(self):
 		# storage buildings select whole settlement; market place should behave normally
 		return SelectableBuilding.select(self)
+
+	def _load_provided_resources(self):
+		"""Storages provide every res.
+		@see superclass doc
+		"""
+		provided_resources = []
+		for res in self.session.db.get_res(only_tradeable=False):
+			provided_resources.append(res[0])
+		return provided_resources
