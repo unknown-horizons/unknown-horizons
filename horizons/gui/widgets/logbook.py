@@ -98,7 +98,6 @@ class LogBook(object):
 	def _redraw(self):
 		"""Redraws gui. Necessary when current message has changed."""
 		texts = [u'', u'']
-		print 'redraw'
 		if len(self._messages) != 0: # there is a current message if there is a message
 			texts[0] = self._messages[self._cur_message]
 			if self._cur_message+1 < len(self._messages): # maybe also right one
@@ -106,12 +105,12 @@ class LogBook(object):
 		#import pdb ; pdb.set_trace()
 		#texts = ['default0', 'default1']
 
-		print '0: ', texts[0]
-		print '1: ', texts[1]
+		#print '0: ', texts[0]
+		#print '1: ', texts[1]
 		self._gui.findChild(name="lbl_left").text = texts[0]
-		print 'set left'
+		#print 'set left'
 		self._gui.findChild(name="lbl_right").text = texts[1]
-		print 'set right'
+		#print 'set right'
 		self._gui.adaptLayout()
-		print 'layaout adapted'
+		#print 'layaout adapted'
 
