@@ -49,7 +49,10 @@ class LogBook(object):
 		"""Adds a message to the logbook"""
 		message = unicode(message)
 		self._messages.append(message)
-		self._cur_message = len(self._messages) - 1
+		if len(self._messages) % 2 == 1:
+			self._cur_message = len(self._messages) - 1
+		else:
+			self._cur_message = len(self._messages) - 2
 		self._redraw()
 
 	def show(self):
@@ -75,7 +78,7 @@ class LogBook(object):
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""
-		assert direction in (-1, 1)
+		#assert direction in (-1, 1)
 		new_cur = self._cur_message + direction
 		if new_cur < 0 or new_cur >= len(self._messages):
 			return # invalid scroll
@@ -86,8 +89,8 @@ class LogBook(object):
 		"""Initial init of gui."""
 		self._gui = load_xml_translated("captains_log.xml")
 		self._gui.mapEvents({
-		  'backwardButton' : Callback(self._scroll, -1),
-		  'forwardButton' : Callback(self._scroll, 1),
+		  'backwardButton' : Callback(self._scroll, -2),
+		  'forwardButton' : Callback(self._scroll, 2),
 		  'cancelButton' : self.hide
 		  })
 		center_widget(self._gui)
@@ -97,13 +100,9 @@ class LogBook(object):
 		texts = [u'', u'']
 		print 'redraw'
 		if len(self._messages) != 0: # there is a current message if there is a message
-			if self._cur_message == 0: # special case, current one is left since there are no older messages
-				texts[0] = self._messages[self._cur_message]
-				if self._cur_message+1 < len(self._messages): # maybe also right one
-					texts[1] = self._messages[self._cur_message+1]
-			else: # default case; current message on right side
-				texts[0] = self._messages[self._cur_message-1]
-				texts[1] = self._messages[self._cur_message]
+			texts[0] = self._messages[self._cur_message]
+			if self._cur_message+1 < len(self._messages): # maybe also right one
+				texts[1] = self._messages[self._cur_message+1]
 		#import pdb ; pdb.set_trace()
 		#texts = ['default0', 'default1']
 
