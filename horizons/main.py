@@ -106,6 +106,8 @@ def start(command_line_arguments):
 		startup_worked = _start_random_map()
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map)
+	elif command_line_arguments.start_campaign is not None:
+		startup_worked = _start_map(command_line_arguments.start_campaign, True)
 	elif command_line_arguments.load_map is not None:
 		startup_worked = _load_map(command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
@@ -189,14 +191,14 @@ def save_game(savegamename=None):
 
 	return True
 
-def load_game(savegame = None):
+def load_game(savegame = None, game_data = {}):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return # user aborted dialog
 	_modules.gui.show_loading_screen()
-	start_singleplayer(savegame)
+	start_singleplayer(savegame, game_data)
 
 
 def _init_gettext(fife):
@@ -214,18 +216,21 @@ def _start_dev_map():
 	load_game(first_map)
 	return True
 
-def _start_map(map_name):
+def _start_map(map_name, campaign = False):
 	"""Start a map specified by user
 	@return: bool, whether loading succeded"""
-	maps = SavegameManager.get_maps()
+	maps = SavegameManager.get_scenarios() if campaign else SavegameManager.get_maps()
 	map_file = None
+	game_data = {}
+	if campaign:
+		game_data['is_scenario'] = True
 	try:
 		map_id = maps[1].index(map_name)
 		map_file = maps[0][map_id]
 	except ValueError:
 		print _("Error: Cannot find map \"%s\".") % map_name
 		return False
-	load_game(map_file)
+	load_game(map_file, game_data)
 	return True
 
 def _start_random_map():
