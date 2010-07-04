@@ -90,8 +90,6 @@ def get_option_parser():
 	                          help=_("Starts a random map."))
 	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
 														help=_("Starts <campaign>. <campaign> is the campaignname."))
-	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
-														help=_("Starts <campaign>. <campaign> is the campaignname."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
 			default=False, help=_("Starts the development map without displaying the main menu."))
 	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
