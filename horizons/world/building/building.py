@@ -62,8 +62,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def __init(self, origin, rotation, owner, instance, level):
 		self._action_set_id = self.session.db.get_random_action_set(self.id, level)[0]
-		self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
+		if self.rotation in [135, 315]: # Rotate the rect correctly
+			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
+		else:
+			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.owner = owner
 		self.level = level
 		if instance is None: # generate an instance if we don't have one
