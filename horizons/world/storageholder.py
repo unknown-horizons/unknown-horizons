@@ -42,9 +42,8 @@ class StorageHolder(object):
 		self.__init()
 
 	def __init(self):
-		if self.has_own_inventory:
-			self.create_inventory()
-			self.inventory.add_change_listener(self._changed)
+		self.create_inventory()
+		self.inventory.add_change_listener(self._changed)
 
 	def remove(self):
 		super(StorageHolder, self).remove()

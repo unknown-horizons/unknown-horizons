@@ -39,11 +39,10 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
-		self.__init(self.settlement)
 		self.inventory.adjust_limits(STORAGE.DEFAULT_STORAGE_SIZE)
 
-	def __init(self, settlement):
-		self.inventory = settlement.inventory
+	def create_inventory(self):
+		self.inventory = self.settlement.inventory
 		self.inventory.add_change_listener(self._changed)
 
 	def remove(self):
@@ -57,7 +56,6 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		# workaround to get settlement (self.settlement is assigned just after loading)
 		settlement_id = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
 		settlement = WorldObject.get_object_by_id(int(settlement_id))
-		self.__init(settlement)
 
 	def select(self):
 		"""Runs necessary steps to select the unit."""
