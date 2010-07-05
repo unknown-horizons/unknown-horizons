@@ -47,6 +47,7 @@ class GeneralLoader(object):
 		fl = {}
 
 		entries = glob.glob(os.path.join(dir, "*.png"))
+		entries.sort() # Make sure entries are in the correct order
 
 		i = 1
 		for file in entries:
