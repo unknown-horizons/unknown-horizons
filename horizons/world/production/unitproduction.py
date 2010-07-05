@@ -69,8 +69,8 @@ class UnitProduction(Production):
 	def _produce(self):
 		# check if we're done
 		still_needed_res = sum(self._prod_line.consumed_res.itervalues())
-		print self
-		print still_needed_res
+		#print self
+		#print still_needed_res
 		if still_needed_res == 0:
 			self._finished_producing()
 			return
