@@ -277,16 +277,23 @@ class SoldierPather(AbstractPather):
 			return super(SoldierPather, self)._check_for_obstacles(point)
 
 
-class RoadBuilderPather(object):
-	"""Pather for building roads. Searches possible road from A to B.
+class StaticPather(object):
+	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
-	@staticmethod
-	def get_path(session, source, destination):
-		"""Returns a path from source to destination, if one exists.
+	@classmethod
+	def get_direct_path(cls, island, source, destination):
+		"""Returns shortest direct path.
+		Useful for building roads.
+		@param island: island to search path on
 		@param source, destination: Point or anything supported by FindPath
 		@return: list of tuples or None in case no path is found"""
-		island = session.world.get_island(source)
-		if island is None:
-			return None
 		return FindPath()(source, destination, island.path_nodes.nodes)
+
+	@classmethod
+	def get_path_on_roads(cls, island, source, destination):
+		"""Returns a path that runs only on roads.
+		@param island: island to search path on
+		@param source, destination: Point or anything supported by FindPath
+		@return: list of tuples or None in case no path is found"""
+		return FindPath()(source, destination, island.path_nodes.road_nodes)
 

@@ -26,10 +26,9 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import WorldObject
 from horizons.constants import LAYERS, GROUND
 
-class SurfaceTile(WorldObject):
+class SurfaceTile(object):
 	is_water = False
 	layer = LAYERS.GROUND
 	def __init__(self, session, x, y):
@@ -38,7 +37,6 @@ class SurfaceTile(WorldObject):
 		@param x: int x position the ground is created.
 		@param y: int y position the ground is created.
 		"""
-		super(SurfaceTile, self).__init__()
 		self.x = x
 		self.y = y
 

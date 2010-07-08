@@ -96,7 +96,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
 		def tmp():
-			self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
+			if self.session.world.player == self.owner:
+				self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
 		tmp()
 		move_target = Point(int(round(x)), int(round(y)))
 		try:
@@ -114,8 +115,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 						continue
 					target_found = True
 					break
-		if self.position.x != move_target.x or self.position.y != move_target.y:
-			move_target = self.get_move_target()
+		if self.session.world.player == self.owner:
+			if self.position.x != move_target.x or self.position.y != move_target.y:
+				move_target = self.get_move_target()
 			if move_target is not None:
 				loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
 				loc.thisown = 0
@@ -127,8 +129,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 				)
 
-	def get_default_name(self):
-		return horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
+	def _possible_names(self):
+		names = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1")
+		return map(lambda x: x[0], names)
 
 	def save(self, db):
 		super(Ship, self).save(db)
@@ -150,8 +153,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
-	def get_default_name(self):
-		return horizons.main.db("SELECT name FROM data.shipnames WHERE for_pirates = 1 ORDER BY random() LIMIT 1")[0][0]
+	def _possible_names(self):
+		names = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1")
+		return map(lambda x: x[0], names)
+
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""

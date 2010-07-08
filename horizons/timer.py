@@ -37,6 +37,7 @@ class Timer(LivingObject):
 
 	def __init__(self, tick_next_id = 0):
 		"""
+		NOTE: timer will not start until activate() is called
 		@param tick_next_id: int next tick id
 		"""
 		super(Timer, self).__init__()
@@ -45,10 +46,14 @@ class Timer(LivingObject):
 		self.tick_next_time = None
 		self.tick_func_test = []
 		self.tick_func_call = []
+
+	def activate(self):
+		"""Acctually starts the timer"""
 		horizons.main.fife.pump.append(self.check_tick)
 
 	def end(self):
-		horizons.main.fife.pump.remove(self.check_tick)
+		if self.check_tick in horizons.main.fife.pump:
+			horizons.main.fife.pump.remove(self.check_tick)
 		super(Timer, self).end()
 
 	def add_test(self, call):
@@ -90,7 +95,9 @@ class Timer(LivingObject):
 			for f in self.tick_func_test:
 				r = f(self.tick_next_id)
 				if r == self.TEST_SKIP:
-					self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+					# If a callback changed the speed to zero, we have to exit
+					if self.ticks_per_second != 0:
+						self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
 				elif r == self.TEST_RETRY_RESET_NEXT_TICK_TIME:
 					self.tick_next_time = None
 				elif r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:

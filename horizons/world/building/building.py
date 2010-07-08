@@ -36,10 +36,7 @@ from horizons.world.building.buildable import BuildableSingle
 
 
 class BasicBuilding(AmbientSound, ConcretObject):
-	"""Class that represents a building. The building class is mainly a super class for other buildings.
-	@param x, y: int position of the building.
-	@param owner: Player that owns the building.
-	@param instance: fife.Instance - only singleplayer: preview instance from the buildingtool."""
+	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
 	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
@@ -51,17 +48,22 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	log = logging.getLogger("world.building")
 
-	def __init__(self, x, y, rotation, owner, island, instance = None, level=0, **kwargs):
+	"""
+	@param x, y: int position of the building.
+	@param owner: Player that owns the building.
+	"""
+	def __init__(self, x, y, rotation, owner, island, level=0, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
-																				instance=instance, island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner, instance, level)
+				island=island, **kwargs)
+		self.__init(Point(x, y), rotation, owner, level)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
 			self.island.add_settlement(self.position, self.radius, owner) if \
 			owner is not None else None
 
-	def __init(self, origin, rotation, owner, instance, level):
+	def __init(self, origin, rotation, owner, level):
 		self._action_set_id = self.session.db.get_random_action_set(self.id, level)[0]
+		self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		if self.rotation in [135, 315]: # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
@@ -69,10 +71,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.owner = owner
 		self.level = level
-		if instance is None: # generate an instance if we don't have one
-			self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation)
-		else:
-			self._instance = instance
+		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation)
 		self._instance.setId(str(self.getId()))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
@@ -80,9 +79,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			     runin=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
 
 		# play ambient sound, if available every 30 seconds
-		play_every = 15 + randint(0, 15)
-		for soundfile in self.soundfiles:
-			self.play_ambient(soundfile, True, play_every)
+		if self.session.world.player == self.owner:
+			play_every = 15 + randint(0, 15)
+			for soundfile in self.soundfiles:
+				self.play_ambient(soundfile, True, play_every)
 
 	@property
 	def name(self):
@@ -106,9 +106,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.removeOutlined(self._instance)
-		renderer.removeAllColored()
+		# NOTE: removing layers from the renderer here will affect others players too!
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
@@ -126,7 +124,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
 
-		self.__init(Point(x, y), rotation, owner, None, level)
+		self.__init(Point(x, y), rotation, owner, level)
 
 		self.island, self.settlement = self.load_location(db, worldid)
 
@@ -246,7 +244,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-		                                 self.getId(create_if_nonexistent=False))
+		                                 self.getId())
 
 
 
@@ -270,7 +268,8 @@ class SelectableBuilding(object):
 
 	def remove(self):
 		super(SelectableBuilding, self).remove()
-		self.deselect()
+		if self.owner == self.session.world.player:
+			self.deselect()
 
 	@classmethod
 	def select_building(cls, session, position, settlement):

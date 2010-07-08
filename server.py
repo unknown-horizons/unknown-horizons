@@ -21,15 +21,43 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from game.network import Socket
-from game.packets import *
+#!/usr/bin/python
 
-## TODO: create cmdline interface for serverconnection
+import getopt
+import sys
+from horizons import network
+from horizons.network.server import Server
 
-def receive(packet):
-	if isinstance(packet, QueryPacket):
-		socket.send(InfoPacket(packet.address, packet.port, 'demo', 2, 0, 8))
+def usage():
+	print "Usage: %s -h host [-p port]" % (sys.argv[0])
 
-socket = Socket(62666)
-socket.receive = receive
-socket._pump(True)
+host = None
+port = 2001
+
+try:
+	opts, args = getopt.getopt(sys.argv[1:], 'h:p:')
+except getopt.GetoptError, err:
+	print str(err)
+	usage()
+	sys.exit(1)
+
+try:
+	for (key, value) in opts:
+		if key == '-h':
+			host = value
+		if key == '-p':
+			port = int(value)
+except ValueError, IndexError:
+	port = 0
+
+if host == None or port == None or port <= 0:
+	usage()
+	sys.exit(1)
+
+try:
+	server = Server(host, port)
+	server.run()
+except network.NetworkException, e:
+	print "Error: %s" % (e)
+	sys.exit(2)
+

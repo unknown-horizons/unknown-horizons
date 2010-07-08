@@ -176,3 +176,12 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT production_line FROM upgrade_material WHERE level = ?",
 		                         level)[0][0]
 
+
+	# Misc
+
+	def get_player_start_res(self):
+		"""Returns resources, that players should get at startup as dict: { res : amount }"""
+		ret = {}
+		for res, amount in self.cached_query("SELECT resource, amount FROM player_start_res"):
+			ret[res] = amount
+		return ret

@@ -171,6 +171,16 @@ class PATHS:
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sqlite")
 
+## MULTIPLAYER
+class MULTIPLAYER:
+	MAX_PLAYER_COUNT = 8
+
+class NETWORK:
+	SERVER_ADDRESS = "master.unknown-horizons.org"
+	SERVER_PORT = 2001
+	CLIENT_ADDRESS = None
+	CLIENT_PORT = 0
+
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)

@@ -64,7 +64,7 @@ class ShipInventoryTab(InventoryTab):
 		self.tooltip = u"Ship Inventory"
 
 	def refresh(self):
-		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius)
+		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius, self.instance.owner)
 		if len(branches) > 0:
 			events = { 'trade': pychan.tools.callbackWithArguments(self.instance.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
 			self.widget.mapEvents(events)

@@ -368,25 +368,24 @@ class BuildingTool(NavigationTool):
 
 		# acctually do the build and build preparations
 		for building in self.buildings:
-			# remove fife instance from here, it's now owned by the acctual building or deleted
+			# remove fife instance, the building will create a new one.
 			fife_instance = self.buildings_fife_instances.pop(building)
+			fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 
 			if building.buildable:
 				built = True
 				self._remove_listeners() # Remove changelisteners for update_preview
 				self.renderer.removeColored(fife_instance)
 				# create the command and execute it
-				cmd = Build(session=self.session, building=self._class, \
+				cmd = Build(building=self._class, \
 				            x=building.position.origin.x, \
 				            y=building.position.origin.y, \
 				            rotation=building.rotation, \
-				            instance=fife_instance, \
 				            island=self.session.world.get_island(building.position.origin), \
 				            settlement=self.session.world.get_settlement(building.position.origin), \
 				            ship=self.ship)
 				cmd.execute(self.session)
 			else:
-				fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 				# check whether to issue a missing res notification
 				if building in self.buildings_missing_resources:
 					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
@@ -395,7 +394,7 @@ class BuildingTool(NavigationTool):
 					                                           'NEED_MORE_RES', {'resource' : res_name})
 
 		if built:
-			PlaySound("build").execute(self.session)
+			PlaySound("build").execute(self.session, True)
 			if self.gui is not None:
 				self.gui.hide()
 		self.buildings = []

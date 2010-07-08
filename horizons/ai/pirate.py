@@ -43,7 +43,7 @@ class Pirate(AIPlayer):
 
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y).execute(self.session)
+		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 		self.ships[ship] = self.shipStates.idle
 		for ship in self.ships.keys():
 			Scheduler().add_new_object(Callback(self.send_ship, ship), self)

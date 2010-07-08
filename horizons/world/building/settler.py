@@ -31,11 +31,15 @@ from horizons.constants import RES, BUILDINGS, GAME
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
-from horizons.world.units.collectors import BuildingCollector
 from horizons.util import Callback
+from horizons.world.pathfinding.pather import StaticPather
 
-class SettlerRuin(BasicBuilding):
-	"""Building that appears when a settler got unhappy. The building does nothing."""
+class SettlerRuin(BasicBuilding, BuildableSingle):
+	"""Building that appears when a settler got unhappy. The building does nothing.
+
+	NOTE: Inheriting from BuildableSingle is necessary, cause it's built via Build Command, which
+	checks for buildability
+	"""
 	buildable_upon = True
 
 class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, BasicBuilding):
@@ -51,7 +55,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 		self.__init(_CONSTANTS.HAPPINESS_INIT_VALUE)
 		self.run()
-		# give the user 30 seconds to build a market place in range
+		# give the user a month (about 30 seconds) to build a market place in range
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
 
@@ -192,13 +196,14 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			# remove when this function is done
 			Scheduler().add_new_object(self.remove, self)
 			# replace this building with a ruin
-			command = Build(self.session, BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
+			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
 			callback = Callback(command.execute, self.session)
 			Scheduler().add_new_object(callback, command, 2)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
-			self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
+			if self.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
 			                                           'SETTLERS_MOVED_OUT')
 		else:
 			self.level -= 1
@@ -210,19 +215,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def _check_market_place_in_range(self):
 		"""Notifies the user via a message in case there is no market place in range"""
-		assert self.owner == self.session.world.player # only do it for local player
-		# FIXME: this implementation is really ugly and will break sooner or later
-		class _DummyUnit(BuildingCollector):
-			def __init__(_self):
-				_self.home_building = self
-				_self.position = self.position.center()
-				_self.path = None
-				_self.is_moving = lambda : False
-		dummy_unit = _DummyUnit()
-		pather = BuildingCollector.pather_class(dummy_unit, session=self.session)
-		for building in dummy_unit.get_buildings_in_range():
+		for building in self.get_buildings_in_range():
 			if building.id == BUILDINGS.MARKET_PLACE_CLASS:
-				if pather.calc_path(building, destination_in_building=True, check_only =True):
+				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
 					# a market place is in range
 					return
 		# no market place found

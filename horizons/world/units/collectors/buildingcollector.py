@@ -104,6 +104,11 @@ class BuildingCollector(Collector):
 					if job is not None:
 						jobs.append(job)
 
+		# TODO: find out why order of  self.get_buildings_in_range(..) and therefor order of jobs differs from client to client
+		# TODO: find out why WindAnimal.get_job(..) doesn't have this problem
+		# for MP-Games the jobs must have the same ordering to ensure get_best_possible_job(..) returns the same result
+		jobs.sort(key=lambda job: job.object.getId())
+
 		return self.get_best_possible_job(jobs)
 
 	def finish_working(self, collector_already_home=False):
@@ -146,7 +151,8 @@ class BuildingCollector(Collector):
 		Overwrite in subclasses that need ranges around the pickup.
 		@param res: optional, only search for buildings that provide res"""
 		reach = Circle(self.home_building.position.center(), self.home_building.radius)
-		return self.home_building.island.get_providers_in_range(reach, reslist=reslist)
+		return self.home_building.island.get_providers_in_range(reach, reslist=reslist, \
+		                                                        player=self.owner)
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""

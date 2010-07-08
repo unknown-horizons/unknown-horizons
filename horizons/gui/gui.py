@@ -28,16 +28,13 @@ import logging
 import horizons.main
 
 from horizons.savegamemanager import SavegameManager
-from horizons.serverlist import WANServerList, LANServerList, FavoriteServerList
-from horizons.serverlobby import MasterServerLobby, ClientServerLobby
-from horizons.network import ServerConnection, ClientConnection
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
 from horizons.gui.utility import center_widget, LazyWidgetsDict
 
-from horizons.gui.modules import SingleplayerMenu
+from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 
-class Gui(SingleplayerMenu):
+class Gui(SingleplayerMenu, MultiplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 
 	"""
@@ -57,6 +54,10 @@ class Gui(SingleplayerMenu):
 	  'help': 'book',
 	  'quitsession': 'book',
 	  'singleplayermenu': 'book',
+	  'multiplayermenu' : 'book',
+	  'multiplayer_creategame' : 'book',
+	  'multiplayer_gamelobby' : 'book',
+	  'playerdataselection' : 'book',
 	  'serverlist': 'menu',
 	  'serverlobby': 'menu',
 	  'select_savegame': 'book',
@@ -72,14 +73,14 @@ class Gui(SingleplayerMenu):
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
-			'startSingle'  : self.show_single,
-			'startMulti'   : self.show_multi,
-		    'settingsLink' : horizons.main.fife._setting.onOptionsPress,
-			'creditsLink'  : self.show_credits,
-			'closeButton'  : self.show_quit,
-			'helpLink'     : self.on_help,
+			'startSingle'    : self.show_single,
+			'startMulti'     : self.show_multi,
+			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
+			'creditsLink'    : self.show_credits,
+			'closeButton'    : self.show_quit,
+			'helpLink'       : self.on_help,
 			'loadgameButton' : horizons.main.load_game,
-			'dead_link'	 : self.on_chime
+			'dead_link'      : self.on_chime
 		})
 		self.on_escape = self.show_quit
 
@@ -139,13 +140,13 @@ class Gui(SingleplayerMenu):
 		Show Pause menu
 		"""
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
-			'startGame'    : self.return_to_game,
-			'closeButton'  : self.quit_session,
+			'startGame'      : self.return_to_game,
+			'closeButton'    : self.quit_session,
 			'savegameButton' : horizons.main.save_game,
 			'loadgameButton' : horizons.main.load_game,
-			'helpLink'	 : self.on_help,
-		    'settingsLink' : horizons.main.fife._setting.onOptionsPress,
-			'dead_link'	 : self.on_chime
+			'helpLink'       : self.on_help,
+			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
+			'dead_link'      : self.on_chime
 		})
 		self.session.speed_pause()
 		self.on_escape = self.return_to_game
@@ -186,13 +187,17 @@ class Gui(SingleplayerMenu):
 			help_dlg.hide()
 			self.on_escape = self.show_pause
 
-	def quit_session(self):
-		"""Quits the current session"""
-		if self.show_dialog(self.widgets['quitsession'],  {'okButton': True, 'cancelButton': False}, onPressEscape=False):
+	def quit_session(self, force=False):
+		"""Quits the current session.
+		@param force: whether to ask for confirmation"""
+		if force or \
+		   self.show_dialog(self.widgets['quitsession'],  \
+		                    {'okButton': True, 'cancelButton': False}, onPressEscape=False):
 			self.current.hide()
 			self.current = None
-			self.session.end()
-			self.session = None
+			if self.session is not None:
+				self.session.end()
+				self.session = None
 
 			self.show_main()
 
@@ -205,146 +210,6 @@ class Gui(SingleplayerMenu):
 
 	def on_escape(self):
 		pass
-
-	def show_multi(self):
-		# Remove this after it has been implemented.
-		self.show_popup(_("Not yet implemented"), _("Sorry, multiplayer has not been implemented yet."))
-		return
-		if self.current is not None:
-			# delete serverlobby and (Server|Client)Connection
-			try:
-				self.current.serverlobby.end()
-			except AttributeError:
-				pass
-			self.current.serverlobby = None
-			horizons.main.connection = None
-			self.current.hide()
-
-		self.current = self.widgets['serverlist']
-		center_widget(self.current)
-		self.current.server = []
-		def _close():
-			self.current.serverList.end()
-			self.current.serverList = None
-			self.show_main()
-		event_map = {
-			'cancel'  : _close,
-			'create'  : self.show_create_server,
-			'join'    : self.show_join_server
-		}
-		self.current.mapEvents(event_map)
-		self.current.show()
-		self.on_escape = _close
-		self.current.oldServerType = None
-		self.list_servers()
-
-	def list_servers(self, serverType = 'internet'):
-		"""
-		@param serverType:
-		"""
-		self.current.mapEvents({
-			'refresh'       : pychan.tools.callbackWithArguments(self.list_servers, serverType),
-			'showLAN'       : pychan.tools.callbackWithArguments(self.list_servers, 'lan') if serverType != 'lan' else lambda : None,
-			'showInternet'  : pychan.tools.callbackWithArguments(self.list_servers, 'internet') if serverType != 'internet' else lambda : None,
-			'showFavorites' : pychan.tools.callbackWithArguments(self.list_servers, 'favorites') if serverType != 'favorites' else lambda : None
-		})
-		self.current.distributeData({
-			'showLAN'       : serverType == 'lan',
-			'showInternet'  : serverType == 'internet',
-			'showFavorites' : serverType == 'favorites'
-		})
-
-		if self.current.oldServerType != serverType:
-			# deselect server when changing mode
-			self.current.distributeData({'list' : -1})
-			if self.current.oldServerType is not None:
-				self.current.serverList.end()
-			if serverType == 'internet':
-				self.current.serverList = WANServerList()
-			elif serverType == 'lan':
-				self.current.serverList = LANServerList()
-			elif serverType == 'favorites':
-				self.current.serverList = FavoriteServerList()
-		else:
-			self.current.serverList.changed = lambda : None
-			self.current.serverList.update()
-		def _changed():
-			servers = []
-			for server in self.current.serverList:
-				servers.append(str(server))
-			self.current.distributeInitialData({'list' : servers})
-		_changed()
-		self.current.serverList.changed = _changed
-		self.current.oldServerType = serverType
-
-	def show_create_server(self):
-		"""Interface for creating a server
-
-		Here, the game master can set details about a multiplayer horizons.
-		"""
-		if self.current is not None:
-			self.current.serverList.end()
-			self.current.hide()
-		self.current = self.widgets['serverlobby']
-		center_widget(self.current)
-
-		horizons.main.connection = ServerConnection(Settings().network.port)
-
-		self.current.serverlobby = MasterServerLobby(self.current)
-		self.current.serverlobby.update_gui()
-
-		def _cancel():
-			horizons.main.connection.end()
-			self.current.serverlobby.end()
-			horizons.main.connection = None
-			self.current.serverlobby = None
-			self.show_multi()
-
-		self.current.mapEvents({
-			'startMulti' : horizons.main.startMulti,
-			'cancel' : _cancel
-		})
-
-		self.current.show()
-		self.on_escape = self.show_multi
-
-
-	def show_join_server(self):
-		"""Interface for joining a server
-
-		The user can select username & color here
-		and map & player are displayed (read-only)
-		"""
-		#if gui is not None:
-		# gui has to be not None, otherwise the selected server
-		# couldn't be retrieved
-
-		server_id = self.current.collectData('list')
-		if server_id == -1: # no server selected
-			self.show_popup(_('Error'), _('You have to select a server'))
-			return
-		server = self.current.serverList[server_id]
-		self.current.serverList.end()
-		self.current.hide()
-
-		horizons.main.connection = ClientConnection()
-		horizons.main.connection.join(server.address, server.port)
-		self.current = self.widgets['serverlobby']
-		center_widget(self.current)
-		self.current.serverlobby = ClientServerLobby(self.current)
-
-		def _cancel():
-			horizons.main.connection.end()
-			self.current.serverlobby.end()
-			horizons.main.connection = None
-			self.current.serverlobby = None
-			self.show_multi()
-
-		self.current.mapEvents({
-			'cancel' : _cancel
-		})
-		self.current.show()
-		self.on_escape = self.show_multi
 
 	def _delete_savegame(self, map_files):
 		"""Deletes the selected savegame if the user confirms
@@ -474,15 +339,16 @@ class Gui(SingleplayerMenu):
 	def show_loading_screen(self):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
 
-	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False):
+	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False, hide_old=False):
 		"""Switches self.current to a new widget.
 		@param new_widget: str, widget name
 		@param center: bool, whether to center the new widget
 		@param event_map: pychan event map to apply to new widget
 		@param show: bool, if True old window gets hidden and new one shown
+		@param hide_old: bool, if True old window gets hidden. Implied by show
 		@return: instance of old widget"""
 		old = self.current
-		if show and old is not None:
+		if (show or hide_old) and old is not None:
 			self.log.debug("Gui: hiding %s", old)
 			old.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)

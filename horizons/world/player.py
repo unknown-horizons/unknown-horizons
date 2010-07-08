@@ -29,25 +29,24 @@ from horizons.campaign import CONDITIONS
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
 
-	def __init__(self, session, id, name, color, inventory = {}):
+	def __init__(self, session, worldid, name, color, inventory = {}):
 		"""
 		@param session: Session instance
-		@param id: unique player id
+		@param worldid: player's worldid
 		@param name: user-chosen name
 		@param color: color of player (as Color)
 		@param inventory: {res: value} that are put in the players inventory
 		"""
 		self.session = session
-		super(Player, self).__init__()
-		self.__init(id, name, color)
+		super(Player, self).__init__(worldid=worldid)
+		self.__init(name, color)
 
 		for res, value in inventory.iteritems():
 			self.inventory.alter(res, value)
 
-	def __init(self, id, name, color, settlerlevel = 0):
+	def __init(self, name, color, settlerlevel = 0):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
-		self.id = id
 		self.name = name
 		self.color = color
 		self.settler_level = settlerlevel

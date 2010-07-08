@@ -151,7 +151,7 @@ class Unit(AmbientSound, MovingObject):
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-																		 self.getId(create_if_nonexistent=False))
+																		 self.getId())
 
 
 

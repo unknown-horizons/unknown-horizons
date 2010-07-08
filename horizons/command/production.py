@@ -20,11 +20,18 @@
 # ###################################################
 
 from horizons.command import GenericCommand
+from horizons.util import WorldObject
 
 class ToggleActive(GenericCommand):
 	"""Sets a production to active/inactive."""
 	def __init__(self, obj, production=None):
-		super(ToggleActive, self).__init__(obj, "toggle_active", production=production)
+		super(ToggleActive, self).__init__(obj, "toggle_active")
+		self._production = None if production is None else production.getId()
+
+	def __call__(self, issuer):
+		# NOTE: special call method, cause production must be saved as id, not as Production obj
+		getattr(self._get_object(), self.method)( None if self._production is None else \
+		                                          WorldObject.get_object_by_id(self._production) )
 
 
 class AddProduction(GenericCommand):

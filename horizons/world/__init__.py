@@ -27,9 +27,8 @@ import random
 import logging
 
 import horizons.main
-
-from island import Island
-from player import Player, HumanPlayer
+from horizons.world.island import Island
+from horizons.world.player import Player, HumanPlayer
 from horizons.util import Point, Color, Rect, LivingObject, Circle
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND
 from horizons.ai.trader import Trader
@@ -94,7 +93,7 @@ class World(LivingObject):
 
 		# load player
 		human_players = []
-		for player_id, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
+		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
 			player = None
 			# check if player is an ai
 			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
@@ -103,9 +102,9 @@ class World(LivingObject):
 				# import ai class and call load on it
 				module = __import__('horizons.ai.'+class_package, fromlist=[class_name])
 				ai_class = getattr(module, class_name)
-				player = ai_class.load(self.session, savegame_db ,player_id)
+				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai
-				player = HumanPlayer.load(self.session, savegame_db, player_id)
+				player = HumanPlayer.load(self.session, savegame_db, player_worldid)
 			self.players.append(player)
 
 			if client_id == horizons.main.fife.get_uh_setting("ClientID"):
@@ -130,7 +129,7 @@ class World(LivingObject):
 
 		#load islands
 		self.islands = []
-		for (islandid,) in savegame_db("SELECT rowid FROM island"):
+		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
 			island = Island(savegame_db, islandid, self.session)
 			self.islands.append(island)
 
@@ -197,6 +196,10 @@ class World(LivingObject):
 		"""This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
 
+		NOTE: commands for creating the world objects are executed directly, bypassing the manager
+		      this is necessary, because else the commands would be transmitted over the wire
+					in network games.
+
 		@return: Returs the coordinates of the players first ship
 		"""
 		# workaround: the creation of all the objects causes a lot of logging output, we don't need
@@ -216,21 +219,20 @@ class World(LivingObject):
 			max_clay_deposits = self.session.random.randint(2, 3)
 			for island in self.islands:
 				num_clay_deposits = 0
-				for coords, tile in island.ground_map.iteritems():
+				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
+				for coords, tile in sorted(island.ground_map.iteritems()):
 					# add tree to every nth tile
 					if self.session.random.randint(0, 2) == 0 and Tree.check_build(self.session, tile, \
 																				                    check_settlement=False):
-						cmd = Build(self.session, Tree, coords[0], coords[1], ownerless=True,island=island)
-						building = cmd.execute(self.session)
+						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
 						building.finish_production_now() # make trees big and fill their inventory
 						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
-							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *coords).execute(self.session)
+							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
 							 self.session.random.randint(0, 30) == 0 and \
 							 Clay.check_build(self.session, tile, check_settlement=False):
 						num_clay_deposits += 1
-						cmd = Build(self.session, Clay, coords[0], coords[1], ownerless=True, island=island)
-						cmd.execute(self.session)
+						cmd = Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
@@ -242,7 +244,9 @@ class World(LivingObject):
 		for player in self.players:
 			# Adding ships for the players
 			point = self.get_random_possible_ship_position()
-			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y).execute(self.session)
+			# Execute command directly, not via manager, because else it would be transmitted over the
+			# network to other players. Those however will do the same thing anyways.
+			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.inventory.alter(res, amount)
@@ -262,35 +266,27 @@ class World(LivingObject):
 	@decorators.make_constants()
 	def get_random_possible_ship_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
-		rand_water_id = self.session.random.randint(0, self.num_water-1)
-		ground_iter = self.ground_map.iterkeys()
-		for i in xrange(0, rand_water_id-1):
-			ground_iter.next()
-		x, y = ground_iter.next()
-
 		offset = 2
-		position_possible = True
-		if x - offset < self.min_x or x + offset > self.max_x or \
-			 y - offset < self.min_y or y + offset > self.max_y:
-			# we're too near to the border
-			position_possible = False
+		while True:
+			x = self.session.random.randint(self.min_x + offset, self.max_x - offset)
+			y = self.session.random.randint(self.min_y + offset, self.max_y - offset)
 
-		if (x, y) in self.ship_map:
-			position_possible = False
+			if (x, y) in self.ship_map:
+				continue # don't place ship where there is already a ship
 
-		# check if there is an island nearby (check only important)
-		for first_sign in (-1, 0, 1):
-			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + offset*first_sign, y + offset*second_sign )
-				if self.get_island(point_to_check) is not None:
-					position_possible = False
-					break
+			# check if there is an island nearby (check only important coords)
+			position_possible = True
+			for first_sign in (-1, 0, 1):
+				for second_sign in (-1, 0, 1):
+					point_to_check = Point( x + offset*first_sign, y + offset*second_sign )
+					if self.get_island(point_to_check) is not None:
+						position_possible = False
+						break
 			if not position_possible: # propagate break
-				break
+				continue
 
-		if not position_possible:
-			# in theory, this might result in endless loop, but in practice, it doesn't
-			return self.get_random_possible_ship_position()
+			break # all checks successful
+
 		return Point(x, y)
 
 	#----------------------------------------------------------------------
@@ -310,15 +306,19 @@ class World(LivingObject):
 				# don't yield if point is not in map, those points don't exist
 				yield self.get_tile(point)
 
-	def setup_player(self, name, color):
-		"""Sets up a new Player instance and adds him to the active world."""
-		inv = {}
-		for res, amount in horizons.main.db("SELECT resource, amount FROM player_start_res"):
-			inv[res] = amount
-		self.player =  HumanPlayer(self.session, 0, name, color, inventory=inv)
-		self.players.append(self.player)
-		self.session.ingame_gui.update_gold()
-		self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)
+	def setup_player(self, id, name, color, local):
+		"""Sets up a new Player instance and adds him to the active world.
+		@param local: bool, whether the player is the one sitting on front of this machine."""
+		inv = self.session.db.get_player_start_res()
+		player = None
+		if local:
+			player = HumanPlayer(self.session, id, name, color, inventory=inv)
+			self.player = player
+			self.session.ingame_gui.update_gold()
+			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)
+		else:
+			player = Player(self.session, id, name, color, inventory=inv)
+		self.players.append(player)
 
 	def get_tile(self, point):
 		"""Returns the ground at x, y.
@@ -378,11 +378,12 @@ class World(LivingObject):
 		return islands
 
 	@decorators.make_constants()
-	def get_branch_offices(self, position=None, radius=None):
+	def get_branch_offices(self, position=None, radius=None, owner=None):
 		"""Returns all branch offices on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
+		@param owner: Player instance, list only branch offices belonging to this player.
 		@return: List of branch offices.
 		"""
 		branchoffices = []
@@ -394,9 +395,12 @@ class World(LivingObject):
 		for island in islands:
 			for settlement in island.settlements:
 				for building in settlement.buildings:
+					# TODO: find a better way to find out if a building is a bo. possibly keep a list
+					#       of bo's per island/settlement
 					if isinstance(building, horizons.world.building.storages.BranchOffice):
-						if radius is None or position is None or \
-							 building.position.distance(position) <= radius:
+						if (radius is None or position is None or \
+							 building.position.distance(position) <= radius) and \
+								(owner is None or building.owner == owner):
 							branchoffices.append(building)
 		return branchoffices
 
@@ -434,6 +438,23 @@ class World(LivingObject):
 		for ship in self.ships:
 			ship.save(db)
 
+	def get_checkup_hash(self):
+		dict = {
+				'rngvalue': self.session.random.random(),
+				'settlements': [],
+			}
+		for island in self.islands:
+			for settlement in island.settlements:
+				entry = {
+						'owner': str(settlement.owner.getId()),
+						'tax_settings': str(settlement.tax_setting),
+						'inhabitants': str(settlement.inhabitants),
+						'cumulative_running_costs': str(settlement.cumulative_running_costs),
+						'cumulative_taxes': str(settlement.cumulative_taxes),
+						'inventory' : str(settlement.inventory._storage),
+					}
+				dict['settlements'].append(entry)
+		return dict
 
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""

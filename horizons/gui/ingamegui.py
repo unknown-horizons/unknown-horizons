@@ -32,6 +32,7 @@ from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
+from horizons.command.uioptions import RenameObject
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""
@@ -241,12 +242,12 @@ class IngameGui(LivingObject):
 		if source is not self.resource_source:
 			if self.resource_source is not None:
 				self.resource_source.remove_change_listener(self.update_resource_source)
-			if source is None:
+			if source is None or self.session.world.player != source.owner:
 				self.widgets['status'].hide()
 				self.widgets['status_extra'].hide()
 				self.resource_source = None
 				self.update_gold()
-		if source is not None:
+		if source is not None and self.session.world.player == source.owner:
 			if source is not self.resource_source:
 				source.add_change_listener(self.update_resource_source)
 			self.resource_source = source
@@ -443,21 +444,25 @@ class IngameGui(LivingObject):
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
 		if not (len(new_name) == 0 or new_name.isspace()):
-			instance.set_name(new_name)
+			RenameObject(instance, new_name).execute(self.session)
 		self.hide_change_name_dialog()
 
 	def toggle_ingame_pause(self):
 		"""Called when the hotkey for pause is pressed. Displays pause notification and does
 		the acctual (un)pausing."""
-		if not self.session.speed_is_paused():
+		if not hasattr(self, "_toggle_ingame_pause_shown"):
+			self._toggle_ingame_pause_shown = False
+		if not self._toggle_ingame_pause_shown:
 			self.session.speed_pause()
 			self.main_gui.on_escape = self.toggle_ingame_pause
 			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
 			self.widgets['ingame_pause'].show()
+			self._toggle_ingame_pause_shown = True
 		else:
 			self.main_gui.on_escape = self.main_gui.show_pause
 			self.widgets['ingame_pause'].hide()
 			self.session.speed_unpause()
+			self._toggle_ingame_pause_shown = False
 
 	def toggle_ingame_pdb_start(self):
 		"""Called when the hotkey for debug is pressed. Displays only debug notification."""

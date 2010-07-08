@@ -58,16 +58,18 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-	def add(self, x, y, id, message_dict=None):
+	def add(self, x, y, id, message_dict=None, play_sound = True):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place.
 		@param id: message id string, needed to retrieve the message from the database.
 		@param message_dict: template dict with the neccassary values. ( e.g.: {'player': 'Arthus'}
 		"""
 		# play a message sound, if one is specified in the database
-		sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
-		ON data.speech.group_id=data.message.speech_group_id WHERE data.message.id_string=? ORDER BY random() LIMIT 1",id)
-		sound = sound[0][0] if len(sound) > 0 else None
+		sound = None
+		if play_sound:
+			sound = horizons.main.db("SELECT data.speech.file FROM data.speech LEFT JOIN data.message \
+			ON data.speech.group_id=data.message.speech_group_id WHERE data.message.id_string=? ORDER BY random() LIMIT 1",id)
+			sound = sound[0][0] if len(sound) > 0 else None
 		self._add_message(Message(x, y, id, self.current_tick, message_dict=message_dict), sound)
 
 	def add_custom(self, x, y, messagetext, visible_for=40, sound=None, icon_id=1):

@@ -1,0 +1,14 @@
+<?xml version="1.0"?> 
+<HBox position="100,190" name="playerdataselection" border_size="1">
+	<VBox>
+		<Label name="player_label" text="Player name:" />
+		<Label name="color_label" text="Color:" />
+	</VBox>
+	<VBox>
+		<TextField name="playername" text="" size="150,16"/>
+		<ScrollArea min_size="70,150" >
+			<ListBox name="playercolor" />
+		</ScrollArea>
+	</VBox>
+</HBox>
+

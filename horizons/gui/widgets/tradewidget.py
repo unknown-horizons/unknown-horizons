@@ -25,6 +25,7 @@ import horizons.main
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import load_xml_translated
+from horizons.command.uioptions import TransferResource
 
 class TradeWidget(object):
 	log = logging.getLogger("gui.tradewidget")
@@ -92,9 +93,13 @@ class TradeWidget(object):
 
 	def hide(self):
 		self.widget.hide()
+		self.main_instance.inventory.remove_change_listener(self.draw_widget)
+		self.partner.inventory.remove_change_listener(self.draw_widget)
 
 	def show(self):
 		self.widget.show()
+		self.main_instance.inventory.add_change_listener(self.draw_widget)
+		self.partner.inventory.add_change_listener(self.draw_widget)
 
 	def set_exchange(self, size, initial = False):
 		"""
@@ -119,13 +124,7 @@ class TradeWidget(object):
 			 transfer_to is not None and transfer_from is not None:
 			self.log.debug('TradeWidget : Transferring %s of res %s from %s to %s', self.exchange, \
 			               res_id, transfer_from.name, transfer_to.name)
-			# take res from transfer_from
-			ret = transfer_from.inventory.alter(res_id, -self.exchange)
-			# check if we were able to get the planed amount
-			ret = self.exchange if self.exchange < abs(ret) else abs(ret)
-			# put res to transfer_to
-			ret = transfer_to.inventory.alter(res_id, self.exchange-ret)
-			transfer_from.inventory.alter(res_id, ret) #return resources that did not fit
+			TransferResource(self.exchange, res_id, transfer_from, transfer_to).execute(self.main_instance.session)
 			# update gui
 			self.draw_widget()
 
@@ -141,7 +140,7 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = self.main_instance.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius)
+		branch_offices = self.main_instance.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius, owner=self.main_instance.owner)
 		if branch_offices is not None:
 			partners.extend(branch_offices)
 		return partners

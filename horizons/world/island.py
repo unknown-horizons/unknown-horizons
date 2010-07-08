@@ -72,7 +72,7 @@ class Island(WorldObject):
 		# an island is always loaded from db, so __init__() basically is load()
 		super(Island, self).load(db, islandid)
 
-		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ?", islandid)[0]
+		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
 		self.__init(Point(x, y), filename)
 
 		# load settlements and buildings, if there are any
@@ -188,7 +188,7 @@ class Island(WorldObject):
 		except AttributeError:
 			return None
 
-	def get_settlements(self, rect):
+	def get_settlements(self, rect, player = None):
 		"""Returns the list of settlements for the coordinates describing a rect.
 		@param rect: Area to search for settlements
 		@return: list of Settlement instances at that position."""
@@ -196,7 +196,8 @@ class Island(WorldObject):
 		if self.rect.intersects(rect):
 			for point in rect:
 				try:
-					settlements.add( self.get_tile(point).settlement )
+					if player is None or self.get_tile(point).settlement.owner == player:
+						settlements.add( self.get_tile(point).settlement )
 				except AttributeError:
 					# some tiles don't have settlements, we don't explicitly check for them cause
 					# its faster this way.
@@ -215,7 +216,8 @@ class Island(WorldObject):
 		self.session.ingame_gui.message_widget.add(position.center().x, \
 		                                           position.center().y, \
 		                                           'NEW_SETTLEMENT', \
-		                                           {'player':player.name})
+		                                           {'player':player.name}, \
+		                                           self.session.world.player == player)
 		return settlement
 
 	def add_existing_settlement(self, position, radius, settlement):
@@ -241,7 +243,8 @@ class Island(WorldObject):
 			if tile is not None:
 				if tile.settlement == settlement:
 					continue
-				if (tile.settlement is None) or (tile.settlement.owner == settlement.owner):
+				if tile.settlement is None or \
+				   tile.settlement.owner == settlement.owner:
 					tile.settlement = settlement
 					self.session.ingame_gui.minimap.update(coord)
 
@@ -249,6 +252,7 @@ class Island(WorldObject):
 				# assign buildings on tiles to settlement
 				if building is not None and building.settlement is None:
 					building.settlement = settlement
+					building.owner = settlement.owner
 					settlement.buildings.append(building)
 
 		#TODO: inherit resources etc
@@ -258,7 +262,7 @@ class Island(WorldObject):
 		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
-		for building.settlement in self.get_settlements(building.position):
+		for building.settlement in self.get_settlements(building.position, player):
 			self.assign_settlement(building.position, building.radius, building.settlement)
 			break
 
@@ -301,12 +305,13 @@ class Island(WorldObject):
 				yield tile
 
 	@decorators.make_constants()
-	def get_providers_in_range(self, circle, res=None, reslist=None):
+	def get_providers_in_range(self, circle, res=None, reslist=None, player=None):
 		"""Returns all instances of provider within the specified circle.
 		NOTE: Specifing the res parameter is usually a huge speed gain.
 		@param circle: instance of Circle
 		@param res: optional; only return providers that provide res.  conflicts with reslist
 		@param reslist: optionally; list of res to search providers for. conflicts with res
+		@param player: Player instance, only buildings belonging to this player
 		@return: list of providers"""
 		assert not (bool(res) and bool(reslist))
 		if res is not None:
@@ -320,7 +325,8 @@ class Island(WorldObject):
 			provider_list = self.provider_buildings
 		possible_providers = []
 		for provider in provider_list:
-			if provider.position.distance_to_circle(circle) == 0:
+			if (player is None or player == provider.owner) and \
+			   provider.position.distance_to_circle(circle) == 0:
 				possible_providers.append(provider)
 		return possible_providers
 

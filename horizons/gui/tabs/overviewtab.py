@@ -29,6 +29,7 @@ from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
+from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.utility import create_resource_icon
 from horizons.i18n import load_xml_translated
@@ -102,8 +103,8 @@ class ShipOverviewTab(OverviewTab):
 		islands = self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
 		if len(islands) > 0:
 			events['foundSettelment'] = Callback(self.instance.session.ingame_gui._build, \
-			                                     BUILDINGS.BRANCH_OFFICE_CLASS, \
-			                                     weakref.ref(self.instance) )
+												                   BUILDINGS.BRANCH_OFFICE_CLASS, \
+												                   weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettelment').set_active()
 		else:
@@ -153,8 +154,9 @@ class ProductionOverviewTab(OverviewTab):
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in sorted(self.instance._get_productions(), \
-		                         key=(lambda x: x.get_production_line_id())):
+								             key=(lambda x: x.get_production_line_id())):
 			gui = load_xml_translated(self.production_line_gui_xml)
+			# fill in values to gui reflecting the current game state
 			container = gui.findChild(name="production_line_container")
 			if production.is_paused():
 				container.removeChild( container.findChild(name="toggle_active_active") )
@@ -167,13 +169,13 @@ class ProductionOverviewTab(OverviewTab):
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
 				in_res_container.addChild( ImageFillStatusButton.init_for_res(in_res, \
-				                                    self.instance.inventory[in_res], horizons.main.db, \
-				                                    use_inactive_icon=False) )
+																                                      self.instance.inventory[in_res], horizons.main.db, \
+																                                      use_inactive_icon=False) )
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
 				out_res_container.addChild( ImageFillStatusButton.init_for_res(out_res, \
-				                                    self.instance.inventory[out_res], horizons.main.db, \
-				                                    use_inactive_icon=False) )
+																                                       self.instance.inventory[out_res], horizons.main.db, \
+																                                       use_inactive_icon=False) )
 
 			# active toggle_active button
 			container.mapEvents( { 'toggle_active': Callback(ToggleActive(self.instance, production).execute, self.instance.session) } )
@@ -252,5 +254,6 @@ def _setup_tax_slider(slider, settlement):
 	def on_slider_change():
 		tax = round( slider.getValue() / 0.5 ) * 0.5
 		slider.setValue(tax)
-		settlement.tax_setting = tax
+		if(settlement.tax_setting != tax):
+			SetTaxSetting(settlement, tax).execute(settlement.session)
 	slider.capture(on_slider_change)

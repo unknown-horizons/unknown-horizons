@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container size="1024,768">
+	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
+
+	<Label name="headline" text="Gamelobby" position="100,110"/>
+
+	<Label name="game_start_notice" text="The game will start as soon as enough players have joined." position="100,150"/>
+
+	<VBox position="500,150" name="gamedetailsbox">
+		<Label name="startmessage" text="Game details"/>
+		<Label name="game_map"/>
+		<Label name="game_playersnum"/>
+		<Label name="game_creator"/>
+		<Label name="game_players"/>
+	</VBox>
+
+	<VBox position="150,300">
+		<HBox>
+			<Label name="chatlbl" text="Chat:"/>
+		</HBox>
+		<ScrollArea min_size="600,300" max_size="600,300" horizontal_scrollbar="1">
+			<ListBox name="chatbox" min_size="600,300" max_size="600,300"/>
+		</ScrollArea>
+		<HBox>
+			<TextField name="chatTextField" text="Enter your message here" size="300,16"/>
+		</HBox>
+	</VBox>
+
+	<TooltipButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="300,700" tooltip="Exit gamelobby"/>
+</Container>

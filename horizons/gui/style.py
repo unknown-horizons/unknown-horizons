@@ -274,7 +274,7 @@ STYLES= {
 		}
 	},
 
-	'tooltip': { # style for headlines
+	'tooltip': { # style for tooltips
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),

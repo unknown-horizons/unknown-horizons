@@ -35,6 +35,9 @@ class Scheduler(LivingObject):
 	log = logging.getLogger("scheduler")
 
 	def __init__(self, timer):
+		"""
+		@param timer: Timer obj
+		"""
 		super(Scheduler, self).__init__()
 		self.schedule = {}
 		self.cur_tick = 0

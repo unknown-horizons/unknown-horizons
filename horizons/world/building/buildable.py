@@ -21,8 +21,9 @@
 import math
 
 from horizons.util import Point, Rect, decorators
-from horizons.world.pathfinding.pather import RoadBuilderPather
+from horizons.world.pathfinding.pather import StaticPather
 from horizons.constants import BUILDINGS
+from horizons.entities import Entities
 
 class _BuildPosition(object):
 	"""A possible build position in form of a data structure.
@@ -67,7 +68,7 @@ class Buildable(object):
 	# INTERFACE
 
 	@classmethod
-	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None):
+	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
 		"""Check if a building is buildable here.
 		All tiles, that the building occupies are checked.
 		@param point: Point instance, coords
@@ -83,7 +84,7 @@ class Buildable(object):
 			rotation = cls._check_rotation(session, position, rotation)
 			tearset = cls._check_buildings(session, position)
 			if check_settlement:
-				cls._check_settlement(session, position, ship=ship)
+				cls._check_settlement(session, position, ship=ship, issuer=issuer)
 		except _NotBuildableError:
 			buildable = False
 		return _BuildPosition(position, rotation, tearset, buildable)
@@ -137,10 +138,11 @@ class Buildable(object):
 		return rotation
 
 	@classmethod
-	def _check_settlement(cls, session, position, **kwargs):
+	def _check_settlement(cls, session, position, ship=None, issuer=None, **kwargs):
 		"""Check if there is a settlement and if it belongs to the human player"""
 		settlement = session.world.get_settlement(position.center())
-		if settlement is None or session.world.player.id != settlement.owner.id:
+		player = issuer if issuer is not None else session.world.player
+		if settlement is None or  player != settlement.owner:
 			raise _NotBuildableError()
 
 	@classmethod
@@ -160,6 +162,13 @@ class Buildable(object):
 				else:
 					# building is blocking the build
 					raise _NotBuildableError()
+		if hasattr(session.manager, 'get_builds_in_construction'):
+			builds_in_constructin = session.manager.get_builds_in_construction()
+			for build in builds_in_constructin:
+				(sizex, sizey) = Entities.buildings[build.building_class].size
+				for (neededx,neededy) in position.tuple_iter():
+					if neededx in range(build.x, build.x+sizex) and neededy in range(build.y, build.y+sizey):
+						raise _NotBuildableError()
 		return tearset
 
 
@@ -204,7 +213,11 @@ class BuildableLine(Buildable):
 			return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
 
 		# use pathfinding to get a path, then try to build along it
-		path = RoadBuilderPather.get_path(session, point1, point2)
+		island = session.world.get_island(point1)
+		if island is None:
+			return []
+
+		path = StaticPather.get_direct_path(island, point1, point2)
 		if path is None: # can't find a path between these points
 			return [] # TODO: check alternative strategy
 
@@ -292,7 +305,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 class BuildableSingleFromShip(BuildableSingleOnCoast):
 	"""Buildings that can be build from a ship. Currently only Branch Office."""
 	@classmethod
-	def _check_settlement(cls, session, position, ship):
+	def _check_settlement(cls, session, position, ship, issuer=None):
 		# building from ship doesn't require settlements
 		# but a ship nearby:
 		if ship.position.distance(position) > BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE:
@@ -306,7 +319,7 @@ class BuildableSingleFromShip(BuildableSingleOnCoast):
 		# and player mustn't have a settlement here already
 		island = session.world.get_island(position.center())
 		for s in island.settlements:
-			if s.owner.id == session.world.player.id:
+			if s.owner == ship.owner:
 				raise _NotBuildableError()
 
 # apply make_constant to classes

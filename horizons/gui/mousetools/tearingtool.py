@@ -110,7 +110,7 @@ class TearingTool(NavigationTool):
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
-					if b is not None and b.tearable:
+					if b is not None and b.tearable and self.session.world.player == b.owner:
 						self.selected.add(b)
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \

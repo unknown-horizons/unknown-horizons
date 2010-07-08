@@ -66,7 +66,7 @@ class Path(BasicBuilding, BuildableLine):
 		for action_part in sorted(BUILDINGS.ACTION.action_offset_dict): # order is important here
 			offset = BUILDINGS.ACTION.action_offset_dict[action_part]
 			tile = self.island.get_tile(origin.offset(*offset))
-			if tile is not None and path_nodes.is_road(tile.x, tile.y):
+			if tile is not None and path_nodes.is_road(tile.x, tile.y) and self.owner == self.island.get_building(origin.offset(*offset)).owner:
 				action += action_part
 		if action == '':
 			action = 'ac' # default

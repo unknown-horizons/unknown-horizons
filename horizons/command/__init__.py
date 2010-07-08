@@ -26,12 +26,13 @@ from horizons.util import WorldObject
 
 class Command(object):
 	"""Base class for every Command."""
-	def execute(self, session):
+	def execute(self, session, local = False):
 		"""Execute command.
 		@param session: Execute command on this session's manager.
+		@param local: Execute the command only locally (only used in multiplayer manager)
 		@return: Propagated return value of manager's execute function.
 		"""
-		return session.manager.execute(self)
+		return session.manager.execute(self, local)
 
 class GenericCommand(Command):
 	"""Code generator for trivial commands on an object.

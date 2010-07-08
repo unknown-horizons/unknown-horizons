@@ -23,6 +23,7 @@ import horizons.main
 
 from storage import PositiveSizedSlotStorage, PositiveSizedSpecializedStorage
 from horizons.constants import STORAGE
+from horizons.util.worldobject import WorldObject
 
 class StorageHolder(object):
 	"""The StorageHolder class is used as as a parent class for everything that
@@ -42,8 +43,9 @@ class StorageHolder(object):
 		self.__init()
 
 	def __init(self):
-		self.create_inventory()
-		self.inventory.add_change_listener(self._changed)
+		if self.has_own_inventory:
+			self.create_inventory()
+			self.inventory.add_change_listener(self._changed)
 
 	def remove(self):
 		super(StorageHolder, self).remove()
@@ -78,4 +80,14 @@ class StorageHolder(object):
 		self.__init()
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)
+
+	def transfer_to_storageholder(self, amount, res_id, transfer_to_id):
+		transfer_to = WorldObject.get_object_by_id(transfer_to_id)
+		# take res from self
+		ret = self.inventory.alter(res_id, -amount)
+		# check if we were able to get the planed amount
+		ret = amount if amount < abs(ret) else abs(ret)
+		# put res to transfer_to
+		ret = transfer_to.inventory.alter(res_id, amount-ret)
+		self.inventory.alter(res_id, ret) #return resources that did not fit
 

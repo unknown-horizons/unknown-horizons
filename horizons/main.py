@@ -40,13 +40,13 @@ import thread # for thread.error raised by threading.Lock.release
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, TileSetLoader
+from horizons.util import ActionSetLoader, TileSetLoader, Color
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import PATHS
-
+from horizons.constants import PATHS, NETWORK
+from horizons.network.networkinterface import NetworkInterface
 
 # private module pointers of this module
 class Modules(object):
@@ -71,6 +71,30 @@ def start(command_line_arguments):
 		# just delete the file, Settings ctor will create a new one
 		os.remove( PATHS.USER_CONFIG_FILE )
 
+	if command_line_arguments.mp_master:
+		try:
+			mpieces = command_line_arguments.mp_master.partition(':')
+			NETWORK.SERVER_ADDRESS = mpieces[0]
+			# only change port if port is specified
+			if len(mpieces[2]) > 0:
+				NETWORK.SERVER_PORT = int(mpieces[2])
+				if NETWORK.SERVER_PORT < 1 or NETWORK.SERVER_PORT > 65535:
+					raise ValueError
+		except ValueError:
+			print _("Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535.")
+			return False
+
+	if command_line_arguments.mp_bind:
+		try:
+			mpieces = command_line_arguments.mp_bind.partition(':')
+			NETWORK.CLIENT_ADDRESS = mpieces[0]
+			NETWORK.CLIENT_PORT = int(mpieces[2])
+			if NETWORK.CLIENT_PORT < 1 or NETWORK.CLIENT_PORT  > 65535:
+				raise ValueError
+		except ValueError:
+			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 0 and 65535.")
+			return False
+
 	db = _create_db()
 
 	# init game parts
@@ -91,6 +115,12 @@ def start(command_line_arguments):
 	fife.init()
 	_modules.gui = Gui()
 	SavegameManager.init()
+	try:
+		NetworkInterface.create_instance()
+		NetworkInterface().add_to_extscheduler()
+	except RuntimeError, e:
+		print "Error during network initialization: %s" % (e)
+		return False
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()
@@ -118,7 +148,7 @@ def start(command_line_arguments):
 
 	if not startup_worked:
 		# don't start main loop if startup failed
-		return
+		return False
 
 	fife.run()
 
@@ -127,48 +157,67 @@ def quit():
 	global fife
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
+	preload_game_join(preloading)
 	ExtScheduler.destroy_instance()
 	fife.quit()
 
-def start_singleplayer(map_file, game_data={}):
+def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
-	@param game_data: dict, contains data about the game (playername, etc.)"""
+	"""
 	global fife, preloading, db
-	_modules.gui.show()
+	preload_game_join(preloading)
 
-	# lock preloading
-	preloading[1].acquire()
-	# wait until it finished it's current action
-	if preloading[0].isAlive():
-		preloading[0].join()
-		assert not preloading[0].isAlive()
-	else:
-		try:
-			preloading[1].release()
-		except thread.error:
-			pass # due to timing issues, the lock might be released already
+	if playercolor is None: # this can't be a default parameter because of circular imports
+			playercolor = Color[1]
 
 	# remove cursor while loading
 	fife.cursor.set(fife_module.CURSOR_NONE)
 	fife.engine.pump()
 	fife.cursor.set(fife_module.CURSOR_IMAGE, fife.default_cursor_image)
 
+	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
 
+	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
-	from session import Session
-	_modules.session = Session(_modules.gui, db)
-	_modules.session.init_session()
-	_modules.session.load(map_file, **game_data)
+	# start new session
+	from spsession import SPSession
+	_modules.session = SPSession(_modules.gui, db)
+	players = [ { 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True } ]
+	_modules.session.load(map_file, players, is_scenario=is_scenario)
 
-def start_multi():
-	"""Starts a multiplayer game server (dummy)
-
-	This also starts the game for the game master
+def prepare_multiplayer(game):
+	"""Starts a multiplayer game server
+	TODO: acctual game data parameter passing
 	"""
-	pass
+	global fife, preloading, db
+
+	preload_game_join(preloading)
+
+	# remove cursor while loading
+	fife.cursor.set(fife_module.CURSOR_NONE)
+	fife.engine.pump()
+	fife.cursor.set(fife_module.CURSOR_IMAGE, fife.default_cursor_image)
+
+	# hide whatever is displayed before the game starts
+	_modules.gui.hide()
+
+	# destruct old session (right now, without waiting for gc)
+	if _modules.session is not None and _modules.session.is_alive:
+		_modules.session.end()
+	# start new session
+	from mpsession import MPSession
+	# get acctual random seed for game
+	random = sum(game.get_uuid().uuid)
+	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
+	# NOTE: this data passing is only temporary, maybe use a player class/struct
+	_modules.session.load("content/maps/" + game.get_map_name() + ".sqlite", \
+	                      game.get_player_list())
+
+def start_multiplayer(game):
+	_modules.session.start()
 
 def save_game(savegamename=None):
 	"""Saves a game
@@ -191,14 +240,15 @@ def save_game(savegamename=None):
 
 	return True
 
-def load_game(savegame = None, game_data = {}):
+def load_game(savegame = None, is_scenario = False):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return # user aborted dialog
 	_modules.gui.show_loading_screen()
-	start_singleplayer(savegame, game_data)
+#TODO
+	start_singleplayer(savegame, is_scenario = is_scenario)
 
 
 def _init_gettext(fife):
@@ -216,21 +266,18 @@ def _start_dev_map():
 	load_game(first_map)
 	return True
 
-def _start_map(map_name, campaign = False):
+def _start_map(map_name, is_scenario = False):
 	"""Start a map specified by user
 	@return: bool, whether loading succeded"""
-	maps = SavegameManager.get_scenarios() if campaign else SavegameManager.get_maps()
+	maps = SavegameManager.get_scenarios() if is_scenario else SavegameManager.get_maps()
 	map_file = None
-	game_data = {}
-	if campaign:
-		game_data['is_scenario'] = True
 	try:
 		map_id = maps[1].index(map_name)
 		map_file = maps[0][map_id]
 	except ValueError:
 		print _("Error: Cannot find map \"%s\".") % map_name
 		return False
-	load_game(map_file, game_data)
+	load_game(map_file, is_scenario)
 	return True
 
 def _start_random_map():
@@ -301,4 +348,19 @@ def preload_game_data(lock):
 	finally:
 		if lock.locked():
 			lock.release()
+
+def preload_game_join(preloading):
+	"""Wait for preloading to finish.
+	@param preloading: tuple: (Thread, Lock)"""
+	# lock preloading
+	preloading[1].acquire()
+	# wait until it finished its current action
+	if preloading[0].isAlive():
+		preloading[0].join()
+		assert not preloading[0].isAlive()
+	else:
+		try:
+			preloading[1].release()
+		except thread.error:
+			pass # due to timing issues, the lock might be released already
 

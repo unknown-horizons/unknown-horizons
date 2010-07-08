@@ -36,6 +36,20 @@ class TradePost(object):
 		self.buy_history = {} # { tick_id: (res, amount, price) }
 		self.sell_history = {} # { tick_id: (res, amount, price) }
 
+	def add_to_buy_list(self, res_id, limit):
+		self.buy_list[res_id] = limit
+
+	def remove_from_buy_list(self, res_id):
+		if res_id in self.buy_list:
+			del self.buy_list[res_id]
+
+	def add_to_sell_list(self, res_id, limit):
+		self.sell_list[res_id] = limit
+
+	def remove_from_sell_list(self, res_id):
+		if res_id in self.sell_list:
+			del self.sell_list[res_id]
+
 	def save(self, db):
 		super(TradePost, self).save(db)
 

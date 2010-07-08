@@ -32,8 +32,8 @@ class Settlement(TradePost, NamedObject):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		super(Settlement, self).__init__()
 		self.__init(session, owner)
+		super(Settlement, self).__init__()
 
 	def __init(self, session, owner, tax_setting=1.0):
 		self.session = session
@@ -42,8 +42,12 @@ class Settlement(TradePost, NamedObject):
 		self.buildings = []
 		self.setup_storage()
 
-	def get_default_name(self):
-		return horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1 ORDER BY random() LIMIT 1")[0][0]
+	def set_tax_setting(self, tax):
+		self.tax_setting = tax
+
+	def _possible_names(self):
+		names = horizons.main.db("SELECT name FROM data.citynames WHERE for_player = 1")
+		return map(lambda x: x[0], names)
 
 	@property
 	def inhabitants(self):
@@ -59,13 +63,13 @@ class Settlement(TradePost, NamedObject):
 	def cumulative_taxes(self):
 		"""Return sum of all taxes payed in this settlement in 1 tax round"""
 		return sum([building.last_tax_payed for building in self.buildings if \
-		            hasattr(building, 'last_tax_payed')])
+								hasattr(building, 'last_tax_payed')])
 
 	@property
 	def balance(self):
 		"""Returns sum(income) - sum(expenses) for settlement"""
 		return self.cumulative_taxes + self.sell_income \
-		       - self.cumulative_running_costs - self.buy_expenses
+					 - self.cumulative_running_costs - self.buy_expenses
 
 	def level_upgrade(self, lvl):
 		"""Upgrades settlement to a new increment.

@@ -81,6 +81,10 @@ def get_option_parser():
 							 help=_("Specify the path to FIFE root directory."))
 	p.add_option("--restore-settings", dest="restore_settings", action="store_true", default=False, \
 							 help=_("Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."))
+	p.add_option("--mp-master", dest="mp_master", metavar="<ip:port>", \
+							 help=_("Specify alternative multiplayer master server."))
+	p.add_option("--mp-bind", dest="mp_bind", metavar="<ip:port>", \
+							 help=_("Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."))
 
 
 	start_uh_group = optparse.OptionGroup(p, _("Starting unknown horizons"))
@@ -173,9 +177,10 @@ def main():
 
 	#start unknownhorizons
 	import horizons.main
+	ret = True
 	if not options.profile:
 		# start normal
-		horizons.main.start(options)
+		ret = horizons.main.start(options)
 	else:
 		# start with profiling
 		try:
@@ -189,7 +194,8 @@ def main():
 									 outfilename)
 		log().warning('Program ended. Profiling output: %s', outfilename)
 
-	print unicode(_('Thank you for using Unknown Horizons!'))
+	if ret:
+		print unicode(_('Thank you for using Unknown Horizons!'))
 
 
 def parse_args():

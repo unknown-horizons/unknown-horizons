@@ -56,7 +56,7 @@ class CollectingBuilding(BuildingResourceHandler):
 		"""Creates a collector and adds it to this building.
 		@param collector_class: unit class of collector to create
 		"""
-		Entities.units[collector_class](self, session=self.session)
+		Entities.units[collector_class](self, session=self.session, owner=self.owner)
 
 	def remove(self):
 		while len(self.__collectors) > 0:

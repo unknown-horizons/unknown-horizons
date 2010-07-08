@@ -18,12 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import getpass
 
 import horizons.main
 
-from horizons.util import Callback, Color, random_map
+from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
+from horizons.gui.modules import PlayerDataSelection
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'free_maps'):
@@ -50,7 +50,9 @@ class SingleplayerMenu(object):
 			to_remove.parent.removeChild(to_remove)
 			to_remove = self.current.findChild(name="choose_map_lbl")
 			to_remove.parent.removeChild(to_remove)
-			self.show_popup(_('Warning'), _('The random map features is still in active development. It is to be considered a pre testing version. Problems are to be expected.'))
+			self.show_popup(_('Warning'), \
+			                _('The random map features is still in active development. '+\
+			                  'It is to be considered a pre testing version. Problems are to be expected.'))
 		else:
 			if show == 'free_maps':
 				del eventMap['showMaps']
@@ -72,62 +74,57 @@ class SingleplayerMenu(object):
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
 						try:
-							difficulty = CampaignEventHandler.get_difficulty_from_file( self._get_selected_map() )
-							desc = CampaignEventHandler.get_description_from_file( self._get_selected_map() )
-							author = CampaignEventHandler.get_author_from_file( self._get_selected_map() )
+							difficulty = CampaignEventHandler.get_difficulty_from_file( self.__get_selected_map() )
+							desc = CampaignEventHandler.get_description_from_file( self.__get_selected_map() )
+							author = CampaignEventHandler.get_author_from_file( self.__get_selected_map() )
 						except InvalidScenarioFileFormat, e:
-							self._show_invalid_scenario_file_popup(e)
+							self.__show_invalid_scenario_file_popup(e)
 							return
 						self.current.findChild(name="map_difficulty").text = "Difficulty: " + unicode( difficulty )
 						self.current.findChild(name="map_author").text = "Author: " + unicode( author )
 						self.current.findChild(name="map_desc").text =  "Description: " + unicode( desc )
 						self.current.findChild(name="map_desc").parent.adaptLayout()
-						
+
 					self.current.findChild(name="maplist").capture(_update_infos)
 					_update_infos()
 
 
 		self.current.mapEvents(eventMap)
 
-		self.current.distributeInitialData({ 'playercolor' : [ _(color.name) for color in Color ] })
-		self.current.distributeData({
-		  'playername': unicode(getpass.getuser()),
-		  'playercolor': 0
-		})
+		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 		self.current.show()
 		self.on_escape = self.show_main
 
 	def start_single(self):
 		""" Starts a single player horizons. """
 		assert self.current is self.widgets['singleplayermenu']
-		game_data = {}
-		game_data['playername'] = self.current.collectData('playername')
-		if len(game_data['playername']) == 0:
+		playername = self.current.playerdata.get_player_name()
+		if len(playername) == 0:
 			self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
 			return
-		game_data['playercolor'] = Color[self.current.collectData('playercolor')+1] # +1 cause list entries start with 0, color indexes with 1
+		playercolor = self.current.playerdata.get_player_color()
 
 		if self.current.collectData('showRandom'):
 			map_file = random_map.generate_map()
 		else:
 			assert self.current.collectData('maplist') != -1
-			map_file = self._get_selected_map()
+			map_file = self.__get_selected_map()
 
-		game_data['is_scenario'] = bool(self.current.collectData('showCampaign'))
+		is_scenario = bool(self.current.collectData('showCampaign'))
 		self.show_loading_screen()
 		from horizons.campaign import InvalidScenarioFileFormat
 		try:
-			horizons.main.start_singleplayer(map_file, game_data)
+			horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
 		except InvalidScenarioFileFormat, e:
-			self._show_invalid_scenario_file_popup(e)
+			self.__show_invalid_scenario_file_popup(e)
 			self.show_single(show = 'campaign')
 
-	def _get_selected_map(self):
+	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
 		return self.current.files[ self.current.collectData('maplist') ]
 
 
-	def _show_invalid_scenario_file_popup(self, exception):
+	def __show_invalid_scenario_file_popup(self, exception):
 		"""Shows a popup complaining about invalid scenario file.
 		@param exception: InvalidScenarioFile exception instance"""
 		self.show_popup(_("Invalid scenario file"), \

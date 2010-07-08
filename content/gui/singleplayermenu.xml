@@ -18,19 +18,12 @@
 			<ImageButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" />
 		</Container>
 
-		<HBox position="100,190" name="playerdataselection" border_size="1">
-			<VBox>
-				<Label name="player_label" text="Player name:" />
-				<Label name="color_label" text="Color:" />
-			</VBox>
-			<VBox>
-				<TextField name="playername" text="" size="150,16"/>
-				<ScrollArea min_size="70,150" >
-					<ListBox name="playercolor" />
-				</ScrollArea>
-
-			</VBox>
-		</HBox>
+		<!--
+		this should acctually be a Container, that contains subcontainers, but with Container,
+		the content doesn't show up. Pychan wasn't designed for Containers within Containers, which might
+		be the source of this bug
+		-->
+		<VBox name="playerdataselectioncontainer" position="100,190" ></VBox>
 
 		<Container size="320,500" position="420,32" name="right_side">
 			<Label text="Choose a map to play:" name="choose_map_lbl" position="0,50" />

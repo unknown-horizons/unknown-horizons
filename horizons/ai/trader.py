@@ -61,7 +61,7 @@ class Trader(AIPlayer):
 
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y).execute(self.session)
+		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 		self.ships[ship] = self.shipStates.reached_branch
 		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
 
@@ -193,7 +193,8 @@ class Trader(AIPlayer):
 		@param ship: ship instance"""
 		self.log.debug("Trader %s: reached bo", self.getId())
 		settlement = self.office[ship.id].settlement
-		for res in settlement.buy_list.iterkeys(): # check for resources that the settlement wants to buy
+		# NOTE: must be sorted for mp games (same order everywhere)
+		for res in sorted(settlement.buy_list.iterkeys()): # check for resources that the settlement wants to buy
 			amount = self.session.random.randint(*self.sell_amount) # select a random amount to sell
 			if amount == 0:
 				continue
@@ -202,7 +203,8 @@ class Trader(AIPlayer):
 			# don't care if he bought it. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.getId(), amount, res)
 
-		for res in settlement.sell_list.iterkeys():
+		# NOTE: must be sorted for mp games (same order everywhere)
+		for res in sorted(settlement.sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
 			amount = self.session.random.randint(*self.buy_amount)
 			if amount == 0:
