@@ -51,7 +51,8 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file, frame_end in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iteritems()):
+		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
+			frame_end = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
 			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
 			img = horizons.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:

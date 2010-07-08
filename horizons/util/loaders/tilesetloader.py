@@ -34,7 +34,7 @@ class TileSetLoader(object):
 	must not include additional tile sets.
 	@param start_dir: directory that is used to begin search in"""
 
-	log = logging.getLogger("util.loaders.actionsetloader")
+	log = logging.getLogger("util.loaders.tilesetloader")
 
 	tile_sets = {}
 	_loaded = False
