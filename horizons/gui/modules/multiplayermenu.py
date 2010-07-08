@@ -119,6 +119,10 @@ class MultiplayerMenu(object):
 		if textplayers is not None:
 			textplayers.text = u", ".join(game.get_players())
 
+		vbox = self.current.findChild(name="gamedetailsbox")
+		if vbox is not None:
+			vbox.adaptLayout()
+
 	def __join_game(self, game = None):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
 		if game == None:
