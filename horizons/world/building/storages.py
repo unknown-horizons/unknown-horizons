@@ -54,9 +54,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 
 	def load(self, db, worldid):
 		super(StorageBuilding, self).load(db, worldid)
-		# workaround to get settlement (self.settlement is assigned just after loading)
-		settlement_id = db("SELECT location FROM building WHERE rowid = ?", worldid)[0][0]
-		settlement = WorldObject.get_object_by_id(int(settlement_id))
+		self.create_inventory()
 
 	def select(self):
 		"""Runs necessary steps to select the unit."""
