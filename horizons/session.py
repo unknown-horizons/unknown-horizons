@@ -38,7 +38,7 @@ from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, DbReader
 from horizons.savegamemanager import SavegameManager
 from horizons.campaign import CampaignEventHandler
-
+from horizons.constants import GAME_SPEED
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
