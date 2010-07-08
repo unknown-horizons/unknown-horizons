@@ -81,7 +81,7 @@ class Player(StorageHolder, WorldObject):
 		super(Player, self).load(db, worldid)
 
 		color, name, settlerlevel = db("SELECT color, name, settler_level FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(worldid, name, Color[color], settlerlevel=settlerlevel)
+		self.__init(name, Color[color], settlerlevel = settlerlevel)
 
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving

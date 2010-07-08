@@ -131,7 +131,7 @@ class Island(WorldObject):
 		"""
 
 	def save(self, db):
-		db("INSERT INTO island (rowid, x, y, file) VALUES (?, ?, ?, ?)",
+		db("INSERT INTO island (rowid, x, y, file) VALUES (? - 1000, ?, ?, ?)",
 			self.getId(), self.origin.x, self.origin.y, self.file)
 		for building in self.buildings:
 			building.save(db)
