@@ -177,7 +177,9 @@ class MultiplayerMenu(object):
 
 	def __receive_chat_message(self, game, player, msg):
 		"""Receive a chat message from the network. Only possible in lobby state"""
-		self.current.findChild(name="chatbox").items.append(u"("+strftime("%H:%M:%S")+") "+ player + ": "+msg)
+		chatbox = self.current.findChild(name="chatbox")
+		chatbox.items.append(u"("+strftime("%H:%M:%S")+") "+ player + ": "+msg)
+		chatbox.selected = len(chatbox.items)-1
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""

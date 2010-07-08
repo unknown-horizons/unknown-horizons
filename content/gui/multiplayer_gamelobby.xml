@@ -18,7 +18,7 @@
 		<HBox>
 			<Label name="chatlbl" text="Chat:"/>
 		</HBox>
-		<ScrollArea min_size="600,300" max_size="600,300" horizontal_scrollbar="1">
+		<ScrollArea min_size="600,300" max_size="600,300" horizontal_scrollbar="1" name="chat_scroll_area">
 			<ListBox name="chatbox" min_size="600,300" max_size="600,300"/>
 		</ScrollArea>
 		<HBox>
