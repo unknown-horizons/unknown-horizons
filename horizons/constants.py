@@ -163,7 +163,7 @@ class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
 	LOG_DIR = os.path.join(_user_dir, "log")
-	USER_CONFIG_FILE = os.path.join(_user_dir, "config.sqlite")
+	USER_CONFIG_FILE = os.path.join(_user_dir, "settings.xml")
 	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
 
 	# paths relative to uh dir
