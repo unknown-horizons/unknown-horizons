@@ -114,7 +114,9 @@ class MultiplayerMenu(object):
 		self.current.findChild(name="game_map").text = _(u"Map: ") + game.get_map_name()
 		self.current.findChild(name="game_playersnum").text =  _(u"Players: ") + \
 			unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit())
-		self.current.findChild(name="game_creator").text = u"Creator: " + unicode(game.get_creator())
+		creator_text = self.current.findChild(name="game_creator")
+		creator_text.text = u"Creator: " + unicode(game.get_creator())
+		creator_text.adaptLayout()
 		textplayers = self.current.findChild(name="game_players")
 		if textplayers is not None:
 			textplayers.text = u", ".join(game.get_players())
