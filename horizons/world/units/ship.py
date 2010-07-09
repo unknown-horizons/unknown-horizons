@@ -24,7 +24,7 @@ from fife import fife
 
 import horizons.main
 
-from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab
+from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, TraderShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather
@@ -157,10 +157,12 @@ class PirateShip(Ship):
 		names = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1")
 		return map(lambda x: x[0], names)
 
-
 class TradeShip(Ship):
 	"""Represents a trade ship."""
 	tabs = ()
+	enemy_tabs = (TraderShipOverviewTab, )
+	def _possible_names(self):
+		return [ _('Trader') ]
 
 class FisherShip(Ship):
 	"""Represents a fisher ship."""

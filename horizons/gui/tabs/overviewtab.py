@@ -103,8 +103,8 @@ class ShipOverviewTab(OverviewTab):
 		islands = self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
 		if len(islands) > 0:
 			events['foundSettelment'] = Callback(self.instance.session.ingame_gui._build, \
-												                   BUILDINGS.BRANCH_OFFICE_CLASS, \
-												                   weakref.ref(self.instance) )
+		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
+		                                       weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
 			self.widget.child_finder('foundSettelment').set_active()
 		else:
@@ -115,6 +115,12 @@ class ShipOverviewTab(OverviewTab):
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
 
+class TraderShipOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(TraderShipOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_tradership.xml',
+			instance = instance
+		)
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "tab_widget/tab_production_line.xml"

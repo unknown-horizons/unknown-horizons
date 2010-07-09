@@ -33,6 +33,7 @@ class ConcretObject(WorldObject):
 	"""
 	movable = False # whether instance can move
 	tabs = [] # iterable collection of classes of tabs to show when selected
+	enemy_tabs = [] # same as tabs, but used when clicking on enemy's instances
 	is_unit = False
 	is_building = False
 
@@ -92,6 +93,14 @@ class ConcretObject(WorldObject):
 		"""Shows tabs from self.__class__.tabs, if there are any"""
 		# this local import prevents circular imports
 		from horizons.gui.tabs import TabWidget
-		if self.tabs:
-			tabs = [ tabclass(self) for tabclass in self.tabs ]
-			self.session.ingame_gui.show_menu(TabWidget(self.session.ingame_gui, tabs=tabs))
+		tablist = []
+		if self.owner == self.session.world.player:
+			tablist = self.tabs
+		else: # this is an enemy instance with respect to the local player
+			tablist = self.enemy_tabs
+
+		if tablist:
+			tabs = [ tabclass(self) for tabclass in tablist ]
+			self.session.ingame_gui.show_menu(TabWidget(self.session.ingame_gui, \
+			                                            tabs=tabs))
+

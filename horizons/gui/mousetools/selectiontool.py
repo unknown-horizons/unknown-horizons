@@ -106,8 +106,7 @@ class SelectionTool(NavigationTool):
 			pass
 		elif len(self.session.selected_instances) == 1:
 			for i in self.session.selected_instances:
-				if self.session.world.player == i.owner:
-					i.show_menu()
+				i.show_menu()
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
