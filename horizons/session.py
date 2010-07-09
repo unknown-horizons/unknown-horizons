@@ -234,10 +234,10 @@ class Session(LivingObject):
 		tps = self.timer.ticks_per_second
 		if tps == 0: # pause
 			text = u'II'
-		elif tps == 16: # normal speed, 1x
+		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
 			pass # display nothing
 		else:
-			text = unicode(tps/16) + 'x' # 2x, 4x, ...
+			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + 'x' # 2x, 4x, ...
 		self.ingame_gui.display_game_speed(text)
 
 	def speed_up(self):

@@ -25,7 +25,6 @@ from living import livingProperty, LivingObject
 from color import Color
 from changelistener import Changelistener
 from worldobject import WorldObject
-from encoder import encode, decode
 from loaders.actionsetloader import ActionSetLoader
 from loaders.tilesetloader import TileSetLoader
 from pychanchildfinder import PychanChildFinder

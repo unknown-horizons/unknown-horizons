@@ -26,10 +26,11 @@ from fife import fife
 import horizons.main
 
 from horizons.util import Changelistener, Rect
-from horizons.constants import LAYERS, VIEW
+from horizons.constants import LAYERS, VIEW, GAME_SPEED
 
 class View(Changelistener):
 	"""Class that takes care of all the camera and rendering stuff."""
+
 	def __init__(self, session, center = (0, 0)):
 		"""
 		@param session: Session instance
@@ -58,10 +59,10 @@ class View(Changelistener):
 		                                         horizons.main.fife.engine_settings.getScreenWidth(), \
 		                                         horizons.main.fife.engine_settings.getScreenHeight()) \
 		                               )
-		self.cam.setCellImageDimensions(64, 32)
-		self.cam.setRotation(45.0)
-		self.cam.setTilt(-60)
-		self.cam.setZoom(1)
+		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
+		self.cam.setRotation(VIEW.ROTATION)
+		self.cam.setTilt(VIEW.TILT)
+		self.cam.setZoom(VIEW.ZOOM)
 		self._autoscroll = [0, 0]
 
 		self.cam.resetRenderers()
@@ -109,7 +110,9 @@ class View(Changelistener):
 
 	def do_autoscroll(self):
 		t = time.time()
-		self.scroll(self._autoscroll[0] * 16 * (t - self.time_last_autoscroll), self._autoscroll[1] * 16 * (t - self.time_last_autoscroll))
+		self.scroll( \
+		  self._autoscroll[0] * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll), \
+		  self._autoscroll[1] * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
 		self.time_last_autoscroll = t
 		self._changed()
 
@@ -151,13 +154,13 @@ class View(Changelistener):
 		self._changed()
 
 	def zoom_out(self):
-		zoom = self.cam.getZoom() * 0.875
+		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom < VIEW.ZOOM_MIN):
 			zoom = VIEW.ZOOM_MIN
 		self.cam.setZoom(zoom)
 
 	def zoom_in(self):
-		zoom = self.cam.getZoom() / 0.875
+		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom > VIEW.ZOOM_MAX):
 			zoom = VIEW.ZOOM_MAX
 		self.cam.setZoom(zoom)

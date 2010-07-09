@@ -28,6 +28,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcretObject
+from horizons.constants import GAME_SPEED
 
 class MoveNotPossible(Exception):
 	"""Gets thrown when the unit should move some where, but there is no possible path"""
@@ -179,7 +180,8 @@ class MovingObject(ConcretObject):
 				else:
 					# generic solution: retry in 2 secs
 					self.log.warning('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
-					Scheduler().add_new_object(self._move_tick, self, 32)
+					Scheduler().add_new_object(self._move_tick, self, \
+					                           GAME_SPEED.TICKS_PER_SECOND * 2)
 				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return
 

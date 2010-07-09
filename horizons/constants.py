@@ -117,7 +117,11 @@ class GAME_SPEED:
 class VIEW:
 	ZOOM_MAX = 1
 	ZOOM_MIN = 0.25
-
+	ZOOM_LEVELS_FACTOR = 0.875
+	CELL_IMAGE_DIMENSIONS = (64, 32)
+	ROTATION = 45.0
+	TILT = -60
+	ZOOM = 1
 
 ## The Production States available in the game sorted by importance from least
 ## to most important

@@ -72,7 +72,7 @@ class SPSession(Session):
 		"""Called automatically in an interval"""
 		self.log.debug("Session: autosaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = horizons.main.save_game(SavegameManager.create_autosave_filename())
+		success = self.save(SavegameManager.create_autosave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(autosaves = True)
 
@@ -80,7 +80,7 @@ class SPSession(Session):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = horizons.main.save_game(SavegameManager.create_quicksave_filename())
+		success = self.save(SavegameManager.create_quicksave_filename())
 		if success:
 			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
 			SavegameManager.delete_dispensable_savegames(quicksaves = True)
@@ -96,19 +96,33 @@ class SPSession(Session):
 		files.sort()
 		horizons.main.load_game(files[-1])
 
-	def save(self, savegame):
+	def save(self, savegamename=None):
+		"""Saves a game
+		@param savegamename: string with the full path of the savegame file or None to let user pick one
+		@return: bool, whether save was successfull
 		"""
-		@param savegame: the file, where the game will be saved
-		@return: bool, whether save was successful or not
-		"""
+		if savegamename is None:
+			savegamename = _modules.gui.show_select_savegame(mode='save')
+			if savegamename is None:
+				return False # user aborted dialog
+			savegamename = SavegameManager.create_filename(savegamename)
+
+		savegame = savegamename
+		assert os.path.isabs(savegame)
 		self.log.debug("Session: Saving to %s", savegame)
-		if os.path.exists(savegame):
-			os.unlink(savegame)
-		shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
+		try:
+			if os.path.exists(savegame):
+				os.unlink(savegame)
+			shutil.copyfile(PATHS.SAVEGAME_TEMPLATE, savegame)
+			self.savecounter += 1
 
-		self.savecounter += 1
+			db = DbReader(savegame)
+		except IOError: # usually invalid filename
+			self.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
+			self.gui.hide()
+			self.save() # retry with new savegamename entered by the user
+			# this must not happen with quicksave/autosave
 
-		db = DbReader(savegame)
 		try:
 			db("BEGIN")
 			self.world.save(db)
@@ -134,3 +148,4 @@ class SPSession(Session):
 		"""
 		finally:
 			db("COMMIT")
+		return True

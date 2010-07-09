@@ -24,6 +24,7 @@ from horizons.scheduler import Scheduler
 from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Callback
+from horizons.constants import GAME_SPEED
 
 class AIPlayer(Player):
 	"""Class for AI players implementing generic stuff."""
@@ -68,4 +69,5 @@ class AIPlayer(Player):
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.getId())
 		# retry moving ship in 2 secs
-		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, 32)
+		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, \
+		                           GAME_SPEED.TICKS_PER_SECOND * 2)

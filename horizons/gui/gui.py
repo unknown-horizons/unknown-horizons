@@ -142,7 +142,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
 			'closeButton'    : self.quit_session,
-			'savegameButton' : horizons.main.save_game,
+			'savegameButton' : self.save_game,
 			'loadgameButton' : horizons.main.load_game,
 			'helpLink'       : self.on_help,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,

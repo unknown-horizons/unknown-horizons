@@ -25,8 +25,8 @@ from horizons.scheduler import Scheduler
 from horizons.world.storageholder import StorageHolder
 from horizons.util import Point, Circle
 from horizons.world.units.movingobject import MoveNotPossible
-
-from buildingcollector import BuildingCollector
+from horizons.constants import GAME_SPEED
+from horizons.world.units.collectors.buildingcollector import BuildingCollector
 
 
 class AnimalCollector(BuildingCollector):
@@ -123,7 +123,8 @@ class AnimalCollector(BuildingCollector):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
 		if not self.kill_animal:
 			self.log.debug("%s releasing animal %s",self, self.job.object)
-			Scheduler().add_new_object(self.job.object.search_job, self.job.object, 16)
+			Scheduler().add_new_object(self.job.object.search_job, self.job.object, \
+			                           GAME_SPEED.TICKS_PER_SECOND)
 
 
 class FarmAnimalCollector(AnimalCollector):

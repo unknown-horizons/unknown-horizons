@@ -219,27 +219,6 @@ def prepare_multiplayer(game):
 def start_multiplayer(game):
 	_modules.session.start()
 
-def save_game(savegamename=None):
-	"""Saves a game
-	@param savegamename: string with the full path of the savegame file or None to let user pick one
-	@return: bool, whether save was successfull
-	"""
-	if savegamename is None:
-		savegamename = _modules.gui.show_select_savegame(mode='save')
-		if savegamename is None:
-			return False # user aborted dialog
-		savegamename = SavegameManager.create_filename(savegamename)
-
-	assert os.path.isabs(savegamename)
-	try:
-		_modules.session.save(savegamename)
-	except IOError: # usually invalid filename
-		_modules.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
-		_modules.gui.hide()
-		return save_game() # re-show dialog
-
-	return True
-
 def load_game(savegame = None, is_scenario = False):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:

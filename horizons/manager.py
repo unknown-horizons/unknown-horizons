@@ -26,7 +26,6 @@ import horizons.main
 
 from horizons.timer import Timer
 from horizons.util import WorldObject
-from horizons.util import decode
 from horizons.util.living import LivingObject
 from horizons.command.building import Build
 from horizons.network import CommandError
@@ -59,8 +58,9 @@ class SPManager(LivingObject):
 
 	def load(self, db):
 		self.commands = []
-		for tick, issuer, data in db("SELECT tick, issuer, data from command"):
-			self.commands.append((int(tick), self.session.world.player, decode(data))) #TODO: just until we have correct player saving
+
+		# NOTE: disabled until recording is really implemented
+		#for tick, issuer, data in db("SELECT tick, issuer, data from command"):
 			#self.commands.append((int(tick), WorldObject.get_object_by_id(issuer), decode(data)))
 		if len(self.commands) > 0:
 			self.session.timer.add_call(self.tick)
