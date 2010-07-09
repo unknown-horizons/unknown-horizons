@@ -18,8 +18,11 @@
 		<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,30" />
 		<Icon image="content/gui/images/background/hr.png" position="20,175" />
 
-		<HBox position="30,205">
-			<Label name="health_label" text="Health:" /><Label name='health' text="" />
+		<HBox position="30,195">
+			<!-- The trader doesn't need health, does he?
+				<Label name="health_label" text="Health:" /><Label name='health' text="" />
+			-->
+			<Label name="trader_description_lbl" text="This is the free trader's ship. It will visit you from time to time to buy or sell goods." wrap_text="1" max_size="212,100"/>
 		</HBox>
 
 	</Container>

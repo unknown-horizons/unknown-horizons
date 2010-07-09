@@ -50,6 +50,12 @@ class OverviewTab(TabInterface):
 		if hasattr(self.instance, 'name'):
 			name_widget = self.widget.child_finder('name')
 			name_widget.text = _(unicode(self.instance.name))
+
+		if hasattr(self.instance, 'running_costs') and \
+		   self.widget.child_finder('running_costs'):
+			self.widget.child_finder('running_costs').text = \
+			    unicode( self.instance.running_costs )
+
 		self.widget.adaptLayout()
 
 	def show(self):
@@ -142,11 +148,6 @@ class ProductionOverviewTab(OverviewTab):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		costs = 0
-		if hasattr(self.instance, 'running_costs'):
-			costs = self.instance.running_costs
-		self.widget.child_finder('running_costs').text = unicode(costs)
-
 		cap_util = 0
 		if hasattr(self.instance, 'capacity_utilisation'):
 			cap_util = int(round( self.instance.capacity_utilisation * 100))
