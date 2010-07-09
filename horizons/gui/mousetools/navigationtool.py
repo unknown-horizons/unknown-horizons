@@ -44,16 +44,16 @@ class NavigationTool(CursorTool):
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).end()
 
-	# press MIDDLE mouse button
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+			return # deactivated because of bugs (see #582)
 			self.session.view.scroll(-self.lastScroll[0], -self.lastScroll[1])
 			self.lastScroll = [evt.getX(), evt.getY()]
 			self.middle_scroll_active = True
 
-	# release MIDDLE mouse button after scrolling
 	def mouseReleased(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+			return # deactivated because of bugs (see #582)
 			self.lastScroll = [0, 0]
 			CursorTool.mouseMoved(self, evt)
 			self.middle_scroll_active = False
@@ -61,6 +61,7 @@ class NavigationTool(CursorTool):
 	# drag ingamemap via MIDDLE mouse button
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+			return # deactivated because of bugs (see #582)
 			self.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
 			self.lastScroll = [evt.getX(), evt.getY()]
 		else:
