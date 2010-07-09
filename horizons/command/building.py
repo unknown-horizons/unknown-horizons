@@ -146,5 +146,3 @@ class Tear(Command):
 		self.log.debug("Tear: tearing down %s", building)
 		building.remove()
 
-from horizons.util.encoder import register_classes
-register_classes(Build, Tear)

@@ -91,6 +91,3 @@ class Circle(object):
 				if self.center.distance_to_tuple((x, y)) <= self.radius:
 					yield (x, y)
 
-
-from horizons.util.encoder import register_classes
-register_classes(Circle)

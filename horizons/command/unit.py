@@ -64,8 +64,3 @@ class CreateUnit(Command):
 		owner = WorldObject.get_object_by_id(self.owner_id)
 		return Entities.units[self.unit_id](session=owner.session, owner=owner, \
 		                                    x=self.x, y=self.y, **self.kwargs)
-
-
-from horizons.util.encoder import register_classes
-register_classes(Act)
-register_classes(CreateUnit)

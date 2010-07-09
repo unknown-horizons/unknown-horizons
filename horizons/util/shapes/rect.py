@@ -257,5 +257,3 @@ class ConstRect(Const, Rect):
 	"""An immutable Rect"""
 	pass
 
-from horizons.util.encoder import register_classes
-register_classes(Rect)

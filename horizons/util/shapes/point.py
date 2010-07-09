@@ -133,5 +133,3 @@ class ConstPoint(Const, Point):
 	"""An immutable Point"""
 	pass
 
-from horizons.util.encoder import register_classes
-register_classes(Point)

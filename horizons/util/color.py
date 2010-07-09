@@ -92,6 +92,3 @@ class Color(object):
 
 	def __str__(self):
 		return 'Color'+str(self.to_tuple())
-
-from horizons.util.encoder import register_classes
-register_classes(Color)
