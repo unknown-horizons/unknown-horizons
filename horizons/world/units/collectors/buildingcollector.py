@@ -44,15 +44,16 @@ class BuildingCollector(Collector):
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
-		# set owner to home_building (is set to player in unit)
-		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_building.getId(), self.getId())
+		# save home_building
+		db("INSERT INTO building_collector(rowid, home_building) VALUES(?, ?)",
+		   self.getId(), self.home_building.getId())
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
 		# which is overwritten here, that uses a member, which has to be initialised via __init.
 
 		# load home_building
-		home_building_id = db("SELECT owner FROM unit WHERE rowid = ?", worldid)[0][0]
+		home_building_id = db("SELECT home_building FROM building_collector WHERE rowid = ?", worldid)[0][0]
 		self.__init(WorldObject.get_object_by_id(home_building_id))
 
 		super(BuildingCollector, self).load(db, worldid)
