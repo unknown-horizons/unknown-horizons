@@ -33,6 +33,7 @@ from horizons.ambientsound import AmbientSound
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
+from horizons.gui.tabs import EnemyBuildingOverviewTab
 
 
 class BasicBuilding(AmbientSound, ConcretObject):
@@ -45,6 +46,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	tearable = True
 	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
 																			# e.g. paths. the tab hides a part of the map.
+	enemy_tabs = (EnemyBuildingOverviewTab, )
 
 	log = logging.getLogger("world.building")
 

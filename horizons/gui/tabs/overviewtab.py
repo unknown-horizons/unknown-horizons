@@ -46,6 +46,10 @@ class OverviewTab(TabInterface):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Overview"
 
+		if self.widget.child_finder('player_emblem'):
+			self.widget.child_finder('player_emblem').image =  \
+			    'content/gfx/misc/playeremblems/emblem_%s.png' %  self.instance.owner.color.name
+
 	def refresh(self):
 		if hasattr(self.instance, 'name'):
 			name_widget = self.widget.child_finder('name')
@@ -245,6 +249,14 @@ class MarketPlaceOverviewTab(OverviewTab):
 
 	def refresh(self):
 		super(MarketPlaceOverviewTab, self).refresh()
+
+class EnemyBuildingOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(EnemyBuildingOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_enemy_building.xml',
+			instance = instance
+		)
+
 
 
 
