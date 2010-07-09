@@ -37,6 +37,7 @@ class NamedObject(WorldObject):
 		if name is None:
 			name = self.get_default_name()
 		self.name = name
+		NamedObject.names_used.append(self.name)
 		self._changed()
 
 	def _possible_names(self):
@@ -48,7 +49,6 @@ class NamedObject(WorldObject):
 		while newname in NamedObject.names_used:
 			newname = newnametmp + ' ' + `index`
 			index += 1
-		NamedObject.names_used.append(newname)
 		return newname
 
 	def save(self, db):
