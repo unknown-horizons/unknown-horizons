@@ -62,13 +62,14 @@ class Trader(AIPlayer):
 
 	def create_ship(self):
 		"""Create a ship and place it randomly"""
+		self.log.debug("Trader %s: creating new ship", self.getId())
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_branch
 		Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
 
 	def __init(self):
-		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
+		self.office = {} # { ship.worldid : branch }. stores the branch the ship is currently heading to
 		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
 
 	def save(self, db):
@@ -93,7 +94,7 @@ class Trader(AIPlayer):
 				assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
 				remaining_ticks = max(calls.values()[0], 1)
 
-			targeted_branch = None if ship.id not in self.office else self.office[ship.id].getId()
+			targeted_branch = None if ship.getId() not in self.office else self.office[ship.getId()].getId()
 
 			# put them in the database
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_branch) \
@@ -118,7 +119,7 @@ class Trader(AIPlayer):
 			elif state == self.shipStates.moving_to_branch:
 				ship.add_move_callback(Callback(self.reached_branch, ship))
 				assert targeted_branch is not None
-				self.office[ship.id] = WorldObject.get_object_by_id(targeted_branch)
+				self.office[ship.getId()] = WorldObject.get_object_by_id(targeted_branch)
 			elif state == self.shipStates.reached_branch:
 				assert remaining_ticks is not None
 				Scheduler().add_new_object( \
@@ -149,13 +150,13 @@ class Trader(AIPlayer):
 
 	def _ship_found_signal_fire(self, ship):
 		signal_fire = self._check_for_signal_fire_in_ship_range(ship)
-		self.log.debug("Trader %s found signal fire %s", ship.getId(), signal_fire)
+		self.log.debug("Trader %s ship %s found signal fire %s", self.getId(), ship.getId(), signal_fire)
 		# search a branch office in the range of the signal fire and move to it
 		branch_offices = self.session.world.get_branch_offices()
 		for bo in branch_offices:
 			if bo.position.distance(signal_fire.position) <= signal_fire.radius and \
 			   bo.owner == signal_fire.owner:
-				self.log.debug("Trader %s moving to bo %s", ship.getId(), bo)
+				self.log.debug("Trader %s moving to bo %s", self.getId(), bo)
 				self.allured_by_signal_fire[ship] = True
 				# HACK: remove allured flag in a few ticks
 				def rem_allured(self, ship): self.allured_by_signal_fire[ship] = False
@@ -168,7 +169,8 @@ class Trader(AIPlayer):
 		"""Sends a ship to a random branch office on the map
 		@param ship: Ship instance that is to be used
 		@param branch_office: Branch Office instance to move to. Random one is selected on None."""
-		self.log.debug("Trader %s: moving to bo (random=%s)", self.getId(), (branch_office is None))
+		self.log.debug("Trader %s ship %s moving to bo (random=%s)", self.getId(), ship.getId(), \
+		               (branch_office is None))
 		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		branchoffices = self.session.world.get_branch_offices()
 		if len(branchoffices) == 0:
@@ -178,12 +180,12 @@ class Trader(AIPlayer):
 			# select a branch office
 			if branch_office is None:
 				rand = self.session.random.randint(0, len(branchoffices)-1)
-				self.office[ship.id] = branchoffices[rand]
+				self.office[ship.getId()] = branchoffices[rand]
 			else:
-				self.office[ship.id] = branch_office
+				self.office[ship.getId()] = branch_office
 			found_path_to_bo = False
 			# try to find a possible position near the bo
-			for point in Circle(self.office[ship.id].position.center(), ship.radius):
+			for point in Circle(self.office[ship.getId()].position.center(), ship.radius):
 				try:
 					ship.move(point, Callback(self.reached_branch, ship))
 				except MoveNotPossible:
@@ -197,8 +199,8 @@ class Trader(AIPlayer):
 	def reached_branch(self, ship):
 		"""Actions that need to be taken when reaching a branch office
 		@param ship: ship instance"""
-		self.log.debug("Trader %s: reached bo", self.getId())
-		settlement = self.office[ship.id].settlement
+		self.log.debug("Trader %s ship %s: reached bo", self.getId(), ship.getId())
+		settlement = self.office[ship.getId()].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(settlement.buy_list.iterkeys()): # check for resources that the settlement wants to buy
 			amount = self.session.random.randint(*self.sell_amount) # select a random amount to sell
@@ -219,7 +221,7 @@ class Trader(AIPlayer):
 			settlement.sell(res, amount, price)
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.getId(), amount, res)
 
-		del self.office[ship.id]
+		del self.office[ship.getId()]
 		# wait 2 seconds before going on to the next island
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, Scheduler().get_ticks(4))
 		self.ships[ship] = self.shipStates.reached_branch
@@ -230,10 +232,10 @@ class Trader(AIPlayer):
 		@param ship: ship instance"""
 		if self.session.random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
-			self.log.debug("Trader %s: idle, moving to random location", self.getId())
+			self.log.debug("Trader %s ship %s: idle, moving to random location", self.getId(), ship.getId())
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
 		else:
-			self.log.debug("Trader %s: idle, moving to random bo", self.getId())
+			self.log.debug("Trader %s ship %s: idle, moving to random bo", self.getId(), ship.getId())
 			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self)
 
 	@classmethod
