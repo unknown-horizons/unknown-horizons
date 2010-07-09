@@ -28,7 +28,7 @@
                 <Label name="set21" text="{ + } = Increase game speed" position="42,80" />
                 <Label name="set22" text="{ - } = Decrease game speed" position="42,110" />
                 <Label name="set23" text="{S} = Screenshot" position="42,140"/>
-                <Label name="set24" text="{D} = Launch Python debugger" position="42,170" />
+                <Label name="set24" text="{C} = Chat" position="42,170" />
                 <Label name="set25" text="{SHIFT} = Hold to place multible buildings" position="42,200" />
                 <Label name="have_fun_lbl" text="Have fun." position="42,280"/>
                 <Label name="fife_and_uh_team_lbl" wrap_text="1" text="The FIFE and Unknown Horizons development teams" position="42,350" max_size="330,70" />
