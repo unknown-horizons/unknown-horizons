@@ -456,6 +456,13 @@ class World(LivingObject):
 				dict['settlements'].append(entry)
 		return dict
 
+	def notify_new_settlement(self):
+		"""Called when a new settlement is created"""
+		# make sure there's a trader ship for 2 settlements
+		if len(self.settlements) > self.trader.get_ship_count() * 2:
+			self.trader.create_ship()
+
+
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""
 	Entities.buildings[typeid].load(session, db, worldid)

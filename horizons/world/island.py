@@ -218,6 +218,9 @@ class Island(WorldObject):
 		                                           'NEW_SETTLEMENT', \
 		                                           {'player':player.name}, \
 		                                           self.session.world.player == player)
+
+		self.session.world.notify_new_settlement()
+
 		return settlement
 
 	def add_existing_settlement(self, position, radius, settlement):

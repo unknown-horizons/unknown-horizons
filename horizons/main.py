@@ -209,7 +209,7 @@ def prepare_multiplayer(game):
 		_modules.session.end()
 	# start new session
 	from mpsession import MPSession
-	# get acctual random seed for game
+	# get random seed for game
 	random = sum(game.get_uuid().uuid)
 	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct

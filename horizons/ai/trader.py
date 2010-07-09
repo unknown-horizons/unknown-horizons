@@ -58,12 +58,14 @@ class Trader(AIPlayer):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)
 		self.__init()
+		self.create_ship()
 
-		# create a ship and place it randomly (temporary hack)
+	def create_ship(self):
+		"""Create a ship and place it randomly"""
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+		ship = CreateUnit(self.getId(), UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_branch
-		Scheduler().add_new_object(Callback(self.send_ship_random, self.ships.keys()[0]), self)
+		Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
 
 	def __init(self):
 		self.office = {} # { ship.id : branch }. stores the branch the ship is currently heading to
@@ -121,6 +123,10 @@ class Trader(AIPlayer):
 				assert remaining_ticks is not None
 				Scheduler().add_new_object( \
 					Callback(self.ship_idle, ship), self, remaining_ticks)
+
+	def get_ship_count(self):
+		"""Returns number of ships"""
+		return len(self.ships)
 
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.

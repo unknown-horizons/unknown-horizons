@@ -46,6 +46,7 @@ class OverviewTab(TabInterface):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Overview"
 
+		# set player emblem
 		if self.widget.child_finder('player_emblem'):
 			self.widget.child_finder('player_emblem').image =  \
 			    'content/gfx/misc/playeremblems/emblem_%s.png' %  self.instance.owner.color.name
