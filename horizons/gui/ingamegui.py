@@ -434,6 +434,7 @@ class IngameGui(LivingObject):
 			pychan.tools.callbackWithArguments(self.change_name, instance)
 		 )
 		self.widgets['change_name'].show()
+		self.widgets['change_name'].findChild(name="new_name").real_widget.requestFocus()
 
 	def _hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
@@ -494,7 +495,6 @@ class IngameGui(LivingObject):
 				# player changed and build menu is currently displayed
 				self.show_build_menu()
 
-
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
 		events = {
@@ -506,6 +506,7 @@ class IngameGui(LivingObject):
 		self.widgets['chat'].mapEvents(events)
 		self.widgets['chat'].findChild(name='msg').capture( self._do_chat )
 		self.widgets['chat'].show()
+		self.widgets['chat'].findChild(name="msg").real_widget.requestFocus()
 
 	def _hide_chat_dialog(self):
 		"""Escapes the chat dialog"""
