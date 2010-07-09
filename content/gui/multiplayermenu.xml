@@ -40,8 +40,8 @@
 			<Label name="refr_gamelist_lbl" text="Refresh list:" position="150,50" />
 			<TooltipButton position="230,45" up_image="content/gui/images/icons/hud/main/rotate_right.png" down_image="content/gui/images/icons/hud/main/rotate_right.png" hover_image="content/gui/images/icons/hud/main/rotate_left.png" name="refresh" tooltip="Refresh list of active games" />
 			<Label name="game_map" position="10,330" wrap_text="1" max_size="300,1000" />
-			<Label name="game_playersnum" position="10,350" wrap_text="1" max_size="300,1000" />
-			<Label name="game_creator" position="10,370" wrap_text="1" max_size="300,1000" />
+			<Label name="game_creator" position="10,350" wrap_text="1" max_size="300,1000" />
+			<Label name="game_playersnum" position="10,370" wrap_text="1" max_size="300,1000" />
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->

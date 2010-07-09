@@ -9,8 +9,8 @@
 	<VBox position="500,150" name="gamedetailsbox">
 		<Label name="startmessage" text="Game details"/>
 		<Label name="game_map"/>
-		<Label name="game_playersnum"/>
 		<Label name="game_creator"/>
+		<Label name="game_playersnum"/>
 		<Label name="game_players"/>
 	</VBox>
 
@@ -26,5 +26,5 @@
 		</HBox>
 	</VBox>
 
-	<TooltipButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="300,700" tooltip="Exit gamelobby"/>
+	<TooltipButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="420,700" tooltip="Exit gamelobby"/>
 </Container>
