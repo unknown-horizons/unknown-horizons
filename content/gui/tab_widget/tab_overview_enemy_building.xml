@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- Overview tab -->
+<Container  size="250,550">
+<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />		 	
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,200" />
+		 	
+	<Container position="0,70" size="600,400" >
+
+		<Label name="headline" position="85,7" text="Overview" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<HBox size="260,550" position="25,43">
+			<Label name="name_label" position="0,0" text="Name:" /><Label name='name' position="55,0" text="" />
+			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />-->
+			<Icon name="player_emblem"/>
+		</HBox>
+		<Container name="emblem_box" position="100,100" size="100,100"/>
+	</Container>
+</Container>

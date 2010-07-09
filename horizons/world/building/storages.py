@@ -22,7 +22,7 @@
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.gui.tabs import BranchOfficeOverviewTab, BuySellTab, InventoryTab, \
-		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab, EnemyBuildingOverviewTab
+		 MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab
 from horizons.util import WorldObject
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
