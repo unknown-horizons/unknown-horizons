@@ -33,6 +33,7 @@ from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
+from horizons.command.misc import Chat
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events."""
@@ -46,6 +47,7 @@ class IngameGui(LivingObject):
 	styles = {
 		'city_info' : 'city_info',
 		'change_name' : 'book',
+		'chat' : 'book',
 		'status' : 'resource_bar',
 		'status_gold' : 'resource_bar',
 		'status_extra' : 'resource_bar',
@@ -424,16 +426,16 @@ class IngameGui(LivingObject):
 		self.session.speed_pause()
 		events = {
 			'okButton': pychan.tools.callbackWithArguments(self.change_name, instance),
-			'cancelButton': self.hide_change_name_dialog
+			'cancelButton': self._hide_change_name_dialog
 		}
-		self.main_gui.on_escape = self.hide_change_name_dialog
+		self.main_gui.on_escape = self._hide_change_name_dialog
 		self.widgets['change_name'].mapEvents(events)
 		self.widgets['change_name'].findChild(name='new_name').capture( \
 			pychan.tools.callbackWithArguments(self.change_name, instance)
 		 )
 		self.widgets['change_name'].show()
 
-	def hide_change_name_dialog(self):
+	def _hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
 		self.session.speed_unpause()
 		self.main_gui.on_escape = self.main_gui.show_pause
@@ -445,7 +447,7 @@ class IngameGui(LivingObject):
 		self.widgets['change_name'].findChild(name='new_name').text = u''
 		if not (len(new_name) == 0 or new_name.isspace()):
 			RenameObject(instance, new_name).execute(self.session)
-		self.hide_change_name_dialog()
+		self._hide_change_name_dialog()
 
 	def toggle_ingame_pause(self):
 		"""Called when the hotkey for pause is pressed. Displays pause notification and does
@@ -492,3 +494,27 @@ class IngameGui(LivingObject):
 				# player changed and build menu is currently displayed
 				self.show_build_menu()
 
+
+	def show_chat_dialog(self):
+		"""Show a dialog where the user can enter a chat message"""
+		events = {
+			'okButton': self._do_chat,
+			'cancelButton': self._hide_chat_dialog
+		}
+		self.main_gui.on_escape = self._hide_chat_dialog
+
+		self.widgets['chat'].mapEvents(events)
+		self.widgets['chat'].findChild(name='msg').capture( self._do_chat )
+		self.widgets['chat'].show()
+
+	def _hide_chat_dialog(self):
+		"""Escapes the chat dialog"""
+		self.main_gui.on_escape = self.main_gui.show_pause
+		self.widgets['chat'].hide()
+
+	def _do_chat(self):
+		"""Acctually initiates chatting and hides the dialog"""
+		msg = self.widgets['chat'].findChild(name='msg').text
+		Chat(msg).execute(self.session)
+		self.widgets['chat'].findChild(name='msg').text = u''
+		self._hide_chat_dialog()
