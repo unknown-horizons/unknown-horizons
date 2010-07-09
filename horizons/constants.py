@@ -68,6 +68,9 @@ class VERSION:
 	#RELEASE_NAME   = _("Unknown Horizons Alpha %s")
 	#RELEASE_VERSION = '2009.2'
 
+	## +=1 this if you changed the savegame "api"
+	SAVEGAMEREVISION= 1
+
 	@staticmethod
 	def string():
 		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION

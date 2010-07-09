@@ -102,7 +102,7 @@ class SPSession(Session):
 		@return: bool, whether save was successfull
 		"""
 		if savegamename is None:
-			savegamename = _modules.gui.show_select_savegame(mode='save')
+			savegamename = horizons.main._modules.gui.show_select_savegame(mode='save')
 			if savegamename is None:
 				return False # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)

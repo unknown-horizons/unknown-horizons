@@ -142,7 +142,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
 			'closeButton'    : self.quit_session,
-			'savegameButton' : self.save_game,
+			'savegameButton' : self.session.save,
 			'loadgameButton' : horizons.main.load_game,
 			'helpLink'       : self.on_help,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
@@ -251,6 +251,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 										 time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 			details_label.text += "Saved %d time%s\n" % (savegame_info['savecounter'], \
 			                                             's' if savegame_info['savecounter'] > 1 else '')
+
+			from horizons.constants import VERSION
+			try:
+				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
+					details_label.text += u"Savegame ver. %d" % ( savegame_info['savegamerev'] )
+				else:
+					details_label.text += u"WARNING: Incompatible ver. %d!\nNeed ver. %d!" \
+					             % (savegame_info['savegamerev'], VERSION.SAVEGAMEREVISION)
+			except KeyError:
+				details_label.text += u"INCOMPATIBlE VERSION\n"
+
+
 			box.addChild( details_label )
 
 			"""

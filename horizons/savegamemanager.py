@@ -26,7 +26,7 @@ import os.path
 import glob
 import time
 
-from horizons.constants import PATHS
+from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader
 
 import horizons.main
@@ -40,6 +40,11 @@ class SavegameManager(object):
 
 	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
+
+
+	IMPORTANT:
+	Whenever you make a change that breaks compatibility with old savegames, increase 
+	horizons/constans.py:VERSION.SAVEGAMEREVISION by one !!
 	"""
 	log = logging.getLogger("savegamemanager")
 
@@ -62,10 +67,8 @@ class SavegameManager(object):
 	display_timeformat = "%y/%m/%d %H:%M"
 
 	# metadata of a savegame with default values
-	savegame_metadata = { 'timestamp' : -1,
-												'savecounter' : 0 }
-	savegame_metadata_types = { 'timestamp' : float,
-															'savecounter' : int }
+	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0 }
+	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int }
 
 
 	@classmethod
@@ -185,6 +188,7 @@ class SavegameManager(object):
 		metadata = cls.savegame_metadata.copy()
 		metadata['timestamp'] = time.time()
 		metadata['savecounter'] = savecounter
+		metadata['savegamerev'] = VERSION.SAVEGAMEREVISION
 
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
