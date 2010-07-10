@@ -369,11 +369,11 @@ class World(LivingObject):
 
 	def get_islands_in_radius(self, point, radius):
 		"""Returns all islands in a certain radius around a point.
-		@return List of islands in radius"""
-		islands = []
+		@return set of islands in radius"""
+		islands = set()
 		for island in self.islands:
 			for tile in island.get_surrounding_tiles(point, radius):
-				islands.append(island)
+				islands.add(island)
 				break
 		return islands
 

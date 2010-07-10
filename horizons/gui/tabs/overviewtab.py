@@ -111,9 +111,16 @@ class ShipOverviewTab(OverviewTab):
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance)
 		}
 
-		# check if we can display the foundSettlement-anchor
-		islands = self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius)
-		if len(islands) > 0:
+		# check if an island is in range and it doesn't contain a player's settlement
+		island_without_player_settlement_found = False
+		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, \
+		                                                                self.instance.radius):
+			player_settlements = [ settlement for settlement in island.settlements if \
+			                       settlement.owner is self.instance.session.world.player ]
+			if len(player_settlements) == 0:
+				island_without_player_settlement_found = True
+
+		if island_without_player_settlement_found:
 			events['foundSettelment'] = Callback(self.instance.session.ingame_gui._build, \
 		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
 		                                       weakref.ref(self.instance) )
