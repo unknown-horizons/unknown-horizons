@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2009 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -132,6 +133,12 @@ class TraderShipOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_overview_tradership.xml',
 			instance = instance
 		)
+		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
+		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
+		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
+		self.widget.findChild(name='name').stylize("headline")
+		self.tooltip = u"Ship Overview"
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "tab_widget/tab_production_line.xml"
