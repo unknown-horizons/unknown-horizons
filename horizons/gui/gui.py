@@ -332,6 +332,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if retval == 'delete':
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
 			self._delete_savegame(map_files)
+			self.current = old_current
 			return self.show_select_savegame(mode=mode)
 
 		selected_savegame = None
