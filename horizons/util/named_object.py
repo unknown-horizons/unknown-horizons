@@ -57,5 +57,5 @@ class NamedObject(WorldObject):
 
 	def load(self, db, worldid):
 		super(NamedObject, self).load(db, worldid)
-		self.name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
+		self.set_name( db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0] )
 
