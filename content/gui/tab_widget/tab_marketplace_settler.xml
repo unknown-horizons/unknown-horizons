@@ -13,7 +13,7 @@ It shows an overview over the settlers, like average happiness
 
 	<Container position="0,70" size="600,400" >
 
-		<Label name="headline" position="85,7" text="Settler overview" />
+		<Label name="headline" position="55,7" text="Settler overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Container size="260,550" position="25,43">
 

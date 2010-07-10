@@ -43,7 +43,6 @@ class IngameGui(LivingObject):
 	message_widget = livingProperty()
 	minimap = livingProperty()
 
-
 	styles = {
 		'city_info' : 'city_info',
 		'change_name' : 'book',
