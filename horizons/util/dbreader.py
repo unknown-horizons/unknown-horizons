@@ -59,6 +59,10 @@ class DbReader(object):
 		@param script: multiline str containing an sql script."""
 		return self.cur.executescript(script)
 
+	def close(self):
+		"""Closes the db"""
+		self.connection.close()
+
 class SqlError(object):
 	"""Represents a SQL error
 	@param error: str error description.
