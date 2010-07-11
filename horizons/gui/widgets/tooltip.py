@@ -58,7 +58,7 @@ class _Tooltip(object):
 
 	def show_tooltip(self):
 		if self.tooltip != "":
-			translated_tooltip = unicode(_(self.tooltip))
+			translated_tooltip = unicode(_(self.tooltip.replace(r'\n', '\n')))
 			line_count = len(translated_tooltip.splitlines())-1
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
@@ -71,7 +71,7 @@ class _Tooltip(object):
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
 			label = pychan.widgets.Label(text=u"", position=(16, 8))
-			label.text = translated_tooltip.replace(r'\n', '\n')
+			label.text = translated_tooltip
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
