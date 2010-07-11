@@ -1,24 +1,9 @@
 events:
-- # Winning conditions
-  actions:
-   - {type: win} 
-   - {type: message, arguments: ["Congratulations! More than 50 people call your settlement their home.", "You have reached the end of this tutorial…", "… and are ready to meet new challenges!"]}
-  conditions:
-   - type: settlements_num_greater
-     arguments: [0]
-   - type: settlement_inhabitants_greater
-     arguments: [50]
-   - type: building_num_of_type_greater
-     arguments: [3, 3]
-   - type: settler_level_greater
-     arguments: [0]
-   - type: var_eq
-     arguments: ["tutStepDone", 16]
-
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Welcome to Unknown Horizons!", "To move your ship, select it and right click on the location you want it to go to.", "Once you are near the coast, build a Branch Office there…", "… by pressing the 'Build Settlement' anchor-like button.", "Click where you want to place your first building."]}
-#   - {type: logbook, arguments: ["Welcome to Unknown Horizons! To move your ship, select it and right click on the location you want it to go to. Once you are near the coast, build a Branch Office there by pressing the 'Build Settlement' anchor-like button. Click where you want to place your first building.\n\nBuild a branch office at the coast."]}
+   - {type: message, arguments: ["Build a branch office at the coast."]}
+   - {type: logbook, arguments: ["Welcome to Unknown Horizons!\n\nThis is your captain's log where all important information is stored. We try to deliver short notifications of each task.\n\nIf you are interested in longer descriptions, your log will hopefully provide all the help you need.\nIn case you closed it: The 'Captain's log' icon in our northeast corner, right below the mini-map, with a sealed document and a feather opens it again.\n\nFor any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we try to improve the tutorial!\n\nVisit www.unknown-horizons.org for help on how to contact the team!\n\nAnd now, let's start the actual game.\n\nEAT ME"]}
+   - {type: logbook, arguments: ["NEW TASK: SETTLE ON AN ISLAND\n\nTo move your ship, select it with a left click and right click on the location you want it to go to.\n\nOnce you are near the coast, the anchor-like button you see in the overview tab will get active.\n\nThis means that you are now able to build a Branch Office there by pressing that button (called 'Build Settlement').\n\nNow a preview of your building is dragged around when you move your mouse.\n\nYou can build on every spot where this preview is not red now.\nClick where you want to place your first building.\n\nTASK: Build a branch office at the coast.\n\nEAT ME"]}
    - {type: set_var, arguments: ["tutStepDone", 1]}
   conditions: 
    - type: time_passed
@@ -36,8 +21,9 @@ events:
 
 - # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
-#   - {type: logbook, arguments: ["Done.\n\n\nNow that you built the Branch Office, you need to move some of the resources to its stock. Select the ship and go into the Ship Inventory menu. Select Load/Unload and move the resources to the Branch Office by clicking on them.\n\nUnload at least 10 tons of each resource.\nCUT ME OFF!"]}
-   - {type: message, arguments: ["Now that you built the Branch Office, you need to move some of the resources to it's stock.", "Select the ship and go into the Ship Inventory menu.", "Select Load/Unload and move the resources to the Branch Office by clicking on them."]}
+   - {type: logbook, arguments: ["NEW TASK: UNLOAD YOUR GOODS\n\nNow that you built the Branch Office, you need to move some of the resources to its stock.\n\nTo do so, select your ship and go into the tab called 'Ship Inventory'.\n\nHere you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n\nYou can use this button if your ship is in range of a possible trade partner.\n\nClick on the button. In case it is not active, first move your ship towards the branch office and then try again.\n\nTASK: Open the trade dialogue.\n\nEAT ME"]}
+   - {type: logbook, arguments: ["\n\nThe tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n\nTo move goods from one stock into the other, simply click on them.\n\nTry clicking on the boards of your ship first and then try moving them back.\n\nYou can customize the moved amount using the self-explanatory radio buttons in the middle.\n\nDid you get used to the trade tab?\nYou need some construction material in your settlement now!\n\nTASK: Unload at least 10 tons of each resource your ship sailed around with.\n\nEAT ME"]}
+   - {type: message, arguments: ["Unload at least 10 tons of each resource on your ship."]}
    - {type: set_var, arguments: ["tutStepDone", 3]}
   conditions:
    - type: building_num_of_type_greater
@@ -45,10 +31,11 @@ events:
    - type: var_gt
      arguments: ["tutStepDone", 1]
 
-- # Tell the player to build the first two buildings - lumberjack huts
+- # Tell the player to build the first building - lumberjack 
   actions:
-   - {type: message, arguments: ["Now that there is construction material in your Branch Office,…", "… you can build some buildings.", "First, build two Lumberjacks. In order to do so, go to the Build Menu…", "… below the mini map and select Lumberjack there.", "Place the Lumberjack near some trees and build a road…", "… between the branch office and his tent.", "TIP: Hold Shift Key to build multiple buildings of the same kind."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nNow that there is construction material in your Branch Office, you can build some buildings. First, build two Lumberjacks. In order to do so, go to the Build Menu below the mini map and select Lumberjack there. Place the Lumberjack near some trees and build a road between the branch office and his tent.\n\nTIP: Hold Shift Key to build multiple buildings of the same kind.\n\nBuild two lumberjacks."]}
+   - {type: logbook, arguments: ["NEW TASK: BUILD A LUMBERJACK\n\nWith your new construction material in the Branch Office, you can start to construct some basic buildings.\n\nWe will start with building a Lumberjack.\n\nThis are essential because boards in this stage are the only rods your sailors can afford to pin their tents under.\n\nThe fisherman needs some boards to build his vessel as well.\n\nIn order to construct lumberjacks, open the Build Menu first by either clicking the big icon below the mini map or pressing B key.\n\nThe build menu is sorted by increments.\nThis means that only the basic buildings are available in the sailors level (which you are in at the moment)."]}
+   - {type: logbook, arguments: ["\n\nAs your civilization advances, you also gain more and more complex buildings.\n\nFor now, select the lumberjack under 'Companies' and build it in an area with some trees around.\n\nYou can also plant trees later but that costs money - use what nature provided you with!\n\nA company always needs road connection to a storage or branch office, else goods will remain there and not be collected.\n\nThis means that you have to build a trail connecting branch office and lumberjack.\n\nTASK: Build a lumberjack in a wooded area and connect it to a road.\nWatch how a collector will fetch your first self-produced boards."]}
+   - {type: message, arguments: ["Build a lumberjack and connect it to the branch office using a trail."]}
    - {type: set_var, arguments: ["tutStepDone", 4]}
   conditions:
    - type: settlement_res_stored_greater
@@ -60,26 +47,16 @@ events:
    - type: var_gt
      arguments: ["tutStepDone", 2]
 
-#- # Congratulations after first lumberjack
-#  actions:
-#   - {type: message, arguments: ["Congratulations, you just built your first production building!"]}
-#   - {type: set_var, arguments: ["tutStepDone", 5]}
-#  conditions:
-#   - type: building_num_of_type_greater
-#     arguments: [8, 0]
-#   - type: building_num_of_type_less
-#     arguments: [8, 2]
-#   - type: var_gt
-#     arguments: ["tutStepDone", 3]
-
-- # Tell the player to build some food supply
+- # food supply: hunter and fisher
   actions:
-   - {type: message, arguments: ["Now it is time to supply your people with food.", "You can build Hunter and Fisher at this increment.", "The Hunter hunts animals in the forest, so he needs trees…", "… and the fisher needs a coastal building site.", "Build both of them and roads to the branch office."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nNow it is time to supply your people with food. You can build Hunter and Fisher at this increment. The Hunter hunts animals in the forest, so he needs trees and the fisher needs a coastal building site. Build both of them and roads to the branch office.\n\nBuild a hunter and a fisher."]}
+   - {type: logbook, arguments: ["NEW TASK: FOOD SUPPLY\n\nYou will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n\nAvailable companies in the first increment are Hunter and Fisher.\n\nThe Hunter, surprisingly, hunts animals in the forest, so he needs trees around.\n\nNote that you can place it close to the lumberjack's forest.\n\nIt can happen that the animals don't reproduce fast enough or simply hide well.\n\nConclusion: the hunter is not too reliable if you need continuous supply."]}
+   - {type: logbook, arguments: ["\n\nThe fisher needs a coastal building site like the branch office - and nothing more.\n\nHe will build a small rowing vessel and catch some fish.\n\nThis is a very constant supply at the cost of a slightly longer production time of one unit food.\n\nA small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.\n\nTASK: Build a hunter and a fisher.\n\nAnd don't forget the roads to your branch office.\n\nEAT THAT!"]}
+   - {type: message, arguments: ["Build a hunter and a fisher. Connect them to the branch office."]}
+# WE NEED A CHECK FOR CORRECT PATHS HERE 
    - {type: set_var, arguments: ["tutStepDone", 6]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [8, 1]
+     arguments: [8, 0]
    - type: building_num_of_type_greater
      arguments: [15, 0]
    - type: var_gt
@@ -87,8 +64,9 @@ events:
 
 - # main square
   actions:
-   - {type: message, arguments: ["You need to build a Main Square where Settlers fetch their tools and resources from.","Choose an area without many economy buildings for your Main Square…", "… because you should keep your housing together at start and need space for this."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nYou need to build a Main Square where Settlers fetch their tools and resources from. Choose an area without many economy buildings for your Main Square because you should keep your housing together at start and need space for this.\n\nBuild a Main Square."]}
+   - {type: logbook, arguments: ["NEW TASK: MAIN SQUARE\n\nYour residents need a Main Square where they can fetch their goods from.\n\nThis means that they need a road connection from their home to the main square.\n\nAll goods in your branch office are available at the market place, so your sailors do not need to walk to the fisher nor to the branch office.\n\nYou should consider founding your actual house settlement in an area where you can easily expand it and build some roads, too.\n\nNormally we do not advise to place tents very close to your lumberjacks for example because they need trees which would be teared then.\n\nTASK: Build a Main Square.\n\nHUNGRY?"]}
+   - {type: logbook, arguments: ["Let's have a closer look at the main square afterwards.\n\nIn the overview tab you can quickly adjust taxes.\n\nIn the second tab 'Account' you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.\n\nThe items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.\n\nIf your balance is positive, you all in all make profit.\n\nIn the 'Settler' tab you can see how happy your inhabitants are and what resource most of them want to be supplied with.\nSTILL?"]}
+   - {type: message, arguments: ["Build a Main Square. Choose an area without many economy buildings."]}
    - {type: set_var, arguments: ["tutStepDone", 7]}
   conditions:
    - type: building_num_of_type_greater
@@ -98,106 +76,164 @@ events:
    - type: var_gt
      arguments: ["tutStepDone", 5] 
 
-- # And tents for settlers
+- # 1 tent
   actions:
-   - {type: message, arguments: ["Settlers want to have a roof over their heads, so they need…", "… tents! Build 4 tents connected to the Main Square.", "Always remember to look at the settler's tab to see demanded resources.", "If their demands get fulfilled, Settler happiness and thus your tax income increase."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nSettlers want to have a roof over their heads, so they need tents! Build 4 tents connected to the Main Square. Always remember to look at the settler's tab to see demanded resources. If their demands get fulfilled, Settler happiness and thus your tax income increase.\n\nBuild at least four tents."]}
+   - {type: logbook, arguments: ["NEW TASK: RESIDENTIAL BUILDINGS\n\nSettlers want to have a roof over their heads, else they won't even think of living in your city. You need to provide tents!\n\nTents are the basic residential buildings.\n\nYour inhabitants will want to upgrade it when they reach higher increments.\n\nSailors basically may not look very useful since they will try to consume all goods you produce - but they at least pay taxes.\n\nAnd that's the only way you can make money for now.\n\nTASK: Build a tent and connect it to the main square."]}
+   - {type: message, arguments: ["Build a tent and connect it to the main square."]}
    - {type: set_var, arguments: ["tutStepDone", 8]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [4, 0]
    - type: var_gt
      arguments: ["tutStepDone", 6]
+
+- # 4 tents
+  actions:
+   - {type: logbook, arguments: ["\n\nLet's have a look at the tent overview tab.\n\nYou can see\n* the happiness of these residents,\n* the taxes they pay and\n* the resources they demand.\n\nIf their demands get fulfilled, happiness and thus your tax income increase.\n\nIf not, happiness and income decrease and at some time your residents get really sour and simply turn their back on your village, leaving behind only a ruin.\n\nNote that you can change the tax settings here, too.\n\nTASK: Build at least three additional tents.\n\nTIP: Holding down SHIFT eases constructing multiple buildings of the same kind."]}
+   - {type: message, arguments: ["Build at least three additional tents and connect them to the main square."]}
+   - {type: set_var, arguments: ["tutStepDone", 9]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [3, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 7]
      
 - # Build a signal fire
   actions:
-   - {type: message, arguments: ["Can you see the ship passing your island from time by time?", "This is the ship of the Free Trader, he will supply your settlement with necessary goods.", "Build a signal fire at the coast near the branch office…", "… to show his ship the way to your settlement."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nCan you see the ship passing your island from time by time? This is the ship of the Free Trader, he will supply your settlement with necessary goods. Build a signal fire at the coast near the branch office to show his ship the way to your settlement.\n\nBuild a signal fire near your branch office."]}
-   - {type: set_var, arguments: ["tutStepDone", 9]}
+   - {type: logbook, arguments: ["NEW TASK: BUILD SIGNAL FIRE\n\nCan you see the ship passing your island from time by time?\n\nThis is the ship of the Free Trader, one of the first settlers in this archipelago.\n\nHe will supply your settlement with necessary goods which you can't produce so far.\n\nYou also can sell surpluses of your production, but in general constructing more tents instead of selling those to the Free Trader generates more profit.\n\nNormally he just sails around and looks for deals, but small settlements like yours first need some promotion, else you won't be found.\n\nFor this purpose, you can build a signal fire at the coast near your branch office to show his ship the way to your settlement."]}
+   - {type: logbook, arguments: ["After this little guidance, the trader will step by from time to time and look into your branch office.\n\nYou can tell him what you want via the tab 'Buy/Sell' which at the moment isusability crap, but we have a redesign ticket set up for this.\n\nAt increment sailors, you are equipped with three trading slots.\n\nClick on the small icon to change the slot mode from 'Buy' to Sell and vice versa.\n\nIf you click in the slot, you can choose the good you want to trade with.\n\nWe will further explain this once you are ready to trade.\n\nTASK: Build a signal fire at the coast close to your branch office\n\nEAT THIS PLEASE"]}
+   - {type: message, arguments: ["Build a signal fire at the coast close to your branch office."]}
+   - {type: set_var, arguments: ["tutStepDone", 10]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [3, 3]
    - type: var_gt
-     arguments: ["tutStepDone", 7]
+     arguments: ["tutStepDone", 8]
 
 - # Trading
   actions:
-   - {type: message, arguments: ["Fine! The Free Trader will now stop by at your branch office from time to time.", "In the Buy/Sell tab of the Branch Office you can specify the stock amount…", "… until which you want to sell or buy this good by dragging the slider on the right.", "Example: 5 tons in stock, slider positioned at 9 will buy 4 additional tons at most.", "Selling works similarly. 8 tons in stock and slider at 3 will sell up to 5 tons.", "Buy as much tools now as you need to have 25 tools in stock!"]}
-#   - {type: logbook, arguments: ["Done.\n\n\nFine! The Free Trader will now stop by at your branch office from time to time. In the Buy/Sell tab of the Branch Office you can specify the stock amount until which you want to sell or buy this good by dragging the slider on the right. Example: 5 tons in stock, slider positioned at 9 will buy 4 additional tons at most. Selling works similarly. 8 tons in stock and slider at 3 will sell up to 5 tons. Buy as much tools now as you need to have 25 tools in stock!\n\nReach a tools stock of 25."]}
-   - {type: set_var, arguments: ["tutStepDone", 10]}
+   - {type: logbook, arguments: ["NEW TASK: LEARN TO TRADE\n\nFine! The Free Trader will now stop by at your branch office from time to time.\n\nLet's continue our tutorial on how you trade with him.\n\nAfter selecting particular goods, the green bar (if appearing) shows you how much you are having in stock of this good.\n\nDragging the slider on the right of each slot determines your 'Exit Value' which has a different meaning on 'Buy' and 'Sell.\n\nExamples help to understand, so here we go:\n\nHaving a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\nIf the free trader however only wants to sell 3 tons, you need to live with that.\n\nEAT THIS"]}
+   - {type: logbook, arguments: ["\n\nSelling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n\nIf the trader only buys two tons, there is nothing you can do about it.\n\nUnknown Horizons is featuring smart pricing, so the value of one unit can depend.\nIt is NOT possible to change prices!\nYou can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' items there.\n\nAs a practise, we'd now like you to…
+\n\nTASK: … buy as much tools as you need to have 25 tools in stock!\n\nIf you still have some in your ship's inventory, this seems like a good point to unload them.\n\nOH YEAH"]}
+   - {type: message, arguments: ["Reach a stock of 25 tools."]}
+   - {type: set_var, arguments: ["tutStepDone", 11]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [6, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 8]
+     arguments: ["tutStepDone", 9]
 
-- # build chapel
+- # build awning
   actions:
-   - {type: message, arguments: ["Those tools will be enough for the moment. Well done!", "You can sell surpluses of your production to the Free Trader now, too.", "Build a ministry/chapel with a connection to the tents…", "… in order to fulfill your sailors' need for faith!"]}
-#   - {type: logbook, arguments: ["Done.\n\n\nThose tools will be enough for the moment. Well done!\n\nYou can sell surpluses of your production to the Free Trader now, too.\n\nBuild a ministry/chapel with a connection to the tents in order to fulfill your sailors' need for faith!\n\n\nBuild a ministry."]}
-   - {type: set_var, arguments: ["tutStepDone", 11]}
+   - {type: logbook, arguments: ["NEW TASK: BUILD AN AWNING\n\nThose tools will be enough for the moment. Well done!\n\nYou now provide housing, a market place and food to your inhabitants.\n\nStill there is one demand which we did not satisfy so far, you may check that in the maketplace or tent tab - your sailors want a basic building where they can pray.\n\nThe solution is an awning which the village parson quickly puts up as shelter from the sun.\n\nService buildings like this also need to be connected to the tents with a road, else your inhabitants feel unable to reach them.\n\nIn later increments, upgraded versions of buildings may get available.\n\nEAT THIS"]}
+   - {type: logbook, arguments: ["\n\nIn that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n\nTake care when planning your city because most of those advanced buildings are bigger than the basic ones.\n\nNote that faith is treated like a physical resource, so units need to refresh their after some time.\n\nIt especially is NOT enough that the building is in a certain range.\n\nTASK: Build an awning with connection to the tents in order to fulfill your sailors' need for faith."]}
+   - {type: message, arguments: ["Build an awning with connection to the tents."]}
+   - {type: set_var, arguments: ["tutStepDone", 12]}
   conditions:
    - type: settlement_res_stored_greater
      arguments: [6, 24]
    - type: building_num_of_type_greater
      arguments: [6, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 9]
+     arguments: ["tutStepDone", 10]
 
 - # Upgrade housing
   actions:
-   - {type: message, arguments: ["All demands are fulfilled now if your inhabitants can regularly step by.", "If you set taxes to level Low, you can expect to reach the next increment soon!"]}
-#   - {type: logbook, arguments: ["Done.\n\n\nAll demands are fulfilled now if your inhabitants can regularly step by. f you set taxes to level Low, you can expect to reach the next increment soon!\n\n\nSet taxes to low (left end)."]}
-   - {type: set_var, arguments: ["tutStepDone", 12]}
+   - {type: logbook, arguments: ["NEW TASK: NEXT INCREMENT\n\nAll demands are fulfilled now if your inhabitants can regularly visit main square and awning as well as your food supply is sufficient.\n\nIf the sailors are happy enough, they want to advance to the next increment called Pioneers.\n\nTo make them happy, there is nothing else for you but setting taxes to level Low since you fulfilled all demands of your inhabitants.\n\nYou should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.\n\nAfter some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.\n\nDIE!"]}
+   - {type: logbook, arguments: ["\n\nSuch residential upgrades are the only ones which cost resources and can not be controlled well by you.\n\nThere are manual upgrades to some buildings where you use resources to construct a better version on the same spot, and there are upgrades without costs, as you will see with the lumberjack for example.\nOnly the graphics update in this case.\n\nUpgraded housings accomodate more inhabitants and pioneers pay more taxes than sailors, too.\n\nAs you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.\n\nTASK: Set the tax level to Low (left end)."]}
+   - {type: message, arguments: ["Set the tax level to Low (left end)."]}
+   - {type: set_var, arguments: ["tutStepDone", 13]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [5, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 10]
+     arguments: ["tutStepDone", 11]
      
 - # build farm
   actions:
-   - {type: message, arguments: ["Look! Your inhabitants have reached increment 2!", "Now you have access to some new buildings via a new tab in the Build menu.", "Pioneers will demand cloth, so you need to set up a production…", "… starting with sheep wool which is produced at the farm.", "Build a farm and, as usual, ensure the road connection…", "…to either your branch office or a storage tent."]}
-#   - {type: logbook, arguments: ["Look! Your inhabitants have reached increment 2! Now you have access to some new buildings via a new tab in the Build menu. Pioneers will demand cloth, so you need to set up a production starting with sheep wool which is produced at the farm. Build a farm and, as usual, ensure the road connection to either your branch office or a storage tent.\n\n\nBuild a farm."]}
-   - {type: set_var, arguments: ["tutStepDone", 13]}
+   - {type: logbook, arguments: ["NEW TASK: BUILD A FARM\n\nLook! Some of your inhabitants have reached increment II!\n\nNow you have access to some new buildings, have a look at the Build menu again.\n\nA shiny new tab appeared there.\n\nPioneers will demand cloth, so you need to set up a production line for cloth starting with sheep wool (which is, amongst others, produced at the farm).\n\nThe farm is a very special production building since it does not only produce one, but very many (and different) goods if you like.\n\nThe output of fams depend on what kind of fields you build around it."]}
+   - {type: logbook, arguments: ["\n\nWe will have a closer look at this later.\n\nFarms, like all companies producing raw materials, not necessarily need to be connected to a storage or branch office.\n\nAs long as units of the     can reach the farm, everything's fine.\n\nIf you however plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.\n\nTry to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.\n\nTASK: Build a farm."]}
+   - {type: message, arguments: ["Build a farm and keep some empty space around it."]}
+   - {type: set_var, arguments: ["tutStepDone", 14]}
   conditions:
    - type: settler_level_greater
      arguments: [0]
    - type: var_gt
-     arguments: ["tutStepDone", 11]
+     arguments: ["tutStepDone", 12]
 
 - # farm finished, build fields now (pasture)
   actions:
-   - {type: message, arguments: ["The farm is finished now, so you can build some fields.", "Build one pasture and add potato fields if you like.", "The farm produces food with potato fields so you can nourish more inhabitants.", "Make sure all fields are in the area covered by the farm…", "… and that the farm itself is connected to a storage."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nThe farm is finished now, so you can build some fields. Build one pasture and add potato fields if you like. The farm produces food with potato fields so you can nourish more inhabitants. Make sure all fields are in the area covered by the farm and that the farm itself is connected to a storage.\n\n\nBuild a pasture at least."]}
-   - {type: set_var, arguments: ["tutStepDone", 14]}
+   - {type: logbook, arguments: ["NEW TASK: BUILD FIELDS\n\nThe farm itself is not going to produce anything without some fields.\n\nYou currently have the choice between pastures, potato and sugar fields.\n\nLet's have a short overview:\n* Pasture: Sheep live here, producing lamb wool\n* Potato field: Grows potatoes which are currently treated as food\n* Sugar field: Grows sugar which is used to burn alcohol and (later) produce confectionery\n\nWe now only need pastures, but in case your food supply chain is too small you can also produce some potatoes.\n\nNote that for potatoes you will need a road connection to the farm - not to the field!\n\nDARN"]}
+   - {type: logbook, arguments: ["\n\nMake sure that all fields you build are in the area covered by the farm.\n\nYou can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.\n\nDifferent classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, …) and because of that, the farm may be unable to serve all of the fields you built for it in time.\n\nFor now, you do not need to care about farm time issues a lot since you haven't built any fields. Let's change that!\n\nTASK: Build at least one pasture in the farm's range and add potato fields if you like."]}
+   - {type: message, arguments: ["Build at least one pasture and add potato fields if you like."]}
+   - {type: set_var, arguments: ["tutStepDone", 16]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [20, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 12]
+     arguments: ["tutStepDone", 13]
 
-- # Weavers for processing the stuff from pastures
+- # storage tent
   actions:
-   - {type: message, arguments: ["Now that you do have some wool, you need a Weaver…", "… to produce cloth. Build one close to the farm…", "… and ensure he is connected to a road as well."]}
-#   - {type: logbook, arguments: ["Done.\n\n\nNow that you do have some wool, you need a Weaver to produce cloth. Build one close to the farm and ensure he is connected to a road as well.\n\n\nBuild a weaver."]}
-   - {type: set_var, arguments: ["tutStepDone", 15]}
+   - {type: logbook, arguments: ["NEW TASK: BUILD STORAGE\n\nDid you watch your lumberjack recently?\n\nSince your branch office has no unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.\nSo if no sailor recently wanted to upgrade his tent, you probably have a lot of boards and in that case, the lumberjack may idle.\nWe can improve this situation with two different approaches, and you will have a look at both of them.\n\nAll companies offer the possibility of doing no work at all.\nThis may sound strange, but try to click on the gear wheel you see in, for example, a lumberjack's overview.\nIf this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease.\n\nDARN"]}
+   - {type: logbook, arguments: ["They won't always be zero, but still lower than if you keep the company producing.\n\nThis means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n\nAnother solution is to build the last increment-I-building we did not mention so far: the storage tent.\n\nThis building has two purposes. It\n* offers more storage for your goods and sends own collectors like the branch office\n* extends the settlement range (area where you can build at all).\n\nNote that companies can also be collected to a storage in order to get their products collected, and if the branch office is overloaded with tasks, you can place a storage as well.\n\nTASK: Build a storage tent, preferrably at your settlement's edge."]}
+   - {type: message, arguments: ["Build a storage tent (increment I tab) at your settlement's edge."]}
+   - {type: set_var, arguments: ["tutStepDone", 18]}
   conditions:
    - type: building_num_of_type_greater
      arguments: [18, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 13]
+     arguments: ["tutStepDone", 15]
+
+
+- # Weavers for processing the stuff from pastures
+  actions:
+   - {type: logbook, arguments: ["NEW TASK: BUILD A WEAVER\n\nNow the wool production is set up, you still need a Weaver to produce cloth out of this wool.\n\nThere are two spots where you can build it - either close to the farm or close to a storage tent respectively the branch office.\n\nIn both cases you should ensure that he is connected to a road as well.\n\nYou can place it close to the farm and tear down any road to the farm to see that the weaver will still fetch the wool and produce.\n\nTASK: Build a weaver which has a chance to get wool.\nCMON"]}
+   - {type: message, arguments: ["Build a weaver that can somehow reach the wool of your farm."]}
+   - {type: set_var, arguments: ["tutStepDone", 18]}
+  conditions:
+   - type: building_num_of_type_greater
+     arguments: [18, 0]
+   - type: var_gt
+     arguments: ["tutStepDone", 15]
 
 - # how to win
   actions:
-   - {type: message, arguments: ["Try to house a total of 50 or more inhabitants in your city.", "Once you reach this, you are ready to enjoy Unknown Horizons!"]}
-#   - {type: logbook, arguments: ["Done.\n\n\nTry to house a total of 50 or more inhabitants in your city.", "Once you reach this, you are ready to enjoy Unknown Horizons!\n\n\nReach a number of 50 inhabitants to win."]}
-   - {type: set_var, arguments: ["tutStepDone", 16]}
+   - {type: message, arguments: ["House a total of 50 or more inhabitants in your city to complete the tutorial."]}
+   - {type: logbook, arguments: ["NEW TASK: COMPLETE THE TUTORIAL\n\nTry to house a total of 50 or more inhabitants in your city by providing more residential buildings.\n\nOnce you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!\n\nTASK: Reach a total number of 50 inhabitants to complete this tutorial."]}
+   - {type: set_var, arguments: ["tutStepDone", 20]}
   conditions:
+   - type: settlement_res_stored_greater
+     arguments: [3, 0]
    - type: building_num_of_type_greater
      arguments: [7, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 14]
+     arguments: ["tutStepDone", 17]
+
+- # final message
+  actions:
+   - {type: logbook, arguments: ["NO TASKS LEFT\n\nThere is nothing left to do now.\n\nIf you have any suggestions on what we could or should improve, add or leave out:\n\nwww.unknown-horizons.org\n\n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nOur forums are open to you as well!\n\nThe best results until now were achieved by joining our IRC channel, so you could try that out first (-;"]}
+   - {type: logbook, arguments: ["\n\n\n\n\n\n\nThanks for playing the tutorial!\n\nYour UH-Team\n\nAnd I won't show up :P "]}
+   - {type: set_var, arguments: ["tutStepDone", 22]}
+  conditions:
+   - type: settlements_num_greater
+     arguments: [0]
+   - type: settlement_inhabitants_greater
+     arguments: [50]
+   - type: building_num_of_type_greater
+     arguments: [3, 3]
+   - type: settler_level_greater
+     arguments: [0]
+   - type: var_gt
+     arguments: ["tutStepDone", 19]
+
+- # Winning conditions
+  actions:
+   - {type: win} 
+   - {type: message, arguments: ["Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"]}
+  conditions:
+   - type: var_gt
+     arguments: ["tutStepDone", 21]
 
 mapfile: development.sqlite
 difficulty: Tutorial
