@@ -107,7 +107,7 @@ def settlement_res_stored_greater(session, res, limit):
 	           settlement.inventory[res] > limit)
 
 def time_passed(session, secs):
-	"""Returns whether at least secs seconds have passed since gplayer_res_stored_lessame start."""
+	"""Returns whether at least secs seconds have passed since start."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
 
 def var_eq(session, name, value):
