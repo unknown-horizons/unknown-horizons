@@ -342,6 +342,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				if not self.show_popup(_("Confirmation for overwriting"), \
 				      _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % \
 				      selected_savegame, show_cancel_button = True):
+					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
