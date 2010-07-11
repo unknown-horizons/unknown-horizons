@@ -102,7 +102,6 @@ class SPSession(Session):
 		@param savegamename: string with the full path of the savegame file or None to let user pick one
 		@return: bool, whether save was successfull
 		"""
-		save_success = False
 		if savegamename is None:
 			savegamename = self.gui.show_select_savegame(mode='save')
 			if savegamename is None:
@@ -119,9 +118,7 @@ class SPSession(Session):
 			self.savecounter += 1
 
 			db = DbReader(savegame)
-			save_success = True
 		except IOError: # usually invalid filename
-			save_success = False
 			self.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
 			self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
@@ -142,14 +139,10 @@ class SPSession(Session):
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
 
 			SavegameManager.write_metadata(db, self.savecounter)
-			save_success = True
+			db("COMMIT")
+			return True
 		except:
-			save_success = False
 			print "Save Exception"
 			traceback.print_exc()
 			db.close() # close db before delete
 			os.unlink(savegame) # remove invalid savegamefile
-
-		if save_success:
-			db("COMMIT")
-			return True
