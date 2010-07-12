@@ -91,6 +91,7 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='button').capture(pychan.tools.callbackWithArguments(self.show_resource_menu, num))
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
+			slider.setScaleStart(0.0)
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
 			slot.findChild(name="buysell").capture(pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			fillbar = slot.findChild(name="fillbar")
