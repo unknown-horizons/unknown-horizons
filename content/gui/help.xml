@@ -29,9 +29,9 @@
                 <Label name="set22" text="{ - } = Decrease game speed" position="42,110" />
                 <Label name="set23" text="{S} = Screenshot" position="42,140"/>
                 <Label name="set26" text="{C} = Chat" position="42,170" />
-                <Label name="set25" text="{SHIFT} = Hold to place multible buildings" position="42,200" />
+                <Label name="set25" text="{SHIFT} = Hold to place multiple buildings" position="42,200" />
                 <Label name="have_fun_lbl" text="Have fun." position="42,280"/>
-                <Label name="fife_and_uh_team_lbl" wrap_text="1" text="The FIFE and Unknown Horizons development teams" position="42,350" max_size="330,70" />
+                <Label name="fife_and_uh_team_lbl" text="The FIFE and Unknown Horizons development teams" position="42,350" wrap_text="1" max_size="330,70" /> <!-- this is not wrapped despite saying so -->
                 <Label text="http://www.unknown-horizons.org" position="42,410" />
                 <Label text="http://www.fifengine.de" position="42,440" />
         </Container>

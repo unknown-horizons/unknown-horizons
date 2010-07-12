@@ -33,6 +33,8 @@
 #   the magic from horizons/constants.py
 # ###################################################
 
+from horizons.constants import VERSION
+
 text_translations = dict()
 
 def set_translations():
@@ -130,7 +132,7 @@ def set_translations():
 			"headline_thanks"             : _("SPECIAL THANKS to:"),
 			"fife_team_lbl"               : _("The FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
-			"version_label"               : _("Unknown Horizons Alpha"),
+			"version_label"               : VERSION.string(),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),
@@ -159,7 +161,7 @@ def set_translations():
 			"set22"                       : _("{ - } = Decrease game speed"),
 			"set23"                       : _("{S} = Screenshot"),
 			"set26"                       : _("{C} = Chat"),
-			"set25"                       : _("{SHIFT} = Hold to place multible buildings"),
+			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
 			"have_fun_lbl"                : _("Have fun."),
 			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams")},
 		"ingame_pause.xml" : {
@@ -170,9 +172,9 @@ def set_translations():
 			"started_pdb_lbl"             : _("You start the terminal python debugger pdb!")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
-			"version_label"               : _("Unknown Horizons Alpha")},
+			"version_label"               : VERSION.string()},
 		"mainmenu.xml" : {
-			"version_label"               : _("Unknown Horizons Alpha"),
+			"version_label"               : VERSION.string(),
 			"start"                       : _("Singleplayer"),
 			"start_multi"                 : _("Multiplayer"),
 			"credits"                     : _(" Credits "),
