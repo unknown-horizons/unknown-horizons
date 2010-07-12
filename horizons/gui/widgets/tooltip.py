@@ -38,8 +38,8 @@ class _Tooltip(object):
 			self.name + '/mouseExited' : self.hide_tooltip,
 			self.name + '/mousePressed' : self.hide_tooltip,
 			self.name + '/mouseMoved' : self.position_tooltip,
-			self.name + '/mouseReleased' : self.position_tooltip,
-			self.name + '/mouseDragged' : self.position_tooltip
+			#self.name + '/mouseReleased' : self.position_tooltip,
+			self.name + '/mouseDragged' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
 		self.tooltip_items = []
