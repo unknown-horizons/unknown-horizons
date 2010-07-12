@@ -14,48 +14,50 @@
 		<Label text="dauerflucher (Andreas Lis)" position="62,130" />
 		<Label text="Andre_Re (Andre Reichelt) " position="62, 150" />
 		<Label text="Kilian (Kilian K.)" position="62,170" />
+		<Label text="eoc (Christopher Oelmueller)" position="62,190" />
 
-		<Label text="PROGRAMMING" position="32,200" name="headline_programming" />
-		<Label text="lynxis (Alexander Couzens)" position="62,220" />
-		<Label text="yonibear (Jonathan Sieber)" position="62,240" />
-		<Label text="Nihathrael (Thomas Kinnen)" position="62,260" />
-		<Label text="phiker (Philipp Kerling)" position="62,280" />
-		<Label text="spq (Kristoffer Janke)" position="62,300" />
-		<Label text="totycro (Bernhard Mallinger)" position="62,320" />
-		<Label text="christoph_debian (Christoph Egger)" position="62,340" />
-		<Label text="GreyGhost (Tushar Sawant)" position="62,360" />
-		<Label text="RainCT (Siegfried Gevatter)" position="62,380" />
-		<Label text="tuempl (Harald Demel)" position="62,400" />
-		<Label text="manuel (Manuel Mausz)" position="62,420" />
-
-		<Label text="SOUND and MUSIC ARTISTS" position="32,450" name="headline_sfx" />
-		<Label text="draikon (Sebastian Ahlen)" position="62,470" />
-		<Label text="novatlan (Tobias Escher)" position="62,490" />
+		<Label text="PROGRAMMING" position="32,220" name="headline_programming" />
+		<Label text="lynxis (Alexander Couzens)" position="62,240" />
+		<Label text="yonibear (Jonathan Sieber)" position="62,260" />
+		<Label text="Nihathrael (Thomas Kinnen)" position="62,280" />
+		<Label text="phiker (Philipp Kerling)" position="62,300" />
+		<Label text="spq (Kristoffer Janke)" position="62,320" />
+		<Label text="totycro (Bernhard Mallinger)" position="62,340" />
+		<Label text="christoph_debian (Christoph Egger)" position="62,360" />
+		<Label text="GreyGhost (Tushar Sawant)" position="62,380" />
+		<Label text="RainCT (Siegfried Gevatter)" position="62,400" />
+		<Label text="tuempl (Harald Demel)" position="62,420" />
+		<Label text="manuel (Manuel Mausz)" position="62,440" />
 	</Container>
 
 	<Container position="430,32" size="500,500">
-		<Label text="GRAPHIC ARTIST" position="22,40" name="headline_gfx" />
-		<Label text="dauerflucher (Andreas Lis)" position="62,60" />
-		<Label text="egore (Christoph Bill)" position="62,80" />
-		<Label text="kaschte (Fabian Riedel)" position="62,100" />
-		<Label text="terwarf (Alexander Breidenbroich)" position="62,120" />
 
-		<Label text="TRANSLATION" position="22,150" name="headline_translation" />
-		<Label text="French - LiveWire" position="62,170" />
-		<Label text="Norwegian - frodus" position="62,190" />
-		<Label text="Portuguese - Mad_Monk" position="62,210" />
+		<Label text="SOUND and MUSIC ARTISTS" position="22,30" name="headline_sfx" />
+		<Label text="draikon (Sebastian Ahlen)" position="62,50" />
+		<Label text="novatlan (Tobias Escher)" position="62,70" />
 
-		<Label text="SPECIAL THANKS to:" position="22,240" name="headline_thanks" />
-		<Label name="fife_team_lbl" text="The FIFE team (www.fifengine.de)" position="62,260" />
-		<Label text="mvBarracuda (Martin Vohland)" position="62,280" />
-		<Label text="lamoot (Matjaz Lamut)" position="62,300" />
-		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,320" />
-		<Label text="dreimer (Daniel Reimer)" position="62,340" />
-		<Label text="hoehrer (Werner Hoehrer)" position="62,360" />
-		<Label text="mattn (Martin Gerhardry)" position="62,380" />
+		<Label text="GRAPHIC ARTIST" position="22,100" name="headline_gfx" />
+		<Label text="dauerflucher (Andreas Lis)" position="62,120" />
+		<Label text="egore (Christoph Bill)" position="62,140" />
+		<Label text="kaschte (Fabian Riedel)" position="62,160" />
+		<Label text="terwarf (Alexander Breidenbroich)" position="62,180" />
 
-		<Label text="Reiner Prokein " position="62,410" />
-		<Label text="(http://reinerstileset.4players.de)" position="62,430" />
+		<Label text="TRANSLATION" position="22,210" name="headline_translation" />
+		<Label text="French - LiveWire" position="62,230" />
+		<Label text="Norwegian - frodus" position="62,250" />
+		<Label text="Portuguese - Mad_Monk" position="62,270" />
+
+		<Label text="SPECIAL THANKS to:" position="22,300" name="headline_thanks" />
+		<Label name="fife_team_lbl" text="The FIFE team (www.fifengine.de)" position="62,320" />
+		<Label text="mvBarracuda (Martin Vohland)" position="62,340" />
+		<Label text="lamoot (Matjaz Lamut)" position="62,360" />
+		<Label text="LinuxDonald (Thomas Kowaliczek)" position="62,380" />
+		<Label text="dreimer (Daniel Reimer)" position="62,400" />
+		<Label text="hoehrer (Werner Hoehrer)" position="62,420" />
+		<Label text="mattn (Martin Gerhardry)" position="62,440" />
+
+		<Label text="Reiner Prokein " position="62,460" />
+		<Label text="(http://reinerstileset.4players.de)" position="62,480" />
 	</Container>
 
 	<Container position="695,500" size="100,100">

@@ -9,19 +9,19 @@ events:
    - type: time_passed
      arguments: [0] 
 
-- # Show a message after building the first settlement
-  actions:
-   - {type: message, arguments: ["Congratulations! You just founded your first settlement!"]}
-   - {type: set_var, arguments: ["tutStepDone", 2]}
-  conditions:
-   - type: var_gt
-     arguments: ["tutStepDone", 0]
-   - type: settlements_num_greater
-     arguments: [0]
+#- # Show a message after building the first settlement
+#  actions:
+#   - {type: message, arguments: ["Congratulations! You just founded your first settlement!"]}
+#   - {type: set_var, arguments: ["tutStepDone", 2]}
+#  conditions:
+#   - type: var_gt
+#     arguments: ["tutStepDone", 0]
+#   - type: settlements_num_greater
+#     arguments: [0]
 
 - # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
-   - {type: logbook, arguments: ["NEW TASK: UNLOAD YOUR GOODS\n\nNow that you built the Branch Office, you need to move some of the resources to its stock.\n\nTo do so, select your ship and go into the tab called 'Ship Inventory'.\n\nHere you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n\nYou can use this button if your ship is in range of a possible trade partner.\n\nClick on the button. In case it is not active, first move your ship towards the branch office and then try again.\n\nTASK: Open the trade dialogue.\n\nEAT ME"]}
+   - {type: logbook, arguments: ["NEW TASK: UNLOAD YOUR GOODS\n\nNow that you built the Branch Office, you need to move some of the resources to its stock.\n\nTo do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n\nHere you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n\nThis button gets active if your ship is in range of a possible trade partner like a branch office.\n\nClick on the button. In case it is not active, first move your ship towards the branch office and then try again.\n\nTASK: Open the trade dialogue.\n\nEAT ME"]}
    - {type: logbook, arguments: ["\n\nThe tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n\nTo move goods from one stock into the other, simply click on them.\n\nTry clicking on the boards of your ship first and then try moving them back.\n\nYou can customize the moved amount using the self-explanatory radio buttons in the middle.\n\nDid you get used to the trade tab?\nYou need some construction material in your settlement now!\n\nTASK: Unload at least 10 tons of each resource your ship sailed around with.\n\nEAT ME"]}
    - {type: message, arguments: ["Unload at least 10 tons of each resource on your ship."]}
    - {type: set_var, arguments: ["tutStepDone", 3]}
@@ -29,7 +29,7 @@ events:
    - type: building_num_of_type_greater
      arguments: [1, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 1]
+     arguments: ["tutStepDone", 0]
 
 - # Tell the player to build the first building - lumberjack 
   actions:
@@ -101,7 +101,7 @@ events:
 - # Build a signal fire
   actions:
    - {type: logbook, arguments: ["NEW TASK: BUILD SIGNAL FIRE\n\nCan you see the ship passing your island from time by time?\n\nThis is the ship of the Free Trader, one of the first settlers in this archipelago.\n\nHe will supply your settlement with necessary goods which you can't produce so far.\n\nYou also can sell surpluses of your production, but in general constructing more tents instead of selling those to the Free Trader generates more profit.\n\nNormally he just sails around and looks for deals, but small settlements like yours first need some promotion, else you won't be found.\n\nFor this purpose, you can build a signal fire at the coast near your branch office to show his ship the way to your settlement."]}
-   - {type: logbook, arguments: ["After this little guidance, the trader will step by from time to time and look into your branch office.\n\nYou can tell him what you want via the tab 'Buy/Sell' which at the moment is nearly unusable, but we have a redesign ticket set up to improve this.\n\nAt increment sailors, you are equipped with three trading slots.\n\nClick on the small icon to change the slot mode from 'Buy' to Sell and vice versa.\n\nIf you click in the slot, you can choose the good you want to trade with.\n\nWe will further explain this once you are ready to trade.\n\nTASK: Build a signal fire at the coast close to your branch office\n\nEAT THIS PLEASE"]}
+   - {type: logbook, arguments: ["After this little guidance, the trader will step by from time to time and look into your branch office.\n\nYou can tell him what you want via the tab 'Buy/Sell' which at the moment is nearly unusable, but we have a redesign ticket set up to improve this.\n\nAt increment sailors, you are equipped with three trading slots.\n\nClick on the small icon to change the slot mode from 'Buy' to Sell and vice versa.\n\nIf you click in the slot, you can choose the good you want to trade with.\n\nWe will further explain this once you are ready to trade.\n\nTASK: Build a signal fire at the coast close to your branch office"]}
    - {type: message, arguments: ["Build a signal fire at the coast close to your branch office."]}
    - {type: set_var, arguments: ["tutStepDone", 10]}
   conditions:
@@ -112,9 +112,9 @@ events:
 
 - # Trading
   actions:
-   - {type: logbook, arguments: ["NEW TASK: LEARN TO TRADE\n\nFine! The Free Trader will now stop by at your branch office from time to time.\n\nLet's continue our tutorial on how you trade with him.\n\nAfter selecting particular goods, the green bar (if appearing) shows you how much you are having in stock of this good.\n\nDragging the slider on the right of each slot determines your 'Exit Value' which has a different meaning on 'Buy' and 'Sell.\n\nExamples help to understand, so here we go:\n\nHaving a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\nIf the free trader however only wants to sell 3 tons, you need to live with that."]}
+   - {type: logbook, arguments: ["NEW TASK: LEARN TO TRADE\n\nFine! The Free Trader will now stop by at your branch office from time to time.\n\nLet's continue our tutorial on how you trade with him.\n\nAfter selecting particular goods, the green bar (if appearing) shows you how much you are having in stock of this good.\n\nDragging the slider on the right of each slot determines your 'Exit Value' which has a different meaning on 'Buy' and 'Sell'.\n\nExamples help to understand, so here we go:\n\nHaving a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\nIf the free trader however only wants to sell 3 tons, you need to live with that."]}
    - {type: logbook, arguments: ["\n\nSelling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n\nIf the trader only buys two tons, there is nothing you can do about it.\n\nUnknown Horizons is featuring smart pricing, so the value of one unit can depend.\nIt is NOT possible to change prices!\nYou can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' items there.\n\nAs a practise, we'd now like you to…
-\n\nTASK: … buy as much tools as you need to have 30 tools in stock!\n\nIf you still have some in your ship's inventory, this seems like a good point to unload them.\n\nOH YEAH"]}
+\n\nTASK: … buy as much tools as you need to have 30 tools in stock!\n\nIf you still have some in your ship's inventory, this seems like a good point to unload them.\n\nTEST"]}
    - {type: message, arguments: ["Reach a stock of 30 tools."]}
    - {type: set_var, arguments: ["tutStepDone", 11]}
   conditions:
@@ -225,7 +225,7 @@ events:
    - type: settler_level_greater
      arguments: [0]
    - type: var_gt
-     arguments: ["tutStepDone", 21]
+     arguments: ["tutStepDone", 21]s
 
 - # Winning conditions
   actions:
