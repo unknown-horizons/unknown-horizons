@@ -185,13 +185,6 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
   <refsect1 id="files">
     <title>FILES</title>
     <variablelist>
-      <varlistentry>
-        <term><filename>${HOME}/.unknown-horizons/config.sqlite</filename></term>
-        <listitem>
-          <para>SQlite Database containing all user settings.
-		  </para>
-        </listitem>
-      </varlistentry>
 	  <varlistentry>
 		<term><filename>${HOME}/.unknown-horizons/save</filename></term>
 		<listitem>
