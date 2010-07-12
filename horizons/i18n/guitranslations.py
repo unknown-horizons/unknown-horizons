@@ -33,8 +33,6 @@
 #   the magic from horizons/constants.py
 # ###################################################
 
-from horizons.constants import VERSION
-
 text_translations = dict()
 
 def set_translations():
@@ -48,14 +46,14 @@ def set_translations():
 			"service_label"               : _("Services"),
 			"companies_label"             : _("Companies"),
 			"resident-1"                  : _("Tent"),
-			"street-1"                    : _("Trail: \nNeeded for \ndelivering goods"),
-			"main_square-1"               : _("Main square: \nSupplies citizens\nwith goods"),
-			"store-1"                     : _("Storage: \nExtends settlement,\nstores goods"),
-			"church-1"                    : _("Ministry: \nFullfiles religious \nneeds of citizens"),
-			"lighthouse-1"                : _("Signal fire: \nAllows the player \nto trade with \nthe free trader"),
-			"lumberjack-1"                : _("Lumberjack: \nHarvests wood \nand turns them \ninto boards "),
-			"hunter-1"                    : _("Hunter: \nHunts wild animals, \ngathers food "),
-			"fisher-1"                    : _("Fisherman: \nFishes the sea, \ngathers food"),
+			"street-1"                    : _("Trail: \nNeeded for \ncollecting goods."),
+			"main_square-1"               : _("Main square:\nSupplies citizens\nwith goods."),
+			"store-1"                     : _("Storage: \nExtends stock\nand provides\ncollectors."),
+			"church-1"                    : _("Pavilion: \nFulfills religious\nneeds of sailors."),
+			"lighthouse-1"                : _("Signal fire: \nAllows the player\nto trade with\nthe free trader."),
+			"lumberjack-1"                : _("Lumberjack: \nChops down trees\nand turns them\ninto boards."),
+			"hunter-1"                    : _("Hunter: \nHunts wild\nforest animals,\nproduces food."),
+			"fisher-1"                    : _("Fisherman: \nFishes the sea,\nproduces food."),
 			"tree-1"                      : _("Tree")},
 		"build_menu/hud_build_tab1.xml" : {
 			"headline"                    : _("Pioneer Buildings"),
@@ -65,6 +63,7 @@ def set_translations():
 			"potatofield-1"               : _("Potato Field:\nDelivers food \nNeeds a farm"),
 			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm"),
 			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth"),
+			"brickyard-1"                 : _("Brickyard: \nTurns clay \ninto bricks"),
 			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships, \nbuilt on coast")},
 		"build_menu/hud_build_tab2.xml" : {
 			"headline"                    : _("Settler Buildings"),
@@ -93,6 +92,11 @@ def set_translations():
 			"ProductionLabel"             : _("production")},
 		"buildings_gui/work_building_tab5.xml" : {
 			"ResearchLabel"               : _("research")},
+		"buysellmenu/buysellmenu.old.xml" : {
+			"headline"                    : _("Buy or sell resources"),
+			"legend_label"                : _("Legend:"),
+			"buy_label"                   : _("Buy resources"),
+			"sell_label"                  : _("Sell resources")},
 		"buysellmenu/buysellmenu.xml" : {
 			"headline"                    : _("Buy or sell resources"),
 			"legend_label"                : _("Legend:"),
@@ -102,9 +106,15 @@ def set_translations():
 			"headline"                    : _("Select resources:")},
 		"captains_log.xml" : {
 			"lbl_log"                     : _("Captain's Log")},
+		"change_buy_sell_amount.xml" : {
+			"headline"                    : _("Change name"),
+			"enter_new_amount_lbl"        : _("Enter the stock value up to which goods will be sold or bought:")},
 		"change_name.xml" : {
 			"headline"                    : _("Change name"),
 			"enter_new_name_lbl"          : _("Enter new name:")},
+		"chat.xml" : {
+			"headline"                    : _("Chat"),
+			"chat_lbl"                    : _("Enter your  message:")},
 		"chime.xml" : {
 			"headline"                    : _("Chime The Bell"),
 			"made_it_label"               : _("Yeah, you made it..."),
@@ -114,13 +124,13 @@ def set_translations():
 			"headline_projectcoord"       : _("PROJECT COORDINATION"),
 			"headline_gamedesign"         : _("GAME-PLAY DESIGN"),
 			"headline_programming"        : _("PROGRAMMING"),
-			"headline_gfx"                : _("GRAPHIC ARTIST"),
 			"headline_sfx"                : _("SOUND and MUSIC ARTISTS"),
+			"headline_gfx"                : _("GRAPHIC ARTIST"),
 			"headline_translation"        : _("TRANSLATION"),
 			"headline_thanks"             : _("SPECIAL THANKS to:"),
 			"fife_team_lbl"               : _("The FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
-			"version_label"               : VERSION.string(),
+			"version_label"               : _("Unknown Horizons Alpha"),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),
@@ -148,7 +158,7 @@ def set_translations():
 			"set21"                       : _("{ + } = Increase game speed"),
 			"set22"                       : _("{ - } = Decrease game speed"),
 			"set23"                       : _("{S} = Screenshot"),
-			"set24"                       : _("{D} = Launch Python debugger"),
+			"set26"                       : _("{C} = Chat"),
 			"set25"                       : _("{SHIFT} = Hold to place multible buildings"),
 			"have_fun_lbl"                : _("Have fun."),
 			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams")},
@@ -160,9 +170,9 @@ def set_translations():
 			"started_pdb_lbl"             : _("You start the terminal python debugger pdb!")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
-			"version_label"               : VERSION.string()},
+			"version_label"               : _("Unknown Horizons Alpha")},
 		"mainmenu.xml" : {
-			"version_label"               : VERSION.string(),
+			"version_label"               : _("Unknown Horizons Alpha"),
 			"start"                       : _("Singleplayer"),
 			"start_multi"                 : _("Multiplayer"),
 			"credits"                     : _(" Credits "),
@@ -177,6 +187,34 @@ def set_translations():
 			"build"                       : _("Build menu"),
 			"helpLink"                    : _("Help"),
 			"gameMenuButton"              : _("Game menu")},
+		"multiplayer_creategame.xml" : {
+			"headline"                    : _("CREATE GAME - MULTIPLAYER"),
+			"mp_player_limit_lbl"         : _("Player limit:"),
+			"exit_to_mp_menu_lbl"         : _("Back:"),
+			"headline"                    : _("Choose a map:"),
+			"create_game_lbl"             : _("Create game:"),
+			"cancel"                      : _("Exit to multiplayer menu"),
+			"create"                      : _("Create this new game")},
+		"multiplayer_gamelobby.xml" : {
+			"headline"                    : _("Gamelobby"),
+			"game_start_notice"           : _("The game will start as soon as enough players have joined."),
+			"startmessage"                : _("Game details"),
+			"chatlbl"                     : _("Chat:"),
+			"cancel"                      : _("Exit gamelobby")},
+		"multiplayermenu.xml" : {
+			"headline"                    : _("NEW GAME - MULTIPLAYER"),
+			"exit_to_main_menu_lbl"       : _("Main menu:"),
+			"create_game_lbl"             : _("Create game:"),
+			"headline"                    : _("Active games:"),
+			"refr_gamelist_lbl"           : _("Refresh list:"),
+			"join_game_lbl"               : _("Join game"),
+			"cancel"                      : _("Exit to main menu"),
+			"create"                      : _("Create a new game"),
+			"refresh"                     : _("Refresh list of active games"),
+			"join"                        : _("Join the selected game")},
+		"playerdataselection.xml" : {
+			"player_label"                : _("Player name:"),
+			"color_label"                 : _("Color:")},
 		"quitgame.xml" : {
 			"headline"                    : _("Quit Game"),
 			"quit_game_caption"           : _("Are you sure you want to quit Unknown Horizons?")},
@@ -190,16 +228,6 @@ def set_translations():
 			"headline"                    : _("Your saved games:"),
 			"enter_filename_label"        : _("Enter filename:"),
 			"details_label"               : _("Details:")},
-		"serverlist.xml" : {
-			"showInternet"                : _("Internet games"),
-			"showLAN"                     : _("LAN games"),
-			"showFavorites"               : _("Favorites")},
-		"serverlobby.xml" : {
-			"player_label"                : _("Player:"),
-			"color_label"                 : _("Color:"),
-			"slots_label"                 : _("Slots:"),
-			"bots_label"                  : _("Bots:"),
-			"chatbutton"                  : _("chat")},
 		"settings.xml" : {
 			"headline"                    : _("Settings"),
 			"warning"                     : _("Please make sure that you know, what you do."),
@@ -227,8 +255,6 @@ def set_translations():
 		"singleplayermenu.xml" : {
 			"headline"                    : _("NEW GAME - SINGLEPLAYER"),
 			"main_menu_label"             : _("Main menu:"),
-			"player_label"                : _("Player name:"),
-			"color_label"                 : _("Color:"),
 			"choose_map_lbl"              : _("Choose a map to play:"),
 			"start_game_label"            : _("Start game:"),
 			"showCampaign"                : _("Campaign"),
@@ -260,6 +286,9 @@ def set_translations():
 		"tab_widget/tab_overview.xml" : {
 			"headline"                    : _("Overview"),
 			"name_label"                  : _("Name:")},
+		"tab_widget/tab_overview_enemy_building.xml" : {
+			"headline"                    : _("Overview"),
+			"name_label"                  : _("Name:")},
 		"tab_widget/tab_overview_marketplace.xml" : {
 			"headline"                    : _("Overview"),
 			"name_label"                  : _("Name:"),
@@ -270,6 +299,8 @@ def set_translations():
 			"needed_res_label"            : _("Needed Resources:")},
 		"tab_widget/tab_overview_ship.xml" : {
 			"health_label"                : _("Health:")},
+		"tab_widget/tab_overview_tradership.xml" : {
+			"trader_description_lbl"      : _("This is the free trader's ship. It will visit you from time to time to buy or sell goods.")},
 		"tab_widget/tab_production_line.xml" : {
 			"toggle_active_active"        : _("Pause production"),
 			"toggle_active_inactive"      : _("Start production")},
