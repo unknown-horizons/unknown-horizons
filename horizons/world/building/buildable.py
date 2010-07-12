@@ -178,6 +178,7 @@ class BuildableSingle(Buildable):
 	def check_build_line(cls, session, point1, point2, rotation=45, ship=None):
 		# only build 1 building at endpoint
 		# correct placement for large buildings (mouse should be at center of building)
+		point2 = point2.copy() # only change copy
 		point2.x -= (cls.size[0] - 1) / 2
 		point2.y -= (cls.size[1] - 1) / 2
 		return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
