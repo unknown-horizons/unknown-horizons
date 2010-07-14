@@ -47,6 +47,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
 																			# e.g. paths. the tab hides a part of the map.
 	enemy_tabs = (EnemyBuildingOverviewTab, )
+	layer = LAYERS.OBJECTS
 
 	log = logging.getLogger("world.building")
 
@@ -181,7 +182,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.update_action_set_level(lvl)
 
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', building=None, layer=LAYERS.OBJECTS, rotation=0, **trash):
+	def getInstance(cls, session, x, y, action='idle', building=None, rotation=0, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
@@ -191,13 +192,13 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		assert isinstance(x, int)
 		assert isinstance(y, int)
 		if building is not None:
-			return building.getInstance(session = session, x = x, y = y, action=action, layer=layer, \
+			return building.getInstance(session = session, x = x, y = y, action=action, \
 			                            rotation=rotation, **trash)
 		else:
 			#rotation = cls.check_build_rotation(session, rotation, x, y)
 			# TODO: replace this with new buildable api
 			# IDEA: save rotation in savegame
-			facing_loc = fife.Location(session.view.layers[layer])
+			facing_loc = fife.Location(session.view.layers[cls.layer])
 			instance_coords = list((x, y, 0))
 			layer_coords = list((x, y, 0))
 			if rotation == 45:
@@ -213,7 +214,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				layer_coords[1] = y+cls.size[1]+3
 			else:
 				return None
-			instance = session.view.layers[layer].createInstance(cls._object, \
+			instance = session.view.layers[cls.layer].createInstance(cls._object, \
 			                         fife.ModelCoordinate(*instance_coords))
 			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 

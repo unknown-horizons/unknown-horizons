@@ -159,7 +159,10 @@ class STORAGE:
 class LAYERS:
 	WATER = 0
 	GROUND = 1
-	OBJECTS = 2
+	FIELDS = 2
+	OBJECTS = 3
+
+	NUM = 4 # number of layers
 
 ## PATHS
 # workaround, so it can be used to create paths withing PATHS

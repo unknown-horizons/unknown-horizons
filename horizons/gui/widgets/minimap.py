@@ -23,6 +23,7 @@ from fife import fife
 
 from horizons.util import Point, Rect
 from horizons.scheduler import Scheduler
+from horizons.util.python.decorators import make_constants
 
 class Minimap(object):
 	"""A basic minimap"""
@@ -31,6 +32,7 @@ class Minimap(object):
 	           1: (137, 117, 87),
 	           2: (1,   1,   1) }
 
+	@make_constants()
 	def __init__(self, rect, session, renderer):
 		"""
 		@param rect: a Rect, where we will draw to
@@ -66,7 +68,7 @@ class Minimap(object):
 			return # don't draw while loading
 		self.world = world # use this from now on, until next redrawing
 
-		# update cam when cam updates
+		# update cam when view updates
 		if not self.session.view.has_change_listener(self.update_cam):
 			self.session.view.add_change_listener(self.update_cam)
 
@@ -82,8 +84,6 @@ class Minimap(object):
 		self.renderer.removeAll("minimap_cam_border")
 		# draw rect for current screen
 		displayed_area = self.session.view.get_displayed_area()
-		#print 'displayed_area', displayed_area
-		#print 'displayed_area center minimap', self._world_coord_to_minimap_coord(displayed_area.center().to_tuple())
 		minimap_corners_as_renderer_node = []
 		for corner in displayed_area.get_corners():
 			# check if the corners are outside of the screen
@@ -98,7 +98,6 @@ class Minimap(object):
 				corner[1] = self.world.min_y
 			corner = tuple(corner)
 			minimap_coords = self._world_coord_to_minimap_coord(corner)
-			#print 'minimap_coord corner', minimap_coords
 			minimap_corners_as_renderer_node.append( fife.GenericRendererNode( \
 			  fife.Point(*minimap_coords) ) )
 		for i in xrange(0, 3):
@@ -140,6 +139,7 @@ class Minimap(object):
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position.to_tuple())
 		self.session.view.center(*map_coord)
 
+	@make_constants()
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
 		@param where: Rect of minimap coords. Defaults to self.location"""

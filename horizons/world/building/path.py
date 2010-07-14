@@ -30,6 +30,7 @@ from horizons.constants import LAYERS, BUILDINGS
 class Path(BasicBuilding, BuildableLine):
 	walkable = True
 	show_buildingtool_preview_tab = False
+	layer = LAYERS.GROUND
 
 	def init(self):
 		super(Path, self).init()
@@ -75,15 +76,8 @@ class Path(BasicBuilding, BuildableLine):
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)
 
-	@classmethod
-	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = LAYERS.GROUND
-		return super(Path, cls).getInstance(*args, **kwargs)
-
 class Bridge(BasicBuilding, BuildableSingle):
-	#@classmethod
-	#def getInstance(cls, x, y, action=None, **trash):
-	#	super(Bridge, cls).getInstance(x = x, y = y, action = 'default', **trash)
+	layer = LAYERS.GROUND
 
 	def init(self):
 		super(Bridge, self).init()
@@ -91,8 +85,3 @@ class Bridge(BasicBuilding, BuildableSingle):
 		for tile in self.island.get_surrounding_tiles(origin):
 			if tile is not None and self.island.path_nodes.is_road(tile.x, tile.y):
 				tile.object.recalculate_orientation()
-
-	@classmethod
-	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = LAYERS.GROUND
-		return super(Bridge, cls).getInstance(*args, **kwargs)

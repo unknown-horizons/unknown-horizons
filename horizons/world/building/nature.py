@@ -31,14 +31,10 @@ import horizons.main
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
 	walkable = True
+	layer = LAYERS.OBJECTS
 
 	def __init__(self, **kwargs):
 		super(NatureBuilding, self).__init__(**kwargs)
-
-	@classmethod
-	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = LAYERS.OBJECTS
-		return super(NatureBuilding, cls).getInstance(*args, **kwargs)
 
 class GrowingBuilding(ProducerBuilding, NatureBuilding):
 	""" Class for stuff that grows, such as trees
@@ -46,10 +42,7 @@ class GrowingBuilding(ProducerBuilding, NatureBuilding):
 	pass
 
 class Field(GrowingBuilding):
-	@classmethod
-	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = LAYERS.OBJECTS
-		return super(GrowingBuilding, cls).getInstance(*args, **kwargs)
+	layer = LAYERS.FIELDS
 
 class AnimalField(CollectingBuilding, Field):
 	walkable = False
@@ -79,10 +72,7 @@ class AnimalField(CollectingBuilding, Field):
 
 class Tree(GrowingBuilding):
 	buildable_upon = True
-	@classmethod
-	def getInstance(cls, *args, **kwargs):
-		kwargs['layer'] = LAYERS.OBJECTS
-		return super(Tree, cls).getInstance(*args, **kwargs)
+	layer = LAYERS.OBJECTS
 
 class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""

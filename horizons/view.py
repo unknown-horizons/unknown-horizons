@@ -50,7 +50,7 @@ class View(Changelistener):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(0, 3):
+		for i in xrange(0, LAYERS.NUM):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 
