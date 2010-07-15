@@ -60,7 +60,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		"""Runs necessary steps to select the unit."""
 		# TODO Think about if this should go somewhere else (island, world)
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		for tile in self.island.grounds:
+		for tile in self.island.ground_map.itervalues():
 			if tile.settlement == self.settlement and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
 				self.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
 				if tile.object is not None:

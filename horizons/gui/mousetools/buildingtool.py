@@ -62,7 +62,7 @@ class BuildingTool(NavigationTool):
 		self.startPoint, self.endPoint = None, None
 		self.last_change_listener = None
 		self._modified_objects = set() # fife instances modified for transparency
-		self._buildable_tiles = [] # tiles marked as buildable
+		self._buildable_tiles = set() # tiles marked as buildable
 
 		if self._class.show_buildingtool_preview_tab:
 			self.load_gui()
@@ -82,7 +82,7 @@ class BuildingTool(NavigationTool):
 		add_colored = self.renderer.addColored
 		player = self.session.world.player
 		session = self.session
-		buildable_tiles_append = self._buildable_tiles.append
+		buildable_tiles_add = self._buildable_tiles.add
 		ship = self.ship
 
 		if tiles_to_check is not None: # only check these tiles
@@ -91,21 +91,17 @@ class BuildingTool(NavigationTool):
 					self.__color_buildable_tile(tile)
 
 		elif self.ship is None: # default build on island
-			for island in self.session.world.islands:
-				# small optimisation: check only islands with player settlements
-				for settlement in island.settlements:
-					if settlement.owner == player:
-						break
-				else:
-					continue # no settlement found, continue outer loop
-				for tile in island.grounds:
-					if is_tile_buildable(session, tile, ship):
-						self.__color_buildable_tile(tile)
+			for settlement in self.session.world.settlements:
+				if settlement.owner == player:
+					island = self.session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
+					for tile in settlement.ground_map.itervalues():
+						if is_tile_buildable(session, tile, ship, island, check_settlement=False):
+							self.__color_buildable_tile(tile)
 
 		else: # build from ship
 			for island in self.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
-					buildable_tiles_append(tile)
+					buildable_tiles_add(tile)
 					# check that there is no other player's settlement
 					if tile.settlement is None or tile.settlement.owner == player:
 						add_colored(tile._instance, *self.buildable_color)
@@ -113,9 +109,9 @@ class BuildingTool(NavigationTool):
 							add_colored(tile.object._instance, *self.buildable_color)
 
 
+	@decorators.make_constants()
 	def __color_buildable_tile(self, tile):
-		if tile not in self._buildable_tiles:
-			self._buildable_tiles.append(tile)
+		self._buildable_tiles.add(tile) # it's a set, so dupicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 		if tile.object is not None:
 			self.renderer.addColored(tile.object._instance, *self.buildable_color)
@@ -474,4 +470,4 @@ class BuildingTool(NavigationTool):
 			removeColored(tile._instance)
 			if tile.object is not None:
 				removeColored(tile.object._instance)
-		self._buildable_tiles = []
+		self._buildable_tiles = set()

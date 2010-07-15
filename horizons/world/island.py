@@ -107,13 +107,11 @@ class Island(WorldObject):
 		# NOTE: it contains tiles, that are not on the island!
 		self.rect = Rect(Point(p_x, p_y), width, height)
 
-		self.grounds = []
 		self.ground_map = {}
 		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
 			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
-			self.grounds.append(ground)
 			self.ground_map[(ground.x, ground.y)] = ground
 
 		self.settlements = []
@@ -246,9 +244,9 @@ class Island(WorldObject):
 			if tile is not None:
 				if tile.settlement == settlement:
 					continue
-				if tile.settlement is None or \
-				   tile.settlement.owner == settlement.owner:
+				if tile.settlement is None:
 					tile.settlement = settlement
+					settlement.ground_map[coord] = tile
 					self.session.ingame_gui.minimap.update(coord)
 
 				building = tile.object

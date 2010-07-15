@@ -66,7 +66,6 @@ class World(LivingObject):
 		self.properties = None
 		self.players = None
 		self.player = None
-		self.grounds = None
 		self.ground_map = None
 		self.water = None
 		self.ship_map = None
@@ -149,18 +148,20 @@ class World(LivingObject):
 
 		#add water
 		self.log.debug("Filling world with water...")
-		self.grounds = []
 		self.ground_map = {}
 		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
+		# fill whole world
 		for x in xrange(self.min_x, self.max_x):
 			for y in xrange(self.min_y, self.max_y):
 				ground = default_grounds(self.session, x, y)
-				self.grounds.append(ground)
 				self.ground_map[(x, y)] = ground
-		for i in self.islands:
-			for g in i.grounds:
-				if (g.x, g.y) in self.ground_map:
-					del self.ground_map[(g.x, g.y)]
+
+		# "unfill" parts that are occupied by island
+		# TODO: check if constructing a list of water coords is faster than calling the Ground() so many times
+		for island in self.islands:
+			for coord in island.ground_map:
+				if coord in self.ground_map:
+					del self.ground_map[coord]
 
 		self.num_water = len(self.ground_map)
 		self.water = list(self.ground_map)

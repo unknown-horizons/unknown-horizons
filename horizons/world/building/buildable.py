@@ -101,14 +101,18 @@ class Buildable(object):
 		raise NotImplementedError
 
 	@classmethod
-	def is_tile_buildable(cls, session, tile, ship):
+	def is_tile_buildable(cls, session, tile, ship, island=None, check_settlement=True):
 		"""Checks a tile for buildability.
 		@param tile: Ground object
+		@param ship: Ship instance if building from ship
+		@param island: Island instance, if already known. If None, it will be calculated
+		@param check_settlement: bool, whether to check for settlement
 		@return bool, True for "is buildable" """
 		position = Point(tile.x, tile.y)
 		try:
-			cls._check_island(session, position)
-			cls._check_settlement(session, position, ship=ship)
+			cls._check_island(session, position, island)
+			if check_settlement:
+				cls._check_settlement(session, position, ship=ship)
 			cls._check_buildings(session, position)
 		except _NotBuildableError:
 			return False
@@ -117,12 +121,15 @@ class Buildable(object):
 	# PRIVATE PARTS
 
 	@classmethod
-	def _check_island(cls, session, position):
+	def _check_island(cls, session, position, island=None):
 		"""Check if there is an island and enough tiles.
-		Throws _NotBuildableError if building can't be built"""
-		island = session.world.get_island(position.center())
+		@throws _NotBuildableError if building can't be built.
+		@param position: coord Point to build at
+		@param island: Island instance if known before"""
 		if island is None:
-			raise _NotBuildableError()
+			island = session.world.get_island(position.center())
+			if island is None:
+				raise _NotBuildableError()
 		for tup in position.tuple_iter():
 			# can't use get_tile_tuples since it discards None's
 			tile = island.get_tile_tuple(tup)
@@ -138,17 +145,19 @@ class Buildable(object):
 		return rotation
 
 	@classmethod
-	def _check_settlement(cls, session, position, ship=None, issuer=None, **kwargs):
+	def _check_settlement(cls, session, position, ship=None, issuer=None):
 		"""Check if there is a settlement and if it belongs to the human player"""
 		settlement = session.world.get_settlement(position.center())
 		player = issuer if issuer is not None else session.world.player
-		if settlement is None or  player != settlement.owner:
+		if settlement is None or player != settlement.owner:
 			raise _NotBuildableError()
 
 	@classmethod
-	def _check_buildings(cls, session, position):
+	def _check_buildings(cls, session, position, island=None):
 		"""Check if there are buildings blocking the build"""
-		island = session.world.get_island(position.center())
+		if island is None:
+			island = session.world.get_island(position.center())
+			# _check_island already confirmed that there must be an island here, so no check for None again
 		tearset = set()
 		for tile in island.get_tiles_tuple( position.tuple_iter() ):
 			obj = tile.object
@@ -243,13 +252,16 @@ class BuildableLine(Buildable):
 class BuildableSingleOnCoast(BuildableSingle):
 	"""Buildings one can only build on coast, such as BoatBuilder, Fisher"""
 	@classmethod
-	def _check_island(cls, session, position):
+	def _check_island(cls, session, position, island=None):
 		# ground has to be either coastline or constructible, > 1 tile must be coastline
 		# can't use super, since it checks all tiles for constructible
-		coastline_found = False
-		island = session.world.get_island(position.center())
+
 		if island is None:
-			raise _NotBuildableError()
+			island = session.world.get_island(position.center())
+			if island is None:
+				raise _NotBuildableError()
+
+		coastline_found = False
 		for tup in position.tuple_iter():
 			# can't use get_tile_tuples since it discards None's
 			tile = island.get_tile_tuple(tup)

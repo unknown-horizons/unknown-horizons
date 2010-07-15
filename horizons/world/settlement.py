@@ -41,6 +41,7 @@ class Settlement(TradePost, NamedObject):
 		self.tax_setting = tax_setting
 		self.buildings = []
 		self.setup_storage()
+		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 
 	def set_tax_setting(self, tax):
 		self.tax_setting = tax
