@@ -41,7 +41,7 @@ class NamedObject(WorldObject):
 		self._changed()
 
 	def _possible_names(self):
-		return ['object_%s' % self.getId()]
+		return ['object_%s' % self.worldid]
 
 	def get_default_name(self):
 		newname = newnametmp = self.session.random.choice(self._possible_names())
@@ -53,7 +53,7 @@ class NamedObject(WorldObject):
 
 	def save(self, db):
 		super(NamedObject, self).save(db)
-		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.getId(), self.name)
+		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.worldid, self.name)
 
 	def load(self, db, worldid):
 		super(NamedObject, self).load(db, worldid)

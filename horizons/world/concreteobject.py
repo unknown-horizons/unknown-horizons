@@ -56,7 +56,7 @@ class ConcretObject(WorldObject):
 
 	def save(self, db):
 		super(ConcretObject, self).save(db)
-		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.getId(), \
+		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.worldid, \
 		   self._instance.getActionRuntime())
 
 	def load(self, db, worldid):

@@ -66,7 +66,7 @@ class Player(StorageHolder, WorldObject):
 		client_id = None if self is not self.session.world.player else \
 		          horizons.main.fife.get_uh_setting("ClientID")
 		db("INSERT INTO player(rowid, name, color, client_id, settler_level) VALUES(?, ?, ?, ?, ?)", \
-			 self.getId(), self.name, self.color.id, client_id, self.settler_level)
+			 self.worldid, self.name, self.color.id, client_id, self.settler_level)
 
 	@classmethod
 	def load(cls, session, db, worldid):

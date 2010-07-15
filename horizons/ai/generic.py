@@ -48,7 +48,7 @@ class AIPlayer(Player):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used."""
-		self.log.debug("%s %s: moving to random location", self.__class__.__name__, self.getId())
+		self.log.debug("%s %s: moving to random location", self.__class__.__name__, self.worldid)
 		# find random position
 		point = self.session.world.get_random_possible_ship_position()
 		# move ship there:
@@ -63,11 +63,11 @@ class AIPlayer(Player):
 	def ship_idle(self, ship):
 		"""Called if a ship is idle. Sends ship to a random place.
 		@param ship: ship instance"""
-		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.getId())
+		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.worldid)
 		Scheduler().add_new_object(Callback(self.send_ship, ship), self)
 
 	def notify_unit_path_blocked(self, unit):
-		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.getId())
+		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
 		# retry moving ship in 2 secs
 		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, \
 		                           GAME_SPEED.TICKS_PER_SECOND * 2)

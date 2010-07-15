@@ -43,7 +43,7 @@ class Pirate(AIPlayer):
 
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.getId(), UNITS.PIRATE_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 		self.ships[ship] = self.shipStates.idle
 		for ship in self.ships.keys():
 			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
@@ -66,13 +66,13 @@ class Pirate(AIPlayer):
 
 	def save(self, db):
 		super(Pirate, self).save(db)
-		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.getId())
+		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.worldid)
 
 		for ship in self.ships:
 			ship_state = self.ships[ship]
 
 			db("INSERT INTO pirate_ships(rowid, state) VALUES(?, ?)",
-				ship.getId(), ship_state.index) #, remaining_ticks)
+				ship.worldid, ship_state.index) #, remaining_ticks)
 
 	def load_ship_states(self, db):
 		# load ships one by one from db (ship instances themselves are loaded already, but

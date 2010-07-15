@@ -46,7 +46,7 @@ class BuildingCollector(Collector):
 		super(BuildingCollector, self).save(db)
 		# save home_building
 		db("INSERT INTO building_collector(rowid, home_building) VALUES(?, ?)",
-		   self.getId(), self.home_building.getId())
+		   self.worldid, self.home_building.worldid)
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
@@ -108,7 +108,7 @@ class BuildingCollector(Collector):
 		# TODO: find out why order of  self.get_buildings_in_range(..) and therefor order of jobs differs from client to client
 		# TODO: find out why WindAnimal.get_job(..) doesn't have this problem
 		# for MP-Games the jobs must have the same ordering to ensure get_best_possible_job(..) returns the same result
-		jobs.sort(key=lambda job: job.object.getId())
+		jobs.sort(key=lambda job: job.object.worldid)
 
 		return self.get_best_possible_job(jobs)
 

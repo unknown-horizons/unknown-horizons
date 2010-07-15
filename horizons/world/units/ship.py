@@ -77,7 +77,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 			coords.thisown = 0
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
-				"buoy_" + str(self.getId()), fife.GenericRendererNode(loc),
+				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
 				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 			)
 		self.draw_health()
@@ -85,14 +85,14 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.getId()))
-		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.getId()))
+		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
+		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
 
 	def go(self, x, y):
 		"""Moves the ship.
 		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
 		self.stop()
-		ship_id = self.getId() # this has to happen here,
+		ship_id = self.worldid # this has to happen here,
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
 		def tmp():
@@ -125,7 +125,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 				coords.thisown = 0
 				loc.setLayerCoordinates(coords)
 				self.session.view.renderer['GenericRenderer'].addAnimation(
-					"buoy_" + str(self.getId()), fife.GenericRendererNode(loc),
+					"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),
 					horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 				)
 

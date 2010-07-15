@@ -152,7 +152,7 @@ class AbstractPather(object):
 			# try to calculate another path
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
 				self.log.info("tile suddenly %s %s blocked for %s %s", \
-											self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.getId())
+											self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.worldid)
 				# no other path can be found. since the problem cannot be fixed here,
 				# we raise an exception
 				raise PathBlockedError
@@ -223,7 +223,7 @@ class ShipPather(AbstractPather):
 				other = self.session.world.ship_map[self.path[self.cur]]()
 				self.log.debug("tile %s %s blocked for %s %s by another ship %s", \
 											 point[0], point[1], \
-											 self.unit, self.unit.getId(), other)
+											 self.unit, self.unit.worldid, other)
 				return True
 			else:
 				# also check in super class
@@ -270,7 +270,7 @@ class SoldierPather(AbstractPather):
 			# update list in island, so that new path calculations consider this obstacle
 			island.path_nodes.reset_tile_walkability(point)
 			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1], \
-										 self.unit, self.unit.getId());
+										 self.unit, self.unit.worldid);
 			return path_blocked
 		else:
 			# also check in super class

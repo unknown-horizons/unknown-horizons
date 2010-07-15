@@ -243,7 +243,7 @@ class MovingObject(ConcretObject):
 	def save(self, db):
 		super(MovingObject, self).save(db)
 		# NOTE: _move_action is currently not yet saved.
-		self.path.save(db, self.getId())
+		self.path.save(db, self.worldid)
 
 	def load(self, db, worldid):
 		super(MovingObject, self).load(db, worldid)

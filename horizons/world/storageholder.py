@@ -73,7 +73,7 @@ class StorageHolder(object):
 	def save(self, db):
 		super(StorageHolder, self).save(db)
 		if self.has_own_inventory:
-			self.inventory.save(db, self.getId())
+			self.inventory.save(db, self.worldid)
 
 	def load(self, db, worldid):
 		super(StorageHolder, self).load(db, worldid)

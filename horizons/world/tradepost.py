@@ -56,12 +56,12 @@ class TradePost(object):
 		for resource, limit in self.buy_list.iteritems():
 			assert limit is not None, "limit must not be none"
 			db("INSERT INTO trade_buy(object, resource, trade_limit) VALUES(?, ?, ?)",
-				 self.getId(), resource, limit)
+				 self.worldid, resource, limit)
 
 		for resource, limit in self.sell_list.iteritems():
 			assert limit is not None, "limit must not be none"
 			db("INSERT INTO trade_sell(object, resource, trade_limit) VALUES(?, ?, ?)",
-				 self.getId(), resource, limit)
+				 self.worldid, resource, limit)
 
 	def load(self, db, worldid):
 		super(TradePost, self).load(db, worldid)

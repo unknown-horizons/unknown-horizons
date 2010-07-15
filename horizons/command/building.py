@@ -45,13 +45,13 @@ class Build(Command):
 		else:
 			assert type(building) == int
 			self.building_class = building
-		self.ship = None if ship is None else ship.getId()
+		self.ship = None if ship is None else ship.worldid
 		self.x = int(x)
 		self.y = int(y)
 		self.rotation = int(rotation)
 		self.ownerless = ownerless
-		self.island = island.getId()
-		self.settlement = settlement.getId() if settlement is not None else None
+		self.island = island.worldid
+		self.settlement = settlement.worldid if settlement is not None else None
 
 	def __call__(self, issuer):
 		"""Execute the command
@@ -136,7 +136,7 @@ class Tear(Command):
 		"""Create the command
 		@param building: building that is to be teared.
 		"""
-		self.building = building.getId()
+		self.building = building.worldid
 
 	def __call__(self, issuer):
 		"""Execute the command

@@ -75,7 +75,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.owner = owner
 		self.level = level
 		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation)
-		self._instance.setId(str(self.getId()))
+		self._instance.setId(str(self.worldid))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
 			Scheduler().add_new_object(self.get_payout, self, \
@@ -104,7 +104,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def remove(self):
 		"""Removes the building"""
-		self.log.debug("building: remove %s", self.getId())
+		self.log.debug("building: remove %s", self.worldid)
 		self.island.remove_building(self)
 		#instance is owned by layer...
 		#self._instance.thisown = 1
@@ -115,9 +115,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		super(BasicBuilding, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, health, location, level) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?, ?)", \
-			self.getId(), self.__class__.id, self.position.origin.x, \
+			self.worldid, self.__class__.id, self.position.origin.x, \
 			self.position.origin.y, self.rotation, \
-			self.health, (self.settlement or self.island).getId(), self.level)
+			self.health, (self.settlement or self.island).worldid, self.level)
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
@@ -143,7 +143,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		location_obj = WorldObject.get_object_by_id(location)
 		if isinstance(location_obj, Settlement):
 			# workaround: island can't be fetched from world, because it isn't fully constructed
-			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.getId())[0][0]
+			island_id = db("SELECT island FROM settlement WHERE rowid = ?", location_obj.worldid)[0][0]
 			island = WorldObject.get_object_by_id(island_id)
 			# settlement might not have been registered in island, so do it if getter fails
 			settlement = island.get_settlement(self.position.center()) or \
@@ -247,7 +247,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-		                                 self.getId())
+		                                 self.worldid)
 
 
 

@@ -26,7 +26,7 @@ class ToggleActive(GenericCommand):
 	"""Sets a production to active/inactive."""
 	def __init__(self, obj, production=None):
 		super(ToggleActive, self).__init__(obj, "toggle_active")
-		self._production = None if production is None else production.getId()
+		self._production = None if production is None else production.worldid
 
 	def __call__(self, issuer):
 		# NOTE: special call method, cause production must be saved as id, not as Production obj

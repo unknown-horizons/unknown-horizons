@@ -183,8 +183,7 @@ class View(Changelistener):
 		"""Returns the coords of what is displayed on the screen as Rect"""
 		coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
-		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x \
-		                          , \
+		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x, \
 		                          horizons.main.fife.engine_settings.getScreenHeight()/cell_dim.y)
 		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2), \
 		                                       coords.y - (screen_width_as_coords[1]/2),

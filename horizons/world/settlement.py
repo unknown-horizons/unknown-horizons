@@ -85,8 +85,8 @@ class Settlement(TradePost, NamedObject):
 		super(Settlement, self).save(db)
 
 		db("INSERT INTO settlement (rowid, island, owner, tax_setting) VALUES(?, ?, ?, ?)",
-			self.getId(), islandid, self.owner.getId(), self.tax_setting)
-		self.inventory.save(db, self.getId())
+			self.worldid, islandid, self.owner.worldid, self.tax_setting)
+		self.inventory.save(db, self.worldid)
 
 	@classmethod
 	def load(cls, db, worldid, session):

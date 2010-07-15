@@ -68,7 +68,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def save(self, db):
 		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", self.getId(), \
+		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", self.worldid, \
 			 self.inhabitants)
 
 	def load(self, db, worldid):

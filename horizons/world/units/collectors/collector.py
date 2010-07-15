@@ -128,13 +128,13 @@ class Collector(StorageHolder, Unit):
 			remaining_ticks = max(calls.values()[0], 1) # save a number > 0
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)", \
-			 self.getId(), self.state.index, remaining_ticks, self.start_hidden)
+			 self.worldid, self.state.index, remaining_ticks, self.start_hidden)
 
 		# save the job
 		if self.job is not None:
-			obj_id = -1 if self.job.object is None else self.job.object.getId()
+			obj_id = -1 if self.job.object is None else self.job.object.worldid
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
-				 self.getId(), obj_id, self.job.res, self.job.amount)
+				 self.worldid, obj_id, self.job.res, self.job.amount)
 
 	def load(self, db, worldid):
 		super(Collector, self).load(db, worldid)

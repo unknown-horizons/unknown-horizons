@@ -87,7 +87,7 @@ class Production(WorldObject):
 		if remaining_ticks < 1:
 			remaining_ticks = 1
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
-		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.getId(), self._state.index, \
+		_pause_old_state) VALUES(?, ?, ?, ?, ?)', self.worldid, self._state.index, \
 												self._prod_line.id, remaining_ticks, \
 												None if self._pause_old_state is None else self._pause_old_state.index)
 

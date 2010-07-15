@@ -240,7 +240,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 					while not found_tile:
 						for tile in self.session.world.get_tiles_in_radius(self.position.center(), radius, shuffle=True):
 							if tile.is_water and (tile.x, tile.y) not in self.session.world.ship_map:
-								CreateUnit(self.owner.getId(), unit, tile.x, tile.y).execute(self.session)
+								CreateUnit(self.owner.worldid, unit, tile.x, tile.y).execute(self.session)
 								found_tile = True
 								break
 						radius += 1

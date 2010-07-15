@@ -132,11 +132,11 @@ class Island(WorldObject):
 
 	def save(self, db):
 		db("INSERT INTO island (rowid, x, y, file) VALUES (? - 1000, ?, ?, ?)",
-			self.getId(), self.origin.x, self.origin.y, self.file)
+			self.worldid, self.origin.x, self.origin.y, self.file)
 		for building in self.buildings:
 			building.save(db)
 		for settlement in self.settlements:
-			settlement.save(db, self.getId())
+			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
 			animal.save(db)
 

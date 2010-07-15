@@ -133,10 +133,10 @@ class SPSession(Session):
 			self.campaign_eventhandler.save(db)
 
 			for instance in self.selected_instances:
-				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.getId())
+				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
 			for group in xrange(len(self.selection_groups)):
 				for instance in self.selection_groups[group]:
-					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.getId())
+					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
 
 			SavegameManager.write_metadata(db, self.savecounter)
 			db("COMMIT")

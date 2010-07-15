@@ -45,7 +45,7 @@ class GenericCommand(Command):
 	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
 	 """
 	def __init__(self, obj, method, *args, **kwargs):
-		self.obj_id = obj.getId()
+		self.obj_id = obj.worldid
 		self.method = method
 		self.args = args
 		self.kwargs = kwargs

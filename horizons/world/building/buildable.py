@@ -158,7 +158,7 @@ class Buildable(object):
 						# don't tear trees to build trees over them
 						raise _NotBuildableError()
 					# tear it so we can build over it
-					tearset.add(obj.getId())
+					tearset.add(obj.worldid)
 				else:
 					# building is blocking the build
 					raise _NotBuildableError()

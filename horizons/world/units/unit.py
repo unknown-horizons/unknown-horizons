@@ -47,7 +47,7 @@ class Unit(AmbientSound, MovingObject):
 			self.__class__._loadObject()
 
 		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance( \
-			self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.getId()))
+			self._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
@@ -90,7 +90,7 @@ class Unit(AmbientSound, MovingObject):
 		                                             ,y_pos)
 		                                         )
 		if self.health != 0:
-			renderer.addQuad("health_" + str(self.getId()), \
+			renderer.addQuad("health_" + str(self.worldid), \
 			                fife.GenericRendererNode(self._instance, \
 			                                         fife.Point(-width/2, y_pos-height)), \
 			                mid_node_up, \
@@ -98,7 +98,7 @@ class Unit(AmbientSound, MovingObject):
 			                fife.GenericRendererNode(self._instance, fife.Point(-width/2, y_pos)), \
 			                0, 255, 0)
 		if self.health != self.max_health:
-			renderer.addQuad("health_" + str(self.getId()), mid_node_up, \
+			renderer.addQuad("health_" + str(self.worldid), mid_node_up, \
 			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
 			                 fife.GenericRendererNode(self._instance, fife.Point(width/2, y_pos)), \
 			                 mid_node_down, 255, 0, 0)
@@ -115,12 +115,12 @@ class Unit(AmbientSound, MovingObject):
 	def save(self, db):
 		super(Unit, self).save(db)
 
-		owner_id = 0 if self.owner is None else self.owner.getId()
+		owner_id = 0 if self.owner is None else self.owner.worldid
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
-			self.getId(), self.__class__.id, self.position.x, self.position.y, \
+			self.worldid, self.__class__.id, self.position.x, self.position.y, \
 					self.health, owner_id)
 
-		self.path.save(db, self.getId())
+		self.path.save(db, self.worldid)
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
@@ -151,7 +151,7 @@ class Unit(AmbientSound, MovingObject):
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM unit where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-																		 self.getId())
+																		 self.worldid)
 
 
 

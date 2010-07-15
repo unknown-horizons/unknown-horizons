@@ -28,7 +28,7 @@ from horizons.command import GenericCommand, Command
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
 	def __call__(self, issuer):
-		if self._get_object().owner.getId() != issuer.getId():
+		if self._get_object().owner.worldid != issuer.worldid:
 			return
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)

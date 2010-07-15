@@ -71,7 +71,6 @@ class BuildingTool(NavigationTool):
 
 		self.session.gui.on_escape = self.on_escape
 
-
 		self.highlight_buildable()
 
 	@decorators.make_constants()

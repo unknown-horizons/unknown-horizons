@@ -227,7 +227,7 @@ class World(LivingObject):
 						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
 						building.finish_production_now() # make trees big and fill their inventory
 						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
-							CreateUnit(island.getId(), UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
+							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
 							 self.session.random.randint(0, 30) == 0 and \
 							 Clay.check_build(self.session, tile, check_settlement=False):
@@ -246,7 +246,7 @@ class World(LivingObject):
 			point = self.get_random_possible_ship_position()
 			# Execute command directly, not via manager, because else it would be transmitted over the
 			# network to other players. Those however will do the same thing anyways.
-			ship = CreateUnit(player.getId(), UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.inventory.alter(res, amount)
@@ -446,7 +446,7 @@ class World(LivingObject):
 		for island in self.islands:
 			for settlement in island.settlements:
 				entry = {
-						'owner': str(settlement.owner.getId()),
+						'owner': str(settlement.owner.worldid),
 						'tax_settings': str(settlement.tax_setting),
 						'inhabitants': str(settlement.inhabitants),
 						'cumulative_running_costs': str(settlement.cumulative_running_costs),

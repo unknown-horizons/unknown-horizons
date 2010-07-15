@@ -109,7 +109,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.__init(owner, can_reproduce)
 		self.log.debug("Wild animal %s created at "+str(self.position)+\
 									 "; can_reproduce: %s; population now: %s", \
-				self.getId(), can_reproduce, len(self.home_island.wild_animals))
+				self.worldid, can_reproduce, len(self.home_island.wild_animals))
 
 	def __init(self, island, can_reproduce, health = None):
 		"""
@@ -130,9 +130,9 @@ class WildAnimal(CollectorAnimal, Collector):
 		super(WildAnimal, self).save(db)
 		# save members
 		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)", \
-			 self.getId(), self.health, int(self.can_reproduce))
+			 self.worldid, self.health, int(self.can_reproduce))
 		# set island as owner
-		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_island.getId(), self.getId())
+		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_island.worldid, self.worldid)
 
 		# save remaining ticks when in waiting state
 		if self.state == self.states.no_job_waiting:
@@ -140,7 +140,7 @@ class WildAnimal(CollectorAnimal, Collector):
 			assert(len(calls) == 1), 'calls: %s' % calls
 			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?", \
-				 remaining_ticks, self.getId())
+				 remaining_ticks, self.worldid)
 
 	def load(self, db, worldid):
 		super(WildAnimal, self).load(db, worldid)
@@ -221,7 +221,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		self.log.debug("%s REPRODUCING", self)
 		# create offspring
-		CreateUnit(self.owner.getId(), self.id, self.position.x, self.position.y, \
+		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y, \
 		           can_reproduce = self.next_clone_can_reproduce())
 		# reset own resources
 		for res in self.get_consumed_resources():

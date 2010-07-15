@@ -65,7 +65,7 @@ class ResourceHandler(StorageHolder):
 		for production in self._get_productions():
 			production.save(db)
 			# set us to owner of that production
-			db("UPDATE production SET owner = ? WHERE rowid = ?", self.getId(), production.getId())
+			db("UPDATE production SET owner = ? WHERE rowid = ?", self.worldid, production.worldid)
 
 	def load(self, db, worldid):
 		super(ResourceHandler, self).load(db, worldid)
@@ -216,13 +216,13 @@ class ResourceHandler(StorageHolder):
 		line_id = production.get_production_line_id()
 		if active:
 			assert not self.is_active(production)
-			self.log.debug("ResHandler %s: reactivating production %s", self.getId(), line_id)
+			self.log.debug("ResHandler %s: reactivating production %s", self.worldid, line_id)
 			production.pause(pause=False)
 			self._productions[line_id] = production
 			del self._inactive_productions[line_id]
 		else:
 			assert self.is_active(production)
-			self.log.debug("ResHandler %s: deactivating production %s", self.getId(), line_id)
+			self.log.debug("ResHandler %s: deactivating production %s", self.worldid, line_id)
 			production.pause()
 			self._inactive_productions[line_id] = production
 			del self._productions[line_id]

@@ -50,7 +50,7 @@ class SPManager(LivingObject):
 			return
 		if self.recording:
 			horizons.main.db("INSERT INTO demo.command (tick, issuer, data) VALUES (?, ?, ?)", \
-					self.session.timer.tick_next_id, self.session.world.player.getId(), \
+					self.session.timer.tick_next_id, self.session.world.player.worldid, \
 					horizons.util.encode(command))
 		ret = command(issuer = self.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it
@@ -136,14 +136,14 @@ class MPManager(LivingObject):
 		if self._last_local_commands_send_tick < tick:
 			self._last_local_commands_send_tick = tick
 			commandpacket = CommandPacket(self.calculate_execution_tick(tick), \
-					self.session.world.player.getId(), self.gamecommands)
+					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
 			self.log.debug("sending command for tick %d" % (commandpacket.tick))
 			self.networkinterface.send_to_all_clients(commandpacket)
 
 			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick), \
-					self.session.world.player.getId(), self.localcommands))
+					self.session.world.player.worldid, self.localcommands))
 			self.localcommands = []
 
 			# check if we have to evaluate a hash value
@@ -151,7 +151,7 @@ class MPManager(LivingObject):
 				hash_value = self.session.world.get_checkup_hash()
 				#self.log.debug("MPManager: Checkup hash for tick %s is %s", tick, hash_value)
 				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick), \
-			                              self.session.world.player.getId(), hash_value)
+			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
 				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
 				self.networkinterface.send_to_all_clients(checkuphashpacket)
@@ -219,7 +219,7 @@ class MPManager(LivingObject):
 		return len(self.session.world.players)
 
 	def get_builds_in_construction(self):
-		commandpackets = self.commandsmanager.get_packets_from_player(self.session.world.player.getId())
+		commandpackets = self.commandsmanager.get_packets_from_player(self.session.world.player.worldid)
 		commandlist = []
 		for pkg in commandpackets:
 			for cmd in pkg.commandlist:
@@ -276,7 +276,7 @@ class MPCheckupHashManager(MPPacketmanager):
 		for pkg in pkges[1:]:
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
-					localplayerid = self.mpmanager.session.world.player.getId()
+					localplayerid = self.mpmanager.session.world.player.worldid
 					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id), \
 						pkges[0].checkup_hash, \
 						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id), \
