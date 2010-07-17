@@ -41,7 +41,7 @@ class ConsumerBuildingPathNodes(PathNodes):
 	"""
 	def __init__(self, consumerbuilding):
 		super(ConsumerBuildingPathNodes, self).__init__()
-		self.nodes = consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius)
+		self.nodes = list(consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius))
 
 class IslandPathNodes(PathNodes):
 	"""List of path nodes for island

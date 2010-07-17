@@ -111,10 +111,14 @@ class Settlement(TradePost, NamedObject):
 
 		return self
 
-	def get_tiles_tuple(self, tuples):
-		"""Same as island.get_tile, but takes a list of tuples.
-		@param tuples: iterable of tuples
-		@return: list of tiles"""
-		for tup in tuples:
-			if tup in self.ground_map:
-				yield self.ground_map[tup]
+	def get_tiles_in_radius(self, location, radius, include_self):
+		"""Returns tiles in radius of location.
+		This is a generator.
+		@param location: anything that supports get_radius_coordinates (usually Rect).
+		@param include_self: bool, whether to include the coordinates in location
+		"""
+		for coord in location.get_radius_coordinates(radius, include_self):
+			try:
+				yield self.ground_map[coord]
+			except KeyError:
+				pass

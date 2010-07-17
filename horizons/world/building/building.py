@@ -254,7 +254,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
 	selection_color = (255, 255, 0)
-	_selected_tiles = set() # tiles that are selected. used for clean deselect.
+	_selected_tiles = [] # tiles that are selected. used for clean deselect.
 
 	def select(self):
 		"""Runs necessary steps to select the building."""
@@ -282,14 +282,6 @@ class SelectableBuilding(object):
 		@param position: Position of building, usually Rect
 		@param settlement: Settlement instance the building belongs to"""
 		renderer = session.view.renderer['InstanceRenderer']
-
-		"""
-		import cProfile as profile
-		import tempfile
-		outfilename = tempfile.mkstemp(text = True)[1]
-		print 'profile to ', outfilename
-		profile.runctx( "cls._do_select(renderer, position, session.world, settlement)", globals(), locals(), outfilename)
-		"""
 		cls._do_select(renderer, position, session.world, settlement)
 
 	@classmethod
@@ -302,20 +294,26 @@ class SelectableBuilding(object):
 			if tile.object is not None:
 				remove_colored(tile.object._instance)
 		selected_tiles = cls._selected_tiles
-		cls._selected_tiles = set()
+		cls._selected_tiles = []
 		return selected_tiles
 
 	@classmethod
 	@decorators.make_constants()
 	def _do_select(cls, renderer, position, world, settlement):
-		selected_tiles_add = cls._selected_tiles.add
+		selected_tiles_add = cls._selected_tiles.append
 		add_colored = renderer.addColored
 		if cls.range_applies_only_on_island:
 			island = world.get_island(position.origin)
 			if island is None:
 				return # preview isn't on island, and therefore invalid
-			coords = position.get_radius_coordinates(cls.radius, include_self=True)
-			for tile in settlement.get_tiles_tuple(coords):
+
+			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
+			if settlement is None:
+				ground_holder = island
+			else:
+				ground_holder = settlement
+
+			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=True):
 				try:
 					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
 						selected_tiles_add(tile)

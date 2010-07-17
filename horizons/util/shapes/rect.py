@@ -144,7 +144,8 @@ class Rect(object):
 
 	@make_constants()
 	def get_radius_coordinates(self, radius, include_self = False):
-		"""Returns list of all coordinates, that are in the radius
+		"""Returns list of all coordinates (as tuples), that are in the radius
+		This is a generator.
 		@param include_self: whether to include coords in self"""
 		# NOTE: this function has to be very fast, since it's blocking on building select
 		#       therefore, the distance_to_tuple function is inlined manually.
@@ -199,6 +200,8 @@ class Rect(object):
 		# calculate border for line y (y = 0 and y = radius are special cases handled above)
 		for y in xrange( 1, radius ):
 			test_val = radius_squared - y ** 2
+			# TODO: check if it's possible if x is decreased more than once here.
+			#       if not, change the while to an if
 			while (x ** 2) > test_val: # this is equivalent to  x^2 + y^2 > radius^2
 				x -= 1
 
@@ -206,21 +209,23 @@ class Rect(object):
 			borders[self.top - y] = (self.left - x, self.right + x)
 			borders[self.bottom + y] = (self.left - x, self.right + x)
 
-		coords = []
-		coords_append = coords.append
 		if not include_self:
 			self_coords = frozenset(self.get_coordinates())
 			for y, x_range in borders.iteritems():
-				for x in xrange(x_range[0], x_range[1]+1):
-					t = (x, y)
-					if t not in self_coords:
-						coords_append( (x, y) )
+				if y >= self.top and y <= self.bottom: # we have to sort out the self_coords here
+					for x in xrange(x_range[0], x_range[1]+1):
+						t = (x, y)
+						if t not in self_coords:
+							yield t
+				else: # coords of this rect cannot appear here
+					for y, x_range in borders.iteritems():
+						for x in xrange(x_range[0], x_range[1]+1):
+							yield (x, y)
 		else:
 			for y, x_range in borders.iteritems():
 				for x in xrange(x_range[0], x_range[1]+1):
-					coords_append( (x, y) )
+					yield (x, y)
 
-		return coords
 
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """

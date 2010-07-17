@@ -305,6 +305,18 @@ class Island(WorldObject):
 			if tile is not None:
 				yield tile
 
+	def get_tiles_in_radius(self, location, radius, include_self):
+		"""Returns tiles in radius of location.
+		This is a generator.
+		@param location: anything that supports get_radius_coordinates (usually Rect).
+		@param include_self: bool, whether to include the coordinates in location
+		"""
+		for coord in location.get_radius_coordinates(radius, include_self):
+			try:
+				yield self.ground_map[coord]
+			except KeyError:
+				pass
+
 	@decorators.make_constants()
 	def get_providers_in_range(self, circle, res=None, reslist=None, player=None):
 		"""Returns all instances of provider within the specified circle.
