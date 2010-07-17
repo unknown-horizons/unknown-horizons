@@ -58,8 +58,8 @@ class FindPath(object):
 		# commented out checks since BasicBuilding can't be imported here
 		#assert(isinstance(source, (Rect, Point, BasicBuilding)))
 		#assert(isinstance(destination, (Rect, Point, BasicBuilding)))
-		assert(isinstance(path_nodes, (dict, list)))
-		assert(isinstance(blocked_coords, (dict, list)))
+		assert(isinstance(path_nodes, (dict, list, set)))
+		assert(isinstance(blocked_coords, (dict, list, set)))
 
 		# save args
 		self.source = source
@@ -91,11 +91,8 @@ class FindPath(object):
 		if hasattr(self.destination, 'position'):
 			self.destination = self.destination.position
 
-		if isinstance(self.path_nodes, list):
+		if isinstance(self.path_nodes, list) or isinstance(self.path_nodes, set):
 			self.path_nodes = dict.fromkeys(self.path_nodes, 1.0)
-
-		if isinstance(self.blocked_coords, dict):
-			self.blocked_coords = self.blocked_coords.keys()
 
 		# check if target is blocked
 		target_is_blocked = True

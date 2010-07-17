@@ -254,7 +254,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
 	selection_color = (255, 255, 0)
-	_selected_tiles = [] # tiles that are selected. used for clean deselect.
+	_selected_tiles = set() # tiles that are selected. used for clean deselect.
 
 	def select(self):
 		"""Runs necessary steps to select the building."""
@@ -282,6 +282,14 @@ class SelectableBuilding(object):
 		@param position: Position of building, usually Rect
 		@param settlement: Settlement instance the building belongs to"""
 		renderer = session.view.renderer['InstanceRenderer']
+
+		"""
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		profile.runctx( "cls._do_select(renderer, position, session.world, settlement)", globals(), locals(), outfilename)
+		"""
 		cls._do_select(renderer, position, session.world, settlement)
 
 	@classmethod
@@ -294,24 +302,23 @@ class SelectableBuilding(object):
 			if tile.object is not None:
 				remove_colored(tile.object._instance)
 		selected_tiles = cls._selected_tiles
-		cls._selected_tiles = []
+		cls._selected_tiles = set()
 		return selected_tiles
 
 	@classmethod
 	@decorators.make_constants()
 	def _do_select(cls, renderer, position, world, settlement):
-		selected_tiles_append = cls._selected_tiles.append
+		selected_tiles_add = cls._selected_tiles.add
 		add_colored = renderer.addColored
 		if cls.range_applies_only_on_island:
 			island = world.get_island(position.origin)
 			if island is None:
 				return # preview isn't on island, and therefore invalid
 			coords = position.get_radius_coordinates(cls.radius, include_self=True)
-			for tile in island.get_tiles_tuple(coords):
+			for tile in settlement.get_tiles_tuple(coords):
 				try:
-					if tile.settlement == settlement and \
-					   ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-						selected_tiles_append(tile)
+					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						selected_tiles_add(tile)
 						add_colored(tile._instance, *cls.selection_color)
 						# Add color to a building or tree that is present on the tile
 						add_colored(tile.object._instance, *cls.selection_color)
@@ -322,7 +329,7 @@ class SelectableBuilding(object):
 			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
 				try:
 					if settlement is None or tile.settlement is None or tile.settlement == settlement:
-						selected_tiles_append(tile)
+						selected_tiles_add(tile)
 						add_colored(tile._instance, *cls.selection_color)
 						add_colored(tile.object._instance, *cls.selection_color)
 				except AttributeError:

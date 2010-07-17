@@ -144,7 +144,7 @@ class World(LivingObject):
 		self.max_x += 10
 		self.max_y += 10
 
-		self.map_dimensions = Rect(self.min_x, self.min_y, self.max_x, self.max_y)
+		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 
 		#add water
 		self.log.debug("Filling world with water...")

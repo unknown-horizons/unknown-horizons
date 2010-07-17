@@ -91,8 +91,9 @@ class IngameGui(LivingObject):
 		})
 		self.widgets['minimap'].findChild(name="speed_text").stylize('menu')
 
-		self.minimap = Minimap(Rect(Point(self.widgets['minimap'].position[0]+77, 55), 120, 120), \
-													 self.session, self.session.view.renderer['GenericRenderer'])
+		minimap_rect = Rect.init_from_topleft_and_size(self.widgets['minimap'].position[0]+77, 55, 120, 120)
+		self.minimap = Minimap(minimap_rect, self.session, \
+		                       self.session.view.renderer['GenericRenderer'])
 		minimap_overlay = self.widgets['minimap'].findChild(name='minimap_overlay_image')
 		self.minimap.use_overlay_icon(minimap_overlay)
 

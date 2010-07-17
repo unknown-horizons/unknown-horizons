@@ -186,7 +186,6 @@ class Minimap(object):
 				minimap_point = ( location_left + x, location_top + y)
 
 				# check what's at the covered_area
-
 				assert self.world.map_dimensions.contains(real_map_point)
 				island = get_island(real_map_point)
 				if island is not None:

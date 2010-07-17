@@ -43,18 +43,11 @@ class Rect(object):
 			self.right = max(args[0], args[2])
 			self.bottom = max(args[1], args[3])
 
-		#development assert:
-		elif __debug__:
-			if len(args) > 0 and isinstance(args[0], Rect):
-				assert False, "Tried to init rect with rect"
-			else:
-				assert False, 'Invalid rect initialisation'+str(args)
 		else:
 			assert False
 
 		# Convenience attributes (can be used to make code more easy to read/understand)
 		self.origin = Point(self.left, self.top)
-
 
 	# NAMED CONSTRUCTORS:
 
@@ -73,8 +66,8 @@ class Rect(object):
 		self = cls.__new__(cls)
 		self.left = x
 		self.top = y
-		self.right = self.left + width
-		self.bottom = self.top + height
+		self.right = x + width
+		self.bottom = y + height
 		self.origin = Point(self.left, self.top)
 		return self
 
@@ -88,17 +81,17 @@ class Rect(object):
 		self.right = x_coords[1]
 		y_coords = [ int(round(point1.y)), int(round(point2.y)) ]
 		y_coords.sort()
-		self.top = y_coords[0]
-		self.bottom = y_coords[1]
+		self.top = y_coords[1]
+		self.bottom = y_coords[0]
 		return self
 
 	@property
 	def height(self):
-		return self.bottom - self.top
+		return self.bottom - self.top + 1
 
 	@property
 	def width(self):
-		return self.right - self.left
+		return self.right - self.left + 1
 
 	def copy(self):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
@@ -155,6 +148,9 @@ class Rect(object):
 		@param include_self: whether to include coords in self"""
 		# NOTE: this function has to be very fast, since it's blocking on building select
 		#       therefore, the distance_to_tuple function is inlined manually.
+		"""
+		OLD HORRIBLY SLOW, BUT CORRECT ALGO:
+
 		left, right, top, bottom = self.left, self.right, self.top, self.bottom
 		if not include_self:
 			self_coords = self.get_coordinates()
@@ -170,7 +166,61 @@ class Rect(object):
 			          for x in xrange(left-radius, right+radius+1) \
 			          for y in xrange(top-radius, bottom+radius+1) if \
 			          (((max(left - x, 0, x - right) ** 2) + (max(top - y, 0, y - bottom) ** 2)) ** 0.5 ) <= radius ]
+		"""
 
+		"""
+		ALGORITHM:
+		Idea:
+		calculate the borders of the shape for every line (y-axis) to the left and the right
+	  and fill it up later.
+		The borders are calculated this way:
+		Take a corner (here we use top right) and calculate a quarter of a circle (top right quarter).
+		This can be mirrored to every other corner.
+		Then there is only the space exactly above, below and left and right to the rect left.
+		Here, since we only got along one axis, we know that the border coords are right + radius, etc.
+		q.e.d. ;)
+		"""
+
+
+		borders = {}
+
+		# start with special case
+
+		# above, below
+		borders[self.top - radius] = ( self.left, self.right )
+		borders[self.bottom + radius] = ( self.left, self.right )
+
+		# left, right
+		for y in xrange( self.top, self.bottom+1 ):
+			borders[y] = ( self.left - radius, self.right + radius)
+
+		x = radius
+		radius_squared = radius ** 2
+		# calculate border for line y (y = 0 and y = radius are special cases handled above)
+		for y in xrange( 1, radius ):
+			test_val = radius_squared - y ** 2
+			while (x ** 2) > test_val: # this is equivalent to  x^2 + y^2 > radius^2
+				x -= 1
+
+			# both sides are symmetrical, since it's a rect
+			borders[self.top - y] = (self.left - x, self.right + x)
+			borders[self.bottom + y] = (self.left - x, self.right + x)
+
+		coords = []
+		coords_append = coords.append
+		if not include_self:
+			self_coords = frozenset(self.get_coordinates())
+			for y, x_range in borders.iteritems():
+				for x in xrange(x_range[0], x_range[1]+1):
+					t = (x, y)
+					if t not in self_coords:
+						coords_append( (x, y) )
+		else:
+			for y, x_range in borders.iteritems():
+				for x in xrange(x_range[0], x_range[1]+1):
+					coords_append( (x, y) )
+
+		return coords
 
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
@@ -254,6 +304,7 @@ class Rect(object):
 
 
 class ConstRect(Const, Rect):
-	"""An immutable Rect"""
+	"""An immutable Rect.
+	Can be used to to manual const-only optimisation"""
 	pass
 
