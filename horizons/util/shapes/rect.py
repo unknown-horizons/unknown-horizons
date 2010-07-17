@@ -81,8 +81,8 @@ class Rect(object):
 		self.right = x_coords[1]
 		y_coords = [ int(round(point1.y)), int(round(point2.y)) ]
 		y_coords.sort()
-		self.top = y_coords[1]
-		self.bottom = y_coords[0]
+		self.top = y_coords[0]
+		self.bottom = y_coords[1]
 		return self
 
 	@property

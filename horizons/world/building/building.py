@@ -57,12 +57,12 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	"""
 	def __init__(self, x, y, rotation, owner, island, level=0, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
-				island=island, **kwargs)
+								                        island=island, **kwargs)
 		self.__init(Point(x, y), rotation, owner, level)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
-			self.island.add_settlement(self.position, self.radius, owner) if \
-			owner is not None else None
+				self.island.add_settlement(self.position, self.radius, owner) if \
+				owner is not None else None
 
 	def __init(self, origin, rotation, owner, level):
 		self._action_set_id = self.session.db.get_random_action_set(self.id, level)[0]
@@ -79,7 +79,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		if self.running_costs != 0: # Get payout every 30 seconds
 			Scheduler().add_new_object(self.get_payout, self, \
-			     runin=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
+												         runin=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
@@ -93,7 +93,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \
-			self.running_costs_inactive, self.running_costs
+				self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
 		return (self.running_costs > self.running_costs_inactive)
@@ -115,14 +115,14 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		super(BasicBuilding, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, health, location, level) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?, ?)", \
-			self.worldid, self.__class__.id, self.position.origin.x, \
-			self.position.origin.y, self.rotation, \
-			self.health, (self.settlement or self.island).worldid, self.level)
+								                       self.worldid, self.__class__.id, self.position.origin.x, \
+								                       self.position.origin.y, self.rotation, \
+								                       self.health, (self.settlement or self.island).worldid, self.level)
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
 		x, y, self.health, location, rotation, level= \
-			db("SELECT x, y, health, location, rotation, level FROM building WHERE rowid = ?", worldid)[0]
+		 db("SELECT x, y, health, location, rotation, level FROM building WHERE rowid = ?", worldid)[0]
 
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
@@ -147,7 +147,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			island = WorldObject.get_object_by_id(island_id)
 			# settlement might not have been registered in island, so do it if getter fails
 			settlement = island.get_settlement(self.position.center()) or \
-					island.add_existing_settlement(self.position, self.radius, location_obj)
+								 island.add_existing_settlement(self.position, self.radius, location_obj)
 		else: # loc is island
 			island = location_obj
 			settlement = None
@@ -193,7 +193,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		assert isinstance(y, int)
 		if building is not None:
 			return building.getInstance(session = session, x = x, y = y, action=action, \
-			                            rotation=rotation, **trash)
+												          rotation=rotation, **trash)
 		else:
 			#rotation = cls.check_build_rotation(session, rotation, x, y)
 			# TODO: replace this with new buildable api
@@ -215,7 +215,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			else:
 				return None
 			instance = session.view.layers[cls.layer].createInstance(cls._object, \
-			                         fife.ModelCoordinate(*instance_coords))
+												                                       fife.ModelCoordinate(*instance_coords))
 			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 			action_set_id = session.db.get_random_action_set(cls.id)[0]
@@ -247,7 +247,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	def __str__(self): # debug
 		classname = horizons.main.db.cached_query("SELECT name FROM building where id = ?", self.id)[0][0]
 		return '%s(id=%s;worldid=%s)' % (classname, self.id, \
-		                                 self.worldid)
+								                     self.worldid)
 
 
 
@@ -260,7 +260,7 @@ class SelectableBuilding(object):
 		"""Runs necessary steps to select the building."""
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
-		                     self.selection_color[2], 1)
+								         self.selection_color[2], 1)
 		self._do_select(renderer, self.position, self.session.world, self.settlement)
 
 	def deselect(self):
@@ -282,6 +282,14 @@ class SelectableBuilding(object):
 		@param position: Position of building, usually Rect
 		@param settlement: Settlement instance the building belongs to"""
 		renderer = session.view.renderer['InstanceRenderer']
+
+		"""
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		profile.runctx( "cls._do_select(renderer, position, session.world, settlement)", globals(), locals(), outfilename)
+		"""
 		cls._do_select(renderer, position, session.world, settlement)
 
 	@classmethod
