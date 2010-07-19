@@ -27,23 +27,28 @@ from horizons.scheduler import Scheduler
 
 class UnitProduction(Production):
 	"""Production, that produces units."""
-	def __init__(self, callback=None, **kwargs):
+	def __init__(self, callback, **kwargs):
 		super(UnitProduction, self).__init__(auto_start=False, **kwargs)
-		if callback is not None:
-			assert callable(callback)
-		self.callback = callback
-		self.__init()
+		self.__init(callback)
 		# We have to check manually now after initing because we set auto_start to false
 		self._check_inventory()
 
-	def __init(self, progress = 0):
+	def __init(self, callback, progress = 0):
+		assert callable(callback)
+		self.callback = callback
 		self.original_prod_line = self._prod_line
 		self._prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
-	def _load(self, db, worldid):
+	@classmethod
+	def load(cls, db, worldid, callback):
+		self = cls.__new__(cls)
+		self._load(db, worldid, callback)
+		return self
+
+	def _load(self, db, worldid, callback):
 		super(UnitProduction, self)._load(db, worldid)
-		self.__init()
+		self.__init(callback)
 
 	## PROTECTED METHODS
 

@@ -130,7 +130,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 				)
 
 	def _possible_names(self):
-		names = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1")
+		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
 		return map(lambda x: x[0], names)
 
 	def save(self, db):
@@ -154,7 +154,7 @@ class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
 	def _possible_names(self):
-		names = horizons.main.db("SELECT name FROM data.shipnames WHERE for_player = 1")
+		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
 		return map(lambda x: x[0], names)
 
 class TradeShip(Ship):

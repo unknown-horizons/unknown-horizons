@@ -175,6 +175,9 @@ class QueueProducer(Producer):
 		if not self.is_active():
 			self.start_next_production()
 
+	def load_production(self, db, worldid):
+		return self.production_class.load(db, worldid, callback=self.on_production_finished)
+
 	def check_next_production_startable(self):
 		# See if we can start the next production,  this only works if the current
 		# production is done
@@ -197,7 +200,11 @@ class QueueProducer(Producer):
 			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
-			self.add_production(self.production_class(inventory=self.inventory, prod_line_id=production_line_id, callback=self.on_production_finished))
+			self.add_production(
+			  self.production_class(inventory=self.inventory, \
+			                        prod_line_id=production_line_id, \
+			                        callback=self.on_production_finished)
+			)
 		else:
 			self.set_active(active=False)
 
@@ -208,8 +215,6 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 
 	# Use UnitProduction instead of normal Production
 	production_class = UnitProduction
-
-	unit_placement_radius = 3 # Radius in which the producer can  setup a new unit
 
 	def __init__(self, **kwargs):
 		super(UnitProducerBuilding, self).__init__(**kwargs)
@@ -234,7 +239,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 			assert isinstance(production, UnitProduction)
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(0, amount):
-					radius = self.unit_placement_radius
+					radius = 1
 					found_tile = False
 					# search for free water tile, and increase search radius if none is found
 					while not found_tile:

@@ -250,10 +250,11 @@ def _start_map(map_name, is_scenario = False):
 	@return: bool, whether loading succeded"""
 	maps = SavegameManager.get_scenarios() if is_scenario else SavegameManager.get_maps()
 	map_file = None
-	try:
-		map_id = maps[1].index(map_name)
-		map_file = maps[0][map_id]
-	except ValueError:
+	for i in xrange(0, len(saves[1])):
+		if saves[1][i].startswith(savegamename):
+			map_file = saves[0][i]
+			break
+	if map_file is None:
 		print _("Error: Cannot find map \"%s\".") % map_name
 		return False
 	load_game(map_file, is_scenario)
@@ -269,10 +270,11 @@ def _load_map(savegamename):
 	@return: bool, whether loading succeded"""
 	saves = SavegameManager.get_saves()
 	map_file = None
-	try:
-		save_id = saves[1].index(savegamename)
-		map_file = saves[0][save_id]
-	except ValueError:
+	for i in xrange(0, len(saves[1])):
+		if saves[1][i].startswith(savegamename):
+			map_file = saves[0][i]
+			break
+	if map_file is None:
 		print _("Error: Cannot find savegame \"%s\".") % savegamename
 		return False
 	load_game(map_file)
