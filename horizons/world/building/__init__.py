@@ -94,6 +94,12 @@ class BuildingClass(type):
 		soundfiles = self.db("SELECT file FROM sounds INNER JOIN object_sounds ON \
 			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
+
+		# for mines: on which deposit is it buildable
+		buildable_on_deposit_type = self.db("SELECT deposit FROM mine WHERE mine = ?", self.id)
+		if buildable_on_deposit_type:
+			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
+
 		"""TUTORIAL: Now you know the basic attributes each building has. To check out further functions of single
 		             buildings you should check out the separate classes in horizons/world/buildings/*.
 					 Unit creation is very similar, you could check it out though and see which attributes a unit

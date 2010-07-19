@@ -77,3 +77,4 @@ class Tree(GrowingBuilding):
 class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
+	layer = LAYERS.FIELDS

@@ -32,7 +32,7 @@ class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None,**trash):
+	             ship = None, ownerless=False, settlement=None):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
@@ -63,7 +63,7 @@ class Build(Command):
 		island = WorldObject.get_object_by_id(self.island)
 		session = island.session
 
-		# check once agaion. needed for MP.
+		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
 		buildable = buildable_class.check_build(session, Point(self.x, self.y), rotation = self.rotation,\
 			check_settlement=issuer is not None, \
@@ -101,7 +101,8 @@ class Build(Command):
 			x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
-			instance=None)
+			instance=None, \
+		)
 
 		island.add_building(building, issuer)
 		if self.settlement is not None:
@@ -124,7 +125,7 @@ class Build(Command):
 		# building is now officially built and existent
 		building.start()
 
-		# NOTE: conditions are not MP-save! no problem as long as there are no MP-campaigns
+		# NOTE: conditions are not MP-safe! no problem as long as there are no MP-campaigns
 		session.campaign_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
 
 		return building

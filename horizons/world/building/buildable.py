@@ -154,7 +154,8 @@ class Buildable(object):
 
 	@classmethod
 	def _check_buildings(cls, session, position, island=None):
-		"""Check if there are buildings blocking the build"""
+		"""Check if there are buildings blocking the build.
+		@return Iterable of worldids of buildings that need to be teared in order to build here"""
 		if island is None:
 			island = session.world.get_island(position.center())
 			# _check_island already confirmed that there must be an island here, so no check for None again
@@ -335,9 +336,28 @@ class BuildableSingleFromShip(BuildableSingleOnCoast):
 			if s.owner == ship.owner:
 				raise _NotBuildableError()
 
+class BuildableSingleOnDeposit(BuildableSingle):
+	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
+	For now, mines can only be built on a single type of deposit.
+	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
+	the buildingclass.
+	"""
+	@classmethod
+	def _check_buildings(cls, session, position, island=None):
+		"""Check if there are buildings blocking the build"""
+		if island is None:
+			island = session.world.get_island(position.center())
+		for tile in island.get_tiles_tuple( position.tuple_iter() ):
+			if tile.object is None or \
+			   tile.object.id != cls.buildable_on_deposit_type:
+				raise _NotBuildableError()
+		return set() # nothing to tear
+
+
 # apply make_constant to classes
 decorators.bind_all(Buildable)
 decorators.bind_all(BuildableSingle)
 decorators.bind_all(BuildableRect)
 decorators.bind_all(BuildableSingleFromShip)
 decorators.bind_all(BuildableSingleOnCoast)
+decorators.bind_all(BuildableSingleOnDeposit)

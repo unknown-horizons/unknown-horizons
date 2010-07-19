@@ -24,7 +24,7 @@ import horizons.main
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.producer import ProducerBuilding
 from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingle, BuildableSingleOnCoast
+from buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
 from horizons.util import Circle
 
@@ -61,6 +61,8 @@ class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSing
 	"""Class for Churches, School that provide a service-type res for settlers"""
 	pass
 
+class Mine(SelectableBuilding, BasicBuilding, BuildableSingleOnDeposit):
+	pass
 
 """ AnimalFarm is not used for now (code may not work anymore)
 
