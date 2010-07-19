@@ -24,7 +24,8 @@ import logging
 import horizons.main
 from horizons.entities import Entities
 from horizons.command import Command
-from horizons.util import Point, WorldObject
+from horizons.util import Point
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.campaign import CONDITIONS
 from horizons.constants import RES
 
@@ -32,14 +33,14 @@ class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None, data={}):
+	             ship = None, ownerless=False, settlement=None, tearset=set()):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param ship: ship instance
 		@param island: island instance
 		@param settlement: settlement worldid or None
-		@param data: data specific to buildings needed for construction
+		@param tearset: set of worldids of objs to tear before building
 		"""
 		if hasattr(building, 'id'):
 			self.building_class = building.id
@@ -53,7 +54,7 @@ class Build(Command):
 		self.ownerless = ownerless
 		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
-		self.data = data
+		self.tearset = tearset
 
 	def __call__(self, issuer):
 		"""Execute the command
@@ -98,13 +99,26 @@ class Build(Command):
 			# TODO: maybe show message to user
 			return
 
+		data = {}
+		# collect data before objs are torn
+		# required by e.g. the mines to find out about the status of the resource deposit
+		if hasattr(Entities.buildings[self.building_class], "get_prebuild_data"):
+			data = Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y))
+
+		for worldid in self.tearset:
+			try:
+				obj = WorldObject.get_object_by_id(worldid)
+				Tear(obj)(issuer=None) # execute right now, not via manager
+			except WorldObjectNotFound: # obj might have been removed already
+				pass
+
 		building = Entities.buildings[self.building_class]( \
 			session=session, \
 			x=self.x, y=self.y, \
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
 			instance=None, \
-		  **self.data \
+		  **data \
 		)
 
 		island.add_building(building, issuer)

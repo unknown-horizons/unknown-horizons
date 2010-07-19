@@ -347,11 +347,14 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		"""Check if there are buildings blocking the build"""
 		if island is None:
 			island = session.world.get_island(position.center())
+		deposit = None
 		for tile in island.get_tiles_tuple( position.tuple_iter() ):
 			if tile.object is None or \
-			   tile.object.id != cls.buildable_on_deposit_type:
+			   tile.object.id != cls.buildable_on_deposit_type or \
+			   (deposit is not None and tile.object != deposit): # only build on 1 deposit
 				raise _NotBuildableError()
-		return set() # nothing to tear
+			deposit = tile.object
+		return set([deposit.worldid])
 
 
 # apply make_constant to classes
