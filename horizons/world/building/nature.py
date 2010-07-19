@@ -19,14 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from building import BasicBuilding
-from buildable import BuildableRect
-from collectingbuilding import CollectingBuilding
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildable import BuildableRect
+from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.entities import Entities
 from horizons.constants import LAYERS
-
-import horizons.main
+from horizons.world.storageholder import StorageHolder
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -48,7 +47,7 @@ class AnimalField(CollectingBuilding, Field):
 	walkable = False
 	def create_collector(self):
 		self.animals = []
-		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM balance.animals \
+		for (animal, number) in self.session.db("SELECT unit_id, count FROM balance.animals \
 		                                    WHERE building_id = ?", self.id):
 			for i in xrange(0, number):
 				Entities.units[animal](self, session=self.session)
@@ -74,7 +73,23 @@ class Tree(GrowingBuilding):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
-class ResourceDeposit(NatureBuilding):
+class ResourceDeposit(StorageHolder, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.FIELDS
+
+	def __init__(self, *args, **kwargs):
+		super(ResourceDeposit, self).__init__(*args, **kwargs)
+		#import pdb ; pdb.set_trace()
+		for resource, min_amount, max_amount in \
+		    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
+		                    self.id):
+			self.inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
+
+	"""
+	def load(self, *args, **kwargs):
+		import pdb ; pdb.set_trace()
+		super(ResourceDeposit, self).load(*args, **kwargs)
+	"""
+
+

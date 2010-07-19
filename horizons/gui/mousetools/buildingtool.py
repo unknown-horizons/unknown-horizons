@@ -321,6 +321,14 @@ class BuildingTool(NavigationTool):
 		@return whether it was possible to build anything of the previews."""
 		built = False
 
+		build_data = {} # special data used by certain building types
+		# necessary for e.g. the mines, where we have to get information about the teared buildings
+		# before they are torn (e.g. inventory of deposit)
+		if hasattr(self._class, "get_prebuild_data"):
+			for building in self.buildings:
+				if building.buildable:
+					build_data[building] = self._class.get_prebuild_data(self.session, building.position)
+
 		# first, tear down all buildings that are in the way
 		# we have to check for multiple occurences of the same building to tear
 		torn = set()
@@ -351,7 +359,8 @@ class BuildingTool(NavigationTool):
 				            rotation=building.rotation, \
 				            island=self.session.world.get_island(building.position.origin), \
 				            settlement=self.session.world.get_settlement(building.position.origin), \
-				            ship=self.ship)
+				            ship=self.ship, \
+				            data=build_data[building] if building in build_data else {})
 				cmd.execute(self.session)
 			else:
 				# check whether to issue a missing res notification

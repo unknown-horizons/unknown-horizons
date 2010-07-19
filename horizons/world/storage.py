@@ -40,6 +40,7 @@ Combinations:
 """
 
 import sys
+import copy
 
 from horizons.util import Changelistener
 
@@ -130,6 +131,10 @@ class GenericStorage(Changelistener):
 
 	def get_sum_of_stored_resources(self):
 		return sum(self._storage.itervalues())
+
+	def get_dump(self):
+		"""Returns a dump of the inventory as dict"""
+		return copy.deepcopy(self._storage)
 
 	def __getitem__(self, res):
 		return self._storage[res] if res in self._storage else 0

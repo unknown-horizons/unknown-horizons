@@ -32,13 +32,14 @@ class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None):
+	             ship = None, ownerless=False, settlement=None, data={}):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param ship: ship instance
 		@param island: island instance
 		@param settlement: settlement worldid or None
+		@param data: data specific to buildings needed for construction
 		"""
 		if hasattr(building, 'id'):
 			self.building_class = building.id
@@ -52,6 +53,7 @@ class Build(Command):
 		self.ownerless = ownerless
 		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
+		self.data = data
 
 	def __call__(self, issuer):
 		"""Execute the command
@@ -102,6 +104,7 @@ class Build(Command):
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
 			instance=None, \
+		  **self.data \
 		)
 
 		island.add_building(building, issuer)

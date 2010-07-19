@@ -61,8 +61,20 @@ class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSing
 	"""Class for Churches, School that provide a service-type res for settlers"""
 	pass
 
-class Mine(SelectableBuilding, BasicBuilding, BuildableSingleOnDeposit):
-	pass
+class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
+	def __init__(self, inventory, *args, **kwargs):
+		super(Mine, self).__init__(*args, **kwargs)
+		for res, amount in inventory.iteritems():
+			self.inventory.alter(res, amount)
+
+	@classmethod
+	def get_prebuild_data(cls, session, position):
+		"""Returns dict containing inventory of deposit, which is needed for the mine build"""
+		deposit = session.world.get_building(position.center())
+		data = {}
+		data["inventory"] = deposit.inventory.get_dump()
+		return data
+
 
 """ AnimalFarm is not used for now (code may not work anymore)
 
