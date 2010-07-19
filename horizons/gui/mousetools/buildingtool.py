@@ -63,6 +63,11 @@ class BuildingTool(NavigationTool):
 		self.last_change_listener = None
 		self._modified_objects = set() # fife instances modified for transparency
 		self._buildable_tiles = set() # tiles marked as buildable
+		self._build_logic = None
+		if self.ship is None:
+			self._build_logic = SettlementBuildingToolLogic()
+		else:
+			self._build_logic = ShipBuildingToolLogic(ship)
 
 		if self._class.show_buildingtool_preview_tab:
 			self.load_gui()
@@ -77,40 +82,10 @@ class BuildingTool(NavigationTool):
 	def highlight_buildable(self, tiles_to_check = None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
-		# resolved variables from inner loops
-		is_tile_buildable = self._class.is_tile_buildable
-		add_colored = self.renderer.addColored
-		player = self.session.world.player
-		session = self.session
-		buildable_tiles_add = self._buildable_tiles.add
-		ship = self.ship
-
-		if tiles_to_check is not None: # only check these tiles
-			for tile in tiles_to_check:
-				if is_tile_buildable(session, tile, ship):
-					self.__color_buildable_tile(tile)
-
-		elif self.ship is None: # default build on island
-			for settlement in self.session.world.settlements:
-				if settlement.owner == player:
-					island = self.session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
-					for tile in settlement.ground_map.itervalues():
-						if is_tile_buildable(session, tile, ship, island, check_settlement=False):
-							self.__color_buildable_tile(tile)
-
-		else: # build from ship
-			for island in self.session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
-				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
-					buildable_tiles_add(tile)
-					# check that there is no other player's settlement
-					if tile.settlement is None or tile.settlement.owner == player:
-						add_colored(tile._instance, *self.buildable_color)
-						if tile.object is not None: # color obj on tile too
-							add_colored(tile.object._instance, *self.buildable_color)
-
+		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 	@decorators.make_constants()
-	def __color_buildable_tile(self, tile):
+	def _color_buildable_tile(self, tile):
 		self._buildable_tiles.add(tile) # it's a set, so dupicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 		if tile.object is not None:
@@ -159,8 +134,9 @@ class BuildingTool(NavigationTool):
 	def draw_gui(self):
 		# TODO: change hard-coded 0 below to a variable, as soon as building leveling concept
 		# is decided.
+		level = 0
 		if not hasattr(self, "action_set"):
-			self.action_set = self.session.db.get_random_action_set(self._class.id, 0)
+			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
 		action_set, preview_action_set = self.action_set
 		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
@@ -278,12 +254,7 @@ class BuildingTool(NavigationTool):
 
 	def on_escape(self):
 		self.session.ingame_gui.resourceinfo_set(None)
-		if self.ship is None:
-			self.session.ingame_gui.show_build_menu()
-		else:
-			self.session.selected_instances = set([self.ship])
-			self.ship.select()
-			self.ship.show_menu()
+		self._build_logic.on_escape(self.session)
 		if self.gui is not None:
 			self.gui.hide()
 		self.session.cursor = SelectionTool(self.session)
@@ -418,10 +389,7 @@ class BuildingTool(NavigationTool):
 			self._remove_listeners()
 			self.last_change_listener = instance
 			if self.last_change_listener is not None:
-				if self.last_change_listener is self.ship:
-					self.last_change_listener.add_change_listener(self.highlight_buildable)
-				# Settlement changelistener
-				self.last_change_listener.add_change_listener(self.force_update)
+				self._build_logic.add_change_listener(self.last_change_listener, self)
 
 
 	def force_update(self):
@@ -471,3 +439,80 @@ class BuildingTool(NavigationTool):
 			if tile.object is not None:
 				removeColored(tile.object._instance)
 		self._buildable_tiles = set()
+
+
+class ShipBuildingToolLogic(object):
+	"""Helper class to seperate the logic needed when building from a ship from
+	the main building tool."""
+
+	def __init__(self, ship):
+		self.ship = ship
+
+	@decorators.make_constants()
+	def highlight_buildable(self, building_tool, tiles_to_check = None):
+		"""Highlights all buildable tiles.
+		@param tiles_to_check: list of tiles to check for coloring."""
+		# resolved variables from inner loops
+		is_tile_buildable = building_tool._class.is_tile_buildable
+		add_colored = building_tool.renderer.addColored
+		session = building_tool.session
+		player = session.world.player
+		buildable_tiles_add = building_tool._buildable_tiles.add
+
+		if tiles_to_check is not None: # only check these tiles
+			for tile in tiles_to_check:
+				if is_tile_buildable(session, tile, self.ship):
+					building_tool._color_buildable_tile(tile)
+		else: # build from ship
+			for island in session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
+				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
+					buildable_tiles_add(tile)
+					# check that there is no other player's settlement
+					if tile.settlement is None or tile.settlement.owner == player:
+						add_colored(tile._instance, *building_tool.buildable_color)
+						if tile.object is not None: # color obj on tile too
+							add_colored(tile.object._instance, *building_tool.buildable_color)
+
+	def on_escape(self, session):
+		session.selected_instances = set([self.ship])
+		self.ship.select()
+		self.ship.show_menu()
+
+	def add_change_listener(self, instance, building_tool):
+		# instance is self.ship here
+		instance.add_change_listener(building_tool.highlight_buildable)
+		instance.add_change_listener(building_tool.force_update)
+
+class SettlementBuildingToolLogic(object):
+	"""Helper class to seperate the logic needen when building from a settlement
+	from the main building tool"""
+
+	@decorators.make_constants()
+	def highlight_buildable(self, building_tool, tiles_to_check = None):
+		"""Highlights all buildable tiles.
+		@param tiles_to_check: list of tiles to check for coloring."""
+		# resolved variables from inner loops
+		is_tile_buildable = building_tool._class.is_tile_buildable
+		session = building_tool.session
+		player = session.world.player
+		buildable_tiles_add = building_tool._buildable_tiles.add
+
+		if tiles_to_check is not None: # only check these tiles
+			for tile in tiles_to_check:
+				if is_tile_buildable(session, tile, None):
+					building_tool._color_buildable_tile(tile)
+
+		else: #default build on island
+			for settlement in session.world.settlements:
+				if settlement.owner == player:
+					island = session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
+					for tile in settlement.ground_map.itervalues():
+						if is_tile_buildable(session, tile, None, island, check_settlement=False):
+							building_tool._color_buildable_tile(tile)
+
+	def on_escape(self, session):
+		session.ingame_gui.show_build_menu()
+
+	def add_change_listener(self, instance, building_tool):
+		instance.add_change_listener(building_tool.force_update)
+
