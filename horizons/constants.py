@@ -31,9 +31,10 @@ NOTE: Using constants is generally a bad style, so avoid where possible."""
 
 ##Versioning
 class VERSION:
+	"""
 	def _set_version(version=None):
-		"""Function gets latest revision of the working copy to display in background.
-		@param version: String to display instead of revision."""
+		""Function gets latest revision of the working copy to display in background.
+		@param version: String to display instead of revision.""
 		if version == None:
 			try:
 				from run_uh import find_uh_position
@@ -62,9 +63,13 @@ class VERSION:
 				return u""
 		else:
 			return unicode(version)
+	"""
 
 	RELEASE_NAME    = _("Unknown Horizons Version %s")
-	RELEASE_VERSION = _set_version()
+	RELEASE_VERSION = u"$Rev$".replace(u"$", u"")
+	#RELEASE_VERSION = _set_version()
+
+	# change to sth like this for release
 	#RELEASE_NAME   = _("Unknown Horizons Alpha %s")
 	#RELEASE_VERSION = '2009.2'
 
