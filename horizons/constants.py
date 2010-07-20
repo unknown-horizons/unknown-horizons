@@ -66,7 +66,7 @@ class VERSION:
 	"""
 
 	RELEASE_NAME    = _("Unknown Horizons Version %s")
-	RELEASE_VERSION = u"$Rev$".replace(u" $", u"").replace(u"$Rev: ", u"r")
+	RELEASE_VERSION = u"#Rev:124#".replace(u"#", u"").replace(u"Rev:", u"r")
 	#RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
