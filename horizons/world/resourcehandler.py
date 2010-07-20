@@ -18,7 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import horizons.main
 
 from horizons.util import WeakList
 from horizons.world.storageholder import StorageHolder
@@ -269,7 +268,7 @@ class ResourceHandler(StorageHolder):
 		"""Returns a iterable obj containing all resources this building provides.
 		This is outsourced from initiation to an extra function for the possiblity of overwriting it"""
 		provided_res = set()
-		for res in horizons.main.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
+		for res in self.session.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
 		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
 			provided_res.add(res[0])
 		return provided_res
