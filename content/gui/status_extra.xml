@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!-- Widget for displaying needed resources-->
 <Container name="status_extra" size="250,100"  position="97,77">
-	<Label name="food_2" text="" position="10,76"/>
-	<Label name="food_3" text="" position="20,76"/>
+	<Label name="food_2" text="" position="10,6"/>
+	<Label name="food_3" text="" position="10,14"/>
 	<Label name="tools_2" text="" position="65,6"/>
 	<Label name="tools_3" text="" position="65,14"/>
 	<Label name="boards_2" text="" position="115,6" />
 	<Label name="boards_3" text="" position="115,14"/>
-	<Label name="bricks_2" text="" />
-	<Label name="bricks_3" text="" />
-	<Label name="textiles_2" text="" />
-	<Label name="textiles_3" text="" />
+	<Label name="bricks_2" text="" position="167,6" />
+	<Label name="bricks_3" text="" position="167,14" />
+	<Label name="textiles_2" text="" position="216,6" />
+	<Label name="textiles_3" text="" position="216,14" />
 </Container>
 
