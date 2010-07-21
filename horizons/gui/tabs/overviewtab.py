@@ -194,17 +194,32 @@ class ProductionOverviewTab(OverviewTab):
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			for in_res in production.get_consumed_resources():
-				in_res_container.addChild( ImageFillStatusButton.init_for_res(in_res, \
-																                                      self.instance.inventory[in_res], horizons.main.db, \
-																                                      use_inactive_icon=False) )
+				filled = float(self.instance.inventory[in_res]) * 100 / \
+				       self.instance.inventory.get_limit(in_res)
+				in_res_container.addChild( \
+				  ImageFillStatusButton.init_for_res(self.instance.session.db,\
+				                                     in_res, \
+				                                     self.instance.inventory[in_res], \
+				                                     filled, \
+				                                     use_inactive_icon=False) \
+				)
 			out_res_container = container.findChild(name="output_res")
 			for out_res in production.get_produced_res():
-				out_res_container.addChild( ImageFillStatusButton.init_for_res(out_res, \
-																                                       self.instance.inventory[out_res], horizons.main.db, \
-																                                       use_inactive_icon=False) )
+				filled = float(self.instance.inventory[out_res]) * 100 /  \
+				       self.instance.inventory.get_limit(out_res)
+				out_res_container.addChild( \
+				  ImageFillStatusButton.init_for_res(self.instance.session.db, \
+				                                     out_res, \
+				                                     self.instance.inventory[out_res], \
+				                                     filled, \
+				                                     use_inactive_icon=False) \
+				)
 
 			# active toggle_active button
-			container.mapEvents( { 'toggle_active': Callback(ToggleActive(self.instance, production).execute, self.instance.session) } )
+			container.mapEvents( \
+			  { 'toggle_active': \
+			    Callback(ToggleActive(self.instance, production).execute, self.instance.session) \
+			    } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			container.stylize('menu_black')
 			parent_container.addChild(container)

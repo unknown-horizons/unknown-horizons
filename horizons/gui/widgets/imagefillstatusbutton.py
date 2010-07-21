@@ -21,13 +21,11 @@
 
 from fife.extensions import pychan
 
-import horizons.main
-
 from horizons.gui.widgets.tooltip import TooltipButton
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
-	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", **kwargs):
+	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", filled=0, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
@@ -38,27 +36,29 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		# res_id is used by the TradeWidget for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)
-		self.filled = 0
+		self.filled = filled
 
 	@classmethod
-	def init_for_res(cls, res, amount, db, use_inactive_icon=True):
+	def init_for_res(cls, db, res, amount=0, filled=0, use_inactive_icon=True):
 		"""Inites the button to display the icons for res
-		@param res: resource id
-		@param amount: amount of res that is available
 		@param db: dbreader to get info about res icon.
+		@param res: resource id
+		@param amount: int amount of res
+		@param filled: percent of fill status (values are ints in [0, 100])
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@return: ImageFillStatusButton instance"""
 		icon, icon_disabled = db.get_res_icon(res)
 		if not use_inactive_icon:
 			icon_disabled = icon
 		tooltip = db.get_res_name(res)
-		return cls(up_image=icon_disabled if amount == 0 else icon,
-										   down_image=icon_disabled if amount == 0 else icon,
-										   hover_image=icon_disabled if amount == 0 else icon,
+		return cls(up_image=icon_disabled if filled == 0 else icon,
+										   down_image=icon_disabled if filled == 0 else icon,
+										   hover_image=icon_disabled if filled == 0 else icon,
 										   text=str(amount),
 			                 tooltip=tooltip,
 										   size=(55, 50),
 										   res_id = res,
+		                   filled = filled,
 										   opaque=False)
 
 	def _set_filled(self, percent):

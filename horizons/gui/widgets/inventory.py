@@ -62,8 +62,8 @@ class Inventory(pychan.widgets.Container):
 			# check if this res should be displayed
 			if not horizons.main.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-			button = ImageFillStatusButton.init_for_res(resid, amount, horizons.main.db)
-			button.filled = int(float(amount) / float(self._inventory.limit) * 100.0)
+			fill = int(float(amount) / float(self._inventory.limit) * 100.0)
+			button = ImageFillStatusButton.init_for_res(horizons.main.db, resid, amount, filled=filled)
 			current_hbox.addChild(button)
 			if index % ((vbox.width/(self.__class__.icon_width + 10))-2) == 0 and index != 0:
 				vbox.addChild(current_hbox)
