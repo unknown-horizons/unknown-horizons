@@ -44,10 +44,10 @@ def set_translations():
 			"boat_builder_window"         : _("boatbuilder")},
 		"build_menu/hud_build_tab0.xml" : {
 			"headline"                    : _("Sailor Buildings"),
-			"residental_label"            : _("Residents and Infrastructural"),
-			"service_label"               : _("Services"),
+			"residents_infra_label"       : _("Residents and Infrastructure"),
+			"services_label"              : _("Services"),
 			"companies_label"             : _("Companies"),
-			"resident-1"                  : _("Tent"),
+			"resident-1"                  : _("Tent: \nHouses your \ninhabitants."),
 			"street-1"                    : _("Trail: \nNeeded for \ncollecting goods."),
 			"main_square-1"               : _("Main square:\nSupplies citizens\nwith goods."),
 			"store-1"                     : _("Storage: \nExtends stock\nand provides\ncollectors."),
@@ -60,29 +60,38 @@ def set_translations():
 		"build_menu/hud_build_tab1.xml" : {
 			"headline"                    : _("Pioneer Buildings"),
 			"companies_label"             : _("Companies"),
+			"services_label"              : _("Services"),
 			"military_label"              : _("Military"),
 			"herder-1"                    : _("Farm: \nGrows field \ncrops and raises \nlivestock."),
-			"potatofield-1"               : _("Potato Field:\nDelivers food \nNeeds a farm"),
-			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm"),
-			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth"),
-			"brickyard-1"                 : _("Brickyard: \nTurns clay \ninto bricks"),
-			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships, \nbuilt on coast")},
+			"potatofield-1"               : _("Potato Field:\nDelivers food. \nNeeds a farm."),
+			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm."),
+			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth."),
+			"clay-pit-1"                  : _("Clay Pit: \n Gets clay \nfrom deposit."),
+			"brickyard-1"                 : _("Brickyard: \nTurns clay \ninto bricks."),
+			"villageschool-1"             : _("Elementary school: \nProvides education."),
+			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships. \nBuilt on coast.")},
 		"build_menu/hud_build_tab2.xml" : {
 			"headline"                    : _("Settler Buildings"),
 			"housing_label"               : _("Housing"),
 			"production_label"            : _("Production"),
 			"villageschool-1"             : _("Village school: \nProvides education."),
 			"sugarfield-1"                : _("Sugar Field: \nProduces sugar\nfor rum.")},
+		"build_menu/hud_build_tab3.xml" : {
+			"headline"                    : _("Citizen Buildings")},
+		"build_menu/hud_build_tab4.xml" : {
+			"headline"                    : _("Merchant Buildings")},
+		"build_menu/hud_build_tab5.xml" : {
+			"headline"                    : _("Aristocrat Buildings")},
 		"build_menu/hud_builddetail.xml" : {
 			"headline"                    : _("Build"),
-			"running_cost_label"          : _("Running Costs:")},
+			"running_costs_label"         : _("Running Costs:")},
 		"buildings_gui/production_building_overview.xml" : {
 			"headline"                    : _("Building overview")},
 		"buildings_gui/work_building_tab0.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
 			"health_label"                : _("Health:"),
-			"running_cost_label"          : _("Running Costs:"),
+			"running_costs_label"         : _("Running Costs:"),
 			"buy_sell_label"              : _("Buy/Sell Resources:")},
 		"buildings_gui/work_building_tab1.xml" : {
 			"StockLabel"                  : _("stock")},
@@ -94,11 +103,6 @@ def set_translations():
 			"ProductionLabel"             : _("production")},
 		"buildings_gui/work_building_tab5.xml" : {
 			"ResearchLabel"               : _("research")},
-		"buysellmenu/buysellmenu.old.xml" : {
-			"headline"                    : _("Buy or sell resources"),
-			"legend_label"                : _("Legend:"),
-			"buy_label"                   : _("Buy resources"),
-			"sell_label"                  : _("Sell resources")},
 		"buysellmenu/buysellmenu.xml" : {
 			"headline"                    : _("Buy or sell resources"),
 			"legend_label"                : _("Legend:"),
@@ -108,15 +112,12 @@ def set_translations():
 			"headline"                    : _("Select resources:")},
 		"captains_log.xml" : {
 			"lbl_log"                     : _("Captain's Log")},
-		"change_buy_sell_amount.xml" : {
-			"headline"                    : _("Change name"),
-			"enter_new_amount_lbl"        : _("Enter the stock value up to which goods will be sold or bought:")},
 		"change_name.xml" : {
 			"headline"                    : _("Change name"),
 			"enter_new_name_lbl"          : _("Enter new name:")},
 		"chat.xml" : {
 			"headline"                    : _("Chat"),
-			"chat_lbl"                    : _("Enter your  message:")},
+			"chat_lbl"                    : _("Enter your message:")},
 		"chime.xml" : {
 			"headline"                    : _("Chime The Bell"),
 			"made_it_label"               : _("Yeah, you made it..."),
@@ -280,7 +281,7 @@ def set_translations():
 		"tab_widget/tab_branch_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
-			"running_cost_label"          : _("Running Costs:")},
+			"running_costs_label"         : _("Running Costs:")},
 		"tab_widget/tab_marketplace_settler.xml" : {
 			"headline"                    : _("Settler overview"),
 			"avg_happiness_lbl"           : _("Average happiness:"),

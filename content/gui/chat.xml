@@ -3,7 +3,7 @@
     <Icon image="content/gui/images/background/notice.png" position="0,0" />
     <Label text="Chat" position="135,30" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" position="80,50" />
-    <Label name="chat_lbl" text="Enter your  message:" position="135,75" />
+    <Label name="chat_lbl" text="Enter your message:" position="135,75" />
 	<TextField name="msg" min_size="200,16" position="90,105"/>
 			<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="230,160"/>
 			<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="290,160"/>

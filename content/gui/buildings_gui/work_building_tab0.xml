@@ -15,7 +15,7 @@
 		<Container size="260,550" position="25,40">
 			<Label position="0,0" name="name_label" text="Name:" /><Label name='name' position="55,0" text="" />
 			<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" text="" />
-			<Label position="0,50" name="running_cost_label" text="Running Costs:" /><Label name="running_costs" position="85,50" text=""/>
+			<Label position="0,50" name="running_costs_label" text="Running Costs:" /><Label name="running_costs" position="85,50" text=""/>
 		</Container>
 		<Icon image="content/gui/images/background/hr.png" position="20,125" />
 	
