@@ -186,7 +186,7 @@ class BuildingTool(NavigationTool):
 			self.buildings_fife_instances[building] = \
 			    self._class.getInstance(self.session, building.position.origin.x, \
 			                            building.position.origin.y, rotation=building.rotation,
-			                            action=building.action)
+			                            action=building.action, level=self.session.world.player.settler_level)
 
 			settlement = self.session.world.get_settlement(building.position.center())
 			if building.buildable:

@@ -121,7 +121,7 @@ class Build(Command):
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
 			instance=None, \
-		  **self.data \
+		  **self.data
 		)
 
 		island.add_building(building, issuer)

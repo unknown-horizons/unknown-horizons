@@ -55,25 +55,25 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	"""
-	def __init__(self, x, y, rotation, owner, island, level=0, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner, level)
+		self.__init(Point(x, y), rotation, owner)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
 				self.island.add_settlement(self.position, self.radius, owner) if \
 				owner is not None else None
 
-	def __init(self, origin, rotation, owner, level):
-		self._action_set_id = self.session.db.get_random_action_set(self.id, level)[0]
+	def __init(self, origin, rotation, owner):
+		self.owner = owner
+		self.level = owner.settler_level
+		self._action_set_id = self.session.db.get_random_action_set(self.id, self.level)[0]
 		self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
 		if self.rotation in [135, 315]: # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
-		self.owner = owner
-		self.level = level
 		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation)
 		self._instance.setId(str(self.worldid))
 
@@ -182,57 +182,52 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.update_action_set_level(lvl)
 
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', building=None, rotation=0, **trash):
+	def getInstance(cls, session, x, y, action='idle', level=0, rotation=0, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
-		@param building: This parameter is used for overriding the class that handles the building, setting this to another building class makes the function redirect the call to that class
 		@param **trash: sometimes we get more keys we are not interested in
 		"""
 		assert isinstance(x, int)
 		assert isinstance(y, int)
-		if building is not None:
-			return building.getInstance(session = session, x = x, y = y, action=action, \
-												          rotation=rotation, **trash)
+		#rotation = cls.check_build_rotation(session, rotation, x, y)
+		# TODO: replace this with new buildable api
+		# IDEA: save rotation in savegame
+		facing_loc = fife.Location(session.view.layers[cls.layer])
+		instance_coords = list((x, y, 0))
+		layer_coords = list((x, y, 0))
+		if rotation == 45:
+			layer_coords[0] = x+cls.size[0]+3
+		elif rotation == 135:
+			instance_coords[1] = y + cls.size[1] - 1
+			layer_coords[1] = y-cls.size[1]-3
+		elif rotation == 225:
+			instance_coords = list(( x + cls.size[0] - 1, y + cls.size[1] - 1, 0))
+			layer_coords[0] = x-cls.size[0]-3
+		elif rotation == 315:
+			instance_coords[0] = x + cls.size[0] - 1
+			layer_coords[1] = y+cls.size[1]+3
 		else:
-			#rotation = cls.check_build_rotation(session, rotation, x, y)
-			# TODO: replace this with new buildable api
-			# IDEA: save rotation in savegame
-			facing_loc = fife.Location(session.view.layers[cls.layer])
-			instance_coords = list((x, y, 0))
-			layer_coords = list((x, y, 0))
-			if rotation == 45:
-				layer_coords[0] = x+cls.size[0]+3
-			elif rotation == 135:
-				instance_coords[1] = y + cls.size[1] - 1
-				layer_coords[1] = y-cls.size[1]-3
-			elif rotation == 225:
-				instance_coords = list(( x + cls.size[0] - 1, y + cls.size[1] - 1, 0))
-				layer_coords[0] = x-cls.size[0]-3
-			elif rotation == 315:
-				instance_coords[0] = x + cls.size[0] - 1
-				layer_coords[1] = y+cls.size[1]+3
+			return None
+		instance = session.view.layers[cls.layer].createInstance(cls._object, \
+											                                       fife.ModelCoordinate(*instance_coords))
+		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+
+		action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
+		fife.InstanceVisual.create(instance)
+
+		action_sets = ActionSetLoader.get_action_sets()
+		if not action in action_sets[action_set_id]:
+			if 'idle' in action_sets[action_set_id]:
+				action='idle'
+			elif 'idle_full' in action_sets[action_set_id]:
+				action='idle_full'
 			else:
-				return None
-			instance = session.view.layers[cls.layer].createInstance(cls._object, \
-												                                       fife.ModelCoordinate(*instance_coords))
-			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+				# set first action
+				action = action_sets[action_set_id].keys()[0]
 
-			action_set_id = session.db.get_random_action_set(cls.id)[0]
-			fife.InstanceVisual.create(instance)
-
-			action_sets = ActionSetLoader.get_action_sets()
-			if not action in action_sets[action_set_id]:
-				if 'idle' in action_sets[action_set_id]:
-					action='idle'
-				elif 'idle_full' in action_sets[action_set_id]:
-					action='idle_full'
-				else:
-					# set first action
-					action = action_sets[action_set_id].keys()[0]
-
-			instance.act(action+"_"+str(action_set_id), facing_loc, True)
-			return instance
+		instance.act(action+"_"+str(action_set_id), facing_loc, True)
+		return instance
 
 	def init(self):
 		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
