@@ -64,9 +64,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				self.island.add_settlement(self.position, self.radius, owner) if \
 				owner is not None else None
 
-	def __init(self, origin, rotation, owner):
+	def __init(self, origin, rotation, owner, level=None):
 		self.owner = owner
-		self.level = owner.settler_level
+		if level is None:
+			level = self.owner.settler_level
+		self.level = level
 		self._action_set_id = self.session.db.get_random_action_set(self.id, self.level)[0]
 		self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
