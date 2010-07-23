@@ -96,6 +96,7 @@ class BUILDINGS:
 	SIGNAL_FIRE_CLASS = 6
 	CLAY_DEPOSIT_CLASS = 23
 
+
 	class ACTION:
 		# data for calculating gfx for paths.
 		# think: animation contains key, if there is a path at offset value

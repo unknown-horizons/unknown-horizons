@@ -23,10 +23,13 @@ import horizons.main
 
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.producer import ProducerBuilding
-from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
+from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
 from horizons.util import Circle
+from horizons.command.building import Build
+from horizons.scheduler import Scheduler
+from horizons.constants import BUILDINGS
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -62,10 +65,15 @@ class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSing
 	pass
 
 class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
-	def __init__(self, inventory, *args, **kwargs):
+	def __init__(self, inventory, deposit_class, *args, **kwargs):
+		"""
+		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
+		@param deposit_class: class num of deposit for later reconstruction (collected by get_prebuild_data())
+		"""
 		super(Mine, self).__init__(*args, **kwargs)
 		for res, amount in inventory.iteritems():
 			self.inventory.alter(res, amount)
+		self.__deposit_class = deposit_class
 
 	@classmethod
 	def get_prebuild_data(cls, session, position):
@@ -73,7 +81,17 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		deposit = session.world.get_building(position.center())
 		data = {}
 		data["inventory"] = deposit.inventory.get_dump()
+		data["deposit_class"] = deposit.id
 		return data
+
+	def remove(self):
+		# build the deposit back here after remove() is finished
+		deposit_build_data = { 'inventory' : self.inventory.get_dump() }
+		build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y, \
+		                  self.island, ownerless=True, data = deposit_build_data)
+		Scheduler().add_new_object(build_cmd, build_cmd, runin=0)
+
+		super(Mine, self).remove()
 
 
 """ AnimalFarm is not used for now (code may not work anymore)

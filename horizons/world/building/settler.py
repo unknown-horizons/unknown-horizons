@@ -194,12 +194,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def level_down(self):
 		if self.level == 0: # can't level down any more
 			# remove when this function is done
-			Scheduler().add_new_object(self.remove, self)
+			Scheduler().add_new_object(self.remove, self, runin=0)
 			# replace this building with a ruin
 			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
-			callback = Callback(command.execute, self.session)
-			Scheduler().add_new_object(callback, command, 2)
+			Scheduler().add_new_object(command, command, runin=0)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner == self.session.world.player:

@@ -78,13 +78,17 @@ class ResourceDeposit(StorageHolder, NatureBuilding):
 	tearable = False
 	layer = LAYERS.FIELDS
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-		#import pdb ; pdb.set_trace()
-		for resource, min_amount, max_amount in \
-		    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
-		                    self.id):
-			self.inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
+		if inventory is None: # a new deposit
+			for resource, min_amount, max_amount in \
+			    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
+			                    self.id):
+				self.inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
+		else: # deposit was removed for mine, now build back
+			for res, amount in inventory.iteritems():
+				self.inventory.alter(res, amount)
+
 
 	"""
 	def load(self, *args, **kwargs):

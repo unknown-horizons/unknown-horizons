@@ -33,7 +33,7 @@ class Build(Command):
 	"""Command class that builds an object."""
 	log = logging.getLogger("command")
 	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None, tearset=set()):
+	             ship = None, ownerless=False, settlement=None, tearset=set(), data={}):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
@@ -41,6 +41,7 @@ class Build(Command):
 		@param island: island instance
 		@param settlement: settlement worldid or None
 		@param tearset: set of worldids of objs to tear before building
+		@param data: data required for building construction
 		"""
 		if hasattr(building, 'id'):
 			self.building_class = building.id
@@ -55,8 +56,9 @@ class Build(Command):
 		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
 		self.tearset = tearset
+		self.data = data
 
-	def __call__(self, issuer):
+	def __call__(self, issuer=None):
 		"""Execute the command
 		@param issuer: the issuer (player, owner of building) of the command
 		"""
@@ -99,11 +101,12 @@ class Build(Command):
 			# TODO: maybe show message to user
 			return
 
-		data = {}
 		# collect data before objs are torn
 		# required by e.g. the mines to find out about the status of the resource deposit
 		if hasattr(Entities.buildings[self.building_class], "get_prebuild_data"):
-			data = Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y))
+			self.data.update( \
+			  Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y)) \
+			  )
 
 		for worldid in self.tearset:
 			try:
@@ -118,7 +121,7 @@ class Build(Command):
 			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
 			island=island, \
 			instance=None, \
-		  **data \
+		  **self.data \
 		)
 
 		island.add_building(building, issuer)
