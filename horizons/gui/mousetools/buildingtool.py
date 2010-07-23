@@ -132,11 +132,9 @@ class BuildingTool(NavigationTool):
 		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
-		# TODO: change hard-coded 0 below to a variable, as soon as building leveling concept
-		# is decided.
-		level = 0
 		if not hasattr(self, "action_set"):
-			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
+			self.action_set = self.session.db.get_random_action_set(self._class.id, \
+			                                                        self.session.world.player.settler_level)
 		action_set, preview_action_set = self.action_set
 		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
