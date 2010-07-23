@@ -46,7 +46,7 @@ class FindPath(object):
 		@param source: Rect, Point or BasicBuilding
 		@param destination: Rect, Point or BasicBuilding
 		@param path_nodes: dict { (x, y) = speed_on_coords }  or list [(x, y), ..]
-		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of
+		@param blocked_coords: temporarily blocked coords (e.g. by a unit) as list or dict of tuples
 		@param diagonal: whether the unit is able to move diagonally
 		@param make_target_walkable: whether we force the tiles of the target to be walkable,
 		       even if they actually aren't (used e.g. when walking to a building)
@@ -96,7 +96,7 @@ class FindPath(object):
 
 		# check if target is blocked
 		target_is_blocked = True
-		for coord in self.destination:
+		for coord in self.destination.tuple_iter():
 			if not coord in self.blocked_coords:
 				target_is_blocked = False
 		if target_is_blocked:
