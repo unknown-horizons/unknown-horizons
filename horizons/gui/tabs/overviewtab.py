@@ -280,6 +280,19 @@ class MarketPlaceOverviewTab(OverviewTab):
 	def refresh(self):
 		super(MarketPlaceOverviewTab, self).refresh()
 
+class SignalFireOverviewTab(OverviewTab):
+	def __init__(self, instance):
+		super(SignalFireOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_signalfire.xml',
+			instance = instance
+		) 
+		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
+		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
+		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
+		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
+		self.widget.findChild(name='name').stylize("headline")
+		self.tooltip = u"Overview" 
+
 class EnemyBuildingOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(EnemyBuildingOverviewTab, self).__init__(

@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.gui.tabs import SignalFireOverviewTab, AccountTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
 
@@ -32,4 +33,5 @@ class Housing(BasicBuilding, SelectableBuilding, BuildableSingle):
 
 
 class SignalFire(Housing):
+	tabs = (SignalFireOverviewTab, )
 	range_applies_only_on_island = False
