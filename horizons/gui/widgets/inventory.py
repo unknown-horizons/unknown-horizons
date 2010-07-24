@@ -32,8 +32,7 @@ class Inventory(pychan.widgets.Container):
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
-	icon_width = 50 # pixels a resource icon is wide
-
+	ITEMS_PER_LINE = 4 # TODO: make this a xml attribute with a default value
 	def __init__(self, **kwargs):
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
@@ -65,14 +64,17 @@ class Inventory(pychan.widgets.Container):
 			filled = int(float(amount) / float(self._inventory.limit) * 100.0)
 			button = ImageFillStatusButton.init_for_res(horizons.main.db, resid, amount, filled=filled)
 			current_hbox.addChild(button)
-			if index % ((vbox.width/(self.__class__.icon_width + 10))-2) == 0 and index != 0:
+
+			# old code to do this, which was bad but kept for reference
+			#if index % ((vbox.width/(self.__class__.icon_width + 10))) < 0 and index != 0:
+			if index % self.ITEMS_PER_LINE == (self.ITEMS_PER_LINE - 1) and index != 0:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding = 0)
 			index += 1
-		if (index <= 4): # Hide/Remove second line
+		if (index <= self.ITEMS_PER_LINE): # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
-			if len(icons) > 4:
-				self.parent.removeChildren(icons[3:])
+			if len(icons) > self.ITEMS_PER_LINE:
+				self.parent.removeChildren(icons[self.ITEMS_PER_LINE-1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		self.adaptLayout()

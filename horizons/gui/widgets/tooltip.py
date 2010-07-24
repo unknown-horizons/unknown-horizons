@@ -77,8 +77,6 @@ class _Tooltip(object):
 			self.tooltip_items.append(label)
 			self.gui.size = (140, 17 * (2 + line_count))
 			self.gui.show()
-		else:
-			pass
 
 	def hide_tooltip(self):
 		self.gui.hide()
