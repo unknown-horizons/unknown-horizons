@@ -95,9 +95,9 @@ class BuySellTab(TabInterface):
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
 			slot.findChild(name="buysell").capture(pychan.tools.callbackWithArguments(self.toggle_buysell, num))
 			fillbar = slot.findChild(name="fillbar")
-			# save fillbar for slot, and remove it (workaround cause you can't just show/hide it)
-			slot.fillbar = fillbar
-			slot.removeChild(fillbar)
+			# hide fillbar by setting position
+			icon = slot.findChild(name="icon")
+			fillbar.position = (icon.width - fillbar.width - 1, icon.height)
 			content.addChild(slot)
 		self.widget.adaptLayout()
 
@@ -137,17 +137,15 @@ class BuySellTab(TabInterface):
 				self.add_buy_to_settlement(res_id, value, slot.id, dont_use_commands)
 
 		button = slot.findChild(name="button")
-		if hasattr(slot, 'fillbar'):
-			slot.addChild(slot.fillbar)
 		fillbar = slot.findChild(name="fillbar")
 		if res_id == 0:
 			button.up_image, button.down_image, button.hover_image = [ self.dummy_icon_path ] * 3
 			slot.findChild(name="amount").text = u""
 			slot.res = None
 			slider.capture(None)
-			# remove child, but save it as pychan obj
-			slot.fillbar = fillbar
-			slot.removeChild(fillbar)
+			# hide fillbar by setting position
+			icon = slot.findChild(name="icon")
+			fillbar.position = (icon.width - fillbar.width - 1, icon.height)
 		else:
 			icons = horizons.main.db.get_res_icon(res_id)
 			button.up_image = icons[0]
