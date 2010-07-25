@@ -53,7 +53,7 @@ class OverviewTab(TabInterface):
 			    'content/gfx/misc/playeremblems/emblem_%s.png' %  self.instance.owner.color.name
 
 	def refresh(self):
-		if hasattr(self.instance, 'name'):
+		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
 			name_widget.text = _(unicode(self.instance.name))
 
@@ -286,10 +286,10 @@ class SignalFireOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_overview_signalfire.xml',
 			instance = instance
 		) 
-		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
+		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_gfx = action_set.items()[0][1]
+		image = action_gfx[45].keys()[0]
+		self.widget.findChild(name="building_image").image = image
 		self.widget.findChild(name='name').stylize("headline")
 		self.tooltip = u"Overview" 
 

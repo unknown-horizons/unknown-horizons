@@ -10,11 +10,11 @@
 	<Container position="0,70" size="245,350" >
 		<!-- Name of building -->
 		<Label name='name' border_size="0" position="80,7"/>
-	
+
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 		<!-- Picture -->
-		<Icon name="signalfireImage" image="content/gfx/buildings/sailors/signalfire/as_signalfire0/idle/45/3.png" position="15,30" />
+		<Icon name="building_image" position="15,30"/>
 
 		<!-- Let's implement that when actually having some sense. The positioning should fit though.
 		<Label name="health_label" text="Health:" position="25,170" /><Label name='health' text="" />
