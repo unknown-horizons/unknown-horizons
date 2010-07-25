@@ -54,42 +54,11 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def load(self, db, worldid):
 		super(StorageBuilding, self).load(db, worldid)
 
-	def select(self):
-		"""Runs necessary steps to select the unit."""
-		# TODO Think about if this should go somewhere else (island, world)
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
-		for tile in self.island.ground_map.itervalues():
-			if tile.settlement == self.settlement and any(x in tile.__class__.classes for x in ('constructible', 'coastline')):
-				self.session.view.renderer['InstanceRenderer'].addColored(tile._instance, 255, 255, 255)
-				if tile.object is not None:
-					self.session.view.renderer['InstanceRenderer'].addColored(tile.object._instance, 255, 255, 255)
-
-	def deselect(self):
-		"""Runs neccassary steps to deselect the unit."""
-		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		self.session.view.renderer['InstanceRenderer'].removeAllColored()
-
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
-	@classmethod
-	def _is_settlement_build_requirement_satisfied(cls, session, x, y, island, ship, **state):
-		# TODO: move to buildable
-		for settlement in island.settlements:
-			if settlement.owner.id == ship.owner.id:
-				return {'buildable' : False}
-		#ship check
-		if (max(x - ship.position.x, 0, ship.position.x - x - cls.size[0] + 1) ** 2) + \
-		   (max(y - ship.position.y, 0, ship.position.y - y - cls.size[1] + 1) ** 2) > 25:
-			return {'buildable' : False}
-		return {'settlement' : None}
-
 
 class MarketPlace(ProducerBuilding, StorageBuilding):
 	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab)
-
-	def select(self):
-		# storage buildings select whole settlement; market place should behave normally
-		return SelectableBuilding.select(self)
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.
