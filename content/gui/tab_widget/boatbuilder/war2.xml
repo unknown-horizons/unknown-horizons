@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!-- Tab 'War ships' -->
+<Container  size="260,550">
+<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />
+<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,400" />
+<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,450" />
+	<Icon name="player_emblem" position="25,50"/>
+
+	<Container position="0,70" size="260,80" >
+		<!-- Headline -->
+		<Label name="headline" position="70,7" text="War Ships" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	</Container>
+
+	<Container position="20,95" size="260,450" >
+		<!-- Ship images -->
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,20" 
+				tooltip="Galley: \nStorage: 1 slots of 40t \nCannons: 12 \nSpeed: fast \nHealth: 200" />
+		<TooltipButton position="60,70" tooltip="Can't build this ship!"
+				up_image="content/gui/images/background/close.png" 
+				hover_image="content/gui/images/background/close_h.png" 
+				down_image="content/gui/images/background/close_h.png" /> 
+
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107" expandleft="1"
+				tooltip="Big gunboat: \nStorage: 2 slots of 15t \nCannons: 20 \nSpeed: fast \nHealth: 150\nGets available after:\n  Build Shipyard" />
+		<TooltipButton position="60,157" tooltip="Can't build this ship!"
+				up_image="content/gui/images/background/close.png" 
+				hover_image="content/gui/images/background/close_h.png" 
+				down_image="content/gui/images/background/close_h.png" /> 
+
+		<TooltipIcon image="content/gfx/dummies/square_80_b.png" position="0,194" 
+				tooltip="Corvette: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0\nGets available after:\n Build Shipyard" />
+		<TooltipButton position="60,244" tooltip="Can't build this ship!"
+				up_image="content/gui/images/background/close.png" 
+				hover_image="content/gui/images/background/close_h.png" 
+				down_image="content/gui/images/background/close_h.png" /> 
+
+		<TooltipIcon image="content/gfx/dummies/square_80_b.png" position="0,281" 
+				tooltip="Frigate: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0 \nGets available after:\n Build Shipyard" />
+		<TooltipButton position="60,331" tooltip="Can't build this ship!"
+				up_image="content/gui/images/background/close.png" 
+				hover_image="content/gui/images/background/close_h.png" 
+				down_image="content/gui/images/background/close_h.png" /> 
+
+	</Container>
+
+	<Container position="110,110" size="260,87" >
+		<!-- Ship 1 information -->
+		<Label name="BB_war2_ship1" position="0,3" text="Galley" />
+
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="13,25" tooltip="Boards" /> 
+		<Label position="35,25" name="BB_needed_boards" text="42t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="13,45" tooltip="Cloth" /> 
+		<Label position="35,45" name="BB_needed_cloth" text="24t" />
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="68,25" tooltip="Ropes" /> 
+		<Label position="90,25" name="BB_needed_ropes" text="12t" />
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/food.png" position="68,45" tooltip="Cannons" /> 
+		<Label position="90,45" name="BB_needed_cannons" text="12t" />
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/gold.png" position="13,65" tooltip="Money" /> 
+		<Label position="35,65" name="BB_needed_money" text="5000" />
+	</Container>
+
+	<Container position="110,197" size="260,87" >
+		<!-- Ship 2 information -->
+		<Label name="BB_war2_ship2" position="0,3" text="Big gunboat" />
+
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="13,25" tooltip="Boards" /> 
+		<Label position="35,25" name="BB_needed_boards" text="38t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="13,45" tooltip="Cloth" /> 
+		<Label position="35,45" name="BB_needed_cloth" text="28t" />
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="68,25" tooltip="Ropes" /> 
+		<Label position="90,25" name="BB_needed_ropes" text="14t" />
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/food.png" position="68,45" tooltip="Cannons" /> 
+		<Label position="90,45" name="BB_needed_cannons" text="20t" />
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/gold.png" position="13,65" tooltip="Money" /> 
+		<Label position="35,65" name="BB_needed_money" text="6500" />
+	</Container>
+
+	<Container position="105,284" size="260,450" >
+		<!-- Ship 3 information -->
+		<Label name="BB_war2_ship3" position="0,3" text="Corvette" />
+	</Container>
+
+	<Container position="110,371" size="260,450" >
+		<!-- Ship 4 information -->
+		<Label name="BB_war2_ship4" position="0,3" text="Frigate" />
+	</Container>
+</Container>
