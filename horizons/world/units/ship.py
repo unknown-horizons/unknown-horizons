@@ -71,10 +71,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 		# add a buoy at the ship's target if the player owns the ship
 		if self.is_moving() and self.session.world.player == self.owner:
 			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
-			loc.thisown = 0
+			loc.thisown = 0 # thisown = 0 because the genericrenderernode might delete it
 			move_target = self.get_move_target()
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
-			coords.thisown = 0
+			coords.thisown = 1 # thisown = 1 because setLayerCoordinates will create a copy
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.GenericRendererNode(loc),

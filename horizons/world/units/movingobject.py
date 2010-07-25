@@ -162,6 +162,7 @@ class MovingObject(ConcretObject):
 		self.position = self._next_target
 		location = fife.Location(self._instance.getLocationRef().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.position.x, self.position.y, 0))
+		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
 		self._instance.setLocation(location)
 		self._changed()
 
@@ -199,6 +200,7 @@ class MovingObject(ConcretObject):
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self._next_target.x, self._next_target.y, 0))
 
+		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
 		self._instance.move(self._move_action+"_"+str(self._action_set_id), location, \
 												float(self.session.timer.get_ticks(1)) / move_time[0])
 		# coords per sec
