@@ -187,7 +187,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.update_action_set_level(lvl)
 
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', level=0, rotation=0, **trash):
+	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, **trash):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
@@ -201,17 +201,51 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		facing_loc = fife.Location(session.view.layers[cls.layer])
 		instance_coords = list((x, y, 0))
 		layer_coords = list((x, y, 0))
+
+		# NOTE:
+		# nobody acctually knows how the code below works.
+		# it's for adapting the facing location and instance coords in 
+		# different rotations, and works with all quadratic buildings (tested up to 4x4)
+		# for the first unquadratic building (2x4), a hack fix was put into it.
+		# the plan for fixing this code in general is to wait until there are more
+		# unquadratic buildings, and figure out a pattern of the placement error,
+		# then fix that generally.
+
 		if rotation == 45:
 			layer_coords[0] = x+cls.size[0]+3
+
+			if cls.size[0] == 2 and cls.size[1] == 4:
+				# HACK: fix FOR 4x2 buildings
+				instance_coords[0] -= 1
+				instance_coords[1] += 1
+
 		elif rotation == 135:
 			instance_coords[1] = y + cls.size[1] - 1
 			layer_coords[1] = y-cls.size[1]-3
+
+			if cls.size[0] == 2 and cls.size[1] == 4:
+				# HACK: fix FOR 4x2 buildings
+				instance_coords[0] += 1
+				instance_coords[1] -= 1
+
 		elif rotation == 225:
 			instance_coords = list(( x + cls.size[0] - 1, y + cls.size[1] - 1, 0))
 			layer_coords[0] = x-cls.size[0]-3
+
+			if cls.size[0] == 2 and cls.size[1] == 4:
+				# HACK: fix FOR 4x2 buildings
+				instance_coords[0] += 1
+				instance_coords[1] -= 1
+
 		elif rotation == 315:
 			instance_coords[0] = x + cls.size[0] - 1
 			layer_coords[1] = y+cls.size[1]+3
+
+			if cls.size[0] == 2 and cls.size[1] == 4:
+				# HACK: fix FOR 4x2 buildings
+				instance_coords[0] += 1
+				instance_coords[1] -= 1
+
 		else:
 			return None
 		instance = session.view.layers[cls.layer].createInstance(cls._object, \
