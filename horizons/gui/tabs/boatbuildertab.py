@@ -35,11 +35,18 @@ class BoatbuilderTab(OverviewTab):
 			widget = 'tab_widget/boatbuilder/boatbuilder.xml',
 			instance = instance
 		)
+		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
+			name_widget = self.widget.child_finder('name')
+			name_widget.text = _(unicode(self.instance.name))
 		self.tooltip = u"Boat Builder \\n Overview" 
 		self.widget.findChild(name='BB_builtship_label').stylize("headline")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
+		if hasattr(self.instance, 'running_costs') and \
+		   self.widget.child_finder('running_costs'):
+			self.widget.child_finder('running_costs').text = \
+			    unicode( self.instance.running_costs )
 		progress = self.instance.get_production_progress()
 		self.widget.findChild(name='progress').progress = progress*100
 		self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+"%"
