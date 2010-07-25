@@ -43,6 +43,7 @@ class Unit(AmbientSound, MovingObject):
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
 				WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.thisown = 0
 		if self._object is None:
 			self.__class__._loadObject()
 
