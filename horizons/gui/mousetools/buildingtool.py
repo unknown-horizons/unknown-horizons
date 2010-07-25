@@ -324,12 +324,12 @@ class BuildingTool(NavigationTool):
 		for building in self.buildings:
 			# remove fife instance, the building will create a new one.
 			fife_instance = self.buildings_fife_instances.pop(building)
+			self.renderer.removeColored(fife_instance)
 			fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 
 			if building.buildable:
 				built = True
 				self._remove_listeners() # Remove changelisteners for update_preview
-				self.renderer.removeColored(fife_instance)
 				# create the command and execute it
 				cmd = Build(building=self._class, \
 				            x=building.position.origin.x, \
