@@ -15,7 +15,7 @@
 
 	<Container position="0,70" size="260,80" >
 		<!-- Headline -->
-		<Label name="headline" position="75,7" text="War Boats" />
+		<Label name="headline" position="80,7" text="War Boats" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	</Container>
 
@@ -28,21 +28,21 @@
 				hover_image="content/gui/images/background/ok_h.png" 
 				down_image="content/gui/images/background/ok_h.png" /> 
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107" expandleft="1"
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"
 				tooltip="Naval cutter: \nStorage: 2 slots of 15t \nCannons: 4 \nSpeed: x \nHealth: 100\nGets available after:\n Research 'Military Ships'" />
 		<TooltipButton position="60,157" tooltip="Can't build this ship!"
 				up_image="content/gui/images/background/close.png" 
 				hover_image="content/gui/images/background/close_h.png" 
 				down_image="content/gui/images/background/close_h.png" /> 
 
-		<TooltipIcon image="content/gfx/dummies/square_80_b.png" position="0,194" 
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194" 
 				tooltip="Bombadiere: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x\nGets available after:\n Research 'Military Ships'" />
 		<TooltipButton position="60,244" tooltip="Can't build this ship!"
 				up_image="content/gui/images/background/close.png" 
 				hover_image="content/gui/images/background/close_h.png" 
 				down_image="content/gui/images/background/close_h.png" /> 
 
-		<TooltipIcon image="content/gfx/dummies/square_80_b.png" position="0,281" 
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281" 
 				tooltip="Sloop-o'-war: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x \nGets available after:\n Research 'Military Ships'" />
 		<TooltipButton position="60,331" tooltip="Can't build this ship!"
 				up_image="content/gui/images/background/close.png" 

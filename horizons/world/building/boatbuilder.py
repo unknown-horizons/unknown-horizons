@@ -22,12 +22,13 @@
 
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleOnCoast
-from horizons.gui.tabs import ProductionOverviewTab, BoatbuilderTab
+from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
+			     BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from horizons.world.production.producer import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding
 
 class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
-	tabs = ProductionOverviewTab, BoatbuilderTab
+	tabs = (BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
