@@ -1,16 +1,16 @@
 # Small scenario for testing purposes
 events:
-- # Win condition
+- # Tell the player to exchange resources with the branch office (at least 10 of each)
   actions:
-   - {type: win}
-   - {type: message, arguments: ["Good job you did it!"]}
-   
-  conditions:
-   - {type: settlement_inhabitants_greater, arguments: [20]}
-   
-mapfile: development.sqlite
+######################################################################################## 
+   - {type: logbook, arguments: ["NEW TASK: BUILD A WEAVER\n\nNow the wool production is set up, you still need a Weaver to produce cloth out of this wool.\n\nThere are two spots where you can build it - either close to the farm or close to a storage tent respectively the branch office.\n\nIn both cases you should ensure that he is connected to a road as well.\n\nYou can place it close to the farm and tear down any road to the farm to see that the weaver will still fetch the wool and produce.\n\nTASK: Build a weaver which has a chance to get wool."]}
+  conditions: 
+   - type: time_passed
+     arguments: [1]
+
+mapfile: development_no_trees.sqlite
 difficulty: easy
-author: Nightraven
+author: eoc
 description: |
  Small settlement
  Create a small settlement with just 20 inhabitants.

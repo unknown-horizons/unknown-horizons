@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+<<<<<<< .mine
+"POT-Creation-Date: 2010-05-05 21:14+0200\n"
+=======
 "POT-Creation-Date: 2010-05-24 14:23+0200\n"
+>>>>>>> .r3333
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +28,7 @@ msgstr ""
 msgid "Specify the path to FIFE root directory."
 msgstr ""
 
-#: ../run_uh.py:83
+#: ../run_uh.py:84
 msgid ""
 "Restores the default settings. Useful if Unknown Horizons crashes on startup "
 "due to misconfiguration."
@@ -34,89 +38,168 @@ msgstr ""
 msgid "Starting unknown horizons"
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:86
+=======
 #: ../run_uh.py:88
+>>>>>>> .r3333
 msgid "Starts <map>. <map> is the mapname."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:88
+=======
 #: ../run_uh.py:90
+>>>>>>> .r3333
 msgid "Starts a random map."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:90
+=======
 #: ../run_uh.py:92
+>>>>>>> .r3333
 msgid "Starts the development map without displaying the main menu."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:92
+=======
 #: ../run_uh.py:94
+>>>>>>> .r3333
 msgid "Loads a saved game. <save> is the savegamename."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:94
+=======
 #: ../run_uh.py:96
+>>>>>>> .r3333
 msgid "Loads the last quicksave."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:97
+=======
 #: ../run_uh.py:99
+>>>>>>> .r3333
 msgid "Development options"
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:99
+=======
 #: ../run_uh.py:101
+>>>>>>> .r3333
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:102
+=======
 #: ../run_uh.py:104
+>>>>>>> .r3333
 msgid "Enable logging for a certain logging module (for developing only)."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:104
+=======
 #: ../run_uh.py:106
+>>>>>>> .r3333
 msgid "Writes log to <filename> instead of to the uh-userdir"
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:106
+=======
 #: ../run_uh.py:108
+>>>>>>> .r3333
 msgid "For internal use only."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:108
+=======
 #: ../run_uh.py:110
+>>>>>>> .r3333
 msgid "Enable profiling (for developing only)."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:130
+=======
 #: ../run_uh.py:132
+>>>>>>> .r3333
 msgid "Unknown Horizons crashed."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:132
+=======
 #: ../run_uh.py:134
+>>>>>>> .r3333
 msgid "We are very sorry for this, and want to fix this error."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:133
+=======
 #: ../run_uh.py:135
+>>>>>>> .r3333
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:135
+=======
 #: ../run_uh.py:137
+>>>>>>> .r3333
 msgid ""
 "Please give it to us via IRC or our forum, for both see unknown-horizons."
 "org ."
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:188
+=======
 #: ../run_uh.py:190
+>>>>>>> .r3333
 msgid "Thank you for using Unknown Horizons!"
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:263
+=======
 #: ../run_uh.py:265
+>>>>>>> .r3333
 msgid "Failed to load fife:"
 msgstr ""
 
+<<<<<<< .mine
+#: ../run_uh.py:333
+=======
 #: ../run_uh.py:335
+>>>>>>> .r3333
 msgid "FIFE was not found."
 msgstr ""
 
-#: ../horizons/network.py:305
-msgid "PLAYER TIMEOUT"
+#: ../horizons/packets.py:103
+msgid "JOIN BY"
 msgstr ""
 
+<<<<<<< .mine
+#: ../horizons/packets.py:115
+msgid "LEAVE BY"
+=======
 #. no server selected
 #: ../horizons/session.py:172 ../horizons/gui/gui.py:325
 msgid "Error"
+>>>>>>> .r3333
 msgstr ""
 
+<<<<<<< .mine
+=======
 #: ../horizons/session.py:172
 msgid "Failed to quicksave."
 msgstr ""
@@ -134,6 +217,7 @@ msgstr ""
 msgid "Unknown Horizons Version %s"
 msgstr ""
 
+>>>>>>> .r3333
 #. usually invalid filename
 #: ../horizons/main.py:186
 msgid "Invalid filename"
@@ -162,12 +246,13 @@ msgstr ""
 msgid "Error: No quicksave found."
 msgstr ""
 
-#: ../horizons/packets.py:103
-msgid "JOIN BY"
+#: ../horizons/network.py:305
+msgid "PLAYER TIMEOUT"
 msgstr ""
 
-#: ../horizons/packets.py:115
-msgid "LEAVE BY"
+#: ../horizons/constants.py:66
+#, python-format
+msgid "Unknown Horizons Version %s"
 msgstr ""
 
 #: ../horizons/serverlist.py:186
@@ -176,6 +261,23 @@ msgstr ""
 
 #: ../horizons/serverlist.py:186
 msgid "Error: "
+msgstr ""
+
+#. no server selected
+#: ../horizons/session.py:172 ../horizons/gui/gui.py:325
+msgid "Error"
+msgstr ""
+
+#: ../horizons/session.py:172
+msgid "Failed to quicksave."
+msgstr ""
+
+#: ../horizons/session.py:178
+msgid "No quicksaves found"
+msgstr ""
+
+#: ../horizons/session.py:178
+msgid "You need to quicksave before you can quickload."
 msgstr ""
 
 #: ../horizons/settings.py:134
@@ -189,7 +291,74 @@ msgstr ""
 msgid "Upgrading Config from Version %d to Version %d ..."
 msgstr ""
 
+<<<<<<< .mine
+#. Remove this after it has been implemented.
+#: ../horizons/gui/gui.py:212
+msgid "Not yet implemented"
+=======
 #: ../horizons/i18n/guitranslations.py:44
+msgid "boatbuilder"
+>>>>>>> .r3333
+msgstr ""
+
+<<<<<<< .mine
+#: ../horizons/gui/gui.py:212
+msgid "Sorry, multiplayer has not been implemented yet."
+msgstr ""
+
+#: ../horizons/gui/gui.py:325
+msgid "You have to select a server"
+msgstr ""
+
+#: ../horizons/gui/gui.py:358
+msgid "No file selected"
+msgstr ""
+
+#: ../horizons/gui/gui.py:358
+msgid "You need to select a savegame to delete"
+msgstr ""
+
+#: ../horizons/gui/gui.py:361
+msgid "Confirm deletion"
+msgstr ""
+
+#: ../horizons/gui/gui.py:362
+#, python-format
+msgid "Do you really want to delete the savegame \"%s\"?"
+msgstr ""
+
+#: ../horizons/gui/gui.py:421
+msgid "No saved games"
+msgstr ""
+
+#: ../horizons/gui/gui.py:421
+msgid "There are no saved games to load"
+msgstr ""
+
+#: ../horizons/gui/gui.py:428
+msgid "Save game"
+msgstr ""
+
+#: ../horizons/gui/gui.py:428
+msgid "Load game"
+msgstr ""
+
+#. savegamename already exists
+#: ../horizons/gui/gui.py:465
+msgid "Confirmation for overwriting"
+msgstr ""
+
+#: ../horizons/gui/gui.py:466
+#, python-format
+msgid ""
+"A savegame with the name \"%s\" already exists. \n"
+"Should i overwrite it?"
+msgstr ""
+
+#: ../horizons/i18n/guitranslations.py:44
+=======
+#: ../horizons/i18n/guitranslations.py:46
+>>>>>>> .r3333
 msgid "boatbuilder"
 msgstr ""
 
@@ -947,68 +1116,12 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#. Remove this after it has been implemented.
-#: ../horizons/gui/gui.py:212
-msgid "Not yet implemented"
+#: ../horizons/gui/tabs/buildtabs.py:35
+msgid "Level"
 msgstr ""
 
-#: ../horizons/gui/gui.py:212
-msgid "Sorry, multiplayer has not been implemented yet."
-msgstr ""
-
-#: ../horizons/gui/gui.py:325
-msgid "You have to select a server"
-msgstr ""
-
-#: ../horizons/gui/gui.py:358
-msgid "No file selected"
-msgstr ""
-
-#: ../horizons/gui/gui.py:358
-msgid "You need to select a savegame to delete"
-msgstr ""
-
-#: ../horizons/gui/gui.py:361
-msgid "Confirm deletion"
-msgstr ""
-
-#: ../horizons/gui/gui.py:362
-#, python-format
-msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
-
-#: ../horizons/gui/gui.py:421
-msgid "No saved games"
-msgstr ""
-
-#: ../horizons/gui/gui.py:421
-msgid "There are no saved games to load"
-msgstr ""
-
-#: ../horizons/gui/gui.py:428
-msgid "Save game"
-msgstr ""
-
-#: ../horizons/gui/gui.py:428
-msgid "Load game"
-msgstr ""
-
-#. savegamename already exists
-#: ../horizons/gui/gui.py:465
-msgid "Confirmation for overwriting"
-msgstr ""
-
-#: ../horizons/gui/gui.py:466
-#, python-format
-msgid ""
-"A savegame with the name \"%s\" already exists. \n"
-"Should i overwrite it?"
-msgstr ""
-
-#: ../horizons/gui/modules/settingsgui.py:50
-#: ../horizons/gui/modules/settingsgui.py:72
-#: ../horizons/gui/modules/settingsgui.py:142
-msgid "System default"
+#: ../horizons/gui/tabs/boatbuildertab.py:48
+msgid "Construction progress:"
 msgstr ""
 
 #: ../horizons/gui/modules/singleplayermenu.py:53
@@ -1039,12 +1152,10 @@ msgid ""
 "Error message:\n"
 msgstr ""
 
-#: ../horizons/gui/tabs/boatbuildertab.py:48
-msgid "Construction progress:"
-msgstr ""
-
-#: ../horizons/gui/tabs/buildtabs.py:35
-msgid "Level"
+#: ../horizons/gui/modules/settingsgui.py:50
+#: ../horizons/gui/modules/settingsgui.py:72
+#: ../horizons/gui/modules/settingsgui.py:142
+msgid "System default"
 msgstr ""
 
 # Unit
