@@ -104,8 +104,7 @@ class NavigationTool(CursorTool):
 		new = [new[0] * 10, new[1] * 10]
 		if new[0] != old[0] or new[1] != old[1]:
 			self.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
-			self.lastScroll = new
-	
+			self.lastScroll = new	
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):

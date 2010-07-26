@@ -61,62 +61,39 @@ class BoatbuilderTab(OverviewTab):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
-class BoatbuilderFisherTab(TabInterface):
+class BoatbuilderSelectTab(OverviewTab):
 
-	def __init__(self, instance = None):
-		s = 'fisher'
-		widget = 'tab_widget/boatbuilder/'+str(s)+'.xml'
-		super(BoatbuilderFisherTab, self).__init__(widget)
-		self.instance = instance
+	def __init__(self, instance, tabname):
+		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'tab_widget/boatbuilder/' + str(tabname) + '.xml')
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/bb/'+s+'_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_h.png'
-		for i in xrange(1, 5):	self.widget.findChild(name='BB_'+str(s)+'_ship'+str(i)).stylize("headline") # All ship names in small caps
+		self.button_up_image = 'content/gui/images/icons/hud/common/bb/%s_u.png' % tabname
+		self.button_active_image = 'content/gui/images/icons/hud/common/bb/%s_a.png' % tabname
+		self.button_down_image = 'content/gui/images/icons/hud/common/bb/%s_d.png' % tabname
+		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/%s_h.png' % tabname
 
-class BoatbuilderTradeTab(TabInterface):
+class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
-	def __init__(self, instance = None):
-		s = 'trade'
-		widget = 'tab_widget/boatbuilder/'+str(s)+'.xml'
-		super(BoatbuilderTradeTab, self).__init__(widget)
-		self.instance = instance
-		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/bb/'+s+'_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_h.png'
-		for i in xrange(1, 5):	self.widget.findChild(name='BB_'+str(s)+'_ship'+str(i)).stylize("headline") # All ship names in small caps
+	def __init__(self, instance):
+		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
+		self.tooltip = "Fisher Boats"
 
-class BoatbuilderWar1Tab(TabInterface):
+class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
-	def __init__(self, instance = None):
-		s = 'war1'
-		widget = 'tab_widget/boatbuilder/'+str(s)+'.xml'
-		super(BoatbuilderWar1Tab, self).__init__(widget)
-		self.instance = instance
-		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/bb/'+s+'_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_h.png'
-		for i in xrange(1, 5):	self.widget.findChild(name='BB_'+str(s)+'_ship'+str(i)).stylize("headline") # All ship names in small caps
+	def __init__(self, instance):
+		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
+		self.tooltip = "Trade Boats"
 
-class BoatbuilderWar2Tab(TabInterface):
+class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
-	def __init__(self, instance = None):
-		s = 'war2'
-		widget = 'tab_widget/boatbuilder/'+str(s)+'.xml'
-		super(BoatbuilderWar2Tab, self).__init__(widget)
-		self.instance = instance
-		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/bb/'+s+'_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/'+str(s)+'_h.png'
-		for i in xrange(1, 5):	self.widget.findChild(name='BB_'+str(s)+'_ship'+str(i)).stylize("headline") # All ship names in small caps
-		self.tooltip = u"Trade boats"
+	def __init__(self, instance):
+		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
+		self.tooltip = "War Boats"
+
+class BoatbuilderWar2Tab(BoatbuilderSelectTab):
+
+	def __init__(self, instance):
+		super(BoatbuilderWar2Tab, self).__init__(instance, 'war2')
+		self.tooltip = "War Ships"
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
@@ -145,8 +122,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 # * => get: currently ordered ship: description text / costs / available upgrades 
 #						(fisher/trade/war, builder level)
 # * if resource icons not hardcoded: resource icons, sort them by amount
-# UPGRADES:
-# * 
+# UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs (get, add, display) 
 # * def start_production(self):  <<< actually start to produce the selected ship unit with the selected upgrades
 #	(use inventory or go collect resources, switch focus to overview tab).
 #	IMPORTANT: lock this button until unit is actually produced (no queue!)

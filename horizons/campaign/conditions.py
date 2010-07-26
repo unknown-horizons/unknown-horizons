@@ -93,14 +93,6 @@ def building_num_of_type_greater(session, building_class, limit):
 			return True
 	return False
 
-def building_num_of_type_less(session, building_class, limit):
-	"""Check if player has less than limit buildings on a settlement"""
-	for settlement in _get_player_settlements(session):
-		if len([building for building in settlement.buildings if \
-		       building.id == building_class]) < limit:
-			return True
-	return False
-
 def player_res_stored_greater(session, res, limit):
 	"""Returns whether all settlements of player combined have more than limit of res"""
 	return (sum(settlement.inventory[res] for settlement in _get_player_settlements(session)) > limit)
