@@ -22,7 +22,7 @@
 
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleOnCoast
-from horizons.gui.tabs.boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
+from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
 			     BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from horizons.world.production.producer import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding

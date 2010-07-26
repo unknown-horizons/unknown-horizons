@@ -24,5 +24,5 @@ from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, Bra
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
-from boatbuildertab import BoatbuilderTab
+from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from marketplacetabs import AccountTab, MarketPlaceSettlerTabSettlerTab
