@@ -240,7 +240,7 @@ class World(LivingObject):
 			logging.getLogger(logger_name).setLevel(level)
 
 		# add free trader
-		self.trader = Trader(self.session, 99999, "Free Trader", Color())
+		self.trader = Trader(self.session, 99999, u"Free Trader", Color())
 		ret_coords = None
 		for player in self.players:
 			# Adding ships for the players
