@@ -265,7 +265,8 @@ def init_environment():
 
 	#find fife and setup search paths, if it can't be imported yet
 	try:
-		from fife import fife
+		if options.fife_path is None or options.fife_in_library_path is not None:
+			from fife import fife
 	except ImportError, e:
 		if options.fife_in_library_path:
 			# fife should already be in LD_LIBRARY_PATH
