@@ -93,6 +93,15 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 
 		super(Mine, self).remove()
 
+	def save(self, db):
+		super(Mine, self).save(db)
+		db("INSERT INTO mine(rowid, deposit_class) VALUES(?, ?)", \
+		   self.worldid, self.__deposit_class)
+
+	def load(self, db, worldid):
+		super(Mine, self).load(db, worldid)
+		self.__deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
+
 
 """ AnimalFarm is not used for now (code may not work anymore)
 
