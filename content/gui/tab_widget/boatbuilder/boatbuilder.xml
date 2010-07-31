@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container  size="260,550">
+<Container  size="260,550" name="BB_main_tab">
 <Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
 <Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
@@ -25,23 +25,33 @@
 	</Container>
 
 <!--	ONLY ACTIVE WHEN NOT BUILDING -->
-<!--
-	<Container position="0,150" size="260,150" >
+	<Container position="0,150" size="260,150" name="container_inactive">
 		<Label position="0,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150"
 			text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
 	</Container>
 
-<!-->
 <!--	ONLY ACTIVE WHEN BUILDING -->
 
-	<Container position="0,133" size="260,160" >
+	<Container position="0,133" size="260,160" name="container_active">
 		<!-- Current order, pause -->
 		<Label name="BB_current_order" position="25,0" text="Currently building:" />
-		<Label name="BB_builtship_label" position="45,20" text="Sloop-o'-war" />
-		<TooltipIcon image="content/gfx/dummies/square_120.png" position="25,40" tooltip="$NAME $CLASS $COSTS" />
+		<Label name="BB_builtship_label" position="45,20" text=""/> <!-- Sloop-o'-war -->
+		<TooltipIcon image="content/gfx/dummies/square_120.png" position="25,40" name="BB_cur_ship_icon" tooltip=""/> <!-- $NAME $CLASS $COSTS" -->
+		<VBox position="150,50" name="BB_upgrades_box"/>
+		<!--
 		<Label name="BB_upgrade_1" position="150,50" text="+ Cannons" />
-		<Label name="BB_upgrade_2" position="150,68" text="+ Storage" /> <!-- we need to get this automated (plus translations)! -->
-		<TooltipIcon image="content/gui/images/icons/hud/main/toggle_active_d.png" position="170,100" tooltip="$pause/resume" /> 
+		<Label name="BB_upgrade_2" position="150,68" text="+ Storage" /> <!- we need to get this automated (plus translations)! -->
+
+		<!-- one of those button gets removed at runtime -->
+		<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_active_n.png"
+			down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
+			hover_image="content/gui/images/icons/hud/main/toggle_active_h.png"
+			border_size="0" position="170,100" name="toggle_active_active" tooltip="Pause" />
+
+		<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
+			down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
+			hover_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
+			border_size="0" position="170,100" name="toggle_active_inactive" tooltip="Resume" />
 
 	</Container>
 
@@ -52,15 +62,15 @@
 		<Label position="165,20" name="BB_progress_perc" text="" /> 
 	</Container>
 
-	<Container position="25,355" size="260,50" >		
+	<Container position="25,355" size="260,50" name="BB_needed_resources_container">		
 		<!-- Resources -->
 		<Label position="0,0" name="BB_needed_res_label" text="Resources still needed:" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="0,25" tooltip="$res" /> 
-		<Label position="22,25" name="BB_needed_res_1" text="18/24t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="70,25" tooltip="$res" /> 
-		<Label position="92,25" name="BB_needed_res_1" text="06/08t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="140,25" tooltip="$res" /> 
-		<Label position="162,25" name="BB_needed_res_1" text="02/02t" />
+		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" /> 
+		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
+		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" /> 
+		<Label position="92,25" name="BB_needed_res_lbl_2" text="" />
+		<TooltipIcon image="" position="140,25" name="BB_needed_res_icon_3" tooltip="" /> 
+		<Label position="162,25" name="BB_needed_res_lbl_3" text="" />
 		<!-- dynamical display of the three most wanted res with amount in one line, looking like this:  
 		[ ] 11/16t	[ ] 4/8t	[ ] 2/6t
 		the 'still needed' value (first one) could be coloured red to make it clear.-->
