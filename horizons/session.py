@@ -128,8 +128,8 @@ class Session(LivingObject):
 				horizons.main.fife.emitter['ambient'].remove(emitter)
 			horizons.main.fife.emitter['effects'].stop()
 			horizons.main.fife.emitter['speech'].stop()
-		self.world = None
 		self.cursor = None
+		self.world = None
 		self.keylistener = None
 		self.ingame_gui = None
 		self.view = None
