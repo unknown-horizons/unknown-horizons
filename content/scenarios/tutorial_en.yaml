@@ -225,7 +225,7 @@ events:
    - type: settler_level_greater
      arguments: [0]
    - type: var_gt
-     arguments: ["tutStepDone", 21]s
+     arguments: ["tutStepDone", 21]
 
 - # Winning conditions
   actions:
