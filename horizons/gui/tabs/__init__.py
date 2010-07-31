@@ -20,7 +20,7 @@
 # ###################################################
 
 from inventorytab import InventoryTab, ShipInventoryTab
-from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab, SettlerOverviewTab, MarketPlaceOverviewTab, SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab
+from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, BranchOfficeOverviewTab, SettlerOverviewTab, MarketPlaceOverviewTab, SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, ResourceDepositOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget

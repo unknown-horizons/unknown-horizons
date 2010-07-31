@@ -21,8 +21,6 @@
 
 from fife.extensions import pychan
 
-import horizons.main
-
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 
 class Inventory(pychan.widgets.Container):
@@ -34,20 +32,21 @@ class Inventory(pychan.widgets.Container):
 	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
 	ITEMS_PER_LINE = 4 # TODO: make this a xml attribute with a default value
 	def __init__(self, **kwargs):
+		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
+		self.__inited = False
 
-	def _set_inventory(self, inv):
-		"""Sets the inventory
-		@var inventory: Storage class inventory"""
-		assert(isinstance(inv, horizons.world.storage.GenericStorage))
-		self._inventory = inv
+	def init(self, db, inventory):
+		# this inits the logic of the inventory. @see __init__().
+		self.__inited = True
+		self.db = db
+		self._inventory = inventory
+		self.update()
+
+	def update(self):
+		assert self.__inited
 		self._draw()
-
-	def _get_inventory(self):
-		return self._inventory
-
-	inventory = property(_get_inventory, _set_inventory)
 
 	def _draw(self):
 		"""Draws the inventory."""
@@ -57,12 +56,12 @@ class Inventory(pychan.widgets.Container):
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding = 0)
 		index = 0
-		for resid, amount in sorted(self.inventory): # sort by resid for unchangeable positions
+		for resid, amount in sorted(self._inventory): # sort by resid for unchangeable positions
 			# check if this res should be displayed
-			if not horizons.main.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
+			if not self.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
 			filled = int(float(amount) / float(self._inventory.limit) * 100.0)
-			button = ImageFillStatusButton.init_for_res(horizons.main.db, resid, amount, filled=filled)
+			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, filled=filled)
 			current_hbox.addChild(button)
 
 			# old code to do this, which was bad but kept for reference

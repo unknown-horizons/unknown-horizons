@@ -35,10 +35,12 @@ class InventoryTab(TabInterface):
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
 		self.tooltip = u"Inventory"
+		self.widget.child_finder('inventory').init(self.instance.session.db, \
+		                                           self.instance.inventory)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		self.widget.child_finder('inventory').inventory = self.instance.inventory
+		self.widget.child_finder('inventory').update()
 
 	def show(self):
 		if not self.instance.inventory.has_change_listener(self.refresh):

@@ -49,8 +49,13 @@ class OverviewTab(TabInterface):
 
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
-			self.widget.child_finder('player_emblem').image =  \
+			if self.instance.owner is not None:
+				self.widget.child_finder('player_emblem').image =  \
 			    'content/gfx/misc/playeremblems/emblem_%s.png' %  self.instance.owner.color.name
+			else:
+				self.widget.child_finder('player_emblem').image = \
+			    'content/gfx/misc/playeremblems/emblem_no_player.png'
+
 
 	def refresh(self):
 		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
@@ -161,7 +166,7 @@ class ProductionOverviewTab(OverviewTab):
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
 		self.tooltip = u"Production Overview"
 
-		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip="Destroy Building", position=(190,330))
+		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip=_("Destroy Building"), position=(190,330))
 		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
 
@@ -285,13 +290,13 @@ class SignalFireOverviewTab(OverviewTab):
 		super(SignalFireOverviewTab, self).__init__(
 			widget = 'tab_widget/tab_overview_signalfire.xml',
 			instance = instance
-		) 
+		)
 		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = u"Overview" 
+		self.tooltip = u"Overview"
 
 class EnemyBuildingOverviewTab(OverviewTab):
 	def  __init__(self, instance):
@@ -300,6 +305,18 @@ class EnemyBuildingOverviewTab(OverviewTab):
 			instance = instance
 		)
 
+class ResourceDepositOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(ResourceDepositOverviewTab, self).__init__(
+			widget = 'tab_widget/tab_overview_resourcedeposit.xml',
+			instance = instance
+		)
+		self.widget.child_finder("inventory").init(self.instance.session.db, \
+		                                           self.instance.inventory)
+
+	def refresh(self):
+		super(ResourceDepositOverviewTab, self).refresh()
+		self.widget.child_finder("inventory").update()
 
 
 

@@ -49,7 +49,10 @@ class TradeWidget(object):
 	  'box': 'content/gui/images/icons/hud/ship/button_small.png'
 	  }
 
-	def __init__(self, main_instance):
+	def __init__(self, instance):
+		"""
+		@param instance: ship instance used for trading
+		"""
 		self.widget = load_xml_translated('ship/trade.xml')
 		self.widget.position = (
 			horizons.main.fife.engine_settings.getScreenWidth() - self.widget.size[0],
@@ -61,12 +64,12 @@ class TradeWidget(object):
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = pychan.tools.callbackWithArguments(self.set_exchange, k)
 		self.widget.mapEvents(events)
-		self.main_instance = main_instance
+		self.instance = instance
 		self.partner = None
 		self.set_exchange(10, initial=True)
 		self.draw_widget()
-		if hasattr(self.main_instance, 'radius'):
-			self.radius = self.main_instance.radius
+		if hasattr(self.instance, 'radius'):
+			self.radius = self.instance.radius
 
 	def draw_widget(self):
 		self.partners = self.find_partner()
@@ -79,13 +82,13 @@ class TradeWidget(object):
 			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
 			self.partner = self.partners[nearest_partner]
 			inv_partner = self.widget.findChild(name='inventory_partner')
-			inv_partner.inventory = self.partner.inventory
+			inv_partner.init(self.instance.db, self.partner.inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
-				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.main_instance))
+				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.instance))
 			inv = self.widget.findChild(name='inventory_ship')
-			inv.inventory = self.main_instance.inventory
+			inv.init(self.instance.session.db, self.instance.inventory)
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
-				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.main_instance, self.partner))
+				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.instance, self.partner))
 			self.widget.adaptLayout()
 
 	def set_partner(self, partner_id):
@@ -93,12 +96,12 @@ class TradeWidget(object):
 
 	def hide(self):
 		self.widget.hide()
-		self.main_instance.inventory.remove_change_listener(self.draw_widget)
+		self.instance.inventory.remove_change_listener(self.draw_widget)
 		self.partner.inventory.remove_change_listener(self.draw_widget)
 
 	def show(self):
 		self.widget.show()
-		self.main_instance.inventory.add_change_listener(self.draw_widget)
+		self.instance.inventory.add_change_listener(self.draw_widget)
 		self.partner.inventory.add_change_listener(self.draw_widget)
 
 	def set_exchange(self, size, initial = False):
@@ -120,11 +123,11 @@ class TradeWidget(object):
 
 	def transfer(self, res_id, transfer_from, transfer_to):
 		"""Transfers self.exchange tons of resid from transfer_from to transfer_to"""
-		if self.main_instance.position.distance(transfer_to.position) <= self.radius and \
+		if self.instance.position.distance(transfer_to.position) <= self.radius and \
 			 transfer_to is not None and transfer_from is not None:
 			self.log.debug('TradeWidget : Transferring %s of res %s from %s to %s', self.exchange, \
 			               res_id, transfer_from.name, transfer_to.name)
-			TransferResource(self.exchange, res_id, transfer_from, transfer_to).execute(self.main_instance.session)
+			TransferResource(self.exchange, res_id, transfer_from, transfer_to).execute(self.instance.session)
 			# update gui
 			self.draw_widget()
 
@@ -140,7 +143,7 @@ class TradeWidget(object):
 	def find_partner(self):
 		"""find all partners in radius"""
 		partners = []
-		branch_offices = self.main_instance.session.world.get_branch_offices(position=self.main_instance.position, radius=self.radius, owner=self.main_instance.owner)
+		branch_offices = self.instance.session.world.get_branch_offices(position=self.instance.position, radius=self.radius, owner=self.instance.owner)
 		if branch_offices is not None:
 			partners.extend(branch_offices)
 		return partners
@@ -149,7 +152,7 @@ class TradeWidget(object):
 		nearest = None
 		nearest_dist = None
 		for partner in partners:
-			dist = partner.position.distance(self.main_instance.position)
+			dist = partner.position.distance(self.instance.position)
 			nearest = partners.index(partner) if dist < nearest_dist or nearest_dist is None else nearest
 			nearest_dist = dist if dist < nearest_dist or nearest_dist is None else nearest_dist
 		return nearest

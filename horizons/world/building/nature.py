@@ -26,6 +26,8 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.entities import Entities
 from horizons.constants import LAYERS
 from horizons.world.storageholder import StorageHolder
+from horizons.gui.tabs import ResourceDepositOverviewTab
+from horizons.world.building.building import SelectableBuilding
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -73,10 +75,12 @@ class Tree(GrowingBuilding):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
-class ResourceDeposit(StorageHolder, NatureBuilding):
+class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
-	layer = LAYERS.FIELDS
+	layer = LAYERS.OBJECTS
+	tabs = [ ResourceDepositOverviewTab ]
+	enemy_tabs = [ ResourceDepositOverviewTab ]
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
