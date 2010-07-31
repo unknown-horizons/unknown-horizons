@@ -81,6 +81,7 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 	layer = LAYERS.OBJECTS
 	tabs = [ ResourceDepositOverviewTab ]
 	enemy_tabs = [ ResourceDepositOverviewTab ]
+	walkable = False
 
 	def __init__(self, inventory=None, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)

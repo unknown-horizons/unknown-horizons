@@ -112,6 +112,7 @@ class IslandPathNodes(PathNodes):
 		is currently done in add/remove_building
 		@param coord: tuple: (x, y)"""
 		actually_walkable = self.is_walkable(coord)
+		# TODO: this lookup on a list is O(n), use different data structure here
 		in_list = (coord in self.nodes)
 		if not in_list and actually_walkable:
 			self.nodes.append(coord)
