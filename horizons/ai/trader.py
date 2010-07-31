@@ -47,13 +47,13 @@ class Trader(AIPlayer):
 	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
 	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
 
+	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
+
 	log = logging.getLogger("ai.trader")
 
 	# amount range to buy/sell from settlement per resource
 	buy_amount = (2, 6)
 	sell_amount = (2, 6)
-
-	_res_values = {} # stores money value of resources. Use only get_res_value() for access
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)
@@ -66,7 +66,7 @@ class Trader(AIPlayer):
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_branch
-		Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
+		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, runin=0)
 
 	def __init(self):
 		self.office = {} # { ship.worldid : branch }. stores the branch the ship is currently heading to
@@ -206,7 +206,7 @@ class Trader(AIPlayer):
 			amount = self.session.random.randint(*self.sell_amount) # select a random amount to sell
 			if amount == 0:
 				continue
-			price = int(self.get_res_value(res) * self.SELLING_ADDITIONAL_CHARGE * amount)
+			price = int(self.session.db.get_res_value(res) * self.SELLING_ADDITIONAL_CHARGE * amount)
 			settlement.buy(res, amount, price)
 			# don't care if he bought it. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
@@ -217,13 +217,14 @@ class Trader(AIPlayer):
 			amount = self.session.random.randint(*self.buy_amount)
 			if amount == 0:
 				continue
-			price = int(self.get_res_value(res) * self.BUYING_CHARGE_DEDUCTION * amount)
+			price = int(self.session.db.get_res_value(res) * self.BUYING_CHARGE_DEDUCTION * amount)
 			settlement.sell(res, amount, price)
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
 
 		del self.office[ship.worldid]
 		# wait 2 seconds before going on to the next island
-		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, Scheduler().get_ticks(4))
+		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, \
+		                           Scheduler().get_ticks(self.TRADING_DURATION))
 		self.ships[ship] = self.shipStates.reached_branch
 
 	def ship_idle(self, ship):
@@ -233,18 +234,7 @@ class Trader(AIPlayer):
 		if self.session.random.randint(0, 100) < 66:
 			# delay one tick, to allow old movement calls to completely finish
 			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
-			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self)
+			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, runin=0)
 		else:
 			self.log.debug("Trader %s ship %s: idle, moving to random bo", self.worldid, ship.worldid)
-			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self)
-
-	@classmethod
-	def get_res_value(cls, res):
-		"""Returns the money value of a resource"""
-		try:
-			return cls._res_values[res]
-		except KeyError:
-			# resource value has yet to be fetched
-			cls._res_values[res] = \
-					float(horizons.main.db.get_res_value(res))
-			return cls._res_values[res]
+			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self, runin=0)
