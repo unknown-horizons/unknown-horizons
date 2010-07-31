@@ -64,7 +64,7 @@
 
 	<Container position="25,355" size="260,50" name="BB_needed_resources_container">		
 		<!-- Resources -->
-		<Label position="0,0" name="BB_needed_res_label" text="Resources still needed:" />
+		<Label position="0,0" name="BB_needed_res_label" text="">
 		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" /> 
 		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
 		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" /> 
