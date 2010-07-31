@@ -133,8 +133,10 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
-			self.action_set = self.session.db.get_random_action_set(self._class.id, \
-			                                                        self.session.world.player.settler_level)
+			level = self.session.world.player.settler_level if \
+			      not hasattr(self._class, "default_level_on_build") else \
+			      self._class.default_level_on_build
+			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
 		action_set, preview_action_set = self.action_set
 		action_sets = ActionSetLoader.get_action_sets()
 		if preview_action_set in action_sets:
@@ -181,10 +183,16 @@ class BuildingTool(NavigationTool):
 			# make surrounding transparent
 			self._make_surrounding_transparent(building.position)
 
+			# get gfx for the building
+			# workaround for buildings like settler, that don't use the current level of
+			# the player, but always start at a certain lvl
+			level = self.session.world.player.settler_level if \
+			      not hasattr(self._class, "default_level_on_build") else \
+			      self._class.default_level_on_build
 			self.buildings_fife_instances[building] = \
 			    self._class.getInstance(self.session, building.position.origin.x, \
 			                            building.position.origin.y, rotation=building.rotation,
-			                            action=building.action, level=self.session.world.player.settler_level)
+			                            action=building.action, level=level)
 
 			settlement = self.session.world.get_settlement(building.position.center())
 			if building.buildable:

@@ -21,7 +21,6 @@
 
 import logging
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import SettlerOverviewTab
@@ -31,7 +30,7 @@ from horizons.constants import RES, BUILDINGS, GAME
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
-from horizons.util import Callback
+from horizons.util import Callback, decorators
 from horizons.world.pathfinding.pather import StaticPather
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
@@ -50,10 +49,12 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	tabs = (SettlerOverviewTab,)
 
-	def __init__(self, x, y, owner, instance = None, **kwargs):
-		_CONSTANTS.init(horizons.main.db)
+	default_level_on_build = 0
+
+	def __init__(self, x, y, owner, instance=None, **kwargs):
+		kwargs['level'] = self.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
-		self.__init(_CONSTANTS.HAPPINESS_INIT_VALUE)
+		self.__init(self.__get_data("happiness_init_value"))
 		self.run()
 		# give the user a month (about 30 seconds) to build a market place in range
 		if self.owner == self.session.world.player:
@@ -72,7 +73,6 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			 self.inhabitants)
 
 	def load(self, db, worldid):
-		_CONSTANTS.init(horizons.main.db)
 		super(Settler, self).load(db, worldid)
 		self.inhabitants = db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
 
@@ -86,14 +86,14 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	@property
 	def name(self):
-		level_name = horizons.main.db.get_settler_name(self.level)
+		level_name = self.session.db.get_settler_name(self.level)
 		return (_(level_name)+' '+_(self._name)).title()
 
 	def _update_level_data(self):
 		"""Updates all settler-related data because of a level change"""
 		# taxes, inhabitants
-		self.tax_base = horizons.main.db.get_settler_tax_income(self.level)
-		self.inhabitants_max = horizons.main.db.get_settler_inhabitants_max(self.level)
+		self.tax_base = self.session.db.get_settler_tax_income(self.level)
+		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
 		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
 			self.inhabitants = self.inhabitants_max
 
@@ -101,7 +101,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# Settler productions are specified to be disabled by default in the db, so we can enable
 		# them here per level.
 		current_lines = self.get_production_lines()
-		for (prod_line,) in horizons.main.db.get_settler_production_lines(self.level):
+		for (prod_line,) in self.session.db.get_settler_production_lines(self.level):
 			if not self.has_production_line(prod_line):
 				self.add_production_by_id(prod_line)
 			# cross out the new lines from the current lines, so only the old ones remain
@@ -145,12 +145,13 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
 		changed = False
-		if self.happiness > _CONSTANTS.HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT and \
+		if self.happiness > self.__get_data("happiness_inhabitants_increase_requirement") and \
 			 self.inhabitants < self.inhabitants_max:
 			self.inhabitants += 1
 			changed = True
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
-		elif self.happiness < _CONSTANTS.HAPPINESS_INHABITANTS_DECREASE_LIMIT and self.inhabitants > 1:
+		elif self.happiness < self.__get_data("happiness_inhabitants_decrease_limit") and \
+		     self.inhabitants > 1:
 			self.inhabitants -= 1
 			changed = True
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
@@ -162,11 +163,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def level_check(self):
 		"""Checks whether we should level up or down."""
-		if self.happiness > _CONSTANTS.HAPPINESS_LEVEL_UP_REQUIREMENT and \
+		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
 			 self.level < self.level_max:
 			# add a production line that gets the necessary upgrade material.
 			# when the production finished, it calls level_up as callback.
-			upgrade_material_prodline = horizons.main.db.get_settler_upgrade_material_prodline(self.level+1)
+			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
 			upgrade_material_production = SingleUseProduction(self.inventory, \
@@ -176,7 +177,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 				self.inventory.add_resource_slot(res, abs(amount))
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
-		elif self.happiness < _CONSTANTS.HAPPINESS_LEVEL_DOWN_LIMIT:
+		elif self.happiness < self.__get_data("happiness_level_down_limit"):
 			self.level_down()
 			self._changed()
 
@@ -188,7 +189,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# notify owner about new level
 		self.owner.notify_settler_reached_level(self)
 		# reset happiness value for new level
-		self.inventory.alter(RES.HAPPINESS_ID, _CONSTANTS.HAPPINESS_INIT_VALUE - self.happiness)
+		self.inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 		self._changed()
 
 	def level_down(self):
@@ -208,7 +209,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.inventory.alter(RES.HAPPINESS_ID, _CONSTANTS.HAPPINESS_INIT_VALUE - self.happiness)
+			self.inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
@@ -234,26 +235,10 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		except AttributeError: # an attribute hasn't been set up
 			return super(Settler, self).__str__()
 
-
-class _CONSTANTS:
-	"""Settler related constants from the db. init() has to be called before first use."""
-	_inited = False
-	@classmethod
-	def init(cls, db):
-		if cls._inited:
-			return
-		for key in cls.__dict__:
-			if key.startswith('_') or key[0].islower():
-				# no constant to init here
-				continue
-			cls.__dict__[key] = int( db("SELECT value from settler.balance_values \
-			                                            WHERE name = ?", key.lower())[0][0])
-		cls._inited = True
-
-	HAPPINESS_INIT_VALUE = 0 # settlers start with this value
-	HAPPINESS_MIN_VALUE = 0 # settlers die at this value
-	HAPPINESS_MAX_VALUE = 0
-	HAPPINESS_INHABITANTS_INCREASE_REQUIREMENT = 0 # if above this, inhabitant number increases
-	HAPPINESS_INHABITANTS_DECREASE_LIMIT = 0 # if below this, inhabitant number decreases
-	HAPPINESS_LEVEL_UP_REQUIREMENT = 0 # happiness has to be over this for leveling up
-	HAPPINESS_LEVEL_DOWN_LIMIT = 0 # settlers level down if below this value
+	@decorators.cachedmethod
+	def __get_data(self, key):
+		"""Returns constant settler-related data from the db.
+		The values are cached by python, so the underlying data must not change."""
+		return int(
+		  self.session.db("SELECT value from settler.balance_values WHERE name = ?", key)[0][0]
+		  )

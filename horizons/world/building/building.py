@@ -55,10 +55,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 	@param x, y: int position of the building.
 	@param owner: Player that owns the building.
 	"""
-	def __init__(self, x, y, rotation, owner, island, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner)
+		self.__init(Point(x, y), rotation, owner, level)
 		self.island = island
 		self.settlement = self.island.get_settlement(Point(x, y)) or \
 				self.island.add_settlement(self.position, self.radius, owner) if \
@@ -204,7 +204,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		# NOTE:
 		# nobody acctually knows how the code below works.
-		# it's for adapting the facing location and instance coords in 
+		# it's for adapting the facing location and instance coords in
 		# different rotations, and works with all quadratic buildings (tested up to 4x4)
 		# for the first unquadratic building (2x4), a hack fix was put into it.
 		# the plan for fixing this code in general is to wait until there are more
@@ -215,7 +215,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			layer_coords[0] = x+cls.size[0]+3
 
 			if cls.size[0] == 2 and cls.size[1] == 4:
-				# HACK: fix FOR 4x2 buildings
+				# HACK: fix for 4x2 buildings
 				instance_coords[0] -= 1
 				instance_coords[1] += 1
 
@@ -224,7 +224,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			layer_coords[1] = y-cls.size[1]-3
 
 			if cls.size[0] == 2 and cls.size[1] == 4:
-				# HACK: fix FOR 4x2 buildings
+				# HACK: fix for 4x2 buildings
 				instance_coords[0] += 1
 				instance_coords[1] -= 1
 
@@ -233,7 +233,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			layer_coords[0] = x-cls.size[0]-3
 
 			if cls.size[0] == 2 and cls.size[1] == 4:
-				# HACK: fix FOR 4x2 buildings
+				# HACK: fix for 4x2 buildings
 				instance_coords[0] += 1
 				instance_coords[1] -= 1
 
@@ -242,7 +242,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			layer_coords[1] = y+cls.size[1]+3
 
 			if cls.size[0] == 2 and cls.size[1] == 4:
-				# HACK: fix FOR 4x2 buildings
+				# HACK: fix for 4x2 buildings
 				instance_coords[0] += 1
 				instance_coords[1] -= 1
 
