@@ -22,13 +22,11 @@ import math
 
 from fife.extensions import pychan
 
-import horizons.main
-
-from tabinterface import TabInterface
 from horizons.command.production import AddProduction
 from horizons.gui.widgets  import TooltipButton
 from horizons.gui.tabs import OverviewTab
 from horizons.i18n import load_xml_translated
+from horizons.util import Callback
 
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
@@ -48,31 +46,56 @@ class BoatbuilderTab(OverviewTab):
 		main_container = self.widget.findChild(name="BB_main_tab")
 		container_active = self.widget.findChild(name="container_active")
 		container_inactive = self.widget.findChild(name="container_inactive")
-		if self.instance.is_active() or True: # debug cond
+		progress_container = main_container.findChild(name="BB_progress_container")
+		if self.instance.is_active(): # debug cond
 			# TODO: fill in acctual values here
-			main_container.removeChild( container_inactive )
+
+			# remove other container, but save it
+			if container_inactive is not None:
+				main_container.container_inactive = container_inactive
+				main_container.removeChild( container_inactive )
+			if container_active is None:
+				main_container.insertChildBefore( main_container.container_active, progress_container)
+				container_active = main_container.container_active
 			container_active.findChild(name="BB_builtship_label").text = u"Loveboat"
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "$NAME $CLASS $COST"
 
-			if True: # if production is paused
-				container_active.removeChild( \
-					container_active.findChild(name="toggle_active_active") \
-				)
+			button_active = container_active.findChild(name="toggle_active_active")
+			button_inactive = container_active.findChild(name="toggle_active_inactive")
+			if False: # if production is paused
+				# remove active button, if it's there, and save a reference to it
+				if button_active is not None:
+					container_active.toggle_active_active = button_active
+					container_active.removeChild( button_active )
+				# restore inactive button, if it isn't in the gui
+				if button_inactive is None:
+					# insert at the end
+					container_active.insertChild(container_active.button_inactive, \
+					                             len(container_active.children))
 				# TODO: make this button do sth
 			else:
-				container_active.removeChild( \
-					container_active.findChild(name="toggle_active_inactive") \
-				)
+				# remove inactive button, if it's there, and save a reference to it
+				if button_inactive is not None:
+					container_active.toggle_active_inactive = button_inactive
+					container_active.removeChild( button_inactive )
+				# restore active button, if it isn't in the gui
+				if button_active is None:
+					# insert at the end
+					container_active.insertChild(container_active.button_active, \
+					                             len(container_active.children))
+
 				# TODO: make this button do sth
 
 			upgrades_box = container_active.findChild(name="BB_upgrades_box")
+			for child in upgrades_box.children[:]:
+				upgrades_box.removeChild(child)
 			upgrades_box.addChild( pychan.widgets.Label(text=u"+ love") )
 			upgrades_box.addChild( pychan.widgets.Label(text=u"+ affection") )
 			upgrades_box.stylize('menu_black')
 
 			container_active.findChild(name='BB_builtship_label').stylize("headline")
 
-			still_needed_res = {  3: 5, 4 : 42 }
+			still_needed_res = {  3: 42, 4 : 42 }
 			i = 1
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _(u'Resources still needed:')
@@ -87,8 +110,14 @@ class BoatbuilderTab(OverviewTab):
 			# TODO: cancel building button
 
 		else: # display sth when nothing is produced
-			main_container.removeChild( container_active )
-			main_container.findChild(name="BB_needed_res_label").text = u''
+			# remove other container, but save it
+			if container_active is not None:
+				main_container.container_active = container_active
+				main_container.removeChild( container_active )
+			if container_inactive is None:
+				main_container.insertChildBefore( main_container.container_inactive, progress_container)
+				container_inactive = main_container.container_inactive
+
 
 		self.widget.adaptLayout()
 
@@ -111,11 +140,19 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_down_image = 'content/gui/images/icons/hud/common/bb/%s_d.png' % tabname
 		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/%s_h.png' % tabname
 
+	def start_production(self, prod_line_id):
+		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
+		# show overview tab
+		self.instance.session.ingame_gui.get_cur_menu()._show_tab(0)
+
 class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
 		self.tooltip = "Fisher Boats"
+		# TODO: generalize this hard coded value
+		events = { 'BB_build_fisher_1' : Callback(self.start_production, 15) }
+		self.widget.mapEvents(events)
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
 

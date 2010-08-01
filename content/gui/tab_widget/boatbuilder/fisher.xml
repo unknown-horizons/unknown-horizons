@@ -26,7 +26,8 @@
 		<TooltipButton position="60,70" tooltip="Build this ship!"
 				up_image="content/gui/images/background/ok.png" 
 				hover_image="content/gui/images/background/ok_h.png" 
-				down_image="content/gui/images/background/ok_h.png" /> 
+				down_image="content/gui/images/background/ok_h.png"
+				name="BB_build_fisher_1"/> 
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107" 
 				tooltip="Cutter: \nUsed by: Fisher \nStorage: 4 slots of 1t \nCannons: none \nSpeed: average \nHealth: 60\nGets available after:\n Upgrade Boat Builder" />

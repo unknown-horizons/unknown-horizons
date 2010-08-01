@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
 <Container  size="260,550" name="BB_main_tab">
-<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />
-<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,400" />
-<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,450" />
+	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,350" />
+	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,400" />
+	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,450" />
 
 	<Container position="0,70" size="260,80" >
 
@@ -24,13 +24,13 @@
 
 	</Container>
 
-<!--	ONLY ACTIVE WHEN NOT BUILDING -->
+	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
 	<Container position="0,150" size="260,150" name="container_inactive">
 		<Label position="0,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150"
 			text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
 	</Container>
 
-<!--	ONLY ACTIVE WHEN BUILDING -->
+	<!--	ONLY ACTIVE WHEN BUILDING -->
 
 	<Container position="0,133" size="260,160" name="container_active">
 		<!-- Current order, pause -->
@@ -55,16 +55,16 @@
 
 	</Container>
 
-	<Container position="25,300" size="260,40" >
+	<Container position="25,300" size="260,40" name="BB_progress_container">
 		<!-- Progress display -->
 		<ProgressBar position="0,5" name='progress'/>
 		<Label position="0,20" name="BB_progress_label" text="Construction progress:" />
 		<Label position="165,20" name="BB_progress_perc" text="" /> 
 	</Container>
 
-	<Container position="25,355" size="260,50" name="BB_needed_resources_container">		
+	<Container position="25,355" size="260,50" name="BB_needed_resources_container">
 		<!-- Resources -->
-		<Label position="0,0" name="BB_needed_res_label" text="">
+		<Label position="0,0" name="BB_needed_res_label" text=""/>
 		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" /> 
 		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
 		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" /> 
