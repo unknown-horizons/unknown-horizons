@@ -74,15 +74,14 @@ class GroundClass(type):
 		@param db: DbReader instance to get data from
 		"""
 		self.id = id
-		self.db = db
 		self._object = None
 		self.velocity = {}
-		for unit, straight, diagonal in self.db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
+		for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
 			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
-		for (name,) in self.db("SELECT class FROM data.ground_class WHERE ground = ?", id):
+		for (name,) in db("SELECT class FROM data.ground_class WHERE ground = ?", id):
 			self.classes.append(name)
-		self._loadObject()
+		self._loadObject(db)
 
 	def __new__(self, db, id):
 		"""
@@ -93,7 +92,7 @@ class GroundClass(type):
 		else:
 			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
 
-	def _loadObject(self):
+	def _loadObject(self, db):
 		""" Loads the ground object from the db (animations, etc)
 		"""
 		self.log.debug('Loading ground %s', self.id)
@@ -107,7 +106,7 @@ class GroundClass(type):
 		visual = self._object.get2dGfxVisual()
 
 		animation_45, animation_135, animation_225, animation_315 = \
-		     self.db("SELECT \
+		     db("SELECT \
 		     (SELECT file FROM data.animation WHERE animation_id = animation_45 limit 1), \
 		     (SELECT file FROM data.animation WHERE animation_id = animation_135 limit 1), \
 		     (SELECT file FROM data.animation WHERE animation_id = animation_225 limit 1), \

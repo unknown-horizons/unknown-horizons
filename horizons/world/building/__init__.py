@@ -67,36 +67,35 @@ class BuildingClass(type):
 		"""
 		super(BuildingClass, self).__init__(self)
 		self.id = id
-		self.db = db
 		self._object = None
 
 		self.class_package, size_x, size_y, name, self.radius, health, inhabitants, inhabitants_max = \
-		    self.db("SELECT class_package, size_x, size_y, name, radius, health, \
+		    db("SELECT class_package, size_x, size_y, name, radius, health, \
 		    inhabitants_start, inhabitants_max FROM data.building WHERE id = ?", id)[0]
 		self._name = name
 		self.size = (int(size_x), int(size_y))
 		self.health = int(health)
 		self.inhabitants = int(inhabitants)
 		self.inhabitants_max = int(inhabitants_max)
-		for (name,  value) in self.db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
+		for (name,  value) in db("SELECT name, value FROM data.building_property WHERE building = ?", str(id)):
 			setattr(self, name, value)
 		self.costs = {}
-		for (name, value) in self.db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", str(id)):
+		for (name, value) in db("SELECT resource, amount FROM balance.building_costs WHERE building = ?", str(id)):
 			self.costs[name]=value
-		self._loadObject()
-		running_costs = self.db("SELECT cost_active, cost_inactive FROM balance.building_running_costs WHERE building=?", self.id)
+		self._loadObject(db)
+		running_costs = db("SELECT cost_active, cost_inactive FROM balance.building_running_costs WHERE building=?", self.id)
 		if len(running_costs) > 0:
 			self.running_costs = running_costs[0][0]
 			self.running_costs_inactive = running_costs[0][1]
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
-		soundfiles = self.db("SELECT file FROM sounds INNER JOIN object_sounds ON \
+		soundfiles = db("SELECT file FROM sounds INNER JOIN object_sounds ON \
 			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]
 
 		# for mines: on which deposit is it buildable
-		buildable_on_deposit_type = self.db("SELECT deposit FROM mine WHERE mine = ?", self.id)
+		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
 
@@ -109,7 +108,7 @@ class BuildingClass(type):
 					 horizons/world/storageholder.py is the next place to go.
 					 """
 
-	def _loadObject(cls):
+	def _loadObject(cls, db):
 		"""Loads building from the db.
 		"""
 		cls.log.debug("Loading building %s", cls.id)
@@ -119,7 +118,7 @@ class BuildingClass(type):
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
-		action_sets = cls.db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
+		action_sets = db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
 		all_action_sets = ActionSetLoader.get_action_sets()
 		for (action_set_id,) in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():

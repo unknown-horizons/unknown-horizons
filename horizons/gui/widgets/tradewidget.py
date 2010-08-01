@@ -82,7 +82,7 @@ class TradeWidget(object):
 			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
 			self.partner = self.partners[nearest_partner]
 			inv_partner = self.widget.findChild(name='inventory_partner')
-			inv_partner.init(self.instance.db, self.partner.inventory)
+			inv_partner.init(self.instance.session.db, self.partner.inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
 				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.instance))
 			inv = self.widget.findChild(name='inventory_ship')
