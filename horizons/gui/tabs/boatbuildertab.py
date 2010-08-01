@@ -47,7 +47,9 @@ class BoatbuilderTab(OverviewTab):
 		container_active = self.widget.findChild(name="container_active")
 		container_inactive = self.widget.findChild(name="container_inactive")
 		progress_container = main_container.findChild(name="BB_progress_container")
-		if self.instance.is_active(): # debug cond
+
+		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
+		if self.instance.get_production_lines():
 			# TODO: fill in acctual values here
 
 			# remove other container, but save it
@@ -62,21 +64,25 @@ class BoatbuilderTab(OverviewTab):
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
-			if False: # if production is paused
+
+			if not self.instance.is_active(): # if production is paused
 				# remove active button, if it's there, and save a reference to it
 				if button_active is not None:
-					container_active.toggle_active_active = button_active
+					container_active.button_active = button_active
 					container_active.removeChild( button_active )
 				# restore inactive button, if it isn't in the gui
 				if button_inactive is None:
 					# insert at the end
 					container_active.insertChild(container_active.button_inactive, \
 					                             len(container_active.children))
+				container_active.mapEvents({
+				  'toggle_active_inactive' : Callback(self.instance.set_active, active=True)
+				})
 				# TODO: make this button do sth
 			else:
 				# remove inactive button, if it's there, and save a reference to it
 				if button_inactive is not None:
-					container_active.toggle_active_inactive = button_inactive
+					container_active.button_inactive = button_inactive
 					container_active.removeChild( button_inactive )
 				# restore active button, if it isn't in the gui
 				if button_active is None:
@@ -84,8 +90,9 @@ class BoatbuilderTab(OverviewTab):
 					container_active.insertChild(container_active.button_active, \
 					                             len(container_active.children))
 
-				# TODO: make this button do sth
-
+				container_active.mapEvents({
+				  'toggle_active_active' : Callback(self.instance.set_active, active=False)
+				})
 			upgrades_box = container_active.findChild(name="BB_upgrades_box")
 			for child in upgrades_box.children[:]:
 				upgrades_box.removeChild(child)
@@ -93,6 +100,7 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.addChild( pychan.widgets.Label(text=u"+ affection") )
 			upgrades_box.stylize('menu_black')
 
+				# TODO: make this button do sth
 			container_active.findChild(name='BB_builtship_label').stylize("headline")
 
 			still_needed_res = {  3: 42, 4 : 42 }
