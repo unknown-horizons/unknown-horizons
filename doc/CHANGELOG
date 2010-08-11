@@ -2,6 +2,104 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
+2010-08-??: Milestone 2010.1
+* General
+  * New: tutorial 
+  * New: start german docbook manual
+  * New: introduced szenarios and captains log
+  * New: Updated a bunch of documentation and updated the incode tutorial
+  * New: Implemented support for changing building gfx (any building) on increment upgrade. (autoupgrade).
+  * New: Tried to make storage collectors more intelligent by making them prefer pickups at buildings, whose inventory is full.
+  * New: Add --version option to run_uh.py
+  * New: applied some optimisation to the buildingtool
+  * New: Expanded UhDbReader
+  * New: This adds i18n support to setup.py
+  * New: Do not require a restart for toggling sound
+  * New: Limited the messagewidget to 5 messages max on screen
+  * New: Game now pauses when logbook is shown 
+  * New: community resource icon.
+  * New: inhabitant tab of the marketplace
+  * New: Included system info in debug output   
+  * New: multiplayer
+  * New: Print to log why systemwide fife can't be imported, if so. (usually, it will say 'not found', but in some cases, there could be other import issues, where the error message can be of some help)
+  * New: Added commandline flag to restore the default settings: --restore-settings
+  * New: Pressing enter in a change name dialog (for ship or settlement) now acts as submit button.
+  * New: Applied patch by Yeya to improve random map generation.
+  * New: Game will now create a settings.xml file on first program launch containing the new settings, it's now used instead of the old sqlite database
+  * New: Added community ressource as requirement for settlers
+  * New: Marketplace now produces the community resource
+  * New: add --mp-master commandline option (Syntax: --mp-master=ip:port or --mp-master=ip (+ default port))
+  * New: Extend .bat to use debug with '--debug', default is still non debug
+  * New: Included system info in debug output 
+  * New: better description for --mp-bind
+  * New: Added commandline flag to restore the default settings: --restore-settings
+  * New: don't import fife from global python module path if --fife-path is set
+  * New: (savegame revisioning patch) closed by dario
+  * New: updated help to include chat hotkey 
+  * New: create new traders when there are many settlements
+  * New: Implemented the pause/resume production button for the boatbuilder 
+  * New: Add a QuickLoad per keystroke while in the main menu F9
+  * New: Use full, native, language names in the settings dialog
+  * New: Made highlighting buildable tiles about twice as fast
+  * New: Made rect.get_radius_coordinates() at least 2 to 4 times faster
+  * New: Made building radius preview (the yellow stuff) about 30% faster
+  * New: Added claypit to the game
+  * New: Made clay pit produce clay 
+  * New: Made bricks collected by the storage 
+  * New: Increase savegame version
+  * Change: Tents are now in lvl 1 when built
+  * Change: Removed Settings class in favor of the new fife_settings module
+  * Change: All settings are now managed by the new extension
+  * Change: Some settings have been moved to the constants, like View and Tick settings
+  * Change: Made textiles a level 2 requirement instead of level 1 
+  * Change: moved farm, weaver, pasture, potatofield to 2nd increment. - rearranged ... 
+  * Change: Rename cannonboat to huker
+  * Change: Refactored engine sound management code
+  * Change: Toggling sound on/off no longer requires reboot
+  * Change: Reworked directory structure for new tile and path sets
+  * Fix: Workaround: Disabled middle mouse button scrolling
+  * Fix: Added layer for fields fixes #521 
+  * Fix: fixed segfault caused by quitting UH while preloading thread is active
+  * Fix: Empty city or ship name make problems
+  * Fix: added patch from cubathy, Bug when switching language
+  * Fix: Fixed bug that allowed you to build fields over each other  
+  * Fix: Fixed setup.py install the unknown-horizons executable into /usr/games
+  * Fix: The attached patch avoids that boats are created at the same place
+  * Fix: Stupid hack to make UH work with umlauts in the user dir on windows
+  * Fix: FIXED by FIFE :D  (Doubleclick in menu to confirm)  
+
+* Graphics and GUI
+  * New: Added lumberjack building for pioneer increment
+  * New: Added gfx for pioneers house 
+  * New: Added a second pioneers house  
+  * New: Added school model for pioneers
+  * New: Added new level 2 farm model. 
+  * New: Added Clay Pit gfx 
+  * New: Added a building and resource tree made by Afrit
+  * New: Added clay resource 
+  * New: Added brickyard. 
+  * New: Added multiplayer lobby with chat and ingamechat
+  * New: Logbook now flips pages like a real book
+  * New: Added new weaver model, and moved from sailors to pioneers
+  * New: Added an overview tab to the signal fire. 
+  * New: Display a tab when clicking on resource deposit
+  * New: Added new player emblems from eoc 
+  * Change: New boat builder tab.
+  * Change: Replaced as_pirate0 with new gfx set (armed sloop)
+
+* Sound
+
+* Translations
+  * New: Added first Catalan translation by RainCT
+  * Change: Updated English and German translations 
+  * Change: Added updated Polish translation by soeb and Amfidiusz
+  * Change: Added updated French translation by deathmaster9 and Marc Moussa
+  * Change: Added a French translation of the tutorial file by deathmaster9
+
+... and a lot more smaller bugfixes.
+
+-----------------------------------------------------
+
 2009-10-18: Milestone 2009.2
 * General
   * New: The game creates logfiles now; You can find them in your user folder
