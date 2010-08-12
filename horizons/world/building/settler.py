@@ -30,7 +30,7 @@ from horizons.constants import RES, BUILDINGS, GAME
 from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
-from horizons.util import Callback, decorators
+from horizons.util import decorators
 from horizons.world.pathfinding.pather import StaticPather
 
 class SettlerRuin(BasicBuilding, BuildableSingle):

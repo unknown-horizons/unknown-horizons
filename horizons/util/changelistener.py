@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import LivingObject
 from horizons.util.python import WeakMethodList
 
-class Changelistener(LivingObject):
+class Changelistener(object):
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
 	An object calls _changed everytime something has changed, obviously.
@@ -57,8 +56,7 @@ class Changelistener(LivingObject):
 
 	def clear_change_listeners(self):
 		"""Removes all change listeners"""
-		while self.__listeners:
-			self.__listeners.pop()
+		self.__listeners = WeakMethodList()
 
 	def _changed(self):
 		"""Calls every listener when an object changed"""
@@ -76,13 +74,14 @@ class Changelistener(LivingObject):
 	def has_remove_listener(self, listener):
 		return (listener in self.__remove_listeners)
 
-	def _removed(self):
-		"""Calls every remove listener when an object is being removed"""
-		for listener in self.__remove_listeners:
-			listener()
-
 	def load(self, db, world_id):
 		self.__init()
 
+	def remove(self):
+		for listener in self.__remove_listeners:
+			listener()
+		self.end()
+
 	def end(self):
 		self.__listeners = None
+		self.__remove_listeners = None

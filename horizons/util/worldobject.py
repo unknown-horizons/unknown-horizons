@@ -76,6 +76,7 @@ class WorldObject(Changelistener):
 		WorldObject.__next_id = max(WorldObject.__next_id, worldid + 1)
 
 	def remove(self):
+		super(WorldObject, self).remove()
 		pass # removing is done implicitly by WeakValueDict
 
 	# for testing:

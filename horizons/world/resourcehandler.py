@@ -266,12 +266,9 @@ class ResourceHandler(StorageHolder):
 
 	def _load_provided_resources(self):
 		"""Returns a iterable obj containing all resources this building provides.
-		This is outsourced from initiation to an extra function for the possiblity of overwriting it"""
-		provided_res = set()
-		for res in self.session.db("SELECT resource FROM balance.production WHERE amount > 0 AND \
-		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", self.id):
-			provided_res.add(res[0])
-		return provided_res
+		This is outsourced from initiation to a method for the possiblity of overwriting it.
+		Do not alter the returned list; if you need to do so, then copy it."""
+		return self.session.db.get_provided_resources(self.id)
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as branch offices.
@@ -283,9 +280,5 @@ class StorageResourceHandler(ResourceHandler):
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.
-		@see superclass doc
-		"""
-		provided_resources = []
-		for res in self.session.db.get_res(only_tradeable=True):
-			provided_resources.append(res[0])
-		return provided_resources
+		Do not alter the returned list; if you need to do so, then copy it."""
+		return self.session.db.get_res(only_tradeable=True)

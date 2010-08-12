@@ -31,10 +31,10 @@ NOTE: Using constants is generally a bad style, so avoid where possible."""
 
 ##Versioning
 class VERSION:
-	"""
 	def _set_version(version=None):
-		""Function gets latest revision of the working copy to display in background.
-		@param version: String to display instead of revision.""
+		"""Function gets latest revision of the working copy.
+		It only works in svn or git-svn repositories, and is acctually a hack.
+		@param version: String to display instead of revision."""
 		if version == None:
 			try:
 				from run_uh import find_uh_position
@@ -63,18 +63,18 @@ class VERSION:
 				return u""
 		else:
 			return unicode(version)
-	"""
 
 	RELEASE_NAME    = _("Unknown Horizons Version %s")
-	RELEASE_VERSION = u"#Rev:124#".replace(u"#", u"").replace(u"Rev:", u"r")
-	#RELEASE_VERSION = _set_version()
+	# this line could work with some kind of svn hook
+	#RELEASE_VERSION = u"#Rev:124#".replace(u"#", u"").replace(u"Rev:", u"r")
+	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
 	#RELEASE_NAME   = _("Unknown Horizons Alpha %s")
 	#RELEASE_VERSION = '2009.2'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 3
+	SAVEGAMEREVISION= 4
 
 	@staticmethod
 	def string():

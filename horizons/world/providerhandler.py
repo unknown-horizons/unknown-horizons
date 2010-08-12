@@ -32,8 +32,10 @@ class ProviderHandler(list):
 	def __init__(self):
 		super(ProviderHandler, self).__init__()
 		self.provider_by_resources = {}
+		# we can't use dict.fromkeys here, because if you specify a list as value parameter,
+		# the same list will be shared among all entries
 		for res in horizons.main.db.get_res():
-			self.provider_by_resources[res[0]] = []
+			self.provider_by_resources[res] = []
 
 	def append(self, provider):
 		# NOTE: appended elements need to be removed, else there will be a memory leak

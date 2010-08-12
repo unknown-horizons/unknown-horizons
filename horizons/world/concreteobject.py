@@ -67,7 +67,7 @@ class ConcretObject(WorldObject):
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
 			self._instance.setActionRuntime(runtime)
-		Scheduler().add_new_object( Callback(set_action_runtime, self, runtime), self )
+		Scheduler().add_new_object( Callback(set_action_runtime, self, runtime), self, runin=0)
 
 	def act(self, action, facing_loc=None, repeating=False):
 		if facing_loc is None:
@@ -87,7 +87,6 @@ class ConcretObject(WorldObject):
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
 		super(ConcretObject, self).remove()
-		self._removed()
 
 	def show_menu(self):
 		"""Shows tabs from self.__class__.tabs, if there are any"""

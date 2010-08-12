@@ -23,6 +23,8 @@ from random import randint
 
 from dbreader import DbReader
 
+from horizons.util import decorators
+
 ########################################################################
 class UhDbAccessor(DbReader):
 	"""UhDbAccessor is the class that contains the sql code. It is meant
@@ -73,7 +75,8 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT id FROM resource "
 		if only_tradeable:
 			sql += " WHERE tradeable = 1"
-		return self.cached_query(sql)
+		db_data = self.cached_query(sql)
+		return map(lambda x: x[0], db_data)
 
 	def get_res_id_and_icon(self, only_tradeable=False):
 		"""Returns a list of all resources and the matching icons.
@@ -175,6 +178,13 @@ class UhDbAccessor(DbReader):
 	def get_settler_upgrade_material_prodline(self, level):
 		return self.cached_query("SELECT production_line FROM upgrade_material WHERE level = ?",
 		                         level)[0][0]
+
+	@decorators.cachedmethod
+	def get_provided_resources(self, object_class):
+		"""Returns resources that are provided by a building- or unitclass as set"""
+		db_data = self("SELECT resource FROM balance.production WHERE amount > 0 AND \
+		production_line IN (SELECT id FROM production_line WHERE object_id = ? )", object_class)
+		return set(map(lambda x: x[0], db_data))
 
 
 	# Misc

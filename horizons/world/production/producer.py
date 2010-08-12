@@ -80,10 +80,6 @@ class Producer(ResourceHandler):
 		production.add_change_listener(self._on_production_change, call_listener_now=True)
 		self._changed()
 
-	def remove_production(self, production):
-		assert isinstance(production, Production)
-		super(Producer, self).remove_production(production)
-
 	def finish_production_now(self):
 		"""Cheat, makes current production finish right now (and produce the resources).
 		Useful to make trees fully grown at game start."""

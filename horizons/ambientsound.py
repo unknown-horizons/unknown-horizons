@@ -34,17 +34,17 @@ class AmbientSound(object):
 		self.__init(positioning)
 
 	def __init(self, positioning):
-		self.positioning = positioning
-		self.emitter = None
-		self.timer = None
+		self.__positioning = positioning
+		self.__emitter = None
+		self.__timer = None
 
 	def create_emitter(self):
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			self.emitter = horizons.main.fife.soundmanager.createEmitter()
-			self.emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
-			if self.positioning:
-				self.emitter.setRolloff(1.9)
-			horizons.main.fife.emitter['ambient'].append(self.emitter)
+			self.__emitter = horizons.main.fife.soundmanager.createEmitter()
+			self.__emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
+			if self.__positioning:
+				self.__emitter.setRolloff(1.9)
+			horizons.main.fife.emitter['ambient'].append(self.__emitter)
 
 	def load(self, db, worldid):
 		super(AmbientSound, self).load(db, worldid)
@@ -53,9 +53,9 @@ class AmbientSound(object):
 		self.__init(positioning=True)
 
 	def __del__(self):
-		self.emitter = None
-		self.positioning = None
-		self.timer = None
+		self.__emitter = None
+		self.__positioning = None
+		self.__timer = None
 
 	def play_ambient(self, soundfile, looping, play_every=None):
 		"""Starts playing an ambient sound
@@ -64,18 +64,18 @@ class AmbientSound(object):
 		@param play_every: play the sound every x seconds if looping is true
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			if self.emitter is None:
+			if self.__emitter is None:
 				self.create_emitter()
 			# set to current position
-			if(hasattr(self, 'position') and self.position != None and self.positioning):
-				self.emitter.setPosition(self.position.center().x, self.position.center().y, 1)
-			self.emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
+			if(hasattr(self, 'position') and self.position != None and self.__positioning):
+				self.__emitter.setPosition(self.position.center().x, self.position.center().y, 1)
+			self.__emitter.setSoundClip(horizons.main.fife.soundclippool.addResourceFromFile(soundfile))
 			if play_every is None:
-				self.emitter.setLooping(looping)
+				self.__emitter.setLooping(looping)
 			elif looping and play_every is not None:
-				duration = play_every + self.emitter.getDuration()*1000
-				self.timer = repeatCall(duration, self.emitter.play)
-			self.emitter.play()
+				duration = play_every + self.__emitter.getDuration()*1000
+				self.__timer = repeatCall(duration, self.__emitter.play)
+			self.__emitter.play()
 
 	@classmethod
 	def play_special(cls, sound, position = None):

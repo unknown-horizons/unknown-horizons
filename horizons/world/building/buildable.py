@@ -76,11 +76,17 @@ class Buildable(object):
 		@param check_settlement: whether to check for a settlement (for settlementless buildings)
 		@param ship: ship instance if building from ship
 		@return instance of _BuildPosition"""
-		position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+		# for non-quadratic buildings, we have to switch width and height depending on the rotation
+		if rotation == 45 or rotation == 225:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+		else:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1]-1, cls.size[0]-1)
+
 		buildable = True
 		tearset = []
 		try:
 			cls._check_island(session, position)
+			# TODO: if the rotation changes here for non-quadratic buildings, wrong results will be returned
 			rotation = cls._check_rotation(session, position, rotation)
 			tearset = cls._check_buildings(session, position)
 			if check_settlement:

@@ -116,6 +116,7 @@ class Production(WorldObject):
 		# depending on state, a check_inventory listener might be active
 		self.inventory.discard_change_listener(self._check_inventory)
 		Scheduler().rem_all_classinst_calls(self)
+		self.on_remove = None
 		super(Production, self).remove()
 
 	## INTERFACE METHODS

@@ -50,6 +50,11 @@ class WeakMethodList(list):
 		for callback in self:
 			callback()
 
+	def remove(self, elem):
+		if not isinstance(elem, WeakMethod):
+			elem = WeakMethod(elem)
+		list.remove(self, elem)
+
 	def __contains__(self, elem):
 		if isinstance(elem, WeakMethod):
 			return list.__contains__(self, elem)

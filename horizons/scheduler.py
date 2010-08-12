@@ -58,12 +58,12 @@ class Scheduler(LivingObject):
 		"""
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
-			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, [ str(i) for i in self.schedule[self.cur_tick]])
+			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])
 			# DEBUG test: check if every callback really is executed
 			num_callbacks = len(self.schedule[self.cur_tick])
 			for callback in copy.copy(self.schedule[self.cur_tick]):
 				# NOTE: why copy the schedule? can it be changed in any way? maybe by remove_all_classinst..?
-				self.log.debug("Scheduler(t:%s) calling %s", tick_id, str(callback))
+				self.log.debug("Scheduler(t:%s) calling %s", tick_id, callback)
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
@@ -196,6 +196,10 @@ class CallbackObject(object):
 		self.loops = loops
 		self.class_instance = class_instance
 
-	@decorators.release_mode(ret="SchedulerCallbackObject")
 	def __str__(self):
+		print '-'*20
+		print 'stringified!!'
+		import traceback
+		traceback.print_stack()
+		print
 		return "Callback(%s on %s)" % (self.callback, self.class_instance)

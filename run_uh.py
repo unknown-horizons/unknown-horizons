@@ -189,13 +189,13 @@ def main():
 			import profile
 		import tempfile
 		outfilename = tempfile.mkstemp(text = True)[1]
-		log().warning('Starting in profile mode. Writing output to: %s', outfilename)
+		print 'Starting in profile mode. Writing output to:', outfilename
 		profile.runctx('horizons.main.start(options)', globals(), locals(), \
 									 outfilename)
-		log().warning('Program ended. Profiling output: %s', outfilename)
+		print 'Program ended. Profiling output:', outfilename
 
 	if ret:
-		print unicode(_('Thank you for using Unknown Horizons!'))
+		print unicode(_(u'Thank you for using Unknown Horizons!'))
 
 
 def parse_args():

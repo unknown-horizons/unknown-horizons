@@ -39,17 +39,17 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
-		self.inventory.adjust_limits(STORAGE.DEFAULT_STORAGE_SIZE)
+		self.inventory.adjust_limit(STORAGE.DEFAULT_STORAGE_SIZE)
 
 	def create_inventory(self):
 		self.inventory = self.settlement.inventory
 		self.inventory.add_change_listener(self._changed)
 
 	def remove(self):
+		# this shouldn't be absolutely necessary since the changelistener uses weak references
+		self.inventory.remove_change_listener(self._changed)
+		self.inventory.adjust_limit(-STORAGE.DEFAULT_STORAGE_SIZE)
 		super(StorageBuilding, self).remove()
-
-	def __del__(self):
-		self.inventory.adjust_limits(-STORAGE.DEFAULT_STORAGE_SIZE)
 
 	def load(self, db, worldid):
 		super(StorageBuilding, self).load(db, worldid)
@@ -62,9 +62,5 @@ class MarketPlace(ProducerBuilding, StorageBuilding):
 
 	def _load_provided_resources(self):
 		"""Storages provide every res.
-		@see superclass doc
 		"""
-		provided_resources = []
-		for res in self.session.db.get_res(only_tradeable=False):
-			provided_resources.append(res[0])
-		return provided_resources
+		return self.session.db.get_res(only_tradeable=False)

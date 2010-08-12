@@ -22,7 +22,6 @@
 import operator
 import logging
 
-import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
@@ -89,9 +88,9 @@ class Collector(StorageHolder, Unit):
 
 		# list of class ids of buildings, where we may pick stuff up
 		# empty means pick up from everywhere
-		# NOTE: this is not allowed to change.
+		# NOTE: this is not allowed to change at runtime.
 		self.possible_target_classes = []
-		for (object_class,) in horizons.main.db("SELECT object FROM collector_restrictions WHERE \
+		for (object_class,) in self.session.db("SELECT object FROM collector_restrictions WHERE \
 																					collector = ?", self.id):
 			self.possible_target_classes.append(object_class)
 		self.is_restricted = (len(self.possible_target_classes) != 0)
@@ -105,6 +104,7 @@ class Collector(StorageHolder, Unit):
 			# in the move_home state, there still is a job, but the collector is already deregistered
 			self.job.object.remove_incoming_collector(self)
 		self.hide()
+		self.job = None
 		super(Collector, self).remove()
 
 
@@ -155,7 +155,7 @@ class Collector(StorageHolder, Unit):
 			self.job = Job(job_db[0], job_db[1], job_db[2])
 
 		# apply state when job object is loaded for sure
-		Scheduler().add_new_object(Callback(self.apply_state, self.state, remaining_ticks), self)
+		Scheduler().add_new_object(Callback(self.apply_state, self.state, remaining_ticks), self, runin=0)
 
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.
@@ -373,7 +373,6 @@ class Collector(StorageHolder, Unit):
 			self.state = self.states.idle
 		continue_action()
 
-	@decorators.release_mode(ret="Collector")
 	def __str__(self):
 		try:
 			return super(Collector, self).__str__() + "(state=%s)" % self.state

@@ -128,6 +128,8 @@ class Point(object):
 	def tuple_iter(self):
 		yield self.to_tuple()
 
+	def iter_without_border(self):
+		yield self
 
 class ConstPoint(Const, Point):
 	"""An immutable Point"""

@@ -22,8 +22,6 @@
 import weakref
 from fife.extensions import pychan
 
-import horizons.main
-
 from tabinterface import TabInterface
 from horizons.util import Callback, ActionSetLoader
 from horizons.constants import RES, SETTLER, BUILDINGS
@@ -268,7 +266,7 @@ class SettlerOverviewTab(OverviewTab):
 		# create new ones
 		resources = self.instance.get_currently_not_consumed_resources()
 		for res in resources:
-			icon = create_resource_icon(res, horizons.main.db)
+			icon = create_resource_icon(res, self.instance.session.db)
 			container.addChild(icon)
 
 		container.adaptLayout()
