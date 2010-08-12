@@ -1,0 +1,59 @@
+--- /dev/null	2008-03-21 14:13:41.000000000 +0100
++++ horizons/debugrandom.py	2010-06-25 02:54:07.000000000 +0200
+@@ -0,0 +1,30 @@
++import random
++
++class DebugRandom(random.Random):
++	def __init__(self, seed, cb = None):
++		self.cb = cb
++		super(DebugRandom, self).seed(seed)
++
++	def shuffle(self, x, random=None, int=int):
++		val = super(DebugRandom, self).shuffle(x, random, int)
++		if self.cb is not None:
++			self.cb(val)
++		return val
++
++	def randint(self, a, b):
++		val = super(DebugRandom, self).randint(a, b)
++		if self.cb is not None:
++			self.cb(val)
++		return val
++
++	def random(self):
++		val = super(DebugRandom, self).random()
++		if self.cb is not None:
++			self.cb(val)
++		return val
++
++	def choice(self, seq):
++		val = super(DebugRandom, self).choice(seq)
++		if self.cb is not None:
++			self.cb(val)
++		return val
+--- horizons/mpsession.py	(revision 3408)
++++ horizons/mpsession.py	(working copy)
+@@ -20,6 +20,9 @@
+ # ###################################################
+ 
+ import random
++import debugrandom
++import traceback
++import sys
+ 
+ from horizons.session import Session
+ from horizons.manager import MPManager
+@@ -38,8 +41,12 @@
+ 		return MPManager(self, self.__network_interface)
+ 
+ 	def create_rng(self):
+-		return random.Random(self.__rng_seed)
++		return debugrandom.DebugRandom(self.__rng_seed, cb = self.debug_random)
+ 
++	def debug_random(self, value):
++		print "Tick=%d, RngVal=%s" % (self.timer.tick_next_id, value)
++		traceback.print_stack(limit=10, file=sys.stdout)
++
+ 	def speed_set(self, ticks):
+ 		self.gui.show_popup(_("Not possible"), _("You cannot change the speed of a multiplayer game"))
+ 
