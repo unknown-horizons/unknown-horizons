@@ -32,6 +32,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		self.session = session
 		horizons.main.fife.eventmanager.addKeyListenerFront(self)
 		self.keysPressed = []
+		# Used to sum up the keyboard autoscrolling
+		self.key_scroll = [0, 0]
 
 	def end(self):
 		horizons.main.fife.eventmanager.removeKeyListener(self)
@@ -46,14 +48,20 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		if not was:
 			self.keysPressed.append(keyval)
 		if keyval == fife.Key.LEFT:
-			if not was: self.session.view.autoscroll(-25, 0)
-		elif keyval == fife.Key.RIGHT:
-			if not was: self.session.view.autoscroll(25, 0)
-		elif keyval == fife.Key.UP:
-			if not was: self.session.view.autoscroll(0, -25)
-		elif keyval == fife.Key.DOWN:
-			if not was: self.session.view.autoscroll(0, 25)
-		elif keyval == fife.Key.ESCAPE:
+			if not was: self.key_scroll[0] -= 25
+		if keyval == fife.Key.RIGHT:
+			if not was: self.key_scroll[0] += 25
+		if keyval == fife.Key.UP:
+			if not was: self.key_scroll[1] -= 25
+		if keyval == fife.Key.DOWN:
+			if not was: self.key_scroll[1] += 25
+
+		# We scrolled, do autoscroll
+		if self.key_scroll[0] != 0 or self.key_scroll != 0:
+			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
+			return
+
+		if keyval == fife.Key.ESCAPE:
 			if not self.session.ingame_gui.on_escape():
 				return # let the MainListener handle this
 		elif keystr == 'g':
@@ -140,11 +148,11 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.keysPressed.remove(keyval)
 		except:
 			return
-		if keyval == fife.Key.LEFT:
-			self.session.view.autoscroll(25, 0)
-		elif keyval == fife.Key.RIGHT:
-			self.session.view.autoscroll(-25, 0)
-		elif keyval == fife.Key.UP:
-			self.session.view.autoscroll(0, 25)
-		elif keyval == fife.Key.DOWN:
-			self.session.view.autoscroll(0, -25)
+		if keyval == fife.Key.LEFT or \
+		   keyval == fife.Key.RIGHT:
+			self.key_scroll[0] = 0
+		if keyval == fife.Key.UP or \
+		   keyval == fife.Key.DOWN:
+			self.key_scroll[1] = 0
+		self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
+

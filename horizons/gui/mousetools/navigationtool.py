@@ -91,20 +91,18 @@ class NavigationTool(CursorTool):
 			else:
 				self.session.ingame_gui.resourceinfo_set(None)
 		# Mouse scrolling
-		old = self.lastScroll
-		new = [0, 0]
+		x, y = 0, 0
 		if mousepoint.x < 5:
-			new[0] -= 5 - mousepoint.x
+			x -= 5 - mousepoint.x
 		elif mousepoint.x >= (self.session.view.cam.getViewPort().right()-5):
-			new[0] += 6 + mousepoint.x - self.session.view.cam.getViewPort().right()
+			x += 6 + mousepoint.x - self.session.view.cam.getViewPort().right()
 		if mousepoint.y < 5:
-			new[1] -= 5 - mousepoint.y
+			y -= 5 - mousepoint.y
 		elif mousepoint.y >= (self.session.view.cam.getViewPort().bottom()-5):
-			new[1] += 6 + mousepoint.y - self.session.view.cam.getViewPort().bottom()
-		new = [new[0] * 10, new[1] * 10]
-		if new[0] != old[0] or new[1] != old[1]:
-			self.session.view.autoscroll(new[0]-old[0], new[1]-old[1])
-			self.lastScroll = new	
+			y += 6 + mousepoint.y - self.session.view.cam.getViewPort().bottom()
+		x *= 10
+		y *= 10
+		self.session.view.autoscroll(x,y)
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
@@ -118,6 +116,4 @@ class NavigationTool(CursorTool):
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
-			old = self.lastScroll
-			self.session.view.autoscroll(-old[0], -old[1])
-			self.lastScroll = [0, 0]
+			self.session.view.autoscroll(0, 0) #stop autoscroll

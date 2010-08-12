@@ -63,7 +63,6 @@ class View(Changelistener):
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
 		self.cam.setZoom(VIEW.ZOOM)
-		self._autoscroll = [0, 0]
 
 		self.cam.resetRenderers()
 		self.renderer = {}
@@ -77,7 +76,14 @@ class View(Changelistener):
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])
 
+		#Setup autoscroll
+		horizons.main.fife.pump.append(self.do_autoscroll)
+		self.time_last_autoscroll = time.time()
+		self._autoscroll = [0, 0]
+		self._autoscroll_keys = [0, 0]
+
 	def end(self):
+		horizons.main.fife.pump.remove(self.do_autoscroll)
 		self.model.deleteMaps()
 		super(View, self).end()
 
@@ -97,22 +103,22 @@ class View(Changelistener):
 		@param x:
 		@param y:
 		"""
-		old = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
-		self._autoscroll[0] += x
-		self._autoscroll[1] += y
-		new = (self._autoscroll[0] != 0) or (self._autoscroll[1] != 0)
-		if old != new:
-			if old:
-				horizons.main.fife.pump.remove(self.do_autoscroll)
-			if new:
-				self.time_last_autoscroll = time.time()
-				horizons.main.fife.pump.append(self.do_autoscroll)
+		self._autoscroll[0] = x
+		self._autoscroll[1] = y
+
+	def autoscroll_keys(self, x, y):
+		"""
+		@param x:
+		@param y:
+		"""
+		self._autoscroll_keys[0] = x
+		self._autoscroll_keys[1] = y
 
 	def do_autoscroll(self):
 		t = time.time()
 		self.scroll( \
-		  self._autoscroll[0] * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll), \
-		  self._autoscroll[1] * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
+		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll), \
+		  (self._autoscroll[1]+self._autoscroll_keys[1]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
 		self.time_last_autoscroll = t
 		self._changed()
 
