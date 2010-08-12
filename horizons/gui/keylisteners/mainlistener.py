@@ -81,6 +81,10 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 				# ingame message if there is a session
 				self.gui.session.ingame_gui.message_widget.add(None, None, 'SCREENSHOT', \
 																													{'file': screenshotfilename})
+		elif keyval == fife.Key.F9:
+			from horizons.main import _load_last_quicksave
+			_load_last_quicksave()
+
 
 	def keyReleased(self, evt):
 		pass
