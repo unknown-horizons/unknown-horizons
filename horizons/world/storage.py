@@ -218,6 +218,9 @@ class GlobalLimitStorage(GenericStorage):
 			self.limit = 0
 		self._changed()
 
+	def get_limit(self, res):
+		return self.limit
+
 class TotalStorage(GlobalLimitStorage):
 	"""The TotalStorage represents a storage with a general limit to the sum of resources
 	that can be stored in it. The limit is a general limit, not specialized to one resource.

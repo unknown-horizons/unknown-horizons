@@ -60,7 +60,7 @@ class Inventory(pychan.widgets.Container):
 			# check if this res should be displayed
 			if not self.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-			filled = int(float(amount) / float(self._inventory.limit) * 100.0)
+			filled = int(float(amount) / float(self._inventory.get_limit(resid)) * 100.0)
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, filled=filled)
 			current_hbox.addChild(button)
 

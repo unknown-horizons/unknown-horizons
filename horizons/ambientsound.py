@@ -92,4 +92,4 @@ class AmbientSound(object):
 				a.position = position
 			soundfile = horizons.main.db.get_sound_file(sound)
 			a.play_ambient(soundfile, looping = False)
-			horizons.main.fife.emitter['ambient'].remove(a.emitter)
+			horizons.main.fife.emitter['ambient'].remove(a.__emitter)
