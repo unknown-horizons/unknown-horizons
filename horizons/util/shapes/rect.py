@@ -218,9 +218,8 @@ class Rect(object):
 						if t not in self_coords:
 							yield t
 				else: # coords of this rect cannot appear here
-					for y, x_range in borders.iteritems():
-						for x in xrange(x_range[0], x_range[1]+1):
-							yield (x, y)
+					for x in xrange(x_range[0], x_range[1]+1):
+						yield (x, y)
 		else:
 			for y, x_range in borders.iteritems():
 				for x in xrange(x_range[0], x_range[1]+1):
