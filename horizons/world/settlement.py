@@ -99,8 +99,6 @@ class Settlement(TradePost, NamedObject):
 		# load super here cause basic stuff is just set up now
 		super(Settlement, self).load(db, worldid)
 
-		self.inventory.load(db, worldid)
-
 		# load all buildings from this settlement
 		# the buildings will expand the area of the settlement by adding everything,
 		# that is in the radius of the building, to the settlement.
@@ -108,6 +106,10 @@ class Settlement(TradePost, NamedObject):
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			load_building(session, db, building_type, building_id)
+
+		# load inventory after buildings, since buildings, specifically storages, determine
+		# the size of the settlement's inventory
+		self.inventory.load(db, worldid)
 
 		return self
 

@@ -75,11 +75,11 @@ class Island(WorldObject):
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
 		self.__init(Point(x, y), filename)
 
-		# load settlements and buildings, if there are any
+		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
 			Settlement.load(db, settlement_id, self.session)
 
-
+		# load buildings
 		from horizons.world import load_building
 		for (building_worldid, building_typeid) in \
 		    db("SELECT rowid, type FROM building WHERE location = ?", islandid):

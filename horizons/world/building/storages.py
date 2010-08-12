@@ -39,6 +39,9 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
+		self.__init()
+
+	def __init(self):
 		self.inventory.adjust_limit(STORAGE.DEFAULT_STORAGE_SIZE)
 
 	def create_inventory(self):
@@ -53,6 +56,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 
 	def load(self, db, worldid):
 		super(StorageBuilding, self).load(db, worldid)
+		self.__init()
 
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
