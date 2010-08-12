@@ -59,7 +59,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		# We scrolled, do autoscroll
 		if self.key_scroll[0] != 0 or self.key_scroll != 0:
 			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
-			return
 
 		if keyval == fife.Key.ESCAPE:
 			if not self.session.ingame_gui.on_escape():
