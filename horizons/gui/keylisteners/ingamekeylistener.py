@@ -71,6 +71,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			pass
 			#import pdb; pdb.set_trace()
 			#debug code to check for memory leaks:
+			"""
 			import gc
 			import weakref
 			all_lists = []
@@ -100,6 +101,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 						print
 
 			#print all_lists
+			"""
 
 		elif keystr == 'b':
 			self.session.ingame_gui.show_build_menu()

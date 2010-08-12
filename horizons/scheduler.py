@@ -197,9 +197,4 @@ class CallbackObject(object):
 		self.class_instance = class_instance
 
 	def __str__(self):
-		print '-'*20
-		print 'stringified!!'
-		import traceback
-		traceback.print_stack()
-		print
 		return "Callback(%s on %s)" % (self.callback, self.class_instance)
