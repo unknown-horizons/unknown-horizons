@@ -6,6 +6,7 @@ GAME-PLAY DESIGN
 dauerflucher (Andreas Lis)
 Andre (Andre Reichelt)
 Kilian] (Kilian K.)
+eoc (Christopher Oelmueller)
 
 PROGRAMMING
 lynxis (Alexander Couzens)
@@ -17,6 +18,12 @@ totycro (Bernhard Mallinger)
 chistoph_debian (Christoph Egger)
 GreyGhost (Tushar Sawant)
 RainCT (Siegfried Gevatter)
+tuempl (Harald Demel)
+manuel (Manuel Mausz)
+
+SOUND/MUSIC ARTISTS
+draikon (Sebastian Ahlen)
+novatlan (Tobias Escher)
 
 GRAPHIC ARTISTS
 dauerflucher (Andreas Lis)
@@ -24,14 +31,17 @@ egore (Christoph Brill)
 kaschte (Fabian Riedel)
 terwarf (Alexander Breidenbroich)
 
-SOUND/MUSIC ARTISTS
-draikon (Sebastian Ahlen)
-novatlan (Tobias Escher)
-
 TRANSLATORS
-French - LiveWire
+French - LiveWire, deathmaster9, Marc Moussa
 Norwegian - frodus
 Portuguese - Mad_Monk
+Polish - soeb, Amfidiusz
+Catalan - RainCT (Siegfried Gevatter)
+
+PATCHERS
+dario
+Yeya
+cubathy
 
 Special thanks to
 The whole FIFE team (www.fifengine.de)
@@ -41,4 +51,5 @@ LinuxDonald (Thomas Kowaliczek)
 Dreimer (Daniel Reimer)
 hoehrer (Werner Hoehrer)
 mattn (Martin Gerhardry)
+Afrit
 Reiner Prokein http://reinerstileset.4players.de
