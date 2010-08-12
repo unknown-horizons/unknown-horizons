@@ -32,6 +32,8 @@ class Minimap(object):
 	           1: (137, 117, 87),
 	           2: (1,   1,   1) }
 
+	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
+
 	@make_constants()
 	def __init__(self, rect, session, renderer):
 		"""
@@ -75,7 +77,8 @@ class Minimap(object):
 		self._recalculate()
 
 		Scheduler().rem_all_classinst_calls(self)
-		Scheduler().add_new_object(self._timed_update, self, Scheduler().get_ticks(0.5), -1)
+		Scheduler().add_new_object(self._timed_update, self, \
+		                           Scheduler().get_ticks(self.SHIP_DOT_UPDATE_INTERVAL), -1)
 
 	def update_cam(self):
 		"""Redraw camera border."""
@@ -211,7 +214,13 @@ class Minimap(object):
 			color = ship().owner.color.to_tuple()
 			area_to_color = Rect.init_from_topleft_and_size(coord[0], coord[1], 2, 2)
 			for tup in area_to_color.tuple_iter():
-				self.renderer.addPoint("minimap_ship", self.renderernodes[tup], *color)
+				try:
+					self.renderer.addPoint("minimap_ship", self.renderernodes[tup], *color)
+				except KeyError:
+					# this happens in rare cases, when the ship is at the border of the map,
+					# and since we color an area, that's bigger than a point, it can exceed the
+					# minimap's dimensions.
+					pass
 
 
 	## CALC UTILITY
