@@ -252,10 +252,18 @@ def _start_map(map_name, is_scenario = False):
 	map_file = None
 	for i in xrange(0, len(maps[1])):
 		if maps[1][i].startswith(map_name):
-			map_file = maps[0][i]
-			break
+			if map_file is not None:
+				# multiple matches, collect all for output
+				map_file += u'\n' + maps[0][i]
+			else:
+				map_file = maps[0][i]
 	if map_file is None:
-		print _("Error: Cannot find map \"%s\".") % map_name
+		print _(u"Error: Cannot find map \"%s\".") % map_name
+		return False
+	if len(map_file.splitlines()) > 1:
+		print _(u"Error: Found multiple matches: ")
+		for match in map_file.splitlines():
+			print os.path.basename(match)
 		return False
 	load_game(map_file, is_scenario)
 	return True
@@ -272,10 +280,18 @@ def _load_map(savegamename):
 	map_file = None
 	for i in xrange(0, len(saves[1])):
 		if saves[1][i].startswith(savegamename):
-			map_file = saves[0][i]
-			break
+			if map_file is not None:
+				# multiple matches, collect all for output
+				map_file += u'\n' + saves[0][i]
+			else:
+				map_file = saves[0][i]
 	if map_file is None:
-		print _("Error: Cannot find savegame \"%s\".") % savegamename
+		print _(u"Error: Cannot find savegame \"%s\".") % savegamename
+		return False
+	if len(map_file.splitlines()) > 1:
+		print _(u"Error: Found multiple matches: ")
+		for match in map_file.splitlines():
+			print os.path.basename(match)
 		return False
 	load_game(map_file)
 	return True
@@ -288,7 +304,7 @@ def _load_last_quicksave():
 	try:
 		save = save_files[len(save_files)-1]
 	except KeyError:
-		print _("Error: No quicksave found.")
+		print _(u"Error: No quicksave found.")
 		return False
 	load_game(save)
 	return True
