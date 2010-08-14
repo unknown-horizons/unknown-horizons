@@ -322,7 +322,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		  tmp_selected_changed))
 
 		retval = self.show_dialog(self.current, \
-		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete'},
+		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete', 'savegamefile' : True},
 														onPressEscape = False)
 
 		if not retval: # canceled
