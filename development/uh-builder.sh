@@ -74,6 +74,15 @@ else
 			exit 1
 		fi
 		;;
+	"crunchbang")
+		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
+		clear
+		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra 
+		if [ $? -ne 0 ] ; then 
+			echo "Error: Failed to install required dependencies"
+			exit 1
+		fi
+		;;	
 	"gentoo")
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
