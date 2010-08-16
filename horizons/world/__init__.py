@@ -150,11 +150,14 @@ class World(LivingObject):
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
 		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
-		# fill whole world
-		for x in xrange(self.min_x, self.max_x):
-			for y in xrange(self.min_y, self.max_y):
+
+		for x in xrange(self.min_x, self.max_x+1, 10):
+			for y in xrange(self.min_y, self.max_y, 10):
 				ground = default_grounds(self.session, x, y)
-				self.ground_map[(x, y)] = ground
+				# -5 to 5 to accomodate for nen shifted 10x10 tile graphic
+				for x_offset in xrange(-5,5):
+					for y_offset in xrange(-5,5):
+						self.ground_map[(x+x_offset, y+y_offset)] = ground
 
 		# "unfill" parts that are occupied by island
 		# TODO: check if constructing a list of water coords is faster than calling the Ground() so many times
@@ -224,14 +227,14 @@ class World(LivingObject):
 				for coords, tile in sorted(island.ground_map.iteritems()):
 					# add tree to every nth tile
 					if self.session.random.randint(0, 2) == 0 and Tree.check_build(self.session, tile, \
-																				                    check_settlement=False):
+										                                           check_settlement=False):
 						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
 						building.finish_production_now() # make trees big and fill their inventory
 						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
 							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
-							 self.session.random.randint(0, 30) == 0 and \
-							 Clay.check_build(self.session, tile, check_settlement=False):
+						 self.session.random.randint(0, 30) == 0 and \
+						 Clay.check_build(self.session, tile, check_settlement=False):
 						num_clay_deposits += 1
 						cmd = Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
 
@@ -400,8 +403,8 @@ class World(LivingObject):
 					#       of bo's per island/settlement
 					if isinstance(building, horizons.world.building.storages.BranchOffice):
 						if (radius is None or position is None or \
-							 building.position.distance(position) <= radius) and \
-								(owner is None or building.owner == owner):
+							building.position.distance(position) <= radius) and \
+						   (owner is None or building.owner == owner):
 							branchoffices.append(building)
 		return branchoffices
 
@@ -441,19 +444,19 @@ class World(LivingObject):
 
 	def get_checkup_hash(self):
 		dict = {
-				'rngvalue': self.session.random.random(),
-				'settlements': [],
-			}
+			'rngvalue': self.session.random.random(),
+			'settlements': [],
+		}
 		for island in self.islands:
 			for settlement in island.settlements:
 				entry = {
-						'owner': str(settlement.owner.worldid),
-						'tax_settings': str(settlement.tax_setting),
-						'inhabitants': str(settlement.inhabitants),
-						'cumulative_running_costs': str(settlement.cumulative_running_costs),
-						'cumulative_taxes': str(settlement.cumulative_taxes),
-						'inventory' : str(settlement.inventory._storage),
-					}
+					'owner': str(settlement.owner.worldid),
+					'tax_settings': str(settlement.tax_setting),
+					'inhabitants': str(settlement.inhabitants),
+					'cumulative_running_costs': str(settlement.cumulative_running_costs),
+					'cumulative_taxes': str(settlement.cumulative_taxes),
+					'inventory' : str(settlement.inventory._storage),
+				}
 				dict['settlements'].append(entry)
 		return dict
 
