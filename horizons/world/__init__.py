@@ -151,12 +151,12 @@ class World(LivingObject):
 		self.ground_map = {}
 		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
 
-		for x in xrange(self.min_x, self.max_x+1, 10):
+		for x in xrange(self.min_x, self.max_x, 10):
 			for y in xrange(self.min_y, self.max_y, 10):
 				ground = default_grounds(self.session, x, y)
 				# -5 to 5 to accomodate for nen shifted 10x10 tile graphic
-				for x_offset in xrange(-5,5):
-					for y_offset in xrange(-5,5):
+				for x_offset in xrange(-5,6):
+					for y_offset in xrange(-5,6):
 						self.ground_map[(x+x_offset, y+y_offset)] = ground
 
 		# "unfill" parts that are occupied by island
