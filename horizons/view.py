@@ -115,6 +115,12 @@ class View(Changelistener):
 		self._autoscroll_keys[1] = y
 
 	def do_autoscroll(self):
+		if self._autoscroll[0] == 0 and \
+		   self._autoscroll[1] == 0 and \
+		   self._autoscroll_keys[0] == 0 and \
+		   self._autoscroll_keys[1] == 0:
+			self.time_last_autoscroll = time.time()
+			return
 		t = time.time()
 		self.scroll( \
 		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll), \
