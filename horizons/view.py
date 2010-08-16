@@ -154,7 +154,6 @@ class View(Changelistener):
 
 		self.cam.setLocation(loc)
 		horizons.main.fife.soundmanager.setListenerPosition(pos.x, pos.y, 1)
-		self.cam.refresh()
 		self._changed()
 
 	def set_location(self, location):
