@@ -51,8 +51,19 @@ def show_logbook_entry(session, message):
 
 def do_win(session):
 	"""Called when player won"""
+	session.speed_pause()
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
+
+	continue_playing = session.gui.show_popup(_("You have won!"), \
+	                                          _("You have completed this scenario. " +
+	                                            "Do you want to continue playing?"), \
+	                                          show_cancel_button=True)
+	if not continue_playing:
+		Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, runin=0)
+	else:
+		session.speed_unpause()
+
 
 def do_lose(session):
 	"""Called when player lost"""

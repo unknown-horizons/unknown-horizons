@@ -127,6 +127,7 @@ class SingleplayerMenu(object):
 	def __show_invalid_scenario_file_popup(self, exception):
 		"""Shows a popup complaining about invalid scenario file.
 		@param exception: InvalidScenarioFile exception instance"""
+		print "Error: ", unicode(str(exception))
 		self.show_popup(_("Invalid scenario file"), \
-		                _("The selected file is not a valid scenario file.\nError message:\n") + \
+		                _("The selected file is not a valid scenario file.\nError message: ") + \
 		                unicode(str(exception)))
