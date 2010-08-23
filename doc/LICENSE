@@ -17,6 +17,7 @@ Graphics from Reiner's Tileset:
 ALL files in content/gfx/units EXCEPT in: 
 ships/freetraders/as_trader0
 ships/warships/as_cannonboat0
+ships/pirates/as_pirate0/
 animals/as_fallowdeer0
 animals/as_reddeer0
 
