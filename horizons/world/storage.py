@@ -210,12 +210,17 @@ class GlobalLimitStorage(GenericStorage):
 		self.limit = int(db("SELECT value FROM storage_global_limit WHERE object = ?", ownerid)[0][0])
 
 	def adjust_limit(self, amount):
-		"""Adjusts the limit of the storage by amount
+		"""Adjusts the limit of the storage by amount.
+		If the limit is reduced, every resource that doesn't fit in the storage anymore is dropped!
 		@param amount: int, difference to current limit (positive or negative)
 		"""
 		self.limit += amount
 		if self.limit < 0:
 			self.limit = 0
+		# remove res that don't fit anymore
+		for res, amount in self._storage.iteritems():
+			if amount > self.limit:
+				self._storage[res] = self.limit
 		self._changed()
 
 	def get_limit(self, res):
