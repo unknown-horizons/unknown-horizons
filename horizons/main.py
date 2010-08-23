@@ -186,7 +186,17 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	from spsession import SPSession
 	_modules.session = SPSession(_modules.gui, db)
 	players = [ { 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True } ]
-	_modules.session.load(map_file, players, is_scenario=is_scenario)
+	try:
+		_modules.session.load(map_file, players, is_scenario=is_scenario)
+	except:
+		import traceback
+		print "Failed to load", map_file
+		traceback.print_exc()
+		if _modules.session is not None and _modules.session.is_alive:
+			_modules.session.end()
+		_modules.gui.show_main()
+		_modules.gui.show_popup(_("Error!"), _("Load failed. Please try another savefile!"))
+		load_game()
 
 def prepare_multiplayer(game):
 	"""Starts a multiplayer game server
