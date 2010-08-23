@@ -226,8 +226,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 											 _('Do you really want to delete the savegame "%s"?') % \
 											 SavegameManager.get_savegamename_from_filename(selected_file), \
 											 show_cancel_button = True):
-			os.unlink(selected_file)
-			return True
+			try:
+				os.unlink(selected_file)
+				return True
+			except:
+				self.show_popup(_("Error!"), _("Failed to delete savefile!"))
+				return False
 		else:
 			return False
 
