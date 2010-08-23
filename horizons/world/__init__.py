@@ -151,13 +151,16 @@ class World(LivingObject):
 		self.ground_map = {}
 		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER))]
 
-		for x in xrange(self.min_x, self.max_x, 10):
-			for y in xrange(self.min_y, self.max_y, 10):
+		# extra world size that is added so that he player can't see the "black void"
+		border = 30
+		for x in xrange(self.min_x-border, self.max_x+border, 10):
+			for y in xrange(self.min_y-border, self.max_y+border, 10):
 				ground = default_grounds(self.session, x, y)
-				# -5 to 5 to accomodate for nen shifted 10x10 tile graphic
-				for x_offset in xrange(-5,6):
-					for y_offset in xrange(-5,6):
-						self.ground_map[(x+x_offset, y+y_offset)] = ground
+				for x_offset in xrange(0,10):
+					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
+						for y_offset in xrange(0,10):
+							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
+								self.ground_map[(x+x_offset, y+y_offset)] = ground
 
 		# "unfill" parts that are occupied by island
 		# TODO: check if constructing a list of water coords is faster than calling the Ground() so many times
