@@ -21,6 +21,7 @@
 
 from time import strftime
 import logging
+import textwrap
 
 from horizons.gui.modules import PlayerDataSelection
 from horizons.savegamemanager import SavegameManager
@@ -179,11 +180,10 @@ class MultiplayerMenu(object):
 		"""Receive a chat message from the network. Only possible in lobby state"""
 		line_max_length = 40
 		chatbox = self.current.findChild(name="chatbox")
-		chatbox.items.append(u""+ player + ": "+msg[:(line_max_length - len(player) - 2)])
-		#TODO: Needs generalization and wrapping after space
-		#thats ugly:
-		if len(msg) > line_max_length - len(player) - 2:
-			chatbox.items.append(u" "+msg[(line_max_length - len(player) - 2):(line_max_length * 2 - len(player) - 2)])
+		full_msg = u""+ player + ": "+msg 
+		lines = textwrap.wrap(full_msg, line_max_length) 
+		for line in lines: 
+			chatbox.items.append(line) 
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __show_create_game(self):
