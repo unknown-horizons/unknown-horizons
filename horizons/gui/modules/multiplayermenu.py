@@ -177,9 +177,14 @@ class MultiplayerMenu(object):
 
 	def __receive_chat_message(self, game, player, msg):
 		"""Receive a chat message from the network. Only possible in lobby state"""
+		line_max_length = 40
 		chatbox = self.current.findChild(name="chatbox")
-		chatbox.items.append(u"("+strftime("%H:%M:%S")+") "+ player + ": "+msg)
-		chatbox.selected = len(chatbox.items)-1
+		chatbox.items.append(u""+ player + ": "+msg[:(line_max_length - len(player) - 2)])
+		#TODO: Needs generalization and wrapping after space
+		#thats ugly:
+		if len(msg) > line_max_length - len(player) - 2:
+			chatbox.items.append(u" "+msg[(line_max_length - len(player) - 2):(line_max_length * 2 - len(player) - 2)])
+		chatbox.selected = len(chatbox.items) - 1
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""

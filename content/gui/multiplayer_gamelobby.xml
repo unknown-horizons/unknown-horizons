@@ -1,30 +1,34 @@
 <?xml version="1.0"?>
 <Container size="1024,768">
 	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
+    <Container size="800,800" position="100,100">
+		<Icon image="content/gui/images/background/book.png" position="0,0" />
 
-	<Label name="headline" text="Gamelobby" position="100,110"/>
+        <Container size="320,500" position="55,32">
+            <Label text="Gamelobby" position="115,10" name="headline" />
+            <Icon image="content/gui/images/background/hr.png" position="52,30" />
 
-	<Label name="game_start_notice" text="The game will start as soon as enough players have joined." position="100,150"/>
+            <Label text="Chat:" position="22,50" name="headline" />
+            <ScrollArea name="chat_scroll_area" min_size="300,335" position="22,75">
+                <ListBox name="chatbox" min_size="300,335" />
+            </ScrollArea>
+            <TextField name="chatTextField" text="Enter your message here" min_size="300,16" position="22,420" />
+        
+            <Label name="exit_to_mp_menu_lbl" text="Leave:" position="75,470" />
+            <TooltipButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" tooltip="Exit gamelobby" />
+        </Container>
 
-	<VBox position="500,150" name="gamedetailsbox">
-		<Label name="startmessage" text="Game details"/>
-		<Label name="game_map"/>
-		<Label name="game_creator"/>
-		<Label name="game_playersnum"/>
-		<Label name="game_players"/>
-	</VBox>
-
-	<VBox position="150,300">
-		<HBox>
-			<Label name="chatlbl" text="Chat:"/>
-		</HBox>
-		<ScrollArea min_size="600,300" max_size="600,300" horizontal_scrollbar="1" name="chat_scroll_area">
-			<ListBox name="chatbox" min_size="600,300" max_size="600,300"/>
-		</ScrollArea>
-		<HBox>
-			<TextField name="chatTextField" text="Enter your message here" size="300,16"/>
-		</HBox>
-	</VBox>
-
-	<TooltipButton up_image="content/gui/images/icons/oa_startmenu_door_gray.png" down_image="content/gui/images/icons/oa_startmenu_door.png" hover_image="content/gui/images/icons/oa_startmenu_door.png" name="cancel" position="420,700" tooltip="Exit gamelobby"/>
+        
+        <Container size="320,500" position="420,32" name="right_page">
+            <Label name="game_start_notice" text="The game will start as soon as enough players have joined." position="0,50" max_size="300,40" wrap_text="1" />
+            <Label name="startmessage" text="Game details:" position="0,100" />
+            <VBox position="130,100">
+                <Label name="game_map"/>
+                <Label name="game_creator"/>
+                <Label name="game_playersnum"/>
+                <Label name="game_players"/>
+            </VBox>
+        </Container>
+        
+    </Container>
 </Container>
