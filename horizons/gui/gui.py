@@ -44,7 +44,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	styles = {
 	  'mainmenu': 'menu',
 	  'quitgame': 'book',
-	  'credits': 'book',
 	  'settings': 'book',
 	  'requirerestart': 'book',
 	  'popup_with_cancel': 'book',
@@ -61,7 +60,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'serverlist': 'menu',
 	  'serverlobby': 'menu',
 	  'select_savegame': 'book',
-	  'ingame_pause': 'book'
+	  'ingame_pause': 'book',
+#	  'credits': 'book',
 	  }
 
 	def __init__(self):
@@ -91,6 +91,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self):
 		"""Shows the credits dialog. """
+		for i in xrange (0,5):
+			cur_container = self.widgets['credits'].findChild(name='book'+str(i))
+			if cur_container is not None:
+				cur_container.stylize('book')
 		self.show_dialog(self.widgets['credits'], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):

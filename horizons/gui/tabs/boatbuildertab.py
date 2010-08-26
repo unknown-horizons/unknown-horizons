@@ -50,7 +50,7 @@ class BoatbuilderTab(OverviewTab):
 
 		# a boatbuilder is considered active here, if he build sth, no matter if it's paused
 		if self.instance.get_production_lines():
-			# TODO: fill in acctual values here
+			# TODO: fill in actual values here
 
 			# remove other container, but save it
 			if container_inactive is not None:
@@ -59,8 +59,8 @@ class BoatbuilderTab(OverviewTab):
 			if container_active is None:
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
-			container_active.findChild(name="BB_builtship_label").text = u"Loveboat"
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "$NAME $CLASS $COST"
+			container_active.findChild(name="BB_builtship_label").text = u"Fishing boat"
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher \nStorage: 1 slot of 1t \nSpeed: average \nHealth: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -96,8 +96,9 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box = container_active.findChild(name="BB_upgrades_box")
 			for child in upgrades_box.children[:]:
 				upgrades_box.removeChild(child)
-			upgrades_box.addChild( pychan.widgets.Label(text=u"+ love") )
-			upgrades_box.addChild( pychan.widgets.Label(text=u"+ affection") )
+#			upgrades_box.addChild( pychan.widgets.Label(text=u"+ love") )
+#			upgrades_box.addChild( pychan.widgets.Label(text=u"+ affection") )
+# no upgrades in 2010.1 release ---^
 			upgrades_box.stylize('menu_black')
 
 				# TODO: make this button do sth
@@ -147,7 +148,8 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/bb/%s_a.png' % tabname
 		self.button_down_image = 'content/gui/images/icons/hud/common/bb/%s_d.png' % tabname
 		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/%s_h.png' % tabname
-
+		for i in xrange(1,5): # xml names start at 1.  v--- ship names in small caps
+			self.widget.findChild(name='BB_'+str(tabname)+'_ship'+str(i)).stylize('headline')
 	def start_production(self, prod_line_id):
 		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
 		# show overview tab

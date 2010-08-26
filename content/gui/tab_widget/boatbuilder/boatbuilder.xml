@@ -26,7 +26,7 @@
 
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
 	<Container position="0,150" size="260,150" name="container_inactive">
-		<Label position="0,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150"
+		<Label position="25,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150"
 			text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
 	</Container>
 
@@ -35,24 +35,20 @@
 	<Container position="0,133" size="260,160" name="container_active">
 		<!-- Current order, pause -->
 		<Label name="BB_current_order" position="25,0" text="Currently building:" />
-		<Label name="BB_builtship_label" position="45,20" text=""/> <!-- Sloop-o'-war -->
-		<TooltipIcon image="content/gfx/dummies/square_120.png" position="25,40" name="BB_cur_ship_icon" tooltip=""/> <!-- $NAME $CLASS $COSTS" -->
-		<VBox position="150,50" name="BB_upgrades_box"/>
-		<!--
-		<Label name="BB_upgrade_1" position="150,50" text="+ Cannons" />
-		<Label name="BB_upgrade_2" position="150,68" text="+ Storage" /> <!- we need to get this automated (plus translations)! -->
+		<Label name="BB_builtship_label" position="45,20" text=""/> <!-- Fishing boat -->
+		<TooltipIcon image="content/gfx/dummies/square_120.png" position="25,40" 
+			name="BB_cur_ship_icon" tooltip=""/>
+		<VBox position="150,50" name="BB_upgrades_box"/> 	<!-- translations? -->
 
 		<!-- one of those button gets removed at runtime -->
 		<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_active_n.png"
 			down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
 			hover_image="content/gui/images/icons/hud/main/toggle_active_h.png"
 			border_size="0" position="170,100" name="toggle_active_active" tooltip="Pause" />
-
 		<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
 			down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
 			hover_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
 			border_size="0" position="170,100" name="toggle_active_inactive" tooltip="Resume" />
-
 	</Container>
 
 	<Container position="25,300" size="260,40" name="BB_progress_container">
@@ -63,7 +59,7 @@
 	</Container>
 
 	<Container position="25,355" size="260,50" name="BB_needed_resources_container">
-		<!-- Resources -->
+	<!-- Resources -->
 		<Label position="0,0" name="BB_needed_res_label" text=""/>
 		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" /> 
 		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
@@ -72,14 +68,14 @@
 		<TooltipIcon image="" position="140,25" name="BB_needed_res_icon_3" tooltip="" /> 
 		<Label position="162,25" name="BB_needed_res_lbl_3" text="" />
 		<!-- dynamical display of the three most wanted res with amount in one line, looking like this:  
-		[ ] 11/16t	[ ] 4/8t	[ ] 2/6t
-		the 'still needed' value (first one) could be coloured red to make it clear.-->
+		[ ] 11t	[ ] 8t	[ ] 2t -->
 	</Container>
 
 	<Container position="30,420" size="260,100" >		
-		<!-- Cancel task -->
+	<!-- Cancel task -->
 		<Label position="30,10" name="BB_cancel_build_label" text="Cancel building:" />
 		<Label position="30,25" name="BB_cancel_warning_label" text="(lose all resources)" /> <!-- smaller font than the above one -->
-		<TooltipIcon image="content/gui/images/background/close.png" position="150,0" size="64,64" tooltip="Cancel all \nbuilding progress" /> <!-- needs a confirmation popup -->
+		<TooltipIcon position="150,0" size="64,64" 
+			image="content/gui/images/background/close.png" tooltip="Cancel all \nbuilding progress" /> <!-- needs a confirmation popup -->
 	</Container>
 </Container>
