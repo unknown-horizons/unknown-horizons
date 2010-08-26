@@ -1,0 +1,311 @@
+#Unit
+msgid "Sheep"
+msgstr ""
+
+#Resources
+msgid "wild animal food 1"
+msgstr ""
+
+#Resources
+msgid "coins"
+msgstr ""
+
+#Building
+msgid "Log"
+msgstr ""
+
+#Building
+msgid "Fisherman's Tent"
+msgstr ""
+
+#Resources
+msgid "food"
+msgstr ""
+
+#Unit
+msgid "FarmerCollector"
+msgstr ""
+
+#Colors
+msgid "yellow"
+msgstr ""
+
+#Colors
+msgid "pink"
+msgstr ""
+
+#Resources
+msgid "raw clay"
+msgstr ""
+
+#Building
+msgid "Clay Deposit"
+msgstr ""
+
+#Building
+msgid "Main Square"
+msgstr ""
+
+#Resources
+msgid "tools"
+msgstr ""
+
+#Resources
+msgid "happiness"
+msgstr ""
+
+#Building
+msgid "Tent"
+msgstr ""
+
+#Building
+msgid "Lookout"
+msgstr ""
+
+#Unit
+msgid "HunterCollector"
+msgstr ""
+
+#Unit
+msgid "FarmAnimalCollector"
+msgstr ""
+
+#Resources
+msgid "education"
+msgstr ""
+
+#Unit
+msgid "LumberjackCollector"
+msgstr ""
+
+#Resources
+msgid "lamb wool"
+msgstr ""
+
+#Building
+msgid "Farm"
+msgstr ""
+
+#Building
+msgid "Signal Fire"
+msgstr ""
+
+#Resources
+msgid "sugar"
+msgstr ""
+
+#Building
+msgid "Weaver's Tent"
+msgstr ""
+
+#Building
+msgid "Trail"
+msgstr ""
+
+#Resources
+msgid "wood"
+msgstr ""
+
+#Colors
+msgid "black"
+msgstr ""
+
+#Unit
+msgid "StorageCollector"
+msgstr ""
+
+#Unit
+msgid "Fisher"
+msgstr ""
+
+#Building
+msgid "Village school"
+msgstr ""
+
+#Messages
+msgid "YOU HAVE WON!!!"
+msgstr ""
+
+#Building
+msgid "Tent_ruin"
+msgstr ""
+
+#Building
+msgid "Hunter's Tent"
+msgstr ""
+
+#Building
+msgid "Sugar Field"
+msgstr ""
+
+#Messages
+msgid "Your game has been quicksaved."
+msgstr ""
+
+#Building
+msgid "Pavilion"
+msgstr ""
+
+#Resources
+msgid "raw sugar"
+msgstr ""
+
+#Unit
+msgid "Pirate Ship"
+msgstr ""
+
+#Unit
+msgid "Trader"
+msgstr ""
+
+#Colors
+msgid "blue"
+msgstr ""
+
+#Building
+msgid "Tree"
+msgstr ""
+
+#Building
+msgid "Potato Field"
+msgstr ""
+
+#Building
+msgid "Storage Tent"
+msgstr ""
+
+#Resources
+msgid "textile"
+msgstr ""
+
+#Building
+msgid "Clay Pit"
+msgstr ""
+
+#Resources
+msgid "community"
+msgstr ""
+
+#Messages
+msgid "A new settlement has been created by ${player}."
+msgstr ""
+
+#Colors
+msgid "cyan"
+msgstr ""
+
+#Unit
+msgid "BuildingCollector"
+msgstr ""
+
+#Colors
+msgid "white"
+msgstr ""
+
+#Resources
+msgid "bricks"
+msgstr ""
+
+#Resources
+msgid "boards"
+msgstr ""
+
+#Building
+msgid "Lumberjack Camp"
+msgstr ""
+
+#Resources
+msgid "faith"
+msgstr ""
+
+#Resources
+msgid "wool"
+msgstr ""
+
+#Unit
+msgid "AnimalCarriage"
+msgstr ""
+
+#Messages
+msgid "One of your settler has no market place in it's range."
+msgstr ""
+
+#Unit
+msgid "SettlerCollector"
+msgstr ""
+
+#Messages
+msgid "Your settlers reached level ${level}."
+msgstr ""
+
+#Resources
+msgid "potatoes"
+msgstr ""
+
+#Messages
+msgid "A new world has been created."
+msgstr ""
+
+#Building
+msgid "Boat Builder"
+msgstr ""
+
+#Unit
+msgid "Deer"
+msgstr ""
+
+#Building
+msgid "Brickyard"
+msgstr ""
+
+#Unit
+msgid "FieldCollector"
+msgstr ""
+
+#Resources
+msgid "clay"
+msgstr ""
+
+#Messages
+msgid "Some of your settlers just moved out."
+msgstr ""
+
+#Colors
+msgid "green"
+msgstr ""
+
+#Colors
+msgid "red"
+msgstr ""
+
+#Messages
+msgid "Screenshot has been saved to ${file}."
+msgstr ""
+
+#Building
+msgid "Rampart"
+msgstr ""
+
+#Building
+msgid "Pasture"
+msgstr ""
+
+#Unit
+msgid "Ship"
+msgstr ""
+
+#Resources
+msgid "grass"
+msgstr ""
+
+#Messages
+msgid "You need more ${resource} to build this building."
+msgstr ""
+
+#Building
+msgid "Branch Office"
+msgstr ""
+
+#Resources
+msgid "wild animal meat"
+msgstr ""
