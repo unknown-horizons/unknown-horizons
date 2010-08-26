@@ -1,4 +1,5 @@
 
 *.log
 *.pyc
+*.po~
 Thumbs.db
