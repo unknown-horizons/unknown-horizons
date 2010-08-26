@@ -33,8 +33,6 @@
 #   the magic from horizons/constants.py
 # ###################################################
 
-from horizons.constants import VERSION
-
 text_translations = dict()
 
 def set_translations():
@@ -48,9 +46,9 @@ def set_translations():
 			"services_label"              : _("Services"),
 			"companies_label"             : _("Companies"),
 			"resident-1"                  : _("Tent: \nHouses your \ninhabitants."),
+			"store-1"                     : _("Storage: \nExtends stock\nand provides\ncollectors."),
 			"street-1"                    : _("Trail: \nNeeded for \ncollecting goods."),
 			"main_square-1"               : _("Main square:\nSupplies citizens\nwith goods."),
-			"store-1"                     : _("Storage: \nExtends stock\nand provides\ncollectors."),
 			"church-1"                    : _("Pavilion: \nFulfills religious\nneeds of sailors."),
 			"lighthouse-1"                : _("Signal fire: \nAllows the player\nto trade with\nthe free trader."),
 			"lumberjack-1"                : _("Lumberjack: \nChops down trees\nand turns them\ninto boards."),
@@ -60,14 +58,15 @@ def set_translations():
 		"build_menu/hud_build_tab1.xml" : {
 			"headline"                    : _("Pioneer Buildings"),
 			"companies_label"             : _("Companies"),
+			"companies_label"             : _("Fields"),
 			"services_label"              : _("Services"),
 			"military_label"              : _("Military"),
 			"herder-1"                    : _("Farm: \nGrows field \ncrops and raises \nlivestock."),
-			"potatofield-1"               : _("Potato Field:\nDelivers food. \nNeeds a farm."),
-			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm."),
 			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth."),
 			"clay-pit-1"                  : _("Clay Pit: \n Gets clay \nfrom deposit."),
 			"brickyard-1"                 : _("Brickyard: \nTurns clay \ninto bricks."),
+			"potatofield-1"               : _("Potato Field:\nDelivers food. \nNeeds a farm."),
+			"pasture-1"                   : _("Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm."),
 			"villageschool-1"             : _("Elementary school: \nProvides education."),
 			"boat_builder-1"              : _("Boat builder: \nBuilds boats and\nsmall ships. \nBuilt on coast.")},
 		"build_menu/hud_build_tab2.xml" : {
@@ -111,7 +110,9 @@ def set_translations():
 		"buysellmenu/resources.xml" : {
 			"headline"                    : _("Select resources:")},
 		"captains_log.xml" : {
-			"lbl_log"                     : _("Captain's Log")},
+			"backwardButton"              : _("Read previous entries"),
+			"forwardButton"               : _("Read next entries"),
+			"cancelButton"                : _("Leave Captain's Log")},
 		"change_name.xml" : {
 			"headline"                    : _("Change name"),
 			"enter_new_name_lbl"          : _("Enter new name:")},
@@ -133,7 +134,7 @@ def set_translations():
 			"headline_thanks"             : _("SPECIAL THANKS to:"),
 			"fife_team_lbl"               : _("The FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
-			"version_label"               : VERSION.string(),
+			"version_label"               : _("Unknown Horizons Alpha"),
 			"start"                       : _("Return to Game"),
 			"quit"                        : _(" Cancel Game "),
 			"savegame"                    : _(" Save Game "),
@@ -164,7 +165,8 @@ def set_translations():
 			"set26"                       : _("{C} = Chat"),
 			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
 			"have_fun_lbl"                : _("Have fun."),
-			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons development teams")},
+			"fife_and_uh_team_lbl"        : _("The FIFE and Unknown Horizons"),
+			"fife_and_uh_team_lbl2"       : _("development teams")},
 		"ingame_pause.xml" : {
 			"headline"                    : _("Game paused"),
 			"hit_p_to_continue_lbl"       : _("Hit P to continue the game or click below!")},
@@ -173,9 +175,9 @@ def set_translations():
 			"started_pdb_lbl"             : _("You start the terminal python debugger pdb!")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
-			"version_label"               : VERSION.string()},
+			"version_label"               : _("Unknown Horizons Alpha")},
 		"mainmenu.xml" : {
-			"version_label"               : VERSION.string(),
+			"version_label"               : _("Unknown Horizons Alpha"),
 			"start"                       : _("Singleplayer"),
 			"start_multi"                 : _("Multiplayer"),
 			"credits"                     : _(" Credits "),
@@ -200,9 +202,10 @@ def set_translations():
 			"create"                      : _("Create this new game")},
 		"multiplayer_gamelobby.xml" : {
 			"headline"                    : _("Gamelobby"),
+			"headline"                    : _("Chat:"),
+			"exit_to_mp_menu_lbl"         : _("Leave:"),
 			"game_start_notice"           : _("The game will start as soon as enough players have joined."),
-			"startmessage"                : _("Game details"),
-			"chatlbl"                     : _("Chat:"),
+			"startmessage"                : _("Game details:"),
 			"cancel"                      : _("Exit gamelobby")},
 		"multiplayermenu.xml" : {
 			"headline"                    : _("NEW GAME - MULTIPLAYER"),
@@ -263,10 +266,6 @@ def set_translations():
 			"showCampaign"                : _("Campaign"),
 			"showRandom"                  : _("Random map"),
 			"showMaps"                    : _("Free play")},
-##############
-##  no need to translate the following (until next comment)
-##  since we currently work on that GUI and changes are
-##  possible, so better don't try to update this :) 
 		"tab_widget/boatbuilder/boatbuilder.xml" : {
 			"headline"                    : _("Building Overview"),
 			"BB_howto_build_lbl"          : _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
@@ -360,9 +359,6 @@ def set_translations():
 			"BB_needed_money"             : _("6500"),
 			"BB_war2_ship3"               : _("Corvette"),
 			"BB_war2_ship4"               : _("Frigate")},
-##  okay, here we go again.
-##  the following is rather stable content ;-)
-##############
 		"tab_widget/tab_account.xml" : {
 			"headline"                    : _("Account"),
 			"income_label"                : _("Income:"),

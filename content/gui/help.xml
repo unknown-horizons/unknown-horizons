@@ -3,7 +3,7 @@
         <Icon image="content/gui/images/background/book.png" position="0,0" />
         <Container position="55,32" size="500,500">
                 <Label text="Key Bindings" position="110,10" name="headline" />
-                <Icon image="content/gui/images/background/hr.png" position="52,30" />        
+                <Icon image="content/gui/images/background/hr.png" position="52,30" />
                 <Label name="set01" text="{LEFT}        = Scroll left" position="52,50" />
                 <Label name="set02" text="{RIGHT}        = Scroll right" position="52,80" />
                 <Label name="set03" text="{UP}        = Scroll up" position="52,110" />
@@ -22,7 +22,7 @@
                         <TextBox name="helpBox" filename="content/infotext.txt"/>
                 </ScrollArea>-->
         </Container>
-        
+
         <Container position="405,32" size="500,500">
                 <Label name="set20" text="{P} = Pause game" position="42,50" />
                 <Label name="set21" text="{ + } = Increase game speed" position="42,80" />
@@ -31,7 +31,8 @@
                 <Label name="set26" text="{C} = Chat" position="42,170" />
                 <Label name="set25" text="{SHIFT} = Hold to place multiple buildings" position="42,200" />
                 <Label name="have_fun_lbl" text="Have fun." position="42,280"/>
-                <Label name="fife_and_uh_team_lbl" text="The FIFE and Unknown Horizons development teams" position="42,350" wrap_text="1" max_size="330,70" /> <!-- this is not wrapped despite saying so -->
+                <Label name="fife_and_uh_team_lbl" text="The FIFE and Unknown Horizons" position="42,350" max_size="315,20" />
+                <Label name="fife_and_uh_team_lbl2" text="development teams" position="42,370" max_size="315,20" />
                 <Label text="http://www.unknown-horizons.org" position="42,410" />
                 <Label text="http://www.fifengine.de" position="42,440" />
         </Container>
