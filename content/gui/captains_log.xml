@@ -3,19 +3,37 @@
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 
 	<!-- left side -->
-	<Container size="320, 25" position="80,40">
-		<Label wrap_text="0" max_size="300, 25" name="lbl_log" text="Captain's Log" font="libertine_18_black" />
-	</Container>
-	<Container size="320,530" position="80,75">
+	<Container size="350,580" position="75,40">
+		<!--Label name="lbl_log" max_size="320, 25" 
+			wrap_text="0" text="Captain's Log" font="libertine_18_black" /-->
+		<Label name="head_left" max_size="320,25" 
+			wrap_text="0" font="libertine_18_black" />
+		<Label name="lbl_left" position="0,35" max_size="320,580" 
+			wrap_text="1" font="libertine_14_black" />
 
-		<Label wrap_text="1" max_size="300,480" name="lbl_left" font="libertine_14_black" />
-		<ImageButton name="backwardButton" up_image="content/gui/images/background/parrow_left.png" hover_image="content/gui/images/background/parrow_left_h.png" down_image="content/gui/images/background/parrow_left_d.png" position="0,425" />
-		<ImageButton name="forwardButton" up_image="content/gui/images/background/parrow_right.png" hover_image="content/gui/images/background/parrow_right_h.png" down_image="content/gui/images/background/parrow_right_d.png" position="35,425" />
+		<TooltipButton name="backwardButton" position="0,470" 
+			up_image="content/gui/images/background/parrow_left.png" 
+			hover_image="content/gui/images/background/parrow_left_h.png" 
+			down_image="content/gui/images/background/parrow_left_d.png" 
+			tooltip="Read previous entries" />
+		<TooltipButton name="forwardButton" position="35,470" 
+			up_image="content/gui/images/background/parrow_right.png" 
+			hover_image="content/gui/images/background/parrow_right_h.png" 
+			down_image="content/gui/images/background/parrow_right_d.png" 
+			tooltip="Read next entries" /> <!-- "proximate entries" would also fit -->
 	</Container>
 
 	<!-- right side -->
-	<Container size="320,530" position="440,75">
-		<Label wrap_text="1" max_size="300,480" name="lbl_right" font="libertine_14_black" />
-		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="250,425" />
+	<Container size="350,580" position="425,40">
+		<Label name="head_right" max_size="320,25" 
+			wrap_text="0" font="libertine_18_black" />
+		<Label name="lbl_right" position="0,35" max_size="320,580" 
+			wrap_text="1" font="libertine_14_black" />
+
+		<TooltipButton name="cancelButton" position="250,470" 
+			up_image="content/gui/images/background/close.png" 
+			hover_image="content/gui/images/background/close_h.png" 
+			down_image="content/gui/images/background/close.png" 
+			tooltip="Leave Captain's Log" />
 	</Container>
 </Container>

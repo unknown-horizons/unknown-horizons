@@ -109,7 +109,7 @@ class CampaignEventHandler(LivingObject):
 
 	@classmethod
 	def get_difficulty_from_file(cls, filename):
-		"""Returns the difficulty from a yaml file.
+		"""Returns the difficulty of a yaml file.
 		Returns _("unknown") if difficulty isn't specified.
 		@throws InvalidScenarioFile"""
 		try:
@@ -119,7 +119,7 @@ class CampaignEventHandler(LivingObject):
 
 	@classmethod
 	def get_author_from_file(cls, filename):
-		"""Returns the authos from a yaml file.
+		"""Returns the author of a yaml file.
 		Returns _("unknown") if difficulty isn't specified.
 		@throws InvalidScenarioFile"""
 		try:
@@ -223,7 +223,8 @@ class _Action(object):
 	  'win' : do_win,
 	  'lose' : do_lose,
 	  'set_var' : set_var,
-	  'logbook': show_logbook_entry
+	  'logbook': show_logbook_entry,
+	  'logbook_s': write_logbook_entry
 	}
 
 	def __init__(self, action_dict):
