@@ -36,6 +36,12 @@ for root, dirs, files in os.walk('horizons'):
 		dirs.remove('.svn')
 	packages.append(root)
 
+# Add enet files for build platform
+type = platform.system().lower()
+arch = platform.machine()
+dir = "horizons/network/%s-x%s" % (type, arch[-2:])
+package_data = { dir: '*.so' }
+
 class _build_i18n(build_i18n.build_i18n):
 	def run(self):
 		# Include strings from the SQLite DB in the resulting POT file
@@ -80,5 +86,6 @@ setup(
 	author_email='team@unknown-horizons.org',
 	url='http://www.unknown-horizons.org',
 	packages=packages,
+	package_data=package_data,
 	data_files=data,
 	cmdclass=cmdclass)
