@@ -40,7 +40,7 @@ for root, dirs, files in os.walk('horizons'):
 type = platform.system().lower()
 arch = platform.machine()
 dir = "horizons/network/%s-x%s" % (type, arch[-2:])
-package_data = { dir: '*.so' }
+package_data = { dir: ['*.so'] }
 
 class _build_i18n(build_i18n.build_i18n):
 	def run(self):
