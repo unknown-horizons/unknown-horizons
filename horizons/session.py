@@ -246,7 +246,7 @@ class Session(LivingObject):
 			if i + 1 < len(GAME_SPEED.TICK_RATES):
 				self.speed_set(GAME_SPEED.TICK_RATES[i + 1])
 		else:
-			self.speed_set(GAME_SPEED.TICK_INTERVAL[0])
+			self.speed_set(GAME_SPEED.TICK_RATES[0])
 
 	def speed_down(self):
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
