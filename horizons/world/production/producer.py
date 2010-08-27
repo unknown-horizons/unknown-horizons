@@ -204,6 +204,15 @@ class QueueProducer(Producer):
 		else:
 			self.set_active(active=False)
 
+	def cancel_all_productions(self):
+		self.production_queue = []
+		# Remove current productions, loose all progress and resources
+		for production in self._productions.copy().itervalues():
+			self.remove_production(production)
+		for production in self._inactive_productions.copy().itervalues():
+			self.remove_production(production)
+		self.set_active(active=False)
+
 class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable

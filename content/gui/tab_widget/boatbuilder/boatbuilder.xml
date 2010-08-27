@@ -59,27 +59,27 @@
 		<!-- Progress display -->
 		<ProgressBar position="0,5" name='progress'/>
 		<Label position="0,20" name="BB_progress_label" text="Construction progress:" />
-		<Label position="165,20" name="BB_progress_perc" text="" /> 
+		<Label position="165,20" name="BB_progress_perc" text="" />
 	</Container>
 
 	<Container position="25,355" size="260,50" name="BB_needed_resources_container">
 		<!-- Resources -->
 		<Label position="0,0" name="BB_needed_res_label" text=""/>
-		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" /> 
+		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" />
 		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
-		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" /> 
+		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" />
 		<Label position="92,25" name="BB_needed_res_lbl_2" text="" />
-		<TooltipIcon image="" position="140,25" name="BB_needed_res_icon_3" tooltip="" /> 
+		<TooltipIcon image="" position="140,25" name="BB_needed_res_icon_3" tooltip="" />
 		<Label position="162,25" name="BB_needed_res_lbl_3" text="" />
-		<!-- dynamical display of the three most wanted res with amount in one line, looking like this:  
+		<!-- dynamical display of the three most wanted res with amount in one line, looking like this:
 		[ ] 11/16t	[ ] 4/8t	[ ] 2/6t
 		the 'still needed' value (first one) could be coloured red to make it clear.-->
 	</Container>
 
-	<Container position="30,420" size="260,100" >		
+	<Container position="30,420" size="260,100" >
 		<!-- Cancel task -->
 		<Label position="30,10" name="BB_cancel_build_label" text="Cancel building:" />
 		<Label position="30,25" name="BB_cancel_warning_label" text="(lose all resources)" /> <!-- smaller font than the above one -->
-		<TooltipIcon image="content/gui/images/background/close.png" position="150,0" size="64,64" tooltip="Cancel all \nbuilding progress" /> <!-- needs a confirmation popup -->
+		<TooltipButton name="BB_cancel_button" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" position="150,0" size="64,64" tooltip="Cancel all \nbuilding progress" /> <!-- needs a confirmation popup -->
 	</Container>
 </Container>

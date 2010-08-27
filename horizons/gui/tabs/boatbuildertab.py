@@ -116,6 +116,11 @@ class BoatbuilderTab(OverviewTab):
 				i += 1
 
 			# TODO: cancel building button
+			print "Cancelbutton search.."
+			cancel_button = self.widget.findChild(name="BB_cancel_button")
+			print "Found:", cancel_button
+			cancel_button.capture(self.instance.cancel_all_productions, event_name="mouseClicked")
+			print cancel_button.isCaptured()
 
 		else: # display sth when nothing is produced
 			# remove other container, but save it
