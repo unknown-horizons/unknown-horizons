@@ -19,6 +19,7 @@ antialias: 1
 #row_spacing: 50
 #glyph_spacing: 100
 
+
 [Font/libertine_mainmenu]
 
 type: truetype
@@ -28,6 +29,7 @@ color: 255,255,255
 antialias: 1
 #row_spacing: 50
 #glyph_spacing: 100
+
 
 [Font/libertine_18]
 
@@ -56,6 +58,7 @@ source: content/fonts/LinLibertine_It-4.0.6.ttf
 size: 15
 color: 68,42,2
 antialias: 1
+
 
 [Font/libertine_18_black]
 
@@ -111,3 +114,12 @@ color: 255,255,255
 antialias: 1
 #row_spacing: 50
 #glyph_spacing: 100
+
+
+[Font/libertine_small_tooltip]
+
+type: truetype
+source: content/fonts/LinLibertine_Bd-4.1.0.ttf
+size: 13
+color: 255,255,255
+antialias: 1

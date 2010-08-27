@@ -1,11 +1,24 @@
 <?xml version="1.0"?>
-<Container name="settings_window" size="800,580" position="0,0">
-	<Icon image="content/gui/images/background/book.png" position="0,0" />
+<Container name="settings_window" size="1020,580" position="-20,0">
+	<Icon image="content/gui/images/background/book.png" position="100,0" />
 
 	<!-- left side -->
-	<Container size="350,580" position="75,40">
-		<!--Label name="lbl_log" max_size="320, 25" 
-			wrap_text="0" text="Captain's Log" font="libertine_18_black" /-->
+	<Container size="170,580" position="0,0"> 
+		<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_l.png" /><!--
+		<ImageButton position="40,200" up_image="content/gui/images/background/pickbelt_l.png" />-->
+		<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_l.png" /><!--
+		<ImageButton position="50,300" up_image="content/gui/images/background/pickbelt_l.png" />-->
+		<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_l.png" />
+	</Container>
+
+	<Container size="170,580" position="-1,3"> 
+		<Label position="50,160" text="Captain's Log" font="libertine_small_tooltip" /><!--
+		<Label position="55,210" text="" font="libertine_small_tooltip" />-->
+		<Label position="60,260" text="Game Messages" font="libertine_small_tooltip" /><!--
+		<Label position="65,310" text="" font="libertine_small_tooltip" />-->
+		<Label position="70,360" text="Chat Messages" font="libertine_small_tooltip" />
+	</Container>
+	<Container size="350,580" position="175,40">
 		<Label name="head_left" max_size="320,25" 
 			wrap_text="0" font="libertine_18_black" />
 		<Label name="lbl_left" position="0,35" max_size="320,580" 
@@ -15,7 +28,7 @@
 			up_image="content/gui/images/background/parrow_left.png" 
 			hover_image="content/gui/images/background/parrow_left_h.png" 
 			down_image="content/gui/images/background/parrow_left_d.png" 
-			tooltip="Read previous entries" />
+			tooltip="Read prev. entries" />
 		<TooltipButton name="forwardButton" position="35,470" 
 			up_image="content/gui/images/background/parrow_right.png" 
 			hover_image="content/gui/images/background/parrow_right_h.png" 
@@ -24,7 +37,7 @@
 	</Container>
 
 	<!-- right side -->
-	<Container size="350,580" position="425,40">
+	<Container size="350,580" position="525,40">
 		<Label name="head_right" max_size="320,25" 
 			wrap_text="0" font="libertine_18_black" />
 		<Label name="lbl_right" position="0,35" max_size="320,580" 
@@ -35,5 +48,21 @@
 			hover_image="content/gui/images/background/close_h.png" 
 			down_image="content/gui/images/background/close.png" 
 			tooltip="Leave Captain's Log" />
+	</Container>
+
+	<Container size="170,580" position="810,0">
+		<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_r.png" /><!--
+		<ImageButton position="40,200" up_image="content/gui/images/background/pickbelt_r.png" />-->
+		<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_r.png" /><!--
+		<ImageButton position="50,300" up_image="content/gui/images/background/pickbelt_r.png" />-->
+		<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_r.png" />
+	</Container>
+
+	<Container size="170,580" position="799,3"> 
+		<Label position="50,160" text="Captain's Log" font="libertine_small_tooltip" /><!--
+		<Label position="55,210" text="" font="libertine_small_tooltip" />-->
+		<Label position="60,260" text="Game Messages" font="libertine_small_tooltip" /><!--
+		<Label position="65,310" text="" font="libertine_small_tooltip" />-->
+		<Label position="70,360" text="Chat Messages" font="libertine_small_tooltip" />
 	</Container>
 </Container>

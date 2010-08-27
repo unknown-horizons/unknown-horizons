@@ -204,8 +204,11 @@ LANGUAGENAMES = _LanguageNameDict(
 	ca = u'Català',
 	de = u'Deutsch',
 	en = u'English',
+	es = u'Español',
 	fr = u'Français',
-	nb = u'Norwegian Bokmål',
+	it = u'Italiano',
+	nb = u'Norw. Bokmål',
 	pl = u'Polski',
+	pt_BR = u'Português Br.',
 	pt_PT = u'Português'
 )

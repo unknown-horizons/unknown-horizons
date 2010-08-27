@@ -35,7 +35,7 @@
 				up_image="content/gui/images/icons/hud/build/claypit.png"			
 				hover_image="content/gui/images/icons/hud/build/claypit_h.png" 
 				down_image="content/gui/images/icons/hud/build/claypit_h.png" 				
-				tooltip="Clay Pit: \n Gets clay \nfrom deposit." />
+				tooltip="Clay Pit: \nGets clay \nfrom deposit." />
 			<TooltipButton name="brickyard-1" position="164,32" 
 				up_image="content/gui/images/icons/hud/build/brickmaker.png"			
 				hover_image="content/gui/images/icons/hud/build/brickmaker_h.png" 
@@ -53,15 +53,15 @@
 				up_image="content/gui/images/icons/hud/build/potatos.png" 			
 				hover_image="content/gui/images/icons/hud/build/potatos_h.png" 
 				down_image="content/gui/images/icons/hud/build/potatos_h.png" 				
-				tooltip="Potato Field:\nDelivers food. \nNeeds a farm." />
+				tooltip="Potato Field: \nYields food. \nNeeds a farm." />
 			<TooltipButton name="pasture-1" position="56,32" 
 				up_image="content/gui/images/icons/hud/build/pasture.png"			
 				hover_image="content/gui/images/icons/hud/build/pasture_h.png" 
 				down_image="content/gui/images/icons/hud/build/pasture_h.png" 				
-				tooltip="Pasture is used \nto grow sheep.\nProduces wool. \nNeeds a farm." />
+				tooltip="Pasture: \nRaises sheep. \nProduces wool. \nNeeds a farm." />
 		</Container>
 
-		<Container position="20,182" size="250,80" >
+		<Container position="20,182" size="60,80" >
 			<Label position="0,11" text="Services" name="services_label" />
 
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
@@ -70,21 +70,22 @@
 				up_image="content/gui/images/icons/hud/build/dummy_btn.png" 
 				hover_image="content/gui/images/icons/hud/build/dummy_btn.png" 
 				down_image="content/gui/images/icons/hud/build/dummy_btn.png"
-				tooltip="Elementary school: \nProvides education." />
+				tooltip="Village school: \nProvides education." />
 <!--				up_image="content/gui/images/icons/hud/build/villageschool.png" 
 				hover_image="content/gui/images/icons/hud/build/villageschool_h.png" 
 				down_image="content/gui/images/icons/hud/build/villageschool_h.png" -->
+		</Container>
 
-			<Label position="110,11" text="Military" name="military_label" />
+		<Container position="130,182" size="60,80" >
+			<Label position="0,11" text="Military" name="military_label" />
 
-			<Icon image="content/gui/images/background/build_button_bg.png" position="110,30" />
+			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
-			<TooltipButton name="boat_builder-1" position="110,32" 
+			<TooltipButton name="boat_builder-1" position="0,32" 
 				up_image="content/gui/images/icons/hud/build/boat_builder.png"		
 				hover_image="content/gui/images/icons/hud/build/boat_builder_h.png" 
 				down_image="content/gui/images/icons/hud/build/boat_builder_h.png" 			
-				tooltip="Boat builder: \nBuilds boats and\nsmall ships. \nBuilt on coast." />
-
+				tooltip="Boat builder: \nBuilds boats and \nsmall ships. \nBuilt on coast." />
 
 		</Container>
 
@@ -94,10 +95,10 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 		<TooltipButton name="distillery-1" position="0,30" 
-				up_image="content/gui/images/icons/hud/build/.png"		
-				hover_image="content/gui/images/icons/hud/build/_h.png" 
-				down_image="content/gui/images/icons/hud/build/_h.png" 			
-				tooltip="Distillery: \nTurns sugar \ninto rum. \nNo function currently!" />
+				up_image="content/gui/images/icons/hud/build/distillery.png"		
+				hover_image="content/gui/images/icons/hud/build/distillery_h.png" 
+				down_image="content/gui/images/icons/hud/build/distillery_h.png" 			
+				tooltip="Distillery: \nTurns sugar \ninto liquor. \nNo function currently!" />
 		</Container>	-->
 	</Container>
 </Container>

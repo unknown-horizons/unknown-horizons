@@ -28,7 +28,9 @@ from horizons.world.production.producer import UnitProducerBuilding
 from collectingbuilding import CollectingBuilding
 
 class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
-	tabs = (BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
+	tabs = (BoatbuilderTab, BoatbuilderFisherTab)
+# , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
+# not visible in release 2010.1
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
