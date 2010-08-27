@@ -180,7 +180,8 @@ class QueueProducer(Producer):
 		#print "Check production"
 		state = self._get_current_state()
 		return (state is PRODUCTION.STATES.done or\
-				state is PRODUCTION.STATES.none) and\
+				state is PRODUCTION.STATES.none or\
+		        state is PRODUCTION.STATES.paused) and\
 			   (len(self.production_queue) > 0)
 
 	def on_production_finished(self, production_line):
