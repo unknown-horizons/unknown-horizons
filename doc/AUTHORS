@@ -30,23 +30,29 @@ dauerflucher (Andreas Lis)
 egore (Christoph Brill)
 kaschte (Fabian Riedel)
 terwarf (Alexander Breidenbroich)
+wentam
 
 TRANSLATORS
-Brazilian Portuguese - hpoyatos (Henrique Poyatos)
-Catalan - RainCT (Siegfried-Angel Gevatter Pujals)
-French - LiveWire, deathmaster9, Marc Moussa
-German - Michael Skiba
-Italian - Fabio Pedretti
-Norwegian - frodus (Frode Woldsund)
-Portuguese - Nuno 'MadMonk' Alves
-Polish - soeb, Amfidiusz (Adrian Marcinkowski)
-Spanish - Nikolai Woutlan
+Brazilian Portuguese: hpoyatos (Henrique Poyatos)
+Catalan: RainCT (Siegfried Gevatter)
+French: LiveWire, deathmaster9 (Marc Moussa)
+German: Michael Skiba
+Italian: Fabio Pedretti
+Norwegian: frodus (Frode Woldsund)
+Portuguese: MadMonk (Nuno Alves)
+Polish: soeb, Amfidiusz (Adrian Marcinkowski)
+Spanish: Nikolai Woutlan
 
 PATCHERS
-dario
-Yeya
-cubathy
-IwfY
+abeaumont (Building bugfix)
+Afrit (Resource tree)
+cubathy (Language bugfix)
+dario (Savegame versioning)
+IwfY (Game lobby GUI)
+MadMonk (Focus bugfix)
+MSSSM (Several improvements)
+soeb (Translation enhancements)
+Yeya (Random maps)
 
 Special thanks to
 The whole FIFE team (www.fifengine.de)
@@ -56,5 +62,4 @@ LinuxDonald (Thomas Kowaliczek)
 Dreimer (Daniel Reimer)
 hoehrer (Werner Hoehrer)
 mattn (Martin Gerhardry)
-Afrit
-Reiner Prokein http://reinerstileset.4players.de
+Reiner Prokein (http://reinerstileset.4players.de)

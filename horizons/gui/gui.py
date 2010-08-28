@@ -91,7 +91,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self):
 		"""Shows the credits dialog. """
-		for i in xrange (0,5):
+		for i in xrange (0,29):
 			cur_container = self.widgets['credits'].findChild(name='book'+str(i))
 			if cur_container is not None:
 				cur_container.stylize('book')
