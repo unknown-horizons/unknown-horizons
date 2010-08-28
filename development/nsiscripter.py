@@ -29,6 +29,10 @@ for root, dirs, files in os.walk('.'):
 		dirs.remove('.git')
 	if 'screenshots' in dirs:
 		dirs.remove('screenshots')
+	if root[-4:] == 'fife' and len(root.split('\\')) == 2:
+		for d in dirs[:]:
+			if d not in ('engine', 'tools'):
+				dirs.remove(d)
 	if '.gitignore' in files:
 		files.remove('.gitignore')
 	if 'Thumbs.db' in files:
@@ -37,7 +41,12 @@ for root, dirs, files in os.walk('.'):
 	if not len(files) == 0:
 		rootp = root[2:]
 		if rootp[:4] == 'fife':
-			files = filter(lambda s: s.split('.')[-1] in ('dll', 'py', 'png', 'pyd'), files)
+			if rootp[-4:] == 'fife' and len(rootp.split('\\')) == 1:
+				files = filter(lambda f: f in ('AUTHORS', 'COPYING', 'README'), files)
+			elif 'editor' in rootp.split('\\'):
+				files = filter(lambda s: s.split('.')[-1] not in ('pyc', 'log'), files)
+			else:
+				files = filter(lambda s: s.split('.')[-1] in ('dll', 'py', 'pyd'), files)
 			if not len(files):
 				continue
 		else:
