@@ -2,4 +2,5 @@
 *.log
 *.pyc
 *.po~
+*.nsi
 Thumbs.db
