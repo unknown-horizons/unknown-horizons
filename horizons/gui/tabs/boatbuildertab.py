@@ -117,11 +117,11 @@ class BoatbuilderTab(OverviewTab):
 				i += 1
 
 			# TODO: cancel building button
-			print "Cancelbutton search.."
+	#		print "Cancelbutton search.."
 			cancel_button = self.widget.findChild(name="BB_cancel_button")
-			print "Found:", cancel_button
+	#		print "Found:", cancel_button
 			cancel_button.capture(self.instance.cancel_all_productions, event_name="mouseClicked")
-			print cancel_button.isCaptured()
+	#		print cancel_button.isCaptured()
 
 		else: # display sth when nothing is produced
 			# remove other container, but save it
@@ -149,10 +149,11 @@ class BoatbuilderSelectTab(OverviewTab):
 	def __init__(self, instance, tabname):
 		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'tab_widget/boatbuilder/' + str(tabname) + '.xml')
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/bb/%s_u.png' % tabname
-		self.button_active_image = 'content/gui/images/icons/hud/common/bb/%s_a.png' % tabname
-		self.button_down_image = 'content/gui/images/icons/hud/common/bb/%s_d.png' % tabname
-		self.button_hover_image = 'content/gui/images/icons/hud/common/bb/%s_h.png' % tabname
+		bb_image_path = 'content/gui/images/icons/hud/common/bb/'+str(tabname)+'_%s.png'
+		self.button_up_image = bb_image_path % 'u'
+		self.button_active_image = bb_image_path % 'a'
+		self.button_down_image = bb_image_path % 'd'
+		self.button_hover_image = bb_image_path % 'h'
 		for i in xrange(1,5): # xml names start at 1.  v--- ship names in small caps
 			self.widget.findChild(name='BB_'+str(tabname)+'_ship'+str(i)).stylize('headline')
 	def start_production(self, prod_line_id):
