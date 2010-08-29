@@ -69,6 +69,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
+		self.current_dialog = None
 
 	def show_main(self):
 		"""Shows the main menu """
@@ -89,13 +90,29 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if self.show_dialog(self.widgets['quitgame'], {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
 			horizons.main.quit()
 
-	def show_credits(self):
+	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		for i in xrange (0,29):
-			cur_container = self.widgets['credits'].findChild(name='book'+str(i))
+			cur_container = self.widgets['credits/'+str(number)].findChild(name='book'+str(i))
 			if cur_container is not None:
 				cur_container.stylize('book')
-		self.show_dialog(self.widgets['credits'], {'okButton' : True}, onPressEscape = True)
+		team_lbl = self.widgets['credits/'+str(number)].findChild(name="team_lbl")
+		if team_lbl:
+			team_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 0), event_name="mouseClicked")
+		patchers_lbl = self.widgets['credits/'+str(number)].findChild(name="patchers_lbl")
+		if patchers_lbl:
+			patchers_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 1), event_name="mouseClicked")
+		translaters_lbl = self.widgets['credits/'+str(number)].findChild(name="translaters_lbl")
+		if translaters_lbl:
+			translaters_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
+		special_thanks_lbl = self.widgets['credits/'+str(number)].findChild(name="special_thanks_lbl")
+		if special_thanks_lbl:
+			special_thanks_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 3), event_name="mouseClicked")
+
+
+		if self.current_dialog is not None:
+			self.current_dialog.hide()
+		self.show_dialog(self.widgets['credits/'+str(number)], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -104,6 +121,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param onPressEscape: callback that is to be called if the escape button is pressed.
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
+		self.current_dialog = dlg
 		if event_map is not None:
 			dlg.mapEvents(event_map)
 		if onPressEscape is not None:
