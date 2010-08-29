@@ -96,7 +96,7 @@
 				<VBox name="book5">
 					<Label text="abeaumont (Building bugfix)"  />
 					<Label text="MadMonk (Focus bugfix)"  />
-					<Label text="MSSSM (Several improvements)"  />
+					<Label text="MSSSSM (Several improvements)"  />
 					<Label text="soeb (Translation enhancements)"  />
 				</VBox>
 			</HBox>
@@ -180,18 +180,18 @@
 				</VBox>
 			</HBox>
 		</VBox>
-		<VBox> <Label text="Portuguese" font="libertine_headline" />
-			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book16">
-					<Label text="MadMonk (Nuno Alves)" />
-				</VBox>
-			</HBox>
-		</VBox>
 		<VBox> <Label text="Polish" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
 				<VBox name="book17">
 					<Label text="Amfidiusz (Adrian Marcinkowski)" />
 					<Label text="soeb" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="Portuguese" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book16">
+					<Label text="MadMonk (Nuno Alves)" />
 				</VBox>
 			</HBox>
 		</VBox>

@@ -1,14 +1,10 @@
-PROJECT COORDINATION
+== UH-Team
+
+= Project Coordination
 Nihathrael (Thomas Kinnen)
 Nightraven (Tobias Schroefel)
 
-GAME-PLAY DESIGN
-dauerflucher (Andreas Lis)
-Andre (Andre Reichelt)
-Kilian] (Kilian K.)
-eoc (Christopher)
-
-PROGRAMMING
+= Programming
 lynxis (Alexander Couzens)
 yonibear (Jonathan Sieber)
 Nihathrael (Thomas Kinnen)
@@ -21,40 +17,74 @@ RainCT (Siegfried Gevatter)
 tuempl (Harald Demel)
 manuel (Manuel Mausz)
 
-SOUND/MUSIC ARTISTS
+= Game-Play Design
+dauerflucher (Andreas Lis)
+Andre (Andre Reichelt)
+Kilian] (Kilian K.)
+eoc (Christopher)
+
+= Sound and Music Artists
 draikon (Sebastian Ahlen)
 novatlan (Tobias Escher)
 
-GRAPHIC ARTISTS
+= Graphics Artists
 dauerflucher (Andreas Lis)
 egore (Christoph Brill)
 kaschte (Fabian Riedel)
 terwarf (Alexander Breidenbroich)
 wentam
 
-TRANSLATORS
-Brazilian Portuguese: hpoyatos (Henrique Poyatos)
-Catalan: RainCT (Siegfried Gevatter)
-French: LiveWire, deathmaster9 (Marc Moussa)
-German: Michael Skiba
-Italian: Fabio Pedretti
-Norwegian: frodus (Frode Woldsund)
-Portuguese: MadMonk (Nuno Alves)
-Polish: soeb, Amfidiusz (Adrian Marcinkowski)
-Spanish: Nikolai Woutlan
 
-PATCHERS
+
+== Translators
+
+= Brazilian Portuguese
+hpoyatos (Henrique Poyatos)
+
+= Catalan
+RainCT (Siegfried Gevatter)
+
+= French
+LiveWire
+deathmaster9 (Marc Moussa)
+
+= German
+Michael Skiba
+
+= Italian
+Fabio Pedretti
+
+= Norwegian
+frodus (Frode Woldsund)
+
+= Portuguese
+MadMonk (Nuno Alves)
+
+= Polish
+soeb
+Amfidiusz (Adrian Marcinkowski)
+
+= Spanish
+Nikolai Woutlan
+
+
+
+== Patchers
+
+= 2009
 abeaumont (Building bugfix)
+MadMonk (Focus bugfix)
+MSSSSM (Several improvements)
+soeb (Translation enhancements)
+
+= 2010 
 Afrit (Resource tree)
 cubathy (Language bugfix)
 dario (Savegame versioning)
 IwfY (Game lobby GUI)
-MadMonk (Focus bugfix)
-MSSSM (Several improvements)
-soeb (Translation enhancements)
 Yeya (Random maps)
 
-Special thanks to
+== Special Thanks
 The whole FIFE team (www.fifengine.de)
 mvBarracuda (Martin Vohland)
 Lamoot (Matjaz Lamut)
