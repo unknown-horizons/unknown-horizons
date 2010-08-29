@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!-- Syncd with "doc/AUTHORS" -->
+<Container name="credits_window" size="1000,580" position="0,0">
+	<Icon image="content/gui/images/background/book.png" position="100,0" />
+
+	<Container position="0,0" size="170,580">  
+		<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_l.png" />
+		<ImageButton position="40,200" up_image="content/gui/images/background/pickbelt_l.png" /><!--
+		<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_l.png" />
+		<ImageButton position="50,300" up_image="content/gui/images/background/pickbelt_l.png" />
+		<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_l.png" />-->
+	</Container>
+
+	<Container position="1, 4" size="170,580">  
+		<Label position="50,160" text="UH-Team" font="libertine_small_tooltip" />
+		<Label position="55,210" text="Patchers" font="libertine_small_tooltip" /><!--
+		<Label position="60,260" text="Translators" font="libertine_small_tooltip" />
+		<Label position="65,310" text="Special Thanks" font="libertine_small_tooltip" />
+		<Label position="70,360" text="" font="libertine_small_tooltip" />-->
+	</Container>
+
+<!-- this is the third container ( translators ).                                      !!!
+-->
+	<HBox position="190,45" size="600,510" name="credits2" padding="120" >
+	<VBox>
+		<Label text="Translators" name="headline_translators" font="libertine_headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<VBox> <Label text="Brazilian Portuguese" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book10">
+					<Label text="hpoyatos (Henrique Poyatos)" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="Catalan" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book11">
+					<Label text="RainCT (Siegfried Gevatter)" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="French" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book12">
+					<Label text="deathmaster9 (Marc Moussa)" />
+					<Label text="LiveWire" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="German" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book13">
+					<Label text="Michael Skiba" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="Italian" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book14">
+					<Label text="Fabio Pedretti" />
+				</VBox>
+			</HBox>
+		</VBox>
+
+		<Spacer />
+	</VBox>			
+
+	<VBox> <Spacer /> 
+		<VBox> <Label text="Norwegian" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book15">
+					<Label text="frodus (Frode Woldsund)" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="Polish" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book17">
+					<Label text="Amfidiusz (Adrian Marcinkowski)" />
+					<Label text="soeb" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="Portuguese" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book16">
+					<Label text="MadMonk (Nuno Alves)" />
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox> <Label text="Spanish" font="libertine_headline" />
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+				<VBox name="book18">
+					<Label text="Nikolai Woutlan" />
+				</VBox>
+			</HBox>
+		</VBox> 
+	</VBox>			
+	</HBox>
+
+
+	<Container position="0,500" size="1000,100"> <!-- buttons, always visible.
+  USE ––|–– THESE if there are more than 2 pages of content for one credits group
+        v 
+		<TooltipButton name="backwardButton" position="175,0" 
+			up_image="content/gui/images/background/parrow_left.png" 
+			hover_image="content/gui/images/background/parrow_left_h.png" 
+			down_image="content/gui/images/background/parrow_left_d.png" 
+			tooltip="Read prev. entries" />
+		<TooltipButton name="forwardButton" position="210,0" 
+			up_image="content/gui/images/background/parrow_right.png" 
+			hover_image="content/gui/images/background/parrow_right_h.png" 
+			down_image="content/gui/images/background/parrow_right_d.png" 
+			tooltip="Read next entries" /> -->
+		<ImageButton position="800,0" name="okButton" 
+			up_image="content/gui/images/background/ok.png" 
+			hover_image="content/gui/images/background/ok_h.png" 
+			down_image="content/gui/images/background/ok.png" /> 
+	</Container>
+
+	<Container position="810,0" size="170,500"> <!-- we are on third position
+		<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_r.png" />
+		<ImageButton position="40,200" up_image="content/gui/images/background/pickbelt_r.png" />
+		<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_r.png" />-->
+		<ImageButton position="50,300" up_image="content/gui/images/background/pickbelt_r.png" /><!--
+		<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_r.png" />-->
+	</Container>
+
+	<Container position="800,3" size="170,500" name="pickbelt"> <!-- we are on third position
+		<Label position="50,160" text="UH-Team" font="libertine_small_tooltip" />
+		<Label position="55,210" text="Patchers" font="libertine_small_tooltip" />
+		<Label position="60,260" text="Translators" font="libertine_small_tooltip" />-->
+		<Label position="65,310" text="Special Thanks" font="libertine_small_tooltip" /><!--
+		<Label position="70,360" text="" font="libertine_small_tooltip" />-->
+	</Container>
+</Container>
