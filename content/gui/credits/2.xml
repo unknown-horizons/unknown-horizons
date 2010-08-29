@@ -12,8 +12,8 @@
 	</Container>
 
 	<Container position="1, 4" size="170,580">  
-		<Label position="50,160" text="UH-Team" font="libertine_small_tooltip" />
-		<Label position="55,210" text="Patchers" font="libertine_small_tooltip" /><!--
+		<Label position="50,160" name="team_lbl" text="UH-Team" font="libertine_small_tooltip" />
+		<Label position="55,210" name="patchers_lbl" text="Patchers" font="libertine_small_tooltip" /><!--
 		<Label position="60,260" text="Translators" font="libertine_small_tooltip" />
 		<Label position="65,310" text="Special Thanks" font="libertine_small_tooltip" />
 		<Label position="70,360" text="" font="libertine_small_tooltip" />-->
@@ -27,21 +27,21 @@
 		<Icon image="content/gui/images/background/hr.png" />
 		<VBox> <Label text="Brazilian Portuguese" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book10">
+				<VBox name="book0">
 					<Label text="hpoyatos (Henrique Poyatos)" />
 				</VBox>
 			</HBox>
 		</VBox>
 		<VBox> <Label text="Catalan" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book11">
+				<VBox name="book1">
 					<Label text="RainCT (Siegfried Gevatter)" />
 				</VBox>
 			</HBox>
 		</VBox>
 		<VBox> <Label text="French" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book12">
+				<VBox name="book2">
 					<Label text="deathmaster9 (Marc Moussa)" />
 					<Label text="LiveWire" />
 				</VBox>
@@ -49,14 +49,14 @@
 		</VBox>
 		<VBox> <Label text="German" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book13">
+				<VBox name="book3">
 					<Label text="Michael Skiba" />
 				</VBox>
 			</HBox>
 		</VBox>
 		<VBox> <Label text="Italian" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book14">
+				<VBox name="book4">
 					<Label text="Fabio Pedretti" />
 				</VBox>
 			</HBox>
@@ -68,14 +68,14 @@
 	<VBox> <Spacer /> 
 		<VBox> <Label text="Norwegian" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book15">
+				<VBox name="book5">
 					<Label text="frodus (Frode Woldsund)" />
 				</VBox>
 			</HBox>
 		</VBox>
 		<VBox> <Label text="Polish" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book17">
+				<VBox name="book7">
 					<Label text="Amfidiusz (Adrian Marcinkowski)" />
 					<Label text="soeb" />
 				</VBox>
@@ -83,14 +83,14 @@
 		</VBox>
 		<VBox> <Label text="Portuguese" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book16">
+				<VBox name="book6">
 					<Label text="MadMonk (Nuno Alves)" />
 				</VBox>
 			</HBox>
 		</VBox>
 		<VBox> <Label text="Spanish" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book18">
+				<VBox name="book8">
 					<Label text="Nikolai Woutlan" />
 				</VBox>
 			</HBox>
@@ -130,7 +130,7 @@
 		<Label position="50,160" text="UH-Team" font="libertine_small_tooltip" />
 		<Label position="55,210" text="Patchers" font="libertine_small_tooltip" />
 		<Label position="60,260" text="Translators" font="libertine_small_tooltip" />-->
-		<Label position="65,310" text="Special Thanks" font="libertine_small_tooltip" /><!--
+		<Label position="65,310" name="special_thanks_lbl" text="Special Thanks" font="libertine_small_tooltip" /><!--
 		<Label position="70,360" text="" font="libertine_small_tooltip" />-->
 	</Container>
 </Container>

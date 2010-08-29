@@ -12,9 +12,9 @@
 	</Container>
 
 	<Container position="1, 4" size="170,580">  
-		<Label position="50,160" text="UH-Team" font="libertine_small_tooltip" />
-		<Label position="55,210" text="Patchers" font="libertine_small_tooltip" />
-		<Label position="60,260" text="Translators" font="libertine_small_tooltip" /><!--
+		<Label position="50,160" name="team_lbl" text="UH-Team" font="libertine_small_tooltip" />
+		<Label position="55,210" name="patchers_lbl" text="Patchers" font="libertine_small_tooltip" />
+		<Label position="60,260" name="translators_lbl" text="Translators" font="libertine_small_tooltip" /><!--
 		<Label position="65,310" text="Special Thanks" font="libertine_small_tooltip" />
 		<Label position="70,360" text="" font="libertine_small_tooltip" />-->
 	</Container>
@@ -28,7 +28,7 @@
 		<Icon image="content/gui/images/background/hr.png" />
 		<VBox> <Label text="" font="libertine_headline" />
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
-				<VBox name="book27">
+				<VBox name="book0">
 					<Label text="The whole FIFE team (www.fifengine.de)" name="fife_team_lbl" />
 					<Label text="mvBarracuda (Martin Vohland)" />
 					<Label text="lamoot (Matjaz Lamut)" />
