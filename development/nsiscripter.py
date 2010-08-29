@@ -37,6 +37,8 @@ for root, dirs, files in os.walk('.'):
 		files.remove('.gitignore')
 	if 'Thumbs.db' in files:
 		files.remove('Thumbs.db')
+	if 'Setup.exe' in files:
+		files.remove('Setup.exe')
 
 	if not len(files) == 0:
 		rootp = root[2:]
@@ -51,26 +53,26 @@ for root, dirs, files in os.walk('.'):
 				continue
 		else:
 			files = filter(lambda s: s.split('.')[-1] not in ('pyc',), files)
-		inst.append( ('  SetOutPath "$INSTDIR/%s"' % rootp).replace('/', '\\'))
+		inst.append( ('	SetOutPath "$INSTDIR/%s"' % rootp).replace('/', '\\'))
 		installed_dirs.append(rootp)
 		for j in files:
-			inst.append( ('  File "./%s/%s"' % (rootp, j)).replace('/', '\\'))
+			inst.append( ('	File "./%s/%s"' % (rootp, j)).replace('/', '\\'))
 			installed_files.append('%s/%s' % (rootp, j))
 			if j[-3:] == '.py':
 				installed_files.append('%s.pyc' % ('%s/%s' % (rootp, j))[:-3])
 
 for f in installed_files:
-	remf.append( ('  Delete "$INSTDIR/%s"' % f).replace('/', '\\'))
+	remf.append( ('	Delete "$INSTDIR/%s"' % f).replace('/', '\\'))
 
 for d in installed_dirs:
 	pref = ""
 	for i in d.split('/'):
 		pref = i if len(pref) == 0 else "%s/%s" % (pref, i)
-		remd.append( ('  RMDir "$INSTDIR/%s"' % pref).replace('/', '\\'))
+		remd.append( ('	RMDir "$INSTDIR/%s"' % pref).replace('/', '\\'))
 
 if len(sys.argv) > 1:
 	version = sys.argv[1]
 else:
 	version = raw_input('Version: ')
 
-file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (version, '\n'.join(remove_double(inst)), '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) < len(y) else -1)))))
+file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (version, '\n'.join(remove_double(inst)), "0x%08X", '\n'.join(remove_double(remf)), '\n'.join(remove_double(sorted(list(set(remd)), lambda x,y: 1 if len(x) < len(y) else -1)))))
