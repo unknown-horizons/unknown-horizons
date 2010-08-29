@@ -1,32 +1,34 @@
 <?xml version="1.0"?>
+<!--     #TODO :: at the moment gui.py overwrites style deinitions like font=""     -->
 <Container name="settings_window" size="800,580" position="100,100">
 	<Icon image="content/gui/images/background/book.png" position="0,0" />
 
-	<Container size="320,500" position="55,32">
+	<Container size="320,520" position="65,32">
 		<Label text="Settings" position="150,10" name="headline" />
 		<Label name="warning" text="Please make sure that you know, what you do." position="30,30"/>
 		<Icon image="content/gui/images/background/hr.png" position="55,50" />
 
-		<Container size="320,240" position="0,50" name="graphic_settings">
-			<Label name="headline_graphics" text="GRAPHICS" position="12,15"/>
-			<Label name="screen_resolution_label" text="Screen resolution:" position="22,40"/>
-				<ScrollArea min_size="100,20" position="160,40">
+		<Container size="320,240" position="0,50" name="graphic_settings" >
+			<Label name="headline_graphics" text="Graphics" position="12,15" font="libertine_headline" />
+			<Label name="screen_resolution_label" text="Screen resolution:" position="160,50"/>
+				<ScrollArea min_size="100,105" position="160,70">
 					<ListBox name="screen_resolution" />
 				</ScrollArea>
 
-			<Label name="color_depth_label" text="Color depth:" position="22,95" />
-				<ScrollArea min_size="100,20" position="160,95">
+			<Label name="color_depth_label" text="Color depth:" position="22,50" />
+				<ScrollArea min_size="55,20" position="22,70">
 					<ListBox name="screen_bpp" />
-				</ScrollArea>
-			<Label name="use_renderer_label" text="Used renderer:" position="22,155" />
-				<ScrollArea min_size="100,20" position="160,155">
+				</ScrollArea> 
+			<Label name="use_renderer_label" text="Used renderer:" position="22,110" />
+				<ScrollArea min_size="55,40" position="22,135">
 					<ListBox name="render_backend" />
 				</ScrollArea>
-			<CheckBox min_size="160,32" name="enable_fullscreen" position="22,190" /> <Label name="screen_fullscreen_text" text="Full screen" position="67,190" />
+			<CheckBox min_size="160,32" name="enable_fullscreen" position="22,200" /> 
+			<Label name="screen_fullscreen_text" text="Full screen" position="67,205" />
 		</Container>
 
-		<Container size="320,200" position="0,300" name="sound_settings">
-			<Label name="headline_sound" text="SOUND" position="12,0"/>
+		<Container size="320,200" position="0,320" name="sound_settings">
+			<Label name="headline_sound" text="Sound" position="12,0" font="libertine_headline" />
 			<Label name="music_volume_label" text="Music volume:" position="22,40" />
 			<Container size="180,30" position="150,40">
 				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" />
@@ -37,32 +39,45 @@
 				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" />
 				<TextBox min_size="40,0" name="volume_effects_value" text=""  position="124,0" />
 			</Container>
-			<CheckBox min_size="160,32" name="enable_sound" position="22,120" /> <Label name="sound_enable_opt_text" text="Enable sound" position="67,120" />
+			<CheckBox min_size="160,32" name="enable_sound" position="22,120" /> 
+			<Label name="sound_enable_opt_text" text="Enable sound" position="67,125" />
 		</Container>
 	</Container>
 
-	<Container size="320,500" position="420,32">
-		<Container size="320,240" position="0,60" name="graphic_settings">
-			<Label name="headline_saving" text="SAVING" position="12,3"/>
-			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40" />
-			<ScrollArea min_size="48,20" position="150,70">
-			<ListBox name="autosaveinterval" />
-			</ScrollArea>
-			<Label text="minutes" name="minutes_label" position="210,70" />
-			<Label name="number_of_autosaves_label" text="Number of autosaves:" position="22,100" />
-			<ScrollArea min_size="48,20" position="150,130">
-			<ListBox name="autosavemaxcount" />
-			</ScrollArea>
-			<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="22,155" />
-			<ScrollArea min_size="48,20" position="150,180">
-			<ListBox name="quicksavemaxcount" />
-			</ScrollArea>
+	<Container size="320,520" position="420,32">
+		<Container size="320,240" position="0,30" name="saving_settings">
+			<Label name="headline_saving" text="Saving" position="12,3" font="libertine_headline" />
+			<Label name="autosave_interval_label" text="Autosave interval:" position="22,40" 
+				wrap_text="1" max_size="175,45" min_size="175,45" /><!--
+			<VBox position="22,65" >
+				<Slider size="120,20" name="autosave_interval" orientation="0" scale_start="0" scale_end="58" step_length="2" />
+			</VBox>-->
+			<ScrollArea min_size="48,45" position="200,40">
+				<ListBox name="autosaveinterval" />
+			</ScrollArea> 
+			<Label text="min" position="240,54" />
+			<Label name="number_of_autosaves_label" text="Number of autosaves:" position="22,100" 
+				wrap_text="1" max_size="175,45" min_size="175,45" /><!--
+			<VBox position="22,125" >
+				<Slider size="120,20" name="autosave_number" orientation="0" scale_start="1" scale_end="29" />
+			</VBox>-->
+			<ScrollArea min_size="48,45" position="200,100">
+				<ListBox name="autosavemaxcount" />
+			</ScrollArea> 
+			<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="22,160" 
+				wrap_text="1" max_size="175,45" min_size="175,45" /> <!--
+			<VBox position="22,185" >
+				<Slider size="120,20" name="quicksave_number" orientation="0" scale_start="1" scale_end="29" />
+			</VBox>-->
+			<ScrollArea min_size="48,45" position="200,160">
+				<ListBox name="quicksavemaxcount" />
+			</ScrollArea> 
 		</Container>
-
-		<Container size="320,140" position="0,300">
-			<Label name="headline_language" text="LANGUAGE" position="12,0" />
-			<Label name="language_label" text="Language:" position="22,40" />
-			<ScrollArea min_size="120,60" position="150,40">
+<!--    #TODO :: use sliders instead of listboxes    -->
+		<Container size="320,180" position="0,260">
+			<Label name="headline_language" text="Language" position="12,0" font="libertine_headline" />
+			<Label name="language_label" text="Select language:" position="22,40" />
+			<ScrollArea min_size="125,140" position="150,40">
 			<ListBox name="language" />
 			</ScrollArea>
 		</Container>
@@ -73,4 +88,4 @@
 			<ImageButton name="defaultButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="120,0" />
 		</Container>
 	</Container>
-</Container>
+</Container> <!--     #TODO :: get rid of this container mass     -->
