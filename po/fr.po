@@ -866,59 +866,6 @@ msgstr ""
 msgid "Confirm Order"
 msgstr "Confirmer la suppression"
 
-#: horizons/i18n/guitranslations.py:280
-msgid "24t"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:281
-msgid "14t"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:282 horizons/i18n/guitranslations.py:283
-msgid "06t"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:284
-msgid "2500"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:285
-msgid "Sloop-o'-war"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:286
-msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:287
-msgid "Buy Upgrades"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:288
-#, fuzzy
-msgid "Cannons"
-msgstr "Pièces :"
-
-#: horizons/i18n/guitranslations.py:289
-msgid "Hull"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:290
-msgid " + 24t"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:291
-msgid " + 14t"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:292 horizons/i18n/guitranslations.py:293
-msgid " + 06t"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:294
-msgid " + 1457"
-msgstr ""
-
 #: horizons/i18n/guitranslations.py:295
 #, fuzzy
 msgid "Build ship:"
@@ -949,20 +896,6 @@ msgstr ""
 #, fuzzy
 msgid "Whaler"
 msgstr "Vente"
-
-#: horizons/i18n/guitranslations.py:305
-#, fuzzy
-msgid "Trade Boats"
-msgstr "Partenaire commercial :"
-
-#: horizons/i18n/guitranslations.py:307
-msgid "War Boats"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:309
-#, fuzzy
-msgid "War Ships"
-msgstr "Navire"
 
 #: horizons/i18n/guitranslations.py:311
 msgid "Account"
@@ -1072,6 +1005,18 @@ msgstr "Inventaire"
 #: horizons/i18n/guitranslations.py:358
 msgid "Load/Unload:"
 msgstr "Charger/Décharger :"
+
+#, fuzzy
+#~ msgid "Cannons"
+#~ msgstr "Pièces :"
+
+#, fuzzy
+#~ msgid "Trade Boats"
+#~ msgstr "Partenaire commercial :"
+
+#, fuzzy
+#~ msgid "War Ships"
+#~ msgstr "Navire"
 
 #~ msgid "Starting unknown horizons"
 #~ msgstr "Démarrer Unknown Horizons"

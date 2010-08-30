@@ -276,22 +276,6 @@ def set_translations():
 			"toggle_active_inactive"      : _("Resume"),
 			"BB_cancel_button"            : _("Cancel all \nbuilding progress")},
 		"tab_widget/boatbuilder/confirm.xml" : {
-			"headline"                    : _("Confirm Order"),
-			"BB_needed_boards"            : _("24t"),
-			"BB_needed_cloth"             : _("14t"),
-			"BB_needed_ropes"             : _("06t"),
-			"BB_needed_cannons"           : _("06t"),
-			"BB_needed_money"             : _("2500"),
-			"BB_builtship_label"          : _("Sloop-o'-war"),
-			"BB_description_frigate"      : _("Three-masted most common classified war ship with one gun deck."),
-			"headline_upgrades"           : _("Buy Upgrades"),
-			"BB_upgrade_cannons"          : _("Cannons"),
-			"BB_upgrade_hull"             : _("Hull"),
-			"BB_needed_boards+"           : _(" + 24t"),
-			"BB_needed_cloth+"            : _(" + 14t"),
-			"BB_needed_ropes+"            : _(" + 06t"),
-			"BB_needed_cannons+"          : _(" + 06t"),
-			"BB_needed_money+"            : _(" + 1457"),
 			"BB_confirm_build_label"      : _("Build ship:"),
 			"create_unit"                 : _("Build this ship!")},
 		"tab_widget/boatbuilder/fisher.xml" : {
@@ -301,12 +285,6 @@ def set_translations():
 			"BB_fisher_ship3"             : _("Herring fisher"),
 			"BB_fisher_ship4"             : _("Whaler"),
 			"BB_build_fisher_1"           : _("Build this ship!")},
-		"tab_widget/boatbuilder/trade.xml" : {
-			"headline"                    : _("Trade Boats")},
-		"tab_widget/boatbuilder/war1.xml" : {
-			"headline"                    : _("War Boats")},
-		"tab_widget/boatbuilder/war2.xml" : {
-			"headline"                    : _("War Ships")},
 		"tab_widget/tab_account.xml" : {
 			"headline"                    : _("Account"),
 			"income_label"                : _("Income:"),

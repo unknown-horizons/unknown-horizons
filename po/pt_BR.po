@@ -876,59 +876,6 @@ msgstr "Cancelar estrutura:"
 msgid "Confirm Order"
 msgstr "Confirme o Pedido"
 
-#: horizons/i18n/guitranslations.py:280
-msgid "24t"
-msgstr "24t"
-
-#: horizons/i18n/guitranslations.py:281
-msgid "14t"
-msgstr "14t"
-
-#: horizons/i18n/guitranslations.py:282 horizons/i18n/guitranslations.py:283
-msgid "06t"
-msgstr "06t"
-
-#: horizons/i18n/guitranslations.py:284
-msgid "2500"
-msgstr "2500"
-
-#: horizons/i18n/guitranslations.py:285
-msgid "Sloop-o'-war"
-msgstr "Corneta de Guerra"
-
-#: horizons/i18n/guitranslations.py:286
-msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
-"Navios de guerra de três mastros geralmente possuem com uma arma de convés"
-
-#: horizons/i18n/guitranslations.py:287
-msgid "Buy Upgrades"
-msgstr "Comprar atualizações"
-
-#: horizons/i18n/guitranslations.py:288
-msgid "Cannons"
-msgstr "Canhões"
-
-#: horizons/i18n/guitranslations.py:289
-msgid "Hull"
-msgstr "Casco"
-
-#: horizons/i18n/guitranslations.py:290
-msgid " + 24t"
-msgstr " + 24t"
-
-#: horizons/i18n/guitranslations.py:291
-msgid " + 14t"
-msgstr " + 14t"
-
-#: horizons/i18n/guitranslations.py:292 horizons/i18n/guitranslations.py:293
-msgid " + 06t"
-msgstr " + 06t"
-
-#: horizons/i18n/guitranslations.py:294
-msgid " + 1457"
-msgstr " + 1457"
-
 #: horizons/i18n/guitranslations.py:295
 msgid "Build ship:"
 msgstr "Construir embarcação:"
@@ -956,19 +903,6 @@ msgstr "Pescador de Arrenque"
 #: horizons/i18n/guitranslations.py:302
 msgid "Whaler"
 msgstr "Baleeiro"
-
-#: horizons/i18n/guitranslations.py:305
-msgid "Trade Boats"
-msgstr "Barcos Comerciais"
-
-#: horizons/i18n/guitranslations.py:307
-msgid "War Boats"
-msgstr "Barque de Guerra"
-
-#: horizons/i18n/guitranslations.py:309
-#, fuzzy
-msgid "War Ships"
-msgstr "Embarcação:"
 
 # #  okay, here we go again.
 # #  the following is rather stable content ;-)
@@ -1081,6 +1015,56 @@ msgstr "Inventário"
 #: horizons/i18n/guitranslations.py:358
 msgid "Load/Unload:"
 msgstr "Carregar/Descarregar:"
+
+#~ msgid "24t"
+#~ msgstr "24t"
+
+#~ msgid "14t"
+#~ msgstr "14t"
+
+#~ msgid "06t"
+#~ msgstr "06t"
+
+#~ msgid "2500"
+#~ msgstr "2500"
+
+#~ msgid "Sloop-o'-war"
+#~ msgstr "Corneta de Guerra"
+
+#~ msgid "Three-masted most common classified war ship with one gun deck."
+#~ msgstr ""
+#~ "Navios de guerra de três mastros geralmente possuem com uma arma de convés"
+
+#~ msgid "Buy Upgrades"
+#~ msgstr "Comprar atualizações"
+
+#~ msgid "Cannons"
+#~ msgstr "Canhões"
+
+#~ msgid "Hull"
+#~ msgstr "Casco"
+
+#~ msgid " + 24t"
+#~ msgstr " + 24t"
+
+#~ msgid " + 14t"
+#~ msgstr " + 14t"
+
+#~ msgid " + 06t"
+#~ msgstr " + 06t"
+
+#~ msgid " + 1457"
+#~ msgstr " + 1457"
+
+#~ msgid "Trade Boats"
+#~ msgstr "Barcos Comerciais"
+
+#~ msgid "War Boats"
+#~ msgstr "Barque de Guerra"
+
+#, fuzzy
+#~ msgid "War Ships"
+#~ msgstr "Embarcação:"
 
 #~ msgid "Enable debug output to stderr and a logfile."
 #~ msgstr "Habilitar terminar de depuração para stderr e arquivo de log."
