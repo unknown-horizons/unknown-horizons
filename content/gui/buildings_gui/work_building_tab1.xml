@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<!-- Services tab -->
-<Container name="tab0" size="530,190">
-	<Label position="5,5" text="stock" name="StockLabel" />
-</Container>
