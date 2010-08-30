@@ -50,9 +50,10 @@ class Fife(ApplicationBase):
 		self._setup_settings()
 
 		self.engine = fife.Engine()
+		self.engine_settings = self.engine.getSettings()
+
 		self.loadSettings()
 
-		self.engine_settings = self.engine.getSettings()
 		self.pychan = pychan
 
 		self._doQuit = False
@@ -96,6 +97,16 @@ class Fife(ApplicationBase):
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
+
+		# if this is to be used with the fife getPossibleResolutions() function,
+		# move this call into the run() function after the init, otherwise => segfault
+		self.__setup_screen_resolutions()
+
+	def __setup_screen_resolutions(self):
+		# Note: This call only works if the engine is inited (self.run())
+		# possible_resolutions = [ str(x) + "x" + str(y) for x,y in self.engine_settings.getPossibleResolutions()]
+		possible_resolutions = ["1680x1050"] # Add more here
+		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.extend(possible_resolutions)
 
 	def update_languages(self, data=None):
 		if data is None:
