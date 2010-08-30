@@ -32,6 +32,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import Callback
 from horizons.network import CommandError
+from horizons.gui.modules import PlayerDataSelection
 
 
 class MultiplayerMenu(object):
@@ -61,9 +62,8 @@ class MultiplayerMenu(object):
 			self.show_main()
 			return
 		self.current.findChild(name='gamelist').capture(self.__update_game_details)
-		self.current.findChild(name="nickname").text = unicode(horizons.main.fife.get_uh_setting("Nickname"))
+		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 
-		#self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 		self.current.show()
 
 		self.on_escape = event_map['cancel']
@@ -83,9 +83,9 @@ class MultiplayerMenu(object):
 
 
 	def __apply_new_nickname(self):
-		new_nick = self.current.findChild(name="nickname").text
+		new_nick = self.current.playerdata.get_player_name()
 		horizons.main.fife.set_uh_setting("Nickname", new_nick)
-		horizons.main.fife._setting.saveSettings()
+		horizons.main.fife.save_settings()
 		try:
 			NetworkInterface().change_name(new_nick)
 		except Exception, err:

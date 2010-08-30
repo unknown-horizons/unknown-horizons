@@ -7,13 +7,11 @@
 		<Container size="320,500" position="75,32">
 			<Label text="NEW GAME - MULTIPLAYER" position="70,10" name="headline_left" />
 			<Icon image="content/gui/images/background/hr.png" position="52,30" />
-			<VBox position="20,50">
-				<Label text="Your name: (click to apply)" name="name_lbl"/>
-				<HBox>
-					<TextField name="nickname" min_size="150,20" max_size="150,20"/>
-					<TooltipButton up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="apply_new_nickname" tooltip="Apply the new name" />
-				</HBox>
-			</VBox>
+			<VBox name="playerdataselectioncontainer" position="20,50" ></VBox>
+			<HBox position="200,50">
+				<Label text="Apply:" name="name_lbl"/>
+				<TooltipButton up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="apply_new_nickname" tooltip="Apply the new name" />
+			</HBox>
 
 			<!--
 			<RadioButton position="22,50" size="32,32" name="showInternet" text="Internet games" group="gametype" />
