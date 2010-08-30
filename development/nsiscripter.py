@@ -40,7 +40,7 @@ for root, dirs, files in os.walk('.'):
 	if 'Setup.exe' in files:
 		files.remove('Setup.exe')
 
-	if not len(files) == 0:
+	if not len(files) == 0 or not len(dirs) == 0:
 		rootp = root[2:]
 		if rootp[:4] == 'fife':
 			if rootp[-4:] == 'fife' and len(rootp.split('\\')) == 1:
@@ -60,6 +60,8 @@ for root, dirs, files in os.walk('.'):
 			installed_files.append('%s/%s' % (rootp, j))
 			if j[-3:] == '.py':
 				installed_files.append('%s.pyc' % ('%s/%s' % (rootp, j))[:-3])
+
+installed_dirs.extend(['fife\\engine\\python', 'fife\\engine', 'fife'])
 
 for f in installed_files:
 	remf.append( ('	Delete "$INSTDIR/%s"' % f).replace('/', '\\'))
