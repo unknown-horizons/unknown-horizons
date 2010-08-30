@@ -215,6 +215,10 @@ class Fife(ApplicationBase):
 	def get_uh_setting(self, settingname):
 		return self._setting.get(UH_MODULE, settingname)
 
+	def set_uh_setting(self, settingname, value):
+		self._setting.set(UH_MODULE, settingname, value)
+
+
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
 		if self._setting.get(FIFE_MODULE, "PlaySounds"): # Set up sound if it is enabled
