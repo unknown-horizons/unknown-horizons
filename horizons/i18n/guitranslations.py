@@ -40,8 +40,6 @@ text_translations = dict()
 def set_translations():
 	global text_translations
 	text_translations = {
-		"boatbuilder.xml" : {
-			"boat_builder_window"         : _("boatbuilder")},
 		"build_menu/hud_build_tab0.xml" : {
 			"headline"                    : _("Sailor Buildings"),
 			"residents_infra_label"       : _("Residents and Infrastructure"),
@@ -88,22 +86,6 @@ def set_translations():
 			"running_costs_label"         : _("Running Costs:")},
 		"buildings_gui/production_building_overview.xml" : {
 			"headline"                    : _("Building overview")},
-		"buildings_gui/work_building_tab0.xml" : {
-			"headline"                    : _("Building overview"),
-			"name_label"                  : _("Name:"),
-			"health_label"                : _("Health:"),
-			"running_costs_label"         : _("Running Costs:"),
-			"buy_sell_label"              : _("Buy/Sell Resources:")},
-		"buildings_gui/work_building_tab1.xml" : {
-			"StockLabel"                  : _("stock")},
-		"buildings_gui/work_building_tab2.xml" : {
-			"CombatLabel"                 : _("combat")},
-		"buildings_gui/work_building_tab3.xml" : {
-			"RouteLabel"                  : _("route")},
-		"buildings_gui/work_building_tab4.xml" : {
-			"ProductionLabel"             : _("production")},
-		"buildings_gui/work_building_tab5.xml" : {
-			"ResearchLabel"               : _("research")},
 		"buysellmenu/buysellmenu.xml" : {
 			"headline"                    : _("Buy or sell resources"),
 			"legend_label"                : _("Legend:"),
@@ -125,17 +107,32 @@ def set_translations():
 			"headline"                    : _("Chime The Bell"),
 			"made_it_label"               : _("Yeah, you made it..."),
 			"deadlink_label"              : _("But this is a deadlink, sorry.")},
-		"credits.xml" : {
+		"credits/0.xml" : {
 			"headline_team"               : _("UH-Team"),
 			"headline_projectcoord"       : _("Project Coordination"),
-			"headline_gamedesign"         : _("Game-Play Design"),
 			"headline_programming"        : _("Programming"),
+			"headline_gamedesign"         : _("Game-Play Design"),
 			"headline_sfx"                : _("Sound and Music Artists"),
 			"headline_gfx"                : _("Graphic Artists"),
-			"headline_translators"        : _("Translators"),
+			"patchers_lbl"                : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/1.xml" : {
+			"team_lbl"                    : _("UH-Team"),
 			"headline_patchers"           : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/2.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"patchers_lbl"                : _("Patchers"),
+			"headline_translators"        : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/3.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"patchers_lbl"                : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
 			"headline_thanks"             : _("Special Thanks"),
-			"fife_team_lbl"               : _("The FIFE team (www.fifengine.de)")},
+			"fife_team_lbl"               : _("The whole FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
 			"version_label"               : VERSION.string(),
 			"start"                       : _("Return to Game"),
@@ -251,7 +248,6 @@ def set_translations():
 			"sound_enable_opt_text"       : _("Enable sound"),
 			"headline_saving"             : _("Saving"),
 			"autosave_interval_label"     : _("Autosave interval:"),
-			"minutes_label"               : _("minutes"),
 			"number_of_autosaves_label"   : _("Number of autosaves:"),
 			"number_of_quicksaves_label"  : _("Number of quicksaves:"),
 			"headline_language"           : _("Language"),
@@ -278,7 +274,26 @@ def set_translations():
 			"BB_cancel_warning_label"     : _("(lose all resources)"),
 			"toggle_active_active"        : _("Pause"),
 			"toggle_active_inactive"      : _("Resume"),
-			"BB_cancel_build"             : _("Cancel all \nbuilding progress")},
+			"BB_cancel_button"            : _("Cancel all \nbuilding progress")},
+		"tab_widget/boatbuilder/confirm.xml" : {
+			"headline"                    : _("Confirm Order"),
+			"BB_needed_boards"            : _("24t"),
+			"BB_needed_cloth"             : _("14t"),
+			"BB_needed_ropes"             : _("06t"),
+			"BB_needed_cannons"           : _("06t"),
+			"BB_needed_money"             : _("2500"),
+			"BB_builtship_label"          : _("Sloop-o'-war"),
+			"BB_description_frigate"      : _("Three-masted most common classified war ship with one gun deck."),
+			"headline_upgrades"           : _("Buy Upgrades"),
+			"BB_upgrade_cannons"          : _("Cannons"),
+			"BB_upgrade_hull"             : _("Hull"),
+			"BB_needed_boards+"           : _(" + 24t"),
+			"BB_needed_cloth+"            : _(" + 14t"),
+			"BB_needed_ropes+"            : _(" + 06t"),
+			"BB_needed_cannons+"          : _(" + 06t"),
+			"BB_needed_money+"            : _(" + 1457"),
+			"BB_confirm_build_label"      : _("Build ship:"),
+			"create_unit"                 : _("Build this ship!")},
 		"tab_widget/boatbuilder/fisher.xml" : {
 			"headline"                    : _("Fishing Boats"),
 			"BB_fisher_ship1"             : _("Fishing boat"),
@@ -286,6 +301,12 @@ def set_translations():
 			"BB_fisher_ship3"             : _("Herring fisher"),
 			"BB_fisher_ship4"             : _("Whaler"),
 			"BB_build_fisher_1"           : _("Build this ship!")},
+		"tab_widget/boatbuilder/trade.xml" : {
+			"headline"                    : _("Trade Boats")},
+		"tab_widget/boatbuilder/war1.xml" : {
+			"headline"                    : _("War Boats")},
+		"tab_widget/boatbuilder/war2.xml" : {
+			"headline"                    : _("War Ships")},
 		"tab_widget/tab_account.xml" : {
 			"headline"                    : _("Account"),
 			"income_label"                : _("Income:"),
@@ -295,9 +316,6 @@ def set_translations():
 			"running_costs_label"         : _("Running Costs:"),
 			"buy_expenses_label"          : _("Buying"),
 			"balance_label"               : _("Balance:")},
-		"tab_widget/tab_boatbuilder_create.xml" : {
-			"overview_label"              : _("Select a boat to build:"),
-			"new_settlement_label"        : _("Build selected:")},
 		"tab_widget/tab_branch_overview.xml" : {
 			"headline"                    : _("Building overview"),
 			"name_label"                  : _("Name:"),
