@@ -6,12 +6,28 @@ UNKNOWN HORIZONS
 Our code is published under the terms of the General Public License (see GPL).
 For more information visit http://www.gnu.org/copyleft/gpl.html
 
+
+
 The file  
 
 /horizons/ext/enum.py  
 
 is licensed under the terms of the  Python 2.4.2 License  by way of derogation from the above.
 Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/
+
+
+
+The files
+
+/horizons/network/darwin-x86/enet.so
+/horizons/network/freebsd-x86/enet.so
+/horizons/network/linux-x64/enet.so
+/horizons/network/linux-x86/enet.so
+/horizons/network/windows-x86/enet.pyd
+/horizons/network/windows-x64/enet.pyd
+
+is licensend by Lee Salzman under the terms of this freeware license.
+http://enet.bespin.org/License.html
 
 
 
@@ -47,7 +63,6 @@ General Public License with font exception (see GPL_fontexception) and
 Open Font License (see OFL) by the Libertine Open Fonts Project.
 For more information visit http://linuxlibertine.sourceforge.net/ 
 and http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
-
 
 
 
