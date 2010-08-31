@@ -6,6 +6,13 @@ UNKNOWN HORIZONS
 Our code is published under the terms of the General Public License (see GPL).
 For more information visit http://www.gnu.org/copyleft/gpl.html
 
+The file  
+
+/horizons/ext/enum.py  
+
+is licensed under the terms of the  Python 2.4.2 License  by way of derogation from the above.
+Informations can be obtained at  http://www.python.org/download/releases/2.4.2/license/
+
 
 
 All graphic content downloaded from Reiner's Tileset (http://reinerstileset.4players.de)
