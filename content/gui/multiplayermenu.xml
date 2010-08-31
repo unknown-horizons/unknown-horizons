@@ -5,8 +5,13 @@
 		<Icon image="content/gui/images/background/book.png" position="0,0" />
 
 		<Container size="320,500" position="75,32">
-			<Label text="NEW GAME - MULTIPLAYER" position="70,10" name="headline" />
+			<Label text="NEW GAME - MULTIPLAYER" position="70,10" name="headline_left" />
 			<Icon image="content/gui/images/background/hr.png" position="52,30" />
+			<VBox name="playerdataselectioncontainer" position="20,50" ></VBox>
+			<HBox position="200,50">
+				<Label text="Apply:" name="name_lbl"/>
+				<TooltipButton up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="apply_new_nickname" tooltip="Apply the new name" />
+			</HBox>
 
 			<!--
 			<RadioButton position="22,50" size="32,32" name="showInternet" text="Internet games" group="gametype" />
@@ -31,7 +36,7 @@
 		<VBox name="playerdataselectioncontainer" position="100,190" ></VBox>
 
 		<Container size="320,500" position="420,32" name="right_side">
-			<Label text="Active games:" name="headline" position="0,50" />
+			<Label text="Active games:" name="active_games_lbl" position="0,50" />
 			<ScrollArea min_size="290,250"  horizontal_scrollbar="0" position="0,80" name="game_list_area">
 				<ListBox name="gamelist" min_size="290,330" />
 			</ScrollArea>

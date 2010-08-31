@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import getpass
+
+import horizons.main
 
 from horizons.util import Color
 
@@ -39,7 +40,7 @@ class PlayerDataSelection(object):
 
 		self.gui.distributeInitialData({ 'playercolor' : [ _(color.name) for color in Color ] })
 		self.gui.distributeData({
-			'playername': unicode(getpass.getuser()),
+			'playername': unicode(horizons.main.fife.get_uh_setting("Nickname")),
 			'playercolor': 0
 		})
 		parent_gui.findChild(name="playerdataselectioncontainer").addChild( self.gui )

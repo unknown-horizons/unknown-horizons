@@ -19,12 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
+
 from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.util import Color
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
 from horizons.network import CommandError, NetworkException
+
 
 import getpass
 import logging
@@ -40,15 +43,8 @@ class NetworkInterface(object):
 
 	def __init__(self):
 		# TODO: a user should be able to set its name in settings!
-		name = getpass.getuser()
-		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
-		clientaddress = None
-		if NETWORK.CLIENT_ADDRESS is not None and NETWORK.CLIENT_PORT > 0:
-			clientaddress = [NETWORK.CLIENT_ADDRESS, NETWORK.CLIENT_PORT]
-		try:
-			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
-		except NetworkException, e:
-			raise RuntimeError(e)
+		name = horizons.main.fife.get_uh_setting("Nickname")
+		self.__setup_client(name)
 		# cbs means callbacks
 		self.cbs_game_details_changed = []
 		self.cbs_game_starts = []
@@ -73,6 +69,21 @@ class NetworkInterface(object):
 
 	def isjoined(self):
 		return self._client.game is not None
+
+	def change_name(self, name):
+		self.disconnect()
+		self.__setup_client(name)
+		self.connect()
+
+	def __setup_client(self, name):
+		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
+		clientaddress = None
+		if NETWORK.CLIENT_ADDRESS is not None and NETWORK.CLIENT_PORT > 0:
+			clientaddress = [NETWORK.CLIENT_ADDRESS, NETWORK.CLIENT_PORT]
+		try:
+			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
+		except NetworkException, e:
+			raise RuntimeError(e)
 
 	def connect(self):
 		"""

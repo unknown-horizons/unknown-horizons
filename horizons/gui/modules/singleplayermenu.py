@@ -103,6 +103,8 @@ class SingleplayerMenu(object):
 			self.show_popup(_("Invalid player name"), _("You entered an invalid playername"))
 			return
 		playercolor = self.current.playerdata.get_player_color()
+		horizons.main.fife.set_uh_setting("Nickname", playername)
+		horizons.main.fife.save_settings()
 
 		if self.current.collectData('showRandom'):
 			map_file = random_map.generate_map()

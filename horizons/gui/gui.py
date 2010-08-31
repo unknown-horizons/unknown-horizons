@@ -92,7 +92,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for i in xrange (0,29):
+		for i in xrange (0,9):
 			cur_container = self.widgets['credits/'+str(number)].findChild(name='book'+str(i))
 			if cur_container is not None:
 				cur_container.stylize('book')
@@ -102,9 +102,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		patchers_lbl = self.widgets['credits/'+str(number)].findChild(name="patchers_lbl")
 		if patchers_lbl:
 			patchers_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 1), event_name="mouseClicked")
-		translaters_lbl = self.widgets['credits/'+str(number)].findChild(name="translaters_lbl")
-		if translaters_lbl:
-			translaters_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
+		translators_lbl = self.widgets['credits/'+str(number)].findChild(name="translators_lbl")
+		if translators_lbl:
+			translators_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
 		special_thanks_lbl = self.widgets['credits/'+str(number)].findChild(name="special_thanks_lbl")
 		if special_thanks_lbl:
 			special_thanks_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 3), event_name="mouseClicked")

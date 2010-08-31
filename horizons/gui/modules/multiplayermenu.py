@@ -23,6 +23,8 @@ from time import strftime
 import logging
 import textwrap
 
+import horizons.main
+
 from horizons.gui.modules import PlayerDataSelection
 from horizons.savegamemanager import SavegameManager
 from horizons.network.networkinterface import MPGame
@@ -30,6 +32,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import Callback
 from horizons.network import CommandError
+from horizons.gui.modules import PlayerDataSelection
 
 
 class MultiplayerMenu(object):
@@ -38,6 +41,34 @@ class MultiplayerMenu(object):
 	def show_multi(self):
 		"""Shows main multiplayer menu"""
 		if not NetworkInterface().isconnected():
+			self.__connect_to_server()
+
+		if NetworkInterface().isjoined():
+			if not NetworkInterface().leavegame():
+				return
+
+		event_map = {
+			'cancel'  : self.__cancel,
+			'join'    : self.__join_game,
+			'create'  : self.__show_create_game,
+			'refresh' : self.__refresh,
+		    'apply_new_nickname' : self.__apply_new_nickname
+		}
+		self.widgets.reload('multiplayermenu')
+		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
+
+		refresh_worked = self.__refresh()
+		if not refresh_worked:
+			self.show_main()
+			return
+		self.current.findChild(name='gamelist').capture(self.__update_game_details)
+		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
+
+		self.current.show()
+
+		self.on_escape = event_map['cancel']
+
+	def __connect_to_server(self):
 			NetworkInterface().register_chat_callback(self.__receive_chat_message)
 			NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
 			NetworkInterface().register_game_starts_callback(self.__start_game)
@@ -50,29 +81,17 @@ class MultiplayerMenu(object):
 				self.show_popup("Network Error", "Could not connect to master server. Details: %s" % str(err))
 				return
 
-		if NetworkInterface().isjoined():
-			if not NetworkInterface().leavegame():
-				return
 
-		event_map = {
-			'cancel'  : self.__cancel,
-			'join'    : self.__join_game,
-			'create'  : self.__show_create_game,
-			'refresh' : self.__refresh,
-		}
-		self.widgets.reload('multiplayermenu')
-		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
-
-		refresh_worked = self.__refresh()
-		if not refresh_worked:
-			self.show_main()
+	def __apply_new_nickname(self):
+		new_nick = self.current.playerdata.get_player_name()
+		horizons.main.fife.set_uh_setting("Nickname", new_nick)
+		horizons.main.fife.save_settings()
+		try:
+			NetworkInterface().change_name(new_nick)
+		except Exception, err:
+			self.show_popup("Network Error", "Could not connect to master server. Details: %s" % str(err))
 			return
-		self.current.findChild(name='gamelist').capture(self.__update_game_details)
-
-		#self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
-		self.current.show()
-
-		self.on_escape = event_map['cancel']
+		self.__refresh()
 
 	def __on_error(self, exception):
 		if self.session is not None:
@@ -133,11 +152,11 @@ class MultiplayerMenu(object):
 		if game.get_uuid() == -1: # -1 signals no game
 			return
 
-		if True: # TODO: acctual join + check for player name and color duplicates
-			join_worked = NetworkInterface().joingame(game.get_uuid())
-			if not join_worked:
-				return
-			self.__show_gamelobby()
+		# acctual join
+		join_worked = NetworkInterface().joingame(game.get_uuid())
+		if not join_worked:
+			return
+		self.__show_gamelobby()
 
 	def __start_game(self, game):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
@@ -180,10 +199,10 @@ class MultiplayerMenu(object):
 		"""Receive a chat message from the network. Only possible in lobby state"""
 		line_max_length = 40
 		chatbox = self.current.findChild(name="chatbox")
-		full_msg = u""+ player + ": "+msg 
-		lines = textwrap.wrap(full_msg, line_max_length) 
-		for line in lines: 
-			chatbox.items.append(line) 
+		full_msg = u""+ player + ": "+msg
+		lines = textwrap.wrap(full_msg, line_max_length)
+		for line in lines:
+			chatbox.items.append(line)
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __show_create_game(self):
