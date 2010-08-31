@@ -13,6 +13,7 @@ InstallDir "$PROGRAMFILES\Unknown Horizons"
 BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} Installer"
 
 !include "FileFunc.nsh"
+!include "WordFunc.nsh"
 
 ;MUI2
 !include "MUI2.nsh"
@@ -67,6 +68,7 @@ SectionEnd
 
 Section "Uninstall"
 	Delete "$INSTDIR\uninst.exe"
+	Delete "$INSTDIR\fife.log"
 %s
 	Delete "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk"
 	Delete "$SMPROGRAMS\Unknown Horizons\Uninstall.lnk"
@@ -76,3 +78,29 @@ Section "Uninstall"
 	RMDir "$INSTDIR"
 	DeleteRegKey "${PRODUCT_ROOT_KEY}" "${PRODUCT_SUBKEY}"
 SectionEnd
+
+Function .onInit
+	ClearErrors
+	ReadRegStr $3 "${PRODUCT_ROOT_KEY}" "${PRODUCT_SUBKEY}" "DisplayVersion"
+	IfErrors done
+	${VersionCompare} $3 "${PRODUCT_VERSION}" $4
+	IntCmp $4 1 newerExists newerExists olderExists
+
+olderExists:
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "An older version, $3 of Unknown Horizons is installed on your system. $\n The older version will be removed. Click Cancel to exit setup." IDCANCEL Quit
+	ClearErrors
+	ReadRegStr $5 "${PRODUCT_ROOT_KEY}" "${PRODUCT_SUBKEY}" "UninstallString"
+	${GetParent} "$5" $6
+	CopyFiles /SILENT "$5" "$TEMP\uninst_uh.exe"
+	ExecWait '$TEMP\uninst_uh.exe _?=$6'
+	Delete "$TEMP\uninst_uh.exe"
+	Goto done
+
+newerExists:
+	MessageBox MB_OK|MB_ICONEXCLAMATION "Unknown Horizons ${PRODUCT_VERSION} or newer is already installed on the system. Please uninstall that version and try again." IDOK Quit
+
+Quit:
+	Quit
+
+done:
+FunctionEnd
