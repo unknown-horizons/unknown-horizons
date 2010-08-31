@@ -67,13 +67,10 @@
 			<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 			<TooltipButton name="villageschool-1" position="0,32" 
-				up_image="content/gui/images/icons/hud/build/dummy_btn.png" 
-				hover_image="content/gui/images/icons/hud/build/dummy_btn.png" 
-				down_image="content/gui/images/icons/hud/build/dummy_btn.png"
+				up_image="content/gui/images/icons/hud/build/school_i.png" 
+				hover_image="content/gui/images/icons/hud/build/school_i_h.png" 
+				down_image="content/gui/images/icons/hud/build/school_i_h.png" 
 				tooltip="Village school: \nProvides education." />
-<!--				up_image="content/gui/images/icons/hud/build/villageschool.png" 
-				hover_image="content/gui/images/icons/hud/build/villageschool_h.png" 
-				down_image="content/gui/images/icons/hud/build/villageschool_h.png" -->
 		</Container>
 
 		<Container position="130,182" size="60,80" >
