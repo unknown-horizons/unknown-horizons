@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ###################################################
-# Unknown Horizons Installer
+# Unknown Horizons builder
 # ###################################################
 
 if [ ! `which dialog 2>/dev/null` ] ; then
@@ -59,7 +59,7 @@ else
 	"debian")
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
-		su -c "apt-get install build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra"
+		su -c "apt-get install build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra git-core"
 		if [ $? -ne 0 ] ; then 
 			echo "Error: Failed to install required dependencies"
 			exit 1
@@ -68,7 +68,7 @@ else
 	"ubuntu")
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
-		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra 
+		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra git-core
 		if [ $? -ne 0 ] ; then 
 			echo "Error: Failed to install required dependencies"
 			exit 1
@@ -77,7 +77,7 @@ else
 	"crunchbang")
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
-		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra 
+		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra git git-core
 		if [ $? -ne 0 ] ; then 
 			echo "Error: Failed to install required dependencies"
 			exit 1
@@ -86,7 +86,7 @@ else
 	"gentoo")
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
-		su -c "emerge --ask --noreplace libvorbis libogg media-libs/openal guichan boost libsdl sdl-image sdl-ttf scons subversion pyyaml python-distutils-extra intltool"
+		su -c "emerge --ask --noreplace libvorbis libogg media-libs/openal guichan boost libsdl sdl-image sdl-ttf scons subversion pyyaml python-distutils-extra intltool git git-core"
 		if [ $? -ne 0 ] ; then 
 			echo "Error: Failed to install required dependencies"
 			exit 1
@@ -118,7 +118,7 @@ else
 	cd trunk
 	scons ext && scons
 	cd ../../unknown-horizons
-	svn co svn://unknown-horizons.org/unknown-horizons/trunk
+	git clone git://github.com/unknown-horizons/unknown-horizons.git
 fi
 
 dialog --title "You successfully installed Fife and Unknown-Horizons" --yesno "Do you want to run Unknown Horizons now?" 5 28
