@@ -107,6 +107,9 @@ class Fife(ApplicationBase):
 		# possible_resolutions = [ str(x) + "x" + str(y) for x,y in self.engine_settings.getPossibleResolutions()]
 		possible_resolutions = ["1680x1050"] # Add more here
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.extend(possible_resolutions)
+		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.remove("640x480")
+		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.remove("800x600")
+
 
 	def update_languages(self, data=None):
 		if data is None:
