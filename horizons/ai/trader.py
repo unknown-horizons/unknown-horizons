@@ -25,7 +25,7 @@ import horizons.main
 
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
-from horizons.constants import RES, UNITS, BUILDINGS
+from horizons.constants import RES, UNITS, BUILDINGS, TRADER
 from horizons.ai.generic import AIPlayer
 from horizons.ext.enum import Enum
 from horizons.world.storageholder import StorageHolder
@@ -44,16 +44,7 @@ class Trader(AIPlayer):
 
 	shipStates = Enum.get_extended(AIPlayer.shipStates, 'moving_to_branch', 'reached_branch')
 
-	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
-	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
-
-	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
-
 	log = logging.getLogger("ai.trader")
-
-	# amount range to buy/sell from settlement per resource
-	buy_amount = (2, 6)
-	sell_amount = (2, 6)
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)
@@ -203,10 +194,10 @@ class Trader(AIPlayer):
 		settlement = self.office[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(settlement.buy_list.iterkeys()): # check for resources that the settlement wants to buy
-			amount = self.session.random.randint(*self.sell_amount) # select a random amount to sell
+			amount = self.session.random.randint(*TRADER.SELL_AMOUNT) # select a random amount to sell
 			if amount == 0:
 				continue
-			price = int(self.session.db.get_res_value(res) * self.SELLING_ADDITIONAL_CHARGE * amount)
+			price = int(self.session.db.get_res_value(res) * TRADER.SELLING_ADDITIONAL_CHARGE * amount)
 			settlement.buy(res, amount, price)
 			# don't care if he bought it. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
@@ -214,27 +205,27 @@ class Trader(AIPlayer):
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(settlement.sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
-			amount = self.session.random.randint(*self.buy_amount)
+			amount = self.session.random.randint(*TRADER.BUY_AMOUNT)
 			if amount == 0:
 				continue
-			price = int(self.session.db.get_res_value(res) * self.BUYING_CHARGE_DEDUCTION * amount)
+			price = int(self.session.db.get_res_value(res) * TRADER.BUYING_CHARGE_DEDUCTION * amount)
 			settlement.sell(res, amount, price)
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
 
 		del self.office[ship.worldid]
 		# wait 2 seconds before going on to the next island
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, \
-		                           Scheduler().get_ticks(self.TRADING_DURATION))
+		                           Scheduler().get_ticks(TRADER.TRADING_DURATION))
 		self.ships[ship] = self.shipStates.reached_branch
 
 	def ship_idle(self, ship):
-		"""Called if a ship is idle. Sends ship to a branch office or a random place (which target
-		to use is decided by chance, probability for branch office is 2/3)
+		"""Called if a ship is idle. Sends ship to a random place or  branch office (which target
+		to use is decided by chance, probability for branch office (BUSINESS_S.) is 2/3 by default)
 		@param ship: ship instance"""
-		if self.session.random.randint(0, 100) < 66:
+		if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE: 
 			# delay one tick, to allow old movement calls to completely finish
-			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
-			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, runin=0)
-		else:
 			self.log.debug("Trader %s ship %s: idle, moving to random bo", self.worldid, ship.worldid)
 			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self, runin=0)
+		else:
+			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
+			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, runin=0)

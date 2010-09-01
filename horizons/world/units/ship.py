@@ -31,7 +31,7 @@ from horizons.world.pathfinding.pather import ShipPather
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle
 from unit import Unit
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, STORAGE
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -53,7 +53,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
-		self.inventory = PositiveTotalStorage(200)
+		self.inventory = PositiveTotalStorage(STORAGE.SHIP_TOTAL_STORAGE)
 
 	def _move_tick(self):
 		"""Keeps track of the ship's position in the global ship_map"""
