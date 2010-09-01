@@ -20,7 +20,8 @@ else:
 
 data = [
 	(executable_path, ('unknown-horizons', )),
-	('share/pixmaps', ('content/unknown-horizons.xpm', ))]
+	('share/pixmaps', ('content/unknown-horizons.xpm', )),
+    ('share/unknown-horizons', ('settings-dist.xml', ))]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
 	if '.svn' in dirs:
