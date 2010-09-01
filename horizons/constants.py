@@ -43,9 +43,16 @@ class VERSION:
 
 			rev = None
 			uh_path = find_uh_position()
+			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
 			svn_entries_path = os.path.join(uh_path, '.svn', 'entries')
 			git_svn_path = os.path.join(uh_path, '.git', 'logs', 'refs', 'remotes', 'git-svn')
-			if os.path.exists(svn_entries_path):
+			if os.path.exists(git_head_path):
+				head_file = os.path.join(uh_path, '.git', open(git_head_path).readline().strip().partition(' ')[2])
+				if os.path.exists(head_file):
+					return unicode(open(head_file).readline().strip()[0:7])
+				else:
+					return u""
+			elif os.path.exists(svn_entries_path):
 				entries_file = open(svn_entries_path).read()
 				if re.match('\d', entries_file):
 					rev = re.search('\d+\s+dir\s+(\d+)', entries_file).groups()[0]
