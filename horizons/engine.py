@@ -105,7 +105,7 @@ class Fife(ApplicationBase):
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
 		# possible_resolutions = [ str(x) + "x" + str(y) for x,y in self.engine_settings.getPossibleResolutions()]
-		possible_resolutions = ["1680x1050"] # Add more here
+		possible_resolutions = ["1280x800","1280x960","1280x1024","1366x768","1440x900","1600x900","1600x1200","1680x1050","1920x1080","1920x1200"] # Add more here
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.extend(possible_resolutions)
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.remove("640x480")
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.remove("800x600")
