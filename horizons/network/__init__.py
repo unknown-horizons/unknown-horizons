@@ -21,11 +21,18 @@
 
 
 import platform
+import os
 
 def find_enet_module():
   type = platform.system().lower()
   arch = platform.machine()
+  version = platform.python_version_tuple()
   dir = "%s-x%s" % (type, arch[-2:])
+
+  dirpy = "%s-%s%s" % (dir, version[0], version[1])
+  if os.path.exists(os.path.join(os.path.dirname(__file__), dirpy)):
+    dir = dirpy
+
   try:
     arch_module = __import__(dir, globals(), locals(), fromlist=["enet"])
     return arch_module.enet
