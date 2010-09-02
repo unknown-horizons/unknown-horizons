@@ -22,6 +22,8 @@
 from fife.extensions import pychan
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+from horizons.gui.widgets import ProgressBar
+from horizons.world.storage import TotalStorage
 
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
@@ -42,6 +44,8 @@ class Inventory(pychan.widgets.Container):
 		self.__inited = True
 		self.db = db
 		self._inventory = inventory
+		self.__icon = pychan.widgets.Icon("content/gui/images/icons/hud/ship/civil_16.png")
+		self.__icon.position = (150, 50)
 		self.update()
 
 	def update(self):
@@ -60,7 +64,11 @@ class Inventory(pychan.widgets.Container):
 			# check if this res should be displayed
 			if not self.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-			filled = int(float(amount) / float(self._inventory.get_limit(resid)) * 100.0)
+
+			if isinstance(self._inventory, TotalStorage):
+				filled = 0
+			else:
+				filled = int(float(amount) / float(self._inventory.get_limit(resid)) * 100.0)
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, filled=filled)
 			current_hbox.addChild(button)
 
@@ -76,5 +84,12 @@ class Inventory(pychan.widgets.Container):
 				self.parent.removeChildren(icons[self.ITEMS_PER_LINE-1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
+		if isinstance(self._inventory, TotalStorage):
+			# Add total storage indicator
+			sum_stored_res = self._inventory.get_sum_of_stored_resources()
+			label = pychan.widgets.Label()
+			label.text = unicode(sum_stored_res) + "/" + unicode(self._inventory.get_limit(None))
+			label.position = (170, 50)
+			self.addChildren(label, self.__icon)
 		self.adaptLayout()
 		self.stylize('menu_black')
