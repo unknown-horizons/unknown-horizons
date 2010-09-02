@@ -80,7 +80,12 @@ class TradeWidget(object):
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
 			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
+			old_partner = self.partner
 			self.partner = self.partners[nearest_partner]
+			# If we changed partners, update changelisteners
+			if old_partner and old_partner is not self.partner:
+				old_partner.inventory.remove_change_listener(self.draw_widget)
+				self.partner.inventory.add_change_listener(self.draw_widget)
 			inv_partner = self.widget.findChild(name='inventory_partner')
 			inv_partner.init(self.instance.session.db, self.partner.inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
@@ -90,19 +95,28 @@ class TradeWidget(object):
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
 				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.instance, self.partner))
 			self.widget.adaptLayout()
+		else:
+			self.widget.hide()
+
+	def __remove_changelisteners(self):
+		self.instance.remove_change_listener(self.draw_widget)
+		self.partner.inventory.remove_change_listener(self.draw_widget)
+
+	def __add_changelisteners(self):
+		self.instance.add_change_listener(self.draw_widget)
+		self.partner.inventory.add_change_listener(self.draw_widget)
+
 
 	def set_partner(self, partner_id):
 		self.partner = self.partners[partner_id]
 
 	def hide(self):
 		self.widget.hide()
-		self.instance.inventory.remove_change_listener(self.draw_widget)
-		self.partner.inventory.remove_change_listener(self.draw_widget)
+		self.__remove_changelisteners()
 
 	def show(self):
 		self.widget.show()
-		self.instance.inventory.add_change_listener(self.draw_widget)
-		self.partner.inventory.add_change_listener(self.draw_widget)
+		self.__add_changelisteners()
 
 	def set_exchange(self, size, initial = False):
 		"""
