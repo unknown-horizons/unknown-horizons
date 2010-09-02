@@ -81,4 +81,8 @@ def set_var(session, name, value):
 	check_callback = Callback(session.campaign_eventhandler.check_events, CONDITIONS.var_eq)
 	Scheduler().add_new_object(check_callback, session.campaign_eventhandler)
 
+def wait(session, time):
+	delay = Scheduler().get_ticks(time)
+	session.campaign_eventhandler.sleep(delay)
+
 
