@@ -59,9 +59,28 @@ class CampaignEventHandler(LivingObject):
 		if campaignfile:
 			self._apply_data( self._parse_yaml( open(campaignfile, 'r') ) )
 
+		self.sleep_ticks_remaining = 0
+
+		self.start()
+
+
+	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
 
+	def sleep(self, ticks):
+		"""Sleep the CampaignEventHandler for number of ticks. This delays all
+		callbacks by the specific amount"""
+		callbacks = Scheduler().get_classinst_calls(self)
+		for callback in callbacks:
+			Scheduler().rem_object(callback)
+			callback.runin = callback.runin + ticks
+			Scheduler().add_object(callback)
+		self.sleep_ticks_remaining = ticks
+		Scheduler().add_new_object(self._reduce_sleep, self, loops = ticks)
+
+	def _reduce_sleep(self):
+		self.sleep_ticks_remaining -= 1
 
 	def end(self):
 		Scheduler().rem_all_classinst_calls(self)
@@ -83,7 +102,8 @@ class CampaignEventHandler(LivingObject):
 		"""Let check_events run in one tick for condition. Useful for lag prevetion if time is a
 		critical factor, e.g. when the user has to wait for a function to return.."""
 		if self.session.world.inited: # don't check while loading
-			Scheduler().add_new_object(Callback(self.check_events, condition), self)
+			Scheduler().add_new_object(Callback(self.check_events, condition), self, runin=self.sleep_ticks_remaining)
+
 
 	def check_events(self, condition):
 		"""Checks whether an event happened.
@@ -224,7 +244,8 @@ class _Action(object):
 	  'lose' : do_lose,
 	  'set_var' : set_var,
 	  'logbook': show_logbook_entry,
-	  'logbook_s': write_logbook_entry
+	  'logbook_s': write_logbook_entry,
+	  'wait': wait
 	}
 
 	def __init__(self, action_dict):

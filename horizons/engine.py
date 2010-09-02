@@ -98,18 +98,21 @@ class Fife(ApplicationBase):
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
 
-		# if this is to be used with the fife getPossibleResolutions() function,
-		# move this call into the run() function after the init, otherwise => segfault
-		self.__setup_screen_resolutions()
-
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
-		# possible_resolutions = [ str(x) + "x" + str(y) for x,y in self.engine_settings.getPossibleResolutions()]
-		possible_resolutions = ["1680x1050"] # Add more here
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.extend(possible_resolutions)
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.remove("640x480")
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata.remove("800x600")
-
+		# Nore: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
+		possible_resolutions = ["1024x768", "1280x800","1280x960","1280x1024","1366x768","1440x900","1600x900","1600x1200","1680x1050","1920x1080","1920x1200"] # Add more supported resolutions here.
+		current_state = self.engine_settings.isFullScreen()
+		self.engine_settings.setFullScreen(1)
+		for x,y in self.engine_settings.getPossibleResolutions():
+			if str(x) + "x" + str(y) not in possible_resolutions:
+				possible_resolutions.append(str(x) + "x" + str(y))
+		self.engine_settings.setFullScreen(current_state)
+		# Remove unsupported resolutions if they exist
+		for x in ["640x480", "800x600"]:
+			if x in possible_resolutions:
+				possible_resolutions.remove(x)
+		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
 	def update_languages(self, data=None):
 		if data is None:
@@ -321,6 +324,7 @@ class Fife(ApplicationBase):
 		"""
 		"""
 		self.init()
+		self.__setup_screen_resolutions()
 		self.engine.initializePumping()
 		self.loop()
 		self.engine.finalizePumping()

@@ -272,8 +272,10 @@ class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 
 	def alter(self, res, amount):
 		check = max(0, amount + self[res] - self.limit)
-		return check + super(PositiveSizedSlotStorage, self).alter(res, amount - check)
-
+		ret = super(PositiveSizedSlotStorage, self).alter(res, amount - check)
+		if res in self._storage and self[res] == 0:
+			del self._storage[res]
+		return check + ret
 
 class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass
@@ -292,7 +294,4 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 		if not res in self._storage and len(self._storage) >= self.slotnum:
 			return amount
 		result = super(PositiveSizedNumSlotStorage, self).alter(res, amount)
-		#if resource zero, then remove it from storage
-		if self._storage[res] == 0:
-			del self._storage[res]
 		return result
