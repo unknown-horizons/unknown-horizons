@@ -27,7 +27,7 @@ from horizons.network import packets, find_enet_module
 
 enet = find_enet_module()
 
-MAX_PEERS = 9999
+MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500
 
 logging.basicConfig(level = logging.DEBUG)
@@ -78,7 +78,7 @@ class Server(object):
 	def run(self):
 		logging.info("Starting up server on %s:%d" % (self.hostname, self.port))
 		try:
-			self.host = enet.Host(enet.Address(self.hostname, self.port), MAX_PEERS, 0, 0)
+			self.host = enet.Host(enet.Address(self.hostname, self.port), MAX_PEERS, 0, 0, 0)
 		except (IOError, MemoryError):
 			raise network.NetworkException("Unable to create network structure. Maybe invalid or irresolvable server address.")
 

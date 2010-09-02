@@ -53,7 +53,7 @@ class Client(object):
 	def __init__(self, name, version, server_address, client_address = None):
 		try:
 			clientaddress = enet.Address(client_address[0], client_address[1]) if client_address is not None else None
-			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0)
+			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0, 0)
 		except (IOError, MemoryError):
 			raise network.NetworkException("Unable to create network structure. Maybe invalid or irresolvable client address.")
 		self.name          = name
@@ -103,7 +103,7 @@ class Client(object):
 			raise network.NotInServerMode("You can't connect to a server while client is not in server mode")
 		self.log.debug("[CONNECT] to server %s" % (self.serveraddress))
 		try:
-			self.serverpeer = self.host.connect(enet.Address(self.serveraddress.host, self.serveraddress.port), 1)
+			self.serverpeer = self.host.connect(enet.Address(self.serveraddress.host, self.serveraddress.port), 1, 0)
 		except (IOError, MemoryError):
 			raise network.NetworkException("Unable to connect to server. Maybe invalid or irresolvable server address.")
 		self.mode = ClientMode.Server
@@ -124,7 +124,7 @@ class Client(object):
 			if not start:
 				continue
 			self.log.debug("[P2P CONNECT] to player %s (%s)" % (player.name, player.address))
-			player.peer = self.host.connect(enet.Address(player.address.host, player.address.port), 1)
+			player.peer = self.host.connect(enet.Address(player.address.host, player.address.port), 1, 0)
 
 		self.log.debug("[P2P CONNECT] Waiting")
 		waiting = len(self.game.players) -1
