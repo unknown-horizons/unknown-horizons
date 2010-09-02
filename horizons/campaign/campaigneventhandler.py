@@ -91,8 +91,12 @@ class CampaignEventHandler(LivingObject):
 	def save(self, db):
 		if self.inited: # only save in case we have data applied
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "campaign_events", self.to_yaml())
+		for key, value in self._scenario_variables.iteritems():
+			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, value)
 
 	def load(self, db):
+		for key, value in db("SELECT key, value FROM scenario_variables"):
+			self._scenario_variables[key] = value
 		data = db("SELECT value FROM metadata where name = ?", "campaign_events")
 		if len(data) == 0:
 			return # nothing to load
@@ -104,6 +108,11 @@ class CampaignEventHandler(LivingObject):
 		if self.session.world.inited: # don't check while loading
 			Scheduler().add_new_object(Callback(self.check_events, condition), self, runin=self.sleep_ticks_remaining)
 
+	def schedule_action(self, action):
+		if self.sleep_ticks_remaining > 0:
+			Scheduler().add_new_object(Callback(action, self.session), self, runin = self.sleep_ticks_remaining, loops = -1)
+		else:
+			action(self.session)
 
 	def check_events(self, condition):
 		"""Checks whether an event happened.
@@ -112,7 +121,7 @@ class CampaignEventHandler(LivingObject):
 			return
 		events_to_remove = []
 		for event in self._event_conditions[condition]:
-			event_executed = event.check()
+			event_executed = event.check(self)
 			if event_executed:
 				events_to_remove.append(event)
 		for event in events_to_remove:
@@ -195,6 +204,7 @@ class CampaignEventHandler(LivingObject):
 		yaml_code = yaml_code.rstrip(u'}\n')
 		#yaml_code = yaml_code.strip('{}')
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
+		print yaml_code
 		return yaml_code
 
 
@@ -220,12 +230,12 @@ class _Event(object):
 		for cond_dict in event_dict['conditions']:
 			self.conditions.append( _Condition(session, cond_dict) )
 
-	def check(self):
+	def check(self, campaigneventhandler):
 		for cond in self.conditions:
 			if not cond():
 				return False
 		for action in self.actions:
-			action(self.session)
+			campaigneventhandler.schedule_action(action)
 		return True
 
 	def to_yaml(self):
