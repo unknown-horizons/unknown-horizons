@@ -179,7 +179,6 @@ msgid "Companies"
 msgstr "Betriebe"
 
 #: horizons/i18n/guitranslations.py:48
-#, fuzzy
 msgid ""
 "Tent: \n"
 "Houses your \n"
@@ -267,7 +266,6 @@ msgstr "Baum"
 
 # FIXME: Sammelt Essen? "sammelt"? → Produziert? etc.
 #: horizons/i18n/guitranslations.py:56
-#, fuzzy
 msgid ""
 "Hunter: \n"
 "Hunts wild \n"
@@ -276,11 +274,10 @@ msgid ""
 msgstr ""
 "Jäger: \n"
 "Jagt wilde Waldtiere, \n"
-"sammelt Nahrung"
+"produziert Nahrung."
 
 # FIXME: Sammelt?
 #: horizons/i18n/guitranslations.py:57
-#, fuzzy
 msgid ""
 "Fisherman: \n"
 "Fishes the sea, \n"
@@ -288,7 +285,7 @@ msgid ""
 msgstr ""
 "Fischer: \n"
 "Fischt im Meer, \n"
-"produziert Nahrung"
+"produziert Nahrung."
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer Buildings"
@@ -375,7 +372,6 @@ msgstr ""
 "Stellt Bildung bereit."
 
 #: horizons/i18n/guitranslations.py:71
-#, fuzzy
 msgid ""
 "Boat builder: \n"
 "Builds boats and \n"
@@ -398,7 +394,6 @@ msgid "Housing"
 msgstr "Behausung"
 
 #: horizons/i18n/guitranslations.py:75
-#, fuzzy
 msgid "Production"
 msgstr "Produktion"
 
@@ -535,7 +530,7 @@ msgstr "Besonderen dank"
 #: horizons/i18n/guitranslations.py:119
 #, fuzzy
 msgid "The whole FIFE team (www.fifengine.de)"
-msgstr "Das FIFE-Team (www.fifengine.de)"
+msgstr "Das ganze FIFE-Team (www.fifengine.de)"
 
 #: horizons/i18n/guitranslations.py:122
 msgid "Return to Game"
@@ -718,7 +713,7 @@ msgstr "Logbuch"
 
 #: horizons/i18n/guitranslations.py:176
 msgid "Build menu"
-msgstr "Baumenü:"
+msgstr "Baumenü"
 
 #: horizons/i18n/guitranslations.py:177
 msgid "Help"
@@ -841,7 +836,7 @@ msgstr "Spiel beenden"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Sind Sie sicher, dass Sie Unknown Horizons beenden wollen?"
+msgstr "Sicher dass Ihr Unknown Horizons beenden wollt?"
 
 #: horizons/i18n/guitranslations.py:214
 msgid "Quit Session"
@@ -1089,7 +1084,7 @@ msgstr "Name:"
 #: horizons/i18n/guitranslations.py:285
 #, fuzzy
 msgid "Settler overview"
-msgstr "SettlerCollector"
+msgstr "Siedler-Übersicht"
 
 #: horizons/i18n/guitranslations.py:286
 msgid "Average happiness:"
@@ -1098,7 +1093,7 @@ msgstr "Mittlere Zufriedenheit:"
 #: horizons/i18n/guitranslations.py:287
 #, fuzzy
 msgid "Most needed resource:"
-msgstr "Benötigte Ressourcen:"
+msgstr "Meist benötigte Ressource:"
 
 #: horizons/i18n/guitranslations.py:289 horizons/i18n/guitranslations.py:292
 #: horizons/i18n/guitranslations.py:295 horizons/i18n/guitranslations.py:303
@@ -1123,7 +1118,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:301
 #, fuzzy
 msgid "It contains these resources:"
-msgstr "Waren Ein- oder Verkaufen"
+msgstr "Es enthält diese Ressourcen:"
 
 #: horizons/i18n/guitranslations.py:305
 msgid "Needed Resources:"
@@ -1138,7 +1133,7 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Das Signalfeuer weist dem Freien Händler den weg zu eurer Siedlung. Es wird "
+"Das Signalfeuer weist dem Freien Händler den Weg zu Eurer Siedlung. Es wird "
 "benötigt um mit Waren zu handeln."
 
 #: horizons/i18n/guitranslations.py:311
@@ -1146,7 +1141,7 @@ msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Dies ist das Schiff des Freien Händlers, es wird von Zeit zu Zeit ihre "
+"Dies ist das Schiff des Freien Händlers, es wird von Zeit zu Zeit Eure "
 "Siedlung besuchen um zu handeln."
 
 #: horizons/i18n/guitranslations.py:313
@@ -1161,7 +1156,7 @@ msgstr "Produktion starten"
 
 #: horizons/i18n/guitranslations.py:316 horizons/i18n/guitranslations.py:318
 msgid "Inventory"
-msgstr "Lager:"
+msgstr "Lager"
 
 #: horizons/i18n/guitranslations.py:319
 msgid "Load/Unload:"
