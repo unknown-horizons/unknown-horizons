@@ -36,6 +36,24 @@ wentam
 
 
 
+== Patchers
+
+= 2009
+abeaumont (Building bugfix)
+MadMonk (Focus bugfix)
+MSSSSM (Several improvements)
+soeb (Translation enhancements)
+
+= 2010 
+Afrit (Resource tree)
+cubathy (Language bugfix)
+dario (Savegame versioning)
+IwfY (Game lobby GUI)
+rudi_s_ (Translation enhancements)
+Yeya (Random maps)
+
+
+
 == Translators
 
 = Brazilian Portuguese
@@ -46,7 +64,7 @@ RainCT (Siegfried Gevatter)
 
 = French
 deathmaster9 (Marc Moussa)
-LiveWire
+LiveWire (Vincent Herilier)
 
 = German
 Michael Skiba
@@ -68,21 +86,6 @@ MadMonk (Nuno Alves)
 Nikolai Woutlan
 
 
-
-== Patchers
-
-= 2009
-abeaumont (Building bugfix)
-MadMonk (Focus bugfix)
-MSSSSM (Several improvements)
-soeb (Translation enhancements)
-
-= 2010 
-Afrit (Resource tree)
-cubathy (Language bugfix)
-dario (Savegame versioning)
-IwfY (Game lobby GUI)
-Yeya (Random maps)
 
 == Special Thanks
 The whole FIFE team (www.fifengine.de)

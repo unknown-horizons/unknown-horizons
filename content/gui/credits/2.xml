@@ -43,7 +43,7 @@
 			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
 				<VBox name="book2">
 					<Label text="deathmaster9 (Marc Moussa)" />
-					<Label text="LiveWire" />
+					<Label text="LiveWire (Vincent Herilier)" />
 				</VBox>
 			</HBox>
 		</VBox>

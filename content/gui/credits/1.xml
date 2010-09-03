@@ -27,7 +27,7 @@
 		<Label text="Patchers" name="headline_patchers" font="libertine_headline" />
 		<Icon image="content/gui/images/background/hr.png" />
 		<VBox> <Label text="2009" font="libertine_headline" />
-			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE" />
 				<VBox name="book0">
 					<Label text="abeaumont (Building bugfix)"  />
 					<Label text="MadMonk (Focus bugfix)"  />
@@ -37,12 +37,13 @@
 			</HBox>
 		</VBox>
 		<VBox> <Label text="2010" font="libertine_headline" />
-			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE" />
 				<VBox name="book1">
 					<Label text="Afrit (Resource tree)" />
 					<Label text="cubathy (Language bugfix)" />
 					<Label text="dario (Savegame versioning)" />
 					<Label text="IwfY (Game lobby GUI)" />
+					<Label text="rudi_s_ (Translation enhancements)" />
 					<Label text="Yeya (Random maps)" />
 				</VBox>
 			</HBox>
@@ -51,7 +52,7 @@
 
 	<VBox> <Spacer />
 		<VBox> <Label text="" font="libertine_headline" />
-			<HBox padding="30" > <VBox name="DO_NOT_REMOVE"></VBox>
+			<HBox padding="30" > <VBox name="DO_NOT_REMOVE" />
 				<VBox name="book2">
 					<Label text="" />
 				</VBox>
