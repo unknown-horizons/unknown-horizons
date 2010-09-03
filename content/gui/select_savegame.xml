@@ -5,15 +5,17 @@
 	<Container size="320,500" position="55,32">
 		<Label text="" position="115,10" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" position="52,30" />
-		<Label text="Your saved games:" position="22,50" name="headline" />
+		<Label text="Your saved games:" position="22,50" name="saved_games_label" />
 		<ScrollArea min_size="300,360" horizontal_scrollbar="0" position="22,75">
 			<ListBox name="savegamelist" min_size="300,360" />
-        </ScrollArea>
-	
-				
-		<ImageButton name="deleteButton" up_image="content/gui/images/background/delete.png" hover_image="content/gui/images/background/delete_h.png" down_image="content/gui/images/background/delete.png" position="32,460" />
+		</ScrollArea>
+
+		<ImageButton name="deleteButton" position="32,460" 
+			up_image="content/gui/images/background/delete.png" 
+			hover_image="content/gui/images/background/delete_h.png" 
+			down_image="content/gui/images/background/delete.png" />
 	</Container>
-	
+
 	<Container size="320,500" position="420,32" name="right_page">
 		<VBox position="0,51">
 			<HBox name="enter_filename">
@@ -21,14 +23,21 @@
 				<TextField name="savegamefile" min_size="200,16" position="52,90" />
 			</HBox>
 		</VBox>
+
 		<HBox name="savegame_details" position="0,76">
 			<Label name="details_label" text="Details:" position="32,60" />		
 			<HBox name="savegamedetails_box" min_size="300,50" position="52,80" />
 		</HBox>
-		
+
 		<Container size="320,40" position="200,460">
-			<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0" />
-			<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0" />
+			<ImageButton name="cancelButton" position="0,0" 
+				up_image="content/gui/images/background/close.png" 
+				hover_image="content/gui/images/background/close_h.png" 
+				down_image="content/gui/images/background/close.png" />
+			<ImageButton name="okButton" position="60,0" 
+				up_image="content/gui/images/background/ok.png" 
+				hover_image="content/gui/images/background/ok_h.png" 
+				down_image="content/gui/images/background/ok.png" />
 		</Container>
 	</Container>
 </Container>

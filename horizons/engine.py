@@ -35,11 +35,20 @@ import horizons.main
 import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader
 from horizons.extscheduler import ExtScheduler
-from horizons.i18n import update_all_translations
+from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 
 UH_MODULE="unknownhorizons"
+ 
+class LocalizedSetting(Setting):
+	"""
+	Localized settings dialog by using load_xml_translated() instead of
+	plain load_xml().
+	"""
+	def _loadWidget(self, dialog):
+		return load_xml_translated(dialog)
+
 
 class Fife(ApplicationBase):
 	"""
@@ -68,10 +77,10 @@ class Fife(ApplicationBase):
 
 
 	def _setup_settings(self):
-		self._setting =  Setting(app_name="unknownhorizons",
-		                         settings_file=PATHS.USER_CONFIG_FILE,
-		                         settings_gui_xml="content/gui/settings.xml",
-		                         changes_gui_xml="content/gui/requirerestart.xml")
+		self._setting = LocalizedSetting(app_name="unknownhorizons",
+		                                 settings_file=PATHS.USER_CONFIG_FILE,
+		                                 settings_gui_xml="settings.xml",
+		                                 changes_gui_xml="requirerestart.xml")
 		self._setting.setGuiStyle("book")
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
