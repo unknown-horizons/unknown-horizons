@@ -144,13 +144,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			popup = self.widgets['popup_with_cancel']
 		else:
 			popup = self.widgets['popup']
-		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
-		headline.text = _(unicode(_(windowtitle)))
-		headline.stylize('headline')
+		popup.findChild(name='headline').text = _(unicode(_(windowtitle)))
 		popup.findChild(name='popup_message').text = _(unicode(_(message)))
 		popup.adaptLayout() # recalculate widths
+		headline = popup.findChild(name='headline')
+		headline.stylize('headline')
 		headline.position = ( popup.width/2 - headline.width/2 , headline.position[1] )
 		popup.adaptLayout()
 		if show_cancel_button:

@@ -7,7 +7,7 @@
 	<Label name="popup_message" wrap_text="1" max_size="300,100" min_size="300,100" font="libertine_14_black" />
 	<Spacer />
 	<HBox><Spacer/>
-		<ImageButton name="unpause_button" 
+		<ImageButton name="okButton" 
 			up_image="content/gui/images/background/ok.png" 
 			hover_image="content/gui/images/background/ok_h.png" 
 			down_image="content/gui/images/background/ok.png" />

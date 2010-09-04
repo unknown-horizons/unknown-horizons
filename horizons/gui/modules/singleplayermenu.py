@@ -26,7 +26,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
 
 class SingleplayerMenu(object):
-	def show_single(self, show = 'free_maps'):
+	def show_single(self, show = 'campaign'): # tutorial
 		"""
 		@param show: string, which type of games to show
 		"""
@@ -53,6 +53,7 @@ class SingleplayerMenu(object):
 			self.show_popup(_('Warning'), \
 			                _('The random map features is still in active development. '+\
 			                  'It is to be considered a pre testing version. Problems are to be expected.'))
+			# need to add some options here (generation algo, size, ... )
 		else:
 			if show == 'free_maps':
 				del eventMap['showMaps']
@@ -132,4 +133,4 @@ class SingleplayerMenu(object):
 		print "Error: ", unicode(str(exception))
 		self.show_popup(_("Invalid scenario file"), \
 		                _("The selected file is not a valid scenario file.\nError message: ") + \
-		                unicode(str(exception)))
+		                unicode(str(exception))) + _("\nPlease report this to the author.")
