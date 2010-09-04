@@ -1,10 +1,16 @@
 <?xml version="1.0"?>
 <Container name="popup_window" size="374,230" position="325,235">
-	<Icon image="content/gui/images/background/notice.png" position="0,0" />
-	<Label text="" position="102,30" name="headline" />
-	<Icon image="content/gui/images/background/hr.png" position="80,50" />
-	<Label name="popup_message" position="22,82" wrap_text="1" max_size="300,1000"/>
-	<Container size="400,60" position="235,170">
-		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0" />
-	</Container>
+	<Icon image="content/gui/images/background/notice.png" />
+<VBox position="60,30">
+	<Label text="" name="headline" font="libertine_headline" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<Label name="popup_message" wrap_text="1" max_size="300,100" min_size="300,100" font="libertine_14_black" />
+	<Spacer />
+	<HBox><Spacer/>
+		<ImageButton name="unpause_button" 
+			up_image="content/gui/images/background/ok.png" 
+			hover_image="content/gui/images/background/ok_h.png" 
+			down_image="content/gui/images/background/ok.png" />
+	</HBox>
+</VBox>
 </Container>

@@ -46,8 +46,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'quitgame': 'book',
 	  'settings': 'book',
 	  'requirerestart': 'book',
-	  'popup_with_cancel': 'book',
-	  'popup': 'book',
+#	  'popup_with_cancel': 'book',
+#	  'popup': 'book',
 	  'gamemenu': 'menu',
 	  'chime': 'book',
 	  'help': 'book',
@@ -144,12 +144,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			popup = self.widgets['popup_with_cancel']
 		else:
 			popup = self.widgets['popup']
+		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
-		popup.findChild(name='headline').text = _(unicode(_(windowtitle)))
+		headline.text = _(unicode(_(windowtitle)))
+		headline.stylize('headline')
 		popup.findChild(name='popup_message').text = _(unicode(_(message)))
 		popup.adaptLayout() # recalculate widths
-		headline = popup.findChild(name='headline')
 		headline.position = ( popup.width/2 - headline.width/2 , headline.position[1] )
 		popup.adaptLayout()
 		if show_cancel_button:
@@ -277,6 +278,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 										 time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
 			details_label.text += "Saved %d time%s\n" % (savegame_info['savecounter'], \
 			                                             's' if savegame_info['savecounter'] > 1 else '')
+			details_label.stylize('book')
 
 			from horizons.constants import VERSION
 			try:
@@ -328,7 +330,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		for label in ['headline','saved_games_label','details_label']:
+		for label in ('headline','saved_games_label','details_label'):
 			self.current.findChild(name=label).stylize('headline')
 
 		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
