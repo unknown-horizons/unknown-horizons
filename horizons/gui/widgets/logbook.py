@@ -54,7 +54,8 @@ class LogBook(object):
 	def load(self, db):
 		for heading, message in db("SELECT heading, message FROM logbook"):
 			self.add_entry(heading, message, False)
-		self._cur_entry = int(db("SELECT value FROM metadata where name = \"logbook_cur_entry\"")[0][0])
+		if (db("SELECT value FROM metadata where name = \"logbook_cur_entry\"")[0][0]):
+			self._cur_entry = int(db("SELECT value FROM metadata where name = \"logbook_cur_entry\"")[0][0])
 		self._redraw()
 
 	def add_entry(self, heading, message, show_logbook=True):
