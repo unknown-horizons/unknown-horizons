@@ -33,19 +33,16 @@ NOTE: Using constants is generally a bad style, so avoid where possible."""
 class VERSION:
 	def _set_version(version=None):
 		"""Function gets latest revision of the working copy.
-		It only works in svn or git-svn repositories, and is acctually a hack.
+		It only works in git repositories, and is acctually a hack.
 		@param version: String to display instead of revision."""
 		if version == None:
 			try:
 				from run_uh import find_uh_position
 			except ImportError:
-				return unicode("SVN")
+				return unicode("Git")
 
-			rev = None
 			uh_path = find_uh_position()
 			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
-			svn_entries_path = os.path.join(uh_path, '.svn', 'entries')
-			git_svn_path = os.path.join(uh_path, '.git', 'logs', 'refs', 'remotes', 'git-svn')
 			if os.path.exists(git_head_path):
 				head = open(git_head_path).readline().strip().partition(' ')
 				if head[2]:
@@ -56,28 +53,12 @@ class VERSION:
 					return unicode(open(head_file).readline().strip()[0:7])
 				else:
 					return u""
-			elif os.path.exists(svn_entries_path):
-				entries_file = open(svn_entries_path).read()
-				if re.match('\d', entries_file):
-					rev = re.search('\d+\s+dir\s+(\d+)', entries_file).groups()[0]
-				else:
-					from xml.dom import minidom
-					rev = minidom.parse(entries_file).getElementsByTagName("entry")[0].getAttribute("revision")
-				rev = u"r" + rev
-				return unicode(rev)
-			elif os.path.exists(git_svn_path):
-				log_file = open(git_svn_path, 'r').read()
-				rev  = re.search('\s+r+(\d+)$', log_file).groups()[0]
-				rev = u"r" + rev
-				return unicode(rev)
 			else:
 				return u""
 		else:
 			return unicode(version)
 
 	RELEASE_NAME    = _("Unknown Horizons Version %s")
-	# this line could work with some kind of svn hook
-	#RELEASE_VERSION = u"#Rev:124#".replace(u"#", u"").replace(u"Rev:", u"r")
 	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
