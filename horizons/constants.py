@@ -47,7 +47,11 @@ class VERSION:
 			svn_entries_path = os.path.join(uh_path, '.svn', 'entries')
 			git_svn_path = os.path.join(uh_path, '.git', 'logs', 'refs', 'remotes', 'git-svn')
 			if os.path.exists(git_head_path):
-				head_file = os.path.join(uh_path, '.git', open(git_head_path).readline().strip().partition(' ')[2])
+				head = open(git_head_path).readline().strip().partition(' ')
+				if head[2]:
+					head_file = os.path.join(uh_path, '.git', head[2])
+				else:
+					head_file = git_head_path
 				if os.path.exists(head_file):
 					return unicode(open(head_file).readline().strip()[0:7])
 				else:
