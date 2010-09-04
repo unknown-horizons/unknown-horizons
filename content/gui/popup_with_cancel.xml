@@ -17,4 +17,5 @@
 		hover_image="content/gui/images/background/ok_h.png" 
 		down_image="content/gui/images/background/ok.png" />
 	</HBox>
+</VBox>
 </Container>
