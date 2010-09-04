@@ -10,65 +10,65 @@
 	<Label name="start" text="Singleplayer" position="531,100" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,144" />
 	<ImageButton	name="startSingle"
-								position="488,169"
-								up_image="content/gui/images/icons/oa_startmenu_compass_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_compass.png"
-								hover_image="content/gui/images/icons/oa_startmenu_compass.png" />
+			position="488,169"
+			up_image="content/gui/images/icons/oa_startmenu_compass_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_compass.png"
+			hover_image="content/gui/images/icons/oa_startmenu_compass.png" />
 
 	<Label name="start_multi" text="Multiplayer" position="680,200" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,188" />
 	<ImageButton	name="startMulti"
-								position="593,211"
-								up_image="content/gui/images/icons/oa_startmenu_multiplayer_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_multiplayer.png"
-								hover_image="content/gui/images/icons/oa_startmenu_multiplayer.png" />
+			position="593,211"
+			up_image="content/gui/images/icons/oa_startmenu_multiplayer_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_multiplayer.png"
+			hover_image="content/gui/images/icons/oa_startmenu_multiplayer.png" />
 
 	<Label name="credits" text=" Credits " position="225,305"/>
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="302,298" />
 	<ImageButton	name="creditsLink"
-								position="328,321"
-								up_image="content/gui/images/icons/oa_startmenu_log_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_log.png"
-								hover_image="content/gui/images/icons/oa_startmenu_log.png" />
+			position="328,321"
+			up_image="content/gui/images/icons/oa_startmenu_log_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_log.png"
+			hover_image="content/gui/images/icons/oa_startmenu_log.png" />
 
 	<Label name="quit" text=" Quit " position="442,565" />
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,452" />
 	<ImageButton	name="closeButton"
-								position="484,478"
-								up_image="content/gui/images/icons/oa_startmenu_door_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_door.png"
-								hover_image="content/gui/images/icons/oa_startmenu_door.png" />
+			position="484,478"
+			up_image="content/gui/images/icons/oa_startmenu_door_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_door.png"
+			hover_image="content/gui/images/icons/oa_startmenu_door.png" />
 
 	<Label name="settings" text=" Settings " position="728,365" />
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="612,298" />
 	<ImageButton	name="settingsLink"
-								position="637,323"
-								up_image="content/gui/images/icons/oa_startmenu_gears_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_gears.png"
-								hover_image="content/gui/images/icons/oa_startmenu_gears.png" />
+			position="637,323"
+			up_image="content/gui/images/icons/oa_startmenu_gears_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_gears.png"
+			hover_image="content/gui/images/icons/oa_startmenu_gears.png" />
 
 	<Label name="help" text=" Help " position="619,518" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,406" />
 	<ImageButton	name="helpLink"
-								position="593,431"
-								up_image="content/gui/images/icons/oa_startmenu_help_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_help.png"	
-								hover_image="content/gui/images/icons/oa_startmenu_help.png" />
+			position="593,431"
+			up_image="content/gui/images/icons/oa_startmenu_help_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_help.png"	
+			hover_image="content/gui/images/icons/oa_startmenu_help.png" />
 
 	<Label name="loadgame" text=" Continue Game " position="345,128" />
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="350,188" />
 	<ImageButton	name="loadgameButton"
-								position="376,212"
-								up_image="content/gui/images/icons/oa_startmenu_continue_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_continue.png"
-								hover_image="content/gui/images/icons/oa_startmenu_continue.png" />
+			position="376,212"
+			up_image="content/gui/images/icons/oa_startmenu_continue_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_continue.png"
+			hover_image="content/gui/images/icons/oa_startmenu_continue.png" />
 
 	<Label name="chimebell" text=" Chime The Bell " position="218,480" />
 	<Icon  image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
 	<ImageButton	name="dead_link"
-								position="376,431"
-								up_image="content/gui/images/icons/oa_startmenu_bell_gray.png"
-								down_image="content/gui/images/icons/oa_startmenu_bell.png"
-								hover_image="content/gui/images/icons/oa_startmenu_bell.png" />
+			position="376,431"
+			up_image="content/gui/images/icons/oa_startmenu_bell_gray.png"
+			down_image="content/gui/images/icons/oa_startmenu_bell.png"
+			hover_image="content/gui/images/icons/oa_startmenu_bell.png" />
 								
 </Container>
