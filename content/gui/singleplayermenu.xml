@@ -1,47 +1,56 @@
 <?xml version="1.0"?>
 <Container size="1024,768">
-	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
-	<Container size="800,800" position="100,100">
-		<Icon image="content/gui/images/background/book.png" position="0,0" />
+<Icon image="content/gui/images/background/menu_bg.png" />
+<Icon image="content/gui/images/background/book.png" position="100,100" />
 
-		<Container size="320,500" position="75,32">
-			<Label text="NEW GAME - SINGLEPLAYER" position="70,10" name="headline" />
-			<Icon image="content/gui/images/background/hr.png" position="52,30" />
+<Container size="320,510" position="175,132">
+	<Label text="NEW GAME - SINGLEPLAYER" position="70,10" name="headline" />
+	<Icon image="content/gui/images/background/hr.png" position="52,30" />
 
-			<RadioButton position="22,50" size="32,32" name="showCampaign" group="gametype" text="Campaign" />
-			<RadioButton position="22,80" size="32,32" name="showRandom" group="gametype" text="Random map" />
-			<RadioButton position="22,110" size="32,32" name="showMaps" group="gametype" text="Free play" />
+	<RadioButton position="22,50" size="32,32" name="showCampaign" group="gametype" text="Campaign" />
+	<RadioButton position="22,80" size="32,32" name="showRandom" group="gametype" text="Random map" />
+	<RadioButton position="22,110" size="32,32" name="showMaps" group="gametype" text="Free play" />
 
-			<Icon image="content/gui/images/background/hr.png" position="52,140" />
+	<Icon image="content/gui/images/background/hr.png" position="52,140" />
+	<HBox position="42,470" min_size="0,40" >
+		<Label name="main_menu_label" text="Main menu:" />
+		<ImageButton name="cancel" 
+			up_image="content/gui/images/background/close.png" 
+			down_image="content/gui/images/background/close_h.png" 
+			hover_image="content/gui/images/background/close_h.png" />
+	</HBox>
+</Container>
 
-			<Label name="main_menu_label" text="Main menu:" position="42,470" />
-			<ImageButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" />
-		</Container>
+<!--
+this should acctually be a Container, that contains subcontainers, but with Container,
+the content doesn't show up. Pychan wasn't designed for Containers within Containers, which might
+be the source of this bug
+-->
+<VBox name="playerdataselectioncontainer" position="200,290" />
 
-		<!--
-		this should acctually be a Container, that contains subcontainers, but with Container,
-		the content doesn't show up. Pychan wasn't designed for Containers within Containers, which might
-		be the source of this bug
-		-->
-		<VBox name="playerdataselectioncontainer" position="100,190" ></VBox>
+<VBox max_size="320,480" min_size="320,480" position="520,162" name="right_side">
+	<Label text="Choose a map to play:" name="choose_map_lbl" />
+	<ScrollArea max_size="290,200" min_size="290,200" horizontal_scrollbar="0" name="map_list_area">
+		<ListBox name="maplist" />
+	</ScrollArea>
 
-		<Container size="320,500" position="420,32" name="right_side">
-			<Label text="Choose a map to play:" name="choose_map_lbl" position="0,50" />
-			<ScrollArea min_size="290,250"  horizontal_scrollbar="0" position="0,80" name="map_list_area">
-				<ListBox name="maplist" min_size="290,330" />
-			</ScrollArea>
-			
-			<Label name="map_author" position="10,330" wrap_text="1" max_size="300,1000"/>
-			<Label name="map_difficulty" position="10,350" wrap_text="1" max_size="300,1000" />
-			<Label name="map_desc" position="10,370" wrap_text="1" max_size="300,1000"/>
-			<!--
-			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
-			-->
+	<Label name="map_author" wrap_text="1" max_size="300,20"/>
+	<Label name="map_difficulty" wrap_text="1" max_size="300,20" />
+	<Label name="map_desc" wrap_text="1" max_size="300,20"/>
+	<!--
+	<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
+	-->
 
+	<Spacer />
 
-			<Label name="start_game_label" text="Start game:" position="170,470" />
-			<ImageButton position="250,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="okay" />
+	<HBox min_size="0,40"><Spacer />
+		<Label name="start_game_label" text="Start game:" />
+		<ImageButton name="okay" 
+			up_image="content/gui/images/background/ok.png" 
+			down_image="content/gui/images/background/ok_h.png" 
+			hover_image="content/gui/images/background/ok_h.png" />
+	</HBox>
 
-		</Container>
-	</Container>
+</VBox>
+
 </Container>

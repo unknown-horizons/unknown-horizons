@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <Container size="1024,768">
-	<Icon image="content/gui/images/background/menu_bg.png" position="0,0"/>
-	<Icon image="content/gui/images/misc/load.png" position="387,316"/>
-	<Label name="loading_label" text="Loading ..." position="440,360" font="libertine_large_load" min_size="100,70"/>
-	<Label name="version_label" text="Unknown Horizons Alpha" font="libertine_mainmenu" position="745,735"/>
+	<Icon image="content/gui/images/background/menu_bg.png" />
+	<Icon image="content/gui/images/misc/load.png" position="387,316" />
+	<Label name="loading_label" position="400,360" 
+		text="Loading ..." font="libertine_large_load" 
+		max_size="250,50" min_size="150,50" />
+	<Label name="version_label" position="745,735" 
+		text="Unknown Horizons Alpha" font="libertine_mainmenu" />
 </Container>

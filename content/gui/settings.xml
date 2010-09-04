@@ -10,37 +10,38 @@
 
 		<Container size="320,240" position="0,50" name="graphic_settings" >
 			<Label name="headline_graphics" text="Graphics" position="12,15" font="libertine_headline" />
-			<Label name="screen_resolution_label" text="Screen resolution:" position="160,50"/>
-				<ScrollArea min_size="100,105" position="160,70">
+			<Label name="screen_resolution_label" text="Screen resolution:" position="22,50" wrap_text="1" max_size="180,40" />
+				<ScrollArea min_size="100,105" position="22,90">
 					<ListBox name="screen_resolution" />
 				</ScrollArea>
 
-			<Label name="color_depth_label" text="Color depth:" position="22,50" />
-				<ScrollArea min_size="55,20" position="22,70">
+			<Label name="color_depth_label" text="Color depth:" position="180,50"  wrap_text="1" max_size="140,20" />
+				<ScrollArea min_size="55,20" position="200,90">
 					<ListBox name="screen_bpp" />
 				</ScrollArea> 
-			<Label name="use_renderer_label" text="Used renderer:" position="22,110" />
-				<ScrollArea min_size="55,40" position="22,135">
+			<Label name="use_renderer_label" text="Used renderer:" position="180,120" wrap_text="1" max_size="140,40" />
+				<ScrollArea min_size="55,40" position="200,160">
 					<ListBox name="render_backend" />
 				</ScrollArea>
-			<CheckBox min_size="160,32" name="enable_fullscreen" position="22,200" /> 
-			<Label name="screen_fullscreen_text" text="Full screen" position="67,205" />
+
+			<CheckBox min_size="160,32" name="enable_fullscreen" position="22,210" /> 
+			<Label name="screen_fullscreen_text" text="Full screen" position="67,215" />
 		</Container>
 
 		<Container size="320,200" position="0,320" name="sound_settings">
 			<Label name="headline_sound" text="Sound" position="12,0" font="libertine_headline" />
-			<Label name="music_volume_label" text="Music volume:" position="22,40" />
-			<Container size="180,30" position="150,40">
+			<Label name="music_volume_label" text="Music volume:" position="22,35" wrap_text="1" max_size="160,40" />
+			<Container size="180,30" position="150,45">
 				<Slider size="120,20" name="volume_music" orientation="0" scale_start="0.0" scale_end="0.20" />
 				<TextBox min_size="40,0" name="volume_music_value" text="" position="124,0" />
 			</Container>
-			<Label name="effect_volume_label" text="Effects volume:" position="22,80" />
-			<Container size="180,30" position="150,80">
+			<Label name="effect_volume_label" text="Effects volume:" position="22,90"  wrap_text="1" max_size="160,40" />
+			<Container size="180,30" position="150,95">
 				<Slider size="120,20" name="volume_effects" orientation="0" scale_start="0.0" scale_end="0.5" />
 				<TextBox min_size="40,0" name="volume_effects_value" text=""  position="124,0" />
 			</Container>
-			<CheckBox min_size="160,32" name="enable_sound" position="22,120" /> 
-			<Label name="sound_enable_opt_text" text="Enable sound" position="67,125" />
+			<CheckBox min_size="160,32" name="enable_sound" position="22,140" /> 
+			<Label name="sound_enable_opt_text" text="Enable sound" position="67,145" />
 		</Container>
 	</Container>
 
