@@ -53,7 +53,11 @@ class SPSession(Session):
 		self.timer.ticks_per_second = ticks
 		self.view.map.setTimeMultiplier(float(ticks) / float(GAME_SPEED.TICKS_PER_SECOND))
 		if old == 0 and self.timer.tick_next_time is None: #back from paused state
-			self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
+			if self.paused_time_missing is None:
+				# happens if e.g. a dialog pauses the game during startup on hotkeypress
+				self.timer.tick_next_time = time.time()
+			else:
+				self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
 		elif ticks == 0 or self.timer.tick_next_time is None: #go into paused state or very early speed change (before any tick)
 			self.paused_time_missing = ((self.timer.tick_next_time - time.time()) * old) if self.timer.tick_next_time is not None else None
 			self.timer.tick_next_time = None
