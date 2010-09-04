@@ -414,9 +414,11 @@ class IngameGui(LivingObject):
 
 	def save(self, db):
 		self.message_widget.save(db)
+		self.logbook.save(db)
 
 	def load(self, db):
 		self.message_widget.load(db)
+		self.logbook.load(db)
 
 		self.minimap.draw() # update minimap to new world
 

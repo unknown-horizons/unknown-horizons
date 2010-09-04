@@ -25,10 +25,10 @@ from horizons.gui.utility import center_widget
 
 
 class LogBook(object):
-	"""Implementation of the logbook described here:
+	"""Implementation of the logbook as described here:
 	http://wiki.unknown-horizons.org/index.php/DD/GUI/Message_System
 
-	It displays longer messages, that are essential for campaigns. 
+	It displays longer messages, that are essential for campaigns.
 	Headings can be specified for each entry.
 	"""
 	def __init__(self, session):
@@ -44,9 +44,22 @@ class LogBook(object):
 		self.show()
 		"" """
 
-	def add_entry(self, heading, message):
+	def save(self, db):
+		for i in xrange(0, len(self._headings)):
+			db("INSERT INTO logbook(heading, message) VALUES(?, ?)", \
+			   self._headings[i], self._messages[i])
+		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
+		   "logbook_cur_entry", self._cur_entry)
+
+	def load(self, db):
+		for heading, message in db("SELECT heading, message FROM logbook"):
+			self.add_entry(heading, message, False)
+		self._cur_entry = int(db("SELECT value FROM metadata where name = \"logbook_cur_entry\"")[0][0])
+		self._redraw()
+
+	def add_entry(self, heading, message, show_logbook=True):
 		"""Adds an entry to the logbook consisting of:
-		@param heading: printed in top line, font size 18.
+		@param heading: printed in top line.
 		@param message: printed below heading, wraps. """
 		#TODO last line of message text sometimes get eaten. Ticket #535
 		heading = unicode(heading)
@@ -57,7 +70,8 @@ class LogBook(object):
 			self._cur_entry = len(self._messages) - 1
 		else:
 			self._cur_entry = len(self._messages) - 2
-		self._redraw()
+		if show_logbook:
+			self._redraw()
 
 	def show(self):
 		# don't show if there are no messages
