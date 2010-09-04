@@ -6,14 +6,9 @@
 !define PRODUCT_ROOT_KEY "HKLM"
 !define PRODUCT_SUBKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
-;Installer Info
-Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "Setup.exe"
-InstallDir "$PROGRAMFILES\Unknown Horizons"
-BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} Installer"
-
 !include "FileFunc.nsh"
 !include "WordFunc.nsh"
+!include "LogicLib.nsh"
 
 ;MUI2
 !include "MUI2.nsh"
@@ -40,6 +35,13 @@ BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} Installer"
 ;Language
 !insertmacro MUI_LANGUAGE "English"
 
+;Installer Info
+Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
+OutFile "Setup.exe"
+InstallDir "$PROGRAMFILES\Unknown Horizons"
+BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} Installer"
+ShowInstDetails hide
+ShowUninstDetails hide
 
 Section "Unknown Horizons" uh
 	SetOutPath "$INSTDIR"
@@ -79,6 +81,32 @@ Section "Uninstall"
 	DeleteRegKey "${PRODUCT_ROOT_KEY}" "${PRODUCT_SUBKEY}"
 SectionEnd
 
+Section OpenAL OpenAL_Sec
+	SetOutPath "$TEMP"
+	File /nonfatal "depends\oalinst.exe"
+	Goto downloadOpenAL
+
+downloadOpenAL:
+	IfFileExists "$TEMP\oalinst.exe" installOpenAL
+
+	NSISdl::download http://connect.creativelabs.com/openal/Downloads/oalinst.zip $TEMP\oalinst.zip
+	Pop $R0
+	StrCmp $R0 "success" +3
+		MessageBox MB_OK "Download failed: $R0"
+		Quit
+
+	nsisunz::Unzip "$TEMP\oalinst.zip" "$TEMP"
+	Pop $R0
+	StrCmp $R0 "success" +2
+		DetailPrint "$R0"
+	Goto installOpenAL
+
+installOpenAL:
+	ExecWait '$TEMP\oalinst.exe'
+	Delete "$TEMP\oalinst.exe"
+
+SectionEnd
+
 Function .onInit
 	ClearErrors
 	ReadRegStr $3 "${PRODUCT_ROOT_KEY}" "${PRODUCT_SUBKEY}" "DisplayVersion"
@@ -103,4 +131,8 @@ Quit:
 	Quit
 
 done:
+	ClearErrors
+	ReadRegStr $3 "HKLM" "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenAL" "DiplayName"
+	IfErrors 0 +1
+		!insertmacro UnselectSection ${OpenAL_Sec}
 FunctionEnd
