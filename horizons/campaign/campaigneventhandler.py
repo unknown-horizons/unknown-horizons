@@ -275,7 +275,9 @@ class _Action(object):
 
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
-		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n').replace('\n', '')
+		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n')
+		# NOTE: the line above used to end with this: .replace('\n', '')
+		# which broke formatting of logbook messages, of course. Revert in case of problems.
 		return "{arguments: %s, type: %s}" % (arguments_yaml, self._action_type_str)
 
 
@@ -306,6 +308,8 @@ class _Condition(object):
 
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
-		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n').replace('\n', '')
+		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n')
+		# NOTE: the line above used to end with this: .replace('\n', '')
+		# which broke formatting of logbook messages, of course. Revert in case of problems.
 		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type.key)
 
