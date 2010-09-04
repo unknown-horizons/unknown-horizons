@@ -51,7 +51,7 @@ class IngameGui(LivingObject):
 		'status_gold' : 'resource_bar',
 		'status_extra' : 'resource_bar',
 		'status_extra_gold' : 'resource_bar',
-		'ingame_pause' : 'book'
+#		'ingame_pause' : 'book'
 	  }
 
 	def __init__(self, session, gui):
