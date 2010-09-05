@@ -24,17 +24,11 @@ data = [
     ('share/unknown-horizons', ('settings-dist.xml', ))]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
-	if '.svn' in dirs:
-		dirs.remove('.svn')
 	data.append(('share/unknown-horizons/%s' % root,
 		['%s/%s' % (root, f) for f in files]))
 
-data = filter(lambda x: '.svn' not in x[0], data)
-
 packages = []
 for root, dirs, files in os.walk('horizons'):
-	if '.svn' in dirs:
-		dirs.remove('.svn')
 	packages.append(root)
 
 # Add enet files for build platform
