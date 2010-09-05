@@ -2,8 +2,9 @@
 
 # Create a SQL dump of a SQLite database.
 #
-# This is used to provide diffs of .sqlite files when using Git. To set it up
-# add the following to your ~/.gitconfig or .git/config:
+# This is used to provide diffs of .sqlite files when using Git.
+# It needs at least git 1.6.1.
+# To set it up, add the following to your ~/.gitconfig or .git/config:
 #
 # [diff "sqlite"]
 #         textconv = sqlite3dump
