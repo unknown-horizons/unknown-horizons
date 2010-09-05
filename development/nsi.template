@@ -81,7 +81,7 @@ Section "Uninstall"
 	DeleteRegKey "${PRODUCT_ROOT_KEY}" "${PRODUCT_SUBKEY}"
 SectionEnd
 
-Section OpenAL OpenAL_Sec
+Section "OpenAL" OpenAL_Sec
 	SetOutPath "$TEMP"
 	File /nonfatal "depends\oalinst.exe"
 	Goto downloadOpenAL
@@ -95,6 +95,7 @@ downloadOpenAL:
 		MessageBox MB_OK "Download failed: $R0"
 		Quit
 
+	;Need nsisunz plugin to unzip the file.
 	nsisunz::Unzip "$TEMP\oalinst.zip" "$TEMP"
 	Pop $R0
 	StrCmp $R0 "success" +2
@@ -106,6 +107,14 @@ installOpenAL:
 	Delete "$TEMP\oalinst.exe"
 
 SectionEnd
+
+LangString DESC_uh ${LANG_ENGLISH} "Unknown Horizons - The game itself including FIFE. (Required)"
+LangString DESC_OpenAL ${LANG_ENGLISH} "OpenAL: Necessary for music and sound! Choose this one if it isn't installed already."
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+	!insertmacro MUI_DESCRIPTION_TEXT ${uh} $(DESC_uh)
+	!insertmacro MUI_DESCRIPTION_TEXT ${OpenAL_Sec} $(DESC_OpenAL)
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Function .onInit
 	ClearErrors
@@ -131,8 +140,10 @@ Quit:
 	Quit
 
 done:
-	ClearErrors
-	ReadRegStr $3 "HKLM" "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenAL" "DiplayName"
-	IfErrors 0 +1
+	SectionSetFlags ${uh} 17
+	ReadRegStr $3 "HKLM" "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenAL" "DisplayName"
+	${If} $3 != ""
 		!insertmacro UnselectSection ${OpenAL_Sec}
+	${EndIf}
+
 FunctionEnd
