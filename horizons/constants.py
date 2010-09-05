@@ -31,39 +31,33 @@ NOTE: Using constants is generally a bad style, so avoid where possible."""
 
 ##Versioning
 class VERSION:
-	def _set_version(version=None):
+	def _set_version():
 		"""Function gets latest revision of the working copy.
 		It only works in git repositories, and is acctually a hack.
-		@param version: String to display instead of revision."""
-		if version == None:
-			try:
-				from run_uh import find_uh_position
-			except ImportError:
-				return unicode("Git")
+		"""
+		try:
+			from run_uh import find_uh_position
+		except ImportError:
+			return u"<unknown>"
 
-			uh_path = find_uh_position()
-			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
-			if os.path.exists(git_head_path):
-				head = open(git_head_path).readline().strip().partition(' ')
-				if head[2]:
-					head_file = os.path.join(uh_path, '.git', head[2])
-				else:
-					head_file = git_head_path
-				if os.path.exists(head_file):
-					return unicode(open(head_file).readline().strip()[0:7])
-				else:
-					return u""
+		uh_path = find_uh_position()
+		git_head_path = os.path.join(uh_path, '.git', 'HEAD')
+		if os.path.exists(git_head_path):
+			head = open(git_head_path).readline().strip().partition(' ')
+			if head[2]:
+				head_file = os.path.join(uh_path, '.git', head[2])
 			else:
-				return u""
-		else:
-			return unicode(version)
+				head_file = git_head_path
+			if os.path.exists(head_file):
+				return unicode(open(head_file).readline().strip()[0:7])
+		return u"<unknown>"
 
-	RELEASE_NAME    = _("Unknown Horizons Version %s")
+	RELEASE_NAME    = _(u"Unknown Horizons Version %s")
 	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
-	#RELEASE_NAME   = _("Unknown Horizons Alpha %s")
-	#RELEASE_VERSION = '2009.2'
+	#RELEASE_NAME   = _(u"Unknown Horizons Alpha %s")
+	#RELEASE_VERSION = u'2009.2'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 6
