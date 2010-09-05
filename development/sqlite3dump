@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Create a SQL dump of a SQLite database.
+#
+# This is used to provide diffs of .sqlite files when using Git. To set it up
+# add the following to your ~/.gitconfig or .git/config:
+#
+# [diff "sqlite"]
+#         textconv = sqlite3dump
+#
+# And make sure this file is in your PATH. Now git log/git diff/gitk/tig/etc.
+# should show diffs of the .sqlite files.
+
+
+sqlite3 "$1" .dump
