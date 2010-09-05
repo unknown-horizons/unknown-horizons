@@ -52,8 +52,6 @@ header = '''# ###################################################
 #       horizons/i18n/guitranslations.py
 # * Do the manual postprocessing needed, a diff between
 #   the versions help figuring out what is needed.
-#   Currently you want to replace the Version strings by
-#   the magic from horizons/constants.py
 # ###################################################
 
 from horizons.constants import VERSION
@@ -94,11 +92,17 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 		if not len(element.getAttribute('name')):
 			print_n_no_name(element_name, element.getAttribute(text_name))
 
-	element_strings = [ '%s: _("%s")' % (
-			('"%s"' % element.getAttribute('name')).ljust(30),
-			element.getAttribute(text_name)) for element in element_list
-					if len(element.getAttribute(text_name)) and len(element.getAttribute('name'))
-					]
+	element_strings = []
+	for element in element_list:
+		if len(element.getAttribute(text_name)) and len(element.getAttribute('name')):
+			name = element.getAttribute('name')
+			value = element.getAttribute(text_name)
+			if name == 'version_label':
+				value = 'VERSION.string()'
+			else:
+				value = '_("%s")' % value
+			element_strings.append('%s: %s' % (('"%s"' % name).ljust(30), value))
+
 	return element_strings
 
 def content_from_file(filename):
