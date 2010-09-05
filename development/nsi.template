@@ -145,5 +145,8 @@ done:
 	${If} $3 != ""
 		!insertmacro UnselectSection ${OpenAL_Sec}
 	${EndIf}
-
+	SetOutPath $TEMP
+	File "content\gfx\inst_splash.bmp"
+	advsplash::show 1300 500 400 0xff00ff "$TEMP\inst_splash"
+	Delete "$TEMP\inst_splash.bmp"
 FunctionEnd
