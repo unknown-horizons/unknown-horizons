@@ -22,7 +22,7 @@
 from fife import fife
 
 STYLES= {
-	'default': {
+'default': {
 		'default' : {
 			'border_size': 2,
 			'margins': (0, 0),
@@ -87,8 +87,9 @@ STYLES= {
 		'Slider' : {
 			'base_color' : fife.Color(80,80,40,50),
 		},
-	},
-	'menu': { #Used in the main menu and game menu
+},
+
+'menu': { #Used in the main menu and game menu
 		'default' : {
 			'border_size': 0,
 			'margins': (0, 0),
@@ -107,9 +108,9 @@ STYLES= {
 			'border_size': 0,
 			'font' : 'libertine_mainmenu'
 		}
-	},
+},
 
-    'menu_black': { # style for build menu etc.
+'menu_black': { # style for build menu etc.
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -128,9 +129,9 @@ STYLES= {
             		'margins': (0,0),
 			'font' : 'libertine_14_black'
 		}
-	},
+},
 
-    'resource_bar': {
+'resource_bar': {
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -149,9 +150,9 @@ STYLES= {
 			'alpha':0,
 			'font' : 'libertine_small_black'
 		}
-	},
+},
 
-    'message_text': {
+'message_text': {
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -170,9 +171,9 @@ STYLES= {
 			'margins': (0,0),
 			'font' : 'libertine_small'
 		}
-	},
+},
 
-    'city_info': { # style for city info
+'city_info': { # style for city info
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -194,10 +195,9 @@ STYLES= {
     'TooltipLabel': {
 			'font' : 'libertine_18'
 		}
+},
 
-	},
-
-    'headline': { # style for headlines
+'headline': { # style for headlines
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -215,9 +215,9 @@ STYLES= {
 		'Label' : {
 			'font' : 'libertine_headline'
 		}
-	},
+},
 
-    'book': { # style for book widgets
+'book': { # style for book widgets
 	    'default' : {
 			'border_size': 0,
 			'margins': (0,0),
@@ -272,9 +272,36 @@ STYLES= {
 			'foreground_color' : fife.Color(80,80,40),
 			'font' : 'libertine_14_black',
 		}
-	},
+},
 
-	'tooltip': { # style for tooltips
+'book_t': { # same as book, only styles anything text-related
+	    'default' : {
+			'font' : 'libertine_14_black',
+		},
+		'Label' : {
+			'font' : 'libertine_14_black',
+		},
+		'TextBox' : {
+			'font' : 'libertine_14_black',
+			'opaque': 0
+		},
+		'ListBox' : {
+			'font' : 'libertine_14_black',
+		},
+		'ScrollArea' : {
+			'font' : 'libertine_14_black',
+			'horizontal_scrollbar' : 0,
+		},
+		'HBox' : {
+			'font' : 'libertine_14_black',
+			'opaque': 0
+		},
+		'TextField' : {
+			'font' : 'libertine_14_black',
+		}
+},
+
+'tooltip': { # style for tooltips
 		'default' : {
 			'border_size': 0,
 			'margins': (0,0),

@@ -92,10 +92,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for i in xrange (0,9):
+		for i in xrange (0,11):
 			cur_container = self.widgets['credits/'+str(number)].findChild(name='book'+str(i))
-			if cur_container is not None:
-				cur_container.stylize('book')
+			if cur_container:
+				#cur_container.stylize('margin=30,0') # didn't find anything that can set margins
+				cur_container.stylize('book_t')
 		team_lbl = self.widgets['credits/'+str(number)].findChild(name="team_lbl")
 		if team_lbl:
 			team_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 0), event_name="mouseClicked")
