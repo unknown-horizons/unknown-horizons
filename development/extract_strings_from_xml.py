@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 
 
 header = '''# ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,7 +43,7 @@ header = '''# ###################################################
 # ###################################################
 
 # ###################################################
-# WARNING: This fiile is generated automagically. If
+# WARNING: This file is generated automagically. If
 #          you need to update it follow the procedure
 #          outlined below.
 #
@@ -55,6 +55,8 @@ header = '''# ###################################################
 #   Currently you want to replace the Version strings by
 #   the magic from horizons/constants.py
 # ###################################################
+
+from horizons.constants import VERSION
 
 text_translations = dict()
 

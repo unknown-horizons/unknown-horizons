@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,7 @@
 # ###################################################
 
 # ###################################################
-# WARNING: This fiile is generated automagically. If
+# WARNING: This file is generated automagically. If
 #          you need to update it follow the procedure
 #          outlined below.
 #
@@ -98,7 +98,7 @@ def set_translations():
 			"forwardButton"               : _("Read next entries"),
 			"cancelButton"                : _("Leave Captain's Log")},
 		"change_name.xml" : {
-			"headline"                    : _("Change name"),
+			"change_name_headline"        : _("Change name"),
 			"enter_new_name_lbl"          : _("Enter new name:")},
 		"chat.xml" : {
 			"headline"                    : _("Chat"),
@@ -117,21 +117,7 @@ def set_translations():
 			"patchers_lbl"                : _("Patchers"),
 			"translators_lbl"             : _("Translators"),
 			"special_thanks_lbl"          : _("Special Thanks")},
-		"credits/1.xml" : {
-			"team_lbl"                    : _("UH-Team"),
-			"headline_patchers"           : _("Patchers"),
-			"translators_lbl"             : _("Translators"),
-			"special_thanks_lbl"          : _("Special Thanks")},
-		"credits/2.xml" : {
-			"team_lbl"                    : _("UH-Team"),
-			"patchers_lbl"                : _("Patchers"),
-			"headline_translators"        : _("Translators"),
-			"special_thanks_lbl"          : _("Special Thanks")},
 		"credits/3.xml" : {
-			"team_lbl"                    : _("UH-Team"),
-			"patchers_lbl"                : _("Patchers"),
-			"translators_lbl"             : _("Translators"),
-			"headline_thanks"             : _("Special Thanks"),
 			"fife_team_lbl"               : _("The whole FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
 			"version_label"               : VERSION.string(),
@@ -144,23 +130,23 @@ def set_translations():
 			"settings"                    : _(" Settings ")},
 		"help.xml" : {
 			"headline"                    : _("Key Bindings"),
-			"set01"                       : _("{LEFT}        = Scroll left"),
-			"set02"                       : _("{RIGHT}        = Scroll right"),
-			"set03"                       : _("{UP}        = Scroll up"),
-			"set04"                       : _("{DOWN}        = Scroll down"),
-			"set05"                       : _("{ , }         = Rotate building left"),
-			"set06"                       : _("{ . }         = Rotate building right"),
+			"set01"                       : _("{LEFT} = Scroll left"),
+			"set02"                       : _("{RIGHT} = Scroll right"),
+			"set03"                       : _("{UP} = Scroll up"),
+			"set04"                       : _("{DOWN} = Scroll down"),
+			"set21"                       : _("{ + } = Increase game speed"),
+			"set22"                       : _("{ - } = Decrease game speed"),
+			"set05"                       : _("{ , } = Rotate building left"),
+			"set06"                       : _("{ . } = Rotate building right"),
 			"set07"                       : _("{B} = Show build menu"),
+			"set12"                       : _("{ESC} = Show pause menu"),
 			"set08"                       : _("{F1} = Display help"),
 			"set09"                       : _("{F5} = Quicksave"),
 			"set10"                       : _("{F9} = Quickload"),
 			"set11"                       : _("{F10} = Toggle console on/off"),
-			"set12"                       : _("{ESC} = Show pause menu"),
+			"set20"                       : _("{P} = Pause game"),
 			"set13"                       : _("{G} = Toggle grid on/off"),
 			"set14"                       : _("{X} = Enable destruct mode"),
-			"set20"                       : _("{P} = Pause game"),
-			"set21"                       : _("{ + } = Increase game speed"),
-			"set22"                       : _("{ - } = Decrease game speed"),
 			"set23"                       : _("{S} = Screenshot"),
 			"set26"                       : _("{C} = Chat"),
 			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
@@ -208,14 +194,16 @@ def set_translations():
 			"startmessage"                : _("Game details:"),
 			"cancel"                      : _("Exit gamelobby")},
 		"multiplayermenu.xml" : {
-			"headline"                    : _("NEW GAME - MULTIPLAYER"),
-			"exit_to_main_menu_lbl"       : _("Main menu:"),
+			"headline_left"               : _("NEW GAME - MULTIPLAYER"),
+			"name_lbl"                    : _("Apply:"),
 			"create_game_lbl"             : _("Create game:"),
-			"headline"                    : _("Active games:"),
+			"exit_to_main_menu_lbl"       : _("Main menu:"),
+			"active_games_lbl"            : _("Active games:"),
 			"refr_gamelist_lbl"           : _("Refresh list:"),
 			"join_game_lbl"               : _("Join game"),
-			"cancel"                      : _("Exit to main menu"),
+			"apply_new_nickname"          : _("Apply the new name"),
 			"create"                      : _("Create a new game"),
+			"cancel"                      : _("Exit to main menu"),
 			"refresh"                     : _("Refresh list of active games"),
 			"join"                        : _("Join the selected game")},
 		"playerdataselection.xml" : {
@@ -231,12 +219,12 @@ def set_translations():
 			"headline"                    : _("Restart Required"),
 			"require_restart_label"       : _("Some of your changes require a restart of Unknown Horizons.")},
 		"select_savegame.xml" : {
-			"headline"                    : _("Your saved games:"),
+			"saved_games_label"           : _("Your saved games:"),
 			"enter_filename_label"        : _("Enter filename:"),
 			"details_label"               : _("Details:")},
 		"settings.xml" : {
 			"headline"                    : _("Settings"),
-			"warning"                     : _("Please make sure that you know, what you do."),
+			"warning"                     : _("Please make sure that you know what you do."),
 			"headline_graphics"           : _("Graphics"),
 			"screen_resolution_label"     : _("Screen resolution:"),
 			"color_depth_label"           : _("Color depth:"),
@@ -275,9 +263,6 @@ def set_translations():
 			"toggle_active_active"        : _("Pause"),
 			"toggle_active_inactive"      : _("Resume"),
 			"BB_cancel_button"            : _("Cancel all \nbuilding progress")},
-		"tab_widget/boatbuilder/confirm.xml" : {
-			"BB_confirm_build_label"      : _("Build ship:"),
-			"create_unit"                 : _("Build this ship!")},
 		"tab_widget/boatbuilder/fisher.xml" : {
 			"headline"                    : _("Fishing Boats"),
 			"BB_fisher_ship1"             : _("Fishing boat"),
