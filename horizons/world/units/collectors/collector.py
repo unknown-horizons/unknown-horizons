@@ -323,6 +323,9 @@ class Collector(StorageHolder, Unit):
 		self.transfer_res_from_target()
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
+		# stop playing ambient sound if any
+		if self.soundfiles:
+			self.stop_sound()
 
 	def transfer_res_from_target(self):
 		"""Transfers resources from target to collector inventory"""

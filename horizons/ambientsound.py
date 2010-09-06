@@ -77,6 +77,11 @@ class AmbientSound(object):
 				self.__timer = repeatCall(duration, self.__emitter.play)
 			self.__emitter.play()
 
+	def stop_sound(self):
+		"""Stops playing an ambient sound"""
+		if self.__emitter:
+			self.__emitter.stop()
+
 	@classmethod
 	def play_special(cls, sound, position = None):
 		"""Plays a special sound listed in the db table sounds_special
