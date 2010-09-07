@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Syncd with "doc/AUTHORS" -->
-<Container name="credits_window" size="1000,580" position="0,0">
+<Container name="credits_window" size="1000,580">
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container size="170,580">  
@@ -27,7 +27,7 @@
 	<Label text="Special Thanks" name="headline_thanks" font="libertine_headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox> <Label text="" font="libertine_headline" />
-		<VBox name="book0" margins="30,0">
+		<VBox name="book0">
 			<Label text="The whole FIFE team (www.fifengine.de)" name="fife_team_lbl" />
 			<Label text="mvBarracuda (Martin Vohland)" />
 			<Label text="lamoot (Matjaz Lamut)" />
@@ -42,7 +42,7 @@
 
 <VBox position="525,70" name="credits2">
 	<VBox> <Label text="" font="libertine_headline" />
-		<VBox name="book9" margins="30,0">
+		<VBox name="book9">
 			<Label text="" />
 		</VBox>
 	</VBox>

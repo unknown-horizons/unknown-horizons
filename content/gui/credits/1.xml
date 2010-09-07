@@ -18,7 +18,7 @@
 	<Label text="Patchers" name="headline_patchers" font="libertine_headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox> <Label text="2009" font="libertine_headline" />
-		<VBox name="book0" margins="30,0">
+		<VBox name="book0">
 			<Label text="abeaumont (Building bugfix)"  />
 			<Label text="MadMonk (Focus bugfix)"  />
 			<Label text="MSSSSM (Several improvements)"  />
@@ -27,7 +27,7 @@
 	</VBox>
 
 	<VBox> <Label text="2010" font="libertine_headline" />
-		<VBox name="book1" margins="30,0">
+		<VBox name="book1">
 			<Label text="Afrit (Resource tree)" />
 			<Label text="cubathy (Language bugfix)" />
 			<Label text="dario (Savegame versioning)" />
@@ -40,7 +40,7 @@
 
 <VBox position="525,70" name="credits2">
 	<VBox> <Label text="" font="libertine_headline" />
-		<VBox name="book2" margins="30,0">
+		<VBox name="book2">
 			<Label text="" />
 		</VBox>
 	</VBox>
