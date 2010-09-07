@@ -1,6 +1,0 @@
-*.py
-horizons/*.py
-horizons/*/*.py
-horizons/*/*/*.py
-horizons/*/*/*/*.py
-editor/*.py
