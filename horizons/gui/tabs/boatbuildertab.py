@@ -109,7 +109,7 @@ class BoatbuilderTab(OverviewTab):
 			still_needed_res = production.get_consumed_resources()
 			i = 1
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
-			main_container.findChild(name="BB_needed_res_label").text = _(u'Resources still needed:')
+			main_container.findChild(name="BB_needed_res_label").text = _('Resources still needed:')
 			for res, amount in still_needed_res.iteritems():
 				assert i <= 3, "Only 3 still needed res for ships are currently supported"
 
