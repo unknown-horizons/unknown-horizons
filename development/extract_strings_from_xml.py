@@ -73,49 +73,49 @@ import os
 import sys
 
 def print_n_no_name(n, text):
-    print '\tWarning: ',
-    print '%s without name found, please consider adding an unique name, text=("%s")' % (n, text)
+	print '\tWarning: ',
+	print '%s without name found, please consider adding an unique name, text=("%s")' % (n, text)
 
 print_label_no_name = lambda x: print_n_no_name('Label', x)
 print_window_no_name = lambda x: print_n_no_name('Window', x)
 
 def list_all_files():
-    result = []
-    walker = os.walk('content/gui')
-    for entry in walker:
-        for filename in entry[2]:
-            if filename.endswith('.xml'):
-               result.append('%s/%s' % (entry[0], filename))
-    return sorted(result)
+	result = []
+	walker = os.walk('content/gui')
+	for entry in walker:
+		for filename in entry[2]:
+			if filename.endswith('.xml'):
+				result.append('%s/%s' % (entry[0], filename))
+	return sorted(result)
 
 def content_from_element(element_name, parse_tree, text_name='text'):
-    element_list = parse_tree.getElementsByTagName(element_name)
-    for element in element_list:
-        if not len(element.getAttribute('name')):
-            print_n_no_name(element_name, element.getAttribute(text_name))
+	element_list = parse_tree.getElementsByTagName(element_name)
+	for element in element_list:
+		if not len(element.getAttribute('name')):
+			print_n_no_name(element_name, element.getAttribute(text_name))
 
-    element_strings = [ '%s: _("%s")' % (
-            ('"%s"' % element.getAttribute('name')).ljust(30),
-            element.getAttribute(text_name)) for element in element_list
-                      if len(element.getAttribute(text_name)) and len(element.getAttribute('name'))
-                      ]
-    return element_strings
+	element_strings = [ '%s: _("%s")' % (
+			('"%s"' % element.getAttribute('name')).ljust(30),
+			element.getAttribute(text_name)) for element in element_list
+					if len(element.getAttribute(text_name)) and len(element.getAttribute('name'))
+					]
+	return element_strings
 
 def content_from_file(filename):
-    print '@ %s' % filename
-    parsed = xml.dom.minidom.parse(filename)
+	print '@ %s' % filename
+	parsed = xml.dom.minidom.parse(filename)
 
-    strings = content_from_element('Label', parsed) + \
-        content_from_element('Button', parsed) + \
-        content_from_element('CheckBox', parsed) + \
-        content_from_element('RadioButton', parsed) + \
-        content_from_element('Window', parsed, 'title') + \
-        content_from_element('TooltipButton', parsed, 'tooltip')
+	strings = content_from_element('Label', parsed) + \
+		content_from_element('Button', parsed) + \
+		content_from_element('CheckBox', parsed) + \
+		content_from_element('RadioButton', parsed) + \
+		content_from_element('Window', parsed, 'title') + \
+		content_from_element('TooltipButton', parsed, 'tooltip')
 
-    if len(strings):
-        return '\t\t"%s" : {\n\t\t\t%s},' % (filename[12:], ',\n\t\t\t'.join(strings))
-    else:
-        return ''
+	if len(strings):
+		return '\t\t"%s" : {\n\t\t\t%s},' % (filename[12:], ',\n\t\t\t'.join(strings))
+	else:
+		return ''
 
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
@@ -123,9 +123,9 @@ filesnippets = (content for content in filesnippets if content != '')
 output = '%s%s%s' % (header, '\n'.join(filesnippets), footer)
 
 if len(sys.argv) > 1:
-    file(sys.argv[1], 'w').write(output)
+	file(sys.argv[1], 'w').write(output)
 else:
-    print
-    print 'Copy ==========>'
-    print output
-    print '<=========='
+	print
+	print 'Copy ==========>'
+	print output
+	print '<=========='
