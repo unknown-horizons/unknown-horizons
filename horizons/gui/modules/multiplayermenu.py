@@ -131,8 +131,8 @@ class MultiplayerMenu(object):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
 			game = self.__get_selected_game()
-		self.current.findChild(name="game_map").text = _(u"Map: ") + game.get_map_name()
-		self.current.findChild(name="game_playersnum").text =  _(u"Players: ") + \
+		self.current.findChild(name="game_map").text = _("Map: ") + game.get_map_name()
+		self.current.findChild(name="game_playersnum").text =  _("Players: ") + \
 			unicode(game.get_player_count()) + u"/" + unicode(game.get_player_limit())
 		creator_text = self.current.findChild(name="game_creator")
 		creator_text.text = u"Creator: " + unicode(game.get_creator())
