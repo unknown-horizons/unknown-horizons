@@ -24,5 +24,5 @@ fi
 cd po && for file in *.po; do
     echo $file
     msgmerge -U $file unknownhorizons.pot
-    msgfmt --statistics $file
+    msgfmt --statistics -o /dev/null $file
 done
