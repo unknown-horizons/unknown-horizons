@@ -4,5 +4,3 @@
 *.po~
 *.nsi
 Thumbs.db
-build
-tags

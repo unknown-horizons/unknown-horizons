@@ -268,10 +268,10 @@ def _start_map(map_name, is_scenario = False):
 			else:
 				map_file = maps[0][i]
 	if map_file is None:
-		print _("Error: Cannot find map \"%s\".") % map_name
+		print _(u"Error: Cannot find map \"%s\".") % map_name
 		return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches: ")
+		print _(u"Error: Found multiple matches: ")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -296,10 +296,10 @@ def _load_map(savegamename):
 			else:
 				map_file = saves[0][i]
 	if map_file is None:
-		print _("Error: Cannot find savegame \"%s\".") % savegamename
+		print _(u"Error: Cannot find savegame \"%s\".") % savegamename
 		return False
 	if len(map_file.splitlines()) > 1:
-		print _("Error: Found multiple matches: ")
+		print _(u"Error: Found multiple matches: ")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -314,7 +314,7 @@ def _load_last_quicksave():
 	try:
 		save = save_files[len(save_files)-1]
 	except KeyError:
-		print _("Error: No quicksave found.")
+		print _(u"Error: No quicksave found.")
 		return False
 	load_game(save)
 	return True
