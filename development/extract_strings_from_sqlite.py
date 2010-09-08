@@ -78,7 +78,7 @@ class MSGID_collect:
     def __str__(self):
     	s = []
         for pair in self.msgids.items():
-            s += ['#%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
+            s += ['#: sqlite/%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
         return '\n'.join(s).strip()
 
 def collect_msgid(msgid, place):

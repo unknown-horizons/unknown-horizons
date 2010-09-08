@@ -1,0 +1,16 @@
+README
+======
+
+All translations are handled through pootle [1] and the .po files in this
+directory should only be touched when syncing with pootle (which should happen
+regularly so users of the Git repository can test the translations).
+
+[1]: http://pootle.unknown-horizons.org/
+
+To update unknown-horizons.pot run
+
+    ./development/create_pot.sh
+
+If the .po files should also be updated run
+
+    ./development/create_pot.sh -u
