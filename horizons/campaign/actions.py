@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -52,6 +52,11 @@ def show_logbook_entry(session, head, message):
 	"""Adds an entry to the logbook and displays it."""
 	session.ingame_gui.logbook.add_entry(unicode(head),unicode(message))
 	session.ingame_gui.logbook.show()
+
+def show_logbook_entry_delayed(session, head, message, delay):
+	"""Show a logbook entry delayed by delay seconds"""
+	callback = Callback(show_logbook_entry, session, head, message)
+	Scheduler().add_new_object(callback, session.campaign_eventhandler, runin=Scheduler().get_ticks(delay))
 
 def do_win(session):
 	"""Called when player won"""

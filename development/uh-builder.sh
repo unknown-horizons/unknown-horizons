@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -63,9 +63,9 @@ else
 
 	case $distro in
 		suse)
-		distro="opensuse" 
+		distro="opensuse"
 		;;
-		linux)	
+		linux)
 		distro="linuxmint"
 		;;
 	esac
@@ -77,7 +77,7 @@ else
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
 		su -c "apt-get install build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra git-core"
-		if [ $? -ne 0 ] ; then 
+		if [ $? -ne 0 ] ; then
 			echo "Error: Failed to install required dependencies"
 			exit 1
 		fi
@@ -86,7 +86,7 @@ else
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
 		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra git-core
-		if [ $? -ne 0 ] ; then 
+		if [ $? -ne 0 ] ; then
 			echo "Error: Failed to install required dependencies"
 			exit 1
 		fi
@@ -95,16 +95,16 @@ else
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
 		sudo apt-get install -y build-essential scons libalsa-ocaml-dev libsdl1.2-dev libboost-dev libsdl-ttf2.0-dev libsdl-image1.2-dev libvorbis-dev libalut-dev python2.6 python-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev subversion python-yaml libxcursor1 libxcursor-dev python-distutils-extra git git-core
-		if [ $? -ne 0 ] ; then 
+		if [ $? -ne 0 ] ; then
 			echo "Error: Failed to install required dependencies"
 			exit 1
 		fi
-		;;	
+		;;
 	"gentoo")
 		dialog --msgbox "Now enter your root password to install the build dependencies for Fife and Unknown-Horizons" 8 60
 		clear
 		su -c "emerge --ask --noreplace libvorbis libogg media-libs/openal guichan boost libsdl sdl-image sdl-ttf scons subversion pyyaml python-distutils-extra intltool git git-core"
-		if [ $? -ne 0 ] ; then 
+		if [ $? -ne 0 ] ; then
 			echo "Error: Failed to install required dependencies"
 			exit 1
 		fi
@@ -122,7 +122,7 @@ else
 	clear
 	echo "Please wait while download is initiated..."
 	cd `cat "$tmpfile"`
-	if [ $? -ne 0 ] ; then 
+	if [ $? -ne 0 ] ; then
 		echo "Error: You entered an invalid directory"
 		exit 1
 	fi

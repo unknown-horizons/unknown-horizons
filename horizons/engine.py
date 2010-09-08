@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -40,7 +40,7 @@ from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 
 UH_MODULE="unknownhorizons"
- 
+
 class LocalizedSetting(Setting):
 	"""
 	Localized settings dialog by using load_xml_translated() instead of
