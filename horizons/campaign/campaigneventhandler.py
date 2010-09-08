@@ -255,6 +255,7 @@ class _Action(object):
 	  'set_var' : set_var,
 	  'logbook': show_logbook_entry,
 	  'logbook_s': write_logbook_entry,
+	  'logbook_delayed': show_logbook_entry_delayed,
 	  'wait': wait
 	}
 
