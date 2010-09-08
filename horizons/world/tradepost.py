@@ -35,6 +35,8 @@ class TradePost(object):
 		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
 		self.buy_history = {} # { tick_id: (res, amount, price) }
 		self.sell_history = {} # { tick_id: (res, amount, price) }
+		self.total_income = 0
+		self.total_expenses = 0
 
 	def add_to_buy_list(self, res_id, limit):
 		self.buy_list[res_id] = limit
@@ -63,6 +65,9 @@ class TradePost(object):
 			db("INSERT INTO trade_sell(object, resource, trade_limit) VALUES(?, ?, ?)",
 				 self.worldid, resource, limit)
 
+		db("INSERT INTO trade_values(object, total_income, total_expenses) VALUES (?, ?, ?)",
+		   self.worldid, self.total_income, self.total_expenses)
+
 	def load(self, db, worldid):
 		super(TradePost, self).load(db, worldid)
 
@@ -73,6 +78,9 @@ class TradePost(object):
 
 		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
 			self.sell_list[res] = limit
+
+		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses from trade_values WHERE object = ?",
+		   self.worldid)[0]
 
 	def buy(self, res, amount, price):
 		"""Check if we can buy, and process actions to our inventory
@@ -93,6 +101,7 @@ class TradePost(object):
 			remnant = self.inventory.alter(res, amount)
 			assert remnant == 0
 			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
+			self.total_expenses += amount*price
 			return True
 		assert False
 
@@ -114,6 +123,7 @@ class TradePost(object):
 			remnant = self.inventory.alter(res, -amount)
 			assert remnant == 0
 			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
+			self.total_income += amount*price
 			return True
 		assert False
 
@@ -151,3 +161,8 @@ class TradePost(object):
 			del self.buy_history[key]
 		return expenses
 
+	@property
+	def total_earnings(self):
+		"""Returns the entire earning of this settlement
+		total_earnings = sell_income - buy_expenses"""
+		return self.total_income - self.total_expenses

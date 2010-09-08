@@ -29,7 +29,7 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
-                  'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater', 'time_passed', \
+                  'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater', 'player_total_earnings_greater','time_passed', \
                   'var_eq', 'var_gt')
 
 # Condition checking is split up in 2 types:
@@ -46,7 +46,8 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.player_res_stored_greater,
 				CONDITIONS.player_res_stored_less,
                                 CONDITIONS.settlement_res_stored_greater,
-                                CONDITIONS.time_passed)
+                                CONDITIONS.time_passed,
+                                CONDITIONS.player_total_earnings_greater)
 
 ###
 # Campaign Conditions
@@ -105,6 +106,14 @@ def settlement_res_stored_greater(session, res, limit):
 	"""Returs whether at least one settlement of player has more than limit of res"""
 	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.inventory[res] > limit)
+
+def player_total_earnings_greater(session, total):
+	"""Returns whether the player has earned more then 'total' money with trading
+	earning = sell_income - buy_expenses"""
+	total_earning = 0
+	for settlement in _get_player_settlements(session):
+		total_earning += settlement.total_earnings
+	return total_earning > total
 
 def time_passed(session, secs):
 	"""Returns whether at least secs seconds have passed since start."""

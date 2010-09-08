@@ -81,9 +81,9 @@ class SingleplayerMenu(object):
 						except InvalidScenarioFileFormat, e:
 							self.__show_invalid_scenario_file_popup(e)
 							return
-						self.current.findChild(name="map_difficulty").text = "Difficulty: " + unicode( difficulty )
-						self.current.findChild(name="map_author").text = "Author: " + unicode( author )
-						self.current.findChild(name="map_desc").text =  "Description: " + unicode( desc )
+						self.current.findChild(name="map_difficulty").text = _("Difficulty: ") + unicode( difficulty )
+						self.current.findChild(name="map_author").text = _("Author: ") + unicode( author )
+						self.current.findChild(name="map_desc").text =  _("Description: ") + unicode( desc )
 						#self.current.findChild(name="map_desc").parent.adaptLayout()
 
 					self.current.findChild(name="maplist").capture(_update_infos)
