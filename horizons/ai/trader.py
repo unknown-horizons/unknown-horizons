@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -222,7 +222,7 @@ class Trader(AIPlayer):
 		"""Called if a ship is idle. Sends ship to a random place or  branch office (which target
 		to use is decided by chance, probability for branch office (BUSINESS_S.) is 2/3 by default)
 		@param ship: ship instance"""
-		if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE: 
+		if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE:
 			# delay one tick, to allow old movement calls to completely finish
 			self.log.debug("Trader %s ship %s: idle, moving to random bo", self.worldid, ship.worldid)
 			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self, runin=0)

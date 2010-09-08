@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,79 +35,79 @@ Base = sqlalchemy.ext.declarative.declarative_base()
 #
 
 class Building(Base):
-    __tablename__ = 'building'
+	__tablename__ = 'building'
 
-    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 class Unit(Base):
-    __tablename__ = 'unit'
+	__tablename__ = 'unit'
 
-    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 class Colors(Base):
-    __tablename__ = 'colors'
+	__tablename__ = 'colors'
 
-    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 class Message(Base):
-    __tablename__ = 'message'
+	__tablename__ = 'message'
 
-    text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+	text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 class Resource(Base):
-    __tablename__ = 'resource'
+	__tablename__ = 'resource'
 
-    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 #
 # print it
 #
 
 class MSGID_collect:
-    msgids = dict()
+	msgids = dict()
 
-    def __init__(self):
-        pass
+	def __init__(self):
+		pass
 
-    def add_to_collection(self, msgid, place):
-        if self.msgids.has_key(msgid):
-            self.msgids[msgid].append(place)
-        else:
-            self.msgids[msgid] = [place]
+	def add_to_collection(self, msgid, place):
+		if self.msgids.has_key(msgid):
+			self.msgids[msgid].append(place)
+		else:
+			self.msgids[msgid] = [place]
 
-    def __str__(self):
-    	s = []
-        for pair in self.msgids.items():
-            s += ['#: sqlite/%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
-        return '\n'.join(s).strip()
+	def __str__(self):
+		s = []
+		for pair in self.msgids.items():
+			s += ['#: sqlite/%s\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
+		return '\n'.join(s).strip()
 
 def collect_msgid(msgid, place):
-    pass
+	pass
 
 def print_msgid(msgid):
-    print 'msgid "%s"\nmsgstr ""\n' % msgid
+	print 'msgid "%s"\nmsgstr ""\n' % msgid
 
 def collect_all():
 	collector = MSGID_collect()
 
 	for building in session.query(Building):
-	    collector.add_to_collection(building.name, 'Building')
+		collector.add_to_collection(building.name, 'Building')
 
 	for unit in session.query(Unit):
-	    collector.add_to_collection(unit.name, 'Unit')
+		collector.add_to_collection(unit.name, 'Unit')
 
 	#for settler_level in session.query(SettlerLevel):
 	#    print_msgid(settler_level.name)
 
 	for color in session.query(Colors):
-	    collector.add_to_collection(color.name, 'Colors')
+		collector.add_to_collection(color.name, 'Colors')
 
 	for message in session.query(Message):
-	    collector.add_to_collection(message.text, 'Messages')
+		collector.add_to_collection(message.text, 'Messages')
 
 	for resource in session.query(Resource):
-	    collector.add_to_collection(resource.name, 'Resources')
-	
+		collector.add_to_collection(resource.name, 'Resources')
+
 	return collector
 
 if __name__ == '__main__':

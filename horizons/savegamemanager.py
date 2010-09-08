@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,7 +43,7 @@ class SavegameManager(object):
 
 
 	IMPORTANT:
-	Whenever you make a change that breaks compatibility with old savegames, increase 
+	Whenever you make a change that breaks compatibility with old savegames, increase
 	horizons/constans.py:VERSION.SAVEGAMEREVISION by one !!
 	"""
 	log = logging.getLogger("savegamemanager")

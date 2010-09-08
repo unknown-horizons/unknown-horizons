@@ -57,7 +57,7 @@ class VERSION:
 
 	# change to sth like this for release
 	#RELEASE_NAME   = _(u"Unknown Horizons Alpha %s")
-	#RELEASE_VERSION = u'2009.2'
+	#RELEASE_VERSION = u'2010.1'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 6

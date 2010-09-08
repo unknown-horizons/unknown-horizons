@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2009 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -54,7 +54,7 @@ def create_random_island(id_string):
 	rand = random.Random(seed)
 
 	map_dict = {}
-	
+
 	# creation_method 0 - standard small island for the 3x3 grid
 	# creation_method 1 - large island
 
@@ -68,7 +68,7 @@ def create_random_island(id_string):
 			shape_id = rand.randint(3, 5)
 		elif creation_method == 1:
 			shape_id = rand.randint(5, 8)
-		
+
 		if rand.randint(1,4) == 1:
 			# use a rect
 			if creation_method == 0:
@@ -77,7 +77,7 @@ def create_random_island(id_string):
 			elif creation_method == 1:
 				for shape_coord in Rect.init_from_topleft_and_size(x-5, y-5, 8, 8).tuple_iter():
 					map_dict[shape_coord] = 1
-			
+
 		else:
 			# use a circle, where radius is determined by shape_id
 			for shape_coord in Circle(Point(x, y), shape_id).tuple_iter():
@@ -127,10 +127,10 @@ def generate_map(seed = None) :
 	island_space = (35, 35)
 	island_min_size = (25, 25)
 	island_max_size = (28, 28)
-	
+
 	method = rand.randint(0, 1) # choose map creation method
-	
-	if method == 0:	
+
+	if method == 0:
 		# generate up to 9 islands
 		number_of_islands = 0
 		for i in Rect.init_from_topleft_and_size(0, 0, 2, 2):
@@ -142,11 +142,11 @@ def generate_map(seed = None) :
 				island_params = {'creation_method': 0, 'seed': island_seed, \
 								 'width': rand.randint(island_min_size[0], island_max_size[0]), \
 								 'height': rand.randint(island_min_size[1], island_max_size[1])}
-	
+
 				island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
 
 				db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
-		
+
 		# if there is 1 or 0 islands created, it places 1 large island in the centre
 		if number_of_islands == 0:
 			x = 20
@@ -156,12 +156,12 @@ def generate_map(seed = None) :
 							 'width': rand.randint(island_min_size[0] * 2, island_max_size[0] * 2), \
 							 'height': rand.randint(island_min_size[1] * 2, island_max_size[1] * 2)}
 			island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
-			
+
 			db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
-	
+
 		elif number_of_islands == 1:
 			db("DELETE FROM island")
-		
+
 			x = 20
 			y = 20
 			island_seed = rand.randint(-sys.maxint, sys.maxint)
@@ -170,9 +170,9 @@ def generate_map(seed = None) :
 							 'height': rand.randint(island_min_size[1] * 2, island_max_size[1] * 2)}
 
 			island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
-			
+
 			db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
-	
+
 	elif method == 1:
 		# places 1 large island in the centre
 		x = 20
@@ -182,8 +182,8 @@ def generate_map(seed = None) :
 						 'width': rand.randint(island_min_size[0] * 2, island_max_size[0] * 2), \
 						 'height': rand.randint(island_min_size[1] * 2, island_max_size[1] * 2)}
 		island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
-			
+
 		db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
-		
+
 	return filename
 
