@@ -110,7 +110,7 @@ class CampaignEventHandler(LivingObject):
 
 	def schedule_action(self, action):
 		if self.sleep_ticks_remaining > 0:
-			Scheduler().add_new_object(Callback(action, self.session), self, runin = self.sleep_ticks_remaining, loops = -1)
+			Scheduler().add_new_object(Callback(action, self.session), self, runin = self.sleep_ticks_remaining)
 		else:
 			action(self.session)
 
