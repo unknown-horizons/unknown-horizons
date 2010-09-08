@@ -39,19 +39,6 @@ package_data = { dir: ['*.so'] }
 
 class _build_i18n(build_i18n.build_i18n):
 	def run(self):
-		# Include strings from the SQLite DB in the resulting POT file
-		getoutput('python ./development/extract_strings_from_sqlite.py ' \
-			'> build/sqlite_strings.pot')
-
-		# Generate POTFILES.in from POTFILES.in.in
-		if os.path.isfile('po/POTFILES.in.in'):
-			lines = []
-			with open("po/POTFILES.in.in") as f:
-				for line in f:
-					lines.extend(glob(line.strip()))
-			with open("po/POTFILES.in", "w") as f:
-				f.write("\n".join(lines) + "\nbuild/sqlite_strings.pot\n")
-
 		build_i18n.build_i18n.run(self)
 
 class _build_man(build):

@@ -7,10 +7,21 @@ regularly so users of the Git repository can test the translations).
 
 [1]: http://pootle.unknown-horizons.org/
 
-To update unknown-horizons.pot run
+To update unknownhorizons.pot run
 
     ./development/create_pot.sh
 
 If the .po files should also be updated run
 
     ./development/create_pot.sh -u
+
+To generate the .mo files in build/ which are necessary to use the
+translations run
+
+    ./setup.py build_i18n
+
+setup.py only builds the .mo files (and generates unknown-horizons.desktop),
+no other translation related work is handled by it.
+
+At the moment ./setup.py build_i18n removes po/unknownhorizons.pot but it can
+easily be recreated with commands given above.
