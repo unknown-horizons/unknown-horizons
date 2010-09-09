@@ -89,7 +89,6 @@ class IngameGui(LivingObject):
 			'speedUp' : self.session.speed_up,
 			'speedDown' : self.session.speed_down
 		})
-		self.widgets['minimap'].findChild(name="speed_text").stylize('menu')
 
 		minimap_rect = Rect.init_from_topleft_and_size(self.widgets['minimap'].position[0]+77, 55, 120, 120)
 		self.minimap = Minimap(minimap_rect, self.session, \

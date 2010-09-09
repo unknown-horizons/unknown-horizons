@@ -26,7 +26,7 @@ from horizons.gui.utility import center_widget
 
 class LogBook(object):
 	"""Implementation of the logbook as described here:
-	http://wiki.unknown-horizons.org/index.php/DD/GUI/Message_System
+	http://wiki.unknown-horizons.org/w/Message_System
 
 	It displays longer messages, that are essential for campaigns.
 	Headings can be specified for each entry.
