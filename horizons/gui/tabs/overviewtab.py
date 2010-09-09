@@ -62,7 +62,7 @@ class OverviewTab(TabInterface):
 			if isinstance(self.instance, NamedObject):
 				name_widget.text = self.instance.name
 			else:
-				name_widget.text = _(unicode(self.instance.name))
+				name_widget.text = _(self.instance.name)
 
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):

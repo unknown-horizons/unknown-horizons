@@ -163,7 +163,7 @@ class TradeShip(Ship):
 	tabs = ()
 	enemy_tabs = (TraderShipOverviewTab, )
 	def _possible_names(self):
-		return [ unicode(_('Trader')) ]
+		return [ _('Trader') ]
 
 class FisherShip(Ship):
 	"""Represents a fisher ship."""
