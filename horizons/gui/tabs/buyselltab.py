@@ -62,7 +62,7 @@ class BuySellTab(TabInterface):
 				self.toggle_buysell(i, dont_use_commands=True)
 				i += 1
 		self.hide()
-		self.tooltip = u"Trade"
+		self.tooltip = _("Trade")
 
 	def hide(self):
 		self.widget.hide()
