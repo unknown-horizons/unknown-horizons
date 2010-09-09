@@ -59,13 +59,13 @@
 	<VBox> <Label text="Norwegian" font="libertine_headline" />
 		<VBox name="book6">
 			<Label text="frodus (Frode Woldsund)" />
-			<Label text="Jared Isaksen" />
+			<Label text="JeThro (Jared Isaksen)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish" font="libertine_headline" />
 		<VBox name="book7">
 			<Label text="Amfidiusz (Adrian Marcinkowski)" />
-			<Label text="soeb" />
+			<Label text="soeb (Stanislaw Gackowski)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Portuguese" font="libertine_headline" />
