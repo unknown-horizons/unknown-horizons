@@ -32,7 +32,7 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
                   'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater', 'player_total_earnings_greater','time_passed', \
-                  'var_eq', 'var_gt', 'var_ls', 'building_connected_to_branch')
+                  'var_eq', 'var_gt', 'var_lt', 'building_connected_to_branch')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -133,7 +133,7 @@ def var_gt(session, name, value):
 		return False
 	return (_get_scenario_vars(session)[name] > value)
 
-def var_ls(session, name, value):
+def var_lt(session, name, value):
 	"""Variable less than..."""
 	if not name in _get_scenario_vars(session):
 		return False

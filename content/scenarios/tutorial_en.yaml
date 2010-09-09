@@ -26,7 +26,7 @@ events:
   conditions:
    - {type: building_num_of_type_greater, arguments: [1, 0]}
    - {type: var_gt, arguments: ["tutStepDone", 5]}
-   - {type: var_ls, arguments: ["tutStepDone", 16]}
+   - {type: var_lt, arguments: ["tutStepDone", 16]}
 
 - # Tell the player to build the first building - lumberjack
   actions:
@@ -45,7 +45,7 @@ events:
      arguments: [6, 9]
    - type: var_gt
      arguments: ["tutStepDone", 15]
-   - {type: var_ls, arguments: ["tutStepDone", 19]}
+   - {type: var_lt, arguments: ["tutStepDone", 19]}
 
 - # food supply: hunter and fisher
   actions:
@@ -63,7 +63,7 @@ events:
      arguments: [8, 0]
    - type: var_gt
      arguments: ["tutStepDone", 18]
-   - {type: var_ls, arguments: ["tutStepDone", 22]}
+   - {type: var_lt, arguments: ["tutStepDone", 22]}
 
 - # main square
   actions:
@@ -80,7 +80,7 @@ events:
      arguments: [11, 0]
    - type: var_gt
      arguments: ["tutStepDone", 21]
-   - {type: var_ls, arguments: ["tutStepDone", 25]}
+   - {type: var_lt, arguments: ["tutStepDone", 25]}
 
 - # 1 tent
   actions:
@@ -93,7 +93,7 @@ events:
      arguments: [4, 0]
    - type: var_gt
      arguments: ["tutStepDone", 24]
-   - {type: var_ls, arguments: ["tutStepDone", 28]}
+   - {type: var_lt, arguments: ["tutStepDone", 28]}
 
 - # 4 tents
   actions:
@@ -106,7 +106,7 @@ events:
      arguments: [3, 0]
    - type: var_gt
      arguments: ["tutStepDone", 27]
-   - {type: var_ls, arguments: ["tutStepDone", 31]}
+   - {type: var_lt, arguments: ["tutStepDone", 31]}
 
 - # Build a signal fire
   actions:
@@ -121,7 +121,7 @@ events:
      arguments: [3, 3]
    - type: var_gt
      arguments: ["tutStepDone", 30]
-   - {type: var_ls, arguments: ["tutStepDone", 34]}
+   - {type: var_lt, arguments: ["tutStepDone", 34]}
 
 - # Trading
   actions:
@@ -137,7 +137,7 @@ events:
      arguments: [6, 0]
    - type: var_gt
      arguments: ["tutStepDone", 33]
-   - {type: var_ls, arguments: ["tutStepDone", 37]}
+   - {type: var_lt, arguments: ["tutStepDone", 37]}
 
 - # build pavilion
   actions:
@@ -154,7 +154,7 @@ events:
      arguments: [6, 0]
    - type: var_gt
      arguments: ["tutStepDone", 36]
-   - {type: var_ls, arguments: ["tutStepDone", 40]}
+   - {type: var_lt, arguments: ["tutStepDone", 40]}
 
 - # Upgrade housing
   actions:
@@ -169,7 +169,7 @@ events:
      arguments: [5, 0]
    - type: var_gt
      arguments: ["tutStepDone", 39]
-   - {type: var_ls, arguments: ["tutStepDone", 43]}
+   - {type: var_lt, arguments: ["tutStepDone", 43]}
 
 - # build farm
   actions:
@@ -184,7 +184,7 @@ events:
      arguments: [0]
    - type: var_gt
      arguments: ["tutStepDone", 42]
-   - {type: var_ls, arguments: ["tutStepDone", 46]}
+   - {type: var_lt, arguments: ["tutStepDone", 46]}
 
 - # farm finished, build fields now (pasture)
   actions:
@@ -199,7 +199,7 @@ events:
      arguments: [20, 0]
    - type: var_gt
      arguments: ["tutStepDone", 45]
-   - {type: var_ls, arguments: ["tutStepDone", 49]}
+   - {type: var_lt, arguments: ["tutStepDone", 49]}
 
 - # storage tent
   actions:
@@ -214,7 +214,7 @@ events:
      arguments: [18, 0]
    - type: var_gt
      arguments: ["tutStepDone", 48]
-   - {type: var_ls, arguments: ["tutStepDone", 52]}
+   - {type: var_lt, arguments: ["tutStepDone", 52]}
 
 
 - # Weavers for processing the stuff from pastures
@@ -228,7 +228,7 @@ events:
      arguments: [2, 0]
    - type: var_gt
      arguments: ["tutStepDone", 51]
-   - {type: var_ls, arguments: ["tutStepDone", 55]}
+   - {type: var_lt, arguments: ["tutStepDone", 55]}
 
 - # how to win
   actions:
@@ -243,7 +243,7 @@ events:
      arguments: [7, 0]
    - type: var_gt
      arguments: ["tutStepDone", 54]
-   - {type: var_ls, arguments: ["tutStepDone", 58]}
+   - {type: var_lt, arguments: ["tutStepDone", 58]}
 
 - # final message
   actions:
@@ -263,7 +263,7 @@ events:
      arguments: [0]
    - type: var_gt
      arguments: ["tutStepDone", 57]
-   - {type: var_ls, arguments: ["tutStepDone", 61]}
+   - {type: var_lt, arguments: ["tutStepDone", 61]}
 
 - # Winning conditions
   actions:
