@@ -11,7 +11,7 @@
 
 	<Container position="0,70" size="245,350" >
 		<Label name='headline' border_size="0" position="50,7" text="Resource Deposit"/>
-	
+
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 

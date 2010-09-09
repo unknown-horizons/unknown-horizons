@@ -72,7 +72,7 @@ class UNITS:
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	TRADER_SHIP_CLASS          = 1000006
 	WILD_ANIMAL_CLASS          = 1000013
-	PIRATE_SHIP_CLASS	         = 1000005
+	PIRATE_SHIP_CLASS          = 1000005
 
 class BUILDINGS:
 	BRANCH_OFFICE_CLASS = 1
@@ -132,12 +132,17 @@ class GAME:
 	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
 	# payed in this interval).
 
+class MESSAGES:
+	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
+	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
+	LOGBOOK_DEFAULT_DELAY = 8 # delay between condition fulfilled and logbook popping up
+
 class TRADER:
 	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
 	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
 	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
 
-	BUSINESS_SENSE = 67 # chance in percent to be sent to a branch office instead of random spot
+	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
 
 	BUY_AMOUNT = (2, 8) # amount range to buy/sell from settlement per resource
 	SELL_AMOUNT = (2, 8)
@@ -200,10 +205,12 @@ class NETWORK:
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
+
 LANGUAGENAMES = _LanguageNameDict(
 	ca = u'Català',
 	de = u'Deutsch',
 	en = u'English',
+	et = u'Eesti',
 	es = u'Español',
 	fr = u'Français',
 	it = u'Italiano',

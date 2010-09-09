@@ -4,7 +4,7 @@
 	<Icon image="content/gui/images/background/book.png" />
 
 	<VBox name="left_page" max_size="335,495" min_size="335,495" position="85,45" padding="12">
-		<Label text="" name="headline" wrap_text="1" 
+		<Label text="" name="headline" wrap_text="1"
 			max_size="335,20" min_size="335,20" />
 		<Icon image="content/gui/images/background/hr.png"/>
 		<Label text="Your saved games:" name="saved_games_label" wrap_text="1"
@@ -16,25 +16,25 @@
 
 		<Spacer />
 
-		<ImageButton name="deleteButton" 
-			up_image="content/gui/images/background/delete.png" 
-			hover_image="content/gui/images/background/delete_h.png" 
+		<ImageButton name="deleteButton"
+			up_image="content/gui/images/background/delete.png"
+			hover_image="content/gui/images/background/delete_h.png"
 			down_image="content/gui/images/background/delete.png" />
 	</VBox>
 
-	<VBox name="right_page" position="420,75" 
+	<VBox name="right_page" position="420,75"
 		    max_size="380,465" min_size="380,465" padding="5">
 		<VBox>
 
 			<HBox name="enter_filename">
-				<Label name="enter_filename_label" text="Enter filename:" 
+				<Label name="enter_filename_label" text="Enter filename:"
 					wrap_text="1" max_size="140,40" min_size="140,20" />
 				<TextField name="savegamefile" min_size="150,16" /> <Spacer />
 			</HBox>
 
 			<HBox>
 				<VBox name="savegame_details" padding="15">
-					<Label name="details_label" text="Details:" />		
+					<Label name="details_label" text="Details:" />
 					<VBox name="savegamedetails_box" min_size="300,80" />
 				</VBox>
 
@@ -46,13 +46,13 @@
 
 		<HBox min_size="350,40">
 			<ImageButton name="cancelButton"
-				up_image="content/gui/images/background/close.png" 
-				hover_image="content/gui/images/background/close_h.png" 
+				up_image="content/gui/images/background/close.png"
+				hover_image="content/gui/images/background/close_h.png"
 				down_image="content/gui/images/background/close.png" />
 			<Spacer />
 			<ImageButton name="okButton"
-				up_image="content/gui/images/background/ok.png" 
-				hover_image="content/gui/images/background/ok_h.png" 
+				up_image="content/gui/images/background/ok.png"
+				hover_image="content/gui/images/background/ok_h.png"
 				down_image="content/gui/images/background/ok.png" />
 		</HBox>
 	</VBox>

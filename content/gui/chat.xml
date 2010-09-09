@@ -9,13 +9,13 @@
 
 	<HBox>
 		<ImageButton name="cancelButton"
-			up_image="content/gui/images/background/close.png" 
-			hover_image="content/gui/images/background/close_h.png" 
+			up_image="content/gui/images/background/close.png"
+			hover_image="content/gui/images/background/close_h.png"
 			down_image="content/gui/images/background/close.png" />
 		<Spacer />
-		<ImageButton name="okButton" 
-			up_image="content/gui/images/background/ok.png" 
-			hover_image="content/gui/images/background/ok_h.png" 
+		<ImageButton name="okButton"
+			up_image="content/gui/images/background/ok.png"
+			hover_image="content/gui/images/background/ok_h.png"
 			down_image="content/gui/images/background/ok.png" />
 	</HBox>
 

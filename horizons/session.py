@@ -233,7 +233,7 @@ class Session(LivingObject):
 		text = u''
 		tps = self.timer.ticks_per_second
 		if tps == 0: # pause
-			text = u'II'
+			text = u'0x'
 		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
 			pass # display nothing
 		else:

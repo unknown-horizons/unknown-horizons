@@ -204,7 +204,6 @@ class CampaignEventHandler(LivingObject):
 		yaml_code = yaml_code.rstrip(u'}\n')
 		#yaml_code = yaml_code.strip('{}')
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
-		print yaml_code
 		return yaml_code
 
 
@@ -253,9 +252,8 @@ class _Action(object):
 	  'win' : do_win,
 	  'lose' : do_lose,
 	  'set_var' : set_var,
-	  'logbook': show_logbook_entry,
-	  'logbook_s': write_logbook_entry,
-	  'logbook_delayed': show_logbook_entry_delayed,
+	  'logbook': show_logbook_entry_delayed, # set delay=0 for instant appearing
+	  'logbook_w': write_logbook_entry, # not showing the logbook
 	  'wait': wait
 	}
 

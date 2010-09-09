@@ -29,8 +29,6 @@
 #       horizons/i18n/guitranslations.py
 # * Do the manual postprocessing needed, a diff between
 #   the versions help figuring out what is needed.
-#   Currently you want to replace the Version strings by
-#   the magic from horizons/constants.py
 # ###################################################
 
 from horizons.constants import VERSION
@@ -117,7 +115,21 @@ def set_translations():
 			"patchers_lbl"                : _("Patchers"),
 			"translators_lbl"             : _("Translators"),
 			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/1.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"headline_patchers"           : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/2.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"patchers_lbl"                : _("Patchers"),
+			"headline_translators"        : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
 		"credits/3.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"patchers_lbl"                : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"headline_thanks"             : _("Special Thanks"),
 			"fife_team_lbl"               : _("The whole FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
 			"version_label"               : VERSION.string(),

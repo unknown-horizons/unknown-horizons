@@ -56,9 +56,9 @@
 	</VBox>
 </VBox>
 
-<ImageButton name="okButton" position="695,500" 
-	up_image="content/gui/images/background/ok.png" 
-	hover_image="content/gui/images/background/ok_h.png" 
+<ImageButton name="okButton" position="695,500"
+	up_image="content/gui/images/background/ok.png"
+	hover_image="content/gui/images/background/ok_h.png"
 	down_image="content/gui/images/background/ok.png" />
 
 </Container>

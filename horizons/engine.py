@@ -124,6 +124,13 @@ class Fife(ApplicationBase):
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
 	def update_languages(self, data=None):
+		"""
+		Load/Change language of Unknown Horizons. Called on startup
+		and when changing the language.
+
+		data is used when changing the language in the settings menu.
+		"""
+
 		if data is None:
 			data = self._setting.get(UH_MODULE, "Language")
 		languages_map = dict(find_available_languages())
@@ -138,7 +145,16 @@ class Fife(ApplicationBase):
 		assert symbol is not None, "Something went badly wrong with the translation update!" + \
 		       " Searching for: " + str(data) + " in " + str(LANGUAGENAMES)
 
-		index = sorted(languages_map.keys()).index(symbol)
+		try:
+			index = sorted(languages_map.keys()).index(symbol)
+		# This only happens on startup when the language is not available
+		# (either from the settings file or $LANG).
+		except ValueError:
+			print "Language %s is not available!" % data
+			index = sorted(languages_map.keys()).index('System default')
+			# Reset the language or the settings crashes.
+			self._setting.set(UH_MODULE, "Language", 'System default')
+
 		name, position = sorted(languages_map.items())[index]
 		try:
 			if name != 'System default':
@@ -149,8 +165,8 @@ class Fife(ApplicationBase):
 				name = ''
 
 		except IOError:
-			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': settings.language.name, 'place': settings.language.position}
-			install('unknownhorizons', 'build/mo', unicode=1)
+			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
+			gettext.install('unknownhorizons', 'build/mo', unicode=1)
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
 

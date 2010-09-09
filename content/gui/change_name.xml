@@ -5,18 +5,18 @@
 <VBox position="50,30" padding="10">
 	<Label name="change_name_headline" text="Change name" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="enter_new_name_lbl" text="Enter new name:" 
+	<Label name="enter_new_name_lbl" text="Enter new name:"
 		wrap_text="1" max_size="150,40" />
 	<TextField name="new_name" max_size="150,20" min_size="150,20" />
 
-	<HBox> 
-		<ImageButton name="cancelButton" 
-			up_image="content/gui/images/background/close.png" 
-			hover_image="content/gui/images/background/close_h.png" 
+	<HBox>
+		<ImageButton name="cancelButton"
+			up_image="content/gui/images/background/close.png"
+			hover_image="content/gui/images/background/close_h.png"
 			down_image="content/gui/images/background/close.png"/>
-		<ImageButton name="okButton" 
-			up_image="content/gui/images/background/ok.png" 
-			hover_image="content/gui/images/background/ok_h.png" 
+		<ImageButton name="okButton"
+			up_image="content/gui/images/background/ok.png"
+			hover_image="content/gui/images/background/ok_h.png"
 			down_image="content/gui/images/background/ok.png"/>
 	</HBox>
 </VBox>
