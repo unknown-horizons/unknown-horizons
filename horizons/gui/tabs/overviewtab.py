@@ -23,7 +23,7 @@ import weakref
 from fife.extensions import pychan
 
 from tabinterface import TabInterface
-from horizons.util import Callback, ActionSetLoader
+from horizons.util import Callback, ActionSetLoader, NamedObject
 from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
@@ -58,7 +58,16 @@ class OverviewTab(TabInterface):
 	def refresh(self):
 		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
-			name_widget.text = _(unicode(self.instance.name))
+			# Named objects can't be translated.
+			if isinstance(self.instance, NamedObject):
+				name = self.instance.name
+				# Data from savegames needs to get converted to unicode. Text
+				# entered while playing is already unicode.
+				if not isinstance(self.instance.name, unicode):
+					name = unicode(self.instance.name, 'utf-8')
+				name_widget.text = name
+			else:
+				name_widget.text = _(unicode(self.instance.name))
 
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
