@@ -8,21 +8,20 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-06 21:48+CEST\n"
-"PO-Revision-Date: 2010-09-05 20:45+0200\n"
+"PO-Revision-Date: 2010-09-09 15:10+0200\n"
 "Last-Translator: Tobias Schroefel <tschroefel@gmail.com>\n"
 "Language-Team: German <>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 1.1.0\n"
+"Language: de\n"
 "Generated-By: pygettext.py 1.5\n"
 
 #: horizons/campaign/actions.py:63
-#, fuzzy
 msgid "You have won!"
-msgstr "Gewonnen!"
+msgstr "Ihr habt gewonnen!"
 
 #: horizons/campaign/campaigneventhandler.py:141
 #: horizons/campaign/campaigneventhandler.py:151

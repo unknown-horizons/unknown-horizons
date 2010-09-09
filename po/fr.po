@@ -11,31 +11,30 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-06 21:48+CEST\n"
-"PO-Revision-Date: 2010-09-02 01:31+0200\n"
+"PO-Revision-Date: 2010-09-08 00:11+0200\n"
 "Last-Translator: Vincent Hérilier <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 1.1.0\n"
+"Language: fr\n"
 "Generated-By: pygettext.py 1.5\n"
 
 #: horizons/campaign/actions.py:63
 msgid "You have won!"
-msgstr ""
+msgstr "Vous avez gagné !"
 
 #: horizons/campaign/campaigneventhandler.py:141
 #: horizons/campaign/campaigneventhandler.py:151
 #: horizons/campaign/campaigneventhandler.py:161
 msgid "unknown"
-msgstr ""
+msgstr "inconnu"
 
 #: horizons/constants.py:55
-#, fuzzy
 msgid "Unknown Horizons Version %s"
-msgstr "Capture de Unknown Horizons :"
+msgstr "Unknown Horizons version %s"
 
 #: horizons/engine.py:97
 msgid "System default"
@@ -43,7 +42,7 @@ msgstr "Paramètres par défaut"
 
 #: horizons/engine.py:152
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Le langage configuré %(lang)s de %(place)s ne peut être chargé"
 
 #: horizons/gui/gui.py:246
 msgid "No file selected"
@@ -54,23 +53,20 @@ msgid "You need to select a savegame to delete"
 msgstr "Vous devez sélectionner une sauvegarde à effacer"
 
 #: horizons/gui/gui.py:249
-#, fuzzy
 msgid "Confirm deletion"
-msgstr "Confirmer l'ordre"
+msgstr "Confirmer l'effacement"
 
 #: horizons/gui/gui.py:250
 msgid "Do you really want to delete the savegame \"%s\"?"
 msgstr "Voulez-vous réellement effacer la sauvegarde \"%s\" ?"
 
 #: horizons/gui/gui.py:257
-#, fuzzy
 msgid "Failed to delete savefile!"
-msgstr "Echec lors du chargement de FIFE"
+msgstr "Échec lors de l'effacement de la sauvegarde !"
 
 #: horizons/gui/gui.py:257 horizons/main.py:198
-#, fuzzy
 msgid "Error!"
-msgstr "Erreur"
+msgstr "Erreur !"
 
 #: horizons/gui/gui.py:326
 msgid "No saved games"
@@ -97,6 +93,8 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Une sauvegarde avec le nom \"%s\" existe déjà. \n"
+"Dois-je l'écraser ?"
 
 #: horizons/gui/modules/multiplayermenu.py:99
 msgid "Network Error"
@@ -104,20 +102,19 @@ msgstr "Erreur réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:100
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Un incident est survenu sur le réseau : "
 
 #: horizons/gui/modules/multiplayermenu.py:134
 msgid "Map: "
-msgstr ""
+msgstr "Carte : "
 
 #: horizons/gui/modules/multiplayermenu.py:135
-#, fuzzy
 msgid "Players: "
-msgstr "Joueur :"
+msgstr "Joueurs : "
 
 #: horizons/gui/modules/singleplayermenu.py:53
 msgid "Warning"
-msgstr ""
+msgstr "Avertissement"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
@@ -128,35 +125,36 @@ msgid "You entered an invalid playername"
 msgstr "Vous avez entrer un nom de joueur invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:134
-#, fuzzy
 msgid "Invalid scenario file"
-msgstr "Nom de fichier invalide"
+msgstr "Nom de scénario invalide"
 
 #: horizons/gui/modules/singleplayermenu.py:135
 msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
+"Le fichier sélectionné n'est pas un fichier de scénario valide.\n"
+"Message d'erreur : "
 
 #: horizons/gui/modules/singleplayermenu.py:136
 msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
+"\n"
+"Veuillez prévenir l'auteur de ceci."
 
 #: horizons/gui/tabs/boatbuildertab.py:110
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Ressources encore nécessaires :"
 
 #: horizons/gui/tabs/buildtabs.py:35
-#, fuzzy
 msgid "Increment"
-msgstr "Revenu:"
+msgstr "Intervalle"
 
 #: horizons/gui/tabs/overviewtab.py:167
-#, fuzzy
 msgid "Destroy Building"
-msgstr "Constructions du pionnier"
+msgstr "Destruction du bâtiment"
 
 #: horizons/i18n/guitranslations.py:44
 msgid "Sailor Buildings"
@@ -544,24 +542,20 @@ msgid "Key Bindings"
 msgstr "Associations de touches"
 
 #: horizons/i18n/guitranslations.py:131
-#, fuzzy
 msgid "{LEFT} = Scroll left"
-msgstr "{GAUCHE}        = Déplacer vers la gauche"
+msgstr "{GAUCHE} = Déplacer vers la gauche"
 
 #: horizons/i18n/guitranslations.py:132
-#, fuzzy
 msgid "{RIGHT} = Scroll right"
-msgstr "{DROITE}        = Déplacer vers la droite"
+msgstr "{DROITE} = Déplacer vers la droite"
 
 #: horizons/i18n/guitranslations.py:133
-#, fuzzy
 msgid "{UP} = Scroll up"
-msgstr "{HAUT}        = Déplacer vers le haut"
+msgstr "{HAUT} = Déplacer vers le haut"
 
 #: horizons/i18n/guitranslations.py:134
-#, fuzzy
 msgid "{DOWN} = Scroll down"
-msgstr "{BAS}        = Déplacer vers le bas"
+msgstr "{BAS} = Déplacer vers le bas"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "{ + } = Increase game speed"
@@ -572,14 +566,12 @@ msgid "{ - } = Decrease game speed"
 msgstr "{ - } = Réduire la vitesse du jeu"
 
 #: horizons/i18n/guitranslations.py:137
-#, fuzzy
 msgid "{ , } = Rotate building left"
-msgstr "{ , }        = Tourner le bâtiment sur la gauche"
+msgstr "{ , } = Tourner le bâtiment sur la gauche"
 
 #: horizons/i18n/guitranslations.py:138
-#, fuzzy
 msgid "{ . } = Rotate building right"
-msgstr "{ . }        = Tourner le bâtiment sur la droite"
+msgstr "{ . } = Tourner le bâtiment sur la droite"
 
 #: horizons/i18n/guitranslations.py:139
 msgid "{B} = Show build menu"
@@ -778,13 +770,12 @@ msgid "Join game"
 msgstr "Rejoindre la partie"
 
 #: horizons/i18n/guitranslations.py:202
-#, fuzzy
 msgid "Apply the new name"
-msgstr "Entrer un nouveau nom :"
+msgstr "appliquer le nouveau nom"
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Create a new game"
-msgstr "Créer une nouvelle partie :"
+msgstr "Créer une nouvelle partie"
 
 #: horizons/i18n/guitranslations.py:204
 msgid "Exit to main menu"
@@ -841,14 +832,13 @@ msgstr "Entrer le nom du fichier :"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Details:"
-msgstr " Détails :"
+msgstr "Détails :"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Settings"
 msgstr "Paramètres"
 
 #: horizons/i18n/guitranslations.py:225
-#, fuzzy
 msgid "Please make sure that you know what you do."
 msgstr "Veuillez vous assurer que vous savez ce que vous faîtes."
 
@@ -1135,16 +1125,20 @@ msgid ""
 "Error: Invalid syntax in --mp-master commandline option. Port must be a "
 "number between 0 and 65535."
 msgstr ""
+"Erreur: Syntaxe invalide dans l'option de la ligne de commande --mp-master. "
+"Le port doit être un nombre compris entre 0 et 65535."
 
 #: horizons/main.py:95
 msgid ""
 "Error: Invalid syntax in --mp-bind commandline option. Port must be a number "
 "between 0 and 65535."
 msgstr ""
+"Erreur: Syntaxe invalide dans l'option de la ligne de commande --mp-bind. Le "
+"port doit être un nombre compris entre 0 et 65535."
 
 #: horizons/main.py:198
 msgid "Load failed. Please try another savefile!"
-msgstr ""
+msgstr "Échec du chargement. Veuillez essayer un autre sauvegarde !"
 
 #: horizons/main.py:271
 msgid "Error: Cannot find map \"%s\"."
@@ -1152,12 +1146,11 @@ msgstr "Erreur: Impossible de trouver la carte \"%s\"."
 
 #: horizons/main.py:274 horizons/main.py:302
 msgid "Error: Found multiple matches: "
-msgstr ""
+msgstr "Erreur : A trouvé plusieurs correspondances : "
 
 #: horizons/main.py:299
-#, fuzzy
 msgid "Error: Cannot find savegame \"%s\"."
-msgstr "Erreur: Impossible de trouver la carte \"%s\"."
+msgstr "Erreur: Impossible de trouver la sauvegarde \"%s\"."
 
 #: horizons/main.py:317
 msgid "Error: No quicksave found."
@@ -1165,12 +1158,13 @@ msgstr "Aucunes sauvegardes rapides trouvées"
 
 #: horizons/mpsession.py:44
 msgid "You cannot change the speed of a multiplayer game"
-msgstr ""
+msgstr "Vous ne pouvez changer la vitesse d'une partie multi-joueurs"
 
 #: horizons/mpsession.py:44 horizons/mpsession.py:51 horizons/mpsession.py:53
 #: horizons/mpsession.py:55 horizons/mpsession.py:57
+#, fuzzy
 msgid "Not possible"
-msgstr ""
+msgstr "Non possible"
 
 #: horizons/mpsession.py:51 horizons/mpsession.py:53 horizons/mpsession.py:55
 #: horizons/mpsession.py:57
