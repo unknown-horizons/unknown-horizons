@@ -72,7 +72,7 @@ class UNITS:
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	TRADER_SHIP_CLASS          = 1000006
 	WILD_ANIMAL_CLASS          = 1000013
-	PIRATE_SHIP_CLASS	         = 1000005
+	PIRATE_SHIP_CLASS          = 1000005
 
 class BUILDINGS:
 	BRANCH_OFFICE_CLASS = 1
@@ -205,6 +205,7 @@ class NETWORK:
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
+
 LANGUAGENAMES = _LanguageNameDict(
 	ca = u'Català',
 	de = u'Deutsch',
