@@ -20,23 +20,23 @@
 
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
-		<TooltipButton name="villageschool-1" position="0,30" 
-			up_image="content/gui/images/icons/hud/build/villageschool.png" 
-			hover_image="content/gui/images/icons/hud/build/villageschool_h.png" 
-			down_image="content/gui/images/icons/hud/build/villageschool_h.png" 
+		<TooltipButton name="villageschool-1" position="0,30"
+			up_image="content/gui/images/icons/hud/build/villageschool.png"
+			hover_image="content/gui/images/icons/hud/build/villageschool_h.png"
+			down_image="content/gui/images/icons/hud/build/villageschool_h.png"
 			tooltip="Village school: \nProvides education." />
 
 	</Container>
-	
+
 	<Container position="20,170" size="250,80">
 		<Label position="0,11" text="Production" name="production_label" />
 
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
-		<TooltipButton name="sugarfield-1" position="0,30" 
-			up_image="content/gui/images/icons/hud/build/sugarfield.png" 
-			hover_image="content/gui/images/icons/hud/build/sugarfield_h.png" 
-			down_image="content/gui/images/icons/hud/build/sugarfield_h.png" 
+		<TooltipButton name="sugarfield-1" position="0,30"
+			up_image="content/gui/images/icons/hud/build/sugarfield.png"
+			hover_image="content/gui/images/icons/hud/build/sugarfield_h.png"
+			down_image="content/gui/images/icons/hud/build/sugarfield_h.png"
 			tooltip="Sugar Field: \nProduces sugar\nfor rum."/>
 	</Container>
 

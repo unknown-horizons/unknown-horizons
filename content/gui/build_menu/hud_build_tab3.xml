@@ -20,10 +20,10 @@
 
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
-		<TooltipButton name="-1" position="0,30" 
-			up_image="content/gui/images/icons/hud/build/.png" 
-			hover_image="content/gui/images/icons/hud/build/_h.png" 
-			down_image="content/gui/images/icons/hud/build/_h.png" 
+		<TooltipButton name="-1" position="0,30"
+			up_image="content/gui/images/icons/hud/build/.png"
+			hover_image="content/gui/images/icons/hud/build/_h.png"
+			down_image="content/gui/images/icons/hud/build/_h.png"
 			tooltip="" />
 
 	</Container>

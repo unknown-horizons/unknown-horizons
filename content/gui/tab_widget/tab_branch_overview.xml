@@ -12,7 +12,7 @@
 
 	<Container position="0,70" size="245,300" >
 			<Label name="headline" position="55,7" text="Building overview" />
-		
+
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Container size="260,550" position="22,43">
 			<Label position="0,0" name="name_label" text="Name:" /><Label name='name' position="70,0" text="" />

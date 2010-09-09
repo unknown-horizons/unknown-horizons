@@ -19,10 +19,10 @@
 		<!-- Let's implement that when actually having some sense. The positioning should fit though.
 		<Label name="health_label" text="Health:" position="25,170" /><Label name='health' text="" />
 		-->
-			
-		<Label name="signal_fire_description_lbl" position="75,60" 
-			text="The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods." 
+
+		<Label name="signal_fire_description_lbl" position="75,60"
+			text="The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 			wrap_text="1" max_size="175,300" />
-		
+
 	</Container>
 </Container>

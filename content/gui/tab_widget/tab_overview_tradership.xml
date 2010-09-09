@@ -12,7 +12,7 @@
 	<Container position="0,70" size="245,350" >
 		<!-- Name of Ship -->
 		<Label name='name' border_size="0" position="80,7"/>
-	
+
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 		<!-- Picture -->

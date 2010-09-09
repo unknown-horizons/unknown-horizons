@@ -25,15 +25,15 @@
 
 	<Container position="130,110" size="260,100" >
 		<!-- Resources and amount -->
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="0,0" tooltip="$res" /> 
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="0,0" tooltip="$res" />
 		<Label position="22,0" name="BB_needed_boards" text="24t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="0,20" tooltip="$res" /> 
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="0,20" tooltip="$res" />
 		<Label position="22,20" name="BB_needed_cloth" text="14t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="0,40" tooltip="$res" /> 
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="0,40" tooltip="$res" />
 		<Label position="22,40" name="BB_needed_ropes" text="06t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/food.png" position="0,60" tooltip="$res" /> 
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/food.png" position="0,60" tooltip="$res" />
 		<Label position="22,60" name="BB_needed_cannons" text="06t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/gold.png" position="0,80" tooltip="$res" /> 
+		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/gold.png" position="0,80" tooltip="$res" />
 		<Label position="22,80" name="BB_needed_money" text="2500" />
 
 	</Container>
@@ -49,14 +49,14 @@
 	<Container position="20,333" size="220,30" >
 		<!-- Upgrades -->
 		<TooltipButton position="20,0"
-				up_image="content/gui/images/background/sq.png" 
-				hover_image="content/gui/images/background/sq_h.png" 
-				down_image="content/gui/images/background/sq_h.png" /> 
+				up_image="content/gui/images/background/sq.png"
+				hover_image="content/gui/images/background/sq_h.png"
+				down_image="content/gui/images/background/sq_h.png" />
 		<Label name="BB_upgrade_cannons" position="50,4" text="Cannons" />
-		<TooltipButton position="120,0" 
-				up_image="content/gui/images/background/sq_ok.png" 
-				hover_image="content/gui/images/background/sq_h.png" 
-				down_image="content/gui/images/background/sq_h.png" /> 
+		<TooltipButton position="120,0"
+				up_image="content/gui/images/background/sq_ok.png"
+				hover_image="content/gui/images/background/sq_h.png"
+				down_image="content/gui/images/background/sq_h.png" />
 		<Label name="BB_upgrade_hull" position="150,4" text="Hull" />
 	</Container>
 
@@ -70,12 +70,12 @@
 
 	</Container>
 
-	<Container position="60,380" size="240,100" >		
+	<Container position="60,380" size="240,100" >
 		<!-- Confirm task -->
 		<Label position="30,10" name="BB_confirm_build_label" text="Build ship:" />
 		<TooltipButton position="100,0" tooltip="Build this ship!" name="create_unit"
-				up_image="content/gui/images/background/ok.png" 
-				hover_image="content/gui/images/background/ok_h.png" 
-				down_image="content/gui/images/background/ok_h.png" /> 
+				up_image="content/gui/images/background/ok.png"
+				hover_image="content/gui/images/background/ok_h.png"
+				down_image="content/gui/images/background/ok_h.png" />
 	</Container>
 </Container>

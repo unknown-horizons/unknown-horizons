@@ -1,10 +1,10 @@
-CHANGELOG 
+CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
 2010-08-??: Milestone 2010.1
 * General
-  * New: tutorial 
+  * New: tutorial
   * New: start german docbook manual
   * New: introduced szenarios and captains log
   * New: Updated a bunch of documentation and updated the incode tutorial
@@ -16,10 +16,10 @@ Unknown Horizons
   * New: This adds i18n support to setup.py
   * New: Do not require a restart for toggling sound
   * New: Limited the messagewidget to 5 messages max on screen
-  * New: Game now pauses when logbook is shown 
+  * New: Game now pauses when logbook is shown
   * New: community resource icon.
   * New: inhabitant tab of the marketplace
-  * New: Included system info in debug output   
+  * New: Included system info in debug output
   * New: multiplayer
   * New: Print to log why systemwide fife can't be imported, if so. (usually, it will say 'not found', but in some cases, there could be other import issues, where the error message can be of some help)
   * New: Added commandline flag to restore the default settings: --restore-settings
@@ -30,60 +30,60 @@ Unknown Horizons
   * New: Marketplace now produces the community resource
   * New: add --mp-master commandline option (Syntax: --mp-master=ip:port or --mp-master=ip (+ default port))
   * New: Extend .bat to use debug with '--debug', default is still non debug
-  * New: Included system info in debug output 
+  * New: Included system info in debug output
   * New: better description for --mp-bind
   * New: Added commandline flag to restore the default settings: --restore-settings
   * New: don't import fife from global python module path if --fife-path is set
   * New: (savegame revisioning patch) closed by dario
-  * New: updated help to include chat hotkey 
+  * New: updated help to include chat hotkey
   * New: create new traders when there are many settlements
-  * New: Implemented the pause/resume production button for the boatbuilder 
+  * New: Implemented the pause/resume production button for the boatbuilder
   * New: Add a QuickLoad per keystroke while in the main menu F9
   * New: Use full, native, language names in the settings dialog
   * New: Made highlighting buildable tiles about twice as fast
   * New: Made rect.get_radius_coordinates() at least 2 to 4 times faster
   * New: Made building radius preview (the yellow stuff) about 30% faster
   * New: Added claypit to the game
-  * New: Made clay pit produce clay 
-  * New: Made bricks collected by the storage 
+  * New: Made clay pit produce clay
+  * New: Made bricks collected by the storage
   * New: Increase savegame version
   * Change: Tents are now in lvl 1 when built
   * Change: Removed Settings class in favor of the new fife_settings module
   * Change: All settings are now managed by the new extension
   * Change: Some settings have been moved to the constants, like View and Tick settings
-  * Change: Made textiles a level 2 requirement instead of level 1 
-  * Change: moved farm, weaver, pasture, potatofield to 2nd increment. - rearranged ... 
+  * Change: Made textiles a level 2 requirement instead of level 1
+  * Change: moved farm, weaver, pasture, potatofield to 2nd increment. - rearranged ...
   * Change: Rename cannonboat to huker
   * Change: Refactored engine sound management code
   * Change: Toggling sound on/off no longer requires reboot
   * Change: Reworked directory structure for new tile and path sets
   * Fix: Workaround: Disabled middle mouse button scrolling
-  * Fix: Added layer for fields fixes #521 
+  * Fix: Added layer for fields fixes #521
   * Fix: fixed segfault caused by quitting UH while preloading thread is active
   * Fix: Empty city or ship name make problems
   * Fix: added patch from cubathy, Bug when switching language
-  * Fix: Fixed bug that allowed you to build fields over each other  
+  * Fix: Fixed bug that allowed you to build fields over each other
   * Fix: Fixed setup.py install the unknown-horizons executable into /usr/games
   * Fix: The attached patch avoids that boats are created at the same place
   * Fix: Stupid hack to make UH work with umlauts in the user dir on windows
-  * Fix: FIXED by FIFE :D  (Doubleclick in menu to confirm)  
+  * Fix: FIXED by FIFE :D  (Doubleclick in menu to confirm)
 
 * Graphics and GUI
   * New: Added lumberjack building for pioneer increment
-  * New: Added gfx for pioneers house 
-  * New: Added a second pioneers house  
+  * New: Added gfx for pioneers house
+  * New: Added a second pioneers house
   * New: Added school model for pioneers
-  * New: Added new level 2 farm model. 
-  * New: Added Clay Pit gfx 
+  * New: Added new level 2 farm model.
+  * New: Added Clay Pit gfx
   * New: Added a building and resource tree made by Afrit
-  * New: Added clay resource 
-  * New: Added brickyard. 
+  * New: Added clay resource
+  * New: Added brickyard.
   * New: Added multiplayer lobby with chat and ingamechat
   * New: Logbook now flips pages like a real book
   * New: Added new weaver model, and moved from sailors to pioneers
-  * New: Added an overview tab to the signal fire. 
+  * New: Added an overview tab to the signal fire.
   * New: Display a tab when clicking on resource deposit
-  * New: Added new player emblems from eoc 
+  * New: Added new player emblems from eoc
   * Change: New boat builder tab.
   * Change: Replaced as_pirate0 with new gfx set (armed sloop)
 
@@ -91,7 +91,7 @@ Unknown Horizons
 
 * Translations
   * New: Added first Catalan translation by RainCT
-  * Change: Updated English and German translations 
+  * Change: Updated English and German translations
   * Change: Added updated Polish translation by soeb and Amfidiusz
   * Change: Added updated French translation by deathmaster9 and Marc Moussa
   * Change: Added a French translation of the tutorial file by deathmaster9
@@ -108,50 +108,50 @@ Unknown Horizons
   * New: Hunters tent which produces food from wild animals
   * New: Added a function to load a map directly via the command line
   * New: The free trader will only visit your settlement if you place the signal
-         fire near your branch office 
+         fire near your branch office
   * New: Some new minor options in the market place menu
-  * New: Allow changing the tax rate  
+  * New: Allow changing the tax rate
   * New: It's now possible to change the name of your ship or settlement
   * New: Started implementing the second settlement level: settlers
   * New: Added potato field as food source
   * New: Working autosave function
   * New: Implemented autorotate for buildings on coastlines
-  * New: The ship is now placed randomly  
+  * New: The ship is now placed randomly
   * New: If the settlers happiness falls below a specific level, the tent
          changes to a ruin
-  * New: Implemented a players name and color 
+  * New: Implemented a players name and color
   * New: Added a school (no graphic at the moment)
   * New: Added sugar fields (no graphic at the moment)
   * New: Added a few messages that informs the player about different grievances
   * New: Started work on random maps
-  * New: Started work on the scenario system   
+  * New: Started work on the scenario system
   * New: Implemented a mini tutorial
-  * New: Added account tab for market which shows the financial overview of the settlement  
+  * New: Added account tab for market which shows the financial overview of the settlement
   * New: Fade out nearby buildings/trees while building
-  * New: System for settlers happieness, consumation and taxation 
+  * New: System for settlers happieness, consumation and taxation
   * Change: The game uses bigger water-tiles now to improve the performance
   * Change: Completely changed the farm system: There is only one farm building
-            which can cultivate any kind of field including sheep-runs 
-  * Change: Screenshots are now saved into the users folder  
+            which can cultivate any kind of field including sheep-runs
+  * Change: Screenshots are now saved into the users folder
   * Fix: Changing the colordepth to 32 Bit works now without a crash
   * Fix: Many code and speed optimizations in general
   * Fix: The savegames work properly now (small trees, …)
   * Fix: Player's ship got stuck on the left lower side of the map in some cases
-  * Fix: Changed some stuff relating to the translation 
-  * Fix: Fixed the temporary freeze if the player tried to send a ship onto land        
-    
+  * Fix: Changed some stuff relating to the translation
+  * Fix: Fixed the temporary freeze if the player tried to send a ship onto land
+
 * Graphics and GUI
   * New: Added tooltips
   * New: Button to resume a paused game in the pause menu
   * New: Button to switch to destruction mode
-  * New: Added a clickable minimap 
+  * New: Added a clickable minimap
   * New: Added graphics for potato field and pasture
   * New: Added message buttons for different kinds of messages
   * New: Added graphic for tent ruin
   * New: Highlight the currently selected quantity of goods in exchange menu
   * New: Gamespeed is now displayed in the upper right corner
   * New: Added icon for farm and potato field
-  * Change: Disabled the inventory of settlers  
+  * Change: Disabled the inventory of settlers
   * Change: Changed the style of the pause menu
   * Change: Improved building graphics of Church and Farm
   * Change: Rearanged the building menu
@@ -167,8 +167,8 @@ Unknown Horizons
 
 * Translations
   * New: Added polish translation
-  * Change: Updated some translation files 
-  * Change: Changed some volume settings       
+  * Change: Updated some translation files
+  * Change: Changed some volume settings
 
 ... and a lot more smaller bugfixes.
 
@@ -178,7 +178,7 @@ Unknown Horizons
 * General
   * New: Boadbuilder class with unitcreation, it's possible to build ships
   * New: Support for translating the whole GUI was added, including
-         German, French, Portuguese and Norwegian translations, add       
+         German, French, Portuguese and Norwegian translations, add
          language choose menu in settings
   * New: Load/save function for maps
   * New: Start work at wildanimals
@@ -188,14 +188,14 @@ Unknown Horizons
   * New: Add debug modul option for commandline --debug-module
   * New: debug messages are now only shown by using ./run_uh.py -d
   * New: Add new tabwidget
-  * New: Ship radius when building is now updated on the fly if the ship 
+  * New: Ship radius when building is now updated on the fly if the ship
          moves
   * New: Manpage
   * New: Change Style of the mainmenu and all submenus
   * New: Add Developermap with only one small island
   * New: Translations in Portuguese Norwegian German French
-  * Change: Hotkeys: set g for grid, b for buildmenu and d for debugger 
-  * Fix: Building speed has been improved, lumberjack preview is now   
+  * Change: Hotkeys: set g for grid, b for buildmenu and d for debugger
+  * Fix: Building speed has been improved, lumberjack preview is now
          almost lagfree.
   * Fix: Loading speed has been improved
   * Fix: Tearing buildings no longer crashes the game
@@ -213,7 +213,7 @@ Unknown Horizons
   * Change: Little update on main square
   * Change: Slightly retouched cursor graphics
   * Change: Look of help and creditsmenu
-  
+
 * Sound
   * New: Main theme by Tobias Escher
 
@@ -245,10 +245,10 @@ Unknown Horizons
   * Fix: Weater steal in other weater's tent.
   * Fix: Resource Transfer crashes game when out of range
   * Fix: Buildable status only updated on mouse move
-  
+
 * Graphics and GUI
   * New: New building main square, where inhabitants get their ressources
-  * New: Icons for switching game speed 
+  * New: Icons for switching game speed
   * New: New model for signal fire
   * New: New models for different types of trees
   * Change: Resized buildings and units
@@ -259,8 +259,8 @@ Unknown Horizons
   * Change: Unified lighting on renderings
   * Change: Updated Buildings: Softened shadows, added some grass, texture work
   * Fix: ship-trademenu and mainmenu are overlapping
-  * Fix: Unified lighting in renderings 
-  
+  * Fix: Unified lighting in renderings
+
 * Sound
   * New: Implemented build sound
   * New: Added ambient sounds for lumberjack, herder, main square and branch office
@@ -269,7 +269,7 @@ Unknown Horizons
   * New: Functionality to adjust volume level for music and effects
   * New: Implemented event based speech output
   * New: Added four different sounds to welcome you on the map
-  
+
 ... and a lot more smaller bugfixes.
 
 Many thanks go to all developers, contributors, testers and supporters.

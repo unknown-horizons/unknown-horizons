@@ -2,7 +2,7 @@
 <Container size="298,550" border_size="0" >
 	<Container position="39,0" size="600,550" name="content" >
 	</Container>
-	
+
 	<ImageButton name="5" up_image="" size="40,60" position="0,320" />
 	<ImageButton name="4" up_image="" size="40,60" position="0,268" />
 	<ImageButton name="3" up_image="" size="40,60" position="0,216" />

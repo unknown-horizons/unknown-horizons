@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <HBox position="100,190" name="playerdataselection" border_size="1">
 	<VBox>
 		<Label name="player_label" text="Player name:" />

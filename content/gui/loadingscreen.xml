@@ -2,9 +2,9 @@
 <Container size="1024,768">
 	<Icon image="content/gui/images/background/menu_bg.png" />
 	<Icon image="content/gui/images/misc/load.png" position="387,316" />
-	<Label name="loading_label" position="400,360" 
-		text="Loading ..." font="libertine_large_load" 
+	<Label name="loading_label" position="400,360"
+		text="Loading ..." font="libertine_large_load"
 		max_size="250,50" min_size="150,50" />
-	<Label name="version_label" position="745,735" 
+	<Label name="version_label" position="745,735"
 		text="Unknown Horizons Alpha" font="libertine_mainmenu" />
 </Container>
