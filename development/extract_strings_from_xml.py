@@ -114,7 +114,11 @@ def content_from_file(filename):
 		content_from_element('CheckBox', parsed) + \
 		content_from_element('RadioButton', parsed) + \
 		content_from_element('Window', parsed, 'title') + \
-		content_from_element('TooltipButton', parsed, 'tooltip')
+		content_from_element('TooltipButton', parsed, 'tooltip') + \
+		content_from_element('TooltipIcon', parsed, 'tooltip') + \
+		content_from_element('TooltipLabel', parsed, 'tooltip') + \
+		content_from_element('TooltipProgressBar', parsed, 'tooltip') + \
+		content_from_element('ToggleImageButton', parsed, 'tooltip')
 
 	if len(strings):
 		return '\t\t"%s" : {\n\t\t\t%s},' % (filename[12:], ',\n\t\t\t'.join(strings))
