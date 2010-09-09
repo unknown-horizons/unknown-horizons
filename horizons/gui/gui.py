@@ -273,23 +273,25 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
-				details_label.text += "Unknown savedate\n"
+				details_label.text += _("Unknown savedate\n")
 			else:
-				details_label.text += "Saved at %s\n" % \
-										 time.strftime("%H:%M, %A, %B %d", time.localtime(savegame_info['timestamp']))
-			details_label.text += "Saved %d time%s\n" % (savegame_info['savecounter'], \
-			                                             's' if savegame_info['savecounter'] > 1 else '')
+				details_label.text += _("Saved at %s\n") % \
+										time.strftime(_("%H:%M, %A, %B %d"), time.localtime(savegame_info['timestamp']))
+			if savegame_info['savecounter'] > 1:
+				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
+			else:
+				details_label.text += _("Saved %d time\n") % savegame_info['savecounter']
 			details_label.stylize('book')
 
 			from horizons.constants import VERSION
 			try:
 				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
-					details_label.text += u"Savegame ver. %d" % ( savegame_info['savegamerev'] )
+					details_label.text += _("Savegame ver. %d") % ( savegame_info['savegamerev'] )
 				else:
-					details_label.text += u"WARNING: Incompatible ver. %d!\nNeed ver. %d!" \
-					             % (savegame_info['savegamerev'], VERSION.SAVEGAMEREVISION)
+					details_label.text += _("WARNING: Incompatible ver. %(ver)d!\nNeed ver. %(need)d!") \
+					             % {'ver' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
 			except KeyError:
-				details_label.text += u"INCOMPATIBlE VERSION\n"
+				details_label.text += _("INCOMPATIBlE VERSION\n")
 
 
 			box.addChild( details_label )

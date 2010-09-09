@@ -13,7 +13,9 @@ python development/extract_strings_from_sqlite.py > po/sqlite_strings.pot
     find horizons -name \*.py
     echo po/sqlite_strings.pot
 ) | xgettext --files-from=- --output-dir=po --output=unknownhorizons.pot \
-             --from-code=UTF-8 --add-comments --no-wrap --sort-by-file
+             --from-code=UTF-8 --add-comments --no-wrap --sort-by-file \
+             --copyright-holder='The Unknown Horizons Team' \
+             --msgid-bugs-address=team@unknown-horizons.org
 
 rm po/sqlite_strings.pot
 
