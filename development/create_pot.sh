@@ -25,6 +25,8 @@ fi
 
 cd po && for file in *.po; do
     echo $file
+    msgfmt --statistics -o /dev/null $file # stats before
     msgmerge -U $file unknownhorizons.pot
-    msgfmt --statistics -o /dev/null $file
+    msgfmt --statistics -o /dev/null $file # ... and after update
+    echo -e "\n"
 done

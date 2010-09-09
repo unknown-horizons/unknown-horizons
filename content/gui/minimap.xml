@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container size="255,215">
-	<Label name="speed_text" text="" position="35,22" font="libertine_18_black"/>
+	<Label name="speed_text" text="" position="35,22" font="libertine_18"/>
 	<Icon name="minimap_overlay_image" position="40,0" 
 		image="content/gui/images/background/map_bg.png" />
 
