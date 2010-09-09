@@ -132,12 +132,17 @@ class GAME:
 	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
 	# payed in this interval).
 
+class MESSAGES:
+	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
+	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
+	LOGBOOK_DEFAULT_DELAY = 8 # delay between condition fulfilled and logbook popping up
+
 class TRADER:
 	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
 	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
 	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
 
-	BUSINESS_SENSE = 67 # chance in percent to be sent to a branch office instead of random spot
+	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
 
 	BUY_AMOUNT = (2, 8) # amount range to buy/sell from settlement per resource
 	SELL_AMOUNT = (2, 8)

@@ -253,9 +253,8 @@ class _Action(object):
 	  'win' : do_win,
 	  'lose' : do_lose,
 	  'set_var' : set_var,
-	  'logbook': show_logbook_entry,
-	  'logbook_s': write_logbook_entry,
-	  'logbook_delayed': show_logbook_entry_delayed,
+	  'logbook': show_logbook_entry_delayed, # set delay=0 for instant appearing
+	  'logbook_w': write_logbook_entry, # not showing the logbook
 	  'wait': wait
 	}
 

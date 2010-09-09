@@ -24,6 +24,7 @@ import horizons.main
 from horizons.scheduler import Scheduler
 from horizons.util import Callback
 from horizons.campaign import CONDITIONS
+from horizons.constants import MESSAGES
 
 
 ###
@@ -32,13 +33,15 @@ from horizons.campaign import CONDITIONS
 def show_message(session, *message):
 	"""Shows a custom message in the messagewidget. If you pass more than one message, they
 	will be shown after each other after a delay"""
-	delay = 6
-	delay_ticks = Scheduler().get_ticks(delay)
+	delay_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_SHOW_DELAY)
+	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
 	delay_iter = 1
 	for msg in message:
-		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, \
-		                                    None, None, msg, visible_for=90), None, runin=delay_iter)
+		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, None, None, \
+		                                    msg + '\n'* 30 + 'UHtutorial', visible_for=visible_ticks), \
+		                                    None, runin=delay_iter)
 		delay_iter += delay_ticks
+		# for the part """ + '\n'* 30 + 'UHtutorial'""" see below comment (#535)
 
 def show_db_message(session, message_id):
 	"""Shows a message specified in the db on the ingame message widget"""
@@ -46,14 +49,15 @@ def show_db_message(session, message_id):
 
 def write_logbook_entry(session, head, message):
 	"""Silently adds an entry to the logbook."""
-	session.ingame_gui.logbook.add_entry(unicode(head),unicode(message))
+	msg = message + '\n'* 30 + 'UHtutorial' # this can get removed once ticket 535 is resolved
+	session.ingame_gui.logbook.add_entry(unicode(head),unicode(msg))
 
 def show_logbook_entry(session, head, message):
 	"""Adds an entry to the logbook and displays it."""
-	session.ingame_gui.logbook.add_entry(unicode(head),unicode(message))
+	write_logbook_entry(session, head, message)
 	session.ingame_gui.logbook.show()
 
-def show_logbook_entry_delayed(session, head, message, delay):
+def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DEFAULT_DELAY):
 	"""Show a logbook entry delayed by delay seconds"""
 	callback = Callback(show_logbook_entry, session, head, message)
 	Scheduler().add_new_object(callback, session.campaign_eventhandler, runin=Scheduler().get_ticks(delay))
