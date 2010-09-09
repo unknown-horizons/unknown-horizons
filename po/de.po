@@ -1730,25 +1730,8 @@ msgstr "StorageCollector"
 #~ msgid "Buy Upgrades"
 #~ msgstr "Verbesserungen kaufen"
 
-#, fuzzy
-#~ msgid "Cannons"
-#~ msgstr "Münzen:"
-
-#, fuzzy
 #~ msgid "Hull"
 #~ msgstr "Schiffsrumpf"
-
-#, fuzzy
-#~ msgid "Build ship:"
-#~ msgstr "In Auftrag geben!"
-
-#, fuzzy
-#~ msgid "Trade Boats"
-#~ msgstr "Handelspartner:"
-
-#, fuzzy
-#~ msgid "War Ships"
-#~ msgstr "Schiff"
 
 #~ msgid "boatbuilder"
 #~ msgstr "Bootsbauer"
@@ -1759,7 +1742,6 @@ msgstr "StorageCollector"
 #~ msgid "stock"
 #~ msgstr "Lager"
 
-#, fuzzy
 #~ msgid "combat"
 #~ msgstr "Gefecht"
 
@@ -1784,11 +1766,9 @@ msgstr "StorageCollector"
 #~ msgid "PROGRAMMING"
 #~ msgstr "PROGRAMMIERUNG"
 
-#, fuzzy
 #~ msgid "SOUND and MUSIC ARTISTS"
 #~ msgstr "TON und KOMPOSITION"
 
-#, fuzzy
 #~ msgid "GRAPHIC ARTISTS"
 #~ msgstr "GRAFIKKÜNSTLER"
 
@@ -1862,22 +1842,8 @@ msgstr "StorageCollector"
 #~ "Erweitert die\n"
 #~ "Sicht des Spielers"
 
-#, fuzzy
 #~ msgid "Processing Production"
 #~ msgstr "Verarbeitende Produktion"
-
-#, fuzzy
-#~ msgid ""
-#~ "Boat builder: \n"
-#~ "Builds boats and\n"
-#~ "small ships, \n"
-#~ "built on coast"
-#~ msgstr ""
-#~ "Bootsbauer: \n"
-#~ "Baut Boote und\n"
-#~ "kleine Schiffe, \n"
-#~ "muss an der Küste \n"
-#~ "gebaut werden"
 
 #~ msgid "Not yet implemented"
 #~ msgstr "Noch nicht implementiert"
@@ -1892,9 +1858,8 @@ msgstr "StorageCollector"
 #~ "Die Zufallskartenfunktion ist gegenwärtig in Entwicklung. \n"
 #~ "Dies bedeutet, dass es vielleicht nicht funktionieren wird."
 
-#, fuzzy
 #~ msgid "Level"
-#~ msgstr "Stufe:"
+#~ msgstr "Stufe"
 
 #~ msgid "PLAYER TIMEOUT"
 #~ msgstr "SPIELER TIMEOUT"
@@ -1924,11 +1889,6 @@ msgstr "StorageCollector"
 #~ msgid "Sunsail"
 #~ msgstr "Sonnensegel"
 
-#, fuzzy
-#~ msgid "School"
-#~ msgstr "Wolle"
-
-#, fuzzy
 #~ msgid "Debugging tools usage:"
 #~ msgstr "Verwendung des Debug Tools:"
 
@@ -1941,16 +1901,6 @@ msgstr "StorageCollector"
 #~ msgstr ""
 #~ "debug.printTree(<object>):   gib ein Objekt in Baumstruktur aus "
 #~ "(Eigenschaften, Rekursiv)"
-
-#, fuzzy
-#~ msgid ""
-#~ "debug.cmd('name', *args):    create a command and execute it through the "
-#~ "manager ex: debug.cmd('unit.Move', game.main.session.selected_instance, "
-#~ "x, y)"
-#~ msgstr ""
-#~ "debug.cmd('name', *args):    Erzeuge ein Kommando und führe es durch den "
-#~ "Manager aus. Beispiel: debug.cmd('unit.Move', game.main.session."
-#~ "selected_instance, x, y)"
 
 #~ msgid "Not Implemented Yet"
 #~ msgstr "Noch nicht implementiert"
@@ -1970,11 +1920,9 @@ msgstr "StorageCollector"
 #~ msgid "Toggle active:"
 #~ msgstr "De-/Aktivieren:"
 
-#, fuzzy
 #~ msgid "Unknown Horizons Alpha 2009.1"
 #~ msgstr "Unknown Horizons Alpha 2009.1"
 
-#, fuzzy
 #~ msgid "Error, no complete sql statement provided by \"%s\"."
 #~ msgstr ""
 #~ "Fehler, es wurde kein vollständiger SQL Ausdruck von \"%s\" übergeben."
@@ -1991,13 +1939,8 @@ msgstr "StorageCollector"
 #~ msgid "These guys contributed to Unknown Horizons"
 #~ msgstr "Diese Jungs haben zu Unknown Horizons beigetragen"
 
-#, fuzzy
 #~ msgid "You guys rock!"
 #~ msgstr "Ihr Typen habt's drauf!"
-
-#, fuzzy
-#~ msgid "Credits"
-#~ msgstr "Abspann"
 
 #~ msgid "That's your island-wide inventory."
 #~ msgstr "Das ist dein Inselweites Inventar"
@@ -2017,7 +1960,6 @@ msgstr "StorageCollector"
 #~ msgid "Close"
 #~ msgstr "Schließen"
 
-#, fuzzy
 #~ msgid "City infos"
 #~ msgstr "Informationen über die Stadt"
 
@@ -2035,7 +1977,6 @@ msgstr "StorageCollector"
 #~ msgid "Oh noes"
 #~ msgstr "Oh Nein"
 
-#, fuzzy
 #~ msgid "Autosave interval"
 #~ msgstr "Intervall der automatischen Speicherung:"
 
@@ -2125,28 +2066,21 @@ msgstr "StorageCollector"
 #~ msgid "Useful for testing during development"
 #~ msgstr "Nützlich für Tests während der Entwicklung"
 
-#, fuzzy
-#~ msgid "Debugging options:"
-#~ msgstr "Verwendung des Debug Tools:"
-
 #~ msgid "Have fun playing, and if you do, help us developing!"
 #~ msgstr "Viel Spass beim Spielen! Wenn du Spass dabei hast, helf' doch mit!"
 
 #~ msgid "Loading..."
 #~ msgstr "Lade ..."
 
-#, fuzzy
 #~ msgid "Back to business..."
 #~ msgstr "Zurück zum Geschäft…"
 
-#, fuzzy
 #~ msgid "Running costs:"
 #~ msgstr "Laufende Kosten:"
 
 #~ msgid "No translation for file %s"
 #~ msgstr "Keine Übersetzung für die Datei %s"
 
-#, fuzzy
 #~ msgid "Storage"
 #~ msgstr "Lager"
 
@@ -2182,18 +2116,15 @@ msgstr "StorageCollector"
 #~ msgid "New"
 #~ msgstr "Neu"
 
-#, fuzzy
 #~ msgid "Enable Sound"
 #~ msgstr "Klang aktivieren"
 
 #~ msgid "Use the fullscreen mode"
 #~ msgstr "Im Vollbildmodus spielen"
 
-#, fuzzy
 #~ msgid "Number of saves quicksaves:"
 #~ msgstr "Anzahl der Schnellspeicherungen:"
 
-#, fuzzy
 #~ msgid "Use renderer:"
 #~ msgstr "Zu benutzernder Renderer:"
 
