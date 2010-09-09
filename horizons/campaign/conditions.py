@@ -21,7 +21,9 @@
 
 from horizons.ext.enum import Enum
 from horizons.constants import RES
+from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
+from horizons.world.pathfinding.pather import StaticPather
 
 
 # event conditions to specify at check_events()
@@ -30,7 +32,7 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
                   'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater', 'player_total_earnings_greater','time_passed', \
-                  'var_eq', 'var_gt', 'var_ls')
+                  'var_eq', 'var_gt', 'var_ls', 'building_connected_to_branch')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -47,7 +49,8 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
 				CONDITIONS.player_res_stored_less,
                                 CONDITIONS.settlement_res_stored_greater,
                                 CONDITIONS.time_passed,
-                                CONDITIONS.player_total_earnings_greater)
+                                CONDITIONS.player_total_earnings_greater,
+                                CONDITIONS.building_connected_to_branch)
 
 ###
 # Campaign Conditions
@@ -143,3 +146,22 @@ def _get_player_settlements(session):
 def _get_scenario_vars(session):
 	return session.campaign_eventhandler._scenario_variables
 
+
+def building_connected_to_branch(session, building_class, number):
+	"""Checks whether number of building_class type buildings are connected to
+	the brnach office."""
+	building_to_check = []
+	branch = None
+	for settlement in _get_player_settlements(session):
+		for building in settlement.buildings:
+			if building.id == building_class:
+				building_to_check.append(building)
+			elif building.id == BUILDINGS.BRANCH_OFFICE_CLASS:
+				branch = building
+	found_connected = 0
+	for building in building_to_check:
+		if StaticPather.get_path_on_roads(branch.island, building, branch) is not None:
+			found_connected += 1
+		if found_connected == number:
+			return True
+	return False

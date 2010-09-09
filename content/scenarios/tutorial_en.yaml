@@ -57,10 +57,10 @@ events:
 # WE NEED A CHECK FOR WORKING TRAILS / COLLECTORS HERE
    - {type: set_var, arguments: ["tutStepDone", 22]}
   conditions:
+   - type: building_connected_to_branch
+     arguments: [8, 1]
    - type: building_num_of_type_greater
      arguments: [8, 0]
-   - type: building_num_of_type_greater
-     arguments: [15, 0]
    - type: var_gt
      arguments: ["tutStepDone", 18]
    - {type: var_ls, arguments: ["tutStepDone", 22]}
