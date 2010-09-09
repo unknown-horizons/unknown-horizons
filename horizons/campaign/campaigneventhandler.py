@@ -204,7 +204,6 @@ class CampaignEventHandler(LivingObject):
 		yaml_code = yaml_code.rstrip(u'}\n')
 		#yaml_code = yaml_code.strip('{}')
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
-		print yaml_code
 		return yaml_code
 
 
