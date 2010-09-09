@@ -41,7 +41,12 @@ class ConsumerBuildingPathNodes(PathNodes):
 	"""
 	def __init__(self, consumerbuilding):
 		super(ConsumerBuildingPathNodes, self).__init__()
-		self.nodes = list(consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False))
+		self.nodes = []
+		for coordinate in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
+			tile = consumerbuilding.island.get_tile(Point(coordinate[0], coordinate[1]))
+			if tile is not None and not 'coastline' in tile.classes:
+				self.nodes.append(coordinate)
+
 
 class IslandPathNodes(PathNodes):
 	"""List of path nodes for island
