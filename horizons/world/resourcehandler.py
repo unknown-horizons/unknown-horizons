@@ -214,17 +214,17 @@ class ResourceHandler(StorageHolder):
 
 		line_id = production.get_production_line_id()
 		if active:
-			assert not self.is_active(production)
-			self.log.debug("ResHandler %s: reactivating production %s", self.worldid, line_id)
-			production.pause(pause=False)
-			self._productions[line_id] = production
-			del self._inactive_productions[line_id]
+			if self.is_active(production):
+				self.log.debug("ResHandler %s: reactivating production %s", self.worldid, line_id)
+				production.pause(pause=False)
+				self._productions[line_id] = production
+				del self._inactive_productions[line_id]
 		else:
-			assert self.is_active(production)
-			self.log.debug("ResHandler %s: deactivating production %s", self.worldid, line_id)
-			production.pause()
-			self._inactive_productions[line_id] = production
-			del self._productions[line_id]
+			if not self.is_active(production):
+				self.log.debug("ResHandler %s: deactivating production %s", self.worldid, line_id)
+				production.pause()
+				self._inactive_productions[line_id] = production
+				del self._productions[line_id]
 
 		self._changed()
 

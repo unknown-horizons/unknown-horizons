@@ -31,8 +31,6 @@ from horizons.command.unit import CreateUnit
 from horizons.scheduler import Scheduler
 from horizons.gui.tabs import ProductionOverviewTab
 
-import horizons.main
-
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
 	@param auto_init: bool. If True, the producer automatically adds one production
@@ -50,7 +48,7 @@ class Producer(ResourceHandler):
 		self.__init()
 		# add production lines as specified in db.
 		if auto_init:
-			for prod_line in horizons.main.db("SELECT id FROM production_line WHERE object_id = ? \
+			for prod_line in self.session.db("SELECT id FROM production_line WHERE object_id = ? \
 			    AND enabled_by_default = 1", self.id):
 				self.add_production_by_id(prod_line[0], self.production_class)
 

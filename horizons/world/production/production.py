@@ -49,7 +49,7 @@ class Production(WorldObject):
 	## INIT/DESTRUCT
 	def __init__(self, inventory, prod_line_id, auto_start=True, **kwargs):
 		super(Production, self).__init__(**kwargs)
-		self.__init(inventory, prod_line_id, PRODUCTION.STATES.waiting_for_res)
+		self.__init(inventory, prod_line_id, PRODUCTION.STATES.none)
 		if auto_start:
 			self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
 		else:
@@ -226,8 +226,6 @@ class Production(WorldObject):
 	## PROTECTED METHODS
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
-		assert self._state in (PRODUCTION.STATES.waiting_for_res, \
-		                       PRODUCTION.STATES.inventory_full) or True
 		check_space = self._check_for_space_for_produced_res()
 		if not check_space:
 			# can't produce, no space in our inventory
