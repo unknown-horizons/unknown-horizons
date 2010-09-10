@@ -104,7 +104,9 @@ class BoatbuilderTab(OverviewTab):
 				# TODO: make this button do sth
 			container_active.findChild(name='BB_builtship_label').stylize("headline")
 
-			still_needed_res = {  3: 42, 4 : 42 }
+			# Update needed resources
+			production = self.instance._productions.values()[0]
+			still_needed_res = production.get_consumed_resources()
 			i = 1
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			main_container.findChild(name="BB_needed_res_label").text = _(u'Resources still needed:')
@@ -113,7 +115,7 @@ class BoatbuilderTab(OverviewTab):
 
 				icon = self.instance.session.db("SELECT icon_small FROM resource WHERE id = ?", res)[0][0]
 				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i)).image = icon
-				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i)).text = unicode(amount)+u't'
+				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i)).text = unicode(-1*amount)+u't' # -1 make them positive
 				i += 1
 
 			# TODO: cancel building button
