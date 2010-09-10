@@ -101,14 +101,14 @@ class Island(WorldObject):
 		else:
 			db = DbReader(filename) # Create a new DbReader instance to load the maps file.
 
-		p_x, p_y, width, height = db("select (min(x) + ?), (min(y) + ?), (1 + max(x) - min(x)), (1 + max(y) - min(y)) from ground", self.origin.x, self.origin.y)[0]
+		p_x, p_y, width, height = db("SELECT (MIN(x) + ?), (MIN(y) + ?), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground", self.origin.x, self.origin.y)[0]
 
 		# rect for quick checking if a tile isn't on this island
 		# NOTE: it contains tiles, that are not on the island!
 		self.rect = Rect(Point(p_x, p_y), width, height)
 
 		self.ground_map = {}
-		for (rel_x, rel_y, ground_id) in db("select x, y, ground_id from ground"): # Load grounds
+		for (rel_x, rel_y, ground_id) in db("SELECT x, y, ground_id FROM ground"): # Load grounds
 			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.

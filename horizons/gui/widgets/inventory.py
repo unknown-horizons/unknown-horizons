@@ -88,7 +88,7 @@ class Inventory(pychan.widgets.Container):
 			# Add total storage indicator
 			sum_stored_res = self._inventory.get_sum_of_stored_resources()
 			label = pychan.widgets.Label()
-			label.text = unicode(sum_stored_res) + "/" + unicode(self._inventory.get_limit(None))
+			label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
 			label.position = (170, 50)
 			self.addChildren(label, self.__icon)
 		self.adaptLayout()

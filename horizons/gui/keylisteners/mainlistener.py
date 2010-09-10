@@ -91,7 +91,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.fife.quit()
+			horizons.main.quit()
 			command.consume()
 
 	def onConsoleCommand(self, command):

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2010-09-10 03:51+0200\n"
+"POT-Creation-Date: 2010-09-10 18:09+0200\n"
 "PO-Revision-Date: 2010-08-29 15:54+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,8 +226,8 @@ msgstr "Ingressos:"
 msgid "Trade"
 msgstr "Comerç"
 
-#: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:347
-#: horizons/i18n/guitranslations.py:349
+#: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:348
+#: horizons/i18n/guitranslations.py:350
 msgid "Inventory"
 msgstr "Inventori"
 
@@ -237,50 +237,50 @@ msgid "Ship Inventory"
 msgstr "Inventori"
 
 #: horizons/gui/tabs/marketplacetabs.py:72
-#: horizons/i18n/guitranslations.py:297
+#: horizons/i18n/guitranslations.py:298
 #, fuzzy
 msgid "Account"
 msgstr "Compte"
 
 #: horizons/gui/tabs/marketplacetabs.py:93
-#: horizons/i18n/guitranslations.py:310
+#: horizons/i18n/guitranslations.py:311
 #, fuzzy
 msgid "Settler overview"
 msgstr "~Resum de l'any"
 
-#: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:306
-#: horizons/i18n/guitranslations.py:314 horizons/i18n/guitranslations.py:317
-#: horizons/i18n/guitranslations.py:320 horizons/i18n/guitranslations.py:328
+#: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:301
+#: horizons/i18n/guitranslations.py:315 horizons/i18n/guitranslations.py:318
+#: horizons/i18n/guitranslations.py:321 horizons/i18n/guitranslations.py:329
 #, fuzzy
 msgid "Overview"
 msgstr "Resum"
 
-#: horizons/gui/tabs/overviewtab.py:104
+#: horizons/gui/tabs/overviewtab.py:99
 #, fuzzy
 msgid "Branch Office \\n Overview"
 msgstr "Oficina branca"
 
-#: horizons/gui/tabs/overviewtab.py:118 horizons/gui/tabs/overviewtab.py:160
+#: horizons/gui/tabs/overviewtab.py:113 horizons/gui/tabs/overviewtab.py:155
 #, fuzzy
 msgid "Ship Overview"
 msgstr "Resum"
 
-#: horizons/gui/tabs/overviewtab.py:174
+#: horizons/gui/tabs/overviewtab.py:169
 #, fuzzy
 msgid "Production Overview"
 msgstr "~Resum de l'any"
 
-#: horizons/gui/tabs/overviewtab.py:176
+#: horizons/gui/tabs/overviewtab.py:171
 #, fuzzy
 msgid "Destroy Building"
 msgstr "Configuració"
 
-#: horizons/gui/tabs/overviewtab.py:253
+#: horizons/gui/tabs/overviewtab.py:248
 #, fuzzy
 msgid "Settler Overview"
 msgstr "~Resum de l'any"
 
-#: horizons/gui/tabs/overviewtab.py:290
+#: horizons/gui/tabs/overviewtab.py:285
 #, fuzzy
 msgid "Market Place Overview"
 msgstr "~Resum de l'any"
@@ -484,18 +484,18 @@ msgstr "Configuració"
 msgid "Build"
 msgstr "Construeix"
 
-#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:302
-#: horizons/i18n/guitranslations.py:308
+#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:303
+#: horizons/i18n/guitranslations.py:309
 #, fuzzy
 msgid "Running Costs:"
 msgstr "Filtres en execució"
 
-#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:306
+#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:307
 #, fuzzy
 msgid "Building overview"
 msgstr "~Resum de l'any"
 
-#: horizons/i18n/guitranslations.py:87
+#: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:289
 #, fuzzy
 msgid "Running costs"
 msgstr "Filtres en execució"
@@ -1187,148 +1187,148 @@ msgid ""
 "building progress"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:290
+#: horizons/i18n/guitranslations.py:291
 msgid "Fishing Boats"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:291
+#: horizons/i18n/guitranslations.py:292
 msgid "Fishing boat"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:292
+#: horizons/i18n/guitranslations.py:293
 msgid "Cutter"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:293
+#: horizons/i18n/guitranslations.py:294
 msgid "Herring fisher"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:294
+#: horizons/i18n/guitranslations.py:295
 #, fuzzy
 msgid "Whaler"
 msgstr "Sale"
 
-#: horizons/i18n/guitranslations.py:295
+#: horizons/i18n/guitranslations.py:296
 #, fuzzy
 msgid "Build this ship!"
 msgstr "Ship Shoal Platform"
 
-#: horizons/i18n/guitranslations.py:298
+#: horizons/i18n/guitranslations.py:299
 msgid "Income:"
 msgstr "Ingressos:"
 
-#: horizons/i18n/guitranslations.py:299
+#: horizons/i18n/guitranslations.py:300
 msgid "Taxes"
 msgstr "impostos"
 
-#: horizons/i18n/guitranslations.py:300
+#: horizons/i18n/guitranslations.py:301
 #, fuzzy
 msgid "Sale"
 msgstr "Sale"
 
-#: horizons/i18n/guitranslations.py:301
+#: horizons/i18n/guitranslations.py:302
 #, fuzzy
 msgid "Expenses:"
 msgstr "Despeses"
 
-#: horizons/i18n/guitranslations.py:303
+#: horizons/i18n/guitranslations.py:304
 msgid "Buying"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:304
+#: horizons/i18n/guitranslations.py:305
 #, fuzzy
 msgid "Balance:"
 msgstr "Balanç:"
 
-#: horizons/i18n/guitranslations.py:307 horizons/i18n/guitranslations.py:315
-#: horizons/i18n/guitranslations.py:318 horizons/i18n/guitranslations.py:321
+#: horizons/i18n/guitranslations.py:308 horizons/i18n/guitranslations.py:316
+#: horizons/i18n/guitranslations.py:319 horizons/i18n/guitranslations.py:322
 msgid "Name:"
 msgstr "Nom:"
 
-#: horizons/i18n/guitranslations.py:311
+#: horizons/i18n/guitranslations.py:312
 #, fuzzy
 msgid "Average happiness:"
 msgstr "recupera la  mitjana de "
 
-#: horizons/i18n/guitranslations.py:312
+#: horizons/i18n/guitranslations.py:313
 #, fuzzy
 msgid "Most needed resource:"
 msgstr "El recurs és blocat"
 
-#: horizons/i18n/guitranslations.py:322 horizons/i18n/guitranslations.py:329
+#: horizons/i18n/guitranslations.py:323 horizons/i18n/guitranslations.py:330
 msgid "Taxes:"
 msgstr "Impostos:"
 
-#: horizons/i18n/guitranslations.py:324
+#: horizons/i18n/guitranslations.py:325
 msgid "Resource Deposit"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:325
+#: horizons/i18n/guitranslations.py:326
 msgid ""
 "This is a resource deposit, where you can build a mine to dig up resources."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:326
+#: horizons/i18n/guitranslations.py:327
 #, fuzzy
 msgid "It contains these resources:"
 msgstr "El recurs és blocat"
 
-#: horizons/i18n/guitranslations.py:330
+#: horizons/i18n/guitranslations.py:331
 msgid "Needed Resources:"
 msgstr "Recursos necessaris:"
 
-#: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:334
+#: horizons/i18n/guitranslations.py:332 horizons/i18n/guitranslations.py:335
 #, fuzzy
 msgid "Happiness"
 msgstr "Felicitat:"
 
-#: horizons/i18n/guitranslations.py:332
+#: horizons/i18n/guitranslations.py:333
 msgid "Residents"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:333
+#: horizons/i18n/guitranslations.py:334
 msgid "Paid taxes"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:336
+#: horizons/i18n/guitranslations.py:337
 msgid "Health:"
 msgstr "Salut:"
 
-#: horizons/i18n/guitranslations.py:337
+#: horizons/i18n/guitranslations.py:338
 msgid ""
 "Click to change \n"
 "the name of this \n"
 "Ship."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:338
+#: horizons/i18n/guitranslations.py:339
 #, fuzzy
 msgid "Build Settlement"
 msgstr "MENÚ D'OPCIONS"
 
-#: horizons/i18n/guitranslations.py:340
+#: horizons/i18n/guitranslations.py:341
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:342
+#: horizons/i18n/guitranslations.py:343
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:344
+#: horizons/i18n/guitranslations.py:345
 #, fuzzy
 msgid "Pause production"
 msgstr "Reproduir/Pausar"
 
-#: horizons/i18n/guitranslations.py:345
+#: horizons/i18n/guitranslations.py:346
 #, fuzzy
 msgid "Start production"
 msgstr "&Inicia a:"
 
-#: horizons/i18n/guitranslations.py:350
+#: horizons/i18n/guitranslations.py:351
 #, fuzzy
 msgid "Load/Unload:"
 msgstr "Carrega i descarrega extensions"
@@ -1414,7 +1414,7 @@ msgstr "El nom del fitxer no és vàlid"
 msgid "You entered an invalid filename."
 msgstr "Heu introduït una data incorrecta \n"
 
-#: horizons/world/units/ship.py:165 sqlite/Unit
+#: horizons/world/units/ship.py:166 sqlite/Unit
 #, fuzzy
 msgid "Trader"
 msgstr "Comerç"
@@ -1802,6 +1802,14 @@ msgstr "fusa"
 #: sqlite/Resources
 msgid "wool"
 msgstr "llana"
+
+#: sqlite/SettlerLevel
+msgid "pioneer"
+msgstr ""
+
+#: sqlite/SettlerLevel
+msgid "settler"
+msgstr ""
 
 #: sqlite/Unit
 msgid "AnimalCarriage"

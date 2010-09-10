@@ -107,10 +107,10 @@ class GroundClass(type):
 
 		animation_45, animation_135, animation_225, animation_315 = \
 		     db("SELECT \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_45 limit 1), \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_135 limit 1), \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_225 limit 1), \
-		     (SELECT file FROM data.animation WHERE animation_id = animation_315 limit 1) \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_45 LIMIT 1), \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_135 LIMIT 1), \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_225 LIMIT 1), \
+		     (SELECT file FROM data.animation WHERE animation_id = animation_315 LIMIT 1) \
 		     FROM data.ground WHERE id = ?", self.id)[0]
 		for rotation, file in [(45, animation_45), (135, animation_135), (225, animation_225), (315, animation_315)]:
 			img = horizons.main.fife.imagepool.addResourceFromFile(file)

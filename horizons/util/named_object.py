@@ -57,5 +57,7 @@ class NamedObject(WorldObject):
 
 	def load(self, db, worldid):
 		super(NamedObject, self).load(db, worldid)
-		self.set_name( db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0] )
+		name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
+		# We need unicode strings as the name is displayed on screen.
+		self.set_name(unicode(name, 'utf-8'))
 

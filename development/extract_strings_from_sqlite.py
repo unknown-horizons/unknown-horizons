@@ -26,7 +26,11 @@ import sqlalchemy.ext.declarative
 
 engine = sqlalchemy.create_engine('sqlite:///content/game.sqlite')
 Session = sqlalchemy.orm.sessionmaker(bind=engine)
-session = Session()
+session_game = Session()
+
+engine = sqlalchemy.create_engine('sqlite:///content/settler.sqlite')
+Session = sqlalchemy.orm.sessionmaker(bind=engine)
+session_settler = Session()
 
 Base = sqlalchemy.ext.declarative.declarative_base()
 
@@ -56,6 +60,11 @@ class Message(Base):
 
 class Resource(Base):
 	__tablename__ = 'resource'
+
+	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+
+class SettlerLevel(Base):
+	__tablename__ = 'settler_level'
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
@@ -90,23 +99,23 @@ def print_msgid(msgid):
 def collect_all():
 	collector = MSGID_collect()
 
-	for building in session.query(Building):
+	for building in session_game.query(Building):
 		collector.add_to_collection(building.name, 'Building')
 
-	for unit in session.query(Unit):
+	for unit in session_game.query(Unit):
 		collector.add_to_collection(unit.name, 'Unit')
 
-	#for settler_level in session.query(SettlerLevel):
-	#    print_msgid(settler_level.name)
-
-	for color in session.query(Colors):
+	for color in session_game.query(Colors):
 		collector.add_to_collection(color.name, 'Colors')
 
-	for message in session.query(Message):
+	for message in session_game.query(Message):
 		collector.add_to_collection(message.text, 'Messages')
 
-	for resource in session.query(Resource):
+	for resource in session_game.query(Resource):
 		collector.add_to_collection(resource.name, 'Resources')
+
+	for settler_level in session_settler.query(SettlerLevel):
+		collector.add_to_collection(settler_level.name, 'SettlerLevel')
 
 	return collector
 
