@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <Container size="150,80" position="10,10">
-	<TooltipIcon name="gold_icon" image="content/gui/images/background/res_mon_bg.png" position="0,0" tooltip="Gold" /><Icon image="content/gui/images/icons/hud/main/gold.png" position="17,12" />
+
+	<TooltipIcon name="gold_icon" tooltip="Gold" 
+		image="content/gui/images/background/res_mon_bg.png" />
+	<Icon image="content/gui/images/icons/hud/main/gold.png" position="17,12" />
+
 	<Label name="gold_1" text="" />
 	<Label name="gold_2" text="" />
 	<Label name="gold_3" text="" />
+
 </Container>

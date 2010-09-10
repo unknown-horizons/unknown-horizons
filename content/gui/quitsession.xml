@@ -1,11 +1,20 @@
 <?xml version="1.0"?>
 <Container name="quit_session_window" size="374,230" position="325,235">
-	<Icon image="content/gui/images/background/notice.png" position="0,0" />
+<Icon image="content/gui/images/background/notice.png" />
+
 	<Label text="Quit Session" position="135,30" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" position="80,50" />
-	<Label text="Are you sure you want to abort the running session?" name="ConfirmQuitLabel" position="22,82" />
+	<Label name="ConfirmQuitLabel" position="22,82" 
+		text="Are you sure you want to abort the running session?" />
+
 	<Container size="400,60" position="235,170">
-		<ImageButton name="cancelButton" up_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" down_image="content/gui/images/background/close.png" position="0,0" />
-		<ImageButton name="okButton" up_image="content/gui/images/background/ok.png" hover_image="content/gui/images/background/ok_h.png" down_image="content/gui/images/background/ok.png" position="60,0" />
+		<ImageButton name="cancelButton" 
+			up_image="content/gui/images/background/close.png" 
+			hover_image="content/gui/images/background/close_h.png" 
+			down_image="content/gui/images/background/close.png" />
+		<ImageButton name="okButton" position="60,0" 
+			up_image="content/gui/images/background/ok.png" 
+			hover_image="content/gui/images/background/ok_h.png" 
+			down_image="content/gui/images/background/ok.png" />
 	</Container>
 </Container>
