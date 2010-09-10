@@ -83,7 +83,8 @@ def set_translations():
 			"headline"                    : _("Build"),
 			"running_costs_label"         : _("Running Costs:")},
 		"buildings_gui/production_building_overview.xml" : {
-			"headline"                    : _("Building overview")},
+			"headline"                    : _("Building overview"),
+			"running_costs_label"         : _("Running costs")},
 		"buysellmenu/buysellmenu.xml" : {
 			"headline"                    : _("Buy or sell resources"),
 			"legend_label"                : _("Legend:"),
@@ -105,6 +106,8 @@ def set_translations():
 			"headline"                    : _("Chime The Bell"),
 			"made_it_label"               : _("Yeah, you made it..."),
 			"deadlink_label"              : _("But this is a deadlink, sorry.")},
+		"city_info.xml" : {
+			"city_name"                   : _("Click to change the name of your settlement.")},
 		"credits/0.xml" : {
 			"headline_team"               : _("UH-Team"),
 			"headline_projectcoord"       : _("Project Coordination"),
@@ -265,6 +268,14 @@ def set_translations():
 			"showCampaign"                : _("Campaign"),
 			"showRandom"                  : _("Random map"),
 			"showMaps"                    : _("Free play")},
+		"status.xml" : {
+			"food_icon"                   : _("Food"),
+			"tools_icon"                  : _("Tools"),
+			"boards_icon"                 : _("Boards"),
+			"bricks_icon"                 : _("Bricks"),
+			"textiles_icon"               : _("Textiles")},
+		"status_gold.xml" : {
+			"gold_icon"                   : _("Gold")},
 		"tab_widget/boatbuilder/boatbuilder.xml" : {
 			"headline"                    : _("Building Overview"),
 			"BB_howto_build_lbl"          : _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
@@ -316,9 +327,15 @@ def set_translations():
 		"tab_widget/tab_overview_settler.xml" : {
 			"headline"                    : _("Overview"),
 			"tax_label"                   : _("Taxes:"),
-			"needed_res_label"            : _("Needed Resources:")},
+			"needed_res_label"            : _("Needed Resources:"),
+			"happiness_label"             : _("Happiness"),
+			"residents_label"             : _("Residents"),
+			"paid_taxes_label"            : _("Paid taxes"),
+			"happiness"                   : _("Happiness")},
 		"tab_widget/tab_overview_ship.xml" : {
-			"health_label"                : _("Health:")},
+			"health_label"                : _("Health:"),
+			"name"                        : _("Click to change \nthe name of this \nShip."),
+			"foundSettelment"             : _("Build Settlement")},
 		"tab_widget/tab_overview_signalfire.xml" : {
 			"signal_fire_description_lbl" : _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods.")},
 		"tab_widget/tab_overview_tradership.xml" : {

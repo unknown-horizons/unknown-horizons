@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <Container size="64,250" is_focusable="0">
-	<VBox name="button_space"></VBox>
+	<VBox name="button_space" />
 </Container>

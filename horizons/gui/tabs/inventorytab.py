@@ -34,7 +34,7 @@ class InventoryTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
-		self.tooltip = u"Inventory"
+		self.tooltip = _("Inventory")
 		self.widget.child_finder('inventory').init(self.instance.session.db, \
 		                                           self.instance.inventory)
 
@@ -63,7 +63,7 @@ class ShipInventoryTab(InventoryTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
-		self.tooltip = u"Ship Inventory"
+		self.tooltip = _("Ship Inventory")
 
 	def refresh(self):
 		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius, self.instance.owner)

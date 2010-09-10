@@ -2,14 +2,38 @@
 <Container size="250,90">
 <!-- Main buttons that are under minimap, including build menu, diplomacy etc-->
 	<!--<Icon image="content/gui/images/background/button_glass_small.png" position="2,0" size="64,64" />-->
-	<Icon image="content/gui/images/background/button_glass_small.png" position="35,28" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_big.png" position="77,38" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_small.png" position="126,28" size="64,64" />
-	<Icon image="content/gui/images/background/button_glass_small.png" position="157,0" size="64,64" />
+	<Icon position="35,28" size="64,64" 
+		image="content/gui/images/background/button_glass_small.png" />
+	<Icon position="77,38" size="64,64" 
+		image="content/gui/images/background/button_glass_big.png" />
+	<Icon position="126,28" size="64,64" 
+		image="content/gui/images/background/button_glass_small.png" />
+	<Icon position="157,0" size="64,64" 
+		image="content/gui/images/background/button_glass_small.png" />
 
-	<TooltipButton name="destroy_tool" up_image="content/gui/images/background/delete.png" down_image="content/gui/images/background/delete_h.png" hover_image="content/gui/images/background/delete_h.png" is_focusable="0" size="30,30" position="2,0" tooltip="Destroy" />
-	<TooltipButton name="logbook" up_image="content/gui/images/icons/hud/main/diplomacy_l.png" down_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" hover_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" is_focusable="0" size="30,30" position="39,32" tooltip="Captain's log"/>
-	<TooltipButton name="build" up_image="content/gui/images/icons/hud/main/build_l.png" down_image="content/gui/images/icons/hud/main/build_l_h.png" hover_image="content/gui/images/icons/hud/main/build_l_h.png" is_focusable="0" size="30,30" position="84,45" tooltip="Build menu" />
-	<TooltipButton name="helpLink" up_image="content/gui/images/icons/hud/main/help.png" down_image="content/gui/images/icons/hud/main/help_h.png" hover_image="content/gui/images/icons/hud/main/help_h.png" size="32,32" position="129,31" tooltip="Help" />
-	<TooltipButton name="gameMenuButton" up_image="content/gui/images/icons/hud/main/gamemenu.png" down_image="content/gui/images/icons/hud/main/gamemenu_h.png" hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" size="32,32" position="161,0" tooltip="Game menu" />
+	<TooltipButton name="destroy_tool" size="30,30" position="2,0" 
+		up_image="content/gui/images/background/delete.png" 
+		down_image="content/gui/images/background/delete_h.png" 
+		hover_image="content/gui/images/background/delete_h.png" 
+		is_focusable="0" tooltip="Destroy" />
+	<TooltipButton name="logbook" size="30,30" position="39,32" 
+		up_image="content/gui/images/icons/hud/main/diplomacy_l.png" 
+		down_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" 
+		hover_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" 
+		is_focusable="0" tooltip="Captain's log" />
+	<TooltipButton name="build" size="30,30" position="84,45" 
+		up_image="content/gui/images/icons/hud/main/build_l.png" 
+		down_image="content/gui/images/icons/hud/main/build_l_h.png" 
+		hover_image="content/gui/images/icons/hud/main/build_l_h.png" 
+		is_focusable="0" tooltip="Build menu" />
+	<TooltipButton name="helpLink" size="32,32" position="129,31" 
+		up_image="content/gui/images/icons/hud/main/help.png" 
+		down_image="content/gui/images/icons/hud/main/help_h.png" 
+		hover_image="content/gui/images/icons/hud/main/help_h.png" 
+		tooltip="Help" />
+	<TooltipButton name="gameMenuButton" size="32,32" position="161,0" 
+		up_image="content/gui/images/icons/hud/main/gamemenu.png" 
+		down_image="content/gui/images/icons/hud/main/gamemenu_h.png" 
+		hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" 
+		tooltip="Game menu" />
 </Container>

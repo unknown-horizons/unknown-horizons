@@ -23,7 +23,7 @@ import weakref
 from fife.extensions import pychan
 
 from tabinterface import TabInterface
-from horizons.util import Callback, ActionSetLoader
+from horizons.util import Callback, ActionSetLoader, NamedObject
 from horizons.constants import RES, SETTLER, BUILDINGS
 from horizons.gui.widgets  import TooltipButton
 from horizons.command.production import ToggleActive
@@ -43,7 +43,7 @@ class OverviewTab(TabInterface):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-		self.tooltip = u"Overview"
+		self.tooltip = _("Overview")
 
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
@@ -58,7 +58,16 @@ class OverviewTab(TabInterface):
 	def refresh(self):
 		if hasattr(self.instance, 'name') and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
-			name_widget.text = _(unicode(self.instance.name))
+			# Named objects can't be translated.
+			if isinstance(self.instance, NamedObject):
+				name = self.instance.name
+				# Data from savegames needs to get converted to unicode. Text
+				# entered while playing is already unicode.
+				if not isinstance(self.instance.name, unicode):
+					name = unicode(self.instance.name, 'utf-8')
+				name_widget.text = name
+			else:
+				name_widget.text = _(unicode(self.instance.name))
 
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
@@ -92,7 +101,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-		self.tooltip = u"Branch Office \\n Overview"
+		self.tooltip = _("Branch Office \\n Overview")
 
 
 class ShipOverviewTab(OverviewTab):
@@ -106,7 +115,7 @@ class ShipOverviewTab(OverviewTab):
 		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = u"Ship Overview"
+		self.tooltip = _("Ship Overview")
 
 	def refresh(self):
 		# show rename when you click on name
@@ -148,7 +157,7 @@ class TraderShipOverviewTab(OverviewTab):
 		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = u"Ship Overview"
+		self.tooltip = _("Ship Overview")
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "tab_widget/tab_production_line.xml"
@@ -162,7 +171,7 @@ class ProductionOverviewTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-		self.tooltip = u"Production Overview"
+		self.tooltip = _("Production Overview")
 
 		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip=_("Destroy Building"), position=(190,330))
 		self.widget.addChild(self.destruct_button)
@@ -241,7 +250,7 @@ class SettlerOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_overview_settler.xml',
 			instance = instance
 		)
-		self.tooltip = u"Settler Overview"
+		self.tooltip = _("Settler Overview")
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 
 		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
@@ -278,7 +287,7 @@ class MarketPlaceOverviewTab(OverviewTab):
 			instance = instance
 		)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
-		self.tooltip = u"Market Place Overview"
+		self.tooltip = _("Market Place Overview")
 
 	def refresh(self):
 		super(MarketPlaceOverviewTab, self).refresh()
@@ -294,7 +303,7 @@ class SignalFireOverviewTab(OverviewTab):
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = u"Overview"
+		self.tooltip = _("Overview")
 
 class EnemyBuildingOverviewTab(OverviewTab):
 	def  __init__(self, instance):

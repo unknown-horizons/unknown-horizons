@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2010-09-09 16:28+0200\n"
+"POT-Creation-Date: 2010-09-10 03:51+0200\n"
 "PO-Revision-Date: 2010-08-29 15:54+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "`%s' té una versió %u desconeguda"
 msgid "System default"
 msgstr "Valor per defecte del sistema"
 
-#: horizons/engine.py:152
+#: horizons/engine.py:168
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
 msgstr ""
@@ -164,6 +164,11 @@ msgstr ""
 msgid "Players: "
 msgstr "Jugador"
 
+#: horizons/gui/modules/multiplayermenu.py:138
+#, fuzzy
+msgid "Creator: "
+msgstr "Error: "
+
 #: horizons/gui/modules/singleplayermenu.py:53
 msgid "Warning"
 msgstr ""
@@ -217,10 +222,68 @@ msgstr ""
 msgid "Increment"
 msgstr "Ingressos:"
 
-#: horizons/gui/tabs/overviewtab.py:167
+#: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:259
+msgid "Trade"
+msgstr "Comerç"
+
+#: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:347
+#: horizons/i18n/guitranslations.py:349
+msgid "Inventory"
+msgstr "Inventori"
+
+#: horizons/gui/tabs/inventorytab.py:66
+#, fuzzy
+msgid "Ship Inventory"
+msgstr "Inventori"
+
+#: horizons/gui/tabs/marketplacetabs.py:72
+#: horizons/i18n/guitranslations.py:297
+#, fuzzy
+msgid "Account"
+msgstr "Compte"
+
+#: horizons/gui/tabs/marketplacetabs.py:93
+#: horizons/i18n/guitranslations.py:310
+#, fuzzy
+msgid "Settler overview"
+msgstr "~Resum de l'any"
+
+#: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:306
+#: horizons/i18n/guitranslations.py:314 horizons/i18n/guitranslations.py:317
+#: horizons/i18n/guitranslations.py:320 horizons/i18n/guitranslations.py:328
+#, fuzzy
+msgid "Overview"
+msgstr "Resum"
+
+#: horizons/gui/tabs/overviewtab.py:104
+#, fuzzy
+msgid "Branch Office \\n Overview"
+msgstr "Oficina branca"
+
+#: horizons/gui/tabs/overviewtab.py:118 horizons/gui/tabs/overviewtab.py:160
+#, fuzzy
+msgid "Ship Overview"
+msgstr "Resum"
+
+#: horizons/gui/tabs/overviewtab.py:174
+#, fuzzy
+msgid "Production Overview"
+msgstr "~Resum de l'any"
+
+#: horizons/gui/tabs/overviewtab.py:176
 #, fuzzy
 msgid "Destroy Building"
 msgstr "Configuració"
+
+#: horizons/gui/tabs/overviewtab.py:253
+#, fuzzy
+msgid "Settler Overview"
+msgstr "~Resum de l'any"
+
+#: horizons/gui/tabs/overviewtab.py:290
+#, fuzzy
+msgid "Market Place Overview"
+msgstr "~Resum de l'any"
 
 #: horizons/i18n/guitranslations.py:42
 msgid "Sailor Buildings"
@@ -421,812 +484,851 @@ msgstr "Configuració"
 msgid "Build"
 msgstr "Construeix"
 
-#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:291
-#: horizons/i18n/guitranslations.py:297
+#: horizons/i18n/guitranslations.py:84 horizons/i18n/guitranslations.py:302
+#: horizons/i18n/guitranslations.py:308
 #, fuzzy
 msgid "Running Costs:"
 msgstr "Filtres en execució"
 
-#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:295
+#: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:306
 #, fuzzy
 msgid "Building overview"
 msgstr "~Resum de l'any"
 
-#: horizons/i18n/guitranslations.py:88
+#: horizons/i18n/guitranslations.py:87
+#, fuzzy
+msgid "Running costs"
+msgstr "Filtres en execució"
+
+#: horizons/i18n/guitranslations.py:89
 msgid "Buy or sell resources"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:89
+#: horizons/i18n/guitranslations.py:90
 #, fuzzy
 msgid "Legend:"
 msgstr "Llegenda:"
 
-#: horizons/i18n/guitranslations.py:90
+#: horizons/i18n/guitranslations.py:91
 #, fuzzy
 msgid "Buy resources"
 msgstr "Recursos monitoritzats"
 
-#: horizons/i18n/guitranslations.py:91
+#: horizons/i18n/guitranslations.py:92
 #, fuzzy
 msgid "Sell resources"
 msgstr "Recursos monitoritzats"
 
-#: horizons/i18n/guitranslations.py:93
+#: horizons/i18n/guitranslations.py:94
 #, fuzzy
 msgid "Select resources:"
 msgstr "Recursos monitoritzats"
 
-#: horizons/i18n/guitranslations.py:95
+#: horizons/i18n/guitranslations.py:96
 msgid "Read prev. entries"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:96
+#: horizons/i18n/guitranslations.py:97
 msgid "Read next entries"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:97
+#: horizons/i18n/guitranslations.py:98
 #, fuzzy
 msgid "Leave Captain's Log"
 msgstr "Registre dels filtres"
 
-#: horizons/i18n/guitranslations.py:99
+#: horizons/i18n/guitranslations.py:100
 msgid "Change name"
 msgstr "Canvia el nom"
 
-#: horizons/i18n/guitranslations.py:100
+#: horizons/i18n/guitranslations.py:101
 msgid "Enter new name:"
 msgstr "Introduïu el nou nom: "
 
-#: horizons/i18n/guitranslations.py:102
+#: horizons/i18n/guitranslations.py:103
 #, fuzzy
 msgid "Chat"
 msgstr "xat"
 
-#: horizons/i18n/guitranslations.py:103
+#: horizons/i18n/guitranslations.py:104
 msgid "Enter your message:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:105
+#: horizons/i18n/guitranslations.py:106
 #, fuzzy
 msgid "Chime The Bell"
 msgstr "Timbre del sistema"
 
-#: horizons/i18n/guitranslations.py:106
+#: horizons/i18n/guitranslations.py:107
 #, fuzzy
 msgid "Yeah, you made it..."
 msgstr "Voldríeu mostrar-ho?"
 
-#: horizons/i18n/guitranslations.py:107
+#: horizons/i18n/guitranslations.py:108
 #, fuzzy
 msgid "But this is a deadlink, sorry."
 msgstr "Ja existeix un distintiu amb el nom «%s»."
 
-#: horizons/i18n/guitranslations.py:109 horizons/i18n/guitranslations.py:119
-#: horizons/i18n/guitranslations.py:124 horizons/i18n/guitranslations.py:129
+#: horizons/i18n/guitranslations.py:110
+msgid "Click to change the name of your settlement."
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:112 horizons/i18n/guitranslations.py:122
+#: horizons/i18n/guitranslations.py:127 horizons/i18n/guitranslations.py:132
 msgid "UH-Team"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:110
+#: horizons/i18n/guitranslations.py:113
 msgid "Project Coordination"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:111
+#: horizons/i18n/guitranslations.py:114
 msgid "Programming"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:112
+#: horizons/i18n/guitranslations.py:115
 msgid "Game-Play Design"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:113
+#: horizons/i18n/guitranslations.py:116
 msgid "Sound and Music Artists"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:114
+#: horizons/i18n/guitranslations.py:117
 msgid "Graphic Artists"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:115 horizons/i18n/guitranslations.py:120
-#: horizons/i18n/guitranslations.py:125 horizons/i18n/guitranslations.py:130
+#: horizons/i18n/guitranslations.py:118 horizons/i18n/guitranslations.py:123
+#: horizons/i18n/guitranslations.py:128 horizons/i18n/guitranslations.py:133
 msgid "Patchers"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:116 horizons/i18n/guitranslations.py:121
-#: horizons/i18n/guitranslations.py:126 horizons/i18n/guitranslations.py:131
+#: horizons/i18n/guitranslations.py:119 horizons/i18n/guitranslations.py:124
+#: horizons/i18n/guitranslations.py:129 horizons/i18n/guitranslations.py:134
 msgid "Translators"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:117 horizons/i18n/guitranslations.py:122
-#: horizons/i18n/guitranslations.py:127 horizons/i18n/guitranslations.py:132
+#: horizons/i18n/guitranslations.py:120 horizons/i18n/guitranslations.py:125
+#: horizons/i18n/guitranslations.py:130 horizons/i18n/guitranslations.py:135
 msgid "Special Thanks"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:133
+#: horizons/i18n/guitranslations.py:136
 msgid "The whole FIFE team (www.fifengine.de)"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:136
+#: horizons/i18n/guitranslations.py:139
 msgid "Return to Game"
 msgstr "Torna a la partida"
 
-#: horizons/i18n/guitranslations.py:137
+#: horizons/i18n/guitranslations.py:140
 msgid " Cancel Game "
 msgstr " Canceŀla la partida"
 
-#: horizons/i18n/guitranslations.py:138
+#: horizons/i18n/guitranslations.py:141
 msgid " Save Game "
 msgstr " Desa la partida"
 
-#: horizons/i18n/guitranslations.py:139
+#: horizons/i18n/guitranslations.py:142
 msgid " Load Game "
 msgstr " Carrega una partida"
 
-#: horizons/i18n/guitranslations.py:140 horizons/i18n/guitranslations.py:184
+#: horizons/i18n/guitranslations.py:143 horizons/i18n/guitranslations.py:187
 msgid " Help "
 msgstr "Ajuda"
 
-#: horizons/i18n/guitranslations.py:141 horizons/i18n/guitranslations.py:186
+#: horizons/i18n/guitranslations.py:144 horizons/i18n/guitranslations.py:189
 msgid " Chime The Bell "
 msgstr "Toca la campana"
 
-#: horizons/i18n/guitranslations.py:142 horizons/i18n/guitranslations.py:183
+#: horizons/i18n/guitranslations.py:145 horizons/i18n/guitranslations.py:186
 msgid " Settings "
 msgstr " Configuració"
 
-#: horizons/i18n/guitranslations.py:144
+#: horizons/i18n/guitranslations.py:147
 #, fuzzy
 msgid "Key Bindings"
 msgstr "Vinculacions de tecla"
 
-#: horizons/i18n/guitranslations.py:145
+#: horizons/i18n/guitranslations.py:148
 #, fuzzy
 msgid "{LEFT} = Scroll left"
 msgstr "Desplaçament a esquerra"
 
-#: horizons/i18n/guitranslations.py:146
+#: horizons/i18n/guitranslations.py:149
 #, fuzzy
 msgid "{RIGHT} = Scroll right"
 msgstr "Desplaçament a la dreta"
 
-#: horizons/i18n/guitranslations.py:147
+#: horizons/i18n/guitranslations.py:150
 #, fuzzy
 msgid "{UP} = Scroll up"
 msgstr "Desplaça amunt"
 
-#: horizons/i18n/guitranslations.py:148
+#: horizons/i18n/guitranslations.py:151
 #, fuzzy
 msgid "{DOWN} = Scroll down"
 msgstr "Desplaça cap avall"
 
-#: horizons/i18n/guitranslations.py:149
+#: horizons/i18n/guitranslations.py:152
 #, fuzzy
 msgid "{ + } = Increase game speed"
 msgstr "Augmenta la velocitat de l'animació"
 
-#: horizons/i18n/guitranslations.py:150
+#: horizons/i18n/guitranslations.py:153
 #, fuzzy
 msgid "{ - } = Decrease game speed"
 msgstr "Disminueix la velocitat de l'animació"
 
-#: horizons/i18n/guitranslations.py:151
+#: horizons/i18n/guitranslations.py:154
 #, fuzzy
 msgid "{ , } = Rotate building left"
 msgstr "Gira la fotografia cap a l'esquerra"
 
-#: horizons/i18n/guitranslations.py:152
+#: horizons/i18n/guitranslations.py:155
 #, fuzzy
 msgid "{ . } = Rotate building right"
 msgstr "Gira la fotografia cap a la dreta"
 
-#: horizons/i18n/guitranslations.py:153
+#: horizons/i18n/guitranslations.py:156
 #, fuzzy
 msgid "{B} = Show build menu"
 msgstr "Mostra el menú de la miniaplicació"
 
-#: horizons/i18n/guitranslations.py:154
+#: horizons/i18n/guitranslations.py:157
 #, fuzzy
 msgid "{ESC} = Show pause menu"
 msgstr "Mostra el menú de «Mètodes d'entrada»"
 
-#: horizons/i18n/guitranslations.py:155
+#: horizons/i18n/guitranslations.py:158
 #, fuzzy
 msgid "{F1} = Display help"
 msgstr "Mostra el contingut de l'ajuda"
 
-#: horizons/i18n/guitranslations.py:156
+#: horizons/i18n/guitranslations.py:159
 #, fuzzy
 msgid "{F5} = Quicksave"
 msgstr "F5 Copia"
 
-#: horizons/i18n/guitranslations.py:157
+#: horizons/i18n/guitranslations.py:160
 #, fuzzy
 msgid "{F9} = Quickload"
 msgstr "F9 Cerca"
 
-#: horizons/i18n/guitranslations.py:158
+#: horizons/i18n/guitranslations.py:161
 msgid "{F10} = Toggle console on/off"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:159
+#: horizons/i18n/guitranslations.py:162
 #, fuzzy
 msgid "{P} = Pause game"
 msgstr "Pausa el joc"
 
-#: horizons/i18n/guitranslations.py:160
+#: horizons/i18n/guitranslations.py:163
 #, fuzzy
 msgid "{G} = Toggle grid on/off"
 msgstr "Graella horitzontal activada/desactivada"
 
-#: horizons/i18n/guitranslations.py:161
+#: horizons/i18n/guitranslations.py:164
 #, fuzzy
 msgid "{X} = Enable destruct mode"
 msgstr "Habilita el mode de pantalla tàctil"
 
-#: horizons/i18n/guitranslations.py:162
+#: horizons/i18n/guitranslations.py:165
 #, fuzzy
 msgid "{S} = Screenshot"
 msgstr "Captura de _pantalla..."
 
-#: horizons/i18n/guitranslations.py:163
+#: horizons/i18n/guitranslations.py:166
 msgid "{C} = Chat"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:164
+#: horizons/i18n/guitranslations.py:167
 msgid "{SHIFT} = Hold to place multiple buildings"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:165
+#: horizons/i18n/guitranslations.py:168
 #, fuzzy
 msgid "Have fun."
 msgstr "Fun"
 
-#: horizons/i18n/guitranslations.py:166
+#: horizons/i18n/guitranslations.py:169
 #, fuzzy
 msgid "The FIFE and Unknown Horizons"
 msgstr "Els equips de desenvolupadors del FIFE i l'Horizons Desconeguts"
 
-#: horizons/i18n/guitranslations.py:167
+#: horizons/i18n/guitranslations.py:170
 #, fuzzy
 msgid "development teams"
 msgstr "Opcions de desenvolupament i depuració"
 
-#: horizons/i18n/guitranslations.py:169
+#: horizons/i18n/guitranslations.py:172
 msgid "Game paused"
 msgstr "Partida pausada"
 
-#: horizons/i18n/guitranslations.py:170
-msgid "Hit P to continue the game or click below!"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:172
-#, fuzzy
-msgid "Terminal debugmode"
-msgstr "Terminal del Gnome"
-
 #: horizons/i18n/guitranslations.py:173
-msgid "You start the terminal python debugger pdb!"
+msgid "Hit P to continue the game or click below!"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:175
 #, fuzzy
+msgid "Terminal debugmode"
+msgstr "Terminal del Gnome"
+
+#: horizons/i18n/guitranslations.py:176
+msgid "You start the terminal python debugger pdb!"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:178
+#, fuzzy
 msgid "Loading ..."
 msgstr "S'està carregant..."
 
-#: horizons/i18n/guitranslations.py:179
+#: horizons/i18n/guitranslations.py:182
 msgid "Singleplayer"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:180
+#: horizons/i18n/guitranslations.py:183
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Joc de guerra únic per a diversos jugadors"
 
-#: horizons/i18n/guitranslations.py:181
+#: horizons/i18n/guitranslations.py:184
 msgid " Credits "
 msgstr " Crèdits "
 
-#: horizons/i18n/guitranslations.py:182
+#: horizons/i18n/guitranslations.py:185
 msgid " Quit "
 msgstr " Surt"
 
-#: horizons/i18n/guitranslations.py:185
+#: horizons/i18n/guitranslations.py:188
 msgid " Continue Game "
 msgstr "Continua una partida"
 
-#: horizons/i18n/guitranslations.py:188
+#: horizons/i18n/guitranslations.py:191
 #, fuzzy
 msgid "Destroy"
 msgstr "Destrueix"
 
-#: horizons/i18n/guitranslations.py:189
+#: horizons/i18n/guitranslations.py:192
 #, fuzzy
 msgid "Captain's log"
 msgstr "Registre dels filtres"
 
-#: horizons/i18n/guitranslations.py:190
+#: horizons/i18n/guitranslations.py:193
 #, fuzzy
 msgid "Build menu"
 msgstr "MENÚ D'OPCIONS"
 
-#: horizons/i18n/guitranslations.py:191
+#: horizons/i18n/guitranslations.py:194
 #, fuzzy
 msgid "Help"
 msgstr "Ajuda"
 
-#: horizons/i18n/guitranslations.py:192
+#: horizons/i18n/guitranslations.py:195
 #, fuzzy
 msgid "Game menu"
 msgstr "MENÚ D'OPCIONS"
 
-#: horizons/i18n/guitranslations.py:194
+#: horizons/i18n/guitranslations.py:197
 #, fuzzy
 msgid "CREATE GAME - MULTIPLAYER"
 msgstr "Comença un joc nou"
 
-#: horizons/i18n/guitranslations.py:195
+#: horizons/i18n/guitranslations.py:198
 #, fuzzy
 msgid "Player limit:"
 msgstr "_Nom del jugador"
 
-#: horizons/i18n/guitranslations.py:196
+#: horizons/i18n/guitranslations.py:199
 #, fuzzy
 msgid "Back:"
 msgstr "Balanç:"
 
-#: horizons/i18n/guitranslations.py:197
+#: horizons/i18n/guitranslations.py:200
 #, fuzzy
 msgid "Choose a map:"
 msgstr "Escolliu la música a reproduir"
 
-#: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:211
+#: horizons/i18n/guitranslations.py:201 horizons/i18n/guitranslations.py:214
 #, fuzzy
 msgid "Create game:"
 msgstr "Comença el _joc"
 
-#: horizons/i18n/guitranslations.py:199
+#: horizons/i18n/guitranslations.py:202
 msgid "Exit to multiplayer menu"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:200
+#: horizons/i18n/guitranslations.py:203
 msgid "Create this new game"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:202
-msgid "Gamelobby"
-msgstr ""
-
-#: horizons/i18n/guitranslations.py:203
-#, fuzzy
-msgid "Chat:"
-msgstr "xat"
-
-#: horizons/i18n/guitranslations.py:204
-#, fuzzy
-msgid "Leave:"
-msgstr "Nivell:"
-
 #: horizons/i18n/guitranslations.py:205
-msgid "The game will start as soon as enough players have joined."
+msgid "Gamelobby"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:206
 #, fuzzy
-msgid "Game details:"
-msgstr "Detalls:"
+msgid "Chat:"
+msgstr "xat"
 
 #: horizons/i18n/guitranslations.py:207
-msgid "Exit gamelobby"
+#, fuzzy
+msgid "Leave:"
+msgstr "Nivell:"
+
+#: horizons/i18n/guitranslations.py:208
+msgid "The game will start as soon as enough players have joined."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:209
 #, fuzzy
+msgid "Game details:"
+msgstr "Detalls:"
+
+#: horizons/i18n/guitranslations.py:210
+msgid "Exit gamelobby"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:212
+#, fuzzy
 msgid "NEW GAME - MULTIPLAYER"
 msgstr "Comença un joc nou"
 
-#: horizons/i18n/guitranslations.py:210
+#: horizons/i18n/guitranslations.py:213
 msgid "Apply:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:212 horizons/i18n/guitranslations.py:262
+#: horizons/i18n/guitranslations.py:215 horizons/i18n/guitranslations.py:265
 #, fuzzy
 msgid "Main menu:"
 msgstr "Menú principal"
 
-#: horizons/i18n/guitranslations.py:213
+#: horizons/i18n/guitranslations.py:216
 #, fuzzy
 msgid "Active games:"
 msgstr "Jocs d'arcade"
 
-#: horizons/i18n/guitranslations.py:214
+#: horizons/i18n/guitranslations.py:217
 msgid "Refresh list:"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:215
+#: horizons/i18n/guitranslations.py:218
 #, fuzzy
 msgid "Join game"
 msgstr "Carregar partida"
 
-#: horizons/i18n/guitranslations.py:216
+#: horizons/i18n/guitranslations.py:219
 #, fuzzy
 msgid "Apply the new name"
 msgstr "Introduïu el nou nom: "
 
-#: horizons/i18n/guitranslations.py:217
+#: horizons/i18n/guitranslations.py:220
 #, fuzzy
 msgid "Create a new game"
 msgstr "Introduïu el nou nom: "
 
-#: horizons/i18n/guitranslations.py:218
+#: horizons/i18n/guitranslations.py:221
 msgid "Exit to main menu"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:219
+#: horizons/i18n/guitranslations.py:222
 msgid "Refresh list of active games"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:220
+#: horizons/i18n/guitranslations.py:223
 #, fuzzy
 msgid "Join the selected game"
 msgstr "No s'ha seleccionat cap fitxer"
 
-#: horizons/i18n/guitranslations.py:222
+#: horizons/i18n/guitranslations.py:225
 #, fuzzy
 msgid "Player name:"
 msgstr "_Nom del jugador"
 
-#: horizons/i18n/guitranslations.py:223
+#: horizons/i18n/guitranslations.py:226
 #, fuzzy
 msgid "Color:"
 msgstr "Color:"
 
-#: horizons/i18n/guitranslations.py:225
+#: horizons/i18n/guitranslations.py:228
 msgid "Quit Game"
 msgstr "Surt del joc"
 
-#: horizons/i18n/guitranslations.py:226
+#: horizons/i18n/guitranslations.py:229
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr "Esteu segur que voleu sortir de l'Horizons Desconeguts?"
 
-#: horizons/i18n/guitranslations.py:228
+#: horizons/i18n/guitranslations.py:231
 #, fuzzy
 msgid "Quit Session"
 msgstr "De_sa la sessió en sortir"
 
-#: horizons/i18n/guitranslations.py:229
+#: horizons/i18n/guitranslations.py:232
 #, fuzzy
 msgid "Are you sure you want to abort the running session?"
 msgstr "Esteu segur que voleu esborrar la sessió actual?"
 
-#: horizons/i18n/guitranslations.py:231
+#: horizons/i18n/guitranslations.py:234
 msgid "Restart Required"
 msgstr "Cal reiniciar el joc"
 
-#: horizons/i18n/guitranslations.py:232
+#: horizons/i18n/guitranslations.py:235
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:234
+#: horizons/i18n/guitranslations.py:237
 msgid "Your saved games:"
 msgstr "Les vostres partides desades:"
 
-#: horizons/i18n/guitranslations.py:235
+#: horizons/i18n/guitranslations.py:238
 msgid "Enter filename:"
 msgstr "Introduïu un nom de fitxer:"
 
-#: horizons/i18n/guitranslations.py:236
+#: horizons/i18n/guitranslations.py:239
 msgid "Details:"
 msgstr "Detalls:"
 
-#: horizons/i18n/guitranslations.py:238
+#: horizons/i18n/guitranslations.py:241
 msgid "Settings"
 msgstr "Configuració"
 
-#: horizons/i18n/guitranslations.py:239
+#: horizons/i18n/guitranslations.py:242
 msgid "Please make sure that you know what you do."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:240
+#: horizons/i18n/guitranslations.py:243
 msgid "Graphics"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:241
+#: horizons/i18n/guitranslations.py:244
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "Resolució de la pantalla"
 
-#: horizons/i18n/guitranslations.py:242
+#: horizons/i18n/guitranslations.py:245
 #, fuzzy
 msgid "Color depth:"
 msgstr "Profunditat de color:"
 
-#: horizons/i18n/guitranslations.py:243
+#: horizons/i18n/guitranslations.py:246
 #, fuzzy
 msgid "Used renderer:"
 msgstr "Compositor del FreeType"
 
-#: horizons/i18n/guitranslations.py:244
+#: horizons/i18n/guitranslations.py:247
 #, fuzzy
 msgid "Full screen"
 msgstr "Pantalla completa"
 
-#: horizons/i18n/guitranslations.py:245
+#: horizons/i18n/guitranslations.py:248
 msgid "Sound"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:246
+#: horizons/i18n/guitranslations.py:249
 #, fuzzy
 msgid "Music volume:"
 msgstr "Canvia el volum de la música"
 
-#: horizons/i18n/guitranslations.py:247
+#: horizons/i18n/guitranslations.py:250
 #, fuzzy
 msgid "Effects volume:"
 msgstr "Pujar volum"
 
-#: horizons/i18n/guitranslations.py:248
+#: horizons/i18n/guitranslations.py:251
 #, fuzzy
 msgid "Enable sound"
 msgstr "Habilita els sons"
 
-#: horizons/i18n/guitranslations.py:249
+#: horizons/i18n/guitranslations.py:252
 #, fuzzy
 msgid "Saving"
 msgstr "Avís"
 
-#: horizons/i18n/guitranslations.py:250
+#: horizons/i18n/guitranslations.py:253
 #, fuzzy
 msgid "Autosave interval:"
 msgstr "Interval de sondeig:"
 
-#: horizons/i18n/guitranslations.py:251
+#: horizons/i18n/guitranslations.py:254
 #, fuzzy
 msgid "Number of autosaves:"
 msgstr "Nombre de columnes"
 
-#: horizons/i18n/guitranslations.py:252
+#: horizons/i18n/guitranslations.py:255
 #, fuzzy
 msgid "Number of quicksaves:"
 msgstr "Nombre de columnes"
 
-#: horizons/i18n/guitranslations.py:253
+#: horizons/i18n/guitranslations.py:256
 #, fuzzy
 msgid "Language"
 msgstr "Llengua:"
 
-#: horizons/i18n/guitranslations.py:254
+#: horizons/i18n/guitranslations.py:257
 #, fuzzy
 msgid "Select language:"
 msgstr "Llengua:"
 
-#: horizons/i18n/guitranslations.py:256
-msgid "Trade"
-msgstr "Comerç"
-
-#: horizons/i18n/guitranslations.py:257
+#: horizons/i18n/guitranslations.py:260
 #, fuzzy
 msgid "Ship:"
 msgstr "Ship Shoal"
 
-#: horizons/i18n/guitranslations.py:258
+#: horizons/i18n/guitranslations.py:261
 #, fuzzy
 msgid "Exchange:"
 msgstr "Intercanvia"
 
-#: horizons/i18n/guitranslations.py:259
+#: horizons/i18n/guitranslations.py:262
 #, fuzzy
 msgid "Trade partner:"
 msgstr "Organització de negoci i comerç"
 
-#: horizons/i18n/guitranslations.py:261
+#: horizons/i18n/guitranslations.py:264
 #, fuzzy
 msgid "NEW GAME - SINGLEPLAYER"
 msgstr "Comença un joc nou"
 
-#: horizons/i18n/guitranslations.py:263
+#: horizons/i18n/guitranslations.py:266
 #, fuzzy
 msgid "Choose a map to play:"
 msgstr "Escolliu la música a reproduir"
 
-#: horizons/i18n/guitranslations.py:264
+#: horizons/i18n/guitranslations.py:267
 #, fuzzy
 msgid "Start game:"
 msgstr "Comença el _joc"
 
-#: horizons/i18n/guitranslations.py:265
+#: horizons/i18n/guitranslations.py:268
 msgid "Campaign"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:266
+#: horizons/i18n/guitranslations.py:269
 #, fuzzy
 msgid "Random map"
 msgstr "Mapa d'imatge..."
 
-#: horizons/i18n/guitranslations.py:267
+#: horizons/i18n/guitranslations.py:270
 #, fuzzy
 msgid "Free play"
 msgstr "Reproduir/Pausar"
 
-#: horizons/i18n/guitranslations.py:269
+#: horizons/i18n/guitranslations.py:272
+#, fuzzy
+msgid "Food"
+msgstr "aliment"
+
+#: horizons/i18n/guitranslations.py:273
+#, fuzzy
+msgid "Tools"
+msgstr "eines"
+
+#: horizons/i18n/guitranslations.py:274
+#, fuzzy
+msgid "Boards"
+msgstr "taulers"
+
+#: horizons/i18n/guitranslations.py:275
+#, fuzzy
+msgid "Bricks"
+msgstr "maons"
+
+#: horizons/i18n/guitranslations.py:276
+#, fuzzy
+msgid "Textiles"
+msgstr "tèxtil"
+
+#: horizons/i18n/guitranslations.py:278
+msgid "Gold"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:280
 #, fuzzy
 msgid "Building Overview"
 msgstr "~Resum de l'any"
 
-#: horizons/i18n/guitranslations.py:270
+#: horizons/i18n/guitranslations.py:281
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:271
+#: horizons/i18n/guitranslations.py:282
 #, fuzzy
 msgid "Currently building:"
 msgstr "Configuració"
 
-#: horizons/i18n/guitranslations.py:272
+#: horizons/i18n/guitranslations.py:283
 msgid "Construction progress:"
 msgstr "Progrés de la construcció:"
 
-#: horizons/i18n/guitranslations.py:273
+#: horizons/i18n/guitranslations.py:284
 #, fuzzy
 msgid "Cancel building:"
 msgstr "Configuració"
 
-#: horizons/i18n/guitranslations.py:274
+#: horizons/i18n/guitranslations.py:285
 #, fuzzy
 msgid "(lose all resources)"
 msgstr "Recursos monitoritzats"
 
-#: horizons/i18n/guitranslations.py:275
+#: horizons/i18n/guitranslations.py:286
 msgid "Pause"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:276
+#: horizons/i18n/guitranslations.py:287
 msgid "Resume"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:277
+#: horizons/i18n/guitranslations.py:288
 msgid ""
 "Cancel all \n"
 "building progress"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:279
+#: horizons/i18n/guitranslations.py:290
 msgid "Fishing Boats"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:280
+#: horizons/i18n/guitranslations.py:291
 msgid "Fishing boat"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:281
+#: horizons/i18n/guitranslations.py:292
 msgid "Cutter"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:282
+#: horizons/i18n/guitranslations.py:293
 msgid "Herring fisher"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:283
+#: horizons/i18n/guitranslations.py:294
 #, fuzzy
 msgid "Whaler"
 msgstr "Sale"
 
-#: horizons/i18n/guitranslations.py:284
+#: horizons/i18n/guitranslations.py:295
 #, fuzzy
 msgid "Build this ship!"
 msgstr "Ship Shoal Platform"
 
-#: horizons/i18n/guitranslations.py:286
-#, fuzzy
-msgid "Account"
-msgstr "Compte"
-
-#: horizons/i18n/guitranslations.py:287
+#: horizons/i18n/guitranslations.py:298
 msgid "Income:"
 msgstr "Ingressos:"
 
-#: horizons/i18n/guitranslations.py:288
+#: horizons/i18n/guitranslations.py:299
 msgid "Taxes"
 msgstr "impostos"
 
-#: horizons/i18n/guitranslations.py:289
+#: horizons/i18n/guitranslations.py:300
 #, fuzzy
 msgid "Sale"
 msgstr "Sale"
 
-#: horizons/i18n/guitranslations.py:290
+#: horizons/i18n/guitranslations.py:301
 #, fuzzy
 msgid "Expenses:"
 msgstr "Despeses"
 
-#: horizons/i18n/guitranslations.py:292
+#: horizons/i18n/guitranslations.py:303
 msgid "Buying"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:293
+#: horizons/i18n/guitranslations.py:304
 #, fuzzy
 msgid "Balance:"
 msgstr "Balanç:"
 
-#: horizons/i18n/guitranslations.py:296 horizons/i18n/guitranslations.py:304
-#: horizons/i18n/guitranslations.py:307 horizons/i18n/guitranslations.py:310
+#: horizons/i18n/guitranslations.py:307 horizons/i18n/guitranslations.py:315
+#: horizons/i18n/guitranslations.py:318 horizons/i18n/guitranslations.py:321
 msgid "Name:"
 msgstr "Nom:"
 
-#: horizons/i18n/guitranslations.py:299
-#, fuzzy
-msgid "Settler overview"
-msgstr "~Resum de l'any"
-
-#: horizons/i18n/guitranslations.py:300
+#: horizons/i18n/guitranslations.py:311
 #, fuzzy
 msgid "Average happiness:"
 msgstr "recupera la  mitjana de "
 
-#: horizons/i18n/guitranslations.py:301
+#: horizons/i18n/guitranslations.py:312
 #, fuzzy
 msgid "Most needed resource:"
 msgstr "El recurs és blocat"
 
-#: horizons/i18n/guitranslations.py:303 horizons/i18n/guitranslations.py:306
-#: horizons/i18n/guitranslations.py:309 horizons/i18n/guitranslations.py:317
-#, fuzzy
-msgid "Overview"
-msgstr "Resum"
-
-#: horizons/i18n/guitranslations.py:311 horizons/i18n/guitranslations.py:318
+#: horizons/i18n/guitranslations.py:322 horizons/i18n/guitranslations.py:329
 msgid "Taxes:"
 msgstr "Impostos:"
 
-#: horizons/i18n/guitranslations.py:313
+#: horizons/i18n/guitranslations.py:324
 msgid "Resource Deposit"
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:314
+#: horizons/i18n/guitranslations.py:325
 msgid ""
 "This is a resource deposit, where you can build a mine to dig up resources."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:315
+#: horizons/i18n/guitranslations.py:326
 #, fuzzy
 msgid "It contains these resources:"
 msgstr "El recurs és blocat"
 
-#: horizons/i18n/guitranslations.py:319
+#: horizons/i18n/guitranslations.py:330
 msgid "Needed Resources:"
 msgstr "Recursos necessaris:"
 
-#: horizons/i18n/guitranslations.py:321
+#: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:334
+#, fuzzy
+msgid "Happiness"
+msgstr "Felicitat:"
+
+#: horizons/i18n/guitranslations.py:332
+msgid "Residents"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:333
+msgid "Paid taxes"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:336
 msgid "Health:"
 msgstr "Salut:"
 
-#: horizons/i18n/guitranslations.py:323
+#: horizons/i18n/guitranslations.py:337
+msgid ""
+"Click to change \n"
+"the name of this \n"
+"Ship."
+msgstr ""
+
+#: horizons/i18n/guitranslations.py:338
+#, fuzzy
+msgid "Build Settlement"
+msgstr "MENÚ D'OPCIONS"
+
+#: horizons/i18n/guitranslations.py:340
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:325
+#: horizons/i18n/guitranslations.py:342
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
 
-#: horizons/i18n/guitranslations.py:327
+#: horizons/i18n/guitranslations.py:344
 #, fuzzy
 msgid "Pause production"
 msgstr "Reproduir/Pausar"
 
-#: horizons/i18n/guitranslations.py:328
+#: horizons/i18n/guitranslations.py:345
 #, fuzzy
 msgid "Start production"
 msgstr "&Inicia a:"
 
-#: horizons/i18n/guitranslations.py:330 horizons/i18n/guitranslations.py:332
-msgid "Inventory"
-msgstr "Inventori"
-
-#: horizons/i18n/guitranslations.py:333
+#: horizons/i18n/guitranslations.py:350
 #, fuzzy
 msgid "Load/Unload:"
 msgstr "Carrega i descarrega extensions"
@@ -1858,9 +1960,6 @@ msgstr "Tenda d'emmagatzematge"
 #~ msgid "LEAVE BY"
 #~ msgstr "per grup"
 
-#~ msgid "Error: "
-#~ msgstr "Error: "
-
 #~ msgid "Upgrading Config from Version %d to Version %d ..."
 #~ msgstr ""
 #~ "S'està actualitzant al configuració de la versió %d a la versió %d..."
@@ -1906,9 +2005,6 @@ msgstr "Tenda d'emmagatzematge"
 #~ "(not yet \n"
 #~ "implemented)"
 #~ msgstr "Encara no s'ha configurat la xarxa"
-
-#~ msgid "Happiness:"
-#~ msgstr "Felicitat:"
 
 # Resources
 # Building

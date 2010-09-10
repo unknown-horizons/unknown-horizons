@@ -69,7 +69,7 @@ class AccountTab(MarketPlaceTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/account_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/account_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/account_h.png'
-		self.tooltip = u"Account"
+		self.tooltip = _("Account")
 
 	def refresh(self):
 		taxes = self.settlement.cumulative_taxes
@@ -90,7 +90,7 @@ class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'tab_widget/tab_marketplace_settler.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		self.tooltip = u"Settler overview"
+		self.tooltip = _("Settler overview")
 		self.button_up_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
 		self.button_active_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
 		self.button_down_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
