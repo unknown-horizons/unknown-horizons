@@ -89,7 +89,7 @@ class AbstractPather(object):
 		# calculate our source
 		if source is None:
 			source = self.unit.position
-			if self.unit.is_moving() and self.path is not None:
+			if self.unit.is_moving() and self.path:
 				# we are moving, use next step as source
 				source = Point(*self.path[self.cur])
 			else:
