@@ -285,7 +285,8 @@ def set_translations():
 			"BB_cancel_warning_label"     : _("(lose all resources)"),
 			"toggle_active_active"        : _("Pause"),
 			"toggle_active_inactive"      : _("Resume"),
-			"BB_cancel_button"            : _("Cancel all \nbuilding progress")},
+			"BB_cancel_button"            : _("Cancel all \nbuilding progress"),
+			"running_costs_label"         : _("Running costs")},
 		"tab_widget/boatbuilder/fisher.xml" : {
 			"headline"                    : _("Fishing Boats"),
 			"BB_fisher_ship1"             : _("Fishing boat"),
