@@ -1766,22 +1766,13 @@ msgstr "Holz"
 msgid "wool"
 msgstr "Wolle"
 
-# please don't translate anything in <tags> - thanks!
-# Don't translate. Thanks!
-# Resources
-# Building
-# FIXME: Formal, informal, historical?
-# FIXME
-# FIXME: Glücklichkeit / Fröhlichkeit?
-# FIXME: Erhöht?
 #: sqlite/SettlerLevel
 msgid "pioneer"
 msgstr "Pionier"
 
 #: sqlite/SettlerLevel
-#, fuzzy
 msgid "settler"
-msgstr "Kutter"
+msgstr "Siedler"
 
 #: sqlite/Unit
 msgid "AnimalCarriage"
