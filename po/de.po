@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2009.0\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-10 03:51+0200\n"
-"PO-Revision-Date: 2010-09-09 15:10+0200\n"
+"PO-Revision-Date: 2010-09-10 17:55+0200\n"
 "Last-Translator: Simon Ruderich <simon@ruderich.org>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -106,7 +106,7 @@ msgid ""
 "Need ver. %(need)d!"
 msgstr ""
 "WARNUNG: Inkompatible Vers. %(ver)d!\n"
-"Mindestens Vers. %(need)d benötigt!"
+"Vers. %(need)d benötigt!"
 
 #: horizons/gui/gui.py:294
 msgid "INCOMPATIBlE VERSION\n"
@@ -159,9 +159,8 @@ msgid "Players: "
 msgstr "Spieler: "
 
 #: horizons/gui/modules/multiplayermenu.py:138
-#, fuzzy
 msgid "Creator: "
-msgstr "Fehler:"
+msgstr "Ersteller:"
 
 #: horizons/gui/modules/singleplayermenu.py:53
 msgid "Warning"
@@ -216,9 +215,8 @@ msgid "Resources still needed:"
 msgstr "Fehlende Ressourcen:"
 
 #: horizons/gui/tabs/buildtabs.py:35
-#, fuzzy
 msgid "Increment"
-msgstr "Einnahmen:"
+msgstr "Stufe"
 
 #: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:259
 msgid "Trade"
@@ -227,14 +225,12 @@ msgstr "Handel"
 #: horizons/gui/tabs/inventorytab.py:37 horizons/i18n/guitranslations.py:347
 #: horizons/i18n/guitranslations.py:349
 msgid "Inventory"
-msgstr "Lager:"
+msgstr "Lager"
 
 #: horizons/gui/tabs/inventorytab.py:66
-#, fuzzy
 msgid "Ship Inventory"
-msgstr "Lager:"
+msgstr "Schiffsinventar"
 
-# FIXME
 #: horizons/gui/tabs/marketplacetabs.py:72
 #: horizons/i18n/guitranslations.py:297
 msgid "Account"
@@ -243,7 +239,7 @@ msgstr "Finanzen"
 #: horizons/gui/tabs/marketplacetabs.py:93
 #: horizons/i18n/guitranslations.py:310
 msgid "Settler overview"
-msgstr "Siedler-Übersicht"
+msgstr "Siedlerübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:46 horizons/gui/tabs/overviewtab.py:306
 #: horizons/i18n/guitranslations.py:314 horizons/i18n/guitranslations.py:317
@@ -252,33 +248,32 @@ msgid "Overview"
 msgstr "Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:104
-#, fuzzy
 msgid "Branch Office \\n Overview"
-msgstr "Kontor"
+msgstr "Kontor- \\n übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:118 horizons/gui/tabs/overviewtab.py:160
-#, fuzzy
 msgid "Ship Overview"
-msgstr "Übersicht"
+msgstr "Schiffsübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:174
-#, fuzzy
 msgid "Production Overview"
-msgstr "Produktion"
+msgstr ""
+"Produktions-\n"
+"übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:176
 msgid "Destroy Building"
 msgstr "Gebäude abreißen"
 
 #: horizons/gui/tabs/overviewtab.py:253
-#, fuzzy
 msgid "Settler Overview"
-msgstr "Siedler-Übersicht"
+msgstr "Siedlerübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:290
-#, fuzzy
 msgid "Market Place Overview"
-msgstr "Siedler-Übersicht"
+msgstr ""
+"Hauptplatz-\n"
+"übersicht"
 
 #: horizons/i18n/guitranslations.py:42
 msgid "Sailor Buildings"
@@ -289,9 +284,8 @@ msgid "Residents and Infrastructure"
 msgstr "Wohnbauten und Infrastruktur"
 
 #: horizons/i18n/guitranslations.py:44 horizons/i18n/guitranslations.py:60
-#, fuzzy
 msgid "Services"
-msgstr "Versorgungsbetriebe"
+msgstr "Grundversorgung"
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:58
 msgid "Companies"
@@ -547,12 +541,11 @@ msgstr "Laufende Kosten:"
 
 #: horizons/i18n/guitranslations.py:86 horizons/i18n/guitranslations.py:306
 msgid "Building overview"
-msgstr "Gebäude Übersicht"
+msgstr "Gebäudeübersicht"
 
 #: horizons/i18n/guitranslations.py:87
-#, fuzzy
 msgid "Running costs"
-msgstr "Laufende Kosten:"
+msgstr "Laufende Kosten"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Buy or sell resources"
@@ -617,6 +610,10 @@ msgstr "Dies ist ein Platzhalter, Entschuldigt bitte."
 #: horizons/i18n/guitranslations.py:110
 msgid "Click to change the name of your settlement."
 msgstr ""
+"Klicken um den\n"
+"Namen Eurer\n"
+"Siedlung zu\n"
+"ändern."
 
 # FIXME: Keep this short!
 #: horizons/i18n/guitranslations.py:112 horizons/i18n/guitranslations.py:122
@@ -633,19 +630,16 @@ msgid "Programming"
 msgstr "Programmierung"
 
 #: horizons/i18n/guitranslations.py:115
-#, fuzzy
 msgid "Game-Play Design"
 msgstr "Spieldesign"
 
 #: horizons/i18n/guitranslations.py:116
-#, fuzzy
 msgid "Sound and Music Artists"
 msgstr "Audiodesigner"
 
 #: horizons/i18n/guitranslations.py:117
-#, fuzzy
 msgid "Graphic Artists"
-msgstr "Graphik"
+msgstr "Graphikdesign"
 
 # FIXME: Keep this short!
 #: horizons/i18n/guitranslations.py:118 horizons/i18n/guitranslations.py:123
@@ -1101,37 +1095,32 @@ msgid "Free play"
 msgstr "Freies Spiel"
 
 #: horizons/i18n/guitranslations.py:272
-#, fuzzy
 msgid "Food"
-msgstr "Nahrungsmittel:"
+msgstr "Nahrung"
 
 #: horizons/i18n/guitranslations.py:273
-#, fuzzy
 msgid "Tools"
 msgstr "Werkzeuge"
 
 #: horizons/i18n/guitranslations.py:274
-#, fuzzy
 msgid "Boards"
-msgstr "Bretter:"
+msgstr "Bretter"
 
 #: horizons/i18n/guitranslations.py:275
-#, fuzzy
 msgid "Bricks"
-msgstr "Steine"
+msgstr "Ziegel"
 
 #: horizons/i18n/guitranslations.py:276
-#, fuzzy
 msgid "Textiles"
 msgstr "Kleidung"
 
 #: horizons/i18n/guitranslations.py:278
 msgid "Gold"
-msgstr ""
+msgstr "Gold"
 
 #: horizons/i18n/guitranslations.py:280
 msgid "Building Overview"
-msgstr "Gebäude-Übersicht"
+msgstr "Gebäudeübersicht"
 
 #: horizons/i18n/guitranslations.py:281
 msgid ""
@@ -1166,13 +1155,12 @@ msgid "Resume"
 msgstr "fortsetzen"
 
 #: horizons/i18n/guitranslations.py:288
-#, fuzzy
 msgid ""
 "Cancel all \n"
 "building progress"
 msgstr ""
-"Bau abbrechen \n"
-"(Materialverlust!)"
+"Alle Bau- \n"
+"vorgänge abbrechen"
 
 #: horizons/i18n/guitranslations.py:290
 msgid "Fishing Boats"
@@ -1260,17 +1248,16 @@ msgstr "Benötigte Ressourcen:"
 
 # FIXME: Glücklichkeit / Fröhlichkeit?
 #: horizons/i18n/guitranslations.py:331 horizons/i18n/guitranslations.py:334
-#, fuzzy
 msgid "Happiness"
 msgstr "Zufriedenheit"
 
 #: horizons/i18n/guitranslations.py:332
 msgid "Residents"
-msgstr "Behausungen"
+msgstr "Bewohner"
 
 #: horizons/i18n/guitranslations.py:333
 msgid "Paid taxes"
-msgstr ""
+msgstr "Bezahlte Steuern"
 
 #: horizons/i18n/guitranslations.py:336
 msgid "Health:"
@@ -1282,11 +1269,13 @@ msgid ""
 "the name of this \n"
 "Ship."
 msgstr ""
+"Klicken um den \n"
+"Namen des Schiffs \n"
+"zu ändern."
 
 #: horizons/i18n/guitranslations.py:338
-#, fuzzy
 msgid "Build Settlement"
-msgstr "Baumenü"
+msgstr "Siedlung bauen"
 
 #: horizons/i18n/guitranslations.py:340
 msgid ""
@@ -1306,11 +1295,15 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:344
 msgid "Pause production"
-msgstr "Produktion pausieren"
+msgstr ""
+"Produktion\n"
+"pausieren"
 
 #: horizons/i18n/guitranslations.py:345
 msgid "Start production"
-msgstr "Produktion starten"
+msgstr ""
+"Produktion\n"
+"starten"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Load/Unload:"
@@ -1693,7 +1686,7 @@ msgstr "Bretter"
 
 #: sqlite/Resources
 msgid "bricks"
-msgstr "Steine"
+msgstr "Ziegel"
 
 # Resources
 #: sqlite/Resources
@@ -1704,11 +1697,9 @@ msgstr "Lehm"
 msgid "coins"
 msgstr "Münzen"
 
-# FIXME
 #: sqlite/Resources
-#, fuzzy
 msgid "community"
-msgstr "Finanzen"
+msgstr "Gemeinschaft"
 
 #: sqlite/Resources
 msgid "education"
