@@ -34,7 +34,7 @@ class BoatbuilderTab(OverviewTab):
 			widget = 'tab_widget/boatbuilder/boatbuilder.xml',
 			instance = instance
 		)
-		self.tooltip = u"Boat Builder \\n Overview"
+		self.tooltip = _("Boat Builder \\n Overview")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -167,7 +167,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
-		self.tooltip = "Fisher Boats"
+		self.tooltip = _("Fisher Boats")
 		# TODO: generalize this hard coded value
 		events = { 'BB_build_fisher_1' : Callback(self.start_production, 15) }
 		self.widget.mapEvents(events)
@@ -176,19 +176,19 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
-		self.tooltip = "Trade Boats"
+		self.tooltip = _("Trade Boats")
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
-		self.tooltip = "War Boats"
+		self.tooltip = _("War Boats")
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar2Tab, self).__init__(instance, 'war2')
-		self.tooltip = "War Ships"
+		self.tooltip = _("War Ships")
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
@@ -205,7 +205,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 		)
 		events = { 'create_unit': self.start_production }
 		self.widget.mapEvents(events)
-		self.tooltip = u"Confirm order"
+		self.tooltip = _("Confirm order")
 		self.widget.findChild(name='BB_builtship_label').stylize("headline")
 		self.widget.findChild(name='headline_upgrades').stylize("headline")
 
