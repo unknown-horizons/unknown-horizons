@@ -242,7 +242,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@return: True if something was deleted, else False
 		"""
 		selected_item = self.current.collectData("savegamelist")
-		if selected_item == -1:
+		if selected_item == -1 or selected_item >= len(map_files):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
 			return False
 		selected_file = map_files[selected_item]
