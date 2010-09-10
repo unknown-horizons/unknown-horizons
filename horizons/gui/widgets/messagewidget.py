@@ -195,5 +195,5 @@ class Message(object):
 			self.message = message
 		else:
 			text = horizons.main.db('SELECT text from data.message WHERE id_string=?', id)[0][0]
-			self.message = Template(text).safe_substitute( \
+			self.message = Template(_(text)).safe_substitute( \
 			  message_dict if message_dict is not None else {})
