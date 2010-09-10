@@ -60,12 +60,7 @@ class OverviewTab(TabInterface):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
 			if isinstance(self.instance, NamedObject):
-				name = self.instance.name
-				# Data from savegames needs to get converted to unicode. Text
-				# entered while playing is already unicode.
-				if not isinstance(self.instance.name, unicode):
-					name = unicode(self.instance.name, 'utf-8')
-				name_widget.text = name
+				name_widget.text = self.instance.name
 			else:
 				name_widget.text = _(unicode(self.instance.name))
 
