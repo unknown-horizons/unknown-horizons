@@ -141,7 +141,7 @@ class AbstractPather(object):
 			return None
 
 		self.cur += 1
-		if self.path is None or self.cur == len(self.path):
+		if not self.path or self.cur == len(self.path):
 			self.cur = None
 			# movement finished
 			return None
@@ -170,7 +170,7 @@ class AbstractPather(object):
 	def get_move_target(self):
 		"""Returns the point where the path leads
 		@return: Point or None if no path has been calculated"""
-		return None if self.path is None else Point(*self.path[-1])
+		return None if not self.path else Point(*self.path[-1])
 
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
@@ -179,7 +179,7 @@ class AbstractPather(object):
 	def save(self, db, unitid):
 		# just save each step of the path
 		# current position is calculated on loading through unit position
-		if self.path is not None:
+		if self.path:
 			for step in xrange(len(self.path)):
 				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", \
 					 unitid, step, self.path[step][0], self.path[step][1])
