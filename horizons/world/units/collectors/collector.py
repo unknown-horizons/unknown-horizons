@@ -141,7 +141,7 @@ class Collector(StorageHolder, Unit):
 
 		# load collector properties
 		state_id, remaining_ticks, start_hidden = \
-						db("SELECT state, remaining_ticks, start_hidden FROM COLLECTOR \
+						db("SELECT state, remaining_ticks, start_hidden FROM collector \
 							 WHERE rowid = ?", worldid)[0]
 		self.__init(self.states[state_id], start_hidden)
 

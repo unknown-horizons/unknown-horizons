@@ -60,7 +60,7 @@ class SPManager(LivingObject):
 		self.commands = []
 
 		# NOTE: disabled until recording is really implemented
-		#for tick, issuer, data in db("SELECT tick, issuer, data from command"):
+		#for tick, issuer, data in db("SELECT tick, issuer, data FROM command"):
 			#self.commands.append((int(tick), WorldObject.get_object_by_id(issuer), decode(data)))
 		if len(self.commands) > 0:
 			self.session.timer.add_call(self.tick)

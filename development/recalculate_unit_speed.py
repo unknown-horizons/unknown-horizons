@@ -62,8 +62,8 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 			print
 
 	def update(unit, groundid, base_vel, vel_mod):
-		if len(db("select rowid from unit_velocity where unit = %d and ground = %d;"%(unit, groundid))) > 0:
-			db("delete from unit_velocity where unit = %d and ground = %d"%(unit, groundid))
+		if len(db("SELECT rowid FROM unit_velocity WHERE unit = %d AND ground = %d;"%(unit, groundid))) > 0:
+			db("DELETE FROM unit_velocity WHERE unit = %d AND ground = %d"%(unit, groundid))
 
 		straight = base_vel * vel_mod
 		check_rounding_error(straight, unit, groundid, False)
@@ -71,7 +71,7 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 		diagonal = straight * 2**0.5
 		check_rounding_error(diagonal, unit, groundid, True)
 
-		db("insert into unit_velocity(unit, ground, time_move_straight, time_move_diagonal) values(%d, %d, %d, %d)"%(unit, groundid, int(round(straight)), int(round(diagonal))))
+		db("INSERT INTO unit_velocity(unit, ground, time_move_straight, time_move_diagonal) VALUES(%d, %d, %d, %d)"%(unit, groundid, int(round(straight)), int(round(diagonal))))
 
 
 	argv = sys.argv
@@ -94,16 +94,16 @@ If you e.g. change the velocity modifier for ground 2, run this script with '-g 
 	if sys.argv[1] == '-u':
 		unit = int(sys.argv[2])
 		print 'Recalculating for unit', unit
-		for base_vel, in db("select base_velocity from unit where rowid = %d;"%unit):
-			for groundid, vel_mod in db("select rowid, velocity_modifier from ground"):
+		for base_vel, in db("SELECT base_velocity FROM unit WHERE rowid = %d;"%unit):
+			for groundid, vel_mod in db("SELECT rowid, velocity_modifier FROM ground"):
 				update(unit, groundid, base_vel, vel_mod)
 		print 'Done. If no warnings occurred, then you chose good values'
 
 	elif sys.argv[1] == '-g':
 		groundid = int(sys.argv[2])
 		print 'Recalculating for ground', groundid
-		for vel_mod, in db("select velocity_modifier from ground where rowid = %d"%groundid):
-			for unit, base_vel in db("select rowid, base_velocity from unit"):
+		for vel_mod, in db("SELECT velocity_modifier FROM ground WHERE rowid = %d"%groundid):
+			for unit, base_vel in db("SELECT rowid, base_velocity FROM unit"):
 				update(unit, groundid, base_vel, vel_mod)
 		print 'Done. If no warnings occurred, then you chose good values'
 

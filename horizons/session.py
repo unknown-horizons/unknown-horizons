@@ -217,7 +217,7 @@ class Session(LivingObject):
 		"""Generates a map."""
 
 		#load map
-		self.db("attach ':memory:' as map")
+		self.db("ATTACH ':memory:' AS map")
 		#...
 		self.world = World(self)
 		self.world._init(self.db)

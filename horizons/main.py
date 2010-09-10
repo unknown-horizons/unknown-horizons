@@ -323,9 +323,9 @@ def _create_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
 	_db = UhDbAccessor(':memory:')
-	_db("attach ? AS data", 'content/game.sqlite')
-	_db("attach ? AS settler", 'content/settler.sqlite')
-	_db("attach ? AS balance", 'content/balance.sqlite')
+	_db("ATTACH ? AS data", 'content/game.sqlite')
+	_db("ATTACH ? AS settler", 'content/settler.sqlite')
+	_db("ATTACH ? AS balance", 'content/balance.sqlite')
 	return _db
 
 def preload_game_data(lock):
