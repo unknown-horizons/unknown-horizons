@@ -19,7 +19,8 @@ It shows an overview over the settlers, like average happiness
 
 			<Label name="avg_happiness_lbl" position="0,0" text="Average happiness:" /><Label name="avg_happiness" position="150,0"/>
 
-			<Label name="most_needed_res_lbl" position="0,30" text="Most needed resource:" /><HBox name="most_needed_res_container" position="140,20"/>
+			<Label name="most_needed_res_lbl" position="0,30" text="Most needed resource:" />
+			<HBox name="most_needed_res_container" position="70,50"/>
 
 		</Container>
 	</Container>
