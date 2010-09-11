@@ -7,7 +7,7 @@
 <Container size="170,580">
 	<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_l.png" />
 	<ImageButton position="40,200" up_image="content/gui/images/background/pickbelt_l.png" />
-	<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_l.png" />
+	<!--<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_l.png" />-->
 	<!--<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_l.png" />-->
 </Container>
 
@@ -16,8 +16,8 @@
 		font="libertine_small_tooltip" />
 	<Label position="55,210" name="patchers_lbl" text="Patchers"
 		font="libertine_small_tooltip" />
-	<Label position="60,260" name="translators_lbl" text="Translators"
-		font="libertine_small_tooltip" />
+	<!--<Label position="60,260" name="translators_lbl" text="Translators"
+		font="libertine_small_tooltip" />-->
 	<!--<Label position="70,360" text="" font="libertine_small_tooltip" />-->
 </Container>
 <!-- this is the third container ( translators ).                                      !!!

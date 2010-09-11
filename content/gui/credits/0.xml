@@ -2,7 +2,7 @@
 <!-- Syncd with "doc/AUTHORS" -->
 <Container name="credits_window" size="1000,580">
 <Icon image="content/gui/images/background/book.png" position="100,0" />
-
+<!--
 <Container size="170,580">
 	<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_l.png" />
 </Container>
@@ -10,7 +10,7 @@
 <Container position="1, 4" size="170,580">
 	<Label name="team_lbl" position="50,160" text="UH-Team" font="libertine_small_tooltip" />
 </Container>
-
+-->
 <!-- this is the first container ( uh-team ) and could be visible by default.          !!!
 -->
 
