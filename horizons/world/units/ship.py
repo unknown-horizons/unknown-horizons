@@ -40,6 +40,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	"""
 	pather_class = ShipPather
 	tabs = (ShipOverviewTab, ShipInventoryTab)
+	health_bar_y = -150
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
@@ -50,6 +51,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	def remove(self):
 		super(Ship, self).remove()
 		self.session.world.ships.remove(self)
+		self.session.view.remove_change_listener()
 		del self.session.world.ship_map[self.position.to_tuple()]
 
 	def create_inventory(self):
@@ -81,12 +83,14 @@ class Ship(NamedObject, StorageHolder, Unit):
 				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 			)
 		self.draw_health()
+		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):
 		"""Runs neccasary steps to deselect the unit."""
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
+		self.session.view.remove_change_listener(self.draw_health)
 
 	def go(self, x, y):
 		"""Moves the ship.
@@ -162,9 +166,12 @@ class TradeShip(Ship):
 	"""Represents a trade ship."""
 	tabs = ()
 	enemy_tabs = (TraderShipOverviewTab, )
+	health_bar_y = -220
+
 	def _possible_names(self):
 		return [ _('Trader') ]
 
 class FisherShip(Ship):
 	"""Represents a fisher ship."""
 	tabs = ()
+	health_bar_y = -50
