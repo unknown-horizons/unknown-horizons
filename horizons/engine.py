@@ -117,6 +117,7 @@ class Fife(ApplicationBase):
 			headline = _("Warning")
 			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
 			horizons.main._modules.gui.show_popup(headline, message)
+
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
 		# Nore: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
