@@ -109,6 +109,14 @@ class Fife(ApplicationBase):
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
 
+		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
+
+	def _show_renderbackend_warning(self):
+		backend = self.get_fife_setting("RenderBackend")
+		if backend == 'SDL':
+			headline = _("Warning")
+			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
+			horizons.main._modules.gui.show_popup(headline, message)
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
 		# Nore: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
