@@ -95,6 +95,8 @@ class Fife(ApplicationBase):
 
 		languages_map = dict(find_available_languages())
 		languages_map[_('System default')] = ''
+		# English is not shipped as .mo file.
+		languages_map[_('en')] = ''
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
 		                                applyfunction=self.update_languages,
@@ -135,6 +137,8 @@ class Fife(ApplicationBase):
 			data = self._setting.get(UH_MODULE, "Language")
 		languages_map = dict(find_available_languages())
 		languages_map['System default'] = ''
+		# English is not shipped as .mo file.
+		languages_map['en'] = ''
 		symbol = None
 		if data == unicode('System default'):
 			symbol = 'System default'
@@ -158,7 +162,10 @@ class Fife(ApplicationBase):
 		name, position = sorted(languages_map.items())[index]
 		try:
 			if name != 'System default':
-				trans = gettext.translation('unknownhorizons', position, languages=[name])
+				# English is not shipped as .mo file, thus if English is
+				# selected we use NullTranslations to get English output.
+				fallback = name == 'en'
+				trans = gettext.translation('unknownhorizons', position, languages=[name], fallback=fallback)
 				trans.install(unicode=1)
 			else:
 				gettext.install('unknownhorizons', 'build/mo', unicode=1)
