@@ -93,7 +93,7 @@ class Inventory(pychan.widgets.Container):
 			self.addChildren(label, self.__icon)
 		elif isinstance(self._inventory, PositiveSizedSlotStorage):
 			label = pychan.widgets.Label()
-			label.text = unicode(_(u'Limit: %st per slot') % self._inventory.get_limit(None))
+			label.text = _('Limit: %st per slot') % self._inventory.get_limit(None)
 			label.position = (110, 150)
 			self.__icon.position = (90, 150)
 			self.addChildren(label, self.__icon)
