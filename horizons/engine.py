@@ -96,7 +96,7 @@ class Fife(ApplicationBase):
 		languages_map = dict(find_available_languages())
 		languages_map[_('System default')] = ''
 		# English is not shipped as .mo file.
-		languages_map[_('en')] = ''
+		languages_map['en'] = ''
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
 		                                applyfunction=self.update_languages,
