@@ -175,14 +175,14 @@ class Fife(ApplicationBase):
 				# selected we use NullTranslations to get English output.
 				fallback = name == 'en'
 				trans = gettext.translation('unknownhorizons', position, languages=[name], fallback=fallback)
-				trans.install(unicode=1)
+				trans.install(unicode=True)
 			else:
-				gettext.install('unknownhorizons', 'build/mo', unicode=1)
+				gettext.install('unknownhorizons', 'build/mo', unicode=True)
 				name = ''
 
 		except IOError:
 			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
-			gettext.install('unknownhorizons', 'build/mo', unicode=1)
+			gettext.install('unknownhorizons', 'build/mo', unicode=True)
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
 

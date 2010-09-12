@@ -242,7 +242,7 @@ def load_game(savegame = None, is_scenario = False):
 
 def _init_gettext(fife):
 	from gettext import translation, install
-	install('unknownhorizons', 'build/mo', unicode=1)
+	install('unknownhorizons', 'build/mo', unicode=True)
 	fife.update_languages()
 
 

@@ -34,7 +34,7 @@ enet = find_enet_module()
 
 # WORKAROUND: we need to install gettext for importing sth from horizons
 import gettext
-gettext.install('')
+gettext.install('', unicode=True)
 from horizons.constants import MULTIPLAYER
 
 # maximal peers enet should handle

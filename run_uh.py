@@ -166,7 +166,7 @@ def main():
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 
-	gettext.install("unknownhorizons", "build/mo", unicode=1)
+	gettext.install("unknownhorizons", "build/mo", unicode=True)
 
 	create_user_dirs()
 
@@ -259,7 +259,7 @@ def init_environment():
 	"""Sets up everything. Use in any program that requires access to fife and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
 
-	gettext.install("unknownhorizons", "po", unicode=1)
+	gettext.install("unknownhorizons", "po", unicode=True)
 
 	options = get_option_parser().parse_args()[0]
 

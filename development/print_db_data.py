@@ -21,7 +21,7 @@ sys.path.append("./horizons")
 sys.path.append("./horizons/util")
 
 import gettext
-gettext.install('')
+gettext.install('', unicode=True)
 
 from run_uh import init_environment
 init_environment()

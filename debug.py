@@ -36,7 +36,7 @@ if __name__ == '__main__':
 	import os
 
 	import gettext
-	gettext.install("unknownhorizons", "build/mo", unicode=1)
+	gettext.install("unknownhorizons", "build/mo", unicode=True)
 
 	#find fife and setup search paths
 	try:

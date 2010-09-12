@@ -29,7 +29,7 @@ if __name__ == '__main__':
 	os.chdir( os.path.split( os.path.realpath( sys.argv[0]) )[0] )
 
 	import gettext
-	gettext.install('') # necessary for init_environment
+	gettext.install('', unicode=True) # necessary for init_environment
 	from run_uh import init_environment, get_fife_path
 	init_environment()
 
