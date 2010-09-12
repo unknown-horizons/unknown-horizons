@@ -29,7 +29,7 @@ from horizons.world.building.nature import Field
 from horizons.util import Circle
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, PRODUCTION
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -70,10 +70,15 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
 		@param deposit_class: class num of deposit for later reconstruction (collected by get_prebuild_data())
 		"""
+		# needs to be inited before super(), since that will call the _on_production_changed hook
 		super(Mine, self).__init__(*args, **kwargs)
+		self.__init(deposit_class, mine_empty_msg_shown=False)
 		for res, amount in inventory.iteritems():
 			self.inventory.alter(res, amount)
+
+	def __init(self, deposit_class, mine_empty_msg_shown):
 		self.__deposit_class = deposit_class
+		self._mine_empty_msg_shown = mine_empty_msg_shown
 
 	@classmethod
 	def get_prebuild_data(cls, session, position):
@@ -95,12 +100,26 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 
 	def save(self, db):
 		super(Mine, self).save(db)
-		db("INSERT INTO mine(rowid, deposit_class) VALUES(?, ?)", \
-		   self.worldid, self.__deposit_class)
+		db("INSERT INTO mine(rowid, deposit_class, mine_empty_msg_shown) VALUES(?, ?, ?)", \
+		   self.worldid, self.__deposit_class, self._mine_empty_msg_shown)
 
 	def load(self, db, worldid):
 		super(Mine, self).load(db, worldid)
-		self.__deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
+		deposit_class, mine_empty_msg_shown = \
+		             db("SELECT deposit_class, mine_empty_msg_shown FROM mine WHERE rowid = ?", worldid)[0]
+		self.__init(deposit_class, mine_empty_msg_shown)
+
+	def _on_production_change(self):
+		super(ProducerBuilding, self)._on_production_change()
+		if self._get_current_state() == PRODUCTION.STATES.waiting_for_res and \
+		   (hasattr(self, "_mine_empty_msg_shown") and \
+		    not self._mine_empty_msg_shown):
+			# all resources are gone from the mine.
+			self.session.ingame_gui.message_widget.add(self.position.center().x, \
+			                                           self.position.center().y, 'MINE_EMPTY')
+			if self.is_active():
+				self.set_active(active=False)
+
 
 
 """ AnimalFarm is not used for now (code may not work anymore)

@@ -217,7 +217,7 @@ class Session(LivingObject):
 		"""Generates a map."""
 
 		#load map
-		self.db("attach ':memory:' as map")
+		self.db("ATTACH ':memory:' AS map")
 		#...
 		self.world = World(self)
 		self.world._init(self.db)
@@ -237,7 +237,7 @@ class Session(LivingObject):
 		elif tps == GAME_SPEED.TICKS_PER_SECOND: # normal speed, 1x
 			pass # display nothing
 		else:
-			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + 'x' # 2x, 4x, ...
+			text = unicode(tps/GAME_SPEED.TICKS_PER_SECOND) + u'x' # 2x, 4x, ...
 		self.ingame_gui.display_game_speed(text)
 
 	def speed_up(self):

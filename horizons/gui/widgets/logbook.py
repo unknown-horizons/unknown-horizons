@@ -53,9 +53,11 @@ class LogBook(object):
 
 	def load(self, db):
 		for heading, message in db("SELECT heading, message FROM logbook"):
-			self.add_entry(heading, message, False)
-		if (db("SELECT value FROM metadata where name = \"logbook_cur_entry\"")[0][0]):
-			self._cur_entry = int(db("SELECT value FROM metadata where name = \"logbook_cur_entry\"")[0][0])
+			# We need unicode strings as the entries are displayed on screen.
+			self.add_entry(unicode(heading, 'utf-8'), unicode(message, 'utf-8'), False)
+		value = db("SELECT value FROM metadata WHERE name = \"logbook_cur_entry\"")
+		if (value and value[0] and value[0][0]):
+			self._cur_entry = int(value[0][0])
 		self._redraw()
 
 	def add_entry(self, heading, message, show_logbook=True):

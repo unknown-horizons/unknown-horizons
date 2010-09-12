@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
 
 	import gettext
-	gettext.install('') # no translations here
+	gettext.install('', unicode=True) # no translations here
 
 	from run_uh import init_environment
 	init_environment()

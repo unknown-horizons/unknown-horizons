@@ -95,6 +95,8 @@ class Fife(ApplicationBase):
 
 		languages_map = dict(find_available_languages())
 		languages_map[_('System default')] = ''
+		# English is not shipped as .mo file.
+		languages_map['en'] = ''
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "language",
 		                                applyfunction=self.update_languages,
@@ -106,6 +108,15 @@ class Fife(ApplicationBase):
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
+
+		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
+
+	def _show_renderbackend_warning(self):
+		backend = self.get_fife_setting("RenderBackend")
+		if backend == 'SDL':
+			headline = _("Warning")
+			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
+			horizons.main._modules.gui.show_popup(headline, message)
 
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
@@ -135,6 +146,8 @@ class Fife(ApplicationBase):
 			data = self._setting.get(UH_MODULE, "Language")
 		languages_map = dict(find_available_languages())
 		languages_map['System default'] = ''
+		# English is not shipped as .mo file.
+		languages_map['en'] = ''
 		symbol = None
 		if data == unicode('System default'):
 			symbol = 'System default'
@@ -158,15 +171,18 @@ class Fife(ApplicationBase):
 		name, position = sorted(languages_map.items())[index]
 		try:
 			if name != 'System default':
-				trans = gettext.translation('unknownhorizons', position, languages=[name])
-				trans.install(unicode=1)
+				# English is not shipped as .mo file, thus if English is
+				# selected we use NullTranslations to get English output.
+				fallback = name == 'en'
+				trans = gettext.translation('unknownhorizons', position, languages=[name], fallback=fallback)
+				trans.install(unicode=True)
 			else:
-				gettext.install('unknownhorizons', 'build/mo', unicode=1)
+				gettext.install('unknownhorizons', 'build/mo', unicode=True)
 				name = ''
 
 		except IOError:
 			print _("Configured language %(lang)s at %(place)s could not be loaded") % {'lang': name, 'place': position}
-			gettext.install('unknownhorizons', 'build/mo', unicode=1)
+			gettext.install('unknownhorizons', 'build/mo', unicode=True)
 			self._setting.set(UH_MODULE, "Language", 'System default')
 		update_all_translations()
 

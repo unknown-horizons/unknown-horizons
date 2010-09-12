@@ -95,10 +95,5 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 				self.inventory.alter(res, amount)
 
 
-	"""
-	def load(self, *args, **kwargs):
-		import pdb ; pdb.set_trace()
-		super(ResourceDeposit, self).load(*args, **kwargs)
-	"""
 
 

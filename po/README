@@ -11,9 +11,14 @@ To update unknownhorizons.pot run
 
     ./development/create_pot.sh
 
-If the .po files should also be updated run
+If the .po files should also be updated run (which calls msgmerge)
 
     ./development/create_pot.sh -u
+
+If necessary guitranslations.py, which contains translatable strings from XML
+files, must be updated first, this can be done with
+
+    python development/extract_strings_from_xml.py horizons/i18n/guitranslations.py
 
 To generate the .mo files in build/ which are necessary to use the
 translations run

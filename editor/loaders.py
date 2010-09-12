@@ -71,7 +71,7 @@ def _empty(engine):
 	return map
 
 def _load(file, engine):
-	if not db("attach ? AS island", file).success:
+	if not db("ATTACH ? AS island", file).success:
 		raise WrongFileType(file)
 
 	map = _empty(engine)
@@ -80,7 +80,7 @@ def _load(file, engine):
 
 	nr = 0
 	already = []
-	for (x, y, ground_id) in db("select x, y, ground_id from island.ground"):
+	for (x, y, ground_id) in db("SELECT x, y, ground_id FROM island.ground"):
 		if (int(x), int(y)) not in already:
 			instance = layer.createInstance(engine.getModel().getObject(str(ground_id), 'ground'), fife.ModelCoordinate(int(x), int(y), 0), str(nr))
 			location = fife.Location(layer)
@@ -93,26 +93,26 @@ def _load(file, engine):
 	#except:
 	#	raise WrongFileType(file)
 
-	db("detach island")
+	db("DETACH island")
 
 	map.importDirs = []
 	return map
 
 def _save(file, engine, map):
-	if not db("attach ? AS island", file).success:
+	if not db("ATTACH ? AS island", file).success:
 		raise WrongFileType(file)
 
 	try:
-		if not db('create table island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)').success:
+		if NOT db('CREATE TABLE island.ground (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)').success:
 			raise int #just throw anything, int was the first i thought of...
 	except:
-		db('delete from island.ground')
+		db('DELETE FROM island.ground')
 
 	try:
 		if not db('CREATE TABLE island.island_properties (name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)').success:
 			raise int
 	except:
-		db('delete from island.island_properties')
+		db('DELETE FROM island.island_properties')
 
 	layer = map.getLayer('ground')
 
@@ -126,11 +126,11 @@ def _save(file, engine, map):
 			ground_id = int(instance.getObject().getId().split(':')[0])
 			rotation = instance.getRotation()
 			if rotation != 0:
-				ground_id = db('select rowid from data.ground where animation_45 = (select animation_%d from data.ground where rowid = ? limit 1) limit 1' % ((rotation + 45) % 360,), ground_id)[0][0]
-			db('insert into island.ground (x, y, ground_id) values (?, ?, ?)',x, y, ground_id)
+				ground_id = db('SELECT rowid FROM data.ground WHERE animation_45 = (SELECT animation_%d FROM data.ground WHERE rowid = ? LIMIT 1) LIMIT 1' % ((rotation + 45) % 360,), ground_id)[0][0]
+			db('INSERT INTO island.ground (x, y, ground_id) VALUES (?, ?, ?)',x, y, ground_id)
 			already.append((int(x), int(y)))
 
-	db("detach island")
+	db("DETACH island")
 
 def pathsplit(p, rest=[]):
 	(h, t) = os.path.split(p)
@@ -155,9 +155,9 @@ def relpath(p1, p2):
 def _init(engine):
 	global db
 	db = DbReader(':memory:')
-	db("attach ? AS data", os.path.abspath(os.path.dirname(__file__) + '/../content/game.sqlite'))
+	db("ATTACH ? AS data", os.path.abspath(os.path.dirname(__file__) + '/../content/game.sqlite'))
 
-	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (select file from data.animation where animation_id = animation_45 limit 1), (select file from data.animation where animation_id = animation_135 limit 1), (select file from data.animation where animation_id = animation_225 limit 1), (select file from data.animation where animation_id = animation_315 limit 1) FROM data.ground"):
+	for (ground_id, animation_45, animation_135, animation_225, animation_315) in db("SELECT rowid, (SELECT file FROM data.animation WHERE animation_id = animation_45 LIMIT 1), (SELECT file FROM data.animation WHERE animation_id = animation_135 LIMIT 1), (SELECT file FROM data.animation WHERE animation_id = animation_225 LIMIT 1), (SELECT file FROM data.animation WHERE animation_id = animation_315 LIMIT 1) FROM data.ground"):
 		print 'Loading ground #%i ...' % (ground_id)
 		name = os.path.basename(animation_45)
 		object = engine.getModel().createObject(str(ground_id) + ":" +str(name), 'ground')

@@ -148,9 +148,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		headline = popup.findChild(name='headline')
 		# just to be safe, the gettext-function is used twice,
 		# once on the original, once on the unicode string.
-		headline.text = _(unicode(_(windowtitle)))
+		headline.text = _(_(windowtitle))
 		headline.stylize('headline')
-		popup.findChild(name='popup_message').text = _(unicode(_(message)))
+		popup.findChild(name='popup_message').text = _(_(message))
 		popup.adaptLayout() # recalculate widths
 		headline.position = ( popup.width/2 - headline.width/2 , headline.position[1] )
 		popup.adaptLayout()
@@ -242,7 +242,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@return: True if something was deleted, else False
 		"""
 		selected_item = self.current.collectData("savegamelist")
-		if selected_item == -1:
+		if selected_item == -1 or selected_item >= len(map_files):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
 			return False
 		selected_file = map_files[selected_item]

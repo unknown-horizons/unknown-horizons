@@ -168,13 +168,16 @@ class View(Changelistener):
 		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom < VIEW.ZOOM_MIN):
 			zoom = VIEW.ZOOM_MIN
-		self.cam.setZoom(zoom)
+		self.set_zoom(zoom)
 
 	def zoom_in(self):
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom > VIEW.ZOOM_MAX):
 			zoom = VIEW.ZOOM_MAX
-		self.cam.setZoom(zoom)
+		self.set_zoom(zoom)
+
+	def get_zoom(self):
+		return self.cam.getZoom()
 
 	def set_zoom(self, zoom):
 		self.cam.setZoom(zoom)

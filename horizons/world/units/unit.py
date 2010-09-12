@@ -32,6 +32,7 @@ from horizons.ambientsound import AmbientSound
 class Unit(AmbientSound, MovingObject):
 	log = logging.getLogger("world.units")
 	is_unit = True
+	health_bar_y = -30
 
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)
@@ -78,9 +79,11 @@ class Unit(AmbientSound, MovingObject):
 	def draw_health(self):
 		"""Draws the units current health as a healthbar over the unit."""
 		renderer = self.session.view.renderer['GenericRenderer']
-		width = 50
-		height = 5
-		y_pos = -30
+		renderer.removeAll("health_" + str(self.worldid))
+		zoom = self.session.view.get_zoom()
+		height = int(5 * zoom)
+		width = int(50 * zoom)
+		y_pos = int(self.health_bar_y * zoom)
 		mid_node_up = fife.GenericRendererNode(self._instance, \
 									fife.Point(-width/2+int(((self.health/self.max_health)*width)),\
 		                                       y_pos-height)

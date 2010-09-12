@@ -30,8 +30,8 @@ from horizons.constants import PRODUCTION
 from horizons.command.unit import CreateUnit
 from horizons.scheduler import Scheduler
 from horizons.gui.tabs import ProductionOverviewTab
-
-import horizons.main
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
 
 class Producer(ResourceHandler):
 	"""Class for objects, that produce something.
@@ -50,7 +50,7 @@ class Producer(ResourceHandler):
 		self.__init()
 		# add production lines as specified in db.
 		if auto_init:
-			for prod_line in horizons.main.db("SELECT id FROM production_line WHERE object_id = ? \
+			for prod_line in self.session.db("SELECT id FROM production_line WHERE object_id = ? \
 			    AND enabled_by_default = 1", self.id):
 				self.add_production_by_id(prod_line[0], self.production_class)
 
@@ -249,9 +249,12 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 					found_tile = False
 					# search for free water tile, and increase search radius if none is found
 					while not found_tile:
-						for tile in self.session.world.get_tiles_in_radius(self.position.center(), radius, shuffle=True):
-							if tile.is_water and (tile.x, tile.y) not in self.session.world.ship_map:
-								CreateUnit(self.owner.worldid, unit, tile.x, tile.y).execute(self.session)
-								found_tile = True
-								break
+						for coord in Circle(self.position.center(), radius).get_coordinates():
+							point = Point(coord[0], coord[1])
+							if self.island.get_tile(point) is None:
+								tile = self.session.world.get_tile(point)
+								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
+									CreateUnit(self.owner.worldid, unit, point.x, point.y).execute(self.session)
+									found_tile = True
+									break
 						radius += 1

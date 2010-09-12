@@ -242,7 +242,7 @@ def load_game(savegame = None, is_scenario = False):
 
 def _init_gettext(fife):
 	from gettext import translation, install
-	install('unknownhorizons', 'build/mo', unicode=1)
+	install('unknownhorizons', 'build/mo', unicode=True)
 	fife.update_languages()
 
 
@@ -268,10 +268,10 @@ def _start_map(map_name, is_scenario = False):
 			else:
 				map_file = maps[0][i]
 	if map_file is None:
-		print _(u"Error: Cannot find map \"%s\".") % map_name
+		print _("Error: Cannot find map \"%s\".") % map_name
 		return False
 	if len(map_file.splitlines()) > 1:
-		print _(u"Error: Found multiple matches: ")
+		print _("Error: Found multiple matches: ")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -296,10 +296,10 @@ def _load_map(savegamename):
 			else:
 				map_file = saves[0][i]
 	if map_file is None:
-		print _(u"Error: Cannot find savegame \"%s\".") % savegamename
+		print _("Error: Cannot find savegame \"%s\".") % savegamename
 		return False
 	if len(map_file.splitlines()) > 1:
-		print _(u"Error: Found multiple matches: ")
+		print _("Error: Found multiple matches: ")
 		for match in map_file.splitlines():
 			print os.path.basename(match)
 		return False
@@ -314,7 +314,7 @@ def _load_last_quicksave():
 	try:
 		save = save_files[len(save_files)-1]
 	except KeyError:
-		print _(u"Error: No quicksave found.")
+		print _("Error: No quicksave found.")
 		return False
 	load_game(save)
 	return True
@@ -323,9 +323,9 @@ def _create_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
 	_db = UhDbAccessor(':memory:')
-	_db("attach ? AS data", 'content/game.sqlite')
-	_db("attach ? AS settler", 'content/settler.sqlite')
-	_db("attach ? AS balance", 'content/balance.sqlite')
+	_db("ATTACH ? AS data", 'content/game.sqlite')
+	_db("ATTACH ? AS settler", 'content/settler.sqlite')
+	_db("ATTACH ? AS balance", 'content/balance.sqlite')
 	return _db
 
 def preload_game_data(lock):

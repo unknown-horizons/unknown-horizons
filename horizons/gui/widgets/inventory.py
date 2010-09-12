@@ -23,7 +23,7 @@ from fife.extensions import pychan
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets import ProgressBar
-from horizons.world.storage import TotalStorage
+from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage
 
 class Inventory(pychan.widgets.Container):
 	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
@@ -45,7 +45,6 @@ class Inventory(pychan.widgets.Container):
 		self.db = db
 		self._inventory = inventory
 		self.__icon = pychan.widgets.Icon("content/gui/images/icons/hud/ship/civil_16.png")
-		self.__icon.position = (150, 50)
 		self.update()
 
 	def update(self):
@@ -88,8 +87,15 @@ class Inventory(pychan.widgets.Container):
 			# Add total storage indicator
 			sum_stored_res = self._inventory.get_sum_of_stored_resources()
 			label = pychan.widgets.Label()
-			label.text = unicode(sum_stored_res) + "/" + unicode(self._inventory.get_limit(None))
+			label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
 			label.position = (170, 50)
+			self.__icon.position = (150, 50)
+			self.addChildren(label, self.__icon)
+		elif isinstance(self._inventory, PositiveSizedSlotStorage):
+			label = pychan.widgets.Label()
+			label.text = _('Limit: %st per slot') % self._inventory.get_limit(None)
+			label.position = (110, 150)
+			self.__icon.position = (90, 150)
 			self.addChildren(label, self.__icon)
 		self.adaptLayout()
 		self.stylize('menu_black')

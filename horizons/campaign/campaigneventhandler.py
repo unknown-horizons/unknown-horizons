@@ -97,7 +97,7 @@ class CampaignEventHandler(LivingObject):
 	def load(self, db):
 		for key, value in db("SELECT key, value FROM scenario_variables"):
 			self._scenario_variables[key] = value
-		data = db("SELECT value FROM metadata where name = ?", "campaign_events")
+		data = db("SELECT value FROM metadata WHERE name = ?", "campaign_events")
 		if len(data) == 0:
 			return # nothing to load
 		self._apply_data( self._parse_yaml( data[0][0] ) )
