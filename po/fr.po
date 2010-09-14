@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-10 18:09+0200\n"
-"PO-Revision-Date: 2010-09-08 00:11+0200\n"
+"PO-Revision-Date: 2010-09-12 15:09+0200\n"
 "Last-Translator: Vincent Hérilier <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Vous avez gagné !"
 
 #: horizons/campaign/actions.py:72
 msgid "You have completed this scenario. "
-msgstr ""
+msgstr "Vous avez terminer ce scénario. "
 
 #: horizons/campaign/campaigneventhandler.py:147
 #: horizons/campaign/campaigneventhandler.py:157
@@ -75,31 +75,31 @@ msgstr "Échec lors de l'effacement de la sauvegarde !"
 
 #: horizons/gui/gui.py:276
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Date de sauvegarde inconnue\n"
 
 #: horizons/gui/gui.py:278
-#, fuzzy, python-format
+#, python-format
 msgid "Saved at %s\n"
-msgstr " Sauver la partie "
+msgstr "Sauvé le %s\n"
 
 #: horizons/gui/gui.py:279
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:281
 #, python-format
 msgid "Saved %d times\n"
-msgstr ""
+msgstr "Sauvé %d fois\n"
 
 #: horizons/gui/gui.py:283
-#, fuzzy, python-format
+#, python-format
 msgid "Saved %d time\n"
-msgstr "Sauver la partie"
+msgstr "Sauvé %d fois\n"
 
 #: horizons/gui/gui.py:289
-#, fuzzy, python-format
+#, python-format
 msgid "Savegame ver. %d"
-msgstr "Sauver la partie"
+msgstr "Sauvegarde vers. %d"
 
 #: horizons/gui/gui.py:291
 #, python-format
@@ -107,10 +107,12 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"AVERTISSEMENT : Vers. %(ver)d incompatible !\n"
+"Requiert vers. %(need)d !"
 
 #: horizons/gui/gui.py:294
 msgid "INCOMPATIBlE VERSION\n"
-msgstr ""
+msgstr "VERSION INCOMPATIBLE\n"
 
 #: horizons/gui/gui.py:328
 msgid "No saved games"
@@ -159,30 +161,28 @@ msgid "Players: "
 msgstr "Joueurs : "
 
 #: horizons/gui/modules/multiplayermenu.py:138
-#, fuzzy
 msgid "Creator: "
-msgstr "Erreur : "
+msgstr "Créateur : "
 
 #: horizons/gui/modules/singleplayermenu.py:53
 msgid "Warning"
 msgstr "Avertissement"
 
 #: horizons/gui/modules/singleplayermenu.py:54
-#, fuzzy
 msgid "The random map features is still in active development. "
-msgstr "Désolé, la fonction carte aléatoire n'est pas encore implémentée."
+msgstr "la fonction carte aléatoire est toujours activement développée. "
 
 #: horizons/gui/modules/singleplayermenu.py:84
 msgid "Difficulty: "
-msgstr ""
+msgstr "Difficulté : "
 
 #: horizons/gui/modules/singleplayermenu.py:85
 msgid "Author: "
-msgstr ""
+msgstr "Auteur : "
 
 #: horizons/gui/modules/singleplayermenu.py:86
 msgid "Description: "
-msgstr ""
+msgstr "Description : _"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
@@ -218,7 +218,7 @@ msgstr "Ressources encore nécessaires :"
 
 #: horizons/gui/tabs/buildtabs.py:35
 msgid "Increment"
-msgstr "Intervalle"
+msgstr "Stade"
 
 #: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:259
 msgid "Trade"
@@ -230,9 +230,8 @@ msgid "Inventory"
 msgstr "Inventaire"
 
 #: horizons/gui/tabs/inventorytab.py:66
-#, fuzzy
 msgid "Ship Inventory"
-msgstr "Inventaire"
+msgstr "Inventaire du navire"
 
 #: horizons/gui/tabs/marketplacetabs.py:72
 #: horizons/i18n/guitranslations.py:298
@@ -251,33 +250,30 @@ msgid "Overview"
 msgstr "Aperçu"
 
 #: horizons/gui/tabs/overviewtab.py:99
-#, fuzzy
 msgid "Branch Office \\n Overview"
-msgstr "Succursale"
+msgstr ""
+"Aperçu \n"
+" Succursale"
 
 #: horizons/gui/tabs/overviewtab.py:113 horizons/gui/tabs/overviewtab.py:155
-#, fuzzy
 msgid "Ship Overview"
-msgstr "Aperçu"
+msgstr "Aperçu du navire"
 
 #: horizons/gui/tabs/overviewtab.py:169
-#, fuzzy
 msgid "Production Overview"
-msgstr "Production"
+msgstr "Aperçu de la production"
 
 #: horizons/gui/tabs/overviewtab.py:171
 msgid "Destroy Building"
 msgstr "Destruction du bâtiment"
 
 #: horizons/gui/tabs/overviewtab.py:248
-#, fuzzy
 msgid "Settler Overview"
 msgstr "Aperçu des colons"
 
 #: horizons/gui/tabs/overviewtab.py:285
-#, fuzzy
 msgid "Market Place Overview"
-msgstr "Aperçu des colons"
+msgstr "Aperçu du marché"
 
 #: horizons/i18n/guitranslations.py:42
 msgid "Sailor Buildings"
@@ -541,9 +537,8 @@ msgid "Building overview"
 msgstr "Aperçu du bâtiment"
 
 #: horizons/i18n/guitranslations.py:87 horizons/i18n/guitranslations.py:289
-#, fuzzy
 msgid "Running costs"
-msgstr "Coûts de fonctionnement :"
+msgstr "Coûts de fonctionnement"
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Buy or sell resources"
@@ -607,7 +602,7 @@ msgstr "Mais c'est un lien mort, désolé."
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Cliquer pour changer le nom de votre colonie."
 
 #: horizons/i18n/guitranslations.py:112 horizons/i18n/guitranslations.py:122
 #: horizons/i18n/guitranslations.py:127 horizons/i18n/guitranslations.py:132
@@ -895,7 +890,7 @@ msgstr "NOUVELLE PARTIE MULTI-JOUEURS"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Apply:"
-msgstr ""
+msgstr "Appliquer :"
 
 #: horizons/i18n/guitranslations.py:215 horizons/i18n/guitranslations.py:265
 msgid "Main menu:"
@@ -1064,7 +1059,7 @@ msgstr "NOUVELLE PARTIE - SOLO"
 
 #: horizons/i18n/guitranslations.py:266
 msgid "Choose a map to play:"
-msgstr "Choisir une carte pour jouer:"
+msgstr "Choisir une carte pour jouer :"
 
 #: horizons/i18n/guitranslations.py:267
 msgid "Start game:"
@@ -1083,33 +1078,28 @@ msgid "Free play"
 msgstr "Partie libre"
 
 #: horizons/i18n/guitranslations.py:272
-#, fuzzy
 msgid "Food"
-msgstr "Nourriture :"
+msgstr "Nourriture"
 
 #: horizons/i18n/guitranslations.py:273
-#, fuzzy
 msgid "Tools"
-msgstr "outils"
+msgstr "Outils"
 
 #: horizons/i18n/guitranslations.py:274
-#, fuzzy
 msgid "Boards"
-msgstr "Planches :"
+msgstr "Planches"
 
 #: horizons/i18n/guitranslations.py:275
-#, fuzzy
 msgid "Bricks"
-msgstr "briques"
+msgstr "Briques"
 
 #: horizons/i18n/guitranslations.py:276
-#, fuzzy
 msgid "Textiles"
-msgstr "tissus"
+msgstr "Tissus"
 
 #: horizons/i18n/guitranslations.py:278
 msgid "Gold"
-msgstr ""
+msgstr "Or"
 
 #: horizons/i18n/guitranslations.py:280
 msgid "Building Overview"
@@ -1241,17 +1231,16 @@ msgid "Needed Resources:"
 msgstr "Ressources requises :"
 
 #: horizons/i18n/guitranslations.py:332 horizons/i18n/guitranslations.py:335
-#, fuzzy
 msgid "Happiness"
-msgstr "Bonheur:"
+msgstr "Satisfaction"
 
 #: horizons/i18n/guitranslations.py:333
 msgid "Residents"
-msgstr ""
+msgstr "Résidents"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Paid taxes"
-msgstr ""
+msgstr "Taxes payées"
 
 #: horizons/i18n/guitranslations.py:337
 msgid "Health:"
@@ -1263,11 +1252,13 @@ msgid ""
 "the name of this \n"
 "Ship."
 msgstr ""
+"Cliquer pour changer \n"
+"le nom de ce\n"
+"navire."
 
 #: horizons/i18n/guitranslations.py:339
-#, fuzzy
 msgid "Build Settlement"
-msgstr "Menu construction"
+msgstr "Construire la colonie"
 
 #: horizons/i18n/guitranslations.py:341
 msgid ""
@@ -1337,9 +1328,8 @@ msgstr "Aucunes sauvegardes rapides trouvées"
 
 #: horizons/mpsession.py:44 horizons/mpsession.py:51 horizons/mpsession.py:53
 #: horizons/mpsession.py:55 horizons/mpsession.py:57
-#, fuzzy
 msgid "Not possible"
-msgstr "Non possible"
+msgstr "Pas possible"
 
 #: horizons/mpsession.py:44
 msgid "You cannot change the speed of a multiplayer game"
@@ -1347,9 +1337,9 @@ msgstr "Vous ne pouvez changer la vitesse d'une partie multi-joueurs"
 
 #: horizons/mpsession.py:51 horizons/mpsession.py:53 horizons/mpsession.py:55
 #: horizons/mpsession.py:57
-#, fuzzy
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "Désolé, le mode joueurs multiples n'a pas encore été implémenté."
+msgstr ""
+"La sauvegarde/changement de parties multi-joueurs n'est pas possible encore"
 
 #: horizons/spsession.py:93
 msgid "Error"
@@ -1382,27 +1372,32 @@ msgstr "Négociant"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr ""
+msgstr "Permet la sortie du debug vers stderr et un fichier de log."
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Spécifier le chemin vers le répertoire racine de FIFE."
 
 #: run_uh.py:83
 msgid ""
 "Restores the default settings. Useful if Unknown Horizons crashes on startup "
 "due to misconfiguration."
 msgstr ""
+"Rétabli les paramètres par défaut. Utile si Unknown Horizons plante au "
+"lancement du fait d'une mauvaise configuration."
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr ""
+msgstr "Spécifier le serveur multi-joueur maitre alternatif."
 
 #: run_uh.py:87
 msgid ""
 "Specify network address to bind local network client to. This is useful if "
 "NAT holepunching is not working but you can forward a static port."
 msgstr ""
+"Spécifier l'adresse réseau à relier au client du réseau local. C'est utile "
+"si le holepunching du NAT ne fonctionne pas mais vous pouvez faire suivre un "
+"port statique."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
@@ -1410,9 +1405,8 @@ msgstr "Démarrer Unknown Horizons"
 
 # please don't translate anything in <tags> - thanks!
 #: run_uh.py:92
-#, fuzzy
 msgid "Starts <map>. <map> is the mapname."
-msgstr "Démarre <map>. <map> est le nom de fichier de la carte, sans '.sqlite'"
+msgstr "Démarre <map>. <map> est le nom de la carte."
 
 #: run_uh.py:94
 msgid "Starts a random map."
@@ -1420,20 +1414,17 @@ msgstr "Lance une carte aléatoire."
 
 # please don't translate anything in <tags> - thanks!
 #: run_uh.py:96
-#, fuzzy
 msgid "Starts <campaign>. <campaign> is the campaignname."
-msgstr "Démarre <map>. <map> est le nom de fichier de la carte, sans '.sqlite'"
+msgstr "Démarre <campaign>. <campaign> est le nom de la campagne."
 
 #: run_uh.py:98
-#, fuzzy
 msgid "Starts the development map without displaying the main menu."
-msgstr "Démarre la carte en développement sans afficher le menu principal"
+msgstr "Démarre la carte en développement sans afficher le menu principal."
 
 # please don't translate anything in <tags> - thanks!
 #: run_uh.py:100
-#, fuzzy
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr "Charge une partie sauvegardée. Spécifier le nom de la sauvegarde."
+msgstr "Charge une partie sauvegardée. <save> est le nom de la sauvegarde."
 
 #: run_uh.py:102
 msgid "Loads the last quicksave."
@@ -1446,51 +1437,56 @@ msgstr "Options de développement"
 #: run_uh.py:107
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
+"Écrire la sortie de debug vers un fichier de log, pas vers la console. "
+"Implique -d."
 
 #: run_uh.py:110
-#, fuzzy
 msgid "Enable logging for a certain logging module (for developing only)."
-msgstr "Active l'enregistrement pour un module de log en particulier."
+msgstr ""
+"Active l'enregistrement pour un module de log en particulier (pour le "
+"développement seulement)."
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr ""
+msgstr "Écrit le log vers <filename> au lieu du répertoire user UH"
 
 #: run_uh.py:114
 msgid "For internal use only."
 msgstr "Uniquement pour une utilisation interne."
 
 #: run_uh.py:116
-#, fuzzy
 msgid "Enable profiling (for developing only)."
-msgstr "Active l'enregistrement pour un module de log en particulier."
+msgstr "Active le profilage (pour le développement seulement)."
 
 #: run_uh.py:138
-#, fuzzy
 msgid "Unknown Horizons crashed."
-msgstr "Utilisation de Unknown Horizons :"
+msgstr "Unknown Horizons a planté."
 
 #: run_uh.py:140
 msgid "We are very sorry for this, and want to fix this error."
-msgstr ""
+msgstr "Nous sommes désolé pour ceci, et allons corriger cette erreur."
 
 #: run_uh.py:141
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
+"Afin de pouvoir faire cela, nous avons besoin des informations provenant du "
+"fichier de log :"
 
 #: run_uh.py:143
 msgid ""
 "Please give it to us via IRC or our forum, for both see unknown-horizons."
 "org ."
 msgstr ""
+"Veuillez nous les transmettre via IRC ou sur notre forum, pour les deux "
+"consultez unknown-horizons.org ."
 
 #: run_uh.py:198
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Merci d'utiliser Unknown Horizons"
+msgstr "Merci d'utiliser Unknown Horizons !"
 
 #: run_uh.py:274
 msgid "Failed to load fife:"
-msgstr "Echec lors du chargement de FIFE"
+msgstr "Échec lors du chargement de FIFE :"
 
 #: run_uh.py:344
 msgid "FIFE was not found."
@@ -1498,7 +1494,7 @@ msgstr "FIFE n'a pas été trouvé."
 
 #: sqlite/Building
 msgid "Boat Builder"
-msgstr "constructeur de bateaux"
+msgstr "Constructeur de bateaux"
 
 #: sqlite/Building
 msgid "Branch Office"
@@ -1506,15 +1502,15 @@ msgstr "Succursale"
 
 #: sqlite/Building
 msgid "Brickyard"
-msgstr ""
+msgstr "Briqueterie"
 
 #: sqlite/Building
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Gisement d'argile"
 
 #: sqlite/Building
 msgid "Clay Pit"
-msgstr ""
+msgstr "Carrière d'argile"
 
 # Building
 #: sqlite/Building
@@ -1551,7 +1547,7 @@ msgstr "Pré"
 
 #: sqlite/Building
 msgid "Pavilion"
-msgstr ""
+msgstr "Pavillon"
 
 # Building
 #: sqlite/Building
@@ -1571,18 +1567,16 @@ msgid "Storage Tent"
 msgstr "Tente de stockage"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Sugar Field"
-msgstr "Signal lumineux"
+msgstr "Champ de canne à sucre"
 
 #: sqlite/Building
 msgid "Tent"
 msgstr "Tente"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Tent_ruin"
-msgstr "Tente"
+msgstr "Tente abîmée"
 
 #: sqlite/Building
 msgid "Trail"
@@ -1590,7 +1584,7 @@ msgstr "Piste"
 
 #: sqlite/Building
 msgid "Village school"
-msgstr ""
+msgstr "École de village"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
@@ -1638,20 +1632,20 @@ msgstr "Un nouveau monde a été créé."
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
-msgstr ""
+msgstr "Un de vos colons n'a pas de marché dans son périmètre."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "La copie d'écran a été sauvée dans ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Certains de vos colons viennent juste de déménager."
 
 # Messages
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr "VOUS AVEZ GAGNE!!!"
+msgstr "VOUS AVEZ GAGNE !!!"
 
 # Messages
 #: sqlite/Messages
@@ -1665,7 +1659,7 @@ msgstr "Votre partie a été sauvée"
 # Messages
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr "Vos colonies ont atteints le niveau l ${level}."
+msgstr "Vos colons ont atteints le niveau ${level}."
 
 #: sqlite/Resources
 msgid "boards"
@@ -1677,20 +1671,19 @@ msgstr "briques"
 
 #: sqlite/Resources
 msgid "clay"
-msgstr ""
+msgstr "argile"
 
 #: sqlite/Resources
 msgid "coins"
 msgstr "pièces"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "community"
-msgstr "Compte"
+msgstr "communauté"
 
 #: sqlite/Resources
 msgid "education"
-msgstr "education"
+msgstr "éducation"
 
 # Resources
 #: sqlite/Resources
@@ -1708,7 +1701,7 @@ msgstr "herbe"
 # Resources
 #: sqlite/Resources
 msgid "happiness"
-msgstr "bonheur"
+msgstr "satisfaction"
 
 #: sqlite/Resources
 msgid "lamb wool"
@@ -1717,11 +1710,11 @@ msgstr "laine de mouton"
 # Resources
 #: sqlite/Resources
 msgid "potatoes"
-msgstr "Pommes de terre"
+msgstr "pommes de terre"
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr ""
+msgstr "argile brute"
 
 # Resources
 #: sqlite/Resources
@@ -1742,9 +1735,8 @@ msgid "tools"
 msgstr "outils"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "wild animal food 1"
-msgstr "viande de gibier"
+msgstr "nourriture 1 du gibier"
 
 #: sqlite/Resources
 msgid "wild animal meat"
@@ -1767,18 +1759,16 @@ msgid "pioneer"
 msgstr "pionier"
 
 #: sqlite/SettlerLevel
-#, fuzzy
 msgid "settler"
-msgstr "Canot"
+msgstr "colon"
 
 #: sqlite/Unit
 msgid "AnimalCarriage"
-msgstr ""
+msgstr "AnimalCarriage"
 
 #: sqlite/Unit
-#, fuzzy
 msgid "BuildingCollector"
-msgstr "Aperçu du bâtiment"
+msgstr "BuildingCollector"
 
 #: sqlite/Unit
 msgid "Deer"
@@ -1786,15 +1776,15 @@ msgstr "Cerf"
 
 #: sqlite/Unit
 msgid "FarmAnimalCollector"
-msgstr ""
+msgstr "FarmAnimalCollector"
 
 #: sqlite/Unit
 msgid "FarmerCollector"
-msgstr ""
+msgstr "FarmerCollector"
 
 #: sqlite/Unit
 msgid "FieldCollector"
-msgstr ""
+msgstr "FieldCollector"
 
 #: sqlite/Unit
 msgid "Fisher"
@@ -1802,35 +1792,31 @@ msgstr "Pêcheur"
 
 #: sqlite/Unit
 msgid "HunterCollector"
-msgstr ""
+msgstr "HunterCollector"
 
 #: sqlite/Unit
-#, fuzzy
 msgid "LumberjackCollector"
-msgstr "Camp de bûcherons"
+msgstr "LumberjackCollector"
 
 #: sqlite/Unit
 msgid "Pirate Ship"
 msgstr "Navire pirate"
 
 #: sqlite/Unit
-#, fuzzy
 msgid "SettlerCollector"
-msgstr "Aperçu des colons"
+msgstr "SettlerCollector"
 
 #: sqlite/Unit
 msgid "Sheep"
 msgstr "Mouton"
 
 #: sqlite/Unit
-#, fuzzy
 msgid "Ship"
-msgstr "Navire :"
+msgstr "Navire"
 
 #: sqlite/Unit
-#, fuzzy
 msgid "StorageCollector"
-msgstr "Tente de stockage"
+msgstr "StorageCollector"
 
 #~ msgid "24t"
 #~ msgstr "24t"

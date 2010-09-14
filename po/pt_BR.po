@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-10 18:09+0200\n"
-"PO-Revision-Date: 2010-08-30 01:55+0200\n"
+"PO-Revision-Date: 2010-09-11 02:05+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: ENCODING\n"
-"Language: pt_BR\n"
 "X-Generator: Pootle 1.1.0\n"
+"Language: pt_BR\n"
 "Generated-By: pygettext.py 1.5\n"
 
 #: horizons/campaign/actions.py:71
@@ -306,7 +306,6 @@ msgstr ""
 "habitantes."
 
 #: horizons/i18n/guitranslations.py:47
-#, fuzzy
 msgid ""
 "Storage: \n"
 "Extends stock \n"
@@ -329,7 +328,6 @@ msgstr ""
 "a coleta de bens."
 
 #: horizons/i18n/guitranslations.py:49
-#, fuzzy
 msgid ""
 "Main square: \n"
 "Supplies citizens \n"
@@ -340,7 +338,6 @@ msgstr ""
 "com bens."
 
 #: horizons/i18n/guitranslations.py:50
-#, fuzzy
 msgid ""
 "Pavilion: \n"
 "Fulfills religious \n"
@@ -351,7 +348,6 @@ msgstr ""
 "religiosas dos marilheiros."
 
 #: horizons/i18n/guitranslations.py:51
-#, fuzzy
 msgid ""
 "Signal fire: \n"
 "Allows the player \n"
@@ -359,12 +355,11 @@ msgid ""
 "the free trader."
 msgstr ""
 "Sinal de fumaça: \n"
-"Permite ao jogador\n"
-"realizar negócios com\n"
+"Permite ao jogador \n"
+"realizar negócios com \n"
 "um comerciante neutro."
 
 #: horizons/i18n/guitranslations.py:52
-#, fuzzy
 msgid ""
 "Lumberjack: \n"
 "Chops down trees \n"
@@ -381,7 +376,6 @@ msgid "Tree"
 msgstr "Árvore"
 
 #: horizons/i18n/guitranslations.py:54
-#, fuzzy
 msgid ""
 "Hunter: \n"
 "Hunts wild \n"
@@ -394,7 +388,6 @@ msgstr ""
 "providenciando comida."
 
 #: horizons/i18n/guitranslations.py:55
-#, fuzzy
 msgid ""
 "Fisherman: \n"
 "Fishes the sea, \n"
@@ -439,14 +432,13 @@ msgstr ""
 "em tecido."
 
 #: horizons/i18n/guitranslations.py:64
-#, fuzzy
 msgid ""
 "Clay Pit: \n"
 "Gets clay \n"
 "from deposit."
 msgstr ""
 "Fosso de argila: \n"
-" Obtém argila \n"
+"Obtém argila \n"
 "do depósito."
 
 #: horizons/i18n/guitranslations.py:65
@@ -460,7 +452,6 @@ msgstr ""
 "em tijolos."
 
 #: horizons/i18n/guitranslations.py:66
-#, fuzzy
 msgid ""
 "Potato Field: \n"
 "Yields food. \n"
@@ -471,15 +462,14 @@ msgstr ""
 "Requer fazenda."
 
 #: horizons/i18n/guitranslations.py:67
-#, fuzzy
 msgid ""
 "Pasture: \n"
 "Raises sheep. \n"
 "Produces wool. \n"
 "Needs a farm."
 msgstr ""
-"Pasto é usado \n"
-"para criação de ovelhas.\n"
+"Pasto é usado para \n"
+"criação de ovelhas. \n"
 "Produz lã. \n"
 "Requer fazenda."
 
@@ -1053,7 +1043,7 @@ msgstr "Aviso"
 
 #: horizons/i18n/guitranslations.py:253
 msgid "Autosave interval:"
-msgstr "Intervalo para o autosave"
+msgstr "Intervalo para o autosave:"
 
 #: horizons/i18n/guitranslations.py:254
 msgid "Number of autosaves:"
@@ -1066,7 +1056,7 @@ msgstr "Número de salvamentos rápidos:"
 #: horizons/i18n/guitranslations.py:256
 #, fuzzy
 msgid "Language"
-msgstr "Linguagem:"
+msgstr "Linguagem"
 
 #: horizons/i18n/guitranslations.py:257
 #, fuzzy
@@ -1281,7 +1271,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:337
 msgid "Health:"
-msgstr "Saúde: "
+msgstr "Saúde:"
 
 #: horizons/i18n/guitranslations.py:338
 msgid ""
