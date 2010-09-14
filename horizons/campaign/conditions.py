@@ -31,8 +31,11 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_gold_greater', 'player_gold_less', 'settlement_balance_greater',
                   'building_num_of_type_greater', 'settlement_inhabitants_greater',
                   'player_balance_greater', 'player_inhabitants_greater',
-                  'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater', 'player_total_earnings_greater','time_passed', \
-                  'var_eq', 'var_gt', 'var_lt', 'building_connected_to_branch')
+                  'player_res_stored_greater', 'player_res_stored_less', 'settlement_res_stored_greater',\
+                  'player_total_earnings_greater','time_passed', \
+                  'var_eq', 'var_gt', 'var_lt',
+                  'buildings_connected_to_branch_gt', 'buildings_connected_to_branch_lt',\
+                  'buildings_connected_to_building_gt', 'buildings_connected_to_building_lt')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -50,7 +53,10 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.settlement_res_stored_greater,
                                 CONDITIONS.time_passed,
                                 CONDITIONS.player_total_earnings_greater,
-                                CONDITIONS.building_connected_to_branch)
+                                CONDITIONS.buildings_connected_to_branch_gt,
+                                CONDITIONS.buildings_connected_to_branch_lt,
+                                CONDITIONS.buildings_connected_to_building_gt,
+                                CONDITIONS.buildings_connected_to_building_lt)
 
 ###
 # Campaign Conditions
@@ -118,6 +124,28 @@ def player_total_earnings_greater(session, total):
 		total_earning += settlement.total_earnings
 	return total_earning > total
 
+def buildings_connected_to_branch_gt(session, building_class, number):
+	"""Checks whether more than number of building_class type buildings are
+	connected to a branch office or storage."""
+	return (_building_connected_to_any_of(session, building_class, \
+	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+
+def buildings_connected_to_branch_lt(session, building_class, number):
+	"""Checks whether less than number of building_class type buildings are
+	connected to a branch office or storage."""
+	return (_building_connected_to_any_of(session, building_class, \
+	        BUILDINGS.BRANCH_OFFICE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+
+def buildings_connected_to_building_gt(session, building_class, class2, number):
+	"""Checks whether more than number of building_class type buildings are
+	connected to any building of type class2."""
+	return (_building_connected_to_any_of(session, building_class, class2) > number )
+
+def buildings_connected_to_building_lt(session, building_class, class2, number):
+	"""Checks whether less than number of building_class type buildings are
+	connected to any building of type class2."""
+	return (_building_connected_to_any_of(session, building_class, class2) < number )
+
 def time_passed(session, secs):
 	"""Returns whether at least secs seconds have passed since start."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
@@ -146,22 +174,29 @@ def _get_player_settlements(session):
 def _get_scenario_vars(session):
 	return session.campaign_eventhandler._scenario_variables
 
-
-def building_connected_to_branch(session, building_class, number):
-	"""Checks whether number of building_class type buildings are connected to
-	the brnach office."""
+def _building_connected_to_any_of(session, building_class, *classes):
+	"""Returns the exact amount of buildings of type building_class that are
+	connected to any building of a class in classes. Counts all settlements."""
 	building_to_check = []
-	branch = None
+	check_connection = []
 	for settlement in _get_player_settlements(session):
 		for building in settlement.buildings:
 			if building.id == building_class:
 				building_to_check.append(building)
-			elif building.id == BUILDINGS.BRANCH_OFFICE_CLASS:
-				branch = building
+			else:
+				for b_class in classes:
+					if building.id == b_class:
+						check_connection.append(building)
+						break
 	found_connected = 0
 	for building in building_to_check:
-		if StaticPather.get_path_on_roads(branch.island, building, branch) is not None:
+		for check in check_connection:
+			if not StaticPather.get_path_on_roads(building.island, building, check): continue
 			found_connected += 1
-		if found_connected == number:
-			return True
-	return False
+			break
+	return found_connected
+
+def _building_connected_to_all_of(session, building_class, *classes):
+	"""Returns the exact amount of buildings of type building_class that are
+	connected to any building of each class in classes. Counts all settlements."""
+	#TODO

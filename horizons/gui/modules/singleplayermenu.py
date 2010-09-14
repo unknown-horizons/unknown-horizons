@@ -133,4 +133,4 @@ class SingleplayerMenu(object):
 		print "Error: ", unicode(str(exception))
 		self.show_popup(_("Invalid scenario file"), \
 		                _("The selected file is not a valid scenario file.\nError message: ") + \
-		                unicode(str(exception))) + _("\nPlease report this to the author.")
+		                unicode(str(exception)) + _("\nPlease report this to the author."))
