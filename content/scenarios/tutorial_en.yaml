@@ -105,8 +105,6 @@ events:
   conditions:
    - type: buildings_connected_to_building_gt
      arguments: [3,4,0]
-   - type: buildings_connected_to_building_lt
-     arguments: [3,4,2]
    - type: var_gt
      arguments: ["tutStepDone", 27]
    - {type: var_lt, arguments: ["tutStepDone", 31]}
