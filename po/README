@@ -1,6 +1,9 @@
 README
 ======
 
+IMPORTANT: Don't use these .po files for translations, only use the .po files
+           in pootle!
+
 All translations are handled through pootle [1] and the .po files in this
 directory should only be touched when syncing with pootle (which should happen
 regularly so users of the Git repository can test the translations).

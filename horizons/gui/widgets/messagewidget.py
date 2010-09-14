@@ -82,7 +82,7 @@ class MessageWidget(LivingObject):
 		self.active_messages.insert(0, message)
 
 		if len(self.active_messages) > self.MAX_MESSAGES:
-			self.active_messages.remove(self.active_messages[4])
+			self.active_messages.remove(self.active_messages[self.MAX_MESSAGES])
 
 		if sound:
 			horizons.main.fife.play_sound('speech', sound)
