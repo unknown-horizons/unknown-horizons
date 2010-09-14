@@ -68,18 +68,22 @@ class VERSION:
 
 ## WORLD
 class UNITS:
+	# ./development/print_db_data.py unit
 	PLAYER_SHIP_CLASS          = 1000001
 	BUILDING_COLLECTOR_CLASS   = 1000002
+	PIRATE_SHIP_CLASS          = 1000005
 	TRADER_SHIP_CLASS          = 1000006
 	WILD_ANIMAL_CLASS          = 1000013
-	PIRATE_SHIP_CLASS          = 1000005
 
 class BUILDINGS:
+	# ./development/print_db_data.py building
 	BRANCH_OFFICE_CLASS = 1
+	STORAGE_CLASS = 2
+	RESIDENTIAL_CLASS = 3
 	MARKET_PLACE_CLASS = 4
+	SIGNAL_FIRE_CLASS = 6
 	SETTLER_RUIN_CLASS = 10
 	TREE_CLASS = 17
-	SIGNAL_FIRE_CLASS = 6
 	CLAY_DEPOSIT_CLASS = 23
 
 
@@ -135,7 +139,7 @@ class GAME:
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
-	LOGBOOK_DEFAULT_DELAY = 8 # delay between condition fulfilled and logbook popping up
+	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
 
 class TRADER:
 	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
