@@ -277,10 +277,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			else:
 				details_label.text += _("Saved at %s\n") % \
 										time.strftime(_("%H:%M, %A, %B %d"), time.localtime(savegame_info['timestamp']))
-			if savegame_info['savecounter'] > 1:
-				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
+			if savegame_info['savecounter'] == 1:
+				details_label.text += _("Saved 1 time\n")
 			else:
-				details_label.text += _("Saved %d time\n") % savegame_info['savecounter']
+				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
 			details_label.stylize('book')
 
 			from horizons.constants import VERSION
