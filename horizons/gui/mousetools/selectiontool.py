@@ -117,7 +117,12 @@ class SelectionTool(NavigationTool):
 			instances = self.session.view.cam.getMatchingInstances(\
 				fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
 			for i in instances:
-				instance = WorldObject.get_object_by_id(int(i.getId()))
+				# Check id, can be '' if instance is created and clicked on before
+				# actual game representation class is created (network play)
+				id = i.getId()
+				if id == '':
+					continue
+				instance = WorldObject.get_object_by_id(int(id))
 				if hasattr(instance, 'select'):
 					selectable.append(instance)
 			if len(selectable) > 1:
