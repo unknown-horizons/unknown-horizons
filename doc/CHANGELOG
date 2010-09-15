@@ -8,8 +8,10 @@ Unknown Horizons
   * New: start german docbook manual
   * New: introduced szenarios and captains log
   * New: Updated a bunch of documentation and updated the incode tutorial
-  * New: Implemented support for changing building gfx (any building) on increment upgrade. (autoupgrade).
-  * New: Tried to make storage collectors more intelligent by making them prefer pickups at buildings, whose inventory is full.
+  * New: Implemented support for changing building gfx (any building) on
+         increment upgrade. (autoupgrade).
+  * New: Tried to make storage collectors more intelligent by making them
+         prefer pickups at buildings, whose inventory is full.
   * New: Add --version option to run_uh.py
   * New: applied some optimisation to the buildingtool
   * New: Expanded UhDbReader
@@ -21,19 +23,28 @@ Unknown Horizons
   * New: inhabitant tab of the marketplace
   * New: Included system info in debug output
   * New: multiplayer
-  * New: Print to log why systemwide fife can't be imported, if so. (usually, it will say 'not found', but in some cases, there could be other import issues, where the error message can be of some help)
-  * New: Added commandline flag to restore the default settings: --restore-settings
-  * New: Pressing enter in a change name dialog (for ship or settlement) now acts as submit button.
+  * New: Print to log why systemwide fife can't be imported, if so. (usually,
+         it will say 'not found', but in some cases, there could be other
+         import issues, where the error message can be of some help)
+  * New: Added commandline flag to restore the default settings:
+         --restore-settings
+  * New: Pressing enter in a change name dialog (for ship or settlement) now
+         acts as submit button.
   * New: Applied patch by Yeya to improve random map generation.
-  * New: Game will now create a settings.xml file on first program launch containing the new settings, it's now used instead of the old sqlite database
+  * New: Game will now create a settings.xml file on first program launch
+         containing the new settings, it's now used instead of the old sqlite
+         database
   * New: Added community ressource as requirement for settlers
   * New: Marketplace now produces the community resource
-  * New: add --mp-master commandline option (Syntax: --mp-master=ip:port or --mp-master=ip (+ default port))
+  * New: add --mp-master commandline option (Syntax: --mp-master=ip:port or
+         --mp-master=ip (+ default port))
   * New: Extend .bat to use debug with '--debug', default is still non debug
   * New: Included system info in debug output
   * New: better description for --mp-bind
-  * New: Added commandline flag to restore the default settings: --restore-settings
-  * New: don't import fife from global python module path if --fife-path is set
+  * New: Added commandline flag to restore the default settings:
+         --restore-settings
+  * New: don't import fife from global python module path if --fife-path is
+         set
   * New: (savegame revisioning patch) closed by dario
   * New: updated help to include chat hotkey
   * New: create new traders when there are many settlements
@@ -50,15 +61,18 @@ Unknown Horizons
   * New: F9 in mainmenu will quickload now
   * New: Increase generator for randommaps
   * New: bash based uh-builder script
-  * New: Add important screen resolutions 
+  * New: Add important screen resolutions
   * Change: Tents are now in lvl 1 when built
   * Change: Improve autoscroll, should increase the performance
-  * Change: Increase the deep water tile size by a factor of 10. Should improve performance quite a bit, especially when above water
+  * Change: Increase the deep water tile size by a factor of 10. Should
+            improve performance quite a bit, especially when above water
   * Change: Removed Settings class in favor of the new fife_settings module
   * Change: All settings are now managed by the new extension
-  * Change: Some settings have been moved to the constants, like View and Tick settings
+  * Change: Some settings have been moved to the constants, like View and Tick
+            settings
   * Change: Made textiles a level 2 requirement instead of level 1
-  * Change: moved farm, weaver, pasture, potatofield to 2nd increment. - rearranged ...
+  * Change: moved farm, weaver, pasture, potatofield to 2nd increment. -
+            rearranged ...
   * Change: Rename cannonboat to huker
   * Change: Refactored engine sound management code
   * Change: Toggling sound on/off no longer requires reboot
@@ -66,17 +80,20 @@ Unknown Horizons
   * Change: make UH version string using git revisions
   * Fix: Workaround: Disabled middle mouse button scrolling
   * Fix: Added layer for fields fixes #521
-  * Fix: fixed segfault caused by quitting UH while preloading thread is active
+  * Fix: fixed segfault caused by quitting UH while preloading thread is
+         active
   * Fix: Empty city or ship name make problems
   * Fix: added patch from cubathy, Bug when switching language
   * Fix: Fixed bug that allowed you to build fields over each other
-  * Fix: Fixed setup.py install the unknown-horizons executable into /usr/games
+  * Fix: Fixed setup.py install the unknown-horizons executable into
+         /usr/games
   * Fix: The attached patch avoids that boats are created at the same place
   * Fix: Stupid hack to make UH work with umlauts in the user dir on windows
   * Fix: FIXED by FIFE :D  (Doubleclick in menu to confirm)
   * Fix: Game autoscrolls into corner
   * Fix: crash by removing storage tent
-  * Fix: Don't crash when loading corrupted save files. Instead give a nice error to retry.
+  * Fix: Don't crash when loading corrupted save files. Instead give a nice
+         error to retry.
 
 * Graphics and GUI
   * New: Added lumberjack building for pioneer increment
@@ -100,22 +117,22 @@ Unknown Horizons
   * Change: New boat builder tab
   * Change: Replaced as_pirate0 with new gfx set (armed sloop)
   * Change: Updated several build menu icons
-  * Change: Slightly re-ordered settings menu 
+  * Change: Slightly re-ordered settings menu
 
 * Sound
   * New: Theme by novatlan
 
 * Translations
-  * New: Added Catalan; Valencian translation 
+  * New: Added Catalan; Valencian translation
   * New: Added Portuguese (Brazil) translation
-  * New: Added Spanish; Castilian translation 
+  * New: Added Spanish; Castilian translation
   * New: Added Estonian translation
   * New: Added Estonian translation
   * New: Added Italian translation
   * Change: Updated English translation
   * Change: Updated German translation
-  * Change: Updated Polish translation 
-  * Change: Updated French translation 
+  * Change: Updated Polish translation
+  * Change: Updated French translation
 
 ... and a lot more smaller bugfixes.
 
