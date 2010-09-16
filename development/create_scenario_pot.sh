@@ -27,7 +27,16 @@
 python << END > po/tutorial_en.py
 import yaml
 
+def prep(x):
+	return x.replace("\n", r'\n').replace('"', r'\"')
+def write(x):
+	print ('_("%s")' % x).encode('utf-8')
+
 scenario = yaml.load(open('content/scenarios/tutorial_en.yaml', 'r'))
+write(prep(scenario['difficulty']))
+write(prep(scenario['author']))
+write(prep(scenario['description']))
+
 for event in scenario['events']:
 	for action in event['actions']:
 		if action['type'] not in ('message', 'logbook', 'logbook_w'):
@@ -38,7 +47,7 @@ for event in scenario['events']:
 			argument = argument.replace("\n", r'\n').replace('"', r'\"')
 			if not argument:
 				continue
-			print ('_("%s")' % argument).encode('utf-8')
+			write(argument)
 END
 
 xgettext --output-dir=po --output=tutorial.pot \
