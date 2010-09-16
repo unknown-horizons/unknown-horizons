@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-10 18:09+0200\n"
-"PO-Revision-Date: 2010-09-17 00:09+0200\n"
+"PO-Revision-Date: 2010-09-17 00:26+0200\n"
 "Last-Translator: Audun Pers <pers87@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -941,27 +941,25 @@ msgid "Refresh list:"
 msgstr "Oppdater liste:"
 
 #: horizons/i18n/guitranslations.py:218
-#, fuzzy
 msgid "Join game"
-msgstr "Laste spillet"
+msgstr "Delta i spill"
 
 #: horizons/i18n/guitranslations.py:219
 #, fuzzy
 msgid "Apply the new name"
-msgstr "Skriv filnavn:"
+msgstr "Utfør"
 
 #: horizons/i18n/guitranslations.py:220
-#, fuzzy
 msgid "Create a new game"
-msgstr "Skriv filnavn:"
+msgstr "Lag nytt spill"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Avslutt og gå til hovedmeny"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "Oppdater liste over aktive spill"
 
 #: horizons/i18n/guitranslations.py:223
 #, fuzzy
