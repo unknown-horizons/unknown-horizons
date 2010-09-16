@@ -1,4 +1,5 @@
 ;Template file for generating NSIS .nsi file
+;NOTE: Add Python, PyYAML and OpenAL installers under "depends" in root directory to create offline installer.
 ;Defines
 !define PRODUCT_NAME "Unknown Horizons"
 !define PRODUCT_VERSION "%s"
@@ -89,7 +90,7 @@ Section "OpenAL" OpenAL_Sec
 downloadOpenAL:
 	IfFileExists "$TEMP\oalinst.exe" installOpenAL
 
-	NSISdl::download http://connect.creativelabs.com/openal/Downloads/oalinst.zip $TEMP\oalinst.zip
+	NSISdl::download http://connect.creativelabs.com/openal/Downloads/oalinst.zip "$TEMP\oalinst.zip"
 	Pop $R0
 	StrCmp $R0 "success" +3
 		MessageBox MB_OK "Download failed: $R0"
@@ -108,12 +109,58 @@ installOpenAL:
 
 SectionEnd
 
+Section "Python" Python_Sec
+	SetOutPath "$TEMP"
+	File /nonfatal "depends\python-2.6.6.msi"
+	Goto downloadPython
+
+downloadPython:
+	IfFileExists "$TEMP\python-2.6.6.msi" installPython
+
+	NSISdl::download http://www.python.org/ftp/python/2.6.6/python-2.6.6.msi "$TEMP\python-2.6.6.msi"
+	Pop $R0
+	StrCmp $R0 "success" +3
+		MessageBox MB_OK "Download failed: $R0"
+		Quit
+	Goto installPython
+
+installPython:
+	ExecWait '"msiexec" /i "$TEMP\python-2.6.6.msi" /passive'
+	Delete "$TEMP\python-2.6.6.msi"
+
+SectionEnd
+
+Section "PyYAML" PyYAML_Sec
+	SetOutPath "$TEMP"
+	File /nonfatal "depends\PyYAML-3.09.win32-py2.6.exe"
+	Goto downloadPyYAML
+
+downloadPyYAML:
+	IfFileExists "$TEMP\PyYAML-3.09.win32-py2.6.exe" installPyYAML
+
+	NSISdl::download http://pyyaml.org/download/pyyaml/PyYAML-3.09.win32-py2.6.exe "$TEMP\PyYAML-3.09.win32-py2.6.exe"
+	Pop $R0
+	StrCmp $R0 "success" +3
+		MessageBox MB_OK "Download failed: $R0"
+		Quit
+	Goto installPyYAML
+
+installPyYAML:
+	ExecWait '$TEMP\PyYAML-3.09.win32-py2.6.exe'
+	Delete "$TEMP\PyYAML-3.09.win32-py2.6.exe"
+
+SectionEnd
+
 LangString DESC_uh ${LANG_ENGLISH} "Unknown Horizons - The game itself including FIFE. (Required)"
 LangString DESC_OpenAL ${LANG_ENGLISH} "OpenAL: Necessary for music and sound! Choose this one if it isn't installed already."
+LangString DESC_Python ${LANG_ENGLISH} "Python: Necessary to play UH! Choose this one if it isn't installed already."
+LangString DESC_PyYAML ${LANG_ENGLISH} "PyYAML: Necessary to play UH! Choose this one if it isn't installed already. Needs Python."
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 	!insertmacro MUI_DESCRIPTION_TEXT ${uh} $(DESC_uh)
 	!insertmacro MUI_DESCRIPTION_TEXT ${OpenAL_Sec} $(DESC_OpenAL)
+	!insertmacro MUI_DESCRIPTION_TEXT ${Python_Sec} $(DESC_Python)
+	!insertmacro MUI_DESCRIPTION_TEXT ${PyYAML_Sec} $(DESC_PyYAML)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Function .onInit
@@ -145,8 +192,15 @@ done:
 	${If} $3 != ""
 		!insertmacro UnselectSection ${OpenAL_Sec}
 	${EndIf}
+	!insertmacro UnselectSection ${Python_Sec}
+	!insertmacro UnselectSection ${PyYAML_Sec}
 	SetOutPath $TEMP
 	File "content\gfx\inst_splash.bmp"
 	advsplash::show 1300 500 400 0xff00ff "$TEMP\inst_splash"
 	Delete "$TEMP\inst_splash.bmp"
+FunctionEnd
+
+Function un.onUninstSuccess
+	MessageBox MB_ICONINFORMATION|MB_OK "Please note: Python, PyYAML and OpenAL have to be removed manually if you don't need them anymore."
+	MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) has been successfully uninstalled."
 FunctionEnd
