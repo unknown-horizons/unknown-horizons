@@ -25,9 +25,16 @@ import os
 
 def find_enet_module():
   type = platform.system().lower()
-  arch = platform.machine()
+
+  arch = platform.architecture()[0]
+  if arch == '32bit':
+    arch = '86'
+  elif arch == '64bit':
+    arch = '64'
+  else:
+    assert False, "Failed to detect system architecture!"
   version = platform.python_version_tuple()
-  dir = "%s-x%s" % (type, arch[-2:])
+  dir = "%s-x%s" % (type, arch)
 
   dirpy = "%s-%s%s" % (dir, version[0], version[1])
   if os.path.exists(os.path.join(os.path.dirname(__file__), dirpy)):
