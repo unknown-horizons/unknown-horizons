@@ -1,6 +1,10 @@
 #!/bin/sh
 
 # Extract strings from tutorial_en.yaml for easy translation in pootle.
+#
+# If a path is given, it's assumed to be the path to the translation files
+# from pootle for the tutorial, and the .po files in there are used to
+# generate translated tutorials in horizons/scenarios/.
 
 # ###################################################
 # Copyright (C) 2010 The Unknown Horizons Team
@@ -56,3 +60,49 @@ xgettext --output-dir=po --output=tutorial.pot \
          --msgid-bugs-address=team@unknown-horizons.org \
          po/tutorial_en.py
 rm po/tutorial_en.py
+
+
+if [ "x$1" = x ]; then
+    exit
+fi
+
+# Create .mo files and extract the translations using gettext.
+for path in "$1"/*.po; do
+    lang=`basename "$path" | sed 's,tutorial-,,;s,.po,,'`
+    mo=po/mo/$lang/LC_MESSAGES
+    echo $lang:
+    mkdir -p $mo && msgfmt --statistics $path -o $mo/tutorial.mo
+
+    python << END > content/scenarios/tutorial_$lang.yaml
+import yaml
+import gettext
+
+translation = gettext.translation('tutorial', 'po/mo', ['$lang'])
+translation.install(unicode=True)
+
+def translate(x):
+	if isinstance(x, int) or not x:
+		return x
+	return _(x)
+
+scenario = yaml.load(open('content/scenarios/tutorial_en.yaml', 'r'))
+for i, event in enumerate(scenario['events']):
+	for j, action in enumerate(event['actions']):
+		if action['type'] not in ('message', 'logbook', 'logbook_w'):
+			continue
+		action['arguments'] = map(translate, action['arguments'])
+		event['actions'][j] = action
+	scenario['events'][i] = event
+
+print """
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle.
+"""
+print yaml.dump(scenario, line_break=u'\n')
+END
+
+done
+
+rm -rf po/mo
