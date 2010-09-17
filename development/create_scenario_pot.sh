@@ -86,6 +86,11 @@ def translate(x):
 	return _(x)
 
 scenario = yaml.load(open('content/scenarios/tutorial_en.yaml', 'r'))
+
+scenario['difficulty'] = _(scenario['difficulty'])
+scenario['author'] = _(scenario['author'])
+scenario['description'] = _(scenario['description'])
+
 for i, event in enumerate(scenario['events']):
 	for j, action in enumerate(event['actions']):
 		if action['type'] not in ('message', 'logbook', 'logbook_w'):
