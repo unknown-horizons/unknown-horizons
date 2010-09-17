@@ -351,11 +351,12 @@ class BuildingTool(NavigationTool):
 				cmd.execute(self.session)
 			else:
 				# check whether to issue a missing res notification
+				# we need the localized resource name here
 				if building in self.buildings_missing_resources:
 					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
 					self.session.ingame_gui.message_widget.add(building.position.origin.x, \
 					                                           building.position.origin.y, \
-					                                           'NEED_MORE_RES', {'resource' : res_name})
+					                                           'NEED_MORE_RES', {'resource' : _(res_name)})
 
 		if built:
 			PlaySound("build").execute(self.session, True)
