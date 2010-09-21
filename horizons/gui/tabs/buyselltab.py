@@ -90,6 +90,9 @@ class BuySellTab(TabInterface):
 			slot.action = 'buy'
 			slot.res = None
 			slot.findChild(name='button').capture(pychan.tools.callbackWithArguments(self.show_resource_menu, num))
+			slot.findChild(name='button').up_image = self.dummy_icon_path
+			slot.findChild(name='button').down_image = self.dummy_icon_path
+			slot.findChild(name='button').hover_image = self.dummy_icon_path
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.setScaleStart(0.0)
