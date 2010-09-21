@@ -30,6 +30,7 @@ from horizons.command.uioptions import AddToBuyList
 from horizons.command.uioptions import AddToSellList
 from horizons.command.uioptions import RemoveFromBuyList
 from horizons.command.uioptions import RemoveFromSellList
+from horizons.gui.widgets.tooltip import TooltipButton
 
 class BuySellTab(TabInterface):
 
@@ -140,6 +141,7 @@ class BuySellTab(TabInterface):
 		fillbar = slot.findChild(name="fillbar")
 		if res_id == 0:
 			button.up_image, button.down_image, button.hover_image = [ self.dummy_icon_path ] * 3
+			button.tooltip = u""
 			slot.findChild(name="amount").text = u""
 			slot.res = None
 			slider.capture(None)
@@ -151,6 +153,7 @@ class BuySellTab(TabInterface):
 			button.up_image = icons[0]
 			button.down_image = icons[0]
 			button.hover_image = icons[1] # disabled icon
+			button.tooltip = horizons.main.db.get_res_name(res_id)
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
@@ -239,8 +242,12 @@ class BuySellTab(TabInterface):
 		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
-			button = pychan.widgets.ImageButton(size=(50, 50))
+			button = TooltipButton(size=(50, 50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			if res_id == 0:
+				button.tooltip = u""
+			else:
+				button.tooltip = horizons.main.db.get_res_name(res_id)
 			button.capture(pychan.tools.callbackWithArguments(self.add_resource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:

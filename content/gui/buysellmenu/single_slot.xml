@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container size="60,50" opaque="0" >
 	<Icon name="icon" image="content/gui/images/background/inv_bg.png" />
-	<ImageButton up_image="content/gui/images/background/inv_bg.png" name="button" />
+	<TooltipButton up_image="content/gui/images/background/inv_bg.png" name="button" />
 	<ImageButton name="buysell" position="3,3"
 		up_image="content/gui/images/icons/hud/main/buysell_buy.png" 
 		hover_image="content/gui/images/icons/hud/main/buysell_buy.png" />
