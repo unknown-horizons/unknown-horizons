@@ -12,6 +12,7 @@
 	<Label name="headline" position="32,7" text="Buy or sell resources" />
 
 	<Icon image="content/gui/images/background/hr.png" position="20,105" />
+	<!-- Replaced with the buy/sell boxes. -->
 	<HBox size="250, 100" position="23,47" name="content" padding="10"/>
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
