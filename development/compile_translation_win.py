@@ -23,6 +23,14 @@
 import os
 import glob
 
+if os.getcwd().rpartition('\\')[2] != 'development':
+	print 'Please run the script from the "development" directory!'
+	quit()
+
+if not os.path.isdir('../po/'):
+	print 'The translations directory does not exist! Quiting..'
+	quit()
+
 os.chdir('..')
 files = glob.glob('po/*.po')
 for x in files:
@@ -31,5 +39,9 @@ for x in files:
 	dir = os.path.join('build', 'mo', dir, 'LC_MESSAGES', '')
 	if not os.path.isdir(dir):
 		os.makedirs(dir)
+	print 'Generating translations for', file
 	command = 'msgfmt ' + x + ' -o ' + dir + 'unknownhorizons.mo'
 	os.system(command)
+
+print '\n== Completed generating translations ==\n'
+raw_input('Press any key to exit...')
