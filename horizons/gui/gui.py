@@ -30,7 +30,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
-from horizons.gui.utility import center_widget, LazyWidgetsDict
+from horizons.gui.utility import adjust_widget_black_background, center_widget, LazyWidgetsDict
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 
@@ -83,7 +83,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'loadgameButton' : horizons.main.load_game,
 			'dead_link'      : self.on_chime
 		})
+
 		self.on_escape = self.show_quit
+
+		adjust_widget_black_background(self.widgets['mainmenu'])
 
 	def show_quit(self):
 		"""Shows the quit dialog """
@@ -162,7 +165,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_pause(self):
 		"""
 		Show Pause menu
-		"""
+		"""		
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
 			'closeButton'    : self.quit_session,
@@ -172,6 +175,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
 			'dead_link'      : self.on_chime
 		})
+		
+		adjust_widget_black_background(self.widgets['gamemenu'])
+		
 		self.session.speed_pause()
 		self.on_escape = self.return_to_game
 
