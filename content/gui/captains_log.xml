@@ -16,11 +16,13 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 	<Spacer />
 
 	<HBox max_size="80,36">
-		<TooltipButton name="backwardButton" tooltip="Read prev. entries"
+		<ToggleImageButton name="backwardButton" tooltip="Read prev. entries"
+			inactive_image ="content/gui/images/background/parrow_left_bw.png"
 			up_image="content/gui/images/background/parrow_left.png"
 			hover_image="content/gui/images/background/parrow_left_h.png"
 			down_image="content/gui/images/background/parrow_left_d.png" />
-		<TooltipButton name="forwardButton" tooltip="Read next entries"
+		<ToggleImageButton name="forwardButton" tooltip="Read next entries"
+			inactive_image ="content/gui/images/background/parrow_right_bw.png"
 			up_image="content/gui/images/background/parrow_right.png"
 			hover_image="content/gui/images/background/parrow_right_h.png"
 			down_image="content/gui/images/background/parrow_right_d.png" />
