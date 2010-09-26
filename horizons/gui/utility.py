@@ -27,7 +27,7 @@ def create_resource_icon(res_id, db):
 	"""Creates a pychan icon for a resource.
 	@param res_id:
 	@param db: dbreader for main db"""
-	return TooltipIcon(tooltip=db.get_res_name(res_id).capitalize(), \
+	return TooltipIcon(tooltip=db.get_res_name(res_id), \
 	                   image=db.get_res_icon(res_id)[0])
 
 def center_widget(widget):
