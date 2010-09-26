@@ -34,7 +34,7 @@ class BoatbuilderTab(OverviewTab):
 			widget = 'tab_widget/boatbuilder/boatbuilder.xml',
 			instance = instance
 		)
-		self.tooltip = _("Boat Builder \\n Overview")
+		self.tooltip = _("Boat Builder Overview")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -60,7 +60,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
 			container_active.findChild(name="BB_builtship_label").text = u"Fishing boat"
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher \nStorage: 1 slot of 1t \nSpeed: average \nHealth: 40"
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher Storage: 1 slot of 1t Speed: average Health: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")

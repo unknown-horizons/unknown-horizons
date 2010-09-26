@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import textwrap
 from fife import fife
 from fife.extensions import pychan
 import horizons.main
@@ -58,8 +59,18 @@ class _Tooltip(object):
 
 	def show_tooltip(self):
 		if self.tooltip != "":
-			translated_tooltip = _(self.tooltip.replace(r'\n', '\n'))
-			line_count = len(translated_tooltip.splitlines())-1
+			translated_tooltip = _(self.tooltip)
+			tooltip = ""
+			wrapped_text = textwrap.wrap(translated_tooltip, 18)
+			if translated_tooltip.find(r'\n') != -1:
+				temp_list =[]
+				for x in wrapped_text:
+					wrapped_item = x.replace(r'\n', '\n').strip('\n') 
+					temp_list.append(wrapped_item)
+				tooltip = '\n'.join(temp_list)
+			else:
+				tooltip = '\n'.join(wrapped_text)
+			line_count = len(tooltip.splitlines())-1
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
@@ -70,8 +81,8 @@ class _Tooltip(object):
 			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0], top_image.position[1] + 17 + 17 * (line_count)))
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
-			label = pychan.widgets.Label(text=u"", position=(16, 8))
-			label.text = translated_tooltip
+			label = pychan.widgets.Label(text=u"", position=(10, 8))
+			label.text = tooltip
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
@@ -92,7 +103,6 @@ class TooltipIcon(_Tooltip, pychan.widgets.Icon):
 	<TooltipIcon tooltip=""/>
 	Used to display tooltip on hover on icons.
 	Attributes same as Icon widget with addition of tooltip="text string to display"
-	Use \\n for newline.
 	"""
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
@@ -104,7 +114,6 @@ class TooltipButton(_Tooltip, pychan.widgets.ImageButton):
 	<TooltipButton tooltip=""/>
 	Used to display tooltip on hover on buttons.
 	Attributes same as ImageButton widget with addition of tooltip="text string to display"
-	Use \\n for newline.
 	"""
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
@@ -116,7 +125,7 @@ class TooltipLabel(_Tooltip, pychan.widgets.Label):
 	<TooltipLabel tooltip=""/>
 	Used to display tooltip on hover on buttons.
 	Attributes same as Label widget with addition of tooltip="text string to display"
-	Use \\n for newline."""
+	"""
 	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip="", **kwargs):
 		super(TooltipLabel, self).__init__(**kwargs)
@@ -127,7 +136,7 @@ class TooltipProgressBar(_Tooltip, ProgressBar):
 	<TooltipProgressbar tooltip=""/>
 	Used to display tooltip on hover on buttons.
 	Attributes same as Label widget with addition of tooltip="text string to display"
-	Use \\n for newline."""
+	"""
 	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip="", **kwargs):
 		super(TooltipProgressBar, self).__init__(**kwargs)

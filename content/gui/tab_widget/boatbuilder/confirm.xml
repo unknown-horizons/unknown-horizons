@@ -20,7 +20,7 @@
 
 	<Container position="20,110" size="95,95" >
 		<!-- Current order pic -->
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="15,15" tooltip="(like in the \nselection tabs)" />
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="15,15" tooltip="(like in the selection tabs)" />
 	</Container>
 
 	<Container position="130,110" size="260,100" >

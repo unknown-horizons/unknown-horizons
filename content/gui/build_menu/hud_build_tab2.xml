@@ -24,7 +24,7 @@
 			up_image="content/gui/images/icons/hud/build/villageschool.png"
 			hover_image="content/gui/images/icons/hud/build/villageschool_h.png"
 			down_image="content/gui/images/icons/hud/build/villageschool_h.png"
-			tooltip="Village school: \nProvides education." />
+			tooltip="Village school: Provides education." />
 
 	</Container>
 
@@ -37,7 +37,7 @@
 			up_image="content/gui/images/icons/hud/build/sugarfield.png"
 			hover_image="content/gui/images/icons/hud/build/sugarfield_h.png"
 			down_image="content/gui/images/icons/hud/build/sugarfield_h.png"
-			tooltip="Sugar Field: \nProduces sugar\nfor rum."/>
+			tooltip="Sugar Field: Produces sugar for rum."/>
 	</Container>
 
 

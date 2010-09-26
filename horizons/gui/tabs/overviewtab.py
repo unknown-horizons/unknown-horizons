@@ -96,7 +96,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
 		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
 		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-		self.tooltip = _("Branch Office \\n Overview")
+		self.tooltip = _("Branch Office Overview")
 
 
 class ShipOverviewTab(OverviewTab):
