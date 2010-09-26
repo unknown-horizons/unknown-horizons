@@ -81,12 +81,12 @@ class _Tooltip(object):
 			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/tooltip_bg_bottom.png', position=(top_image.position[0], top_image.position[1] + 17 + 17 * (line_count)))
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
-			label = pychan.widgets.Label(text=u"", position=(10, 8))
+			label = pychan.widgets.Label(text=u"", position=(10, 3))
 			label.text = tooltip
 			self.gui.addChild(label)
 			self.gui.stylize('tooltip')
 			self.tooltip_items.append(label)
-			self.gui.size = (140, 17 * (2 + line_count))
+			self.gui.size = (145, 17 * (2 + line_count))
 			self.gui.show()
 
 	def hide_tooltip(self):
