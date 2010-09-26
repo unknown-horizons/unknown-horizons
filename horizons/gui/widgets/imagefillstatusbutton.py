@@ -50,7 +50,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		icon, icon_disabled = db.get_res_icon(res)
 		if not use_inactive_icon:
 			icon_disabled = icon
-		tooltip = db.get_res_name(res)
+		tooltip = db.get_res_name(res).capitalize()
 		return cls(up_image=icon_disabled if amount == 0 else icon,
 										   down_image=icon_disabled if amount == 0 else icon,
 										   hover_image=icon_disabled if amount == 0 else icon,
