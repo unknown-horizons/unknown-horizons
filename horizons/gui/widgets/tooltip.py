@@ -102,7 +102,8 @@ class TooltipIcon(_Tooltip, pychan.widgets.Icon):
 	"""The TooltipIcon is a modified icon widget. It can be used in xml files like this:
 	<TooltipIcon tooltip=""/>
 	Used to display tooltip on hover on icons.
-	Attributes same as Icon widget with addition of tooltip="text string to display"
+	Attributes same as Icon widget with addition of tooltip="text string to display".
+	Use '\n' to force newline.
 	"""
 	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
@@ -113,7 +114,8 @@ class TooltipButton(_Tooltip, pychan.widgets.ImageButton):
 	"""The TooltipButton is a modified image button widget. It can be used in xml files like this:
 	<TooltipButton tooltip=""/>
 	Used to display tooltip on hover on buttons.
-	Attributes same as ImageButton widget with addition of tooltip="text string to display"
+	Attributes same as ImageButton widget with addition of tooltip="text string to display".
+	Use '\n' to force newline.
 	"""
 	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip = "", **kwargs):
@@ -124,7 +126,8 @@ class TooltipLabel(_Tooltip, pychan.widgets.Label):
 	"""The TooltipButton is a modified label widget. It can be used in xml files like this:
 	<TooltipLabel tooltip=""/>
 	Used to display tooltip on hover on buttons.
-	Attributes same as Label widget with addition of tooltip="text string to display"
+	Attributes same as Label widget with addition of tooltip="text string to display".
+	Use '\n' to force newline.
 	"""
 	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip="", **kwargs):
@@ -135,7 +138,8 @@ class TooltipProgressBar(_Tooltip, ProgressBar):
 	"""The TooltipProgressBar is a modified progress bar widget. It can be used in xml files like this:
 	<TooltipProgressbar tooltip=""/>
 	Used to display tooltip on hover on buttons.
-	Attributes same as Label widget with addition of tooltip="text string to display"
+	Attributes same as Label widget with addition of tooltip="text string to display".
+	Use '\n' to force newline.
 	"""
 	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
 	def __init__(self, tooltip="", **kwargs):
