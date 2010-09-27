@@ -26,6 +26,6 @@
 		<Setting name="QuicksaveMaxCount" type="int">10</Setting>
 		<Setting name="Language" type="unicode">System default</Setting>
 		<Setting name="ClientID" type="str"></Setting>
-		<Setting name="Nickname" type="str">Unnamed Traveler</Setting>
+		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
 	</Module>
 </Settings>
