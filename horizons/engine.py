@@ -84,12 +84,9 @@ class Fife(ApplicationBase):
 		self._setting.setGuiStyle("book")
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
-		                                initialdata=range(0, 60, 2))
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount",
-		                                initialdata=range(1, 30))
-		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount",
-		                                initialdata=range(1, 30))
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
+		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 		                                initialdata=[0, 16, 32], requiresrestart=True)
 

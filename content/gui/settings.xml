@@ -55,27 +55,35 @@
 </Container>
 
 <Container size="320,520" position="420,32">
-	<Container size="320,240" position="0,30" name="saving_settings">
-		<Label name="headline_saving" text="Saving" position="12,3" font="libertine_headline" />
-
-		<Label name="autosave_interval_label" text="Autosave interval:" position="15,40"
-			wrap_text="1" max_size="250,40" min_size="250,40" />
-		<Label name="number_of_autosaves_label" text="Number of autosaves:" position="15,100"
-			wrap_text="1" max_size="250,40" min_size="250,40" />
-		<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="15,160"
-			wrap_text="1" max_size="250,40" min_size="250,40" />
-
-		<ScrollArea min_size="48,45" position="240, 40">
-			<ListBox name="autosaveinterval" />
-		</ScrollArea>
-		<ScrollArea min_size="48,45" position="240,100">
-			<ListBox name="autosavemaxcount" />
-		</ScrollArea>
-		<ScrollArea min_size="48,45" position="240,160">
-			<ListBox name="quicksavemaxcount" />
-		</ScrollArea>
-		<Label text="min" position="280,54" />
-<!--    #TODO :: use sliders instead of listboxes    -->
+	<Label name="headline_saving" text="Saving" position="12,60" font="libertine_headline" />
+	<Container size="320,240" position="22,100" name="saving_settings">		
+		<VBox size="110,80" position="0,0">
+			<HBox>
+				<Label name="autosave_interval_label" text="Autosave interval:"
+				wrap_text="1" max_size="250,20" min_size="250,20" />
+				<Label text="" name="" />
+			</HBox>
+			<Slider size="120,20" name="autosaveinterval"
+				orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
+		</VBox>
+		<VBox size="110,80" position="0,50">
+			<HBox>
+				<Label name="number_of_autosaves_label" text="Number of autosaves:" 
+				wrap_text="1" max_size="250,20" min_size="250,20" />
+				<Label text="" name="" />
+			</HBox>
+			<Slider size="120,20" name="autosavemaxcount"
+				orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
+		</VBox>
+		<VBox size="110,80" position="0,100">
+			<HBox>
+				<Label name="number_of_quicksaves_label" text="Number of quicksaves:"
+				wrap_text="1" max_size="250,20" min_size="250,20" />
+				<Label text="" name="" />
+			</HBox>
+			<Slider size="120,20" name="quicksavemaxcount"
+				orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
+		</VBox>
 	</Container>
 
 	<Container size="320,180" position="12,260">
