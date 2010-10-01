@@ -44,7 +44,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	styles = {
 	  'mainmenu': 'menu',
 	  'quitgame': 'book',
-	  'settings': 'book',
+#	  'settings': 'book',
 	  'requirerestart': 'book',
 #	  'popup_with_cancel': 'book',
 #	  'popup': 'book',
@@ -77,11 +77,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'startSingle'    : self.show_single,
 			'startMulti'     : self.show_multi,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'creditsLink'    : self.show_credits,
-			'closeButton'    : self.show_quit,
 			'helpLink'       : self.on_help,
-			'loadgameButton' : horizons.main.load_game,
-			'dead_link'      : self.on_chime
+			'closeButton'    : self.show_quit,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
 		})
 
 		self.on_escape = self.show_quit
@@ -168,12 +168,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""		
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
-			'closeButton'    : self.quit_session,
 			'savegameButton' : self.session.save,
-			'loadgameButton' : horizons.main.load_game,
-			'helpLink'       : self.on_help,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'dead_link'      : self.on_chime
+			'helpLink'       : self.on_help,
+			'closeButton'    : self.quit_session,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
 		})
 		
 		adjust_widget_black_background(self.widgets['gamemenu'])

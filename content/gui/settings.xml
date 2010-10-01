@@ -60,7 +60,7 @@
 		<VBox size="110,80" position="0,0">
 			<HBox>
 				<Label name="autosave_interval_label" text="Autosave interval:"
-				wrap_text="1" max_size="250,20" min_size="250,20" />
+				wrap_text="1" max_size="250,40" min_size="250,20" />
 				<Label text="" name="" />
 			</HBox>
 			<Slider size="120,20" name="autosaveinterval"
@@ -69,16 +69,18 @@
 		<VBox size="110,80" position="0,50">
 			<HBox>
 				<Label name="number_of_autosaves_label" text="Number of autosaves:" 
-				wrap_text="1" max_size="250,20" min_size="250,20" />
+				wrap_text="1" max_size="250,40" min_size="250,20" />
 				<Label text="" name="" />
 			</HBox>
 			<Slider size="120,20" name="autosavemaxcount"
 				orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
+			<!--Label name="number_of_autosaves_label_ex" text="Anzahl der automatisch gespeicherten:" 
+				wrap_text="1" max_size="250,40" min_size="250,20" /-->
 		</VBox>
 		<VBox size="110,80" position="0,100">
 			<HBox>
 				<Label name="number_of_quicksaves_label" text="Number of quicksaves:"
-				wrap_text="1" max_size="250,20" min_size="250,20" />
+				wrap_text="1" max_size="250,40" min_size="250,20" />
 				<Label text="" name="" />
 			</HBox>
 			<Slider size="120,20" name="quicksavemaxcount"
