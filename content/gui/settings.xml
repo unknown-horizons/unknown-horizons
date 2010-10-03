@@ -40,14 +40,14 @@
 		<Container size="180,30" position="170,45">
 			<Slider size="120,20" name="volume_music"
 				orientation="0" scale_start="0.0" scale_end="0.20" />
-			<TextBox min_size="40,0" name="volume_music_value" text="" position="124,0" />
+			<Label size="60,0" name="volume_music_value" text="" position="124,0" />
 		</Container>
 		<Label name="effect_volume_label" text="Effects volume:" position="22,90"
 			wrap_text="1" max_size="160,40" />
 		<Container size="180,30" position="170,95">
 			<Slider size="120,20" name="volume_effects"
 				orientation="0" scale_start="0.0" scale_end="0.5" />
-			<TextBox min_size="40,0" name="volume_effects_value" text=""  position="124,0" />
+			<Label size="60,0" name="volume_effects_value" text=""  position="124,0" />
 		</Container>
 		<CheckBox min_size="160,32" name="enable_sound" position="22,140" />
 		<Label name="sound_enable_opt_text" text="Enable sound" position="67,145" />
@@ -61,7 +61,7 @@
 			<HBox>
 				<Label name="autosave_interval_label" text="Autosave interval:"
 				wrap_text="1" max_size="250,40" min_size="250,20" />
-				<Label text="" name="" />
+				<Label text="" name="autosaveinterval_value" />
 			</HBox>
 			<Slider size="120,20" name="autosaveinterval"
 				orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
@@ -70,7 +70,7 @@
 			<HBox>
 				<Label name="number_of_autosaves_label" text="Number of autosaves:" 
 				wrap_text="1" max_size="250,40" min_size="250,20" />
-				<Label text="" name="" />
+				<Label text="" name="autosavemaxcount_value" />
 			</HBox>
 			<Slider size="120,20" name="autosavemaxcount"
 				orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
@@ -81,7 +81,7 @@
 			<HBox>
 				<Label name="number_of_quicksaves_label" text="Number of quicksaves:"
 				wrap_text="1" max_size="250,40" min_size="250,20" />
-				<Label text="" name="" />
+				<Label text="" name="quicksavemaxcount_value" />
 			</HBox>
 			<Slider size="120,20" name="quicksavemaxcount"
 				orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />

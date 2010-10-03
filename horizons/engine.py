@@ -246,6 +246,30 @@ class Fife(ApplicationBase):
 		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 
 		self._gotInited = True
+		self.setup_setting_extras()
+
+	def setup_setting_extras(self):
+		slider_initial_data = {}
+		slider_event_map = {}
+		self.OptionsDlg = self._setting.loadSettingsDialog()
+		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
+						'AutosaveMaxCount' : 'autosavemaxcount',
+						'QuicksaveMaxCount' : 'quicksavemaxcount'}
+
+		for x in slider_dict.keys():
+			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
+		slider_initial_data['volume_music_value'] = unicode(self._setting.get(UH_MODULE, "VolumeMusic") * 500)
+		slider_initial_data['volume_effects_value'] = unicode(self._setting.get(UH_MODULE, "VolumeEffects") * 200)
+		self.OptionsDlg.distributeInitialData(slider_initial_data)
+
+		for x in slider_dict.values():
+			slider_event_map[x] = pychan.tools.callbackWithArguments(self.update_slider_values, x)
+		slider_event_map['volume_music'] = self.set_volume_music
+		slider_event_map['volume_effects'] = self.set_volume_effects
+		self.OptionsDlg.mapEvents(slider_event_map)
+
+	def update_slider_values(self, slider):
+		self.OptionsDlg.findChild(name=slider+'_value').text = unicode(int(self.OptionsDlg.findChild(name=slider).getValue()))
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -340,19 +364,25 @@ class Fife(ApplicationBase):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter[emitter_name].setGain(value)
 
-	def set_volume_music(self, value):
+	def set_volume_music(self, value=None):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
+			if not value:
+				value = self.OptionsDlg.findChild(name="volume_music").getValue()
 			self.emitter['bgsound'].setGain(value)
+			self.OptionsDlg.findChild(name="volume_music_value").text = unicode(int(value * 500))
 
 
-	def set_volume_effects(self, value):
+	def set_volume_effects(self, value=None):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
+			if not value:
+				value = self.OptionsDlg.findChild(name="volume_effects").getValue()
+			self.OptionsDlg.findChild(name="volume_effects_value").text = unicode(int(value * 200))
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
