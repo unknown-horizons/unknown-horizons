@@ -368,25 +368,24 @@ class Fife(ApplicationBase):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
+		if not value:
+			value = self.OptionsDlg.findChild(name="volume_music").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
-			if not value:
-				value = self.OptionsDlg.findChild(name="volume_music").getValue()
 			self.emitter['bgsound'].setGain(value)
-			self.OptionsDlg.findChild(name="volume_music_value").text = unicode(int(value * 500))
-
+		self.OptionsDlg.findChild(name="volume_music_value").text = unicode(int(value * 500))
 
 	def set_volume_effects(self, value=None):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
+		if not value:
+			value = self.OptionsDlg.findChild(name="volume_effects").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
-			if not value:
-				value = self.OptionsDlg.findChild(name="volume_effects").getValue()
-			self.OptionsDlg.findChild(name="volume_effects_value").text = unicode(int(value * 200))
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
 				e.setGain(value*2)
+		self.OptionsDlg.findChild(name="volume_effects_value").text = unicode(int(value * 200))
 
 	def run(self):
 		"""
