@@ -357,9 +357,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
-		self.current.findChild(name="savegamelist").capture( Callback.ChainedCallbacks( \
-		  Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
-		  tmp_selected_changed))
+		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
+						tmp_selected_changed)
+		self.current.findChild(name="savegamelist").mapEvents({ "savegamelist/action":cb,"savegamelist/mouseWheelMovedUp":cb, \
+									"savegamelist/mouseWheelMovedDown":cb})
 
 		retval = self.show_dialog(self.current, \
 		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete', 'savegamefile' : True},
