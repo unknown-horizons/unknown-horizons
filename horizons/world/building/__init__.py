@@ -119,7 +119,7 @@ class BuildingClass(type):
 			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
 		action_sets = db("SELECT action_set_id FROM data.action_set WHERE object_id=?",cls.id)
-		all_action_sets = ActionSetLoader.get_action_sets()
+		all_action_sets = ActionSetLoader.get_sets()
 		for (action_set_id,) in action_sets:
 			for action_id in all_action_sets[action_set_id].iterkeys():
 				action = cls._object.createAction(action_id+"_"+str(action_set_id))

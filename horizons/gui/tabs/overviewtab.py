@@ -248,7 +248,7 @@ class SettlerOverviewTab(OverviewTab):
 		self.tooltip = _("Settler Overview")
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 
-		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
@@ -293,7 +293,7 @@ class SignalFireOverviewTab(OverviewTab):
 			widget = 'tab_widget/tab_overview_signalfire.xml',
 			instance = instance
 		)
-		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image

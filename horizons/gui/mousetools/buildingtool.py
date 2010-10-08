@@ -138,7 +138,7 @@ class BuildingTool(NavigationTool):
 			      self._class.default_level_on_build
 			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
 		action_set, preview_action_set = self.action_set
-		action_sets = ActionSetLoader.get_action_sets()
+		action_sets = ActionSetLoader.get_sets()
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
 		if 'idle' in action_sets[action_set]:
