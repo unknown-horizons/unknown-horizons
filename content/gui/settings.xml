@@ -5,19 +5,19 @@
 	
 	<!-- west side -->
 	<VBox size="320,520" position="65,32">
-		<VBox>
+		<VBox> <!-- graphics -->
 			<Label text="Settings" name="headline" />
 			<Label name="warning"
 				text="Please make sure that you know what you do."
 				wrap_text="0" />
 				<Icon image="content/gui/images/background/hr.png" />
 			<Label name="headline_graphics" text="Graphics" 
-					font="libertine_headline" /><!-- position="12,15" -->
-			<HBox name="graphic_settings" size="320,245"> <!-- position="0,50"> -->
+					font="libertine_headline" />
+			<HBox name="graphic_settings" size="320,245">
 				<VBox>
 					<Label name="screen_resolution_label" text="Screen resolution:"
 						position="22,50" wrap_text="1" />
-					<ScrollArea min_size="100,105" > <!-- position="22,90" -->
+					<ScrollArea min_size="100,105" >
 					<ListBox name="screen_resolution" />
 					</ScrollArea>
 				</VBox>
@@ -25,112 +25,108 @@
 				<VBox>
 					<Label name="color_depth_label" text="Color depth:" position="180,50"
 						wrap_text="1" max_size="140,20" />
-					<ScrollArea  > <!-- min_size="55,20" position="200,90" -->
+					<ScrollArea  >
 						<ListBox name="screen_bpp" />
 					</ScrollArea>
 					<Spacer />
 					<Label name="use_renderer_label" text="Used renderer:" 
 						wrap_text="1" />
-					<ScrollArea > <!--  min_size="55,40"  max_size="140,40" position="180,120" position="200,160" -->
+					<ScrollArea > 
 						<ListBox name="render_backend" />
 					</ScrollArea>
 				</VBox>
 			</HBox>
 			<Spacer />
 			<HBox>
-				<Label name="screen_fullscreen_text" text="Full screen" />
+				<Label name="screen_fullscreen_text" text="Full screen:" />
 				<CheckBox min_size="160,32" name="enable_fullscreen" />
 			</HBox>
 		</VBox>
-		<VBox name="sound_settings" ><!--size="320,200" position="0,320" > -->
+		<Spacer />
+		<VBox name="sound_settings" ><!-- sound -->
+			<Label name="headline_sound" text="Sound" font="libertine_headline" />
 			<VBox>
-				<Label name="headline_sound" text="Sound" font="libertine_headline" />
 				<HBox >
-					<Label name="music_volume_label" text="Music volume:" wrap_text="1" /> <!-- position="22,35" -->
-					<Label name="volume_music_value" text=""  /> <!-- position="124,0"-->
+					<Label name="music_volume_label" text="Music volume:" wrap_text="1"
+                                                min_size="250,20" max_size="250,40" />
+					<Label name="volume_music_value" text=""  />
 				</HBox>
-				<Slider size="120,20" name="volume_music"
-					orientation="0" scale_start="0.0" scale_end="0.20" />	
+				<Slider size="300,20" name="volume_music"
+					orientation="0" scale_start="0.0" scale_end="0.20" />
 			</VBox>
 			<VBox>
 				<HBox >
-					<Label name="effect_volume_label" text="Effects volume:"
-						wrap_text="1" />
+					<Label name="effect_volume_label" text="Effects volume:" wrap_text="1"
+						min_size="250,20" max_size="250,40"/>
 					<Label name="volume_effects_value" text="" />
 				</HBox >
-				<Slider size="120,20" name="volume_effects"
-					orientation="0" scale_start="0.0" scale_end="0.5" />	
+				<Slider size="300,20" name="volume_effects"
+					orientation="0" scale_start="0.0" scale_end="0.5" />
+				
 			</VBox>
 			<HBox>
-				<Label name="sound_enable_opt_text" text="Enable sound" />
+				<Label name="sound_enable_opt_text" text="Enable sound:" />
 				<CheckBox min_size="160,32" name="enable_sound" />
 			</HBox>
 		</VBox>
+		
 	</VBox> 
 
 	<!-- east side -->
-	<VBox min_size="0,0" max_size="320,520" position="420,32" name="saving_settings">
-		<Spacer />
-		<Label name="headline_saving" text="Saving"  position_technique="center+0:center+0" font="libertine_headline" /> <!-- position="32,100"-->
-		<!--<VBox size="320,240" >-->		<!-- position="22,100" -->
-			<VBox ><!--size="110,80" position="0,0" -->
-				<HBox>
-					<Label name="autosave_interval_label" text="Autosave interval:"
-					wrap_text="1" max_size="250,40" min_size="250,20" />
-					<Label text="" name="autosaveinterval_value" />
-				</HBox>
-				<Slider size="120,20" name="autosaveinterval"
-					orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
-			</VBox>
-			<VBox ><!--size="110,80" position="0,50"> -->
-				<HBox>
-					<Label name="number_of_autosaves_label" text="Number of autosaves:" 
-					wrap_text="1" max_size="250,40" min_size="250,20" />
-					<Label text="" name="autosavemaxcount_value" />
-				</HBox>
-					<Slider size="120,20" name="autosavemaxcount"
-					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
-				<!--Label name="number_of_autosaves_label_ex" text="Anzahl der automatisch gespeicherten:" 
-					wrap_text="1" max_size="250,40" min_size="250,20" /-->
-			</VBox>
-			<Spacer />
-			<VBox ><!--size="110,80" position="0,100"> -->
-				<HBox>
-					<Label name="number_of_quicksaves_label" text="Number of quicksaves:"
-					wrap_text="1" max_size="250,40" min_size="250,20" />
-					<Label text="" name="quicksavemaxcount_value" />
-				</HBox>
-				<Slider size="120,20" name="quicksavemaxcount"
-					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
-
-			</VBox>
-			
-			<VBox ><!--size="320,180" position="12,260"> -->
-			<Label name="headline_language" text="Language" font="libertine_headline" />
-				<HBox>
-				      <Label name="language_label" text="Select language:"/> <!-- position="10,40" -->
-				      <ScrollArea min_size="125,140" > <!-- position="140,40" -->
-				 	   <ListBox name="language" />
-		  	   		 </ScrollArea>
-				</HBox>
-			</VBox>
-
-			<HBox ><!-- size="320,40" position="140,460"  position="60,0" position="120,0"-->
-				<ImageButton name="cancelButton"
-					up_image="content/gui/images/background/close.png"
-					hover_image="content/gui/images/background/close_h.png"
-					down_image="content/gui/images/background/close.png" />
-				
-				<ImageButton name="okButton" 
-					up_image="content/gui/images/background/ok.png"
-					hover_image="content/gui/images/background/ok_h.png"
-					down_image="content/gui/images/background/ok.png" />
-					
-				<ImageButton name="defaultButton" 
-					up_image="content/gui/images/background/delete.png"
-					hover_image="content/gui/images/background/delete_h.png"
-					down_image="content/gui/images/background/delete.png" />
+	<VBox size="320,520" position="420,32" name="saving_settings">
+		<Label name="headline_saving" text="Saving"  position_technique="center+0:center+0"
+                        font="libertine_headline" />
+                <VBox >
+			<HBox>
+				<Label name="autosave_interval_label" text="Autosave interval:"
+                                        wrap_text="1" max_size="250,40" min_size="250,20" />
+				<Label text="" name="autosaveinterval_value" />
 			</HBox>
-		<!--</VBox>-->
+			<Slider size="300,20" name="autosaveinterval"
+				orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
+		</VBox>
+		<VBox >
+			<HBox>
+				<Label name="number_of_autosaves_label" text="Number of autosaves:" 
+                                       wrap_text="1" max_size="250,40" min_size="250,20" />
+				<Label text="" name="autosavemaxcount_value" />
+			</HBox>
+				<Slider size="300,20" name="autosavemaxcount"
+                                        orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
+		</VBox>
+		<VBox >
+			<HBox>
+				<Label name="number_of_quicksaves_label" text="Number of quicksaves:"
+                                       wrap_text="1" max_size="250,40" min_size="250,20" />
+				<Label text="" name="quicksavemaxcount_value" />
+			</HBox>
+			<Slider size="300,20" name="quicksavemaxcount"
+				orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
+		</VBox>
+		<VBox >
+			<Label name="headline_language" text="Language" font="libertine_headline" />
+			<HBox>
+			      <Label name="language_label" text="Select language:"/>
+			      <ScrollArea min_size="125,140" >
+                                            <ListBox name="language" />
+                              </ScrollArea>
+			</HBox>
+		</VBox>
+		<HBox >
+			<ImageButton name="cancelButton"
+				up_image="content/gui/images/background/close.png"
+				hover_image="content/gui/images/background/close_h.png"
+				down_image="content/gui/images/background/close.png" />
+			
+			<ImageButton name="okButton" 
+				up_image="content/gui/images/background/ok.png"
+				hover_image="content/gui/images/background/ok_h.png"
+				down_image="content/gui/images/background/ok.png" />
+				
+			<ImageButton name="defaultButton" 
+				up_image="content/gui/images/background/delete.png"
+				hover_image="content/gui/images/background/delete_h.png"
+				down_image="content/gui/images/background/delete.png" />
+		</HBox>
 	</VBox>
-</Container><!--     #TODO :: get rid of this container mass     -->
+</Container>
