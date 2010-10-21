@@ -67,7 +67,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 		self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
-	def select(self):
+	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		# add a buoy at the ship's target if the player owns the ship
@@ -83,6 +83,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 			)
 		self.draw_health()
+		if reset_cam:
+			self.session.view.set_location(self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):
