@@ -361,6 +361,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 						tmp_selected_changed)
 		self.current.findChild(name="savegamelist").mapEvents({ "savegamelist/action":cb,"savegamelist/mouseWheelMovedUp":cb, \
 									"savegamelist/mouseWheelMovedDown":cb})
+		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		retval = self.show_dialog(self.current, \
 		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete', 'savegamefile' : True},

@@ -290,11 +290,13 @@ class SelectableBuilding(object):
 	selection_color = (255, 255, 0)
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
 
-	def select(self):
+	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 								         self.selection_color[2], 1)
+		if reset_cam:
+			self.session.view.set_location(self.position.origin.to_tuple())
 		self._do_select(renderer, self.position, self.session.world, self.settlement)
 
 	def deselect(self):

@@ -131,7 +131,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 				for instance in self.session.selected_instances - self.session.selection_groups[num]:
 					instance.deselect()
 				for instance in self.session.selection_groups[num] - self.session.selected_instances:
-					instance.select()
+					instance.select(reset_cam=True)
 				self.session.selected_instances = self.session.selection_groups[num]
 		elif keyval == fife.Key.F5:
 			self.session.quicksave()
