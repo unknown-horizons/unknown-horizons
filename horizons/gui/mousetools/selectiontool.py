@@ -48,23 +48,28 @@ class SelectionTool(NavigationTool):
 				d = fife.Point(min(self.select_begin[0], evt.getX()), \
 											 max(self.select_begin[1], evt.getY()))
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(b), 200, 200, 200)
+				                                                      fife.GenericRendererNode(a), fife.GenericRendererNode(b), 200, 200, 200)
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-																																			 fife.GenericRendererNode(b), fife.GenericRendererNode(c), 200, 200, 200)
+				                                                      fife.GenericRendererNode(b), fife.GenericRendererNode(c), 200, 200, 200)
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-																																			 fife.GenericRendererNode(d), fife.GenericRendererNode(c), 200, 200, 200)
+				                                                      fife.GenericRendererNode(d), fife.GenericRendererNode(c), 200, 200, 200)
 				self.session.view.renderer['GenericRenderer'].addLine("select", \
-																																			 fife.GenericRendererNode(a), fife.GenericRendererNode(d), 200, 200, 200)
+				                                                      fife.GenericRendererNode(a), fife.GenericRendererNode(d), 200, 200, 200)
 			selectable = []
 			instances = self.session.view.cam.getMatchingInstances(\
 				fife.Rect(min(self.select_begin[0], evt.getX()), \
 									min(self.select_begin[1], evt.getY()), \
 									abs(evt.getX() - self.select_begin[0]), \
 									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
-			for i in instances:
-				instance = WorldObject.get_object_by_id(int(i.getId()))
-				if hasattr(instance, 'select') and instance.owner == self.session.world.player:
-					selectable.append(instance)
+			# Only one unit, select anyway
+			if len(instances) == 1:
+				selectable.append(WorldObject.get_object_by_id(int(i.getId())))
+			else:
+				for i in instances:
+					instance = WorldObject.get_object_by_id(int(i.getId()))
+					if hasattr(instance, 'select') and instance.owner == self.session.world.player:
+						selectable.append(instance)
+
 			if len(selectable) > 1:
 				if do_multi:
 					for instance in selectable[:]: # iterate through copy for safe removal
@@ -72,6 +77,7 @@ class SelectionTool(NavigationTool):
 							selectable.remove(instance)
 				else:
 					selectable = [selectable.pop(0)]
+
 			if do_multi:
 				selectable = set(self.select_old | frozenset(selectable))
 			else:
