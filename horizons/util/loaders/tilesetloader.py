@@ -61,8 +61,8 @@ class TileSetLoader(object):
 			cls._loaded = True
 
 
-		for key, value in cls.tile_sets.iteritems():
-			print "Action_set:" , key
+#		for key, value in cls.tile_sets.iteritems():
+#			print "Action_set:" , key
 		#	for key1, value1 in value.iteritems():
 		#		print "Action:", key1
 		#		for key2, value2 in value1.iteritems():
