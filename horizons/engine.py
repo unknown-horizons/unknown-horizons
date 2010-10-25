@@ -122,13 +122,9 @@ class Fife(ApplicationBase):
 		current_state = self.engine_settings.isFullScreen()
 		self.engine_settings.setFullScreen(1)
 		for x,y in self.engine_settings.getPossibleResolutions():
-			if str(x) + "x" + str(y) not in possible_resolutions:
+			if x >= 1024 and y >= 768 and str(x) + "x" + str(y) not in possible_resolutions:
 				possible_resolutions.append(str(x) + "x" + str(y))
 		self.engine_settings.setFullScreen(current_state)
-		# Remove unsupported resolutions if they exist
-		for x in ["640x480", "800x600"]:
-			if x in possible_resolutions:
-				possible_resolutions.remove(x)
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
 	def update_languages(self, data=None):
