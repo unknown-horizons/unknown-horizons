@@ -31,7 +31,7 @@ from horizons.util import Callback
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(
-			widget = 'tab_widget/boatbuilder/boatbuilder.xml',
+			widget = 'boatbuilder.xml',
 			instance = instance
 		)
 		self.tooltip = _("Boat Builder Overview")
@@ -149,7 +149,7 @@ class BoatbuilderTab(OverviewTab):
 class BoatbuilderSelectTab(OverviewTab):
 
 	def __init__(self, instance, tabname):
-		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'tab_widget/boatbuilder/' + str(tabname) + '.xml')
+		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
 		self.init_values()
 		bb_image_path = 'content/gui/images/icons/hud/common/bb/'+str(tabname)+'_%s.png'
 		self.button_up_image = bb_image_path % 'u'
@@ -200,7 +200,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderConfirmTab, self).__init__(
-			widget = 'tab_widget/boatbuilder/confirm.xml',
+			widget = 'boatbuilder_confirm.xml',
 			instance = instance
 		)
 		events = { 'create_unit': self.start_production }

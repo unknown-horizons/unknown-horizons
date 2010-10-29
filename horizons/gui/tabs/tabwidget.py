@@ -42,7 +42,7 @@ class TabWidget(object):
 		self.ingame_gui = ingame_gui
 		self._tabs = tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
-		self.widget = load_xml_translated("tab_widget/tab_base.xml")
+		self.widget = load_xml_translated("tab_base.xml")
 		if position is None:
 			# add positioning here
 			self.widget.position = (
