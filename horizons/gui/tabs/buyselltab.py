@@ -84,7 +84,7 @@ class BuySellTab(TabInterface):
 		content = self.widget.findChild(name="content")
 		assert(content is not None)
 		for num in range(0, num):
-			slot = load_xml_translated('buysell_single_slot.xml')
+			slot = load_xml_translated('trade_single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
 			slot.action = 'buy'
@@ -234,7 +234,7 @@ class BuySellTab(TabInterface):
 
 
 	def show_resource_menu(self, slot_id):
-		self.resources = load_xml_translated('buysell_resources.xml')
+		self.resources = load_xml_translated('select_trade_resource.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = self.resources.findChild(name="resources")
