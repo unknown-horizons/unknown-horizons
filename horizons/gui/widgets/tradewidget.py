@@ -53,7 +53,7 @@ class TradeWidget(object):
 		"""
 		@param instance: ship instance used for trading
 		"""
-		self.widget = load_xml_translated('ship_trade.xml')
+		self.widget = load_xml_translated('exchange_goods.xml')
 		self.widget.position = (
 			horizons.main.fife.engine_settings.getScreenWidth() - self.widget.size[0],
 			157
