@@ -17,6 +17,7 @@
 		<Setting name="PychanDebug" type="bool"> True </Setting>
 		<Setting name="LogToPrompt" type="int"> 1 </Setting>
 		<Setting name="LogToFile" type="int"> 0 </Setting>
+		<Setting name="Lighting" type="int"> 0 </Setting>
 	</Module>
 	<Module name="unknownhorizons">
 		<Setting name="VolumeMusic" type="float">0.20</Setting>

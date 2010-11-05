@@ -101,4 +101,7 @@
 			down_image="content/gui/images/background/delete.png" />
 	</Container>
 </Container>
-</Container><!--     #TODO :: get rid of this container mass     -->
+<!-- This dropdown is invisible, but required by fife to be here -->
+<DropDown name="lighting_model" min_size="120,0" /> 
+</Container><!--     #ToDO :: get rid of this container mass     -->
+
