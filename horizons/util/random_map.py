@@ -106,7 +106,7 @@ def create_random_island(id_string):
 
 		if coastline:
 			# TODO: use coastline tile depending on coastline
-			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, 49)
+			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, 5)
 		else:
 			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
 	map_db("COMMIT")
