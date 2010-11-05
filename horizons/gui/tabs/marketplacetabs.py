@@ -62,7 +62,7 @@ class MarketPlaceTab(TabInterface):
 class AccountTab(MarketPlaceTab):
 	"""Display basic income and expenses of a settlement"""
 	def __init__(self, instance):
-		super(AccountTab, self).__init__(widget = 'tab_widget/tab_account.xml')
+		super(AccountTab, self).__init__(widget = 'tab_account.xml')
 		self.settlement = instance.settlement
 		self.init_values()
 		self.button_up_image = 'content/gui/images/icons/hud/common/account_u.png'
@@ -87,7 +87,7 @@ class AccountTab(MarketPlaceTab):
 class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 	"""Displays information about the settlers on average as overview"""
 	def __init__(self, instance):
-		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'tab_widget/tab_marketplace_settler.xml')
+		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'tab_marketplace_settler.xml')
 		self.settlement = instance.settlement
 		self.init_values()
 		self.tooltip = _("Settler overview")

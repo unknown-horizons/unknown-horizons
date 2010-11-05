@@ -96,27 +96,27 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		for i in xrange (0,11):
-			cur_container = self.widgets['credits/'+str(number)].findChild(name='book'+str(i))
+			cur_container = self.widgets['credits'+str(number)].findChild(name='book'+str(i))
 			if cur_container:
 				cur_container.stylize('book_t') # leaves headlines as what they are, only style labels
 				cur_container.margins = (30,0) # to get some indentation
-		team_lbl = self.widgets['credits/'+str(number)].findChild(name="team_lbl")
+		team_lbl = self.widgets['credits'+str(number)].findChild(name="team_lbl")
 		if team_lbl:
 			team_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 0), event_name="mouseClicked")
-		patchers_lbl = self.widgets['credits/'+str(number)].findChild(name="patchers_lbl")
+		patchers_lbl = self.widgets['credits'+str(number)].findChild(name="patchers_lbl")
 		if patchers_lbl:
 			patchers_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 1), event_name="mouseClicked")
-		translators_lbl = self.widgets['credits/'+str(number)].findChild(name="translators_lbl")
+		translators_lbl = self.widgets['credits'+str(number)].findChild(name="translators_lbl")
 		if translators_lbl:
 			translators_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
-		special_thanks_lbl = self.widgets['credits/'+str(number)].findChild(name="special_thanks_lbl")
+		special_thanks_lbl = self.widgets['credits'+str(number)].findChild(name="special_thanks_lbl")
 		if special_thanks_lbl:
 			special_thanks_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 3), event_name="mouseClicked")
 
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits/'+str(number)], {'okButton' : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['credits'+str(number)], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.

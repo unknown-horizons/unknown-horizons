@@ -26,6 +26,7 @@ from  horizons.gui.widgets.tooltip import _Tooltip
 
 from fife.extensions import pychan
 from os.path import basename
+import os
 
 log = logging.getLogger("i18n")
 
@@ -34,6 +35,17 @@ set_translations()
 
 # save translated widgets
 translated_widgets = {}
+
+# create dictionary with all gui .xml files
+xml_files = {}
+for root, dirs, files in os.walk('content/gui'):
+	files = filter(lambda s: s.split('.')[-1] in ('.xml'), files)
+	if files:
+		for i in files:
+			if i not in xml_files.keys():
+				xml_files[i] = root + '/' + i
+			else:
+				print 'Another file by the name %s already exists. Please use unique names!' % i
 
 """
 def set_text(widget, text):
@@ -48,7 +60,7 @@ def load_xml_translated(filename):
 	in guitranslations.py"""
 	global translated_widgets
 	try:
-		untranslated = pychan.loadXML('content/gui/%s' % filename)
+		untranslated = pychan.loadXML(xml_files[filename])
 	except (IOError, ValueError), e:
 		print 'PLEASE REPORT: invalid path', filename , 'in translation!', e
 		untranslated = pychan.loadXML(filename)

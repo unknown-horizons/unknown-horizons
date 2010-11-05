@@ -106,7 +106,7 @@ class BuildingTool(NavigationTool):
 
 	def load_gui(self):
 		if self.gui is None:
-			self.gui = load_xml_translated("build_menu/hud_builddetail.xml")
+			self.gui = load_xml_translated("hud_builddetail.xml")
 			self.gui.stylize('menu_black')
 			self.gui.findChild(name='headline').stylize('headline')
 			self.gui.findChild(name='building_name').stylize('headline')

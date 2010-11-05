@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2010-09-22 23:47+0200\n"
+"POT-Creation-Date: 2010-10-26 22:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,29 +16,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: po/tutorial_en.py:1
+#: po/tutorial.py:1
 msgid "Tutorial"
 msgstr ""
 
-#: po/tutorial_en.py:2
+#: po/tutorial.py:2
 msgid "The UH team"
 msgstr ""
 
-#: po/tutorial_en.py:3
+#: po/tutorial.py:3
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
 
-#: po/tutorial_en.py:4
+#: po/tutorial.py:4
 msgid "Build a branch office at the coast."
 msgstr ""
 
-#: po/tutorial_en.py:5
+#: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
 msgstr ""
 
-#: po/tutorial_en.py:6
+#: po/tutorial.py:6
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"
@@ -53,11 +53,11 @@ msgid ""
 "And now, let's start the actual game."
 msgstr ""
 
-#: po/tutorial_en.py:7
+#: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgstr ""
 
-#: po/tutorial_en.py:8
+#: po/tutorial.py:8
 msgid ""
 "To move your ship, select it with a left click and right click on the location you want it to go to.\n"
 "\n"
@@ -73,11 +73,11 @@ msgid ""
 "TASK: Build a branch office at the coast."
 msgstr ""
 
-#: po/tutorial_en.py:9
+#: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
 msgstr ""
 
-#: po/tutorial_en.py:10
+#: po/tutorial.py:10
 msgid ""
 "Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
 "\n"
@@ -92,7 +92,7 @@ msgid ""
 "TASK: Open the trade dialogue."
 msgstr ""
 
-#: po/tutorial_en.py:11
+#: po/tutorial.py:11
 msgid ""
 "The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
 "\n"
@@ -108,15 +108,15 @@ msgid ""
 "TASK: Unload at least 10 tons of each resource your ship sailed around with."
 msgstr ""
 
-#: po/tutorial_en.py:12
+#: po/tutorial.py:12
 msgid "Unload at least 10 tons of each resource on your ship."
 msgstr ""
 
-#: po/tutorial_en.py:13
+#: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
 msgstr ""
 
-#: po/tutorial_en.py:14
+#: po/tutorial.py:14
 msgid ""
 "With your new construction material in the branch office, you can start to construct some basic buildings.\n"
 "\n"
@@ -132,7 +132,7 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
 
-#: po/tutorial_en.py:15
+#: po/tutorial.py:15
 msgid ""
 "As your civilization advances, you also gain more and more complex buildings.\n"
 "\n"
@@ -149,15 +149,15 @@ msgid ""
 "Watch how a collector will fetch your first self-produced boards."
 msgstr ""
 
-#: po/tutorial_en.py:16
+#: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
 msgstr ""
 
-#: po/tutorial_en.py:17
+#: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
 msgstr ""
 
-#: po/tutorial_en.py:18
+#: po/tutorial.py:18
 msgid ""
 "You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
 "\n"
@@ -172,7 +172,7 @@ msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
 
-#: po/tutorial_en.py:19
+#: po/tutorial.py:19
 msgid ""
 "The Fisher needs a coastal building site like the branch office - and nothing more.\n"
 "\n"
@@ -187,15 +187,15 @@ msgid ""
 "Don't forget to connect them to your branch office with trails!"
 msgstr ""
 
-#: po/tutorial_en.py:20
+#: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
 msgstr ""
 
-#: po/tutorial_en.py:21
+#: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
 msgstr ""
 
-#: po/tutorial_en.py:22
+#: po/tutorial.py:22
 msgid ""
 "Your residents need a main square where they can fetch their goods from.\n"
 "\n"
@@ -210,7 +210,7 @@ msgid ""
 "TASK: Build a main square."
 msgstr ""
 
-#: po/tutorial_en.py:23
+#: po/tutorial.py:23
 msgid ""
 "Now let's have a closer look at the main square.\n"
 "\n"
@@ -225,15 +225,15 @@ msgid ""
 "In the 'Settler' tab you can see how happy your inhabitants are and what resource most of them want to be supplied with."
 msgstr ""
 
-#: po/tutorial_en.py:24
+#: po/tutorial.py:24
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
 
-#: po/tutorial_en.py:25
+#: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
 msgstr ""
 
-#: po/tutorial_en.py:26
+#: po/tutorial.py:26
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.\n"
 "\n"
@@ -244,11 +244,11 @@ msgid ""
 "TASK: Build a tent and connect it to the main square."
 msgstr ""
 
-#: po/tutorial_en.py:27
+#: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
 msgstr ""
 
-#: po/tutorial_en.py:28
+#: po/tutorial.py:28
 msgid ""
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
@@ -267,15 +267,15 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same kind."
 msgstr ""
 
-#: po/tutorial_en.py:29
+#: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr ""
 
-#: po/tutorial_en.py:30
+#: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
 msgstr ""
 
-#: po/tutorial_en.py:31
+#: po/tutorial.py:31
 msgid ""
 "Can you see the ship passing your island from time to time?\n"
 "\n"
@@ -290,7 +290,7 @@ msgid ""
 "For this purpose, you can build a signal fire at the coast near your branch office to show ships the way to your settlement."
 msgstr ""
 
-#: po/tutorial_en.py:32
+#: po/tutorial.py:32
 msgid ""
 "After this little advertisment, the trader will stop by from time to time and look into your branch office.\n"
 "\n"
@@ -305,15 +305,15 @@ msgid ""
 "TASK: Build a signal fire at the coast close to your branch office."
 msgstr ""
 
-#: po/tutorial_en.py:33
+#: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
 msgstr ""
 
-#: po/tutorial_en.py:34
+#: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
 msgstr ""
 
-#: po/tutorial_en.py:35
+#: po/tutorial.py:35
 msgid ""
 "Excellent! The Free Trader will now stop by at your branch office from time to time.\n"
 "\n"
@@ -326,7 +326,7 @@ msgid ""
 "When selling the 'target value' is the number which you hold in reserve to not sell"
 msgstr ""
 
-#: po/tutorial_en.py:36
+#: po/tutorial.py:36
 msgid ""
 "For example: \n"
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
@@ -343,15 +343,15 @@ msgid ""
 "If you still have some in your ship's inventory, this seems like a good point to unload them."
 msgstr ""
 
-#: po/tutorial_en.py:37
+#: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
 msgstr ""
 
-#: po/tutorial_en.py:38
+#: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
 msgstr ""
 
-#: po/tutorial_en.py:39
+#: po/tutorial.py:39
 msgid ""
 "Those tools will be enough for the moment. Well done!\n"
 "\n"
@@ -366,7 +366,7 @@ msgid ""
 "In later increments, upgraded versions of buildings may become available."
 msgstr ""
 
-#: po/tutorial_en.py:40
+#: po/tutorial.py:40
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
 "\n"
@@ -380,15 +380,15 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith."
 msgstr ""
 
-#: po/tutorial_en.py:41
+#: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
 msgstr ""
 
-#: po/tutorial_en.py:42
+#: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
 msgstr ""
 
-#: po/tutorial_en.py:43
+#: po/tutorial.py:43
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.\n"
 "\n"
@@ -401,7 +401,7 @@ msgid ""
 "After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent."
 msgstr ""
 
-#: po/tutorial_en.py:44
+#: po/tutorial.py:44
 msgid ""
 "Such residential upgrades are the only ones which cost resources and can not be restricted by you.\n"
 "\n"
@@ -414,15 +414,15 @@ msgid ""
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
 
-#: po/tutorial_en.py:45
+#: po/tutorial.py:45
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
 
-#: po/tutorial_en.py:46
+#: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
 msgstr ""
 
-#: po/tutorial_en.py:47
+#: po/tutorial.py:47
 msgid ""
 "Congratulations! Some of your inhabitants have reached increment II!\n"
 "\n"
@@ -437,7 +437,7 @@ msgid ""
 "The output of farms depends on what kind of fields you build around it."
 msgstr ""
 
-#: po/tutorial_en.py:48
+#: po/tutorial.py:48
 msgid ""
 "We will have a closer look at this later.\n"
 "\n"
@@ -452,15 +452,15 @@ msgid ""
 "TASK: Build a farm."
 msgstr ""
 
-#: po/tutorial_en.py:49
+#: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
 msgstr ""
 
-#: po/tutorial_en.py:50
+#: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
 msgstr ""
 
-#: po/tutorial_en.py:51
+#: po/tutorial.py:51
 msgid ""
 "The farm itself is not going to produce anything without some fields.\n"
 "\n"
@@ -476,7 +476,7 @@ msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods."
 msgstr ""
 
-#: po/tutorial_en.py:52
+#: po/tutorial.py:52
 msgid ""
 "Make sure that all fields you build are in the area covered by the farm.\n"
 "\n"
@@ -489,15 +489,15 @@ msgid ""
 "TASK: Build at least one pasture in the farm's range and add potato fields if you like."
 msgstr ""
 
-#: po/tutorial_en.py:53
+#: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
 
-#: po/tutorial_en.py:54
+#: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
 msgstr ""
 
-#: po/tutorial_en.py:55
+#: po/tutorial.py:55
 msgid ""
 "Did you watch your lumberjack recently?\n"
 "\n"
@@ -511,7 +511,7 @@ msgid ""
 "If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing."
 msgstr ""
 
-#: po/tutorial_en.py:56
+#: po/tutorial.py:56
 msgid ""
 "This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n"
 "\n"
@@ -526,15 +526,15 @@ msgid ""
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
 
-#: po/tutorial_en.py:57
+#: po/tutorial.py:57
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
 
-#: po/tutorial_en.py:58
+#: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
 msgstr ""
 
-#: po/tutorial_en.py:59
+#: po/tutorial.py:59
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth out of this wool.\n"
 "\n"
@@ -547,19 +547,19 @@ msgid ""
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
 
-#: po/tutorial_en.py:60
+#: po/tutorial.py:60
 msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr ""
 
-#: po/tutorial_en.py:61
+#: po/tutorial.py:61
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
 msgstr ""
 
-#: po/tutorial_en.py:62
+#: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
 msgstr ""
 
-#: po/tutorial_en.py:63
+#: po/tutorial.py:63
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.\n"
 "\n"
@@ -568,11 +568,11 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial."
 msgstr ""
 
-#: po/tutorial_en.py:64
+#: po/tutorial.py:64
 msgid "NO TASKS LEFT"
 msgstr ""
 
-#: po/tutorial_en.py:65
+#: po/tutorial.py:65
 msgid ""
 "There is nothing left to do now.\n"
 "\n"
@@ -589,11 +589,11 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you could try that out first (-;"
 msgstr ""
 
-#: po/tutorial_en.py:66
+#: po/tutorial.py:66
 msgid "Thanks!"
 msgstr ""
 
-#: po/tutorial_en.py:67
+#: po/tutorial.py:67
 msgid ""
 "\n"
 "\n"
@@ -607,6 +607,6 @@ msgid ""
 "Your UH-Team"
 msgstr ""
 
-#: po/tutorial_en.py:68
+#: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""

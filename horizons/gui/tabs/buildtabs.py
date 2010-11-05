@@ -25,7 +25,7 @@ from horizons.util.python.roman_numerals import int_to_roman
 class BuildTab(TabInterface):
 	last_active_build_tab = None
 	def __init__(self, tabindex = 0, events = {}):
-		super(BuildTab, self).__init__(widget = 'build_menu/hud_build_tab' + str(tabindex) + '.xml')
+		super(BuildTab, self).__init__(widget = 'hud_build_tab' + str(tabindex) + '.xml')
 		self.init_values()
 		self.widget.mapEvents(events)
 		self.button_up_image = 'content/gui/images/icons/hud/common/level%s_u.png' % tabindex

@@ -63,7 +63,9 @@ class SelectionTool(NavigationTool):
 									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()), self.session.view.layers[LAYERS.OBJECTS])
 			# Only one unit, select anyway
 			if len(instances) == 1:
-				selectable.append(WorldObject.get_object_by_id(int(instances[0].getId())))
+				instance = WorldObject.get_object_by_id(int(instances[0].getId()))
+				if hasattr(instance, 'select'):
+					selectable.append(instance)
 			else:
 				for i in instances:
 					instance = WorldObject.get_object_by_id(int(i.getId()))

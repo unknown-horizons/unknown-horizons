@@ -35,7 +35,7 @@ from horizons.i18n import load_xml_translated
 
 
 class OverviewTab(TabInterface):
-	def __init__(self, instance, widget = 'tab_widget/tab_overview.xml'):
+	def __init__(self, instance, widget = 'tab_overview.xml'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()
@@ -89,7 +89,7 @@ class OverviewTab(TabInterface):
 class BranchOfficeOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(BranchOfficeOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_branch_overview.xml',
+			widget = 'tab_branch_overview.xml',
 			instance = instance
 		)
 		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
@@ -102,7 +102,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(ShipOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_ship.xml',
+			widget = 'tab_overview_ship.xml',
 			instance = instance
 		)
 		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
@@ -144,7 +144,7 @@ class ShipOverviewTab(OverviewTab):
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(TraderShipOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_tradership.xml',
+			widget = 'tab_overview_tradership.xml',
 			instance = instance
 		)
 		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
@@ -155,11 +155,11 @@ class TraderShipOverviewTab(OverviewTab):
 		self.tooltip = _("Ship Overview")
 
 class ProductionOverviewTab(OverviewTab):
-	production_line_gui_xml = "tab_widget/tab_production_line.xml"
+	production_line_gui_xml = "tab_production_line.xml"
 
 	def  __init__(self, instance):
 		super(ProductionOverviewTab, self).__init__(
-			widget = 'buildings_gui/production_building_overview.xml',
+			widget = 'production_building_overview.xml',
 			instance = instance
 		)
 		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
@@ -242,7 +242,7 @@ class ProductionOverviewTab(OverviewTab):
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(SettlerOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_settler.xml',
+			widget = 'tab_overview_settler.xml',
 			instance = instance
 		)
 		self.tooltip = _("Settler Overview")
@@ -278,7 +278,7 @@ class SettlerOverviewTab(OverviewTab):
 class MarketPlaceOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(MarketPlaceOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_marketplace.xml',
+			widget = 'tab_overview_marketplace.xml',
 			instance = instance
 		)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
@@ -290,7 +290,7 @@ class MarketPlaceOverviewTab(OverviewTab):
 class SignalFireOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(SignalFireOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_signalfire.xml',
+			widget = 'tab_overview_signalfire.xml',
 			instance = instance
 		)
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
@@ -303,14 +303,14 @@ class SignalFireOverviewTab(OverviewTab):
 class EnemyBuildingOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(EnemyBuildingOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_enemy_building.xml',
+			widget = 'tab_overview_enemy_building.xml',
 			instance = instance
 		)
 
 class ResourceDepositOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(ResourceDepositOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_resourcedeposit.xml',
+			widget = 'tab_overview_resourcedeposit.xml',
 			instance = instance
 		)
 		self.widget.child_finder("inventory").init(self.instance.session.db, \
