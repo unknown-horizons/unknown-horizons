@@ -65,10 +65,11 @@ class AccountTab(MarketPlaceTab):
 		super(AccountTab, self).__init__(widget = 'tab_account.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/account_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/account_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/account_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/account_h.png'
+		icon_path = 'content/gui/images/icons/hud/common/account_%s.png'
+		self.button_up_image = icon_path % 'u'
+		self.button_active_image = icon_path % 'a'
+		self.button_down_image = icon_path % 'd'
+		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Account")
 
 	def refresh(self):
@@ -87,14 +88,15 @@ class AccountTab(MarketPlaceTab):
 class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 	"""Displays information about the settlers on average as overview"""
 	def __init__(self, instance):
-		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'tab_marketplace_settler.xml')
+		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'overview_mainsquare.xml')
 		self.settlement = instance.settlement
 		self.init_values()
+		icon_path = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
+		self.button_up_image = icon_path
+		self.button_active_image = icon_path
+		self.button_down_image = icon_path
+		self.button_hover_image = icon_path
 		self.tooltip = _("Settler overview")
-		self.button_up_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
-		self.button_active_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
-		self.button_down_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
 
 		self._old_most_needed_res_icon = None
 
@@ -125,7 +127,3 @@ class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 			container.addChild(most_needed_res_icon)
 			self._old_most_needed_res_icon = most_needed_res_icon
 		container.adaptLayout()
-
-
-
-
