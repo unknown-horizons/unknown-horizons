@@ -17,15 +17,16 @@
 		<Setting name="PychanDebug" type="bool"> True </Setting>
 		<Setting name="LogToPrompt" type="int"> 1 </Setting>
 		<Setting name="LogToFile" type="int"> 0 </Setting>
+		<Setting name="Lighting" type="int"> 0 </Setting>
 	</Module>
 	<Module name="unknownhorizons">
 		<Setting name="VolumeMusic" type="float">0.20</Setting>
 		<Setting name="VolumeEffects" type="float">0.5</Setting>
-		<Setting name="AutosaveInterval" type="float">10</Setting>
-		<Setting name="AutosaveMaxCount" type="float">10</Setting>
-		<Setting name="QuicksaveMaxCount" type="float">10</Setting>
+		<Setting name="AutosaveInterval" type="int">10</Setting>
+		<Setting name="AutosaveMaxCount" type="int">10</Setting>
+		<Setting name="QuicksaveMaxCount" type="int">10</Setting>
 		<Setting name="Language" type="unicode">System default</Setting>
 		<Setting name="ClientID" type="str"></Setting>
-		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
+		<Setting name="Nickname" type="str">Unnamed Traveler</Setting>
 	</Module>
 </Settings>
