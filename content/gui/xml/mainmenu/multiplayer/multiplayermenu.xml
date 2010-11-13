@@ -62,9 +62,9 @@
 			<Spacer />
 			<Label name="refr_gamelist_lbl" text="Refresh list:" position="150,50" />
 			<TooltipButton name="refresh" tooltip="Refresh list of active games"
-				up_image="content/gui/images/icons/hud/main/rotate_right.png"
-				down_image="content/gui/images/icons/hud/main/rotate_right.png"
-				hover_image="content/gui/images/icons/hud/main/rotate_left.png" />
+				up_image="content/gui/icons/widgets/minimap/rotate_right.png"
+				down_image="content/gui/icons/widgets/minimap/rotate_right.png"
+				hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
 		</HBox>
 
 		<ScrollArea max_size="290,250" min_size="290,200" horizontal_scrollbar="0" name="game_list_area">

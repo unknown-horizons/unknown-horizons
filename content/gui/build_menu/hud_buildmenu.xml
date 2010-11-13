@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <Container size="250,550" >
 	<ImageButton name="rotateLeft" size="48,48" 
-		up_image="content/gui/images/icons/hud/main/rotate_left.png" 
-		down_image="content/gui/images/icons/hud/main/rotate_left_h.png" 
-		hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
+		up_image="content/gui/icons/widgets/minimap/rotate_left.png" 
+		down_image="content/gui/icons/widgets/minimap/rotate_left_h.png" 
+		hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png" />
 	<Icon position="24,0" image="content/gui/images/misc/minimap_placeholder.png" />
 	<ImageButton name="rotateRight" size="48,48" 
-		up_image="content/gui/images/icons/hud/main/rotate_right.png" 
-		down_image="content/gui/images/icons/hud/main/rotate_right_h.png" 
-		hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
+		up_image="content/gui/icons/widgets/minimap/rotate_right.png" 
+		down_image="content/gui/icons/widgets/minimap/rotate_right_h.png" 
+		hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png" />
 </Container>

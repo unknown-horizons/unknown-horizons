@@ -5,30 +5,30 @@
 		image="content/gui/images/background/map_bg.png" />
 
 	<ImageButton name="speedUp" size="28,28" position="62,16"
-		up_image="content/gui/images/icons/hud/main/speed_up.png"
-		down_image="content/gui/images/icons/hud/main/speed_up_h.png"
-		hover_image="content/gui/images/icons/hud/main/speed_up_h.png" />
+		up_image="content/gui/icons/widgets/minimap/speed_up.png"
+		down_image="content/gui/icons/widgets/minimap/speed_up_h.png"
+		hover_image="content/gui/icons/widgets/minimap/speed_up_h.png" />
 	<ImageButton name="speedDown" size="28,28" position="43,38"
-		up_image="content/gui/images/icons/hud/main/speed_down.png"
-		down_image="content/gui/images/icons/hud/main/speed_down_h.png"
-		hover_image="content/gui/images/icons/hud/main/speed_down_h.png" />
+		up_image="content/gui/icons/widgets/minimap/speed_down.png"
+		down_image="content/gui/icons/widgets/minimap/speed_down_h.png"
+		hover_image="content/gui/icons/widgets/minimap/speed_down_h.png" />
 
 	<ImageButton name="rotateLeft" size="28,28" position="91,5"
-		up_image="content/gui/images/icons/hud/main/rotate_left.png"
-		down_image="content/gui/images/icons/hud/main/rotate_left_h.png"
-		hover_image="content/gui/images/icons/hud/main/rotate_left_h.png" />
+		up_image="content/gui/icons/widgets/minimap/rotate_left.png"
+		down_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
+		hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png" />
 	<ImageButton name="rotateRight" size="28,28" position="155,5"
-		up_image="content/gui/images/icons/hud/main/rotate_right.png"
-		down_image="content/gui/images/icons/hud/main/rotate_right_h.png"
-		hover_image="content/gui/images/icons/hud/main/rotate_right_h.png" />
+		up_image="content/gui/icons/widgets/minimap/rotate_right.png"
+		down_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
+		hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png" />
 
 	<ImageButton name="zoomIn" size="28,28" position="181,16"
-		up_image="content/gui/images/icons/hud/main/zoom_in.png"
-		down_image="content/gui/images/icons/hud/main/zoom_in_h.png"
-		hover_image="content/gui/images/icons/hud/main/zoom_in_h.png" />
+		up_image="content/gui/icons/widgets/minimap/zoom_in.png"
+		down_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
+		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png" />
 	<ImageButton name="zoomOut" size="28,28" position="201,36"
-		up_image="content/gui/images/icons/hud/main/zoom_out.png"
-		down_image="content/gui/images/icons/hud/main/zoom_out_h.png"
-		hover_image="content/gui/images/icons/hud/main/zoom_out_h.png" />
+		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
+		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
+		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png" />
 
 </Container>

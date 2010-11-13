@@ -17,23 +17,23 @@
 		hover_image="content/gui/images/background/delete_h.png" 
 		is_focusable="0" tooltip="Destroy" />
 	<TooltipButton name="logbook" size="30,30" position="39,32" 
-		up_image="content/gui/images/icons/hud/main/diplomacy_l.png" 
-		down_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" 
-		hover_image="content/gui/images/icons/hud/main/diplomacy_l_h.png" 
+		up_image="content/gui/icons/widgets/minimap/captainslog_l.png" 
+		down_image="content/gui/icons/widgets/minimap/captainslog_l_h.png" 
+		hover_image="content/gui/icons/widgets/minimap/captainslog_l_h.png" 
 		is_focusable="0" tooltip="Captain's log" />
 	<TooltipButton name="build" size="30,30" position="84,45" 
-		up_image="content/gui/images/icons/hud/main/build_l.png" 
-		down_image="content/gui/images/icons/hud/main/build_l_h.png" 
-		hover_image="content/gui/images/icons/hud/main/build_l_h.png" 
+		up_image="content/gui/icons/widgets/minimap/build_l.png" 
+		down_image="content/gui/icons/widgets/minimap/build_l_h.png" 
+		hover_image="content/gui/icons/widgets/minimap/build_l_h.png" 
 		is_focusable="0" tooltip="Build menu" />
 	<TooltipButton name="helpLink" size="32,32" position="129,31" 
-		up_image="content/gui/images/icons/hud/main/help.png" 
-		down_image="content/gui/images/icons/hud/main/help_h.png" 
-		hover_image="content/gui/images/icons/hud/main/help_h.png" 
+		up_image="content/gui/icons/widgets/minimap/help.png" 
+		down_image="content/gui/icons/widgets/minimap/help_h.png" 
+		hover_image="content/gui/icons/widgets/minimap/help_h.png" 
 		tooltip="Help" />
 	<TooltipButton name="gameMenuButton" size="32,32" position="161,0" 
-		up_image="content/gui/images/icons/hud/main/gamemenu.png" 
-		down_image="content/gui/images/icons/hud/main/gamemenu_h.png" 
-		hover_image="content/gui/images/icons/hud/main/gamemenu_h.png" 
+		up_image="content/gui/icons/widgets/minimap/gamemenu.png" 
+		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png" 
+		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png" 
 		tooltip="Game menu" />
 </Container>
