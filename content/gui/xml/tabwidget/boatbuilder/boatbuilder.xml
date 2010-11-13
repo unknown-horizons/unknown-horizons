@@ -41,13 +41,13 @@
 		<VBox position="150,50" name="BB_upgrades_box"/> 	<!-- translations? -->
 
 		<!-- one of those button gets removed at runtime -->
-		<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_active_n.png"
-			down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
-			hover_image="content/gui/images/icons/hud/main/toggle_active_h.png"
+		<TooltipButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
+			down_image="content/gui/icons/templates/production/toggle_active_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
 			border_size="0" position="170,100" name="toggle_active_active" tooltip="Pause" />
-		<TooltipButton up_image="content/gui/images/icons/hud/main/toggle_inactive_n.png"
-			down_image="content/gui/images/icons/hud/main/toggle_active_d.png"
-			hover_image="content/gui/images/icons/hud/main/toggle_inactive_h.png"
+		<TooltipButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
 			border_size="0" position="170,100" name="toggle_active_inactive" tooltip="Resume" />
 	</Container>
 
