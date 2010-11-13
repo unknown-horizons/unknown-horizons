@@ -50,10 +50,10 @@ class OverviewTab(TabInterface):
 		if self.widget.child_finder('player_emblem'):
 			if self.instance.owner is not None:
 				self.widget.child_finder('player_emblem').image =  \
-			    'content/gfx/misc/playeremblems/emblem_%s.png' %  self.instance.owner.color.name
+			    'content/gui/icons/tabwidget/emblems/emblem_%s.png' %  self.instance.owner.color.name
 			else:
 				self.widget.child_finder('player_emblem').image = \
-			    'content/gfx/misc/playeremblems/emblem_no_player.png'
+			    'content/gui/icons/tabwidget/emblems/emblem_no_player.png'
 
 
 	def refresh(self):
