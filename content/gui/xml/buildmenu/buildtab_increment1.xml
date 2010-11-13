@@ -22,24 +22,24 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="162,30" />
 
 		<TooltipButton name="herder-1" position="2,32"
-			up_image="content/gui/images/icons/hud/build/herdsman.png"
-			hover_image="content/gui/images/icons/hud/build/herdsman_h.png"
-			down_image="content/gui/images/icons/hud/build/herdsman_h.png"
+			up_image="content/gui/icons/buildmenu/herdsman.png"
+			hover_image="content/gui/content/gui/icons/buildmenu/farm_h.png"
+			down_image="content/gui/content/gui/icons/buildmenu/farm_h.png"
 			tooltip="Farm: Grows field crops and raises livestock." />
 		<TooltipButton name="weaver-1" position="56,32"
-			up_image="content/gui/images/icons/hud/build/weaver.png"
-			hover_image="content/gui/images/icons/hud/build/weaver_h.png"
-			down_image="content/gui/images/icons/hud/build/weaver_h.png"
+			up_image="content/gui/icons/buildmenu/weaver.png"
+			hover_image="content/gui/icons/buildmenu/weaver_h.png"
+			down_image="content/gui/icons/buildmenu/weaver_h.png"
 			tooltip="Weaver: Turns lamb wool into cloth." />
 		<TooltipButton name="clay-pit-1" position="110,32"
-			up_image="content/gui/images/icons/hud/build/claypit.png"
-			hover_image="content/gui/images/icons/hud/build/claypit_h.png"
-			down_image="content/gui/images/icons/hud/build/claypit_h.png"
+			up_image="content/gui/icons/buildmenu/claypit.png"
+			hover_image="content/gui/icons/buildmenu/claypit_h.png"
+			down_image="content/gui/icons/buildmenu/claypit_h.png"
 			tooltip="Clay Pit: Gets clay from deposit." />
 		<TooltipButton name="brickyard-1" position="164,32"
-			up_image="content/gui/images/icons/hud/build/brickmaker.png"
-			hover_image="content/gui/images/icons/hud/build/brickmaker_h.png"
-			down_image="content/gui/images/icons/hud/build/brickmaker_h.png"
+			up_image="content/gui/icons/buildmenu/brickmaker.png"
+			hover_image="content/gui/icons/buildmenu/brickmaker_h.png"
+			down_image="content/gui/icons/buildmenu/brickmaker_h.png"
 			tooltip="Brickyard: Turns clay into bricks." />
 	</Container>
 
@@ -50,14 +50,14 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
 
 		<TooltipButton name="potatofield-1" position="2,32"
-			up_image="content/gui/images/icons/hud/build/potatos.png"
-			hover_image="content/gui/images/icons/hud/build/potatos_h.png"
-			down_image="content/gui/images/icons/hud/build/potatos_h.png"
+			up_image="content/gui/icons/buildmenu/potatoes.png"
+			hover_image="content/gui/icons/buildmenu/potatoes_h.png"
+			down_image="content/gui/icons/buildmenu/potatoes_h.png"
 			tooltip="Potato Field: Yields food. Needs a farm." />
 		<TooltipButton name="pasture-1" position="56,32"
-			up_image="content/gui/images/icons/hud/build/pasture.png"
-			hover_image="content/gui/images/icons/hud/build/pasture_h.png"
-			down_image="content/gui/images/icons/hud/build/pasture_h.png"
+			up_image="content/gui/icons/buildmenu/pasture.png"
+			hover_image="content/gui/icons/buildmenu/pasture_h.png"
+			down_image="content/gui/icons/buildmenu/pasture_h.png"
 			tooltip="Pasture: Raises sheep. Produces wool. Needs a farm." />
 	</Container>
 
@@ -67,9 +67,9 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 		<TooltipButton name="villageschool-1" position="0,32"
-			up_image="content/gui/images/icons/hud/build/school_i.png"
-			hover_image="content/gui/images/icons/hud/build/school_i_h.png"
-			down_image="content/gui/images/icons/hud/build/school_i_h.png"
+			up_image="content/gui/icons/buildmenu/school_i.png"
+			hover_image="content/gui/icons/buildmenu/school_i_h.png"
+			down_image="content/gui/icons/buildmenu/school_i_h.png"
 			tooltip="Village school: Provides education." />
 	</Container>
 
@@ -79,9 +79,9 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 		<TooltipButton name="boat_builder-1" position="0,32"
-			up_image="content/gui/images/icons/hud/build/boat_builder.png"
-			hover_image="content/gui/images/icons/hud/build/boat_builder_h.png"
-			down_image="content/gui/images/icons/hud/build/boat_builder_h.png"
+			up_image="content/gui/icons/buildmenu/boat_builder.png"
+			hover_image="content/gui/icons/buildmenu/boat_builder_h.png"
+			down_image="content/gui/icons/buildmenu/boat_builder_h.png"
 			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
 
 	</Container>
@@ -92,9 +92,9 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 		<TooltipButton name="distillery-1" position="0,30"
-			up_image="content/gui/images/icons/hud/build/distillery.png"
-			hover_image="content/gui/images/icons/hud/build/distillery_h.png"
-			down_image="content/gui/images/icons/hud/build/distillery_h.png"
+			up_image="content/gui/content/gui/icons/buildmenu/distillery.png"
+			hover_image="content/gui/content/gui/icons/buildmenu/distillery_h.png"
+			down_image="content/gui/content/gui/icons/buildmenu/distillery_h.png"
 			tooltip="Distillery: Turns sugar into liquor. No function currently!" />
 	</Container>	-->
 

@@ -21,24 +21,24 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
 
 		<TooltipButton name="resident-1" position="2,32"
-			up_image="content/gui/images/icons/hud/build/tent.png"
-			hover_image="content/gui/images/icons/hud/build/tent_h.png"
-			down_image="content/gui/images/icons/hud/build/tent_h.png"
+			up_image="content/gui/icons/buildmenu/tent.png"
+			hover_image="content/gui/icons/buildmenu/tent_h.png"
+			down_image="content/gui/icons/buildmenu/tent_h.png"
 			tooltip="Tent: Houses your inhabitants."/>
 		<TooltipButton name="store-1" position="56,32"
-			up_image="content/gui/images/icons/hud/build/storagetent.png"
-			hover_image="content/gui/images/icons/hud/build/storagetent_h.png"
-			down_image="content/gui/images/icons/hud/build/storagetent_h.png"
+			up_image="content/gui/icons/buildmenu/storagetent.png"
+			hover_image="content/gui/icons/buildmenu/storagetent_h.png"
+			down_image="content/gui/icons/buildmenu/storagetent_h.png"
 			tooltip="Storage: Extends stock and provides collectors." />
 		<TooltipButton name="street-1" position="110,32"
-			up_image="content/gui/images/icons/hud/build/path.png"
-			hover_image="content/gui/images/icons/hud/build/path_h.png"
-			down_image="content/gui/images/icons/hud/build/path_h.png"
+			up_image="content/gui/icons/buildmenu/path.png"
+			hover_image="content/gui/icons/buildmenu/path_h.png"
+			down_image="content/gui/icons/buildmenu/path_h.png"
 			tooltip="Trail: Needed for collecting goods."/>
 		<!--<TooltipButton name="bridge-1" position="164,32"
-			up_image="content/gui/images/icons/hud/build/bridge.png"
-			hover_image="content/gui/images/icons/hud/build/bridge_h.png"
-			down_image="content/gui/images/icons/hud/build/bridge_h.png"
+			up_image="content/gui/icons/buildmenu/outdated/bridge.png"
+			hover_image="content/gui/icons/buildmenu/outdated/bridge_h.png"
+			down_image="content/gui/icons/buildmenu/outdated/bridge_h.png"
 			tooltip="Log: Road across a river."/>   -->
 	</Container>
 
@@ -50,19 +50,19 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
 
 		<TooltipButton name="main_square-1" position="2,30"
-			up_image="content/gui/images/icons/hud/build/mainsquare.png"
-			hover_image="content/gui/images/icons/hud/build/mainsquare_h.png"
-			down_image="content/gui/images/icons/hud/build/mainsquare_h.png"
+			up_image="content/gui/icons/buildmenu/mainsquare.png"
+			hover_image="content/gui/icons/buildmenu/mainsquare_h.png"
+			down_image="content/gui/icons/buildmenu/mainsquare_h.png"
 			tooltip="Main square: Supplies citizens with goods." />
 		<TooltipButton name="church-1" position="56,30"
-			up_image="content/gui/images/icons/hud/build/church_i.png"
-			hover_image="content/gui/images/icons/hud/build/church_i_h.png"
-			down_image="content/gui/images/icons/hud/build/church_i.png"
+			up_image="content/gui/icons/buildmenu/church_i.png"
+			hover_image="content/gui/icons/buildmenu/church_i_h.png"
+			down_image="content/gui/icons/buildmenu/church_i.png"
 			tooltip="Pavilion: Fulfills religious needs of sailors." />
 		<TooltipButton name="lighthouse-1" position="110,30"
-			up_image="content/gui/images/icons/hud/build/signalfire.png"
-			hover_image="content/gui/images/icons/hud/build/signalfire_h.png"
-			down_image="content/gui/images/icons/hud/build/signalfire_h.png"
+			up_image="content/gui/icons/buildmenu/signalfire.png"
+			hover_image="content/gui/icons/buildmenu/signalfire_h.png"
+			down_image="content/gui/icons/buildmenu/signalfire_h.png"
 			tooltip="Signal fire: Allows the player to trade with the free trader." />
 	</Container>
 
@@ -75,24 +75,24 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="162,30" />
 
 		<TooltipButton name="lumberjack-1" position="2,32"
-			up_image="content/gui/images/icons/hud/build/lumberjack.png"
- 			hover_image="content/gui/images/icons/hud/build/lumberjack_h.png"
-			down_image="content/gui/images/icons/hud/build/lumberjack_h.png"
+			up_image="content/gui/icons/buildmenu/lumberjack.png"
+ 			hover_image="content/gui/icons/buildmenu/lumberjack_h.png"
+			down_image="content/gui/icons/buildmenu/lumberjack_h.png"
 			tooltip="Lumberjack: Chops down trees and turns them into boards." />
 		<TooltipButton name="tree-1" position="56,32"
-			up_image="content/gui/images/icons/hud/build/tree.png"
-			hover_image="content/gui/images/icons/hud/build/tree_h.png"
-			down_image="content/gui/images/icons/hud/build/tree_h.png"
+			up_image="content/gui/icons/buildmenu/tree.png"
+			hover_image="content/gui/icons/buildmenu/tree_h.png"
+			down_image="content/gui/icons/buildmenu/tree_h.png"
 			tooltip="Tree" />
 		<TooltipButton name="hunter-1" position="110,32"
-			up_image="content/gui/images/icons/hud/build/hunter.png"
-			hover_image="content/gui/images/icons/hud/build/hunter_h.png"
-			down_image="content/gui/images/icons/hud/build/hunter_h.png"
+			up_image="content/gui/icons/buildmenu/hunter.png"
+			hover_image="content/gui/icons/buildmenu/hunter_h.png"
+			down_image="content/gui/icons/buildmenu/hunter_h.png"
 			tooltip="Hunter: Hunts wild forest animals, produces food." />
 		<TooltipButton name="fisher-1" position="164,32"
-			up_image="content/gui/images/icons/hud/build/fisherman.png"
-			hover_image="content/gui/images/icons/hud/build/fisherman_h.png"
-			down_image="content/gui/images/icons/hud/build/fisherman_h.png"
+			up_image="content/gui/icons/buildmenu/fisherman.png"
+			hover_image="content/gui/icons/buildmenu/fisherman_h.png"
+			down_image="content/gui/icons/buildmenu/fisherman_h.png"
 			tooltip="Fisherman: Fishes the sea, produces food." />
 	</Container>
 
@@ -102,14 +102,14 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 		<TooltipButton name="tower-1" position="2,32"
-			up_image="content/gui/images/icons/hud/build/lookout.png"
-			hover_image="content/gui/images/icons/hud/build/lookout_h.png"
-			down_image="content/gui/images/icons/hud/build/lookout_h.png"
+			up_image="content/gui/icons/buildmenu/lookout.png"
+			hover_image="content/gui/icons/buildmenu/lookout_h.png"
+			down_image="content/gui/icons/buildmenu/lookout_h.png"
 			tooltip="Lookout: Increases the player's sight." />
 		<TooltipButton name="wall-1" position="56,32"
-			up_image="content/gui/images/icons/hud/build/rampart.png"
-			hover_image="content/gui/images/icons/hud/build/rampart_h.png"
-			down_image="content/gui/images/icons/hud/build/rampart_h.png"
+			up_image="content/gui/icons/buildmenu/outdated/rampart.png"
+			hover_image="content/gui/icons/buildmenu/outdated/rampart_h.png"
+			down_image="content/gui/icons/buildmenu/outdated/rampart_h.png"
 			text="Rampart: Protects your settlement." />
 	</Container>-->
 
