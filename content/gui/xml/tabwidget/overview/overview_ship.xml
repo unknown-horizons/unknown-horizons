@@ -29,7 +29,7 @@
 		</HBox>
 
 		<HBox position="186,195">
-			<ToggleImageButton name="foundSettelment" inactive_image="content/gui/images/icons/hud/ship/anchor_bw.png" up_image="content/gui/images/icons/hud/ship/anchor.png" down_image="content/gui/images/icons/hud/ship/anchor_a.png" hover_image="content/gui/images/icons/hud/ship/anchor_h.png" tooltip="Build Settlement"/>
+			<ToggleImageButton name="foundSettelment" inactive_image="content/gui/icons/ship/anchor_bw.png" up_image="content/gui/icons/ship/anchor.png" down_image="content/gui/icons/ship/anchor_a.png" hover_image="content/gui/icons/ship/anchor_h.png" tooltip="Build Settlement"/>
 		</HBox>
 
 	</Container>
