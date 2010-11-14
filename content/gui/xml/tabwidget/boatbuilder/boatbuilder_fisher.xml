@@ -60,15 +60,15 @@
 		<!-- Ship 1 information -->
 		<Label name="BB_fisher_ship1" position="0,3" text="Fishing boat" />
 
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="13,25" tooltip="Boards" />
+		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="13,25" tooltip="Boards" />
 		<Label position="35,25" text="05t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="13,45" tooltip="Cloth" />
+		<TooltipIcon image="content/gui/icons/resources/16/3.png" position="13,45" tooltip="Cloth" />
 		<Label position="35,45" text="04t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="68,25" tooltip="Ropes" />
+		<TooltipIcon image="content/gui/icons/resources/16/6.png" position="68,25" tooltip="Ropes" />
 		<Label position="90,25" text="00t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/food.png" position="68,45" tooltip="Cannons" />
+		<TooltipIcon image="content/gui/icons/resources/16/5.png" position="68,45" tooltip="Cannons" />
 		<Label position="90,45" text="00t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/gold.png" position="13,65" tooltip="Money" />
+		<TooltipIcon image="content/gui/icons/resources/16/1.png" position="13,65" tooltip="Money" />
 		<Label position="35,65" text="500" />
 	</Container>
 
@@ -76,15 +76,15 @@
 		<!-- Ship 2 information -->
 		<Label name="BB_fisher_ship2" position="0,3" text="Cutter" />
 
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/boards.png" position="13,25" tooltip="Boards" />
+		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="13,25" tooltip="Boards" />
 		<Label position="35,25" text="12t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/cloth.png" position="13,45" tooltip="Cloth" />
+		<TooltipIcon image="content/gui/icons/resources/16/3.png" position="13,45" tooltip="Cloth" />
 		<Label position="35,45" text="08t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/tools.png" position="68,25" tooltip="Ropes" />
+		<TooltipIcon image="content/gui/icons/resources/16/6.png" position="68,25" tooltip="Ropes" />
 		<Label position="90,25" text="00t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/food.png" position="68,45" tooltip="Cannons" />
+		<TooltipIcon image="content/gui/icons/resources/16/5.png" position="68,45" tooltip="Cannons" />
 		<Label position="90,45" text="00t" />
-		<TooltipIcon image="content/gui/images/icons/hud/main/small/16/gold.png" position="13,65" tooltip="Money" />
+		<TooltipIcon image="content/gui/icons/resources/16/1.png" position="13,65" tooltip="Money" />
 		<Label position="35,65" text="750" />
 	</Container>
 
