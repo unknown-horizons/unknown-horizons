@@ -16,10 +16,10 @@
 	<Container position="20,32" size="250,80" >
 		<Label position="0,11" text="Companies" name="companies_label" />
 
-		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
-		<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
-		<Icon image="content/gui/images/background/build_button_bg.png" position="108,30" />
-		<Icon image="content/gui/images/background/build_button_bg.png" position="162,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="54,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="108,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="162,30" />
 
 		<TooltipButton name="herder-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/farm.png"
@@ -46,8 +46,8 @@
 	<Container position="20,107" size="250,80" >
 		<Label position="0,11" text="Fields" name="companies_label" />
 
-		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
-		<Icon image="content/gui/images/background/build_button_bg.png" position="54,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="54,30" />
 
 		<TooltipButton name="potatofield-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/potatoes.png"
@@ -64,7 +64,7 @@
 	<Container position="20,182" size="60,80" >
 		<Label position="0,11" text="Services" name="services_label" />
 
-		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
 
 		<TooltipButton name="villageschool-1" position="0,32"
 			up_image="content/gui/icons/buildmenu/school_i.png"
@@ -76,7 +76,7 @@
 	<Container position="130,182" size="60,80" >
 		<Label position="0,11" text="Military" name="military_label" />
 
-		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
 
 		<TooltipButton name="boat_builder-1" position="0,32"
 			up_image="content/gui/icons/buildmenu/boat_builder.png"
@@ -89,7 +89,7 @@
 	<!--<Container position="20,240" size="250,80">
 		<Label position="0,11" text="Processing Production" name="processing_production_label" />
 
-		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
+		<Icon image="content/gui/images/content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
 
 		<TooltipButton name="distillery-1" position="0,30"
 			up_image="content/gui/icons/buildmenu/distillery.png"

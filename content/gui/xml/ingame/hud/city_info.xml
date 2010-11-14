@@ -3,8 +3,8 @@
 <!-- City Info widget: Includes city name and number of inhabitants -->
 	<Icon image="content/gui/images/background/widgets/city_name_bg.png" position="0,17" />
 
-	<Icon image="content/gui/images/icons/hud/main/icon_settlement.png"  position="5,5" />
-	<Icon name="city_info_inhabitants" image="content/gui/images/icons/hud/main/icon_inhabitants.png"  position="174,8" />
+	<Icon image="content/gui/icons/widgets/cityinfo/settlement.png"  position="5,5" />
+	<Icon name="city_info_inhabitants" image="content/gui/icons/widgets/cityinfo/inhabitants.png"  position="174,8" />
 
 	<TooltipLabel name="city_name" text="" position="48,20" tooltip="Click to change the name of your settlement." />
 	<Label name="city_inhabitants" position="204,20" text="" />

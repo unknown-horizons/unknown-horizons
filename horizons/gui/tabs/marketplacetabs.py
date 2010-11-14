@@ -91,7 +91,7 @@ class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'overview_mainsquare.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		icon_path = 'content/gui/images/icons/hud/main/icon_inhabitants.png'
+		icon_path = 'content/gui/icons/widgets/cityinfo/inhabitants.png'
 		self.button_up_image = icon_path
 		self.button_active_image = icon_path
 		self.button_down_image = icon_path
