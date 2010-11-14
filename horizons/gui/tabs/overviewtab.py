@@ -50,10 +50,10 @@ class OverviewTab(TabInterface):
 		if self.widget.child_finder('player_emblem'):
 			if self.instance.owner is not None:
 				self.widget.child_finder('player_emblem').image =  \
-			    'content/gui/icons/tabwidget/emblems/emblem_%s.png' %  self.instance.owner.color.name
+			    'content/gui/images/tabwidget/emblems/emblem_%s.png' %  self.instance.owner.color.name
 			else:
 				self.widget.child_finder('player_emblem').image = \
-			    'content/gui/icons/tabwidget/emblems/emblem_no_player.png'
+			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
 
 
 	def refresh(self):
@@ -138,7 +138,7 @@ class ShipOverviewTab(OverviewTab):
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(TraderShipOverviewTab, self).__init__(
-			widget = 'tab_overview_tradership.xml',
+			widget = 'overview_tradership.xml',
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)

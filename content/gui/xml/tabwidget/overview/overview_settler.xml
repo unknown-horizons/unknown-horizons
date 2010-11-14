@@ -22,15 +22,24 @@
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />
-			<TooltipIcon name="happiness_label" image="content/gui/images/icons/hud/main/running_costs.png" position="0,166" tooltip="Happiness" />
+			<TooltipIcon name="happiness_label" position="0,166" 
+				image="content/gui/images/icons/hud/main/running_costs.png" 
+				tooltip="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,170"/>
-			<TooltipProgressBar tooltip="Happiness" position="21,166" size="91,20" name='happiness'/>
-			<TooltipIcon name="residents_label" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png" position="140,166" tooltip="Residents" />
+			<TooltipProgressBar name='happiness' position="21,166"
+				size="91,20" tooltip="Happiness" />
+			<TooltipIcon name="residents_label" position="140,166" 
+				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png" 
+				tooltip="Residents" />
 			<Label name='inhabitants' position="160,165" text="" />
 
 			<!-- Taxes -->
 			<Icon image="content/gui/images/background/hr.png" position="0,190" />
-			<Label position="0,205" name="tax_label" text="Taxes:" /><Label name='taxes' position="55,205" text="" /><TooltipIcon name="paid_taxes_label" image="content/gui/images/icons/hud/main/running_costs.png" position="72,205" tooltip="Paid taxes" />
+			<Label position="0,205" name="tax_label" text="Taxes:" />
+			<Label name='taxes' position="55,205" text="" />
+			<TooltipIcon name="paid_taxes_label" position="72,205" 
+				image="content/gui/images/icons/hud/main/running_costs.png" 
+				tooltip="Paid taxes" />
 			<Slider position="2,230" size="200,20" name="tax_slider" orientation="0" />
 
 			<!-- Ressources -->

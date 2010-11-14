@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <Container name="black_underlay">
-	<Icon name="black_underlay_background" image="content/gui/images/background/black.png" position="0,0" />
+<Icon name="black_underlay_background" image="content/gui/images/background/black.png" />
 
-	<Container name="menu" size="1024,768">
+<Container name="menu" size="1024,768">
 	<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
 	<Icon image="content/gui/images/background/book.png" position="100,100" />
 
-	<Container size="320,510" position="175,132">
-		<Label text="NEW GAME - MULTIPLAYER" position="70,10" name="headline_left" />
+	<Container size="320,510" position="175,132" name="left_side">
+		<Label text="New Game - Multiplayer" position="70,10" name="headline_left" 
+			font="libertine_headline"/>
 		<Icon image="content/gui/images/background/hr.png" position="52,30" />
 		<VBox name="playerdataselectioncontainer" position="20,50" />
 		<Icon image="content/gui/images/background/hr.png" position="52,230" />
@@ -50,8 +51,8 @@
 
 	<!--
 	this should acctually be a Container, that contains subcontainers, but with Container,
-	the content doesn't show up. Pychan wasn't designed for Containers within Containers, which might
-	be the source of this bug
+	the content doesn't show up. Pychan wasn't designed for Containers within Containers, 
+	which might be the source of this bug
 	-->
 	<VBox name="playerdataselectioncontainer" position="200,290" />
 
@@ -92,5 +93,5 @@
 
 	</VBox>
 
-	</Container>
+</Container>
 </Container>
