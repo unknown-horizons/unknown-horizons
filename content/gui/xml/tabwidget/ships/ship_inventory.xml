@@ -1,34 +1,41 @@
 <?xml version="1.0"?>
 <Container size="265,410">
+<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
+<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,350" />
 
-	<Icon image="content/gui/images/background/hud/main_bg_head.png" position="0,0" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,50" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,100" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,150" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,200" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,250" />
-	<Icon image="content/gui/images/background/hud/main_bg_fill.png" position="0,300" />
-	<Icon image="content/gui/images/background/hud/main_bg_bottom.png" position="0,350" />
+<Container position="0,70" size="265,270" >
 
-	<Container position="0,70" size="265,270" >
+	<Label name="headline" position="85,7" text="Inventory"/>
+	<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />
+	<Icon image="content/gui/images/background/inv_bg.png" position="75,50" />
+	<Icon image="content/gui/images/background/inv_bg.png" position="130,50" />
+	<Icon image="content/gui/images/background/inv_bg.png" position="185,50" />
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<Label name="headline" position="85,7" text="Inventory"/>
-		<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="75,50" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="130,50" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="185,50" />
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<Inventory name="inventory" size="316,314" position="15,46"/>
 
-		<Inventory name="inventory" size="316,314" position="15,46"/>
+	<Label name="load_unload_label" position="25, 200" text="Load/Unload:" />
+	<Icon image="content/gui/images/background/hr.png" position="20,165" />
 
-		<Label name="load_unload_label" position="25, 200" text="Load/Unload:" />
-		<Icon image="content/gui/images/background/hr.png" position="20,165" />
+	<HBox position="180,185">
+		<ToggleImageButton name="bg_button" border_size="0" 
+			inactive_image="content/gui/images/buttons/msg_button_bw.png" 
+			up_image="content/gui/images/buttons/msg_button.png" 
+			down_image="content/gui/images/buttons/msg_button_d.png" 
+			hover_image="content/gui/images/buttons/msg_button_h.png" />
+	</HBox>
 
-		<HBox position="180,185">
-			<ToggleImageButton name="bg_button" inactive_image="content/gui/images/buttons/msg_button_bw.png" up_image="content/gui/images/buttons/msg_button.png" down_image="content/gui/images/buttons/msg_button_d.png" hover_image="content/gui/images/buttons/msg_button_h.png" border_size="0"/>
-		</HBox>
+	<ToggleImageButton name="trade" position="190,195" border_size="0"
+		inactive_image="content/gui/icons/ship/civil_32_bw.png" 
+		up_image="content/gui/icons/ship/civil_32.png" 
+		down_image="content/gui/icons/ship/civil_32_h.png" 
+		hover_image="content/gui/icons/ship/civil_32_h.png" />
 
-		<ToggleImageButton name="trade" position="190,195" inactive_image="content/gui/icons/ship/civil_32_bw.png" up_image="content/gui/icons/ship/civil_32.png" down_image="content/gui/icons/ship/civil_32_h.png" hover_image="content/gui/icons/ship/civil_32_h.png" border_size="0"/>
-
-	</Container>
+</Container>
 </Container>
