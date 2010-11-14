@@ -45,10 +45,10 @@ class BuySellTab(TabInterface):
 		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/buy_sell_res_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/buy_sell_res_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/buy_sell_res_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/buy_sell_res_h.png'
+		self.button_up_image = 'content/gui/icons/tabwidget/branchoffice/buysell_u.png'
+		self.button_active_image = 'content/gui/icons/tabwidget/branchoffice/buysell_a.png'
+		self.button_down_image = 'content/gui/icons/tabwidget/branchoffice/buysell_d.png'
+		self.button_hover_image = 'content/gui/icons/tabwidget/branchoffice/buysell_h.png'
 		self.slots = {}
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)

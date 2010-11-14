@@ -27,7 +27,7 @@ from horizons.gui.widgets.tradewidget import TradeWidget
 class InventoryTab(TabInterface):
 
 	def __init__(self, instance = None, widget = 'island_inventory.xml', \
-	             icon_path='content/gui/images/icons/hud/common/inventory_%s.png'):
+	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
 		super(InventoryTab, self).__init__(widget = widget)
 		self.instance = instance
 		self.init_values()
@@ -58,7 +58,7 @@ class ShipInventoryTab(InventoryTab):
 	def __init__(self, instance = None):
 		super(ShipInventoryTab, self).__init__(
 			widget = 'ship_inventory.xml',
-			icon_path='content/gui/images/icons/hud/common/inventory_%s.png',
+			icon_path='content/gui/icons/tabwidget/common/inventory_%s.png',
 			instance = instance
 		)
 #		self.button_up_image = 'content/gui/icons/tabwidget/common/inventory_u.png'

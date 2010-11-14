@@ -36,7 +36,7 @@ from horizons.i18n import load_xml_translated
 
 class OverviewTab(TabInterface):
 	def __init__(self, instance, widget = 'overviewtab.xml', \
-	             icon_path='content/gui/images/icons/hud/common/building_overview_%s.png'):
+	             icon_path='content/gui/icons/tabwidget/common/building_overview_%s.png'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()

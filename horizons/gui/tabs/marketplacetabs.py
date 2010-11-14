@@ -65,7 +65,7 @@ class AccountTab(MarketPlaceTab):
 		super(AccountTab, self).__init__(widget = 'tab_account.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		icon_path = 'content/gui/images/icons/hud/common/account_%s.png'
+		icon_path = 'content/gui/icons/tabwidget/branchoffice/account_%s.png'
 		self.button_up_image = icon_path % 'u'
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
