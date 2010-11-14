@@ -151,7 +151,7 @@ class BoatbuilderSelectTab(OverviewTab):
 	def __init__(self, instance, tabname):
 		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
 		self.init_values()
-		bb_image_path = 'content/gui/images/icons/hud/common/bb/'+str(tabname)+'_%s.png'
+		bb_image_path = 'content/gui/icons/tabwidget/boatbuilder/'+str(tabname)+'_%s.png'
 		self.button_up_image = bb_image_path % 'u'
 		self.button_active_image = bb_image_path % 'a'
 		self.button_down_image = bb_image_path % 'd'

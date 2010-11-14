@@ -22,9 +22,9 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="162,30" />
 
 		<TooltipButton name="herder-1" position="2,32"
-			up_image="content/gui/icons/buildmenu/herdsman.png"
-			hover_image="content/gui/content/gui/icons/buildmenu/farm_h.png"
-			down_image="content/gui/content/gui/icons/buildmenu/farm_h.png"
+			up_image="content/gui/icons/buildmenu/farm.png"
+			hover_image="content/gui/icons/buildmenu/farm_h.png"
+			down_image="content/gui/icons/buildmenu/farm_h.png"
 			tooltip="Farm: Grows field crops and raises livestock." />
 		<TooltipButton name="weaver-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/weaver.png"
@@ -92,9 +92,9 @@
 		<Icon image="content/gui/images/background/build_button_bg.png" position="0,30" />
 
 		<TooltipButton name="distillery-1" position="0,30"
-			up_image="content/gui/content/gui/icons/buildmenu/distillery.png"
-			hover_image="content/gui/content/gui/icons/buildmenu/distillery_h.png"
-			down_image="content/gui/content/gui/icons/buildmenu/distillery_h.png"
+			up_image="content/gui/icons/buildmenu/distillery.png"
+			hover_image="content/gui/icons/buildmenu/distillery_h.png"
+			down_image="content/gui/icons/buildmenu/distillery_h.png"
 			tooltip="Distillery: Turns sugar into liquor. No function currently!" />
 	</Container>	-->
 
