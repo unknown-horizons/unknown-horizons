@@ -2,7 +2,7 @@
 <Container size="300,80" position="93,10">
 <!-- Resource bar that are positioned on top -->
 	<TooltipIcon name="food_icon" position="0,7" 
-		image="content/gui/images/background/res_bg.png" tooltip="Food" />
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Food" />
 	<Icon position="12,18" 
 		image="content/gui/images/icons/hud/main/small/food.png" />
 	<Label name="food_1" text="" />
@@ -10,7 +10,7 @@
 	<Label name="food_3" text="" />
 
 	<TooltipIcon name="tools_icon" position="52,7" 
-		image="content/gui/images/background/res_bg.png" tooltip="Tools" />
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Tools" />
 	<Icon position="65,19" 
 		image="content/gui/images/icons/hud/main/small/tools.png" />
 	<Label name="tools_1" text="" />
@@ -18,7 +18,7 @@
 	<Label name="tools_3" text="" />
 
 	<TooltipIcon name="boards_icon" position="104,7" 
-		image="content/gui/images/background/res_bg.png" tooltip="Boards" />
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Boards" />
 	<Icon position="117,18" 
 		image="content/gui/images/icons/hud/main/small/boards.png" />
 	<Label name="boards_1" text="" />
@@ -26,7 +26,7 @@
 	<Label name="boards_3" text="" />
 
 	<TooltipIcon name="bricks_icon" position="156,7" 
-		image="content/gui/images/background/res_bg.png" tooltip="Bricks" />
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Bricks" />
 	<Icon position="168,19" 
 		image="content/gui/images/icons/hud/main/small/bricks.png" />
 	<Label name="bricks_1" text="" />
@@ -34,7 +34,7 @@
 	<Label name="bricks_3" text="" />
 
 	<TooltipIcon name="textiles_icon" position="208,7" 
-		image="content/gui/images/background/res_bg.png" tooltip="Textiles" />
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Textiles" />
 	<Icon position="217,15" 
 		image="content/gui/images/icons/hud/main/small/cloth.png" />
 	<Label name="textiles_1" text="" />

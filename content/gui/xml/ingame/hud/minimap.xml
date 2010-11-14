@@ -2,7 +2,7 @@
 <Container size="255,215">
 	<Label name="speed_text" text="" position="35,22" font="libertine_18"/>
 	<Icon name="minimap_overlay_image" position="40,0"
-		image="content/gui/images/background/map_bg.png" />
+		image="content/gui/images/background/widgets/map_bg.png" />
 
 	<ImageButton name="speedUp" size="28,28" position="62,16"
 		up_image="content/gui/icons/widgets/minimap/speed_up.png"

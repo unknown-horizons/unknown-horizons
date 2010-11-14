@@ -3,8 +3,8 @@
 	<Icon name="black_underlay_background" image="content/gui/images/background/black.png" />
 
 <Container name="menu" size="1024,768">
-	<Icon image="content/gui/images/background/menu_bg.png" position="0,0" />
-	<Icon image="content/gui/images/background/oa_startmenu_wheel.png" position="212,44" />
+	<Icon image="content/gui/images/background/mainmenu/menu_bg.png" position="0,0" />
+	<Icon image="content/gui/images/background/mainmenu/wheel.png" position="212,44" />
 	<Icon image="content/gui/images/logos/fife.png" position="22,20" />
 	<Icon image="content/gui/images/logos/sdl.png" position="883,20" />
 	<Icon image="content/gui/images/logos/opengl.png" position="880,100" />

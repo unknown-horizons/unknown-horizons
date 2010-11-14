@@ -37,7 +37,7 @@ class ProgressBar(pychan.widgets.Container):
 		self._init_gui()
 
 	def _init_gui(self):
-		self.icon = pychan.widgets.Icon(image = "content/gui/images/misc/progressbar_bg.png")
+		self.icon = pychan.widgets.Icon(image = "content/gui/images/background/progressbar_bg.png")
 		self.icon.min_size = (0, 0)
 		self.addChild(self.icon)
 		self._draw()
