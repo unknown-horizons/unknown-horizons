@@ -23,30 +23,30 @@
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,20"
 				tooltip="Boat: \nStorage: 3 slots of 15t \nCannons: none \nSpeed: fast \nHealth: 40" />
 		<TooltipButton position="60,70" tooltip="Not yet implemented!"
-				up_image="content/gui/images/background/ok.png"
-				hover_image="content/gui/images/background/ok_h.png"
-				down_image="content/gui/images/background/ok_h.png" />
+				up_image="content/gui/images/buttons/ok.png"
+				hover_image="content/gui/images/buttons/ok_h.png"
+				down_image="content/gui/images/buttons/ok_h.png" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"
 				tooltip="Courier Boat: \nStorage: 4 slots of 20t \nCannons: none \nSpeed: fast \nHealth: 80\nGets available after:\n Upgrade Boat Builder" />
 		<TooltipButton position="60,157" tooltip="Can't build this ship!"
-				up_image="content/gui/images/background/close.png"
-				hover_image="content/gui/images/background/close_h.png"
-				down_image="content/gui/images/background/close_h.png" />
+				up_image="content/gui/images/buttons/close.png"
+				hover_image="content/gui/images/buttons/close_h.png"
+				down_image="content/gui/images/buttons/close_h.png" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194"
 				tooltip="Small merchant ship: \nStorage: 4 slots of 40t \nCannons: none \nSpeed: slow \nHealth: 150\nGets available after:\n Upgrade Boat Builder" />
 		<TooltipButton position="60,244" tooltip="Can't build this ship!"
-				up_image="content/gui/images/background/close.png"
-				hover_image="content/gui/images/background/close_h.png"
-				down_image="content/gui/images/background/close_h.png" />
+				up_image="content/gui/images/buttons/close.png"
+				hover_image="content/gui/images/buttons/close_h.png"
+				down_image="content/gui/images/buttons/close_h.png" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281"
 				tooltip="Big merchant ship: \nStorage: 6 slots of 40t \nCannons: none \nSpeed: average \nHealth: 300 \nGets available after:\n Build Shipyard" />
 		<TooltipButton position="60,331" tooltip="Can't build this ship!"
-				up_image="content/gui/images/background/close.png"
-				hover_image="content/gui/images/background/close_h.png"
-				down_image="content/gui/images/background/close_h.png" />
+				up_image="content/gui/images/buttons/close.png"
+				hover_image="content/gui/images/buttons/close_h.png"
+				down_image="content/gui/images/buttons/close_h.png" />
 
 	</Container>
 

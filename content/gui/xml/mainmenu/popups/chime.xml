@@ -6,7 +6,7 @@
 	<Label name="made_it_label" text="Yeah, you made it..." position="102,82" />
 	<Label name="deadlink_label" text="But this is a deadlink, sorry." position="102,132" />
 	<ImageButton name="okButton" position="295,170"
-		up_image="content/gui/images/background/ok.png"
-		hover_image="content/gui/images/background/ok_h.png"
-		down_image="content/gui/images/background/ok.png" />
+		up_image="content/gui/images/buttons/ok.png"
+		hover_image="content/gui/images/buttons/ok_h.png"
+		down_image="content/gui/images/buttons/ok.png" />
 </Container>

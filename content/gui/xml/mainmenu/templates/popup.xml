@@ -13,9 +13,9 @@
 	<VBox min_size="240,0" name="DO_NOT_REMOVE" />
 	<Spacer />
 	<ImageButton name="okButton"
-		up_image="content/gui/images/background/ok.png"
-		hover_image="content/gui/images/background/ok_h.png"
-		down_image="content/gui/images/background/ok.png" />
+		up_image="content/gui/images/buttons/ok.png"
+		hover_image="content/gui/images/buttons/ok_h.png"
+		down_image="content/gui/images/buttons/ok.png" />
 </HBox>
 
 </Container>

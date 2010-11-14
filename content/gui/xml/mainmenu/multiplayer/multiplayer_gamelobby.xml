@@ -3,7 +3,7 @@
 	<Icon name="black_underlay_background" image="content/gui/images/background/black.png" position="0,0" />
 
 	<Container name="menu" size="1024,768">
-		<Icon image="content/gui/images/background/mainmenu/menu_bg.png" position="0,0" />
+		<Icon image="content/gui/images/buttons/mainmenu_bg.png" position="0,0" />
 		<Container size="800,800" position="100,100">
 			<Icon image="content/gui/images/background/book.png" position="0,0" />
 
@@ -18,7 +18,7 @@
 				<TextField name="chatTextField" text="Enter your message here" min_size="300,16" position="22,420" />
 
 				<Label name="exit_to_mp_menu_lbl" text="Leave:" position="75,470" />
-				<TooltipButton position="120,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" tooltip="Exit gamelobby" />
+				<TooltipButton position="120,460" up_image="content/gui/images/buttons/close.png" down_image="content/gui/images/buttons/close_h.png" hover_image="content/gui/images/buttons/close_h.png" name="cancel" tooltip="Exit gamelobby" />
 			</Container>
 
 

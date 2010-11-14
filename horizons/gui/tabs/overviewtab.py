@@ -156,9 +156,9 @@ class ProductionOverviewTab(OverviewTab):
 		self.tooltip = _("Production Overview")
 
 		self.destruct_button = TooltipButton(name="destruct_button", \
-		              up_image="content/gui/images/background/delete.png", \
-		              down_image="content/gui/images/background/delete_h.png", \
-		              hover_image="content/gui/images/background/delete_h.png", \
+		              up_image="content/gui/images/buttons/delete.png", \
+		              down_image="content/gui/images/buttons/delete_h.png", \
+		              hover_image="content/gui/images/buttons/delete_h.png", \
 		              tooltip=_("Destroy Building"), position=(190,330))
 		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )

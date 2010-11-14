@@ -8,7 +8,7 @@
 		text="Some of your changes require a restart of Unknown Horizons." 
 		max_size="330,200" wrap_text="1" />
 	<ImageButton name="closeButton" position="300, 170" 
-		up_image="content/gui/images/background/ok.png" 
-		hover_image="content/gui/images/background/ok_h.png" 
-		down_image="content/gui/images/background/ok.png" />
+		up_image="content/gui/images/buttons/ok.png" 
+		hover_image="content/gui/images/buttons/ok_h.png" 
+		down_image="content/gui/images/buttons/ok.png" />
 </Container>

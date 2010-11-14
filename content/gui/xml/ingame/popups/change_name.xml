@@ -11,13 +11,13 @@
 
 	<HBox>
 		<ImageButton name="cancelButton"
-			up_image="content/gui/images/background/close.png"
-			hover_image="content/gui/images/background/close_h.png"
-			down_image="content/gui/images/background/close.png"/>
+			up_image="content/gui/images/buttons/close.png"
+			hover_image="content/gui/images/buttons/close_h.png"
+			down_image="content/gui/images/buttons/close.png"/>
 		<ImageButton name="okButton"
-			up_image="content/gui/images/background/ok.png"
-			hover_image="content/gui/images/background/ok_h.png"
-			down_image="content/gui/images/background/ok.png"/>
+			up_image="content/gui/images/buttons/ok.png"
+			hover_image="content/gui/images/buttons/ok_h.png"
+			down_image="content/gui/images/buttons/ok.png"/>
 	</HBox>
 </VBox>
 

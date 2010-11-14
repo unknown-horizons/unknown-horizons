@@ -17,15 +17,15 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 
 	<HBox max_size="80,36">
 		<ToggleImageButton name="backwardButton" tooltip="Read prev. entries"
-			inactive_image ="content/gui/images/background/parrow_left_bw.png"
-			up_image="content/gui/images/background/parrow_left.png"
-			hover_image="content/gui/images/background/parrow_left_h.png"
-			down_image="content/gui/images/background/parrow_left_d.png" />
+			inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
+			up_image="content/gui/images/buttons/parrow_left.png"
+			hover_image="content/gui/images/buttons/parrow_left_h.png"
+			down_image="content/gui/images/buttons/parrow_left_d.png" />
 		<ToggleImageButton name="forwardButton" tooltip="Read next entries"
-			inactive_image ="content/gui/images/background/parrow_right_bw.png"
-			up_image="content/gui/images/background/parrow_right.png"
-			hover_image="content/gui/images/background/parrow_right_h.png"
-			down_image="content/gui/images/background/parrow_right_d.png" />
+			inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
+			up_image="content/gui/images/buttons/parrow_right.png"
+			hover_image="content/gui/images/buttons/parrow_right_h.png"
+			down_image="content/gui/images/buttons/parrow_right_d.png" />
 			<!-- "proximate entries" would also fit -->
 	</HBox>
 </VBox>
@@ -43,9 +43,9 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 
 	<HBox> <Spacer />
 		<TooltipButton name="cancelButton" tooltip="Leave Captain's Log"
-			up_image="content/gui/images/background/close.png"
-			hover_image="content/gui/images/background/close_h.png"
-			down_image="content/gui/images/background/close.png" />
+			up_image="content/gui/images/buttons/close.png"
+			hover_image="content/gui/images/buttons/close_h.png"
+			down_image="content/gui/images/buttons/close.png" />
 	</HBox>
 	<!-- Yes, this button will not be placed on the very right.
 	No, we don't know why the engine does this.

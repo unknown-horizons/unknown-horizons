@@ -3,7 +3,7 @@
 	<Icon name="black_underlay_background" image="content/gui/images/background/black.png" position="0,0" />
 
 	<Container name="menu" size="1024,768">
-		<Icon image="content/gui/images/background/mainmenu/menu_bg.png" position="0,0" />
+		<Icon image="content/gui/images/buttons/mainmenu_bg.png" position="0,0" />
 		<Container size="800,800" position="100,100">
 			<Icon image="content/gui/images/background/book.png" position="0,0" />
 
@@ -36,7 +36,7 @@
 			</VBox>
 
 				<Label name="exit_to_mp_menu_lbl" text="Back:" position="60,470" />
-				<TooltipButton position="100,460" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close_h.png" hover_image="content/gui/images/background/close_h.png" name="cancel" tooltip="Exit to multiplayer menu" />
+				<TooltipButton position="100,460" up_image="content/gui/images/buttons/close.png" down_image="content/gui/images/buttons/close_h.png" hover_image="content/gui/images/buttons/close_h.png" name="cancel" tooltip="Exit to multiplayer menu" />
 			</Container>
 
 			<!--
@@ -57,7 +57,7 @@
 
 
 				<Label name="create_game_lbl" text="Create game:" position="170,470" />
-				<TooltipButton position="255,460" up_image="content/gui/images/background/ok.png" down_image="content/gui/images/background/ok_h.png" hover_image="content/gui/images/background/ok_h.png" name="create" tooltip="Create this new game" />
+				<TooltipButton position="255,460" up_image="content/gui/images/buttons/ok.png" down_image="content/gui/images/buttons/ok_h.png" hover_image="content/gui/images/buttons/ok_h.png" name="create" tooltip="Create this new game" />
 
 			</Container>
 		</Container>

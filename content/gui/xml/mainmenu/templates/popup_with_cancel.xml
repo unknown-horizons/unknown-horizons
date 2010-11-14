@@ -11,15 +11,15 @@
 
 <HBox min_size="265,40" position="40,170">
 	<ImageButton name="cancelButton"
-		up_image="content/gui/images/background/close.png"
-		hover_image="content/gui/images/background/close_h.png"
-		down_image="content/gui/images/background/close.png" />
+		up_image="content/gui/images/buttons/close.png"
+		hover_image="content/gui/images/buttons/close_h.png"
+		down_image="content/gui/images/buttons/close.png" />
 	<VBox min_size="210,0" name="DO_NOT_REMOVE" />
 	<Spacer />
 	<ImageButton name="okButton"
-		up_image="content/gui/images/background/ok.png"
-		hover_image="content/gui/images/background/ok_h.png"
-		down_image="content/gui/images/background/ok.png" />
+		up_image="content/gui/images/buttons/ok.png"
+		hover_image="content/gui/images/buttons/ok_h.png"
+		down_image="content/gui/images/buttons/ok.png" />
 </HBox>
 
 </Container>

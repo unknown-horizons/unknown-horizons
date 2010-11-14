@@ -3,7 +3,7 @@
 	<Icon name="black_underlay_background" image="content/gui/images/background/black.png" position="0,0" />
 
 	<Container name="menu" size="1024,768">
-		<Icon image="content/gui/images/background/mainmenu/menu_bg.png" />
+		<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
 		<Icon image="content/gui/images/background/book.png" position="100,100" />
 
 		<Container size="320,510" position="175,132">
@@ -18,9 +18,9 @@
 			<HBox position="42,470" min_size="0,40" >
 				<Label name="main_menu_label" text="Main menu:" />
 				<ImageButton name="cancel"
-					up_image="content/gui/images/background/close.png"
-					down_image="content/gui/images/background/close_h.png"
-					hover_image="content/gui/images/background/close_h.png" />
+					up_image="content/gui/images/buttons/close.png"
+					down_image="content/gui/images/buttons/close_h.png"
+					hover_image="content/gui/images/buttons/close_h.png" />
 			</HBox>
 		</Container>
 
@@ -51,9 +51,9 @@
 			<HBox min_size="0,40"><Spacer />
 				<Label name="start_game_label" text="Start game:" />
 				<ImageButton name="okay"
-					up_image="content/gui/images/background/ok.png"
-					down_image="content/gui/images/background/ok_h.png"
-					hover_image="content/gui/images/background/ok_h.png" />
+					up_image="content/gui/images/buttons/ok.png"
+					down_image="content/gui/images/buttons/ok_h.png"
+					hover_image="content/gui/images/buttons/ok_h.png" />
 			</HBox>
 
 		</VBox>

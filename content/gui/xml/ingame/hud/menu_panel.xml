@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <Container size="250,90">
 <!-- Main buttons that are under minimap, including build menu, diplomacy etc-->
-	<!--<Icon image="content/gui/images/background/button_glass_small.png" position="2,0" size="64,64" />-->
+	<!--<Icon image="content/gui/images/buttons/glass_small.png" position="2,0" size="64,64" />-->
 	<Icon position="35,28" size="64,64" 
-		image="content/gui/images/background/button_glass_small.png" />
+		image="content/gui/images/buttons/glass_small.png" />
 	<Icon position="77,38" size="64,64" 
-		image="content/gui/images/background/button_glass_big.png" />
+		image="content/gui/images/buttons/glass_big.png" />
 	<Icon position="126,28" size="64,64" 
-		image="content/gui/images/background/button_glass_small.png" />
+		image="content/gui/images/buttons/glass_small.png" />
 	<Icon position="157,0" size="64,64" 
-		image="content/gui/images/background/button_glass_small.png" />
+		image="content/gui/images/buttons/glass_small.png" />
 
 	<TooltipButton name="destroy_tool" size="30,30" position="2,0" 
-		up_image="content/gui/images/background/delete.png" 
-		down_image="content/gui/images/background/delete_h.png" 
-		hover_image="content/gui/images/background/delete_h.png" 
+		up_image="content/gui/images/buttons/delete.png" 
+		down_image="content/gui/images/buttons/delete_h.png" 
+		hover_image="content/gui/images/buttons/delete_h.png" 
 		is_focusable="0" tooltip="Destroy" />
 	<TooltipButton name="logbook" size="30,30" position="39,32" 
 		up_image="content/gui/icons/widgets/minimap/captainslog_l.png" 

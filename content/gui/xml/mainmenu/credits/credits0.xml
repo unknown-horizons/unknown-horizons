@@ -70,19 +70,19 @@
   USE ––|–– THESE if there are more than 2 pages of content for one credits group
         v
 	<TooltipButton name="backwardButton" position="175,0"
-		up_image="content/gui/images/background/parrow_left.png"
-		hover_image="content/gui/images/background/parrow_left_h.png"
-		down_image="content/gui/images/background/parrow_left_d.png"
+		up_image="content/gui/images/buttons/parrow_left.png"
+		hover_image="content/gui/images/buttons/parrow_left_h.png"
+		down_image="content/gui/images/buttons/parrow_left_d.png"
 		tooltip="Read prev. entries" />
 	<TooltipButton name="forwardButton" position="210,0"
-		up_image="content/gui/images/background/parrow_right.png"
-		hover_image="content/gui/images/background/parrow_right_h.png"
-		down_image="content/gui/images/background/parrow_right_d.png"
+		up_image="content/gui/images/buttons/parrow_right.png"
+		hover_image="content/gui/images/buttons/parrow_right_h.png"
+		down_image="content/gui/images/buttons/parrow_right_d.png"
 		tooltip="Read next entries" /> -->
 	<ImageButton position="800,0" name="okButton"
-		up_image="content/gui/images/background/ok.png"
-		hover_image="content/gui/images/background/ok_h.png"
-		down_image="content/gui/images/background/ok.png" />
+		up_image="content/gui/images/buttons/ok.png"
+		hover_image="content/gui/images/buttons/ok_h.png"
+		down_image="content/gui/images/buttons/ok.png" />
 </Container>
 
 <Container position="810,0" size="170,500"> <!-- we are on first position

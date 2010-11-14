@@ -3,7 +3,7 @@
 	<Icon name="black_underlay_background" image="content/gui/images/background/black.png" position="0,0" />
 
 	<Container name="menu" size="1024,768">
-	<Icon image="content/gui/images/background/mainmenu/menu_bg.png" />
+	<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
 	<Icon image="content/gui/images/background/book.png" position="100,100" />
 
 	<Container size="320,510" position="175,132">
@@ -15,9 +15,9 @@
 		<HBox position="130,250" min_size="80,40" max_size="120,40">
 			<Label text="Apply:" name="name_lbl"/>
 			<TooltipButton name="apply_new_nickname" tooltip="Apply the new name"
-				up_image="content/gui/images/background/ok.png"
-				down_image="content/gui/images/background/ok_h.png"
-				hover_image="content/gui/images/background/ok_h.png" />
+				up_image="content/gui/images/buttons/ok.png"
+				down_image="content/gui/images/buttons/ok_h.png"
+				hover_image="content/gui/images/buttons/ok_h.png" />
 		</HBox>
 
 		<!--
@@ -32,17 +32,17 @@
 			<HBox>
 				<Label name="create_game_lbl" text="Create game:" />
 				<TooltipButton name="create" tooltip="Create a new game"
-					up_image="content/gui/images/background/ok.png"
-					down_image="content/gui/images/background/ok_h.png"
-					hover_image="content/gui/images/background/ok_h.png" />
+					up_image="content/gui/images/buttons/ok.png"
+					down_image="content/gui/images/buttons/ok_h.png"
+					hover_image="content/gui/images/buttons/ok_h.png" />
 			</HBox>
 
 			<HBox>
 				<Label name="exit_to_main_menu_lbl" text="Main menu:" />
 				<TooltipButton name="cancel" tooltip="Exit to main menu"
-					up_image="content/gui/images/background/close.png"
-					down_image="content/gui/images/background/close_h.png"
-					hover_image="content/gui/images/background/close_h.png" />
+					up_image="content/gui/images/buttons/close.png"
+					down_image="content/gui/images/buttons/close_h.png"
+					hover_image="content/gui/images/buttons/close_h.png" />
 			</HBox>
 
 		</VBox>
@@ -85,9 +85,9 @@
 		<HBox min_size="0,40"><Spacer />
 			<Label name="join_game_lbl" text="Join game" />
 			<TooltipButton name="join" tooltip="Join the selected game"
-				up_image="content/gui/images/background/ok.png"
-				down_image="content/gui/images/background/ok_h.png"
-				hover_image="content/gui/images/background/ok_h.png" />
+				up_image="content/gui/images/buttons/ok.png"
+				down_image="content/gui/images/buttons/ok_h.png"
+				hover_image="content/gui/images/buttons/ok_h.png" />
 		</HBox>
 
 	</VBox>

@@ -75,6 +75,6 @@
 	<!-- Cancel task -->
 		<Label position="30,10" name="BB_cancel_build_label" text="Cancel building:" />
 		<Label position="30,25" name="BB_cancel_warning_label" text="(lose all resources)" /> <!-- smaller font than the above one -->
-		<TooltipButton name="BB_cancel_button" up_image="content/gui/images/background/close.png" down_image="content/gui/images/background/close.png" hover_image="content/gui/images/background/close_h.png" position="150,0" size="64,64" tooltip="Cancel all building progress" /> <!-- needs a confirmation popup -->
+		<TooltipButton name="BB_cancel_button" up_image="content/gui/images/buttons/close.png" down_image="content/gui/images/buttons/close.png" hover_image="content/gui/images/buttons/close_h.png" position="150,0" size="64,64" tooltip="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>
 </Container>

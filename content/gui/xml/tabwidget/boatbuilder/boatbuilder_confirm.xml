@@ -74,8 +74,8 @@
 		<!-- Confirm task -->
 		<Label position="30,10" name="BB_confirm_build_label" text="Build ship:" />
 		<TooltipButton position="100,0" tooltip="Build this ship!" name="create_unit"
-				up_image="content/gui/images/background/ok.png"
-				hover_image="content/gui/images/background/ok_h.png"
-				down_image="content/gui/images/background/ok_h.png" />
+				up_image="content/gui/images/buttons/ok.png"
+				hover_image="content/gui/images/buttons/ok_h.png"
+				down_image="content/gui/images/buttons/ok_h.png" />
 	</Container>
 </Container>
