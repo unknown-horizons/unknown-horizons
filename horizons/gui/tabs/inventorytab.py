@@ -61,10 +61,10 @@ class ShipInventoryTab(InventoryTab):
 			icon_path='content/gui/images/icons/hud/common/inventory_%s.png',
 			instance = instance
 		)
-#		self.button_up_image = 'content/gui/images/icons/hud/common/inventory_u.png'
-	#	self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
-		#self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
-#		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
+#		self.button_up_image = 'content/gui/icons/tabwidget/common/inventory_u.png'
+	#	self.button_active_image = 'content/gui/icons/tabwidget/common/inventory_a.png'
+		#self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
+#		self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 		self.tooltip = _("Ship Inventory")
 
 	def refresh(self):

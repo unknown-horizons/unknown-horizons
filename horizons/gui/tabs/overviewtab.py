@@ -100,7 +100,7 @@ class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(ShipOverviewTab, self).__init__(
 			widget = 'overview_ship.xml',
-			icon_path='content/gui/images/icons/hud/common/ship_inv_%s.png',
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
 		self.widget.findChild(name='name').stylize("headline")
@@ -139,7 +139,7 @@ class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(TraderShipOverviewTab, self).__init__(
 			widget = 'tab_overview_tradership.xml',
-			icon_path='content/gui/images/icons/hud/common/ship_inv_%s.png',
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
 		self.widget.findChild(name='name').stylize("headline")
