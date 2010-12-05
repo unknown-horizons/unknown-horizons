@@ -66,7 +66,7 @@ class View(Changelistener):
 
 		self.cam.resetRenderers()
 		self.renderer = {}
-		for r in ('InstanceRenderer', 'GridRenderer', \
+		for r in ('CameraZoneRenderer', 'InstanceRenderer', 'GridRenderer', \
 		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer', \
 		          'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)

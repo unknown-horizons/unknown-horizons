@@ -30,6 +30,7 @@ from horizons.command.uioptions import AddToBuyList
 from horizons.command.uioptions import AddToSellList
 from horizons.command.uioptions import RemoveFromBuyList
 from horizons.command.uioptions import RemoveFromSellList
+from horizons.gui.widgets.tooltip import TooltipButton
 
 class BuySellTab(TabInterface):
 
@@ -38,16 +39,16 @@ class BuySellTab(TabInterface):
 	buy_button_path =  "content/gui/images/icons/hud/main/buysell_buy.png"
 	sell_button_path = "content/gui/images/icons/hud/main/buysell_sell.png"
 
-	dummy_icon_path = "content/gui/images/icons/hud/build/dummy_btn.png"
+	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
 
 	def __init__(self, instance, slots = 3):
-		super(BuySellTab, self).__init__(widget = 'buysellmenu/buysellmenu.xml')
+		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/buy_sell_res_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/buy_sell_res_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/buy_sell_res_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/buy_sell_res_h.png'
+		self.button_up_image = 'content/gui/icons/tabwidget/branchoffice/buysell_u.png'
+		self.button_active_image = 'content/gui/icons/tabwidget/branchoffice/buysell_a.png'
+		self.button_down_image = 'content/gui/icons/tabwidget/branchoffice/buysell_d.png'
+		self.button_hover_image = 'content/gui/icons/tabwidget/branchoffice/buysell_h.png'
 		self.slots = {}
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
@@ -83,12 +84,15 @@ class BuySellTab(TabInterface):
 		content = self.widget.findChild(name="content")
 		assert(content is not None)
 		for num in range(0, num):
-			slot = load_xml_translated('buysellmenu/single_slot.xml')
+			slot = load_xml_translated('trade_single_slot.xml')
 			self.slots[num] = slot
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
 			slot.findChild(name='button').capture(pychan.tools.callbackWithArguments(self.show_resource_menu, num))
+			slot.findChild(name='button').up_image = self.dummy_icon_path
+			slot.findChild(name='button').down_image = self.dummy_icon_path
+			slot.findChild(name='button').hover_image = self.dummy_icon_path
 			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.setScaleStart(0.0)
@@ -140,6 +144,7 @@ class BuySellTab(TabInterface):
 		fillbar = slot.findChild(name="fillbar")
 		if res_id == 0:
 			button.up_image, button.down_image, button.hover_image = [ self.dummy_icon_path ] * 3
+			button.tooltip = u""
 			slot.findChild(name="amount").text = u""
 			slot.res = None
 			slider.capture(None)
@@ -151,6 +156,7 @@ class BuySellTab(TabInterface):
 			button.up_image = icons[0]
 			button.down_image = icons[0]
 			button.hover_image = icons[1] # disabled icon
+			button.tooltip = horizons.main.db.get_res_name(res_id)
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
 			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
@@ -228,7 +234,7 @@ class BuySellTab(TabInterface):
 
 
 	def show_resource_menu(self, slot_id):
-		self.resources = load_xml_translated('buysellmenu/resources.xml')
+		self.resources = load_xml_translated('select_trade_resource.xml')
 		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = self.resources.findChild(name="resources")
@@ -239,8 +245,12 @@ class BuySellTab(TabInterface):
 		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
-			button = pychan.widgets.ImageButton(size=(50, 50))
+			button = TooltipButton(size=(50, 50))
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			if res_id == 0:
+				button.tooltip = u""
+			else:
+				button.tooltip = horizons.main.db.get_res_name(res_id)
 			button.capture(pychan.tools.callbackWithArguments(self.add_resource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:

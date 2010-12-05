@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Container name="black_underlay">
+<Icon image="content/gui/images/background/black.png" name="black_underlay_background" />
+
+<Container name="menu" size="1024,768">
+<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
+
+<Container size="800,800" position="100,100">
+	<Icon image="content/gui/images/background/book.png" />
+
+	<Container size="320,500" position="55,32" name="left_page">
+		<Label text="Gamelobby" position="115,10" name="headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+
+		<Label text="Chat:" position="22,50" name="headline" />
+		<ScrollArea name="chat_scroll_area" min_size="300,335" position="22,75">
+			<ListBox name="chatbox" min_size="300,335" />
+		</ScrollArea>
+		<TextField name="chatTextField" position="22,420" 
+			text="Enter your message here" min_size="300,16" />
+
+		<Label name="exit_to_mp_menu_lbl" text="Leave:" position="75,470" />
+		<TooltipButton position="120,460" 
+			up_image="content/gui/images/buttons/close.png" name="cancel" 
+			down_image="content/gui/images/buttons/close_h.png" 
+			hover_image="content/gui/images/buttons/close_h.png" 
+			tooltip="Exit gamelobby" />
+	</Container>
+
+
+	<Container size="320,500" position="420,32" name="right_page">
+		<Label name="game_start_notice" position="0,50" 
+			max_size="300,40" wrap_text="1" 
+			text="The game will start as soon as enough players have joined." />
+
+		<Label name="startmessage" text="Game details:" position="0,100" />
+		<VBox position="130,100">
+			<Label name="game_map"/>
+			<Label name="game_creator"/>
+			<Label name="game_playersnum"/>
+			<Label name="game_players"/>
+		</VBox>
+	</Container>
+
+</Container>
+</Container>
+</Container>

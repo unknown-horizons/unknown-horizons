@@ -4,13 +4,13 @@
 # It was automatically generated with development/create_scenario_pot.sh using
 # translation files from pootle.
 
-author: Das UH Team
-description: 'Das Tutorial:
+author: !!python/unicode 'Das UH Team'
+description: !!python/unicode 'Das Tutorial:
 
   Baue deine erste Siedlung und lerne zu spielen!
 
   '
-difficulty: Tutorial
+difficulty: !!python/unicode 'Tutorial'
 events:
 - actions:
   - arguments: ["Errichte ein Kontor an der K\xFCste."]

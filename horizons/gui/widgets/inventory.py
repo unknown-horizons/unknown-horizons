@@ -44,7 +44,7 @@ class Inventory(pychan.widgets.Container):
 		self.__inited = True
 		self.db = db
 		self._inventory = inventory
-		self.__icon = pychan.widgets.Icon("content/gui/images/icons/hud/ship/civil_16.png")
+		self.__icon = pychan.widgets.Icon("content/gui/icons/ship/civil_16.png")
 		self.update()
 
 	def update(self):

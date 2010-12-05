@@ -33,7 +33,7 @@ if __name__ == '__main__':
 	from run_uh import init_environment, get_fife_path
 	init_environment()
 
-	os.chdir(get_fife_path() + '/tools/editor')
+	#os.chdir(get_fife_path() + '/tools/editor')
 	#start editor
-	args = [sys.executable, './run.py']
+	args = [sys.executable, './editor/run.py']
 	os.execvp(args[0], args)

@@ -189,7 +189,7 @@ class IngameGui(LivingObject):
 		if not hasattr(self, "bg_icon_pos"):
 			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
 			self.bgs_shown = {}
-		bg_icon = pychan.widgets.Icon(image="content/gui/images/background/res_mon_extra_bg.png" if label == 'gold' else "content/gui/images/background/res_extra_bg.png", position=self.bg_icon_pos[label], name='bg_icon_' + label)
+		bg_icon = pychan.widgets.Icon(image="content/gui/images/background/widgets/res_mon_extra_bg.png" if label == 'gold' else "content/gui/images/background/widgets/res_extra_bg.png", position=self.bg_icon_pos[label], name='bg_icon_' + label)
 
 		if not value:
 			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))

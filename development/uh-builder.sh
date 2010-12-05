@@ -22,7 +22,7 @@
 # ###################################################
 
 if [ ! `which dialog 2>/dev/null` ] ; then
-	echo "Error: You need the program dialog to run this script."
+	echo "Error: You need the program 'dialog' to run this script."
 	exit 1
 fi
 

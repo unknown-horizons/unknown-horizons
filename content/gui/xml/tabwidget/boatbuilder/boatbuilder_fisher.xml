@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!-- Fisher boats tab -->
+<Container  size="260,550">
+<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,350" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,400" />
+<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,450" />
+
+	<Container position="0,70" size="260,80" >
+		<!-- Headline -->
+		<Label name="headline" position="65,7" text="Fishing Boats" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	</Container>
+
+	<Container position="20,95" size="260,450" >
+		<!-- Ship images
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,20"
+				tooltip="Fishing Boat: \nUsed by: Fisher \nStorage: 1 slot of 1t \nCannons: none
+					\nSpeed: average \nHealth: 40" /> -->
+		<Icon image="content/gfx/dummies/square_80.png" position="0,20" />
+		<TooltipButton position="60,70" tooltip="Build this ship!"
+				up_image="content/gui/images/buttons/ok.png"
+				hover_image="content/gui/images/buttons/ok_h.png"
+				down_image="content/gui/images/buttons/ok_h.png"
+				name="BB_build_fisher_1"/>
+
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"
+				tooltip="Used by: Fisher \nStorage: 4 slots of 1t
+					\nSpeed: average \nHealth: 60\nGets available after:\n Upgrade Boat Builder" />
+		<TooltipButton position="60,157" tooltip="Not yet implemented!"
+				up_image="content/gui/images/buttons/close.png"
+				hover_image="content/gui/images/buttons/close_h.png"
+				down_image="content/gui/images/buttons/close_h.png" />
+
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194"
+				tooltip="Used by: Fisher \nStorage: 4 slots of 4t
+					\nSpeed: average \nHealth: 100\nGets available after:\n Build Shipyard" />
+		<TooltipButton position="60,244" tooltip="Not yet implemented!"
+				up_image="content/gui/images/buttons/close.png"
+				hover_image="content/gui/images/buttons/close_h.png"
+				down_image="content/gui/images/buttons/close_h.png" />
+
+		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281"
+				tooltip="Used by: Whaling Station \nStorage: 4 slots of 1t
+					\nSpeed: slow \nHealth: 200 \nGets available after:\n Build Shipyard" />
+		<TooltipButton position="60,331" tooltip="Not yet implemented!"
+				up_image="content/gui/images/buttons/close.png"
+				hover_image="content/gui/images/buttons/close_h.png"
+				down_image="content/gui/images/buttons/close_h.png" />
+
+	</Container>
+
+	<Container position="110,110" size="260,87" >
+		<!-- Ship 1 information -->
+		<Label name="BB_fisher_ship1" position="0,3" text="Fishing boat" />
+
+		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="13,25" tooltip="Boards" />
+		<Label position="35,25" text="05t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
+		<TooltipIcon image="content/gui/icons/resources/16/3.png" position="13,45" tooltip="Cloth" />
+		<Label position="35,45" text="04t" />
+		<TooltipIcon image="content/gui/icons/resources/16/6.png" position="68,25" tooltip="Ropes" />
+		<Label position="90,25" text="00t" />
+		<TooltipIcon image="content/gui/icons/resources/16/5.png" position="68,45" tooltip="Cannons" />
+		<Label position="90,45" text="00t" />
+		<TooltipIcon image="content/gui/icons/resources/16/1.png" position="13,65" tooltip="Money" />
+		<Label position="35,65" text="500" />
+	</Container>
+
+	<Container position="110,197" size="260,87" >
+		<!-- Ship 2 information -->
+		<Label name="BB_fisher_ship2" position="0,3" text="Cutter" />
+
+		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="13,25" tooltip="Boards" />
+		<Label position="35,25" text="12t" />
+		<TooltipIcon image="content/gui/icons/resources/16/3.png" position="13,45" tooltip="Cloth" />
+		<Label position="35,45" text="08t" />
+		<TooltipIcon image="content/gui/icons/resources/16/6.png" position="68,25" tooltip="Ropes" />
+		<Label position="90,25" text="00t" />
+		<TooltipIcon image="content/gui/icons/resources/16/5.png" position="68,45" tooltip="Cannons" />
+		<Label position="90,45" text="00t" />
+		<TooltipIcon image="content/gui/icons/resources/16/1.png" position="13,65" tooltip="Money" />
+		<Label position="35,65" text="750" />
+	</Container>
+
+	<Container position="110,284" size="260,450" >
+		<!-- Ship 3 information -->
+		<Label name="BB_fisher_ship3" position="0,3" text="Herring fisher" />
+	</Container>
+
+	<Container position="110,371" size="260,450" >
+		<!-- Ship 4 information -->
+		<Label name="BB_fisher_ship4" position="0,3" text="Whaler" />
+	</Container>
+</Container>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container size="250,430" border_size="0">
+	<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+	<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,300" />
+
+	<Container position="0,70" size="250,400" >
+		<HBox name="head_box" position="0,7" size="250,100">
+			<Label name="headline" text="Build"/>
+			<Label name="building_name" text="" />
+		</HBox>
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<Icon name="building" position="0,70"/>
+	</Container>
+
+	<Container size="245,150" padding="5" name="top_bar">
+		<ImageButton name="rotate_left" position="32,60"
+			up_image="content/gui/icons/widgets/minimap/rotate_left.png"
+			down_image="content/gui/icons/widgets/minimap/rotate_left.png"
+			hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png" />
+		<ImageButton name="rotate_right" position="215,60"
+			up_image="content/gui/icons/widgets/minimap/rotate_right.png"
+			down_image="content/gui/icons/widgets/minimap/rotate_right.png"
+			hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png" />
+
+		<Label position="73,65" name="running_costs_label" text="Running Costs:"/>
+		<Label position="189,65" name="running_costs" text=""/>
+
+	</Container>
+</Container>

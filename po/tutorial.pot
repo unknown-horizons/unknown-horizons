@@ -1,0 +1,612 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2010-10-26 22:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: po/tutorial.py:1
+msgid "Tutorial"
+msgstr ""
+
+#: po/tutorial.py:2
+msgid "The UH team"
+msgstr ""
+
+#: po/tutorial.py:3
+msgid ""
+"The tutorial:\n"
+"Build your first settlement and learn how to play!\n"
+msgstr ""
+
+#: po/tutorial.py:4
+msgid "Build a branch office at the coast."
+msgstr ""
+
+#: po/tutorial.py:5
+msgid "Welcome to Unknown Horizons!"
+msgstr ""
+
+#: po/tutorial.py:6
+msgid ""
+"This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
+"\n"
+"If you are interested in longer descriptions, your log will hopefully provide all the help you need.\n"
+"\n"
+"After you close this log, it can be re-opened with the 'Captain's Log' icon in the top-right corner (below the mini-map, with a sealed document and a feather).\n"
+"\n"
+"For any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we will try to improve the tutorial!\n"
+"\n"
+"Visit www.unknown-horizons.org for help on how to contact the team!\n"
+"\n"
+"And now, let's start the actual game."
+msgstr ""
+
+#: po/tutorial.py:7
+msgid "NEW TASK: SETTLE ON AN ISLAND"
+msgstr ""
+
+#: po/tutorial.py:8
+msgid ""
+"To move your ship, select it with a left click and right click on the location you want it to go to.\n"
+"\n"
+"Once you are near the coast, the anchor-like button you see in the overview tab will become active.\n"
+"\n"
+"This indicates that you are able to build a branch office there by pressing that button (called 'Build Settlement').\n"
+"\n"
+"Now a preview of your building is dragged around when you move the cursor.\n"
+"\n"
+"You can build on any spot where this preview is not shaded red.\n"
+"Click where you want to place your first building.\n"
+"\n"
+"TASK: Build a branch office at the coast."
+msgstr ""
+
+#: po/tutorial.py:9
+msgid "NEW TASK: UNLOAD YOUR GOODS"
+msgstr ""
+
+#: po/tutorial.py:10
+msgid ""
+"Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
+"\n"
+"To do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n"
+"\n"
+"Here you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n"
+"\n"
+"This button becomes active if your ship is in range of a possible trade partner like a branch office.\n"
+"\n"
+"Click on the button. If it is not active, move your ship towards the branch office and then try again.\n"
+"\n"
+"TASK: Open the trade dialogue."
+msgstr ""
+
+#: po/tutorial.py:11
+msgid ""
+"The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
+"\n"
+"To move goods from one stock to the other, simply click on them.\n"
+"\n"
+"Try clicking on the boards currently on your ship first and then try moving them back.\n"
+"\n"
+"You can customize the quantity moved by using the self-explanatory radio buttons in the middle.\n"
+"\n"
+"Did you get used to the trade tab?\n"
+"You need some construction material in your settlement now!\n"
+"\n"
+"TASK: Unload at least 10 tons of each resource your ship sailed around with."
+msgstr ""
+
+#: po/tutorial.py:12
+msgid "Unload at least 10 tons of each resource on your ship."
+msgstr ""
+
+#: po/tutorial.py:13
+msgid "NEW TASK: BUILD A LUMBERJACK"
+msgstr ""
+
+#: po/tutorial.py:14
+msgid ""
+"With your new construction material in the branch office, you can start to construct some basic buildings.\n"
+"\n"
+"We will start with building a lumberjack.\n"
+"\n"
+"This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.\n"
+"\n"
+"The fisherman needs some boards to build his vessel as well.\n"
+"\n"
+"In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.\n"
+"\n"
+"The build menu is sorted by increments.\n"
+"You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
+msgstr ""
+
+#: po/tutorial.py:15
+msgid ""
+"As your civilization advances, you also gain more and more complex buildings.\n"
+"\n"
+"For now, select the lumberjack under 'Companies' and build it in an area with some trees around.\n"
+"\n"
+"You can also plant trees later - but that costs money. Use what nature provided you with!\n"
+"\n"
+"A company always needs a trail connection to a storage or branch office, otherwise goods will remain at the company and not be collected.\n"
+"\n"
+"This means that you have to build a trail connecting your branch office (or storage) and lumberjack.\n"
+"\n"
+"TASK: Build a lumberjack in a wooded area and connect it to a road.\n"
+"\n"
+"Watch how a collector will fetch your first self-produced boards."
+msgstr ""
+
+#: po/tutorial.py:16
+msgid "Build a lumberjack and connect it to the branch office using a trail."
+msgstr ""
+
+#: po/tutorial.py:17
+msgid "NEW TASK: FOOD SUPPLY"
+msgstr ""
+
+#: po/tutorial.py:18
+msgid ""
+"You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
+"\n"
+"Available companies in the first increment are the Hunter and Fisher.\n"
+"\n"
+"The Hunter, surprisingly, hunts animals in the forest, so he needs trees around.\n"
+"\n"
+"Note that you can place your Hunter close to the lumberjack's forest.\n"
+"\n"
+"It can happen that the animals don't reproduce fast enough or simply hide well.\n"
+"\n"
+"Conclusion: the hunter is not too reliable if you need continuous supply."
+msgstr ""
+
+#: po/tutorial.py:19
+msgid ""
+"The Fisher needs a coastal building site like the branch office - and nothing more.\n"
+"\n"
+"He will build a small rowing vessel and catch some fish.\n"
+"\n"
+"This is a very constant supply at the cost of a slightly longer production time per unit of food.\n"
+"\n"
+"A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.\n"
+"\n"
+"TASK: Build a hunter and a fisher.\n"
+"\n"
+"Don't forget to connect them to your branch office with trails!"
+msgstr ""
+
+#: po/tutorial.py:20
+msgid "Build a hunter and a fisher. Connect them to the branch office."
+msgstr ""
+
+#: po/tutorial.py:21
+msgid "NEW TASK: MAIN SQUARE"
+msgstr ""
+
+#: po/tutorial.py:22
+msgid ""
+"Your residents need a main square where they can fetch their goods from.\n"
+"\n"
+"This means that they need a trail connection from their home to the main square.\n"
+"\n"
+"All goods in your branch office are available at this 'market place', so your residents do not need to walk to the fisher or even to the branch office.\n"
+"\n"
+"You should consider founding your actual house settlement in an area where you can easily expand it and build some trails, too.\n"
+"\n"
+"You should avoid placing tents too close to your lumberjacks for example because building tents will clear away the trees that your lumberjack needs to produce boards.\n"
+"\n"
+"TASK: Build a main square."
+msgstr ""
+
+#: po/tutorial.py:23
+msgid ""
+"Now let's have a closer look at the main square.\n"
+"\n"
+"In the overview tab you can quickly adjust taxes.\n"
+"\n"
+"In the second tab 'Account' you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.\n"
+"\n"
+"The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.\n"
+"\n"
+"If your balance is positive, you all-in-all make a profit.\n"
+"\n"
+"In the 'Settler' tab you can see how happy your inhabitants are and what resource most of them want to be supplied with."
+msgstr ""
+
+#: po/tutorial.py:24
+msgid "Build a main square. Choose an area without many economy buildings."
+msgstr ""
+
+#: po/tutorial.py:25
+msgid "NEW TASK: RESIDENTIAL BUILDINGS"
+msgstr ""
+
+#: po/tutorial.py:26
+msgid ""
+"Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.\n"
+"\n"
+"Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher increments.\n"
+"\n"
+"Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!\n"
+"\n"
+"TASK: Build a tent and connect it to the main square."
+msgstr ""
+
+#: po/tutorial.py:27
+msgid "Build a tent and connect it to the main square."
+msgstr ""
+
+#: po/tutorial.py:28
+msgid ""
+"Let's have a look at the tent overview tab.\n"
+"You can see\n"
+"* the happiness of these residents,\n"
+"* the taxes they pay and\n"
+"* the resources they demand.\n"
+"\n"
+"If their demands are fulfilled, happiness and thus your tax income increase.\n"
+"\n"
+"If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.\n"
+"\n"
+"Note that you can also change the global tax settings here, too.\n"
+"\n"
+"TASK: Build at least three additional tents.\n"
+"\n"
+"TIP: Holding down SHIFT eases constructing multiple buildings of the same kind."
+msgstr ""
+
+#: po/tutorial.py:29
+msgid "Build at least three additional tents and connect them to the main square."
+msgstr ""
+
+#: po/tutorial.py:30
+msgid "NEW TASK: BUILD SIGNAL FIRE"
+msgstr ""
+
+#: po/tutorial.py:31
+msgid ""
+"Can you see the ship passing your island from time to time?\n"
+"\n"
+"This is the ship of the Free Trader, one of the first settlers in this archipelago.\n"
+"\n"
+"This trader will supply your settlement with necessary goods which you can't produce yet.\n"
+"\n"
+"You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling to the Free Trader yields more profit.\n"
+"\n"
+"Normally the ships just sail around and look for deals, but small settlements like yours first need some promotion, otherwise you won't be found.\n"
+"\n"
+"For this purpose, you can build a signal fire at the coast near your branch office to show ships the way to your settlement."
+msgstr ""
+
+#: po/tutorial.py:32
+msgid ""
+"After this little advertisment, the trader will stop by from time to time and look into your branch office.\n"
+"\n"
+"You can propose deals via the tab 'Buy/Sell'. (This feature is currently quite fiddly to use, but a re-design is in the pipeline. If you have found a nice way of doing it, please share your thoughts! We need your help here!)\n"
+"\n"
+"At the 'sailors' increment, you are equipped with three trading slots.\n"
+"\n"
+"Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.\n"
+"\n"
+"If you click in the slot, you can choose the good you want to trade with. We will further explain this once you are ready to trade.\n"
+"\n"
+"TASK: Build a signal fire at the coast close to your branch office."
+msgstr ""
+
+#: po/tutorial.py:33
+msgid "Build a signal fire at the coast close to your branch office."
+msgstr ""
+
+#: po/tutorial.py:34
+msgid "NEW TASK: LEARN TO TRADE"
+msgstr ""
+
+#: po/tutorial.py:35
+msgid ""
+"Excellent! The Free Trader will now stop by at your branch office from time to time.\n"
+"\n"
+"Let's continue our tutorial on how to trade.\n"
+"\n"
+"After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.\n"
+"\n"
+"Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'. \n"
+"When buying, you will buy sufficient to hold your 'target value' in stock. \n"
+"When selling the 'target value' is the number which you hold in reserve to not sell"
+msgstr ""
+
+#: po/tutorial.py:36
+msgid ""
+"For example: \n"
+"Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
+"Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n"
+"\n"
+"If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.\n"
+"\n"
+"Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
+"It is NOT possible to change prices manually!\n"
+"\n"
+"You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.\n"
+"\n"
+"TASK: Buy as many tools as you need to have 30 tools in stock!\n"
+"If you still have some in your ship's inventory, this seems like a good point to unload them."
+msgstr ""
+
+#: po/tutorial.py:37
+msgid "Reach an island stock of at least 30 tools."
+msgstr ""
+
+#: po/tutorial.py:38
+msgid "NEW TASK: BUILD A PAVILION"
+msgstr ""
+
+#: po/tutorial.py:39
+msgid ""
+"Those tools will be enough for the moment. Well done!\n"
+"\n"
+"You now provide housing, a main square and food to your inhabitants.\n"
+"\n"
+"Still there is one demand which we have not satisfied so far, you may check that in the maketplace or tent tab - your sailors want a basic building where they can pray.\n"
+"\n"
+"The solution is a pavilion which the village parson quickly puts up as shelter from the sun.\n"
+"\n"
+"Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.\n"
+"\n"
+"In later increments, upgraded versions of buildings may become available."
+msgstr ""
+
+#: po/tutorial.py:40
+msgid ""
+"In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
+"\n"
+"Take care when planning your city because most of those advanced buildings are bigger than the basic ones.\n"
+"\n"
+"Note that faith is treated like a physical resource, so units need to refresh there after some time.\n"
+"\n"
+"Important:\n"
+"It is NOT enough that the building is merely within a certain range of the tents.\n"
+"\n"
+"TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith."
+msgstr ""
+
+#: po/tutorial.py:41
+msgid "Build a pavilion with connection to the tents."
+msgstr ""
+
+#: po/tutorial.py:42
+msgid "NEW TASK: NEXT INCREMENT"
+msgstr ""
+
+#: po/tutorial.py:43
+msgid ""
+"All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.\n"
+"\n"
+"If the sailors are happy enough, they want to advance to the next increment called Pioneers.\n"
+"\n"
+"To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.\n"
+"\n"
+"You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.\n"
+"\n"
+"After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent."
+msgstr ""
+
+#: po/tutorial.py:44
+msgid ""
+"Such residential upgrades are the only ones which cost resources and can not be restricted by you.\n"
+"\n"
+"There are manual upgrades to some buildings where you use resources to construct a better version on the same spot, and there are upgrades without costs for example as you will see with the lumberjack (In this case, only the graphics change).\n"
+"\n"
+"Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.\n"
+"\n"
+"As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.\n"
+"\n"
+"TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
+msgstr ""
+
+#: po/tutorial.py:45
+msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
+msgstr ""
+
+#: po/tutorial.py:46
+msgid "NEW TASK: BUILD A FARM"
+msgstr ""
+
+#: po/tutorial.py:47
+msgid ""
+"Congratulations! Some of your inhabitants have reached increment II!\n"
+"\n"
+"Now you have access to some new buildings, have a look at the Build menu again.\n"
+"\n"
+"A shiny new tab appeared there.\n"
+"\n"
+"Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).\n"
+"\n"
+"The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.\n"
+"\n"
+"The output of farms depends on what kind of fields you build around it."
+msgstr ""
+
+#: po/tutorial.py:48
+msgid ""
+"We will have a closer look at this later.\n"
+"\n"
+"Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Branch Office.\n"
+"\n"
+"As long as units of the final production company can reach the farm, and collectors from the branch office or storage tent can reach the final company everything's fine.\n"
+"\n"
+"If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.\n"
+"\n"
+"Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.\n"
+"\n"
+"TASK: Build a farm."
+msgstr ""
+
+#: po/tutorial.py:49
+msgid "Build a farm and keep some empty space around it."
+msgstr ""
+
+#: po/tutorial.py:50
+msgid "NEW TASK: BUILD FIELDS"
+msgstr ""
+
+#: po/tutorial.py:51
+msgid ""
+"The farm itself is not going to produce anything without some fields.\n"
+"\n"
+"You currently have the choice between pastures, potato and sugar fields.\n"
+"\n"
+"Let's have a short overview:\n"
+"* Pasture: Sheep live here, producing lamb wool.\n"
+"* Potato field: Grows potatoes which are currently treated as food.\n"
+"* Sugar field: Grows sugar which is used to make alcohol and (later) produce confectionery.\n"
+"\n"
+"We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.\n"
+"\n"
+"Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods."
+msgstr ""
+
+#: po/tutorial.py:52
+msgid ""
+"Make sure that all fields you build are in the area covered by the farm.\n"
+"\n"
+"You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.\n"
+"\n"
+"Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.\n"
+"\n"
+"For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!\n"
+"\n"
+"TASK: Build at least one pasture in the farm's range and add potato fields if you like."
+msgstr ""
+
+#: po/tutorial.py:53
+msgid "Build at least one pasture and add potato fields if you like."
+msgstr ""
+
+#: po/tutorial.py:54
+msgid "NEW TASK: BUILD STORAGE"
+msgstr ""
+
+#: po/tutorial.py:55
+msgid ""
+"Did you watch your lumberjack recently?\n"
+"\n"
+"Since your branch office does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.\n"
+"So if no sailor recently wanted to upgrade his tent, you probably have a lot of boards and in that case, the lumberjack may idle.\n"
+"We can improve this situation with two different approaches, and below we will have a look at both of them.\n"
+"\n"
+"All companies offer the possibility of doing no work at all.\n"
+"This may sound strange, but try to click on the gear wheel you see in, for example, a lumberjack's overview.\n"
+"\n"
+"If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing."
+msgstr ""
+
+#: po/tutorial.py:56
+msgid ""
+"This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n"
+"\n"
+"Another solution is to build the last increment-I building which has not been mentioned so far: the storage tent.\n"
+"\n"
+"This building has two purposes. It:\n"
+"* Offers more storage for your goods, and \n"
+"* sends its own collectors to fetch goods, just like the branch office does.\n"
+"\n"
+"Note that companies can also be connected to a storage in order to get their products collected, and if the branch office is overwhelmed with collector tasks, you can place a storage tent to help out there.\n"
+"\n"
+"TASK: Build a storage tent, preferably where you need collectors."
+msgstr ""
+
+#: po/tutorial.py:57
+msgid "Build a storage tent (increment I tab) where it makes sense."
+msgstr ""
+
+#: po/tutorial.py:58
+msgid "NEW TASK: BUILD A WEAVER"
+msgstr ""
+
+#: po/tutorial.py:59
+msgid ""
+"Now the wool production is set up, you still need a weaver to produce cloth out of this wool.\n"
+"\n"
+"There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the Branch Office).\n"
+"\n"
+"In both cases you should ensure the connection to a trail as well.\n"
+"\n"
+"You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.\n"
+"\n"
+"TASK: Build a weaver positioned so it can get wool."
+msgstr ""
+
+#: po/tutorial.py:60
+msgid "Build a weaver that can somehow reach the wool of your farm."
+msgstr ""
+
+#: po/tutorial.py:61
+msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
+msgstr ""
+
+#: po/tutorial.py:62
+msgid "NEW TASK: COMPLETE TUTORIAL"
+msgstr ""
+
+#: po/tutorial.py:63
+msgid ""
+"Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.\n"
+"\n"
+"Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!\n"
+"\n"
+"TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial."
+msgstr ""
+
+#: po/tutorial.py:64
+msgid "NO TASKS LEFT"
+msgstr ""
+
+#: po/tutorial.py:65
+msgid ""
+"There is nothing left to do now.\n"
+"\n"
+"If you have any suggestions on what we could or should improve, add or leave out:\n"
+"\n"
+"www.unknown-horizons.org\n"
+"\n"
+"#unknown-horizons @ irc.freenode.net\n"
+"\n"
+"team@unknown-horizons.org\n"
+"\n"
+"Our forums are open to you as well!\n"
+"\n"
+"The best results until now were achieved by joining our IRC channel, so you could try that out first (-;"
+msgstr ""
+
+#: po/tutorial.py:66
+msgid "Thanks!"
+msgstr ""
+
+#: po/tutorial.py:67
+msgid ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Thanks for playing the tutorial!\n"
+"\n"
+"Your UH-Team"
+msgstr ""
+
+#: po/tutorial.py:68
+msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
+msgstr ""

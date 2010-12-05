@@ -31,10 +31,10 @@ from horizons.util import Callback
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(
-			widget = 'tab_widget/boatbuilder/boatbuilder.xml',
+			widget = 'boatbuilder.xml',
 			instance = instance
 		)
-		self.tooltip = _("Boat Builder \\n Overview")
+		self.tooltip = _("Boat Builder Overview")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -60,7 +60,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
 			container_active.findChild(name="BB_builtship_label").text = u"Fishing boat"
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher \nStorage: 1 slot of 1t \nSpeed: average \nHealth: 40"
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher Storage: 1 slot of 1t Speed: average Health: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -149,9 +149,9 @@ class BoatbuilderTab(OverviewTab):
 class BoatbuilderSelectTab(OverviewTab):
 
 	def __init__(self, instance, tabname):
-		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'tab_widget/boatbuilder/' + str(tabname) + '.xml')
+		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
 		self.init_values()
-		bb_image_path = 'content/gui/images/icons/hud/common/bb/'+str(tabname)+'_%s.png'
+		bb_image_path = 'content/gui/icons/tabwidget/boatbuilder/'+str(tabname)+'_%s.png'
 		self.button_up_image = bb_image_path % 'u'
 		self.button_active_image = bb_image_path % 'a'
 		self.button_down_image = bb_image_path % 'd'
@@ -200,7 +200,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderConfirmTab, self).__init__(
-			widget = 'tab_widget/boatbuilder/confirm.xml',
+			widget = 'boatbuilder_confirm.xml',
 			instance = instance
 		)
 		events = { 'create_unit': self.start_production }

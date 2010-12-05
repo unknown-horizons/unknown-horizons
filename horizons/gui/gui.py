@@ -30,7 +30,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
-from horizons.gui.utility import center_widget, LazyWidgetsDict
+from horizons.gui.utility import adjust_widget_black_background, center_widget, LazyWidgetsDict
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 
@@ -44,7 +44,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	styles = {
 	  'mainmenu': 'menu',
 	  'quitgame': 'book',
-	  'settings': 'book',
+#	  'settings': 'book',
 	  'requirerestart': 'book',
 #	  'popup_with_cancel': 'book',
 #	  'popup': 'book',
@@ -77,13 +77,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'startSingle'    : self.show_single,
 			'startMulti'     : self.show_multi,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'creditsLink'    : self.show_credits,
-			'closeButton'    : self.show_quit,
 			'helpLink'       : self.on_help,
-			'loadgameButton' : horizons.main.load_game,
-			'dead_link'      : self.on_chime
+			'closeButton'    : self.show_quit,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
 		})
+
 		self.on_escape = self.show_quit
+
+		adjust_widget_black_background(self.widgets['mainmenu'])
 
 	def show_quit(self):
 		"""Shows the quit dialog """
@@ -93,27 +96,27 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		for i in xrange (0,11):
-			cur_container = self.widgets['credits/'+str(number)].findChild(name='book'+str(i))
+			cur_container = self.widgets['credits'+str(number)].findChild(name='book'+str(i))
 			if cur_container:
 				cur_container.stylize('book_t') # leaves headlines as what they are, only style labels
 				cur_container.margins = (30,0) # to get some indentation
-		team_lbl = self.widgets['credits/'+str(number)].findChild(name="team_lbl")
+		team_lbl = self.widgets['credits'+str(number)].findChild(name="team_lbl")
 		if team_lbl:
 			team_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 0), event_name="mouseClicked")
-		patchers_lbl = self.widgets['credits/'+str(number)].findChild(name="patchers_lbl")
+		patchers_lbl = self.widgets['credits'+str(number)].findChild(name="patchers_lbl")
 		if patchers_lbl:
 			patchers_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 1), event_name="mouseClicked")
-		translators_lbl = self.widgets['credits/'+str(number)].findChild(name="translators_lbl")
+		translators_lbl = self.widgets['credits'+str(number)].findChild(name="translators_lbl")
 		if translators_lbl:
 			translators_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
-		special_thanks_lbl = self.widgets['credits/'+str(number)].findChild(name="special_thanks_lbl")
+		special_thanks_lbl = self.widgets['credits'+str(number)].findChild(name="special_thanks_lbl")
 		if special_thanks_lbl:
 			special_thanks_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 3), event_name="mouseClicked")
 
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits/'+str(number)], {'okButton' : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['credits'+str(number)], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -162,16 +165,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_pause(self):
 		"""
 		Show Pause menu
-		"""
+		"""		
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
-			'closeButton'    : self.quit_session,
 			'savegameButton' : self.session.save,
-			'loadgameButton' : horizons.main.load_game,
-			'helpLink'       : self.on_help,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'dead_link'      : self.on_chime
+			'helpLink'       : self.on_help,
+			'closeButton'    : self.quit_session,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
 		})
+		
+		adjust_widget_black_background(self.widgets['gamemenu'])
+		
 		self.session.speed_pause()
 		self.on_escape = self.return_to_game
 
@@ -277,10 +284,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			else:
 				details_label.text += _("Saved at %s\n") % \
 										time.strftime(_("%H:%M, %A, %B %d"), time.localtime(savegame_info['timestamp']))
-			if savegame_info['savecounter'] > 1:
-				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
+			if savegame_info['savecounter'] == 1:
+				details_label.text += _("Saved 1 time\n")
 			else:
-				details_label.text += _("Saved %d time\n") % savegame_info['savecounter']
+				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
 			details_label.stylize('book')
 
 			from horizons.constants import VERSION
@@ -350,9 +357,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
-		self.current.findChild(name="savegamelist").capture( Callback.ChainedCallbacks( \
-		  Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
-		  tmp_selected_changed))
+		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
+						tmp_selected_changed)
+		self.current.findChild(name="savegamelist").mapEvents({ "savegamelist/action":cb,"savegamelist/mouseWheelMovedUp":cb, \
+									"savegamelist/mouseWheelMovedDown":cb})
+		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		retval = self.show_dialog(self.current, \
 		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete', 'savegamefile' : True},

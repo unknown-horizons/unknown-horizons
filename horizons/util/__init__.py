@@ -22,7 +22,6 @@
 __all__ = []
 
 from living import livingProperty, LivingObject
-from color import Color
 from changelistener import Changelistener
 from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader

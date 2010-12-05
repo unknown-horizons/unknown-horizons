@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Container name="tab0" size="250,500">
+	<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,350" />
+	<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,400" />
+
+	<Container position="0,70" size="250,80" >
+		<Label name="headline" position="70,7" text="Settler Buildings" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	</Container>
+
+	<Container position="20,100" size="250,80">
+		<Label position="0,11" text="Housing" name="housing_label" />
+
+		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
+
+		<TooltipButton name="villageschool-1" position="0,30"
+			up_image="content/gui/icons/buildmenu/school_i.png"
+			hover_image="content/gui/icons/buildmenu/school_i_h.png"
+			down_image="content/gui/icons/buildmenu/school_i_h.png"
+			tooltip="Village school: Provides education." />
+
+	</Container>
+
+	<Container position="20,170" size="250,80">
+		<Label position="0,11" text="Production" name="production_label" />
+
+		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
+
+		<TooltipButton name="sugarfield-1" position="0,30"
+			up_image="content/gui/icons/buildmenu/sugarfield.png"
+			hover_image="content/gui/icons/buildmenu/sugarfield_h.png"
+			down_image="content/gui/icons/buildmenu/sugarfield_h.png"
+			tooltip="Sugar Field: Produces sugar for rum."/>
+	</Container>
+
+
+</Container>
+

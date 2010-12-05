@@ -79,7 +79,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		                     tooltip=self.tooltip)
 		label = pychan.widgets.Label(text=self.text)
 		label.position = self.text_position
-		fill_bar = pychan.widgets.Icon("content/gui/tab_widget/green_line.png")
+		fill_bar = pychan.widgets.Icon("content/gui/images/tabwidget/green_line.png")
 		fill_bar.position = (self.button.width-fill_bar.width-1, \
 		                     self.button.height-int(self.button.height/100.0*self.filled))
 		self.addChildren(self.button, fill_bar, label)

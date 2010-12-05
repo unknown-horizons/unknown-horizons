@@ -37,6 +37,20 @@ def center_widget(widget):
 	widget.x = int((horizons.main.fife.engine_settings.getScreenWidth() - widget.width) / 2)
 	widget.y = int((horizons.main.fife.engine_settings.getScreenHeight() - widget.height) / 2)
 
+def adjust_widget_black_background(widget):
+	"""Resizes the black background container and centers the menu
+	@param widget: Widget with black_underlay and menu containers
+	"""
+	black_underlay = widget.findChild(name='black_underlay')
+	black_underlay.position = (0, 0)
+	black_underlay.size = (horizons.main.fife.engine_settings.getScreenWidth(), horizons.main.fife.engine_settings.getScreenHeight())
+
+	black_underlay_background = widget.findChild(name='black_underlay_background')
+	black_underlay_background.size = (horizons.main.fife.engine_settings.getScreenWidth(), horizons.main.fife.engine_settings.getScreenHeight())
+
+	menu = widget.findChild(name='menu')
+	center_widget(menu)
+
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""

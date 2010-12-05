@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!--     #TODO :: at the moment gui.py overwrites style definitions like font=""     -->
+<Container name="settings_window" size="800,580" position="100,100">
+<Icon image="content/gui/images/background/book.png" position="0,0" />
+
+<Container size="320,520" position="65,32">
+	<Label text="Settings" position="150,10" name="headline" />
+	<Label name="warning" position="22,30"
+		text="Please make sure that you know what you do."
+		wrap_text="0" max_size="300,20" min_size="300,20" />
+	<Icon image="content/gui/images/background/hr.png" position="55,50" />
+
+	<Container size="320,245" position="0,50" name="graphic_settings" >
+		<Label name="headline_graphics" text="Graphics" position="12,15"
+			font="libertine_headline" />
+		<Label name="screen_resolution_label" text="Screen resolution:"
+			position="22,50" wrap_text="1" max_size="180,40" />
+		<ScrollArea min_size="100,105" position="22,90">
+			<ListBox name="screen_resolution" />
+		</ScrollArea>
+
+		<Label name="color_depth_label" text="Color depth:" position="180,50"
+			wrap_text="1" max_size="140,20" />
+		<ScrollArea min_size="55,20" position="200,90">
+			<ListBox name="screen_bpp" />
+		</ScrollArea>
+		<Label name="use_renderer_label" text="Used renderer:" position="180,120"
+			wrap_text="1" max_size="140,40" />
+		<ScrollArea min_size="55,40" position="200,160">
+			<ListBox name="render_backend" />
+		</ScrollArea>
+		<CheckBox min_size="160,32" name="enable_fullscreen" position="22,210" />
+		<Label name="screen_fullscreen_text" text="Full screen" position="67,215" />
+	</Container>
+
+	<Container size="320,200" position="0,320" name="sound_settings">
+		<Label name="headline_sound" text="Sound" position="12,0" font="libertine_headline" />
+		<Label name="music_volume_label" text="Music volume:" position="22,35"
+			wrap_text="1" max_size="160,40" />
+		<Container size="180,30" position="170,45">
+			<Slider size="120,20" name="volume_music"
+				orientation="0" scale_start="0.0" scale_end="0.20" />
+			<TextBox min_size="40,0" name="volume_music_value" text="" position="124,0" />
+		</Container>
+		<Label name="effect_volume_label" text="Effects volume:" position="22,90"
+			wrap_text="1" max_size="160,40" />
+		<Container size="180,30" position="170,95">
+			<Slider size="120,20" name="volume_effects"
+				orientation="0" scale_start="0.0" scale_end="0.5" />
+			<TextBox min_size="40,0" name="volume_effects_value" text=""  position="124,0" />
+		</Container>
+		<CheckBox min_size="160,32" name="enable_sound" position="22,140" />
+		<Label name="sound_enable_opt_text" text="Enable sound" position="67,145" />
+	</Container>
+</Container>
+
+<Container size="320,520" position="420,32">
+	<Container size="320,240" position="0,30" name="saving_settings">
+		<Label name="headline_saving" text="Saving" position="12,3" font="libertine_headline" />
+
+		<Label name="autosave_interval_label" text="Autosave interval:" position="15,40"
+			wrap_text="1" max_size="250,40" min_size="250,40" />
+		<Label name="number_of_autosaves_label" text="Number of autosaves:" position="15,100"
+			wrap_text="1" max_size="250,40" min_size="250,40" />
+		<Label name="number_of_quicksaves_label" text="Number of quicksaves:" position="15,160"
+			wrap_text="1" max_size="250,40" min_size="250,40" />
+
+		<ScrollArea min_size="48,45" position="240, 40">
+			<ListBox name="autosaveinterval" />
+		</ScrollArea>
+		<ScrollArea min_size="48,45" position="240,100">
+			<ListBox name="autosavemaxcount" />
+		</ScrollArea>
+		<ScrollArea min_size="48,45" position="240,160">
+			<ListBox name="quicksavemaxcount" />
+		</ScrollArea>
+		<Label text="min" position="280,54" />
+<!--    #TODO :: use sliders instead of listboxes    -->
+	</Container>
+
+	<Container size="320,180" position="12,260">
+		<Label name="headline_language" text="Language" font="libertine_headline" />
+		<Label name="language_label" text="Select language:" position="10,40" />
+		<ScrollArea min_size="125,140" position="140,40">
+			<ListBox name="language" />
+		</ScrollArea>
+	</Container>
+
+	<Container size="320,40" position="140,460">
+		<ImageButton name="cancelButton"
+			up_image="content/gui/images/buttons/close.png"
+			hover_image="content/gui/images/buttons/close_h.png"
+			down_image="content/gui/images/buttons/close.png" />
+		<ImageButton name="okButton" position="60,0"
+			up_image="content/gui/images/buttons/ok.png"
+			hover_image="content/gui/images/buttons/ok_h.png"
+			down_image="content/gui/images/buttons/ok.png" />
+		<ImageButton name="defaultButton" position="120,0"
+			up_image="content/gui/images/buttons/delete.png"
+			hover_image="content/gui/images/buttons/delete_h.png"
+			down_image="content/gui/images/buttons/delete.png" />
+	</Container>
+</Container>
+<!-- This dropdown is invisible, but required by fife to be here -->
+<DropDown name="lighting_model" min_size="120,0" /> 
+</Container><!--     #ToDO :: get rid of this container mass     -->
+

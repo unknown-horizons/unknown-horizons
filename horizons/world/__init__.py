@@ -29,7 +29,8 @@ import logging
 import horizons.main
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
-from horizons.util import Point, Color, Rect, LivingObject, Circle
+from horizons.util import Point, Rect, LivingObject, Circle
+from horizons.util.color import Color
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate

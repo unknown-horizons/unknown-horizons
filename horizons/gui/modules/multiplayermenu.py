@@ -32,7 +32,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import Callback
 from horizons.network import CommandError
-from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.utility import adjust_widget_black_background
 
 
 class MultiplayerMenu(object):
@@ -56,6 +56,8 @@ class MultiplayerMenu(object):
 		}
 		self.widgets.reload('multiplayermenu')
 		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
+
+		adjust_widget_black_background(self.widgets['multiplayermenu'])
 
 		refresh_worked = self.__refresh()
 		if not refresh_worked:
@@ -175,6 +177,9 @@ class MultiplayerMenu(object):
 		game = self.__get_selected_game()
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
+
+		adjust_widget_black_background(self.widgets['multiplayer_gamelobby'])
+
 		self.__update_game_details(game)
 		self.current.findChild(name="game_players").text = u", ".join(game.get_players())
 		textfield = self.current.findChild(name="chatTextField")
@@ -212,6 +217,9 @@ class MultiplayerMenu(object):
 		  'create' : self.__create_game
 		}
 		self._switch_current_widget('multiplayer_creategame', center=True, event_map=event_map, hide_old=True)
+
+		adjust_widget_black_background(self.widgets['multiplayer_creategame'])
+
 		self.current.files, self.maps_display = SavegameManager.get_maps()
 		self.current.distributeInitialData({
 		  'maplist' : self.maps_display,

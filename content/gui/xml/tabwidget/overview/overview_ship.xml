@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container size="250,400">
+<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,300" />
+	<Icon name="player_emblem" position="25,50"/>
+
+<Container position="0,70" size="245,300" >
+	<!-- Name of Ship -->
+	<TooltipLabel name='name' border_size="0" position="80,7" tooltip="Click to change the name of this Ship."/>
+
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+
+	<!-- Picture -->
+	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,30" />
+	<Icon image="content/gui/images/background/hr.png" position="20,175" />
+
+	<HBox position="30,205">
+		<Label name="health_label" text="Health:" /><Label name='health' text="" />
+	</HBox>
+
+	<!--<Icon image="content/gui/images/background/msg_button.png" position="170,170" />				 	-->
+	<HBox position="180,190">
+		<ToggleImageButton name='bg_button' border_size="0" 
+			inactive_image="content/gui/images/buttons/msg_button_bw.png" 
+			up_image="content/gui/images/buttons/msg_button.png" 
+			down_image="content/gui/images/buttons/msg_button_d.png" 
+			hover_image="content/gui/images/buttons/msg_button_h.png" />
+	</HBox>
+
+	<HBox position="186,195">
+		<ToggleImageButton name="foundSettelment" tooltip="Build Settlement" 
+			inactive_image="content/gui/icons/ship/anchor_bw.png" 
+			up_image="content/gui/icons/ship/anchor.png" 
+			down_image="content/gui/icons/ship/anchor_a.png" 
+			hover_image="content/gui/icons/ship/anchor_h.png" />
+	</HBox>
+
+</Container>
+</Container>

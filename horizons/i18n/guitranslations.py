@@ -38,64 +38,10 @@ text_translations = dict()
 def set_translations():
 	global text_translations
 	text_translations = {
-		"build_menu/hud_build_tab0.xml" : {
-			"headline"                    : _("Sailor Buildings"),
-			"residents_infra_label"       : _("Residents and Infrastructure"),
-			"services_label"              : _("Services"),
-			"companies_label"             : _("Companies"),
-			"resident-1"                  : _("Tent: \nHouses your \ninhabitants."),
-			"store-1"                     : _("Storage: \nExtends stock \nand provides \ncollectors."),
-			"street-1"                    : _("Trail: \nNeeded for \ncollecting goods."),
-			"main_square-1"               : _("Main square: \nSupplies citizens \nwith goods."),
-			"church-1"                    : _("Pavilion: \nFulfills religious \nneeds of sailors."),
-			"lighthouse-1"                : _("Signal fire: \nAllows the player \nto trade with \nthe free trader."),
-			"lumberjack-1"                : _("Lumberjack: \nChops down trees \nand turns them \ninto boards."),
-			"tree-1"                      : _("Tree"),
-			"hunter-1"                    : _("Hunter: \nHunts wild \nforest animals, \nproduces food."),
-			"fisher-1"                    : _("Fisherman: \nFishes the sea, \nproduces food.")},
-		"build_menu/hud_build_tab1.xml" : {
-			"headline"                    : _("Pioneer Buildings"),
-			"companies_label"             : _("Companies"),
-			"companies_label"             : _("Fields"),
-			"services_label"              : _("Services"),
-			"military_label"              : _("Military"),
-			"herder-1"                    : _("Farm: \nGrows field \ncrops and raises \nlivestock."),
-			"weaver-1"                    : _("Weaver: \nTurns lamb wool \ninto cloth."),
-			"clay-pit-1"                  : _("Clay Pit: \nGets clay \nfrom deposit."),
-			"brickyard-1"                 : _("Brickyard: \nTurns clay \ninto bricks."),
-			"potatofield-1"               : _("Potato Field: \nYields food. \nNeeds a farm."),
-			"pasture-1"                   : _("Pasture: \nRaises sheep. \nProduces wool. \nNeeds a farm."),
-			"villageschool-1"             : _("Village school: \nProvides education."),
-			"boat_builder-1"              : _("Boat builder: \nBuilds boats and \nsmall ships. \nBuilt on coast.")},
-		"build_menu/hud_build_tab2.xml" : {
-			"headline"                    : _("Settler Buildings"),
-			"housing_label"               : _("Housing"),
-			"production_label"            : _("Production"),
-			"villageschool-1"             : _("Village school: \nProvides education."),
-			"sugarfield-1"                : _("Sugar Field: \nProduces sugar\nfor rum.")},
-		"build_menu/hud_build_tab3.xml" : {
-			"headline"                    : _("Citizen Buildings")},
-		"build_menu/hud_build_tab4.xml" : {
-			"headline"                    : _("Merchant Buildings")},
-		"build_menu/hud_build_tab5.xml" : {
-			"headline"                    : _("Aristocrat Buildings")},
-		"build_menu/hud_builddetail.xml" : {
-			"headline"                    : _("Build"),
-			"running_costs_label"         : _("Running Costs:")},
-		"buildings_gui/production_building_overview.xml" : {
-			"headline"                    : _("Building overview"),
-			"running_costs_label"         : _("Running costs")},
-		"buysellmenu/buysellmenu.xml" : {
-			"headline"                    : _("Buy or sell resources"),
-			"legend_label"                : _("Legend:"),
-			"buy_label"                   : _("Buy resources"),
-			"sell_label"                  : _("Sell resources")},
-		"buysellmenu/resources.xml" : {
-			"headline"                    : _("Select resources:")},
 		"captains_log.xml" : {
+			"cancelButton"                : _("Leave Captain's Log"),
 			"backwardButton"              : _("Read prev. entries"),
-			"forwardButton"               : _("Read next entries"),
-			"cancelButton"                : _("Leave Captain's Log")},
+			"forwardButton"               : _("Read next entries")},
 		"change_name.xml" : {
 			"change_name_headline"        : _("Change name"),
 			"enter_new_name_lbl"          : _("Enter new name:")},
@@ -108,32 +54,6 @@ def set_translations():
 			"deadlink_label"              : _("But this is a deadlink, sorry.")},
 		"city_info.xml" : {
 			"city_name"                   : _("Click to change the name of your settlement.")},
-		"credits/0.xml" : {
-			"headline_team"               : _("UH-Team"),
-			"headline_projectcoord"       : _("Project Coordination"),
-			"headline_programming"        : _("Programming"),
-			"headline_gamedesign"         : _("Game-Play Design"),
-			"headline_sfx"                : _("Sound and Music Artists"),
-			"headline_gfx"                : _("Graphic Artists"),
-			"patchers_lbl"                : _("Patchers"),
-			"translators_lbl"             : _("Translators"),
-			"special_thanks_lbl"          : _("Special Thanks")},
-		"credits/1.xml" : {
-			"team_lbl"                    : _("UH-Team"),
-			"headline_patchers"           : _("Patchers"),
-			"translators_lbl"             : _("Translators"),
-			"special_thanks_lbl"          : _("Special Thanks")},
-		"credits/2.xml" : {
-			"team_lbl"                    : _("UH-Team"),
-			"patchers_lbl"                : _("Patchers"),
-			"headline_translators"        : _("Translators"),
-			"special_thanks_lbl"          : _("Special Thanks")},
-		"credits/3.xml" : {
-			"team_lbl"                    : _("UH-Team"),
-			"patchers_lbl"                : _("Patchers"),
-			"translators_lbl"             : _("Translators"),
-			"headline_thanks"             : _("Special Thanks"),
-			"fife_team_lbl"               : _("The whole FIFE team (www.fifengine.de)")},
 		"gamemenu.xml" : {
 			"version_label"               : VERSION.string(),
 			"start"                       : _("Return to Game"),
@@ -255,11 +175,6 @@ def set_translations():
 			"number_of_quicksaves_label"  : _("Number of quicksaves:"),
 			"headline_language"           : _("Language"),
 			"language_label"              : _("Select language:")},
-		"ship/trade.xml" : {
-			"headline"                    : _("Trade"),
-			"ship_label"                  : _("Ship:"),
-			"exchange_label"              : _("Exchange:"),
-			"trade_with_label"            : _("Trade partner:")},
 		"singleplayermenu.xml" : {
 			"headline"                    : _("NEW GAME - SINGLEPLAYER"),
 			"main_menu_label"             : _("Main menu:"),
@@ -276,24 +191,91 @@ def set_translations():
 			"textiles_icon"               : _("Textiles")},
 		"status_gold.xml" : {
 			"gold_icon"                   : _("Gold")},
-		"tab_widget/boatbuilder/boatbuilder.xml" : {
-			"headline"                    : _("Building Overview"),
-			"BB_howto_build_lbl"          : _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
-			"BB_current_order"            : _("Currently building:"),
-			"BB_progress_label"           : _("Construction progress:"),
-			"BB_cancel_build_label"       : _("Cancel building:"),
-			"BB_cancel_warning_label"     : _("(lose all resources)"),
-			"toggle_active_active"        : _("Pause"),
-			"toggle_active_inactive"      : _("Resume"),
-			"BB_cancel_button"            : _("Cancel all \nbuilding progress"),
+		"build_menu/hud_build_tab0.xml" : {
+			"headline"                    : _("Sailor Buildings"),
+			"residents_infra_label"       : _("Residents and Infrastructure"),
+			"services_label"              : _("Services"),
+			"companies_label"             : _("Companies"),
+			"resident-1"                  : _("Tent: Houses your inhabitants."),
+			"store-1"                     : _("Storage: Extends stock and provides collectors."),
+			"street-1"                    : _("Trail: Needed for collecting goods."),
+			"main_square-1"               : _("Main square: Supplies citizens with goods."),
+			"church-1"                    : _("Pavilion: Fulfills religious needs of sailors."),
+			"lighthouse-1"                : _("Signal fire: Allows the player to trade with the free trader."),
+			"lumberjack-1"                : _("Lumberjack: Chops down trees and turns them into boards."),
+			"tree-1"                      : _("Tree"),
+			"hunter-1"                    : _("Hunter: Hunts wild forest animals, produces food."),
+			"fisher-1"                    : _("Fisherman: Fishes the sea, produces food.")},
+		"build_menu/hud_build_tab1.xml" : {
+			"headline"                    : _("Pioneer Buildings"),
+			"companies_label"             : _("Companies"),
+			"companies_label"             : _("Fields"),
+			"services_label"              : _("Services"),
+			"military_label"              : _("Military"),
+			"herder-1"                    : _("Farm: Grows field crops and raises livestock."),
+			"weaver-1"                    : _("Weaver: Turns lamb wool into cloth."),
+			"clay-pit-1"                  : _("Clay Pit: Gets clay from deposit."),
+			"brickyard-1"                 : _("Brickyard: Turns clay into bricks."),
+			"potatofield-1"               : _("Potato Field: Yields food. Needs a farm."),
+			"pasture-1"                   : _("Pasture: Raises sheep. Produces wool. Needs a farm."),
+			"villageschool-1"             : _("Village school: Provides education."),
+			"boat_builder-1"              : _("Boat builder: Builds boats and small ships. Built on coast.")},
+		"build_menu/hud_build_tab2.xml" : {
+			"headline"                    : _("Settler Buildings"),
+			"housing_label"               : _("Housing"),
+			"production_label"            : _("Production"),
+			"villageschool-1"             : _("Village school: Provides education."),
+			"sugarfield-1"                : _("Sugar Field: Produces sugar for rum.")},
+		"build_menu/hud_build_tab3.xml" : {
+			"headline"                    : _("Citizen Buildings")},
+		"build_menu/hud_build_tab4.xml" : {
+			"headline"                    : _("Merchant Buildings")},
+		"build_menu/hud_build_tab5.xml" : {
+			"headline"                    : _("Aristocrat Buildings")},
+		"build_menu/hud_builddetail.xml" : {
+			"headline"                    : _("Build"),
+			"running_costs_label"         : _("Running Costs:")},
+		"buildings_gui/production_building_overview.xml" : {
+			"headline"                    : _("Building overview"),
 			"running_costs_label"         : _("Running costs")},
-		"tab_widget/boatbuilder/fisher.xml" : {
-			"headline"                    : _("Fishing Boats"),
-			"BB_fisher_ship1"             : _("Fishing boat"),
-			"BB_fisher_ship2"             : _("Cutter"),
-			"BB_fisher_ship3"             : _("Herring fisher"),
-			"BB_fisher_ship4"             : _("Whaler"),
-			"BB_build_fisher_1"           : _("Build this ship!")},
+		"buysellmenu/buysellmenu.xml" : {
+			"headline"                    : _("Buy or sell resources"),
+			"legend_label"                : _("Legend:"),
+			"buy_label"                   : _("Buy resources"),
+			"sell_label"                  : _("Sell resources")},
+		"buysellmenu/resources.xml" : {
+			"headline"                    : _("Select resources:")},
+		"credits/0.xml" : {
+			"headline_team"               : _("UH-Team"),
+			"headline_projectcoord"       : _("Project Coordination"),
+			"headline_programming"        : _("Programming"),
+			"headline_gamedesign"         : _("Game-Play Design"),
+			"headline_sfx"                : _("Sound and Music Artists"),
+			"headline_gfx"                : _("Graphic Artists"),
+			"patchers_lbl"                : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/1.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"headline_patchers"           : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/2.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"patchers_lbl"                : _("Patchers"),
+			"headline_translators"        : _("Translators"),
+			"special_thanks_lbl"          : _("Special Thanks")},
+		"credits/3.xml" : {
+			"team_lbl"                    : _("UH-Team"),
+			"patchers_lbl"                : _("Patchers"),
+			"translators_lbl"             : _("Translators"),
+			"headline_thanks"             : _("Special Thanks"),
+			"fife_team_lbl"               : _("The whole FIFE team (www.fifengine.de)")},
+		"ship/trade.xml" : {
+			"headline"                    : _("Trade"),
+			"ship_label"                  : _("Ship:"),
+			"exchange_label"              : _("Exchange:"),
+			"trade_with_label"            : _("Trade partner:")},
 		"tab_widget/tab_account.xml" : {
 			"headline"                    : _("Account"),
 			"income_label"                : _("Income:"),
@@ -335,7 +317,7 @@ def set_translations():
 			"happiness"                   : _("Happiness")},
 		"tab_widget/tab_overview_ship.xml" : {
 			"health_label"                : _("Health:"),
-			"name"                        : _("Click to change \nthe name of this \nShip."),
+			"name"                        : _("Click to change the name of this Ship."),
 			"foundSettelment"             : _("Build Settlement")},
 		"tab_widget/tab_overview_signalfire.xml" : {
 			"signal_fire_description_lbl" : _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods.")},
@@ -349,4 +331,47 @@ def set_translations():
 		"tab_widget/tab_stock_ship.xml" : {
 			"headline"                    : _("Inventory"),
 			"load_unload_label"           : _("Load/Unload:")},
+		"tab_widget\boatbuilder/boatbuilder.xml" : {
+			"headline"                    : _("Building Overview"),
+			"BB_howto_build_lbl"          : _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
+			"BB_current_order"            : _("Currently building:"),
+			"BB_progress_label"           : _("Construction progress:"),
+			"BB_cancel_build_label"       : _("Cancel building:"),
+			"BB_cancel_warning_label"     : _("(lose all resources)"),
+			"toggle_active_active"        : _("Pause"),
+			"toggle_active_inactive"      : _("Resume"),
+			"BB_cancel_button"            : _("Cancel all building progress"),
+			"running_costs_label"         : _("Running costs")},
+		"tab_widget\boatbuilder/confirm.xml" : {
+			"headline"                    : _("Confirm Order"),
+			"BB_needed_boards"            : _("24t"),
+			"BB_needed_cloth"             : _("14t"),
+			"BB_needed_ropes"             : _("06t"),
+			"BB_needed_cannons"           : _("06t"),
+			"BB_needed_money"             : _("2500"),
+			"BB_builtship_label"          : _("Sloop-o'-war"),
+			"BB_description_frigate"      : _("Three-masted most common classified war ship with one gun deck."),
+			"headline_upgrades"           : _("Buy Upgrades"),
+			"BB_upgrade_cannons"          : _("Cannons"),
+			"BB_upgrade_hull"             : _("Hull"),
+			"BB_needed_boards+"           : _(" + 24t"),
+			"BB_needed_cloth+"            : _(" + 14t"),
+			"BB_needed_ropes+"            : _(" + 06t"),
+			"BB_needed_cannons+"          : _(" + 06t"),
+			"BB_needed_money+"            : _(" + 1457"),
+			"BB_confirm_build_label"      : _("Build ship:"),
+			"create_unit"                 : _("Build this ship!")},
+		"tab_widget\boatbuilder/fisher.xml" : {
+			"headline"                    : _("Fishing Boats"),
+			"BB_fisher_ship1"             : _("Fishing boat"),
+			"BB_fisher_ship2"             : _("Cutter"),
+			"BB_fisher_ship3"             : _("Herring fisher"),
+			"BB_fisher_ship4"             : _("Whaler"),
+			"BB_build_fisher_1"           : _("Build this ship!")},
+		"tab_widget\boatbuilder/trade.xml" : {
+			"headline"                    : _("Trade Boats")},
+		"tab_widget\boatbuilder/war1.xml" : {
+			"headline"                    : _("War Boats")},
+		"tab_widget\boatbuilder/war2.xml" : {
+			"headline"                    : _("War Ships")},
 	}
