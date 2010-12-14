@@ -28,22 +28,31 @@ class PluginManager:
 	adding the plugins if they are set to True in settings.xml. If a plugin
 	isn't set in settings.xml it assumes it is not to be loaded, and saves it
 	as False in settings.xml.
-	
+
 	If a plugin fails to load due to exceptions, they are caught and a line
 	of the error is printed to console.
 	"""
-	def __init__(self, settings, *args, **kwargs):
+	def __init__(self, settings, addPluginDir, *args, **kwargs):
+		"""
+		@param addPluginDir - directory that is scanned for plugins additionally to
+						   the default pluginDir
+		"""
 		self._settings = settings
-		
+
 		self._pluginDir = "plugins"
 		self._plugins = []
-		
+
+		dirs = [self._pluginDir]
+		if addPluginDir is not None:
+			dirs.append(addPluginDir)
+
 		files = []
-		for f in os.listdir(self._pluginDir):
-			path = os.path.join(self._pluginDir, f)
-			if os.path.isfile(path) and os.path.splitext(f)[1] == ".py" and f != "__init__.py":
-				files.append(os.path.splitext(f)[0])
-				
+		for d in dirs:
+			for f in os.listdir(d):
+				path = os.path.join(d, f)
+				if os.path.isfile(path) and os.path.splitext(f)[1] == ".py" and f != "__init__.py":
+					files.append(os.path.splitext(f)[0])
+
 		for f in files:
 			importPlugin = self._settings.get("Plugins", f, False)
 			if importPlugin:
@@ -61,15 +70,15 @@ class PluginManager:
 					print "Invalid plugin:", f
 			else:
 				print "Not importing plugin:", f
-				
+
 			self._settings.set("Plugins", f, importPlugin)
-			
+
 		self._settings.saveSettings()
 
-		
+
 class Plugin:
 	""" The base class for all plugins. All plugins should override these functions. """
-	
+
 	def enable(self):
 		raise NotImplementedError, "Plugin has not implemented the enable() function!"
 
@@ -81,16 +90,16 @@ class Plugin:
 
 	def getName(self):
 		raise NotImplementedError, "Plugin has not implemented the getName() function!"
-		
+
 	#--- These are not so important ---#
 	def getAuthor(self):
 		return "Unknown"
-		
+
 	def getDescription(self):
 		return ""
 
 	def getLicense(self):
 		return ""
-		
+
 	def getVersion(self):
 		return "0.1"
