@@ -1,0 +1,3 @@
+<HBox opaque='1'>
+	<Button name="quitButton" text="Quit"/>
+</HBox>

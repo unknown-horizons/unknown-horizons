@@ -1,0 +1,27 @@
+<Panel title="Object selector" min_size="200,300">
+	<VBox hexpand="1" vexpand="1">
+		<!-- Search field -->
+		<HBox>
+			<TextField name="searchField" />
+			<Button name="searchButton" text="Search" hexpand="0" /> 
+		</HBox>
+
+    <!-- Namespaces -->
+		<DropDown name="namespaceDropdown" />
+
+    <!-- Main area (object list) -->
+		<ScrollArea name="mainScrollArea" min_size="150,50"/>
+
+    <!-- Action buttons -->
+		<HBox>
+			<Spacer />
+			<Button name="toggleModeButton" text="Toggle previewmode" />
+			<Button name="closeButton" text="Close" />
+		</HBox>
+
+    <!-- Preview area -->
+		<ScrollArea name="previewScrollArea" max_size="200,1" vexpand="1">
+			<Icon name="previewIcon" />
+		</ScrollArea>
+	</VBox>
+</Panel>

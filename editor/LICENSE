@@ -1,0 +1,84 @@
+== GUI images ==
+=== Bluesphere SVG iconpack ===
+Author:
+Bluesphere team
+
+Download:
+http://sourceforge.net/projects/svgicons/files/BlueSphere/BlueSphere-0.3.0.tar.bz2/download
+
+License:
+BSD-like license
+
+Affected files:
+gui/icons/add_instance.png
+gui/icons/add_layer.png
+gui/icons/cycle_styles.png
+gui/icons/close_map.png
+gui/icons/delete_layer.png
+gui/icons/edit.png
+gui/icons/erase_instance.png
+gui/icons/help.png
+gui/icons/import_dir.png
+gui/icons/import_file.png
+gui/icons/is_visible.png
+gui/icons/load_map.png
+gui/icons/map_wizard.png
+gui/icons/move_instance.png
+gui/icons/new_map.png
+gui/icons/next_branch.png
+gui/icons/objectpicker.png
+gui/icons/previous_branch.png
+gui/icons/quit.png
+gui/icons/redo.png
+gui/icons/rotate_clockwise.png
+gui/icons/rotate_countercw.png
+gui/icons/save_allmaps.png
+gui/icons/save_map.png
+gui/icons/save_mapas.png
+gui/icons/select_instance.png
+gui/icons/undo.png
+gui/icons/zoom_default.png
+gui/icons/zoom_in.png
+gui/icons/zoom_out.png
+gui/icons/
+
+=== Inkscape ===
+Author:
+Inkscape development team
+
+Download:
+http://downloads.sourceforge.net/inkscape/inkscape-0.46.tar.gz
+
+License:
+GPL
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+Affected files:
+gui/icons/take_screenshot.png
+
+=== GIMP Icons ===
+Author: the GIMP team
+
+Download:
+http://gimp.org
+
+License:
+GPL 2.0
+
+Affected files:
+gui/icons/is_visible.png
+
+== Fonts ==
+=== Ubuntu ===
+Author:
+GNU freefont project
+
+Download:
+ftp://ftp.gnu.org/pub/gnu/freefont/
+
+License:
+GPL 3.0
+http://www.gnu.org/copyleft/gpl.html
+
+Affected files:
+content/fonts/FreeSans.ttf

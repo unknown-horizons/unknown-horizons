@@ -1,0 +1,182 @@
+<Panel title="Light Editor" position="10,700" min_size="200,250">
+
+  <VBox>
+    <Label text="General Options" min_size="45,20"/>
+    <HBox>
+      <Label text="Group: " min_size="100,20"/>
+      <TextField name="group" text="" min_size="100, 20" />
+    </HBox>
+
+    <HBox>
+      <Label text="Instance Id: " min_size="100,20"/>
+      <TextField name="ins_id" text="" min_size="100, 20" />
+    </HBox>
+
+    <HBox>
+      <Label text="Object Id: " min_size="100,20"/>
+      <TextField name="obj_id" text="" min_size="100, 20" />
+    </HBox>
+
+    <HBox>
+      <Label text="Stencil Test: " min_size="25,20"/>
+      <TextBox text="-1" name="stencil" size="30,20" min_size="30,20" max_size="30,20" />
+      <Button name="stencil_up" text="+" max_size="20,20"/>
+      <Button name="stencil_dn" text="-" max_size="20,20"/>
+    </HBox>
+
+    <HBox>
+      <Label text="Alpha Test: " min_size="25,20"/>
+      <TextBox text="0.0" name="alpha" size="30,20" min_size="30,20" max_size="30,20" />
+      <Button name="alpha_up" text="+" max_size="20,20"/>
+      <Button name="alpha_dn" text="-" max_size="20,20"/>
+    </HBox>
+
+    <HBox>
+      <Label text="Src Blend Mode: " min_size="25,20"/>
+      <TextBox text="-1" name="src" size="30,20" min_size="30,20" max_size="30,20"/>
+      <Button name="src_up" text="+" max_size="20,20"/>
+      <Button name="src_dn" text="-" max_size="20,20"/>
+    </HBox>
+
+    <HBox>
+      <Label text="Dst Blend Mode: " min_size="25,20"/>
+      <TextBox text="-1" name="dst" size="30,20" min_size="30,20" max_size="30,20"/>
+      <Button name="dst_up" text="+" max_size="20,20"/>
+      <Button name="dst_dn" text="-" max_size="20,20"/>
+    </HBox>
+
+    <HBox>
+      <Button text="Simple" name="simple_but" />
+      <Button text="Image" name="image_but" />
+      <Button text="Animation" name="animation_but" />
+      <Button text="Global" name="global_but" />
+    </HBox>
+
+    <HBox>
+      <Button text="Reset" name="reset" />
+      <Button text="Use" name="use" />
+    </HBox>
+  </VBox>
+
+  <VBox name="simple_panel_wrapper">
+    <VBox name="simple_panel">
+      <Label text="Simple Light" min_size="45,20"/>
+      <HBox>
+        <Label text="Intensity: " min_size="25,20"/>
+        <TextBox text="0" name="intensity" size="30,20" min_size="30,20" max_size="30,20" />
+        <Button name="intensity_up" text="+" max_size="20,20"/>
+        <Button name="intensity_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="R: " min_size="25,20"/>
+        <TextBox text="0" name="red" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="red_up" text="+" max_size="20,20"/>
+        <Button name="red_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="G: " min_size="25,20"/>
+        <TextBox text="0" name="green" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="green_up" text="+" max_size="20,20"/>
+        <Button name="green_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="B: " min_size="25,20"/>
+        <TextBox text="0" name="blue" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="blue_up" text="+" max_size="20,20"/>
+        <Button name="blue_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="Radius: " min_size="25,20"/>
+        <TextBox text="0" name="radius" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="radius_up" text="+" max_size="20,20"/>
+        <Button name="radius_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="Subdivisions: " min_size="25,20"/>
+        <TextBox text="32" name="subdivisions" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="subdivisions_up" text="+" max_size="20,20"/>
+        <Button name="subdivisions_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="X-Stretch: " min_size="25,20"/>
+        <TextBox text="1" name="xstretch" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="xstretch_up" text="+" max_size="20,20"/>
+        <Button name="xstretch_dn" text="-" max_size="20,20"/>
+      </HBox>
+
+      <HBox>
+        <Label text="Y-Stretch: " min_size="25,20"/>
+        <TextBox text="1" name="ystretch" size="30,20" min_size="30,20" max_size="30,20"/>
+        <Button name="ystretch_up" text="+" max_size="20,20"/>
+        <Button name="ystretch_dn" text="-" max_size="20,20"/>
+      </HBox>
+    </VBox>
+  </VBox>
+
+  <VBox name="image_panel_wrapper">
+    <VBox name="image_panel">
+      <Label text="Light Image" min_size="45,20"/>
+      <HBox>
+        <Label text="Image: " min_size="30,20"/>
+        <TextField text="" name="image" size="60,20" min_size="40,20" max_size="300,20"/>
+      </HBox>
+      <HBox>
+        <Button name="selec_image" text="last selected"/>
+      </HBox>
+    </VBox>
+  </VBox>
+
+  <VBox name="animation_panel_wrapper">
+    <VBox name="animation_panel">
+      <Label text="Light Animation" min_size="45,20"/>
+      <HBox>
+        <Label text="Animation: " min_size="30,20"/>
+        <TextField text="" name="animation" size="60,20" min_size="40,20" max_size="300,20"/>
+      </HBox>
+      <HBox>
+        <Button name="selec_animation" text="last selected"/>
+      </HBox>
+    </VBox>
+  </VBox>
+
+  <VBox name="global_panel_wrapper">
+    <VBox name="global_panel">
+      <Label text="RGB values for Global Light" />
+      <HBox>
+        <Label text="R" />
+        <TextBox text="1.0" name="value_R" min_size="30,20"/>
+        <Button text="+" name="increase_R" />
+        <Button text="-" name="decrease_R" />
+      </HBox>
+      <HBox>
+        <Label text="G" />
+        <TextBox text="1.0" name="value_G" min_size="30,20"/>
+        <Button text="+" name="increase_G" />
+        <Button text="-" name="decrease_G" />
+      </HBox>
+      <HBox>
+        <Label text="B" />
+        <TextBox text="1.0" name="value_B" min_size="30,20"/>
+        <Button text="+" name="increase_B" />
+        <Button text="-" name="decrease_B" />
+      </HBox>
+      <HBox>
+        <Label text="A" />
+        <TextBox text="1.0" name="value_A" min_size="30,20"/>
+        <Button text="+" name="increase_A" />
+        <Button text="-" name="decrease_A" />
+      </HBox>
+      <VBox>
+        <Button text="Random" name="random_global_light" />
+        <Button text="Reset" name="reset_global_light" />
+      </VBox>
+    </VBox>
+  </VBox>
+
+</Panel>

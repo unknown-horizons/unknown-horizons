@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Settings>
+	<Module name="FIFE">
+		<Setting name="FullScreen" type="bool"> False </Setting>
+		<Setting name="PlaySounds" type="bool"> True </Setting>
+		<Setting name="RenderBackend" type="str"> OpenGL </Setting>
+		<Setting name="ScreenResolution" type="str"> 1024x768 </Setting>
+		<Setting name="BitsPerPixel" type="int"> 0 </Setting>
+		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
+		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
+		<Setting name="WindowTitle" type="str"> FIFE - Editor </Setting>
+		<Setting name="WindowIcon" type="str"></Setting>
+		<Setting name="MapFile" type="str"> maps/shrine.xml </Setting>
+		<Setting name="Font" type="str"> fonts/FreeSans.ttf </Setting>
+		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
+		<Setting name="LogModules" type="list"> controller</Setting>
+		<Setting name="PychanDebug" type="bool"> False </Setting>
+		<Setting name="LogToPrompt" type="int"> 1 </Setting>
+		<Setting name="LogToFile" type="int"> 0 </Setting>
+		<Setting name="Lighting" type="int"> 0 </Setting> 
+	</Module>
+	<Module name="Plugins">
+		<Setting name="HistoryManager" type="bool">True</Setting>
+		<Setting name="LayerTool" type="bool">True</Setting>
+		<Setting name="CameraEdit" type="bool">True</Setting>
+		<Setting name="ObjectEdit" type="bool">True</Setting>
+		<Setting name="ObjectSelector" type="bool">True</Setting>
+    <Setting name="LightEdit" type="bool">True</Setting>
+	</Module>
+  <Module name="Colors">
+    <Setting name="Blocking" type="str">0,255,0</Setting>
+    <Setting name="Grid" type="str">0,255,0</Setting>
+    <Setting name="Coordinate" type="str">255,255,255</Setting>
+    <Setting name="CellSelection" type="str">255,0,0</Setting>
+  </Module>
+</Settings>

@@ -1,0 +1,44 @@
+<Panel title="Layer Editor" min_size="200, 220">
+	<VBox hexpand="1">
+		<HBox>
+			<Label name="layerLabel" text="Layer ID:" />
+			<TextField name="layerBox" hexpand="3" />
+		</HBox>
+		<Label name="pathingLabel" text="Pathfinding strategy:"/>
+		<DropDown name="pathingBox"/>
+
+		<Spacer fixed_size="10" />
+		
+		<Label name="gridLabel" text="Grid type:" />
+		<DropDown name="gridBox"/>
+		<HBox>
+			<Label name="rotLabel" text="Rotation:" />
+			<TextField name="rotBox" text="0.0" hexpand="3" />
+		</HBox>
+		<HBox>
+			<Label name="scaleLabel" text="Scale:" />
+			<Label name="xScaleLabel" text="X:" hexpand="0"/>
+			<TextField name="xScaleBox" text="1.0"  min_size="45,10" />
+			<Label name="yScaleLabel" text="Y:" hexpand="0"/>
+			<TextField name="yScaleBox" text="1.0"  min_size="45,10" />
+		</HBox>
+		<HBox>
+			<Label name="offsetLabel" text="Offset:" />
+			<Label name="xOffsetLabel" text="X:" hexpand="0" />
+			<TextField name="xOffsetBox" text="0.0" min_size="45,10" />
+			<Label name="yOffsetLabel" text="Y:" hexpand="0" />
+			<TextField name="yOffsetBox" text="0.0" min_size="45,10" />
+		</HBox>
+		<HBox>
+			<Label name="transLabel" text="Transparency:" hexpand="0" />
+			<TextField name="transBox" text="0" min_size="45,10" />
+		</HBox>
+	</VBox>
+	
+	<HBox>
+		<Spacer />
+		<Button name="okButton" text="OK" />
+		<Button name="cancelButton" text="Cancel" />
+	</HBox>
+	
+</Panel>
