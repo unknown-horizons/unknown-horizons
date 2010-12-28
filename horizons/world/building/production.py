@@ -51,6 +51,9 @@ class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
+class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 

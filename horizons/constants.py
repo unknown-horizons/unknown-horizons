@@ -220,6 +220,7 @@ LANGUAGENAMES = _LanguageNameDict(
 	it = u'Italiano',
 	nb = u'Norw. Bokmål',
 	pl = u'Polski',
-	pt_BR = u'Português Br.',
-	pt_PT = u'Português'
-)
+  pt_BR = u'Português Br.',
+	pt_PT = u'Português',
+  ru = u'Русский'
+	)
