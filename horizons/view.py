@@ -25,10 +25,10 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import Changelistener, Rect
+from horizons.util import ChangeListener, Rect
 from horizons.constants import LAYERS, VIEW, GAME_SPEED
 
-class View(Changelistener):
+class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
 	def __init__(self, session, center = (0, 0)):

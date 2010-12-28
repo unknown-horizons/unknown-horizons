@@ -42,9 +42,9 @@ Combinations:
 import sys
 import copy
 
-from horizons.util import Changelistener
+from horizons.util import ChangeListener
 
-class GenericStorage(Changelistener):
+class GenericStorage(ChangeListener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
 	resources. The GenericStorage is the general form and is mostly used as baseclass to
 	derive storages with special function from it. Normally there should be no need to
