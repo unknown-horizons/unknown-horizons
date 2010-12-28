@@ -32,6 +32,7 @@ from horizons.world.production.production import SettlerProduction, SingleUsePro
 from horizons.command.building import Build
 from horizons.util import decorators
 from horizons.world.pathfinding.pather import StaticPather
+from horizons.constants import SETTLER
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -61,7 +62,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			Scheduler().add_new_object(self._check_market_place_in_range, self, Scheduler().get_ticks_of_month())
 
 	def __init(self, happiness = None):
-		self.level_max = 1 # for now
+		self.level_max =  SETTLER.CURRENT_MAX_INCR # for now
 		if happiness is not None:
 			self.inventory.alter(RES.HAPPINESS_ID, happiness)
 		self._update_level_data()

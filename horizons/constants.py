@@ -153,6 +153,7 @@ class TRADER:
 
 
 class SETTLER:
+	CURRENT_MAX_INCR = 2 # counting starts at 0!
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5
 	TAX_SETTINGS_STEP = 0.1
