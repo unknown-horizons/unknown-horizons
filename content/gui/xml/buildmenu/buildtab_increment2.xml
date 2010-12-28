@@ -22,7 +22,7 @@
 		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="108,30" />
 		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="162,30" />
 
-		<TooltipButton name="ironmine-1" position="2,32"
+		<TooltipButton name="iron-mine-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/ironmine_i.png"
 			hover_image="content/gui/icons/buildmenu/ironmine_i_h.png"
 			down_image="content/gui/icons/buildmenu/ironmine_i_h.png"
@@ -36,13 +36,13 @@
 			up_image="content/gui/icons/buildmenu/toolmaker.png"
 			hover_image="content/gui/icons/buildmenu/toolmaker_h.png"
 			down_image="content/gui/icons/buildmenu/toolmaker_h.png"
-			tooltip="Toolmaker: ." />
+			tooltip="Toolmaker: ." /><!--
 		<TooltipButton name="butchery-1" position="164,32"
 			up_image="content/gui/icons/buildmenu/butchery.png"
 			hover_image="content/gui/icons/buildmenu/butchery_h.png"
 			down_image="content/gui/icons/buildmenu/butchery_h.png"
-			tooltip="Butchery: ." />
-	</Container>
+			tooltip="Butchery: ." />-->
+	</Container><!--
 
 	<Container position="20,107" size="250,80" >
 		<Label position="0,11" text="Fields" name="companies_label" />
@@ -79,7 +79,7 @@
 			hover_image="content/gui/icons/buildmenu/tavern_i_h.png"
 			down_image="content/gui/icons/buildmenu/tavern_i_h.png"
 			tooltip="Tavern: Provides get-together." />
-	</Container>
+	</Container>-->
 <!-- apothecary * salt gardens
 
 
@@ -99,12 +99,18 @@
 		<Label position="0,11" text="Companies" name="companies_label" />
 
 		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
-
+		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="54,30" />
+<!--
 		<TooltipButton name="tannery-1" position="0,32"
 			up_image="content/gui/icons/buildmenu/tannery.png"
 			hover_image="content/gui/icons/buildmenu/tannery_h.png"
 			down_image="content/gui/icons/buildmenu/tannery_h.png"
-			tooltip="Tannery: Turns hides into leather." />
+			tooltip="Tannery: Turns hides into leather." />-->
+		<TooltipButton name="charcoal-burning-1" position="56,32"
+			up_image="content/gui/icons/buildmenu/charcoal_burning.png"
+			hover_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
+			down_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
+			tooltip="Charcoal Burning: ." />
 	</Container>
 
 </Container>
