@@ -213,6 +213,15 @@ class ProductionOverviewTab(OverviewTab):
 				                                     use_inactive_icon=False) \
 				)
 
+
+			# fix pychans lack of dynamic container sizing
+			# the container in the xml must provide a height attribute, that is valid for
+			# one resource.
+			max_res_in_one_line = max(len(production.get_produced_res()), \
+			                          len(production.get_consumed_resources()))
+			container.height = max_res_in_one_line * container.height
+
+
 			# active toggle_active button
 			container.mapEvents( \
 			  { 'toggle_active': \
