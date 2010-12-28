@@ -55,7 +55,7 @@
 			up_image="content/gui/icons/buildmenu/potatoes.png"
 			hover_image="content/gui/icons/buildmenu/potatoes_h.png"
 			down_image="content/gui/icons/buildmenu/potatoes_h.png"
-			tooltip="Potato Field: Yields food. Needs a farm." /><!--
+			tooltip="Potato Field: Yields food. Needs a farm." />
 		<TooltipButton name="pasture-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/pasture.png"
 			hover_image="content/gui/icons/buildmenu/pasture_h.png"
@@ -65,7 +65,7 @@
 			up_image="content/gui/icons/buildmenu/sugarfield.png"
 			hover_image="content/gui/icons/buildmenu/sugarfield_h.png"
 			down_image="content/gui/icons/buildmenu/sugarfield_h.png"
-			tooltip="Test. Needs a farm." />-->
+			tooltip="Test. Needs a farm." />
 	</Container>
 
 
@@ -93,7 +93,6 @@
 			hover_image="content/gui/icons/buildmenu/boat_builder_h.png"
 			down_image="content/gui/icons/buildmenu/boat_builder_h.png"
 			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
-
 	</Container>-->
 
 	<Container position="20,257" size="250,80">
