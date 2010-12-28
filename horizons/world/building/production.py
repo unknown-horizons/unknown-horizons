@@ -62,23 +62,13 @@ class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, Basic
 
 class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
-<<<<<<< Updated upstream
 	
 class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 	
 class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
-	
-=======
 
-class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class CharcoalBurner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
->>>>>>> Stashed changes
 class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
