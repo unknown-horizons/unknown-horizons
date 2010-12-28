@@ -60,6 +60,9 @@ class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Ba
 class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
+class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
 class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
