@@ -3,7 +3,7 @@
 
 	<TooltipIcon name="gold_icon" tooltip="Gold" 
 		image="content/gui/images/background/widgets/res_mon_bg.png" />
-	<Icon image="content/gui/images/icons/hud/main/gold.png" position="17,12" />
+	<Icon image="content/gui/icons/resources/32/1.png" position="17,12" />
 
 	<Label name="gold_1" text="" />
 	<Label name="gold_2" text="" />
