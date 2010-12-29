@@ -17,7 +17,7 @@
 		<Setting name="PychanDebug" type="bool"> False </Setting>
 		<Setting name="LogToPrompt" type="int"> 1 </Setting>
 		<Setting name="LogToFile" type="int"> 0 </Setting>
-		<Setting name="Lighting" type="int"> 0 </Setting> 
+		<Setting name="Lighting" type="int"> 0 </Setting>
 	</Module>
 	<Module name="Plugins">
 		<Setting name="HistoryManager" type="bool">True</Setting>
@@ -25,7 +25,8 @@
 		<Setting name="CameraEdit" type="bool">True</Setting>
 		<Setting name="ObjectEdit" type="bool">True</Setting>
 		<Setting name="ObjectSelector" type="bool">True</Setting>
-    <Setting name="LightEdit" type="bool">True</Setting>
+		<Setting name="UnknownHorizonsEdit" type="bool">True</Setting>
+		<Setting name="LightEdit" type="bool">True</Setting>
 	</Module>
   <Module name="Colors">
     <Setting name="Blocking" type="str">0,255,0</Setting>

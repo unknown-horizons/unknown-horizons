@@ -108,6 +108,7 @@ class Editor(ApplicationBase, MainWindow):
 
 	def _initTools(self):
 		""" Initializes tools """
+		sys.path.append(os.path.abspath(self._options.plugin_dir))
 		self._pluginmanager = plugin.PluginManager(self.getSettings(), self._options.plugin_dir)
 
 		self._filemanager = FileManager()

@@ -22,6 +22,7 @@
 # ####################################################################
 
 import os
+import sys
 
 class PluginManager:
 	""" Currently, pluginmanager iterates through the plugin directory
@@ -51,15 +52,20 @@ class PluginManager:
 			for f in os.listdir(d):
 				path = os.path.join(d, f)
 				if os.path.isfile(path) and os.path.splitext(f)[1] == ".py" and f != "__init__.py":
-					files.append(os.path.splitext(f)[0])
+					files.append((d,os.path.splitext(f)[0]))
 
-		for f in files:
+		for d,f in files:
 			importPlugin = self._settings.get("Plugins", f, False)
 			if importPlugin:
 				try:
 					print "Importing plugin:", f
-					exec "import plugins."+f
-					plugin = eval("plugins."+f+"."+f+"()")
+					if d == "plugins":
+						plugin = __import__(d+"."+f)
+						plugin = eval("plugin."+f+"."+f+"()")
+					else:
+						plugin = __import__(f)
+						plugin = eval("plugin."+f+"()")
+
 					if isinstance(plugin, Plugin) is False:
 						print f+" is not an instance of Plugin!"
 					else:
