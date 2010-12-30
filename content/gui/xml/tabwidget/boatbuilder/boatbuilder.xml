@@ -17,7 +17,7 @@
 		<Label name="headline" position="55,7" text="Building Overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Label name='name' position="25,40" text="" />
-		<TooltipIcon name="running_costs_label" image="content/gui/images/icons/hud/main/running_costs.png" position="180,40" tooltip="Running costs" />
+		<TooltipIcon name="running_costs_label" image="content/gui/icons/resources/running_costs.png" position="180,40" tooltip="Running costs" />
 		<Label name="running_costs" position="200,40" text="" />
 		<!--<Label position="," name="health_label" text="Health:" />
 		<Label name='health' position="," text="" />-->

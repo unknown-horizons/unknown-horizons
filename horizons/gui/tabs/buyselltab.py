@@ -36,8 +36,8 @@ class BuySellTab(TabInterface):
 
 	log = logging.getLogger("gui")
 
-	buy_button_path =  "content/gui/images/icons/hud/main/buysell_buy.png"
-	sell_button_path = "content/gui/images/icons/hud/main/buysell_sell.png"
+	buy_button_path =  "content/gui/images/tabwidget/buysell_buy.png"
+	sell_button_path = "content/gui/images/tabwidget/buysell_sell.png"
 
 	dummy_icon_path = "content/gui/icons/buildmenu/outdated/dummy_btn.png"
 

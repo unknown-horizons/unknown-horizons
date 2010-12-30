@@ -19,7 +19,7 @@
 <Container size="520,550" position="20,40">
 
 	<Label name="ship_label" text="Ship:" position="0,3"/>
-	<Icon image="content/gui/images/icons/hud/main/icon_trade_ship.png" position="160,0" />
+	<Icon image="content/gui/images/tabwidget/icon_trade_ship.png" position="160,0" />
 
 	<Icon image="content/gui/images/background/inv_bg.png" position="0,35" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="55,35" name="slot" />
@@ -74,7 +74,7 @@
 	<!-- Inventory of Settlement -->
 <Container size="520,550" position="20,240">
 	<Label name="trade_with_label" text="Trade partner:" position="0,3"/>
-	<Icon image="content/gui/images/icons/hud/main/icon_trade_settlement.png" position="160,0" />
+	<Icon image="content/gui/images/tabwidget/icon_trade_settlement.png" position="160,0" />
 
 	<Label text="" position="100,3" name="partners"/>
 
