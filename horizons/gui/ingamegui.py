@@ -308,7 +308,8 @@ class IngameGui(LivingObject):
 		self.widgets['ship'].findChild(name='chargeBarLeft').position = pos
 		self.widgets['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
 		self.widgets['ship'].mapEvents({
-			'foundSettelment' : ychan.tools.callbackWithArguments(self.ship_build, ship)
+			'foundSettlement' : ychan.tools.callbackWithArguments(self.ship_build, ship)
+			#TODO this seems to never gets called since the typo would break our code
 		})
 		self.show_menu('ship')
 

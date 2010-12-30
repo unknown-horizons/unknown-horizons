@@ -122,15 +122,15 @@ class ShipOverviewTab(OverviewTab):
 				island_without_player_settlement_found = True
 
 		if island_without_player_settlement_found:
-			events['foundSettelment'] = Callback(self.instance.session.ingame_gui._build, \
+			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
 		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
 		                                       weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
-			self.widget.child_finder('foundSettelment').set_active()
+			self.widget.child_finder('foundSettlement').set_active()
 		else:
-			events['foundSettelment'] = None
+			events['foundSettlement'] = None
 			self.widget.child_finder('bg_button').set_inactive()
-			self.widget.child_finder('foundSettelment').set_inactive()
+			self.widget.child_finder('foundSettlement').set_inactive()
 
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
