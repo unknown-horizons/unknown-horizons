@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="tab0" size="250,450" >
+<Container name="tab0" size="250,500" >
 <Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
@@ -7,7 +7,8 @@
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
-<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,350" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,350" />
+<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,400" />
 
 <Container position="0,70" size="250,380" >
 	<Label name="headline" position="60,7" text="Sailor Buildings" />
@@ -16,9 +17,11 @@
 	<Container position="20,32" size="250,80" >
 		<Label position="0,11" name="residents_infra_label" text="Residents and Infrastructure" />
 
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="54,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="108,30" />
+		<HBox position="0,30">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+		</HBox>
 
 		<TooltipButton name="resident-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/tent.png"
@@ -45,9 +48,11 @@
 	<Container position="20,107" size="250,80" >
 		<Label position="0,11" text="Services" name="services_label" />
 
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="54,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="108,30" />
+		<HBox position="0,30">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+		</HBox>
 
 		<TooltipButton name="main_square-1" position="2,30"
 			up_image="content/gui/icons/buildmenu/mainsquare.png"
@@ -69,10 +74,12 @@
 	<Container position="20,182" size="250,80" >
 		<Label position="0,11" text="Companies" name="companies_label" />
 
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="0,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="54,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="108,30" />
-		<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" position="162,30" />
+		<HBox position="0,30">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+		</HBox>
 
 		<TooltipButton name="lumberjack-1" position="2,32"
 			up_image="content/gui/icons/buildmenu/lumberjack.png"
@@ -107,9 +114,9 @@
 			down_image="content/gui/icons/buildmenu/lookout_h.png"
 			tooltip="Lookout: Increases the player's sight." />
 		<TooltipButton name="wall-1" position="56,32"
-			up_image="content/gui/icons/buildmenu/outdated/rampart.png"
-			hover_image="content/gui/icons/buildmenu/outdated/rampart_h.png"
-			down_image="content/gui/icons/buildmenu/outdated/rampart_h.png"
+			up_image="content/gui/icons/buildmenu/rampart.png"
+			hover_image="content/gui/icons/buildmenu/rampart_h.png"
+			down_image="content/gui/icons/buildmenu/rampart_h.png"
 			text="Rampart: Protects your settlement." />
 	</Container>-->
 
