@@ -1,28 +1,33 @@
 <?xml version="1.0"?>
 <Container size="264,400">
-<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+<Icon image="content/gui/images/tabwidget/main_bg_top.png"    position="0,0" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,50" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,100" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,150" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,200" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,250" />
 <Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,300" />
 
 <Container position="0,70" size="245,300" >
-	<Label name="headline" position="32,7" text="Buy or sell resources" />
+	<Label name="headline"  position="32,7"  text="Buy or sell resources" />
 
-	<Icon image="content/gui/images/background/hr.png" position="20,105" />
+	<Icon image="content/gui/images/background/hr.png"  position="20,105" />
 	<!-- Replaced with the buy/sell boxes. -->
-	<HBox size="250, 100" position="23,47" name="content" padding="10"/>
+	<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-	<Container position="0,120" size="245,300" name="legend" >
-		<Label name="legend_label" text="Legend:" position="20,0"/>
-		<Label name="buy_label" text="Buy resources" position="105,0"/>
-		<Icon image="content/gui/images/tabwidget/buysell_buy.png" size="10,10" position="85,0"/>
-		<Label name="sell_label" text="Sell resources" position="105,22"/>
-		<Icon image="content/gui/images/tabwidget/buysell_sell.png" size="10,10" position="85,22"/>
-	</Container>
+	<HBox position="20,120" max_size="245,300" name="legend" > 
+		<Label name="legend_label"  text="Legend:" />
+		<VBox>
+			<HBox>
+				<Icon image="content/gui/images/tabwidget/buysell_buy.png" />
+				<Label name="buy_label"  text="Buy resources" />
+			</HBox><HBox>
+				<Icon image="content/gui/images/tabwidget/buysell_sell.png" />
+				<Label name="sell_label"  text="Sell resources" />
+			</HBox>
+		</VBox>
+	</HBox>
 
 </Container>
 
