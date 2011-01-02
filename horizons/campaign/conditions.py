@@ -35,7 +35,8 @@ CONDITIONS = Enum('settlements_num_greater', 'settler_level_greater', \
                   'player_total_earnings_greater','time_passed', \
                   'var_eq', 'var_gt', 'var_lt',
                   'buildings_connected_to_branch_gt', 'buildings_connected_to_branch_lt',\
-                  'buildings_connected_to_building_gt', 'buildings_connected_to_building_lt')
+                  'buildings_connected_to_building_gt', 'buildings_connected_to_building_lt', \
+                  'settlement_produced_res_greater', 'player_produced_res_greater')
 
 # Condition checking is split up in 2 types:
 # 1. possible condition change is notified somewhere in the game code
@@ -49,14 +50,16 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.player_balance_greater, \
                                 CONDITIONS.player_inhabitants_greater, \
                                 CONDITIONS.player_res_stored_greater,
-				CONDITIONS.player_res_stored_less,
+                                CONDITIONS.player_res_stored_less,
                                 CONDITIONS.settlement_res_stored_greater,
                                 CONDITIONS.time_passed,
                                 CONDITIONS.player_total_earnings_greater,
                                 CONDITIONS.buildings_connected_to_branch_gt,
                                 CONDITIONS.buildings_connected_to_branch_lt,
                                 CONDITIONS.buildings_connected_to_building_gt,
-                                CONDITIONS.buildings_connected_to_building_lt)
+                                CONDITIONS.buildings_connected_to_building_lt,
+                                CONDITIONS.settlement_produced_res_greater,
+                                CONDITIONS.player_produced_res_greater)
 
 ###
 # Campaign Conditions
@@ -123,6 +126,15 @@ def player_total_earnings_greater(session, total):
 	for settlement in _get_player_settlements(session):
 		total_earning += settlement.total_earnings
 	return total_earning > total
+
+def settlement_produced_res_greater(session, res, limit):
+	"""Returns whether more than limit res have been produced at one of the player's settlements"""
+	return any(settlement for settlement in _get_player_settlements(session) if \
+	           settlement.produced_res.get(res, 0) > limit)
+
+def player_produced_res_greater(session, res, limit):
+	"""Returns whether more than limit res have been produced at all of the player's settlements combined"""
+	return sum(settlement.produced_res.get(res, 0) for settlement in _get_player_settlements(session)) > limit
 
 def buildings_connected_to_branch_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
@@ -200,3 +212,5 @@ def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of each class in classes. Counts all settlements."""
 	#TODO
+
+
