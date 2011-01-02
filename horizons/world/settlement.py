@@ -124,3 +124,13 @@ class Settlement(TradePost, NamedObject):
 				yield self.ground_map[coord]
 			except KeyError:
 				pass
+
+	def add_building(self, building):
+		"""Adds a building to the settlement.
+		This does not set building.settlement, it must be set beforehand.
+		@see Island.add_building
+		"""
+		self.buildings.append(building)
+		# TODO: check producitions
+
+

@@ -23,7 +23,7 @@
 from horizons.util import ChangeListener
 from horizons.util.python import WeakMethodList
 
-class ProductionFinishedListener(ChangeListener):
+class ProductionFinishedListeneraaa(ChangeListener):
 	"""Special ChangeListener for notifying about a production finishing
 	(i.e. goods just have been produced).
 	For inheriting by Production.

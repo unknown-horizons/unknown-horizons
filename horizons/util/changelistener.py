@@ -87,3 +87,55 @@ class ChangeListener(object):
 	def end(self):
 		self.__listeners = None
 		self.__remove_listeners = None
+
+
+""" Class decorator that adds methods for listening for certain events to a class.
+These methods get added automatically (eventname is the name you pass to the decorator):
+- add_eventname_listener(listener):
+    adds listener callback. this function must take the object as first and only parameter
+- remove_eventname_listener(listener);
+    removes a listener previously added
+- has_eventname_listener(listener)
+    checks if a certain listener has been added
+- on_eventname
+    this is used to call the callbacks when the event occured.
+
+The goal is to simplify adding special listeners, as for example used in the
+production_finished listener.
+"""
+def metaChangeListenerDecorator(event_name):
+	def decorator(clas):
+		list_name = "__"+event_name+"_listeners"
+		# trivial changelistener operations
+		def add(self, listener):
+			assert callable(listener)
+			getattr(self, list_name).append(listener)
+		def rem(self, listener):
+			getattr(self, list_name).remove(listener)
+		def has(self, listener):
+			return listener in getattr(self, list_name)
+		def on(self):
+			for f in getattr(self, list_name):
+				f(self)
+
+		# add methods to class
+		setattr(clas, "add_"+event_name+"_listener", add)
+		setattr(clas, "remove_"+event_name+"_listener", rem)
+		setattr(clas, "has_"+event_name+"_listener", has)
+		setattr(clas, "on_"+event_name, on)
+
+		# use black __new__ magic to add the methods to the instances
+		# think of it as being executed in __init__
+		old_new = clas.__new__
+		def new(cls, *args, **kwargs):
+			# this is a proposed way of calling the "old" new:
+			#obj = super(cls, cls).__new__(cls)
+			# which results in endless recursion, if you construct an instance of a class,
+			# that inherits from a base class on which the decorator has been applied.
+			# therefore, this workaround is used:
+			obj = old_new(cls, *args, **kwargs)
+			setattr(obj, list_name, [])
+			return obj
+		clas.__new__ = staticmethod(new)
+		return clas
+	return decorator

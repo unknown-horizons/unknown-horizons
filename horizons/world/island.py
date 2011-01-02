@@ -275,7 +275,7 @@ class Island(WorldObject):
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
 		self.buildings.append(building)
 		if building.settlement is not None:
-			building.settlement.buildings.append(building)
+			building.settlement.add_building(building)
 		building.init()
 		return building
 

@@ -25,13 +25,15 @@ import logging
 import copy
 
 from horizons.util import WorldObject
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
-from horizons.world.production.productionchangelistener import ProductionFinishedListener
 
 from horizons.scheduler import Scheduler
 
-class Production(ProductionFinishedListener, WorldObject):
+
+@metaChangeListenerDecorator("production_finished")
+class Production(WorldObject):
 	"""Class for production to be used by ResourceHandler.
 	Controls production and starts it by watching the assigned building's inventory,
 	which is virtually the only "interface" to the building.
@@ -319,7 +321,7 @@ class SettlerProduction(ChangingProduction):
 
 class SingleUseProduction(Production):
 	"""This Production just produces one time, and then finishes.
-	Notification of the finishing is done via ProductionFinishedListener.
+	Notification of the finishing is done via production_finished listeners.
 	Use case: Settler getting upgrade material"""
 	def __init__(self, inventory, prod_line_id, **kwargs):
 		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
