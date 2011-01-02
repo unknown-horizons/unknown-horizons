@@ -261,6 +261,11 @@ def _start_map(map_name, is_scenario = False):
 	maps = SavegameManager.get_scenarios() if is_scenario else SavegameManager.get_maps()
 	map_file = None
 	for i in xrange(0, len(maps[1])):
+		# exact match
+		if maps[1][i] == map_name:
+			map_file = maps[0][i]
+			break
+		# check for partial match
 		if maps[1][i].startswith(map_name):
 			if map_file is not None:
 				# multiple matches, collect all for output
@@ -289,6 +294,11 @@ def _load_map(savegamename):
 	saves = SavegameManager.get_saves()
 	map_file = None
 	for i in xrange(0, len(saves[1])):
+		# exact match
+		if saves[1][i] == savegamename:
+			map_file = saves[0][i]
+			break
+		# check for partial match
 		if saves[1][i].startswith(savegamename):
 			if map_file is not None:
 				# multiple matches, collect all for output
