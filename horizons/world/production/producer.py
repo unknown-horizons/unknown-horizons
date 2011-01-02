@@ -22,6 +22,7 @@
 import logging
 
 from horizons.util import Callback
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import Production, SingleUseProduction
@@ -131,7 +132,7 @@ class Producer(ResourceHandler):
 		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
 
-
+@metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
@@ -140,8 +141,12 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 
 	def add_production(self, production):
 		super(ProducerBuilding, self).add_production(production)
-		#production.add_production_finished_listener(foo)
+		production.add_production_finished_listener(self._production_finished)
 
+	def _production_finished(self, production):
+		"""Gets called when a production finishes."""
+		produced_res = production.get_produced_res()
+		self.on_building_production_finished(produced_res)
 
 class QueueProducer(Producer):
 	"""The QueueProducer stores all productions in a queue and runs them one

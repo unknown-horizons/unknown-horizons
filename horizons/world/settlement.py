@@ -42,6 +42,7 @@ class Settlement(TradePost, NamedObject):
 		self.buildings = []
 		self.setup_storage()
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
+		self.produced_res = {} # dictionary of all resources, produced at this settlement
 
 	def set_tax_setting(self, tax):
 		self.tax_setting = tax
@@ -87,6 +88,9 @@ class Settlement(TradePost, NamedObject):
 
 		db("INSERT INTO settlement (rowid, island, owner, tax_setting) VALUES(?, ?, ?, ?)",
 			self.worldid, islandid, self.owner.worldid, self.tax_setting)
+		for res, amount in self.produced_res.iteritems():
+			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
+			   self.worldid, res, amount)
 		self.inventory.save(db, self.worldid)
 
 	@classmethod
@@ -106,6 +110,9 @@ class Settlement(TradePost, NamedObject):
 		for building_id, building_type in \
 				db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			load_building(session, db, building_type, building_id)
+
+		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
+			self.produced_res[res] = amount
 
 		# load inventory after buildings, since buildings, specifically storages, determine
 		# the size of the settlement's inventory
@@ -131,6 +138,14 @@ class Settlement(TradePost, NamedObject):
 		@see Island.add_building
 		"""
 		self.buildings.append(building)
-		# TODO: check producitions
+		if hasattr(building, "add_building_production_finished_listener"):
+			building.add_building_production_finished_listener(self.settlement_building_production_finished)
 
+	def settlement_building_production_finished(self, building, produced_res):
+		"""Callback function for registering the production of resources."""
+		for res, amount in produced_res.iteritems():
+			if res in self.produced_res:
+				self.produced_res[res] += amount
+			else:
+				self.produced_res[res] = amount
 

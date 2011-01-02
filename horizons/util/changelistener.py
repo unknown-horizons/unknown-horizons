@@ -92,13 +92,15 @@ class ChangeListener(object):
 """ Class decorator that adds methods for listening for certain events to a class.
 These methods get added automatically (eventname is the name you pass to the decorator):
 - add_eventname_listener(listener):
-    adds listener callback. this function must take the object as first and only parameter
+    Adds listener callback. This function must take the object as first parameter plus
+		any parameter that might be provided additionally to on_eventname.
 - remove_eventname_listener(listener);
-    removes a listener previously added
+    Removes a listener previously added.
 - has_eventname_listener(listener)
-    checks if a certain listener has been added
+    Checks if a certain listener has been added.
 - on_eventname
-    this is used to call the callbacks when the event occured.
+    This is used to call the callbacks when the event occured.
+    Additional parameters may be provided, which are passed to the callback.
 
 The goal is to simplify adding special listeners, as for example used in the
 production_finished listener.
@@ -114,9 +116,9 @@ def metaChangeListenerDecorator(event_name):
 			getattr(self, list_name).remove(listener)
 		def has(self, listener):
 			return listener in getattr(self, list_name)
-		def on(self):
+		def on(self, *args, **kwargs):
 			for f in getattr(self, list_name):
-				f(self)
+				f(self, *args, **kwargs)
 
 		# add methods to class
 		setattr(clas, "add_"+event_name+"_listener", add)
