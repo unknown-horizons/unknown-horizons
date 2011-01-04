@@ -203,9 +203,9 @@ def _building_connected_to_any_of(session, building_class, *classes):
 	found_connected = 0
 	for building in building_to_check:
 		for check in check_connection:
-			if not StaticPather.get_path_on_roads(building.island, building, check): continue
-			found_connected += 1
-			break
+			if StaticPather.get_path_on_roads(building.island, building, check):
+				found_connected += 1
+				break
 	return found_connected
 
 def _building_connected_to_all_of(session, building_class, *classes):

@@ -41,6 +41,8 @@ class CampaignEventHandler(LivingObject):
 	"""Handles event, that make up a campaign. See wiki.
 	An instance of this class is bound to a set of events. On a new scenario, you need a new instance."""
 
+	CHECK_CONDITIONS_INTERVAL = 3 # seconds
+
 	def __init__(self, session, campaignfile = None):
 		"""
 		@param session: Session instance
@@ -66,7 +68,8 @@ class CampaignEventHandler(LivingObject):
 
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
-		Scheduler().add_new_object(self._scheduled_check, self, runin = Scheduler().get_ticks(3), loops = -1)
+		Scheduler().add_new_object(self._scheduled_check, self, \
+		                           runin = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
 
 	def sleep(self, ticks):
 		"""Sleep the CampaignEventHandler for number of ticks. This delays all
