@@ -218,7 +218,7 @@ class QueueProducer(Producer):
 			self.remove_production(production)
 		self.set_active(active=False)
 
-class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
+class UnitProducerBuilding(QueueProducer, ProducerBuilding):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
 	building specific behaviour."""
@@ -247,6 +247,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 		productions = self._productions.values()
 		for production in productions:
 			assert isinstance(production, UnitProduction)
+			self.on_building_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(0, amount):
 					radius = 1
