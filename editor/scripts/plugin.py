@@ -60,6 +60,7 @@ class PluginManager:
 				try:
 					print "Importing plugin:", f
 					if d == "plugins":
+						# Default plugins directory needs special treating
 						plugin = __import__(d+"."+f)
 						plugin = eval("plugin."+f+"."+f+"()")
 					else:
