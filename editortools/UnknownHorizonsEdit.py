@@ -25,6 +25,12 @@
 
 import scripts
 import scripts.plugin as plugin
+import os
+import sys
+# Allow horizons package to be imported, this is probably not a very good way
+# to do this
+sys.path.append( os.path.join( os.getcwd(), '..' ) )
+from horizons.util import ActionSetLoader
 
 class UnknownHorizonsEdit(plugin.Plugin):
 	"""
