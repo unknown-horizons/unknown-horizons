@@ -48,7 +48,7 @@ class TileSetLoader(object):
 			if entry.startswith("ts_"):
 				cls.tile_sets[entry] = GeneralLoader._load_action(full_path)
 			else:
-				if os.path.isdir(full_path) and entry != ".svn":
+				if os.path.isdir(full_path):
 					cls._find_tile_sets(full_path)
 		cls._loaded = True
 

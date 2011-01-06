@@ -24,6 +24,7 @@
 import scripts
 import scripts.plugin as plugin
 import scripts.editor
+from fife import fife
 
 import os
 import sys
@@ -41,17 +42,33 @@ class UnknownHorizonsEdit(plugin.Plugin):
 		self._editor = scripts.editor.getEditor()
 		self._enabled = False
 
+
+	def enable(self):
 		# Load action sets
-		path = os.path.abspath(os.path.join('..', 'content', 'gfx'))
-		TileSetLoader._find_action_sets(path)
+		path = os.path.join('..', 'content', 'gfx')
+		TileSetLoader._find_tile_sets(path)
 		self._tile_sets = TileSetLoader.get_sets()
 
 		# load graphics into imagepool
+		animation_pool = self._editor.engine.getAnimationPool()
+		animation_pool.clearResourceLoaders()
 		uhloader = UHAnimationLoader(self._editor.engine.getImagePool())
-		print uhloader
+		animation_pool.addResourceLoader(uhloader)
+		tile_sets = TileSetLoader.get_sets()
+		for tile_set_id in self._tile_sets.iterkeys():
+			self._object = self._editor.engine.getModel().createObject(str(tile_set_id), 'ground')
+			fife.ObjectVisual.create(self._object)
+			visual = self._object.get2dGfxVisual()
+			for action_id in tile_sets[tile_set_id].iterkeys():
+				action = self._object.createAction(action_id+"_"+str(tile_set_id))
+				fife.ActionVisual.create(action)
+				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
+					anim_id = animation_pool.addResourceFromFile( \
+						str(tile_set_id)+"-"+str(action_id)+"-"+ \
+						str(rotation) + ':shift:center+0,bottom+8')
+					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
+					action.setDuration(animation_pool.getAnimation(anim_id).getDuration())
 
-
-	def enable(self):
 		if self._enabled:
 			return
 

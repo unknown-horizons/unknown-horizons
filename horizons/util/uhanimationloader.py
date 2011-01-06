@@ -22,6 +22,7 @@
 from fife import fife
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.loaders.actionsetloader import ActionSetLoader
+import os
 
 class UHAnimationLoader(fife.ResourceLoader):
 	"""Loads Unknown Horizons animations using action/tile sets
