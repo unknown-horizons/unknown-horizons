@@ -35,5 +35,6 @@ if __name__ == '__main__':
 
 	#os.chdir(get_fife_path() + '/tools/editor')
 	#start editor
-	args = [sys.executable, './editor/run.py']
+	os.chdir('editor')
+	args = [sys.executable, './run.py']
 	os.execvp(args[0], args)
