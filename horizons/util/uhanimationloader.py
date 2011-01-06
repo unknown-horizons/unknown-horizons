@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2010 The Unknown Horizons Team
+# Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,11 +23,11 @@ from fife import fife
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 
-class SQLiteAnimationLoader(fife.ResourceLoader):
-	"""Loads animations from a SQLite database.
+class UHAnimationLoader(fife.ResourceLoader):
+	"""Loads Unknown Horizons animations using action/tile sets
 	"""
 	def __init__(self, imagepool):
-		super(SQLiteAnimationLoader, self).__init__()
+		super(UHAnimationLoader, self).__init__()
 		self.thisown = 0
 		self.imagepool = imagepool
 
