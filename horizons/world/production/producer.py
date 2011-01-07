@@ -73,7 +73,6 @@ class Producer(ResourceHandler):
 	def add_production(self, production):
 		assert isinstance(production, Production)
 		self.log.debug('%s: added production line %s', self, production.get_production_line_id())
-		production.on_remove = Callback(self.remove_production, production)
 		if production.is_paused():
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:

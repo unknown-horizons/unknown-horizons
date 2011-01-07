@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.util.python import WeakMethodList
+from horizons.util.python.callback import Callback
 
 class ChangeListener(object):
 	"""Trivial ChangeListener.
@@ -118,7 +119,11 @@ def metaChangeListenerDecorator(event_name):
 			return listener in getattr(self, list_name)
 		def on(self, *args, **kwargs):
 			for f in getattr(self, list_name):
-				f(self, *args, **kwargs)
+				# workaround for encapsuled arguments
+				if isinstance(f, Callback):
+					f()
+				else:
+					f(self, *args, **kwargs)
 
 		# add methods to class
 		setattr(clas, "add_"+event_name+"_listener", add)

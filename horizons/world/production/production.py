@@ -119,7 +119,6 @@ class Production(WorldObject):
 		# depending on state, a check_inventory listener might be active
 		self.inventory.discard_change_listener(self._check_inventory)
 		Scheduler().rem_all_classinst_calls(self)
-		self.on_remove = None
 		super(Production, self).remove()
 
 	## INTERFACE METHODS
@@ -215,15 +214,6 @@ class Production(WorldObject):
 			self._prod_line.alter_production_time(modifier)
 		except AttributeError: # production line doesn't have this alter method
 			pass
-
-	## METHODS TO OVERWRITE FOR SIGNALING
-	def on_remove(self):
-		"""Gets called when production is 'done' (mainly for SingleUseProduction)
-		Overwrite at owner!"""
-		pass
-
-	# NOTE: An on_production_finished handle used to be provided here and has been
-	#       replaced by a production_finshed_listener. See productionchangelistener.py.
 
 	## PROTECTED METHODS
 	def _check_inventory(self):
@@ -329,7 +319,6 @@ class SingleUseProduction(Production):
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
 		self.state = PRODUCTION.STATES.done
-		self.on_remove()
 
 class ProgressProduction(Production):
 	"""Same as Production, but starts as soon as any needed res is available (doesn't wait

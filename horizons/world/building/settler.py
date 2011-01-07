@@ -109,6 +109,7 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 				current_lines.remove(prod_line)
 		for line in current_lines[:]: # iterate over copy for safe removal
 			# all lines, that were added here but are not used due to the current level
+			# NOTE: this contains the upgrade material production line
 			self.remove_production_by_id(line)
 		# update instance graphics
 		self.update_action_set_level(self.level)
@@ -170,8 +171,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.has_production_line(upgrade_material_prodline):
 				return # already waiting for res
-			upgrade_material_production = SingleUseProduction(self.inventory, \
-			                                   upgrade_material_prodline, callback = self.level_up)
+			upgrade_material_production = SingleUseProduction(self.inventory, upgrade_material_prodline)
+			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
 				self.inventory.add_resource_slot(res, abs(amount))
@@ -181,8 +182,8 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 			self.level_down()
 			self._changed()
 
-	def level_up(self, prod_line=None):
-		# NOTE: prod_line, is unused, but get's passed by the production code
+	def level_up(self, production=None):
+		# NOTE: production, is unused, but get's passed by the production code
 		self.level += 1
 		self.log.debug("%s: Leveling up to %s", self, self.level)
 		self._update_level_data()
