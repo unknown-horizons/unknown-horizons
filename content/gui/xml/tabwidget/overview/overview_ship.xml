@@ -33,7 +33,7 @@
 	</HBox>
 
 	<HBox position="186,195">
-		<ToggleImageButton name="foundSettelment" tooltip="Build Settlement" 
+		<ToggleImageButton name="foundSettlement" tooltip="Build Settlement" 
 			inactive_image="content/gui/icons/ship/anchor_bw.png" 
 			up_image="content/gui/icons/ship/anchor.png" 
 			down_image="content/gui/icons/ship/anchor_a.png" 
