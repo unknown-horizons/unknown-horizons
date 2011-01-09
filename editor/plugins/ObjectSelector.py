@@ -41,13 +41,13 @@ _DEFAULT_COLOR_STEP = Color(10, 10, 10)
 
 class ObjectIcon(widgets.VBox):
 	""" The ObjectIcon is used to represent the object in the object selector.
-	"""	
+	"""
 	ATTRIBUTES = widgets.VBox.ATTRIBUTES + [ attrs.Attr("text"), attrs.Attr("image"), attrs.BoolAttr("selected") ]
-	
+
 	def __init__(self,callback,**kwargs):
 		super(ObjectIcon,self).__init__(**kwargs)
 
-		self.callback = callback	
+		self.callback = callback
 
 		self.capture(self._mouseEntered, "mouseEntered")
 		self.capture(self._mouseExited, "mouseExited")
@@ -65,9 +65,10 @@ class ObjectIcon(widgets.VBox):
 		self.label = widgets.Label(**kwargs)
 		hbox.addChild(self.label)
 
+
 	def _setText(self, text):
 		self.label.text = text
-		
+
 	def _getText(self):
 		return self.label.text
 	text = property(_getText, _setText)
@@ -86,7 +87,7 @@ class ObjectIcon(widgets.VBox):
 			else:
 				if self.selected:
 					self.parent.selected_item = None
-		
+
 		if self.selected:
 			self.base_color = _DEFAULT_SELECTION_COLOR
 		else:
@@ -111,7 +112,7 @@ class ObjectIcon(widgets.VBox):
 
 class ObjectIconList(widgets.VBox):
 	ATTRIBUTES = widgets.VBox.ATTRIBUTES
-	
+
 	def __init__(self,**kwargs):
 		super(ObjectIconList, self).__init__(max_size=(5000,500000), **kwargs)
 		self.base_color = self.background_color
@@ -142,7 +143,7 @@ class ObjectIconList(widgets.VBox):
 	def _getSelectedItem(self):
 		return self._selectedItem
 	selected_item = property(_getSelectedItem, _setSelectedItem)
-	
+
 class ObjectSelector(plugin.Plugin):
 	"""The ObjectSelector class offers a gui Widget that let's you select the object you
 	wish to use to in the editor.
@@ -154,39 +155,40 @@ class ObjectSelector(plugin.Plugin):
 		self.editor = None
 		self.engine = None
 		self.mode = 'list' # Other mode is 'preview'
-		
+
 		self._enabled = False
 		self.object = None
+		self.rotation = 45
 
 	def enable(self):
 		if self._enabled is True:
 			return
-			
+
 		self.editor = scripts.editor.getEditor()
 		self.engine = self.editor.getEngine()
-			
+
 		self._showAction = Action(u"Object selector", checkable=True)
 		scripts.gui.action.activated.connect(self.toggle, sender=self._showAction)
-		
+
 		self.editor._tools_menu.addAction(self._showAction)
-		
+
 		events.postMapShown.connect(self.update_namespace)
 		events.onObjectSelected.connect(self.setPreview)
 		events.onObjectsImported.connect(self.update_namespace)
-		
+
 		self.buildGui()
 
 	def disable(self):
 		if self._enabled is False:
 			return
-			
+
 		self.gui.hide()
 		self.removeAllChildren()
-		
+
 		events.postMapShown.disconnect(self.update_namespace)
 		events.onObjectSelected.disconnect(self.setPreview)
 		events.onObjectsImported.disconnect(self.update_namespace)
-		
+
 		self.editor._tools_menu.removeAction(self._showAction)
 
 	def isEnabled(self):
@@ -194,7 +196,7 @@ class ObjectSelector(plugin.Plugin):
 
 	def getName(self):
 		return "Object selector"
-		
+
 
 	def buildGui(self):
 		self.gui = pychan.loadXML('gui/objectselector.xml')
@@ -204,7 +206,7 @@ class ObjectSelector(plugin.Plugin):
 		self._searchfield.capture(self._search)
 		self._searchfield.capture(self._search, "keyPressed")
 		self.gui.findChild(name="searchButton").capture(self._search)
-		
+
 		# Add the drop down with list of namespaces
 		self.namespaces = self.gui.findChild(name="namespaceDropdown")
 		self.namespaces.items = self.engine.getModel().getNamespaces()
@@ -215,6 +217,13 @@ class ObjectSelector(plugin.Plugin):
 		self.namespaces.capture(self.update_namespace, "mouseWheelMovedUp")
 		self.namespaces.capture(self.update_namespace, "mouseWheelMovedDown")
 		self.namespaces.capture(self.update_namespace, "keyReleased")
+
+
+		self.rotations = self.gui.findChild(name="rotationDropdown")
+		self.rotations.capture(self.update_rotations, "action")
+		self.rotations.capture(self.update_rotations, "mouseWheelMovedUp")
+		self.rotations.capture(self.update_rotations, "mouseWheelMovedDown")
+		self.rotations.capture(self.update_rotations, "keyReleased")
 
 		# Object list
 		self.mainScrollArea = self.gui.findChild(name="mainScrollArea")
@@ -231,7 +240,7 @@ class ObjectSelector(plugin.Plugin):
 		# Preview area
 		self.gui.findChild(name="previewScrollArea").background_color = self.gui.base_color
 		self.preview = self.gui.findChild(name="previewIcon")
-		
+
 
 	def toggleMode(self):
 		if self.mode == 'list':
@@ -265,11 +274,11 @@ class ObjectSelector(plugin.Plugin):
 		self.search(self._searchfield.text)
 
 	def search(self, str):
-		results = []	
-			
+		results = []
+
 		# Format search terms
 		terms = [term.lower() for term in str.split()]
-		
+
 		# Search
 		if len(terms) > 0:
 			namespaces = self.engine.getModel().getNamespaces()
@@ -285,7 +294,7 @@ class ObjectSelector(plugin.Plugin):
 						results.append(obj)
 		else:
 			results = None
-		
+
 		if self.mode == 'list':
 			self.fillTextList(results)
 		elif self.mode == 'preview':
@@ -296,17 +305,17 @@ class ObjectSelector(plugin.Plugin):
 			if self.namespaces.selected_item is None:
 				return
 			objects = self.engine.getModel().getObjects(self.namespaces.selected_item)
-		
+
 		class _ListItem:
 			def __init__( self, name, namespace ):
 				self.name = name
 				self.namespace = namespace
 			def __str__( self ):
 				return self.name
-			
-		
+
+
 		self.objects.items = [_ListItem(obj.getId(), obj.getNamespace()) for obj in objects]
-			
+
 		if not self.object:
 			if self.namespaces.selected_item:
 				self.objects.selected = 0
@@ -315,11 +324,11 @@ class ObjectSelector(plugin.Plugin):
 			for i in range(0, len(self.objects.items)):
 				if self.objects.items[i].name != self.object.getId(): continue
 				if self.objects.items[i].namespace != self.object.getNamespace(): continue
-				
+
 				self.objects.selected = i
 				break
-				
-				
+
+
 		self.mainScrollArea.adaptLayout(False)
 		scrollY = (self.objects.real_font.getHeight() + 0) * self.objects.selected
 		self.mainScrollArea.real_widget.setVerticalScrollAmount(scrollY)
@@ -334,28 +343,28 @@ class ObjectSelector(plugin.Plugin):
 
 	def fillPreviewList(self, objects=None):
 		self.objects.clear()
-		
+
 		if objects is None:
 			if self.namespaces.selected_item is None:
 				return
 			objects = self.engine.getModel().getObjects(self.namespaces.selected_item)
-		
+
 		for obj in objects:
 			image = self._getImage(obj)
 			if image is None:
 				print 'No image available for selected object'
 				image = ""
 
-			callback = tools.callbackWithArguments(self.objectSelected, obj)	
+			callback = tools.callbackWithArguments(self.objectSelected, obj)
 			icon = ObjectIcon(callback=callback, image=image, text=unicode(obj.getId()))
 			self.objects.addChild(icon)
 			if obj == self.object:
 				icon.selected = True
-			
+
 		if not self.object:
 			if len(objects) > 0:
 				self.objectSelected(objects[0])
-				
+
 		self.mainScrollArea.adaptLayout(False)
 		self.mainScrollArea.real_widget.setVerticalScrollAmount(self.objects.selected_item.y)
 
@@ -366,40 +375,45 @@ class ObjectSelector(plugin.Plugin):
 		@param obj: fife.Object instance"""
 
 		self.setPreview(obj)
-		
+
 		events.onObjectSelected.send(sender=self, object=obj)
 
 		self.gui.adaptLayout(False)
-		
+
 	# Set preview image
-	def setPreview(self, object):
-		if not object: return
-		if self.object and object == self.object:
+	def setPreview(self, object, forceUpdate=False):
+		if not object:
 			return
-			
+		if not forceUpdate and self.object and object == self.object:
+			return
+
 		self.object = object
 		self.scrollToObject(object)
 		self.preview.image = self._getImage(object)
+		self.rotations.items = self.object.getDefaultAction().get2dGfxVisual().getActionImageAngles()
+		if self.rotations.selected_item is None:
+			self.rotations.selected = 0
+
+
 		height = self.preview.image.getHeight();
 		if height > 200: height = 200
 		self.preview.parent.max_height = height
-		
+
 	def scrollToObject(self, object):
 		# Select namespace
 		names = self.namespaces
-		if not names.selected_item: 
+		if not names.selected_item:
 			self.namespaces.selected = 0
-		
+
 		if names.selected_item != object.getNamespace():
 			for i in range(0, len(names.items)):
 				if names.items[i] == object.getNamespace():
 					self.namespaces.selected = i
 					break
-					
+
 		self.update()
 
 	def update_namespace(self):
-		
 		self.namespaces.items = self.engine.getModel().getNamespaces()
 		if not self.namespaces.selected_item:
 			self.namespaces.selected = 0
@@ -408,6 +422,13 @@ class ObjectSelector(plugin.Plugin):
 		elif self.mode == 'preview':
 			self.setImageList()
 		self.update()
+
+	def update_rotations(self):
+		"""Called when the rotation dropdown is changed/selected"""
+		if not self.rotations.selected_item:
+			self.rotations.selected = 0
+		self.rotation = self.rotations.selected_item
+		self.setPreview(self.object, forceUpdate=True)
 
 	def update(self):
 		if self.mode == 'list':
@@ -429,13 +450,13 @@ class ObjectSelector(plugin.Plugin):
 			raise
 
 		# Try to find a usable image
-		index = visual.getStaticImageIndexByAngle(0)
+		index = visual.getStaticImageIndexByAngle(self.rotation)
 		image = None
 		# if no static image available, try default action
 		if index == -1:
 			action = obj.getDefaultAction()
 			if action:
-				animation_id = action.get2dGfxVisual().getAnimationIndexByAngle(0)
+				animation_id = action.get2dGfxVisual().getAnimationIndexByAngle(self.rotation)
 				animation = self.engine.getAnimationPool().getAnimation(animation_id)
 				image = animation.getFrameByTimestamp(0)
 				index = image.getPoolId()
@@ -456,7 +477,7 @@ class ObjectSelector(plugin.Plugin):
 		self.gui.setDocked(False)
 		self.gui.hide()
 		self._showAction.setChecked(False)
-		
+
 	def toggle(self):
 		if self.gui.isVisible() or self.gui.isDocked():
 			self.hide()

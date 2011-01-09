@@ -1,9 +1,9 @@
-<Panel title="Object selector" min_size="200,300">
+<Panel title="Object selector" min_size="200,350">
 	<VBox hexpand="1" vexpand="1">
 		<!-- Search field -->
 		<HBox>
 			<TextField name="searchField" />
-			<Button name="searchButton" text="Search" hexpand="0" /> 
+			<Button name="searchButton" text="Search" hexpand="0" />
 		</HBox>
 
     <!-- Namespaces -->
@@ -19,9 +19,13 @@
 			<Button name="closeButton" text="Close" />
 		</HBox>
 
+		<DropDown name="rotationDropdown" />
+		<DropDown name="actionDropdown" />
+
     <!-- Preview area -->
 		<ScrollArea name="previewScrollArea" max_size="200,1" vexpand="1">
 			<Icon name="previewIcon" />
 		</ScrollArea>
+
 	</VBox>
 </Panel>
