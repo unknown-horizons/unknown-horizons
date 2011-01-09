@@ -44,14 +44,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	# styles to apply to a widget
 	styles = {
 	  'mainmenu': 'menu',
-	  'quitgame': 'book',
 	  'requirerestart': 'book',
-#	  'popup_with_cancel': 'book',
-#	  'popup': 'book',
 	  'gamemenu': 'menu',
-	  'chime': 'book',
 	  'help': 'book',
-	  'quitsession': 'book',
 	  'singleplayermenu': 'book',
 	  'multiplayermenu' : 'book',
 	  'multiplayer_creategame' : 'book',
@@ -90,7 +85,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_quit(self):
 		"""Shows the quit dialog """
-		if self.show_dialog(self.widgets['quitgame'], {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		message = _("Are you sure you want to quit Unknown Horizons?")
+		if self.show_popup(_("Quit Game"),message,show_cancel_button = True):
 			horizons.main.quit()
 
 	def show_credits(self, number=0):
@@ -221,9 +217,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def quit_session(self, force=False):
 		"""Quits the current session.
 		@param force: whether to ask for confirmation"""
+		message = _("Are you sure you want to abort the running session?")
 		if force or \
-		   self.show_dialog(self.widgets['quitsession'],  \
-		                    {'okButton': True, 'cancelButton': False}, onPressEscape=False):
+		   self.show_popup(_("Quit Session"),message,show_cancel_button = True):
 			self.current.hide()
 			self.current = None
 			if self.session is not None:
@@ -288,7 +284,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				details_label.text += _("Saved 1 time\n")
 			else:
 				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
-			details_label.stylize('book')
+			details_label.stylize('book_t')
 
 			from horizons.constants import VERSION
 			try:
