@@ -72,8 +72,9 @@ class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableS
 class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
-	"""Class for Churches, School that provide a service-type res for settlers"""
+class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	"""Class for Churches, School that provide a service-type res for settlers.
+	Also provides collectors for buildings that consume resources (tavern)."""
 	pass
 
 class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
