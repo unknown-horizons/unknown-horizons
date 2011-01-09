@@ -31,6 +31,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
 from horizons.gui.utility import adjust_widget_black_background, center_widget, LazyWidgetsDict
+from horizons.ambientsound import AmbientSound
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 
@@ -44,7 +45,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	styles = {
 	  'mainmenu': 'menu',
 	  'quitgame': 'book',
-#	  'settings': 'book',
 	  'requirerestart': 'book',
 #	  'popup_with_cancel': 'book',
 #	  'popup': 'book',
@@ -186,9 +186,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Called chime action.
 		"""
-		# this is just for now, so hardcoded path is ok
-		horizons.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
-		self.show_dialog(self.widgets['chime'], {'okButton' : True}, onPressEscape = True)
+		AmbientSound.play_special("message")
+		message = _("Yeah, you made it...\n\nBut this is a placeholder, sorry.")
+		self.show_popup(_("Chime The Bell"), message)
 
 	def set_volume(self, label, slider):
 		if label.name == 'volume_music_value':
@@ -298,7 +298,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					details_label.text += _("WARNING: Incompatible ver. %(ver)d!\nNeed ver. %(need)d!") \
 					             % {'ver' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
 			except KeyError:
-				details_label.text += _("INCOMPATIBlE VERSION\n")
+				details_label.text += _("INCOMPATIBLE VERSION\n")
 
 
 			box.addChild( details_label )
