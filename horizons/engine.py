@@ -82,7 +82,6 @@ class Fife(ApplicationBase):
 		                                 settings_file=PATHS.USER_CONFIG_FILE,
 		                                 settings_gui_xml="settings.xml",
 		                                 changes_gui_xml="requirerestart.xml")
-		self._setting.setGuiStyle("book")
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
