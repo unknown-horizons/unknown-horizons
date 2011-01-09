@@ -159,6 +159,7 @@ class ObjectSelector(plugin.Plugin):
 		self._enabled = False
 		self.object = None
 		self.rotation = 45
+		self.action = 'default'
 
 	def enable(self):
 		if self._enabled is True:
@@ -224,6 +225,12 @@ class ObjectSelector(plugin.Plugin):
 		self.rotations.capture(self.update_rotations, "mouseWheelMovedUp")
 		self.rotations.capture(self.update_rotations, "mouseWheelMovedDown")
 		self.rotations.capture(self.update_rotations, "keyReleased")
+
+		self.actions = self.gui.findChild(name="actionDropdown")
+		self.actions.capture(self.update_actions, "action")
+		self.actions.capture(self.update_actions, "mouseWheelMovedUp")
+		self.actions.capture(self.update_actions, "mouseWheelMovedDown")
+		self.actions.capture(self.update_actions, "keyReleased")
 
 		# Object list
 		self.mainScrollArea = self.gui.findChild(name="mainScrollArea")
@@ -390,7 +397,11 @@ class ObjectSelector(plugin.Plugin):
 		self.object = object
 		self.scrollToObject(object)
 		self.preview.image = self._getImage(object)
-		self.rotations.items = self.object.getDefaultAction().get2dGfxVisual().getActionImageAngles()
+		self.actions.items = self.object.getActionIds()
+		if self.actions.selected_item is None:
+			self.actions.selected = 0
+
+		self.rotations.items = self.object.getAction(self.actions.selected_item).get2dGfxVisual().getActionImageAngles()
 		if self.rotations.selected_item is None:
 			self.rotations.selected = 0
 
@@ -430,6 +441,13 @@ class ObjectSelector(plugin.Plugin):
 		self.rotation = self.rotations.selected_item
 		self.setPreview(self.object, forceUpdate=True)
 
+	def update_actions(self):
+		"""Called when the action dropdown is changed/selected"""
+		if not self.actions.selected_item:
+			self.actions.selected = 0
+		self.action = self.actions.selected_item
+		self.setPreview(self.object, forceUpdate=True)
+
 	def update(self):
 		if self.mode == 'list':
 			self.fillTextList()
@@ -454,7 +472,7 @@ class ObjectSelector(plugin.Plugin):
 		image = None
 		# if no static image available, try default action
 		if index == -1:
-			action = obj.getDefaultAction()
+			action = obj.getAction(self.action)
 			if action:
 				animation_id = action.get2dGfxVisual().getAnimationIndexByAngle(self.rotation)
 				animation = self.engine.getAnimationPool().getAnimation(animation_id)
