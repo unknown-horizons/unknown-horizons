@@ -19,6 +19,7 @@
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
 		<Label position="0,11" text="Companies" name="companies_label" />
@@ -37,18 +38,32 @@
 			up_image="content/gui/icons/buildmenu/toolmaker.png"
 			hover_image="content/gui/icons/buildmenu/toolmaker_h.png"
 			down_image="content/gui/icons/buildmenu/toolmaker_h.png"
-			tooltip="Toolmaker: ." /><!--
-		<TooltipButton name="butchery-1" position="164,32"
-			up_image="content/gui/icons/buildmenu/butchery.png"
-			hover_image="content/gui/icons/buildmenu/butchery_h.png"
-			down_image="content/gui/icons/buildmenu/butchery_h.png"
-			tooltip="Butchery: ." />-->
+			tooltip="Toolmaker: ." />
+		<TooltipButton name="charcoal-burning-1" position="164,32"
+			up_image="content/gui/icons/buildmenu/charcoal_burning.png"
+			hover_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
+			down_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
+			tooltip="Charcoal Burning: ." />
+	</Container>
+
+	<Container position="20,107" size="250,80" >
+		<Label position="0,11" text="Services" name="services_label" />
+
+		<HBox position="0,30">
+			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
+		</HBox>
+
+		<TooltipButton name="tavern-1" position="0,32"
+			up_image="content/gui/icons/buildmenu/tavern_i.png"
+			hover_image="content/gui/icons/buildmenu/tavern_i_h.png"
+			down_image="content/gui/icons/buildmenu/tavern_i_h.png"
+			tooltip="Tavern: Provides get-together." />
+
 	</Container>
 
 <!--
-
-	<Container position="20,107" size="250,80" >
-		<Label position="0,11" text="Fields" name="companies_label" />
+	<Container position="20,182" size="60,80" >
+		<Label position="0,11" text="Fields" name="fields_label" />
 
 		<HBox position="0,30">
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
@@ -71,21 +86,6 @@
 			hover_image="content/gui/icons/buildmenu/sugarfield_h.png"
 			down_image="content/gui/icons/buildmenu/sugarfield_h.png"
 			tooltip="Test. Needs a farm." />
-	</Container>
-
-
-	<Container position="20,182" size="60,80" >
-		<Label position="0,11" text="Services" name="services_label" />
-
-		<HBox position="0,30">
-			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
-		</HBox>
-
-		<TooltipButton name="tavern-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/tavern_i.png"
-			hover_image="content/gui/icons/buildmenu/tavern_i_h.png"
-			down_image="content/gui/icons/buildmenu/tavern_i_h.png"
-			tooltip="Tavern: Provides get-together." />
 	</Container>-->
 <!-- apothecary * salt gardens
 
@@ -101,7 +101,7 @@
 			down_image="content/gui/icons/buildmenu/boat_builder_h.png"
 			tooltip="Boat builder: Builds boats and small ships. Built on coast." />
 	</Container>-->
-
+<!--
 	<Container position="20,257" size="250,80">
 		<Label position="0,11" text="Companies" name="companies_label" />
 
@@ -109,18 +109,17 @@
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />
 		</HBox>
 
-		<TooltipButton name="charcoal-burning-1" position="0,32"
-			up_image="content/gui/icons/buildmenu/charcoal_burning.png"
-			hover_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
-			down_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
-			tooltip="Charcoal Burning: ." />
-<!--
+		<TooltipButton name="butchery-1" position="164,32"
+			up_image="content/gui/icons/buildmenu/butchery.png"
+			hover_image="content/gui/icons/buildmenu/butchery_h.png"
+			down_image="content/gui/icons/buildmenu/butchery_h.png"
+			tooltip="Butchery: ." />
 		<TooltipButton name="tannery-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/tannery.png"
 			hover_image="content/gui/icons/buildmenu/tannery_h.png"
 			down_image="content/gui/icons/buildmenu/tannery_h.png"
-			tooltip="Tannery: Turns hides into leather." />-->
-	</Container>
+			tooltip="Tannery: Turns hides into leather." />
+	</Container>-->
 
 </Container>
 </Container>
