@@ -52,8 +52,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'multiplayer_creategame' : 'book',
 	  'multiplayer_gamelobby' : 'book',
 	  'playerdataselection' : 'book',
-	  'serverlist': 'menu',
-	  'serverlobby': 'menu',
 	  'select_savegame': 'book',
 	  'ingame_pause': 'book',
 #	  'credits': 'book',
@@ -91,24 +89,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for i in xrange (0,11):
+		for i in xrange (0,11): #TODO this is a hardcoded maximum of vboxes, might break code
 			cur_container = self.widgets['credits'+str(number)].findChild(name='book'+str(i))
 			if cur_container:
 				cur_container.stylize('book_t') # leaves headlines as what they are, only style labels
 				cur_container.margins = (30,0) # to get some indentation
-		team_lbl = self.widgets['credits'+str(number)].findChild(name="team_lbl")
-		if team_lbl:
-			team_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 0), event_name="mouseClicked")
-		patchers_lbl = self.widgets['credits'+str(number)].findChild(name="patchers_lbl")
-		if patchers_lbl:
-			patchers_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 1), event_name="mouseClicked")
-		translators_lbl = self.widgets['credits'+str(number)].findChild(name="translators_lbl")
-		if translators_lbl:
-			translators_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
-		special_thanks_lbl = self.widgets['credits'+str(number)].findChild(name="special_thanks_lbl")
-		if special_thanks_lbl:
-			special_thanks_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 3), event_name="mouseClicked")
 
+		label = [self.widgets['credits'+str(number)].findChild(name=i+"_lbl")\
+		          for i in ('team','patchers','translators','special_thanks')]
+		for i in xrange (0,4):
+			if label[i]: # add callbacks to each pickbelt that is displayed
+				label[i].capture(pychan.tools.callbackWithArguments( \
+				                 self.show_credits, i), event_name="mouseClicked")
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
@@ -249,17 +241,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
 			return False
 		selected_file = map_files[selected_item]
-		if self.show_popup(_("Confirm deletion"),
-											 _('Do you really want to delete the savegame "%s"?') % \
-											 SavegameManager.get_savegamename_from_filename(selected_file), \
-											 show_cancel_button = True):
+		message = _('Do you really want to delete the savegame "%s"?') % \
+		             SavegameManager.get_savegamename_from_filename(selected_file)
+		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
 			try:
 				os.unlink(selected_file)
 				return True
 			except:
 				self.show_popup(_("Error!"), _("Failed to delete savefile!"))
 				return False
-		else:
+		else: # player cancelled deletion
 			return False
 
 	@staticmethod
