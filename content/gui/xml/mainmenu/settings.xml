@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<!--     #TODO :: at the moment gui.py overwrites style definitions like font=""     -->
-<Container name="settings_window" size="800,580">
-<Icon image="content/gui/images/background/book.png" />
+<!-- Pychan is designed to overwrite style definitions like font="" by the style
+     assigned to the settings in horizons.engine._setup_settings.    -->
+<Container name="settings_window" size="800,580" background_image="content/gui/images/background/book.png">
 
 <!-- west side -->
 <VBox min_size="320,520"  max_size="320,520"  position="65,0">
