@@ -178,14 +178,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		message = _("Yeah, you made it...\n\nBut this is a placeholder, sorry.")
 		self.show_popup(_("Chime The Bell"), message)
 
-	def set_volume(self, label, slider):
-		if label.name == 'volume_music_value':
-			label.text = unicode(int(slider.getValue() * 100 * 5)) + '%'
-			horizons.main.fife.set_volume_music(slider.getValue())
-		else:
-			label.text = unicode(int(slider.getValue() * 100 * 2)) + '%'
-			horizons.main.fife.set_volume_effects(slider.getValue())
-
 	help_is_displayed = False
 	def on_help(self):
 		"""Called on help action
@@ -368,9 +360,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame in map_file_display: # savegamename already exists
-				if not self.show_popup(_("Confirmation for overwriting"), \
-				      _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % \
-				      selected_savegame, show_cancel_button = True):
+				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
+				if not self.show_popup(_("Confirmation for overwriting"),message,show_cancel_button = True):
 					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
 		else: # return selected item from list
