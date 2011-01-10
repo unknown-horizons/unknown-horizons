@@ -256,8 +256,8 @@ class Fife(ApplicationBase):
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
-		slider_initial_data['volume_music_value'] = unicode(self._setting.get(UH_MODULE, "VolumeMusic") * 500)
-		slider_initial_data['volume_effects_value'] = unicode(self._setting.get(UH_MODULE, "VolumeEffects") * 200)
+		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
+		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
 		for x in slider_dict.values():
@@ -266,8 +266,9 @@ class Fife(ApplicationBase):
 		slider_event_map['volume_effects'] = self.set_volume_effects
 		self.OptionsDlg.mapEvents(slider_event_map)
 
-	def update_slider_values(self, slider):
-		self.OptionsDlg.findChild(name=slider+'_value').text = unicode(int(self.OptionsDlg.findChild(name=slider).getValue()))
+	def update_slider_values(self, slider, factor = 100):
+		self.OptionsDlg.findChild(name=slider+'_value').text = \
+		     unicode(int(self.OptionsDlg.findChild(name=slider).getValue() * factor)) + '%'
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -370,7 +371,7 @@ class Fife(ApplicationBase):
 			value = self.OptionsDlg.findChild(name="volume_music").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['bgsound'].setGain(value)
-		self.OptionsDlg.findChild(name="volume_music_value").text = unicode(int(value * 500))
+		self.update_slider_values('volume_music', factor = 500)
 
 	def set_volume_effects(self, value=None):
 		"""Sets the volume of effects, speech and ambient emitters.
@@ -383,7 +384,7 @@ class Fife(ApplicationBase):
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
 				e.setGain(value*2)
-		self.OptionsDlg.findChild(name="volume_effects_value").text = unicode(int(value * 200))
+		self.update_slider_values('volume_effects', factor = 200)
 
 	def run(self):
 		"""
