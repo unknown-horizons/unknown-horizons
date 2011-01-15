@@ -379,22 +379,19 @@ class IngameGui(LivingObject):
 		self.active_build = num
 
 	def set_status_position(self, resource_name):
-		for i in xrange(1, 4):
-			icon_name = resource_name + '_icon'
-			plusx = 0
-			if i > 1:
-				# increase x position for lines greater the 1
-				plusx = 20
+		icon_name = resource_name + '_icon'
+		for i in xrange(1, 3): 
+			lbl_name = resource_name + '_' + str(i)
+			# tools_1 = inventory amount, tools_2 = cost of to-be-built building
 			if resource_name == 'gold':
-				self.widgets['status_gold'].child_finder(resource_name + '_' + str(i)).position = (
-					self.widgets['status_gold'].child_finder(icon_name).position[0] + 33 - self.widgets['status_gold'].findChild(name = resource_name + '_' + str(i)).size[0]/2,
-					41 + 10 * i + plusx
-				)
+				self._set_label_position('status_gold', lbl_name, icon_name, 33, 31 + i*20)
 			else:
-				self.widgets['status'].child_finder(resource_name + '_' + str(i)).position = (
-					self.widgets['status'].child_finder(icon_name).position[0] + 24 - self.widgets['status'].child_finder(resource_name + '_' + str(i)).size[0]/2,
-					41 + 10 * i + plusx
-				)
+				self._set_label_position('status', lbl_name, icon_name, 24, 31 + i*20)
+
+	def _set_label_position(self, widget, lbl_name, icon_name, xoffset, yoffset):
+		icon  = self.widgets[widget].child_finder(icon_name)
+		label = self.widgets[widget].child_finder(lbl_name)
+		label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
 
 	def save(self, db):
 		self.message_widget.save(db)
