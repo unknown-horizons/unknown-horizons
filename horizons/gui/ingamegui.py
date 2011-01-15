@@ -186,10 +186,13 @@ class IngameGui(LivingObject):
 		@param label: str containing the name of the label to be set.
 		@param value: value the Label is to be set to.
 		"""
+		bg_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
+		bg_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
 		if not hasattr(self, "bg_icon_pos"):
 			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
 			self.bgs_shown = {}
-		bg_icon = pychan.widgets.Icon(image="content/gui/images/background/widgets/res_mon_extra_bg.png" if label == 'gold' else "content/gui/images/background/widgets/res_extra_bg.png", position=self.bg_icon_pos[label], name='bg_icon_' + label)
+		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
+		                              position=self.bg_icon_pos[label], name='bg_icon_' + label)
 
 		if not value:
 			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
@@ -294,27 +297,8 @@ class IngameGui(LivingObject):
 		self.widgets['menu_panel'].hide()
 		self.widgets['menu_panel'].show()
 
-	def show_ship(self, ship):
-		self.widgets['ship'].findChild(name='buildingNameLabel').text = \
-				unicode(ship.name+" (Ship type)")
-
-		size = self.widgets['ship'].findChild(name='chargeBar').size
-		size = (size[0] - 2, size[1] - 2)
-		self.widgets['ship'].findChild(name='chargeBarLeft').size = (int(0.5 + 0.75 * size[0]), size[1])
-		self.widgets['ship'].findChild(name='chargeBarRight').size = (int(0.5 + size[0] - 0.75 * size[0]), size[1])
-
-		pos = self.widgets['ship'].findChild(name='chargeBar').position
-		pos = (pos[0] + 1, pos[1] + 1)
-		self.widgets['ship'].findChild(name='chargeBarLeft').position = pos
-		self.widgets['ship'].findChild(name='chargeBarRight').position = (int(0.5 + pos[0] + 0.75 * size[0]), pos[1])
-		self.widgets['ship'].mapEvents({
-			'foundSettlement' : ychan.tools.callbackWithArguments(self.ship_build, ship)
-			#TODO this seems to never gets called since the typo would break our code
-		})
-		self.show_menu('ship')
-
 	def show_build_menu(self):
-		# check if build menu is already showed
+		# check if build menu is already shown
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
 			self.hide_menu()
 			return
@@ -468,10 +452,6 @@ class IngameGui(LivingObject):
 			self.widgets['ingame_pause'].hide()
 			self.session.speed_unpause()
 			self._toggle_ingame_pause_shown = False
-
-	def toggle_ingame_pdb_start(self):
-		"""Called when the hotkey for debug is pressed. Displays only debug notification."""
-		pass
 
 	def on_escape(self):
 		if self.logbook.is_visible():
