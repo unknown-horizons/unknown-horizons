@@ -188,38 +188,44 @@ class IngameGui(LivingObject):
 		"""
 		bg_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
 		bg_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
+		pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
+		#TODO replace this with a customizable widget (which resources are shown)
 		if not hasattr(self, "bg_icon_pos"):
-			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
+			self.bg_icon_pos = pos 
 			self.bgs_shown = {}
 		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
 		                              position=self.bg_icon_pos[label], name='bg_icon_' + label)
+		if isinstance(value, str):
+			value = [value]
+		if label == 'gold':
+			self._set_label_text('status_extra_gold', bg_icon, label, value)
+		else:
+			self._set_label_text('status_extra', bg_icon, label, value)
 
+	def _set_label_text(self, widget, bg_icon, label, value):
 		if not value:
-			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
+			foundlabel = self.widgets[widget].child_finder(label + '_' + str(2))
 			foundlabel.text = u''
 			foundlabel.resizeToContent()
 			if label in self.bgs_shown:
-				(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).removeChild(self.bgs_shown[label])
+				self.widgets[widget].removeChild(self.bgs_shown[label])
 				del self.bgs_shown[label]
-			self.widgets['status_extra_gold'].resizeToContent() if label == 'gold' else self.widgets['status_extra'].resizeToContent()
+			self.widgets[widget].resizeToContent()
+			# remove any displayed label for this resource and the corresponding icons
 			return
-		if isinstance(value, str):
-			value = [value]
-		#for i in xrange(len(value), 3):
-		#	value.append("")
 
-		if (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).findChild(name='bg_icon_' + label) is None:
-			(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).insertChild(bg_icon, 0)
+		if self.widgets[widget].findChild(name='bg_icon_' + label) is None:
+			self.widgets[widget].insertChild(bg_icon, 0)
 			self.bgs_shown[label] = bg_icon
+			# display background icon
 
-		for i in xrange(0,len(value)):
-			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(name=label + '_' + str(i+2))
-			foundlabel._setText(unicode(value[i]))
+		for i in xrange(0,len(value)): #TODO examine what this loop does
+			text = value[i]
+			foundlabel = self.widgets[widget].child_finder(name=label + '_' + str(i+2))
+			foundlabel._setText(unicode(text))
 			foundlabel.resizeToContent()
-		if label == 'gold':
-			self.widgets['status_extra_gold'].resizeToContent()
-		else:
-			self.widgets['status_extra'].resizeToContent()
+			# display the amount of a particular resource that your construction will cost
+		self.widgets[widget].resizeToContent()
 
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center
@@ -379,10 +385,14 @@ class IngameGui(LivingObject):
 		self.active_build = num
 
 	def set_status_position(self, resource_name):
+		"""Sets the position of the labels displaying current inventory amount
+		and the costs of the building the player activated the build preview of.
+		@param resource_name: string used to look up xml elements containing this.
+		"""
 		icon_name = resource_name + '_icon'
-		for i in xrange(1, 3): 
+		for i in xrange(1, 3): # loop values 1 and 2
 			lbl_name = resource_name + '_' + str(i)
-			# tools_1 = inventory amount, tools_2 = cost of to-be-built building
+			# e.g. tools_1 = inventory amount, tools_2 = cost of to-be-built building
 			if resource_name == 'gold':
 				self._set_label_position('status_gold', lbl_name, icon_name, 33, 31 + i*20)
 			else:
