@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions import pychan
+
+from horizons.constants import RES
+
 class SettlementInventoryDisplay(object):
 	"""
 	Contains methods that create and modify the bar when player hovers own
@@ -26,6 +30,16 @@ class SettlementInventoryDisplay(object):
 	Also takes care of the building cost display (in build preview mode) and
 	the gold amount display which is always active (non-settlement-depending).
 	"""
+	def __init__(self, session, main_gui, widgets):
+		self.session = session
+		self.gui = main_gui
+		self.widgets = widgets
+
+	def end(self):
+		self.session = None
+		self.gui = None
+		self.widgets = None
+
 	def update_gold(self):
 		first = str(self.session.world.player.inventory[RES.GOLD_ID])
 		lines = []
@@ -100,28 +114,10 @@ class SettlementInventoryDisplay(object):
 			# display the amount of a particular resource that your construction will cost
 		self.widgets[widget].resizeToContent()
 
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
-		city = source if not res_from_ship else None
-		self.cityinfo_set(city)
-		if source is not self.resource_source:
-			if self.resource_source is not None:
-				self.resource_source.remove_change_listener(self.update_resource_source)
-			if source is None or self.session.world.player != source.owner:
-				self.widgets['status'].hide()
-				self.widgets['status_extra'].hide()
-				self.resource_source = None
-				self.update_gold()
-		if source is not None and self.session.world.player == source.owner:
-			if source is not self.resource_source:
-				source.add_change_listener(self.update_resource_source)
-			self.resource_source = source
-			self.resources_needed = res_needed
-			self.resources_usable = res_usable
-			self.update_resource_source()
-			self.widgets['status'].show()
-
-	def update_resource_source(self):
+	def update_resource_source(self, source, needed):
 		"""Sets the values for resource status bar as well as the building costs"""
+		self.resource_source = source
+		self.resources_needed = needed
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
 			first = str(self.resource_source.inventory[res_id])

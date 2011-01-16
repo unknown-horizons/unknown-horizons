@@ -31,7 +31,7 @@ from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
-#from horizons.gui.widgets.islandinventorydisplay import SettlementInventoryDisplay as ResBar
+from horizons.gui.widgets.islandinventorydisplay import SettlementInventoryDisplay as ResBar
 from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
@@ -44,6 +44,7 @@ class IngameGui(LivingObject):
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 	minimap = livingProperty()
+	resbar = livingProperty()
 
 	styles = {
 		'city_info' : 'city_info',
@@ -110,10 +111,12 @@ class IngameGui(LivingObject):
 
 		for w in ('status','status_extra','status_gold','status_extra_gold'):
 			self.widgets[w].child_finder = PychanChildFinder(self.widgets[w])
+		self.widgets['status_gold'].show()
 
 		self.message_widget = MessageWidget(self.session, \
 		                                    cityinfo.position[0] + cityinfo.size[0], 5)
-		self.widgets['status_gold'].show()
+
+		self.resbar = ResBar(self.session, gui, self.widgets)
 
 		# map button names to build functions calls with the building id
 		building_list = horizons.main.db.get_building_id_buttonname_settlerlvl()
@@ -122,6 +125,46 @@ class IngameGui(LivingObject):
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = callback(self._build, id)
+
+	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
+		#TODO what is this stuff doing? I could maybe fix the problems if I understood that:
+		city = source if not res_from_ship else None
+		self.cityinfo_set(city)
+		if source is not self.resource_source:
+			if self.resource_source is not None:
+				self.resource_source.remove_change_listener(self.resbar.update_resource_source(source, res_needed))
+			if source is None or self.session.world.player != source.owner:
+				self.widgets['status'].hide()
+				self.widgets['status_extra'].hide()
+				source = None
+				self.resbar.update_gold()
+		if source is not None and self.session.world.player == source.owner:
+			if source is not self.resource_source:
+				source.add_change_listener(self.resbar.update_resource_source(source, res_needed))
+			self.resbar.update_resource_source(source, res_needed)
+			self.widgets['status'].show()
+
+	""" Below the old code of this method for bugfixing and comparison purposes:
+	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
+		city = source if not res_from_ship else None
+		self.cityinfo_set(city)
+		if source is not self.resource_source:
+			if self.resource_source is not None:
+				self.resource_source.remove_change_listener(self.update_resource_source)
+			if source is None or self.session.world.player != source.owner:
+				self.widgets['status'].hide()
+				self.widgets['status_extra'].hide()
+				self.resource_source = None
+				self.update_gold()
+		if source is not None and self.session.world.player == source.owner:
+			if source is not self.resource_source:
+				source.add_change_listener(self.update_resource_source)
+			self.resource_source = source
+			self.resources_needed = res_needed
+			self.resources_usable = res_usable
+			self.update_resource_source()
+			self.widgets['status'].show()
+	"""
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
@@ -146,12 +189,6 @@ class IngameGui(LivingObject):
 		self.minimap = None
 		self.hide_menu()
 		super(IngameGui, self).end()
-
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
-		pass
-
-	def update_gold(self):
-		pass
 
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center
