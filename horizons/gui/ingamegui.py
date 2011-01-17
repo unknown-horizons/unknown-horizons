@@ -116,7 +116,7 @@ class IngameGui(LivingObject):
 		self.message_widget = MessageWidget(self.session, \
 		                                    cityinfo.position[0] + cityinfo.size[0], 5)
 
-		self.resbar = ResBar(self.session, gui, self.widgets)
+		self.resbar = ResBar(self.session, gui, self.widgets, self.resource_source)
 
 		# map button names to build functions calls with the building id
 		building_list = horizons.main.db.get_building_id_buttonname_settlerlvl()
@@ -128,9 +128,16 @@ class IngameGui(LivingObject):
 
 	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
 		#TODO what is this stuff doing? I could maybe fix the problems if I understood that:
-		city = source if not res_from_ship else None
-		self.cityinfo_set(city)
+		# method is called without arguments in navigationtool (to update)
+		# and with arguments in buildingtool to create proper build preview
+		if not res_from_ship: # source we hover is a settlement, display cityinfo
+			self.cityinfo_set(source)
+
+#		print source, "   ", self.resource_source
+
+		# why that much if-checks? need to better explain each case
 		if source is not self.resource_source:
+		# when does this happen and what are the steps we do then?
 			if self.resource_source is not None:
 				self.resource_source.remove_change_listener(self.resbar.update_resource_source(source, res_needed))
 			if source is None or self.session.world.player != source.owner:
@@ -138,9 +145,12 @@ class IngameGui(LivingObject):
 				self.widgets['status_extra'].hide()
 				source = None
 				self.resbar.update_gold()
+
 		if source is not None and self.session.world.player == source.owner:
 			if source is not self.resource_source:
 				source.add_change_listener(self.resbar.update_resource_source(source, res_needed))
+#			self.resource_source = source
+			# seems necessary for game logic but currently breaks stuff (None inventory)
 			self.resbar.update_resource_source(source, res_needed)
 			self.widgets['status'].show()
 

@@ -322,8 +322,8 @@ class World(LivingObject):
 		if local:
 			player = HumanPlayer(self.session, id, name, color, inventory=inv)
 			self.player = player
-			self.session.ingame_gui.update_gold()
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)
+			self.session.ingame_gui.resbar.update_gold()
+			self.player.inventory.add_change_listener(self.session.ingame_gui.resbar.update_gold)
 		else:
 			player = Player(self.session, id, name, color, inventory=inv)
 		self.players.append(player)

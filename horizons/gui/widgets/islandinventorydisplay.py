@@ -30,15 +30,17 @@ class SettlementInventoryDisplay(object):
 	Also takes care of the building cost display (in build preview mode) and
 	the gold amount display which is always active (non-settlement-depending).
 	"""
-	def __init__(self, session, main_gui, widgets):
+	def __init__(self, session, main_gui, widgets, res_source):
 		self.session = session
 		self.gui = main_gui
 		self.widgets = widgets
+		self.resource_source = res_source
 
 	def end(self):
 		self.session = None
 		self.gui = None
 		self.widgets = None
+		self.resources_needed = None
 
 	def update_gold(self):
 		first = str(self.session.world.player.inventory[RES.GOLD_ID])
