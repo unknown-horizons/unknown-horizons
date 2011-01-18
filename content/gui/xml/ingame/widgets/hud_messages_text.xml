@@ -2,6 +2,6 @@
 <Container size="320,100">
 <Icon name="msg_left" image="content/gui/images/background/msg_bg.png" />
 
-	<Label name="text" text=""  position="12,5" 
+	<Label name="text" text=""  position="12,5"  font="libertine_tooltip"
 		wrap_text="1" size="250,100" max_size="250,100" />
 </Container>
