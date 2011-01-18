@@ -43,6 +43,7 @@ class SettlementInventoryDisplay(object):
 		self.resources_needed = None
 
 	def update_gold(self):
+		"""Updates gold inventory amount and gold cost for currently previewed building"""
 		first = str(self.session.world.player.inventory[RES.GOLD_ID])
 		lines = []
 		show = False
@@ -116,8 +117,9 @@ class SettlementInventoryDisplay(object):
 			# display the amount of a particular resource that your construction will cost
 		self.widgets[widget].resizeToContent()
 
-	def update_resource_source(self, source, needed):
+	def update_resource_source(self, source=None, needed={}):
 		"""Sets the values for resource status bar as well as the building costs"""
+#		print self.resource_source,source
 		self.resource_source = source
 		self.resources_needed = needed
 		self.update_gold()

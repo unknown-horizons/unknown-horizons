@@ -128,31 +128,40 @@ class IngameGui(LivingObject):
 
 	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
 		#TODO what is this stuff doing? I could maybe fix the problems if I understood that:
+
 		# method is called without arguments in navigationtool (to update)
 		# and with arguments in buildingtool to create proper build preview
-		if not res_from_ship: # source we hover is a settlement, display cityinfo
-			self.cityinfo_set(source)
+
+		city = source if not res_from_ship else None
+		self.cityinfo_set(city)  # the source we hover is a settlement,
+		                         # cityinfo_set(None) hides the widget.
 
 #		print source, "   ", self.resource_source
 
 		# why that much if-checks? need to better explain each case
+		# * when does this happen and * what are the steps we do then?
+
+		if source is None or self.session.world.player != source.owner:
+		# player hovers enemy settlement / unsettled territory -> don't show inventory
+			self.widgets['status'].hide()
+			self.widgets['status_extra'].hide()
+			source = None
+
+# ----
+
 		if source is not self.resource_source:
-		# when does this happen and what are the steps we do then?
 			if self.resource_source is not None:
-				self.resource_source.remove_change_listener(self.resbar.update_resource_source(source, res_needed))
-			if source is None or self.session.world.player != source.owner:
-				self.widgets['status'].hide()
-				self.widgets['status_extra'].hide()
-				source = None
-				self.resbar.update_gold()
+				self.resource_source.remove_change_listener(self.resbar.update_resource_source())
 
 		if source is not None and self.session.world.player == source.owner:
 			if source is not self.resource_source:
-				source.add_change_listener(self.resbar.update_resource_source(source, res_needed))
+				source.add_change_listener(self.resbar.update_resource_source(source))
 #			self.resource_source = source
 			# seems necessary for game logic but currently breaks stuff (None inventory)
+			# because the assignment is always carried over to islansinventorydisplay.py
 			self.resbar.update_resource_source(source, res_needed)
 			self.widgets['status'].show()
+		self.resbar.update_gold()
 
 	""" Below the old code of this method for bugfixing and comparison purposes:
 	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
@@ -220,6 +229,7 @@ class IngameGui(LivingObject):
 			settlement.add_change_listener(self.update_settlement)
 
 	def update_settlement(self):
+		"""Assigns values to labels of cityinfo widget"""
 		cityinfo = self.widgets['city_info']	
 		cityinfo.mapEvents({
 			'city_name': callback(self.show_change_name_dialog, self.settlement)
@@ -230,12 +240,6 @@ class IngameGui(LivingObject):
 		foundlabel = cityinfo.child_finder('city_inhabitants')
 		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
-		"""
-		for lbl in ('name','inhabitants'):
-			foundlabel = cityinfo.child_finder('city_'+ lbl)
-			foundlabel._setText(unicode(self.settlement.+name))
-			foundlabel.resizeToContent()
-		"""
 		cityinfo.resizeToContent()
 
 	def minimap_to_front(self):
