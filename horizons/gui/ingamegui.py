@@ -128,6 +128,8 @@ class IngameGui(LivingObject):
 
 	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
 		#TODO what is this stuff doing? I could maybe fix the problems if I understood that:
+		# why that much if-checks? need to better explain each case
+		# * when does this happen and * what are the steps we do then?
 
 		# method is called without arguments in navigationtool (to update)
 		# and with arguments in buildingtool to create proper build preview
@@ -137,29 +139,21 @@ class IngameGui(LivingObject):
 		                         # cityinfo_set(None) hides the widget.
 
 #		print source, "   ", self.resource_source
-
-		# why that much if-checks? need to better explain each case
-		# * when does this happen and * what are the steps we do then?
+		listener = self.resbar.update_resource_source(source, res_needed)
 
 		if source is None or self.session.world.player != source.owner:
 		# player hovers enemy settlement / unsettled territory -> don't show inventory
 			self.widgets['status'].hide()
 			self.widgets['status_extra'].hide()
+			if source is not None:
+				pass # remove changelistener?
 			source = None
-
 # ----
-
-		if source is not self.resource_source:
-			if self.resource_source is not None:
-				self.resource_source.remove_change_listener(self.resbar.update_resource_source())
-
 		if source is not None and self.session.world.player == source.owner:
-			if source is not self.resource_source:
-				source.add_change_listener(self.resbar.update_resource_source(source))
-#			self.resource_source = source
-			# seems necessary for game logic but currently breaks stuff (None inventory)
-			# because the assignment is always carried over to islansinventorydisplay.py
-			self.resbar.update_resource_source(source, res_needed)
+			# 'source' is always carried over to islandinventorydisplay.py
+			# in difference from the below code where self.resource_source was
+			# only modified if some conditions applied but always passed over.
+			self.resbar.update_resource_source(self.resource_source, res_needed)
 			self.widgets['status'].show()
 		self.resbar.update_gold()
 

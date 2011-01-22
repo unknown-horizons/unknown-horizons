@@ -124,15 +124,18 @@ class SettlementInventoryDisplay(object):
 		self.resources_needed = needed
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
-			first = str(self.resource_source.inventory[res_id])
 			lines = []
 			show = False
-			if self.resources_needed.get(res_id, 0) != 0:
-				show = True
-				lines.append('- ' + str(self.resources_needed[res_id]))
-			self.status_set(res_name, first)
-			self.status_set_extra(res_name,lines)
-			self.set_status_position(res_name)
+			if source is not None:
+				first = str(self.resource_source.inventory[res_id])
+				if self.resources_needed.get(res_id, 0) != 0:
+					show = True
+					lines.append('- ' + str(self.resources_needed[res_id]))
+				self.status_set(res_name, first)
+				self.status_set_extra(res_name,lines)
+				self.set_status_position(res_name)
+			if source is None:
+				pass # anything important?
 			if show:
 				self.widgets['status_extra'].show()
 
