@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.production.producer import ProducerBuilding
 from horizons.entities import Entities
@@ -37,12 +37,10 @@ class NatureBuilding(BuildableRect, BasicBuilding):
 	def __init__(self, **kwargs):
 		super(NatureBuilding, self).__init__(**kwargs)
 
-class GrowingBuilding(ProducerBuilding, NatureBuilding):
-	""" Class for stuff that grows, such as trees
-	"""
+class ProducerNatureBuilding(ProducerBuilding, NatureBuilding):
 	pass
 
-class Field(GrowingBuilding):
+class Field(ProducerNatureBuilding):
 	layer = LAYERS.FIELDS
 
 class AnimalField(CollectingBuilding, Field):
@@ -71,7 +69,7 @@ class AnimalField(CollectingBuilding, Field):
 		self.animals = []
 		# units are loaded separatly
 
-class Tree(GrowingBuilding):
+class Tree(ProducerNatureBuilding):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
@@ -94,6 +92,8 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 			for res, amount in inventory.iteritems():
 				self.inventory.alter(res, amount)
 
+class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
+	pass
 
 
 

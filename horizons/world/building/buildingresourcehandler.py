@@ -33,7 +33,9 @@ class BuildingResourceHandler(ResourceHandler):
 		"""
 		@param island: the island where the building is located
 		"""
-		island.provider_buildings.append(self)
+		# dynamic check for support of other building owners such as world
+		if hasattr(island, "provider_buildings"):
+			island.provider_buildings.append(self)
 
 	def load(self, db, worldid):
 		super(BuildingResourceHandler, self).load(db, worldid)

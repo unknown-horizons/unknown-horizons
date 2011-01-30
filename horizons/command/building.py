@@ -27,7 +27,7 @@ from horizons.command import Command
 from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.campaign import CONDITIONS
-from horizons.constants import RES
+from horizons.constants import RES, GAME
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -53,7 +53,7 @@ class Build(Command):
 		self.y = int(y)
 		self.rotation = int(rotation)
 		self.ownerless = ownerless
-		self.island = island.worldid
+		self.island = None if island is None else island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
 		self.tearset = tearset
 		self.data = data
@@ -65,8 +65,9 @@ class Build(Command):
 		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, \
 									 self.x, self.y)
 
-		island = WorldObject.get_object_by_id(self.island)
-		session = island.session
+		island = None if self.island is None else WorldObject.get_object_by_id(self.island)
+		# slightly ugly workaround to retrieve session instance via pseudo-singleton
+		session = WorldObject.get_object_by_id(GAME.WORLD_WORLDID).session
 
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
@@ -124,12 +125,13 @@ class Build(Command):
 		  **self.data
 		)
 
-		island.add_building(building, issuer)
+		if island != None:
+			island.add_building(building, issuer)
 		if self.settlement is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)
 		elif self.ship is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.ship)
-		else:
+		elif island is not None:
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 
 		if issuer: # issuer is None if it's a global game command, e.g. on world setup

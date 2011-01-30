@@ -199,6 +199,20 @@ class BuildableSingle(Buildable):
 		point2.y -= (cls.size[1] - 1) / 2
 		return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
 
+class BuildableSingleEverywhere(BuildableSingle):
+	"""Buildings, that can be built everywhere"""
+	@classmethod
+	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
+		# for non-quadratic buildings, we have to switch width and height depending on the rotation
+		if rotation == 45 or rotation == 225:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0]-1, cls.size[1]-1)
+		else:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1]-1, cls.size[0]-1)
+
+		buildable = True
+		tearset = []
+		return _BuildPosition(position, rotation, tearset, buildable)
+
 
 class BuildableRect(Buildable):
 	"""Buildings one can build as a Rectangle, such as Trees"""

@@ -85,7 +85,7 @@ class BUILDINGS:
 	SETTLER_RUIN_CLASS = 10
 	TREE_CLASS = 17
 	CLAY_DEPOSIT_CLASS = 23
-
+	FISH_DEPOSIT_CLASS = 33
 
 	class ACTION:
 		# data for calculating gfx for paths.
@@ -135,6 +135,8 @@ class PRODUCTION:
 class GAME:
 	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
 	# payed in this interval).
+
+	WORLD_WORLDID = 0 # worldid of World object
 
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
