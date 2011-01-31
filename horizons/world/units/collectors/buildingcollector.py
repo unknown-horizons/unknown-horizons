@@ -182,8 +182,14 @@ class FieldCollector(BuildingCollector):
 	look of farm using."""
 	job_ordering = JobList.order_by.random
 
-
 class SettlerCollector(StorageCollector):
 	"""Collector for settlers."""
 	pass
 
+class FisherShipCollector(FieldCollector):
+	def get_buildings_in_range(self, reslist=None):
+		"""Returns all buildings in range .
+		Overwrite in subclasses that need ranges around the pickup.
+		@param res: optional, only search for buildings that provide res"""
+		reach = Circle(self.home_building.position.center(), self.home_building.radius)
+		return self.session.world.get_providers_in_range(reach, reslist=reslist)

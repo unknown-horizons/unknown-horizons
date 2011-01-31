@@ -30,7 +30,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle
-from horizons.world.units.collectors import FieldCollector
+from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.constants import LAYERS, STORAGE
 
@@ -174,7 +174,8 @@ class TradeShip(Ship):
 	def _possible_names(self):
 		return [ _('Trader') ]
 
-class FisherShip(Ship, FieldCollector):
+class FisherShip(FisherShipCollector):
 	"""Represents a fisher ship."""
 	tabs = ()
+	pather_class = ShipPather
 	health_bar_y = -50

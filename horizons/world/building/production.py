@@ -57,15 +57,15 @@ class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
 class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
-	
+
 class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
-	
+
 class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
