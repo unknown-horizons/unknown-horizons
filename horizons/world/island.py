@@ -68,10 +68,8 @@ class Island(BuildingOwner, WorldObject):
 		@param islandid: id of island in that table
 		@param session: reference to Session instance
 		"""
-		super(Island, self).__init__()
+		super(Island, self).__init__(worldid=islandid)
 		self.session = session
-		# an island is always loaded from db, so __init__() basically is load()
-		super(Island, self).load(db, islandid)
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
 		self.__init(Point(x, y), filename)
