@@ -59,9 +59,14 @@ class CollectingBuilding(BuildingResourceHandler):
 		Entities.units[collector_class](self, session=self.session, owner=self.owner)
 
 	def remove(self):
-		while len(self.__collectors) > 0:
-			self.__collectors[0].remove()
-		assert len(self.__collectors) == 0
+		# remove every non-ship collectors (those are independent)
+		for collector in self.__collectors[:]:
+			if not collector.is_ship:
+				collector.remove()
+			else:
+				collector.cancel(continue_action=lambda : collector.stop())
+				collector.show() # make sure the collector isn't hidden in the building
+		assert len([c for c in self.__collectors if not c.is_ship]) == 0
 		super(CollectingBuilding, self).remove()
 
 	def save(self, db):

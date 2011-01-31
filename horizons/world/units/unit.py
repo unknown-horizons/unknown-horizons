@@ -32,6 +32,7 @@ from horizons.ambientsound import AmbientSound
 class Unit(AmbientSound, MovingObject):
 	log = logging.getLogger("world.units")
 	is_unit = True
+	is_ship = False
 	health_bar_y = -30
 
 	def __init__(self, x, y, owner=None, **kwargs):

@@ -42,6 +42,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	pather_class = ShipPather
 	tabs = (ShipOverviewTab, ShipInventoryTab)
 	health_bar_y = -150
+	is_ship = True
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
@@ -174,7 +175,7 @@ class TradeShip(Ship):
 	def _possible_names(self):
 		return [ _('Trader') ]
 
-class FisherShip(FisherShipCollector):
+class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
 	tabs = ()
 	pather_class = ShipPather
