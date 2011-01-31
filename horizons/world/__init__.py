@@ -36,8 +36,9 @@ from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.entities import Entities
 from horizons.util import decorators
+from horizons.world.buildingowner import BuildingOwner
 
-class World(LivingObject, WorldObject):
+class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
 	   * players - a list of all the session's players - Player instances
@@ -127,12 +128,6 @@ class World(LivingObject, WorldObject):
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
-		# load world buildings (e.g. fish)
-		for (building_worldid, building_typeid) in \
-		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
-			load_building(self.session, db, building_typeid, building_worldid)
-
-
 		# load islands
 		self.islands = []
 		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
@@ -175,6 +170,11 @@ class World(LivingObject, WorldObject):
 			for coord in island.ground_map:
 				if coord in self.ground_map:
 					del self.ground_map[coord]
+
+		# load world buildings (e.g. fish)
+		for (building_worldid, building_typeid) in \
+		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
+			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		self.num_water = len(self.ground_map)
 		self.water = list(self.ground_map)
@@ -456,6 +456,7 @@ class World(LivingObject, WorldObject):
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
+		super(World, self).save(db)
 		for name, value in self.properties.iteritems():
 			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, value)
 		for island in self.islands:

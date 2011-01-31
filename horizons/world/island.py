@@ -31,9 +31,9 @@ from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, UNITS
 from horizons.campaign import CONDITIONS
-from horizons.world.providerhandler import ProviderHandler
+from horizons.world.buildingowner import BuildingOwner
 
-class Island(WorldObject):
+class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
 	that belong to the island. The island variable is also set on every instance that belongs
 	to an island, making it easy to determine to which island the instance belongs, when
@@ -68,6 +68,7 @@ class Island(WorldObject):
 		@param islandid: id of island in that table
 		@param session: reference to Session instance
 		"""
+		super(Island, self).__init__()
 		self.session = session
 		# an island is always loaded from db, so __init__() basically is load()
 		super(Island, self).load(db, islandid)
@@ -115,8 +116,6 @@ class Island(WorldObject):
 			self.ground_map[(ground.x, ground.y)] = ground
 
 		self.settlements = []
-		self.buildings = []
-		self.provider_buildings = ProviderHandler()
 		self.wild_animals = []
 
 		self.path_nodes = IslandPathNodes(self)
@@ -129,10 +128,9 @@ class Island(WorldObject):
 		"""
 
 	def save(self, db):
+		super(Island, self).save(db)
 		db("INSERT INTO island (rowid, x, y, file) VALUES (? - 1000, ?, ?, ?)",
 			self.worldid, self.origin.x, self.origin.y, self.file)
-		for building in self.buildings:
-			building.save(db)
 		for settlement in self.settlements:
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
@@ -263,39 +261,20 @@ class Island(WorldObject):
 		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement"""
+		building = super(Island, self).add_building(building, player)
 		for building.settlement in self.get_settlements(building.position, player):
 			self.assign_settlement(building.position, building.radius, building.settlement)
 			break
 
-		# Set all tiles in the buildings position(rect)
-		for point in building.position:
-			tile = self.get_tile(point)
-			tile.blocked = True # Set tile blocked
-			tile.object = building # Set tile's object to the building
-			self.path_nodes.reset_tile_walkability(point.to_tuple())
-		self.buildings.append(building)
 		if building.settlement is not None:
 			building.settlement.buildings.append(building)
-		building.init()
 		return building
 
 	def remove_building(self, building):
-		assert building.island == self
-
-		# Reset the tiles this building was covering
-		for point in building.position:
-			tile = self.get_tile(point)
-			tile.blocked = False
-			tile.object = None
-			self.path_nodes.reset_tile_walkability(point.to_tuple())
-
 		if building.settlement is not None:
 			building.settlement.buildings.remove(building)
 			assert(building not in building.settlement.buildings)
-
-		# Remove this building from the buildings list
-		self.buildings.remove(building)
-		assert building not in self.buildings
+		super(Island, self).remove_building(building)
 
 	def get_surrounding_tiles(self, point, radius = 1):
 		"""Returns tiles around point with specified radius.
@@ -316,32 +295,6 @@ class Island(WorldObject):
 				yield self.ground_map[coord]
 			except KeyError:
 				pass
-
-	@decorators.make_constants()
-	def get_providers_in_range(self, circle, res=None, reslist=None, player=None):
-		"""Returns all instances of provider within the specified circle.
-		NOTE: Specifing the res parameter is usually a huge speed gain.
-		@param circle: instance of Circle
-		@param res: optional; only return providers that provide res.  conflicts with reslist
-		@param reslist: optionally; list of res to search providers for. conflicts with res
-		@param player: Player instance, only buildings belonging to this player
-		@return: list of providers"""
-		assert not (bool(res) and bool(reslist))
-		if res is not None:
-			provider_list = self.provider_buildings.provider_by_resources[res]
-		elif reslist:
-			provider_list = set()
-			for _res in reslist:
-				provider_list = provider_list.union(self.provider_buildings.provider_by_resources[_res])
-		else:
-			# worst case: search all provider buildings
-			provider_list = self.provider_buildings
-		possible_providers = []
-		for provider in provider_list:
-			if (player is None or player == provider.owner) and \
-			   provider.position.distance_to_circle(circle) == 0:
-				possible_providers.append(provider)
-		return possible_providers
 
 	def __iter__(self):
 		for i in self.get_coordinates():

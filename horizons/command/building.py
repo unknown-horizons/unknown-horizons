@@ -62,16 +62,18 @@ class Build(Command):
 		"""Execute the command
 		@param issuer: the issuer (player, owner of building) of the command
 		"""
-		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, \
-									 self.x, self.y)
+		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, self.x, self.y)
 
-		island = None if self.island is None else WorldObject.get_object_by_id(self.island)
-		# slightly ugly workaround to retrieve session instance via pseudo-singleton
-		session = WorldObject.get_object_by_id(GAME.WORLD_WORLDID).session
+		world = WorldObject.get_object_by_id(GAME.WORLD_WORLDID)
+		# HACK: use world as island for islandless buildings such as fish
+		island = world if self.island is None else WorldObject.get_object_by_id(self.island)
+		# slightly ugly workaround to retrieve world and session instance via pseudo-singleton
+		session = world.session
 
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
-		buildable = buildable_class.check_build(session, Point(self.x, self.y), rotation = self.rotation,\
+		buildable = buildable_class.check_build(session, Point(self.x, self.y), \
+		  rotation = self.rotation,\
 			check_settlement=issuer is not None, \
 			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
 			issuer=issuer)
@@ -97,6 +99,7 @@ class Build(Command):
 						# can't build, not enough res
 						buildable.buildable = False
 						break
+
 		if not buildable.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
@@ -125,8 +128,8 @@ class Build(Command):
 		  **self.data
 		)
 
-		if island != None:
-			island.add_building(building, issuer)
+		island.add_building(building, issuer)
+
 		if self.settlement is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)
 		elif self.ship is not None:

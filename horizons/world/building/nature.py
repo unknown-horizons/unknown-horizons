@@ -93,6 +93,7 @@ class ResourceDeposit(SelectableBuilding, StorageHolder, NatureBuilding):
 				self.inventory.alter(res, amount)
 
 class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
+	range_applies_only_on_island = False
 	pass
 
 
