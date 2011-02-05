@@ -47,8 +47,6 @@ class BuildingOwner(object):
 			tile = self.get_tile(point)
 			tile.blocked = True # Set tile blocked
 			tile.object = building # Set tile's object to the building
-			if hasattr(self, "path_nodes"):
-				self.path_nodes.reset_tile_walkability(point.to_tuple())
 		self.buildings.append(building)
 		building.init()
 		return building
@@ -61,7 +59,6 @@ class BuildingOwner(object):
 			tile = self.get_tile(point)
 			tile.blocked = False
 			tile.object = None
-			self.path_nodes.reset_tile_walkability(point.to_tuple())
 
 		# Remove this building from the buildings list
 		self.buildings.remove(building)

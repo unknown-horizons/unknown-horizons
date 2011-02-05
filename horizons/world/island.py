@@ -247,7 +247,8 @@ class Island(BuildingOwner, WorldObject):
 
 				building = tile.object
 				# assign buildings on tiles to settlement
-				if building is not None and building.settlement is None:
+				if building is not None and building.settlement is None and \
+				   building.island == self: # don't steal from other islands
 					building.settlement = settlement
 					building.owner = settlement.owner
 					settlement.buildings.append(building)
@@ -266,12 +267,16 @@ class Island(BuildingOwner, WorldObject):
 
 		if building.settlement is not None:
 			building.settlement.buildings.append(building)
+		for point in building.position:
+			self.path_nodes.reset_tile_walkability(point.to_tuple())
 		return building
 
 	def remove_building(self, building):
 		if building.settlement is not None:
 			building.settlement.buildings.remove(building)
 			assert(building not in building.settlement.buildings)
+		for point in building.position:
+			self.path_nodes.reset_tile_walkability(point.to_tuple())
 		super(Island, self).remove_building(building)
 
 	def get_surrounding_tiles(self, point, radius = 1):

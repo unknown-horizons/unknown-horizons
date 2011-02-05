@@ -38,7 +38,7 @@ class Build(Command):
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param ship: ship instance
-		@param island: island instance
+		@param island: BuildingOwner instance. Might be Island or World.
 		@param settlement: settlement worldid or None
 		@param tearset: set of worldids of objs to tear before building
 		@param data: data required for building construction
@@ -53,7 +53,7 @@ class Build(Command):
 		self.y = int(y)
 		self.rotation = int(rotation)
 		self.ownerless = ownerless
-		self.island = None if island is None else island.worldid
+		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
 		self.tearset = tearset
 		self.data = data
@@ -64,11 +64,9 @@ class Build(Command):
 		"""
 		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, self.x, self.y)
 
-		world = WorldObject.get_object_by_id(GAME.WORLD_WORLDID)
-		# HACK: use world as island for islandless buildings such as fish
-		island = world if self.island is None else WorldObject.get_object_by_id(self.island)
+		island = WorldObject.get_object_by_id(self.island)
 		# slightly ugly workaround to retrieve world and session instance via pseudo-singleton
-		session = world.session
+		session = island.session
 
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]

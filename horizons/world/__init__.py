@@ -259,11 +259,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 									  coords[1] + y_dir * self.session.random.randint(3, 9),
 									)
 									if coord_to_check in self.ground_map:
-										Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, island=None)(issuer=None)
-
-
-
-
+										Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, \
+										      island=self)(issuer=None)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
