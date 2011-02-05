@@ -72,7 +72,13 @@ class CollectingBuilding(BuildingResourceHandler):
 	def save(self, db):
 		super(CollectingBuilding, self).save(db)
 		for collector in self.__collectors:
-			collector.save(db)
+			# collectors, that are ship (e.g. fisher ship) are viewed as independent
+			# units, and therefore managed by world. This is justified, since they survive
+			# the removal of their assigned fisher hut, and therefore require their own
+			# saving mechanism
+			if not collector.is_ship:
+				collector.save(db)
+
 
 	def load(self, db, worldid):
 		super(CollectingBuilding, self).load(db, worldid)
