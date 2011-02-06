@@ -86,6 +86,7 @@ class BUILDINGS:
 	TREE_CLASS = 17
 	CLAY_DEPOSIT_CLASS = 23
 	FISH_DEPOSIT_CLASS = 33
+	MOUNTAIN_CLASS = 34
 
 	class ACTION:
 		# data for calculating gfx for paths.

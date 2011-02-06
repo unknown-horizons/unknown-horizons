@@ -231,9 +231,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
 			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
 			Fish = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
+			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
 			max_clay_deposits = self.session.random.randint(2, 3)
+			max_mountains = self.session.random.randint(2, 3)
 			for island in self.islands:
 				num_clay_deposits = 0
+				num_mountains = 0
 				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
 				for coords, tile in sorted(island.ground_map.iteritems()):
 					# add tree to every nth tile
@@ -244,23 +247,29 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
 							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
-						 self.session.random.randint(0, 30) == 0 and \
+						 self.session.random.randint(0, 40) == 0 and \
 						 Clay.check_build(self.session, tile, check_settlement=False):
 						num_clay_deposits += 1
 						Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
+					elif num_mountains < max_mountains and \
+					     self.session.random.randint(0, 40) == 0 and \
+					     Mountain.check_build(self.session, tile, check_settlement=False):
+						num_mountains += 1
+						Build(Mountain, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
 					if 'coastline' in tile.classes and self.session.random.randint(0, 4) == 0:
 						# try to place fish
-						# TODO: write proper implementation. However, this should do for now.
-						for x_dir in (-1, 0, 1):
-							for y_dir in (-1, 0, 1):
-								if self.session.random.randint(0, 3) == 0:
-									coord_to_check = (
-									  coords[0] + x_dir * self.session.random.randint(3, 9),
-									  coords[1] + y_dir * self.session.random.randint(3, 9),
-									)
-									if coord_to_check in self.ground_map:
-										Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, \
-										      island=self)(issuer=None)
+						# from the current position, go to random directions 2 times
+						directions = [ (i, j) for i in xrange(-1, 2) for j in xrange(-1, 2) ]
+						for (x_dir, y_dir) in self.session.random.sample(directions, 2):
+							# move a random amount in both directions
+							coord_to_check = (
+							  coords[0] + x_dir * self.session.random.randint(3, 9),
+							  coords[1] + y_dir * self.session.random.randint(3, 9),
+							)
+							# now we have the location, check if we can build here
+							if coord_to_check in self.ground_map:
+								Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, \
+								      island=self)(issuer=None)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
