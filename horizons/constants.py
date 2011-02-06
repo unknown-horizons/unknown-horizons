@@ -56,7 +56,7 @@ class VERSION:
 	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release
-	#RELEASE_NAME   = _("Unknown Horizons Alpha %s")
+	#RELEASE_NAME = _("Unknown Horizons Alpha %s")
 	#RELEASE_VERSION = u'2010.1'
 
 	## +=1 this if you changed the savegame "api"
@@ -74,6 +74,8 @@ class UNITS:
 	PIRATE_SHIP_CLASS          = 1000005
 	TRADER_SHIP_CLASS          = 1000006
 	WILD_ANIMAL_CLASS          = 1000013
+
+	DIFFERENCE_BUILDING_UNIT_ID = 1000000
 
 class BUILDINGS:
 	# ./development/print_db_data.py building
@@ -103,6 +105,7 @@ class BUILDINGS:
 		MAX_BUILDING_SHIP_DISTANCE = 5 # max distance ship-building when building from ship
 
 class RES:
+	# ./development/print_db_data.py res
 	GOLD_ID   = 1
 	HAPPINESS_ID = 14
 
@@ -126,6 +129,7 @@ class VIEW:
 ## The Production States available in the game sorted by importance from least
 ## to most important
 class PRODUCTION:
+	# ./development/print_db_data.py lines
 	STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing', 'paused', 'done')
 	# NOTE: 'done' is only for SingleUseProductions
 	# NOTE: 'none' is not used by an acctual production, just for a producer
@@ -139,22 +143,24 @@ class GAME:
 
 	WORLD_WORLDID = 0 # worldid of World object
 
+# Messagewidget and Logbook
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
 	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
 
-class TRADER:
-	SELLING_ADDITIONAL_CHARGE = 1.5 # sell at 1.5 times the price
-	BUYING_CHARGE_DEDUCTION = 0.9 # buy at 0.9 times the price
+# AI
+class TRADER: # check resource values: ./development/print_db_data.py res
+	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
+	PRICE_MODIFIER_SELL = 1.5 # sell for x times the resource value
 	TRADING_DURATION = 4 # seconds that trader stays at branch office to simulate (un)loading
 
 	BUSINESS_SENSE = 50 # chance in percent to be sent to a branch office instead of random spot
 
-	BUY_AMOUNT = (2, 8) # amount range to buy/sell from settlement per resource
-	SELL_AMOUNT = (2, 8)
+	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
+	SELL_AMOUNT = (2, 8) # => randomly picks an amount in this range for each trade
 
-
+# Taxes and Restrictions
 class SETTLER:
 	CURRENT_MAX_INCR = 2 # counting starts at 0!
 	TAX_SETTINGS_MIN = 0.5
@@ -210,21 +216,23 @@ class NETWORK:
 	CLIENT_ADDRESS = None
 	CLIENT_PORT = 0
 
+
+## TRANSLATIONS
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, key)
 
 LANGUAGENAMES = _LanguageNameDict(
-	ca = u'Català',
-	de = u'Deutsch',
-	en = u'English',
-	et = u'Eesti',
-	es = u'Español',
-	fr = u'Français',
-	it = u'Italiano',
-	nb = u'Norw. Bokmål',
-	pl = u'Polski',
-  pt_BR = u'Português Br.',
+	ca    = u'Català',
+	de    = u'Deutsch',
+	en    = u'English',
+	et    = u'Eesti',
+	es    = u'Español',
+	fr    = u'Français',
+	it    = u'Italiano',
+	nb    = u'Norw. Bokmål',
+	pl    = u'Polski',
+	pt_BR = u'Português Br.',
 	pt_PT = u'Português',
-  ru = u'Русский'
+	ru    = u'Русский'
 	)

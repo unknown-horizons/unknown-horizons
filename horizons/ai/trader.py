@@ -197,7 +197,7 @@ class Trader(AIPlayer):
 			amount = self.session.random.randint(*TRADER.SELL_AMOUNT) # select a random amount to sell
 			if amount == 0:
 				continue
-			price = int(self.session.db.get_res_value(res) * TRADER.SELLING_ADDITIONAL_CHARGE * amount)
+			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)
 			settlement.buy(res, amount, price)
 			# don't care if he bought it. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
@@ -208,7 +208,7 @@ class Trader(AIPlayer):
 			amount = self.session.random.randint(*TRADER.BUY_AMOUNT)
 			if amount == 0:
 				continue
-			price = int(self.session.db.get_res_value(res) * TRADER.BUYING_CHARGE_DEDUCTION * amount)
+			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * amount)
 			settlement.sell(res, amount, price)
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
 
