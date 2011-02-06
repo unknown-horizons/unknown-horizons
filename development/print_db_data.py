@@ -79,7 +79,7 @@ def print_settler_lines():
 	print 'Settler Consumption Lines:'
 	for incr in xrange(0,SETTLER.CURRENT_MAX_INCR + 1):
 		settlername = get_settler_name(incr)
-		print "Inhabitants of increment %i (%s) desire the following goods:" % \
+		print "Inhabitants of increment %i (%ss) desire the following goods:" % \
 		                               (incr, settlername)
 		lines = db("SELECT production_line FROM settler.settler_production_line \
 		            WHERE level = ? ORDER BY production_line", incr)
@@ -93,6 +93,15 @@ def print_settler_lines():
 		print ''
 
 def print_verbose_lines():
+	def _output_helper_prodlines(string, list):
+		if len(list) == 1:
+			for res, amount in list:
+				print '      ' + str(string) + ':\t%s %s(%s)' % (abs(amount), get_res_name(res), res)
+		elif len(list) > 1:
+			print '      ' + str(string) + ': '
+			for res, amount in list:
+				print '\t\t%s %s (%s)' % (abs(amount), get_res_name(res), res)
+
 	print 'Production Lines:'
 	for prod_line in db("SELECT id, object_id, time, enabled_by_default FROM production_line \
 	                     WHERE object_id != 3 ORDER BY object_id"):
@@ -104,15 +113,6 @@ def print_verbose_lines():
 		print '%2s: %s(%s) needs %s seconds to' % (id, get_obj_name(object), object, prod_line[2])
 		_output_helper_prodlines('consume', consumption)
 		_output_helper_prodlines('produce', production)
-
-def _output_helper_prodlines(string, list):
-	if len(list) == 1:
-		for res, amount in list:
-			print '      ' + str(string) + ':\t%s %s(%s)' % (abs(amount), get_res_name(res), res)
-	elif len(list) > 1:
-		print '      ' + str(string) + ': '
-		for res, amount in list:
-			print '\t\t%s %s (%s)' % (abs(amount), get_res_name(res), res)
 
 
 def strw(s, width=0):
@@ -201,7 +201,7 @@ abbrevs = {
 
 flags = dict(functions)
 for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible flags
-	flags.update({x: functions[y]})
+	flags[x] = functions[y]
 
 args = sys.argv
 
