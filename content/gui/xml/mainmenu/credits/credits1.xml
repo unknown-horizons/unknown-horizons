@@ -35,8 +35,15 @@
 			<Label text="cubathy (Language bugfix)" />
 			<Label text="dario (Savegame versioning)" />
 			<Label text="IwfY (Game lobby GUI)" />
+			<Label text="MSSSSM (Several improvements)"  />
 			<Label text="rudi_s_ (Several improvements)" />
 			<Label text="Yeya (Random maps)" />
+		</VBox>
+	</VBox> <Spacer />
+
+	<VBox> <Label text="2011" font="libertine_headline" />
+		<VBox name="book1">
+			<Label text="" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
