@@ -2,16 +2,91 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
+2011-??-??: Milestone 2011.1
+changelog date: FEB 13; rev: e55dc9bfdf6520b51849b324797a5eda0d206f25
+
+* General
+  * New: enet for darwin-x64 => MP possible on mac as well
+  * New: Implemented placement and save/load of fish tiles.
+  * New: Keep statistics about how many res have been produced at a settlement.
+  * New: Introduced a simple way to create special change listeners.
+  * New: scenario conditions related to production of resources and units
+  * New: Moved to new tileset structure.
+  * New: Made new fife editor work with new tileset structure. // not done yet
+  * New: xml loading method, using filename as widget name
+  * New: New flags for production lines, enhanced output in print_db_data.py
+  * New: Added several comments to xml files.
+  * New: Tooltips no longer need '\n' hard coded
+  * Change: Use \n optionally to force a newline in tooltips
+  * Change: xml widget file names have to be unique
+  * Change: Using show_popup method instead of own xml files for popups
+  * Change: Refactored resource display when hovering settlements
+  * Change: Refactored mechanism that notifies if production is finished.
+  * Change: Removed deprecated ProductionFinishedListener and on_remove handle.
+  * Change: Detection of exact matches with map file autocompletion in command line
+            interface (--start-map / --start-campaign / --load-map)
+  * Change: Capitalized resource names.
+  * Change: Removed old, unmaintained pathfinding tests.
+  * Change: 1024x768 is current minimum resolution
+  * Fix: Game did not start with an umlaut/special character in settings.xml.
+  * Fix: minor issue concerning the creation of random islands.
+  * Fix: possible issue with quick- and autosaving.
+
+* Gameplay and Balancing
+  * New: animals no further reproduce when over-populating an island
+  * New: Cam focuses selected group
+  * New: Single non-player units can be selected via dragging
+  * Change: Buildings can be grouped
+  * Change: Fisher now uses a boat and needs fish tiles in range to produce food
+  * Fix: minor bug concerning decommissioning.
+  * Fix: settlers not being able to level up.
+
+* Graphics and GUI
+  * New: tooltips for resources in buysell tab
+  * New: animated graphics for our fish resource tile. Thanks to OpenGameArt.org.
+  * New: many icons for build menu and resources
+  * New: build menu tab-icons for increments 3 to 6
+  * New: updated increment graphics for pavilion
+  * New: updated increment graphics for signal fire
+  * New: building graphics for charcoal burning
+  * New: building graphics for several mountains
+  * New: building graphics for iron mine
+  * New: building graphics for distillery
+  * New: placeholders for all buildings of increment 3 we have no assets for
+  * New: inactive icons if no logbook navigation  possible in this direction
+  * New: Added slider value display.
+  * New: Scrolling through savegames updates Save Details
+  * Change: animation time for signal fire
+  * Change: Disabling focus for widgets that shouldn't be focusable.
+  * Change: Sailors build menu 50 px bigger to better fit the other tabs
+  * Change: display 'nothing' resource icon in buysell slots by default
+  * Change: save-related settings now sliders instead of listboxes
+  * Change: Centered settings window.
+  * Change: Ingame menu and Main menu are more similar
+  * Change: Modified default style
+  * Fix: display of production lines with multiple input or output resources
+
+* Translations
+  * New: Several tutorial translations
+  * New: Added Russian translation
+  * New: simple script to compile translations on Windows. Needs msgfmt in $PATH.
+  * New: Translate difficulty, author, description in create_scenario_pot.sh
+  * New: Allows translation of all scenarios in create_scenario_pot.sh
+
+... and a lot more smaller bugfixes.
+
+-----------------------------------------------------
+
 2010-09-17: Milestone 2010.1
 * General
   * New: tutorial
   * New: start german docbook manual
-  * New: introduced szenarios and captains log
+  * New: introduced scenarios and captains log
   * New: Updated a bunch of documentation and updated the incode tutorial
   * New: Implemented support for changing building gfx (any building) on
          increment upgrade. (autoupgrade).
   * New: Tried to make storage collectors more intelligent by making them
-         prefer pickups at buildings, whose inventory is full.
+         prefer pickups at buildings whose inventory is full.
   * New: Add --version option to run_uh.py
   * New: applied some optimisation to the buildingtool
   * New: Expanded UhDbReader
