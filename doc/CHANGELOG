@@ -34,6 +34,7 @@ changelog date: FEB 13; rev: e55dc9bfdf6520b51849b324797a5eda0d206f25
 
 * Gameplay and Balancing
   * New: animals no further reproduce when over-populating an island
+  * New: Map rotation with , and . keys
   * New: Cam focuses selected group
   * New: Single non-player units can be selected via dragging
   * Change: Buildings can be grouped

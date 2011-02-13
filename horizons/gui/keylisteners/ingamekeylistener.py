@@ -115,9 +115,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '.':
 			if hasattr(self.session.cursor, "rotate_right"):
 				self.session.cursor.rotate_right()
+			elif hasattr(self.session.view, "rotate_right"):
+				self.session.view.rotate_right()
 		elif keystr == ',':
 			if hasattr(self.session.cursor, "rotate_left"):
 				self.session.cursor.rotate_left()
+			elif hasattr(self.session.view, "rotate_left"):
+				self.session.view.rotate_left()
 		elif keystr == 'c':
 			self.session.ingame_gui.show_chat_dialog()
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
