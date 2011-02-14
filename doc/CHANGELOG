@@ -3,7 +3,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.1
-changelog date: FEB 13; rev: e55dc9bfdf6520b51849b324797a5eda0d206f25
+changelog date: FEB 15; rev: a5a753438eb18e4ebc792274eea3420d0d0ebf6a
 
 * General
   * New: enet for darwin-x64 => MP possible on mac as well
@@ -23,14 +23,18 @@ changelog date: FEB 13; rev: e55dc9bfdf6520b51849b324797a5eda0d206f25
   * Change: Refactored resource display when hovering settlements
   * Change: Refactored mechanism that notifies if production is finished.
   * Change: Removed deprecated ProductionFinishedListener and on_remove handle.
-  * Change: Detection of exact matches with map file autocompletion in command line
-            interface (--start-map / --start-campaign / --load-map)
+  * Change: Detection of exact matches with map file autocompletion in command
+            line interface (--start-map / --start-campaign / --load-map)
   * Change: Capitalized resource names.
   * Change: Removed old, unmaintained pathfinding tests.
   * Change: 1024x768 is current minimum resolution
   * Fix: Game did not start with an umlaut/special character in settings.xml.
   * Fix: minor issue concerning the creation of random islands.
   * Fix: possible issue with quick- and autosaving.
+  * Fix: possible source of bugs that can occur when saving moving units.
+  * Fix: Load correct graphics for buildings with versions differing from
+         increment to increment.
+
 
 * Gameplay and Balancing
   * New: animals no further reproduce when over-populating an island
@@ -70,7 +74,8 @@ changelog date: FEB 13; rev: e55dc9bfdf6520b51849b324797a5eda0d206f25
 * Translations
   * New: Several tutorial translations
   * New: Added Russian translation
-  * New: simple script to compile translations on Windows. Needs msgfmt in $PATH.
+  * New: simple script to compile translations on Windows. 
+         Needs msgfmt in $PATH.
   * New: Translate difficulty, author, description in create_scenario_pot.sh
   * New: Allows translation of all scenarios in create_scenario_pot.sh
 
