@@ -125,8 +125,6 @@ class Unit(AmbientSound, MovingObject):
 			self.worldid, self.__class__.id, self.position.x, self.position.y, \
 					self.health, owner_id)
 
-		self.path.save(db, self.worldid)
-
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
 

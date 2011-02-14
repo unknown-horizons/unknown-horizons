@@ -233,7 +233,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			Fish = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
 			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
 			max_clay_deposits = self.session.random.randint(2, 3)
-			max_mountains = self.session.random.randint(2, 3)
+			max_mountains = self.session.random.randint(1, 3)
 			for island in self.islands:
 				num_clay_deposits = 0
 				num_mountains = 0
