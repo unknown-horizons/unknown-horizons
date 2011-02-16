@@ -37,12 +37,10 @@ For more information visit http://reinerstileset.4players.de/readmeE.html#b
 
 Graphics from Reiner's Tileset:
 
-ALL files in content/gfx/units EXCEPT in: 
-ships/freetraders/as_trader0
-ships/warships/as_cannonboat0
-ships/pirates/as_pirate0/
-animals/as_fallowdeer0
-animals/as_reddeer0
+ALL files in content/gfx/units EXCEPT all files in: 
+ships/
+animals/as_fallowdeer0/
+animals/as_reddeer0/
 
 
 
