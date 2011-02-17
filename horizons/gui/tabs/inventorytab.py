@@ -65,7 +65,7 @@ class ShipInventoryTab(InventoryTab):
 	#	self.button_active_image = 'content/gui/icons/tabwidget/common/inventory_a.png'
 		#self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
 #		self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
-		self.tooltip = _("Ship Inventory")
+		self.tooltip = _("Ship inventory")
 
 	def refresh(self):
 		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius, self.instance.owner)

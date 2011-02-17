@@ -34,7 +34,7 @@ class BoatbuilderTab(OverviewTab):
 			widget = 'boatbuilder.xml',
 			instance = instance
 		)
-		self.tooltip = _("Boat Builder Overview")
+		self.tooltip = _("Boat builder overview")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -60,7 +60,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
 			container_active.findChild(name="BB_builtship_label").text = u"Fishing boat"
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher Storage: 1 slot of 1t Speed: average Health: 40"
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher\nStorage: 1 slot of 1t\nSpeed: average\nHealth: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -167,7 +167,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
-		self.tooltip = _("Fisher Boats")
+		self.tooltip = _("Fisher boats")
 		# TODO: generalize this hard coded value
 		events = { 'BB_build_fisher_1' : Callback(self.start_production, 15) }
 		self.widget.mapEvents(events)
@@ -176,19 +176,19 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
-		self.tooltip = _("Trade Boats")
+		self.tooltip = _("Trade boats")
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
-		self.tooltip = _("War Boats")
+		self.tooltip = _("War boats")
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar2Tab, self).__init__(instance, 'war2')
-		self.tooltip = _("War Ships")
+		self.tooltip = _("War ships")
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)

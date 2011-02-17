@@ -93,7 +93,7 @@ class BranchOfficeOverviewTab(OverviewTab):
 			widget = 'overview_branchoffice.xml',
 			instance = instance
 		)
-		self.tooltip = _("Branch Office Overview")
+		self.tooltip = _("Branch office overview")
 
 
 class ShipOverviewTab(OverviewTab):
@@ -104,7 +104,7 @@ class ShipOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = _("Ship Overview")
+		self.tooltip = _("Ship overview")
 
 	def refresh(self):
 		# show rename when you click on name
@@ -143,7 +143,7 @@ class TraderShipOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = _("Ship Overview")
+		self.tooltip = _("Ship overview")
 
 class ProductionOverviewTab(OverviewTab):
 	production_line_gui_xml = "overview_productionline.xml"
@@ -153,13 +153,13 @@ class ProductionOverviewTab(OverviewTab):
 			widget = 'overview_productionbuilding.xml',
 			instance = instance
 		)
-		self.tooltip = _("Production Overview")
+		self.tooltip = _("Production overview")
 
 		self.destruct_button = TooltipButton(name="destruct_button", \
 		              up_image="content/gui/images/buttons/delete.png", \
 		              down_image="content/gui/images/buttons/delete_h.png", \
 		              hover_image="content/gui/images/buttons/delete_h.png", \
-		              tooltip=_("Destroy Building"), position=(190,330))
+		              tooltip=_("Destroy building"), position=(190,330))
 		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
 
@@ -245,7 +245,7 @@ class SettlerOverviewTab(OverviewTab):
 			widget = 'overview_settler.xml',
 			instance = instance
 		)
-		self.tooltip = _("Settler Overview")
+		self.tooltip = _("Settler overview")
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
@@ -283,7 +283,7 @@ class MarketPlaceOverviewTab(OverviewTab):
 			instance = instance
 		)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
-		self.tooltip = _("Market Place Overview")
+		self.tooltip = _("Market place overview")
 
 	def refresh(self):
 		super(MarketPlaceOverviewTab, self).refresh()
