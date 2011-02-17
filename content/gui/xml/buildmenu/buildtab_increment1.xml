@@ -69,7 +69,7 @@
 			up_image="content/gui/icons/buildmenu/sugarfield.png"
 			hover_image="content/gui/icons/buildmenu/sugarfield_h.png"
 			down_image="content/gui/icons/buildmenu/sugarfield_h.png"
-			tooltip="Test. Needs a farm." />
+			tooltip="Sugarcane Field: Used in liquor production. Needs a farm." />
 	</Container>
 
 	<Container position="20,182" size="60,80" >

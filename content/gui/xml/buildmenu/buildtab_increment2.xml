@@ -38,12 +38,12 @@
 			up_image="content/gui/icons/buildmenu/toolmaker.png"
 			hover_image="content/gui/icons/buildmenu/toolmaker_h.png"
 			down_image="content/gui/icons/buildmenu/toolmaker_h.png"
-			tooltip="Toolmaker: ." />
+			tooltip="Toolmaker: Produces tools out of iron." />
 		<TooltipButton name="charcoal-burning-1" position="164,32"
 			up_image="content/gui/icons/buildmenu/charcoal_burning.png"
 			hover_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
 			down_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
-			tooltip="Charcoal Burning: ." />
+			tooltip="Charcoal Burning: Burns a lot of boards." />
 	</Container>
 
 	<Container position="20,107" size="250,80" >
