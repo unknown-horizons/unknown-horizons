@@ -42,7 +42,7 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 	<Spacer />
 
 	<HBox> <Spacer />
-		<TooltipButton name="cancelButton" tooltip="Leave Captain's Log"
+		<TooltipButton name="cancelButton" tooltip="Leave Captain's log"
 			up_image="content/gui/images/buttons/close.png"
 			hover_image="content/gui/images/buttons/close_h.png"
 			down_image="content/gui/images/buttons/close.png" />

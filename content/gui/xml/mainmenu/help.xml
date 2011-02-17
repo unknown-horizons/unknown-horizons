@@ -3,7 +3,7 @@
 <Icon image="content/gui/images/background/book.png" />
 
 <VBox position="107,42" max_size="340,450" min_size="340,450">
-	<Label text="Key Bindings" name="headline" />
+	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
 		<Label name="set01" text="{LEFT} = Scroll left" />
@@ -56,9 +56,10 @@
 	</VBox>
 </VBox>
 
-<ImageButton name="okButton" position="695,500"
+<TooltipButton name="okButton" position="695,500"
 	up_image="content/gui/images/buttons/ok.png"
 	hover_image="content/gui/images/buttons/ok_h.png"
-	down_image="content/gui/images/buttons/ok.png" />
+	down_image="content/gui/images/buttons/ok.png"
+	tooltip="Exit to main menu" />
 
 </Container>

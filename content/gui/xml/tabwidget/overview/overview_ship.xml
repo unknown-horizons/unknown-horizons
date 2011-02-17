@@ -11,7 +11,7 @@
 
 <Container position="0,70" size="245,300" >
 	<!-- Name of Ship -->
-	<TooltipLabel name='name' border_size="0" position="80,7" tooltip="Click to change the name of this Ship."/>
+	<TooltipLabel name='name' border_size="0" position="80,7" tooltip="Click to change the name of this ship."/>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
@@ -33,7 +33,7 @@
 	</HBox>
 
 	<HBox position="186,195">
-		<ToggleImageButton name="foundSettlement" tooltip="Build Settlement" 
+		<ToggleImageButton name="foundSettlement" tooltip="Build settlement" 
 			inactive_image="content/gui/icons/ship/anchor_bw.png" 
 			up_image="content/gui/icons/ship/anchor.png" 
 			down_image="content/gui/icons/ship/anchor_a.png" 

@@ -11,7 +11,7 @@
 <Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,400" />
 
 <Container position="0,70" size="250,500" >
-	<Label name="headline" position="60,7" text="Settler Buildings" />
+	<Label name="headline" position="60,7" text="Settler buildings" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<Container position="20,32" size="250,80" >
@@ -28,7 +28,7 @@
 			up_image="content/gui/icons/buildmenu/ironmine_i.png"
 			hover_image="content/gui/icons/buildmenu/ironmine_i_h.png"
 			down_image="content/gui/icons/buildmenu/ironmine_i_h.png"
-			tooltip="Iron Mine: Gets iron ore from deposit." />
+			tooltip="Iron mine: Gets iron ore from deposit." />
 		<TooltipButton name="smeltery-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/smeltery.png"
 			hover_image="content/gui/icons/buildmenu/smeltery_h.png"
@@ -43,7 +43,7 @@
 			up_image="content/gui/icons/buildmenu/charcoal_burning.png"
 			hover_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
 			down_image="content/gui/icons/buildmenu/charcoal_burning_h.png"
-			tooltip="Charcoal Burning: Burns a lot of boards." />
+			tooltip="Charcoal burning: Burns a lot of boards." />
 	</Container>
 
 	<Container position="20,107" size="250,80" >

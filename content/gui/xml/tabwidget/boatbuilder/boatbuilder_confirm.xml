@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Confirm order "tab" -->
-<Container  size="260,550">
+<Container  size="260,550"><!--
 <Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
 <Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
@@ -13,18 +13,18 @@
 <Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,450" />
 
 	<Container position="0,70" size="260,40" >
-		<!-- Headline -->
-		<Label name="headline" position="60,7" text="Confirm Order" />
+		< ! - - Headline - - >
+		<Label name="headline" position="60,7" text="Confirm order" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	</Container>
 
 	<Container position="20,110" size="95,95" >
-		<!-- Current order pic -->
+		< ! - - Current order pic - - >
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="15,15" tooltip="(like in the selection tabs)" />
 	</Container>
 
 	<Container position="130,110" size="260,100" >
-		<!-- Resources and amount -->
+		< ! - - Resources and amount - - >
 		<TooltipIcon image="content/gui/icons/resources/16/4.png" position="0,0" tooltip="$res" />
 		<Label position="22,0" name="BB_needed_boards" text="24t" />
 		<TooltipIcon image="content/gui/icons/resources/16/3.png" position="0,20" tooltip="$res" />
@@ -39,7 +39,7 @@
 	</Container>
 
 	<Container position="20,210" size="220,120" >
-		<!-- Description -->
+		< ! - - Description - - >
 		<Label name="BB_builtship_label" position="15,0" text="Sloop-o'-war" />
 		<Label name="BB_description_frigate" position="15,25" text="Three-masted most common classified war ship with one gun deck." wrap_text="1" max_size="212,60"/>
 		<Label name="headline_upgrades" position="50,90" text="Buy Upgrades" />
@@ -47,7 +47,7 @@
 	</Container>
 
 	<Container position="20,333" size="220,30" >
-		<!-- Upgrades -->
+		< ! - - Upgrades - - >
 		<TooltipButton position="20,0"
 				up_image="content/gui/images/background/sq.png"
 				hover_image="content/gui/images/background/sq_h.png"
@@ -61,7 +61,7 @@
 	</Container>
 
 	<Container position="180,110" size="80,100" >
-		<!-- Upgrade costs -->
+		< ! - - Upgrade costs - - >
 		<Label position="0,0" name="BB_needed_boards+" text=" + 24t" />
 		<Label position="0,20" name="BB_needed_cloth+" text=" + 14t" />
 		<Label position="0,40" name="BB_needed_ropes+" text=" + 06t" />
@@ -71,11 +71,11 @@
 	</Container>
 
 	<Container position="60,380" size="240,100" >
-		<!-- Confirm task -->
+		< ! - - Confirm task - - >
 		<Label position="30,10" name="BB_confirm_build_label" text="Build ship:" />
 		<TooltipButton position="100,0" tooltip="Build this ship!" name="create_unit"
 				up_image="content/gui/images/buttons/ok.png"
 				hover_image="content/gui/images/buttons/ok_h.png"
 				down_image="content/gui/images/buttons/ok_h.png" />
-	</Container>
+	</Container>-->
 </Container>

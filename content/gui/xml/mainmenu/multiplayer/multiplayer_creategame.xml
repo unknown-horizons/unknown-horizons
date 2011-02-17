@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <Container name="black_underlay">
-<Icon name="black_underlay_background" image="content/gui/images/background/black.png" />
+<Icon name="black_underlay_background"  image="content/gui/images/background/black.png" />
 
-<Container name="menu" size="1024,768">
+<Container name="menu"  size="1024,768">
 <Icon image="content/gui/images/buttons/mainmenu_bg.png" />
 
-<Container size="800,800" position="100,100">
+<Container size="800,800"  position="100,100">
 	<Icon image="content/gui/images/background/book.png" />
 
-	<Container size="320,500" position="75,32" name="left_side">
-		<Label text="Create Game - Multiplayer" position="70,10" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" position="52,30" />
+	<Container size="320,500"  position="75,32"  name="left_side">
+		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
+		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
 	<!--
 		<RadioButton position="22,50" name="showCampaign" 
@@ -41,8 +41,8 @@
 			</HBox>
 		</VBox>
 
-		<Label name="exit_to_mp_menu_lbl" text="Back:" position="60,470" />
-		<TooltipButton position="100,460" name="cancel" 
+		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
+		<TooltipButton position="100,460"  name="cancel" 
 			up_image="content/gui/images/buttons/close.png" 
 			down_image="content/gui/images/buttons/close_h.png" 
 			hover_image="content/gui/images/buttons/close_h.png" 
@@ -54,19 +54,19 @@
 		the content doesn't show up. Pychan wasn't designed for Containers within Containers, 
 		which might be the source of this bug
 		-->
-	<VBox name="playerdataselectioncontainer" position="100,190" />
+	<VBox name="playerdataselectioncontainer"  position="100,190" />
 
-	<Container size="320,500" position="420,32" name="right_side">
-		<Label text="Choose a map:" name="headline" position="0,50" />
-		<ScrollArea position="0,80" name="map_list_area" min_size="290,250" >
-			<ListBox name="maplist" min_size="290,330" />
+	<Container size="320,500"  position="420,32"  name="right_side">
+		<Label text="Choose a map:"  name="headline"  position="0,50" />
+		<ScrollArea position="0,80"  name="map_list_area"  min_size="290,250" >
+			<ListBox name="maplist"  min_size="290,330" />
 		</ScrollArea>
 	<!--
 		<ScrollArea name="map_description_area" position="5,380" />
 	-->
 
-		<Label name="create_game_lbl" text="Create game:" position="170,470" />
-		<TooltipButton position="255,460" name="create" 
+		<Label name="create_game_lbl"  text="Create game:"  position="170,470" />
+		<TooltipButton position="255,460"  name="create" 
 			up_image="content/gui/images/buttons/ok.png" 
 			down_image="content/gui/images/buttons/ok_h.png" 
 			hover_image="content/gui/images/buttons/ok_h.png" 

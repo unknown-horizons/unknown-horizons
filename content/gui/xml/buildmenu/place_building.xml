@@ -27,7 +27,7 @@
 			down_image="content/gui/icons/widgets/minimap/rotate_right.png"
 			hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png" />
 
-		<Label position="73,65" name="running_costs_label" text="Running Costs:"/>
+		<Label position="73,65" name="running_costs_label" text="Running costs:"/>
 		<Label position="189,65" name="running_costs" text=""/>
 
 	</Container>

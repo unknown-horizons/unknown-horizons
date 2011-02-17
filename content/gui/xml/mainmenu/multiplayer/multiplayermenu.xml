@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <Container name="black_underlay">
-<Icon name="black_underlay_background" image="content/gui/images/background/black.png" />
+<Icon name="black_underlay_background"  image="content/gui/images/background/black.png" />
 
-<Container name="menu" size="1024,768">
+<Container name="menu"  size="1024,768">
 	<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
-	<Icon image="content/gui/images/background/book.png" position="100,100" />
+	<Icon image="content/gui/images/background/book.png"  position="100,100" />
 
-	<Container size="320,510" position="175,132" name="left_side">
-		<Label text="New Game - Multiplayer" position="70,10" name="headline_left" 
+	<Container size="320,510"  position="175,132"  name="left_side">
+		<Label text="New game - Multiplayer"  position="70,10"  name="headline_left" 
 			font="libertine_headline"/>
-		<Icon image="content/gui/images/background/hr.png" position="52,30" />
-		<VBox name="playerdataselectioncontainer" position="20,50" />
-		<Icon image="content/gui/images/background/hr.png" position="52,230" />
+		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
+		<VBox name="playerdataselectioncontainer"  position="20,50" />
+		<Icon image="content/gui/images/background/hr.png"  position="52,230" />
 
-		<HBox position="130,250" min_size="80,40" max_size="120,40">
-			<Label text="Apply:" name="name_lbl"/>
-			<TooltipButton name="apply_new_nickname" tooltip="Apply the new name"
+		<HBox position="130,250"  min_size="80,40"  max_size="120,40">
+			<Label text="Apply:"  name="name_lbl"/>
+			<TooltipButton name="apply_new_nickname"  tooltip="Apply the new name"
 				up_image="content/gui/images/buttons/ok.png"
 				down_image="content/gui/images/buttons/ok_h.png"
 				hover_image="content/gui/images/buttons/ok_h.png" />
@@ -28,19 +28,19 @@
 		<Icon image="content/gui/images/background/hr.png" position="52,140" />
 		-->
 
-		<VBox position="42,430" max_size="290,80" min_size="290,80" >
+		<VBox position="42,430"  max_size="290,80"  min_size="290,80" >
 
 			<HBox>
 				<Label name="create_game_lbl" text="Create game:" />
-				<TooltipButton name="create" tooltip="Create a new game"
+				<TooltipButton name="create"  tooltip="Create a new game"
 					up_image="content/gui/images/buttons/ok.png"
 					down_image="content/gui/images/buttons/ok_h.png"
 					hover_image="content/gui/images/buttons/ok_h.png" />
 			</HBox>
 
 			<HBox>
-				<Label name="exit_to_main_menu_lbl" text="Main menu:" />
-				<TooltipButton name="cancel" tooltip="Exit to main menu"
+				<Label name="exit_to_main_menu_lbl"  text="Main menu:" />
+				<TooltipButton name="cancel"  tooltip="Exit to main menu"
 					up_image="content/gui/images/buttons/close.png"
 					down_image="content/gui/images/buttons/close_h.png"
 					hover_image="content/gui/images/buttons/close_h.png" />
@@ -54,28 +54,28 @@
 	the content doesn't show up. Pychan wasn't designed for Containers within Containers, 
 	which might be the source of this bug
 	-->
-	<VBox name="playerdataselectioncontainer" position="200,290" />
+	<VBox name="playerdataselectioncontainer"  position="200,290" />
 
-	<VBox max_size="320,480" min_size="320,480" position="520,162" name="right_side">
+	<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
 
-		<HBox max_size="290,30" min_size="290,30">
-			<Label text="Active games:" name="active_games_lbl" />
+		<HBox max_size="290,30"  min_size="290,30">
+			<Label text="Active games:"  name="active_games_lbl" />
 			<Spacer />
-			<Label name="refr_gamelist_lbl" text="Refresh list:" position="150,50" />
-			<TooltipButton name="refresh" tooltip="Refresh list of active games"
+			<Label name="refr_gamelist_lbl"  text="Refresh list:"  position="150,50" />
+			<TooltipButton name="refresh"  tooltip="Refresh list of active games"
 				up_image="content/gui/icons/widgets/minimap/rotate_right.png"
 				down_image="content/gui/icons/widgets/minimap/rotate_right.png"
 				hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
 		</HBox>
 
-		<ScrollArea max_size="290,250" min_size="290,200" horizontal_scrollbar="0" name="game_list_area">
-			<ListBox name="gamelist" min_size="290,330" />
+		<ScrollArea max_size="290,250"  min_size="290,200"  horizontal_scrollbar="0"  name="game_list_area">
+			<ListBox name="gamelist"  min_size="290,330" />
 		</ScrollArea>
 
 		<VBox name="game_info">
-			<Label name="game_map" wrap_text="1" max_size="300,40" />
-			<Label name="game_creator" wrap_text="1" max_size="300,40" />
-			<Label name="game_playersnum" wrap_text="1" max_size="300,100"/>
+			<Label name="game_map"         wrap_text="1"  max_size="300,40" />
+			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
+			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100"/>
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->
@@ -85,7 +85,7 @@
 
 		<HBox min_size="0,40"><Spacer />
 			<Label name="join_game_lbl" text="Join game" />
-			<TooltipButton name="join" tooltip="Join the selected game"
+			<TooltipButton name="join"  tooltip="Join the selected game"
 				up_image="content/gui/images/buttons/ok.png"
 				down_image="content/gui/images/buttons/ok_h.png"
 				hover_image="content/gui/images/buttons/ok_h.png" />

@@ -11,11 +11,11 @@
 <Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,400" />
 
 <Container position="0,70" size="250,380" >
-	<Label name="headline" position="60,7" text="Sailor Buildings" />
+	<Label name="headline" position="60,7" text="Sailor buildings" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<Container position="20,32" size="250,80" >
-		<Label position="0,11" name="residents_infra_label" text="Residents and Infrastructure" />
+		<Label position="0,11" name="residents_infra_label" text="Residents and infrastructure" />
 
 		<HBox position="0,30">
 			<Icon image="content/gui/images/buttons/buildmenu_button_bg.png" />

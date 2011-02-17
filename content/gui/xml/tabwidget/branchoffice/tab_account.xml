@@ -24,7 +24,7 @@
 
 		<Label name="expenses_label" position="0,70" text="Expenses:" />
 
-		<Label name="running_costs_label" position="20,90" text="Running Costs:"/>
+		<Label name="running_costs_label" position="20,90" text="Running costs"/>
 		<Label position="150,90" name="running_costs"/>
 
 		<Label name="buy_expenses_label" position="20,110" text="Buying"/>

@@ -11,7 +11,7 @@
 	<Label name="version_label" text="Unknown Horizons Alpha" position="745,735" />
 
 	<!-- clockwise, starting at 0 degree -->
-	<Label name="start" text="Return to Game" position="531,100" />
+	<Label name="start" text="Return to game" position="531,100" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,144" />
 	<ImageButton name="startGame"
 		position="488,169"
@@ -19,7 +19,7 @@
 		down_image="content/gui/icons/mainmenu/compass.png"
 		hover_image="content/gui/icons/mainmenu/compass.png" />
 
-	<Label name="savegame" text="Save Game" position="680,200" />
+	<Label name="savegame" text="Save game" position="680,200" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,188" />
 	<ImageButton name="savegameButton"
 		position="593,211"
@@ -43,7 +43,7 @@
 		down_image="content/gui/icons/mainmenu/help.png"
 		hover_image="content/gui/icons/mainmenu/help.png" />
 
-	<Label name="quit" text="Cancel Game" position="442,565" />
+	<Label name="quit" text="Cancel game" position="442,565" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,452" />
 	<ImageButton name="closeButton"
 		position="484,478"
@@ -51,7 +51,7 @@
 		down_image="content/gui/icons/mainmenu/door.png"
 		hover_image="content/gui/icons/mainmenu/door.png" />
 
-	<Label name="chimebell" text="Chime The Bell" position="218,480" />
+	<Label name="chimebell" text="Chime the bell" position="218,480" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
 	<ImageButton name="dead_link"
 		position="376,431"
@@ -67,7 +67,7 @@
 		down_image="content/gui/icons/mainmenu/log.png"
 		hover_image="content/gui/icons/mainmenu/log.png" />
 
-	<Label name="loadgame" text="Load Game" position="345,128" />
+	<Label name="loadgame" text="Load game" position="345,128" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="350,188" />
 	<ImageButton name="loadgameButton"
 		position="376,212"

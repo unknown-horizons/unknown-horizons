@@ -11,7 +11,7 @@
 <Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,400" />
 
 <Container position="0,70" size="250,500" >
-	<Label name="headline" position="55,7" text="Pioneer Buildings" />
+	<Label name="headline" position="55,7" text="Pioneer buildings" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<Container position="20,32" size="250,80" >
@@ -38,7 +38,7 @@
 			up_image="content/gui/icons/buildmenu/claypit.png"
 			hover_image="content/gui/icons/buildmenu/claypit_h.png"
 			down_image="content/gui/icons/buildmenu/claypit_h.png"
-			tooltip="Clay Pit: Gets clay from deposit." />
+			tooltip="Clay pit: Gets clay from deposit." />
 		<TooltipButton name="brickyard-1" position="164,32"
 			up_image="content/gui/icons/buildmenu/brickmaker.png"
 			hover_image="content/gui/icons/buildmenu/brickmaker_h.png"
@@ -59,7 +59,7 @@
 			up_image="content/gui/icons/buildmenu/potatoes.png"
 			hover_image="content/gui/icons/buildmenu/potatoes_h.png"
 			down_image="content/gui/icons/buildmenu/potatoes_h.png"
-			tooltip="Potato Field: Yields food. Needs a farm." />
+			tooltip="Potato field: Yields food. Needs a farm." />
 		<TooltipButton name="pasture-1" position="56,32"
 			up_image="content/gui/icons/buildmenu/pasture.png"
 			hover_image="content/gui/icons/buildmenu/pasture_h.png"
@@ -69,7 +69,7 @@
 			up_image="content/gui/icons/buildmenu/sugarfield.png"
 			hover_image="content/gui/icons/buildmenu/sugarfield_h.png"
 			down_image="content/gui/icons/buildmenu/sugarfield_h.png"
-			tooltip="Sugarcane Field: Used in liquor production. Needs a farm." />
+			tooltip="Sugarcane field: Used in liquor production. Needs a farm." />
 	</Container>
 
 	<Container position="20,182" size="60,80" >

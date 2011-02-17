@@ -51,7 +51,7 @@
 		down_image="content/gui/icons/mainmenu/door.png"
 		hover_image="content/gui/icons/mainmenu/door.png" />
 
-	<Label name="chimebell" text="Chime The Bell" position="218,480" />
+	<Label name="chimebell" text="Chime the bell" position="218,480" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
 	<ImageButton name="dead_link"
 		position="376,431"
@@ -67,7 +67,7 @@
 		down_image="content/gui/icons/mainmenu/log.png"
 		hover_image="content/gui/icons/mainmenu/log.png" />
 
-	<Label name="loadgame" text="Load Game" position="345,128" />
+	<Label name="loadgame" text="Load game" position="345,128" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="350,188" />
 	<ImageButton name="loadgameButton"
 		position="376,212"

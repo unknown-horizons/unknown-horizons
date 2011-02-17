@@ -14,7 +14,7 @@
 
 	<Container position="0,70" size="260,80" >
 
-		<Label name="headline" position="55,7" text="Building Overview" />
+		<Label name="headline" position="55,7" text="Building overview" />
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Label name='name' position="25,40" text="" />
 		<TooltipIcon name="running_costs_label" image="content/gui/icons/resources/running_costs.png" position="180,40" tooltip="Running costs" />
