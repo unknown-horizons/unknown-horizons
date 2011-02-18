@@ -50,7 +50,7 @@
 
 			<HBox min_size="0,40"><Spacer />
 				<Label name="start_game_label"  text="Start game:" />
-				<ImageButton name="okay"  tooltip="Start game"
+				<TooltipButton name="okay"  tooltip="Start game"
 					up_image="content/gui/images/buttons/ok.png"
 					down_image="content/gui/images/buttons/ok_h.png"
 					hover_image="content/gui/images/buttons/ok_h.png" />
