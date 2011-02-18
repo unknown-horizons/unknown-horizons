@@ -105,7 +105,7 @@ class BoatbuilderTab(OverviewTab):
 			container_active.findChild(name='BB_builtship_label').stylize("headline")
 
 			# Update needed resources
-			production = self.instance._productions.values()[0]
+			production = self.instance._get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			i = 1
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
