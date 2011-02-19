@@ -20,25 +20,27 @@
 # ###################################################
 
 from horizons.util.python import WeakMethodList
+from horizons.util.python.callback import Callback
 
-class Changelistener(object):
+class ChangeListener(object):
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
 	An object calls _changed everytime something has changed, obviously.
 	This function calls every Callback, that has been registered to listen for a change.
-	NOTE: Changelisteners aren't saved, they have to be reregistered on load
-	NOTE: Removelisteners must not access the object.
+	NOTE: ChangeListeners aren't saved, they have to be reregistered on load
+	NOTE: Removelisteners must not access the object, as it is in progress of being destroyed.
 	"""
 	def __init__(self, *args, **kwargs):
-		super(Changelistener, self).__init__()
-		self.__init()
+		super(ChangeListener, self).__init__()
+		self._init()
 
-	def __init(self):
+	def _init(self):
 		self.__listeners = WeakMethodList()
 		self.__remove_listeners = WeakMethodList()
 
 	## Normal change listener
 	def add_change_listener(self, listener, call_listener_now = False):
+		assert callable(listener)
 		self.__listeners.append(listener)
 		if call_listener_now:
 			listener()
@@ -66,6 +68,7 @@ class Changelistener(object):
 	## Removal change listener
 	def add_remove_listener(self, listener):
 		"""A listener that listens for removal of the object"""
+		assert callable(listener)
 		self.__remove_listeners.append(listener)
 
 	def remove_remove_listener(self, listener):
@@ -75,7 +78,7 @@ class Changelistener(object):
 		return (listener in self.__remove_listeners)
 
 	def load(self, db, world_id):
-		self.__init()
+		self._init()
 
 	def remove(self):
 		for listener in self.__remove_listeners:
@@ -85,3 +88,61 @@ class Changelistener(object):
 	def end(self):
 		self.__listeners = None
 		self.__remove_listeners = None
+
+
+""" Class decorator that adds methods for listening for certain events to a class.
+These methods get added automatically (eventname is the name you pass to the decorator):
+- add_eventname_listener(listener):
+    Adds listener callback. This function must take the object as first parameter plus
+		any parameter that might be provided additionally to on_eventname.
+- remove_eventname_listener(listener);
+    Removes a listener previously added.
+- has_eventname_listener(listener)
+    Checks if a certain listener has been added.
+- on_eventname
+    This is used to call the callbacks when the event occured.
+    Additional parameters may be provided, which are passed to the callback.
+
+The goal is to simplify adding special listeners, as for example used in the
+production_finished listener.
+"""
+def metaChangeListenerDecorator(event_name):
+	def decorator(clas):
+		list_name = "__"+event_name+"_listeners"
+		# trivial changelistener operations
+		def add(self, listener):
+			assert callable(listener)
+			getattr(self, list_name).append(listener)
+		def rem(self, listener):
+			getattr(self, list_name).remove(listener)
+		def has(self, listener):
+			return listener in getattr(self, list_name)
+		def on(self, *args, **kwargs):
+			for f in getattr(self, list_name):
+				# workaround for encapsuled arguments
+				if isinstance(f, Callback):
+					f()
+				else:
+					f(self, *args, **kwargs)
+
+		# add methods to class
+		setattr(clas, "add_"+event_name+"_listener", add)
+		setattr(clas, "remove_"+event_name+"_listener", rem)
+		setattr(clas, "has_"+event_name+"_listener", has)
+		setattr(clas, "on_"+event_name, on)
+
+		# use black __new__ magic to add the methods to the instances
+		# think of it as being executed in __init__
+		old_new = clas.__new__
+		def new(cls, *args, **kwargs):
+			# this is a proposed way of calling the "old" new:
+			#obj = super(cls, cls).__new__(cls)
+			# which results in endless recursion, if you construct an instance of a class,
+			# that inherits from a base class on which the decorator has been applied.
+			# therefore, this workaround is used:
+			obj = old_new(cls, *args, **kwargs)
+			setattr(obj, list_name, [])
+			return obj
+		clas.__new__ = staticmethod(new)
+		return clas
+	return decorator

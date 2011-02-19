@@ -22,14 +22,14 @@
 import weakref
 import logging
 
-from changelistener import Changelistener
+from changelistener import ChangeListener
 
 from horizons.util.python import decorators
 
 class WorldObjectNotFound(KeyError):
 	pass
 
-class WorldObject(Changelistener):
+class WorldObject(ChangeListener):
 	"""Gives every instance a unique id.
 	"""
 	__next_id = 1

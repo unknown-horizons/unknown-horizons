@@ -25,11 +25,14 @@ import logging
 import copy
 
 from horizons.util import WorldObject
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
 
 from horizons.scheduler import Scheduler
 
+
+@metaChangeListenerDecorator("production_finished")
 class Production(WorldObject):
 	"""Class for production to be used by ResourceHandler.
 	Controls production and starts it by watching the assigned building's inventory,
@@ -116,7 +119,6 @@ class Production(WorldObject):
 		# depending on state, a check_inventory listener might be active
 		self.inventory.discard_change_listener(self._check_inventory)
 		Scheduler().rem_all_classinst_calls(self)
-		self.on_remove = None
 		super(Production, self).remove()
 
 	## INTERFACE METHODS
@@ -213,16 +215,6 @@ class Production(WorldObject):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
-	## METHODS TO OVERWRITE FOR SIGNALING
-	def on_remove(self):
-		"""Gets called when production is 'done' (mainly for SingleUseProduction)
-		Overwrite at owner!"""
-		pass
-
-	def on_production_finished(self):
-		"""Gets called when something has been produced"""
-		pass
-
 	## PROTECTED METHODS
 	def _check_inventory(self):
 		"""Called when assigned building's inventory changed in some way"""
@@ -318,26 +310,15 @@ class SettlerProduction(ChangingProduction):
 		super(SettlerProduction, self)._give_produced_res()
 
 class SingleUseProduction(Production):
-	"""This Production just produces one time, then calls a callback.
+	"""This Production just produces one time, and then finishes.
+	Notification of the finishing is done via production_finished listeners.
 	Use case: Settler getting upgrade material"""
-	def __init__(self, inventory, prod_line_id, callback=None, **kwargs):
-		"""
-		@param callback: Callable, gets called when construction is done.
-						 Needs to take at least one parameter, the
-						 production_line instance
-		"""
+	def __init__(self, inventory, prod_line_id, **kwargs):
 		super(SingleUseProduction, self).__init__(inventory=inventory, prod_line_id=prod_line_id, **kwargs)
-		if callback is not None:
-			assert callable(callback)
-		self.callback = callback
 
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
 		self.state = PRODUCTION.STATES.done
-		self.on_remove()
-		if self.callback is not None:
-			self.callback(self)
-
 
 class ProgressProduction(Production):
 	"""Same as Production, but starts as soon as any needed res is available (doesn't wait

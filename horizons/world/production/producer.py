@@ -22,6 +22,7 @@
 import logging
 
 from horizons.util import Callback
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import Production, SingleUseProduction
@@ -72,7 +73,6 @@ class Producer(ResourceHandler):
 	def add_production(self, production):
 		assert isinstance(production, Production)
 		self.log.debug('%s: added production line %s', self, production.get_production_line_id())
-		production.on_remove = Callback(self.remove_production, production)
 		if production.is_paused():
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:
@@ -131,7 +131,7 @@ class Producer(ResourceHandler):
 		self.capacity_utilisation = min(self.capacity_utilisation, 1.0)
 		self.capacity_utilisation = max(self.capacity_utilisation, 0.0)
 
-
+@metaChangeListenerDecorator("building_production_finished")
 class ProducerBuilding(Producer, BuildingResourceHandler):
 	"""Class for buildings, that produce something.
 	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
@@ -140,8 +140,12 @@ class ProducerBuilding(Producer, BuildingResourceHandler):
 
 	def add_production(self, production):
 		super(ProducerBuilding, self).add_production(production)
-		#production.on_production_finished = ...display_sth..
+		production.add_production_finished_listener(self._production_finished)
 
+	def _production_finished(self, production):
+		"""Gets called when a production finishes."""
+		produced_res = production.get_produced_res()
+		self.on_building_production_finished(produced_res)
 
 class QueueProducer(Producer):
 	"""The QueueProducer stores all productions in a queue and runs them one
@@ -166,13 +170,14 @@ class QueueProducer(Producer):
 		@param production_class: Subclass of Production that does the production. If the object
 		                         has a production_class-member, this will be used instead.
 		"""
-		#print "Add production"
 		self.production_queue.append(production_line_id)
 		if not self.is_active():
 			self.start_next_production()
 
 	def load_production(self, db, worldid):
-		return self.production_class.load(db, worldid, callback=self.on_production_finished)
+		prod = self.production_class.load(db, worldid)
+		prod.add_production_finished_listener(self.on_queue_element_finished)
+		return prod
 
 	def check_next_production_startable(self):
 		# See if we can start the next production,  this only works if the current
@@ -184,9 +189,9 @@ class QueueProducer(Producer):
 		        state is PRODUCTION.STATES.paused) and\
 			   (len(self.production_queue) > 0)
 
-	def on_production_finished(self, production_line):
+	def on_queue_element_finished(self, production):
 		"""Callback used for the SingleUseProduction"""
-		self.remove_production(production_line)
+		self.remove_production(production)
 		Scheduler().add_new_object(self.start_next_production, self)
 
 	def start_next_production(self):
@@ -197,11 +202,9 @@ class QueueProducer(Producer):
 			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
-			self.add_production(
-			  self.production_class(inventory=self.inventory, \
-			                        prod_line_id=production_line_id, \
-			                        callback=self.on_production_finished)
-			)
+			prod = self.production_class(inventory=self.inventory, prod_line_id=production_line_id)
+			prod.add_production_finished_listener(self.on_queue_element_finished)
+			self.add_production( prod )
 		else:
 			self.set_active(active=False)
 
@@ -214,7 +217,7 @@ class QueueProducer(Producer):
 			self.remove_production(production)
 		self.set_active(active=False)
 
-class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
+class UnitProducerBuilding(QueueProducer, ProducerBuilding):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
 	building specific behaviour."""
@@ -237,9 +240,9 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 			return production.progress
 		return 0 # No production available
 
-	def on_production_finished(self, production_line):
+	def on_queue_element_finished(self, production):
 		self.__create_unit()
-		super(UnitProducerBuilding, self).on_production_finished(production_line)
+		super(UnitProducerBuilding, self).on_queue_element_finished(production)
 
 	#----------------------------------------------------------------------
 	def __create_unit(self):
@@ -247,6 +250,7 @@ class UnitProducerBuilding(QueueProducer, BuildingResourceHandler):
 		productions = self._productions.values()
 		for production in productions:
 			assert isinstance(production, UnitProduction)
+			self.on_building_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(0, amount):
 					radius = 1

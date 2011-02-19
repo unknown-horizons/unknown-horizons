@@ -266,7 +266,14 @@ class Island(BuildingOwner, WorldObject):
 			break
 
 		if building.settlement is not None:
-			building.settlement.buildings.append(building)
+			building.settlement.add_building(building)
+		building.init()
+		return building
+
+	def remove_building(self, building):
+		assert building.island == self
+
+		# Reset the tiles this building was covering
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
 		return building

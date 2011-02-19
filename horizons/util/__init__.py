@@ -22,7 +22,7 @@
 __all__ = []
 
 from living import livingProperty, LivingObject
-from changelistener import Changelistener
+from changelistener import ChangeListener
 from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader
 from loaders.tilesetloader import TileSetLoader
