@@ -32,9 +32,9 @@ class ChangeListener(object):
 	"""
 	def __init__(self, *args, **kwargs):
 		super(ChangeListener, self).__init__()
-		self._init()
+		self.__init()
 
-	def _init(self):
+	def __init(self):
 		self.__listeners = WeakMethodList()
 		self.__remove_listeners = WeakMethodList()
 
@@ -78,7 +78,7 @@ class ChangeListener(object):
 		return (listener in self.__remove_listeners)
 
 	def load(self, db, world_id):
-		self._init()
+		self.__init()
 
 	def remove(self):
 		for listener in self.__remove_listeners:
