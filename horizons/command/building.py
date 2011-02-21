@@ -27,7 +27,7 @@ from horizons.command import Command
 from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.campaign import CONDITIONS
-from horizons.constants import RES
+from horizons.constants import RES, GAME
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -38,7 +38,7 @@ class Build(Command):
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.
 		@param ship: ship instance
-		@param island: island instance
+		@param island: BuildingOwner instance. Might be Island or World.
 		@param settlement: settlement worldid or None
 		@param tearset: set of worldids of objs to tear before building
 		@param data: data required for building construction
@@ -62,15 +62,16 @@ class Build(Command):
 		"""Execute the command
 		@param issuer: the issuer (player, owner of building) of the command
 		"""
-		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, \
-									 self.x, self.y)
+		self.log.debug("Build: building type %s at (%s,%s)", self.building_class, self.x, self.y)
 
 		island = WorldObject.get_object_by_id(self.island)
+		# slightly ugly workaround to retrieve world and session instance via pseudo-singleton
 		session = island.session
 
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
-		buildable = buildable_class.check_build(session, Point(self.x, self.y), rotation = self.rotation,\
+		buildable = buildable_class.check_build(session, Point(self.x, self.y), \
+		  rotation = self.rotation,\
 			check_settlement=issuer is not None, \
 			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
 			issuer=issuer)
@@ -96,6 +97,7 @@ class Build(Command):
 						# can't build, not enough res
 						buildable.buildable = False
 						break
+
 		if not buildable.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
@@ -125,11 +127,12 @@ class Build(Command):
 		)
 
 		island.add_building(building, issuer)
+
 		if self.settlement is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)
 		elif self.ship is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.ship)
-		else:
+		elif island is not None:
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 
 		if issuer: # issuer is None if it's a global game command, e.g. on world setup

@@ -58,20 +58,24 @@ class SPSession(Session):
 				self.timer.tick_next_time = time.time()
 			else:
 				self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
-		elif ticks == 0 or self.timer.tick_next_time is None: #go into paused state or very early speed change (before any tick)
-			self.paused_time_missing = ((self.timer.tick_next_time - time.time()) * old) if self.timer.tick_next_time is not None else None
+		elif ticks == 0 or self.timer.tick_next_time is None:
+			# go into paused state or very early speed change (before any tick)
+			if self.timer.tick_next_time is not None:
+				self.paused_time_missing = (self.timer.tick_next_time - time.time()) * old
+			else:
+				self.paused_time_missing =  None
 			self.timer.tick_next_time = None
 		else:
-			self.timer.tick_next_time = self.timer.tick_next_time + ((self.timer.tick_next_time - time.time()) * old / ticks)
+			self.timer.tick_next_time += ((self.timer.tick_next_time - time.time()) * old / ticks)
 		self.display_speed()
 
 	def start(self):
 		super(SPSession, self).start()
-		#autosave
-		if horizons.main.fife.get_uh_setting("AutosaveInterval") != 0:
-			self.log.debug("Initing autosave every %s minutes", horizons.main.fife.get_uh_setting("AutosaveInterval"))
-			ExtScheduler().add_new_object(self.autosave, self, \
-			                             horizons.main.fife.get_uh_setting("AutosaveInterval") * 60, -1)
+		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		# get_uh_setting returns floats like 4.0 and 42.0 since slider stepping is 1.0.
+		if interval != 0: #autosave
+			self.log.debug("Initing autosave every %s minutes", interval)
+			ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
 	def autosave(self):
 		"""Called automatically in an interval"""

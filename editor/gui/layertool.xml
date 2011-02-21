@@ -1,0 +1,19 @@
+<Panel title="Layertool" position="10,200" min_size="110, 150">
+	<ScrollArea horizontal_scrollbar="0">
+		<VBox name="layers_wrapper">
+			<!-- Content is added dynamically here -->
+		</VBox>
+	</ScrollArea>
+	<HBox name="button_wrapper">
+		<Spacer />
+		<ImageButton name="add_layer_button" hexpand="0" offset="1,1" 
+				helptext="Creates a new layer"
+				up_image="gui/icons/add_layer.png" down_image="gui/icons/add_layer.png" hover_image="gui/icons/add_layer.png" />
+		<ImageButton name="edit_layer_button" hexpand="0" offset="1,1"
+				helptext="Edit selected layer"
+				up_image="gui/icons/edit.png" down_image="gui/icons/edit.png" hover_image="gui/icons/edit.png" />
+		<ImageButton name="remove_layer_button" hexpand="0" offset="1,1" 
+				helptext="Removes selected layer"
+				up_image="gui/icons/quit.png" down_image="gui/icons/quit.png" hover_image="gui/icons/quit.png" />	
+	</HBox>
+</Panel>

@@ -116,6 +116,9 @@ class LogBook(object):
 		  })
 		center_widget(self._gui)
 
+		self.backward_button = self._gui.findChild(name="backwardButton")
+		self.forward_button = self._gui.findChild(name="forwardButton")
+
 	def _redraw(self):
 		"""Redraws gui. Necessary when current message has changed."""
 		texts = [u'', u'']
@@ -126,6 +129,15 @@ class LogBook(object):
 			if self._cur_entry+1 < len(self._messages): # maybe also one for the right side?
 					texts[1] = self._messages[self._cur_entry+1]
 					heads[1] = self._headings[self._cur_entry+1]
+
+		self.backward_button.set_active()
+		self.forward_button.set_active()
+
+		if self._cur_entry == 0:
+			self.backward_button.set_inactive()
+		if self._cur_entry == len(self._messages) - 2:
+			self.forward_button.set_inactive()
+
 		#import pdb ; pdb.set_trace()
 		#texts = ['default0', 'default1']
 

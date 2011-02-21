@@ -106,7 +106,7 @@ class BuildingTool(NavigationTool):
 
 	def load_gui(self):
 		if self.gui is None:
-			self.gui = load_xml_translated("build_menu/hud_builddetail.xml")
+			self.gui = load_xml_translated("place_building.xml")
 			self.gui.stylize('menu_black')
 			self.gui.findChild(name='headline').stylize('headline')
 			self.gui.findChild(name='building_name').stylize('headline')
@@ -138,7 +138,7 @@ class BuildingTool(NavigationTool):
 			      self._class.default_level_on_build
 			self.action_set = self.session.db.get_random_action_set(self._class.id, level)
 		action_set, preview_action_set = self.action_set
-		action_sets = ActionSetLoader.get_action_sets()
+		action_sets = ActionSetLoader.get_sets()
 		if preview_action_set in action_sets:
 			action_set = preview_action_set
 		if 'idle' in action_sets[action_set]:
@@ -351,11 +351,12 @@ class BuildingTool(NavigationTool):
 				cmd.execute(self.session)
 			else:
 				# check whether to issue a missing res notification
+				# we need the localized resource name here
 				if building in self.buildings_missing_resources:
 					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
 					self.session.ingame_gui.message_widget.add(building.position.origin.x, \
 					                                           building.position.origin.y, \
-					                                           'NEED_MORE_RES', {'resource' : res_name})
+					                                           'NEED_MORE_RES', {'resource' : _(res_name)})
 
 		if built:
 			PlaySound("build").execute(self.session, True)

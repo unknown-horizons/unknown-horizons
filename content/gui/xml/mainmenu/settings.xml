@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!-- Pychan is designed to overwrite style definitions like font="" by the style
+     assigned to the settings in horizons.engine._setup_settings.    -->
+<Container name="settings_window" size="800,580" background_image="content/gui/images/background/book.png">
+
+<!-- west side -->
+<VBox min_size="320,520"  max_size="320,520"  position="65,0">
+	<Spacer fixed_size="40" />
+	<VBox> 
+		<Label text="Settings"  name="headline" />
+		<Label text="Please make sure that you know what you do." 
+		       name="warning"  wrap_text="0" />
+		<Icon image="content/gui/images/background/hr.png" />
+	</VBox>
+	<VBox  name="graphics_settings"> <!-- graphics -->
+		<Label text="Graphics" 
+		       name="headline_graphics"  font="libertine_headline" />
+
+		<HBox  max_size="320,245">
+			<VBox>
+				<Label text="Screen resolution:"
+					name="screen_resolution_label"  wrap_text="1" />
+				<ScrollArea min_size="100,105" >
+					<ListBox name="screen_resolution" />
+				</ScrollArea>
+			</VBox>
+
+			<Spacer min_size="25"/>
+
+			<VBox>
+				<Label name="color_depth_label"  text="Color depth:"
+					wrap_text="1"  max_size="140,20" />
+				<ScrollArea  >
+					<ListBox name="screen_bpp" />
+				</ScrollArea>
+				<Spacer />
+				<Label name="use_renderer_label"  text="Used renderer:" 
+					wrap_text="1" />
+				<ScrollArea > 
+					<ListBox name="render_backend" />
+				</ScrollArea>
+			</VBox>
+		</HBox>
+
+		<Spacer min_size="10" />
+
+		<HBox>
+			<Label name="screen_fullscreen_text"  text="Full screen:" />
+			<CheckBox min_size="160,32"  name="enable_fullscreen" />
+		</HBox>
+	</VBox>
+
+	<Spacer min_size="20" />
+
+	<VBox  name="sound_settings" ><!-- sound -->
+		<Label name="headline_sound" text="Sound" font="libertine_headline" />
+		<VBox>
+			<HBox >
+				<Label name="music_volume_label" text="Music volume:" wrap_text="1"
+					min_size="250,20" max_size="250,40" />
+				<Label name="volume_music_value" text=""  />
+			</HBox>
+			<Slider size="300,20" name="volume_music"
+				orientation="0" scale_start="0.0" scale_end="0.20" />
+		</VBox>
+		<VBox>
+			<HBox >
+				<Label text="Effects volume:" 
+					name="effect_volume_label" 
+					wrap_text="1"  min_size="250,20"  max_size="250,40"/>
+				<Label text="" 
+					name="volume_effects_value" />
+			</HBox >
+			<Slider size="300,20" name="volume_effects"
+				orientation="0" scale_start="0.0" scale_end="0.5" />
+		</VBox>
+		<Spacer min_size="10" />
+		<HBox>
+			<Label name="sound_enable_opt_text" text="Enable sound:" />
+			<CheckBox min_size="32,32" name="enable_sound" />
+		</HBox>
+	</VBox>
+</VBox> 
+
+<!-- east side -->
+<VBox min_size="320,520"  max_size="320,520"  position="420,0">
+	<Spacer fixed_size="40" />
+	<Label name="headline_saving"  text="Saving"  font="libertine_headline" 
+		position_technique="automatic" />
+<!-- automatic is a shorthand for center:center #TODO get this working at all -->
+	<VBox  name="saving_settings">
+		<HBox>
+			<Label name="autosave_interval_label"  text="Autosave interval:"
+				wrap_text="1"  max_size="250,40"  min_size="250,20" />
+			<Label text=""  name="autosaveinterval_value" />
+		</HBox>
+		<Slider size="300,20" name="autosaveinterval"
+			orientation="0"  scale_start="0.0"  scale_end="60.0"  step_length="2.0" />
+		<HBox>
+			<Label name="number_of_autosaves_label"  text="Number of autosaves:" 
+				wrap_text="1"  max_size="250,40" min_size="250,20" />
+			<Label text="" name="autosavemaxcount_value" />
+		</HBox>
+			<Slider size="300,20" name="autosavemaxcount"
+				orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
+		<HBox>
+			<Label name="number_of_quicksaves_label"  text="Number of quicksaves:"
+				wrap_text="1"  max_size="250,40"  min_size="250,20" />
+			<Label text=""  name="quicksavemaxcount_value" />
+		</HBox>
+		<Slider size="300,20" name="quicksavemaxcount"
+			orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
+	</VBox>
+
+	<Spacer min_size="20" />
+
+	<VBox  name="language_settings">
+		<Label text="Language" 
+			name="headline_language"  font="libertine_headline" />
+		<HBox>
+     		<Label text="Select language:"  name="language_label" />
+     		<ScrollArea min_size="125,140" >
+				<ListBox name="language" />
+			</ScrollArea>
+		</HBox>
+	</VBox>
+
+	<Spacer />
+
+	<HBox >
+		<ImageButton name="cancelButton"
+			up_image="content/gui/images/buttons/close.png"
+			hover_image="content/gui/images/buttons/close_h.png"
+			down_image="content/gui/images/buttons/close.png" />
+
+		<ImageButton name="okButton" 
+			up_image="content/gui/images/buttons/ok.png"
+			hover_image="content/gui/images/buttons/ok_h.png"
+			down_image="content/gui/images/buttons/ok.png" />
+
+		<ImageButton name="defaultButton" 
+			up_image="content/gui/images/buttons/delete.png"
+			hover_image="content/gui/images/buttons/delete_h.png"
+			down_image="content/gui/images/buttons/delete.png" />
+	</HBox>
+</VBox>
+
+<!-- This dropdown is invisible, but required by fife to be here -->
+<DropDown name="lighting_model" min_size="20,0" position="10000,0" /> 
+</Container>

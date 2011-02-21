@@ -35,24 +35,25 @@ from horizons.i18n import load_xml_translated
 
 
 class OverviewTab(TabInterface):
-	def __init__(self, instance, widget = 'tab_widget/tab_overview.xml'):
+	def __init__(self, instance, widget = 'overviewtab.xml', \
+	             icon_path='content/gui/icons/tabwidget/common/building_overview_%s.png'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
+		self.button_up_image = icon_path % 'u'
+		self.button_active_image = icon_path % 'a'
+		self.button_down_image = icon_path % 'd'
+		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Overview")
 
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
 			if self.instance.owner is not None:
 				self.widget.child_finder('player_emblem').image =  \
-			    'content/gfx/misc/playeremblems/emblem_%s.png' %  self.instance.owner.color.name
+			    'content/gui/images/tabwidget/emblems/emblem_%s.png' %  self.instance.owner.color.name
 			else:
 				self.widget.child_finder('player_emblem').image = \
-			    'content/gfx/misc/playeremblems/emblem_no_player.png'
+			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
 
 
 	def refresh(self):
@@ -89,28 +90,21 @@ class OverviewTab(TabInterface):
 class BranchOfficeOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(BranchOfficeOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_branch_overview.xml',
+			widget = 'overview_branchoffice.xml',
 			instance = instance
 		)
-		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-		self.tooltip = _("Branch Office \\n Overview")
+		self.tooltip = _("Branch office overview")
 
 
 class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(ShipOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_ship.xml',
+			widget = 'overview_ship.xml',
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
-		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = _("Ship Overview")
+		self.tooltip = _("Ship overview")
 
 	def refresh(self):
 		# show rename when you click on name
@@ -128,15 +122,15 @@ class ShipOverviewTab(OverviewTab):
 				island_without_player_settlement_found = True
 
 		if island_without_player_settlement_found:
-			events['foundSettelment'] = Callback(self.instance.session.ingame_gui._build, \
+			events['foundSettlement'] = Callback(self.instance.session.ingame_gui._build, \
 		                                       BUILDINGS.BRANCH_OFFICE_CLASS, \
 		                                       weakref.ref(self.instance) )
 			self.widget.child_finder('bg_button').set_active()
-			self.widget.child_finder('foundSettelment').set_active()
+			self.widget.child_finder('foundSettlement').set_active()
 		else:
-			events['foundSettelment'] = None
+			events['foundSettlement'] = None
 			self.widget.child_finder('bg_button').set_inactive()
-			self.widget.child_finder('foundSettelment').set_inactive()
+			self.widget.child_finder('foundSettlement').set_inactive()
 
 		self.widget.mapEvents(events)
 		super(ShipOverviewTab, self).refresh()
@@ -144,31 +138,28 @@ class ShipOverviewTab(OverviewTab):
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(TraderShipOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_tradership.xml',
+			widget = 'overview_tradership.xml',
+			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
-		self.button_up_image = 'content/gui/images/icons/hud/common/ship_inv_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/ship_inv_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/ship_inv_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/ship_inv_h.png'
 		self.widget.findChild(name='name').stylize("headline")
-		self.tooltip = _("Ship Overview")
+		self.tooltip = _("Ship overview")
 
 class ProductionOverviewTab(OverviewTab):
-	production_line_gui_xml = "tab_widget/tab_production_line.xml"
+	production_line_gui_xml = "overview_productionline.xml"
 
 	def  __init__(self, instance):
 		super(ProductionOverviewTab, self).__init__(
-			widget = 'buildings_gui/production_building_overview.xml',
+			widget = 'overview_productionbuilding.xml',
 			instance = instance
 		)
-		self.button_up_image = 'content/gui/images/icons/hud/common/building_overview_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/building_overview_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/building_overview_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/building_overview_h.png'
-		self.tooltip = _("Production Overview")
+		self.tooltip = _("Production overview")
 
-		self.destruct_button = TooltipButton(name="destruct_button", up_image="content/gui/images/background/delete.png", down_image="content/gui/images/background/delete_h.png", hover_image="content/gui/images/background/delete_h.png", tooltip=_("Destroy Building"), position=(190,330))
+		self.destruct_button = TooltipButton(name="destruct_button", \
+		              up_image="content/gui/images/buttons/delete.png", \
+		              down_image="content/gui/images/buttons/delete_h.png", \
+		              hover_image="content/gui/images/buttons/delete_h.png", \
+		              tooltip=_("Destroy building"), position=(190,330))
 		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
 
@@ -222,6 +213,15 @@ class ProductionOverviewTab(OverviewTab):
 				                                     use_inactive_icon=False) \
 				)
 
+
+			# fix pychans lack of dynamic container sizing
+			# the container in the xml must provide a height attribute, that is valid for
+			# one resource.
+			max_res_in_one_line = max(len(production.get_produced_res()), \
+			                          len(production.get_consumed_resources()))
+			container.height = max_res_in_one_line * container.height
+
+
 			# active toggle_active button
 			container.mapEvents( \
 			  { 'toggle_active': \
@@ -242,13 +242,13 @@ class ProductionOverviewTab(OverviewTab):
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(SettlerOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_settler.xml',
+			widget = 'overview_settler.xml',
 			instance = instance
 		)
-		self.tooltip = _("Settler Overview")
+		self.tooltip = _("Settler overview")
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 
-		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
@@ -276,13 +276,14 @@ class SettlerOverviewTab(OverviewTab):
 		container.adaptLayout()
 
 class MarketPlaceOverviewTab(OverviewTab):
+# CLASS AND WIDGET ARE CURRENTLY NOT USED, check ./marketplacetabs.py
 	def  __init__(self, instance):
 		super(MarketPlaceOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_marketplace.xml',
+			widget = 'overview_marketplace.xml',
 			instance = instance
 		)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
-		self.tooltip = _("Market Place Overview")
+		self.tooltip = _("Market place overview")
 
 	def refresh(self):
 		super(MarketPlaceOverviewTab, self).refresh()
@@ -290,10 +291,10 @@ class MarketPlaceOverviewTab(OverviewTab):
 class SignalFireOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(SignalFireOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_signalfire.xml',
+			widget = 'overview_signalfire.xml',
 			instance = instance
 		)
-		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
@@ -303,14 +304,14 @@ class SignalFireOverviewTab(OverviewTab):
 class EnemyBuildingOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(EnemyBuildingOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_enemy_building.xml',
+			widget = 'overview_enemybuilding.xml',
 			instance = instance
 		)
 
 class ResourceDepositOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(ResourceDepositOverviewTab, self).__init__(
-			widget = 'tab_widget/tab_overview_resourcedeposit.xml',
+			widget = 'overview_resourcedeposit.xml',
 			instance = instance
 		)
 		self.widget.child_finder("inventory").init(self.instance.session.db, \

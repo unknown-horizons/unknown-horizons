@@ -23,7 +23,8 @@ import horizons.main
 
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
-from horizons.util import WorldObject, Color
+from horizons.util import WorldObject
+from horizons.util.color import Color
 from horizons.campaign import CONDITIONS
 
 class Player(StorageHolder, WorldObject):

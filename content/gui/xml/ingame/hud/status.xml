@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container size="300,80" position="93,10">
+<!-- Resource bar that are positioned on top -->
+	<TooltipIcon name="food_icon" position="0,7" 
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Food" />
+	<Icon position="12,18" 
+		image="content/gui/icons/resources/24/5.png" />
+	<Label name="food_1" text="" />
+	<Label name="food_2" text="" />
+	<Label name="food_3" text="" />
+
+	<TooltipIcon name="tools_icon" position="52,7" 
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Tools" />
+	<Icon position="65,19" 
+		image="content/gui/icons/resources/24/6.png" />
+	<Label name="tools_1" text="" />
+	<Label name="tools_2" text="" />
+	<Label name="tools_3" text="" />
+
+	<TooltipIcon name="boards_icon" position="104,7" 
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Boards" />
+	<Icon position="117,18" 
+		image="content/gui/icons/resources/24/4.png" />
+	<Label name="boards_1" text="" />
+	<Label name="boards_2" text="" />
+	<Label name="boards_3" text="" />
+
+	<TooltipIcon name="bricks_icon" position="156,7" 
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Bricks" />
+	<Icon position="168,19" 
+		image="content/gui/icons/resources/24/7.png" />
+	<Label name="bricks_1" text="" />
+	<Label name="bricks_2" text="" />
+	<Label name="bricks_3" text="" />
+
+	<TooltipIcon name="textiles_icon" position="208,7" 
+		image="content/gui/images/background/widgets/res_bg.png" tooltip="Textiles" />
+	<Icon position="217,15" 
+		image="content/gui/icons/resources/32/3.png" /> <!-- A tad bigger cause of shape -->
+	<Label name="textiles_1" text="" />
+	<Label name="textiles_2" text="" />
+	<Label name="textiles_3" text="" />
+
+</Container>

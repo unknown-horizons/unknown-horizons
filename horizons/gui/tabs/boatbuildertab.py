@@ -31,10 +31,10 @@ from horizons.util import Callback
 class BoatbuilderTab(OverviewTab):
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(
-			widget = 'tab_widget/boatbuilder/boatbuilder.xml',
+			widget = 'boatbuilder.xml',
 			instance = instance
 		)
-		self.tooltip = _("Boat Builder \\n Overview")
+		self.tooltip = _("Boat builder overview")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -60,7 +60,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.container_active, progress_container)
 				container_active = main_container.container_active
 			container_active.findChild(name="BB_builtship_label").text = u"Fishing boat"
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher \nStorage: 1 slot of 1t \nSpeed: average \nHealth: 40"
+			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Used by: Fisher\nStorage: 1 slot of 1t\nSpeed: average\nHealth: 40"
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -105,7 +105,7 @@ class BoatbuilderTab(OverviewTab):
 			container_active.findChild(name='BB_builtship_label').stylize("headline")
 
 			# Update needed resources
-			production = self.instance._productions.values()[0]
+			production = self.instance._get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			i = 1
 			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
@@ -149,9 +149,9 @@ class BoatbuilderTab(OverviewTab):
 class BoatbuilderSelectTab(OverviewTab):
 
 	def __init__(self, instance, tabname):
-		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'tab_widget/boatbuilder/' + str(tabname) + '.xml')
+		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
 		self.init_values()
-		bb_image_path = 'content/gui/images/icons/hud/common/bb/'+str(tabname)+'_%s.png'
+		bb_image_path = 'content/gui/icons/tabwidget/boatbuilder/'+str(tabname)+'_%s.png'
 		self.button_up_image = bb_image_path % 'u'
 		self.button_active_image = bb_image_path % 'a'
 		self.button_down_image = bb_image_path % 'd'
@@ -167,7 +167,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
-		self.tooltip = _("Fisher Boats")
+		self.tooltip = _("Fisher boats")
 		# TODO: generalize this hard coded value
 		events = { 'BB_build_fisher_1' : Callback(self.start_production, 15) }
 		self.widget.mapEvents(events)
@@ -176,19 +176,19 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
-		self.tooltip = _("Trade Boats")
+		self.tooltip = _("Trade boats")
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
-		self.tooltip = _("War Boats")
+		self.tooltip = _("War boats")
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar2Tab, self).__init__(instance, 'war2')
-		self.tooltip = _("War Ships")
+		self.tooltip = _("War ships")
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
@@ -200,7 +200,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderConfirmTab, self).__init__(
-			widget = 'tab_widget/boatbuilder/confirm.xml',
+			widget = 'boatbuilder_confirm.xml',
 			instance = instance
 		)
 		events = { 'create_unit': self.start_production }

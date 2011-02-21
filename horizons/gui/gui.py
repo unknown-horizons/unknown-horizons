@@ -30,7 +30,8 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
-from horizons.gui.utility import center_widget, LazyWidgetsDict
+from horizons.gui.utility import adjust_widget_black_background, center_widget, LazyWidgetsDict
+from horizons.ambientsound import AmbientSound
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 
@@ -43,22 +44,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	# styles to apply to a widget
 	styles = {
 	  'mainmenu': 'menu',
-	  'quitgame': 'book',
-	  'settings': 'book',
 	  'requirerestart': 'book',
-#	  'popup_with_cancel': 'book',
-#	  'popup': 'book',
 	  'gamemenu': 'menu',
-	  'chime': 'book',
 	  'help': 'book',
-	  'quitsession': 'book',
 	  'singleplayermenu': 'book',
 	  'multiplayermenu' : 'book',
 	  'multiplayer_creategame' : 'book',
 	  'multiplayer_gamelobby' : 'book',
 	  'playerdataselection' : 'book',
-	  'serverlist': 'menu',
-	  'serverlobby': 'menu',
 	  'select_savegame': 'book',
 	  'ingame_pause': 'book',
 #	  'credits': 'book',
@@ -77,43 +70,41 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'startSingle'    : self.show_single,
 			'startMulti'     : self.show_multi,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'creditsLink'    : self.show_credits,
-			'closeButton'    : self.show_quit,
 			'helpLink'       : self.on_help,
-			'loadgameButton' : horizons.main.load_game,
-			'dead_link'      : self.on_chime
+			'closeButton'    : self.show_quit,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
 		})
+
 		self.on_escape = self.show_quit
+
+		adjust_widget_black_background(self.widgets['mainmenu'])
 
 	def show_quit(self):
 		"""Shows the quit dialog """
-		if self.show_dialog(self.widgets['quitgame'], {'okButton' : True, 'cancelButton' : False}, onPressEscape = False):
+		message = _("Are you sure you want to quit Unknown Horizons?")
+		if self.show_popup(_("Quit Game"),message,show_cancel_button = True):
 			horizons.main.quit()
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for i in xrange (0,11):
-			cur_container = self.widgets['credits/'+str(number)].findChild(name='book'+str(i))
+		for i in xrange (0,11): #TODO this is a hardcoded maximum of vboxes, might break code
+			cur_container = self.widgets['credits'+str(number)].findChild(name='book'+str(i))
 			if cur_container:
 				cur_container.stylize('book_t') # leaves headlines as what they are, only style labels
 				cur_container.margins = (30,0) # to get some indentation
-		team_lbl = self.widgets['credits/'+str(number)].findChild(name="team_lbl")
-		if team_lbl:
-			team_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 0), event_name="mouseClicked")
-		patchers_lbl = self.widgets['credits/'+str(number)].findChild(name="patchers_lbl")
-		if patchers_lbl:
-			patchers_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 1), event_name="mouseClicked")
-		translators_lbl = self.widgets['credits/'+str(number)].findChild(name="translators_lbl")
-		if translators_lbl:
-			translators_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 2), event_name="mouseClicked")
-		special_thanks_lbl = self.widgets['credits/'+str(number)].findChild(name="special_thanks_lbl")
-		if special_thanks_lbl:
-			special_thanks_lbl.capture(pychan.tools.callbackWithArguments(self.show_credits, 3), event_name="mouseClicked")
 
+		label = [self.widgets['credits'+str(number)].findChild(name=i+"_lbl")\
+		          for i in ('team','patchers','translators','special_thanks')]
+		for i in xrange (0,4):
+			if label[i]: # add callbacks to each pickbelt that is displayed
+				label[i].capture(pychan.tools.callbackWithArguments( \
+				                 self.show_credits, i), event_name="mouseClicked")
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits/'+str(number)], {'okButton' : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['credits'+str(number)], {'okButton' : True}, onPressEscape = True)
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -162,16 +153,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_pause(self):
 		"""
 		Show Pause menu
-		"""
+		"""		
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
-			'closeButton'    : self.quit_session,
 			'savegameButton' : self.session.save,
-			'loadgameButton' : horizons.main.load_game,
-			'helpLink'       : self.on_help,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'dead_link'      : self.on_chime
+			'helpLink'       : self.on_help,
+			'closeButton'    : self.quit_session,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
 		})
+		
+		adjust_widget_black_background(self.widgets['gamemenu'])
+		
 		self.session.speed_pause()
 		self.on_escape = self.return_to_game
 
@@ -179,17 +174,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		Called chime action.
 		"""
-		# this is just for now, so hardcoded path is ok
-		horizons.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
-		self.show_dialog(self.widgets['chime'], {'okButton' : True}, onPressEscape = True)
-
-	def set_volume(self, label, slider):
-		if label.name == 'volume_music_value':
-			label.text = unicode(int(slider.getValue() * 100 * 5)) + '%'
-			horizons.main.fife.set_volume_music(slider.getValue())
-		else:
-			label.text = unicode(int(slider.getValue() * 100 * 2)) + '%'
-			horizons.main.fife.set_volume_effects(slider.getValue())
+		AmbientSound.play_special("message")
+		message = _("Yeah, you made it...\n\nBut this is a placeholder, sorry.")
+		self.show_popup(_("Chime The Bell"), message)
 
 	help_is_displayed = False
 	def on_help(self):
@@ -214,9 +201,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def quit_session(self, force=False):
 		"""Quits the current session.
 		@param force: whether to ask for confirmation"""
+		message = _("Are you sure you want to abort the running session?")
 		if force or \
-		   self.show_dialog(self.widgets['quitsession'],  \
-		                    {'okButton': True, 'cancelButton': False}, onPressEscape=False):
+		   self.show_popup(_("Quit Session"),message,show_cancel_button = True):
 			self.current.hide()
 			self.current = None
 			if self.session is not None:
@@ -246,17 +233,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
 			return False
 		selected_file = map_files[selected_item]
-		if self.show_popup(_("Confirm deletion"),
-											 _('Do you really want to delete the savegame "%s"?') % \
-											 SavegameManager.get_savegamename_from_filename(selected_file), \
-											 show_cancel_button = True):
+		message = _('Do you really want to delete the savegame "%s"?') % \
+		             SavegameManager.get_savegamename_from_filename(selected_file)
+		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
 			try:
 				os.unlink(selected_file)
 				return True
 			except:
 				self.show_popup(_("Error!"), _("Failed to delete savefile!"))
 				return False
-		else:
+		else: # player cancelled deletion
 			return False
 
 	@staticmethod
@@ -277,11 +263,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			else:
 				details_label.text += _("Saved at %s\n") % \
 										time.strftime(_("%H:%M, %A, %B %d"), time.localtime(savegame_info['timestamp']))
-			if savegame_info['savecounter'] > 1:
-				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
+			if savegame_info['savecounter'] == 1:
+				details_label.text += _("Saved 1 time\n")
 			else:
-				details_label.text += _("Saved %d time\n") % savegame_info['savecounter']
-			details_label.stylize('book')
+				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
+			details_label.stylize('book_t')
 
 			from horizons.constants import VERSION
 			try:
@@ -291,7 +277,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					details_label.text += _("WARNING: Incompatible ver. %(ver)d!\nNeed ver. %(need)d!") \
 					             % {'ver' : savegame_info['savegamerev'], 'need' : VERSION.SAVEGAMEREVISION}
 			except KeyError:
-				details_label.text += _("INCOMPATIBlE VERSION\n")
+				details_label.text += _("INCOMPATIBLE VERSION\n")
 
 
 			box.addChild( details_label )
@@ -350,9 +336,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				                             map_file_display[self.current.collectData('savegamelist')]})
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
-		self.current.findChild(name="savegamelist").capture( Callback.ChainedCallbacks( \
-		  Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
-		  tmp_selected_changed))
+		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
+						tmp_selected_changed)
+		self.current.findChild(name="savegamelist").mapEvents({ "savegamelist/action":cb,"savegamelist/mouseWheelMovedUp":cb, \
+									"savegamelist/mouseWheelMovedDown":cb})
+		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		retval = self.show_dialog(self.current, \
 		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete', 'savegamefile' : True},
@@ -372,9 +360,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame in map_file_display: # savegamename already exists
-				if not self.show_popup(_("Confirmation for overwriting"), \
-				      _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % \
-				      selected_savegame, show_cancel_button = True):
+				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
+				if not self.show_popup(_("Confirmation for overwriting"),message,show_cancel_button = True):
 					self.current = old_current
 					return self.show_select_savegame(mode=mode) # reshow dialog
 		else: # return selected item from list

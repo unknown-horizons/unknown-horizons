@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<Container name="chime_window" size="374,230" position="325,235">
-<Icon image="content/gui/images/background/notice.png" />
-
-	<Label text="Terminal debugmode" position="175,30" name="headline" />
-	<Icon image="content/gui/images/background/hr.png" position="80,50" />
-	<Label name="started_pdb_lbl" position="60,82" 
-		text="You start the terminal python debugger pdb!" />
-</Container>

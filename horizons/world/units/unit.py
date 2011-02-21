@@ -32,6 +32,7 @@ from horizons.ambientsound import AmbientSound
 class Unit(AmbientSound, MovingObject):
 	log = logging.getLogger("world.units")
 	is_unit = True
+	is_ship = False
 	health_bar_y = -30
 
 	def __init__(self, x, y, owner=None, **kwargs):
@@ -123,8 +124,6 @@ class Unit(AmbientSound, MovingObject):
 		db("INSERT INTO unit (rowid, type, x, y, health, owner) VALUES(?, ?, ?, ?, ?, ?)",
 			self.worldid, self.__class__.id, self.position.x, self.position.y, \
 					self.health, owner_id)
-
-		self.path.save(db, self.worldid)
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)

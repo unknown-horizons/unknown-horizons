@@ -30,6 +30,7 @@ from horizons.world.storageholder import StorageHolder
 from horizons.world.pathfinding.pather import ShipPather
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle
+from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.constants import LAYERS, STORAGE
 
@@ -41,6 +42,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	pather_class = ShipPather
 	tabs = (ShipOverviewTab, ShipInventoryTab)
 	health_bar_y = -150
+	is_ship = True
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
@@ -67,7 +69,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 		self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
-	def select(self):
+	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, 1)
 		# add a buoy at the ship's target if the player owns the ship
@@ -83,6 +85,8 @@ class Ship(NamedObject, StorageHolder, Unit):
 				horizons.main.fife.animationpool.addResourceFromFile("as_buoy0-idle-45")
 			)
 		self.draw_health()
+		if reset_cam:
+			self.session.view.set_location(self.position.to_tuple())
 		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):
@@ -171,7 +175,8 @@ class TradeShip(Ship):
 	def _possible_names(self):
 		return [ _('Trader') ]
 
-class FisherShip(Ship):
+class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
 	tabs = ()
+	pather_class = ShipPather
 	health_bar_y = -50

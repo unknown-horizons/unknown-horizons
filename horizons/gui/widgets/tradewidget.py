@@ -44,16 +44,16 @@ class TradeWidget(object):
 	  }
 
 	images = {
-	  #'box_highlighted': 'content/gui/images/icons/hud/ship/civil_32_h.png',
-	  'box_highlighted': 'content/gui/images/icons/hud/ship/button_small_a.png',
-	  'box': 'content/gui/images/icons/hud/ship/button_small.png'
+	  #'box_highlighted': 'content/gui/icons/ship/civil_32_h.png',
+	  'box_highlighted': 'content/gui/icons/ship/smallbutton_a.png',
+	  'box': 'content/gui/icons/ship/smallbutton.png'
 	  }
 
 	def __init__(self, instance):
 		"""
 		@param instance: ship instance used for trading
 		"""
-		self.widget = load_xml_translated('ship/trade.xml')
+		self.widget = load_xml_translated('exchange_goods.xml')
 		self.widget.position = (
 			horizons.main.fife.engine_settings.getScreenWidth() - self.widget.size[0],
 			157

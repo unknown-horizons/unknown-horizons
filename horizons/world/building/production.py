@@ -51,17 +51,31 @@ class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 class Weaver(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
+class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, ProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+	range_applies_only_on_island = False
+	pass
+
+class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
+class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	pass
+
+class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class SettlerServiceProvider(SelectableBuilding, ProducerBuilding, BuildableSingle, BasicBuilding):
-	"""Class for Churches, School that provide a service-type res for settlers"""
+class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+	"""Class for Churches, School that provide a service-type res for settlers.
+	Also provides collectors for buildings that consume resources (tavern)."""
 	pass
 
 class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):

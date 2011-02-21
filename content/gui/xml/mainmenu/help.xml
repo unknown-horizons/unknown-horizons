@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<Container name="help_window" size="800,580" position="100,100">
+<Icon image="content/gui/images/background/book.png" />
+
+<VBox position="107,42" max_size="340,450" min_size="340,450">
+	<Label text="Key bindings" name="headline" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<VBox>
+		<Label name="set01" text="{LEFT} = Scroll left" />
+		<Label name="set02" text="{RIGHT} = Scroll right" />
+		<Label name="set03" text="{UP} = Scroll up" />
+		<Label name="set04" text="{DOWN} = Scroll down" />
+	</VBox>
+	<VBox>
+		<Label name="set21" text="{ + } = Increase game speed" />
+		<Label name="set22" text="{ - } = Decrease game speed" />
+	</VBox>
+	<VBox>
+		<Label name="set05" text="{ , } = Rotate building left" />
+		<Label name="set06" text="{ . } = Rotate building right" />
+	</VBox>
+	<VBox>
+		<Label name="set07" text="{B} = Show build menu" />
+		<Label name="set12" text="{ESC} = Show pause menu" />
+	</VBox>
+	<VBox>
+		<Label name="set08" text="{F1} = Display help" />
+		<Label name="set09" text="{F5} = Quicksave" />
+		<Label name="set10" text="{F9} = Quickload" />
+		<Label name="set11" text="{F10} = Toggle console on/off" />
+	</VBox>
+
+	<Spacer />
+</VBox>
+
+<VBox position="447,82" max_size="340,380" min_size="340,380">
+	<VBox>
+		<Label name="set20" text="{P} = Pause game" />
+		<Label name="set13" text="{G} = Toggle grid on/off" />
+		<Label name="set14" text="{X} = Enable destruct mode" />
+		<!--<ScrollArea min_size="320,500" horizontal_scrollbar="0">
+			<TextBox name="helpBox" filename="content/infotext.txt"/>
+		</ScrollArea>-->
+		<Label name="set23" text="{S} = Screenshot" />
+		<Label name="set26" text="{C} = Chat" />
+		<Label name="set25" text="{SHIFT} = Hold to place multiple buildings" />
+	</VBox>
+	<VBox>
+		<Label name="have_fun_lbl" text="Have fun." />
+	</VBox>
+	<VBox>
+		<Label name="fife_and_uh_team_lbl" text="The FIFE and Unknown Horizons" max_size="315,20" />
+		<Label name="fife_and_uh_team_lbl2" text="development teams" max_size="315,20" />
+		<Label text="http://www.unknown-horizons.org" />
+		<Label text="http://www.fifengine.de" />
+	</VBox>
+</VBox>
+
+<TooltipButton name="okButton" position="695,500"
+	up_image="content/gui/images/buttons/ok.png"
+	hover_image="content/gui/images/buttons/ok_h.png"
+	down_image="content/gui/images/buttons/ok.png"
+	tooltip="Exit to main menu" />
+
+</Container>

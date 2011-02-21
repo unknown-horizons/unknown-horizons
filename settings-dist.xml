@@ -9,7 +9,7 @@
 		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
 		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
 		<Setting name="WindowTitle" type="str"> Unknown Horizons Alpha </Setting>
-		<Setting name="WindowIcon" type="str">content/gui/images/icon.png</Setting>
+		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
 		<Setting name="Font" type="str"> content/fonts/LinLibertine_Re-4.4.1.ttf </Setting>
 		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
 		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
@@ -22,9 +22,9 @@
 	<Module name="unknownhorizons">
 		<Setting name="VolumeMusic" type="float">0.20</Setting>
 		<Setting name="VolumeEffects" type="float">0.5</Setting>
-		<Setting name="AutosaveInterval" type="int">10</Setting>
-		<Setting name="AutosaveMaxCount" type="int">10</Setting>
-		<Setting name="QuicksaveMaxCount" type="int">10</Setting>
+		<Setting name="AutosaveInterval" type="float">10.0</Setting>
+		<Setting name="AutosaveMaxCount" type="float">10.0</Setting>
+		<Setting name="QuicksaveMaxCount" type="float">10.0</Setting>
 		<Setting name="Language" type="unicode">System default</Setting>
 		<Setting name="ClientID" type="str"></Setting>
 		<Setting name="Nickname" type="str">Unnamed Traveler</Setting>

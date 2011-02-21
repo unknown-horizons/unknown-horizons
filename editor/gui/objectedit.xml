@@ -1,0 +1,110 @@
+<Panel title="Object editor" position="10,700" min_size="200,250"> <!-- size="200,250" min_size="200,250" max_size="200,250" > -->
+	<HBox>
+		<Spacer min_size="150"/>
+		<ImageButton up_image="gui/icons/help.png" down_image="gui/icons/help.png" hover_image="gui/icons/help.png" name="show_help" text="      Help" />
+<!--
+		<ImageButton name="show_settings" text="Settings" />
+-->
+	</HBox>
+
+	<Label text="           Object" background_color="0,0,0" />
+	<HBox>
+		<Label text="Namespace:" min_size="85,20"/>
+		<Label text="None" name="object_namespace" min_size="30,20"/>
+	</HBox>
+	<HBox>	 
+		<Label text="Object ID:" min_size="85,20"/>
+		<Label text="None" name="object_id" min_size="30,20"/>
+	</HBox>
+	<HBox>
+		<Label text="Blocking:" min_size="45,20"/>
+		<TextBox text="0" name="object_blocking" min_size="20,20"/>
+    <Button name="object_blocking_toggle" text="toggle" max_size="50,20"/>
+
+		<Label text="Static:" min_size="45,20"/>
+		<TextBox text="0" name="object_static" min_size="20,20"/>
+	</HBox>
+
+	<HBox>	 
+		<Label text="Select Rotation:" min_size="85,20" />
+	</HBox>
+	
+	<DropDown min_size="80,0" name="select_rotations"/>
+
+	<VBox>
+		<Label text="Offset:" min_size="45,20"/>
+		<HBox>
+			<Label text="X: " min_size="25,20"/>
+			<TextBox text="0" name="x_offset" size="30,20" min_size="30,20" max_size="30,20" />
+			<Button name="x_offset_up" text="+" max_size="20,20"/>
+			<Button name="x_offset_dn" text="-" max_size="20,20"/>
+		</HBox>
+
+		<HBox>
+			<Label text="Y: " min_size="25,20"/>
+			<TextBox text="0" name="y_offset" size="30,20" min_size="30,20" max_size="30,20"/>
+			<Button name="y_offset_up" text="+" max_size="20,20"/>
+			<Button name="y_offset_dn" text="-" max_size="20,20"/>
+		</HBox>
+	</VBox>
+
+	<Button name="change_data" text="Save object data"/>
+
+	<Label text="          Selected Instance" background_color="0,0,0" />
+
+	<HBox >	 
+		<Label text="Instance ID:" min_size="85,20"/>
+		<TextBox text="None" name="instance_id" min_size="30,20"/>
+	</HBox>
+	<HBox >	 
+		<Label text="Instance rot:" min_size="85,20"/>
+		<TextBox text="0" name="instance_rotation" min_size="30,20"/>
+	</HBox>
+  <HBox >
+    <Label text="Instance blocking:" min_size="85,20"/>
+    <TextBox text="0" name="instance_blocking" min_size="30,20"/>
+  </HBox>
+
+	<HBox>
+		<Button name="use_data" text="Set instance id"/>
+	</HBox>
+  <HBox>
+    <CheckBox name="override_blocking_toggle" text="Allowed to override blocking"/>
+  </HBox>
+  <HBox>
+    <Button name="instance_blocking_toggle" text="Toggle instance blocking"/>
+  </HBox>
+	<Spacer />
+
+	<Label text="          Animation viewer" background_color="0,0,0" />
+	<VBox name="animation_panel_wrapper">
+		<Spacer />
+		<VBox name="animation_panel">
+			<Label text="Actions:" min_size="85,20" />
+			<DropDown min_size="80,0" name="select_actions"/>
+
+			<HBox>
+				<Button name="anim_start_pos" text="S" max_size="20,20"/>
+				<Button name="anim_left" text="l1" max_size="20,20"/>
+				<TextBox name="anim_current_frame" text="0" min_size="30,20"/>
+				<Button name="anim_right" text="r1" max_size="20,20"/>
+				<Button name="anim_end_pos" text="E" max_size="20,20"/>
+			</HBox>
+			<HBox>
+				<ToggleButton name="anim_playback" text="P" max_size="20,20"/>
+				<CheckBox name="anim_loop" marked="1" text="Loop:"/>
+			</HBox>
+			
+			<HBox>
+				<Label text="Rotation: (" min_size="60,20" />
+				<Label name="anim_rotation" text="" min_size="20,20"/>
+				<Label text=")" min_size="10,20" />
+			</HBox>			
+
+			<VBox min_size="100,100" size="100,100">
+			<Icon image="gui/icons/add_instance.png" size="200,200" min_size="250,250" name="animTest"/>
+			</VBox>
+		</VBox>
+	</VBox>
+
+</Panel>

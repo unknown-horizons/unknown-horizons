@@ -22,7 +22,6 @@
 __all__ = []
 
 from living import livingProperty, LivingObject
-from color import Color
 from changelistener import ChangeListener
 from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader
@@ -30,7 +29,7 @@ from loaders.tilesetloader import TileSetLoader
 from pychanchildfinder import PychanChildFinder
 from named_object import NamedObject
 from dbreader import DbReader
-from sqliteanimationloader import SQLiteAnimationLoader
+from uhanimationloader import UHAnimationLoader
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect

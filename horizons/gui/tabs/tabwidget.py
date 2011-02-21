@@ -42,7 +42,7 @@ class TabWidget(object):
 		self.ingame_gui = ingame_gui
 		self._tabs = tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
-		self.widget = load_xml_translated("tab_widget/tab_base.xml")
+		self.widget = load_xml_translated("tab_base.xml")
 		if position is None:
 			# add positioning here
 			self.widget.position = (
@@ -72,6 +72,7 @@ class TabWidget(object):
 				button.up_image = tab.button_up_image
 			button.down_image = tab.button_down_image
 			button.hover_image = tab.button_hover_image
+			button.is_focusable = False
 			button.size = (50, 50)
 			button.capture(pychan.tools.callbackWithArguments(self._show_tab, index))
 			if hasattr(tab, 'tooltip') and tab.tooltip is not None:

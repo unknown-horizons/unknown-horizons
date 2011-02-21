@@ -29,14 +29,16 @@ import logging
 import horizons.main
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
-from horizons.util import Point, Color, Rect, LivingObject, Circle
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND
+from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
+from horizons.util.color import Color
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.entities import Entities
 from horizons.util import decorators
+from horizons.world.buildingowner import BuildingOwner
 
-class World(LivingObject):
+class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
 	   * players - a list of all the session's players - Player instances
@@ -59,7 +61,7 @@ class World(LivingObject):
 		"""
 		self.inited = False
 		self.session = session
-		super(World, self).__init__()
+		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
 		self.session = None
@@ -126,7 +128,7 @@ class World(LivingObject):
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
-		#load islands
+		# load islands
 		self.islands = []
 		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
 			island = Island(savegame_db, islandid, self.session)
@@ -168,6 +170,11 @@ class World(LivingObject):
 			for coord in island.ground_map:
 				if coord in self.ground_map:
 					del self.ground_map[coord]
+
+		# load world buildings (e.g. fish)
+		for (building_worldid, building_typeid) in \
+		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
+			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		self.num_water = len(self.ground_map)
 		self.water = list(self.ground_map)
@@ -223,9 +230,13 @@ class World(LivingObject):
 		if int(self.properties.get('RandomTrees', 1)) == 1:
 			Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
 			Clay = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
+			Fish = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
+			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
 			max_clay_deposits = self.session.random.randint(2, 3)
+			max_mountains = self.session.random.randint(1, 3)
 			for island in self.islands:
 				num_clay_deposits = 0
+				num_mountains = 0
 				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
 				for coords, tile in sorted(island.ground_map.iteritems()):
 					# add tree to every nth tile
@@ -236,10 +247,29 @@ class World(LivingObject):
 						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
 							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
-						 self.session.random.randint(0, 30) == 0 and \
+						 self.session.random.randint(0, 40) == 0 and \
 						 Clay.check_build(self.session, tile, check_settlement=False):
 						num_clay_deposits += 1
-						cmd = Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
+						Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
+					elif num_mountains < max_mountains and \
+					     self.session.random.randint(0, 40) == 0 and \
+					     Mountain.check_build(self.session, tile, check_settlement=False):
+						num_mountains += 1
+						Build(Mountain, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
+					if 'coastline' in tile.classes and self.session.random.randint(0, 4) == 0:
+						# try to place fish
+						# from the current position, go to random directions 2 times
+						directions = [ (i, j) for i in xrange(-1, 2) for j in xrange(-1, 2) ]
+						for (x_dir, y_dir) in self.session.random.sample(directions, 2):
+							# move a random amount in both directions
+							coord_to_check = (
+							  coords[0] + x_dir * self.session.random.randint(3, 9),
+							  coords[1] + y_dir * self.session.random.randint(3, 9),
+							)
+							# now we have the location, check if we can build here
+							if coord_to_check in self.ground_map:
+								Build(Fish, coord_to_check[0], coord_to_check[1], ownerless=True, \
+								      island=self)(issuer=None)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
@@ -321,8 +351,8 @@ class World(LivingObject):
 		if local:
 			player = HumanPlayer(self.session, id, name, color, inventory=inv)
 			self.player = player
-			self.session.ingame_gui.update_gold()
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)
+			self.session.ingame_gui.resbar.update_gold()
+			self.player.inventory.add_change_listener(self.session.ingame_gui.resbar.update_gold)
 		else:
 			player = Player(self.session, id, name, color, inventory=inv)
 		self.players.append(player)
@@ -432,6 +462,7 @@ class World(LivingObject):
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
+		super(World, self).save(db)
 		for name, value in self.properties.iteritems():
 			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, value)
 		for island in self.islands:

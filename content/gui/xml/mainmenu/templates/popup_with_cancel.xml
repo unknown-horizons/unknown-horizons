@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Container name="popup_window" size="374,230" position="325,235">
+	<Icon image="content/gui/images/background/notice.png" />
+
+<VBox position="40,30">
+	<Label text="" name="headline" font="libertine_headline" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<Label name="popup_message" font="libertine_14_black"
+		 wrap_text="1" max_size="300,200" min_size="300,200" />
+</VBox>
+
+<HBox min_size="265,40" position="40,170">
+	<ImageButton name="cancelButton"
+		up_image="content/gui/images/buttons/close.png"
+		hover_image="content/gui/images/buttons/close_h.png"
+		down_image="content/gui/images/buttons/close.png" />
+	<VBox min_size="210,0" name="DO_NOT_REMOVE" />
+	<Spacer />
+	<ImageButton name="okButton"
+		up_image="content/gui/images/buttons/ok.png"
+		hover_image="content/gui/images/buttons/ok_h.png"
+		down_image="content/gui/images/buttons/ok.png" />
+</HBox>
+
+</Container>

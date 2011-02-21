@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Container size="320,100">
-<Icon name="msg_left" image="content/gui/images/background/msg_bg.png" />
-
-	<Label name="text" text=""  position="12,5" 
-		wrap_text="1" size="250,100" max_size="250,100" />
-</Container>

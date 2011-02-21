@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<Container name="black_underlay">
+<Icon name="black_underlay_background"  image="content/gui/images/background/black.png" />
+
+<Container name="menu"  size="1024,768">
+<Icon image="content/gui/images/buttons/mainmenu_bg.png" />
+
+<Container size="800,800"  position="100,100">
+	<Icon image="content/gui/images/background/book.png" />
+
+	<Container size="320,500"  position="75,32"  name="left_side">
+		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
+		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
+
+	<!--
+		<RadioButton position="22,50" name="showCampaign" 
+			text="Campaign maps" size="32,32" group="gametype" />
+		<RadioButton position="22,80" name="showRandom" 
+			text="Random maps" size="32,32" group="gametype" />
+		<RadioButton position="22,110" name="showMaps" 
+			text="Free play" size="32,32" group="gametype" />
+
+		<Icon image="content/gui/images/background/hr.png" position="52,140" />
+	-->
+
+		<VBox position="50,250">
+	<!-- Later, this box will contain more settings depending on the chosen mode like:
+	CAMPAIGN MAPS:	not much, maybe difficulty and en-/disable saves
+	RANDOM MAPS:	map size, island size, how much resources 
+		(factor of maybe 0.5 to 2.0 times the standard), available climates & fertilities,
+			which AI (trader / peoples / pirates /  ...), catastrophes, much more (-,
+	FREE PLAY:	AI (checkboxes for some), catastrophes (checkboxes as well), 
+		difficulty, how many and which opponents
+		::maybe lists like this  << zohan |_ARTHUR_| berta >> )
+	-->
+			<HBox>
+				<Label name="mp_player_limit_lbl" text="Player limit:"/>
+				<ScrollArea min_size="48,20">
+					<ListBox name="playerlimit" />
+				</ScrollArea>
+			</HBox>
+		</VBox>
+
+		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
+		<TooltipButton position="100,460"  name="cancel" 
+			up_image="content/gui/images/buttons/close.png" 
+			down_image="content/gui/images/buttons/close_h.png" 
+			hover_image="content/gui/images/buttons/close_h.png" 
+			tooltip="Exit to multiplayer menu" />
+	</Container>
+
+		<!--
+		this should acctually be a Container, that contains subcontainers, but with Container,
+		the content doesn't show up. Pychan wasn't designed for Containers within Containers, 
+		which might be the source of this bug
+		-->
+	<VBox name="playerdataselectioncontainer"  position="100,190" />
+
+	<Container size="320,500"  position="420,32"  name="right_side">
+		<Label text="Choose a map:"  name="headline"  position="0,50" />
+		<ScrollArea position="0,80"  name="map_list_area"  min_size="290,250" >
+			<ListBox name="maplist"  min_size="290,330" />
+		</ScrollArea>
+	<!--
+		<ScrollArea name="map_description_area" position="5,380" />
+	-->
+
+		<Label name="create_game_lbl"  text="Create game:"  position="170,470" />
+		<TooltipButton position="255,460"  name="create" 
+			up_image="content/gui/images/buttons/ok.png" 
+			down_image="content/gui/images/buttons/ok_h.png" 
+			hover_image="content/gui/images/buttons/ok_h.png" 
+			tooltip="Create this new game" />
+
+	</Container>
+
+</Container>
+</Container>
+</Container>

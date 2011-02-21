@@ -24,6 +24,7 @@ import horizons.main
 from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.utility import adjust_widget_black_background
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'campaign'): # tutorial
@@ -38,10 +39,13 @@ class SingleplayerMenu(object):
 		eventMap = {
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
-		  'showCampaign' : Callback(self.show_single, show='campaign'),
-		  'showRandom' : Callback(self.show_single, show='random'),
-		  'showMaps' : Callback(self.show_single, show='free_maps')
+			'showCampaign' : Callback(self.show_single, show='campaign'),
+			'showRandom' : Callback(self.show_single, show='random'),
+			'showMaps' : Callback(self.show_single, show='free_maps')
 		}
+
+		adjust_widget_black_background(self.widgets['singleplayermenu'])
+
 		# init gui for subcategory
 		if show == 'random':
 			del eventMap['showRandom']

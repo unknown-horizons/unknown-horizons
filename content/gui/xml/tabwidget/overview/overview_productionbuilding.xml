@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- Overview tab for buildings -->
+<Container size="250,450">
+<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
+<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,350" />
+
+<Container position="0,70" size="250,400" >
+	<Label name="headline" position="50,7" text="Building overview" />
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+
+	<Container size="260,550" position="25,43">
+		<Label name='name' position="0,0" text="" />
+		<Label name='capacity_utilisation_label' position="0,20" text="" />
+		<Label name='capacity_utilisation' position="150,20" text="" />
+		<!--
+		Health display.
+		<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="70,25" text="" />-->
+		<TooltipIcon name="running_costs_label" tooltip="Running costs" 
+			image="content/gui/icons/resources/running_costs.png" position="155,0" />
+		<Label name="running_costs" text="" position="180,00" />
+	</Container>
+
+
+	<!--<Icon image="content/gui/images/background/hr.png" position="20,122" />-->
+
+	<VBox name="production_lines" position="20,90" />
+	<!--
+	This is a template code for a production line.
+	Since it can't be copied, it has to be specified in python code.
+	<Container size="240,200" position="20,120">
+		<VBox name="input_res">
+			<!- icons are added at runtime here ->
+		</VBox>
+
+		<Icon image="content/gui/images/icons/hud/main/production_arrow.png" position="61,16" />
+
+		<ImageButton name="toggle_active" border_size="0" position="90,10" 
+			up_image="content/gui/images/icons/hud/main/toggle_active.png" 
+			down_image="content/gui/images/icons/hud/main/toggle_active_h.png" 
+			hover_image="content/gui/images/icons/hud/main/toggle_active_h.png" />
+		<VBox name="output_res">
+			<!- icons are added at runtime here ->
+		</VBox>
+
+	</Container>
+	-->
+
+</Container>
+</Container>
+
+
+

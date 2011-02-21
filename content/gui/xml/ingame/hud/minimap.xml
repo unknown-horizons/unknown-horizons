@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Container size="255,215">
+	<Label name="speed_text" text="" position="35,22" font="libertine_18"/>
+	<Icon name="minimap_overlay_image" position="40,0"
+		image="content/gui/images/background/widgets/map_bg.png" />
+
+	<ImageButton name="speedUp" size="28,28" position="62,16"
+		up_image="content/gui/icons/widgets/minimap/speed_up.png"
+		down_image="content/gui/icons/widgets/minimap/speed_up_h.png"
+		hover_image="content/gui/icons/widgets/minimap/speed_up_h.png"
+		is_focusable="0" />
+	<ImageButton name="speedDown" size="28,28" position="43,38"
+		up_image="content/gui/icons/widgets/minimap/speed_down.png"
+		down_image="content/gui/icons/widgets/minimap/speed_down_h.png"
+		hover_image="content/gui/icons/widgets/minimap/speed_down_h.png"
+		is_focusable="0" />
+
+	<ImageButton name="rotateLeft" size="28,28" position="91,5"
+		up_image="content/gui/icons/widgets/minimap/rotate_left.png"
+		down_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
+		hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
+		is_focusable="0" />
+	<ImageButton name="rotateRight" size="28,28" position="155,5"
+		up_image="content/gui/icons/widgets/minimap/rotate_right.png"
+		down_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
+		hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
+		is_focusable="0" />
+
+	<ImageButton name="zoomIn" size="28,28" position="181,16"
+		up_image="content/gui/icons/widgets/minimap/zoom_in.png"
+		down_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
+		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
+		is_focusable="0" />
+	<ImageButton name="zoomOut" size="28,28" position="201,36"
+		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
+		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
+		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
+		is_focusable="0" />
+
+</Container>

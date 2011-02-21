@@ -26,7 +26,7 @@ The files
 /horizons/network/windows-x86/enet.pyd
 /horizons/network/windows-x64/enet.pyd
 
-is licensend by Lee Salzman under the terms of this freeware license.
+are licensend by Lee Salzman under the terms of this freeware license.
 http://enet.bespin.org/License.html
 
 
@@ -37,12 +37,10 @@ For more information visit http://reinerstileset.4players.de/readmeE.html#b
 
 Graphics from Reiner's Tileset:
 
-ALL files in content/gfx/units EXCEPT in: 
-ships/freetraders/as_trader0
-ships/warships/as_cannonboat0
-ships/pirates/as_pirate0/
-animals/as_fallowdeer0
-animals/as_reddeer0
+ALL files in content/gfx/units EXCEPT all files in: 
+ships/
+animals/as_fallowdeer0/
+animals/as_reddeer0/
 
 
 
@@ -53,7 +51,6 @@ Samples used from Freesound.org:
 
 chop.wav by hazure (used in lumberjack.ogg)
 timber.wav by hazure (used in lumberjack.ogg)
-linn kick.wav by NoiseCollector (build.ogg)
 Mercato di Montevarchi.mp3 by fonogeno (main_square.ogg)
 
 
@@ -65,12 +62,14 @@ For more information visit http://linuxlibertine.sourceforge.net/
 and http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 
 
+Published under the terms of Public Domain is:
 
-The menu background used is "Sunrise Through Mist" by Fitz Hugh Lane published under 
-the terms of Public Domain.
+"Sunrise Through Mist" by Fitz Hugh Lane used in the menu background.
 It has been obtained thanks to "The Athenaeum" ( http://the-athenaeum.org/ ).
 More details on the painting can be found at http://the-athenaeum.org/art/detail.php?ID=13984 .
 
+"striking a Bell (15cm large)" by Stephan used in the ships_bell.ogg
+More details can be found at http://www.pdsounds.org/sounds/striking_a_bell_15cm_large .
 
 
 Our own media content (graphic and sound) is published under the terms of the 

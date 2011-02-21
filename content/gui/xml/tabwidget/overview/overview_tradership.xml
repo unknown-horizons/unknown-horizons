@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container size="250,450">
+	<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
+	<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
+	<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,350" />
+
+	<Container position="0,70" size="245,350" >
+		<!-- Name of Ship -->
+		<Label name='name' border_size="0" position="80,7"/>
+
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+
+		<!-- Picture -->
+		<Icon name="shipImage" image="content/gui/images/objects/ships/trader.png" position="15,40" />
+		<Icon image="content/gui/images/background/hr.png" position="20,210" />
+
+		<HBox position="25,235">
+				<!-- The trader doesn't need health, does he?
+			<Label name="health_label" text="Health:" />
+			<Label name='health' text="" />
+				Maybe later on pirates will also try tp attack the trader and players can
+				decide whom to help from time to time … but that's a longer way to go (-,
+				-->
+			<Label name="trader_description_lbl" wrap_text="1" max_size="212,160" 
+				text="This is the free trader's ship. It will visit you from time to time to buy or sell goods." />
+		</HBox>
+
+	</Container>
+</Container>

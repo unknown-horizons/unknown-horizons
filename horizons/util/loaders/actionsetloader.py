@@ -50,6 +50,7 @@ class ActionSetLoader(object):
 			else:
 				if os.path.isdir(full_path):
 					cls._find_action_sets(full_path)
+		cls._loaded = True
 
 	@classmethod
 	def load(cls):
@@ -57,7 +58,6 @@ class ActionSetLoader(object):
 			cls.log.debug("Loading action_sets...")
 			cls._find_action_sets(PATHS.ACTION_SETS_DIRECTORY)
 			cls.log.debug("Done!")
-			cls._loaded = True
 
 		#for key, value in cls.action_sets.iteritems():
 		#	print "Action_set:" , key
@@ -69,7 +69,7 @@ class ActionSetLoader(object):
 		#				print "File:", key3, "length:", value3
 
 	@classmethod
-	def get_action_sets(cls):
+	def get_sets(cls):
 		if not cls._loaded:
 			cls.load()
 		return cls.action_sets

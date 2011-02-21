@@ -30,15 +30,42 @@ STYLES= {
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(40, 40, 40, 255),
 			'selection_color' : fife.Color(80, 80, 80, 255),
-			'font' : 'libertine_small'
+			'font' : 'libertine_14_black',
 		},
 		'Button' : {
 			'border_size': 1,
-			'margins' : (10, 5)
+			'margins' : (10, 5),
 		},
-		'CheckBox' : {
+		('Icon', 'ImageButton') : {
+			'border_size': 0
+		},
+		('CheckBox','DropDown') : {
+			'selection_color' : fife.Color(255,255,255,200),
+			'background_color' : fife.Color(255,255,255,128),
+			'base_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+			'font' : 'libertine_14_black',
 			'border_size': 0,
-			'background_color' : fife.Color(0, 0, 0, 0)
+		},
+		'Slider' : {
+			'base_color' : fife.Color(80,80,40,128),
+		},
+		'TextBox' : {
+			'font' : 'libertine_14_black',
+			'opaque': 0
+		},
+		'ListBox' : {
+			'background_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fife.Color(255,255,255,128),
+			'font' : 'libertine_14_black',
+		},
+		'ScrollArea' : {
+			'background_color' : fife.Color(255,255,255,64),
+			'foreground_color' : fife.Color(80,80,40),
+			'base_color' : fife.Color(0,0,0,0),
+			'font' : 'libertine_14_black',
+			'horizontal_scrollbar' : 0,
 		},
 		'RadioButton' : {
 			'border_size': 0,
@@ -47,15 +74,11 @@ STYLES= {
 		'Label' : {
 			'border_size': 0,
 			'background_color' : fife.Color(40, 40, 40, 0),
-			'font' : 'libertine_small'
+			'font' : 'libertine_14_black',
 		},
 		'ClickLabel' : {
 			'border_size': 0,
-			'font' : 'libertine_small'
-		},
-		'ListBox' : {
-			'border_size': 0,
-			'font' : 'libertine_small'
+			'font' : 'libertine_small_black',
 		},
 		'Window' : {
 			'border_size': 1,
@@ -64,31 +87,11 @@ STYLES= {
 			'font' : 'libertine_large',
 			'base_color' : fife.Color(60, 60, 60)
 		},
-		'TextBox' : {
-			'font' : 'libertine_small'
-		},
 		('Container','HBox','VBox') : {
 			'opaque' : 0,
 			'border_size': 0
 		},
-		('Icon', 'ImageButton', 'DropDown') : {
-			'border_size': 0
-		},
-		'ScrollArea' : {
-			'border_size': 0,
-			'horizontal_scrollbar' : 1,
-			'base_color' : fife.Color(60, 60, 60),
-			'background_color' : fife.Color(60, 60, 60)
-		},
-		#'TextField' : {
-		#	'base_color' : fife.Color(60, 60, 60),
-		#	'background_color' : fife.Color(0, 0, 0)
-		#}
-		'Slider' : {
-			'base_color' : fife.Color(80,80,40,50),
-		},
 },
-
 'menu': { #Used in the main menu and game menu
 		'default' : {
 			'border_size': 0,
@@ -271,7 +274,10 @@ STYLES= {
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 			'font' : 'libertine_14_black',
-		}
+		},
+		('Container','HBox','VBox') : {
+#			'background_image' : ****,
+		},
 },
 
 'book_t': { # same as book, only styles anything text-related

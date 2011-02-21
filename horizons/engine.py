@@ -33,11 +33,12 @@ from fife.extensions.fife_settings import Setting, FIFE_MODULE
 import horizons.main
 
 import horizons.gui.style
-from horizons.util import SQLiteAnimationLoader
+from horizons.util import UHAnimationLoader
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
+from horizons.gui.utility import center_widget
 
 UH_MODULE="unknownhorizons"
 
@@ -84,12 +85,9 @@ class Fife(ApplicationBase):
 		self._setting.setGuiStyle("book")
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
-		                                initialdata=range(0, 60, 2))
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount",
-		                                initialdata=range(1, 30))
-		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount",
-		                                initialdata=range(1, 30))
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
+		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 		                                initialdata=[0, 16, 32], requiresrestart=True)
 
@@ -125,13 +123,9 @@ class Fife(ApplicationBase):
 		current_state = self.engine_settings.isFullScreen()
 		self.engine_settings.setFullScreen(1)
 		for x,y in self.engine_settings.getPossibleResolutions():
-			if str(x) + "x" + str(y) not in possible_resolutions:
+			if x >= 1024 and y >= 768 and str(x) + "x" + str(y) not in possible_resolutions:
 				possible_resolutions.append(str(x) + "x" + str(y))
 		self.engine_settings.setFullScreen(current_state)
-		# Remove unsupported resolutions if they exist
-		for x in ["640x480", "800x600"]:
-			if x in possible_resolutions:
-				possible_resolutions.remove(x)
 		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = possible_resolutions
 
 	def update_languages(self, data=None):
@@ -216,13 +210,13 @@ class Fife(ApplicationBase):
 		self.setup_sound()
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
-		self.animationloader = SQLiteAnimationLoader()
+		self.animationloader = UHAnimationLoader(self.imagepool)
 		self.animationpool.addResourceLoader(self.animationloader)
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
-		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/misc/cursor.png')
-		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/misc/cursor_tear.png')
+		self.default_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor.png')
+		self.tearing_cursor_image = self.imagepool.addResourceFromFile('content/gui/images/cursors/cursor_tear.png')
 		self.cursor.set(fife.CURSOR_IMAGE, self.default_cursor_image)
 
 		#init pychan
@@ -249,6 +243,33 @@ class Fife(ApplicationBase):
 		self.pychan.loadFonts("content/fonts/libertine.fontdef")
 
 		self._gotInited = True
+		self.setup_setting_extras()
+
+	def setup_setting_extras(self):
+		slider_initial_data = {}
+		slider_event_map = {}
+		self.OptionsDlg = self._setting.loadSettingsDialog()
+		center_widget(self.OptionsDlg)
+		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
+						'AutosaveMaxCount' : 'autosavemaxcount',
+						'QuicksaveMaxCount' : 'quicksavemaxcount'}
+
+		for x in slider_dict.keys():
+			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
+		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
+		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
+		self.OptionsDlg.distributeInitialData(slider_initial_data)
+
+		for x in slider_dict.values():
+			slider_event_map[x] = pychan.tools.callbackWithArguments(self.update_slider_values, x)
+		slider_event_map['volume_music'] = self.set_volume_music
+		slider_event_map['volume_effects'] = self.set_volume_effects
+		self.OptionsDlg.mapEvents(slider_event_map)
+
+	def update_slider_values(self, slider, factor = 1, percent = False):
+		self.OptionsDlg.findChild(name=slider+'_value').text = \
+		     unicode(int(self.OptionsDlg.findChild(name=slider).getValue() * factor)) \
+		     + ('%' if percent else '')
 
 	def setup_sound(self):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
@@ -343,23 +364,28 @@ class Fife(ApplicationBase):
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter[emitter_name].setGain(value)
 
-	def set_volume_music(self, value):
+	def set_volume_music(self, value=None):
 		"""Sets the volume of the music emitters to 'value'.
 		@param value: double - value that's used to set the emitters gain.
 		"""
+		if not value:
+			value = self.OptionsDlg.findChild(name="volume_music").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['bgsound'].setGain(value)
+		self.update_slider_values('volume_music', factor = 500, percent = True)
 
-
-	def set_volume_effects(self, value):
+	def set_volume_effects(self, value=None):
 		"""Sets the volume of effects, speech and ambient emitters.
 		@param value: double - value that's used to set the emitters gain.
 		"""
+		if not value:
+			value = self.OptionsDlg.findChild(name="volume_effects").getValue()
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.emitter['effects'].setGain(value)
 			self.emitter['speech'].setGain(value)
 			for e in self.emitter['ambient']:
 				e.setGain(value*2)
+		self.update_slider_values('volume_effects', factor = 200, percent = True)
 
 	def run(self):
 		"""

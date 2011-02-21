@@ -79,7 +79,8 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
-		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation = rotation)
+		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation=rotation,\
+		                                  action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
 
 		if self.running_costs != 0: # Get payout every 30 seconds
@@ -187,11 +188,13 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		self.update_action_set_level(lvl)
 
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, **trash):
+	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
-		@param **trash: sometimes we get more keys we are not interested in
+		@param level: object level. Relevant for choosing an action set
+		@param rotation: rotation of the object. Any of [ 45 + 90*i for i in xrange(0, 4) ]
+		@param action_set_id: can be set if the action set is already known. If set, level isn't considered.
 		"""
 		assert isinstance(x, int)
 		assert isinstance(y, int)
@@ -252,10 +255,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 											                                       fife.ModelCoordinate(*instance_coords))
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
-		action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
+		if action_set_id is None:
+			action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
 		fife.InstanceVisual.create(instance)
 
-		action_sets = ActionSetLoader.get_action_sets()
+		action_sets = ActionSetLoader.get_sets()
 		if not action in action_sets[action_set_id]:
 			if 'idle' in action_sets[action_set_id]:
 				action='idle'
@@ -290,11 +294,13 @@ class SelectableBuilding(object):
 	selection_color = (255, 255, 0)
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
 
-	def select(self):
+	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1], \
 								         self.selection_color[2], 1)
+		if reset_cam:
+			self.session.view.set_location(self.position.origin.to_tuple())
 		self._do_select(renderer, self.position, self.session.world, self.settlement)
 
 	def deselect(self):

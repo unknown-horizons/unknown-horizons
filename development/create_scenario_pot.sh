@@ -1,10 +1,12 @@
 #!/bin/sh
 
-# Extract strings from tutorial_en.yaml for easy translation in pootle.
+# Extract strings from a scenario file for easy translation in pootle.
+#
+# Usage: sh create_scenario_pot.sh scenario [po-directory]
 #
 # If a path is given, it's assumed to be the path to the translation files
-# from pootle for the tutorial, and the .po files in there are used to
-# generate translated tutorials in horizons/scenarios/.
+# from pootle for the scenario, and the .po files in there are used to
+# generate translated scenarios in horizons/scenarios/.
 
 # ###################################################
 # Copyright (C) 2010 The Unknown Horizons Team
@@ -28,7 +30,15 @@
 # ###################################################
 
 
-python << END > po/tutorial_en.py
+if [ x$1 = x ]; then
+    echo "No scenario file given!"
+    exit 1
+elif [ ! -f content/scenarios/$1_en.yaml ]; then
+    echo "content/scenarios/$1_en.yaml doesn't exist!"
+    exit 1
+fi
+
+python << END > po/$1.py
 import yaml
 
 def prep(x):
@@ -36,7 +46,7 @@ def prep(x):
 def write(x):
 	print ('_("%s")' % x).encode('utf-8')
 
-scenario = yaml.load(open('content/scenarios/tutorial_en.yaml', 'r'))
+scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
 write(prep(scenario['difficulty']))
 write(prep(scenario['author']))
 write(prep(scenario['description']))
@@ -54,30 +64,30 @@ for event in scenario['events']:
 			write(argument)
 END
 
-xgettext --output-dir=po --output=tutorial.pot \
+xgettext --output-dir=po --output=$1.pot \
          --from-code=UTF-8 --add-comments --no-wrap --sort-by-file \
          --copyright-holder='The Unknown Horizons Team' \
          --msgid-bugs-address=team@unknown-horizons.org \
-         po/tutorial_en.py
-rm po/tutorial_en.py
+         po/$1.py
+rm po/$1.py
 
 
-if [ "x$1" = x ]; then
+if [ "x$2" = x ]; then
     exit
 fi
 
 # Create .mo files and extract the translations using gettext.
-for path in "$1"/*.po; do
-    lang=`basename "$path" | sed 's,tutorial-,,;s,.po,,'`
+for path in "$2"/*.po; do
+    lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
     mo=po/mo/$lang/LC_MESSAGES
     echo $lang:
-    mkdir -p $mo && msgfmt --statistics $path -o $mo/tutorial.mo
+    mkdir -p $mo && msgfmt --statistics $path -o $mo/$1.mo
 
-    python << END > content/scenarios/tutorial_$lang.yaml
+    python << END > content/scenarios/$1_$lang.yaml
 import yaml
 import gettext
 
-translation = gettext.translation('tutorial', 'po/mo', ['$lang'])
+translation = gettext.translation('$1', 'po/mo', ['$lang'])
 translation.install(unicode=True)
 
 def translate(x):
@@ -85,7 +95,12 @@ def translate(x):
 		return x
 	return _(x)
 
-scenario = yaml.load(open('content/scenarios/tutorial_en.yaml', 'r'))
+scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
+
+scenario['difficulty'] = _(scenario['difficulty'])
+scenario['author'] = _(scenario['author'])
+scenario['description'] = _(scenario['description'])
+
 for i, event in enumerate(scenario['events']):
 	for j, action in enumerate(event['actions']):
 		if action['type'] not in ('message', 'logbook', 'logbook_w'):

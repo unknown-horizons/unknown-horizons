@@ -26,14 +26,15 @@ from horizons.gui.widgets.tradewidget import TradeWidget
 
 class InventoryTab(TabInterface):
 
-	def __init__(self, instance = None, widget = 'tab_widget/tab_stock.xml'):
+	def __init__(self, instance = None, widget = 'island_inventory.xml', \
+	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
 		super(InventoryTab, self).__init__(widget = widget)
 		self.instance = instance
 		self.init_values()
-		self.button_up_image = 'content/gui/images/icons/hud/common/inventory_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
+		self.button_up_image = icon_path % 'u'
+		self.button_active_image = icon_path % 'a'
+		self.button_down_image = icon_path % 'd'
+		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Inventory")
 		self.widget.child_finder('inventory').init(self.instance.session.db, \
 		                                           self.instance.inventory)
@@ -56,14 +57,15 @@ class ShipInventoryTab(InventoryTab):
 
 	def __init__(self, instance = None):
 		super(ShipInventoryTab, self).__init__(
-			widget = 'tab_widget/tab_stock_ship.xml',
+			widget = 'ship_inventory.xml',
+			icon_path='content/gui/icons/tabwidget/common/inventory_%s.png',
 			instance = instance
 		)
-		self.button_up_image = 'content/gui/images/icons/hud/common/inventory_u.png'
-		self.button_active_image = 'content/gui/images/icons/hud/common/inventory_a.png'
-		self.button_down_image = 'content/gui/images/icons/hud/common/inventory_d.png'
-		self.button_hover_image = 'content/gui/images/icons/hud/common/inventory_h.png'
-		self.tooltip = _("Ship Inventory")
+#		self.button_up_image = 'content/gui/icons/tabwidget/common/inventory_u.png'
+	#	self.button_active_image = 'content/gui/icons/tabwidget/common/inventory_a.png'
+		#self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
+#		self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
+		self.tooltip = _("Ship inventory")
 
 	def refresh(self):
 		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius, self.instance.owner)
