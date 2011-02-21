@@ -33,7 +33,7 @@ from fife.extensions.fife_settings import Setting, FIFE_MODULE
 import horizons.main
 
 import horizons.gui.style
-from horizons.util import UHAnimationLoader
+from horizons.util import SQLiteAnimationLoader
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
@@ -210,7 +210,7 @@ class Fife(ApplicationBase):
 		self.setup_sound()
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
-		self.animationloader = UHAnimationLoader(self.imagepool)
+		self.animationloader = SQLiteAnimationLoader(self.imagepool)
 		self.animationpool.addResourceLoader(self.animationloader)
 
 		#Set game cursor

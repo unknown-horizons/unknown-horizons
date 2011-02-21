@@ -50,7 +50,6 @@ class TileSetLoader(object):
 			else:
 				if os.path.isdir(full_path) and entry != ".svn":
 					cls._find_tile_sets(full_path)
-		cls._loaded = True
 
 	@classmethod
 	def load(cls):
@@ -59,6 +58,7 @@ class TileSetLoader(object):
 			cls.log.debug("Loading tile_sets...")
 			cls._find_tile_sets(PATHS.TILE_SETS_DIRECTORY)
 			cls.log.debug("Done!")
+			cls._loaded = True
 
 
 #		for key, value in cls.tile_sets.iteritems():
