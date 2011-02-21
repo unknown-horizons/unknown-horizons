@@ -69,7 +69,7 @@ class ActionSetLoader(object):
 		#				print "File:", key3, "length:", value3
 
 	@classmethod
-	def get_sets(cls):
+	def get_action_sets(cls):
 		if not cls._loaded:
 			cls.load()
 		return cls.action_sets

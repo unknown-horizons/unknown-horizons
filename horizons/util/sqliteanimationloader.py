@@ -20,16 +20,17 @@
 # ###################################################
 
 from fife import fife
-from horizons.util.loaders.tilesetloader import TileSetLoader
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+
+import horizons.main
+
+from horizons.util import ActionSetLoader
 
 class SQLiteAnimationLoader(fife.ResourceLoader):
 	"""Loads animations from a SQLite database.
 	"""
-	def __init__(self, imagepool):
+	def __init__(self):
 		super(SQLiteAnimationLoader, self).__init__()
 		self.thisown = 0
-		self.imagepool = imagepool
 
 	def loadResource(self, location):
 		"""
@@ -45,21 +46,15 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 		"""
 		commands = location.getFilename().split(':')
 		id = commands.pop(0)
-		actionset, action, rotation = id.rsplit('-', 2)
+		actionset, action, rotation = id.split('-')
 		commands = zip(commands[0::2], commands[1::2])
-
-		set_loader = None
-		if actionset.startswith('ts_'):
-			set_loader = TileSetLoader
-		else:
-			set_loader = ActionSetLoader
 
 		ani = fife.Animation()
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(set_loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
-			frame_end = set_loader.get_sets()[actionset][action][int(rotation)][file]
-			idx = self.imagepool.addResourceFromFile(file)
-			img = self.imagepool.getImage(idx)
+		for file in sorted(ActionSetLoader.get_action_sets()[actionset][action][int(rotation)].iterkeys()):
+			frame_end = ActionSetLoader.get_action_sets()[actionset][action][int(rotation)][file]
+			idx = horizons.main.fife.imagepool.addResourceFromFile(file)
+			img = horizons.main.fife.imagepool.getImage(idx)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -129,9 +124,9 @@ class SQLiteAnimationLoader(fife.ResourceLoader):
 					loc.setWidth(w)
 					loc.setHeight(h)
 
-					idx = self.imagepool.addResourceFromLocation(loc)
+					idx = horizons.main.fife.imagepool.addResourceFromLocation(loc)
 					#img = horizons.main.fife.imagepool.getImage(idx)
-			ani.addFrame(fife.ResourcePtr(self.imagepool, idx), max(1, int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(fife.ResourcePtr(horizons.main.fife.imagepool, idx), max(1, int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		ani.thisown = 0

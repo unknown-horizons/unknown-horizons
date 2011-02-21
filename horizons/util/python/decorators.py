@@ -21,6 +21,8 @@
 
 """Save general python function decorators here"""
 
+import horizons.main
+
 from types import FunctionType, ClassType
 
 class cachedfunction(object):

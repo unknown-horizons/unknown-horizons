@@ -52,7 +52,7 @@ class VERSION:
 				return unicode(open(head_file).readline().strip()[0:7])
 		return u"<unknown>"
 
-	RELEASE_NAME    = "Unknown Horizons Version %s"
+	RELEASE_NAME    = _("Unknown Horizons Version %s")
 	RELEASE_VERSION = _set_version()
 
 	# change to sth like this for release

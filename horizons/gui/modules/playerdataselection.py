@@ -22,7 +22,7 @@
 
 import horizons.main
 
-from horizons.util.color import Color
+from horizons.util import Color
 
 
 class PlayerDataSelection(object):

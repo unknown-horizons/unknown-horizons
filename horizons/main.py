@@ -40,8 +40,7 @@ import thread # for thread.error raised by threading.Lock.release
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, TileSetLoader
-from horizons.util.color import Color
+from horizons.util import ActionSetLoader, TileSetLoader, Color
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui

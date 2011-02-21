@@ -210,7 +210,7 @@ class Fife(ApplicationBase):
 		self.setup_sound()
 		self.imagepool = self.engine.getImagePool()
 		self.animationpool = self.engine.getAnimationPool()
-		self.animationloader = SQLiteAnimationLoader(self.imagepool)
+		self.animationloader = SQLiteAnimationLoader()
 		self.animationpool.addResourceLoader(self.animationloader)
 
 		#Set game cursor

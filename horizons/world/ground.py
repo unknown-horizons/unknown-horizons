@@ -27,7 +27,6 @@ from fife import fife
 import horizons.main
 
 from horizons.constants import LAYERS, GROUND
-from horizons.util import TileSetLoader
 
 class SurfaceTile(object):
 	is_water = False

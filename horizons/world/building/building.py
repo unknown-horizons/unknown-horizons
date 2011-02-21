@@ -259,7 +259,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 			action_set_id = session.db.get_random_action_set(cls.id, level=level)[0]
 		fife.InstanceVisual.create(instance)
 
-		action_sets = ActionSetLoader.get_sets()
+		action_sets = ActionSetLoader.get_action_sets()
 		if not action in action_sets[action_set_id]:
 			if 'idle' in action_sets[action_set_id]:
 				action='idle'

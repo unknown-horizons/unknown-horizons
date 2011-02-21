@@ -19,27 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = []
+from loaders import saveMapFile
+fileExtensions = ('sqlite',)
 
-from living import livingProperty, LivingObject
-from changelistener import ChangeListener
-from color import Color
-from worldobject import WorldObject
-from loaders.actionsetloader import ActionSetLoader
-from loaders.tilesetloader import TileSetLoader
-from pychanchildfinder import PychanChildFinder
-from named_object import NamedObject
-from dbreader import DbReader
-from sqliteanimationloader import SQLiteAnimationLoader
+import plugins.plugin
+from plugins.importer import Importer
+class myImporter(plugins.plugin.Plugin):
+	def __init__(self, engine):
+		self.menu_items = {}
+		self.importList = []
 
-from shapes.point import Point, ConstPoint
-from shapes.rect import Rect, ConstRect
-from shapes.circle import Circle
-
-from python import Callback
-from python import decorators
-from python import stablelist
-from python import WeakList
-from python import WeakMethod
-from python import WeakMethodList
-from python import Singleton, ManualConstructionSingleton
+	def addDirs(*args):
+		pass
+plugins.importer.Importer = myImporter
