@@ -24,6 +24,7 @@
 				tooltip="Fishing Boat: \nUsed by: Fisher \nStorage: 1 slot of 1t \nCannons: none
 					\nSpeed: average \nHealth: 40" /> -->
 		<Icon image="content/gfx/dummies/square_80.png" position="0,20" />
+		<Icon image="content/gfx/units/ships/fishers/as_fisher0/idle/135/0.png" position="0,28" />
 		<TooltipButton position="60,70" tooltip="Build this ship!"
 				up_image="content/gui/images/buttons/ok.png"
 				hover_image="content/gui/images/buttons/ok_h.png"
