@@ -77,8 +77,8 @@ class GroundClass(type):
 		self.id = id
 		self._object = None
 		self.velocity = {}
-		#for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
-		#	self.velocity[unit] = (straight, diagonal)
+		for unit, straight, diagonal in db("SELECT unit, time_move_straight, time_move_diagonal FROM data.unit_velocity WHERE ground = ?", self.id):
+			self.velocity[unit] = (straight, diagonal)
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM data.ground_class WHERE ground = ?", id):
 			self.classes.append(name)
@@ -106,17 +106,17 @@ class GroundClass(type):
 		fife.ObjectVisual.create(self._object)
 		visual = self._object.get2dGfxVisual()
 
-		tile_sets = TileSetLoader.get_sets()
-		for (tile_set_id,) in db("SELECT set_id FROM data.tile_set WHERE ground_id=?", cls.id):
-			for action_id in tile_sets[tile_set_id].iterkeys():
-				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
-				fife.ActionVisual.create(action)
-				for rotation in action_sets[tile_set_id][action_id].iterkeys():
-					anim_id = horizons.main.fife.animationpool.addResourceFromFile( \
-						str(action_set_id)+"-"+str(action_id)+"-"+ \
-						str(rotation) + ':shift:center+0,bottom+8')
-					action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
-					action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())
+		#tile_sets = TileSetLoader.get_sets()
+		#for (tile_set_id,) in db("SELECT tile_set_name FROM data.tile_set WHERE ground_id=?", cls.id):
+		#	for action_id in tile_sets[tile_set_id].iterkeys():
+		#		action = cls._object.createAction(action_id+"_"+str(tile_set_id))
+		#		fife.ActionVisual.create(action)
+		#		for rotation in action_sets[tile_set_id][action_id].iterkeys():
+		#			anim_id = horizons.main.fife.animationpool.addResourceFromFile( \
+		#				str(action_set_id)+"-"+str(action_id)+"-"+ \
+		#				str(rotation) + ':shift:center+0,bottom+8')
+		#			action.get2dGfxVisual().addAnimation(int(rotation), anim_id)
+		#			action.setDuration(horizons.main.fife.animationpool.getAnimation(anim_id).getDuration())
 
 		animation_45, animation_135, animation_225, animation_315 = \
 		     db("SELECT \
