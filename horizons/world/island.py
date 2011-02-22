@@ -251,7 +251,7 @@ class Island(BuildingOwner, WorldObject):
 				   building.island == self: # don't steal from other islands
 					building.settlement = settlement
 					building.owner = settlement.owner
-					settlement.buildings.append(building)
+					settlement.add_building(building)
 
 		#TODO: inherit resources etc
 
