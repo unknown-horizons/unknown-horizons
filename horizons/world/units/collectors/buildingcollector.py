@@ -33,9 +33,9 @@ class BuildingCollector(Collector):
 	pather_class = BuildingCollectorPather
 
 	def __init__(self, home_building, **kwargs):
-		super(BuildingCollector, self).__init__(x=home_building.position.origin.x,
-												y=home_building.position.origin.y,
-												**kwargs)
+		kwargs['x'] = home_building.position.origin.x
+		kwargs['y'] = home_building.position.origin.y
+		super(BuildingCollector, self).__init__(**kwargs)
 		self.__init(home_building)
 
 	def __init(self, home_building):
@@ -187,6 +187,28 @@ class SettlerCollector(StorageCollector):
 	pass
 
 class FisherShipCollector(FieldCollector):
+
+	def __init__(self, *args, **kwargs):
+		if len(args) == 0:
+			# We haven't preset a home_building, so search for one!
+			home_building = self.get_smallest_fisher(kwargs['session'], kwargs['owner'])
+			super(FisherShipCollector, self).__init__(home_building=home_building, *args, **kwargs)
+		else:
+			super(FisherShipCollector, self).__init__(*args, **kwargs)
+
+	def get_smallest_fisher(self, session, owner):
+		"""Returns the fisher with the least amount of boats"""
+		fishers = []
+		for settlement in session.world.settlements:
+			if settlement.owner == owner:
+				fishers.extend(settlement.get_buildings_by_id(11))
+		smallest_fisher = fishers.pop()
+		for fisher in fishers:
+			if len(smallest_fisher.get_local_collectors()) > len(fisher.get_local_collectors()):
+				smallest_fisher = fisher
+
+		return smallest_fisher
+
 	def get_buildings_in_range(self, reslist=None):
 		"""Returns all buildings in range .
 		Overwrite in subclasses that need ranges around the pickup.

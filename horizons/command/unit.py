@@ -63,7 +63,7 @@ class CreateUnit(Command):
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
 		print 'unit_id: ', self.unit_id
-		print 'unit class: ', Entities.units[self.unit_id] 
+		print 'unit class: ', Entities.units[self.unit_id]
 		print 'kwargs: ', self.kwargs
 		return Entities.units[self.unit_id](session=owner.session, owner=owner, \
 		                                    x=self.x, y=self.y, **self.kwargs)

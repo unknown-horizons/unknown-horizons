@@ -43,6 +43,7 @@ class Settlement(TradePost, NamedObject):
 		self.setup_storage()
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
+		self.buildings_by_id = {}
 
 	def set_tax_setting(self, tax):
 		self.tax_setting = tax
@@ -138,8 +139,26 @@ class Settlement(TradePost, NamedObject):
 		@see Island.add_building
 		"""
 		self.buildings.append(building)
+		if building.id in self.buildings_by_id.keys():
+			self.buildings_by_id[building.id].append(building)
+		else:
+			self.buildings_by_id[building.id] = [building]
 		if hasattr(building, "add_building_production_finished_listener"):
 			building.add_building_production_finished_listener(self.settlement_building_production_finished)
+
+
+	def remove_building(self, building):
+		"""Properly removes a building from the settlement"""
+		self.buildings.remove(building)
+		self.buildings_by_id[building.id].remove(building)
+
+
+	def get_buildings_by_id(self, id):
+		"""Returns all buildings on this island that have the given id"""
+		if id in self.buildings_by_id.keys():
+			return self.buildings_by_id[id]
+		else:
+			return []
 
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""

@@ -48,7 +48,7 @@ class CollectingBuilding(BuildingResourceHandler):
 	def create_collector(self):
 		"""Creates collectors for building according to db."""
 		for collector_class, count in horizons.main.db("SELECT collector_class, count FROM \
-																									balance.collectors WHERE object_id = ?", self.id):
+		                                                balance.collectors WHERE object_id = ?", self.id):
 			for i in xrange(0, count):
 				self.add_collector(collector_class)
 

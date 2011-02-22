@@ -271,17 +271,11 @@ class Island(BuildingOwner, WorldObject):
 		return building
 
 	def remove_building(self, building):
-		assert building.island == self
+		if building.settlement is not None:
+			building.settlement.remove_building(building)
+			assert(building not in building.settlement.buildings)
 
 		# Reset the tiles this building was covering
-		for point in building.position:
-			self.path_nodes.reset_tile_walkability(point.to_tuple())
-		return building
-
-	def remove_building(self, building):
-		if building.settlement is not None:
-			building.settlement.buildings.remove(building)
-			assert(building not in building.settlement.buildings)
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
 		super(Island, self).remove_building(building)
