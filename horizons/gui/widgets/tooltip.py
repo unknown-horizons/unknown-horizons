@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2010 The Unknown Horizons Team
+# Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -65,7 +65,7 @@ class _Tooltip(object):
 			if translated_tooltip.find(r'\n') != -1:
 				temp_list =[]
 				for x in wrapped_text:
-					wrapped_item = x.replace(r'\n', '\n').strip('\n') 
+					wrapped_item = x.replace(r'\n', '\n').strip('\n')
 					temp_list.append(wrapped_item)
 				tooltip = '\n'.join(temp_list)
 			else:

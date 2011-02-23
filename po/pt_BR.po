@@ -1,4 +1,4 @@
-# Copyright (C) 2010 The Unknown Horizons Team
+# Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -1132,7 +1132,7 @@ msgstr "Resumo da Construção"
 # #############
 # #  no need to translate the following (until next comment)
 # #  since we currently work on that GUI and changes are
-# #  possible, so better don't try to update this :) 
+# #  possible, so better don't try to update this :)
 #: horizons/i18n/guitranslations.py:281
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "

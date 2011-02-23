@@ -1,5 +1,5 @@
 # Deutsche Übersetzung für Unknown Horizons
-# Copyright (C) 2010 Unknown Horizons Team
+# Copyright (C) 2011 Unknown Horizons Team
 # Christoph Egger <unknown-horizons@christoph-egger.org>
 #
 # Michael Skiba <trans@michael-skiba.de>, 2009.

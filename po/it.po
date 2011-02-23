@@ -1,5 +1,5 @@
 # Italian translation for Unknown Horizons
-# Copyright (C) 2010 Unknown Horizons Team
+# Copyright (C) 2011 Unknown Horizons Team
 # Fabio Pedretti <fabio.ped@libero.it>, 2010
 #
 msgid ""

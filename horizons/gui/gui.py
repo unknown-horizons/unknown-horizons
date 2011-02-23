@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2010 The Unknown Horizons Team
+# Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -153,7 +153,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_pause(self):
 		"""
 		Show Pause menu
-		"""		
+		"""
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
 			'savegameButton' : self.session.save,
@@ -164,9 +164,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'creditsLink'    : self.show_credits,
 			'loadgameButton' : horizons.main.load_game
 		})
-		
+
 		adjust_widget_black_background(self.widgets['gamemenu'])
-		
+
 		self.session.speed_pause()
 		self.on_escape = self.return_to_game
 

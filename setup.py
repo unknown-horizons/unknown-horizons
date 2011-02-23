@@ -62,7 +62,7 @@ cmdclass = {
 
 setup(
 	name='UnknownHorizons',
-	version='2010.1',
+	version='2011.1',
 	description='Realtime Economy Simulation and Strategy Game',
 	author='The Unknown Horizons Team',
 	author_email='team@unknown-horizons.org',

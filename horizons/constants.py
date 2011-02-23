@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2010 The Unknown Horizons Team
+# Copyright (C) 2011 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,7 +57,7 @@ class VERSION:
 
 	# change to sth like this for release
 	#RELEASE_NAME = _("Unknown Horizons Alpha %s")
-	#RELEASE_VERSION = u'2010.1'
+	#RELEASE_VERSION = u'2011.1'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 9
