@@ -25,30 +25,43 @@
 <VBox position="190,45" name="credits">
 	<Label text="Translators" name="headline_translators" font="libertine_headline" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<VBox> <Label text="Brazilian Portuguese" font="libertine_headline" />
-		<VBox name="book0">
-			<Label text="hpoyatos (Henrique Poyatos)" />
-		</VBox>
-	</VBox>
 	<VBox> <Label text="Catalan" font="libertine_headline" />
-		<VBox name="book1">
-			<Label text="RainCT (Siegfried Gevatter)" />
-		</VBox>
-	</VBox>
-	<VBox> <Label text="Estonian" font="libertine_headline" />
-		<VBox name="book2">
-			<Label text="RM87 (Mihkel Raemmel)" />
-		</VBox>
-	</VBox>
-	<VBox> <Label text="French" font="libertine_headline" />
-		<VBox name="book3">
-			<Label text="deathmaster9 (Marc Moussa)" />
-			<Label text="LiveWire (Vincent Herilier)" />
+		<VBox name="book0">
+			<Label text="Siegfried Gevatter (RainCT)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="German" font="libertine_headline" />
-		<VBox name="book4">
+		<VBox name="book1">
 			<Label text="Michael Skiba" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Spanish" font="libertine_headline" />
+		<VBox name="book2">
+			<Label text="Nikolai Woutlan" />
+			<Label text="William Cabrera" />
+			<Label text="Álex Plaza" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Estonian" font="libertine_headline" />
+		<VBox name="book3">
+			<Label text="Mihkel Rämmel (RM87)" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="French" font="libertine_headline" />
+		<VBox name="book4">
+			<Label text="Marc Moussa (deathmaster9)" />
+			<Label text="Vincent Herilier (LiveWire)" />
+			<Label text="Sebastien Charpentier" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Lithuanian" font="libertine_headline" />
+		<VBox name="book5">
+			<Label text="Mantas Kondrotas" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Italian" font="libertine_headline" />
+		<VBox name="book6">
+			<Label text="Fabio Pedretti" />
 		</VBox>
 	</VBox>
 
@@ -56,31 +69,44 @@
 </VBox>
 
 <VBox position="525,70" name="credits2">
-	<VBox> <Label text="Italian" font="libertine_headline" />
-		<VBox name="book5">
-			<Label text="Fabio Pedretti" />
+	<VBox> <Label text="Norwegian" font="libertine_headline" />
+		<VBox name="book7">
+			<Label text="Frode Woldsund (frodus)" />
+			<Label text="Jared Isaksen (JeThro)" />
+			<Label text="Audun Pers" />
 		</VBox>
 	</VBox>
-	<VBox> <Label text="Norwegian" font="libertine_headline" />
-		<VBox name="book6">
-			<Label text="frodus (Frode Woldsund)" />
-			<Label text="JeThro (Jared Isaksen)" />
+	<VBox> <Label text="Dutch" font="libertine_headline" />
+		<VBox name="book8">
+			<Label text="Luth" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish" font="libertine_headline" />
-		<VBox name="book7">
-			<Label text="Amfidiusz (Adrian Marcinkowski)" />
-			<Label text="soeb (Stanislaw Gackowski)" />
+		<VBox name="book9">
+			<Label text="Adrian Marcinkowski (Amfidiusz)" />
+			<Label text="Stanislaw Gackowski (soeb)" />
+			<Label text="Mateusz Bartkowski" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Portuguese" font="libertine_headline" />
-		<VBox name="book8">
-			<Label text="MadMonk (Nuno Alves)" />
+		<VBox name="book10">
+			<Label text="Nuno Alves (MadMonk)" />
 		</VBox>
 	</VBox>
-	<VBox> <Label text="Spanish" font="libertine_headline" />
-		<VBox name="book9">
-			<Label text="Nikolai Woutlan" />
+	<VBox> <Label text="Brazilian Portuguese" font="libertine_headline" />
+		<VBox name="book11">
+			<Label text="Henrique Poyatos (hpoyatos)" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Russian" font="libertine_headline" />
+		<VBox name="book12">
+			<Label text="Sergei Chistyakov (devcode)" />
+			<Label text="Sergey Stepanov" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Slovenian" font="libertine_headline" />
+		<VBox name="book13">
+			<Label text="Andrej Žnidaršič" />
 		</VBox>
 	</VBox>
 </VBox>
