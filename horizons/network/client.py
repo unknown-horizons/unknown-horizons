@@ -461,11 +461,11 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def listgames(self, mapname = None, maxplayers = None):
+	def listgames(self, mapname = None, maxplayers = None, onlyThisVersion = False):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not connected to any server")
 		self.log.debug("[LIST]")
-		self.send(packets.client.cmd_listgames(self.version, mapname, maxplayers))
+		self.send(packets.client.cmd_listgames(self.version if onlyThisVersion else -1, mapname, maxplayers))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gameslist])
 		if packet is None:
 			raise network.CommandError("No reply from server")

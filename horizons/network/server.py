@@ -192,7 +192,7 @@ class Server(object):
 				continue
 			if _game.maxplayers == len(_game.players):
 				continue
-			if packet.clientversion != _game.clientversion:
+			if packet.clientversion != -1 and packet.clientversion != _game.clientversion:
 				continue
 			if packet.mapname and packet.mapname != _game.mapname:
 				continue

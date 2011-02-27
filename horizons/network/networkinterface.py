@@ -225,10 +225,13 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion)
+	
+	def get_version(self):
+		return self._client.version
 
 class MPGame(object):
-	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname):
+	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version):
 		self.uuid       = uuid
 		self.creator    = creator
 		self.mapname    = mapname
@@ -236,6 +239,7 @@ class MPGame(object):
 		self.playercnt  = playercnt
 		self.players    = players
 		self.localname  = localname
+		self.version = version
 
 	def get_uuid(self):
 		return self.uuid
@@ -262,6 +266,9 @@ class MPGame(object):
 
 	def get_player_count(self):
 		return self.playercnt
+
+	def get_version(self):
+		return self.version
 
 	def __str__(self):
 		return self.get_map_name() + " (" + self.get_player_count() + "/" + self.get_player_limit() + ")"

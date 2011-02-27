@@ -127,7 +127,7 @@ class MultiplayerMenu(object):
 				index = self.current.collectData('gamelist')
 				return self.games[index]
 		except:
-			return MPGame(-1, "", "", 0, 0, [], "")
+			return MPGame(-1, "", "", 0, 0, [], "", -1)
 
 	def __update_game_details(self, game = None):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
@@ -153,7 +153,9 @@ class MultiplayerMenu(object):
 			game = self.__get_selected_game()
 		if game.get_uuid() == -1: # -1 signals no game
 			return
-
+		if game.get_version() != NetworkInterface().get_version():
+			self.show_popup("Wrong version", "The game's version differs from your version. Game version: %s Your version: %s" % (game.get_version(), NetworkInterface().get_version()))
+			return
 		# acctual join
 		join_worked = NetworkInterface().joingame(game.get_uuid())
 		if not join_worked:
