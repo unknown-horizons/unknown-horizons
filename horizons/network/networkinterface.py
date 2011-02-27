@@ -191,10 +191,10 @@ class NetworkInterface(object):
 		for callback in self.cbs_error:
 			callback(exception)
 
-	def get_active_games(self):
+	def get_active_games(self, only_this_version_allowed = False):
 		ret_mp_games = []
 		try:
-			games = self._client.listgames()
+			games = self._client.listgames(onlyThisVersion=only_this_version_allowed)
 		except NetworkException, e:
 			self._cb_error(e)
 			return None
@@ -227,7 +227,7 @@ class NetworkInterface(object):
 	def game2mpgame(self, game):
 		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion)
 	
-	def get_version(self):
+	def get_clientversion(self):
 		return self._client.version
 
 class MPGame(object):

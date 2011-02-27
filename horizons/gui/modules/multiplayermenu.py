@@ -64,6 +64,7 @@ class MultiplayerMenu(object):
 			self.show_main()
 			return
 		self.current.findChild(name='gamelist').capture(self.__update_game_details)
+		self.current.findChild(name='showonlyownversion').capture(self.__show_only_own_version_toggle)
 		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 
 		self.current.show()
@@ -111,10 +112,10 @@ class MultiplayerMenu(object):
 		"""Refresh list of games.
 		Only possible in multiplayer main menu state.
 		@return bool, whether refresh worked"""
-		self.games = NetworkInterface().get_active_games()
+		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
 			return False
-		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)"%(x.get_map_name(), x.get_player_count(), x.get_player_limit()), self.games)})
+		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)%s"%(x.get_map_name(), x.get_player_count(), x.get_player_limit(), " Version differs!" if x.get_version() != NetworkInterface().get_clientversion() else ""), self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map
 		self.__update_game_details()
 		return True
@@ -129,6 +130,9 @@ class MultiplayerMenu(object):
 		except:
 			return MPGame(-1, "", "", 0, 0, [], "", -1)
 
+	def __show_only_own_version_toggle(self):
+		self.__refresh()
+	
 	def __update_game_details(self, game = None):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
@@ -153,8 +157,8 @@ class MultiplayerMenu(object):
 			game = self.__get_selected_game()
 		if game.get_uuid() == -1: # -1 signals no game
 			return
-		if game.get_version() != NetworkInterface().get_version():
-			self.show_popup("Wrong version", "The game's version differs from your version. Game version: %s Your version: %s" % (game.get_version(), NetworkInterface().get_version()))
+		if game.get_version() != NetworkInterface().get_clientversion():
+			self.show_popup("Wrong version", "The game's version differs from your version. Game version: %s Your version: %s" % (game.get_version(), NetworkInterface().get_clientversion()))
 			return
 		# acctual join
 		join_worked = NetworkInterface().joingame(game.get_uuid())

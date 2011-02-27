@@ -79,8 +79,12 @@
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->
+			<HBox>
+			<Label name="game_showonlyownversion"  text="Show only games with the same version:" />
+			<CheckBox min_size="32,32"  name="showonlyownversion" />
+			</HBox>
 		</VBox>
-
+		
 		<Spacer />
 
 		<HBox min_size="0,40"><Spacer />
