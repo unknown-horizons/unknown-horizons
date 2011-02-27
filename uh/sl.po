@@ -2,33 +2,34 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-02-27 15:54+0200\n"
+"Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
-msgstr ""
+msgstr "Zmagali ste!"
 
 #: horizons/campaign/actions.py:72
 msgid "You have completed this scenario. "
-msgstr ""
+msgstr "Dokon?ali ste ta scenarij."
 
 #: horizons/campaign/campaigneventhandler.py:150
 #: horizons/campaign/campaigneventhandler.py:160
 msgid "unknown"
-msgstr ""
+msgstr "neznano"
 
 #: horizons/constants.py:55
 #, python-format
@@ -37,11 +38,11 @@ msgstr ""
 
 #: horizons/engine.py:95
 msgid "System default"
-msgstr ""
+msgstr "Sistemsko privzeto"
 
 #: horizons/engine.py:115 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr ""
+msgstr "Opozorilo"
 
 #: horizons/engine.py:116
 msgid ""
@@ -53,15 +54,15 @@ msgstr ""
 #: horizons/engine.py:178
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Nastavljenega jezika %(lang)s na %(place)s ni bilo mogo?e naložiti."
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Ali ste prepri?ani, da želite kon?ati Unknown Horizons?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "Kon?aj igro"
 
 #: horizons/gui/gui.py:178
 msgid ""
@@ -72,67 +73,68 @@ msgstr ""
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
-msgstr ""
+msgstr "Pozvoni z zvoncem"
 
 #: horizons/gui/gui.py:204
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Ali ste prepri?ani, da želite kon?ati teko?o sejo?"
 
 #: horizons/gui/gui.py:206
 msgid "Quit Session"
-msgstr ""
+msgstr "Kon?aj sejo"
 
 #: horizons/gui/gui.py:233
 msgid "No file selected"
-msgstr ""
+msgstr "Ni izbrane datoteke"
 
 #: horizons/gui/gui.py:233
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Izbrati morate shranjeno igro za izbris"
 
 #: horizons/gui/gui.py:236
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Ali resni?no želite izbrisati shranjeno igro \"%s\"?"
 
 #: horizons/gui/gui.py:238
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Potrdite izbris"
 
 #: horizons/gui/gui.py:243 horizons/main.py:198
 msgid "Error!"
-msgstr ""
+msgstr "Napaka!"
 
 #: horizons/gui/gui.py:243
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Izbris shranjene igre je spodletel!"
 
 #: horizons/gui/gui.py:262
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Neznani shranjeni podatki\n"
 
 #: horizons/gui/gui.py:264
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Shranjeno na %s\n"
 
 #: horizons/gui/gui.py:265
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %d. %B "
 
 #: horizons/gui/gui.py:267
+#, fuzzy
 msgid "Saved 1 time\n"
-msgstr ""
+msgstr "Shranjeno %d krat"
 
 #: horizons/gui/gui.py:269
 #, python-format
 msgid "Saved %d times\n"
-msgstr ""
+msgstr "Shranjeno %d krat\n"
 
 #: horizons/gui/gui.py:275
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Shranjena igra raz. %d"
 
 #: horizons/gui/gui.py:277
 #, python-format
@@ -140,27 +142,30 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"OPOZORILO: Nezdružljiva raz. %(ver)d!\n"
+"Zahtevana raz. %(need)d!"
 
 #: horizons/gui/gui.py:280
+#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "NEZDRUŽLJIVA RAZLI?ICA\n"
 
 #: horizons/gui/gui.py:314
 msgid "No saved games"
-msgstr ""
+msgstr "Ni shranjenih iger"
 
 #: horizons/gui/gui.py:314
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Ni shranjenih iger za nalaganje"
 
 #: horizons/gui/gui.py:321 horizons/i18n/guitranslations.py:431
 #: horizons/i18n/guitranslations.py:470
 msgid "Load game"
-msgstr ""
+msgstr "Naloži igro"
 
 #: horizons/gui/gui.py:321 horizons/i18n/guitranslations.py:425
 msgid "Save game"
-msgstr ""
+msgstr "Shrani igro"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:363
@@ -169,30 +174,32 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Shranjena igra z imenom \"%s\" že obstaja. \n"
+"Ali jo želite prepisati?"
 
 #: horizons/gui/gui.py:364
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Potrditev za prepis"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 msgid "Network Error"
-msgstr ""
+msgstr "Napaka omrežja"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Nekaj je bilo narobe z omrežjem: _"
 
 #: horizons/gui/modules/multiplayermenu.py:136
 msgid "Map: "
-msgstr ""
+msgstr "Zemljevid:"
 
 #: horizons/gui/modules/multiplayermenu.py:137
 msgid "Players: "
-msgstr ""
+msgstr "Igralci:"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Creator: "
-msgstr ""
+msgstr "Ustvarjalec:"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
@@ -200,39 +207,43 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr ""
+msgstr "Težavnost: _"
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr ""
+msgstr "Avtor: _"
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr ""
+msgstr "Opis: _"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
-msgstr ""
+msgstr "Neveljavno ime igralca"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Vnesli ste neveljavno ime igralca"
 
 #: horizons/gui/modules/singleplayermenu.py:137
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Neveljavna datoteka scenarija"
 
 #: horizons/gui/modules/singleplayermenu.py:138
 msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
+"Izbrana datoteka ni veljavna datoteka scenarija.\n"
+"Sporo?ilo o napaki: _"
 
 #: horizons/gui/modules/singleplayermenu.py:139
 msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
+"\n"
+"Poro?ajte o tem avtorju."
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
@@ -240,7 +251,7 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Srestva so še vedno potrebovana:"
 
 #: horizons/gui/tabs/boatbuildertab.py:170
 msgid "Fisher boats"
@@ -267,60 +278,68 @@ msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Pove?anje"
 
 #: horizons/gui/tabs/buyselltab.py:66 horizons/i18n/guitranslations.py:616
 msgid "Trade"
-msgstr ""
+msgstr "Trguj"
 
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:573
 #: horizons/i18n/guitranslations.py:621
 msgid "Inventory"
-msgstr ""
+msgstr "Inventar"
 
 #. self.button_up_image = 'content/gui/icons/tabwidget/common/inventory_u.png'
 #. self.button_active_image = 'content/gui/icons/tabwidget/common/inventory_a.png'
 #. self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
 #. self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 #: horizons/gui/tabs/inventorytab.py:68
+#, fuzzy
 msgid "Ship inventory"
-msgstr ""
+msgstr "Ladijski inventar"
 
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:564
 msgid "Account"
-msgstr ""
+msgstr "Ra?un"
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:248 horizons/i18n/guitranslations.py:582
 msgid "Settler overview"
-msgstr ""
+msgstr "Pregled naselitve"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:302
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:586
 #: horizons/i18n/guitranslations.py:597 horizons/i18n/guitranslations.py:613
 msgid "Overview"
-msgstr ""
+msgstr "Pregled"
 
 #: horizons/gui/tabs/overviewtab.py:96
+#, fuzzy
 msgid "Branch office overview"
 msgstr ""
+"Podružni?na pisarna \n"
+" Pregled"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
+#, fuzzy
 msgid "Ship overview"
-msgstr ""
+msgstr "Pregled ladje"
 
 #: horizons/gui/tabs/overviewtab.py:156
+#, fuzzy
 msgid "Production overview"
-msgstr ""
+msgstr "Pregled proizvodnje"
 
 #: horizons/gui/tabs/overviewtab.py:162
+#, fuzzy
 msgid "Destroy building"
-msgstr ""
+msgstr "Uni?i zgradbo"
 
 #: horizons/gui/tabs/overviewtab.py:286
+#, fuzzy
 msgid "Market place overview"
-msgstr ""
+msgstr "Pregled tržnice"
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
@@ -328,118 +347,194 @@ msgid "Limit: %st per slot"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:315
+#, fuzzy
 msgid "Sailor buildings"
-msgstr ""
+msgstr "Mornarske zgradbe"
 
 #: horizons/i18n/guitranslations.py:316
+#, fuzzy
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Prebivalci in infrastruktura"
 
 #: horizons/i18n/guitranslations.py:317 horizons/i18n/guitranslations.py:333
 #: horizons/i18n/guitranslations.py:349
 msgid "Services"
-msgstr ""
+msgstr "Storitve"
 
 #: horizons/i18n/guitranslations.py:318 horizons/i18n/guitranslations.py:331
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:348
 msgid "Companies"
-msgstr ""
+msgstr "Podjetja"
 
 #: horizons/i18n/guitranslations.py:319
+#, fuzzy
 msgid "Tent: Houses your inhabitants."
 msgstr ""
+"Šotor: \n"
+"Bivališ?e za \n"
+"vaše prebivalce."
 
 #: horizons/i18n/guitranslations.py:320
+#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
 msgstr ""
+"Shramba: \n"
+"Razširi zalogo \n"
+"in zagotovi \n"
+"nabiralce."
 
 #: horizons/i18n/guitranslations.py:321
+#, fuzzy
 msgid "Trail: Needed for collecting goods."
 msgstr ""
+"Sled: \n"
+"Nujno za \n"
+"zbiranje dobrin."
 
 #: horizons/i18n/guitranslations.py:322
+#, fuzzy
 msgid "Main square: Supplies citizens with goods."
 msgstr ""
+"Glavni trg: \n"
+"Zagotavlja dobrine \n"
+"državljanom."
 
 #: horizons/i18n/guitranslations.py:323
+#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
 msgstr ""
+"Paviljon: \n"
+"Izpolni verske \n"
+"potrebe mornarjev."
 
 #: horizons/i18n/guitranslations.py:324
+#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
+"Signalni ogenj: \n"
+"Igralci dovoli \n"
+"trgovanje s \n"
+"prostim trgovcem."
 
 #: horizons/i18n/guitranslations.py:325
+#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
 msgstr ""
+"Drvar: \n"
+"Poseka drevesa \n"
+"in iz njih naredi \n"
+"deske."
 
 #: horizons/i18n/guitranslations.py:326 sqlite/Building
 msgid "Tree"
-msgstr ""
+msgstr "Drevo"
 
 #: horizons/i18n/guitranslations.py:327
+#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
 msgstr ""
+"Lovec: \n"
+"Lovi divje \n"
+"gozde živali. \n"
+"Proizvaja hrano."
 
 #: horizons/i18n/guitranslations.py:328
+#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
 msgstr ""
+"Ribi?: \n"
+"Lovi morske ribe. \n"
+"Proizvaja hrano."
 
 #: horizons/i18n/guitranslations.py:330
+#, fuzzy
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Pionirske zgradbe"
 
 #: horizons/i18n/guitranslations.py:332
 msgid "Fields"
-msgstr ""
+msgstr "Polja"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Military"
-msgstr ""
+msgstr "Vojska"
 
 #: horizons/i18n/guitranslations.py:336
+#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
 msgstr ""
+"Kmetija: \n"
+"Proizvaja poljš?ine \n"
+"in vzreja živino."
 
 #: horizons/i18n/guitranslations.py:337
+#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
 msgstr ""
+"Tkalec: \n"
+"Ov?jo volno pretvori \n"
+"v blago."
 
 #: horizons/i18n/guitranslations.py:338
+#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
 msgstr ""
+"Rudnik gline: \n"
+"Koplje glino iz \n"
+"nahajališ?a."
 
 #: horizons/i18n/guitranslations.py:339
+#, fuzzy
 msgid "Brickyard: Turns clay into bricks."
 msgstr ""
+"Opekarna: \n"
+"Iz gline naredi \n"
+"opeke."
 
 #: horizons/i18n/guitranslations.py:340
+#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
 msgstr ""
+"Polje krompirja: \n"
+"Proizvaja hrano. \n"
+"Zahteva kmetijo."
 
 #: horizons/i18n/guitranslations.py:341
+#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
 msgstr ""
+"Pašnik: \n"
+"Vzreja ovce. \n"
+"Proizvede voljno. \n"
+"Zahteva kmetijo."
 
 #: horizons/i18n/guitranslations.py:342
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:343
+#, fuzzy
 msgid "Village school: Provides education."
 msgstr ""
+"Vaška šola: \n"
+"Zagotavlja izobrazbo."
 
 #: horizons/i18n/guitranslations.py:344
+#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
+"?olnar: \n"
+"Gradi ?olne in \n"
+"majhne ladje.Izgrajen na obali."
 
 #: horizons/i18n/guitranslations.py:345
 msgid "Distillery: Turns sugar into liquor."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:347
+#, fuzzy
 msgid "Settler buildings"
-msgstr ""
+msgstr "Zgradbe naseljencev"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Iron mine: Gets iron ore from deposit."
@@ -463,11 +558,12 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:356
 msgid "Build"
-msgstr ""
+msgstr "Zgradi"
 
 #: horizons/i18n/guitranslations.py:357 horizons/i18n/guitranslations.py:577
+#, fuzzy
 msgid "Running costs:"
-msgstr ""
+msgstr "Stroški delovanja"
 
 #: horizons/i18n/guitranslations.py:359
 msgid "Inhabitants"
@@ -475,290 +571,296 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:360
 msgid "Click to change the name of your settlement."
-msgstr ""
+msgstr "Kliknite za spremembo imena svoje naselitve."
 
 #: horizons/i18n/guitranslations.py:362
 msgid "Destroy"
-msgstr ""
+msgstr "Uni?i"
 
 #: horizons/i18n/guitranslations.py:363
 msgid "Captain's log"
-msgstr ""
+msgstr "Kapitanov dnevnik"
 
 #: horizons/i18n/guitranslations.py:364
 msgid "Build menu"
-msgstr ""
+msgstr "Meni gradnje"
 
 #: horizons/i18n/guitranslations.py:365 horizons/i18n/guitranslations.py:427
 #: horizons/i18n/guitranslations.py:466
 msgid "Help"
-msgstr ""
+msgstr "Pomo?"
 
 #: horizons/i18n/guitranslations.py:366
 msgid "Game menu"
-msgstr ""
+msgstr "Meni igre"
 
 #: horizons/i18n/guitranslations.py:368
 msgid "Food"
-msgstr ""
+msgstr "Hrana"
 
 #: horizons/i18n/guitranslations.py:369
 msgid "Tools"
-msgstr ""
+msgstr "Orodja"
 
 #: horizons/i18n/guitranslations.py:370
 msgid "Boards"
-msgstr ""
+msgstr "Deske"
 
 #: horizons/i18n/guitranslations.py:371
 msgid "Bricks"
-msgstr ""
+msgstr "Opeke"
 
 #: horizons/i18n/guitranslations.py:372
 msgid "Textiles"
-msgstr ""
+msgstr "Blago"
 
 #: horizons/i18n/guitranslations.py:374
 msgid "Gold"
-msgstr ""
+msgstr "Zlato"
 
 #: horizons/i18n/guitranslations.py:376
 msgid "Change name"
-msgstr ""
+msgstr "Spremeni ime"
 
 #: horizons/i18n/guitranslations.py:377
 msgid "Enter new name:"
-msgstr ""
+msgstr "Vnesite novo ime:"
 
 #: horizons/i18n/guitranslations.py:379
 msgid "Chat"
-msgstr ""
+msgstr "Klepet"
 
 #: horizons/i18n/guitranslations.py:380
 msgid "Enter your message:"
-msgstr ""
+msgstr "Vnesite svoje sporo?ilo:"
 
 #: horizons/i18n/guitranslations.py:382
 msgid "Game paused"
-msgstr ""
+msgstr "Igra je v premoru"
 
 #: horizons/i18n/guitranslations.py:383
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Pritisnite P ali kliknite spodaj za nadaljevanje igre!"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "Prodaj ali kupi vire"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Legend:"
-msgstr ""
+msgstr "Legenda:"
 
 #: horizons/i18n/guitranslations.py:387
 msgid "Buy resources"
-msgstr ""
+msgstr "Kupi vire"
 
 #: horizons/i18n/guitranslations.py:388
 msgid "Sell resources"
-msgstr ""
+msgstr "Prodaj vire"
 
 #: horizons/i18n/guitranslations.py:390
 msgid "Pause production"
-msgstr ""
+msgstr "Premor proizvodnje"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Start production"
-msgstr ""
+msgstr "Za?ni proizvodnjo"
 
 #: horizons/i18n/guitranslations.py:393
+#, fuzzy
 msgid "Leave Captain's log"
-msgstr ""
+msgstr "Zapusti kapitanov dnevnik"
 
 #: horizons/i18n/guitranslations.py:394
 msgid "Read prev. entries"
-msgstr ""
+msgstr "Beri pred. vnose"
 
 #: horizons/i18n/guitranslations.py:395
 msgid "Read next entries"
-msgstr ""
+msgstr "Beri nasl. vnose"
 
 #: horizons/i18n/guitranslations.py:397 horizons/i18n/guitranslations.py:407
 #: horizons/i18n/guitranslations.py:412 horizons/i18n/guitranslations.py:417
 msgid "UH-Team"
-msgstr ""
+msgstr "UH-ekipa"
 
 #: horizons/i18n/guitranslations.py:398
 msgid "Project Coordination"
-msgstr ""
+msgstr "Koordinacija projekta"
 
 #: horizons/i18n/guitranslations.py:399
 msgid "Programming"
-msgstr ""
+msgstr "Programiranje"
 
 #: horizons/i18n/guitranslations.py:400
 msgid "Game-Play Design"
-msgstr ""
+msgstr "Zasnova igralnosti"
 
 #: horizons/i18n/guitranslations.py:401
 msgid "Sound and Music Artists"
-msgstr ""
+msgstr "Zvo?ni in glasbeni umetniki"
 
 #: horizons/i18n/guitranslations.py:402
 msgid "Graphic Artists"
-msgstr ""
+msgstr "Grafi?ni umetniki"
 
 #: horizons/i18n/guitranslations.py:403 horizons/i18n/guitranslations.py:408
 #: horizons/i18n/guitranslations.py:413 horizons/i18n/guitranslations.py:418
 msgid "Patchers"
-msgstr ""
+msgstr "Pošiljalci popravkov"
 
 #: horizons/i18n/guitranslations.py:404 horizons/i18n/guitranslations.py:409
 #: horizons/i18n/guitranslations.py:414 horizons/i18n/guitranslations.py:419
 msgid "Translators"
-msgstr ""
+msgstr "Prevajalci"
 
 #: horizons/i18n/guitranslations.py:405 horizons/i18n/guitranslations.py:410
 #: horizons/i18n/guitranslations.py:415 horizons/i18n/guitranslations.py:420
 msgid "Special Thanks"
-msgstr ""
+msgstr "Posebne zahvale"
 
 #: horizons/i18n/guitranslations.py:421
 msgid "The whole FIFE team (www.fifengine.de)"
-msgstr ""
+msgstr "Celotna ekipa FIFE (www.fifeengine.de)"
 
 #: horizons/i18n/guitranslations.py:424
+#, fuzzy
 msgid "Return to game"
-msgstr ""
+msgstr "Vrni se v igro"
 
 #: horizons/i18n/guitranslations.py:426 horizons/i18n/guitranslations.py:465
 #: horizons/i18n/guitranslations.py:503
 msgid "Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #: horizons/i18n/guitranslations.py:428
+#, fuzzy
 msgid "Cancel game"
-msgstr ""
+msgstr "Prekli?i igro"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:468
+#, fuzzy
 msgid "Chime the bell"
-msgstr ""
+msgstr "Pozvoni z zvoncem"
 
 #: horizons/i18n/guitranslations.py:430 horizons/i18n/guitranslations.py:469
+#, fuzzy
 msgid "Credits"
-msgstr ""
+msgstr "Zasluge"
 
 #: horizons/i18n/guitranslations.py:433
+#, fuzzy
 msgid "Key bindings"
-msgstr ""
+msgstr "Tipkovne bližnjice"
 
 #: horizons/i18n/guitranslations.py:434
 msgid "{LEFT} = Scroll left"
-msgstr ""
+msgstr "{LEVO} = Drsi levo"
 
 #: horizons/i18n/guitranslations.py:435
 msgid "{RIGHT} = Scroll right"
-msgstr ""
+msgstr "{DESNO} = Drsi desno"
 
 #: horizons/i18n/guitranslations.py:436
 msgid "{UP} = Scroll up"
-msgstr ""
+msgstr "{GOR} = Drsi navzgor"
 
 #: horizons/i18n/guitranslations.py:437
 msgid "{DOWN} = Scroll down"
-msgstr ""
+msgstr "{DOL} = Drsi navzdol"
 
 #: horizons/i18n/guitranslations.py:438
 msgid "{ + } = Increase game speed"
-msgstr ""
+msgstr "{ + } = Pove?a hitrost igre"
 
 #: horizons/i18n/guitranslations.py:439
 msgid "{ - } = Decrease game speed"
-msgstr ""
+msgstr "{ - } = Zmanjša hitrost igre"
 
 #: horizons/i18n/guitranslations.py:440
 msgid "{ , } = Rotate building left"
-msgstr ""
+msgstr "{ , } = Zavrti zgradbo levo"
 
 #: horizons/i18n/guitranslations.py:441
 msgid "{ . } = Rotate building right"
-msgstr ""
+msgstr "{ . } = Zavrti zgradbo desno"
 
 #: horizons/i18n/guitranslations.py:442
 msgid "{B} = Show build menu"
-msgstr ""
+msgstr "{ B } = Pokaži meni gradnje"
 
 #: horizons/i18n/guitranslations.py:443
 msgid "{ESC} = Show pause menu"
-msgstr ""
+msgstr "{ ESC } = Pokaži meni premora"
 
 #: horizons/i18n/guitranslations.py:444
 msgid "{F1} = Display help"
-msgstr ""
+msgstr "{ F1 } = Prikaži pomo?"
 
 #: horizons/i18n/guitranslations.py:445
 msgid "{F5} = Quicksave"
-msgstr ""
+msgstr "{ F5 } = Hitro shrani"
 
 #: horizons/i18n/guitranslations.py:446
 msgid "{F9} = Quickload"
-msgstr ""
+msgstr "{ F9 } = Hitro naloži"
 
 #: horizons/i18n/guitranslations.py:447
 msgid "{F10} = Toggle console on/off"
-msgstr ""
+msgstr "{ F10 } = Preklopi vklop/izklop konzole"
 
 #: horizons/i18n/guitranslations.py:448
 msgid "{P} = Pause game"
-msgstr ""
+msgstr "{ P } = Premor igre"
 
 #: horizons/i18n/guitranslations.py:449
 msgid "{G} = Toggle grid on/off"
-msgstr ""
+msgstr "{ G } = Vklopi/izklopi mrežo"
 
 #: horizons/i18n/guitranslations.py:450
 msgid "{X} = Enable destruct mode"
-msgstr ""
+msgstr "{ X } = Omogo?i na?in uni?enja"
 
 #: horizons/i18n/guitranslations.py:451
 msgid "{S} = Screenshot"
-msgstr ""
+msgstr "{ S } = Zaslonski posnetek"
 
 #: horizons/i18n/guitranslations.py:452
 msgid "{C} = Chat"
-msgstr ""
+msgstr "{ C } = Klepet"
 
 #: horizons/i18n/guitranslations.py:453
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr ""
+msgstr "{ SHIFT } = Držite za postavljanje ve? zgradb"
 
 #: horizons/i18n/guitranslations.py:454
 msgid "Have fun."
-msgstr ""
+msgstr "Zabavajte se."
 
 #: horizons/i18n/guitranslations.py:455
 msgid "The FIFE and Unknown Horizons"
-msgstr ""
+msgstr "FIFE in Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:456
 msgid "development teams"
-msgstr ""
+msgstr "razvojni ekipi"
 
 #: horizons/i18n/guitranslations.py:457 horizons/i18n/guitranslations.py:496
 #: horizons/i18n/guitranslations.py:532
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Izhod v glavni meni"
 
 #: horizons/i18n/guitranslations.py:459
 msgid "Loading ..."
-msgstr ""
+msgstr "Nalaganje ..."
 
 #: horizons/i18n/guitranslations.py:463
 msgid "Singleplayer"
-msgstr ""
+msgstr "En igralec"
 
 #: horizons/i18n/guitranslations.py:464
 msgid "Multiplayer"
-msgstr ""
+msgstr "Ve? igralcev"
 
 #: horizons/i18n/guitranslations.py:467
 msgid "Quit"
@@ -770,51 +872,51 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:473
 msgid "Player limit:"
-msgstr ""
+msgstr "Omejitev igralcev:"
 
 #: horizons/i18n/guitranslations.py:474
 msgid "Back:"
-msgstr ""
+msgstr "Nazaj:"
 
 #: horizons/i18n/guitranslations.py:475
 msgid "Choose a map:"
-msgstr ""
+msgstr "Izberite zemljevid:"
 
 #: horizons/i18n/guitranslations.py:476 horizons/i18n/guitranslations.py:489
 msgid "Create game:"
-msgstr ""
+msgstr "Ustvari igro:"
 
 #: horizons/i18n/guitranslations.py:477
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "Izhod v meni ve?igralskega na?ina"
 
 #: horizons/i18n/guitranslations.py:478
 msgid "Create this new game"
-msgstr ""
+msgstr "Ustvari to novo igro"
 
 #: horizons/i18n/guitranslations.py:480
 msgid "Gamelobby"
-msgstr ""
+msgstr "Igralni lobi"
 
 #: horizons/i18n/guitranslations.py:481
 msgid "Chat:"
-msgstr ""
+msgstr "Klepet:"
 
 #: horizons/i18n/guitranslations.py:482
 msgid "Leave:"
-msgstr ""
+msgstr "Zapusti:"
 
 #: horizons/i18n/guitranslations.py:483
 msgid "The game will start as soon as enough players have joined."
-msgstr ""
+msgstr "Igra se bo za?ela takoj, ko se pridruži dovolj igralcev."
 
 #: horizons/i18n/guitranslations.py:484
 msgid "Game details:"
-msgstr ""
+msgstr "Podrobnosti igre: "
 
 #: horizons/i18n/guitranslations.py:485
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Kon?aj lobi igre"
 
 #: horizons/i18n/guitranslations.py:487
 msgid "New game - Multiplayer"
@@ -822,123 +924,126 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:488
 msgid "Apply:"
-msgstr ""
+msgstr "Uveljavi:"
 
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:526
 msgid "Main menu:"
-msgstr ""
+msgstr "Glavni meni:"
 
 #: horizons/i18n/guitranslations.py:491
 msgid "Active games:"
-msgstr ""
+msgstr "Dejavne igre:"
 
 #: horizons/i18n/guitranslations.py:492
 msgid "Refresh list:"
-msgstr ""
+msgstr "Osveži seznam:"
 
 #: horizons/i18n/guitranslations.py:493
 msgid "Join game"
-msgstr ""
+msgstr "Pridruži se igri"
 
 #: horizons/i18n/guitranslations.py:494
 msgid "Apply the new name"
-msgstr ""
+msgstr "Uveljavi novo ime"
 
 #: horizons/i18n/guitranslations.py:495
 msgid "Create a new game"
-msgstr ""
+msgstr "Ustvari novo igro"
 
 #: horizons/i18n/guitranslations.py:497
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "Osveži seznam dejavnih iger"
 
 #: horizons/i18n/guitranslations.py:498
 msgid "Join the selected game"
-msgstr ""
+msgstr "Pridruži se izbrani igri"
 
 #: horizons/i18n/guitranslations.py:500
+#, fuzzy
 msgid "Restart required"
-msgstr ""
+msgstr "Zahtevan je ponoven zagon"
 
 #: horizons/i18n/guitranslations.py:501
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Nekatere od vaših sprememb zahtevajo ponoven zagon Unknown Horizons."
 
 #: horizons/i18n/guitranslations.py:504
 msgid "Please make sure that you know what you do."
-msgstr ""
+msgstr "Prepri?ajte se, da veste kaj delate."
 
 #: horizons/i18n/guitranslations.py:505
 msgid "Graphics"
-msgstr ""
+msgstr "Grafika"
 
 #: horizons/i18n/guitranslations.py:506
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Lo?ljivost zaslona:"
 
 #: horizons/i18n/guitranslations.py:507
 msgid "Color depth:"
-msgstr ""
+msgstr "Barvna globina:"
 
 #: horizons/i18n/guitranslations.py:508
 msgid "Used renderer:"
-msgstr ""
+msgstr "Uporabljen izrisovalnik:"
 
 #: horizons/i18n/guitranslations.py:509
+#, fuzzy
 msgid "Full screen:"
-msgstr ""
+msgstr "Celozaslonski na?in"
 
 #: horizons/i18n/guitranslations.py:510
 msgid "Sound"
-msgstr ""
+msgstr "Zvok"
 
 #: horizons/i18n/guitranslations.py:511
 msgid "Music volume:"
-msgstr ""
+msgstr "Glasnost glasbe:"
 
 #: horizons/i18n/guitranslations.py:512
 msgid "Effects volume:"
-msgstr ""
+msgstr "Glasnost u?inkov:"
 
 #: horizons/i18n/guitranslations.py:513
+#, fuzzy
 msgid "Enable sound:"
-msgstr ""
+msgstr "Omogo?i zvok"
 
 #: horizons/i18n/guitranslations.py:514
 msgid "Saving"
-msgstr ""
+msgstr "Shranjevanje"
 
 #: horizons/i18n/guitranslations.py:515
 msgid "Autosave interval:"
-msgstr ""
+msgstr "Razmik med samodejnimi shranjevanji:"
 
 #: horizons/i18n/guitranslations.py:516
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Število samodejnih shranjevanj:"
 
 #: horizons/i18n/guitranslations.py:517
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Število hitrih shranjevanj:"
 
 #: horizons/i18n/guitranslations.py:518
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: horizons/i18n/guitranslations.py:519
 msgid "Select language:"
-msgstr ""
+msgstr "Izbor jezika:"
 
 #: horizons/i18n/guitranslations.py:521
 msgid "Your saved games:"
-msgstr ""
+msgstr "Vaše shranjene igre:"
 
 #: horizons/i18n/guitranslations.py:522
 msgid "Enter filename:"
-msgstr ""
+msgstr "Vnesite ime datoteke:"
 
 #: horizons/i18n/guitranslations.py:523
 msgid "Details:"
-msgstr ""
+msgstr "Podrobnosti:"
 
 #: horizons/i18n/guitranslations.py:525
 msgid "New game - Singleplayer"
@@ -946,23 +1051,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:527
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Izberite zemljevid za igranje:"
 
 #: horizons/i18n/guitranslations.py:528
 msgid "Start game:"
-msgstr ""
+msgstr "Za?ni igro:"
 
 #: horizons/i18n/guitranslations.py:529
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanja"
 
 #: horizons/i18n/guitranslations.py:530
 msgid "Random map"
-msgstr ""
+msgstr "Naklju?ni zemljevid"
 
 #: horizons/i18n/guitranslations.py:531
 msgid "Free play"
-msgstr ""
+msgstr "Prosto igranje"
 
 #: horizons/i18n/guitranslations.py:533
 msgid "Start game"
@@ -970,371 +1075,403 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
-msgstr ""
+msgstr "Ime igralca:"
 
 #: horizons/i18n/guitranslations.py:536
 msgid "Color:"
-msgstr ""
+msgstr "Barva:"
 
 #: horizons/i18n/guitranslations.py:538 horizons/i18n/guitranslations.py:575
 #: horizons/i18n/guitranslations.py:590
 msgid "Building overview"
-msgstr ""
+msgstr "Pregled zgradbe"
 
 #: horizons/i18n/guitranslations.py:539
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
+"Za izgradnjo ?olna kliknite na enega od zavihkov razred, izberite želeno "
+"ladjo in potrdite naro?ilo."
 
 #: horizons/i18n/guitranslations.py:540
 msgid "Currently building:"
-msgstr ""
+msgstr "Trenutno se gradi:"
 
 #: horizons/i18n/guitranslations.py:541
 msgid "Construction progress:"
-msgstr ""
+msgstr "Napredek izgradnje:"
 
 #: horizons/i18n/guitranslations.py:542
 msgid "Cancel building:"
-msgstr ""
+msgstr "Prekli?i gradnjo:"
 
 #: horizons/i18n/guitranslations.py:543
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(izguba vseh sredstev)"
 
 #: horizons/i18n/guitranslations.py:544
 msgid "Pause"
-msgstr ""
+msgstr "Premor"
 
 #: horizons/i18n/guitranslations.py:545
 msgid "Resume"
-msgstr ""
+msgstr "Nadaljuj"
 
 #: horizons/i18n/guitranslations.py:546
+#, fuzzy
 msgid "Cancel all building progress"
 msgstr ""
+"Prekli?i ves \n"
+"napredek gradnje"
 
 #: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:569
 #: horizons/i18n/guitranslations.py:591
 msgid "Running costs"
-msgstr ""
+msgstr "Stroški delovanja"
 
 #: horizons/i18n/guitranslations.py:549
+#, fuzzy
 msgid "Fishing boats"
-msgstr ""
+msgstr "Ribiški ?oln"
 
 #: horizons/i18n/guitranslations.py:550
 msgid "Fishing boat"
-msgstr ""
+msgstr "Ribiški ?oln"
 
 #: horizons/i18n/guitranslations.py:551
 msgid "Cutter"
-msgstr ""
+msgstr "Sekalec"
 
 #: horizons/i18n/guitranslations.py:552
 msgid "Herring fisher"
-msgstr ""
+msgstr "Lovilec slanikov"
 
 #: horizons/i18n/guitranslations.py:553
 msgid "Whaler"
-msgstr ""
+msgstr "Kitolovec"
 
 #: horizons/i18n/guitranslations.py:554
 msgid "Build this ship!"
-msgstr ""
+msgstr "Izgradi to ladjo!"
 
 #: horizons/i18n/guitranslations.py:562
 msgid "Select resources:"
-msgstr ""
+msgstr "Izberi sredstva:"
 
 #: horizons/i18n/guitranslations.py:565
 msgid "Income:"
-msgstr ""
+msgstr "Prihodek:"
 
 #: horizons/i18n/guitranslations.py:566
 msgid "Taxes"
-msgstr ""
+msgstr "Davki"
 
 #: horizons/i18n/guitranslations.py:567
 msgid "Sale"
-msgstr ""
+msgstr "Prodaja"
 
 #: horizons/i18n/guitranslations.py:568
 msgid "Expenses:"
-msgstr ""
+msgstr "Stroški:"
 
 #: horizons/i18n/guitranslations.py:570
 msgid "Buying"
-msgstr ""
+msgstr "Kupovanje"
 
 #: horizons/i18n/guitranslations.py:571
 msgid "Balance:"
-msgstr ""
+msgstr "Skupaj:"
 
 #: horizons/i18n/guitranslations.py:576 horizons/i18n/guitranslations.py:580
 #: horizons/i18n/guitranslations.py:587 horizons/i18n/guitranslations.py:614
 msgid "Name:"
-msgstr ""
+msgstr "Ime:"
 
 #: horizons/i18n/guitranslations.py:583
 msgid "Average happiness:"
-msgstr ""
+msgstr "Povpre?no zadovoljstvo:"
 
 #: horizons/i18n/guitranslations.py:584
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Najbolj potrebovano sredstvo:"
 
 #: horizons/i18n/guitranslations.py:588 horizons/i18n/guitranslations.py:598
 msgid "Taxes:"
-msgstr ""
+msgstr "Davki:"
 
 #: horizons/i18n/guitranslations.py:593
+#, fuzzy
 msgid "Resource deposit"
-msgstr ""
+msgstr "Nahajališ?e virov"
 
 #: horizons/i18n/guitranslations.py:594
+#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
+"To je nahajališ?e virov, kjer lahko izgradite rudnik za njihovo kopanje."
 
 #: horizons/i18n/guitranslations.py:595
 msgid "It contains these resources:"
-msgstr ""
+msgstr "Vsebuje te vire:"
 
 #: horizons/i18n/guitranslations.py:599
+#, fuzzy
 msgid "Needed resources:"
-msgstr ""
+msgstr "Potrebovani viri:"
 
 #: horizons/i18n/guitranslations.py:600 horizons/i18n/guitranslations.py:603
 msgid "Happiness"
-msgstr ""
+msgstr "Zadovoljstvo"
 
 #: horizons/i18n/guitranslations.py:601
 msgid "Residents"
-msgstr ""
+msgstr "Prebivalci"
 
 #: horizons/i18n/guitranslations.py:602
 msgid "Paid taxes"
-msgstr ""
+msgstr "Pla?ani davki"
 
 #: horizons/i18n/guitranslations.py:605
 msgid "Health:"
-msgstr ""
+msgstr "Zdravje:"
 
 #: horizons/i18n/guitranslations.py:606
+#, fuzzy
 msgid "Click to change the name of this ship."
 msgstr ""
+"Kliknite za \n"
+"spremembo imena \n"
+"te ladje."
 
 #: horizons/i18n/guitranslations.py:607
+#, fuzzy
 msgid "Build settlement"
-msgstr ""
+msgstr "Izgradi naselbino"
 
 #: horizons/i18n/guitranslations.py:609
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
+"Signalni ogenj prostemu trgovcu pokaže kako naj doseže vašo naselbino v "
+"primeru, da želite kupiti ali prodati dobrine."
 
 #: horizons/i18n/guitranslations.py:611
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
+"To je ladja prostega trgovca. Od ?asa do ?asa vas bo obiskal z namenom "
+"nakupa ali prodaje dobrin."
 
 #: horizons/i18n/guitranslations.py:617
 msgid "Ship:"
-msgstr ""
+msgstr "Ladja:"
 
 #: horizons/i18n/guitranslations.py:618
 msgid "Exchange:"
-msgstr ""
+msgstr "Izmenjava:"
 
 #: horizons/i18n/guitranslations.py:619
 msgid "Trade partner:"
-msgstr ""
+msgstr "Trgovski partner:"
 
 #: horizons/i18n/guitranslations.py:622
 msgid "Load/Unload:"
-msgstr ""
+msgstr "Naloži/razloži:"
 
 #: horizons/main.py:84
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535."
 msgstr ""
+"Napaka: Neveljavna skladnja v možnosti ukazne vrstice --mp-master. Številka "
+"vrat mora biti med 0 in 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 0 and 65535."
 msgstr ""
+"Napaka: Neveljavna skladnja v možnosti ukazne vrstice --mp-bind. Številka "
+"vrat mora biti med 0 in 65535."
 
 #: horizons/main.py:198
 msgid "Load failed. Please try another savefile!"
-msgstr ""
+msgstr "Nalaganje je spodletelo. Poskusite z drugo datoteko shranjene igre."
 
 #: horizons/main.py:276
 #, python-format
 msgid "Error: Cannot find map \"%s\"."
-msgstr ""
+msgstr "Napaka: Ni mogo?e najti zemljevida \"%s\"."
 
 #: horizons/main.py:279 horizons/main.py:312
 msgid "Error: Found multiple matches: "
-msgstr ""
+msgstr "Napaka: Najdenih je bilo ve? ujemanj:"
 
 #: horizons/main.py:309
 #, python-format
 msgid "Error: Cannot find savegame \"%s\"."
-msgstr ""
+msgstr "Napaka: Ni mogo?e najti shranjene igre \"%s\"."
 
 #: horizons/main.py:327
 msgid "Error: No quicksave found."
-msgstr ""
+msgstr "Napaka: Hitro shranjene igre ni bilo mogo?e najti."
 
 #: horizons/mpsession.py:44 horizons/mpsession.py:51 horizons/mpsession.py:53
 #: horizons/mpsession.py:55 horizons/mpsession.py:57
 msgid "Not possible"
-msgstr ""
+msgstr "Ni mogo?e"
 
 #: horizons/mpsession.py:44
 msgid "You cannot change the speed of a multiplayer game"
-msgstr ""
+msgstr "V ve?igralski igri ne morete spremeniti hitrosti"
 
 #: horizons/mpsession.py:51 horizons/mpsession.py:53 horizons/mpsession.py:55
 #: horizons/mpsession.py:57
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Shranjevanje/nalaganje za ve?igralske igre še ni mogo?e"
 
 #: horizons/spsession.py:97
 msgid "Error"
-msgstr ""
+msgstr "Napaka"
 
 #: horizons/spsession.py:97
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Hitro shranjevanje je spodletelo"
 
 #: horizons/spsession.py:103
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Hitro shranjenih iger ni bilo mogo?e najti"
 
 #: horizons/spsession.py:103
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Pred hitrim nalaganjem morate hitro shraniti."
 
 #. usually invalid filename
 #: horizons/spsession.py:130
 msgid "Invalid filename"
-msgstr ""
+msgstr "Neveljavno ime datoteke"
 
 #: horizons/spsession.py:130
 msgid "You entered an invalid filename."
-msgstr ""
+msgstr "Vnesli ste neveljavno ime datoteke."
 
 #: horizons/world/units/ship.py:176
 msgid "Trader"
-msgstr ""
+msgstr "Trgovec"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr ""
+msgstr "Omogo?i izhod razhroš?evanja v stderr in dnevniško datoteko."
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Navedite pot do korenske mape FIFE."
 
 #: run_uh.py:83
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
 msgstr ""
+"Obnovi privzete nastavitve. Uporabno, ?e se Unknown Horizons sesuje zaradi "
+"napa?nih nastavitev."
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr ""
+msgstr "Navedite dodani glavni ve?igralski strežnik."
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
+"Navedite omrežni naslov za vezavo krajevnega odjemalca omrežja. To je "
+"uporabno. ?e luknjanje NAT ni uporabno, toda lahko posredujete stati?na "
+"vrata."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
-msgstr ""
+msgstr "Za?enjanje unknown horizons"
 
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
-msgstr ""
+msgstr "Za?ne <zemljevid>. <zemljevid> je ime zemljevida."
 
 #: run_uh.py:94
 msgid "Starts a random map."
-msgstr ""
+msgstr "Za?ne naklju?ni zemljevid"
 
 #: run_uh.py:96
 msgid "Starts <campaign>. <campaign> is the campaignname."
-msgstr ""
+msgstr "Za?ne <kampanjo>. <kampanja> je ime kampanje."
 
 #: run_uh.py:98
 msgid "Starts the development map without displaying the main menu."
-msgstr ""
+msgstr "Za?ne razvojni zemljevid brez prikaza glavnega menija."
 
 #: run_uh.py:100
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr ""
+msgstr "Naloži shranjeno igro. <save> je ime shranjene igre."
 
 #: run_uh.py:102
 msgid "Loads the last quicksave."
-msgstr ""
+msgstr "Naloži zadnjo hitro shranjeno igro."
 
 #: run_uh.py:105
 msgid "Development options"
-msgstr ""
+msgstr "Razvijalske možnosti"
 
 #: run_uh.py:107
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
+"Zapiši izhod razhroš?evanja le v dnevniško datoteko, ne v konzolo. "
+"Predpostavi -d."
 
 #: run_uh.py:110
 msgid "Enable logging for a certain logging module (for developing only)."
-msgstr ""
+msgstr "Omogo?i beleženje za dolo?en modul beleženja (le za razvijanje)."
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr ""
+msgstr "Zapiše dnevnik v <imedatoteke> namesto v uh-uporabniško mapo"
 
 #: run_uh.py:114
 msgid "For internal use only."
-msgstr ""
+msgstr "Le za notranjo uporabo."
 
 #: run_uh.py:116
 msgid "Enable profiling (for developing only)."
-msgstr ""
+msgstr "Omogo?i profiliranje (le za razvijalce)."
 
 #: run_uh.py:138
 msgid "Unknown Horizons crashed."
-msgstr ""
+msgstr "Unknown Horizons se je sesul."
 
 #: run_uh.py:140
 msgid "We are very sorry for this, and want to fix this error."
-msgstr ""
+msgstr "Zelo nam je žal za to in želimo to napako popraviti."
 
 #: run_uh.py:141
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "Zato potrebujemo podrobnosti iz dnevniške datoteke:"
 
 #: run_uh.py:143
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
+"Pošljite jo nam preko IRC-a ali našega foruma. Za oboje si oglejte unknown-"
+"horizons.org"
 
 #: run_uh.py:198
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Hvala, ker uporabljate Unknown Horizons!"
 
 #: run_uh.py:274
 msgid "Failed to load fife:"
-msgstr ""
+msgstr "Nalaganje fife je spodletelo:"
 
 #: run_uh.py:344
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FIFE ni bilo mogo?e najti."
 
 #: sqlite/Building
 msgid "Boat Builder"
-msgstr ""
+msgstr "Graditelj ?olnov"
 
 #: sqlite/Building
 msgid "Branch Office"
-msgstr ""
+msgstr "Podružni?na pisarna"
 
 #: sqlite/Building
 msgid "Brickyard"
-msgstr ""
+msgstr "Opekarna"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -1342,11 +1479,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Nahajališ?e gline"
 
 #: sqlite/Building
 msgid "Clay Pit"
-msgstr ""
+msgstr "Rudnik gline"
 
 #: sqlite/Building
 msgid "Distillery"
@@ -1354,7 +1491,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Farm"
-msgstr ""
+msgstr "Kmetija"
 
 #: sqlite/Building
 msgid "Fish Deposit"
@@ -1362,11 +1499,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Ribi?ev šotor"
 
 #: sqlite/Building
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Lov?ev šotor"
 
 #: sqlite/Building
 msgid "Iron Mine"
@@ -1374,19 +1511,19 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Log"
-msgstr ""
+msgstr "Dnevnik"
 
 #: sqlite/Building
 msgid "Lookout"
-msgstr ""
+msgstr "Obeti"
 
 #: sqlite/Building
 msgid "Lumberjack Camp"
-msgstr ""
+msgstr "Drvarjev tabor"
 
 #: sqlite/Building
 msgid "Main Square"
-msgstr ""
+msgstr "Glavni trg"
 
 #: sqlite/Building
 msgid "Mountain"
@@ -1394,23 +1531,23 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Pasture"
-msgstr ""
+msgstr "Pašnik"
 
 #: sqlite/Building
 msgid "Pavilion"
-msgstr ""
+msgstr "Paviljon"
 
 #: sqlite/Building
 msgid "Potato Field"
-msgstr ""
+msgstr "Njiva krompirja"
 
 #: sqlite/Building
 msgid "Rampart"
-msgstr ""
+msgstr "Obzidje"
 
 #: sqlite/Building
 msgid "Signal Fire"
-msgstr ""
+msgstr "Signalni ogenj"
 
 #: sqlite/Building
 msgid "Smeltery"
@@ -1418,11 +1555,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Storage Tent"
-msgstr ""
+msgstr "Shrambeni šotor"
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr ""
+msgstr "Sladkorno polje"
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1430,11 +1567,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tent"
-msgstr ""
+msgstr "Šotor"
 
 #: sqlite/Building
 msgid "Tent_ruin"
-msgstr ""
+msgstr "Razviline_šotora"
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -1442,79 +1579,79 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Trail"
-msgstr ""
+msgstr "Pot"
 
 #: sqlite/Building
 msgid "Village school"
-msgstr ""
+msgstr "Vaška šola"
 
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr ""
+msgstr "Predil?ev šotor"
 
 #: sqlite/Colors
 msgid "black"
-msgstr ""
+msgstr "?rna"
 
 #: sqlite/Colors
 msgid "blue"
-msgstr ""
+msgstr "modra"
 
 #: sqlite/Colors
 msgid "cyan"
-msgstr ""
+msgstr "sinja"
 
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "zelena"
 
 #: sqlite/Colors
 msgid "pink"
-msgstr ""
+msgstr "rožnata"
 
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "rde?a"
 
 #: sqlite/Colors
 msgid "white"
-msgstr ""
+msgstr "bela"
 
 #: sqlite/Colors
 msgid "yellow"
-msgstr ""
+msgstr "rumena"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
-msgstr ""
+msgstr "${player} je ustvaril/a novo naselbino."
 
 #: sqlite/Messages
 msgid "A new world has been created."
-msgstr ""
+msgstr "Ustvarjen je bil nov svet."
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
-msgstr ""
+msgstr "Eden od vaših naseljencev v svojem dosegu nima tržnice."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr ""
+msgstr "Zaslonski posnetek je bil shranjen v ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr ""
+msgstr "Nekateri od vaših naseljencev so se pravkar odselili."
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr ""
+msgstr "ZMAGALI STE!!!"
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
-msgstr ""
+msgstr "Za izgradnjo te zgradbe potrebujete ve? ${resource}."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Vaša igra je bila hitro shranjena."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
@@ -1522,15 +1659,15 @@ msgstr ""
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr ""
+msgstr "Vaši naseljenci so dosegli nivo ${level}."
 
 #: sqlite/Resources
 msgid "boards"
-msgstr ""
+msgstr "deske"
 
 #: sqlite/Resources
 msgid "bricks"
-msgstr ""
+msgstr "opeke"
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1538,27 +1675,27 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "clay"
-msgstr ""
+msgstr "glina"
 
 #: sqlite/Resources
 msgid "coins"
-msgstr ""
+msgstr "kovanci"
 
 #: sqlite/Resources
 msgid "community"
-msgstr ""
+msgstr "skupnost"
 
 #: sqlite/Resources
 msgid "education"
-msgstr ""
+msgstr "izobrazba"
 
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "vera"
 
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "hrana"
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1566,11 +1703,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "grass"
-msgstr ""
+msgstr "trava"
 
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "zadovoljstvo"
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -1582,7 +1719,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "ov?ja volna"
 
 #: sqlite/Resources
 msgid "liquor"
@@ -1590,11 +1727,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "potatoes"
-msgstr ""
+msgstr "krompirji"
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr ""
+msgstr "surova glina"
 
 #: sqlite/Resources
 msgid "raw fish"
@@ -1606,39 +1743,39 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr ""
+msgstr "surov sladkor"
 
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "sladkor"
 
 #: sqlite/Resources
 msgid "textile"
-msgstr ""
+msgstr "blago"
 
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "orodja"
 
 #: sqlite/Resources
 msgid "wild animal food 1"
-msgstr ""
+msgstr "hrana divjih živali 1"
 
 #: sqlite/Resources
 msgid "wild animal meat"
-msgstr ""
+msgstr "meso divjih živali"
 
 #: sqlite/Resources
 msgid "wood"
-msgstr ""
+msgstr "les"
 
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "volna"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pionir"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
@@ -1646,4 +1783,4 @@ msgstr ""
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr ""
+msgstr "naseljenec"
