@@ -217,6 +217,7 @@ def set_translations():
 			"exit_to_main_menu_lbl"       : _("Main menu:"),
 			"active_games_lbl"            : _("Active games:"),
 			"refr_gamelist_lbl"           : _("Refresh list:"),
+			"game_showonlyownversion"     : _("Show only games with the same version:"),
 			"join_game_lbl"               : _("Join game"),
 			"apply_new_nickname"          : _("Apply the new name"),
 			"create"                      : _("Create a new game"),

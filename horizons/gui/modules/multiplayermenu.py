@@ -81,7 +81,7 @@ class MultiplayerMenu(object):
 			try:
 				NetworkInterface().connect()
 			except Exception, err:
-				self.show_popup("Network Error", "Could not connect to master server. Details: %s" % str(err))
+				self.show_popup(_("Network Error"), _("Could not connect to master server. Details: %s") % str(err))
 				return
 
 
@@ -92,7 +92,7 @@ class MultiplayerMenu(object):
 		try:
 			NetworkInterface().change_name(new_nick)
 		except Exception, err:
-			self.show_popup("Network Error", "Could not connect to master server. Details: %s" % str(err))
+			self.show_popup(_("Network Error"), _("Could not connect to master server. Details: %s") % str(err))
 			return
 		self.__refresh()
 
@@ -115,7 +115,7 @@ class MultiplayerMenu(object):
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
 			return False
-		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)%s"%(x.get_map_name(), x.get_player_count(), x.get_player_limit(), " Version differs!" if x.get_version() != NetworkInterface().get_clientversion() else ""), self.games)})
+		self.current.distributeInitialData({'gamelist' : map(lambda x: "%s (%u, %u)%s"%(x.get_map_name(), x.get_player_count(), x.get_player_limit(), " " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""), self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map
 		self.__update_game_details()
 		return True
@@ -158,7 +158,7 @@ class MultiplayerMenu(object):
 		if game.get_uuid() == -1: # -1 signals no game
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
-			self.show_popup("Wrong version", "The game's version differs from your version. Game version: %s Your version: %s" % (game.get_version(), NetworkInterface().get_clientversion()))
+			self.show_popup(_("Wrong version"), _("The game's version differs from your version. Game version: %(gameversion)s Your version: %(ownversion)s") % {'gameversion': game.get_version(), 'ownversion': NetworkInterface().get_clientversion()})
 			return
 		# acctual join
 		join_worked = NetworkInterface().joingame(game.get_uuid())
