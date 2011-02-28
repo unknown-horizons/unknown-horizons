@@ -89,7 +89,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for i in xrange (0,11): #TODO this is a hardcoded maximum of vboxes, might break code
+		for i in xrange (0,21): #TODO this is a hardcoded maximum of vboxes, might break code
 			cur_container = self.widgets['credits'+str(number)].findChild(name='book'+str(i))
 			if cur_container:
 				cur_container.stylize('book_t') # leaves headlines as what they are, only style labels
