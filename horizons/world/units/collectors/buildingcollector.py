@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WorldObject, Circle, Callback, decorators
+from horizons.util import WorldObject, RadiusRect, Callback, decorators
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
 
 from collector import Collector, JobList
@@ -92,6 +92,8 @@ class BuildingCollector(Collector):
 		if self.home_building is None:
 			return None
 
+		#if self.home_building.id == 24: import pdb ; pdb.set_trace()
+
 		collectable_res = self.get_collectable_res()
 		if len(collectable_res) == 0:
 			return None
@@ -101,7 +103,8 @@ class BuildingCollector(Collector):
 		for building in self.get_buildings_in_range(reslist=collectable_res):
 			if self.check_possible_job_target(building): # check if we can pickup here on principle
 				for res in collectable_res:
-					job = self.check_possible_job_target_for(building, res) # check if we also get res here
+					# check if we can get res here now
+					job = self.check_possible_job_target_for(building, res)
 					if job is not None:
 						jobs.append(job)
 
@@ -151,7 +154,7 @@ class BuildingCollector(Collector):
 		"""Returns all buildings in range .
 		Overwrite in subclasses that need ranges around the pickup.
 		@param res: optional, only search for buildings that provide res"""
-		reach = Circle(self.home_building.position.center(), self.home_building.radius)
+		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.home_building.island.get_providers_in_range(reach, reslist=reslist, \
 		                                                        player=self.owner)
 
@@ -213,5 +216,5 @@ class FisherShipCollector(FieldCollector):
 		"""Returns all buildings in range .
 		Overwrite in subclasses that need ranges around the pickup.
 		@param res: optional, only search for buildings that provide res"""
-		reach = Circle(self.home_building.position.center(), self.home_building.radius)
+		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)

@@ -25,12 +25,13 @@ import logging
 from horizons.scheduler import Scheduler
 
 from horizons.world.production.producer import Producer
-from horizons.util import Point, Circle, WorldObject
+from horizons.util import Point, RadiusRect, WorldObject
 from horizons.world.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import WILD_ANIMAL
 from horizons.world.units.movingobject import MoveNotPossible
+from horizons.util import RadiusRect, Rect
 
 class Animal(Producer):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -184,7 +185,8 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		# iterate over all possible providers and needed resources
 		# and save possible job targets
-		reach = Circle(self.position, self.walking_range)
+		position_rect = Rect.init_from_topleft_and_size(self.position.x, self.position.y, 0, 0)
+		reach = RadiusRect(position_rect, self.walking_range)
 		for provider in self.home_island.get_providers_in_range(reach):
 			if self.check_possible_job_target(provider):
 				for res in collectable_resources:

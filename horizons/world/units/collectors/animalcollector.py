@@ -23,7 +23,7 @@ import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
-from horizons.util import Point, Circle
+from horizons.util import Point, RadiusRect
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GAME_SPEED
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
@@ -130,11 +130,11 @@ class AnimalCollector(BuildingCollector):
 class FarmAnimalCollector(AnimalCollector):
 	def get_animals_in_range(self, reslist=None):
 		"""Returns animals from buildings in range"""
-		circle = Circle(self.home_building.position.center(), self.home_building.radius)
+		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		# don't consider res when searching for buildings, since only their animals are
 		# the acctual providers
-		buildings = self.home_building.island.get_providers_in_range(circle)
-		animal_lists = ( building.animals for building in buildings if hasattr(building, 'animals'))
+		buildings = self.home_building.island.get_providers_in_range(reach)
+		animal_lists = (building.animals for building in buildings if hasattr(building, 'animals'))
 		# use overloaded + for lists here in sum
 		return sum(animal_lists, [])
 

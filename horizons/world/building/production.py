@@ -26,7 +26,7 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
-from horizons.util import Circle
+from horizons.util import RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION
@@ -37,7 +37,7 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 	def _update_capacity_utilisation(self):
 		"""Farm doesn't acctually produce something, so calculate productivity by the number of fields
 		nearby."""
-		reach = Circle(self.position.center(), self.radius)
+		reach = RadiusRect(self.position, self.radius)
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		providers = [ p for p in providers if isinstance(p, Field) ]
 		self.capacity_utilisation = float(len(providers))/self.max_fields_possible

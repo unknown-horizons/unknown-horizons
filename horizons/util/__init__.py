@@ -35,6 +35,7 @@ from sqliteanimationloader import SQLiteAnimationLoader
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect
 from shapes.circle import Circle
+from shapes.radiusshape import RadiusRect
 
 from python import Callback
 from python import decorators

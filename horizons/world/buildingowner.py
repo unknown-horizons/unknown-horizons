@@ -22,7 +22,7 @@
 
 from horizons.world.providerhandler import ProviderHandler
 from horizons.util import decorators
-
+from horizons.util import RadiusRect
 
 """
 Simple building management functionality.
@@ -66,15 +66,17 @@ class BuildingOwner(object):
 
 
 	@decorators.make_constants()
-	def get_providers_in_range(self, circle, res=None, reslist=None, player=None):
-		"""Returns all instances of provider within the specified circle.
+	def get_providers_in_range(self, radiusrect, res=None, reslist=None, player=None):
+		"""Returns all instances of provider within the specified shape.
 		NOTE: Specifing the res parameter is usually a huge speed gain.
-		@param circle: instance of Circle
+		@param radiusrect: instance of RadiusRact
 		@param res: optional; only return providers that provide res.  conflicts with reslist
 		@param reslist: optionally; list of res to search providers for. conflicts with res
 		@param player: Player instance, only buildings belonging to this player
 		@return: list of providers"""
 		assert not (bool(res) and bool(reslist))
+		assert isinstance(radiusrect, RadiusRect)
+		# find out relevant providers
 		if res is not None:
 			provider_list = self.provider_buildings.provider_by_resources[res]
 		elif reslist:
@@ -84,10 +86,11 @@ class BuildingOwner(object):
 		else:
 			# worst case: search all provider buildings
 			provider_list = self.provider_buildings
+		# filter out those that aren't in range
 		possible_providers = []
 		for provider in provider_list:
 			if (player is None or player == provider.owner) and \
-				 provider.position.distance_to_circle(circle) == 0:
+				 provider.position.distance_to_rect(radiusrect.center) <= radiusrect.radius:
 				possible_providers.append(provider)
 		return possible_providers
 

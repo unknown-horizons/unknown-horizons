@@ -147,7 +147,9 @@ class SPSession(Session):
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
 
 			SavegameManager.write_metadata(db, self.savecounter)
+			# make sure everything get's written now
 			db("COMMIT")
+			db.close()
 			return True
 		except:
 			print "Save Exception"
