@@ -20,7 +20,7 @@
 # ###################################################
 
 import logging
-from random import randint
+import random
 
 from fife import fife
 
@@ -73,12 +73,14 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				level = self.owner.settler_level
 		self.level = level
 		self._action_set_id = self.session.db.get_random_action_set(self.id, self.level)[0]
-		self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 		self.rotation = rotation
-		if self.rotation in [135, 315]: # Rotate the rect correctly
+		if self.rotation in (135, 315): # Rotate the rect correctly
 			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
+
+		self.loading_area = self.position # shape where collector get resources
+
 		self._instance = self.getInstance(self.session, origin.x, origin.y, rotation=rotation,\
 		                                  action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
@@ -89,9 +91,10 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
-			play_every = 15 + randint(0, 15)
-			for soundfile in self.soundfiles:
-				self.play_ambient(soundfile, True, play_every)
+			if self.soundfiles:
+				play_every = 15 + random.randint(0, 15)
+				for soundfile in self.soundfiles:
+					self.play_ambient(soundfile, True, play_every)
 
 	@property
 	def name(self):
