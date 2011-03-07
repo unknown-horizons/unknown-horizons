@@ -156,7 +156,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""
 		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
 			'startGame'      : self.return_to_game,
-			'savegameButton' : self.session.save,
+			'savegameButton' : self.save_game,
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
 			'helpLink'       : self.on_help,
 			'closeButton'    : self.quit_session,
@@ -211,6 +211,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.session = None
 
 			self.show_main()
+
+	def save_game(self):
+		"""Wrapper for saving for separating gui messages from save logic
+		"""
+		success = self.session.save()
+		if not success:
+			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def return_to_game(self):
 		"""Return to the horizons."""

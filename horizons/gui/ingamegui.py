@@ -54,7 +54,7 @@ class IngameGui(LivingObject):
 		'status_gold' : 'resource_bar',
 		'status_extra' : 'resource_bar',
 		'status_extra_gold' : 'resource_bar',
-	  }
+	}
 
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
@@ -76,7 +76,7 @@ class IngameGui(LivingObject):
 
 		self.logbook = LogBook(session)
 
-		# self.widgets['minimap'] is the guichan gui around the actual minimap, 
+		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
 		minimap = self.widgets['minimap']
 		minimap.position = (screenwidth - minimap.size[0] -20, 4)
@@ -92,7 +92,7 @@ class IngameGui(LivingObject):
 
 		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
 		self.minimap = Minimap(minimap_rect, self.session, \
-		                       self.session.view.renderer['GenericRenderer'])
+								           self.session.view.renderer['GenericRenderer'])
 		minimap_overlay = minimap.findChild(name='minimap_overlay_image')
 		self.minimap.use_overlay_icon(minimap_overlay)
 
@@ -114,7 +114,7 @@ class IngameGui(LivingObject):
 		self.widgets['status_gold'].show()
 
 		self.message_widget = MessageWidget(self.session, \
-		                                    cityinfo.position[0] + cityinfo.size[0], 5)
+								                        cityinfo.position[0] + cityinfo.size[0], 5)
 
 		self.resbar = ResBar(self.session, gui, self.widgets, self.resource_source)
 
@@ -136,7 +136,7 @@ class IngameGui(LivingObject):
 
 		city = source if not res_from_ship else None
 		self.cityinfo_set(city)  # the source we hover is a settlement,
-		                         # cityinfo_set(None) hides the widget.
+						# cityinfo_set(None) hides the widget.
 
 #		print source, "   ", self.resource_source
 		listener = self.resbar.update_resource_source(source, res_needed)
@@ -224,7 +224,7 @@ class IngameGui(LivingObject):
 
 	def update_settlement(self):
 		"""Assigns values to labels of cityinfo widget"""
-		cityinfo = self.widgets['city_info']	
+		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
 			'city_name': callback(self.show_change_name_dialog, self.settlement)
 		})
@@ -254,7 +254,7 @@ class IngameGui(LivingObject):
 		lvl = self.session.world.player.settler_level
 		btabs = [BuildTab(i, self.callbacks_build[i]) for i in range(0, lvl+1)]
 		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
-		                active_tab=BuildTab.last_active_build_tab)
+								    active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
@@ -273,7 +273,7 @@ class IngameGui(LivingObject):
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
 		self.session.cursor = BuildingTool(self.session, cls, \
-		                                   None if unit is None else unit())
+								                       None if unit is None else unit())
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu

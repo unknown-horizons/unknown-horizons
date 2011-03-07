@@ -128,9 +128,8 @@ class SPSession(Session):
 			db = DbReader(savegame)
 		except IOError: # usually invalid filename
 			self.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
-			self.save() # retry with new savegamename entered by the user
+			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
-			return
 
 		try:
 			db("BEGIN")
@@ -156,3 +155,4 @@ class SPSession(Session):
 			traceback.print_exc()
 			db.close() # close db before delete
 			os.unlink(savegame) # remove invalid savegamefile
+			return False
