@@ -106,6 +106,13 @@ class AnimalCollector(BuildingCollector):
 	def get_animals_in_range(self, reslist=None):
 		return self.home_building.animals
 
+	@decorators.make_constants()
+	def check_possible_job_target_for(self, target, res):
+		if target.has_collectors():
+			return None
+		else:
+			return super(AnimalCollector, self).check_possible_job_target_for(target, res)
+
 	def stop_animal(self):
 		"""Tell animal to stop at the next occasion"""
 		self.job.object.stop_after_job(self)

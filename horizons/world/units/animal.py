@@ -67,6 +67,10 @@ class CollectorAnimal(Animal):
 		assert self.collector is not None
 		self.collector = None
 
+	def has_collectors(self):
+		"""Whether this unit is just now or about to be collected"""
+		return self.collector != None or self.state == self.states.stopped
+
 	def finish_working(self):
 		# animal is done when it has eaten, and
 		# doesn't have to get home, so end job right now
