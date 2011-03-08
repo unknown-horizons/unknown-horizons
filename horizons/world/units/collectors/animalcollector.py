@@ -23,7 +23,7 @@ import horizons.main
 from horizons.scheduler import Scheduler
 
 from horizons.world.storageholder import StorageHolder
-from horizons.util import Point, RadiusRect
+from horizons.util import Point, RadiusRect, decorators
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GAME_SPEED
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
