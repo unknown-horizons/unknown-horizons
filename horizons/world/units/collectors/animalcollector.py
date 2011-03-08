@@ -74,7 +74,7 @@ class AnimalCollector(BuildingCollector):
 		"""Moves collector to animal. Called by animal when it actually stopped"""
 		self.show()
 		try:
-			self.move(self.job.object.position, self.begin_working)
+			self.move(self.job.object.loading_area, self.begin_working)
 		except MoveNotPossible:
 			# the animal is now unreachable.
 			self.job.object.search_job()

@@ -60,6 +60,8 @@ class Unit(AmbientSound, MovingObject):
 		self.health = health
 		self.max_health = 100.0
 
+		self.loading_area = self.position
+
 	def remove(self):
 		self.log.debug("Unit.remove for %s started", self)
 		self._instance.removeActionListener(self.InstanceActionListener)

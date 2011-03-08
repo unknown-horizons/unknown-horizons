@@ -285,19 +285,19 @@ class Collector(StorageHolder, Unit):
 		jobs.sort_jobs()
 		# check if we can move to that targets
 		for job in jobs:
-			if self.check_move(job.object.position):
+			if self.check_move(job.object.loading_area):
 				return job
 
 		return None
 
 	def begin_current_job(self, job_location = None):
 		"""Starts executing the current job by registering itself and moving to target.
-		@param job_location: Where collector should work. default: job.object.position"""
+		@param job_location: Where collector should work. default: job.object.loading_area"""
 		self.log.debug("%s prepares job %s", self, self.job)
 		self.setup_new_job()
 		self.show()
 		if job_location is None:
-			job_location = self.job.object.position
+			job_location = self.job.object.loading_area
 		self.move(job_location, self.begin_working, \
 							destination_in_building = self.destination_always_in_building)
 		self.state = self.states.moving_to_target
@@ -485,7 +485,7 @@ class JobList(list):
 
 	def _sort_distance(self):
 		"""Prefer targets that are nearer"""
-		self.sort(key=lambda job: self.collector.position.distance(job.object.position))
+		self.sort(key=lambda job: self.collector.position.distance(job.object.loading_area))
 
 	def _sort_target_inventory_full(self):
 		"""Prefer targets with full inventory"""

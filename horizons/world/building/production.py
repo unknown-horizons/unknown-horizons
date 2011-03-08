@@ -26,7 +26,7 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
-from horizons.util import RadiusRect
+from horizons.util import RadiusRect, Rect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION
@@ -93,6 +93,21 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 	def __init(self, deposit_class, mine_empty_msg_shown):
 		self.__deposit_class = deposit_class
 		self._mine_empty_msg_shown = mine_empty_msg_shown
+
+		# setup loading area
+		# TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
+		#       this needs to be generalised, possibly by defining the loading tiles in the db
+		pos = self.position
+		if self.rotation == 45:
+			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 0, 2)
+		elif self.rotation == 135:
+			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 2, 0)
+		elif self.rotation == 225:
+			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 0, 2)
+		elif self.rotation == 315:
+			self.loading_area = Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 2, 0)
+		else:
+			assert False
 
 	@classmethod
 	def get_prebuild_data(cls, session, position):
