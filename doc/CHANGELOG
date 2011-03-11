@@ -2,8 +2,8 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
-2011-??-??: Milestone 2011.1
-changelog date: FEB 23; rev: 85ac10d8a5211466cc6be1a3f55ec7b2564cce9a
+2011-03-??: Milestone 2011.1
+changelog date: MAR 10; rev: 522714d51cbbcdda5f585a853b43f97f5429f07f
 
 * General
   * New: enet for darwin-x64 => MP possible on mac as well
@@ -29,12 +29,14 @@ changelog date: FEB 23; rev: 85ac10d8a5211466cc6be1a3f55ec7b2564cce9a
   * Change: Capitalized resource names
   * Change: Removed old, unmaintained pathfinding tests
   * Change: 1024x768 is current minimum resolution
+  * Change: Multiplayer lobby now also displays mismatching games and hints this
   * Fix: Game did not start with an umlaut/special character in settings.xml
   * Fix: minor issue concerning the creation of random islands
-  * Fix: possible issue with quick- and autosaving
+  * Fix: issue with quick- and autosaving
   * Fix: crash when pausing boatbuilder
   * Fix: crash while building fisher boat
   * Fix: possible source of bugs that can occur when saving moving units
+  * Fix: Saving from main menu now properly handles errors
 
 * Gameplay and Balancing
   * New: animals no further reproduce when over-populating an island
@@ -43,8 +45,13 @@ changelog date: FEB 23; rev: 85ac10d8a5211466cc6be1a3f55ec7b2564cce9a
   * New: Cam focuses selected group (Ctrl-[num] to group, [num] to select)
   * New: Single non-player units can be selected via dragging
   * Change: Buildings can be grouped
+  * Change: Collectors can only pick up goods at mine entrance
+  * Change: Smeltery now 4x4
+  * Change: Updated tutorial (fisher)
   * Change: Fisher now uses a boat and needs fish tiles in range to produce food
   * Fix: minor bug concerning decommissioning
+  * Fix: animals can no longer be handled by two collectors simultaneously
+  * Fix: collectors can now reach each building in displayed range
   * Fix: settlers not being able to level up
   * Fix: Load correct graphics for buildings with versions differing from
          increment to increment
@@ -60,11 +67,17 @@ changelog date: FEB 23; rev: 85ac10d8a5211466cc6be1a3f55ec7b2564cce9a
   * New: building graphics for several mountains
   * New: building graphics for iron mine
   * New: building graphics for distillery
+  * New: building graphics for smeltery
+  * New: building graphics for toolmaker
+  * New: test unit 'inhabitant male'
   * New: placeholders for all buildings of increment 3 we have no assets for
   * New: boatbuilder preview images for our current fisher boat
-  * New: inactive icons if no logbook navigation  possible in this direction
+  * New: inactive icons if no logbook navigation possible in this direction
+  * New: attack cursor
   * New: Added slider value display
   * New: Scrolling through savegames updates Save Details
+  * Change: Retouched many icons for build menu and resources
+  * Change: building graphics for brickyard now animated
   * Change: Replaced fisher boat by own assets licensed under CC-BY-SA 3.0
   * Change: animation time for signal fire
   * Change: Disabling focus for widgets that shouldn't be focusable
@@ -90,6 +103,7 @@ changelog date: FEB 23; rev: 85ac10d8a5211466cc6be1a3f55ec7b2564cce9a
 * Audio
   * Change: Replaced Sampling build.ogg by own file licensed under CC-BY-SA 3.0
   * Change: Replaced ships_bell.ogg by a file licensed under CC-0
+  * Change: hazure relicensed our lumberjack sounds under CC-BY-SA 3.0
   * Change: Moved license file for sounds to main LICENSE
 
 ... and a lot more smaller bugfixes as well as improvements.
