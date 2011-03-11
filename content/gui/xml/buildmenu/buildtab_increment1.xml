@@ -39,7 +39,7 @@
 			hover_image="content/gui/icons/buildmenu/weaver_h.png"
 			down_image="content/gui/icons/buildmenu/weaver_h.png"
 			tooltip="Weaver: Turns lamb wool into cloth." />
-		<TooltipButton name="distillery-1" position="156,32"
+		<TooltipButton name="distillery-1" position="164,32"
 			up_image="content/gui/icons/buildmenu/distillery.png"
 			hover_image="content/gui/icons/buildmenu/distillery_h.png"
 			down_image="content/gui/icons/buildmenu/distillery_h.png"
