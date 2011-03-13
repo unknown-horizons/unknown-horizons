@@ -59,17 +59,13 @@ class Scheduler(LivingObject):
 		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			self.log.debug("Scheduler: tick is %s, callbacks: %s", self.cur_tick, self.schedule[self.cur_tick])
-			# DEBUG test: check if every callback really is executed
-			num_callbacks = len(self.schedule[self.cur_tick])
 			for callback in copy.copy(self.schedule[self.cur_tick]):
 				# NOTE: why copy the schedule? can it be changed in any way? maybe by remove_all_classinst..?
 				self.log.debug("Scheduler(t:%s) calling %s", tick_id, callback)
 				callback.callback()
 				assert callback.loops >= -1
 				if callback.loops != 0:
-					self.add_object(callback) # readd object
-				num_callbacks -= 1
-			assert num_callbacks == 0
+					self.add_object(callback, readd=True)
 			del self.schedule[self.cur_tick]
 
 			# run jobs added in the loop above
@@ -80,27 +76,30 @@ class Scheduler(LivingObject):
 
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
 
-	def add_object(self, callback_obj):
-		"""Adds a new CallbackObject instance to the callbacks list
+	def add_object(self, callback_obj, readd=False):
+		"""Adds a new CallbackObject instance to the callbacks list for the first time
 		@param callback_obj: CallbackObject type object, containing all neccessary  information
+		@param readd: Whether this object is added another time (looped)
 		"""
 		if callback_obj.loops > 0:
 			callback_obj.loops -= 1
-		if callback_obj.runin == 0: # run in the current tick
+		if callback_obj.run_in == 0: # run in the current tick
 			self.additional_cur_tick_schedule.append(callback_obj)
 		else: # default: run in future tick
-			tick_key = self.cur_tick + callback_obj.runin
+			interval = callback_obj.loop_interval if readd else callback_obj.run_in
+			tick_key = self.cur_tick + interval
 			if not tick_key in self.schedule:
 				self.schedule[tick_key] = []
 			self.schedule[tick_key].append(callback_obj)
 
-	def add_new_object(self, callback, class_instance, runin=1, loops=1):
+	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
-		@param callback: lambda function callback, which is called runin ticks.
+		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the function belongs to.
-		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
-		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once."""
-		callback_obj = CallbackObject(self, callback, class_instance, runin, loops)
+		@param run_in: int number of ticks after which the callback is called. Defaults to 1, run next tick.
+		@param loops: How often the callback is called. -1 = infinite times. Defautls to 1, run once.
+		@param loop_interval: Delay between subsequent loops in ticks. Defaults to run_in."""
+		callback_obj = CallbackObject(self, callback, class_instance, run_in, loops, loop_interval)
 		self.add_object(callback_obj)
 
 	def rem_object(self, callback_obj):
@@ -176,24 +175,25 @@ class Scheduler(LivingObject):
 
 class CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
-	def __init__(self, scheduler, callback, class_instance, runin=1, loops=1):
+	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval):
 		"""Creates the CallbackObject instance.
 		@param scheduler: reference to the scheduler, necessary to react properly on weak reference callbacks
-		@param callback: lambda function callback, which is called runin ticks.
-		@param class_instance: class instance the original function(not the lambda function!) belongs to.
-		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
-		@param loops: How often the callback is called. -1 = infinit times. Standard is 1, run once.
+		@see Scheduler.add_new_object
 		"""
-		assert runin >= 0, "Can't schedule callbacks in the past, runin must be a positive number"
+		assert run_in >= 0, "Can't schedule callbacks in the past, run_in must be a non negative number"
 		assert (loops > 0) or (loops == -1), \
 			"Loop count must be a positive number or -1 for infinite repeat"
 		assert callable(callback)
+		assert loop_interval == None or loop_interval > 0
 
 		self.callback = callback
 
+		# TODO: check if this is used anywhere, it seems to be deprecated
 		self.scheduler = scheduler
-		self.runin = runin
+
+		self.run_in = run_in
 		self.loops = loops
+		self.loop_interval = loop_interval if loop_interval is not None else run_in
 		self.class_instance = class_instance
 
 	def __str__(self):

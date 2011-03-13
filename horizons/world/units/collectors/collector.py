@@ -155,7 +155,7 @@ class Collector(StorageHolder, Unit):
 			self.job = Job(job_db[0], job_db[1], job_db[2])
 
 		# apply state when job object is loaded for sure
-		Scheduler().add_new_object(Callback(self.apply_state, self.state, remaining_ticks), self, runin=0)
+		Scheduler().add_new_object(Callback(self.apply_state, self.state, remaining_ticks), self, run_in=0)
 
 	def apply_state(self, state, remaining_ticks = None):
 		"""Takes actions to set collector to a state. Useful after loading.

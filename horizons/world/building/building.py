@@ -87,7 +87,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 
 		if self.running_costs != 0: # Get payout every 30 seconds
 			Scheduler().add_new_object(self.get_payout, self, \
-			                           runin=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
+			                           run_in=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:

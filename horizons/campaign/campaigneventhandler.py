@@ -69,7 +69,7 @@ class CampaignEventHandler(LivingObject):
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, \
-		                           runin = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
+		                           run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
 
 	def sleep(self, ticks):
 		"""Sleep the CampaignEventHandler for number of ticks. This delays all
@@ -77,7 +77,7 @@ class CampaignEventHandler(LivingObject):
 		callbacks = Scheduler().get_classinst_calls(self)
 		for callback in callbacks:
 			Scheduler().rem_object(callback)
-			callback.runin = callback.runin + ticks
+			callback.run_in = callback.run_in + ticks
 			Scheduler().add_object(callback)
 		self.sleep_ticks_remaining = ticks
 		Scheduler().add_new_object(self._reduce_sleep, self, loops = ticks)
@@ -109,11 +109,11 @@ class CampaignEventHandler(LivingObject):
 		"""Let check_events run in one tick for condition. Useful for lag prevetion if time is a
 		critical factor, e.g. when the user has to wait for a function to return.."""
 		if self.session.world.inited: # don't check while loading
-			Scheduler().add_new_object(Callback(self.check_events, condition), self, runin=self.sleep_ticks_remaining)
+			Scheduler().add_new_object(Callback(self.check_events, condition), self, run_in=self.sleep_ticks_remaining)
 
 	def schedule_action(self, action):
 		if self.sleep_ticks_remaining > 0:
-			Scheduler().add_new_object(Callback(action, self.session), self, runin = self.sleep_ticks_remaining)
+			Scheduler().add_new_object(Callback(action, self.session), self, run_in = self.sleep_ticks_remaining)
 		else:
 			action(self.session)
 

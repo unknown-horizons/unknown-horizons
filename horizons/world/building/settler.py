@@ -70,16 +70,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def save(self, db):
 		super(Settler, self).save(db)
-		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", self.worldid, \
-			 self.inhabitants)
+		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
+		db("INSERT INTO settler(rowid, inhabitants, remaining_ticks) VALUES (?, ?, ?)", \
+		   self.worldid, self.inhabitants, remaining_ticks)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
-		self.inhabitants = db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
+		self.inhabitants, remaining_ticks = \
+		    db("SELECT inhabitants, remaining_ticks FROM settler WHERE rowid=?", worldid)[0]
 
 		self.__init()
 		self.owner.notify_settler_reached_level(self)
-		self.run()
+		self.run(remaining_ticks)
 
 	@property
 	def happiness(self):
@@ -115,10 +117,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 		# update instance graphics
 		self.update_action_set_level(self.level)
 
-	def run(self):
+	def run(self, remaining_ticks=None):
 		"""Start regular tick calls"""
 		interval_in_ticks = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
-		Scheduler().add_new_object(self._tick, self, runin=interval_in_ticks, loops=-1)
+		run_in = remaining_ticks if remaining_ticks is not None else interval_in_ticks
+		Scheduler().add_new_object(self._tick, self, run_in=run_in, loops=-1, )
 
 	def _tick(self):
 		"""Here we collect the functions, that are called regularly (every "month")."""
@@ -197,11 +200,11 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 	def level_down(self):
 		if self.level == 0: # can't level down any more
 			# remove when this function is done
-			Scheduler().add_new_object(self.remove, self, runin=0)
+			Scheduler().add_new_object(self.remove, self, run_in=0)
 			# replace this building with a ruin
 			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
-			Scheduler().add_new_object(command, command, runin=0)
+			Scheduler().add_new_object(command, command, run_in=0)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner == self.session.world.player:

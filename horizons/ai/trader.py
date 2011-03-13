@@ -57,7 +57,7 @@ class Trader(AIPlayer):
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_branch
-		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, runin=0)
+		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
 	def __init(self):
 		self.office = {} # { ship.worldid : branch }. stores the branch the ship is currently heading to
@@ -225,7 +225,7 @@ class Trader(AIPlayer):
 		if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE:
 			# delay one tick, to allow old movement calls to completely finish
 			self.log.debug("Trader %s ship %s: idle, moving to random bo", self.worldid, ship.worldid)
-			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self, runin=0)
+			Scheduler().add_new_object(Callback(self.send_ship_random_branch, ship), self, run_in=0)
 		else:
 			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
-			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, runin=0)
+			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)

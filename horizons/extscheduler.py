@@ -56,16 +56,16 @@ class ExtScheduler(object):
 		"""
 		if obj.loops > 0:
 			obj.loops -= 1
-		self.schedule.append(((time.time() + obj.runin), obj))
+		self.schedule.append(((time.time() + obj.run_in), obj))
 		self.schedule.sort()
 
-	def add_new_object(self, callback, class_instance, runin=1, loops=1):
+	def add_new_object(self, callback, class_instance, run_in=1, loops=1):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
-		@param callback: function callback, which is called runin time.
+		@param callback: function callback, which is called run_in time.
 		@param class_instance: class instance the function belongs to.
-		@param runin: float number of seconds after which the callback is called. Standard is 1, run next second.
+		@param run_in: float number of seconds after which the callback is called. Standard is 1, run next second.
 		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once."""
-		obj = CallbackObject(callback, class_instance, runin, loops)
+		obj = CallbackObject(callback, class_instance, run_in, loops)
 		self.add_object(obj)
 
 	def rem_all_classinst_calls(self, class_instance):
@@ -91,15 +91,15 @@ class ExtScheduler(object):
 
 class CallbackObject(object):
 	"""Class used by the ExtScheduler Class to organize callbacks."""
-	def __init__(self,  callback, class_instance, runin=1, loops=1):
+	def __init__(self,  callback, class_instance, run_in=1, loops=1):
 		"""Creates the CallbackObject instance.
-		@param callback: lambda function callback, which is called runin ticks.
+		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the original function(not the lambda function!) belongs to.
-		@param runin: int number of ticks after which the callback is called. Standard is 1, run next tick.
+		@param run_in: int number of ticks after which the callback is called. Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once.
 		"""
 		self.callback = callback
 		self.class_instance = class_instance
-		self.runin = runin
+		self.run_in = run_in
 		self.loops = loops
 

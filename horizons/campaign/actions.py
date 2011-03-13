@@ -39,7 +39,7 @@ def show_message(session, *message):
 	for msg in message:
 		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, None, None, \
 		                                    msg + '\n'* 30 + 'UHtutorial', visible_for=visible_ticks), \
-		                                    None, runin=delay_iter)
+		                                    None, run_in=delay_iter)
 		delay_iter += delay_ticks
 		# for the part """ + '\n'* 30 + 'UHtutorial'""" see below comment (#535)
 
@@ -60,7 +60,7 @@ def show_logbook_entry(session, head, message):
 def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DEFAULT_DELAY):
 	"""Show a logbook entry delayed by delay seconds"""
 	callback = Callback(show_logbook_entry, session, head, message)
-	Scheduler().add_new_object(callback, session.campaign_eventhandler, runin=Scheduler().get_ticks(delay))
+	Scheduler().add_new_object(callback, session.campaign_eventhandler, run_in=Scheduler().get_ticks(delay))
 
 def do_win(session):
 	"""Called when player won"""
@@ -73,7 +73,7 @@ def do_win(session):
 	                                            "Do you want to continue playing?"), \
 	                                          show_cancel_button=True)
 	if not continue_playing:
-		Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, runin=0)
+		Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
 	else:
 		session.speed_unpause()
 

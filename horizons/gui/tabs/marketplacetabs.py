@@ -52,7 +52,7 @@ class MarketPlaceTab(TabInterface):
 		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
 		if not self._refresh_scheduled:
 			self._refresh_scheduled = True
-			ExtScheduler().add_new_object(self.refresh, self, runin=0.3)
+			ExtScheduler().add_new_object(self.refresh, self, run_in=0.3)
 
 	def refresh(self):
 		super(MarketPlaceTab, self).refresh()
