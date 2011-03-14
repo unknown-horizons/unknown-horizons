@@ -74,8 +74,8 @@ class LazyWidgetsDict(dict):
 		widget = load_xml_translated(widgetname+'.xml')
 		if self.center_widgets:
 			center_widget(widget)
-		headline = widget.findChild(name='headline')
-		if headline:
+		headlines = widget.findChildren(name='headline')
+		for headline in headlines:
 			headline.stylize('headline')
 		if widgetname in self.styles:
 			widget.stylize(self.styles[widgetname])
