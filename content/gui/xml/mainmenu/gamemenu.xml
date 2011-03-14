@@ -51,7 +51,7 @@
 		down_image="content/gui/icons/mainmenu/door.png"
 		hover_image="content/gui/icons/mainmenu/door.png" />
 
-	<Label name="chimebell" text="Chime the bell" position="218,480" />
+	<Label name="chimebell" text="Attention please!" position="218,480" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
 	<ImageButton name="dead_link"
 		position="376,431"

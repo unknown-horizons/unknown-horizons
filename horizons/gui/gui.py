@@ -72,7 +72,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
 			'helpLink'       : self.on_help,
 			'closeButton'    : self.show_quit,
-			'dead_link'      : self.on_chime,
+			'dead_link'      : self.on_chime, # call for help;  SoC information
 			'creditsLink'    : self.show_credits,
 			'loadgameButton' : horizons.main.load_game
 		})
@@ -172,11 +172,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def on_chime(self):
 		"""
-		Called chime action.
+		Called chime action. Displaying call for help on artists and game design,
+		introduces information for SoC applicants (if valid).
 		"""
 		AmbientSound.play_special("message")
-		message = _("Yeah, you made it...\n\nBut this is a placeholder, sorry.")
-		self.show_popup(_("Chime The Bell"), message)
+		self.show_dialog(self.widgets['call_for_support'], {'okButton' : True}, onPressEscape = True)
 
 	help_is_displayed = False
 	def on_help(self):

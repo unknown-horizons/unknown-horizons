@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Container name="support_window" size="800,580" position="100,100">
+<Icon image="content/gui/images/background/book.png" />
+
+<VBox position="80,42" max_size="340,450" min_size="340,450">
+	<Label text="How you can help us" name="headline" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<VBox>
+		<Label name="text" text="We are continuously looking for new contributors to our project. This includes the following fields:"
+			   wrap_text="1"  max_size="280,60" />
+		<Label name="text" text="* Graphic artists (modelling buildings &amp; units)" />
+		<Label name="text" text="* Python developers (also see next page)" />
+		<Label name="text" text="* Game designers (describing new mechanics)" />
+		<Label name="text" text="* Playtesters &amp; Bughunters (yes, this also helps!)" />
+		<Label name="text" text="Visit our IRC channel #unknown-horizons on FreeNode to get in touch with the developers and we will be happy to answer all your questions!"
+			   wrap_text="1"  max_size="280,80" />
+		<Label name="text" text="You find information on how to get started at" />
+		<Label name="text" text="http://wiki.unknown-horizons.org/w/Getting_started" />
+		<Label name="text" text="Most developers are from Europe, so make sure to show a little patience. We read our channel logs and will always come back to you."
+			   wrap_text="1"  max_size="280,80" />
+	</VBox>
+
+	<Spacer />
+
+	<VBox>
+		<Label name="text03" text="Thanks for your contributions and see you soon!" />
+		<VBox padding="0">
+			<Label name="fife_and_uh_team_lbl" text="The FIFE and Unknown Horizons" max_size="315,20" />
+			<Label name="fife_and_uh_team_lbl2" text="development teams" max_size="315,20" />
+		</VBox>
+	</VBox>
+</VBox>
+
+<VBox position="430,42" max_size="320,450" min_size="320,450"><!-- right side -->
+	<Label text="Summer of Code information" name="headline" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<VBox padding="5">
+		<Label name="text" text="We were (not yet) accepted to be a mentoring organization for this year's Google Summer of Code."
+			   wrap_text="1"  max_size="280,60" /> <!-- remove whole part if not accepted -->
+		<Label name="text" text="This means that if you are a student and would like to work on improving Unknown Horizons together with us, Google might even grant you a stipend to do this!"
+			   wrap_text="1"  max_size="280,140" /> <!-- remove whole part if not accepted -->
+		<Label name="text" text="So what do you need? Only make sure to apply in time, following the instructions on our Ideas page linked below."
+			   wrap_text="1"  max_size="280,80" />
+		<Label name="text" text="You find anything important for interested students there, including possible ideas to work on."
+			   wrap_text="1"  max_size="280,60" />
+		<Label name="text" text="The topics we came up with include implementing combat and AI players, but we also have easier tasks if you feel these are too tough. You can of course also propose own ideas!"
+			   wrap_text="1"  max_size="280,140" />
+		<Label name="text03" text="http://wiki.unknown-horizons.org/w/Ideas_2011" />
+		<Spacer size="5"/>
+		<Label name="text04" text="We look forward to your application and hope you have fun working with us this summer!"
+			   wrap_text="1"  max_size="280,60" />
+	</VBox>
+</VBox>
+
+<TooltipButton name="okButton" position="695,500"
+	up_image="content/gui/images/buttons/ok.png"
+	hover_image="content/gui/images/buttons/ok_h.png"
+	down_image="content/gui/images/buttons/ok.png"
+	tooltip="Exit to main menu" />
+
+</Container>
