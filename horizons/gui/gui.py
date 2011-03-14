@@ -89,18 +89,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for i in xrange (0,21): #TODO this is a hardcoded maximum of vboxes, might break code
-			cur_container = self.widgets['credits'+str(number)].findChild(name='book'+str(i))
-			if cur_container:
-				cur_container.stylize('book_t') # leaves headlines as what they are, only style labels
-				cur_container.margins = (30,0) # to get some indentation
-
-		label = [self.widgets['credits'+str(number)].findChild(name=i+"_lbl")\
-		          for i in ('team','patchers','translators','special_thanks')]
+		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
+			box.margins = (30,0) # to get some indentation
+		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl")\
+		              for section in ('team','patchers','translators','special_thanks')]
 		for i in xrange (0,4):
 			if label[i]: # add callbacks to each pickbelt that is displayed
-				label[i].capture(pychan.tools.callbackWithArguments( \
-				                 self.show_credits, i), event_name="mouseClicked")
+				label[i].capture(pychan.tools.callbackWithArguments(self.show_credits, i),
+				                 event_name="mouseClicked")
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()

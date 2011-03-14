@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!-- Syncd with "doc/AUTHORS" -->
-<Container name="credits_window" size="1000,580">
-<Icon image="content/gui/images/background/book.png" position="100,0" />
+<Container name="credits_window"  size="1000,580">
+<Icon image="content/gui/images/background/book.png"  position="100,0" />
 
 <Container size="170,580">
-	<ImageButton position="35,150" up_image="content/gui/images/background/pickbelt_l.png" />
-	<!--<ImageButton position="40,200" up_image="content/gui/images/background/pickbelt_l.png" />-->
-	<!--<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_l.png" />-->
+	<ImageButton position="35,150"  up_image="content/gui/images/background/pickbelt_l.png" />
+	<!--<ImageButton position="40,200"  up_image="content/gui/images/background/pickbelt_l.png" />-->
+	<!--<ImageButton position="55,350"  up_image="content/gui/images/background/pickbelt_l.png" />-->
 </Container>
 
-<Container position="1, 4" size="170,580">
-	<Label position="50,160" name="team_lbl" text="UH-Team" font="libertine_small_tooltip" />
+<Container position="1, 4"  size="170,580">
+	<Label position="50,160"  name="team_lbl"  text="UH-Team"  font="libertine_small_tooltip" />
 	<!--<Label position="55,210" name="patchers_lbl" text="Patchers" font="libertine_small_tooltip" />-->
 	<!--<Label position="70,360" text="" font="libertine_small_tooltip" />-->
 </Container>
@@ -18,10 +18,10 @@
 <!-- this is the second container ( patchers ).                                        !!!
 -->
 <VBox position="190,45" name="credits">
-	<Label text="Patchers" name="headline_patchers" font="libertine_headline" />
+	<Label text="Patchers"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<VBox> <Label text="2009" font="libertine_headline" />
-		<VBox name="book0">
+	<VBox> <Label text="2009"  name="headline" />
+		<VBox  name="box">
 			<Label text="abeaumont (Building bugfix)"  />
 			<Label text="MadMonk (Focus bugfix)"  />
 			<Label text="MSSSSM (Several improvements)"  />
@@ -29,8 +29,8 @@
 		</VBox>
 	</VBox>
 
-	<VBox> <Label text="2010" font="libertine_headline" />
-		<VBox name="book1">
+	<VBox> <Label text="2010"  name="headline" />
+		<VBox  name="box">
 			<Label text="Afrit (Resource tree)" />
 			<Label text="cubathy (Language bugfix)" />
 			<Label text="dario (Savegame versioning)" />
@@ -42,50 +42,50 @@
 		</VBox>
 	</VBox> <Spacer />
 
-	<VBox> <Label text="2011" font="libertine_headline" />
-		<VBox name="book1">
+	<VBox> <Label text="2011"  name="headline" />
+		<VBox  name="box">
 			<Label text="" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
 
 <VBox position="525,70" name="credits2">
-	<VBox> <Label text="" font="libertine_headline" />
+	<VBox> <Label text=""  name="headline" />
 		<VBox name="book2">
 			<Label text="" />
 		</VBox>
 	</VBox>
 </VBox>
 
-<Container position="0,500" size="1000,100"> <!-- buttons, always visible.
+<Container position="0,500"  size="1000,100"> <!-- buttons, always visible.
   USE ––|–– THESE if there are more than 2 pages of content for one credits group
         v
-	<TooltipButton name="backwardButton" position="175,0"
+	<TooltipButton name="backwardButton"  position="175,0"
 		up_image="content/gui/images/buttons/parrow_left.png"
 		hover_image="content/gui/images/buttons/parrow_left_h.png"
 		down_image="content/gui/images/buttons/parrow_left_d.png"
 		tooltip="Read prev. entries" />
-	<TooltipButton name="forwardButton" position="210,0"
+	<TooltipButton name="forwardButton"  position="210,0"
 		up_image="content/gui/images/buttons/parrow_right.png"
 		hover_image="content/gui/images/buttons/parrow_right_h.png"
 		down_image="content/gui/images/buttons/parrow_right_d.png"
 		tooltip="Read next entries" /> -->
-	<ImageButton position="800,0" name="okButton"
+	<ImageButton position="800,0"  name="okButton"
 		up_image="content/gui/images/buttons/ok.png"
 		hover_image="content/gui/images/buttons/ok_h.png"
 		down_image="content/gui/images/buttons/ok.png" />
 </Container>
 
-<Container position="810,0" size="170,500">
-	<ImageButton position="45,250" up_image="content/gui/images/background/pickbelt_r.png" />
-	<ImageButton position="50,300" up_image="content/gui/images/background/pickbelt_r.png" />
-	<!--<ImageButton position="55,350" up_image="content/gui/images/background/pickbelt_r.png" />-->
+<Container position="810,0"  size="170,500">
+	<ImageButton position="45,250"  up_image="content/gui/images/background/pickbelt_r.png" />
+	<ImageButton position="50,300"  up_image="content/gui/images/background/pickbelt_r.png" />
+	<!--<ImageButton position="55,350"  up_image="content/gui/images/background/pickbelt_r.png" />-->
 </Container>
 
-<Container position="800,3" size="170,500" name="pickbelt">
-	<Label name="translators_lbl" position="60,260" text="Translators" font="libertine_small_tooltip" />
-	<Label name="special_thanks_lbl" position="65,310" text="Special Thanks" font="libertine_small_tooltip" />
-	<!-- <Label position="70,360" text="" font="libertine_small_tooltip" />-->
+<Container position="800,3"  size="170,500"  name="pickbelt">
+	<Label name="translators_lbl"  position="60,260"  text="Translators"  font="libertine_small_tooltip" />
+	<Label name="special_thanks_lbl"  position="65,310"  text="Special Thanks" font="libertine_small_tooltip" />
+	<!-- <Label position="70,360"  text=""  font="libertine_small_tooltip" />-->
 </Container>
 
 </Container>
