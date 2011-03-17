@@ -189,10 +189,14 @@ class BuildingTool(NavigationTool):
 			level = self.session.world.player.settler_level if \
 			      not hasattr(self._class, "default_level_on_build") else \
 			      self._class.default_level_on_build
-			self.buildings_fife_instances[building] = \
-			    self._class.getInstance(self.session, building.position.origin.x, \
-			                            building.position.origin.y, rotation=building.rotation,
-			                            action=building.action, level=level)
+
+			if self._class.id == 17 and not building.buildable:
+				continue # Tree that is not buildable, don't preview
+			else:
+				self.buildings_fife_instances[building] = \
+				    self._class.getInstance(self.session, building.position.origin.x, \
+				                            building.position.origin.y, rotation=building.rotation,
+				                            action=building.action, level=level)
 
 			settlement = self.session.world.get_settlement(building.position.center())
 			if building.buildable:
