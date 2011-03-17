@@ -64,12 +64,12 @@ class SelectionTool(NavigationTool):
 			# Only one unit, select anyway
 			if len(instances) == 1:
 				instance = WorldObject.get_object_by_id(int(instances[0].getId()))
-				if hasattr(instance, 'select'):
+				if instance.is_selectable:
 					selectable.append(instance)
 			else:
 				for i in instances:
 					instance = WorldObject.get_object_by_id(int(i.getId()))
-					if hasattr(instance, 'select') and instance.owner == self.session.world.player:
+					if instance.is_selectable and instance.owner == self.session.world.player:
 						selectable.append(instance)
 
 			if len(selectable) > 1:
@@ -131,7 +131,7 @@ class SelectionTool(NavigationTool):
 				if id == '':
 					continue
 				instance = WorldObject.get_object_by_id(int(id))
-				if hasattr(instance, 'select'):
+				if instance.is_selectable:
 					selectable.append(instance)
 			if len(selectable) > 1:
 				selectable = selectable[0:0]

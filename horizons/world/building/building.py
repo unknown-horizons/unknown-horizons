@@ -296,6 +296,7 @@ class SelectableBuilding(object):
 	range_applies_only_on_island = True
 	selection_color = (255, 255, 0)
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
+	is_selectable = True
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""

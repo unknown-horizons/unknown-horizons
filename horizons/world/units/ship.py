@@ -46,7 +46,6 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
-
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
@@ -180,3 +179,4 @@ class FisherShip(FisherShipCollector, Ship):
 	tabs = ()
 	pather_class = ShipPather
 	health_bar_y = -50
+	is_selectable = False

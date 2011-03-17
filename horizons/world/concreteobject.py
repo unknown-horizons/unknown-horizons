@@ -36,6 +36,7 @@ class ConcretObject(WorldObject):
 	enemy_tabs = [] # same as tabs, but used when clicking on enemy's instances
 	is_unit = False
 	is_building = False
+	is_selectable = False
 
 	def __init__(self, session, **kwargs):
 		"""
