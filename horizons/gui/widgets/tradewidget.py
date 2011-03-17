@@ -66,7 +66,7 @@ class TradeWidget(object):
 		self.widget.mapEvents(events)
 		self.instance = instance
 		self.partner = None
-		self.set_exchange(10, initial=True)
+		self.set_exchange(50, initial=True)
 		self.draw_widget()
 		if hasattr(self.instance, 'radius'):
 			self.radius = self.instance.radius
