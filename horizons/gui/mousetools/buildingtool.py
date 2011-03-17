@@ -191,7 +191,7 @@ class BuildingTool(NavigationTool):
 			      self._class.default_level_on_build
 
 			if self._class.id == 17 and not building.buildable:
-				continue # Tree that is not buildable, don't preview
+				continue # Tree/ironmine that is not buildable, don't preview
 			else:
 				self.buildings_fife_instances[building] = \
 				    self._class.getInstance(self.session, building.position.origin.x, \
@@ -335,9 +335,12 @@ class BuildingTool(NavigationTool):
 		# acctually do the build and build preparations
 		for building in self.buildings:
 			# remove fife instance, the building will create a new one.
-			fife_instance = self.buildings_fife_instances.pop(building)
-			self.renderer.removeColored(fife_instance)
-			fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
+			# Check if there is a matching fife instance, could be missing
+			# in case of trees, which are hidden if not buildable
+			if self.buildings_fife_instances.has_key(building):
+				fife_instance = self.buildings_fife_instances.pop(building)
+				self.renderer.removeColored(fife_instance)
+				fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 
 			if building.buildable:
 				built = True
