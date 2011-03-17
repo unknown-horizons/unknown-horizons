@@ -32,7 +32,7 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.selectiontool import SelectionTool
 from horizons.command.sounds import PlaySound
 from horizons.i18n import load_xml_translated
-from horizons.constants import RES
+from horizons.constants import RES, BUILDINGS
 from horizons.extscheduler import ExtScheduler
 
 class BuildingTool(NavigationTool):
@@ -190,7 +190,7 @@ class BuildingTool(NavigationTool):
 			      not hasattr(self._class, "default_level_on_build") else \
 			      self._class.default_level_on_build
 
-			if self._class.id == 17 and not building.buildable:
+			if self._class.id == BUILDINGS.TREE_CLASS and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
 			else:
 				self.buildings_fife_instances[building] = \
@@ -337,7 +337,7 @@ class BuildingTool(NavigationTool):
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing
 			# in case of trees, which are hidden if not buildable
-			if self.buildings_fife_instances.has_key(building):
+			if building in self.buildings_fife_instances:
 				fife_instance = self.buildings_fife_instances.pop(building)
 				self.renderer.removeColored(fife_instance)
 				fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
