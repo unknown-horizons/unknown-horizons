@@ -176,8 +176,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
-		self.num_water = len(self.ground_map)
 		self.water = list(self.ground_map)
+
+		# assemble list of water and coastline for ship, that can drive through shallow water
+		self.water_and_coastline = self.water[:]
+		for island in self.islands:
+			for coord, tile in island.ground_map.iteritems():
+				if 'coastline' in tile.classes:
+					self.water_and_coastline.append(coord)
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}

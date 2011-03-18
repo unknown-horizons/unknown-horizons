@@ -229,6 +229,11 @@ class ShipPather(AbstractPather):
 				# also check in super class
 				return super(ShipPather, self)._check_for_obstacles(point)
 
+class FisherShipPather(ShipPather):
+	"""Can also drive through shallow water"""
+	def _get_path_nodes(self):
+		return self.session.world.water_and_coastline
+
 class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)
 	within the radius of their home building such as farm animals."""

@@ -27,7 +27,7 @@ import horizons.main
 from horizons.gui.tabs import ShipInventoryTab, ShipOverviewTab, TraderShipOverviewTab
 from horizons.world.storage import PositiveTotalStorage
 from horizons.world.storageholder import StorageHolder
-from horizons.world.pathfinding.pather import ShipPather
+from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle
 from horizons.world.units.collectors import FisherShipCollector
@@ -177,6 +177,6 @@ class TradeShip(Ship):
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
 	tabs = ()
-	pather_class = ShipPather
+	pather_class = FisherShipPather
 	health_bar_y = -50
 	is_selectable = False
