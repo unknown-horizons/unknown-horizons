@@ -35,10 +35,10 @@
 	<Label text="Summer of Code information" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox padding="5">
-		<Label name="text" text="We were (not yet) accepted to be a mentoring organization for this year's Google Summer of Code."
-			   wrap_text="1"  max_size="280,60" /> <!-- remove whole part if not accepted -->
+		<Label name="text" text="We were accepted to be a mentoring organization for this year's Google Summer of Code."
+			   wrap_text="1"  max_size="280,60" />
 		<Label name="text" text="This means that if you are a student and would like to work on improving Unknown Horizons together with us, Google might even grant you a stipend to do this!"
-			   wrap_text="1"  max_size="280,140" /> <!-- remove whole part if not accepted -->
+			   wrap_text="1"  max_size="280,140" />
 		<Label name="text" text="So what do you need? Only make sure to apply in time, following the instructions on our Ideas page linked below."
 			   wrap_text="1"  max_size="280,80" />
 		<Label name="text" text="You find anything important for interested students there, including possible ideas to work on."
