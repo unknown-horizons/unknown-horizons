@@ -365,7 +365,7 @@ class SelectableBuilding(object):
 			else:
 				ground_holder = settlement
 
-			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=True):
+			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=False):
 				try:
 					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
 						cls._add_selected_tile(tile, position, renderer)
@@ -379,10 +379,6 @@ class SelectableBuilding(object):
 						cls._add_selected_tile(tile, position, renderer)
 				except AttributeError:
 					pass # no tile or no object on tile
-		for point in position:
-			tile = world.get_tile(point)
-			renderer.removeColored(tile._instance)
-			renderer.removeColored(tile.object._instance)
 
 
 	@classmethod

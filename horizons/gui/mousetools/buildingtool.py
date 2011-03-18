@@ -229,8 +229,9 @@ class BuildingTool(NavigationTool):
 						               self._class.costs[resource]
 
 			if building.buildable:
-				self.renderer.addColored(self.buildings_fife_instances[building], \
-				                         *self.buildable_color)
+				self.renderer.addOutlined(self.buildings_fife_instances[building], \
+				                          self.buildable_color[0], self.buildable_color[1],\
+				                          self.buildable_color[2], 1)
 				# draw radius in a moment, and not always immediately, since it's expensive
 				if hasattr(self._class, "select_building"):
 					callback = Callback(self._class.select_building, self.session, \
@@ -469,7 +470,7 @@ class ShipBuildingToolLogic(object):
 					building_tool._color_buildable_tile(tile)
 		else: # build from ship
 			for island in session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
-				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
+				for tile in island.get_tiles_in_radius(self.ship.position, self.ship.radius):
 					buildable_tiles_add(tile)
 					# check that there is no other player's settlement
 					if tile.settlement is None or tile.settlement.owner == player:
