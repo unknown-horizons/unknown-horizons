@@ -43,6 +43,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 	tabs = (ShipOverviewTab, ShipInventoryTab)
 	health_bar_y = -150
 	is_ship = True
+	is_selectable = True
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)

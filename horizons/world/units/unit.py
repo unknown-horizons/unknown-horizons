@@ -34,7 +34,7 @@ class Unit(AmbientSound, MovingObject):
 	is_unit = True
 	is_ship = False
 	health_bar_y = -30
-	is_selectable = True
+	is_selectable = False
 
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)

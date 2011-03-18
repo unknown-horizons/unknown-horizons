@@ -82,6 +82,14 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 			renderer.addColored(building._instance, *cls.selection_color)
 			cls._selected_tiles.append(building)
 
+	@classmethod
+	def deselect_building(cls, session):
+		"""@see select_building,
+		@return list of tiles that were deselected."""
+		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
+		for tile in cls._selected_tiles:
+			remove_colored(tile._instance)
+		cls._selected_tiles = []
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
