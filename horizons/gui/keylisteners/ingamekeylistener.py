@@ -74,6 +74,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.speed_down()
 		elif keystr == 'p':
 			self.session.ingame_gui.toggle_ingame_pause()
+		elif keystr == 'l':
+			self.session.ingame_gui.logbook.toggle_visibility()
 		elif keystr == 'd':
 			pass
 			#import pdb; pdb.set_trace()
@@ -115,12 +117,12 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif keystr == '.':
 			if hasattr(self.session.cursor, "rotate_right"):
 				self.session.cursor.rotate_right()
-			elif hasattr(self.session.view, "rotate_right"):
+			else:
 				self.session.view.rotate_right()
 		elif keystr == ',':
 			if hasattr(self.session.cursor, "rotate_left"):
 				self.session.cursor.rotate_left()
-			elif hasattr(self.session.view, "rotate_left"):
+			else:
 				self.session.view.rotate_left()
 		elif keystr == 'c':
 			self.session.ingame_gui.show_chat_dialog()
