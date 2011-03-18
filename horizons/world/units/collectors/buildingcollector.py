@@ -189,7 +189,7 @@ class SettlerCollector(StorageCollector):
 	"""Collector for settlers."""
 	pass
 
-class FisherShipCollector(FieldCollector):
+class FisherShipCollector(BuildingCollector):
 
 	def __init__(self, *args, **kwargs):
 		if len(args) == 0:

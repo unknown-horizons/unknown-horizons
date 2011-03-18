@@ -179,10 +179,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.water = list(self.ground_map)
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
+		# NOTE: this is rather a temporary fix to make the fisher be able to move
+		# since there are tile between coastline and deep sea, all non-constructible tiles
+		# are added to this list as well, which will contain a few too many
 		self.water_and_coastline = self.water[:]
 		for island in self.islands:
 			for coord, tile in island.ground_map.iteritems():
-				if 'coastline' in tile.classes:
+				if 'coastline' in tile.classes or 'constructible' not in tile.classes:
 					self.water_and_coastline.append(coord)
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
