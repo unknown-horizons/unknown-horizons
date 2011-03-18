@@ -3,9 +3,10 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-03-??: Milestone 2011.1
-changelog date: MAR 10; rev: 522714d51cbbcdda5f585a853b43f97f5429f07f
+changelog date: MAR 18; rev: 17a6f9684458c0e2bd838b9ef0884c7f9d6025f7
 
 * General
+  * New: DFSG compatible branch ready to be included in e.g. official debian repos
   * New: enet for darwin-x64 => MP possible on mac as well
   * New: Implemented placement and save/load of fish tiles
   * New: Keep statistics about how many res have been produced at a settlement
@@ -27,29 +28,46 @@ changelog date: MAR 10; rev: 522714d51cbbcdda5f585a853b43f97f5429f07f
   * Change: Detection of exact matches with map file autocompletion in command
             line interface (--start-map / --start-campaign / --load-map)
   * Change: Capitalized resource names
+  * Change: Renamed runin to run_in
+  * Change: Improvements to the buildtool
+  * Change: added is_selectable attribute to concreteobject
   * Change: Removed old, unmaintained pathfinding tests
+  * Change: Moved outdated documentation files to misc repository
   * Change: 1024x768 is current minimum resolution
   * Change: Multiplayer lobby now also displays mismatching games and hints this
   * Fix: Game did not start with an umlaut/special character in settings.xml
   * Fix: minor issue concerning the creation of random islands
   * Fix: issue with quick- and autosaving
   * Fix: crash when pausing boatbuilder
+  * Fix: crash when clicking on units that are not selectable
+  * Fix: crash when building a fisher
   * Fix: crash while building fisher boat
+  * Fix: bug with the removed non-buildable trees
   * Fix: possible source of bugs that can occur when saving moving units
   * Fix: Saving from main menu now properly handles errors
 
 * Gameplay and Balancing
   * New: animals no further reproduce when over-populating an island
   * New: Map rotation with , and . keys
-  * New: Fisher boats get assigned to fisher with least amount of ships when built
+  * New: hotkey L for displaying or hiding logbook ingame
+xxx New: Fisher boats get assigned to fisher with least amount of ships when built
   * New: Cam focuses selected group (Ctrl-[num] to group, [num] to select)
   * New: Single non-player units can be selected via dragging
   * Change: Buildings can be grouped
+  * Change: default value of transfer amount in trade tab now is 50t
   * Change: Collectors can only pick up goods at mine entrance
   * Change: Smeltery now 4x4
+  * Change: Temporarily removed our sheep and made pasture produce lamb wool
+  * Change: Lamb wool production 50% faster
   * Change: Updated tutorial (fisher)
   * Change: Fisher now uses a boat and needs fish tiles in range to produce food
+  * Change: Fisher boat no longer is selectable
+  * Change: Fisher boat can drive through shallow water (coastline)
+  * Change: selecting a fisher only highlights fish swarms in range, no island
+            or sea / water tiles
+  * Change: Boatbuilder now produces a useless fisherboat
   * Fix: minor bug concerning decommissioning
+  * Fix: Taxes no longer start at 0 when a game is loaded
   * Fix: animals can no longer be handled by two collectors simultaneously
   * Fix: collectors can now reach each building in displayed range
   * Fix: settlers not being able to level up
@@ -74,18 +92,23 @@ changelog date: MAR 10; rev: 522714d51cbbcdda5f585a853b43f97f5429f07f
   * New: boatbuilder preview images for our current fisher boat
   * New: inactive icons if no logbook navigation possible in this direction
   * New: attack cursor
+  * New: Replaced 'Chime the bell' with info about contributing and Summer of Code
   * New: Added slider value display
   * New: Scrolling through savegames updates Save Details
   * Change: Retouched many icons for build menu and resources
   * Change: building graphics for brickyard now animated
   * Change: Replaced fisher boat by own assets licensed under CC-BY-SA 3.0
   * Change: animation time for signal fire
+  * Change: selecting buildings only create outline around building instead of
+            fully coloring it
+  * Change: Don't show trees that are not buildable in build preview
   * Change: Disabling focus for widgets that shouldn't be focusable
   * Change: Sailors build menu 50 px bigger to better fit the other tabs
   * Change: display 'nothing' resource icon in buysell slots by default
   * Change: boatbuilder displays current progress if production is paused
   * Change: save-related settings now sliders instead of listboxes
   * Change: Centered settings window
+  * Change: Allow more than one headline per widget
   * Change: Ingame menu and Main menu are more similar
   * Change: Modified default style
   * Fix: display of production lines with multiple input or output resources
