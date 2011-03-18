@@ -365,13 +365,10 @@ class SelectableBuilding(object):
 			else:
 				ground_holder = settlement
 
-			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=True):
+			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=False):
 				try:
 					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-						selected_tiles_add(tile)
-						add_colored(tile._instance, *cls.selection_color)
-						# Add color to a building or tree that is present on the tile
-						add_colored(tile.object._instance, *cls.selection_color)
+						cls._add_selected_tile(tile, position, renderer)
 				except AttributeError:
 					pass # no tile or no object on tile
 		else:
@@ -379,11 +376,17 @@ class SelectableBuilding(object):
 			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
 				try:
 					if settlement is None or tile.settlement is None or tile.settlement == settlement:
-						selected_tiles_add(tile)
-						add_colored(tile._instance, *cls.selection_color)
-						add_colored(tile.object._instance, *cls.selection_color)
+						cls._add_selected_tile(tile, position, renderer)
 				except AttributeError:
 					pass # no tile or no object on tile
+
+	@classmethod
+	def _add_selected_tile(cls, tile, position, renderer):
+		cls._selected_tiles.append(tile)
+		renderer.addColored(tile._instance, *cls.selection_color)
+		# Add color to objects on tht tiles
+		renderer.addColored(tile.object._instance, *cls.selection_color)
+
 
 
 class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
