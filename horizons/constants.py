@@ -108,6 +108,7 @@ class RES:
 	# ./development/print_db_data.py res
 	GOLD_ID   = 1
 	HAPPINESS_ID = 14
+	FISH_ID = 28
 
 class GROUND:
 	WATER = 4

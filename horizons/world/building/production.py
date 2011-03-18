@@ -26,10 +26,11 @@ from horizons.world.production.producer import ProducerBuilding
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
-from horizons.util import RadiusRect, Rect
+from horizons.util import Rect, Circle
+from horizons.util.shapes.radiusshape import RadiusShape, RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
-from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.constants import BUILDINGS, PRODUCTION, RES
 
 
 class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
@@ -57,9 +58,6 @@ class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
-	range_applies_only_on_island = False
-	pass
 
 class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
@@ -72,6 +70,18 @@ class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableS
 
 class Brickyard(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
+
+class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+
+	@classmethod
+	def _do_select(cls, renderer, position, world, settlement):
+		# Don't call super here, because we don't want to highlight the island
+		# only fish deposits
+		island = world.get_island(position.center())
+		for building in world.get_providers_in_range(RadiusShape(position, cls.radius), res=RES.FISH_ID):
+			renderer.addColored(building._instance, *cls.selection_color)
+			cls._selected_tiles.append(building)
+
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
