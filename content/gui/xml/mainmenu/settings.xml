@@ -90,7 +90,7 @@
 <!-- automatic is a shorthand for center:center #TODO get this working at all -->
 	<VBox  name="saving_settings">
 		<HBox>
-			<Label name="autosave_interval_label"  text="Autosave interval:"
+			<Label name="autosave_interval_label"  text="Autosave interval in minutes:"
 				wrap_text="1"  max_size="250,40"  min_size="250,20" />
 			<Label text=""  name="autosaveinterval_value" />
 		</HBox>
