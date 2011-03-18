@@ -58,10 +58,6 @@ class Distillery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
-	#range_applies_only_on_island = False
-	pass
-
 class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
