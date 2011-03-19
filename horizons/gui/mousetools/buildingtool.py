@@ -88,8 +88,6 @@ class BuildingTool(NavigationTool):
 	def _color_buildable_tile(self, tile):
 		self._buildable_tiles.add(tile) # it's a set, so dupicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
-		if tile.object is not None:
-			self.renderer.addColored(tile.object._instance, *self.buildable_color)
 
 	def end(self):
 		self._remove_listeners()
@@ -229,6 +227,8 @@ class BuildingTool(NavigationTool):
 						               self._class.costs[resource]
 
 			if building.buildable:
+				# Tile might still have not buildable color -> remove it
+				self.renderer.removeColored(self.buildings_fife_instances[building])
 				self.renderer.addOutlined(self.buildings_fife_instances[building], \
 				                          self.buildable_color[0], self.buildable_color[1],\
 				                          self.buildable_color[2], 1)
@@ -341,9 +341,16 @@ class BuildingTool(NavigationTool):
 			if building in self.buildings_fife_instances:
 				fife_instance = self.buildings_fife_instances.pop(building)
 				self.renderer.removeColored(fife_instance)
+				self.renderer.removeOutlined(fife_instance)
 				fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 
+
 			if building.buildable:
+				island = self.session.world.get_island(building.position.origin)
+				for position in building.position:
+					tile = island.get_tile(position)
+					self._buildable_tiles.remove(tile)
+					self.renderer.removeColored(tile._instance)
 				built = True
 				self._remove_listeners() # Remove changelisteners for update_preview
 				# create the command and execute it
@@ -351,7 +358,7 @@ class BuildingTool(NavigationTool):
 				            x=building.position.origin.x, \
 				            y=building.position.origin.y, \
 				            rotation=building.rotation, \
-				            island=self.session.world.get_island(building.position.origin), \
+				            island= island, \
 				            settlement=self.session.world.get_settlement(building.position.origin), \
 				            ship=self.ship, \
 				            tearset=building.tearset \
@@ -438,13 +445,8 @@ class BuildingTool(NavigationTool):
 
 	def _remove_coloring(self):
 		"""Removes coloring from tiles, that indicate that the tile is buildable"""
-		removeColored = self.renderer.removeColored
-		for tile in self._buildable_tiles:
-			removeColored(tile._instance)
-			if tile.object is not None:
-				removeColored(tile.object._instance)
-		self._buildable_tiles = set()
-
+		self.renderer.removeAllOutlines()
+		self.renderer.removeAllColored()
 
 class ShipBuildingToolLogic(object):
 	"""Helper class to seperate the logic needed when building from a ship from
@@ -459,7 +461,6 @@ class ShipBuildingToolLogic(object):
 		@param tiles_to_check: list of tiles to check for coloring."""
 		# resolved variables from inner loops
 		is_tile_buildable = building_tool._class.is_tile_buildable
-		add_colored = building_tool.renderer.addColored
 		session = building_tool.session
 		player = session.world.player
 		buildable_tiles_add = building_tool._buildable_tiles.add
@@ -474,9 +475,7 @@ class ShipBuildingToolLogic(object):
 					buildable_tiles_add(tile)
 					# check that there is no other player's settlement
 					if tile.settlement is None or tile.settlement.owner == player:
-						add_colored(tile._instance, *building_tool.buildable_color)
-						if tile.object is not None: # color obj on tile too
-							add_colored(tile.object._instance, *building_tool.buildable_color)
+						building_tool._color_buildable_tile(tile)
 
 	def on_escape(self, session):
 		session.selected_instances = set([self.ship])
