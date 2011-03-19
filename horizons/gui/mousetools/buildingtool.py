@@ -470,7 +470,7 @@ class ShipBuildingToolLogic(object):
 					building_tool._color_buildable_tile(tile)
 		else: # build from ship
 			for island in session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
-				for tile in island.get_tiles_in_radius(self.ship.position, self.ship.radius):
+				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
 					buildable_tiles_add(tile)
 					# check that there is no other player's settlement
 					if tile.settlement is None or tile.settlement.owner == player:
