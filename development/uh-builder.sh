@@ -133,8 +133,8 @@ else
 	cd fife
 	svn co http://fife.svn.cvsdude.com/engine/trunk
 	cd trunk
-	scons ext && scons
-	cd ../../unknown-horizons
+	scons -c && scons ext && scons fife-python
+	cd ../..
 	git clone git://github.com/unknown-horizons/unknown-horizons.git
 fi
 
@@ -142,15 +142,15 @@ dialog --title "You successfully installed Fife and Unknown-Horizons" --yesno "D
 if [ "$?" = 1 ]; then
 	clear
 	echo "Have fun with playing Unknown-Horizons!"
-	echo "In the future you can run uh via: cd $FOLDER/unknown-horizons/trunk && python ./run_uh.py"
+	echo "In the future you can run UH via: cd $FOLDER/unknown-horizons/ && python ./run_uh.py"
 	echo "Hit return to exit."
 	read
 	clear
 	exit 0
 else
-	cd trunk
+	cd unknown-horizons
 	python ./run_uh.py
-	echo "In the future you can run uh via: cd $FOLDER/unknown-horizons/trunk && python ./run_uh.py"
+	echo "In the future you can run UH via: cd $FOLDER/unknown-horizons/ && python ./run_uh.py"
 	echo "Hit return to exit."
 	read
 fi
