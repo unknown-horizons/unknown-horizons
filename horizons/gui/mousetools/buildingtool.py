@@ -349,7 +349,7 @@ class BuildingTool(NavigationTool):
 				island = self.session.world.get_island(building.position.origin)
 				for position in building.position:
 					tile = island.get_tile(position)
-					self._buildable_tiles.remove(tile)
+					self._buildable_tiles.discard(tile)
 					self.renderer.removeColored(tile._instance)
 				built = True
 				self._remove_listeners() # Remove changelisteners for update_preview
