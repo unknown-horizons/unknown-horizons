@@ -208,7 +208,7 @@ class Collector(StorageHolder, Unit):
 
 	def handle_no_possible_job(self):
 		"""Called when we can't find a job. default is to wait and try again in a few secs"""
-		self.log.debug("%s: found no possible job, retry in %lf secs", \
+		self.log.debug("%s: found no possible job, retry in %s ticks", \
 		               (self, COLLECTORS.DEFAULT_WAIT_TICKS) )
 		Scheduler().add_new_object(self.search_job, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 
