@@ -29,6 +29,7 @@ from horizons.util import WorldObject, decorators, Callback
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
+from horizons.constants import COLLECTORS
 
 class Collector(StorageHolder, Unit):
 	"""Base class for every collector. Does not depend on any home building.
@@ -50,25 +51,25 @@ class Collector(StorageHolder, Unit):
 	"""
 	log = logging.getLogger("world.units.collector")
 
-	work_duration = 16 # time how long a collector pretends to work at target in ticks
+	work_duration = COLLECTORS.DEFAULT_WORK_DURATION # default is 16
 	destination_always_in_building = False
 
 	# all states, any (subclass) instance may have. Keeping a list in one place
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
-								'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
-								'no_job_waiting')
+	              'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
+	              'no_job_waiting')
 
 
 	# INIT/DESTRUCT
 
 	def __init__(self, x, y, slots = 1, size = 4, start_hidden=True, **kwargs):
 		super(Collector, self).__init__(slots = slots, \
-																		size = size, \
-																		x = x, \
-																		y = y, \
-																		**kwargs)
+		                                size = size, \
+		                                x = x, \
+		                                y = y, \
+		                                **kwargs)
 
 		self.inventory.limit = size
 		# TODO: use different storage to support multiple slots. see StorageHolder
@@ -91,7 +92,7 @@ class Collector(StorageHolder, Unit):
 		# NOTE: this is not allowed to change at runtime.
 		self.possible_target_classes = []
 		for (object_class,) in self.session.db("SELECT object FROM collector_restrictions WHERE \
-																					collector = ?", self.id):
+		                                        collector = ?", self.id):
 			self.possible_target_classes.append(object_class)
 		self.is_restricted = (len(self.possible_target_classes) != 0)
 
@@ -124,30 +125,29 @@ class Collector(StorageHolder, Unit):
 		if current_callback is not None:
 			calls = Scheduler().get_classinst_calls(self, current_callback)
 			assert len(calls) == 1, 'Collector should have callback %s scheduled, but has %s' % \
-				       (current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
+			        (current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
 			remaining_ticks = max(calls.values()[0], 1) # save a number > 0
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)", \
-			 self.worldid, self.state.index, remaining_ticks, self.start_hidden)
+		   self.worldid, self.state.index, remaining_ticks, self.start_hidden)
 
 		# save the job
 		if self.job is not None:
 			obj_id = -1 if self.job.object is None else self.job.object.worldid
 			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
-				 self.worldid, obj_id, self.job.res, self.job.amount)
+			   self.worldid, obj_id, self.job.res, self.job.amount)
 
 	def load(self, db, worldid):
 		super(Collector, self).load(db, worldid)
 
 		# load collector properties
 		state_id, remaining_ticks, start_hidden = \
-						db("SELECT state, remaining_ticks, start_hidden FROM collector \
-							 WHERE rowid = ?", worldid)[0]
+		        db("SELECT state, remaining_ticks, start_hidden FROM collector \
+		            WHERE rowid = ?", worldid)[0]
 		self.__init(self.states[state_id], start_hidden)
 
 		# load job
-		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", \
-								worldid)
+		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", worldid)
 		if(len(job_db) > 0):
 			job_db = job_db[0]
 			# create job with worldid of object as object. This is used to defer the target resolution,
@@ -199,7 +199,7 @@ class Collector(StorageHolder, Unit):
 	# BEHAVIOUR
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
-		If no job is found, a new search will be scheduled in 32 ticks."""
+		If no job is found, a new search will be scheduled in a few ticks."""
 		self.job = self.get_job()
 		if self.job is None:
 			self.handle_no_possible_job()
@@ -207,9 +207,10 @@ class Collector(StorageHolder, Unit):
 			self.begin_current_job()
 
 	def handle_no_possible_job(self):
-		"""Called when we can't find a job. default is to wait and try again in 2 secs"""
-		self.log.debug("%s: no possible job, retry in 2 secs", self)
-		Scheduler().add_new_object(self.search_job, self, 32)
+		"""Called when we can't find a job. default is to wait and try again in a few secs"""
+		self.log.debug("%s: found no possible job, retry in %lf secs", \
+		               (self, COLLECTORS.DEFAULT_WAIT_TICKS) )
+		Scheduler().add_new_object(self.search_job, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 
 	def setup_new_job(self):
 		"""Executes the necessary actions to begin a new job"""
@@ -250,15 +251,15 @@ class Collector(StorageHolder, Unit):
 		# check if other collectors get this resource, because our inventory could
 		# get full if they arrive.
 		total_registered_amount_consumer = sum([ collector.job.amount for collector in \
-																						 self.get_colleague_collectors() if \
-																						 collector.job is not None and \
-																						 collector.job.res == res ])
+		                                         self.get_colleague_collectors() if \
+		                                         collector.job is not None and \
+		                                         collector.job.res == res ])
 
 		inventory = self.get_home_inventory()
 
 		# check if there are resources left to pickup
 		home_inventory_free_space = inventory.get_limit(res) - \
-														(total_registered_amount_consumer + inventory[res])
+		                        (total_registered_amount_consumer + inventory[res])
 		if home_inventory_free_space <= 0:
 			#self.log.debug("nojob: no home inventory space")
 			return None
@@ -269,7 +270,7 @@ class Collector(StorageHolder, Unit):
 			return None
 
 		possible_res_amount = min(res_amount, home_inventory_free_space, \
-															collector_inventory_free_space)
+		                          collector_inventory_free_space)
 
 		target_inventory_full = (target.inventory.get_free_space_for(res) == 0)
 
@@ -299,7 +300,7 @@ class Collector(StorageHolder, Unit):
 		if job_location is None:
 			job_location = self.job.object.loading_area
 		self.move(job_location, self.begin_working, \
-							destination_in_building = self.destination_always_in_building)
+		          destination_in_building = self.destination_always_in_building)
 		self.state = self.states.moving_to_target
 
 	def begin_working(self):
@@ -358,7 +359,7 @@ class Collector(StorageHolder, Unit):
 		if self.start_hidden:
 			self.hide()
 		self.job = None
-		Scheduler().add_new_object(self.search_job , self, 32)
+		Scheduler().add_new_object(self.search_job , self, COLLECTORS.DEFAULT_WAIT_TICKS)
 		self.state = self.states.idle
 
 	def cancel(self, continue_action):

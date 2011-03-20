@@ -174,6 +174,10 @@ class WILD_ANIMAL:
 	HEALTH_DECREASE_ON_NO_JOB = 2 # health decreases by this value when they have no food
 	HEALTH_LEVEL_TO_REPRODUCE = 70 # this level has to be reached for reproducing
 
+class COLLECTORS:
+	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
+	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
+
 class STORAGE:
 	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big
 
