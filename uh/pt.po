@@ -335,9 +335,11 @@ msgstr ""
 msgid "Limit: %st per slot"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:315
+#, fuzzy
 msgid "Sailor buildings"
-msgstr ""
+msgstr " Configuração"
 
 #: horizons/i18n/guitranslations.py:316
 #, fuzzy
@@ -981,9 +983,11 @@ msgstr ""
 msgid "Free play"
 msgstr ""
 
+# 90%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Começar o jogo:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"

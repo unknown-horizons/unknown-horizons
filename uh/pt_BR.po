@@ -249,9 +249,11 @@ msgstr ""
 msgid "Resources still needed:"
 msgstr "Recursos necessários:"
 
+# 76%
 #: horizons/gui/tabs/boatbuildertab.py:170
+#, fuzzy
 msgid "Fisher boats"
-msgstr ""
+msgstr "Barco de Pesca"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
@@ -1067,9 +1069,11 @@ msgstr "Mapa randômico"
 msgid "Free play"
 msgstr "Jogo livre"
 
+# 90%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Início do jogo:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"

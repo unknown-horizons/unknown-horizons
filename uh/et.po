@@ -122,9 +122,11 @@ msgstr "Salvestatud %s\n"
 msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A.%B.%d"
 
+# 80%
 #: horizons/gui/gui.py:267
+#, fuzzy
 msgid "Saved 1 time\n"
-msgstr ""
+msgstr "Salvestatud %d korda\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -475,9 +477,11 @@ msgstr ""
 msgid "Build"
 msgstr "Ehita"
 
+# 92%
 #: horizons/i18n/guitranslations.py:357 horizons/i18n/guitranslations.py:577
+#, fuzzy
 msgid "Running costs:"
-msgstr ""
+msgstr "Jooksvad kulud"
 
 #: horizons/i18n/guitranslations.py:359
 msgid "Inhabitants"
@@ -650,9 +654,12 @@ msgstr "Seaded"
 msgid "Cancel game"
 msgstr ""
 
+# häirekell?
+# 85%
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:468
+#, fuzzy
 msgid "Chime the bell"
-msgstr ""
+msgstr "Löö Kella"
 
 #: horizons/i18n/guitranslations.py:430 horizons/i18n/guitranslations.py:469
 msgid "Credits"
@@ -976,9 +983,11 @@ msgstr "Juhuslik kaart"
 msgid "Free play"
 msgstr "Vaba mängimine"
 
+# 90%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Alusta mängu:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
@@ -1032,9 +1041,11 @@ msgstr ""
 msgid "Running costs"
 msgstr "Jooksvad kulud"
 
+# 92%
 #: horizons/i18n/guitranslations.py:549
+#, fuzzy
 msgid "Fishing boats"
-msgstr ""
+msgstr "Kalapaat"
 
 #: horizons/i18n/guitranslations.py:550
 msgid "Fishing boat"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:54+0200\n"
+"PO-Revision-Date: 2011-03-12 18:56+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -24,7 +24,7 @@ msgstr "Zmagali ste!"
 
 #: horizons/campaign/actions.py:72
 msgid "You have completed this scenario. "
-msgstr "Dokon?ali ste ta scenarij."
+msgstr "Dokončali ste ta scenarij."
 
 #: horizons/campaign/campaigneventhandler.py:150
 #: horizons/campaign/campaigneventhandler.py:160
@@ -34,7 +34,7 @@ msgstr "neznano"
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons razli?ica %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -50,6 +50,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"Izbrisovalnik SDL je mišljen kot zasilna možnost in ima ve?je grafi?ne "
+"napake.\n"
+"\n"
+"Uporabite ga na svojo odgovornost!"
 
 #: horizons/engine.py:178
 #, python-format
@@ -70,6 +74,9 @@ msgid ""
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
+"Ja, uspelo vam je ...\n"
+"\n"
+"Toda to je žal le vsebnik."
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
@@ -122,9 +129,8 @@ msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A, %d. %B "
 
 #: horizons/gui/gui.py:267
-#, fuzzy
 msgid "Saved 1 time\n"
-msgstr "Shranjeno %d krat"
+msgstr "Shranjeno 1 krat\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -143,10 +149,9 @@ msgid ""
 "Need ver. %(need)d!"
 msgstr ""
 "OPOZORILO: Nezdružljiva raz. %(ver)d!\n"
-"Zahtevana raz. %(need)d!"
+"Zahtevana je raz. %(need)d!"
 
 #: horizons/gui/gui.py:280
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
 msgstr "NEZDRUŽLJIVA RAZLI?ICA\n"
 
@@ -187,7 +192,7 @@ msgstr "Napaka omrežja"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Something went wrong with the network: "
-msgstr "Nekaj je bilo narobe z omrežjem: _"
+msgstr "Nekaj je bilo narobe z omrežjem:"
 
 #: horizons/gui/modules/multiplayermenu.py:136
 msgid "Map: "
@@ -204,18 +209,20 @@ msgstr "Ustvarjalec:"
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"Zmožnost naklju?nega zemljevida je še vedno v dejavnem razvoju in je v pred "
+"preizkusni razli?ici. Pri?akujte težave."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr "Težavnost: _"
+msgstr "Težavnost:"
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr "Avtor: _"
+msgstr "Avtor:"
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr "Opis: _"
+msgstr "Opis:"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
@@ -235,7 +242,7 @@ msgid ""
 "Error message: "
 msgstr ""
 "Izbrana datoteka ni veljavna datoteka scenarija.\n"
-"Sporo?ilo o napaki: _"
+"Sporo?ilo o napaki:"
 
 #: horizons/gui/modules/singleplayermenu.py:139
 msgid ""
@@ -253,9 +260,11 @@ msgstr ""
 msgid "Resources still needed:"
 msgstr "Srestva so še vedno potrebovana:"
 
+# 76%
 #: horizons/gui/tabs/boatbuildertab.py:170
+#, fuzzy
 msgid "Fisher boats"
-msgstr ""
+msgstr "Ribiški ?oln"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
@@ -1069,9 +1078,11 @@ msgstr "Naklju?ni zemljevid"
 msgid "Free play"
 msgstr "Prosto igranje"
 
+# 90%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Za?ni igro:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
