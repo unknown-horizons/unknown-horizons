@@ -369,7 +369,12 @@ class Collector(StorageHolder, Unit):
 		"""
 		self.log.debug("%s was cancel, continue action is %s", self, continue_action)
 		if self.job is not None:
-			self.job.object.remove_incoming_collector(self)
+			# remove us as incoming collector at target
+			if self.state != self.states.moving_home:
+				# in the moving_home state, the job object still exists,
+				# but the collector is already deregistered
+				self.job.object.remove_incoming_collector(self)
+			# clean up depending on state
 			if self.state == self.states.working:
 				removed_calls = Scheduler().rem_call(self, self.finish_working)
 				assert removed_calls == 1, 'removed %s calls instead of one' % removed_calls
