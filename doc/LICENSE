@@ -37,14 +37,7 @@ For more information visit http://reinerstileset.4players.de/readmeE.html#b
 
 Graphics from Reiner's Tileset:
 
-ALL files in content/gfx/units EXCEPT all files in:
-carrier/
-hunter/
-ships/
-animals/as_fallowdeer0/
-animals/as_reddeer0/
-inhabitant/sailor/as_male/
-inhabitant/sailor/as_male2/
+All files in content/gfx/units/animals/as_sheep0
 
 
 All audio content downloaded from the freesound project is licensed under the
@@ -53,9 +46,8 @@ More information http://creativecommons.org/licenses/sampling+/1.0/
 
 Samples used from Freesound.org:
 
-chop.wav by hazure (used in lumberjack.ogg) [*]
-timber.wav by hazure (used in lumberjack.ogg) [*]
-Mercato di Montevarchi.mp3 by fonogeno (main_square.ogg)
+chop.wav by hazure (used in content/audio/sounds/lumberjack*.ogg) [*]
+timber.wav by hazure (used in content/audio/sounds/lumberjack*.ogg) [*]
 
 [*]: hazure kindly licensed these files under CC-BY-SA 3.0 as well for us
      according to the following message. We highly appreciate this favor.
@@ -70,20 +62,20 @@ For more information visit http://linuxlibertine.sourceforge.net/
 and http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 
 
-Published under the terms of Public Domain is:
+Published under the terms of Public Domain are:
 
 "Sunrise Through Mist" by Fitz Hugh Lane used in the menu background.
 It has been obtained thanks to "The Athenaeum" ( http://the-athenaeum.org/ ).
 More details on the painting can be found at http://the-athenaeum.org/art/detail.php?ID=13984 .
 
-"striking a Bell (15cm large)" by Stephan used in the ships_bell.ogg
+"striking a Bell (15cm large)" by Stephan used in content/audio/sounds/ships_bell.ogg.
 More details can be found at http://www.pdsounds.org/sounds/striking_a_bell_15cm_large .
 
 
 Published under the terms of Creative Commons Attribution Sharealike 3.0 Unported License is:
 
-"Trout School Animation" by Lamoot used in content/gfx/terrain/resources/as_fish0/* .
-More details on the painting can be found at http://opengameart.org/content/trout-school-animation
+"Trout School Animation" by Lamoot used in content/gfx/terrain/resources/as_fish0/ .
+More details on the work can be found at http://opengameart.org/content/trout-school-animation
 
 
 Our own media content (graphic and sound) is published under the terms of the 
