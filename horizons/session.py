@@ -37,7 +37,7 @@ from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, DbReader
 from horizons.savegamemanager import SavegameManager
-from horizons.campaign import CampaignEventHandler
+from horizons.scenario import ScenarioEventHandler
 from horizons.constants import GAME_SPEED
 
 class Session(LivingObject):
@@ -68,7 +68,7 @@ class Session(LivingObject):
 	keylistener = livingProperty()
 	cursor = livingProperty()
 	world = livingProperty()
-	campaign_eventhandler = livingProperty()
+	scenario_eventhandler = livingProperty()
 
 	log = logging.getLogger('session')
 
@@ -90,7 +90,7 @@ class Session(LivingObject):
 		self.manager = self.create_manager()
 		self.view = View(self, (15, 15))
 		Entities.load(self.db)
-		self.campaign_eventhandler = CampaignEventHandler(self) # dummy handler with no events
+		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
 
 		#GUI
 		self.gui.session = self
@@ -135,7 +135,7 @@ class Session(LivingObject):
 		self.view = None
 		self.manager = None
 		self.timer = None
-		self.campaign_eventhandler = None
+		self.scenario_eventhandler = None
 		Scheduler.destroy_instance()
 
 		self.selected_instances = None
@@ -165,9 +165,9 @@ class Session(LivingObject):
 		"""
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
-			self.campaign_eventhandler = CampaignEventHandler(self, savegame)
+			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
 			savegame = os.path.join(SavegameManager.maps_dir, \
-			                        self.campaign_eventhandler.get_map_file())
+			                        self.scenario_eventhandler.get_map_file())
 
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = DbReader(savegame) # Initialize new dbreader
@@ -189,8 +189,8 @@ class Session(LivingObject):
 			center = self.world.init_new_world()
 			self.view.center(center[0], center[1])
 		else:
-			# try to load campaign data
-			self.campaign_eventhandler.load(savegame_db)
+			# try to load scenario data
+			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
 		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 

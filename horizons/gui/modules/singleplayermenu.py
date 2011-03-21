@@ -27,11 +27,11 @@ from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.utility import adjust_widget_black_background
 
 class SingleplayerMenu(object):
-	def show_single(self, show = 'campaign'): # tutorial
+	def show_single(self, show = 'scenario'): # tutorial
 		"""
 		@param show: string, which type of games to show
 		"""
-		assert show in ('random', 'campaign', 'free_maps')
+		assert show in ('random', 'scenario', 'free_maps')
 		self.hide()
 		# reload since the gui is changed at runtime
 		self.widgets.reload('singleplayermenu')
@@ -39,7 +39,7 @@ class SingleplayerMenu(object):
 		eventMap = {
 			'cancel'   : self.show_main,
 			'okay'     : self.start_single,
-			'showCampaign' : Callback(self.show_single, show='campaign'),
+			'showScenario' : Callback(self.show_single, show='scenario'),
 			'showRandom' : Callback(self.show_single, show='random'),
 			'showMaps' : Callback(self.show_single, show='free_maps')
 		}
@@ -62,9 +62,9 @@ class SingleplayerMenu(object):
 				del eventMap['showMaps']
 				self.current.findChild(name="showMaps").marked = True
 				self.current.files, maps_display = SavegameManager.get_maps()
-			else: # campaign
-				del eventMap['showCampaign']
-				self.current.findChild(name="showCampaign").marked = True
+			else: # scenario
+				del eventMap['showScenario']
+				self.current.findChild(name="showScenario").marked = True
 				self.current.files, maps_display = SavegameManager.get_scenarios()
 
 			# get the map files and their display names
@@ -73,14 +73,14 @@ class SingleplayerMenu(object):
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
 
-				if show == 'campaign': # update infos for campaign
-					from horizons.campaign import CampaignEventHandler, InvalidScenarioFileFormat
+				if show == 'scenario': # update infos for scenario
+					from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
 						try:
-							difficulty = CampaignEventHandler.get_difficulty_from_file( self.__get_selected_map() )
-							desc = CampaignEventHandler.get_description_from_file( self.__get_selected_map() )
-							author = CampaignEventHandler.get_author_from_file( self.__get_selected_map() )
+							difficulty = ScenarioEventHandler.get_difficulty_from_file( self.__get_selected_map() )
+							desc = ScenarioEventHandler.get_description_from_file( self.__get_selected_map() )
+							author = ScenarioEventHandler.get_author_from_file( self.__get_selected_map() )
 						except InvalidScenarioFileFormat, e:
 							self.__show_invalid_scenario_file_popup(e)
 							return
@@ -116,14 +116,14 @@ class SingleplayerMenu(object):
 			assert self.current.collectData('maplist') != -1
 			map_file = self.__get_selected_map()
 
-		is_scenario = bool(self.current.collectData('showCampaign'))
+		is_scenario = bool(self.current.collectData('showScenario'))
 		self.show_loading_screen()
-		from horizons.campaign import InvalidScenarioFileFormat
+		from horizons.scenario import InvalidScenarioFileFormat
 		try:
 			horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
 		except InvalidScenarioFileFormat, e:
 			self.__show_invalid_scenario_file_popup(e)
-			self.show_single(show = 'campaign')
+			self.show_single(show = 'scenario')
 
 	def __get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
@@ -137,3 +137,4 @@ class SingleplayerMenu(object):
 		self.show_popup(_("Invalid scenario file"), \
 		                _("The selected file is not a valid scenario file.\nError message: ") + \
 		                unicode(str(exception)) + _("\nPlease report this to the author."))
+

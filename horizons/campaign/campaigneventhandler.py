@@ -29,24 +29,24 @@ from horizons.constants import RES
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, LivingObject
 
-from horizons.campaign.conditions import CONDITIONS, _scheduled_checked_conditions
+from horizons.scenario.conditions import CONDITIONS, _scheduled_checked_conditions
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
-			msg = "Invalid campaign file."
+			msg = "Invalid scenario file."
 		super(InvalidScenarioFileFormat, self).__init__(msg)
 
-class CampaignEventHandler(LivingObject):
-	"""Handles event, that make up a campaign. See wiki.
+class ScenarioEventHandler(LivingObject):
+	"""Handles event, that make up a scenario. See wiki.
 	An instance of this class is bound to a set of events. On a new scenario, you need a new instance."""
 
 	CHECK_CONDITIONS_INTERVAL = 3 # seconds
 
-	def __init__(self, session, campaignfile = None):
+	def __init__(self, session, scenariofile = None):
 		"""
 		@param session: Session instance
-		@param campaignfile: yaml file that describes the campaign
+		@param scenariofile: yaml file that describes the scenario
 		@throws InvalidScenarioFileFormat on yaml parse error
 		"""
 		self.inited = False
@@ -58,8 +58,8 @@ class CampaignEventHandler(LivingObject):
 		self._scenario_variables = {} # variables for set_var, var_eq ...
 		for cond in CONDITIONS:
 			self._event_conditions[cond] = set()
-		if campaignfile:
-			self._apply_data( self._parse_yaml( open(campaignfile, 'r') ) )
+		if scenariofile:
+			self._apply_data( self._parse_yaml( open(scenariofile, 'r') ) )
 
 		self.sleep_ticks_remaining = 0
 
@@ -72,7 +72,7 @@ class CampaignEventHandler(LivingObject):
 		                           run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
 
 	def sleep(self, ticks):
-		"""Sleep the CampaignEventHandler for number of ticks. This delays all
+		"""Sleep the ScenarioEventHandler for number of ticks. This delays all
 		callbacks by the specific amount"""
 		callbacks = Scheduler().get_classinst_calls(self)
 		for callback in callbacks:
@@ -93,14 +93,14 @@ class CampaignEventHandler(LivingObject):
 
 	def save(self, db):
 		if self.inited: # only save in case we have data applied
-			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "campaign_events", self.to_yaml())
+			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
 		for key, value in self._scenario_variables.iteritems():
 			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, value)
 
 	def load(self, db):
 		for key, value in db("SELECT key, value FROM scenario_variables"):
 			self._scenario_variables[key] = value
-		data = db("SELECT value FROM metadata WHERE name = ?", "campaign_events")
+		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
 		if len(data) == 0:
 			return # nothing to load
 		self._apply_data( self._parse_yaml( data[0][0] ) )
@@ -211,12 +211,12 @@ class CampaignEventHandler(LivingObject):
 
 
 ###
-# Campaign Conditions
-from horizons.campaign.conditions import *
+# Scenario Conditions
+from horizons.scenario.conditions import *
 
 ###
-# Campaign Actions
-from horizons.campaign.actions import *
+# Scenario Actions
+from horizons.scenario.actions import *
 
 ###
 # Simple utility classes
@@ -232,12 +232,12 @@ class _Event(object):
 		for cond_dict in event_dict['conditions']:
 			self.conditions.append( _Condition(session, cond_dict) )
 
-	def check(self, campaigneventhandler):
+	def check(self, scenarioeventhandler):
 		for cond in self.conditions:
 			if not cond():
 				return False
 		for action in self.actions:
-			campaigneventhandler.schedule_action(action)
+			scenarioeventhandler.schedule_action(action)
 		return True
 
 	def to_yaml(self):
@@ -248,7 +248,7 @@ class _Event(object):
 
 
 class _Action(object):
-	"""Internal data structure representing an ingame campaign action"""
+	"""Internal data structure representing an ingame scenario action"""
 	action_types = {
 	  'message': show_message,
 	  'db_message': show_db_message,

@@ -62,7 +62,7 @@ _scheduled_checked_conditions = (CONDITIONS.player_gold_greater, \
                                 CONDITIONS.player_produced_res_greater)
 
 ###
-# Campaign Conditions
+# Scenario Conditions
 
 def settlements_num_greater(session, limit):
 	"""Returns whether the number of settlements owned by the human player is greater than limit."""
@@ -184,7 +184,7 @@ def _get_player_settlements(session):
 	return session.world.player.settlements
 
 def _get_scenario_vars(session):
-	return session.campaign_eventhandler._scenario_variables
+	return session.scenario_eventhandler._scenario_variables
 
 def _building_connected_to_any_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are

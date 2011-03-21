@@ -28,7 +28,7 @@ class LogBook(object):
 	"""Implementation of the logbook as described here:
 	http://wiki.unknown-horizons.org/w/Message_System
 
-	It displays longer messages, that are essential for campaigns.
+	It displays longer messages, that are essential for scenarios.
 	Headings can be specified for each entry.
 	"""
 	def __init__(self, session):

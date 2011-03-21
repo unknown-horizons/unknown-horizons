@@ -26,7 +26,7 @@ from horizons.entities import Entities
 from horizons.command import Command
 from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
-from horizons.campaign import CONDITIONS
+from horizons.scenario import CONDITIONS
 from horizons.constants import RES, GAME
 
 class Build(Command):
@@ -148,8 +148,8 @@ class Build(Command):
 		# building is now officially built and existent
 		building.start()
 
-		# NOTE: conditions are not MP-safe! no problem as long as there are no MP-campaigns
-		session.campaign_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
+		# NOTE: conditions are not MP-safe! no problem as long as there are no MP-scenarios
+		session.scenario_eventhandler.schedule_check(CONDITIONS.building_num_of_type_greater)
 
 		return building
 

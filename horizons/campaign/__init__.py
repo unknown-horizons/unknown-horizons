@@ -21,4 +21,4 @@
 
 
 from conditions import CONDITIONS
-from campaigneventhandler import CampaignEventHandler, InvalidScenarioFileFormat
+from scenarioeventhandler import ScenarioEventHandler, InvalidScenarioFileFormat

@@ -23,12 +23,12 @@ import horizons.main
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback
-from horizons.campaign import CONDITIONS
+from horizons.scenario import CONDITIONS
 from horizons.constants import MESSAGES
 
 
 ###
-# Campaign Actions
+# Scenario Actions
 
 def show_message(session, *message):
 	"""Shows a custom message in the messagewidget. If you pass more than one message, they
@@ -60,7 +60,7 @@ def show_logbook_entry(session, head, message):
 def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DEFAULT_DELAY):
 	"""Show a logbook entry delayed by delay seconds"""
 	callback = Callback(show_logbook_entry, session, head, message)
-	Scheduler().add_new_object(callback, session.campaign_eventhandler, run_in=Scheduler().get_ticks(delay))
+	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))
 
 def do_win(session):
 	"""Called when player won"""
@@ -83,15 +83,15 @@ def do_lose(session):
 	show_message(session, 'You failed the scenario.')
 	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/szenario/loose.ogg')
 	# drop events after this event
-	Scheduler().add_new_object(session.campaign_eventhandler.drop_events, session.campaign_eventhandler)
+	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 
 def set_var(session, name, value):
-	session.campaign_eventhandler._scenario_variables[name] = value
-	check_callback = Callback(session.campaign_eventhandler.check_events, CONDITIONS.var_eq)
-	Scheduler().add_new_object(check_callback, session.campaign_eventhandler)
+	session.scenario_eventhandler._scenario_variables[name] = value
+	check_callback = Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq)
+	Scheduler().add_new_object(check_callback, session.scenario_eventhandler)
 
 def wait(session, time):
 	delay = Scheduler().get_ticks(time)
-	session.campaign_eventhandler.sleep(delay)
+	session.scenario_eventhandler.sleep(delay)
 
 

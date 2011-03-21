@@ -136,8 +136,8 @@ def start(command_line_arguments):
 		startup_worked = _start_random_map()
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map)
-	elif command_line_arguments.start_campaign is not None:
-		startup_worked = _start_map(command_line_arguments.start_campaign, True)
+	elif command_line_arguments.start_scenario is not None:
+		startup_worked = _start_map(command_line_arguments.start_scenario, True)
 	elif command_line_arguments.load_map is not None:
 		startup_worked = _load_map(command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
