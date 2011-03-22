@@ -137,7 +137,7 @@ class SPSession(Session):
 			#self.manager.save(db)
 			self.view.save(db)
 			self.ingame_gui.save(db)
-			self.campaign_eventhandler.save(db)
+			self.scenario_eventhandler.save(db)
 
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)

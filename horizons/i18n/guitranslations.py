@@ -254,7 +254,7 @@ def set_translations():
 			"main_menu_label"             : _("Main menu:"),
 			"choose_map_lbl"              : _("Choose a map to play:"),
 			"start_game_label"            : _("Start game:"),
-			"showCampaign"                : _("Campaign"),
+			"showScenario"                : _("Scenario"),
 			"showRandom"                  : _("Random map"),
 			"showMaps"                    : _("Free play"),
 			"cancel"                      : _("Exit to main menu"),

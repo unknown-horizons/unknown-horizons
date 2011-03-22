@@ -24,7 +24,7 @@ import horizons.main
 from horizons.world.storageholder import StorageHolder
 from storage import PositiveStorage
 from horizons.util import WorldObject, Color
-from horizons.campaign import CONDITIONS
+from horizons.scenario import CONDITIONS
 
 class Player(StorageHolder, WorldObject):
 	"""Class representing a player"""
@@ -97,7 +97,7 @@ class Player(StorageHolder, WorldObject):
 		@return: bool, True if level is greater than the current maximum level"""
 		if settler.level > self.settler_level:
 			self.settler_level = settler.level
-			self.session.campaign_eventhandler.check_events(CONDITIONS.settler_level_greater)
+			self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
 			for settlement in self.settlements:
 				settlement.level_upgrade(self.settler_level)
 			self._changed()
