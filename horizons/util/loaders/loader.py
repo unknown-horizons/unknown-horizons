@@ -72,7 +72,12 @@ class GeneralLoader(object):
 				dirs.remove(dirname)
 				break
 		for dirname in dirs:
+			try:
 				rotations[int(dirname)] = cls._load_files(os.path.join(dir, dirname),time)
+			except Exception, e:
+				raise Exception("Failed to load action sets from %s with time %d: %s" % \
+				                (os.path.join(dir, dirname), time, e))
+
 		return rotations
 
 
