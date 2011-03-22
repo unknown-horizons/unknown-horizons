@@ -196,12 +196,14 @@ class BuildingTool(NavigationTool):
 				                            building.position.origin.y, rotation=building.rotation,
 				                            action=building.action, level=level)
 
-			settlement = self.session.world.get_settlement(building.position.origin)
-			
-			# Player shouldn't be allowed to build in this case, else it can trigger 
-			# a new_settlement notificaition
-			if settlement is None:
-				building.buildable = False
+			if self._class.id == BUILDINGS.BRANCH_OFFICE_CLASS:
+				settlement = self.session.world.get_settlement(building.position.center())
+			else:
+				# Player shouldn't be allowed to build in this case, else it can trigger 
+				# a new_settlement notificaition
+				settlement = self.session.world.get_settlement(building.position.origin)
+				if settlement is None:
+					building.buildable = False
 
 			if building.buildable:
 				# building seems to buildable, check res too now
