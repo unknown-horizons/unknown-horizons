@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-02-27 20:22+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-03-23 16:28+0200\n"
+"Last-Translator: Fabio <fabio.ped@libero.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -168,11 +168,11 @@ msgstr ""
 
 #: po/tutorial.py:12
 msgid "Unload at least 10 tons of each resource on your ship."
-msgstr ""
+msgstr "Scarica almeno 10 tonnellate di ogni risorsa sulla tua nave."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI UN TAGLIABOSCHI"
 
 #: po/tutorial.py:14
 msgid ""
@@ -209,11 +209,11 @@ msgstr ""
 
 #: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
-msgstr ""
+msgstr "Costruisci un tagliaboschi e collegalo alla filiale con un sentiero."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NUOVO COMPITO: RIFORNIMENTO DI CIBO"
 
 #: po/tutorial.py:18
 msgid ""
@@ -247,11 +247,11 @@ msgstr ""
 
 #: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr ""
+msgstr "Costruisci un cacciatore ed un pescatore. Connettili alla filiale."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NUOVO COMPITO: PIAZZA PRINCIPALE"
 
 #: po/tutorial.py:22
 msgid ""
@@ -286,10 +286,12 @@ msgstr ""
 #: po/tutorial.py:24
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
+"Costruisci una piazza principale. Scegli un'area senza troppi edifici "
+"commerciali."
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NUOVO COMPITO: EDIFICI RESIDENZIALI"
 
 #: po/tutorial.py:26
 msgid ""
@@ -304,7 +306,7 @@ msgstr ""
 
 #: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Costruisci una tenda e collegala alla piazza principale."
 
 #: po/tutorial.py:28
 msgid ""
@@ -328,10 +330,11 @@ msgstr ""
 #: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr ""
+"Costruisci almeno tre tende aggiuntive e collegale alla piazza principale."
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI SEGNALE DI FUOCO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -365,11 +368,11 @@ msgstr ""
 
 #: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "Costruisci un segnale di fuoco sulla costa vicino alla tua filiale."
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NUOVO COMPITO: IMPARA A COMMERCIARE"
 
 #: po/tutorial.py:35
 msgid ""
@@ -403,11 +406,11 @@ msgstr ""
 
 #: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "Raggiungi una scorta per l'isola di almeno 30 attrezzi."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI UN PADIGLIONE"
 
 #: po/tutorial.py:39
 msgid ""
@@ -440,11 +443,11 @@ msgstr ""
 
 #: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "Costruisci un padiglione con connessioni alle tende."
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "NUOVO COMPITO: LIVELLO SUCCESSIVO"
 
 #: po/tutorial.py:43
 msgid ""
@@ -475,10 +478,12 @@ msgstr ""
 #: po/tutorial.py:45
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Imposta il livello delle tasse su Basso (a sinistra) ed attendi "
+"l'aggiornamento dei marinai."
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI UNA FATTORIA"
 
 #: po/tutorial.py:47
 msgid ""
@@ -512,11 +517,11 @@ msgstr ""
 
 #: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Costruisci una fattoria mantenendo dello spazio disponibile intorno."
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI CAMPI"
 
 #: po/tutorial.py:51
 msgid ""
@@ -550,10 +555,11 @@ msgstr ""
 #: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
+"Costruisci almeno un pascolo ed aggiungi campi di patate se lo desideri."
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI MAGAZZINI"
 
 #: po/tutorial.py:55
 msgid ""
@@ -587,10 +593,11 @@ msgstr ""
 #: po/tutorial.py:57
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
+"Costruisci una tenda magazzino (scheda livello I) dove può essere utile."
 
 #: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "NUOVO COMPITO: COSTRUISCI UN TESSITORE"
 
 #: po/tutorial.py:59
 msgid ""
@@ -607,15 +614,17 @@ msgstr ""
 
 #: po/tutorial.py:60
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr ""
+msgstr "Costruisci un tessitore che possa raggiungere la lana della fattoria."
 
 #: po/tutorial.py:61
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
 msgstr ""
+"Alloggia almeno 50 abitanti nella tua città per completare il tutorial. Hai "
+"bisogno di un bilancio positivo."
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NUOVO COMPITO: FINISCI IL TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -628,7 +637,7 @@ msgstr ""
 
 #: po/tutorial.py:64
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "COMPITI FINITI"
 
 #: po/tutorial.py:65
 msgid ""
@@ -649,7 +658,7 @@ msgstr ""
 
 #: po/tutorial.py:66
 msgid "Thanks!"
-msgstr ""
+msgstr "Grazie!"
 
 #: po/tutorial.py:67
 msgid ""
@@ -664,7 +673,18 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Grazie per aver giocato il tutorial!\n"
+"\n"
+"La squadra di UH"
 
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+"Congratulazioni! Hai completato il tutorial e sei pronto per nuove sfide!"
