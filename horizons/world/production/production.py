@@ -167,37 +167,37 @@ class Production(WorldObject):
 	def pause(self, pause = True):
 		self.log.debug("Production pause: %s", pause)
 		if not pause: # do unpause
-			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
-			                             PRODUCTION.STATES.inventory_full):
-				# just restore watching
-				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
-			elif self._pause_old_state == PRODUCTION.STATES.producing:
-				# restore scheduler call
-				Scheduler().add_new_object(self._finished_producing, self, \
-					 self._pause_remaining_ticks)
-			else:
-				assert False, 'Unhandled production state: %s' % self._pause_old_state
-
 			# switch state
 			self._state = self._pause_old_state
 			self._pause_old_state = None
 
-		else: # do pause
+			# apply state
 			if self._state in (PRODUCTION.STATES.waiting_for_res, \
+			                   PRODUCTION.STATES.inventory_full):
+				# just restore watching
+				self.inventory.add_change_listener(self._check_inventory, call_listener_now=True)
+			elif self._state == PRODUCTION.STATES.producing:
+				# restore scheduler call
+				Scheduler().add_new_object(self._finished_producing, self, \
+				                           self._pause_remaining_ticks)
+			else:
+				assert False, 'Unhandled production state: %s' % self._pause_old_state
+		else: # do pause
+			# switch state
+			self._pause_old_state = self._state
+			self._state = PRODUCTION.STATES.paused
+
+			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
 			                   PRODUCTION.STATES.inventory_full):
 				# just stop watching for new res
 				self.inventory.discard_change_listener(self._check_inventory)
-			elif self._state == PRODUCTION.STATES.producing:
+			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
 						Scheduler().get_remaining_ticks(self, self._finished_producing)
 				Scheduler().rem_call(self, self._finished_producing)
 			else:
 				assert False, 'Unhandled production state: %s' % self._state
-
-			# switch state
-			self._pause_old_state = self._state
-			self._state = PRODUCTION.STATES.paused
 
 		self._changed()
 
