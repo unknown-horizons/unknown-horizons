@@ -65,6 +65,8 @@ class GeneralLoader(object):
 		rotations = {}
 		time = 500
 		dirs = os.listdir(dir)
+		try: dirs.remove('.svn')
+		except ValueError: pass
 
 		for dirname in dirs:
 			if dirname.startswith("tm_"):
@@ -90,6 +92,8 @@ class GeneralLoader(object):
 		"""
 		actions = {}
 		dirs = os.listdir(dir)
+		try: dirs.remove('.svn')
+		except ValueError: pass
 
 		for dirname in dirs:
 			actions[dirname] = cls._load_rotation(os.path.join(dir, dirname))
