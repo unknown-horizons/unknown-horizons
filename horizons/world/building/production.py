@@ -163,10 +163,17 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 			# all resources are gone from the mine.
 			self.session.ingame_gui.message_widget.add(self.position.center().x, \
 			                                           self.position.center().y, 'MINE_EMPTY')
+			self._mine_empty_msg_shown = True
 			if self.is_active():
 				self.set_active(active=False)
 
-
+	def set_active(self, production=None, active=True):
+		super(Mine, self).set_active(production, active)
+		if active and self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
+			# don't allow reactivating a mine that's already empty
+			# we can't check for this before changing activity, because the state is paused
+			# before. Therefore we have to react here and disable the mine again.
+			self.set_active(production, active=False)
 
 """ AnimalFarm is not used for now (code may not work anymore)
 
