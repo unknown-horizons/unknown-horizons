@@ -3,7 +3,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-03-??: Milestone 2011.1
-changelog date: MAR 18; rev: 17a6f9684458c0e2bd838b9ef0884c7f9d6025f7
+changelog date: MAR 24; rev: 5cbe8b286d093182cc38d7463db2bd3e9bd9d998
 
 * General
   * New: DFSG compatible branch ready to be included in e.g. official debian repos
@@ -29,22 +29,30 @@ changelog date: MAR 18; rev: 17a6f9684458c0e2bd838b9ef0884c7f9d6025f7
             line interface (--start-map / --start-campaign / --load-map)
   * Change: Capitalized resource names
   * Change: Renamed runin to run_in
+  * Change: Renamed all occurences of 'campaign' to 'scenario'
   * Change: Improvements to the buildtool
   * Change: added is_selectable attribute to concreteobject
   * Change: Removed old, unmaintained pathfinding tests
   * Change: Moved outdated documentation files to misc repository
   * Change: 1024x768 is current minimum resolution
   * Change: Multiplayer lobby now also displays mismatching games and hints this
+  * Fix: Re-introduced svn legacy code for easier Win snapshots (github provides
+         all repositories as svn if desired => same client to clone FIFE and UH)
   * Fix: Game did not start with an umlaut/special character in settings.xml
   * Fix: minor issue concerning the creation of random islands
   * Fix: issue with quick- and autosaving
   * Fix: crash when pausing boatbuilder
+  * Fix: crash when activating a mine that has already run out of resources
+  * Fix: crash when building clay pit or iron mine
   * Fix: crash when clicking on units that are not selectable
   * Fix: crash when building a fisher
-  * Fix: crash while building fisher boat
+  * Fix: crash when building fisher boat
+  * Fix: crash when building branch office
   * Fix: bug with the removed non-buildable trees
   * Fix: possible source of bugs that can occur when saving moving units
+  * Fix: crash when collectors got cancelled while heading home
   * Fix: Saving from main menu now properly handles errors
+  * Fix: uh-builder script works again
 
 * Gameplay and Balancing
   * New: animals no further reproduce when over-populating an island
@@ -55,6 +63,7 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * New: Single non-player units can be selected via dragging
   * Change: Buildings can be grouped
   * Change: default value of transfer amount in trade tab now is 50t
+  * Change: islands on map get amount of mountains and clay deposits
   * Change: Collectors can only pick up goods at mine entrance
   * Change: Smeltery now 4x4
   * Change: Temporarily removed our sheep and made pasture produce lamb wool
@@ -65,14 +74,12 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * Change: Fisher boat can drive through shallow water (coastline)
   * Change: selecting a fisher only highlights fish swarms in range, no island
             or sea / water tiles
-  * Change: Boatbuilder now produces a useless fisherboat
+  * Change: Boatbuilder now produces a (useless) fisherboat
   * Fix: minor bug concerning decommissioning
   * Fix: Taxes no longer start at 0 when a game is loaded
   * Fix: animals can no longer be handled by two collectors simultaneously
   * Fix: collectors can now reach each building in displayed range
   * Fix: settlers not being able to level up
-  * Fix: Load correct graphics for buildings with versions differing from
-         increment to increment
 
 * Graphics and GUI
   * New: tooltips for resources in buysell tab
@@ -87,8 +94,12 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * New: building graphics for distillery
   * New: building graphics for smeltery
   * New: building graphics for toolmaker
-  * New: test unit 'inhabitant male'
   * New: placeholders for all buildings of increment 3 we have no assets for
+  * New: unit 'inhabitant male'
+  * New: unit 'inhabitant male 2'
+  * New: unit 'hunter'
+  * New: unit 'carrier'
+  * New: unit 'fisher boat'
   * New: boatbuilder preview images for our current fisher boat
   * New: inactive icons if no logbook navigation possible in this direction
   * New: attack cursor
@@ -97,7 +108,6 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * New: Scrolling through savegames updates Save Details
   * Change: Retouched many icons for build menu and resources
   * Change: building graphics for brickyard now animated
-  * Change: Replaced fisher boat by own assets licensed under CC-BY-SA 3.0
   * Change: animation time for signal fire
   * Change: selecting buildings only create outline around building instead of
             fully coloring it
@@ -111,11 +121,13 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * Change: Allow more than one headline per widget
   * Change: Ingame menu and Main menu are more similar
   * Change: Modified default style
+  * Fix: Load correct graphics for buildings with versions differing from
+         increment to increment
   * Fix: display of production lines with multiple input or output resources
 
 * Translations
-  * New: Several tutorial translations
-  * New: Added Russian translation
+  * New: tutorial translations: Italian
+  * New: translations: Russian, Slovenian
   * New: simple script to compile translations on Windows.
          Needs msgfmt in $PATH.
   * New: Translate difficulty, author, description in create_scenario_pot.sh
@@ -124,6 +136,8 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * Change: Updated translation template
 
 * Audio
+  * New: two completely new gameplay tracks
+  * New: one gameplay remastering
   * Change: Replaced Sampling build.ogg by own file licensed under CC-BY-SA 3.0
   * Change: Replaced ships_bell.ogg by a file licensed under CC-0
   * Change: hazure relicensed our lumberjack sounds under CC-BY-SA 3.0
