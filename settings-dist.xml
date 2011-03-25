@@ -14,7 +14,7 @@
 		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
 		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
 		<Setting name="LogModules" type="list"> controller ; audio ; vfs ; script ; loaders ; pool ; view ; video ; model ; metamodel ; event_channel ; xml </Setting>
-		<Setting name="PychanDebug" type="bool"> True </Setting>
+		<Setting name="PychanDebug" type="bool"> False </Setting>
 		<Setting name="LogToPrompt" type="int"> 1 </Setting>
 		<Setting name="LogToFile" type="int"> 0 </Setting>
 		<Setting name="Lighting" type="int"> 0 </Setting>
