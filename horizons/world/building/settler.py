@@ -70,14 +70,18 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def save(self, db):
 		super(Settler, self).save(db)
+		db("INSERT INTO settler(rowid, inhabitants) VALUES (?, ?)", \
+		   self.worldid, self.inhabitants)
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
-		db("INSERT INTO settler(rowid, inhabitants, remaining_ticks) VALUES (?, ?, ?)", \
-		   self.worldid, self.inhabitants, remaining_ticks)
+		db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES (?, ?)", \
+		   self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
-		self.inhabitants, remaining_ticks = \
-		    db("SELECT inhabitants, remaining_ticks FROM settler WHERE rowid=?", worldid)[0]
+		self.inhabitants = \
+		    db("SELECT inhabitants FROM settler WHERE rowid=?", worldid)[0][0]
+		remaining_ticks = \
+		    db("SELECT ticks from remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 
 		self.__init()
 		self.owner.notify_settler_reached_level(self)
@@ -119,9 +123,9 @@ class Settler(SelectableBuilding, BuildableSingle, CollectingProducerBuilding, B
 
 	def run(self, remaining_ticks=None):
 		"""Start regular tick calls"""
-		interval_in_ticks = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
-		run_in = remaining_ticks if remaining_ticks is not None else interval_in_ticks
-		Scheduler().add_new_object(self._tick, self, run_in=run_in, loops=-1, )
+		interval = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
+		run_in = remaining_ticks if remaining_ticks is not None else interval
+		Scheduler().add_new_object(self._tick, self, run_in=run_in, loops=-1, loop_interval=interval)
 
 	def _tick(self):
 		"""Here we collect the functions, that are called regularly (every "month")."""

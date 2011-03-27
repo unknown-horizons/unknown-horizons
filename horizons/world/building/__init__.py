@@ -90,6 +90,7 @@ class BuildingClass(type):
 		else:
 			self.running_costs = 0
 			self.running_costs_inactive = 0
+		self.has_running_costs = (self.running_costs != 0)
 		soundfiles = db("SELECT file FROM sounds INNER JOIN object_sounds ON \
 			sounds.rowid = object_sounds.sound AND object_sounds.object = ?", self.id)
 		self.soundfiles = [ i[0] for i in soundfiles ]

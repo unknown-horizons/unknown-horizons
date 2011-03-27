@@ -64,7 +64,7 @@ class BasicBuilding(AmbientSound, ConcretObject):
 				self.island.add_settlement(self.position, self.radius, owner) if \
 				owner is not None else None
 
-	def __init(self, origin, rotation, owner, level=None):
+	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None):
 		self.owner = owner
 		if level is None:
 			if self.owner is None:
@@ -85,9 +85,11 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		                                  action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
 
-		if self.running_costs != 0: # Get payout every 30 seconds
+		if self.has_running_costs: # Get payout every 30 seconds
+			interval = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
+			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
 			Scheduler().add_new_object(self.get_payout, self, \
-			                           run_in=self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL), loops=-1)
+			                           run_in=run_in, loops=-1, loop_interval=interval)
 
 		# play ambient sound, if available every 30 seconds
 		if self.session.world.player == self.owner:
@@ -127,6 +129,9 @@ class BasicBuilding(AmbientSound, ConcretObject):
 								                       self.worldid, self.__class__.id, self.position.origin.x, \
 								                       self.position.origin.y, self.rotation, \
 								                       self.health, (self.settlement or self.island).worldid, self.level)
+		if self.has_running_costs:
+			remaining_ticks = Scheduler().get_remaining_ticks(self, self.get_payout)
+			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
 		super(BasicBuilding, self).load(db, worldid)
@@ -136,7 +141,12 @@ class BasicBuilding(AmbientSound, ConcretObject):
 		owner_db = db("SELECT owner FROM settlement WHERE rowid = ?", location)
 		owner = None if len(owner_db) == 0 else WorldObject.get_object_by_id(owner_db[0][0])
 
-		self.__init(Point(x, y), rotation, owner, level)
+		remaining_ticks_of_month = None
+		if self.has_running_costs:
+			remaining_ticks_of_month = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
+
+		self.__init(Point(x, y), rotation, owner, level=level, \
+		            remaining_ticks_of_month=remaining_ticks_of_month)
 
 		self.island, self.settlement = self.load_location(db, worldid)
 
