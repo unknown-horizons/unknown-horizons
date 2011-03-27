@@ -26,6 +26,7 @@ import horizons.main
 from horizons.entities import Entities
 
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
+from horizons.util.python import Callback as hutil_callback
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets.messagewidget import MessageWidget
@@ -78,21 +79,23 @@ class IngameGui(LivingObject):
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
+		
 		minimap = self.widgets['minimap']
 		minimap.position = (screenwidth - minimap.size[0] -20, 4)
 		minimap.show()
-		minimap.mapEvents({
-			'zoomIn' : self.session.view.zoom_in,
-			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : self.session.view.rotate_right,
-			'rotateLeft' : self.session.view.rotate_left,
-			'speedUp' : self.session.speed_up,
-			'speedDown' : self.session.speed_down
-		})
 
 		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
 		self.minimap = Minimap(minimap_rect, self.session, \
 								           self.session.view.renderer['GenericRenderer'])
+		minimap.mapEvents({
+			'zoomIn' : self.session.view.zoom_in,
+			'zoomOut' : self.session.view.zoom_out,
+			'rotateRight' : hutil_callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
+			'rotateLeft' : hutil_callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'speedUp' : self.session.speed_up,
+			'speedDown' : self.session.speed_down
+		})
+
 		minimap_overlay = minimap.findChild(name='minimap_overlay_image')
 		self.minimap.use_overlay_icon(minimap_overlay)
 
