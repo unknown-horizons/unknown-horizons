@@ -33,7 +33,7 @@ from fife.extensions.fife_settings import Setting, FIFE_MODULE
 import horizons.main
 
 import horizons.gui.style
-from horizons.util import SQLiteAnimationLoader
+from horizons.util import SQLiteAnimationLoader, Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
@@ -261,7 +261,7 @@ class Fife(ApplicationBase):
 		self.OptionsDlg.distributeInitialData(slider_initial_data)
 
 		for x in slider_dict.values():
-			slider_event_map[x] = pychan.tools.callbackWithArguments(self.update_slider_values, x)
+			slider_event_map[x] = Callback(self.update_slider_values, x)
 		slider_event_map['volume_music'] = self.set_volume_music
 		slider_event_map['volume_effects'] = self.set_volume_effects
 		self.OptionsDlg.mapEvents(slider_event_map)

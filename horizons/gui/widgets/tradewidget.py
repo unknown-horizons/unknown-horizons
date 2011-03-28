@@ -26,6 +26,7 @@ import horizons.main
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import load_xml_translated
 from horizons.command.uioptions import TransferResource
+from horizons.util import Callback
 
 class TradeWidget(object):
 	log = logging.getLogger("gui.tradewidget")
@@ -62,7 +63,7 @@ class TradeWidget(object):
 		self.widget.findChild(name='headline').stylize('headline') # style definition for headline
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
-			events[v] = pychan.tools.callbackWithArguments(self.set_exchange, k)
+			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.instance = instance
 		self.partner = None
@@ -76,7 +77,7 @@ class TradeWidget(object):
 		if len(self.partners) > 0:
 			dropdown = self.widget.findChild(name='partners')
 			#dropdown.setInitialData([item.settlement.name for item in self.partners])
-			#dropdown.capture(pychan.tools.callbackWithArguments(self.set_partner, dropdown.getData()))
+			#dropdown.capture(Callback(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
 			dropdown.text = unicode(self.partners[nearest_partner].settlement.name) # label fix for release use only
@@ -89,11 +90,11 @@ class TradeWidget(object):
 			inv_partner = self.widget.findChild(name='inventory_partner')
 			inv_partner.init(self.instance.session.db, self.partner.inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
-				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.partner, self.instance))
+				button.button.capture(Callback(self.transfer, button.res_id, self.partner, self.instance))
 			inv = self.widget.findChild(name='inventory_ship')
 			inv.init(self.instance.session.db, self.instance.inventory)
 			for button in self.get_widgets_by_class(inv, ImageFillStatusButton):
-				button.button.capture(pychan.tools.callbackWithArguments(self.transfer, button.res_id, self.instance, self.partner))
+				button.button.capture(Callback(self.transfer, button.res_id, self.instance, self.partner))
 			self.widget.adaptLayout()
 		else:
 			self.widget.hide()

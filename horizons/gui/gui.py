@@ -95,7 +95,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		              for section in ('team','patchers','translators','special_thanks')]
 		for i in xrange (0,4):
 			if label[i]: # add callbacks to each pickbelt that is displayed
-				label[i].capture(pychan.tools.callbackWithArguments(self.show_credits, i),
+				label[i].capture(Callback(self.show_credits, i),
 				                 event_name="mouseClicked")
 
 		if self.current_dialog is not None:

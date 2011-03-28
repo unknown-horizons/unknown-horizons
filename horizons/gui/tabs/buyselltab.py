@@ -26,11 +26,9 @@ import horizons.main
 
 from horizons.i18n import load_xml_translated
 from tabinterface import TabInterface
-from horizons.command.uioptions import AddToBuyList
-from horizons.command.uioptions import AddToSellList
-from horizons.command.uioptions import RemoveFromBuyList
-from horizons.command.uioptions import RemoveFromSellList
+from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBuyList, RemoveFromSellList
 from horizons.gui.widgets.tooltip import TooltipButton
+from horizons.util import Callback
 
 class BuySellTab(TabInterface):
 
@@ -89,7 +87,7 @@ class BuySellTab(TabInterface):
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(pychan.tools.callbackWithArguments(self.show_resource_menu, num))
+			slot.findChild(name='button').capture(Callback(self.show_resource_menu, num))
 			slot.findChild(name='button').up_image = self.dummy_icon_path
 			slot.findChild(name='button').down_image = self.dummy_icon_path
 			slot.findChild(name='button').hover_image = self.dummy_icon_path
@@ -97,7 +95,7 @@ class BuySellTab(TabInterface):
 			slider = slot.findChild(name="slider")
 			slider.setScaleStart(0.0)
 			slider.setScaleEnd(float(self.settlement.inventory.limit))# Set scale according to the settlements inventory size
-			slot.findChild(name="buysell").capture(pychan.tools.callbackWithArguments(self.toggle_buysell, num))
+			slot.findChild(name="buysell").capture(Callback(self.toggle_buysell, num))
 			fillbar = slot.findChild(name="fillbar")
 			# hide fillbar by setting position
 			icon = slot.findChild(name="icon")
@@ -158,7 +156,7 @@ class BuySellTab(TabInterface):
 			button.hover_image = icons[1] # disabled icon
 			button.tooltip = horizons.main.db.get_res_name(res_id)
 			slot.res = res_id # use some python magic to assign a res attribute to the slot to save which res_id he stores
-			slider.capture(pychan.tools.callbackWithArguments(self.slider_adjust, res_id, slot.id))
+			slider.capture(Callback(self.slider_adjust, res_id, slot.id))
 			slot.findChild(name="amount").text = unicode(value)+"t"
 			icon = slot.findChild(name="icon")
 			inventory = self.settlement.inventory
@@ -251,7 +249,7 @@ class BuySellTab(TabInterface):
 				button.tooltip = u""
 			else:
 				button.tooltip = horizons.main.db.get_res_name(res_id)
-			button.capture(pychan.tools.callbackWithArguments(self.add_resource, res_id, slot_id))
+			button.capture(Callback(self.add_resource, res_id, slot_id))
 			current_hbox.addChild(button)
 			if index % (vbox.width/(button_width)) == 0 and index is not 0:
 				vbox.addChild(current_hbox)

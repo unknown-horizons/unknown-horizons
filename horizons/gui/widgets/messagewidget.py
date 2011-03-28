@@ -26,7 +26,7 @@ from fife.extensions import pychan
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from horizons.util.living import LivingObject
+from horizons.util import LivingObject, Callback
 from horizons.i18n import load_xml_translated
 from horizons.ambientsound import AmbientSound
 
@@ -107,12 +107,12 @@ class MessageWidget(LivingObject):
 				button.down_image = message.down_image
 				# show text on hover
 				events = {
-					button.name + "/mouseEntered": pychan.tools.callbackWithArguments(self.show_text, index),
+					button.name + "/mouseEntered": Callback(self.show_text, index),
 					button.name + "/mouseExited": self.hide_text
 				}
 				if message.x is not None and message.y is not None:
 					# center source of event on click, if there is a source
-					events[button.name] = pychan.tools.callbackWithArguments( \
+					events[button.name] = Callback( \
 						self.session.view.center, message.x, message.y)
 				button.mapEvents(events)
 				button_space.addChild(button)

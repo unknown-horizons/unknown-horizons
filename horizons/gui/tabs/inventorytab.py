@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
-
 from tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
+from horizons.util import Callback
 
 class InventoryTab(TabInterface):
 
@@ -70,7 +69,7 @@ class ShipInventoryTab(InventoryTab):
 	def refresh(self):
 		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius, self.instance.owner)
 		if len(branches) > 0:
-			events = { 'trade': pychan.tools.callbackWithArguments(self.instance.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
+			events = { 'trade': Callback(self.instance.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
 			self.widget.mapEvents(events)
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()

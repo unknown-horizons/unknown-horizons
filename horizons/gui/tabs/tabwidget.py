@@ -23,6 +23,7 @@ from horizons.gui.widgets.tooltip import TooltipButton
 
 import horizons.main
 from horizons.i18n import load_xml_translated
+from horizons.util import Callback
 
 class TabWidget(object):
 	"""The TabWidget class handles widgets which consist of many
@@ -74,7 +75,7 @@ class TabWidget(object):
 			button.hover_image = tab.button_hover_image
 			button.is_focusable = False
 			button.size = (50, 50)
-			button.capture(pychan.tools.callbackWithArguments(self._show_tab, index))
+			button.capture(Callback(self._show_tab, index))
 			if hasattr(tab, 'tooltip') and tab.tooltip is not None:
 				button.tooltip = unicode(tab.tooltip)
 			container.size = background.size

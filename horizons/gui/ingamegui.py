@@ -20,13 +20,12 @@
 # ###################################################
 
 from fife.extensions import pychan
-from fife.extensions.pychan.tools import callbackWithArguments as callback
 
 import horizons.main
 from horizons.entities import Entities
 
 from horizons.util import livingProperty, LivingObject, PychanChildFinder, Rect, Point
-from horizons.util.python import Callback as hutil_callback
+from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool, SelectionTool
 from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets.messagewidget import MessageWidget
@@ -79,7 +78,7 @@ class IngameGui(LivingObject):
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
-		
+
 		minimap = self.widgets['minimap']
 		minimap.position = (screenwidth - minimap.size[0] -20, 4)
 		minimap.show()
@@ -90,8 +89,8 @@ class IngameGui(LivingObject):
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : hutil_callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft' : hutil_callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
+			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
 			'speedUp' : self.session.speed_up,
 			'speedDown' : self.session.speed_down
 		})
@@ -127,7 +126,7 @@ class IngameGui(LivingObject):
 		for id,button_name,settler_level in building_list:
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
-			self.callbacks_build[settler_level][button_name] = callback(self._build, id)
+			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
 
 	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
 		#TODO what is this stuff doing? I could maybe fix the problems if I understood that:
@@ -229,7 +228,7 @@ class IngameGui(LivingObject):
 		"""Assigns values to labels of cityinfo widget"""
 		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
-			'city_name': callback(self.show_change_name_dialog, self.settlement)
+			'city_name': Callback(self.show_change_name_dialog, self.settlement)
 		})
 		foundlabel = cityinfo.child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
@@ -344,14 +343,14 @@ class IngameGui(LivingObject):
 		The game gets paused while the dialog is executed."""
 		self.session.speed_pause()
 		events = {
-			'okButton': callback(self.change_name, instance),
+			'okButton': Callback(self.change_name, instance),
 			'cancelButton': self._hide_change_name_dialog
 		}
 		self.main_gui.on_escape = self._hide_change_name_dialog
 		changename = self.widgets['change_name']
 		newname = changename.findChild(name='new_name')
 		changename.mapEvents(events)
-		newname.capture(callback(self.change_name, instance))
+		newname.capture(Callback(self.change_name, instance))
 		changename.show()
 		newname.requestFocus()
 
