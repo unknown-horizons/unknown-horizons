@@ -35,7 +35,7 @@
 	-->
 			<HBox>
 				<Label name="mp_player_limit_lbl" text="Player limit:"/>
-				<ScrollArea min_size="48,20">
+				<ScrollArea min_size="48,80">
 					<ListBox name="playerlimit" />
 				</ScrollArea>
 			</HBox>
