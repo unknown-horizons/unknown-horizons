@@ -404,12 +404,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	def get_island(self, point):
 		"""Returns the island for that coordinate, if none is found, returns None.
 		@param point: instance of Point"""
+		tup = point.to_tuple()
+		if tup in self.ground_map:
+			# this optimisation pays of if water tiles are frequently queried
+			return None
 		for island in self.islands:
-			# TODO: check if this optimisation check acctually slows the function down
-			# the dict lookup below should be very fast anyways
-			if not island.rect.contains(point):
-				continue
-			if point.to_tuple() in island.ground_map:
+			if tup in island.ground_map:
 				return island
 		return None
 

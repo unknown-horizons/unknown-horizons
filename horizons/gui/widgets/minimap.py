@@ -23,9 +23,10 @@ from fife import fife
 
 from horizons.util import Point, Rect
 from horizons.scheduler import Scheduler
-from horizons.util.python.decorators import make_constants
+from horizons.util.python.decorators import bind_all
 
 import math
+from math import sin, cos
 
 class Minimap(object):
 	"""A basic minimap"""
@@ -36,7 +37,6 @@ class Minimap(object):
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
 
-	@make_constants()
 	def __init__(self, rect, session, renderer):
 		"""
 		@param rect: a Rect, where we will draw to
@@ -56,6 +56,7 @@ class Minimap(object):
 			self.renderernodes[ i ] = GenericRendererNode( fife_Point( *i ) )
 
 		self.world = None
+		self.location_center = self.location.center()
 
 	def end(self):
 		self.world = None
@@ -147,7 +148,6 @@ class Minimap(object):
 		map_coord = self._minimap_coord_to_world_coord(abs_mouse_position)
 		self.session.view.center(*map_coord)
 
-	@make_constants()
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
 		@param where: Rect of minimap coords. Defaults to self.location"""
@@ -170,10 +170,14 @@ class Minimap(object):
 		water_col, island_col = \
 		         [ self.colors[i] for i in [self.water_id, self.island_id] ]
 		color = None
+		renderer_addPoint = self.renderer.addPoint
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
 		for x in xrange(where.left-self.location.left, where.left+where.width-self.location.left):
+			# Optimisation: remember last island
+			last_island = None
+			island = None
 			for y in xrange(where.top-self.location.top, where.top+where.height-self.location.top):
 
 				"""
@@ -190,13 +194,18 @@ class Minimap(object):
 				                            pixel_per_coord_x_half_as_int
 				real_map_point.y = int(y*pixel_per_coord_y)+world_min_y + \
 				                            pixel_per_coord_y_half_as_int
+				real_map_point_tuple = (real_map_point.x, real_map_point.y)
 				# we changed the minimap coords, so change back here
 				minimap_point = ( location_left + x, location_top + y)
 
+
 				# check what's at the covered_area
-				assert self.world.map_dimensions.contains(real_map_point)
-				island = get_island(real_map_point)
+				if last_island is not None and real_map_point_tuple in last_island.ground_map:
+					island = last_island
+				else:
+					island = get_island(real_map_point)
 				if island is not None:
+					last_island = island
 					# this pixel is an island
 					settlement = island.get_settlement(real_map_point)
 					if settlement is None:
@@ -208,7 +217,9 @@ class Minimap(object):
 				else:
 					color = water_col
 
-				self.renderer.addPoint("minimap", self.renderernodes[self._get_rotated_coords(minimap_point)], *color)
+				# _get_rotated_coords has been inlined here
+				renderer_addPoint("minimap", self.renderernodes[self._rotate(minimap_point, self._rotations)], *color)
+
 
 	def _timed_update(self):
 		"""Regular updates for domains we can't or don't want to keep track of."""
@@ -239,35 +250,35 @@ class Minimap(object):
 
 	## CALC UTILITY
 
+	_rotations = { 0 : 0,
+	               1 : 3 * math.pi / 2,
+	               2 : math.pi,
+	               3 : math.pi / 2
+	               }
 	def _get_rotated_coords (self, tup):
-		rotations = { 0 : 0,
-		              1 : 3 * math.pi / 2,
-		              2 : math.pi,
-		              3 : math.pi / 2
-		              }
-		return self._rotate (tup, rotations)
+		return self._rotate(tup, self._rotations)
 
+	_from_rotations = { 0 : 0,
+	                    1 : math.pi / 2,
+	                    2 : math.pi,
+	                    3 : 3 * math.pi / 2
+	                    }
 	def _get_from_rotated_coords (self, tup):
-		rotations = { 0 : 0,
-		              1 : math.pi / 2,
-		              2 : math.pi,
-		              3 : 3 * math.pi / 2
-		              }
-		return self._rotate (tup, rotations)
+		return self._rotate (tup, self._from_rotations)
 
 	def _rotate (self, tup, rotations):
 		rotation = rotations[ self.rotation ]
 
 		x = tup[0]
 		y = tup[1]
-		x -= (self.location.right + self.location.left) / 2
-		y -= (self.location.top + self.location.bottom) / 2
+		x -= self.location_center.x
+		y -= self.location_center.y
 
-		new_x = x * math.cos(rotation) - y * math.sin(rotation)
-		new_y = x * math.sin(rotation) + y * math.cos(rotation)
+		new_x = x * cos(rotation) - y * sin(rotation)
+		new_y = x * sin(rotation) + y * cos(rotation)
 
-		new_x += (self.location.right + self.location.left) / 2
-		new_y += (self.location.top + self.location.bottom) / 2
+		new_x += self.location_center.x
+		new_y += self.location_center.y
 		#some points may get out of range
 		new_x = max (self.location.left, new_x)
 		new_x = min (self.location.right, new_x)
@@ -302,3 +313,6 @@ class Minimap(object):
 		  int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x, \
 		  int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
 		)
+
+
+bind_all(Minimap)
