@@ -79,6 +79,10 @@
 			<Label name="sound_enable_opt_text" text="Enable sound:" />
 			<CheckBox min_size="32,32" name="enable_sound" />
 		</HBox>
+		<HBox>
+			<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
+			<CheckBox min_size="32,32"  name="minimaprotation" />
+		</HBox>
 	</VBox>
 </VBox> 
 
@@ -101,8 +105,8 @@
 				wrap_text="1"  max_size="250,40" min_size="250,20" />
 			<Label text="" name="autosavemaxcount_value" />
 		</HBox>
-			<Slider size="300,20" name="autosavemaxcount"
-				orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
+		<Slider size="300,20" name="autosavemaxcount"
+			orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
 		<HBox>
 			<Label name="number_of_quicksaves_label"  text="Number of quicksaves:"
 				wrap_text="1"  max_size="250,40"  min_size="250,20" />
@@ -118,8 +122,8 @@
 		<Label text="Language" 
 			name="headline_language"  font="libertine_headline" />
 		<HBox>
-     		<Label text="Select language:"  name="language_label" />
-     		<ScrollArea min_size="125,140" >
+			<Label text="Select language:"  name="language_label" />
+			<ScrollArea min_size="125,140" >
 				<ListBox name="language" />
 			</ScrollArea>
 		</HBox>

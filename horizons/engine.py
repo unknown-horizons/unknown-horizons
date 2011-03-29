@@ -88,6 +88,14 @@ class Fife(ApplicationBase):
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
+
+		def update_minimap(*args):
+			# sry for this gross violation of the encapsulation principle
+			try: horizons.main._modules.session.ingame_gui.minimap.draw()
+			except AttributeError: pass # session or gui not yet initialised
+		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
+		                                applyfunction=update_minimap)
+
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 		                                initialdata=[0, 16, 32], requiresrestart=True)
 

@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
 from fife import fife
 
 from horizons.util import Point, Rect
@@ -239,14 +240,19 @@ class Minimap(object):
 					pass
 
 	def rotate_right (self):
+		# keep track of rotation at any time, but only apply
+		# if it's acctually used
 		self.rotation += 1
 		self.rotation %= 4
-		self.draw()
+		if horizons.main.fife.get_uh_setting("MinimapRotation"):
+			self.draw()
 
 	def rotate_left (self):
+		# see above
 		self.rotation -= 1
 		self.rotation %= 4
-		self.draw()
+		if horizons.main.fife.get_uh_setting("MinimapRotation"):
+			self.draw()
 
 	## CALC UTILITY
 
@@ -267,25 +273,28 @@ class Minimap(object):
 		return self._rotate (tup, self._from_rotations)
 
 	def _rotate (self, tup, rotations):
-		rotation = rotations[ self.rotation ]
+		if not horizons.main.fife.get_uh_setting("MinimapRotation"):
+			return tup
+		else:
+			rotation = rotations[ self.rotation ]
 
-		x = tup[0]
-		y = tup[1]
-		x -= self.location_center.x
-		y -= self.location_center.y
+			x = tup[0]
+			y = tup[1]
+			x -= self.location_center.x
+			y -= self.location_center.y
 
-		new_x = x * cos(rotation) - y * sin(rotation)
-		new_y = x * sin(rotation) + y * cos(rotation)
+			new_x = x * cos(rotation) - y * sin(rotation)
+			new_y = x * sin(rotation) + y * cos(rotation)
 
-		new_x += self.location_center.x
-		new_y += self.location_center.y
-		#some points may get out of range
-		new_x = max (self.location.left, new_x)
-		new_x = min (self.location.right, new_x)
-		new_y = max (self.location.top, new_y)
-		new_y = min (self.location.bottom, new_y)
-		tup = int(new_x), int(new_y)
-		return tup
+			new_x += self.location_center.x
+			new_y += self.location_center.y
+			#some points may get out of range
+			new_x = max (self.location.left, new_x)
+			new_x = min (self.location.right, new_x)
+			new_y = max (self.location.top, new_y)
+			new_y = min (self.location.bottom, new_y)
+			tup = int(new_x), int(new_y)
+			return tup
 
 	def _get_world_to_minimap_ratio(self):
 		world_height = self.world.map_dimensions.height
