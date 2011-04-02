@@ -268,6 +268,11 @@ class Island(BuildingOwner, WorldObject):
 		if building.settlement is not None:
 			building.settlement.add_building(building)
 		building.init()
+
+		# Reset the tiles this building was covering
+		for point in building.position:
+			self.path_nodes.reset_tile_walkability(point.to_tuple())
+
 		return building
 
 	def remove_building(self, building):
