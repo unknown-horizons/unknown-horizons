@@ -64,15 +64,17 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.session = None
 		self.current_dialog = None
 
+# basic menu widgets
+
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
 			'startSingle'    : self.show_single,
 			'startMulti'     : self.show_multi,
-			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
+			'settingsLink'   : self.show_settings,
 			'helpLink'       : self.on_help,
 			'closeButton'    : self.show_quit,
-			'dead_link'      : self.on_chime, # call for help;  SoC information
+			'dead_link'      : self.on_chime, # call for help; SoC information
 			'creditsLink'    : self.show_credits,
 			'loadgameButton' : horizons.main.load_game
 		})
@@ -81,17 +83,98 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		adjust_widget_black_background(self.widgets['mainmenu'])
 
+	def show_pause(self):
+		"""
+		Show Pause menu
+		"""
+		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
+			'startGame'      : self.return_to_game,
+			'savegameButton' : self.save_game,
+			'settingsLink'   : self.show_settings,
+			'helpLink'       : self.on_help,
+			'closeButton'    : self.quit_session,
+			'dead_link'      : self.on_chime,
+			'creditsLink'    : self.show_credits,
+			'loadgameButton' : horizons.main.load_game
+		})
+
+		adjust_widget_black_background(self.widgets['gamemenu'])
+
+		self.session.speed_pause()
+		self.on_escape = self.return_to_game
+
+# what happens on button clicks
+
+	def return_to_game(self):
+		"""Return to the horizons."""
+		self.hide() # Hide old gui
+		self.current = None
+		self.session.speed_unpause()
+		self.on_escape = self.show_pause
+
+	def save_game(self):
+		"""Wrapper for saving for separating gui messages from save logic
+		"""
+		success = self.session.save()
+		if not success:
+			self.show_popup(_('Error'), _('Failed to save.'))
+
+	def show_settings(self):
+		horizons.main.fife._setting.onOptionsPress()
+
+	help_is_displayed = False
+	def on_help(self):
+		"""Called on help action
+		Toggles help screen via static variable help_is_displayed"""
+		help_dlg = self.widgets['help']
+		if not self.help_is_displayed:
+			self.help_is_displayed = True
+			# make game pause if there is a game and we're not in the main menu
+			if self.session is not None and self.current != self.widgets['gamemenu']:
+				self.session.speed_pause()
+			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
+			if self.session is not None and self.current != self.widgets['gamemenu']:
+				self.session.speed_unpause()
+		else:
+			self.help_is_displayed = False
+			if self.session is not None and self.current != self.widgets['gamemenu']:
+				self.session.speed_unpause()
+			help_dlg.hide()
+			self.on_escape = self.show_pause
+
 	def show_quit(self):
 		"""Shows the quit dialog """
 		message = _("Are you sure you want to quit Unknown Horizons?")
 		if self.show_popup(_("Quit Game"),message,show_cancel_button = True):
 			horizons.main.quit()
 
+	def quit_session(self, force=False):
+		"""Quits the current session.
+		@param force: whether to ask for confirmation"""
+		message = _("Are you sure you want to abort the running session?")
+		if force or \
+		   self.show_popup(_("Quit Session"),message,show_cancel_button = True):
+			self.current.hide()
+			self.current = None
+			if self.session is not None:
+				self.session.end()
+				self.session = None
+
+			self.show_main()
+
+	def on_chime(self):
+		"""
+		Called chime action. Displaying call for help on artists and game design,
+		introduces information for SoC applicants (if valid).
+		"""
+		AmbientSound.play_special("message")
+		self.show_dialog(self.widgets['call_for_support'], {'okButton' : True}, onPressEscape = True)
+
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
 			box.margins = (30,0) # to get some indentation
-		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl")\
+		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl") \
 		              for section in ('team','patchers','translators','special_thanks')]
 		for i in xrange (0,4):
 			if label[i]: # add callbacks to each pickbelt that is displayed
@@ -101,6 +184,95 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
 		self.show_dialog(self.widgets['credits'+str(number)], {'okButton' : True}, onPressEscape = True)
+
+	def show_select_savegame(self, mode):
+		"""Shows menu to select a savegame.
+		@param mode: 'save' or 'load'
+		@return: Path to savegamefile or None"""
+		assert mode in ('save', 'load')
+		map_files, map_file_display = None, None
+		if mode == 'load':
+			map_files, map_file_display = SavegameManager.get_saves()
+			if len(map_files) == 0:
+				self.show_popup(_("No saved games"), _("There are no saved games to load"))
+				return
+		else: # don't show autosave and quicksave on save
+			map_files, map_file_display = SavegameManager.get_regular_saves()
+
+		# Prepare widget
+		old_current = self._switch_current_widget('select_savegame')
+		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
+		for label in ('headline','saved_games_label','details_label'):
+			self.current.findChild(name=label).stylize('headline')
+
+		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
+		if mode == 'save': # only show enter_filename on save
+			self.current.findChild(name='enter_filename').show()
+		else:
+			self.current.findChild(name='enter_filename').hide()
+		"""
+
+		def tmp_selected_changed():
+			"""Fills in the name of the savegame in the textbox when selected in the list"""
+			if self.current.collectData('savegamelist') != -1: # check if we actually collect valid data
+				self.current.distributeData({'savegamefile' : \
+				                             map_file_display[self.current.collectData('savegamelist')]})
+
+		self.current.distributeInitialData({'savegamelist' : map_file_display})
+		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
+		                               tmp_selected_changed)
+		self.current.findChild(name="savegamelist").mapEvents({
+		    'savegamelist/action'              : cb,
+		    'savegamelist/mouseWheelMovedUp'   : cb,
+		    'savegamelist/mouseWheelMovedDown' : cb
+		})
+		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
+
+		retval = self.show_dialog(self.current, {
+		                                          'okButton'     : True,
+		                                          'cancelButton' : False,
+		                                          'deleteButton' : 'delete',
+		                                          'savegamefile' : True
+		                                        },
+		                                        onPressEscape = False)
+		if not retval: # cancelled
+			self.current = old_current
+			return
+
+		if retval == 'delete':
+			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
+			self._delete_savegame(map_files)
+			self.current = old_current
+			return self.show_select_savegame(mode=mode)
+
+		selected_savegame = None
+		if mode == 'save': # return from textfield
+			selected_savegame = self.current.collectData('savegamefile')
+			if selected_savegame in map_file_display: # savegamename already exists
+				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
+				if not self.show_popup(_("Confirmation for overwriting"),message,show_cancel_button = True):
+					self.current = old_current
+					return self.show_select_savegame(mode=mode) # reshow dialog
+		else: # return selected item from list
+			selected_savegame = self.current.collectData('savegamelist')
+			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
+		self.current = old_current # reuse old widget
+		return selected_savegame
+
+# display
+
+	def on_escape(self):
+		pass
+
+	def show(self):
+		self.log.debug("Gui: showing current: %s", self.current)
+		if self.current is not None:
+			self.current.show()
+
+	def hide(self):
+		self.log.debug("Gui: hiding current: %s", self.current)
+		if self.current is not None:
+			self.current.hide()
 
 	def show_dialog(self, dlg, actions, onPressEscape = None, event_map = None):
 		"""Shows any pychan dialog.
@@ -146,107 +318,32 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else:
 			return self.show_dialog(popup, {'okButton' : True}, onPressEscape = True)
 
-	def show_pause(self):
-		"""
-		Show Pause menu
-		"""
-		self._switch_current_widget('gamemenu', center=True, show=True, event_map={
-			'startGame'      : self.return_to_game,
-			'savegameButton' : self.save_game,
-			'settingsLink'   : horizons.main.fife._setting.onOptionsPress,
-			'helpLink'       : self.on_help,
-			'closeButton'    : self.quit_session,
-			'dead_link'      : self.on_chime,
-			'creditsLink'    : self.show_credits,
-			'loadgameButton' : horizons.main.load_game
-		})
+	def show_loading_screen(self):
+		self._switch_current_widget('loadingscreen', center=True, show=True)
 
-		adjust_widget_black_background(self.widgets['gamemenu'])
+# helper
 
-		self.session.speed_pause()
-		self.on_escape = self.return_to_game
-
-	def on_chime(self):
-		"""
-		Called chime action. Displaying call for help on artists and game design,
-		introduces information for SoC applicants (if valid).
-		"""
-		AmbientSound.play_special("message")
-		self.show_dialog(self.widgets['call_for_support'], {'okButton' : True}, onPressEscape = True)
-
-	help_is_displayed = False
-	def on_help(self):
-		"""Called on help action
-		Toggles help screen via static variable help_is_displayed"""
-		help_dlg = self.widgets['help']
-		if not self.help_is_displayed:
-			self.help_is_displayed = True
-			# make game pause if there is a game and we're not in the main menu
-			if self.session is not None and self.current != self.widgets['gamemenu']:
-				self.session.speed_pause()
-			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
-			if self.session is not None and self.current != self.widgets['gamemenu']:
-				self.session.speed_unpause()
-		else:
-			self.help_is_displayed = False
-			if self.session is not None and self.current != self.widgets['gamemenu']:
-				self.session.speed_unpause()
-			help_dlg.hide()
-			self.on_escape = self.show_pause
-
-	def quit_session(self, force=False):
-		"""Quits the current session.
-		@param force: whether to ask for confirmation"""
-		message = _("Are you sure you want to abort the running session?")
-		if force or \
-		   self.show_popup(_("Quit Session"),message,show_cancel_button = True):
-			self.current.hide()
-			self.current = None
-			if self.session is not None:
-				self.session.end()
-				self.session = None
-
-			self.show_main()
-
-	def save_game(self):
-		"""Wrapper for saving for separating gui messages from save logic
-		"""
-		success = self.session.save()
-		if not success:
-			self.show_popup(_('Error'), _('Failed to save.'))
-
-	def return_to_game(self):
-		"""Return to the horizons."""
-		self.hide() # Hide old gui
-		self.current = None
-		self.session.speed_unpause()
-		self.on_escape = self.show_pause
-
-	def on_escape(self):
-		pass
-
-	def _delete_savegame(self, map_files):
-		"""Deletes the selected savegame if the user confirms
-		self.current has to contain the widget "savegamelist"
-		@param map_files: list of files that corresponds to the entries of 'savegamelist'
-		@return: True if something was deleted, else False
-		"""
-		selected_item = self.current.collectData("savegamelist")
-		if selected_item == -1 or selected_item >= len(map_files):
-			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
-			return False
-		selected_file = map_files[selected_item]
-		message = _('Do you really want to delete the savegame "%s"?') % \
-		             SavegameManager.get_savegamename_from_filename(selected_file)
-		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
-			try:
-				os.unlink(selected_file)
-				return True
-			except:
-				self.show_popup(_("Error!"), _("Failed to delete savefile!"))
-				return False
-		else: # player cancelled deletion
-			return False
+	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False, hide_old=False):
+		"""Switches self.current to a new widget.
+		@param new_widget: str, widget name
+		@param center: bool, whether to center the new widget
+		@param event_map: pychan event map to apply to new widget
+		@param show: bool, if True old window gets hidden and new one shown
+		@param hide_old: bool, if True old window gets hidden. Implied by show
+		@return: instance of old widget"""
+		old = self.current
+		if (show or hide_old) and old is not None:
+			self.log.debug("Gui: hiding %s", old)
+			old.hide()
+		self.log.debug("Gui: setting current to %s", new_widget)
+		self.current = self.widgets[new_widget]
+		if center:
+			center_widget(self.current)
+		if event_map:
+			self.current.mapEvents(event_map)
+		if show:
+			self.current.show()
+		return old
 
 	@staticmethod
 	def _create_show_savegame_details(gui, map_files, savegamelist):
@@ -295,105 +392,25 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			gui.adaptLayout()
 		return tmp_show_details
 
-	def hide(self):
-		self.log.debug("Gui: hiding current: %s", self.current)
-		if self.current is not None:
-			self.current.hide()
-
-	def show(self):
-		self.log.debug("Gui: showing current: %s", self.current)
-		if self.current is not None:
-			self.current.show()
-
-	def show_select_savegame(self, mode):
-		"""Shows menu to select a savegame.
-		@param mode: 'save' or 'load'
-		@return: Path to savegamefile or None"""
-		assert mode in ('save', 'load')
-		map_files, map_file_display = None, None
-		if mode == 'load':
-			map_files, map_file_display = SavegameManager.get_saves()
-			if len(map_files) == 0:
-				self.show_popup(_("No saved games"), _("There are no saved games to load"))
-				return
-		else: # don't show autosave and quicksave on save
-			map_files, map_file_display = SavegameManager.get_regular_saves()
-
-		# Prepare widget
-		old_current = self._switch_current_widget('select_savegame')
-		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		for label in ('headline','saved_games_label','details_label'):
-			self.current.findChild(name=label).stylize('headline')
-
-		""" this doesn't work (yet), see http://fife.trac.cvsdude.com/engine/ticket/375
-		if mode == 'save': # only show enter_filename on save
-			self.current.findChild(name='enter_filename').show()
-		else:
-			self.current.findChild(name='enter_filename').hide()
+	def _delete_savegame(self, map_files):
+		"""Deletes the selected savegame if the user confirms
+		self.current has to contain the widget "savegamelist"
+		@param map_files: list of files that corresponds to the entries of 'savegamelist'
+		@return: True if something was deleted, else False
 		"""
-
-		def tmp_selected_changed():
-			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if self.current.collectData('savegamelist') != -1: # Check if it actually collected valid data
-				self.current.distributeData({'savegamefile' : \
-				                             map_file_display[self.current.collectData('savegamelist')]})
-
-		self.current.distributeInitialData({'savegamelist' : map_file_display})
-		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
-						tmp_selected_changed)
-		self.current.findChild(name="savegamelist").mapEvents({ "savegamelist/action":cb,"savegamelist/mouseWheelMovedUp":cb, \
-									"savegamelist/mouseWheelMovedDown":cb})
-		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
-
-		retval = self.show_dialog(self.current, \
-		                        {'okButton': True, 'cancelButton': False, 'deleteButton': 'delete', 'savegamefile' : True},
-														onPressEscape = False)
-
-		if not retval: # canceled
-			self.current = old_current
-			return
-
-		if retval == 'delete':
-			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			self._delete_savegame(map_files)
-			self.current = old_current
-			return self.show_select_savegame(mode=mode)
-
-		selected_savegame = None
-		if mode == 'save': # return from textfield
-			selected_savegame = self.current.collectData('savegamefile')
-			if selected_savegame in map_file_display: # savegamename already exists
-				message = _("A savegame with the name \"%s\" already exists. \nShould i overwrite it?") % selected_savegame
-				if not self.show_popup(_("Confirmation for overwriting"),message,show_cancel_button = True):
-					self.current = old_current
-					return self.show_select_savegame(mode=mode) # reshow dialog
-		else: # return selected item from list
-			selected_savegame = self.current.collectData('savegamelist')
-			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
-		self.current = old_current # reuse old widget
-		return selected_savegame
-
-	def show_loading_screen(self):
-		self._switch_current_widget('loadingscreen', center=True, show=True)
-
-	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False, hide_old=False):
-		"""Switches self.current to a new widget.
-		@param new_widget: str, widget name
-		@param center: bool, whether to center the new widget
-		@param event_map: pychan event map to apply to new widget
-		@param show: bool, if True old window gets hidden and new one shown
-		@param hide_old: bool, if True old window gets hidden. Implied by show
-		@return: instance of old widget"""
-		old = self.current
-		if (show or hide_old) and old is not None:
-			self.log.debug("Gui: hiding %s", old)
-			old.hide()
-		self.log.debug("Gui: setting current to %s", new_widget)
-		self.current = self.widgets[new_widget]
-		if center:
-			center_widget(self.current)
-		if event_map:
-			self.current.mapEvents(event_map)
-		if show:
-			self.current.show()
-		return old
+		selected_item = self.current.collectData("savegamelist")
+		if selected_item == -1 or selected_item >= len(map_files):
+			self.show_popup(_("No file selected"), _("You need to select a savegame to delete"))
+			return False
+		selected_file = map_files[selected_item]
+		message = _('Do you really want to delete the savegame "%s"?') % \
+		             SavegameManager.get_savegamename_from_filename(selected_file)
+		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
+			try:
+				os.unlink(selected_file)
+				return True
+			except:
+				self.show_popup(_("Error!"), _("Failed to delete savefile!"))
+				return False
+		else: # player cancelled deletion
+			return False

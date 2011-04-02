@@ -127,7 +127,9 @@ class Fife(ApplicationBase):
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
 		# Nore: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
-		possible_resolutions = ["1024x768", "1280x800","1280x960","1280x1024","1366x768","1440x900","1600x900","1600x1200","1680x1050","1920x1080","1920x1200"] # Add more supported resolutions here.
+		possible_resolutions = ["1024x768", "1280x800", "1280x960", "1280x1024",
+		                        "1366x768", "1440x900", "1600x900", "1600x1200",
+		                        "1680x1050","1920x1080","1920x1200",] # Add more supported resolutions here.
 		current_state = self.engine_settings.isFullScreen()
 		self.engine_settings.setFullScreen(1)
 		for x,y in self.engine_settings.getPossibleResolutions():
