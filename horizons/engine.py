@@ -50,6 +50,11 @@ class LocalizedSetting(Setting):
 	def _loadWidget(self, dialog):
 		return load_xml_translated(dialog)
 
+	def _showChangeRequireRestartDialog(self):
+		"""Overwrites FIFE dialog call to use no xml file but a show_popup."""
+		headline = _("Restart required")
+		message = _("Some of your changes require a restart of Unknown Horizons.")
+		horizons.main._modules.gui.show_popup(headline, message)
 
 class Fife(ApplicationBase):
 	"""
@@ -126,7 +131,7 @@ class Fife(ApplicationBase):
 
 	def __setup_screen_resolutions(self):
 		# Note: This call only works if the engine is inited (self.run())
-		# Nore: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
+		# Note: Seems that getPossibleResolutions() needs Fullscreen set ##HACK##
 		possible_resolutions = ["1024x768", "1280x800", "1280x960", "1280x1024",
 		                        "1366x768", "1440x900", "1600x900", "1600x1200",
 		                        "1680x1050","1920x1080","1920x1200",] # Add more supported resolutions here.
