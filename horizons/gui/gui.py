@@ -278,7 +278,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param actions: actions that are executed by the dialog { 'ok': callback, 'cancel': callback }
-		@param onPressEscape: callback that is to be called if the escape button is pressed.
+		@param onPressEscape: callback that is to be called if the escape button is pressed
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
 		self.current_dialog = dlg
@@ -300,6 +300,19 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param show_cancel_button: boolean, show cancel button or not
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
+		popup = self.build_popup(windowtitle, message, show_cancel_button)
+		if show_cancel_button:
+			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
+		else:
+			return self.show_dialog(popup, {'okButton' : True}, onPressEscape = True)
+
+	def build_popup(self, windowtitle, message, show_cancel_button = False):
+		""" Creates a pychan popup widget with the specified properties.
+		@param windowtitle: the title of the popup
+		@param message: the text displayed in the popup
+		@param show_cancel_button: boolean, include cancel button or not
+		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
+		"""
 		if show_cancel_button:
 			popup = self.widgets['popup_with_cancel']
 		else:
@@ -313,10 +326,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup.adaptLayout() # recalculate widths
 		headline.position = ( popup.width/2 - headline.width/2 , headline.position[1] )
 		popup.adaptLayout()
-		if show_cancel_button:
-			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
-		else:
-			return self.show_dialog(popup, {'okButton' : True}, onPressEscape = True)
+		return popup
 
 	def show_loading_screen(self):
 		self._switch_current_widget('loadingscreen', center=True, show=True)

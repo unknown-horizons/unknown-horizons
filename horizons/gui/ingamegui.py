@@ -50,9 +50,9 @@ class IngameGui(LivingObject):
 		'city_info' : 'city_info',
 		'change_name' : 'book',
 		'chat' : 'book',
-		'status' : 'resource_bar',
-		'status_gold' : 'resource_bar',
-		'status_extra' : 'resource_bar',
+		'status'            : 'resource_bar',
+		'status_gold'       : 'resource_bar',
+		'status_extra'      : 'resource_bar',
 		'status_extra_gold' : 'resource_bar',
 	}
 
@@ -369,19 +369,25 @@ class IngameGui(LivingObject):
 		self._hide_change_name_dialog()
 
 	def toggle_ingame_pause(self):
-		"""Called when the hotkey for pause is pressed. Displays pause notification and does
-		the acctual (un)pausing."""
+		"""
+		Called when the hotkey for pause is pressed.
+		Displays pause notification and does the actual (un)pausing.
+		"""
+		#TODO currently a bug occurs when the game menu is displayed (game is
+		#     paused already): popup still appears, need ESC twice to return.
+		message = _("Hit P to continue the game or click below!")
+		popup = self.main_gui.build_popup(_("Game paused"), message)
 		if not hasattr(self, "_toggle_ingame_pause_shown"):
 			self._toggle_ingame_pause_shown = False
 		if not self._toggle_ingame_pause_shown:
 			self.session.speed_pause()
 			self.main_gui.on_escape = self.toggle_ingame_pause
-			self.widgets['ingame_pause'].mapEvents({'unpause_button': self.toggle_ingame_pause})
-			self.widgets['ingame_pause'].show()
+			popup.mapEvents({'okButton': self.toggle_ingame_pause})
+			popup.show()
 			self._toggle_ingame_pause_shown = True
 		else:
 			self.main_gui.on_escape = self.main_gui.show_pause
-			self.widgets['ingame_pause'].hide()
+			popup.hide()
 			self.session.speed_unpause()
 			self._toggle_ingame_pause_shown = False
 
@@ -428,7 +434,7 @@ class IngameGui(LivingObject):
 		self.widgets['chat'].hide()
 
 	def _do_chat(self):
-		"""Acctually initiates chatting and hides the dialog"""
+		"""Actually initiates chatting and hides the dialog"""
 		msg = self.widgets['chat'].findChild(name='msg').text
 		Chat(msg).execute(self.session)
 		self.widgets['chat'].findChild(name='msg').text = u''
