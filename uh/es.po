@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:52+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-03 21:22+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "desconocido"
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Unknown Horizons Versin %s"
+msgstr "Unknown Horizons Versión %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -1685,3 +1685,126 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr ""
+
+#~ msgid "Sheep"
+#~ msgstr "Oveja"
+
+#~ msgid "Citizen Buildings"
+#~ msgstr "Edificios de los ciudadanos"
+
+#~ msgid "Fishing Boats"
+#~ msgstr "Barcos pesqueros"
+
+#~ msgid "NEW GAME - SINGLEPLAYER"
+#~ msgstr "Nuevo juego - Un jugador"
+
+#~ msgid "NEW GAME - MULTIPLAYER"
+#~ msgstr "Nuevo juego - Multijugador"
+
+#~ msgid "FarmAnimalCollector"
+#~ msgstr "Animal Doméstico"
+
+#~ msgid " Help "
+#~ msgstr " Ayuda"
+
+#~ msgid "LumberjackCollector"
+#~ msgstr "Leñador"
+
+#~ msgid "Building Overview"
+#~ msgstr "Contrucción"
+
+#~ msgid "The random map features is still in active development. "
+#~ msgstr "El mapa aleatorio está en desarrollo. "
+
+#~ msgid " Chime The Bell "
+#~ msgstr " Tocar la campana"
+
+#~ msgid "Aristocrat Buildings"
+#~ msgstr "Edificios de los aristócratas"
+
+#~ msgid "FarmerCollector"
+#~ msgstr "Granjero"
+
+#~ msgid " Quit "
+#~ msgstr " Salir "
+
+#~ msgid "Fisher"
+#~ msgstr "Pescador"
+
+#~ msgid "Housing"
+#~ msgstr "Viviendas"
+
+#~ msgid "Settler Overview"
+#~ msgstr "Colonos"
+
+#~ msgid "FieldCollector"
+#~ msgstr "Granjero"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Barco pirata"
+
+#~ msgid "CREATE GAME - MULTIPLAYER"
+#~ msgstr "Crear partida - Multijugador"
+
+#~ msgid "StorageCollector"
+#~ msgstr "Encargado"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "Sí, lo has hecho..."
+
+#~ msgid " Save Game "
+#~ msgstr "Guardar partida"
+
+#~ msgid "But this is a deadlink, sorry."
+#~ msgstr "Pero es un enlace roto..."
+
+#~ msgid "BuildingCollector"
+#~ msgstr "Constructor"
+
+#~ msgid "HunterCollector"
+#~ msgstr "Cazador"
+
+#~ msgid "Merchant Buildings"
+#~ msgstr "Edificios de los mercantes"
+
+#~ msgid "AnimalCarriage"
+#~ msgstr "Carruaje"
+
+#~ msgid " Load Game "
+#~ msgstr " Cargar partida"
+
+#~ msgid "SettlerCollector"
+#~ msgstr "Colono"
+
+#~ msgid "Deer"
+#~ msgstr "Venado"
+
+#~ msgid " Continue Game "
+#~ msgstr " Continuar partida "
+
+#~ msgid "Terminal debugmode"
+#~ msgstr "Terminal de depuración"
+
+#~ msgid "Production"
+#~ msgstr "Producción"
+
+#~ msgid " Settings "
+#~ msgstr " Opciones"
+
+#~ msgid "You start the terminal python debugger pdb!"
+#~ msgstr "¡Has iniciado la terminal de depuración de python!"
+
+#~ msgid "Ship"
+#~ msgstr "Barco"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Campo de azcar: \n"
+#~ "Produce azúcar \n"
+#~ "para el ron."
+
+#~ msgid "Running Costs:"
+#~ msgstr "Costes de op.:"

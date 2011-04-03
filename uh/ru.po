@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:54+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-03 21:22+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "??????????"
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Неизведанные Горизонты версия: %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -1071,11 +1071,9 @@ msgstr "????????? ?????"
 msgid "Free play"
 msgstr "????????? ????"
 
-# 90%
 #: horizons/i18n/guitranslations.py:533
-#, fuzzy
 msgid "Start game"
-msgstr "?????? ????"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
@@ -1781,3 +1779,60 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr "?????????"
+
+#~ msgid "Sheep"
+#~ msgstr "Овца"
+
+#~ msgid " Help "
+#~ msgstr "Помощь"
+
+#~ msgid "Building Overview"
+#~ msgstr "Обзор строительства"
+
+#~ msgid "The random map features is still in active development. "
+#~ msgstr "Возможности генерации случайной карты находятся в активной разработке. "
+
+#~ msgid " Quit "
+#~ msgstr "Выход"
+
+#~ msgid "Fisher"
+#~ msgstr "Рыбак"
+
+#~ msgid "Settler Overview"
+#~ msgstr "Обзор поселенца"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Пиратский корабль"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "Да! Вы сделали это..."
+
+#~ msgid " Save Game "
+#~ msgstr "Сохранить игру"
+
+#~ msgid " Load Game "
+#~ msgstr "Загрузить игру"
+
+#~ msgid "Deer"
+#~ msgstr "Олень"
+
+#~ msgid " Continue Game "
+#~ msgstr "Продолжить игру"
+
+#~ msgid "Production"
+#~ msgstr "Производство"
+
+#~ msgid " Settings "
+#~ msgstr "Настройки"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Тростниковое поле: \n"
+#~ "Производит сахар \n"
+#~ "для рома."
+
+#~ msgid "Running Costs:"
+#~ msgstr "Обслуживание:"

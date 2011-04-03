@@ -7,15 +7,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:54+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -33,7 +32,7 @@ msgstr "onbekend"
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons Versie %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -1776,3 +1775,126 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr "kolonist"
+
+#~ msgid "Sheep"
+#~ msgstr "Schaap"
+
+#~ msgid "Citizen Buildings"
+#~ msgstr "Inwoner Gebouwen"
+
+#~ msgid "Fishing Boats"
+#~ msgstr "Vissersboten"
+
+#~ msgid "NEW GAME - SINGLEPLAYER"
+#~ msgstr "NIEUW SPEL - ENKELSPEL"
+
+#~ msgid "NEW GAME - MULTIPLAYER"
+#~ msgstr "NIEUW SPEL - MULTIPLAYER"
+
+#~ msgid "FarmAnimalCollector"
+#~ msgstr "Boerderij Dieren Verzamelaar"
+
+#~ msgid " Help "
+#~ msgstr "Help"
+
+#~ msgid "LumberjackCollector"
+#~ msgstr "Houthakker Verzamelaar"
+
+#~ msgid "Building Overview"
+#~ msgstr "Gebouwen Overzicht"
+
+#~ msgid "The random map features is still in active development. "
+#~ msgstr "De functionaliteit willekeurige kaart is momenteel onder ontwikkeling."
+
+#~ msgid " Chime The Bell "
+#~ msgstr "Luid de bel"
+
+#~ msgid "Aristocrat Buildings"
+#~ msgstr "Aristocraten Gebouwen"
+
+#~ msgid "FarmerCollector"
+#~ msgstr "Boerderij Verzamelaar"
+
+#~ msgid " Quit "
+#~ msgstr "Afsluiten"
+
+#~ msgid "Fisher"
+#~ msgstr "Visser"
+
+#~ msgid "Housing"
+#~ msgstr "Huizen"
+
+#~ msgid "Settler Overview"
+#~ msgstr "Kolonisten Overzicht"
+
+#~ msgid "FieldCollector"
+#~ msgstr "Veld Verzamelaar"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Piraten Schip"
+
+#~ msgid "CREATE GAME - MULTIPLAYER"
+#~ msgstr "MAAK SPEL - MULTIPLAYER"
+
+#~ msgid "StorageCollector"
+#~ msgstr "Opslag Verzamelaar"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "U heeft het gehaald..."
+
+#~ msgid " Save Game "
+#~ msgstr "Spel opslaan"
+
+#~ msgid "But this is a deadlink, sorry."
+#~ msgstr "Maar dit leidt nergens naar."
+
+#~ msgid "BuildingCollector"
+#~ msgstr "Gebouwen Verzamelaar"
+
+#~ msgid "HunterCollector"
+#~ msgstr "Jager Verzamelaar"
+
+#~ msgid "Merchant Buildings"
+#~ msgstr "Handelaar Gebouwen"
+
+#~ msgid "AnimalCarriage"
+#~ msgstr "Dieren Rijtuig"
+
+#~ msgid " Load Game "
+#~ msgstr "Spel laden"
+
+#~ msgid "SettlerCollector"
+#~ msgstr "Kolonisten Verzamelaar"
+
+#~ msgid "Deer"
+#~ msgstr "Hert"
+
+#~ msgid " Continue Game "
+#~ msgstr "Spel hervatten"
+
+#~ msgid "Terminal debugmode"
+#~ msgstr "Terminal debugmode"
+
+#~ msgid "Production"
+#~ msgstr "Productie"
+
+#~ msgid " Settings "
+#~ msgstr "Instellingen"
+
+#~ msgid "You start the terminal python debugger pdb!"
+#~ msgstr "U heeft de terminal python debugger pdb gestart!"
+
+#~ msgid "Ship"
+#~ msgstr "Schip"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Suiker veld: \n"
+#~ "Produceert suiker\n"
+#~ "voor rum."
+
+#~ msgid "Running Costs:"
+#~ msgstr "Operatie kosten:"

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:52+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-03 21:22+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -983,11 +983,9 @@ msgstr "Juhuslik kaart"
 msgid "Free play"
 msgstr "Vaba mängimine"
 
-# 90%
 #: horizons/i18n/guitranslations.py:533
-#, fuzzy
 msgid "Start game"
-msgstr "Alusta mängu:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
@@ -1691,3 +1689,126 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr "asunik"
+
+#~ msgid "Sheep"
+#~ msgstr "Lammas"
+
+#~ msgid "Citizen Buildings"
+#~ msgstr "Kodanike Ehitised"
+
+#~ msgid "Fishing Boats"
+#~ msgstr "Kalapaadid"
+
+#~ msgid "NEW GAME - SINGLEPLAYER"
+#~ msgstr "UUS MÄNG - ÜKSIMÄNG"
+
+#~ msgid "NEW GAME - MULTIPLAYER"
+#~ msgstr "UUS MÄNG - MITMEMÄNG"
+
+#~ msgid "FarmAnimalCollector"
+#~ msgstr "FarmAnimalCollector"
+
+#~ msgid " Help "
+#~ msgstr " Abi "
+
+#~ msgid "LumberjackCollector"
+#~ msgstr "LumberjackCollector"
+
+#~ msgid "Building Overview"
+#~ msgstr "Ehitise ülevaade"
+
+#~ msgid "The random map features is still in active development. "
+#~ msgstr "Juhuslik kaart funktsioonid on endiselt aktiivne arendustegevus."
+
+#~ msgid " Chime The Bell "
+#~ msgstr " Kelluke heliseb "
+
+#~ msgid "Aristocrat Buildings"
+#~ msgstr "Aristokraatide Ehitised"
+
+#~ msgid "FarmerCollector"
+#~ msgstr "FarmerCollector"
+
+#~ msgid " Quit "
+#~ msgstr " Välju "
+
+#~ msgid "Fisher"
+#~ msgstr "Kalur"
+
+#~ msgid "Housing"
+#~ msgstr "Majutus"
+
+#~ msgid "Settler Overview"
+#~ msgstr "Asunike Ülevaade"
+
+#~ msgid "FieldCollector"
+#~ msgstr "FieldCollector"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Piraadilaev"
+
+#~ msgid "CREATE GAME - MULTIPLAYER"
+#~ msgstr "LOO MÄNG - MITMEMÄNG"
+
+#~ msgid "StorageCollector"
+#~ msgstr "StorageCollector"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "Jah, sa jõudsid siia..."
+
+#~ msgid " Save Game "
+#~ msgstr " Salvesta mäng "
+
+#~ msgid "But this is a deadlink, sorry."
+#~ msgstr "Kuid see on surnud viide, vabandust."
+
+#~ msgid "BuildingCollector"
+#~ msgstr "BuildingCollector"
+
+#~ msgid "HunterCollector"
+#~ msgstr "HunterCollector"
+
+#~ msgid "Merchant Buildings"
+#~ msgstr "Kaupmeeste Ehitised"
+
+#~ msgid "AnimalCarriage"
+#~ msgstr "AnimalCarriage"
+
+#~ msgid " Load Game "
+#~ msgstr " Laadi mäng "
+
+#~ msgid "SettlerCollector"
+#~ msgstr "SettlerCollector"
+
+#~ msgid "Deer"
+#~ msgstr "Põder"
+
+#~ msgid " Continue Game "
+#~ msgstr " Jätka mängu "
+
+#~ msgid "Terminal debugmode"
+#~ msgstr "Terminal silumisrežiimis"
+
+#~ msgid "Production"
+#~ msgstr "Tootmine"
+
+#~ msgid " Settings "
+#~ msgstr " Seaded "
+
+#~ msgid "You start the terminal python debugger pdb!"
+#~ msgstr "Te alustate terminal python siluri pdb!"
+
+#~ msgid "Ship"
+#~ msgstr "Laev"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Suhkrupõld: \n"
+#~ "Toodab suhkrut\n"
+#~ "rummi jaoks."
+
+#~ msgid "Running Costs:"
+#~ msgstr "Jooksvad Kulud:"

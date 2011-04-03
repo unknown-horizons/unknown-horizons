@@ -2,20 +2,20 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-03 21:06+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -33,7 +33,7 @@ msgstr ""
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons Version %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -1647,3 +1647,126 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr ""
+
+#~ msgid "Sheep"
+#~ msgstr "Schaf"
+
+#~ msgid "Citizen Buildings"
+#~ msgstr "Bürgergebäude"
+
+#~ msgid "Fishing Boats"
+#~ msgstr "Fischerboote"
+
+#~ msgid "NEW GAME - SINGLEPLAYER"
+#~ msgstr "NEUES SPIEL - EINZELSPIELER"
+
+#~ msgid "NEW GAME - MULTIPLAYER"
+#~ msgstr "NEUES SPIEL - MEHRSPIELER"
+
+#~ msgid "FarmAnimalCollector"
+#~ msgstr "FarmAnimalCollector"
+
+#~ msgid " Help "
+#~ msgstr "Hilfe"
+
+#~ msgid "LumberjackCollector"
+#~ msgstr "LumberjackCollector"
+
+#~ msgid "Building Overview"
+#~ msgstr "Gebäudeübersicht"
+
+#~ msgid "The random map features is still in active development. "
+#~ msgstr "Das Erzeugen von Zufallskarten ist noch in aktiver Entwicklung. "
+
+#~ msgid " Chime The Bell "
+#~ msgstr "Die Glocke läuten"
+
+#~ msgid "Aristocrat Buildings"
+#~ msgstr "Aristokratengebäude"
+
+#~ msgid "FarmerCollector"
+#~ msgstr "FarmerCollector"
+
+#~ msgid " Quit "
+#~ msgstr "Verlassen"
+
+#~ msgid "Fisher"
+#~ msgstr "Fischer"
+
+#~ msgid "Housing"
+#~ msgstr "Behausung"
+
+#~ msgid "Settler Overview"
+#~ msgstr "Siedlerübersicht"
+
+#~ msgid "FieldCollector"
+#~ msgstr "FieldCollector"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Piratenschiff"
+
+#~ msgid "CREATE GAME - MULTIPLAYER"
+#~ msgstr "SPIEL ERSTELLEN - MEHRSPIELER"
+
+#~ msgid "StorageCollector"
+#~ msgstr "StorageCollector"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "Ja, Ihr habt es geschafft…"
+
+#~ msgid " Save Game "
+#~ msgstr "Spiel speichern"
+
+#~ msgid "But this is a deadlink, sorry."
+#~ msgstr "Dies ist ein Platzhalter, Entschuldigt bitte."
+
+#~ msgid "BuildingCollector"
+#~ msgstr "BuildingCollector"
+
+#~ msgid "HunterCollector"
+#~ msgstr "HunterCollector"
+
+#~ msgid "Merchant Buildings"
+#~ msgstr "Kaufmannsgebäude"
+
+#~ msgid "AnimalCarriage"
+#~ msgstr "AnimalCarriage"
+
+#~ msgid " Load Game "
+#~ msgstr " Spiel Laden "
+
+#~ msgid "SettlerCollector"
+#~ msgstr "SettlerCollector"
+
+#~ msgid "Deer"
+#~ msgstr "Reh"
+
+#~ msgid " Continue Game "
+#~ msgstr "Spiel fortsetzen"
+
+#~ msgid "Terminal debugmode"
+#~ msgstr "Debugmodus (Konsole)"
+
+#~ msgid "Production"
+#~ msgstr "Produktion"
+
+#~ msgid " Settings "
+#~ msgstr "Einstellungen"
+
+#~ msgid "You start the terminal python debugger pdb!"
+#~ msgstr "Ihr startet den Python-Debugger pdb!"
+
+#~ msgid "Ship"
+#~ msgstr "Schiff"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Zuckerrohrfeld: \n"
+#~ "Erzeugt Zucker \n"
+#~ "zur Rumherstellung."
+
+#~ msgid "Running Costs:"
+#~ msgstr "Laufende Kosten:"

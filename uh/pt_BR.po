@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:54+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-03 21:22+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "desconhecido"
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons Versão %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -128,7 +128,7 @@ msgstr "Salvar jogo"
 
 #: horizons/gui/gui.py:269
 #, python-format
-#, python-format, fuzzy
+#, fuzzy
 msgid "Saved %d times\n"
 msgstr "Salvar jogo"
 
@@ -1069,11 +1069,9 @@ msgstr "Mapa randômico"
 msgid "Free play"
 msgstr "Jogo livre"
 
-# 90%
 #: horizons/i18n/guitranslations.py:533
-#, fuzzy
 msgid "Start game"
-msgstr "Início do jogo:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
@@ -1788,3 +1786,72 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr ""
+
+#~ msgid "Citizen Buildings"
+#~ msgstr "Estruturas residenciais"
+
+#~ msgid "Fishing Boats"
+#~ msgstr "Barcos de Pesca"
+
+#~ msgid "NEW GAME - SINGLEPLAYER"
+#~ msgstr "NOVO JOGO - ÚNICO JOGADOR"
+
+#~ msgid "NEW GAME - MULTIPLAYER"
+#~ msgstr "NOVO JOGO - MÚLTIPLOS JOGADORES"
+
+#~ msgid " Help "
+#~ msgstr " Ajuda "
+
+#~ msgid "Building Overview"
+#~ msgstr "Resumo da Construção"
+
+#~ msgid " Chime The Bell "
+#~ msgstr " Soar o Sino "
+
+#~ msgid " Quit "
+#~ msgstr " Sair "
+
+#~ msgid "Housing"
+#~ msgstr "Alojamento"
+
+#~ msgid "CREATE GAME - MULTIPLAYER"
+#~ msgstr "CRIAR JOGO - DOIS OU MAIS JOGADORES"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "Sim, você conseguiu..."
+
+#~ msgid " Save Game "
+#~ msgstr " Salvar Jogo "
+
+#~ msgid "But this is a deadlink, sorry."
+#~ msgstr "Mas este é um link quebrado, desculpe."
+
+#~ msgid "Merchant Buildings"
+#~ msgstr "Estruturas comerciais "
+
+#~ msgid " Load Game "
+#~ msgstr " Abrir Jogo "
+
+#~ msgid " Continue Game "
+#~ msgstr " Continuar Jogo "
+
+#~ msgid "Terminal debugmode"
+#~ msgstr "Terminal de depuração"
+
+#~ msgid "Production"
+#~ msgstr "Produção"
+
+#~ msgid " Settings "
+#~ msgstr " Configurações "
+
+#~ msgid "You start the terminal python debugger pdb!"
+#~ msgstr "Você iniciou o terminal de depuração python (pdb)!"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Campos de açúcar: \n"
+#~ "Produz açúcar\n"
+#~ "para o rum."

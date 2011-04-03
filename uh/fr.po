@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-02-27 15:53+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-03 21:40+0200\n"
+"Last-Translator: Vincent <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "inconnu"
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons version %s"
 
 #: horizons/engine.py:95
 msgid "System default"
@@ -44,11 +44,15 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: horizons/engine.py:116
+#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
+"Le moteur de rendu SDL est  et a de nombreux problèmes graphiques. \n"
+"\n"
+"A utiliser à vos propres risques !"
 
 #: horizons/engine.py:178
 #, python-format
@@ -1812,3 +1816,126 @@ msgstr ""
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr "colon"
+
+#~ msgid "Sheep"
+#~ msgstr "Mouton"
+
+#~ msgid "Citizen Buildings"
+#~ msgstr "Bâtiments des citoyens"
+
+#~ msgid "Fishing Boats"
+#~ msgstr "Bateaux de pêche"
+
+#~ msgid "NEW GAME - SINGLEPLAYER"
+#~ msgstr "NOUVELLE PARTIE - SOLO"
+
+#~ msgid "NEW GAME - MULTIPLAYER"
+#~ msgstr "NOUVELLE PARTIE MULTI-JOUEURS"
+
+#~ msgid "FarmAnimalCollector"
+#~ msgstr "FarmAnimalCollector"
+
+#~ msgid " Help "
+#~ msgstr " Aide "
+
+#~ msgid "LumberjackCollector"
+#~ msgstr "LumberjackCollector"
+
+#~ msgid "Building Overview"
+#~ msgstr "Aperçu du bâtiment"
+
+#~ msgid "The random map features is still in active development. "
+#~ msgstr "La fonction carte aléatoire est toujours activement développée. "
+
+#~ msgid " Chime The Bell "
+#~ msgstr " Jeter l'éponge "
+
+#~ msgid "Aristocrat Buildings"
+#~ msgstr "Bâtiments des aristocrates"
+
+#~ msgid "FarmerCollector"
+#~ msgstr "FarmerCollector"
+
+#~ msgid " Quit "
+#~ msgstr " Quitter "
+
+#~ msgid "Fisher"
+#~ msgstr "Pêcheur"
+
+#~ msgid "Housing"
+#~ msgstr "Habitations"
+
+#~ msgid "Settler Overview"
+#~ msgstr "Aperçu des colons"
+
+#~ msgid "FieldCollector"
+#~ msgstr "FieldCollector"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Navire pirate"
+
+#~ msgid "CREATE GAME - MULTIPLAYER"
+#~ msgstr "CRÉER UNE PARTIE MULTI-JOUEURS"
+
+#~ msgid "StorageCollector"
+#~ msgstr "StorageCollector"
+
+#~ msgid "Yeah, you made it..."
+#~ msgstr "Oui, vous l'avez fait..."
+
+#~ msgid " Save Game "
+#~ msgstr " Sauver la partie "
+
+#~ msgid "But this is a deadlink, sorry."
+#~ msgstr "Mais c'est un lien mort, désolé."
+
+#~ msgid "BuildingCollector"
+#~ msgstr "BuildingCollector"
+
+#~ msgid "HunterCollector"
+#~ msgstr "HunterCollector"
+
+#~ msgid "Merchant Buildings"
+#~ msgstr "Bâtiments des marchants"
+
+#~ msgid "AnimalCarriage"
+#~ msgstr "AnimalCarriage"
+
+#~ msgid " Load Game "
+#~ msgstr " Charger la partie "
+
+#~ msgid "SettlerCollector"
+#~ msgstr "SettlerCollector"
+
+#~ msgid "Deer"
+#~ msgstr "Cerf"
+
+#~ msgid " Continue Game "
+#~ msgstr " Continuer la partie "
+
+#~ msgid "Terminal debugmode"
+#~ msgstr "Terminal du mode debug"
+
+#~ msgid "Production"
+#~ msgstr "Production"
+
+#~ msgid " Settings "
+#~ msgstr " Paramètres"
+
+#~ msgid "You start the terminal python debugger pdb!"
+#~ msgstr "Vous démarrez le terminal de débogage python pdb !"
+
+#~ msgid "Ship"
+#~ msgstr "Navire"
+
+#~ msgid ""
+#~ "Sugar Field: \n"
+#~ "Produces sugar\n"
+#~ "for rum."
+#~ msgstr ""
+#~ "Champs de canne à sucre : \n"
+#~ "Produit du sucre\n"
+#~ "pour le rhum."
+
+#~ msgid "Running Costs:"
+#~ msgstr "Coûts de fonctionnement :"
