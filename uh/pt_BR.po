@@ -7,15 +7,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-03 21:22+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -249,11 +248,9 @@ msgstr ""
 msgid "Resources still needed:"
 msgstr "Recursos necessários:"
 
-# 76%
 #: horizons/gui/tabs/boatbuildertab.py:170
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Barco de Pesca"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556

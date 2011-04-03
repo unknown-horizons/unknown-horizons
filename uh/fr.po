@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-03 21:40+0200\n"
-"Last-Translator: Vincent <vherilier@gmail.com>\n"
+"PO-Revision-Date: 2011-04-03 21:55+0200\n"
+"Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -44,15 +44,11 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: horizons/engine.py:116
-#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
-"Le moteur de rendu SDL est  et a de nombreux problèmes graphiques. \n"
-"\n"
-"A utiliser à vos propres risques !"
 
 #: horizons/engine.py:178
 #, python-format
@@ -1076,9 +1072,12 @@ msgstr "Carte aléatoire"
 msgid "Free play"
 msgstr "Partie libre"
 
+# 90%
+# 100%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Commencer la partie :"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"

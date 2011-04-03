@@ -2,44 +2,47 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-02-18 02:40+0100\n"
+"PO-Revision-Date: 2011-01-05 23:40+0100\n"
+"Last-Translator: Luth <luth.nl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: nl\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #: po/tutorial.py:1
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutorial"
 
 #: po/tutorial.py:2
 msgid "The UH team"
-msgstr ""
+msgstr "Het UH team"
 
 #: po/tutorial.py:3
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
+"De tutorial:\n"
+"Plaats uw eerste kolonie en leer het spelverloop!\n"
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr ""
+msgstr "Plaats een kantoor aan de kust."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Welcom by Unknown Horizons!"
 
 #: po/tutorial.py:6
+#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"
@@ -53,12 +56,19 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
+"Dit is uw logboek waar alle belangrijke informatie is opgeslagen. Het bevat "
+"korte berichten van iedere taak.\n"
+"\n"
+"\r\n"
+"\n"
+"Het logboek bevindt zich in de rec\r\n"
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: KOLONISEER EEN EILAND"
 
 #: po/tutorial.py:8
+#, fuzzy
 msgid ""
 "To move your ship, select it with a left click and right click on the location you want it to go to.\n"
 "\n"
@@ -73,12 +83,29 @@ msgid ""
 "\n"
 "TASK: Build a branch office at the coast."
 msgstr ""
+"Om Uw schip te bewegen, selecteer het met een linker muisklik en klik rechts "
+"op de locatie waar het schip naar toe moet varen.\n"
+"\n"
+"Zodra het schip bij de kust is, wordt de knop met het anker in het overzicht "
+"scherm actief.\n"
+"\n"
+"Dit betekend dat U een kantoor kunt plaatsen door op deze knop te klikken "
+"(genaamd 'Plaats Kolonie').\n"
+"\n"
+"Een voorbeeld van het gebouw wordt getoond wanneer U de cursor beweegt.\n"
+"\n"
+"U kunt het gebouw plaatsen op iedere locatie waar het voorbeeld niet rood "
+"is.\n"
+"Klik waar U Uw eerste gebouw wilt plaatsen.\n"
+"\n"
+"OPDRACHT: Plaats een kantoor aan de kust."
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: LAAD DE GOEDEREN UIT"
 
 #: po/tutorial.py:10
+#, fuzzy
 msgid ""
 "Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
 "\n"
@@ -92,8 +119,25 @@ msgid ""
 "\n"
 "TASK: Open the trade dialogue."
 msgstr ""
+"Nu het kantoor geplaatst is, moeten grondstoffen worden verplaatst naar zijn "
+"voorraad.\n"
+"\n"
+"Selecteer het schip en open het scherm 'Scheepsvoorraad' door op de knop met "
+"de houten krat te klikken.\n"
+"\n"
+"Hier is een overzicht van de voorraad van het schip en een knop "
+"'Laden/uitladen'.\n"
+"\n"
+"Deze knop wordt actief zodra Uw schip in de buurt is van een mogelijke "
+"handelspartner, zoals het kantoor\n"
+"\n"
+"Klik op de knop. Verplaats U schip dichterbij het kantoor als de knop niet "
+"actief is en probeer opnieuw.\n"
+"\n"
+"OPDRACHT: Open het handels scherm."
 
 #: po/tutorial.py:11
+#, fuzzy
 msgid ""
 "The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
 "\n"
@@ -108,16 +152,29 @@ msgid ""
 "\n"
 "TASK: Unload at least 10 tons of each resource your ship sailed around with."
 msgstr ""
+"Het scherm wat U ziet is verdeeld in 'Schip' en 'Kolonie' als "
+"handelspartners.\n"
+"Om goederen van een voorraad naar de andere voorraad te verplaatsen, kunt U "
+"simpelweg er op klikken\n"
+"Probeer eerst op de planken op het schip te klikken en probeer vervolgens "
+"deze terug te plaatsen.\n"
+"U kunt de verplaatste hoeveelheid aanpassen met de radio buttons in het "
+"midden\n"
+"Heeft U zichzelf bekend gemaakt met het handelsscherm?\n"
+"U heeft nu constructie materiaal nodig in uw kolonie!\n"
+"\n"
+"OPDRACHT: Laad tenminste 10 ton van iedere groundstof op het schip uit."
 
 #: po/tutorial.py:12
 msgid "Unload at least 10 tons of each resource on your ship."
-msgstr ""
+msgstr "Laad tenminste 10 ton van iedere grondstof op het schip."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS EEN HOUTHAKKER"
 
 #: po/tutorial.py:14
+#, fuzzy
 msgid ""
 "With your new construction material in the branch office, you can start to construct some basic buildings.\n"
 "\n"
@@ -132,8 +189,25 @@ msgid ""
 "The build menu is sorted by increments.\n"
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
+"Met het nieuwe constructie materiaal in het kantoor kunnen de eerste "
+"gebouwen geplaatst worden.\n"
+"\n"
+"We zullen starten met het plaatsen van een houthakker.\n"
+"\n"
+"De houthakker is belangrijk aangezien planken in deze fase de enige middelen "
+"zijn die de zeelui kunnen gebruiken voor hun tenten.\n"
+"\n"
+"De visser heeft ook hout nodig om zijn schip te maken.\n"
+"\n"
+"Om een houthakker te plaatsen, op het constructie menu door op de grote knop "
+"onder de kleine kaart te klikken of druk de B toets.\n"
+"\n"
+"Het constructie menu is gesorteerd op niveau's.\n"
+"Dat betekent dat alleen standaard gebouwen beschikbaar zijn op het zeelui "
+"niveau (waarop U zich nu bevindt).\n"
 
 #: po/tutorial.py:15
+#, fuzzy
 msgid ""
 "As your civilization advances, you also gain more and more complex buildings.\n"
 "\n"
@@ -149,16 +223,35 @@ msgid ""
 "\n"
 "Watch how a collector will fetch your first self-produced boards."
 msgstr ""
+"Met het uitbreiden van Uw kolonie kunnen ook complexe gebouwen geplaatst "
+"worden.\n"
+"\n"
+"Selecteer de houthakker onder 'Bedrijven' en plaats het in een regio met "
+"veel bomen.\n"
+"\n"
+"U kunt ook bomen planten - maar dat kost geld. Gebruik wat wordt aangeboden "
+"door de natuur!\n"
+"\n"
+"Een bedrijf heeft altijd een wegverbinding nodig tussen een opslagruimte of "
+"kantoor, anders worden goederen niet opgehaald.\n"
+"\n"
+"Dat betekent dat U een weg moet plaatsen die het kantoor en de houthakker "
+"verbindt.\n"
+"\n"
+"OPDRACHT: Plaats een houthakker in bebost gebied en verbind het met een weg.\n"
+"\n"
+"Let op hoe een verzamelaar Uw eerste zelf geproduceerde planken ophaalt."
 
 #: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
-msgstr ""
+msgstr "Plaats een houthakker en verbind deze met het kantoor met een weg."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NIEUWE TAAK: VOEDSEL AANBOD"
 
 #: po/tutorial.py:18
+#, fuzzy
 msgid ""
 "You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
 "\n"
@@ -172,10 +265,25 @@ msgid ""
 "\n"
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Er zijn voedsel producerende bedrijven nodig. Kolonisten, en in het "
+"bijzonder zeelui, zijn erg hongerig.\n"
+"\n"
+"Beschikbare bedrijven in het eerste niveau zijn de Jager en de Visser.\n"
+"\n"
+"De Jager jaagt op dieren in het bos, hiervoor moeten er bomen nabij zijn.\n"
+"\n"
+"Merk op dat U het dichtbij het bos van de houthakker kunt plaatsen.\n"
+"\n"
+"Het kan gebeuren dat dieren niet snel genoeg voortplanten of zich goed "
+"verstoppen.\n"
+"\n"
+"Conclusie: de jager is niet betrouwbaar genoeg voor een gelijkmatig aanbod "
+"van voedsel."
 
 #: po/tutorial.py:19
+#, fuzzy
 msgid ""
-"The Fisher needs a coastal building site like the branch office and a fish school in range.\n"
+"The Fisher needs a coastal building site like the branch office - and nothing more.\n"
 "\n"
 "He will build a small rowing vessel and catch some fish.\n"
 "\n"
@@ -187,16 +295,31 @@ msgid ""
 "\n"
 "Don't forget to connect them to your branch office with trails!"
 msgstr ""
+"De visser heeft een gebouw nodig op een plaats aan de kust, zoals het "
+"kantoor, en niets meer.\n"
+"\n"
+"Hij zal een kleine roeiboot maken en vis vangen.\n"
+"\n"
+"Dit is een zeer constante aanvoer van voedsel. Nadeel is dat het relatief "
+"lang duurt om een eenheid voedsel te produceren.\n"
+"\n"
+"Een kleine nederzetting zoals Uw nederzetting kan beide bedrijven goed "
+"gebruiken. U kunt de voor- en nadelen afwegen welke het meeste geschikt is.\n"
+"\n"
+"OPDRACHT: Plaats een jager en een visser.\n"
+"\n"
+"Vergeet geen wegen aan te leggen naar het kantoor."
 
 #: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr ""
+msgstr "Plaats een jager en een visser. Verbind ze met het kantoor"
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NIEUWE TAAK: PLEIN"
 
 #: po/tutorial.py:22
+#, fuzzy
 msgid ""
 "Your residents need a main square where they can fetch their goods from.\n"
 "\n"
@@ -210,8 +333,23 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"Uw inwoners hebben een plein nodig waar ze goederen kunnen ophalen.\n"
+"\n"
+"Dit betekent dat het plein en hun huis met een weg verbonden moeten zijn.\n"
+"\n"
+"Alle goederen in het kantoor zijn beschikbaar op deze 'marktplaats', zeelui "
+"hoeven dus niet naar de visser of het kantoor te lopen.\n"
+"\n"
+"Overweeg goed waar U de huizen in de nederzetting plaatst: Een gebied dat "
+"eenvoudig kan worden uitgebreid en eenvoudig wegen geplaatst kunnen worden.\n"
+"\n"
+"Plaats geen tenten dichtbij de houthakker. De houthakker heeft ruimte nodig "
+"voor bomen.\n"
+"\n"
+"OPDRACHT: Plaats een plein."
 
 #: po/tutorial.py:23
+#, fuzzy
 msgid ""
 "Now let's have a closer look at the main square.\n"
 "\n"
@@ -225,16 +363,31 @@ msgid ""
 "\n"
 "In the 'Settler' tab you can see how happy your inhabitants are and what resource most of them want to be supplied with."
 msgstr ""
+"Laten we het plein nader bekijken.\n"
+"\n"
+"In het overzicht scherm kunt U belastingen eenvoudig aanpassen.\n"
+"\n"
+"Het tweede scherm 'Rekening' toont een balans, hierop staan alle kosten die "
+"U betaald heeft en alle belastingen die U ontvangen heeft.\n"
+"\n"
+"De opties 'Verkoop' en 'Inkoop' verwijzen naar de handels balans en zal "
+"later uitgelegd worden.\n"
+"\n"
+"Als de balans positief is betekent dit dat U winst maakt.\n"
+"\n"
+"In het scherm 'Kolonisten' kunt U zien hoe blij de inwoners zijn en welke "
+"goederen ze het meest nodig hebben."
 
 #: po/tutorial.py:24
 msgid "Build a main square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "Plaats een plein. Kies een gebied zonder economische gebouwen."
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: RESIDENTIELE GEBOUWEN"
 
 #: po/tutorial.py:26
+#, fuzzy
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.\n"
 "\n"
@@ -244,12 +397,26 @@ msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square."
 msgstr ""
+"Kolonisten willen graag een dak boven hun hoofd, anders zullen ze zich niet "
+"vestigen. U dient tenten te plaatsen!\n"
+"\n"
+"Tenten zijn de eenvoudigste gebouwen voor inwoners.\n"
+"\n"
+"Uw inwoners zullen deze verbeteren zodra ze hogere niveau's bereiken.\n"
+"\n"
+"Zeelui lijken niet nuttig aangezien ze proberen alles te gebruiken wat je "
+"produceert - maar ze betalen wel belastingen.\n"
+"\n"
+"Dat is voorlopig de enige manier om geld te verdienen.\n"
+"\n"
+"OPDRACHT: Plaats een tent en verbind deze met het plein."
 
 #: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Plaats een tent en verbind deze met het plein."
 
 #: po/tutorial.py:28
+#, fuzzy
 msgid ""
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
@@ -267,14 +434,33 @@ msgid ""
 "\n"
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same kind."
 msgstr ""
+"Laten we naar het tent overzicht scherm kijken.\n"
+"U kunt zien\n"
+"* de gelukkigheid van de bewoners\n"
+"* de belastingen die ze betalen en\n"
+"* de grondstoffen die ze vereisen.\n"
+"\n"
+"Wanneer hun wensen worden voldaan, zullen hun gelukkigheid en Uw "
+"belastinginkomsten toenemen.\n"
+"\n"
+"Zo niet, zullen gelukkigheid en inkomsten afnemen. Wanneer de bewoners niet "
+"gelukkig meer zijn zullen ze de nederzetting verlaten en een ruïne "
+"achterlaten.\n"
+"\n"
+"Merk op dat u hier ook de belasting instellingen kunt wijzigen.\n"
+"\n"
+"OPDRACHT: Plaats tenminste drie extra tenten.\n"
+"\n"
+"TIP: Om meerdere gebouwen van het zelfde soort te plaatsen kunt u SHIFT "
+"indrukken."
 
 #: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
-msgstr ""
+msgstr "Plaats tenminste drie extra tenten en verbind deze met het plein."
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS EEN SIGNAAL VUUR"
 
 #: po/tutorial.py:31
 msgid ""
@@ -308,11 +494,11 @@ msgstr ""
 
 #: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "Plaats een signaalvuur bij de kost nabij het kantoor"
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NIEUWE OPDRAHCT: LEER TE HANDELEN"
 
 #: po/tutorial.py:35
 msgid ""
@@ -346,11 +532,11 @@ msgstr ""
 
 #: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "Bereik een voorraad van tenminste 30 stuks gereedschap"
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS EEN PAVILIOEN"
 
 #: po/tutorial.py:39
 msgid ""
@@ -358,7 +544,7 @@ msgid ""
 "\n"
 "You now provide housing, a main square and food to your inhabitants.\n"
 "\n"
-"Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.\n"
+"Still there is one demand which we have not satisfied so far, you may check that in the maketplace or tent tab - your sailors want a basic building where they can pray.\n"
 "\n"
 "The solution is a pavilion which the village parson quickly puts up as shelter from the sun.\n"
 "\n"
@@ -368,6 +554,7 @@ msgid ""
 msgstr ""
 
 #: po/tutorial.py:40
+#, fuzzy
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
 "\n"
@@ -380,14 +567,28 @@ msgid ""
 "\n"
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith."
 msgstr ""
+"In dat geval is de 'kleine' versie is niet meer nodig omdat de 'grote' ook "
+"biedt wat Uw inwoners met een laag niveau zoeken.\n"
+"\n"
+"Houd bij het ontwikkelen van Uw stad er rekening mee dat geavanceerde "
+"gebouwen groter zijn dan de basis gebouwen.\n"
+"\n"
+"Let erop dat geloof wordt behandeld als een physieke grondstof, eenheden "
+"moeten zich na bepaalde tijd verfrissen.\r\n"
+"\n"
+"Het is in het bijzonder NIET voldoende dat het gebouw binnen een bepaalde "
+"afstand staat.\n"
+"\n"
+"OPDRACHT: Plaats een pavilioen met een verbinden naar de tenten om te "
+"voldoen aan de vraag naar geloof van de zeelui."
 
 #: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "Plaats een pavilioen met verbinding naar de tenten."
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: VOLGENDE NIVEAU"
 
 #: po/tutorial.py:43
 msgid ""
@@ -418,16 +619,18 @@ msgstr ""
 #: po/tutorial.py:45
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Zet het belasting niveau op laag (linkerkant) en wacht totdat de zeelui "
+"promoveren."
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS EEN BOERDERIJ"
 
 #: po/tutorial.py:47
 msgid ""
 "Congratulations! Some of your inhabitants have reached increment II!\n"
 "\n"
-"Now you have access to new buildings, take a look at the Build menu again.\n"
+"Now you have access to some new buildings, have a look at the Build menu again.\n"
 "\n"
 "A shiny new tab appeared there.\n"
 "\n"
@@ -455,13 +658,14 @@ msgstr ""
 
 #: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Plaats een boerderij, zorg voor vrije ruimte eromheen."
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS VELDEN"
 
 #: po/tutorial.py:51
+#, fuzzy
 msgid ""
 "The farm itself is not going to produce anything without some fields.\n"
 "\n"
@@ -470,14 +674,30 @@ msgid ""
 "Let's have a short overview:\n"
 "* Pasture: Sheep live here, producing lamb wool.\n"
 "* Potato field: Grows potatoes which are currently treated as food.\n"
-"* Sugar field: Grows sugar which is used to distill liquor and (later) produce confectionery.\n"
+"* Sugar field: Grows sugar which is used to make alcohol and (later) produce confectionery.\n"
 "\n"
 "We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.\n"
 "\n"
 "Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods."
 msgstr ""
+"De boerderij produceert niets zonder velden.\n"
+"\n"
+"Er is keuze tussen weilanden, aardappel- en suikervelden.\n"
+"Een kort overzicht:\n"
+"* Weiland: Ruimte voor schapen. Produceert wol\n"
+"* Aarappelveld: Aardappels worden hier verbouwd. Produceert voedsel.\n"
+"* Suikerveld: Suiker wordt gebruikt om alcohol te maken en (later) drank te "
+"produceren\n"
+"\n"
+"Nu hebben we alleen weiland nodig. Als het voedsel aanbod te klein is "
+"(mogelijk door veel residentiele gebouwen)kunt U ook aardappelvelden "
+"plaatsen.\n"
+"\n"
+"Let op: voor aardappels heeft U een verbinding nodig met de boerderij - niet "
+"met het aardappelveld!.\r\n"
 
 #: po/tutorial.py:52
+#, fuzzy
 msgid ""
 "Make sure that all fields you build are in the area covered by the farm.\n"
 "\n"
@@ -489,16 +709,21 @@ msgid ""
 "\n"
 "TASK: Build at least one pasture in the farm's range and add potato fields if you like."
 msgstr ""
+"Zorg ervoor dat alle geplaatste velden in het bereik zijn van de boerderij.\n"
+"\n"
+"\r\n"
 
 #: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
+"Plaats tenminste een weiland en voeg aardappelvelden toe naar eigen inzicht."
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS OPSLAGRUIMTE"
 
 #: po/tutorial.py:55
+#, fuzzy
 msgid ""
 "Did you watch your lumberjack recently?\n"
 "\n"
@@ -511,8 +736,25 @@ msgid ""
 "\n"
 "If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing."
 msgstr ""
+"Heeft U onlangs de houthakker gezien?\n"
+"\n"
+"Aangezien het kantoor beperkte ruimte heeft om goederen op te slaan, zullen "
+"verzamelaar stoppen goederen op te halen van bedrijven wanneer de "
+"opslagruimte vol is.\n"
+"Als er recentelijk geen zeelui hun tenten hebben verbeterd, heeft U "
+"waarschijnlijk veel planken. In dat geval zal de houthakker rusten.\n"
+"We kunnen deze situatie oplossen met twee verschillende aanpakken.\n"
+"\n"
+"Alle bedrijven hebben de optie om buiten bedrijf gezet te worden.\n"
+"Dit klinkt misschien raar. Klik op het tandwiel in het houthakkers "
+"overzicht.\n"
+"\n"
+"Als deze 'rust' in ingeschakeld zullen de onderhoudskosten van het gebouw "
+"afnemen. Onderhoudskosten zullen niet altijd helemaal nul zijn, maar allicht "
+"wel lager dan in actieve status."
 
 #: po/tutorial.py:56
+#, fuzzy
 msgid ""
 "This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n"
 "\n"
@@ -526,16 +768,34 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"Dit betekent dat U geld kan besparen wanneer U tijdelijk geen bepaald "
+"bedrijf nodig heeft en het ook niet wilt slopen.\n"
+"\n"
+"Een andere oplossing is het plaatsen van het laatste niveau I gebouw, dat "
+"nog niet besproken is: De opslag tent.\n"
+"\n"
+"Dit gebouw heeft twee doeleinden:\n"
+"* Het biedt meer ruimte voor goederen \n"
+"* Het stuurt eigen verzamelaars om goederen te halen, zoals het kantoor "
+"doet.\n"
+"\n"
+"Merk op dat bedrijven kunnen ook met een opslag tent verbonden worden om hun "
+"goederen op te laten halen, en als het alle verzamelaars van het kantoor "
+"bezet zijn, kan een opslag tent de oplossing bieden.\n"
+"\n"
+"OPDRACHT: Plaats een opslag tent, bij voorkeur waar U verzamelaars nodig "
+"heeft. "
 
 #: po/tutorial.py:57
 msgid "Build a storage tent (increment I tab) where it makes sense."
-msgstr ""
+msgstr "Plaats een opslag tent (niveau I scherm)."
 
 #: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: PLAATS EEN KLEERMAKER"
 
 #: po/tutorial.py:59
+#, fuzzy
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth out of this wool.\n"
 "\n"
@@ -547,18 +807,33 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"Nu de wol productie gereed is heeft U nog een kleermaker nodig om kleren te "
+"fabriceren van de wol.\n"
+"\n"
+"Er zijn twee plaatsen waar U de kleermaker kunt plaatsen - ofwel dichtbij de "
+"boerderij of dicht bij een opslag tent danwel het kantoor.\n"
+"\n"
+"In beide gevallen dient er een verbinding met de weg te zijn.\n"
+"\n"
+"U kunt de kleermaker dichtbij de boerderij plaatsen en alle wegen naar de "
+"boerderij afbreken om te zien dat de kleermaker alsnog wol ophaalt en kleren "
+"produceert.\n"
+"\n"
+"OPDRACHT: Plaats een kleermaker waar het wol kan ophalen. "
 
 #: po/tutorial.py:60
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr ""
+msgstr "Plaats een kleermaker die de wel van je boerderij kan bereiken."
 
 #: po/tutorial.py:61
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
 msgstr ""
+"Bereik een totaal van 50 inwoners om deze tutorial te voltooien. U heeft een "
+"positieve balans nodig."
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NIEUWE OPDRACHT: VOLTOOI TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -568,10 +843,17 @@ msgid ""
 "\n"
 "TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial."
 msgstr ""
+"Breidt Uw stad uit naar 50 of meer inwoners door meer residentiele gebouwen "
+"te plaatsen.\n"
+"\n"
+"Zodra U de economie draaiend kunt houden met deze hoeveelheid inwoners, bent "
+"U klaar om Unknown Horizons te verkennen!\n"
+"OPDRACHT: Bereik een totaal van 50 inwoners en een positieve balans om deze "
+"tutorial te voltooien."
 
 #: po/tutorial.py:64
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "GEEN OPDRACHTEN RESTEREND"
 
 #: po/tutorial.py:65
 msgid ""
@@ -589,10 +871,24 @@ msgid ""
 "\n"
 "The best results until now were achieved by joining our IRC channel, so you could try that out first (-;"
 msgstr ""
+"Er zijn geen resterende taken.\n"
+"\n"
+"Mocht U suggesties hebben wat er verbeterd, toegevoegd of verwijderd  kan "
+"worden:\n"
+"www.unknown-horizons.org\n"
+"\n"
+"#unknown-horizons @ irc.freenode.net\n"
+"\n"
+"team@unknown-horizons.org\n"
+"\n"
+"De forums zijn open voor iedereen!\n"
+"\n"
+"De beste resultaten tot nu toe zijn behaald via het IRC kanaal, wij raden "
+"aan dit eerst te proberen."
 
 #: po/tutorial.py:66
 msgid "Thanks!"
-msgstr ""
+msgstr "Dank U wel!"
 
 #: po/tutorial.py:67
 msgid ""
@@ -607,7 +903,19 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Bedankt voor het spelen van de Tutorial!\n"
+"\n"
+"Het UH-Team"
 
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+"Gefeliciteerd! U heeft het einde van deze handleiding bereikt en bent nu "
+"klaar voor nieuwe uitdagingen!"
