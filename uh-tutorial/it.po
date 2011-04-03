@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-03-23 18:14+0100\n"
+"PO-Revision-Date: 2011-03-24 10:56+0100\n"
 "Last-Translator: Fabio Pedretti <fabio.ped@libero.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -31,7 +31,7 @@ msgid ""
 "Build your first settlement and learn how to play!\n"
 msgstr ""
 "Tutorial:\n"
-"Costruisci il tuo primo insediamento e impara come giocare!\n"
+"Costruisci un insediamento ed impara a giocare!\n"
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
@@ -55,21 +55,21 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
-"Questo è il tuo diario del Capitano dove sono conservate tutte le informazioni importanti. Una breve notifica di ogni attività sarà mostrata a sinistra dello schermo\n"
+"Questo è il tuo diario del Capitano dove sono conservate tutte le informazioni importanti. Una breve notifica di ogni attività sarà mostrata a sinistra dello schermo.\n"
 "\n"
 "Se sei interessato a descrizioni più lunghe, il diario fornirà tutto l'aiuto di cui hai bisogno.\n"
 "\n"
 "Quando il diario è chiuso può essere riaperto con l'icona 'Diario del Capitano' nell'angolo in alto a destra (sotto la mini-mappa, con il documento sigillato e la penna).\n"
 "\n"
-"Per qualsiasi suggerimento su una migliore formulazione, gli argomenti che ti piacerebbe avere spiegato o anche condizioni problematiche: Per favore diccelo e cercheremo di migliorare il tutorial!\n"
-"!\n"
+"Per qualsiasi suggerimento su una migliore formulazione, su argomenti che vorresti fossero meglio spiegati o anche per segnalare problemi: per favore diccelo e cercheremo di migliorare il tutorial!\n"
+"\n"
 "Visita www.unknown-horizons.org per un aiuto su come contattare il team!\n"
 "\n"
 "E ora, iniziamo il gioco vero e proprio."
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "NUOVO COMPITO: INSEDIARSI SU UN'ISOLA"
+msgstr "OBIETTIVO: INSEDIARSI SU UN'ISOLA"
 
 #: po/tutorial.py:8
 msgid ""
@@ -97,11 +97,11 @@ msgstr ""
 "È possibile costruire in ogni luogo dove l'anteprima non diventa rossa.\n"
 "Fare clic dove si desidera posizionare il primo edificio.\n"
 "\n"
-"COMPITO: Costruire una filiale presso la costa."
+"OBIETTIVO: Costruire una filiale presso la costa."
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "NUOVO COMPITO: SCARICA I TUOI BENI"
+msgstr "OBIETTIVO: SCARICA I TUOI BENI"
 
 #: po/tutorial.py:10
 msgid ""
@@ -127,7 +127,7 @@ msgstr ""
 "\n"
 "Fare clic sul pulsante. Nel caso in cui non sia attivo, muovi la nave verso la filiale e riprova.\n"
 "\n"
-"COMPITO: Aprire il menù commerciale."
+"OBIETTIVO: Aprire il menù commerciale."
 
 #: po/tutorial.py:11
 msgid ""
@@ -155,7 +155,7 @@ msgstr ""
 "Hai familiarizzato con la scheda commerciale?\n"
 "Ora hai bisogno di materiale da costruzione nel tuo insediamento!\n"
 "\n"
-"COMPITO: Scarica almeno 10 tonnellate di ogni risorsa che la tua nave trasporta."
+"OBIETTIVO: Scarica almeno 10 tonnellate di ogni risorsa che la tua nave trasporta."
 
 #: po/tutorial.py:12
 msgid "Unload at least 10 tons of each resource on your ship."
@@ -163,7 +163,7 @@ msgstr "Scarica almeno 10 tonnellate di ogni risorsa sulla tua nave."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "NUOVO COMPITO: COSTRUISCI UN TAGLIABOSCHI"
+msgstr "OBIETTIVO: IL TAGLIABOSCHI"
 
 #: po/tutorial.py:14
 msgid ""
@@ -219,7 +219,7 @@ msgstr ""
 "\n"
 "Questo comporta che dovrai costruire un sentiero tra la filiale (o magazzino) ed il tagliaboschi.\n"
 "\n"
-"COMPITO: Costruisci un tagliaboschi in una zona alberata e connettilo ad una strada.\n"
+"OBIETTIVO: Costruisci un tagliaboschi in una zona alberata e connettilo ad una strada.\n"
 "\n"
 "Guarda come un trasportatore prenderà le tue prime assi autoprodotte."
 
@@ -229,7 +229,7 @@ msgstr "Costruisci un tagliaboschi e collegalo alla filiale con un sentiero."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NUOVO COMPITO: RIFORNIMENTO DI CIBO"
+msgstr "OBIETTIVO: RIFORNIMENTI DI CIBO"
 
 #: po/tutorial.py:18
 msgid ""
@@ -279,7 +279,7 @@ msgstr ""
 "\n"
 "Un piccolo insediamento come il tuo potrà usare entrambe le compagnie, e potrai bilanciare i pro ed i contro se vedrai un confronto diretto.\n"
 "\n"
-"COMPITO: Costruisci un cacciatore ed un pescatore.\n"
+"OBIETTIVO: Costruisci un cacciatore ed un pescatore.\n"
 "\n"
 "Non dimenticarti di connetterli alla filiale con i sentieri!"
 
@@ -289,7 +289,7 @@ msgstr "Costruisci un cacciatore ed un pescatore. Connettili alla filiale."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "NUOVO COMPITO: PIAZZA PRINCIPALE"
+msgstr "OBIETTIVO: PIAZZA PRINCIPALE"
 
 #: po/tutorial.py:22
 msgid ""
@@ -315,7 +315,7 @@ msgstr ""
 "\n"
 "Dovrai evitare di piazzare le tende troppo vicine al taglialegna, per esempio, perché la costruzione di tende rimuoverà gli alberi di cui il taglialegna necessita per costruire le assi.\n"
 "\n"
-"COMPITO: Costruisci una piazza principale."
+"OBIETTIVO: Costruisci una piazza principale."
 
 #: po/tutorial.py:23
 msgid ""
@@ -349,7 +349,7 @@ msgstr "Costruisci una piazza principale. Scegli un'area senza troppi edifici co
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "NUOVO COMPITO: EDIFICI RESIDENZIALI"
+msgstr "OBIETTIVO: EDIFICI RESIDENZIALI"
 
 #: po/tutorial.py:26
 msgid ""
@@ -367,7 +367,7 @@ msgstr ""
 "\n"
 "I coloni potrebbero non sembrare molto utili dati che tenteranno di consumare tutti i beni che producono - ma almeno pagheranno le tasse, e questo è l'unico modo con cui potrai fare soldi per ora!\n"
 "\n"
-"COMPITO: Costruisci una tenda e connettila alla piazza principale."
+"OBIETTIVO: Costruisci una tenda e connettila alla piazza principale."
 
 #: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
@@ -403,7 +403,7 @@ msgstr ""
 "\n"
 "Nota che puoi cambiare le impostazione di tassazione anche da qui.\n"
 "\n"
-"COMPITO: Costruisci almeno tre tende aggiuntive.\n"
+"OBIETTIVO: Costruisci almeno tre tende aggiuntive.\n"
 "\n"
 "SUGGERIMENTO: Premendo il tasto SHIFT faciliterai la costruzione di molti edifici dello stesso tipo."
 
@@ -413,7 +413,7 @@ msgstr "Costruisci almeno tre tende aggiuntive e collegale alla piazza principal
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NUOVO COMPITO: COSTRUISCI SEGNALE DI FUOCO"
+msgstr "OBIETTIVO: IL SEGNALE DI FUOCO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -465,7 +465,7 @@ msgstr ""
 "\n"
 "Se vi clicchi sopra, potrai scegliere i beni da commerciare. Lo spiegheremo ulteriormente una volta che sei pronto a commerciare.\n"
 "\n"
-"COMPITO: Costruisci un segnale di fuoco sulla riva vicino alla tua filiale."
+"OBIETTIVO: Costruisci un segnale di fuoco sulla riva vicino alla tua filiale."
 
 #: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
@@ -473,7 +473,7 @@ msgstr "Costruisci un segnale di fuoco sulla costa vicino alla tua filiale."
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NUOVO COMPITO: IMPARA A COMMERCIARE"
+msgstr "OBIETTIVO: IL COMMERCIO"
 
 #: po/tutorial.py:35
 msgid ""
@@ -524,7 +524,7 @@ msgstr ""
 "\n"
 "Puoi vedere il bilancio commerciale nella scheda 'Conto' e confrontare i valori 'Vendita' ed 'Acquisto'.\n"
 "\n"
-"COMPITO: Compra tutti gli attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\n"
+"OBIETTIVO: Compra tutti gli attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\n"
 "Se ne hai ancora nelle stive della tua nave, questa è una buona occasione per scaricarli."
 
 #: po/tutorial.py:37
@@ -533,7 +533,7 @@ msgstr "Raggiungi una scorta per l'isola di almeno 30 attrezzi."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "NUOVO COMPITO: COSTRUISCI UN PADIGLIONE"
+msgstr "OBIETTIVO: IL PADIGLIONE"
 
 #: po/tutorial.py:39
 msgid ""
@@ -583,7 +583,7 @@ msgstr ""
 "Importante:\n"
 "NON è abbastanza che l'edificio sia semplicemente in un certo raggio dalle tende.\n"
 "\n"
-"COMPITO: Costruisci un padiglione con un sentiero verso le tende in modo da soddisfare le esigenze spirituali dei marinai."
+"OBIETTIVO: Costruisci un padiglione con un sentiero verso le tende in modo da soddisfare le esigenze spirituali dei marinai."
 
 #: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
@@ -591,7 +591,7 @@ msgstr "Costruisci un padiglione con connessioni alle tende."
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr "NUOVO COMPITO: LIVELLO SUCCESSIVO"
+msgstr "OBIETTIVO: LIVELLO SUCCESSIVO"
 
 #: po/tutorial.py:43
 msgid ""
@@ -635,7 +635,7 @@ msgstr ""
 "\n"
 "Come avrai già notato, lo svantaggio e che i pionieri richiedono beni aggiuntivi che i marinai non richiedono - quindi dovrai spendere altri soldi per farli comunque felici.\n"
 "\n"
-"COMPITO: Imposta il livello di tassazione a Basso (a sinistra) ed aspetta l'aggiornamento dei marinai."
+"OBIETTIVO: Imposta il livello di tassazione a Basso (a sinistra) ed aspetta l'aggiornamento dei marinai."
 
 #: po/tutorial.py:45
 msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
@@ -643,7 +643,7 @@ msgstr "Imposta il livello delle tasse su Basso (a sinistra) ed attendi l'aggior
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr "NUOVO COMPITO: COSTRUISCI UNA FATTORIA"
+msgstr "OBIETTIVO: LA FATTORIA"
 
 #: po/tutorial.py:47
 msgid ""
@@ -695,7 +695,7 @@ msgstr ""
 "\n"
 "Prova a costruire la fattoria non troppo vicino alla costa od ai tuoi edifici già esistenti, dato che vi sarà necessario dello spazio vicino per funzionare bene.\n"
 "\n"
-"COMPITO: Costruisci una fattoria."
+"OBIETTIVO: Costruisci una fattoria."
 
 #: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
@@ -703,7 +703,7 @@ msgstr "Costruisci una fattoria mantenendo dello spazio disponibile intorno."
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr "NUOVO COMPITO: COSTRUISCI CAMPI"
+msgstr "OBIETTIVO: I CAMPI"
 
 #: po/tutorial.py:51
 msgid ""
@@ -753,7 +753,7 @@ msgstr ""
 "\n"
 "Per adesso non preoccuparti troppo di questi problemi dato che non hai ancora costruito campi. Procediamo quindi!\n"
 "\n"
-"COMPITO: Costruisci almeno un pascolo nel raggio della fattoria ed aggiungi campi di patate se lo desideri."
+"OBIETTIVO: Costruisci almeno un pascolo nel raggio della fattoria ed aggiungi campi di patate se lo desideri."
 
 #: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
@@ -761,7 +761,7 @@ msgstr "Costruisci almeno un pascolo ed aggiungi campi di patate se lo desideri.
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "NUOVO COMPITO: COSTRUISCI MAGAZZINI"
+msgstr "OBIETTIVO: I MAGAZZINI"
 
 #: po/tutorial.py:55
 msgid ""
@@ -811,7 +811,7 @@ msgstr ""
 "\n"
 "Nota che le compagnie possono anche essere connesse ad un magazzino in modo da avere i propri prodotti raccolti, e se la filiale è sovraccarica per i lavori di raccolta, puoi costruire un magazzino tenda per aiutarla.\n"
 "\n"
-"COMPITO: Costruisci un magazzino tenda, preferibilmente dove necessiti di trasportatori."
+"OBIETTIVO: Costruisci un magazzino tenda, preferibilmente dove necessiti di trasportatori."
 
 #: po/tutorial.py:57
 msgid "Build a storage tent (increment I tab) where it makes sense."
@@ -819,7 +819,7 @@ msgstr "Costruisci una tenda magazzino (scheda livello I) dove può essere utile
 
 #: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "NUOVO COMPITO: COSTRUISCI UN TESSITORE"
+msgstr "OBIETTIVO: IL TESSITORE"
 
 #: po/tutorial.py:59
 msgid ""
@@ -841,7 +841,7 @@ msgstr ""
 "\n"
 "Puoi costruire il tessitore vicino alla fattoria e demolire ogni sentiero verso la fattoria per vedere che comunque raccoglierà la lana e produrrà.\n"
 "\n"
-"COMPITO: Costruisci un tessitore posizionandolo in modo che possa raccogliere lana."
+"OBIETTIVO: Costruisci un tessitore posizionandolo in modo che possa raccogliere lana."
 
 #: po/tutorial.py:60
 msgid "Build a weaver that can somehow reach the wool of your farm."
@@ -853,7 +853,7 @@ msgstr "Alloggia almeno 50 abitanti nella tua città per completare il tutorial.
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "NUOVO COMPITO: FINISCI IL TUTORIAL"
+msgstr "OBIETTIVO: FINISCI IL TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -867,7 +867,7 @@ msgstr ""
 "\n"
 "Una volta che sarai in grado di mantenere un'economia che può soddisfare questo valore di cittadini, sarai pronto per scoprire Unknown Horizons!\n"
 "\n"
-"COMPITO: Raggiungi un totale di 50 abitanti ed un bilancio positivo per completare questo tutorial."
+"OBIETTIVO: Raggiungi un totale di 50 abitanti ed un bilancio positivo per completare questo tutorial."
 
 #: po/tutorial.py:64
 msgid "NO TASKS LEFT"
