@@ -7,7 +7,7 @@
 author: !!python/unicode 'La squadra di UH'
 description: !!python/unicode 'Tutorial:
 
-  Costruisci il tuo primo insediamento e impara come giocare!
+  Costruisci un insediamento ed impara a giocare!
 
   '
 difficulty: !!python/unicode 'Tutorial'
@@ -18,17 +18,17 @@ events:
   - arguments: [!!python/unicode 'Benvenuti a Unknown Horizons!', "Questo \xE8 il\
         \ tuo diario del Capitano dove sono conservate tutte le informazioni importanti.\
         \ Una breve notifica di ogni attivit\xE0 sar\xE0 mostrata a sinistra dello\
-        \ schermo\n\nSe sei interessato a descrizioni pi\xF9 lunghe, il diario fornir\xE0\
+        \ schermo.\n\nSe sei interessato a descrizioni pi\xF9 lunghe, il diario fornir\xE0\
         \ tutto l'aiuto di cui hai bisogno.\n\nQuando il diario \xE8 chiuso pu\xF2\
         \ essere riaperto con l'icona 'Diario del Capitano' nell'angolo in alto a\
         \ destra (sotto la mini-mappa, con il documento sigillato e la penna).\n\n\
-        Per qualsiasi suggerimento su una migliore formulazione, gli argomenti che\
-        \ ti piacerebbe avere spiegato o anche condizioni problematiche: Per favore\
-        \ diccelo e cercheremo di migliorare il tutorial!\n!\nVisita www.unknown-horizons.org\
+        Per qualsiasi suggerimento su una migliore formulazione, su argomenti che\
+        \ vorresti fossero meglio spiegati o anche per segnalare problemi: per favore\
+        \ diccelo e cercheremo di migliorare il tutorial!\n\nVisita www.unknown-horizons.org\
         \ per un aiuto su come contattare il team!\n\nE ora, iniziamo il gioco vero\
         \ e proprio."]
     type: logbook_w
-  - arguments: [!!python/unicode 'NUOVO COMPITO: INSEDIARSI SU UN''ISOLA', "Per spostare\
+  - arguments: [!!python/unicode 'OBIETTIVO: INSEDIARSI SU UN''ISOLA', "Per spostare\
         \ la nave, selezionarla con un clic sinistro e fare un clic destro sulla posizione\
         \ cui si desidera andare.\n\nUna volta vicino alla costa, il pulsante con\
         \ l'ancora visibile nella scheda panoramica si attiver\xE0.\n\nCi\xF2 significa\
@@ -36,7 +36,7 @@ events:
         \ (chiamato 'Costruisci Insediamento').\n\nUn'anteprima dell'edificio verr\xE0\
         \ visualizzata quando si sposta il cursore.\n\n\xC8 possibile costruire in\
         \ ogni luogo dove l'anteprima non diventa rossa.\nFare clic dove si desidera\
-        \ posizionare il primo edificio.\n\nCOMPITO: Costruire una filiale presso\
+        \ posizionare il primo edificio.\n\nOBIETTIVO: Costruire una filiale presso\
         \ la costa.", 2]
     type: logbook
   - arguments: [tutStepDone, 6]
@@ -45,14 +45,14 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: SCARICA I TUOI BENI', "Ora che la\
-        \ Filiale \xE8 stata costruita, \xE8 necessario spostare una parte delle risorse\
-        \ nella sua scorta.\n\nPer farlo, seleziona la tua nave e vai nella scheda\
-        \ con l'icona della cassa di legno chiamata 'Inventario Nave'.\n\nQui potete\
-        \ avere una panoramica di come appare questa nave e vedere il pulsante 'Carica/Scarica'.\n\
+  - arguments: [!!python/unicode 'OBIETTIVO: SCARICA I TUOI BENI', "Ora che la Filiale\
+        \ \xE8 stata costruita, \xE8 necessario spostare una parte delle risorse nella\
+        \ sua scorta.\n\nPer farlo, seleziona la tua nave e vai nella scheda con l'icona\
+        \ della cassa di legno chiamata 'Inventario Nave'.\n\nQui potete avere una\
+        \ panoramica di come appare questa nave e vedere il pulsante 'Carica/Scarica'.\n\
         \nQuesto pulsante si attiva se la vostra nave \xE8 nel raggio di possibili\
         \ compagni commerciali come una filiale.\n\nFare clic sul pulsante. Nel caso\
-        \ in cui non sia attivo, muovi la nave verso la filiale e riprova.\n\nCOMPITO:\
+        \ in cui non sia attivo, muovi la nave verso la filiale e riprova.\n\nOBIETTIVO:\
         \ Aprire il men\xF9 commerciale."]
     type: logbook_w
   - arguments: ['', "La scheda che vedi \xE8 divisa in 'Nave' e 'Insediamento' come\
@@ -61,7 +61,8 @@ events:
         \ e poi prova a riportale indietro.\n\nPuoi personalizzare le quantit\xE0\
         \ spostate usando i bottoni nel centro.\n\nHai familiarizzato con la scheda\
         \ commerciale?\nOra hai bisogno di materiale da costruzione nel tuo insediamento!\n\
-        \nCOMPITO: Scarica almeno 10 tonnellate di ogni risorsa che la tua nave trasporta."]
+        \nOBIETTIVO: Scarica almeno 10 tonnellate di ogni risorsa che la tua nave\
+        \ trasporta."]
     type: logbook
   - arguments: [!!python/unicode 'Scarica almeno 10 tonnellate di ogni risorsa sulla
         tua nave.']
@@ -76,16 +77,16 @@ events:
   - arguments: [tutStepDone, 16]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI UN TAGLIABOSCHI', "Con\
-        \ il nuovo materiale da costruzione nella filiale puoi cominciare a costruire\
-        \ alcuni edifici di base.\n\nComincia con il tagliaboschi.\n\nQuesto \xE8\
-        \ essenziale perch\xE9, a questo punto, le assi sono i soli pali a cui i tuoi\
-        \ marinai potranno agganciare le loro tende.\n\nIl pescatore necessita anch'esso\
-        \ di assi per costruire la sua imbarcazione.\n\nPer costruire il tagliaboschi\
-        \ apri il men\xF9 di costruzione cliccando sulla grossa icona sotto la mini-mappa\
-        \ o premendo il tasto B.\n\nIl men\xF9 di costruzione \xE8 ordinato in livelli.\n\
-        Al momento sei al primo livello (il livello Marinaio) quindi avrai solo gli\
-        \ edifici di base."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL TAGLIABOSCHI', "Con il nuovo materiale\
+        \ da costruzione nella filiale puoi cominciare a costruire alcuni edifici\
+        \ di base.\n\nComincia con il tagliaboschi.\n\nQuesto \xE8 essenziale perch\xE9\
+        , a questo punto, le assi sono i soli pali a cui i tuoi marinai potranno agganciare\
+        \ le loro tende.\n\nIl pescatore necessita anch'esso di assi per costruire\
+        \ la sua imbarcazione.\n\nPer costruire il tagliaboschi apri il men\xF9 di\
+        \ costruzione cliccando sulla grossa icona sotto la mini-mappa o premendo\
+        \ il tasto B.\n\nIl men\xF9 di costruzione \xE8 ordinato in livelli.\nAl momento\
+        \ sei al primo livello (il livello Marinaio) quindi avrai solo gli edifici\
+        \ di base."]
     type: logbook_w
   - arguments: ['', "Quando la civilizzazione avanza, guadagnerai altri edifici pi\xF9\
         \ complessi.\n\nPer adesso, seleziona il tagliaboschi sotto 'Compagnie' e\
@@ -94,7 +95,7 @@ events:
         \ ti fornisce!\n\nUna compagnia necessita sempre di un sentiero verso un magazzino\
         \ od una filiale, altrimenti i beni rimarranno alla compagnia e non verranno\
         \ immagazzinati.\n\nQuesto comporta che dovrai costruire un sentiero tra la\
-        \ filiale (o magazzino) ed il tagliaboschi.\n\nCOMPITO: Costruisci un tagliaboschi\
+        \ filiale (o magazzino) ed il tagliaboschi.\n\nOBIETTIVO: Costruisci un tagliaboschi\
         \ in una zona alberata e connettilo ad una strada.\n\nGuarda come un trasportatore\
         \ prender\xE0 le tue prime assi autoprodotte."]
     type: logbook
@@ -115,7 +116,7 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: RIFORNIMENTO DI CIBO', "Avrai bisogno\
+  - arguments: [!!python/unicode 'OBIETTIVO: RIFORNIMENTI DI CIBO', "Avrai bisogno\
         \ anche di compagnie per la produzione di cibo perch\xE9 le persone in generale\
         \ (e specialmente i marinai) sono molto affamati.\n\nLe compagnie disponibili\
         \ nel primo livello sono il Cacciatore ed il Pescatore.\n\nIl Cacciatore,\
@@ -131,7 +132,7 @@ events:
         \ rifornimento costante al prezzo di un tempo di produzione di unit\xE0 di\
         \ cibo leggermente maggiore.\n\nUn piccolo insediamento come il tuo potr\xE0\
         \ usare entrambe le compagnie, e potrai bilanciare i pro ed i contro se vedrai\
-        \ un confronto diretto.\n\nCOMPITO: Costruisci un cacciatore ed un pescatore.\n\
+        \ un confronto diretto.\n\nOBIETTIVO: Costruisci un cacciatore ed un pescatore.\n\
         \nNon dimenticarti di connetterli alla filiale con i sentieri!"]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un cacciatore ed un pescatore. Connettili
@@ -147,7 +148,7 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: PIAZZA PRINCIPALE', "I tuoi abitanti\
+  - arguments: [!!python/unicode 'OBIETTIVO: PIAZZA PRINCIPALE', "I tuoi abitanti\
         \ necessitano una piazza principale da cui possano prelevare i propri beni.\n\
         \nQuesto significa che necessitano di un sentiero tra la loro casa e la piazza\
         \ principale.\n\nTutti i beni nella tua filiale sono disponibili in questa\
@@ -156,7 +157,7 @@ events:
         \ che potrai espandere facilmente e costruire anche dei sentieri.\n\nDovrai\
         \ evitare di piazzare le tende troppo vicine al taglialegna, per esempio,\
         \ perch\xE9 la costruzione di tende rimuover\xE0 gli alberi di cui il taglialegna\
-        \ necessita per costruire le assi.\n\nCOMPITO: Costruisci una piazza principale."]
+        \ necessita per costruire le assi.\n\nOBIETTIVO: Costruisci una piazza principale."]
     type: logbook_w
   - arguments: ['', "Ora diamo un'occhiata alla piazza principale.\n\nNella scheda\
         \ panoramica potrai facilmente modificare la tassazione.\n\nNella seconda\
@@ -186,15 +187,14 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: EDIFICI RESIDENZIALI', "I coloni\
-        \ vogliono dei tetti sulle loro teste, altrimenti non penseranno neppure di\
-        \ venire nella tua citt\xE0! Devi fornirgli delle tende.\n\nLe tende sono\
-        \ edifici residenziali di base. I tuoi abitanti vorranno aggiornarle quando\
-        \ raggiungono livelli pi\xF9 elevati.\n\nI coloni potrebbero non sembrare\
-        \ molto utili dati che tenteranno di consumare tutti i beni che producono\
-        \ - ma almeno pagheranno le tasse, e questo \xE8 l'unico modo con cui potrai\
-        \ fare soldi per ora!\n\nCOMPITO: Costruisci una tenda e connettila alla piazza\
-        \ principale."]
+  - arguments: [!!python/unicode 'OBIETTIVO: EDIFICI RESIDENZIALI', "I coloni vogliono\
+        \ dei tetti sulle loro teste, altrimenti non penseranno neppure di venire\
+        \ nella tua citt\xE0! Devi fornirgli delle tende.\n\nLe tende sono edifici\
+        \ residenziali di base. I tuoi abitanti vorranno aggiornarle quando raggiungono\
+        \ livelli pi\xF9 elevati.\n\nI coloni potrebbero non sembrare molto utili\
+        \ dati che tenteranno di consumare tutti i beni che producono - ma almeno\
+        \ pagheranno le tasse, e questo \xE8 l'unico modo con cui potrai fare soldi\
+        \ per ora!\n\nOBIETTIVO: Costruisci una tenda e connettila alla piazza principale."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci una tenda e collegala alla piazza principale.']
     type: message
@@ -214,7 +214,7 @@ events:
         \ le entrate delle tasse aumenteranno.\n\nAltrimenti la felicit\xE0 e le tasse\
         \ diminuiranno. Ad un certo punto i residenti potranno inacidirsi e semplicemente\
         \ lasceranno il villaggio, lasciando una rovina decadente.\n\nNota che puoi\
-        \ cambiare le impostazione di tassazione anche da qui.\n\nCOMPITO: Costruisci\
+        \ cambiare le impostazione di tassazione anche da qui.\n\nOBIETTIVO: Costruisci\
         \ almeno tre tende aggiuntive.\n\nSUGGERIMENTO: Premendo il tasto SHIFT faciliterai\
         \ la costruzione di molti edifici dello stesso tipo."]
     type: logbook
@@ -231,17 +231,16 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI SEGNALE DI FUOCO', "Riesci\
-        \ a vedere la nave che passa dalla tua isola di tanto in tanto?\n\nE' la nave\
-        \ del Libero Commerciante, uno dei primi coloni dell'arcipelago.\n\nQuesto\
-        \ commerciante fornir\xE0 il tuo insediamento con beni che non puoi ancora\
-        \ produrre.\n\nPotrai anche vendergli l'eccedenza della tua produzione, ma\
-        \ in generale consumarla (costruendo pi\xF9 tende) invece di venderla porter\xE0\
-        \ pi\xF9 profitti.\n\nNormalmente le navi girano in cerca di affari, ma i\
-        \ piccoli insediamenti come il tuo necessitano prima di una promozione, altrimenti\
-        \ non sarai trovato.\n\nA questo scopo puoi costruire un segnale di fuoco\
-        \ sulla costa vicino alla tua filiale per indicare alle navi la via per la\
-        \ tua colonia."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL SEGNALE DI FUOCO', "Riesci a vedere\
+        \ la nave che passa dalla tua isola di tanto in tanto?\n\nE' la nave del Libero\
+        \ Commerciante, uno dei primi coloni dell'arcipelago.\n\nQuesto commerciante\
+        \ fornir\xE0 il tuo insediamento con beni che non puoi ancora produrre.\n\n\
+        Potrai anche vendergli l'eccedenza della tua produzione, ma in generale consumarla\
+        \ (costruendo pi\xF9 tende) invece di venderla porter\xE0 pi\xF9 profitti.\n\
+        \nNormalmente le navi girano in cerca di affari, ma i piccoli insediamenti\
+        \ come il tuo necessitano prima di una promozione, altrimenti non sarai trovato.\n\
+        \nA questo scopo puoi costruire un segnale di fuoco sulla costa vicino alla\
+        \ tua filiale per indicare alle navi la via per la tua colonia."]
     type: logbook_w
   - arguments: ['', "Dopo questo piccolo avvertimento, il commerciante si fermer\xE0\
         \ di tanto in tanto presso la tua filiale.\n\nPotrai proporre affari tramite\
@@ -252,7 +251,7 @@ events:
         \nClicca sull'icona piccola per cambiare gli spazi commerciali da 'Compra'\
         \ a 'Vendi' e viceversa.\n\nSe vi clicchi sopra, potrai scegliere i beni da\
         \ commerciare. Lo spiegheremo ulteriormente una volta che sei pronto a commerciare.\n\
-        \nCOMPITO: Costruisci un segnale di fuoco sulla riva vicino alla tua filiale."]
+        \nOBIETTIVO: Costruisci un segnale di fuoco sulla riva vicino alla tua filiale."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un segnale di fuoco sulla costa vicino
         alla tua filiale.']
@@ -267,16 +266,15 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: IMPARA A COMMERCIARE', "Eccellente!\
-        \ Il Libero Commerciante ora si fermer\xE0 alla tua filiale di tanto in tanto.\n\
-        \nContinuiamo il tutorial su come commerciare.\n\nDopo aver selezionato un\
-        \ tipo specifico di bene, la barra verde nel basso dello spazio (se visibile)\
-        \ mostrer\xE0 la quantit\xE0 di questo bene nei tuoi magazzini.\n\nSpostando\
-        \ il selettore a destra di ogni spazio determina la 'quantit\xE0 obiettivo'\
-        \ che ha un diverso significato nei casi 'Compra' e 'Vendi'.\nQuando compri\
-        \ ne comprerai a sufficienza per tenere la 'quantit\xE0 obiettivo' in magazzino.\n\
-        Quando vendi la 'quantit\xE0 obiettivo' \xE8 il numero che mantieni in riserva\
-        \ da non vendere."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL COMMERCIO', "Eccellente! Il Libero\
+        \ Commerciante ora si fermer\xE0 alla tua filiale di tanto in tanto.\n\nContinuiamo\
+        \ il tutorial su come commerciare.\n\nDopo aver selezionato un tipo specifico\
+        \ di bene, la barra verde nel basso dello spazio (se visibile) mostrer\xE0\
+        \ la quantit\xE0 di questo bene nei tuoi magazzini.\n\nSpostando il selettore\
+        \ a destra di ogni spazio determina la 'quantit\xE0 obiettivo' che ha un diverso\
+        \ significato nei casi 'Compra' e 'Vendi'.\nQuando compri ne comprerai a sufficienza\
+        \ per tenere la 'quantit\xE0 obiettivo' in magazzino.\nQuando vendi la 'quantit\xE0\
+        \ obiettivo' \xE8 il numero che mantieni in riserva da non vendere."]
     type: logbook_w
   - arguments: ['', "Per esempio:\nAvendo uno spazio 'Compra' e 5 tonnellate in magazzino,\
         \ un selettore impostato a 9 tonnellate comporter\xE0 che comprerai al pi\xF9\
@@ -287,9 +285,10 @@ events:
         \ passaggio.\n\nUnknown Horizons consente valutazioni intelligenti, quindi\
         \ il valore di un'unit\xE0 pu\xF2 variare.\nNON \xE8 possibile cambiare manualmente\
         \ i prezzi!\n\nPuoi vedere il bilancio commerciale nella scheda 'Conto' e\
-        \ confrontare i valori 'Vendita' ed 'Acquisto'.\n\nCOMPITO: Compra tutti gli\
-        \ attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\nSe ne hai\
-        \ ancora nelle stive della tua nave, questa \xE8 una buona occasione per scaricarli."]
+        \ confrontare i valori 'Vendita' ed 'Acquisto'.\n\nOBIETTIVO: Compra tutti\
+        \ gli attrezzi di cui hai bisogno per avere 30 attrezzi in magazzino!\nSe\
+        \ ne hai ancora nelle stive della tua nave, questa \xE8 una buona occasione\
+        \ per scaricarli."]
     type: logbook
   - arguments: [!!python/unicode 'Raggiungi una scorta per l''isola di almeno 30 attrezzi.']
     type: message
@@ -303,16 +302,16 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI UN PADIGLIONE', "Questi\
-        \ attrezzi sono sufficienti per il momento. Ben fatto!\n\nOra fornisci alloggi,\
-        \ una piazza principale e cibo per i tuoi abitanti.\n\nPer\xF2 c'\xE8 ancora\
-        \ un bisogno che non abbiamo soddisfatto, che puoi verificare nella piazza\
-        \ del mercato o nella scheda della tenda - i tuoi marinai vogliono un edificio\
-        \ di base dove possano pregare.\n\nLa soluzione \xE8 un padiglione sotto cui\
-        \ il parroco del villaggio trover\xE0 rapidamente riparo dal sole.\n\nEdifici\
-        \ di servizio come questo devono anch'essi essere connessi alle tende con\
-        \ un sentiero, altrimenti i residenti non potranno raggiungerli.\n\nNei livelli\
-        \ successivi verranno resi disponibili aggiornamenti agli edifici."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL PADIGLIONE', "Questi attrezzi sono\
+        \ sufficienti per il momento. Ben fatto!\n\nOra fornisci alloggi, una piazza\
+        \ principale e cibo per i tuoi abitanti.\n\nPer\xF2 c'\xE8 ancora un bisogno\
+        \ che non abbiamo soddisfatto, che puoi verificare nella piazza del mercato\
+        \ o nella scheda della tenda - i tuoi marinai vogliono un edificio di base\
+        \ dove possano pregare.\n\nLa soluzione \xE8 un padiglione sotto cui il parroco\
+        \ del villaggio trover\xE0 rapidamente riparo dal sole.\n\nEdifici di servizio\
+        \ come questo devono anch'essi essere connessi alle tende con un sentiero,\
+        \ altrimenti i residenti non potranno raggiungerli.\n\nNei livelli successivi\
+        \ verranno resi disponibili aggiornamenti agli edifici."]
     type: logbook_w
   - arguments: ['', "In quel caso la versione 'piccola' non sar\xE0 pi\xF9 necessaria\
         \ dato che quella 'grande' fornir\xE0 egualmente quello che i residenti necessitano\
@@ -321,7 +320,7 @@ events:
         \ modelli base.\n\nNota che la fede \xE8 trattata come una risorsa fisica,\
         \ quindi le unit\xE0 dovranno passare da qui ogni tanto.\n\nImportante:\n\
         NON \xE8 abbastanza che l'edificio sia semplicemente in un certo raggio dalle\
-        \ tende.\n\nCOMPITO: Costruisci un padiglione con un sentiero verso le tende\
+        \ tende.\n\nOBIETTIVO: Costruisci un padiglione con un sentiero verso le tende\
         \ in modo da soddisfare le esigenze spirituali dei marinai."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un padiglione con connessioni alle tende.']
@@ -336,7 +335,7 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: LIVELLO SUCCESSIVO', "Tutte le richieste\
+  - arguments: [!!python/unicode 'OBIETTIVO: LIVELLO SUCCESSIVO', "Tutte le richieste\
         \ sono ora soddisfatte se i tuoi abitanti possono regolarmente visitare la\
         \ piazza principale ed il padiglione e se i rifornimenti di cibo sono adeguati.\n\
         \nSe i marinai sono sufficientemente felici, vorranno avanzare al livello\
@@ -356,8 +355,9 @@ events:
         \ aggiornate ospiteranno pi\xF9 abitanti, ed i pionieri pagheranno anche pi\xF9\
         \ tasse dei marinai.\n\nCome avrai gi\xE0 notato, lo svantaggio e che i pionieri\
         \ richiedono beni aggiuntivi che i marinai non richiedono - quindi dovrai\
-        \ spendere altri soldi per farli comunque felici.\n\nCOMPITO: Imposta il livello\
-        \ di tassazione a Basso (a sinistra) ed aspetta l'aggiornamento dei marinai."]
+        \ spendere altri soldi per farli comunque felici.\n\nOBIETTIVO: Imposta il\
+        \ livello di tassazione a Basso (a sinistra) ed aspetta l'aggiornamento dei\
+        \ marinai."]
     type: logbook
   - arguments: [!!python/unicode 'Imposta il livello delle tasse su Basso (a sinistra)
         ed attendi l''aggiornamento dei marinai.']
@@ -372,15 +372,15 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI UNA FATTORIA', "Congratulazioni!\
-        \ Alcuni dei tuoi abitanti hanno raggiunto il livello II!\n\nOra hai accesso\
-        \ a nuovi edifici, dai una nuova occhiata al men\xF9 di costruzione.\n\nUna\
-        \ nuova scheda \xE8 apparsa.\n\nI pionieri richiedono abiti, quindi dovrai\
-        \ realizzare una linea di produzione di abiti con lana di agnello (uno dei\
-        \ beni prodotto dalla fattoria).\n\nLa fattoria \xE8 un edifico molto speciale\
-        \ dato che pu\xF2 produrre non solo uno, ma ma molti (e differenti) beni a\
-        \ tua scelta.\n\nLa produzione della fattoria dipende dal tipo di campi che\
-        \ vi costruisci attorno."]
+  - arguments: [!!python/unicode 'OBIETTIVO: LA FATTORIA', "Congratulazioni! Alcuni\
+        \ dei tuoi abitanti hanno raggiunto il livello II!\n\nOra hai accesso a nuovi\
+        \ edifici, dai una nuova occhiata al men\xF9 di costruzione.\n\nUna nuova\
+        \ scheda \xE8 apparsa.\n\nI pionieri richiedono abiti, quindi dovrai realizzare\
+        \ una linea di produzione di abiti con lana di agnello (uno dei beni prodotto\
+        \ dalla fattoria).\n\nLa fattoria \xE8 un edifico molto speciale dato che\
+        \ pu\xF2 produrre non solo uno, ma ma molti (e differenti) beni a tua scelta.\n\
+        \nLa produzione della fattoria dipende dal tipo di campi che vi costruisci\
+        \ attorno."]
     type: logbook_w
   - arguments: ['', "Gli daremo un'occhiata pi\xF9 tardi.\n\nLe fattorie, come tutte\
         \ le compagnie che producono materiali grezzi, non devono essere necessariamente\
@@ -391,7 +391,7 @@ events:
         \ differenti dell'isola (che pu\xF2 avere senso) o addirittura su isole diverse,\
         \ ti servir\xE0 una connessione ai collettori.\n\nProva a costruire la fattoria\
         \ non troppo vicino alla costa od ai tuoi edifici gi\xE0 esistenti, dato che\
-        \ vi sar\xE0 necessario dello spazio vicino per funzionare bene.\n\nCOMPITO:\
+        \ vi sar\xE0 necessario dello spazio vicino per funzionare bene.\n\nOBIETTIVO:\
         \ Costruisci una fattoria."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci una fattoria mantenendo dello spazio
@@ -407,17 +407,17 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI CAMPI', "La fattoria stessa\
-        \ non produrr\xE0 nulla senza alcuni campi.\n\nAl momento puoi scegliere tra\
-        \ pascoli, patate e campi di zucchero.\n\nDiamo una breve descrizione:\n*\
-        \ Pascoli: le pecore vivono qui, producendo lana d'agnello.\n* Campi di patate:\
-        \ vi crescono patate  che sono al momento considerate cibo.\n* Campi da zucchero:\
-        \ vi cresce zucchero che \xE8 usato per distillare liquori e (successivamente)\
-        \ produrre dolciumi.\n\nAl momento ci servono solo i pascoli, ma nel caso\
-        \ la tua catena alimentare sia troppo piccola (forse in presenza di molti\
-        \ edifici residenziali) puoi anche produrvi patate.\n\nNota che per le patate\
-        \ ti servir\xE0 una connessione alla fattoria (non al campo!) dato che sar\xE0\
-        \ l'unica compagnia che lavora sui beni."]
+  - arguments: [!!python/unicode 'OBIETTIVO: I CAMPI', "La fattoria stessa non produrr\xE0\
+        \ nulla senza alcuni campi.\n\nAl momento puoi scegliere tra pascoli, patate\
+        \ e campi di zucchero.\n\nDiamo una breve descrizione:\n* Pascoli: le pecore\
+        \ vivono qui, producendo lana d'agnello.\n* Campi di patate: vi crescono patate\
+        \  che sono al momento considerate cibo.\n* Campi da zucchero: vi cresce zucchero\
+        \ che \xE8 usato per distillare liquori e (successivamente) produrre dolciumi.\n\
+        \nAl momento ci servono solo i pascoli, ma nel caso la tua catena alimentare\
+        \ sia troppo piccola (forse in presenza di molti edifici residenziali) puoi\
+        \ anche produrvi patate.\n\nNota che per le patate ti servir\xE0 una connessione\
+        \ alla fattoria (non al campo!) dato che sar\xE0 l'unica compagnia che lavora\
+        \ sui beni."]
     type: logbook_w
   - arguments: ['', "Assicurati che tutti i campi costruiti siano nell'area coperta\
         \ dalla fattoria.\n\nPuoi avere delle produzioni combinate - un pascolo non\
@@ -427,7 +427,7 @@ events:
         \ radunare, ecc...) e, quindi, la fattoria potrebbe non riuscire a servire\
         \ tutti i campi gestiti in tempo.\n\nPer adesso non preoccuparti troppo di\
         \ questi problemi dato che non hai ancora costruito campi. Procediamo quindi!\n\
-        \nCOMPITO: Costruisci almeno un pascolo nel raggio della fattoria ed aggiungi\
+        \nOBIETTIVO: Costruisci almeno un pascolo nel raggio della fattoria ed aggiungi\
         \ campi di patate se lo desideri."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci almeno un pascolo ed aggiungi campi di
@@ -443,19 +443,18 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI MAGAZZINI', "Hai controllato\
-        \ il tagliaboschi recentemente?\n\nDato che la filiale non dispone di spazio\
-        \ illimitato per immagazzinare beni, i trasportatori si fermeranno a raccogliere\
-        \ beni dalle compagnie quando la scorta \xE8 piena.\nQuindi se nessun marinaio\
-        \ ha recentemente aggiornato la tenda, avrai probabilmente molte assi ed in\
-        \ quel caso il taglialegna potrebbe oziare.\nPossiamo migliorare questa situazione\
-        \ con due approcci differenti, e sotto discuteremo entrambi.\n\nTutte le compagnie\
-        \ hanno la possibilit\xE0 di non fare alcun lavoro.\nQuesto potr\xE0 sembrare\
-        \ strano, ma prova a cliccare sulla ruota dentata che vedi, ad esempio, nella\
-        \ panoramica del tagliaboschi.\n\nSe questo modo 'pausa' \xE8 abilitato (lo\
-        \ chiamiamo 'Decommissione'), i costi ricorrenti che paghi per l'edificio\
-        \ diminuiranno. Non saranno zero, ma comunque pi\xF9 bassi del caso con la\
-        \ compagnia attiva."]
+  - arguments: [!!python/unicode 'OBIETTIVO: I MAGAZZINI', "Hai controllato il tagliaboschi\
+        \ recentemente?\n\nDato che la filiale non dispone di spazio illimitato per\
+        \ immagazzinare beni, i trasportatori si fermeranno a raccogliere beni dalle\
+        \ compagnie quando la scorta \xE8 piena.\nQuindi se nessun marinaio ha recentemente\
+        \ aggiornato la tenda, avrai probabilmente molte assi ed in quel caso il taglialegna\
+        \ potrebbe oziare.\nPossiamo migliorare questa situazione con due approcci\
+        \ differenti, e sotto discuteremo entrambi.\n\nTutte le compagnie hanno la\
+        \ possibilit\xE0 di non fare alcun lavoro.\nQuesto potr\xE0 sembrare strano,\
+        \ ma prova a cliccare sulla ruota dentata che vedi, ad esempio, nella panoramica\
+        \ del tagliaboschi.\n\nSe questo modo 'pausa' \xE8 abilitato (lo chiamiamo\
+        \ 'Decommissione'), i costi ricorrenti che paghi per l'edificio diminuiranno.\
+        \ Non saranno zero, ma comunque pi\xF9 bassi del caso con la compagnia attiva."]
     type: logbook_w
   - arguments: ['', "Questo significa che puoi risparmiare denaro quando non hai temporaneamente\
         \ bisogno di una compagnia e comunque non vuoi distruggerla.\n\nUn'altra soluzione\
@@ -465,7 +464,7 @@ events:
         \ beni, proprio come fa la filiale.\n\nNota che le compagnie possono anche\
         \ essere connesse ad un magazzino in modo da avere i propri prodotti raccolti,\
         \ e se la filiale \xE8 sovraccarica per i lavori di raccolta, puoi costruire\
-        \ un magazzino tenda per aiutarla.\n\nCOMPITO: Costruisci un magazzino tenda,\
+        \ un magazzino tenda per aiutarla.\n\nOBIETTIVO: Costruisci un magazzino tenda,\
         \ preferibilmente dove necessiti di trasportatori."]
     type: logbook
   - arguments: ["Costruisci una tenda magazzino (scheda livello I) dove pu\xF2 essere\
@@ -481,15 +480,14 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NUOVO COMPITO: COSTRUISCI UN TESSITORE', "Ora che\
-        \ la produzione di lana \xE8 avviata hai ancora bisogno di un tessitore per\
-        \ produrre abiti da questa lana.\n\nCi sono due zone dove costruirlo - o vicino\
-        \ alla fattoria o vicino ad un Magazzino Tenda (o Filiale).\n\nIn entrambi\
-        \ i casi devi anche provvedere ad una connessione con un sentiero.\n\nPuoi\
-        \ costruire il tessitore vicino alla fattoria e demolire ogni sentiero verso\
-        \ la fattoria per vedere che comunque raccoglier\xE0 la lana e produrr\xE0\
-        .\n\nCOMPITO: Costruisci un tessitore posizionandolo in modo che possa raccogliere\
-        \ lana."]
+  - arguments: [!!python/unicode 'OBIETTIVO: IL TESSITORE', "Ora che la produzione\
+        \ di lana \xE8 avviata hai ancora bisogno di un tessitore per produrre abiti\
+        \ da questa lana.\n\nCi sono due zone dove costruirlo - o vicino alla fattoria\
+        \ o vicino ad un Magazzino Tenda (o Filiale).\n\nIn entrambi i casi devi anche\
+        \ provvedere ad una connessione con un sentiero.\n\nPuoi costruire il tessitore\
+        \ vicino alla fattoria e demolire ogni sentiero verso la fattoria per vedere\
+        \ che comunque raccoglier\xE0 la lana e produrr\xE0.\n\nOBIETTIVO: Costruisci\
+        \ un tessitore posizionandolo in modo che possa raccogliere lana."]
     type: logbook
   - arguments: [!!python/unicode 'Costruisci un tessitore che possa raggiungere la
         lana della fattoria.']
@@ -507,11 +505,11 @@ events:
   - arguments: ["Alloggia almeno 50 abitanti nella tua citt\xE0 per completare il\
         \ tutorial. Hai bisogno di un bilancio positivo."]
     type: message
-  - arguments: [!!python/unicode 'NUOVO COMPITO: FINISCI IL TUTORIAL', "Prova ad alloggiare\
+  - arguments: [!!python/unicode 'OBIETTIVO: FINISCI IL TUTORIAL', "Prova ad alloggiare\
         \ 50 abitanti o pi\xF9 nella tua citt\xE0 fornendo pi\xF9 edifici residenziali.\n\
         \nUna volta che sarai in grado di mantenere un'economia che pu\xF2 soddisfare\
         \ questo valore di cittadini, sarai pronto per scoprire Unknown Horizons!\n\
-        \nCOMPITO: Raggiungi un totale di 50 abitanti ed un bilancio positivo per\
+        \nOBIETTIVO: Raggiungi un totale di 50 abitanti ed un bilancio positivo per\
         \ completare questo tutorial."]
     type: logbook
   - arguments: [tutStepDone, 58]
