@@ -69,7 +69,7 @@ class CollectorAnimal(Animal):
 
 	def has_collectors(self):
 		"""Whether this unit is just now or about to be collected"""
-		return self.collector != None or self.state == self.states.stopped
+		return self.collector != None or self.state == self.states.waiting_for_herder
 
 	def finish_working(self):
 		# animal is done when it has eaten, and
@@ -85,7 +85,7 @@ class CollectorAnimal(Animal):
 			collector = self.collector
 			self.collector = None
 			collector.pickup_animal()
-			self.state = self.states.stopped
+			self.state = self.states.waiting_for_herder
 		else:
 			super(CollectorAnimal, self).search_job()
 

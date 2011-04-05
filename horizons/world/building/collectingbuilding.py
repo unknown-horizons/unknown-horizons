@@ -64,9 +64,8 @@ class CollectingBuilding(BuildingResourceHandler):
 			if not collector.is_ship:
 				collector.remove()
 			else:
-				collector.cancel(continue_action=lambda : collector.stop())
-				collector.show() # make sure the collector isn't hidden in the building
-		assert len([c for c in self.__collectors if not c.is_ship]) == 0
+				collector.decouple_from_home_building()
+		assert len([c for c in self.__collectors]) == 0
 		super(CollectingBuilding, self).remove()
 
 	def save(self, db):

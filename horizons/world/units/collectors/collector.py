@@ -57,9 +57,15 @@ class Collector(StorageHolder, Unit):
 	# all states, any (subclass) instance may have. Keeping a list in one place
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
-	states = Enum('idle', 'moving_to_target', 'working', 'moving_home', \
-	              'waiting_for_animal_to_stop', 'stopped', 'no_job_walking_randomly',
-	              'no_job_waiting')
+	states = Enum('idle', # doing nothing, waiting for job
+	              'moving_to_target', 'working', 'moving_home', \
+	              'waiting_for_animal_to_stop', # herder: wait for job target to finish for collecting
+	              'waiting_for_herder', # animal: has stopped, now waits for herder
+	              'no_job_walking_randomly', # animal: like idle, but moving instead of standing still
+	              'no_job_waiting', # animal: as idle, but no move target can be found
+	              # TODO: merge no_job_waiting with idle
+	              'decommissioned', # fisher ship: When home building got demolished. No more collecting.
+	              )
 
 
 	# INIT/DESTRUCT

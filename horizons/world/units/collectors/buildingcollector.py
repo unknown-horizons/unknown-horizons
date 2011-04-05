@@ -28,6 +28,11 @@ from collector import Collector, JobList
 class BuildingCollector(Collector):
 	"""Collector, that works for a building and gets its needed resources.
 	Essentially extends the Collector by a home building.
+
+	Nearly all of the time, the collector has to has a home_building.
+	Only fisher ships violate this rule in case their home building get's demolished.
+	Therefore, this class is not functional with home_building == None,
+	but basic facilities (esp. save/load) have to work.
 	"""
 	job_ordering = JobList.order_by.fewest_available_and_distance
 	pather_class = BuildingCollectorPather
@@ -40,13 +45,14 @@ class BuildingCollector(Collector):
 
 	def __init(self, home_building):
 		self.home_building = home_building
-		self.register_at_home_building()
+		if home_building is not None:
+			self.register_at_home_building()
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
 		# save home_building
 		db("INSERT INTO building_collector(rowid, home_building) VALUES(?, ?)",
-		   self.worldid, self.home_building.worldid)
+		   self.worldid, self.home_building.worldid if self.home_building is not None else None)
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
@@ -54,7 +60,7 @@ class BuildingCollector(Collector):
 
 		# load home_building
 		home_building_id = db("SELECT home_building FROM building_collector WHERE rowid = ?", worldid)[0][0]
-		self.__init(WorldObject.get_object_by_id(home_building_id))
+		self.__init(None if home_building_id is None else WorldObject.get_object_by_id(home_building_id))
 
 		super(BuildingCollector, self).load(db, worldid)
 
@@ -79,6 +85,15 @@ class BuildingCollector(Collector):
 		self.register_at_home_building(unregister=True)
 		self.home_building = None
 		super(BuildingCollector, self).remove()
+
+	def decouple_from_home_building(self):
+		"""Makes collector survive deletion of home building."""
+		self.register_at_home_building(unregister=True)
+		self.home_building = None
+		self.state = self.states.decommissioned
+		self.cancel()
+		self.stop()
+		self.show() # make sure collector is not pretending to be inside somewhere
 
 	def get_home_inventory(self):
 		return self.home_building.inventory
