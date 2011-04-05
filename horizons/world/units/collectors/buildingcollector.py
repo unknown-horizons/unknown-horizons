@@ -88,11 +88,11 @@ class BuildingCollector(Collector):
 
 	def decouple_from_home_building(self):
 		"""Makes collector survive deletion of home building."""
+		self.cancel()
+		self.stop()
 		self.register_at_home_building(unregister=True)
 		self.home_building = None
 		self.state = self.states.decommissioned
-		self.cancel()
-		self.stop()
 		self.show() # make sure collector is not pretending to be inside somewhere
 
 	def get_home_inventory(self):
