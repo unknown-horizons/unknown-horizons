@@ -7,14 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-06 23:03+0200\n"
+"Last-Translator: kzawadzki <zawadzki.jan.krzysztof@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -120,9 +122,8 @@ msgid "%H:%M, %A, %B %d"
 msgstr ""
 
 #: horizons/gui/gui.py:267
-#, fuzzy
 msgid "Saved 1 time\n"
-msgstr "%d czas zapisany"
+msgstr "Zapisano 1 raz \n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -140,11 +141,12 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"UWAGA: Niekompatybilna wersja:  %(ver)d!\n"
+"Potrzebna wersja %(need)d!"
 
 #: horizons/gui/gui.py:280
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
-msgstr "Niezgodna wersja\n"
+msgstr "NIEKOMPATYBILNA WERSJA\n"
 
 #: horizons/gui/gui.py:314
 msgid "No saved games"
@@ -247,30 +249,32 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Wciąż wymagane surowce:"
 
+# 76%
+# 100%
 #: horizons/gui/tabs/boatbuildertab.py:170
 msgid "Fisher boats"
-msgstr ""
+msgstr "Kutry rybackie"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
 msgid "Trade boats"
-msgstr ""
+msgstr "Łodzie handlowe"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 #: horizons/i18n/guitranslations.py:558
 msgid "War boats"
-msgstr ""
+msgstr "Statki wojenne"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 #: horizons/i18n/guitranslations.py:560
 msgid "War ships"
-msgstr ""
+msgstr "Statki wojenne"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Potwierdź rozkaz"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -290,9 +294,8 @@ msgstr "Zapasy"
 #. self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
 #. self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 #: horizons/gui/tabs/inventorytab.py:68
-#, fuzzy
 msgid "Ship inventory"
-msgstr "Statek Inventory"
+msgstr "Zawartość ładowni statku"
 
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:564
@@ -319,14 +322,12 @@ msgstr ""
 " Oddział"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
-msgstr "Statek Opis"
+msgstr "Przegląd statku"
 
 #: horizons/gui/tabs/overviewtab.py:156
-#, fuzzy
 msgid "Production overview"
-msgstr "Produkcja Przegląd"
+msgstr "Przegląd produkcji"
 
 #: horizons/gui/tabs/overviewtab.py:162
 #, fuzzy
