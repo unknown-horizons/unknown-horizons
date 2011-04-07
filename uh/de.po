@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-07 20:48+0200\n"
+"Last-Translator: Andre <andre-r@online.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -48,6 +49,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"Der SDL-Renderer ist ausschließlich als Reservesystem zu gebrauchen, da es "
+"zu ernsten Darstellungsproblemen kommen kann. \n"
+"\n"
+"Verwendet ihn nur, wenn Ihr wisst, was Ihr tut!"
 
 #: horizons/engine.py:178
 #, python-format
@@ -69,6 +74,9 @@ msgid ""
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
+"Welch ein freudiger Moment, Ihr habt es getan! \n"
+"\n"
+"Doch ich muss Euch leider enttäuschen – dies ist leider nur ein Platzhalter."
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
@@ -121,9 +129,8 @@ msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:267
-#, fuzzy
 msgid "Saved 1 time\n"
-msgstr "%d mal gespeichert\n"
+msgstr "Ein Mal gespeichert \n"
 
 #: horizons/gui/gui.py:269
 #, python-format
