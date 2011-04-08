@@ -41,6 +41,7 @@ class ProducerNatureBuilding(ProducerBuilding, NatureBuilding):
 	pass
 
 class Field(ProducerNatureBuilding):
+	walkable = False
 	layer = LAYERS.FIELDS
 
 class AnimalField(CollectingBuilding, Field):

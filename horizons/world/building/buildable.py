@@ -250,7 +250,7 @@ class BuildableLine(Buildable):
 
 		path = StaticPather.get_direct_path(island, point1, point2)
 		if path is None: # can't find a path between these points
-			return [] # TODO: check alternative strategy
+			return [] # TODO: maybe implement alternative strategy
 
 		possible_builds = []
 
