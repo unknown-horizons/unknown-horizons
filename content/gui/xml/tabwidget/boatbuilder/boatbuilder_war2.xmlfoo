@@ -22,31 +22,19 @@
 		<!-- Ship images -->
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,20"
 				tooltip="Galley: \nStorage: 1 slots of 40t \nCannons: 12 \nSpeed: fast \nHealth: 200" />
-		<TooltipButton position="60,70" tooltip="Can't build this ship!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,70" tooltip="Can't build this ship!" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"
 				tooltip="Big gunboat: \nStorage: 2 slots of 15t \nCannons: 20 \nSpeed: fast \nHealth: 150\nGets available after:\n  Build Shipyard" />
-		<TooltipButton position="60,157" tooltip="Can't build this ship!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,157" tooltip="Can't build this ship!" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194"
 				tooltip="Corvette: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0\nGets available after:\n Build Shipyard" />
-		<TooltipButton position="60,244" tooltip="Can't build this ship!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,244" tooltip="Can't build this ship!" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281"
 				tooltip="Frigate: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0 \nGets available after:\n Build Shipyard" />
-		<TooltipButton position="60,331" tooltip="Can't build this ship!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,331" tooltip="Can't build this ship!" />
 
 	</Container>
 

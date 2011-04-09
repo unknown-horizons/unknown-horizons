@@ -135,10 +135,7 @@
 	<HBox >
 		<CancelButton />
 		<OkButton />
-		<ImageButton name="defaultButton" 
-			up_image="content/gui/images/buttons/delete.png"
-			hover_image="content/gui/images/buttons/delete_h.png"
-			down_image="content/gui/images/buttons/delete.png" />
+		<DeleteButton name="defaultButton" />
 	</HBox>
 </VBox>
 
