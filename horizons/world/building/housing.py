@@ -23,7 +23,7 @@ from horizons.gui.tabs import SignalFireOverviewTab, AccountTab
 from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingle
 
-class Housing(BasicBuilding, SelectableBuilding, BuildableSingle):
+class Housing(SelectableBuilding, BasicBuilding, BuildableSingle):
 
 	def save(self, db):
 		super(Housing, self).save(db)
@@ -33,7 +33,7 @@ class Housing(BasicBuilding, SelectableBuilding, BuildableSingle):
 
 
 class SignalFire(Housing):
-	# TODO: this is disabled until #760 is fixed
+	# TODO: range_applies_only_on_island is disabled until #760 is fixed
 	# (Big sea tiles cause wrong range highlight)
 	#range_applies_only_on_island = False
 	tabs = (SignalFireOverviewTab, )
