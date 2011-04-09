@@ -11,10 +11,7 @@
 	<Icon position="157,0" size="64,64" 
 		image="content/gui/images/buttons/glass_small.png" />
 
-	<TooltipButton name="destroy_tool" size="30,30" position="2,0" 
-		up_image="content/gui/images/buttons/delete.png" 
-		down_image="content/gui/images/buttons/delete_h.png" 
-		hover_image="content/gui/images/buttons/delete_h.png" 
+	<DeleteButton name="destroy_tool" size="30,30" position="2,0"
 		is_focusable="0" tooltip="Destroy" />
 	<TooltipButton name="logbook" size="30,30" position="39,32" 
 		up_image="content/gui/icons/widgets/minimap/captainslog_l.png" 

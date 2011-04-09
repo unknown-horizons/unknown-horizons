@@ -16,10 +16,7 @@
 
 		<Spacer />
 
-		<ImageButton name="deleteButton"
-			up_image="content/gui/images/buttons/delete.png"
-			hover_image="content/gui/images/buttons/delete_h.png"
-			down_image="content/gui/images/buttons/delete.png" />
+		<DeleteButton />
 	</VBox>
 
 	<VBox name="right_page" position="420,75"
@@ -45,15 +42,9 @@
 		<Spacer />
 
 		<HBox min_size="350,40">
-			<ImageButton name="cancelButton"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close.png" />
+			<CancelButton />
 			<Spacer />
-			<ImageButton name="okButton"
-				up_image="content/gui/images/buttons/ok.png"
-				hover_image="content/gui/images/buttons/ok_h.png"
-				down_image="content/gui/images/buttons/ok.png" />
+			<OkButton />
 		</HBox>
 	</VBox>
 </Container>

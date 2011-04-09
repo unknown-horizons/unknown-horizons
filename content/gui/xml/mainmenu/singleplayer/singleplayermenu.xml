@@ -17,10 +17,7 @@
 
 			<HBox position="42,470"  min_size="0,40" >
 				<Label name="main_menu_label" text="Main menu:" />
-				<TooltipButton name="cancel"  tooltip="Exit to main menu"
-					up_image="content/gui/images/buttons/close.png"
-					down_image="content/gui/images/buttons/close_h.png"
-					hover_image="content/gui/images/buttons/close_h.png" />
+				<CancelButton name="cancel"  tooltip="Exit to main menu" />
 			</HBox>
 		</Container>
 
@@ -50,10 +47,7 @@
 
 			<HBox min_size="0,40"><Spacer />
 				<Label name="start_game_label"  text="Start game:" />
-				<TooltipButton name="okay"  tooltip="Start game"
-					up_image="content/gui/images/buttons/ok.png"
-					down_image="content/gui/images/buttons/ok_h.png"
-					hover_image="content/gui/images/buttons/ok_h.png" />
+				<OkButton name="okay"  tooltip="Start game" />
 			</HBox>
 
 		</VBox>

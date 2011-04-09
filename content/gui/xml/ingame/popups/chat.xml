@@ -8,15 +8,9 @@
 	<TextField name="msg" min_size="200,16" />
 
 	<HBox>
-		<ImageButton name="cancelButton"
-			up_image="content/gui/images/buttons/close.png"
-			hover_image="content/gui/images/buttons/close_h.png"
-			down_image="content/gui/images/buttons/close.png" />
+		<CancelButton />
 		<Spacer />
-		<ImageButton name="okButton"
-			up_image="content/gui/images/buttons/ok.png"
-			hover_image="content/gui/images/buttons/ok_h.png"
-			down_image="content/gui/images/buttons/ok.png" />
+		<OkButton />
 	</HBox>
 
 </VBox>

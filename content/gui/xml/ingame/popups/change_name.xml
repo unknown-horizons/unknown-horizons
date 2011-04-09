@@ -10,14 +10,8 @@
 	<TextField name="new_name" max_size="150,20" min_size="150,20" />
 
 	<HBox>
-		<ImageButton name="cancelButton"
-			up_image="content/gui/images/buttons/close.png"
-			hover_image="content/gui/images/buttons/close_h.png"
-			down_image="content/gui/images/buttons/close.png"/>
-		<ImageButton name="okButton"
-			up_image="content/gui/images/buttons/ok.png"
-			hover_image="content/gui/images/buttons/ok_h.png"
-			down_image="content/gui/images/buttons/ok.png"/>
+		<CancelButton />
+		<OkButton />
 	</HBox>
 </VBox>
 

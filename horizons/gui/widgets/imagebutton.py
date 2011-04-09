@@ -24,7 +24,7 @@ from fife.extensions import pychan
 from horizons.gui.widgets.tooltip import TooltipButton
 
 class OkButton(TooltipButton):
-	"""The OkButton is a shortcut for an ImageButton with our OK icon.
+	"""The OkButton is a shortcut for an ImageButton with our OK / apply icon.
 	Its default attributes are:
 	name="okButton"
 	up_image="content/gui/images/buttons/ok.png"

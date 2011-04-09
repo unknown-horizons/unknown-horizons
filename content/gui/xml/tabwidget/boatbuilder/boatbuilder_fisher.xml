@@ -25,35 +25,23 @@
 					\nSpeed: average \nHealth: 40" /> -->
 		<Icon image="content/gfx/dummies/square_80.png" position="0,20" />
 		<Icon image="content/gfx/units/ships/fishers/as_fisher0/idle/135/0.png" position="0,28" />
-		<TooltipButton position="60,70" tooltip="Build this ship!"
-				up_image="content/gui/images/buttons/ok.png"
-				hover_image="content/gui/images/buttons/ok_h.png"
-				down_image="content/gui/images/buttons/ok_h.png"
-				name="BB_build_fisher_1"/>
+		<OkButton position="60,70"  name="BB_build_fisher_1"
+				tooltip="Build this ship!" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"
 				tooltip="Used by: Fisher \nStorage: 4 slots of 1t
 					\nSpeed: average \nHealth: 60\nGets available after:\n Upgrade Boat Builder" />
-		<TooltipButton position="60,157" tooltip="Not yet implemented!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,157" tooltip="Not yet implemented!" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194"
 				tooltip="Used by: Fisher \nStorage: 4 slots of 4t
 					\nSpeed: average \nHealth: 100\nGets available after:\n Build Shipyard" />
-		<TooltipButton position="60,244" tooltip="Not yet implemented!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,244" tooltip="Not yet implemented!" />
 
 		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281"
 				tooltip="Used by: Whaling Station \nStorage: 4 slots of 1t
 					\nSpeed: slow \nHealth: 200 \nGets available after:\n Build Shipyard" />
-		<TooltipButton position="60,331" tooltip="Not yet implemented!"
-				up_image="content/gui/images/buttons/close.png"
-				hover_image="content/gui/images/buttons/close_h.png"
-				down_image="content/gui/images/buttons/close_h.png" />
+		<CancelButton position="60,331" tooltip="Not yet implemented!" />
 
 	</Container>
 

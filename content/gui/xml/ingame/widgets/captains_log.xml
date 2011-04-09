@@ -41,13 +41,10 @@ and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
 
 	<Spacer />
 
-	<HBox> <Spacer />
-		<TooltipButton name="cancelButton" tooltip="Leave Captain's log"
-			up_image="content/gui/images/buttons/close.png"
-			hover_image="content/gui/images/buttons/close_h.png"
-			down_image="content/gui/images/buttons/close.png" />
+	<HBox> <Spacer min_size="275"/>
+		<CancelButton tooltip="Leave Captain's log" />
 	</HBox>
-	<!-- Yes, this button will not be placed on the very right.
+	<!-- Yes, this button will not be placed on the very right without min_size.
 	No, we don't know why the engine does this.
 	Maybe related to the icon size of the HR above.-->
 </VBox>
