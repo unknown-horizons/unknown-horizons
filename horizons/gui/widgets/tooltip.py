@@ -50,7 +50,11 @@ class _Tooltip(object):
 			return
 		widget_position = self.getAbsolutePos()
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
-		self.gui.position = (widget_position[0] + event.getX() + 5, widget_position[1] + event.getY() + 5) if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= screen_width else (widget_position[0] + event.getX() - self.gui.size[0] - 5, widget_position[1] + event.getY() + 5)
+		self.gui.y = widget_position[1] + event.getY() + 5
+		if (widget_position[0] + event.getX() +self.gui.size[0] + 5) <= screen_width:
+			self.gui.x = widget_position[0] + event.getX() + 5
+		else:
+			self.gui.x = widget_position[0] + event.getX() - self.gui.size[0] - 5
 		if not self.tooltip_shown:
 			ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
 			self.tooltip_shown = True
@@ -60,16 +64,9 @@ class _Tooltip(object):
 	def show_tooltip(self):
 		if self.tooltip != "":
 			translated_tooltip = _(self.tooltip)
-			tooltip = ""
-			wrapped_text = textwrap.wrap(translated_tooltip, 18)
-			if translated_tooltip.find(r'\n') != -1:
-				temp_list =[]
-				for x in wrapped_text:
-					wrapped_item = x.replace(r'\n', '\n').strip('\n')
-					temp_list.append(wrapped_item)
-				tooltip = '\n'.join(temp_list)
-			else:
-				tooltip = '\n'.join(wrapped_text)
+			#HACK this looks better than splitting into several lines & joining
+			# them. works because replace_whitespace in fill defaults to True:
+			tooltip = textwrap.fill(translated_tooltip.replace(r'\n', 18*' '),18)
 			line_count = len(tooltip.splitlines())-1
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
@@ -145,4 +142,3 @@ class TooltipProgressBar(_Tooltip, ProgressBar):
 	def __init__(self, tooltip="", **kwargs):
 		super(TooltipProgressBar, self).__init__(**kwargs)
 		self.init_tooltip(tooltip)
-
