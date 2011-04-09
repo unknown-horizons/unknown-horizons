@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-06 23:03+0200\n"
-"Last-Translator: kzawadzki <zawadzki.jan.krzysztof@gmail.com>\n"
+"PO-Revision-Date: 2011-04-09 20:22+0200\n"
+"Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -133,7 +133,7 @@ msgstr "%d czas zapisany\n"
 #: horizons/gui/gui.py:275
 #, python-format
 msgid "Savegame ver. %d"
-msgstr "wersja gry %d \n"
+msgstr "wersja gry %d"
 
 #: horizons/gui/gui.py:277
 #, python-format
@@ -315,11 +315,8 @@ msgstr "Przegląd"
 
 # Building
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
-msgstr ""
-"Przegląd \n"
-" Oddział"
+msgstr "Przegląd Oddział"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 msgid "Ship overview"
@@ -365,74 +362,44 @@ msgid "Companies"
 msgstr "Przemysł i rolnictwo"
 
 #: horizons/i18n/guitranslations.py:319
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Namiot: \n"
-"Daje schronienie \n"
-"mieszkańcom."
+msgstr "Namiot: Daje schronienie mieszkańcom."
 
 #: horizons/i18n/guitranslations.py:320
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Przechowywanie: \n"
-"Wydłuża czas \n"
-"i zapewnia \n"
-"Collector."
+msgstr "Przechowywanie: Wydłuża czas i zapewnia Collector."
 
 #: horizons/i18n/guitranslations.py:321
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
-msgstr ""
-"Droga: \n"
-"Wymagana do przewożenia dóbr."
+msgstr "Droga: Wymagana do przewożenia dóbr."
 
 #: horizons/i18n/guitranslations.py:322
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Rynek główny: \n"
-"Zapewnia obywatelom możliwość wymiany dóbr."
+msgstr "Rynek główny: Zapewnia obywatelom możliwość wymiany dóbr."
 
 #: horizons/i18n/guitranslations.py:323
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
-"Kaplica: \n"
-"Wypełnia religijne potrzeby obywateli."
+msgstr "Kaplica: Wypełnia religijne potrzeby obywateli."
 
 #: horizons/i18n/guitranslations.py:324
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
-"Ogień sygnałowy: \n"
-"Pozwala osadzie na handel z wolnym handlarzem."
+msgstr "Ogień sygnałowy: Pozwala osadzie na handel z wolnym handlarzem."
 
 #: horizons/i18n/guitranslations.py:325
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Drwal: \n"
-"Ścina drzewa i wytwarza z nich deski."
+msgstr "Drwal: Ścina drzewa i wytwarza z nich deski."
 
 #: horizons/i18n/guitranslations.py:326 sqlite/Building
 msgid "Tree"
 msgstr "Drzewo"
 
 #: horizons/i18n/guitranslations.py:327
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Myśliwy: \n"
-"Poluje na zwierzęta, dostarcza jedzenie."
+msgstr "Myśliwy: Poluje na zwierzęta, dostarcza jedzenie."
 
 #: horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Rybak: \n"
-"Łowi ryby, dostarcza jedzenie."
+msgstr "Rybak: Łowi ryby, dostarcza jedzenie."
 
 #: horizons/i18n/guitranslations.py:330
 #, fuzzy
@@ -448,18 +415,12 @@ msgid "Military"
 msgstr "Jednostki militarne"
 
 #: horizons/i18n/guitranslations.py:336
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Ferma: \n"
-"Pozwala zbudować pola i pastwiska."
+msgstr "Ferma: Pozwala zbudować pola i pastwiska."
 
 #: horizons/i18n/guitranslations.py:337
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Tkacz: \n"
-"Wytwarza ubrania z wełny owczej."
+msgstr "Tkacz: Wytwarza ubrania z wełny owczej."
 
 #: horizons/i18n/guitranslations.py:338
 msgid "Clay pit: Gets clay from deposit."
@@ -470,36 +431,24 @@ msgid "Brickyard: Turns clay into bricks."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:340
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
-"Pole ziemniaczane:\n"
-"Dostarcza jedzenie. Wymaga farmy."
+msgstr "Pole ziemniaczane: Dostarcza jedzenie. Wymaga farmy."
 
 #: horizons/i18n/guitranslations.py:341
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-"Pastwisko: \n"
-"Używane do hodowli owiec. Dostarcza wełnę. Wymaga farmy."
+msgstr "Pastwisko: Używane do hodowli owiec. Dostarcza wełnę. Wymaga farmy."
 
 #: horizons/i18n/guitranslations.py:342
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:343
-#, fuzzy
 msgid "Village school: Provides education."
-msgstr ""
-"Szkoła wiejska: \n"
-"Zapewnia edukację."
+msgstr "Szkoła wiejska: Zapewnia edukację."
 
 #: horizons/i18n/guitranslations.py:344
-#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr ""
-"Budowniczy łodzi: \n"
-"Buduje łodzie i małe łódki, musi być na brzegu."
+msgstr "Budowniczy łodzi: Buduje łodzie i małe łódki, musi być na brzegu."
 
 #: horizons/i18n/guitranslations.py:345
 msgid "Distillery: Turns sugar into liquor."
@@ -620,9 +569,7 @@ msgstr "Wciśnij P, aby kontynuować lub kliknij poniżej!"
 
 #: horizons/i18n/guitranslations.py:385
 msgid "Buy or sell resources"
-msgstr ""
-"Kup lub sprzedaj \n"
-"zasoby"
+msgstr "Kup lub sprzedaj zasoby"
 
 #: horizons/i18n/guitranslations.py:386
 msgid "Legend:"
@@ -1210,12 +1157,8 @@ msgid "Health:"
 msgstr "Zdrowie:"
 
 #: horizons/i18n/guitranslations.py:606
-#, fuzzy
 msgid "Click to change the name of this ship."
-msgstr ""
-"Kliknij aby \n"
-"zmienić nazwę \n"
-"tego statku."
+msgstr "Kliknij aby zmienić nazwę tego statku."
 
 #: horizons/i18n/guitranslations.py:607
 #, fuzzy
