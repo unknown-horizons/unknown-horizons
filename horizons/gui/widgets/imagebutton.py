@@ -52,3 +52,18 @@ class CancelButton(TooltipButton):
 			up_image="content/gui/images/buttons/close.png",
 			hover_image="content/gui/images/buttons/close_h.png",
 			down_image="content/gui/images/buttons/close.png", **kwargs)
+
+class DeleteButton(TooltipButton):
+	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear
+	icon. Its default attributes are:
+	name="deleteButton"
+	up_image="content/gui/images/buttons/delete.png"
+	hover_image="content/gui/images/buttons/delete_h.png"
+	down_image="content/gui/images/buttons/delete.png"
+	"""
+	def __init__(self, **kwargs):
+		super(DeleteButton, self).__init__(
+			name='deleteButton',
+			up_image="content/gui/images/buttons/delete.png",
+			hover_image="content/gui/images/buttons/delete_h.png",
+			down_image="content/gui/images/buttons/delete.png", **kwargs)
