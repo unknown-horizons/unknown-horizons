@@ -67,9 +67,6 @@ footer = '''\n\t}\n'''
 
 files_to_skip = {
 	'call_for_support.xml',
-	'boatbuilder_trade.xml',
-	'boatbuilder_war1.xml',
-	'boatbuilder_war2.xml',
 	'credits0.xml',
 	'credits1.xml',
 	'credits2.xml',
