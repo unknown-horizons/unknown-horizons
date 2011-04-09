@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-07 21:23+0200\n"
-"Last-Translator: Andre <andre-r@online.de>\n"
+"PO-Revision-Date: 2011-04-09 10:02+0200\n"
+"Last-Translator: Tobias <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -274,7 +274,7 @@ msgstr "Handelsschiffe"
 #: horizons/gui/tabs/boatbuildertab.py:185
 #: horizons/i18n/guitranslations.py:558
 msgid "War boats"
-msgstr ""
+msgstr "Kriegsboote"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 #: horizons/i18n/guitranslations.py:560
@@ -283,7 +283,7 @@ msgstr "Kriegsschiffe"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Auftrag bestätigen"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -303,9 +303,8 @@ msgstr "Lager"
 #. self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
 #. self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 #: horizons/gui/tabs/inventorytab.py:68
-#, fuzzy
 msgid "Ship inventory"
-msgstr "Schiffsinventar"
+msgstr "Schiffsladung"
 
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:564
