@@ -65,6 +65,17 @@ def set_translations():
 
 footer = '''\n\t}\n'''
 
+files_to_skip = {
+	'call_for_support.xml',
+	'boatbuilder_trade.xml',
+	'boatbuilder_war1.xml',
+	'boatbuilder_war2.xml',
+	'credits0.xml',
+	'credits1.xml',
+	'credits2.xml',
+	'credits3.xml',
+	}
+
 import glob
 import xml.dom.minidom
 import os
@@ -79,10 +90,10 @@ print_window_no_name = lambda x: print_n_no_name('Window', x)
 
 def list_all_files():
 	result = []
-	walker = os.walk('content/gui')
+	walker = os.walk('content/gui/xml')
 	for entry in walker:
 		for filename in entry[2]:
-			if filename.endswith('.xml'):
+			if filename.endswith('.xml') and filename not in files_to_skip:
 				result.append('%s/%s' % (entry[0], filename))
 	return sorted(result)
 
@@ -103,7 +114,7 @@ def content_from_element(element_name, parse_tree, text_name='text'):
 				value = '_("%s")' % value
 			element_strings.append('%s: %s' % (('"%s"' % name).ljust(30), value))
 
-	return element_strings
+	return sorted(element_strings)
 
 def content_from_file(filename):
 	print '@ %s' % filename
@@ -121,7 +132,10 @@ def content_from_file(filename):
 		content_from_element('ToggleImageButton', parsed, 'tooltip')
 
 	if len(strings):
-		return '\t\t"%s" : {\n\t\t\t%s},' % (filename[12:], ',\n\t\t\t'.join(strings))
+		printname = filename.rsplit("/",1)[1]
+		#HACK! we strip the string until no "/" occurs and then use the remaining part
+		# this is necessary because of our dynamic widget loading (by unique file names)
+		return '\t\t"%s" : {\n\t\t\t%s},' % (printname, ',\n\t\t\t'.join(strings))
 	else:
 		return ''
 
