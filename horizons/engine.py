@@ -243,9 +243,12 @@ class Fife(ApplicationBase):
 		from gui.widgets.progressbar import ProgressBar
 		from gui.widgets.toggleimagebutton import ToggleImageButton
 		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
+		from gui.widgets.imagebutton import CancelButton, OkButton
 
+		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(Inventory)
 		pychan.widgets.registerWidget(ImageFillStatusButton)
+		pychan.widgets.registerWidget(OkButton)
 		pychan.widgets.registerWidget(ProgressBar)
 		pychan.widgets.registerWidget(ToggleImageButton)
 		pychan.widgets.registerWidget(TooltipIcon)
