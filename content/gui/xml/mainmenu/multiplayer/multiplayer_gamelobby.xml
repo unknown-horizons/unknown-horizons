@@ -20,11 +20,8 @@
 			text="Enter your message here"  min_size="300,16" />
 
 		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
-		<TooltipButton position="120,460" 
-			up_image="content/gui/images/buttons/close.png"  name="cancel" 
-			down_image="content/gui/images/buttons/close_h.png" 
-			hover_image="content/gui/images/buttons/close_h.png" 
-			tooltip="Exit gamelobby" />
+		<CancelButton position="120,460"
+			name="cancel"  tooltip="Exit gamelobby" />
 	</Container>
 
 

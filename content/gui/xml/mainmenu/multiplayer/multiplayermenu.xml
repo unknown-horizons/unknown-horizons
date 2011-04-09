@@ -15,10 +15,7 @@
 
 		<HBox position="130,250"  min_size="80,40"  max_size="120,40">
 			<Label text="Apply:"  name="name_lbl"/>
-			<TooltipButton name="apply_new_nickname"  tooltip="Apply the new name"
-				up_image="content/gui/images/buttons/ok.png"
-				down_image="content/gui/images/buttons/ok_h.png"
-				hover_image="content/gui/images/buttons/ok_h.png" />
+			<OkButton name="apply_new_nickname"  tooltip="Apply the new name" />
 		</HBox>
 
 		<!--
@@ -32,18 +29,12 @@
 
 			<HBox>
 				<Label name="create_game_lbl" text="Create game:" />
-				<TooltipButton name="create"  tooltip="Create a new game"
-					up_image="content/gui/images/buttons/ok.png"
-					down_image="content/gui/images/buttons/ok_h.png"
-					hover_image="content/gui/images/buttons/ok_h.png" />
+				<OkButton name="create"  tooltip="Create a new game" />
 			</HBox>
 
 			<HBox>
 				<Label name="exit_to_main_menu_lbl"  text="Main menu:" />
-				<TooltipButton name="cancel"  tooltip="Exit to main menu"
-					up_image="content/gui/images/buttons/close.png"
-					down_image="content/gui/images/buttons/close_h.png"
-					hover_image="content/gui/images/buttons/close_h.png" />
+				<CancelButton name="cancel"  tooltip="Exit to main menu" />
 			</HBox>
 
 		</VBox>
@@ -80,8 +71,8 @@
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->
 			<HBox>
-			<Label name="game_showonlyownversion"  text="Show only games with the same version:" />
-			<CheckBox min_size="32,32"  name="showonlyownversion" />
+				<Label name="game_showonlyownversion"  text="Show only games with the same version:" />
+				<CheckBox min_size="32,32"  name="showonlyownversion" />
 			</HBox>
 		</VBox>
 		
@@ -89,10 +80,7 @@
 
 		<HBox min_size="0,40"><Spacer />
 			<Label name="join_game_lbl" text="Join game" />
-			<TooltipButton name="join"  tooltip="Join the selected game"
-				up_image="content/gui/images/buttons/ok.png"
-				down_image="content/gui/images/buttons/ok_h.png"
-				hover_image="content/gui/images/buttons/ok_h.png" />
+			<OkButton name="join"  tooltip="Join the selected game" />
 		</HBox>
 
 	</VBox>

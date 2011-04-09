@@ -20,7 +20,7 @@
 			<VBox>
 				<Label text="Screen resolution:"
 					name="screen_resolution_label"  wrap_text="1" />
-				<ScrollArea min_size="100,105" >
+				<ScrollArea min_size="100,115" >
 					<ListBox name="screen_resolution" />
 				</ScrollArea>
 			</VBox>
@@ -30,13 +30,13 @@
 			<VBox>
 				<Label name="color_depth_label"  text="Color depth:"
 					wrap_text="1"  max_size="140,20" />
-				<ScrollArea  >
+				<ScrollArea  min_size="80,30" >
 					<ListBox name="screen_bpp" />
 				</ScrollArea>
 				<Spacer />
 				<Label name="use_renderer_label"  text="Used renderer:" 
 					wrap_text="1" />
-				<ScrollArea > 
+				<ScrollArea  min_size="80,30" >
 					<ListBox name="render_backend" />
 				</ScrollArea>
 			</VBox>
@@ -79,10 +79,6 @@
 			<Label name="sound_enable_opt_text" text="Enable sound:" />
 			<CheckBox min_size="32,32" name="enable_sound" />
 		</HBox>
-		<HBox>
-			<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
-			<CheckBox min_size="32,32"  name="minimaprotation" />
-		</HBox>
 	</VBox>
 </VBox> 
 
@@ -116,6 +112,11 @@
 			orientation="0"  scale_start="1.0"  scale_end="30.0"  step_length="1.0" />
 	</VBox>
 
+	<HBox>
+		<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
+		<CheckBox min_size="32,32"  name="minimaprotation" />
+	</HBox>
+
 	<Spacer min_size="20" />
 
 	<VBox  name="language_settings">
@@ -123,7 +124,7 @@
 			name="headline_language"  font="libertine_headline" />
 		<HBox>
 			<Label text="Select language:"  name="language_label" />
-			<ScrollArea min_size="125,140" >
+			<ScrollArea min_size="125,135" >
 				<ListBox name="language" />
 			</ScrollArea>
 		</HBox>
@@ -132,16 +133,8 @@
 	<Spacer />
 
 	<HBox >
-		<ImageButton name="cancelButton"
-			up_image="content/gui/images/buttons/close.png"
-			hover_image="content/gui/images/buttons/close_h.png"
-			down_image="content/gui/images/buttons/close.png" />
-
-		<ImageButton name="okButton" 
-			up_image="content/gui/images/buttons/ok.png"
-			hover_image="content/gui/images/buttons/ok_h.png"
-			down_image="content/gui/images/buttons/ok.png" />
-
+		<CancelButton />
+		<OkButton />
 		<ImageButton name="defaultButton" 
 			up_image="content/gui/images/buttons/delete.png"
 			hover_image="content/gui/images/buttons/delete_h.png"

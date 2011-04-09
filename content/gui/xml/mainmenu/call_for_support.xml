@@ -52,10 +52,6 @@
 	</VBox>
 </VBox>
 
-<TooltipButton name="okButton" position="695,500"
-	up_image="content/gui/images/buttons/ok.png"
-	hover_image="content/gui/images/buttons/ok_h.png"
-	down_image="content/gui/images/buttons/ok.png"
-	tooltip="Exit to main menu" />
+<OkButton position="695,500"  tooltip="Exit to main menu" />
 
 </Container>

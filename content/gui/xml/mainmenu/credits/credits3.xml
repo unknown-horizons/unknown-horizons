@@ -64,10 +64,7 @@
 		hover_image="content/gui/images/buttons/parrow_right_h.png"
 		down_image="content/gui/images/buttons/parrow_right_d.png"
 		tooltip="Read next entries" /> -->
-	<ImageButton position="800,0" name="okButton"
-		up_image="content/gui/images/buttons/ok.png"
-		hover_image="content/gui/images/buttons/ok_h.png"
-		down_image="content/gui/images/buttons/ok.png" />
+	<OkButton position="800,0" />
 </Container>
 
 <Container position="810,0"  size="170,500">

@@ -42,10 +42,7 @@
 		</VBox>
 
 		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
-		<TooltipButton position="100,460"  name="cancel" 
-			up_image="content/gui/images/buttons/close.png" 
-			down_image="content/gui/images/buttons/close_h.png" 
-			hover_image="content/gui/images/buttons/close_h.png" 
+		<CancelButton position="100,460"  name="cancel" 
 			tooltip="Exit to multiplayer menu" />
 	</Container>
 
@@ -66,10 +63,7 @@
 	-->
 
 		<Label name="create_game_lbl"  text="Create game:"  position="170,470" />
-		<TooltipButton position="255,460"  name="create" 
-			up_image="content/gui/images/buttons/ok.png" 
-			down_image="content/gui/images/buttons/ok_h.png" 
-			hover_image="content/gui/images/buttons/ok_h.png" 
+		<OkButton position="255,460"  name="create" 
 			tooltip="Create this new game" />
 
 	</Container>
