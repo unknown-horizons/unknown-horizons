@@ -1,16 +1,7 @@
 <?xml version="1.0"?>
 <Container name="tab0" size="250,500" padding="2">
-<VBox padding="0">
-<Icon image="content/gui/images/tabwidget/main_bg_top.png"  />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" />
-<Icon image="content/gui/images/tabwidget/main_bg_bottom.png"/>
-</VBox>
+<TabBG amount="7"/>
+
 <Container position="0,70" size="250,380">
 	<Label name="headline" position="60,7" text="Sailor buildings" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
