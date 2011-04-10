@@ -13,11 +13,13 @@
 	<Icon name="shipImage" image="content/gui/images/objects/ships/ship.png" position="50,30" />
 	<Icon image="content/gui/images/background/hr.png" position="20,175" />
 
+	<!-- Let's implement that when actually having some sense. The positioning should fit though.
 	<HBox position="30,205">
 		<Label name="health_label" text="Health:" /><Label name='health' text="" />
 	</HBox>
+	-->
 
-	<!--<Icon image="content/gui/images/background/msg_button.png" position="170,170" />				 	-->
+	<Label name="foundSettlement_label" text="Build settlement:" position="25,205" />
 	<HBox position="180,190">
 		<ToggleImageButton name='bg_button' border_size="0" 
 			inactive_image="content/gui/images/buttons/msg_button_bw.png" 

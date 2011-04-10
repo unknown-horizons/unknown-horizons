@@ -85,8 +85,8 @@ def set_translations():
 			"city_info_inhabitants"       : _("Inhabitants"),
 			"city_name"                   : _("Click to change the name of your settlement.")},
 		"menu_panel.xml" : {
-			"build"                       : _("Build menu"),
 			"destroy_tool"                : _("Destroy"),
+			"build"                       : _("Build menu"),
 			"gameMenuButton"              : _("Game menu"),
 			"helpLink"                    : _("Help"),
 			"logbook"                     : _("Captain's log")},
@@ -102,6 +102,7 @@ def set_translations():
 			"change_name_headline"        : _("Change name"),
 			"enter_new_name_lbl"          : _("Enter new name:")},
 		"chat.xml" : {
+			"chat_lbl"                    : _("Enter your message:"),
 			"headline"                    : _("Chat")},
 		"buysellmenu.xml" : {
 			"buy_label"                   : _("Buy resources"),
@@ -171,8 +172,8 @@ def set_translations():
 			"headline"                    : _("Choose a map:"),
 			"headline"                    : _("Create game - Multiplayer"),
 			"mp_player_limit_lbl"         : _("Player limit:"),
-			"cancel"                      : _("Exit to multiplayer menu"),
-			"create"                      : _("Create this new game")},
+			"create"                      : _("Create this new game"),
+			"cancel"                      : _("Exit to multiplayer menu")},
 		"multiplayer_gamelobby.xml" : {
 			"exit_to_mp_menu_lbl"         : _("Leave:"),
 			"game_start_notice"           : _("The game will start as soon as enough players have joined."),
@@ -190,9 +191,9 @@ def set_translations():
 			"name_lbl"                    : _("Apply:"),
 			"refr_gamelist_lbl"           : _("Refresh list:"),
 			"apply_new_nickname"          : _("Apply the new name"),
-			"cancel"                      : _("Exit to main menu"),
 			"create"                      : _("Create a new game"),
 			"join"                        : _("Join the selected game"),
+			"cancel"                      : _("Exit to main menu"),
 			"refresh"                     : _("Refresh list of active games")},
 		"settings.xml" : {
 			"autosave_interval_label"     : _("Autosave interval in minutes:"),
@@ -225,8 +226,8 @@ def set_translations():
 			"showMaps"                    : _("Free play"),
 			"showRandom"                  : _("Random map"),
 			"showScenario"                : _("Scenario"),
-			"cancel"                      : _("Exit to main menu"),
-			"okay"                        : _("Start game")},
+			"okay"                        : _("Start game"),
+			"cancel"                      : _("Exit to main menu")},
 		"playerdataselection.xml" : {
 			"color_label"                 : _("Color:"),
 			"player_label"                : _("Player name:")},
@@ -247,7 +248,10 @@ def set_translations():
 			"BB_fisher_ship3"             : _("Herring fisher"),
 			"BB_fisher_ship4"             : _("Whaler"),
 			"headline"                    : _("Fishing boats"),
-			"BB_build_fisher_1"           : _("Build this ship!")},
+			"BB_build_fisher_1"           : _("Build this ship!"),
+			"cancelButton"                : _("Not yet implemented!"),
+			"cancelButton"                : _("Not yet implemented!"),
+			"cancelButton"                : _("Not yet implemented!")},
 		"select_trade_resource.xml" : {
 			"headline"                    : _("Select resources:")},
 		"tab_account.xml" : {
@@ -292,7 +296,7 @@ def set_translations():
 			"residents_label"             : _("Residents"),
 			"happiness"                   : _("Happiness")},
 		"overview_ship.xml" : {
-			"health_label"                : _("Health:"),
+			"foundSettlement_label"       : _("Build settlement:"),
 			"name"                        : _("Click to change the name of this ship."),
 			"foundSettlement"             : _("Build settlement")},
 		"overview_signalfire.xml" : {

@@ -9,7 +9,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 		<!-- Picture -->
-		<Icon name="building_image" position="15,30"/>
+		<Icon name="building_image" position="15,40"/>
 
 		<!-- Let's implement that when actually having some sense. The positioning should fit though.
 		<Label name="health_label" text="Health:" position="25,170" /><Label name='health' text="" />
