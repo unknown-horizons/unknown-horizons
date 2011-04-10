@@ -131,7 +131,10 @@ STYLES= {
 		'Label' : {
             		'margins': (0,0),
 			'font' : 'libertine_14_black'
-		}
+		},
+		# NOTE: This is a hack to add padding attributs to boxes of this style
+		('Container','HBox','VBox') : {
+		},
 },
 
 'resource_bar': {
