@@ -82,7 +82,7 @@ class TabWidget(object):
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.widget.size = (50, 200*len(self._tabs))
+		self.widget.size = (50, 55*len(self._tabs))
 		self.widget.adaptLayout()
 
 	def _show_tab(self, number):
