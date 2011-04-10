@@ -116,6 +116,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.ingame_gui.show_build_menu()
 		elif keystr == '.':
 			if hasattr(self.session.cursor, "rotate_right"):
+				# used in e.g. build preview to rotate building instead of map
 				self.session.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()

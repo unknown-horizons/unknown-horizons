@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2011 The Unknown Horizons Team
+# Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,7 +31,6 @@ from horizons.gui.tabs import TabWidget, BuildTab
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
-from horizons.gui.widgets.islandinventorydisplay import SettlementInventoryDisplay as ResBar
 from horizons.gui.utility import LazyWidgetsDict
 from horizons.constants import RES
 from horizons.command.uioptions import RenameObject
@@ -44,7 +43,6 @@ class IngameGui(LivingObject):
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 	minimap = livingProperty()
-	resbar = livingProperty()
 
 	styles = {
 		'city_info' : 'city_info',
@@ -54,7 +52,7 @@ class IngameGui(LivingObject):
 		'status_gold'       : 'resource_bar',
 		'status_extra'      : 'resource_bar',
 		'status_extra_gold' : 'resource_bar',
-	}
+	  }
 
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
@@ -72,7 +70,7 @@ class IngameGui(LivingObject):
 
 		cityinfo = self.widgets['city_info']
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
-		cityinfo.position = ( screenwidth/2 - cityinfo.size[0]/2 - 10, 5 )
+		cityinfo.position = (screenwidth/2 - cityinfo.size[0]/2 - 10, 5)
 
 		self.logbook = LogBook(session)
 
@@ -81,27 +79,30 @@ class IngameGui(LivingObject):
 
 		minimap = self.widgets['minimap']
 		minimap.position = (screenwidth - minimap.size[0] -20, 4)
-		minimap.show()
-
-		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
-		self.minimap = Minimap(minimap_rect, self.session, \
-								           self.session.view.renderer['GenericRenderer'])
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+#			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
+#			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
 			'speedUp' : self.session.speed_up,
 			'speedDown' : self.session.speed_down
 		})
+		minimap.show()
+
+		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
+
+		self.minimap = Minimap(minimap_rect, self.session, \
+		                       self.session.view.renderer['GenericRenderer'])
 
 		minimap_overlay = minimap.findChild(name='minimap_overlay_image')
+
 		self.minimap.use_overlay_icon(minimap_overlay)
 
-		menupanel = self.widgets['menu_panel']
-		menupanel.position = (screenwidth - menupanel.size[0] +15, 149)
-		menupanel.show()
-		menupanel.mapEvents({
+		self.widgets['menu_panel'].position = (
+			horizons.main.fife.engine_settings.getScreenWidth() - self.widgets['menu_panel'].size[0] +15,
+			149)
+		self.widgets['menu_panel'].show()
+		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : self.session.destroy_tool,
 			'build' : self.show_build_menu,
 			'helpLink' : self.main_gui.on_help,
@@ -111,75 +112,22 @@ class IngameGui(LivingObject):
 
 		self.widgets['tooltip'].hide()
 
-		for w in ('status','status_extra','status_gold','status_extra_gold'):
-			self.widgets[w].child_finder = PychanChildFinder(self.widgets[w])
-		self.widgets['status_gold'].show()
+		self.widgets['status'].child_finder = PychanChildFinder(self.widgets['status'])
+		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
 		self.message_widget = MessageWidget(self.session, \
-								                        cityinfo.position[0] + cityinfo.size[0], 5)
-
-		self.resbar = ResBar(self.session, gui, self.widgets, self.resource_source)
+		                                    cityinfo.position[0] + cityinfo.size[0], 5)
+		self.widgets['status_gold'].show()
+		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
+		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
 
 		# map button names to build functions calls with the building id
-		building_list = horizons.main.db.get_building_id_buttonname_settlerlvl()
+		callbackWithArguments = pychan.tools.callbackWithArguments
 		self.callbacks_build = {}
-		for id,button_name,settler_level in building_list:
+		for id,button_name,settler_level in horizons.main.db.get_building_id_buttonname_settlerlvl():
 			if not settler_level in self.callbacks_build:
 				self.callbacks_build[settler_level] = {}
 			self.callbacks_build[settler_level][button_name] = Callback(self._build, id)
-
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
-		#TODO what is this stuff doing? I could maybe fix the problems if I understood that:
-		# why that much if-checks? need to better explain each case
-		# * when does this happen and * what are the steps we do then?
-
-		# method is called without arguments in navigationtool (to update)
-		# and with arguments in buildingtool to create proper build preview
-
-		city = source if not res_from_ship else None
-		self.cityinfo_set(city)  # the source we hover is a settlement,
-						# cityinfo_set(None) hides the widget.
-
-#		print source, "   ", self.resource_source
-		listener = self.resbar.update_resource_source(source, res_needed)
-
-		if source is None or self.session.world.player != source.owner:
-		# player hovers enemy settlement / unsettled territory -> don't show inventory
-			self.widgets['status'].hide()
-			self.widgets['status_extra'].hide()
-			if source is not None:
-				pass # remove changelistener?
-			source = None
-# ----
-		if source is not None and self.session.world.player == source.owner:
-			# 'source' is always carried over to islandinventorydisplay.py
-			# in difference from the below code where self.resource_source was
-			# only modified if some conditions applied but always passed over.
-			self.resbar.update_resource_source(self.resource_source, res_needed)
-			self.widgets['status'].show()
-		self.resbar.update_gold()
-
-	""" Below the old code of this method for bugfixing and comparison purposes:
-	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
-		city = source if not res_from_ship else None
-		self.cityinfo_set(city)
-		if source is not self.resource_source:
-			if self.resource_source is not None:
-				self.resource_source.remove_change_listener(self.update_resource_source)
-			if source is None or self.session.world.player != source.owner:
-				self.widgets['status'].hide()
-				self.widgets['status_extra'].hide()
-				self.resource_source = None
-				self.update_gold()
-		if source is not None and self.session.world.player == source.owner:
-			if source is not self.resource_source:
-				source.add_change_listener(self.update_resource_source)
-			self.resource_source = source
-			self.resources_needed = res_needed
-			self.resources_usable = res_usable
-			self.update_resource_source()
-			self.widgets['status'].show()
-	"""
 
 	def end(self):
 		self.widgets['menu_panel'].mapEvents({
@@ -205,6 +153,74 @@ class IngameGui(LivingObject):
 		self.hide_menu()
 		super(IngameGui, self).end()
 
+	def update_gold(self):
+		first = str(self.session.world.player.inventory[RES.GOLD_ID])
+		lines = []
+		show = False
+		if self.resource_source is not None and self.resources_needed.get(RES.GOLD_ID, 0) != 0:
+			show = True
+			lines.append('- ' + str(self.resources_needed[RES.GOLD_ID]))
+		self.status_set('gold', first)
+		self.status_set_extra('gold',lines)
+		self.set_status_position('gold')
+		if show:
+			self.widgets['status_extra_gold'].show()
+		else:
+			self.widgets['status_extra_gold'].hide()
+
+	def status_set(self, label, value):
+		"""Sets a value on the status bar (available res of the settlement).
+		@param label: str containing the name of the label to be set.
+		@param value: value the Label is to be set to.
+		"""
+		if isinstance(value,list):
+			value = value[0]
+		gui = self.widgets['status_gold'] if label == 'gold' else self.widgets['status']
+		foundlabel = gui.child_finder(label + '_1')
+		foundlabel._setText(unicode(value))
+		foundlabel.resizeToContent()
+		gui.resizeToContent()
+
+	def status_set_extra(self,label,value):
+		"""Sets a value on the extra status bar. (below normal status bar, needed res for build)
+		@param label: str containing the name of the label to be set.
+		@param value: value the Label is to be set to.
+		"""
+		bg_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
+		bg_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
+		if not hasattr(self, "bg_icon_pos"):
+			self.bg_icon_pos = {'gold':(14,83), 'food':(0,6), 'tools':(52,6), 'boards':(104,6), 'bricks':(156,6), 'textiles':(207,6)}
+			self.bgs_shown = {}
+		bg_icon = pychan.widgets.Icon(image=bg_icon_gold if label == 'gold' else bg_icon_res, \
+		                              position=self.bg_icon_pos[label], name='bg_icon_' + label)
+
+		if not value:
+			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(label + '_' + str(2))
+			foundlabel.text = u''
+			foundlabel.resizeToContent()
+			if label in self.bgs_shown:
+				(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).removeChild(self.bgs_shown[label])
+				del self.bgs_shown[label]
+			self.widgets['status_extra_gold'].resizeToContent() if label == 'gold' else self.widgets['status_extra'].resizeToContent()
+			return
+		if isinstance(value, str):
+			value = [value]
+		#for i in xrange(len(value), 3):
+		#	value.append("")
+
+		if (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).findChild(name='bg_icon_' + label) is None:
+			(self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).insertChild(bg_icon, 0)
+			self.bgs_shown[label] = bg_icon
+
+		for i in xrange(0,len(value)):
+			foundlabel = (self.widgets['status_extra_gold'] if label == 'gold' else self.widgets['status_extra']).child_finder(name=label + '_' + str(i+2))
+			foundlabel._setText(unicode(value[i]))
+			foundlabel.resizeToContent()
+		if label == 'gold':
+			self.widgets['status_extra_gold'].resizeToContent()
+		else:
+			self.widgets['status_extra'].resizeToContent()
+
 	def cityinfo_set(self, settlement):
 		"""Sets the city name at top center
 
@@ -224,19 +240,58 @@ class IngameGui(LivingObject):
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
 
+	def resourceinfo_set(self, source, res_needed = {}, res_usable = {}, res_from_ship = False):
+		city = source if not res_from_ship else None
+		self.cityinfo_set(city)
+		if source is not self.resource_source:
+			if self.resource_source is not None:
+				self.resource_source.remove_change_listener(self.update_resource_source)
+			if source is None or self.session.world.player != source.owner:
+				self.widgets['status'].hide()
+				self.widgets['status_extra'].hide()
+				self.resource_source = None
+				self.update_gold()
+		if source is not None and self.session.world.player == source.owner:
+			if source is not self.resource_source:
+				source.add_change_listener(self.update_resource_source)
+			self.resource_source = source
+			self.resources_needed = res_needed
+			self.resources_usable = res_usable
+			self.update_resource_source()
+			self.widgets['status'].show()
+
 	def update_settlement(self):
-		"""Assigns values to labels of cityinfo widget"""
-		cityinfo = self.widgets['city_info']
+		cityinfo = self.widgets['city_info']	
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
-		})
+			})
 		foundlabel = cityinfo.child_finder('city_name')
 		foundlabel._setText(unicode(self.settlement.name))
 		foundlabel.resizeToContent()
-		foundlabel = cityinfo.child_finder('city_inhabitants')
+		foundlabel = self.widgets['city_info'].child_finder('city_inhabitants')
 		foundlabel.text = unicode(' '+str(self.settlement.inhabitants))
 		foundlabel.resizeToContent()
-		cityinfo.resizeToContent()
+		self.widgets['city_info'].resizeToContent()
+
+	def update_resource_source(self):
+		"""Sets the values for resource status bar as well as the building costs"""
+		self.update_gold()
+		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
+			first = str(self.resource_source.inventory[res_id])
+			lines = []
+			show = False
+			if self.resources_needed.get(res_id, 0) != 0:
+				show = True
+				lines.append('- ' + str(self.resources_needed[res_id]))
+			self.status_set(res_name, first)
+			self.status_set_extra(res_name,lines)
+			self.set_status_position(res_name)
+			if show:
+				self.widgets['status_extra'].show()
+
+	def ship_build(self, ship):
+		"""Calls the Games build_object class."""
+		self._build(1, ship)
 
 	def minimap_to_front(self):
 		self.widgets['minimap'].hide()
@@ -246,15 +301,14 @@ class IngameGui(LivingObject):
 
 	def show_build_menu(self):
 		# check if build menu is already shown
-		if hasattr(self.get_cur_menu(), 'name'):
-			if self.get_cur_menu().name == "build_menu_tab_widget":
-				self.hide_menu()
-				return
+		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
+			self.hide_menu()
+			return
 
 		self.session.cursor = SelectionTool(self.session) # set cursor for build menu
 		self.deselect_all()
-		lvl = self.session.world.player.settler_level
-		btabs = [BuildTab(i, self.callbacks_build[i]) for i in range(0, lvl+1)]
+		btabs = [BuildTab(index, self.callbacks_build[index]) for index in \
+		         range(0, self.session.world.player.settler_level+1)]
 		tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
 								    active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
@@ -267,15 +321,13 @@ class IngameGui(LivingObject):
 	def _build(self, building_id, unit = None):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built.
-		@param unit: weakref to the unit, that builds (e.g. ship for branch office).
-		"""
+		@param unit: weakref to the unit, that builds (e.g. ship for branch office)"""
 		self.hide_menu()
 		self.deselect_all()
 		cls = Entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		self.session.cursor = BuildingTool(self.session, cls, \
-								                       None if unit is None else unit())
+		self.session.cursor = BuildingTool(self.session, cls, None if unit is None else unit())
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu
@@ -327,6 +379,21 @@ class IngameGui(LivingObject):
 		contentarea.addChild(self.widgets['build_tab'+str(num)])
 		contentarea.adaptLayout()
 		self.active_build = num
+
+	def set_status_position(self, resource_name):
+		icon_name = resource_name + '_icon'
+		for i in xrange(1, 3): 
+			lbl_name = resource_name + '_' + str(i)
+			# tools_1 = inventory amount, tools_2 = cost of to-be-built building
+			if resource_name == 'gold':
+				self._set_label_position('status_gold', lbl_name, icon_name, 33, 31 + i*20)
+			else:
+				self._set_label_position('status', lbl_name, icon_name, 24, 31 + i*20)
+
+	def _set_label_position(self, widget, lbl_name, icon_name, xoffset, yoffset):
+		icon  = self.widgets[widget].child_finder(icon_name)
+		label = self.widgets[widget].child_finder(lbl_name)
+		label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
 
 	def save(self, db):
 		self.message_widget.save(db)
