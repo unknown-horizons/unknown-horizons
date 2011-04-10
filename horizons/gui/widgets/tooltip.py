@@ -31,7 +31,8 @@ from horizons.gui.widgets import ProgressBar
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 	def init_tooltip(self, tooltip):
-		self.gui = pychan.loadXML('content/gui/xml/ingame/widgets/tooltip.xml')
+		# no need for load_xml_translated, translations are done in show_tooltip
+		self.gui = pychan.loadXML('tooltip.xml')
 		self.gui.hide()
 		self.tooltip = tooltip
 		self.mapEvents({

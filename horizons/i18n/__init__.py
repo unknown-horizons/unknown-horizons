@@ -22,7 +22,6 @@
 import logging
 from horizons.i18n.guitranslations import set_translations, text_translations
 import horizons.main
-from  horizons.gui.widgets.tooltip import _Tooltip
 
 from fife.extensions import pychan
 from os.path import basename
@@ -70,16 +69,16 @@ def load_xml_translated(filename):
 		for i in guitranslations.text_translations[filename].iteritems():
 			try:
 				widget = untranslated.findChild(name=i[0])
-				# TODO FIX! import loop
-				if isinstance(widget, _Tooltip):
+				#TODO what happens to TooltipLabels? their text is untouched (elif)
+				# we currently do not use any, but this could cause bugs.
+				if hasattr(widget, 'tooltip'):
 					widget.tooltip = i[1]
-					widget.adaptLayout()
 				elif isinstance(widget, pychan.widgets.Label)\
 						or isinstance(widget, pychan.widgets.Button):
 					widget.text = i[1]
-					widget.adaptLayout()
 				elif isinstance(widget, pychan.widgets.Window):
 					widget.title = i[1]
+				widget.adaptLayout()
 			except AttributeError, e:
 				print e
 				print i, ' in ', filename
@@ -97,7 +96,8 @@ def update_all_translations():
 		for j in guitranslations.text_translations.get(i[0],{}).iteritems():
 			try:
 				widget = i[1].findChild(name=j[0])
-				if isinstance(widget, _Tooltip):
+				#TODO presumably doesn't work with TooltipLabels, see above
+				if hasattr(widget, 'tooltip'):
 					widget.tooltip = j[1]
 				else:
 					widget.text = j[1]
