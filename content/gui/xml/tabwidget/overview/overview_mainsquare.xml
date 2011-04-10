@@ -4,12 +4,7 @@ Tab to be shown at the market place.
 It shows an overview over the settlers, like average happiness
 -->
 <Container  size="250,350">
-<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
-<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,250" />
+<TabBG amount="4"/>
 
 	<Container position="0,70" size="600,400" >
 

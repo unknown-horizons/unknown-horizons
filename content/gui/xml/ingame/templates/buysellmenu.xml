@@ -1,12 +1,6 @@
 <?xml version="1.0"?>
 <Container size="264,400">
-<Icon image="content/gui/images/tabwidget/main_bg_top.png"    position="0,0" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,50" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,100" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,150" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,200" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png"   position="0,250" />
-<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,300" />
+<TabBG amount="5"/>
 
 <Container position="0,70" size="245,300" >
 	<Label name="headline"  position="32,7"  text="Buy or sell resources" />

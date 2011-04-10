@@ -1,15 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
 <Container  size="250,500">
-<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,350" />
-<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,400" />
+<TabBG amount="7"/>
 
 	<Container position="0,70" size="600,400" >
 

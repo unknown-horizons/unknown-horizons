@@ -1,13 +1,6 @@
 <?xml version="1.0"?>
 <Container size="265,410">
-<Icon image="content/gui/images/tabwidget/main_bg_top.png" position="0,0" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,50" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,100" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,150" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,200" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,250" />
-<Icon image="content/gui/images/tabwidget/main_bg_fill.png" position="0,300" />
-<Icon image="content/gui/images/tabwidget/main_bg_bottom.png" position="0,350" />
+<TabBG amount="6"/>
 
 <Container position="0,70" size="265,270" >
 
