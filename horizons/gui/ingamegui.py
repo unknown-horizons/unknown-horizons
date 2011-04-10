@@ -79,20 +79,20 @@ class IngameGui(LivingObject):
 
 		minimap = self.widgets['minimap']
 		minimap.position = (screenwidth - minimap.size[0] -20, 4)
-		minimap.mapEvents({
-			'zoomIn' : self.session.view.zoom_in,
-			'zoomOut' : self.session.view.zoom_out,
-#			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-#			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
-			'speedUp' : self.session.speed_up,
-			'speedDown' : self.session.speed_down
-		})
 		minimap.show()
 
 		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
 
 		self.minimap = Minimap(minimap_rect, self.session, \
 		                       self.session.view.renderer['GenericRenderer'])
+		minimap.mapEvents({
+			'zoomIn' : self.session.view.zoom_in,
+			'zoomOut' : self.session.view.zoom_out,
+			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
+			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'speedUp' : self.session.speed_up,
+			'speedDown' : self.session.speed_down
+		})
 
 		minimap_overlay = minimap.findChild(name='minimap_overlay_image')
 
