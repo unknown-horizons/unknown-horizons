@@ -118,9 +118,6 @@ def generate_map(seed = None) :
 	"""Generates a whole map.
 	@param seed: argument passed to random.seed
 	@return filename to the sqlite db containing the new map"""
-	if seed is None:
-		seed = hash(time.time()) # use a seed we can print out for debugging
-	print 'using seed: ', seed
 	rand = random.Random(seed)
 
 	filename = tempfile.mkstemp()[1]
