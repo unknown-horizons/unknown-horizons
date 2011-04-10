@@ -36,22 +36,28 @@ class TabBG(pychan.widgets.VBox):
 	@param amount: amount of 50px tiles in between top and bottom icon
 	"""
 	ATTRIBUTES = pychan.widgets.VBox.ATTRIBUTES + [IntAttr('amount')]
-	def __init__(self, amount = 0, **kwargs):
-		self.amount = amount
-		print " self %s" % self.amount
+	def __init__(self, amount=0, **kwargs):
 		super(TabBG, self).__init__(
 			name='background_icons',
 			padding=0,
 			border_size=0,
 			**kwargs)
+		# Note: Don't set the amount in the constructor,
+		# as it will not layout correctly, blame pychan for it :-)
+		self.__amount = amount
 		header_path = "content/gui/images/tabwidget/main_bg_top.png"
+		self.addChild(TooltipIcon(image=header_path, name='background_icon_' + '0'))
+
+	def _get_amount(self):
+		return self.__amount
+
+	def _set_amount(self, amount):
+		self.__amount = amount
 		mid_path = "content/gui/images/tabwidget/main_bg_fill.png"
 		footer_path = "content/gui/images/tabwidget/main_bg_bottom.png"
-		self.addChild(TooltipIcon(image=header_path, name='background_icon_' + '0'))
-		print " amount = %s" % self.amount
 		for i in xrange(0,self.amount):
-			print " i = %s" % i
 			mid = TooltipIcon(image=mid_path, name='background_icon_' + unicode(i+1))
 			self.addChild(mid)
 		self.addChild(TooltipIcon(image=footer_path, name='background_icon_' + unicode(self.amount+1)))
-		print self.children
+
+	amount = property(_get_amount, _set_amount)
