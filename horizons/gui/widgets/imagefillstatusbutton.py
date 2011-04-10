@@ -32,7 +32,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self.tooltip = unicode(tooltip)
+		self.tooltip = unicode(_(tooltip))
 		# res_id is used by the TradeWidget for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)
@@ -52,14 +52,14 @@ class ImageFillStatusButton(pychan.widgets.Container):
 			icon_disabled = icon
 		tooltip = db.get_res_name(res)
 		return cls(up_image=icon_disabled if amount == 0 else icon,
-										   down_image=icon_disabled if amount == 0 else icon,
-										   hover_image=icon_disabled if amount == 0 else icon,
-										   text=str(amount),
-			                 tooltip=tooltip,
-										   size=(55, 50),
-										   res_id = res,
-		                   filled = filled,
-										   opaque=False)
+		           down_image=icon_disabled if amount == 0 else icon,
+		           hover_image=icon_disabled if amount == 0 else icon,
+		           text=str(amount),
+		           tooltip=tooltip,
+		           size=(55, 50),
+		           res_id = res,
+		           filled = filled,
+		           opaque=False)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
@@ -74,9 +74,9 @@ class ImageFillStatusButton(pychan.widgets.Container):
 	def _draw(self):
 		"""Draws the icon + bar."""
 		self.button = TooltipButton(up_image=self.up_image,
-												 down_image=self.down_image,
-												 hover_image=self.hover_image,
-		                     tooltip=self.tooltip)
+		                            down_image=self.down_image,
+		                            hover_image=self.hover_image,
+		                            tooltip=self.tooltip)
 		label = pychan.widgets.Label(text=self.text)
 		label.position = self.text_position
 		fill_bar = pychan.widgets.Icon("content/gui/images/tabwidget/green_line.png")

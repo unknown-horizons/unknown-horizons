@@ -73,10 +73,12 @@ class _Tooltip(object):
 			self.gui.addChild(top_image)
 			self.tooltip_items.append(top_image)
 			for i in range(0, line_count):
-				middle_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_middle.png', position=(top_image.position[0], top_image.position[1] + 17 * (1 + i)))
+				middle_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_middle.png',
+				                                   position=(top_image.position[0], top_image.position[1] + 17 * (1 + i)))
 				self.gui.addChild(middle_image)
 				self.tooltip_items.append(middle_image)
-			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_bottom.png', position=(top_image.position[0], top_image.position[1] + 17 + 17 * (line_count)))
+			bottom_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_bottom.png',
+			                                   position=(top_image.position[0], top_image.position[1] + 17 + 17 * (line_count)))
 			self.gui.addChild(bottom_image)
 			self.tooltip_items.append(bottom_image)
 			label = pychan.widgets.Label(text=u"", position=(10, 3))

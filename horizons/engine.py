@@ -244,6 +244,7 @@ class Fife(ApplicationBase):
 		from gui.widgets.toggleimagebutton import ToggleImageButton
 		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
 		from gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
+		from gui.widgets.icongroup import TabBG
 
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)
@@ -251,6 +252,7 @@ class Fife(ApplicationBase):
 		pychan.widgets.registerWidget(ImageFillStatusButton)
 		pychan.widgets.registerWidget(OkButton)
 		pychan.widgets.registerWidget(ProgressBar)
+		pychan.widgets.registerWidget(TabBG)
 		pychan.widgets.registerWidget(ToggleImageButton)
 		pychan.widgets.registerWidget(TooltipIcon)
 		pychan.widgets.registerWidget(TooltipButton)
