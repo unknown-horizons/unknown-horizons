@@ -27,12 +27,12 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from fife.extensions.pychan.widgets.common import UnicodeAttr
 from horizons.gui.widgets import ProgressBar
+from horizons.i18n import load_xml_translated
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 	def init_tooltip(self, tooltip):
-		# no need for load_xml_translated, translations are done in show_tooltip
-		self.gui = pychan.loadXML('tooltip.xml')
+		self.gui = load_xml_translated('tooltip.xml')
 		self.gui.hide()
 		self.tooltip = tooltip
 		self.mapEvents({
