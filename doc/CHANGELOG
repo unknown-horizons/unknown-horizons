@@ -2,8 +2,8 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
-2011-03-??: Milestone 2011.1
-changelog date: MAR 24; rev: 5cbe8b286d093182cc38d7463db2bd3e9bd9d998
+2011-04-??: Milestone 2011.1
+changelog date: APR 11; rev: 2efa6e6fc469641450c654d42ca23deabe493d12
 
 * General
   * New: DFSG compatible branch ready to be included in e.g. official debian repos
@@ -25,20 +25,25 @@ changelog date: MAR 24; rev: 5cbe8b286d093182cc38d7463db2bd3e9bd9d998
   * Change: Refactored resource display when hovering settlements
   * Change: Refactored mechanism that notifies if production is finished
   * Change: Removed deprecated ProductionFinishedListener and on_remove handle
+  * Change: Harmonized callbacks, now use horizons.util.Callback everywhere
   * Change: Detection of exact matches with map file autocompletion in command
             line interface (--start-map / --start-campaign / --load-map)
   * Change: Capitalized resource names
   * Change: Renamed runin to run_in
   * Change: Renamed all occurences of 'campaign' to 'scenario'
+  * Change: Separated popup creation and display in show_popup
+  * Change: show_popup is used everywhere in our code now
   * Change: Improvements to the buildtool
   * Change: added is_selectable attribute to concreteobject
   * Change: Removed old, unmaintained pathfinding tests
   * Change: Moved outdated documentation files to misc repository
   * Change: 1024x768 is current minimum resolution
   * Change: Multiplayer lobby now also displays mismatching games and hints this
+  * Change: Disabled pychan debug mode by default
   * Fix: Re-introduced svn legacy code for easier Win snapshots (github provides
          all repositories as svn if desired => same client to clone FIFE and UH)
   * Fix: Game did not start with an umlaut/special character in settings.xml
+  * Fix: Updated string extraction script to dynamic widget loading
   * Fix: minor issue concerning the creation of random islands
   * Fix: issue with quick- and autosaving
   * Fix: crash when pausing boatbuilder
@@ -46,7 +51,8 @@ changelog date: MAR 24; rev: 5cbe8b286d093182cc38d7463db2bd3e9bd9d998
   * Fix: crash when building clay pit or iron mine
   * Fix: crash when clicking on units that are not selectable
   * Fix: crash when building a fisher
-  * Fix: crash when building fisher boat
+  * Fix: crash when saving a game where a fisher ship's hut got demolished while
+         the ship was outside of it
   * Fix: crash when building branch office
   * Fix: bug with the removed non-buildable trees
   * Fix: possible source of bugs that can occur when saving moving units
@@ -56,16 +62,23 @@ changelog date: MAR 24; rev: 5cbe8b286d093182cc38d7463db2bd3e9bd9d998
 
 * Gameplay and Balancing
   * New: animals no further reproduce when over-populating an island
+  * New: Save remaining part of month for buildings for paying running costs
   * New: Map rotation with , and . keys
   * New: hotkey L for displaying or hiding logbook ingame
-xxx New: Fisher boats get assigned to fisher with least amount of ships when built
   * New: Cam focuses selected group (Ctrl-[num] to group, [num] to select)
   * New: Single non-player units can be selected via dragging
   * Change: Buildings can be grouped
   * Change: default value of transfer amount in trade tab now is 50t
   * Change: islands on map get amount of mountains and clay deposits
   * Change: Collectors can only pick up goods at mine entrance
-  * Change: Smeltery now 4x4
+  * Change: Fish deposit now 1x1 (was 3x3)
+  * Change: Smeltery now 4x4 (was 3x3)
+  * Change: Charcoal burning now 2x3 (was 4x2)
+  * Change: Distillery running costs now 10/5 (was 20/10)
+  * Change: Tavern running costs now 5/0 (was 0/0)
+  * Change: inhabitants at level Settlers consume 1 food per 75 seconds (was 60)
+            and produce 12 happiness (was 13) and
+            produce 5 happiness per education (was 3)
   * Change: Temporarily removed our sheep and made pasture produce lamb wool
   * Change: Lamb wool production 50% faster
   * Change: Updated tutorial (fisher)
@@ -75,7 +88,10 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * Change: selecting a fisher only highlights fish swarms in range, no island
             or sea / water tiles
   * Change: Boatbuilder now produces a (useless) fisherboat
+  * Fix: Constructing trails through several buildings not possible anymore
   * Fix: minor bug concerning decommissioning
+  * Fix: signal fire was not selectable
+  * Fix: tabs of tabwidget blocked large area (width 50 px) all over the screen
   * Fix: Taxes no longer start at 0 when a game is loaded
   * Fix: animals can no longer be handled by two collectors simultaneously
   * Fix: collectors can now reach each building in displayed range
@@ -94,6 +110,7 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * New: building graphics for distillery
   * New: building graphics for smeltery
   * New: building graphics for toolmaker
+  * New: building graphics for pasture
   * New: placeholders for all buildings of increment 3 we have no assets for
   * New: unit 'inhabitant male'
   * New: unit 'inhabitant male 2'
@@ -106,6 +123,8 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * New: Replaced 'Chime the bell' with info about contributing and Summer of Code
   * New: Added slider value display
   * New: Scrolling through savegames updates Save Details
+  * New: minimap rotation with setting
+  * New: introduced xml shortcuts for some TooltipButtons and background Icons
   * Change: Retouched many icons for build menu and resources
   * Change: building graphics for brickyard now animated
   * Change: animation time for signal fire
@@ -118,9 +137,11 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
   * Change: boatbuilder displays current progress if production is paused
   * Change: save-related settings now sliders instead of listboxes
   * Change: Centered settings window
+  * Change: altered text wrap behaviour in tooltips
   * Change: Allow more than one headline per widget
   * Change: Ingame menu and Main menu are more similar
   * Change: Modified default style
+  * Fix: Made \n in tooltips be recognised again
   * Fix: Load correct graphics for buildings with versions differing from
          increment to increment
   * Fix: display of production lines with multiple input or output resources
@@ -132,6 +153,7 @@ xxx New: Fisher boats get assigned to fisher with least amount of ships when bui
          Needs msgfmt in $PATH.
   * New: Translate difficulty, author, description in create_scenario_pot.sh
   * New: Allows translation of all scenarios in create_scenario_pot.sh
+  * Change: Added sorted() call to ensure small guitranslations.py diffs
   * Change: Updated labels to achieve unified spelling style
   * Change: Updated translation template
 
