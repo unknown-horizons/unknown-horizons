@@ -83,7 +83,7 @@ def print_settler_lines():
 		                               (incr, settlername)
 		lines = db("SELECT production_line FROM settler.settler_production_line \
 		            WHERE level = ? ORDER BY production_line", incr)
-		sorted_lines = sorted([(get_prod_line(lines[i][0], tuple)[0][0],lines[i][0]) for i in xrange(0,len(lines))])
+		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
 		for item,id in sorted_lines:
 			time = db("SELECT time FROM production_line WHERE id == ?",id)[0][0]
 			str = '%2s: Each %5s seconds, %ss consume ' % (id, time, settlername)
