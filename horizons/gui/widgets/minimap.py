@@ -244,6 +244,7 @@ class Minimap(object):
 		# if it's acctually used
 		self.rotation += 1
 		self.rotation %= 4
+		self.update_cam()
 		if horizons.main.fife.get_uh_setting("MinimapRotation"):
 			self.draw()
 
@@ -251,6 +252,7 @@ class Minimap(object):
 		# see above
 		self.rotation -= 1
 		self.rotation %= 4
+		self.update_cam()
 		if horizons.main.fife.get_uh_setting("MinimapRotation"):
 			self.draw()
 
