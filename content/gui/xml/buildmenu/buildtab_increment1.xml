@@ -70,7 +70,7 @@
 			tooltip="Sugarcane field: Used in liquor production. Needs a farm." />
 	</Container>
 
-	<Container position="20,182" size="60,80" >
+	<Container position="20,182" size="110,80" >
 		<Label position="0,11" text="Services" name="services_label" />
 
 		<HBox position="0,30" padding="2">
@@ -84,7 +84,7 @@
 			tooltip="Village school: Provides education." />
 	</Container>
 
-	<Container position="130,182" size="60,80" >
+	<Container position="130,182" size="110,80" >
 		<Label position="0,11" text="Military" name="military_label" />
 
 		<HBox position="0,30" padding="2">

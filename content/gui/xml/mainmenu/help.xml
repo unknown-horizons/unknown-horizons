@@ -44,8 +44,9 @@
 		</ScrollArea>-->
 		<Label name="set23" text="{S} = Screenshot" />
 		<Label name="set26" text="{C} = Chat" />
-		<Label name="set25" text="{SHIFT} = Hold to place multiple buildings" />
-	</VBox>
+		<Label name="set25" text="{SHIFT} = Hold to place multiple buildings"
+			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
+	</VBox> <Spacer />
 	<VBox>
 		<Label name="have_fun_lbl" text="Have fun." />
 	</VBox>
