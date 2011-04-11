@@ -95,10 +95,21 @@ def list_all_files():
 	return sorted(result)
 
 def content_from_element(element_name, parse_tree, text_name='text'):
+
+	def _set_default_name(element, default_name):
+		element.setAttribute('name', default_name)
+
+	defaults = {'OkButton' : 'okButton',
+	            'CancelButton' : 'cancelButton',
+	            'DeleteButton' : 'deleteButton'}
+
 	element_list = parse_tree.getElementsByTagName(element_name)
 	for element in element_list:
 		if not len(element.getAttribute('name')):
-			print_n_no_name(element_name, element.getAttribute(text_name))
+			if defaults.has_key(element_name):
+				_set_default_name(element, defaults[element_name])
+			else:
+				print_n_no_name(element_name, element.getAttribute(text_name))
 
 	element_strings = []
 	for element in element_list:
@@ -122,6 +133,9 @@ def content_from_file(filename):
 		content_from_element('CheckBox', parsed) + \
 		content_from_element('RadioButton', parsed) + \
 		content_from_element('Window', parsed, 'title') + \
+		content_from_element('OkButton', parsed, 'tooltip') + \
+		content_from_element('CancelButton', parsed, 'tooltip') + \
+		content_from_element('DeleteButton', parsed, 'tooltip') + \
 		content_from_element('TooltipButton', parsed, 'tooltip') + \
 		content_from_element('TooltipIcon', parsed, 'tooltip') + \
 		content_from_element('TooltipLabel', parsed, 'tooltip') + \
