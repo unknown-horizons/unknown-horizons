@@ -10,7 +10,7 @@
 
 	<Container size="320,500"  position="55,32"  name="left_page">
 		<Label text="Gamelobby"  position="115,10"  name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
 		<Label text="Chat:"  position="22,50"  name="headline" />
 		<ScrollArea name="chat_scroll_area"  min_size="300,335"  position="22,75">

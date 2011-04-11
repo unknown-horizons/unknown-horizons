@@ -40,24 +40,26 @@
 			<Label text="rudi_s (Several improvements)" />
 			<Label text="Yeya (Random maps)" />
 		</VBox>
-	</VBox> <Spacer />
+	</VBox>
 
 	<VBox> <Label text="2011"  name="headline" />
 		<VBox  name="box">
 			<Label text="Grickit (Random maps)" />
 			<Label text="sids.aquarius (Bugfixes)" />
 			<Label text="mayanks43 (Campaign system)" />
-			<Label text="" />
+			<Label text="mihaibivol (Minimap rotation)" />
+			<Label text="sient (Minimap rectangle)" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
 
 <VBox position="525,70" name="credits2">
-	<VBox> <Label text=""  name="headline" />
-		<VBox name="book2">
+
+	<VBox><!-- <Label text="2011"  name="headline" />-->
+		<VBox  name="box">
 			<Label text="" />
 		</VBox>
-	</VBox>
+	</VBox> <Spacer />
 </VBox>
 
 <Container position="0,500"  size="1000,100"> <!-- buttons, always visible.

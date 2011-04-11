@@ -8,7 +8,7 @@
 <Container size="800,800"  position="100,100">
 	<Icon image="content/gui/images/background/book.png" />
 
-	<Container size="320,500"  position="75,32"  name="left_side">
+	<Container size="320,500"  position="55,32"  name="left_side">
 		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
 		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
@@ -46,11 +46,11 @@
 			tooltip="Exit to multiplayer menu" />
 	</Container>
 
-		<!--
-		this should acctually be a Container, that contains subcontainers, but with Container,
-		the content doesn't show up. Pychan wasn't designed for Containers within Containers, 
-		which might be the source of this bug
-		-->
+	<!--
+	this should actually be a Container, that contains subcontainers, but with Container,
+	the content doesn't show up. Pychan wasn't designed for Containers within Containers,
+	which might be the source of this bug
+	-->
 	<VBox name="playerdataselectioncontainer"  position="100,190" />
 
 	<Container size="320,500"  position="420,32"  name="right_side">
@@ -63,8 +63,7 @@
 	-->
 
 		<Label name="create_game_lbl"  text="Create game:"  position="170,470" />
-		<OkButton position="255,460"  name="create" 
-			tooltip="Create this new game" />
+		<OkButton position="255,460"  name="create"  tooltip="Create this new game" />
 
 	</Container>
 
