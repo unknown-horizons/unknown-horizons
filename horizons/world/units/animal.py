@@ -206,9 +206,11 @@ class WildAnimal(CollectorAnimal, Collector):
 			return False
 		return super(WildAnimal, self).check_possible_job_target(provider)
 
+	""" unused for now
 	def reroute(self):
 		# when target is gone, search another one
 		self.search_job()
+	"""
 
 	def end_job(self):
 		super(WildAnimal, self).end_job()

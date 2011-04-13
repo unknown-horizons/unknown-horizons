@@ -58,7 +58,9 @@ class Collector(StorageHolder, Unit):
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', # doing nothing, waiting for job
-	              'moving_to_target', 'working', 'moving_home', \
+	              'moving_to_target', \
+	              'working', \
+	              'moving_home', \
 	              'waiting_for_animal_to_stop', # herder: wait for job target to finish for collecting
 	              'waiting_for_herder', # animal: has stopped, now waits for herder
 	              'no_job_walking_randomly', # animal: like idle, but moving instead of standing still
@@ -352,10 +354,12 @@ class Collector(StorageHolder, Unit):
 		assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; inventory: %s" % \
 		       (self, res, remnant, self.inventory)
 
+	""" unused for now
 	def reroute(self):
-		"""Reroutes the collector to a different job.
-		Can be called the current job can't be executed any more"""
+		""Reroutes the collector to a different job.
+		Can be called the current job can't be executed any more""
 		raise NotImplementedError
+	"""
 
 	def end_job(self):
 		"""Contrary to setup_new_job"""
