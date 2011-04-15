@@ -81,6 +81,13 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 			renderer.addColored(building._instance, *cls.selection_color)
 			cls._selected_tiles.append(building)
 
+	def deselect(self):
+		# TODO: find out if deselect_building should be dropped in favor of deselect
+		# since the latter is faster, and the specific deselecting of the first doesn't
+		# seem to be needed anywhere
+		# if so, this can be removed
+		self.deselect_building(self.session)
+
 	@classmethod
 	def deselect_building(cls, session):
 		"""@see select_building,
@@ -88,7 +95,11 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
 		for tile in cls._selected_tiles:
 			remove_colored(tile._instance)
-		cls._selected_tiles = []
+		# this acctually means SelectableBuilding._selected_tiles = []
+		# writing self._selected_tiles = [] however creates a new variable in this instance,
+		# which isn't what we want. Therefore this workaround:
+		while cls._selected_tiles:
+			cls._selected_tiles.pop()
 
 class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.

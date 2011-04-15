@@ -261,7 +261,7 @@ class IngameGui(LivingObject):
 			self.widgets['status'].show()
 
 	def update_settlement(self):
-		cityinfo = self.widgets['city_info']	
+		cityinfo = self.widgets['city_info']
 		cityinfo.mapEvents({
 			'city_name': Callback(self.show_change_name_dialog, self.settlement)
 			})
@@ -382,7 +382,7 @@ class IngameGui(LivingObject):
 
 	def set_status_position(self, resource_name):
 		icon_name = resource_name + '_icon'
-		for i in xrange(1, 3): 
+		for i in xrange(1, 3):
 			lbl_name = resource_name + '_' + str(i)
 			# tools_1 = inventory amount, tools_2 = cost of to-be-built building
 			if resource_name == 'gold':
