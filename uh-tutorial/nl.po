@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-16 18:40+0200\n"
+"PO-Revision-Date: 2011-04-16 18:42+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -317,11 +317,11 @@ msgstr ""
 "\n"
 "OPDRACHT: Plaats een jager en een visser.\n"
 "\n"
-"Vergeet geen wegen aan te leggen naar het kantoor."
+"Vergeet geen wegen aan te leggen naar het kantoor!"
 
 #: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr "Plaats een jager en een visser. Verbind ze met het kantoor"
+msgstr "Plaats een jager en een visser. Verbind ze met het kantoor."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
@@ -571,7 +571,7 @@ msgstr ""
 
 #: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
-msgstr "Bereik een voorraad van tenminste 30 stuks gereedschap"
+msgstr "Bereik een voorraad van tenminste 30 stuks gereedschap."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
@@ -732,7 +732,7 @@ msgstr ""
 "plaatsen.\n"
 "\n"
 "Let op: voor aardappels heeft U een verbinding nodig met de boerderij - niet "
-"met het aardappelveld!"
+"met het aardappelveld."
 
 #: po/tutorial.py:52
 msgid ""
@@ -931,7 +931,7 @@ msgstr ""
 "De forums zijn open voor iedereen!\n"
 "\n"
 "De beste resultaten tot nu toe zijn behaald via het IRC kanaal, wij raden "
-"aan dit eerst te proberen."
+"aan dit eerst te proberen (-;"
 
 #: po/tutorial.py:66
 msgid "Thanks!"
