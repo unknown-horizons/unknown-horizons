@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-01-21 19:29+0100\n"
-"Last-Translator: Sebastien Charpentier <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-04-16 18:22+0200\n"
+"Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: po/tutorial.py:1
 msgid "Tutorial"
@@ -41,7 +42,6 @@ msgid "Welcome to Unknown Horizons!"
 msgstr "Bienvenue dans Unknown Horizons !"
 
 #: po/tutorial.py:6
-#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"
@@ -76,10 +76,9 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "NOUVELLE MISSION : S'ÉTABLIR SUR UNE ILE"
+msgstr "MISSION : S'ÉTABLIR SUR UNE ILE"
 
 #: po/tutorial.py:8
-#, fuzzy
 msgid ""
 "To move your ship, select it with a left click and right click on the location you want it to go to.\n"
 "\n"
@@ -114,10 +113,9 @@ msgstr ""
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "NOUVELLE MISSION : DÉCHARGEZ VOS MARCHANDISES"
+msgstr "MISSION : DÉCHARGEZ MARCHANDISES"
 
 #: po/tutorial.py:10
-#, fuzzy
 msgid ""
 "Now that you have built the Branch Office, you need to move some of your resources to its stock.\n"
 "\n"
@@ -149,7 +147,6 @@ msgstr ""
 "MISSION : Ouvrez le dialogue des échanges commerciaux."
 
 #: po/tutorial.py:11
-#, fuzzy
 msgid ""
 "The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
 "\n"
@@ -191,10 +188,9 @@ msgstr ""
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "NOUVELLE MISSION : INSTALLEZ UN BUCHERON"
+msgstr "NOUVELLE MISSION : BUCHERON"
 
 #: po/tutorial.py:14
-#, fuzzy
 msgid ""
 "With your new construction material in the branch office, you can start to construct some basic buildings.\n"
 "\n"
@@ -210,26 +206,23 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered only the basic buildings."
 msgstr ""
 "Avec les nouveaux matériaux de construction disponibles dans votre "
-"succursale, vous pouvez commencer à construire des bâtiments simples.\r\n"
-"\r\n"
-"Etablissons d'abord un bûcheron.\r\n"
-"\r\n"
+"succursale, vous pouvez commencer à construire des bâtiments simples.\n"
+"\n"
+"Etablissons d'abord un bûcheron.\n"
+"\n"
 "C'est essentiel parce que les planches, à cette étape, sont les seuls "
-"matériaux que les marins ont les moyens d'acquérir pour monter leurs tentes."
-"\r\n"
-"\r\n"
-"Le pêcheur a également besoin de planches pour construire son bâteau.\r\n"
-"\r\n"
+"matériaux que les marins ont les moyens d'acquérir pour monter leurs tentes.\n"
+"\n"
+"Le pêcheur a également besoin de planches pour construire son bâteau.\n"
+"\n"
 "Pour construire une cabane de bûcheron, ouvrez le menu des constructions en "
-"cliquant sur la grande icône sous la mini-carte, ou en pressant la touche B."
-"\r\n"
-"\r\n"
-"Le menu des constructions est classé par niveaux.\r\n"
+"cliquant sur la grande icône sous la mini-carte, ou en pressant la touche B.\n"
+"\n"
+"Le menu des constructions est classé par niveaux.\n"
 "Cela signifie que seuls les bâtiments simples sont accessibles quand on est "
 "au niveau des marins (ce qui est votre cas actuellement)."
 
 #: po/tutorial.py:15
-#, fuzzy
 msgid ""
 "As your civilization advances, you also gain more and more complex buildings.\n"
 "\n"
@@ -271,10 +264,9 @@ msgstr ""
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NOUVELLE MISSION: APPROVISIONNEMENT EN NOURRITURE"
+msgstr "APPROVISIONNEMENT EN NOURRITURE"
 
 #: po/tutorial.py:18
-#, fuzzy
 msgid ""
 "You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
 "\n"
@@ -304,7 +296,6 @@ msgstr ""
 "approvisionnement constant."
 
 #: po/tutorial.py:19
-#, fuzzy
 msgid ""
 "The Fisher needs a coastal building site like the branch office - and nothing more.\n"
 "\n"
@@ -341,10 +332,9 @@ msgstr ""
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "NOUVELLE MISSION: LA PLACE CENTRALE"
+msgstr "MISSION: LA PLACE CENTRALE"
 
 #: po/tutorial.py:22
-#, fuzzy
 msgid ""
 "Your residents need a main square where they can fetch their goods from.\n"
 "\n"
@@ -377,7 +367,6 @@ msgstr ""
 "MISSION: CONSTRUIRE UNE PLACE CENTRALE"
 
 #: po/tutorial.py:23
-#, fuzzy
 msgid ""
 "Now let's have a closer look at the main square.\n"
 "\n"
@@ -417,7 +406,6 @@ msgid "NEW TASK: RESIDENTIAL BUILDINGS"
 msgstr "NOUVELLE MISSION: L'HABITAT"
 
 #: po/tutorial.py:26
-#, fuzzy
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.\n"
 "\n"
@@ -449,7 +437,6 @@ msgid "Build a tent and connect it to the main square."
 msgstr "Construisez une tente et connectez la à la place centrale."
 
 #: po/tutorial.py:28
-#, fuzzy
 msgid ""
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
@@ -480,6 +467,12 @@ msgstr ""
 "les habitants en ont vraiment marre, ils vous tournent le dos à votre "
 "village.\n"
 "\n"
+"Note that you can also change the global tax settings here, too.\n"
+"\n"
+"TASK: Build at least three additional tents.\n"
+"\n"
+"TIP: Holding down SHIFT eases constructing multiple buildings of the same "
+"kind."
 
 #: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
@@ -487,10 +480,9 @@ msgstr "Construisez 3 tentes supplémentaires et reliez les à la place centrale
 
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NOUVELLE MISSION : CONSTRUIRE UN FEU DE SIGNALISATION"
+msgstr "MISSION : FEU DE SIGNALISATION"
 
 #: po/tutorial.py:31
-#, fuzzy
 msgid ""
 "Can you see the ship passing your island from time to time?\n"
 "\n"
@@ -522,7 +514,6 @@ msgstr ""
 "de votre succursale, il montrera la voie aux bateaux."
 
 #: po/tutorial.py:32
-#, fuzzy
 msgid ""
 "After this little advertisment, the trader will stop by from time to time and look into your branch office.\n"
 "\n"
@@ -561,7 +552,7 @@ msgstr "Construisez un feu de signalisation à la côte proche de la Succursale"
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NOUVELLE MISSION : APPRENDRE LE COMMERCE"
+msgstr "APPRENDRE LE COMMERCE"
 
 #: po/tutorial.py:35
 msgid ""
@@ -592,6 +583,26 @@ msgid ""
 "TASK: Buy as many tools as you need to have 30 tools in stock!\n"
 "If you still have some in your ship's inventory, this seems like a good point to unload them."
 msgstr ""
+"Vendre fonctionne de la même façon. Un emplacement 'vente' avec 18 tonnes en "
+"stock et un curseur à 13 vendra jusqu'a 5 tonnes.\n"
+"\n"
+"Si le bateau-marchand vous en achete que 2 tonnes, vous ne pourrez rien y "
+"faire. A part etre patient ;-)\n"
+"\n"
+"Unknown Horizons propose un systeme de prix intelligent, la valeur d'une "
+"unité peut donc varier.\n"
+"Il n'est pas possible de changer les prix!\n"
+"\n"
+"Vous pouvez voir votre balance commerciale dans l'onglet 'Compte' mettant en "
+"relief 'Vente' et 'Achat'.\n"
+"\n"
+"Comme entrainement, nous voudrions maintenant que vous...\n"
+"\n"
+"MISSION: ... achetiez autant d'outils que necessaire pour en avoir 30 en "
+"stock!\n"
+"\n"
+"Si vous en avez encore dans votre vaisseau, il pourrait etre interessant de "
+"les décharger."
 
 #: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
@@ -599,10 +610,9 @@ msgstr "Atteignez un stock d'au moins 30 outils."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "NOUVELLE MISSION : CONSTRUISEZ UN PAVILLON"
+msgstr "CONSTRUISEZ UN PAVILLON"
 
 #: po/tutorial.py:39
-#, fuzzy
 msgid ""
 "Those tools will be enough for the moment. Well done!\n"
 "\n"
@@ -636,7 +646,6 @@ msgstr ""
 "disponibles."
 
 #: po/tutorial.py:40
-#, fuzzy
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
 "\n"
@@ -670,10 +679,9 @@ msgstr "Construisez un pavillon connecté aux tentes. "
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr "NOUVELLE MISSION: NIVEAU SUIVANT"
+msgstr "MISSION: NIVEAU SUIVANT"
 
 #: po/tutorial.py:43
-#, fuzzy
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.\n"
 "\n"
@@ -701,7 +709,7 @@ msgstr ""
 "\n"
 "Après quelque temps, un premier pionnier devrait aller à la place centrale y "
 "chercher le nouveau matériel de construction nécessaire à la construction "
-"d'une maison en rondin. Cette maison remplacera la vieille tente. "
+"d'une maison en rondin. Cette maison remplacera la vieille tente."
 
 #: po/tutorial.py:44
 msgid ""
@@ -722,7 +730,7 @@ msgstr ""
 
 #: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
-msgstr "NOUVELLE MISSION : CONSTRUISEZ UNE FERME"
+msgstr "NOUVELLE MISSION : UNE FERME"
 
 #: po/tutorial.py:47
 msgid ""
@@ -760,7 +768,7 @@ msgstr ""
 
 #: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
-msgstr "NOUVELLE MISSION : CONSTRUISEZ DES CHAMPS"
+msgstr "CONSTRUISEZ DES CHAMPS"
 
 #: po/tutorial.py:51
 msgid ""
@@ -797,7 +805,7 @@ msgstr ""
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "NOUVELLE MISSION : CONSTRUIRE UN ENTREPÔT"
+msgstr "CONSTRUIRE UN ENTREPÔT"
 
 #: po/tutorial.py:55
 msgid ""
@@ -833,9 +841,8 @@ msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
 
 #: po/tutorial.py:58
-#, fuzzy
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "NOUVELLE MISSION : CONSTRUISEZ UNE FERME"
+msgstr "NOUVELLE MISSION"
 
 #: po/tutorial.py:59
 msgid ""
