@@ -35,5 +35,7 @@ def find_available_languages():
 		for j in glob('%s/*/*/unknownhorizons.mo' % i):
 			splited = j.split(os.sep)
 			languages.append((splited[-3], os.sep.join(splited[:-3])))
+			#TODO we need to strip strings here if an "@" occurs and only
+			# use the language code itself (e.g. ca@valencia.po -> ca.po)
 
 	return languages

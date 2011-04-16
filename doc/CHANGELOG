@@ -2,8 +2,8 @@ CHANGELOG
 Unknown Horizons
 -----------------------------------------------------
 
-2011-04-??: Milestone 2011.1
-changelog date: APR 11; rev: 2efa6e6fc469641450c654d42ca23deabe493d12
+2011-04-16: Milestone 2011.1
+changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
 
 * General
   * New: DFSG compatible branch ready to be included in e.g. official debian repos
@@ -50,10 +50,11 @@ changelog date: APR 11; rev: 2efa6e6fc469641450c654d42ca23deabe493d12
   * Fix: crash when activating a mine that has already run out of resources
   * Fix: crash when building clay pit or iron mine
   * Fix: crash when clicking on units that are not selectable
-  * Fix: crash when building a fisher
   * Fix: crash when saving a game where a fisher ship's hut got demolished while
          the ship was outside of it
+  * Fix: crash when building a fisher
   * Fix: crash when building branch office
+  * Fix: crash when building branch office from ship after fisher was selected
   * Fix: bug with the removed non-buildable trees
   * Fix: possible source of bugs that can occur when saving moving units
   * Fix: crash when collectors got cancelled while heading home
@@ -147,7 +148,7 @@ changelog date: APR 11; rev: 2efa6e6fc469641450c654d42ca23deabe493d12
   * Fix: display of production lines with multiple input or output resources
 
 * Translations
-  * New: tutorial translations: Italian
+  * New: tutorial translations: Dutch, Italian, French
   * New: translations: Russian, Slovenian
   * New: simple script to compile translations on Windows.
          Needs msgfmt in $PATH.
@@ -156,11 +157,12 @@ changelog date: APR 11; rev: 2efa6e6fc469641450c654d42ca23deabe493d12
   * Change: Added sorted() call to ensure small guitranslations.py diffs
   * Change: Updated labels to achieve unified spelling style
   * Change: Updated translation template
+  * Change: Updated almost all translations
 
 * Audio
   * New: two completely new gameplay tracks
-  * New: one gameplay remastering
-  * Change: Replaced Sampling build.ogg by own file licensed under CC-BY-SA 3.0
+  * New: one remastered gameplay track
+  * Change: Replaced build.ogg by own file licensed under CC-BY-SA 3.0
   * Change: Replaced ships_bell.ogg by a file licensed under CC-0
   * Change: hazure relicensed our lumberjack sounds under CC-BY-SA 3.0
   * Change: Moved license file for sounds to main LICENSE
