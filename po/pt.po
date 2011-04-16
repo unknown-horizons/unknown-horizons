@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-03 21:59+0200\n"
+"Last-Translator: Tobias <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -335,9 +336,11 @@ msgstr ""
 msgid "Limit: %st per slot"
 msgstr ""
 
+# 76%
 #: horizons/i18n/guitranslations.py:315
+#, fuzzy
 msgid "Sailor buildings"
-msgstr ""
+msgstr " Configuração"
 
 #: horizons/i18n/guitranslations.py:316
 #, fuzzy
@@ -981,9 +984,12 @@ msgstr ""
 msgid "Free play"
 msgstr ""
 
+# 90%
+# 100%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Começar o jogo:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"

@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-16 19:04+0200\n"
+"Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -120,9 +121,8 @@ msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:267
-#, fuzzy
 msgid "Saved 1 time\n"
-msgstr "%d keer opgeslagen"
+msgstr "Eenmal opgeslagen\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -138,10 +138,10 @@ msgstr "Opgeslagen spel versie %d"
 #, python-format
 msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
-"Need ver. %(need)d!\n"
+"Need ver. %(need)d!"
 msgstr ""
 "WAARSCHUWING: Versie %(ver) ongeschikt!\n"
-"Versie %(need) vereist!\r\n"
+"Versie %(need) vereist!"
 
 #: horizons/gui/gui.py:280
 #, fuzzy
@@ -251,9 +251,12 @@ msgstr ""
 msgid "Resources still needed:"
 msgstr "Grondstoffen vereist:"
 
+# 76%
+# 100%
 #: horizons/gui/tabs/boatbuildertab.py:170
+#, fuzzy
 msgid "Fisher boats"
-msgstr ""
+msgstr "Vissersboot"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
@@ -363,29 +366,16 @@ msgid "Companies"
 msgstr "Bedrijven"
 
 #: horizons/i18n/guitranslations.py:319
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Tent: \n"
-"Woonruimte voor \n"
-"inwoners."
+msgstr "Tent: Woonruimte voor inwoners."
 
 #: horizons/i18n/guitranslations.py:320
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Opslag: \n"
-"Vergroot voorraad \n"
-"en levert \n"
-"verzamelaars."
+msgstr "Opslag: Vergroot voorraad en levert verzamelaars."
 
 #: horizons/i18n/guitranslations.py:321
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
-msgstr ""
-"Spoor: \n"
-"Vereist om \n"
-"goederen te verzamelen."
+msgstr "Spoor: Vereist om goederen te verzamelen."
 
 #: horizons/i18n/guitranslations.py:322
 #, fuzzy
@@ -1061,9 +1051,12 @@ msgstr "Willekeurige kaart"
 msgid "Free play"
 msgstr "Vrij spel"
 
+# 90%
+# 100%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Start spel:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
