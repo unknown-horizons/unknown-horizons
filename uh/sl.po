@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-17 20:41+0200\n"
+"PO-Revision-Date: 2011-04-17 20:50+0200\n"
 "Last-Translator: andrejz <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -856,7 +856,7 @@ msgstr "Končaj lobi igre"
 
 #: horizons/i18n/guitranslations.py:487
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Nova igra - več igralcev"
 
 #: horizons/i18n/guitranslations.py:488
 msgid "Apply:"
@@ -895,9 +895,8 @@ msgid "Join the selected game"
 msgstr "Pridruži se izbrani igri"
 
 #: horizons/i18n/guitranslations.py:500
-#, fuzzy
 msgid "Restart required"
-msgstr "Zahtevan je ponoven zagon"
+msgstr "Zahtevan je ponovni zagon"
 
 #: horizons/i18n/guitranslations.py:501
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -924,9 +923,8 @@ msgid "Used renderer:"
 msgstr "Uporabljen izrisovalnik:"
 
 #: horizons/i18n/guitranslations.py:509
-#, fuzzy
 msgid "Full screen:"
-msgstr "Celozaslonski način"
+msgstr "Celozaslonski način:"
 
 #: horizons/i18n/guitranslations.py:510
 msgid "Sound"
@@ -941,9 +939,8 @@ msgid "Effects volume:"
 msgstr "Glasnost učinkov:"
 
 #: horizons/i18n/guitranslations.py:513
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Omogoči zvok"
+msgstr "Omogoči zvok:"
 
 #: horizons/i18n/guitranslations.py:514
 msgid "Saving"
@@ -983,7 +980,7 @@ msgstr "Podrobnosti:"
 
 #: horizons/i18n/guitranslations.py:525
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Nova igra - en igralec"
 
 #: horizons/i18n/guitranslations.py:527
 msgid "Choose a map to play:"
@@ -1005,9 +1002,10 @@ msgstr "Naključni zemljevid"
 msgid "Free play"
 msgstr "Prosto igranje"
 
+# 90%
 #: horizons/i18n/guitranslations.py:533
 msgid "Start game"
-msgstr ""
+msgstr "Začni igro"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
@@ -1053,11 +1051,8 @@ msgid "Resume"
 msgstr "Nadaljuj"
 
 #: horizons/i18n/guitranslations.py:546
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
-"Prekliči ves \n"
-"napredek gradnje"
+msgstr "Prekliči ves napredek gradnje"
 
 #: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:569
 #: horizons/i18n/guitranslations.py:591
@@ -1065,9 +1060,8 @@ msgid "Running costs"
 msgstr "Stroški delovanja"
 
 #: horizons/i18n/guitranslations.py:549
-#, fuzzy
 msgid "Fishing boats"
-msgstr "Ribiški čoln"
+msgstr "Ribiški čolni"
 
 #: horizons/i18n/guitranslations.py:550
 msgid "Fishing boat"
@@ -1171,12 +1165,8 @@ msgid "Health:"
 msgstr "Zdravje:"
 
 #: horizons/i18n/guitranslations.py:606
-#, fuzzy
 msgid "Click to change the name of this ship."
-msgstr ""
-"Kliknite za \n"
-"spremembo imena \n"
-"te ladje."
+msgstr "Kliknite za spremembo imena te ladje."
 
 #: horizons/i18n/guitranslations.py:607
 #, fuzzy
@@ -1411,7 +1401,7 @@ msgstr "Opekarna"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Žganje oglja"
 
 #: sqlite/Building
 msgid "Clay Deposit"
@@ -1423,7 +1413,7 @@ msgstr "Rudnik gline"
 
 #: sqlite/Building
 msgid "Distillery"
-msgstr ""
+msgstr "Destilarna"
 
 #: sqlite/Building
 msgid "Farm"
@@ -1431,7 +1421,7 @@ msgstr "Kmetija"
 
 #: sqlite/Building
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Ribolovno področje"
 
 #: sqlite/Building
 msgid "Fisherman's Tent"
@@ -1443,7 +1433,7 @@ msgstr "Lovčev šotor"
 
 #: sqlite/Building
 msgid "Iron Mine"
-msgstr ""
+msgstr "Rudnik železa"
 
 #: sqlite/Building
 msgid "Log"
@@ -1463,7 +1453,7 @@ msgstr "Glavni trg"
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Gora"
 
 #: sqlite/Building
 msgid "Pasture"
@@ -1487,7 +1477,7 @@ msgstr "Signalni ogenj"
 
 #: sqlite/Building
 msgid "Smeltery"
-msgstr ""
+msgstr "Talilnica"
 
 #: sqlite/Building
 msgid "Storage Tent"
@@ -1499,7 +1489,7 @@ msgstr "Sladkorno polje"
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Gostilna"
 
 #: sqlite/Building
 msgid "Tent"
@@ -1511,7 +1501,7 @@ msgstr "Razviline_šotora"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Izdelovalec orodij"
 
 #: sqlite/Building
 msgid "Trail"
@@ -1591,7 +1581,7 @@ msgstr "Vaša igra je bila hitro shranjena."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "V vašem rudniku ni več surovin."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
@@ -1607,7 +1597,7 @@ msgstr "opeke"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "oglje"
 
 #: sqlite/Resources
 msgid "clay"
@@ -1635,7 +1625,7 @@ msgstr "hrana"
 
 #: sqlite/Resources
 msgid "get-together"
-msgstr ""
+msgstr "zbiranje"
 
 #: sqlite/Resources
 msgid "grass"
@@ -1647,11 +1637,11 @@ msgstr "zadovoljstvo"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "železne palice"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "železova ruda"
 
 #: sqlite/Resources
 msgid "lamb wool"
@@ -1659,7 +1649,7 @@ msgstr "ovčja volna"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "žganje"
 
 #: sqlite/Resources
 msgid "potatoes"
@@ -1671,11 +1661,11 @@ msgstr "surova glina"
 
 #: sqlite/Resources
 msgid "raw fish"
-msgstr ""
+msgstr "surove ribe"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "surovo železo"
 
 #: sqlite/Resources
 msgid "raw sugar"
@@ -1715,7 +1705,7 @@ msgstr "pionir"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "mornar"
 
 #: sqlite/SettlerLevel
 msgid "settler"
