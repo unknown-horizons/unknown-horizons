@@ -27,6 +27,7 @@ import logging
 
 import horizons.main
 
+from horizons.i18n.utils import N_
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
@@ -373,10 +374,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			else:
 				details_label.text += _("Saved at %s\n") % \
 										time.strftime(_("%H:%M, %A, %B %d"), time.localtime(savegame_info['timestamp']))
-			if savegame_info['savecounter'] == 1:
-				details_label.text += _("Saved 1 time\n")
-			else:
-				details_label.text += _("Saved %d times\n") % savegame_info['savecounter']
+			counter = savegame_info['savecounter']
+			# N_ takes care of plural forms for different languages
+			details_label.text += N_("Saved %(counter)d time\n", \
+			                         "Saved %(counter)d times\n", \
+			                         counter) % {'counter':counter}
 			details_label.stylize('book_t')
 
 			from horizons.constants import VERSION
