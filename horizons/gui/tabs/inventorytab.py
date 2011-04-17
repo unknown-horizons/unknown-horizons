@@ -21,6 +21,7 @@
 
 from tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
+from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
 
 class InventoryTab(TabInterface):
@@ -58,26 +59,41 @@ class ShipInventoryTab(InventoryTab):
 		super(ShipInventoryTab, self).__init__(
 			widget = 'ship_inventory.xml',
 			icon_path='content/gui/icons/tabwidget/common/inventory_%s.png',
-			instance = instance
+			instance = instance,
 		)
-#		self.button_up_image = 'content/gui/icons/tabwidget/common/inventory_u.png'
-	#	self.button_active_image = 'content/gui/icons/tabwidget/common/inventory_a.png'
-		#self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
-#		self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 		self.tooltip = _("Ship inventory")
 
+	def add_route(self):
+		waypoints = [{
+		  'branch_office' : b,
+		  'resource_list' : {4:-1}, # unload one unit of boards everywhere
+		  } for b in self.instance.session.world.get_branch_offices()]
+		self.instance.create_route(waypoints)
+		self.instance.route.enable()
+
+	def configure_route(self):
+		route_menu = RouteConfig(self.instance)
+		route_menu.toggle_visibility()
+
 	def refresh(self):
-		branches = self.instance.session.world.get_branch_offices(self.instance.position, self.instance.radius, self.instance.owner)
+		session = self.instance.session
+		branches = session.world.get_branch_offices(self.instance.position, \
+		                                            self.instance.radius, \
+		                                            self.instance.owner)
+		events = {}
+
+		events['configure_route/mouseClicked'] = Callback(self.configure_route)
+
 		if len(branches) > 0:
-			events = { 'trade': Callback(self.instance.session.ingame_gui.show_menu, TradeWidget(self.instance)) }
-			self.widget.mapEvents(events)
+			events['trade'] = Callback(session.ingame_gui.show_menu, TradeWidget(self.instance))
 			self.widget.findChild(name='bg_button').set_active()
 			self.widget.findChild(name='trade').set_active()
 		else:
-			events = { 'trade': None }
-			self.widget.mapEvents(events)
+			events['trade'] = None
 			self.widget.findChild(name='bg_button').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
+
+		self.widget.mapEvents(events)
 		super(ShipInventoryTab, self).refresh()
 
 	def show(self):

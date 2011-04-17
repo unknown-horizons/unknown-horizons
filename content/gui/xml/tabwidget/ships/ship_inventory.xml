@@ -13,22 +13,27 @@
 
 	<Inventory name="inventory" size="316,314" position="15,46"/>
 
-	<Label name="load_unload_label" position="25, 200" text="Load/Unload:" />
-	<Icon image="content/gui/images/background/hr.png" position="20,165" />
+	<Label name="load_unload_label" position="25, 170" text="Load/Unload:" />
+	<Label name="configure_route_label" position="25, 225" text="Configure trading route:" />
+	<Icon image="content/gui/images/background/hr.png" position="20,140" />
 
-	<HBox position="180,185">
-		<ToggleImageButton name="bg_button" border_size="0" 
-			inactive_image="content/gui/images/buttons/msg_button_bw.png" 
-			up_image="content/gui/images/buttons/msg_button.png" 
-			down_image="content/gui/images/buttons/msg_button_d.png" 
+	<HBox position="180,156">
+		<ToggleImageButton name="bg_button" border_size="0"
+			inactive_image="content/gui/images/buttons/msg_button_bw.png"
+			up_image="content/gui/images/buttons/msg_button.png"
+			down_image="content/gui/images/buttons/msg_button_d.png"
 			hover_image="content/gui/images/buttons/msg_button_h.png" />
 	</HBox>
 
-	<ToggleImageButton name="trade" position="190,195" border_size="0"
-		inactive_image="content/gui/icons/ship/civil_32_bw.png" 
-		up_image="content/gui/icons/ship/civil_32.png" 
-		down_image="content/gui/icons/ship/civil_32_h.png" 
+	<ToggleImageButton name="trade" position="190,165" border_size="0"
+		inactive_image="content/gui/icons/ship/civil_32_bw.png"
+		up_image="content/gui/icons/ship/civil_32.png"
+		down_image="content/gui/icons/ship/civil_32_h.png"
 		hover_image="content/gui/icons/ship/civil_32_h.png" />
-
+	<ToggleImageButton name="configure_route" position="180,210" border_size="0"
+		inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+		up_image="content/gui/icons/templates/production/toggle_active_n.png"
+		down_image="content/gui/icons/templates/production/toggle_active_d.png"
+		hover_image="content/gui/icons/templates/production/toggle_active_h.png" />
 </Container>
 </Container>

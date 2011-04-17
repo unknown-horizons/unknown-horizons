@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Container name="configure_route" size="1020,580" position="-20,0">
+<Icon image="content/gui/images/background/book.png" position="100,0" />
+
+	<!-- left side -->
+
+<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="175,40" padding="2">
+	<Icon image="content/gui/images/background/hr.png" />
+
+
+</VBox>
+<ToggleImageButton name="start_route" border_size="0" position="175,480"
+		inactive_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+		up_image="content/gui/icons/templates/production/toggle_active_n.png"
+		down_image="content/gui/icons/templates/production/toggle_active_d.png"
+		tooltip="Start / Stop route" />
+
+
+	<!-- right side -->
+
+<VBox max_size="350,508" min_size="350,508" position="520,40" padding="2">
+	<Label name="head_right" font="libertine_headline"
+		wrap_text="0" max_size="320, 25" min_size="320, 25" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<Label name="lbl_right"  font="libertine_14_black"
+		wrap_text="1" max_size="320,432" />
+
+	<ScrollArea max_size="300,400" horizontal_scrollbar="0">
+		<ListBox name="branch_office_list" />
+	</ScrollArea>
+	<TooltipButton name="add_bo" border_size="0"
+		up_image="content/gui/images/buttons/parrow_left.png"
+		down_image="content/gui/images/buttons/parrow_left_d.png"
+		hover_image="content/gui/images/buttons/parrow_left_h.png"
+		tooltip="Add to list" />
+
+
+	<Spacer />
+
+	<HBox> <Spacer min_size="275"/>
+		<CancelButton tooltip="Exit" />
+	</HBox>
+</VBox>
+
+<!-- Here pickbelts could be added to achieve more space.
+Refer to gui/credits/*.xml for sample implementation. -->
+</Container>

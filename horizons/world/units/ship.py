@@ -32,7 +32,98 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, NamedObject, Circle
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
+from horizons.command.uioptions import TransferResource
 from horizons.constants import LAYERS, STORAGE
+
+class ShipRoute(object):
+	"""
+	waypoints: list of dicts with the keys
+		- branch_office:  a branch office object
+		- resource_list: a {res_id:amount} dict
+			- if amount is negative the ship unloads
+			- if amount is positive the ship loads
+
+	#NOTE new methods need to be added to handle route editing.
+	"""
+	def __init__(self, ship, waypoints=[]):
+		self.ship = ship
+		self.waypoints = waypoints                             
+		self.current_waypoint = -1
+		self.enabled = False
+
+	def append(self, branch_office, resource_list):
+		self.waypoints.append({
+		  'branch_office' : branch_office,
+		  'resource_list' : resource_list
+		})
+
+	def modify_route(self, branch_office, resource_list):
+		# what happens if the same branch office has two different actions to
+		# perform and we want to update the second one?
+		for entry in self.waypoints:
+			if entry['branch_office'] == branch_office:
+				entry['resource_list'] = resource_list
+				return
+		self.append(branch_office, resource_list)
+
+	def on_route_bo_reached(self):
+		branch_office = self.get_location()['branch_office']
+		resource_list = self.get_location()['resource_list']
+		settlement = branch_office.settlement
+		# if ship and branch office have the same owner, the ship will
+		# load/unload resources without paying anything
+		if settlement.owner == self.ship.owner:
+			for res in resource_list:
+				amount = resource_list[res]
+				if amount > 0:
+					TransferResource (amount, res, branch_office, self.ship).execute(self.ship.session)
+
+				else:
+					TransferResource (-amount, res, self.ship, branch_office).execute(self.ship.session)
+		self.move_to_next_route_bo()
+
+
+	def move_to_next_route_bo(self):
+		next_destination = self.get_next_destination()
+		if next_destination == None:
+			return
+		branch_office = next_destination['branch_office']
+		found_path_to_bo = False
+
+		for point in Circle(branch_office.position.center(), self.ship.radius):
+			try:
+				self.ship.move(point, self.on_route_bo_reached)
+			except MoveNotPossible:
+				continue
+			found_path_to_bo = True
+			break
+		if not found_path_to_bo:
+			self.disable()
+
+	def get_next_destination(self):
+		if not self.enabled:
+			return None
+		if len(self.waypoints) < 2:
+			return None
+
+		self.current_waypoint += 1
+		self.current_waypoint %= len(self.waypoints)
+		return self.waypoints[self.current_waypoint]
+
+	def get_location(self):
+		return self.waypoints[self.current_waypoint]
+
+	def enable(self):
+		self.enabled=True
+		self.move_to_next_route_bo()
+
+	def disable(self):
+		self.enabled=False
+		self.ship.stop()
+
+	def clear(self):
+		self.waypoints=[]
+		self.current_waypoint=-1
 
 class Ship(NamedObject, StorageHolder, Unit):
 	"""Class representing a ship
@@ -58,6 +149,9 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def create_inventory(self):
 		self.inventory = PositiveTotalStorage(STORAGE.SHIP_TOTAL_STORAGE)
+
+	def create_route(self, waypoints=[]):
+		self.route=ShipRoute(self, waypoints)
 
 	def _move_tick(self):
 		"""Keeps track of the ship's position in the global ship_map"""
@@ -90,7 +184,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.view.add_change_listener(self.draw_health)
 
 	def deselect(self):
-		"""Runs neccasary steps to deselect the unit."""
+		"""Runs necessary steps to deselect the unit."""
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
 		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
@@ -98,7 +192,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 
 	def go(self, x, y):
 		"""Moves the ship.
-		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
+		This is called when a ship is selected and RMB is pressed outside the ship"""
 		self.stop()
 		ship_id = self.worldid # this has to happen here,
 		# cause a reference to self in a temporary function is implemented
@@ -153,7 +247,7 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def find_nearby_ships(self):
-		# TODO: Replace 20 with a distance dependant on the ship type and any
+		# TODO: Replace 15 with a distance dependant on the ship type and any
 		# other conditions.
 		ships = self.session.world.get_ships(self.position, 15)
 		ships.remove(self)
