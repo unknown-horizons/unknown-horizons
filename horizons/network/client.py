@@ -27,15 +27,11 @@ import time
 from horizons.network import packets
 from horizons import network
 from horizons.network.common import *
+from horizons.constants import MULTIPLAYER
 from horizons.network import find_enet_module
 
 enet = find_enet_module()
 
-
-# WORKAROUND: we need to install gettext for importing sth from horizons
-import gettext
-gettext.install('', unicode=True)
-from horizons.constants import MULTIPLAYER
 
 # maximal peers enet should handle
 # this must be at least maxplayers (supported by the game) + 1
