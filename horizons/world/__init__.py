@@ -27,9 +27,10 @@ import random
 import logging
 
 import horizons.main
+from horizons.scheduler import Scheduler
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
-from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
+from horizons.util import Point, Rect, LivingObject, Circle, WorldObject, Callback
 from horizons.util.color import Color
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader
@@ -94,7 +95,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# load player
 		human_players = []
-		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0"):
+		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player \
+						WHERE is_trader = 0"):
 			player = None
 			# check if player is an ai
 			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE id = ?", client_id)
@@ -105,7 +107,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai
-				player = HumanPlayer.load(self.session, savegame_db, player_worldid)
+				if player_worldid != 99998: 	#pirate's world_id, not very clean
+					player = HumanPlayer.load(self.session, savegame_db, player_worldid)
 			self.players.append(player)
 
 			if client_id == horizons.main.fife.get_uh_setting("ClientID"):
@@ -199,6 +202,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# for now, we have one trader in every game, so this is safe:
 			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(self.session, savegame_db, trader_id)
+			# for now, we have one pirate in every game, so this is safe:
+			pirate_id = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")[0][0]
+			self.pirate = Pirate.load(self.session, savegame_db, pirate_id)
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
@@ -208,6 +214,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# let trader command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and trader has to exist before ships are loaded.
 			self.trader.load_ship_states(savegame_db)
+			# let pirate command it's ships. we have to do this here cause ships have to be
+			# initialised for this, and pirate has to exist before ships are loaded.
+			self.pirate.load_ship_states(savegame_db)
+			for ship in self.pirate.ships.keys():
+				Scheduler().add_new_object(Callback(self.pirate.send_ship, ship), self)
+				Scheduler().add_new_object(Callback(self.pirate.lookout, ship), self, 8, -1)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -302,7 +314,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# add a pirate ship
 		# TODO: enable pirate as soon as save/load for it is fixed
 		#       currently, it breaks human player selection on load
-		#self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+		# DONE
+		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
