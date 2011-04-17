@@ -7,14 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-17 20:41+0200\n"
+"Last-Translator: andrejz <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -48,6 +50,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"Izrisovalnik SDL je mišljen kot zasilna rešitev in ima resne grafične "
+"težave.\n"
+"\n"
+"Uporabljajte na lastno odgovornost!"
 
 #: horizons/engine.py:178
 #, python-format
@@ -68,6 +74,9 @@ msgid ""
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
+"Ja, uspelo vam je ...\n"
+"\n"
+"Vendar je to žal le vsebnik."
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
@@ -117,12 +126,11 @@ msgstr "Shranjeno na %s\n"
 
 #: horizons/gui/gui.py:265
 msgid "%H:%M, %A, %B %d"
-msgstr "%H:%M, %A, %d. %B "
+msgstr "%H:%M , %d. %m. "
 
 #: horizons/gui/gui.py:267
-#, fuzzy
 msgid "Saved 1 time\n"
-msgstr "Shranjeno %d krat"
+msgstr "Shranjeno 1 krat\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -202,6 +210,8 @@ msgstr "Ustvarjalec:"
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"Zmožnost naključni zemljevid je še vedno v dejavnem razvoju. To je pred-"
+"preizkusna različica. Pričakujte težave."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
@@ -245,34 +255,35 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Pregled čolnarne"
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
-msgstr "Srestva so še vedno potrebovana:"
+msgstr "Sredstva, ki jih še potrebujete:"
 
+# 76%
 #: horizons/gui/tabs/boatbuildertab.py:170
 msgid "Fisher boats"
-msgstr ""
+msgstr "Ribiški čolni"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
 msgid "Trade boats"
-msgstr ""
+msgstr "Trgovski čolni"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 #: horizons/i18n/guitranslations.py:558
 msgid "War boats"
-msgstr ""
+msgstr "Vojni čolni"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 #: horizons/i18n/guitranslations.py:560
 msgid "War ships"
-msgstr ""
+msgstr "Vojne ladje"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Potrdite ukaz"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -313,11 +324,8 @@ msgid "Overview"
 msgstr "Pregled"
 
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
-msgstr ""
-"Podružnična pisarna \n"
-" Pregled"
+msgstr "Pregled podružnične pisarne"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 #, fuzzy
@@ -339,10 +347,11 @@ msgstr "Uniči zgradbo"
 msgid "Market place overview"
 msgstr "Pregled tržnice"
 
+# Kaj storiti s slot?
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Omejitev: %st na prostorček"
 
 #: horizons/i18n/guitranslations.py:315
 #, fuzzy
@@ -365,84 +374,44 @@ msgid "Companies"
 msgstr "Podjetja"
 
 #: horizons/i18n/guitranslations.py:319
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Šotor: \n"
-"Bivališče za \n"
-"vaše prebivalce."
+msgstr "Šotor: Bivališče za vaše prebivalce."
 
 #: horizons/i18n/guitranslations.py:320
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Shramba: \n"
-"Razširi zalogo \n"
-"in zagotovi \n"
-"nabiralce."
+msgstr "Shramba: razširi zalogo in zagotovi nabiralce."
 
 #: horizons/i18n/guitranslations.py:321
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
-msgstr ""
-"Sled: \n"
-"Nujno za \n"
-"zbiranje dobrin."
+msgstr "Sled: nujna za zbiranje dobrin."
 
 #: horizons/i18n/guitranslations.py:322
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Glavni trg: \n"
-"Zagotavlja dobrine \n"
-"državljanom."
+msgstr "Glavni trg: zagotavlja dobrine državljanom."
 
 #: horizons/i18n/guitranslations.py:323
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
-"Paviljon: \n"
-"Izpolni verske \n"
-"potrebe mornarjev."
+msgstr "Paviljon: izpolni verske potrebe mornarjev."
 
 #: horizons/i18n/guitranslations.py:324
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
-"Signalni ogenj: \n"
-"Igralci dovoli \n"
-"trgovanje s \n"
-"prostim trgovcem."
+msgstr "Signalni ogenj: igralcem dovoli trgovanje s prostim trgovcem."
 
 #: horizons/i18n/guitranslations.py:325
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Drvar: \n"
-"Poseka drevesa \n"
-"in iz njih naredi \n"
-"deske."
+msgstr "Drvar: poseka drevesa in iz njih naredi deske."
 
 #: horizons/i18n/guitranslations.py:326 sqlite/Building
 msgid "Tree"
 msgstr "Drevo"
 
 #: horizons/i18n/guitranslations.py:327
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Lovec: \n"
-"Lovi divje \n"
-"gozde živali. \n"
-"Proizvaja hrano."
+msgstr "Lovec: lovi divje gozdne živali. Proizvaja hrano."
 
 #: horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Ribič: \n"
-"Lovi morske ribe. \n"
-"Proizvaja hrano."
+msgstr "Ribič: lovi morske ribe. Proizvaja hrano."
 
 #: horizons/i18n/guitranslations.py:330
 #, fuzzy
@@ -458,76 +427,46 @@ msgid "Military"
 msgstr "Vojska"
 
 #: horizons/i18n/guitranslations.py:336
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Kmetija: \n"
-"Proizvaja poljščine \n"
-"in vzreja živino."
+msgstr "Kmetija: proizvaja poljščine in vzreja živino."
 
 #: horizons/i18n/guitranslations.py:337
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Tkalec: \n"
-"Ovčjo volno pretvori \n"
-"v blago."
+msgstr "Tkalec: ovčjo volno pretvori v blago."
 
 #: horizons/i18n/guitranslations.py:338
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
-"Rudnik gline: \n"
-"Koplje glino iz \n"
-"nahajališča."
+msgstr "Rudnik gline: koplje glino iz nahajališča."
 
 #: horizons/i18n/guitranslations.py:339
-#, fuzzy
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
-"Opekarna: \n"
-"Iz gline naredi \n"
-"opeke."
+msgstr "Opekarna: iz gline naredi opeke."
 
 #: horizons/i18n/guitranslations.py:340
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
-"Polje krompirja: \n"
-"Proizvaja hrano. \n"
-"Zahteva kmetijo."
+msgstr "Polje krompirja: proizvaja hrano. Zahteva kmetijo."
 
 #: horizons/i18n/guitranslations.py:341
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-"Pašnik: \n"
-"Vzreja ovce. \n"
-"Proizvede voljno. \n"
-"Zahteva kmetijo."
+msgstr "Pašnik: vzreja ovce. Proizvede voljno. Zahteva kmetijo."
 
 #: horizons/i18n/guitranslations.py:342
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
+"Polje sladkornega trsta: uporablja se za proizvodnjo žganja. Zahteva "
+"kmetijo."
 
 #: horizons/i18n/guitranslations.py:343
-#, fuzzy
 msgid "Village school: Provides education."
-msgstr ""
-"Vaška šola: \n"
-"Zagotavlja izobrazbo."
+msgstr "Vaška šola: Zagotavlja izobrazbo."
 
 #: horizons/i18n/guitranslations.py:344
-#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr ""
-"Čolnar: \n"
-"Gradi čolne in \n"
-"majhne ladje.Izgrajen na obali."
+msgstr "Čolnar: gradi čolne in majhne ladje. Izgrajen na obali."
 
 #: horizons/i18n/guitranslations.py:345
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Destilarna: pretvori sladkor v žganje."
 
 #: horizons/i18n/guitranslations.py:347
 #, fuzzy
@@ -536,36 +475,35 @@ msgstr "Zgradbe naseljencev"
 
 #: horizons/i18n/guitranslations.py:350
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "Rudnik železa: dobi železovo rudo in nahajališča."
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Topilnica: prečisti vse vrste rud."
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Izdelovalec orodij: proizvaja orodja iz železa."
 
 #: horizons/i18n/guitranslations.py:353
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Žganje oglja: zažge veliko desk."
 
 #: horizons/i18n/guitranslations.py:354
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Gostilna: zagotavlja srečanja."
 
 #: horizons/i18n/guitranslations.py:356
 msgid "Build"
 msgstr "Zgradi"
 
 #: horizons/i18n/guitranslations.py:357 horizons/i18n/guitranslations.py:577
-#, fuzzy
 msgid "Running costs:"
-msgstr "Stroški delovanja"
+msgstr "Stroški delovanja:"
 
 #: horizons/i18n/guitranslations.py:359
 msgid "Inhabitants"
-msgstr ""
+msgstr "Prebivalci"
 
 #: horizons/i18n/guitranslations.py:360
 msgid "Click to change the name of your settlement."
@@ -862,11 +800,11 @@ msgstr "Več igralcev"
 
 #: horizons/i18n/guitranslations.py:467
 msgid "Quit"
-msgstr ""
+msgstr "Končaj"
 
 #: horizons/i18n/guitranslations.py:472
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Ustvari igro - igra za več igralcev"
 
 #: horizons/i18n/guitranslations.py:473
 msgid "Player limit:"
