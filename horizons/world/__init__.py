@@ -329,7 +329,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						position_possible = False
 						break
 			if not position_possible: # propagate break
-				continue
+				continue # try another coord
 
 			break # all checks successful
 
