@@ -26,11 +26,10 @@ import weakref
 import random
 import logging
 
-import horizons.main
-from horizons.scheduler import Scheduler 
+import horizons.main 
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
-from horizons.util import Point, Rect, LivingObject, Circle, WorldObject, Callback
+from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
 from horizons.util.color import Color
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader
@@ -74,6 +73,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.ship_map = None
 		self.ships = None
 		self.trader = None
+		self.pirate = None
 		self.islands = None
 		super(World, self).end()
 
@@ -216,10 +216,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# let pirate command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and pirate has to exist before ships are loaded.
 			self.pirate.load_ship_states(savegame_db)
-			for ship in self.pirate.ships.keys():
-				Scheduler().add_new_object(Callback(self.pirate.send_ship, ship), self)
-				Scheduler().add_new_object(Callback(self.pirate.lookout, ship), self, 8, -1)
-				
+							
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
