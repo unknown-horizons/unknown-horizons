@@ -200,10 +200,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# for now, we have one trader in every game, so this is safe:
 			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(self.session, savegame_db, trader_id)
-			# for now, we have one pirate in every game, so this is safe:
-			pirate_id = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")[0][0]
-			self.pirate = Pirate.load(self.session, savegame_db, pirate_id)
-
+			# there are 0 or 1 pirate AIs so this is safe
+			pirate_data = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")
+			if pirate_data:
+				self.pirate = Pirate.load(self.session, savegame_db, pirate_data[0][0])
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
@@ -215,8 +215,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.trader.load_ship_states(savegame_db)
 			# let pirate command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and pirate has to exist before ships are loaded.
-			self.pirate.load_ship_states(savegame_db)
-							
+			if self.pirate:
+				self.pirate.load_ship_states(savegame_db)
+
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
@@ -308,9 +309,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				ret_coords = (point.x, point.y)
 
 		# add a pirate ship
-		# TODO: enable pirate as soon as save/load for it is fixed
-		#       currently, it breaks human player selection on load
-		#DONE
 		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
@@ -344,12 +342,43 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		return Point(x, y)
 
+	@decorators.make_constants()
+	def get_random_possible_coastal_ship_position(self):
+		"""Returns a position in water, that is not at the border of the world but on the coast of an island"""
+		offset = 2
+		while True:
+			x = self.session.random.randint(self.min_x + offset, self.max_x - offset)
+			y = self.session.random.randint(self.min_y + offset, self.max_y - offset)
+
+			if (x, y) in self.ship_map:
+				continue # don't place ship where there is already a ship
+			
+			result = Point(x, y)
+			if self.get_island(result) is not None:
+				continue # don't choose a point on an island
+
+			# check if there is an island nearby (check only important coords)
+			for first_sign in (-1, 0, 1):
+				for second_sign in (-1, 0, 1):
+					point_to_check = Point( x + first_sign, y + second_sign )
+					if self.get_island(point_to_check) is not None:
+						return result
+
 	#----------------------------------------------------------------------
 	def get_tiles_in_radius(self, position, radius, shuffle=False):
 		"""Returns a all tiles in the radius around the point.
 		This is a generator, make sure you use it appropriately.
 		@param position: Point instance
 		@return List of tiles in radius.
+		"""
+		for point in self.get_points_in_radius(position, radius, shuffle):
+			yield self.get_tile(point)
+
+	def get_points_in_radius(self, position, radius, shuffle=False):
+		"""Returns all points in the radius around the point.
+		This is a generator, make sure you use it appropriately.
+		@param position: Point instance
+		@return List of points in radius.
 		"""
 		assert isinstance(position, Point)
 		points = Circle(position, radius)
@@ -359,7 +388,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		for point in points:
 			if self.map_dimensions.contains_without_border(point):
 				# don't yield if point is not in map, those points don't exist
-				yield self.get_tile(point)
+				yield point
 
 	def setup_player(self, id, name, color, local):
 		"""Sets up a new Player instance and adds him to the active world.

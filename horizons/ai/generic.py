@@ -48,9 +48,9 @@ class AIPlayer(Player):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used."""
-		self.log.debug("%s %s: moving to random location", self.__class__.__name__, self.worldid)
 		# find random position
 		point = self.session.world.get_random_possible_ship_position()
+		self.log.debug("%s %s: moving to random location %d, %d", self.__class__.__name__, self.worldid, point.x, point.y)
 		# move ship there:
 		try:
 			ship.move(point, Callback(self.ship_idle, ship))
