@@ -26,7 +26,7 @@ import weakref
 import random
 import logging
 
-import horizons.main
+import horizons.main 
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
@@ -73,6 +73,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.ship_map = None
 		self.ships = None
 		self.trader = None
+		self.pirate = None
 		self.islands = None
 		super(World, self).end()
 
@@ -199,6 +200,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# for now, we have one trader in every game, so this is safe:
 			trader_id = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")[0][0]
 			self.trader = Trader.load(self.session, savegame_db, trader_id)
+			# for now, we have one pirate in every game, so this is safe:
+			pirate_id = savegame_db("SELECT rowid FROM player WHERE is_pirate = 1")[0][0]
+			self.pirate = Pirate.load(self.session, savegame_db, pirate_id)
+
 
 		# load all units (we do it here cause all buildings are loaded by now)
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
@@ -208,7 +213,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			# let trader command it's ships. we have to do this here cause ships have to be
 			# initialised for this, and trader has to exist before ships are loaded.
 			self.trader.load_ship_states(savegame_db)
-
+			# let pirate command it's ships. we have to do this here cause ships have to be
+			# initialised for this, and pirate has to exist before ships are loaded.
+			self.pirate.load_ship_states(savegame_db)
+							
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
@@ -302,7 +310,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# add a pirate ship
 		# TODO: enable pirate as soon as save/load for it is fixed
 		#       currently, it breaks human player selection on load
-		#self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
+		#DONE
+		self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')

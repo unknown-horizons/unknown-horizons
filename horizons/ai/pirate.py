@@ -49,6 +49,12 @@ class Pirate(AIPlayer):
 			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
 			Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
 
+	def __init(self):
+		"""As a convention, calls to scheduler are made from __init()"""
+		for ship in self.ships.keys():
+			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
+			Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
+
 	@staticmethod
 	def get_nearest_ship(base_ship):
 		lowest_distance = None
@@ -82,3 +88,4 @@ class Pirate(AIPlayer):
 			state = self.shipStates[state_id]
 			ship = WorldObject.get_object_by_id(ship_id)
 			self.ships[ship] = state
+		self.__init()
