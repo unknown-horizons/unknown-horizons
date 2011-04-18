@@ -21,8 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-#!/usr/bin/python
-
 import getopt
 import sys
 from horizons import network
