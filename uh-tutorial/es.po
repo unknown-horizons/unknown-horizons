@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-20 00:41+0200\n"
+"PO-Revision-Date: 2011-04-20 00:58+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -298,7 +298,7 @@ msgstr ""
 #: po/tutorial.py:24
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
-"Construye una plaza principal. Elige una zona sin demasiados edificios "
+"Construya una plaza principal. Elija una zona sin demasiados edificios "
 "comerciales."
 
 #: po/tutorial.py:25
@@ -318,7 +318,7 @@ msgstr ""
 
 #: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
-msgstr "Construye una tienda y conéctala a la plaza principal."
+msgstr "Construya una tienda y conéctela a la plaza principal."
 
 #: po/tutorial.py:28
 msgid ""
@@ -342,13 +342,13 @@ msgstr ""
 #: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr ""
-"Construye al menos tres tiendas adicionales y conéctalas a la plaza "
+"Construya al menos tres tiendas adicionales y conéctelas a la plaza "
 "principal."
 
 # sin contexto (construye/haz)
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NUEVA TAREA: CONSTRUYE UNA SEÑAL DE FUEGO"
+msgstr "NUEVA TAREA: CONSTRUIR UNA SEÑAL DE HUMO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -382,11 +382,11 @@ msgstr ""
 
 #: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
-msgstr ""
+msgstr "Construya una seña de humo en la costa cerca de su asentamiento."
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NUEVA TAREA: APRENDE A COMERCIAR"
+msgstr "NUEVA TAREA: EL COMERCIO"
 
 #: po/tutorial.py:35
 msgid ""
@@ -420,11 +420,11 @@ msgstr ""
 
 #: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "Alcance en la isla un stock de al menos 30 herramientas."
 
 #: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NUEVA TAREA: CONSTRUIR UN CONVENTO"
 
 #: po/tutorial.py:39
 msgid ""
@@ -457,11 +457,11 @@ msgstr ""
 
 #: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "Construya un convento conectado a las tiendas."
 
 #: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "NUEVA TAREA: SIGUIENTE NIVEL DE CRECIMIENTO"
 
 #: po/tutorial.py:43
 msgid ""
