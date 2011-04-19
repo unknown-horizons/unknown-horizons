@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-19 15:40+0200\n"
+"PO-Revision-Date: 2011-04-19 15:47+0200\n"
 "Last-Translator: Catharsius <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -207,11 +207,11 @@ msgstr ""
 
 #: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
-msgstr ""
+msgstr "Construye un leñador y conéctalo a la sucursal usando un sendero."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NUEVA TAREA: SUMINISTRO DE ALIMENTOS"
 
 #: po/tutorial.py:18
 msgid ""
@@ -245,11 +245,11 @@ msgstr ""
 
 #: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr ""
+msgstr "Construye un cazador y un pescador. Conéctalos a la sucursal."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NUEVA TAREA: PLAZA PRINCIPAL"
 
 #: po/tutorial.py:22
 msgid ""
@@ -284,10 +284,12 @@ msgstr ""
 #: po/tutorial.py:24
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
+"Construye una plaza principal. Elige una zona sin demasiados edificios "
+"comerciales."
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NUEVA TAREA: EDIFICIOS RESIDENCIALES"
 
 #: po/tutorial.py:26
 msgid ""
@@ -302,7 +304,7 @@ msgstr ""
 
 #: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Construye una tienda y conéctala a la plaza principal."
 
 #: po/tutorial.py:28
 msgid ""
@@ -326,10 +328,13 @@ msgstr ""
 #: po/tutorial.py:29
 msgid "Build at least three additional tents and connect them to the main square."
 msgstr ""
+"Construye al menos tres tiendas adicionales y conéctalas a la plaza "
+"principal."
 
+# sin contexto (construye/haz)
 #: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NUEVA TAREA: CONSTRUYE UNA SEÑAL DE FUEGO"
 
 #: po/tutorial.py:31
 msgid ""
@@ -367,7 +372,7 @@ msgstr ""
 
 #: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NUEVA TAREA: APRENDE A COMERCIAR"
 
 #: po/tutorial.py:35
 msgid ""
