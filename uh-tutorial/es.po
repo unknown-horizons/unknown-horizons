@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-20 00:34+0200\n"
+"PO-Revision-Date: 2011-04-20 00:41+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -180,11 +180,11 @@ msgstr ""
 
 #: po/tutorial.py:12
 msgid "Unload at least 10 tons of each resource on your ship."
-msgstr "Descargar al menos 10 toneladas de cada recurso en su barco."
+msgstr "Descargue al menos 10 toneladas de cada recurso en su barco."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "NUEVA TAREA: CONSTRUYE UN LEÑADOR"
+msgstr "NUEVA TAREA: CONSTRUIR UN ASERRADERO"
 
 #: po/tutorial.py:14
 msgid ""
@@ -221,7 +221,7 @@ msgstr ""
 
 #: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
-msgstr "Construye un leñador y conéctalo a la sucursal usando un sendero."
+msgstr "Construya un aserradero y conéctelo al asentamiento usando un sendero."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
-msgstr "Construye un cazador y un pescador. Conéctalos a la sucursal."
+msgstr "Construya un cazador y un pescador. Conéctelos al asentamiento."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
