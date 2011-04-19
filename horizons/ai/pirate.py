@@ -118,6 +118,11 @@ class Pirate(AIPlayer):
 		self.log.debug('Pirate %s: send_ship(%s) start transition: %s' % (self.worldid, pirate_ship.name, self.ships[pirate_ship]))
 		done = False
 
+		#transition the pirate ship state to 'idle' once it is inside home circumference
+		if pirate_ship.position.distance_to_point(self.home_point) <= self.home_radius and \
+			self.ships[pirate_ship] == self.shipStates.going_home:        
+			self.ships[pirate_ship] = self.shipStates.idle
+
 		if self.ships[pirate_ship] != self.shipStates.going_home:
 			if self._chase_closest_ship(pirate_ship):
 				done = True
@@ -137,7 +142,8 @@ class Pirate(AIPlayer):
 					done = True
 					break
 
-		if not done:
+		#Ship should not move random while it is 'going_home'
+		if not done and self.ships[pirate_ship] != self.shipStates.going_home:
 			self.send_ship_random(pirate_ship)
 
 		self.log.debug('Pirate %s: send_ship(%s) new state: %s' % (self.worldid, pirate_ship.name, self.ships[pirate_ship]))
@@ -146,6 +152,7 @@ class Pirate(AIPlayer):
 		ship = self.get_nearest_player_ship(pirate_ship)
 		if ship:
 			if ship.position.distance_to_point(pirate_ship.position) <= self.caught_ship_radius:
+				self.ships[pirate_ship] = self.shipStates.chasing_ship
 				return False # already caught it
 
 			# move ship there:
