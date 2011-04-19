@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-19 15:47+0200\n"
+"PO-Revision-Date: 2011-04-19 15:52+0200\n"
 "Last-Translator: Catharsius <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -618,7 +618,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NUEVA TAREA: COMPLETA EL TUTORIAL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -652,7 +652,7 @@ msgstr ""
 
 #: po/tutorial.py:66
 msgid "Thanks!"
-msgstr ""
+msgstr "¡Gracias!"
 
 #: po/tutorial.py:67
 msgid ""
@@ -667,7 +667,19 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"¡Gracias por haber jugado al tutorial!\n"
+"\n"
+"El equipo de UH"
 
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+"¡Felicidades! ¡Has llegado al final de este tutorial y ya estás preparado "
+"para conocer nuevos desafíos!"
