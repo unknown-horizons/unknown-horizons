@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-19 16:42+0200\n"
+"PO-Revision-Date: 2011-04-19 17:03+0200\n"
 "Last-Translator: Catharsius <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -248,7 +248,7 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Información general para constructor de barcos"
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
@@ -256,26 +256,26 @@ msgstr "Se necesitan más recursos:"
 
 #: horizons/gui/tabs/boatbuildertab.py:170
 msgid "Fisher boats"
-msgstr ""
+msgstr "Barcos de pesca"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
 msgid "Trade boats"
-msgstr ""
+msgstr "Barcos comerciales"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 #: horizons/i18n/guitranslations.py:558
 msgid "War boats"
-msgstr ""
+msgstr "Barcos de guerra"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 #: horizons/i18n/guitranslations.py:560
 msgid "War ships"
-msgstr ""
+msgstr "Navío de guerra"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Confirmar la orden"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -307,7 +307,7 @@ msgstr "Cuenta"
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:248 horizons/i18n/guitranslations.py:582
 msgid "Settler overview"
-msgstr "Colonos"
+msgstr "Visión general de los colonos"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:302
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:586
@@ -323,29 +323,25 @@ msgstr ""
 " Descripción"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
-msgstr "Naves"
+msgstr "Visión general del navío"
 
 #: horizons/gui/tabs/overviewtab.py:156
-#, fuzzy
 msgid "Production overview"
-msgstr "Producción"
+msgstr "Visión general de la producción"
 
 #: horizons/gui/tabs/overviewtab.py:162
-#, fuzzy
 msgid "Destroy building"
-msgstr "Eliminar edificio"
+msgstr "Destruir edificio"
 
 #: horizons/gui/tabs/overviewtab.py:286
-#, fuzzy
 msgid "Market place overview"
-msgstr "Mercado"
+msgstr "Visión general del mercado"
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Límite: %st por posición"
 
 #: horizons/i18n/guitranslations.py:315
 #, fuzzy
@@ -566,13 +562,12 @@ msgid "Build"
 msgstr "Construir"
 
 #: horizons/i18n/guitranslations.py:357 horizons/i18n/guitranslations.py:577
-#, fuzzy
 msgid "Running costs:"
-msgstr "Costes de op.:"
+msgstr "Costes de funcionamiento:"
 
 #: horizons/i18n/guitranslations.py:359
 msgid "Inhabitants"
-msgstr ""
+msgstr "Habitantes"
 
 #: horizons/i18n/guitranslations.py:360
 msgid "Click to change the name of your settlement."
@@ -739,9 +734,8 @@ msgid "Settings"
 msgstr "Opciones"
 
 #: horizons/i18n/guitranslations.py:428
-#, fuzzy
 msgid "Cancel game"
-msgstr " Cancelar partida"
+msgstr "Abandonar la partida"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:468
 #, fuzzy
@@ -869,11 +863,11 @@ msgstr "Multijugador"
 
 #: horizons/i18n/guitranslations.py:467
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: horizons/i18n/guitranslations.py:472
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Crear partida - Multijugador"
 
 #: horizons/i18n/guitranslations.py:473
 msgid "Player limit:"
@@ -925,7 +919,7 @@ msgstr "Salir del vestíbulo"
 
 #: horizons/i18n/guitranslations.py:487
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Nueva partida - Multijugador"
 
 #: horizons/i18n/guitranslations.py:488
 msgid "Apply:"
@@ -964,9 +958,8 @@ msgid "Join the selected game"
 msgstr "Unirse a la partida seleccionada"
 
 #: horizons/i18n/guitranslations.py:500
-#, fuzzy
 msgid "Restart required"
-msgstr "Se requiere reiniciar"
+msgstr "Reinicio requerido"
 
 #: horizons/i18n/guitranslations.py:501
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -993,9 +986,8 @@ msgid "Used renderer:"
 msgstr "Filtro:"
 
 #: horizons/i18n/guitranslations.py:509
-#, fuzzy
 msgid "Full screen:"
-msgstr "Pantalla completa"
+msgstr "Pantalla completa:"
 
 #: horizons/i18n/guitranslations.py:510
 msgid "Sound"
@@ -1010,9 +1002,8 @@ msgid "Effects volume:"
 msgstr "Volumen de efectos:"
 
 #: horizons/i18n/guitranslations.py:513
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Habilitar sonido"
+msgstr "Habilitar sonido:"
 
 #: horizons/i18n/guitranslations.py:514
 msgid "Saving"
@@ -1052,7 +1043,7 @@ msgstr "Detalles:"
 
 #: horizons/i18n/guitranslations.py:525
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Nueva partida - Jugador simple"
 
 #: horizons/i18n/guitranslations.py:527
 msgid "Choose a map to play:"
@@ -1089,7 +1080,7 @@ msgstr "Color:"
 #: horizons/i18n/guitranslations.py:538 horizons/i18n/guitranslations.py:575
 #: horizons/i18n/guitranslations.py:590
 msgid "Building overview"
-msgstr "Construcción"
+msgstr "Visión general del edificio"
 
 #: horizons/i18n/guitranslations.py:539
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
@@ -1131,12 +1122,11 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:569
 #: horizons/i18n/guitranslations.py:591
 msgid "Running costs"
-msgstr "Costes de op.:"
+msgstr "Costes de funcionamiento:"
 
 #: horizons/i18n/guitranslations.py:549
-#, fuzzy
 msgid "Fishing boats"
-msgstr "Pesquero"
+msgstr "Barcos de pesca"
 
 #: horizons/i18n/guitranslations.py:550
 msgid "Fishing boat"
@@ -1220,9 +1210,8 @@ msgid "It contains these resources:"
 msgstr "Contiene estos recursos:"
 
 #: horizons/i18n/guitranslations.py:599
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Recursos necesitados:"
+msgstr "Recursos necesarios:"
 
 #: horizons/i18n/guitranslations.py:600 horizons/i18n/guitranslations.py:603
 msgid "Happiness"
@@ -1249,9 +1238,8 @@ msgstr ""
 "de este barco."
 
 #: horizons/i18n/guitranslations.py:607
-#, fuzzy
 msgid "Build settlement"
-msgstr "Contruir Asentamiento"
+msgstr "Construir asentamiento"
 
 #: horizons/i18n/guitranslations.py:609
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
@@ -1396,7 +1384,7 @@ msgstr "Comienza un mapa aleatorio."
 
 #: run_uh.py:96
 msgid "Starts <campaign>. <campaign> is the campaignname."
-msgstr "Comienzar <campaign>. <campaign> es el nombre de la campaña."
+msgstr "Comenzar <campaign>. <campaign> es el nombre de la campaña."
 
 #: run_uh.py:98
 msgid "Starts the development map without displaying the main menu."
@@ -1434,7 +1422,7 @@ msgstr "Sólo para uso interno."
 
 #: run_uh.py:116
 msgid "Enable profiling (for developing only)."
-msgstr "Permitir perfil (Exclusivo para desarrolladores)."
+msgstr "Permitir perfil (exclusivo para desarrolladores)."
 
 #: run_uh.py:138
 msgid "Unknown Horizons crashed."
@@ -1492,7 +1480,7 @@ msgstr "Pozo de arcilla"
 
 #: sqlite/Building
 msgid "Distillery"
-msgstr ""
+msgstr "Destilería"
 
 #: sqlite/Building
 msgid "Farm"
@@ -1512,11 +1500,11 @@ msgstr "Tienda de cazador"
 
 #: sqlite/Building
 msgid "Iron Mine"
-msgstr ""
+msgstr "Mina de hierro"
 
 #: sqlite/Building
 msgid "Log"
-msgstr "Registro"
+msgstr "Bitácora"
 
 #: sqlite/Building
 msgid "Lookout"
@@ -1532,7 +1520,7 @@ msgstr "Plaza principal"
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Montaña"
 
 #: sqlite/Building
 msgid "Pasture"
@@ -1556,7 +1544,7 @@ msgstr "Señal de fuego"
 
 #: sqlite/Building
 msgid "Smeltery"
-msgstr ""
+msgstr "Fundición"
 
 #: sqlite/Building
 msgid "Storage Tent"
@@ -1568,7 +1556,7 @@ msgstr "Campo de azúcar"
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Taberna"
 
 #: sqlite/Building
 msgid "Tent"
@@ -1580,7 +1568,7 @@ msgstr "Ruinas de una tienda"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Artesano"
 
 #: sqlite/Building
 msgid "Trail"
