@@ -246,10 +246,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 		self.session.world.ships.append(self)
 		self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 
-	def find_nearby_ships(self):
+	def find_nearby_ships(self, radius=15):
 		# TODO: Replace 15 with a distance dependant on the ship type and any
 		# other conditions.
-		ships = self.session.world.get_ships(self.position, 15)
+		ships = self.session.world.get_ships(self.position, radius)
 		ships.remove(self)
 		return ships
 
