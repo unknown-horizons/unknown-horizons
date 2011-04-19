@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-19 17:03+0200\n"
+"PO-Revision-Date: 2011-04-19 18:04+0200\n"
 "Last-Translator: Catharsius <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1648,7 +1648,7 @@ msgstr "La partida se ha guardado."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Tu mina se ha quedado sin recursos."
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
@@ -1664,7 +1664,7 @@ msgstr "ladrillos"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "Carbón"
 
 #: sqlite/Resources
 msgid "clay"
@@ -1692,7 +1692,7 @@ msgstr "alimentos"
 
 #: sqlite/Resources
 msgid "get-together"
-msgstr ""
+msgstr "Encuentros"
 
 #: sqlite/Resources
 msgid "grass"
@@ -1704,19 +1704,19 @@ msgstr "felicidad"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "lingotes de hierro"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "mineral de hierro"
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr "lana"
+msgstr "lana de oveja"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "licor"
 
 #: sqlite/Resources
 msgid "potatoes"
@@ -1728,11 +1728,11 @@ msgstr "arcilla sin procesar"
 
 #: sqlite/Resources
 msgid "raw fish"
-msgstr ""
+msgstr "pescado crudo"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "hierro sin procesar"
 
 #: sqlite/Resources
 msgid "raw sugar"
@@ -1772,7 +1772,7 @@ msgstr "pionero"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "marinero"
 
 #: sqlite/SettlerLevel
 msgid "settler"
