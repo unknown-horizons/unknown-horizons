@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-20 19:48+0200\n"
+"PO-Revision-Date: 2011-04-19 17:03+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -376,13 +376,8 @@ msgid "Tent: Houses your inhabitants."
 msgstr "Tiendas: Alojamiento para sus habitantes."
 
 #: horizons/i18n/guitranslations.py:320
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Almacén: \n"
-"Extiende el stock \n"
-"y provee \n"
-"recolectores."
+msgstr "Almacén: Amplia la capacidad y provee recolectores."
 
 #: horizons/i18n/guitranslations.py:321
 #, fuzzy
@@ -534,7 +529,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:345
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Destilería: Convierte el azúcar en licor."
 
 #: horizons/i18n/guitranslations.py:347
 #, fuzzy
@@ -671,9 +666,8 @@ msgid "Start production"
 msgstr "Comenzar producción"
 
 #: horizons/i18n/guitranslations.py:393
-#, fuzzy
 msgid "Leave Captain's log"
-msgstr "Dejar el registro de navegación"
+msgstr "Dejar el cuaderno de bitácora"
 
 #: horizons/i18n/guitranslations.py:394
 msgid "Read prev. entries"
