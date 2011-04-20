@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-19 18:05+0200\n"
+"PO-Revision-Date: 2011-04-20 19:48+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -49,6 +49,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"El visor SDL está pensado solo como último recurso y tiene graves problemas "
+"gráficos. \n"
+"\n"
+"¡Utilícelo bajo su propio riesgo!"
 
 #: horizons/engine.py:178
 #, python-format
@@ -63,12 +67,17 @@ msgstr "¿Estás seguro de que quieres salir de Unknown Horizons?"
 msgid "Quit Game"
 msgstr "Salir del juego"
 
+# mirar contexto
 #: horizons/gui/gui.py:178
+#, fuzzy
 msgid ""
 "Yeah, you made it...\n"
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
+"Genial, lo has hecho...\n"
+"\n"
+"Pero aquí no se pude, lo siento"
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
@@ -271,7 +280,7 @@ msgstr "Barcos de guerra"
 #: horizons/gui/tabs/boatbuildertab.py:191
 #: horizons/i18n/guitranslations.py:560
 msgid "War ships"
-msgstr "Navío de guerra"
+msgstr "Navíos de guerra"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
@@ -316,11 +325,10 @@ msgid "Overview"
 msgstr "Visión general"
 
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
 msgstr ""
-"Sucursal \n"
-" Descripción"
+"Asentamiento \n"
+"Visión general"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 msgid "Ship overview"
@@ -364,12 +372,8 @@ msgid "Companies"
 msgstr "Empresas"
 
 #: horizons/i18n/guitranslations.py:319
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Tiendas: \n"
-"Donde viven \n"
-"los habitantes."
+msgstr "Tiendas: Alojamiento para sus habitantes."
 
 #: horizons/i18n/guitranslations.py:320
 #, fuzzy
