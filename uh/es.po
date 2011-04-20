@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-19 18:04+0200\n"
-"Last-Translator: Catharsius <angelscry86@gmail.com>\n"
+"PO-Revision-Date: 2011-04-19 18:05+0200\n"
+"Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -1230,12 +1230,11 @@ msgid "Health:"
 msgstr "Salud:"
 
 #: horizons/i18n/guitranslations.py:606
-#, fuzzy
 msgid "Click to change the name of this ship."
 msgstr ""
-"Clica aqui para \n"
+"Clic aquí para \n"
 "cambiar el nombre \n"
-"de este barco."
+"del barco."
 
 #: horizons/i18n/guitranslations.py:607
 msgid "Build settlement"
