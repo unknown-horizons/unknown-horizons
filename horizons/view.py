@@ -103,8 +103,9 @@ class View(ChangeListener):
 		@param x:
 		@param y:
 		"""
-		self._autoscroll[0] = x
-		self._autoscroll[1] = y
+		if horizons.main.fife.get_uh_setting('EdgeScrolling'):
+			self._autoscroll[0] = x
+			self._autoscroll[1] = y
 
 	def autoscroll_keys(self, x, y):
 		"""

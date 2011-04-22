@@ -116,6 +116,10 @@
 		<Label name="minimap_rotation_label"  text="Enable minimap rotation:" />
 		<CheckBox min_size="32,32"  name="minimaprotation" />
 	</HBox>
+	<HBox>
+		<Label name="edge_scrolling_label"  text="Enable edge scrolling:" />
+		<CheckBox min_size="21,32"  name="edgescrolling" />
+	</HBox>
 
 	<Spacer min_size="20" />
 

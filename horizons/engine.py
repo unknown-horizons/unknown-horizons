@@ -93,6 +93,7 @@ class Fife(ApplicationBase):
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
+		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
 
 		def update_minimap(*args):
 			# sry for this gross violation of the encapsulation principle
