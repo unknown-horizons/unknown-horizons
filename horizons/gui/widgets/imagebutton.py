@@ -31,9 +31,9 @@ class OkButton(TooltipButton):
 	hover_image="content/gui/images/buttons/ok_h.png"
 	down_image="content/gui/images/buttons/ok.png"
 	"""
-	def __init__(self, **kwargs):
+	def __init__(self, name='okButton', **kwargs):
 		super(OkButton, self).__init__(
-			name='okButton',
+			name=name,
 			up_image="content/gui/images/buttons/ok.png",
 			hover_image="content/gui/images/buttons/ok_h.png",
 			down_image="content/gui/images/buttons/ok.png", **kwargs)
@@ -46,9 +46,9 @@ class CancelButton(TooltipButton):
 	hover_image="content/gui/images/buttons/close_h.png"
 	down_image="content/gui/images/buttons/close.png"
 	"""
-	def __init__(self, **kwargs):
+	def __init__(self, name='cancelButton', **kwargs):
 		super(CancelButton, self).__init__(
-			name='cancelButton',
+			name=name,
 			up_image="content/gui/images/buttons/close.png",
 			hover_image="content/gui/images/buttons/close_h.png",
 			down_image="content/gui/images/buttons/close.png", **kwargs)
@@ -61,9 +61,9 @@ class DeleteButton(TooltipButton):
 	hover_image="content/gui/images/buttons/delete_h.png"
 	down_image="content/gui/images/buttons/delete.png"
 	"""
-	def __init__(self, **kwargs):
+	def __init__(self, name='deleteButton',  **kwargs):
 		super(DeleteButton, self).__init__(
-			name='deleteButton',
+			name=name,
 			up_image="content/gui/images/buttons/delete.png",
 			hover_image="content/gui/images/buttons/delete_h.png",
 			down_image="content/gui/images/buttons/delete.png", **kwargs)
