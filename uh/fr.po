@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-03 21:55+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-23 00:17+0200\n"
+"Last-Translator: erdnaxeli <erdnaxeli@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -203,6 +203,9 @@ msgstr "Créateur : "
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"La fonctionnalité carte aléatoire est toujours en développement actif. Elle "
+"doit être considérer comme une version de pré-test. Des problèmes sont à "
+"redouter."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
@@ -344,7 +347,7 @@ msgstr "Aperçu du marché"
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Limite : %st par emplacement"
 
 #: horizons/i18n/guitranslations.py:315
 #, fuzzy
@@ -866,11 +869,11 @@ msgstr "Joueurs multiples"
 
 #: horizons/i18n/guitranslations.py:467
 msgid "Quit"
-msgstr ""
+msgstr "Quitter"
 
 #: horizons/i18n/guitranslations.py:472
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Créer une partie multijoueur"
 
 #: horizons/i18n/guitranslations.py:473
 msgid "Player limit:"
@@ -922,7 +925,7 @@ msgstr "Quitter le hall de la partie"
 
 #: horizons/i18n/guitranslations.py:487
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Nouvelle partie - Multijoueur"
 
 #: horizons/i18n/guitranslations.py:488
 msgid "Apply:"
@@ -1050,7 +1053,7 @@ msgstr "Détails :"
 
 #: horizons/i18n/guitranslations.py:525
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Nouvelles partie - Solo"
 
 #: horizons/i18n/guitranslations.py:527
 msgid "Choose a map to play:"
@@ -1545,7 +1548,7 @@ msgstr "Place principale"
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Montagne"
 
 #: sqlite/Building
 msgid "Pasture"
@@ -1582,7 +1585,7 @@ msgstr "Champ de canne à sucre"
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Taverne"
 
 #: sqlite/Building
 msgid "Tent"

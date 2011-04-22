@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-16 18:22+0200\n"
-"Last-Translator: eoc <>\n"
+"PO-Revision-Date: 2011-04-23 00:10+0200\n"
+"Last-Translator: erdnaxeli <erdnaxeli@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -566,6 +566,20 @@ msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock. \n"
 "When selling the 'target value' is the number which you hold in reserve to not sell"
 msgstr ""
+"Excellent ! Le bateau-marchand va maintenant s'arrêter à votre succursale de "
+"temps en temps.\n"
+"\n"
+"Continuons ce tutoriel et voyons comment vendre.\n"
+"\n"
+"Àprès avoir sélectionné un type de produit, la barre verte près du bas de la "
+"case (si visible) vous montre combien vous avez en stock de ce produit.\n"
+"\n"
+"Bouger le curseur à droite de chaque case détermine votre « valeur cible » "
+"qui a un sens différent pour « acheter » ou « vendre ».\n"
+"Quand vous achetez, vous allez acheter suffisement pour atteindre votre « "
+"valeur cible » de stock.\n"
+"Quand vous vendez, la « valeur cible » est la quantité de produit que vous "
+"voulez garder en réserve et ne pas vendre."
 
 #: po/tutorial.py:36
 msgid ""
@@ -583,8 +597,9 @@ msgid ""
 "TASK: Buy as many tools as you need to have 30 tools in stock!\n"
 "If you still have some in your ship's inventory, this seems like a good point to unload them."
 msgstr ""
-"Vendre fonctionne de la même façon. Un emplacement 'vente' avec 18 tonnes en "
-"stock et un curseur à 13 vendra jusqu'a 5 tonnes.\n"
+"Voici un exemple :\n"
+"Un emplacement 'vente' avec 18 tonnes en stock et un curseur à 13 vendra "
+"jusqu'a 5 tonnes.\n"
 "\n"
 "Si le bateau-marchand vous en achete que 2 tonnes, vous ne pourrez rien y "
 "faire. A part etre patient ;-)\n"
@@ -805,7 +820,7 @@ msgstr ""
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "CONSTRUIRE UN ENTREPÔT"
+msgstr "NOUVELLE MISSION : CONSTRUIRE UN ENTREPÔT"
 
 #: po/tutorial.py:55
 msgid ""
@@ -867,7 +882,7 @@ msgstr ""
 
 #: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NOUVELLE MISSION : FINIR LE TUTORIEL"
 
 #: po/tutorial.py:63
 msgid ""
@@ -880,7 +895,7 @@ msgstr ""
 
 #: po/tutorial.py:64
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "AUCUNE MISSION RESTANTE"
 
 #: po/tutorial.py:65
 msgid ""
@@ -901,7 +916,7 @@ msgstr ""
 
 #: po/tutorial.py:66
 msgid "Thanks!"
-msgstr ""
+msgstr "Merci !"
 
 #: po/tutorial.py:67
 msgid ""
@@ -916,10 +931,22 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Merci d'avoir suivi ce tutoriel !\n"
+"\n"
+"L'équipe de UH."
 
 #: po/tutorial.py:68
 msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
 msgstr ""
+"Félicitations ! Vous avez atteins la fin de ce tutoriel et êtes prêt à "
+"accomplir de nouveaux défis !"
 
 #~ msgid ""
 #~ "Fine! The Free Trader will now stop by at your branch office from time to time.\n"
