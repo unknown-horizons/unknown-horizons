@@ -27,7 +27,7 @@ import horizons.main
 from horizons.ext.enum import Enum
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, LivingObject
+from horizons.util import Callback, LivingObject, decorators
 
 from horizons.scenario.conditions import CONDITIONS, _scheduled_checked_conditions
 
@@ -59,7 +59,7 @@ class ScenarioEventHandler(LivingObject):
 		for cond in CONDITIONS:
 			self._event_conditions[cond] = set()
 		if scenariofile:
-			self._apply_data( self._parse_yaml( open(scenariofile, 'r') ) )
+			self._apply_data( self._parse_yaml_file( scenariofile ) )
 
 		self.sleep_ticks_remaining = 0
 
@@ -137,7 +137,7 @@ class ScenarioEventHandler(LivingObject):
 	def get_description_from_file(cls, filename):
 		"""Returns the description from a yaml file.
 		@throws InvalidScenarioFile"""
-		return cls._parse_yaml( open(filename, 'r') )['description']
+		return cls._parse_yaml_file(filename)['description']
 
 	@classmethod
 	def get_difficulty_from_file(cls, filename):
@@ -145,7 +145,7 @@ class ScenarioEventHandler(LivingObject):
 		Returns _("unknown") if difficulty isn't specified.
 		@throws InvalidScenarioFile"""
 		try:
-			return cls._parse_yaml( open(filename, 'r') )['difficulty']
+			return cls._parse_yaml_file(filename)['difficulty']
 		except KeyError:
 			return _("unknown")
 
@@ -155,7 +155,7 @@ class ScenarioEventHandler(LivingObject):
 		Returns _("unknown") if difficulty isn't specified.
 		@throws InvalidScenarioFile"""
 		try:
-			return cls._parse_yaml( open(filename, 'r') )['author']
+			return cls._parse_yaml_file(filename)['author']
 		except KeyError:
 			return _("unknown")
 
@@ -170,6 +170,12 @@ class ScenarioEventHandler(LivingObject):
 			return yaml.load( string_or_stream )
 		except Exception, e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
+
+	@classmethod
+	@decorators.cachedfunction
+	def _parse_yaml_file(cls, filename):
+		return cls._parse_yaml( open(filename, 'r') )
+
 
 	def _apply_data(self, data):
 		"""Apply data to self loaded via yaml.load
