@@ -8,15 +8,18 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<Container size="260,550" position="25,43">
+		<!-- the widgets in this container have no text because it is set
+		dynamically at runtime. See e.g. overviewtab.py -->
 		<Label name='name' position="0,0" text="" />
-		<Label name='capacity_utilisation_label' position="0,20" text="" />
-		<Label name='capacity_utilisation' position="150,20" text="" />
+		<TooltipLabel name='capacity_utilisation' position="160,20" text=""
+			tooltip="capacity utilization"/>
 		<!--
 		Health display.
 		<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="70,25" text="" />-->
 		<TooltipIcon name="running_costs_label" tooltip="Running costs" 
 			image="content/gui/icons/resources/running_costs.png" position="155,0" />
-		<Label name="running_costs" text="" position="180,00" />
+		<TooltipLabel name="running_costs" text="" position="180,00"
+			tooltip="Running costs" />
 	</Container>
 
 

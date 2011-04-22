@@ -25,7 +25,7 @@ from fife.extensions import pychan
 from tabinterface import TabInterface
 from horizons.util import Callback, ActionSetLoader, NamedObject
 from horizons.constants import RES, SETTLER, BUILDINGS
-from horizons.gui.widgets  import TooltipButton
+from horizons.gui.widgets  import TooltipButton, DeleteButton
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
@@ -155,11 +155,9 @@ class ProductionOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Production overview")
 
-		self.destruct_button = TooltipButton(name="destruct_button", \
-		              up_image="content/gui/images/buttons/delete.png", \
-		              down_image="content/gui/images/buttons/delete_h.png", \
-		              hover_image="content/gui/images/buttons/delete_h.png", \
-		              tooltip=_("Destroy building"), position=(190,330))
+		self.destruct_button = DeleteButton(name="destruct_button", \
+		                                    tooltip=_("Destroy building"), \
+		                                    position=(190,330) )
 		self.widget.addChild(self.destruct_button)
 		self.widget.mapEvents( { 'destruct_button' : self.destruct_building } )
 
