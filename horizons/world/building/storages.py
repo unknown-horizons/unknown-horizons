@@ -42,7 +42,7 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 		self.__init()
 
 	def __init(self):
-		self.inventory.adjust_limit(STORAGE.DEFAULT_STORAGE_SIZE)
+		self.inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
 	def create_inventory(self):
 		self.inventory = self.settlement.inventory
@@ -51,7 +51,8 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 	def remove(self):
 		# this shouldn't be absolutely necessary since the changelistener uses weak references
 		self.inventory.remove_change_listener(self._changed)
-		self.inventory.adjust_limit(-STORAGE.DEFAULT_STORAGE_SIZE)
+
+		self.inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
 	def load(self, db, worldid):

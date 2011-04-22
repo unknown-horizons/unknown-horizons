@@ -195,3 +195,8 @@ class UhDbAccessor(DbReader):
 		for res, amount in self.cached_query("SELECT resource, amount FROM player_start_res"):
 			ret[res] = amount
 		return ret
+
+	@decorators.cachedmethod
+	def get_storage_building_capacity(self, storage_type):
+		"""Returns the amount that a storage building can store of every resource."""
+		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
