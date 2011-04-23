@@ -84,6 +84,24 @@ def create_random_island(id_string):
 			for shape_coord in Circle(Point(x, y), shape_id).tuple_iter():
 				map_dict[shape_coord] = 1
 
+	# remove 1 tile peninsulas
+	neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+	bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
+	while True:
+		to_delete = []
+		for x, y in map_dict.iterkeys():
+			neighbours_dirs = 0
+			for i in range(len(neighbours)):
+				if (x + neighbours[i][0], y + neighbours[i][1]) in map_dict:
+					neighbours_dirs |= (1 << i)
+			if neighbours_dirs in bad_configs:
+				to_delete.append((x, y))
+		if to_delete:
+			for coords in to_delete:
+				del map_dict[coords]
+		else:
+			break
+
 	# write values to db
 	map_db = DbReader(":memory:")
 	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL)")
@@ -92,22 +110,75 @@ def create_random_island(id_string):
 
 	# assign these characters, if a coastline is found in this offset
 	offset_coastline = {
-		'a' : (0, -1),
-		'b' : (1, 0),
-		'c' : (0, 1),
-		'd' : (-1, 0)
+		'sw' : (-1, -1),
+		'w'  : (-1, 0),
+		'nw' : (-1, 1),
+		's'  : (0, -1),
+		'n'  : (0, 1),
+		'se' : (1, -1),
+		'e'  : (1, 0),
+		'ne' : (1, 1)
 		}
 
 	for x, y in map_dict.iterkeys():
 		# add a coastline tile for coastline, or default land else
-		coastline = ""
+		coastline = []
 		for offset_char in sorted(offset_coastline):
-			if (x+offset_coastline[offset_char][0], y+offset_coastline[offset_char][1]) not in map_dict:
-				coastline += offset_char
+			if (x+offset_coastline[offset_char][1], y+offset_coastline[offset_char][0]) not in map_dict:
+				coastline.append(offset_char)
 
-		if coastline:
-			# TODO: use coastline tile depending on coastline
-			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, 49)
+		if len(coastline) != 0:
+			# use coastline tile depending on coastline
+			tile = GROUND.SHALLOW_WATER
+			# straight coast
+			if coastline == ['s', 'se', 'sw']:
+				tile = GROUND.COAST_SOUTH
+			elif coastline == ['e', 'ne', 'se']:
+				tile = GROUND.COAST_EAST
+			elif coastline == ['n', 'ne', 'nw']:
+				tile = GROUND.COAST_NORTH
+			elif coastline == ['nw', 'sw', 'w']:
+				tile = GROUND.COAST_WEST
+			# slight turn (looks best with straight coast)
+			elif coastline == ['e', 'se'] or coastline == ['e', 'ne']:
+				tile = GROUND.COAST_EAST
+			elif coastline == ['n', 'ne'] or coastline == ['n', 'nw']:
+				tile = GROUND.COAST_NORTH
+			elif coastline == ['nw', 'w'] or coastline == ['sw', 'w']:
+				tile = GROUND.COAST_WEST
+			elif coastline == ['s', 'sw'] or coastline == ['s', 'se']:
+				tile = GROUND.COAST_SOUTH
+			# sandy corner
+			elif coastline == ['se']:
+				tile = GROUND.COAST_SOUTHWEST3
+			elif coastline == ['ne']:
+				tile = GROUND.COAST_NORTHWEST3
+			elif coastline == ['nw']:
+				tile = GROUND.COAST_NORTHEAST3
+			elif coastline == ['sw']:
+				tile = GROUND.COAST_SOUTHEAST3
+			# 1 tile U-shaped gulfs
+			elif coastline == ['s']:
+				tile = GROUND.COAST_SOUTH
+			elif coastline == ['e']:
+				tile = GROUND.COAST_EAST
+			elif coastline == ['n']:
+				tile = GROUND.COAST_NORTH
+			elif coastline == ['w']:
+				tile = GROUND.COAST_WEST
+			# watery corner
+			elif 3 <= len(coastline) <= 5:
+				coast_set = set(coastline)
+				if 'e' in coast_set and 'se' in coast_set and 's' in coast_set:
+					tile = GROUND.COAST_SOUTHEAST1
+				elif 's' in coast_set and 'sw' in coast_set and 'w' in coast_set:
+					tile = GROUND.COAST_SOUTHWEST1
+				elif 'w' in coast_set and 'nw' in coast_set and 'n' in coast_set:
+					tile = GROUND.COAST_NORTHWEST1
+				elif 'n' in coast_set and 'ne' in coast_set and 'e' in coast_set:
+					tile = GROUND.COAST_NORTHEAST1
+
+			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
 		else:
 			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
 	map_db("COMMIT")
