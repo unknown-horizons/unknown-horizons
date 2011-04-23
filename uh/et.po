@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-03 21:57+0200\n"
+"Last-Translator: Tobias <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.7.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
@@ -252,9 +253,12 @@ msgstr ""
 msgid "Resources still needed:"
 msgstr "Veel vajaminevad ressursid:"
 
+# 76%
+# 100%
 #: horizons/gui/tabs/boatbuildertab.py:170
+#, fuzzy
 msgid "Fisher boats"
-msgstr ""
+msgstr "Kalapaat"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
@@ -1068,9 +1072,12 @@ msgstr "Juhuslik kaart"
 msgid "Free play"
 msgstr "Vaba mängimine"
 
+# 90%
+# 100%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Alusta mängu:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"

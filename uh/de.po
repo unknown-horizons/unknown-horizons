@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-09 10:02+0200\n"
-"Last-Translator: Tobias <>\n"
+"PO-Revision-Date: 2011-04-23 23:26+0200\n"
+"Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -96,12 +96,12 @@ msgstr "Keine Dateien ausgewählt"
 
 #: horizons/gui/gui.py:233
 msgid "You need to select a savegame to delete"
-msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu löschen"
+msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen"
 
 #: horizons/gui/gui.py:236
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr "Wollt Ihr wirklich den Spielstand \"%s\" löschen?"
+msgstr "Wollt Ihr wirklich den Spielstand \"%s\" entfernen?"
 
 #: horizons/gui/gui.py:238
 msgid "Confirm deletion"
@@ -113,7 +113,7 @@ msgstr "Fehler!"
 
 #: horizons/gui/gui.py:243
 msgid "Failed to delete savefile!"
-msgstr "Löschen fehlgeschlagen!"
+msgstr "Entfernen fehlgeschlagen!"
 
 #: horizons/gui/gui.py:262
 msgid "Unknown savedate\n"
@@ -185,7 +185,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:364
 msgid "Confirmation for overwriting"
-msgstr "Bestätigung des Überschreibens"
+msgstr "Überschreiben bestätigen"
 
 #: horizons/gui/modules/multiplayermenu.py:101
 msgid "Network Error"
@@ -323,9 +323,8 @@ msgid "Overview"
 msgstr "Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
-msgstr "Kontor- \\n übersicht"
+msgstr "Kontorübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 #, fuzzy
@@ -333,11 +332,8 @@ msgid "Ship overview"
 msgstr "Schiffsübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:156
-#, fuzzy
 msgid "Production overview"
-msgstr ""
-"Produktions-\n"
-"übersicht"
+msgstr "Produktions-Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:162
 #, fuzzy
@@ -345,21 +341,17 @@ msgid "Destroy building"
 msgstr "Gebäude abreißen"
 
 #: horizons/gui/tabs/overviewtab.py:286
-#, fuzzy
 msgid "Market place overview"
-msgstr ""
-"Hauptplatz-\n"
-"übersicht"
+msgstr "Marktplatz-Übersicht"
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "maximal %st pro Slot"
 
 #: horizons/i18n/guitranslations.py:315
-#, fuzzy
 msgid "Sailor buildings"
-msgstr "Seefahrer Gebäude"
+msgstr "Seefahrergebäude"
 
 #: horizons/i18n/guitranslations.py:316
 #, fuzzy
@@ -377,68 +369,33 @@ msgid "Companies"
 msgstr "Betriebe"
 
 #: horizons/i18n/guitranslations.py:319
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Zelt: \n"
-"Beherbergt Eure \n"
-"Einwohner."
+msgstr "Zelt: Beherbergt Eure Einwohner."
 
 #: horizons/i18n/guitranslations.py:320
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Lager: \n"
-"Erweitert die \n"
-"Lagerkapazität \n"
-"und stellt \n"
-"Träger bereit."
+msgstr "Lagerzelt: Erweitert die Lagerkapazität und stellt Träger bereit."
 
 #: horizons/i18n/guitranslations.py:321
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
-msgstr ""
-"Pfad: \n"
-"Wird benötigt \n"
-"zum Transport \n"
-"von Gütern."
+msgstr "Pfad: Wird benötigt zum Transport von Gütern."
 
 #: horizons/i18n/guitranslations.py:322
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Marktplatz: \n"
-"Versorgt die \n"
-"Einwohner \n"
-"mit Gütern."
+msgstr "Marktplatz: Versorgt die Einwohner mit Gütern."
 
 #: horizons/i18n/guitranslations.py:323
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
-"Pavillon: \n"
-"Erfüllt religiöse \n"
-"Bedürfnisse Eurer \n"
-"Bevölkerung."
+msgstr "Pavillon: Erfüllt religiöse Bedürfnisse Eurer Bevölkerung."
 
 # FIXME: Leuchtfeuer, Leuchtsignal, Signalfeuer
 #: horizons/i18n/guitranslations.py:324
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
-"Leuchtfeuer: \n"
-"Erlaubt Handel \n"
-"mit dem \n"
-"Freien Händler."
+msgstr "Leuchtfeuer: Erlaubt Handel mit dem Freien Händler."
 
 #: horizons/i18n/guitranslations.py:325
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Holzfäller: \n"
-"Fällt Holz und \n"
-"verarbeitet es \n"
-"zu Brettern."
+msgstr "Holzfäller: Fällt Holz und verarbeitet es zu Brettern."
 
 #: horizons/i18n/guitranslations.py:326 sqlite/Building
 msgid "Tree"
@@ -446,21 +403,13 @@ msgstr "Baum"
 
 # FIXME: Sammelt Essen? "sammelt"? → Produziert? etc.
 #: horizons/i18n/guitranslations.py:327
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Jäger: \n"
-"Jagt wilde Waldtiere, \n"
-"sammelt Nahrung."
+msgstr "Jäger: Jagt Wild, produziert Nahrung."
 
 # FIXME: Sammelt?
 #: horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Fischer: \n"
-"Fischt im Meer, \n"
-"sammelt Nahrung."
+msgstr "Fischer: Befischt die See, produziert Nahrung."
 
 #: horizons/i18n/guitranslations.py:330
 msgid "Pioneer buildings"
@@ -475,73 +424,42 @@ msgid "Military"
 msgstr "Militär"
 
 #: horizons/i18n/guitranslations.py:336
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Farm: \n"
-"Bewirtschaftet \n"
-"Felder und \n"
-"hält Nutztiere."
+msgstr "Farm: Bewirtschaftet Felder und hält Nutztiere."
 
 #: horizons/i18n/guitranslations.py:337
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Weber: \n"
-"Verwebt Wolle \n"
-"zu Kleidung."
+msgstr "Weber: Verwebt Wolle zu Kleidung."
 
 #: horizons/i18n/guitranslations.py:338
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
-"Lehmgrube: \n"
-"Baut Lehm ab."
+msgstr "Lehmgrube: Fördert Lehm aus Lehmvorkommen."
 
 #: horizons/i18n/guitranslations.py:339
-#, fuzzy
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
-"Ziegelei: \n"
-"Verarbeitet Lehm \n"
-"zu Ziegelsteinen."
+msgstr "Ziegelei: Verarbeitet Lehm zu Ziegelsteinen."
 
 #: horizons/i18n/guitranslations.py:340
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
-"Kartoffelfeld: \n"
-"Liefert Nahrung. \n"
-"Benötigt eine Farm."
+msgstr "Kartoffelfeld: Produziert Nahrung. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:341
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-"Eine Viehweide \n"
-"zur Schafszucht. \n"
-"Produziert Wolle. \n"
-"Benötigt eine Farm."
+msgstr "Weide zur Schafzucht: Produziert Wolle. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:342
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
-msgstr ""
-"Zuckerrohrfeld: Zuckerrohr wird zur Herstellung von Spirituosen benötigt. "
-"Eine Farm bewirtschaftet das Feld."
+msgstr "Zuckerrohrfeld: Verwendung für Spirituosen. Benötigt eine Farm."
 
 #: horizons/i18n/guitranslations.py:343
 msgid "Village school: Provides education."
-msgstr ""
-"Dorfschule: \n"
-"Habt die Bildung Eurer Untertanen."
+msgstr "Dorfschule: Fördert die Bildung Eurer Untertanen."
 
 #: horizons/i18n/guitranslations.py:344
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
-"Bootsbauer: \n"
-"Baut Boote und \n"
-"kleine Schiffe, \n"
-"muss an der Küste \n"
-"errichtet werden."
+"Bootsbauer: Baut Boote und kleine Schiffe, muss an der Küste errichtet "
+"werden."
 
 #: horizons/i18n/guitranslations.py:345
 msgid "Distillery: Turns sugar into liquor."
@@ -557,7 +475,7 @@ msgstr "Eisenstollen: Dient dem Abbau von Eisenerz."
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Smeltery: Refines all kind of ores."
-msgstr "Schmelzhütte: Verhüttet Erze zu Metallen"
+msgstr "Schmelzhütte: Verhüttet Erze zu Metallen."
 
 #: horizons/i18n/guitranslations.py:352
 msgid "Toolmaker: Produces tools out of iron."
@@ -585,10 +503,7 @@ msgstr "Einwohner"
 
 #: horizons/i18n/guitranslations.py:360
 msgid "Click to change the name of your settlement."
-msgstr ""
-"Hier klicken, um \n"
-"den Namen Eurer \n"
-"Siedlung zu ändern."
+msgstr "Hier klicken, um den Namen Eurer Siedlung zu ändern."
 
 #: horizons/i18n/guitranslations.py:362
 msgid "Destroy"
@@ -677,15 +592,11 @@ msgstr "Waren verkaufen"
 
 #: horizons/i18n/guitranslations.py:390
 msgid "Pause production"
-msgstr ""
-"Produktion\n"
-"pausieren"
+msgstr "Produktion pausieren"
 
 #: horizons/i18n/guitranslations.py:391
 msgid "Start production"
-msgstr ""
-"Produktion\n"
-"starten"
+msgstr "Produktion fortsetzen"
 
 #: horizons/i18n/guitranslations.py:393
 #, fuzzy
@@ -856,9 +767,7 @@ msgstr "{C} = Chat"
 
 #: horizons/i18n/guitranslations.py:453
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr ""
-"{UMSCHALT} = Gedrückt halten, um mehrere \n"
-"Gebäude zu platzieren"
+msgstr "{UMSCHALT} = Gedrückt halten, um mehrere Gebäude zu platzieren"
 
 #: horizons/i18n/guitranslations.py:454
 msgid "Have fun."
@@ -1145,11 +1054,8 @@ msgid "Resume"
 msgstr "fortsetzen"
 
 #: horizons/i18n/guitranslations.py:546
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
-"Alle Bau- \n"
-"vorgänge abbrechen"
+msgstr "Baufortschritt verwerfen"
 
 #: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:569
 #: horizons/i18n/guitranslations.py:591
