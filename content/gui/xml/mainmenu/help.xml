@@ -21,7 +21,7 @@
 	</VBox>
 	<VBox>
 		<Label name="set07" text="{B} = Show build menu" />
-		<Label name="set07" text="{L} = Toggle Captain's log" />
+		<Label name="set27" text="{L} = Toggle Captain's log" />
 		<Label name="set12" text="{ESC} = Show pause menu" />
 	</VBox>
 	<VBox>
