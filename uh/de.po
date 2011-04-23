@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-23 23:26+0200\n"
+"PO-Revision-Date: 2011-04-24 00:34+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -74,9 +74,9 @@ msgid ""
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
-"Welch ein freudiger Moment, Ihr habt es getan! \n"
+"Sie haben es geschafft...\n"
 "\n"
-"Doch ich muss Euch leider enttäuschen – dies ist leider nur ein Platzhalter."
+"Leider ist dies aber nur ein Platzhalter."
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
@@ -130,7 +130,7 @@ msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:267
 msgid "Saved 1 time\n"
-msgstr "Ein Mal gespeichert \n"
+msgstr "Ein Mal gespeichert\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -256,7 +256,7 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr "Bootsbauübersicht"
+msgstr "Bootsbau-Übersicht"
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
@@ -458,7 +458,7 @@ msgstr "Dorfschule: Fördert die Bildung Eurer Untertanen."
 #: horizons/i18n/guitranslations.py:344
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
-"Bootsbauer: Baut Boote und kleine Schiffe, muss an der Küste errichtet "
+"Bootsbauer: Baut Boote und kleine Schiffe. Muss an der Küste errichtet "
 "werden."
 
 #: horizons/i18n/guitranslations.py:345
@@ -848,7 +848,7 @@ msgstr "Das Spiel startet, sobald genug Spieler verbunden sind."
 
 #: horizons/i18n/guitranslations.py:484
 msgid "Game details:"
-msgstr " Details:"
+msgstr "Spieldetails:"
 
 #: horizons/i18n/guitranslations.py:485
 msgid "Exit gamelobby"
@@ -1576,7 +1576,7 @@ msgstr "Einer Eurer Siedler hat keinen Zugang zu einem Marktplatz."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr "Bildschirmfoto wurde nach ${file} gespeichert."
+msgstr "Bildschirmfoto wurde unter ${file} gespeichert."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
@@ -1660,9 +1660,10 @@ msgstr "Eisenbarren"
 msgid "iron ore"
 msgstr "Eisenerz"
 
+# klingt komisch.
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr "Wolle"
+msgstr "Lammwolle"
 
 #: sqlite/Resources
 msgid "liquor"
