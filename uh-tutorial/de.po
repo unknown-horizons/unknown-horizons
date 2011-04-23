@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-17 17:52+0200\n"
-"PO-Revision-Date: 2011-04-16 17:30+0200\n"
+"PO-Revision-Date: 2011-04-24 01:04+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -642,7 +642,8 @@ msgstr ""
 
 #: po/tutorial_en.py:37
 msgid "Reach an island stock of at least 30 tools."
-msgstr "Erreicht ein Lagerstand von 30 oder mehr Werkzeugen auf Eurer Insel."
+msgstr ""
+"Erreicht einen Lagerbestand von 30 oder mehr Werkzeugen auf Eurer Insel."
 
 # PAVILION -> Gebetszelt/Gebetshaus/Pfarrhaus
 #: po/tutorial_en.py:38
@@ -683,8 +684,7 @@ msgstr ""
 "'große' Version auch die Bedürfnisse der Einwohner niedrigerer Stufen "
 "befriedigt."
 
-# units need to refreshm -> eigentlich Einheiten, aber "Dosis" klingt stimmiger ;-)
-# PS: alternativ "mit Glauben "ab zu füllen""
+# units need to refresh
 #: po/tutorial_en.py:40
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
@@ -702,7 +702,7 @@ msgstr ""
 "meist umfangreicher.\n"
 "\n"
 "Beachtet, das die Religion wie ein Konsumgut behandelt wird. Eure Einwohner "
-"müssen also regelmäßig ihren Vorrat auffüllen.\n"
+"müssen also regelmäßig ihren Vorrat davon auffüllen.\n"
 "\n"
 "Es ist insbesondere NICHT ausreichend, dass das Gebäude nur in einer "
 "gewissen Reichweite ist. Auch alle Wege dorthin müssen vom Zelt erreichbar "
