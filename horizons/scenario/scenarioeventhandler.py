@@ -21,6 +21,7 @@
 
 import yaml
 import copy
+import pickle
 
 import horizons.main
 
@@ -42,6 +43,8 @@ class ScenarioEventHandler(LivingObject):
 	An instance of this class is bound to a set of events. On a new scenario, you need a new instance."""
 
 	CHECK_CONDITIONS_INTERVAL = 3 # seconds
+
+	PICKLE_PROTOCOL = 2
 
 	def __init__(self, session, scenariofile = None):
 		"""
@@ -95,11 +98,12 @@ class ScenarioEventHandler(LivingObject):
 		if self.inited: # only save in case we have data applied
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
 		for key, value in self._scenario_variables.iteritems():
-			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, value)
+			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, \
+			   pickle.dumps(value, self.PICKLE_PROTOCOL))
 
 	def load(self, db):
 		for key, value in db("SELECT key, value FROM scenario_variables"):
-			self._scenario_variables[key] = value
+			self._scenario_variables[key] = pickle.loads(value)
 		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
 		if len(data) == 0:
 			return # nothing to load
