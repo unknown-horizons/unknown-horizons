@@ -56,15 +56,14 @@ def create_random_island(id_string):
 	rand = random.Random(seed)
 
 	map_dict = {}
-	groundTypes = Enum('ground', 'coast')
 
 	# creation_method 0 - standard small island for the 3x3 grid
 	# creation_method 1 - large island
 
 	# place this number of shapes
 	for i in xrange( int(float(width+height)/2 * 1.5) ):
-		x = rand.randint(4, width-4)
-		y = rand.randint(4, height -4)
+		x = rand.randint(8, width - 8)
+		y = rand.randint(8, height - 8)
 
 		# place shape determined by shape_id on (x, y)
 		if creation_method == 0:
@@ -76,33 +75,15 @@ def create_random_island(id_string):
 			# use a rect
 			if creation_method == 0:
 				for shape_coord in Rect.init_from_topleft_and_size(x-3, y-3, 5, 5).tuple_iter():
-					map_dict[shape_coord] = groundTypes.ground
+					map_dict[shape_coord] = True
 			elif creation_method == 1:
 				for shape_coord in Rect.init_from_topleft_and_size(x-5, y-5, 8, 8).tuple_iter():
-					map_dict[shape_coord] = groundTypes.ground
+					map_dict[shape_coord] = True
 
 		else:
 			# use a circle, where radius is determined by shape_id
 			for shape_coord in Circle(Point(x, y), shape_id).tuple_iter():
-				map_dict[shape_coord] = groundTypes.ground
-
-	# remove 1 tile peninsulas
-	neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-	bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
-	while True:
-		to_delete = []
-		for x, y in map_dict.iterkeys():
-			neighbours_dirs = 0
-			for i in range(len(neighbours)):
-				if (x + neighbours[i][0], y + neighbours[i][1]) in map_dict:
-					neighbours_dirs |= (1 << i)
-			if neighbours_dirs in bad_configs:
-				to_delete.append((x, y))
-		if to_delete:
-			for coords in to_delete:
-				del map_dict[coords]
-		else:
-			break
+				map_dict[shape_coord] = True
 
 	# write values to db
 	map_db = DbReader(":memory:")
@@ -110,8 +91,75 @@ def create_random_island(id_string):
 	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 	map_db("BEGIN TRANSACTION")
 
-	# assign these characters, if a coastline is found in this offset
-	offset_coastline = {
+	# add grass tiles
+	for x, y in map_dict.iterkeys():
+		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
+
+	def fill_tiny_spaces(tile):
+		"""Fills 1 tile gulfs and straits with the specified tile
+		@param tile: ground tile to fill with
+		"""
+
+		neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		corners = [(-1, -1), (-1, 1)]
+		knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
+		bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
+
+		while True:
+			to_fill = {}
+			for x, y in map_dict.iterkeys():
+				for x_offset, y_offset in neighbours:
+					x2 = x + x_offset
+					y2 = y + y_offset
+					if (x2, y2) in map_dict:
+						continue
+					# (x2, y2) is now a point just off the island
+
+					neighbours_dirs = 0
+					for i in range(len(neighbours)):
+						x3 = x2 + neighbours[i][0]
+						y3 = y2 + neighbours[i][1]
+						if (x3, y3) not in map_dict:
+							neighbours_dirs |= (1 << i)
+					if neighbours_dirs in bad_configs:
+						# part of a straight 1 tile gulf
+						to_fill[(x2, y2)] = True
+					else:
+						for x_offset, y_offset in corners:
+							x3 = x2 + x_offset
+							y3 = y2 + y_offset
+							x4 = x2 - x_offset
+							y4 = y2 - y_offset
+							if (x3, y3) in map_dict and (x4, y4) in map_dict:
+								# part of a diagonal 1 tile gulf
+								to_fill[(x2, y2)] = True
+								break
+
+				# block 1 tile straits
+				for x_offset, y_offset in knight_moves:
+					x2 = x + x_offset
+					y2 = y + y_offset
+					if (x2, y2) not in map_dict:
+						continue
+					if abs(x_offset) == 1:
+						y2 = y + y_offset / 2
+						if (x2, y2) in map_dict or (x, y2) in map_dict:
+							continue
+					else:
+						x2 = x + x_offset / 2
+						if (x2, y2) in map_dict or (x2, y) in map_dict:
+							continue
+					to_fill[(x2, y2)] = True
+
+			if to_fill:
+				for x, y in to_fill.iterkeys():
+					map_dict[(x, y)] = tile
+					map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
+			else:
+				break
+
+	# possible movement directions
+	all_moves = {
 		'sw' : (-1, -1),
 		'w'  : (-1, 0),
 		'nw' : (-1, 1),
@@ -122,168 +170,182 @@ def create_random_island(id_string):
 		'ne' : (1, 1)
 		}
 
-	# mark the coast, construct a border around the island
-	deep_water_dict = {}
-	for x, y in map_dict.iterkeys():
-		for dir in offset_coastline:
-			x2 = x + offset_coastline[dir][1]
-			y2 = y + offset_coastline[dir][0]
-			if (x2, y2) not in map_dict:
-				map_dict[(x, y)] = groundTypes.coast
-				deep_water_dict[(x2, y2)] = True
+	def get_island_outline():
+		"""
+		@return: the points just off the island as a dict
+		"""
+		result = {}
+		for x, y in map_dict.iterkeys():
+			for offset_x, offset_y in all_moves.itervalues():
+				coords = (x + offset_x, y + offset_y)
+				if coords not in map_dict:
+					result[coords] = True
+		return result
 
-	# add the shallow water to deep water tiles
-	for x, y in deep_water_dict.iterkeys():
-		coastline = []
-		for dir in sorted(offset_coastline):
-			coords = (x + offset_coastline[dir][1], y + offset_coastline[dir][0])
-			if coords not in map_dict and coords not in deep_water_dict:
-				coastline.append(dir)
+	# add grass to sand tiles
+	fill_tiny_spaces(GROUND.DEFAULT_LAND)
+	outline = get_island_outline()
+	for x, y in outline.iterkeys():
+		filled = []
+		for dir in sorted(all_moves):
+			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
+			if coords in map_dict:
+				filled.append(dir)
 
-		tile = GROUND.SHALLOW_WATER
+		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if coastline == ['s', 'se', 'sw'] or coastline == ['s']:
-			tile = GROUND.DEEP_WATER_SOUTH
-		elif coastline == ['e', 'ne', 'se'] or coastline == ['e']:
-			tile = GROUND.DEEP_WATER_EAST
-		elif coastline == ['n', 'ne', 'nw'] or coastline == ['n']:
-			tile = GROUND.DEEP_WATER_NORTH
-		elif coastline == ['nw', 'sw', 'w'] or coastline == ['w']:
-			tile = GROUND.DEEP_WATER_WEST
+		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+			tile = GROUND.SAND_NORTH
+		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+			tile = GROUND.SAND_WEST
+		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+			tile = GROUND.SAND_SOUTH
+		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+			tile = GROUND.SAND_EAST
 		# slight turn (looks best with straight coast)
-		elif coastline == ['e', 'se'] or coastline == ['e', 'ne']:
-			tile = GROUND.DEEP_WATER_EAST
-		elif coastline == ['n', 'ne'] or coastline == ['n', 'nw']:
-			tile = GROUND.DEEP_WATER_NORTH
-		elif coastline == ['nw', 'w'] or coastline == ['sw', 'w']:
-			tile = GROUND.DEEP_WATER_WEST
-		elif coastline == ['s', 'sw'] or coastline == ['s', 'se']:
-			tile = GROUND.DEEP_WATER_SOUTH
-		# mostly shallow corner
-		elif coastline == ['se']:
-			tile = GROUND.DEEP_WATER_SOUTHWEST3
-		elif coastline == ['ne']:
-			tile = GROUND.DEEP_WATER_NORTHWEST3
-		elif coastline == ['nw']:
-			tile = GROUND.DEEP_WATER_NORTHEAST3
-		elif coastline == ['sw']:
-			tile = GROUND.DEEP_WATER_SOUTHEAST3
-		# mostly deep corner
-		elif 3 <= len(coastline) <= 5:
-			coast_set = set(coastline)
+		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+			tile = GROUND.SAND_WEST
+		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+			tile = GROUND.SAND_SOUTH
+		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+			tile = GROUND.SAND_EAST
+		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+			tile = GROUND.SAND_NORTH
+		# sandy corner
+		elif filled == ['se']:
+			tile = GROUND.SAND_NORTHWEST1
+		elif filled == ['ne']:
+			tile = GROUND.SAND_SOUTHWEST1
+		elif filled == ['nw']:
+			tile = GROUND.SAND_SOUTHEAST1
+		elif filled == ['sw']:
+			tile = GROUND.SAND_NORTHEAST1
+		# grassy corner
+		elif 3 <= len(filled) <= 5:
+			coast_set = set(filled)
 			if 'e' in coast_set and 'se' in coast_set and 's' in coast_set:
-				tile = GROUND.DEEP_WATER_SOUTHEAST1
+				tile = GROUND.SAND_NORTHEAST3
 			elif 's' in coast_set and 'sw' in coast_set and 'w' in coast_set:
-				tile = GROUND.DEEP_WATER_SOUTHWEST1
+				tile = GROUND.SAND_NORTHWEST3
 			elif 'w' in coast_set and 'nw' in coast_set and 'n' in coast_set:
-				tile = GROUND.DEEP_WATER_NORTHWEST1
+				tile = GROUND.SAND_SOUTHWEST3
 			elif 'n' in coast_set and 'ne' in coast_set and 'e' in coast_set:
-				tile = GROUND.DEEP_WATER_NORTHEAST1
+				tile = GROUND.SAND_SOUTHEAST3
 
+		assert tile
 		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
 
-	for x, y in map_dict.iterkeys():
-		if map_dict[(x, y)] == groundTypes.coast:
-			# add sand to shallow water tile
-			coastline = []
-			for dir in sorted(offset_coastline):
-				if (x + offset_coastline[dir][1], y + offset_coastline[dir][0]) not in map_dict:
-					coastline.append(dir)
+	for coords, type in outline.iteritems():
+		map_dict[coords] = type
 
-			tile = GROUND.SHALLOW_WATER
-			# straight coast or 1 tile U-shaped gulfs
-			if coastline == ['s', 'se', 'sw'] or coastline == ['s']:
-				tile = GROUND.COAST_SOUTH
-			elif coastline == ['e', 'ne', 'se'] or coastline == ['e']:
-				tile = GROUND.COAST_EAST
-			elif coastline == ['n', 'ne', 'nw'] or coastline == ['n']:
-				tile = GROUND.COAST_NORTH
-			elif coastline == ['nw', 'sw', 'w'] or coastline == ['w']:
-				tile = GROUND.COAST_WEST
-			# slight turn (looks best with straight coast)
-			elif coastline == ['e', 'se'] or coastline == ['e', 'ne']:
-				tile = GROUND.COAST_EAST
-			elif coastline == ['n', 'ne'] or coastline == ['n', 'nw']:
-				tile = GROUND.COAST_NORTH
-			elif coastline == ['nw', 'w'] or coastline == ['sw', 'w']:
-				tile = GROUND.COAST_WEST
-			elif coastline == ['s', 'sw'] or coastline == ['s', 'se']:
-				tile = GROUND.COAST_SOUTH
-			# sandy corner
-			elif coastline == ['se']:
-				tile = GROUND.COAST_SOUTHWEST3
-			elif coastline == ['ne']:
-				tile = GROUND.COAST_NORTHWEST3
-			elif coastline == ['nw']:
+	# add sand to shallow water tiles
+	fill_tiny_spaces(GROUND.SAND)
+	outline = get_island_outline()
+	for x, y in outline.iterkeys():
+		filled = []
+		for dir in sorted(all_moves):
+			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
+			if coords in map_dict:
+				filled.append(dir)
+
+		tile = None
+		# straight coast or 1 tile U-shaped gulfs
+		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+			tile = GROUND.COAST_NORTH
+		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+			tile = GROUND.COAST_WEST
+		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+			tile = GROUND.COAST_SOUTH
+		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+			tile = GROUND.COAST_EAST
+		# slight turn (looks best with straight coast)
+		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+			tile = GROUND.COAST_WEST
+		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+			tile = GROUND.COAST_SOUTH
+		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+			tile = GROUND.COAST_EAST
+		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+			tile = GROUND.COAST_NORTH
+		# mostly wet corner
+		elif filled == ['se']:
+			tile = GROUND.COAST_NORTHWEST1
+		elif filled == ['ne']:
+			tile = GROUND.COAST_SOUTHWEST1
+		elif filled == ['nw']:
+			tile = GROUND.COAST_SOUTHEAST1
+		elif filled == ['sw']:
+			tile = GROUND.COAST_NORTHEAST1
+		# mostly dry corner
+		elif 3 <= len(filled) <= 5:
+			coast_set = set(filled)
+			if 'e' in coast_set and 'se' in coast_set and 's' in coast_set:
 				tile = GROUND.COAST_NORTHEAST3
-			elif coastline == ['sw']:
+			elif 's' in coast_set and 'sw' in coast_set and 'w' in coast_set:
+				tile = GROUND.COAST_NORTHWEST3
+			elif 'w' in coast_set and 'nw' in coast_set and 'n' in coast_set:
+				tile = GROUND.COAST_SOUTHWEST3
+			elif 'n' in coast_set and 'ne' in coast_set and 'e' in coast_set:
 				tile = GROUND.COAST_SOUTHEAST3
-			# watery corner
-			elif 3 <= len(coastline) <= 5:
-				coast_set = set(coastline)
-				if 'e' in coast_set and 'se' in coast_set and 's' in coast_set:
-					tile = GROUND.COAST_SOUTHEAST1
-				elif 's' in coast_set and 'sw' in coast_set and 'w' in coast_set:
-					tile = GROUND.COAST_SOUTHWEST1
-				elif 'w' in coast_set and 'nw' in coast_set and 'n' in coast_set:
-					tile = GROUND.COAST_NORTHWEST1
-				elif 'n' in coast_set and 'ne' in coast_set and 'e' in coast_set:
-					tile = GROUND.COAST_NORTHEAST1
 
-			map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
-		else:
-			# add grass to sand tile or just the ground
-			coastline = []
-			for dir in sorted(offset_coastline):
-				if map_dict[(x + offset_coastline[dir][1], y + offset_coastline[dir][0])] == groundTypes.coast:
-					coastline.append(dir)
+		assert tile
+		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
 
-			if coastline:
-				# add grass to sand tile
-				tile = GROUND.SAND
-				# straight coast or 1 tile U-shaped gulfs
-				if coastline == ['s', 'se', 'sw'] or coastline == ['s']:
-					tile = GROUND.SAND_SOUTH
-				elif coastline == ['e', 'ne', 'se'] or coastline == ['e']:
-					tile = GROUND.SAND_EAST
-				elif coastline == ['n', 'ne', 'nw'] or coastline == ['n']:
-					tile = GROUND.SAND_NORTH
-				elif coastline == ['nw', 'sw', 'w'] or coastline == ['w']:
-					tile = GROUND.SAND_WEST
-				# slight turn (looks best with straight coast)
-				elif coastline == ['e', 'se'] or coastline == ['e', 'ne']:
-					tile = GROUND.SAND_EAST
-				elif coastline == ['n', 'ne'] or coastline == ['n', 'nw']:
-					tile = GROUND.SAND_NORTH
-				elif coastline == ['nw', 'w'] or coastline == ['sw', 'w']:
-					tile = GROUND.SAND_WEST
-				elif coastline == ['s', 'sw'] or coastline == ['s', 'se']:
-					tile = GROUND.SAND_SOUTH
-				# grassy corner
-				elif coastline == ['se']:
-					tile = GROUND.SAND_SOUTHWEST3
-				elif coastline == ['ne']:
-					tile = GROUND.SAND_NORTHWEST3
-				elif coastline == ['nw']:
-					tile = GROUND.SAND_NORTHEAST3
-				elif coastline == ['sw']:
-					tile = GROUND.SAND_SOUTHEAST3
-				# sandy corner
-				elif 3 <= len(coastline) <= 5:
-					coast_set = set(coastline)
-					if 'e' in coast_set and 'se' in coast_set and 's' in coast_set:
-						tile = GROUND.SAND_SOUTHEAST1
-					elif 's' in coast_set and 'sw' in coast_set and 'w' in coast_set:
-						tile = GROUND.SAND_SOUTHWEST1
-					elif 'w' in coast_set and 'nw' in coast_set and 'n' in coast_set:
-						tile = GROUND.SAND_NORTHWEST1
-					elif 'n' in coast_set and 'ne' in coast_set and 'e' in coast_set:
-						tile = GROUND.SAND_NORTHEAST1
+	for coords, type in outline.iteritems():
+		map_dict[coords] = type
 
-				map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
-			else:
-				# add grass tile
-				map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, GROUND.DEFAULT_LAND)
+	# add shallow water to deep water tiles
+	fill_tiny_spaces(GROUND.SHALLOW_WATER)
+	outline = get_island_outline()
+	for x, y in outline.iterkeys():
+		filled = []
+		for dir in sorted(all_moves):
+			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
+			if coords in map_dict:
+				filled.append(dir)
+
+		tile = None
+		# straight coast or 1 tile U-shaped gulfs
+		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+			tile = GROUND.DEEP_WATER_NORTH
+		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+			tile = GROUND.DEEP_WATER_WEST
+		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+			tile = GROUND.DEEP_WATER_SOUTH
+		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+			tile = GROUND.DEEP_WATER_EAST
+		# slight turn (looks best with straight coast)
+		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+			tile = GROUND.DEEP_WATER_WEST
+		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+			tile = GROUND.DEEP_WATER_SOUTH
+		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+			tile = GROUND.DEEP_WATER_EAST
+		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+			tile = GROUND.DEEP_WATER_NORTH
+		# mostly deep corner
+		elif filled == ['se']:
+			tile = GROUND.DEEP_WATER_NORTHWEST1
+		elif filled == ['ne']:
+			tile = GROUND.DEEP_WATER_SOUTHWEST1
+		elif filled == ['nw']:
+			tile = GROUND.DEEP_WATER_SOUTHEAST1
+		elif filled == ['sw']:
+			tile = GROUND.DEEP_WATER_NORTHEAST1
+		# mostly shallow corner
+		elif 3 <= len(filled) <= 5:
+			coast_set = set(filled)
+			if 'e' in coast_set and 'se' in coast_set and 's' in coast_set:
+				tile = GROUND.DEEP_WATER_NORTHEAST3
+			elif 's' in coast_set and 'sw' in coast_set and 'w' in coast_set:
+				tile = GROUND.DEEP_WATER_NORTHWEST3
+			elif 'w' in coast_set and 'nw' in coast_set and 'n' in coast_set:
+				tile = GROUND.DEEP_WATER_SOUTHWEST3
+			elif 'n' in coast_set and 'ne' in coast_set and 'e' in coast_set:
+				tile = GROUND.DEEP_WATER_SOUTHEAST3
+
+		assert tile
+		map_db("INSERT INTO ground VALUES(?, ?, ?)", x, y, tile)
 
 	map_db("COMMIT")
 	return map_db
