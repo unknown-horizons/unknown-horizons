@@ -116,6 +116,10 @@ def set_translations():
 			"cancelButton"                : _("Leave Captain's log"),
 			"backwardButton"              : _("Read prev. entries"),
 			"forwardButton"               : _("Read next entries")},
+		"configure_route.xml" : {
+			"cancelButton"                : _("Exit"),
+			"add_bo"                      : _("Add to list"),
+			"start_route"                 : _("Start / Stop route")},
 		"gamemenu.xml" : {
 			"chimebell"                   : _("Attention please!"),
 			"credits"                     : _("Credits"),
@@ -138,7 +142,6 @@ def set_translations():
 			"set05"                       : _("{ , } = Rotate building left"),
 			"set06"                       : _("{ . } = Rotate building right"),
 			"set07"                       : _("{B} = Show build menu"),
-			"set07"                       : _("{L} = Toggle Captain's log"),
 			"set08"                       : _("{F1} = Display help"),
 			"set09"                       : _("{F5} = Quicksave"),
 			"set10"                       : _("{F9} = Quickload"),
@@ -152,6 +155,7 @@ def set_translations():
 			"set23"                       : _("{S} = Screenshot"),
 			"set25"                       : _("{SHIFT} = Hold to place multiple buildings"),
 			"set26"                       : _("{C} = Chat"),
+			"set27"                       : _("{L} = Toggle Captain's log"),
 			"okButton"                    : _("Exit to main menu")},
 		"loadingscreen.xml" : {
 			"loading_label"               : _("Loading ..."),
@@ -198,6 +202,7 @@ def set_translations():
 		"settings.xml" : {
 			"autosave_interval_label"     : _("Autosave interval in minutes:"),
 			"color_depth_label"           : _("Color depth:"),
+			"edge_scrolling_label"        : _("Enable edge scrolling:"),
 			"effect_volume_label"         : _("Effects volume:"),
 			"headline"                    : _("Settings"),
 			"headline_graphics"           : _("Graphics"),
@@ -282,7 +287,9 @@ def set_translations():
 			"tax_label"                   : _("Taxes:")},
 		"overview_productionbuilding.xml" : {
 			"headline"                    : _("Building overview"),
-			"running_costs_label"         : _("Running costs")},
+			"running_costs_label"         : _("Running costs"),
+			"capacity_utilisation"        : _("capacity utilization"),
+			"running_costs"               : _("Running costs")},
 		"overview_resourcedeposit.xml" : {
 			"headline"                    : _("Resource deposit"),
 			"res_dep_description_lbl"     : _("This is a resource deposit where you can build a mine to dig up resources."),
@@ -312,6 +319,7 @@ def set_translations():
 			"ship_label"                  : _("Ship:"),
 			"trade_with_label"            : _("Trade partner:")},
 		"ship_inventory.xml" : {
+			"configure_route_label"       : _("Configure trading route:"),
 			"headline"                    : _("Inventory"),
 			"load_unload_label"           : _("Load/Unload:")},
 	}
