@@ -994,9 +994,12 @@ msgstr "Losowa mapa"
 msgid "Free play"
 msgstr "Wolna rozgrywka"
 
+# 90%
+# 100%
 #: horizons/i18n/guitranslations.py:533
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Rozpocznij grę:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
