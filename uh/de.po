@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-24 00:34+0200\n"
+"PO-Revision-Date: 2011-04-24 00:36+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -152,7 +152,6 @@ msgstr ""
 "Vers. %(need)d benötigt!"
 
 #: horizons/gui/gui.py:280
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
 msgstr "INKOMPATIBLE VERSION\n"
 
@@ -327,7 +326,6 @@ msgid "Branch office overview"
 msgstr "Kontorübersicht"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
 msgstr "Schiffsübersicht"
 
@@ -336,7 +334,6 @@ msgid "Production overview"
 msgstr "Produktions-Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:162
-#, fuzzy
 msgid "Destroy building"
 msgstr "Gebäude abreißen"
 
@@ -354,7 +351,6 @@ msgid "Sailor buildings"
 msgstr "Seefahrergebäude"
 
 #: horizons/i18n/guitranslations.py:316
-#, fuzzy
 msgid "Residents and infrastructure"
 msgstr "Wohnbauten und Infrastruktur"
 
@@ -599,7 +595,6 @@ msgid "Start production"
 msgstr "Produktion fortsetzen"
 
 #: horizons/i18n/guitranslations.py:393
-#, fuzzy
 msgid "Leave Captain's log"
 msgstr "Logbuch verlassen"
 
@@ -660,7 +655,6 @@ msgid "The whole FIFE team (www.fifengine.de)"
 msgstr "Das gesamte FIFE-Team (www.fifengine.de)"
 
 #: horizons/i18n/guitranslations.py:424
-#, fuzzy
 msgid "Return to game"
 msgstr "Zurück zum Spiel"
 
@@ -670,22 +664,18 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #: horizons/i18n/guitranslations.py:428
-#, fuzzy
 msgid "Cancel game"
 msgstr "Spiel beenden"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:468
-#, fuzzy
 msgid "Chime the bell"
 msgstr "Die Glocke läuten"
 
 #: horizons/i18n/guitranslations.py:430 horizons/i18n/guitranslations.py:469
-#, fuzzy
 msgid "Credits"
 msgstr "Mitwirkende"
 
 #: horizons/i18n/guitranslations.py:433
-#, fuzzy
 msgid "Key bindings"
 msgstr "Tastenbelegung"
 
@@ -895,7 +885,6 @@ msgid "Join the selected game"
 msgstr "In ausgewähltes Spiel einklinken"
 
 #: horizons/i18n/guitranslations.py:500
-#, fuzzy
 msgid "Restart required"
 msgstr "Neustart erforderlich"
 
@@ -1132,12 +1121,10 @@ msgid "Taxes:"
 msgstr "Steuern:"
 
 #: horizons/i18n/guitranslations.py:593
-#, fuzzy
 msgid "Resource deposit"
 msgstr "Rohstoffvorkommen"
 
 #: horizons/i18n/guitranslations.py:594
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "Dies ist ein Rohstoffvorkommen. Errichtet eine Mine, um an die Rohstoffe zu "
