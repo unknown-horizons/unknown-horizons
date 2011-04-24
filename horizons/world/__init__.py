@@ -26,7 +26,7 @@ import weakref
 import random
 import logging
 
-import horizons.main 
+import horizons.main
 from horizons.world.island import Island
 from horizons.world.player import Player, HumanPlayer
 from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
@@ -124,6 +124,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			if(len(human_players) == 1):
 				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
+
+		if self.player is not None:
+			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			                                          call_listener_now=True)
 
 		if self.player is None and self.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
@@ -352,7 +356,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 			if (x, y) in self.ship_map:
 				continue # don't place ship where there is already a ship
-			
+
 			result = Point(x, y)
 			if self.get_island(result) is not None:
 				continue # don't choose a point on an island
@@ -392,14 +396,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	def setup_player(self, id, name, color, local):
 		"""Sets up a new Player instance and adds him to the active world.
+		Only used for new games. Loading old players is done in _init().
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
 		if local:
 			player = HumanPlayer(self.session, id, name, color, inventory=inv)
 			self.player = player
-			self.session.ingame_gui.update_gold()
-			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold)
+			self.player.inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			                                          call_listener_now=True)
 		else:
 			player = Player(self.session, id, name, color, inventory=inv)
 		self.players.append(player)
