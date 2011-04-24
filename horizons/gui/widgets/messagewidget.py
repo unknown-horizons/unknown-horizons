@@ -148,6 +148,8 @@ class MessageWidget(LivingObject):
 			self.draw_widget()
 
 	def end(self):
+		self.hide_text()
+		self.widget.findChild(name="button_space").removeAllChildren() # Remove old buttons
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
