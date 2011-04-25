@@ -1,20 +1,67 @@
 CHANGELOG
 Unknown Horizons
+
+-----------------------------------------------------
+
+2011-??-??: Milestone 2011.2
+changelog date: APR 24; rev: be7ace0ed0ed888cacd5f93643974fedd8fc8ebe
+  * New: Moved to new tileset structure // not merged yet
+  * New: Made new fife editor work with new tileset structure // not merged yet
+
+* General
+  * New: pirates with home position sail around and chase player ship
+  * New: 
+  * Change: 
+  * Fix: save/load of scenario variables
+  * Fix: properly destruct the messagewidget
+  * Fix: pirate had acquired teleportation abilities
+  * Fix: 
+
+* Gameplay and Balancing
+  * New: basic ship routes
+  * New: Cache parsed yaml files. Speeds up selecting scenarios in SP menu.
+  * New: option to disable edge scrolling with mouse
+  * New: 
+  * Change: 
+  * Fix: show player's gold immediately after load
+  * Fix: 
+
+* Graphics and GUI
+  * New: tooltip for capacity utilization
+  * New: storage capacity can now be set for each storage building
+  * New: sugarcane field
+  * New: 
+  * Change: Custom tooltip widgets now support names set in python code
+  * Change: tavern building costs: 250 coins, 4 boards, 2 bricks (was 0,0,0)
+  * Change: storage tent building costs: 350 coins (was 750), 4 boards (was 10)
+  * Change: storage tent additional capacity per slot: 10t (was 30)
+  * Change: storage tent radius: 17 (was 24). Reduces the covered area by 50%.
+  * Change: made random maps prettier, coastline is now properly drawn
+  * Change: 
+  * Fix: 
+
+* Translations
+  * New: testing gettext plural form support
+  * New: 
+  * Change: large updates to main template
+  * Change: 
+  * Fix: duplicate string name in help.xml that caused wrong translation
+  * Fix: 
+
+
 -----------------------------------------------------
 
 2011-04-16: Milestone 2011.1
 changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
 
 * General
-  * New: DFSG compatible branch ready to be included in e.g. official debian repos
+  * New: UH DFSG compatible, ready for inclusion in e.g. official debian repo
   * New: enet for darwin-x64 => MP possible on mac as well
   * New: Implemented placement and save/load of fish tiles
   * New: Keep statistics about how many res have been produced at a settlement
   * New: Introduced a simple way to create special change listeners
   * New: scenario conditions related to production of resources and units
   * New: settlement now has a list of buildings for each type
-  * New: Moved to new tileset structure // not merged yet
-  * New: Made new fife editor work with new tileset structure // not merged yet
   * New: xml loading method, using filename as widget name
   * New: New flags for production lines, enhanced output in print_db_data.py
   * New: Added several comments to xml files
@@ -38,10 +85,11 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Change: Removed old, unmaintained pathfinding tests
   * Change: Moved outdated documentation files to misc repository
   * Change: 1024x768 is current minimum resolution
-  * Change: Multiplayer lobby now also displays mismatching games and hints this
+  * Change: Multiplayer lobby now also displays mismatching games and displays
+            this, option to disable
   * Change: Disabled pychan debug mode by default
-  * Fix: Re-introduced svn legacy code for easier Win snapshots (github provides
-         all repositories as svn if desired => same client to clone FIFE and UH)
+  * Fix: Re-introduced svn legacy code for easier Win snapshots since github
+         provides repositories as svn if desired => same client for FIFE and UH
   * Fix: Game did not start with an umlaut/special character in settings.xml
   * Fix: Updated string extraction script to dynamic widget loading
   * Fix: minor issue concerning the creation of random islands
@@ -50,8 +98,8 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Fix: crash when activating a mine that has already run out of resources
   * Fix: crash when building clay pit or iron mine
   * Fix: crash when clicking on units that are not selectable
-  * Fix: crash when saving a game where a fisher ship's hut got demolished while
-         the ship was outside of it
+  * Fix: crash when saving a game where a fisher ship's home building got demo-
+         lished while the ship was outside of it
   * Fix: crash when building a fisher
   * Fix: crash when building branch office
   * Fix: crash when building branch office from ship after fisher was selected
@@ -77,13 +125,14 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Change: Charcoal burning now 2x3 (was 4x2)
   * Change: Distillery running costs now 10/5 (was 20/10)
   * Change: Tavern running costs now 5/0 (was 0/0)
-  * Change: inhabitants at level Settlers consume 1 food per 75 seconds (was 60)
-            and produce 12 happiness (was 13) and
+  * Change: inhabitants at level Settlers
+            consume 1 food per 75 seconds (was 60) and
+            produce 12 happiness (was 13) and
             produce 5 happiness per education (was 3)
   * Change: Temporarily removed our sheep and made pasture produce lamb wool
   * Change: Lamb wool production 50% faster
   * Change: Updated tutorial (fisher)
-  * Change: Fisher now uses a boat and needs fish tiles in range to produce food
+  * Change: Fisher now uses a boat. Needs fish tiles in range to produce food.
   * Change: Fisher boat no longer is selectable
   * Change: Fisher boat can drive through shallow water (coastline)
   * Change: selecting a fisher only highlights fish swarms in range, no island
@@ -100,7 +149,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
 
 * Graphics and GUI
   * New: tooltips for resources in buysell tab
-  * New: animated graphics for our fish resource tile. Thanks @ OpenGameArt.org!
+  * New: graphics for our fish resource tile. Thanks @ OpenGameArt.org!
   * New: many icons for build menu and resources
   * New: build menu tab-icons for increments 3 to 6
   * New: updated increment graphics for pavilion
@@ -121,7 +170,8 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: boatbuilder preview images for our current fisher boat
   * New: inactive icons if no logbook navigation possible in this direction
   * New: attack cursor
-  * New: Replaced 'Chime the bell' with info about contributing and Summer of Code
+  * New: Replaced 'Chime the bell' with widget that informs about how everybody
+         can contribute
   * New: Added slider value display
   * New: Scrolling through savegames updates Save Details
   * New: minimap rotation with setting
@@ -314,7 +364,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Wild animals graze on the islands
   * New: Hunters tent which produces food from wild animals
   * New: Added a function to load a map directly via the command line
-  * New: The free trader will only visit your settlement if you place the signal
+  * New: The free trader will only visit your settlement if you place a signal
          fire near your branch office
   * New: Some new minor options in the market place menu
   * New: Allow changing the tax rate
@@ -329,11 +379,12 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Implemented a players name and color
   * New: Added a school (no graphic at the moment)
   * New: Added sugar fields (no graphic at the moment)
-  * New: Added a few messages that informs the player about different grievances
+  * New: Added a few messages that inform the player about different grievances
   * New: Started work on random maps
   * New: Started work on the scenario system
   * New: Implemented a mini tutorial
-  * New: Added account tab for market which shows the financial overview of the settlement
+  * New: Added account tab for main square which shows the financial overview
+         of the settlement
   * New: Fade out nearby buildings/trees while building
   * New: System for settlers happieness, consumation and taxation
   * Change: The game uses bigger water-tiles now to improve the performance
@@ -343,9 +394,9 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Fix: Changing the colordepth to 32 Bit works now without a crash
   * Fix: Many code and speed optimizations in general
   * Fix: The savegames work properly now (small trees, …)
-  * Fix: Player's ship got stuck on the left lower side of the map in some cases
+  * Fix: Player ship got stuck on the left lower side of the map in some cases
   * Fix: Changed some stuff relating to the translation
-  * Fix: Fixed the temporary freeze if the player tried to send a ship onto land
+  * Fix: Fixed temporary freeze if the player tried to send a ship onto land
 
 * Graphics and GUI
   * New: Added tooltips
@@ -385,8 +436,8 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
 * General
   * New: Boadbuilder class with unitcreation, it's possible to build ships
   * New: Support for translating the whole GUI was added, including
-         German, French, Portuguese and Norwegian translations, add
-         language choose menu in settings
+         German, French, Portuguese and Norwegian translations
+  * New: menu to choose language in settings
   * New: Load/save function for maps
   * New: Start work at wildanimals
   * New: Random start position for playership
@@ -395,8 +446,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Add debug modul option for commandline --debug-module
   * New: debug messages are now only shown by using ./run_uh.py -d
   * New: Add new tabwidget
-  * New: Ship radius when building is now updated on the fly if the ship
-         moves
+  * New: Ship radius when building is now updated on the fly if the ship moves
   * New: Manpage
   * New: Change Style of the mainmenu and all submenus
   * New: Add Developermap with only one small island
@@ -434,14 +484,16 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Buildings are now rotatable
   * New: Buy/Sell menu
   * New: Add running costs and an option to decomission buildings to the game
-  * New: Started basic work on Gettext support for adding different languages to the game
+  * New: Started basic work on Gettext support for adding different languages
+         to the game
   * New: Isles get filled randomly with trees on startup
   * New: New Map
   * Change: Changed name from OpenAnno to Unknown Horizons
   * Change: Rebuilt ship inventory
   * Change: Random tree/building on build
   * Change: Lumberjack cuts trees randomly
-  * Change: Massive changes in the content directory structure to allow easier implementation of animations
+  * Change: Massive changes in the content directory structure to allow easier
+            implementation of animations
   * Fix: Crash in build mode
   * Fix: Collectors use tents as path
   * Fix: Crash in Destruction mode - mouse drag
@@ -449,12 +501,12 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Fix: Herder goes backwards and his sheeps are all at the same place
   * Fix: Turning menu: picture and building are asynchron
   * Fix: Stock don't increase after building a storage tent
-  * Fix: Weater steal in other weater's tent.
-  * Fix: Resource Transfer crashes game when out of range
+  * Fix: Weaver steal in other weaver's tent.
+  * Fix: Resource transfer crashes game when out of range
   * Fix: Buildable status only updated on mouse move
 
 * Graphics and GUI
-  * New: New building main square, where inhabitants get their ressources
+  * New: New building main square, where inhabitants get their resources
   * New: Icons for switching game speed
   * New: New model for signal fire
   * New: New models for different types of trees
@@ -470,8 +522,9 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
 
 * Sound
   * New: Implemented build sound
-  * New: Added ambient sounds for lumberjack, herder, main square and branch office
-  * New: Rolloff function for sound, which fades ambient sounds depending on the position on the map
+  * New: ambient sounds for lumberjack, herder, main square and branch office
+  * New: Rolloff function for sound, which fades ambient sounds depending on
+         the position on the map
   * New: New Song Beware the Ship's Kobold!
   * New: Functionality to adjust volume level for music and effects
   * New: Implemented event based speech output
@@ -479,4 +532,5 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
 
 ... and a lot more smaller bugfixes.
 
-Many thanks go to all developers, contributors, testers and supporters.
+Many thanks go to all contributors, developers, patchers, testers, translators
+and supporters.
