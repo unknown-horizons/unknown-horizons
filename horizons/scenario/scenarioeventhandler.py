@@ -175,11 +175,25 @@ class ScenarioEventHandler(LivingObject):
 		except Exception, e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
+	_yaml_file_cache = {} # only used in the method below
+	"""
+	This caches the parsed output of a yaml file.
+	It also checks if the cache is invalidated, therefore we can't use the
+	decorator.
+	"""
 	@classmethod
-	@decorators.cachedfunction
 	def _parse_yaml_file(cls, filename):
-		return cls._parse_yaml( open(filename, 'r') )
+		# calc the hash
+		f = open(filename, 'r')
+		h = hash(f.read())
+		f.seek(0)
+		# check for updates or new files
+		if (filename in cls._yaml_file_cache and \
+		    cls._yaml_file_cache[filename][0] != h) or \
+		   (not filename in cls._yaml_file_cache):
+			cls._yaml_file_cache[filename] = (h, cls._parse_yaml( f ) )
 
+		return cls._yaml_file_cache[filename][1]
 
 	def _apply_data(self, data):
 		"""Apply data to self loaded via yaml.load
