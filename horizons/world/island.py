@@ -22,6 +22,7 @@
 import weakref
 import logging
 import re
+import horizons.gui
 
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
@@ -305,9 +306,21 @@ class Island(BuildingOwner, WorldObject):
 			except KeyError:
 				pass
 
+	ground_number = 0
 	def __iter__(self):
+		total = float(len(self.ground_map)) # total number of grounds, we need to know to calculate progress values
+		old_progress = 0
+
 		for i in self.get_coordinates():
 			yield i
+			
+			# calculate progress values and sends them to update the loading screen
+			self.ground_number += 1
+			progress = int((self.ground_number/total) * 100)
+			if old_progress < progress:
+				horizons.gui.Gui.set_progress(progress)
+				old_progress = progress
+		self.ground_number = 0 # resets the number of grounds for each map
 
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""
@@ -321,4 +334,5 @@ class Island(BuildingOwner, WorldObject):
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
 		# so do nothing in this case.
+
 

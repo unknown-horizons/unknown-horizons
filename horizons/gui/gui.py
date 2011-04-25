@@ -64,6 +64,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
 		self.current_dialog = None
+		Gui.self = self
 
 # basic menu widgets
 
@@ -330,7 +331,21 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		return popup
 
 	def show_loading_screen(self):
-		self._switch_current_widget('loadingscreen', center=True, show=True)
+		"""Shows the loading screen with progress bar and precentage labels vaules of 0"""
+		Gui.self._switch_current_widget('loadingscreen', center=True, show=True)
+		self.update_loading_screen(0)
+
+	@staticmethod
+	def set_progress(progress_value):
+		"""Sets the progress value.
+		@param progress_value: int, progress value for islands loading"""
+		Gui.self.update_loading_screen(progress_value)
+
+	def update_loading_screen(self, progress_value):
+		"""Updates the loading screen widgets with the new progress value.
+		@param progress_value: int, progress value for islands loading"""
+		Gui.self.current.findChild(name="progressBar")._set_progress(progress_value)
+		Gui.self.current.findChild(name="percentage").text = unicode(progress_value)
 
 # helper
 
