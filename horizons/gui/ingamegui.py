@@ -435,17 +435,14 @@ class IngameGui(LivingObject):
 			RenameObject(instance, new_name).execute(self.session)
 		self._hide_change_name_dialog()
 
+	_toggle_ingame_pause_shown = False
 	def toggle_ingame_pause(self):
 		"""
 		Called when the hotkey for pause is pressed.
 		Displays pause notification and does the actual (un)pausing.
 		"""
-		#TODO currently a bug occurs when the game menu is displayed (game is
-		#     paused already): popup still appears, need ESC twice to return.
 		message = _("Hit P to continue the game or click below!")
 		popup = self.main_gui.build_popup(_("Game paused"), message)
-		if not hasattr(self, "_toggle_ingame_pause_shown"):
-			self._toggle_ingame_pause_shown = False
 		if not self._toggle_ingame_pause_shown:
 			self.session.speed_pause()
 			self.main_gui.on_escape = self.toggle_ingame_pause

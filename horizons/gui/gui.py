@@ -123,25 +123,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_settings(self):
 		horizons.main.fife._setting.onOptionsPress()
 
-	help_is_displayed = False
+	_help_is_displayed = False
 	def on_help(self):
 		"""Called on help action
 		Toggles help screen via static variable help_is_displayed"""
 		help_dlg = self.widgets['help']
-		if not self.help_is_displayed:
-			self.help_is_displayed = True
+		if not self._help_is_displayed:
+			self._help_is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
 			if self.session is not None and self.current != self.widgets['gamemenu']:
 				self.session.speed_pause()
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
-			if self.session is not None and self.current != self.widgets['gamemenu']:
-				self.session.speed_unpause()
+			self.on_help() # toggle state
 		else:
-			self.help_is_displayed = False
+			self._help_is_displayed = False
 			if self.session is not None and self.current != self.widgets['gamemenu']:
 				self.session.speed_unpause()
 			help_dlg.hide()
-			self.on_escape = self.show_pause
 
 	def show_quit(self):
 		"""Shows the quit dialog """

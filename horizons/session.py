@@ -256,8 +256,12 @@ class Session(LivingObject):
 		else:
 			self.speed_set(GAME_SPEED.TICK_RATES[0])
 
+	_pause_stack = 0 # this saves the level of pausing
+	# e.g. if two dialogs are displayed, that pause the game,
+	# unpause needs to be called twice to unpause the game. cf. #876
 	def speed_pause(self):
 		self.log.debug("Session: Pausing")
+		self._pause_stack += 1
 		if not self.speed_is_paused():
 			self.paused_ticks_per_second = self.timer.ticks_per_second
 			self.speed_set(0)
@@ -265,7 +269,9 @@ class Session(LivingObject):
 	def speed_unpause(self):
 		self.log.debug("Session: Unpausing")
 		if self.speed_is_paused():
-			self.speed_set(self.paused_ticks_per_second)
+			self._pause_stack -= 1
+			if self._pause_stack == 0:
+				self.speed_set(self.paused_ticks_per_second)
 
 	def speed_toggle_pause(self):
 		if self.speed_is_paused():
