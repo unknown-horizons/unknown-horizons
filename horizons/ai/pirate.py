@@ -230,9 +230,9 @@ class Pirate(AIPlayer):
 		# Each element contains two values: it's co-ordinate, and frequency of player ship's visit
 		self.visibility_points = []
 		y = y_min+self.sight_radius
-		while y <= y_max:
+		while y < y_max:
 			x = x_min+self.sight_radius
-			while x <= x_max:
+			while x < x_max:
 				self.visibility_points.append([Point(x,y), 0])
 				x += self.sight_radius  # should be 2*self.sight_radius for no overlap
 			y += self.sight_radius
