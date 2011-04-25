@@ -276,14 +276,16 @@ class Island(BuildingOwner, WorldObject):
 		return building
 
 	def remove_building(self, building):
+		# removal code (before super call)
 		if building.settlement is not None:
 			building.settlement.remove_building(building)
 			assert(building not in building.settlement.buildings)
 
-		# Reset the tiles this building was covering
+		super(Island, self).remove_building(building)
+
+		# Reset the tiles this building was covering (after building has been completely removed)
 		for point in building.position:
 			self.path_nodes.reset_tile_walkability(point.to_tuple())
-		super(Island, self).remove_building(building)
 
 	def get_surrounding_tiles(self, point, radius = 1):
 		"""Returns tiles around point with specified radius.
