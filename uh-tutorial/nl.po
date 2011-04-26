@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-16 18:42+0200\n"
+"PO-Revision-Date: 2011-04-16 18:43+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -593,7 +593,6 @@ msgid ""
 msgstr ""
 
 #: po/tutorial.py:40
-#, fuzzy
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
 "\n"
