@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-17 17:52+0200\n"
-"PO-Revision-Date: 2011-04-24 01:04+0200\n"
+"PO-Revision-Date: 2011-04-24 01:13+0200\n"
 "Last-Translator: eoc <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -650,8 +650,7 @@ msgstr ""
 msgid "NEW TASK: BUILD A PAVILION"
 msgstr "NEUE AUFGABE: PAVILLON BAUEN"
 
-# shelter from the sun -> Zuflucht aus der Sonne/Zuflucht der Sonne/Sonnenheiligtum
-# pavilion... siehe NEW TASK
+# shelter from the sun -> Sonnenschutz
 #: po/tutorial_en.py:39
 msgid ""
 "Those tools will be enough for the moment. Well done!\n"
@@ -684,7 +683,7 @@ msgstr ""
 "'große' Version auch die Bedürfnisse der Einwohner niedrigerer Stufen "
 "befriedigt."
 
-# units need to refresh
+# units meint hier einwohner
 #: po/tutorial_en.py:40
 msgid ""
 "In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-19 17:03+0200\n"
+"PO-Revision-Date: 2011-04-20 19:55+0200\n"
 "Last-Translator: Fabio <angelscry86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -79,7 +79,9 @@ msgstr ""
 "\n"
 "Pero aquí no se pude, lo siento"
 
+# contexto
 #: horizons/gui/gui.py:179
+#, fuzzy
 msgid "Chime The Bell"
 msgstr "Tocar la campana"
 
@@ -153,7 +155,6 @@ msgstr ""
 "Necesitas la versión %(need)d!"
 
 #: horizons/gui/gui.py:280
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
 msgstr "VERSIÓN INCOMPATIBLE\n"
 
@@ -304,7 +305,6 @@ msgstr "Inventario"
 #. self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
 #. self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 #: horizons/gui/tabs/inventorytab.py:68
-#, fuzzy
 msgid "Ship inventory"
 msgstr "Inventario del barco"
 
@@ -532,7 +532,6 @@ msgid "Distillery: Turns sugar into liquor."
 msgstr "Destilería: Convierte el azúcar en licor."
 
 #: horizons/i18n/guitranslations.py:347
-#, fuzzy
 msgid "Settler buildings"
 msgstr "Edificios de los colonos"
 
@@ -741,7 +740,6 @@ msgid "Chime the bell"
 msgstr "Tocar la campana"
 
 #: horizons/i18n/guitranslations.py:430 horizons/i18n/guitranslations.py:469
-#, fuzzy
 msgid "Credits"
 msgstr " Créditos "
 
@@ -1065,7 +1063,7 @@ msgstr "Juego libre"
 
 #: horizons/i18n/guitranslations.py:533
 msgid "Start game"
-msgstr ""
+msgstr "Comenzar partida:"
 
 #: horizons/i18n/guitranslations.py:535
 msgid "Player name:"
