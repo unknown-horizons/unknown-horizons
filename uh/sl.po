@@ -152,7 +152,6 @@ msgstr ""
 "Zahtevana raz. %(need)d!"
 
 #: horizons/gui/gui.py:280
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
 msgstr "NEZDRUŽLJIVA RAZLIČICA\n"
 
@@ -303,7 +302,6 @@ msgstr "Inventar"
 #. self.button_down_image = 'content/gui/icons/tabwidget/common/inventory_d.png'
 #. self.button_hover_image = 'content/gui/icons/tabwidget/common/inventory_h.png'
 #: horizons/gui/tabs/inventorytab.py:68
-#, fuzzy
 msgid "Ship inventory"
 msgstr "Ladijski inventar"
 
@@ -328,22 +326,18 @@ msgid "Branch office overview"
 msgstr "Pregled podružnične pisarne"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
 msgstr "Pregled ladje"
 
 #: horizons/gui/tabs/overviewtab.py:156
-#, fuzzy
 msgid "Production overview"
 msgstr "Pregled proizvodnje"
 
 #: horizons/gui/tabs/overviewtab.py:162
-#, fuzzy
 msgid "Destroy building"
 msgstr "Uniči zgradbo"
 
 #: horizons/gui/tabs/overviewtab.py:286
-#, fuzzy
 msgid "Market place overview"
 msgstr "Pregled tržnice"
 
@@ -354,12 +348,10 @@ msgid "Limit: %st per slot"
 msgstr "Omejitev: %st na prostorček"
 
 #: horizons/i18n/guitranslations.py:315
-#, fuzzy
 msgid "Sailor buildings"
 msgstr "Mornarske zgradbe"
 
 #: horizons/i18n/guitranslations.py:316
-#, fuzzy
 msgid "Residents and infrastructure"
 msgstr "Prebivalci in infrastruktura"
 
@@ -414,7 +406,6 @@ msgid "Fisherman: Fishes the sea, produces food."
 msgstr "Ribič: lovi morske ribe. Proizvaja hrano."
 
 #: horizons/i18n/guitranslations.py:330
-#, fuzzy
 msgid "Pioneer buildings"
 msgstr "Pionirske zgradbe"
 
@@ -469,7 +460,6 @@ msgid "Distillery: Turns sugar into liquor."
 msgstr "Destilarna: pretvori sladkor v žganje."
 
 #: horizons/i18n/guitranslations.py:347
-#, fuzzy
 msgid "Settler buildings"
 msgstr "Zgradbe naseljencev"
 
@@ -603,7 +593,6 @@ msgid "Start production"
 msgstr "Začni proizvodnjo"
 
 #: horizons/i18n/guitranslations.py:393
-#, fuzzy
 msgid "Leave Captain's log"
 msgstr "Zapusti kapitanov dnevnik"
 
@@ -660,7 +649,6 @@ msgid "The whole FIFE team (www.fifengine.de)"
 msgstr "Celotna ekipa FIFE (www.fifeengine.de)"
 
 #: horizons/i18n/guitranslations.py:424
-#, fuzzy
 msgid "Return to game"
 msgstr "Vrni se v igro"
 
@@ -670,22 +658,18 @@ msgid "Settings"
 msgstr "Nastavitve"
 
 #: horizons/i18n/guitranslations.py:428
-#, fuzzy
 msgid "Cancel game"
 msgstr "Prekliči igro"
 
 #: horizons/i18n/guitranslations.py:429 horizons/i18n/guitranslations.py:468
-#, fuzzy
 msgid "Chime the bell"
 msgstr "Pozvoni z zvoncem"
 
 #: horizons/i18n/guitranslations.py:430 horizons/i18n/guitranslations.py:469
-#, fuzzy
 msgid "Credits"
 msgstr "Zasluge"
 
 #: horizons/i18n/guitranslations.py:433
-#, fuzzy
 msgid "Key bindings"
 msgstr "Tipkovne bližnjice"
 
@@ -1129,12 +1113,10 @@ msgid "Taxes:"
 msgstr "Davki:"
 
 #: horizons/i18n/guitranslations.py:593
-#, fuzzy
 msgid "Resource deposit"
 msgstr "Nahajališče virov"
 
 #: horizons/i18n/guitranslations.py:594
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "To je nahajališče virov, kjer lahko izgradite rudnik za njihovo kopanje."
@@ -1144,7 +1126,6 @@ msgid "It contains these resources:"
 msgstr "Vsebuje te vire:"
 
 #: horizons/i18n/guitranslations.py:599
-#, fuzzy
 msgid "Needed resources:"
 msgstr "Potrebovani viri:"
 
@@ -1169,7 +1150,6 @@ msgid "Click to change the name of this ship."
 msgstr "Kliknite za spremembo imena te ladje."
 
 #: horizons/i18n/guitranslations.py:607
-#, fuzzy
 msgid "Build settlement"
 msgstr "Izgradi naselbino"
 
