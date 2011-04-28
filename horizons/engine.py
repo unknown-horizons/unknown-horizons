@@ -38,7 +38,6 @@ from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
-from horizons.gui.utility import center_widget
 
 UH_MODULE="unknownhorizons"
 
@@ -271,7 +270,7 @@ class Fife(ApplicationBase):
 		slider_initial_data = {}
 		slider_event_map = {}
 		self.OptionsDlg = self._setting.loadSettingsDialog()
-		center_widget(self.OptionsDlg)
+		self.OptionsDlg.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
 						'AutosaveMaxCount' : 'autosavemaxcount',
 						'QuicksaveMaxCount' : 'quicksavemaxcount'}

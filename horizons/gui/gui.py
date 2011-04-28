@@ -31,7 +31,7 @@ from horizons.i18n.utils import N_
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.util import Callback
-from horizons.gui.utility import adjust_widget_black_background, center_widget, LazyWidgetsDict
+from horizons.gui.utility import adjust_widget_black_background, LazyWidgetsDict
 from horizons.ambientsound import AmbientSound
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
@@ -323,8 +323,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		headline.stylize('headline')
 		popup.findChild(name='popup_message').text = _(_(message))
 		popup.adaptLayout() # recalculate widths
-		headline.position = ( popup.width/2 - headline.width/2 , headline.position[1] )
-		popup.adaptLayout()
 		return popup
 
 	def show_loading_screen(self):
@@ -347,7 +345,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
 		if center:
-			center_widget(self.current)
+			self.current.position_technique="automatic" # "center:center"
 		if event_map:
 			self.current.mapEvents(event_map)
 		if show:

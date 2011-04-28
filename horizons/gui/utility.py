@@ -30,13 +30,6 @@ def create_resource_icon(res_id, db):
 	return TooltipIcon(tooltip=db.get_res_name(res_id), \
 	                   image=db.get_res_icon(res_id)[0])
 
-def center_widget(widget):
-	"""Centers the widget in the parameter
-	@param widget: Widget with properties width, height, x and y
-	"""
-	widget.x = int((horizons.main.fife.engine_settings.getScreenWidth() - widget.width) / 2)
-	widget.y = int((horizons.main.fife.engine_settings.getScreenHeight() - widget.height) / 2)
-
 def adjust_widget_black_background(widget):
 	"""Resizes the black background container and centers the menu
 	@param widget: Widget with black_underlay and menu containers
@@ -49,7 +42,7 @@ def adjust_widget_black_background(widget):
 	black_underlay_background.size = (horizons.main.fife.engine_settings.getScreenWidth(), horizons.main.fife.engine_settings.getScreenHeight())
 
 	menu = widget.findChild(name='menu')
-	center_widget(menu)
+	menu.position_technique="automatic" # "center:center"
 
 
 class LazyWidgetsDict(dict):
@@ -57,7 +50,7 @@ class LazyWidgetsDict(dict):
 	def __init__(self, styles, center_widgets=True, *args, **kwargs):
 		"""
 		@param styles: Dictionary, { 'widgetname' : 'stylename' }. parameter for stylize().
-		@param center_widgets: wheter to center the widgets via center_widget()
+		@param center_widgets: Bool, whether to center the widgets
 		"""
 		super(LazyWidgetsDict, self).__init__(*args, **kwargs)
 		self.styles = styles
@@ -73,7 +66,7 @@ class LazyWidgetsDict(dict):
 	def _load_widget(self, widgetname):
 		widget = load_xml_translated(widgetname+'.xml')
 		if self.center_widgets:
-			center_widget(widget)
+			widget.position_technique = "automatic" # "center:center"
 		headlines = widget.findChildren(name='headline')
 		for headline in headlines:
 			headline.stylize('headline')

@@ -110,10 +110,7 @@ class BuildingTool(NavigationTool):
 			self.gui.findChild(name='building_name').stylize('headline')
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
-			self.gui.position = (
-				horizons.main.fife.engine_settings.getScreenWidth() - self.gui.size[0] - 14,
-				157
-			)
+			self.gui.position_technique = "right-14:top+157"
 		self.gui.mapEvents( { "rotate_left": self.rotate_left,
 		                      "rotate_right": self.rotate_right } )
 		# set translated building name in gui
