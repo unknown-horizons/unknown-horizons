@@ -7,18 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-04-29 19:38+0200\n"
+"Last-Translator: ghostarthour <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/campaign/actions.py:71
 msgid "You have won!"
-msgstr ""
+msgstr "Nyertél!"
 
 #: horizons/campaign/actions.py:72
 msgid "You have completed this scenario. "
@@ -27,20 +28,20 @@ msgstr ""
 #: horizons/campaign/campaigneventhandler.py:150
 #: horizons/campaign/campaigneventhandler.py:160
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons %s verzió"
 
 #: horizons/engine.py:95
 msgid "System default"
-msgstr ""
+msgstr "Alapértelmezett"
 
 #: horizons/engine.py:115 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr ""
+msgstr "Figyelmeztetés"
 
 #: horizons/engine.py:116
 msgid ""
@@ -52,15 +53,15 @@ msgstr ""
 #: horizons/engine.py:178
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "A beállított nyelv %(lang) ehhez:: %(place) nem betölthető"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Valóban ki akarsz lépni a játékból?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "Kilépés a játékból"
 
 #: horizons/gui/gui.py:178
 msgid ""
@@ -68,10 +69,13 @@ msgid ""
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
+"Igen! Megcsináltad...\n"
+"\n"
+"Ez egy hely kitöltő szöveg, bocsi."
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
-msgstr ""
+msgstr "Harang megkongatása"
 
 #: horizons/gui/gui.py:204
 msgid "Are you sure you want to abort the running session?"
