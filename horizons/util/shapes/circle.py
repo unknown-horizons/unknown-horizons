@@ -23,6 +23,7 @@
 from point import Point
 
 from horizons.util.python.decorators import make_constants
+from horizons.util.shapes.point import ConstPoint
 
 class Circle(object):
 	"""Class for the shape of a circle
@@ -78,6 +79,37 @@ class Circle(object):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
+
+	@make_constants()
+	def distance(self, other):
+		from circle import Circle
+		from rect import Rect, ConstRect
+		distance_functions_map = {
+			Point: self.distance_to_point,
+			ConstPoint: self.distance_to_point,
+			tuple: self.distance_to_tuple,
+			Circle: self.distance_to_circle,
+			Rect: self.distance_to_rect,
+			ConstRect: self.distance_to_rect
+			}
+		try:
+			return distance_functions_map[other.__class__](other)
+		except KeyError:
+			return other.distance(self)
+
+	def distance_to_point(self, other):
+		return other.distance_to_circle(self)
+
+	def distance_to_tuple(self, other):
+		dist = ((self.center.x - other[0]) ** 2 + (self.center.y - other[1]) ** 2) ** 0.5 - self.radius
+		return dist if dist >= 0 else 0
+
+	def distance_to_rect(self, other):
+		return other.distance_to_circle(self)
+
+	def distance_to_circle(self, other):
+		dist = self.distance(other.center) - self.radius - other.radius
+		return dist if dist >= 0 else 0
 
 	@make_constants()
 	def __iter__(self):
