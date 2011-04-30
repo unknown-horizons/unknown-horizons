@@ -24,7 +24,7 @@ from fife import fife
 STYLES= {
 'default': {
 		'default' : {
-			'border_size': 2,
+			'border_size': 0,
 			'margins': (0, 0),
 			'base_color' : fife.Color(40, 40, 40, 0),
 			'foreground_color' : fife.Color(255, 255, 255),

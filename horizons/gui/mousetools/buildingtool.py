@@ -105,23 +105,21 @@ class BuildingTool(NavigationTool):
 	def load_gui(self):
 		if self.gui is None:
 			self.gui = load_xml_translated("place_building.xml")
-			self.gui.stylize('menu_black')
 			self.gui.findChild(name='headline').stylize('headline')
-			self.gui.findChild(name='building_name').stylize('headline')
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
 			self.gui.position_technique = "right-14:top+157"
-		self.gui.mapEvents( { "rotate_left": self.rotate_left,
+		self.gui.mapEvents( { "rotate_left" : self.rotate_left,
 		                      "rotate_right": self.rotate_right } )
 		# set translated building name in gui
-		self.gui.findChild(name='building_name').text = u'  ' + _(self._class._name)
+		self.gui.findChild(name='headline').text = _('Build') + u' ' + _(self._class._name)
 		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.gui.findChild(name='head_box')
-		head_box.adaptLayout() # recalculates size for new content
-		head_box.position = ( # calculate and set new center (pychan doesn't support it)
-		  self.gui.size[0]/2 - head_box.size[0]/2,
-	    head_box.position[1]
-	    )
+		head_box.adaptLayout() # recalculates size of new content
+		head_box.position = ( # calculate and set new center (we cause pychan to not support it)
+		  max( self.gui.size[0]/2 - head_box.size[0]/2, 25),
+		  head_box.position[1]
+		  )
 		head_box.adaptLayout()
 		self.draw_gui()
 		self.session.view.add_change_listener(self.draw_gui)
