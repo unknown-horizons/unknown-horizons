@@ -21,7 +21,6 @@
 
 from horizons.i18n import load_xml_translated
 from horizons.util import Callback
-from horizons.gui.utility import center_widget
 from fife.extensions.pychan import widgets
 
 class RouteConfig(object):
@@ -110,5 +109,5 @@ class RouteConfig(object):
 		  'start_route/mouseClicked' : self.instance.route.enable,
 #		  'start_route/mouseClicked' : self.toggle_route
 		  })
-		center_widget(self._gui)
+		self._gui.position_technique = "automatic" # "center:center"
 

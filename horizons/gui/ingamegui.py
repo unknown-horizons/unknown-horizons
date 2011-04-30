@@ -66,11 +66,10 @@ class IngameGui(LivingObject):
 		self._old_menu = None
 
 		self.widgets = LazyWidgetsDict(self.styles, center_widgets=False)
-		screenwidth = horizons.main.fife.engine_settings.getScreenWidth()
 
 		cityinfo = self.widgets['city_info']
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
-		cityinfo.position = (screenwidth/2 - cityinfo.size[0]/2 - 10, 5)
+		cityinfo.position_technique = "center-10:top+5"
 
 		self.logbook = LogBook(session)
 
@@ -78,7 +77,7 @@ class IngameGui(LivingObject):
 		# which is saved in self.minimap
 
 		minimap = self.widgets['minimap']
-		minimap.position = (screenwidth - minimap.size[0] -20, 4)
+		minimap.position_technique = "right-20:top+4"
 		minimap.show()
 
 		minimap_rect = Rect.init_from_topleft_and_size(minimap.position[0]+77, 55, 120, 120)
@@ -98,9 +97,7 @@ class IngameGui(LivingObject):
 
 		self.minimap.use_overlay_icon(minimap_overlay)
 
-		self.widgets['menu_panel'].position = (
-			horizons.main.fife.engine_settings.getScreenWidth() - self.widgets['menu_panel'].size[0] +15,
-			149)
+		self.widgets['menu_panel'].position_technique = "right+15:top+149"
 		self.widgets['menu_panel'].show()
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : self.session.destroy_tool,

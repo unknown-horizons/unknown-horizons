@@ -21,7 +21,6 @@
 
 from horizons.i18n import load_xml_translated
 from horizons.util import Callback
-from horizons.gui.utility import center_widget
 
 
 class LogBook(object):
@@ -39,10 +38,7 @@ class LogBook(object):
 		self._session = session
 		self._init_gui()
 
-		""" logbook test code""
-		self.add_entry(u"Welcome to the Captains log")
-		self.show()
-		"" """
+#		self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
 
 	def save(self, db):
 		for i in xrange(0, len(self._headings)):
@@ -114,7 +110,7 @@ class LogBook(object):
 		  'forwardButton' : Callback(self._scroll, 2),
 		  'cancelButton' : self.hide
 		  })
-		center_widget(self._gui)
+		self._gui.position_technique = "automatic" # "center:center"
 
 		self.backward_button = self._gui.findChild(name="backwardButton")
 		self.forward_button = self._gui.findChild(name="forwardButton")
