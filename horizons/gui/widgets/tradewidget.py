@@ -37,15 +37,14 @@ class TradeWidget(object):
 
 	# map the size buttons in the gui to an amount
 	exchange_size_buttons = {
-	  1: 'size_1',
-	  5: 'size_2',
+	  1 : 'size_1',
+	  5 : 'size_2',
 	  10: 'size_3',
 	  20: 'size_4',
 	  50: 'size_5'
 	  }
 
 	images = {
-	  #'box_highlighted': 'content/gui/icons/ship/civil_32_h.png',
 	  'box_highlighted': 'content/gui/icons/ship/smallbutton_a.png',
 	  'box': 'content/gui/icons/ship/smallbutton.png'
 	  }
@@ -55,12 +54,8 @@ class TradeWidget(object):
 		@param instance: ship instance used for trading
 		"""
 		self.widget = load_xml_translated('exchange_goods.xml')
-		self.widget.position = (
-			horizons.main.fife.engine_settings.getScreenWidth() - self.widget.size[0],
-			157
-		)
-		self.widget.stylize('menu_black')
-		self.widget.findChild(name='headline').stylize('headline') # style definition for headline
+		self.widget.position_technique = "right:top+157"
+		self.widget.findChild(name='headline').stylize('headline')
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
@@ -73,6 +68,7 @@ class TradeWidget(object):
 			self.radius = self.instance.radius
 
 	def draw_widget(self):
+		self.widget.findChild(name='ship_name').text = unicode(self.instance.name)
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			dropdown = self.widget.findChild(name='partners')
@@ -119,11 +115,11 @@ class TradeWidget(object):
 		self.widget.show()
 		self.__add_changelisteners()
 
-	def set_exchange(self, size, initial = False):
+	def set_exchange(self, size, initial=False):
 		"""
+		Highlight radio button with selected amount and deselect old highlighted.
 		@param initial: bool, use it to set exchange size when initing the widget
 		"""
-		# highlight box with selected amount and deselect old highlighted
 		if not initial:
 			old_box = self.widget.findChild(name= self.exchange_size_buttons[self.exchange])
 			old_box.up_image = self.images['box']
