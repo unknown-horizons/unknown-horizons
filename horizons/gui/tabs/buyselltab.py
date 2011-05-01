@@ -43,10 +43,11 @@ class BuySellTab(TabInterface):
 		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
 		self.settlement = instance.settlement
 		self.init_values()
-		self.button_up_image = 'content/gui/icons/tabwidget/branchoffice/buysell_u.png'
-		self.button_active_image = 'content/gui/icons/tabwidget/branchoffice/buysell_a.png'
-		self.button_down_image = 'content/gui/icons/tabwidget/branchoffice/buysell_d.png'
-		self.button_hover_image = 'content/gui/icons/tabwidget/branchoffice/buysell_h.png'
+		self.icon_path = 'content/gui/icons/tabwidget/branchoffice/buysell_%s.png'
+		self.button_up_image = self.icon_path % 'u'
+		self.button_active_image = self.icon_path % 'a'
+		self.button_down_image = self.icon_path % 'd'
+		self.button_hover_image = self.icon_path % 'h'
 		self.slots = {}
 		self.resources = None # Placeholder for resource gui
 		self.add_slots(slots)
@@ -109,7 +110,7 @@ class BuySellTab(TabInterface):
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set"""
 		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s",  \
-									 res_id, slot_id, value)
+		                                          res_id,    slot_id,    value)
 
 		if self.resources is not None: # Hide resource menu
 			self.resources.hide()
@@ -236,14 +237,16 @@ class BuySellTab(TabInterface):
 		self.resources.position = self.widget.position
 		button_width = 50
 		vbox = self.resources.findChild(name="resources")
-		current_hbox = pychan.widgets.HBox(padding = 2)
+		amount_per_line = vbox.width / button_width
+		current_hbox = pychan.widgets.HBox(name="hbox_0")
 		index = 1
 		resources = horizons.main.db.get_res_id_and_icon(True)
 		# Add the zero element to the beginning that allows to remove the currently sold/bought resource
 		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
 			if res_id in self.settlement.buy_list or res_id in self.settlement.sell_list:
 				continue # don't show resources that are already in the list
-			button = TooltipButton(size=(50, 50))
+			button = TooltipButton( size=(button_width, button_width), \
+			                        name="resource_icon_%02d" % res_id )
 			button.up_image, button.down_image, button.hover_image = icon, icon, icon
 			if res_id == 0:
 				button.tooltip = u""
@@ -251,15 +254,15 @@ class BuySellTab(TabInterface):
 				button.tooltip = horizons.main.db.get_res_name(res_id)
 			button.capture(Callback(self.add_resource, res_id, slot_id))
 			current_hbox.addChild(button)
-			if index % (vbox.width/(button_width)) == 0 and index is not 0:
+			if index % amount_per_line == 0 and index is not 0:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(padding=0)
+				current_hbox = pychan.widgets.HBox(name="hbox_%s" % (index / amount_per_line) )
 			index += 1
+#		current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
 		vbox.addChild(current_hbox)
 		vbox.adaptLayout()
-		self.resources.addChild(vbox)
 		self.resources.stylize('headline')
-		self.hide()
-		self.resources.show()
+		self.hide() # hides tab that invoked the selection widget
+		self.resources.show() # show selection widget, still display old tab icons
 		self.settlement.session.ingame_gui.minimap_to_front()
 
