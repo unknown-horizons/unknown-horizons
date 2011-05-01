@@ -97,7 +97,7 @@ class IngameGui(LivingObject):
 
 		self.minimap.use_overlay_icon(minimap_overlay)
 
-		self.widgets['menu_panel'].position_technique = "right+15:top+149"
+		self.widgets['menu_panel'].position_technique = "right+15:top+153"
 		self.widgets['menu_panel'].show()
 		self.widgets['menu_panel'].mapEvents({
 			'destroy_tool' : self.session.destroy_tool,
