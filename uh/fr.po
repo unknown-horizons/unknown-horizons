@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-05-03 08:39+0200\n"
+"PO-Revision-Date: 2011-05-03 08:45+0200\n"
 "Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -392,43 +392,26 @@ msgid "Pavilion: Fulfills religious needs of sailors."
 msgstr "Pavillon : Réponds aux besoins religieux des marins."
 
 #: horizons/i18n/guitranslations.py:324
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
-"Feu de signalisation : \n"
-"Permet au joueur \n"
-"de commercer avec \n"
-"les commerçants indépendants."
+"Feu de signalisation : Permet au joueur de commercer avec les commerçants "
+"indépendants."
 
 #: horizons/i18n/guitranslations.py:325
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Bucheron : \n"
-"Récolte du bois \n"
-"et le transforme \n"
-"en planches."
+msgstr "Bucheron : Récolte du bois et les transforme en planches."
 
 #: horizons/i18n/guitranslations.py:326 sqlite/Building
 msgid "Tree"
 msgstr "Arbre"
 
 #: horizons/i18n/guitranslations.py:327
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Chasseur: \n"
-"Chasse des animaux \n"
-"sauvages forestiers, \n"
-"fournit de la nourriture."
+msgstr "Chasseur: Chasse des animaux sauvages et fournit de la nourriture."
 
 #: horizons/i18n/guitranslations.py:328
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Pêcheur : \n"
-"Pêche en mer, \n"
-"fournit de la nourriture."
+msgstr "Pêcheur : Pêche en mer et fournit de la nourriture."
 
 #: horizons/i18n/guitranslations.py:330
 #, fuzzy
@@ -441,32 +424,19 @@ msgstr "Champs"
 
 #: horizons/i18n/guitranslations.py:334
 msgid "Military"
-msgstr "Défense"
+msgstr "Militaire"
 
 #: horizons/i18n/guitranslations.py:336
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Ferme : \n"
-"Plante les champs \n"
-"Cultive et élève \n"
-"le bétail."
+msgstr "Ferme : Cultive les champs et élève du bétail."
 
 #: horizons/i18n/guitranslations.py:337
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Tisseur : \n"
-"Transforme la laine \n"
-"d'agneau en toile."
+msgstr "Tisseur : Transforme la laine d'agneau en toile."
 
 #: horizons/i18n/guitranslations.py:338
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
-"Carrière d'argile : \n"
-"Extrait l'argile \n"
-"du gisement."
+msgstr "Carrière d'argile : Extrait l'argile d'un gisement."
 
 #: horizons/i18n/guitranslations.py:339
 #, fuzzy
