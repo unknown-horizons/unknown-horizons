@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-05-03 11:35+0200\n"
+"PO-Revision-Date: 2011-05-03 11:50+0200\n"
 "Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1402,11 +1402,11 @@ msgstr ""
 
 #: run_uh.py:198
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Merci d'utiliser Unknown Horizons !"
+msgstr "Merci d'utiliser Unknown Horizons!"
 
 #: run_uh.py:274
 msgid "Failed to load fife:"
-msgstr "Échec lors du chargement de FIFE :"
+msgstr "Échec lors du chargement de FIFE:"
 
 #: run_uh.py:344
 msgid "FIFE was not found."
@@ -1426,7 +1426,7 @@ msgstr "Briqueterie"
 
 #: sqlite/Building
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Meule de charbonnier"
 
 #: sqlite/Building
 msgid "Clay Deposit"
@@ -1438,7 +1438,7 @@ msgstr "Carrière d'argile"
 
 #: sqlite/Building
 msgid "Distillery"
-msgstr ""
+msgstr "Distillerie"
 
 # Building
 #: sqlite/Building
@@ -1447,7 +1447,7 @@ msgstr "Ferme"
 
 #: sqlite/Building
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Banc de poisson"
 
 #: sqlite/Building
 msgid "Fisherman's Tent"
@@ -1459,11 +1459,11 @@ msgstr "Tente du chasseur"
 
 #: sqlite/Building
 msgid "Iron Mine"
-msgstr ""
+msgstr "Mine de fer"
 
 #: sqlite/Building
 msgid "Log"
-msgstr "Tronc"
+msgstr "Protocole"
 
 #: sqlite/Building
 msgid "Lookout"
@@ -1504,7 +1504,7 @@ msgstr "Signal lumineux"
 
 #: sqlite/Building
 msgid "Smeltery"
-msgstr ""
+msgstr "Fonderie"
 
 #: sqlite/Building
 msgid "Storage Tent"
@@ -1528,19 +1528,20 @@ msgstr "Tente abîmée"
 
 #: sqlite/Building
 msgid "Toolmaker"
-msgstr ""
+msgstr "Forgeron"
 
 #: sqlite/Building
 msgid "Trail"
-msgstr "Piste"
+msgstr "Sentier"
 
 #: sqlite/Building
 msgid "Village school"
 msgstr "École de village"
 
+# The word "tisseur" is more common than "tisserand"
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr "Tente du tisserand"
+msgstr "Tente du tisseur"
 
 #: sqlite/Colors
 msgid "black"
@@ -1576,7 +1577,7 @@ msgstr "jaune"
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
-msgstr "Une nouvelle colonie a été implantée par ${player}."
+msgstr "Une nouvelle colonie a été fondée par ${player}."
 
 #: sqlite/Messages
 msgid "A new world has been created."
@@ -1588,7 +1589,7 @@ msgstr "Un de vos colons n'a pas de marché dans son périmètre."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr "La copie d'écran a été sauvée dans ${file}."
+msgstr "La capture de l'écran a été sauvée dans ${file}."
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
