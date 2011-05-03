@@ -158,7 +158,7 @@ class MultiplayerMenu(object):
 		if game.get_uuid() == -1: # -1 signals no game
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
-			self.show_popup(_("Wrong version"), _("The game's version differs from your version. Game version: %(gameversion)s Your version: %(ownversion)s") % {'gameversion': game.get_version(), 'ownversion': NetworkInterface().get_clientversion()})
+			self.show_popup(_("Wrong version"), _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s") % {'gameversion': game.get_version(), 'ownversion': NetworkInterface().get_clientversion()})
 			return
 		# acctual join
 		join_worked = NetworkInterface().joingame(game.get_uuid())
