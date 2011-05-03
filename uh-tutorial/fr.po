@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-04-23 00:10+0200\n"
-"Last-Translator: erdnaxeli <erdnaxeli@gmail.com>\n"
+"PO-Revision-Date: 2011-05-03 12:25+0200\n"
+"Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -30,12 +30,13 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
-"Didacticiel :\n"
-"Etablissez votre premier comptoir et apprenez à jouer !\n"
+"Didacticiel:\n"
+"Etablissez votre première colonie et apprenez à jouer!\n"
 
+# I propose to translate "branch office" as comptoir instead of "succursale" as "succursale" is more an affiliate.
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr "Etablissez une succursale sur la côte."
+msgstr "Etablissez un comptoir sur la côte."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
@@ -76,7 +77,7 @@ msgstr ""
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "MISSION : S'ÉTABLIR SUR UNE ILE"
+msgstr "MISSION: COLONISER UNE ILE"
 
 #: po/tutorial.py:8
 msgid ""
@@ -99,8 +100,8 @@ msgstr ""
 "D'une fois que vous êtes près de la côte, vous verrez s'activer un bouton en "
 "forme d'ancre dans l'onglet de vue d'ensemble.\n"
 "\n"
-"Cela signifie que vous êtes maintenant capable de construire une succursale "
-"ici en cliquant sur ce bouton (nommé 'Construire un Village').\n"
+"Cela signifie que vous êtes maintenant capable de construire un comptoir ici "
+"en cliquant sur ce bouton (nommé 'Construire un Village').\n"
 "\n"
 "Maintenant, une liste de vos constructions se trouvent près de l'emplacement "
 "de votre curseur.\n"
@@ -109,11 +110,11 @@ msgstr ""
 "n’apparait pas en rouge.\n"
 "Cliquez à l'endroit où vous voulez placer votre première construction.\n"
 "\n"
-"OBJECTIF: Construire une succursale sur la côte."
+"OBJECTIF: Construire un comptoir sur la côte."
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr "MISSION : DÉCHARGEZ MARCHANDISES"
+msgstr "MISSION : DÉCHARGEZ VOS MARCHANDISES"
 
 #: po/tutorial.py:10
 msgid ""

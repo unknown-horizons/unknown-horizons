@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-05-03 11:50+0200\n"
+"PO-Revision-Date: 2011-05-03 12:30+0200\n"
 "Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -110,7 +110,7 @@ msgstr "Confirmer l'effacement"
 
 #: horizons/gui/gui.py:243 horizons/main.py:198
 msgid "Error!"
-msgstr "Erreur !"
+msgstr "Erreur!"
 
 #: horizons/gui/gui.py:243
 msgid "Failed to delete savefile!"
@@ -131,12 +131,12 @@ msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:267
 msgid "Saved 1 time\n"
-msgstr "Sauvegardé %d fois\n"
+msgstr "Sauvegardé 1 fois\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
 msgid "Saved %d times\n"
-msgstr "Sauvé %d fois\n"
+msgstr "Sauvegardé %d fois\n"
 
 #: horizons/gui/gui.py:275
 #, python-format
@@ -194,19 +194,19 @@ msgstr "Erreur réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Something went wrong with the network: "
-msgstr "Un incident est survenu sur le réseau : "
+msgstr "Un incident est survenu sur le réseau: "
 
 #: horizons/gui/modules/multiplayermenu.py:136
 msgid "Map: "
-msgstr "Carte : "
+msgstr "Carte: "
 
 #: horizons/gui/modules/multiplayermenu.py:137
 msgid "Players: "
-msgstr "Joueurs : "
+msgstr "Joueurs: "
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Creator: "
-msgstr "Créateur : "
+msgstr "Créateur: "
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
@@ -217,15 +217,15 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr "Difficulté : "
+msgstr "Difficulté: "
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr "Auteur : "
+msgstr "Auteur: "
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr "Description : "
+msgstr "Description: "
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
@@ -245,7 +245,7 @@ msgid ""
 "Error message: "
 msgstr ""
 "Le fichier sélectionné n'est pas un fichier de scénario valide.\n"
-"Message d'erreur : "
+"Message d'erreur: "
 
 #: horizons/gui/modules/singleplayermenu.py:139
 msgid ""
@@ -328,7 +328,7 @@ msgstr "Sommaire"
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:96
 msgid "Branch office overview"
-msgstr "Sommaire de la Succursale"
+msgstr "Sommaire du comptoir"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
@@ -375,10 +375,7 @@ msgstr "Entreprises"
 
 #: horizons/i18n/guitranslations.py:319
 msgid "Tent: Houses your inhabitants."
-msgstr ""
-"Tentes : \n"
-"Abrite vos \n"
-"habitants."
+msgstr "Tente: Abrite vos habitants."
 
 #: horizons/i18n/guitranslations.py:320
 msgid "Storage: Extends stock and provides collectors."
@@ -483,9 +480,8 @@ msgid "Settler buildings"
 msgstr "Bâtiments des colons"
 
 #: horizons/i18n/guitranslations.py:350
-#, fuzzy
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr "Mine de fer: Extrait le fer d'une veine de fer."
+msgstr "Mine de fer: Extrait le fer d'un gisement de fer."
 
 #: horizons/i18n/guitranslations.py:351
 msgid "Smeltery: Refines all kind of ores."
@@ -1418,7 +1414,7 @@ msgstr "Constructeur de bateaux"
 
 #: sqlite/Building
 msgid "Branch Office"
-msgstr "Succursale"
+msgstr "Comptoir"
 
 #: sqlite/Building
 msgid "Brickyard"
@@ -1598,20 +1594,20 @@ msgstr "Certains de vos colons viennent juste de déménager."
 # Messages
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr "VOUS AVEZ GAGNE !"
+msgstr "VOUS AVEZ GAGNÉ!!!"
 
 # Messages
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
-msgstr "Vous avez besoin de plus de ${resource} pour construire cet immeuble."
+msgstr "Vous avez besoin de plus de ${resource} pour construire ce bâtiment."
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
-msgstr "Votre partie a été sauvée."
+msgstr "Une sauvegarde rapide de votre partie a été effectuée."
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Un gisement de minerai est épuisé."
 
 # Messages
 #: sqlite/Messages
@@ -1628,7 +1624,7 @@ msgstr "briques"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "charbon de bois"
 
 #: sqlite/Resources
 msgid "clay"
@@ -1636,7 +1632,7 @@ msgstr "argile"
 
 #: sqlite/Resources
 msgid "coins"
-msgstr "pièces"
+msgstr "pièces de monnaie"
 
 #: sqlite/Resources
 msgid "community"
@@ -1656,8 +1652,9 @@ msgid "food"
 msgstr "nourriture"
 
 #: sqlite/Resources
+#, fuzzy
 msgid "get-together"
-msgstr ""
+msgstr "réunion"
 
 #: sqlite/Resources
 msgid "grass"
@@ -1670,11 +1667,11 @@ msgstr "satisfaction"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "lingots de fer"
 
 #: sqlite/Resources
 msgid "iron ore"
-msgstr ""
+msgstr "minerai de fer"
 
 #: sqlite/Resources
 msgid "lamb wool"
@@ -1682,7 +1679,7 @@ msgstr "laine de mouton"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "alcool"
 
 # Resources
 #: sqlite/Resources
@@ -1694,12 +1691,13 @@ msgid "raw clay"
 msgstr "argile brute"
 
 #: sqlite/Resources
+#, fuzzy
 msgid "raw fish"
-msgstr ""
+msgstr "poisson cru"
 
 #: sqlite/Resources
 msgid "raw iron"
-msgstr ""
+msgstr "fer brut"
 
 # Resources
 #: sqlite/Resources
@@ -1745,7 +1743,7 @@ msgstr "pionier"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "marin"
 
 #: sqlite/SettlerLevel
 msgid "settler"
