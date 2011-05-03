@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-23 00:17+0200\n"
-"Last-Translator: erdnaxeli <erdnaxeli@gmail.com>\n"
+"PO-Revision-Date: 2011-05-03 08:39+0200\n"
+"Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -121,9 +121,8 @@ msgid "%H:%M, %A, %B %d"
 msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:267
-#, fuzzy
 msgid "Saved 1 time\n"
-msgstr "Sauvé %d fois\n"
+msgstr "Sauvegardé %d fois\n"
 
 #: horizons/gui/gui.py:269
 #, python-format
@@ -256,28 +255,28 @@ msgid "Resources still needed:"
 msgstr "Ressources encore nécessaires :"
 
 #: horizons/gui/tabs/boatbuildertab.py:170
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Bateau de pêche"
+msgstr "Bateaux de pêche"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 #: horizons/i18n/guitranslations.py:556
 msgid "Trade boats"
-msgstr ""
+msgstr "Bateaux de commerce"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 #: horizons/i18n/guitranslations.py:558
 msgid "War boats"
-msgstr ""
+msgstr "Bateaux de guerre"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 #: horizons/i18n/guitranslations.py:560
 msgid "War ships"
-msgstr ""
+msgstr "Navires de guerre"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
+#, fuzzy
 msgid "Confirm order"
-msgstr ""
+msgstr "Valider la commande"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -309,40 +308,37 @@ msgstr "Compte"
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:248 horizons/i18n/guitranslations.py:582
 msgid "Settler overview"
-msgstr "Aperçu des colons"
+msgstr "Sommaire des colons"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:302
 #: horizons/i18n/guitranslations.py:579 horizons/i18n/guitranslations.py:586
 #: horizons/i18n/guitranslations.py:597 horizons/i18n/guitranslations.py:613
 msgid "Overview"
-msgstr "Aperçu"
+msgstr "Sommaire"
 
+# An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
-msgstr ""
-"Aperçu \n"
-" Succursale"
+msgstr "Sommaire de la Succursale"
 
+# An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
-msgstr "Aperçu du navire"
+msgstr "Sommaire du navire"
 
+# An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:156
-#, fuzzy
 msgid "Production overview"
-msgstr "Aperçu de la production"
+msgstr "Sommaire de la production"
 
 #: horizons/gui/tabs/overviewtab.py:162
-#, fuzzy
 msgid "Destroy building"
-msgstr "Destruction du bâtiment"
+msgstr "Démolir le bâtiment"
 
+# An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:286
-#, fuzzy
 msgid "Market place overview"
-msgstr "Aperçu du marché"
+msgstr "Sommaire du marché"
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
@@ -355,14 +351,13 @@ msgid "Sailor buildings"
 msgstr "Bâtiments des navigateurs"
 
 #: horizons/i18n/guitranslations.py:316
-#, fuzzy
 msgid "Residents and infrastructure"
-msgstr "Habitations et Infrastructure"
+msgstr "Habitations et Infrastructures"
 
 #: horizons/i18n/guitranslations.py:317 horizons/i18n/guitranslations.py:333
 #: horizons/i18n/guitranslations.py:349
 msgid "Services"
-msgstr "Administrations"
+msgstr "Services"
 
 #: horizons/i18n/guitranslations.py:318 horizons/i18n/guitranslations.py:331
 #: horizons/i18n/guitranslations.py:335 horizons/i18n/guitranslations.py:348
@@ -370,7 +365,6 @@ msgid "Companies"
 msgstr "Entreprises"
 
 #: horizons/i18n/guitranslations.py:319
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
 msgstr ""
 "Tentes : \n"
@@ -378,21 +372,12 @@ msgstr ""
 "habitants."
 
 #: horizons/i18n/guitranslations.py:320
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
-msgstr ""
-"Stockage : \n"
-"Agrandit les stocks \n"
-" et fournit \n"
-"des livreurs."
+msgstr "Entrepot: Agrandit les stocks et fournit des livreurs."
 
 #: horizons/i18n/guitranslations.py:321
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
-msgstr ""
-"Piste : \n"
-"Nécessaire à \n"
-"la livraison des biens."
+msgstr "Sentier: Nécessaire à la livraison de la marchandise."
 
 #: horizons/i18n/guitranslations.py:322
 #, fuzzy
@@ -403,12 +388,8 @@ msgstr ""
 "en biens."
 
 #: horizons/i18n/guitranslations.py:323
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
-"Pavillon : \n"
-"Réponds aux besoins \n"
-"religieux des marins."
+msgstr "Pavillon : Réponds aux besoins religieux des marins."
 
 #: horizons/i18n/guitranslations.py:324
 #, fuzzy
