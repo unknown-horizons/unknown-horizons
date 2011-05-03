@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-05-03 09:46+0200\n"
+"PO-Revision-Date: 2011-05-03 11:35+0200\n"
 "Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -44,11 +44,16 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: horizons/engine.py:116
+#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
+"Le \"SDL-Renderer\" est uniquement un system de réserve et peut engendrer de "
+"sérieux problèmes graphiques.\n"
+"\n"
+"Utilisation à vos propres risques!"
 
 #: horizons/engine.py:178
 #, python-format
@@ -64,11 +69,15 @@ msgid "Quit Game"
 msgstr "Quitter la partie"
 
 #: horizons/gui/gui.py:178
+#, fuzzy
 msgid ""
 "Yeah, you made it...\n"
 "\n"
 "But this is a placeholder, sorry."
 msgstr ""
+"Vous avez réussi...\n"
+"\n"
+"Malheureusement ceci n'est qu'un garde-place. Nous sommes désolés."
 
 #: horizons/gui/gui.py:179
 msgid "Chime The Bell"
@@ -248,7 +257,7 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Sommaire de construction de bateaux."
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
@@ -380,12 +389,8 @@ msgid "Trail: Needed for collecting goods."
 msgstr "Sentier: Nécessaire à la livraison de la marchandise."
 
 #: horizons/i18n/guitranslations.py:322
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Place centrale : \n"
-"Fournit les citoyens \n"
-"en biens."
+msgstr "Place centrale: Fournit les biens aux citoyens."
 
 #: horizons/i18n/guitranslations.py:323
 msgid "Pavilion: Fulfills religious needs of sailors."
@@ -1309,11 +1314,12 @@ msgid "Specify alternative multiplayer master server."
 msgstr "Spécifier le serveur multijoueur maitre alternatif."
 
 #: run_uh.py:87
+#, fuzzy
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
-"Spécifier l'adresse réseau à relier au client du réseau local. Ceci utile si "
-"le holepunching du NAT ne fonctionne pas mais vous pouvez faire suivre un "
-"port statique."
+"Spécifier l'adresse réseau à relier au client du réseau local. Ceci est "
+"utile si le holepunching du NAT ne fonctionne pas mais vous pouvez faire "
+"suivre un port statique."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
@@ -1353,8 +1359,8 @@ msgstr "Options de développement"
 #: run_uh.py:107
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
-"Écrire la sortie de debug vers un fichier de log, pas vers la console. "
-"Implique -d."
+"Écrire les messages de debug vers un fichier de log, mais pas vers la "
+"console. Implique -d."
 
 #: run_uh.py:110
 msgid "Enable logging for a certain logging module (for developing only)."
@@ -1364,7 +1370,7 @@ msgstr ""
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr "Écrit le log vers <filename> au lieu du répertoire user UH"
+msgstr "Écrit le log vers <filename> au lieu du répertoire usager UH"
 
 #: run_uh.py:114
 msgid "For internal use only."
@@ -1386,7 +1392,7 @@ msgstr "Nous sommes désolé pour ceci, et allons corriger cette erreur."
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
 "Afin de pouvoir faire cela, nous avons besoin des informations provenant du "
-"fichier de log :"
+"fichier de log:"
 
 #: run_uh.py:143
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
