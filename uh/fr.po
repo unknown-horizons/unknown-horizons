@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-04-23 00:18+0200\n"
-"Last-Translator: erdnaxeli <erdnaxeli@gmail.com>\n"
+"PO-Revision-Date: 2011-05-03 09:46+0200\n"
+"Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1252,13 +1252,13 @@ msgstr "Impossible"
 
 #: horizons/mpsession.py:44
 msgid "You cannot change the speed of a multiplayer game"
-msgstr "Vous ne pouvez changer la vitesse d'une partie multi-joueurs"
+msgstr "Vous ne pouvez changer la vitesse d'une partie multijoueurs"
 
 #: horizons/mpsession.py:51 horizons/mpsession.py:53 horizons/mpsession.py:55
 #: horizons/mpsession.py:57
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
-"La sauvegarde/changement de parties multi-joueurs n'est pas possible encore"
+"Il n'es pas encore possible de sauvegarder/changer des parties multijoueurs"
 
 #: horizons/spsession.py:97
 msgid "Error"
@@ -1270,11 +1270,12 @@ msgstr "Echec de la sauvegarde rapide."
 
 #: horizons/spsession.py:103
 msgid "No quicksaves found"
-msgstr "Aucunes sauvegardes rapides trouvées"
+msgstr "Aucune sauvegarde rapide trouvée"
 
 #: horizons/spsession.py:103
 msgid "You need to quicksave before you can quickload."
-msgstr "Vous devez effectuer une sauvegarde rapide avant un chargement rapide."
+msgstr ""
+"Vous devez effectuer une sauvegarde rapide avant de pouvior en charger une."
 
 #. usually invalid filename
 #: horizons/spsession.py:130
@@ -1287,7 +1288,7 @@ msgstr "Vous avez entré un nom de fichier invalide."
 
 #: horizons/world/units/ship.py:176
 msgid "Trader"
-msgstr "Négociant"
+msgstr "Marchand"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
@@ -1305,13 +1306,13 @@ msgstr ""
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr "Spécifier le serveur multi-joueur maitre alternatif."
+msgstr "Spécifier le serveur multijoueur maitre alternatif."
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
-"Spécifier l'adresse réseau à relier au client du réseau local. C'est utile "
-"si le holepunching du NAT ne fonctionne pas mais vous pouvez faire suivre un "
+"Spécifier l'adresse réseau à relier au client du réseau local. Ceci utile si "
+"le holepunching du NAT ne fonctionne pas mais vous pouvez faire suivre un "
 "port statique."
 
 #: run_uh.py:90
@@ -1325,7 +1326,7 @@ msgstr "Démarre <map>. <map> est le nom de la carte."
 
 #: run_uh.py:94
 msgid "Starts a random map."
-msgstr "Lance une carte aléatoire."
+msgstr "Démarre une carte aléatoire."
 
 # please don't translate anything in <tags> - thanks!
 #: run_uh.py:96
