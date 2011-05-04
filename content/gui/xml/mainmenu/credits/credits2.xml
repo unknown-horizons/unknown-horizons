@@ -40,6 +40,7 @@
 			<Label text="Nikolai Woutlan" />
 			<Label text="William Cabrera" />
 			<Label text="Álex Plaza" />
+			<Label text="Fabio Fernández (Catharsius)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Estonian"  name="headline" />
@@ -52,6 +53,7 @@
 			<Label text="Marc Moussa (deathmaster9)" />
 			<Label text="Vincent Herilier (LiveWire)" />
 			<Label text="Sebastien Charpentier" />
+			<Label text="Hugues Fafard (Antagonym)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Lithuanian"  name="headline" />
