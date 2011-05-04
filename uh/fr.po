@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-21 23:49+0100\n"
-"PO-Revision-Date: 2011-05-03 12:30+0200\n"
+"PO-Revision-Date: 2011-05-04 13:34+0200\n"
 "Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1310,11 +1310,10 @@ msgid "Specify alternative multiplayer master server."
 msgstr "Spécifier le serveur multijoueur maitre alternatif."
 
 #: run_uh.py:87
-#, fuzzy
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
 "Spécifier l'adresse réseau à relier au client du réseau local. Ceci est "
-"utile si le holepunching du NAT ne fonctionne pas mais vous pouvez faire "
+"utile si le NAT empêche la création de la partie mais vous pouvez faire "
 "suivre un port statique."
 
 #: run_uh.py:90
@@ -1652,9 +1651,8 @@ msgid "food"
 msgstr "nourriture"
 
 #: sqlite/Resources
-#, fuzzy
 msgid "get-together"
-msgstr "réunion"
+msgstr "communauté"
 
 #: sqlite/Resources
 msgid "grass"
