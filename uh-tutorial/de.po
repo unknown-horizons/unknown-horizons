@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2010-09-17 17:52+0200\n"
 "PO-Revision-Date: 2011-04-24 01:13+0200\n"
-"Last-Translator: eoc <>\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1028,7 +1028,7 @@ msgstr ""
 
 #: po/tutorial_en.py:60
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr "Errichtet einen Weber, der Wolle abholen kann."
+msgstr "Errichtet einen Weber, der Wolle von einer Farm abholen kann."
 
 #: po/tutorial_en.py:61
 msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
