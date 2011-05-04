@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-18 02:40+0100\n"
-"PO-Revision-Date: 2011-05-04 10:33+0200\n"
+"PO-Revision-Date: 2011-05-04 11:27+0200\n"
 "Last-Translator: Antagonym <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -903,6 +903,8 @@ msgstr ""
 #: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
+"Construisez au moins und pré et ajoutez des champs de pommes de terre si "
+"vous voulez."
 
 #: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
