@@ -173,6 +173,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Shows the credits dialog. """
 		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
 			box.margins = (30,0) # to get some indentation
+			if number == 2: # #TODO fix this hardcoded translators page ref
+				box.padding = 1 # further decrease if more entries
+				box.parent.padding = 3 # see above
 		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl") \
 		              for section in ('team','patchers','translators','special_thanks')]
 		for i in xrange (0,4):

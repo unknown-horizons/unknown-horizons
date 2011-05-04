@@ -22,7 +22,7 @@
 </Container>
 <!-- this is the third container ( translators ).                                      !!!
 -->
-<VBox position="190,45"  name="credits">
+<VBox position="190,45"  name="credits"  max_size="335,500"  min_size="335,450"  padding="0">
 	<Label text="Translators"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox> <Label text="Catalan"  name="headline" />
@@ -70,7 +70,9 @@
 	<Spacer />
 </VBox>
 
-<VBox position="525,70" name="credits2">
+<VBox position="525,70" name="credits2"  max_size="335,475"  min_size="335,425">
+<!-- sooner or later the 70 needs to be a 45 just as the left box.
+     for the time being the current alignment just looks better. -->
 	<VBox> <Label text="Norwegian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Frode Woldsund (frodus)" />
