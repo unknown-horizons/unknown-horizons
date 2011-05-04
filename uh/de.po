@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-04 19:09+0200\n"
-"Last-Translator: schnurlos <schnurlos@gmx.at>\n"
+"PO-Revision-Date: 2011-05-05 01:10+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -211,10 +211,10 @@ msgstr "Ersteller: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
-"Die Spielversion weicht von deiner ab. Jeder Spieler beim Mehrspielermodus "
-"muss die gleiche Version verwenden. Das kann dadurch behoben werden, wenn "
-"jeder Spieler auf die letzte Version updatet. Spielversion: %(gameversion)s "
-"Deine Version: %(ownversion)s"
+"Die Spielversion des Erstellers weicht von Eurer ab. Im Mehrspielermodus "
+"müsst Ihr die gleiche Version verwenden wie alle Mitspieler. Dies kann "
+"behoben werden, indem jeder Spieler seine Version auf den neuesten Stand "
+"bringt. Spielversion: %(gameversion)s Eure Version: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
@@ -581,7 +581,7 @@ msgstr "Gold"
 
 #: horizons/i18n/guitranslations.py:109
 msgid "Change name"
-msgstr "Name ändern"
+msgstr "Namen ändern"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Enter new name:"
@@ -641,7 +641,7 @@ msgstr "Zur Liste hinzufügen"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
-msgstr "Route Starten / Stoppen"
+msgstr "Route starten / unterbrechen"
 
 #: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:171
 msgid "Attention please!"
@@ -1160,11 +1160,11 @@ msgstr "Bewohner"
 # 94%
 #: horizons/i18n/guitranslations.py:313
 msgid "Build settlement:"
-msgstr "Ansiedlung errichten"
+msgstr "Siedlung errichten"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
-msgstr "Klickt hier, um das Schiff umzutaufen."
+msgstr "Klickt hier, um dieses Schiff umzutaufen."
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Build settlement"
@@ -1179,12 +1179,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:319
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
-"Dies ist das Schiff des Freien Händlers. Es wird von Zeit zu Zeit Eure "
+"Dies ist das Schiff des Freien Händlers. Er wird von Zeit zu Zeit Eure "
 "Siedlung besuchen und nach Angeboten Ausschau halten."
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Exchange:"
-msgstr "Tauschen:"
+msgstr "Warenaustausch:"
 
 #: horizons/i18n/guitranslations.py:326
 msgid "Ship:"
@@ -1312,9 +1312,9 @@ msgstr "Alternativen Hauptserver für den Mehrspieler-Modus festlegen."
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
-"Gib eine lokale Netzwerkadresse für den Multiplayermodus an. Das wird "
-"benötigt, wenn NAT den Spielaufbau unterbindet, aber du einen statischen "
-"Port über die Firewall oder den Router öffnen und weiterleiten kannst."
+"Gebt eine lokale Netzwerkadresse für den Multiplayermodus an. Dies wird "
+"benötigt, wenn NAT den Spielaufbau unterbindet, Ihr aber einen statischen "
+"Port über die Firewall oder den Router öffnen und weiterleiten könnt."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
