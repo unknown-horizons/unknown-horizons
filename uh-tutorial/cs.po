@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-04 14:30+0200\n"
+"PO-Revision-Date: 2011-05-04 14:45+0200\n"
 "Last-Translator: Kris_CZ <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Vítej v Unknown Horizons!"
 
 #: po/tutorial.py:6
 msgid ""
@@ -79,7 +79,7 @@ msgstr ""
 
 #: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
-msgstr ""
+msgstr "NOVÝ ÚKOL: VYLOŽ TVÉ ZBOŽÍ"
 
 #: po/tutorial.py:10
 msgid ""
