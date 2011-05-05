@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-05 21:24+0200\n"
+"PO-Revision-Date: 2011-05-05 22:21+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -274,9 +274,8 @@ msgstr "Grondstoffen vereist:"
 # 76%
 # 100%
 #: horizons/gui/tabs/boatbuildertab.py:170
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Vissersboot"
+msgstr "Vissersboten"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
@@ -364,9 +363,8 @@ msgid "Companies"
 msgstr "Bedrijven"
 
 #: horizons/i18n/guitranslations.py:43
-#, fuzzy
 msgid "Sailor buildings"
-msgstr "Zee Gebouwen"
+msgstr "Zeeman Gebouwen"
 
 #: horizons/i18n/guitranslations.py:44
 #, fuzzy
@@ -379,51 +377,30 @@ msgid "Services"
 msgstr "Diensten"
 
 #: horizons/i18n/guitranslations.py:46
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr ""
-"Pavilioen: \n"
-"Voldoet aan religieuzebelangen van zee lui"
+msgstr "Pavilioen: Voldoet aan religieuze belangen van zeelui."
 
 #: horizons/i18n/guitranslations.py:47
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Visser: \n"
-"Vist op zee, \n"
-"produceert voedsel."
+msgstr "Visser: Vist op zee, produceert voedsel."
 
 #: horizons/i18n/guitranslations.py:48
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Jager: \n"
-"Jaagt op wilde dieren, \n"
-"produceert voedsel."
+msgstr "Jager: Jaagt op wilde dieren, produceert voedsel."
 
 #: horizons/i18n/guitranslations.py:49
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
-"Biedt de speler de \n"
-"mogelijkheid om met de\n"
-"vrije handelaar te handelen."
+"Signal vuur: Biedt de speler de mogelijkheid om met de vrije handelaar te "
+"handelen."
 
 #: horizons/i18n/guitranslations.py:50
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Houthakker: \n"
-"Hakt bomen om en \n"
-"maakt er planken van.\n"
+msgstr "Houthakker: Hakt bomen om en maakt er planken van."
 
 #: horizons/i18n/guitranslations.py:51
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Plein \n"
-"Levert goederen \n"
-"aan intwoners."
+msgstr "Plein: Levert goederen aan inwoners."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
@@ -455,76 +432,46 @@ msgid "Military"
 msgstr "Militair"
 
 #: horizons/i18n/guitranslations.py:62
-#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
-msgstr ""
-"Dok: \n"
-"Maakt boten en \n"
-"kleine schepen. \n"
-"Te plaatsen aan de kust.\n"
+msgstr "Dok: Maakt boten en kleine schepen. Te plaatsen aan de kust."
 
 #: horizons/i18n/guitranslations.py:63
-#, fuzzy
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
-"SteenovenProduceert bakstenen \n"
-"uit klei"
+msgstr "Steenoven: Produceert bakstenen uit klei."
 
 #: horizons/i18n/guitranslations.py:64
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
-"Klei: \n"
-"Graaft klei \n"
-"uit"
+msgstr "Kleiput: Graaft klei uit."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:66
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Boerderij \n"
-"Verbouwt groenten \n"
-"en beheert vee."
+msgstr "Boerderij: Verbouwt groenten en beheert vee."
 
 #: horizons/i18n/guitranslations.py:67
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
 msgstr ""
-"Weiland: \n"
-"Leefruimte voor schapen. \n"
-"Produceert wol. \n"
-"Heeft een boerderij nodig. \n"
+"Weiland: Leefruimte voor schapen. Produceert wol. Heeft een boerderij nodig. "
+""
 
 #: horizons/i18n/guitranslations.py:68
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
-"Aardappelveld: \n"
-"Produceert voedsel. \n"
-"Heeft een boerderij nodig. \n"
+msgstr "Aardappelveld: Produceert voedsel. Heeft een boerderij nodig."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:70
-#, fuzzy
 msgid "Village school: Provides education."
-msgstr ""
-"School: \n"
-"Levert educatie."
+msgstr "School: Levert educatie."
 
 #: horizons/i18n/guitranslations.py:71
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Wever: \n"
-"Maakt kleren \n"
-"van wol."
+msgstr "Wever: Maakt kleren van wol."
 
 #: horizons/i18n/guitranslations.py:74
 #, fuzzy
@@ -993,18 +940,16 @@ msgid "Number of quicksaves:"
 msgstr "Aantal snel opslaan"
 
 #: horizons/i18n/guitranslations.py:224
-#, fuzzy
 msgid "Full screen:"
-msgstr "Volledig scherm"
+msgstr "Volledig scherm:"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Screen resolution:"
 msgstr "Scherm resolutie:"
 
 #: horizons/i18n/guitranslations.py:226
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Geluid inschakelen"
+msgstr "Geluid inschakelen:"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Used renderer:"
@@ -1093,11 +1038,8 @@ msgid "Building overview"
 msgstr "Gebouwen Overzicht"
 
 #: horizons/i18n/guitranslations.py:253
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
-"Annuleer alle \n"
-"gebouwen onder constructie"
+msgstr "Annuleer alle constructie vooruitgang"
 
 #: horizons/i18n/guitranslations.py:254
 msgid "Pause"
@@ -1129,9 +1071,8 @@ msgid "Whaler"
 msgstr "Walvisvaarder"
 
 #: horizons/i18n/guitranslations.py:262
-#, fuzzy
 msgid "Fishing boats"
-msgstr "Vissersboot"
+msgstr "Vissersboten"
 
 #: horizons/i18n/guitranslations.py:263
 msgid "Build this ship!"
@@ -1231,12 +1172,8 @@ msgid "Build settlement:"
 msgstr "Plaats nederzetting"
 
 #: horizons/i18n/guitranslations.py:314
-#, fuzzy
 msgid "Click to change the name of this ship."
-msgstr ""
-"Klik om de naam \n"
-"van dit schip \n"
-"te wijzigen."
+msgstr "Klik om de naam van dit schip te wijzigen."
 
 #: horizons/i18n/guitranslations.py:315
 #, fuzzy

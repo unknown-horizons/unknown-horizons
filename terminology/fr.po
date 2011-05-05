@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-05 21:49+0200\n"
+"PO-Revision-Date: 2011-05-05 22:04+0200\n"
 "Last-Translator: Vincent <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -534,7 +534,7 @@ msgstr "commerçant"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "balance"
-msgstr ""
+msgstr "solde"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -544,7 +544,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "fire"
-msgstr ""
+msgstr "feu"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -554,7 +554,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "fisher"
-msgstr ""
+msgstr "pêcheur"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1123,7 +1123,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "school"
-msgstr ""
+msgstr "école"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1132,7 +1132,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "screen"
-msgstr ""
+msgstr "écran"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1150,7 +1150,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sound"
-msgstr ""
+msgstr "son"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1438,7 +1438,7 @@ msgstr "mouton"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "SHIFT"
-msgstr ""
+msgstr "SHIFT"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1447,7 +1447,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr ""
+msgstr "inventaire du navire"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1474,7 +1474,7 @@ msgstr "champ de canne"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trade partner"
-msgstr ""
+msgstr "partenaire commercial"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1483,7 +1483,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr ""
+msgstr "rendements"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (8)
