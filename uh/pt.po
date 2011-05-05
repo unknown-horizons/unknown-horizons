@@ -1145,9 +1145,11 @@ msgstr ""
 msgid "Residents"
 msgstr "Residentes"
 
+# 94%
 #: horizons/i18n/guitranslations.py:313
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "Menu principal:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."

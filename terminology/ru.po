@@ -195,18 +195,6 @@ msgstr ""
 msgid "tab"
 msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# 
-# (poterminology) uh/unknownhorizons.pot (8)
-# 
-#: horizons/constants.py
-#: horizons/i18n/guitranslations.py
-#: horizons/gui/gui.py
-#: po/tutorial.py
-#: %28poterminology%29+2+more+locations
-msgid "unknown horizons"
-msgstr ""
-
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # 
 # (poterminology) uh/unknownhorizons.pot (6)

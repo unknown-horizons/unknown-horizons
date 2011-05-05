@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
 "PO-Revision-Date: 2011-04-17 20:50+0200\n"
-"Last-Translator: andrejz <andrej.znidarsic@gmail.com>\n"
+"Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -59,9 +59,11 @@ msgstr "Nastavljenega jezika %(lang)s na %(place)s ni bilo mogoče naložiti."
 msgid "Error"
 msgstr "Napaka"
 
+# 75%
 #: horizons/gui/gui.py:121
+#, fuzzy
 msgid "Failed to save."
-msgstr ""
+msgstr "Hitro shranjevanje je spodletelo"
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1146,9 +1148,11 @@ msgstr "Plačani davki"
 msgid "Residents"
 msgstr "Prebivalci"
 
+# 94%
 #: horizons/i18n/guitranslations.py:313
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "Izgradi naselbino"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."

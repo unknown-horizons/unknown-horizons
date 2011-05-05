@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
 "PO-Revision-Date: 2011-04-09 20:22+0200\n"
-"Last-Translator: eoc <>\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -56,9 +56,11 @@ msgstr "Skonfigurowany język %(lang)s w %(place)s nie został załadowany"
 msgid "Error"
 msgstr "Błąd"
 
+# 75%
 #: horizons/gui/gui.py:121
+#, fuzzy
 msgid "Failed to save."
-msgstr ""
+msgstr "Nie udało się zapisać gry."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1162,9 +1164,11 @@ msgstr "Zapłacone podatki"
 msgid "Residents"
 msgstr "Mieszkańcy"
 
+# 94%
 #: horizons/i18n/guitranslations.py:313
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "Menu budowania"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."

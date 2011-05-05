@@ -55,9 +55,11 @@ msgstr "A configuração da linguagem %(lang)s em %(place)s não pode ser aberta
 msgid "Error"
 msgstr "Erro"
 
+# 75%
 #: horizons/gui/gui.py:121
+#, fuzzy
 msgid "Failed to save."
-msgstr ""
+msgstr "Salvamento rápido falhou."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1241,9 +1243,11 @@ msgstr ""
 msgid "Residents"
 msgstr ""
 
+# 94%
 #: horizons/i18n/guitranslations.py:313
+#, fuzzy
 msgid "Build settlement:"
-msgstr ""
+msgstr "Menu de Construção"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
