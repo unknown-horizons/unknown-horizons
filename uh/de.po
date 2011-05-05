@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-05 01:10+0200\n"
+"PO-Revision-Date: 2011-05-05 13:16+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -144,7 +144,7 @@ msgstr "INKOMPATIBLE VERSION\n"
 
 #: horizons/gui/gui.py:411
 msgid "No file selected"
-msgstr "Keine Dateien ausgewählt"
+msgstr "Keine Datei ausgewählt"
 
 #: horizons/gui/gui.py:411
 msgid "You need to select a savegame to delete"
@@ -179,7 +179,7 @@ msgstr "Spiel angehalten"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr "Konnte nicht mit Hauptserver verbinden. Details: %s"
+msgstr "Konnte nicht mit Masterserver verbinden. Details: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -533,15 +533,15 @@ msgstr "Logbuch"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
-msgstr "Drehe Mappe gegen Uhrzeigersinn"
+msgstr "Karte im Gegenuhrzeigersinn drehen"
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Rotate map clockwise"
-msgstr "Drehe Mappe im Uhrzeigersinn"
+msgstr "Karte im Uhrzeigersinn drehen"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
-msgstr "Spielgeschwindigkeit verlangsamen"
+msgstr "Spielgeschwindigkeit verringern"
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Increase game speed"
@@ -549,11 +549,11 @@ msgstr "Spielgeschwindigkeit erhöhen"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr "Größer zoomen"
+msgstr "Heranzoomen"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
-msgstr "Kleiner zoomen"
+msgstr "Herauszoomen"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
@@ -645,7 +645,7 @@ msgstr "Route starten / unterbrechen"
 
 #: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:171
 msgid "Attention please!"
-msgstr "Achtung!"
+msgstr "Bitte beachten!"
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
 msgid "Credits"
@@ -762,7 +762,7 @@ msgstr "{C} = Chat"
 
 #: horizons/i18n/guitranslations.py:165
 msgid "{L} = Toggle Captain's log"
-msgstr "(L) = Schalte um zum Kapitänslogbuch"
+msgstr "{L} = Logbuch anzeigen"
 
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:207
 #: horizons/i18n/guitranslations.py:242
@@ -847,7 +847,7 @@ msgstr "Hauptmenü:"
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Show only games with the same version:"
-msgstr "Zeige nur Spiele mit der gleichen Spielversion:"
+msgstr "Zeige nur Spiele gleicher Version:"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "New game - Multiplayer"
@@ -891,7 +891,7 @@ msgstr "Farbtiefe:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Enable edge scrolling:"
-msgstr "Ermögliche Ecken-Scroll:"
+msgstr "Maus-Scrollen am Rand:"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Effects volume:"
@@ -920,7 +920,7 @@ msgstr "Sprache wählen:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Enable minimap rotation:"
-msgstr "Erlaube Rotation kl. Karte:"
+msgstr "Minimap-Rotation:"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Music volume:"
@@ -1075,7 +1075,7 @@ msgstr "In Auftrag geben!"
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:265
 #: horizons/i18n/guitranslations.py:266
 msgid "Not yet implemented!"
-msgstr "Noch nicht verfügbar!"
+msgstr "Noch nicht implementiert!"
 
 #: horizons/i18n/guitranslations.py:268
 msgid "Select resources:"
@@ -1116,7 +1116,7 @@ msgstr "Mittlere Zufriedenheit:"
 
 #: horizons/i18n/guitranslations.py:290
 msgid "Most needed resource:"
-msgstr "Meist benötigte Ressource:"
+msgstr "Meistverlangte Ware:"
 
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:307
 msgid "Taxes:"
@@ -1124,7 +1124,7 @@ msgstr "Steuern:"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "capacity utilization"
-msgstr "Nutzungskapazität"
+msgstr "Auslastung"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Resource deposit"
@@ -1160,7 +1160,7 @@ msgstr "Bewohner"
 # 94%
 #: horizons/i18n/guitranslations.py:313
 msgid "Build settlement:"
-msgstr "Siedlung errichten"
+msgstr "Siedlung errichten:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1331,7 +1331,7 @@ msgstr "Erstellt eine Zufallskarte."
 
 #: run_uh.py:96
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr "Startet <scenario>. <scenario> im Szenarionamen."
+msgstr "Startet <scenario>. <scenario> ist der Name des Szenarios."
 
 #: run_uh.py:98
 msgid "Starts the development map without displaying the main menu."
