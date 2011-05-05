@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-05 21:31+0200\n"
+"PO-Revision-Date: 2011-05-05 21:49+0200\n"
 "Last-Translator: Vincent <vherilier@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -632,7 +632,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "help"
-msgstr ""
+msgstr "aide"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -898,7 +898,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "village"
-msgstr ""
+msgstr "village"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -907,7 +907,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "your"
-msgstr ""
+msgstr "votre"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -917,7 +917,7 @@ msgstr ""
 #: horizons/gui/tabs/marketplacetabs.py
 #: horizons/i18n/guitranslations.py
 msgid "account"
-msgstr ""
+msgstr "accompte"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -926,7 +926,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "back"
-msgstr ""
+msgstr "retour"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1057,7 +1057,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "partner"
-msgstr ""
+msgstr "partenaire"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
