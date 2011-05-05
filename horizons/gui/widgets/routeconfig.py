@@ -24,7 +24,9 @@ from horizons.util import Callback
 from fife.extensions.pychan import widgets
 
 class RouteConfig(object):
-
+	"""
+	Widget that allows configurating a ship's trading route 
+	"""
 	def __init__(self, instance):
 		self.instance = instance
 
@@ -96,8 +98,11 @@ class RouteConfig(object):
 		if selected == None:
 			return
 
-		self.instance.route.append(self.branch_offices[selected], {4:-1})
-		self.add_gui_entry(self.branch_offices[selected])
+		try:
+			self.instance.route.append(self.branch_offices[selected], {4:-1})
+			self.add_gui_entry(self.branch_offices[selected])
+		except Exception:
+			pass
 		
 		self.hide()
 		self.show()

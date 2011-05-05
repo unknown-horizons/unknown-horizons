@@ -52,6 +52,10 @@ class ShipRoute(object):
 		self.enabled = False
 
 	def append(self, branch_office, resource_list):
+		#don't add to consecutive offices to route
+		if len(self.waypoints) > 0 and\
+		   self.waypoints[-1]['branch_office'] == branch_office:
+			raise Exception
 		self.waypoints.append({
 		  'branch_office' : branch_office,
 		  'resource_list' : resource_list
