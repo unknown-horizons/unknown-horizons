@@ -194,6 +194,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 		"""Moves the ship.
 		This is called when a ship is selected and RMB is pressed outside the ship"""
 		self.stop()
+		
+		#disable the trading route
+		if hasattr(self, 'route'):
+			self.route.disable()
 		ship_id = self.worldid # this has to happen here,
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak

@@ -44,16 +44,16 @@ class RouteConfig(object):
 #############################
 	def start_route(self):
 		self.instance.route.enable()
-		self._gui.findChild(name='start_route').set_active()
+		#self._gui.findChild(name='start_route').set_active()
 
 	def stop_route(self):
 		self.instance.route.disable()
-		self._gui.findChild(name='start_route').set_inactive()
+		#self._gui.findChild(name='start_route').set_inactive()
 
 	def toggle_route(self):
-		if True:
+		if not self.instance.route.enabled:
 			self.start_route()
-		if False:
+		else:
 			self.stop_route()
 	# these three need to be fixed and expanded.
 	# toggle* is planned to serve as callback, see _init_gui below
@@ -68,20 +68,37 @@ class RouteConfig(object):
 		else:
 			self.show()
 
+	def remove_entry(self, entry):
+		self.instance.route.disable()
+		vbox = self._gui.findChild(name="left_vbox")
+		position = self.widgets.index(entry)
+		self.widgets.pop(position)
+		self.instance.route.waypoints.pop(position)
+		vbox.removeChild(entry)
+		self.instance.route.enable()
+		self.hide()
+		self.show()
+	
+	def add_gui_entry(self, branch_office):
+		vbox = self._gui.findChild(name="left_vbox")
+		entry = load_xml_translated("route_entry.xml")
+
+		label = entry.findChild(name="bo_name")
+		label.text = unicode(branch_office.settlement.name)
+		entry.mapEvents({
+		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry)
+		  })
+		vbox.addChild(entry)
+		self.widgets.append(entry)
+
 	def append_bo(self):
 		selected = self.listbox._getSelectedItem()
 		if selected == None:
 			return
-		vbox = self._gui.findChild(name="left_vbox")
-
-		hbox = widgets.HBox()
-		label = widgets.Label()
-		label.text = selected
-		hbox.addChild(label)
 
 		self.instance.route.append(self.branch_offices[selected], {4:-1})
-
-		vbox.addChild(hbox);
+		self.add_gui_entry(self.branch_offices[selected])
+		
 		self.hide()
 		self.show()
 
@@ -91,23 +108,19 @@ class RouteConfig(object):
 		self.listbox = self._gui.findChild(name="branch_office_list")
 		self.listbox._setItems(list(self.branch_offices))
 
-		vbox = self._gui.findChild(name="left_vbox")
+		self.widgets=[]
 		for entry in self.instance.route.waypoints:
-			hbox = widgets.HBox()
-			label = widgets.Label()
-			label.text = unicode(entry['branch_office'].settlement.name)
-			hbox.addChild(label)
-			vbox.addChild(hbox)
-
+			self.add_gui_entry(entry['branch_office'])
 		# we want escape key to close the widget, what needs to be fixed here?
-		self._gui.on_escape = self.hide
+		#self._gui.on_escape = self.hide
 		# needs to check the current state and set the button state afterwards
-#		self._gui.findChild(name='start_route').set_inactive()
+		if not self.instance.route.enabled:
+			self._gui.findChild(name='start_route').set_inactive()
+
 		self._gui.mapEvents({
 		  'cancelButton' : self.hide,
 		  'add_bo/mouseClicked' : self.append_bo,
-		  'start_route/mouseClicked' : self.instance.route.enable,
-#		  'start_route/mouseClicked' : self.toggle_route
+		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
 
