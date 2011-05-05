@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-05 13:16+0200\n"
+"PO-Revision-Date: 2011-05-05 13:13+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -579,6 +579,7 @@ msgstr "Werkzeuge"
 msgid "Gold"
 msgstr "Gold"
 
+# bitte nicht wieder in 'Name' zurueck aendern. ~eoc
 #: horizons/i18n/guitranslations.py:109
 msgid "Change name"
 msgstr "Namen ändern"
@@ -1170,6 +1171,7 @@ msgstr "Klickt hier, um dieses Schiff umzutaufen."
 msgid "Build settlement"
 msgstr "Siedlung errichten"
 
+# Das Signalfeuer ist nicht maennlich.
 #: horizons/i18n/guitranslations.py:317
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
