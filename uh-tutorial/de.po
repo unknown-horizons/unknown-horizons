@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2010-09-17 17:52+0200\n"
-"PO-Revision-Date: 2011-05-04 19:17+0200\n"
-"Last-Translator: schnurlos <schnurlos@gmx.at>\n"
+"POT-Creation-Date: 2011-02-27 18:14+0100\n"
+"PO-Revision-Date: 2011-05-06 11:34+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.5\n"
 
-#: po/tutorial_en.py:1
+#: po/tutorial.py:1
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: po/tutorial_en.py:2
+#: po/tutorial.py:2
 msgid "The UH team"
 msgstr "Das UH Team"
 
-#: po/tutorial_en.py:3
+#: po/tutorial.py:3
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
@@ -34,63 +34,69 @@ msgstr ""
 "Das Tutorial:\n"
 "Errichtet Eure erste Siedlung und lernt das Spiel kennen!\n"
 
-#: po/tutorial_en.py:4
+#: po/tutorial.py:4
 msgid "Build a branch office at the coast."
 msgstr "Errichtet ein Kontor an der Küste."
 
-#: po/tutorial_en.py:5
+#: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
 msgstr "Willkommen bei Unknown Horizons!"
 
 # Etwas zu lang, letzter Absatz wird im Spiel abgeschnitten.
-#: po/tutorial_en.py:6
+#: po/tutorial.py:6
 msgid ""
-"This is your Captain's log where all important information is stored. We try to deliver short notifications of each task.\n"
+"This is your Captain's log where all important information is stored. A "
+"short notification of each task will be provided on the left of the screen.\n"
 "\n"
-"If you are interested in longer descriptions, your log will hopefully provide all the help you need.\n"
+"If you are interested in longer descriptions, your log will hopefully "
+"provide all the help you need.\n"
 "\n"
-"In case you closed it: The 'Captain's log' icon in our northeast corner (below the mini-map, with a sealed document and a feather) opens it again.\n"
+"After you close this log, it can be re-opened with the 'Captain's Log' icon "
+"in the top-right corner (below the mini-map, with a sealed document and a "
+"feather).\n"
 "\n"
-"For any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we try to improve the tutorial!\n"
+"For any suggestions on better wording, topics you would like to have "
+"explained or even buggy conditions: Please tell us and we will try to "
+"improve the tutorial!\n"
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!\n"
 "\n"
 "And now, let's start the actual game."
 msgstr ""
 "Dies ist Euer Logbuch, in dem alle wichtigen Informationen gespeichert "
-"werden. Zu jeder Aufgabe gibt es auch kurze Mitteilungen. Solltet Ihr jedoch "
-"längere Beschreibungen bevorzugen, liefert das Logbuch hoffentlich alle "
-"benötigten Informationen.\n"
+"werden. Zu jeder Aufgabe gibt es auch kurze Mitteilungen.\n"
 "\n"
-"Falls Ihr das Logbuch geschlossen habt, könnt Ihr es über das Logbuchsymbol "
-"in der Ecke oben rechts (unter der Weltkarte mit einem versiegelten Dokument "
-"und einer Feder) wieder öffnen.\n"
+"Falls Ihr das Logbuch geschlossen habt, könnt Ihr es per Taste L oder über "
+"das Logbuchsymbol in der Ecke oben rechts (unter der Weltkarte mit einem "
+"versiegelten Dokument und einer Feder) wieder öffnen.\n"
 "\n"
 "Solltet Ihr Verbesserungsvorschläge für Erklärungen im Tutorial haben, "
 "möchtet bestimmte Bereiche näher erklärt haben oder Ihr habt einen Fehler "
-"gefunden: Zögert nicht, das dem Team mitzuteilen! Wir werden dann versuchen, "
-"das Tutorial zu verbessern.\n"
+"gefunden: Teilt das dem Team mit! Nur so können wir das Tutorial verbessern.\n"
 "\n"
 "Unter www.unknown-horizons.org könnt Ihr das Team kontaktieren oder Hilfe "
 "erhalten.\n"
 "\n"
 "Und nun lasst uns das eigentliche Spiel beginnen."
 
-#: po/tutorial_en.py:7
+#: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgstr "NEUE AUFGABE: INSEL BESIEDELN"
 
-#: po/tutorial_en.py:8
+#: po/tutorial.py:8
 msgid ""
-"To move your ship, select it with a left click and right click on the location you want it to go to.\n"
+"To move your ship, select it with a left click and right click on the "
+"location you want it to go to.\n"
 "\n"
-"Once you are near the coast, the anchor-like button you see in the overview tab will get active.\n"
+"Once you are near the coast, the anchor-like button you see in the overview "
+"tab will become active.\n"
 "\n"
-"This means that you are now able to build a branch office there by pressing that button (called 'Build Settlement').\n"
+"This indicates that you are able to build a branch office there by pressing "
+"that button (called 'Build Settlement').\n"
 "\n"
 "Now a preview of your building is dragged around when you move the cursor.\n"
 "\n"
-"You can build on every spot where this preview is not red now.\n"
+"You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building.\n"
 "\n"
 "TASK: Build a branch office at the coast."
@@ -101,8 +107,8 @@ msgstr ""
 "In Küstennähe wird der ankerähnliche Button im Übersichtstab Eures Schiffes "
 "aktiv.\n"
 "\n"
-"Das heißt, dass Ihr an diesem Küstenabschnitt vermittels des Buttons 'Baue "
-"Siedlung' ein Kontor errichten könnt.\n"
+"Das heißt, dass Ihr an diesem Küstenabschnitt vermittels des Buttons "
+"'Siedlung errichten' ein Kontor bauen könnt.\n"
 "\n"
 "Es erscheint dann eine Gebäudevorschau, die mit dem Mauszeiger über die "
 "Karte bewegt wird.\n"
@@ -113,29 +119,34 @@ msgstr ""
 "\n"
 "AUFGABE: Errichtet ein Kontor an der Küste."
 
-#: po/tutorial_en.py:9
+#: po/tutorial.py:9
 msgid "NEW TASK: UNLOAD YOUR GOODS"
 msgstr "NEUE AUFGABE: SCHIFF ENTLADEN"
 
-#: po/tutorial_en.py:10
+#: po/tutorial.py:10
 msgid ""
-"Now that you built the Branch Office, you need to move some of the resources to its stock.\n"
+"Now that you have built the Branch Office, you need to move some of your "
+"resources to its stock.\n"
 "\n"
-"To do so, select your ship and go into the tab with the wooden box icon called 'Ship Inventory'.\n"
+"To do so, select your ship and go into the tab with the wooden box icon "
+"called 'Ship Inventory'.\n"
 "\n"
-"Here you get an overview of what this ship's cargo looks like and have the button 'Load/Unload'.\n"
+"Here you get an overview of what this ship's cargo looks like and have the "
+"button 'Load/Unload'.\n"
 "\n"
-"This button gets active if your ship is in range of a possible trade partner like a branch office.\n"
+"This button becomes active if your ship is in range of a possible trade "
+"partner like a branch office.\n"
 "\n"
-"Click on the button. In case it is not active, first move your ship towards the branch office and then try again.\n"
+"Click on the button. If it is not active, move your ship towards the branch "
+"office and then try again.\n"
 "\n"
 "TASK: Open the trade dialogue."
 msgstr ""
-"Nachdem Ihr über ein Kontor verfügt, solltet Ihr einige Ressourcen aus dem "
-"Schiffsinventar in dessen Lager verfrachten.\n"
+"Nachdem Ihr nun über ein Kontor verfügt, solltet Ihr einige Waren vom Schiff "
+"in dessen Lager verfrachten.\n"
 "\n"
-"Um das zu tun, wählt das Schiff an und klickt auf den Tab mit Namen "
-"'Schiffsinventar', erkennbar am Holzkisten-Icon.\n"
+"Um dies zu tun, wählt das Schiff an und klickt auf den Tab mit Namen "
+"'Schiffsladung', erkennbar am Holzkisten-Icon.\n"
 "\n"
 "Hier findet Ihr eine Übersicht des Schiffsladeraums vor. Entladen wird mit "
 "dem Button 'Be-/Entladen'.\n"
@@ -148,15 +159,19 @@ msgstr ""
 "\n"
 "AUFGABE: Öffne den Handelsdialog."
 
-#: po/tutorial_en.py:11
+#: po/tutorial.py:11
+#, fuzzy
 msgid ""
-"The tab you will see is split into 'Ship' and 'Settlement' as trade partners.\n"
+"The tab you will see is split into 'Ship' and 'Settlement' as trade "
+"partners.\n"
 "\n"
-"To move goods from one stock into the other, simply click on them.\n"
+"To move goods from one stock to the other, simply click on them.\n"
 "\n"
-"Try clicking on the boards of your ship first and then try moving them back.\n"
+"Try clicking on the boards currently on your ship first and then try moving "
+"them back.\n"
 "\n"
-"You can customize the moved amount using the self-explanatory radio buttons in the middle.\n"
+"You can customize the quantity moved by using the self-explanatory radio "
+"buttons in the middle.\n"
 "\n"
 "Did you get used to the trade tab?\n"
 "You need some construction material in your settlement now!\n"
@@ -180,30 +195,35 @@ msgstr ""
 "AUFGABE: Entladet mindestens 10 Tonnen jeder Ressource auf dem Schiff in "
 "Euer Kontor."
 
-#: po/tutorial_en.py:12
+#: po/tutorial.py:12
 msgid "Unload at least 10 tons of each resource on your ship."
 msgstr ""
 "Entladet mindestens 10 Tonnen jeder Ressource auf dem Schiff in Euer Kontor."
 
-#: po/tutorial_en.py:13
+#: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
 msgstr "NEUE AUFGABE: HOLZFÄLLER BAUEN"
 
 # weil Bretter in diesem Stadium die einzigen Stützen sind... evtl bessere Formulierung möglich?
-#: po/tutorial_en.py:14
+#: po/tutorial.py:14
+#, fuzzy
 msgid ""
-"With your new construction material in the branch office, you can start to construct some basic buildings.\n"
+"With your new construction material in the branch office, you can start to "
+"construct some basic buildings.\n"
 "\n"
 "We will start with building a lumberjack.\n"
 "\n"
-"This is essential because boards in this stage are the only rods your sailors can afford to pin their tents under.\n"
+"This is essential because, at this stage, boards are the only poles your "
+"sailors can afford to hang their tents over.\n"
 "\n"
 "The fisherman needs some boards to build his vessel as well.\n"
 "\n"
-"In order to construct lumberjacks, open the build menu first by either clicking the big icon below the mini map or pressing B key.\n"
+"In order to construct lumberjacks; open the build menu by either clicking "
+"the big icon below the mini map or pressing B key.\n"
 "\n"
 "The build menu is sorted by increments.\n"
-"This means that only the basic buildings are available in the sailors level (which you are in at the moment)."
+"You are currently in the first increment (the Sailors level) so are offered "
+"only the basic buildings."
 msgstr ""
 "Mit dem neuen Baumaterial im Kontor könnt Ihr nun bereits einige elementare "
 "Gebäude errichten.\n"
@@ -222,17 +242,23 @@ msgstr ""
 "Das bedeutet, dass in der Stufe Seefahrer (mit der Ihr startet) nur "
 "grundlegende Gebäude verfügbar sind."
 
-#: po/tutorial_en.py:15
+#: po/tutorial.py:15
+#, fuzzy
 msgid ""
-"As your civilization advances, you also gain more and more complex buildings.\n"
+"As your civilization advances, you also gain more and more complex "
+"buildings.\n"
 "\n"
-"For now, select the lumberjack under 'Companies' and build it in an area with some trees around.\n"
+"For now, select the lumberjack under 'Companies' and build it in an area "
+"with some trees around.\n"
 "\n"
-"You can also plant trees later - but that costs money. Use what nature provided you with!\n"
+"You can also plant trees later - but that costs money. Use what nature "
+"provided you with!\n"
 "\n"
-"A company always needs road connection to a storage or branch office, else goods will remain there and not be collected.\n"
+"A company always needs a trail connection to a storage or branch office, "
+"otherwise goods will remain at the company and not be collected.\n"
 "\n"
-"This means that you have to build a trail connecting branch office and lumberjack.\n"
+"This means that you have to build a trail connecting your branch office (or "
+"storage) and lumberjack.\n"
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road.\n"
 "\n"
@@ -259,27 +285,31 @@ msgstr ""
 "\n"
 "Betrachtet, wie Eure ersten selbstproduzierten Bretter abgeholt werden."
 
-#: po/tutorial_en.py:16
+#: po/tutorial.py:16
 msgid "Build a lumberjack and connect it to the branch office using a trail."
 msgstr ""
 "Errichtet ein Holzfällerlager und verseht es mit einem Straßenanschluss zum "
 "Kontor."
 
-#: po/tutorial_en.py:17
+#: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
 msgstr "NEUE AUFGABE: NAHRUNGSVERSORGUNG"
 
-#: po/tutorial_en.py:18
+#: po/tutorial.py:18
+#, fuzzy
 msgid ""
-"You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.\n"
+"You will need to have some food-producing companies, too, because people in "
+"general (and especially sailors) are very hungry.\n"
 "\n"
-"Available companies in the first increment are Hunter and Fisher.\n"
+"Available companies in the first increment are the Hunter and Fisher.\n"
 "\n"
-"The Hunter, surprisingly, hunts animals in the forest, so he needs trees around.\n"
+"The Hunter, surprisingly, hunts animals in the forest, so he needs trees "
+"around.\n"
 "\n"
-"Note that you can place it close to the lumberjack's forest.\n"
+"Note that you can place your Hunter close to the lumberjack's forest.\n"
 "\n"
-"It can happen that the animals don't reproduce fast enough or simply hide well.\n"
+"It can happen that the animals don't reproduce fast enough or simply hide "
+"well.\n"
 "\n"
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
@@ -300,19 +330,23 @@ msgstr ""
 "Fazit: Der Jäger ist also nicht so verlässlich, wenn du eine kontinuierliche "
 "Versorgung benötigst."
 
-#: po/tutorial_en.py:19
+#: po/tutorial.py:19
+#, fuzzy
 msgid ""
-"The fisher needs a coastal building site like the branch office - and nothing more.\n"
+"The Fisher needs a coastal building site like the branch office and a fish "
+"school in range.\n"
 "\n"
 "He will build a small rowing vessel and catch some fish.\n"
 "\n"
-"This is a very constant supply at the cost of a slightly longer production time of one unit food.\n"
+"This is a very constant supply at the cost of a slightly longer production "
+"time per unit of food.\n"
 "\n"
-"A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.\n"
+"A small settlement like yours can use both companies, and you can better "
+"balance pros and cons if you see the direct comparison.\n"
 "\n"
 "TASK: Build a hunter and a fisher.\n"
 "\n"
-"And don't forget the roads to your branch office."
+"Don't forget to connect them to your branch office with trails!"
 msgstr ""
 "Der Fischer benötigt wie das Kontor einen Bauplatz am Ufer - und sonst "
 "nichts.\n"
@@ -329,26 +363,33 @@ msgstr ""
 "\n"
 "Und vergesst die Wege zum Kontor nicht!"
 
-#: po/tutorial_en.py:20
+#: po/tutorial.py:20
 msgid "Build a hunter and a fisher. Connect them to the branch office."
 msgstr "Errichtet einen Jäger und einen Fischer. Verbindet sie mit dem Kontor."
 
-#: po/tutorial_en.py:21
+#: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
 msgstr "NEUE AUFGABE: MARKTPLATZ"
 
 # FIXME: abgerissen <-> teared
-#: po/tutorial_en.py:22
+#: po/tutorial.py:22
+#, fuzzy
 msgid ""
 "Your residents need a main square where they can fetch their goods from.\n"
 "\n"
-"This means that they need a road connection from their home to the main square.\n"
+"This means that they need a trail connection from their home to the main "
+"square.\n"
 "\n"
-"All goods in your branch office are available at this 'market place', so your sailors do not need to walk to the fisher nor to the branch office.\n"
+"All goods in your branch office are available at this 'market place', so "
+"your residents do not need to walk to the fisher or even to the branch "
+"office.\n"
 "\n"
-"You should consider founding your actual house settlement in an area where you can easily expand it and build some roads, too.\n"
+"You should consider founding your actual house settlement in an area where "
+"you can easily expand it and build some trails, too.\n"
 "\n"
-"Normally we do not advise to place tents very close to your lumberjacks for example because they need trees which would be teared then.\n"
+"You should avoid placing tents too close to your lumberjacks for example "
+"because building tents will clear away the trees that your lumberjack needs "
+"to produce boards.\n"
 "\n"
 "TASK: Build a main square."
 msgstr ""
@@ -369,19 +410,23 @@ msgstr ""
 "\n"
 "AUFGABE: Errichtet einen Marktplatz."
 
-#: po/tutorial_en.py:23
+#: po/tutorial.py:23
+#, fuzzy
 msgid ""
-"Let's have a closer look at the main square afterwards.\n"
+"Now let's have a closer look at the main square.\n"
 "\n"
 "In the overview tab you can quickly adjust taxes.\n"
 "\n"
-"In the second tab 'Account' you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.\n"
+"In the second tab 'Account' you get a balance sheet of this island, "
+"featuring all costs you pay and all taxes you earn.\n"
 "\n"
-"The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.\n"
+"The items 'Sale' and 'Buy' refer to your trading balance and will be "
+"explained later on.\n"
 "\n"
-"If your balance is positive, you all in all make profit.\n"
+"If your balance is positive, you all-in-all make a profit.\n"
 "\n"
-"In the 'Settler' tab you can see how happy your inhabitants are and what resource most of them want to be supplied with."
+"In the 'Settler' tab you can see how happy your inhabitants are and what "
+"resource most of them want to be supplied with."
 msgstr ""
 "Lasst uns nun einen genaueren Blick auf den Marktplatz werfen.\n"
 "\n"
@@ -399,27 +444,28 @@ msgstr ""
 "Im 'Siedler'-Tab seht Ihr die Zufriedenheit Eurer Einwohner und auch, nach "
 "welchen Rohstoffen die meisten von ihnen gerade verlangen."
 
-#: po/tutorial_en.py:24
+#: po/tutorial.py:24
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
 "Errichtet einen Marktplatz. Wählt eine Gegend ohne viele Wirtschaftsgebäude."
 
-#: po/tutorial_en.py:25
+#: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
 msgstr "NEUE AUFGABE: WOHNGEBÄUDE"
 
 # FIXME: Sailors --> Seeleute/Einwohner/Bevölkerung?
-#: po/tutorial_en.py:26
+#: po/tutorial.py:26
+#, fuzzy
 msgid ""
-"Settlers want to have a roof over their heads, else they won't even think of living in your city. You need to provide tents!\n"
+"Settlers want to have a roof over their heads, else they won't even think of "
+"living in your city! You need to provide tents.\n"
 "\n"
-"Tents are the basic residential buildings.\n"
+"Tents are the basic residential buildings. Your inhabitants will want to "
+"upgrade it when they reach higher increments.\n"
 "\n"
-"Your inhabitants will want to upgrade it when they reach higher increments.\n"
-"\n"
-"Sailors basically may not look very useful since they will try to consume all goods you produce - but they at least pay taxes.\n"
-"\n"
-"And that's the only way you can make money for now.\n"
+"Settlers may not look very useful since they will try to consume all goods "
+"you produce - but they at least pay taxes, and that's the only way you can "
+"make money for now!\n"
 "\n"
 "TASK: Build a tent and connect it to the main square."
 msgstr ""
@@ -439,11 +485,12 @@ msgstr ""
 "\n"
 "AUFGABE: Errichtet ein Zelt und verbindet es mit dem Marktplatz."
 
-#: po/tutorial_en.py:27
+#: po/tutorial.py:27
 msgid "Build a tent and connect it to the main square."
 msgstr "Errichtet ein Zelt und verbindet es mit dem Marktplatz."
 
-#: po/tutorial_en.py:28
+#: po/tutorial.py:28
+#, fuzzy
 msgid ""
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
@@ -451,15 +498,19 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand.\n"
 "\n"
-"If their demands get fulfilled, happiness and thus your tax income increase.\n"
+"If their demands are fulfilled, happiness and thus your tax income "
+"increase.\n"
 "\n"
-"If not, happiness and income decrease and at some time your residents get really sour and simply turn their back on your village, leaving behind only a ruin.\n"
+"If not, happiness and income decrease. At some time your residents may get "
+"really sour and simply turn their back on your village, leaving behind a "
+"decaying ruin.\n"
 "\n"
-"Note that you can change the tax settings here, too.\n"
+"Note that you can also change the global tax settings here, too.\n"
 "\n"
 "TASK: Build at least three additional tents.\n"
 "\n"
-"TIP: Holding down SHIFT eases constructing multiple buildings of the same kind."
+"TIP: Holding down SHIFT eases constructing multiple buildings of the same "
+"kind."
 msgstr ""
 "Wir sollten uns nun den Übersichts-Tab eines Zelts ansehen.\n"
 "Es wird angezeigt:\n"
@@ -481,29 +532,38 @@ msgstr ""
 "TIPP: Mit gedrückter SHIFT-Taste wird das Bauen von mehreren Gebäuden des "
 "selben Typs erleichtert."
 
-#: po/tutorial_en.py:29
-msgid "Build at least three additional tents and connect them to the main square."
+#: po/tutorial.py:29
+msgid ""
+"Build at least three additional tents and connect them to the main square."
 msgstr ""
 "Errichtet mindestens drei zusätzliche Zelte und verbindet sie mit dem "
 "Marktplatz."
 
-#: po/tutorial_en.py:30
+#: po/tutorial.py:30
 msgid "NEW TASK: BUILD SIGNAL FIRE"
 msgstr "NEUE AUFGABE: LEUCHTFEUER BAUEN"
 
-#: po/tutorial_en.py:31
+#: po/tutorial.py:31
+#, fuzzy
 msgid ""
 "Can you see the ship passing your island from time to time?\n"
 "\n"
-"This is the ship of the Free Trader, one of the first settlers in this archipelago.\n"
+"This is the ship of the Free Trader, one of the first settlers in this "
+"archipelago.\n"
 "\n"
-"This trader will supply your settlement with necessary goods which you can't produce so far.\n"
+"This trader will supply your settlement with necessary goods which you can't "
+"produce yet.\n"
 "\n"
-"You also can sell surpluses of your production, but in general consuming them (build more tents) instead of selling to the Free Trader yields more profit.\n"
+"You can also sell surpluses of your production, but in general consuming "
+"them (by building more tents) instead of selling to the Free Trader yields "
+"more profit.\n"
 "\n"
-"Normally the ships just sail around and look for deals, but small settlements like yours first need some promotion, else you won't be found.\n"
+"Normally the ships just sail around and look for deals, but small "
+"settlements like yours first need some promotion, otherwise you won't be "
+"found.\n"
 "\n"
-"For this purpose, you can build a signal fire at the coast near your branch office to show ships the way to your settlement."
+"For this purpose, you can build a signal fire at the coast near your branch "
+"office to show ships the way to your settlement."
 msgstr ""
 "Habt Ihr das Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert?\n"
 "\n"
@@ -524,17 +584,23 @@ msgstr ""
 "Kontors errichten, um Schiffen den Weg zur Siedlung zu zeigen."
 
 # FIXME: slots
-#: po/tutorial_en.py:32
+#: po/tutorial.py:32
+#, fuzzy
 msgid ""
-"After this little guidance, the trader will step by from time to time and look into your branch office.\n"
+"After this little advertisment, the trader will stop by from time to time "
+"and look into your branch office.\n"
 "\n"
-"You can propose deals via the tab 'Buy/Sell' which at the moment is nearly unusable, but we have a redesign ticket set up to improve this. If you found a nice way of doing it, please share your thoughts! We need your help here!\n"
+"You can propose deals via the tab 'Buy/Sell'. (This feature is currently "
+"quite fiddly to use, but a re-design is in the pipeline. If you have found a "
+"nice way of doing it, please share your thoughts! We need your help here!)\n"
 "\n"
-"At increment sailors, you are equipped with three trading slots.\n"
+"At the 'sailors' increment, you are equipped with three trading slots.\n"
 "\n"
-"Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.\n"
+"Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
+"vice versa.\n"
 "\n"
-"If you click in the slot, you can choose the good you want to trade with. We will further explain this once you are ready to trade.\n"
+"If you click in the slot, you can choose the good you want to trade with. We "
+"will further explain this once you are ready to trade.\n"
 "\n"
 "TASK: Build a signal fire at the coast close to your branch office."
 msgstr ""
@@ -557,11 +623,11 @@ msgstr ""
 "\n"
 "AUFGABE: Errichtet ein Leuchtfeuer an der Küste in der Nähe des Kontors."
 
-#: po/tutorial_en.py:33
+#: po/tutorial.py:33
 msgid "Build a signal fire at the coast close to your branch office."
 msgstr "Errichtet ein Leuchtfeuer an der Küste in der Nähe des Kontors."
 
-#: po/tutorial_en.py:34
+#: po/tutorial.py:34
 msgid "NEW TASK: LEARN TO TRADE"
 msgstr "NEUE AUFGABE: HANDEL TREIBEN"
 
@@ -569,21 +635,22 @@ msgstr "NEUE AUFGABE: HANDEL TREIBEN"
 # PS: slider -> Schieber/Regler?
 # ~
 # Schieberegler, kurz Regler. In git sollte der Balken auch im Trade-Tab sichtbar sein. ~eoc
-#: po/tutorial_en.py:35
+#: po/tutorial.py:35
+#, fuzzy
 msgid ""
-"Fine! The Free Trader will now stop by at your branch office from time to time.\n"
+"Excellent! The Free Trader will now stop by at your branch office from time "
+"to time.\n"
 "\n"
 "Let's continue our tutorial on how to trade.\n"
 "\n"
-"After selecting particular goods, the green bar (if appearing) shows you how much you are having in stock of this good.\n"
+"After selecting a particular type of good, the green bar across the bottom "
+"of the slot (if visible) shows you how much you have in stock of this good.\n"
 "\n"
-"Dragging the slider on the right of each slot determines your 'exit value' which has a different meaning on 'Buy' and 'Sell'.\n"
-"\n"
-"Examples help to understand, so here we go:\n"
-"\n"
-"Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.\n"
-"\n"
-"If the free trader however only wants to sell 3 tons, you need to live with that and wait for him to return."
+"Dragging the slider on the right of each slot determines your 'target value' "
+"which has a different meaning on 'Buy' and 'Sell'. \n"
+"When buying, you will buy sufficient to hold your 'target value' in stock. \n"
+"When selling the 'target value' is the number which you hold in reserve to "
+"not sell"
 msgstr ""
 "Wunderbar! Der Freie Händler hält nun von Zeit zu Zeit an Eurem Kontor. "
 "Weiter geht es mit der Anleitung zum Handeln.\n"
@@ -607,22 +674,27 @@ msgstr ""
 # smart pricing? -> Preisregulierung?
 # Letzter Absatz abgeschnitten!
 # "Als Übung sollst du jetzt folgendes machen: \n" "\n" entfernt damit letzter Absatz nicht abgeschnitten wird
-#: po/tutorial_en.py:36
+#: po/tutorial.py:36
+#, fuzzy
 msgid ""
-"Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.\n"
+"For example: \n"
+"Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
+"cause you to buy 4 additional tons at most.\n"
+"Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
+"positioned at 13 will sell up to 5 tons.\n"
 "\n"
-"If the trader only buys two tons, there is nothing you can do about it. Besides being patient (-;\n"
+"If the free trader however only wants to buy or sell less than your settings "
+"would allow him, you need to live with that and wait for him to return.\n"
 "\n"
-"Unknown Horizons is featuring smart pricing, so the value of one unit can depend.\n"
-"It is NOT possible to change prices!\n"
+"Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
+"It is NOT possible to change prices manually!\n"
 "\n"
-"You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' items there.\n"
+"You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
+"'Buy' values there.\n"
 "\n"
-"As a practise, we'd now like you to… \n"
-"\n"
-"TASK: … buy as much tools as you need to have 30 tools in stock!\n"
-"\n"
-"If you still have some in your ship's inventory, this seems like a good point to unload them."
+"TASK: Buy as many tools as you need to have 30 tools in stock!\n"
+"If you still have some in your ship's inventory, this seems like a good "
+"point to unload them."
 msgstr ""
 "Der Verkauf funktioniert genauso. Ein Verkaufsposten, bei dem der "
 "Schieberegler auf 13 Tonnen gestellt ist, bewirkt bei einem Lagerstand von "
@@ -640,30 +712,35 @@ msgstr ""
 "Wenn Ihr immer noch Werkzeuge auf Eurem Schiff lagert, wäre nun eine "
 "günstige Gelegenheit zum Entladen."
 
-#: po/tutorial_en.py:37
+#: po/tutorial.py:37
 msgid "Reach an island stock of at least 30 tools."
 msgstr ""
 "Erreicht einen Lagerbestand von 30 oder mehr Werkzeugen auf Eurer Insel."
 
 # PAVILION -> Gebetszelt/Gebetshaus/Pfarrhaus
-#: po/tutorial_en.py:38
+#: po/tutorial.py:38
 msgid "NEW TASK: BUILD A PAVILION"
 msgstr "NEUE AUFGABE: PAVILLON BAUEN"
 
 # shelter from the sun -> Sonnenschutz
-#: po/tutorial_en.py:39
+#: po/tutorial.py:39
+#, fuzzy
 msgid ""
 "Those tools will be enough for the moment. Well done!\n"
 "\n"
 "You now provide housing, a main square and food to your inhabitants.\n"
 "\n"
-"Still there is one demand which we did not satisfy so far, you may check that in the maketplace or tent tab - your sailors want a basic building where they can pray.\n"
+"Still there is one demand which we have not satisfied so far, you may check "
+"that in the marketplace or tent tab - your sailors want a basic building "
+"where they can pray.\n"
 "\n"
-"The solution is a pavilion which the village parson quickly puts up as shelter from the sun.\n"
+"The solution is a pavilion which the village parson quickly puts up as "
+"shelter from the sun.\n"
 "\n"
-"Service buildings like this also need to be connected to the tents with a road, else your inhabitants feel unable to reach them.\n"
+"Service buildings like this also need to be connected to the tents with a "
+"trail, else your inhabitants feel unable to reach them.\n"
 "\n"
-"In later increments, upgraded versions of buildings may get available."
+"In later increments, upgraded versions of buildings may become available."
 msgstr ""
 "Diese Werkzeuge sollten für den Moment ausreichen. Gut gemacht!\n"
 "\n"
@@ -684,17 +761,25 @@ msgstr ""
 "befriedigt."
 
 # units meint hier einwohner
-#: po/tutorial_en.py:40
+#: po/tutorial.py:40
+#, fuzzy
 msgid ""
-"In that case the 'small' version is not needed anymore since the 'big' one will also provide what your inhabitants are looking for in early increments.\n"
+"In that case the 'small' version is not needed anymore since the 'big' one "
+"will also provide what your inhabitants are looking for in early "
+"increments.\n"
 "\n"
-"Take care when planning your city because most of those advanced buildings are bigger than the basic ones.\n"
+"Take care when planning your city because most of those advanced buildings "
+"are bigger than the basic ones.\n"
 "\n"
-"Note that faith is treated like a physical resource, so units need to refresh there after some time.\n"
+"Note that faith is treated like a physical resource, so units need to "
+"refresh there after some time.\n"
 "\n"
-"It especially is NOT enough that the building is in a certain range.\n"
+"Important:\n"
+"It is NOT enough that the building is merely within a certain range of the "
+"tents.\n"
 "\n"
-"TASK: Build a pavilion with connection to the tents in order to fulfill your sailors' demand for faith."
+"TASK: Build a pavilion with a trail to the tents in order to fulfill your "
+"sailors' demand for faith."
 msgstr ""
 "Vorsicht bei der Stadtplanung! Die meisten dieser verbesserten Gebäude "
 "benötigen mehr Platz als die Grundversion. Dafür ist ihr Einzugsgebiet auch "
@@ -710,25 +795,33 @@ msgstr ""
 "AUFGABE: Baut einen Pavillon mit einer Verbindung zu den Zelten, um Euren "
 "Einwohnern den Zugang zum Glauben zu ermöglichen."
 
-#: po/tutorial_en.py:41
+#: po/tutorial.py:41
 msgid "Build a pavilion with connection to the tents."
 msgstr "Errichtet einen Pavillon mit einer Verbindung zu Euren Zelten."
 
-#: po/tutorial_en.py:42
+#: po/tutorial.py:42
 msgid "NEW TASK: NEXT INCREMENT"
 msgstr "NEUE AUFGABE: NÄCHSTE STUFE"
 
-#: po/tutorial_en.py:43
+#: po/tutorial.py:43
+#, fuzzy
 msgid ""
-"All demands are fulfilled now if your inhabitants can regularly visit main square and pavilion as well as your food supply is sufficient.\n"
+"All demands are fulfilled now if your inhabitants can regularly visit the "
+"main square & pavilion and your food supply is adequate.\n"
 "\n"
-"If the sailors are happy enough, they want to advance to the next increment called Pioneers.\n"
+"If the sailors are happy enough, they want to advance to the next increment "
+"called Pioneers.\n"
 "\n"
-"To make them happy, there is nothing else for you but setting taxes to level Low since you fulfilled all demands of your inhabitants.\n"
+"To make them happy, there is nothing else for you to do but setting taxes to "
+"a lower level since you have fulfilled all the demands of your inhabitants.\n"
 "\n"
-"You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.\n"
+"You should try to not always run on low taxes since this will probably lead "
+"to bankruptcy sooner or later. For a period of time and if you know what you "
+"are doing, it is fine though.\n"
 "\n"
-"After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent."
+"After some time, the first unit should walk to the main square and have a "
+"look for new construction material there to build a log house. This house "
+"will replace the old tent."
 msgstr ""
 "Alle Anforderungen sind jetzt erfüllt, wenn Eure Einwohner regelmäßig "
 "Marktplatz und Pavillon aufsuchen können und die Nahrungsversorgung "
@@ -748,16 +841,23 @@ msgstr ""
 "ausreichend Baumaterial suchen, um ein Blockhaus zu errichten. Dieses Haus "
 "wird das alte Zelt ersetzen."
 
-#: po/tutorial_en.py:44
+#: po/tutorial.py:44
+#, fuzzy
 msgid ""
-"Such residential upgrades are the only ones which cost resources and can not be restricted by you.\n"
+"Such residential upgrades are the only ones which cost resources and can not "
+"be restricted by you.\n"
 "\n"
-"There are manual upgrades to some buildings where you use resources to construct a better version on the same spot, and there are upgrades without costs, as you will see with the lumberjack for example.\n"
-"Only the graphics update in this case.\n"
+"There are manual upgrades to some buildings where you use resources to "
+"construct a better version on the same spot, and there are upgrades without "
+"costs for example as you will see with the lumberjack (In this case, only "
+"the graphics change).\n"
 "\n"
-"Upgraded housings accomodate more inhabitants and pioneers pay more taxes than sailors, too.\n"
+"Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
+"than sailors, too.\n"
 "\n"
-"As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.\n"
+"As you may have figured out already, the downside is that pioneers demand "
+"additional goods which sailors do not need - so you will need to spend this "
+"extra money to make them happy as well.\n"
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
@@ -779,29 +879,34 @@ msgstr ""
 "AUFGABE: Setzt die Steuern auf Niedrig (linkes Ende) und wartet darauf, dass "
 "die Siedler ihre Wohnungen verbessern."
 
-#: po/tutorial_en.py:45
-msgid "Set the tax level to Low (left end) and wait for your sailors to upgrade."
+#: po/tutorial.py:45
+msgid ""
+"Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
 "Setzt die Stufe der Steuern auf Niedrig (linke Seite) und wartet, bis Eure "
 "Siedler aufsteigen."
 
-#: po/tutorial_en.py:46
+#: po/tutorial.py:46
 msgid "NEW TASK: BUILD A FARM"
 msgstr "NEUE AUFGABE: FARM BAUEN"
 
-#: po/tutorial_en.py:47
+#: po/tutorial.py:47
+#, fuzzy
 msgid ""
 "Congratulations! Some of your inhabitants have reached increment II!\n"
 "\n"
-"Now you have access to some new buildings, have a look at the Build menu again.\n"
+"Now you have access to new buildings, take a look at the Build menu again.\n"
 "\n"
 "A shiny new tab appeared there.\n"
 "\n"
-"Pioneers will demand cloth, so you need to set up a production line for cloth starting with sheep wool (which is, amongst others, produced at the farm).\n"
+"Pioneers will demand cloth, so you need to set up a production line for "
+"cloth starting with lambs wool (which is one of the goods produced at the "
+"farm).\n"
 "\n"
-"The farm is a very special production building since it does not only produce one, but very many (and different) goods if you like.\n"
+"The farm is a very special production building since it can produce not only "
+"one, but very many (and different) goods if you choose.\n"
 "\n"
-"The output of fams depends on what kind of fields you build around it."
+"The output of farms depends on what kind of fields you build around it."
 msgstr ""
 "Gratulation! Einige Einwohner haben soeben Stufe II erreicht.\n"
 "\n"
@@ -820,17 +925,24 @@ msgstr ""
 "Umgebung errichtet werden."
 
 # Farmen,..., müssen nicht zwangsläufig mit einen Kontor oder Lagerzelt verbunden werden? --> Das widerspricht sich mit dem Rest des Tutorials z.B. Holzfällerlager
-#: po/tutorial_en.py:48
+#: po/tutorial.py:48
+#, fuzzy
 msgid ""
 "We will have a closer look at this later.\n"
 "\n"
-"Farms, like all companies producing raw materials, not necessarily need to be connected to a storage or branch office.\n"
+"Farms, like all companies producing raw materials, do not necessarily need "
+"to be connected to storage or a Branch Office.\n"
 "\n"
-"As long as units of the final production company can reach the farm, everything's fine.\n"
+"As long as units of the final production company can reach the farm, and "
+"collectors from the branch office or storage tent can reach the final "
+"company everything's fine.\n"
 "\n"
-"If you however plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.\n"
+"If you, however, plan to do some processing on different parts of the island "
+"(which can make sense) or even on different islands, you will need a "
+"connection to collectors.\n"
 "\n"
-"Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.\n"
+"Try to build the farm not too close to the coast or your existing buildings "
+"since it will need some space around it to work well.\n"
 "\n"
 "TASK: Build a farm."
 msgstr ""
@@ -850,29 +962,33 @@ msgstr ""
 "\n"
 "AUFGABE: Errichtet eine Farm."
 
-#: po/tutorial_en.py:49
+#: po/tutorial.py:49
 msgid "Build a farm and keep some empty space around it."
 msgstr "Errichtet eine Farm und lasst ausreichend Platz in der Umbegung frei."
 
-#: po/tutorial_en.py:50
+#: po/tutorial.py:50
 msgid "NEW TASK: BUILD FIELDS"
 msgstr "NEUE AUFGABE: FELDER"
 
 # confectionery -> Zuckerbäckerei oder Süßigkeiten?
-#: po/tutorial_en.py:51
+#: po/tutorial.py:51
+#, fuzzy
 msgid ""
 "The farm itself is not going to produce anything without some fields.\n"
 "\n"
 "You currently have the choice between pastures, potato and sugar fields.\n"
 "\n"
 "Let's have a short overview:\n"
-"* Pasture: Sheep live here, producing lamb wool\n"
-"* Potato field: Grows potatoes which are currently treated as food\n"
-"* Sugar field: Grows sugar which is used to burn alcohol and (later) produce confectionery\n"
+"* Pasture: Sheep live here, producing lamb wool.\n"
+"* Potato field: Grows potatoes which are currently treated as food.\n"
+"* Sugar field: Grows sugar which is used to distill liquor and (later) "
+"produce confectionery.\n"
 "\n"
-"We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.\n"
+"We now only need pastures, but in case your food supply chain is too small "
+"(maybe many residential buildings) you can also produce some potatoes.\n"
 "\n"
-"Note that for potatoes you will need a road connection to the farm - not to the field!"
+"Note that for potatoes you will need a road connection to the farm (not to "
+"the field!) as it will be the only company to work on the goods."
 msgstr ""
 "Die Farm selbst kann ohne Felder nichts produzieren. Momentan habt Ihr die "
 "Wahl zwischen drei Feldern.\n"
@@ -889,17 +1005,24 @@ msgstr ""
 "Beachtet, dass für die Abholung der Kartoffeln eine Straßenverbindung zu der "
 "Farm benötigt wird - nicht zu den Feldern."
 
-#: po/tutorial_en.py:52
+#: po/tutorial.py:52
+#, fuzzy
 msgid ""
 "Make sure that all fields you build are in the area covered by the farm.\n"
 "\n"
-"You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.\n"
+"You can have combined production - one pasture will not lead to 100 percent "
+"efficiency of the farm - but you need to check how many fields one farm can "
+"serve.\n"
 "\n"
-"Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, …) and because of that, the farm may be unable to serve all of the fields you built for it in time.\n"
+"Different classes of fields require the farm units to spend more or less "
+"time there (to seed, harvest, herd, etc…) and because of that, the farm may "
+"be unable to serve all of the fields you built for it in time.\n"
 "\n"
-"For now, you do not need to care about farm unit's issues a lot since you haven't built any fields. Let's change that!\n"
+"For now, you do not need to care about these issues a lot since you haven't "
+"built any fields. Let's change that!\n"
 "\n"
-"TASK: Build at least one pasture in the farm's range and add potato fields if you like."
+"TASK: Build at least one pasture in the farm's range and add potato fields "
+"if you like."
 msgstr ""
 "Geht sicher, dass alle Felder im Einzugsbereich der Farm liegen.\n"
 "\n"
@@ -917,30 +1040,37 @@ msgstr ""
 "AUFGABE: Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt "
 "Kartoffelfelder hinzu, wenn ihr wollt. "
 
-#: po/tutorial_en.py:53
+#: po/tutorial.py:53
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
 "Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt "
 "Kartoffelfelder hinzu, wenn Ihr wollt. "
 
-#: po/tutorial_en.py:54
+#: po/tutorial.py:54
 msgid "NEW TASK: BUILD STORAGE"
 msgstr "NEUE AUFGABE: LAGER"
 
 # Letzter Absatz teilweise abgeschnitten.
 # zwei "\n" entfernt, letzter Absatz hoffentlich nicht mehr abgeschnitten.
-#: po/tutorial_en.py:55
+#: po/tutorial.py:55
+#, fuzzy
 msgid ""
 "Did you watch your lumberjack recently?\n"
 "\n"
-"Since your branch office has no unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.\n"
-"So if no sailor recently wanted to upgrade his tent, you probably have a lot of boards and in that case, the lumberjack may idle.\n"
-"We can improve this situation with two different approaches, and below we will have a look at both of them.\n"
+"Since your branch office does not have unlimited space to store goods, "
+"collectors will stop fetching goods from companies when stock is full.\n"
+"So if no sailor recently wanted to upgrade his tent, you probably have a lot "
+"of boards and in that case, the lumberjack may idle.\n"
+"We can improve this situation with two different approaches, and below we "
+"will have a look at both of them.\n"
 "\n"
 "All companies offer the possibility of doing no work at all.\n"
-"This may sound strange, but try to click on the gear wheel you see in, for example, a lumberjack's overview.\n"
+"This may sound strange, but try to click on the gear wheel you see in, for "
+"example, a lumberjack's overview.\n"
 "\n"
-"If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't always be zero, but still lower than if you keep the company producing."
+"If this 'break' mode is enabled (we call it 'Decommissioning'), the running "
+"costs you pay for the building will decrease. They won't be zero, but still "
+"lower than if you keep the company producing."
 msgstr ""
 "Habt Ihr in letzter Zeit Euer Holzfällerlager betrachtet?\n"
 "\n"
@@ -959,17 +1089,23 @@ msgstr ""
 "für dieses Gebäude sinken. Sie werden vielleicht nicht immer auf null "
 "sinken, aber sie sind dennoch geringer als wenn der Betrieb weiterarbeitete."
 
-#: po/tutorial_en.py:56
+#: po/tutorial.py:56
+#, fuzzy
 msgid ""
-"This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.\n"
+"This means that you can save money when you temporarily do not need a "
+"company and do not want to tear it down, either.\n"
 "\n"
-"Another solution is to build the last increment-I-building we did not mention so far: the storage tent.\n"
+"Another solution is to build the last increment-I building which has not "
+"been mentioned so far: the storage tent.\n"
 "\n"
-"This building has two purposes. It\n"
-"* offers more storage for your goods and \n"
-"* sends own collectorsto fetch goods, just like the branch office does.\n"
+"This building has two purposes. It:\n"
+"* Offers more storage for your goods, and \n"
+"* sends its own collectors to fetch goods, just like the branch office "
+"does.\n"
 "\n"
-"Note that companies can also be connected to a storage in order to get their products collected, and if the branch office is totally busy with collector tasks, you can place a storage tent to help out there.\n"
+"Note that companies can also be connected to a storage in order to get their "
+"products collected, and if the branch office is overwhelmed with collector "
+"tasks, you can place a storage tent to help out there.\n"
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
@@ -991,25 +1127,29 @@ msgstr ""
 "AUFGABE: Errichtet ein Lager, möglichst dort, wo die Abholsituation "
 "verbessert werden soll."
 
-#: po/tutorial_en.py:57
+#: po/tutorial.py:57
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr "Errichtet ein Lager (im Tab 'Stufe I') an einem sinnvollen Bauplatz."
 
-#: po/tutorial_en.py:58
+#: po/tutorial.py:58
 msgid "NEW TASK: BUILD A WEAVER"
 msgstr "NEUE AUFGABE: WEBER"
 
-#: po/tutorial_en.py:59
+#: po/tutorial.py:59
+#, fuzzy
 msgid ""
-"Now the wool production is set up, you still need a weaver to produce cloth out of this wool.\n"
+"Now the wool production is set up, you still need a weaver to produce cloth "
+"out of this wool.\n"
 "\n"
-"There are two spots where you can build it - either close to the farm or close to a storage tent respectively the branch office.\n"
+"There are two spots where you can build it - either close to the farm or "
+"close to a Storage Tent (or the Branch Office).\n"
 "\n"
-"In both cases you should ensure the connection to a road as well.\n"
+"In both cases you should ensure the connection to a trail as well.\n"
 "\n"
-"You can place the weaver close to the farm and tear down any road to the farm to see that it will still fetch the wool and produce.\n"
+"You can place the weaver close to the farm and tear down any trail to the "
+"farm to see that it will still fetch the wool and produce.\n"
 "\n"
-"TASK: Build a weaver which has a chance to get wool."
+"TASK: Build a weaver positioned so it can get wool."
 msgstr ""
 "Ihr benötigt immer noch einen Weber, um aus der nun produzierten Wolle Stoff "
 "herzustellen.\n"
@@ -1024,29 +1164,34 @@ msgstr ""
 "\n"
 "AUFGABE: Errichtet einen Weber, der Wolle abholen kann."
 
-#: po/tutorial_en.py:60
+#: po/tutorial.py:60
 msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr "Errichtet einen Weber, der Wolle von einer Farm abholen kann."
 
-#: po/tutorial_en.py:61
-msgid "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."
+#: po/tutorial.py:61
+msgid ""
+"House a total of 50 or more inhabitants in your city to complete the "
+"tutorial. You need a positive balance."
 msgstr ""
 "Beherbergt insgesamt 50 oder mehr Einwohner in Eurer Stadt, um dieses "
 "Tutorial zu beenden.\n"
 "Ihr benötigt außerdem eine positive Bilanz."
 
-#: po/tutorial_en.py:62
+#: po/tutorial.py:62
 msgid "NEW TASK: COMPLETE TUTORIAL"
 msgstr "NEUE AUFGABE: ABSCHLUSS"
 
 # HELPME: Kosumenten/Bewohnern? --> consumers
-#: po/tutorial_en.py:63
+#: po/tutorial.py:63
 msgid ""
-"Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.\n"
+"Try to house a total of 50 or more inhabitants in your city by providing "
+"more residential buildings.\n"
 "\n"
-"Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!\n"
+"Once you are able to keep an economy running which can satisfy this amount "
+"of consumers, you are ready to discover new Unknown Horizons!\n"
 "\n"
-"TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial."
+"TASK: Reach a total number of 50 inhabitants and a positive balance to "
+"complete this tutorial."
 msgstr ""
 "Versucht, in Eurer Stadt insgesamt 50 oder mehr Einwohner zu beherbergen, "
 "indem Ihr mehr Wohngebäude bereitstellt.\n"
@@ -1059,15 +1204,16 @@ msgstr ""
 "AUFGABE: Erreicht insgesamt 50 Einwohner und eine positive Bilanz, um dieses "
 "Tutorial abzuschließen."
 
-#: po/tutorial_en.py:64
+#: po/tutorial.py:64
 msgid "NO TASKS LEFT"
 msgstr "KEINE AUFGABEN ÜBRIG"
 
-#: po/tutorial_en.py:65
+#: po/tutorial.py:65
 msgid ""
 "There is nothing left to do now.\n"
 "\n"
-"If you have any suggestions on what we could or should improve, add or leave out:\n"
+"If you have any suggestions on what we could or should improve, add or leave "
+"out:\n"
 "\n"
 "www.unknown-horizons.org\n"
 "\n"
@@ -1077,7 +1223,8 @@ msgid ""
 "\n"
 "Our forums are open to you as well!\n"
 "\n"
-"The best results until now were achieved by joining our IRC channel, so you could try that out first (-;"
+"The best results until now were achieved by joining our IRC channel, so you "
+"could try that out first (-;"
 msgstr ""
 "Es gibt jetzt nichts mehr zu tun.\n"
 "\n"
@@ -1100,11 +1247,11 @@ msgstr ""
 "um Englisch. In dringenden Fällen gibt es immer noch den deutschen Teil im "
 "Forum."
 
-#: po/tutorial_en.py:66
+#: po/tutorial.py:66
 msgid "Thanks!"
 msgstr "Vielen Dank!"
 
-#: po/tutorial_en.py:67
+#: po/tutorial.py:67
 msgid ""
 "\n"
 "\n"
@@ -1129,8 +1276,10 @@ msgstr ""
 "\n"
 "Das UH-Team"
 
-#: po/tutorial_en.py:68
-msgid "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"
+#: po/tutorial.py:68
+msgid ""
+"Congratulations! You have reached the end of this tutorial and are ready to "
+"meet new challenges!"
 msgstr ""
 "Glückwunsch! Ihr habt das Ende dieser Einführung erreicht und seid bereit, "
 "Euch neuen Herausforderungen zu stellen!"
