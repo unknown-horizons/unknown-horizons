@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-06 08:40+0200\n"
+"PO-Revision-Date: 2011-05-06 08:42+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1375,7 +1375,7 @@ msgstr "charger/décharger"
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "moved"
-msgstr ""
+msgstr "déplacé / déménagé"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -1402,7 +1402,7 @@ msgstr "rouge"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "return"
-msgstr ""
+msgstr "retour / retourner"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1411,7 +1411,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "run"
-msgstr ""
+msgstr "rouler / exploiter /  travailler"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1420,7 +1420,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "service"
-msgstr ""
+msgstr "service"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1447,7 +1447,7 @@ msgstr "SHIFT"
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr "inventaire du navire"
+msgstr "inventaire/cargaison du navire"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1456,7 +1456,7 @@ msgstr "inventaire du navire"
 #: po/tutorial.py
 #: run_uh.py
 msgid "starting"
-msgstr ""
+msgstr "lance / commence / débute"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1465,7 +1465,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
-msgstr "champ de canne"
+msgstr "champ de canne à sucre"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1483,7 +1483,7 @@ msgstr "partenaire commercial"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr "rendements"
+msgstr "rends / les rendements / produit / les produits"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (8)
