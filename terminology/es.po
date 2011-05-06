@@ -224,6 +224,16 @@ msgstr ""
 msgid "increment"
 msgstr ""
 
+#: po/tutorial.py
+#: horizons/gui/
+msgid "minimap"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/
+msgid "running costs"
+msgstr ""
+
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
 # (poterminology) uh/unknownhorizons.pot (8)
@@ -563,8 +573,18 @@ msgstr ""
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#: sqlite/Building
 msgid "signal"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: sqlite/Building
+msgid "signal fire"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "slider"
 msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
@@ -1175,15 +1195,6 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "weaver"
-msgstr ""
-
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "buying"
 msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (1)

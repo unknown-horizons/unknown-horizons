@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-05 13:13+0200\n"
+"PO-Revision-Date: 2011-05-06 11:57+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1088,7 +1088,7 @@ msgstr "Bilanz:"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Buying"
-msgstr "Handel"
+msgstr "Einkauf"
 
 #: horizons/i18n/guitranslations.py:272
 msgid "Expenses:"
@@ -1100,7 +1100,7 @@ msgstr "Einnahmen:"
 
 #: horizons/i18n/guitranslations.py:276
 msgid "Sale"
-msgstr "Handel"
+msgstr "Verkauf"
 
 #: horizons/i18n/guitranslations.py:277
 msgid "Taxes"
