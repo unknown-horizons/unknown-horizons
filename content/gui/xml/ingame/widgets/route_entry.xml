@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<Container size="200,50">
-	<Label name="bo_name" position="0,0" text=""/>
-	<TooltipButton name="delete_bo" position="160,0" border_size="0"
+<Container size="350,50">
+	<Label name="bo_name" position="0,15" text=""/>
+	<TooltipButton name="delete_bo" position="280,7" border_size="0"
 		up_image="content/gui/images/buttons/delete.png"
 		down_image="content/gui/images/buttons/delete.png"
 		hover_image="content/gui/images/buttons/delete_h.png"
