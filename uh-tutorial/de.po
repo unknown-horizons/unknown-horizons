@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-06 12:22+0200\n"
+"PO-Revision-Date: 2011-05-06 12:23+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -782,7 +782,6 @@ msgid "NEW TASK: NEXT INCREMENT"
 msgstr "NEUE AUFGABE: NÄCHSTE STUFE"
 
 #: po/tutorial.py:43
-#, fuzzy
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "main square & pavilion and your food supply is adequate.\n"
@@ -947,7 +946,6 @@ msgstr "NEUE AUFGABE: FELDER"
 
 # confectionery -> Zuckerbäckerei oder Süßigkeiten?
 #: po/tutorial.py:51
-#, fuzzy
 msgid ""
 "The farm itself is not going to produce anything without some fields.\n"
 "\n"
