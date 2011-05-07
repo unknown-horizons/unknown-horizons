@@ -99,8 +99,14 @@ class RouteConfig(object):
 			button.up_image = self.buy_button_path
 			button.hover_image = self.buy_button_path
 			slot.action = "buy"
+	
+	def slider_adjust(self, slot):
+		slider = slot.findChild(name="slider")
+		amount = slot.findChild(name="amount")
+		amount.text = unicode(int(slider.getValue())) + "t"
+		slot.adaptLayout()
 
-	def add_resource(self, slot, res_id, icon):
+	def add_resource(self, slot, res_id, icon, value=0):
 		button = slot.findChild(name="button")
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
 
@@ -108,6 +114,17 @@ class RouteConfig(object):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
 		self._gui.findChild(name="select_res_label").text = unicode("")
+		
+		slider = slot.findChild(name="slider")
+		if value < 0:
+			value = -value
+			self.toggle_load_unload(slot)
+
+		slider.setValue(float(value))
+		if res_id != 0:
+			slot.findChild(name="amount").text = unicode(value) + "t"
+			slot.adaptLayout()
+			slider.capture(Callback(self.slider_adjust, slot))
 		
 	def show_resource_menu(self, slot):
 		if self.resource_menu_shown:
@@ -171,14 +188,24 @@ class RouteConfig(object):
 			entry.addChild(slot)
 			self.slots[entry][num] = slot
 
-	def add_gui_entry(self, branch_office):
+	def add_gui_entry(self, branch_office, resource_list = {}):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_xml_translated("route_entry.xml")
 
 		label = entry.findChild(name="bo_name")
 		label.text = unicode(branch_office.settlement.name)
 		
-		self.add_trade_slots(entry, 3)
+		self.add_trade_slots(entry, self.slots_per_entry)
+		
+		index = 1
+		for res_id in resource_list:
+			if index > self.slots_per_entry:
+				break
+			icon = horizons.main.db.get_res_icon(res_id)[0]
+			self.add_resource(self.slots[entry][index - 1],\
+			                  res_id, icon, \
+			                  resource_list[res_id])
+			index += 1
 
 		entry.mapEvents({
 		  'delete_bo/mouseClicked' : Callback(self.remove_entry, entry)
@@ -216,11 +243,12 @@ class RouteConfig(object):
 
 		self.widgets=[]
 		self.slots={}
+		self.slots_per_entry = 3
 
 		#don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
 		for entry in self.instance.route.waypoints:
-			self.add_gui_entry(entry['branch_office'])
+			self.add_gui_entry(entry['branch_office'], entry['resource_list'])
 		# we want escape key to close the widget, what needs to be fixed here?
 		#self._gui.on_escape = self.hide
 		if self.instance.route.enabled:
