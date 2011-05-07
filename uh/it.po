@@ -905,7 +905,7 @@ msgstr "Aggiorna la lista di partite attive"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Intervalo di autosave in minuti"
 
 #: horizons/i18n/guitranslations.py:211
 #, fuzzy
@@ -1810,9 +1810,6 @@ msgstr "marinaio"
 #: sqlite/SettlerLevel
 msgid "settler"
 msgstr "colone"
-
-#~ msgid "Autosave interval:"
-#~ msgstr "Intervalo de autosave:"
 
 #~ msgid ""
 #~ "Yeah, you made it...\n"
