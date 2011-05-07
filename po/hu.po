@@ -2,42 +2,41 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-04-03 21:59+0200\n"
-"Last-Translator: Tobias <>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: nb\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.8.1\n"
 
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Unknown Horizons versjon %s"
+msgstr ""
 
 #: horizons/engine.py:54
-#, fuzzy
 msgid "Restart required"
-msgstr "Omstart kreves"
+msgstr ""
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Noen forandringer krever en omstart av Unknown Horizons."
+msgstr ""
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr "System standard"
+msgstr ""
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr "Advarsel"
+msgstr ""
 
 #: horizons/engine.py:129
 msgid ""
@@ -49,50 +48,48 @@ msgstr ""
 #: horizons/engine.py:193
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Ønsket språk %(lang) i %(place) kunne ikke lastes"
+msgstr ""
 
 #: horizons/gui/gui.py:121 horizons/spsession.py:97
 msgid "Error"
-msgstr "Feil"
+msgstr ""
 
-# 75%
 #: horizons/gui/gui.py:121
-#, fuzzy
 msgid "Failed to save."
-msgstr "Kunne ikke hurtiglagre."
+msgstr ""
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Er du sikker på du vil avslutte Unknown Horizons?"
+msgstr ""
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr "Avslutt spill"
+msgstr ""
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr "Er du sikker på du vil avbryte denne omgangen?"
+msgstr ""
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr "Avslutt omgang"
+msgstr ""
 
 #: horizons/gui/gui.py:196
 msgid "No saved games"
-msgstr "Ingen lagrede spill"
+msgstr ""
 
 #: horizons/gui/gui.py:196
 msgid "There are no saved games to load"
-msgstr "Det finnes ingen lagrede spill å åpne"
+msgstr ""
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:134
 #: horizons/i18n/guitranslations.py:174
 msgid "Load game"
-msgstr "Åpne spill"
+msgstr ""
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:136
 msgid "Save game"
-msgstr "Lagre spill"
+msgstr ""
 
 #. savegamename already exists
 #: horizons/gui/gui.py:251
@@ -101,30 +98,28 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
-"Et lagret spill med navnet \"%s\" finnes allerede.\n"
-"Overskrive?"
 
 #: horizons/gui/gui.py:252
 msgid "Confirmation for overwriting"
-msgstr "Godkjenning overskriving"
+msgstr ""
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
-msgstr "Lagringsdato ukjent\n"
+msgstr ""
 
 #: horizons/gui/gui.py:371
 #, python-format
 msgid "Saved at %s\n"
-msgstr "Lagret i %s\n"
+msgstr ""
 
 #: horizons/gui/gui.py:372
 msgid "%H:%M, %A, %B %d"
-msgstr "%H:%M, %A, %B %d"
+msgstr ""
 
 #: horizons/gui/gui.py:383
 #, python-format
 msgid "Savegame ver. %d"
-msgstr "Lagret spill ver. %d"
+msgstr ""
 
 #: horizons/gui/gui.py:385
 #, python-format
@@ -132,46 +127,43 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
-"ADVARSEL: Inkompatibel ver. %(ver)d!\n"
-"Trenger ver. %(need)d!"
 
 #: horizons/gui/gui.py:388
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
-msgstr "Inkompatibel versjon\n"
+msgstr ""
 
 #: horizons/gui/gui.py:411
 msgid "No file selected"
-msgstr "Ingen fil er valgt"
+msgstr ""
 
 #: horizons/gui/gui.py:411
 msgid "You need to select a savegame to delete"
-msgstr "Du må velge et lagret spill før du sletter"
+msgstr ""
 
 #: horizons/gui/gui.py:414
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr "Vil du virkelig slette det lagrede spillet \"%s\"?"
+msgstr ""
 
 #: horizons/gui/gui.py:416
 msgid "Confirm deletion"
-msgstr "Godkjenn sletting"
+msgstr ""
 
 #: horizons/gui/gui.py:421 horizons/main.py:198
 msgid "Error!"
-msgstr "Feil!"
+msgstr ""
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
-msgstr "Klarte ikke å slette det lagrede spillet!"
+msgstr ""
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
-msgstr "Trykk P for og fortsette eller klikk under!"
+msgstr ""
 
 #: horizons/gui/ingamegui.py:442
 msgid "Game paused"
-msgstr "Spill stoppet"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -183,11 +175,11 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:95
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Network Error"
-msgstr "Nettverksfeil"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
-msgstr "Noe gikk galt med nettverket: "
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
@@ -195,15 +187,15 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
-msgstr "Kart: "
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:141
 msgid "Players: "
-msgstr "Spillere: "
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Creator: "
-msgstr "Skaper: "
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:161
 #, python-format
@@ -220,49 +212,45 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr "Vanskelighetsgrad: "
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr "Forfatter: "
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr "Beskrivelse: "
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
-msgstr "Ugyldig spillernavn"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "You entered an invalid playername"
-msgstr "Du skrev et ugyldig spillernavn"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:137
 msgid "Invalid scenario file"
-msgstr "Ugyldig fil"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:138
 msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
-"Den valgte filen er ikke en gyldig.\n"
-"Feilmelding: "
 
 #: horizons/gui/modules/singleplayermenu.py:139
 msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
-"\n"
-"Vennligst rapporter dette til forfatteren."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:115
 #: horizons/i18n/guitranslations.py:82
 msgid "Build"
-msgstr "Bygg"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
@@ -270,14 +258,11 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
-msgstr "Manglende ressurser:"
+msgstr ""
 
-# 76%
-# 100%
 #: horizons/gui/tabs/boatbuildertab.py:170
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Fiskebåt"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
@@ -297,64 +282,56 @@ msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr "Øk"
+msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:325
 msgid "Trade"
-msgstr "Handel"
+msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:279
 #: horizons/i18n/guitranslations.py:330
 msgid "Inventory"
-msgstr "Innhold"
+msgstr ""
 
 #: horizons/gui/tabs/inventorytab.py:64
-#, fuzzy
 msgid "Ship inventory"
-msgstr "Innhold i skip"
+msgstr ""
 
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:273
 msgid "Account"
-msgstr "Konto"
+msgstr ""
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:246 horizons/i18n/guitranslations.py:289
 msgid "Settler overview"
-msgstr "Bygnings oversikt"
+msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:300
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:292
 #: horizons/i18n/guitranslations.py:305 horizons/i18n/guitranslations.py:321
 msgid "Overview"
-msgstr "Oversikt"
+msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:96
-#, fuzzy
 msgid "Branch office overview"
 msgstr ""
-"Avdeling \n"
-"Oversikt"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
-#, fuzzy
 msgid "Ship overview"
-msgstr "Skipsoversikt"
+msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:156
-#, fuzzy
 msgid "Production overview"
-msgstr "Produksjonsoverskit"
+msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:159
-#, fuzzy
 msgid "Destroy building"
-msgstr "Ødelegg bygning"
+msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:284
-#, fuzzy
 msgid "Market place overview"
-msgstr "Marketsplassoversikt"
+msgstr ""
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
@@ -364,191 +341,116 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
 msgid "Companies"
-msgstr "Selskaper"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:43
-#, fuzzy
 msgid "Sailor buildings"
-msgstr "Seilerbyggninger"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:44
-#, fuzzy
 msgid "Residents and infrastructure"
-msgstr "Beboere og infrastruktur"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:75
 msgid "Services"
-msgstr "Tjenester"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:46
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
 msgstr ""
-"Paviljong: \n"
-"Oppfyller seileres \n"
-"religiøse behov."
 
 #: horizons/i18n/guitranslations.py:47
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
 msgstr ""
-"Fisker: \n"
-"Fisker og \n"
-"produserer mat."
 
 #: horizons/i18n/guitranslations.py:48
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
 msgstr ""
-"Jeger: \n"
-"Jakter ville dyr \n"
-"og produserer mat."
 
 #: horizons/i18n/guitranslations.py:49
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
-"Signalbrann: \n"
-"Lar spilleren \n"
-"handle med \n"
-"handelskipet."
 
 #: horizons/i18n/guitranslations.py:50
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
 msgstr ""
-"Tømrer: \n"
-"Hugger trær \n"
-"og lager planker."
 
 #: horizons/i18n/guitranslations.py:51
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
 msgstr ""
-"Hovedtorg: \n"
-"Gir borgere \n"
-"varer."
 
 #: horizons/i18n/guitranslations.py:52
-#, fuzzy
 msgid "Tent: Houses your inhabitants."
 msgstr ""
-"Telt: \n"
-"Huser dine \n"
-"innbyggere."
 
 #: horizons/i18n/guitranslations.py:53
-#, fuzzy
 msgid "Storage: Extends stock and provides collectors."
 msgstr ""
-"Oppbevaring: \n"
-"Utvider lager \n"
-"og gir samlere."
 
 #: horizons/i18n/guitranslations.py:54
-#, fuzzy
 msgid "Trail: Needed for collecting goods."
 msgstr ""
-"Sti: \n"
-"Trengs for \n"
-"å samle varer."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
-msgstr "Tre"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:58
 msgid "Fields"
-msgstr "Jorder"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:59
-#, fuzzy
 msgid "Pioneer buildings"
-msgstr "Pionèrbygninger"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
-msgstr "Militær"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:62
-#, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
-"Båtbygger: \n"
-"Bygger båter og \n"
-"små skip. \n"
-"Byggest på kysten."
 
 #: horizons/i18n/guitranslations.py:63
-#, fuzzy
 msgid "Brickyard: Turns clay into bricks."
 msgstr ""
-"Mursteinsverk: \n"
-"Lager murstein \n"
-"av leire."
 
 #: horizons/i18n/guitranslations.py:64
-#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
 msgstr ""
-"Leiregrop: \n"
-"Henter leire \n"
-"fra beholdning."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:66
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
 msgstr ""
-"Gård: \n"
-"Dyrker jorder, \n"
-"åkere og avler \n"
-"husdyr."
 
 #: horizons/i18n/guitranslations.py:67
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
 msgstr ""
-"Beitemark: \n"
-"Sauedrift. \n"
-"Produserer ull. \n"
-"Trenger en gård."
 
 #: horizons/i18n/guitranslations.py:68
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
 msgstr ""
-"Potetåker: \n"
-"Gir mat. \n"
-"Trenger en gård."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:70
-#, fuzzy
 msgid "Village school: Provides education."
 msgstr ""
-"Landsbyskole: \n"
-"Gir utdanning."
 
 #: horizons/i18n/guitranslations.py:71
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
 msgstr ""
-"Vever: \n"
-"Lager tøy \n"
-"av ull."
 
 #: horizons/i18n/guitranslations.py:74
-#, fuzzy
 msgid "Settler buildings"
-msgstr "Bygninger"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
@@ -571,9 +473,8 @@ msgid "Toolmaker: Produces tools out of iron."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
-#, fuzzy
 msgid "Running costs:"
-msgstr "Driftskostnader"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Inhabitants"
@@ -581,28 +482,28 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Click to change the name of your settlement."
-msgstr "Klikk for å bytte navn på bosetning."
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:88
 msgid "Destroy"
-msgstr "Ødelegg"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:89
 msgid "Build menu"
-msgstr "Konstruksjonsmeny"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:90
 msgid "Game menu"
-msgstr "Hovedmeny"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:91 horizons/i18n/guitranslations.py:133
 #: horizons/i18n/guitranslations.py:173
 msgid "Help"
-msgstr "Hjelp"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:92
 msgid "Captain's log"
-msgstr "Kapteinens loggbok"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
@@ -630,80 +531,79 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
-msgstr "Planker"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Bricks"
-msgstr "Murstein"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Food"
-msgstr "Mat"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:104
 msgid "Textiles"
-msgstr "Tekstiler"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:105
 msgid "Tools"
-msgstr "Verktøy"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:107
 msgid "Gold"
-msgstr "Gull"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:109
 msgid "Change name"
-msgstr "Bytt navn"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Enter new name:"
-msgstr "Skriv inn nytt navn:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Enter your message:"
-msgstr "Skriv din melding:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Chat"
-msgstr "Chat"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Buy resources"
-msgstr "Kjøp ressurser"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Buy or sell resources"
-msgstr "Kjøp og salg av ressurser"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Legend:"
-msgstr "Billedtekst:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:118
 msgid "Sell resources"
-msgstr "Selg ressurser"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:120
 msgid "Pause production"
-msgstr "Stop produksjon midlertidig"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:121
 msgid "Start production"
-msgstr "Start produksjon"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:123
-#, fuzzy
 msgid "Leave Captain's log"
-msgstr "Gå ut av kapteinens loggbok"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Read prev. entries"
-msgstr "Les tidligere innlegg"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:125
 msgid "Read next entries"
-msgstr "Les neste innlegg"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Exit"
@@ -722,121 +622,117 @@ msgid "Attention please!"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
-#, fuzzy
 msgid "Credits"
-msgstr " Kreditt "
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:135
-#, fuzzy
 msgid "Cancel game"
-msgstr " Avbryt Spill "
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:176
 #: horizons/i18n/guitranslations.py:214
 msgid "Settings"
-msgstr "Innstillinger"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:138
-#, fuzzy
 msgid "Return to game"
-msgstr "Tilbake til spillet"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:141
 msgid "The FIFE and Unknown Horizons"
-msgstr "FIFE og Unknown Horizons"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:142
 msgid "development teams"
-msgstr "Utviklingsteam"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Have fun."
-msgstr "Ha det gøy!"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:144
-#, fuzzy
 msgid "Key bindings"
-msgstr "Hurtigtaster"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:145
 msgid "{LEFT} = Scroll left"
-msgstr "{LEFT} = Rull til venstre"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:146
 msgid "{RIGHT} = Scroll right"
-msgstr "{RIGHT} = Rull til høyre"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:147
 msgid "{UP} = Scroll up"
-msgstr "{UP} = Rull opp"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:148
 msgid "{DOWN} = Scroll down"
-msgstr "{DOWN} = Rull ned"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:149
 msgid "{ , } = Rotate building left"
-msgstr "{ , } = Roter bygning til venstre"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:150
 msgid "{ . } = Rotate building right"
-msgstr "{ . } = Roter bygning til høyre"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:151
 msgid "{B} = Show build menu"
-msgstr "{B} = Vis bygg meny"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:152
 msgid "{F1} = Display help"
-msgstr "{F1} = Vis hjelp"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:153
 msgid "{F5} = Quicksave"
-msgstr "{F5} = Hurtiglagre"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:154
 msgid "{F9} = Quickload"
-msgstr "{F9} = Hurtigåpne"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:155
 msgid "{F10} = Toggle console on/off"
-msgstr "{F10} = Slå konsoll av/på"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:156
 msgid "{ESC} = Show pause menu"
-msgstr "{ESC} = Vis pause meny"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:157
 msgid "{G} = Toggle grid on/off"
-msgstr "{G} = Slå rutenett av/på"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:158
 msgid "{X} = Enable destruct mode"
-msgstr "{X} = Slå på ødeleggelsemodus"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:159
 msgid "{P} = Pause game"
-msgstr "{P} = Pause spill"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:160
 msgid "{ + } = Increase game speed"
-msgstr "{ + } = Øk farten i spillet"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:161
 msgid "{ - } = Decrease game speed"
-msgstr "{ - } = Reduser farten i spillet"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:162
 msgid "{S} = Screenshot"
-msgstr "{S} = Skjermdump"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:163
 msgid "{SHIFT} = Hold to place multiple buildings"
-msgstr "{SHIFT} = Hold for å plasere flere bygninger"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:164
 msgid "{C} = Chat"
-msgstr "{C} = Chat"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:165
 msgid "{L} = Toggle Captain's log"
@@ -845,11 +741,11 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:207
 #: horizons/i18n/guitranslations.py:242
 msgid "Exit to main menu"
-msgstr "Avslutt og gå til hovedmeny"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:168
 msgid "Loading ..."
-msgstr "Laster ..."
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
@@ -857,23 +753,23 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:177
 msgid "Singleplayer"
-msgstr "Enkeltspiller"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:178
 msgid "Multiplayer"
-msgstr "Flerspiller"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:181 horizons/i18n/guitranslations.py:197
 msgid "Create game:"
-msgstr "Lag et spill:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:182
 msgid "Back:"
-msgstr "Tilbake:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:183
 msgid "Choose a map:"
-msgstr "Velg et kart:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:184
 msgid "Create game - Multiplayer"
@@ -881,47 +777,47 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:185
 msgid "Player limit:"
-msgstr "Spillergrense:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:186
 msgid "Create this new game"
-msgstr "Lag spill"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:187
 msgid "Exit to multiplayer menu"
-msgstr "Avslutt og gå til flerspillermeny"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:189
 msgid "Leave:"
-msgstr "Avslutt"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:190
 msgid "The game will start as soon as enough players have joined."
-msgstr "Spillet starter så snart nok spillere er med."
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:191
 msgid "Chat:"
-msgstr "Chat:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:192
 msgid "Gamelobby"
-msgstr "Lobby"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:193
 msgid "Game details:"
-msgstr "Spilldetaljer:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:194
 msgid "Exit gamelobby"
-msgstr "Forlat lobby"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:196
 msgid "Active games:"
-msgstr "Aktive spill:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:198 horizons/i18n/guitranslations.py:236
 msgid "Main menu:"
-msgstr "Hovedmeny:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Show only games with the same version:"
@@ -933,31 +829,31 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:201
 msgid "Join game"
-msgstr "Delta i spill"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:202
 msgid "Apply:"
-msgstr "Utfør:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:203
 msgid "Refresh list:"
-msgstr "Oppdater liste:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:204
 msgid "Apply the new name"
-msgstr "Utfør"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:205
 msgid "Create a new game"
-msgstr "Lag nytt spill"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:206
 msgid "Join the selected game"
-msgstr "Bli med i det valgte spillet"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:208
 msgid "Refresh list of active games"
-msgstr "Oppdater liste over aktive spill"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
@@ -965,7 +861,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Color depth:"
-msgstr "Fargedybde:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Enable edge scrolling:"
@@ -973,27 +869,27 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Effects volume:"
-msgstr "Effektvolum:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:215
 msgid "Graphics"
-msgstr "Grafikk"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:216
 msgid "Language"
-msgstr "Språk:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:217
 msgid "Saving"
-msgstr "Lagring"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:218
 msgid "Sound"
-msgstr "Lyd"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:219
 msgid "Select language:"
-msgstr "Velg språk:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Enable minimap rotation:"
@@ -1001,53 +897,51 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Music volume:"
-msgstr "Musikkvolum:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Number of autosaves:"
-msgstr "Antall auto-lagringer"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:223
 msgid "Number of quicksaves:"
-msgstr "Antall hurtig-lagringer"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:224
-#, fuzzy
 msgid "Full screen:"
-msgstr "Fullskjerm"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Screen resolution:"
-msgstr "Skjermoppløsning"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:226
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Aktiver lyd"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Used renderer:"
-msgstr "Gjeldende renderer:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:228
 msgid "Please make sure that you know what you do."
-msgstr "Vær sikker på at du vet hva du gjør."
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:230
 msgid "Details:"
-msgstr "Detaljer:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:231
 msgid "Enter filename:"
-msgstr "Skriv filnavn:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:232
 msgid "Your saved games:"
-msgstr "Dine lagrede spill:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:234
 msgid "Choose a map to play:"
-msgstr "Velg er kart:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:235
 msgid "New game - Singleplayer"
@@ -1055,105 +949,97 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:237
 msgid "Start game:"
-msgstr "Start spillet:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:238
 msgid "Free play"
-msgstr "Fritt spill"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:239
 msgid "Random map"
-msgstr "Tilfeldig kart"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Scenario"
 msgstr ""
 
-# 90%
-# 100%
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "Start game"
-msgstr "Start spillet:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Color:"
-msgstr "Farge:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:245
 msgid "Player name:"
-msgstr "Spillernavn:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:247
 msgid "Cancel building:"
-msgstr "Avbryt bygging:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:248
 msgid "(lose all resources)"
-msgstr "(mist alle ressurser)"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:249
 msgid "Currently building:"
-msgstr "Bygges nå:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:250
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
-msgstr "For og bygge en båt: velg en kategori, velg ønsket skip og godkjenn."
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:251
 msgid "Construction progress:"
-msgstr "Fremdrift:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:252 horizons/i18n/guitranslations.py:281
 #: horizons/i18n/guitranslations.py:296
 msgid "Building overview"
-msgstr "Byggningsoversikt"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:253
-#, fuzzy
 msgid "Cancel all building progress"
 msgstr ""
-"Avbryt alle \n"
-"bygninger under \n"
-"konstruksjon"
 
 #: horizons/i18n/guitranslations.py:254
 msgid "Pause"
-msgstr "Pause"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:255
 msgid "Resume"
-msgstr "Fortsett"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:275
 #: horizons/i18n/guitranslations.py:297 horizons/i18n/guitranslations.py:299
 msgid "Running costs"
-msgstr "Driftskostnader"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Fishing boat"
-msgstr "Fiskebåt"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:259
 msgid "Cutter"
-msgstr "Kutter"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:260
 msgid "Herring fisher"
-msgstr "Sildefisker"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:261
 msgid "Whaler"
-msgstr "Hvalfanger"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:262
-#, fuzzy
 msgid "Fishing boats"
-msgstr "Fiskebåt"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:263
 msgid "Build this ship!"
-msgstr "Bygg dette skipet!"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:265
 #: horizons/i18n/guitranslations.py:266
@@ -1162,128 +1048,112 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:268
 msgid "Select resources:"
-msgstr "Velg ressurser"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:270
 msgid "Balance:"
-msgstr "Balanse:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Buying"
-msgstr "Kjøp"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:272
 msgid "Expenses:"
-msgstr "Utgifter:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:274
 msgid "Income:"
-msgstr "Inntekt:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:276
 msgid "Sale"
-msgstr "Salg"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:277
 msgid "Taxes"
-msgstr "Skatter"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:282 horizons/i18n/guitranslations.py:286
 #: horizons/i18n/guitranslations.py:293 horizons/i18n/guitranslations.py:322
 msgid "Name:"
-msgstr "Navn:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:288
 msgid "Average happiness:"
-msgstr "Gjennomsnittlig tilfredshet:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:290
 msgid "Most needed resource:"
-msgstr "Mest trengte ressurs:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:307
 msgid "Taxes:"
-msgstr "Skatter:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:298
 msgid "capacity utilization"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:301
-#, fuzzy
 msgid "Resource deposit"
-msgstr "Ressurslager"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:302
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Dette er en ressurskilde. Her kan du bygge en gruve for å grave opp "
-"ressurser."
 
 #: horizons/i18n/guitranslations.py:303
 msgid "It contains these resources:"
-msgstr "Innehold av ressurser:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:306
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Ressurser som trengs:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:308 horizons/i18n/guitranslations.py:311
 msgid "Happiness"
-msgstr "Tilfredshet"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:309
 msgid "Paid taxes"
-msgstr "Betalt skatt"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:310
 msgid "Residents"
-msgstr "Beboere"
+msgstr ""
 
-# 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Bygg bosetning"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:314
-#, fuzzy
 msgid "Click to change the name of this ship."
 msgstr ""
-"Klikk for å \n"
-"bytte navn \n"
-"på skipet."
 
 #: horizons/i18n/guitranslations.py:315
-#, fuzzy
 msgid "Build settlement"
-msgstr "Bygg bosetning"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:317
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
-"Signalbålet viser handelsbåten hvor bosetningen din er. I tilfelle du vil "
-"kjøpe og selge varer."
 
 #: horizons/i18n/guitranslations.py:319
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
-"Dette er handelsbåten. Den vil besøke deg fra tid til annen for å kjøpe "
-"eller selge varer."
 
 #: horizons/i18n/guitranslations.py:324
 msgid "Exchange:"
-msgstr "Utveksling:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:326
 msgid "Ship:"
-msgstr "Skip:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:327
 msgid "Trade partner:"
-msgstr "Handelspartner:"
+msgstr ""
 
 #: horizons/i18n/guitranslations.py:329
 msgid "Configure trading route:"
@@ -1291,128 +1161,121 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:331
 msgid "Load/Unload:"
-msgstr "Last på/av:"
+msgstr ""
 
 #: horizons/main.py:84
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535."
 msgstr ""
-"Error: Invalid syntax in --mp-master commandline option. Port must be a "
-"number between 0 and 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 0 and 65535."
 msgstr ""
-"Error: Invalid syntax in --mp-bind commandline option. Port must be a number "
-"between 0 and 65535."
 
 #: horizons/main.py:198
 msgid "Load failed. Please try another savefile!"
-msgstr "Åpning av fil mislykkes. Prøv en annen fil!"
+msgstr ""
 
 #: horizons/main.py:276
 #, python-format
 msgid "Error: Cannot find map \"%s\"."
-msgstr "Feil: Kan ikke finne kart \"%s\"."
+msgstr ""
 
 #: horizons/main.py:279 horizons/main.py:312
 msgid "Error: Found multiple matches: "
-msgstr "Feil: Fant flere kamper: "
+msgstr ""
 
 #: horizons/main.py:309
 #, python-format
 msgid "Error: Cannot find savegame \"%s\"."
-msgstr "Feil: Finner ikke lagret spill \"%s\"."
+msgstr ""
 
 #: horizons/main.py:327
 msgid "Error: No quicksave found."
-msgstr "Feil: Ingen hurtiglagring funnet."
+msgstr ""
 
 #: horizons/mpsession.py:44 horizons/mpsession.py:51 horizons/mpsession.py:53
 #: horizons/mpsession.py:55 horizons/mpsession.py:57
 msgid "Not possible"
-msgstr "Ikke mulig"
+msgstr ""
 
 #: horizons/mpsession.py:44
 msgid "You cannot change the speed of a multiplayer game"
-msgstr "Du kan ikke øke/redusere farten i flerspiller"
+msgstr ""
 
 #: horizons/mpsession.py:51 horizons/mpsession.py:53 horizons/mpsession.py:55
 #: horizons/mpsession.py:57
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "Lagring/Åpning er ikke mulig i flerspiller spill enda"
+msgstr ""
 
 #: horizons/scenario/actions.py:71
 msgid "You have won!"
-msgstr "Du har vunnet!"
+msgstr ""
 
 #: horizons/scenario/actions.py:72
 msgid "You have completed this scenario. "
-msgstr "Du har fullført dette spillet. "
+msgstr ""
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
 msgid "unknown"
-msgstr "ukjent"
+msgstr ""
 
 #: horizons/spsession.py:97
 msgid "Failed to quicksave."
-msgstr "Kunne ikke hurtiglagre."
+msgstr ""
 
 #: horizons/spsession.py:103
 msgid "No quicksaves found"
-msgstr "Ingen hurtiglagring funnet"
+msgstr ""
 
 #: horizons/spsession.py:103
 msgid "You need to quicksave before you can quickload."
-msgstr "Du må hurtiglagre før du kan hurtigåpne."
+msgstr ""
 
 #. usually invalid filename
 #: horizons/spsession.py:130
 msgid "Invalid filename"
-msgstr "Ugyldig filnavn"
+msgstr ""
 
 #: horizons/spsession.py:130
 msgid "You entered an invalid filename."
-msgstr "Du skrev et ugyldig filnavn."
+msgstr ""
 
 #: horizons/world/units/ship.py:270
 msgid "Trader"
-msgstr "Kjøpmann"
+msgstr ""
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr "Enable debug output to stderr and a logfile."
+msgstr ""
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
-msgstr "Specify the path to FIFE root directory."
+msgstr ""
 
 #: run_uh.py:83
 msgid "Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration."
-msgstr "Gjenoppretter standardinstillinger."
+msgstr ""
 
 #: run_uh.py:85
 msgid "Specify alternative multiplayer master server."
-msgstr "Angi alternativ flerspillerserver."
+msgstr ""
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
 msgstr ""
-"Specify network address to bind local network client to. This is useful if "
-"NAT holepunching is not working but you can forward a static port."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
-msgstr "Starter Unknown Horizons"
+msgstr ""
 
-# please don't translate anything in <tags> - thanks!
 #: run_uh.py:92
 msgid "Starts <map>. <map> is the mapname."
-msgstr "Starter <map>. <map> er filnavnet."
+msgstr ""
 
 #: run_uh.py:94
 msgid "Starts a random map."
-msgstr "Start et tilfeldig kart."
+msgstr ""
 
 #: run_uh.py:96
 msgid "Starts <scenario>. <scenario> is the scenarioname."
@@ -1420,82 +1283,79 @@ msgstr ""
 
 #: run_uh.py:98
 msgid "Starts the development map without displaying the main menu."
-msgstr "Starter utviklings kartet uten å vise hovedmeny."
+msgstr ""
 
-# please don't translate anything in <tags> - thanks!
 #: run_uh.py:100
 msgid "Loads a saved game. <save> is the savegamename."
-msgstr "Åpner et lagret spill. <save> er filnavnet."
+msgstr ""
 
 #: run_uh.py:102
 msgid "Loads the last quicksave."
-msgstr "Åpner siste hurtiglagrede spill."
+msgstr ""
 
 #: run_uh.py:105
 msgid "Development options"
-msgstr "Utviklingsmuligheter"
+msgstr ""
 
 #: run_uh.py:107
 msgid "Write debug output only to logfile, not to console. Implies -d."
-msgstr "Write debug output only to logfile, not to console. Implies -d."
+msgstr ""
 
 #: run_uh.py:110
 msgid "Enable logging for a certain logging module (for developing only)."
-msgstr "Enable logging for a certain logging module (for developing only)."
+msgstr ""
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr "Writes log to <filename> instead of to the uh-userdir"
+msgstr ""
 
 #: run_uh.py:114
 msgid "For internal use only."
-msgstr "Kun for internt bruk."
+msgstr ""
 
 #: run_uh.py:116
 msgid "Enable profiling (for developing only)."
-msgstr "Enable profiling (for developing only)."
+msgstr ""
 
 #: run_uh.py:138
 msgid "Unknown Horizons crashed."
-msgstr "Unknown Horizons krasjet."
+msgstr ""
 
 #: run_uh.py:140
 msgid "We are very sorry for this, and want to fix this error."
-msgstr "Vi er veldig lei for dette, og ønsker å fikse denne feilen."
+msgstr ""
 
 #: run_uh.py:141
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "For å gjøre dette, trenger vi informasjon fra loggfilen:"
+msgstr ""
 
 #: run_uh.py:143
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
-"Vennligst gi oss denne via IRC eller vårt forum, for begge se unknown-"
-"horizons.org ."
 
 #: run_uh.py:198
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Takk for at du spiller Unknown Horizons!"
+msgstr ""
 
 #: run_uh.py:274
 msgid "Failed to load fife:"
-msgstr "Kunne ikke åpne FIFE:"
+msgstr ""
 
 #: run_uh.py:344
 msgid "FIFE was not found."
-msgstr "FIFE ble ikke funnet."
+msgstr ""
 
 #: sqlite/Building
 msgid "Boat Builder"
-msgstr "Båtbygger"
+msgstr ""
 
 #: sqlite/Building
 msgid "Branch Office"
-msgstr "Filial"
+msgstr ""
 
 #: sqlite/Building
 msgid "Brickyard"
-msgstr "Mursteinsverk"
+msgstr ""
 
 #: sqlite/Building
 msgid "Charcoal Burning"
@@ -1503,11 +1363,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Clay Deposit"
-msgstr "Leirelager"
+msgstr ""
 
 #: sqlite/Building
 msgid "Clay Pit"
-msgstr "Leirehull"
+msgstr ""
 
 #: sqlite/Building
 msgid "Distillery"
@@ -1515,7 +1375,7 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Farm"
-msgstr "Gård"
+msgstr ""
 
 #: sqlite/Building
 msgid "Fish Deposit"
@@ -1523,11 +1383,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Fisherman's Tent"
-msgstr "Fiskertelt"
+msgstr ""
 
 #: sqlite/Building
 msgid "Hunter's Tent"
-msgstr "Jegertelt"
+msgstr ""
 
 #: sqlite/Building
 msgid "Iron Mine"
@@ -1535,19 +1395,19 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Log"
-msgstr "Logg"
+msgstr ""
 
 #: sqlite/Building
 msgid "Lookout"
-msgstr "Utsiktstårn"
+msgstr ""
 
 #: sqlite/Building
 msgid "Lumberjack Camp"
-msgstr "Tømmerhuggers leir"
+msgstr ""
 
 #: sqlite/Building
 msgid "Main Square"
-msgstr "Marked"
+msgstr ""
 
 #: sqlite/Building
 msgid "Mountain"
@@ -1555,23 +1415,23 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Pasture"
-msgstr "Beitemark"
+msgstr ""
 
 #: sqlite/Building
 msgid "Pavilion"
-msgstr "Paviljong"
+msgstr ""
 
 #: sqlite/Building
 msgid "Potato Field"
-msgstr "Potetåker"
+msgstr ""
 
 #: sqlite/Building
 msgid "Rampart"
-msgstr "Voll"
+msgstr ""
 
 #: sqlite/Building
 msgid "Signal Fire"
-msgstr "Signalbål"
+msgstr ""
 
 #: sqlite/Building
 msgid "Smeltery"
@@ -1579,11 +1439,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Storage Tent"
-msgstr "Lagertelt"
+msgstr ""
 
 #: sqlite/Building
 msgid "Sugar Field"
-msgstr "Sukkerplantasje"
+msgstr ""
 
 #: sqlite/Building
 msgid "Tavern"
@@ -1591,11 +1451,11 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Tent"
-msgstr "Telt"
+msgstr ""
 
 #: sqlite/Building
 msgid "Tent_ruin"
-msgstr "Telt_ruin"
+msgstr ""
 
 #: sqlite/Building
 msgid "Toolmaker"
@@ -1603,79 +1463,79 @@ msgstr ""
 
 #: sqlite/Building
 msgid "Trail"
-msgstr "Sti"
+msgstr ""
 
 #: sqlite/Building
 msgid "Village school"
-msgstr "Landsbyskole"
+msgstr ""
 
 #: sqlite/Building
 msgid "Weaver's Tent"
-msgstr "Vevertelt"
+msgstr ""
 
 #: sqlite/Colors
 msgid "black"
-msgstr "svart"
+msgstr ""
 
 #: sqlite/Colors
 msgid "blue"
-msgstr "blå"
+msgstr ""
 
 #: sqlite/Colors
 msgid "cyan"
-msgstr "cyan"
+msgstr ""
 
 #: sqlite/Colors
 msgid "green"
-msgstr "grønn"
+msgstr ""
 
 #: sqlite/Colors
 msgid "pink"
-msgstr "rosa"
+msgstr ""
 
 #: sqlite/Colors
 msgid "red"
-msgstr "rød"
+msgstr ""
 
 #: sqlite/Colors
 msgid "white"
-msgstr "hvit"
+msgstr ""
 
 #: sqlite/Colors
 msgid "yellow"
-msgstr "gul"
+msgstr ""
 
 #: sqlite/Messages
 msgid "A new settlement has been created by ${player}."
-msgstr "En ny bosetting opprettet av ${player}."
+msgstr ""
 
 #: sqlite/Messages
 msgid "A new world has been created."
-msgstr "En ny verden har blitt skapt."
+msgstr ""
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
-msgstr "En av dine nybyggere din har ingen markedsplass i rekkevidde."
+msgstr ""
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."
-msgstr "Skjermdump lagret som ${file}."
+msgstr ""
 
 #: sqlite/Messages
 msgid "Some of your settlers just moved out."
-msgstr "Noen av bosetterne dine flyttet ut."
+msgstr ""
 
 #: sqlite/Messages
 msgid "YOU HAVE WON!!!"
-msgstr "DU VANT!"
+msgstr ""
 
 #: sqlite/Messages
 msgid "You need more ${resource} to build this building."
-msgstr "Du trenger mer ${resource} for å konstruere denne bygningen."
+msgstr ""
 
 #: sqlite/Messages
 msgid "Your game has been quicksaved."
-msgstr "Spillet har blitt lagret."
+msgstr ""
 
 #: sqlite/Messages
 msgid "Your mine has run out of resources."
@@ -1683,15 +1543,15 @@ msgstr ""
 
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr "Dine nybyggere har oppnådd nivå ${level}."
+msgstr ""
 
 #: sqlite/Resources
 msgid "boards"
-msgstr "planker"
+msgstr ""
 
 #: sqlite/Resources
 msgid "bricks"
-msgstr "murstein"
+msgstr ""
 
 #: sqlite/Resources
 msgid "charcoal"
@@ -1699,23 +1559,23 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "clay"
-msgstr "leire"
+msgstr ""
 
 #: sqlite/Resources
 msgid "coins"
-msgstr "mynter"
+msgstr ""
 
 #: sqlite/Resources
 msgid "community"
-msgstr "samfunn"
+msgstr ""
 
 #: sqlite/Resources
 msgid "education"
-msgstr "utdanning"
+msgstr ""
 
 #: sqlite/Resources
 msgid "faith"
-msgstr "tro"
+msgstr ""
 
 #: sqlite/Resources
 msgid "fish"
@@ -1723,7 +1583,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "food"
-msgstr "mat"
+msgstr ""
 
 #: sqlite/Resources
 msgid "get-together"
@@ -1731,11 +1591,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "grass"
-msgstr "gress"
+msgstr ""
 
 #: sqlite/Resources
 msgid "happiness"
-msgstr "tilfredshet"
+msgstr ""
 
 #: sqlite/Resources
 msgid "iron ingots"
@@ -1747,7 +1607,7 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr "ull"
+msgstr ""
 
 #: sqlite/Resources
 msgid "liquor"
@@ -1755,11 +1615,11 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "potatoes"
-msgstr "poteter"
+msgstr ""
 
 #: sqlite/Resources
 msgid "raw clay"
-msgstr "råleire"
+msgstr ""
 
 #: sqlite/Resources
 msgid "raw iron"
@@ -1767,39 +1627,39 @@ msgstr ""
 
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr "råsukker"
+msgstr ""
 
 #: sqlite/Resources
 msgid "sugar"
-msgstr "sukker"
+msgstr ""
 
 #: sqlite/Resources
 msgid "textile"
-msgstr "tøy"
+msgstr ""
 
 #: sqlite/Resources
 msgid "tools"
-msgstr "verktøy"
+msgstr ""
 
 #: sqlite/Resources
 msgid "wild animal food 1"
-msgstr "dyrefór 1"
+msgstr ""
 
 #: sqlite/Resources
 msgid "wild animal meat"
-msgstr "viltkjøtt"
+msgstr ""
 
 #: sqlite/Resources
 msgid "wood"
-msgstr "tømmer"
+msgstr ""
 
 #: sqlite/Resources
 msgid "wool"
-msgstr "ull"
+msgstr ""
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr "pionér"
+msgstr ""
 
 #: sqlite/SettlerLevel
 msgid "sailor"
@@ -1807,177 +1667,4 @@ msgstr ""
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr "nybygger"
-
-#~ msgid "Chime The Bell"
-#~ msgstr "Ring bjellen"
-
-#, python-format
-#~ msgid "Saved %d times\n"
-#~ msgstr "Lagret %d ganger\n"
-
-#~ msgid "UH-Team"
-#~ msgstr "UH-Teamet"
-
-#~ msgid "Project Coordination"
-#~ msgstr "Prosjektkordinator"
-
-#~ msgid "Programming"
-#~ msgstr "Programmering"
-
-#~ msgid "Game-Play Design"
-#~ msgstr "Game-Play Design"
-
-#~ msgid "Sound and Music Artists"
-#~ msgstr "Lyd og musikk"
-
-#~ msgid "Graphic Artists"
-#~ msgstr "Grafikk"
-
-#~ msgid "Patchers"
-#~ msgstr "Patchere"
-
-#~ msgid "Translators"
-#~ msgstr "Oversettere"
-
-#~ msgid "Special Thanks"
-#~ msgstr "En spesiell takk til"
-
-#~ msgid "The whole FIFE team (www.fifengine.de)"
-#~ msgstr "Hele FIFE teamet(www.fifengine.de)"
-
-#~ msgid "Autosave interval:"
-#~ msgstr "Auto-lagrings intervall:"
-
-#~ msgid "Campaign"
-#~ msgstr "Kampanje"
-
-#~ msgid "Health:"
-#~ msgstr "Helse:"
-
-# please don't translate anything in <tags> - thanks!
-#~ msgid "Starts <campaign>. <campaign> is the campaignname."
-#~ msgstr "Starter <campaign>. <campaign> er kampanjenavnet."
-
-#~ msgid "Sheep"
-#~ msgstr "Sau"
-
-#~ msgid "Citizen Buildings"
-#~ msgstr "Innbyggeres bygninger"
-
-#~ msgid "Fishing Boats"
-#~ msgstr "Fiskebåter"
-
-#~ msgid "NEW GAME - SINGLEPLAYER"
-#~ msgstr "NYTT SPILL - ENKELTSPILLER"
-
-#~ msgid "NEW GAME - MULTIPLAYER"
-#~ msgstr "NYTT SPILL - FLERSPILLER"
-
-#~ msgid "FarmAnimalCollector"
-#~ msgstr "FarmAnimalCollector"
-
-#~ msgid " Help "
-#~ msgstr " Hjelp "
-
-#~ msgid "LumberjackCollector"
-#~ msgstr "LumberjackCollector"
-
-#~ msgid "Building Overview"
-#~ msgstr "Byggingsoversikt"
-
-#~ msgid "The random map features is still in active development. "
-#~ msgstr ""
-#~ "Funksjoner for generering av et tilfeldig kart er fortsatt under utvikling. "
-
-#~ msgid " Chime The Bell "
-#~ msgstr " Ring med bjella "
-
-#~ msgid "Aristocrat Buildings"
-#~ msgstr "Aristokraters bygninger"
-
-#~ msgid "FarmerCollector"
-#~ msgstr "FarmerCollector"
-
-#~ msgid " Quit "
-#~ msgstr " Avslutt "
-
-#~ msgid "Fisher"
-#~ msgstr "Fisker"
-
-#~ msgid "Housing"
-#~ msgstr "Boliger"
-
-#~ msgid "Settler Overview"
-#~ msgstr "Byggingsoversikt"
-
-#~ msgid "FieldCollector"
-#~ msgstr "FieldCollector"
-
-#~ msgid "Pirate Ship"
-#~ msgstr "Piratskip"
-
-#~ msgid "CREATE GAME - MULTIPLAYER"
-#~ msgstr "OPPRETT SPILL - FLERSPILLER"
-
-#~ msgid "StorageCollector"
-#~ msgstr "StorageCollector"
-
-#~ msgid "Yeah, you made it..."
-#~ msgstr "Du klarte det..."
-
-#~ msgid " Save Game "
-#~ msgstr " Lagre spill "
-
-#~ msgid "But this is a deadlink, sorry."
-#~ msgstr "Men dette er en død lenke, beklager."
-
-#~ msgid "BuildingCollector"
-#~ msgstr "BuildingCollector"
-
-#~ msgid "HunterCollector"
-#~ msgstr "HunterCollector"
-
-#~ msgid "Merchant Buildings"
-#~ msgstr "Kjøpmenns bygninger"
-
-#~ msgid "AnimalCarriage"
-#~ msgstr "Dyrekjerre"
-
-#~ msgid " Load Game "
-#~ msgstr " Åpne Spill "
-
-#~ msgid "SettlerCollector"
-#~ msgstr "SettlerCollector"
-
-#~ msgid "Deer"
-#~ msgstr "Rådyr"
-
-#~ msgid " Continue Game "
-#~ msgstr " Fortsett spillet "
-
-#~ msgid "Terminal debugmode"
-#~ msgstr "Terminal debugmode"
-
-#~ msgid "Production"
-#~ msgstr "Produksjon"
-
-#~ msgid " Settings "
-#~ msgstr " Innstillinger "
-
-#~ msgid "You start the terminal python debugger pdb!"
-#~ msgstr "You start the terminal python debugger pdb!"
-
-#~ msgid "Ship"
-#~ msgstr "Skip"
-
-#~ msgid ""
-#~ "Sugar Field: \n"
-#~ "Produces sugar\n"
-#~ "for rum."
-#~ msgstr ""
-#~ "Sukkerplatasje: \n"
-#~ "Produserer sukker. Trenges for produksjon av rom."
-
-#~ msgid "Running Costs:"
-#~ msgstr "Driftskostnader:"
+msgstr ""
