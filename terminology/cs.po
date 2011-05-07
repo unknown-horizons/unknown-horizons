@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-07 17:04+0200\n"
+"Last-Translator: Kris_CZ <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # 
@@ -22,7 +23,7 @@ msgstr ""
 #: sqlite/Messages
 #: horizons/i18n/guitranslations.py
 msgid "build"
-msgstr ""
+msgstr "postavit"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -34,7 +35,7 @@ msgstr ""
 #: horizons/mpsession.py
 #: %28poterminology%29+4+more+locations
 msgid "game"
-msgstr ""
+msgstr "hra"
 
 # (poterminology) uh-tutorial/tutorial.pot (26)
 # 
