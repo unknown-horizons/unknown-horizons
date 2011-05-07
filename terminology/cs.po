@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-07 20:48+0200\n"
+"PO-Revision-Date: 2011-05-07 21:19+0200\n"
 "Last-Translator: Kris_CZ <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -46,7 +46,7 @@ msgstr "hra"
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "building"
-msgstr ""
+msgstr "buování"
 
 # (poterminology) uh-tutorial/tutorial.pot (24)
 # 
@@ -56,7 +56,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tent"
-msgstr ""
+msgstr "stan"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # 
@@ -67,7 +67,7 @@ msgstr ""
 #: sqlite/Messages
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
-msgstr ""
+msgstr "zdroje"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
 # 
@@ -77,7 +77,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Building
 msgid "branch office"
-msgstr ""
+msgstr "pobočka"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -89,7 +89,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
 msgid "overview"
-msgstr ""
+msgstr "přehled"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # 
@@ -175,7 +175,7 @@ msgstr "mapa"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Messages
 msgid "settlement"
-msgstr ""
+msgstr "osada"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -194,7 +194,7 @@ msgstr "start"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "tab"
-msgstr ""
+msgstr "záložka"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # 
@@ -223,7 +223,7 @@ msgstr "jídlo"
 #: po/tutorial.py
 #: horizons/gui/tabs/buildtabs.py
 msgid "increment"
-msgstr ""
+msgstr "výnos"
 
 #: po/tutorial.py
 #: horizons/gui/
@@ -252,7 +252,7 @@ msgstr "menu"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "produce"
-msgstr ""
+msgstr "produkování"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -262,7 +262,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/overviewtab.py
 msgid "production"
-msgstr ""
+msgstr "produkce"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -272,7 +272,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "boards"
-msgstr ""
+msgstr "nástěnka"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -302,7 +302,7 @@ msgstr "klik"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "main square"
-msgstr ""
+msgstr "náměstí"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -581,12 +581,12 @@ msgstr "signál"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr ""
+msgstr "signální oheň"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "slider"
-msgstr ""
+msgstr "posuvník"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -596,7 +596,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "nářadí"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -606,7 +606,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "active"
-msgstr ""
+msgstr "aktivní"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -615,7 +615,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "choose"
-msgstr ""
+msgstr "vybrat"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -624,7 +624,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "collector"
-msgstr ""
+msgstr "sběratel"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -633,7 +633,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "help"
-msgstr ""
+msgstr "pomoc"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -642,7 +642,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "house"
-msgstr ""
+msgstr "dům"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -651,7 +651,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "level"
-msgstr ""
+msgstr "úroveň"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -661,7 +661,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pasture"
-msgstr ""
+msgstr "pastvina"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -671,7 +671,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "průkopník"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -681,7 +681,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato"
-msgstr ""
+msgstr "brambora"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -690,7 +690,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "range"
-msgstr ""
+msgstr "rozsah"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -700,7 +700,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "running"
-msgstr ""
+msgstr "běh"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -710,7 +710,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "setting"
-msgstr ""
+msgstr "nastavení"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -719,7 +719,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Building
 msgid "storage tent"
-msgstr ""
+msgstr "skladovací stan"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -730,7 +730,7 @@ msgstr ""
 #: sqlite/Building
 #: sqlite/Resources
 msgid "sugar"
-msgstr ""
+msgstr "cukr"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -740,7 +740,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tree"
-msgstr ""
+msgstr "strom"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -749,7 +749,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "add"
-msgstr ""
+msgstr "přidat"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -759,7 +759,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "animal"
-msgstr ""
+msgstr "zvíře"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -768,7 +768,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "build menu"
-msgstr ""
+msgstr "stavební menu"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -777,7 +777,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "Captain's log"
-msgstr ""
+msgstr "kapitánův deník"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -786,7 +786,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "construction"
-msgstr ""
+msgstr "výstavba"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -795,7 +795,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "decrease"
-msgstr ""
+msgstr "snížení"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -804,7 +804,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free trader"
-msgstr ""
+msgstr "volný obchodník"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -814,7 +814,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "happiness"
-msgstr ""
+msgstr "štěstí"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -823,7 +823,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunter"
-msgstr ""
+msgstr "lovec"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -833,7 +833,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "inventory"
-msgstr ""
+msgstr "inventář"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -843,7 +843,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb"
-msgstr ""
+msgstr "jehně"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -852,8 +852,9 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
+#, fuzzy
 msgid "liquor"
-msgstr ""
+msgstr "kořalka"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -862,7 +863,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "raw"
-msgstr ""
+msgstr "surový"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -871,7 +872,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "residents"
-msgstr ""
+msgstr "obyvatel"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -880,7 +881,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/widgets/inventory.py
 msgid "slot"
-msgstr ""
+msgstr "slot"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -889,7 +890,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stop"
-msgstr ""
+msgstr "stop"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -899,7 +900,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "village"
-msgstr ""
+msgstr "vesnice"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -908,7 +909,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "your"
-msgstr ""
+msgstr "tvoje"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -918,7 +919,7 @@ msgstr ""
 #: horizons/gui/tabs/marketplacetabs.py
 #: horizons/i18n/guitranslations.py
 msgid "account"
-msgstr ""
+msgstr "účet"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -927,7 +928,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "back"
-msgstr ""
+msgstr "zpět"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -936,7 +937,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "build settlement"
-msgstr ""
+msgstr "postav osadu"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -945,7 +946,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "built"
-msgstr ""
+msgstr "postavený"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -954,7 +955,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cloth"
-msgstr ""
+msgstr "látka"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -963,7 +964,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "feature"
-msgstr ""
+msgstr "vlastnost"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -973,7 +974,7 @@ msgstr ""
 #: sqlite/Resources
 #: sqlite/Building
 msgid "fish"
-msgstr ""
+msgstr "ryba"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -982,7 +983,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "increase"
-msgstr ""
+msgstr "zvýšení"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -992,7 +993,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "jehněčí vlna"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1001,7 +1002,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "leave"
-msgstr ""
+msgstr "opustit"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1011,7 +1012,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market"
-msgstr ""
+msgstr "obchod"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1021,7 +1022,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "market place"
-msgstr ""
+msgstr "tržiště"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1030,7 +1031,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "mode"
-msgstr ""
+msgstr "režim"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1040,7 +1041,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/main.py
 msgid "multiple"
-msgstr ""
+msgstr "násobek"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1049,7 +1050,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "output"
-msgstr ""
+msgstr "výstup"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1057,8 +1058,9 @@ msgstr ""
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1067,7 +1069,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "play"
-msgstr ""
+msgstr "hrát"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1077,7 +1079,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato field"
-msgstr ""
+msgstr "bramborové pole"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1086,7 +1088,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "reached"
-msgstr ""
+msgstr "dosaženo"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1095,7 +1097,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "refresh"
-msgstr ""
+msgstr "obnovit"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1104,7 +1106,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sale"
-msgstr ""
+msgstr "prodej"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1114,7 +1116,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "save"
-msgstr ""
+msgstr "uložit"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1124,7 +1126,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "school"
-msgstr ""
+msgstr "škola"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1133,7 +1135,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "screen"
-msgstr ""
+msgstr "obraz"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1142,7 +1144,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/engine.py
 msgid "solution"
-msgstr ""
+msgstr "řešení"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1151,7 +1153,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sound"
-msgstr ""
+msgstr "zvuk"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1160,7 +1162,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "team"
-msgstr ""
+msgstr "tým"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1169,7 +1171,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "from time to time"
-msgstr ""
+msgstr "čas od času"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1178,7 +1180,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trading"
-msgstr ""
+msgstr "obchodování"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1187,7 +1189,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "visit"
-msgstr ""
+msgstr "návštěva"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -1196,7 +1198,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "weaver"
-msgstr ""
+msgstr "tkadlec"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1205,7 +1207,7 @@ msgstr ""
 #: horizons/gui/ingamegui.py
 #: po/tutorial.py
 msgid "continue"
-msgstr ""
+msgstr "pokračování"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1214,7 +1216,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "description"
-msgstr ""
+msgstr "popis"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1223,7 +1225,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "víra"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1232,7 +1234,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fisherman"
-msgstr ""
+msgstr "rybář"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1241,7 +1243,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "forest"
-msgstr ""
+msgstr "les"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1250,7 +1252,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "forum"
-msgstr ""
+msgstr "fórum"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1259,7 +1261,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fulfill"
-msgstr ""
+msgstr "splnit"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1268,7 +1270,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "graphics"
-msgstr ""
+msgstr "grafiky"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1277,7 +1279,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "zelený"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1286,7 +1288,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grows"
-msgstr ""
+msgstr "roste"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1295,7 +1297,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hold"
-msgstr ""
+msgstr "držet"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1304,7 +1306,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunts"
-msgstr ""
+msgstr "lovy"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1313,7 +1315,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "income"
-msgstr ""
+msgstr "příjem"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1322,7 +1324,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "information"
-msgstr ""
+msgstr "informace"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1330,8 +1332,9 @@ msgstr ""
 # 
 #: po/tutorial.py
 #: run_uh.py
+#, fuzzy
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1340,7 +1343,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "key"
-msgstr ""
+msgstr "klíč"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1349,7 +1352,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "LEFT"
-msgstr ""
+msgstr "ZBÝVÁ"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1358,7 +1361,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "load/unload"
-msgstr ""
+msgstr "naložit/vyložit"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1367,7 +1370,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "moved"
-msgstr ""
+msgstr "pohyboval"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -1376,7 +1379,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "potatoes"
-msgstr ""
+msgstr "brambory"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1385,7 +1388,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "červený"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1394,7 +1397,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "return"
-msgstr ""
+msgstr "návrat"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1403,7 +1406,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "run"
-msgstr ""
+msgstr "běh"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1412,7 +1415,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "service"
-msgstr ""
+msgstr "služba"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1421,7 +1424,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sheep"
-msgstr ""
+msgstr "ovce"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1430,7 +1433,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "SHIFT"
-msgstr ""
+msgstr "SHIFT"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1439,7 +1442,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr ""
+msgstr "lodní inventář"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1448,7 +1451,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "starting"
-msgstr ""
+msgstr "výchozí"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1457,7 +1460,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
-msgstr ""
+msgstr "cukrové pole"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1466,7 +1469,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trade partner"
-msgstr ""
+msgstr "obchodní partner"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1475,4 +1478,4 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr ""
+msgstr "výnosy"
