@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-04-16 18:43+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-08 16:09+0200\n"
+"Last-Translator: Shadow23 <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -40,9 +40,10 @@ msgstr "Plaats een kantoor aan de kust."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
-msgstr "Welcom by Unknown Horizons!"
+msgstr "Welkom bij Unknown Horizons!"
 
 #: po/tutorial.py:6
+#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"
@@ -56,6 +57,24 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
+"Dit is je kapiteins log waar alle belangrijke informatie staat opgeslagen. "
+"Een korte notificatie van elke taak zal zichtbaar worden aan de linkerkant "
+"van het scherm.\n"
+"\n"
+"Als je geïnteresseerd bent in langere omschrijvingen, dan kan je log je "
+"hopelijk meer hulp bieden.\n"
+"\n"
+"Na het sluiten van het log, kan je het weer openen met het 'Kapiteins Log' "
+"icoontje rechts bovenin (onder de minikaart, met een geseald document en een "
+"veer).\n"
+" \n"
+"Voor suggesties voor verbetering, onderwerpen waar je meer over zou willen "
+"weten en misschien bugs: Laat het ons weten en we zullen proberen de "
+"tutorial te verbeteren!\n"
+"\n"
+"Bezoek www.unknow-horizons.org voor hulp en om het team te kunnen contacten!\n"
+"\n"
+"En nu, laten we met het echte spel beginnen."
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
@@ -166,7 +185,7 @@ msgstr "Laad tenminste 10 ton van iedere grondstof op het schip."
 
 #: po/tutorial.py:13
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "OPDRACHT: EEN HOUTHAKKER"
+msgstr "OPDRACHT: BOUW EEN HOUTHAKKER"
 
 #: po/tutorial.py:14
 msgid ""
@@ -241,7 +260,7 @@ msgstr "Plaats een houthakker en verbind deze met het kantoor met een weg."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "OPDRACHT: VOEDSEL AANBOD"
+msgstr "OPDRACHT: AANVOER VANVOEDSEL"
 
 #: po/tutorial.py:18
 msgid ""
