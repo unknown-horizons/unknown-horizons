@@ -44,6 +44,7 @@ def is_random_island_id_string(id_string):
 def create_random_island(id_string):
 	"""Creates a random island as sqlite db.
 	It is rather primitive; it places shapes on the dict.
+	The coordinates of tiles will be 0 <= x < width and 0 <= y < height
 	@param id_string: random island id string
 	@return: sqlite db reader containing island
 	"""
@@ -61,29 +62,42 @@ def create_random_island(id_string):
 	# creation_method 1 - large island
 
 	# place this number of shapes
-	for i in xrange( int(float(width+height)/2 * 1.5) ):
-		x = rand.randint(8, width - 8)
-		y = rand.randint(8, height - 8)
-
+	for i in xrange(int(float(width+height) / 2 * 1.4)):
 		# place shape determined by shape_id on (x, y)
+		add = True
 		if creation_method == 0:
 			shape_id = rand.randint(3, 5)
 		elif creation_method == 1:
 			shape_id = rand.randint(5, 8)
+		elif creation_method == 2:
+			shape_id = rand.randint(2, 8)
+			if rand.randint(0, 14) == 0:
+				add = False
 
-		if rand.randint(1,4) == 1:
+		shape = None
+		if rand.randint(1,6) == 1:
 			# use a rect
-			if creation_method == 0:
-				for shape_coord in Rect.init_from_topleft_and_size(x-3, y-3, 5, 5).tuple_iter():
-					map_dict[shape_coord] = True
-			elif creation_method == 1:
-				for shape_coord in Rect.init_from_topleft_and_size(x-5, y-5, 8, 8).tuple_iter():
-					map_dict[shape_coord] = True
+			x = rand.randint(8, width - 7)
+			y = rand.randint(8, height - 7)
 
+			if creation_method == 0:
+				shape = Rect.init_from_topleft_and_size(x-3, y-3, 5, 5)
+			elif creation_method == 1:
+				shape = Rect.init_from_topleft_and_size(x-5, y-5, 8, 8)
 		else:
 			# use a circle, where radius is determined by shape_id
-			for shape_coord in Circle(Point(x, y), shape_id).tuple_iter():
-				map_dict[shape_coord] = True
+			radius = shape_id
+			if width - radius - 4 >= radius + 3 and height - radius - 4 >= radius + 3:
+				x = rand.randint(radius + 3, width - radius - 4)
+				y = rand.randint(radius + 3, height - radius - 4)
+				shape = Circle(Point(x, y), shape_id)
+
+		if shape:
+			for shape_coord in shape.tuple_iter():
+				if add:
+					map_dict[shape_coord] = True
+				elif shape_coord in map_dict:
+					del map_dict[shape_coord]
 
 	# write values to db
 	map_db = DbReader(":memory:")
@@ -150,6 +164,17 @@ def create_random_island(id_string):
 						if (x2, y2) in map_dict or (x2, y) in map_dict:
 							continue
 					to_fill[(x2, y2)] = True
+
+				# block diagonal 1 tile straits
+				for x_offset, y_offset in corners:
+					x2 = x + x_offset
+					y2 = y + y_offset
+					x3 = x + 2 * x_offset
+					y3 = y + 2 * y_offset
+					if (x2, y2) not in map_dict and (x3, y3) in map_dict:
+						to_fill[(x2, y2)] = True
+					elif (x2, y2) in map_dict and (x2, y) not in map_dict and (x, y2) not in map_dict:
+						to_fill[(x2, y)] = True
 
 			if to_fill:
 				for x, y in to_fill.iterkeys():
@@ -366,7 +391,7 @@ def generate_map(seed = None) :
 	island_min_size = (25, 25)
 	island_max_size = (28, 28)
 
-	method = rand.randint(0, 1) # choose map creation method
+	method = rand.randint(0, 2) # choose map creation method
 
 	if method == 0:
 		# generate up to 9 islands
@@ -422,6 +447,50 @@ def generate_map(seed = None) :
 		island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
 
 		db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
+	elif method == 2:
+		# tries to fill at most land_coefficient * 100% of the map with land 
+		map_width = 140
+		map_height = 140
+		min_island_size = 20
+		max_island_size = 80
+		max_islands = 20
+		min_space = 2
+		land_coefficient = max(0.07, min(0.2, rand.gauss(0.12, 0.04)))
+
+		islands = []
+		estimated_land = 0
+		max_land_amount = map_width * map_height * land_coefficient
+
+		for i in range(max_islands):
+			width = rand.randint(min_island_size, max_island_size)
+			coef = max(0.25, min(4, rand.gauss(1, 0.2)))
+			height = max(min_island_size, min(int(round(width * coef)), max_island_size))
+			size = width * height
+			if estimated_land + size > max_land_amount:
+				continue
+
+			for j in range(7):
+				# try to place the island 7 times
+				x = rand.randint(0, map_width - width)
+				y = rand.randint(0, map_height - height)
+				
+				rect = Rect.init_from_topleft_and_size(x, y, width, height)
+				blocked = False
+				for existing_island in islands:
+					if rect.distance(existing_island) < min_space:
+						blocked = True
+						break
+				if blocked:
+					continue
+
+				island_seed = rand.randint(-sys.maxint, sys.maxint)
+				island_params = {'creation_method': 2, 'seed': island_seed, \
+								 'width': width, 'height': height}
+				island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
+				db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
+
+				islands.append(rect)
+				break
 
 	return filename
 
