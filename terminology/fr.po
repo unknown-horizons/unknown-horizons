@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-06 19:41+0200\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2011-05-08 11:37+0200\n"
+"Last-Translator: sébastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # 
@@ -279,7 +279,7 @@ msgstr "minimap"
 #: po/tutorial.py
 #: horizons/gui/
 msgid "running costs"
-msgstr "coûts annuels"
+msgstr "coûts de fonctionnement"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -443,15 +443,13 @@ msgstr "acheter"
 msgid "connect"
 msgstr "connecter"
 
-# (poterminology) uh-tutorial/tutorial.pot (11)
-# 
-# (poterminology) uh/unknownhorizons.pot (2)
+# Woodcutter will be translated by bucheron. Lumberjack is difficult to translate because it is not just cutting trees...
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "lumberjack"
-msgstr "bûcheron"
+msgstr "camp de bucheron"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -589,19 +587,13 @@ msgstr "sélectionner / choisir"
 msgid "stock"
 msgstr "stock"
 
-# (poterminology) uh-tutorial/tutorial.pot (11)
+# I believe entrepôt will translated by warehouse
 # 
-# (poterminology) uh/unknownhorizons.pot (2)
-# 
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "storage"
-msgstr "entrepôt"
+msgstr "stockage"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -1548,14 +1540,10 @@ msgstr "de temps en temps"
 # 
 # (poterminology) uh/unknownhorizons.pot (1)
 # 
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trading"
-msgstr "commercer / machander / ~ de commerce"
+msgstr "commercer / marchander / ~ de commerce"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1570,18 +1558,12 @@ msgstr "commercer / machander / ~ de commerce"
 msgid "visit"
 msgstr "visiter / la visite"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
+# tisserand is really more beautifull than tisseur, isn't it ?
 # 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "weaver"
-msgstr "tisseur"
+msgstr "tisserand"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1607,7 +1589,7 @@ msgstr "continuer"
 #: po/tutorial.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "description"
-msgstr "déscription"
+msgstr "description"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 

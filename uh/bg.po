@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 10:44+0200\n"
+"PO-Revision-Date: 2011-05-08 10:58+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -218,42 +218,48 @@ msgstr "Грешна версия"
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"Случайната карта е още в процес на разработване. Беше обмислена "
+"предварителна тестова версия. Проблемите са очаквани."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr ""
+msgstr "Трудност:"
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr ""
+msgstr "Автор:"
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr ""
+msgstr "Описание:"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
-msgstr ""
+msgstr "Невалидно име"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Въведохте невалидно име"
 
 #: horizons/gui/modules/singleplayermenu.py:137
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Невалиден сценарий файл"
 
 #: horizons/gui/modules/singleplayermenu.py:138
 msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
+"Избраният файл не е валиден сценарий файл.\n"
+"Съобщение за грешка:"
 
 #: horizons/gui/modules/singleplayermenu.py:139
 msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
+"\n"
+"Моля докладвайте това на авторът."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:115
