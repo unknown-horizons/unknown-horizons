@@ -61,3 +61,6 @@ class NamedObject(WorldObject):
 		# We need unicode strings as the name is displayed on screen.
 		self.set_name(unicode(name, 'utf-8'))
 
+	@classmethod
+	def reset(cls):
+		cls.names_used = []
