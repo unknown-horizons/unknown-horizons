@@ -130,7 +130,7 @@ def create_random_island(id_string):
 					# (x2, y2) is now a point just off the island
 
 					neighbours_dirs = 0
-					for i in range(len(neighbours)):
+					for i in xrange(len(neighbours)):
 						x3 = x2 + neighbours[i][0]
 						y3 = y2 + neighbours[i][1]
 						if (x3, y3) not in map_dict:
@@ -461,7 +461,7 @@ def generate_map(seed = None) :
 		estimated_land = 0
 		max_land_amount = map_width * map_height * land_coefficient
 
-		for i in range(max_islands):
+		for i in xrange(max_islands):
 			width = rand.randint(min_island_size, max_island_size)
 			coef = max(0.25, min(4, rand.gauss(1, 0.2)))
 			height = max(min_island_size, min(int(round(width * coef)), max_island_size))
@@ -469,7 +469,7 @@ def generate_map(seed = None) :
 			if estimated_land + size > max_land_amount:
 				continue
 
-			for j in range(7):
+			for j in xrange(7):
 				# try to place the island 7 times
 				x = rand.randint(0, map_width - width)
 				y = rand.randint(0, map_height - height)
