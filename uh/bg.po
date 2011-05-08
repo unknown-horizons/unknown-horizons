@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 10:41+0200\n"
+"PO-Revision-Date: 2011-05-08 10:44+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -200,16 +200,20 @@ msgstr "Играчи:"
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Creator: "
-msgstr ""
+msgstr "Създал:"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Версията на играта се различава от вашата версия. Всеки играч в една обща "
+"игра трябва да използва една и съща версия. Това може да бъде оправено като "
+"всеки играч обнови до последна версия. Версия на играта: %(gameversion)s "
+"Вашата версия: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
-msgstr ""
+msgstr "Грешна версия"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
