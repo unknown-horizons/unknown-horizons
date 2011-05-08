@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 09:50+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: 2011-05-08 10:38+0200\n"
+"Last-Translator: Anielius <dalelemanes@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -26,19 +26,19 @@ msgstr "Nežinomų Horizontų versija: %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
-msgstr ""
+msgstr "Privaloma perkrauti"
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Kai kurie jūsų pakeitimai reikalauja Nežinomų Horizontų perkrovimo."
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr ""
+msgstr "Standartinė sistema"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr ""
+msgstr "Įspėjimas"
 
 #: horizons/engine.py:129
 msgid ""
@@ -54,44 +54,44 @@ msgstr ""
 
 #: horizons/gui/gui.py:121 horizons/spsession.py:97
 msgid "Error"
-msgstr ""
+msgstr "Klaida"
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr ""
+msgstr "Nepavyko įrašyti"
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Ar tikrai norite išeiti iš Nežinomų Horizontų?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr ""
+msgstr "Išeiti iš žaidimo"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Ar tikrai norite nutraukti veikiantį seansą?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr ""
+msgstr "Išeiti iš seanso"
 
 #: horizons/gui/gui.py:196
 msgid "No saved games"
-msgstr ""
+msgstr "Nėra išsaugotų žaidimų"
 
 #: horizons/gui/gui.py:196
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Nėra išsaugotų žaidimų įkėlimui"
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:134
 #: horizons/i18n/guitranslations.py:174
 msgid "Load game"
-msgstr ""
+msgstr "Įkelti žaidimą"
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:136
 msgid "Save game"
-msgstr ""
+msgstr "Išsaugoti žaidimą"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:251
@@ -100,10 +100,12 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Išsaugojimas su pavadinimu \"%s\" jau egzistuoja. \n"
+"Ar norite jį perrašyti?"
 
 #: horizons/gui/gui.py:252
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Perrašymo patvirtinimas"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
@@ -153,7 +155,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:421 horizons/main.py:198
 msgid "Error!"
-msgstr ""
+msgstr "Klaida!"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
@@ -177,7 +179,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:95
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Network Error"
-msgstr ""
+msgstr "Tinklo klaida"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
@@ -189,7 +191,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
-msgstr ""
+msgstr "Žemėlapis: "
 
 #: horizons/gui/modules/multiplayermenu.py:141
 msgid "Players: "
@@ -214,27 +216,27 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr ""
+msgstr "Sunkumas: "
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr ""
+msgstr "Autorius: "
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr ""
+msgstr "Aprašymas: "
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
-msgstr ""
+msgstr "Netinkamas žaidėjo vardas"
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "You entered an invalid playername"
-msgstr ""
+msgstr "Jūs įvedėte netinkamą žaidėjo vardą"
 
 #: horizons/gui/modules/singleplayermenu.py:137
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Netinkamas scenarijaus failas"
 
 #: horizons/gui/modules/singleplayermenu.py:138
 msgid ""
@@ -246,13 +248,13 @@ msgstr ""
 msgid ""
 "\n"
 "Please report this to the author."
-msgstr ""
+msgstr "Prašome apie tai pranešti žaidimo autoriui."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:115
 #: horizons/i18n/guitranslations.py:82
 msgid "Build"
-msgstr ""
+msgstr "Darinys"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
@@ -264,36 +266,36 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:170
 msgid "Fisher boats"
-msgstr ""
+msgstr "Žvejų valtys"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
-msgstr ""
+msgstr "Prekybos valtys"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 msgid "War boats"
-msgstr ""
+msgstr "Karo valtys"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 msgid "War ships"
-msgstr ""
+msgstr "Karo laivai"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Patvirtinti tvarką"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Prieaugis"
 
 #: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:325
 msgid "Trade"
-msgstr ""
+msgstr "Prekyba"
 
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:279
 #: horizons/i18n/guitranslations.py:330
 msgid "Inventory"
-msgstr ""
+msgstr "Inventorius"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
@@ -302,18 +304,18 @@ msgstr ""
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:273
 msgid "Account"
-msgstr ""
+msgstr "Paskyra"
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:246 horizons/i18n/guitranslations.py:289
 msgid "Settler overview"
-msgstr ""
+msgstr "Naujakurio apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:300
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:292
 #: horizons/i18n/guitranslations.py:305 horizons/i18n/guitranslations.py:321
 msgid "Overview"
-msgstr ""
+msgstr "Apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:96
 msgid "Branch office overview"
@@ -321,11 +323,11 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 msgid "Ship overview"
-msgstr ""
+msgstr "Laivo apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:156
 msgid "Production overview"
-msgstr ""
+msgstr "Gamybos apžvalga"
 
 #: horizons/gui/tabs/overviewtab.py:159
 msgid "Destroy building"

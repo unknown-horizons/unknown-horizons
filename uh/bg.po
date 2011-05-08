@@ -8,35 +8,36 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-08 10:41+0200\n"
+"Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr ""
+msgstr "Unknown Horizons Версия %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
-msgstr ""
+msgstr "Изисква се рестартиране"
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Някои от вашите промени изискват рестартиране на Unknown Horizons."
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr ""
+msgstr "Системни настройки"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr ""
+msgstr "Внимание"
 
 #: horizons/engine.py:129
 msgid ""
@@ -48,48 +49,48 @@ msgstr ""
 #: horizons/engine.py:193
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr ""
+msgstr "Избраният език %(lang)s от %(place)s не може да бъде зареден"
 
 #: horizons/gui/gui.py:121 horizons/spsession.py:97
 msgid "Error"
-msgstr ""
+msgstr "Грешка"
 
 #: horizons/gui/gui.py:121
 msgid "Failed to save."
-msgstr ""
+msgstr "Неуспех при запазване"
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да напуснете Unknown Horizons?"
 
 #: horizons/gui/gui.py:147
 msgid "Quit Game"
-msgstr ""
+msgstr "Напускане на играта"
 
 #: horizons/gui/gui.py:153
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да прекратите пуснатата сесия?"
 
 #: horizons/gui/gui.py:155
 msgid "Quit Session"
-msgstr ""
+msgstr "Напускане на сесията"
 
 #: horizons/gui/gui.py:196
 msgid "No saved games"
-msgstr ""
+msgstr "Няма запазени игри"
 
 #: horizons/gui/gui.py:196
 msgid "There are no saved games to load"
-msgstr ""
+msgstr "Няма запазени игри за зареждане"
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:134
 #: horizons/i18n/guitranslations.py:174
 msgid "Load game"
-msgstr ""
+msgstr "Зареждане на игра"
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:136
 msgid "Save game"
-msgstr ""
+msgstr "Запазване на игра"
 
 #. savegamename already exists
 #: horizons/gui/gui.py:251
@@ -98,28 +99,30 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
+"Съхранена игра с име \"%s\" вече съществува. \n"
+"Желаете ли да я презапишете?"
 
 #: horizons/gui/gui.py:252
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Потвърждение за презаписване"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Неизвестна дата на запазване"
 
 #: horizons/gui/gui.py:371
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Запазено на %s\n"
 
 #: horizons/gui/gui.py:372
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:383
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "Запазена игра вер. %d"
 
 #: horizons/gui/gui.py:385
 #, python-format
@@ -127,71 +130,73 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"ВНИМАНИЕ: Несъвместима вер. %(ver)d!\n"
+"Нужна вер. %(need)d!"
 
 #: horizons/gui/gui.py:388
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "НЕСЪВМЕСТИМА ВЕРСИЯ\n"
 
 #: horizons/gui/gui.py:411
 msgid "No file selected"
-msgstr ""
+msgstr "Няма избран файл"
 
 #: horizons/gui/gui.py:411
 msgid "You need to select a savegame to delete"
-msgstr ""
+msgstr "Нужно е да се избере запазената игра за да се изтрие"
 
 #: horizons/gui/gui.py:414
 #, python-format
 msgid "Do you really want to delete the savegame \"%s\"?"
-msgstr ""
+msgstr "Наистина ли искате да изтриете запазената игра \"%s\"?"
 
 #: horizons/gui/gui.py:416
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Потвърди изтриване"
 
 #: horizons/gui/gui.py:421 horizons/main.py:198
 msgid "Error!"
-msgstr ""
+msgstr "Грешка!"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Неуспех при изтриване на запазена игра!"
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
-msgstr ""
+msgstr "Натисни P за да продължиш играта или натисни долу!"
 
 #: horizons/gui/ingamegui.py:442
 msgid "Game paused"
-msgstr ""
+msgstr "Прекъсната игра"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr ""
+msgstr "Не може да се свържете към главният сървър. Детайли: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
 #: horizons/gui/modules/multiplayermenu.py:102
 msgid "Network Error"
-msgstr ""
+msgstr "Мрежова грешка"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
-msgstr ""
+msgstr "Нещо се обърка с мрежата"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr ""
+msgstr "Версията се различава!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
-msgstr ""
+msgstr "Карта:"
 
 #: horizons/gui/modules/multiplayermenu.py:141
 msgid "Players: "
-msgstr ""
+msgstr "Играчи:"
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Creator: "
