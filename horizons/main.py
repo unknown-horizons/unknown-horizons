@@ -128,7 +128,6 @@ def start(command_line_arguments):
 	preloading = (preload_thread, preload_lock)
 
 	# start something according to commandline parameters
-
 	startup_worked = True
 	if command_line_arguments.start_dev_map:
 		startup_worked = _start_dev_map()
@@ -142,6 +141,10 @@ def start(command_line_arguments):
 		startup_worked = _load_map(command_line_arguments.load_map)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
+	elif command_line_arguments.stringpreview:
+		startup_worked = _start_map("development_no_trees")
+		from development.stringpreviewwidget import StringPreviewWidget
+		StringPreviewWidget().show()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		preloading[0].start()

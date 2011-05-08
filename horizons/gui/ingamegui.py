@@ -71,7 +71,9 @@ class IngameGui(LivingObject):
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
 		cityinfo.position_technique = "center-10:top+5"
 
-		self.logbook = LogBook(session)
+		self.logbook = LogBook()
+		self.logbook.add_pause_request_listener(Callback(self.session.speed_pause))
+		self.logbook.add_unpause_request_listener(Callback(self.session.speed_unpause))
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap

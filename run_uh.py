@@ -114,6 +114,8 @@ def get_option_parser():
 											 action="store_true", default=False, help=_("For internal use only."))
 	dev_group.add_option("--profile", dest="profile", action="store_true", default=False, \
 											 help=_("Enable profiling (for developing only)."))
+	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", default=False, \
+											 help=_("Enable the string previewer tool for scenario writers"))
 	p.add_option_group(dev_group)
 
 	return p
