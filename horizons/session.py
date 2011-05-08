@@ -214,18 +214,6 @@ class Session(LivingObject):
 		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
 
-	def generate_map(self):
-		"""Generates a map."""
-
-		#load map
-		self.db("ATTACH ':memory:' AS map")
-		#...
-		self.world = World(self)
-		self.world._init(self.db)
-
-		#setup view
-		self.view.center(((self.world.max_x - self.world.min_x) / 2.0), ((self.world.max_y - self.world.min_y) / 2.0))
-
 	def speed_set(self, ticks):
 		"""Set game speed to ticks ticks per second"""
 		raise NotImplementedError
