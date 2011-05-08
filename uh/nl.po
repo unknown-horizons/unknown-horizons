@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 20:49+0200\n"
+"PO-Revision-Date: 2011-05-08 21:11+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -46,14 +46,14 @@ msgid ""
 "Use at own risk!"
 msgstr ""
 "De SDL renderer is als reservesysteem te gebruiken en kan serieuze gafische "
-"problemen geven.\n"
+"problemen geven. \n"
 "\n"
 "Gebruik op eigen risico!"
 
 #: horizons/engine.py:193
 #, python-format
 msgid "Configured language %(lang)s at %(place)s could not be loaded"
-msgstr "Geconfigureerde taal %(lang)s op %(place) kan niet worden geladen"
+msgstr "Geconfigureerde taal %(lang)s op %(place)s kan niet worden geladen"
 
 #: horizons/gui/gui.py:121 horizons/spsession.py:97
 msgid "Error"
@@ -139,9 +139,8 @@ msgstr ""
 "Versie %(need) vereist!"
 
 #: horizons/gui/gui.py:388
-#, fuzzy
 msgid "INCOMPATIBLE VERSION\n"
-msgstr "ONGESCHIKTE VERSIE\n"
+msgstr "NIET-COMPATIBELE VERSIE\n"
 
 #: horizons/gui/gui.py:411
 msgid "No file selected"
@@ -166,7 +165,7 @@ msgstr "Fout!"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
-msgstr "Verwijderen opgeslagen spel mislukt"
+msgstr "Verwijderen opgeslagen spel mislukt!"
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
@@ -190,7 +189,7 @@ msgstr "Netwerk fout"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
-msgstr "Er is een netwerk fout opgetreden:"
+msgstr "Er is een netwerk fout opgetreden: "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
@@ -198,15 +197,15 @@ msgstr "Verschillende versie!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
-msgstr "Kaart:"
+msgstr "Kaart: "
 
 #: horizons/gui/modules/multiplayermenu.py:141
 msgid "Players: "
-msgstr "Spelers:"
+msgstr "Spelers: "
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Creator: "
-msgstr "Ontwerper:"
+msgstr "Ontwerper: "
 
 #: horizons/gui/modules/multiplayermenu.py:161
 #, python-format
@@ -228,15 +227,15 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr "Moeilijkheidsgraad:"
+msgstr "Moeilijkheidsgraad: "
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr "Auteur:"
+msgstr "Auteur: "
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr "Omschrijving:"
+msgstr "Omschrijving: "
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
@@ -256,7 +255,7 @@ msgid ""
 "Error message: "
 msgstr ""
 "Het geselecteerde bestand is geen geldig scenario bestand.\n"
-"Foutmelding:"
+"Foutmelding: "
 
 #: horizons/gui/modules/singleplayermenu.py:139
 msgid ""
@@ -456,8 +455,7 @@ msgstr "Boerderij: Verbouwt groenten en beheert vee."
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
 msgstr ""
-"Weiland: Leefruimte voor schapen. Produceert wol. Heeft een boerderij nodig. "
-""
+"Weiland: Leefruimte voor schapen. Produceert wol. Heeft een boerderij nodig."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
@@ -536,11 +534,11 @@ msgstr "Logboek van de kapitein"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
-msgstr "Kaart tegen de klok in draaien."
+msgstr "Kaart tegen de klok in draaien"
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Rotate map clockwise"
-msgstr "Kaart met de klok mee draaien."
+msgstr "Kaart met de klok mee draaien"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
@@ -758,7 +756,7 @@ msgstr "{ - } = Spel snelheid verlagen"
 
 #: horizons/i18n/guitranslations.py:162
 msgid "{S} = Screenshot"
-msgstr "{S} = Screenshot"
+msgstr "{S} = Schermafbeelding"
 
 #: horizons/i18n/guitranslations.py:163
 msgid "{SHIFT} = Hold to place multiple buildings"
@@ -779,7 +777,7 @@ msgstr "Verlaat naar hoofd menu"
 
 #: horizons/i18n/guitranslations.py:168
 msgid "Loading ..."
-msgstr "Laden..."
+msgstr "Laden ..."
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
@@ -935,11 +933,11 @@ msgstr "Muziek volume:"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Number of autosaves:"
-msgstr "Aantal automatisch opslaan"
+msgstr "Aantal automatisch opgeslagen spelen:"
 
 #: horizons/i18n/guitranslations.py:223
 msgid "Number of quicksaves:"
-msgstr "Aantal snel opslaan"
+msgstr "Aantal snel opgeslagen spelen:"
 
 #: horizons/i18n/guitranslations.py:224
 msgid "Full screen:"
@@ -1000,9 +998,8 @@ msgstr "Scenario"
 # 90%
 # 100%
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "Start game"
-msgstr "Start spel:"
+msgstr "Start spel"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Color:"
@@ -1054,7 +1051,7 @@ msgstr "Hervat"
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:275
 #: horizons/i18n/guitranslations.py:297 horizons/i18n/guitranslations.py:299
 msgid "Running costs"
-msgstr "Operatie kosten:"
+msgstr "Operatie kosten"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Fishing boat"
@@ -1216,7 +1213,7 @@ msgstr "Laden/Uitladen:"
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535."
 msgstr ""
 "Fout: Ongeldige syntax in --mp-master opdrachtregel optie. Port moet een "
-"nummer zijn tussen 0 en 65535"
+"nummer zijn tussen 0 en 65535."
 
 #: horizons/main.py:95
 msgid "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 0 and 65535."
@@ -1235,7 +1232,7 @@ msgstr "Fout: Kan de kaart \"%s\" niet vinden."
 
 #: horizons/main.py:279 horizons/main.py:312
 msgid "Error: Found multiple matches: "
-msgstr "Fout: Meerdere resultaten gevonden:"
+msgstr "Fout: Meerdere resultaten gevonden: "
 
 #: horizons/main.py:309
 #, python-format
@@ -1266,7 +1263,7 @@ msgstr "U heeft gewonnen!"
 
 #: horizons/scenario/actions.py:72
 msgid "You have completed this scenario. "
-msgstr "U heeft het scenario voltooid."
+msgstr "U heeft het scenario voltooid. "
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
@@ -1300,7 +1297,7 @@ msgstr "Handelaar"
 
 #: run_uh.py:79
 msgid "Enable debug output to stderr and a logfile."
-msgstr "Schakel debug output naar stderr en een log bestand"
+msgstr "Schakel debug output naar stderr en een log bestand."
 
 #: run_uh.py:81
 msgid "Specify the path to FIFE root directory."
@@ -1318,7 +1315,10 @@ msgstr "Specificeer alternatieve multiplayer master server."
 
 #: run_uh.py:87
 msgid "Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port."
-msgstr "Specificeer netwerk adres "
+msgstr ""
+"Specificeer netwerkadres voor de lokale clients om te connecten. Dit is zeer "
+"handig als NAT holepunching niet werkt, maar je wel een statische poort kan "
+"forwarden."
 
 #: run_uh.py:90
 msgid "Starting unknown horizons"
@@ -1361,7 +1361,8 @@ msgstr ""
 #: run_uh.py:110
 msgid "Enable logging for a certain logging module (for developing only)."
 msgstr ""
-"Schakel logging in for een bepaalde logging module (alleen voor ontwikkelen)"
+"Schakel logging in for een bepaalde logging module (alleen voor "
+"ontwikkelaars)."
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
@@ -1373,7 +1374,7 @@ msgstr "Alleen voor intern gebruik."
 
 #: run_uh.py:116
 msgid "Enable profiling (for developing only)."
-msgstr "Schakel profiling in (alleen voor ontwikkelen)"
+msgstr "Schakel profiling in (alleen voor ontwikkelaars)."
 
 #: run_uh.py:138
 msgid "Unknown Horizons crashed."
@@ -1403,7 +1404,7 @@ msgstr "FIFE laden mislukt:"
 
 #: run_uh.py:344
 msgid "FIFE was not found."
-msgstr "FIFE niet gevonden"
+msgstr "FIFE niet gevonden."
 
 #: sqlite/Building
 msgid "Boat Builder"
@@ -1577,7 +1578,7 @@ msgstr "Een nieuwe wereld is aangemaakt"
 
 #: sqlite/Messages
 msgid "One of your settler has no market place in it's range."
-msgstr "Een van Uw kolonisten heeft geen markt in zijn bereik."
+msgstr "Een van uw kolonisten heeft geen marktplaats binnen bereik."
 
 #: sqlite/Messages
 msgid "Screenshot has been saved to ${file}."

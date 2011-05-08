@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-08 17:16+0200\n"
+"PO-Revision-Date: 2011-05-08 21:40+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -701,7 +701,7 @@ msgstr "bereik"
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "running"
-msgstr ""
+msgstr "in bedrijf"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -881,7 +881,7 @@ msgstr "woningen"
 #: po/tutorial.py
 #: horizons/gui/widgets/inventory.py
 msgid "slot"
-msgstr ""
+msgstr "slot"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -1031,7 +1031,7 @@ msgstr "marktplaats"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "mode"
-msgstr ""
+msgstr "modus"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
