@@ -113,6 +113,8 @@ class LogBook(object):
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""
+		if len(self._messages) == 0:
+			return
 		#assert direction in (-1, 1)
 		new_cur = self._cur_entry + direction
 		if new_cur < 0 or new_cur >= len(self._messages):
@@ -144,15 +146,15 @@ class LogBook(object):
 					texts[1] = self._messages[self._cur_entry+1]
 					heads[1] = self._headings[self._cur_entry+1]
 		else:
-			heads[0] = _("Emptiness...")
-			texts[0] = _("There is no entry in your logbook, yet...")
+			heads[0] = _('Emptiness')
+			texts[0] = "\n\n" + _('There is nothing written in your logbook yet!')
 
 		self.backward_button.set_active()
 		self.forward_button.set_active()
 
-		if self._cur_entry == 0:
+		if len(self._messages) == 0 or self._cur_entry == 0:
 			self.backward_button.set_inactive()
-		if self._cur_entry == len(self._messages) - 2 or len(self._messages) == 0:
+		if len(self._messages) == 0 or self._cur_entry == len(self._messages) - 2:
 			self.forward_button.set_inactive()
 
 		self._gui.findChild(name="head_left").text = heads[0]
