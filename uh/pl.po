@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-04-09 20:22+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-08 13:12+0200\n"
+"Last-Translator: Mateusz <eugen@victorygames.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgstr "Zapisano na %s\n"
 
 #: horizons/gui/gui.py:372
 msgid "%H:%M, %A, %B %d"
-msgstr ""
+msgstr "%H:%M, %A, %B %d"
 
 #: horizons/gui/gui.py:383
 #, python-format
@@ -133,7 +133,7 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
-"UWAGA: Niekompatybilna wersja:  %(ver)d!\n"
+"UWAGA: Niekompatybilna wersja: %(ver)d!\n"
 "Potrzebna wersja %(need)d!"
 
 #: horizons/gui/gui.py:388
@@ -163,7 +163,7 @@ msgstr "Błąd!"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
-msgstr "Nie można usunąć zapisane gry!"
+msgstr "Nie można usunąć zapisanej gry!"
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
@@ -177,7 +177,7 @@ msgstr "Gra zatrzymana"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr ""
+msgstr "Nie można połączyć się z głównym serwerem. Szczegóły %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -191,7 +191,7 @@ msgstr "Coś poszło nie tak z siecią: "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr ""
+msgstr "Różne wersje!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
@@ -209,14 +209,19 @@ msgstr "Twórca: "
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Wersja gry jest inna niż twoja. Każdy gracz w rozgrywce sieciowej musi mieć "
+"tę samą wersję gry. Najlepiej aby każdy gracz pobrał najnowszą wersję. "
+"Wersja gry: %(gameversion)s Twoja wersja: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
-msgstr ""
+msgstr "Zła wersja"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"Wciąż trwają prace na tworzeniem map losowo. Aktualna wersja jest testowa. "
+"Spodziewane są problemy."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
@@ -247,7 +252,7 @@ msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
-"Wybrany plik nie jest poprawnym plikiem scenariusz. \n"
+"Wybrany plik nie jest poprawnym plikiem scenariusza. \n"
 "Komunikat o błędzie: "
 
 #: horizons/gui/modules/singleplayermenu.py:139
@@ -265,8 +270,9 @@ msgid "Build"
 msgstr "Zbuduj"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
+#, fuzzy
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Podgląd budowy łodzi"
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
@@ -288,7 +294,7 @@ msgstr "Statki wojenne"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 msgid "War ships"
-msgstr "Statki wojenne"
+msgstr "Okręty wojenne"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
@@ -341,9 +347,8 @@ msgid "Production overview"
 msgstr "Przegląd produkcji"
 
 #: horizons/gui/tabs/overviewtab.py:159
-#, fuzzy
 msgid "Destroy building"
-msgstr "Destroy budowlane"
+msgstr "Zniszcz budowlę"
 
 #: horizons/gui/tabs/overviewtab.py:284
 #, fuzzy
@@ -353,7 +358,7 @@ msgstr "Przegląd Marketplace"
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Limit: %st na slot"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
@@ -434,7 +439,7 @@ msgstr "Budowniczy łodzi: Buduje łodzie i małe łódki, musi być na brzegu."
 
 #: horizons/i18n/guitranslations.py:63
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
+msgstr "Cegielnia: Zmienia glinę w cegły"
 
 #: horizons/i18n/guitranslations.py:64
 msgid "Clay pit: Gets clay from deposit."

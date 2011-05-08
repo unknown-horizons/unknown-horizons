@@ -36,7 +36,7 @@ msgstr ""
 
 #: po/tutorial.py:4
 msgid "Build a branch office at the coast."
-msgstr ""
+msgstr "Vybuduj pobočku na pobřeží."
 
 #: po/tutorial.py:5
 msgid "Welcome to Unknown Horizons!"
