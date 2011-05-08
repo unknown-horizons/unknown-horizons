@@ -36,6 +36,7 @@
 			<Label text="RainCT (Siegfried Gevatter)" />
 			<Label text="tuempl (Harald Demel)" />
 			<Label text="manuel (Manuel Mausz)" />
+			<Label text="gscai (Ott Tinn)" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
