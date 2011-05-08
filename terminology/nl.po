@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-08 17:15+0200\n"
-"Last-Translator: Shadow23 <jasper@letsgame.nl>\n"
+"PO-Revision-Date: 2011-05-08 17:16+0200\n"
+"Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -456,7 +456,6 @@ msgstr "vrij"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "left"
 msgstr "links"
 
@@ -711,7 +710,6 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
-#, fuzzy
 msgid "setting"
 msgstr "koloniseren"
 
@@ -788,7 +786,6 @@ msgstr "Kapiteins log"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "construction"
 msgstr "bouwen"
 
@@ -798,7 +795,6 @@ msgstr "bouwen"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "decrease"
 msgstr "verminderen"
 
@@ -808,7 +804,6 @@ msgstr "verminderen"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "free trader"
 msgstr "vrije handelaar"
 
@@ -867,7 +862,6 @@ msgstr "drank"
 # 
 #: po/tutorial.py
 #: sqlite/Resources
-#, fuzzy
 msgid "raw"
 msgstr "ruw"
 
@@ -1274,7 +1268,6 @@ msgstr "voldoen"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "graphics"
 msgstr "beeld"
 
