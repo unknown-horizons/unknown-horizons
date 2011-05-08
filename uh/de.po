@@ -20,7 +20,7 @@ msgstr ""
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Unknown Horizons Version %s"
+msgstr "Unbekannte Horizons Version %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
