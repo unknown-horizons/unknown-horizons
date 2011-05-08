@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 20:29+0200\n"
+"PO-Revision-Date: 2011-05-08 20:49+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1516,7 +1516,7 @@ msgstr "Tent"
 
 #: sqlite/Building
 msgid "Tent_ruin"
-msgstr "Verlaten Tent"
+msgstr "Verlaten tent"
 
 #: sqlite/Building
 #, fuzzy
