@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 13:12+0200\n"
+"PO-Revision-Date: 2011-05-08 15:37+0200\n"
 "Last-Translator: Mateusz <eugen@victorygames.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -447,11 +447,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
-msgstr ""
+msgstr "Destylarnia: Zmienia cukier w alkohol"
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."
-msgstr "Ferma: Pozwala zbudować pola i pastwiska."
+msgstr "Farma: Pozwala na uprawę roślin i chów zwierząt"
 
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
