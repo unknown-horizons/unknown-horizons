@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-08 21:50+0200\n"
+"PO-Revision-Date: 2011-05-08 21:51+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -581,7 +581,7 @@ msgstr "signaal"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr "signaal vuur"
+msgstr "vuursignaal"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
