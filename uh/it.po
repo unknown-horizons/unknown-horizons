@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-04-14 12:10+0200\n"
+"PO-Revision-Date: 2011-05-07 18:24+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -62,9 +62,8 @@ msgstr "Errore"
 
 # 75%
 #: horizons/gui/gui.py:121
-#, fuzzy
 msgid "Failed to save."
-msgstr "Salvataggio rapido fallito."
+msgstr "Salvataggio fallito."
 
 #: horizons/gui/gui.py:146
 #, fuzzy
