@@ -33,7 +33,7 @@ class TabInterface(object):
 
 	Use the refresh() method to implement any redrawing of the widget. The
 	TabWidget will call this method based on callbacks. If you set any callbacks
-	yourself, make sure you	get them removed when the widget is deleted.
+	yourself, make sure you get them removed when the widget is deleted.
 
 	Make sure to call the init_values() function after you set self.widget, to
 	ensure proper initialization of needed properties.

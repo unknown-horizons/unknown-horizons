@@ -4,7 +4,11 @@
 
 <Container position="0,70" size="265,270" >
 
-	<Label name="headline" position="85,7" text="Inventory"/>
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<Label name="headline"  text="Inventory"/>
+	</HBox>
+
 	<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="75,50" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="130,50" />

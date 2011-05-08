@@ -5,7 +5,10 @@
 
 <Container position="0,70" size="245,300" >
 	<!-- Name of Ship -->
-	<TooltipLabel name='name' border_size="0" position="80,7" tooltip="Click to change the name of this ship."/>
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<TooltipLabel name='name'  border_size="0"  tooltip="Click to change the name of this ship."/>
+	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 

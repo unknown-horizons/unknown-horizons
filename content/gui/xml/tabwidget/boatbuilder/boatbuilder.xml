@@ -5,7 +5,11 @@
 
 	<Container position="0,70" size="260,80" >
 
-		<Label name="headline" position="55,7" text="Building overview" />
+		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<Spacer min_size="0"  max_size="50" />
+			<Label name="headline"  text="Building overview" />
+		</HBox>
+
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Label name='name' position="25,40" text="" />
 		<TooltipIcon name="running_costs_label" image="content/gui/icons/resources/running_costs.png" position="180,40" tooltip="Running costs" />

@@ -4,7 +4,10 @@
 
 	<Container position="0,70" size="245,350" >
 		<!-- Name of building -->
-		<Label name='name' border_size="0" position="80,7"/>
+		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<Spacer min_size="0"  max_size="50" />
+			<Label name='name' border_size="0" />
+		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
