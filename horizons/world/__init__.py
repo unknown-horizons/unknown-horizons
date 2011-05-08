@@ -228,7 +228,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		to check out how buildings and settlements are added to the map"""
 
 	@decorators.make_constants()
-	def init_new_world(self):
+	def init_new_world(self, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):
 		"""This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
 
@@ -255,8 +255,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			Fish = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
 			Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
 			for island in self.islands:
-				max_clay_deposits = self.session.random.randint(2, 3)
-				max_mountains = self.session.random.randint(1, 3)
+				if maxclay <= minclay:
+					minclay = mayclay-1
+				if maxmountains <= minmountains:
+					minmountains = maxmountains-1
+				max_clay_deposits = self.session.random.randint(minclay, maxclay)
+				max_mountains = self.session.random.randint(minmountains, maxmountains)
 				num_clay_deposits = 0
 				num_mountains = 0
 				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
