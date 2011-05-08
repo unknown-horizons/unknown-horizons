@@ -2,22 +2,28 @@
 <Container size="264,550">
 <TabBG amount="8"/>
 
-<Container position="0,70" size="600,500" >
-<Label name="headline" text="Trade" position="105,7"/>
+<Container position="0,70" size="250,500">
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<Label name="headline" text="Trade" />
+	</HBox>
 <Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 	<!-- Inventory of ship -->
-<Container size="520,550" position="20,40">
-
-	<Label name="ship_label" text="Ship:" position="0,3"/>
+<Container size="230,550" position="20,40">
 	<Icon image="content/gui/images/tabwidget/icon_trade_ship.png" position="160,0" />
+	<HBox position="0,3"  min_size="170,20"  size="230,20">
+		<Label name="ship_label"  text="Ship:" />
+	<Spacer min_size="0"  max_size="50" />
+		<Label name="ship_name"  text="" />
+	</HBox>
 
-	<Icon image="content/gui/images/background/inv_bg.png" position="0,35" name="slot" />
-	<Icon image="content/gui/images/background/inv_bg.png" position="55,35" name="slot" />
+	<Icon image="content/gui/images/background/inv_bg.png" position="  0,35" name="slot" />
+	<Icon image="content/gui/images/background/inv_bg.png" position=" 55,35" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="110,35" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="165,35" name="slot" />
 
-	<Inventory name="inventory_ship" size="300,150" position="-5,30"/>
+	<Inventory name="inventory_ship" size="300,150" position="-5,30" />
 
 </Container>
 
@@ -28,33 +34,33 @@
 
 		<Label text="Exchange:" name="exchange_label" position="0,3" />
 
-		<ImageButton name="size_1" text="" size="32,32" position="5, 25" 
-			up_image="content/gui/icons/ship/smallbutton.png" 
-			down_image="content/gui/icons/ship/smallbutton_d.png" 
+		<ImageButton name="size_1" text="" size="32,32" position="5, 25"
+			up_image="content/gui/icons/ship/smallbutton.png"
+			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
 		<Label position="13, 58" text="1t" />
 
-		<ImageButton name="size_2" text="" size="32,32" position="47, 25" 
-			up_image="content/gui/icons/ship/smallbutton.png" 
-			down_image="content/gui/icons/ship/smallbutton_d.png" 
+		<ImageButton name="size_2" text="" size="32,32" position="47, 25"
+			up_image="content/gui/icons/ship/smallbutton.png"
+			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
 		<Label position="55, 58" text="5t" />
 
-		<ImageButton name="size_3" text="" size="32,32" position="90, 25" 
-			up_image="content/gui/icons/ship/smallbutton.png" 
-			down_image="content/gui/icons/ship/smallbutton_d.png" 
+		<ImageButton name="size_3" text="" size="32,32" position="90, 25"
+			up_image="content/gui/icons/ship/smallbutton.png"
+			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
 		<Label position="95, 58" text="10t" />
 
-		<ImageButton name="size_4" text="" size="32,32" position="132, 25" 
-			up_image="content/gui/icons/ship/smallbutton.png" 
-			down_image="content/gui/icons/ship/smallbutton_d.png" 
+		<ImageButton name="size_4" text="" size="32,32" position="132, 25"
+			up_image="content/gui/icons/ship/smallbutton.png"
+			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
 		<Label position="137, 58" text="20t" />
 
-		<ImageButton name="size_5" text="" size="32,32" position="174, 25" 
-			up_image="content/gui/icons/ship/smallbutton.png" 
-			down_image="content/gui/icons/ship/smallbutton_d.png" 
+		<ImageButton name="size_5" text="" size="32,32" position="174, 25"
+			up_image="content/gui/icons/ship/smallbutton.png"
+			down_image="content/gui/icons/ship/smallbutton_d.png"
 			hover_image="content/gui/icons/ship/smallbutton_h.png" />
 		<Label position="179, 58" text="50t" />
 
@@ -64,22 +70,24 @@
 
 	<!-- Inventory of Settlement -->
 <Container size="520,550" position="20,240">
-	<Label name="trade_with_label" text="Trade partner:" position="0,3"/>
 	<Icon image="content/gui/images/tabwidget/icon_trade_settlement.png" position="160,0" />
+	<HBox position="0,3"  min_size="170,20"  size="230,20">
+		<Label name="trade_with_label" text="Trade partner:" />
+	<Spacer min_size="0"  max_size="50" />
+		<Label text="" position="100,3" name="partners" />
+	</HBox>
 
-	<Label text="" position="100,3" name="partners"/>
-
-	<Icon image="content/gui/images/background/inv_bg.png" position="0,35" name="slot" />
-	<Icon image="content/gui/images/background/inv_bg.png" position="55,35" name="slot" />
+	<Icon image="content/gui/images/background/inv_bg.png" position="  0,35" name="slot" />
+	<Icon image="content/gui/images/background/inv_bg.png" position=" 55,35" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="110,35" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="165,35" name="slot" />
 
-	<Icon image="content/gui/images/background/inv_bg.png" position="0,90" name="slot" />
-	<Icon image="content/gui/images/background/inv_bg.png" position="55,90" name="slot" />
+	<Icon image="content/gui/images/background/inv_bg.png" position="  0,90" name="slot" />
+	<Icon image="content/gui/images/background/inv_bg.png" position=" 55,90" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="110,90" name="slot" />
 	<Icon image="content/gui/images/background/inv_bg.png" position="165,90" name="slot" />
 
-	<Inventory name="inventory_partner" size="300,300" position="-5,30"/>
+	<Inventory name="inventory_partner" size="300,300" position="-5,30" />
 		<!--<DropDown min_size="170, 0" position="90, 165" name="partners"/>-->
 
 </Container>

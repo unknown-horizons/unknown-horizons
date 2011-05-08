@@ -4,40 +4,55 @@ Unknown Horizons
 -----------------------------------------------------
 
 2011-??-??: Milestone 2011.2
-changelog date: APR 24; rev: be7ace0ed0ed888cacd5f93643974fedd8fc8ebe
+changelog date: MAY 01; rev: 0b297a6a1d6ffcf6122792e34803702fab31fba4
   * New: Moved to new tileset structure // not merged yet
   * New: Made new fife editor work with new tileset structure // not merged yet
 
 * General
   * New: pirates with home position sail around and chase player ship
+  * New: five city names, mostly South-American flavoured
   * New: 
   * Change: 
   * Fix: save/load of scenario variables
   * Fix: properly destruct the messagewidget
   * Fix: pirate had acquired teleportation abilities
+  * Fix: bug in pirate code: wrong rect calculation
   * Fix: 
 
 * Gameplay and Balancing
   * New: basic ship routes
-  * New: Cache parsed yaml files. Speeds up selecting scenarios in SP menu.
+  * New: Cache yaml files unless altered. Faster scenario selection in SP menu.
   * New: option to disable edge scrolling with mouse
   * New: 
+  * Change: tavern building costs: 250 coins, 4 boards, 2 bricks (was 0,0,0)
+  * Change: storage tent building costs: 350 coins (was 750), 4 boards (was 10)
+  * Change: storage tent additional capacity per slot: 10t (was 30)
+  * Change: storage tent radius: 17 (was 24). Reduces the covered area by 50%.
+  * Change: Use pirate ship names for pirates instead of player ship names
   * Change: 
   * Fix: show player's gold immediately after load
+  * Fix: handling of multiple dialogs that pause the game (new pause stack)
+  * Fix: reset of tile walkability after buildings have been removed
+  * Fix: Made trader a bit faster when it can't find a path to a branch office
   * Fix: 
 
 * Graphics and GUI
   * New: tooltip for capacity utilization
   * New: storage capacity can now be set for each storage building
   * New: sugarcane field
+  * New: tavern
+  * New: half-timbered house
+  * New: ship name label and dynamic spacing in trade / exchange widget
+  * New: tooltips for minimap HUD buttons
   * New: 
   * Change: Custom tooltip widgets now support names set in python code
-  * Change: tavern building costs: 250 coins, 4 boards, 2 bricks (was 0,0,0)
-  * Change: storage tent building costs: 350 coins (was 750), 4 boards (was 10)
-  * Change: storage tent additional capacity per slot: 10t (was 30)
-  * Change: storage tent radius: 17 (was 24). Reduces the covered area by 50%.
   * Change: made random maps prettier, coastline is now properly drawn
+  * Change: Removed our center_widget in favor of pychan's position_technique=
+            "center:center". Also modified other positioning code to use this.
+  * Change: Default style border size now 0 (was 2)
   * Change: 
+  * Fix: Spacing issues in build preview tab headline when rotating
+  * Fix: 'Widget containment fumble' warning in buyselltab selection widget
   * Fix: 
 
 * Translations

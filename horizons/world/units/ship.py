@@ -52,6 +52,10 @@ class ShipRoute(object):
 		self.enabled = False
 
 	def append(self, branch_office, resource_list):
+		#don't add to consecutive offices to route
+		if len(self.waypoints) > 0 and\
+		   self.waypoints[-1]['branch_office'] == branch_office:
+			raise IndexError
 		self.waypoints.append({
 		  'branch_office' : branch_office,
 		  'resource_list' : resource_list
@@ -194,6 +198,10 @@ class Ship(NamedObject, StorageHolder, Unit):
 		"""Moves the ship.
 		This is called when a ship is selected and RMB is pressed outside the ship"""
 		self.stop()
+		
+		#disable the trading route
+		if hasattr(self, 'route'):
+			self.route.disable()
 		ship_id = self.worldid # this has to happen here,
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
@@ -257,7 +265,7 @@ class PirateShip(Ship):
 	"""Represents a pirate ship."""
 	tabs = ()
 	def _possible_names(self):
-		names = self.session.db("SELECT name FROM data.shipnames WHERE for_player = 1")
+		names = self.session.db("SELECT name FROM data.shipnames WHERE for_pirates = 1")
 		return map(lambda x: x[0], names)
 
 class TradeShip(Ship):

@@ -3,10 +3,13 @@
 <TabBG amount="6"/>
 
 	<Container position="0,70" size="245,350" >
-		<Label name='headline' border_size="0" position="50,7" text="Resource deposit"/>
+
+	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Spacer min_size="0"  max_size="50" />
+		<Label name='headline'  border_size="0"  text="Resource deposit"/>
+	</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-
 
 		<!-- Picture -->
 		<!--

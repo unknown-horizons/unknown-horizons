@@ -24,6 +24,14 @@ import platform
 import os
 
 def find_enet_module():
+  # Try to find installed version first
+  try:
+    import enet
+    return enet
+  except ImportError:
+    pass
+
+
   type = platform.system().lower()
 
   arch = platform.architecture()[0]

@@ -2,11 +2,13 @@
 <Container size="260,400">
 <TabBG amount="5"/>
 
-<Container name="content" position="0,70" size="500,400" >
+<Container name="content" position="0,70" size="250,330" >
 	<Label name="headline" text="Select resources:" position="50,7"/>
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	<!-- Displays list of resources to select one for trade. -->
-	<VBox name="resources" size="200,0" position="20,110"/>
+	<VBox name="resources" size="200,0" position="20,35">
+	<Spacer />
+	</VBox>
 </Container>
 
 </Container>

@@ -90,6 +90,13 @@ def set_translations():
 			"gameMenuButton"              : _("Game menu"),
 			"helpLink"                    : _("Help"),
 			"logbook"                     : _("Captain's log")},
+		"minimap.xml" : {
+			"rotateLeft"                  : _("Rotate map counterclockwise"),
+			"rotateRight"                 : _("Rotate map clockwise"),
+			"speedDown"                   : _("Decrease game speed"),
+			"speedUp"                     : _("Increase game speed"),
+			"zoomIn"                      : _("Zoom in"),
+			"zoomOut"                     : _("Zoom out")},
 		"status.xml" : {
 			"boards_icon"                 : _("Boards"),
 			"bricks_icon"                 : _("Bricks"),

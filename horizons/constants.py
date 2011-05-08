@@ -272,11 +272,13 @@ class _LanguageNameDict(dict):
 		return self.get(key, key)
 
 LANGUAGENAMES = _LanguageNameDict(
-	ca    = u'Català',
+	bg    = u'Български',
+	ca    = u'Català', # see below
+	cs    = u'Čeština',
 	de    = u'Deutsch',
 	en    = u'English',
-	et    = u'Eesti',
 	es    = u'Español',
+	et    = u'Eesti',
 	fi    = u'Suomi',
 	fr    = u'Français',
 	hu    = u'Magyar',
@@ -290,3 +292,4 @@ LANGUAGENAMES = _LanguageNameDict(
 	ru    = u'Русский',
 	sl    = u'Slovenski',
 	)
+LANGUAGENAMES['ca@valencia'] = u'Català' # need to do this if @ sign in po file name

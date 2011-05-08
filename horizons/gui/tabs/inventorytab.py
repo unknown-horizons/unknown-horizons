@@ -63,14 +63,6 @@ class ShipInventoryTab(InventoryTab):
 		)
 		self.tooltip = _("Ship inventory")
 
-	def add_route(self):
-		waypoints = [{
-		  'branch_office' : b,
-		  'resource_list' : {4:-1}, # unload one unit of boards everywhere
-		  } for b in self.instance.session.world.get_branch_offices()]
-		self.instance.create_route(waypoints)
-		self.instance.route.enable()
-
 	def configure_route(self):
 		route_menu = RouteConfig(self.instance)
 		route_menu.toggle_visibility()

@@ -93,7 +93,26 @@ class BranchOfficeOverviewTab(OverviewTab):
 			widget = 'overview_branchoffice.xml',
 			instance = instance
 		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		self.tooltip = _("Branch office overview")
+
+	def refresh(self):
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		super(BranchOfficeOverviewTab, self).refresh()
+
+class MarketPlaceOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(MarketPlaceOverviewTab, self).__init__(
+			widget = 'overview_mainsquare.xml',
+			instance = instance
+		)
+		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		self.tooltip = _("Market place overview")
+
+	def refresh(self):
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
+		super(MarketPlaceOverviewTab, self).refresh()
 
 
 class ShipOverviewTab(OverviewTab):
@@ -244,6 +263,7 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.tooltip = _("Settler overview")
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
 
 		action_set = ActionSetLoader.get_action_sets()[self.instance._action_set_id]
@@ -257,6 +277,7 @@ class SettlerOverviewTab(OverviewTab):
 			self.instance.inhabitants, self.instance.inhabitants_max ) )
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.name)
 		super(SettlerOverviewTab, self).refresh()
 
 	def update_consumed_res(self):
@@ -272,19 +293,6 @@ class SettlerOverviewTab(OverviewTab):
 			container.addChild(icon)
 
 		container.adaptLayout()
-
-class MarketPlaceOverviewTab(OverviewTab):
-# CLASS AND WIDGET ARE CURRENTLY NOT USED, check ./marketplacetabs.py
-	def  __init__(self, instance):
-		super(MarketPlaceOverviewTab, self).__init__(
-			widget = 'overview_marketplace.xml',
-			instance = instance
-		)
-		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.instance.settlement)
-		self.tooltip = _("Market place overview")
-
-	def refresh(self):
-		super(MarketPlaceOverviewTab, self).refresh()
 
 class SignalFireOverviewTab(OverviewTab):
 	def __init__(self, instance):

@@ -32,7 +32,8 @@ N_ = namespace_translation.ungettext
 
 
 def find_available_languages():
-	alternatives = ('build/mo',
+	alternatives = ('content/lang',
+	                'build/mo',
 		            '/usr/share/locale',
 		            '/usr/share/games/locale',
 		            '/usr/local/share/locale',

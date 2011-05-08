@@ -38,7 +38,6 @@ from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
-from horizons.gui.utility import center_widget
 
 UH_MODULE="unknownhorizons"
 
@@ -214,7 +213,7 @@ class Fife(ApplicationBase):
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
 		self.initial_menu_music_element = None
 		self.next_menu_music_element = None
-		self.menu_music_played = 0
+		self.menu_music_played = False
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
@@ -271,7 +270,7 @@ class Fife(ApplicationBase):
 		slider_initial_data = {}
 		slider_event_map = {}
 		self.OptionsDlg = self._setting.loadSettingsDialog()
-		center_widget(self.OptionsDlg)
+		self.OptionsDlg.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
 						'AutosaveMaxCount' : 'autosavemaxcount',
 						'QuicksaveMaxCount' : 'quicksavemaxcount'}
@@ -345,21 +344,22 @@ class Fife(ApplicationBase):
 	def check_music(self):
 		"""Used as callback to check if music is still running or if we have
 		to load the next song."""
-		if self.menu_music_played == 0:
+		if self.menu_music_played == False:
 			if self.initial_menu_music_element == self.next_menu_music_element:
 				self.ingame_music.extend(self.menu_music)
 				self.music = self.ingame_music
 				self.music_rand_element = random.randint(0, len(self.ingame_music) - 1)
-				self.menu_music_played = 1
+				self.menu_music_played = True
 			else:
 				self.music = self.menu_music
 
 		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
 			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
-				self.music_rand_element = self.music_rand_element + 1 if \
-					    self.music_rand_element + 1 < len(self.music) else 0
+				# last track has finished (TODO: find cleaner way to check for this)
+				skip = 0 if len(self.music) == 1 else random.randint(1, len(self.music)-1)
+				self.music_rand_element = (self.music_rand_element + skip) % len(self.music)
 				self.play_sound('bgsound', self.music[self.music_rand_element])
-				if self.menu_music_played == 0:
+				if self.menu_music_played == False:
 					self.next_menu_music_element = self.music_rand_element
 
 		self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \

@@ -174,17 +174,11 @@ class Trader(AIPlayer):
 				self.office[ship.worldid] = branchoffices[rand]
 			else:
 				self.office[ship.worldid] = branch_office
-			found_path_to_bo = False
 			# try to find a possible position near the bo
-			for point in Circle(self.office[ship.worldid].position.center(), ship.radius):
-				try:
-					ship.move(point, Callback(self.reached_branch, ship))
-				except MoveNotPossible:
-					continue
-				found_path_to_bo = True
+			try:
+				ship.move(Circle(self.office[ship.worldid].position.center(), ship.radius), Callback(self.reached_branch, ship))
 				self.ships[ship] = self.shipStates.moving_to_branch
-				break
-			if not found_path_to_bo:
+			except MoveNotPossible:
 				self.send_ship_random(ship)
 
 	def reached_branch(self, ship):

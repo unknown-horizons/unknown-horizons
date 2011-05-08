@@ -21,9 +21,12 @@
 
 from horizons.i18n import load_xml_translated
 from horizons.util import Callback
-from horizons.gui.utility import center_widget
+from horizons.util.changelistener import metaChangeListenerDecorator
 
 
+
+@metaChangeListenerDecorator("pause_request")
+@metaChangeListenerDecorator("unpause_request")
 class LogBook(object):
 	"""Implementation of the logbook as described here:
 	http://wiki.unknown-horizons.org/w/Message_System
@@ -31,18 +34,14 @@ class LogBook(object):
 	It displays longer messages, that are essential for scenarios.
 	Headings can be specified for each entry.
 	"""
-	def __init__(self, session):
+	def __init__(self):
 		self._headings = []
 		self._messages = [] # list of all headings / messages
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 
-		self._session = session
 		self._init_gui()
 
-		""" logbook test code""
-		self.add_entry(u"Welcome to the Captains log")
-		self.show()
-		"" """
+#		self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
 
 	def save(self, db):
 		for i in xrange(0, len(self._headings)):
@@ -76,16 +75,22 @@ class LogBook(object):
 		if show_logbook:
 			self._redraw()
 
+	def clear(self):
+		"""Remove all entries"""
+		self._headings = []
+		self._messages = []
+		self._cur_entry = None
+
 	def show(self):
 		# don't show if there are no messages
-		if len(self._messages) == 0:
-			return
+		#if len(self._messages) == 0:
+		#	return
 		self._gui.show()
-		self._session.speed_pause()
+		self.on_pause_request()
 
 	def hide(self):
 		self._gui.hide()
-		self._session.speed_unpause()
+		self.on_unpause_request()
 
 	def is_visible(self):
 		return self._gui.isVisible()
@@ -96,9 +101,20 @@ class LogBook(object):
 		else:
 			self.show()
 
+	def get_cur_entry(self):
+		return self._cur_entry
+
+	def set_cur_entry(self, cur_entry):
+		if cur_entry < 0 or cur_entry >= len(self._messages):
+			raise ValueError
+		self._cur_entry = cur_entry
+		self._redraw()
+
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""
+		if len(self._messages) == 0:
+			return
 		#assert direction in (-1, 1)
 		new_cur = self._cur_entry + direction
 		if new_cur < 0 or new_cur >= len(self._messages):
@@ -114,7 +130,7 @@ class LogBook(object):
 		  'forwardButton' : Callback(self._scroll, 2),
 		  'cancelButton' : self.hide
 		  })
-		center_widget(self._gui)
+		self._gui.position_technique = "automatic" # "center:center"
 
 		self.backward_button = self._gui.findChild(name="backwardButton")
 		self.forward_button = self._gui.findChild(name="forwardButton")
@@ -129,28 +145,22 @@ class LogBook(object):
 			if self._cur_entry+1 < len(self._messages): # maybe also one for the right side?
 					texts[1] = self._messages[self._cur_entry+1]
 					heads[1] = self._headings[self._cur_entry+1]
+		else:
+			heads[0] = _('Emptiness')
+			texts[0] = "\n\n" + _('There is nothing written in your logbook yet!')
 
 		self.backward_button.set_active()
 		self.forward_button.set_active()
 
-		if self._cur_entry == 0:
+		if len(self._messages) == 0 or self._cur_entry == 0:
 			self.backward_button.set_inactive()
-		if self._cur_entry == len(self._messages) - 2:
+		if len(self._messages) == 0 or self._cur_entry == len(self._messages) - 2:
 			self.forward_button.set_inactive()
 
-		#import pdb ; pdb.set_trace()
-		#texts = ['default0', 'default1']
-
-		#print '0: ', texts[0]
-		#print '1: ', texts[1]
 		self._gui.findChild(name="head_left").text = heads[0]
-		#print 'set left heading'
 		self._gui.findChild(name="lbl_left").text = texts[0]
-		#print 'set left text'
 		self._gui.findChild(name="head_right").text = heads[1]
-		#print 'set right heading'
 		self._gui.findChild(name="lbl_right").text = texts[1]
-		#print 'set right text'
 		self._gui.adaptLayout()
-		#print 'layout adapted'
+
 

@@ -138,6 +138,10 @@ class FindPath(object):
 
 		source_coords = self.source.get_coordinates()
 		for c in source_coords:
+			# TODO: distance internally has to find out the type of
+			# destination each time due to the dynamicness of python.
+			# Find out if this costs a significant amount of time,
+			# and if so, try to resolve this here.
 			source_to_dest_dist = Point(*c).distance(self.destination)
 			to_check[c] = [None, 0, source_to_dest_dist, source_to_dest_dist]
 
@@ -167,6 +171,7 @@ class FindPath(object):
 			y = cur_node_coords[1]
 
 			# find possible neighbors
+			# optimisation TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
 				neighbors = [ i for i in [(xx, yy) for xx in xrange(x-1, x+2) for yy in xrange(y-1, y+2)] if \

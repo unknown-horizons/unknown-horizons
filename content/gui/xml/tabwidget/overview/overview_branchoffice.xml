@@ -5,7 +5,11 @@
 	<Icon name="player_emblem" position="25,50"/>
 
 	<Container position="0,70" size="245,300" >
-			<Label name="headline" position="55,7" text="Building overview" />
+
+		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<Spacer min_size="0"  max_size="50" />
+			<Label name="headline" text="" />
+		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Container size="260,550" position="22,43">

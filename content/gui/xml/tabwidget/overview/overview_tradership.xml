@@ -4,7 +4,10 @@
 
 	<Container position="0,70" size="245,350" >
 		<!-- Name of Ship -->
-		<Label name='name' border_size="0" position="80,7"/>
+		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<Spacer min_size="0"  max_size="50" />
+			<Label name='name' border_size="0" />
+		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
@@ -19,7 +22,7 @@
 				Maybe later on pirates will also try tp attack the trader and players can
 				decide whom to help from time to time … but that's a longer way to go (-,
 				-->
-			<Label name="trader_description_lbl" wrap_text="1" max_size="212,160" 
+			<Label name="trader_description_lbl" wrap_text="1" max_size="212,160"
 				text="This is the free trader's ship. It will visit you from time to time to buy or sell goods." />
 		</HBox>
 

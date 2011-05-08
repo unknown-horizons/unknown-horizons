@@ -45,9 +45,8 @@
 	<VBox> <Label text="2011"  name="headline" />
 		<VBox  name="box">
 			<Label text="Grickit (Random maps)" />
-			<Label text="sids.aquarius (Bugfixes)" />
+			<Label text="sids.aquarius (Several improvements)" />
 			<Label text="mayanks43 (Campaign system)" />
-			<Label text="mihaibivol (Minimap rotation)" />
 			<Label text="sient (Minimap rectangle)" />
 		</VBox>
 	</VBox> <Spacer />
