@@ -130,6 +130,11 @@ class SPSession(Session):
 			self.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
+		except WindowsError as err:
+			if err.winerror == 32:
+				self.gui.show_popup(_("Error"), _("The file is being used by another process."))
+				return self.save()
+			raise
 
 		try:
 			db("BEGIN")
