@@ -46,12 +46,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
-					  This is important for pathfinding and quick tile fetching.
-	   * ships 		- a list of all the ships ingame - horizons.world.units.ship.Ship instances
-	   * ship_map 	- same as ground_map, but for ships
-	   * session 	- reference to horizons.session.Session instance of the current game
-	   * water 		- List of coordinates that are water
-	   * trader 	- The worlds ingame free trader player instance
+	                 This is important for pathfinding and quick tile fetching.
+	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
+	   * ship_map - same as ground_map, but for ships
+	   * session - reference to horizons.session.Session instance of the current game
+	   * water - List of coordinates that are water
+	   * trader - The world's ingame free trader player instance
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
@@ -229,12 +229,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	@decorators.make_constants()
 	def init_new_world(self, minclay = 2, maxclay = 3, minmountains = 1, maxmountains = 3):
-		"""This should be called if a new map is loaded (not a savegame, a fresh
+		"""
+		This should be called if a new map is loaded (not a savegame, a fresh
 		map). In other words when it is loaded for the first time.
 
-		NOTE: commands for creating the world objects are executed directly, bypassing the manager
-		      this is necessary, because else the commands would be transmitted over the wire
-					in network games.
+		NOTE: commands for creating the world objects are executed directly,
+		      bypassing the manager
+		      This is necessary because else the commands would be transmitted
+		      over the wire in network games.
 
 		@return: Returs the coordinates of the players first ship
 		"""
@@ -266,15 +268,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# TODO: fix this sorted()-call. its slow but orderness of dict-loop isn't guaranteed
 				for coords, tile in sorted(island.ground_map.iteritems()):
 					# add tree to every nth tile
-					if self.session.random.randint(0, 2) == 0 and Tree.check_build(self.session, tile, \
-										                                           check_settlement=False):
+					if self.session.random.randint(0, 2) == 0 and \
+					   Tree.check_build(self.session, tile, check_settlement=False):
 						building = Build(Tree, coords[0], coords[1], ownerless=True,island=island)(issuer=None)
 						building.finish_production_now() # make trees big and fill their inventory
 						if self.session.random.randint(0, 40) == 0: # add animal to every nth tree
 							CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, *coords)(issuer=None)
 					elif num_clay_deposits < max_clay_deposits and \
-						 self.session.random.randint(0, 40) == 0 and \
-						 Clay.check_build(self.session, tile, check_settlement=False):
+					     self.session.random.randint(0, 40) == 0 and \
+					     Clay.check_build(self.session, tile, check_settlement=False):
 						num_clay_deposits += 1
 						Build(Clay, coords[0], coords[1], ownerless=True, island=island)(issuer=None)
 					elif num_mountains < max_mountains and \
@@ -321,7 +323,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# Fire a message for new world creation
 		self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2, 'NEW_WORLD')
-		assert ret_coords is not None, "Return coords are none. No players loaded?"
+		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
 
 	@decorators.make_constants()
@@ -352,7 +354,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	@decorators.make_constants()
 	def get_random_possible_coastal_ship_position(self):
-		"""Returns a position in water, that is not at the border of the world but on the coast of an island"""
+		"""Returns a position in water, that is not at the border of the world
+		but on the coast of an island"""
 		offset = 2
 		while True:
 			x = self.session.random.randint(self.min_x + offset, self.max_x - offset)
