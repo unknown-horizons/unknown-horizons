@@ -88,7 +88,7 @@ class AccountTab(MarketPlaceTab):
 class MarketPlaceSettlerTabSettlerTab(MarketPlaceTab):
 	"""Displays information about the settlers on average as overview"""
 	def __init__(self, instance):
-		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'overview_mainsquare.xml')
+		super(MarketPlaceSettlerTabSettlerTab, self).__init__(widget = 'mainsquare_inhabitants.xml')
 		self.settlement = instance.settlement
 		self.init_values()
 		icon_path = 'content/gui/icons/widgets/cityinfo/inhabitants.png'

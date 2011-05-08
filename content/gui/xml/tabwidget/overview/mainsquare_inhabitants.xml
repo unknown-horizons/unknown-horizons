@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+Tab to be shown at the main square.
+It shows an overview over the inhabitants like average happiness and most needed
+resources.
+-->
+<Container  size="250,350">
+<TabBG amount="4"/>
+
+	<Container position="0,70" size="600,400" >
+
+		<Label name="headline" position="55,7" text="Settler overview" />
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<Container size="260,550" position="25,43">
+
+			<Label name="avg_happiness_lbl" position="0,0" text="Average happiness:" /><Label name="avg_happiness" position="150,0"/>
+
+			<Label name="most_needed_res_lbl" position="0,30" text="Most needed resource:" />
+			<HBox name="most_needed_res_container" position="70,50"/>
+
+		</Container>
+	</Container>
+</Container>
