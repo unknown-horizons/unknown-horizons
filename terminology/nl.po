@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-08 16:41+0200\n"
+"PO-Revision-Date: 2011-05-08 16:28+0200\n"
 "Last-Translator: Shadow23 <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1229,7 +1229,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "faith"
-msgstr ""
+msgstr "geloof"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1238,7 +1238,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fisherman"
-msgstr ""
+msgstr "visser"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1247,7 +1247,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "forest"
-msgstr ""
+msgstr "bos"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1256,7 +1256,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "forum"
-msgstr ""
+msgstr "forum"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1273,8 +1273,9 @@ msgstr ""
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "graphics"
-msgstr ""
+msgstr "beeld"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1283,7 +1284,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "green"
-msgstr ""
+msgstr "groen"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1292,7 +1293,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grows"
-msgstr ""
+msgstr "groeit"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1310,7 +1311,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "hunts"
-msgstr ""
+msgstr "jaagt"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -1319,7 +1320,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "income"
-msgstr ""
+msgstr "inkomen"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1328,7 +1329,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "information"
-msgstr ""
+msgstr "informatie"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1337,7 +1338,7 @@ msgstr ""
 #: po/tutorial.py
 #: run_uh.py
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1346,7 +1347,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "key"
-msgstr ""
+msgstr "sleutel"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1355,7 +1356,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "LEFT"
-msgstr ""
+msgstr "LINKS"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1364,7 +1365,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "load/unload"
-msgstr ""
+msgstr "laden/uitladen"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1373,7 +1374,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "moved"
-msgstr ""
+msgstr "verplaatst"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -1382,7 +1383,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Resources
 msgid "potatoes"
-msgstr ""
+msgstr "aardappels"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1391,7 +1392,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Colors
 msgid "red"
-msgstr ""
+msgstr "rood"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1427,7 +1428,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sheep"
-msgstr ""
+msgstr "schaap"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1436,7 +1437,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "SHIFT"
-msgstr ""
+msgstr "SHIFT"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1463,7 +1464,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Building
 msgid "sugar field"
-msgstr ""
+msgstr "suiker veld"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1472,7 +1473,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "trade partner"
-msgstr ""
+msgstr "handels partner"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
