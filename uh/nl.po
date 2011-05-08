@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 16:49+0200\n"
+"PO-Revision-Date: 2011-05-08 17:02+0200\n"
 "Last-Translator: Shadow23 <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
-msgstr ""
+msgstr "Verkeerde versie"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
@@ -265,7 +265,7 @@ msgstr "Plaats"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Boot bouw overzicht"
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
@@ -279,15 +279,15 @@ msgstr "Vissersboten"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
-msgstr ""
+msgstr "Handelsschip"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 msgid "War boats"
-msgstr ""
+msgstr "Oorlogsschip"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 msgid "War ships"
-msgstr ""
+msgstr "Oorlogsschip"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
@@ -505,7 +505,7 @@ msgstr "Operatie kosten:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Inhabitants"
-msgstr ""
+msgstr "Inwoners"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Click to change the name of your settlement."
@@ -550,11 +550,11 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom in"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
-msgstr ""
+msgstr "Zoom uit"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
@@ -639,7 +639,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Add to list"
-msgstr ""
+msgstr "Aan de lijst toevoegen"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
@@ -781,7 +781,7 @@ msgstr "Laden..."
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
-msgstr ""
+msgstr "Stoppen"
 
 #: horizons/i18n/guitranslations.py:177
 msgid "Singleplayer"
@@ -993,7 +993,7 @@ msgstr "Willekeurige kaart"
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Scenario"
-msgstr ""
+msgstr "Scenario"
 
 # 90%
 # 100%
@@ -1167,9 +1167,8 @@ msgstr "Inwoners"
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Plaats nederzetting"
+msgstr "Plaats nederzetting:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1451,7 +1450,7 @@ msgstr "Jagers Tent"
 
 #: sqlite/Building
 msgid "Iron Mine"
-msgstr ""
+msgstr "Ijzermijn"
 
 #: sqlite/Building
 msgid "Log"
@@ -1471,7 +1470,7 @@ msgstr "Plein"
 
 #: sqlite/Building
 msgid "Mountain"
-msgstr ""
+msgstr "Berg"
 
 #: sqlite/Building
 msgid "Pasture"
@@ -1494,8 +1493,9 @@ msgid "Signal Fire"
 msgstr "Signaal Vuur"
 
 #: sqlite/Building
+#, fuzzy
 msgid "Smeltery"
-msgstr ""
+msgstr "Smelterij"
 
 #: sqlite/Building
 msgid "Storage Tent"
@@ -1507,7 +1507,7 @@ msgstr "Suikerveld"
 
 #: sqlite/Building
 msgid "Tavern"
-msgstr ""
+msgstr "Herberg"
 
 #: sqlite/Building
 msgid "Tent"
@@ -1518,8 +1518,9 @@ msgid "Tent_ruin"
 msgstr "Verlaten Tent"
 
 #: sqlite/Building
+#, fuzzy
 msgid "Toolmaker"
-msgstr ""
+msgstr "Werktuigmaker"
 
 #: sqlite/Building
 msgid "Trail"
@@ -1615,7 +1616,7 @@ msgstr "bakstenen"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr ""
+msgstr "kolen"
 
 #: sqlite/Resources
 msgid "clay"
