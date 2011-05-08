@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-04-17 20:50+0200\n"
+"PO-Revision-Date: 2011-05-08 08:15+0200\n"
 "Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -61,9 +61,8 @@ msgstr "Napaka"
 
 # 75%
 #: horizons/gui/gui.py:121
-#, fuzzy
 msgid "Failed to save."
-msgstr "Hitro shranjevanje je spodletelo"
+msgstr "Hitro shranjevanje je spodletelo."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -180,7 +179,7 @@ msgstr "Igra je v premoru"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr ""
+msgstr "Ni se mogoče povezati z glavnim strežnikom. Podrobnosti: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -194,7 +193,7 @@ msgstr "Nekaj je bilo narobe z omrežjem: _"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr ""
+msgstr "Različica je drugačna!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
@@ -212,10 +211,14 @@ msgstr "Ustvarjalec:"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"Različica igre je drgačna kot vaša različica. Vsi igralci v večigralski igri "
+"morajo uporabljati isto različico. To lahko popravite tako, da vsi igralci "
+"nagradijo na najnovejšo različico. Različica igra: %(gameversion)s Vaša "
+"različica: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
-msgstr ""
+msgstr "Napačna različica"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
@@ -528,27 +531,27 @@ msgstr "Kapitanov dnevnik"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
-msgstr ""
+msgstr "Zavrti zemljevid v nasprotni smeri urinega kazalca"
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Rotate map clockwise"
-msgstr ""
+msgstr "Zavrti zemljevid v smeri urinega kazalca"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
-msgstr ""
+msgstr "Zmanjšaj hitrost igre"
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Increase game speed"
-msgstr ""
+msgstr "Povečaj hitrost igre"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr ""
+msgstr "Približaj"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
-msgstr ""
+msgstr "Oddalji"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
@@ -628,19 +631,19 @@ msgstr "Beri nasl. vnose"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Exit"
-msgstr ""
+msgstr "Končaj"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Add to list"
-msgstr ""
+msgstr "Dodaj na seznam"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
-msgstr ""
+msgstr "Začni / zaustavi pot"
 
 #: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:171
 msgid "Attention please!"
-msgstr ""
+msgstr "Pozornost prosim!"
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
 msgid "Credits"
@@ -757,7 +760,7 @@ msgstr "{ C } = Klepet"
 
 #: horizons/i18n/guitranslations.py:165
 msgid "{L} = Toggle Captain's log"
-msgstr ""
+msgstr "{L} = Preklopi kapitanov dnevnik"
 
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:207
 #: horizons/i18n/guitranslations.py:242
@@ -842,7 +845,7 @@ msgstr "Glavni meni:"
 
 #: horizons/i18n/guitranslations.py:199
 msgid "Show only games with the same version:"
-msgstr ""
+msgstr "Pokaži le igre z isto različico:"
 
 #: horizons/i18n/guitranslations.py:200
 msgid "New game - Multiplayer"
@@ -878,7 +881,7 @@ msgstr "Osveži seznam dejavnih iger"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Obdobje samodejnega shranjevanja v minutah:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Color depth:"
@@ -886,7 +889,7 @@ msgstr "Barvna globina:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Enable edge scrolling:"
-msgstr ""
+msgstr "Omogoči drsenje robov:"
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Effects volume:"
@@ -914,7 +917,7 @@ msgstr "Izbor jezika:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Enable minimap rotation:"
-msgstr ""
+msgstr "Omogoči vrtenje majhnega zemljevida:"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Music volume:"
@@ -982,7 +985,7 @@ msgstr "Naključni zemljevid"
 
 #: horizons/i18n/guitranslations.py:240
 msgid "Scenario"
-msgstr ""
+msgstr "Scenarij"
 
 # 90%
 #: horizons/i18n/guitranslations.py:241
@@ -1068,7 +1071,7 @@ msgstr "Izgradi to ladjo!"
 #: horizons/i18n/guitranslations.py:264 horizons/i18n/guitranslations.py:265
 #: horizons/i18n/guitranslations.py:266
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Ni še podprto!"
 
 #: horizons/i18n/guitranslations.py:268
 msgid "Select resources:"
@@ -1117,7 +1120,7 @@ msgstr "Davki:"
 
 #: horizons/i18n/guitranslations.py:298
 msgid "capacity utilization"
-msgstr ""
+msgstr "uporaba zmogljivosti"
 
 #: horizons/i18n/guitranslations.py:301
 msgid "Resource deposit"
@@ -1150,9 +1153,8 @@ msgstr "Prebivalci"
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Izgradi naselbino"
+msgstr "Izgradi naselbino:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1188,7 +1190,7 @@ msgstr "Trgovski partner:"
 
 #: horizons/i18n/guitranslations.py:329
 msgid "Configure trading route:"
-msgstr ""
+msgstr "Nastavi trgovsko pot:"
 
 #: horizons/i18n/guitranslations.py:331
 msgid "Load/Unload:"
@@ -1319,7 +1321,7 @@ msgstr "Začne naključni zemljevid"
 
 #: run_uh.py:96
 msgid "Starts <scenario>. <scenario> is the scenarioname."
-msgstr ""
+msgstr "Začne <scenario>. <scenario> je ime scenarija."
 
 #: run_uh.py:98
 msgid "Starts the development map without displaying the main menu."
@@ -1623,7 +1625,7 @@ msgstr "vera"
 
 #: sqlite/Resources
 msgid "fish"
-msgstr ""
+msgstr "ribe"
 
 #: sqlite/Resources
 msgid "food"
