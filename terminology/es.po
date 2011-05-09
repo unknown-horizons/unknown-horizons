@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-10 01:04+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # 
@@ -34,7 +35,7 @@ msgstr ""
 #: horizons/mpsession.py
 #: %28poterminology%29+4+more+locations
 msgid "game"
-msgstr ""
+msgstr "juego"
 
 # (poterminology) uh-tutorial/tutorial.pot (26)
 # 
@@ -45,7 +46,7 @@ msgstr ""
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
 msgid "building"
-msgstr ""
+msgstr "edificio"
 
 # (poterminology) uh-tutorial/tutorial.pot (24)
 # 
@@ -55,7 +56,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tent"
-msgstr ""
+msgstr "tienda"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # 
@@ -66,7 +67,7 @@ msgstr ""
 #: sqlite/Messages
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
-msgstr ""
+msgstr "recurso"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
 # 
@@ -111,7 +112,7 @@ msgstr ""
 #: sqlite/Building
 #: run_uh.py
 msgid "main"
-msgstr ""
+msgstr "principal"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -123,7 +124,7 @@ msgstr ""
 #: horizons/gui/gui.py
 #: %28poterminology%29+3+more+locations
 msgid "unknown"
-msgstr ""
+msgstr "desconocido"
 
 # (poterminology) uh-tutorial/tutorial.pot (19)
 # 
@@ -133,7 +134,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "farm"
-msgstr ""
+msgstr "granja"
 
 # (poterminology) uh-tutorial/tutorial.pot (12)
 # 
@@ -143,7 +144,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "marinero"
 
 # (poterminology) uh-tutorial/tutorial.pot (12)
 # 
@@ -152,7 +153,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "inhabitants"
-msgstr ""
+msgstr "habitantes"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -164,7 +165,7 @@ msgstr ""
 #: po/tutorial.py
 #: %28poterminology%29+2+more+locations
 msgid "map"
-msgstr ""
+msgstr "mapa"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # 
@@ -184,7 +185,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "start"
-msgstr ""
+msgstr "inicio"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # 
@@ -213,7 +214,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "comida"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 # 
