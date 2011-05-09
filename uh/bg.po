@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 10:58+0200\n"
+"PO-Revision-Date: 2011-05-09 17:18+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -277,99 +277,99 @@ msgstr ""
 
 #: horizons/gui/tabs/boatbuildertab.py:170
 msgid "Fisher boats"
-msgstr ""
+msgstr "Рибарски лодки"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
-msgstr ""
+msgstr "Търговски лодки"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 msgid "War boats"
-msgstr ""
+msgstr "Бойни лодки"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 msgid "War ships"
-msgstr ""
+msgstr "Бойни кораби"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Потвърди поръчка"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
-msgstr ""
+msgstr "Приръст"
 
 #: horizons/gui/tabs/buyselltab.py:65 horizons/i18n/guitranslations.py:325
 msgid "Trade"
-msgstr ""
+msgstr "Търговия"
 
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:279
 #: horizons/i18n/guitranslations.py:330
 msgid "Inventory"
-msgstr ""
+msgstr "Инвентар"
 
 #: horizons/gui/tabs/inventorytab.py:64
 msgid "Ship inventory"
-msgstr ""
+msgstr "Корабен инвентар"
 
 #: horizons/gui/tabs/marketplacetabs.py:73
 #: horizons/i18n/guitranslations.py:273
 msgid "Account"
-msgstr ""
+msgstr "Акаунт"
 
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:246 horizons/i18n/guitranslations.py:289
 msgid "Settler overview"
-msgstr ""
+msgstr "Заселник-преглед"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:300
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:292
 #: horizons/i18n/guitranslations.py:305 horizons/i18n/guitranslations.py:321
 msgid "Overview"
-msgstr ""
+msgstr "Преглед"
 
 #: horizons/gui/tabs/overviewtab.py:96
 msgid "Branch office overview"
-msgstr ""
+msgstr "Бранш офис-преглед"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 msgid "Ship overview"
-msgstr ""
+msgstr "Кораб-преглед"
 
 #: horizons/gui/tabs/overviewtab.py:156
 msgid "Production overview"
-msgstr ""
+msgstr "Продукция-преглед"
 
 #: horizons/gui/tabs/overviewtab.py:159
 msgid "Destroy building"
-msgstr ""
+msgstr "Унищожи сграда"
 
 #: horizons/gui/tabs/overviewtab.py:284
 msgid "Market place overview"
-msgstr ""
+msgstr "Пазар-преглед"
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
 msgid "Limit: %st per slot"
-msgstr ""
+msgstr "Лимит:  %st на позиция"
 
 #: horizons/i18n/guitranslations.py:42 horizons/i18n/guitranslations.py:57
 #: horizons/i18n/guitranslations.py:73
 msgid "Companies"
-msgstr ""
+msgstr "Фабрики"
 
 #: horizons/i18n/guitranslations.py:43
 msgid "Sailor buildings"
-msgstr ""
+msgstr "Моряшки сгради"
 
 #: horizons/i18n/guitranslations.py:44
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Жилища и инфраструктура"
 
 #: horizons/i18n/guitranslations.py:45 horizons/i18n/guitranslations.py:61
 #: horizons/i18n/guitranslations.py:75
 msgid "Services"
-msgstr ""
+msgstr "Услуги"
 
 #: horizons/i18n/guitranslations.py:46
 msgid "Pavilion: Fulfills religious needs of sailors."
