@@ -466,17 +466,19 @@ def generate_map(seed = None) :
 		map_width = 140
 		map_height = 140
 		min_island_size = 20
-		max_island_size = 80
+		max_island_size = 65
 		max_islands = 20
 		min_space = 2
-		land_coefficient = max(0.07, min(0.2, rand.gauss(0.12, 0.04)))
+		land_coefficient = max(0.3, min(0.6, rand.gauss(0.45, 0.07)))
 
 		islands = []
 		estimated_land = 0
 		max_land_amount = map_width * map_height * land_coefficient
 
 		for i in xrange(max_islands):
-			width = rand.randint(min_island_size, max_island_size)
+			size_modifier = 1.1 - 0.2 * estimated_land / float(max_land_amount)
+			width = rand.randint(min_island_size - 5, max_island_size)
+			width = max(min_island_size, min(max_island_size, int(round(width * size_modifier))))
 			coef = max(0.25, min(4, rand.gauss(1, 0.2)))
 			height = max(min_island_size, min(int(round(width * coef)), max_island_size))
 			size = width * height
@@ -504,6 +506,7 @@ def generate_map(seed = None) :
 				db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", x, y, island_string)
 
 				islands.append(rect)
+				estimated_land += size
 				break
 
 	return filename
