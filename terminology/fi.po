@@ -1078,15 +1078,6 @@ msgstr ""
 msgid "potato field"
 msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#: po/tutorial.py
-#: sqlite/Messages
-msgid "reached"
-msgstr ""
-
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1284,7 +1275,7 @@ msgstr ""
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-msgid "grows"
+msgid "grow"
 msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
@@ -1339,15 +1330,6 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "key"
-msgstr ""
-
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#: po/tutorial.py
-#: horizons/i18n/guitranslations.py
-msgid "LEFT"
 msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
