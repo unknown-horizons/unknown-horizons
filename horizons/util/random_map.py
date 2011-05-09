@@ -391,7 +391,7 @@ def generate_map(seed = None) :
 	island_min_size = (25, 25)
 	island_max_size = (28, 28)
 
-	method = rand.randint(0, 2) # choose map creation method
+	method = min(2, rand.randint(0, 9)) # choose map creation method with 80% chance for method 2
 
 	if method == 0:
 		# generate up to 9 islands
