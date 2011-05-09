@@ -133,6 +133,8 @@ def start(command_line_arguments):
 		startup_worked = _start_dev_map()
 	elif command_line_arguments.start_random_map:
 		startup_worked = _start_random_map()
+	elif command_line_arguments.start_specific_random_map is not None:
+		startup_worked = _start_random_map(command_line_arguments.start_specific_random_map)
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map)
 	elif command_line_arguments.start_scenario is not None:
@@ -286,9 +288,9 @@ def _start_map(map_name, is_scenario = False):
 	load_game(map_file, is_scenario)
 	return True
 
-def _start_random_map():
+def _start_random_map(seed = None):
 	from horizons.util import random_map
-	start_singleplayer( random_map.generate_map() )
+	start_singleplayer( random_map.generate_map(seed) )
 	return True
 
 def _load_map(savegamename):

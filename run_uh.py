@@ -92,6 +92,8 @@ def get_option_parser():
 														help=_("Starts <map>. <map> is the mapname."))
 	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
 	                          help=_("Starts a random map."))
+	start_uh_group.add_option("--start-specific-random-map", dest="start_specific_random_map", \
+							 type="int", metavar="<seed>", help=_("Starts a random map with seed <seed>."))
 	start_uh_group.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>", \
 														help=_("Starts <scenario>. <scenario> is the scenarioname."))
 	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
