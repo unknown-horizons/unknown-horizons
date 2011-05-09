@@ -63,7 +63,7 @@ def create_random_island(id_string):
 	# creation_method 2 - a number of randomly sized and placed islands
 
 	# place this number of shapes
-	for i in xrange(int(float(width+height) / 2 * 1.4)):
+	for i in xrange(15 + width * height / 45):
 		# place shape determined by shape_id on (x, y)
 		add = True
 		rect_chance = 6
@@ -74,21 +74,25 @@ def create_random_island(id_string):
 		elif creation_method == 2:
 			shape_id = rand.randint(2, 8)
 			rect_chance = 29
-			if rand.randint(0, 3) == 0:
+			if rand.randint(0, 4) == 0:
 				rect_chance = 13
 				add = False
 
 		shape = None
 		if rand.randint(1, rect_chance) == 1:
 			# use a rect
-			x = rand.randint(8, width - 7)
-			y = rand.randint(8, height - 7)
-
-			if creation_method == 0:
-				shape = Rect.init_from_topleft_and_size(x - 3, y - 3, 5, 5)
-			elif creation_method == 1:
-				shape = Rect.init_from_topleft_and_size(x - 5, y - 5, 8, 8)
-			elif creation_method == 2:
+			if add:
+				x = rand.randint(8, width - 7)
+				y = rand.randint(8, height - 7)
+				if creation_method == 0:
+					shape = Rect.init_from_topleft_and_size(x - 3, y - 3, 5, 5)
+				elif creation_method == 1:
+					shape = Rect.init_from_topleft_and_size(x - 5, y - 5, 8, 8)
+				elif creation_method == 2:
+					shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
+			else:
+				x = rand.randint(0, width)
+				y = rand.randint(0, height)
 				shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
 		else:
 			# use a circle, where radius is determined by shape_id
