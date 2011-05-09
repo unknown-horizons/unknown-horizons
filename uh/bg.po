@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-09 20:49+0200\n"
+"PO-Revision-Date: 2011-05-09 20:55+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -872,11 +872,11 @@ msgstr "Обновяващ се лист на активните игри"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Автозапазване след интервал от минути:"
 
 #: horizons/i18n/guitranslations.py:211
 msgid "Color depth:"
-msgstr ""
+msgstr "Дълбочина на цвета:"
 
 #: horizons/i18n/guitranslations.py:212
 msgid "Enable edge scrolling:"
@@ -884,39 +884,39 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:213
 msgid "Effects volume:"
-msgstr ""
+msgstr "Ефекти на звука:"
 
 #: horizons/i18n/guitranslations.py:215
 msgid "Graphics"
-msgstr ""
+msgstr "Графики:"
 
 #: horizons/i18n/guitranslations.py:216
 msgid "Language"
-msgstr ""
+msgstr "Език"
 
 #: horizons/i18n/guitranslations.py:217
 msgid "Saving"
-msgstr ""
+msgstr "Запазване"
 
 #: horizons/i18n/guitranslations.py:218
 msgid "Sound"
-msgstr ""
+msgstr "Звук"
 
 #: horizons/i18n/guitranslations.py:219
 msgid "Select language:"
-msgstr ""
+msgstr "Избери език:"
 
 #: horizons/i18n/guitranslations.py:220
 msgid "Enable minimap rotation:"
-msgstr ""
+msgstr "Включи ротация на мини картата:"
 
 #: horizons/i18n/guitranslations.py:221
 msgid "Music volume:"
-msgstr ""
+msgstr "Сила на звука:"
 
 #: horizons/i18n/guitranslations.py:222
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Номер на автозапазване:"
 
 #: horizons/i18n/guitranslations.py:223
 msgid "Number of quicksaves:"
