@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-09 17:18+0200\n"
+"PO-Revision-Date: 2011-05-09 20:40+0200\n"
 "Last-Translator: balward <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -409,19 +409,19 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
-msgstr ""
+msgstr "Дърво"
 
 #: horizons/i18n/guitranslations.py:58
 msgid "Fields"
-msgstr ""
+msgstr "Полета"
 
 #: horizons/i18n/guitranslations.py:59
 msgid "Pioneer buildings"
-msgstr ""
+msgstr "Пионерски сгради"
 
 #: horizons/i18n/guitranslations.py:60
 msgid "Military"
-msgstr ""
+msgstr "Казарма"
 
 #: horizons/i18n/guitranslations.py:62
 msgid "Boat builder: Builds boats and small ships. Built on coast."
@@ -538,132 +538,132 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr ""
+msgstr "Приближи"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
-msgstr ""
+msgstr "Отдалечи"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
-msgstr ""
+msgstr "Дъски"
 
 #: horizons/i18n/guitranslations.py:102
 msgid "Bricks"
-msgstr ""
+msgstr "Тухли"
 
 #: horizons/i18n/guitranslations.py:103
 msgid "Food"
-msgstr ""
+msgstr "Храна"
 
 #: horizons/i18n/guitranslations.py:104
 msgid "Textiles"
-msgstr ""
+msgstr "Текстил"
 
 #: horizons/i18n/guitranslations.py:105
 msgid "Tools"
-msgstr ""
+msgstr "Инструменти"
 
 #: horizons/i18n/guitranslations.py:107
 msgid "Gold"
-msgstr ""
+msgstr "Злато"
 
 #: horizons/i18n/guitranslations.py:109
 msgid "Change name"
-msgstr ""
+msgstr "Смени име"
 
 #: horizons/i18n/guitranslations.py:110
 msgid "Enter new name:"
-msgstr ""
+msgstr "Въведи ново име:"
 
 #: horizons/i18n/guitranslations.py:112
 msgid "Enter your message:"
-msgstr ""
+msgstr "Въведи съобщение:"
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Chat"
-msgstr ""
+msgstr "Чат"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Buy resources"
-msgstr ""
+msgstr "Купи ресурси"
 
 #: horizons/i18n/guitranslations.py:116
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "Купи или продай ресурси"
 
 #: horizons/i18n/guitranslations.py:117
 msgid "Legend:"
-msgstr ""
+msgstr "Легенда:"
 
 #: horizons/i18n/guitranslations.py:118
 msgid "Sell resources"
-msgstr ""
+msgstr "Продай ресурси"
 
 #: horizons/i18n/guitranslations.py:120
 msgid "Pause production"
-msgstr ""
+msgstr "Спри продукцията"
 
 #: horizons/i18n/guitranslations.py:121
 msgid "Start production"
-msgstr ""
+msgstr "Пусни продукцията"
 
 #: horizons/i18n/guitranslations.py:123
 msgid "Leave Captain's log"
-msgstr ""
+msgstr "Напусни записките на капитана"
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Read prev. entries"
-msgstr ""
+msgstr "Прочети пред. вписвания"
 
 #: horizons/i18n/guitranslations.py:125
 msgid "Read next entries"
-msgstr ""
+msgstr "Прочети следв. вписвания"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Exit"
-msgstr ""
+msgstr "Изход"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Add to list"
-msgstr ""
+msgstr "Добави към листа"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
-msgstr ""
+msgstr "Старт / Стоп маршрут"
 
 #: horizons/i18n/guitranslations.py:131 horizons/i18n/guitranslations.py:171
 msgid "Attention please!"
-msgstr ""
+msgstr "Внимание моля!"
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
 msgid "Credits"
-msgstr ""
+msgstr "Заслуги"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Cancel game"
-msgstr ""
+msgstr "Анулирай играта"
 
 #: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:176
 #: horizons/i18n/guitranslations.py:214
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: horizons/i18n/guitranslations.py:138
 msgid "Return to game"
-msgstr ""
+msgstr "Върни се към играта"
 
 #: horizons/i18n/guitranslations.py:141
 msgid "The FIFE and Unknown Horizons"
-msgstr ""
+msgstr "The FIFE and Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "development teams"
-msgstr ""
+msgstr "разработчици"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Have fun."
-msgstr ""
+msgstr "Приятно забавление!"
 
 #: horizons/i18n/guitranslations.py:144
 msgid "Key bindings"
@@ -756,15 +756,15 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:207
 #: horizons/i18n/guitranslations.py:242
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Излез от главното меню"
 
 #: horizons/i18n/guitranslations.py:168
 msgid "Loading ..."
-msgstr ""
+msgstr "Зареждане ..."
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
-msgstr ""
+msgstr "Напускане"
 
 #: horizons/i18n/guitranslations.py:177
 msgid "Singleplayer"
