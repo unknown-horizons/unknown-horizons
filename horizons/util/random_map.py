@@ -60,34 +60,44 @@ def create_random_island(id_string):
 
 	# creation_method 0 - standard small island for the 3x3 grid
 	# creation_method 1 - large island
+	# creation_method 2 - a number of randomly sized and placed islands
 
 	# place this number of shapes
 	for i in xrange(int(float(width+height) / 2 * 1.4)):
 		# place shape determined by shape_id on (x, y)
 		add = True
+		rect_chance = 6
 		if creation_method == 0:
 			shape_id = rand.randint(3, 5)
 		elif creation_method == 1:
 			shape_id = rand.randint(5, 8)
 		elif creation_method == 2:
 			shape_id = rand.randint(2, 8)
-			if rand.randint(0, 14) == 0:
+			rect_chance = 29
+			if rand.randint(0, 3) == 0:
+				rect_chance = 13
 				add = False
 
 		shape = None
-		if rand.randint(1,6) == 1:
+		if rand.randint(1, rect_chance) == 1:
 			# use a rect
 			x = rand.randint(8, width - 7)
 			y = rand.randint(8, height - 7)
 
 			if creation_method == 0:
-				shape = Rect.init_from_topleft_and_size(x-3, y-3, 5, 5)
+				shape = Rect.init_from_topleft_and_size(x - 3, y - 3, 5, 5)
 			elif creation_method == 1:
-				shape = Rect.init_from_topleft_and_size(x-5, y-5, 8, 8)
+				shape = Rect.init_from_topleft_and_size(x - 5, y - 5, 8, 8)
+			elif creation_method == 2:
+				shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
 		else:
 			# use a circle, where radius is determined by shape_id
 			radius = shape_id
-			if width - radius - 4 >= radius + 3 and height - radius - 4 >= radius + 3:
+			if not add and rand.randint(0, 6) < 5:
+				x = rand.randint(-radius * 3 / 2, width + radius * 3 / 2)
+				y = rand.randint(-radius * 3 / 2, height + radius * 3 / 2)
+				shape = Circle(Point(x, y), shape_id)
+			elif width - radius - 4 >= radius + 3 and height - radius - 4 >= radius + 3:
 				x = rand.randint(radius + 3, width - radius - 4)
 				y = rand.randint(radius + 3, height - radius - 4)
 				shape = Circle(Point(x, y), shape_id)
