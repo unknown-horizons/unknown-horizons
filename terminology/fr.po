@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-08 11:40+0200\n"
+"PO-Revision-Date: 2011-05-09 23:01+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -17,13 +17,14 @@ msgstr ""
 # 
 # (poterminology) uh/unknownhorizons.pot (10)
 # 
+# I added 'installer' cause in my opinion, you cannot build a weaver...french will understand that
 #. set translated building name in gui
 #: po/tutorial.py
 #: horizons/gui/mousetools/buildingtool.py
 #: sqlite/Messages
 #: horizons/i18n/guitranslations.py
 msgid "build"
-msgstr "construire"
+msgstr "construire, installer"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
