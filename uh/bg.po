@@ -108,7 +108,7 @@ msgstr "Потвърждение за презаписване"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
-msgstr "Неизвестна дата на запазване"
+msgstr "Неизвестна дата на запазване\n"
 
 #: horizons/gui/gui.py:371
 #, python-format
