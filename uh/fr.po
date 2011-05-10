@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-10 16:36+0200\n"
+"PO-Revision-Date: 2011-05-10 16:48+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -398,12 +398,12 @@ msgstr "Chasseur: Chasse des animaux sauvages et fournit de la nourriture."
 #: horizons/i18n/guitranslations.py:49
 msgid "Signal fire: Allows the player to trade with the free trader."
 msgstr ""
-"Feu de signalisation : Permet au joueur de commercer avec les commerçants "
-"indépendants."
+"Feu de signalisation : Permet au joueur de commercer avec le « bateau-"
+"marchand»."
 
 #: horizons/i18n/guitranslations.py:50
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr "Bucheron : Récolte du bois et les transforme en planches."
+msgstr "Bucheron : Coupe des arbres et les transforme en planches."
 
 #: horizons/i18n/guitranslations.py:51
 msgid "Main square: Supplies citizens with goods."
@@ -415,11 +415,11 @@ msgstr "Tente: Abrite vos habitants."
 
 #: horizons/i18n/guitranslations.py:53
 msgid "Storage: Extends stock and provides collectors."
-msgstr "Entrepot: Agrandit les stocks et fournit des livreurs."
+msgstr "Entrepôt: Agrandit les stocks et fournit des livreurs."
 
 #: horizons/i18n/guitranslations.py:54
 msgid "Trail: Needed for collecting goods."
-msgstr "Sentier: Nécessaire à la livraison de la marchandise."
+msgstr "Sentier: Nécessaire au transport des marchandises."
 
 #: horizons/i18n/guitranslations.py:55 sqlite/Building
 msgid "Tree"
@@ -462,7 +462,8 @@ msgstr "Ferme: Cultive les champs et élève du bétail."
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
 msgstr ""
-"Pâturage: Élève des moutons et fournit de la laine. Nécessite une ferme."
+"Pâturage: Permet l'élevage de moutons et fournit de la laine. Nécessite une "
+"ferme."
 
 #: horizons/i18n/guitranslations.py:68
 msgid "Potato field: Yields food. Needs a farm."
