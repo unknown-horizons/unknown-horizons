@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 21:11+0200\n"
+"PO-Revision-Date: 2011-05-08 21:39+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -23,7 +23,6 @@ msgid "Unknown Horizons Version %s"
 msgstr "Unknown Horizons Versie %s"
 
 #: horizons/engine.py:54
-#, fuzzy
 msgid "Restart required"
 msgstr "Herstart vereist"
 
@@ -315,7 +314,6 @@ msgid "Inventory"
 msgstr "Voorraad"
 
 #: horizons/gui/tabs/inventorytab.py:64
-#, fuzzy
 msgid "Ship inventory"
 msgstr "Scheepsvoorraad"
 
@@ -499,7 +497,6 @@ msgid "Toolmaker: Produces tools out of iron."
 msgstr "Werktuigmaker: Maakt werktuigen uit ijzer."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
-#, fuzzy
 msgid "Running costs:"
 msgstr "Operatie kosten:"
 
@@ -621,7 +618,6 @@ msgid "Start production"
 msgstr "Start productie"
 
 #: horizons/i18n/guitranslations.py:123
-#, fuzzy
 msgid "Leave Captain's log"
 msgstr "Verlaat logboek"
 
@@ -650,12 +646,10 @@ msgid "Attention please!"
 msgstr "Let op!"
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
-#, fuzzy
 msgid "Credits"
 msgstr "Dankwoord"
 
 #: horizons/i18n/guitranslations.py:135
-#, fuzzy
 msgid "Cancel game"
 msgstr "Verlaat spel"
 
@@ -665,7 +659,6 @@ msgid "Settings"
 msgstr "Instellingen"
 
 #: horizons/i18n/guitranslations.py:138
-#, fuzzy
 msgid "Return to game"
 msgstr "Keer terug naar spel"
 
@@ -682,7 +675,6 @@ msgid "Have fun."
 msgstr "Veel plezier."
 
 #: horizons/i18n/guitranslations.py:144
-#, fuzzy
 msgid "Key bindings"
 msgstr "Sneltoetsen"
 
@@ -1128,7 +1120,6 @@ msgid "Taxes:"
 msgstr "Belastingen:"
 
 #: horizons/i18n/guitranslations.py:298
-#, fuzzy
 msgid "capacity utilization"
 msgstr "bezettingsgraad"
 
@@ -1147,7 +1138,6 @@ msgid "It contains these resources:"
 msgstr "Het bevat de volgende grondstoffen:"
 
 #: horizons/i18n/guitranslations.py:306
-#, fuzzy
 msgid "Needed resources:"
 msgstr "Vereiste grondstoffen:"
 
@@ -1173,7 +1163,6 @@ msgid "Click to change the name of this ship."
 msgstr "Klik om de naam van dit schip te wijzigen."
 
 #: horizons/i18n/guitranslations.py:315
-#, fuzzy
 msgid "Build settlement"
 msgstr "Plaats nederzetting"
 
@@ -1495,7 +1484,6 @@ msgid "Signal Fire"
 msgstr "Signaal Vuur"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Smeltery"
 msgstr "Smelterij"
 
@@ -1520,7 +1508,6 @@ msgid "Tent_ruin"
 msgstr "Verlaten tent"
 
 #: sqlite/Building
-#, fuzzy
 msgid "Toolmaker"
 msgstr "Werktuigmaker"
 
