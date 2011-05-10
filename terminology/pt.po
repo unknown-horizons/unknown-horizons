@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-10 22:27+0200\n"
+"PO-Revision-Date: 2011-05-11 00:01+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -838,7 +838,7 @@ msgstr "inventário"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb"
-msgstr ""
+msgstr "cordeiro"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -848,7 +848,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "licor"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -866,7 +866,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "residents"
-msgstr ""
+msgstr "residentes"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
