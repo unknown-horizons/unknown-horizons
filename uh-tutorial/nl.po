@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: 2011-05-10 21:34+0200\n"
+"PO-Revision-Date: 2011-05-10 15:50+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -258,7 +258,7 @@ msgstr "Plaats een houthakker en verbind deze met het kantoor met een pad."
 
 #: po/tutorial.py:17
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NIEUWE OPDRACHT: AANVOER VAN VOEDSEL"
+msgstr "OPDRACHT: AANVOER VAN VOEDSEL"
 
 #: po/tutorial.py:18
 msgid ""
@@ -324,7 +324,7 @@ msgstr "Plaats een jager en een visser. Verbind ze met het kantoor."
 
 #: po/tutorial.py:21
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "NIEUWE OPDRACHT: PLEIN"
+msgstr "OPDRACHT: MARKTPLAATS"
 
 #: po/tutorial.py:22
 msgid ""
@@ -340,9 +340,10 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
-"Uw inwoners hebben een plein nodig waar ze de goederen kunnen ophalen.\n"
+"Uw inwoners hebben een marktplaats nodig waar ze de goederen kunnen ophalen.\n"
 "\n"
-"Dit betekent dat het plein en hun huis met een pad verbonden moeten zijn.\n"
+"Dit betekent dat de marktplaats en hun huis met een pad verbonden moeten "
+"zijn.\n"
 "\n"
 "Alle goederen in het kantoor zijn beschikbaar op deze 'marktplaats', zeelui "
 "hoeven dus niet naar de visser of het kantoor te lopen.\n"
@@ -390,7 +391,7 @@ msgstr "Plaats een plein. Kies een gebied zonder economische gebouwen."
 
 #: po/tutorial.py:25
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "NIEUWE OPDRACHT: RESIDENTIELE GEBOUWEN"
+msgstr "OPDRACHT: RESIDENTIELE GEBOUWEN"
 
 #: po/tutorial.py:26
 msgid ""
