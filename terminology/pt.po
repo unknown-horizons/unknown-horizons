@@ -85,6 +85,7 @@ msgstr "sucursal / contador"
 #: horizons/gui/tabs/overviewtab.py
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
+#, fuzzy
 msgid "overview"
 msgstr "resumo"
 
