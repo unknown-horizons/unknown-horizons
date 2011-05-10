@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-04-03 21:59+0200\n"
-"Last-Translator: Tobias <>\n"
+"PO-Revision-Date: 2011-05-10 15:34+0200\n"
+"Last-Translator: pers <pers87@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -23,9 +23,8 @@ msgid "Unknown Horizons Version %s"
 msgstr "Unknown Horizons versjon %s"
 
 #: horizons/engine.py:54
-#, fuzzy
 msgid "Restart required"
-msgstr "Omstart kreves"
+msgstr "Gjenstart kreves"
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -45,6 +44,9 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL rendereren er ment som en reserveløsning og har store grafiske feil. \n"
+"\n"
+"På eget ansvar!"
 
 #: horizons/engine.py:193
 #, python-format
@@ -57,9 +59,8 @@ msgstr "Feil"
 
 # 75%
 #: horizons/gui/gui.py:121
-#, fuzzy
 msgid "Failed to save."
-msgstr "Kunne ikke hurtiglagre."
+msgstr "Kunne ikke lagre."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -177,7 +178,7 @@ msgstr "Spill stoppet"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr ""
+msgstr "Kunne ikke koble til tjener. Detaljer: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -191,7 +192,7 @@ msgstr "Noe gikk galt med nettverket: "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr ""
+msgstr "Forskjellige versjoner!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
