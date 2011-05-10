@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-10 17:40+0200\n"
+"PO-Revision-Date: 2011-05-10 17:46+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -141,7 +141,7 @@ msgstr "fazenda"
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "marinheiro"
 
 # (poterminology) uh-tutorial/tutorial.pot (12)
 # 
@@ -150,7 +150,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "inhabitants"
-msgstr ""
+msgstr "habitantes"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -162,7 +162,7 @@ msgstr ""
 #: po/tutorial.py
 #: %28poterminology%29+2+more+locations
 msgid "map"
-msgstr ""
+msgstr "mapa"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # 
@@ -172,7 +172,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Messages
 msgid "settlement"
-msgstr ""
+msgstr "colonização"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -182,16 +182,14 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "start"
-msgstr ""
+msgstr "início"
 
-# (poterminology) uh-tutorial/tutorial.pot (13)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
+# i hope guia is ok
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "tab"
-msgstr ""
+msgstr "guia / tab"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # 
@@ -201,7 +199,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "field"
-msgstr ""
+msgstr "campo"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -211,26 +209,25 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "alimentos"
 
-# (poterminology) uh-tutorial/tutorial.pot (10)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
+# which one is better than the other ?
 # 
 #: po/tutorial.py
 #: horizons/gui/tabs/buildtabs.py
+#, fuzzy
 msgid "increment"
-msgstr ""
+msgstr "nível / incremento"
 
 #: po/tutorial.py
 #: horizons/gui/
 msgid "minimap"
-msgstr ""
+msgstr "minimap"
 
 #: po/tutorial.py
 #: horizons/gui/
 msgid "running costs"
-msgstr ""
+msgstr "despesas de funcionamento"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -240,7 +237,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "menu"
-msgstr ""
+msgstr "menu"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # 
@@ -249,7 +246,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "produce"
-msgstr ""
+msgstr "produzir"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
