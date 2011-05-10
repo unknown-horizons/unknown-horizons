@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-10 16:48+0200\n"
+"PO-Revision-Date: 2011-05-10 16:39+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -482,7 +482,7 @@ msgstr "École: Assure l'éducation."
 
 #: horizons/i18n/guitranslations.py:71
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr "Tisseur: Transforme la laine d'agneau en toile."
+msgstr "Tisserand: Transforme la laine en tissu."
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Settler buildings"
@@ -490,19 +490,20 @@ msgstr "Bâtiments des colons"
 
 #: horizons/i18n/guitranslations.py:76
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr "Meule de charbonnier: Produit du charbon."
+msgstr "Charbonnier: Produit du charbon de bois."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr "Mine de fer: Extrait le fer d'un gisement de fer."
+msgstr "Mine de fer: Extrait le minerai de fer d'un gisement."
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Smeltery: Refines all kind of ores."
-msgstr "Fonderie: Fonds des minerais pour en faire des métaux."
+msgstr "Fonderie: Raffine tout type de minerais."
 
+# 'Satisfait le besoin de communauté.' ça c'est vraiment pas joli ! comment traduire get-together ? je propose 'rapproche les hommes!'
 #: horizons/i18n/guitranslations.py:79
 msgid "Tavern: Provides get-together."
-msgstr "Taverne: Satisfait le besion de communauté."
+msgstr "Taverne: Rapproche les hommes !"
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Toolmaker: Produces tools out of iron."
