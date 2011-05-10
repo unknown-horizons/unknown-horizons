@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-08 21:51+0200\n"
+"PO-Revision-Date: 2011-05-10 21:24+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -527,12 +527,10 @@ msgstr "kosten"
 # 
 # (poterminology) uh/unknownhorizons.pot (4)
 # 
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free"
-msgstr "vrij"
+msgstr "vrije"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -691,7 +689,7 @@ msgstr "signaal"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr "vuursignaal"
+msgstr "signaal vuur"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -702,13 +700,11 @@ msgstr "schuifbalk"
 # 
 # (poterminology) uh/unknownhorizons.pot (3)
 # 
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "tools"
-msgstr "werktuigen"
+msgstr "gereedschap"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -922,12 +918,10 @@ msgstr "bouw menu"
 # 
 # (poterminology) uh/unknownhorizons.pot (3)
 # 
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "Captain's log"
-msgstr "Kapiteins log"
+msgstr "Logboek"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
