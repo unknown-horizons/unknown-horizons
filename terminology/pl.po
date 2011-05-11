@@ -567,6 +567,7 @@ msgid "build menu"
 msgstr "menu budowy"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -720,6 +721,7 @@ msgid "back"
 msgstr "wróć"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -786,6 +788,7 @@ msgid "leave"
 msgstr ""
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -800,6 +803,7 @@ msgid "market"
 msgstr "rynek"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -892,6 +896,7 @@ msgid "solution"
 msgstr "rozwiązanie"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -981,6 +986,7 @@ msgid "fulfill"
 msgstr ""
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -993,6 +999,7 @@ msgid "graphics"
 msgstr "grafika"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1052,6 +1059,7 @@ msgid "move"
 msgstr ""
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1064,6 +1072,7 @@ msgid "red"
 msgstr "czerwony"
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1089,6 +1098,7 @@ msgid "service"
 msgstr ""
 
 # 
+#
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
