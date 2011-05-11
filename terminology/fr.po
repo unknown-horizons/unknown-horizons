@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-09 23:01+0200\n"
+"PO-Revision-Date: 2011-05-11 14:29+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -291,7 +291,7 @@ msgstr "niveau"
 #: po/tutorial.py
 #: horizons/gui/
 msgid "minimap"
-msgstr "minimap"
+msgstr "mini-carte"
 
 #: po/tutorial.py
 #: horizons/gui/
@@ -873,17 +873,11 @@ msgstr "niveau"
 # 
 # (poterminology) uh/unknownhorizons.pot (2)
 # 
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pasture"
-msgstr "pré (/ pâturage)"
+msgstr "pré"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -1092,16 +1086,10 @@ msgstr "construction"
 # 
 # (poterminology) uh/unknownhorizons.pot (2)
 # 
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "decrease"
-msgstr "(a)baisser"
+msgstr "baisser"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -1848,16 +1836,10 @@ msgstr "accomplir"
 # 
 # (poterminology) uh/unknownhorizons.pot (1)
 # 
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "graphics"
-msgstr "graphique(s)"
+msgstr "graphiques"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1932,16 +1914,10 @@ msgstr "revenu"
 # 
 # (poterminology) uh/unknownhorizons.pot (1)
 # 
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: run_uh.py
 msgid "information"
-msgstr "information(s)"
+msgstr "information"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -2052,14 +2028,11 @@ msgstr "retour / retourner"
 # 
 # (poterminology) uh/unknownhorizons.pot (1)
 # 
-#
-#
 # Of course, here is all about context cause run can also be translated by 'courir' (using legs for running !)
-#
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "run"
-msgstr "rouler / exploiter / travailler"
+msgstr "rouler / exploiter"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
