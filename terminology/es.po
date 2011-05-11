@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-11 21:41+0200\n"
+"PO-Revision-Date: 2011-05-11 21:48+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -356,7 +356,7 @@ msgstr "rastro"
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
 msgid "version"
-msgstr ""
+msgstr "versión"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # 
@@ -365,7 +365,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "buy"
-msgstr ""
+msgstr "comprar"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -374,7 +374,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "connect"
-msgstr ""
+msgstr "conectar"
 
 # (poterminology) uh-tutorial/tutorial.pot (11)
 # 
@@ -384,7 +384,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "lumberjack"
-msgstr ""
+msgstr "leñador"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -393,7 +393,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sell"
-msgstr ""
+msgstr "vender"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -402,7 +402,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "taxes"
-msgstr ""
+msgstr "impuestos"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -412,7 +412,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "lana"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -421,7 +421,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "coast"
-msgstr ""
+msgstr "costa"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # 
@@ -430,7 +430,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "companies"
-msgstr ""
+msgstr "compañías"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -439,7 +439,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cost"
-msgstr ""
+msgstr "costo"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -448,7 +448,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free"
-msgstr ""
+msgstr "libre"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -457,7 +457,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "left"
-msgstr ""
+msgstr "izquierda"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -487,7 +487,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "select"
-msgstr ""
+msgstr "escoger"
 
 # (poterminology) uh-tutorial/tutorial.pot (9)
 # 
@@ -496,7 +496,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stock"
-msgstr ""
+msgstr "almacén"
 
 # (poterminology) uh-tutorial/tutorial.pot (11)
 # 
@@ -506,7 +506,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "storage"
-msgstr ""
+msgstr "almacén"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -516,7 +516,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/world/units/ship.py
 msgid "trader"
-msgstr ""
+msgstr "comerciante"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -525,7 +525,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "balance"
-msgstr ""
+msgstr "saldo"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -535,7 +535,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "fire"
-msgstr ""
+msgstr "fuego"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -545,7 +545,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "fisher"
-msgstr ""
+msgstr "pescador"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # 
@@ -556,7 +556,7 @@ msgstr ""
 #: run_uh.py
 #: horizons/main.py
 msgid "found"
-msgstr ""
+msgstr "encontrado"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -566,7 +566,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pavilion"
-msgstr ""
+msgstr "pabellón"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -575,7 +575,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "signal"
-msgstr ""
+msgstr "señal"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -596,7 +596,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "tools"
-msgstr ""
+msgstr "herramientas"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -606,7 +606,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/modules/singleplayermenu.py
 msgid "active"
-msgstr ""
+msgstr "activo"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # 
@@ -615,7 +615,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "choose"
-msgstr ""
+msgstr "escoger"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # 
@@ -624,7 +624,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "collector"
-msgstr ""
+msgstr "transportista"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -633,7 +633,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "help"
-msgstr ""
+msgstr "ayuda"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # 
@@ -642,7 +642,7 @@ msgstr ""
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "house"
-msgstr ""
+msgstr "casa"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
@@ -651,7 +651,7 @@ msgstr ""
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "level"
-msgstr ""
+msgstr "nivel"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 # 
@@ -661,7 +661,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pasture"
-msgstr ""
+msgstr "prado"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # 
