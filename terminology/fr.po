@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-11 14:29+0200\n"
+"PO-Revision-Date: 2011-05-11 14:31+0200\n"
 "Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -367,18 +367,12 @@ msgstr "changer"
 # 
 # (poterminology) uh/unknownhorizons.pot (4)
 # 
-#
-#
-#
-#
-#
-#
 # Noun or verb?
 #: horizons/gui/ingamegui.py
 #: horizons/i18n/guitranslations.py
 #: po/tutorial.py
 msgid "click"
-msgstr "cliquer / click"
+msgstr "cliquer / clic"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 # 
