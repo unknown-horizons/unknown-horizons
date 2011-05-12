@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-12 09:49+0200\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2011-05-12 19:31+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -228,13 +228,12 @@ msgid "start"
 msgstr "début / débuter"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
+# I think that tab is not the good word in some case, i had here some other words i used in the tuto translation, seblabel
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "tab"
-msgstr "onglet"
+msgstr "onglet / fenêtre / panneau"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
@@ -623,16 +622,12 @@ msgid "stock"
 msgstr "stock"
 
 # (poterminology) uh-tutorial/tutorial.pot (11)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-# I believe entrepôt will translated by warehouse
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "storage"
-msgstr "stockage"
+msgstr "dépôt / entrepôt "
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -715,20 +710,12 @@ msgid "found"
 msgstr "trouvé"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pavilion"
-msgstr "pavillion"
+msgstr "pavillon"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1096,20 +1083,12 @@ msgid "free trader"
 msgstr "marchand libre"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "happiness"
-msgstr "satisfaction / contentment"
+msgstr "satisfaction / contentement"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
@@ -1143,20 +1122,13 @@ msgid "inventory"
 msgstr "inventaire / cargaison / stock"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#
-#
-#
-#
+# Here all is about wool, so it's better to use 'mouton', i had a talk about that with eoc. Lamb will certainly disappeared from UH glossary
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb"
-msgstr "agneau"
+msgstr "mouton / agneau"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1207,19 +1179,11 @@ msgid "residents"
 msgstr "habitants"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/gui/widgets/inventory.py
 msgid "slot"
-msgstr "slot / emplacement"
+msgstr "emplacement"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1393,20 +1357,14 @@ msgstr "poisson"
 msgid "increase"
 msgstr "augmenter"
 
-# 
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-# I never heard about wool from lamb but from sheep...it looks weird. seb
-#
+# see lamb. wool come from sheep, lambs give meat
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr "laine d'agneau"
+msgstr "laine de mouton"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -2113,21 +2071,12 @@ msgstr "champ de canne à sucre"
 msgid "trade partner"
 msgstr "partenaire commercial"
 
-# 
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "yields"
-msgstr "rends / les rendements / produit / les produits"
+msgstr "rendements"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
