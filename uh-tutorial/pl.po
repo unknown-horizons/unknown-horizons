@@ -8,22 +8,26 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-02-27 18:14+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-12 15:01+0200\n"
+"Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #: po/tutorial.py:1
+#, fuzzy
 msgid "Tutorial"
-msgstr ""
+msgstr "Samouczek"
 
 #: po/tutorial.py:2
+#, fuzzy
 msgid "The UH team"
-msgstr ""
+msgstr "UH Team"
 
 #: po/tutorial.py:3
 msgid ""
@@ -36,10 +40,12 @@ msgid "Build a branch office at the coast."
 msgstr ""
 
 #: po/tutorial.py:5
+#, fuzzy
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Witaj w Unknown Horizons!"
 
 #: po/tutorial.py:6
+#, fuzzy
 msgid ""
 "This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.\n"
 "\n"
@@ -53,6 +59,25 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
+"To twój Dziennik Pokładowy, gdzie przechowywane są wszystkie ważne "
+"informacje. Informacja o każdym nowym zadaniu będzie pojawiać się po lewej "
+"stronie ekranu.\n"
+"\n"
+"Jeśli jesteś zainteresowany dłuższymi opisami, twój Dziennik Pokładowy Ci w "
+"tym pomoże.\n"
+"\n"
+"Po zamknięciu Dziennika Pokładowego, można go ponownie otworzyć przy pomocy "
+"ikony \"Dziennik Pokładowy\" w prawym górnym rogu (pod mini-mapą, z "
+"zapieczętowanym dokumentem i piórem).\n"
+"\n"
+"Jeśli masz jakieś sugestie na temat lepszych sformułowań, niewyjaśnionych "
+"kwestii lub nawet problemów z grą: Prosimy, powiedz nam o tym, a my "
+"postaramy się ulepszyć Samouczek!\n"
+"\n"
+"Odwiedź www.unknown-horizons.org by uzyskać pomoc oraz by skontaktować się z "
+"zespołem!\n"
+"\n"
+"Teraz przejdźmy do właściwej gry."
 
 #: po/tutorial.py:7
 msgid "NEW TASK: SETTLE ON AN ISLAND"
