@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -1949,11 +1949,14 @@ msgstr "clé / touche"
 msgid "load/unload"
 msgstr "charger/décharger"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
 # 
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "move"
-msgstr ""
+msgstr "déplacer / déménager"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
