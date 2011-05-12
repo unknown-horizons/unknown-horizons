@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-08 15:37+0200\n"
-"Last-Translator: Mateusz <eugen@victorygames.pl>\n"
+"PO-Revision-Date: 2011-05-12 13:35+0200\n"
+"Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1751,15 +1751,15 @@ msgstr "wełna"
 
 #: sqlite/SettlerLevel
 msgid "pioneer"
-msgstr ""
+msgstr "pionier"
 
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "marynarz"
 
 #: sqlite/SettlerLevel
 msgid "settler"
-msgstr ""
+msgstr "osadnik"
 
 #~ msgid "Chime The Bell"
 #~ msgstr "Uderz w dzwon"
