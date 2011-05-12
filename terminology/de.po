@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-06 12:25+0200\n"
+"PO-Revision-Date: 2011-05-12 22:18+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -664,7 +664,7 @@ msgstr "Siedlung"
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "start"
-msgstr "Start"
+msgstr "Beginn / Start / anfangen"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
@@ -1757,7 +1757,7 @@ msgstr "Logbuch / Protokoll / Holz / Brücke"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "reach"
-msgstr "erreichen"
+msgstr "erreichen / Reichweite"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -2060,7 +2060,7 @@ msgstr "Fischer"
 #: run_uh.py
 #: horizons/main.py
 msgid "found"
-msgstr "gefunden"
+msgstr "gefunden / gründen"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -3403,45 +3403,15 @@ msgstr "Dorf"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "your"
-msgstr "Eure"
+msgstr "Eure / Euer"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
 #: po/tutorial.py
 #: horizons/gui/tabs/marketplacetabs.py
 #: horizons/i18n/guitranslations.py
 msgid "account"
-msgstr "Finanzen / Account"
+msgstr "Finanzen / Konto / Account"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -3669,7 +3639,7 @@ msgstr "Funktion / Feature"
 #: sqlite/Resources
 #: sqlite/Building
 msgid "fish"
-msgstr "Fisch"
+msgstr "Fisch / -e"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -4304,7 +4274,7 @@ msgstr "Lösung"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sound"
-msgstr "Sound"
+msgstr "Sound / Audio"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -4991,7 +4961,7 @@ msgstr "Be-/Entladen"
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "move"
-msgstr ""
+msgstr "umziehen / verschieben / bewegen"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
