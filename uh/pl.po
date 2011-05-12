@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-12 13:35+0200\n"
+"PO-Revision-Date: 2011-05-12 14:22+0200\n"
 "Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -421,8 +421,9 @@ msgid "Tree"
 msgstr "Drzewo"
 
 #: horizons/i18n/guitranslations.py:58
+#, fuzzy
 msgid "Fields"
-msgstr ""
+msgstr "Pola"
 
 #: horizons/i18n/guitranslations.py:59
 #, fuzzy
@@ -442,8 +443,9 @@ msgid "Brickyard: Turns clay into bricks."
 msgstr "Cegielnia: Zmienia glinę w cegły"
 
 #: horizons/i18n/guitranslations.py:64
+#, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
+msgstr "Kopalnia gliny: Dostarcza gliny ze złóż."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
@@ -462,8 +464,11 @@ msgid "Potato field: Yields food. Needs a farm."
 msgstr "Pole ziemniaczane: Dostarcza jedzenie. Wymaga farmy."
 
 #: horizons/i18n/guitranslations.py:69
+#, fuzzy
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
+"Pole trzciny cukrowej: Wykorzystywane do produkcji alkoholu. Potrzebuje "
+"farmy."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
@@ -479,12 +484,14 @@ msgid "Settler buildings"
 msgstr "Budynki osadnika"
 
 #: horizons/i18n/guitranslations.py:76
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Spalanie węgla drzewnego: Spala wiele (czegoś*)."
 
 #: horizons/i18n/guitranslations.py:77
+#, fuzzy
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "Kopalnia rudy żelaza: Wydobywa żelazo ze złoża."
 
 #: horizons/i18n/guitranslations.py:78
 msgid "Smeltery: Refines all kind of ores."
