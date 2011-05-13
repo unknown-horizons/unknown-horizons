@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-07 18:24+0200\n"
+"PO-Revision-Date: 2011-05-13 19:11+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -73,7 +73,7 @@ msgstr "Esteu segur que voleu sortir de l'Horizons Desconeguts?"
 #: horizons/gui/gui.py:147
 #, fuzzy
 msgid "Quit Game"
-msgstr "Surt del joc"
+msgstr "Esci dal Gioco"
 
 #: horizons/gui/gui.py:153
 #, fuzzy
@@ -96,7 +96,7 @@ msgstr "Non ci sono partite salvate da caricare"
 #: horizons/i18n/guitranslations.py:174
 #, fuzzy
 msgid "Load game"
-msgstr "Carregar partida"
+msgstr "Caricamento partita"
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:136
 msgid "Save game"
@@ -115,7 +115,7 @@ msgstr ""
 #: horizons/gui/gui.py:252
 #, fuzzy
 msgid "Confirmation for overwriting"
-msgstr "Sobreescriure la partida?"
+msgstr "Conferma di sovrascrittura"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
@@ -154,7 +154,7 @@ msgstr "Nessun file selezionato"
 
 #: horizons/gui/gui.py:411
 msgid "You need to select a savegame to delete"
-msgstr "E' necessario selezionare una partita salvata da cancellare"
+msgstr "É necessario selezionare una partita salvata da cancellare"
 
 #: horizons/gui/gui.py:414
 #, python-format
@@ -226,7 +226,7 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
-"La mappa casuale è ancora in fase di sviluppo. E' da considerarsi una "
+"La mappa casuale è ancora in fase di sviluppo. É da considerarsi una "
 "versione preliminare di prova. Si potrebbero avere problemi."
 
 #: horizons/gui/modules/singleplayermenu.py:87
@@ -334,14 +334,13 @@ msgstr "Conto"
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:246 horizons/i18n/guitranslations.py:289
 msgid "Settler overview"
-msgstr "Panoramica colone:"
+msgstr "Panoramica colone"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:300
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:292
 #: horizons/i18n/guitranslations.py:305 horizons/i18n/guitranslations.py:321
-#, fuzzy
 msgid "Overview"
-msgstr "Vista Geral:"
+msgstr "Vista Geral"
 
 #: horizons/gui/tabs/overviewtab.py:96
 msgid "Branch office overview"
@@ -711,7 +710,7 @@ msgstr "{SU} = Scorre su"
 
 #: horizons/i18n/guitranslations.py:148
 msgid "{DOWN} = Scroll down"
-msgstr "{GIU'} = Scorre giù"
+msgstr "{GIÙ} = Scorre giù"
 
 #: horizons/i18n/guitranslations.py:149
 msgid "{ , } = Rotate building left"
@@ -904,7 +903,7 @@ msgstr "Aggiorna la lista di partite attive"
 
 #: horizons/i18n/guitranslations.py:210
 msgid "Autosave interval in minutes:"
-msgstr "Intervalo di autosave in minuti"
+msgstr "Intervalo di autosave in minuti:"
 
 #: horizons/i18n/guitranslations.py:211
 #, fuzzy
@@ -1189,9 +1188,8 @@ msgstr "Residentes"
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Costruisci insediamento"
+msgstr "Costruisci insediamento:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1229,9 +1227,8 @@ msgid "Configure trading route:"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:331
-#, fuzzy
 msgid "Load/Unload:"
-msgstr "Carregar/Descarregar"
+msgstr "Carregar/Descarregar:"
 
 #: horizons/main.py:84
 msgid "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535."
@@ -1306,7 +1303,7 @@ msgstr "Nessun salvataggio rapido trovato"
 #: horizons/spsession.py:103
 msgid "You need to quicksave before you can quickload."
 msgstr ""
-"E' necessario eseguire un salvataggio rapido prima di fare un caricamento "
+"É necessario eseguire un salvataggio rapido prima di fare un caricamento "
 "rapido."
 
 #. usually invalid filename
@@ -1430,9 +1427,8 @@ msgid "Failed to load fife:"
 msgstr "Impossibile caricare fife:"
 
 #: run_uh.py:344
-#, fuzzy
 msgid "FIFE was not found."
-msgstr "FIFE não foi encontrado"
+msgstr "FIFE não foi encontrado."
 
 #: sqlite/Building
 msgid "Boat Builder"

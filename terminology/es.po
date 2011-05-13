@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-11 22:56+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-13 19:40+0200\n"
+"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -464,12 +464,13 @@ msgstr "izquierda"
 #: sqlite/Building
 #: run_uh.py
 msgid "log"
-msgstr ""
+msgstr "registro"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "reach"
-msgstr ""
+msgstr "llegar"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -569,16 +570,18 @@ msgstr "pabellón"
 msgid "signal"
 msgstr "señal"
 
+# debe ser esto
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr ""
+msgstr "alarma de incendio"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "slider"
-msgstr ""
+msgstr "deslizador"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -703,7 +706,7 @@ msgstr "ajuste"
 #: po/tutorial.py
 #: sqlite/Building
 msgid "storage tent"
-msgstr ""
+msgstr "tienda de almacenamiento"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -978,13 +981,13 @@ msgstr "aumentar"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "lamb wool"
-msgstr ""
+msgstr "lana de oveja"
 
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "leave"
-msgstr ""
+msgstr "dejar"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1040,8 +1043,9 @@ msgstr "resultado"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "partner"
-msgstr ""
+msgstr "socio,compañero"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1270,7 +1274,7 @@ msgstr "verde"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grow"
-msgstr ""
+msgstr "crecer"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1346,8 +1350,9 @@ msgstr "rojo"
 # 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "return"
-msgstr "volver"
+msgstr "regreso"
 
 # 
 #: po/tutorial.py
@@ -1359,7 +1364,7 @@ msgstr "operar / correr"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "service"
-msgstr ""
+msgstr "servicio"
 
 # 
 #: po/tutorial.py
@@ -1377,7 +1382,7 @@ msgstr "MAYUS"
 #: po/tutorial.py
 #: horizons/gui/tabs/inventorytab.py
 msgid "ship inventory"
-msgstr ""
+msgstr "inventario de la nave"
 
 # 
 #: po/tutorial.py

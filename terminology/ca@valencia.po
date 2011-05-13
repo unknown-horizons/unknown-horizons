@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2011-05-13 19:24+0200\n"
+"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. set translated building name in gui
 #: po/tutorial.py
@@ -18,7 +19,7 @@ msgstr ""
 #: sqlite/Messages
 #: horizons/i18n/guitranslations.py
 msgid "build"
-msgstr ""
+msgstr "construir"
 
 #: horizons/gui/ingamegui.py
 #: horizons/gui/modules/multiplayermenu.py
@@ -26,33 +27,34 @@ msgstr ""
 #: horizons/mpsession.py
 #: %28poterminology%29+4+more+locations
 msgid "game"
-msgstr ""
+msgstr "joc"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
+#, fuzzy
 msgid "building"
-msgstr ""
+msgstr "construcció"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "tent"
-msgstr ""
+msgstr "botiga"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Messages
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "resource"
-msgstr ""
+msgstr "recursos"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Building
 msgid "branch office"
-msgstr ""
+msgstr "sucursal"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/marketplacetabs.py
@@ -60,7 +62,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
 msgid "overview"
-msgstr ""
+msgstr "resum"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -68,14 +70,14 @@ msgstr ""
 #: horizons/gui/tabs/boatbuildertab.py
 #: %28poterminology%29+1+more+locations
 msgid "ship"
-msgstr ""
+msgstr "vaixell"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 #: run_uh.py
 msgid "main"
-msgstr ""
+msgstr "principals"
 
 #: horizons/constants.py
 #: horizons/scenario/scenarioeventhandler.py
@@ -83,7 +85,7 @@ msgstr ""
 #: horizons/gui/gui.py
 #: %28poterminology%29+3+more+locations
 msgid "unknown"
-msgstr ""
+msgstr "desconegut"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -95,12 +97,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/SettlerLevel
 msgid "sailor"
-msgstr ""
+msgstr "mariner"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "inhabitants"
-msgstr ""
+msgstr "habitants"
 
 # 
 #: horizons/gui/modules/multiplayermenu.py
@@ -109,7 +111,7 @@ msgstr ""
 #: po/tutorial.py
 #: %28poterminology%29+2+more+locations
 msgid "map"
-msgstr ""
+msgstr "mapa"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -121,68 +123,68 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "start"
-msgstr ""
+msgstr "inici"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "tab"
-msgstr ""
+msgstr "fitxa"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "field"
-msgstr ""
+msgstr "camp"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "food"
-msgstr ""
+msgstr "aliments"
 
 #: po/tutorial.py
 #: horizons/gui/tabs/buildtabs.py
 msgid "increment"
-msgstr ""
+msgstr "increment"
 
 #: po/tutorial.py
 #: horizons/gui/
 msgid "minimap"
-msgstr ""
+msgstr "minimapa"
 
 #: po/tutorial.py
 #: horizons/gui/
 msgid "running costs"
-msgstr ""
+msgstr "despeses de funcionament"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "menu"
-msgstr ""
+msgstr "menú"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "produce"
-msgstr ""
+msgstr "produir"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/overviewtab.py
 msgid "production"
-msgstr ""
+msgstr "producció"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "boards"
-msgstr ""
+msgstr "taules"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/mpsession.py
 msgid "change"
-msgstr ""
+msgstr "canvi"
 
 #: horizons/gui/ingamegui.py
 #: horizons/i18n/guitranslations.py
@@ -194,32 +196,33 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "main square"
-msgstr ""
+msgstr "plaça principal"
 
 #: horizons/gui/tabs/marketplacetabs.py
 #: sqlite/SettlerLevel
 #: horizons/gui/tabs/overviewtab.py
 #: sqlite/Messages
+#, fuzzy
 msgid "settler"
-msgstr ""
+msgstr "colon"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "time"
-msgstr ""
+msgstr "temps"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/tabs/buyselltab.py
 #: horizons/gui/tabs/boatbuildertab.py
 msgid "trade"
-msgstr ""
+msgstr "comerç"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "trail"
-msgstr ""
+msgstr "camí"
 
 #: horizons/constants.py
 #: po/tutorial.py
@@ -227,93 +230,93 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: %28poterminology%29+1+more+locations
 msgid "version"
-msgstr ""
+msgstr "versió"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "buy"
-msgstr ""
+msgstr "comprar"
 
 #: po/tutorial.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "connect"
-msgstr ""
+msgstr "connectar"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "lumberjack"
-msgstr ""
+msgstr "llenyataire"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "sell"
-msgstr ""
+msgstr "vendre"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "taxes"
-msgstr ""
+msgstr "impostos"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Resources
 msgid "wool"
-msgstr ""
+msgstr "llana"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "coast"
-msgstr ""
+msgstr "costa"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "companies"
-msgstr ""
+msgstr "empreses"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "cost"
-msgstr ""
+msgstr "cost"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "free"
-msgstr ""
+msgstr "lliure"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "left"
-msgstr ""
+msgstr "esquerra"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 #: run_uh.py
 msgid "log"
-msgstr ""
+msgstr "registre"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "reach"
-msgstr ""
+msgstr "arribar"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: horizons/gui/gui.py
 msgid "select"
-msgstr ""
+msgstr "seleccioneu"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stock"
-msgstr ""
+msgstr "accions"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "storage"
-msgstr ""
+msgstr "emmagatzematge"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
