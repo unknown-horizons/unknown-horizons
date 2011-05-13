@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 19:48+0200\n"
+"PO-Revision-Date: 2011-05-13 19:54+0200\n"
 "Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -462,49 +462,30 @@ msgstr "Militar"
 #, fuzzy
 msgid "Boat builder: Builds boats and small ships. Built on coast."
 msgstr ""
-"Astillero: \n"
-"Construye barcos y \n"
-"buques pequeños \n"
-"Se construye \n"
-"en la costa."
+"Constructor de barcos: Construye barcos y buques pequeños. Construido en la "
+"costa."
 
 #: horizons/i18n/guitranslations.py:63
 #, fuzzy
 msgid "Brickyard: Turns clay into bricks."
-msgstr ""
-"Cantera: \n"
-"Transforma la arcilla \n"
-"en ladrillos."
+msgstr "Fábrica de ladrillos: Activa la arcilla en los ladrillos."
 
 #: horizons/i18n/guitranslations.py:64
 #, fuzzy
 msgid "Clay pit: Gets clay from deposit."
-msgstr ""
-"Foso de arcilla: \n"
-"Recoge arcilla \n"
-"del depósito."
+msgstr "Pozo de arcilla: Obtiene la arcilla del depósito."
 
 #: horizons/i18n/guitranslations.py:65
 msgid "Distillery: Turns sugar into liquor."
 msgstr "Destilería: Convierte el azúcar en licor."
 
 #: horizons/i18n/guitranslations.py:66
-#, fuzzy
 msgid "Farm: Grows field crops and raises livestock."
-msgstr ""
-"Granja: \n"
-"Crecen campos \n"
-"de cultivo y \n"
-"ganado."
+msgstr "Granja: Crecen cultivos y crían ganado."
 
 #: horizons/i18n/guitranslations.py:67
-#, fuzzy
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-"Pastos: \n"
-"Alimenta ovejas. \n"
-"Produce lana. \n"
-"Necesita una granja."
+msgstr "Pasto: Aumentar ovejas. Producir lana. Las necesidades de una granja."
 
 #: horizons/i18n/guitranslations.py:68
 #, fuzzy
@@ -517,6 +498,8 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
+"Campo de caña de azúcar: se utiliza en la producción de licor. Las "
+"necesidades de una granja."
 
 #: horizons/i18n/guitranslations.py:70
 #, fuzzy
