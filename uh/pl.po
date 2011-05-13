@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-12 14:22+0200\n"
+"PO-Revision-Date: 2011-05-14 00:30+0200\n"
 "Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -335,8 +335,9 @@ msgstr "Przegląd"
 
 # Building
 #: horizons/gui/tabs/overviewtab.py:96
+#, fuzzy
 msgid "Branch office overview"
-msgstr "Przegląd Oddział"
+msgstr "Przegląd Faktorii Handlowej"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 msgid "Ship overview"
@@ -350,10 +351,11 @@ msgstr "Przegląd produkcji"
 msgid "Destroy building"
 msgstr "Zniszcz budowlę"
 
+# lub Rynku lub Rynku Miejskiego
 #: horizons/gui/tabs/overviewtab.py:284
 #, fuzzy
 msgid "Market place overview"
-msgstr "Przegląd Marketplace"
+msgstr "Przegląd Targu"
 
 #: horizons/gui/widgets/inventory.py:96
 #, python-format
@@ -440,7 +442,7 @@ msgstr "Budowniczy łodzi: Buduje łodzie i małe łódki, musi być na brzegu."
 
 #: horizons/i18n/guitranslations.py:63
 msgid "Brickyard: Turns clay into bricks."
-msgstr "Cegielnia: Zmienia glinę w cegły"
+msgstr "Cegielnia: Zmienia glinę w cegły."
 
 #: horizons/i18n/guitranslations.py:64
 #, fuzzy
@@ -448,12 +450,13 @@ msgid "Clay pit: Gets clay from deposit."
 msgstr "Kopalnia gliny: Dostarcza gliny ze złóż."
 
 #: horizons/i18n/guitranslations.py:65
+#, fuzzy
 msgid "Distillery: Turns sugar into liquor."
-msgstr "Destylarnia: Zmienia cukier w alkohol"
+msgstr "Gorzelnia: Zmienia cukier w alkohol."
 
 #: horizons/i18n/guitranslations.py:66
 msgid "Farm: Grows field crops and raises livestock."
-msgstr "Farma: Pozwala na uprawę roślin i chów zwierząt"
+msgstr "Farma: Pozwala na uprawę roślin i chów zwierząt."
 
 #: horizons/i18n/guitranslations.py:67
 msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
@@ -464,11 +467,9 @@ msgid "Potato field: Yields food. Needs a farm."
 msgstr "Pole ziemniaczane: Dostarcza jedzenie. Wymaga farmy."
 
 #: horizons/i18n/guitranslations.py:69
-#, fuzzy
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
 msgstr ""
-"Pole trzciny cukrowej: Wykorzystywane do produkcji alkoholu. Potrzebuje "
-"farmy."
+"Pole trzciny cukrowej: Wykorzystywane do produkcji alkoholu. Wymaga farmy."
 
 #: horizons/i18n/guitranslations.py:70
 msgid "Village school: Provides education."
@@ -502,8 +503,9 @@ msgid "Tavern: Provides get-together."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:80
+#, fuzzy
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Narzędziowiec: Wytwarza narzędzia z żelaza."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
 #, fuzzy
