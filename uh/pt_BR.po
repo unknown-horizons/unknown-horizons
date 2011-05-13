@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 14:50+0200\n"
+"PO-Revision-Date: 2011-05-13 15:16+0200\n"
 "Last-Translator: claudinei <claudinei@slitaz.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -118,7 +118,7 @@ msgstr "Data de salvamento desconhecida\n"
 #: horizons/gui/gui.py:371
 #, python-format
 msgid "Saved at %s\n"
-msgstr ""
+msgstr "Salvo em %s\n"
 
 #: horizons/gui/gui.py:372
 msgid "%H:%M, %A, %B %d"
@@ -127,7 +127,7 @@ msgstr ""
 #: horizons/gui/gui.py:383
 #, python-format
 msgid "Savegame ver. %d"
-msgstr ""
+msgstr "jogo salvo ver. %d"
 
 #: horizons/gui/gui.py:385
 #, python-format
@@ -135,10 +135,12 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
+"AVISO: Ver. %(ver)d incompatível\n"
+"Necessita a ver. %(need)d!"
 
 #: horizons/gui/gui.py:388
 msgid "INCOMPATIBLE VERSION\n"
-msgstr ""
+msgstr "VERSÃO INCOMPATÍVEL\n"
 
 #: horizons/gui/gui.py:411
 msgid "No file selected"
@@ -155,16 +157,15 @@ msgstr "Você realmente deseja remover o jogo salvo \"%s\"?"
 
 #: horizons/gui/gui.py:416
 msgid "Confirm deletion"
-msgstr "Confirmação da Remoção"
+msgstr "Confirme a remoção"
 
 #: horizons/gui/gui.py:421 horizons/main.py:198
-#, fuzzy
 msgid "Error!"
-msgstr "Erro"
+msgstr "Erro!"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Falha ao apagar o jogo salvo"
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
@@ -178,7 +179,7 @@ msgstr "Jogo pausado"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr ""
+msgstr "Não foi possível conectar ao servidor principal. Detalhes: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -188,11 +189,11 @@ msgstr "Erro de conexão"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
-msgstr "Existem algum problema na rede: "
+msgstr "Existe algum problema na rede: "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr ""
+msgstr "Diferença de versão!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
@@ -204,32 +205,38 @@ msgstr "Jogadores: "
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Creator: "
-msgstr ""
+msgstr "Criador:   "
 
 #: horizons/gui/modules/multiplayermenu.py:161
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
+"A versão do jogo no servidor difere da sua versão instalada. Todo jogador no "
+"modo multiplayer deve possuir a mesma versão. Isto pode ser resolvido "
+"atualizando o jogo para a versão recente. Versão do jogo: (%gameversion)s "
+"Sua versão: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
-msgstr ""
+msgstr "Versão errada"
 
 #: horizons/gui/modules/singleplayermenu.py:58
 msgid "The random map feature is still in active development. It is to be considered a pre testing version. Problems are to be expected."
 msgstr ""
+"O gerador randômico de mapa ainda está em desenvolvimento. Ele ainda é uma "
+"versão de testes. Problemas são esperados."
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr ""
+msgstr "Dificuldade:   "
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
-msgstr ""
+msgstr "Autor: "
 
 #: horizons/gui/modules/singleplayermenu.py:89
 msgid "Description: "
-msgstr ""
+msgstr "Descrição: "
 
 #: horizons/gui/modules/singleplayermenu.py:107
 msgid "Invalid player name"
@@ -248,7 +255,7 @@ msgid ""
 "The selected file is not a valid scenario file.\n"
 "Error message: "
 msgstr ""
-"O arquivo selecione não é um arquivo de cenário válido.\n"
+"O arquivo selecionado não é um arquivo de cenário válido.\n"
 "Mensagem de erro: "
 
 #: horizons/gui/modules/singleplayermenu.py:139
@@ -256,6 +263,8 @@ msgid ""
 "\n"
 "Please report this to the author."
 msgstr ""
+"\n"
+"Favor reporte isto ao autor."
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:115
@@ -265,7 +274,7 @@ msgstr "Construir"
 
 #: horizons/gui/tabs/boatbuildertab.py:37
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Resumo do construtor de barcos"
 
 #: horizons/gui/tabs/boatbuildertab.py:112
 msgid "Resources still needed:"
@@ -273,21 +282,20 @@ msgstr "Recursos necessários:"
 
 # 76%
 #: horizons/gui/tabs/boatbuildertab.py:170
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Barco de Pesca"
+msgstr "Barco de pesca"
 
 #: horizons/gui/tabs/boatbuildertab.py:179
 msgid "Trade boats"
-msgstr ""
+msgstr "Barco mercante"
 
 #: horizons/gui/tabs/boatbuildertab.py:185
 msgid "War boats"
-msgstr ""
+msgstr "Barco de guerra"
 
 #: horizons/gui/tabs/boatbuildertab.py:191
 msgid "War ships"
-msgstr ""
+msgstr "Navio de guerra"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
@@ -309,7 +317,7 @@ msgstr "Inventário"
 #: horizons/gui/tabs/inventorytab.py:64
 #, fuzzy
 msgid "Ship inventory"
-msgstr "Inventário"
+msgstr "Inventário do navio"
 
 # #  okay, here we go again.
 # #  the following is rather stable content ;-)
@@ -322,7 +330,7 @@ msgstr "Conta"
 #: horizons/gui/tabs/marketplacetabs.py:99
 #: horizons/gui/tabs/overviewtab.py:246 horizons/i18n/guitranslations.py:289
 msgid "Settler overview"
-msgstr "Resumo do Colono"
+msgstr "Resumo do colono"
 
 #: horizons/gui/tabs/overviewtab.py:47 horizons/gui/tabs/overviewtab.py:300
 #: horizons/i18n/guitranslations.py:285 horizons/i18n/guitranslations.py:292
