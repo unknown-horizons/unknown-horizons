@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 15:16+0200\n"
-"Last-Translator: claudinei <claudinei@slitaz.org>\n"
+"PO-Revision-Date: 2011-05-13 18:40+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "As mudanças solicitadas requerem o reinício do Unknown Horizons."
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr "Sistema padrão"
+msgstr "Padrão do Sistema"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
@@ -60,9 +60,8 @@ msgstr "Erro"
 
 # 75%
 #: horizons/gui/gui.py:121
-#, fuzzy
 msgid "Failed to save."
-msgstr "Salvamento rápido falhou."
+msgstr "Erro ao salvamento."
 
 #: horizons/gui/gui.py:146
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -91,7 +90,7 @@ msgstr "Não existem jogos salvos para abrir"
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:134
 #: horizons/i18n/guitranslations.py:174
 msgid "Load game"
-msgstr "Abrir jogo"
+msgstr "Carregar jogo salvo"
 
 #: horizons/gui/gui.py:203 horizons/i18n/guitranslations.py:136
 msgid "Save game"
@@ -135,7 +134,7 @@ msgid ""
 "WARNING: Incompatible ver. %(ver)d!\n"
 "Need ver. %(need)d!"
 msgstr ""
-"AVISO: Ver. %(ver)d incompatível\n"
+"AVISO: Ver. %(ver)d incompatível!\n"
 "Necessita a ver. %(need)d!"
 
 #: horizons/gui/gui.py:388
@@ -165,7 +164,7 @@ msgstr "Erro!"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
-msgstr "Falha ao apagar o jogo salvo"
+msgstr "Falha ao apagar o jogo salvo!"
 
 #: horizons/gui/ingamegui.py:441
 msgid "Hit P to continue the game or click below!"
@@ -205,7 +204,7 @@ msgstr "Jogadores: "
 
 #: horizons/gui/modules/multiplayermenu.py:144
 msgid "Creator: "
-msgstr "Criador:   "
+msgstr "Criador: "
 
 #: horizons/gui/modules/multiplayermenu.py:161
 #, python-format
@@ -213,7 +212,7 @@ msgid "The game's version differs from your version. Every player in a multiplay
 msgstr ""
 "A versão do jogo no servidor difere da sua versão instalada. Todo jogador no "
 "modo multiplayer deve possuir a mesma versão. Isto pode ser resolvido "
-"atualizando o jogo para a versão recente. Versão do jogo: (%gameversion)s "
+"atualizando o jogo para a versão recente. Versão do jogo: %(gameversion)s "
 "Sua versão: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
@@ -228,7 +227,7 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:87
 msgid "Difficulty: "
-msgstr "Dificuldade:   "
+msgstr "Dificuldade: "
 
 #: horizons/gui/modules/singleplayermenu.py:88
 msgid "Author: "
@@ -299,7 +298,7 @@ msgstr "Navio de guerra"
 
 #: horizons/gui/tabs/boatbuildertab.py:208
 msgid "Confirm order"
-msgstr ""
+msgstr "Confirme a compra"
 
 #: horizons/gui/tabs/buildtabs.py:36
 msgid "Increment"
@@ -580,9 +579,8 @@ msgid "Toolmaker: Produces tools out of iron."
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
-#, fuzzy
 msgid "Running costs:"
-msgstr "Custos de Funcionamento"
+msgstr "Custos de operação:"
 
 #: horizons/i18n/guitranslations.py:85
 msgid "Inhabitants"
@@ -731,14 +729,12 @@ msgid "Attention please!"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
-#, fuzzy
 msgid "Credits"
-msgstr " Créditos "
+msgstr "Créditos"
 
 #: horizons/i18n/guitranslations.py:135
-#, fuzzy
 msgid "Cancel game"
-msgstr " Cancelar Jogo "
+msgstr "Cancelar Jogo"
 
 #: horizons/i18n/guitranslations.py:137 horizons/i18n/guitranslations.py:176
 #: horizons/i18n/guitranslations.py:214
@@ -760,7 +756,7 @@ msgstr "FIFE e Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:143
 msgid "Have fun."
-msgstr "Divirta-se"
+msgstr "Divirta-se."
 
 #: horizons/i18n/guitranslations.py:144
 #, fuzzy
@@ -1021,18 +1017,16 @@ msgid "Number of quicksaves:"
 msgstr "Número de salvamentos rápidos:"
 
 #: horizons/i18n/guitranslations.py:224
-#, fuzzy
 msgid "Full screen:"
-msgstr "Tela Cheia"
+msgstr "Tela cheia:"
 
 #: horizons/i18n/guitranslations.py:225
 msgid "Screen resolution:"
 msgstr "Resolução de tela:"
 
 #: horizons/i18n/guitranslations.py:226
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Habilitar som"
+msgstr "Habilitar som:"
 
 #: horizons/i18n/guitranslations.py:227
 msgid "Used renderer:"
@@ -1080,9 +1074,8 @@ msgstr ""
 
 # 90%
 #: horizons/i18n/guitranslations.py:241
-#, fuzzy
 msgid "Start game"
-msgstr "Início do jogo:"
+msgstr "Início do jogo"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Color:"
@@ -1203,7 +1196,7 @@ msgstr "Taxas"
 #: horizons/i18n/guitranslations.py:282 horizons/i18n/guitranslations.py:286
 #: horizons/i18n/guitranslations.py:293 horizons/i18n/guitranslations.py:322
 msgid "Name:"
-msgstr "Nome: "
+msgstr "Nome:"
 
 #: horizons/i18n/guitranslations.py:288
 msgid "Average happiness:"
@@ -1256,9 +1249,8 @@ msgstr ""
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Menu de Construção"
+msgstr "Construir colônia:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
@@ -1355,7 +1347,7 @@ msgstr "Você venceu!"
 
 #: horizons/scenario/actions.py:72
 msgid "You have completed this scenario. "
-msgstr ""
+msgstr "Você completou este cenário. "
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
@@ -1449,7 +1441,7 @@ msgstr "Opções de desenvolvimento"
 msgid "Write debug output only to logfile, not to console. Implies -d."
 msgstr ""
 "Registra a saída de depuração apenas no arquivo de logo, e não no terminal. "
-"(-d) "
+"(-d)"
 
 #: run_uh.py:110
 msgid "Enable logging for a certain logging module (for developing only)."
