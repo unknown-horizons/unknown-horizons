@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-10 21:24+0200\n"
+"PO-Revision-Date: 2011-05-13 12:34+0200\n"
 "Last-Translator: Jasper <jasper@letsgame.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -1625,11 +1625,14 @@ msgstr "sleutel"
 msgid "load/unload"
 msgstr "laden/uitladen"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
 # 
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
 #: po/tutorial.py
 #: sqlite/Messages
 msgid "move"
-msgstr ""
+msgstr "verplaatsen"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
