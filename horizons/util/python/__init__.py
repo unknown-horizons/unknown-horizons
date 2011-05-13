@@ -41,3 +41,13 @@ class Const(object):
 		if name in self.__dict__:
 			raise Exception, "Can't change a ConstRect"
 		super(Const, self).__setattr__(name, value)
+
+def parse_port(port, allow_zero=False):
+	"""str2int for network ports. Throws ValueError in case of error."""
+	portInt = int(port)
+	if allow_zero and portInt == 0:
+		return portInt
+	if portInt < 1 or portInt > 65535:
+		raise ValueError()
+	return portInt
+

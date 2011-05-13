@@ -121,16 +121,28 @@
 		<CheckBox min_size="21,32"  name="edgescrolling" />
 	</HBox>
 
-	<Spacer min_size="20" />
+	<Spacer min_size="15" />
 
-	<VBox  name="language_settings">
+	<VBox name="language_settings">
 		<Label text="Language" 
 			name="headline_language"  font="libertine_headline" />
 		<HBox>
 			<Label text="Select language:"  name="language_label" />
-			<ScrollArea min_size="125,135" >
+			<ScrollArea min_size="125,80" >
 				<ListBox name="language" />
 			</ScrollArea>
+		</HBox>
+	</VBox>
+
+	<Spacer min_size="15" />
+
+	<VBox name="network_settings">
+		<Label text="Network"
+			name="headline_network" font="libertine_headline" />
+		<HBox>
+			<Label text="Network port:" name="network_port_lbl" />
+	    <TextField name="network_port" text="" min_size="50,16"/>
+			<Label text="(0 means default)" name="network_port_hint_lbl" />
 		</HBox>
 	</VBox>
 

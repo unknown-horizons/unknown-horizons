@@ -22,7 +22,7 @@
 import horizons.main
 
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.util import Color
+from horizons.util import Color, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
@@ -42,9 +42,7 @@ class NetworkInterface(object):
 	PING_INTERVAL = 0.5 # ping interval in seconds
 
 	def __init__(self):
-		# TODO: a user should be able to set its name in settings!
-		name = horizons.main.fife.get_uh_setting("Nickname")
-		self.__setup_client(name)
+		self.__setup_client()
 		# cbs means callbacks
 		self.cbs_game_details_changed = []
 		self.cbs_game_starts = []
@@ -57,7 +55,6 @@ class NetworkInterface(object):
 		self._client.register_callback("p2p_data", self._cb_p2p_data)
 		self.received_packets = []
 
-	def add_to_extscheduler(self):
 		ExtScheduler().add_new_object(self.ping, self, self.PING_INTERVAL, -1)
 
 	def get_game(self):
@@ -70,16 +67,23 @@ class NetworkInterface(object):
 	def isjoined(self):
 		return self._client.game is not None
 
-	def change_name(self, name):
-		self.disconnect()
-		self.__setup_client(name)
-		self.connect()
+	def network_data_changed(self, connect=False):
+		"""Call in case constants like nickname, client address or client port changed.
+		@param connect: whether to connect after the data updated
+		@throws RuntimeError in case of invalid data or an NetworkException forwarded from connect"""
+		if self.isconnected():
+			self.disconnect()
+		self.__setup_client()
+		if connect:
+			self.connect()
 
-	def __setup_client(self, name):
+	def __setup_client(self):
+		name = horizons.main.fife.get_uh_setting("Nickname")
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
-		if NETWORK.CLIENT_ADDRESS is not None and NETWORK.CLIENT_PORT > 0:
-			clientaddress = [NETWORK.CLIENT_ADDRESS, NETWORK.CLIENT_PORT]
+		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"), allow_zero=True)
+		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
+			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
 			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
 		except NetworkException, e:
@@ -226,7 +230,7 @@ class NetworkInterface(object):
 
 	def game2mpgame(self, game):
 		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion)
-	
+
 	def get_clientversion(self):
 		return self._client.version
 

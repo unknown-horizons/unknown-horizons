@@ -40,7 +40,7 @@ import thread # for thread.error raised by threading.Lock.release
 
 from fife import fife as fife_module
 
-from horizons.util import ActionSetLoader, TileSetLoader, Color
+from horizons.util import ActionSetLoader, TileSetLoader, Color, parse_port
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
@@ -77,28 +77,27 @@ def start(command_line_arguments):
 			NETWORK.SERVER_ADDRESS = mpieces[0]
 			# only change port if port is specified
 			if len(mpieces[2]) > 0:
-				NETWORK.SERVER_PORT = int(mpieces[2])
-				if NETWORK.SERVER_PORT < 1 or NETWORK.SERVER_PORT > 65535:
-					raise ValueError
+				NETWORK.SERVER_PORT = parse_port(mpieces[2], allow_zero=True)
 		except ValueError:
-			print _("Error: Invalid syntax in --mp-master commandline option. Port must be a number between 0 and 65535.")
+			print _("Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535.")
 			return False
+
+	# init fife before mp_bind is parsed, since it's needed there
+	fife = Fife()
 
 	if command_line_arguments.mp_bind:
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
-			NETWORK.CLIENT_PORT = int(mpieces[2])
-			if NETWORK.CLIENT_PORT < 1 or NETWORK.CLIENT_PORT  > 65535:
-				raise ValueError
+			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
+			print 'asdf', fife.get_uh_setting("NetworkPort2")
 		except ValueError:
-			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 0 and 65535.")
+			print _("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False
 
 	db = _create_db()
 
 	# init game parts
-	fife = Fife()
 
 	_init_gettext(fife)
 
@@ -117,10 +116,10 @@ def start(command_line_arguments):
 	SavegameManager.init()
 	try:
 		NetworkInterface.create_instance()
-		NetworkInterface().add_to_extscheduler()
 	except RuntimeError, e:
-		print "Error during network initialization: %s" % (e)
-		return False
+		_modules.gui.show_popup(_("Failed to initialize networking"), \
+		                        _("This means that you need to fix your network configuration in order to play multiplayer games.\n") + \
+		                        _("Error message: \n%s") % e)
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()

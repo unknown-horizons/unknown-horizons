@@ -104,7 +104,7 @@ class Buildable(object):
 		@param ship: ship instance if building from ship
 		@return list of _BuildPositions
 		"""
-		raise NotImplementedError
+		raise NotImplementedError()
 
 	@classmethod
 	def is_tile_buildable(cls, session, tile, ship, island=None, check_settlement=True):

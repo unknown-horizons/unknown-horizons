@@ -263,7 +263,6 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	SERVER_PORT = 2001
 	CLIENT_ADDRESS = None
-	CLIENT_PORT = 0
 
 
 ## TRANSLATIONS

@@ -33,11 +33,12 @@ from fife.extensions.fife_settings import Setting, FIFE_MODULE
 import horizons.main
 
 import horizons.gui.style
-from horizons.util import SQLiteAnimationLoader, Callback
+from horizons.util import SQLiteAnimationLoader, Callback, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import update_all_translations, load_xml_translated
 from horizons.i18n.utils import find_available_languages
-from horizons.constants import LANGUAGENAMES, PATHS
+from horizons.constants import LANGUAGENAMES, PATHS, NETWORK
+from horizons.network.networkinterface import NetworkInterface
 
 UH_MODULE="unknownhorizons"
 
@@ -113,9 +114,13 @@ class Fife(ApplicationBase):
 		                                applyfunction=self.update_languages,
 		                                initialdata= [LANGUAGENAMES[x] for x in sorted(languages_map.keys())])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
-		                                applyfunction=lambda x: self.set_volume_music(x))
+		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
-		                                applyfunction=lambda x: self.set_volume_effects(x))
+		                                applyfunction=self.set_volume_effects)
+
+		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
+		                                applyfunction=self.set_network_port)
+
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
@@ -408,6 +413,31 @@ class Fife(ApplicationBase):
 			for e in self.emitter['ambient']:
 				e.setGain(value*2)
 		self.update_slider_values('volume_effects', factor = 200, percent = True)
+
+	def set_network_port(self, port):
+		"""Sets a new value for client network port"""
+		# port is saved as string due to pychan limitations
+		try:
+			# 0 is not a valid port, but a valid value here (used for default)
+			parse_port(port, allow_zero=True)
+		except ValueError:
+			headline = _("Invalid network port")
+			message = _("The port you specified is not valid. It must be  a number between 1 and 65535")
+			horizons.main._modules.gui.show_popup(headline, message)
+			# reset value and reshow settings dlg
+			self.set_uh_setting("NetworkPort", u"0")
+			ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
+		else:
+			# port is valid
+			try:
+				if NetworkInterface() is None:
+					NetworkInterface.create_instance()
+				NetworkInterface().network_data_changed(connect=False)
+			except Exception, e:
+				headline = _("Failed to apply new network data")
+				message = headline + _(".\nCheck the data you entered in the Network section.\nDetails: ") + str(e)
+				horizons.main._modules.gui.show_popup(headline, message)
+				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
 
 	def run(self):
 		"""

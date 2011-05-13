@@ -40,8 +40,14 @@ class MultiplayerMenu(object):
 
 	def show_multi(self):
 		"""Shows main multiplayer menu"""
+		if NetworkInterface() is None:
+			self.show_popup(_("Networking isn't initialised"), \
+			           _("Networking isn't initialised, probably because of configuration issues. Check your settings!"))
+			return
 		if not NetworkInterface().isconnected():
-			self.__connect_to_server()
+			connected = self.__connect_to_server()
+			if not connected:
+				return
 
 		if NetworkInterface().isjoined():
 			if not NetworkInterface().leavegame():
@@ -81,8 +87,9 @@ class MultiplayerMenu(object):
 			try:
 				NetworkInterface().connect()
 			except Exception, err:
-				self.show_popup(_("Network Error"), _("Could not connect to master server. Details: %s") % str(err))
-				return
+				self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
+				return False
+			return True
 
 
 	def __apply_new_nickname(self):
@@ -90,9 +97,9 @@ class MultiplayerMenu(object):
 		horizons.main.fife.set_uh_setting("Nickname", new_nick)
 		horizons.main.fife.save_settings()
 		try:
-			NetworkInterface().change_name(new_nick)
+			NetworkInterface().network_data_changed(connect=True)
 		except Exception, err:
-			self.show_popup(_("Network Error"), _("Could not connect to master server. Details: %s") % str(err))
+			self.show_popup(_("Network Error"), _("Could not connect to master server. Please check your Internet connection. If it is fine, it means our master server is temporarily down.\nDetails: %s") % str(err))
 			return
 		self.__refresh()
 
@@ -132,7 +139,7 @@ class MultiplayerMenu(object):
 
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
-	
+
 	def __update_game_details(self, game = None):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:

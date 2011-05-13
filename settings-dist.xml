@@ -30,5 +30,6 @@
 		<Setting name="Nickname" type="str">Unnamed Traveler</Setting>
 		<Setting name="MinimapRotation" type="bool">False</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
+		<Setting name="NetworkPort" type="str">0</Setting>
 	</Module>
 </Settings>
