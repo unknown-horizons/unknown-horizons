@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-14 00:30+0200\n"
+"PO-Revision-Date: 2011-05-14 00:13+0200\n"
 "Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -513,8 +513,9 @@ msgid "Running costs:"
 msgstr "Bieżące koszta:"
 
 #: horizons/i18n/guitranslations.py:85
+#, fuzzy
 msgid "Inhabitants"
-msgstr ""
+msgstr "Mieszkańcy"
 
 #: horizons/i18n/guitranslations.py:86
 msgid "Click to change the name of your settlement."
@@ -542,28 +543,32 @@ msgid "Captain's log"
 msgstr "Dziennik pokładowy"
 
 #: horizons/i18n/guitranslations.py:94
+#, fuzzy
 msgid "Rotate map counterclockwise"
-msgstr ""
+msgstr "Obróć mapę przeciwnie do ruchu wskazówek zegara"
 
 #: horizons/i18n/guitranslations.py:95
+#, fuzzy
 msgid "Rotate map clockwise"
-msgstr ""
+msgstr "Obróć mapę zgodnie z ruchem wskazówek zegara"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
-msgstr ""
+msgstr "Zmniejsz prędkość gry"
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Increase game speed"
-msgstr ""
+msgstr "Zwiększ prędkość gry"
 
 #: horizons/i18n/guitranslations.py:98
+#, fuzzy
 msgid "Zoom in"
-msgstr ""
+msgstr "Przybliż"
 
 #: horizons/i18n/guitranslations.py:99
+#, fuzzy
 msgid "Zoom out"
-msgstr ""
+msgstr "Oddal"
 
 # Resources
 #: horizons/i18n/guitranslations.py:101
@@ -605,7 +610,7 @@ msgstr "Wpisz swoją wiadomość:"
 
 #: horizons/i18n/guitranslations.py:113
 msgid "Chat"
-msgstr "czat"
+msgstr "Czat"
 
 #: horizons/i18n/guitranslations.py:115
 msgid "Buy resources"
@@ -632,9 +637,8 @@ msgid "Start production"
 msgstr "Rozpocznij produkcję"
 
 #: horizons/i18n/guitranslations.py:123
-#, fuzzy
 msgid "Leave Captain's log"
-msgstr "Zamknij dziennik pokładowy"
+msgstr "Zamknij Dziennik Pokładowy"
 
 #: horizons/i18n/guitranslations.py:124
 msgid "Read prev. entries"
@@ -646,11 +650,11 @@ msgstr "Czytaj nast. wpisy"
 
 #: horizons/i18n/guitranslations.py:127
 msgid "Exit"
-msgstr ""
+msgstr "Wyjdź"
 
 #: horizons/i18n/guitranslations.py:128
 msgid "Add to list"
-msgstr ""
+msgstr "Dodaj do listy"
 
 #: horizons/i18n/guitranslations.py:129
 msgid "Start / Stop route"
@@ -676,13 +680,12 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 #: horizons/i18n/guitranslations.py:138
-#, fuzzy
 msgid "Return to game"
-msgstr "Powrót do gry"
+msgstr "Wróć do gry"
 
 #: horizons/i18n/guitranslations.py:141
 msgid "The FIFE and Unknown Horizons"
-msgstr "FIFE i nie Unknown Horizons"
+msgstr "FIFE i Unknown Horizons"
 
 #: horizons/i18n/guitranslations.py:142
 msgid "development teams"
