@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-13 19:40+0200\n"
-"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
+"PO-Revision-Date: 2011-05-13 23:10+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "construir"
 #: horizons/mpsession.py
 #: %28poterminology%29+4+more+locations
 msgid "game"
-msgstr "juego"
+msgstr "juego / partida"
 
 # (poterminology) uh-tutorial/tutorial.pot (26)
 #
@@ -179,14 +179,12 @@ msgid "settlement"
 msgstr "asentamiento"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (9)
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: run_uh.py
 msgid "start"
-msgstr "inicio"
+msgstr "inicio / comenzar"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
@@ -464,7 +462,7 @@ msgstr "izquierda"
 #: sqlite/Building
 #: run_uh.py
 msgid "log"
-msgstr "registro"
+msgstr "bitácora"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -575,7 +573,7 @@ msgstr "señal"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "signal fire"
-msgstr "alarma de incendio"
+msgstr "señal de fuego"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -882,14 +880,12 @@ msgid "stop"
 msgstr "cancelar"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "village"
-msgstr "villa"
+msgstr "pueblo / villa"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1029,7 +1025,7 @@ msgstr "modo"
 #: horizons/i18n/guitranslations.py
 #: horizons/main.py
 msgid "multiple"
-msgstr "multiples"
+msgstr "múltiples"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1043,9 +1039,8 @@ msgstr "resultado"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "partner"
-msgstr "socio,compañero"
+msgstr "compañero / socio"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1066,7 +1061,7 @@ msgstr "jugar"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "potato field"
-msgstr "campo de patatas"
+msgstr "campo de papas"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1249,7 +1244,7 @@ msgstr "foro"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "fulfill"
-msgstr "realizar"
+msgstr "cumpler / realizar"
 
 # 
 # (poterminology) uh-tutorial/tutorial.pot (1)
@@ -1274,7 +1269,7 @@ msgstr "verde"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "grow"
-msgstr "crecer"
+msgstr "credercultivar"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #

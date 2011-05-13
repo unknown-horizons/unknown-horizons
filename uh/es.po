@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 19:54+0200\n"
-"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
+"PO-Revision-Date: 2011-05-04 14:29+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Algunos cambios necesitan reiniciar el juego."
 
 #: horizons/engine.py:108
 msgid "System default"
-msgstr "Por defecto"
+msgstr "Predeterminado"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
@@ -179,7 +179,7 @@ msgstr "Partida en pausa"
 #: horizons/gui/modules/multiplayermenu.py:95
 #, python-format
 msgid "Could not connect to master server. Details: %s"
-msgstr "No puedo conectar al servidor maestro. Detalles:% s"
+msgstr "No puedo conectar al servidor maestro. Detalles: %s"
 
 #: horizons/gui/modules/multiplayermenu.py:84
 #: horizons/gui/modules/multiplayermenu.py:95
@@ -193,7 +193,7 @@ msgstr "La red no funciona correctamente: "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"
-msgstr "Versión diferente"
+msgstr "Versión diferente!"
 
 #: horizons/gui/modules/multiplayermenu.py:140
 msgid "Map: "
@@ -208,13 +208,13 @@ msgid "Creator: "
 msgstr "Creador: "
 
 #: horizons/gui/modules/multiplayermenu.py:161
-#, python-format, fuzzy
+#, python-format, 
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: %(gameversion)s Your version: %(ownversion)s"
 msgstr ""
 "La versión del juego se diferencia de su versión. Todos los jugadores en una "
 "partida multijugador deben utilizar la misma versión. Esto puede ser fijado "
 "por cada jugador de actualizar a la versión más reciente. Versión del "
-"juego:% (gameversion) s Su versión:% (ownversion) sal•lel 1 connector"
+"juego: %(gameversion)s Su versión: %(ownversion)s"
 
 #: horizons/gui/modules/multiplayermenu.py:161
 msgid "Wrong version"
@@ -336,9 +336,7 @@ msgstr "Visión general"
 
 #: horizons/gui/tabs/overviewtab.py:96
 msgid "Branch office overview"
-msgstr ""
-"Asentamiento \n"
-"Visión general"
+msgstr "Sucursal información general"
 
 #: horizons/gui/tabs/overviewtab.py:107 horizons/gui/tabs/overviewtab.py:146
 msgid "Ship overview"
@@ -382,52 +380,28 @@ msgid "Services"
 msgstr "Servicios"
 
 #: horizons/i18n/guitranslations.py:46
-#, fuzzy
 msgid "Pavilion: Fulfills religious needs of sailors."
-msgstr "Pabellón: Cumple con las necesidades religiosas de los marineros"
+msgstr "Pabellón: Cumple con las necesidades religiosas de los marineros."
 
 #: horizons/i18n/guitranslations.py:47
-#, fuzzy
 msgid "Fisherman: Fishes the sea, produces food."
-msgstr ""
-"Pescador: \n"
-"Pesca en el mar, \n"
-"produce alimentos."
+msgstr "Pescador: Pesca en el mar, produce alimento."
 
 #: horizons/i18n/guitranslations.py:48
-#, fuzzy
 msgid "Hunter: Hunts wild forest animals, produces food."
-msgstr ""
-"Cazador: \n"
-"Caza animales \n"
-"salvajes, \n"
-"produce alimentos."
+msgstr "Cazador: Caza animales salvajes, produce alimento."
 
 #: horizons/i18n/guitranslations.py:49
-#, fuzzy
 msgid "Signal fire: Allows the player to trade with the free trader."
-msgstr ""
-"Señal de fuego: \n"
-"Te permite \n"
-"comerciar con el \n"
-"comerciante libre."
+msgstr "Señal de fuego: Te permite comerciar con el comerciante libre."
 
 #: horizons/i18n/guitranslations.py:50
-#, fuzzy
 msgid "Lumberjack: Chops down trees and turns them into boards."
-msgstr ""
-"Leñador: \n"
-"Corta árboles \n"
-"y los transforma \n"
-"en tablas."
+msgstr "Leñador: Corta árboles y los transforma en tablones."
 
 #: horizons/i18n/guitranslations.py:51
-#, fuzzy
 msgid "Main square: Supplies citizens with goods."
-msgstr ""
-"Plaza principal \n"
-"Suple a los ciudadanos \n"
-"con bienes."
+msgstr "Plaza principal: Suple a los ciudadanos con bienes."
 
 #: horizons/i18n/guitranslations.py:52
 msgid "Tent: Houses your inhabitants."
@@ -488,12 +462,8 @@ msgid "Pasture: Raises sheep. Produces wool. Needs a farm."
 msgstr "Pasto: Aumentar ovejas. Producir lana. Las necesidades de una granja."
 
 #: horizons/i18n/guitranslations.py:68
-#, fuzzy
 msgid "Potato field: Yields food. Needs a farm."
-msgstr ""
-"Campo de patatas: \n"
-"Provee alimentos. \n"
-"Necesita una granja."
+msgstr "Campo de papas: Produce alimento. Necesita una granja."
 
 #: horizons/i18n/guitranslations.py:69
 msgid "Sugarcane field: Used in liquor production. Needs a farm."
@@ -502,20 +472,12 @@ msgstr ""
 "necesidades de una granja."
 
 #: horizons/i18n/guitranslations.py:70
-#, fuzzy
 msgid "Village school: Provides education."
-msgstr ""
-"Escuela del pueblo: \n"
-"Provee de educación."
+msgstr "Escuela del pueblo: Provee de educación."
 
 #: horizons/i18n/guitranslations.py:71
-#, fuzzy
 msgid "Weaver: Turns lamb wool into cloth."
-msgstr ""
-"Cantera: \n"
-"Transforma \n"
-"la arcilla \n"
-"en ladrillos."
+msgstr "Tejedor: Transforma la lana de oveja en ropas."
 
 #: horizons/i18n/guitranslations.py:74
 msgid "Settler buildings"
@@ -692,7 +654,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
 msgid "Credits"
-msgstr " Créditos "
+msgstr "Créditos"
 
 #: horizons/i18n/guitranslations.py:135
 msgid "Cancel game"
@@ -1036,7 +998,7 @@ msgstr ""
 
 #: horizons/i18n/guitranslations.py:241
 msgid "Start game"
-msgstr "Comenzar partida:"
+msgstr "Comenzar partida"
 
 #: horizons/i18n/guitranslations.py:244
 msgid "Color:"
@@ -1073,12 +1035,10 @@ msgstr "Progreso:"
 msgid "Building overview"
 msgstr "Visión general del edificio"
 
+# this needs to be rather short!
 #: horizons/i18n/guitranslations.py:253
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
-"Cancelar todo el \n"
-"progreso de construcción"
+msgstr "Cancelar todo el progreso"
 
 #: horizons/i18n/guitranslations.py:254
 msgid "Pause"
@@ -1091,7 +1051,7 @@ msgstr "Continuar"
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:275
 #: horizons/i18n/guitranslations.py:297 horizons/i18n/guitranslations.py:299
 msgid "Running costs"
-msgstr "Costes de funcionamiento:"
+msgstr "Costos de operación"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Fishing boat"
@@ -1128,7 +1088,7 @@ msgstr "Seleccionar recursos:"
 
 #: horizons/i18n/guitranslations.py:270
 msgid "Balance:"
-msgstr "Balance:"
+msgstr "Saldo:"
 
 #: horizons/i18n/guitranslations.py:271
 msgid "Buying"
@@ -1205,16 +1165,12 @@ msgstr "Residentes"
 
 # 94%
 #: horizons/i18n/guitranslations.py:313
-#, fuzzy
 msgid "Build settlement:"
-msgstr "Construir asentamiento"
+msgstr "Construir asentamiento:"
 
 #: horizons/i18n/guitranslations.py:314
 msgid "Click to change the name of this ship."
-msgstr ""
-"Clic aquí para \n"
-"cambiar el nombre \n"
-"del barco."
+msgstr "Clic aquí para cambiar el nombre del navío."
 
 #: horizons/i18n/guitranslations.py:315
 msgid "Build settlement"
@@ -1406,7 +1362,7 @@ msgstr "Habilita el registro para cierto módulo de registro (sólo desarrollo).
 
 #: run_uh.py:112
 msgid "Writes log to <filename> instead of to the uh-userdir"
-msgstr "Escribe el registro en <filename> en lugar de en uh-userdir."
+msgstr "Escribe el registro en <filename> en lugar de en uh-userdir"
 
 #: run_uh.py:114
 msgid "For internal use only."
@@ -1432,7 +1388,7 @@ msgstr "Para hacer esto, necesitamos la información de este registro:"
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
 "Por favor, envíanoslo por IRC o por el foro, para cualquiera de los dos "
-"visita unknown-horizons.org"
+"visita unknown-horizons.org ."
 
 #: run_uh.py:198
 msgid "Thank you for using Unknown Horizons!"
@@ -1480,7 +1436,7 @@ msgstr "Granja"
 
 #: sqlite/Building
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Depósito de Peces"
 
 #: sqlite/Building
 msgid "Fisherman's Tent"
@@ -1656,7 +1612,7 @@ msgstr "ladrillos"
 
 #: sqlite/Resources
 msgid "charcoal"
-msgstr "Carbón"
+msgstr "carbón"
 
 #: sqlite/Resources
 msgid "clay"
@@ -1688,7 +1644,7 @@ msgstr "alimentos"
 
 #: sqlite/Resources
 msgid "get-together"
-msgstr "Encuentros"
+msgstr "encuentros"
 
 #: sqlite/Resources
 msgid "grass"
