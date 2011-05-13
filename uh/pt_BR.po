@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-04-03 22:00+0200\n"
-"Last-Translator: Tobias <tschroefel@gmail.com>\n"
+"PO-Revision-Date: 2011-05-13 14:50+0200\n"
+"Last-Translator: claudinei <claudinei@slitaz.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,11 @@ msgstr "Unknown Horizons Versão %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
-msgstr "Requer Reinício"
+msgstr "Requer reinício"
 
 #: horizons/engine.py:55
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "As mudanças solicitadas requerem a reinicialização do Unknown Horizons."
+msgstr "As mudanças solicitadas requerem o reinício do Unknown Horizons."
 
 #: horizons/engine.py:108
 msgid "System default"
@@ -36,7 +36,7 @@ msgstr "Sistema padrão"
 
 #: horizons/engine.py:128 horizons/gui/modules/singleplayermenu.py:57
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: horizons/engine.py:129
 msgid ""
@@ -44,6 +44,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"O renderizador SDL serve como solução alternativa e possui sérios problemas "
+"gráficos. \n"
+"\n"
+"Use por sua conta e risco!"
 
 #: horizons/engine.py:193
 #, python-format
@@ -100,16 +104,16 @@ msgid ""
 "A savegame with the name \"%s\" already exists. \n"
 "Should i overwrite it?"
 msgstr ""
-"Existem um jogo salvo com o nome \"%s\". \n"
-"Deseja sobreescrevê-lo?"
+"Um jogo salvo com o nome \"%s\" já existe. \n"
+"Deseja sobrescrevê-lo?"
 
 #: horizons/gui/gui.py:252
 msgid "Confirmation for overwriting"
-msgstr "Confirmação para sobreescrita"
+msgstr "Confirmação para sobrescrever"
 
 #: horizons/gui/gui.py:369
 msgid "Unknown savedate\n"
-msgstr ""
+msgstr "Data de salvamento desconhecida\n"
 
 #: horizons/gui/gui.py:371
 #, python-format
