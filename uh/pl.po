@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-14 01:10+0200\n"
+"PO-Revision-Date: 2011-05-14 01:13+0200\n"
 "Last-Translator: Natrius <sebastian171191@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -1671,7 +1671,7 @@ msgstr "monety"
 
 #: sqlite/Resources
 msgid "community"
-msgstr ""
+msgstr "społeczność"
 
 #: sqlite/Resources
 msgid "education"
@@ -1705,7 +1705,7 @@ msgstr "zadowolenie"
 
 #: sqlite/Resources
 msgid "iron ingots"
-msgstr ""
+msgstr "sztaby żelaza"
 
 #: sqlite/Resources
 msgid "iron ore"
@@ -1717,7 +1717,7 @@ msgstr "wełna owcza"
 
 #: sqlite/Resources
 msgid "liquor"
-msgstr ""
+msgstr "alkohol"
 
 # Resources
 #: sqlite/Resources
