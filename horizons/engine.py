@@ -250,6 +250,7 @@ class Fife(ApplicationBase):
 		from gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
 		from gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 		from gui.widgets.icongroup import TabBG
+		from gui.widgets.stepslider import StepSlider
 
 		pychan.widgets.registerWidget(CancelButton)
 		pychan.widgets.registerWidget(DeleteButton)
@@ -263,6 +264,7 @@ class Fife(ApplicationBase):
 		pychan.widgets.registerWidget(TooltipButton)
 		pychan.widgets.registerWidget(TooltipLabel)
 		pychan.widgets.registerWidget(TooltipProgressBar)
+		pychan.widgets.registerWidget(StepSlider)
 
 		for name, stylepart in horizons.gui.style.STYLES.iteritems():
 			self.pychan.manager.addStyle(name, stylepart)

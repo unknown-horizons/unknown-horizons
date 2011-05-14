@@ -18,14 +18,14 @@
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />
-			<TooltipIcon name="happiness_label" position="0,166" 
-				image="content/gui/icons/resources/running_costs.png" 
+			<TooltipIcon name="happiness_label" position="0,166"
+				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,170"/>
 			<TooltipProgressBar name='happiness' position="21,166"
 				size="91,20" tooltip="Happiness" />
-			<TooltipIcon name="residents_label" position="140,166" 
-				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png" 
+			<TooltipIcon name="residents_label" position="140,166"
+				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
 				tooltip="Residents" />
 			<Label name='inhabitants' position="160,165" text="" />
 
@@ -33,10 +33,10 @@
 			<Icon image="content/gui/images/background/hr.png" position="0,190" />
 			<Label position="0,205" name="tax_label" text="Taxes:" />
 			<Label name='taxes' position="55,205" text="" />
-			<TooltipIcon name="paid_taxes_label" position="72,205" 
-				image="content/gui/icons/resources/running_costs.png" 
+			<TooltipIcon name="paid_taxes_label" position="72,205"
+				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Paid taxes" />
-			<Slider position="2,230" size="200,20" name="tax_slider" orientation="0" />
+			<StepSlider position="2,230" size="200,20" name="tax_slider" orientation="0" />
 
 			<!-- Ressources -->
 			<Icon image="content/gui/images/background/hr.png" position="0,255" />

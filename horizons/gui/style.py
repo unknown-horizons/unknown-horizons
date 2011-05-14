@@ -249,6 +249,9 @@ STYLES= {
 		'Slider' : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
+		'StepSlider' : {
+			'base_color' : fife.Color(80,80,40,128),
+		},
 		'TextBox' : {
 			'font' : 'libertine_14_black',
 			'opaque': 0

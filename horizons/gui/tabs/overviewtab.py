@@ -340,8 +340,6 @@ def _setup_tax_slider(slider, settlement):
 	slider.setValue(settlement.tax_setting)
 	slider.stylize('book')
 	def on_slider_change():
-		tax = round( slider.getValue() / 0.5 ) * 0.5
-		slider.setValue(tax)
-		if(settlement.tax_setting != tax):
-			SetTaxSetting(settlement, tax).execute(settlement.session)
+		if(settlement.tax_setting != slider.getValue()):
+			SetTaxSetting(settlement, slider.getValue()).execute(settlement.session)
 	slider.capture(on_slider_change)

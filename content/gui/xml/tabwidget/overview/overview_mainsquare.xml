@@ -18,7 +18,7 @@
 			<!--<Label position="0,25" name="health_label" text="Health:" />
 			<Label name='health' position="55,25" text="" />-->
 			<Label position="0,25" name="tax_label" text="Taxes:" />
-			<Slider position="55,25" size="140,20" name="tax_slider" orientation="0" />
+			<StepSlider position="55,25" size="140,20" name="tax_slider" orientation="0" />
 		</Container>
 
 	</Container>
