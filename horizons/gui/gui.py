@@ -258,6 +258,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
 			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
+			if selected_savegame is None:
+				# ok button has been pressed, but no savegame was selected
+				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."));
+				return self.show_select_savegame(mode=mode) # reshow dialog
 		self.current = old_current # reuse old widget
 		return selected_savegame
 
