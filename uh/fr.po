@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-10 16:39+0200\n"
-"Last-Translator: Sebastien <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2011-05-14 21:12+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -161,7 +161,7 @@ msgstr "Confirmer l'effacement"
 
 #: horizons/gui/gui.py:421 horizons/main.py:198
 msgid "Error!"
-msgstr "Erreur!"
+msgstr "Erreur !"
 
 #: horizons/gui/gui.py:421
 msgid "Failed to delete savefile!"
@@ -189,7 +189,7 @@ msgstr "Erreur réseau"
 
 #: horizons/gui/modules/multiplayermenu.py:103
 msgid "Something went wrong with the network: "
-msgstr "Un incident est survenu sur le réseau: "
+msgstr "Un incident est survenu sur le réseau : "
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Version differs!"

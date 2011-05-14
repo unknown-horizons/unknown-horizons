@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-14 01:13+0200\n"
-"Last-Translator: Natrius <sebastian171191@gmail.com>\n"
+"PO-Revision-Date: 2011-05-14 21:10+0200\n"
+"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -125,7 +125,7 @@ msgstr "%H:%M, %A, %B %d"
 #: horizons/gui/gui.py:383
 #, python-format
 msgid "Savegame ver. %d"
-msgstr "wersja gry %d"
+msgstr "Wersja gry zapisan %d"
 
 #: horizons/gui/gui.py:385
 #, python-format
@@ -664,9 +664,8 @@ msgid "Attention please!"
 msgstr ""
 
 #: horizons/i18n/guitranslations.py:132 horizons/i18n/guitranslations.py:172
-#, fuzzy
 msgid "Credits"
-msgstr " Autorzy"
+msgstr "Autorzy"
 
 #: horizons/i18n/guitranslations.py:135
 #, fuzzy
@@ -796,7 +795,7 @@ msgstr "Wyjdź do głównego menu"
 
 #: horizons/i18n/guitranslations.py:168
 msgid "Loading ..."
-msgstr "Ładowanie…"
+msgstr "Ładowanie..."
 
 #: horizons/i18n/guitranslations.py:175
 msgid "Quit"
@@ -848,7 +847,7 @@ msgstr "Gra rozpocznie się, gdy dołączy wymagana liczba graczy."
 
 #: horizons/i18n/guitranslations.py:191
 msgid "Chat:"
-msgstr "Czat"
+msgstr "Czat:"
 
 #: horizons/i18n/guitranslations.py:192
 msgid "Gamelobby"
@@ -1058,9 +1057,8 @@ msgid "Building overview"
 msgstr "Podgląd budynku"
 
 #: horizons/i18n/guitranslations.py:253
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr "Wszystkie postępu robót \\ nAnuluj"
+msgstr "Anuluj wszystkie postępu robót"
 
 # Building
 #: horizons/i18n/guitranslations.py:254
@@ -1074,7 +1072,7 @@ msgstr "Wznów"
 #: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:275
 #: horizons/i18n/guitranslations.py:297 horizons/i18n/guitranslations.py:299
 msgid "Running costs"
-msgstr "Koszty eksploatacji:"
+msgstr "Koszty utrzymania"
 
 #: horizons/i18n/guitranslations.py:258
 msgid "Fishing boat"
@@ -1281,7 +1279,7 @@ msgstr "Zwyciężyłeś!"
 
 #: horizons/scenario/actions.py:72
 msgid "You have completed this scenario. "
-msgstr "Ukończyłeś ten scenariusz."
+msgstr "Ukończyłeś ten scenariusz. "
 
 #: horizons/scenario/scenarioeventhandler.py:154
 #: horizons/scenario/scenarioeventhandler.py:164
@@ -1645,7 +1643,7 @@ msgstr ""
 # Messages
 #: sqlite/Messages
 msgid "Your settlers reached level ${level}."
-msgstr "Twoi osadnicy osiągnęli  poziom ${level}."
+msgstr "Twoi osadnicy osiągnęli poziom ${level}."
 
 # Resources
 #: sqlite/Resources
@@ -1735,7 +1733,7 @@ msgstr ""
 # Resources
 #: sqlite/Resources
 msgid "raw sugar"
-msgstr "Cukier przemysłowy"
+msgstr "cukier przemysłowy"
 
 # Resources
 #: sqlite/Resources
