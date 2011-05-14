@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-05 14:40+0200\n"
-"PO-Revision-Date: 2011-05-14 17:00+0200\n"
+"PO-Revision-Date: 2011-05-14 17:43+0200\n"
 "Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -346,13 +346,13 @@ msgstr "wybierz"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "stock"
-msgstr ""
+msgstr "zapasów"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "storage"
-msgstr "magazyn"
+msgstr "zapasów"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -399,7 +399,7 @@ msgstr "znalezniono"
 #: horizons/i18n/guitranslations.py
 #: sqlite/Building
 msgid "pavilion"
-msgstr "kaplica"
+msgstr "pawilon"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
@@ -415,7 +415,7 @@ msgstr "ogień sygnałowy"
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
 msgid "slider"
-msgstr ""
+msgstr "suwak"
 
 #: po/tutorial.py
 #: horizons/i18n/guitranslations.py
