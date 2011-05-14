@@ -23,6 +23,7 @@ from tabinterface import TabInterface
 from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
+from horizons.scheduler import Scheduler
 
 class InventoryTab(TabInterface):
 
@@ -44,13 +45,11 @@ class InventoryTab(TabInterface):
 		self.widget.child_finder('inventory').update()
 
 	def show(self):
-		if not self.instance.inventory.has_change_listener(self.refresh):
-			self.instance.inventory.add_change_listener(self.refresh)
+		Scheduler().add_new_object(self.refresh, self, run_in=1, loops=-1, loop_interval=16)
 		super(InventoryTab, self).show()
 
 	def hide(self):
-		if self.instance.inventory.has_change_listener(self.refresh):
-			self.instance.inventory.remove_change_listener(self.refresh)
+		Scheduler().rem_call(self, self.refresh)
 		super(InventoryTab, self).hide()
 
 class ShipInventoryTab(InventoryTab):
