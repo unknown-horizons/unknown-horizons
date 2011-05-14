@@ -26,10 +26,7 @@ from fife.extensions import pychan
 class StepSlider(pychan.widgets.Slider):
 
 	def __init__(self, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
-		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
-		in order to display the image. The container is only used, because ImageButtons can't have children.
-		This is meant to be used with the Inventory widget."""
+		"""The StepSlider automatically snaps the steps suggested by stepsize."""
 		super(StepSlider, self).__init__(**kwargs)
 		self.__callback = None
 		self.capture(None)
