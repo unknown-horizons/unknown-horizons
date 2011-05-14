@@ -111,12 +111,12 @@ class SPSession(Session):
 	def save(self, savegamename=None):
 		"""Saves a game
 		@param savegamename: string with the full path of the savegame file or None to let user pick one
-		@return: bool, whether save was successfull
+		@return: bool, whether no error happened (user aborting dialog means success)
 		"""
 		if savegamename is None:
 			savegamename = self.gui.show_select_savegame(mode='save')
 			if savegamename is None:
-				return False # user aborted dialog
+				return True # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)
 
 		savegame = savegamename

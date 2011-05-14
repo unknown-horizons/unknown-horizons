@@ -382,7 +382,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			old_label = box.findChild(name="savegamedetails_lbl")
 			if old_label is not None:
 				box.removeChild(old_label)
-			savegame_info = SavegameManager.get_metadata(map_files[gui.collectData(savegamelist)])
+			map_file = None
+			try:
+				map_file = map_files[gui.collectData(savegamelist)]
+			except IndexError:
+				# this was a click in the savegame list, but not on an element
+				# it happens when the savegame list is empty
+				return
+			savegame_info = SavegameManager.get_metadata(map_file)
 			details_label = pychan.widgets.Label(min_size=(140, 0), max_size=(140, 290), wrap_text=True)
 			details_label.name = "savegamedetails_lbl"
 			details_label.text = u""
