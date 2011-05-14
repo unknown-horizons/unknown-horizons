@@ -117,9 +117,10 @@ def start(command_line_arguments):
 	try:
 		NetworkInterface.create_instance()
 	except RuntimeError, e:
-		_modules.gui.show_popup(_("Failed to initialize networking"), \
-		                        _("This means that you need to fix your network configuration in order to play multiplayer games.\n") + \
-		                        _("Error message: \n%s") % e)
+		headline = _(u"Failed to initialize networking.")
+		descr = _(u"Networking couldn't be initialised with the current configuration.")
+		advice = _(u"Check the data you entered in the Network section in the settings dialogue.")
+		_modules.gui.show_error_popup(headline, descr, advice, unicode(e))
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()
@@ -199,7 +200,10 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		if _modules.session is not None and _modules.session.is_alive:
 			_modules.session.end()
 		_modules.gui.show_main()
-		_modules.gui.show_popup(_("Error!"), _("Load failed. Please try another savefile!"))
+		headline = _(u"Failed to start/load the game")
+		descr = _(u"The game you selected couldn't be started.") + \
+		      _("The savegame might be broken or has been saved with an earlier version.")
+		_modules.gui.show_error_popup(headline, descr)
 		load_game()
 
 def prepare_multiplayer(game):

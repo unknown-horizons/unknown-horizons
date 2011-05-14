@@ -94,7 +94,10 @@ class SPSession(Session):
 			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
 			SavegameManager.delete_dispensable_savegames(quicksaves = True)
 		else:
-			self.gui.show_popup(_('Error'), _('Failed to quicksave.'))
+			headline = _(u"Failed to quicksave.")
+			descr = _(u"An error happened during quicksave. Your game has not been saved.")
+			advice = _(u"If this error happens again, please contact the development team: unknown-horizons.org/support")
+			self.gui.show_error_popup(headline, descr, advice)
 
 	def quickload(self):
 		"""Loads last quicksave"""
@@ -126,13 +129,17 @@ class SPSession(Session):
 			self.savecounter += 1
 
 			db = DbReader(savegame)
-		except IOError: # usually invalid filename
-			self.gui.show_popup(_("Invalid filename"), _("You entered an invalid filename."))
+		except IOError, e: # usually invalid filename
+			headline = _("Failed to create savegame file")
+			descr = _("There has been an error while creating your savegame file.")
+			advice = _("This usually means that the savegame name contains unsupported special characters.")
+			self.gui.show_error_popup(headline, descr, advice, unicode(e))
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
 		except WindowsError as err:
 			if err.winerror == 32:
-				self.gui.show_popup(_("Error"), _("The file is being used by another process."))
+				self.gui.show_error_popup(_("File used by another process"), \
+				                          _("The savegame file is currently used by another program."))
 				return self.save()
 			raise
 

@@ -2,11 +2,11 @@
 <Container name="popup_window"  size="374,230"  position="325,235"
 	background_image="content/gui/images/background/notice.png" >
 
-<VBox position="40,30"  name="message_box">
+<VBox position="30,30"  name="message_box">
 	<Label text=""  name="headline"  font="libertine_headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<Label name="popup_message"  font="libertine_14_black"
-		 wrap_text="1"  max_size="300,200"  min_size="300,200" />
+		 wrap_text="1"  max_size="320,200"  min_size="320,200" />
 </VBox>
 
 <HBox min_size="265,40"  position="40,170"  name="button_box">

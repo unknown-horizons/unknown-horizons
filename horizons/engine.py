@@ -422,8 +422,9 @@ class Fife(ApplicationBase):
 			parse_port(port, allow_zero=True)
 		except ValueError:
 			headline = _("Invalid network port")
-			message = _("The port you specified is not valid. It must be  a number between 1 and 65535")
-			horizons.main._modules.gui.show_popup(headline, message)
+			descr = _("The port you specified is not valid. It must be  a number between 1 and 65535.")
+			advice = _("Please check the port you entered and make sure it's in the specified range.")
+			horizons.main._modules.gui.show_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
 			self.set_uh_setting("NetworkPort", u"0")
 			ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
@@ -434,9 +435,14 @@ class Fife(ApplicationBase):
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed(connect=False)
 			except Exception, e:
-				headline = _("Failed to apply new network data")
-				message = headline + _(".\nCheck the data you entered in the Network section.\nDetails: ") + str(e)
-				horizons.main._modules.gui.show_popup(headline, message)
+				headline = _(u"Failed to apply new network data.")
+				descr = _(u"Networking couldn't be initialised with the current configuration.")
+				advice = _(u"Check the data you entered in the Network section.")
+				if 0 < parse_port(port, allow_zero=True) < 1024:
+					advice += u" " + \
+					       _("Low port numbers sometimes require special priviledges, try one greater than 1024 or 0.")
+				details = unicode(e)
+				horizons.main._modules.gui.show_error_popup(headline, descr, advice, details)
 				ExtScheduler().add_new_object(self._setting.onOptionsPress, self, 0)
 
 	def run(self):
