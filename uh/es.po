@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-15 18:48+0200\n"
+"PO-Revision-Date: 2011-05-15 18:53+0200\n"
 "Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: horizons/constants.py:55
 #, python-format
 msgid "Unknown Horizons Version %s"
-msgstr "Unknown Horizons Versión %s"
+msgstr "Unknown Horizons versión Desconocida %s"
 
 #: horizons/engine.py:54
 msgid "Restart required"
@@ -555,11 +555,11 @@ msgstr "Aumentar la velocidad del juego"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr "Zoom en"
+msgstr "Acercar Zoom"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
-msgstr ""
+msgstr "Alejar Zoom"
 
 #: horizons/i18n/guitranslations.py:101
 msgid "Boards"
