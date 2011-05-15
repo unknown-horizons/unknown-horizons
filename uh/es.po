@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2011-05-04 14:25+0200\n"
-"PO-Revision-Date: 2011-05-13 23:16+0200\n"
-"Last-Translator: eoc <eoc.eoc.eoc@gmail.com>\n"
+"PO-Revision-Date: 2011-05-15 18:48+0200\n"
+"Last-Translator: CatRoky <pepitopalotesdequeso@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -483,24 +483,26 @@ msgid "Settler buildings"
 msgstr "Edificios de los colonos"
 
 #: horizons/i18n/guitranslations.py:76
+#, fuzzy
 msgid "Charcoal burning: Burns a lot of boards."
-msgstr ""
+msgstr "Carbón de leña ardiente: Quema una gran cantidad de tablas."
 
 #: horizons/i18n/guitranslations.py:77
 msgid "Iron mine: Gets iron ore from deposit."
-msgstr ""
+msgstr "minas de hierro: Obtiene mineral de hierro del depósito."
 
 #: horizons/i18n/guitranslations.py:78
+#, fuzzy
 msgid "Smeltery: Refines all kind of ores."
-msgstr ""
+msgstr "Fundidora: Afina todo tipo de minerales."
 
 #: horizons/i18n/guitranslations.py:79
 msgid "Tavern: Provides get-together."
-msgstr ""
+msgstr "Taberna: Proporciona encuentro."
 
 #: horizons/i18n/guitranslations.py:80
 msgid "Toolmaker: Produces tools out of iron."
-msgstr ""
+msgstr "Fabricante de herramientas: Produce herramientas de hierro."
 
 #: horizons/i18n/guitranslations.py:83 horizons/i18n/guitranslations.py:283
 msgid "Running costs:"
@@ -537,23 +539,23 @@ msgstr "Registro de navegación"
 
 #: horizons/i18n/guitranslations.py:94
 msgid "Rotate map counterclockwise"
-msgstr ""
+msgstr "Gire a la izquierda del mapa"
 
 #: horizons/i18n/guitranslations.py:95
 msgid "Rotate map clockwise"
-msgstr ""
+msgstr "Girar hacia la derecha del mapa"
 
 #: horizons/i18n/guitranslations.py:96
 msgid "Decrease game speed"
-msgstr ""
+msgstr "Disminuir la velocidad del juego"
 
 #: horizons/i18n/guitranslations.py:97
 msgid "Increase game speed"
-msgstr ""
+msgstr "Aumentar la velocidad del juego"
 
 #: horizons/i18n/guitranslations.py:98
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom en"
 
 #: horizons/i18n/guitranslations.py:99
 msgid "Zoom out"
