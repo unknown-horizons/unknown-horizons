@@ -22,9 +22,11 @@
 import horizons.main
 
 from horizons.scheduler import Scheduler
+from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback
 from horizons.scenario import CONDITIONS
-from horizons.constants import MESSAGES
+from horizons.savegamemanager import SavegameManager
+from horizons.constants import MESSAGES, AUTO_CONTINUE_CAMPAIGN
 
 
 ###
@@ -68,12 +70,19 @@ def do_win(session):
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
 
-	continue_playing = session.gui.show_popup(_("You have won!"), \
-	                                          _("You have completed this scenario. " +
-	                                            "Do you want to continue playing?"), \
-	                                          show_cancel_button=True)
+	continue_playing = False
+	if session.campaign is None or not AUTO_CONTINUE_CAMPAIGN:
+		continue_playing = session.gui.show_popup(_("You have won!"), \
+		                                          _("You have completed this scenario. " +
+		                                            "Do you want to continue playing?"), \
+		                                          show_cancel_button=True)
 	if not continue_playing:
-		Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
+		if session.campaign:
+			# TODO : present a scenario choosing Gui to the user
+			SavegameManager.mark_scenario_as_won(session.campaign)
+			ExtScheduler().add_new_object(Callback(SavegameManager.load_next_scenario, session.campaign), SavegameManager, run_in=1)
+		else:
+			Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
 	else:
 		session.speed_unpause()
 

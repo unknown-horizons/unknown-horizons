@@ -92,6 +92,7 @@ class Session(LivingObject):
 		self.view = View(self, (15, 15))
 		Entities.load(self.db)
 		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
+		self.campaign = {}
 
 		#GUI
 		self.gui.session = self
@@ -158,7 +159,7 @@ class Session(LivingObject):
 	def save(self, savegame):
 		raise NotImplementedError
 
-	def load(self, savegame, players, is_scenario=False):
+	def load(self, savegame, players, is_scenario=False, campaign={}):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color and local
@@ -169,6 +170,7 @@ class Session(LivingObject):
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
 			savegame = os.path.join(SavegameManager.maps_dir, \
 			                        self.scenario_eventhandler.get_map_file())
+		self.campaign = campaign
 
 		self.log.debug("Session: Loading from %s", savegame)
 		savegame_db = DbReader(savegame) # Initialize new dbreader

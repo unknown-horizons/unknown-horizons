@@ -25,6 +25,7 @@ import os
 import os.path
 import glob
 import time
+import yaml
 
 from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader
@@ -54,9 +55,11 @@ class SavegameManager(object):
 	demo_dir = "content/demo"
 	maps_dir = "content/maps"
 	scenarios_dir = "content/scenarios"
+	campaigns_dir = "content/campaign"
 
 	savegame_extension = "sqlite"
 	scenario_extension = "yaml"
+	campaign_extension = "yaml"
 
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
@@ -70,6 +73,7 @@ class SavegameManager(object):
 	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0 }
 	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int }
 
+	campaign_status_file = os.path.join(savegame_dir, 'campaign_status.yaml')
 
 	@classmethod
 	def init(self):
@@ -78,6 +82,8 @@ class SavegameManager(object):
 			os.makedirs(self.autosave_dir)
 		if not os.path.isdir(self.quicksave_dir):
 			os.makedirs(self.quicksave_dir)
+		if not os.path.exists(self.campaign_status_file):
+			yaml.dump(self.generate_campaign_status(), open(self.campaign_status_file, "w"))
 
 	@classmethod
 	def __get_displaynames(self, files):
@@ -239,6 +245,92 @@ class SavegameManager(object):
 		return self.__get_saves_from_dirs([self.scenarios_dir], \
 										  include_displaynames = include_displaynames,
 		                  filename_extension = self.scenario_extension)
+
+	@classmethod
+	def get_available_scenarios(self, include_displaynames = True):
+		"""Returns available scenarios (depending on the campaign(s) status)"""
+		scenario_files = {}
+		afiles = []
+		anames = [] 
+		campaign_scenarios = []
+		cfiles, cnames, cscenarios = self.get_campaigns(include_displaynames = True, include_scenario_list = True)
+		sfiles, snames = self.get_scenarios(include_displaynames = True)
+		cstatus = self.get_campaign_status()
+		for i, cname in enumerate(cnames):
+			available_scenarios = [s for j, s in enumerate(cscenarios[i]) if j in cstatus.get(cname,[0])]
+			anames.extend(available_scenarios)
+			campaign_scenarios.extend(cscenarios[i])
+		for i, sname in enumerate(snames):
+			scenario_files[sname] = sfiles[i]
+			if sname not in campaign_scenarios:
+				anames.append(sname)
+		afiles = [scenario_files[aname] for aname in anames]
+		if not include_displaynames:
+			return (afiles,)
+		return (afiles, anames)
+
+	@classmethod
+	def generate_campaign_status(self):
+		status = {}
+		camp_files, camp_names = self.get_campaigns()
+		for name in camp_names:
+			status[name] = [0,]
+		return status
+
+	@classmethod
+	def get_campaign_status(self):
+		return yaml.load(open(self.campaign_status_file, 'r'))
+
+	@classmethod
+	def get_campaigns(self, include_displaynames = True, include_scenario_list = False):
+		"""Returns all campaigns"""
+		self.log.debug("Savegamemanager: campaigns from: %s", self.campaigns_dir)
+		files, names = self.__get_saves_from_dirs([self.campaigns_dir], \
+			include_displaynames = include_displaynames,
+			filename_extension = self.campaign_extension)
+		if not include_displaynames:
+			return (files,)
+		if not include_scenario_list:
+			return (files, names)
+		scenarios_lists = []
+		for i, f in enumerate(files):
+			campaign = yaml.load(open(f,'r'))
+			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
+		return (files, names, scenarios_lists)
+
+	@classmethod
+	def get_campaigns_scenarios(self, campaign_name):
+		cfiles, cnames, cscenarios = self.get_campaigns(include_displaynames = True, include_scenario_list = True)
+		if not campaign_name in cnames:
+			print _("Error: Cannot find campaign \"%s\".") % (campaign_name,)
+			return False
+		index = cnames.index(campaign_name)
+		return cscenarios[index]
+
+	@classmethod
+	def mark_scenario_as_won(self, campaign_data):
+		campaign_status = self.get_campaign_status()
+		# TODO : we shouldn't make the NEXT scenario available but
+		#        the scenarios that depend on the current scenario
+		#        victory
+		# TODO : if the scenario is loaded outside of the campaign
+		#        should it be marked as won for every campaign that
+		#        contains it ?
+		campaign_status.setdefault(campaign_data['campaign_name'], []).append(campaign_data['scenario_index'] + 1)
+		yaml.dump(campaign_status, open(self.campaign_status_file, "w"))
+		return campaign_status
+	
+	@classmethod
+	def load_next_scenario(self, campaign_data):
+		scenarios = self.get_campaigns_scenarios(campaign_data['campaign_name'])
+		next_index = campaign_data['scenario_index'] + 1
+		if next_index == len(scenarios):
+			# If no more scenario, do the same thing as in the "old" do_win action
+			horizons.main._modules.session.gui.quit_session(force = True)
+			return False
+		campaign_data['scenario_index'] = next_index
+		campaign_data['scenario_name'] = scenarios[next_index]
+		horizons.main._start_map(scenarios[next_index], is_scenario = True, campaign = campaign_data)
 
 	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):

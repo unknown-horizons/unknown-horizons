@@ -292,3 +292,4 @@ LANGUAGENAMES = _LanguageNameDict(
 	sl    = u'Slovenski',
 	)
 LANGUAGENAMES['ca@valencia'] = u'Català' # need to do this if @ sign in po file name
+AUTO_CONTINUE_CAMPAIGN=True
