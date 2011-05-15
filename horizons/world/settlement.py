@@ -44,6 +44,7 @@ class Settlement(TradePost, NamedObject):
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
 		self.produced_res = {} # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = {}
+		self.branch_office = None # this is set later in the same tick by the bo itself
 
 	def set_tax_setting(self, tax):
 		self.tax_setting = tax

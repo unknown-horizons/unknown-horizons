@@ -169,8 +169,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
 								self.ground_map[(x+x_offset, y+y_offset)] = ground
 
-		# "unfill" parts that are occupied by island
-		# TODO: check if constructing a list of water coords is faster than calling the Ground() so many times
+
+		# remove parts that are occupied by island
 		for island in self.islands:
 			for coord in island.ground_map:
 				if coord in self.ground_map:
@@ -488,16 +488,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			islands = self.get_islands_in_radius(position, radius)
 		else:
 			islands = self.islands
-		for island in islands:
+
+		for island in self.islands:
 			for settlement in island.settlements:
-				for building in settlement.buildings:
-					# TODO: find a better way to find out if a building is a bo. possibly keep a list
-					#       of bo's per island/settlement
-					if isinstance(building, horizons.world.building.storages.BranchOffice):
-						if (radius is None or position is None or \
-							building.position.distance(position) <= radius) and \
-						   (owner is None or building.owner == owner):
-							branchoffices.append(building)
+				bo = settlement.branch_office
+				if (radius is None or position is None or \
+				    bo.position.distance(position) <= radius) and \
+				   (owner is None or bo.owner == owner):
+					branchoffices.append(bo)
 		return branchoffices
 
 	@decorators.make_constants()

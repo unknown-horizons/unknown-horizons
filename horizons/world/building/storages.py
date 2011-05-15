@@ -61,6 +61,13 @@ class StorageBuilding(SelectableBuilding, BuildableSingle, StorageResourceHandle
 
 class BranchOffice(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
+	def __init__(self, *args, **kwargs):
+		super(BranchOffice, self).__init__(*args, **kwargs)
+		self.settlement.branch_office = self # we never need to unset this since bo's are indestructible
+
+	def load(self, db, worldid):
+		super(BranchOffice, self).load(db, worldid)
+		self.settlement.branch_office = self
 
 class MarketPlace(ProducerBuilding, StorageBuilding):
 	tabs = (MarketPlaceOverviewTab, AccountTab, MarketPlaceSettlerTabSettlerTab)
